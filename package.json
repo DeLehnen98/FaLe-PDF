@@ -1,0 +1,31 @@
+{
+  "name": "fale-pdf",
+  "version": "2.1.0",
+  "private": true,
+  "description": "FaLe PDF – PDF, Dokumente, Tabellen und Präsentationen. Privat, offline, ohne Konto.",
+  "scripts": {
+    "build": "node scripts/vercel-build.mjs",
+    "build:native": "node scripts/vercel-build.mjs --native",
+    "android:add": "node scripts/vercel-build.mjs --native && npx cap add android && node scripts/cap-patch-android.mjs",
+    "android:sync": "node scripts/vercel-build.mjs --native && npx cap sync android && node scripts/cap-patch-android.mjs",
+    "android:patch": "node scripts/cap-patch-android.mjs",
+    "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "pdfjs-dist": "6.2.108",
+    "pdf-lib": "1.17.1",
+    "jszip": "3.10.1",
+    "docx": "9.7.1",
+    "pptxgenjs": "4.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.0"
+  }
+}

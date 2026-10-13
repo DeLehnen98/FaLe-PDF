@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FaLe PDF</title>
+  <meta name="description" content="FaLe PDF – privates Büro für PDF, Dokumente, Tabellen und Präsentationen. Offline, ohne Konto, ohne Uploads.">
+  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1024" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="vendor/pdfjs/pdf_viewer.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/office.css">
+  <link rel="stylesheet" href="css/extras.css">
+  <script>
+    // Apply stored theme before first paint (no flash).
+    try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="app" id="app">
+    <aside class="sidebar" aria-label="Hauptnavigation">
+      <a class="brand" href="#/start" aria-label="FaLe PDF – Startseite"><span class="brand-logo" data-logo></span><span class="brand-name">FaLe <b>PDF</b></span></a>
+      <nav class="side-nav">
+        <a class="nav-link" href="#/start" data-nav="start"><span data-icon="home"></span><span>Start</span></a>
+        <a class="nav-link" href="#/dateien" data-nav="dateien"><span data-icon="folder"></span><span>Dateien</span></a>
+        <a class="nav-link" href="#/werkzeuge" data-nav="werkzeuge"><span data-icon="tools"></span><span>Werkzeuge</span></a>
+        <a class="nav-link" href="#/suche" data-nav="suche"><span data-icon="search"></span><span>Suche</span></a>
+        <a class="nav-link" href="#/einstellungen" data-nav="einstellungen"><span data-icon="user"></span><span>Ich &amp; Einstellungen</span></a>
+      </nav>
+      <button class="btn btn-primary side-open" type="button" data-action="new-menu" aria-haspopup="menu"><span data-icon="plus"></span>Neu</button>
+      <button class="btn btn-ghost side-import" type="button" data-action="open-file"><span data-icon="upload"></span>Importieren</button>
+      <div class="side-foot"><span data-icon="shield"></span><span>Alles bleibt auf deinem Gerät.</span></div>
+    </aside>
+
+    <div class="main-col">
+      <header class="topbar">
+        <a class="brand" href="#/start" aria-label="FaLe PDF – Startseite"><span class="brand-logo" data-logo></span><span class="brand-name">FaLe <b>PDF</b></span></a>
+        <div class="topbar-actions">
+          <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="Hell/Dunkel umschalten"><span data-icon="moon"></span></button>
+          <a class="icon-btn" href="#/suche" data-nav="suche" aria-label="Suche"><span data-icon="search"></span></a>
+        </div>
+      </header>
+
+      <main id="main" class="main" tabindex="-1">
+        <section class="view" id="view-start" data-view="start" hidden></section>
+        <section class="view" id="view-dateien" data-view="dateien" hidden></section>
+        <section class="view" id="view-werkzeuge" data-view="werkzeuge" hidden></section>
+        <section class="view" id="view-suche" data-view="suche" hidden></section>
+        <section class="view" id="view-einstellungen" data-view="einstellungen" hidden></section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Navigation">
+        <a class="bnav" href="#/start" data-nav="start"><span data-icon="home"></span><span>Start</span></a>
+        <a class="bnav" href="#/dateien" data-nav="dateien"><span data-icon="folder"></span><span>Dateien</span></a>
+        <a class="bnav" href="#/werkzeuge" data-nav="werkzeuge"><span data-icon="tools"></span><span>Werkzeuge</span></a>
+        <a class="bnav" href="#/einstellungen" data-nav="einstellungen"><span data-icon="user"></span><span>Ich</span></a>
+      </nav>
+      <button class="fab" type="button" data-action="new-menu" aria-haspopup="menu" aria-label="Neu erstellen oder importieren"><span data-icon="plus"></span></button>
+    </div>
+  </div>
+
+  <!-- Full-screen document viewer -->
+  <div class="viewer" id="viewer" hidden aria-label="Dokumentansicht" role="region"></div>
+
+  <!-- Full-screen tool screen -->
+  <div class="screen" id="tool-screen" hidden role="region" aria-label="Werkzeug"></div>
+
+  <div class="drop-overlay" id="drop-overlay" aria-hidden="true"><div class="drop-card"><span data-icon="open"></span><p>Dateien hier ablegen</p><p class="drop-sub">PDF, Word, Excel, PowerPoint, Text und Bilder</p></div></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="print-area" id="print-area" aria-hidden="true"></div>
+  <input type="file" id="pdf-input" class="sr-only" accept=".pdf,application/pdf" multiple aria-label="PDF-Dateien auswählen">
+
+  <noscript><p class="noscript">FaLe PDF benötigt JavaScript.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

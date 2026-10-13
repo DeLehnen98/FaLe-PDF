@@ -1,0 +1,19 @@
+{
+  "appId": "dev.fale.pdf",
+  "appName": "FaLe PDF",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "hostname": "localhost"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_fale",
+      "iconColor": "#3B37A0"
+    }
+  }
+}

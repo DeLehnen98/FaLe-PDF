@@ -1,0 +1,19 @@
+# dependencies / build output (Vercel and CI build these)
+node_modules/
+dist/
+.vercel/
+
+# native Android project – generated in CI by `npx cap add android` + scripts/cap-patch-android.mjs
+android/
+
+# signing keys must NEVER be committed (see store/KEYSTORE.md)
+*.jks
+*.keystore
+*.p12
+keystore.properties
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
