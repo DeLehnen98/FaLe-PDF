@@ -1,0 +1,70 @@
+{
+  "id": "unlock-pdf",
+  "category": "security",
+  "icon": "unlock",
+  "module": "tools/unlock-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["protect-pdf", "edit-metadata", "flatten-pdf"],
+  "next": ["sign-pdf", "fill-pdf-form"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-passwort-entfernen",
+    "name": "PDF-Passwort entfernen",
+    "short": "Passwort und Einschränkungen deiner eigenen PDFs entfernen.",
+    "title": "PDF-Passwort entfernen – ohne Upload | FaleNetwork",
+    "h1": "PDF-Passwort entfernen",
+    "metaDescription": "Entferne das Passwort zum Öffnen oder Druck- und Kopiersperren aus deinen eigenen PDFs. Du brauchst nur das Passwort – alles passiert im Browser, ohne Upload.",
+    "lede": "Hebe Passwort und Sperren deiner eigenen PDFs auf – direkt im Browser.",
+    "primaryButton": "Entsperren",
+    "keywords": ["entsperren", "entschlüsseln", "passwort löschen", "kennwort entfernen", "druckschutz", "kopierschutz aufheben", "freischalten"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere geschützte PDFs aus. Du siehst sofort, wie jede Datei geschützt ist."},
+      {"title": "Passwort eingeben", "text": "Braucht eine Datei ein Passwort zum Öffnen, gibst du es direkt an der Datei ein. Reine Druck- oder Kopiersperren brauchen kein Passwort."},
+      {"title": "Entsperren und speichern", "text": "Tippe auf „Entsperren“. Du bekommst dieselbe PDF ohne Passwort und ohne Einschränkungen."}
+    ],
+    "why": [
+      {"title": "Zeigt, was geschützt ist", "text": "Vor dem Entsperren siehst du Verschlüsselung, Passwort und gesperrte Rechte jeder Datei."},
+      {"title": "Inhalt bleibt unverändert", "text": "Text, Bilder, Links, Lesezeichen und Formularfelder bleiben, wie sie sind – nur die Verschlüsselung wird entfernt."},
+      {"title": "Kein Upload", "text": "Datei und Passwort bleiben in deinem Browser-Tab. Nichts wird gesendet oder gespeichert."},
+      {"title": "Mehrere Dateien auf einmal", "text": "Entsperre mehrere PDFs in einem Durchgang und lade sie gesammelt als ZIP herunter."}
+    ],
+    "faq": [
+      {"q": "Darf ich den Schutz einer PDF entfernen?", "a": "Nutze das Werkzeug nur für Dokumente, die dir gehören oder für die du die Erlaubnis des Eigentümers hast. Der Schutz ist oft absichtlich gesetzt – respektiere ihn bei fremden Dokumenten."},
+      {"q": "Kann das Werkzeug ein vergessenes Passwort knacken?", "a": "Nein. Für eine PDF mit Passwort zum Öffnen musst du das Passwort kennen. Nur Einschränkungen wie Druck- oder Kopiersperren lassen sich ohne Passwort entfernen, weil die Datei dafür ohnehin geöffnet werden kann."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Alles passiert in deinem Browser. Das Passwort wird nur in diesem Tab benutzt und nirgends gespeichert."},
+      {"q": "Welche Verschlüsselungen werden unterstützt?", "a": "Die üblichen PDF-Verschlüsselungen: AES-256, AES-128 und das ältere RC4 (40 und 128 Bit). Sehr seltene Verfahren, etwa mit Zertifikaten, werden nicht unterstützt – dann bekommst du eine Meldung."},
+      {"q": "Kann ich die PDF danach wieder schützen?", "a": "Ja. Mit „PDF mit Passwort schützen“ verschlüsselst du sie mit einem neuen Passwort, zum Beispiel nachdem du sie bearbeitet hast."}
+    ]
+  },
+  "en": {
+    "slug": "unlock-pdf",
+    "name": "Unlock PDF",
+    "short": "Remove the password and restrictions from your own PDFs.",
+    "title": "Unlock PDF – remove password, no upload | FaleNetwork",
+    "h1": "Remove a PDF password",
+    "metaDescription": "Remove the open password or print and copy restrictions from your own PDFs. You only need the password – everything happens in your browser, no upload.",
+    "lede": "Remove the password and restrictions of your own PDFs – right in your browser.",
+    "primaryButton": "Unlock",
+    "keywords": ["decrypt", "remove password", "unprotect", "unrestrict", "print restriction", "copy protection"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select one or more protected PDFs. You immediately see how each file is protected."},
+      {"title": "Enter the password", "text": "If a file needs a password to open, type it right on the file. Pure print or copy restrictions need no password."},
+      {"title": "Unlock and save", "text": "Tap “Unlock”. You get the same PDF without a password and without restrictions."}
+    ],
+    "why": [
+      {"title": "Shows what is protected", "text": "Before unlocking you see the encryption, password and restricted permissions of each file."},
+      {"title": "Content stays the same", "text": "Text, images, links, bookmarks and form fields stay as they are – only the encryption is removed."},
+      {"title": "No upload", "text": "File and password stay in your browser tab. Nothing is sent or stored."},
+      {"title": "Several files at once", "text": "Unlock several PDFs in one go and download them together as a ZIP."}
+    ],
+    "faq": [
+      {"q": "Am I allowed to remove a PDF’s protection?", "a": "Only use the tool for documents that are yours or that the owner has allowed you to unlock. Protection is often set on purpose – respect it for other people’s documents."},
+      {"q": "Can the tool crack a forgotten password?", "a": "No. For a PDF with a password to open you need to know the password. Only restrictions like print or copy locks can be removed without a password, because such files can be opened anyway."},
+      {"q": "Are my files uploaded?", "a": "No. Everything happens in your browser. The password is only used in this tab and never stored."},
+      {"q": "Which encryption types are supported?", "a": "The usual PDF encryption types: AES-256, AES-128 and the older RC4 (40 and 128 bit). Very rare methods, such as certificate-based encryption, are not supported – you will get a message then."},
+      {"q": "Can I protect the PDF again afterwards?", "a": "Yes. With “Protect PDF” you encrypt it with a new password, for example after editing it."}
+    ]
+  }
+}

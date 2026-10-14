@@ -1,0 +1,70 @@
+{
+  "id": "protect-pdf",
+  "category": "security",
+  "icon": "lock",
+  "module": "tools/protect-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["unlock-pdf", "redact-pdf", "edit-metadata"],
+  "next": [],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-mit-passwort-schuetzen",
+    "name": "PDF mit Passwort schützen",
+    "short": "PDF mit AES-256 verschlüsseln – Passwort bleibt bei dir.",
+    "title": "PDF mit Passwort schützen – AES-256, ohne Upload | FaleNetwork",
+    "h1": "PDF mit Passwort schützen",
+    "metaDescription": "PDF mit einem Passwort verschlüsseln (AES-256): mit Stärke-Anzeige, Passwort-Generator und optionalen Rechten. Kostenlos und ohne Upload – direkt im Browser.",
+    "lede": "Verschlüssle deine PDF mit AES-256 – das Passwort verlässt dein Gerät nicht.",
+    "primaryButton": "Schützen",
+    "keywords": ["verschlüsseln", "passwort", "kennwort", "sperren", "absichern", "aes", "rechte", "drucken verhindern"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere PDFs aus. Alle bekommen dasselbe Passwort."},
+      {"title": "Passwort festlegen", "text": "Tippe ein Passwort ein oder lass dir ein starkes erzeugen. Die Anzeige zeigt dir, wie gut es ist. Auf Wunsch schränkst du zusätzlich Drucken, Kopieren oder Ändern ein."},
+      {"title": "Schützen und speichern", "text": "Tippe auf „Schützen“. Die verschlüsselte PDF kannst du herunterladen oder direkt teilen."}
+    ],
+    "why": [
+      {"title": "AES-256", "text": "Die PDF wird mit AES-256 verschlüsselt – dem aktuellen PDF-Standard. Ohne Passwort ist der Inhalt nicht lesbar."},
+      {"title": "Passwort bleibt auf deinem Gerät", "text": "Die Verschlüsselung passiert im Browser. Passwort und Datei werden nirgends hin gesendet und nicht gespeichert."},
+      {"title": "Starke Passwörter per Fingertipp", "text": "Der Generator nutzt den Zufallsgenerator deines Browsers und erzeugt gut lesbare Passwörter wie „k7Pm-2Qav-9RtL-w4eX“."},
+      {"title": "Rechte nach Wunsch", "text": "Erlaube oder verbiete Drucken, Kopieren und Ändern – mit oder ohne Passwort zum Öffnen."}
+    ],
+    "faq": [
+      {"q": "Werden meine PDF oder mein Passwort hochgeladen?", "a": "Nein. Verschlüsselt wird vollständig in deinem Browser. Weder die Datei noch das Passwort verlassen dein Gerät, und nichts wird gespeichert."},
+      {"q": "Wie sicher ist der Schutz?", "a": "Die PDF wird mit AES-256 verschlüsselt. Wie sicher das in der Praxis ist, hängt vor allem vom Passwort ab: Lange, zufällige Passwörter wie die vom Generator sind praktisch nicht zu erraten."},
+      {"q": "Was ist der Unterschied zwischen Passwort zum Öffnen und Rechten?", "a": "Mit einem Passwort zum Öffnen ist der Inhalt verschlüsselt und ohne Passwort nicht lesbar. Rechte wie „Drucken verbieten“ werden von den meisten Programmen beachtet, lassen sich aber von manchen Programmen ignorieren – für vertrauliche Inhalte immer ein Passwort zum Öffnen nutzen."},
+      {"q": "Ich habe das Passwort vergessen – kannst du helfen?", "a": "Nein. Das Passwort wird nirgends gespeichert, und AES-256 lässt sich nicht umgehen. Bewahre es gut auf, zum Beispiel in einem Passwort-Manager, und teste die Datei, bevor du das Original löschst."},
+      {"q": "Mit welchen Programmen lässt sich die PDF öffnen?", "a": "Mit allen aktuellen PDF-Programmen und Browsern, die AES-256 unterstützen – das ist seit vielen Jahren Standard. Sehr alte Programme können solche Dateien eventuell nicht öffnen."}
+    ]
+  },
+  "en": {
+    "slug": "protect-pdf",
+    "name": "Protect PDF",
+    "short": "Encrypt a PDF with AES-256 – your password stays with you.",
+    "title": "Protect PDF with a password – AES-256, no upload | FaleNetwork",
+    "h1": "Protect a PDF with a password",
+    "metaDescription": "Encrypt a PDF with a password (AES-256): strength meter, password generator and optional permissions. Free, no upload – it all happens in your browser.",
+    "lede": "Encrypt your PDF with AES-256 – the password never leaves your device.",
+    "primaryButton": "Protect",
+    "keywords": ["encrypt", "password", "lock", "secure", "aes", "permissions", "prevent printing"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select one or more PDFs. They all get the same password."},
+      {"title": "Set a password", "text": "Type a password or let the tool generate a strong one. The meter shows how good it is. If you like, also restrict printing, copying or changes."},
+      {"title": "Protect and save", "text": "Tap “Protect”. Download the encrypted PDF or share it right away."}
+    ],
+    "why": [
+      {"title": "AES-256", "text": "The PDF is encrypted with AES-256 – the current PDF standard. Without the password the content cannot be read."},
+      {"title": "Your password stays on your device", "text": "Encryption happens in your browser. Neither the password nor the file is sent anywhere or stored."},
+      {"title": "Strong passwords with a tap", "text": "The generator uses your browser’s secure random number generator and creates readable passwords such as “k7Pm-2Qav-9RtL-w4eX”."},
+      {"title": "Permissions as you like", "text": "Allow or forbid printing, copying and changes – with or without a password to open."}
+    ],
+    "faq": [
+      {"q": "Are my PDF or password uploaded?", "a": "No. Encryption happens entirely in your browser. Neither the file nor the password leaves your device, and nothing is stored."},
+      {"q": "How secure is the protection?", "a": "The PDF is encrypted with AES-256. How secure that is in practice mainly depends on the password: long random passwords like the generated ones are practically impossible to guess."},
+      {"q": "What is the difference between an open password and permissions?", "a": "With a password to open, the content is encrypted and unreadable without the password. Permissions such as “no printing” are respected by most programs, but some programs can ignore them – for confidential content always use a password to open."},
+      {"q": "I forgot the password – can you help?", "a": "No. The password is not stored anywhere and AES-256 cannot be bypassed. Keep it safe, for example in a password manager, and test the file before deleting the original."},
+      {"q": "Which programs can open the PDF?", "a": "All current PDF programs and browsers that support AES-256 – it has been the standard for many years. Very old programs may not be able to open such files."}
+    ]
+  }
+}

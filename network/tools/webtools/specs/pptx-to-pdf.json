@@ -1,0 +1,171 @@
+{
+  "id": "pptx-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "slides",
+  "module": "tools/pptx-to-pdf.js",
+  "accepts": [
+    ".pptx",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 52,
+  "related": [
+    "pdf-to-pptx",
+    "word-to-pdf",
+    "compress-pdf"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "jszip",
+    "office"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "powerpoint-in-pdf",
+    "name": "PowerPoint in PDF",
+    "short": "Präsentationen (PPTX) als PDF – eine Seite pro Folie.",
+    "title": "PowerPoint in PDF umwandeln – PPTX zu PDF, gratis | FaleNetwork",
+    "h1": "PowerPoint in PDF umwandeln",
+    "metaDescription": "Wandle PowerPoint-Präsentationen (PPTX) in eine PDF um: eine Seite pro Folie, mit Bildern, Tabellen und durchsuchbarem Text. Mit Vorschau, ohne Upload.",
+    "lede": "Mach aus einer Präsentation (PowerPoint, PPTX) eine PDF zum Verschicken oder als Handout.",
+    "pickLabel": "PowerPoint-Datei auswählen",
+    "primaryButton": "In PDF umwandeln",
+    "keywords": [
+      "pptx",
+      "ppt",
+      "powerpoint",
+      "präsentation",
+      "folien",
+      "handout",
+      "vortrag",
+      "konvertieren",
+      "umwandeln"
+    ],
+    "steps": [
+      {
+        "title": "Präsentation auswählen",
+        "text": "Wähle eine oder mehrere PPTX-Dateien aus."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In PDF umwandeln“. Jede Folie wird eine Seite im Folienformat."
+      },
+      {
+        "title": "Prüfen und teilen",
+        "text": "Blättere durch die Vorschau und lade die PDF herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Eine Seite pro Folie",
+        "text": "Im Format deiner Präsentation, mit Hintergründen, Bildern, Formen und Tabellen."
+      },
+      {
+        "title": "Durchsuchbar",
+        "text": "Über jeder Folie liegt eine unsichtbare Textebene – du kannst in der PDF suchen und Text kopieren."
+      },
+      {
+        "title": "Vorschau vor dem Speichern",
+        "text": "Du siehst die Folien, bevor du die PDF verschickst."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Präsentation bleibt auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Sieht die PDF genau aus wie meine Präsentation?",
+        "a": "Texte, Bilder, Formen, Tabellen und Hintergründe werden nachgezeichnet. Spezielle Effekte (Schatten, 3D, Kunstschrift), Diagramme, eingebettete Videos und Animationen werden vereinfacht oder fehlen. Prüf deshalb kurz die Vorschau."
+      },
+      {
+        "q": "Werden Schriftarten übernommen?",
+        "a": "Die Folien werden mit den Schriften deines Geräts gezeichnet. Fehlt eine Schrift, wird eine ähnliche verwendet – Zeilenumbrüche können sich dann leicht verschieben."
+      },
+      {
+        "q": "Funktionieren alte .ppt-Dateien?",
+        "a": "Nein, nur PPTX. Speichere eine .ppt-Datei in deinem Präsentationsprogramm als PPTX."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die Datei wird in deinem Browser gelesen und die PDF dort erstellt. Nach dem ersten Besuch klappt das sogar offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "powerpoint-to-pdf",
+    "name": "PowerPoint to PDF",
+    "short": "Presentations (PPTX) as PDF – one page per slide.",
+    "title": "PowerPoint to PDF – convert PPTX to PDF, free | FaleNetwork",
+    "h1": "Convert PowerPoint to PDF",
+    "metaDescription": "Turn PowerPoint presentations (PPTX) into a PDF: one page per slide, with images, tables and searchable text. With a preview, without uploading anything.",
+    "lede": "Turn a presentation (PowerPoint, PPTX) into a PDF to send or use as a handout.",
+    "pickLabel": "Choose PowerPoint file",
+    "primaryButton": "Convert to PDF",
+    "keywords": [
+      "pptx",
+      "ppt",
+      "powerpoint",
+      "presentation",
+      "slides",
+      "handout",
+      "talk",
+      "convert"
+    ],
+    "steps": [
+      {
+        "title": "Choose a presentation",
+        "text": "Pick one or more PPTX files."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to PDF”. Every slide becomes a page in the slide format."
+      },
+      {
+        "title": "Check and share",
+        "text": "Swipe through the preview, then download the PDF or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "One page per slide",
+        "text": "In your presentation’s format, with backgrounds, images, shapes and tables."
+      },
+      {
+        "title": "Searchable",
+        "text": "An invisible text layer lies over every slide – you can search the PDF and copy text."
+      },
+      {
+        "title": "Preview before saving",
+        "text": "You see the slides before you send the PDF."
+      },
+      {
+        "title": "No upload",
+        "text": "Your presentation stays on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does the PDF look exactly like my presentation?",
+        "a": "Texts, images, shapes, tables and backgrounds are redrawn. Special effects (shadows, 3D, word art), charts, embedded videos and animations are simplified or missing. So take a quick look at the preview."
+      },
+      {
+        "q": "Are fonts kept?",
+        "a": "The slides are drawn with your device’s fonts. If a font is missing, a similar one is used – line breaks may shift slightly."
+      },
+      {
+        "q": "Do old .ppt files work?",
+        "a": "No, only PPTX. Save a .ppt file as PPTX in your presentation app."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The file is read in your browser and the PDF is created there. After the first visit it even works offline."
+      }
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "id": "pdf-to-word",
+  "category": "convert-from-pdf",
+  "icon": "doc",
+  "module": "tools/pdf-to-word.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 42,
+  "related": [
+    "word-to-pdf",
+    "pdf-to-text",
+    "pdf-to-excel"
+  ],
+  "needs": [
+    "pdfjs",
+    "jszip",
+    "docx",
+    "office"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "pdf-in-word",
+    "name": "PDF in Word",
+    "short": "PDF als bearbeitbares Word-Dokument (DOCX) speichern.",
+    "title": "PDF in Word umwandeln – DOCX gratis, ohne Upload | FaleNetwork",
+    "h1": "PDF in Word umwandeln",
+    "metaDescription": "Wandle eine PDF in ein bearbeitbares Word-Dokument (DOCX) um: Überschriften, Listen, Tabellen und Bilder werden übernommen. Gratis, ohne Upload, im Browser.",
+    "lede": "Mach aus einer PDF ein Word-Dokument (DOCX), in dem du weiterschreiben kannst.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In Word umwandeln",
+    "keywords": [
+      "docx",
+      "doc",
+      "word",
+      "bearbeiten",
+      "editierbar",
+      "textverarbeitung",
+      "konvertieren",
+      "umwandeln",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine PDF mit echtem Text aus, zum Beispiel einen Brief, einen Bericht oder einen Vertrag."
+      },
+      {
+        "title": "Art wählen",
+        "text": "„Bearbeitbar“ übernimmt Text, Überschriften, Listen, Tabellen und Bilder. „Originalgetreu“ legt jede Seite als Bild ab – sieht exakt aus, lässt sich aber nicht bearbeiten."
+      },
+      {
+        "title": "Word-Datei speichern",
+        "text": "Prüf die erkannte Struktur in der Vorschau und lade die DOCX-Datei herunter oder teile sie direkt vom Handy."
+      }
+    ],
+    "why": [
+      {
+        "title": "Struktur statt Textwüste",
+        "text": "Überschriften werden als Word-Überschriften angelegt, Aufzählungen als echte Listen und ausgerichtete Spalten als Tabelle."
+      },
+      {
+        "title": "Fett, kursiv und Bilder",
+        "text": "Hervorhebungen, Schriftgrößen und eingebettete Bilder kommen an der richtigen Stelle mit."
+      },
+      {
+        "title": "Zwei Spalten, richtige Reihenfolge",
+        "text": "Zweispaltige Seiten werden Spalte für Spalte übernommen, wiederkehrende Seitenzahlen fallen weg."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Verträge und Briefe bleiben auf deinem Gerät. Die Umwandlung läuft komplett in deinem Browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Sieht das Word-Dokument genau so aus wie die PDF?",
+        "a": "Bei „Bearbeitbar“ wird das Layout vereinfacht: Text fließt in Absätzen, damit du ihn bearbeiten kannst. Einfache Dokumente kommen sehr gut an, komplexe Layouts mit Textfeldern oder übereinanderliegenden Elementen nicht immer. Brauchst du das exakte Aussehen, wähle „Originalgetreu“."
+      },
+      {
+        "q": "Was passiert mit gescannten PDFs?",
+        "a": "Scans enthalten keinen Text, nur Bilder. Solche Seiten werden als Bild ins Dokument eingefügt. Um den Text bearbeiten zu können, braucht es eine Texterkennung (OCR) – die FaLe PDF-App kann das offline auf deinem Gerät."
+      },
+      {
+        "q": "Werden Tabellen übernommen?",
+        "a": "Ja, wenn die Spalten in der PDF sauber ausgerichtet sind. Zusammengeführte Zellen und sehr verschachtelte Tabellen können vereinfacht ankommen."
+      },
+      {
+        "q": "Mit welchen Programmen kann ich die Datei öffnen?",
+        "a": "Mit jedem Programm, das DOCX-Dateien liest – auf dem Computer, im Browser oder in Office-Apps auf dem Handy."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die PDF wird in deinem Browser gelesen und das Word-Dokument dort erstellt."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-word",
+    "name": "PDF to Word",
+    "short": "Save a PDF as an editable Word document (DOCX).",
+    "title": "PDF to Word – free DOCX conversion, no upload | FaleNetwork",
+    "h1": "Convert PDF to Word",
+    "metaDescription": "Turn a PDF into an editable Word document (DOCX): headings, lists, tables and images come along. Free, no upload, right in your browser.",
+    "lede": "Turn a PDF into a Word document (DOCX) you can keep writing in.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to Word",
+    "keywords": [
+      "docx",
+      "doc",
+      "word",
+      "edit",
+      "editable",
+      "word processor",
+      "convert",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick a PDF with real text, for example a letter, a report or a contract."
+      },
+      {
+        "title": "Choose the type",
+        "text": "“Editable” keeps text, headings, lists, tables and images. “Exact look” places every page as a picture – looks exactly the same but can’t be edited."
+      },
+      {
+        "title": "Save the Word file",
+        "text": "Check the detected structure in the preview, then download the DOCX file or share it straight from your phone."
+      }
+    ],
+    "why": [
+      {
+        "title": "Structure, not a wall of text",
+        "text": "Headings become Word headings, bullet points real lists and aligned columns a table."
+      },
+      {
+        "title": "Bold, italic and images",
+        "text": "Emphasis, font sizes and embedded images come along in the right place."
+      },
+      {
+        "title": "Two columns, right order",
+        "text": "Two-column pages are taken over column by column, repeating page numbers are dropped."
+      },
+      {
+        "title": "No upload",
+        "text": "Contracts and letters stay on your device. The conversion runs entirely in your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does the Word document look exactly like the PDF?",
+        "a": "With “Editable” the layout is simplified: text flows in paragraphs so you can edit it. Simple documents come across very well, complex layouts with text boxes or overlapping elements not always. If you need the exact look, choose “Exact look”."
+      },
+      {
+        "q": "What about scanned PDFs?",
+        "a": "Scans contain no text, only images. Such pages are inserted as pictures. To edit their text you need text recognition (OCR) – the FaLe PDF app does that offline on your device."
+      },
+      {
+        "q": "Are tables kept?",
+        "a": "Yes, when the columns in the PDF are cleanly aligned. Merged cells and deeply nested tables may come out simplified."
+      },
+      {
+        "q": "Which programs open the file?",
+        "a": "Any program that reads DOCX files – on a computer, in the browser or in office apps on your phone."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The PDF is read in your browser and the Word document is created there."
+      }
+    ]
+  }
+}

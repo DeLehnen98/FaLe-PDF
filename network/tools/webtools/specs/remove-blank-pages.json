@@ -1,0 +1,68 @@
+{
+  "id": "remove-blank-pages",
+  "category": "organize",
+  "iconSvg": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4\"/><path d=\"M9.5 12.5l5 5\"/><path d=\"M14.5 12.5l-5 5\"/>",
+  "module": "tools/remove-blank-pages.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "related": ["delete-pages", "alternate-mix", "compress-pdf"],
+  "next": ["compress-pdf", "organize-pdf", "merge-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "leere-seiten-entfernen",
+    "name": "Leere Seiten entfernen",
+    "short": "Leere Seiten in Scans automatisch finden und löschen.",
+    "title": "Leere Seiten aus PDF entfernen – ohne Upload | FaleNetwork",
+    "h1": "Leere Seiten entfernen",
+    "metaDescription": "Leere und fast leere Seiten in PDFs und Scans automatisch erkennen, prüfen und entfernen. Scannerränder und Staub werden ignoriert. Gratis, ohne Upload.",
+    "lede": "Leere Rückseiten aus dem Scanner? Sie werden gefunden und dir zur Kontrolle gezeigt.",
+    "primaryButton": "Leere Seiten entfernen",
+    "keywords": ["leerseiten", "weiße seiten", "leere rückseiten", "scan aufräumen", "blank pages", "unbedruckte seiten"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, zum Beispiel einen Stapel-Scan mit leeren Rückseiten."},
+      {"title": "Erkannte Seiten prüfen", "text": "Jede Seite wird angeschaut. Leere Seiten werden rot markiert, unter jeder Seite steht, wie viel bedruckt ist. Tippe eine Seite an, um die Markierung zu ändern, oder verschiebe die Schwelle."},
+      {"title": "Entfernen und speichern", "text": "Tippe auf „Leere Seiten entfernen“ und lade die aufgeräumte PDF herunter."}
+    ],
+    "why": [
+      {"title": "Erst prüfen, dann löschen", "text": "Nichts verschwindet ungefragt: Du siehst alle erkannten Seiten markiert im Raster und entscheidest selbst."},
+      {"title": "Gemacht für Scans", "text": "Dunkle Scannerkanten am Rand und einzelne Staubpunkte zählen nicht als Inhalt. Wie viel Rand ignoriert wird, stellst du ein."},
+      {"title": "Einstellbare Schwelle", "text": "Sollen Seiten mit nur einer Seitenzahl auch weg? Schieb die Schwelle etwas höher – die Prozentangabe unter jeder Seite hilft dabei."},
+      {"title": "Inhalt bleibt unverändert", "text": "Die übrigen Seiten werden nicht neu berechnet. Text bleibt durchsuchbar, die Bildqualität bleibt gleich."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Seiten werden direkt in deinem Browser angeschaut und entfernt. Deine PDF verlässt dein Gerät nicht."},
+      {"q": "Woran erkennt das Werkzeug eine leere Seite?", "a": "Jede Seite wird klein dargestellt und es wird gemessen, welcher Anteil deutlich dunkler ist als das Papier. Der Rand und einzelne Punkte werden dabei ignoriert. Liegt der Anteil unter der eingestellten Schwelle, gilt die Seite als leer."},
+      {"q": "Was ist, wenn eine Seite falsch erkannt wird?", "a": "Tippe sie einfach an: Eine markierte Seite bleibt dann erhalten, eine nicht markierte wird mit entfernt. Mit „Automatisch“ stellst du die erkannte Auswahl wieder her."},
+      {"q": "Werden Seiten mit sehr wenig Text erkannt?", "a": "Eine Seitenzahl ganz am Rand liegt meist im ignorierten Randbereich – solche Seiten gelten als leer. Eine kurze Textzeile auf der Seite bleibt mit der vorsichtigen Voreinstellung erhalten. Soll sie mit weg, schieb die Schwelle etwas höher."},
+      {"q": "Wie lange dauert die Prüfung?", "a": "Das hängt von der Seitenzahl und deinem Gerät ab. Der Fortschritt wird angezeigt und du kannst schon während der Prüfung Seiten an- oder abwählen."}
+    ]
+  },
+  "en": {
+    "slug": "remove-blank-pages",
+    "name": "Remove blank pages",
+    "short": "Find and delete blank pages in scans automatically.",
+    "title": "Remove blank pages from PDF – no upload | FaleNetwork",
+    "h1": "Remove blank pages",
+    "metaDescription": "Detect blank and almost blank pages in PDFs and scans, check them and remove them. Scanner edges and dust are ignored. Free and without any upload.",
+    "lede": "Blank backs from the scanner? They are found and shown to you for a check.",
+    "primaryButton": "Remove blank pages",
+    "keywords": ["empty pages", "white pages", "blank backs", "clean up scan", "delete blank", "unprinted pages"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick your PDF, for example a batch scan with blank back sides."},
+      {"title": "Check the detected pages", "text": "Every page is looked at. Blank pages are marked red, and under every page you see how much of it is printed. Tap a page to change its mark, or move the threshold."},
+      {"title": "Remove and save", "text": "Tap “Remove blank pages” and download the cleaned-up PDF."}
+    ],
+    "why": [
+      {"title": "Check first, then delete", "text": "Nothing disappears unasked: you see every detected page marked in the grid and decide yourself."},
+      {"title": "Made for scans", "text": "Dark scanner edges and single dust specks don’t count as content. You choose how much of the border is ignored."},
+      {"title": "Adjustable threshold", "text": "Should pages with just a page number go, too? Move the threshold up a little – the percentage under every page helps."},
+      {"title": "Content stays untouched", "text": "The remaining pages are not recalculated. Text stays searchable and image quality stays the same."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Pages are analysed and removed right in your browser. Your PDF never leaves your device."},
+      {"q": "How does the tool recognise a blank page?", "a": "Every page is drawn small and the share of pixels clearly darker than the paper is measured, ignoring the border and single specks. If the share is below the threshold you set, the page counts as blank."},
+      {"q": "What if a page is detected wrongly?", "a": "Just tap it: a marked page is then kept, an unmarked one is removed as well. “Auto” brings back the detected selection."},
+      {"q": "Are pages with very little text detected?", "a": "A page number right at the edge usually lies in the ignored border – such pages count as blank. A short line of text on the page is kept with the careful default. If it should go too, move the threshold up a little."},
+      {"q": "How long does the check take?", "a": "That depends on the number of pages and your device. Progress is shown, and you can already tap pages while the check is running."}
+    ]
+  }
+}

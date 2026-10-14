@@ -1,0 +1,72 @@
+{
+  "id": "sign-pdf",
+  "category": "edit",
+  "icon": "sign",
+  "module": "tools/sign-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "popular": true,
+  "order": 40,
+  "related": ["fill-pdf-form", "flatten-pdf", "protect-pdf"],
+  "next": ["protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-unterschreiben",
+    "name": "PDF unterschreiben",
+    "short": "Unterschrift zeichnen, tippen oder fotografieren und einfügen.",
+    "title": "PDF unterschreiben – am Handy, ohne Upload | FaleNetwork",
+    "h1": "PDF unterschreiben",
+    "metaDescription": "Unterschreibe PDFs am Handy: Unterschrift mit dem Finger zeichnen, tippen oder vom Papier abfotografieren, per Fingertipp platzieren. Gratis und ohne Upload.",
+    "lede": "Unterschreibe direkt am Handy – zeichnen, tippen oder vom Papier abfotografieren.",
+    "primaryButton": "Unterschreiben",
+    "keywords": ["unterschrift", "signieren", "unterzeichnen", "e-signatur", "elektronisch unterschreiben", "paraphe", "initialen", "handschrift"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, die du unterschreiben möchtest – zum Beispiel einen Vertrag oder ein Formular."},
+      {"title": "Unterschrift erstellen und platzieren", "text": "Zeichne deine Unterschrift mit dem Finger, tippe deinen Namen oder fotografiere sie vom Papier ab. Ziehe sie an die richtige Stelle, vergrößere oder drehe sie. Datum, Initialen, Text und Haken kommen genauso dazu."},
+      {"title": "Unterschreiben und speichern", "text": "Tippe auf „Unterschreiben“. Die Unterschrift ist jetzt fest Teil der Seite – herunterladen oder direkt teilen."}
+    ],
+    "why": [
+      {"title": "Drei Wege zur Unterschrift", "text": "Zeichnen mit sauberen, glatten Strichen – auf dem Handy auch quer im Vollbild –, Tippen in handschriftähnlichen Schriften oder ein Foto deiner echten Unterschrift, bei dem der Hintergrund automatisch entfernt wird."},
+      {"title": "Platzieren mit dem Finger", "text": "Verschieben, mit der Ecke oder zwei Fingern vergrößern, drehen – und beliebig viele Unterschriften, Initialen, Datumsangaben und Haken setzen."},
+      {"title": "Initialen auf jeder Seite", "text": "Ein Tipp auf „Auf allen Seiten“ setzt deine Paraphe an dieselbe Stelle jeder Seite – praktisch bei langen Verträgen."},
+      {"title": "Bleibt auf deinem Gerät", "text": "Die PDF wird nicht hochgeladen. Deine Unterschrift merkt sich das Werkzeug nur, wenn du es willst – und nur in diesem Browser."}
+    ],
+    "faq": [
+      {"q": "Ist das eine rechtsgültige Unterschrift?", "a": "Es ist eine einfache elektronische Signatur – vergleichbar mit einer eingescannten Unterschrift. Für viele Formulare, Angebote und Bestätigungen reicht das. Wo das Gesetz die Schriftform verlangt (zum Beispiel bei manchen Kündigungen oder Bürgschaften), brauchst du eine qualifizierte elektronische Signatur oder eine Unterschrift auf Papier."},
+      {"q": "Werden meine PDF oder meine Unterschrift hochgeladen?", "a": "Nein. Alles passiert in deinem Browser. Die Unterschrift wird nur gespeichert, wenn du „Auf diesem Gerät merken“ wählst – dann liegt sie ausschließlich in diesem Browser auf diesem Gerät und lässt sich jederzeit löschen."},
+      {"q": "Wie funktioniert das Foto meiner Unterschrift?", "a": "Unterschreibe auf weißem Papier und fotografiere die Unterschrift. Das Werkzeug macht das Papier durchsichtig und färbt die Tinte in Schwarz, Blau oder Grün – so wirkt sie auf der PDF wie echt unterschrieben."},
+      {"q": "Kann man die Unterschrift später wieder entfernen?", "a": "Nicht einfach: Sie wird fest in die Seite eingebrannt und ist kein loses Element, das sich verschieben oder herauskopieren lässt. Bewahre deshalb die unsignierte Originaldatei auf, falls du etwas ändern willst."},
+      {"q": "Funktioniert das auch mit Formularen und geschützten PDFs?", "a": "Ja. Formularfelder bleiben erhalten. Bei einer PDF mit Passwort gibst du es an der Datei ein; die unterschriebene Datei ist danach wieder mit demselben Passwort geschützt."}
+    ]
+  },
+  "en": {
+    "slug": "sign-pdf",
+    "name": "Sign PDF",
+    "short": "Draw, type or photograph your signature and add it.",
+    "title": "Sign PDF – on your phone, no upload | FaleNetwork",
+    "h1": "Sign a PDF",
+    "metaDescription": "Sign PDFs on your phone: draw your signature with a finger, type it or take a photo of it on paper, then place it with a tap. Free and no upload.",
+    "lede": "Sign right on your phone – draw, type or photograph your signature on paper.",
+    "primaryButton": "Sign",
+    "keywords": ["signature", "e-sign", "esign", "sign document", "electronic signature", "initials", "handwritten signature"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF you want to sign – a contract or a form, for example."},
+      {"title": "Create and place your signature", "text": "Draw your signature with a finger, type your name or photograph it on paper. Drag it to the right spot, resize or rotate it. Dates, initials, text and check marks work the same way."},
+      {"title": "Sign and save", "text": "Tap “Sign”. The signature is now part of the page – download it or share it right away."}
+    ],
+    "why": [
+      {"title": "Three ways to sign", "text": "Draw with clean, smooth strokes – on a phone also sideways in full screen –, type in handwriting-like fonts, or use a photo of your real signature with the background removed automatically."},
+      {"title": "Place it with your finger", "text": "Move, resize with the corner or two fingers, rotate – and add as many signatures, initials, dates and check marks as you need."},
+      {"title": "Initials on every page", "text": "One tap on “On all pages” puts your initials at the same spot on every page – handy for long contracts."},
+      {"title": "Stays on your device", "text": "The PDF is not uploaded. The tool only remembers your signature if you want it to – and only in this browser."}
+    ],
+    "faq": [
+      {"q": "Is this a legally valid signature?", "a": "It is a simple electronic signature – comparable to a scanned signature. That is enough for many forms, offers and confirmations. Where the law requires a written form, you need a qualified electronic signature or a signature on paper."},
+      {"q": "Are my PDF or my signature uploaded?", "a": "No. Everything happens in your browser. Your signature is only stored if you choose “Remember on this device” – then it stays exclusively in this browser on this device and can be deleted at any time."},
+      {"q": "How does the photo of my signature work?", "a": "Sign on white paper and take a photo of the signature. The tool makes the paper transparent and colours the ink black, blue or green – so it looks genuinely signed on the PDF."},
+      {"q": "Can the signature be removed later?", "a": "Not easily: it is burned into the page and is not a loose element that can be moved or copied out. Keep the unsigned original in case you want to change something."},
+      {"q": "Does it work with forms and protected PDFs?", "a": "Yes. Form fields are kept. For a password-protected PDF you type the password on the file; the signed file is protected again with the same password."}
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "booklet",
+  "category": "edit",
+  "iconSvg": "<path d=\"M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2z\"/><path d=\"M12 6v14\"/>",
+  "module": "tools/booklet.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 52,
+  "related": ["n-up", "resize-pdf", "add-page-numbers"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "broschuere-drucken",
+    "name": "Broschüre drucken",
+    "short": "PDF als faltbares Heft drucken (A4 → A5).",
+    "title": "PDF als Broschüre drucken – A5-Heft aus A4, ohne Upload | FaleNetwork",
+    "h1": "PDF als Broschüre drucken",
+    "metaDescription": "Mach aus deiner PDF ein faltbares Heft: Seiten in Broschüren-Reihenfolge, leere Seiten automatisch ergänzt, mit Druckanleitung. A4 zu A5, gratis, ohne Upload.",
+    "lede": "Drucken, in der Mitte falten, heften – die Reihenfolge erledigt das Werkzeug.",
+    "primaryButton": "Broschüre erstellen",
+    "keywords": ["heft drucken", "booklet", "a5 heft", "rückstichheftung", "falten", "broschürendruck", "programmheft"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, aus der ein Heft werden soll – zum Beispiel ein Programmheft, eine Anleitung oder ein Zine."},
+      {"title": "Papier und Bindung wählen", "text": "A4 quer ergibt ein Heft in A5, A3 quer eins in A4. Fehlende Seiten werden mit leeren Seiten aufgefüllt; die Vorschau zeigt jede Blattseite."},
+      {"title": "Erstellen und drucken", "text": "Lade die PDF herunter und drucke sie beidseitig mit „an der kurzen Kante wenden“. Dann falten und heften – die Anleitung steht beim Ergebnis."}
+    ],
+    "why": [
+      {"title": "Reihenfolge stimmt garantiert", "text": "Die Seiten werden so auf die Bögen verteilt, dass nach dem Falten 1, 2, 3 … in der richtigen Reihenfolge stehen – auch bei Rechtsbindung."},
+      {"title": "Rückseite bleibt hinten", "text": "Fehlt etwas bis zur durch 4 teilbaren Seitenzahl, kommen die leeren Seiten vor die letzte Seite. So bleibt deine Rückseite auch wirklich hinten."},
+      {"title": "Auch dicke Hefte", "text": "Lange Dokumente teilst du in mehrere Hefte zu je 4, 5 oder 8 Blatt, die du einzeln faltest und dann zusammenlegst."},
+      {"title": "Druckanleitung inklusive", "text": "Beim Ergebnis steht, welche Druckeinstellung du brauchst – und wie es auch ohne Duplexdrucker klappt."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Broschüre wird vollständig in deinem Browser erstellt."},
+      {"q": "Wie muss ich drucken?", "a": "Beidseitig mit der Einstellung „an der kurzen Kante wenden“ (oft „kurze Seite“ oder „Short-Edge“) und in tatsächlicher Größe. Danach den ganzen Stapel in der Mitte falten und im Falz heften."},
+      {"q": "Mein Drucker kann nicht beidseitig drucken – geht es trotzdem?", "a": "Ja. Drucke zuerst nur die ungeraden Seiten, lege den Stapel gewendet wieder ein und drucke dann die geraden Seiten. Mach am besten vorher einen Test mit zwei Blättern."},
+      {"q": "Warum sind leere Seiten dazugekommen?", "a": "Jedes gefaltete Blatt trägt vier Seiten. Ist die Seitenzahl nicht durch 4 teilbar, werden leere Seiten ergänzt – standardmäßig vor der letzten Seite, damit die Rückseite hinten bleibt."},
+      {"q": "Bleibt der Text scharf?", "a": "Ja. Die Seiten werden als Vektorinhalt verkleinert, nicht als Bild. Links und Formularfelder sind im Heft allerdings nicht mehr anklickbar."}
+    ]
+  },
+  "en": {
+    "slug": "pdf-booklet",
+    "name": "Booklet",
+    "short": "Print a PDF as a folded booklet (A4 → A5).",
+    "title": "Print PDF as a booklet – fold and staple, no upload | FaleNetwork",
+    "h1": "Print a PDF as a booklet",
+    "metaDescription": "Turn your PDF into a booklet to fold: pages in booklet order, blank pages added automatically, printing instructions included. Free, no upload.",
+    "lede": "Print, fold in the middle, staple – the tool takes care of the page order.",
+    "primaryButton": "Create booklet",
+    "keywords": ["booklet printing", "saddle stitch", "a5 booklet", "fold", "zine", "imposition", "programme"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF that should become a booklet – for example a programme, a manual or a zine."},
+      {"title": "Pick paper and binding", "text": "A4 landscape gives an A5 booklet, A3 landscape an A4 one. Missing pages are padded with blank pages; the preview shows every sheet side."},
+      {"title": "Create and print", "text": "Download the PDF and print it double-sided with “flip on short edge”. Then fold and staple – the instructions are shown with the result."}
+    ],
+    "why": [
+      {"title": "Order guaranteed", "text": "The pages are placed on the sheets so that after folding 1, 2, 3 … follow in the right order – right-to-left binding included."},
+      {"title": "Back cover stays at the back", "text": "If pages are missing to reach a multiple of 4, the blank pages go before the last page. So your back cover really stays at the back."},
+      {"title": "Thick booklets, too", "text": "Split long documents into several booklets of 4, 5 or 8 sheets that you fold one by one and then stack."},
+      {"title": "Printing instructions included", "text": "The result tells you which print setting you need – and how it works without a duplex printer."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. The booklet is created entirely in your browser."},
+      {"q": "How do I print it?", "a": "Double-sided with the setting “flip on short edge” and at actual size. Then fold the whole stack in the middle and staple it along the fold."},
+      {"q": "My printer cannot print double-sided – does it still work?", "a": "Yes. Print only the odd pages first, put the stack back in turned over, then print the even pages. Try it with two sheets first."},
+      {"q": "Why were blank pages added?", "a": "Every folded sheet carries four pages. If the page count is not divisible by 4, blank pages are added – by default before the last page, so the back cover stays at the back."},
+      {"q": "Does the text stay sharp?", "a": "Yes. The pages are scaled as vector content, not as images. Links and form fields are no longer clickable in the booklet, though."}
+    ]
+  }
+}

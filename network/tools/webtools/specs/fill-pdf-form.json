@@ -1,0 +1,70 @@
+{
+  "id": "fill-pdf-form",
+  "category": "edit",
+  "icon": "form",
+  "module": "tools/fill-pdf-form.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "related": ["sign-pdf", "flatten-pdf", "protect-pdf"],
+  "next": ["sign-pdf", "flatten-pdf", "protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-formular-ausfuellen",
+    "name": "PDF-Formular ausfüllen",
+    "short": "Formulare bequem auf dem Handy ausfüllen – ohne Zoomen.",
+    "title": "PDF-Formular ausfüllen – am Handy, ohne Upload | FaleNetwork",
+    "h1": "PDF-Formular ausfüllen",
+    "metaDescription": "Fülle PDF-Formulare auf dem Handy aus wie ein normales Formular: große Eingabefelder, passende Tastatur, Vorschau der Seite. Gratis und ohne Upload.",
+    "lede": "Fülle PDF-Formulare aus wie eine normale Eingabemaske – ohne Zoomen und Tippen auf winzige Felder.",
+    "primaryButton": "Speichern",
+    "keywords": ["formular", "ausfüllen", "antrag", "felder", "eintragen", "acroform", "formular am handy", "pdf ausfüllen"],
+    "steps": [
+      {"title": "Formular auswählen", "text": "Wähle die PDF mit dem Formular aus. Alle Felder erscheinen als übersichtliche Eingabemaske, nach Seiten sortiert."},
+      {"title": "Ausfüllen", "text": "Tippe dich durch die Felder – für E-Mail, Telefon und Zahlen erscheint gleich die passende Tastatur. Ein Tipp auf ein Feld in der Vorschau springt direkt zur Eingabe."},
+      {"title": "Speichern", "text": "Tippe auf „Speichern“. Auf Wunsch wird das Formular geglättet, damit niemand die Werte mehr ändern kann."}
+    ],
+    "why": [
+      {"title": "Gemacht fürs Handy", "text": "Große Eingabefelder statt winziger Kästchen, passende Tastatur für E-Mail, Telefon und Zahlen, Weiter-Taste zum nächsten Feld."},
+      {"title": "Alle Feldarten", "text": "Textfelder, mehrzeilige Felder, Kontrollkästchen, Optionsfelder, Auswahllisten und Listenfelder."},
+      {"title": "Umlaute korrekt", "text": "Das Erscheinungsbild der Felder wird neu erzeugt, damit ä, ö, ü, ß und € in jedem Programm richtig angezeigt werden."},
+      {"title": "Auch ohne Formularfelder", "text": "Hat die PDF keine echten Felder, erkennt das Werkzeug Linien, Kästchen und „Name:“-Lücken und schreibt deine Eingaben direkt auf die Seite."}
+    ],
+    "faq": [
+      {"q": "Werden meine Angaben hochgeladen?", "a": "Nein. Das Formular wird vollständig in deinem Browser ausgefüllt und gespeichert. Deine Angaben verlassen dein Gerät nicht."},
+      {"q": "Kann ich das Formular später noch ändern?", "a": "Ja, solange du es nicht glättest: Die Felder bleiben ausfüllbar und du kannst die Datei hier oder in jedem PDF-Programm erneut öffnen. Geglättete Formulare lassen sich nicht mehr ändern."},
+      {"q": "Was passiert bei einer PDF ohne Formularfelder?", "a": "Das Werkzeug sucht nach Linien, Kästchen und Stellen wie „Name: ____“. Für jede gefundene Stelle bekommst du ein Eingabefeld; der Text wird direkt auf die Seite geschrieben. Die Erkennung klappt bei einfachen Formularen gut, findet aber nicht immer alles."},
+      {"q": "Werden Sonderzeichen unterstützt?", "a": "Umlaute, ß, € und die meisten westeuropäischen Zeichen werden direkt dargestellt. Zeichen anderer Schriften (zum Beispiel Kyrillisch) werden gespeichert, ihre Anzeige übernimmt dann das Programm, mit dem du die PDF öffnest."},
+      {"q": "Kann ich auch unterschreiben?", "a": "Unterschriftsfelder lassen sich hier nicht ausfüllen. Nutze danach „PDF unterschreiben“ – dort zeichnest, tippst oder fotografierst du deine Unterschrift."}
+    ]
+  },
+  "en": {
+    "slug": "fill-pdf-form",
+    "name": "Fill PDF form",
+    "short": "Fill in forms comfortably on your phone – no zooming.",
+    "title": "Fill PDF form – on your phone, no upload | FaleNetwork",
+    "h1": "Fill in a PDF form",
+    "metaDescription": "Fill in PDF forms on your phone like a normal web form: big input fields, the right keyboard, a page preview. Free and no upload – right in your browser.",
+    "lede": "Fill in PDF forms like a normal web form – no zooming, no tapping on tiny boxes.",
+    "primaryButton": "Save",
+    "keywords": ["form", "fill in", "application form", "fields", "acroform", "fill pdf on phone", "fillable pdf"],
+    "steps": [
+      {"title": "Choose your form", "text": "Select the PDF with the form. All fields appear as a clear input form, sorted by page."},
+      {"title": "Fill it in", "text": "Tap through the fields – e-mail, phone and number fields bring up the right keyboard. Tapping a field in the preview jumps straight to its input."},
+      {"title": "Save", "text": "Tap “Save”. If you like, the form is flattened so nobody can change the values any more."}
+    ],
+    "why": [
+      {"title": "Made for phones", "text": "Big input fields instead of tiny boxes, the right keyboard for e-mail, phone and numbers, a next key to move on."},
+      {"title": "All field types", "text": "Text fields, multi-line fields, checkboxes, radio buttons, dropdowns and list boxes."},
+      {"title": "Accents done right", "text": "Field appearances are regenerated so that characters such as ä, é, ß and € show up correctly in every program."},
+      {"title": "Even without form fields", "text": "If the PDF has no real fields, the tool detects lines, boxes and “Name:” gaps and writes your input directly onto the page."}
+    ],
+    "faq": [
+      {"q": "Is my information uploaded?", "a": "No. The form is filled in and saved entirely in your browser. Your data does not leave your device."},
+      {"q": "Can I change the form later?", "a": "Yes, as long as you don’t flatten it: the fields stay fillable and you can open the file again here or in any PDF program. Flattened forms can no longer be changed."},
+      {"q": "What happens with a PDF without form fields?", "a": "The tool looks for lines, boxes and places like “Name: ____”. You get an input for every place found; the text is written directly onto the page. Detection works well on simple forms but does not always find everything."},
+      {"q": "Are special characters supported?", "a": "Umlauts, ß, € and most Western European characters are drawn directly. Characters of other scripts (Cyrillic, for example) are saved; the program you open the PDF with then takes care of displaying them."},
+      {"q": "Can I sign the form too?", "a": "Signature fields cannot be filled here. Use “Sign PDF” afterwards – there you draw, type or photograph your signature."}
+    ]
+  }
+}

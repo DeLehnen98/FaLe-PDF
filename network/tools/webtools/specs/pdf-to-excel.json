@@ -1,0 +1,177 @@
+{
+  "id": "pdf-to-excel",
+  "category": "convert-from-pdf",
+  "icon": "sheet",
+  "module": "tools/pdf-to-excel.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 43,
+  "related": [
+    "excel-to-pdf",
+    "pdf-to-word",
+    "pdf-to-text"
+  ],
+  "needs": [
+    "pdfjs",
+    "jszip"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "pdf-in-excel",
+    "name": "PDF in Excel",
+    "short": "Tabellen aus PDFs als Excel-Datei (XLSX) oder CSV.",
+    "title": "PDF in Excel umwandeln – Tabellen als XLSX, gratis | FaleNetwork",
+    "h1": "PDF in Excel umwandeln",
+    "metaDescription": "Hol Tabellen aus einer PDF in Excel (XLSX) oder CSV: Zahlen, Beträge und Datumswerte werden echte Zahlen, mehrseitige Tabellen zusammengeführt. Ohne Upload.",
+    "lede": "Hol Tabellen aus Rechnungen, Kontoauszügen oder Berichten in eine Tabellenkalkulation.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In Excel umwandeln",
+    "keywords": [
+      "xlsx",
+      "xls",
+      "excel",
+      "csv",
+      "tabelle",
+      "tabellen extrahieren",
+      "kontoauszug",
+      "rechnung",
+      "zahlen",
+      "tabellenkalkulation"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine PDF mit Tabellen, zum Beispiel eine Rechnung, eine Preisliste oder einen Kontoauszug."
+      },
+      {
+        "title": "Einstellungen wählen",
+        "text": "Nur die Tabellen oder die ganze Seite, alles auf einem Blatt oder ein Blatt pro Seite, als XLSX oder CSV."
+      },
+      {
+        "title": "Prüfen und speichern",
+        "text": "Die Vorschau zeigt dir die erkannten Tabellen. Lade die Datei herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Echte Zahlen",
+        "text": "Beträge wie 1.250,00 €, Prozentwerte und Datumsangaben werden zu Zahlen, mit denen du direkt rechnen kannst."
+      },
+      {
+        "title": "Mehrseitige Tabellen",
+        "text": "Geht eine Tabelle über mehrere Seiten, wird sie zusammengeführt – wiederholte Kopfzeilen fallen weg."
+      },
+      {
+        "title": "Vorschau vor dem Speichern",
+        "text": "Du siehst sofort, welche Tabellen erkannt wurden, bevor du die Datei öffnest."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Kontoauszüge und Rechnungen bleiben auf deinem Gerät. Alles läuft in deinem Browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie erkennt das Werkzeug Tabellen?",
+        "a": "An der Ausrichtung des Textes: Zeilen auf gleicher Höhe werden zu Tabellenzeilen, senkrechte Lücken zwischen den Spalten zu Spaltengrenzen. Linien in der PDF braucht es dafür nicht."
+      },
+      {
+        "q": "Was ist, wenn keine Tabelle erkannt wird?",
+        "a": "Dann wird der gesamte Text der Seiten übernommen – jede Zeile eine Tabellenzeile, mit Spalten wo der Text ausgerichtet ist. Du kannst diese Variante auch direkt mit „Gesamte Seite“ wählen."
+      },
+      {
+        "q": "Funktioniert das mit gescannten PDFs?",
+        "a": "Nein, Scans enthalten nur Bilder ohne Text. Dafür braucht es zuerst eine Texterkennung (OCR), zum Beispiel in der FaLe PDF-App."
+      },
+      {
+        "q": "Wann ist CSV besser als XLSX?",
+        "a": "CSV ist einfacher Text, den jedes Programm lesen kann – gut zum Importieren. XLSX behält Zahlenformate, Fettdruck der Kopfzeile und mehrere Blätter."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die Tabellen werden in deinem Browser ausgelesen."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-excel",
+    "name": "PDF to Excel",
+    "short": "Tables from PDFs as an Excel file (XLSX) or CSV.",
+    "title": "PDF to Excel – tables as XLSX, free, no upload | FaleNetwork",
+    "h1": "Convert PDF to Excel",
+    "metaDescription": "Get tables from a PDF into Excel (XLSX) or CSV: numbers, amounts and dates become real numbers, tables over several pages are joined. No upload.",
+    "lede": "Get tables from invoices, bank statements or reports into a spreadsheet.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to Excel",
+    "keywords": [
+      "xlsx",
+      "xls",
+      "excel",
+      "csv",
+      "table",
+      "extract tables",
+      "bank statement",
+      "invoice",
+      "numbers",
+      "spreadsheet"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick a PDF with tables, for example an invoice, a price list or a bank statement."
+      },
+      {
+        "title": "Choose settings",
+        "text": "Tables only or the whole page, everything on one sheet or one sheet per page, as XLSX or CSV."
+      },
+      {
+        "title": "Check and save",
+        "text": "The preview shows the detected tables. Download the file or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Real numbers",
+        "text": "Amounts like 1,250.00, percentages and dates become numbers you can calculate with right away."
+      },
+      {
+        "title": "Tables over several pages",
+        "text": "If a table runs over several pages it is joined – repeated header rows are dropped."
+      },
+      {
+        "title": "Preview before saving",
+        "text": "You see right away which tables were found, before you open the file."
+      },
+      {
+        "title": "No upload",
+        "text": "Bank statements and invoices stay on your device. Everything runs in your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How does the tool find tables?",
+        "a": "By how the text is aligned: lines at the same height become table rows, vertical gaps between columns become column borders. No ruling lines are needed in the PDF."
+      },
+      {
+        "q": "What if no table is found?",
+        "a": "Then all text of the pages is taken over – each line a row, with columns where the text lines up. You can also pick this directly with “Whole page”."
+      },
+      {
+        "q": "Does it work with scanned PDFs?",
+        "a": "No, scans contain only images without text. They need text recognition (OCR) first, for example in the FaLe PDF app."
+      },
+      {
+        "q": "When is CSV better than XLSX?",
+        "a": "CSV is plain text any program can read – good for importing. XLSX keeps number formats, the bold header row and several sheets."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The tables are read in your browser."
+      }
+    ]
+  }
+}

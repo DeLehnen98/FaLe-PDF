@@ -1,0 +1,148 @@
+{
+  "id": "jpg-to-png",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/jpg-to-png.js",
+  "accepts": [
+    "image/jpeg",
+    ".jpg",
+    ".jpeg"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 46,
+  "related": [
+    "convert-image",
+    "png-to-jpg",
+    "resize-image"
+  ],
+  "next": [
+    "resize-image"
+  ],
+  "de": {
+    "slug": "jpg-in-png",
+    "name": "JPG in PNG",
+    "short": "JPG-Fotos verlustfrei als PNG speichern.",
+    "title": "JPG in PNG umwandeln – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "JPG in PNG umwandeln",
+    "metaDescription": "JPG in PNG umwandeln: richtig gedreht, ab jetzt verlustfrei speicherbar, viele Bilder auf einmal. Gratis, ohne Upload, direkt in deinem Browser.",
+    "lede": "Speichere JPG-Fotos als PNG – zum Weiterbearbeiten ohne weiteren Qualitätsverlust.",
+    "pickLabel": "JPG auswählen",
+    "primaryButton": "In PNG umwandeln",
+    "keywords": [
+      "jpg zu png",
+      "jpeg png",
+      "jpg konvertieren",
+      "verlustfrei"
+    ],
+    "steps": [
+      {
+        "title": "JPG auswählen",
+        "text": "Wähle ein oder mehrere JPG-Fotos aus der Galerie oder mach direkt ein Foto."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In PNG umwandeln“. Die Drehung des Fotos wird dabei übernommen."
+      },
+      {
+        "title": "Speichern oder teilen",
+        "text": "Lade die PNGs herunter oder teile sie direkt – mehrere auch als ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein weiterer Verlust",
+        "text": "PNG speichert verlustfrei. Wenn du das Bild weiter bearbeitest und mehrfach speicherst, wird es nicht schlechter."
+      },
+      {
+        "title": "Richtig gedreht",
+        "text": "Die Ausrichtung aus der Kamera wird angewendet, damit das PNG nicht quer liegt."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Fotos bleiben auf dem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wird das Bild durch PNG besser?",
+        "a": "Nein. Was beim JPG schon verloren ist, kommt nicht zurück. PNG verhindert nur, dass beim weiteren Bearbeiten noch mehr verloren geht."
+      },
+      {
+        "q": "Warum ist das PNG so viel größer?",
+        "a": "PNG speichert jedes Pixel verlustfrei. Bei Fotos ist die Datei deshalb meist mehrfach so groß wie das JPG."
+      },
+      {
+        "q": "Bekommt das PNG einen transparenten Hintergrund?",
+        "a": "Nein. Ein JPG hat keine Transparenz, also hat auch das PNG keine. Den Hintergrund zu entfernen ist eine andere Aufgabe."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein, alles passiert in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "jpg-to-png",
+    "name": "JPG to PNG",
+    "short": "Save JPG photos losslessly as PNG.",
+    "title": "JPG to PNG converter – free, no upload | FaleNetwork",
+    "h1": "Convert JPG to PNG",
+    "metaDescription": "Convert JPG to PNG: rotated correctly, lossless from now on, many images at once. Free, no upload, right in your browser.",
+    "lede": "Save JPG photos as PNG – for further editing without more quality loss.",
+    "pickLabel": "Choose JPG",
+    "primaryButton": "Convert to PNG",
+    "keywords": [
+      "jpg to png",
+      "jpeg to png",
+      "jpg converter",
+      "lossless"
+    ],
+    "steps": [
+      {
+        "title": "Choose JPG",
+        "text": "Pick one or more JPG photos from your gallery or take a photo."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to PNG”. The photo’s rotation is applied."
+      },
+      {
+        "title": "Save or share",
+        "text": "Download the PNGs or share them right away – several also as a ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "No further loss",
+        "text": "PNG is lossless. If you keep editing and saving the image, it won’t get worse."
+      },
+      {
+        "title": "Rotated correctly",
+        "text": "The camera’s orientation is applied so the PNG isn’t sideways."
+      },
+      {
+        "title": "No upload",
+        "text": "Your photos stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does PNG make the image better?",
+        "a": "No. What the JPG has already lost doesn’t come back. PNG only prevents further loss while you keep editing."
+      },
+      {
+        "q": "Why is the PNG so much larger?",
+        "a": "PNG stores every pixel losslessly. For photos the file is therefore usually several times the size of the JPG."
+      },
+      {
+        "q": "Does the PNG get a transparent background?",
+        "a": "No. A JPG has no transparency, so the PNG has none either. Removing the background is a different task."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No, everything happens in your browser."
+      }
+    ]
+  }
+}

@@ -27,6 +27,11 @@ function init(cfg) {
   const lang = cfg.lang === 'en' ? 'en' : 'de';
   const T = (k, v) => t(lang, k, v);
   const P = v => pick(lang, v);
+  // minFiles: 0 → a tool without file intake (generators like QR code or letters): no pick zone, the
+  // stage/options are shown right away and run() gets an empty input list.
+  const noFiles = cfg.minFiles === 0;
+  // tool-specific wording for a few shell labels (tool.labels = { back_to_files: {de, en} })
+  const L = k => (state.tool?.labels?.[k] ? P(state.tool.labels[k]) : T(k));
   document.documentElement.classList.add('wt-js');
 
   // ---------------------------------------------------------------- state
@@ -86,6 +91,8 @@ function init(cfg) {
     state.tool = tool;
     state.values = defaults(tool.options.filter(o => !o.perFile));
     renderOpts();
+    // files picked before the module arrived: mount the tool's stage now (setPhase mounts it once)
+    if (noFiles || (state.phase === 'files' && state.inputs.length)) setPhase('files');
     update();
     return tool;
   }).catch(err => { console.warn(err); showError(err); });
@@ -160,7 +167,7 @@ function init(cfg) {
   }
 
   async function addFiles(files, source) {
-    if (!files.length || state.phase === 'working') return;
+    if (!files.length || state.phase === 'working' || noFiles) return;
     startCounting();
     updateProof();
     if (state.phase === 'result' || state.phase === 'error') resetResults();
@@ -208,6 +215,14 @@ function init(cfg) {
         }
       } else if (input.kind === 'image') {
         await input.imageInfo();
+      } else {
+        // documents that are neither PDF nor image (Word, Excel, text …): an optional tool hook checks
+        // the file (throw → error on the card) and may return a thumbnail canvas
+        const thumb = state.tool?.prepareOther ? await state.tool.prepareOther(input, ctxBase()) : null;
+        refreshCard(input);
+        if (thumb && c?.isConnected) { const box = c.querySelector('.wt-thumb'); clear(box).append(thumb); box.classList.add('has-img'); }
+        update();
+        return;
       }
       refreshCard(input);
       const thumb = await input.thumbnail(64);
@@ -219,8 +234,11 @@ function init(cfg) {
       if (input.kind === 'image' && input._dims) refreshCard(input);
     } catch (err) {
       console.warn(err);
+      // tools that work on damaged files (repair-pdf: `acceptBroken: true`) get them even if pdf.js fails
+      if (input.kind === 'pdf' && state.tool?.acceptBroken) { input.broken = true; refreshCard(input); c?.querySelector('.wt-thumb')?.classList.add('has-img'); update(); return; }
       if (input.kind === 'pdf') input.error = { key: err instanceof BadPdfError || !err?.wtKey ? 'bad_pdf' : err.wtKey };
       else if (err?.wtKey) input.error = { key: err.wtKey };
+      else if (input.kind === 'other') input.error = { key: 'bad_doc', text: err?.userMessage || null };
       else input.error = { key: input.format === 'heic' ? 'heic_hint' : 'bad_image' };
       refreshCard(input);
     }
@@ -236,7 +254,7 @@ function init(cfg) {
     const down = el('button', { type: 'button', class: 'wt-icon-btn', aria: { label: T('move_down', { name }) }, onclick: () => move(input, 1) }, icon('down'));
     const rm = el('button', { type: 'button', class: 'wt-icon-btn wt-rm', aria: { label: T('remove', { name }) }, onclick: () => removeInput(input) }, icon('close'));
     const grip = el('button', { type: 'button', class: 'wt-grip', aria: { label: T('drag', { name }) } }, icon('grip'));
-    const thumb = el('div', { class: 'wt-thumb', 'aria-hidden': 'true' }, icon(input.kind === 'pdf' ? 'file' : 'image'));
+    const thumb = el('div', { class: 'wt-thumb', 'aria-hidden': 'true' }, icon(input.kind === 'image' ? 'image' : 'file'));
     const meta = el('p', { class: 'wt-file-meta' }, formatSize(input.size, lang));
     const info = el('div', { class: 'wt-file-info' }, el('p', { class: 'wt-file-name', title: name }, name), meta);
     const extra = el('div', { class: 'wt-file-extra' });
@@ -261,7 +279,7 @@ function init(cfg) {
     li.classList.toggle('is-locked', !!input.locked);
     clear(extra);
     if (input.error) {
-      extra.append(el('p', { class: 'wt-file-err' }, icon('alert'), el('span', {}, T(input.error.key, { name: input.name }))));
+      extra.append(el('p', { class: 'wt-file-err' }, icon('alert'), el('span', {}, input.error.text ? P(input.error.text) : T(input.error.key, { name: input.name }))));
     } else if (input.locked) {
       extra.append(lockForm(input));
     } else if (state.tool) {
@@ -294,8 +312,9 @@ function init(cfg) {
       btn.disabled = false;
       if (!ok) { err.hidden = false; field.setAttribute('aria-invalid', 'true'); field.select(); return; }
       refreshCard(input);
-      prepare(input);
       say(T('added', { n: 1 }));
+      await prepare(input);
+      state.tool?.onInputs?.(usable(), ctxBase()); // contract: tools hear about unlocked files, too
     } },
     el('p', { class: 'wt-lock-title' }, icon('lock'), T('locked')),
     el('label', { for: id }, T('pw_label', { name: input.name })),
@@ -437,9 +456,9 @@ function init(cfg) {
   function setPhase(phase) {
     state.phase = phase;
     app.dataset.state = phase;
-    const hasFiles = state.inputs.length > 0;
-    pickZone.hidden = hasFiles && phase !== 'pick';
-    filesSec.hidden = !(phase === 'files' && hasFiles);
+    const hasFiles = state.inputs.length > 0 || noFiles;
+    pickZone.hidden = noFiles || (hasFiles && phase !== 'pick');
+    filesSec.hidden = !(phase === 'files' && state.inputs.length > 0);
     stage.hidden = !(phase === 'files' && hasFiles && state.tool?.mountStage);
     optsSec.hidden = !(phase === 'files' && hasFiles && optsUI);
     progress.hidden = phase !== 'working';
@@ -463,15 +482,21 @@ function init(cfg) {
       barSummary.textContent = T('summary', { files: T('files_h', { n: use.length }), size: formatSize(size, lang) });
       const locked = use.filter(i => i.locked).length;
       const skipped = state.inputs.length - use.length;
-      const min = cfg.minFiles || 1;
+      const min = cfg.minFiles ?? 1;
+      if (noFiles) barSummary.textContent = cfg.name;
+      // optional tool hook: status(values, inputs, lang) → { summary?, hint?, ok? }
+      let st = null;
+      try { st = state.tool?.status?.(state.values, use, lang) || null; } catch (err) { console.warn(err); }
+      if (st?.summary) barSummary.textContent = P(st.summary);
       let hint = '';
       if (use.length < min) hint = T('need_files', { n: min });
       else if (locked) hint = T('pw_needed', { n: locked });
       else if (skipped) hint = T('skipped', { n: skipped });
+      if (!hint && st?.hint) hint = P(st.hint);
       barHint.textContent = hint;
       barHint.hidden = !hint;
       primary.textContent = cfg.primary;
-      primary.disabled = !state.tool || use.length < min || locked > 0;
+      primary.disabled = !state.tool || use.length < min || locked > 0 || st?.ok === false;
       primary.onclick = () => run();
     }
   }
@@ -490,6 +515,7 @@ function init(cfg) {
       notes: [],
       note(text) { this.notes.push(P(text)); },
       announce: say,
+      refresh: () => update(),   // stage UIs: re-evaluate the bar (status hook) after their data changed
     };
   }
 
@@ -553,7 +579,7 @@ function init(cfg) {
     const r = Array.isArray(out) ? { outputs: out } : (out || {});
     const outputs = (r.outputs || []).filter(o => o && o.blob instanceof Blob).map(o => ({
       name: safeFileName(o.name || 'FaLe'), blob: o.blob, before: o.before ?? null, unchanged: !!o.unchanged, pages: o.pages ?? null,
-      note: P(o.note) || '',
+      note: P(o.note) || '', meta: o.meta ?? null,
     }));
     if (!outputs.length) throw Object.assign(new Error('no output'), { wtKey: 'error_generic' });
     return { outputs, notes: [...ctx.notes, ...(r.notes || []).map(P)], inputs: inputs.length };
@@ -589,6 +615,8 @@ function init(cfg) {
       actions.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => doShare(res.outputs) }, icon('share'), T('share')));
     }
     if (actions.childNodes.length) result.append(actions);
+    // optional tool hook: add a preview (e.g. before/after comparison) to the result card
+    try { state.tool.onResult?.(result, res, ctxBase()); } catch (err) { console.warn(err); }
 
     const nexts = (cfg.next || []).filter(n => res.outputs.every(o => accepted({ type: o.blob.type, name: o.name }, n.accepts)));
     if (nexts.length) {
@@ -596,7 +624,7 @@ function init(cfg) {
         el('ul', {}, nexts.map(n => el('li', {}, el('button', { type: 'button', class: 'wt-next-chip', onclick: () => continueWith(n, res) }, el('span', {}, n.name), icon('arrow')))))));
     }
     result.append(el('div', { class: 'wt-restart' },
-      el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: () => { setPhase('files'); renderOpts(); setPhase('files'); update(); primary.focus(); } }, T('back_to_files')),
+      el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: () => { setPhase('files'); renderOpts(); setPhase('files'); update(); primary.focus(); } }, L('back_to_files')),
       el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: restart }, icon('restart'), T('restart'))));
 
     // sticky bar: the main action is within thumb reach
@@ -610,13 +638,18 @@ function init(cfg) {
       primary.textContent = T('download_all');
       primary.onclick = () => downloadZip(res);
     }
+    // tool.shareFirst (photo tools used from the phone gallery): the main action shares the result
+    if (state.tool.shareFirst && canShare(res.outputs)) {
+      primary.textContent = T('share');
+      primary.onclick = () => doShare(res.outputs);
+    }
     heading.focus({ preventScroll: true });
     result.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
     say(`${T('done_h')} ${T('done_n', { n: res.outputs.length })}`);
   }
 
   function outputRow(o) {
-    const thumb = el('div', { class: 'wt-thumb wt-thumb-lg', 'aria-hidden': 'true' }, icon(o.blob.type === 'application/pdf' ? 'file' : 'image'));
+    const thumb = el('div', { class: 'wt-thumb wt-thumb-lg', 'aria-hidden': 'true' }, icon(o.blob.type.startsWith('image/') ? 'image' : 'file'));
     renderOutputThumb(o, thumb);
     const size = el('p', { class: 'wt-out-size' });
     if (o.before != null) {
@@ -680,7 +713,7 @@ function init(cfg) {
 
   function restart() {
     resetResults();
-    setPhase('pick');
+    setPhase(noFiles ? 'files' : 'pick');
     hideNotice();
     update();
     fileInput.focus();
@@ -708,8 +741,8 @@ function init(cfg) {
     else if (err?.name === 'LimitError' || /memory|allocation|too large|RangeError/i.test(`${err?.name} ${err?.message}`)) msg = T('error_memory');
     errorBox.append(el('div', { class: 'wt-error-head' }, icon('alert'), el('h2', { tabindex: '-1' }, T('error_h'))), el('p', {}, msg),
       el('div', { class: 'wt-btn-row' },
-        state.inputs.length ? el('button', { type: 'button', class: 'wt-btn wt-btn-primary', onclick: () => { setPhase('files'); update(); run(); } }, T('retry')) : null,
-        state.inputs.length ? el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => { setPhase('files'); update(); } }, T('back_to_files')) : null));
+        state.inputs.length || noFiles ? el('button', { type: 'button', class: 'wt-btn wt-btn-primary', onclick: () => { setPhase('files'); update(); run(); } }, T('retry')) : null,
+        state.inputs.length || noFiles ? el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => { setPhase('files'); update(); } }, L('back_to_files')) : null));
     setPhase('error');
     errorBox.querySelector('h2').focus();
   }

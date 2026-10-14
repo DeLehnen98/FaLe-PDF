@@ -94,6 +94,18 @@ function init(cfg) {
       } }, el('span', { class: `wt-chip-ic tic-${tool.colour}` }, icon('arrow')), el('span', { class: 'wt-card-name' }, tool.name), el('span', { class: 'wt-card-desc' }, tool.short));
       listEl.append(el('li', { class: 'wt-card' }, a));
     }
+    // a PDF fits ~40 tools – show the most used ones first, the rest on demand (phone screens!)
+    const FIRST = 8;
+    if (fits.length > FIRST + 2) {
+      const rest = [...listEl.children].slice(FIRST);
+      rest.forEach(li => { li.hidden = true; });
+      const more = el('button', { type: 'button', class: 'wt-btn wt-btn-quiet wt-shared-more', onclick: () => {
+        rest.forEach(li => { li.hidden = false; });
+        more.remove();
+        rest[0].querySelector('a')?.focus();
+      } }, lang === 'de' ? `Alle ${fits.length} Werkzeuge anzeigen` : `Show all ${fits.length} tools`);
+      listEl.after(more);
+    }
     none.hidden = fits.length > 0;
     box.setAttribute('tabindex', '-1');
     box.focus();

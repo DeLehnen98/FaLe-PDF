@@ -1,0 +1,73 @@
+{
+  "id": "qr-code",
+  "category": "everyday",
+  "icon": "qr",
+  "module": "tools/qr-code.js",
+  "accepts": [],
+  "minFiles": 0,
+  "popular": true,
+  "order": 60,
+  "related": ["cancellation-letter", "scan-to-pdf", "jpg-to-pdf"],
+  "next": [],
+  "needs": ["pdflib"],
+  "de": {
+    "slug": "qr-code-erstellen",
+    "name": "QR-Code erstellen",
+    "short": "QR-Codes für Link, WLAN, Kontakt und mehr – als PNG, SVG oder PDF.",
+    "title": "QR-Code erstellen – kostenlos, ohne Anmeldung | FaleNetwork",
+    "h1": "QR-Code erstellen",
+    "metaDescription": "QR-Code erstellen für Link, Text, WLAN, Kontakt, E-Mail, Telefon, SMS oder Ort. Farben, Rand, Fehlerkorrektur, PNG, SVG oder PDF – mit Selbsttest. Gratis, ohne Anmeldung.",
+    "lede": "Erstelle QR-Codes für Link, WLAN oder Kontakt – mit Live-Vorschau und Selbsttest.",
+    "primaryButton": "QR-Code speichern",
+    "keywords": ["qr code generator", "qr erstellen", "wlan qr code", "visitenkarte qr", "vcard", "qr svg", "qr pdf", "qr code drucken"],
+    "steps": [
+      {"title": "Inhalt wählen", "text": "Wähle, was in den Code soll – Link, Text, WLAN-Zugang, Kontakt, E-Mail, Telefon, SMS oder einen Ort – und füll die Felder aus."},
+      {"title": "Gestalten", "text": "Passe Farben, Rand und Fehlerkorrektur an. Die Vorschau zeigt sofort das Ergebnis und prüft, ob der Code lesbar bleibt."},
+      {"title": "Speichern", "text": "Speichere den Code als PNG für Handy und Web, als SVG für Grafikprogramme oder als PDF zum Drucken."}
+    ],
+    "why": [
+      {"title": "Mit Selbsttest", "text": "FaLe liest jeden erzeugten Code wieder aus und vergleicht ihn mit deinem Inhalt. Zu wenig Kontrast oder ein zu schmaler Rand werden angemahnt."},
+      {"title": "Für alle Fälle", "text": "Link, Text, WLAN mit Passwort, Kontaktkarte, E-Mail, Telefon, SMS und Ort – ohne dass du das Format dafür kennen musst."},
+      {"title": "Läuft nie ab", "text": "Der Inhalt steht direkt im Code. Es gibt keine Weiterleitung über fremde Server, die irgendwann abgeschaltet oder kostenpflichtig wird."},
+      {"title": "Gestochen scharf", "text": "PNG bis 4096 px, SVG und PDF als Vektor – scharf auf Flyer, Plakat und Visitenkarte."}
+    ],
+    "faq": [
+      {"q": "Ist der QR-Code dauerhaft gültig?", "a": "Ja. Der Inhalt steht direkt im Code, ohne Umweg über einen Kurzlink-Dienst. Er funktioniert so lange, wie der Link oder die Daten darin stimmen."},
+      {"q": "Werden meine Daten irgendwo gespeichert?", "a": "Nein. Der Code entsteht in deinem Browser. WLAN-Passwörter und Kontaktdaten verlassen dein Gerät nicht."},
+      {"q": "Wie mache ich einen QR-Code für mein WLAN?", "a": "Wähle „WLAN“, gib Netzwerkname und Passwort ein und wähle die Verschlüsselung (meist WPA). Gäste scannen den Code mit der Kamera und verbinden sich ohne Abtippen."},
+      {"q": "Welche Farben kann ich nehmen?", "a": "Jede, solange der Code deutlich dunkler ist als der Hintergrund. Helle Codes auf dunklem Grund lesen viele Scanner nicht – dann warnt FaLe dich."},
+      {"q": "Welche Fehlerkorrektur brauche ich?", "a": "M passt meistens. Wird der Code gedruckt und kann verschmutzen oder knicken, nimm Q oder H. Höhere Stufen machen den Code dichter."},
+      {"q": "Wie groß muss ich ihn drucken?", "a": "Je mehr Inhalt, desto feiner das Muster und desto größer sollte der Druck sein. Teste den Ausdruck am besten mit deinem Handy aus der Entfernung, aus der später gescannt wird."}
+    ]
+  },
+  "en": {
+    "slug": "qr-code-generator",
+    "name": "QR code generator",
+    "short": "QR codes for links, Wi-Fi, contacts and more – as PNG, SVG or PDF.",
+    "title": "QR code generator – free, no sign-up | FaleNetwork",
+    "h1": "Create a QR code",
+    "metaDescription": "Create QR codes for a link, text, Wi-Fi, contact, e-mail, phone, SMS or location. Colours, margin, error correction, PNG, SVG or PDF – with a self-test. Free, no sign-up.",
+    "lede": "Create QR codes for links, Wi-Fi or contacts – with live preview and self-test.",
+    "primaryButton": "Save QR code",
+    "keywords": ["qr generator", "make qr code", "wifi qr code", "business card qr", "vcard", "qr svg", "qr pdf", "print qr code"],
+    "steps": [
+      {"title": "Choose the content", "text": "Pick what goes into the code – link, text, Wi-Fi access, contact, e-mail, phone, SMS or a location – and fill in the fields."},
+      {"title": "Style it", "text": "Adjust colours, margin and error correction. The preview shows the result right away and checks that the code stays readable."},
+      {"title": "Save", "text": "Save the code as PNG for phone and web, as SVG for design apps or as PDF for printing."}
+    ],
+    "why": [
+      {"title": "With self-test", "text": "FaLe reads every generated code back and compares it with your content. Low contrast or a too narrow margin are flagged."},
+      {"title": "For every case", "text": "Link, text, Wi-Fi with password, contact card, e-mail, phone, SMS and location – without having to know the format behind it."},
+      {"title": "Never expires", "text": "The content is in the code itself. There’s no redirect through someone else’s server that might be switched off or start charging."},
+      {"title": "Razor sharp", "text": "PNG up to 4096 px, SVG and PDF as vectors – sharp on flyers, posters and business cards."}
+    ],
+    "faq": [
+      {"q": "Does the QR code stay valid?", "a": "Yes. The content is in the code itself, without a short-link service in between. It works as long as the link or data in it is correct."},
+      {"q": "Is my data stored anywhere?", "a": "No. The code is created in your browser. Wi-Fi passwords and contact details never leave your device."},
+      {"q": "How do I make a QR code for my Wi-Fi?", "a": "Choose “Wi-Fi”, enter the network name and password and pick the security (usually WPA). Guests scan the code with their camera and connect without typing."},
+      {"q": "Which colours can I use?", "a": "Any, as long as the code is clearly darker than the background. Many scanners can’t read light codes on dark backgrounds – FaLe warns you then."},
+      {"q": "Which error correction do I need?", "a": "M is usually fine. If the code will be printed and may get dirty or creased, choose Q or H. Higher levels make the code denser."},
+      {"q": "How large should I print it?", "a": "The more content, the finer the pattern and the larger the print should be. Best test the print with your phone from the distance it will be scanned from."}
+    ]
+  }
+}

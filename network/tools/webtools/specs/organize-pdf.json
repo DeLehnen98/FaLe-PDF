@@ -1,0 +1,75 @@
+{
+  "id": "organize-pdf",
+  "category": "organize",
+  "icon": "pages",
+  "module": "tools/organize-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "popular": true,
+  "order": 25,
+  "related": ["merge-pdf", "rotate-pdf", "delete-pages", "split-pdf"],
+  "next": ["compress-pdf", "split-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "pdf-seiten-sortieren",
+    "name": "PDF-Seiten sortieren",
+    "short": "Seiten verschieben, drehen, löschen und einfügen.",
+    "title": "PDF-Seiten sortieren – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "PDF-Seiten sortieren",
+    "metaDescription": "PDF-Seiten per Finger verschieben, drehen, löschen, duplizieren, leere Seiten oder Seiten anderer PDFs einfügen – mit Rückgängig. Gratis, ohne Upload.",
+    "lede": "Halte eine Seite gedrückt und zieh sie an ihren neuen Platz.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Speichern",
+    "keywords": ["seiten verschieben", "reihenfolge ändern", "umsortieren", "seiten ordnen", "seiten einfügen", "leere seite einfügen", "seiten verwalten", "duplizieren"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine PDF aus. Du kannst auch gleich mehrere wählen – ihre Seiten lassen sich dann frei mischen."},
+      {"title": "Seiten ordnen", "text": "Halte eine Seite gedrückt und zieh sie an die neue Stelle. Ausgewählte Seiten drehst, löschst, duplizierst oder verschiebst du über die Leiste oben. Fehler? Einfach rückgängig machen."},
+      {"title": "Speichern", "text": "Tippe auf „Speichern“ und lade die neu sortierte PDF herunter oder teile sie."}
+    ],
+    "why": [
+      {"title": "Fühlt sich an wie eine App", "text": "Gedrückt halten, ziehen, loslassen – mit Vibration als Rückmeldung und automatischem Scrollen am Rand. Am Computer geht es mit der Maus oder per Tastatur."},
+      {"title": "Alles an einem Ort", "text": "Verschieben, drehen, löschen, duplizieren, leere Seiten einfügen, Seiten aus einer anderen PDF dazuholen und die Reihenfolge umkehren."},
+      {"title": "Rückgängig und Wiederholen", "text": "Jeder Schritt lässt sich zurücknehmen. So kannst du ohne Angst ausprobieren."},
+      {"title": "Auch bei dicken Dokumenten", "text": "Vorschaubilder werden erst geladen, wenn du hinscrollst. Hunderte Seiten bleiben flüssig, auch auf dem Handy."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Alles passiert in deinem Browser, deine PDFs verlassen dein Gerät nicht. Nach dem ersten Besuch klappt es auch offline."},
+      {"q": "Wie verschiebe ich eine Seite auf dem Handy?", "a": "Halte die Seite einen Moment gedrückt, bis sie sich anhebt, und zieh sie an die neue Stelle. Am Rand scrollt die Ansicht automatisch mit. Alternativ wählst du Seiten aus und schiebst sie mit den Pfeilen nach vorne oder hinten."},
+      {"q": "Kann ich mehrere Seiten auf einmal verschieben?", "a": "Ja. Wähle die Seiten aus und zieh eine davon – alle ausgewählten Seiten wandern gemeinsam an die neue Stelle."},
+      {"q": "Wie füge ich Seiten aus einer anderen PDF ein?", "a": "Wähle die Seite aus, hinter der die neuen Seiten stehen sollen, und tippe auf „PDF einfügen“. Die Seiten der gewählten Datei erscheinen dort und lassen sich wie alle anderen verschieben."},
+      {"q": "Welche Größe hat eine eingefügte leere Seite?", "a": "Sie bekommt die Größe der Seite davor, also zum Beispiel A4 hoch oder quer. So passt sie zum Rest des Dokuments."},
+      {"q": "Bleiben Lesezeichen und Formulare erhalten?", "a": "Ja, aus der ersten PDF bleiben Lesezeichen, Links und Formularfelder erhalten. Was zu gelöschten Seiten gehörte, wird mit entfernt."}
+    ]
+  },
+  "en": {
+    "slug": "organize-pdf",
+    "name": "Organize PDF",
+    "short": "Move, rotate, delete and insert pages.",
+    "title": "Organize PDF pages – free, no upload | FaleNetwork",
+    "h1": "Organize PDF pages",
+    "metaDescription": "Move PDF pages with your finger, rotate, delete, duplicate, insert blank pages or pages from other PDFs – with undo. Free, no upload, no account.",
+    "lede": "Press and hold a page, then drag it to its new place.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Save",
+    "keywords": ["reorder pages", "rearrange", "sort pages", "move pages", "insert pages", "add blank page", "manage pages", "duplicate page"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick a PDF. You can also choose several at once – their pages can then be mixed freely."},
+      {"title": "Arrange the pages", "text": "Press and hold a page and drag it to its new place. Rotate, delete, duplicate or move selected pages with the bar on top. Made a mistake? Just undo."},
+      {"title": "Save", "text": "Tap “Save” and download the reordered PDF or share it."}
+    ],
+    "why": [
+      {"title": "Feels like an app", "text": "Press, drag, release – with a little vibration as feedback and automatic scrolling at the edge. On a computer, use the mouse or the keyboard."},
+      {"title": "Everything in one place", "text": "Move, rotate, delete, duplicate, insert blank pages, add pages from another PDF and reverse the order."},
+      {"title": "Undo and redo", "text": "Every step can be taken back, so you can try things without worry."},
+      {"title": "Big documents, too", "text": "Thumbnails only load when you scroll to them. Hundreds of pages stay smooth, even on a phone."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Everything happens in your browser and your PDFs never leave your device. After the first visit it works offline, too."},
+      {"q": "How do I move a page on a phone?", "a": "Press and hold the page until it lifts, then drag it to its new place. The view scrolls along at the edge. You can also select pages and move them forward or back with the arrows."},
+      {"q": "Can I move several pages at once?", "a": "Yes. Select the pages and drag one of them – all selected pages move to the new place together."},
+      {"q": "How do I insert pages from another PDF?", "a": "Select the page after which the new pages should go and tap “Insert PDF”. The pages of the chosen file show up there and can be moved like all others."},
+      {"q": "What size is an inserted blank page?", "a": "It gets the size of the page before it, for example A4 portrait or landscape, so it fits the rest of the document."},
+      {"q": "Are bookmarks and forms kept?", "a": "Yes, bookmarks, links and form fields of the first PDF are kept. Whatever belonged to deleted pages is removed with them."}
+    ]
+  }
+}

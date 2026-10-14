@@ -1,0 +1,71 @@
+{
+  "id": "alternate-mix",
+  "category": "organize",
+  "iconSvg": "<path d=\"M4 5h7v14H4z\"/><path d=\"M13 5h7v14h-7z\"/><path d=\"M7.5 9v6\"/><path d=\"M15 9v6\"/><path d=\"M18 9v6\"/>",
+  "module": "tools/alternate-mix.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["merge-pdf", "remove-blank-pages", "organize-pdf"],
+  "next": ["remove-blank-pages", "compress-pdf", "organize-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "pdf-seiten-mischen",
+    "name": "PDF-Seiten mischen",
+    "short": "Vorder- und Rückseiten von Scans richtig zusammenführen.",
+    "title": "PDF-Seiten abwechselnd mischen – ohne Upload | FaleNetwork",
+    "h1": "PDF-Seiten abwechselnd mischen",
+    "metaDescription": "Vorder- und Rückseiten aus einem einseitigen Scanner in die richtige Reihenfolge bringen oder mehrere PDFs abwechselnd mischen. Mit Vorschau, ohne Upload.",
+    "lede": "Vorderseiten und Rückseiten getrennt gescannt? Hier werden sie wieder zu einem Dokument.",
+    "pickLabel": "PDFs auswählen",
+    "primaryButton": "Mischen",
+    "keywords": ["duplex", "vorderseite rückseite", "doppelseitig scannen", "abwechselnd", "verschachteln", "reißverschluss", "zusammenmischen"],
+    "steps": [
+      {"title": "PDFs auswählen", "text": "Wähle zwei PDFs: erst die Vorderseiten, dann die Rückseiten. Oder eine PDF, in der erst alle Vorder- und dann alle Rückseiten stecken. Mehr Dateien gehen auch."},
+      {"title": "Reihenfolge prüfen", "text": "Die Vorschau zeigt die neue Seitenfolge mit V1, R1, V2 … Lag der Rückseitenstapel umgedreht im Scanner, bleibt „Zweiten Stapel rückwärts“ an."},
+      {"title": "Mischen und speichern", "text": "Tippe auf „Mischen“ und lade das fertige Dokument herunter."}
+    ],
+    "why": [
+      {"title": "Ideal für einfache Scanner", "text": "Erst den Stapel von vorne scannen, umdrehen, von hinten scannen – das Werkzeug setzt alles wieder in die richtige Reihenfolge."},
+      {"title": "Vorschau vor dem Speichern", "text": "Jede Seite zeigt ihr Kürzel, etwa V2 oder R2. So siehst du sofort, ob die Reihenfolge stimmt."},
+      {"title": "Eine oder mehrere Dateien", "text": "Zwei getrennte Scans, ein einziger Scan mit beiden Hälften oder beliebig viele PDFs, die reihum gemischt werden."},
+      {"title": "Ungleiche Stapel", "text": "Fehlt eine Rückseite, wird das angezeigt und übrige Seiten kommen ans Ende statt verloren zu gehen."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Seiten werden in deinem Browser gemischt, deine Scans verlassen dein Gerät nicht."},
+      {"q": "Wann brauche ich „Zweiten Stapel rückwärts“?", "a": "Wenn du den Papierstapel nach den Vorderseiten einfach umdrehst und erneut scannst, kommt die letzte Rückseite zuerst. Dann muss der zweite Stapel rückwärts gelesen werden – das ist voreingestellt. Die Vorschau zeigt dir, ob es passt."},
+      {"q": "Ich habe alles in einer einzigen PDF gescannt. Geht das?", "a": "Ja. Wähle nur diese eine PDF. Die erste Hälfte wird als Vorderseiten, die zweite als Rückseiten behandelt."},
+      {"q": "Kann ich mehr als zwei PDFs mischen?", "a": "Ja. Die Seiten werden reihum genommen: erste Seite jeder Datei, dann die zweite und so weiter. Mit „Seiten pro Wechsel“ nimmst du auch mehrere Seiten am Stück."},
+      {"q": "Was mache ich mit leeren Rückseiten?", "a": "Nach dem Mischen kannst du direkt mit „Leere Seiten entfernen“ weitermachen. Leere Rückseiten werden dort erkannt und dir zur Kontrolle gezeigt."}
+    ]
+  },
+  "en": {
+    "slug": "alternate-mix-pdf",
+    "name": "Alternate & mix PDF",
+    "short": "Put front and back sides of scans in the right order.",
+    "title": "Alternate and mix PDF pages – no upload | FaleNetwork",
+    "h1": "Mix PDF pages alternately",
+    "metaDescription": "Put front and back sides from a one-sided scanner in the right order, or mix several PDFs page by page. With a live preview, free and without upload.",
+    "lede": "Scanned fronts and backs separately? Here they become one document again.",
+    "pickLabel": "Choose PDFs",
+    "primaryButton": "Mix",
+    "keywords": ["duplex", "front and back", "double-sided scan", "interleave", "alternate pages", "collate", "zip pages"],
+    "steps": [
+      {"title": "Choose PDFs", "text": "Pick two PDFs: first the fronts, then the backs. Or one PDF with all fronts followed by all backs. More files work, too."},
+      {"title": "Check the order", "text": "The preview shows the new page order with F1, B1, F2 … If the stack of backs went through the scanner flipped over, keep “Second stack in reverse” on."},
+      {"title": "Mix and save", "text": "Tap “Mix” and download the finished document."}
+    ],
+    "why": [
+      {"title": "Made for simple scanners", "text": "Scan the stack from the front, flip it, scan it from the back – the tool puts everything back in the right order."},
+      {"title": "Preview before saving", "text": "Every page shows its label, such as F2 or B2, so you see at once whether the order is right."},
+      {"title": "One file or several", "text": "Two separate scans, a single scan with both halves or any number of PDFs mixed in turn."},
+      {"title": "Uneven stacks", "text": "If a back side is missing, you are told, and extra pages go at the end instead of getting lost."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Pages are mixed in your browser and your scans never leave your device."},
+      {"q": "When do I need “Second stack in reverse”?", "a": "If you simply flip the paper stack after scanning the fronts, the last back side comes first. Then the second stack has to be read in reverse – that’s the default. The preview shows whether it fits."},
+      {"q": "I scanned everything into one PDF. Does that work?", "a": "Yes. Choose just that PDF. The first half is treated as fronts, the second half as backs."},
+      {"q": "Can I mix more than two PDFs?", "a": "Yes. Pages are taken in turn: the first page of every file, then the second and so on. With “Pages per turn” you can also take several pages at a time."},
+      {"q": "What about blank back sides?", "a": "After mixing, continue straight with “Remove blank pages”. Blank backs are detected there and shown to you for a check."}
+    ]
+  }
+}

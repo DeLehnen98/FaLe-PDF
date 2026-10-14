@@ -1,0 +1,182 @@
+{
+  "id": "text-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "text",
+  "module": "tools/text-to-pdf.js",
+  "accepts": [
+    "text/plain",
+    "text/markdown",
+    "text/csv",
+    "text/tab-separated-values",
+    ".txt",
+    ".md",
+    ".markdown",
+    ".csv",
+    ".tsv",
+    ".log"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 53,
+  "related": [
+    "word-to-pdf",
+    "pdf-to-text",
+    "pdf-to-markdown"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "office",
+    "unicodefont"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "text-in-pdf",
+    "name": "Text in PDF",
+    "short": "TXT, Markdown oder CSV als saubere PDF setzen.",
+    "title": "Text in PDF umwandeln – TXT, Markdown, CSV | FaleNetwork",
+    "h1": "Text in PDF umwandeln",
+    "metaDescription": "Mach aus TXT-, Markdown- oder CSV-Dateien eine saubere PDF: Schrift, Größe, Ränder und Seitenformat wählbar, Markdown formatiert, CSV als Tabelle. Ohne Upload.",
+    "lede": "Notizen, Markdown oder CSV-Listen als ordentlich gesetzte PDF.",
+    "pickLabel": "Textdatei auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "txt",
+      "md",
+      "markdown",
+      "csv",
+      "textdatei",
+      "notizen",
+      "log",
+      "code",
+      "liste",
+      "umwandeln"
+    ],
+    "steps": [
+      {
+        "title": "Textdatei auswählen",
+        "text": "Wähle eine oder mehrere TXT-, Markdown- (MD) oder CSV-Dateien aus."
+      },
+      {
+        "title": "Aussehen festlegen",
+        "text": "Wähle Schrift, Schriftgröße, Seitenformat und Ränder. Markdown wird mit Überschriften und Listen gesetzt, CSV als Tabelle."
+      },
+      {
+        "title": "PDF speichern",
+        "text": "Sieh dir die Seiten in der Vorschau an und lade die PDF herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Markdown richtig gesetzt",
+        "text": "Überschriften, Listen, Tabellen, Zitate, Code-Blöcke, fett, kursiv und Links werden formatiert – nicht als Rohtext gedruckt."
+      },
+      {
+        "title": "CSV als Tabelle",
+        "text": "Trennzeichen (Semikolon, Komma, Tab) werden erkannt, die erste Zeile wird zur Kopfzeile, breite Tabellen kommen ins Querformat."
+      },
+      {
+        "title": "Viele Sprachen",
+        "text": "Umlaute, polnische, tschechische oder türkische Buchstaben, Griechisch und Kyrillisch werden korrekt dargestellt. Was nicht geht, zeigt dir das Werkzeug an."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Notizen bleiben auf deinem Gerät. Die PDF entsteht in deinem Browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Zeichen werden unterstützt?",
+        "a": "Alle lateinischen Schriften (auch mit Akzenten), Griechisch und Kyrillisch. Chinesisch, Japanisch, Arabisch, Hebräisch und Emojis kann die eingebaute Schrift nicht darstellen – sie werden durch „?“ ersetzt, und das Werkzeug sagt dir genau, welche Zeichen betroffen sind."
+      },
+      {
+        "q": "Was passiert mit sehr langen Zeilen?",
+        "a": "Sie werden am Seitenrand umbrochen. Bei der Festbreiten-Schrift bleiben Einrückungen und Leerzeichen erhalten – gut für Code und Logdateien."
+      },
+      {
+        "q": "Meine Umlaute sehen falsch aus – was tun?",
+        "a": "Das Werkzeug erkennt UTF-8 und den älteren Windows-Zeichensatz automatisch. Stimmt etwas trotzdem nicht, speichere die Datei in deinem Editor als UTF-8."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser, auch offline nach dem ersten Besuch."
+      }
+    ]
+  },
+  "en": {
+    "slug": "text-to-pdf",
+    "name": "Text to PDF",
+    "short": "Typeset TXT, Markdown or CSV as a clean PDF.",
+    "title": "Text to PDF – convert TXT, Markdown, CSV, no upload | FaleNetwork",
+    "h1": "Convert text to PDF",
+    "metaDescription": "Turn TXT, Markdown or CSV files into a clean PDF: choose font, size, margins and page size, Markdown typeset, CSV as a table. No upload.",
+    "lede": "Notes, Markdown or CSV lists as a neatly typeset PDF.",
+    "pickLabel": "Choose text file",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "txt",
+      "md",
+      "markdown",
+      "csv",
+      "text file",
+      "notes",
+      "log",
+      "code",
+      "list",
+      "convert"
+    ],
+    "steps": [
+      {
+        "title": "Choose a text file",
+        "text": "Pick one or more TXT, Markdown (MD) or CSV files."
+      },
+      {
+        "title": "Set the look",
+        "text": "Choose font, font size, page size and margins. Markdown is set with headings and lists, CSV as a table."
+      },
+      {
+        "title": "Save the PDF",
+        "text": "Look at the pages in the preview, then download the PDF or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Markdown properly typeset",
+        "text": "Headings, lists, tables, quotes, code blocks, bold, italic and links are formatted – not printed as raw text."
+      },
+      {
+        "title": "CSV as a table",
+        "text": "Separators (semicolon, comma, tab) are detected, the first row becomes the header, wide tables go landscape."
+      },
+      {
+        "title": "Many languages",
+        "text": "Accented letters, Polish, Czech or Turkish characters, Greek and Cyrillic are shown correctly. The tool tells you what can’t be shown."
+      },
+      {
+        "title": "No upload",
+        "text": "Your notes stay on your device. The PDF is created in your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which characters are supported?",
+        "a": "All Latin scripts (including accents), Greek and Cyrillic. Chinese, Japanese, Arabic, Hebrew and emoji can’t be shown by the built-in font – they are replaced by “?”, and the tool tells you exactly which characters are affected."
+      },
+      {
+        "q": "What happens with very long lines?",
+        "a": "They are wrapped at the page margin. With the monospace font, indentation and spaces are kept – good for code and log files."
+      },
+      {
+        "q": "My special characters look wrong – what can I do?",
+        "a": "The tool detects UTF-8 and the older Windows character set automatically. If something is still off, save the file as UTF-8 in your editor."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Everything happens in your browser, even offline after the first visit."
+      }
+    ]
+  }
+}

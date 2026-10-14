@@ -1,0 +1,168 @@
+{
+  "id": "pdf-to-pptx",
+  "category": "convert-from-pdf",
+  "icon": "slides",
+  "module": "tools/pdf-to-pptx.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 45,
+  "related": [
+    "pptx-to-pdf",
+    "pdf-to-jpg",
+    "pdf-to-word"
+  ],
+  "needs": [
+    "pdfjs",
+    "jszip",
+    "pptxgenjs",
+    "office"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "pdf-in-powerpoint",
+    "name": "PDF in PowerPoint",
+    "short": "Jede PDF-Seite als Folie in einer PowerPoint-Datei (PPTX).",
+    "title": "PDF in PowerPoint umwandeln – PPTX, ohne Upload | FaleNetwork",
+    "h1": "PDF in PowerPoint umwandeln",
+    "metaDescription": "Mach aus einer PDF eine Präsentation (PowerPoint, PPTX): jede Seite eine gestochen scharfe Folie, Seitentext als Sprechernotizen. Gratis und ohne Upload.",
+    "lede": "Jede Seite deiner PDF als Folie – zum Präsentieren, Ergänzen oder Weiterverwenden.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In PowerPoint umwandeln",
+    "keywords": [
+      "pptx",
+      "ppt",
+      "powerpoint",
+      "präsentation",
+      "folien",
+      "vortrag",
+      "beamer",
+      "konvertieren",
+      "umwandeln"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF, die du präsentieren möchtest – zum Beispiel ein Handout oder eine exportierte Präsentation."
+      },
+      {
+        "title": "Format wählen",
+        "text": "Folien so geformt wie die PDF-Seiten oder im Format 16:9 bzw. 4:3, dazu die Bildqualität und ob der Seitentext in die Notizen soll."
+      },
+      {
+        "title": "Präsentation speichern",
+        "text": "Du siehst die Folien als Vorschau. Lade die PPTX-Datei herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Sieht aus wie das Original",
+        "text": "Jede Folie zeigt die Seite als scharfes Bild – Schriften, Farben und Layout bleiben exakt."
+      },
+      {
+        "title": "Sprechernotizen",
+        "text": "Der Text jeder Seite landet in den Notizen. So hast du beim Vortrag alles im Blick und kannst die Präsentation durchsuchen."
+      },
+      {
+        "title": "Passendes Format",
+        "text": "Ohne Ränder im Seitenformat der PDF oder eingepasst in 16:9 und 4:3."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die Präsentation entsteht in deinem Browser. Deine PDF verlässt dein Gerät nicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Kann ich den Text auf den Folien bearbeiten?",
+        "a": "Nein. Jede Folie enthält die Seite als Bild, damit sie exakt wie die PDF aussieht. Du kannst aber eigene Textfelder, Formen oder Bilder darüberlegen. Den Seitentext findest du in den Sprechernotizen."
+      },
+      {
+        "q": "Welche Bildqualität brauche ich?",
+        "a": "„Standard“ ist auf Bildschirmen scharf. „Hoch“ lohnt sich für große Beamer und Ausdrucke, „Kompakt“ für kleine Dateien zum Verschicken."
+      },
+      {
+        "q": "Welche Programme öffnen die Datei?",
+        "a": "Jedes Präsentationsprogramm, das PPTX lesen kann – auf dem Computer, im Browser und auf dem Handy."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-powerpoint",
+    "name": "PDF to PowerPoint",
+    "short": "Every PDF page as a slide in a PowerPoint file (PPTX).",
+    "title": "PDF to PowerPoint – PPTX slides, no upload | FaleNetwork",
+    "h1": "Convert PDF to PowerPoint",
+    "metaDescription": "Turn a PDF into a presentation (PowerPoint, PPTX): every page a razor-sharp slide, page text as speaker notes. Free and without uploading anything.",
+    "lede": "Every page of your PDF as a slide – to present, add to or reuse.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to PowerPoint",
+    "keywords": [
+      "pptx",
+      "ppt",
+      "powerpoint",
+      "presentation",
+      "slides",
+      "talk",
+      "projector",
+      "convert"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick the PDF you want to present – a handout or an exported presentation, for example."
+      },
+      {
+        "title": "Choose the format",
+        "text": "Slides shaped like the PDF pages or 16:9 / 4:3, the picture quality and whether the page text goes into the notes."
+      },
+      {
+        "title": "Save the presentation",
+        "text": "You see the slides as a preview. Download the PPTX file or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Looks like the original",
+        "text": "Each slide shows the page as a sharp picture – fonts, colours and layout stay exact."
+      },
+      {
+        "title": "Speaker notes",
+        "text": "The text of each page goes into the notes. You have everything at hand while presenting and can search the presentation."
+      },
+      {
+        "title": "The right format",
+        "text": "Borderless in the page format of the PDF, or fitted into 16:9 and 4:3."
+      },
+      {
+        "title": "No upload",
+        "text": "The presentation is created in your browser. Your PDF never leaves your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I edit the text on the slides?",
+        "a": "No. Each slide contains the page as a picture so it looks exactly like the PDF. You can place your own text boxes, shapes or images on top, though. The page text is in the speaker notes."
+      },
+      {
+        "q": "Which picture quality do I need?",
+        "a": "“Standard” is sharp on screens. “High” pays off for large projectors and print, “Compact” for small files to send."
+      },
+      {
+        "q": "Which programs open the file?",
+        "a": "Any presentation program that reads PPTX – on a computer, in the browser and on your phone."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Everything happens in your browser."
+      }
+    ]
+  }
+}

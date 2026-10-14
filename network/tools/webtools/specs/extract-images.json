@@ -1,0 +1,167 @@
+{
+  "id": "extract-images",
+  "category": "convert-from-pdf",
+  "iconSvg": "<path d=\"M6 3h8l4 4v6\"/><path d=\"M14 3v4h4\"/><path d=\"M6 3v18h5\"/><rect x=\"13\" y=\"14\" width=\"8\" height=\"7\" rx=\"1\"/><path d=\"m13 19 2.5-2.5L18 19\"/><path d=\"M9 10h3\"/>",
+  "module": "tools/extract-images.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 44,
+  "related": [
+    "pdf-to-jpg",
+    "pdf-to-png",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "bilder-aus-pdf-extrahieren",
+    "name": "Bilder aus PDF extrahieren",
+    "short": "Alle Fotos und Grafiken aus einer PDF in Originalqualität.",
+    "title": "Bilder aus PDF extrahieren – Originalqualität, gratis | FaleNetwork",
+    "h1": "Bilder aus PDF extrahieren",
+    "metaDescription": "Hol alle Fotos und Grafiken aus einer PDF: JPGs unverändert in Originalqualität, alles andere verlustfrei als PNG, ohne Symbole und Duplikate. Ohne Upload.",
+    "lede": "Hol die Fotos und Grafiken aus deiner PDF – so wie sie eingebettet sind.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Bilder extrahieren",
+    "keywords": [
+      "fotos",
+      "grafiken",
+      "bilder speichern",
+      "herausholen",
+      "exportieren",
+      "jpg",
+      "png",
+      "originalqualität",
+      "entpacken"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine oder mehrere PDFs aus, zum Beispiel einen Katalog, ein Exposé oder eine Präsentation."
+      },
+      {
+        "title": "Filter einstellen",
+        "text": "Kleine Symbole und doppelte Bilder werden automatisch ausgelassen. Mit dem Regler bestimmst du, ab welcher Größe ein Bild zählt."
+      },
+      {
+        "title": "Bilder speichern",
+        "text": "Du siehst alle gefundenen Bilder als Vorschau. Speichere sie einzeln, als ZIP oder teile sie direkt vom Handy."
+      }
+    ],
+    "why": [
+      {
+        "title": "Echte Originalqualität",
+        "text": "JPG-Fotos werden Byte für Byte aus der PDF kopiert, nicht neu gerendert oder komprimiert."
+      },
+      {
+        "title": "Ohne Ballast",
+        "text": "Symbole, Aufzählungspunkte und Logos, die auf jeder Seite wiederkehren, landen nicht hundertfach im Ergebnis."
+      },
+      {
+        "title": "Auch mit Transparenz",
+        "text": "Bilder mit durchsichtigen Bereichen und Formate, die Browser nicht direkt anzeigen, werden verlustfrei als PNG gespeichert."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die PDF wird in deinem Browser durchsucht. Sie verlässt dein Gerät nicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum bekomme ich JPG- und PNG-Dateien?",
+        "a": "JPG-Bilder übernehmen wir unverändert, damit nichts an Qualität verloren geht. Bilder in anderen Formaten oder mit Transparenz werden verlustfrei als PNG gespeichert."
+      },
+      {
+        "q": "Warum fehlt ein Bild, das ich in der PDF sehe?",
+        "a": "Manches sieht nur wie ein Bild aus, ist aber aus Linien und Flächen gezeichnet (Vektorgrafik) – das ist kein eingebettetes Bild. Speichere die Seite dann mit „PDF in PNG“ als Bild. Prüfe auch den Regler für kleine Bilder."
+      },
+      {
+        "q": "Was passiert bei gescannten PDFs?",
+        "a": "Ein Scan ist meist ein großes Bild pro Seite. Du bekommst dann jede gescannte Seite als Bild in der Auflösung, mit der sie gescannt wurde."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser, deine PDF bleibt auf deinem Gerät."
+      }
+    ]
+  },
+  "en": {
+    "slug": "extract-images-from-pdf",
+    "name": "Extract images from PDF",
+    "short": "All photos and graphics from a PDF in original quality.",
+    "title": "Extract images from PDF – original quality, free | FaleNetwork",
+    "h1": "Extract images from a PDF",
+    "metaDescription": "Get all photos and graphics out of a PDF: JPGs unchanged in original quality, everything else lossless as PNG, without icons and duplicates. No upload.",
+    "lede": "Get the photos and graphics out of your PDF – exactly as they are embedded.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Extract images",
+    "keywords": [
+      "photos",
+      "graphics",
+      "save images",
+      "get images",
+      "export",
+      "jpg",
+      "png",
+      "original quality",
+      "unpack"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick one or more PDFs, for example a catalogue, a brochure or a presentation."
+      },
+      {
+        "title": "Set the filter",
+        "text": "Small icons and duplicate images are left out automatically. The slider sets from which size an image counts."
+      },
+      {
+        "title": "Save the images",
+        "text": "You see all images found as a preview. Save them one by one, as a ZIP, or share them straight from your phone."
+      }
+    ],
+    "why": [
+      {
+        "title": "True original quality",
+        "text": "JPG photos are copied from the PDF byte for byte, not re-rendered or compressed again."
+      },
+      {
+        "title": "No clutter",
+        "text": "Icons, bullets and logos that repeat on every page don’t end up in the result a hundred times."
+      },
+      {
+        "title": "Transparency kept",
+        "text": "Images with see-through areas and formats browsers can’t show directly are saved losslessly as PNG."
+      },
+      {
+        "title": "No upload",
+        "text": "The PDF is searched in your browser. It never leaves your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why do I get JPG and PNG files?",
+        "a": "JPG images are taken over unchanged, so no quality is lost. Images in other formats or with transparency are saved losslessly as PNG."
+      },
+      {
+        "q": "Why is an image I can see in the PDF missing?",
+        "a": "Some things only look like images but are drawn from lines and shapes (vector graphics) – that is not an embedded image. Save the page as a picture with “PDF to PNG” instead. Also check the slider for small images."
+      },
+      {
+        "q": "What about scanned PDFs?",
+        "a": "A scan is usually one large image per page. You then get every scanned page as an image at the resolution it was scanned with."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Everything happens in your browser, your PDF stays on your device."
+      }
+    ]
+  }
+}

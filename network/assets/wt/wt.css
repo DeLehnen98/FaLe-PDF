@@ -325,3 +325,4 @@ html:not(.wt-js) .wt-cat[aria-current="true"] { background: var(--surface); bord
 @media print {
   .wt-app, .wt-trust, .wt-proof, .wt-bar, .wt-app-cta { display: none !important; }
 }
+.wt-shared-more { margin-top: 12px; width: 100%; }

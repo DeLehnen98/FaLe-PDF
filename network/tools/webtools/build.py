@@ -286,7 +286,8 @@ def load_specs():
             errors.append(f'{where}: module must look like "tools/<id>.js"')
         elif not (WT / mod).is_file():
             errors.append(f'{where}: module file network/assets/wt/{mod} does not exist')
-        if not isinstance(sp.get('accepts'), list) or not sp.get('accepts'):
+        # minFiles: 0 = tool without file intake (generator); its "accepts" may be empty
+        if not isinstance(sp.get('accepts'), list) or (not sp.get('accepts') and sp.get('minFiles', 1) != 0):
             errors.append(f'{where}: "accepts" must be a non-empty list of MIME types / extensions')
         for lang in LANGS:
             c = sp.get(lang)
@@ -448,7 +449,7 @@ def page_tool(sp, lang, by_id):
     {crumbs(lang, [(n, h if i < 2 else None) for i, (n, h) in enumerate(items)])}
     <div class="wt-head"><span class="wt-chip-ic wt-chip-lg tic-{colour}">{tool_icon(sp)}</span><div><h1>{e(c['h1'])}</h1><p class="wt-lede">{e(c['lede'])}</p></div></div>
     <section id="wt-app" class="wt-app" aria-label="{s['tool_label']}: {e(c['name'])}" data-state="pick">
-      <div class="wt-pick" data-wt-pick>
+      <div class="wt-pick" data-wt-pick{' hidden' if sp.get('minFiles', 1) == 0 else ''}>
         <label class="wt-drop" data-wt-drop>
           <input class="wt-picker" type="file" accept="{e(accept)}"{' multiple' if multiple else ''} data-wt-input>
           <span class="wt-drop-ic">{svg(UI_ICONS['upload'])}</span>

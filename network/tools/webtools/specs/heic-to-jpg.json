@@ -1,0 +1,152 @@
+{
+  "id": "heic-to-jpg",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/heic-to-jpg.js",
+  "accepts": [
+    "image/heic",
+    "image/heif",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 48,
+  "related": [
+    "convert-image",
+    "compress-image",
+    "remove-exif"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
+  "de": {
+    "slug": "heic-in-jpg",
+    "name": "HEIC in JPG",
+    "short": "iPhone-Fotos (HEIC) als JPG speichern – wo der Browser HEIC öffnen kann.",
+    "title": "HEIC in JPG umwandeln – iPhone-Fotos, ohne Upload | FaleNetwork",
+    "h1": "HEIC in JPG umwandeln",
+    "metaDescription": "iPhone-Fotos von HEIC in JPG umwandeln, direkt im Browser und ohne Upload. Funktioniert in Browsern, die HEIC öffnen können, zum Beispiel Safari. Aufnahmedatum bleibt.",
+    "lede": "Mach aus iPhone-Fotos (HEIC) JPGs – in Browsern, die HEIC öffnen können.",
+    "pickLabel": "HEIC-Fotos auswählen",
+    "primaryButton": "In JPG umwandeln",
+    "keywords": [
+      "heic zu jpg",
+      "heif",
+      "iphone foto",
+      "heic öffnen",
+      "heic konvertieren"
+    ],
+    "steps": [
+      {
+        "title": "HEIC-Fotos auswählen",
+        "text": "Wähle die Fotos aus. Ob dein Browser HEIC öffnen kann, siehst du sofort an der Vorschau."
+      },
+      {
+        "title": "Qualität festlegen",
+        "text": "Stell die JPG-Qualität ein. Das Aufnahmedatum bleibt auf Wunsch erhalten."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In JPG umwandeln“ und teile oder lade die JPGs herunter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Ehrlich",
+        "text": "Wir liefern keinen eigenen HEIC-Decoder mit. Kann dein Browser HEIC nicht öffnen, sagen wir es dir sofort und zeigen dir einen einfachen Weg zum JPG."
+      },
+      {
+        "title": "Datum bleibt",
+        "text": "Das Aufnahmedatum wird ins JPG übernommen, damit die Galerie richtig sortiert. Standort und Kameradaten werden entfernt."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Fotos bleiben auf dem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "In welchen Browsern funktioniert das?",
+        "a": "In Browsern, die HEIC selbst öffnen können – vor allem Safari auf iPhone, iPad und Mac. Viele andere Browser können HEIC nicht lesen. Das siehst du direkt nach der Auswahl."
+      },
+      {
+        "q": "Mein Browser kann HEIC nicht öffnen – was nun?",
+        "a": "Teile das Foto in der Fotos-App „als JPG“ oder stelle auf dem iPhone unter Einstellungen → Kamera → Formate „Maximale Kompatibilität“ ein. Dann speichert die Kamera künftig direkt JPG."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Die Umwandlung passiert in deinem Browser auf deinem Gerät."
+      },
+      {
+        "q": "Bleibt das Aufnahmedatum erhalten?",
+        "a": "Ja, wenn die Option eingeschaltet ist. Standort, Kamera und andere Daten werden dabei entfernt."
+      }
+    ]
+  },
+  "en": {
+    "slug": "heic-to-jpg",
+    "name": "HEIC to JPG",
+    "short": "Save iPhone photos (HEIC) as JPG – where the browser can open HEIC.",
+    "title": "HEIC to JPG – convert iPhone photos, no upload | FaleNetwork",
+    "h1": "Convert HEIC to JPG",
+    "metaDescription": "Convert iPhone photos from HEIC to JPG right in your browser, without uploading. Works in browsers that can open HEIC, such as Safari. The capture date is kept.",
+    "lede": "Turn iPhone photos (HEIC) into JPGs – in browsers that can open HEIC.",
+    "pickLabel": "Choose HEIC photos",
+    "primaryButton": "Convert to JPG",
+    "keywords": [
+      "heic to jpeg",
+      "heif",
+      "iphone photo",
+      "open heic",
+      "heic converter"
+    ],
+    "steps": [
+      {
+        "title": "Choose HEIC photos",
+        "text": "Pick the photos. You’ll see right away from the preview whether your browser can open HEIC."
+      },
+      {
+        "title": "Set the quality",
+        "text": "Set the JPG quality. The capture date can be kept."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to JPG” and share or download the JPGs."
+      }
+    ],
+    "why": [
+      {
+        "title": "Honest",
+        "text": "We don’t ship our own HEIC decoder. If your browser can’t open HEIC, we tell you right away and show you an easy way to get a JPG."
+      },
+      {
+        "title": "Date kept",
+        "text": "The capture date is carried over into the JPG so your gallery sorts correctly. Location and camera data are removed."
+      },
+      {
+        "title": "No upload",
+        "text": "Your photos stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which browsers does this work in?",
+        "a": "In browsers that can open HEIC themselves – mainly Safari on iPhone, iPad and Mac. Many other browsers can’t read HEIC. You’ll see this right after choosing."
+      },
+      {
+        "q": "My browser can’t open HEIC – what now?",
+        "a": "Share the photo from the Photos app “as JPG”, or on the iPhone set Settings → Camera → Formats to “Most Compatible”. The camera then saves JPG directly."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. The conversion happens in your browser on your device."
+      },
+      {
+        "q": "Is the capture date kept?",
+        "a": "Yes, if the option is on. Location, camera and other data are removed."
+      }
+    ]
+  }
+}

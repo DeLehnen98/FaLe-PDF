@@ -1,0 +1,165 @@
+{
+  "id": "pdf-to-png",
+  "category": "convert-from-pdf",
+  "icon": "pdf-image",
+  "module": "tools/pdf-to-png.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 41,
+  "related": [
+    "pdf-to-jpg",
+    "extract-images",
+    "jpg-to-pdf"
+  ],
+  "needs": [
+    "pdfjs"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-in-png",
+    "name": "PDF in PNG",
+    "short": "PDF-Seiten als verlustfreie PNG-Bilder, auf Wunsch transparent.",
+    "title": "PDF in PNG umwandeln – verlustfrei, ohne Upload | FaleNetwork",
+    "h1": "PDF in PNG umwandeln",
+    "metaDescription": "Wandle PDF-Seiten in PNG-Bilder um: verlustfrei, gestochen scharfer Text, 72 bis 600 dpi und optional transparenter Hintergrund. Gratis und ohne Upload.",
+    "lede": "Gestochen scharfe PNG-Bilder aus jeder Seite – auf Wunsch mit transparentem Hintergrund.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In PNG umwandeln",
+    "keywords": [
+      "bild",
+      "grafik",
+      "transparent",
+      "verlustfrei",
+      "seite als bild",
+      "logo",
+      "konvertieren",
+      "umwandeln",
+      "export"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine oder mehrere PDFs aus. Geschützte PDFs entsperrst du direkt auf der Dateikarte."
+      },
+      {
+        "title": "Einstellungen wählen",
+        "text": "Leg Seiten und Auflösung fest und schalte bei Bedarf den transparenten Hintergrund ein. Unten siehst du die ungefähre Dateigröße."
+      },
+      {
+        "title": "Umwandeln und speichern",
+        "text": "Eine Seite kommt direkt als PNG, mehrere einzeln oder als ZIP. Am Handy teilst du die Bilder mit einem Tipp."
+      }
+    ],
+    "why": [
+      {
+        "title": "Verlustfrei",
+        "text": "PNG speichert jeden Bildpunkt exakt. Schrift, Linien und Diagramme bleiben ohne Kompressionsspuren."
+      },
+      {
+        "title": "Transparenter Hintergrund",
+        "text": "Leere Flächen werden auf Wunsch durchsichtig – ideal, um Logos oder Grafiken aus einer PDF weiterzuverwenden."
+      },
+      {
+        "title": "Richtige Druckgröße",
+        "text": "Die Auflösung steht in der Datei. Gedruckt hat das Bild wieder die Größe der PDF-Seite."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Alles läuft in deinem Browser. Deine PDF bleibt auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum ist mein Hintergrund trotz Option weiß?",
+        "a": "Manche PDFs füllen die Seite selbst mit einer weißen Fläche. Diese Fläche gehört zum Inhalt und bleibt deshalb sichtbar. Transparent werden nur Bereiche, auf denen wirklich nichts gezeichnet ist."
+      },
+      {
+        "q": "Warum sind PNG-Dateien größer als JPG?",
+        "a": "PNG komprimiert verlustfrei. Bei Textseiten bleibt das klein, bei Fotos und Scans werden PNGs deutlich größer. Für Fotos ist „PDF in JPG“ die bessere Wahl."
+      },
+      {
+        "q": "Welche Auflösung ist sinnvoll?",
+        "a": "150 dpi für Bildschirm und Präsentationen, 300 dpi für den Druck. Unten im Balken siehst du vorab Pixelmaße und geschätzte Größe."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die Bilder entstehen in deinem Browser, nichts wird an einen Server geschickt."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-png",
+    "name": "PDF to PNG",
+    "short": "PDF pages as lossless PNG images, transparent if you like.",
+    "title": "PDF to PNG – lossless page images, no upload | FaleNetwork",
+    "h1": "Convert PDF to PNG",
+    "metaDescription": "Turn PDF pages into PNG images: lossless, razor-sharp text, 72 to 600 dpi and an optional transparent background. Free and without uploading anything.",
+    "lede": "Razor-sharp PNG images of every page – with a transparent background if you like.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to PNG",
+    "keywords": [
+      "image",
+      "graphic",
+      "transparent",
+      "lossless",
+      "page as image",
+      "logo",
+      "convert",
+      "export"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick one or more PDFs. Unlock protected PDFs right on the file card."
+      },
+      {
+        "title": "Choose settings",
+        "text": "Set pages and resolution and turn on the transparent background if needed. The bar at the bottom shows the approximate file size."
+      },
+      {
+        "title": "Convert and save",
+        "text": "One page comes straight as a PNG, several one by one or as a ZIP. On your phone, share the images with one tap."
+      }
+    ],
+    "why": [
+      {
+        "title": "Lossless",
+        "text": "PNG stores every pixel exactly. Text, lines and charts stay free of compression artefacts."
+      },
+      {
+        "title": "Transparent background",
+        "text": "Empty areas can become see-through – ideal for reusing logos or graphics from a PDF."
+      },
+      {
+        "title": "Correct print size",
+        "text": "The resolution is stored in the file. Printed, the image has the size of the PDF page again."
+      },
+      {
+        "title": "No upload",
+        "text": "Everything runs in your browser. Your PDF stays on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why is my background still white?",
+        "a": "Some PDFs fill the page with a white area themselves. That area is part of the content and stays visible. Only areas where nothing is drawn become transparent."
+      },
+      {
+        "q": "Why are PNG files larger than JPG?",
+        "a": "PNG compresses losslessly. Text pages stay small, photos and scans get much larger. For photos, “PDF to JPG” is the better choice."
+      },
+      {
+        "q": "Which resolution makes sense?",
+        "a": "150 dpi for screens and presentations, 300 dpi for print. The bar at the bottom shows the pixel size and estimated file size in advance."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The images are created in your browser, nothing is sent to a server."
+      }
+    ]
+  }
+}

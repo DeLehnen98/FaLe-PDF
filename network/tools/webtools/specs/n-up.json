@@ -1,0 +1,71 @@
+{
+  "id": "n-up",
+  "category": "edit",
+  "iconSvg": "<path d=\"M4 3h16v18H4z\"/><path d=\"M12 3v18\"/><path d=\"M4 12h16\"/>",
+  "module": "tools/n-up.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 50,
+  "related": ["booklet", "resize-pdf", "merge-pdf"],
+  "next": ["compress-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "mehrere-seiten-pro-blatt",
+    "name": "Mehrere Seiten pro Blatt",
+    "short": "2, 4, 6, 8, 9 oder 16 Seiten auf ein Blatt.",
+    "title": "Mehrere PDF-Seiten pro Blatt drucken – ohne Upload | FaleNetwork",
+    "h1": "Mehrere Seiten auf ein Blatt",
+    "metaDescription": "Lege 2, 4, 6, 8, 9 oder 16 PDF-Seiten auf ein Blatt – spart Papier bei Folien, Skripten und Handouts. Reihenfolge, Ränder, Rahmen frei wählbar. Ohne Upload.",
+    "lede": "Folien, Skripte und Handouts platzsparend drucken – mit Vorschau jedes Blatts.",
+    "primaryButton": "Seiten anordnen",
+    "keywords": ["n-up", "handout", "folien drucken", "papier sparen", "2 seiten auf 1", "4 auf 1", "seiten pro blatt"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, zum Beispiel ein Vorlesungsskript oder eine Präsentation."},
+      {"title": "Anordnung wählen", "text": "Wähle, wie viele Seiten auf ein Blatt kommen, die Blattgröße und die Reihenfolge. Die Vorschau zeigt jedes fertige Blatt."},
+      {"title": "Anordnen und drucken", "text": "Tippe auf „Seiten anordnen“, lade die PDF herunter und drucke sie ganz normal."}
+    ],
+    "why": [
+      {"title": "Automatisch größtmöglich", "text": "„Automatisch“ wählt Hoch- oder Querformat so, dass die Seiten so groß wie möglich werden – bei Folien meist quer, bei Textseiten hoch."},
+      {"title": "Scharf statt verpixelt", "text": "Die Seiten werden als Vektorgrafik übernommen. Text bleibt auch verkleinert gestochen scharf und durchsuchbar."},
+      {"title": "Deine Reihenfolge", "text": "Zeilen- oder spaltenweise, auch von rechts nach links. Mit einem Seitenbereich wie „1-10, 15“ bestimmst du, welche Seiten in welcher Reihenfolge erscheinen."},
+      {"title": "Gedrehte Seiten richtig", "text": "Seiten, die im Original gedreht gespeichert sind, erscheinen so, wie du sie am Bildschirm siehst."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Seiten werden vollständig in deinem Browser angeordnet. Deine PDF verlässt dein Gerät nicht."},
+      {"q": "Bleibt der Text durchsuchbar?", "a": "Ja. Die Seiten werden nicht in Bilder umgewandelt, sondern als Vektorinhalt verkleinert eingesetzt."},
+      {"q": "Funktionieren Links im Ergebnis noch?", "a": "Nein, Links und Formularfelder der Originalseiten sind im angeordneten Blatt nicht mehr anklickbar. Für den Druck spielt das keine Rolle."},
+      {"q": "Wie drucke ich ein Heft zum Falten?", "a": "Dafür gibt es das Werkzeug „Broschüre drucken“. Es ordnet die Seiten so an, dass du die Blätter nur noch falten und heften musst."},
+      {"q": "Was ist mit passwortgeschützten PDFs?", "a": "Du entsperrst sie direkt an der Datei. Das Ergebnis wird wieder mit demselben Passwort geschützt."}
+    ]
+  },
+  "en": {
+    "slug": "pages-per-sheet",
+    "name": "Pages per sheet",
+    "short": "Put 2, 4, 6, 8, 9 or 16 pages on one sheet.",
+    "title": "Print several PDF pages per sheet – no upload | FaleNetwork",
+    "h1": "Several pages on one sheet",
+    "metaDescription": "Put 2, 4, 6, 8, 9 or 16 PDF pages on one sheet – saves paper for slides, lecture notes and handouts. Choose order, margins and frames. No upload.",
+    "lede": "Print slides, notes and handouts without wasting paper – with a preview of every sheet.",
+    "primaryButton": "Arrange pages",
+    "keywords": ["n-up", "handout", "print slides", "save paper", "2 pages per sheet", "4 up", "multiple pages per sheet"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF, for example lecture notes or a presentation."},
+      {"title": "Pick the layout", "text": "Choose how many pages go on a sheet, the sheet size and the order. The preview shows every finished sheet."},
+      {"title": "Arrange and print", "text": "Tap “Arrange pages”, download the PDF and print it as usual."}
+    ],
+    "why": [
+      {"title": "As large as possible", "text": "“Automatic” picks portrait or landscape so the pages come out as large as possible – usually landscape for slides, portrait for text pages."},
+      {"title": "Sharp, not pixelated", "text": "Pages are placed as vector graphics. Text stays crisp and searchable even when scaled down."},
+      {"title": "Your order", "text": "By rows or by columns, right to left, too. With a page range such as “1-10, 15” you decide which pages appear in which order."},
+      {"title": "Rotated pages done right", "text": "Pages that are saved rotated in the original appear the way you see them on screen."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. The pages are arranged entirely in your browser. Your PDF never leaves your device."},
+      {"q": "Does the text stay searchable?", "a": "Yes. The pages are not turned into images but placed as scaled-down vector content."},
+      {"q": "Do links still work in the result?", "a": "No, links and form fields of the original pages are no longer clickable on the arranged sheet. For printing that makes no difference."},
+      {"q": "How do I print a booklet to fold?", "a": "Use the “Booklet” tool. It arranges the pages so you only need to fold and staple the sheets."},
+      {"q": "What about password-protected PDFs?", "a": "You unlock them right on the file. The result is protected again with the same password."}
+    ]
+  }
+}

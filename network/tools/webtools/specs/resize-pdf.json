@@ -1,0 +1,71 @@
+{
+  "id": "resize-pdf",
+  "category": "edit",
+  "icon": "resize",
+  "module": "tools/resize-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 48,
+  "related": ["crop-pdf", "n-up", "booklet"],
+  "next": ["compress-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "seitengroesse-aendern",
+    "name": "Seitengröße ändern",
+    "short": "PDF auf A4, A5, Letter oder eigene Größe bringen.",
+    "title": "PDF Seitengröße ändern – A4, A5, Letter, ohne Upload | FaleNetwork",
+    "h1": "PDF-Seitengröße ändern",
+    "metaDescription": "Bring alle Seiten deiner PDF auf A4, A3, A5, Letter oder eine eigene Größe: einpassen, ausfüllen, Rand und Beschnitt. Text bleibt Text – gratis, ohne Upload.",
+    "lede": "Gemischte Seitengrößen vereinheitlichen oder für den Druck vorbereiten – mit Live-Vorschau.",
+    "primaryButton": "Größe ändern",
+    "keywords": ["auf a4 bringen", "skalieren", "letter zu a4", "papierformat", "beschnitt", "seitenformat"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, deren Seiten eine neue Größe bekommen sollen."},
+      {"title": "Größe und Einpassung wählen", "text": "Wähle das Format, die Ausrichtung und ob der Inhalt eingepasst oder seitenfüllend skaliert wird. Rand, Beschnitt und eine zusätzliche Skalierung stellst du bei Bedarf ein."},
+      {"title": "Ändern und speichern", "text": "Prüfe die Seiten in der Vorschau, tippe auf „Größe ändern“ und lade die PDF herunter."}
+    ],
+    "why": [
+      {"title": "Text bleibt Text", "text": "Die Seiten werden nicht in Bilder umgewandelt. Text bleibt durchsuchbar und scharf, Links funktionieren weiter."},
+      {"title": "Gemischte Größen vereinheitlichen", "text": "Letter und A4 gemischt, ein Querformat dazwischen? Mit „Automatisch“ bleiben Querformat-Seiten quer, alles andere wird einheitlich."},
+      {"title": "Bereit für die Druckerei", "text": "Beschnittzugabe von bis zu 10 mm, korrekt gesetzte TrimBox und auf Wunsch Inhalt bis in den Beschnitt."},
+      {"title": "Gedrehte Seiten inklusive", "text": "Seiten mit gespeicherter Drehung und versetztem Seitenrahmen werden so übernommen, wie du sie siehst."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die neue Seitengröße wird vollständig in deinem Browser berechnet."},
+      {"q": "Was ist der Unterschied zwischen Einpassen und Ausfüllen?", "a": "Einpassen zeigt die ganze Seite und lässt bei anderem Seitenverhältnis einen Rand. Ausfüllen nutzt die ganze neue Seite und schneidet dafür am Rand etwas ab. Originalgröße skaliert gar nicht."},
+      {"q": "Bleiben Links und Formularfelder erhalten?", "a": "Links und Kommentare werden mit dem Inhalt verschoben. Formularfelder bleiben ebenfalls erhalten; auf Seiten, die vorher gedreht gespeichert waren, können sie danach jedoch verdreht erscheinen."},
+      {"q": "Wofür ist die Beschnittzugabe?", "a": "Druckereien schneiden das Papier nach dem Druck zu. Damit am Rand kein weißer Streifen bleibt, wird die Seite rundum etwas größer angelegt. Das Endformat ist als TrimBox gespeichert."},
+      {"q": "Kann ich nur einzelne Seiten ändern?", "a": "Ja. Wähle bei „Welche Seiten?“ einen Seitenbereich – die übrigen Seiten bleiben, wie sie sind."}
+    ]
+  },
+  "en": {
+    "slug": "resize-pdf",
+    "name": "Resize PDF pages",
+    "short": "Bring a PDF to A4, A5, Letter or a custom size.",
+    "title": "Resize PDF pages – A4, A5, Letter, no upload | FaleNetwork",
+    "h1": "Resize PDF pages",
+    "metaDescription": "Bring every page of your PDF to A4, A3, A5, Letter or a custom size: fit, fill, margins and bleed. Text stays text – free and without uploading.",
+    "lede": "Unify mixed page sizes or get ready for print – with a live preview.",
+    "primaryButton": "Resize",
+    "keywords": ["convert to a4", "scale pdf", "letter to a4", "paper size", "bleed", "page format"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF whose pages should get a new size."},
+      {"title": "Pick size and fit", "text": "Choose the format, the orientation and whether the content is fitted or scaled to fill the page. Set margins, bleed and an extra scale if needed."},
+      {"title": "Resize and save", "text": "Check the pages in the preview, tap “Resize” and download the PDF."}
+    ],
+    "why": [
+      {"title": "Text stays text", "text": "Pages are not turned into images. Text stays searchable and sharp, links keep working."},
+      {"title": "Unify mixed sizes", "text": "Letter and A4 mixed, a landscape page in between? With “Automatic” landscape pages stay landscape and everything else becomes uniform."},
+      {"title": "Ready for the print shop", "text": "Up to 10 mm bleed, a correctly set TrimBox and, if you like, content that extends into the bleed."},
+      {"title": "Rotated pages included", "text": "Pages saved with a rotation or an offset page frame are taken over the way you see them."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. The new page size is calculated entirely in your browser."},
+      {"q": "What is the difference between fit and fill?", "a": "Fit shows the whole page and leaves a border if the aspect ratio differs. Fill uses the whole new page and cuts off a little at the edges. Actual size does not scale at all."},
+      {"q": "Are links and form fields kept?", "a": "Links and comments are moved along with the content. Form fields are kept, too; on pages that were saved rotated they may appear turned afterwards."},
+      {"q": "What is bleed for?", "a": "Print shops trim the paper after printing. To avoid a white strip at the edge, the page is made slightly larger all round. The final size is stored as the TrimBox."},
+      {"q": "Can I resize only some pages?", "a": "Yes. Choose a page range under “Which pages?” – the other pages stay as they are."}
+    ]
+  }
+}

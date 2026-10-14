@@ -1,0 +1,70 @@
+{
+  "id": "flatten-pdf",
+  "category": "edit",
+  "icon": "flatten",
+  "module": "tools/flatten-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["fill-pdf-form", "sign-pdf", "protect-pdf"],
+  "next": ["protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-glaetten",
+    "name": "PDF glätten",
+    "short": "Formularfelder und Kommentare fest in die Seiten einbrennen.",
+    "title": "PDF glätten – Formulare fixieren, ohne Upload | FaleNetwork",
+    "h1": "PDF glätten",
+    "metaDescription": "Ausgefüllte Formularfelder, Kommentare und Markierungen fest in die PDF-Seiten einbrennen, damit nichts mehr verändert werden kann. Gratis, ohne Upload.",
+    "lede": "Brenne Formularfelder und Kommentare fest in die Seiten ein – nichts lässt sich mehr verändern.",
+    "primaryButton": "Glätten",
+    "keywords": ["flatten", "formular fixieren", "felder einbrennen", "kommentare einbetten", "nicht mehr bearbeitbar", "formular abschließen"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle ein oder mehrere ausgefüllte Formulare oder kommentierte PDFs aus."},
+      {"title": "Festlegen, was geglättet wird", "text": "Formulare, Kommentare oder beides – und ob Links anklickbar bleiben. Für widerspenstige Dateien gibt es die Variante „Als Bild“."},
+      {"title": "Glätten und speichern", "text": "Tippe auf „Glätten“. Die Werte sind jetzt Teil der Seite und sehen in jedem Programm gleich aus."}
+    ],
+    "why": [
+      {"title": "Text bleibt Text", "text": "Beim sauberen Glätten wird das sichtbare Erscheinungsbild jedes Felds in die Seite übernommen. Text bleibt durchsuchbar und scharf."},
+      {"title": "Umlaute inklusive", "text": "Fehlt ausgefüllten Feldern das Erscheinungsbild, wird es neu erzeugt – ä, ö, ü, ß und € werden korrekt dargestellt."},
+      {"title": "Links behalten", "text": "Auf Wunsch bleiben Links anklickbar, während Formulare und Kommentare fest werden."},
+      {"title": "Notfalls als Bild", "text": "Wenn eine Datei beim Glätten Probleme macht, wird jede Seite als Bild gespeichert – genau so, wie sie angezeigt wird."}
+    ],
+    "faq": [
+      {"q": "Was bedeutet „PDF glätten“?", "a": "Formularfelder und Kommentare liegen in einer PDF als eigene Ebene über der Seite und lassen sich ändern. Beim Glätten wird ihr Aussehen fest in die Seite übernommen und die Felder werden entfernt. Danach kann niemand die Werte mehr bearbeiten."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Das Glätten passiert vollständig in deinem Browser. Nichts verlässt dein Gerät."},
+      {"q": "Bleibt der Text durchsuchbar?", "a": "Beim sauberen Glätten ja. Bei der Variante „Als Bild“ wird jede Seite zu einem Bild – dann ist der Text nicht mehr markier- oder durchsuchbar und Links fallen weg."},
+      {"q": "Warum fehlt nach dem Glätten ein Kommentar?", "a": "Manche Programme speichern Kommentare ohne Erscheinungsbild. Solche Elemente kann das saubere Glätten nicht übernehmen; du bekommst einen Hinweis. Nimm dann die Variante „Als Bild“."},
+      {"q": "Was passiert mit passwortgeschützten PDFs?", "a": "Du gibst das Passwort an der Datei ein. Die geglättete PDF ist danach wieder mit demselben Passwort geschützt."}
+    ]
+  },
+  "en": {
+    "slug": "flatten-pdf",
+    "name": "Flatten PDF",
+    "short": "Burn form fields and comments into the pages for good.",
+    "title": "Flatten PDF – lock forms, no upload | FaleNetwork",
+    "h1": "Flatten a PDF",
+    "metaDescription": "Burn filled-in form fields, comments and markups into the PDF pages so nothing can be changed any more. Free, no upload – it all happens in your browser.",
+    "lede": "Burn form fields and comments into the pages – nothing can be changed afterwards.",
+    "primaryButton": "Flatten",
+    "keywords": ["flatten form", "lock form fields", "burn in annotations", "make uneditable", "finalize form"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select one or more filled-in forms or annotated PDFs."},
+      {"title": "Choose what to flatten", "text": "Forms, comments or both – and whether links stay clickable. For stubborn files there is the “As image” method."},
+      {"title": "Flatten and save", "text": "Tap “Flatten”. The values are now part of the page and look the same in every program."}
+    ],
+    "why": [
+      {"title": "Text stays text", "text": "Clean flattening copies each field’s visible appearance into the page. Text stays searchable and sharp."},
+      {"title": "Accents included", "text": "If filled-in fields lack an appearance, it is regenerated – characters such as ä, é, ß and € are shown correctly."},
+      {"title": "Keep links", "text": "If you like, links stay clickable while forms and comments become fixed."},
+      {"title": "Image fallback", "text": "If a file causes trouble, every page is saved as an image – exactly as it is displayed."}
+    ],
+    "faq": [
+      {"q": "What does flattening a PDF mean?", "a": "Form fields and comments sit on a separate layer above the page and can be changed. Flattening copies their look into the page itself and removes the fields. Afterwards nobody can edit the values."},
+      {"q": "Are my files uploaded?", "a": "No. Flattening happens entirely in your browser. Nothing leaves your device."},
+      {"q": "Does the text stay searchable?", "a": "With clean flattening, yes. With “As image” every page becomes a picture – the text can no longer be selected or searched, and links are dropped."},
+      {"q": "Why is a comment missing after flattening?", "a": "Some programs save comments without an appearance. Clean flattening cannot take those over; you get a notice. Use “As image” in that case."},
+      {"q": "What about password-protected PDFs?", "a": "You type the password on the file. The flattened PDF is protected again with the same password."}
+    ]
+  }
+}

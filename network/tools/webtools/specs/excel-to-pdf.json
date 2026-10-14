@@ -1,0 +1,171 @@
+{
+  "id": "excel-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "sheet",
+  "module": "tools/excel-to-pdf.js",
+  "accepts": [
+    ".xlsx",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 51,
+  "related": [
+    "pdf-to-excel",
+    "word-to-pdf",
+    "merge-pdf"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "jszip",
+    "office"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "excel-in-pdf",
+    "name": "Excel in PDF",
+    "short": "Excel-Tabellen (XLSX) als PDF – alle Blätter, mit Vorschau.",
+    "title": "Excel in PDF umwandeln – XLSX zu PDF, ohne Upload | FaleNetwork",
+    "h1": "Excel in PDF umwandeln",
+    "metaDescription": "Wandle Excel-Tabellen (XLSX) in eine PDF um: alle sichtbaren Blätter, Zahlen wie angezeigt, Farben und Rahmen, breite Tabellen passend verkleinert. Ohne Upload.",
+    "lede": "Mach aus einer Excel-Tabelle (XLSX) eine PDF zum Verschicken oder Ausdrucken.",
+    "pickLabel": "Excel-Datei auswählen",
+    "primaryButton": "In PDF umwandeln",
+    "keywords": [
+      "xlsx",
+      "xls",
+      "excel",
+      "tabelle",
+      "tabellenkalkulation",
+      "liste",
+      "konvertieren",
+      "umwandeln",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "Excel-Datei auswählen",
+        "text": "Wähle eine oder mehrere XLSX-Dateien aus."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In PDF umwandeln“. Jedes sichtbare Blatt wird übernommen, ausgeblendete Blätter bleiben weg."
+      },
+      {
+        "title": "Prüfen und teilen",
+        "text": "Sieh dir die Seiten in der Vorschau an und lade die PDF herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Werte wie angezeigt",
+        "text": "Zahlen, Beträge und Datumswerte erscheinen so formatiert wie in der Tabelle, Formeln mit ihrem Ergebnis."
+      },
+      {
+        "title": "Alle Blätter",
+        "text": "Jedes sichtbare Blatt kommt in die PDF, leere und ausgeblendete Blätter werden ausgelassen."
+      },
+      {
+        "title": "Passt auf die Seite",
+        "text": "Breite Tabellen werden auf die Seitenbreite verkleinert – sehr breite auf mehrere Seiten verteilt, mit Spalten- und Zeilenköpfen zur Orientierung."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Gehaltslisten und Abrechnungen bleiben auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Werden Formeln berechnet?",
+        "a": "Die PDF zeigt die Ergebnisse der Formeln. Normalerweise sind sie in der Datei gespeichert; fehlen sie, rechnet das Werkzeug gängige Formeln selbst nach."
+      },
+      {
+        "q": "Bleiben Farben und Rahmen erhalten?",
+        "a": "Fett, kursiv, Textfarben, Hintergrundfarben und Rahmen von Zellen werden übernommen, dazu ein dezentes Raster. Bilder in Zellen und festgelegte Druckbereiche werden nicht berücksichtigt."
+      },
+      {
+        "q": "Funktionieren alte .xls-Dateien?",
+        "a": "Nein, nur XLSX. Speichere eine .xls-Datei in deinem Tabellenprogramm als XLSX."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die Datei wird in deinem Browser gelesen und die PDF dort erstellt. Nach dem ersten Besuch klappt das sogar offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "excel-to-pdf",
+    "name": "Excel to PDF",
+    "short": "Excel spreadsheets (XLSX) as PDF – all sheets, with a preview.",
+    "title": "Excel to PDF – convert XLSX to PDF, no upload | FaleNetwork",
+    "h1": "Convert Excel to PDF",
+    "metaDescription": "Turn Excel spreadsheets (XLSX) into a PDF: all visible sheets, numbers as displayed, colours and borders, wide tables scaled to fit. No upload.",
+    "lede": "Turn an Excel spreadsheet (XLSX) into a PDF to send or print.",
+    "pickLabel": "Choose Excel file",
+    "primaryButton": "Convert to PDF",
+    "keywords": [
+      "xlsx",
+      "xls",
+      "excel",
+      "spreadsheet",
+      "table",
+      "list",
+      "convert",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "Choose an Excel file",
+        "text": "Pick one or more XLSX files."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to PDF”. Every visible sheet is taken over, hidden sheets are left out."
+      },
+      {
+        "title": "Check and share",
+        "text": "Look at the pages in the preview, then download the PDF or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Values as displayed",
+        "text": "Numbers, amounts and dates appear formatted as in the spreadsheet, formulas with their result."
+      },
+      {
+        "title": "All sheets",
+        "text": "Every visible sheet goes into the PDF; empty and hidden sheets are left out."
+      },
+      {
+        "title": "Fits the page",
+        "text": "Wide tables are scaled to the page width – very wide ones spread over several pages, with column and row headings for orientation."
+      },
+      {
+        "title": "No upload",
+        "text": "Payroll lists and statements stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Are formulas calculated?",
+        "a": "The PDF shows the results of the formulas. They are usually stored in the file; if not, the tool recalculates common formulas itself."
+      },
+      {
+        "q": "Are colours and borders kept?",
+        "a": "Bold, italic, text colours, cell background colours and borders are kept, plus a subtle grid. Images in cells and defined print areas are not taken into account."
+      },
+      {
+        "q": "Do old .xls files work?",
+        "a": "No, only XLSX. Save an .xls file as XLSX in your spreadsheet app."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The file is read in your browser and the PDF is created there. After the first visit it even works offline."
+      }
+    ]
+  }
+}

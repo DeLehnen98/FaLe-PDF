@@ -1,0 +1,163 @@
+{
+  "id": "pdf-to-text",
+  "category": "convert-from-pdf",
+  "icon": "text",
+  "module": "tools/pdf-to-text.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 46,
+  "related": [
+    "pdf-to-markdown",
+    "pdf-to-word",
+    "pdf-to-jpg"
+  ],
+  "needs": [
+    "pdfjs"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-in-text",
+    "name": "PDF in Text",
+    "short": "Den Text einer PDF sauber als TXT kopieren oder speichern.",
+    "title": "PDF in Text umwandeln – TXT in Lesereihenfolge | FaleNetwork",
+    "h1": "PDF in Text umwandeln",
+    "metaDescription": "Hol den Text aus einer PDF – mit Absätzen in richtiger Lesereihenfolge, auch bei zwei Spalten, ohne Seitenzahlen. Kopieren oder als TXT speichern, ohne Upload.",
+    "lede": "Der ganze Text deiner PDF – sauber in Absätzen, zum Kopieren oder als TXT-Datei.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Text herausholen",
+    "keywords": [
+      "txt",
+      "text kopieren",
+      "text extrahieren",
+      "auslesen",
+      "textdatei",
+      "copy",
+      "inhalt",
+      "zwischenablage"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine oder mehrere PDFs aus. Geschützte PDFs entsperrst du mit dem Passwort direkt auf der Dateikarte."
+      },
+      {
+        "title": "Einstellungen prüfen",
+        "text": "Leg fest, welche Seiten du brauchst, ob Seitenangaben eingefügt werden und ob wiederkehrende Kopf- und Fußzeilen wegfallen sollen."
+      },
+      {
+        "title": "Kopieren oder speichern",
+        "text": "Du siehst den Text sofort in der Vorschau. Kopier ihn mit einem Tipp oder lade ihn als TXT-Datei herunter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Absätze statt Zeilensalat",
+        "text": "Zeilen werden zu Absätzen zusammengefügt, getrennte Wörter am Zeilenende wieder verbunden."
+      },
+      {
+        "title": "Richtige Reihenfolge",
+        "text": "Zweispaltige Seiten werden Spalte für Spalte gelesen, Tabellen bleiben Zeile für Zeile erhalten."
+      },
+      {
+        "title": "Ohne Störer",
+        "text": "Seitenzahlen und Kopfzeilen, die auf jeder Seite wiederkehren, lässt das Werkzeug auf Wunsch weg."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Der Text wird in deinem Browser ausgelesen. Deine PDF bleibt auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum bekomme ich bei manchen PDFs keinen Text?",
+        "a": "Gescannte oder fotografierte PDFs enthalten nur Bilder, keinen gespeicherten Text. Dafür braucht es eine Texterkennung (OCR). Die FaLe PDF-App erkennt Text offline direkt auf deinem Gerät."
+      },
+      {
+        "q": "Bleibt die Formatierung erhalten?",
+        "a": "Eine TXT-Datei kennt keine Schriftarten oder Farben. Absätze, Listen und Tabellenzeilen bleiben aber erkennbar. Wenn du Überschriften und Fettdruck behalten willst, nimm „PDF in Markdown“ oder „PDF in Word“."
+      },
+      {
+        "q": "Wie gehen Umlaute und andere Sprachen?",
+        "a": "Der Text wird als UTF-8 gespeichert. Umlaute, ß und auch kyrillische oder griechische Schrift bleiben korrekt."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert das Werkzeug auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-text",
+    "name": "PDF to text",
+    "short": "Copy or save the text of a PDF cleanly as TXT.",
+    "title": "PDF to text – TXT in reading order, no upload | FaleNetwork",
+    "h1": "Convert PDF to text",
+    "metaDescription": "Get the text out of a PDF – as paragraphs in the right reading order, even with two columns, without page numbers. Copy it or save it as TXT, no upload.",
+    "lede": "All the text of your PDF – cleanly in paragraphs, to copy or as a TXT file.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Get text",
+    "keywords": [
+      "txt",
+      "copy text",
+      "extract text",
+      "read out",
+      "text file",
+      "content",
+      "clipboard"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick one or more PDFs. Unlock protected PDFs with the password right on the file card."
+      },
+      {
+        "title": "Check the settings",
+        "text": "Choose the pages you need, whether page markers are added and whether repeating headers and footers are left out."
+      },
+      {
+        "title": "Copy or save",
+        "text": "You see the text in the preview right away. Copy it with one tap or download it as a TXT file."
+      }
+    ],
+    "why": [
+      {
+        "title": "Paragraphs, not broken lines",
+        "text": "Lines are joined into paragraphs and words hyphenated at the end of a line are put back together."
+      },
+      {
+        "title": "Right reading order",
+        "text": "Two-column pages are read column by column, tables stay row by row."
+      },
+      {
+        "title": "No clutter",
+        "text": "Page numbers and headers that repeat on every page can be left out."
+      },
+      {
+        "title": "No upload",
+        "text": "The text is read in your browser. Your PDF stays on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why do I get no text from some PDFs?",
+        "a": "Scanned or photographed PDFs only contain images, no stored text. That needs text recognition (OCR). The FaLe PDF app recognises text offline right on your device."
+      },
+      {
+        "q": "Is the formatting kept?",
+        "a": "A TXT file knows no fonts or colours. Paragraphs, lists and table rows stay recognisable, though. To keep headings and bold text, use “PDF to Markdown” or “PDF to Word”."
+      },
+      {
+        "q": "What about umlauts and other languages?",
+        "a": "The text is saved as UTF-8. Accents, umlauts and also Cyrillic or Greek script stay correct."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the tool also works offline."
+      }
+    ]
+  }
+}

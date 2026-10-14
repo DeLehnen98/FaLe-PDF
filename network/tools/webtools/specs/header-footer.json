@@ -1,0 +1,71 @@
+{
+  "id": "header-footer",
+  "category": "edit",
+  "icon": "text",
+  "module": "tools/header-footer.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 44,
+  "related": ["add-page-numbers", "watermark-pdf", "overlay-pdf"],
+  "next": ["compress-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "kopf-und-fusszeile",
+    "name": "Kopf- und Fußzeile",
+    "short": "Kopf- und Fußzeilen mit Seite, Datum, Dateiname.",
+    "title": "Kopf- und Fußzeile in PDF einfügen – ohne Upload | FaleNetwork",
+    "h1": "Kopf- und Fußzeile einfügen",
+    "metaDescription": "Füge deiner PDF Kopf- und Fußzeilen hinzu – links, mittig, rechts, mit Seitenzahl, Datum, Dateiname oder Bates-Nummer. Mit Live-Vorschau, gratis, ohne Upload.",
+    "lede": "Sechs Felder, praktische Platzhalter und eine Vorschau, die jede Änderung sofort zeigt.",
+    "primaryButton": "Einfügen",
+    "keywords": ["fusszeile", "kopfzeile", "bates", "aktenzeichen", "datum einfügen", "dateiname", "seitennummerierung"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus. Geschützte Dateien entsperrst du mit dem Passwort direkt an der Datei."},
+      {"title": "Felder ausfüllen", "text": "Schreib in die Felder links, Mitte oder rechts, was oben oder unten stehen soll. Platzhalter wie {seite}, {datum} oder {dateiname} fügst du mit einem Fingertipp ein."},
+      {"title": "Einfügen und speichern", "text": "Prüfe die Vorschau, tippe auf „Einfügen“ und lade die fertige PDF herunter."}
+    ],
+    "why": [
+      {"title": "Platzhalter per Fingertipp", "text": "Geschweifte Klammern tippt auf dem Handy niemand gern: {seite}, {seiten}, {datum}, {dateiname} und {titel} fügst du mit einem Tippen ins gerade bearbeitete Feld ein."},
+      {"title": "Bates-Nummerierung", "text": "Fortlaufende Kennungen wie „AKTE-000001“ mit eigenem Präfix, Stellenzahl und Startwert – das Ergebnis sagt dir, wo die nächste Datei weitermacht."},
+      {"title": "Passt auf jede Seite", "text": "Querformat, gedrehte Scans und gemischte Seitengrößen bekommen die Zeilen dort, wo du sie siehst. Zu lange Texte werden verkleinert statt abgeschnitten."},
+      {"title": "Für den Druck gedacht", "text": "Deckblatt auslassen, nur bestimmte Seiten beschriften und auf geraden Seiten links und rechts tauschen – für beidseitig gedruckte Dokumente."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Kopf- und Fußzeilen werden komplett in deinem Browser eingefügt. Deine PDF verlässt dein Gerät nicht."},
+      {"q": "Welche Platzhalter gibt es?", "a": "{seite} für die Seitenzahl, {seiten} für die Seitenanzahl, {datum} für das heutige Datum, {dateiname} für den Dateinamen, {titel} für den Titel aus den PDF-Eigenschaften (sonst den Dateinamen) und {bates} für die Bates-Nummer. Die englischen Namen wie {page} funktionieren ebenfalls."},
+      {"q": "Was ist eine Bates-Nummer?", "a": "Eine fortlaufende Kennung auf jeder Seite, wie sie in Kanzleien und Behörden üblich ist, etwa „AKTE-000001“. Du legst Präfix, Stellenzahl und Startwert fest. Bei mehreren Dateien startest du die nächste einfach mit der Nummer, die dir das Ergebnis nennt."},
+      {"q": "Überdecken die Zeilen meinen Text?", "a": "Sie werden über den Seiteninhalt geschrieben. Steht am Rand schon etwas, vergrößere den Abstand zum Rand oder nutze ein anderes Feld. Die Vorschau zeigt dir das vorher."},
+      {"q": "Welche Zeichen kann ich verwenden?", "a": "Die eingebauten PDF-Schriften decken westeuropäische Zeichen ab, also auch Umlaute und ß. Andere Zeichen werden ersetzt – die Vorschau zeigt dir, welche."}
+    ]
+  },
+  "en": {
+    "slug": "header-footer-pdf",
+    "name": "Header & footer",
+    "short": "Headers and footers with page, date, file name.",
+    "title": "Add header and footer to PDF – no upload | FaleNetwork",
+    "h1": "Add a header and footer to a PDF",
+    "metaDescription": "Add headers and footers to your PDF – left, centre, right, with page number, date, file name or Bates number. Live preview, free, no upload.",
+    "lede": "Six fields, handy placeholders and a preview that shows every change right away.",
+    "primaryButton": "Add",
+    "keywords": ["footer", "header", "bates", "bates numbering", "add date", "file name", "running head"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF. Protected files are unlocked with their password right on the file."},
+      {"title": "Fill in the fields", "text": "Type what should appear at the top or bottom – left, centre or right. Placeholders such as {page}, {date} or {filename} are inserted with a tap."},
+      {"title": "Add and save", "text": "Check the preview, tap “Add” and download the finished PDF."}
+    ],
+    "why": [
+      {"title": "Placeholders with a tap", "text": "Nobody likes typing curly braces on a phone: {page}, {pages}, {date}, {filename} and {title} go into the field you are editing with one tap."},
+      {"title": "Bates numbering", "text": "Running IDs such as “CASE-000001” with your own prefix, number of digits and start value – the result tells you where the next file continues."},
+      {"title": "Fits every page", "text": "Landscape pages, rotated scans and mixed page sizes get the lines where you see them. Texts that are too long are scaled down instead of cut off."},
+      {"title": "Made for printing", "text": "Skip the cover, label only certain pages and swap left and right on even pages for double-sided documents."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Headers and footers are added entirely in your browser. Your PDF never leaves your device."},
+      {"q": "Which placeholders are there?", "a": "{page} for the page number, {pages} for the page count, {date} for today's date, {filename} for the file name, {title} for the title from the PDF properties (otherwise the file name) and {bates} for the Bates number. The German names such as {seite} work, too."},
+      {"q": "What is a Bates number?", "a": "A running ID on every page, as used by law firms and authorities, for example “CASE-000001”. You choose the prefix, number of digits and start value. With several files, start the next one at the number the result shows you."},
+      {"q": "Will the lines cover my text?", "a": "They are written on top of the page content. If something is already at the edge, increase the distance from the edge or use another field. The preview shows you beforehand."},
+      {"q": "Which characters can I use?", "a": "The built-in PDF fonts cover Western European characters. Other characters are replaced – the preview tells you which ones."}
+    ]
+  }
+}

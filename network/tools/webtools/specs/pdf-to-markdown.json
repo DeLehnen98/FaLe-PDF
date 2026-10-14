@@ -1,0 +1,174 @@
+{
+  "id": "pdf-to-markdown",
+  "category": "convert-from-pdf",
+  "icon": "text",
+  "module": "tools/pdf-to-markdown.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 47,
+  "related": [
+    "pdf-to-text",
+    "pdf-to-word",
+    "text-to-pdf"
+  ],
+  "needs": [
+    "pdfjs"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-in-markdown",
+    "name": "PDF in Markdown",
+    "short": "PDF als Markdown mit Überschriften, Listen und Tabellen.",
+    "title": "PDF in Markdown umwandeln – mit Überschriften | FaleNetwork",
+    "h1": "PDF in Markdown umwandeln",
+    "metaDescription": "Wandle eine PDF in Markdown um: Überschriften nach Schriftgröße, Listen, Tabellen, fett und kursiv. Ideal für Notizen, Wikis und KI-Werkzeuge. Ohne Upload.",
+    "lede": "Mach aus einer PDF strukturierten Markdown-Text – für Notizen, Wikis oder KI-Chats.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In Markdown umwandeln",
+    "keywords": [
+      "md",
+      "markdown",
+      "notizen",
+      "wiki",
+      "ki",
+      "chatbot",
+      "struktur",
+      "überschriften",
+      "text"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle eine oder mehrere PDFs mit echtem Text aus – zum Beispiel Berichte, Anleitungen oder Skripte."
+      },
+      {
+        "title": "Einstellungen prüfen",
+        "text": "Wähle die Seiten, und ob Kopf- und Fußzeilen wegfallen und Seiten durch eine Linie getrennt werden sollen."
+      },
+      {
+        "title": "Kopieren oder speichern",
+        "text": "Prüf das Ergebnis in der Vorschau, kopier es mit einem Tipp oder speichere es als MD-Datei."
+      }
+    ],
+    "why": [
+      {
+        "title": "Struktur bleibt erhalten",
+        "text": "Größere Schrift wird zur Überschrift, Aufzählungen zu Listen, ausgerichtete Spalten zu Markdown-Tabellen."
+      },
+      {
+        "title": "Hervorhebungen",
+        "text": "Fett und kursiv gesetzte Wörter werden als **fett** und *kursiv* übernommen."
+      },
+      {
+        "title": "Sauberer Lesefluss",
+        "text": "Zweispaltige Seiten werden Spalte für Spalte gelesen, wiederkehrende Seitenzahlen fallen weg."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die Umwandlung läuft in deinem Browser. Deine PDF bleibt auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wofür ist Markdown gut?",
+        "a": "Markdown ist einfacher Text mit wenigen Zeichen für Struktur, zum Beispiel # für Überschriften. Notiz-Apps, Wikis und KI-Chats verstehen ihn direkt."
+      },
+      {
+        "q": "Werden Bilder übernommen?",
+        "a": "Nein, Markdown-Dateien enthalten nur Text. Die Bilder holst du mit „Bilder aus PDF extrahieren“ heraus."
+      },
+      {
+        "q": "Wie genau werden Überschriften erkannt?",
+        "a": "Überschriften erkennt das Werkzeug an größerer oder fetter Schrift im Vergleich zum Fließtext. Bei sehr ungewöhnlichen Layouts kann eine Überschrift auch als normaler Absatz erscheinen."
+      },
+      {
+        "q": "Was ist mit gescannten PDFs?",
+        "a": "Scans enthalten keinen Text, nur Bilder. Dafür braucht es eine Texterkennung (OCR), etwa in der FaLe PDF-App."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-markdown",
+    "name": "PDF to Markdown",
+    "short": "PDF as Markdown with headings, lists and tables.",
+    "title": "PDF to Markdown – keep headings and lists, no upload | FaleNetwork",
+    "h1": "Convert PDF to Markdown",
+    "metaDescription": "Turn a PDF into Markdown: headings by font size, lists, tables, bold and italic. Great for notes, wikis and AI tools. Works in your browser, no upload.",
+    "lede": "Turn a PDF into structured Markdown – for notes, wikis or AI chats.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to Markdown",
+    "keywords": [
+      "md",
+      "markdown",
+      "notes",
+      "wiki",
+      "ai",
+      "chatbot",
+      "structure",
+      "headings",
+      "text"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Pick one or more PDFs with real text – reports, manuals or lecture notes, for example."
+      },
+      {
+        "title": "Check the settings",
+        "text": "Choose the pages, and whether headers and footers are left out and pages are separated by a rule."
+      },
+      {
+        "title": "Copy or save",
+        "text": "Check the result in the preview, copy it with one tap or save it as an MD file."
+      }
+    ],
+    "why": [
+      {
+        "title": "Structure is kept",
+        "text": "Larger type becomes a heading, bullet points become lists, aligned columns become Markdown tables."
+      },
+      {
+        "title": "Emphasis",
+        "text": "Bold and italic words are kept as **bold** and *italic*."
+      },
+      {
+        "title": "Clean reading flow",
+        "text": "Two-column pages are read column by column, repeating page numbers are dropped."
+      },
+      {
+        "title": "No upload",
+        "text": "The conversion runs in your browser. Your PDF stays on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is Markdown good for?",
+        "a": "Markdown is plain text with a few characters for structure, like # for headings. Note apps, wikis and AI chats understand it directly."
+      },
+      {
+        "q": "Are images included?",
+        "a": "No, Markdown files contain only text. Get the images with “Extract images from PDF”."
+      },
+      {
+        "q": "How accurately are headings detected?",
+        "a": "Headings are recognised by larger or bold type compared with the body text. With very unusual layouts, a heading may come out as a normal paragraph."
+      },
+      {
+        "q": "What about scanned PDFs?",
+        "a": "Scans contain no text, only images. That needs text recognition (OCR), for example in the FaLe PDF app."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Everything happens in your browser."
+      }
+    ]
+  }
+}

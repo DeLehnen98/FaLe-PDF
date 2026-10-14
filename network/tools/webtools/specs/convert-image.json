@@ -1,0 +1,72 @@
+{
+  "id": "convert-image",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/convert-image.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 44,
+  "related": ["compress-image", "png-to-jpg", "heic-to-jpg", "resize-image"],
+  "next": ["compress-image", "jpg-to-pdf"],
+  "de": {
+    "slug": "bild-umwandeln",
+    "name": "Bild umwandeln",
+    "short": "Bilder in JPG, PNG oder WebP umwandeln – auch viele auf einmal.",
+    "title": "Bild umwandeln – JPG, PNG, WebP, AVIF konvertieren | FaleNetwork",
+    "h1": "Bilder umwandeln",
+    "metaDescription": "Bilder zwischen JPG, PNG, WebP und AVIF umwandeln: viele auf einmal, Hintergrundfarbe für Transparenz, Aufnahmedatum bleibt. Gratis, ohne Upload, direkt im Browser.",
+    "lede": "Wandle Bilder in JPG, PNG oder WebP um – richtig gedreht und ohne Upload.",
+    "pickLabel": "Bilder auswählen",
+    "primaryButton": "Umwandeln",
+    "keywords": ["konvertieren", "png in jpg", "jpg in png", "webp in jpg", "heic in jpg", "avif", "format ändern", "bildformat"],
+    "steps": [
+      {"title": "Bilder auswählen", "text": "Wähle Fotos oder Grafiken aus – JPG, PNG, WebP, AVIF, GIF und BMP. HEIC klappt, wenn dein Browser es öffnen kann."},
+      {"title": "Zielformat wählen", "text": "Tippe auf JPG, PNG oder WebP (AVIF, falls dein Browser es speichern kann). Bei JPG legst du Qualität und Hintergrundfarbe für transparente Stellen fest."},
+      {"title": "Umwandeln und teilen", "text": "Tippe auf „Umwandeln“, vergleiche vorher und nachher und teile oder lade die Bilder herunter."}
+    ],
+    "why": [
+      {"title": "Transparenz im Griff", "text": "Beim Wechsel von PNG zu JPG wählst du die Farbe, die transparente Flächen bekommen – statt eines zufälligen Schwarz."},
+      {"title": "Datum bleibt, Standort geht", "text": "Das Aufnahmedatum kann erhalten bleiben, damit die Galerie richtig sortiert. Standort und Kameradaten werden entfernt."},
+      {"title": "Ehrlich bei Formaten", "text": "AVIF und WebP werden nur angeboten, wenn dein Browser sie wirklich speichern kann. HEIC öffnet nur ein Browser, der es kann – das siehst du sofort."},
+      {"title": "Viele Bilder auf einmal", "text": "Wandle ganze Fotoserien um. Die Bilder werden nacheinander verarbeitet, das schont den Speicher deines Handys."}
+    ],
+    "faq": [
+      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Die Umwandlung passiert in deinem Browser, deine Bilder bleiben auf dem Gerät."},
+      {"q": "Welches Format soll ich nehmen?", "a": "JPG für Fotos, die überall funktionieren sollen. PNG für Grafiken, Screenshots mit Text und Bilder mit Transparenz. WebP für kleine Dateien auf Webseiten. AVIF ist noch kleiner, kann aber nicht von jedem Programm geöffnet werden."},
+      {"q": "Was passiert mit transparenten Bereichen bei JPG?", "a": "JPG kennt keine Transparenz. Transparente Stellen bekommen deshalb die Hintergrundfarbe, die du wählst – voreingestellt ist Weiß."},
+      {"q": "Kann ich HEIC-Fotos vom iPhone umwandeln?", "a": "Ja, wenn dein Browser HEIC öffnen kann, zum Beispiel Safari auf iPhone, iPad oder Mac. Andere Browser können das Format oft nicht lesen; dann zeigen wir dir einen Hinweis, wie du das Foto als JPG bekommst."},
+      {"q": "Verliere ich beim Umwandeln Qualität?", "a": "Nach PNG ist die Umwandlung verlustfrei. JPG, WebP und AVIF komprimieren; mit der voreingestellten Qualität von 92 % ist der Unterschied kaum zu sehen. Prüf es mit dem Vorher-nachher-Regler."}
+    ]
+  },
+  "en": {
+    "slug": "convert-image",
+    "name": "Convert image",
+    "short": "Convert images to JPG, PNG or WebP – many at once.",
+    "title": "Convert image – JPG, PNG, WebP, AVIF converter | FaleNetwork",
+    "h1": "Convert images",
+    "metaDescription": "Convert images between JPG, PNG, WebP and AVIF: many at once, background colour for transparency, capture date kept. Free, no upload, right in your browser.",
+    "lede": "Convert images to JPG, PNG or WebP – rotated correctly and without uploading.",
+    "pickLabel": "Choose images",
+    "primaryButton": "Convert",
+    "keywords": ["converter", "png to jpg", "jpg to png", "webp to jpg", "heic to jpg", "avif", "change format", "image format"],
+    "steps": [
+      {"title": "Choose images", "text": "Pick photos or graphics – JPG, PNG, WebP, AVIF, GIF and BMP. HEIC works if your browser can open it."},
+      {"title": "Choose the format", "text": "Tap JPG, PNG or WebP (AVIF if your browser can save it). For JPG you set the quality and the background colour for transparent areas."},
+      {"title": "Convert and share", "text": "Tap “Convert”, compare before and after, then share or download the images."}
+    ],
+    "why": [
+      {"title": "Transparency under control", "text": "When going from PNG to JPG you choose the colour transparent areas get – instead of a random black."},
+      {"title": "Date stays, location goes", "text": "The capture date can be kept so your gallery sorts correctly. Location and camera data are removed."},
+      {"title": "Honest about formats", "text": "AVIF and WebP are only offered if your browser can really save them. HEIC only opens in a browser that supports it – you see that right away."},
+      {"title": "Many images at once", "text": "Convert whole photo series. Images are processed one after another, which spares your phone’s memory."}
+    ],
+    "faq": [
+      {"q": "Are my images uploaded?", "a": "No. The conversion happens in your browser; your images stay on your device."},
+      {"q": "Which format should I choose?", "a": "JPG for photos that should work everywhere. PNG for graphics, screenshots with text and images with transparency. WebP for small files on websites. AVIF is even smaller but not every app can open it."},
+      {"q": "What happens to transparent areas in JPG?", "a": "JPG has no transparency, so transparent areas get the background colour you choose – white by default."},
+      {"q": "Can I convert HEIC photos from an iPhone?", "a": "Yes, if your browser can open HEIC, for example Safari on iPhone, iPad or Mac. Other browsers often can’t read the format; then we show you how to get the photo as a JPG."},
+      {"q": "Do I lose quality when converting?", "a": "Converting to PNG is lossless. JPG, WebP and AVIF compress; at the default quality of 92 % the difference is hard to see. Check it with the before/after slider."}
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "remove-exif",
+  "category": "images",
+  "iconSvg": "<path d=\"M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 1.6-.6 3.3-1.4 4.8\"/><circle cx=\"12\" cy=\"10\" r=\"2.3\"/><path d=\"M3 3l18 18\"/>",
+  "module": "tools/remove-exif.js",
+  "accepts": ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif", "image/avif", ".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif", ".avif"],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 43,
+  "related": ["compress-image", "resize-image", "convert-image"],
+  "next": ["compress-image", "resize-image"],
+  "de": {
+    "slug": "exif-entfernen",
+    "name": "EXIF-Daten entfernen",
+    "short": "Standort und Kameradaten aus Fotos löschen, bevor du sie teilst.",
+    "title": "EXIF entfernen – Standort aus Fotos löschen | FaleNetwork",
+    "h1": "Standort und EXIF-Daten aus Fotos entfernen",
+    "metaDescription": "Sieh, was in deinen Fotos steckt – GPS-Standort, Kamera, Seriennummer, Datum – und entferne es verlustfrei vor dem Teilen. Ohne Upload, gratis, direkt im Browser.",
+    "lede": "Sieh nach, was deine Fotos verraten – und entferne den Standort, bevor du sie teilst.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "Daten entfernen",
+    "keywords": ["metadaten entfernen", "gps entfernen", "standort entfernen", "exif löschen", "exif anzeigen", "foto privatsphäre", "geotag"],
+    "steps": [
+      {"title": "Fotos auswählen", "text": "Wähle ein oder viele Fotos aus. Du siehst sofort, ob sie einen Standort, Kameradaten, Seriennummern oder andere Infos enthalten."},
+      {"title": "Prüfen", "text": "Tippe auf ein Foto, um die Details zu sehen – den Standort als Koordinaten, ohne dass eine Karte geladen wird. Auf Wunsch bleibt das Aufnahmedatum erhalten."},
+      {"title": "Bereinigen und teilen", "text": "Tippe auf „Daten entfernen“ und teile die bereinigten Fotos direkt – die Bildqualität bleibt exakt gleich."}
+    ],
+    "why": [
+      {"title": "Verlustfrei", "text": "JPG, PNG und WebP werden nicht neu berechnet. Nur die Zusatzdaten fliegen raus, die Bilddaten bleiben Byte für Byte gleich – das prüft FaLe bei jeder Datei."},
+      {"title": "Gründlich", "text": "Entfernt werden EXIF mit GPS, Kamera und Seriennummern, XMP, IPTC, Kommentare, eingebettete Vorschaubilder und Daten, die manche Handys hinter dem Bild anhängen."},
+      {"title": "Du siehst, was drin ist", "text": "Vor dem Löschen zeigt FaLe, was jedes Foto über dich verrät – ohne Karte, ohne Anfrage ins Internet."},
+      {"title": "Bleibt richtig gedreht", "text": "Die Ausrichtung bleibt als einzige Angabe erhalten, wenn das Foto sie zum richtigen Anzeigen braucht. Sie verrät nichts über dich."}
+    ],
+    "faq": [
+      {"q": "Warum sollte ich den Standort aus Fotos entfernen?", "a": "Viele Handys speichern beim Fotografieren die GPS-Position im Bild. Teilst du das Foto als Datei, etwa per E-Mail, in Foren oder auf Kleinanzeigen-Seiten, kann jeder sehen, wo es aufgenommen wurde – zum Beispiel deine Wohnung."},
+      {"q": "Werden meine Fotos hochgeladen?", "a": "Nein. Die Fotos werden in deinem Browser gelesen und bereinigt. Es wird auch keine Karte geladen; der Standort wird nur als Zahlen angezeigt."},
+      {"q": "Wird die Bildqualität schlechter?", "a": "Nein. Bei JPG, PNG und WebP werden nur die Zusatzdaten entfernt, die Bilddaten bleiben unverändert. HEIC- und AVIF-Fotos lassen sich im Browser nicht so bearbeiten – sie werden als JPG in sehr hoher Qualität neu gespeichert, und das steht dann dabei."},
+      {"q": "Was bleibt im Foto erhalten?", "a": "Das Farbprofil, damit die Farben stimmen, und die Drehung, falls das Foto sie braucht. Auf Wunsch auch das Aufnahmedatum. Alles andere wird entfernt."},
+      {"q": "Entfernen Messenger und soziale Netzwerke die Daten nicht ohnehin?", "a": "Manche tun das, aber nicht alle und nicht immer – etwa wenn du ein Foto als Dokument oder per E-Mail verschickst. Mit FaLe bist du auf der sicheren Seite und siehst vorher, was drinsteckt."},
+      {"q": "Kann ich viele Fotos auf einmal bereinigen?", "a": "Ja, ohne Begrenzung. Am Ende teilst du sie gemeinsam oder lädst sie als ZIP herunter."}
+    ]
+  },
+  "en": {
+    "slug": "remove-exif-data",
+    "name": "Remove EXIF data",
+    "short": "Delete location and camera data from photos before you share them.",
+    "title": "Remove EXIF data – delete location from photos | FaleNetwork",
+    "h1": "Remove location and EXIF data from photos",
+    "metaDescription": "See what your photos contain – GPS location, camera, serial number, date – and remove it losslessly before sharing. No upload, free, right in your browser.",
+    "lede": "See what your photos give away – and remove the location before you share them.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Remove data",
+    "keywords": ["remove metadata", "remove gps", "remove location", "delete exif", "exif viewer", "photo privacy", "geotag"],
+    "steps": [
+      {"title": "Choose photos", "text": "Pick one or many photos. You’ll see right away whether they contain a location, camera data, serial numbers or other info."},
+      {"title": "Check", "text": "Tap a photo to see the details – the location as coordinates, without loading a map. The capture date can be kept if you like."},
+      {"title": "Clean and share", "text": "Tap “Remove data” and share the cleaned photos right away – the image quality stays exactly the same."}
+    ],
+    "why": [
+      {"title": "Lossless", "text": "JPG, PNG and WebP are not re-encoded. Only the extra data goes, the image data stays identical byte for byte – FaLe checks this for every file."},
+      {"title": "Thorough", "text": "Removes EXIF with GPS, camera and serial numbers, XMP, IPTC, comments, embedded thumbnails and data some phones append after the image."},
+      {"title": "See what’s inside", "text": "Before deleting, FaLe shows what each photo reveals about you – no map, no request to the internet."},
+      {"title": "Stays upright", "text": "The orientation is kept as the only detail when the photo needs it to be shown correctly. It reveals nothing about you."}
+    ],
+    "faq": [
+      {"q": "Why should I remove the location from photos?", "a": "Many phones store the GPS position in the picture. If you share the photo as a file, for example by e-mail, in forums or on classifieds sites, anyone can see where it was taken – your home, for example."},
+      {"q": "Are my photos uploaded?", "a": "No. The photos are read and cleaned in your browser. No map is loaded either; the location is only shown as numbers."},
+      {"q": "Does the image quality get worse?", "a": "No. For JPG, PNG and WebP only the extra data is removed, the image data stays unchanged. HEIC and AVIF photos can’t be edited like this in the browser – they are saved again as JPG at very high quality, and we say so."},
+      {"q": "What stays in the photo?", "a": "The colour profile, so colours stay right, and the rotation if the photo needs it. Optionally the capture date. Everything else is removed."},
+      {"q": "Don’t messengers and social networks remove this data anyway?", "a": "Some do, but not all and not always – for example when you send a photo as a document or by e-mail. With FaLe you’re on the safe side and see what’s inside beforehand."},
+      {"q": "Can I clean many photos at once?", "a": "Yes, without a limit. At the end, share them together or download them as a ZIP."}
+    ]
+  }
+}

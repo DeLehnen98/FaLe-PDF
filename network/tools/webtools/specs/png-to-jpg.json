@@ -1,0 +1,149 @@
+{
+  "id": "png-to-jpg",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/png-to-jpg.js",
+  "accepts": [
+    "image/png",
+    ".png"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 45,
+  "related": [
+    "convert-image",
+    "compress-image",
+    "jpg-to-png"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
+  "de": {
+    "slug": "png-in-jpg",
+    "name": "PNG in JPG",
+    "short": "PNG-Bilder als JPG speichern – mit Hintergrundfarbe für Transparenz.",
+    "title": "PNG in JPG umwandeln – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "PNG in JPG umwandeln",
+    "metaDescription": "PNG in JPG umwandeln: transparente Stellen bekommen eine Farbe deiner Wahl, Qualität einstellbar, viele Bilder auf einmal. Gratis, ohne Upload, im Browser.",
+    "lede": "Mach aus PNG-Bildern JPGs – kleiner und überall lesbar.",
+    "pickLabel": "PNG auswählen",
+    "primaryButton": "In JPG umwandeln",
+    "keywords": [
+      "png zu jpg",
+      "png jpeg",
+      "screenshot jpg",
+      "png konvertieren",
+      "png verkleinern"
+    ],
+    "steps": [
+      {
+        "title": "PNG auswählen",
+        "text": "Wähle ein oder mehrere PNG-Bilder aus, zum Beispiel Screenshots oder Grafiken."
+      },
+      {
+        "title": "Hintergrund und Qualität",
+        "text": "Leg fest, welche Farbe transparente Stellen bekommen, und wie hoch die JPG-Qualität sein soll."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In JPG umwandeln“ und teile oder lade die JPGs herunter – mehrere auch als ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Deutlich kleiner",
+        "text": "Fotos als PNG sind oft riesig. Als JPG brauchen sie meist nur einen Bruchteil des Speichers."
+      },
+      {
+        "title": "Transparenz mit Farbe",
+        "text": "Statt schwarzer Flecken bekommen transparente Bereiche die Farbe, die du wählst."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die Bilder bleiben auf deinem Gerät – auch bei vertraulichen Screenshots."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Werden meine PNGs hochgeladen?",
+        "a": "Nein. Die Umwandlung passiert vollständig in deinem Browser."
+      },
+      {
+        "q": "Warum wird mein Logo eckig mit weißem Rand?",
+        "a": "JPG kann keine Transparenz speichern. Transparente Stellen bekommen die gewählte Hintergrundfarbe. Brauchst du Transparenz, bleib bei PNG oder nimm WebP."
+      },
+      {
+        "q": "Ist JPG immer kleiner als PNG?",
+        "a": "Bei Fotos fast immer. Bei einfachen Grafiken mit wenigen Farben kann PNG kleiner und schärfer sein – dann lohnt sich die Umwandlung nicht."
+      },
+      {
+        "q": "Kann ich viele PNGs auf einmal umwandeln?",
+        "a": "Ja, ohne Begrenzung. Am Ende kannst du alle als ZIP herunterladen."
+      }
+    ]
+  },
+  "en": {
+    "slug": "png-to-jpg",
+    "name": "PNG to JPG",
+    "short": "Save PNG images as JPG – with a background colour for transparency.",
+    "title": "PNG to JPG converter – free, no upload | FaleNetwork",
+    "h1": "Convert PNG to JPG",
+    "metaDescription": "Convert PNG to JPG: transparent areas get a colour of your choice, adjustable quality, many images at once. Free, no upload, right in your browser.",
+    "lede": "Turn PNG images into JPGs – smaller and readable everywhere.",
+    "pickLabel": "Choose PNG",
+    "primaryButton": "Convert to JPG",
+    "keywords": [
+      "png to jpeg",
+      "screenshot to jpg",
+      "png converter",
+      "shrink png"
+    ],
+    "steps": [
+      {
+        "title": "Choose PNG",
+        "text": "Pick one or more PNG images, for example screenshots or graphics."
+      },
+      {
+        "title": "Background and quality",
+        "text": "Choose the colour transparent areas get and how high the JPG quality should be."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to JPG” and share or download the JPGs – several also as a ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Much smaller",
+        "text": "Photos saved as PNG are often huge. As JPG they usually need only a fraction of the space."
+      },
+      {
+        "title": "Transparency with colour",
+        "text": "Instead of black patches, transparent areas get the colour you choose."
+      },
+      {
+        "title": "No upload",
+        "text": "The images stay on your device – even confidential screenshots."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Are my PNGs uploaded?",
+        "a": "No. The conversion happens entirely in your browser."
+      },
+      {
+        "q": "Why does my logo get a white box?",
+        "a": "JPG can’t store transparency. Transparent areas get the chosen background colour. If you need transparency, stay with PNG or use WebP."
+      },
+      {
+        "q": "Is JPG always smaller than PNG?",
+        "a": "For photos almost always. Simple graphics with few colours can be smaller and sharper as PNG – then converting isn’t worth it."
+      },
+      {
+        "q": "Can I convert many PNGs at once?",
+        "a": "Yes, without a limit. At the end you can download them all as a ZIP."
+      }
+    ]
+  }
+}

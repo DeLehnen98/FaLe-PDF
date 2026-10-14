@@ -1,4 +1,5 @@
 /* FaleNetwork website – layout & components. Requires fale-tokens.css. */
+@font-face { font-family: "Bricolage Grotesque"; src: url("/assets/wt/vendor/fonts/BricolageGrotesque-Bold.woff") format("woff"); font-weight: 700 800; font-style: normal; font-display: swap; }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--bg); scroll-padding-top: 16px; }
 body {
@@ -44,12 +45,16 @@ ul, ol { margin: 0; padding: 0; }
 .icon-btn .i-sun { display: none; }
 .icon-btn[aria-pressed="true"] .i-sun { display: block; }
 .icon-btn[aria-pressed="true"] .i-moon { display: none; }
-.nav { order: 3; width: 100%; display: flex; flex-wrap: wrap; gap: 0 2px; margin: 0 -9px 6px; }
+.nav { order: 3; width: calc(100% + 32px); display: flex; flex-wrap: nowrap; gap: 2px; margin: 0 -16px 6px; padding: 0 7px;
+  overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; scroll-padding-inline: 16px;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+.nav::-webkit-scrollbar { display: none; }
+@media (max-width: 819px) { .nav a { padding: 0 8px; font-size: 0.9rem; } }
 .nav a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 9px; white-space: nowrap; border-radius: 999px; color: var(--text-2); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
 .nav a:hover { color: var(--text); background: var(--surface-2); }
 .nav a[aria-current="page"] { color: var(--primary); background: var(--primary-soft); }
 @media (min-width: 820px) {
-  .nav { order: 0; width: auto; margin: 0 8px 0 0; }
+  .nav { order: 0; width: auto; margin: 0 8px 0 0; padding: 0; overflow: visible; -webkit-mask-image: none; mask-image: none; }
 }
 
 /* ---------- Buttons ---------- */

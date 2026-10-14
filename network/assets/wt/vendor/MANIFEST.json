@@ -20,6 +20,18 @@
       "source": "https://www.npmjs.com/package/jszip",
       "version": "3.10.1"
     },
+    "docx": {
+      "name": "docx",
+      "license": "MIT",
+      "source": "https://www.npmjs.com/package/docx",
+      "version": "9.7.1"
+    },
+    "pptxgenjs": {
+      "name": "PptxGenJS",
+      "license": "MIT",
+      "source": "https://www.npmjs.com/package/pptxgenjs",
+      "version": "4.0.1"
+    },
     "fonts": {
       "name": "Bricolage Grotesque (Bold)",
       "license": "OFL-1.1",
@@ -29,11 +41,35 @@
   },
   "files": {
     "lib/shared/imgproc.js": "0000517127c51c6d09ad8bdba2cfe5e782542874443743be79007ed56d7e2962",
+    "lib/shared/imgworker.js": "b9452bc2c74aed459c355f66ac44ddd9e5d17c6f78378d87f51b0b0a834c58e3",
     "lib/shared/limits.js": "f4799925817b2ed03b3d219147b093fb26ba84c2d5bf6198cb0244722f47e5bb",
+    "lib/shared/office/chart-xml.js": "e0de5fdce4c1a264aef9e385e8cd509a878d2a333dea1cd83861f42c0271fc65",
+    "lib/shared/office/chart.js": "7becf6fd4e924a4ef882c79091a23560e6888c3f4965d432d901ca6b2e1d8ee6",
+    "lib/shared/office/docmodel.js": "850fe04c1eadfcb5d2c1db391e962c8c209570cb6499c7356b2df0e724e2d8f1",
+    "lib/shared/office/docpdf.js": "916467b356da95ccaec6f9136b5221e1e21a341a37e31a90747e30e07b87afae",
+    "lib/shared/office/docstyles.js": "52a88886d27346bbd90b3cb7c21993500006ab23af7a605a6102ed421c577ed1",
+    "lib/shared/office/docx-read.js": "232d8de12665028128c59b075b4d11bc563c30dabf02858e28cf032ebcf10cc0",
+    "lib/shared/office/docx-write.js": "c690ab9abf87ddb51f2073c1a2fbdadd563046a53b30c9ff9ee20588b6767c5b",
+    "lib/shared/office/fonts.js": "bad3c23dc19e1cd300090d924fe1fff620ceeb8f2c9f528ac989758f4ba098b0",
+    "lib/shared/office/formula.js": "93c78f019dd7dc4b0e463227d57d41c54f72a62d5ce98f1e8e39fb5ec360b3aa",
+    "lib/shared/office/kinds.js": "41866167df71b57aac21962533dac9ca59732747d12ac0d3a6408fd5eedc82b5",
+    "lib/shared/office/numfmt.js": "622cc0fee1ef7f9a3c71668ae8ea0aca3f45cb4151cd470591de239ca4f72eef",
+    "lib/shared/office/pdftext.js": "be75c6d13edb89025b5ad62cb03807a678aec0f07763e4ac8b741ee0d3789d78",
+    "lib/shared/office/pptx-read.js": "20774ee378f4af0ae5d4fc6bf47fc3af565e0b0ad40fbe82b7891bf92c5396bf",
+    "lib/shared/office/sheetfx.js": "09d58496561d4deecbc83b859142ef12cff5ca1cd8bbb537fc837a34bbbc01cc",
+    "lib/shared/office/sheetpdf.js": "19acfb55a1dfab60fcbe39a522c01157dab7c22ea2e90989611ecd166920c422",
+    "lib/shared/office/slide-render.js": "54e4d5e3dcde29679b22d546089c113b9ce96382aa656e5169cb09806cc6d92a",
+    "lib/shared/office/vendor.js": "e94ca7f150d7de617c743aeb7eeb4472b0747be406be05480d7a00483ef99abb",
+    "lib/shared/office/workbook.js": "468682abb5acecde82d836d9a0f38ced903976b35c6a9618d0eb1b4584a67cf9",
+    "lib/shared/office/xlsx-read.js": "57f34e968cd243d4259b20547dc82c23776b3ce8bb18f7500797dc52b1d32bc1",
     "lib/shared/passphoto-templates.js": "16f0f55be0284ca8dc85fdc6ca58a70704eb08c137d7368b2607bc379622244e",
     "lib/shared/pdfcrypt.js": "4d5865b4fb3a49f716f87c6d0a5743a3bb6754b72ba5aec2c18a10727f65e47c",
+    "lib/shared/pdfstruct.js": "675390871f850f93040d4ae62fe50b9a3849b568fa3b9b17c2fac087dcf6524c",
+    "lib/shared/qr.js": "6a6c6342776501cccd90cf37b08a90a99638628eff223630eeeb7438e7a38556",
     "lib/shared/scanproc.js": "c7ff6ef869beaba987e8d66202d6989485dd2d8a1c10327f6d9fa30ce0068d8c",
     "lib/shared/zip.js": "cb4dd2ddd431eb8fcf23986c2972b4f49cff9c9d1277ae3a2ba89a2f6d035095",
+    "vendor/docx/LICENSE": "b5b2364c0c95a26b2a2399d7e706a61acac680be1d5b180b00592ee85830bffb",
+    "vendor/docx/docx.iife.js": "e7121202b36c04b3b23c9b0e0bba63698233606f688f5656efe90a85808b1c4d",
     "vendor/fonts/BricolageGrotesque-Bold.woff": "3110408f9a8f83eea33f886af07e3951c6eff114efd8f35d5e94e2cb3b223509",
     "vendor/fonts/OFL.txt": "a093964b3ca71526ae129d0d5f39bc9dba905ae5ebeb72d741bb0d4ed2d5d5b0",
     "vendor/jszip/LICENSE.markdown": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
@@ -239,6 +275,8 @@
     "vendor/pdfjs/wasm/LICENSE_QCMS": "36d847ae882f6574ebc72f56a4f354e4f104fde4a584373496482e97d52d31bc",
     "vendor/pdfjs/wasm/jbig2.wasm": "e6bee67724a7b5436fe8162638e3708cfc8d52b6342db69a49715e30ff27cfdc",
     "vendor/pdfjs/wasm/openjpeg.wasm": "004a0e62db930ba9ff2a22212f4554d0bb57a0635a8287caf70f98117cee14ba",
-    "vendor/pdfjs/wasm/qcms_bg.wasm": "663d86126d5f5fcb1c61490f94353e2a8375660b8c5498ab3ebab5a34b08800e"
+    "vendor/pdfjs/wasm/qcms_bg.wasm": "663d86126d5f5fcb1c61490f94353e2a8375660b8c5498ab3ebab5a34b08800e",
+    "vendor/pptxgenjs/LICENSE": "7a2bfe96150786ed1908b8e63f98ebab88875c1e79e28faff6649e0f11f77e52",
+    "vendor/pptxgenjs/pptxgen.bundle.js": "f5a38b9844f8f0e1595019c3d1f360ff222f898d4b8dd43906bd43e94ad0c81b"
   }
 }

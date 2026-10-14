@@ -1,0 +1,76 @@
+{
+  "id": "scan-to-pdf",
+  "category": "images",
+  "icon": "scan",
+  "module": "tools/scan-to-pdf.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".heic", ".heif"],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 35,
+  "related": ["jpg-to-pdf", "compress-pdf", "merge-pdf"],
+  "next": ["compress-pdf", "merge-pdf"],
+  "needs": ["pdflib"],
+  "de": {
+    "slug": "dokument-scannen",
+    "name": "Dokument scannen",
+    "short": "Mit der Handykamera Dokumente scannen – gerade gerückt, als PDF.",
+    "title": "Dokument scannen – mit dem Handy zur PDF, gratis | FaleNetwork",
+    "h1": "Dokumente scannen",
+    "metaDescription": "Dokumente mit der Handykamera scannen: Ränder erkennen, schräge Fotos gerade rücken, Schatten entfernen, mehrere Seiten als PDF. Gratis, ohne Upload, ohne App.",
+    "lede": "Fotografiere Seiten mit dem Handy – FaLe schneidet sie zu, rückt sie gerade und macht eine PDF daraus.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": ["scanner", "scannen", "scan app", "handy scanner", "beleg scannen", "brief scannen", "foto zu pdf", "zuschneiden", "perspektive"],
+    "steps": [
+      {"title": "Seiten fotografieren", "text": "Tippe auf „Kamera“ und fotografiere die erste Seite, dann über „+“ die weiteren. Fotos aus der Galerie gehen auch."},
+      {"title": "Prüfen und anpassen", "text": "Die Blattränder werden automatisch erkannt. Passen sie nicht, ziehst du die Ecken mit der Lupe genau hin. Wähle einen Filter, dreh Seiten und ändere die Reihenfolge."},
+      {"title": "PDF erstellen", "text": "Tippe auf „PDF erstellen“ und teile oder speichere die PDF – oder lass dir jede Seite als JPG geben."}
+    ],
+    "why": [
+      {"title": "Gerade gerückt", "text": "Schräg fotografierte Blätter werden perspektivisch entzerrt, als hättest du sie auf einen Scanner gelegt."},
+      {"title": "Ecken mit Lupe", "text": "Große Anfasser für den Finger und eine Lupe, die zeigt, wo die Ecke genau sitzt – auch auf kleinen Displays."},
+      {"title": "Lesbare Filter", "text": "Farbe verbessert, Graustufen oder Schwarzweiß machen das Papier weiß und die Schrift kräftig. Schatten lassen sich zusätzlich entfernen."},
+      {"title": "Keine App, kein Upload", "text": "Alles läuft im Browser auf deinem Handy. Verträge, Ausweise und Belege verlassen dein Gerät nicht."}
+    ],
+    "faq": [
+      {"q": "Brauche ich eine App?", "a": "Nein. Öffne die Seite im Browser deines Handys und tippe auf „Kamera“. Nach dem ersten Besuch funktioniert das Werkzeug sogar ohne Internet."},
+      {"q": "Werden meine Dokumente hochgeladen?", "a": "Nein. Fotos und PDF entstehen nur in deinem Browser."},
+      {"q": "Was, wenn die Ränder nicht erkannt werden?", "a": "Dann liegen die Ecken auf den Fotoecken, und du ziehst sie auf die Blattecken. Die Lupe hilft dabei. Besonders gut klappt die Erkennung mit einem dunklen Untergrund unter hellem Papier."},
+      {"q": "Welcher Filter ist der richtige?", "a": "„Farbe verbessert“ für Briefe mit Logos und Stempeln, „Graustufen“ für normale Texte, „Schwarzweiß“ für reine Textseiten und kleine Dateien. „Original“ lässt die Farben, wie sie sind."},
+      {"q": "Kann ich die PDF durchsuchen?", "a": "Die PDF enthält die Seiten als Bilder; eine Texterkennung findet hier nicht statt. Für E-Mail, Ämter und Archiv reicht das meist völlig."},
+      {"q": "Wie bekomme ich die PDF kleiner?", "a": "Wähle bei „Dateigröße“ die Stufe „Klein“ oder den Filter Schwarzweiß. Danach kannst du mit „Weiter mit: PDF komprimieren“ noch nachlegen."}
+    ]
+  },
+  "en": {
+    "slug": "scan-to-pdf",
+    "name": "Scan to PDF",
+    "short": "Scan documents with your phone camera – straightened, as a PDF.",
+    "title": "Scan to PDF – scan documents with your phone, free | FaleNetwork",
+    "h1": "Scan documents",
+    "metaDescription": "Scan documents with your phone camera: edges detected automatically, skewed photos straightened, shadows removed, several pages as one PDF. Free, no upload, no app.",
+    "lede": "Photograph pages with your phone – FaLe crops them, straightens them and makes a PDF.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Create PDF",
+    "keywords": ["scanner", "scan app", "phone scanner", "scan receipt", "scan letter", "photo to pdf", "crop", "perspective"],
+    "steps": [
+      {"title": "Photograph the pages", "text": "Tap “Camera” and take the first page, then add more with “+”. Photos from your gallery work too."},
+      {"title": "Check and adjust", "text": "The page edges are detected automatically. If they’re off, drag the corners into place with the magnifier. Pick a filter, rotate pages and change the order."},
+      {"title": "Create the PDF", "text": "Tap “Create PDF” and share or save it – or get every page as a JPG."}
+    ],
+    "why": [
+      {"title": "Straightened", "text": "Pages photographed at an angle are corrected in perspective, as if you had put them on a flatbed scanner."},
+      {"title": "Corners with a magnifier", "text": "Big handles for your finger and a magnifier that shows exactly where the corner sits – even on small screens."},
+      {"title": "Readable filters", "text": "Enhanced colour, greyscale or black & white make the paper white and the text crisp. Shadows can be removed as well."},
+      {"title": "No app, no upload", "text": "Everything runs in the browser on your phone. Contracts, IDs and receipts never leave your device."}
+    ],
+    "faq": [
+      {"q": "Do I need an app?", "a": "No. Open the page in your phone’s browser and tap “Camera”. After the first visit the tool even works offline."},
+      {"q": "Are my documents uploaded?", "a": "No. Photos and PDF are created only in your browser."},
+      {"q": "What if the edges aren’t detected?", "a": "Then the corners sit on the photo’s corners and you drag them onto the page corners. The magnifier helps. Detection works best with light paper on a dark surface."},
+      {"q": "Which filter should I use?", "a": "“Enhanced colour” for letters with logos and stamps, “Greyscale” for normal text, “Black & white” for plain text pages and small files. “Original” keeps the colours as they are."},
+      {"q": "Is the PDF searchable?", "a": "The PDF contains the pages as images; no text recognition is done here. For e-mail, offices and archives that’s usually all you need."},
+      {"q": "How do I make the PDF smaller?", "a": "Choose “Small” under “File size” or the black & white filter. Afterwards you can go further with “Continue with: Compress PDF”."}
+    ]
+  }
+}

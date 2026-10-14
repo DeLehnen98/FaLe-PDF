@@ -1,0 +1,68 @@
+{
+  "id": "split-halves",
+  "category": "organize",
+  "iconSvg": "<path d=\"M3 5h18v14H3z\"/><path d=\"M12 3v18\" stroke-dasharray=\"2 2\"/>",
+  "module": "tools/split-halves.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "related": ["split-pdf", "rotate-pdf", "organize-pdf"],
+  "next": ["compress-pdf", "organize-pdf", "rotate-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "doppelseiten-teilen",
+    "name": "Doppelseiten teilen",
+    "short": "Buchscans und Doppelseiten in einzelne Seiten teilen.",
+    "title": "PDF-Doppelseiten teilen – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "Doppelseiten teilen",
+    "metaDescription": "Gescannte Buch-Doppelseiten oder zwei Seiten pro Blatt in Einzelseiten teilen: links/rechts oder oben/unten, Mitte automatisch finden. Ohne Upload, gratis.",
+    "lede": "Ein Scan, zwei Buchseiten? Daraus werden zwei saubere Einzelseiten.",
+    "primaryButton": "Seiten teilen",
+    "keywords": ["buchscan", "seite halbieren", "zwei seiten pro blatt", "2 auf 1", "doppelseite trennen", "seiten zerschneiden", "a3 in a4"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle den Scan mit Doppelseiten oder zwei Seiten pro Blatt aus."},
+      {"title": "Richtung wählen", "text": "Links | Rechts für Bücher, Oben | Unten für übereinander gedruckte Seiten. Die Vorschau zeigt, wo geschnitten wird. Den Umschlag lässt du auf Wunsch ganz."},
+      {"title": "Teilen und speichern", "text": "Tippe auf „Seiten teilen“ und lade die PDF mit den Einzelseiten herunter."}
+    ],
+    "why": [
+      {"title": "Mitte automatisch gefunden", "text": "Liegt das Buch schief auf dem Scanner, ist die Mitte oft nicht genau in der Mitte. Das Werkzeug sucht den hellen Streifen zwischen den Seiten."},
+      {"title": "Umschlag bleibt ganz", "text": "Erste und letzte Seite können ungeteilt bleiben. Auf Wunsch werden nur Querformat-Seiten geteilt, Hochformat-Seiten bleiben, wie sie sind."},
+      {"title": "Auch von rechts nach links", "text": "Für Bücher, die von rechts nach links gelesen werden, kommt die rechte Hälfte zuerst."},
+      {"title": "Ohne Qualitätsverlust", "text": "Es wird nichts neu berechnet: Jede Hälfte zeigt den Originalinhalt, Text bleibt durchsuchbar."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Das Teilen passiert in deinem Browser, dein Scan verlässt dein Gerät nicht."},
+      {"q": "Wird die Bildqualität schlechter?", "a": "Nein. Jede Hälfte zeigt einen Ausschnitt der Originalseite, nichts wird neu berechnet oder komprimiert. Deshalb bleibt auch Text durchsuchbar."},
+      {"q": "Wird die Datei dadurch doppelt so groß?", "a": "Nein. Beide Hälften verweisen auf denselben Inhalt, die Datei wächst kaum."},
+      {"q": "Was passiert mit Seiten, die keine Doppelseiten sind?", "a": "Mit „Nur passende Seiten teilen“ werden beim Teilen in Links | Rechts nur Querformat-Seiten geteilt, bei Oben | Unten nur Hochformat-Seiten. Alle anderen bleiben ganz."},
+      {"q": "Die automatische Mitte passt nicht – was tun?", "a": "Schalte „Mitte automatisch finden“ aus, dann wird genau in der Mitte geteilt. In der Vorschau kannst du mit den Pfeilen durch die Seiten blättern und siehst jeden Schnitt."}
+    ]
+  },
+  "en": {
+    "slug": "split-pdf-pages-in-half",
+    "name": "Split pages in half",
+    "short": "Turn book scans and 2-up sheets into single pages.",
+    "title": "Split PDF pages in half – free, no upload | FaleNetwork",
+    "h1": "Split PDF pages in half",
+    "metaDescription": "Split scanned book spreads or two pages per sheet into single pages: left/right or top/bottom, with automatic gutter detection. No upload, free.",
+    "lede": "One scan, two book pages? They become two clean single pages.",
+    "primaryButton": "Split pages",
+    "keywords": ["book scan", "halve page", "two pages per sheet", "2-up", "spread", "cut pages in half", "a3 to a4"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick the scan with book spreads or two pages per sheet."},
+      {"title": "Choose the direction", "text": "Left | right for books, top | bottom for pages printed one above the other. The preview shows where the cut goes. The cover can stay whole."},
+      {"title": "Split and save", "text": "Tap “Split pages” and download the PDF with single pages."}
+    ],
+    "why": [
+      {"title": "Gutter found automatically", "text": "If the book lay slightly off on the scanner, the middle is rarely exactly in the middle. The tool looks for the light strip between the pages."},
+      {"title": "Cover stays whole", "text": "First and last page can stay unsplit. If you like, only landscape pages are split and portrait pages stay as they are."},
+      {"title": "Right to left, too", "text": "For books read from right to left, the right half comes first."},
+      {"title": "No quality loss", "text": "Nothing is recalculated: each half shows the original content, text stays searchable."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Splitting happens in your browser and your scan never leaves your device."},
+      {"q": "Does the image quality get worse?", "a": "No. Each half shows part of the original page, nothing is recalculated or compressed. That’s also why text stays searchable."},
+      {"q": "Does the file double in size?", "a": "No. Both halves point to the same content, so the file hardly grows."},
+      {"q": "What about pages that aren’t spreads?", "a": "With “Only split suitable pages”, left | right only splits landscape pages and top | bottom only portrait pages. All others stay whole."},
+      {"q": "The automatic gutter is off – what now?", "a": "Turn off “Find the gutter automatically” to split exactly in the middle. In the preview you can flip through the pages with the arrows and see every cut."}
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "repair-pdf",
+  "category": "optimize",
+  "icon": "repair",
+  "module": "tools/repair-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["compress-pdf", "organize-pdf", "grayscale-pdf"],
+  "next": ["compress-pdf", "organize-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "pdf-reparieren",
+    "name": "PDF reparieren",
+    "short": "Beschädigte PDFs retten, die sich nicht öffnen lassen.",
+    "title": "PDF reparieren – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "PDF reparieren",
+    "metaDescription": "Beschädigte PDF retten: Dateistruktur neu aufbauen, fehlende Teile umgehen, notfalls Seiten als Bild sichern. Mit ehrlichem Bericht. Gratis, ohne Upload.",
+    "lede": "Die PDF lässt sich nicht öffnen oder zeigt Fehler? Hier wird gerettet, was zu retten ist.",
+    "primaryButton": "Reparieren",
+    "keywords": ["kaputt", "beschädigt", "defekt", "lässt sich nicht öffnen", "retten", "wiederherstellen", "fehlerhaft", "abgeschnitten"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die beschädigte PDF aus. Auch mehrere Dateien auf einmal sind möglich."},
+      {"title": "Reparieren", "text": "Tippe auf „Reparieren“. Zuerst wird die Dateistruktur verlustfrei neu aufgebaut. Klappt das nicht für alle Seiten, werden die übrigen als Bild gesichert."},
+      {"title": "Ergebnis prüfen und speichern", "text": "Unter der Datei steht, welcher Weg funktioniert hat und was eventuell fehlt. Dann lädst du die reparierte PDF herunter."}
+    ],
+    "why": [
+      {"title": "Erst verlustfrei", "text": "Zuerst wird versucht, die Datei nur neu zu ordnen – Text, Bilder, Links und Formulare bleiben dann vollständig erhalten."},
+      {"title": "Dann Seite für Seite", "text": "Lässt sich eine einzelne Seite nicht reparieren, wird nur diese als Bild gesichert. Der Rest bleibt echte PDF."},
+      {"title": "Ehrlicher Bericht", "text": "Du erfährst genau, welche Methode funktioniert hat, welche Seiten als Bild gerettet wurden und ob Inhalte fehlen."},
+      {"title": "Jede Seite geprüft", "text": "Bevor du die Datei bekommst, wird jede Seite des Ergebnisses testweise dargestellt."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Reparatur läuft vollständig in deinem Browser. Gerade bei wichtigen Dokumenten bleibt so alles auf deinem Gerät."},
+      {"q": "Welche Schäden können repariert werden?", "a": "Häufige Fälle sind falsche oder fehlende Querverweise, ein fehlender Dateischluss, ein kaputtes Seitenverzeichnis und abgebrochene Downloads. Was in der Datei gar nicht mehr vorhanden ist, kann allerdings niemand zurückholen."},
+      {"q": "Was bedeutet „als Bild gesichert“?", "a": "Wenn eine Seite nur noch angezeigt, aber nicht mehr sauber aufgebaut werden kann, wird ein Bild der Seite gespeichert. Sie sieht aus wie vorher, der Text ist dort aber nicht mehr markierbar oder durchsuchbar."},
+      {"q": "Was passiert, wenn nichts mehr zu retten ist?", "a": "Wenn in der Datei keine einzige Seite mehr zu finden ist, etwa weil sie leer ist oder eigentlich ein anderes Format hat, sagt dir das Werkzeug das klar – du bekommst keine leere oder kaputte Datei."},
+      {"q": "Funktioniert das auch bei passwortgeschützten PDFs?", "a": "Ja, sofern du das Passwort kennst und die Verschlüsselung selbst nicht beschädigt ist. Die reparierte Datei wird ohne Passwort gespeichert."}
+    ]
+  },
+  "en": {
+    "slug": "repair-pdf",
+    "name": "Repair PDF",
+    "short": "Rescue damaged PDFs that won’t open.",
+    "title": "Repair PDF – free, no upload | FaleNetwork",
+    "h1": "Repair a damaged PDF",
+    "metaDescription": "Rescue a damaged PDF: rebuild the file structure, work around missing parts and save pages as images as a last resort. Honest report, free, no upload.",
+    "lede": "The PDF won’t open or shows errors? Here we rescue whatever can be rescued.",
+    "primaryButton": "Repair",
+    "keywords": ["broken", "corrupt", "damaged", "won't open", "recover", "restore", "fix pdf", "truncated"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick the damaged PDF. Several files at once work, too."},
+      {"title": "Repair", "text": "Tap “Repair”. First the file structure is rebuilt without loss. If that doesn’t work for every page, the rest is saved as images."},
+      {"title": "Check and save", "text": "Under the file you see which method worked and what might be missing. Then download the repaired PDF."}
+    ],
+    "why": [
+      {"title": "Lossless first", "text": "First the tool only tries to put the file back in order – text, images, links and forms then stay complete."},
+      {"title": "Then page by page", "text": "If a single page can’t be repaired, only that page is saved as an image. The rest stays a real PDF."},
+      {"title": "Honest report", "text": "You learn exactly which method worked, which pages were saved as images and whether content is missing."},
+      {"title": "Every page checked", "text": "Before you get the file, every page of the result is test-rendered."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. The repair runs entirely in your browser. Especially with important documents, everything stays on your device."},
+      {"q": "Which kinds of damage can be repaired?", "a": "Common cases are wrong or missing cross-references, a missing end of file, a broken page tree and interrupted downloads. What is no longer in the file at all, though, nobody can bring back."},
+      {"q": "What does “saved as an image” mean?", "a": "If a page can still be displayed but not rebuilt properly, a picture of the page is saved. It looks as before, but text on it can no longer be selected or searched."},
+      {"q": "What if nothing can be rescued?", "a": "If not a single page can be found in the file, for example because it is empty or actually a different format, the tool tells you so clearly – you don’t get an empty or broken file."},
+      {"q": "Does it work with password-protected PDFs?", "a": "Yes, as long as you know the password and the encryption itself isn’t damaged. The repaired file is saved without a password."}
+    ]
+  }
+}

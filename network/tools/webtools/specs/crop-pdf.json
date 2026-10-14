@@ -1,0 +1,71 @@
+{
+  "id": "crop-pdf",
+  "category": "edit",
+  "icon": "crop",
+  "module": "tools/crop-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 46,
+  "related": ["resize-pdf", "edit-pdf-text", "compress-pdf"],
+  "next": ["compress-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-zuschneiden",
+    "name": "PDF zuschneiden",
+    "short": "Weiße Ränder entfernen oder Ausschnitt wählen.",
+    "title": "PDF zuschneiden – Ränder entfernen, ohne Upload | FaleNetwork",
+    "h1": "PDF zuschneiden",
+    "metaDescription": "Entferne weiße Ränder automatisch oder ziehe den Ausschnitt mit großen Griffen – für alle, gerade, ungerade oder bestimmte Seiten. Verlustfrei, gratis, ohne Upload.",
+    "lede": "Ränder automatisch entfernen oder den Ausschnitt mit dem Finger ziehen – verlustfrei.",
+    "primaryButton": "Zuschneiden",
+    "keywords": ["ränder entfernen", "beschneiden", "rand abschneiden", "ausschnitt", "cropbox", "trimmen"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, deren Seiten du zuschneiden möchtest."},
+      {"title": "Ausschnitt festlegen", "text": "„Weiße Ränder entfernen“ erkennt den Inhalt jeder Seite selbst. Bei „Eigener Ausschnitt“ ziehst du den Rahmen mit den Griffen oder gibst die Ränder in Millimetern ein."},
+      {"title": "Zuschneiden und speichern", "text": "Wähle, für welche Seiten es gilt, tippe auf „Zuschneiden“ und lade die PDF herunter."}
+    ],
+    "why": [
+      {"title": "Ränder weg mit einem Tipp", "text": "Die automatische Erkennung findet den Inhalt jeder Seite einzeln – praktisch für Folien, Scans mit breitem Rand oder Dokumente zum Lesen am Handy."},
+      {"title": "Griffe für den Daumen", "text": "Ecken und Kanten haben große Griffe, die sich auf dem Handy gut treffen lassen. Mit der Tastatur verschiebst du sie per Pfeiltaste millimetergenau."},
+      {"title": "Verlustfrei", "text": "Text, Bilder und Links bleiben unverändert in voller Qualität. Es wird nur festgelegt, welcher Teil der Seite sichtbar ist."},
+      {"title": "Gezielt für bestimmte Seiten", "text": "Alle Seiten, nur gerade oder ungerade – etwa für gescannte Bücher mit wechselndem Bundsteg – oder ein Bereich wie „3-10“."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Erkennung der Ränder und das Zuschneiden laufen vollständig in deinem Browser."},
+      {"q": "Wird der abgeschnittene Inhalt gelöscht?", "a": "Nein. Zuschneiden legt nur den sichtbaren Bereich fest (die sogenannte CropBox). Der Inhalt außerhalb bleibt in der Datei und lässt sich mit PDF-Programmen wieder sichtbar machen. Zum Unkenntlichmachen vertraulicher Inhalte ist Zuschneiden deshalb nicht geeignet."},
+      {"q": "Wird die Datei kleiner?", "a": "Kaum, weil nichts gelöscht wird. Wenn du die Datei verkleinern möchtest, nutze danach „PDF komprimieren“."},
+      {"q": "Was passiert mit leeren Seiten?", "a": "Findet die automatische Erkennung auf einer Seite keinen Inhalt, bleibt diese Seite unverändert. Das Ergebnis sagt dir, wie viele Seiten das betrifft."},
+      {"q": "Wofür ist „Auch die Papiergröße anpassen“?", "a": "Manche Druck- und Satzprogramme beachten nur die ursprüngliche Papiergröße. Mit dieser Option wird sie ebenfalls auf den Ausschnitt gesetzt."}
+    ]
+  },
+  "en": {
+    "slug": "crop-pdf",
+    "name": "Crop PDF",
+    "short": "Remove white margins or choose an area.",
+    "title": "Crop PDF – remove margins, no upload | FaleNetwork",
+    "h1": "Crop PDF pages",
+    "metaDescription": "Remove white margins automatically or drag the crop frame with big handles – for all, odd, even or selected pages. Lossless, free and without uploading.",
+    "lede": "Trim margins automatically or drag the area with your finger – lossless.",
+    "primaryButton": "Crop",
+    "keywords": ["remove margins", "trim", "cut edges", "crop box", "cropbox", "trim whitespace"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF whose pages you want to crop."},
+      {"title": "Set the area", "text": "“Remove white margins” detects the content of every page on its own. With “Custom area” you drag the frame by its handles or enter the margins in millimetres."},
+      {"title": "Crop and save", "text": "Choose which pages it applies to, tap “Crop” and download the PDF."}
+    ],
+    "why": [
+      {"title": "Margins gone with one tap", "text": "Automatic detection finds the content of each page separately – handy for slides, scans with wide borders or documents you read on a phone."},
+      {"title": "Handles made for thumbs", "text": "Corners and edges have big handles that are easy to hit on a phone. With a keyboard you move them millimetre by millimetre with the arrow keys."},
+      {"title": "Lossless", "text": "Text, images and links stay unchanged in full quality. Only the visible part of the page is defined."},
+      {"title": "Only the pages you need", "text": "All pages, odd or even only – for example for scanned books with alternating gutters – or a range such as “3-10”."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Margin detection and cropping run entirely in your browser."},
+      {"q": "Is the cropped content deleted?", "a": "No. Cropping only sets the visible area (the so-called CropBox). The content outside stays in the file and PDF programs can show it again. That is why cropping is not suitable for hiding confidential content."},
+      {"q": "Does the file get smaller?", "a": "Hardly, because nothing is deleted. To reduce the file size, use “Compress PDF” afterwards."},
+      {"q": "What happens with blank pages?", "a": "If automatic detection finds no content on a page, that page stays unchanged. The result tells you how many pages that affects."},
+      {"q": "What is “Also change the paper size” for?", "a": "Some print and layout programs only use the original paper size. With this option it is set to the cropped area as well."}
+    ]
+  }
+}

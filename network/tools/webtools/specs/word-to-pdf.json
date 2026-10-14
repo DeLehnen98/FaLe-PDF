@@ -1,0 +1,172 @@
+{
+  "id": "word-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "doc",
+  "module": "tools/word-to-pdf.js",
+  "accepts": [
+    ".docx",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 50,
+  "related": [
+    "pdf-to-word",
+    "excel-to-pdf",
+    "merge-pdf"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "jszip",
+    "office"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "word-in-pdf",
+    "name": "Word in PDF",
+    "short": "Word-Dokumente (DOCX) als PDF speichern – direkt im Browser.",
+    "title": "Word in PDF umwandeln – DOCX zu PDF, ohne Upload | FaleNetwork",
+    "h1": "Word in PDF umwandeln",
+    "metaDescription": "Wandle Word-Dokumente (DOCX) in PDF um: Text bleibt durchsuchbar, Überschriften, Listen, Tabellen und Bilder bleiben erhalten. Mit Vorschau, ohne Upload.",
+    "lede": "Mach aus einem Word-Dokument (DOCX) eine PDF – mit Vorschau, bevor du sie speicherst.",
+    "pickLabel": "Word-Datei auswählen",
+    "primaryButton": "In PDF umwandeln",
+    "keywords": [
+      "docx",
+      "doc",
+      "word",
+      "dokument",
+      "brief",
+      "bewerbung",
+      "konvertieren",
+      "umwandeln",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "Word-Datei auswählen",
+        "text": "Wähle eine oder mehrere DOCX-Dateien aus – vom Handy, aus der Cloud-App oder vom Computer."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In PDF umwandeln“. Seitengröße, Ränder, Kopf- und Fußzeilen werden aus dem Dokument übernommen."
+      },
+      {
+        "title": "Prüfen und teilen",
+        "text": "Blättere durch die Seitenvorschau und lade die PDF herunter oder teile sie direkt, zum Beispiel per Mail."
+      }
+    ],
+    "why": [
+      {
+        "title": "Text bleibt Text",
+        "text": "Die PDF enthält echten, durchsuchbaren Text – keine abfotografierten Seiten."
+      },
+      {
+        "title": "Aufbau bleibt erhalten",
+        "text": "Überschriften, Listen, Tabellen, Bilder, Seitenformat und Ränder werden übernommen."
+      },
+      {
+        "title": "Vorschau vor dem Speichern",
+        "text": "Du siehst die fertigen Seiten, bevor du die PDF herunterlädst oder verschickst."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Bewerbungen und Verträge bleiben auf deinem Gerät. Die Umwandlung passiert in deinem Browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Sieht die PDF genau aus wie in Word?",
+        "a": "Bei normalen Dokumenten – Briefe, Berichte, Bewerbungen mit Text, Listen, Tabellen und Bildern – sehr ähnlich. Sehr komplexe Layouts mit Textfeldern, Formen oder umfließenden Bildern können abweichen. Deshalb zeigen wir dir vorher eine Seitenvorschau."
+      },
+      {
+        "q": "Welche Schriften werden verwendet?",
+        "a": "Die PDF nutzt die Standardschriften jedes PDF-Programms (ähnlich Arial, Times und Courier). Die Schriftart kann deshalb leicht vom Original abweichen, Umlaute, ß und € funktionieren. Zeichen anderer Schriften (zum Beispiel Kyrillisch) werden ersetzt – das Werkzeug zeigt dir dann genau, welche."
+      },
+      {
+        "q": "Funktionieren alte .doc-Dateien?",
+        "a": "Nein, nur das heutige DOCX-Format. Öffne eine .doc-Datei in deinem Office-Programm und speichere sie als DOCX."
+      },
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die Datei wird in deinem Browser gelesen und die PDF dort erstellt. Nach dem ersten Besuch klappt das sogar offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "word-to-pdf",
+    "name": "Word to PDF",
+    "short": "Save Word documents (DOCX) as PDF – right in your browser.",
+    "title": "Word to PDF – convert DOCX to PDF, no upload | FaleNetwork",
+    "h1": "Convert Word to PDF",
+    "metaDescription": "Turn Word documents (DOCX) into PDF: text stays searchable, headings, lists, tables and images are kept. With a preview, without uploading anything.",
+    "lede": "Turn a Word document (DOCX) into a PDF – with a preview before you save it.",
+    "pickLabel": "Choose Word file",
+    "primaryButton": "Convert to PDF",
+    "keywords": [
+      "docx",
+      "doc",
+      "word",
+      "document",
+      "letter",
+      "application",
+      "convert",
+      "office"
+    ],
+    "steps": [
+      {
+        "title": "Choose a Word file",
+        "text": "Pick one or more DOCX files – from your phone, your cloud app or your computer."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to PDF”. Page size, margins, headers and footers are taken from the document."
+      },
+      {
+        "title": "Check and share",
+        "text": "Swipe through the page preview, then download the PDF or share it right away, by email for example."
+      }
+    ],
+    "why": [
+      {
+        "title": "Text stays text",
+        "text": "The PDF contains real, searchable text – not photographed pages."
+      },
+      {
+        "title": "Structure is kept",
+        "text": "Headings, lists, tables, images, page size and margins come along."
+      },
+      {
+        "title": "Preview before saving",
+        "text": "You see the finished pages before you download or send the PDF."
+      },
+      {
+        "title": "No upload",
+        "text": "Job applications and contracts stay on your device. The conversion happens in your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does the PDF look exactly like in Word?",
+        "a": "For normal documents – letters, reports, applications with text, lists, tables and images – very close. Very complex layouts with text boxes, shapes or wrapped images may differ. That’s why you see a page preview first."
+      },
+      {
+        "q": "Which fonts are used?",
+        "a": "The PDF uses the standard fonts every PDF reader has (similar to Arial, Times and Courier). The typeface may differ slightly from the original; accents, umlauts and € work. Characters of other scripts (Cyrillic, for example) are replaced – the tool tells you exactly which ones."
+      },
+      {
+        "q": "Do old .doc files work?",
+        "a": "No, only today’s DOCX format. Open a .doc file in your office app and save it as DOCX."
+      },
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The file is read in your browser and the PDF is created there. After the first visit it even works offline."
+      }
+    ]
+  }
+}

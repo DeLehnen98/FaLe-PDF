@@ -1,0 +1,69 @@
+{
+  "id": "grayscale-pdf",
+  "category": "optimize",
+  "icon": "grayscale",
+  "module": "tools/grayscale-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["compress-pdf", "repair-pdf", "remove-blank-pages"],
+  "next": ["compress-pdf", "merge-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "pdf-graustufen",
+    "name": "PDF in Graustufen",
+    "short": "Farbige PDFs in Schwarz-Weiß umwandeln – Text bleibt Text.",
+    "title": "PDF in Graustufen umwandeln – ohne Upload | FaleNetwork",
+    "h1": "PDF in Graustufen umwandeln",
+    "metaDescription": "Farbige PDF in Graustufen umwandeln: Text und Grafiken bleiben scharf und durchsuchbar, Bilder werden grau. Jede Seite wird geprüft. Gratis, ohne Upload.",
+    "lede": "Für den Schwarz-Weiß-Druck oder Ämter, die keine Farbe wollen.",
+    "primaryButton": "In Graustufen umwandeln",
+    "keywords": ["schwarz weiß", "schwarzweiß", "grau", "entfärben", "farbe entfernen", "monochrom", "druck sparen", "graustufe"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere PDFs aus."},
+      {"title": "Art wählen", "text": "„Text und Grafik erhalten“ wandelt die Farben in der Datei selbst um – empfohlen. „Alles als Graustufenbild“ macht aus jeder Seite ein graues Bild."},
+      {"title": "Umwandeln und speichern", "text": "Tippe auf „In Graustufen umwandeln“. Jede Seite wird anschließend auf übrige Farbe geprüft, dann lädst du das Ergebnis herunter."}
+    ],
+    "why": [
+      {"title": "Text bleibt Text", "text": "Die Farben werden direkt in der PDF umgerechnet. Schrift bleibt gestochen scharf, durchsuchbar und kopierbar."},
+      {"title": "Auch Bilder und Formen", "text": "Fotos, Logos, Flächen, Linien, viele Farbverläufe und Formularfelder werden grau – auch Farben in Druckfarben (CMYK)."},
+      {"title": "Geprüft statt gehofft", "text": "Nach der Umwandlung wird jede Seite angesehen. Bleibt irgendwo Farbe übrig, wird nur diese Seite als Graustufenbild übernommen – und du erfährst es."},
+      {"title": "Mehrere Dateien auf einmal", "text": "Wähle gleich mehrere PDFs aus. Du bekommst jede einzeln oder alle zusammen als ZIP."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Umwandlung läuft komplett in deinem Browser, deine PDFs verlassen dein Gerät nicht."},
+      {"q": "Bleibt der Text durchsuchbar?", "a": "Ja, mit „Text und Grafik erhalten“. Nur Seiten, die sich nicht direkt umwandeln lassen, werden als Bild übernommen – welche das sind, steht unter dem Ergebnis. Mit „Alles als Graustufenbild“ ist Text grundsätzlich nicht mehr markierbar."},
+      {"q": "Was lässt sich nicht direkt umwandeln?", "a": "Zum Beispiel bestimmte Farbverläufe aus vielen Dreiecken, Bilder im Format JPEG 2000 oder ungewöhnliche Farbräume. Solche Seiten erkennt die Prüfung, und sie werden als 150-dpi-Graustufenbild übernommen."},
+      {"q": "Wird die Datei kleiner?", "a": "Oft ja, weil Graustufenbilder weniger Daten brauchen. Bei Fotos, die vorher als JPEG gespeichert waren, kann die Datei aber auch etwas wachsen, da die Bilder verlustfrei gespeichert werden. Danach hilft „PDF komprimieren“."},
+      {"q": "Wie hell wird eine Farbe in Grau?", "a": "Jede Farbe wird nach ihrer Helligkeit umgerechnet, wie man es vom Schwarz-Weiß-Foto kennt. Gelb wird also hellgrau, Dunkelblau dunkelgrau."}
+    ]
+  },
+  "en": {
+    "slug": "grayscale-pdf",
+    "name": "Grayscale PDF",
+    "short": "Turn coloured PDFs black and white – text stays text.",
+    "title": "Convert PDF to grayscale – free, no upload | FaleNetwork",
+    "h1": "Convert a PDF to grayscale",
+    "metaDescription": "Convert a coloured PDF to grayscale: text and graphics stay sharp and searchable, images turn gray. Every page is checked. Free and without any upload.",
+    "lede": "For black-and-white printing or offices that don’t want colour.",
+    "primaryButton": "Convert to grayscale",
+    "keywords": ["black and white", "b&w", "gray", "greyscale", "remove colour", "monochrome", "save ink", "desaturate"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick one or more PDFs."},
+      {"title": "Choose the method", "text": "“Keep text and graphics” converts the colours inside the file itself – recommended. “Everything as gray images” turns every page into a gray picture."},
+      {"title": "Convert and save", "text": "Tap “Convert to grayscale”. Every page is then checked for leftover colour, and you download the result."}
+    ],
+    "why": [
+      {"title": "Text stays text", "text": "Colours are converted right inside the PDF. Text stays crisp, searchable and copyable."},
+      {"title": "Images and shapes, too", "text": "Photos, logos, areas, lines, many gradients and form fields turn gray – also colours in print colours (CMYK)."},
+      {"title": "Checked, not hoped", "text": "After converting, every page is looked at. If colour is left anywhere, only that page is taken over as a gray image – and you are told."},
+      {"title": "Several files at once", "text": "Choose several PDFs at once. You get each one separately or all together as a ZIP."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. The conversion runs completely in your browser and your PDFs never leave your device."},
+      {"q": "Does the text stay searchable?", "a": "Yes, with “Keep text and graphics”. Only pages that can’t be converted directly are taken over as images – which ones is shown under the result. With “Everything as gray images”, text can never be selected."},
+      {"q": "What can’t be converted directly?", "a": "For example certain gradients made of many triangles, JPEG 2000 images or unusual colour spaces. The check detects such pages and they become 150 dpi gray images."},
+      {"q": "Does the file get smaller?", "a": "Often yes, because gray images need less data. With photos that were stored as JPEG, the file can also grow a little, since images are stored losslessly. “Compress PDF” helps afterwards."},
+      {"q": "How light does a colour become in gray?", "a": "Every colour is converted by its brightness, just like a black-and-white photo. Yellow becomes light gray, dark blue dark gray."}
+    ]
+  }
+}

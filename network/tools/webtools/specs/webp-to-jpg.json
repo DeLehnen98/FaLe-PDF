@@ -1,0 +1,147 @@
+{
+  "id": "webp-to-jpg",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/webp-to-jpg.js",
+  "accepts": [
+    "image/webp",
+    ".webp"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 47,
+  "related": [
+    "convert-image",
+    "png-to-jpg",
+    "compress-image"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
+  "de": {
+    "slug": "webp-in-jpg",
+    "name": "WebP in JPG",
+    "short": "WebP-Bilder als JPG speichern, die jedes Programm öffnet.",
+    "title": "WebP in JPG umwandeln – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "WebP in JPG umwandeln",
+    "metaDescription": "WebP in JPG umwandeln: Bilder aus dem Web in ein Format bringen, das jedes Programm öffnet. Viele auf einmal, gratis, ohne Upload, direkt im Browser.",
+    "lede": "Mach aus WebP-Bildern JPGs, die überall funktionieren.",
+    "pickLabel": "WebP auswählen",
+    "primaryButton": "In JPG umwandeln",
+    "keywords": [
+      "webp zu jpg",
+      "webp jpeg",
+      "webp öffnen",
+      "webp konvertieren"
+    ],
+    "steps": [
+      {
+        "title": "WebP auswählen",
+        "text": "Wähle ein oder mehrere WebP-Bilder aus, zum Beispiel aus dem Download-Ordner."
+      },
+      {
+        "title": "Qualität festlegen",
+        "text": "Stell die JPG-Qualität ein und wähle eine Farbe für transparente Stellen."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In JPG umwandeln“ und teile oder lade die JPGs herunter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Öffnet überall",
+        "text": "Manche ältere Programme und Formulare nehmen kein WebP. JPG funktioniert praktisch überall."
+      },
+      {
+        "title": "Transparenz mit Farbe",
+        "text": "Transparente WebP-Bilder bekommen eine Hintergrundfarbe deiner Wahl."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die Umwandlung passiert auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was ist WebP?",
+        "a": "Ein Bildformat, das viele Webseiten nutzen, weil es klein ist. Speicherst du ein Bild aus dem Web, landet es deshalb oft als WebP auf deinem Gerät."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser."
+      },
+      {
+        "q": "Was passiert mit animierten WebP-Bildern?",
+        "a": "Es wird das erste Bild der Animation als JPG gespeichert."
+      },
+      {
+        "q": "Wird das JPG größer als das WebP?",
+        "a": "Oft ja, denn WebP ist effizienter. Mit einer etwas niedrigeren Qualität bleibt das JPG trotzdem klein."
+      }
+    ]
+  },
+  "en": {
+    "slug": "webp-to-jpg",
+    "name": "WebP to JPG",
+    "short": "Save WebP images as JPG that every app opens.",
+    "title": "WebP to JPG converter – free, no upload | FaleNetwork",
+    "h1": "Convert WebP to JPG",
+    "metaDescription": "Convert WebP to JPG: turn images from the web into a format every app opens. Many at once, free, no upload, right in your browser.",
+    "lede": "Turn WebP images into JPGs that work everywhere.",
+    "pickLabel": "Choose WebP",
+    "primaryButton": "Convert to JPG",
+    "keywords": [
+      "webp to jpeg",
+      "open webp",
+      "webp converter"
+    ],
+    "steps": [
+      {
+        "title": "Choose WebP",
+        "text": "Pick one or more WebP images, for example from your downloads."
+      },
+      {
+        "title": "Set the quality",
+        "text": "Set the JPG quality and choose a colour for transparent areas."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to JPG” and share or download the JPGs."
+      }
+    ],
+    "why": [
+      {
+        "title": "Opens everywhere",
+        "text": "Some older apps and forms don’t accept WebP. JPG works practically everywhere."
+      },
+      {
+        "title": "Transparency with colour",
+        "text": "Transparent WebP images get a background colour of your choice."
+      },
+      {
+        "title": "No upload",
+        "text": "The conversion happens on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is WebP?",
+        "a": "An image format many websites use because it’s small. When you save an image from the web, it often ends up as WebP on your device."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. Everything happens in your browser."
+      },
+      {
+        "q": "What happens to animated WebP images?",
+        "a": "The first frame of the animation is saved as a JPG."
+      },
+      {
+        "q": "Will the JPG be larger than the WebP?",
+        "a": "Often yes, because WebP is more efficient. With a slightly lower quality the JPG still stays small."
+      }
+    ]
+  }
+}

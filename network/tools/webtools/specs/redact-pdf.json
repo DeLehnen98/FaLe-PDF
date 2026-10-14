@@ -1,0 +1,70 @@
+{
+  "id": "redact-pdf",
+  "category": "security",
+  "icon": "redact",
+  "module": "tools/redact-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "related": ["edit-metadata", "protect-pdf", "compare-pdf"],
+  "next": ["protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-schwaerzen",
+    "name": "PDF schwärzen",
+    "short": "Namen, IBAN & Co. dauerhaft aus der PDF entfernen.",
+    "title": "PDF schwärzen – Text dauerhaft entfernen | FaleNetwork",
+    "h1": "PDF schwärzen",
+    "metaDescription": "Schwärze Namen, E-Mail-Adressen, Telefonnummern, IBAN und beliebige Bereiche in PDFs – der Text wird wirklich entfernt, nicht nur überdeckt. Ohne Upload.",
+    "lede": "Entferne vertrauliche Stellen dauerhaft – nicht nur schwarz überdeckt.",
+    "primaryButton": "Schwärzen",
+    "keywords": ["schwärzen", "anonymisieren", "zensieren", "unkenntlich machen", "dsgvo", "personenbezogene daten", "abdecken", "redigieren"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle die PDF aus, aus der du etwas entfernen möchtest."},
+      {"title": "Stellen markieren", "text": "Suche nach Begriffen, nutze Vorlagen für E-Mail, Telefon, IBAN und Datum oder ziehe Bereiche direkt auf der Vorschau. In der Liste prüfst du jede Stelle und nimmst einzelne aus."},
+      {"title": "Schwärzen und speichern", "text": "Tippe auf „Schwärzen“. Die markierten Inhalte werden dauerhaft entfernt – sie lassen sich weder kopieren noch wiederherstellen."}
+    ],
+    "why": [
+      {"title": "Wirklich entfernt", "text": "Seiten mit Markierungen werden als Bild neu aufgebaut und der Text darunter wird aus der Datei gelöscht. Ein schwarzer Kasten, unter dem der Text noch steht, kann so nicht passieren."},
+      {"title": "Findet persönliche Daten", "text": "Vorlagen für E-Mail-Adressen, Telefonnummern, IBAN und Datumsangaben, dazu eigene Suchbegriffe und reguläre Ausdrücke. Auch Werte in Formularfeldern und Kommentaren werden gefunden."},
+      {"title": "Erst prüfen, dann schwärzen", "text": "Alle Treffer stehen in einer Liste mit Seitenangabe. Tippe einen an, um ihn auf der Seite zu sehen, oder nimm ihn aus."},
+      {"title": "Versteckte Daten gleich mit", "text": "Auf Wunsch entfernt das Werkzeug auch Eigenschaften wie Autor und Titel, XMP-Metadaten, Anhänge und JavaScript."}
+    ],
+    "faq": [
+      {"q": "Wird der Text wirklich entfernt oder nur überdeckt?", "a": "Er wird wirklich entfernt. Jede Seite mit einer Markierung wird als Bild mit eingebrannten schwarzen Kästen neu aufgebaut; der ursprüngliche Text, Bilder, Formularfelder und Kommentare dieser Seite werden aus der Datei gelöscht."},
+      {"q": "Was ist der Nachteil der Bild-Seiten?", "a": "Auf geschwärzten Seiten ist der Text danach nicht mehr markier- oder durchsuchbar, und Links funktionieren dort nicht mehr. Die Datei wird etwas größer. Seiten ohne Markierung bleiben unverändert."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Suche und Schwärzung passieren vollständig in deinem Browser. Gerade bei vertraulichen Dokumenten verlässt nichts dein Gerät."},
+      {"q": "Findet die Suche auch Text in gescannten PDFs?", "a": "Nur wenn der Scan eine Textebene hat. Bei reinen Bild-Scans findet die Suche nichts – dann ziehst du die Bereiche einfach mit dem Finger auf der Vorschau."},
+      {"q": "Erkennen die Vorlagen alle persönlichen Daten?", "a": "Nein, sie finden typische Schreibweisen. Prüfe das Dokument trotzdem selbst und ergänze Suchbegriffe oder Bereiche, wenn etwas fehlt."}
+    ]
+  },
+  "en": {
+    "slug": "redact-pdf",
+    "name": "Redact PDF",
+    "short": "Remove names, IBANs and more from a PDF for good.",
+    "title": "Redact PDF – remove text for good, no upload | FaleNetwork",
+    "h1": "Redact a PDF",
+    "metaDescription": "Redact names, e-mail addresses, phone numbers, IBANs and any area in PDFs – the text is really removed, not just covered. No upload, right in your browser.",
+    "lede": "Remove confidential passages for good – not just covered in black.",
+    "primaryButton": "Redact",
+    "keywords": ["redact", "anonymize", "censor", "black out", "gdpr", "personal data", "hide text", "sanitize"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select the PDF you want to remove something from."},
+      {"title": "Mark passages", "text": "Search for terms, use presets for e-mail, phone, IBAN and dates or draw areas right on the preview. Check every hit in the list and exclude single ones."},
+      {"title": "Redact and save", "text": "Tap “Redact”. The marked content is removed for good – it can neither be copied nor recovered."}
+    ],
+    "why": [
+      {"title": "Really removed", "text": "Pages with marks are rebuilt as images and the text underneath is deleted from the file. A black box with the text still underneath cannot happen."},
+      {"title": "Finds personal data", "text": "Presets for e-mail addresses, phone numbers, IBANs and dates, plus your own search terms and regular expressions. Values in form fields and comments are found too."},
+      {"title": "Review first, then redact", "text": "All hits are listed with their page. Tap one to see it on the page, or exclude it."},
+      {"title": "Hidden data, too", "text": "If you like, the tool also removes properties such as author and title, XMP metadata, attachments and JavaScript."}
+    ],
+    "faq": [
+      {"q": "Is the text really removed or just covered?", "a": "It is really removed. Every page with a mark is rebuilt as an image with burned-in black boxes; the page’s original text, images, form fields and comments are deleted from the file."},
+      {"q": "What is the downside of image pages?", "a": "On redacted pages the text can no longer be selected or searched, and links there stop working. The file gets a bit larger. Pages without marks stay unchanged."},
+      {"q": "Are my files uploaded?", "a": "No. Searching and redacting happen entirely in your browser. Especially with confidential documents, nothing leaves your device."},
+      {"q": "Does the search find text in scanned PDFs?", "a": "Only if the scan has a text layer. Pure image scans have no text to find – just draw the areas with your finger on the preview."},
+      {"q": "Do the presets find all personal data?", "a": "No, they find typical formats. Still check the document yourself and add search terms or areas if something is missing."}
+    ]
+  }
+}

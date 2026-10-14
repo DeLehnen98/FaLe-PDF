@@ -1,0 +1,71 @@
+{
+  "id": "overlay-pdf",
+  "category": "edit",
+  "iconSvg": "<path d=\"M6 3h9l4 4v14H6z\"/><path d=\"M9 7h4\"/><path d=\"M9 12h7\"/><path d=\"M9 15.5h7\"/><path d=\"M3 7v14h11\"/>",
+  "module": "tools/overlay-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "order": 54,
+  "related": ["watermark-pdf", "header-footer", "merge-pdf"],
+  "next": ["compress-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "briefpapier-pdf",
+    "name": "Briefpapier einfügen",
+    "short": "Dein Briefpapier unter jede Seite einer PDF legen.",
+    "title": "Briefpapier in PDF einfügen – ohne Upload | FaleNetwork",
+    "h1": "Briefpapier in PDF einfügen",
+    "metaDescription": "Lege dein Briefpapier unter einen Brief oder eine Rechnung als PDF: eigenes Design für die erste und die Folgeseiten, Logo bleibt gestochen scharf. Gratis, ohne Upload.",
+    "lede": "Brief schreiben, als PDF speichern, Briefpapier drunterlegen – fertig zum Versenden.",
+    "primaryButton": "Briefpapier einfügen",
+    "keywords": ["briefbogen", "briefkopf", "hintergrund pdf", "pdf überlagern", "rechnung briefpapier", "overlay", "vorlage"],
+    "steps": [
+      {"title": "Brief als PDF auswählen", "text": "Wähle deinen Brief, deine Rechnung oder dein Angebot als PDF – zum Beispiel aus einem Textprogramm ohne Kopf und Fuß gespeichert."},
+      {"title": "Briefpapier dazunehmen", "text": "Wähle dein Briefpapier als PDF oder Bild. Hat die PDF zwei Seiten, kommt Seite 1 auf die erste Seite und Seite 2 auf alle Folgeseiten. Die Vorschau zeigt jede Seite."},
+      {"title": "Einfügen und versenden", "text": "Tippe auf „Briefpapier einfügen“ und lade die fertige PDF herunter – bereit zum Mailen oder Drucken."}
+    ],
+    "why": [
+      {"title": "Erste Seite und Folgeseiten", "text": "Wie bei echtem Geschäftspapier: Seite 1 mit vollem Briefkopf, die weiteren Seiten mit schlichtem Kopf – aus Seite 2 deiner Briefpapier-PDF oder einer eigenen Datei."},
+      {"title": "Gestochen scharf", "text": "Ein Briefpapier als PDF wird als Vektorgrafik eingebettet. Logo und Schrift bleiben beim Zoomen und Drucken scharf, die Datei bleibt klein."},
+      {"title": "Dein Text bleibt oben", "text": "Das Briefpapier liegt unter deinem Text. Der Text bleibt markierbar und durchsuchbar, nichts wird in ein Bild umgewandelt."},
+      {"title": "Kein Konto, kein Upload", "text": "Rechnungen und Briefe enthalten persönliche Daten. Hier bleiben sie auf deinem Gerät – das Werkzeug funktioniert nach dem Laden sogar offline."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Brief und Briefpapier werden ausschließlich in deinem Browser verarbeitet und verlassen dein Gerät nicht."},
+      {"q": "Wie bekomme ich ein anderes Briefpapier für die Folgeseiten?", "a": "Am einfachsten mit einer zweiseitigen Briefpapier-PDF: Seite 1 für die erste Seite, Seite 2 für alle weiteren. Alternativ wählst du bei „Folgeseiten“ eine eigene Datei oder „Kein Briefpapier“."},
+      {"q": "Warum sehe ich das Briefpapier nicht?", "a": "Dann hat dein Dokument einen weißen Hintergrund, der das Briefpapier verdeckt – typisch bei Scans. Wähle bei „Ebene“ die Option „Darüber“."},
+      {"q": "Kann ich auch ein Bild als Briefpapier nehmen?", "a": "Ja, PNG, JPG oder WebP. Für scharfe Ausdrucke sollte es hoch aufgelöst sein, etwa 2480 × 3508 Pixel für A4. Eine PDF bleibt aber immer schärfer."},
+      {"q": "Passt das Briefpapier auf andere Seitengrößen?", "a": "Ja. „Einpassen“ behält das Seitenverhältnis, „Ausfüllen“ füllt die Seite und schneidet Ränder ab, „Strecken“ passt es exakt an. Gedrehte Seiten werden richtig herum belegt."}
+    ]
+  },
+  "en": {
+    "slug": "pdf-letterhead-overlay",
+    "name": "Letterhead & overlay",
+    "short": "Put a letterhead or background under every PDF page.",
+    "title": "Add letterhead or overlay to PDF – no upload | FaleNetwork",
+    "h1": "Add a letterhead or overlay to a PDF",
+    "metaDescription": "Put your letterhead or any background PDF under (or over) every page: separate design for the first and following pages, crisp vector logos. Free, no upload.",
+    "lede": "Write your letter, save it as a PDF, add the letterhead underneath – ready to send.",
+    "primaryButton": "Add letterhead",
+    "keywords": ["letterhead", "stationery", "background pdf", "overlay pdf", "invoice template", "underlay", "stamp pdf"],
+    "steps": [
+      {"title": "Choose your letter PDF", "text": "Select your letter, invoice or quote as a PDF – for example saved from a word processor without header and footer."},
+      {"title": "Add the letterhead", "text": "Choose your letterhead as a PDF or image. If the PDF has two pages, page 1 goes on the first page and page 2 on all following pages. The preview shows every page."},
+      {"title": "Add and send", "text": "Tap “Add letterhead” and download the finished PDF – ready to email or print."}
+    ],
+    "why": [
+      {"title": "First and following pages", "text": "Just like real business stationery: page 1 with the full letterhead, the other pages with a simple header – from page 2 of your letterhead PDF or a separate file."},
+      {"title": "Crisp", "text": "A letterhead PDF is embedded as vector graphics. Logo and type stay sharp when zooming and printing, and the file stays small."},
+      {"title": "Your text stays on top", "text": "The letterhead goes under your text. The text stays selectable and searchable; nothing is turned into an image."},
+      {"title": "No account, no upload", "text": "Invoices and letters contain personal data. Here they stay on your device – once loaded, the tool even works offline."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Letter and letterhead are processed only in your browser and never leave your device."},
+      {"q": "How do I get a different design for the following pages?", "a": "The easiest way is a two-page letterhead PDF: page 1 for the first page, page 2 for all others. Alternatively choose a separate file or “No design” under “Following pages”."},
+      {"q": "Why can't I see the letterhead?", "a": "Your document probably has a white background that covers it – typical for scans. Choose “Above” under “Layer”."},
+      {"q": "Can I use an image as the letterhead?", "a": "Yes, PNG, JPG or WebP. For sharp prints it should be high resolution, about 2480 × 3508 pixels for A4. A PDF always stays sharper, though."},
+      {"q": "Does the letterhead fit other page sizes?", "a": "Yes. “Fit” keeps the aspect ratio, “Fill” fills the page and cuts off the edges, “Stretch” matches it exactly. Rotated pages get it the right way up."}
+    ]
+  }
+}

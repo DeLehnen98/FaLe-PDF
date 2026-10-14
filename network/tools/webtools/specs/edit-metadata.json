@@ -1,0 +1,70 @@
+{
+  "id": "edit-metadata",
+  "category": "security",
+  "icon": "info",
+  "module": "tools/edit-metadata.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": false,
+  "related": ["redact-pdf", "protect-pdf", "flatten-pdf"],
+  "next": ["protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-metadaten",
+    "name": "PDF-Metadaten bearbeiten",
+    "short": "Titel, Autor & Co. ändern – oder alles Private entfernen.",
+    "title": "PDF-Metadaten ansehen, ändern, entfernen | FaleNetwork",
+    "h1": "PDF-Metadaten bearbeiten",
+    "metaDescription": "Sieh dir Titel, Autor, Programm, Datum, XMP, Anhänge und Skripte einer PDF an, ändere sie oder entferne alles Private mit einem Tipp. Ohne Upload, im Browser.",
+    "lede": "Sieh, was in deiner PDF steckt – und entferne Privates mit einem Tipp.",
+    "primaryButton": "Speichern",
+    "keywords": ["metadaten", "eigenschaften", "autor ändern", "titel ändern", "metadaten löschen", "xmp", "anonymisieren", "dokumenteigenschaften"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine PDF aus. Du siehst sofort alle Eigenschaften und versteckten Daten wie Anhänge, Skripte und XMP-Metadaten."},
+      {"title": "Ändern oder bereinigen", "text": "Bearbeite Titel, Autor, Thema, Stichwörter, Programm und Datum – oder tippe auf „Alles Private entfernen“."},
+      {"title": "Speichern", "text": "Tippe auf „Speichern“. Die neue PDF enthält genau die Angaben, die du festgelegt hast."}
+    ],
+    "why": [
+      {"title": "Alles auf einen Blick", "text": "Neben den üblichen Eigenschaften zeigt das Werkzeug XMP-Metadaten, eingebettete Dateien, JavaScript, Autorennamen in Kommentaren und eigene Felder."},
+      {"title": "Ein Tipp für Privatsphäre", "text": "„Alles Private entfernen“ löscht Eigenschaften, XMP, Anhänge, Skripte, Programmdaten und Autorennamen auf einmal."},
+      {"title": "Genau deine Angaben", "text": "Es wird kein Werbe- oder Programmname eingetragen: Was du leer lässt, bleibt leer."},
+      {"title": "Kein Upload", "text": "Die PDF wird nur in deinem Browser gelesen und gespeichert – ideal für vertrauliche Dokumente."}
+    ],
+    "faq": [
+      {"q": "Was sind PDF-Metadaten?", "a": "Zusätzliche Angaben in der Datei, etwa Titel, Autor, das Programm, mit dem sie erstellt wurde, und Datum. Oft stehen dort Namen oder interne Informationen, die man beim Weitergeben nicht mitschicken möchte."},
+      {"q": "Was entfernt „Alles Private entfernen“ genau?", "a": "Alle Dokumenteigenschaften, XMP-Metadaten, eingebettete Dateien, JavaScript und automatische Aktionen, Programm-interne Daten und Autorennamen in Kommentaren. Der sichtbare Inhalt der Seiten bleibt unverändert."},
+      {"q": "Entfernt das auch Namen, die im Text stehen?", "a": "Nein. Namen oder Daten im sichtbaren Text bleiben stehen. Dafür gibt es „PDF schwärzen“, das Textstellen dauerhaft entfernt."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Alles passiert in deinem Browser, nichts verlässt dein Gerät."},
+      {"q": "Was passiert mit passwortgeschützten PDFs?", "a": "Du gibst das Passwort an der Datei ein. Die gespeicherte PDF ist wieder mit demselben Passwort geschützt."}
+    ]
+  },
+  "en": {
+    "slug": "edit-pdf-metadata",
+    "name": "Edit PDF metadata",
+    "short": "Change title, author and more – or remove everything private.",
+    "title": "View, edit and remove PDF metadata | FaleNetwork",
+    "h1": "Edit PDF metadata",
+    "metaDescription": "See a PDF’s title, author, application, dates, XMP, attachments and scripts, change them or remove everything private with one tap. No upload, in your browser.",
+    "lede": "See what is inside your PDF – and remove private data with one tap.",
+    "primaryButton": "Save",
+    "keywords": ["metadata", "properties", "change author", "change title", "remove metadata", "xmp", "anonymize", "document properties"],
+    "steps": [
+      {"title": "Choose your PDF", "text": "Select a PDF. You immediately see all properties and hidden data such as attachments, scripts and XMP metadata."},
+      {"title": "Edit or clean", "text": "Edit title, author, subject, keywords, application and dates – or tap “Remove everything private”."},
+      {"title": "Save", "text": "Tap “Save”. The new PDF contains exactly the properties you set."}
+    ],
+    "why": [
+      {"title": "Everything at a glance", "text": "Besides the usual properties, the tool shows XMP metadata, embedded files, JavaScript, author names in comments and custom fields."},
+      {"title": "One tap for privacy", "text": "“Remove everything private” deletes properties, XMP, attachments, scripts, application data and author names at once."},
+      {"title": "Exactly your values", "text": "No advertising or application name is added: whatever you leave empty stays empty."},
+      {"title": "No upload", "text": "The PDF is only read and saved in your browser – ideal for confidential documents."}
+    ],
+    "faq": [
+      {"q": "What is PDF metadata?", "a": "Extra information in the file, such as title, author, the application that created it and dates. It often contains names or internal information you don’t want to send along."},
+      {"q": "What exactly does “Remove everything private” remove?", "a": "All document properties, XMP metadata, embedded files, JavaScript and automatic actions, application private data and author names in comments. The visible page content stays unchanged."},
+      {"q": "Does it remove names written in the text?", "a": "No. Names or data in the visible text stay. Use “Redact PDF” to remove text passages for good."},
+      {"q": "Are my files uploaded?", "a": "No. Everything happens in your browser; nothing leaves your device."},
+      {"q": "What about password-protected PDFs?", "a": "You type the password on the file. The saved PDF is protected again with the same password."}
+    ]
+  }
+}

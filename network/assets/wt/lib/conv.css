@@ -1,0 +1,47 @@
+/* Result previews of the conversion tools (lib/conv-common.js). Tokens from wt.css / fale-tokens.css. */
+.cv-preview { margin: 16px 0 4px; min-width: 0; }
+.cv-preview-h { font-size: 1rem; margin: 0 0 8px; }
+.cv-muted { color: var(--text-3); font-size: .875rem; margin: 6px 0 0; }
+.cv-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 8px; }
+.cv-copy-status { color: var(--accent); font-size: .875rem; }
+
+.cv-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.cv-grid li { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cv-grid img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: contain; border-radius: 6px;
+  background: repeating-conic-gradient(var(--surface-2) 0 25%, var(--surface) 0 50%) 0 0 / 16px 16px; box-shadow: var(--paper-shadow, 0 1px 3px rgba(0,0,0,.15)); }
+.cv-grid-cap { font-size: .75rem; color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
+
+.cv-pages { list-style: none; margin: 0; padding: 4px 2px 10px; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.cv-pages li { flex: none; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cv-pages canvas { display: block; width: 150px; height: auto; background: #fff; border-radius: 4px; box-shadow: var(--paper-shadow, 0 1px 3px rgba(0,0,0,.2)); }
+.cv-pages-more { align-self: center; color: var(--text-3); font-size: .875rem; padding: 0 8px; }
+@media (min-width: 720px) { .cv-pages canvas { width: 180px; } }
+
+.cv-text { margin: 0; max-height: 320px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word;
+  background: var(--surface-2); color: var(--text); border-radius: 8px; padding: 12px; font: .875rem/1.5 system-ui, sans-serif; }
+.cv-text.cv-mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: .8125rem; }
+
+.cv-tables { display: grid; gap: 12px; }
+.cv-table-wrap { overflow-x: auto; max-width: 100%; border: 1px solid var(--border); border-radius: 8px; }
+.cv-table { border-collapse: collapse; font-size: .8125rem; min-width: 100%; }
+.cv-table caption { text-align: left; font-weight: 600; padding: 6px 8px; caption-side: top; color: var(--text-2); }
+.cv-table td { border: 1px solid var(--border); padding: 4px 8px; white-space: nowrap; max-width: 18em; overflow: hidden; text-overflow: ellipsis; }
+.cv-table tr:first-child td { background: var(--surface-2); font-weight: 600; }
+
+.cv-est { font-size: .875rem; color: var(--text-2); margin: 4px 0 0; }
+.cv-hintbox { display: flex; gap: 10px; align-items: flex-start; background: var(--warn-soft); color: var(--text); border-radius: 8px; padding: 10px 12px; font-size: .875rem; margin: 8px 0 0; }
+.cv-hintbox .wt-i { flex: none; color: var(--warn); width: 18px; height: 18px; margin-top: 2px; }
+
+.cv-doc { max-height: 420px; overflow: auto; background: #fff; color: #1a1a1a; border-radius: 8px; padding: 16px 18px; box-shadow: var(--paper-shadow, 0 1px 3px rgba(0,0,0,.15));
+  font: .875rem/1.5 system-ui, sans-serif; overflow-wrap: anywhere; }
+.cv-doc p { margin: 0 0 .6em; }
+.cv-doc .cv-doc-h { margin: .8em 0 .4em; line-height: 1.25; color: #15172f; }
+.cv-doc h4.cv-doc-h { font-size: 1.25rem; } .cv-doc h5.cv-doc-h { font-size: 1.05rem; } .cv-doc h6.cv-doc-h { font-size: .95rem; }
+.cv-doc ul, .cv-doc ol { margin: 0 0 .6em; padding-left: 1.4em; }
+.cv-doc .cv-doc-center { text-align: center; } .cv-doc .cv-doc-right { text-align: right; }
+.cv-doc .cv-table td { color: #1a1a1a; border-color: #d9dbe6; }
+.cv-doc .cv-table tr:first-child td { background: #f0f1f7; }
+.cv-doc-img { display: inline-block; padding: 14px 18px; margin: 2px 0; background: #eef0f8; color: #5e6383; border-radius: 6px; font-size: .75rem; }
+.cv-doc-pb { border-top: 1px dashed #c8cbdf; margin: 1em 0 .6em; padding-top: 2px; color: #8a8ea8; font-size: .75rem; text-align: center; }
+.cv-pages img.cv-thumb { display: block; width: 150px; height: auto; background: #fff; border-radius: 4px; box-shadow: var(--paper-shadow, 0 1px 3px rgba(0,0,0,.2)); }
+@media (min-width: 720px) { .cv-pages img.cv-thumb { width: 180px; } }

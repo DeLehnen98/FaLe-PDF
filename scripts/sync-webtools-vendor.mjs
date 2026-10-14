@@ -42,6 +42,9 @@ addDir('pdfjs/wasm', 'pdfjs/wasm', r => !/quickjs|nowasm_fallback/.test(r));
 for (const f of ['pdf-lib.min.js', 'LICENSE.md', 'THIRD_PARTY_LICENSES.txt']) VENDOR.push([`pdf-lib/${f}`, `vendor/pdf-lib/${f}`]);
 for (const f of ['jszip.min.js', 'LICENSE.markdown']) VENDOR.push([`jszip/${f}`, `vendor/jszip/${f}`]);
 for (const f of ['BricolageGrotesque-Bold.woff', 'OFL.txt']) VENDOR.push([`fonts/${f}`, `vendor/fonts/bricolage-grotesque/${f}`]);
+// Word/PowerPoint writers for the conversion tools (pdf-to-word, pdf-to-pptx); loaded as classic scripts on demand
+for (const f of ['docx.iife.js', 'LICENSE']) VENDOR.push([`docx/${f}`, `vendor/docx/${f}`]);
+for (const f of ['pptxgen.bundle.js', 'LICENSE']) VENDOR.push([`pptxgenjs/${f}`, `vendor/pptxgenjs/${f}`]);
 
 // ---------------------------------------------------------------- shared app modules → wt/lib/shared/
 const banner = (src, how) => `// GENERATED – synced copy of ${src}${how ? ` (${how})` : ''} by scripts/sync-webtools-vendor.mjs.\n// Do not edit here: change the source in the app and run \`node scripts/sync-webtools-vendor.mjs\`.\n`;
@@ -94,9 +97,30 @@ const SHARED = {
   'zip.js': () => copyModule('js/zip.js'),
   'imgproc.js': () => copyModule('js/tools/imgproc.js'),
   'scanproc.js': () => copyModule('js/tools/scanproc.js', ['./imgproc.js']),
+  'imgworker.js': () => copyModule('js/tools/imgworker.js', ['./imgproc.js']),   // runOp() worker (otherwise it falls back to the main thread)
+  'qr.js': () => copyModule('js/tools/qr.js'),
   'limits.js': () => extractHead('js/security.js', 'export const SAFE_SCHEMES', 'resource limits and image header probing only'),
   'passphoto-templates.js': () => extractBlocks('js/tools/passphoto.js', ['export const TEMPLATES', 'export function sheetLayout'], 'TEMPLATES + sheetLayout only'),
+  'pdfstruct.js': () => copyModule('js/tools/pdfstruct.js'),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
 };
+
+// ---------------------------------------------------------------- office modules → wt/lib/shared/office/
+// The conversion tools (Word/Excel/PowerPoint → PDF, PDF → Word/Markdown) reuse the app's document
+// readers, document model and PDF/DOCX writers unchanged. Their few app-level imports (ui.js,
+// security.js, pdflib.js, icons.js) are redirected to the hand-written lib/conv-office-shim.js, the
+// vendor paths are re-based; any other import that is not a synced sibling fails the sync.
+const OFFICE = ['vendor.js', 'fonts.js', 'docstyles.js', 'docmodel.js', 'docx-read.js', 'docx-write.js', 'docpdf.js', 'pdftext.js',
+  'workbook.js', 'formula.js', 'numfmt.js', 'sheetfx.js', 'xlsx-read.js', 'sheetpdf.js', 'chart.js', 'chart-xml.js', 'kinds.js',
+  'pptx-read.js', 'slide-render.js'];
+function officeModule(name) {
+  let text = readFileSync(join(ROOT, 'js/office', name), 'utf8');
+  text = text.replace(/(from\s*|import\(\s*)(['"])\.\.\/(ui|security|pdflib|icons)\.js\2/g, (m, pre, q) => `${pre}${q}../../conv-office-shim.js${q}`);
+  text = text.replace(/(['"])\.\.\/\.\.\/vendor\//g, '$1../../../vendor/');
+  const specs = [...text.matchAll(/^\s*import\s[\s\S]*?from\s*['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)/gm)].map(m => m[1] || m[2]);
+  const bad = specs.filter(s => s !== '../../conv-office-shim.js' && !OFFICE.includes(s.replace(/^\.\//, '')));
+  if (bad.length) throw new Error(`js/office/${name} now imports ${bad.join(', ')} – add it to OFFICE or to lib/conv-office-shim.js`);
+  return banner(`js/office/${name}`, 'app imports → lib/conv-office-shim.js, vendor paths re-based') + text;
+}
 
 // ---------------------------------------------------------------- expected state
 const expected = new Map(); // path relative to wt/ → Buffer
@@ -106,17 +130,33 @@ for (const [name, make] of Object.entries(SHARED)) {
   expected.set(`lib/shared/${name}`, Buffer.from(make(), 'utf8'));
   sources[`lib/shared/${name}`] = 'adapter: ' + name;
 }
+for (const name of OFFICE) { expected.set(`lib/shared/office/${name}`, Buffer.from(officeModule(name), 'utf8')); sources[`lib/shared/office/${name}`] = `js/office/${name}`; }
+{ // office modules import each other: syntax-check them with node --check instead of the import probe below
+  const { mkdtempSync } = await import('node:fs');
+  const { execFileSync } = await import('node:child_process');
+  const tmp = mkdtempSync(join((await import('node:os')).tmpdir(), 'wt-office-'));
+  try {
+    for (const name of OFFICE) {
+      const f = join(tmp, name.replace(/\.js$/, '.mjs'));
+      writeFileSync(f, expected.get(`lib/shared/office/${name}`));
+      try { execFileSync(process.execPath, ['--check', f], { stdio: 'pipe' }); }
+      catch (e) { console.error(`lib/shared/office/${name}: syntax error\n${e.stderr}`); process.exit(1); }
+    }
+  } finally { rmSync(tmp, { recursive: true, force: true }); }
+}
 // every shared module must still parse as an ES module on its own (catches a broken extraction)
 for (const [p, buf] of expected) {
-  if (!p.startsWith('lib/shared/')) continue;
-  const src = buf.toString('utf8').replace(/import\(\s*['"]\.\/[^'"]+['"]\s*\)/g, 'Promise.resolve({})');
-  try { await import('data:text/javascript;base64,' + Buffer.from(src).toString('base64')); }
+  if (!p.startsWith('lib/shared/') || p.startsWith('lib/shared/office/')) continue;
+  const src = buf.toString('utf8').replace(/import\(\s*['"]\.\/[^'"]+['"]\s*\)/g, 'Promise.resolve({})')
+    .replace(/^import\s*\{([^}]*)\}\s*from\s*['"]\.\/[^'"]+['"];?/gm, 'const {$1} = {};'); // static import of a synced sibling (imgworker → imgproc)
+  const probe = (/^\s*self\./m.test(src) ? 'const self = {};\n' : '') + src; // worker modules assign self.onmessage
+  try { await import('data:text/javascript;base64,' + Buffer.from(probe).toString('base64')); }
   catch (e) { console.error(`${p}: does not load as an ES module (${e.message})`); process.exit(1); }
 }
 const rootManifest = JSON.parse(readFileSync(join(ROOT, 'vendor', 'MANIFEST.json'), 'utf8'));
 const manifest = {
   comment: 'GENERATED by scripts/sync-webtools-vendor.mjs – copies of vendor/ and js/ for the FaLe Werkzeuge. Check: node scripts/sync-webtools-vendor.mjs --check',
-  libraries: Object.fromEntries(['pdfjs', 'pdf-lib', 'jszip', 'fonts'].map(k => [k, rootManifest.libraries[k]])),
+  libraries: Object.fromEntries(['pdfjs', 'pdf-lib', 'jszip', 'docx', 'pptxgenjs', 'fonts'].map(k => [k, rootManifest.libraries[k]])),
   files: Object.fromEntries([...expected.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([p, buf]) => [p, sha256(buf)])),
 };
 const manifestText = JSON.stringify(manifest, null, 2) + '\n';
