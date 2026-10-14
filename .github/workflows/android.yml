@@ -22,40 +22,50 @@ jobs:
     timeout-minutes: 45
     env:
       HAS_SIGNING: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+      BUILD_LOG: ${{ github.workspace }}/../build.log
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
 
       - name: Setup Java 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 21
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Android SDK (preinstalled on the runner)
+        run: |
+          SDK="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+          echo "SDK: $SDK" | tee -a "$BUILD_LOG"
+          SDKM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          ls "$SDK/platforms" "$SDK/build-tools" 2>&1 | tee -a "$BUILD_LOG" || true
+          (yes || true) | "$SDKM" --licenses > /dev/null 2>&1 || true
+          "$SDKM" --install "platforms;android-36" "build-tools;36.0.0" "platform-tools" 2>&1 | tail -n 5 | tee -a "$BUILD_LOG" || echo "sdkmanager install failed – Gradle will try to download missing parts" | tee -a "$BUILD_LOG"
 
       - name: Setup Gradle (cache)
         uses: gradle/actions/setup-gradle@v4
 
       - name: Install npm packages
-        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+        run: (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Build web app (native target)
-        run: node scripts/vercel-build.mjs --native
+        run: (node scripts/vercel-build.mjs --native) 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Create / sync Android project
         run: |
-          if [ ! -d android ]; then npx cap add android; fi
-          npx cap sync android
+          if [ ! -d android ]; then npx cap add android 2>&1 | tee -a "$BUILD_LOG"; fi
+          npx cap sync android 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Patch Android project
-        run: node scripts/cap-patch-android.mjs
+        run: (node scripts/cap-patch-android.mjs) 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Read version
         id: ver
@@ -65,7 +75,7 @@ jobs:
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Decode upload keystore
         if: env.HAS_SIGNING == 'true'
@@ -82,7 +92,7 @@ jobs:
           FALE_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           FALE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           FALE_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: ./gradlew bundleRelease assembleRelease --no-daemon --stacktrace
+        run: ./gradlew bundleRelease assembleRelease --no-daemon --stacktrace 2>&1 | tee -a "$BUILD_LOG"
 
       - name: Collect outputs
         env:
@@ -109,6 +119,29 @@ jobs:
           path: out/*
           if-no-files-found: error
           retention-days: 30
+
+      - name: Latest test build as pre-release (main)
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: Neueste Test-APK
+          prerelease: true
+          make_latest: false
+          body: |
+            Automatisch gebaut aus dem neuesten Stand von main (${{ github.sha }}).
+            Zum Testen: die .apk-Datei auf dem Handy herunterladen und öffnen.
+          files: out/*
+
+      - name: Report failure details (readable via the Checks API)
+        if: failure()
+        run: |
+          if [ -f "$BUILD_LOG" ]; then
+            grep -n -i -E "error|failed|exception|what went wrong|could not" "$BUILD_LOG" | tail -n 40 > "$RUNNER_TEMP/err.txt" || true
+            tail -n 60 "$BUILD_LOG" >> "$RUNNER_TEMP/err.txt"
+            body=$(sed -e 's/%/%25/g' -e 's/\r/%0D/g' "$RUNNER_TEMP/err.txt" | awk '{printf "%s%%0A", $0}' | cut -c1-60000)
+            echo "::error title=Build-Log (Auszug)::$body"
+          fi
 
       - name: Attach to GitHub Release (tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
