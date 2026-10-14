@@ -14,7 +14,7 @@
   "dependencies": {
     "pdfjs-dist": "6.2.108",
     "pdf-lib": "1.17.1",
-    "jszip": "3.10.1",
+    "jszip": "3.10.2",
     "docx": "9.7.1",
     "pptxgenjs": "4.0.1"
   },
