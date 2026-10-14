@@ -31,59 +31,81 @@ jobs:
       - name: Install psql
         if: steps.chk.outputs.skip != '1'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client > /dev/null
-      - name: Test connection
+      - name: Resolve connection (pooler, IPv4)
         if: steps.chk.outputs.skip != '1'
         run: |
           set +e
-          info=$(python3 - <<'PY' 2>&1
-          import os, re, urllib.parse as u
-          raw = os.environ.get('DB_URL', '').strip()
-          hints = []
-          if raw.startswith('"') or raw.startswith("'"): hints.append('Anfuehrungszeichen um die Zeile entfernen')
-          if not re.match(r'^postgres(ql)?://', raw): hints.append('beginnt nicht mit postgresql://')
-          if '[YOUR-PASSWORD]' in raw: hints.append('Platzhalter [YOUR-PASSWORD] wurde nicht ersetzt')
-          try:
-              p = u.urlsplit(raw); host = p.hostname; port = p.port; user = p.username; pw = p.password or ''; db = p.path.lstrip('/')
-          except Exception as e:
-              print(f"URL nicht lesbar ({type(e).__name__}) – vermutlich Sonderzeichen im Passwort (z. B. @ : / ? # [ ]), die kodiert werden muessen; hints={'; '.join(hints) or '-'}")
-              raise SystemExit(0)
-          if host and host.startswith('db.') and host.endswith('.supabase.co'): hints.append('direkte Verbindung (nur IPv6) – bitte die Session-Pooler-Zeile nehmen')
-          if any(c in pw for c in '@:/?#%[] '): hints.append('Passwort enthaelt Sonderzeichen, die in der URL kodiert werden muessen')
-          print(f"user={user} host={host} port={port} db={db} pw_len={len(pw)} hints={'; '.join(hints) or '-'}")
+          python3 - <<'PY'
+          import os, re
+          raw = os.environ.get('DB_URL', '').strip().strip('"').strip("'")
+          m = re.match(r'^postgres(?:ql)?://(.*)$', raw)
+          if not m:
+              print('::error title=DB-Verbindung::SUPABASE_DB_URL beginnt nicht mit postgresql://'); raise SystemExit(1)
+          rest = m.group(1)
+          if '@' not in rest:
+              print('::error title=DB-Verbindung::Kein @ in der Zeile gefunden'); raise SystemExit(1)
+          userinfo, hostpart = rest.rsplit('@', 1)      # password may contain @ : / ? # – split on the LAST @
+          user, _, pw = userinfo.partition(':')
+          from urllib.parse import unquote
+          pw = unquote(pw) if re.search(r'%[0-9A-Fa-f]{2}', pw) else pw
+          hostport, _, db = hostpart.partition('/')
+          db = (db.split('?')[0] or 'postgres')
+          host, _, port = hostport.partition(':')
+          port = port or '5432'
+          if '[YOUR-PASSWORD]' in pw:
+              print('::error title=DB-Verbindung::Platzhalter [YOUR-PASSWORD] wurde nicht ersetzt'); raise SystemExit(1)
+          cands = []
+          mm = re.match(r'^db\.([a-z0-9]+)\.supabase\.co$', host)
+          if mm:  # direct host is IPv6-only – GitHub runners need the IPv4 session pooler
+              ref = mm.group(1)
+              for h in ('aws-0-eu-central-1.pooler.supabase.com', 'aws-1-eu-central-1.pooler.supabase.com'):
+                  cands.append((h, '5432', f'postgres.{ref}'))
+          else:
+              cands.append((host, port, user))
+          print('::add-mask::' + pw)
+          with open(os.environ['GITHUB_ENV'], 'a') as f:
+              f.write(f'PGPASSWORD={pw}\nPGDATABASE={db}\nPGSSLMODE=require\nPGCONNECT_TIMEOUT=15\n')
+          with open('/tmp/pg_cands', 'w') as f:
+              for c in cands: f.write(' '.join(c) + '\n')
+          print(f"::notice title=DB-Verbindung::Kandidaten: {', '.join(c[0] + ' (' + c[2] + ')' for c in cands)}; Passwortlaenge {len(pw)}")
           PY
-          )
-          echo "::notice title=DB-Verbindung (ohne Passwort)::$info"
-          if ! err=$(psql "$DB_URL" -v ON_ERROR_STOP=1 -tA -c "select current_user, version()" 2>&1); then
-            clean=$(echo "$err" | sed -E 's#postgres(ql)?://[^ ]*#<url>#g' | head -n 5 | tr '\n' ' ')
-            echo "::error title=DB-Verbindung fehlgeschlagen::$clean"
-            exit 1
-          fi
-          echo "::notice title=DB-Verbindung ok::$(echo "$err" | cut -c1-120)"
+          [ -s /tmp/pg_cands ] || exit 1
+          while read -r h p u; do
+            if out=$(PGHOST="$h" PGPORT="$p" PGUSER="$u" psql -tA -c "select current_user" 2>&1); then
+              echo "PGHOST=$h" >> "$GITHUB_ENV"; echo "PGPORT=$p" >> "$GITHUB_ENV"; echo "PGUSER=$u" >> "$GITHUB_ENV"
+              echo "::notice title=DB-Verbindung ok::$h als $out"
+              exit 0
+            else
+              echo "::warning title=DB-Verbindung $h::$(echo "$out" | head -n 3 | tr '\n' ' ')"
+            fi
+          done < /tmp/pg_cands
+          echo "::error title=DB-Verbindung fehlgeschlagen::Keine Verbindung möglich (siehe Warnungen)."
+          exit 1
 
       - name: Apply pending migrations
         if: steps.chk.outputs.skip != '1'
         run: |
           set -euo pipefail
-          psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "create schema if not exists private; create table if not exists private.fale_migrations (name text primary key, applied_at timestamptz not null default now()); revoke all on private.fale_migrations from public;"
+          psql -v ON_ERROR_STOP=1 -q -c "create schema if not exists private; create table if not exists private.fale_migrations (name text primary key, applied_at timestamptz not null default now()); revoke all on private.fale_migrations from public;"
           # Migrations that were applied by hand before this workflow existed
           if [ -f supabase/migrations/.baseline ]; then
             while read -r b; do
-              [ -n "$b" ] && psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$b') on conflict do nothing;"
+              [ -n "$b" ] && psql -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$b') on conflict do nothing;"
             done < supabase/migrations/.baseline
           fi
           applied=0
           for f in $(ls supabase/migrations/*.sql | sort); do
             n=$(basename "$f")
-            done_=$(psql "$DB_URL" -tA -c "select 1 from private.fale_migrations where name = '$n'")
+            done_=$(psql -tA -c "select 1 from private.fale_migrations where name = '$n'")
             if [ "$done_" = "1" ]; then echo "✓ $n (bereits angewendet)"; continue; fi
             echo "→ $n"
-            if ! out=$(psql "$DB_URL" -v ON_ERROR_STOP=1 --single-transaction -q -f "$f" 2>&1); then
+            if ! out=$(psql -v ON_ERROR_STOP=1 --single-transaction -q -f "$f" 2>&1); then
               echo "$out"
               msg=$(echo "$out" | tail -n 15 | sed -e 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
               echo "::error title=Migration $n fehlgeschlagen::$msg"
               exit 1
             fi
-            psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$n');"
+            psql -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$n');"
             applied=$((applied+1))
           done
           echo "::notice title=DB migrate::$applied neue Migration(en) angewendet."
