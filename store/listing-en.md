@@ -30,7 +30,7 @@ Sign, scan with text recognition & edit PDFs – free, private, works offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. All pro features are free, with no subscription and no account. Your files are processed on your device – not in a cloud.
+FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. All pro features are free, with no subscription and no account. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
@@ -89,7 +89,7 @@ AI ASSISTANT (OPTIONAL)
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
 
 PRIVATE BY DESIGN
-No user account, no banner ads, no analytics. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
+No account needed, no banner ads, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
 
 Available in English and German. Free, no watermarks. Optional: FaLe Plus for more AI requests.
 ```
@@ -102,6 +102,7 @@ Available in English and German. Free, no watermarks. Optional: FaLe Plus for mo
 - AI assistant: ask your documents, with page references (optional)
 - Share securely & request signatures – end-to-end encrypted, no account
 - Phone ↔ PC: transfer files via QR code
+- Optional: FaLe Sync – end-to-end encrypted on all your devices
 - Edit documents, spreadsheets and presentations
 - Convert PDF ↔ DOCX, XLSX, PPTX
 - Deadlines, reminders and a private vault

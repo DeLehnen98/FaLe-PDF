@@ -56,6 +56,9 @@ export async function setProfile(values) {
   return clean;
 }
 
+/** Drop the in-memory copy (e.g. after FaLe Sync wrote a newer profile). */
+export function resetProfileCache() { cache = undefined; }
+
 export async function clearProfile() {
   await db.setSetting(KEY, null);
   cache = null;

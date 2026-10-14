@@ -132,7 +132,7 @@ async function route() {
   }
   if (EXTRA_ROUTES.includes(top)) {
     if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
-    if (!currentMain) showMain(['profil', 'tresor', 'papierkorb'].includes(top) ? 'einstellungen' : top === 'duplikate' ? 'dateien' : top === 'fristen' ? 'start' : 'werkzeuge');
+    if (!currentMain) showMain(['profil', 'tresor', 'papierkorb', 'konto'].includes(top) ? 'einstellungen' : top === 'duplikate' ? 'dateien' : top === 'fristen' ? 'start' : 'werkzeuge');
     await openExtraRoute(parts, params, { goBack });
     return;
   }
@@ -299,6 +299,10 @@ async function init() {
   db.purgeOldTrash(30).catch(() => {});
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./extras/reminders.js').then(m => m.syncNotifications()).catch(e => console.warn(e));
+  // optional FaLe-Konto: only does something when signed in (or returning from a Google sign-in)
+  let acct = false;
+  try { acct = localStorage.getItem('fale-acct') === '1'; } catch {}
+  if (acct || /[?&]auth=/.test(location.search)) import('./account/entry.js').then(m => m.initAccount()).catch(e => console.warn(e));
 }
 
 window.addEventListener('error', e => { console.error(e.error || e.message); });

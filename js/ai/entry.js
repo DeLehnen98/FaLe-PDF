@@ -45,7 +45,7 @@ export function renderMeCard(box) {
   loadAiCss();
   const q = C.cachedQuota();
   const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen gratis'
-    : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit} gratis`) : 'Eingerichtet';
+    : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit} gratis`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';
   box.innerHTML = '';
   box.appendChild(h(`<div class="ai-me">
     <a class="action-card" href="#/ki"><span class="tile-ic ai-ic">${oicon('sparkle')}</span><span><strong>KI-Assistent</strong><span class="muted small" data-ai-me-status>${esc(status)}</span></span></a>

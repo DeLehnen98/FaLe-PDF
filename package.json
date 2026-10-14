@@ -1,6 +1,6 @@
 {
   "name": "fale-pdf",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "description": "FaLe PDF – PDF, Dokumente, Tabellen und Präsentationen. Privat, offline, ohne Konto.",
   "scripts": {
@@ -28,6 +28,7 @@
     "@capacitor/haptics": "^8.0.0",
     "@capacitor/local-notifications": "^8.0.0",
     "@capacitor/share": "^8.0.0",
-    "@capgo/native-purchases": "^8.9.5"
+    "@capgo/native-purchases": "^8.9.5",
+    "esbuild": "0.28.2"
   }
 }

@@ -26,7 +26,7 @@ PDFs unterschreiben, scannen mit Texterkennung, bearbeiten – gratis & privat.
 ## Vollständige Beschreibung (≤ 4000)
 
 ```
-FaLe PDF ist dein privates Büro für Handy und Tablet: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Pro-Funktionen sind gratis, ohne Abo und ohne Konto. Deine Dateien werden auf deinem Gerät verarbeitet – nicht in einer Cloud.
+FaLe PDF ist dein privates Büro für Handy und Tablet: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Pro-Funktionen sind gratis, ohne Abo und ohne Konto. Deine Dateien werden auf deinem Gerät verarbeitet. Optional synchronisiert das FaLe-Konto sie Ende-zu-Ende-verschlüsselt zwischen deinen Geräten.
 
 PDF LESEN
 • Schneller PDF-Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis
@@ -85,7 +85,7 @@ KI-ASSISTENT (OPTIONAL)
 • Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst. KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden.
 
 PRIVAT AUS PRINZIP
-Kein Benutzerkonto, keine Werbebanner, keine Analyse-Tools. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Geteilte Dateien sind Ende-zu-Ende-verschlüsselt – wir können sie nicht lesen.
+Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Geteilte Dateien sind Ende-zu-Ende-verschlüsselt – wir können sie nicht lesen.
 
 Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen. Optional: FaLe Plus für mehr KI-Anfragen.
 ```
@@ -98,6 +98,7 @@ Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen. Optional: F
 - KI-Assistent: Fragen an deine Dokumente, mit Seitenangaben (optional)
 - Sicher teilen & Unterschrift anfordern – Ende-zu-Ende-verschlüsselt, ohne Konto
 - Handy ↔ PC: Dateien per QR-Code übertragen
+- Optional: FaLe Sync – Ende-zu-Ende-verschlüsselt auf all deinen Geräten
 - Dokumente, Tabellen und Präsentationen bearbeiten
 - PDF ↔ DOCX, XLSX, PPTX umwandeln
 - Kündigung, Widerruf & Co. in einer Minute

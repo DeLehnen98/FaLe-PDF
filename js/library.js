@@ -107,6 +107,25 @@ async function indexOther(id, kind, blob) {
   emitChange();
 }
 
+/** (Re)build thumbnail + text index of an entry, e.g. after it arrived via FaLe Sync (thumbnails and the
+ * search index are never synced – each device builds its own). Password-protected PDFs are skipped. */
+export async function reindexDoc(id) {
+  const meta = await db.getDoc(id);
+  const blob = meta && await db.getFile(id);
+  if (!meta || !blob) return;
+  if (meta.kind && meta.kind !== 'pdf') { await indexOther(id, meta.kind, blob); return; }
+  if (meta.encrypted) return;
+  const { pdf } = await loadPdf(await blob.arrayBuffer(), { name: meta.name, key: id });
+  try {
+    let thumb = null;
+    try { thumb = await thumbnailBlob(pdf); } catch {}
+    dropThumb(id);
+    await db.updateDoc(id, { thumb, pages: pdf.numPages });
+    await indexText(id, pdf);
+    emitChange();
+  } finally { pdf.destroy(); }
+}
+
 /**
  * Save an office file into the library. With `id` the existing entry is replaced (keeps star etc.).
  * @returns {Promise<object>} metadata

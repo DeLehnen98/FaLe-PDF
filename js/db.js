@@ -52,6 +52,14 @@ async function tx(stores, mode, fn) {
   });
 }
 
+// ---- change hooks for FaLe Sync (inactive – fn is null – unless the user turned sync on) ----
+export const syncHooks = { fn: null, mute: new Set() };
+function changed(store, id, op) {
+  const f = syncHooks.fn;
+  if (!f || syncHooks.mute.has(`${store}:${id}`)) return;
+  try { f(store, id, op); } catch { /* never breaks a write */ }
+}
+
 export function uid() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
@@ -62,6 +70,7 @@ export async function addDoc(meta, blob) {
     t.objectStore('docs').put(meta);
     t.objectStore('files').put({ id: meta.id, blob });
   });
+  changed('docs', meta.id, 'put');
   return meta;
 }
 
@@ -82,7 +91,7 @@ export async function listFiles() {
 
 /** Replace the stored file of an entry and patch its metadata in one transaction. */
 export async function replaceFile(id, blob, patch = {}) {
-  return tx(['docs', 'files'], 'readwrite', async t => {
+  const r = await tx(['docs', 'files'], 'readwrite', async t => {
     const s = t.objectStore('docs');
     const cur = await reqP(s.get(id));
     if (!cur) return null;
@@ -91,10 +100,12 @@ export async function replaceFile(id, blob, patch = {}) {
     t.objectStore('files').put({ id, blob });
     return next;
   });
+  if (r) changed('docs', id, 'content');
+  return r;
 }
 
 export async function updateDoc(id, patch) {
-  return tx('docs', 'readwrite', async t => {
+  const r = await tx('docs', 'readwrite', async t => {
     const s = t.objectStore('docs');
     const cur = await reqP(s.get(id));
     if (!cur) return null;
@@ -102,6 +113,8 @@ export async function updateDoc(id, patch) {
     s.put(next);
     return next;
   });
+  if (r) changed('docs', id, 'meta');
+  return r;
 }
 
 export async function getFile(id) {
@@ -120,6 +133,7 @@ export async function deleteDoc(id) {
     t.objectStore('files').delete(id);
     t.objectStore('texts').delete(id);
   });
+  changed('docs', id, 'delete');
 }
 
 /** Remove an entry for good (no Papierkorb) – used e.g. when a file moves into the Tresor. */
@@ -127,6 +141,7 @@ export async function purgeDoc(id) {
   await tx(['docs', 'files', 'texts', 'trash'], 'readwrite', t => {
     ['docs', 'files', 'texts', 'trash'].forEach(s => t.objectStore(s).delete(id));
   });
+  changed('docs', id, 'delete');
 }
 
 // ---- Papierkorb ----
@@ -135,7 +150,7 @@ export async function listTrash() {
   return all.sort((a, b) => b.deletedAt - a.deletedAt);
 }
 export async function restoreFromTrash(id) {
-  return tx(['docs', 'files', 'texts', 'trash'], 'readwrite', async t => {
+  const r = await tx(['docs', 'files', 'texts', 'trash'], 'readwrite', async t => {
     const rec = await reqP(t.objectStore('trash').get(id));
     if (!rec) return null;
     const meta = { ...rec.meta, openedAt: Date.now() };
@@ -145,6 +160,8 @@ export async function restoreFromTrash(id) {
     t.objectStore('trash').delete(id);
     return meta;
   });
+  if (r) changed('docs', id, 'put');
+  return r;
 }
 export async function deleteFromTrash(id) {
   await tx('trash', 'readwrite', t => { t.objectStore('trash').delete(id); });
@@ -166,10 +183,12 @@ export async function listReminders() {
 }
 export async function putReminder(rec) {
   await tx('reminders', 'readwrite', t => { t.objectStore('reminders').put(rec); });
+  changed('reminders', rec.id, 'put');
   return rec;
 }
 export async function deleteReminder(id) {
   await tx('reminders', 'readwrite', t => { t.objectStore('reminders').delete(id); });
+  changed('reminders', id, 'delete');
 }
 
 // ---- Tresor (only ciphertext is ever stored here) ----
@@ -181,12 +200,15 @@ export async function getVaultItem(id) {
 }
 export async function putVaultItem(rec) {
   await tx('vault', 'readwrite', t => { t.objectStore('vault').put(rec); });
+  changed('vault', rec.id, 'put');
 }
 export async function deleteVaultItem(id) {
   await tx('vault', 'readwrite', t => { t.objectStore('vault').delete(id); });
+  changed('vault', id, 'delete');
 }
 export async function clearVault() {
   await tx('vault', 'readwrite', t => { t.objectStore('vault').clear(); });
+  changed('vault', '*', 'clear');
 }
 
 // ---- extracted text (one string per page) ----
@@ -203,7 +225,16 @@ export async function allTexts() {
 
 // ---- signatures ----
 export async function addSignature(blob) {
-  return tx('signatures', 'readwrite', t => reqP(t.objectStore('signatures').add({ blob, createdAt: Date.now() })));
+  const id = await tx('signatures', 'readwrite', t => reqP(t.objectStore('signatures').add({ blob, createdAt: Date.now() })));
+  changed('signatures', id, 'put');
+  return id;
+}
+/** Sync helpers: read one record / write a full record (new records get an id). */
+export async function getSignature(id) {
+  return tx('signatures', 'readonly', t => reqP(t.objectStore('signatures').get(id)));
+}
+export async function putSignature(rec) {
+  return tx('signatures', 'readwrite', t => reqP(t.objectStore('signatures').put(rec)));
 }
 export async function listSignatures() {
   const all = await tx('signatures', 'readonly', t => reqP(t.objectStore('signatures').getAll()));
@@ -211,6 +242,7 @@ export async function listSignatures() {
 }
 export async function deleteSignature(id) {
   await tx('signatures', 'readwrite', t => { t.objectStore('signatures').delete(id); });
+  changed('signatures', id, 'delete');
 }
 
 // ---- settings ----
@@ -222,12 +254,14 @@ export async function getSetting(key, fallback = null) {
 }
 export async function setSetting(key, value) {
   await tx('settings', 'readwrite', t => { t.objectStore('settings').put({ key, value }); });
+  changed('settings', key, 'put');
 }
 
 export async function clearAll({ keepSettings = true } = {}) {
   const stores = ['docs', 'files', 'texts', 'signatures', 'trash'];
   if (!keepSettings) stores.push('settings');
   await tx(stores, 'readwrite', t => { stores.forEach(s => t.objectStore(s).clear()); });
+  changed('*', '*', 'clear');
 }
 
 // ---- share-target inbox (written by the service worker in a separate DB) ----

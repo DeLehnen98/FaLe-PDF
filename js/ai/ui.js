@@ -87,7 +87,7 @@ export function quotaWidget({ compact = false } = {}) {
     const left = q.remaining;
     const label = q.plus ? `FaLe Plus aktiv · heute noch ${left} von ${q.limit}` : left > 0 ? `Heute noch ${left} von ${q.limit} gratis` : 'Kontingent für heute aufgebraucht';
     const canAd = !q.plus && isNative() && features.ads !== false && q.rewardsLeft > 0;
-    el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
+    el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
       <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
       ${(canAd || !q.plus) && !compact ? `<div class="aq-acts">
         ${canAd ? `<button class="btn btn-soft btn-sm" type="button" data-ai-ad>${oicon('play')} Werbevideo ansehen (+${q.bonus || 3})</button>` : ''}

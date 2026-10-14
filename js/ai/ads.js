@@ -67,7 +67,7 @@ export async function showRewardedAd() {
   handles.push(await on(p, EV.Dismissed, () => setTimeout(() => settle('dismissed'), 400))); // reward event may arrive just before
   handles.push(await on(p, EV.FailedToShow, () => settle('failed')));
   try {
-    await p.prepareRewardVideoAd({ adId: AI_CONFIG.ADMOB_REWARDED_ID, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa, ssv: { customData: token } });
+    await p.prepareRewardVideoAd({ adId: AI_CONFIG.ADMOB_REWARDED_ID, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa, ssv: { customData: C.rewardCustomData(token) } });
     const shown = Promise.resolve(p.showRewardVideoAd()).then(() => 'rewarded', () => 'failed');
     const result = await Promise.race([outcome, shown]);
     if (result === 'failed') throw userErr('Das Werbevideo konnte nicht angezeigt werden. Bitte versuche es später.');

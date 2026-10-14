@@ -80,6 +80,12 @@ function getConfig() {
     admobKeysUrl: env('ADMOB_VERIFIER_KEYS_URL') || 'https://www.gstatic.com/admob/reward/verifier-keys.json',
     admobRewardUnits: env('ADMOB_REWARDED_AD_UNITS').split(',').map(s => s.trim()).filter(Boolean),
     maxBodyBytes: int('AI_MAX_BODY_BYTES', 200000, { min: 10000, max: 4000000 }),
+    // FaLe-Konto (optional account) + FaLe Sync – see store/ACCOUNT-SETUP.md
+    accountsEnabled: bool('ACCOUNTS_ENABLED', false), // switch on after custom SMTP is set up in Supabase
+    authGoogle: bool('AUTH_GOOGLE_ENABLED', false), // Google sign-in (needs the Google provider in Supabase Auth)
+    serviceRoleKey: env('SUPABASE_SERVICE_ROLE_KEY'), // OPTIONAL secret: lets account deletion remove the auth user immediately
+    accountDaily: int('ACCOUNT_DAILY', 200, { min: 1, max: 100000 }),
+    accountIpDaily: int('ACCOUNT_IP_DAILY', 400, { min: 1, max: 100000 }),
   };
   cfg.monthlyBudgetUsd = cfg.usdEur > 0 ? cfg.monthlyBudgetEur / cfg.usdEur : 0;
   return cfg;
@@ -111,4 +117,9 @@ function plusConfigured(cfg) {
   try { const j = JSON.parse(cfg.playSaJson); return !!(j.client_email && j.private_key); } catch { return false; }
 }
 
-module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, PROVIDERS };
+/** FaLe-Konto switched on and the public Supabase settings present? (no secret needed on the client side) */
+function accountConfigured(cfg) {
+  return !!(cfg.accountsEnabled && cfg.supabaseUrl && cfg.supabaseKey);
+}
+
+module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, accountConfigured, PROVIDERS };

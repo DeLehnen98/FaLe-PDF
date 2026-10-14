@@ -1,0 +1,100 @@
+/*
+ * FaLe design tokens – shared by FaleNetwork and every FaLe app.
+ * Version 1.0 · documented in network/BRAND.md
+ *
+ * Usage: <link rel="stylesheet" href="/assets/fale-tokens.css">
+ * Theme: light by default, dark via prefers-color-scheme, forced with
+ *        <html data-theme="light|dark">. Only custom properties live here –
+ *        no element styles, so apps can adopt the tokens without side effects.
+ */
+:root {
+  /* Brand constants (identical in light and dark) */
+  --fale-ink-top: #312E81;      /* icon gradient top */
+  --fale-ink-bottom: #171542;   /* icon gradient bottom */
+  --fale-indigo: #3B37A0;       /* primary brand colour */
+  --fale-teal: #2DD4BF;         /* bookmark / accent on dark */
+  --fale-teal-deep: #0D9488;    /* bookmark shadow */
+  --fale-periwinkle: #A5B4FC;   /* page lines / secondary marks */
+  --fale-lilac: #C7D2FE;        /* page fold */
+  --fale-gradient: linear-gradient(180deg, var(--fale-ink-top), var(--fale-ink-bottom));
+
+  /* Surfaces & text – light */
+  --bg: #F5F6FB;
+  --surface: #FFFFFF;
+  --surface-2: #EEF0F8;
+  --surface-3: #E3E6F2;
+  --text: #15172F;
+  --text-2: #4F5475;
+  --text-3: #636988;
+  --border: #E0E3EE;
+  --border-strong: #C9CDE0;
+
+  /* Interactive */
+  --primary: #3B37A0;
+  --primary-strong: #2A2783;
+  --primary-soft: #E9E8FB;
+  --on-primary: #FFFFFF;
+  --accent: #0B7A6E;            /* teal text on light (AA on --bg) */
+  --accent-soft: #D9F5F0;
+  --warn: #8A5A00;
+  --warn-soft: #FDF1D6;
+  --danger: #C23A4B;
+  --focus-ring: 0 0 0 3px rgba(59, 55, 160, 0.4);
+
+  /* Dark "ink" sections (always dark, both themes) */
+  --ink-bg: #171542;
+  --ink-surface: #232063;
+  --ink-text: #ECEDF8;
+  --ink-text-2: #B9BBE0;
+
+  /* Type */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.875rem;  /* 14px  – fine print */
+  --step-0: 1.0625rem;  /* 17px  – body */
+  --step-1: 1.25rem;    /* 20px  – lead, h3 */
+  --step-2: 1.5625rem;  /* 25px  – h2 small screens */
+  --step-3: clamp(1.75rem, 1.2rem + 2.2vw, 2.4rem);   /* h2 */
+  --step-4: clamp(2.25rem, 1.3rem + 4.2vw, 4rem);     /* display */
+  --leading-tight: 1.08;
+  --leading-body: 1.6;
+
+  /* Shape & depth */
+  --radius-icon: 22.5%;         /* app icon squircle (116/512) */
+  --radius-lg: 28px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 2px rgba(21, 23, 47, 0.06), 0 1px 3px rgba(21, 23, 47, 0.05);
+  --shadow-md: 0 6px 20px rgba(21, 23, 47, 0.08), 0 1px 3px rgba(21, 23, 47, 0.06);
+
+  /* Spacing (4px base) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 72px; --space-9: 112px;
+  --measure: 66ch;
+  --page-max: 1120px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0F22; --surface: #171932; --surface-2: #1F2240; --surface-3: #2A2D50;
+    --text: #ECEDF8; --text-2: #A9ACCC; --text-3: #8A8FB4; --border: #2A2D4C; --border-strong: #3A3E66;
+    --primary: #ABA8FF; --primary-strong: #C6C4FF; --primary-soft: #262757; --on-primary: #0E0F22;
+    --accent: #2DD4BF; --accent-soft: #113C38; --warn: #F5C04A; --warn-soft: #3A2E10; --danger: #F07A8A;
+    --focus-ring: 0 0 0 3px rgba(171, 168, 255, 0.5);
+    --ink-bg: #1B1950; --ink-surface: #262468;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4); --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0F22; --surface: #171932; --surface-2: #1F2240; --surface-3: #2A2D50;
+  --text: #ECEDF8; --text-2: #A9ACCC; --text-3: #8A8FB4; --border: #2A2D4C; --border-strong: #3A3E66;
+  --primary: #ABA8FF; --primary-strong: #C6C4FF; --primary-soft: #262757; --on-primary: #0E0F22;
+  --accent: #2DD4BF; --accent-soft: #113C38; --warn: #F5C04A; --warn-soft: #3A2E10; --danger: #F07A8A;
+  --focus-ring: 0 0 0 3px rgba(171, 168, 255, 0.5);
+  --ink-bg: #1B1950; --ink-surface: #262468;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4); --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}

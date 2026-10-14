@@ -10,6 +10,8 @@ const Sec = require('./security');
 const { TASKS, finishJson, finishText } = require('./tasks');
 const { getStore } = require('./store');
 const { getProvider, ProviderError } = require('./providers');
+const Acc = require('./supa-auth');
+const { getAccountStore } = require('./accountstore');
 
 const round6 = x => Math.round(x * 1e6) / 1e6;
 const estTokens = chars => Math.ceil(chars / 3.2);
@@ -19,8 +21,10 @@ function makeCore(overrides = {}) {
     getConfig: C.getConfig,
     getStore,
     getProvider,
+    getAccountStore,
     fetchImpl: (...a) => fetch(...a),
     now: () => new Date(),
+    verifyAccount: (cfg, token) => Acc.verifyAccessToken(cfg, token, { fetchImpl: deps.fetchImpl }),
     ...overrides,
   };
 
@@ -40,21 +44,34 @@ function makeCore(overrides = {}) {
     return dh;
   }
 
-  async function plusOf(store, device, now) {
-    try {
-      const p = await store.plusGet({ device });
-      if (p && new Date(p.expiresAt).getTime() > now.getTime()) return { active: true, product: p.product, expiresAt: new Date(p.expiresAt).toISOString() };
-    } catch (e) { if (e && e.code === 'store_error') throw e; }
-    return { active: false };
+  /**
+   * Optional FaLe-Konto: with a valid access token (body.account) quota and Plus belong to the account
+   * (counter key = HMAC of the user id, same shape as a device hash). Without one: per device as before.
+   */
+  async function accountOf(cfg, body) {
+    if (!body || !body.account || !C.accountConfigured(cfg)) return null;
+    const u = await deps.verifyAccount(cfg, body.account); // 401 invalid_account → the app refreshes its session
+    return { id: u.id, key: Acc.accountKey(cfg.tokenSecret, u.id) };
   }
 
-  function quotaView(cfg, st, plus) {
+  async function plusOf(store, device, now, acct = null, cfg = null) {
+    const list = [];
+    try { list.push(await store.plusGet({ device })); } catch (e) { if (e && e.code === 'store_error') throw e; }
+    if (acct && cfg) {
+      try { list.push(await deps.getAccountStore(cfg).plusGet({ user: acct.id })); } catch (e) { if (e && e.code === 'store_error' && e.status !== 404) throw e; }
+    }
+    const best = list.filter(p => p && new Date(p.expiresAt).getTime() > now.getTime()).sort((a, b) => new Date(b.expiresAt) - new Date(a.expiresAt))[0];
+    return best ? { active: true, product: best.product, expiresAt: new Date(best.expiresAt).toISOString() } : { active: false };
+  }
+
+  function quotaView(cfg, st, plus, acct = null) {
     const limit = plus.active ? cfg.plusDaily : cfg.freeDaily + (st.rewarded || 0) * cfg.rewardBonus;
     return {
       used: st.used || 0, limit, remaining: Math.max(0, limit - (st.used || 0)),
       free: cfg.freeDaily, rewarded: st.rewarded || 0, bonus: cfg.rewardBonus,
       rewardsLeft: plus.active || !cfg.adsEnabled ? 0 : Math.max(0, cfg.rewardMaxPerDay - (st.rewarded || 0)),
       plus: plus.active, plusUntil: plus.expiresAt || null,
+      scope: acct ? 'account' : 'device',
     };
   }
 
@@ -88,10 +105,13 @@ function makeCore(overrides = {}) {
     };
     if (configured && body.token) {
       const device = deviceOf(cfg, body.token);
+      const acct = await accountOf(cfg, body);
       const c = ctxOf(req, cfg);
       const store = deps.getStore(cfg);
-      const [st, plus, bud] = await Promise.all([store.status({ device, day: c.day }), plusOf(store, device, c.now), store.budgetStatus({ month: c.month })]);
-      out.quota = quotaView(cfg, st || {}, plus);
+      const [st, plus, bud] = await Promise.all([store.status({ device: acct ? acct.key : device, day: c.day }), plusOf(store, device, c.now, acct, cfg), store.budgetStatus({ month: c.month })]);
+      out.quota = quotaView(cfg, st || {}, plus, acct);
+      // rewarded ads credit the account: AdMob's custom_data carries this token instead of the device token
+      if (acct) out.rewardToken = Sec.issueToken(cfg.tokenSecret, acct.key, c.now.getTime());
       out.budgetExhausted = (Number(bud && bud.spent) || 0) + (Number(bud && bud.reserved) || 0) >= cfg.monthlyBudgetUsd * 0.995;
     }
     H.sendJson(res, 200, out);
@@ -109,19 +129,21 @@ function makeCore(overrides = {}) {
     const options = body.options && typeof body.options === 'object' && !Array.isArray(body.options) ? body.options : {};
     const prep = task.prepare(input, options); // throws 400 bad_input
 
+    const acct = await accountOf(cfg, body);
+    const subject = acct ? acct.key : device; // quota counter: account (signed in) or device
     const c = ctxOf(req, cfg);
     const store = deps.getStore(cfg);
-    const plus = await plusOf(store, device, c.now);
+    const plus = await plusOf(store, device, c.now, acct, cfg);
 
     // 1) quota (atomic check + increment)
-    const q = await store.consume({ device, ip: c.ip, day: c.day, free: cfg.freeDaily, bonus: cfg.rewardBonus, plus: plus.active, plusLimit: cfg.plusDaily, ipLimit: cfg.ipDaily });
+    const q = await store.consume({ device: subject, ip: c.ip, day: c.day, free: cfg.freeDaily, bonus: cfg.rewardBonus, plus: plus.active, plusLimit: cfg.plusDaily, ipLimit: cfg.ipDaily });
     if (!q || !q.ok) {
-      const view = quotaView(cfg, { used: q ? q.used : 0, rewarded: q ? q.rewarded : 0 }, plus);
+      const view = quotaView(cfg, { used: q ? q.used : 0, rewarded: q ? q.rewarded : 0 }, plus, acct);
       if (q && q.reason === 'ip') throw new H.HttpError(429, 'ip_limit', 'Für dein Netzwerk ist das Tageslimit erreicht. Morgen geht es weiter.', { quota: view });
       throw new H.HttpError(429, 'quota_exhausted', 'Dein KI-Kontingent für heute ist aufgebraucht.', { quota: view });
     }
     let refunded = false;
-    const refund = async () => { if (refunded) return; refunded = true; try { await store.refund({ device, ip: c.ip, day: c.day, plus: plus.active }); } catch {} };
+    const refund = async () => { if (refunded) return; refunded = true; try { await store.refund({ device: subject, ip: c.ip, day: c.day, plus: plus.active }); } catch {} };
 
     // 2) budget reservation (estimated worst case for this call)
     const inTok = estTokens(prep.system.length + prep.user.length);
@@ -131,7 +153,7 @@ function makeCore(overrides = {}) {
     catch (e) { await refund(); throw e; }
     if (!b || !b.ok) { await refund(); throw new H.HttpError(429, 'budget_exhausted', 'KI-Kontingent für diesen Monat aufgebraucht'); }
 
-    const quotaAfter = quotaView(cfg, { used: q.used, rewarded: q.rewarded }, plus);
+    const quotaAfter = quotaView(cfg, { used: q.used, rewarded: q.rewarded }, plus, acct);
     let settled = false;
     const settle = async (usage) => {
       if (settled) return; settled = true;
@@ -170,13 +192,13 @@ function makeCore(overrides = {}) {
     try {
       const r = await provider.complete({ ...call, stream: true, onDelta: t => { got += t; send('delta', { t }); } });
       await settle(r.usage);
-      if (!finishText(r.text || got)) { await refund(); send('error', { error: 'bad_output', message: 'Die KI hat keine Antwort geliefert. Bitte versuche es erneut.', quota: quotaView(cfg, { used: q.used - 1, rewarded: q.rewarded }, plus) }); }
+      if (!finishText(r.text || got)) { await refund(); send('error', { error: 'bad_output', message: 'Die KI hat keine Antwort geliefert. Bitte versuche es erneut.', quota: quotaView(cfg, { used: q.used - 1, rewarded: q.rewarded }, plus, acct) }); }
       else send('done', { quota: quotaAfter, cut: r.stop === 'max_tokens' || r.stop === 'length', consumed: prep.consumed || null });
     } catch (e) {
       await settle(null);
       if (!got) await refund();
       const he = providerHttpError(e);
-      send('error', { error: he.code, message: he.message, quota: got ? quotaAfter : quotaView(cfg, { used: q.used - 1, rewarded: q.rewarded }, plus) });
+      send('error', { error: he.code, message: he.message, quota: got ? quotaAfter : quotaView(cfg, { used: q.used - 1, rewarded: q.rewarded }, plus, acct) });
     }
     res.end();
   }, { getConfig: () => deps.getConfig() });
@@ -223,7 +245,14 @@ function makeCore(overrides = {}) {
     if (sub.productId && sub.productId !== productId && !cfg.plusProducts.includes(sub.productId)) throw new H.HttpError(400, 'bad_input', 'Produkt passt nicht');
     const tokenHash = Sec.sha256hex('play:' + purchaseToken);
     await deps.getStore(cfg).plusUpsert({ device, tokenHash, product: sub.productId || productId, expiresAt: sub.expiresAt });
-    H.sendJson(res, 200, { ok: true, active: true, product: sub.productId || productId, expiresAt: sub.expiresAt });
+    // signed in with a FaLe-Konto → Plus follows the account (restore on every device)
+    let linked = false;
+    const acct = await accountOf(cfg, body).catch(() => null);
+    if (acct) {
+      try { await deps.getAccountStore(cfg).plusUpsert({ user: acct.id, tokenHash, product: sub.productId || productId, expiresAt: sub.expiresAt }); linked = true; }
+      catch (e) { console.error('[fale-api] plus account link failed'); }
+    }
+    H.sendJson(res, 200, { ok: true, active: true, product: sub.productId || productId, expiresAt: sub.expiresAt, account: linked });
   }, { getConfig: () => deps.getConfig() });
 
   return { register, quota, ai, ssv, plusVerify, deps };

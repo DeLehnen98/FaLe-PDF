@@ -2,8 +2,9 @@
 
 Gilt für FaLe PDF **mit** optionaler Cloud-KI, freiwilligen Werbevideos (Google AdMob, Rewarded Ads),
 dem Abo „FaLe Plus“ (Google Play Billing) und den Online-Funktionen „Sicher teilen“, „Unterschrift anfordern“
-und „Geräte verbinden“ (Ende-zu-Ende-verschlüsselt). Kein Analyse- oder Crash-SDK, kein Benutzerkonto.
-**Wenn sich etwas ändert (neues SDK, Cloud-Sync, Login, anderer KI-Anbieter), müssen diese Antworten
+und „Geräte verbinden“ (Ende-zu-Ende-verschlüsselt) sowie dem **freiwilligen FaLe-Konto** (E-Mail + Code,
+Supabase Auth) mit **FaLe Sync** (Ende-zu-Ende-verschlüsselt). Kein Analyse- oder Crash-SDK.
+**Wenn sich etwas ändert (neues SDK, anderer Login, anderer KI-Anbieter), müssen diese Antworten
 UND `datenschutz.html` angepasst werden.**
 
 Hintergrund (Google-Definitionen):
@@ -21,8 +22,8 @@ Hintergrund (Google-Definitionen):
 |---|---|
 | Erhebt oder teilt deine App erforderliche Nutzerdatentypen? | **Ja** |
 | Werden alle erhobenen Daten bei der Übertragung verschlüsselt? | **Ja** (HTTPS/TLS) |
-| Können Nutzer das Löschen ihrer Daten anfordern? | **Ja** – in der App: „KI-Assistent → KI-Einstellungen → Einwilligung widerrufen“ löscht die Gerätekennung; Zähler werden ohnehin nach 30 Tagen gelöscht. Geteilte Dateien/Anfragen: „Teilen & Übertragen → Link löschen / Anfrage löschen“, sonst automatisch nach Ablauf (max. 7 Tage). Außerdem per E-Mail an `[E-MAIL-ADRESSE]`. |
-| Konto-Erstellung | **Keine** Kontoerstellung → kein Link zur Kontolöschung nötig. |
+| Können Nutzer das Löschen ihrer Daten anfordern? | **Ja** – in der App: „KI-Assistent → KI-Einstellungen → Einwilligung widerrufen“ löscht die Gerätekennung; Zähler werden ohnehin nach 30 Tagen gelöscht. Geteilte Dateien/Anfragen: „Teilen & Übertragen → Link löschen / Anfrage löschen“, sonst automatisch nach Ablauf (max. 7 Tage). FaLe-Konto: „Ich → FaLe-Konto → Konto löschen“ (löscht sofort alle Cloud-Daten, Konto vollständig innerhalb von 30 Tagen) bzw. „Alle Cloud-Daten löschen“. Außerdem per E-Mail an `[E-MAIL-ADRESSE]`. |
+| Konto-Erstellung | **Ja, optional** (E-Mail + 6-stelliger Code; die App ist ohne Konto voll nutzbar). **Link zur Kontolöschung** (Pflichtangabe): `https://fale-pdf.vercel.app/#/konto` (später `https://pdf.fale.network/#/konto`) – dort „Konto löschen“; Anleitung auch in der Datenschutzerklärung Abschnitt 11. Löschen ist auch in der App möglich (Pflicht seit 2024 erfüllt). |
 
 ## Datentypen
 
@@ -35,8 +36,12 @@ Hintergrund (Google-Definitionen):
 | **Standort → Ungefährer Standort** (AdMob leitet ihn aus der IP-Adresse ab) | Ja | **Ja** (Google AdMob) | Nein | Optional | Werbung, Betrugsprävention |
 | **Finanzinformationen → Kaufverlauf** (nur Prüfung von „FaLe Plus“: Produkt, Ablaufdatum, Hash des Kauf-Tokens) | Ja | Nein | Nein | Optional | App-Funktionalität |
 | **Dateien und Dokumente → Dateien und Dokumente** („Sicher teilen“, „Unterschrift anfordern“, Relais von „Geräte verbinden“: nur **Ende-zu-Ende-verschlüsselt**, für uns unlesbar; Dateiname, Nachricht und Namen der Unterzeichnenden ebenfalls verschlüsselt) | Ja (konservativ angegeben, s. u.) | Nein | Nein (bis zum Ablauf, max. 7 Tage; Relais max. 1 Std.) | Optional | App-Funktionalität |
+| **Persönliche Daten → E-Mail-Adresse** (nur mit freiwilligem FaLe-Konto; Anmeldung per Code) | Ja | Nein (Supabase/E-Mail-Dienst = Dienstleister) | Nein (bis zur Kontolöschung) | **Optional** | App-Funktionalität, Kontoverwaltung |
+| **Persönliche Daten → Nutzer-IDs** (zufällige Konto-ID von Supabase Auth; nur mit FaLe-Konto) | Ja | Nein | Nein | Optional | App-Funktionalität, Kontoverwaltung, Betrugsprävention/Sicherheit |
+| **Dateien und Dokumente** sowie **App-Aktivitäten → Andere nutzergenerierte Inhalte** über **FaLe Sync** (Dateien, Dateinamen, Ordner, Tags, Unterschriften, Fristen, „Meine Daten“ – alles **Ende-zu-Ende-verschlüsselt**, für uns unlesbar) | Ja (konservativ angegeben) | Nein | Nein (bis die Nutzerin löscht; Löschmarker 30 Tage) | Optional | App-Funktionalität |
+| **Geräte- oder andere IDs** – zufällige Gerätekennung + selbst gewählter Gerätename für die Geräteliste (nur mit FaLe-Konto) | Ja | Nein | Nein | Optional | App-Funktionalität, Kontoverwaltung |
 
-**Nicht** erhoben: Name, E-Mail, Adresse, Kontakte, Fotos/Videos (Fotos werden nur lokal per OCR gelesen,
+**Nicht** erhoben (ohne FaLe-Konto auch keine E-Mail): Name, Adresse (im Klartext), Kontakte, Fotos/Videos (Fotos werden nur lokal per OCR gelesen,
 gesendet wird höchstens der erkannte Text), Dateien/Dokumente als Ganzes, Audio, Gesundheit, Nachrichten,
 Web-Verlauf, genauer Standort. Die Absenderdaten aus „Meine Daten“ werden bei „Brief per KI“ **nicht** gesendet.
 Die IP-Adresse speichert unser Server nur als gesalzenen Tages-Hash (Missbrauchsschutz).
@@ -64,7 +69,7 @@ App-Info, ungefährer Standort“, „Erhobene Daten“ wie oben, „Daten werde
 |---|---|
 | Datenschutzerklärung | `https://[DOMAIN]/datenschutz.html` (Platzhalter vorher ausfüllen – inkl. KI-Anbieter, Abschnitte 7–10) |
 | Werbung | **Ja, die App enthält Werbung** (nur freiwillige Rewarded-Videos über Google AdMob) |
-| App-Zugriff | Alle Funktionen ohne Anmeldung verfügbar (Cloud-KI braucht nur eine Einwilligung in der App; Teilen/Unterschrift anfordern/Geräte verbinden brauchen nur Internet). |
+| App-Zugriff | Alle Funktionen ohne Anmeldung verfügbar (Cloud-KI braucht nur eine Einwilligung in der App; Teilen/Unterschrift anfordern/Geräte verbinden brauchen nur Internet). Das FaLe-Konto ist optional; für die Prüfung kann der Reviewer sich mit einer eigenen E-Mail per Code anmelden (oder ein Test-Konto hinterlegen, Code-Mails gehen an dieses Postfach). |
 | Zielgruppe | **18 und älter** (vermeidet die Familien-Richtlinie; für Kinder wäre AdMob anders zu konfigurieren) |
 | Content-Rating (IARC) | Kategorie „Dienstprogramm, Produktivität …“; Gewalt/Sexualität/Glücksspiel: **Nein**; Nutzer interagieren miteinander: **Nein** (Dateien werden nur per privatem Link geteilt, keine öffentlichen Inhalte, kein Chat); digitale Käufe: **Ja**; KI-generierte Inhalte: **Ja** (falls gefragt) |
 | Werbe-ID (AD_ID) | **Ja**, wird verwendet – Zweck: **Werbung oder Marketing** (das Google Mobile Ads SDK fügt `com.google.android.gms.permission.AD_ID` hinzu) |
@@ -90,3 +95,12 @@ App-Info, ungefährer Standort“, „Erhobene Daten“ wie oben, „Daten werde
 `SCHEDULE_EXACT_ALARM`/`USE_EXACT_ALARM`, `ACCESS_FINE_LOCATION`, `QUERY_ALL_PACKAGES`.
 
 Prüfen nach jedem Build: `aapt2 dump permissions app-release.apk` bzw. Play Console „App-Bundle-Explorer → Berechtigungen“.
+
+## FaLe-Konto & FaLe Sync (Kurzfassung für Prüfer/Formulare)
+
+- **Erhoben, optional:** E-Mail-Adresse, Konto-ID, Gerätenamen/-kennungen, Ende-zu-Ende-verschlüsselte Sync-Daten.
+- **Nicht lesbar für uns:** alle Sync-Inhalte inkl. Dateinamen (AES-256-GCM auf dem Gerät; Schlüssel nur verschlüsselt
+  mit Sync-Passwort bzw. Wiederherstellungsschlüssel gespeichert).
+- **Speicherort:** Supabase, Region Frankfurt (eu-central-1). Kein Teilen mit Dritten im Play-Sinn (nur Dienstleister).
+- **Löschung:** in der App („Konto löschen“, „Alle Cloud-Daten löschen“) und über den Web-Link
+  `https://fale-pdf.vercel.app/#/konto` (Anmelden → „Konto löschen“).

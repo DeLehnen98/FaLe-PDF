@@ -52,15 +52,22 @@ export async function listAssets(kind = null) {
     .sort((a, b) => (b.usedAt || b.createdAt || 0) - (a.usedAt || a.createdAt || 0));
 }
 export async function addAsset({ blob, kind = 'signature', name = '', spec = null, w = 0, h: hh = 0 }) {
-  return withStore('readwrite', st => reqP(st.add({ blob, kind, name, spec, w, h: hh, createdAt: Date.now() })));
+  const id = await withStore('readwrite', st => reqP(st.add({ blob, kind, name, spec, w, h: hh, createdAt: Date.now() })));
+  syncChanged(id, 'put');
+  return id;
 }
 export async function updateAsset(id, patch) {
-  return withStore('readwrite', async st => {
+  await withStore('readwrite', async st => {
     const cur = await reqP(st.get(id));
     if (cur) st.put({ ...cur, ...patch });
   });
+  syncChanged(id, 'meta');
 }
-export async function deleteAsset(id) { return withStore('readwrite', st => { st.delete(id); }); }
+export async function deleteAsset(id) { await withStore('readwrite', st => { st.delete(id); }); syncChanged(id, 'delete'); }
+// FaLe Sync change hook (same contract as db.js; inactive unless sync is on)
+function syncChanged(id, op) {
+  import('../db.js').then(({ syncHooks }) => { if (syncHooks.fn && !syncHooks.mute.has(`signatures:${id}`)) syncHooks.fn('signatures', id, op); }).catch(() => {});
+}
 
 // ------------------------------------------------------------------ rendering helpers
 const SCRIPT_FONTS = [

@@ -360,3 +360,10 @@ Einfache elektronische Signatur (EES) im Sinne von Art. 3 Nr. 10 der eIDAS-Veror
 Erstellt mit FaLe PDF – fale-pdf.vercel.app
 Unterschrieben (UTC, Gerät der unterzeichnenden Person) / Signed (UTC, signer device)
 Ende-zu-Ende-verschlüsselt (AES-256-GCM) über FaLe PDF; der Server kennt weder Inhalt noch Namen. / End-to-end encrypted; the server cannot read content or names.
+# FaLe-Konto: HTTP header, browser/OS names in default device names
+Bearer {0}
+Edge
+Opera
+Browser
+Windows
+Linux

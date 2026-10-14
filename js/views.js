@@ -117,6 +117,7 @@ export async function renderHome() {
       </div>
       <div class="ai-start" data-ai-start hidden></div>
       <div class="sh-start" data-share-start hidden></div>
+      <div class="acct-start" data-acct-start hidden></div>
       <div class="continue-box" data-continue hidden></div>
       <h2 class="section-title">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
       <div class="tiles" role="list"></div>
@@ -162,6 +163,10 @@ async function renderHomeExtras(el) {
   try { await (await extrasRem()).renderStartCards($('[data-rem]', el)); } catch (e) { console.warn(e); }
   try { await (await extrasHome()).renderContinue($('[data-continue]', el)); } catch (e) { console.warn(e); }
   try { (await extrasHome()).renderMonthCard($('[data-month]', el)); } catch (e) { console.warn(e); }
+  // optional FaLe-Konto: one dismissible hint once there are ≥ 5 files (never when signed in or dismissed)
+  if (lsGet('fale-acct-hint', '') !== 'hidden' && lsGet('fale-acct', '') !== '1') {
+    try { (await import('./account/entry.js')).renderStartHint($('[data-acct-start]', el), (await db.listFiles()).length); } catch (e) { console.warn(e); }
+  } else { const b = $('[data-acct-start]', el); if (b) b.hidden = true; }
 }
 
 async function renderHomeList() {
@@ -589,9 +594,10 @@ export async function renderSettings() {
   el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Ich</h1><p class="page-sub">Deine Daten, Einstellungen und Infos – ganz ohne Konto.</p></div></div>
     <a class="card me-card me-link" href="#/profil" data-profile-link>
       <span class="me-avatar">${pName ? esc(pName.split(' ').map(x => x[0]).join('').slice(0, 2).toUpperCase()) : oicon('user')}</span>
-      <div><strong>${pName ? esc(pName) : 'Meine Daten'}</strong><span>${profile ? 'Für Briefe und Formulare – nur auf diesem Gerät gespeichert.' : 'Optional: Name und Adresse für automatisch ausgefüllte Briefe hinterlegen.'}</span></div>
+      <div><strong>${pName ? esc(pName) : 'Meine Daten'}</strong><span>${profile ? (lsGet('fale-acct', '') === '1' ? 'Für Briefe und Formulare – auf deinem Gerät gespeichert.' : 'Für Briefe und Formulare – nur auf diesem Gerät gespeichert.') : 'Optional: Name und Adresse für automatisch ausgefüllte Briefe hinterlegen.'}</span></div>
       <span class="me-go">${oicon('chevronRight')}</span>
     </a>
+    <div class="acct-me-box" data-account-me></div>
     <div class="me-links">
       <a class="action-card" href="#/tresor"><span class="tile-ic">${oicon('vault')}</span><span><strong>Privater Tresor</strong><span class="muted small">${vaultN ? `${vaultN} verschlüsselte Datei${vaultN === 1 ? '' : 'en'}` : 'Mit eigener PIN schützen'}</span></span></a>
       <a class="action-card" href="#/fristen"><span class="tile-ic">${oicon('bell')}</span><span><strong>Fristen & Erinnerungen</strong><span class="muted small">${remN ? `${remN} aktive Frist${remN === 1 ? '' : 'en'}` : 'Nie wieder etwas verpassen'}</span></span></a>
@@ -628,7 +634,7 @@ export async function renderSettings() {
     <div class="card card-pad">
       <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
         <strong>Alles bleibt auf deinem Gerät.</strong>
-        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Es gibt kein Konto, keine Werbebanner und kein Tracking. Deine Dateien werden ausschließlich im Speicher dieses Geräts abgelegt. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.</p>
+        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.</p>
       </div></div>
       <p class="muted small" style="margin-top:12px">Version 2.0.0 · Ein Projekt von FaLe.dev</p>
       <strong>Open-Source-Komponenten</strong>
@@ -641,6 +647,12 @@ export async function renderSettings() {
         <li>Standard-Schriften (Foxit, Liberation) und Decoder (OpenJPEG, JBIG2, QCMS) laut Lizenzdateien im Ordner vendor/pdfjs</li>
       </ul>
     </div>
+    <h2 class="section-title">Mehr von FaLe</h2>
+    <a class="card me-card me-link" href="https://fale-network.vercel.app/" target="_blank" rel="noopener" data-fale-network>
+      <span class="me-avatar">${oicon('heart')}</span>
+      <div><strong>FaleNetwork</strong><span>Weitere freie Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.</span></div>
+      <span class="me-go">${oicon('chevronRight')}</span>
+    </a>
     <h2 class="section-title">Rechtliches</h2>
     <div class="card settings-group legal-group">
       <a class="settings-row legal-row" href="datenschutz.html" target="_blank" rel="noopener" data-privacy-link><div class="label"><strong>Datenschutzerklärung</strong><span>Was FaLe speichert – und was nicht.</span></div>${oicon('chevronRight')}</a>
@@ -683,6 +695,7 @@ export async function renderSettings() {
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
   import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
+  import('./account/entry.js').then(m => m.renderMeCard($('[data-account-me]', el))).catch(() => {}); // optional FaLe-Konto
   import('./i18n/index.js').then(m => m.mountLangSettings(el)).catch(() => {}); // Sprache: Automatisch / Deutsch / English
   // OCR: "OCR-Daten für offline laden" (status, size) + licences of tesseract.js, -core, tessdata_fast
   import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});

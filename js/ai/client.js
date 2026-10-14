@@ -3,8 +3,9 @@
 // (anonymous availability check) or actively starts an AI task after giving consent.
 import { apiBase, outputLang } from './config.js';
 import { isNative, platformName } from '../platform.js';
+import { accessTokenOrNull, accessToken } from '../account/auth.js';
 
-const K = { device: 'fale-ai-device', token: 'fale-ai-token', consent: 'fale-ai-consent', cloud: 'fale-ai-cloud', quota: 'fale-ai-quota' };
+const K = { device: 'fale-ai-device', token: 'fale-ai-token', consent: 'fale-ai-consent', cloud: 'fale-ai-cloud', quota: 'fale-ai-quota', reward: 'fale-ai-reward' };
 export const CONSENT_VERSION = 1;
 const APP_VERSION = '2.1.0';
 
@@ -93,13 +94,32 @@ export function messageFor(code, fallback) {
   }
 }
 
+// ---------------------------------------------------------------- optional FaLe-Konto
+// Signed in → quota and Plus belong to the account (the server verifies the access token).
+async function withAccount(body) {
+  const t = await accessTokenOrNull();
+  return t ? { ...body, account: t } : body;
+}
+/** Retry once with a refreshed account token (or without it) after 401 invalid_account. */
+async function accountRetry(r, body, send) {
+  if (r.status !== 401 || !body.account) return r;
+  let j = null; try { j = await r.clone().json(); } catch {}
+  if (!j || j.error !== 'invalid_account') return r;
+  let t = null; try { t = await accessToken({ force: true }); } catch {}
+  const next = { ...body }; if (t) next.account = t; else delete next.account;
+  return send(next);
+}
+/** custom_data for rewarded ads: credits the account when signed in, else the device. */
+export function rewardCustomData(deviceToken) { return ls.get(K.reward) || deviceToken; }
+
 // ---------------------------------------------------------------- availability + quota
 /** Availability (+ quota when consent was given). Anonymous without consent: nothing is stored server-side. */
 export async function aiStatus({ force = false } = {}) {
   if (!online()) throw new AiError('offline', messageFor('offline'));
   if (statusCache && !force && Date.now() - statusCache.at < 30000) return statusCache.data;
   const tok = hasConsent() ? ls.get(K.token) : null;
-  const r = await postJson('/api/ai/quota', tok ? { token: tok } : {});
+  const body = tok ? await withAccount({ token: tok }) : {};
+  const r = await accountRetry(await postJson('/api/ai/quota', body), body, b => postJson('/api/ai/quota', b));
   if (r.status === 401 && tok) { ls.del(K.token); return aiStatus({ force: true }); }
   if (!r.ok) {
     if (r.status === 404 || r.status === 405 || r.status === 501) { // no backend on this host (e.g. a static mirror)
@@ -111,6 +131,7 @@ export async function aiStatus({ force = false } = {}) {
   }
   const data = await r.json();
   if (data.quota) storeQuota(data.quota);
+  if (data.quota) { if (data.rewardToken) ls.set(K.reward, data.rewardToken); else ls.del(K.reward); }
   statusCache = { at: Date.now(), data };
   return data;
 }
@@ -153,8 +174,8 @@ export async function runTask(task, input, options = {}, opts = {}) {
   const lang = options.lang || outputLang();
   for (let attempt = 0; attempt < 2; attempt++) {
     const token = await ensureToken({ renew: attempt > 0 });
-    const body = { task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: { platform: platformName(), appVersion: APP_VERSION, native: isNative() } };
-    const r = await postJson('/api/ai', body, { signal: opts.signal });
+    const body = await withAccount({ task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: { platform: platformName(), appVersion: APP_VERSION, native: isNative() } });
+    const r = await accountRetry(await postJson('/api/ai', body, { signal: opts.signal }), body, b => postJson('/api/ai', b, { signal: opts.signal }));
     if (r.status === 401 && attempt === 0) { ls.del(K.token); continue; }
     if (!r.ok) throw await errorFrom(r);
     const ct = r.headers.get('content-type') || '';
@@ -202,7 +223,8 @@ async function readStream(r, { onDelta, onMeta, signal }) {
 /** POST to another AI endpoint with this device's token (e.g. /api/plus-verify). */
 export async function callApi(path, body = {}) {
   const token = await ensureToken();
-  const r = await postJson(path, { ...body, token });
+  const b = await withAccount({ ...body, token });
+  const r = await accountRetry(await postJson(path, b), b, x => postJson(path, x));
   if (!r.ok) throw await errorFrom(r);
   return r.json();
 }
