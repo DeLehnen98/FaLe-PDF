@@ -711,7 +711,10 @@ export async function mountSlides(screen, { id = null, template = null }) {
       const d = aud.document;
       const box = d.getElementById('aud');
       if (!box) return;
-      box.innerHTML = slideHtml(pres, pres.slides[i]);
+      // parse in this window (Trusted Types default policy) and import the nodes – no HTML sink in the popup
+      const tpl = document.createElement('template');
+      tpl.innerHTML = slideHtml(pres, pres.slides[i]);
+      box.replaceChildren(d.importNode(tpl.content, true));
       const el = box.firstElementChild;
       const sc = Math.min(aud.innerWidth / (pres.w * PPI), aud.innerHeight / (pres.h * PPI));
       el.style.transformOrigin = '0 0';
@@ -722,9 +725,18 @@ export async function mountSlides(screen, { id = null, template = null }) {
       aud = window.open('', 'fale-publikum', 'popup,width=1280,height=720');
       if (!aud) { toast('Das Publikumsfenster wurde vom Browser blockiert.', 'error'); return; }
       const base = new URL('.', location.href).href;
-      aud.document.open();
-      aud.document.write(`<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Präsentation</title><link rel="stylesheet" href="${base}styles.css"><link rel="stylesheet" href="${base}css/office.css"><style>html,body{margin:0;height:100%;background:#000;overflow:hidden}body{display:grid;place-items:center}#aud{position:relative;overflow:hidden}#aud>.slide{position:absolute;left:0;top:0}button{position:fixed;right:10px;bottom:10px;opacity:.3}button:hover{opacity:1}</style></head><body><div id="aud"></div><button type="button" onclick="document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()">Vollbild</button></body></html>`);
-      aud.document.close();
+      // built with DOM APIs (no document.write, no inline event handler – CSP script-src 'self' + Trusted Types)
+      const d = aud.document;
+      d.documentElement.lang = 'de';
+      d.head.replaceChildren(); d.body.replaceChildren();
+      const add = (parent, tag, props = {}) => { const e = d.createElement(tag); Object.assign(e, props); parent.appendChild(e); return e; };
+      add(d.head, 'meta').setAttribute('charset', 'utf-8');
+      add(d.head, 'title', { textContent: 'Präsentation' });
+      add(d.head, 'link', { rel: 'stylesheet', href: `${base}styles.css` });
+      add(d.head, 'link', { rel: 'stylesheet', href: `${base}css/office.css` });
+      add(d.head, 'style', { textContent: 'html,body{margin:0;height:100%;background:#000;overflow:hidden}body{display:grid;place-items:center}#aud{position:relative;overflow:hidden}#aud>.slide{position:absolute;left:0;top:0}button{position:fixed;right:10px;bottom:10px;opacity:.3}button:hover{opacity:1}' });
+      add(d.body, 'div', { id: 'aud' });
+      add(d.body, 'button', { type: 'button', textContent: 'Vollbild' }).addEventListener('click', () => { const de = d.documentElement; if (de.requestFullscreen) de.requestFullscreen(); });
       aud.addEventListener('resize', () => paintAudience());
       aud.addEventListener('keydown', key);
       setTimeout(paintAudience, 120);

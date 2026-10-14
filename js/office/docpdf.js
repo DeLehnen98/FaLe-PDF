@@ -3,7 +3,9 @@
 import { loadPdfLib } from '../pdflib.js';
 import { fontKit, winAnsi, rgbOf, addLink, wrapPlain } from './pdftext.js';
 import { imageToBytes } from './vendor.js';
-import { HEADING_PT, PARA_SPACE, listLabel, modelHeadings } from './docmodel.js';
+import { HEADING_PT, PARA_SPACE, listLabel, bulletChar, modelHeadings } from './docmodel.js';
+import { normalizeStyles, STYLE_OF_TAG } from './docstyles.js';
+import { fontKind } from './fonts.js';
 
 const HEAD_COLOR = { h1: '#1B1E33', h2: '#1B1E33', h3: '#2B2F4A', h4: '#2B2F4A', h5: '#2B2F4A', h6: '#2B2F4A', subtitle: '#5A607F' };
 const LIST_INDENT = 20;
@@ -23,9 +25,13 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   // fonts + images up front so layout is synchronous
   const images = new Map();
   let needSerif = false, needMono = false;
+  const S = model.styles ? normalizeStyles(model.styles) : null;
+  const kindOfRun = (r, sty) => (r.mono ? 'mono' : r.serif ? 'serif' : r.font ? fontKind(r.font) : sty && (sty.font || (S && S.normal.font)) ? fontKind(sty.font || S.normal.font) : 'sans');
+  if (S) Object.values(S).forEach(st => { const k = st.font ? fontKind(st.font) : 'sans'; if (k === 'serif') needSerif = true; if (k === 'mono') needMono = true; });
   const scan = blocks => blocks.forEach(b => {
-    if (b.type === 'para') b.runs.forEach(r => { if (r.img) images.set(r.img.src, null); if (r.serif) needSerif = true; if (r.mono) needMono = true; });
+    if (b.type === 'para') b.runs.forEach(r => { if (r.img) images.set(r.img.src, null); const k = kindOfRun(r, null); if (k === 'serif') needSerif = true; if (k === 'mono') needMono = true; });
     if (b.type === 'table') b.rows.forEach(row => row.forEach(c => scan(c.blocks)));
+    if (b.type === 'section' || b.type === 'textbox') scan(b.blocks);
   });
   scan(model.blocks);
   if (needSerif) await fk.ensure('serif');
@@ -48,18 +54,28 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
     const units = [];
     const tag = b.tag || 'p';
     const head = HEADING_PT[tag];
-    const defSize = head || base;
-    const sp = b.tight || model.tight ? [0, 0] : PARA_SPACE[b.list ? 'li' : tag] || PARA_SPACE.p;
-    let indent = (b.indent || 0) + x0Offset;
+    const sty = S ? S[STYLE_OF_TAG[tag] || 'normal'] || S.normal : null;
+    const defSize = sty ? (sty.size || S.normal.size || base) : (head || base);
+    const tight = b.tight || model.tight;
+    const sp = tight ? [0, 0] : sty ? [b.before ?? (b.list ? 0 : sty.before ?? 0), b.after ?? (b.list ? 3 : sty.after ?? 0)] : [b.before ?? (PARA_SPACE[b.list ? 'li' : tag] || PARA_SPACE.p)[0], b.after ?? (PARA_SPACE[b.list ? 'li' : tag] || PARA_SPACE.p)[1]];
+    const lm = b.line || (sty && sty.line) || null;
+    const lineF = tight || !lm ? LINE : lm * 1.13;
+    const align = b.align || (sty && sty.align) || null;
+    const quote = tag === 'quote';
+    let indent = (b.indent || 0) + x0Offset + (quote ? ((sty && sty.indent) || 14) : 0);
     let marker = null;
     if (b.list) {
       indent += LIST_INDENT * (b.list.level + 1);
-      marker = b.list.ordered ? listLabel(b.list) : ['•', '–', '•'][b.list.level % 3];
+      marker = b.list.ordered ? listLabel(b.list) : bulletChar(b.list);
     }
-    const avail = Math.max(40, width - indent);
+    const first = b.list ? 0 : (b.firstLine || 0);
+    const avail = Math.max(40, width - indent - (b.indentR || 0));
+    const availOf = li => Math.max(30, avail - (li === 0 ? first : 0));
+    const pbg = b.bg || (sty && sty.bg) || null;
     // tokens
     const tokens = [];
     for (const r of b.runs) {
+      if (r.del) continue;
       if (r.br) { tokens.push({ br: true }); continue; }
       if (r.fn != null) {
         footnotes.push(r.fn);
@@ -79,9 +95,9 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
         continue;
       }
       const st = {
-        b: r.b || (head && r.b !== false), i: r.i, u: r.u || !!r.href, s: r.s, mono: r.mono, serif: r.serif,
+        b: r.b || (sty ? sty.b && r.b !== false : head && r.b !== false), i: r.i || (sty && sty.i), u: r.u || !!r.href || (sty && sty.u), s: r.s, mono: kindOfRun(r, sty) === 'mono', serif: kindOfRun(r, sty) === 'serif',
         size: (r.size || defSize) * (r.sup || r.sub ? 0.7 : 1), rise: r.sup ? defSize * 0.35 : r.sub ? -defSize * 0.15 : 0,
-        color: r.color || (r.href ? '#0563C1' : head || tag === 'subtitle' ? HEAD_COLOR[tag] : null), bg: r.bg, href: r.href,
+        color: r.color || (r.href ? '#0563C1' : sty ? sty.color : head || tag === 'subtitle' ? HEAD_COLOR[tag] : null), bg: r.bg, href: r.href,
       };
       const font = fontFor(st);
       const text = winAnsi(r.text);
@@ -103,14 +119,14 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
     for (const t of tokens) {
       if (t.br) { pushLine(true); continue; }
       if (t.space && !line.items.length) continue;
-      if (line.w + t.w > avail && line.items.length && !t.space) pushLine(false);
-      if (t.space && line.w + t.w > avail) { pushLine(false); continue; }
-      if (!t.img && t.w > avail) {
+      if (line.w + t.w > availOf(lines.length) && line.items.length && !t.space) pushLine(false);
+      if (t.space && line.w + t.w > availOf(lines.length)) { pushLine(false); continue; }
+      if (!t.img && t.w > availOf(lines.length)) {
         // split very long word
         let part = '';
         for (const ch of t.text) {
           const pw = t.font.widthOfTextAtSize(part + ch, t.st.size);
-          if (line.w + pw > avail && part) {
+          if (line.w + pw > availOf(lines.length) && part) {
             line.items.push({ ...t, text: part, w: t.font.widthOfTextAtSize(part, t.st.size) });
             pushLine(false); part = '';
           }
@@ -123,13 +139,13 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
       line.w += t.w;
     }
     pushLine(true);
-    if (b.bg || lines.length) {
+    if (pbg || lines.length) {
       if (sp[0]) units.push({ h: sp[0], space: true, draw() {} });
     }
     lines.forEach((ln, li) => {
       const maxSize = Math.max(defSize, ...ln.items.filter(i => i.st).map(i => i.st.size));
       const imgH = Math.max(0, ...ln.items.filter(i => i.img).map(i => i.h));
-      const textH = maxSize * LINE;
+      const textH = maxSize * lineF;
       const h = Math.max(textH, imgH + maxSize * 0.3);
       const ascent = Math.max(maxSize * 0.95, imgH);
       const isLast = li === lines.length - 1;
@@ -137,16 +153,17 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
         h, fns: ln.items.filter(i => i.fnRef).map(i => i.fnRef),
         draw(page, x, yTop) {
           const ph = page.getHeight();
-          let lx = x + indent;
-          const free = avail - ln.w;
+          let lx = x + indent + (li === 0 ? first : 0);
+          const free = availOf(li) - ln.w;
           let gap = 0;
-          if (b.align === 'center') lx += free / 2;
-          else if (b.align === 'right') lx += free;
-          else if (b.align === 'justify' && !isLast && !ln.forced) {
+          if (align === 'center') lx += free / 2;
+          else if (align === 'right') lx += free;
+          else if (align === 'justify' && !isLast && !ln.forced) {
             const spaces = ln.items.filter(i => i.space).length;
             if (spaces) gap = free / spaces;
           }
-          if (b.bg) page.drawRectangle({ x: x + indent - 3, y: ph - yTop - h, width: avail + 6, height: h, color: rgbOf(PDFLib, b.bg) });
+          if (pbg) page.drawRectangle({ x: x + indent - 3, y: ph - yTop - h, width: avail + 6, height: h, color: rgbOf(PDFLib, pbg) });
+          if (quote) page.drawRectangle({ x: x + indent - 10, y: ph - yTop - h, width: 2, height: h, color: rgbOf(PDFLib, '#C9CCDA') });
           if (li === 0 && marker) {
             const mf = fk.sync('sans', false, false);
             const ms = defSize;
@@ -172,46 +189,115 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
       });
     });
     if (sp[1]) units.push({ h: sp[1], space: true, draw() {} });
+    const keep = b.keepNext || (sty && sty.keepNext && /^h[1-6]$/.test(tag));
+    if (keep) { const fu = units.find(u => !u.space); if (fu) fu.keepNext = true; }
     return units;
   };
 
-  const layoutTable = (b, width) => {
+  const TSTYLE = { header: { head: '#3B37A0', headColor: '#FFFFFF' }, striped: { head: '#E9E8FB', band: '#F5F6FA', line: '#D5D8E6' }, plain: { line: '#1A1A1A' }, minimal: { line: '#C9CCDA', noV: true } };
+  const layoutTable = (b, fullWidth) => {
     const units = [];
     const pad = 4;
+    const ts = TSTYLE[b.style] || {};
+    const width = fullWidth * ((b.widthPct || 100) / 100);
+    const xOff = b.align === 'center' ? (fullWidth - width) / 2 : b.align === 'right' ? fullWidth - width : 0;
     const colW = b.widths.map(p => (p / 100) * width);
+    const lineCol = ts.line || '#A6ABBD';
     // occupancy grid for rowspans
     const occupied = [];
+    const headUnits = [];
     b.rows.forEach((row, ri) => {
       occupied[ri] = occupied[ri] || [];
       let col = 0;
       const cells = [];
+      const isHead = ri < (b.headerRows || 0);
       for (const c of row) {
         while (occupied[ri][col]) col++;
         const span = Math.min(c.colspan || 1, Math.max(1, colW.length - col));
         const x = colW.slice(0, col).reduce((a, v) => a + v, 0);
         const w = colW.slice(col, col + span).reduce((a, v) => a + v, 0);
         for (let r = 0; r < (c.rowspan || 1); r++) for (let k = 0; k < span; k++) { occupied[ri + r] = occupied[ri + r] || []; occupied[ri + r][col + k] = true; }
-        const inner = layoutBlocks(c.blocks.map(x2 => (c.align && x2.type === 'para' && !x2.align ? { ...x2, align: c.align } : x2)), w - pad * 2, true);
+        const white = ri === 0 && ts.headColor;
+        const blocks = c.blocks.map(x2 => {
+          let y2 = c.align && x2.type === 'para' && !x2.align ? { ...x2, align: c.align } : x2;
+          if (white && y2.type === 'para') y2 = { ...y2, runs: y2.runs.map(r => (r.color ? r : { ...r, color: ts.headColor })) };
+          if ((isHead || c.header) && y2.type === 'para') y2 = { ...y2, runs: y2.runs.map(r => (r.b === false ? r : { ...r, b: true })) };
+          return y2;
+        });
+        const inner = layoutBlocks(blocks, w - pad * 2, true);
         const ch = inner.reduce((a, u) => a + (u.pagebreak ? 0 : u.h), 0);
-        cells.push({ x, w, inner, h: ch + pad * 2, bg: c.bg });
+        const bg = c.bg || (ri === 0 && ts.head) || (ts.band && ri > 0 && ri % 2 === 0 ? ts.band : null);
+        cells.push({ x, w, inner, h: ch + pad * 2, bg, borders: c.borders, valign: c.valign, top: ri === 0, left: col === 0, right: col + span >= colW.length });
         col += span;
       }
       const h = Math.max(14, ...cells.map(c => c.h));
-      units.push({
-        h, fns: cells.flatMap(c => c.inner.flatMap(u => u.fns || [])),
+      const unit = {
+        h, fns: cells.flatMap(c => c.inner.flatMap(u => u.fns || [])), row: true,
         draw(page, x0, yTop) {
           const ph = page.getHeight();
+          x0 += xOff;
           for (const c of cells) {
             if (c.bg) page.drawRectangle({ x: x0 + c.x, y: ph - yTop - h, width: c.w, height: h, color: rgbOf(PDFLib, c.bg) });
-            let y = yTop + pad;
+            const ih = c.h - pad * 2;
+            let y = yTop + pad + (c.valign === 'middle' ? (h - c.h) / 2 : c.valign === 'bottom' ? h - c.h : 0);
+            void ih;
             for (const u of c.inner) { if (u.pagebreak) continue; u.draw(page, x0 + c.x + pad, y); y += u.h; }
-            if (!b.borderless) page.drawRectangle({ x: x0 + c.x, y: ph - yTop - h, width: c.w, height: h, borderColor: rgbOf(PDFLib, '#A6ABBD'), borderWidth: 0.6 });
+            if (b.borderless && !c.borders) continue;
+            const L = { t: [x0 + c.x, ph - yTop, x0 + c.x + c.w, ph - yTop], b: [x0 + c.x, ph - yTop - h, x0 + c.x + c.w, ph - yTop - h], l: [x0 + c.x, ph - yTop, x0 + c.x, ph - yTop - h], r: [x0 + c.x + c.w, ph - yTop, x0 + c.x + c.w, ph - yTop - h] };
+            for (const side of ['t', 'b', 'l', 'r']) {
+              const bd = c.borders && c.borders[side];
+              if (bd && bd.none) continue;
+              if (!bd && (b.borderless || (ts.noV && (side === 'l' || side === 'r')))) continue;
+              const [x1, y1, x2, y2] = L[side];
+              const wdt = bd ? Math.max(0.3, bd.w || 0.75) : 0.6;
+              const colr = rgbOf(PDFLib, bd ? bd.color || '#1A1A1A' : lineCol);
+              page.drawLine({ start: { x: x1, y: y1 }, end: { x: x2, y: y2 }, thickness: wdt, color: colr });
+              if (bd && bd.style === 'double') { const o = wdt * 1.6; const dx = side === 'l' || side === 'r' ? o : 0, dy = side === 't' || side === 'b' ? o : 0; page.drawLine({ start: { x: x1 + dx, y: y1 + dy }, end: { x: x2 + dx, y: y2 + dy }, thickness: wdt / 2, color: colr }); }
+            }
           }
         },
-      });
+      };
+      if (isHead) headUnits.push(unit);
+      else if (headUnits.length) unit.repeat = headUnits.slice();
+      units.push(unit);
     });
     units.push({ h: 6, space: true, draw() {} });
     return units;
+  };
+
+  const layoutSection = (b, width) => {
+    const cols = Math.max(1, Math.min(4, b.cols || 2));
+    const gap = b.gap || 18;
+    const cw = (width - gap * (cols - 1)) / cols;
+    const inner = layoutBlocks(b.blocks, cw).filter(u => !u.pagebreak);
+    const total = inner.reduce((a, u) => a + u.h, 0);
+    const pageH = pg.h - pg.mt - pg.mb;
+    if (cols === 1 || total / cols > pageH * 0.85) return layoutBlocks(b.blocks, width);
+    const target = total / cols;
+    const columns = [[]];
+    let acc = 0;
+    for (const u of inner) {
+      if (acc + u.h > target + 2 && columns.length < cols && columns[columns.length - 1].length) { columns.push([]); acc = 0; if (u.space) continue; }
+      columns[columns.length - 1].push(u); acc += u.h;
+    }
+    const hs = columns.map(c => c.reduce((a, u) => a + u.h, 0));
+    const h = Math.max(...hs);
+    return [{ h, fns: inner.flatMap(u => u.fns || []), draw(page, x, yTop) { columns.forEach((col, i) => { let y = yTop; for (const u of col) { u.draw(page, x + i * (cw + gap), y); y += u.h; } }); } }, { h: 6, space: true, draw() {} }];
+  };
+
+  const layoutTextbox = (b, width) => {
+    const pad = 6;
+    const w = Math.min(width, b.w || width);
+    const inner = layoutBlocks(b.blocks, w - pad * 2, true);
+    const h = inner.reduce((a, u) => a + (u.pagebreak ? 0 : u.h), 0) + pad * 2;
+    const xo = b.float === 'right' ? width - w : 0;
+    return [{ h, fns: inner.flatMap(u => u.fns || []), draw(page, x, yTop) {
+      const ph = page.getHeight();
+      if (b.bg) page.drawRectangle({ x: x + xo, y: ph - yTop - h, width: w, height: h, color: rgbOf(PDFLib, b.bg) });
+      let y = yTop + pad;
+      for (const u of inner) { if (u.pagebreak) continue; u.draw(page, x + xo + pad, y); y += u.h; }
+      page.drawRectangle({ x: x + xo, y: ph - yTop - h, width: w, height: h, borderColor: rgbOf(PDFLib, b.border || '#8086A6'), borderWidth: 0.75 });
+    } }, { h: 6, space: true, draw() {} }];
   };
 
   const layoutToc = (b, width) => {
@@ -248,6 +334,7 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
     blocks.forEach((b, i) => {
       if (b.type === 'toc' && !inCell) { units.push(...layoutToc(b, width)); return; }
       if (b.type === 'para') {
+        if (b.pageBreakBefore && !inCell && i > 0) units.push({ pagebreak: true, h: 0, draw() {} });
         let u = layoutPara(b, width);
         if (!inCell && /^h[1-6]$/.test(b.tag)) { const first = u.find(x => !x.space); if (first) first.headingIdx = i; }
         if (inCell) {
@@ -256,6 +343,8 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
         }
         units.push(...u);
       } else if (b.type === 'table') units.push(...layoutTable(b, width));
+      else if (b.type === 'section') units.push(...layoutSection(b, width));
+      else if (b.type === 'textbox') units.push(...layoutTextbox(b, width));
       else if (b.type === 'pagebreak') { if (!inCell) units.push({ pagebreak: true, h: 0, draw() {} }); }
       else if (b.type === 'hr') units.push({ h: 12, draw(page, x, yTop) { const y = page.getHeight() - yTop - 6; page.drawLine({ start: { x, y }, end: { x: x + width, y }, thickness: 0.8, color: rgbOf(PDFLib, '#A6ABBD') }); } });
     });
@@ -285,13 +374,23 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
     const finish = () => { if (draw) drawFootnotes(pdfPage, pageFns, fnH); };
     const next = () => { finish(); pageNo++; pdfPage = draw ? pdf.addPage([pg.w, pg.h]) : null; y = pg.mt; fnH = 0; pageFns = []; };
     let n = 0;
-    for (const u of units) {
+    for (let ui = 0; ui < units.length; ui++) {
+      const u = units[ui];
       if (u.pagebreak) { next(); continue; }
       if (u.space && y === pg.mt) continue;
       const need = () => (u.fns && u.fns.length ? u.fns.reduce((a, k) => a + fnHeight(k), 0) + (pageFns.length ? 0 : 8) : 0);
-      if (y + u.h > pg.h - pg.mb - fnH - need() && y > pg.mt) {
+      // keep with next: this paragraph's first line + the first line of what follows must fit
+      let keepH = u.h;
+      if (u.keepNext) { let extra = 0; for (let j = ui + 1; j < units.length && extra < 2; j++) { if (units[j].pagebreak) break; if (units[j].space) continue; keepH += units[j].h; extra++; } }
+      if (y + keepH > pg.h - pg.mb - fnH - need() && y > pg.mt && keepH < (pg.h - pg.mt - pg.mb) * 0.5) {
         if (u.space) continue;
         next();
+        if (u.repeat && draw) for (const hu of u.repeat) { hu.draw(pdfPage, pg.ml, y); y += hu.h; }
+        else if (u.repeat) for (const hu of u.repeat) y += hu.h;
+      } else if (y + u.h > pg.h - pg.mb - fnH - need() && y > pg.mt) {
+        if (u.space) continue;
+        next();
+        if (u.repeat) for (const hu of u.repeat) { if (draw) hu.draw(pdfPage, pg.ml, y); y += hu.h; }
       }
       if (u.headingIdx != null && !draw) headingPages.set(u.headingIdx, pageNo);
       if (draw) u.draw(pdfPage, pg.ml, y);

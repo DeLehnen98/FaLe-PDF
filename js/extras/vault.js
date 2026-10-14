@@ -1,5 +1,5 @@
 // Privater Tresor: Dateien verschlüsselt in IndexedDB (AES-GCM 256), Schlüssel aus PIN/Passphrase via
-// PBKDF2-SHA-256 (400.000 Runden). Ein zufälliger Datenschlüssel (DEK) wird mit dem PIN-Schlüssel verpackt –
+// PBKDF2-SHA-256 (600.000 Runden, OWASP 2023; ältere Tresore mit 400.000 werden beim Entsperren angehoben). Ein zufälliger Datenschlüssel (DEK) wird mit dem PIN-Schlüssel verpackt –
 // so kann die PIN geändert werden, ohne alle Dateien neu zu verschlüsseln. Entschlüsselt wird nur im Arbeitsspeicher.
 // Keine Hintertür: Ohne PIN (oder ein PRF-fähiges Biometrie-Gerät, das selbst einen Schlüssel liefert) sind die Daten verloren.
 import * as db from '../db.js';
@@ -7,8 +7,9 @@ import { $, $$, h, esc, toast, errorToast, openDialog, confirmDialog, downloadBl
 import { oicon, kindTile, kindOf, KINDS, detectKind, ACCEPT_ALL } from '../office/kinds.js';
 import { emitChange, dropThumb } from '../library.js';
 import { track } from './stats.js';
+import { screenSecure, sanitizeDocHtml } from '../security.js';
 
-export const ITERATIONS = 400000;
+export const ITERATIONS = 600000; // PBKDF2-SHA-256 (OWASP 2023); vaults created with fewer rounds are upgraded on unlock
 const HEADER_KEY = 'vault';
 const LOCK_KEY = 'fale-vault-autolock';
 const enc = new TextEncoder();
@@ -59,8 +60,18 @@ export async function unlock(pin) {
     const kek = await deriveKek(pin, unb64(hd.salt), hd.iter || ITERATIONS);
     const dek = await unwrapDek(unb64(hd.wrapped), kek, unb64(hd.iv));
     setUnlocked(dek);
+    if ((hd.iter || 0) < ITERATIONS) upgradeKdf(pin, dek).catch(() => {}); // re-wrap with today's work factor
     return true;
   } catch { return false; }
+}
+
+/** Re-wrap the DEK with ITERATIONS rounds (fresh salt + IV); the files themselves stay as they are. */
+async function upgradeKdf(pin, dek) {
+  const hd = await getHeader();
+  if (!hd || (hd.iter || 0) >= ITERATIONS) return;
+  const salt = rnd(16), iv = rnd(12);
+  const wrapped = await crypto.subtle.wrapKey('raw', dek, await deriveKek(pin, salt, ITERATIONS), { name: 'AES-GCM', iv });
+  await db.setSetting(HEADER_KEY, { ...hd, iter: ITERATIONS, salt: b64(salt), iv: b64(iv), wrapped: b64(wrapped) });
 }
 
 function setUnlocked(dek) {
@@ -307,6 +318,8 @@ export async function ensureUnlocked() {
 
 // ---------------- screen ----------------
 export async function mount(screen, { params }) {
+  // Android: no screenshots / app-switcher thumbnails of the vault (FLAG_SECURE) while it is open
+  const releaseSecure = screenSecure(true);
   const wrap = h('<div class="screen-inner vault-screen"></div>');
   screen.body.appendChild(wrap);
   screen.setFoot([]);
@@ -552,14 +565,16 @@ export async function mount(screen, { params }) {
         const { docxToHtml } = await import('../office/docx-read.js');
         const { sanitizeHtml } = await import('../office/writer.js');
         const r2 = await docxToHtml(await blob.arrayBuffer(), meta.name);
-        body.innerHTML = `<div class="vv-doc doc-page">${sanitizeHtml(r2.html)}</div>`;
+        let clean = sanitizeHtml(r2.html);
+        try { clean = await sanitizeDocHtml(clean); } catch {}
+        body.innerHTML = `<div class="vv-doc doc-page">${clean}</div>`;
       } else {
         body.innerHTML = `<div class="empty"><div class="empty-art">${oicon('file')}</div><h3>Keine Vorschau</h3><p>Hole die Datei zurück in deine Dateien oder lade sie herunter, um sie zu öffnen.</p></div>`;
       }
     } catch (e) { console.warn(e); body.innerHTML = '<p class="panel-empty">Vorschau nicht möglich.</p>'; }
   }
 
-  await render();
+  try { await render(); } catch (e) { releaseSecure(); throw e; }
   const off = onVaultChange(() => { render(); });
-  return () => { off(); closeViewer(); };
+  return () => { off(); closeViewer(); releaseSecure(); };
 }

@@ -240,7 +240,7 @@ export function looksGerman(s) {
   if (/(sans-serif|monospace|serif)\s*$/.test(s)) return false;       // font stacks
   if (/^[\w-]+\/[\w.+-]+$/.test(s)) return false;                    // mime types
   if (/[{};]\s*$/.test(s.replace(/\{\d\}/g, '')) && /:/.test(s)) return false; // css
-  if (/^[.#[]?[a-z][\w-]*([.#[:\s>+~,][\w-="'\]\s:.()]*)+$/.test(s) && !/\s[a-zäöü]{3,}\s/.test(s)) return false; // selectors
+  if (/^[.#[]?[a-z][\w-]*(?:[.#[:\s>+~,][\w-="'\]\s:.()#[>+~,]*)?$/.test(s) && !/\s[a-zäöü]{3,}\s/.test(s)) return false; // selectors (same language as ([sep][chars]*)+ but linear – no catastrophic backtracking on long lowercase phrases)
   if (/^[\w-]+:\s*[^\s]/.test(s) && /;/.test(s)) return false;       // inline styles
   if (/^(M|m|L|l|C|c|Z|z|H|h|V|v)[\d\s.,-]/.test(s) && !/\p{L}{3,}/u.test(s.slice(1))) return false; // svg paths
   if (/^[\d\s.,:%×x*+\-–/()]*$/.test(s)) return false;

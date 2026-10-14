@@ -12,9 +12,11 @@ function normalize(schema, v) {
   switch (schema.type) {
     case 'object': {
       if (typeof v !== 'object' || Array.isArray(v)) return v;
+      const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
       const out = {};
-      for (const [k, sub] of Object.entries(schema.properties || {})) if (k in v) out[k] = normalize(sub, v[k]);
-      if (schema.additionalProperties !== false) for (const k of Object.keys(v)) if (!(k in out)) out[k] = v[k];
+      for (const [k, sub] of Object.entries(schema.properties || {})) if (own(v, k)) out[k] = normalize(sub, v[k]);
+      // model output is untrusted: never copy prototype-changing keys
+      if (schema.additionalProperties !== false) for (const k of Object.keys(v)) if (!own(out, k) && k !== '__proto__' && k !== 'constructor' && k !== 'prototype') out[k] = v[k];
       return out;
     }
     case 'array': {

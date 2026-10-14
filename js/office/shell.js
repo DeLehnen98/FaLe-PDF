@@ -66,7 +66,7 @@ export function createShell(screen, opts) {
     paint();
   }
 
-  async function save({ asCopy = false } = {}) {
+  async function save({ asCopy = false, quiet = false } = {}) {
     if (S.saving) return null;
     S.saving = true; paint();
     saveBtn.disabled = true;
@@ -83,7 +83,7 @@ export function createShell(screen, opts) {
         S.id = meta.id; S.dirty = false;
         setHashSilently(`#/bearbeiten/${meta.id}`);
       }
-      toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success');
+      if (!quiet) toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success');
       opts.onSaved && opts.onSaved(meta);
       return meta;
     } catch (e) {

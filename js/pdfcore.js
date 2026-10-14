@@ -1,6 +1,7 @@
 // pdf.js setup and rendering helpers (all processing happens locally in a web worker).
 import * as pdfjsLib from '../vendor/pdfjs/pdf.min.mjs';
 import { openDialog, esc, UserError } from './ui.js';
+import { LIMITS, canvasScaleCap } from './security.js';
 
 const VENDOR = new URL('../vendor/pdfjs/', import.meta.url).href;
 pdfjsLib.GlobalWorkerOptions.workerSrc = VENDOR + 'pdf.worker.min.mjs';
@@ -13,8 +14,15 @@ export const DOC_OPTIONS = {
   standardFontDataUrl: VENDOR + 'standard_fonts/',
   wasmUrl: VENDOR + 'wasm/',
   iccUrl: VENDOR + 'iccs/',
+  // Hardening (docs/SECURITY.md): pdf.js 6.2.108 contains no eval/new Function code paths any more (the
+  // CVE-2024-4367 font-matrix eval was removed in 4.2.67); the option stays false for older builds.
+  // No PDF JavaScript is ever run (no scripting/sandbox bundle is shipped), XFA forms are off, images
+  // above LIMITS.imagePixels are skipped instead of decoded (decompression bombs), and no resource is
+  // fetched from outside the app (cMaps, fonts, wasm and ICC profiles are local).
   isEvalSupported: false,
   enableXfa: false,
+  enableScripting: false,
+  maxImageSize: LIMITS.imagePixels,
 };
 
 let sharedWorker = null;
@@ -95,7 +103,9 @@ export async function loadPdf(data, { name = '', key = null } = {}) {
 /** Render a page into a new canvas. width (css px) or scale. */
 export async function renderPage(page, { width = null, scale = null, rotation = 0, dpr = 1, background = 'white' } = {}) {
   const base = page.getViewport({ scale: 1, rotation: page.rotate + rotation });
-  const s = (scale || (width / base.width)) * dpr;
+  let s = (scale || (width / base.width)) * dpr;
+  // pages with absurd MediaBoxes (up to 14 400 pt) must not allocate gigantic canvases
+  s *= canvasScaleCap(base.width * s, base.height * s);
   const vp = page.getViewport({ scale: s, rotation: page.rotate + rotation });
   const canvas = document.createElement('canvas');
   canvas.width = Math.max(1, Math.floor(vp.width));

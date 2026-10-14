@@ -14,6 +14,7 @@
 // Recognition runs in tesseract's web worker, image pre-processing in prep-worker.js.
 import { LIB_URL, WORKER_URL, LANG_URL, coreUrl, canRunNow, approxBytes, mbLabel } from './assets.js';
 import { mapToSource, toPgm, preprocess as prepInline } from './prep.js';
+import { assertImageBlob } from '../security.js';
 
 export const LANGS = [
   { id: 'deu+eng', label: 'Deutsch + Englisch' },
@@ -225,6 +226,7 @@ export async function toImageData(source, maxPixels = MAX_PIXELS) {
   }
   let bmp = source, close = null;
   if (typeof Blob !== 'undefined' && source instanceof Blob) {
+    await assertImageBlob(source); // dimension bombs are rejected before decoding
     try { bmp = await createImageBitmap(source, { imageOrientation: 'from-image' }); }
     catch {
       const url = URL.createObjectURL(source);

@@ -10,14 +10,14 @@ on:
     paths: ['.github/workflows/vendor-ocr.yml']
 
 permissions:
-  contents: write
+  contents: write # commits vendor/tesseract (push to main)
 
 jobs:
   vendor:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 22
       - name: Download packages and language data
@@ -49,10 +49,12 @@ jobs:
           printf '{\n  "tesseract.js": "%s",\n  "tesseract.js-core": "%s",\n  "tessdata": "tessdata_fast (deu, eng)"\n}\n' "$TJS" "$CORE" > $D/VERSIONS.json
           ls -laR $D
           rm -rf tmp
+          # record the new SHA-256 values of vendor/tesseract/ (the build verifies vendor/MANIFEST.json)
+          node scripts/vendor-manifest.mjs --write tesseract
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add vendor/tesseract
+          git add vendor/tesseract vendor/MANIFEST.json
           git diff --cached --quiet && echo "nothing new" || git commit -m "vendor: tesseract.js OCR + Sprachdaten deu/eng (offline)"
           git push

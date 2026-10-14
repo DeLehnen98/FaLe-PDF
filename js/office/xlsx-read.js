@@ -13,6 +13,7 @@ const BUILTIN_FMT = {
 };
 const INDEXED = ['000000', 'FFFFFF', 'FF0000', '00FF00', '0000FF', 'FFFF00', 'FF00FF', '00FFFF', '000000', 'FFFFFF', 'FF0000', '00FF00', '0000FF', 'FFFF00', 'FF00FF', '00FFFF', '800000', '008000', '000080', '808000', '800080', '008080', 'C0C0C0', '808080', '9999FF', '993366', 'FFFFCC', 'CCFFFF', '660066', 'FF8080', '0066CC', 'CCCCFF', '000080', 'FF00FF', 'FFFF00', '00FFFF', '800080', '800000', '008080', '0000FF', '00CCFF', 'CCFFFF', 'CCFFCC', 'FFFF99', '99CCFF', 'FF99CC', 'CC99FF', 'FFCC99', '3366FF', '33CCCC', '99CC00', 'FFCC00', 'FF9900', 'FF6600', '666699', '969696', '003366', '339966', '003300', '333300', '993300', '993366', '333399', '333333'];
 
+const ROW_PX_PER_PT = 28 / 15; // default row (15 pt) is 28 px on screen
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
 function unxml(s) {
   if (s.indexOf('&') < 0 && s.indexOf('_x') < 0) return s;
@@ -51,7 +52,8 @@ async function readTheme(zip, rels) {
     return order.map(n => {
       const e = kid(scheme, n);
       const c = e && (kid(e, 'srgbClr') || kid(e, 'sysClr'));
-      return c ? (attr(c, 'val') && c.localName === 'srgbClr' ? attr(c, 'val') : attr(c, 'lastClr') || '000000') : '000000';
+      const v = c ? (attr(c, 'val') && c.localName === 'srgbClr' ? attr(c, 'val') : attr(c, 'lastClr') || '000000') : '000000';
+      return /^[0-9A-F]{6}$/i.test(v) ? v : '000000'; // theme colours end up in style="…" – hex only
     });
   }
   return ['FFFFFF', '000000', 'E7E6E6', '44546A', '4472C4', 'ED7D31', 'A5A5A5', 'FFC000', '5B9BD5', '70AD47', '0563C1', '954F72'];
@@ -62,19 +64,28 @@ function readStyles(doc, theme) {
   if (!doc) return xfs;
   const fmts = {};
   for (const f of desc(doc, 'numFmt')) fmts[attr(f, 'numFmtId')] = attr(f, 'formatCode');
+  const onv = el => !!el && !['0', 'false'].includes(String(attr(el, 'val') ?? '1'));
   const fonts = desc(kid(doc.documentElement, 'fonts'), 'font').map(f => ({
-    b: !!kid(f, 'b') && attr(kid(f, 'b'), 'val') !== '0', i: !!kid(f, 'i') && attr(kid(f, 'i'), 'val') !== '0',
-    u: !!kid(f, 'u'), color: colorOf(kid(f, 'color'), theme), size: kid(f, 'sz') ? +attr(kid(f, 'sz'), 'val') : null,
+    b: onv(kid(f, 'b')), i: onv(kid(f, 'i')),
+    u: !!kid(f, 'u') && attr(kid(f, 'u'), 'val') !== 'none', strike: onv(kid(f, 'strike')), color: colorOf(kid(f, 'color'), theme), size: kid(f, 'sz') ? +attr(kid(f, 'sz'), 'val') : null,
+    name: kid(f, 'name') ? attr(kid(f, 'name'), 'val') : null, va: kid(f, 'vertAlign') ? attr(kid(f, 'vertAlign'), 'val') : null,
   }));
+  const baseFont = fonts[0] && fonts[0].name;
   const fills = desc(kid(doc.documentElement, 'fills'), 'fill').map(f => {
     const p = kid(f, 'patternFill');
     if (!p || attr(p, 'patternType') !== 'solid') return null;
     return colorOf(kid(p, 'fgColor'), theme) || colorOf(kid(p, 'bgColor'), theme);
   });
-  const lineOn = el => !!el && !!attr(el, 'style') && attr(el, 'style') !== 'none';
+  // border side: true (thin) or the style name (medium, thick, double, dashed, dotted, hair …)
+  const side = el => { const st = el && attr(el, 'style'); if (!st || st === 'none') return false; return st === 'thin' ? true : st; };
   const borders = desc(kid(doc.documentElement, 'borders'), 'border').map(b => {
-    const bd = { l: lineOn(kid(b, 'left') || kid(b, 'start')), r: lineOn(kid(b, 'right') || kid(b, 'end')), t: lineOn(kid(b, 'top')), b: lineOn(kid(b, 'bottom')) };
-    return bd.l || bd.r || bd.t || bd.b ? bd : null;
+    const L = kid(b, 'left') || kid(b, 'start'), R = kid(b, 'right') || kid(b, 'end'), T = kid(b, 'top'), B = kid(b, 'bottom');
+    const bd = { l: side(L), r: side(R), t: side(T), b: side(B) };
+    if (!(bd.l || bd.r || bd.t || bd.b)) return null;
+    for (const k of ['l', 'r', 't', 'b']) if (!bd[k]) delete bd[k];
+    const col = [L, R, T, B].map(x => x && colorOf(kid(x, 'color'), theme)).find(c => c && c !== '#000000');
+    if (col) bd.color = col;
+    return bd;
   });
   xfs.dxfs = desc(kid(doc.documentElement, 'dxfs'), 'dxf').map(d => {
     const font = kid(d, 'font'), fill = kid(d, 'fill');
@@ -88,12 +99,28 @@ function readStyles(doc, theme) {
     const code = fmts[fid] || BUILTIN_FMT[fid] || 'General';
     if (code !== 'General') s.fmt = code.replace(/\\(.)/g, '$1') === code ? code : code;
     const font = fonts[+(attr(x, 'fontId') || 0)];
-    if (font) { if (font.b) s.b = true; if (font.i) s.i = true; if (font.u) s.u = true; if (font.color && font.color !== '#000000') s.color = font.color; if (font.size && font.size !== 11) s.size = font.size; }
+    if (font) {
+      if (font.b) s.b = true; if (font.i) s.i = true; if (font.u) s.u = true; if (font.strike) s.st = true;
+      if (font.color && font.color !== '#000000') s.color = font.color; if (font.size && font.size !== 11) s.size = font.size;
+      if (font.name && font.name !== baseFont && !/^(calibri|arial)$/i.test(font.name)) s.font = font.name;
+      if (font.va === 'superscript' || font.va === 'subscript') s.va = font.va === 'superscript' ? 'sup' : 'sub';
+    }
     const fill = fills[+(attr(x, 'fillId') || 0)];
     if (fill && fill !== '#FFFFFF') s.fill = fill;
     const al = kid(x, 'alignment');
-    if (al && ['left', 'center', 'right'].includes(attr(al, 'horizontal'))) s.align = attr(al, 'horizontal');
-    if (al && attr(al, 'wrapText') === '1') s.wrap = true;
+    if (al) {
+      const ha = attr(al, 'horizontal');
+      if (['left', 'center', 'right', 'justify', 'fill'].includes(ha)) s.align = ha === 'fill' ? 'left' : ha;
+      else if (ha === 'centerContinuous') s.align = 'center';
+      const va = attr(al, 'vertical');
+      if (va === 'top' || va === 'center') s.valign = va;
+      if (attr(al, 'wrapText') === '1' || attr(al, 'wrapText') === 'true') s.wrap = true;
+      const ind = +(attr(al, 'indent') || 0); if (ind > 0) s.indent = Math.min(15, ind);
+      const rot = +(attr(al, 'textRotation') || 0); if (rot === 90 || rot === 180 || rot === 255 || rot === 45) s.rot = rot === 180 ? 270 : rot;
+    }
+    const pr = kid(x, 'protection');
+    if (pr && attr(pr, 'locked') === '0') s.unlocked = true;
+    if (pr && attr(pr, 'hidden') === '1') s.hideF = true;
     const bd = borders[+(attr(x, 'borderId') || 0)];
     if (bd) s.bd = { ...bd };
     xfs.push(Object.keys(s).length ? s : null);
@@ -137,12 +164,23 @@ function parseSheetXml(xml, sh, sst, xfs) {
       const min = +(/\bmin="(\d+)"/.exec(a) || [])[1], max = +(/\bmax="(\d+)"/.exec(a) || [])[1];
       const w = parseFloat((/\bwidth="([\d.]+)"/.exec(a) || [])[1]);
       const hidden = /\bhidden="(1|true)"/.test(a);
-      if (min && max && (w || hidden)) for (let c = min - 1; c < Math.min(max, min + 200); c++) sh.colW[c] = hidden ? 0 : Math.round(w * 7 + 5);
+      if (min && max && (w || hidden)) for (let c = min - 1; c < Math.min(max, min + 200); c++) {
+        const px = Math.round((w || 8.43) * 7 + 5);
+        if (hidden) { sh.colW[c] = 0; sh.hiddenColW[c] = px; } else sh.colW[c] = px;
+      }
     }
   }
   // frozen panes
   const pane = /<(?:\w+:)?pane\s([^>]*)\/?>/.exec(xml);
-  if (pane && /state="frozen"/.test(pane[1])) { const ys = /ySplit="(\d+)"/.exec(pane[1]); if (ys) sh.freeze = Math.min(+ys[1], 10); }
+  if (pane && /state="frozen"/.test(pane[1])) {
+    const ys = /ySplit="(\d+)"/.exec(pane[1]), xs = /xSplit="(\d+)"/.exec(pane[1]);
+    if (ys) sh.freeze = Math.min(+ys[1], 200);
+    if (xs) sh.freezeC = Math.min(+xs[1], 50);
+  }
+  const tab = /<(?:\w+:)?tabColor\s([^>]*)\/?>/.exec(xml);
+  if (tab) { const rgb = /rgb="([0-9A-Fa-f]{8})"/.exec(tab[1]); if (rgb) sh.tabColor = '#' + rgb[1].slice(2).toUpperCase(); }
+  const prot = /<(?:\w+:)?sheetProtection\s([^>]*)\/?>/.exec(xml);
+  if (prot && /\bsheet="(1|true)"/.test(prot[1])) sh.protect = { on: true };
   // merges
   const mre = /<(?:\w+:)?mergeCell\s+ref="([A-Z]+\d+):([A-Z]+\d+)"/g;
   let mm;
@@ -150,13 +188,20 @@ function parseSheetXml(xml, sh, sst, xfs) {
   // hidden rows
   const hre = /<(?:\w+:)?row\s([^>]*?)>/g;
   let hm;
-  while ((hm = hre.exec(xml))) { if (/\bhidden="(1|true)"/.test(hm[1])) { const rr = /\br="(\d+)"/.exec(hm[1]); if (rr) sh.hiddenRows.add(+rr[1] - 1); } }
+  while ((hm = hre.exec(xml))) {
+    const rr = /\br="(\d+)"/.exec(hm[1]);
+    if (!rr) continue;
+    if (/\bhidden="(1|true)"/.test(hm[1])) sh.hiddenRows.add(+rr[1] - 1);
+    const ht = /\bht="([\d.]+)"/.exec(hm[1]);
+    if (ht && /customHeight="(1|true)"/.test(hm[1]) && Math.abs(+ht[1] - 15) > 0.5) sh.rowH.set(+rr[1] - 1, Math.max(8, Math.round(+ht[1] * ROW_PX_PER_PT)));
+  }
   parseSheetExtras(xml, sh, xfs);
   // cells
   const dataStart = xml.search(/<(?:\w+:)?sheetData/);
   if (dataStart < 0) return;
   const data = xml.slice(dataStart, xml.search(/<\/(?:\w+:)?sheetData>/) + 1 || undefined);
   const shared = new Map(); // si → {r, c, f}
+  const arrays = []; // ranges of array formulas: spilled values are recalculated, not stored
   const cre = /<(?:\w+:)?c\s([^>]*?)(\/>|>([\s\S]*?)<\/(?:\w+:)?c>)/g;
   let m, lastR = 0, lastC = -1;
   // also track <row r=""> for cells without r attribute
@@ -191,6 +236,16 @@ function parseSheetXml(xml, sh, sst, xfs) {
         }
       }
       if (ftext) cell.f = normFormula(ftext);
+      if (cell.f && (ftype === 'array' || /\bcm="\d+"/.test(a))) {
+        cell.da = true;
+        const ref = (/\bref="([A-Z]+\d+(?::[A-Z]+\d+)?)"/.exec(fa) || [])[1];
+        if (ref && ref.includes(':')) { const p1 = cellRefToRC(ref.split(':')[0]), p2 = cellRefToRC(ref.split(':')[1]); arrays.push({ r1: p1.r, c1: p1.c, r2: p2.r, c2: p2.c }); }
+      }
+    } else if (arrays.length && arrays.some(g => r >= g.r1 && r <= g.r2 && c >= g.c1 && c <= g.c2 && (r !== g.r1 || c !== g.c1))) {
+      // value inside the spill range of an array formula
+      const st0 = xfs[sIdx];
+      if (st0) sh.cells.set(KEY(r, c), { v: null, s: { ...st0 } });
+      continue;
     }
     const vm = /<(?:\w+:)?v>([\s\S]*?)<\/(?:\w+:)?v>/.exec(inner);
     const raw = vm ? unxml(vm[1]) : null;
@@ -209,7 +264,7 @@ function parseSheetXml(xml, sh, sst, xfs) {
     else if (raw != null && raw !== '') v = parseFloat(raw);
     if (cell.f) { cell.cv = v; cell.cv0 = v; } else cell.v = v;
     if (v === null && !cell.f && !cell.s) continue;
-    if (v === null && !cell.f && cell.s && !cell.s.fill) continue; // drop style-only noise without fill
+    if (v === null && !cell.f && cell.s && !cell.s.fill && !cell.s.bd) continue; // drop style-only noise without visible formatting
     sh.cells.set(KEY(r, c), cell);
     if (r > sh.maxR) sh.maxR = r;
     if (c > sh.maxC) sh.maxC = c;
@@ -235,11 +290,31 @@ function parseSheetExtras(xml, sh, xfs) {
     const c0 = cellRefToRC(ref.split(':')[0]).c;
     const filters = {};
     for (const fc of kids(af, 'filterColumn')) {
+      const col = c0 + +(attr(fc, 'colId') || 0);
       const f = kid(fc, 'filters');
-      if (!f) continue;
-      const vals = kids(f, 'filter').map(x => attr(x, 'val') || '');
-      if (attr(f, 'blank') === '1') vals.push('(Leer)');
-      filters[c0 + +(attr(fc, 'colId') || 0)] = vals;
+      if (f) {
+        const vals = kids(f, 'filter').map(x => attr(x, 'val') || '');
+        if (attr(f, 'blank') === '1') vals.push('(Leer)');
+        filters[col] = vals;
+        continue;
+      }
+      const cf = kid(fc, 'customFilters');
+      if (cf) {
+        const OPS = { equal: 'eq', notEqual: 'ne', greaterThan: 'gt', greaterThanOrEqual: 'ge', lessThan: 'lt', lessThanOrEqual: 'le' };
+        const conds = kids(cf, 'customFilter').map(x => {
+          const op = OPS[attr(x, 'operator') || 'equal'] || 'eq';
+          let val = attr(x, 'val') || '';
+          // text filters are stored with wildcards: *x* contains, x* begins, *x ends
+          if ((op === 'eq' || op === 'ne') && /^\*.*\*$/.test(val) && val.length > 1) return { op: op === 'eq' ? 'contains' : 'notcontains', v: val.slice(1, -1) };
+          if (op === 'eq' && /\*$/.test(val) && !/^\*/.test(val)) return { op: 'begins', v: val.slice(0, -1) };
+          if (op === 'eq' && /^\*/.test(val) && !/\*$/.test(val)) return { op: 'ends', v: val.slice(1) };
+          return { op, v: val };
+        });
+        if (conds.length) filters[col] = { custom: conds, and: attr(cf, 'and') === '1' || attr(cf, 'and') === 'true' };
+        continue;
+      }
+      const top = kid(fc, 'top10');
+      if (top) filters[col] = { top: +(attr(top, 'val') || 10), bottom: attr(top, 'top') === '0', percent: attr(top, 'percent') === '1' };
     }
     sh.autoFilter = { range: ref.includes(':') ? ref : `${ref}:${ref}`, filters };
   }
@@ -265,17 +340,23 @@ function parseSheetExtras(xml, sh, xfs) {
   }
   const dvs = kid(root, 'dataValidations');
   for (const dv of kids(dvs, 'dataValidation')) {
-    if (attr(dv, 'type') !== 'list') continue;
-    const f = kid(dv, 'formula1');
-    const txt = f ? f.textContent.trim() : '';
-    if (!/^".*"$/.test(txt)) continue; // only inline lists
-    const list = parseList(txt.slice(1, -1).replace(/""/g, '"'));
-    for (const range of (attr(dv, 'sqref') || '').split(/\s+/).filter(Boolean)) sh.dv.push({ range, list });
+    const type = attr(dv, 'type') || 'none';
+    const f1 = kid(dv, 'formula1'), f2 = kid(dv, 'formula2');
+    const t1 = f1 ? f1.textContent.trim() : '', t2 = f2 ? f2.textContent.trim() : '';
+    const ranges = (attr(dv, 'sqref') || '').split(/\s+/).filter(Boolean);
+    const msg = { prompt: attr(dv, 'prompt') || '', error: attr(dv, 'error') || '' };
+    if (type === 'list') {
+      if (/^".*"$/.test(t1)) { const list = parseList(t1.slice(1, -1).replace(/""/g, '"')); for (const range of ranges) sh.dv.push({ range, list, ...msg }); }
+      else if (t1) for (const range of ranges) sh.dv.push({ range, type: 'list', src: t1.replace(/^=/, ''), list: [], ...msg });
+    } else if (['whole', 'decimal', 'date', 'time', 'textLength'].includes(type)) {
+      const op = attr(dv, 'operator') || 'between';
+      for (const range of ranges) sh.dv.push({ range, type, op, v1: t1.replace(/^"|"$/g, ''), v2: t2.replace(/^"|"$/g, ''), list: [], ...msg });
+    }
   }
 }
 
 function normFormula(f) {
-  return f.replace(/_xlfn\.|_xlws\./g, '').replace(/^=/, '').replace(/\b([A-Z][A-Z0-9.]*)\(/g, (m, n) => canonicalFn(n) + '(');
+  return f.replace(/_xlfn\.|_xlws\.|_xlpm\./g, '').replace(/^=/, '').replace(/\b([A-Z][A-Z0-9.]*)\(/g, (m, n) => canonicalFn(n) + '(');
 }
 
 /**
@@ -338,6 +419,15 @@ export async function readXlsx(data, name = 'Tabelle', onProgress) {
     await tick();
   }
   if (!wb.sheets.length) wb.sheets.push(newSheet('Tabelle1'));
+  // defined names (named ranges)
+  for (const dn of desc(wbDoc, 'definedName')) {
+    const nm = attr(dn, 'name') || '';
+    if (!nm || /^_xlnm\./i.test(nm) || attr(dn, 'hidden') === '1') continue;
+    const ref = (dn.textContent || '').trim().replace(/^=/, '');
+    if (!ref || /#REF!/.test(ref)) continue;
+    const ls = attr(dn, 'localSheetId');
+    wb.names.push({ name: nm, ref: normFormula(ref), si: ls != null ? +ls : null, comment: attr(dn, 'comment') || '' });
+  }
   recalc(wb);
   return wb;
 }

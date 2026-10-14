@@ -13,6 +13,7 @@ const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track
 const OCR_KEY = 'fale-scan-ocr';
 const ocrPref = () => { try { return localStorage.getItem(OCR_KEY) !== '0'; } catch { return true; } };
 import { getDetector, showResultSheet } from './qrscan.js';
+import { assertImageBlob } from '../security.js';
 
 const A4 = [595.28, 841.89];
 const MM = 72 / 25.4;
@@ -31,6 +32,7 @@ const QUALITY = { hoch: { max: 2600, q: 0.9, label: 'Hoch' }, mittel: { max: 200
 const canvasToBlobP = (c, type = 'image/jpeg', q = 0.9) => new Promise((res, rej) => c.toBlob(b => (b ? res(b) : rej(new Error('Bild konnte nicht erzeugt werden'))), type, q));
 
 async function decode(blob) {
+  await assertImageBlob(blob); // dimension bombs are rejected before decoding
   try { return await createImageBitmap(blob, { imageOrientation: 'from-image' }); }
   catch {
     const url = URL.createObjectURL(blob);
@@ -42,10 +44,12 @@ async function decode(blob) {
   }
 }
 
-export async function mount(screen, { idMode = false, qrMode = false } = {}) {
+export async function mount(screen, { idMode = false, qrMode = false, params = null } = {}) {
+  // ?ziel=briefkasten|steuer: after saving, the scan goes straight to the Briefkasten-Assistent / Steuer-Belege (js/smart/*)
+  const ziel = params && typeof params.get === 'function' ? params.get('ziel') : null;
   await ensureCss();
   const isId = !!idMode;
-  screen.setTitle(isId ? 'Ausweis scannen' : 'Scanner', isId ? 'Vorder- und Rückseite auf eine A4-Seite' : 'Dokumente mit der Kamera erfassen');
+  screen.setTitle(isId ? 'Ausweis scannen' : ziel === 'briefkasten' ? 'Brief scannen' : ziel === 'steuer' ? 'Beleg scannen' : 'Scanner', isId ? 'Vorder- und Rückseite auf eine A4-Seite' : 'Dokumente mit der Kamera erfassen');
   screen.body.classList.add('sc-body');
   const stamp = new Date().toLocaleDateString('de-DE').replace(/\./g, '-');
   const S = {
@@ -831,6 +835,7 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
       const res = await saveResult(await saveDoc(out), `${name}.pdf`);
       trackStat('scans');
       if (ocr && ocr.done) trackStat('ocr_pages', ocr.done);
+      if (!isId && (ziel === 'briefkasten' || ziel === 'steuer')) { location.hash = `#/${ziel}/neu?doc=${encodeURIComponent(res.id)}&quelle=scan`; return; }
       const ocrNote = ocr ? (ocr.panel.signal.aborted ? ' · Texterkennung abgebrochen' : ocr.done ? ' · durchsuchbar' : '') : '';
       resultBox.innerHTML = '';
       const card = resultCard(res, { title: isId ? 'Ausweis gespeichert' : 'Scan gespeichert', note: isId ? 'A4 · Originalgröße' : `${S.pages.length} Seite${S.pages.length === 1 ? '' : 'n'}${ocrNote}` });

@@ -23,8 +23,9 @@ export function newChartId() { return 'ch' + Date.now().toString(36) + Math.rand
 // ---------------- data ----------------
 function cellVal(sh, r, c) {
   const cell = sh.cells.get(KEY(r, c));
-  if (!cell) return null;
-  const v = cell.f ? cell.cv : cell.v;
+  const sp = (!cell || (!cell.f && cell.v == null)) && sh.spill ? sh.spill.get(KEY(r, c)) : null;
+  if (!cell && !sp) return null;
+  const v = sp ? sp.v : cell.f ? cell.cv : cell.v;
   return v && typeof v === 'object' ? null : v;
 }
 function sheetByName(wb, name, fallback) {

@@ -131,7 +131,7 @@ export function showResultSheet(host, code, { onClose }) {
         const name = `${(p.name || 'Kontakt').replace(/[\\/:*?"<>|]+/g, ' ').trim() || 'Kontakt'}.vcf`;
         downloadBlob(new Blob([p.raw.endsWith('\n') ? p.raw : p.raw + '\r\n'], { type: 'text/vcard;charset=utf-8' }), name);
         toast('Kontakt gespeichert – öffne die Datei, um ihn ins Adressbuch zu übernehmen.', 'success', { timeout: 4500 });
-      } else if (a === 'copypw') await copyText(p.password);
+      } else if (a === 'copypw') { const { copySecret } = await import('../security.js'); if (await copySecret(p.password)) toast('Passwort kopiert – es wird nach 60 Sekunden aus der Zwischenablage entfernt.', 'success', { timeout: 2600 }); else await copyText(p.password); }
       else if (a === 'copy') await copyText(p.type === 'wifi' ? `WLAN: ${p.ssid}\nPasswort: ${p.password}` : raw);
       else if (a === 'note') {
         const { importAny } = await import('../library.js');

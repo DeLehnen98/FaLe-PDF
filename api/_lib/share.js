@@ -84,8 +84,15 @@ function checkTicket(secret, ticket, id, nowMs) {
 
 /** Raw request body (octet-stream) with a size limit. Accepts a Buffer pre-read by Vercel. */
 async function readRaw(req, maxBytes) {
-  if (Buffer.isBuffer(req.body)) { if (req.body.length > maxBytes) throw new H.HttpError(413, 'too_large', 'Teil zu groß'); return req.body; }
-  if (typeof req.body === 'string') { const b = Buffer.from(req.body, 'binary'); if (b.length > maxBytes) throw new H.HttpError(413, 'too_large', 'Teil zu groß'); return b; }
+  const declared = Number(req.headers && req.headers['content-length']);
+  if (Number.isFinite(declared) && declared > maxBytes) throw new H.HttpError(413, 'too_large', 'Teil zu groß');
+  let pre;
+  try { pre = req.body; } catch { throw new H.HttpError(400, 'bad_input', 'Ungültige Daten'); }
+  if (Buffer.isBuffer(pre)) { if (pre.length > maxBytes) throw new H.HttpError(413, 'too_large', 'Teil zu groß'); return pre; }
+  if (typeof pre === 'string') { const b = Buffer.from(pre, 'binary'); if (b.length > maxBytes) throw new H.HttpError(413, 'too_large', 'Teil zu groß'); return b; }
+  // a body Vercel parsed as JSON/form is not a ciphertext chunk – and its stream is already consumed
+  if (pre !== undefined) throw new H.HttpError(400, 'bad_input', 'Ungültige Daten');
+  if (req.readableEnded) return Buffer.alloc(0);
   return new Promise((resolve, reject) => {
     let chunks = [], size = 0;
     req.on('data', c => { size += c.length; if (size > maxBytes) { chunks = null; return; } if (chunks) chunks.push(c); });

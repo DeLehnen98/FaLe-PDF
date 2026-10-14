@@ -119,12 +119,18 @@ export async function createKeys(userId, password, { iter = PBKDF2_ITER } = {}) 
 /** Unlock with the Sync-Passwort or the recovery key. → raw MK (caller must wipe) or throws {code:'wrong'|'format'} */
 export async function unwrapMaster(userId, record, { password, recovery }) {
   try {
-    if (password != null) return await unwrap(await kekFromPassword(password, unb64u(record.kdf.salt), Number(record.kdf.iter) || PBKDF2_ITER), record.wrapped_pw, aad('mk', 'pw', 'v1', userId));
+    if (password != null) {
+      // the KDF parameters come from the server: never derive with fewer rounds than we create keys with
+      // (a manipulated record could otherwise make this device do a cheap derivation) – nor absurdly many (DoS)
+      const iter = Number(record.kdf && record.kdf.iter);
+      if (!Number.isInteger(iter) || iter < PBKDF2_ITER || iter > 10000000 || !record.kdf.salt) throw Object.assign(new Error('format'), { code: 'format' });
+      return await unwrap(await kekFromPassword(password, unb64u(record.kdf.salt), iter), record.wrapped_pw, aad('mk', 'pw', 'v1', userId));
+    }
     const raw = await parseRecoveryKey(recovery);
     if (!raw) throw Object.assign(new Error('format'), { code: 'format' });
     try { return await unwrap(await kekFromRecovery(raw, unb64u(record.kdf.rsalt || record.kdf.salt)), record.wrapped_rk, aad('mk', 'rk', 'v1', userId)); } finally { raw.fill(0); }
   } catch (e) {
-    if (e && e.code === 'format') throw Object.assign(new Error('format'), { code: 'format', userMessage: 'Das ist kein gültiger Wiederherstellungsschlüssel. Bitte prüfe die Eingabe.' });
+    if (e && e.code === 'format') throw Object.assign(new Error('format'), { code: 'format', userMessage: password != null ? 'Die Schlüsseldaten deines Kontos sind ungültig (unsichere Parameter) – bitte melde dich beim Support.' : 'Das ist kein gültiger Wiederherstellungsschlüssel. Bitte prüfe die Eingabe.' });
     throw Object.assign(new Error('wrong'), { code: 'wrong', userMessage: password != null ? 'Das Sync-Passwort ist falsch.' : 'Der Wiederherstellungsschlüssel passt nicht zu diesem Konto.' });
   }
 }

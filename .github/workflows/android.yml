@@ -9,8 +9,10 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
+# Least privilege: read-only by default; only the build job may write (GitHub Releases).
+# Third-party actions are pinned to full commit SHAs (Dependabot keeps them current).
 permissions:
-  contents: write # needed to attach files to a GitHub Release on tags
+  contents: read
 
 concurrency:
   group: android-${{ github.ref }}
@@ -19,6 +21,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to attach files to a GitHub Release (tags) / android-latest pre-release
     timeout-minutes: 45
     env:
       HAS_SIGNING: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
@@ -28,15 +32,16 @@ jobs:
         shell: bash -eo pipefail {0}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
-
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is passed explicitly where needed (gh, release action)
       - name: Setup Node 22
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 22
 
       - name: Setup Java 21
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           distribution: temurin
           java-version: 21
@@ -51,8 +56,7 @@ jobs:
           "$SDKM" --install "platforms;android-36" "build-tools;36.0.0" "platform-tools" 2>&1 | tail -n 5 | tee -a "$BUILD_LOG" || echo "sdkmanager install failed – Gradle will try to download missing parts" | tee -a "$BUILD_LOG"
 
       - name: Setup Gradle (cache)
-        uses: gradle/actions/setup-gradle@v4
-
+        uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
       - name: Install npm packages
         run: (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) 2>&1 | tee -a "$BUILD_LOG"
 
@@ -113,7 +117,7 @@ jobs:
         run: rm -f "$RUNNER_TEMP/upload.jks"
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: FaLe-PDF-${{ steps.ver.outputs.version }}-android
           path: out/*
@@ -131,7 +135,7 @@ jobs:
 
       - name: Latest test build as pre-release (main)
         if: github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           tag_name: android-latest
           name: Neueste Test-APK
@@ -154,7 +158,7 @@ jobs:
 
       - name: Attach to GitHub Release (tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           files: out/*
           generate_release_notes: true

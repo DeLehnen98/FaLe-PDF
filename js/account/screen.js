@@ -5,6 +5,7 @@ import { isNative } from '../platform.js';
 import * as A from './auth.js';
 import { loadAccountCss, aicon, ago, syncLine } from './entry.js';
 import * as SYNC_GROUPS from '../sync/local.js';
+import { copySecret, screenSecure } from '../security.js';
 
 const PRIVACY = 'datenschutz.html';
 
@@ -343,7 +344,8 @@ async function setupFlow(E) {
 /** Show the recovery key once, with copy / PDF and a "saved" confirmation. */
 async function showRecoveryKey(text, { first = false } = {}) {
   const user = await A.currentUser();
-  await openDialog({
+  const releaseSecure = screenSecure(true); // Android: no screenshots / recents preview of the key
+  try { await openDialog({
     title: 'Dein Wiederherstellungsschlüssel',
     dismissable: false,
     body: `<p>Damit kommst du an deine Cloud-Daten, falls du dein Sync-Passwort vergisst. <b>Er wird nur jetzt angezeigt.</b> Drucke ihn aus oder bewahre ihn an einem sicheren Ort auf – nicht nur auf diesem Gerät.</p>
@@ -356,12 +358,13 @@ async function showRecoveryKey(text, { first = false } = {}) {
       const ok = $('.dlg-actions .btn-primary', dlg);
       ok.disabled = true;
       $('[data-saved]', dlg).addEventListener('change', e => { ok.disabled = !e.target.checked; });
-      $('[data-copy]', dlg).addEventListener('click', async () => { try { await navigator.clipboard.writeText(text); toast('Kopiert', 'success'); } catch { toast('Kopieren ist hier nicht möglich – bitte abschreiben.', 'error'); } });
+      // cleared from the clipboard again after 60 s (other apps / clipboard history must not keep it)
+      $('[data-copy]', dlg).addEventListener('click', async () => { if (await copySecret(text)) toast('Kopiert – wird nach 60 Sekunden aus der Zwischenablage entfernt.', 'success'); else toast('Kopieren ist hier nicht möglich – bitte abschreiben.', 'error'); });
       $('[data-pdf]', dlg).addEventListener('click', () => recoveryPdf(text, user && user.email).catch(e => errorToast(e, 'Das PDF konnte nicht erstellt werden.')));
       dlg.addEventListener('cancel', e => e.preventDefault());
     },
     validate: (v, dlg) => $('[data-saved]', dlg).checked,
-  });
+  }); } finally { releaseSecure(); }
 }
 
 async function recoveryPdf(text, email) {

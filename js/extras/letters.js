@@ -425,16 +425,54 @@ const OTHER = {
       return { subject: `Bewerbung als ${e(v.stelle) || '…'}${v.ref ? ` – Kennziffer ${e(v.ref)}` : ''}`, refs: [], body, salutation: salutation(v), attachments: 'Anlagen: Lebenslauf, Zeugnisse' };
     },
   },
+  // Antwort auf eine Mahnung / Zahlungsaufforderung (wird vom Briefkasten-Assistenten vorausgefüllt)
+  'mahnung-antwort': {
+    id: 'mahnung-antwort', title: 'Antwort auf Mahnung oder Zahlungsaufforderung', fileTitle: 'Antwort auf Zahlungsaufforderung', icon: 'euro',
+    note: 'Antworte sachlich und nachweisbar. Berechtigte Forderungen solltest du rechtzeitig begleichen – so vermeidest du weitere Kosten. Unberechtigten Forderungen (z. B. von Inkassobüros) kannst du schriftlich widersprechen.',
+    sections: [
+      { title: 'Forderung', fields: [
+        { id: 'grund', label: 'Deine Antwort', type: 'select', options: [['bezahlt', 'Ich habe bereits bezahlt'], ['raten', 'Ich bitte um Ratenzahlung'], ['stundung', 'Ich bitte um Zahlungsaufschub'], ['bestritten', 'Ich bestreite die Forderung'], ['nicht_erhalten', 'Ich habe keine Rechnung erhalten']], def: 'bezahlt' },
+        { id: 'zeichen', label: 'Rechnungs-, Kundennummer oder Aktenzeichen', half: true }, { id: 'datum_schreiben', label: 'Ihr Schreiben vom', type: 'date', half: true },
+        { id: 'betrag', label: 'Geforderter Betrag (€)', type: 'money', half: true },
+        { id: 'bezahlt_am', label: 'Bezahlt am', type: 'date', half: true, when: v => v.grund === 'bezahlt' },
+        { id: 'rate', label: 'Monatliche Rate (€)', type: 'money', half: true, when: v => v.grund === 'raten' },
+        { id: 'bis', label: 'Zahlung möglich bis', type: 'date', half: true, when: v => v.grund === 'stundung' },
+        { id: 'begruendung', label: 'Begründung (optional)', type: 'textarea', when: v => v.grund === 'bestritten' || v.grund === 'stundung' },
+      ] },
+      { title: 'An wen geht der Brief?', fields: RECIPIENT('Absender der Forderung', 'z. B. Muster Versand GmbH') },
+      { title: 'Absender', collapsed: true, fields: [...SENDER, PLACE, DATE] },
+    ],
+    build(v) {
+      const ref = [v.zeichen ? `(${e(v.zeichen)})` : '', v.datum_schreiben ? `vom ${deDate(v.datum_schreiben)}` : ''].filter(Boolean).join(' ');
+      const amt = num(v.betrag) ? ` über ${money(num(v.betrag))}` : '';
+      const body = [];
+      if (v.grund === 'bezahlt') body.push(`bezüglich Ihres Schreibens ${ref}${amt} teile ich Ihnen mit, dass ich den Betrag bereits${v.bezahlt_am ? ` am ${deDate(v.bezahlt_am)}` : ''} bezahlt habe. Bitte prüfen Sie den Zahlungseingang und betrachten Sie die Angelegenheit als erledigt. Einen Zahlungsnachweis füge ich auf Wunsch bei.`);
+      if (v.grund === 'raten') body.push(`bezüglich Ihres Schreibens ${ref}${amt}: Ich erkenne die Forderung an, kann sie derzeit aber nicht in einer Summe begleichen. Ich bitte Sie daher um Ratenzahlung in Höhe von ${num(v.rate) ? money(num(v.rate)) : '… €'} monatlich, beginnend mit dem nächsten Monatsersten.`);
+      if (v.grund === 'stundung') body.push(`bezüglich Ihres Schreibens ${ref}${amt} bitte ich Sie um einen Zahlungsaufschub${v.bis ? ` bis zum ${deDate(v.bis)}` : ''}.`);
+      if (v.grund === 'bestritten') body.push(`Ihrer Forderung aus dem Schreiben ${ref}${amt} widerspreche ich hiermit. Ich bestreite die Forderung dem Grunde und der Höhe nach.`);
+      if (v.grund === 'nicht_erhalten') body.push(`Ihr Schreiben ${ref}${amt} habe ich erhalten. Eine Rechnung zu dieser Forderung liegt mir jedoch nicht vor. Bitte senden Sie mir die Rechnung zu, damit ich die Forderung prüfen kann.`);
+      if ((v.begruendung || '').trim()) String(v.begruendung).split(/\n{2,}/).forEach(p => body.push(e(p).replace(/\n/g, '<br>')));
+      if (v.grund === 'raten' || v.grund === 'stundung') body.push('Bitte bestätigen Sie mir Ihr Einverständnis schriftlich. Für Ihr Entgegenkommen bedanke ich mich.');
+      else if (v.grund === 'bestritten') body.push('Bitte unterlassen Sie bis zur Klärung weitere Mahnungen und eine Weitergabe meiner Daten an Dritte. Für Rückfragen stehe ich Ihnen gern zur Verfügung.');
+      else body.push('Für Rückfragen stehe ich Ihnen gern zur Verfügung.');
+      const subj = { bezahlt: 'Ihre Zahlungsaufforderung – Betrag bereits bezahlt', raten: 'Bitte um Ratenzahlung', stundung: 'Bitte um Zahlungsaufschub', bestritten: 'Widerspruch gegen Ihre Forderung', nicht_erhalten: 'Ihre Zahlungsaufforderung – Rechnung nicht erhalten' }[v.grund] || 'Ihre Zahlungsaufforderung';
+      return { subject: `${subj}${v.zeichen ? ` – ${e(v.zeichen)}` : ''}`, refs: [['Ihr Zeichen', v.zeichen], ['Ihr Schreiben vom', deDate(v.datum_schreiben)]].filter(r => r[1]), body };
+    },
+  },
 };
+
+// Prefill handed over by the Briefkasten-Assistent (js/smart/inbox.js): consumed once by the next generator of that id.
+let pendingPrefill = null;
+export function setLetterPrefill(id, values) { pendingPrefill = { id, values: { ...(values || {}) }, at: Date.now() }; }
 
 export const LETTER_GROUPS = [
   { title: 'Verträge & Behörden', ids: ['widerruf', 'widerspruch', 'vollmacht', 'mietschuldenfreiheit'] },
-  { title: 'Geld & Selbstständigkeit', ids: ['rechnung', 'angebot', 'mahnung'] },
+  { title: 'Geld & Selbstständigkeit', ids: ['rechnung', 'angebot', 'mahnung', 'mahnung-antwort'] },
   { title: 'Beruf', ids: ['bewerbung'] },
 ];
 const DESCS = {
   widerruf: 'Online-Kauf oder Vertrag innerhalb der Frist zurückgeben', widerspruch: 'Gegen einen Bescheid vorgehen – auch als Einspruch', vollmacht: 'Paket, Dokumente oder Behördengang erledigen lassen',
-  mietschuldenfreiheit: 'Für die nächste Wohnungsbewerbung', rechnung: 'Automatische Summen, USt. oder § 19 UStG', angebot: 'Positionen, Gültigkeit, Summen', mahnung: 'Freundlich erinnern bis zur letzten Mahnung', bewerbung: 'Anschreiben aus deinen Stichpunkten',
+  mietschuldenfreiheit: 'Für die nächste Wohnungsbewerbung', rechnung: 'Automatische Summen, USt. oder § 19 UStG', angebot: 'Positionen, Gültigkeit, Summen', mahnung: 'Freundlich erinnern bis zur letzten Mahnung', 'mahnung-antwort': 'Bezahlt, Raten, Aufschub oder Widerspruch', bewerbung: 'Anschreiben aus deinen Stichpunkten',
 };
 
 export function letterDef(id, art) {
@@ -514,6 +552,10 @@ async function generator(screen, def) {
   for (const f of allFields) {
     const d = typeof f.def === 'function' ? f.def(profile) : f.def;
     v[f.id] = d === undefined ? (f.type === 'check' ? false : '') : d;
+  }
+  if (pendingPrefill && pendingPrefill.id === def.id && Date.now() - pendingPrefill.at < 60000) {
+    for (const [k, val] of Object.entries(pendingPrefill.values)) if (k in v && val != null && val !== '') v[k] = val;
+    pendingPrefill = null;
   }
   const root = h(`<div class="lt-gen">
     <form class="lt-form" novalidate autocomplete="on"></form>

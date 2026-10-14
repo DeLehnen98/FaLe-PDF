@@ -1,5 +1,6 @@
 // Lazy loaders for the vendored office libraries (classic scripts → globals). Everything is local.
 import { UserError } from '../ui.js';
+import { LIMITS } from '../security.js';
 
 const pending = new Map();
 
@@ -25,13 +26,78 @@ export const loadPptxGen = async () => {
   return loadScript('../../vendor/pptxgenjs/pptxgen.bundle.js', 'PptxGenJS', 'Die Präsentations-Bibliothek');
 };
 
-/** Open a zip (docx/xlsx/pptx) with a friendly error. */
+/**
+ * Open a zip (docx/xlsx/pptx) with a friendly error – and with zip-bomb limits (docs/SECURITY.md):
+ * at most LIMITS.zipEntries entries, LIMITS.zipEntryBytes per entry, LIMITS.zipTotalBytes in total
+ * (declared sizes, checked before anything is inflated), no extreme compression ratios, and every
+ * entry is inflated through a stream that stops as soon as it produces more than it declared.
+ */
 export async function openZip(data, name = 'Datei') {
   const JSZip = await loadJSZip();
+  let zip;
   try {
-    return await JSZip.loadAsync(data);
+    zip = await JSZip.loadAsync(data);
   } catch (e) {
     throw new UserError(`„${name}“ ist beschädigt oder kein gültiges Office-Dokument.`);
+  }
+  const files = Object.values(zip.files);
+  const tooBig = () => new UserError(`„${name}“ ist ungewöhnlich groß verpackt (mögliche ZIP-Bombe) und wird aus Sicherheitsgründen nicht geöffnet.`);
+  if (files.length > LIMITS.zipEntries) throw tooBig();
+  let total = 0;
+  for (const f of files) {
+    if (f.dir) continue;
+    const d = f._data || {};
+    const size = Number(d.uncompressedSize), packed = Number(d.compressedSize);
+    if (!Number.isFinite(size) || size < 0) continue; // no metadata (not loaded from bytes)
+    total += size;
+    if (size > LIMITS.zipEntryBytes || total > LIMITS.zipTotalBytes) throw tooBig();
+    if (size > 1024 * 1024 && packed > 0 && size / packed > LIMITS.zipRatio) throw tooBig();
+    capEntry(f, size);
+  }
+  return zip;
+}
+
+// Inflate one entry with a hard cap (its declared size): a lying header cannot make it expand without bound.
+function capEntry(f, declared) {
+  if (typeof f.internalStream !== 'function' || f._faleCapped) return;
+  const orig = f.async.bind(f);
+  const limit = declared + 64;
+  f._faleCapped = true;
+  f.async = (type, onUpdate) => {
+    if (!['string', 'text', 'base64', 'uint8array', 'arraybuffer', 'blob', 'binarystring'].includes(type)) return orig(type, onUpdate);
+    return new Promise((resolve, reject) => {
+      const parts = [];
+      let n = 0, done = false;
+      let stream;
+      try { stream = f.internalStream('uint8array'); } catch (e) { reject(e); return; }
+      stream.on('data', chunk => {
+        if (done) return;
+        n += chunk.length;
+        if (n > limit) { done = true; try { stream.pause(); } catch {} reject(new UserError('Die Datei ist beschädigt (Inhalt größer als angegeben).')); return; }
+        parts.push(chunk);
+      }).on('error', e => { if (!done) { done = true; reject(e); } }).on('end', () => {
+        if (done) return;
+        done = true;
+        const u8 = new Uint8Array(n);
+        let o = 0;
+        for (const p of parts) { u8.set(p, o); o += p.length; }
+        try { resolve(convertBytes(u8, type)); } catch (e) { reject(e); }
+      }).resume();
+    });
+  };
+}
+function convertBytes(u8, type) {
+  switch (type) {
+    case 'string': case 'text': return new TextDecoder('utf-8').decode(u8);
+    case 'uint8array': return u8;
+    case 'arraybuffer': return u8.buffer;
+    case 'blob': return new Blob([u8]);
+    case 'base64': case 'binarystring': {
+      let s = '';
+      for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+      return type === 'base64' ? btoa(s) : s;
+    }
+    default: throw new Error('type');
   }
 }
 

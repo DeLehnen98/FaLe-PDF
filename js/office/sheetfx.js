@@ -75,6 +75,35 @@ export function cfStyle(sh, r, c, cell, cache) {
 // ---------------- AutoFilter ----------------
 export const EMPTY = '(Leer)';
 export function cellText(cell) { const t = cell ? displayOf(cell) : ''; return t === '' ? EMPTY : t; }
+/** Test of one custom filter condition. cond: {op, v} with op eq|ne|gt|ge|lt|le|contains|notcontains|begins|ends */
+export function testCondition(cell, cond) {
+  const v = valOf(cell);
+  const t = cellText(cell) === EMPTY ? '' : cellText(cell);
+  const n = typeof v === 'number' ? v : null;
+  const target = toNum(cond.v);
+  const lc = s => String(s ?? '').toLocaleLowerCase('de');
+  const wild = s => new RegExp('^' + String(s).replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$', 'i');
+  switch (cond.op) {
+    case 'eq': return target !== null && n !== null && !/[*?]/.test(cond.v) ? n === target : wild(cond.v).test(t);
+    case 'ne': return target !== null && n !== null && !/[*?]/.test(cond.v) ? n !== target : !wild(cond.v).test(t);
+    case 'gt': return n !== null && target !== null ? n > target : target === null && t !== '' && lc(t) > lc(cond.v);
+    case 'ge': return n !== null && target !== null ? n >= target : target === null && t !== '' && lc(t) >= lc(cond.v);
+    case 'lt': return n !== null && target !== null ? n < target : target === null && t !== '' && lc(t) < lc(cond.v);
+    case 'le': return n !== null && target !== null ? n <= target : target === null && t !== '' && lc(t) <= lc(cond.v);
+    case 'contains': return lc(t).includes(lc(cond.v));
+    case 'notcontains': return !lc(t).includes(lc(cond.v));
+    case 'begins': return lc(t).startsWith(lc(cond.v));
+    case 'ends': return lc(t).endsWith(lc(cond.v));
+    case 'blank': return t === '';
+    case 'notblank': return t !== '';
+  }
+  return true;
+}
+export const FILTER_OPS = [
+  { id: 'eq', label: 'ist gleich' }, { id: 'ne', label: 'ist nicht gleich' }, { id: 'gt', label: 'ist größer als' }, { id: 'ge', label: 'ist größer oder gleich' },
+  { id: 'lt', label: 'ist kleiner als' }, { id: 'le', label: 'ist kleiner oder gleich' }, { id: 'contains', label: 'enthält' }, { id: 'notcontains', label: 'enthält nicht' },
+  { id: 'begins', label: 'beginnt mit' }, { id: 'ends', label: 'endet mit' },
+];
 /** Rows hidden by the AutoFilter. */
 export function filterHidden(sh) {
   const out = new Set();
@@ -82,12 +111,22 @@ export function filterHidden(sh) {
   if (!af || !af.filters) return out;
   const rg = parseRange(af.range);
   if (!rg) return out;
-  const cols = Object.keys(af.filters).map(Number).filter(c => Array.isArray(af.filters[c]));
-  if (!cols.length) return out;
-  const sets = cols.map(c => [c, new Set(af.filters[c])]);
-  for (let r = rg.r1 + 1; r <= rg.r2; r++) {
-    for (const [c, allowed] of sets) if (!allowed.has(cellText(sh.cells.get(KEY(r, c))))) { out.add(r); break; }
+  const tests = [];
+  for (const [k, f] of Object.entries(af.filters)) {
+    const c = +k;
+    if (Array.isArray(f)) { const set = new Set(f); tests.push(r => set.has(cellText(sh.cells.get(KEY(r, c))))); }
+    else if (f && f.custom) tests.push(r => { const cell = sh.cells.get(KEY(r, c)); const res = f.custom.map(cd => testCondition(cell, cd)); return f.and ? res.every(Boolean) : res.some(Boolean); });
+    else if (f && f.top) {
+      const nums = [];
+      for (let r = rg.r1 + 1; r <= rg.r2; r++) { const v = valOf(sh.cells.get(KEY(r, c))); if (typeof v === 'number') nums.push(v); }
+      nums.sort((a, b) => (f.bottom ? a - b : b - a));
+      const k2 = f.percent ? Math.max(1, Math.round(nums.length * f.top / 100)) : f.top;
+      const thr = nums[Math.min(nums.length, k2) - 1];
+      tests.push(r => { const v = valOf(sh.cells.get(KEY(r, c))); return typeof v === 'number' && thr !== undefined && (f.bottom ? v <= thr : v >= thr); });
+    }
   }
+  if (!tests.length) return out;
+  for (let r = rg.r1 + 1; r <= rg.r2; r++) if (!tests.every(t => t(r))) out.add(r);
   return out;
 }
 export function columnValues(sh, c) {
@@ -106,6 +145,44 @@ export function validationAt(sh, r, c) {
 }
 export function parseList(text) {
   return String(text || '').split(/[\n;]|,(?!\d)/).map(s => s.trim()).filter(Boolean).slice(0, 200);
+}
+export const DV_TYPES = [{ id: 'list', label: 'Liste (Dropdown)' }, { id: 'whole', label: 'Ganze Zahl' }, { id: 'decimal', label: 'Dezimalzahl' }, { id: 'date', label: 'Datum' }, { id: 'textLength', label: 'Textlänge' }];
+export const DV_OPS = [{ id: 'between', label: 'zwischen' }, { id: 'notBetween', label: 'nicht zwischen' }, { id: 'equal', label: 'gleich' }, { id: 'notEqual', label: 'ungleich' }, { id: 'greaterThan', label: 'größer als' }, { id: 'lessThan', label: 'kleiner als' }, { id: 'greaterThanOrEqual', label: 'größer oder gleich' }, { id: 'lessThanOrEqual', label: 'kleiner oder gleich' }];
+/** Is a parsed value allowed by a validation rule? value: parsed cell value, text: raw input. listOf(src) resolves range lists. */
+export function dvAllows(dv, value, text, listOf) {
+  if (text === '' || value === null || value === undefined) return true;
+  const type = dv.type || 'list';
+  if (type === 'list') {
+    const list = dv.src && listOf ? listOf(dv.src) : dv.list || [];
+    return list.some(x => String(x).toLocaleLowerCase('de') === String(text).trim().toLocaleLowerCase('de'));
+  }
+  let x;
+  if (type === 'textLength') x = String(text).length;
+  else { if (typeof value !== 'number') return false; x = value; if (type === 'whole' && !Number.isInteger(x)) return false; }
+  const a = dvNum(dv.v1, type), b = dvNum(dv.v2, type);
+  switch (dv.op || 'between') {
+    case 'between': return a !== null && b !== null && x >= Math.min(a, b) && x <= Math.max(a, b);
+    case 'notBetween': return a !== null && b !== null && (x < Math.min(a, b) || x > Math.max(a, b));
+    case 'equal': return x === a;
+    case 'notEqual': return x !== a;
+    case 'greaterThan': return x > a;
+    case 'lessThan': return x < a;
+    case 'greaterThanOrEqual': return x >= a;
+    case 'lessThanOrEqual': return x <= a;
+  }
+  return true;
+}
+function dvNum(v, type) {
+  if (v === null || v === undefined || v === '') return null;
+  const s = String(v).trim();
+  if (type === 'date') { const m = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(s); if (m) return (Date.UTC(+m[3], +m[2] - 1, +m[1]) - Date.UTC(1899, 11, 30)) / 86400000; }
+  return toNum(s);
+}
+export function dvDescribe(dv) {
+  const t = (DV_TYPES.find(x => x.id === (dv.type || 'list')) || DV_TYPES[0]).label;
+  if ((dv.type || 'list') === 'list') return t;
+  const o = (DV_OPS.find(x => x.id === (dv.op || 'between')) || DV_OPS[0]).label;
+  return `${t} ${o} ${dv.v1 ?? ''}${/between/i.test(dv.op || 'between') ? ` und ${dv.v2 ?? ''}` : ''}`;
 }
 
 // ---------------- shifting ranges on insert/delete ----------------
@@ -169,9 +246,11 @@ export function shiftSheetRanges(sh, axis, at, n, del = false) {
 /** Serializable copy for undo. */
 export function extrasSnapshot(sh) {
   ensureSheetExtras(sh);
-  return JSON.stringify({ charts: sh.charts, cf: sh.cf, dv: sh.dv, autoFilter: sh.autoFilter, hiddenRows: [...sh.hiddenRows] });
+  return JSON.stringify({ charts: sh.charts, cf: sh.cf, dv: sh.dv, autoFilter: sh.autoFilter, hiddenRows: [...sh.hiddenRows], rowH: [...(sh.rowH || new Map())], hiddenColW: sh.hiddenColW || {}, freezeC: sh.freezeC || 0, tabColor: sh.tabColor || null, protect: sh.protect || null, pivot: sh.pivot || null, name: sh.name });
 }
 export function restoreExtras(sh, json) {
   const o = JSON.parse(json);
   sh.charts = o.charts; sh.cf = o.cf; sh.dv = o.dv; sh.autoFilter = o.autoFilter; sh.hiddenRows = new Set(o.hiddenRows);
+  sh.rowH = new Map(o.rowH || []); sh.hiddenColW = o.hiddenColW || {}; sh.freezeC = o.freezeC || 0; sh.tabColor = o.tabColor || null; sh.protect = o.protect || null; sh.pivot = o.pivot || null;
+  if (o.name) sh.name = o.name;
 }

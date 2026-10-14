@@ -185,7 +185,10 @@ export async function mount(screen, { params }) {
         box.querySelector('[data-mode]').textContent = mode === 'p2p' ? 'Direkt zwischen den Geräten (Peer-to-Peer, DTLS-verschlüsselt)' : 'Über das verschlüsselte Relais (Ende-zu-Ende-verschlüsselt, max. 1 Stunde gespeichert)';
         box.querySelector('[data-sas]').textContent = sas || '–';
         box.querySelector('.sh-tr-sas').hidden = !sas;
-        box.querySelector('[data-sashint]').textContent = sas ? (verified ? 'Per QR-Code gekoppelt. Die Prüfnummer muss auf beiden Geräten gleich sein.' : 'Vergleiche die Prüfnummer auf beiden Geräten – stimmt sie überein, ist die Verbindung sicher.') : 'Kopplung über den Code. Die Dateien sind trotzdem Ende-zu-Ende-verschlüsselt.';
+        // honest about the weaker typed-code pairing: without a Prüfnummer (relay) only the 6 digits protect the key
+        box.querySelector('[data-sashint]').textContent = sas ? (verified ? 'Per QR-Code gekoppelt. Die Prüfnummer muss auf beiden Geräten gleich sein.' : 'Vergleiche die Prüfnummer auf beiden Geräten – stimmt sie überein, ist die Verbindung sicher.')
+          : verified ? 'Per QR-Code gekoppelt. Die Dateien sind Ende-zu-Ende-verschlüsselt.'
+            : 'Kopplung über den Code. Die Dateien sind verschlüsselt, der 6-stellige Code schützt aber schwächer als der QR-Code – für vertrauliche Dateien die Geräte per QR-Code koppeln.';
       },
       file(id, { name, size, dir }) {
         if (!list) return null;

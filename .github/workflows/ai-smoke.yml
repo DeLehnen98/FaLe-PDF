@@ -4,6 +4,8 @@ name: AI smoke test
 on:
   workflow_dispatch:
 
+permissions: {} # no repository access needed
+
 jobs:
   smoke:
     runs-on: ubuntu-latest

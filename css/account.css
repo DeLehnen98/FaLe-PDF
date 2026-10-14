@@ -1,7 +1,8 @@
 /* FaLe PDF – FaLe-Konto & FaLe Sync (loaded lazily by js/account/entry.js) */
-:root { --acct-grad: linear-gradient(135deg, #3B37A0 0%, #4B47C6 55%, #0B8F80 140%); --acct-warn: #B45309; }
-:root[data-theme="dark"] { --acct-grad: linear-gradient(135deg, #2E2A86 0%, #3B37A0 55%, #0B7468 140%); --acct-warn: #F5A524; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --acct-grad: linear-gradient(135deg, #2E2A86 0%, #3B37A0 55%, #0B7468 140%); --acct-warn: #F5A524; } }
+/* account panels use the FaLe ink material (var(--ink-grad), styles.css) */
+:root { --acct-grad: var(--ink-grad); --acct-warn: #A04A06; }
+:root[data-theme="dark"] { --acct-warn: #F5A524; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --acct-warn: #F5A524; } }
 
 /* "Ich" card */
 .acct-me-box:empty { display: none; }
@@ -14,7 +15,7 @@
 .acct-me-out .acct-me-text span { white-space: normal; }
 .acct-me-ic, .acct-hint-ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); flex: none; }
 .acct-me-btn { flex: none; }
-.acct-avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 18px; color: #fff; background: var(--acct-grad); flex: none; }
+.acct-avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 18px; color: #fff; background: var(--acct-grad); background-color: var(--ink-2); flex: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18); }
 .acct-avatar-lg { width: 54px; height: 54px; font-size: 22px; }
 
 /* start page hint */
@@ -26,14 +27,15 @@
 
 /* screen */
 .acct-wrap { max-width: 760px; }
-.acct-hero { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: var(--acct-grad); color: #fff; border: none; margin-bottom: 16px; }
-.acct-hero-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: rgba(255, 255, 255, .16); flex: none; }
+.acct-hero { display: flex; gap: 16px; align-items: flex-start; padding: 24px 24px 22px; background: var(--acct-grad); background-color: var(--ink-1); color: #fff; border: none; margin-bottom: 18px; border-radius: var(--radius-lg); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 20px 40px -24px rgba(22, 17, 74, .6); }
+.acct-hero-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: rgba(255, 255, 255, .14); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); flex: none; }
 .acct-hero-ic .ic { width: 26px; height: 26px; }
-.acct-hero strong { font-size: 17px; }
+.acct-hero strong { font-family: var(--font-display); font-size: 1.3125rem; font-weight: 700; letter-spacing: -0.02em; }
+.acct-benefits .ic { color: var(--ribbon); }
 .acct-benefits { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
 .acct-benefits li { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; opacity: .96; }
 .acct-benefits .ic { width: 18px; height: 18px; flex: none; margin-top: 1px; }
-.acct-h2 { font-size: 18px; margin-bottom: 4px; }
+.acct-h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
 .acct-form .field { margin-top: 14px; }
 .acct-code-input { font-size: 22px; letter-spacing: .3em; font-variant-numeric: tabular-nums; max-width: 260px; }
 .acct-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
@@ -47,7 +49,7 @@
 .acct-head-text { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 180px; }
 .acct-head-text strong { font-size: 16px; word-break: break-all; }
 .acct-plus { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 2px; }
-.acct-badge-plus { background: color-mix(in srgb, var(--star) 22%, var(--surface)); color: color-mix(in srgb, var(--star) 70%, var(--text)); gap: 4px; }
+.acct-badge-plus { background: var(--warn-soft); color: var(--warn); gap: 4px; }
 .acct-badge-plus .ic { width: 14px; height: 14px; }
 
 .acct-sync { display: grid; gap: 14px; }
@@ -64,7 +66,7 @@
 @keyframes acct-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .acct-sync-status.busy .acct-sync-ic .ic { animation: none; } }
 .acct-bar { height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
-.acct-bar span { display: block; height: 100%; background: var(--acct-grad); border-radius: inherit; transition: width .25s; }
+.acct-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent-bright)); border-radius: inherit; transition: width var(--dur-3) var(--ease-out); }
 .acct-bar.warn span { background: var(--acct-warn); }
 .acct-usage { display: grid; gap: 6px; padding-top: 4px; }
 .acct-usage-top { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }

@@ -180,6 +180,12 @@ function mockReply(task, user) {
       { question: 'Worum geht es im Text?', options: ['Um das Thema', 'Um Kochen', 'Um Fußball', 'Um Musik'], answer: 0, explanation: 'Steht im ersten Absatz.' },
       { question: 'Welche Aussage stimmt?', options: ['Falsch 1', 'Richtig', 'Falsch 2', 'Falsch 3'], answer: 1, explanation: 'Siehe Text.' },
       { question: 'Ungültige Frage', options: ['a', 'b'], answer: 3 }] });
+    case 'letter_extract': {
+      // deterministic for tests: picks the first IBAN and an amount from the text
+      const ib = (inner.match(/\bDE\d{2}(?:\s?\d{4}){4}\s?\d{2}\b/) || [])[0];
+      const am = (inner.match(/(\d{1,3}(?:\.\d{3})*,\d{2})\s?(?:€|EUR)/) || [])[1];
+      return JSON.stringify({ type: /mahnung/i.test(inner) ? 'mahnung' : 'rechnung', sender: 'KI-Test Absender GmbH', summary: 'Test: Bitte bezahlen.', ...(ib ? { iban: ib } : {}), ...(am ? { amount: Number(am.replace(/\./g, '').replace(',', '.')) } : {}), due_date: '2030-01-31', due_label: 'Zahlung (KI)', customer_number: 'KI-4711', date: 'kein Datum' });
+    }
     case 'letter': return JSON.stringify({ subject: 'Kündigung meines Vertrags', salutation: 'Sehr geehrte Damen und Herren,',
       paragraphs: [`hiermit wende ich mich an Sie wegen: ${firstWords}.`, 'Bitte bestätigen Sie mir den Eingang dieses Schreibens bis zum [Datum].'], closing: 'Mit freundlichen Grüßen' });
     default: return 'OK';

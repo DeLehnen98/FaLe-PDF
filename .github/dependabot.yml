@@ -1,0 +1,24 @@
+# Dependabot: weekly update PRs for npm packages and for the (SHA-pinned) GitHub Actions.
+# Security updates additionally need "Dependabot alerts" + "Dependabot security updates" switched on
+# under Settings → Code security.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      capacitor:
+        patterns: ['@capacitor/*', '@capacitor-community/*', '@capgo/*']
+    # vendor/ is updated by hand (see vendor/MANIFEST.json); these PRs only bump package.json
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        patterns: ['*']

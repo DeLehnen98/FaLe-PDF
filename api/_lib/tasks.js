@@ -27,7 +27,10 @@ function bad(msg) { return new HttpError(400, 'bad_input', msg); }
 
 /** Cut text at a paragraph/sentence boundary below max. */
 function clip(text, max) {
-  const t = String(text || '').replace(/\r\n?/g, '\n').replace(/\u0000/g, '').trim();
+  const t = String(text || '').replace(/\r\n?/g, '\n').replace(/\u0000/g, '')
+    // prompt framing: user/document content can never close or open the <dokument>/<text> data blocks
+    .replace(/<\s*(\/?)\s*(dokument|text)\s*>/gi, '‹$1$2›')
+    .trim();
   if (t.length <= max) return { text: t, truncated: false };
   let cut = t.lastIndexOf('\n\n', max);
   if (cut < max * 0.7) cut = t.lastIndexOf('\n', max);
@@ -101,6 +104,19 @@ const SCHEMAS = {
       salutation: { type: 'string', minLength: 1, maxLength: 120 },
       paragraphs: { type: 'array', minItems: 1, maxItems: 12, items: { type: 'string', minLength: 1, maxLength: 1500 } },
       closing: { type: 'string', maxLength: 80 },
+    },
+  },
+  // Briefkasten-Assistent: strict extraction schema (only on explicit tap + consent in the app)
+  letter_extract: {
+    type: 'object', required: ['type'], additionalProperties: false,
+    properties: {
+      type: { type: 'string', enum: ['rechnung', 'mahnung', 'bescheid', 'vertrag', 'kontoauszug', 'lohnabrechnung', 'versicherung', 'arzt', 'werbung', 'sonstiges'] },
+      sender: { type: 'string', maxLength: 120 }, recipient: { type: 'string', maxLength: 120 }, subject: { type: 'string', maxLength: 160 },
+      date: { type: 'string', maxLength: 10 }, amount: { type: 'number', minimum: -10000000, maximum: 10000000 },
+      iban: { type: 'string', maxLength: 42 }, bic: { type: 'string', maxLength: 11 }, purpose: { type: 'string', maxLength: 140 },
+      customer_number: { type: 'string', maxLength: 60 }, invoice_number: { type: 'string', maxLength: 60 }, contract_number: { type: 'string', maxLength: 60 }, reference: { type: 'string', maxLength: 60 },
+      due_date: { type: 'string', maxLength: 10 }, due_label: { type: 'string', maxLength: 60 },
+      phone: { type: 'string', maxLength: 40 }, email: { type: 'string', maxLength: 120 }, summary: { type: 'string', maxLength: 600 },
     },
   },
 };
@@ -305,6 +321,26 @@ Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten
         maxTokens: 700,
         truncated: t.truncated, note: note(t.truncated, this.maxInput),
       };
+    },
+  },
+
+  letter_extract: {
+    stream: false, maxInput: 12000, schema: SCHEMAS.letter_extract,
+    prepare(input) {
+      const t = reqStr(input.text, 'Text', this.maxInput, { min: 40 });
+      return {
+        system: `${BASE}\nDer Text stammt aus einem gescannten deutschen Brief (OCR, kann Erkennungsfehler enthalten). Bestimme die Dokumentart und lies die Angaben heraus. Datumsangaben im Format JJJJ-MM-TT, Beträge als Zahl in Euro (Punkt als Dezimaltrennzeichen). „amount“ ist der zu zahlende bzw. wichtigste Betrag, „due_date“ die wichtigste Frist (Zahlungsziel, Widerspruchsfrist …) – nur wenn sie im Text steht oder eindeutig berechenbar ist. Lass Felder weg, die nicht im Text stehen; erfinde nichts. „summary“: 1–2 Sätze, was zu tun ist.\n${jsonRule(SCHEMAS.letter_extract)}`,
+        user: `<dokument>\n${t.text}\n</dokument>`,
+        maxTokens: 900,
+        truncated: t.truncated, note: note(t.truncated, this.maxInput),
+      };
+    },
+    post(out) {
+      const iso = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : undefined);
+      const o = { ...out, date: iso(out.date), due_date: iso(out.due_date) };
+      if (o.iban) o.iban = String(o.iban).replace(/\s+/g, '').toUpperCase();
+      for (const k of Object.keys(o)) if (o[k] === undefined || o[k] === '') delete o[k];
+      return o;
     },
   },
 

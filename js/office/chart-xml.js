@@ -95,7 +95,8 @@ function colorOf(spPr) {
   if (!spPr) return null;
   const fill = kid(spPr, 'solidFill') || (kid(spPr, 'ln') && kid(kid(spPr, 'ln'), 'solidFill'));
   const c = fill && kid(fill, 'srgbClr');
-  return c && attr(c, 'val') ? '#' + attr(c, 'val').toUpperCase() : null;
+  const v = c && attr(c, 'val');
+  return v && /^[0-9A-F]{6}$/i.test(v) ? '#' + v.toUpperCase() : null; // used in SVG attributes – hex only
 }
 function stripSheet(ref) { const m = /^(?:(.+)!)?(.*)$/.exec(ref || ''); return { sheet: m && m[1] ? m[1].replace(/^'|'$/g, '').replace(/''/g, "'") : null, a1: m ? m[2].replace(/\$/g, '') : '' }; }
 

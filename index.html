@@ -3,26 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://fale-pdf.vercel.app https://*.supabase.co wss://*.supabase.co data: blob:; media-src 'self' data: blob:; worker-src 'self' blob:; child-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; manifest-src 'self'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types default fale-internal dompurify">
   <title>FaLe PDF</title>
   <meta name="description" content="FaLe PDF – privates Büro für PDF, Dokumente, Tabellen und Präsentationen. Offline, ohne Konto, ohne Uploads.">
-  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0F1024" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F2F3F9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0D23" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light dark">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="vendor/pdfjs/pdf_viewer.css">
+  <link rel="preload" href="vendor/fonts/bricolage-grotesque/BricolageGrotesque-Bold.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="css/office.css">
   <link rel="stylesheet" href="css/extras.css">
-  <script>
-    // Apply stored theme before first paint (no flash).
-    try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
-    // UI language (js/i18n): Automatisch = first German/English entry of navigator.languages, else English.
-    // In English mode the page stays hidden until the first translation pass (max. 150 ms).
-    try { var l = localStorage.getItem('fale-lang'); if (l !== 'de' && l !== 'en') { l = 'en'; var nl = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de']; for (var i = 0; i < nl.length; i++) { if (/^de\b/i.test(nl[i])) { l = 'de'; break; } if (/^en\b/i.test(nl[i])) break; } }
-      document.documentElement.lang = l; if (l === 'en') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 150); } } catch (e) {}
-  </script>
+  <link rel="stylesheet" href="css/theme-2026.css">
+  <script src="js/boot.js"></script>
   <style>html.i18n-hold body { visibility: hidden; }</style>
 </head>
 <body>

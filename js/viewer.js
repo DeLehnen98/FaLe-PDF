@@ -5,6 +5,7 @@ import * as db from './db.js';
 import { icon } from './icons.js';
 import { $, $$, h, esc, toast, errorToast, showMenu, debounce, downloadBlob, progress, pagesLabel } from './ui.js';
 import { shareDoc, downloadDoc } from './components.js';
+import { guardLinks, openExternal } from './security.js';
 
 const trackStat = (e, n = 1) => { import('./extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 const seenPages = new Set();
@@ -116,6 +117,9 @@ function init() {
     enablePrintAutoRotate: true,
   });
   linkService.setViewer(pdfViewer);
+  // Links inside PDFs are untrusted: pdf.js already drops javascript:/file: URLs and Launch actions;
+  // every remaining external link (http/https/mailto/tel) asks before it leaves the app.
+  guardLinks(q('container'), { source: 'Das Dokument enthält einen Link.' });
 
   // Center search matches instead of pinning them to the top edge (under the toolbars on phones).
   const origMatch = findController.scrollMatchIntoView.bind(findController);
@@ -514,7 +518,7 @@ async function buildOutline() {
       const b = h(`<button type="button">${esc(it.title || 'Ohne Titel')}</button>`);
       b.addEventListener('click', () => {
         if (it.dest) S.linkService.goToDestination(it.dest);
-        else if (it.url) window.open(it.url, '_blank', 'noopener');
+        else if (it.url) openExternal(it.url, { source: 'Der Gliederungseintrag ist ein Link.' });
         if (isCompact()) togglePanel(false);
       });
       li.appendChild(b);

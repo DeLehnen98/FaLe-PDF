@@ -76,16 +76,28 @@ function _setVerifierKeys(map) { keyCache = { at: Date.now(), keys: map }; }
  * Verify an SSV callback. rawQs: raw query string. Returns { ok, params, reason }.
  * getKeys(force) → Map(keyId → PEM)
  */
+let lastForcedKeyFetch = 0;
 async function verifySsv(rawQs, getKeys) {
+  if (typeof rawQs !== 'string' || rawQs.length > 8192) return { ok: false, reason: 'bad_query' };
   const sigIdx = rawQs.indexOf('&signature=');
   if (sigIdx <= 0) return { ok: false, reason: 'no_signature' };
   const message = rawQs.slice(0, sigIdx);
-  const params = Object.fromEntries(new URLSearchParams(rawQs).entries());
-  const sig = params.signature, keyId = params.key_id;
-  if (!sig || !keyId) return { ok: false, reason: 'no_signature' };
+  // signature + key_id must be the LAST two parameters and nothing may follow them. Every other
+  // parameter is taken from the signed part only – an appended, unsigned second custom_data or
+  // transaction_id can therefore never override the signed values.
+  const tail = /^&signature=([A-Za-z0-9_-]{16,1024}(?:=|%3D){0,2})&key_id=(\d{1,20})$/.exec(rawQs.slice(sigIdx));
+  if (!tail) return { ok: false, reason: 'no_signature' };
+  const params = {};
+  for (const [k, v] of new URLSearchParams(message).entries()) {
+    if (Object.prototype.hasOwnProperty.call(params, k)) return { ok: false, reason: 'duplicate_param' };
+    params[k] = v;
+  }
+  const sig = tail[1].replace(/%3D/gi, ''), keyId = tail[2];
+  params.signature = sig; params.key_id = keyId;
   let keys = await getKeys(false);
   let pem = keys.get(String(keyId));
-  if (!pem) { keys = await getKeys(true); pem = keys.get(String(keyId)); } // key rotation
+  // key rotation: refetch for an unknown key id – at most once a minute (no amplification by random ids)
+  if (!pem && Date.now() - lastForcedKeyFetch > 60000) { lastForcedKeyFetch = Date.now(); keys = await getKeys(true); pem = keys.get(String(keyId)); }
   if (!pem) return { ok: false, reason: 'unknown_key' };
   let ok = false;
   try {

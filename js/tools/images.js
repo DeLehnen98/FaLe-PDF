@@ -5,6 +5,7 @@ import { resultCard, enableDragReorder, moveItem } from '../components.js';
 import { saveResult } from '../library.js';
 import { loadPdfLib, saveDoc } from '../pdflib.js';
 import { handoff } from './index.js';
+import { assertImageBlob } from '../security.js';
 
 const A4 = [595.28, 841.89];
 const MAX_DIM = 3000;
@@ -20,6 +21,7 @@ function loadImage(url) {
 
 /** Normalise an image: applies EXIF orientation (via the browser), limits size; returns {bytes, type, w, h}. */
 async function prepare(item) {
+  if (item.file) await assertImageBlob(item.file); // dimension bombs are rejected before decoding
   const img = await loadImage(item.url);
   let w = img.naturalWidth, hgt = img.naturalHeight;
   if (!w || !hgt) throw new Error('leeres Bild');

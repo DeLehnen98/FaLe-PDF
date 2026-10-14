@@ -367,3 +367,173 @@ Opera
 Browser
 Windows
 Linux
+# Assistenten (js/smart/*): regex fragments, stop/synonym lists, German letter and tax-export content
+über {0}
+bezüglich Ihres Schreibens {0}{1} teile ich Ihnen mit, dass ich den Betrag bereits{2} bezahlt habe. Bitte prüfen Sie den Zahlungseingang und betrachten Sie die Angelegenheit als erledigt. Einen Zahlungsnachweis füge ich auf Wunsch bei.
+bezüglich Ihres Schreibens {0}{1}: Ich erkenne die Forderung an, kann sie derzeit aber nicht in einer Summe begleichen. Ich bitte Sie daher um Ratenzahlung in Höhe von {2} monatlich, beginnend mit dem nächsten Monatsersten.
+bis zum {0}
+bezüglich Ihres Schreibens {0}{1} bitte ich Sie um einen Zahlungsaufschub{2}.
+Ihrer Forderung aus dem Schreiben {0}{1} widerspreche ich hiermit. Ich bestreite die Forderung dem Grunde und der Höhe nach.
+Ihr Schreiben {0}{1} habe ich erhalten. Eine Rechnung zu dieser Forderung liegt mir jedoch nicht vor. Bitte senden Sie mir die Rechnung zu, damit ich die Forderung prüfen kann.
+Bitte bestätigen Sie mir Ihr Einverständnis schriftlich. Für Ihr Entgegenkommen bedanke ich mich.
+Bitte unterlassen Sie bis zur Klärung weitere Mahnungen und eine Weitergabe meiner Daten an Dritte. Für Rückfragen stehe ich Ihnen gern zur Verfügung.
+Für Rückfragen stehe ich Ihnen gern zur Verfügung.
+Ihre Zahlungsaufforderung – Betrag bereits bezahlt
+Bitte um Ratenzahlung
+Bitte um Zahlungsaufschub
+Widerspruch gegen Ihre Forderung
+Ihre Zahlungsaufforderung – Rechnung nicht erhalten
+Ihre Zahlungsaufforderung
+Ihr Zeichen
+(januar|jänner|jan|februar|feb|märz|maerz|marz|mär|mrz|april|apr|mai|juni|jun|juli|jul|august|aug|september|sept|sep|oktober|okt|november|nov|dezember|dez)
+[A-Z0-9ÄÖÜ][A-Z0-9ÄÖÜ./_-]*
+Familie
+Eheleute
+StNr {0}
+Rechnung {0}
+Kd-Nr {0}
+Az {0}
+Vertrag {0}
+(\d{1,3}|eine[mnrs]?|ein|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|vierzehn|achtzehn|zwanzig|dreißig|vierundzwanzig)
+aber alle allem allen aller alles als also am an ander andere anderem anderen anderer anderes auch auf aus bei bin bis bist da damit dann das dass dein deine deinem deinen deiner dem den denn der des dessen die dies diese diesem diesen dieser dieses doch dort du durch ein eine einem einen einer eines er es etwas euch euer für gegen gewesen hab habe haben hat hatte hier hin hinter ich ihm ihn ihr ihre ihrem ihren ihrer im in indem ins ist jede jedem jeden jeder jetzt kann kein keine man mein meine meinem meinen meiner mich mir mit muss nach nicht nichts noch nun nur ob oder ohne sehr sein seine sich sie sind so soll sollen über um und uns unser unsere unter vom von vor war waren was weil wenn wer werde werden wie wieder will wir wird wo zu zum zur zwar wann welche welcher welches wieviel viel ist sind gibt habe hast eure sowie bzw ca usw herr herrn frau sehr geehrte geehrter grüße freundlichen
+kündigung
+kündigen
+kündigungsfrist
+kündigungsbestätigung
+ausläuft
+steuererklärung
+ärztin
+überweisen
+Nr.
+Brutto
+Netto
+MwSt. 19 %
+MwSt. 7 %
+Arbeitskosten § 35a
+Summe brutto
+Hinweis
+Steuerlich relevant gesamt
+Belege {0}
+Für dieses Jahr gibt es noch keine Belege.
+Belege zur Steuererklärung
+Steuerjahr {0}
+Erstellt am {0} mit FaLe PDF · {1} Beleg{2}
+Übersicht nach Kategorien
+Homeoffice-Pauschale: {0} Tage × 6 € = {1}
+Hinweis:
+Beleg {0} · {1} · {2} · {3}
+Die Datei „{0}“ kann nicht eingebettet werden – sie liegt in FaLe PDF.
+Die Datei zu diesem Beleg wurde gelöscht.
+Inhaltsverzeichnis (Fortsetzung)
+Belege zur Steuererklärung {0}
+{0} – Mappe.pdf
+# Office 2: function names, error values, font names, CSS, identifiers, English/German date names used for parsing
+Heading4
+Heading5
+Heading6
+Quote
+Überschrift1
+überschrift 1
+Überschrift2
+überschrift 2
+Überschrift3
+überschrift 3
+Überschrift4
+überschrift 4
+text-indent:{0}pt
+text-indent:-{0}pt
+Segoe UI Symbol
+No Spacing
+Tahoma
+Trebuchet MS
+Segoe UI
+Cambria
+Garamond
+Book Antiqua
+Consolas
+BOGENMAß
+KGRÖßTE
+FEHLER.TYP
+märz
+.csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+{0} (Serienbrief).pdf
+{0} (Serienbrief).zip
+Sonntag
+Montag
+Dienstag
+Mittwoch
+Donnerstag
+Freitag
+Samstag
+So
+Mo
+Di
+Mi
+Do
+Fr
+Sa
+Jan
+Feb
+Mrz
+Apr
+Jun
+Jul
+Aug
+Sep
+Okt
+Nov
+Dez
+Mär
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+Mon
+Tue
+Wed
+Thu
+Fri
+Sat
+Sun
+January
+February
+March
+May
+June
+July
+October
+December
+Mar
+Oct
+Dec
+Min
+Max
+data-a="ins-date"
+data-a="ins-time"
+Pivot{0}
+data-x="ins-table"
+data-x="ins-image"
+data-x="ins-shape"
+data-x="ins-textbox"
+data-x="ins-link"
+data-x="ins-pagebreak"
+data-x="ins-section"
+data-x="ins-toc"
+data-x="ins-footnote"
+data-x="ins-comment"
+data-x="ins-hf"
+data-x="ins-pn"
+data-x="ins-date"
+data-x="ins-symbol"
+data-x="ins-comment2"
+Digit1
+Digit2
+Digit5
+Period
+Comma
+Equal
+Space
+{0} showErrorMessage="1" errorTitle="Ungültiger Wert" error="{1}"

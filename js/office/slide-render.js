@@ -90,7 +90,7 @@ export function elementDom(e, i) {
     if (e.text) {
       const [l, t, r, b] = e.text.ins || [0.1, 0.05, 0.1, 0.05];
       const jc = { ctr: 'center', b: 'flex-end' }[e.text.anchor] || 'flex-start';
-      inner += `<div class="tx" style="padding:${t * PPI}px ${r * PPI}px ${b * PPI}px ${l * PPI}px;justify-content:${jc};${e.text.wrap === false ? 'white-space:nowrap;' : ''}"${e.ph ? ` data-ph="${e.ph}"` : ''}>${textHtml(e.text)}</div>`;
+      inner += `<div class="tx" style="padding:${t * PPI}px ${r * PPI}px ${b * PPI}px ${l * PPI}px;justify-content:${jc};${e.text.wrap === false ? 'white-space:nowrap;' : ''}"${e.ph ? ` data-ph="${esc(e.ph)}"` : ''}>${textHtml(e.text)}</div>`;
     }
   }
   return `<div class="${cls}${e.locked ? ' locked' : ''}" data-i="${i}" style="${st.join(';')}">${inner}</div>`;

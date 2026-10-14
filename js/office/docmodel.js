@@ -1,5 +1,7 @@
 // Neutral document model shared by the .docx writer, the PDF exporter and text export.
 // Built from editor HTML (tags + inline styles only, no layout needed → works off-screen).
+import { fontNameOf } from './fonts.js';
+import { styleOfBlock, TAG_OF_STYLE } from './docstyles.js';
 
 export const HEADING_PT = { h1: 20, h2: 16, h3: 13.5, h4: 12, h5: 11, h6: 11, subtitle: 13 };
 export const PARA_SPACE = { p: [0, 6], h1: [14, 8], h2: [14, 6], h3: [12, 4], h4: [10, 4], h5: [8, 4], h6: [8, 4], subtitle: [0, 10], li: [0, 3] };
@@ -7,6 +9,7 @@ export const PARA_SPACE = { p: [0, 6], h1: [14, 8], h2: [14, 6], h3: [12, 4], h4
 const FONT_KEYWORDS = { 'xx-small': 7, 'x-small': 7.5, small: 10, medium: 12, large: 13.5, 'x-large': 18, 'xx-large': 24, 'xxx-large': 36 };
 const FONT_TAG_SIZES = { 1: 7.5, 2: 10, 3: 12, 4: 13.5, 5: 18, 6: 24, 7: 36 };
 const BLOCK_TAGS = new Set(['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI', 'TABLE', 'HR', 'BLOCKQUOTE', 'PRE', 'FIGURE', 'SECTION', 'ARTICLE', 'HEADER', 'FOOTER', 'TBODY', 'THEAD', 'TR', 'TD', 'TH']);
+const isTc = el => el.classList && el.classList.contains('tc');
 
 let colorCtx = null;
 export function normColor(c) {
@@ -52,8 +55,10 @@ function fmtFromElement(el, f) {
   const n = { ...f };
   if (t === 'B' || t === 'STRONG') n.b = true;
   if (t === 'I' || t === 'EM' || t === 'CITE') n.i = true;
-  if (t === 'U' || t === 'INS') n.u = true;
-  if (t === 'S' || t === 'STRIKE' || t === 'DEL') n.s = true;
+  if (t === 'INS' && isTc(el)) n.ins = { author: el.getAttribute('data-author') || '', date: el.getAttribute('data-date') || '' };
+  else if (t === 'DEL' && isTc(el)) n.del = { author: el.getAttribute('data-author') || '', date: el.getAttribute('data-date') || '' };
+  else if (t === 'U' || t === 'INS') n.u = true;
+  else if (t === 'S' || t === 'STRIKE' || t === 'DEL') n.s = true;
   if (t === 'SUP') n.sup = true;
   if (t === 'SUB') n.sub = true;
   if (t === 'CODE' || t === 'KBD' || t === 'TT') n.mono = true;
@@ -65,6 +70,7 @@ function fmtFromElement(el, f) {
     if (el.getAttribute('size')) n.size = FONT_TAG_SIZES[el.getAttribute('size')] || n.size;
     const face = el.getAttribute('face') || '';
     if (/mono|courier/i.test(face)) n.mono = true; else if (/serif|times|georgia/i.test(face) && !/sans/i.test(face)) n.serif = true;
+    const fn = fontNameOf(face); if (fn) n.font = fn;
   }
   const st = el.style;
   if (st && el.getAttribute('style')) {
@@ -80,10 +86,12 @@ function fmtFromElement(el, f) {
     if (st.backgroundColor) { const bg = normColor(st.backgroundColor); if (bg && bg !== '#FFFFFF') n.bg = bg; }
     if (st.fontSize) n.size = parseSize(st.fontSize, f.size || f.base) || n.size;
     const ff = st.fontFamily || '';
-    if (/mono|courier|consolas/i.test(ff)) n.mono = true; else if (/serif|times|georgia|garamond/i.test(ff) && !/sans/i.test(ff)) n.serif = true;
+    if (/mono|courier|consolas/i.test(ff)) { n.mono = true; n.serif = false; } else if (/serif|times|georgia|garamond|cambria|book/i.test(ff) && !/sans/i.test(ff)) { n.serif = true; n.mono = false; } else if (ff) { n.mono = false; n.serif = false; }
+    if (ff) { const fn = fontNameOf(ff); if (fn) n.font = fn; }
     if (st.verticalAlign === 'super') n.sup = true;
     if (st.verticalAlign === 'sub') n.sub = true;
     if (st.textTransform === 'uppercase') n.upper = true;
+    if (st.fontVariant === 'small-caps' || st.fontVariantCaps === 'small-caps') n.smallCaps = true;
   }
   return n;
 }
@@ -115,11 +123,13 @@ function inlineNode(c, f, runs) {
   const t = c.tagName;
   if (t === 'BR') { runs.push({ br: true }); return; }
   if (t === 'SUP' && c.classList && c.classList.contains('fn')) { runs.push({ fn: c.getAttribute('data-fn') || '' }); return; }
+  if (t === 'SPAN' && c.classList && c.classList.contains('mf')) { runs.push({ ...pickFmt(fmtFromElement(c, f)), field: c.getAttribute('data-field') || '', text: `«${c.getAttribute('data-field') || ''}»` }); return; }
   if (t === 'IMG') {
     const src = c.getAttribute('src');
-    if (src) runs.push({ img: { src, w: +c.getAttribute('width') || c.naturalWidth || 0, h: +c.getAttribute('height') || c.naturalHeight || 0, alt: c.getAttribute('alt') || '' } });
+    if (src) runs.push({ ...(f.ins ? { ins: f.ins } : {}), img: { src, w: +c.getAttribute('width') || c.naturalWidth || 0, h: +c.getAttribute('height') || c.naturalHeight || 0, alt: c.getAttribute('alt') || '', wrap: c.getAttribute('data-wrap') || 'inline' } });
     return;
   }
+  if (c.classList && (c.classList.contains('pg-sp') || c.classList.contains('img-handles'))) return;
   if (t === 'SCRIPT' || t === 'STYLE' || (c.classList && c.classList.contains('img-missing'))) return;
   if (c.hasAttribute && c.hasAttribute('data-page-break')) return;
   if (BLOCK_TAGS.has(t)) { // block inside inline context: separate by a line break
@@ -130,7 +140,7 @@ function inlineNode(c, f, runs) {
 
 function pickFmt(f) {
   const o = {};
-  for (const k of ['b', 'i', 'u', 's', 'sup', 'sub', 'mono', 'serif', 'color', 'bg', 'size', 'href', 'cmt']) if (f[k]) o[k] = f[k];
+  for (const k of ['b', 'i', 'u', 's', 'sup', 'sub', 'mono', 'serif', 'color', 'bg', 'size', 'href', 'cmt', 'font', 'ins', 'del', 'smallCaps']) if (f[k]) o[k] = f[k];
   return o;
 }
 
@@ -140,7 +150,15 @@ function blockAttrs(el) {
   const ta = st.textAlign || el.getAttribute('align');
   if (ta && ['center', 'right', 'justify'].includes(ta)) a.align = ta;
   if (st.marginLeft) { const v = parseSize(st.marginLeft, 12); if (v > 2) a.indent = v; }
-  if (st.paddingLeft && el.tagName !== 'LI') { const v = parseSize(st.paddingLeft, 12); if (v > 2) a.indent = (a.indent || 0) + v; }
+  if (st.paddingLeft && el.tagName !== 'LI' && !(el.classList && el.classList.contains('quote'))) { const v = parseSize(st.paddingLeft, 12); if (v > 2) a.indent = (a.indent || 0) + v; }
+  if (st.marginRight) { const v = parseSize(st.marginRight, 12); if (v > 2) a.indentR = v; }
+  if (st.textIndent) { const v = parseSize(st.textIndent, 12); if (v && Math.abs(v) > 1) a.firstLine = v; }
+  if (st.lineHeight) { const lh = parseFloat(st.lineHeight); if (/^[\d.]+$/.test(String(st.lineHeight).trim()) && lh > 0.5 && lh < 5) a.line = Math.round(lh / 1.13 * 100) / 100; }
+  if (st.marginTop) { const v = parseSize(st.marginTop, 12); if (v !== null && v >= 0) a.before = v; }
+  if (st.marginBottom) { const v = parseSize(st.marginBottom, 12); if (v !== null && v >= 0) a.after = v; }
+  if (el.hasAttribute && el.hasAttribute('data-keep-next')) a.keepNext = true;
+  if (el.hasAttribute && el.hasAttribute('data-pbb')) a.pageBreakBefore = true;
+  if (el.hasAttribute && el.hasAttribute('data-tabs')) { const t = el.getAttribute('data-tabs').split(',').map(Number).filter(x => x > 0 && x < 2000); if (t.length) a.tabs = t; }
   const bg = normColor(st.backgroundColor);
   if (bg && bg !== '#FFFFFF') a.bg = bg;
   return a;
@@ -155,7 +173,7 @@ function trimRuns(runs) {
  * Convert editor DOM (or an HTML string) to the block model.
  * @returns {{blocks: object[], baseSize: number}}
  */
-export function htmlToModel(rootOrHtml, { baseSize = 11 } = {}) {
+export function htmlToModel(rootOrHtml, { baseSize = 11, styles = null } = {}) {
   let root = rootOrHtml;
   if (typeof rootOrHtml === 'string') {
     root = new DOMParser().parseFromString(`<body>${rootOrHtml}</body>`, 'text/html').body;
@@ -168,7 +186,7 @@ export function htmlToModel(rootOrHtml, { baseSize = 11 } = {}) {
     const id = el.getAttribute('data-cmt');
     if (!comments[id]) comments[id] = { text: el.getAttribute('data-cmt-text') || '', author: el.getAttribute('data-cmt-author') || '', date: el.getAttribute('data-cmt-date') || '' };
   });
-  return { blocks, baseSize, comments };
+  return { blocks, baseSize, comments, ...(styles ? { styles } : {}) };
 }
 
 function walkBlocks(parent, f, out, ctx) {
@@ -191,19 +209,35 @@ function walkBlocks(parent, f, out, ctx) {
       continue;
     }
     flush();
+    if (c.classList && (c.classList.contains('pg-sp') || c.classList.contains('img-handles'))) continue;
     if (c.hasAttribute('data-toc')) { out.push({ type: 'toc', title: c.getAttribute('data-toc-title') || 'Inhaltsverzeichnis', depth: +(c.getAttribute('data-toc-depth') || 3) }); continue; }
     const ff = fmtFromElement(c, f);
-    if (t === 'HR') { out.push(c.hasAttribute('data-page-break') ? { type: 'pagebreak' } : { type: 'hr' }); continue; }
+    if (t === 'HR') { out.push(c.hasAttribute('data-page-break') ? { type: 'pagebreak', ...(c.getAttribute('data-break') === 'section' ? { section: true } : {}) } : { type: 'hr' }); continue; }
     if (t === 'TABLE') { out.push(tableModel(c, ff)); continue; }
-    if (t === 'UL' || t === 'OL') { listModel(c, ff, out, ctx.level + 1, ctx.indent || 0); continue; }
-    if (/^H[1-6]$/.test(t) || t === 'P' || (t === 'DIV' && !hasBlockChild(c)) || t === 'PRE' || t === 'LI') {
-      const tag = /^H[1-6]$/.test(t) ? t.toLowerCase() : c.classList.contains('subtitle') ? 'subtitle' : 'p';
-      const fm = t === 'PRE' ? { ...ff, mono: true } : ff;
-      const runs = trimRuns(inlineRuns(c, fm, []));
-      out.push({ type: 'para', tag, runs, ...blockAttrs(c), indent: (blockAttrs(c).indent || 0) + (ctx.indent || 0) });
+    if (t === 'UL' || t === 'OL') { listModel(c, ff, out, ctx.level + 1, ctx.indent || 0, ctx.listPath || []); continue; }
+    if (t === 'DIV' && c.classList.contains('sect')) {
+      const inner = [];
+      walkBlocks(c, ff, inner, { ...ctx });
+      out.push({ type: 'section', cols: Math.max(1, Math.min(4, +c.getAttribute('data-cols') || 2)), gap: +c.getAttribute('data-gap') || 18, blocks: inner });
       continue;
     }
-    if (t === 'BLOCKQUOTE') { walkBlocks(c, { ...ff, i: true }, out, { ...ctx, indent: (ctx.indent || 0) + 24 }); continue; }
+    if (t === 'DIV' && c.classList.contains('textbox')) {
+      const inner = [];
+      walkBlocks(c, ff, inner, { level: -1, indent: 0 });
+      const bc = normColor(c.style && c.style.borderColor);
+      out.push({ type: 'textbox', blocks: inner, float: c.getAttribute('data-wrap') || null, w: parseSize(c.style && c.style.width, 12) || null, bg: normColor(c.style && c.style.backgroundColor), border: bc || '#8086A6' });
+      continue;
+    }
+    if (/^H[1-6]$/.test(t) || t === 'P' || (t === 'DIV' && !hasBlockChild(c)) || t === 'PRE' || t === 'LI') {
+      const sid = styleOfBlock(c);
+      const tag = TAG_OF_STYLE[sid] || 'p';
+      const fm = t === 'PRE' ? { ...ff, mono: true } : ff;
+      const runs = trimRuns(inlineRuns(c, fm, []));
+      const ba = blockAttrs(c);
+      out.push({ type: 'para', tag, runs, ...ba, indent: (ba.indent || 0) + (ctx.indent || 0) });
+      continue;
+    }
+    if (t === 'BLOCKQUOTE') { const inner = []; walkBlocks(c, ff, inner, { ...ctx }); inner.forEach(b => { if (b.type === 'para' && b.tag === 'p') b.tag = 'quote'; }); out.push(...inner); continue; }
     // generic containers (div with blocks, figure, section …)
     const extra = blockAttrs(c);
     walkBlocks(c, ff, out, { ...ctx, indent: (ctx.indent || 0) + (extra.indent || 0) });
@@ -216,13 +250,18 @@ function hasBlockChild(el) {
   return false;
 }
 
-function listModel(listEl, f, out, level, indent) {
+function listModel(listEl, f, out, level, indent, path = [], rootId = null) {
   const ordered = listEl.tagName === 'OL';
   const type = listEl.getAttribute('type') || '1';
   let n = parseInt(listEl.getAttribute('start'), 10) || 1;
-  const listId = Math.random().toString(36).slice(2, 9);
+  if (!listEl._faleId) listEl._faleId = Math.random().toString(36).slice(2, 9);
+  const listId = listEl.getAttribute('data-list-id') || listEl._faleId;
+  const root = rootId || listId;
+  const top = listEl.parentElement && listEl.parentElement.closest ? listEl.parentElement.closest('ol[data-ml],ul[data-ml]') : null;
+  const ml = listEl.getAttribute('data-ml') || (top ? top.getAttribute('data-ml') : null) || null;
+  const bullet = listEl.getAttribute('data-bullet') || null;
   for (let li = listEl.firstElementChild; li; li = li.nextElementSibling) {
-    if (li.tagName === 'UL' || li.tagName === 'OL') { listModel(li, f, out, level + 1, indent); continue; }
+    if (li.tagName === 'UL' || li.tagName === 'OL') { listModel(li, f, out, level + 1, indent, [...path, n - 1], root); continue; }
     if (li.tagName !== 'LI') continue;
     const lf = fmtFromElement(li, f);
     // inline part of the item (until the first nested list / block)
@@ -233,9 +272,10 @@ function listModel(listEl, f, out, level, indent) {
       if (c.nodeType === 1 && (c.tagName === 'P' || c.tagName === 'DIV') ) { if (runs.length) runs.push({ br: true }); inlineRuns(c, fmtFromElement(c, lf), runs); continue; }
       inlineNode(c, lf, runs);
     }
-    out.push({ type: 'para', tag: 'p', runs: trimRuns(runs), ...blockAttrs(li), indent, list: { ordered, level, index: n, type, id: listId } });
+    if (li.hasAttribute('value')) n = parseInt(li.getAttribute('value'), 10) || n;
+    out.push({ type: 'para', tag: 'p', runs: trimRuns(runs), ...blockAttrs(li), indent, list: { ordered, level, index: n, type, id: listId, root, path: [...path, n], ...(ml ? { ml } : {}), ...(bullet ? { bullet } : {}), ...(listEl.hasAttribute('data-restart') ? { restart: true } : {}) } });
     n++;
-    nested.forEach(nl => listModel(nl, lf, out, level + 1, indent));
+    nested.forEach(nl => listModel(nl, lf, out, level + 1, indent, [...path, n - 1], root));
   }
 }
 
@@ -243,6 +283,8 @@ function tableModel(tbl, f) {
   const rows = [];
   const trs = Array.from(tbl.rows || tbl.querySelectorAll('tr'));
   let maxCols = 0;
+  let headerRows = 0;
+  trs.forEach((tr, i) => { if ((tr.hasAttribute('data-hdr') || tr.parentElement.tagName === 'THEAD') && i === headerRows) headerRows++; });
   for (const tr of trs) {
     const cells = [];
     let cols = 0;
@@ -252,7 +294,15 @@ function tableModel(tbl, f) {
       walkBlocks(td, cf, blocks, { level: -1, indent: 0 });
       const colspan = Math.max(1, parseInt(td.getAttribute('colspan'), 10) || 1);
       const rowspan = Math.max(1, parseInt(td.getAttribute('rowspan'), 10) || 1);
-      cells.push({ blocks, colspan, rowspan, bg: normColor(td.style && td.style.backgroundColor), align: td.style && td.style.textAlign || null, header: td.tagName === 'TH' });
+      const st = td.style || {};
+      const bd = {};
+      for (const [k, prop] of [['t', 'borderTop'], ['r', 'borderRight'], ['b', 'borderBottom'], ['l', 'borderLeft']]) {
+        const v = st[prop];
+        if (!v) continue;
+        if (/none|hidden/.test(v) || /^0(px|pt)?\b/.test(v)) bd[k] = { none: true };
+        else { const w = parseSize((/([\d.]+(px|pt))/.exec(v) || [])[1], 12) || 0.75; bd[k] = { w, color: normColor((/(#[0-9a-f]{3,6}|rgba?\([^)]*\))/i.exec(v) || [])[1]) || '#1A1A1A', style: /double/.test(v) ? 'double' : /dashed/.test(v) ? 'dashed' : /dotted/.test(v) ? 'dotted' : 'single' }; }
+      }
+      cells.push({ blocks, colspan, rowspan, bg: normColor(st.backgroundColor), align: st.textAlign || null, valign: st.verticalAlign && st.verticalAlign !== 'top' ? st.verticalAlign : null, header: td.tagName === 'TH', ...(Object.keys(bd).length ? { borders: bd } : {}) });
       cols += colspan;
     }
     maxCols = Math.max(maxCols, cols);
@@ -263,7 +313,9 @@ function tableModel(tbl, f) {
   if (widths.length !== maxCols || widths.some(w => !w)) widths = new Array(maxCols).fill(100 / Math.max(1, maxCols));
   const sum = widths.reduce((a, b) => a + b, 0) || 1;
   widths = widths.map(w => (w / sum) * 100);
-  return { type: 'table', rows, widths, borderless: tbl.classList.contains('borderless'), cols: maxCols };
+  const styleCls = Array.from(tbl.classList || []).find(c => /^ts-/.test(c));
+  const width = tbl.style && /%$/.test(tbl.style.width || '') ? parseFloat(tbl.style.width) : null;
+  return { type: 'table', rows, widths, borderless: tbl.classList.contains('borderless'), cols: maxCols, headerRows, ...(styleCls ? { style: styleCls.slice(3) } : {}), ...(width && width < 100 ? { widthPct: width } : {}), ...(tbl.getAttribute('data-align') ? { align: tbl.getAttribute('data-align') } : {}) };
 }
 
 /** Headings of a model for tables of contents: [{ level, text, index }] */
@@ -282,7 +334,7 @@ export function modelHeadings(model, depth = 3) {
 /** Plain text of a model (for .txt export and search). */
 export function modelToText(model) {
   const out = [];
-  const paraText = b => b.runs.map(r => (r.br ? '\n' : r.text || (r.img ? '' : ''))).join('');
+  const paraText = b => b.runs.map(r => (r.del ? '' : r.br ? '\n' : r.text || (r.img ? '' : ''))).join('');
   const walk = blocks => {
     for (const b of blocks) {
       if (b.type === 'para') {
@@ -294,6 +346,7 @@ export function modelToText(model) {
         out.push('');
       } else if (b.type === 'pagebreak') out.push('\f');
       else if (b.type === 'hr') out.push('----------');
+      else if (b.type === 'section' || b.type === 'textbox') walk(b.blocks);
     }
   };
   walk(model.blocks);
@@ -304,6 +357,7 @@ export function modelToText(model) {
 export function modelToMarkdown(model) {
   const out = [];
   const inline = runs => runs.map(r => {
+    if (r.del) return '';
     if (r.br) return '  \n';
     if (r.img) return r.img.alt ? `![${r.img.alt}]` : '';
     let t = (r.text || '').replace(/([*_`\\])/g, '\\$1');
@@ -315,10 +369,16 @@ export function modelToMarkdown(model) {
     if (r.href) t = `[${t}](${r.href})`;
     return t;
   }).join('');
-  for (const b of model.blocks) {
+  const flat = [];
+  const flatten = bs => bs.forEach(b => (b.type === 'section' || b.type === 'textbox' ? flatten(b.blocks) : flat.push(b)));
+  flatten(model.blocks);
+  for (const b of flat) {
     if (b.type === 'para') {
       const text = inline(b.runs);
-      if (/^h[1-6]$/.test(b.tag)) out.push('#'.repeat(+b.tag[1]) + ' ' + text.replace(/\*\*/g, ''), '');
+      if (b.tag === 'title') out.push('# ' + text.replace(/\*\*/g, ''), '');
+      else if (b.tag === 'quote') out.push('> ' + text, '');
+      else if (b.tag === 'code') out.push('```', b.runs.map(r => (r.br ? '\n' : r.text || '')).join(''), '```', '');
+      else if (/^h[1-6]$/.test(b.tag)) out.push('#'.repeat(+b.tag[1]) + ' ' + text.replace(/\*\*/g, ''), '');
       else if (b.list) out.push('   '.repeat(b.list.level) + (b.list.ordered ? `${b.list.index}. ` : '- ') + text);
       else out.push(text, '');
     } else if (b.type === 'table') {
@@ -331,20 +391,19 @@ export function modelToMarkdown(model) {
 }
 
 const ROMAN = [[1000, 'm'], [900, 'cm'], [500, 'd'], [400, 'cd'], [100, 'c'], [90, 'xc'], [50, 'l'], [40, 'xl'], [10, 'x'], [9, 'ix'], [5, 'v'], [4, 'iv'], [1, 'i']];
+function alpha(n) { let s = '', k = n; while (k > 0) { k--; s = String.fromCharCode(97 + (k % 26)) + s; k = Math.floor(k / 26); } return s; }
+function roman(n) { let s = '', k = n; for (const [v, r] of ROMAN) while (k >= v) { s += r; k -= v; } return s; }
+/** Numbering text of a list paragraph: 1. · a. · iv. · 1.2.3. (ml="legal") · 1. a) i. (ml="outline") */
 export function listLabel(l) {
   const n = l.index;
-  if (l.type === 'a' || l.type === 'A') {
-    let s = '', k = n;
-    while (k > 0) { k--; s = String.fromCharCode(97 + (k % 26)) + s; k = Math.floor(k / 26); }
-    return (l.type === 'A' ? s.toUpperCase() : s) + '.';
-  }
-  if (l.type === 'i' || l.type === 'I') {
-    let s = '', k = n;
-    for (const [v, r] of ROMAN) while (k >= v) { s += r; k -= v; }
-    return (l.type === 'I' ? s.toUpperCase() : s) + '.';
-  }
+  if (l.ml === 'legal' && l.path && l.path.length) return l.path.join('.') + '.';
+  if (l.ml === 'outline') { const lv = (l.level || 0) % 3; return lv === 0 ? `${n}.` : lv === 1 ? `${alpha(n)})` : `${roman(n)}.`; }
+  if (l.type === 'a' || l.type === 'A') { const s = alpha(n); return (l.type === 'A' ? s.toUpperCase() : s) + '.'; }
+  if (l.type === 'i' || l.type === 'I') { const s = roman(n); return (l.type === 'I' ? s.toUpperCase() : s) + '.'; }
   return n + '.';
 }
+export const BULLETS = { disc: '•', circle: '◦', square: '▪', dash: '–', check: '✓', arrow: '➢' };
+export function bulletChar(l) { return BULLETS[l.bullet] || ['•', '◦', '▪'][(l.level || 0) % 3]; }
 
 // ---------------- text / markdown → HTML ----------------
 const escH = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));

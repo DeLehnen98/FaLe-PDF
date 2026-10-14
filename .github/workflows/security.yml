@@ -1,0 +1,45 @@
+# Security checks on every push / pull request (read-only, no secrets are used):
+#  - secret scan of all files and the full git history (scripts/check-secrets.mjs; values are never printed)
+#  - vendor/ integrity against vendor/MANIFEST.json (SHA-256 of every third-party file)
+#  - CSP <meta> in index.html == CSP header in vercel.json (checked by the web build)
+#  - npm audit of the production dependencies (report only)
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request: # (not pull_request_target: forks never get a token with write access or secrets)
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0 # full history for the secret scan
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+      - name: Secret scan (files + history)
+        run: node scripts/check-secrets.mjs --history
+      - name: Vendor integrity (vendor/MANIFEST.json)
+        run: node scripts/vendor-manifest.mjs
+      - name: Web build (CSP consistency, vendor check)
+        env:
+          FALE_MINIFY: '0'
+        run: node scripts/vercel-build.mjs
+      - name: npm audit (production dependencies, report only)
+        continue-on-error: true
+        run: npm audit --omit=dev --audit-level=high || echo "::warning title=npm audit::Bitte Bericht prüfen"

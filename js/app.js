@@ -299,6 +299,7 @@ async function init() {
   db.purgeOldTrash(30).catch(() => {});
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./extras/reminders.js').then(m => m.syncNotifications()).catch(e => console.warn(e));
+  import('./smart/entry.js').then(m => m.initSmart()).catch(e => console.warn(e)); // Dokumenten-Gedächtnis: local index in idle time
   // optional FaLe-Konto: only does something when signed in (or returning from a Google sign-in)
   let acct = false;
   try { acct = localStorage.getItem('fale-acct') === '1'; } catch {}

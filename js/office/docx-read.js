@@ -3,6 +3,7 @@
 // numbered + bulleted lists, tables (colspan/rowspan/shading), inline images, hyperlinks, line + page breaks.
 import { openZip, zipXml, kids, kid, attr, rid as relId, readRels, zipImageDataUrl, desc } from './vendor.js';
 import { esc, UserError } from '../ui.js';
+import { fontCss } from './fonts.js';
 
 const HIGHLIGHT = { yellow: '#FFFF00', green: '#00FF00', cyan: '#00FFFF', magenta: '#FF00FF', blue: '#0000FF', red: '#FF0000', darkBlue: '#000080', darkCyan: '#008080', darkGreen: '#008000', darkMagenta: '#800080', darkRed: '#800000', darkYellow: '#808000', darkGray: '#808080', lightGray: '#C0C0C0', black: '#000000' };
 const on = el => el && !['0', 'false', 'off', 'none'].includes(String(attr(el, 'val') ?? 'true'));
@@ -27,7 +28,7 @@ export async function docxToHtml(data, name = 'Dokument') {
   if (!styles) styles = await zipXml(zip, dir + 'styles.xml');
   if (!numbering) numbering = await zipXml(zip, dir + 'numbering.xml');
 
-  const ctx = { zip, rels, styles: readStyles(styles), num: readNumbering(numbering), images: new Map(), listCounters: new Map(), comments: readNotes(commentsDoc, 'comment'), footnotes: readNotes(footnotesDoc, 'footnote'), openCmts: [], inToc: false, tocDone: false };
+  const ctx = { zip, rels, styles: readStyles(styles), num: readNumbering(numbering), images: new Map(), listCounters: new Map(), comments: readNotes(commentsDoc, 'comment'), footnotes: readNotes(footnotesDoc, 'footnote'), openCmts: [], inToc: false, tocDone: false, depth: 0 };
   const body = desc(doc, 'body')[0];
   if (!body) throw new UserError(`„${name}“ ist leer oder beschädigt.`);
 
@@ -41,9 +42,21 @@ export async function docxToHtml(data, name = 'Dokument') {
     if (mar) { page.mt = tw(attr(mar, 'top')) ?? page.mt; page.mr = tw(attr(mar, 'right')) ?? page.mr; page.mb = tw(attr(mar, 'bottom')) ?? page.mb; page.ml = tw(attr(mar, 'left')) ?? page.ml; }
   }
   const blocks = await renderBlocks(kids(body), ctx);
-  const html = closeLists(blocks).join('') || '<p><br></p>';
+  // multi-column sections: paragraphs carrying a w:sectPr end a section
+  const finalCols = sect && kid(sect, 'cols') ? +(attr(kid(sect, 'cols'), 'num') || 1) : 1;
+  const parts = [];
+  let curPart = [];
+  for (const b of blocks) {
+    if (b && typeof b === 'object' && b.sectEnd) { parts.push({ cols: b.cols, gap: b.gap, items: curPart }); curPart = []; continue; }
+    curPart.push(b);
+  }
+  parts.push({ cols: finalCols, gap: sect && kid(sect, 'cols') ? +(attr(kid(sect, 'cols'), 'space') || 425) / 20 : 18, items: curPart });
+  const html = parts.map(pt => {
+    const inner = closeLists(pt.items).join('');
+    return pt.cols > 1 && inner ? `<div class="sect" data-cols="${Math.min(4, pt.cols)}" data-gap="${Math.round(pt.gap || 18)}" style="columns:${Math.min(4, pt.cols)};column-gap:${Math.round(pt.gap || 18)}pt">${inner}</div>` : inner;
+  }).join('') || '<p><br></p>';
   const hf = sect ? await readHeaderFooter(zip, rels, sect) : null;
-  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf };
+  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf, styles: ctx.styles.defs };
 }
 
 /** comments.xml / footnotes.xml → Map(id → {text, author, date}) */
@@ -93,10 +106,12 @@ async function readHeaderFooter(zip, rels, sect) {
 // ---------------- styles ----------------
 function readStyles(doc) {
   const map = new Map();
-  const res = { map, baseSize: 11, baseFont: '', defaultPara: null };
+  const res = { map, baseSize: 11, baseFont: '', defaultPara: null, defs: null };
   if (!doc) return res;
   const dd = desc(doc, 'docDefaults')[0];
+  let ddR = null, ddP = null;
   if (dd) {
+    ddR = desc(dd, 'rPr')[0] || null; ddP = desc(dd, 'pPr')[0] || null;
     const sz = desc(dd, 'sz')[0];
     if (sz && attr(sz, 'val')) res.baseSize = +attr(sz, 'val') / 2;
     const f = desc(dd, 'rFonts')[0];
@@ -116,6 +131,44 @@ function readStyles(doc) {
   }
   const normal = res.defaultPara && map.get(res.defaultPara);
   if (normal && normal.rPr) { const sz = kid(normal.rPr, 'sz'); if (sz) res.baseSize = +attr(sz, 'val') / 2; }
+  // Formatvorlagen of the editor (Standard, Titel, Überschriften …) from the file's styles
+  const find = (ids, names) => { for (const i of ids) if (map.has(i)) return i; for (const st of map.values()) if (st.type === 'paragraph' && names.includes(st.name)) return st.id; return null; };
+  const chainOf = id => { const out = []; let cur = id && map.get(id), g = 0; while (cur && g++ < 12) { out.push(cur); cur = cur.basedOn && map.get(cur.basedOn); } return out; };
+  const prop = (chain, which, name, extra) => { for (const st of chain) { const el = st[which] && kid(st[which], name); if (el) return el; } return extra ? kid(extra, name) : null; };
+  const onv = el => el && !['0', 'false', 'off'].includes(String(attr(el, 'val') ?? 'true'));
+  const defOf = (id, isNormal = false) => {
+    if (!id) return null;
+    const ch = chainOf(id);
+    const d = {};
+    const f = prop(ch, 'rPr', 'rFonts', isNormal ? ddR : null);
+    const fn = f && (attr(f, 'ascii') || attr(f, 'hAnsi'));
+    if (fn) d.font = fn;
+    const sz = prop(ch, 'rPr', 'sz', isNormal ? ddR : null); if (sz && attr(sz, 'val')) d.size = +attr(sz, 'val') / 2;
+    const col = prop(ch, 'rPr', 'color'); const cv = col && attr(col, 'val'); if (cv && /^[0-9a-f]{6}$/i.test(cv)) d.color = cv.toUpperCase() === '000000' ? null : '#' + cv.toUpperCase();
+    const b = prop(ch, 'rPr', 'b'); if (b) d.b = onv(b);
+    const it = prop(ch, 'rPr', 'i'); if (it) d.i = onv(it);
+    const sp = prop(ch, 'pPr', 'spacing', isNormal ? ddP : null);
+    if (sp) {
+      if (attr(sp, 'before') != null) d.before = +attr(sp, 'before') / 20;
+      if (attr(sp, 'after') != null) d.after = +attr(sp, 'after') / 20;
+      if (attr(sp, 'line') != null && (!attr(sp, 'lineRule') || attr(sp, 'lineRule') === 'auto')) d.line = Math.round(+attr(sp, 'line') / 240 * 100) / 100;
+    }
+    const jc = prop(ch, 'pPr', 'jc'); const al = jc && { center: 'center', right: 'right', end: 'right', both: 'justify' }[attr(jc, 'val')]; if (al) d.align = al;
+    return d;
+  };
+  const ids = {
+    normal: res.defaultPara, title: find(['Title', 'Titel'], ['title', 'titel']), subtitle: find(['Subtitle', 'Untertitel'], ['subtitle', 'untertitel']),
+    h1: find(['Heading1', 'berschrift1', 'Überschrift1'], ['heading 1', 'überschrift 1']), h2: find(['Heading2', 'berschrift2', 'Überschrift2'], ['heading 2', 'überschrift 2']),
+    h3: find(['Heading3', 'berschrift3', 'Überschrift3'], ['heading 3', 'überschrift 3']), h4: find(['Heading4', 'berschrift4', 'Überschrift4'], ['heading 4', 'überschrift 4']),
+    quote: find(['Quote', 'Zitat'], ['quote', 'zitat']), code: find(['Code', 'HTMLPreformatted', 'HTMLVorformatiert'], ['code', 'html preformatted', 'html vorformatiert']),
+    nospace: find(['NoSpacing', 'KeinLeerraum'], ['no spacing', 'kein leerraum']),
+  };
+  res.ids = ids;
+  res.styleIdMap = new Map(Object.entries(ids).filter(([, v]) => v).map(([k, v]) => [v, k]));
+  const defs = {};
+  for (const [k, id] of Object.entries(ids)) { const d = defOf(id, k === 'normal'); if (d && Object.keys(d).length) defs[k] = d; }
+  if (defs.normal && !defs.normal.size) defs.normal.size = res.baseSize;
+  res.defs = Object.keys(defs).length ? defs : null;
   return res;
 }
 
@@ -151,23 +204,27 @@ function styleProp(ctx, styleId, which, name) {
 
 // ---------------- numbering ----------------
 function readNumbering(doc) {
-  const abs = new Map(), nums = new Map();
-  if (!doc) return { abs, nums };
+  const abs = new Map(), nums = new Map(), starts = new Map();
+  if (!doc) return { abs, nums, starts };
   for (const a of desc(doc, 'abstractNum')) {
     const lv = [];
     for (const l of kids(a, 'lvl')) {
       const fmt = kid(l, 'numFmt'), start = kid(l, 'start'), txt = kid(l, 'lvlText');
       lv[+attr(l, 'ilvl')] = { fmt: fmt ? attr(fmt, 'val') : 'decimal', start: start ? +attr(start, 'val') : 1, text: txt ? attr(txt, 'val') : '' };
     }
+    const l1 = lv[1] || {};
+    lv.ml = /%1/.test(l1.text || '') && l1.fmt === 'decimal' ? 'legal' : (lv[0] && lv[0].fmt === 'decimal' && l1.fmt === 'lowerLetter' && /\)/.test(l1.text || '') ? 'outline' : null);
     abs.set(attr(a, 'abstractNumId'), lv);
   }
   for (const n of desc(doc, 'num')) {
     const a = kid(n, 'abstractNumId');
     if (a) nums.set(attr(n, 'numId'), attr(a, 'val'));
+    for (const ov of kids(n, 'lvlOverride')) { const so = kid(ov, 'startOverride'); if (so && attr(ov, 'ilvl') === '0') starts.set(attr(n, 'numId'), +attr(so, 'val')); }
   }
-  return { abs, nums };
+  return { abs, nums, starts };
 }
 
+const BULLET_KIND = { '–': 'dash', '-': 'dash', '✓': 'check', '✔': 'check', '\uF0FC': 'check', '➢': 'arrow', '→': 'arrow', '\uF0D8': 'arrow', '▪': 'square', '■': 'square', '\uF0A7': 'square', 'o': 'circle', '◦': 'circle' };
 function listInfo(ctx, numId, ilvl) {
   if (!numId || numId === '0') return null;
   const a = ctx.num.abs.get(ctx.num.nums.get(numId));
@@ -175,7 +232,8 @@ function listInfo(ctx, numId, ilvl) {
   if (lv.fmt === 'none') return null;
   const ordered = lv.fmt !== 'bullet';
   const type = { lowerLetter: 'a', upperLetter: 'A', lowerRoman: 'i', upperRoman: 'I' }[lv.fmt] || '1';
-  return { ordered, level: ilvl, type, start: lv.start, key: numId };
+  const start = ilvl === 0 && ctx.num.starts.has(numId) ? ctx.num.starts.get(numId) : lv.start;
+  return { ordered, level: ilvl, type, start, key: numId, ml: a && a.ml, bullet: !ordered ? BULLET_KIND[lv.text] || null : null };
 }
 
 // ---------------- blocks ----------------
@@ -198,6 +256,8 @@ async function renderBlocks(nodes, ctx) {
       }
       if (ctx.inToc) { if (desc(n, 'fldChar').some(f => attr(f, 'fldCharType') === 'end')) ctx.inToc = false; continue; }
       out.push(...await renderParagraph(n, ctx));
+      const pPr = kid(n, 'pPr'), sp = pPr && kid(pPr, 'sectPr');
+      if (sp && ctx.depth === 0) { const cols = kid(sp, 'cols'); out.push({ sectEnd: true, cols: cols ? +(attr(cols, 'num') || 1) : 1, gap: cols ? +(attr(cols, 'space') || 425) / 20 : 18 }); }
     }
     else if (ln === 'tbl') out.push(await renderTable(n, ctx));
     else if (ln === 'sdt') {
@@ -214,33 +274,52 @@ async function renderBlocks(nodes, ctx) {
 async function renderParagraph(p, ctx) {
   const pPr = kid(p, 'pPr');
   const styleId = pPr && kid(pPr, 'pStyle') ? attr(kid(pPr, 'pStyle'), 'val') : ctx.styles.defaultPara;
-  const level = headingLevel(ctx, styleId, pPr);
+  // our style of this paragraph (Titel, Zitat, Code …) via the style chain
+  let sid = null;
+  for (const st of styleChain(ctx, styleId)) { const k = ctx.styles.styleIdMap && ctx.styles.styleIdMap.get(st.id); if (k) { sid = k; break; } }
+  let level = headingLevel(ctx, styleId, pPr);
+  if (sid === 'title') level = null;
+  const known = !!sid;
   // list?
   let numPr = pPr && kid(pPr, 'numPr');
   if (!numPr) numPr = styleProp(ctx, styleId, 'pPr', 'numPr');
   let list = null;
   if (numPr && kid(numPr, 'numId')) list = listInfo(ctx, attr(kid(numPr, 'numId'), 'val'), kid(numPr, 'ilvl') ? +attr(kid(numPr, 'ilvl'), 'val') : 0);
-  // alignment / indentation
-  const jcEl = (pPr && kid(pPr, 'jc')) || styleProp(ctx, styleId, 'pPr', 'jc');
+  // alignment / indentation / spacing (direct formatting; style values come from the Formatvorlagen)
+  const jcEl = (pPr && kid(pPr, 'jc')) || (known ? null : styleProp(ctx, styleId, 'pPr', 'jc'));
   const jc = jcEl ? attr(jcEl, 'val') : null;
   const styles = [];
   const align = { center: 'center', right: 'right', end: 'right', both: 'justify', distribute: 'justify' }[jc];
   if (align) styles.push(`text-align:${align}`);
-  const ind = pPr && kid(pPr, 'ind');
+  const ind = (pPr && kid(pPr, 'ind')) || (known ? null : styleProp(ctx, styleId, 'pPr', 'ind'));
   if (ind && !list) {
     const left = +(attr(ind, 'left') ?? attr(ind, 'start') ?? 0) / 20;
-    if (left >= 6) styles.push(`margin-left:${Math.round(left)}pt`);
+    if (left >= 6) styles.push(`margin-left:${Math.round(left * 10) / 10}pt`);
+    const right = +(attr(ind, 'right') ?? attr(ind, 'end') ?? 0) / 20;
+    if (right >= 6) styles.push(`margin-right:${Math.round(right * 10) / 10}pt`);
+    const fl = +(attr(ind, 'firstLine') ?? 0) / 20, hg = +(attr(ind, 'hanging') ?? 0) / 20;
+    if (fl >= 2) styles.push(`text-indent:${Math.round(fl * 10) / 10}pt`);
+    else if (hg >= 2) styles.push(`text-indent:-${Math.round(hg * 10) / 10}pt`);
+  }
+  const sp = pPr && kid(pPr, 'spacing');
+  if (sp) {
+    if (attr(sp, 'before') != null && !attr(sp, 'beforeAutospacing')) styles.push(`margin-top:${+attr(sp, 'before') / 20}pt`);
+    if (attr(sp, 'after') != null && !attr(sp, 'afterAutospacing')) styles.push(`margin-bottom:${+attr(sp, 'after') / 20}pt`);
+    const ln = attr(sp, 'line'), rule = attr(sp, 'lineRule');
+    if (ln != null && (!rule || rule === 'auto')) { const m = +ln / 240; if (m > 0.5 && m < 5 && Math.abs(m - 1) > 0.01) styles.push(`line-height:${Math.round(m * 1.13 * 100) / 100}`); }
   }
   const shd = pPr && kid(pPr, 'shd');
   const fill = shd && attr(shd, 'fill');
   if (fill && /^[0-9a-f]{6}$/i.test(fill) && fill.toUpperCase() !== 'FFFFFF') styles.push(`background-color:#${fill}`);
   const pbBefore = (pPr && on(kid(pPr, 'pageBreakBefore'))) || false;
+  const keepNext = (pPr && on(kid(pPr, 'keepNext'))) && !level;
+  const tabsEl = pPr && kid(pPr, 'tabs');
+  const tabs = tabsEl ? kids(tabsEl, 'tab').filter(t => attr(t, 'val') !== 'clear' && attr(t, 'pos') != null).map(t => Math.round(+attr(t, 'pos') / 2) / 10).filter(x => x > 0 && x < 2000).slice(0, 20) : [];
 
-  // paragraph-level run defaults from the style (e.g. bold "Strong" paragraph styles), not for headings
   const segments = [];
   const extra = [];
   let cur = [];
-  const st = { ctx, styleId, isHeading: !!level || level === 0, extra };
+  const st = { ctx, styleId, isHeading: !!level || level === 0 || sid === 'title', extra, sid, field: null };
   for (const c of kids(p)) {
     await renderInline(c, st, cur, () => { segments.push(cur); cur = []; });
   }
@@ -254,10 +333,14 @@ async function renderParagraph(p, ctx) {
     if (i > 0 && !inner.trim()) return;
     if (i === 0 && !inner.trim() && segments.length > 1 && !list) return; // paragraph holding only a page break
     const content = inner || '<br>';
-    const sAttr = styles.length ? ` style="${styles.join(';')}"` : '';
-    if (list && i === 0) out.push({ li: true, level: list.level, ordered: list.ordered, type: list.type, start: list.start, key: list.key, html: content, style: sAttr });
+    const sAttr = (styles.length ? ` style="${styles.join(';')}"` : '') + (keepNext ? ' data-keep-next' : '') + (tabs.length ? ` data-tabs="${tabs.join(',')}"` : '');
+    if (list && i === 0) out.push({ li: true, level: list.level, ordered: list.ordered, type: list.type, start: list.start, key: list.key, ml: list.ml, bullet: list.bullet, html: content, style: sAttr });
     else if (level) out.push(`<h${level}${sAttr}>${content}</h${level}>`);
-    else if (level === 0) out.push(`<p class="subtitle"${sAttr}>${content}</p>`);
+    else if (sid === 'title') out.push(`<p class="title"${sAttr}>${content}</p>`);
+    else if (level === 0 || sid === 'subtitle') out.push(`<p class="subtitle"${sAttr}>${content}</p>`);
+    else if (sid === 'quote') out.push(`<p class="quote"${sAttr}>${content}</p>`);
+    else if (sid === 'nospace') out.push(`<p class="nospace"${sAttr}>${content}</p>`);
+    else if (sid === 'code') out.push(`<pre${sAttr}>${content}</pre>`);
     else out.push(`<p${sAttr}>${content}</p>`);
   });
   out.push(...extra);
@@ -280,9 +363,10 @@ function runStyle(rPr, st) {
   const shd = get('shd'); const sf = shd && attr(shd, 'fill'); if (!f.bg && sf && /^[0-9a-f]{6}$/i.test(sf) && sf.toUpperCase() !== 'FFFFFF' && sf !== 'auto') f.bg = '#' + sf;
   const va = get('vertAlign'); if (va) f.va = attr(va, 'val');
   const caps = get('caps'); if (caps && on(caps)) f.caps = true;
-  const fonts = get('rFonts'); const ff = fonts && (attr(fonts, 'ascii') || attr(fonts, 'hAnsi'));
-  if (ff && /courier|consol|mono/i.test(ff)) f.mono = true;
-  else if (ff && /times|georgia|garamond|cambria|serif|book/i.test(ff)) f.serif = true;
+  const sc = get('smallCaps'); if (sc && on(sc)) f.smallCaps = true;
+  const fonts = rPr && kid(rPr, 'rFonts') || (rStyle && styleProp(ctx, rStyle, 'rPr', 'rFonts'));
+  const ff = fonts && (attr(fonts, 'ascii') || attr(fonts, 'hAnsi'));
+  if (ff && ff !== ctx.styles.baseFont && st.sid !== 'code') f.font = ff;
   return f;
 }
 
@@ -300,9 +384,9 @@ function wrapRun(text, f) {
   if (f.size) css.push(`font-size:${f.size}pt`);
   if (f.bg) css.push(`background-color:${f.bg}`);
   if (f.caps) css.push('text-transform:uppercase');
-  if (f.mono) css.push('font-family:monospace');
-  if (f.serif) css.push('font-family:serif');
-  if (css.length) h = `<span style="${css.join(';')}">${h}</span>`;
+  if (f.smallCaps) css.push('font-variant:small-caps');
+  if (f.font) css.push(`font-family:${fontCss(f.font).replace(/"/g, "'")}`);
+  if (css.length) h = `<span style="${esc(css.join(';'))}">${h}</span>`;
   return h;
 }
 
@@ -313,17 +397,30 @@ function wrapCmt(html, ctx) {
   if (!c) return html;
   return `<span class="cmt" data-cmt="c${esc(id)}" data-cmt-text="${esc(c.text)}" data-cmt-author="${esc(c.author)}" data-cmt-date="${esc(c.date)}">${html}</span>`;
 }
+const fieldName = instr => { const m = /MERGEFIELD\s+"?([^"\\]+?)"?(\s+\\|\s*$)/i.exec(String(instr).trim() + ' '); return m ? m[1].trim() : null; };
+const mfHtml = name => `<span class="mf" data-field="${esc(name)}" contenteditable="false">«${esc(name)}»</span>`;
 async function renderInline(n, st, cur, pageBreak, link = null) {
   const ln = n.localName;
   if (ln === 'commentRangeStart') { st.ctx.openCmts.push(attr(n, 'id')); return; }
   if (ln === 'commentRangeEnd') { const id = attr(n, 'id'); st.ctx.openCmts = st.ctx.openCmts.filter(x => x !== id); return; }
   if (ln === 'r') {
+    // complex fields (MERGEFIELD): begin → instrText → separate → result → end
+    const fc = kid(n, 'fldChar');
+    if (fc) {
+      const t = attr(fc, 'fldCharType');
+      if (t === 'begin') st.field = { instr: '', phase: 'instr' };
+      else if (t === 'separate' && st.field) st.field.phase = 'result';
+      else if (t === 'end' && st.field) { const nm = fieldName(st.field.instr); st.field = null; if (nm) cur.push(mfHtml(nm)); }
+      return;
+    }
+    if (st.field && st.field.phase === 'instr') { const it = kid(n, 'instrText'); if (it) st.field.instr += it.textContent; return; }
+    if (st.field && st.field.phase === 'result' && fieldName(st.field.instr)) return;
     const f = runStyle(kid(n, 'rPr'), st);
     let buf = '';
     const flush = () => { if (buf) { cur.push(wrapCmt(wrapRun(buf, f), st.ctx)); buf = ''; } };
     for (const c of kids(n)) {
       const cn = c.localName;
-      if (cn === 't') buf += esc(c.textContent);
+      if (cn === 't' || cn === 'delText') buf += esc(c.textContent);
       else if (cn === 'tab' || cn === 'ptab') buf += '\t';
       else if (cn === 'br' || cn === 'cr') {
         const type = attr(c, 'type');
@@ -352,7 +449,15 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
     else cur.push(html);
     return;
   }
-  if (['ins', 'smartTag', 'customXml', 'fldSimple', 'bdo', 'dir', 'moveTo'].includes(ln)) { for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
+  if (ln === 'ins' || ln === 'del') {
+    const inner = [];
+    for (const c of kids(n)) await renderInline(c, st, inner, pageBreak);
+    const html = inner.join('');
+    if (html) cur.push(`<${ln} class="tc" data-author="${esc(attr(n, 'author') || '')}" data-date="${esc(attr(n, 'date') || '')}">${html}</${ln}>`);
+    return;
+  }
+  if (ln === 'fldSimple') { const nm = fieldName(attr(n, 'instr') || ''); if (nm) { cur.push(mfHtml(nm)); return; } for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
+  if (['smartTag', 'customXml', 'bdo', 'dir', 'moveTo'].includes(ln)) { for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
   if (ln === 'sdt') { for (const c of kids(kid(n, 'sdtContent'))) await renderInline(c, st, cur, pageBreak); return; }
   if (ln === 'AlternateContent') { const ch = kid(n, 'Choice') || kid(n, 'Fallback'); if (ch) for (const c of kids(ch)) await renderInline(c, st, cur, pageBreak); }
   // del, moveFrom, bookmarks, proofErr, commentRange …: ignored
@@ -363,7 +468,9 @@ async function renderDrawing(el, st) {
   let html = '';
   // text boxes: render their content after the paragraph
   for (const tx of desc(el, 'txbxContent')) {
-    const blocks = closeLists(await renderBlocks(kids(tx), ctx));
+    ctx.depth++;
+    const blocks = closeLists((await renderBlocks(kids(tx), ctx)).filter(b => !(b && b.sectEnd)));
+    ctx.depth--;
     if (blocks.length) st.extra.push(`<div class="textbox">${blocks.join('')}</div>`);
   }
   const blip = desc(el, 'blip')[0];
@@ -379,8 +486,17 @@ async function renderDrawing(el, st) {
   let w = null, h = null;
   if (ext) { w = Math.round(+attr(ext, 'cx') / 9525); h = Math.round(+attr(ext, 'cy') / 9525); }
   const descr = desc(el, 'docPr')[0];
-  const alt = descr ? attr(descr, 'descr') || attr(descr, 'name') || '' : '';
-  return html + `<img src="${url}" alt="${esc(alt)}"${w ? ` width="${w}"` : ''}${h ? ` height="${h}"` : ''}>`;
+  const alt = descr ? attr(descr, 'descr') || attr(descr, 'title') || '' : '';
+  let wrap = '';
+  const anchor = desc(el, 'anchor')[0];
+  if (anchor && !desc(anchor, 'wrapNone')[0] && !desc(anchor, 'wrapTopAndBottom')[0]) {
+    const ph = desc(anchor, 'positionH')[0];
+    const al = ph && desc(ph, 'align')[0];
+    const off = ph && desc(ph, 'posOffset')[0];
+    const side = al ? (/right|outside/.test(al.textContent) ? 'right' : /center/.test(al.textContent) ? 'center' : 'left') : (off && +off.textContent > 1800000 ? 'right' : 'left');
+    if (side !== 'center') wrap = side;
+  } else if (anchor && desc(anchor, 'wrapTopAndBottom')[0]) wrap = 'center';
+  return html + `<img src="${url}" alt="${esc(alt)}"${w ? ` width="${w}"` : ''}${h ? ` height="${h}"` : ''}${wrap ? ` data-wrap="${wrap}"` : ''}>`;
 }
 
 async function renderTable(tbl, ctx) {
@@ -394,6 +510,21 @@ async function renderTable(tbl, ctx) {
   // collect grid with vMerge
   const rows = kids(tbl, 'tr');
   const grid = [];
+  const hdr = rows.map(tr => { const trPr = kid(tr, 'trPr'); return !!(trPr && on(kid(trPr, 'tblHeader'))); });
+  const bdCss = (tcPr) => {
+    const b = tcPr && kid(tcPr, 'tcBorders');
+    if (!b) return '';
+    let css = '';
+    for (const [side, prop] of [['top', 'border-top'], ['bottom', 'border-bottom'], ['left', 'border-left'], ['start', 'border-left'], ['right', 'border-right'], ['end', 'border-right']]) {
+      const e = kid(b, side);
+      if (!e) continue;
+      const v = attr(e, 'val');
+      if (v === 'nil' || v === 'none') { css += `${prop}:none;`; continue; }
+      const w = Math.max(0.5, (+attr(e, 'sz') || 4) / 8), col = attr(e, 'color');
+      css += `${prop}:${w}pt ${v === 'double' ? 'double' : /dash/.test(v || '') ? 'dashed' : /dot/.test(v || '') ? 'dotted' : 'solid'} ${col && /^[0-9a-f]{6}$/i.test(col) ? '#' + col : '#1A1A1A'};`;
+    }
+    return css;
+  };
   for (const tr of rows) {
     const cells = [];
     let col = 0;
@@ -405,7 +536,8 @@ async function renderTable(tbl, ctx) {
       const vmerge = vm ? (attr(vm, 'val') === 'restart' ? 'restart' : 'cont') : null;
       const shd = tcPr && kid(tcPr, 'shd');
       const fill = shd && attr(shd, 'fill');
-      cells.push({ tc, col, span, vmerge, fill: fill && /^[0-9a-f]{6}$/i.test(fill) && fill.toUpperCase() !== 'FFFFFF' ? '#' + fill : null, rowspan: 1 });
+      const va = tcPr && kid(tcPr, 'vAlign') ? attr(kid(tcPr, 'vAlign'), 'val') : null;
+      cells.push({ tc, col, span, vmerge, fill: fill && /^[0-9a-f]{6}$/i.test(fill) && fill.toUpperCase() !== 'FFFFFF' ? '#' + fill : null, rowspan: 1, bd: bdCss(tcPr), va: va === 'center' ? 'middle' : va === 'bottom' ? 'bottom' : null });
       col += span;
     }
     grid.push(cells);
@@ -424,16 +556,20 @@ async function renderTable(tbl, ctx) {
   let out = `<table${bordered ? '' : ' class="borderless"'}>`;
   if (cols.length && total > 0) out += '<colgroup>' + cols.map(w => `<col style="width:${(w / total * 100).toFixed(2)}%">`).join('') + '</colgroup>';
   out += '<tbody>';
-  for (const cells of grid) {
-    out += '<tr>';
+  ctx.depth++;
+  for (let ri = 0; ri < grid.length; ri++) {
+    const cells = grid[ri];
+    out += `<tr${hdr[ri] && hdr.slice(0, ri).every(Boolean) ? ' data-hdr' : ''}>`;
     for (const c of cells) {
       if (c.skip) continue;
       const inner = closeLists(await renderBlocks(kids(c.tc), ctx)).join('') || '<p><br></p>';
-      const at = (c.span > 1 ? ` colspan="${c.span}"` : '') + (c.rowspan > 1 ? ` rowspan="${c.rowspan}"` : '') + (c.fill ? ` style="background-color:${c.fill}"` : '');
+      const css = (c.fill ? `background-color:${c.fill};` : '') + (c.va ? `vertical-align:${c.va};` : '') + (c.bd || '');
+      const at = (c.span > 1 ? ` colspan="${c.span}"` : '') + (c.rowspan > 1 ? ` rowspan="${c.rowspan}"` : '') + (css ? ` style="${css}"` : '');
       out += `<td${at}>${inner}</td>`;
     }
     out += '</tr>';
   }
+  ctx.depth--;
   return out + '</tbody></table>';
 }
 
@@ -456,7 +592,7 @@ function closeLists(blocks) {
       let top = stack[stack.length - 1];
       if (top && top.level === b.level && top.tag !== tag) { closeTo(b.level - 1); top = stack[stack.length - 1]; }
       if (!top || top.level < b.level) {
-        const attrs = tag === 'ol' ? `${b.type !== '1' ? ` type="${b.type}"` : ''}${b.start > 1 ? ` start="${b.start}"` : ''}` : '';
+        const attrs = tag === 'ol' ? `${b.type !== '1' ? ` type="${b.type}"` : ''}${b.start > 1 ? ` start="${b.start}"` : ''}${b.ml && b.level === 0 ? ` data-ml="${b.ml}"` : ''}` : `${b.bullet ? ` data-bullet="${b.bullet}"` : ''}`;
         stack.push({ tag, level: b.level, items: [], attrs });
         top = stack[stack.length - 1];
         // nested list without a parent item: create an empty one

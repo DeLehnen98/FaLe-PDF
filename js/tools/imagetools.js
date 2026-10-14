@@ -8,6 +8,7 @@ import { saveResult } from '../library.js';
 import { createZip } from '../zip.js';
 import { ensureCss, fileResultCard, proBadge, updateFoot, tick } from './common.js';
 import { runOp, LOOKS, adjust } from './imgproc.js';
+import { assertImageBlob } from '../security.js';
 
 const MAX_WORK = 3200; // working resolution (long side)
 const PROXY = 900; // live preview resolution
@@ -16,6 +17,7 @@ const FORMATS = { jpg: { mime: 'image/jpeg', ext: 'jpg', label: 'JPG' }, png: { 
 const toBlob = (c, type, q) => new Promise((res, rej) => c.toBlob(b => (b ? res(b) : rej(new Error('Kodierung fehlgeschlagen'))), type, q));
 
 export async function loadImageToCanvas(file, max = MAX_WORK) {
+  await assertImageBlob(file); // dimension bombs are rejected before decoding
   let bmp;
   try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
   catch {

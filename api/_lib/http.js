@@ -11,6 +11,19 @@ class HttpError extends Error {
   }
 }
 
+// Security headers for every API response (JSON / octet-stream / SSE – never rendered as a page).
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'no-referrer',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+  'Cross-Origin-Opener-Policy': 'same-origin',
+  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
+};
+function applySecurityHeaders(res) {
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) { try { res.setHeader(k, v); } catch {} }
+}
+
 function applyCors(req, res, cfg) {
   const origin = req.headers.origin;
   res.setHeader('Vary', 'Origin');
@@ -18,13 +31,19 @@ function applyCors(req, res, cfg) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Fale-Auth, Authorization'); // X-Fale-Auth: share capability / download ticket; Authorization: FaLe-Konto access token
-    res.setHeader('Access-Control-Max-Age', '600');
+    res.setHeader('Access-Control-Max-Age', '7200'); // preflight cache (Chromium caps at 2 h)
   }
 }
 
+/**
+ * Strict allow-list (no wildcard, no credentials): the configured origins + the native app origins.
+ * http://localhost:<port> / http://127.0.0.1:<port> (local development) are accepted only outside
+ * production deployments (VERCEL_ENV !== 'production').
+ */
 function isAllowedOrigin(origin, cfg) {
+  if (typeof origin !== 'string' || origin.length > 200) return false;
   if (cfg.allowedOrigins.includes(origin)) return true;
-  // http://localhost:<port> and http://127.0.0.1:<port> for local development
+  if (process.env.VERCEL_ENV === 'production') return false;
   return /^http:\/\/(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(origin);
 }
 
@@ -47,10 +66,26 @@ function sendError(res, err) {
 
 /** Read and parse the JSON body with a size limit. Accepts a body pre-parsed by Vercel. */
 async function readJson(req, maxBytes) {
-  if (req.body !== undefined && req.body !== null && !(req.body instanceof Buffer) && typeof req.body === 'object') return req.body;
+  const declared = Number(req.headers && req.headers['content-length']);
+  if (Number.isFinite(declared) && declared > maxBytes) throw new HttpError(413, 'too_large', 'Anfrage zu groß');
+  let pre;
+  // Vercel's lazy body getter throws on invalid JSON → a clean 400 instead of a 500
+  try { pre = req.body; } catch { throw new HttpError(400, 'bad_json', 'Ungültige Anfrage'); }
+  if (pre !== undefined && pre !== null && !(pre instanceof Buffer) && typeof pre === 'object') {
+    // Vercel parsed the body already (up to its own 4.5 MB limit): enforce our limit + shape anyway
+    if (Array.isArray(pre)) throw new HttpError(400, 'bad_json', 'Ungültige Anfrage');
+    let size = 0;
+    try { size = Buffer.byteLength(JSON.stringify(pre), 'utf8'); } catch { throw new HttpError(400, 'bad_json', 'Ungültige Anfrage'); }
+    if (size > maxBytes) throw new HttpError(413, 'too_large', 'Anfrage zu groß');
+    return pre;
+  }
+  // pre-parsed JSON that is not an object (null, 1, true, "x" …): the stream is already consumed –
+  // reading it again would hang until the function timeout (cost/DoS), so answer 400 right away
+  if (pre !== undefined && typeof pre !== 'string' && !(pre instanceof Buffer)) throw new HttpError(400, 'bad_json', 'Ungültige Anfrage');
   let raw = '';
-  if (typeof req.body === 'string') raw = req.body;
-  else if (req.body instanceof Buffer) raw = req.body.toString('utf8');
+  if (typeof pre === 'string') raw = pre;
+  else if (pre instanceof Buffer) raw = pre.toString('utf8');
+  else if (req.readableEnded || req.complete === true && req.readable === false) raw = '';
   else {
     raw = await new Promise((resolve, reject) => {
       let chunks = [];
@@ -70,13 +105,36 @@ async function readJson(req, maxBytes) {
   catch { throw new HttpError(400, 'bad_json', 'Ungültige Anfrage'); }
 }
 
+/**
+ * Client address for rate limits. On Vercel, x-real-ip / x-forwarded-for are set by the edge and
+ * cannot be spoofed by the client. IPv6 addresses are reduced to their /64 prefix (one subscriber
+ * line usually owns a whole /64 – otherwise every address of it would get its own daily limit);
+ * IPv4-mapped IPv6 addresses become plain IPv4.
+ */
 function clientIp(req) {
   const h = req.headers;
   const real = h['x-real-ip'];
-  if (real) return String(real).trim();
-  const xff = h['x-forwarded-for'];
-  if (xff) return String(xff).split(',')[0].trim();
-  return (req.socket && req.socket.remoteAddress) || '0.0.0.0';
+  let ip = '';
+  if (real) ip = String(real).trim();
+  else if (h['x-forwarded-for']) ip = String(h['x-forwarded-for']).split(',')[0].trim();
+  else ip = (req.socket && req.socket.remoteAddress) || '0.0.0.0';
+  return ipPrefix(ip);
+}
+
+function ipPrefix(ip) {
+  let s = String(ip || '').trim().toLowerCase().slice(0, 64);
+  if (s.startsWith('[')) s = s.slice(1, s.indexOf(']') > 0 ? s.indexOf(']') : undefined);
+  const mapped = /^::ffff:(\d{1,3}(?:\.\d{1,3}){3})$/.exec(s);
+  if (mapped) return mapped[1];
+  if (!s.includes(':')) return s.replace(/:\d+$/, '');
+  s = s.split('%')[0];
+  // expand "::" and keep the first four hextets (the /64 network)
+  const [head, tail] = s.includes('::') ? s.split('::') : [s, null];
+  const a = head ? head.split(':') : [];
+  const b = tail ? tail.split(':') : [];
+  if (tail !== null) while (a.length + b.length < 8) a.push('0');
+  const full = [...a, ...b].map(x => (x || '0').replace(/^0+(?=.)/, ''));
+  return full.slice(0, 4).join(':') + '::/64';
 }
 
 function query(req) {
@@ -96,6 +154,7 @@ function handler(methods, fn, { getConfig, cors = true } = {}) {
   return async (req, res) => {
     const cfg = getConfig();
     try {
+      applySecurityHeaders(res);
       if (cors) applyCors(req, res, cfg);
       if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
       if (!methods.includes(req.method)) {
@@ -109,4 +168,4 @@ function handler(methods, fn, { getConfig, cors = true } = {}) {
   };
 }
 
-module.exports = { HttpError, applyCors, sendJson, sendError, readJson, clientIp, query, rawQuery, handler, isAllowedOrigin };
+module.exports = { HttpError, applyCors, applySecurityHeaders, sendJson, sendError, readJson, clientIp, ipPrefix, query, rawQuery, handler, isAllowedOrigin };

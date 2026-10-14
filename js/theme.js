@@ -22,7 +22,7 @@ export function applyTheme(t) {
 export function syncThemeColor() {
   const dark = effectiveDark();
   document.querySelectorAll('meta[name="theme-color"]').forEach(m => {
-    m.setAttribute('content', dark ? '#0F1024' : '#F6F7FB');
+    m.setAttribute('content', dark ? '#0E0D23' : '#F2F3F9');
     m.removeAttribute('media');
   });
 }

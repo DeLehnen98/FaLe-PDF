@@ -1,7 +1,9 @@
 // Background description of library files: search text, thumbnail, page/sheet/slide count.
 import { decodeText } from './vendor.js';
+import { assertImageBlob } from '../security.js';
 
 async function imageThumb(blob, width = 220) {
+  await assertImageBlob(blob); // dimension bombs are rejected before decoding
   const bmp = await createImageBitmap(blob);
   const s = Math.min(1, width / bmp.width);
   const c = document.createElement('canvas');

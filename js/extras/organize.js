@@ -4,6 +4,7 @@ import { $, $$, h, esc, toast, errorToast, openDialog, confirmDialog, promptDial
 import { oicon, kindOf } from '../office/kinds.js';
 import { emitChange, dropThumb } from '../library.js';
 import { fileThumb, fileMeta } from '../office/filerow.js';
+import { cssColor } from '../security.js';
 
 export const TAG_COLORS = ['#D2453F', '#E8613C', '#D99A06', '#15895A', '#0B8F80', '#2F67D8', '#3B37A0', '#8A4FD0', '#C23A7B', '#6B7194'];
 
@@ -91,7 +92,12 @@ export async function folderDialog(docs, { title } = {}) {
 }
 
 // ---------------- tags ----------------
-export async function listTags() { return (await db.getSetting('tags', [])) || []; }
+// tags can arrive from FaLe Sync / backups: only well-formed entries, colours that are safe inside style="…"
+export async function listTags() {
+  const list = (await db.getSetting('tags', [])) || [];
+  return (Array.isArray(list) ? list : []).filter(t => t && typeof t === 'object' && t.id != null)
+    .map(t => ({ ...t, name: String(t.name ?? ''), color: cssColor(t.color, '#6B7280') }));
+}
 async function saveTags(list) { await db.setSetting('tags', list); emitChange(); }
 export async function createTag(name, color) {
   const list = await listTags();

@@ -92,20 +92,20 @@ export async function renderHome() {
     el.dataset.built = '1';
     el.innerHTML = `
       <div class="hero">
+        <div class="hero-art" aria-hidden="true"><span class="ha-sheet s1"></span><span class="ha-sheet s2"></span><span class="ha-sheet s3"><i></i><i></i><i></i><i></i></span><span class="ha-ribbon"></span></div>
         <div class="hero-text">
           <div class="hero-badge">${oicon('shield')} Privat · Offline · Ohne Konto</div>
-          <h1 data-greet>${greeting()}!</h1>
+          <h1><span data-greet>${greeting()}!</span><span data-greet-name hidden></span></h1>
           <p>PDFs, Dokumente, Tabellen und Präsentationen – alles bleibt auf deinem Gerät.</p>
         </div>
-        <button class="btn btn-primary" type="button" data-action="open-file">${oicon('upload')} Datei öffnen</button>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button" data-action="open-file">${oicon('upload')} Datei öffnen</button>
+          <button class="btn btn-glass" type="button" data-action="new-menu" aria-haspopup="menu">${oicon('plus')} Neu</button>
+        </div>
       </div>
       <div data-search></div>
-      <div class="free-card card" data-free hidden>
-        <span class="free-ic">${oicon('gift')}</span>
-        <div><strong>Alles gratis – auch die Pro-Funktionen</strong><span>Kein Abo nötig, keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
-        <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
-      </div>
       <div class="rem-start" data-rem hidden></div>
+      <div class="sm-start" data-smart-start hidden></div>
       <h2 class="section-title">Neu erstellen <a class="btn btn-sm btn-ghost" href="#/vorlagen">${oicon('template')} Vorlagen</a></h2>
       <div class="create-row" role="list"></div>
       <div class="quick-chips" role="list" aria-label="Schnell erledigt">
@@ -115,9 +115,6 @@ export async function renderHome() {
         <a class="lt-chip" role="listitem" href="#/schreiben">${oicon('notes')}<span>Alle Briefe</span></a>
         <a class="lt-chip" role="listitem" href="#/tresor">${oicon('vault')}<span>Tresor</span></a>
       </div>
-      <div class="ai-start" data-ai-start hidden></div>
-      <div class="sh-start" data-share-start hidden></div>
-      <div class="acct-start" data-acct-start hidden></div>
       <div class="continue-box" data-continue hidden></div>
       <h2 class="section-title">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
       <div class="tiles" role="list"></div>
@@ -127,6 +124,16 @@ export async function renderHome() {
         <button class="tab" role="tab" type="button" data-tab="all">Auf diesem Gerät</button>
       </div>
       <div class="doc-list" data-list role="tabpanel"></div>
+      <div class="home-more">
+        <div class="ai-start" data-ai-start hidden></div>
+        <div class="sh-start" data-share-start hidden></div>
+      </div>
+      <div class="acct-start" data-acct-start hidden></div>
+      <div class="free-card card" data-free hidden>
+        <span class="free-ic">${oicon('gift')}</span>
+        <div><strong>Alles gratis – auch die Pro-Funktionen</strong><span>Kein Abo nötig, keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
+        <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
+      </div>
       <div class="month-box" data-month hidden></div>`;
     import('./ai/entry.js').then(m => m.renderStartCard($('[data-ai-start]', el))).catch(() => {}); // KI-Assistent card (no network)
     import('./share/entry.js').then(m => m.renderStartCard($('[data-share-start]', el))).catch(() => {}); // Teilen & Übertragen (no network)
@@ -143,7 +150,7 @@ export async function renderHome() {
     const quick = QUICK.map(id => TOOLS.find(t => t.id === id)).filter(Boolean);
     TOOLS.forEach(t => { if (!quick.includes(t) && quick.length < 12) quick.push(t); });
     quick.forEach(t => {
-      const b = h(`<button class="tile ${t.soon ? 'soon' : ''}" type="button" role="listitem" data-tool="${t.id}">
+      const b = h(`<button class="tile ${t.soon ? 'soon' : ''} g-${t.group || ''}" type="button" role="listitem" data-tool="${t.id}">
         <span class="tile-ic">${oicon(t.icon)}</span><span class="tile-label">${esc(t.tile || t.title)}</span>${t.soon ? '<span class="badge">Bald</span>' : t.pro ? '<span class="badge pro-badge" title="Bei anderen Apps kostenpflichtig">Pro</span>' : ''}</button>`);
       b.addEventListener('click', () => toolClick(t));
       tiles.appendChild(b);
@@ -155,12 +162,26 @@ export async function renderHome() {
     }));
   }
   $('[data-greet]', el).textContent = `${greeting()}!`;
+  greetName(el);
   await renderHomeList();
   renderHomeExtras(el);
 }
 
+// personal greeting: "Guten Tag, Alex!" when a first name is saved in „Meine Daten" (on this device only)
+function greetName(el) {
+  import('./extras/profile.js').then(m => m.getProfile()).then(p => {
+    const name = p && p.vorname ? String(p.vorname).trim().split(/\s+/)[0] : '';
+    const g = $('[data-greet]', el), n = $('[data-greet-name]', el);
+    if (!g || !n) return;
+    g.textContent = name ? greeting() : `${greeting()}!`;
+    n.textContent = name ? `, ${name}!` : '';
+    n.hidden = !name;
+  }).catch(() => {});
+}
+
 async function renderHomeExtras(el) {
   try { await (await extrasRem()).renderStartCards($('[data-rem]', el)); } catch (e) { console.warn(e); }
+  try { await (await import('./smart/entry.js')).renderStartCard($('[data-smart-start]', el)); } catch (e) { console.warn(e); } // Assistenten (local only)
   try { await (await extrasHome()).renderContinue($('[data-continue]', el)); } catch (e) { console.warn(e); }
   try { (await extrasHome()).renderMonthCard($('[data-month]', el)); } catch (e) { console.warn(e); }
   // optional FaLe-Konto: one dismissible hint once there are ≥ 5 files (never when signed in or dismissed)
@@ -220,6 +241,7 @@ export function renderTools(initialQ = null) {
       <div data-search></div>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
       <section class="tool-section" data-section="alltag"><h2 class="section-title">Alltag &amp; Organisation</h2><div class="tool-grid alltag-grid"></div></section>
+      <section class="tool-section" data-section="assistenten" data-smart-section hidden></section>
       <section class="tool-section" data-section="teilen" data-share-section hidden></section>
       <section class="tool-section" data-section="ki" data-ai-section hidden></section>
       <div data-groups></div>
@@ -275,6 +297,7 @@ export function renderTools(initialQ = null) {
     el._filter = filter;
     import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
     import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).catch(() => {}); // Teilen & Unterschreiben
+    import('./smart/entry.js').then(m => m.renderToolSection($('[data-smart-section]', el))).catch(() => {}); // Assistenten
   }
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
 }
@@ -285,13 +308,14 @@ let filesCat = 'all';
 let filesQuery = '';
 let filesFolder = null;
 let filesTag = null;
+let filesSmart = null; // Assistenten-Filter (#/dateien?smart=briefe|offen|belege)
 export async function renderFiles(params) {
   const el = viewEl('dateien');
   if (params && params.get('typ')) {
     const t = params.get('typ');
     filesCat = CATEGORIES.some(c => c.id === t) ? t : 'all';
   }
-  if (params) { filesFolder = params.get('ordner') || null; filesTag = params.get('tag') || null; }
+  if (params) { filesFolder = params.get('ordner') || null; filesTag = params.get('tag') || null; filesSmart = params.get('smart') || null; }
   if (!el.dataset.built) {
     el.dataset.built = '1';
     el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Dateien</h1><p class="page-sub">Alles, was du auf diesem Gerät gespeichert hast.</p></div>
@@ -301,6 +325,7 @@ export async function renderFiles(params) {
       <nav class="folder-crumbs" data-crumbs aria-label="Ordnerpfad" hidden></nav>
       <div class="folder-row" data-folders role="list" aria-label="Ordner"></div>
       <div class="tag-filter" data-tagchips role="group" aria-label="Nach Tag filtern" hidden></div>
+      <div class="sm-file-chips" data-smartchips role="group" aria-label="Assistenten-Filter" hidden></div>
       <div class="files-bar">
         <div class="chips" role="tablist" aria-label="Dateityp"></div>
         <label class="sr-only" for="files-sort">Sortieren nach</label>
@@ -334,10 +359,11 @@ export async function renderFiles(params) {
   if (filesTag && !tags.some(t => t.id === filesTag)) filesTag = null;
   const known = new Set(folders.map(f => f.id));
   const inFolder = d => (filesFolder ? d.folder === filesFolder : !d.folder || !known.has(d.folder));
-  const searching = !!(filesQuery || filesTag);
+  const searching = !!(filesQuery || filesTag || filesSmart);
   const scope = searching ? docs : docs.filter(inFolder);
   renderFolders(el, folders, docs, searching);
   renderTagChips(el, tags, docs);
+  import('./smart/entry.js').then(m => m.renderFileChips($('[data-smartchips]', el), filesSmart)).catch(() => {});
   // chips with counts
   const chips = $('.chips', el);
   chips.innerHTML = '';
@@ -349,6 +375,7 @@ export async function renderFiles(params) {
   });
   let list = scope.filter(d => filesCat === 'all' || catOf(d) === filesCat);
   if (filesTag) list = list.filter(d => (d.tags || []).includes(filesTag));
+  if (filesSmart) { const ids = await import('./smart/entry.js').then(m => m.smartDocIds(filesSmart)).catch(() => null); if (ids) list = list.filter(d => ids.has(d.id)); }
   if (filesQuery) { const q = filesQuery.toLocaleLowerCase('de'); list = list.filter(d => d.name.toLocaleLowerCase('de').includes(q)); }
   if (filesSort === 'name') list.sort((a, b) => a.name.localeCompare(b.name, 'de', { numeric: true }));
   if (filesSort === 'size') list.sort((a, b) => b.size - a.size);
@@ -485,6 +512,7 @@ export function renderSearch(initialQuery) {
     el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Suche</h1><p class="page-sub">Durchsucht Namen und Inhalt aller Dateien auf diesem Gerät – PDFs, Dokumente, Tabellen und Präsentationen.</p></div></div>
       <div class="search-box">${oicon('search')}<input class="input" type="search" id="global-search" placeholder="Wonach suchst du?" aria-label="In allen Dateien suchen" enterkeyhint="search" autocomplete="off"></div>
       <div class="search-summary" aria-live="polite"></div>
+      <div class="sm-search-answer" data-smart-answer hidden></div>
       <div class="search-results"></div>`;
     const input = $('#global-search', el);
     input.addEventListener('input', debounce(() => runSearch(input.value), 220));
@@ -502,6 +530,8 @@ async function renderSearchEmpty() {
   const pending = docs.filter(d => !d.textReady).length;
   $('.search-summary', el).textContent = docs.length ? `${docs.length} Datei${docs.length === 1 ? '' : 'en'} durchsuchbar${pending ? ` (${pending} wird noch indexiert)` : ''}.` : 'Noch keine Dateien vorhanden.';
   $('.search-results', el).innerHTML = '';
+  const ans = $('[data-smart-answer]', el);
+  if (ans) { ans.replaceChildren(); ans.hidden = true; }
 }
 
 function hitLabel(doc, idx) {
@@ -517,6 +547,7 @@ async function runSearch(raw) {
   const query = raw.trim();
   const seq = ++searchSeq;
   if (query.length < 2) { renderSearchEmpty(); return; }
+  import('./smart/entry.js').then(m => (seq === searchSeq ? m.renderSearchAnswer($('[data-smart-answer]', el), query) : null)).catch(() => {}); // Dokumenten-Gedächtnis (offline)
   const nq = norm(query).text;
   const [docs, texts] = await Promise.all([db.listFiles(), db.allTexts()]);
   if (seq !== searchSeq) return;
@@ -645,6 +676,7 @@ export async function renderSettings() {
         <li>docx 9.7.1 – Dolan Miu, MIT (<a href="vendor/docx/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
         <li>PptxGenJS 4.0.1 – Brent Ely, MIT; enthält JSZip (<a href="vendor/pptxgenjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
         <li>Standard-Schriften (Foxit, Liberation) und Decoder (OpenJPEG, JBIG2, QCMS) laut Lizenzdateien im Ordner vendor/pdfjs</li>
+        <li>Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (<a href="vendor/fonts/bricolage-grotesque/OFL.txt" target="_blank" rel="noopener">Lizenz</a>)</li>
       </ul>
     </div>
     <h2 class="section-title">Mehr von FaLe</h2>

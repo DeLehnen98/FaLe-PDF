@@ -93,10 +93,11 @@ function getConfig() {
 
 function providerConfigured(cfg) {
   switch (cfg.provider) {
-    case 'anthropic': return !!(cfg.anthropicKey && cfg.model);
-    case 'openai_compat': return !!(cfg.openaiBase && cfg.openaiKey && cfg.model);
+    // provider base URLs come from env only (never from requests); API keys travel over https only
+    case 'anthropic': return !!(cfg.anthropicKey && cfg.model && /^https:\/\//i.test(cfg.anthropicBase));
+    case 'openai_compat': return !!(cfg.openaiBase && /^https:\/\//i.test(cfg.openaiBase) && cfg.openaiKey && cfg.model);
     case 'gemini': return !!(cfg.geminiKey && cfg.model);
-    case 'mock': return true;
+    case 'mock': return process.env.VERCEL_ENV !== 'production'; // test provider – never on production
     default: return false;
   }
 }

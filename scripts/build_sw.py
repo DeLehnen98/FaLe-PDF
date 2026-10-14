@@ -8,8 +8,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKIP_DIRS = {"scripts", ".git", "node_modules"}
-SKIP_FILES = {"sw.js", "README.md"}
+# same exclusions as scripts/vercel-build.mjs: server code, migrations, docs and native/build folders are not
+# served as static files – listing them made cache.addAll() fail (404) and the service worker never installed
+SKIP_DIRS = {"scripts", ".git", "node_modules", "api", "supabase", "network", "docs", "store", "android", "dist"}
+SKIP_FILES = {"sw.js", "README.md", "SECURITY.md", "package.json", "package-lock.json", "vercel.json", "capacitor.config.json"}
 
 files = []
 h = hashlib.sha256()
@@ -18,6 +20,8 @@ for p in sorted(ROOT.rglob("*")):
         continue
     rel = p.relative_to(ROOT).as_posix()
     if rel.split("/")[0] in SKIP_DIRS or rel in SKIP_FILES or p.name.startswith("."):
+        continue
+    if rel.startswith("vendor/tesseract/") or rel == "vendor/MANIFEST.json":  # OCR is cached on first use
         continue
     files.append("./" + rel)
     h.update(rel.encode())

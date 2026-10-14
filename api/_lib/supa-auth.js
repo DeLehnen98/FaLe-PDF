@@ -45,7 +45,8 @@ async function loadJwks(cfg, fetchImpl, force) {
     const j = await r.json();
     const keys = new Map();
     for (const k of (j && j.keys) || []) {
-      if (!k.kid || !['EC', 'RSA'].includes(k.kty)) continue;
+      if (!k || !k.kid || !['EC', 'RSA'].includes(k.kty) || (k.use && k.use !== 'sig')) continue;
+      if (k.alg && !['ES256', 'RS256'].includes(k.alg)) continue;
       try { keys.set(String(k.kid), { alg: k.alg || (k.kty === 'EC' ? 'ES256' : 'RS256'), key: crypto.createPublicKey({ key: k, format: 'jwk' }) }); } catch { /* unsupported key */ }
     }
     jwks = { url, at: Date.now(), keys, failedAt: 0 };
@@ -56,19 +57,23 @@ async function loadJwks(cfg, fetchImpl, force) {
 }
 
 function checkClaims(cfg, p, nowSec) {
+  if (!p || typeof p !== 'object') return false;
   const aud = Array.isArray(p.aud) ? p.aud : [p.aud];
-  return p && typeof p.sub === 'string' && UUID_RE.test(p.sub)
+  return typeof p.sub === 'string' && UUID_RE.test(p.sub)
     && p.iss === `${cfg.supabaseUrl}/auth/v1`
     && aud.includes('authenticated') && p.role === 'authenticated' && p.is_anonymous !== true
-    && Number.isFinite(p.exp) && p.exp + SKEW > nowSec;
+    && Number.isFinite(p.exp) && p.exp + SKEW > nowSec
+    && (p.nbf == null || (Number.isFinite(p.nbf) && p.nbf - SKEW <= nowSec));
 }
 
+let lastForcedJwks = 0;
 async function viaJwks(cfg, t, fetchImpl, nowSec) {
-  const alg = t.header && t.header.alg;
-  if (!['ES256', 'RS256'].includes(alg) || !t.header.kid) return null;
+  const alg = t.header && typeof t.header === 'object' ? t.header.alg : null; // alg pinned per key below – never "none"/HS*
+  if (!['ES256', 'RS256'].includes(alg) || typeof t.header.kid !== 'string' || t.header.kid.length > 200) return null;
   let keys = await loadJwks(cfg, fetchImpl, false);
   let k = keys.get(String(t.header.kid));
-  if (!k) { keys = await loadJwks(cfg, fetchImpl, true); k = keys.get(String(t.header.kid)); }
+  // unknown kid (key rotation): refetch the JWKS – at most every 30 s, so random kids cannot hammer it
+  if (!k && Date.now() - lastForcedJwks > 30000) { lastForcedJwks = Date.now(); keys = await loadJwks(cfg, fetchImpl, true); k = keys.get(String(t.header.kid)); }
   if (!k || k.alg !== alg) return null; // unknown key → ask Supabase Auth
   let ok = false;
   try {
@@ -125,6 +130,6 @@ function accountKey(secret, userId) {
   return Sec.b64url(crypto.createHmac('sha256', secret).update('acc:' + String(userId).toLowerCase()).digest()).slice(0, 32);
 }
 
-function _reset() { jwks = { url: '', at: 0, keys: new Map(), failedAt: 0 }; cache.clear(); }
+function _reset() { jwks = { url: '', at: 0, keys: new Map(), failedAt: 0 }; cache.clear(); lastForcedJwks = 0; }
 
 module.exports = { verifyAccessToken, bearerOf, accountKey, decode, _reset };
