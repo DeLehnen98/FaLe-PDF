@@ -1,0 +1,36 @@
+# Manueller Live-Test gegen die Produktion: Sicher teilen, Unterschrift anfordern, Geräte verbinden
+# (jeweils komplette Runde mit Ende-zu-Ende-Verschlüsselung wie im echten Client) und FaLe-Konto-Status.
+# Ergebnisse stehen als Hinweise/Fehler im Workflow-Lauf. Legt nur kurzlebige Testobjekte an und löscht sie wieder.
+name: Live smoke test
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'Basis-URL der App'
+        required: false
+        default: 'https://fale-pdf.vercel.app'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22'
+      - name: Run live smoke test
+        env:
+          BASE: ${{ inputs.base || 'https://fale-pdf.vercel.app' }}
+          NODE_OPTIONS: --no-warnings
+        run: node scripts/live-smoke.mjs
