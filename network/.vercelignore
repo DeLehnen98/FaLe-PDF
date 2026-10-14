@@ -1,4 +1,5 @@
-# Repo-only files – not part of the public site
-tools
-BRAND.md
-DOMAINS.md
+# Repo-only files – not part of the public site.
+# Anchored with "/" (gitignore rules): an unanchored "tools" would also drop /en/tools/ (the English web tools).
+/tools
+/BRAND.md
+/DOMAINS.md

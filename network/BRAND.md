@@ -127,5 +127,9 @@ do. Never announce products that don't exist yet; mark unreleased things as
 ```
 python3 network/tools/build_pages.py   # all HTML pages + sitemap.xml (texts live in this script)
 python3 network/tools/make_assets.py   # PNG icons, favicon.ico, Open Graph images (Playwright + Pillow)
+python3 network/tools/webtools/build.py      # FaLe Werkzeuge: /werkzeuge/, /en/tools/, sw.js, sitemap (run after build_pages.py)
+python3 network/tools/webtools/make_og.py    # Open Graph images of the tools (og-tools-de/en.png)
 ```
+The web tools are documented in `tools/webtools/README.md` (spec format, module contract, checklist).
+Their pages self-host Bricolage Grotesque (`assets/wt/vendor/fonts/`, declared in `assets/wt/wt.css`).
 `tools/`, `BRAND.md` and `DOMAINS.md` are excluded from deployment via `.vercelignore`.

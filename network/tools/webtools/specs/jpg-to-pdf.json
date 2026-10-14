@@ -1,0 +1,75 @@
+{
+  "id": "jpg-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "image-pdf",
+  "module": "tools/jpg-to-pdf.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".avif", ".heic", ".heif"],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 30,
+  "related": ["merge-pdf", "compress-pdf"],
+  "next": ["compress-pdf", "merge-pdf"],
+  "needs": ["pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "bild-in-pdf",
+    "name": "Bild in PDF umwandeln",
+    "short": "Fotos und Bilder (JPG, PNG …) als PDF speichern.",
+    "title": "JPG in PDF umwandeln – Bilder zu PDF, ohne Upload | FaleNetwork",
+    "h1": "Bilder in PDF umwandeln",
+    "metaDescription": "JPG, PNG, WebP und weitere Bilder in eine PDF umwandeln: Fotos automatisch richtig gedreht, A4 oder Bildgröße, Ränder wählbar. Gratis, ohne Upload, direkt im Browser.",
+    "lede": "Mach aus Fotos und Bildern eine PDF – richtig gedreht, in voller Qualität.",
+    "pickLabel": "Bilder auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": ["jpg", "jpeg", "png", "foto", "bild", "konvertieren", "umwandeln", "heic", "webp", "scan"],
+    "steps": [
+      {"title": "Bilder auswählen", "text": "Wähle Fotos aus deiner Galerie oder mach direkt ein Foto mit der Kamera. JPG, PNG, WebP, GIF, BMP und AVIF werden unterstützt."},
+      {"title": "Seite einrichten", "text": "Lege fest, ob die Seiten A4, Letter oder genau so groß wie das Bild sein sollen, und wähle einen Rand. Die Reihenfolge änderst du per Ziehen."},
+      {"title": "PDF erstellen", "text": "Tippe auf „PDF erstellen“ und lade die Datei herunter – als eine gemeinsame PDF oder als einzelne PDF pro Bild."}
+    ],
+    "why": [
+      {"title": "Volle Bildqualität", "text": "JPG-Fotos werden unverändert in die PDF übernommen, ohne erneute Kompression. Die PDF ist kaum größer als deine Fotos."},
+      {"title": "Automatisch richtig gedreht", "text": "Handyfotos speichern ihre Ausrichtung oft nur als Zusatzinfo. FaLe liest sie aus, damit kein Foto auf der Seite liegt."},
+      {"title": "Passendes Seitenformat", "text": "A4 oder Letter mit automatischer Hoch- oder Querausrichtung – oder jede Seite genau in Bildgröße."},
+      {"title": "Ohne Upload", "text": "Deine Fotos bleiben auf deinem Gerät. Gerade bei Ausweisen, Verträgen oder Belegen ist das wichtig."}
+    ],
+    "faq": [
+      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Die PDF entsteht vollständig in deinem Browser. Nach dem ersten Laden funktioniert das Werkzeug sogar im Flugmodus."},
+      {"q": "Welche Bildformate werden unterstützt?", "a": "JPG/JPEG, PNG, WebP, GIF, BMP und AVIF. HEIC-Fotos vom iPhone funktionieren, wenn dein Browser das Format öffnen kann (zum Beispiel Safari). Sonst zeigen wir dir einen Hinweis, wie du das Foto als JPG bekommst."},
+      {"q": "Wird die Bildqualität verschlechtert?", "a": "JPG-Fotos werden ohne Neuberechnung eingebettet, die Qualität bleibt also exakt gleich. Andere Formate werden verlustfrei oder in sehr hoher JPEG-Qualität übernommen."},
+      {"q": "Warum lag mein Foto bei anderen Werkzeugen quer?", "a": "Viele Kameras speichern das Bild immer gleich herum und vermerken die Drehung nur in den Bilddaten (EXIF). Wird dieser Vermerk ignoriert, liegt das Foto falsch. FaLe berücksichtigt ihn."},
+      {"q": "Kann ich die PDF danach noch verkleinern?", "a": "Ja. Tippe nach dem Erstellen auf „Weiter mit: PDF komprimieren“ – die neue PDF wird direkt übernommen, ohne dass du sie erneut auswählen musst."}
+    ]
+  },
+  "en": {
+    "slug": "jpg-to-pdf",
+    "name": "JPG to PDF",
+    "short": "Save photos and images (JPG, PNG …) as a PDF.",
+    "title": "JPG to PDF – convert images to PDF, no upload | FaleNetwork",
+    "h1": "Convert images to PDF",
+    "metaDescription": "Turn JPG, PNG, WebP and other images into a PDF: photos rotated correctly, A4, Letter or image size, adjustable margins. Free, no upload, right in your browser.",
+    "lede": "Turn photos and images into a PDF – rotated correctly, in full quality.",
+    "pickLabel": "Choose images",
+    "primaryButton": "Create PDF",
+    "keywords": ["jpeg", "png", "photo", "picture", "image", "convert", "heic", "webp", "scan"],
+    "steps": [
+      {"title": "Choose images", "text": "Pick photos from your gallery or take one with your camera. JPG, PNG, WebP, GIF, BMP and AVIF are supported."},
+      {"title": "Set up the page", "text": "Choose A4, Letter or a page exactly the size of the image, and pick a margin. Drag to change the order."},
+      {"title": "Create the PDF", "text": "Tap “Create PDF” and download the file – as one PDF or as a separate PDF for each image."}
+    ],
+    "why": [
+      {"title": "Full image quality", "text": "JPG photos go into the PDF unchanged, without being compressed again. The PDF is barely larger than your photos."},
+      {"title": "Rotated correctly", "text": "Phone photos often store their orientation only as extra info. FaLe reads it, so no photo ends up sideways."},
+      {"title": "The right page size", "text": "A4 or Letter with automatic portrait or landscape – or every page exactly the size of its image."},
+      {"title": "No upload", "text": "Your photos stay on your device. That matters for ID cards, contracts and receipts."}
+    ],
+    "faq": [
+      {"q": "Are my images uploaded?", "a": "No. The PDF is created entirely in your browser. After the first visit the tool even works in flight mode."},
+      {"q": "Which image formats are supported?", "a": "JPG/JPEG, PNG, WebP, GIF, BMP and AVIF. HEIC photos from an iPhone work if your browser can open the format (Safari, for example). Otherwise we show you how to get the photo as a JPG."},
+      {"q": "Does the image quality get worse?", "a": "JPG photos are embedded without being recalculated, so the quality stays exactly the same. Other formats are stored losslessly or at very high JPEG quality."},
+      {"q": "Why was my photo sideways in other tools?", "a": "Many cameras always store the image the same way round and only note the rotation in the image data (EXIF). If a tool ignores that note, the photo ends up sideways. FaLe takes it into account."},
+      {"q": "Can I make the PDF smaller afterwards?", "a": "Yes. After creating it, tap “Continue with: Compress PDF” – the new PDF is passed along directly, without choosing it again."}
+    ]
+  }
+}

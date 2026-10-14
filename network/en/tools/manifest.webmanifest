@@ -1,0 +1,59 @@
+{
+  "id": "/en/tools/",
+  "name": "FaLe Tools",
+  "short_name": "Tools",
+  "description": "PDF and image tools that work right on your device.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/en/tools/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F2F3F9",
+  "theme_color": "#171542",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/en/tools/share/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "files": [
+        {
+          "name": "files",
+          "accept": [
+            ".avif",
+            ".bmp",
+            ".gif",
+            ".heic",
+            ".heif",
+            ".jpeg",
+            ".jpg",
+            ".pdf",
+            ".png",
+            ".webp",
+            "application/pdf",
+            "image/*"
+          ]
+        }
+      ]
+    }
+  }
+}

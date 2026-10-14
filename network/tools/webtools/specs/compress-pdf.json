@@ -1,0 +1,73 @@
+{
+  "id": "compress-pdf",
+  "category": "optimize",
+  "icon": "compress",
+  "module": "tools/compress-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "minFiles": 1,
+  "popular": true,
+  "order": 20,
+  "related": ["merge-pdf", "jpg-to-pdf"],
+  "next": ["merge-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-komprimieren",
+    "name": "PDF komprimieren",
+    "short": "PDF verkleinern, damit sie per E-Mail oder Upload passt.",
+    "title": "PDF komprimieren – Größe reduzieren, ohne Upload | FaleNetwork",
+    "h1": "PDF komprimieren",
+    "metaDescription": "PDF verkleinern für E-Mail und Uploads: drei Stufen, Text bleibt bei „Ausgewogen“ scharf und durchsuchbar. Kostenlos, ohne Konto und ohne Upload – alles im Browser.",
+    "lede": "Mach deine PDF kleiner – Text bleibt scharf, nichts wird hochgeladen.",
+    "primaryButton": "Komprimieren",
+    "keywords": ["verkleinern", "verringern", "reduzieren", "kleiner machen", "dateigröße", "optimieren", "e-mail"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere PDFs aus – zum Beispiel einen Scan, der für den E-Mail-Anhang zu groß ist."},
+      {"title": "Stufe wählen", "text": "„Ausgewogen“ verkleinert Fotos und Scans im Dokument und lässt Text unangetastet. „Verlustfrei“ ändert nichts am Aussehen, „Stark“ holt das Maximum heraus."},
+      {"title": "Ergebnis vergleichen", "text": "Du siehst sofort, wie viel kleiner die Datei geworden ist. Passt es nicht, wechselst du mit einem Tipp die Stufe und lädst dann herunter."}
+    ],
+    "why": [
+      {"title": "Text bleibt Text", "text": "Bei „Ausgewogen“ werden nur die eingebetteten Bilder neu berechnet. Schrift, Linien und Links bleiben unverändert scharf und durchsuchbar."},
+      {"title": "Nie größer als vorher", "text": "Bringt eine Stufe nichts, bekommst du deine Originaldatei zurück – mit einem Hinweis statt einer aufgeblähten Datei."},
+      {"title": "Mehrere Dateien auf einmal", "text": "Wähle mehrere PDFs aus und lade die Ergebnisse einzeln oder gesammelt als ZIP herunter."},
+      {"title": "Geschützt bleibt geschützt", "text": "Komprimierst du eine PDF mit Passwort, wird das Ergebnis wieder mit demselben Passwort verschlüsselt."}
+    ],
+    "faq": [
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die Komprimierung läuft vollständig in deinem Browser. Lade die Seite einmal, schalte dann den Flugmodus ein – das Werkzeug funktioniert weiter."},
+      {"q": "Welche Stufe soll ich nehmen?", "a": "Meist „Ausgewogen“: Fotos und Scans werden auf etwa 150 dpi verkleinert, was auf dem Bildschirm und beim normalen Ausdruck gut aussieht. „Verlustfrei“ räumt nur die Dateistruktur auf. „Stark“ wandelt jede Seite in ein Bild um – das spart am meisten, aber Text lässt sich danach nicht mehr markieren oder durchsuchen."},
+      {"q": "Warum wird meine PDF kaum kleiner?", "a": "Besteht eine PDF fast nur aus Text, ist sie meist schon sehr kompakt. Die großen Einsparungen kommen von Fotos und Scans. Ist die Datei bereits gut optimiert, bekommst du sie unverändert zurück."},
+      {"q": "Leidet die Qualität?", "a": "Bei „Verlustfrei“ nicht. Bei „Ausgewogen“ werden nur Bilder verkleinert, deren Auflösung höher ist als nötig, und erneut als JPEG gespeichert. Bilder mit Transparenz bleiben dabei korrekt erhalten."},
+      {"q": "Gibt es eine Grenze für die Dateigröße?", "a": "Wir setzen keine. Wie große Dateien gehen, hängt vom Arbeitsspeicher deines Geräts ab. Auf dem Computer sind auch PDFs mit mehreren Hundert Megabyte möglich."}
+    ]
+  },
+  "en": {
+    "slug": "compress-pdf",
+    "name": "Compress PDF",
+    "short": "Make a PDF smaller so it fits an email or upload form.",
+    "title": "Compress PDF – reduce file size, no upload | FaleNetwork",
+    "h1": "Compress PDF",
+    "metaDescription": "Shrink PDFs for email and uploads: three levels, and text stays sharp and searchable with “Balanced”. Free, no account, no upload – it runs in your browser.",
+    "lede": "Make your PDF smaller – text stays sharp and nothing is uploaded.",
+    "primaryButton": "Compress",
+    "keywords": ["shrink", "reduce", "smaller", "file size", "optimize", "email", "minimize"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Select one or more PDFs – for example a scan that is too large to attach to an email."},
+      {"title": "Pick a level", "text": "“Balanced” shrinks the photos and scans inside the document and leaves text alone. “Lossless” doesn’t change how it looks, “Strong” squeezes out the most."},
+      {"title": "Compare and save", "text": "You immediately see how much smaller the file got. Not small enough? Switch the level with one tap, then download."}
+    ],
+    "why": [
+      {"title": "Text stays text", "text": "With “Balanced”, only the embedded images are recalculated. Fonts, lines and links stay sharp and searchable."},
+      {"title": "Never bigger than before", "text": "If a level doesn’t help, you get your original file back – with a note instead of a bloated file."},
+      {"title": "Several files at once", "text": "Select several PDFs and download the results one by one or together as a ZIP."},
+      {"title": "Protected stays protected", "text": "If you compress a password-protected PDF, the result is encrypted again with the same password."}
+    ],
+    "faq": [
+      {"q": "Are my files uploaded?", "a": "No. Compression runs entirely in your browser. Load the page once, then switch on flight mode – the tool keeps working."},
+      {"q": "Which level should I choose?", "a": "Usually “Balanced”: photos and scans are reduced to about 150 dpi, which looks good on screen and in normal prints. “Lossless” only tidies up the file structure. “Strong” turns every page into an image – that saves the most, but text can no longer be selected or searched."},
+      {"q": "Why does my PDF barely get smaller?", "a": "A PDF that is mostly text is usually very compact already. Big savings come from photos and scans. If the file is already well optimised, you get it back unchanged."},
+      {"q": "Does the quality suffer?", "a": "Not with “Lossless”. With “Balanced”, only images with a higher resolution than needed are scaled down and saved again as JPEG. Images with transparency are kept correctly."},
+      {"q": "Is there a file size limit?", "a": "We don’t set one. How large a file can be depends on your device’s memory. On a computer, PDFs of several hundred megabytes are possible."}
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+// Copies the third-party files and reusable app modules that the FaLe Werkzeuge (network/assets/wt/)
+// need from the app's vendor/ and js/ folders into the network site, which is deployed on its own
+// (Vercel project "fale-network", root directory network/, no build step).
+//
+//   node scripts/sync-webtools-vendor.mjs           → copy + write network/assets/wt/vendor/MANIFEST.json
+//   node scripts/sync-webtools-vendor.mjs --check   → exit 1 when the copies differ from their sources
+//                                                     (or files are missing / unexpected); used in CI
+//
+// Only import-free app modules are copied as they are. Modules with imports are not copied; where a
+// small, self-contained part is useful, an adapter extracts exactly that part (see SHARED below) and
+// fails loudly if the source no longer has the expected shape. tesseract (OCR) is deliberately NOT
+// synced – it is large and the web tools don't need it.
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+import { join, dirname, relative, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const WT = join(ROOT, 'network', 'assets', 'wt');
+const CHECK = process.argv.includes('--check');
+
+const walk = dir => readdirSync(dir).flatMap(n => { const p = join(dir, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
+const rel = (from, p) => relative(from, p).split(sep).join('/');
+const sha256 = buf => createHash('sha256').update(buf).digest('hex');
+
+// ---------------------------------------------------------------- vendor files: [target in wt/vendor, source in repo vendor/]
+const VENDOR = [];
+function addDir(srcDir, dstDir, filter = () => true) {
+  for (const p of walk(join(ROOT, 'vendor', srcDir)).sort()) {
+    const r = rel(join(ROOT, 'vendor', srcDir), p);
+    if (filter(r)) VENDOR.push([`${dstDir}/${r}`, `vendor/${srcDir}/${r}`]);
+  }
+}
+// pdf.js: the core + worker, character maps, standard fonts, ICC profile and the wasm decoders.
+// Not copied: the viewer component, its CSS/images, the PDF-JavaScript sandbox (quickjs) and the
+// non-wasm fallbacks (the tool pages allow 'wasm-unsafe-eval').
+for (const f of ['LICENSE', 'pdf.min.mjs', 'pdf.worker.min.mjs']) VENDOR.push([`pdfjs/${f}`, `vendor/pdfjs/${f}`]);
+addDir('pdfjs/cmaps', 'pdfjs/cmaps');
+addDir('pdfjs/standard_fonts', 'pdfjs/standard_fonts');
+addDir('pdfjs/iccs', 'pdfjs/iccs');
+addDir('pdfjs/wasm', 'pdfjs/wasm', r => !/quickjs|nowasm_fallback/.test(r));
+for (const f of ['pdf-lib.min.js', 'LICENSE.md', 'THIRD_PARTY_LICENSES.txt']) VENDOR.push([`pdf-lib/${f}`, `vendor/pdf-lib/${f}`]);
+for (const f of ['jszip.min.js', 'LICENSE.markdown']) VENDOR.push([`jszip/${f}`, `vendor/jszip/${f}`]);
+for (const f of ['BricolageGrotesque-Bold.woff', 'OFL.txt']) VENDOR.push([`fonts/${f}`, `vendor/fonts/bricolage-grotesque/${f}`]);
+
+// ---------------------------------------------------------------- shared app modules → wt/lib/shared/
+const banner = (src, how) => `// GENERATED – synced copy of ${src}${how ? ` (${how})` : ''} by scripts/sync-webtools-vendor.mjs.\n// Do not edit here: change the source in the app and run \`node scripts/sync-webtools-vendor.mjs\`.\n`;
+
+function importFree(src) {
+  const text = readFileSync(join(ROOT, src), 'utf8');
+  // dynamic import of a sibling that is synced as well is fine (scanproc → imgproc)
+  const imports = [...text.matchAll(/^\s*import\s.*?from\s+['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)/gm)].map(m => m[1] || m[2]);
+  return { text, imports };
+}
+
+function copyModule(src, allowed = []) {
+  const { text, imports } = importFree(src);
+  const bad = imports.filter(i => !allowed.includes(i));
+  if (bad.length) throw new Error(`${src} now imports ${bad.join(', ')} – it can no longer be synced as is (write an adapter)`);
+  return banner(src) + text;
+}
+
+/** Extract the leading part of a module up to (not including) a marker line. */
+function extractHead(src, endMarker, what) {
+  const text = readFileSync(join(ROOT, src), 'utf8');
+  const end = text.indexOf(endMarker);
+  if (end < 0) throw new Error(`${src}: marker "${endMarker}" not found – update the adapter in sync-webtools-vendor.mjs`);
+  const part = text.slice(0, end).trimEnd() + '\n';
+  if (/^\s*import\s|import\(/m.test(part)) throw new Error(`${src}: extracted part (${what}) contains imports`);
+  return banner(src, what) + part;
+}
+
+/** Extract named top-level blocks (export const/function … up to the next top-level statement). */
+function extractBlocks(src, starts, what) {
+  const text = readFileSync(join(ROOT, src), 'utf8');
+  const lines = text.split('\n');
+  const out = [];
+  for (const start of starts) {
+    const i = lines.findIndex(l => l.startsWith(start));
+    if (i < 0) throw new Error(`${src}: "${start}" not found – update the adapter in sync-webtools-vendor.mjs`);
+    let j = i + 1;
+    while (j < lines.length && !/^(\]|\});?\s*$/.test(lines[j])) j++;
+    const comment = [];
+    for (let k = i - 1; k >= 0 && /^\s*(\/\/|\/\*\*|\*)/.test(lines[k]); k--) comment.unshift(lines[k]);
+    out.push([...comment, ...lines.slice(i, j + 1)].join('\n'));
+  }
+  const part = out.join('\n\n') + '\n';
+  if (/^\s*import\s|import\(/m.test(part)) throw new Error(`${src}: extracted part (${what}) contains imports`);
+  return banner(src, what) + part;
+}
+
+const SHARED = {
+  'pdfcrypt.js': () => copyModule('js/pdfcrypt.js'),
+  'zip.js': () => copyModule('js/zip.js'),
+  'imgproc.js': () => copyModule('js/tools/imgproc.js'),
+  'scanproc.js': () => copyModule('js/tools/scanproc.js', ['./imgproc.js']),
+  'limits.js': () => extractHead('js/security.js', 'export const SAFE_SCHEMES', 'resource limits and image header probing only'),
+  'passphoto-templates.js': () => extractBlocks('js/tools/passphoto.js', ['export const TEMPLATES', 'export function sheetLayout'], 'TEMPLATES + sheetLayout only'),
+};
+
+// ---------------------------------------------------------------- expected state
+const expected = new Map(); // path relative to wt/ → Buffer
+const sources = {};
+for (const [dst, src] of VENDOR) { expected.set(`vendor/${dst}`, readFileSync(join(ROOT, src))); sources[`vendor/${dst}`] = src; }
+for (const [name, make] of Object.entries(SHARED)) {
+  expected.set(`lib/shared/${name}`, Buffer.from(make(), 'utf8'));
+  sources[`lib/shared/${name}`] = 'adapter: ' + name;
+}
+// every shared module must still parse as an ES module on its own (catches a broken extraction)
+for (const [p, buf] of expected) {
+  if (!p.startsWith('lib/shared/')) continue;
+  const src = buf.toString('utf8').replace(/import\(\s*['"]\.\/[^'"]+['"]\s*\)/g, 'Promise.resolve({})');
+  try { await import('data:text/javascript;base64,' + Buffer.from(src).toString('base64')); }
+  catch (e) { console.error(`${p}: does not load as an ES module (${e.message})`); process.exit(1); }
+}
+const rootManifest = JSON.parse(readFileSync(join(ROOT, 'vendor', 'MANIFEST.json'), 'utf8'));
+const manifest = {
+  comment: 'GENERATED by scripts/sync-webtools-vendor.mjs – copies of vendor/ and js/ for the FaLe Werkzeuge. Check: node scripts/sync-webtools-vendor.mjs --check',
+  libraries: Object.fromEntries(['pdfjs', 'pdf-lib', 'jszip', 'fonts'].map(k => [k, rootManifest.libraries[k]])),
+  files: Object.fromEntries([...expected.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([p, buf]) => [p, sha256(buf)])),
+};
+const manifestText = JSON.stringify(manifest, null, 2) + '\n';
+expected.set('vendor/MANIFEST.json', Buffer.from(manifestText, 'utf8'));
+
+const managedDirs = [join(WT, 'vendor'), join(WT, 'lib', 'shared')];
+const actualFiles = managedDirs.filter(existsSync).flatMap(d => walk(d)).map(p => rel(WT, p));
+
+if (CHECK) {
+  const problems = [];
+  for (const [p, buf] of expected) {
+    const abs = join(WT, p);
+    if (!existsSync(abs)) problems.push(`missing: ${p}`);
+    else if (!readFileSync(abs).equals(buf)) problems.push(`differs: ${p}`);
+  }
+  for (const p of actualFiles) if (!expected.has(p)) problems.push(`unexpected: ${p}`);
+  if (problems.length) {
+    console.error(`network/assets/wt is out of sync with vendor/ and js/ (${problems.length}):\n  ` + problems.slice(0, 40).join('\n  ') +
+      (problems.length > 40 ? `\n  … and ${problems.length - 40} more` : '') + '\nRun: node scripts/sync-webtools-vendor.mjs');
+    process.exit(1);
+  }
+  console.log(`webtools vendor in sync (${expected.size} files)`);
+} else {
+  for (const p of actualFiles) if (!expected.has(p)) rmSync(join(WT, p));
+  let changed = 0;
+  for (const [p, buf] of expected) {
+    const abs = join(WT, p);
+    if (existsSync(abs) && readFileSync(abs).equals(buf)) continue;
+    mkdirSync(dirname(abs), { recursive: true });
+    writeFileSync(abs, buf);
+    changed++;
+  }
+  console.log(`synced ${expected.size} files into network/assets/wt (${changed} written)`);
+}

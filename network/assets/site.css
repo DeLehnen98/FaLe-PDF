@@ -266,3 +266,9 @@ mark.ph { -webkit-box-decoration-break: clone; box-decoration-break: clone; back
 .lost .lede { margin-top: 12px; }
 .lost h2 { font-size: var(--step-2); margin-top: 20px; padding-top: 28px; border-top: 1px solid var(--border); }
 .lost h2 + p { margin-top: 8px; }
+
+/* ---------- Home: online tools teaser (links to /werkzeuge/) ---------- */
+.tool-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.tool-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border-strong); color: var(--text); font-weight: 650; text-decoration: none; }
+.tool-chip:hover { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+.tool-chip svg { width: 16px; height: 16px; color: var(--primary); }

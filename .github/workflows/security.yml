@@ -1,6 +1,7 @@
 # Security checks on every push / pull request (read-only, no secrets are used):
 #  - secret scan of all files and the full git history (scripts/check-secrets.mjs; values are never printed)
 #  - vendor/ integrity against vendor/MANIFEST.json (SHA-256 of every third-party file)
+#  - network/assets/wt/{vendor,lib/shared} = exact copies of vendor/ + js/ (scripts/sync-webtools-vendor.mjs --check)
 #  - CSP <meta> in index.html == CSP header in vercel.json (checked by the web build)
 #  - npm audit of the production dependencies (report only)
 name: Security
@@ -36,6 +37,8 @@ jobs:
         run: node scripts/check-secrets.mjs --history
       - name: Vendor integrity (vendor/MANIFEST.json)
         run: node scripts/vendor-manifest.mjs
+      - name: Web tools vendor copies in sync (network/assets/wt)
+        run: node scripts/sync-webtools-vendor.mjs --check
       - name: Web build (CSP consistency, vendor check)
         env:
           FALE_MINIFY: '0'
