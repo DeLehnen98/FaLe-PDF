@@ -198,6 +198,7 @@ export async function mount(screen, { docId }) {
     const { q, cs, ww, presets } = r.data;
     const terms = q.split(',').map(t => t.trim()).filter(Boolean);
     if (!terms.length && !presets.length) { toast('Bitte gib einen Suchbegriff ein oder wähle eine Vorlage.', 'error'); return; }
+    if (!ocrAsked) await offerOcr();
     const prog = progress('Suche …');
     try {
       const found = [];
@@ -226,6 +227,41 @@ export async function mount(screen, { docId }) {
       toast(`${found.length} Stelle${found.length === 1 ? '' : 'n'} markiert. Prüfe die Markierungen vor dem Anwenden.`, 'success', { timeout: 5000 });
     } catch (e) { errorToast(e, 'Suche fehlgeschlagen.'); }
     finally { prog.done(); }
+  }
+
+  // ---------- OCR for scanned pages (search terms on image-only pages) ----------
+  let ocrAsked = false;
+  async function offerOcr() {
+    ocrAsked = true;
+    const empty = [];
+    for (const p of stage.pages) { const pt = await charsOf(p); if (!pt.chars.length) empty.push(p); }
+    if (!empty.length) return;
+    const r = await openDialog({
+      title: 'Seiten ohne Text',
+      body: `<p>${empty.length === stage.pages.length ? 'Dieses Dokument ist ein Scan und enthält' : `${empty.length} Seite${empty.length === 1 ? ' enthält' : 'n enthalten'}`} keinen durchsuchbaren Text. Mit der Texterkennung (OCR) können Suchbegriffe auch dort gefunden und geschwärzt werden – direkt auf deinem Gerät.</p>`,
+      actions: [{ label: 'Ohne OCR suchen', value: 'skip' }, { label: 'Text per OCR erkennen', value: 'ocr', kind: 'btn-primary', default: true }],
+    });
+    if (r.value !== 'ocr') return;
+    const ui = await import('../ocr/ui.js');
+    if (!await ui.ensureOcrReady(ui.getLangPref())) return;
+    const { ocrPageChars } = await import('../ocr/pagechars.js');
+    const panel = ui.progressPanel({ title: 'Text wird erkannt …', total: empty.length });
+    let n = 0;
+    const t0 = Date.now();
+    try {
+      for (let k = 0; k < empty.length; k++) {
+        const p = empty[k];
+        const eta = n ? ((Date.now() - t0) / n) * (empty.length - k) / 1000 : null;
+        const pt = await ocrPageChars(p.page, p.base, { lang: ui.getLangPref(), psm: ui.getPsmPref(), signal: panel.signal, onProgress: x => panel.update({ ...x, index: k, total: empty.length, page: p.num, eta }) });
+        p.chars = Promise.resolve(pt);
+        n++;
+      }
+    } catch (e) {
+      if (e && e.name === 'AbortError') toast('Texterkennung abgebrochen.', 'info'); else errorToast(e, (e && e.userMessage) || 'Die Texterkennung ist fehlgeschlagen.');
+    } finally {
+      panel.close();
+      if (n) { import('../extras/stats.js').then(m => m.track('ocr_pages', n)).catch(() => {}); toast(`Text auf ${n} Seite${n === 1 ? '' : 'n'} erkannt.`, 'success', { timeout: 2200 }); }
+    }
   }
 
   // ---------- apply ----------

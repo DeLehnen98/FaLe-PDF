@@ -51,6 +51,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
       '-',
       { label: 'Suchen & ersetzen', icon: 'replace', onClick: () => openFind(true) },
       { label: 'Diagramm einfügen', icon: 'chart', onClick: () => insertChart() },
+      { label: 'Formel-Assistent (KI) …', icon: 'fx', onClick: () => import('../ai/assist.js').then(m => m.formulaAssist({ sheet: sh, cell: addr(sel.r, sel.c), insert: f => { if (editing) cancel(); startEdit(f); } })) },
       { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await serialize(kind), shell.name, KINDS[kind].mime) },
       { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },
       { label: 'Umbenennen', icon: 'edit', onClick: () => shell.rename() },

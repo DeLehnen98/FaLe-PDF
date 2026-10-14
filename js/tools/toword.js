@@ -25,22 +25,52 @@ export async function mount(screen, { docId }) {
     <div class="card card-pad" style="margin-top:16px">
       <label class="field" style="margin:0"><span class="field-label">Seiten (leer = alle ${doc.pages})</span><input class="input" data-range placeholder="z. B. 1-3, 5"></label>
     </div>
+    <div data-ocrbox></div>
     <div data-result></div></div>`);
   screen.body.appendChild(wrap);
   const btn = h(`<button class="btn btn-primary" type="button">${icon('word')} In Word umwandeln</button>`);
   updateFoot(screen, [btn]);
   const resultBox = wrap.querySelector('[data-result]');
+  // scans: offer text recognition (OCR) for pages without a text layer
+  let missing = [];
+  (async () => {
+    try {
+      const [{ pagesWithoutText }] = await Promise.all([import('../ocr/searchable.js')]);
+      const { pdf } = await loadPdf(bytes.slice(), { name: doc.name, key: docId });
+      missing = await pagesWithoutText(pdf);
+      pdf.destroy();
+      if (!missing.length) return;
+      const box = wrap.querySelector('[data-ocrbox]');
+      box.appendChild(h(`<label class="ocr-offer check"><input type="checkbox" data-ocr checked><span><strong>Text per OCR erkennen</strong> – ${missing.length === doc.pages ? 'dieses Dokument ist ein Scan ohne Text' : `${missing.length} Seite${missing.length === 1 ? ' hat' : 'n haben'} keinen Text (Scan)`}. Ohne Texterkennung werden diese Seiten als Bild eingefügt.</span></label>`));
+    } catch (e) { console.warn(e); }
+  })();
 
   btn.addEventListener('click', async () => {
     const mode = wrap.querySelector('input[name=mode]:checked').value;
     btn.disabled = true;
-    const prog = progress('Lese PDF …');
+    let prog = progress('Lese PDF …');
     let pdf = null;
     try {
       const docxLib = await loadDocxLib();
       ({ pdf } = await loadPdf(bytes.slice(), { name: doc.name, key: docId }));
       const nums = parseRange(wrap.querySelector('[data-range]').value, pdf.numPages);
       if (!nums || !nums.length) throw Object.assign(new Error('range'), { userMessage: 'Bitte gib einen gültigen Seitenbereich ein, z. B. 1-3, 5.' });
+      const ocrBox = wrap.querySelector('[data-ocr]');
+      const ocrPages = mode === 'text' && ocrBox && ocrBox.checked ? nums.filter(n => missing.includes(n)) : [];
+      if (ocrPages.length) {
+        const ui = await import('../ocr/ui.js');
+        prog.done();
+        if (await ui.ensureOcrReady(ui.getLangPref())) {
+          const { makeSearchable } = await import('../ocr/searchable.js');
+          const panel = ui.progressPanel({ title: 'Text wird erkannt …', total: ocrPages.length });
+          try {
+            const res = await makeSearchable(bytes, { pages: ocrPages, lang: ui.getLangPref(), psm: ui.getPsmPref(), signal: panel.signal, onProgress: p => panel.update(p), name: doc.name, key: docId });
+            pdf.destroy();
+            ({ pdf } = await loadPdf(res.bytes.slice(), { name: doc.name }));
+          } finally { panel.close(); }
+        }
+        prog = progress('Erstelle Word-Datei …');
+      }
       const blob = mode === 'exact'
         ? await buildExact(docxLib, pdf, nums, prog)
         : await buildText(docxLib, pdf, nums, prog, baseName(doc.name));

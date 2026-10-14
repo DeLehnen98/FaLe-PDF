@@ -3,6 +3,7 @@ import { $, $$, h } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
+import { langSelectHtml } from '../i18n/index.js';
 
 const KEY = 'fale-onboarded';
 const ls = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
@@ -31,11 +32,12 @@ export function showOnboarding() {
           <h2 id="ob-title">Willkommen bei FaLe</h2>
           <p>PDFs lesen, unterschreiben und bearbeiten, Dokumente, Tabellen und Präsentationen erstellen – und Alltagsbriefe wie Kündigungen in einer Minute schreiben.</p>
           <ul class="ob-list"><li>${oicon('check')} Alle Pro-Funktionen gratis</li><li>${oicon('check')} Fristen im Blick, Dateien im Tresor</li><li>${oicon('check')} Funktioniert auch offline</li></ul>
+          <label class="ob-lang" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap"><span class="muted" style="white-space:nowrap">Sprache / Language</span>${langSelectHtml()}</label>
         </section>
         <section class="ob-step" data-step="1" hidden>
           <div class="ob-art ob-art-2"><span class="ob-shield">${oicon('shield')}</span></div>
           <h2>Deine Dateien gehören dir</h2>
-          <p>Kein Konto, keine Uploads, keine Werbung, kein Tracking. Alles, was du öffnest oder erstellst, bleibt auf diesem Gerät.</p>
+          <p>Kein Konto, kein Tracking. Alles, was du öffnest oder erstellst, bleibt auf diesem Gerät. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür nötige Text verarbeitet – und Werbung gibt es nur freiwillig, gegen Extra-KI-Anfragen.</p>
           <ul class="ob-list"><li>${oicon('lock')} Privater Tresor mit eigener PIN</li><li>${oicon('cloud')} Nichts verlässt dein Gerät – außer du teilst es selbst</li><li>${oicon('heart')} Keine Abo-Fallen, keine Nerv-Banner</li></ul>
         </section>
         <section class="ob-step" data-step="2" hidden>

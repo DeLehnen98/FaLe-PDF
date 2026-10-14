@@ -1,0 +1,343 @@
+# Strings the extractor finds but that are not UI text (identifiers, PDF keys, debug messages,
+# German letter/document content that stays German on purpose). One per line.
+Files
+Filesystem
+Share
+Share/Filesystem fehlt
+Notification
+scheduleNotification: id und title sind nötig
+scheduleNotification: ungültiges Datum
+Haptics
+App
+AES: ungültige Schlüssellänge
+Length
+Identity
+None
+Type
+Sig
+Contents
+Metadata
+Crypt
+Perms
+Extensions
+Datei{0}
+Escape
+Enter
+.docx,{0},.txt,text/plain,.md,.markdown,text/markdown
+.xlsx,{0},.csv,text/csv
+.txt,text/plain,.md,.markdown,text/markdown
+General
+Tabelle1
+Tabelle{0}
+text/csv;charset=utf-8
+Tab
+Home
+End
+Delete
+Backspace
+h:mm AM/PM
+h:mm:ss AM/PM
+Arbeitsblätter
+Choice
+Fallback
+text-align:{0}
+Courier New
+Times New Roman
+Subtitle
+<w:style w:type="paragraph" w:default="1" w:styleId="Normal"
+.docx,.txt,.md,.markdown,text/plain,text/markdown,application/vnd.openxmlformats-officedocument.wordprocessingml.document
+€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ
+Annot
+Action
+data-a="text"
+Arrow
+Relationship
+External
+text/markdown;charset=utf-8
+text/plain;charset=utf-8
+Summarizer
+Translator
+FaLe Tresor v1
+Georgia
+Vorname Nachname
+Musterstraße 12 · 66111 Saarbrücken · 0170 1234567 · name@example.de
+Berufserfahrung
+Projektmanagerin
+· Beispiel GmbH, Saarbrücken
+Einführung eines digitalen Ablagesystems
+Sachbearbeiterin
+Kundenbetreuung und Angebotserstellung
+Ausbildung
+Bachelor of Arts, Betriebswirtschaft
+Abitur
+· Gymnasium am Beispiel
+Kenntnisse
+Software
+Office-Programme, Projektplanung, Grundlagen Buchhaltung
+Sprachen
+Deutsch (Muttersprache), Englisch (fließend), Französisch (Grundkenntnisse)
+Führerschein
+Klasse B
+Saarbrücken, {0}
+Grafikdesignerin mit Schwerpunkt Markenauftritt
+66111 Saarbrücken
+Stationen
+Senior Designerin · Studio Beispiel
+seit 2021 · Saarbrücken
+Verantwortung für 20+ Kundenprojekte pro Jahr
+Aufbau einer gemeinsamen Gestaltungsbibliothek
+Designerin · Agentur Muster
+Fähigkeiten
+Typografie · Layout · Bildbearbeitung · Illustration · Präsentation · Englisch (C1)
+Musterstraße 12
+Beispiel GmbH
+Personalabteilung
+Frau Erika Muster
+Hauptstraße 1
+Bewerbung als Projektmanagerin – Ihre Stellenanzeige vom {0}
+Sehr geehrte Frau Muster,
+mit großem Interesse habe ich Ihre Stellenanzeige gelesen. Die beschriebenen Aufgaben passen sehr gut zu meinen Erfahrungen und Zielen – deshalb bewerbe ich mich bei Ihnen.
+In meiner aktuellen Position bei der Muster AG verantworte ich … (Beschreibe hier deine wichtigsten Erfolge und was du mitbringst.)
+Besonders reizt mich an Ihrem Unternehmen … (Warum genau diese Firma?)
+Über die Einladung zu einem persönlichen Gespräch freue ich mich sehr. Mein frühestmöglicher Eintrittstermin ist der 1. des Folgemonats.
+Firma Beispiel · Musterstraße 12 · 66111 Saarbrücken
+Herrn
+Max Mustermann
+Beispielweg 5
+66123 Saarbrücken
+Ihr Zeichen: ab-12
+Unser Zeichen: fl-34
+Telefon: 0681 123456
+E-Mail: info@example.de
+Betreff: Ihre Anfrage vom {0}
+Sehr geehrter Herr Mustermann,
+vielen Dank für Ihre Anfrage. Gerne senden wir Ihnen folgende Informationen …
+Für Rückfragen stehen wir Ihnen jederzeit zur Verfügung.
+Firma Beispiel
+Bankverbindung: Beispielbank · IBAN DE00 0000 0000 0000 0000 00 · Geschäftsführung: Vorname Nachname · Amtsgericht Saarbrücken HRB 00000
+Kunde GmbH
+Rechnungsnummer:
+Rechnungsdatum: {0}
+Leistungszeitraum: {0}
+Kundennummer: K-1001
+Beratung (Stunden)
+Gestaltung Flyer
+Druckdaten-Prüfung
+Beispielbank · IBAN DE00 0000 0000 0000 0000 00 · BIC BEISPXXX · Steuernummer 000/000/00000
+Themen
+Aufgaben
+Aufgabe – wer? bis wann?
+Ideen
+Hier ist Platz für Gedanken, Skizzen und Links.
+Kategorie
+Geplant
+Tatsächlich
+Differenz
+Gehalt
+Miete
+Lebensmittel
+Mobilität
+Freizeit
+Sparen
+Saldo
+Tätigkeit
+Stunden
+Projektarbeit
+Summe
+Sehr geehrte Damen und Herren,
+Sehr geehrte Frau {0},
+Sehr geehrter Herr {0},
+Guten Tag {0},
+Kündigung meines Mobilfunkvertrags
+Ich möchte meine Rufnummer zu einem anderen Anbieter mitnehmen. Bitte geben Sie die Rufnummer für die Übertragung frei und bestätigen Sie mir dies.
+Kündigung meiner Mitgliedschaft
+Kündigung meines Energieliefervertrags
+Gasliefervertrag
+Strom- und Gasliefervertrag
+Stromliefervertrag
+Gasliefervertrags
+Strom- und Gasliefervertrags
+Stromliefervertrags
+Kündigung meines {0}
+Lieferstelle
+Tag der Ablesung
+Der Zählerstand betrug am {0}: {1}.
+Bitte senden Sie mir die Schlussrechnung an die oben genannte Anschrift.
+Kündigung meines Versicherungsvertrags
+Kündigung meiner {0}
+Kündigung meines Abonnements
+mein Abonnement „{0}“
+Abonummer
+das Mietverhältnis
+Kündigung des Mietverhältnisses
+das Mietverhältnis über die Wohnung {0}{1}
+zum {0}
+fristgerecht zum nächstmöglichen Termin, nach meiner Berechnung zum {0}
+Für die Übergabe der Wohnung und der Schlüssel bitte ich Sie, mir rechtzeitig mögliche Termine zu nennen.
+auf das Konto IBAN {0}
+Bitte rechnen Sie die Mietkaution nach Ende des Mietverhältnisses ab und überweisen Sie das Guthaben{0}.
+mein Arbeitsverhältnis
+Kündigung meines Arbeitsverhältnisses
+Bitte stellen Sie mir ein qualifiziertes Arbeitszeugnis aus.
+Bitte teilen Sie mir mit, wie mein verbleibender Resturlaub bis zum Ende des Arbeitsverhältnisses berücksichtigt wird.
+Für die bisherige Zusammenarbeit bedanke ich mich herzlich.
+mein Abonnement bei {0}
+Kündigung {0}
+fristgerecht zum nächstmöglichen Zeitpunkt
+hiermit kündige ich {0}{1} {2}.
+Sollte eine Kündigung zu diesem Datum nicht möglich sein, gilt sie zum nächstmöglichen Zeitpunkt.
+Die Kündigung erfolgt zugleich im Namen der weiteren Mieter (
+des Arbeitsverhältnisses
+des Mietverhältnisses
+Bitte bestätigen Sie mir den Eingang dieser Kündigung und das genaue Ende {0} schriftlich.
+Ein erteiltes SEPA-Lastschriftmandat widerrufe ich mit Wirkung zum Vertragsende.
+Von Anrufen oder Nachrichten mit dem Ziel, mich als Kunden zurückzugewinnen, bitte ich abzusehen. Einer weiteren Nutzung meiner Daten für Werbezwecke widerspreche ich.
+style="text-align:right"
+Steuernummer {0}
+hiermit widerrufe ich den mit Ihnen geschlossenen Vertrag über {0} „{1}“{2}.
+Die Ware habe ich bereits an Sie zurückgeschickt.
+Die Ware sende ich Ihnen zurück.
+einschließlich der Hinsendekosten
+über denselben Zahlungsweg
+Bitte bestätigen Sie mir den Eingang dieses Widerrufs.
+Widerruf{0}
+gegen den {0}{1}{2} lege ich hiermit {3} ein.
+Begründung:
+zum Eingang der Begründung
+Zugleich beantrage ich Einsicht in die vollständige Verwaltungsakte. Bitte teilen Sie mir mit, wann und wo dies möglich ist, oder übersenden Sie mir Kopien.
+Bitte bestätigen Sie mir den Eingang dieses {0}s.
+{0} gegen den {1}{2}
+Nr. {0}
+meine Rechnung{0}{1} über {2}
+sicher ist es Ihrer Aufmerksamkeit entgangen: Für {0} konnte ich bisher keinen Zahlungseingang feststellen.
+leider ist {0} trotz Fälligkeit noch nicht beglichen.
+trotz meiner Erinnerung ist {0} weiterhin offen.
+trotz mehrfacher Erinnerung ist {0} bis heute nicht bezahlt.
+den Betrag zuzüglich {0} Mahngebühr, insgesamt {1},
+den offenen Betrag
+auf folgendes Konto: {0}
+Bitte überweisen Sie {0} bis spätestens {1}{2}.
+Sollte der Betrag bis zu diesem Datum nicht eingehen, werde ich ohne weitere Ankündigung weitere Schritte zur Durchsetzung der Forderung einleiten. Die dadurch entstehenden Kosten gehen zu Ihren Lasten.
+Sollten Sie Fragen zur Rechnung haben oder sich die Zahlung mit diesem Schreiben überschnitten haben, betrachten Sie es bitte als gegenstandslos bzw. melden Sie sich gerne bei mir.
+für meine Leistungen erlaube ich mir, folgende Rechnung zu stellen:
+Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+Rechnung Nr. {0}
+vielen Dank für Ihre Anfrage. Gerne biete ich Ihnen folgende Leistungen an:
+Dieses Angebot ist gültig bis {0}. Bei Fragen melden Sie sich gerne – ich freue mich auf Ihren Auftrag.
+Angebot Nr. {0}
+eine an mich adressierte Sendung abzuholen und den Empfang zu quittieren
+Dokumente in meinem Namen abzuholen und entgegenzunehmen
+mich bei der folgenden Angelegenheit gegenüber der Behörde zu vertreten, Anträge zu stellen und Unterlagen entgegenzunehmen
+die An-, Um- oder Abmeldung des folgenden Fahrzeugs in meinem Namen vorzunehmen
+Die Vollmacht gilt bis zum {0}.
+Die Vollmacht gilt bis auf schriftlichen Widerruf.
+Die Vollmacht gilt einmalig für den genannten Zweck.
+geboren am {0}
+Hiermit bevollmächtige ich, {0},
+Die bevollmächtigte Person weist sich mit einem gültigen Ausweisdokument aus.
+Unterschrift Vollmachtgeber/in
+Anfrage Mietschuldenfreiheitsbescheinigung
+(Mieter seit {0})
+für meine Wohnungssuche benötige ich eine Bestätigung, dass ich meine Verpflichtungen aus dem Mietverhältnis über die Wohnung {0}{1} vollständig erfüllt habe und keine Mietrückstände bestehen.
+Zur Vereinfachung habe ich einen Vordruck beigefügt.
+Ich wäre Ihnen sehr dankbar, wenn Sie mir diese Mietschuldenfreiheitsbescheinigung bis zum {0} zukommen lassen.{1}
+Vielen Dank für Ihre Unterstützung.
+Bitte um eine Mietschuldenfreiheitsbescheinigung
+Anlage: Vordruck Mietschuldenfreiheitsbescheinigung
+Mietschuldenfreiheitsbescheinigung
+Hiermit bestätige ich/bestätigen wir als Vermieter/in bzw. Hausverwaltung, dass
+die Wohnung {0} seit {1} gemietet hat und bis heute alle Mietzahlungen einschließlich Nebenkosten vollständig und pünktlich geleistet hat. Es bestehen keine Mietrückstände.
+Name und Anschrift Vermieter/in: ……………………………………………………………
+Ort, Datum, Unterschrift Vermieter/in
+über {0} bin ich
+mit großem Interesse bin ich
+{0} auf Ihre Stelle als {1} aufmerksam geworden. Die Aufgaben passen sehr gut zu meinen Erfahrungen und zu dem, was ich beruflich erreichen möchte – deshalb bewerbe ich mich bei Ihnen.
+Derzeit arbeite ich als {0}
+Ich bringe Berufserfahrung mit
+{0} {1} Jahre Berufserfahrung gesammelt
+{0}{1}. Dabei habe ich gelernt, Verantwortung zu übernehmen, Aufgaben strukturiert anzugehen und auch unter Zeitdruck verlässliche Ergebnisse zu liefern.
+{0} und {1}
+Besonders auszeichnen kann ich mich durch {0}. Diese Stärken möchte ich gerne in Ihr Team einbringen.
+An Ihrem Unternehmen reizt mich besonders: {0}
+Ich kann ab {0} bei Ihnen beginnen.
+Meine Gehaltsvorstellung liegt bei {0}.
+Über die Einladung zu einem persönlichen Gespräch freue ich mich sehr.
+Bewerbung als {0}{1}
+Anlagen: Lebenslauf, Zeugnisse
+Tel. {0}
+Ort, Datum
+Datum: {0}
+Mit freundlichen Grüßen
+Highlight
+Underline
+Multiply
+Ink
+Square
+Circle
+Line
+cm /Im0 Do Q
+Stamp
+Comment
+Pink
+text/vcard;charset=utf-8
+Outlines
+Title
+Prev
+Next
+First
+Last
+Count
+Widget
+Ff
+Unbekannte Operation: {0}
+Calibri
+Verdana
+Code 128
+Code 39
+Code 93
+Data Matrix
+Aztec
+Codabar
+Annots
+Thumb
+Tabs
+Group
+Trans
+Dur
+Rotate
+Resources
+Kids
+Fields
+Author
+Subject
+Keywords
+Creator
+United Kingdom
+"Segoe Script", "Brush Script MT", "Lucida Handwriting", "Snell Roundhand", "Apple Chancery", "Dancing Script", "URW Chancery L", "Z003", cursive
+Muster GmbH
+Musterstraße 1
+Tel. 0681 123456
+{seite}
+{seite} / {seiten}
+– {seite} –
+{datei}
+Heading1
+Heading 1
+Heading2
+Heading 2
+Heading3
+Heading 3
+Content-Type
+der die das den dem des ein eine einer eines einem einen und oder aber nicht kein keine ist sind war waren wird werden wurde
+hat haben hatte zu zum zur im in an am auf aus bei mit nach von vor für über unter um durch als wie wo was wer wann warum welche welcher welches
+es er sie wir ihr ich du man sich so auch noch nur schon sehr mehr dass daß ob wenn dann denn doch ja nein bitte gibt steht stehen
+the a an and or but not no is are was were be been to of in on at for with by from as it this that these those what which who when where why how
+Bitte erstatten Sie mir alle geleisteten Zahlungen{0} unverzüglich, spätestens innerhalb von 14 Tagen, {1}.
+Eine ausführliche Begründung reiche ich nach. Ich bitte darum, bis {0} von einer Entscheidung abzusehen.
+Bitte überweisen Sie den Gesamtbetrag von {0} innerhalb von {1} Tagen (bis {2}) unter Angabe der Rechnungsnummer{3}.
+Der Betrag von {0} ist sofort ohne Abzug fällig{1}.
+Vielen Dank für Ihren Auftrag!
+Leitung von Projekten mit bis zu 12 Beteiligten
+Kreativ, strukturiert und lösungsorientiert. Seit über fünf Jahren entwickle ich Erscheinungsbilder für kleine und mittlere Unternehmen – von der ersten Skizze bis zur fertigen Druckdatei.
+Gestaltung von Kampagnen, Broschüren und Webseiten
+Bitte überweise den Gesamtbetrag innerhalb von 14 Tagen ohne Abzug auf das unten genannte Konto. Vielen Dank für deinen Auftrag!

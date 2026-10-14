@@ -1,4 +1,5 @@
 // FaLe PDF — app entry: routing, navigation, PWA integration.
+import './i18n/index.js'; // first: English UI translation layer (top-level await before the first render)
 import { logo } from './icons.js';
 import { $, $$, toast, errorToast, initPdfInput, setDefaultPdfHandler, closeMenus, openDialog } from './ui.js';
 import * as db from './db.js';
@@ -114,6 +115,12 @@ async function route() {
     await openOfficeRoute(parts, params, { goBack });
     const s = currentScreen();
     if (s) s.hashKey = location.hash;
+    return;
+  }
+  if (top === 'ki') { // KI-Assistent (js/ai/routes.js)
+    if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
+    if (!currentMain) showMain('werkzeuge');
+    await (await import('./ai/routes.js')).openAiRoute(parts, params, { goBack });
     return;
   }
   if (EXTRA_ROUTES.includes(top)) {

@@ -132,7 +132,7 @@ export function diffTokens(a, b) {
 }
 
 // ------------------------------------------------------------------------------- words
-async function extractWords(pdf, onProgress) {
+async function extractWords(pdf, onProgress, ocr = null) {
   const pages = [];
   const words = [];
   for (let n = 1; n <= pdf.numPages; n++) {
@@ -140,6 +140,12 @@ async function extractWords(pdf, onProgress) {
     const base = page.getViewport({ scale: 1, rotation: page.rotate });
     let pt = { chars: [], text: '', map: [] };
     try { pt = await pageChars(page, base); } catch (e) { console.warn(e); }
+    // scanned page: recognise the text (OCR) when the user asked for it
+    if (ocr && pt.text.replace(/\s+/g, '').length < 20) {
+      const { ocrPageChars } = await import('../ocr/pagechars.js');
+      pt = await ocrPageChars(page, base, { lang: ocr.lang, psm: ocr.psm, signal: ocr.signal, onProgress: p => ocr.onProgress && ocr.onProgress(n, pdf.numPages, p) });
+      ocr.count = (ocr.count || 0) + 1;
+    }
     const start = words.length;
     const re = /\S+/g;
     let m;
@@ -214,7 +220,7 @@ export async function mount(screen, { docId }) {
   screen.body.appendChild(wrap);
   const out = wrap.querySelector('[data-out]');
   const runBtn = h(`<button class="btn btn-primary" type="button">${icon('compare')} Vergleichen</button>`);
-  runBtn.addEventListener('click', run);
+  runBtn.addEventListener('click', () => run());
 
   function slot(which) {
     const el = wrap.querySelector(`[data-slot="${which}"]`);
@@ -245,18 +251,28 @@ export async function mount(screen, { docId }) {
     session = null;
   }
 
-  async function run() {
+  async function run(opts = {}) {
     if (!A || !B) return;
+    let ocr = null;
+    if (opts.ocr) {
+      const ui = await import('../ocr/ui.js');
+      if (!await ui.ensureOcrReady(ui.getLangPref())) return;
+      const panel = ui.progressPanel({ title: 'Text wird erkannt …' });
+      ocr = { lang: ui.getLangPref(), psm: ui.getPsmPref(), signal: panel.signal, panel, count: 0,
+        onProgress: (n, total, p) => panel.update({ ...p, page: n, index: n - 1, total }) };
+    }
     runBtn.disabled = true;
-    const prog = progress('Lese Dokumente …');
+    const prog = ocr ? { set: t => ocr.panel.setTitle(t), done: () => ocr.panel.close() } : progress('Lese Dokumente …');
     closeSession();
     out.innerHTML = '';
     try {
       const { pdf: pdfA } = await loadPdf(await getDocBytes(A.id), { name: A.name, key: A.id });
       const { pdf: pdfB } = await loadPdf(await getDocBytes(B.id), { name: B.name, key: B.id });
       session = { pdfA, pdfB };
-      const dataA = await extractWords(pdfA, (i, n) => prog.set(`Lese alte Version … ${i}/${n}`));
-      const dataB = await extractWords(pdfB, (i, n) => prog.set(`Lese neue Version … ${i}/${n}`));
+      const dataA = await extractWords(pdfA, (i, n) => prog.set(`Lese alte Version … ${i}/${n}`), ocr);
+      const dataB = await extractWords(pdfB, (i, n) => prog.set(`Lese neue Version … ${i}/${n}`), ocr);
+      if (ocr && ocr.count) import('../extras/stats.js').then(m => m.track('ocr_pages', ocr.count)).catch(() => {});
+      session.ocr = !!ocr;
       if (!alive) return;
       prog.set('Vergleiche …');
       await tick();
@@ -265,7 +281,10 @@ export async function mount(screen, { docId }) {
       Object.assign(session, { dataA, dataB, changes, ops });
       showResults();
       toast(changes.length ? `${changes.length} Änderung${changes.length === 1 ? '' : 'en'} gefunden.` : 'Keine Textunterschiede gefunden.', changes.length ? 'success' : 'info');
-    } catch (e) { errorToast(e, 'Vergleich fehlgeschlagen.'); }
+    } catch (e) {
+      if (e && e.name === 'AbortError') toast('Texterkennung abgebrochen.', 'info');
+      else errorToast(e, (e && e.userMessage) || 'Vergleich fehlgeschlagen.');
+    }
     finally { prog.done(); runBtn.disabled = !(A && B); }
   }
 
@@ -275,6 +294,7 @@ export async function mount(screen, { docId }) {
   function showResults() {
     const { changes, dataA, dataB } = session;
     const noText = !dataA.words.length || !dataB.words.length;
+    const emptyPages = [...dataA.pages, ...dataB.pages].filter(p => p.end === p.start).length;
     const cnt = t => changes.filter(c => c.type === t).length;
     const insW = changes.reduce((s, c) => s + (c.b1 - c.b0), 0), delW = changes.reduce((s, c) => s + (c.a1 - c.a0), 0);
     // per page (new version), deletions attributed to the position in the new version
@@ -292,6 +312,11 @@ export async function mount(screen, { docId }) {
       ${perPage.size ? `<div class="cmp-pages" role="list">${[...perPage.entries()].sort((p, q) => p[0] - q[0]).map(([p, e]) => `<button type="button" class="cmp-pagechip" role="listitem" data-bpage="${p}"><b>Seite ${p}</b> ${[e.insert ? `<span class="ins">+${e.insert}</span>` : '', e.delete ? `<span class="del">−${e.delete}</span>` : '', e.replace ? `<span class="rep">~${e.replace}</span>` : ''].join(' ')}</button>`).join('')}</div>` : ''}
     </div>`);
     out.appendChild(sum);
+    if (emptyPages && !session.ocr) {
+      const offer = h(`<div class="ocr-offer">${icon('scan')}<span>${emptyPages} Seite${emptyPages === 1 ? ' enthält' : 'n enthalten'} keinen Text (Scan). Mit der Texterkennung lassen sich auch gescannte Versionen Wort für Wort vergleichen.</span><button class="btn btn-soft btn-sm" type="button" data-cmp-ocr>Text per OCR erkennen</button></div>`);
+      offer.querySelector('[data-cmp-ocr]').addEventListener('click', () => run({ ocr: true }));
+      out.appendChild(offer);
+    }
     const bar = h(`<div class="cmp-bar">
       <div class="seg" role="group" aria-label="Ansicht">
         <button type="button" data-view="side">Nebeneinander</button><button type="button" data-view="overlay">Überlagert</button><button type="button" data-view="text">Text</button></div>

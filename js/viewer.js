@@ -201,6 +201,7 @@ function wire() {
     const id = cur.doc.id;
     const anchor = e.currentTarget;
     showMenu(anchor, [
+      { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
       { label: 'Lesemodus', icon: 'book', onClick: () => openReflowMode() },
       { label: isMarked(id, S.pdfViewer.currentPageNumber) ? 'Lesezeichen entfernen' : 'Lesezeichen setzen', icon: 'bookmark', onClick: () => toggleMark() },
       { label: 'Vorlesen', icon: 'speaker', onClick: () => startReading() },
@@ -211,6 +212,7 @@ function wire() {
       { label: 'Formular erstellen', icon: 'formAdd', onClick: () => (location.hash = `#/werkzeug/formular-erstellen?doc=${id}`) },
       { label: 'Seiten zuschneiden', icon: 'crop', onClick: () => (location.hash = `#/werkzeug/zuschneiden?doc=${id}`) },
       { label: 'PDF vergleichen', icon: 'compare', onClick: () => (location.hash = `#/werkzeug/vergleichen?doc=${id}`) },
+      { label: 'Text erkennen (OCR)', icon: 'scan', onClick: () => (location.hash = `#/werkzeug/durchsuchbar?doc=${id}`) },
       { label: 'Konvertieren …', icon: 'export', onClick: () => setTimeout(() => convertMenu(anchor, id), 0) },
       { label: 'Komprimieren', icon: 'compress', onClick: () => (location.hash = `#/werkzeug/komprimieren?doc=${id}`) },
       { label: 'Schwärzen', icon: 'redact', onClick: () => (location.hash = `#/werkzeug/schwaerzen?doc=${id}`) },
@@ -848,6 +850,8 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
     if (startPage > 1) S.pdfViewer.currentPageNumber = startPage;
     q('loading').hidden = true;
     syncMarkButton();
+    // image-only PDF (scan/photo): offer the text recognition
+    import('./ocr/banner.js').then(m => m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
     saveProgress(id, startPage, pdf.numPages);
     applyWakeLock();
     if (query) openFind(query);
@@ -891,6 +895,7 @@ export async function closeViewer({ keepVisible = false } = {}) {
     try { await session.pdf.destroy(); } catch {}
   }
   if (S) {
+    q('stage').querySelectorAll('.ocr-banner').forEach(b => b.remove());
     q('thumbs').innerHTML = '';
     q('outline').innerHTML = '';
     q('marks').innerHTML = '';

@@ -11,6 +11,23 @@
       Platzhalter `[…]` ausfüllen, Web-Version deployen, URL `https://[DOMAIN]/datenschutz.html` testen.
 - [ ] Link in der App unter **Ich → Rechtliches** auf Datenschutz und Impressum vorhanden.
 
+## A2. Cloud-KI, Werbevideos, FaLe Plus (einmalig) → Schritt für Schritt in [AI-SETUP.md](AI-SETUP.md)
+
+- [ ] **Supabase-Migration** `supabase/migrations/20261014120100_fale_ai_retention.sql` ausführen (Löschfrist 30 Tage,
+      Plus-Speicherung). Die Basis-Migration ist bereits eingespielt.
+- [ ] **KI-Anbieter-Schlüssel** (`ANTHROPIC_API_KEY`) in Vercel eintragen **und beim Anbieter ein Ausgabenlimit setzen**.
+- [ ] Echte **Preise** (`AI_PRICE_IN_USD_PER_MTOK`, `AI_PRICE_OUT_USD_PER_MTOK`) und `USD_EUR` in Vercel eintragen.
+- [ ] Monatsbudget `AI_MONTHLY_BUDGET_EUR` (Standard 10) prüfen.
+- [ ] Datenschutzerklärung Abschnitte 7–9: KI-Anbieter, Hosting, Supabase-Region, AdMob – Platzhalter ausfüllen.
+- [ ] **AdMob**: echte App-ID + Rewarded-Anzeigenblock in `js/ai/config.js` eintragen, `ADMOB_TESTING: false`,
+      SSV-Callback-URL `https://fale-pdf.vercel.app/api/admob-ssv` im Anzeigenblock hinterlegen,
+      `ADMOB_REWARDED_AD_UNITS` in Vercel setzen. **Niemals echte Anzeigen selbst anklicken** (Kontosperre).
+- [ ] **Google UMP**: im AdMob-Konto unter „Datenschutz und Messaging“ eine **DSGVO-Einwilligungsnachricht** veröffentlichen
+      (sonst erscheint in der EU kein Einwilligungsdialog und es werden keine Anzeigen geladen).
+- [ ] **Play Console**: Abos `fale_plus_monthly` (Basis-Abo `monthly`) und `fale_plus_yearly` (Basis-Abo `yearly`) anlegen,
+      Dienstkonto verknüpfen, `GOOGLE_PLAY_SA_JSON` in Vercel eintragen. Ohne diese Variable zeigt die App „bald verfügbar“.
+- [ ] Nach dem Eintragen von Vercel-Variablen **neu deployen** (Variablen gelten erst für neue Deployments).
+
 ## B. Google-Play-Entwicklerkonto
 
 - [ ] Konto unter <https://play.google.com/console> anlegen: einmalig **25 USD**, Identitätsprüfung
@@ -34,7 +51,7 @@
       sobald die Secrets gesetzt sind). **Play App Signing** aktiviert lassen (Standard).
 - [ ] **versionCode** steigt bei jedem Upload: in `package.json` die `version` erhöhen
       (`2.0.1` → versionCode `20001`). Gleicher versionCode wird von Play abgelehnt.
-- [ ] Keine heiklen Berechtigungen (siehe [data-safety.md](data-safety.md)).
+- [ ] Keine heiklen Berechtigungen außer `AD_ID` (Werbevideos) und `BILLING` (FaLe Plus) – siehe [data-safety.md](data-safety.md).
 - [ ] 16-KB-Seitengröße: die App enthält keinen eigenen nativen Code (nur Java/WebView) → erfüllt.
 
 ## D. Store-Eintrag
@@ -59,11 +76,13 @@
 ## E. App-Inhalte (Play Console → „App-Inhalte“)
 
 - [ ] Datenschutzerklärung (URL)
-- [ ] Werbung: Nein
+- [ ] Werbung: **Ja** (freiwillige Rewarded-Videos, AdMob)
+- [ ] Werbe-ID: **Ja**, Zweck Werbung
+- [ ] In-App-Käufe: Abo „FaLe Plus“ (Preise 2,99 €/Monat, 24,99 €/Jahr in der Play Console)
 - [ ] App-Zugriff: keine Anmeldung nötig
 - [ ] Content-Rating-Fragebogen (IARC) – Antworten in [data-safety.md](data-safety.md)
 - [ ] Zielgruppe: 18+
-- [ ] Datensicherheit: „Keine Daten erhoben / geteilt“ – siehe [data-safety.md](data-safety.md)
+- [ ] Datensicherheit: neue Angaben (Cloud-KI-Text, pseudonyme ID, AdMob, Kaufverlauf) – siehe [data-safety.md](data-safety.md)
 - [ ] Regierungs-App / Finanz / Gesundheit / Nachrichten: Nein
 
 ## F. Jeder Release
@@ -89,7 +108,12 @@
 - [ ] Erinnerung setzen → Benachrichtigungs-Erlaubnis → Benachrichtigung kommt → Tippen öffnet die App
 - [ ] Hell/Dunkel umschalten: Statusleiste passt sich an, nichts liegt unter der Statusleiste
 - [ ] Tastatur verdeckt keine Eingabefelder (Editor, Formulare)
-- [ ] Flugmodus: alles funktioniert offline
+- [ ] Flugmodus: alles funktioniert offline (KI-Assistent zeigt „Du bist offline“, nichts blockiert)
+- [ ] **KI**: Einwilligungsdialog beim ersten Mal, Chat mit Dokument (Seitenangabe antippen → richtige Seite), Zusammenfassen,
+      Übersetzen, Schreibhilfe (Text markieren → ⋮ → KI-Schreibhilfe), Formel-Assistent, Folien per KI, Lernkarten
+- [ ] **Werbevideo** (mit Test-IDs!): UMP-Dialog erscheint (in der EU), Video läuft, danach „+3“ im Kontingent
+      (kommt über die Server-Bestätigung, kann einige Sekunden dauern)
+- [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Kauf, „Käufe wiederherstellen“, Abo verwalten
 - [ ] Update über die vorherige Version installieren: Dateien bleiben erhalten
 
 ## Hinweise

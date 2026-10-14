@@ -53,6 +53,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
       speechSupported ? { label: 'Vorlesen', icon: 'speaker', onClick: () => readAloud() } : null,
       aiCaps.summarize ? { label: 'Zusammenfassen (auf dem Gerät)', icon: 'summary', onClick: () => import('../extras/ai.js').then(m => m.aiForText(ed.innerText, 'summarize', { title: shell.name })) } : null,
       aiCaps.translate ? { label: 'Übersetzen (auf dem Gerät)', icon: 'translate', onClick: () => import('../extras/ai.js').then(m => m.aiForText(ed.innerText, 'translate', { title: shell.name })) } : null,
+      { label: 'KI-Schreibhilfe …', icon: 'sparkle', onClick: () => import('../ai/assist.js').then(m => m.writerAssist({ ed, range: savedRange, onChange: () => { shell.markDirty(); onInput(); } })) },
       '-',
       { label: 'Teilen', icon: 'share', onClick: async () => { const b = await serialize(kind); shareBlob(b, shell.name, KINDS[kind].mime); } },
       { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },

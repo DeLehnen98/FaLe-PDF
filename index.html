@@ -18,7 +18,12 @@
   <script>
     // Apply stored theme before first paint (no flash).
     try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    // UI language (js/i18n): Automatisch = first German/English entry of navigator.languages, else English.
+    // In English mode the page stays hidden until the first translation pass (max. 150 ms).
+    try { var l = localStorage.getItem('fale-lang'); if (l !== 'de' && l !== 'en') { l = 'en'; var nl = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de']; for (var i = 0; i < nl.length; i++) { if (/^de\b/i.test(nl[i])) { l = 'de'; break; } if (/^en\b/i.test(nl[i])) break; } }
+      document.documentElement.lang = l; if (l === 'en') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 150); } } catch (e) {}
   </script>
+  <style>html.i18n-hold body { visibility: hidden; }</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>

@@ -13,7 +13,8 @@ const NM = process.env.FALE_NODE_MODULES || join(ROOT, 'node_modules');
 
 const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '.vercel',
   'package.json', 'package-lock.json', 'vercel.json', 'README.md', 'vendor-extra',
-  'android', 'store', 'capacitor.config.json']);
+  'android', 'store', 'capacitor.config.json',
+  'api', 'supabase']); // serverless functions + DB migrations are not static app files
 // `--native` (or FALE_TARGET=native): build for the Android app (Capacitor webDir).
 const NATIVE = process.argv.includes('--native') || process.env.FALE_TARGET === 'native';
 
@@ -91,6 +92,8 @@ const walk = (dir) => readdirSync(dir).flatMap(n => {
 const files = walk(DIST)
   .map(p => relative(DIST, p).split(sep).join('/'))
   .filter(r => r !== 'sw.js' && r !== 'vercel.json' && !r.startsWith('.') && !r.endsWith('.map'))
+  // OCR engine + language data (~13 MB) are cached by the service worker on first use, not at install
+  .filter(r => !r.startsWith('vendor/tesseract/'))
   .sort();
 const h = createHash('sha256');
 for (const r of files) { h.update(r); h.update(readFileSync(join(DIST, r))); }

@@ -726,3 +726,87 @@
 /* viewer side panel: three tabs share the width */
 .v-panel .tabs .tab { flex: 1 1 0; min-width: 0; padding-left: 4px; padding-right: 4px; font-size: 13.5px; text-align: center; white-space: nowrap; }
 @media (max-width: 720px) { .qt-code { width: min(64vw, 260px); } }
+
+/* ---------------------------------------------------------------- Texterkennung (OCR) */
+.ocr-src { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 14px; }
+.ocr-src .btn { flex: 1 1 200px; }
+.ocr-items { display: grid; gap: 8px; margin-bottom: 14px; }
+.ocr-item { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.ocr-item img, .ocr-item .ocr-pdf { width: 52px; height: 52px; flex: none; border-radius: 8px; object-fit: cover; background: var(--surface-2); display: grid; place-items: center; color: var(--text-2); }
+.ocr-item .grow { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ocr-item .doc-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ocr-item .input-sm { height: 36px; margin-top: 4px; font-size: 14px; max-width: 280px; }
+.ocr-empty { display: flex; align-items: center; gap: 10px; padding: 18px; border: 1.5px dashed var(--border); border-radius: var(--radius-md); color: var(--text-3); font-size: 14px; }
+.ocr-empty .ic { width: 22px; height: 22px; flex: none; }
+.ocr-optcard { margin-bottom: 12px; }
+.ocr-opts .field:last-child { margin-bottom: 0; }
+.ocr-opts .seg { flex-wrap: wrap; }
+.ocr-privacy { display: flex; align-items: center; gap: 8px; color: var(--text-3); font-size: 13px; margin: 6px 2px 0; }
+.ocr-privacy .ic { width: 18px; height: 18px; flex: none; color: var(--accent); }
+.ocr-note { display: flex; gap: 12px; align-items: flex-start; }
+.ocr-note > .ic { width: 24px; height: 24px; flex: none; color: var(--primary); margin-top: 2px; }
+.ocr-note p { margin: 0 0 8px; }
+.ocr-note p:last-child { margin-bottom: 0; }
+.ocr-sum { display: flex; align-items: center; gap: 12px; padding: 12px 14px; margin-bottom: 14px; border-radius: var(--radius-md); background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); }
+.ocr-sum > .ic { width: 24px; height: 24px; flex: none; color: var(--accent); }
+.ocr-sum > div { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ocr-page { padding: 12px 14px 14px; margin-bottom: 12px; }
+.ocr-page-head { display: flex; align-items: center; gap: 10px; justify-content: space-between; margin-bottom: 8px; }
+.ocr-page-head strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ocr-conf { font-size: 12.5px; font-weight: 700; padding: 2px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); flex: none; }
+.ocr-conf.low { background: var(--danger-soft); color: var(--danger); }
+.ocr-text { width: 100%; min-height: 120px; resize: vertical; font: 15px/1.55 var(--font); padding: 10px 12px; height: auto; }
+.ocr-table { padding: 0; margin-bottom: 12px; overflow: hidden; }
+.ocr-tscroll { overflow: auto; max-height: 360px; }
+.ocr-tbl { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+.ocr-tbl td { border: 1px solid var(--border); padding: 5px 9px; white-space: nowrap; }
+.ocr-tbl tr:first-child td { background: var(--surface-2); font-weight: 650; }
+
+/* floating progress panel (page x/y, ETA, cancel) */
+.ocr-panel { position: fixed; left: 50%; top: calc(70px + var(--safe-t)); z-index: 120; width: min(440px, calc(100vw - 24px)); transform: translate(-50%, -14px); opacity: 0;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 14px; transition: transform .2s, opacity .2s; }
+.ocr-panel.show { transform: translate(-50%, 0); opacity: 1; }
+.ocr-panel-head { display: flex; align-items: center; gap: 10px; }
+.ocr-panel-head strong { flex: 1; font-size: 15px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ocr-panel-head .spinner { border-color: color-mix(in srgb, var(--primary) 25%, transparent); border-top-color: var(--primary); }
+.ocr-bar { height: 6px; border-radius: 99px; background: var(--surface-3); overflow: hidden; margin: 10px 0 8px; }
+.ocr-bar > span { display: block; height: 100%; width: 0; background: var(--primary); border-radius: inherit; transition: width .25s; }
+.ocr-panel-info { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--text-2); }
+.ocr-panel-info [data-eta] { flex: none; color: var(--text-3); }
+
+/* viewer banner for image-only PDFs */
+.ocr-banner { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); z-index: 6; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  width: min(620px, calc(100% - 24px)); padding: 10px 12px 10px 14px; border-radius: var(--radius-md); background: var(--surface); color: var(--text); border: 1px solid var(--border); box-shadow: var(--shadow-md); font-size: 14px; }
+.ocr-banner > .ic { width: 22px; height: 22px; flex: none; color: var(--primary); }
+.ocr-banner > span { flex: 1 1 220px; min-width: 0; }
+.ocr-banner .ocr-banner-act { display: flex; gap: 6px; margin-left: auto; }
+#viewer.has-find .ocr-banner { top: 64px; }
+
+/* in-tool OCR offers (Lesemodus, Vergleichen, Schwärzen, PDF zu Word) */
+.ocr-offer { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 14px; margin: 12px 0; border-radius: var(--radius-md); border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--border)); background: color-mix(in srgb, var(--primary-soft) 60%, var(--surface)); font-size: 14px; }
+.ocr-offer > .ic { width: 22px; height: 22px; flex: none; color: var(--primary); }
+.ocr-offer > span { flex: 1 1 220px; }
+
+/* settings row */
+.ocr-set-status { display: block; font-size: 13px; color: var(--text-3); margin-top: 2px; }
+.ocr-set-status.ok { color: var(--accent); }
+
+/* business card */
+.bc-photo { border-radius: var(--radius-md); overflow: hidden; background: var(--surface-2); margin-bottom: 14px; max-height: 260px; display: grid; place-items: center; }
+.bc-photo img { max-width: 100%; max-height: 260px; display: block; object-fit: contain; }
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.bc-grid .bc-name, .bc-grid .bc-firma, .bc-grid .bc-email, .bc-grid .bc-strasse { grid-column: 1 / -1; }
+.bc-raw { white-space: pre-wrap; font-size: 13px; color: var(--text-2); margin: 0; }
+@media (max-width: 520px) { .bc-grid { grid-template-columns: 1fr; } }
+.sc-ocr { align-items: flex-start; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+.sc-ocr input { flex: none; margin-top: 2px; }
+.sc-ocr > span > strong, .sc-ocr > span > span { display: block; }
+.ocr-offer.check { cursor: pointer; align-items: flex-start; }
+.ocr-offer.check input { flex: none; margin-top: 1px; }
+.rf-noscan-act { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.rf-doc > .ocr-offer { font-family: system-ui, sans-serif; font-size: 14px; }
+@media (max-width: 720px) {
+  .ocr-banner { top: calc(64px + var(--safe-t)); padding: 8px 8px 8px 12px; gap: 8px; }
+  #viewer.has-find .ocr-banner { top: calc(120px + var(--safe-t)); }
+  .ocr-banner > span:first-of-type { flex: 1 1 150px; }
+}

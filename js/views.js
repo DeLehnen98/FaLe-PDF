@@ -102,7 +102,7 @@ export async function renderHome() {
       <div data-search></div>
       <div class="free-card card" data-free hidden>
         <span class="free-ic">${oicon('gift')}</span>
-        <div><strong>Alles gratis – auch die Pro-Funktionen</strong><span>Kein Abo, keine Werbung, kein Konto. Deine Dateien verlassen nie dein Gerät.</span></div>
+        <div><strong>Alles gratis – auch die Pro-Funktionen</strong><span>Kein Abo nötig, keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
         <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
       </div>
       <div class="rem-start" data-rem hidden></div>
@@ -115,6 +115,7 @@ export async function renderHome() {
         <a class="lt-chip" role="listitem" href="#/schreiben">${oicon('notes')}<span>Alle Briefe</span></a>
         <a class="lt-chip" role="listitem" href="#/tresor">${oicon('vault')}<span>Tresor</span></a>
       </div>
+      <div class="ai-start" data-ai-start hidden></div>
       <div class="continue-box" data-continue hidden></div>
       <h2 class="section-title">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
       <div class="tiles" role="list"></div>
@@ -125,6 +126,7 @@ export async function renderHome() {
       </div>
       <div class="doc-list" data-list role="tabpanel"></div>
       <div class="month-box" data-month hidden></div>`;
+    import('./ai/entry.js').then(m => m.renderStartCard($('[data-ai-start]', el))).catch(() => {}); // KI-Assistent card (no network)
     $('[data-search]', el).appendChild(searchForm('home-search', 'Dateien und Inhalte durchsuchen', q => { location.hash = q ? `#/suche?q=${encodeURIComponent(q)}` : '#/suche'; }));
     const free = $('[data-free]', el);
     free.hidden = lsGet('fale-free-card', '') === 'hidden';
@@ -207,10 +209,11 @@ export function renderTools(initialQ = null) {
   const el = viewEl('werkzeuge');
   if (!el.dataset.built) {
     el.dataset.built = '1';
-    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alle Werkzeuge arbeiten lokal – nichts wird hochgeladen. Auch die Pro-Funktionen sind kostenlos.</p></div></div>
+    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alle Werkzeuge arbeiten lokal – nichts wird hochgeladen, außer du nutzt bewusst die Cloud-KI. Auch die Pro-Funktionen sind kostenlos.</p></div></div>
       <div data-search></div>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
       <section class="tool-section" data-section="alltag"><h2 class="section-title">Alltag &amp; Organisation</h2><div class="tool-grid alltag-grid"></div></section>
+      <section class="tool-section" data-section="ki" data-ai-section hidden></section>
       <div data-groups></div>
       <p class="panel-empty" data-noresult hidden>Kein Werkzeug gefunden.</p>`;
     const officeCards = [
@@ -262,6 +265,7 @@ export function renderTools(initialQ = null) {
     const form = searchForm('tool-search', 'Werkzeug suchen, z. B. „Word“ oder „Passwort“', filter, filter);
     $('[data-search]', el).appendChild(form);
     el._filter = filter;
+    import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
   }
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
 }
@@ -590,6 +594,7 @@ export async function renderSettings() {
       <a class="action-card" href="#/schreiben"><span class="tile-ic">${oicon('letter')}</span><span><strong>Schreiben & Vorlagen</strong><span class="muted small">Kündigung, Rechnung, Vollmacht …</span></span></a>
       <a class="action-card" href="#/papierkorb"><span class="tile-ic">${oicon('trash')}</span><span><strong>Papierkorb</strong><span class="muted small">${trashN ? `${trashN} Datei${trashN === 1 ? '' : 'en'}` : 'Leer'}</span></span></a>
     </div>
+    <div data-ai-me></div>
     <div class="month-box" data-month-me></div>
     <h2 class="section-title">Einstellungen</h2>
     <div class="card settings-group">
@@ -619,7 +624,7 @@ export async function renderSettings() {
     <div class="card card-pad">
       <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
         <strong>Alles bleibt auf deinem Gerät.</strong>
-        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert komplett offline. Es gibt kein Konto, keine Uploads, keine Werbung und kein Tracking. Deine Dateien werden ausschließlich im Speicher dieses Browsers abgelegt. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.</p>
+        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Es gibt kein Konto, keine Werbebanner und kein Tracking. Deine Dateien werden ausschließlich im Speicher dieses Geräts abgelegt. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.</p>
       </div></div>
       <p class="muted small" style="margin-top:12px">Version 2.0.0 · Ein Projekt von FaLe.dev</p>
       <strong>Open-Source-Komponenten</strong>
@@ -673,4 +678,8 @@ export async function renderSettings() {
     toast(e.target.checked ? '„Dein Monat“ wird angezeigt' : '„Dein Monat“ ausgeblendet – es wird nichts mehr gezählt.', 'success');
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
+  import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
+  import('./i18n/index.js').then(m => m.mountLangSettings(el)).catch(() => {}); // Sprache: Automatisch / Deutsch / English
+  // OCR: "OCR-Daten für offline laden" (status, size) + licences of tesseract.js, -core, tessdata_fast
+  import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});
 }

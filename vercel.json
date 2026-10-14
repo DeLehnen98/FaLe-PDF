@@ -4,6 +4,9 @@
   "outputDirectory": "dist",
   "framework": null,
   "cleanUrls": false,
+  "functions": {
+    "api/**/*.js": { "maxDuration": 60 }
+  },
   "headers": [
     { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }, { "key": "Service-Worker-Allowed", "value": "/" }] },
     { "source": "/(.*)\\.mjs", "headers": [{ "key": "Content-Type", "value": "text/javascript; charset=utf-8" }] },

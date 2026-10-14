@@ -10,6 +10,8 @@ import { ensureCss, tick, proBadge, updateFoot } from './common.js';
 import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad } from './scanproc.js';
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
+const OCR_KEY = 'fale-scan-ocr';
+const ocrPref = () => { try { return localStorage.getItem(OCR_KEY) !== '0'; } catch { return true; } };
 import { getDetector, showResultSheet } from './qrscan.js';
 
 const A4 = [595.28, 841.89];
@@ -472,6 +474,7 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
         ${isId ? '' : `<div class="field"><span class="field-label">Seitenformat</span><div class="seg" role="group" aria-label="Seitenformat"><button type="button" data-size="a4">A4</button><button type="button" data-size="fit">Wie Scan</button></div></div>`}
         <div class="field"><span class="field-label">Qualität</span><div class="seg" role="group" aria-label="Qualität">${Object.entries(QUALITY).map(([k, v]) => `<button type="button" data-q="${k}">${v.label}</button>`).join('')}</div></div>
         <label class="field" style="margin-bottom:0"><span class="field-label">Dateiname</span><input class="input" data-name value="${esc(S.name)}" maxlength="120"></label>
+        ${isId ? '' : `<label class="check sc-ocr"><input type="checkbox" data-ocr ${ocrPref() ? 'checked' : ''}><span><strong>Text erkennen – PDF durchsuchbar machen</strong><span class="muted small">Texterkennung (OCR) direkt auf dem Gerät: Text lässt sich danach suchen und kopieren.<span data-ocrnote></span></span></span></label>`}
       </div>
       <div data-result></div></div>`);
     screen.body.appendChild(wrap);
@@ -521,6 +524,13 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
       sync();
     }));
     wrap.querySelector('[data-name]').addEventListener('input', e => { S.name = e.target.value; });
+    const ocrBox = wrap.querySelector('[data-ocr]');
+    if (ocrBox) ocrBox.addEventListener('change', () => { try { localStorage.setItem(OCR_KEY, ocrBox.checked ? '1' : '0'); } catch {} });
+    if (ocrBox) import('../ocr/assets.js').then(async a => {
+      const st = await a.offlineStatus();
+      const note = wrap.querySelector('[data-ocrnote]');
+      if (note && (st.mode === 'missing' || st.mode === 'partial')) note.textContent = ` Beim ersten Mal werden einmalig ca. ${a.mbLabel(a.approxBytes())} Sprachdaten geladen.`;
+    }).catch(() => {});
     const more = wrap.querySelector('[data-more]');
     if (more) more.addEventListener('click', () => { S.replace = null; showCapture(); });
     const files = wrap.querySelector('[data-files]');
@@ -736,7 +746,20 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
   async function savePdf(btn, resultBox) {
     if (!S.pages.length) return;
     btn.disabled = true;
-    const prog = progress('Erstelle PDF …');
+    // optional text recognition (searchable PDF)
+    let ocr = null;
+    if (!isId && ocrPref()) {
+      const [ui, assets] = await Promise.all([import('../ocr/ui.js'), import('../ocr/assets.js')]);
+      // the visible option (with its size note) is the consent here – no extra dialog when saving
+      const ready = await assets.canRunNow(ui.langsOf(ui.getLangPref()));
+      if (!ready.ok) toast(`Ohne Internetverbindung ist die Texterkennung beim ersten Mal nicht möglich – der Scan wird ohne Text gespeichert.`, 'info', { timeout: 5200 });
+      else {
+        try { localStorage.setItem('fale-ocr-consent', '1'); } catch {}
+        const [engine, tl] = await Promise.all([import('../ocr/engine.js'), import('../ocr/textlayer.js')]);
+        ocr = { ui, engine, tl, lang: ui.getLangPref(), panel: ui.progressPanel({ title: 'Scan wird gespeichert …', total: S.pages.length }), t0: Date.now(), done: 0, words: 0, failed: false };
+      }
+    }
+    const prog = ocr ? { set: () => {}, done: () => {} } : progress('Erstelle PDF …');
     try {
       const { PDFDocument } = await loadPdfLib();
       const out = await PDFDocument.create();
@@ -764,19 +787,39 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
           const c = await processPage(S.pages[i], { maxSide: Q.max });
           const blob = await canvasToBlobP(c, 'image/jpeg', Q.q);
           const iw = c.width, ih = c.height;
+          // text recognition on the processed page (same pixels as the embedded image)
+          let words = null;
+          if (ocr && !ocr.failed && !ocr.panel.signal.aborted) {
+            const k = i;
+            const eta = () => (ocr.done ? ((Date.now() - ocr.t0) / ocr.done) * (S.pages.length - k) / 1000 : null);
+            try {
+              const r = await ocr.engine.recognize(c, { lang: ocr.lang, signal: ocr.panel.signal, onProgress: p => ocr.panel.update({ ...p, index: k, total: S.pages.length, page: k + 1, eta: eta() }) });
+              words = r.words;
+              ocr.done++;
+            } catch (e) {
+              if (!ocr.engine.isAbort(e)) { ocr.failed = true; errorToast(e, 'Die Texterkennung ist fehlgeschlagen – der Scan wird ohne Text gespeichert.'); }
+            }
+          }
           c.width = c.height = 0;
           const img = await out.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+          let rect;
           if (S.size === 'a4') {
             const [pw, ph] = iw > ih ? [A4[1], A4[0]] : A4;
             const f = Math.min(pw / iw, ph / ih);
             const w = iw * f, hh = ih * f;
             const pg = out.addPage([pw, ph]);
+            rect = [pg, (pw - w) / 2, (ph - hh) / 2, w, hh];
             pg.drawImage(img, { x: (pw - w) / 2, y: (ph - hh) / 2, width: w, height: hh });
           } else {
             const long = A4[1];
             const [pw, ph] = iw > ih ? [long, long * ih / iw] : [long * iw / ih, long];
             const pg = out.addPage([pw, ph]);
+            rect = [pg, 0, 0, pw, ph];
             pg.drawImage(img, { x: 0, y: 0, width: pw, height: ph });
+          }
+          if (words && words.length) {
+            const [pg, x, y, w, hh] = rect;
+            ocr.words += await ocr.tl.addTextLayer(out, pg, words, ocr.tl.imageMapper(x, y, w, hh, iw, ih));
           }
           await tick();
         }
@@ -787,8 +830,10 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
       prog.set('Speichere …');
       const res = await saveResult(await saveDoc(out), `${name}.pdf`);
       trackStat('scans');
+      if (ocr && ocr.done) trackStat('ocr_pages', ocr.done);
+      const ocrNote = ocr ? (ocr.panel.signal.aborted ? ' · Texterkennung abgebrochen' : ocr.done ? ' · durchsuchbar' : '') : '';
       resultBox.innerHTML = '';
-      const card = resultCard(res, { title: isId ? 'Ausweis gespeichert' : 'Scan gespeichert', note: isId ? 'A4 · Originalgröße' : `${S.pages.length} Seite${S.pages.length === 1 ? '' : 'n'}` });
+      const card = resultCard(res, { title: isId ? 'Ausweis gespeichert' : 'Scan gespeichert', note: isId ? 'A4 · Originalgröße' : `${S.pages.length} Seite${S.pages.length === 1 ? '' : 'n'}${ocrNote}` });
       const again = h(`<button class="btn btn-ghost btn-sm" type="button">${icon('scan')} Neuer Scan</button>`);
       again.addEventListener('click', () => { S.pages.forEach(p => p.thumb && URL.revokeObjectURL(p.thumb)); S.pages = []; S.replace = null; showCapture(); });
       card.querySelector('.actions').appendChild(again);
@@ -796,7 +841,7 @@ export async function mount(screen, { idMode = false, qrMode = false } = {}) {
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('PDF gespeichert.', 'success');
     } catch (e) { errorToast(e, 'Die PDF konnte nicht erstellt werden.'); }
-    finally { prog.done(); btn.disabled = false; }
+    finally { prog.done(); if (ocr) ocr.panel.close(); btn.disabled = false; }
   }
 
   // start

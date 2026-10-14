@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-<main>
+<main data-lang="de">
   <a class="back" href="./#/einstellungen" data-web-only>← Zurück zu FaLe PDF</a>
   <h1>Impressum</h1>
   <p class="muted">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</p>
@@ -48,5 +48,56 @@
   <h2>Datenschutz</h2>
   <p>Siehe <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
 </main>
+
+<!-- English version (shown by the script below when the app language is English) -->
+<main data-lang="en" data-title="Legal notice" hidden>
+  <a class="back" href="./#/einstellungen" data-web-only>← Back to FaLe PDF</a>
+  <h1>Legal notice (Impressum)</h1>
+  <p class="muted">Information pursuant to § 5 of the German Digital Services Act (DDG)</p>
+  <p>
+    <mark class="ph">[VOR- UND NACHNAME bzw. FIRMA]</mark><br>
+    <mark class="ph">[STRASSE UND HAUSNUMMER]</mark><br>
+    <mark class="ph">[PLZ ORT]</mark><br>
+    <mark class="ph">[LAND]</mark>
+  </p>
+
+  <h2>Contact</h2>
+  <p>Email: <mark class="ph">[E-MAIL-ADRESSE]</mark><br>
+    Phone: <mark class="ph">[TELEFONNUMMER – optional, wenn eine andere schnelle Kontaktmöglichkeit besteht]</mark></p>
+
+  <h2>VAT</h2>
+  <p><mark class="ph">[USt-IdNr. nach § 27a UStG, falls vorhanden – sonst diesen Abschnitt löschen]</mark></p>
+
+  <h2>Responsible for the content pursuant to § 18 (2) MStV</h2>
+  <p><mark class="ph">[VOR- UND NACHNAME, Anschrift wie oben]</mark></p>
+
+  <h2>Consumer dispute resolution</h2>
+  <p>We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board.</p>
+
+  <h2>Privacy</h2>
+  <p>See the <a href="datenschutz.html">privacy policy</a>.</p>
+  <p class="muted">This is a translation for your convenience. The German version is legally binding.</p>
+</main>
+<script>
+  // Language of the legal page (same setting as the app: fale-lang = auto | de | en; Automatisch = device language).
+  (function () {
+    var l = null;
+    try { l = localStorage.getItem('fale-lang'); } catch (e) {}
+    var q = /[?&]lang=(de|en)\b/.exec(location.search); if (q) l = q[1];
+    if (l !== 'de' && l !== 'en') {
+      l = 'en';
+      var nl = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
+      for (var i = 0; i < nl.length; i++) { if (/^de\b/i.test(nl[i])) { l = 'de'; break; } if (/^en\b/i.test(nl[i])) break; }
+    }
+    var mains = document.querySelectorAll('main[data-lang]');
+    var has = false;
+    for (var j = 0; j < mains.length; j++) if (mains[j].getAttribute('data-lang') === l) has = true;
+    if (!has) return;
+    for (var k = 0; k < mains.length; k++) mains[k].hidden = mains[k].getAttribute('data-lang') !== l;
+    document.documentElement.lang = l;
+    var shown = document.querySelector('main[data-lang="' + l + '"]');
+    if (shown && shown.getAttribute('data-title')) document.title = shown.getAttribute('data-title') + ' – FaLe PDF';
+  })();
+</script>
 </body>
 </html>

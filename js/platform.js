@@ -18,6 +18,8 @@
 // Capacitor.registerPlugin (when @capacitor/core is present), the bridge's
 // nativePromise/nativeCallback, or Capacitor.Plugins (legacy/mocked).
 
+import { t } from './i18n/index.js';
+
 const SAVE_DIR = 'FaLe PDF';
 const MAX_CHUNK = 3 * 1024 * 1024; // bytes per bridge call (multiple of 3 → clean base64 chunks)
 const REMINDER_KEY = 'fale-reminders';
@@ -214,7 +216,7 @@ export async function shareFile(blobOrBytes, filename, mime, { title, text, sile
     const res = await writeChunked(fs, blob, `share/${name}`, 'CACHE');
     let uri = res && res.uri;
     if (!uri) uri = (await fs.getUri({ path: `share/${name}`, directory: 'CACHE' })).uri;
-    const opts = { title: title || name, files: [uri], dialogTitle: 'Teilen' };
+    const opts = { title: title || name, files: [uri], dialogTitle: t('Teilen') };
     if (text) opts.text = text;
     await share.share(opts);
     return { ok: true, method: 'share', cancelled: false };
@@ -271,7 +273,7 @@ export async function scheduleNotification({ id, at, title, body = '', route = '
   if (id == null || !title) throw new Error('scheduleNotification: id und title sind nötig');
   const when = at instanceof Date ? at.getTime() : new Date(at).getTime();
   if (!Number.isFinite(when)) throw new Error('scheduleNotification: ungültiges Datum');
-  const rec = { id, nid: notificationId(id), at: when, title: String(title), body: String(body || ''), route: String(route || '') };
+  const rec = { id, nid: notificationId(id), at: when, title: String(title), body: t(String(body || '')), route: String(route || '') }; // t(): English UI
   writeReminders([...readReminders().filter(r => String(r.id) !== String(id)), rec]);
 
   if (isNative()) {
@@ -480,10 +482,11 @@ export async function openLegalPage(path = 'datenschutz.html') {
   try {
     const html = await (await fetch(path)).text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    const main = doc.querySelector('main') || doc.body;
+    const en = document.documentElement.lang === 'en'; // legal pages carry an English <main data-lang="en">
+    const main = (en && doc.querySelector('main[data-lang="en"]')) || doc.querySelector('main') || doc.body;
     main.querySelectorAll('script, [data-web-only]').forEach(n => n.remove());
     const ui = await import('./ui.js');
-    await ui.openDialog({ title: doc.title.replace(/\s*[–-]\s*FaLe PDF\s*$/, '') || 'Rechtliches', body: `<div class="legal-page">${main.innerHTML}</div>`, wide: true, actions: [{ label: 'Schließen', value: 'ok', kind: 'btn-primary', default: true }] });
+    await ui.openDialog({ title: (en && main.dataset.title) || doc.title.replace(/\s*[–-]\s*FaLe PDF\s*$/, '') || 'Rechtliches', body: `<div class="legal-page">${main.innerHTML}</div>`, wide: true, actions: [{ label: 'Schließen', value: 'ok', kind: 'btn-primary', default: true }] });
   } catch (e) { console.warn(e); }
 }
 

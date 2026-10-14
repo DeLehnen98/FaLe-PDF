@@ -3,7 +3,7 @@
 // images become inline figures, with adjustable size / line height / theme and a remembered
 // reading position. Used inside the viewer (overlay) and as a stand-alone tool screen.
 import { icon } from '../icons.js';
-import { h, esc, errorToast } from '../ui.js';
+import { h, esc, errorToast, toast, baseName } from '../ui.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { ensureCss, openToolDoc, tick } from './common.js';
 import { analysePage, bodySize, paragraphs } from './pdfstruct.js';
@@ -37,10 +37,45 @@ export async function mount(screen, { docId, params }) {
 }
 
 /**
- * Build the reflow view into `host`.
+ * Build the reflow view into `host`. Pages without text (scans) can be recognised via OCR:
+ * the view is then rebuilt from an in-memory searchable copy (which can be saved).
  * @returns {Promise<{destroy: Function, currentPage: () => number}>}
  */
-export async function openReflow(host, { pdf, docId, title = '', startPage = null, embedded = false, onClose = null, onOriginal = null }) {
+export async function openReflow(host, opts) {
+  let inner = null, ocrPdf = null, busy = false;
+  const runOcr = async () => {
+    if (busy) return;
+    busy = true;
+    let panel = null;
+    try {
+      const ui = await import('../ocr/ui.js');
+      if (!await ui.ensureOcrReady(ui.getLangPref())) return;
+      const { makeSearchable } = await import('../ocr/searchable.js');
+      const bytes = await opts.pdf.getData();
+      panel = ui.progressPanel({ title: 'Text wird erkannt …' });
+      const res = await makeSearchable(bytes, { lang: ui.getLangPref(), psm: ui.getPsmPref(), signal: panel.signal, onProgress: p => panel.update(p), name: opts.title || 'Dokument', key: opts.docId || null });
+      if (!res.ocrPages.length) { toast('Es wurde kein zusätzlicher Text gefunden.', 'info'); return; }
+      const { pdf } = await loadPdf(res.bytes.slice(), { name: opts.title || '', key: opts.docId || null });
+      const page = inner ? inner.currentPage() : null;
+      if (inner) inner.destroy();
+      if (ocrPdf) try { ocrPdf.destroy(); } catch {}
+      ocrPdf = pdf;
+      inner = await buildReflow(host, { ...opts, pdf, startPage: page, ocr: { res, title: opts.title || 'Dokument' } });
+      toast(`Text auf ${res.ocrPages.length} Seite${res.ocrPages.length === 1 ? '' : 'n'} erkannt.`, 'success');
+    } catch (e) {
+      if (e && e.name === 'AbortError') toast('Texterkennung abgebrochen.', 'info');
+      else errorToast(e, (e && e.userMessage) || 'Die Texterkennung ist fehlgeschlagen.');
+    } finally { busy = false; if (panel) panel.close(); }
+  };
+  inner = await buildReflow(host, { ...opts, onOcr: runOcr });
+  return {
+    destroy() { if (inner) inner.destroy(); if (ocrPdf) try { ocrPdf.destroy(); } catch {} },
+    currentPage: () => (inner ? inner.currentPage() : 1),
+    get element() { return inner ? inner.element : null; },
+  };
+}
+
+async function buildReflow(host, { pdf, docId, title = '', startPage = null, embedded = false, onClose = null, onOriginal = null, onOcr = null, ocr = null }) {
   await ensureCss();
   let settings = readerSettings();
   let alive = true;
@@ -340,9 +375,25 @@ export async function openReflow(host, { pdf, docId, title = '', startPage = nul
         article.innerHTML = '';
         article.appendChild(h(`<div class="rf-noscan"><span class="tile-ic">${icon('scan')}</span>
           <h2>Kein Text zum Umbrechen</h2>
-          <p>Dieses Dokument besteht aus Bildern (z. B. ein Scan oder Foto) und enthält keinen erkennbaren Text. Der Lesemodus braucht echten Text – eine Texterkennung (OCR) ist in FaLe PDF nicht eingebaut.</p>
-          ${onClose || onOriginal ? '<button class="btn btn-primary" type="button" data-go="1">Zur Seitenansicht</button>' : ''}</div>`));
+          <p>Dieses Dokument besteht aus Bildern (z. B. ein Scan oder Foto) und enthält keinen erkennbaren Text. Mit der Texterkennung (OCR) wird der Text direkt auf deinem Gerät erkannt.</p>
+          <p class="rf-noscan-act">${onOcr ? `<button class="btn btn-primary" type="button" data-rf-ocr>${icon('scan')} Text per OCR erkennen</button>` : ''}
+          ${onClose || onOriginal ? `<button class="btn ${onOcr ? 'btn-ghost' : 'btn-primary'}" type="button" data-go="1">Zur Seitenansicht</button>` : ''}</p></div>`));
+      } else if (scannedPages && onOcr) {
+        article.prepend(h(`<div class="ocr-offer">${icon('scan')}<span>${scannedPages} Seite${scannedPages === 1 ? ' enthält' : 'n enthalten'} keinen Text (Scan).</span><button class="btn btn-soft btn-sm" type="button" data-rf-ocr>Text per OCR erkennen</button></div>`));
       }
+      if (ocr) {
+        const note = h(`<div class="ocr-offer">${icon('check')}<span>Text per OCR erkannt (${ocr.res.ocrPages.length} Seite${ocr.res.ocrPages.length === 1 ? '' : 'n'}). Bitte prüfe wichtige Angaben.</span><button class="btn btn-soft btn-sm" type="button" data-rf-save>Durchsuchbare PDF speichern</button></div>`);
+        note.querySelector('[data-rf-save]').addEventListener('click', async e => {
+          e.currentTarget.disabled = true;
+          try {
+            const { saveResult } = await import('../library.js');
+            const doc = await saveResult(ocr.res.bytes, `${baseName(ocr.title)} (durchsuchbar).pdf`);
+            toast('Durchsuchbare PDF gespeichert.', 'success', { action: { label: 'Öffnen', onClick: () => { location.hash = `#/ansicht/${doc.id}`; } } });
+          } catch (err) { errorToast(err, 'Speichern fehlgeschlagen.'); e.currentTarget.disabled = false; }
+        });
+        article.prepend(note);
+      }
+      article.querySelectorAll('[data-rf-ocr]').forEach(b => b.addEventListener('click', () => onOcr()));
       renderToc();
       q('status').textContent = `Seite ${currentPage()} von ${n}`;
       onScroll();

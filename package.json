@@ -1,6 +1,6 @@
 {
   "name": "fale-pdf",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "description": "FaLe PDF – PDF, Dokumente, Tabellen und Präsentationen. Privat, offline, ohne Konto.",
   "scripts": {
@@ -19,6 +19,7 @@
     "pptxgenjs": "4.0.1"
   },
   "devDependencies": {
+    "@capacitor-community/admob": "^8.2.1",
     "@capacitor/android": "^8.0.0",
     "@capacitor/app": "^8.0.0",
     "@capacitor/cli": "^8.0.0",
@@ -26,6 +27,7 @@
     "@capacitor/filesystem": "^8.0.0",
     "@capacitor/haptics": "^8.0.0",
     "@capacitor/local-notifications": "^8.0.0",
-    "@capacitor/share": "^8.0.0"
+    "@capacitor/share": "^8.0.0",
+    "@capgo/native-purchases": "^8.9.5"
   }
 }
