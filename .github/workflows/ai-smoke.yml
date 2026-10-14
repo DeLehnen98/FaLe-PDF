@@ -1,0 +1,24 @@
+# Manueller Live-Test der Cloud-KI (verbraucht 1 Anfrage). Ergebnis steht als Hinweis im Workflow-Lauf.
+name: AI smoke test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/ai on production
+        run: |
+          set -u
+          BASE=https://fale-pdf.vercel.app
+          H='Origin: https://fale-pdf.vercel.app'
+          Q=$(curl -s -X POST "$BASE/api/ai/quota" -H 'content-type: application/json' -H "$H" -d '{}')
+          echo "::notice title=quota (ohne Token)::$(echo "$Q" | head -c 600)"
+          DEV=$(cat /proc/sys/kernel/random/uuid)
+          R=$(curl -s -X POST "$BASE/api/ai/register" -H 'content-type: application/json' -H "$H" -d "{\"deviceId\":\"$DEV\"}")
+          TOKEN=$(echo "$R" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("token",""))' 2>/dev/null || true)
+          echo "::notice title=register::$(echo "$R" | sed -E 's/"token":"[^"]+"/"token":"…"/' | head -c 400)"
+          BODY=$(python3 -c 'import json,sys; print(json.dumps({"task":"summarize","input":{"text":"FaLe PDF ist eine kostenlose App zum Lesen, Bearbeiten und Unterschreiben von PDF-Dateien. Sie funktioniert offline und speichert alle Dateien nur auf dem Gerät. Optional gibt es eine Cloud-KI zum Zusammenfassen und Übersetzen."},"options":{"lang":"de","mode":"kurz"},"token":sys.argv[1],"stream":False,"client":{"platform":"smoke","appVersion":"ci","native":False}}))' "$TOKEN")
+          A=$(curl -s -w '\nHTTP %{http_code}' -X POST "$BASE/api/ai" -H 'content-type: application/json' -H "$H" -d "$BODY")
+          echo "::notice title=summarize::$(echo "$A" | tr '\n' ' ' | head -c 1500)"
