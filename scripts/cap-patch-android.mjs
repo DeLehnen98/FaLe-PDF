@@ -141,8 +141,14 @@ function patchManifest() {
     '<!-- Speichern in Dokumente/FaLe PDF bis Android 10 -->',
     '<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />',
     '<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />',
+    '<!-- Exakte Alarme braucht die App nicht (Play-Richtlinie); Erinnerungen dürfen ein paar Minuten später kommen -->',
+    '<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:node="remove" />',
+    '<uses-permission android:name="android.permission.USE_EXACT_ALARM" tools:node="remove" />',
   ].join('\n');
   s = upsertBlock(s, 'permissions', indent(perms, 4), (src, full) => src.replace(/\n*<\/manifest>\s*$/, () => `\n\n${full}\n</manifest>\n`), undefined, '    ');
+
+  // tools namespace for tools:node="remove"
+  if (!/xmlns:tools=/.test(s)) s = s.replace(/<manifest\b/, '<manifest xmlns:tools="http://schemas.android.com/tools"');
 
   // <application …> attributes
   s = s.replace(/<application\b([^>]*)>/, (m, attrs) => {
