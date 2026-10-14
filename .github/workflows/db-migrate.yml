@@ -34,17 +34,22 @@ jobs:
       - name: Test connection
         if: steps.chk.outputs.skip != '1'
         run: |
-          set -u
-          info=$(python3 - <<'PY'
-          import os, urllib.parse as u
-          raw = os.environ['DB_URL'].strip()
-          p = u.urlsplit(raw)
-          pw = p.password or ''
+          set +e
+          info=$(python3 - <<'PY' 2>&1
+          import os, re, urllib.parse as u
+          raw = os.environ.get('DB_URL', '').strip()
           hints = []
-          if '[YOUR-PASSWORD]' in raw or 'YOUR-PASSWORD' in raw: hints.append('Platzhalter [YOUR-PASSWORD] wurde nicht ersetzt')
-          if p.hostname and p.hostname.startswith('db.') and p.hostname.endswith('.supabase.co'): hints.append('direkte Verbindung (nur IPv6) – bitte die Session-Pooler-Zeile nehmen')
+          if raw.startswith('"') or raw.startswith("'"): hints.append('Anfuehrungszeichen um die Zeile entfernen')
+          if not re.match(r'^postgres(ql)?://', raw): hints.append('beginnt nicht mit postgresql://')
+          if '[YOUR-PASSWORD]' in raw: hints.append('Platzhalter [YOUR-PASSWORD] wurde nicht ersetzt')
+          try:
+              p = u.urlsplit(raw); host = p.hostname; port = p.port; user = p.username; pw = p.password or ''; db = p.path.lstrip('/')
+          except Exception as e:
+              print(f"URL nicht lesbar ({type(e).__name__}) – vermutlich Sonderzeichen im Passwort (z. B. @ : / ? # [ ]), die kodiert werden muessen; hints={'; '.join(hints) or '-'}")
+              raise SystemExit(0)
+          if host and host.startswith('db.') and host.endswith('.supabase.co'): hints.append('direkte Verbindung (nur IPv6) – bitte die Session-Pooler-Zeile nehmen')
           if any(c in pw for c in '@:/?#%[] '): hints.append('Passwort enthaelt Sonderzeichen, die in der URL kodiert werden muessen')
-          print(f"scheme={p.scheme} user={p.username} host={p.hostname} port={p.port} db={p.path.lstrip('/')} pw_len={len(pw)} hints={'; '.join(hints) or '-'}")
+          print(f"user={user} host={host} port={port} db={db} pw_len={len(pw)} hints={'; '.join(hints) or '-'}")
           PY
           )
           echo "::notice title=DB-Verbindung (ohne Passwort)::$info"
