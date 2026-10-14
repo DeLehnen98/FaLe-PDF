@@ -1,0 +1,60 @@
+# Wendet neue SQL-Migrationen aus supabase/migrations/ auf die Supabase-Datenbank an.
+# Einmalig nötig: Repository-Secret SUPABASE_DB_URL = "Session pooler"-Verbindungszeichenfolge
+# aus Supabase → Connect (mit Passwort). Jede Datei wird genau einmal angewendet (Protokoll in
+# private.fale_migrations), jeweils in einer eigenen Transaktion.
+name: DB migrate
+
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/migrations/**', '.github/workflows/db-migrate.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: db-migrate
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    env:
+      DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check secret
+        id: chk
+        run: |
+          if [ -z "$DB_URL" ]; then
+            echo "::warning title=DB migrate::Secret SUPABASE_DB_URL fehlt – Migrationen werden übersprungen."
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install psql
+        if: steps.chk.outputs.skip != '1'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client > /dev/null
+      - name: Apply pending migrations
+        if: steps.chk.outputs.skip != '1'
+        run: |
+          set -euo pipefail
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "create schema if not exists private; create table if not exists private.fale_migrations (name text primary key, applied_at timestamptz not null default now()); revoke all on private.fale_migrations from public;"
+          # Migrations that were applied by hand before this workflow existed
+          if [ -f supabase/migrations/.baseline ]; then
+            while read -r b; do
+              [ -n "$b" ] && psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$b') on conflict do nothing;"
+            done < supabase/migrations/.baseline
+          fi
+          applied=0
+          for f in $(ls supabase/migrations/*.sql | sort); do
+            n=$(basename "$f")
+            done_=$(psql "$DB_URL" -tA -c "select 1 from private.fale_migrations where name = '$n'")
+            if [ "$done_" = "1" ]; then echo "✓ $n (bereits angewendet)"; continue; fi
+            echo "→ $n"
+            if ! out=$(psql "$DB_URL" -v ON_ERROR_STOP=1 --single-transaction -q -f "$f" 2>&1); then
+              echo "$out"
+              msg=$(echo "$out" | tail -n 15 | sed -e 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+              echo "::error title=Migration $n fehlgeschlagen::$msg"
+              exit 1
+            fi
+            psql "$DB_URL" -v ON_ERROR_STOP=1 -q -c "insert into private.fale_migrations(name) values ('$n');"
+            applied=$((applied+1))
+          done
+          echo "::notice title=DB migrate::$applied neue Migration(en) angewendet."
