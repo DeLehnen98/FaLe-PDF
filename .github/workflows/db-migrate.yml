@@ -58,32 +58,38 @@ jobs:
           mm = re.match(r'^db\.([a-z0-9]+)\.supabase\.co$', host)
           if mm:  # direct host is IPv6-only – GitHub runners need the IPv4 session pooler
               ref = mm.group(1)
-              for h in ('aws-0-eu-central-1.pooler.supabase.com', 'aws-1-eu-central-1.pooler.supabase.com'):
+              for h in ('aws-1-eu-central-1.pooler.supabase.com', 'aws-0-eu-central-1.pooler.supabase.com'):
                   cands.append((h, '5432', f'postgres.{ref}'))
           else:
               cands.append((host, port, user))
-          print('::add-mask::' + pw)
+          pws = [pw]
+          if pw.startswith('[') and pw.endswith(']') and len(pw) > 2:
+              pws.insert(0, pw[1:-1])  # common mistake: brackets of the [YOUR-PASSWORD] placeholder left in place
+          for x in pws: print('::add-mask::' + x)
           with open(os.environ['GITHUB_ENV'], 'a') as f:
-              f.write(f'PGPASSWORD={pw}\nPGDATABASE={db}\nPGSSLMODE=require\nPGCONNECT_TIMEOUT=15\n')
-          fd = os.open('/tmp/pgpw', os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
-          os.write(fd, pw.encode()); os.close(fd)
+              f.write(f'PGDATABASE={db}\nPGSSLMODE=require\nPGCONNECT_TIMEOUT=15\n')
+          for i, x in enumerate(pws):
+              fd = os.open(f'/tmp/pgpw{i}', os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+              os.write(fd, x.encode()); os.close(fd)
           with open('/tmp/pg_cands', 'w') as f:
               for c in cands: f.write(' '.join(c) + '\n')
-          print(f"::notice title=DB-Verbindung::Kandidaten: {', '.join(c[0] + ' (' + c[2] + ')' for c in cands)}; Passwortlaenge {len(pw)}")
+          print(f"::notice title=DB-Verbindung::Kandidaten: {', '.join(c[0] + ' (' + c[2] + ')' for c in cands)}; Passwortlaenge {len(pw)}{' (eckige Klammern um das Passwort erkannt – werden zusaetzlich ohne Klammern probiert)' if len(pws) > 1 else ''}")
           PY
           [ -s /tmp/pg_cands ] || exit 1
           while read -r h p u; do
-            if out=$(PGPASSWORD="$(cat /tmp/pgpw)" PGDATABASE=postgres PGSSLMODE=require PGCONNECT_TIMEOUT=15 PGHOST="$h" PGPORT="$p" PGUSER="$u" psql -tA -c "select current_user" 2>&1); then
-              echo "PGHOST=$h" >> "$GITHUB_ENV"; echo "PGPORT=$p" >> "$GITHUB_ENV"; echo "PGUSER=$u" >> "$GITHUB_ENV"
-              echo "::notice title=DB-Verbindung ok::$h als $out"
-              rm -f /tmp/pgpw
-              exit 0
-            else
-              echo "::warning title=DB-Verbindung $h::$(echo "$out" | head -n 3 | tr '\n' ' ')"
-            fi
+            for pwf in /tmp/pgpw*; do
+              if out=$(PGPASSWORD="$(cat "$pwf")" PGDATABASE=postgres PGSSLMODE=require PGCONNECT_TIMEOUT=15 PGHOST="$h" PGPORT="$p" PGUSER="$u" psql -tA -c "select current_user" 2>&1); then
+                { echo "PGHOST=$h"; echo "PGPORT=$p"; echo "PGUSER=$u"; echo "PGPASSWORD=$(cat "$pwf")"; } >> "$GITHUB_ENV"
+                echo "::notice title=DB-Verbindung ok::$h als $out"
+                rm -f /tmp/pgpw*
+                exit 0
+              else
+                echo "::warning title=DB-Verbindung $h::$(echo "$out" | head -n 3 | tr '\n' ' ')"
+              fi
+            done
           done < /tmp/pg_cands
           echo "::error title=DB-Verbindung fehlgeschlagen::Keine Verbindung möglich (siehe Warnungen)."
-          rm -f /tmp/pgpw
+          rm -f /tmp/pgpw*
           exit 1
 
       - name: Apply pending migrations
