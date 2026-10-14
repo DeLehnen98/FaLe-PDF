@@ -365,8 +365,8 @@
     "tesseract/core/tesseract-core-simd-lstm.wasm": "187d76742dfc0d8929f0b49a619f145bb6370730776c7bd0d3e20c6b2098808d",
     "tesseract/core/tesseract-core-simd-lstm.wasm.js": "9d7c43fb206dc9f48475228b46bf35f888fa9e6259da2e67d5a75c77049f2dc7",
     "tesseract/lang/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-    "tesseract/lang/deu.traineddata.gz": "a4ea03af983f9c2237f2137c0623ec6a3a6f265686ad1cb2ebe9acc83e890a6c",
-    "tesseract/lang/eng.traineddata.gz": "bc57484c2639927ae5f75951e6d7e2f02fd3feeb074c873c7584bef1d784adc9",
+    "tesseract/lang/deu.traineddata.gz": "375591acc5e22af8cd40323e90a38d4c66ac49b506ddd41db7c20278738b07c3",
+    "tesseract/lang/eng.traineddata.gz": "f197c56ce3913099aab1f9496192178f995b70b4897d2a7933d8bdd99a59d170",
     "tesseract/tesseract.min.js": "9a4661785817fa85e73085494f15a90273783d55a6cced31815b76ab5713b074",
     "tesseract/worker.min.js": "16720b5be911600547e1c61ba781e9e9c387566cabc2983aab0a88cd7f0b678d"
   }
