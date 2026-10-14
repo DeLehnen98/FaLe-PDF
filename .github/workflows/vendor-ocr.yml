@@ -1,0 +1,58 @@
+# Holt die OCR-Bibliothek (tesseract.js + WebAssembly-Kern) und die Sprachdaten
+# Deutsch/Englisch einmalig in vendor/tesseract/ und committet sie.
+# Danach funktioniert die Texterkennung komplett offline, ohne CDN.
+name: Vendor OCR
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/vendor-ocr.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Download packages and language data
+        run: |
+          set -euo pipefail
+          TJS=$(npm view 'tesseract.js@^6' version | tail -n 1 | awk '{print $NF}' | tr -d "'")
+          CORE=$(npm view 'tesseract.js-core@^6' version | tail -n 1 | awk '{print $NF}' | tr -d "'")
+          echo "tesseract.js $TJS / core $CORE"
+          mkdir -p tmp && cd tmp
+          npm pack "tesseract.js@$TJS" "tesseract.js-core@$CORE" > /dev/null
+          tar xzf tesseract.js-$TJS.tgz && mv package tjs
+          tar xzf tesseract.js-core-$CORE.tgz && mv package core
+          cd ..
+          D=vendor/tesseract
+          rm -rf $D && mkdir -p $D/core $D/lang
+          cp tmp/tjs/dist/tesseract.min.js tmp/tjs/dist/worker.min.js $D/
+          cp tmp/tjs/LICENSE.md $D/LICENSE.md 2>/dev/null || cp tmp/tjs/LICENSE $D/LICENSE.md
+          for f in tesseract-core-simd-lstm.wasm.js tesseract-core-lstm.wasm.js tesseract-core-simd-lstm.wasm tesseract-core-lstm.wasm; do
+            [ -f tmp/core/$f ] && cp tmp/core/$f $D/core/ || true
+          done
+          cp tmp/core/LICENSE $D/core/LICENSE 2>/dev/null || true
+          for l in deu eng; do
+            curl -sSfL "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/$l.traineddata" -o $D/lang/$l.traineddata
+            gzip -9 -k $D/lang/$l.traineddata && rm $D/lang/$l.traineddata
+          done
+          curl -sSfL https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/LICENSE -o $D/lang/LICENSE
+          # strip source map references
+          sed -i -E '/^\/\/# sourceMappingURL=/d' $D/*.js $D/core/*.js || true
+          printf '{\n  "tesseract.js": "%s",\n  "tesseract.js-core": "%s",\n  "tessdata": "tessdata_fast (deu, eng)"\n}\n' "$TJS" "$CORE" > $D/VERSIONS.json
+          ls -laR $D
+          rm -rf tmp
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vendor/tesseract
+          git diff --cached --quiet && echo "nothing new" || git commit -m "vendor: tesseract.js OCR + Sprachdaten deu/eng (offline)"
+          git push
