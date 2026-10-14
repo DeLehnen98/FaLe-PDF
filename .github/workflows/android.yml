@@ -120,6 +120,15 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Remove older files from the test pre-release (main)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view android-latest --json assets -q '.assets[].name' 2>/dev/null | while read -r n; do
+            gh release delete-asset android-latest "$n" -y || true
+          done || true
+
       - name: Latest test build as pre-release (main)
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2

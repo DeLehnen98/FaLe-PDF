@@ -229,6 +229,8 @@ function wire() {
       { label: 'Drucken', icon: 'print', onClick: printDoc },
       { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(cur.doc) },
       { label: 'Teilen', icon: 'share', onClick: () => shareDoc(cur.doc) },
+      { label: 'Sicher teilen', icon: 'link', onClick: () => (location.hash = `#/teilen/link?doc=${id}`) }, // js/share (E2E-encrypted link)
+      { label: 'Unterschrift anfordern', icon: 'sign', onClick: () => (location.hash = `#/teilen/unterschrift?doc=${id}`) },
     ], { label: 'Weitere Aktionen' });
   });
 

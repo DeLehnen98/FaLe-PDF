@@ -3,6 +3,7 @@
 > Zeichenlimits von Google Play: Titel ≤ 30, Kurzbeschreibung ≤ 80, Beschreibung ≤ 4000.
 > Keine Marken anderer Anbieter im Eintrag verwenden (keine Namen anderer PDF-/Office-Apps,
 > keine Hersteller-Produktnamen). Dateiformate (PDF, DOCX, XLSX, PPTX) nennen ist ok.
+> Limits nach jeder Änderung prüfen: `python3 store/check_listing.py`
 
 ## Kennzeichnungen in Google Play (Pflicht seit KI/Werbung/Plus)
 
@@ -19,82 +20,105 @@ FaLe PDF – PDF & Office
 ## Kurzbeschreibung (≤ 80)
 
 ```
-PDFs lesen, unterschreiben & scannen – privat, offline, mit KI-Assistent.
+PDFs unterschreiben, scannen mit Texterkennung, bearbeiten – gratis & privat.
 ```
 
 ## Vollständige Beschreibung (≤ 4000)
 
 ```
-FaLe PDF ist dein privates Büro für das Handy: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alles läuft direkt auf deinem Gerät. Kein Konto, keine Werbebanner, kein Tracking – und die KI nur, wenn du sie willst.
+FaLe PDF ist dein privates Büro für Handy und Tablet: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Pro-Funktionen sind gratis, ohne Abo und ohne Konto. Deine Dateien werden auf deinem Gerät verarbeitet – nicht in einer Cloud.
 
 PDF LESEN
-• Schneller PDF-Viewer mit Suche, Lesezeichen, Inhaltsverzeichnis und Lesemodus
-• Vorlesen lassen (Text-to-Speech des Geräts)
-• Hell- und Dunkelmodus
+• Schneller PDF-Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis
+• Lesemodus: Text fürs Handy umbrochen, mit Schriftgröße, Sepia und Dunkel
+• Vorlesen lassen (Sprachausgabe des Geräts)
 
 AUSFÜLLEN & UNTERSCHREIBEN
 • PDF-Formulare ausfüllen
-• Unterschrift zeichnen, speichern und überall platzieren
-• Stempel, Datum und Initialen einfügen
+• Unterschrift zeichnen, speichern und mit einem Tipp einsetzen
+• Datum, Text, Initialen und eigene Stempel
+
+SCANNEN MIT TEXTERKENNUNG
+• Kamera-Scanner: Kanten erkennen, entzerren, Kontrast verbessern
+• Texterkennung (OCR) direkt auf dem Gerät – auch offline: Scans werden durchsuchbar
+• Text aus Fotos kopieren, Bild zu DOCX oder XLSX
+• Ausweis, Visitenkarte, Passfoto und QR-Codes
 
 KOMMENTIEREN & BEARBEITEN
-• Markieren, unterstreichen, Notizen und Freihand-Zeichnungen
-• Text und Bilder im PDF ergänzen
+• Markieren, Notizen, Freihand und Formen
+• Text und Bilder ergänzen oder ersetzen
 • Schwärzen: vertrauliche Stellen dauerhaft entfernen
 • Wasserzeichen, Seitenzahlen, Kopf- und Fußzeilen
 
 SEITEN & DATEIEN
-• PDFs zusammenfügen, Seiten sortieren, drehen, löschen, extrahieren und zuschneiden
-• PDFs komprimieren
-• Seiten als Bilder oder Text exportieren
-• Passwortschutz festlegen und entfernen
+• Zusammenfügen, sortieren, drehen, extrahieren, zuschneiden
+• PDFs komprimieren, Stapelverarbeitung
+• Passwortschutz (AES-256) festlegen und entfernen
+• PDFs vergleichen
 
-SCANNEN
-• Dokumente mit der Kamera scannen – mit Zuschneiden und Kontrastverbesserung
-• Ausweis scannen (Vorder- und Rückseite auf einer Seite)
-• Bilder in PDF umwandeln
-• QR-Codes scannen und erstellen
-
-KONVERTIEREN
-• PDF in DOCX-Textdokumente, XLSX-Tabellen und PPTX-Präsentationen umwandeln
-• DOCX, XLSX, PPTX und Text in PDF umwandeln
+UMWANDELN
+• PDF in DOCX, XLSX und PPTX – und zurück in PDF
+• Bilder in PDF, Seiten als Bild oder Text exportieren
 
 DOKUMENTE, TABELLEN, PRÄSENTATIONEN
-• Textdokumente (DOCX, TXT, Markdown) erstellen und bearbeiten
-• Tabellen mit Formeln (XLSX, CSV)
-• Einfache Präsentationen (PPTX)
-• Vorlagen für Briefe, Rechnungen, Listen und mehr
+• DOCX, XLSX und PPTX öffnen, bearbeiten und erstellen
+• Tabellen mit Formeln und Diagrammen
+• Vorlagen für Lebenslauf, Anschreiben, Rechnung, Brief und mehr
+• Kündigung, Widerruf, Widerspruch & Co. in einer Minute – als Dokument und PDF
+
+ALLTAG
+• Fristen & Erinnerungen, damit keine Kündigungsfrist verfällt
+• Privater Tresor mit eigener PIN
+• „Öffnen mit“ und „Teilen“: Dateien direkt aus E-Mail, Messenger oder Dateimanager übernehmen
+• Gespeicherte Dateien landen im Ordner „Dokumente/FaLe PDF“
+
+TEILEN, UNTERSCHREIBEN LASSEN, ÜBERTRAGEN
+• Sicher teilen: Ende-zu-Ende-verschlüsselter Link, läuft automatisch ab (1 Std. bis 7 Tage), optional mit Passwort und Download-Limit
+• Unterschrift anfordern: Felder setzen, Link per Messenger oder E-Mail senden – unterschrieben wird im Browser, ohne Konto, mit Protokollseite (einfache elektronische Signatur)
+• Geräte verbinden: Dateien zwischen Handy und PC per QR-Code übertragen – direkt und verschlüsselt
 
 KI-ASSISTENT (OPTIONAL)
-• Chat mit Dokument: Fragen stellen, Antworten mit klickbaren Seitenangaben
-• Zusammenfassen und Übersetzen (als DOCX, Text oder PDF speichern)
-• Schreibhilfe im Editor, Formel-Assistent in Tabellen, Folien per KI
+• Chat mit Dokument: Fragen stellen, Antworten mit Seitenangaben
+• Zusammenfassen, übersetzen, Schreibhilfe, Formel-Assistent, Folien per KI
 • Lernkarten & Quiz aus Skripten, Briefe per KI, Fotos übersetzen
-• Täglich kostenlose Anfragen ohne Konto – mehr per freiwilligem Werbevideo oder mit FaLe Plus
-• Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst
-
-PRAKTISCH
-• „Öffnen mit“ und „Teilen“: Dateien aus E-Mail, Messenger oder Dateimanager direkt übernehmen
-• Gespeicherte Dateien landen im Ordner „Dokumente/FaLe PDF“
-• Erinnerungen für Fristen und Termine
-• Funktioniert komplett offline
+• Täglich kostenlose Anfragen ohne Konto. Mehr Anfragen: freiwilliges Werbevideo oder das Abo FaLe Plus
+• Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst. KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden.
 
 PRIVAT AUS PRINZIP
-Deine Dateien verlassen dein Gerät nicht. Kein Benutzerkonto, keine Werbebanner, keine Analyse-Tools. Nur wenn du die optionale Cloud-KI nutzt, wird der ausgewählte Text verarbeitet – gespeichert wird davon nichts. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst.
+Kein Benutzerkonto, keine Werbebanner, keine Analyse-Tools. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Geteilte Dateien sind Ende-zu-Ende-verschlüsselt – wir können sie nicht lesen.
 
-Kostenlos. Ohne Wasserzeichen. Optional: FaLe Plus für mehr KI-Anfragen.
+Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen. Optional: FaLe Plus für mehr KI-Anfragen.
 ```
 
 ## Feature-Bullets (für Grafiken / Screenshot-Untertitel)
 
-- Alles bleibt auf deinem Gerät – kein Konto, keine Werbebanner
-- KI-Assistent: Fragen an deine Dokumente, mit Seitenangaben
+- Alle Pro-Funktionen gratis – kein Abo, kein Konto, keine Wasserzeichen
 - PDFs ausfüllen und unterschreiben
-- Dokumente mit der Kamera scannen
-- PDFs zusammenfügen, komprimieren, schwärzen
-- PDF ↔ DOCX, XLSX, PPTX umwandeln
+- Scannen mit Kantenerkennung und Texterkennung (OCR, offline)
+- KI-Assistent: Fragen an deine Dokumente, mit Seitenangaben (optional)
+- Sicher teilen & Unterschrift anfordern – Ende-zu-Ende-verschlüsselt, ohne Konto
+- Handy ↔ PC: Dateien per QR-Code übertragen
 - Dokumente, Tabellen und Präsentationen bearbeiten
-- Funktioniert offline
+- PDF ↔ DOCX, XLSX, PPTX umwandeln
+- Kündigung, Widerruf & Co. in einer Minute
+- Deine Dateien bleiben auf deinem Gerät
+
+## Grafiken & Screenshots (Play Console)
+
+Alle Dateien liegen in `store/graphics/` – Zuordnung zu den Play-Console-Feldern siehe `store/graphics/README.md`.
+Reihenfolge der Telefon-Screenshots (Deutsch) mit Untertitel im Bild:
+
+1. `phone/de/01_home.png` – „Alle Pro-Funktionen gratis“
+2. `phone/de/02_sign.png` – „Unterschreiben in Sekunden“
+3. `phone/de/03_scan.png` – „Scannen mit Kantenerkennung“
+4. `phone/de/04_ocr.png` – „Texterkennung – auch offline“
+5. `phone/de/05_ai.png` – „KI-Assistent für deine Dokumente“ (optional, täglich 5 Anfragen gratis)
+6. `phone/de/06_sheet.png` – „Dokumente, Tabellen & Präsentationen“
+7. `phone/de/07_letters.png` – „Kündigung in einer Minute“
+8. `phone/de/08_privacy.png` – „Deine Daten bleiben auf dem Handy“
+
+> Der Untertitel „täglich 5 Anfragen gratis“ entspricht `FREE_DAILY=5` (Standard in `api/_lib/config.js`).
+> Wird das Kontingent geändert, Screenshot 5 neu erzeugen (Untertitel steht im Bild).
 
 ## Kategorie / Tags
 

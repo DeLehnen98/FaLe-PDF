@@ -51,6 +51,8 @@ export function fileRow(doc) {
     emitChange();
   });
   el.querySelector('.more-btn').addEventListener('click', e => fileMenu(e.currentTarget, doc));
+  // long-press (touch) / right-click opens the same menu
+  el.querySelector('.doc-open').addEventListener('contextmenu', e => { e.preventDefault(); fileMenu(el.querySelector('.more-btn'), doc); });
   return el;
 }
 
@@ -68,6 +70,8 @@ export function fileMenu(anchor, doc) {
     { label: 'Umbenennen', icon: 'edit', onClick: () => renameFile(doc) },
     { label: 'Teilen', icon: 'share', onClick: () => shareFile(doc) },
     { label: 'Herunterladen', icon: 'download', onClick: () => downloadFile(doc) },
+    { label: 'Sicher teilen (Link)', icon: 'link', onClick: () => { location.hash = `#/teilen/link?doc=${encodeURIComponent(doc.id)}`; } }, // js/share
+    ...(kind === 'pdf' ? [{ label: 'Unterschrift anfordern', icon: 'sign', onClick: () => { location.hash = `#/teilen/unterschrift?doc=${encodeURIComponent(doc.id)}`; } }] : []),
     '-',
   ];
   if (kind === 'pdf') {

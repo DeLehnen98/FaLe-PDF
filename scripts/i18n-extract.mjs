@@ -24,7 +24,7 @@ const args = new Set(process.argv.slice(2));
 // Files / folders that never contain UI text (vendor code, the dictionary itself, workers without UI).
 const SKIP_PATHS = [/^js\/i18n\//, /^vendor/, /^node_modules/, /^dist/, /^android/, /^api\//, /^supabase\//, /^scripts\//];
 // HTML pages handled by their own bilingual sections (legal pages) – not runtime-translated.
-const SKIP_HTML = new Set(['datenschutz.html', 'impressum.html']);
+const SKIP_HTML = new Set(['datenschutz.html', 'impressum.html', 'info.html', 'info-en.html']);
 // Generated document content that stays German on purpose (German letters, DIN 5008, legal templates).
 // Strings from these places are still listed with --all but not counted as missing.
 const CONTENT_FILES = new Set([]);

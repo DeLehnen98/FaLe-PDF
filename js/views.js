@@ -116,6 +116,7 @@ export async function renderHome() {
         <a class="lt-chip" role="listitem" href="#/tresor">${oicon('vault')}<span>Tresor</span></a>
       </div>
       <div class="ai-start" data-ai-start hidden></div>
+      <div class="sh-start" data-share-start hidden></div>
       <div class="continue-box" data-continue hidden></div>
       <h2 class="section-title">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
       <div class="tiles" role="list"></div>
@@ -127,6 +128,7 @@ export async function renderHome() {
       <div class="doc-list" data-list role="tabpanel"></div>
       <div class="month-box" data-month hidden></div>`;
     import('./ai/entry.js').then(m => m.renderStartCard($('[data-ai-start]', el))).catch(() => {}); // KI-Assistent card (no network)
+    import('./share/entry.js').then(m => m.renderStartCard($('[data-share-start]', el))).catch(() => {}); // Teilen & Übertragen (no network)
     $('[data-search]', el).appendChild(searchForm('home-search', 'Dateien und Inhalte durchsuchen', q => { location.hash = q ? `#/suche?q=${encodeURIComponent(q)}` : '#/suche'; }));
     const free = $('[data-free]', el);
     free.hidden = lsGet('fale-free-card', '') === 'hidden';
@@ -213,6 +215,7 @@ export function renderTools(initialQ = null) {
       <div data-search></div>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
       <section class="tool-section" data-section="alltag"><h2 class="section-title">Alltag &amp; Organisation</h2><div class="tool-grid alltag-grid"></div></section>
+      <section class="tool-section" data-section="teilen" data-share-section hidden></section>
       <section class="tool-section" data-section="ki" data-ai-section hidden></section>
       <div data-groups></div>
       <p class="panel-empty" data-noresult hidden>Kein Werkzeug gefunden.</p>`;
@@ -266,6 +269,7 @@ export function renderTools(initialQ = null) {
     $('[data-search]', el).appendChild(form);
     el._filter = filter;
     import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
+    import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).catch(() => {}); // Teilen & Unterschreiben
   }
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
 }

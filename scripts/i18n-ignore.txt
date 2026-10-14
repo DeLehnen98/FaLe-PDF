@@ -341,3 +341,22 @@ Leitung von Projekten mit bis zu 12 Beteiligten
 Kreativ, strukturiert und lösungsorientiert. Seit über fünf Jahren entwickle ich Erscheinungsbilder für kleine und mittlere Unternehmen – von der ersten Skizze bis zur fertigen Druckdatei.
 Gestaltung von Kampagnen, Broschüren und Webseiten
 Bitte überweise den Gesamtbetrag innerhalb von 14 Tagen ohne Abzug auf das unten genannte Konto. Vielen Dank für deinen Auftrag!
+# Signature audit page (js/share/signer.js): bilingual PDF content, not UI
+Unterschriftsprotokoll / Signature audit trail
+Dokument / Document
+Unterzeichner/in laut Anfrage / Signer (as named in the request)
+(Person {0} von {1})
+Angefordert von / Requested by
+Anfrage erstellt (UTC, Server) / Request created
+Dokument geöffnet (UTC, Server) / Document opened
+SHA-256 Original (wie vom Absender gesendet) / original as sent
+SHA-256 vor dieser Unterschrift / before this signature
+SHA-256 nach der Unterschrift (Seiten 1-{0}, ohne diese Protokollseite) / after signing, without this page
+Bestätigung / Confirmation
+„Ich unterschreibe elektronisch“ wurde aktiv bestätigt. / "I sign electronically" was actively confirmed.
+Art der Signatur / Signature type
+Einfache elektronische Signatur (EES) im Sinne von Art. 3 Nr. 10 der eIDAS-Verordnung (EU) Nr. 910/2014. Keine fortgeschrittene oder qualifizierte elektronische Signatur; die Identität der unterzeichnenden Person wurde nicht geprüft. / Simple electronic signature under eIDAS; not an advanced or qualified signature, identity not verified.
+Übertragung / Transmission
+Erstellt mit FaLe PDF – fale-pdf.vercel.app
+Unterschrieben (UTC, Gerät der unterzeichnenden Person) / Signed (UTC, signer device)
+Ende-zu-Ende-verschlüsselt (AES-256-GCM) über FaLe PDF; der Server kennt weder Inhalt noch Namen. / End-to-end encrypted; the server cannot read content or names.

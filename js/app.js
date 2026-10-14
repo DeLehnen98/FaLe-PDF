@@ -15,6 +15,7 @@ import { isNative, onIncomingFiles } from './platform.js';
 
 const MAIN_VIEWS = ['start', 'dateien', 'werkzeuge', 'suche', 'einstellungen'];
 const OFFICE_ROUTES = ['bearbeiten', 'neu', 'vorlagen'];
+const SHARE_ROUTES = ['teilen', 's', 'u', 'verbinden']; // keep in sync with js/share/routes.js
 let currentMain = null;
 const navStack = [];
 
@@ -121,6 +122,12 @@ async function route() {
     if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
     if (!currentMain) showMain('werkzeuge');
     await (await import('./ai/routes.js')).openAiRoute(parts, params, { goBack });
+    return;
+  }
+  if (SHARE_ROUTES.includes(top)) { // Teilen & Übertragen (js/share/routes.js): #/teilen…, #/s/<id>, #/u/<token>, #/verbinden
+    if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
+    if (!currentMain) showMain(top === 's' || top === 'u' ? 'start' : 'werkzeuge');
+    await (await import('./share/routes.js')).openShareRoute(parts, params, { goBack });
     return;
   }
   if (EXTRA_ROUTES.includes(top)) {

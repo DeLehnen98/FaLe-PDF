@@ -149,17 +149,28 @@ function trElementUnit(el) {
 const FILTER = {
   acceptNode(n) {
     if (n.nodeType === 3) return NodeFilter.FILTER_ACCEPT;
-    if (n.matches(SKIP_SEL)) return NodeFilter.FILTER_REJECT;
+    if (n.matches(SKIP_SEL)) {
+      // a textarea's content is user text, but its placeholder/title are UI chrome
+      if (n.tagName === 'TEXTAREA' && !n.closest('[data-no-i18n]')) trTextareaAttrs(n);
+      return NodeFilter.FILTER_REJECT;
+    }
     return NodeFilter.FILTER_ACCEPT;
   },
 };
+
+function trTextareaAttrs(el) {
+  for (const a of ['placeholder', 'title', 'aria-label']) {
+    const v = el.getAttribute(a);
+    if (v) trAttr(el, a, v);
+  }
+}
 
 function translateTree(root) {
   if (!tr || !root) return;
   if (root.nodeType === 3) { if (!skipped(root.parentElement)) trText(root); return; }
   if (root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
   if (root.nodeType === 1) {
-    if (skipped(root)) return;
+    if (skipped(root)) { if (root.tagName === 'TEXTAREA' && !root.closest('[data-no-i18n]')) trTextareaAttrs(root); return; }
     trAttrs(root);
     if (trElementUnit(root)) return;
   }

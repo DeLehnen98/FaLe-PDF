@@ -28,6 +28,21 @@
       Dienstkonto verknüpfen, `GOOGLE_PLAY_SA_JSON` in Vercel eintragen. Ohne diese Variable zeigt die App „bald verfügbar“.
 - [ ] Nach dem Eintragen von Vercel-Variablen **neu deployen** (Variablen gelten erst für neue Deployments).
 
+## A3. Teilen, Unterschrift anfordern, Geräte verbinden (einmalig)
+
+- [ ] **Supabase-Migration** `supabase/migrations/20261014150000_fale_share.sql` einspielen (Tabellen + RPCs für
+      verschlüsselte Freigaben, Unterschriftsanfragen und Transfer-Räume; nutzt `private.fale_check` aus der KI-Migration).
+      Bis dahin antworten `/api/share`, `/api/sign`, `/api/transfer` mit 503 „Teilen ist noch nicht eingerichtet“.
+- [ ] **Aufräum-Job**: `supabase/migrations/20261014150100_fale_share_cron.sql` (pg_cron, alle 15 Min.). Ohne ihn wird
+      trotzdem beim Zugriff und gelegentlich beim Hochladen aufgeräumt – mit ihm sind abgelaufene Daten garantiert weg.
+- [ ] Keine neuen Secrets nötig (nutzt `FALE_TOKEN_SECRET`, `FALE_IP_SALT`, `FALE_RPC_SECRET`, `SUPABASE_*`).
+      Optional in Vercel: `SHARE_MAX_MB` (50), `SHARE_TOTAL_MB` (300 – Supabase Free hat 500 MB Datenbank),
+      `SHARE_CHUNK_KB` (1024), Tageslimits `SHARE_DEVICE_DAILY`, `SHARE_IP_DAILY`, `TRANSFER_JOIN_IP_DAILY`.
+- [ ] Datenschutzerklärung Abschnitt 10 (Teilen, STUN-Server von Google) prüfen, Platzhalter ausfüllen.
+- [ ] Nach dem Deployment: Link teilen → in privatem Browserfenster öffnen → herunterladen; Unterschrift anfordern →
+      im zweiten Browser unterschreiben → Status „Unterschrieben“ → PDF mit Protokollseite in Dateien speichern;
+      Geräte verbinden Handy ↔ PC (QR-Code) und eine Datei übertragen.
+
 ## B. Google-Play-Entwicklerkonto
 
 - [ ] Konto unter <https://play.google.com/console> anlegen: einmalig **25 USD**, Identitätsprüfung
@@ -82,7 +97,7 @@
 - [ ] App-Zugriff: keine Anmeldung nötig
 - [ ] Content-Rating-Fragebogen (IARC) – Antworten in [data-safety.md](data-safety.md)
 - [ ] Zielgruppe: 18+
-- [ ] Datensicherheit: neue Angaben (Cloud-KI-Text, pseudonyme ID, AdMob, Kaufverlauf) – siehe [data-safety.md](data-safety.md)
+- [ ] Datensicherheit: neue Angaben (Cloud-KI-Text, pseudonyme ID, AdMob, Kaufverlauf, verschlüsselt geteilte Dateien) – siehe [data-safety.md](data-safety.md)
 - [ ] Regierungs-App / Finanz / Gesundheit / Nachrichten: Nein
 
 ## F. Jeder Release
@@ -114,6 +129,10 @@
 - [ ] **Werbevideo** (mit Test-IDs!): UMP-Dialog erscheint (in der EU), Video läuft, danach „+3“ im Kontingent
       (kommt über die Server-Bestätigung, kann einige Sekunden dauern)
 - [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Kauf, „Käufe wiederherstellen“, Abo verwalten
+- [ ] **Teilen & Übertragen** (online): „Sicher teilen“ → Link per WhatsApp senden → auf anderem Gerät im Browser öffnen;
+      „Unterschrift anfordern“ → Link öffnen, unterschreiben → in der App Status „Unterschrieben“ + PDF speichern;
+      „Geräte verbinden“: QR-Code mit der Handy-Kamera scannen (öffnet die Web-App) bzw. in der App „QR-Code scannen“
+      (Kamera-Berechtigung), Datei Handy → PC und PC → Handy; im Flugmodus erscheint der Offline-Hinweis
 - [ ] Update über die vorherige Version installieren: Dateien bleiben erhalten
 
 ## Hinweise

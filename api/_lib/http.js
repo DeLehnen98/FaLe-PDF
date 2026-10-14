@@ -17,7 +17,7 @@ function applyCors(req, res, cfg) {
   if (origin && isAllowedOrigin(origin, cfg)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Fale-Auth'); // X-Fale-Auth: share capability / download ticket
     res.setHeader('Access-Control-Max-Age', '600');
   }
 }
