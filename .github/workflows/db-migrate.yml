@@ -31,6 +31,30 @@ jobs:
       - name: Install psql
         if: steps.chk.outputs.skip != '1'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client > /dev/null
+      - name: Test connection
+        if: steps.chk.outputs.skip != '1'
+        run: |
+          set -u
+          info=$(python3 - <<'PY'
+          import os, urllib.parse as u
+          raw = os.environ['DB_URL'].strip()
+          p = u.urlsplit(raw)
+          pw = p.password or ''
+          hints = []
+          if '[YOUR-PASSWORD]' in raw or 'YOUR-PASSWORD' in raw: hints.append('Platzhalter [YOUR-PASSWORD] wurde nicht ersetzt')
+          if p.hostname and p.hostname.startswith('db.') and p.hostname.endswith('.supabase.co'): hints.append('direkte Verbindung (nur IPv6) – bitte die Session-Pooler-Zeile nehmen')
+          if any(c in pw for c in '@:/?#%[] '): hints.append('Passwort enthaelt Sonderzeichen, die in der URL kodiert werden muessen')
+          print(f"scheme={p.scheme} user={p.username} host={p.hostname} port={p.port} db={p.path.lstrip('/')} pw_len={len(pw)} hints={'; '.join(hints) or '-'}")
+          PY
+          )
+          echo "::notice title=DB-Verbindung (ohne Passwort)::$info"
+          if ! err=$(psql "$DB_URL" -v ON_ERROR_STOP=1 -tA -c "select current_user, version()" 2>&1); then
+            clean=$(echo "$err" | sed -E 's#postgres(ql)?://[^ ]*#<url>#g' | head -n 5 | tr '\n' ' ')
+            echo "::error title=DB-Verbindung fehlgeschlagen::$clean"
+            exit 1
+          fi
+          echo "::notice title=DB-Verbindung ok::$(echo "$err" | cut -c1-120)"
+
       - name: Apply pending migrations
         if: steps.chk.outputs.skip != '1'
         run: |
