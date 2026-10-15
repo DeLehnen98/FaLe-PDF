@@ -70,3 +70,5 @@ The same script regenerates the `sw.js` precache list. CI runs it with `--check`
 - **HEIC/RAW:** the original is always stored. A thumbnail exists only if the device's browser can decode the format (Safari can, Chrome on Android/desktop usually cannot).
 - **Free up space on the phone** ("Nur vom Gerät entfernen") and **background backup** need the native app. On the web, backup happens while the app is open, and deleting means "Überall löschen" with a 30-day trash.
 - **Sharing** is per file, via a link (contract §7.9: max 50 MB, 7 days). Sharing folders or albums natively comes later.
+
+Live (Beta): https://fale-one.vercel.app – Vercel-Projekt `fale-one`, Root `one`.
