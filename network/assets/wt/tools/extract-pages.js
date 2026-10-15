@@ -3,7 +3,7 @@ import { loadPdfLib } from '../lib/pdf.js';
 import { parsePages, formatPages } from '../lib/ranges.js';
 import { el } from '../lib/dom.js';
 import { baseName } from '../lib/format.js';
-import { PageStage, rearrange, copyToNew, saveLike, pdfBlob, shellText, userError, selectedPages } from '../lib/org-common.js';
+import { PageStage, rearrange, copyToNew, saveLike, pdfBlob, shellText, userError, inputHint, selectedPages } from '../lib/org-common.js';
 
 let stage = null;
 let lastText = '';
@@ -78,7 +78,7 @@ export default {
     const PDFLib = await loadPdfLib();
     const doc = await input.pdfDoc();
     const n = doc.getPageCount();
-    if (!String(opts.pages || '').trim()) throw userError('Wähle zuerst die Seiten aus, die du herauslösen möchtest.', 'First select the pages you want to extract.');
+    if (!String(opts.pages || '').trim()) throw inputHint('Wähle zuerst die Seiten aus, die du herauslösen möchtest.', 'First select the pages you want to extract.');
     const idx = ctx.parsePages(opts.pages, n);
     const base = baseName(input.name);
     const de = ctx.lang === 'de';

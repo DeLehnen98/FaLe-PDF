@@ -47,7 +47,7 @@ File name = `id`. Texts are **plain text** (they are HTML-escaped; no markup, no
 | `popular` + `order` | | shown in the hub's "Beliebt" row and on the home page; lower `order` first |
 | `related` | | ids for "Passende Werkzeuge" (2–4) |
 | `next` | | ids offered as "Weiter mit …" after a run (only if the outputs match their `accepts`) |
-| `needs` | | `pdfjs`, `pdflib`, `jszip` – cached for offline use after the first visit |
+| `needs` | | `pdfjs`, `pdflib`, `jszip`, `office`, `unicodefont` (tools that draw text into PDFs) – cached for offline use after the first visit |
 | `trademarkNote` | | `true` adds the trademark sentence (for "Word (DOCX)", "Excel (XLSX)" as format names) |
 | `de` / `en` | ✓ | per language, see below |
 
@@ -102,6 +102,14 @@ export default {
 - Throw to fail: `Object.assign(new Error(), { userMessage: { de: '…', en: '…' } })` shows that text;
   anything else shows a generic message (console.warn, never console.error for expected problems).
 - Never return a result that is worse than the input without saying so (see compress-pdf).
+- Input problems the user fixes on the same screen ("nothing selected yet") → throw with `stay: true`
+  (`inputHint(de, en)` in lib/org-common.js): the shell keeps the files view and shows the text in the sticky bar
+  instead of the error card.
+- Output names are made unique by the shell ("a.pdf", "a (2).pdf"); `ctx.fileName` shortens very long names
+  before the suffix, so " (komprimiert)" is never cut off.
+- Shell behaviour: showing a result adds a history entry (the phone back button returns to the files);
+  more than 14 outputs show 10 rows plus "show all"; output thumbnails render lazily; `next` targets that take
+  one file are only offered for a single result.
 
 **`inputs`** – only usable files (errors are skipped by the shell, locked PDFs are unlocked first), in the
 user's order. Each is an `InputFile` (lib/files.js): `name`, `size`, `kind` (`pdf`/`image`/`other`),
@@ -158,6 +166,12 @@ BreadcrumbList), steps, why + comparison table, FAQ, related tools, app CTA; hub
 entry; offline support (service worker); share target (Android share sheet → hub chooser by `accepts`);
 "Weiter mit" hand-off via IndexedDB; privacy counter; dark mode; CSP + Trusted Types headers
 (`/werkzeuge/(.*)`, `/en/tools/(.*)`, `/assets/wt/(.*)` in network/vercel.json – no external hosts ever).
+
+Text drawn into PDFs: use `lib/unifont.js` (`prepareText(doc, text, {family, bold, italic})` → `{font, text,
+missing}`; `getFont(doc, …)` for the Unicode face; `missingWarning(missing)`), never a bare standard font: the
+standard font is used when it can show the text, otherwise Liberation Sans as an embedded subset (Latin incl.
+Polish/Turkish/…, Greek, Cyrillic stay real, searchable text). Only scripts that font lacks (CJK, Arabic,
+Hebrew, emoji) are replaced by "?" and must be reported. Add `unicodefont` to `needs`.
 
 ## 4. Add-a-tool checklist
 

@@ -1,7 +1,45 @@
 // GENERATED – synced copy of js/office/pdftext.js (app imports → lib/conv-office-shim.js, vendor paths re-based) by scripts/sync-webtools-vendor.mjs.
 // Do not edit here: change the source in the app and run `node scripts/sync-webtools-vendor.mjs`.
-// Text helpers for PDF output with pdf-lib standard fonts (WinAnsi: umlauts, ß, €, „“ … work).
+// Text helpers for PDF output with pdf-lib: standard fonts (WinAnsi: umlauts, ß, €, „“ … work) and, for text
+// beyond that (Polish, Czech, Turkish, Greek, Cyrillic …), Liberation Sans as an embedded Unicode subset
+// (./unifont.js). fontKit(...).pick(text, family, b, i) chooses; safeText(text, font) makes it drawable.
 import { loadPdfLib } from '../../conv-office-shim.js';
+import { uniFont, needsUnicode, styleKey } from './unifont.js';
+
+export { needsUnicode };
+
+/** Does any string in a (model) object need the Unicode font? Data URLs are skipped. */
+export function needsUnicodeDeep(obj, seen = new Set()) {
+  if (typeof obj === 'string') return !obj.startsWith('data:') && needsUnicode(obj);
+  if (!obj || typeof obj !== 'object' || seen.has(obj)) return false;
+  seen.add(obj);
+  if (ArrayBuffer.isView(obj) || obj instanceof ArrayBuffer) return false;
+  const vals = Array.isArray(obj) ? obj : obj instanceof Map || obj instanceof Set ? [...obj.values()] : Object.values(obj);
+  for (const v of vals) if (needsUnicodeDeep(v, seen)) return true;
+  return false;
+}
+
+/**
+ * Text for drawing with `font`: standard fonts get winAnsi(); the Unicode font keeps every character it has
+ * and maps the rest like winAnsi does (arrows/ticks to ASCII, emoji dropped, otherwise '?').
+ */
+export function safeText(str, font) {
+  if (!font || !font.isUnicode) return winAnsi(str);
+  const cmap = font.embedder.uniTtf.cmap;
+  const has = ch => cmap.has(ch.codePointAt(0));
+  let out = '';
+  for (const ch of String(str ?? '').normalize('NFC')) {
+    const c = ch.codePointAt(0);
+    if (ch === '\t') { out += '    '; continue; }
+    if (c < 0x20 || c === 0xad || (c >= 0x200b && c <= 0x200f) || c === 0xfeff || (c >= 0xfe00 && c <= 0xfe0f)) continue;
+    if (c >= 0x2000 && c <= 0x200a) { out += ' '; continue; }
+    if (has(ch)) { out += ch; continue; }
+    if (FALLBACK[ch] != null && [...FALLBACK[ch]].every(has)) { out += FALLBACK[ch]; continue; }
+    if (/\p{Extended_Pictographic}/u.test(ch) || /\p{M}/u.test(ch)) continue;
+    out += '?';
+  }
+  return out;
+}
 
 // Characters WinAnsiEncoding can represent beyond Latin-1.
 const WIN_EXTRA = '€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ';
@@ -48,11 +86,25 @@ export async function fontKit(pdfDoc) {
   };
   // preload the common sans faces so layout can be synchronous
   await Promise.all([get('sans'), get('sans', true), get('sans', false, true), get('sans', true, true)]);
+  const uni = new Map(); // styleKey → Unicode PDFFont (only after ensureUnicode)
+  const sync = (family, b, i) => cache.get(`${family}${b ? 'b' : ''}${i ? 'i' : ''}`) || cache.get('sans');
   return {
     PDFLib,
     get,
-    sync(family, b, i) { return cache.get(`${family}${b ? 'b' : ''}${i ? 'i' : ''}`) || cache.get('sans'); },
+    sync,
     async ensure(family) { await Promise.all([get(family), get(family, true), get(family, false, true), get(family, true, true)]); },
+    /** Load the four Unicode faces (embedded only if text is drawn with them). False if they are unavailable. */
+    async ensureUnicode() {
+      try {
+        for (const [b, i] of [[false, false], [true, false], [false, true], [true, true]]) if (!uni.has(styleKey(b, i))) uni.set(styleKey(b, i), await uniFont(pdfDoc, { bold: b, italic: i, PDFLib }));
+        return true;
+      } catch (e) { console.warn('Unicode-Schrift nicht verfügbar', e); return false; }
+    },
+    /** Standard font when it can show `text`, otherwise the Unicode face (serif/mono text then in sans). */
+    pick(text, family = 'sans', b = false, i = false) {
+      if (uni.size && needsUnicode(text)) return uni.get(styleKey(!!b, !!i)) || uni.get('r');
+      return sync(family, b, i);
+    },
   };
 }
 

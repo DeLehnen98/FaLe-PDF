@@ -3,7 +3,7 @@
 import { loadPdfLib } from '../lib/pdf.js';
 import { parsePages, formatPages } from '../lib/ranges.js';
 import { el } from '../lib/dom.js';
-import { PageStage, rearrange, saveLike, pdfBlob, shellText, userError, selectedPages } from '../lib/org-common.js';
+import { PageStage, rearrange, saveLike, pdfBlob, shellText, userError, inputHint, selectedPages } from '../lib/org-common.js';
 
 let stage = null;
 let lastText = '';
@@ -61,9 +61,9 @@ export default {
     const input = inputs[0];
     const doc = await input.pdfDoc();
     const n = doc.getPageCount();
-    if (!String(opts.pages || '').trim()) throw userError('Markiere zuerst die Seiten, die du löschen möchtest.', 'First mark the pages you want to delete.');
+    if (!String(opts.pages || '').trim()) throw inputHint('Markiere zuerst die Seiten, die du löschen möchtest.', 'First mark the pages you want to delete.');
     const del = new Set(ctx.parsePages(opts.pages, n));
-    if (del.size >= n) throw userError('Du kannst nicht alle Seiten löschen – mindestens eine muss bleiben.', 'You can’t delete every page – at least one has to stay.');
+    if (del.size >= n) throw inputHint('Du kannst nicht alle Seiten löschen – mindestens eine muss bleiben.', 'You can’t delete every page – at least one has to stay.');
     ctx.progress(0.3, { de: `${del.size} Seiten werden entfernt …`, en: `Removing ${del.size} pages …` });
     await ctx.tick();
     const PDFLib = await loadPdfLib();

@@ -6,6 +6,8 @@
 //   4. objects that nothing references any more (old xref/object streams, leftovers of edits) are removed
 // Saving with object streams (lib/pdf.js saveDoc) then packs the remaining small objects.
 
+import { stripAsciiFilters } from './aud1-asciistrip.js';
+
 const yieldNow = () => new Promise(r => setTimeout(r, 0));
 
 export async function optimizeLossless(doc, PDFLib, { tick = yieldNow, dropThumbs = true } = {}) {
@@ -15,6 +17,7 @@ export async function optimizeLossless(doc, PDFLib, { tick = yieldNow, dropThumb
     const T = PDFLib.PDFName.of('Thumb');
     for (const page of doc.getPages()) if (page.node.has(T)) { page.node.delete(T); stats.thumbs++; }
   }
+  stats.ascii = await stripAsciiFilters(doc, PDFLib, tick);
   stats.deflated = await deflateUnfiltered(doc, PDFLib, tick);
   stats.deduped = await dedupeStreams(doc, PDFLib, tick);
   stats.removed = removeUnreachable(doc, PDFLib);

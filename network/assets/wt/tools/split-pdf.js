@@ -5,7 +5,7 @@ import { loadPdfLib } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
 import { baseName, formatSize } from '../lib/format.js';
 import { formatPages } from '../lib/ranges.js';
-import { PageStage, copyToNew, saveLike, pdfBlob, shellText, shellRadio, userError, parseGroups, groupsFromCuts, groupsToText, range } from '../lib/org-common.js';
+import { PageStage, copyToNew, saveLike, pdfBlob, shellText, shellRadio, userError, inputHint, parseGroups, groupsFromCuts, groupsToText, range } from '../lib/org-common.js';
 
 let stage = null;
 let values = null;
@@ -214,8 +214,8 @@ export default {
           : userError('Die Bereiche verstehe ich nicht. Beispiel: 1-3, 4-8', 'I can’t read the ranges. Example: 1-3, 4-8');
       }
     }
-    if (!parts.length) throw userError('Setze zuerst mindestens einen Schnitt: Tippe zwischen zwei Seiten oder gib Bereiche ein.', 'Set at least one cut first: tap between two pages or type ranges.');
-    if (parts.length === 1 && parts[0].pages.length === n && opts.mode !== 'oddeven') throw userError('Damit entsteht nur eine Datei mit allen Seiten. Setze mindestens einen Schnitt.', 'That would give one file with all pages. Set at least one cut.');
+    if (!parts.length) throw inputHint('Setze zuerst mindestens einen Schnitt: Tippe zwischen zwei Seiten oder gib Bereiche ein.', 'Set at least one cut first: tap between two pages or type ranges.');
+    if (parts.length === 1 && parts[0].pages.length === n && opts.mode !== 'oddeven') throw inputHint('Damit entsteht nur eine Datei mit allen Seiten. Setze mindestens einen Schnitt.', 'That would give one file with all pages. Set at least one cut.');
 
     const outputs = [];
     const used = new Map();

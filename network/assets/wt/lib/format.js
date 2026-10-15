@@ -38,14 +38,24 @@ export function safeFileName(name, fallback = 'Datei') {
   if (!n) n = fallback;
   if (n.length > 120) {
     const ext = extension(n);
-    n = n.slice(0, 120 - (ext ? ext.length + 1 : 0)).trim() + (ext ? '.' + ext : '');
+    n = clip(n.slice(0, n.length - (ext ? ext.length + 1 : 0)), 120 - (ext ? ext.length + 1 : 0)) + (ext ? '.' + ext : '');
   }
   return n;
 }
 
-/** "Rechnung" + suffix + ext, e.g. withSuffix('Rechnung.pdf', ' (komprimiert)', 'pdf'). */
+/** First `max` UTF-16 units without splitting an emoji / surrogate pair, no trailing space, dot or dash. */
+function clip(s, max) {
+  let out = '';
+  for (const ch of s) { if (out.length + ch.length > max) break; out += ch; }
+  return out.replace(/[\s.–-]+$/u, '');
+}
+
+/** "Rechnung" + suffix + ext, e.g. withSuffix('Rechnung.pdf', ' (komprimiert)', 'pdf'). A very long name is
+ * shortened before the suffix, so " (komprimiert)" is never cut off (the result must not look like the input). */
 export function withSuffix(name, suffix, ext) {
-  return safeFileName(`${baseName(name)}${suffix}.${ext}`);
+  const tail = `${suffix}.${ext}`;
+  const base = safeFileName(baseName(name));
+  return safeFileName(`${base.length + tail.length > 120 ? clip(clip(base, 119 - tail.length).replace(/\s\S{1,15}$/u, ''), 119 - tail.length) + '…' : base}${tail}`);
 }
 
 export function plural(lang, n, one, many) { return n === 1 ? one : many; }

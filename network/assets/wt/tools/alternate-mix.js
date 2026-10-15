@@ -5,7 +5,8 @@ import { loadPdfLib } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
 import { baseName } from '../lib/format.js';
 import { PageGrid, ThumbSource, loadGridCss } from '../lib/pagegrid.js';
-import { saveLike, pdfBlob, userError, rearrange } from '../lib/org-common.js';
+import { saveLike, pdfBlob, userError, inputHint, rearrange } from '../lib/org-common.js';
+import { OcgCarrier } from '../lib/aud1-ocg.js';
 
 let P = null;
 
@@ -92,7 +93,7 @@ export default {
     if (!pdfs.length) throw userError('Bitte wähle eine oder mehrere PDFs aus.', 'Please choose one or more PDFs.');
     const files = [];
     for (const i of pdfs) files.push({ id: i.id, count: await i.pageCount() });
-    if (files.length === 1 && files[0].count < 2) throw userError('Die PDF hat nur eine Seite – da gibt es nichts zu mischen.', 'The PDF has only one page – nothing to mix.');
+    if (files.length === 1 && files[0].count < 2) throw inputHint('Die PDF hat nur eine Seite – da gibt es nichts zu mischen.', 'The PDF has only one page – nothing to mix.');
     const order = mixOrder(files, opts);
     const de = ctx.lang === 'de';
     const base = baseName(pdfs[0].name);
@@ -104,14 +105,17 @@ export default {
     } else {
       doc = await PDFLib.PDFDocument.create();
       const srcs = new Map();
+      const layers = new OcgCarrier(PDFLib, doc); // hidden layers stay hidden
       for (let k = 0; k < pdfs.length; k++) {
         ctx.progress(k / pdfs.length * 0.6, { de: `Datei ${k + 1} von ${pdfs.length} wird gelesen …`, en: `Reading file ${k + 1} of ${pdfs.length} …` });
         const src = await pdfs[k].pdfDoc();
         const copied = await doc.copyPages(src, src.getPageIndices());
         srcs.set(pdfs[k].id, copied);
+        copied.forEach((p, i) => layers.collect(src, src.getPage(i), p));
         await ctx.tick();
       }
       for (const o of order) doc.addPage(srcs.get(o.f)[o.p]);
+      layers.finish();
     }
     ctx.progress(0.8, { de: 'Wird gespeichert …', en: 'Saving …' });
     await ctx.tick();

@@ -6,7 +6,7 @@
 import { analysePdf, dropRunningLines, buildModel } from '../lib/conv-pdfmodel.js';
 import { PAGES_OPTION, coarsePointer, fail, userError } from '../lib/conv-common.js';
 import { modelPreview } from '../lib/conv-docpreview.js';
-import { renderPage, canvasToBlob, loadJSZip } from '../lib/pdf.js';
+import { renderPage, canvasToBlob } from '../lib/pdf.js';
 
 const DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 const TW = 20, PX = 96 / 72;
@@ -77,7 +77,7 @@ export default {
           const margin = Math.max(36, Math.min(90, minX));
           const pageSetup = { w: first.width, h: first.height, mt: margin, mr: margin, mb: margin, ml: margin };
           const { modelToDocx } = await import('../lib/shared/office/docx-write.js');
-          blob = await fixLineRule(await modelToDocx(model, { title: input.name.replace(/\.pdf$/i, ''), page: pageSetup }));
+          blob = await modelToDocx(model, { title: input.name.replace(/\.pdf$/i, ''), page: pageSetup });
           meta = { model };
           note = ctx.t({
             de: `${stats.headings} Überschriften · ${stats.paragraphs} Absätze · ${stats.lists} Listenpunkte · ${stats.tables} Tabellen · ${stats.images + stats.scanned} Bilder`,
@@ -115,26 +115,10 @@ async function buildExact(pdf, idx, ctx, prog) {
     page.cleanup();
     sections.push({
       properties: { page: { size: { width: Math.round(vp.width * TW), height: Math.round(vp.height * TW), orientation: vp.width > vp.height ? D.PageOrientation.LANDSCAPE : D.PageOrientation.PORTRAIT }, margin: { top: 0, right: 0, bottom: 0, left: 0, header: 0, footer: 0 } } },
-      children: [new D.Paragraph({ spacing: { before: 0, after: 0, line: 240 }, children: [new D.ImageRun({ type: 'jpg', data, transformation: { width: Math.floor(vp.width * PX) - 1, height: Math.floor(vp.height * PX) - 2 } })] })],
+      children: [new D.Paragraph({ spacing: { before: 0, after: 0, line: 240, lineRule: D.LineRuleType.AUTO }, children: [new D.ImageRun({ type: 'jpg', data, transformation: { width: Math.floor(vp.width * PX) - 1, height: Math.floor(vp.height * PX) - 2 } })] })],
     });
     await ctx.tick();
   }
   prog(0.95, { de: 'Word-Datei wird geschrieben …', en: 'Writing the Word file …' });
   return D.Packer.toBlob(new D.Document({ creator: 'FaLe Werkzeuge', sections }));
-}
-
-/**
- * <w:spacing w:line="…"> without w:lineRule means "auto" (multiple of the line), but LibreOffice reads it
- * as an exact height and clips pictures to one text line. Writing the rule explicitly fixes that.
- */
-async function fixLineRule(blob) {
-  const JSZip = await loadJSZip();
-  const zip = await JSZip.loadAsync(blob);
-  for (const name of ['word/styles.xml', 'word/document.xml']) {
-    const f = zip.file(name);
-    if (!f) continue;
-    const xml = await f.async('string');
-    zip.file(name, xml.replace(/<w:spacing\b([^>]*?)\/>/g, (m, attrs) => (/w:line="/.test(attrs) && !/w:lineRule=/.test(attrs) ? `<w:spacing${attrs} w:lineRule="auto"/>` : m)));
-  }
-  return zip.generateAsync({ type: 'blob', mimeType: DOCX, compression: 'DEFLATE' });
 }

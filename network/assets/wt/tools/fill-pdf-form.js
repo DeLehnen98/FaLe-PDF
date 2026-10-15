@@ -1,11 +1,13 @@
 // Tool: fill PDF forms on the phone. AcroForm fields (text, multi-line, checkbox, radio, dropdown, list)
 // become a native form (big inputs, matching keyboard, grouped by page) next to a page preview that
 // highlights the fields – tap a field on the preview to jump to its input. Appearances are regenerated
-// with Helvetica (WinAnsi: umlauts, ß, €), optional flattening. PDFs without fields: lines, boxes and
+// with Helvetica, or with an embedded Unicode subset (lib/unifont.js) for values with Polish, Turkish, Greek,
+// Cyrillic … characters; optional flattening. PDFs without fields: lines, boxes and
 // "Label:" gaps are detected and what you type is written onto the page.
 import { el, clear } from '../lib/dom.js';
 import { loadPdfLib } from '../lib/pdf.js';
-import { ensureCss, tr, ic, btn, userError, statusLine, pageNav, previewPage, wipeCanvas, stageWidth, saveLikeSource, pdfBlob, watchUnlock, winAnsiSafe } from '../lib/sec-ui.js';
+import { ensureCss, tr, ic, btn, userError, statusLine, pageNav, previewPage, wipeCanvas, stageWidth, saveLikeSource, pdfBlob, watchUnlock } from '../lib/sec-ui.js';
+import { prepareText, cleanText, missingWarning } from '../lib/unifont.js';
 import { flattenDoc } from '../lib/sec-flatten.js';
 import { drawTextBox, drawMark, wrapText } from '../lib/sec-draw.js';
 
@@ -48,7 +50,7 @@ function fitText(field, font, text, multiline) {
   const w = field.acroField.getWidgets()[0];
   if (!w) return;
   const r = w.getRectangle();
-  const safe = winAnsiSafe(font, text).text;
+  const safe = cleanText(text, font).text;
   const fits = size => (multiline
     ? wrapText(font, safe, size, r.width - 8).length * size * 1.2 <= r.height - 4
     : font.widthOfTextAtSize(safe, size) <= r.width - 6 && size <= r.height * 0.8);
@@ -147,8 +149,9 @@ export default {
     const PDFLib = await loadPdfLib();
     ctx.progress(0.1, { de: 'Werte werden eingetragen …', en: 'Filling in the values …' });
     const doc = await input.pdfDoc();
-    const font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
-    const lost = [];
+    const lost = [], lostChars = [];
+    // Helvetica when it can show the value, otherwise the Unicode font; `missing`: characters no font here has
+    const pick = async text => { const r = await prepareText(doc, text, { PDFLib }); lostChars.push(...r.missing); return r; };
     let changed = 0;
     if (F.mode === 'acro') {
       const form = doc.getForm();
@@ -162,24 +165,26 @@ export default {
             let text = String(v);
             if (f.max && text.length > f.max) text = text.slice(0, f.max);
             field.setText(text || undefined);
+            const { font, missing } = await pick(text);
             if (text) fitText(field, font, text, f.multiline);
-            const safe = winAnsiSafe(font, text);
-            if (safe.lost) lost.push(f.label);
+            if (missing.length) lost.push(f.label);
             else field.updateAppearances(font);
           } else if (f.kind === 'check') { if (v) field.check(); else field.uncheck(); }
           else if (f.kind === 'radio') { if (v) field.select(v); else field.clear(); }
           else if (f.kind === 'dropdown') {
             if (v) field.select(v); else field.clear();
-            if (winAnsiSafe(font, v || '').lost) lost.push(f.label); else field.updateAppearances(font);
+            const { font, missing } = await pick(v || '');
+            if (missing.length) lost.push(f.label); else field.updateAppearances(font);
           } else if (f.kind === 'list') {
             const arr = Array.isArray(v) ? v : [v].filter(Boolean);
             if (arr.length) field.select(arr, false); else field.clear();
-            if (arr.some(x => winAnsiSafe(font, x).lost)) lost.push(f.label); else field.updateAppearances(font);
+            const { font, missing } = await pick(arr.join('\n'));
+            if (missing.length) lost.push(f.label); else field.updateAppearances(font);
           }
           changed++;
         } catch { lost.push(f.label); } // no logging: messages can contain field values
       }
-      // pdf-lib must not regenerate appearances on save (it would fail on characters outside WinAnsi)
+      // pdf-lib must not regenerate appearances on save (it would use Helvetica and fail on other characters)
       for (const field of form.getFields()) { try { form.markFieldAsClean(field); } catch { /* ignore */ } }
       if (lost.length) {
         const acro = doc.catalog.lookup(PDFLib.PDFName.of('AcroForm'));
@@ -203,20 +208,21 @@ export default {
         const box = { cx: d.x + d.w / 2, cy: d.y + d.h / 2, w: d.w, h: d.h, rot: 0 };
         if (d.type === 'check') drawMark(PDFLib, page, vp, box, 'cross');
         else {
-          if (!keys.has(d.page)) keys.set(d.page, page.node.newFontDictionary('FaLeHelv', font.ref));
-          const safe = winAnsiSafe(font, String(v));
-          if (safe.lost) lost.push(d.name);
-          drawTextBox(PDFLib, page, vp, box, safe.text, { font, fontKey: keys.get(d.page), multiline: d.type === 'multiline', size: d.type === 'multiline' ? 11 : null });
+          const { font, text } = await pick(String(v));
+          const fk = `${d.page}|${font.name}`;
+          if (!keys.has(fk)) keys.set(fk, page.node.newFontDictionary(font.isUnicode ? 'FaLeUni' : 'FaLeHelv', font.ref));
+          drawTextBox(PDFLib, page, vp, box, text, { font, fontKey: keys.get(fk), multiline: d.type === 'multiline', size: d.type === 'multiline' ? 11 : null });
         }
         changed++;
       }
     }
     ctx.progress(0.85, { de: 'Wird gespeichert …', en: 'Saving …' });
     const { bytes, protectedAgain } = await saveLikeSource(doc, input);
-    if (lost.length) ctx.note(F.mode === 'acro'
-      ? { de: `Einige Zeichen in „${lost.slice(0, 3).join('“, „')}“ liegen außerhalb des westeuropäischen Zeichensatzes. Die Werte sind gespeichert; ihr Aussehen erzeugt das Programm, mit dem du die PDF öffnest.${opts.flatten ? ' Beim Glätten können sie fehlen.' : ''}`,
-        en: `Some characters in “${lost.slice(0, 3).join('”, “')}” are outside the Western European character set. The values are saved; the program that opens the PDF draws them.${opts.flatten ? ' They may be missing after flattening.' : ''}` }
-      : { de: 'Einige Zeichen außerhalb des westeuropäischen Zeichensatzes wurden durch „?“ ersetzt.', en: 'Some characters outside the Western European character set were replaced with “?”.' });
+    const chars = lostChars.length ? ` (${[...new Set(lostChars)].slice(0, 12).join(' ')})` : '';
+    if (F.mode === 'acro' && lost.length) ctx.note({
+      de: `Einige Zeichen in „${lost.slice(0, 3).join('“, „')}“ kann die eingebettete Schrift nicht darstellen${chars}. Die Werte sind gespeichert; ihr Aussehen erzeugt das Programm, mit dem du die PDF öffnest.${opts.flatten ? ' Beim Glätten können sie fehlen.' : ''}`,
+      en: `The embedded font cannot show some characters in “${lost.slice(0, 3).join('”, “')}”${chars}. The values are saved; the program that opens the PDF draws them.${opts.flatten ? ' They may be missing after flattening.' : ''}` });
+    else if (F.mode !== 'acro' && lostChars.length) ctx.note(missingWarning(lostChars));
     if (F.mode === 'detected') ctx.note({ de: 'Die Einträge wurden direkt auf die Seite geschrieben.', en: 'The entries were written directly onto the page.' });
     if (protectedAgain) ctx.note({ de: 'Die Datei ist wieder mit demselben Passwort geschützt.', en: 'The file is protected again with the same password.' });
     const suffix = ctx.lang === 'de' ? ' (ausgefüllt)' : ' (filled)';

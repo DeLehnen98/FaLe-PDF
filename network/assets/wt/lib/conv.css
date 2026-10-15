@@ -42,6 +42,6 @@
 .cv-doc .cv-table td { color: #1a1a1a; border-color: #d9dbe6; }
 .cv-doc .cv-table tr:first-child td { background: #f0f1f7; }
 .cv-doc-img { display: inline-block; padding: 14px 18px; margin: 2px 0; background: #eef0f8; color: #5e6383; border-radius: 6px; font-size: .75rem; }
-.cv-doc-pb { border-top: 1px dashed #c8cbdf; margin: 1em 0 .6em; padding-top: 2px; color: #8a8ea8; font-size: .75rem; text-align: center; }
+.cv-doc-pb { border-top: 1px dashed #c8cbdf; margin: 1em 0 .6em; padding-top: 2px; color: #646882; font-size: .75rem; text-align: center; }
 .cv-pages img.cv-thumb { display: block; width: 150px; height: auto; background: #fff; border-radius: 4px; box-shadow: var(--paper-shadow, 0 1px 3px rgba(0,0,0,.2)); }
 @media (min-width: 720px) { .cv-pages img.cv-thumb { width: 180px; } }

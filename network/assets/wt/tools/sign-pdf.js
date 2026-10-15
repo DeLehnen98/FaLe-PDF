@@ -4,7 +4,8 @@
 // Remembering a signature is opt-in and stays in this browser (IndexedDB); nothing is uploaded.
 import { el, clear } from '../lib/dom.js';
 import { loadPdfLib } from '../lib/pdf.js';
-import { ensureCss, tr, ic, btn, userError, guardPrimary, statusLine, saveLikeSource, pdfBlob, watchUnlock, winAnsiSafe } from '../lib/sec-ui.js';
+import { ensureCss, tr, ic, btn, userError, guardPrimary, statusLine, saveLikeSource, pdfBlob, watchUnlock } from '../lib/sec-ui.js';
+import { prepareText, missingWarning } from '../lib/unifont.js';
 import { createPlacer, sizeText } from '../lib/sec-placer.js';
 import { drawImageBox, drawTextBox, drawMark } from '../lib/sec-draw.js';
 
@@ -57,9 +58,9 @@ export default {
     const pages = doc.getPages();
     const pdf = await input.pdfjs();
     const images = new Map();
-    let font = null;
     const fontKeys = new Map();
-    let lost = 0, k = 0;
+    const lost = [];
+    let k = 0;
     const byPage = [...S.items].sort((a, b) => a.page - b.page);
     for (const item of byPage) {
       ctx.progress(k++ / byPage.length, { de: `Seite ${item.page} wird unterschrieben …`, en: `Signing page ${item.page} …` });
@@ -70,11 +71,12 @@ export default {
         if (!images.has(item.asset.id)) images.set(item.asset.id, await doc.embedPng(new Uint8Array(await item.asset.blob.arrayBuffer())));
         drawImageBox(PDFLib, page, vp, box, images.get(item.asset.id), `FaLeSig${item.asset.id}`);
       } else if (item.kind === 'text') {
-        if (!font) font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
-        if (!fontKeys.has(item.page)) fontKeys.set(item.page, page.node.newFontDictionary('FaLeHelv', font.ref));
-        const safe = winAnsiSafe(font, item.text);
-        lost += safe.lost;
-        drawTextBox(PDFLib, page, vp, box, safe.text, { font, fontKey: fontKeys.get(item.page), size: item.fontPt, color: item.color, pad: 2 });
+        // Helvetica when it can show the text, otherwise an embedded Unicode subset (lib/unifont.js)
+        const { font, text, missing } = await prepareText(doc, item.text, { PDFLib });
+        lost.push(...missing);
+        const fk = `${item.page}|${font.name}`;
+        if (!fontKeys.has(fk)) fontKeys.set(fk, page.node.newFontDictionary(font.isUnicode ? 'FaLeUni' : 'FaLeHelv', font.ref));
+        drawTextBox(PDFLib, page, vp, box, text, { font, fontKey: fontKeys.get(fk), size: item.fontPt, color: item.color, pad: 2 });
       } else {
         drawMark(PDFLib, page, vp, box, item.kind, item.color);
       }
@@ -85,7 +87,8 @@ export default {
     const pagesUsed = new Set(S.items.map(i => i.page)).size;
     ctx.note({ de: 'Einfache elektronische Unterschrift: Sie ist fest in die Seite eingebrannt. Für Verträge mit gesetzlicher Schriftform ist eine qualifizierte elektronische Signatur nötig.',
       en: 'Simple electronic signature: it is burned into the page. Contracts that legally require a written form need a qualified electronic signature.' });
-    if (lost) ctx.note({ de: 'Einige Zeichen außerhalb des westeuropäischen Zeichensatzes wurden durch „?“ ersetzt.', en: 'Some characters outside the Western European character set were replaced with “?”.' });
+    const lw = missingWarning(lost);
+    if (lw) ctx.note(lw);
     if (protectedAgain) ctx.note({ de: 'Die Datei ist wieder mit demselben Passwort geschützt.', en: 'The file is protected again with the same password.' });
     const suffix = ctx.lang === 'de' ? ' (unterschrieben)' : ' (signed)';
     return { outputs: [{ name: ctx.fileName(input.name, suffix, 'pdf'), blob: pdfBlob(bytes), pages: doc.getPageCount(),

@@ -1,6 +1,6 @@
 // Workbook → PDF: table pages with grid, header row repeat, fills, bold, alignment. Landscape when wide.
 import { loadPdfLib } from '../pdflib.js';
-import { fontKit, winAnsi, rgbOf } from './pdftext.js';
+import { fontKit, safeText, needsUnicodeDeep, rgbOf } from './pdftext.js';
 import { KEY, displayOf, DEFAULT_COL_W } from './workbook.js';
 import { colName, isErr } from './formula.js';
 import { tick } from './vendor.js';
@@ -11,7 +11,9 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
   const pdf = await PDFLib.PDFDocument.create();
   pdf.setTitle(title); pdf.setProducer('FaLe PDF'); pdf.setCreator('FaLe PDF');
   const fk = await fontKit(pdf);
-  const regular = fk.sync('sans', false, false), bold = fk.sync('sans', true, false), italic = fk.sync('sans', false, true), bi = fk.sync('sans', true, true);
+  // Unicode face only when a sheet name or cell needs it (Polish, Greek, Cyrillic …)
+  if (needsUnicodeDeep(wb.sheets.map(s => [s.name, s.cells]))) await fk.ensureUnicode();
+  const regular = fk.sync('sans', false, false);
   const grid = rgbOf(PDFLib, '#C9CCDA'), headBg = rgbOf(PDFLib, '#EEF0F8'), headTxt = rgbOf(PDFLib, '#4F5475');
   const M = 28, FS = 9, RH = 15;
   wb.sheets.forEach(ensureSheetExtras);
@@ -47,8 +49,9 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
       let page = null, y = 0;
       const newPage = () => {
         page = pdf.addPage([PW, PH]);
-        const label = winAnsi(`${sh.name}${colGroups.length > 1 ? ` (Spalten ${colName(cs)}–${colName(ce - 1)})` : ''}`);
-        page.drawText(label, { x: M, y: PH - M + 8, size: 10, font: bold, color: rgbOf(PDFLib, '#15172F') });
+        const raw = `${sh.name}${colGroups.length > 1 ? ` (Spalten ${colName(cs)}–${colName(ce - 1)})` : ''}`;
+        const lf = fk.pick(raw, 'sans', true);
+        page.drawText(safeText(raw, lf), { x: M, y: PH - M + 8, size: 10, font: lf, color: rgbOf(PDFLib, '#15172F') });
         y = PH - M - 8;
         // column letters
         drawRow(-1);
@@ -92,9 +95,10 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
           }
           if (!cell) continue;
           const v = cell.f ? cell.cv : cell.v;
-          let text = winAnsi(displayOf(cell));
+          const shown = displayOf(cell);
+          const font = fk.pick(shown, 'sans', !!s.b, !!s.i);
+          let text = safeText(shown, font);
           if (!text) continue;
-          const font = s.b && s.i ? bi : s.b ? bold : s.i ? italic : regular;
           const size = s.size ? Math.min(fs * 1.6, s.size * 0.8 * Math.max(0.8, scale)) : fs;
           const pad = 2.5;
           const maxW = w - pad * 2;
@@ -135,7 +139,8 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
       const hgt = Math.min(PH - 2 * M - 30, w * (ch.h / ch.w));
       if (!page || y - hgt - 16 < M) {
         page = pdf.addPage([PW, PH]);
-        page.drawText(winAnsi(`${sh.name} – Diagramme`), { x: M, y: PH - M + 8, size: 10, font: bold, color: rgbOf(PDFLib, '#15172F') });
+        const ct = `${sh.name} – Diagramme`, cf = fk.pick(ct, 'sans', true);
+        page.drawText(safeText(ct, cf), { x: M, y: PH - M + 8, size: 10, font: cf, color: rgbOf(PDFLib, '#15172F') });
         y = PH - M - 8;
       }
       try {

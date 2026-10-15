@@ -4,7 +4,7 @@
 import { loadPdfLib, renderPage } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
 import { formatPages } from '../lib/ranges.js';
-import { PageStage, rearrange, saveLike, pdfBlob, userError } from '../lib/org-common.js';
+import { PageStage, rearrange, saveLike, pdfBlob, userError, inputHint } from '../lib/org-common.js';
 
 const W = 200; // analysis width in px
 let stage = null;
@@ -164,11 +164,11 @@ export default {
       apply();
       opts.remove = values.remove;
     }
-    if (!String(opts.remove || '').trim()) throw userError('Es ist keine Seite zum Entfernen markiert. Erhöhe die Schwelle oder tippe Seiten an.', 'No page is marked for removal. Raise the threshold or tap pages.');
+    if (!String(opts.remove || '').trim()) throw inputHint('Es ist keine Seite zum Entfernen markiert. Erhöhe die Schwelle oder tippe Seiten an.', 'No page is marked for removal. Raise the threshold or tap pages.');
     const doc = await input.pdfDoc();
     const n = doc.getPageCount();
     const del = new Set(ctx.parsePages(opts.remove, n));
-    if (del.size >= n) throw userError('Alle Seiten wären leer – mindestens eine Seite muss bleiben.', 'All pages would be removed – at least one page has to stay.');
+    if (del.size >= n) throw inputHint('Alle Seiten wären leer – mindestens eine Seite muss bleiben.', 'All pages would be removed – at least one page has to stay.');
     const PDFLib = await loadPdfLib();
     rearrange(doc, PDFLib, doc.getPages().filter((p, i) => !del.has(i)).map(page => ({ page })));
     ctx.progress(0.7, { de: 'Wird gespeichert …', en: 'Saving …' });

@@ -12,12 +12,15 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '266f00355e92';
+const VERSION = '1fd10541cac8';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-768e475b8aa4';
+const VENDOR = 'wt-vendor-bb9b11629538';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/hub.js",
+  "/assets/wt/lib/aud1-asciistrip.js",
+  "/assets/wt/lib/aud1-grayjpeg.js",
+  "/assets/wt/lib/aud1-ocg.js",
   "/assets/wt/lib/conv-common.js",
   "/assets/wt/lib/conv-docpreview.js",
   "/assets/wt/lib/conv-domparse.js",
@@ -47,6 +50,14 @@ const PRECACHE = [
   "/assets/wt/lib/img-qrdecode.js",
   "/assets/wt/lib/img-tools.css",
   "/assets/wt/lib/imgembed.js",
+  "/assets/wt/lib/new-cropbox.js",
+  "/assets/wt/lib/new-img.js",
+  "/assets/wt/lib/new-invoice.js",
+  "/assets/wt/lib/new-ocr.js",
+  "/assets/wt/lib/new-trace.js",
+  "/assets/wt/lib/new-ui.js",
+  "/assets/wt/lib/new-viewer.js",
+  "/assets/wt/lib/new.css",
   "/assets/wt/lib/options.js",
   "/assets/wt/lib/org-common.js",
   "/assets/wt/lib/org-gray.js",
@@ -71,6 +82,7 @@ const PRECACHE = [
   "/assets/wt/lib/strings.js",
   "/assets/wt/lib/sw.js",
   "/assets/wt/lib/tt.js",
+  "/assets/wt/lib/unifont.js",
   "/assets/wt/shell.js",
   "/assets/wt/wt.css",
   "/assets/fale-tokens.css",

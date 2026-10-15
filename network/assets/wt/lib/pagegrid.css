@@ -63,10 +63,10 @@
 
 /* small per-card tool (e.g. rotate) */
 .pg-tool {
-  position: absolute; left: 0; bottom: 21px; width: 40px; height: 40px; display: grid; place-items: center; padding: 0;
+  position: absolute; left: 0; bottom: 19px; width: 44px; height: 44px; display: grid; place-items: center; padding: 0;
   border: 0; background: none; color: var(--text); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
 }
-.pg-tool::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(19, 18, 46, 0.2); }
+.pg-tool::before { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(19, 18, 46, 0.2); }
 .pg-tool .pg-i { position: relative; width: 16px; height: 16px; }
 .pg-tool:active::before { transform: scale(0.92); }
 .pg-tool:focus-visible { outline: none; }

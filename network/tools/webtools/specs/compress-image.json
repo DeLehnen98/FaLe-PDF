@@ -3,13 +3,32 @@
   "category": "images",
   "iconSvg": "<path d=\"M4 4l6 6\"/><path d=\"M10 5v5H5\"/><path d=\"M20 20l-6-6\"/><path d=\"M14 19v-5h5\"/><path d=\"M20 4l-5 5\"/><path d=\"M4 20l5-5\"/>",
   "module": "tools/compress-image.js",
-  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
   "multiple": true,
   "minFiles": 1,
   "popular": true,
   "order": 40,
-  "related": ["resize-image", "convert-image", "remove-exif"],
-  "next": ["resize-image", "jpg-to-pdf"],
+  "related": [
+    "crop-image",
+    "resize-image",
+    "convert-image",
+    "remove-exif"
+  ],
+  "next": [
+    "resize-image",
+    "jpg-to-pdf"
+  ],
   "de": {
     "slug": "bild-komprimieren",
     "name": "Bild komprimieren",
@@ -20,25 +39,74 @@
     "lede": "Mach Fotos kleiner – für E-Mail, Formulare und Nachrichten. Mit Vorher-nachher-Vergleich.",
     "pickLabel": "Bilder auswählen",
     "primaryButton": "Komprimieren",
-    "keywords": ["bild verkleinern", "foto verkleinern", "jpg komprimieren", "png komprimieren", "kb", "dateigröße", "webp", "avif", "bild kleiner machen"],
+    "keywords": [
+      "bild verkleinern",
+      "foto verkleinern",
+      "jpg komprimieren",
+      "png komprimieren",
+      "kb",
+      "dateigröße",
+      "webp",
+      "avif",
+      "bild kleiner machen"
+    ],
     "steps": [
-      {"title": "Bilder auswählen", "text": "Wähle ein oder viele Fotos aus der Galerie, mach ein Foto oder füge ein Bild ein. JPG, PNG, WebP, AVIF, GIF und BMP werden unterstützt."},
-      {"title": "Stärke festlegen", "text": "Wähle eine Qualität oder gib eine Zielgröße in KB ein, zum Beispiel 500 KB für ein Upload-Formular. Optional begrenzt du die Kantenlänge oder wechselst das Format."},
-      {"title": "Vergleichen und teilen", "text": "Prüf das Ergebnis mit dem Vorher-nachher-Regler und teile es direkt oder lade es herunter – mehrere Bilder auch als ZIP."}
+      {
+        "title": "Bilder auswählen",
+        "text": "Wähle ein oder viele Fotos aus der Galerie, mach ein Foto oder füge ein Bild ein. JPG, PNG, WebP, AVIF, GIF und BMP werden unterstützt."
+      },
+      {
+        "title": "Stärke festlegen",
+        "text": "Wähle eine Qualität oder gib eine Zielgröße in KB ein, zum Beispiel 500 KB für ein Upload-Formular. Optional begrenzt du die Kantenlänge oder wechselst das Format."
+      },
+      {
+        "title": "Vergleichen und teilen",
+        "text": "Prüf das Ergebnis mit dem Vorher-nachher-Regler und teile es direkt oder lade es herunter – mehrere Bilder auch als ZIP."
+      }
     ],
     "why": [
-      {"title": "Zielgröße in KB", "text": "Statt zu raten: Gib eine Obergrenze ein, und FaLe sucht die höchste Qualität, die darunter passt. Reicht das nicht, wird das Bild behutsam verkleinert."},
-      {"title": "Vorher-nachher-Regler", "text": "Du siehst sofort, ob man den Unterschied erkennt – mit Zoom auf Details. Die Qualität kannst du direkt im Ergebnis nachjustieren."},
-      {"title": "Standort wird entfernt", "text": "Fotos enthalten oft GPS-Koordinaten und Kameradaten. Beim Komprimieren werden sie standardmäßig entfernt, die Drehung bleibt richtig."},
-      {"title": "Nie größer als vorher", "text": "Ist ein Bild schon optimal komprimiert, bekommst du das Original zurück statt einer größeren Datei – und erfährst das auch."}
+      {
+        "title": "Zielgröße in KB",
+        "text": "Statt zu raten: Gib eine Obergrenze ein, und FaLe sucht die höchste Qualität, die darunter passt. Reicht das nicht, wird das Bild behutsam verkleinert."
+      },
+      {
+        "title": "Vorher-nachher-Regler",
+        "text": "Du siehst sofort, ob man den Unterschied erkennt – mit Zoom auf Details. Die Qualität kannst du direkt im Ergebnis nachjustieren."
+      },
+      {
+        "title": "Standort wird entfernt",
+        "text": "Fotos enthalten oft GPS-Koordinaten und Kameradaten. Beim Komprimieren werden sie standardmäßig entfernt, die Drehung bleibt richtig."
+      },
+      {
+        "title": "Nie größer als vorher",
+        "text": "Ist ein Bild schon optimal komprimiert, bekommst du das Original zurück statt einer größeren Datei – und erfährst das auch."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Fotos hochgeladen?", "a": "Nein. Alles passiert in deinem Browser auf deinem Gerät. Nach dem ersten Laden funktioniert das Werkzeug sogar ohne Internet."},
-      {"q": "Wie bekomme ich ein Bild unter 200 KB oder 1 MB?", "a": "Wähle „Auf Zielgröße“ und gib die Grenze in KB ein (1 MB entspricht etwa 1000 KB). FaLe probiert die Qualität so lange aus, bis die Datei passt. Bei sehr kleinen Zielen werden zusätzlich die Pixelmaße verringert – das steht dann unter dem Ergebnis."},
-      {"q": "Welches Format ist am kleinsten?", "a": "Für Fotos ist WebP meist deutlich kleiner als JPG bei gleicher Qualität. AVIF ist oft noch kleiner, wird aber nur angeboten, wenn dein Browser es speichern kann, und nicht jedes Programm kann es öffnen. PNG ist verlustfrei und eignet sich eher für Grafiken mit Text oder Transparenz."},
-      {"q": "Kann ich viele Fotos auf einmal komprimieren?", "a": "Ja, ohne Begrenzung. Die Bilder werden nacheinander verarbeitet, damit auch Handys mit wenig Speicher 30 oder mehr Fotos schaffen. Am Ende lädst du alle als ZIP herunter oder teilst sie."},
-      {"q": "Was passiert mit den Bildinformationen (EXIF)?", "a": "Standardmäßig werden Standort, Kamera, Seriennummer und Aufnahmedaten entfernt und die Drehung direkt ins Bild übernommen. Wenn du die Daten behalten willst, schalte die Option aus – bei JPG werden sie dann übernommen."},
-      {"q": "Wird mein Foto unscharf?", "a": "Bei einer Qualität ab etwa 70 % sieht man auf Handy und Bildschirm meist keinen Unterschied. Prüf es selbst mit dem Vergleichsregler und dem Zoom."}
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser auf deinem Gerät. Nach dem ersten Laden funktioniert das Werkzeug sogar ohne Internet."
+      },
+      {
+        "q": "Wie bekomme ich ein Bild unter 200 KB oder 1 MB?",
+        "a": "Wähle „Auf Zielgröße“ und gib die Grenze in KB ein (1 MB entspricht etwa 1000 KB). FaLe probiert die Qualität so lange aus, bis die Datei passt. Bei sehr kleinen Zielen werden zusätzlich die Pixelmaße verringert – das steht dann unter dem Ergebnis."
+      },
+      {
+        "q": "Welches Format ist am kleinsten?",
+        "a": "Für Fotos ist WebP meist deutlich kleiner als JPG bei gleicher Qualität. AVIF ist oft noch kleiner, wird aber nur angeboten, wenn dein Browser es speichern kann, und nicht jedes Programm kann es öffnen. PNG ist verlustfrei und eignet sich eher für Grafiken mit Text oder Transparenz."
+      },
+      {
+        "q": "Kann ich viele Fotos auf einmal komprimieren?",
+        "a": "Ja, ohne Begrenzung. Die Bilder werden nacheinander verarbeitet, damit auch Handys mit wenig Speicher 30 oder mehr Fotos schaffen. Am Ende lädst du alle als ZIP herunter oder teilst sie."
+      },
+      {
+        "q": "Was passiert mit den Bildinformationen (EXIF)?",
+        "a": "Standardmäßig werden Standort, Kamera, Seriennummer und Aufnahmedaten entfernt und die Drehung direkt ins Bild übernommen. Wenn du die Daten behalten willst, schalte die Option aus – bei JPG werden sie dann übernommen."
+      },
+      {
+        "q": "Wird mein Foto unscharf?",
+        "a": "Bei einer Qualität ab etwa 70 % sieht man auf Handy und Bildschirm meist keinen Unterschied. Prüf es selbst mit dem Vergleichsregler und dem Zoom."
+      }
     ]
   },
   "en": {
@@ -51,25 +119,74 @@
     "lede": "Make photos smaller – for e-mail, forms and messages. With a before/after comparison.",
     "pickLabel": "Choose images",
     "primaryButton": "Compress",
-    "keywords": ["reduce image size", "shrink photo", "jpg compressor", "png", "kb", "file size", "webp", "avif", "smaller picture"],
+    "keywords": [
+      "reduce image size",
+      "shrink photo",
+      "jpg compressor",
+      "png",
+      "kb",
+      "file size",
+      "webp",
+      "avif",
+      "smaller picture"
+    ],
     "steps": [
-      {"title": "Choose images", "text": "Pick one or many photos from your gallery, take a photo or paste an image. JPG, PNG, WebP, AVIF, GIF and BMP are supported."},
-      {"title": "Set the strength", "text": "Choose a quality or enter a target size in KB, for example 500 KB for an upload form. Optionally limit the edge length or change the format."},
-      {"title": "Compare and share", "text": "Check the result with the before/after slider, then share it right away or download it – several images also as a ZIP."}
+      {
+        "title": "Choose images",
+        "text": "Pick one or many photos from your gallery, take a photo or paste an image. JPG, PNG, WebP, AVIF, GIF and BMP are supported."
+      },
+      {
+        "title": "Set the strength",
+        "text": "Choose a quality or enter a target size in KB, for example 500 KB for an upload form. Optionally limit the edge length or change the format."
+      },
+      {
+        "title": "Compare and share",
+        "text": "Check the result with the before/after slider, then share it right away or download it – several images also as a ZIP."
+      }
     ],
     "why": [
-      {"title": "Target size in KB", "text": "No guessing: enter a limit and FaLe finds the highest quality that fits below it. If that’s not enough, the image is scaled down carefully."},
-      {"title": "Before/after slider", "text": "See right away whether the difference is visible – with zoom for details. You can fine-tune the quality right in the result."},
-      {"title": "Location removed", "text": "Photos often contain GPS coordinates and camera data. They are removed by default when compressing, and the rotation stays correct."},
-      {"title": "Never larger than before", "text": "If an image is already compressed optimally, you get the original back instead of a larger file – and we tell you."}
+      {
+        "title": "Target size in KB",
+        "text": "No guessing: enter a limit and FaLe finds the highest quality that fits below it. If that’s not enough, the image is scaled down carefully."
+      },
+      {
+        "title": "Before/after slider",
+        "text": "See right away whether the difference is visible – with zoom for details. You can fine-tune the quality right in the result."
+      },
+      {
+        "title": "Location removed",
+        "text": "Photos often contain GPS coordinates and camera data. They are removed by default when compressing, and the rotation stays correct."
+      },
+      {
+        "title": "Never larger than before",
+        "text": "If an image is already compressed optimally, you get the original back instead of a larger file – and we tell you."
+      }
     ],
     "faq": [
-      {"q": "Are my photos uploaded?", "a": "No. Everything happens in your browser on your device. After the first visit the tool even works offline."},
-      {"q": "How do I get an image under 200 KB or 1 MB?", "a": "Choose “To a target size” and enter the limit in KB (1 MB is about 1000 KB). FaLe tries qualities until the file fits. For very small targets the pixel size is reduced as well – this is noted below the result."},
-      {"q": "Which format is the smallest?", "a": "For photos, WebP is usually much smaller than JPG at the same quality. AVIF is often even smaller, but it’s only offered if your browser can save it, and not every app can open it. PNG is lossless and better for graphics with text or transparency."},
-      {"q": "Can I compress many photos at once?", "a": "Yes, without a limit. Images are processed one after another, so even phones with little memory handle 30 or more photos. At the end, download them all as a ZIP or share them."},
-      {"q": "What happens to the image information (EXIF)?", "a": "By default, location, camera, serial number and capture details are removed and the rotation is applied to the image itself. If you want to keep the data, switch the option off – for JPG it is then carried over."},
-      {"q": "Will my photo get blurry?", "a": "From a quality of about 70 % you usually can’t see a difference on a phone or screen. Check it yourself with the comparison slider and zoom."}
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. Everything happens in your browser on your device. After the first visit the tool even works offline."
+      },
+      {
+        "q": "How do I get an image under 200 KB or 1 MB?",
+        "a": "Choose “To a target size” and enter the limit in KB (1 MB is about 1000 KB). FaLe tries qualities until the file fits. For very small targets the pixel size is reduced as well – this is noted below the result."
+      },
+      {
+        "q": "Which format is the smallest?",
+        "a": "For photos, WebP is usually much smaller than JPG at the same quality. AVIF is often even smaller, but it’s only offered if your browser can save it, and not every app can open it. PNG is lossless and better for graphics with text or transparency."
+      },
+      {
+        "q": "Can I compress many photos at once?",
+        "a": "Yes, without a limit. Images are processed one after another, so even phones with little memory handle 30 or more photos. At the end, download them all as a ZIP or share them."
+      },
+      {
+        "q": "What happens to the image information (EXIF)?",
+        "a": "By default, location, camera, serial number and capture details are removed and the rotation is applied to the image itself. If you want to keep the data, switch the option off – for JPG it is then carried over."
+      },
+      {
+        "q": "Will my photo get blurry?",
+        "a": "From a quality of about 70 % you usually can’t see a difference on a phone or screen. Check it yourself with the comparison slider and zoom."
+      }
     ]
   }
 }

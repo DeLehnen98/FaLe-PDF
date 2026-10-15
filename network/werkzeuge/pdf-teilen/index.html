@@ -107,7 +107,7 @@
     </div>
   </section>
 </main>
-<script type="application/json" id="wt-config">{"accepts":["application/pdf",".pdf"],"app":"https://fale-pdf.vercel.app/","categoryColour":"organize","hub":"/werkzeuge/","id":"split-pdf","lang":"de","maxFiles":null,"minFiles":1,"module":"/assets/wt/tools/split-pdf.js","multiple":false,"name":"PDF teilen","needs":["pdfjs","pdflib"],"next":[{"accepts":["application/pdf",".pdf"],"id":"compress-pdf","name":"PDF komprimieren","url":"/werkzeuge/pdf-komprimieren/"},{"accepts":["application/pdf",".pdf","image/*",".jpg",".jpeg",".png",".webp",".gif",".bmp",".avif",".heic",".heif"],"id":"merge-pdf","name":"PDF zusammenfügen","url":"/werkzeuge/pdf-zusammenfuegen/"}],"primary":"Teilen","v":1}</script>
+<script type="application/json" id="wt-config">{"accepts":["application/pdf",".pdf"],"app":"https://fale-pdf.vercel.app/","categoryColour":"organize","hub":"/werkzeuge/","id":"split-pdf","lang":"de","maxFiles":null,"minFiles":1,"module":"/assets/wt/tools/split-pdf.js","multiple":false,"name":"PDF teilen","needs":["pdfjs","pdflib"],"next":[{"accepts":["application/pdf",".pdf"],"id":"compress-pdf","multiple":true,"name":"PDF komprimieren","url":"/werkzeuge/pdf-komprimieren/"},{"accepts":["application/pdf",".pdf","image/*",".jpg",".jpeg",".png",".webp",".gif",".bmp",".avif",".heic",".heif"],"id":"merge-pdf","multiple":true,"name":"PDF zusammenfügen","url":"/werkzeuge/pdf-zusammenfuegen/"}],"primary":"Teilen","v":1}</script>
 <script type="module" src="/assets/wt/shell.js"></script>
 <footer class="site-foot">
   <div class="wrap">

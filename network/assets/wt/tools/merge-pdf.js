@@ -3,6 +3,7 @@ import { loadPdfLib, saveDoc } from '../lib/pdf.js';
 import { embedImage, drawFitted, pageSizeFor, mm } from '../lib/imgembed.js';
 import { setOutline } from '../lib/outline.js';
 import { baseName } from '../lib/format.js';
+import { OcgCarrier } from '../lib/aud1-ocg.js';
 
 export default {
   options: [
@@ -33,6 +34,7 @@ export default {
     const marks = [];
     let encrypted = false;
     const fields = new FieldMerger(out, PDFLib);
+    const layers = new OcgCarrier(PDFLib, out); // hidden layers stay hidden
     for (let i = 0; i < inputs.length; i++) {
       const input = inputs[i];
       ctx.progress(i / inputs.length, { de: `Datei ${i + 1} von ${inputs.length}: ${input.name}`, en: `File ${i + 1} of ${inputs.length}: ${input.name}` });
@@ -46,7 +48,7 @@ export default {
         const flush = async () => {
           if (!chunk.length) return;
           const copied = await out.copyPages(src, chunk);
-          for (const p of copied) { out.addPage(p); fields.collect(p); }
+          copied.forEach((p, k) => { out.addPage(p); fields.collect(p); layers.collect(src, src.getPage(chunk[k]), p); });
           chunk = [];
         };
         for (const idx of indices) {
@@ -66,6 +68,7 @@ export default {
       await ctx.tick();
     }
     fields.finish();
+    layers.finish();
     if (opts.bookmarks && inputs.length > 1) setOutline(out, PDFLib, marks);
     ctx.progress(1, { de: 'Wird gespeichert …', en: 'Saving …' });
     await ctx.tick();

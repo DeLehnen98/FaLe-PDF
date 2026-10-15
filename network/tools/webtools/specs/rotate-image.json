@@ -1,0 +1,68 @@
+{
+  "id": "rotate-image",
+  "category": "images",
+  "icon": "rotate",
+  "module": "tools/rotate-image.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "multiple": true,
+  "order": 45,
+  "related": ["crop-image", "resize-image", "remove-exif", "jpg-to-pdf"],
+  "next": ["compress-image", "jpg-to-pdf"],
+  "needs": [],
+  "de": {
+    "slug": "bild-drehen",
+    "name": "Bild drehen",
+    "short": "Fotos drehen und spiegeln – JPG verlustfrei, viele auf einmal.",
+    "title": "Bild drehen – Fotos verlustfrei drehen, kostenlos | FaleNetwork",
+    "h1": "Bild drehen",
+    "metaDescription": "Fotos und Bilder drehen und spiegeln, auch viele auf einmal. JPG-Fotos werden verlustfrei gedreht, ohne neue Komprimierung. Kostenlos und ohne Upload.",
+    "lede": "Dreh oder spiegel deine Fotos – alle auf einmal oder jedes einzeln. JPGs ohne Qualitätsverlust.",
+    "primaryButton": "Drehen",
+    "keywords": ["bild drehen", "foto drehen", "jpg drehen", "bild spiegeln", "foto um 90 grad drehen", "verlustfrei drehen", "fotos stapel drehen"],
+    "steps": [
+      {"title": "Bilder wählen", "text": "Wähl ein oder mehrere Fotos aus – zum Beispiel alle, die hochkant falsch herum sind."},
+      {"title": "Drehen", "text": "Dreh alle auf einmal nach links oder rechts oder nur einzelne Bilder mit den Knöpfen darunter."},
+      {"title": "Speichern", "text": "Tipp auf „Drehen“ und lade die Bilder einzeln oder als ZIP herunter."}
+    ],
+    "why": [
+      {"title": "JPG ohne Qualitätsverlust", "text": "Bei JPG-Fotos wird nur die Ausrichtungs-Angabe geändert. Die Bilddaten bleiben Bit für Bit gleich, auch Aufnahmedatum und Kameradaten."},
+      {"title": "Viele Bilder auf einmal", "text": "Dreh einen ganzen Stapel mit einem Tipp oder korrigiere einzelne Fotos – mit Vorschau für jedes Bild."},
+      {"title": "Kein Upload", "text": "Deine Fotos bleiben in deinem Browser. Es wird nichts an einen Server geschickt."}
+    ],
+    "faq": [
+      {"q": "Was heißt „verlustfrei“?", "a": "JPG-Fotos speichern ihre Ausrichtung als Angabe in den Bilddaten. Wir ändern nur diese Angabe, das Foto selbst wird nicht neu komprimiert. So bleibt die Qualität exakt gleich."},
+      {"q": "Mein Programm zeigt das Bild trotzdem falsch herum. Was tun?", "a": "Manche sehr alten Programme ignorieren die Ausrichtungs-Angabe. Wähl dann „Pixel drehen und neu speichern“ – das Bild wird in sehr hoher Qualität neu gespeichert."},
+      {"q": "Was passiert mit PNG und anderen Formaten?", "a": "PNG-Bilder werden in den Pixeln gedreht – ohne Verlust, weil PNG verlustfrei speichert. WebP und AVIF werden in ihrem Format in hoher Qualität neu gespeichert, GIF und BMP als PNG."},
+      {"q": "Kann ich auch um wenige Grad drehen?", "a": "Dafür gibt es „Bild zuschneiden“ mit dem Regler „Begradigen“ – dort wird das Bild auch gleich passend zugeschnitten."},
+      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Alles passiert in deinem Browser auf deinem Gerät."}
+    ]
+  },
+  "en": {
+    "slug": "rotate-image",
+    "name": "Rotate image",
+    "short": "Rotate and flip photos – JPG losslessly, many at once.",
+    "title": "Rotate image – rotate photos losslessly, free | FaleNetwork",
+    "h1": "Rotate image",
+    "metaDescription": "Rotate and flip photos and images, also many at once. JPG photos are rotated losslessly, without recompression. Free and without uploading your files.",
+    "lede": "Rotate or flip your photos – all at once or one by one. JPGs without any loss of quality.",
+    "primaryButton": "Rotate",
+    "keywords": ["rotate image", "rotate photo", "rotate jpg", "flip image", "rotate 90 degrees", "lossless rotate", "batch rotate"],
+    "steps": [
+      {"title": "Choose images", "text": "Pick one or more photos – for example all the ones that are the wrong way round."},
+      {"title": "Rotate", "text": "Rotate all of them left or right at once, or just single images with the buttons below them."},
+      {"title": "Save", "text": "Tap “Rotate” and download the images one by one or as a ZIP."}
+    ],
+    "why": [
+      {"title": "JPG without loss", "text": "For JPG photos only the orientation flag is changed. The image data stays bit for bit the same, including capture date and camera data."},
+      {"title": "Many images at once", "text": "Rotate a whole batch with one tap or fix single photos – with a preview for every image."},
+      {"title": "No upload", "text": "Your photos stay in your browser. Nothing is sent to a server."}
+    ],
+    "faq": [
+      {"q": "What does “lossless” mean?", "a": "JPG photos store their orientation as a flag in the file. We only change that flag; the photo itself is not recompressed, so the quality stays exactly the same."},
+      {"q": "My program still shows the image the wrong way. What now?", "a": "Some very old programs ignore the orientation flag. Choose “Rotate pixels and re-save” – the image is saved again at very high quality."},
+      {"q": "What about PNG and other formats?", "a": "PNG images are rotated in their pixels – without loss, because PNG is a lossless format. WebP and AVIF are saved again in their format at high quality, GIF and BMP as PNG."},
+      {"q": "Can I rotate by a few degrees?", "a": "Use “Crop image” with its “Straighten” slider – it also crops the image to fit."},
+      {"q": "Are my images uploaded?", "a": "No. Everything happens in your browser on your device."}
+    ]
+  }
+}

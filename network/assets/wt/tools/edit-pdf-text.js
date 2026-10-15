@@ -1,11 +1,13 @@
 // Tool: "PDF bearbeiten" – place text, change existing text (cover + retype), highlights (snapping to the
 // text under your finger), check and cross marks, date, rectangles, circles, arrows, lines, a pen, white-out
 // and images directly on the page preview: tap to add, drag to move, handles to resize, undo/redo, several
-// pages. Everything is burnt into the PDF as vector content (text stays selectable text, standard fonts).
+// pages. Everything is burnt into the PDF as vector content (text stays selectable text: standard fonts, or an
+// embedded Unicode subset for Polish, Turkish, Greek, Cyrillic … – lib/unifont.js).
 // Ideas from the app's js/tools/annotate.js, annotpdf.js, stamp.js and edit.js; geometry in the visual
 // frame of each page (/Rotate, CropBox offsets).
 import { loadPdfLib } from '../lib/pdf.js';
-import { frame, drawVisual, fontCache, hexColor, winAnsi, lostWarning, FONT_CSS, saveResult, drawCentered, userError, pageLang } from '../lib/edit-draw.js';
+import { frame, drawVisual, fontCache, fitText, lostOf, preloadUniFont, hexColor, lostWarning, FONT_CSS, saveResult, drawCentered, userError, pageLang } from '../lib/edit-draw.js';
+import { needsUnicode } from '../lib/unifont.js';
 import { createPreview } from '../lib/edit-preview.js';
 import { pageChars, nearestChar, boxesFor } from '../lib/edit-textgeom.js';
 import { embedImage } from '../lib/imgembed.js';
@@ -154,10 +156,10 @@ export async function burn(doc, PDFLib, objs, { tick = null } = {}) {
     const prepared = [];
     for (const o of list) {
       if (o.type === 'text') {
-        const r = winAnsi(o.text);
+        const r = await fitText(fonts, fontKey(o), o.text);
         for (const [a, b] of r.lost) lost.set(a, b);
         if (!r.text.trim()) continue;
-        prepared.push({ o, font: await fonts(fontKey(o)), lines: r.text.split('\n') });
+        prepared.push({ o, font: r.font, lines: r.text.split('\n') });
       } else if (o.type === 'image') {
         const im = images.get(o.img);
         if (!im) continue;
@@ -341,7 +343,8 @@ function mountEditor(stage, state, ctx) {
         d.style.left = S(o.x) + 'px';
         d.style.top = S(o.y) + 'px';
         d.style.fontSize = S(o.size) + 'px';
-        d.style.fontFamily = FONT_CSS[o.font] || FONT_CSS.sans;
+        // serif/typewriter text with characters beyond Western European ones is set in the sans face (lib/unifont.js)
+        d.style.fontFamily = (needsUnicode(o.text) ? null : FONT_CSS[o.font]) || FONT_CSS.sans;
         d.style.fontWeight = o.bold ? '700' : '400';
         d.style.color = o.color;
         htmlLayer.append(d);
@@ -448,7 +451,7 @@ function mountEditor(stage, state, ctx) {
     props.append(el('p', { class: 'ed-label' }, `${L.sel}: ${L.obj[o.type]}`));
     if (o.type === 'text') {
       const warn = el('p', { class: 'ed-pv-warn', hidden: true, role: 'status' });
-      const showWarn = () => { const w = lostWarning(winAnsi(o.text).lost); warn.textContent = w ? w[lang] : ''; warn.hidden = !w; };
+      const showWarn = () => { const w = lostWarning(lostOf(o.text)); warn.textContent = w ? w[lang] : ''; warn.hidden = !w; };
       const ta = el('textarea', { class: 'ed-ta', rows: '3', placeholder: L.placeholder, aria: { label: L.content },
         oninput: e => { o.text = e.target.value; renderAll(); showWarn(); }, onchange: () => commit() }, o.text);
       ta.value = o.text;
@@ -766,7 +769,7 @@ export default {
     { id: 'imgs', type: 'text', default: '', when: () => false, label: 'images' },
   ],
 
-  mountStage(stage, state, ctx) { ed = mountEditor(stage, state, ctx); },
+  mountStage(stage, state, ctx) { preloadUniFont(); ed = mountEditor(stage, state, ctx); },
 
   onInputs() { ed?.reset(); },
 

@@ -6,9 +6,12 @@
 import { el } from './dom.js';
 import { saveDoc, saveEncrypted } from './pdf.js';
 import { removeUnreachable } from './pdfopt.js';
+import { OcgCarrier } from './aud1-ocg.js';
 import { PageGrid, ThumbSource, loadGridCss, toolbar } from './pagegrid.js';
 
 export const userError = (de, en) => Object.assign(new Error(en), { userMessage: { de, en } });
+/** A problem the user fixes on the same screen (nothing selected …): the shell keeps the files view and shows it in the bar. */
+export const inputHint = (de, en) => Object.assign(userError(de, en), { stay: true });
 export const norm = deg => ((Math.round(deg / 90) * 90) % 360 + 360) % 360;
 
 // ---------------------------------------------------------------- shell option sync
@@ -246,6 +249,7 @@ export async function copyToNew(PDFLib, src, indices, { rot = null } = {}) {
   const out = await PDFLib.PDFDocument.create();
   const fields = [];
   const seen = new Set();
+  const layers = new OcgCarrier(PDFLib, out); // optional content: hidden layers stay hidden
   let chunk = [];
   const flush = async () => {
     if (!chunk.length) return;
@@ -253,6 +257,7 @@ export async function copyToNew(PDFLib, src, indices, { rot = null } = {}) {
     copied.forEach((p, k) => {
       const r = rot ? rot[out.getPageCount()] : 0;
       out.addPage(p);
+      layers.collect(src, src.getPage(chunk[k]), p);
       if (r) p.setRotation(degrees(norm(p.getRotation().angle + r)));
       const annots = p.node.lookup(PDFName.of('Annots'));
       if (!(annots instanceof PDFArray)) return;
@@ -268,6 +273,7 @@ export async function copyToNew(PDFLib, src, indices, { rot = null } = {}) {
   };
   for (const i of indices) { if (chunk.includes(i)) await flush(); chunk.push(i); }
   await flush();
+  layers.finish();
   if (fields.length) {
     const form = out.context.obj({});
     form.set(PDFName.of('Fields'), out.context.obj(fields));

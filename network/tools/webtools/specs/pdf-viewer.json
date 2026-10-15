@@ -1,0 +1,72 @@
+{
+  "id": "pdf-viewer",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z\"/><path d=\"M12 6v13.5\"/>",
+  "module": "tools/pdf-viewer.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "popular": true,
+  "order": 5,
+  "related": ["ocr-pdf", "pdf-to-text", "unlock-pdf", "compress-pdf"],
+  "next": [],
+  "needs": ["pdfjs"],
+  "de": {
+    "slug": "pdf-oeffnen",
+    "name": "PDF öffnen & lesen",
+    "short": "PDF online lesen – zoomen, suchen, Inhaltsverzeichnis, Nachtmodus.",
+    "title": "PDF öffnen – PDF online lesen auf Handy & PC | FaleNetwork",
+    "h1": "PDF öffnen und lesen",
+    "metaDescription": "PDF online öffnen und lesen – schnell auch auf dem Handy: zoomen, im Text suchen, Inhaltsverzeichnis, Nachtmodus, Drucken. Auch mit Passwort, ohne Upload.",
+    "lede": "Öffne jede PDF direkt im Browser – mit Suche, Zoom und Nachtmodus. Die Datei bleibt auf deinem Gerät.",
+    "pickLabel": "PDF öffnen",
+    "primaryButton": "Lesen",
+    "keywords": ["pdf öffnen", "pdf online lesen", "pdf anzeigen", "pdf reader", "pdf viewer", "pdf öffnen handy", "pdf lesen ohne app", "pdf mit passwort öffnen"],
+    "steps": [
+      {"title": "PDF wählen", "text": "Tipp auf „PDF öffnen“ und wähl die Datei. Ist sie mit Passwort geschützt, gibst du es direkt hier ein."},
+      {"title": "Lesen", "text": "Die PDF öffnet sich bildschirmfüllend. Scroll durch die Seiten, zoom mit zwei Fingern oder spring zu einer Seite."},
+      {"title": "Suchen und mehr", "text": "Such im Text, nutz das Inhaltsverzeichnis, schalt den Nachtmodus ein oder druck die PDF aus."}
+    ],
+    "why": [
+      {"title": "Schnell auch bei großen PDFs", "text": "Es werden nur die Seiten gezeichnet, die du gerade siehst. So bleiben auch dicke Handbücher flüssig."},
+      {"title": "Fürs Handy gemacht", "text": "Zoomen mit zwei Fingern, Doppeltippen, große Knöpfe und eine Leseansicht über den ganzen Bildschirm. Die Zurück-Taste schließt sie."},
+      {"title": "Suchen mit Markierung", "text": "Alle Treffer werden auf den Seiten hervorgehoben, du springst mit den Pfeilen von Treffer zu Treffer."},
+      {"title": "Privat und offline", "text": "Die PDF wird nicht hochgeladen. Nach dem ersten Besuch funktioniert der Reader auch ohne Internet."}
+    ],
+    "faq": [
+      {"q": "Kann ich eine PDF mit Passwort öffnen?", "a": "Ja. Wenn die PDF geschützt ist, fragt das Werkzeug nach dem Passwort. Es wird nur in deinem Browser verwendet und nirgends gespeichert."},
+      {"q": "Warum findet die Suche in meiner PDF nichts?", "a": "Bei gescannten PDFs ist der Text nur ein Bild. Mit „PDF Texterkennung (OCR)“ machst du sie zuerst durchsuchbar."},
+      {"q": "Kann ich die PDF ausdrucken?", "a": "Ja, über die drei Punkte und „Drucken“. Die Seiten werden dafür in guter Druckqualität vorbereitet."},
+      {"q": "Wird die PDF hochgeladen?", "a": "Nein. Die Datei wird nur in deinem Browser geöffnet. Es wird nichts an einen Server geschickt."},
+      {"q": "Kann ich Notizen machen oder markieren?", "a": "Dieser Reader ist zum Lesen gedacht. Markieren, Notizen und Formulare gehen in der FaLe PDF-App."}
+    ]
+  },
+  "en": {
+    "slug": "pdf-viewer",
+    "name": "PDF viewer",
+    "short": "Read PDFs online – zoom, search, contents, night mode.",
+    "title": "PDF viewer – open and read PDFs online, free | FaleNetwork",
+    "h1": "Open and read PDFs",
+    "metaDescription": "Open and read PDFs online – fast on phones too: zoom, search the text, table of contents, night mode, print. Works with passwords, no upload.",
+    "lede": "Open any PDF right in your browser – with search, zoom and night mode. The file stays on your device.",
+    "pickLabel": "Open PDF",
+    "primaryButton": "Read",
+    "keywords": ["pdf viewer", "open pdf", "read pdf online", "pdf reader", "view pdf on phone", "open password protected pdf"],
+    "steps": [
+      {"title": "Choose PDF", "text": "Tap “Open PDF” and pick the file. If it is password-protected, enter the password right here."},
+      {"title": "Read", "text": "The PDF opens full screen. Scroll through the pages, pinch to zoom or jump to a page."},
+      {"title": "Search and more", "text": "Search the text, use the table of contents, switch on night mode or print the PDF."}
+    ],
+    "why": [
+      {"title": "Fast even with big PDFs", "text": "Only the pages you are looking at are drawn, so thick manuals stay smooth."},
+      {"title": "Made for phones", "text": "Pinch-zoom, double-tap, large buttons and a full-screen reader. The back button closes it."},
+      {"title": "Search with highlights", "text": "All matches are highlighted on the pages; the arrows take you from match to match."},
+      {"title": "Private and offline", "text": "The PDF is not uploaded. After the first visit the reader also works without internet."}
+    ],
+    "faq": [
+      {"q": "Can I open a password-protected PDF?", "a": "Yes. If the PDF is protected, the tool asks for the password. It is only used in your browser and never stored."},
+      {"q": "Why does search find nothing in my PDF?", "a": "In scanned PDFs the text is just an image. Use “OCR PDF” to make them searchable first."},
+      {"q": "Can I print the PDF?", "a": "Yes, via the three dots and “Print”. The pages are prepared in good print quality."},
+      {"q": "Is the PDF uploaded?", "a": "No. The file is only opened in your browser. Nothing is sent to a server."},
+      {"q": "Can I add notes or highlights?", "a": "This reader is made for reading. Highlights, notes and forms are available in the FaLe PDF app."}
+    ]
+  }
+}

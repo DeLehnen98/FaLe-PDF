@@ -3,14 +3,30 @@
   "category": "images",
   "iconSvg": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/><path d=\"M7.5 18.5c1-2.4 2.6-3.5 4.5-3.5s3.5 1.1 4.5 3.5\"/>",
   "module": "tools/passport-photo.js",
-  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".heic", ".heif"],
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".heic",
+    ".heif"
+  ],
   "multiple": false,
   "minFiles": 1,
   "popular": true,
   "order": 50,
-  "related": ["resize-image", "compress-image", "scan-to-pdf"],
+  "related": [
+    "crop-image",
+    "resize-image",
+    "compress-image",
+    "scan-to-pdf"
+  ],
   "next": [],
-  "needs": ["pdflib"],
+  "needs": [
+    "pdflib"
+  ],
   "de": {
     "slug": "passfoto",
     "name": "Passfoto zuschneiden",
@@ -21,24 +37,70 @@
     "lede": "Richte dein Foto mit der Schablone aus und bekomm einen Druckbogen für 10 × 15 cm.",
     "pickLabel": "Foto auswählen",
     "primaryButton": "Passfoto erstellen",
-    "keywords": ["passbild", "biometrisches foto", "35x45", "bewerbungsfoto", "visum foto", "2x2", "druckbogen", "10x15", "führerschein foto"],
+    "keywords": [
+      "passbild",
+      "biometrisches foto",
+      "35x45",
+      "bewerbungsfoto",
+      "visum foto",
+      "2x2",
+      "druckbogen",
+      "10x15",
+      "führerschein foto"
+    ],
     "steps": [
-      {"title": "Foto wählen", "text": "Nimm ein Foto vor einer hellen, einfarbigen Wand auf – frontal, mit neutralem Gesichtsausdruck – oder wähle eins aus der Galerie."},
-      {"title": "Mit der Schablone ausrichten", "text": "Wähle das Format, verschieb und zoome das Foto, bis Scheitel, Augen und Kinn in den markierten Bereichen liegen. Auf Wunsch hellst du den Hintergrund auf."},
-      {"title": "Drucken lassen", "text": "Speichere den Druckbogen als JPG für den Fotodruck oder als PDF zum Selbstdrucken – oder das Einzelfoto für Online-Formulare."}
+      {
+        "title": "Foto wählen",
+        "text": "Nimm ein Foto vor einer hellen, einfarbigen Wand auf – frontal, mit neutralem Gesichtsausdruck – oder wähle eins aus der Galerie."
+      },
+      {
+        "title": "Mit der Schablone ausrichten",
+        "text": "Wähle das Format, verschieb und zoome das Foto, bis Scheitel, Augen und Kinn in den markierten Bereichen liegen. Auf Wunsch hellst du den Hintergrund auf."
+      },
+      {
+        "title": "Drucken lassen",
+        "text": "Speichere den Druckbogen als JPG für den Fotodruck oder als PDF zum Selbstdrucken – oder das Einzelfoto für Online-Formulare."
+      }
     ],
     "why": [
-      {"title": "Schablone mit Maßen", "text": "Linien für Scheitel, Kinn und Augenhöhe zeigen, wo das Gesicht im Format sitzen sollte – passend zu jedem Format."},
-      {"title": "Druckbogen mit Schnittmarken", "text": "Mehrere Fotos auf 10 × 15 cm, in Originalgröße und 600 dpi. Ein Fotoabzug kostet meist weniger als ein Foto vom Automaten."},
-      {"title": "Mit dem Finger ausrichten", "text": "Verschieben, mit zwei Fingern zoomen, gerade drehen und Helligkeit anpassen – direkt auf dem Handy."},
-      {"title": "Ohne Upload", "text": "Dein Gesicht bleibt auf deinem Gerät. Es wird nichts hochgeladen oder gespeichert."}
+      {
+        "title": "Schablone mit Maßen",
+        "text": "Linien für Scheitel, Kinn und Augenhöhe zeigen, wo das Gesicht im Format sitzen sollte – passend zu jedem Format."
+      },
+      {
+        "title": "Druckbogen mit Schnittmarken",
+        "text": "Mehrere Fotos auf 10 × 15 cm, in Originalgröße und 600 dpi. Ein Fotoabzug kostet meist weniger als ein Foto vom Automaten."
+      },
+      {
+        "title": "Mit dem Finger ausrichten",
+        "text": "Verschieben, mit zwei Fingern zoomen, gerade drehen und Helligkeit anpassen – direkt auf dem Handy."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Dein Gesicht bleibt auf deinem Gerät. Es wird nichts hochgeladen oder gespeichert."
+      }
     ],
     "faq": [
-      {"q": "Wird das Foto von Behörden akzeptiert?", "a": "Das entscheidet die jeweilige Stelle. FaLe hilft beim richtigen Format und Zuschnitt, prüft aber nicht, ob Licht, Schärfe, Blick und Hintergrund den Vorgaben entsprechen. Für deutsche Ausweise und Pässe wird das Foto seit Mai 2025 in der Regel digital beim Fotografen oder im Bürgeramt erstellt."},
-      {"q": "Wofür kann ich das Foto nutzen?", "a": "Zum Beispiel für Bewerbungen, Mitgliedsausweise, Fahrkarten, manche Visa oder Führerscheinanträge – je nachdem, was die Stelle verlangt. Frag im Zweifel vorher nach."},
-      {"q": "Wie drucke ich den Bogen richtig?", "a": "Lass das JPG als normalen Fotoabzug 10 × 15 cm drucken. Beim Selbstdrucken der PDF wähle „Originalgröße“ bzw. 100 %, nicht „An Seite anpassen“, damit die Maße stimmen."},
-      {"q": "Wie funktioniert „Hintergrund aufhellen“?", "a": "Ausgehend von den oberen Bildecken werden ähnlich gefärbte Flächen hellgrau gefärbt. Das klappt bei einer einfarbigen Wand gut, bei unruhigem Hintergrund nicht. Mit der Toleranz steuerst du, wie viel erfasst wird."},
-      {"q": "Wird mein Foto hochgeladen?", "a": "Nein. Alles passiert in deinem Browser; dein Foto verlässt dein Gerät nicht."}
+      {
+        "q": "Wird das Foto von Behörden akzeptiert?",
+        "a": "Das entscheidet die jeweilige Stelle. FaLe hilft beim richtigen Format und Zuschnitt, prüft aber nicht, ob Licht, Schärfe, Blick und Hintergrund den Vorgaben entsprechen. Für deutsche Ausweise und Pässe wird das Foto seit Mai 2025 in der Regel digital beim Fotografen oder im Bürgeramt erstellt."
+      },
+      {
+        "q": "Wofür kann ich das Foto nutzen?",
+        "a": "Zum Beispiel für Bewerbungen, Mitgliedsausweise, Fahrkarten, manche Visa oder Führerscheinanträge – je nachdem, was die Stelle verlangt. Frag im Zweifel vorher nach."
+      },
+      {
+        "q": "Wie drucke ich den Bogen richtig?",
+        "a": "Lass das JPG als normalen Fotoabzug 10 × 15 cm drucken. Beim Selbstdrucken der PDF wähle „Originalgröße“ bzw. 100 %, nicht „An Seite anpassen“, damit die Maße stimmen."
+      },
+      {
+        "q": "Wie funktioniert „Hintergrund aufhellen“?",
+        "a": "Ausgehend von den oberen Bildecken werden ähnlich gefärbte Flächen hellgrau gefärbt. Das klappt bei einer einfarbigen Wand gut, bei unruhigem Hintergrund nicht. Mit der Toleranz steuerst du, wie viel erfasst wird."
+      },
+      {
+        "q": "Wird mein Foto hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser; dein Foto verlässt dein Gerät nicht."
+      }
     ]
   },
   "en": {
@@ -51,24 +113,70 @@
     "lede": "Line up your photo with the template and get a print sheet for 10 × 15 cm.",
     "pickLabel": "Choose photo",
     "primaryButton": "Create photo",
-    "keywords": ["passport picture", "biometric photo", "35x45", "2x2", "visa photo", "id photo", "print sheet", "4x6", "application photo"],
+    "keywords": [
+      "passport picture",
+      "biometric photo",
+      "35x45",
+      "2x2",
+      "visa photo",
+      "id photo",
+      "print sheet",
+      "4x6",
+      "application photo"
+    ],
     "steps": [
-      {"title": "Choose a photo", "text": "Take a photo in front of a light, plain wall – facing the camera with a neutral expression – or pick one from your gallery."},
-      {"title": "Line it up", "text": "Choose the format, then move and zoom the photo until the top of the head, the eyes and the chin sit in the marked areas. Optionally lighten the background."},
-      {"title": "Get it printed", "text": "Save the print sheet as a JPG for photo printing or as a PDF to print yourself – or the single photo for online forms."}
+      {
+        "title": "Choose a photo",
+        "text": "Take a photo in front of a light, plain wall – facing the camera with a neutral expression – or pick one from your gallery."
+      },
+      {
+        "title": "Line it up",
+        "text": "Choose the format, then move and zoom the photo until the top of the head, the eyes and the chin sit in the marked areas. Optionally lighten the background."
+      },
+      {
+        "title": "Get it printed",
+        "text": "Save the print sheet as a JPG for photo printing or as a PDF to print yourself – or the single photo for online forms."
+      }
     ],
     "why": [
-      {"title": "Template with measurements", "text": "Lines for the top of the head, the chin and eye level show where the face should sit – for every format."},
-      {"title": "Print sheet with cut marks", "text": "Several photos on 10 × 15 cm, at actual size and 600 dpi. A regular photo print usually costs less than a photo booth."},
-      {"title": "Position with your finger", "text": "Move, pinch to zoom, straighten and adjust brightness – right on your phone."},
-      {"title": "No upload", "text": "Your face stays on your device. Nothing is uploaded or stored."}
+      {
+        "title": "Template with measurements",
+        "text": "Lines for the top of the head, the chin and eye level show where the face should sit – for every format."
+      },
+      {
+        "title": "Print sheet with cut marks",
+        "text": "Several photos on 10 × 15 cm, at actual size and 600 dpi. A regular photo print usually costs less than a photo booth."
+      },
+      {
+        "title": "Position with your finger",
+        "text": "Move, pinch to zoom, straighten and adjust brightness – right on your phone."
+      },
+      {
+        "title": "No upload",
+        "text": "Your face stays on your device. Nothing is uploaded or stored."
+      }
     ],
     "faq": [
-      {"q": "Will authorities accept the photo?", "a": "That’s up to the authority. FaLe helps with the format and crop but doesn’t check whether lighting, sharpness, gaze and background meet the rules. Some countries only accept photos taken or submitted digitally by approved photographers or offices – check the current requirements first."},
-      {"q": "What can I use the photo for?", "a": "For example applications, membership cards, travel passes, some visas or licence applications – depending on what is required. If in doubt, ask first."},
-      {"q": "How do I print the sheet correctly?", "a": "Have the JPG printed as a normal 10 × 15 cm (4 × 6 in) photo. When printing the PDF yourself, choose “Actual size” or 100 %, not “Fit to page”, so the measurements are right."},
-      {"q": "How does “Lighten the background” work?", "a": "Starting from the top corners of the photo, similarly coloured areas are turned light grey. This works well with a plain wall, not with a busy background. The tolerance controls how much is caught."},
-      {"q": "Is my photo uploaded?", "a": "No. Everything happens in your browser; your photo never leaves your device."}
+      {
+        "q": "Will authorities accept the photo?",
+        "a": "That’s up to the authority. FaLe helps with the format and crop but doesn’t check whether lighting, sharpness, gaze and background meet the rules. Some countries only accept photos taken or submitted digitally by approved photographers or offices – check the current requirements first."
+      },
+      {
+        "q": "What can I use the photo for?",
+        "a": "For example applications, membership cards, travel passes, some visas or licence applications – depending on what is required. If in doubt, ask first."
+      },
+      {
+        "q": "How do I print the sheet correctly?",
+        "a": "Have the JPG printed as a normal 10 × 15 cm (4 × 6 in) photo. When printing the PDF yourself, choose “Actual size” or 100 %, not “Fit to page”, so the measurements are right."
+      },
+      {
+        "q": "How does “Lighten the background” work?",
+        "a": "Starting from the top corners of the photo, similarly coloured areas are turned light grey. This works well with a plain wall, not with a busy background. The tolerance controls how much is caught."
+      },
+      {
+        "q": "Is my photo uploaded?",
+        "a": "No. Everything happens in your browser; your photo never leaves your device."
+      }
     ]
   }
 }

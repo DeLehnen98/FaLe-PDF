@@ -1,0 +1,71 @@
+{
+  "id": "crop-image",
+  "category": "images",
+  "icon": "crop",
+  "module": "tools/crop-image.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "multiple": true,
+  "popular": true,
+  "order": 44,
+  "related": ["rotate-image", "resize-image", "compress-image", "passport-photo"],
+  "next": ["compress-image", "resize-image", "jpg-to-pdf"],
+  "needs": [],
+  "de": {
+    "slug": "bild-zuschneiden",
+    "name": "Bild zuschneiden",
+    "short": "Fotos zuschneiden, begradigen und spiegeln – mit festen Formaten.",
+    "title": "Bild zuschneiden – Foto online zuschneiden, kostenlos | FaleNetwork",
+    "h1": "Bild zuschneiden",
+    "metaDescription": "Fotos und Bilder zuschneiden, begradigen, drehen und spiegeln: mit dem Finger, mit Formaten wie 1:1, 4:5, 16:9 oder A4. Kostenlos, ohne Upload, ohne Wasserzeichen.",
+    "lede": "Schneid Fotos mit dem Finger zu – frei oder in festen Formaten. Alles bleibt auf deinem Gerät.",
+    "primaryButton": "Zuschneiden",
+    "keywords": ["bild zuschneiden", "foto zuschneiden", "bild beschneiden", "foto quadratisch", "bild begradigen", "bild spiegeln", "crop"],
+    "steps": [
+      {"title": "Bild wählen", "text": "Wähl ein oder mehrere Fotos aus der Galerie oder mach direkt ein Foto."},
+      {"title": "Rahmen setzen", "text": "Zieh die Ecken des Rahmens oder wähl ein Format wie 1:1 oder 16:9. Dreh, spiegel oder begradige das Bild bei Bedarf."},
+      {"title": "Speichern", "text": "Tipp auf „Zuschneiden“ und lade das Bild herunter – oder mach direkt mit „Bild verkleinern“ weiter."}
+    ],
+    "why": [
+      {"title": "Gemacht fürs Handy", "text": "Große Anfasser für den Finger, Live-Vorschau mit der genauen Pixelgröße und Formate für Profilbilder, Posts und Ausdrucke."},
+      {"title": "Begradigen ohne leere Ecken", "text": "Schiefe Fotos richtest du mit dem Regler gerade. Das Bild wird dabei so vergrößert, dass keine leeren Ecken entstehen."},
+      {"title": "Kein Upload", "text": "Deine Fotos werden in deinem Browser bearbeitet und verlassen dein Gerät nicht. Kamera- und Standortdaten werden nicht mitgespeichert."},
+      {"title": "Viele Bilder", "text": "Jedes Bild behält seinen eigenen Ausschnitt. Mit einem Tipp übernimmst du die Einstellungen für alle."}
+    ],
+    "faq": [
+      {"q": "Verliert mein Foto an Qualität?", "a": "Der Ausschnitt wird in sehr hoher Qualität neu gespeichert. Für ganz verlustfreies Speichern wähl „PNG“ – die Datei wird dann aber größer."},
+      {"q": "Welche Formate gibt es?", "a": "Frei, wie das Original, 1:1, 4:5, 4:3, 3:4, 3:2, 16:9, 9:16 und A4 hoch."},
+      {"q": "Kann ich ein schiefes Foto gerade machen?", "a": "Ja. Mit dem Regler „Begradigen“ drehst du das Bild in halben Grad-Schritten um bis zu 45 Grad."},
+      {"q": "Bleiben Standort und Kameradaten erhalten?", "a": "Nein. Das zugeschnittene Bild enthält keine Metadaten wie Standort, Kamera oder Aufnahmedatum."},
+      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Alles passiert in deinem Browser auf deinem Gerät."}
+    ]
+  },
+  "en": {
+    "slug": "crop-image",
+    "name": "Crop image",
+    "short": "Crop, straighten and flip photos – free or in fixed ratios.",
+    "title": "Crop image – crop photos online, free | FaleNetwork",
+    "h1": "Crop image",
+    "metaDescription": "Crop, straighten, rotate and flip photos and images with your finger, with ratios like 1:1, 4:5, 16:9 or A4. Free, no upload, no watermark.",
+    "lede": "Crop photos with your finger – freely or in fixed ratios. Everything stays on your device.",
+    "primaryButton": "Crop",
+    "keywords": ["crop image", "crop photo", "square photo", "straighten photo", "flip image", "cut image"],
+    "steps": [
+      {"title": "Choose image", "text": "Pick one or more photos from your gallery or take a photo right away."},
+      {"title": "Set the frame", "text": "Drag the corners of the frame or choose a ratio like 1:1 or 16:9. Rotate, flip or straighten the image if needed."},
+      {"title": "Save", "text": "Tap “Crop” and download the image – or continue straight to “Resize image”."}
+    ],
+    "why": [
+      {"title": "Made for phones", "text": "Large handles for your finger, a live preview with the exact pixel size and ratios for profile pictures, posts and prints."},
+      {"title": "Straighten without empty corners", "text": "Level tilted photos with the slider. The image is enlarged just enough that no empty corners appear."},
+      {"title": "No upload", "text": "Your photos are edited in your browser and never leave your device. Camera and location data is not saved with them."},
+      {"title": "Many images", "text": "Each image keeps its own crop. One tap applies the settings to all of them."}
+    ],
+    "faq": [
+      {"q": "Does my photo lose quality?", "a": "The crop is saved again at very high quality. For a fully lossless result choose “PNG” – the file gets bigger, though."},
+      {"q": "Which ratios are there?", "a": "Free, original, 1:1, 4:5, 4:3, 3:4, 3:2, 16:9, 9:16 and A4 portrait."},
+      {"q": "Can I straighten a tilted photo?", "a": "Yes. The “Straighten” slider turns the image in half-degree steps by up to 45 degrees."},
+      {"q": "Are location and camera data kept?", "a": "No. The cropped image contains no metadata such as location, camera or capture date."},
+      {"q": "Are my images uploaded?", "a": "No. Everything happens in your browser on your device."}
+    ]
+  }
+}

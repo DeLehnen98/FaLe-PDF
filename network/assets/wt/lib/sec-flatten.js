@@ -128,18 +128,32 @@ export function countAnnots(PDFLib, doc) {
   return c;
 }
 
+/** Text value(s) of a pdf-lib form field ('' for buttons). */
+export function fieldValueText(field) {
+  try {
+    if (typeof field.getText === 'function') return field.getText() || '';
+    if (typeof field.getSelected === 'function') return [].concat(field.getSelected() || []).join('\n');
+  } catch { /* unreadable */ }
+  return '';
+}
+
 /**
- * Give form fields fresh appearance streams with Helvetica (WinAnsi: umlauts, ß, € work). Fields whose
- * value cannot be encoded keep their old appearance; returns the names of those fields.
+ * Give form fields fresh appearance streams. `font`: a PDFFont (e.g. Helvetica – WinAnsi: umlauts, ß, €) or
+ * a function value → PDFFont (e.g. Helvetica or the Unicode font of lib/unifont.js, which has a
+ * `unsupported(text)` check via cleanText). Fields whose value cannot be drawn keep their old appearance;
+ * returns the names of those fields.
  */
-export function refreshFieldAppearances(PDFLib, doc, font) {
+export function refreshFieldAppearances(PDFLib, doc, font, { unsupported = null } = {}) {
   const failed = [];
   let form;
   try { form = doc.getForm(); } catch { return failed; }
   for (const field of form.getFields()) {
     try {
-      if (typeof field.defaultUpdateAppearances === 'function') field.defaultUpdateAppearances(font);
-      else if (typeof field.updateAppearances === 'function') field.updateAppearances(font);
+      const value = fieldValueText(field);
+      const f = typeof font === 'function' ? font(value) : font;
+      if (unsupported && unsupported(value, f)) { failed.push(field.getName()); continue; }
+      if (typeof field.defaultUpdateAppearances === 'function') field.defaultUpdateAppearances(f);
+      else if (typeof field.updateAppearances === 'function') field.updateAppearances(f);
     } catch { failed.push(field.getName()); }
   }
   return failed;

@@ -1,7 +1,8 @@
-// Document model → PDF (pdf-lib, standard fonts). Real text (searchable), line wrapping,
+// Document model → PDF (pdf-lib, standard fonts; Liberation Sans as an embedded Unicode subset for text they
+// cannot show – Polish, Turkish, Greek, Cyrillic …). Real text (searchable), line wrapping,
 // headings, lists, tables, images, links and page breaks.
 import { loadPdfLib } from '../pdflib.js';
-import { fontKit, winAnsi, rgbOf, addLink, wrapPlain } from './pdftext.js';
+import { fontKit, safeText, needsUnicodeDeep, rgbOf, addLink, wrapPlain } from './pdftext.js';
 import { imageToBytes } from './vendor.js';
 import { HEADING_PT, PARA_SPACE, listLabel, bulletChar, modelHeadings } from './docmodel.js';
 import { normalizeStyles, STYLE_OF_TAG } from './docstyles.js';
@@ -36,6 +37,7 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   scan(model.blocks);
   if (needSerif) await fk.ensure('serif');
   if (needMono) await fk.ensure('mono');
+  if (needsUnicodeDeep(model) || needsUnicodeDeep(hf) || needsUnicodeDeep(title)) await fk.ensureUnicode();
   for (const src of images.keys()) {
     try {
       const im = await imageToBytes(src, { maxSide: 2000 });
@@ -43,7 +45,7 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
     } catch (e) { console.warn('Bild übersprungen', e); }
   }
 
-  const fontFor = r => fk.sync(r.mono ? 'mono' : r.serif ? 'serif' : 'sans', !!r.b, !!r.i);
+  const fontFor = (r, text = '') => fk.pick(text, r.mono ? 'mono' : r.serif ? 'serif' : 'sans', !!r.b, !!r.i);
   const footnotes = []; // texts, numbered in reading order
   const headingPages = new Map();
   const FN_SIZE = 8.5;
@@ -99,8 +101,8 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
         size: (r.size || defSize) * (r.sup || r.sub ? 0.7 : 1), rise: r.sup ? defSize * 0.35 : r.sub ? -defSize * 0.15 : 0,
         color: r.color || (r.href ? '#0563C1' : sty ? sty.color : head || tag === 'subtitle' ? HEAD_COLOR[tag] : null), bg: r.bg, href: r.href,
       };
-      const font = fontFor(st);
-      const text = winAnsi(r.text);
+      const font = fontFor(st, r.text);
+      const text = safeText(r.text, font);
       for (const piece of text.split(/(\s+)/)) {
         if (!piece) continue;
         const space = /^\s+$/.test(piece);
@@ -165,9 +167,9 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
           if (pbg) page.drawRectangle({ x: x + indent - 3, y: ph - yTop - h, width: avail + 6, height: h, color: rgbOf(PDFLib, pbg) });
           if (quote) page.drawRectangle({ x: x + indent - 10, y: ph - yTop - h, width: 2, height: h, color: rgbOf(PDFLib, '#C9CCDA') });
           if (li === 0 && marker) {
-            const mf = fk.sync('sans', false, false);
+            const mf = fk.pick(marker);
             const ms = defSize;
-            const mt = winAnsi(marker);
+            const mt = safeText(marker, mf);
             page.drawText(mt, { x: x + indent - mf.widthOfTextAtSize(mt, ms) - 5, y: ph - yTop - ascent, size: ms, font: mf, color: rgbOf(PDFLib, null) });
           }
           const baseline = ph - yTop - ascent;
@@ -303,19 +305,20 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   const layoutToc = (b, width) => {
     const units = [];
     const entries = modelHeadings(model, b.depth || 3);
-    const tf = fk.sync('sans', true, false), ef = fk.sync('sans', false, false), ebf = fk.sync('sans', true, false);
-    const title = winAnsi(b.title || 'Inhaltsverzeichnis');
+    const tocTitle = b.title || 'Inhaltsverzeichnis';
+    const tf = fk.pick(tocTitle, 'sans', true, false), ef = fk.sync('sans', false, false);
+    const title = safeText(tocTitle, tf);
     units.push({ h: 28, draw(page, x, yTop) { page.drawText(title, { x, y: page.getHeight() - yTop - 18, size: 15, font: tf, color: rgbOf(PDFLib, '#1B1E33') }); } });
-    if (!entries.length) units.push({ h: 18, draw(page, x, yTop) { page.drawText(winAnsi('(Noch keine Überschriften)'), { x, y: page.getHeight() - yTop - 13, size: 10, font: ef, color: rgbOf(PDFLib, '#8086A6') }); } });
+    if (!entries.length) units.push({ h: 18, draw(page, x, yTop) { page.drawText(safeText('(Noch keine Überschriften)', ef), { x, y: page.getHeight() - yTop - 13, size: 10, font: ef, color: rgbOf(PDFLib, '#8086A6') }); } });
     entries.forEach(en => {
       const size = en.level === 1 ? 11 : 10;
-      const font = en.level === 1 ? ebf : ef;
+      const font = fk.pick(en.text, 'sans', en.level === 1, false);
       const ind = (en.level - 1) * 14;
       units.push({ h: size * 1.75, draw(page, x, yTop) {
         const yy = page.getHeight() - yTop - size * 1.25;
         const num = String(headingPages.get(en.index) || '');
         const nw = font.widthOfTextAtSize(num, size);
-        let t = winAnsi(en.text);
+        let t = safeText(en.text, font);
         const maxW = width - ind - nw - 24;
         while (t.length > 1 && font.widthOfTextAtSize(t, size) > maxW) t = t.slice(0, -2) + '…';
         page.drawText(t, { x: x + ind, y: yy, size, font, color: rgbOf(PDFLib, '#1A1A1A') });
@@ -354,7 +357,8 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   // ---------- paginate (dry run for the table of contents, then for real) ----------
   const units = layoutBlocks(model.blocks, contentW);
   const fnFont = fk.sync('sans', false, false);
-  const fnLines = n => wrapPlain(winAnsi(footnotes[n - 1] || ''), fnFont, FN_SIZE, contentW - 14);
+  const fnFontOf = n => fk.pick(footnotes[n - 1] || '');
+  const fnLines = n => wrapPlain(safeText(footnotes[n - 1] || '', fnFontOf(n)), fnFontOf(n), FN_SIZE, contentW - 14);
   const fnHeight = n => fnLines(n).length * FN_SIZE * 1.3 + 2;
   function drawFootnotes(pdfPage, list, total) {
     if (!list.length) return;
@@ -364,7 +368,7 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
       const lines = fnLines(n);
       y -= FN_SIZE * 1.3;
       pdfPage.drawText(String(n), { x: pg.ml, y: y + 2.5, size: FN_SIZE * 0.75, font: fnFont, color: rgbOf(PDFLib, '#1A1A1A') });
-      lines.forEach((ln, k) => { if (k) y -= FN_SIZE * 1.3; pdfPage.drawText(ln, { x: pg.ml + 12, y, size: FN_SIZE, font: fnFont, color: rgbOf(PDFLib, '#2B2F4A') }); });
+      lines.forEach((ln, k) => { if (k) y -= FN_SIZE * 1.3; pdfPage.drawText(ln, { x: pg.ml + 12, y, size: FN_SIZE, font: fnFontOf(n), color: rgbOf(PDFLib, '#2B2F4A') }); });
       y -= 2;
     }
   }
@@ -413,11 +417,11 @@ function drawHeaderFooter(PDFLib, pdf, fk, pg, hf) {
   if (!hf) return;
   const pages = pdf.getPages();
   const total = pages.length;
-  const font = fk.sync('sans', false, false);
   const size = 9;
   const col = rgbOf(PDFLib, '#5A607F');
   const place = (page, text, align, y) => {
-    const t = winAnsi(text);
+    const font = fk.pick(text);
+    const t = safeText(text, font);
     if (!t) return;
     const w = font.widthOfTextAtSize(t, size);
     const x = align === 'right' ? pg.w - pg.mr - w : align === 'center' ? (pg.w - w) / 2 : pg.ml;

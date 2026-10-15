@@ -9,6 +9,7 @@
 // JBIG2, CCITT, images with an unusual EXIF orientation and anything that fails to decode.
 import { jpegInfo } from './files.js';
 import { LIMITS } from './shared/limits.js';
+import { stripAsciiFilters } from './aud1-asciistrip.js';
 
 const yieldNow = () => new Promise(r => setTimeout(r, 0));
 
@@ -254,6 +255,7 @@ export async function recompressImages(doc, PDFLib, { dpi = 150, quality = 0.75,
   const { PDFRawStream, PDFName, PDFNumber, PDFBool, PDFRef, PDFDict } = PDFLib;
   const ctx = doc.context;
   const N = k => PDFName.of(k);
+  await stripAsciiFilters(doc, PDFLib, tick); // [/ASCII85Decode /DCTDecode] photos become plain JPEGs first
   const usage = await imageUsage(doc, PDFLib, { tick });
 
   // images that serve as (soft) masks of other images must stay exact

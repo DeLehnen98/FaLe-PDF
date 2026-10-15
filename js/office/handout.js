@@ -1,6 +1,6 @@
 // Handzettel & Notizenseiten als PDF (2, 3 oder 6 Folien pro Seite, oder eine Folie mit Notizen).
 import { loadPdfLib } from '../pdflib.js';
-import { fontKit, winAnsi, rgbOf, wrapPlain } from './pdftext.js';
+import { fontKit, safeText, needsUnicodeDeep, rgbOf, wrapPlain } from './pdftext.js';
 import { slideCanvas } from './slide-render.js';
 
 export async function handoutPdf(pres, { title = 'Präsentation', layout = '3', onProgress } = {}) {
@@ -8,7 +8,8 @@ export async function handoutPdf(pres, { title = 'Präsentation', layout = '3', 
   const pdf = await PDFLib.PDFDocument.create();
   pdf.setTitle(`${title} – Handzettel`); pdf.setProducer('FaLe PDF'); pdf.setCreator('FaLe PDF');
   const fk = await fontKit(pdf);
-  const reg = fk.sync('sans', false, false), bold = fk.sync('sans', true, false);
+  const reg = fk.sync('sans', false, false);
+  if (needsUnicodeDeep([title, pres.slides])) await fk.ensureUnicode();
   const PW = 595.28, PH = 841.89, M = 40;
   const ink = rgbOf(PDFLib, '#15172F'), grey = rgbOf(PDFLib, '#8086A6'), line = rgbOf(PDFLib, '#C9CCDA');
   const ratio = pres.h / pres.w;
@@ -29,13 +30,15 @@ export async function handoutPdf(pres, { title = 'Präsentation', layout = '3', 
     page.drawText(String(num), { x: x - 4 - reg.widthOfTextAtSize(String(num), 8), y: y + hgt - 8, size: 8, font: reg, color: grey });
   };
   const notesText = (page, text, x, yTop, w, maxH, size = 10) => {
-    const lines = wrapPlain(winAnsi(text), reg, size, w);
+    const f = fk.pick(text);
+    const lines = wrapPlain(safeText(text, f), f, size, w);
     let y = yTop - size;
-    for (const ln of lines) { if (yTop - y > maxH) break; page.drawText(ln, { x, y, size, font: reg, color: ink }); y -= size * 1.4; }
+    for (const ln of lines) { if (yTop - y > maxH) break; page.drawText(ln, { x, y, size, font: f, color: ink }); y -= size * 1.4; }
   };
   for (let p = 0; p < pages; p++) {
     const page = pdf.addPage([PW, PH]);
-    page.drawText(winAnsi(title), { x: M, y: PH - M + 12, size: 9, font: bold, color: grey });
+    const tf = fk.pick(title, 'sans', true);
+    page.drawText(safeText(title, tf), { x: M, y: PH - M + 12, size: 9, font: tf, color: grey });
     const pn = `${p + 1} / ${pages}`;
     page.drawText(pn, { x: PW - M - reg.widthOfTextAtSize(pn, 9), y: M - 22, size: 9, font: reg, color: grey });
     const slice = pres.slides.map((s, i) => i).slice(p * per, p * per + per);

@@ -6,11 +6,16 @@
 //   const f = frame(page);                       // {W, H, rot, box, m}
 //   drawVisual(page, PDFLib, f, () => { page.drawText('1', {x: f.W / 2, y: 20, size: 10, font}); }, {under: false});
 //
-// Text: the 14 standard PDF fonts only know WinAnsi (Western European). winAnsi(text) maps what it can
-// (typographic quotes, dashes, accents of other Latin scripts via decomposition) and reports every
-// character it had to replace, so the tools can warn instead of silently dropping text.
+// Text: fontCache(doc, PDFLib)(key, text) gives the standard PDF font when it can show the text (WinAnsi,
+// tiny files) and otherwise Liberation Sans as an embedded Unicode subset (lib/unifont.js): Polish,
+// Czech, Turkish, Greek, Cyrillic … stay real, searchable text. fitText() also replaces what no font here
+// has (Chinese, Arabic, emoji …) by '?' and reports it, so the tools can warn instead of dropping text.
+// winAnsi() is the old standard-font-only mapping, kept for callers that still need it.
 
 import { saveDoc, saveEncrypted } from './pdf.js';
+import { needsUnicode, uniFont, cleanText, unsupportedChars, preloadUniFont } from './unifont.js';
+
+export { preloadUniFont };
 
 export const MM = 72 / 25.4;
 export const mm = v => v * MM;
@@ -166,14 +171,37 @@ export const FONT_CSS = {
   mono: "'Courier New', Courier, 'Liberation Mono', monospace",
 };
 
-/** Per-document font cache: fonts(doc, PDFLib)('sans-bold') → PDFFont */
+/**
+ * Per-document font cache: fonts(doc, PDFLib)('sans-bold', text) → PDFFont. Without `text` (or when the
+ * standard font can show it) the standard font of that key; otherwise Liberation Sans (Unicode subset) in
+ * the same weight/style – serif and typewriter text with such characters is set in the sans face.
+ */
 export function fontCache(doc, PDFLib) {
   const cache = new Map();
-  return async key => {
+  return async (key, text) => {
     const k = STD[key] ? key : 'sans';
+    if (text != null && needsUnicode(text)) {
+      try { return await uniFont(doc, { bold: k.includes('bold'), italic: k.includes('italic'), PDFLib }); }
+      catch (err) { console.warn('Unicode font', err); }
+    }
     if (!cache.has(k)) cache.set(k, await doc.embedFont(PDFLib.StandardFonts[STD[k]]));
     return cache.get(k);
   };
+}
+
+/** Synchronous check for live warnings: Map char → '?' of what no font here can show. */
+export function lostOf(text) {
+  return new Map(unsupportedChars(text).map(c => [c, '?']));
+}
+
+/**
+ * Font + drawable text in one step: {font, text, lost}. lost: Map char → '?' of the characters no font here
+ * can show (for lostWarning). Line breaks are kept.
+ */
+export async function fitText(fonts, key, input) {
+  const font = await fonts(key, String(input ?? ''));
+  const { text, missing } = cleanText(input, font);
+  return { font, text, lost: new Map(missing.map(c => [c, '?'])) };
 }
 
 // WinAnsi (CP1252) = Latin-1 + these extras in 0x80–0x9F
@@ -220,8 +248,8 @@ export function lostWarning(...maps) {
   if (!all.size) return null;
   const list = [...all].slice(0, 12).map(([k, v]) => `${k} → ${v}`).join(', ') + (all.size > 12 ? ' …' : '');
   return {
-    de: `Die eingebauten PDF-Schriften kennen nur westeuropäische Zeichen. Ersetzt: ${list}.`,
-    en: `The built-in PDF fonts only cover Western European characters. Replaced: ${list}.`,
+    de: `Diese Zeichen kann die eingebettete Schrift nicht darstellen (z. B. chinesische, arabische oder hebräische Schrift, Emoji). Ersetzt: ${list}.`,
+    en: `The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji). Replaced: ${list}.`,
   };
 }
 

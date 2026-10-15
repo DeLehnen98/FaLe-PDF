@@ -41,6 +41,8 @@ export function makeOfficeTool(kind) {
         if (kind === 'xlsx') {
           note = ctx.t({ de: `${r.stats.sheets} ${r.stats.sheets === 1 ? 'Blatt' : 'Blätter'}`, en: `${r.stats.sheets} ${r.stats.sheets === 1 ? 'sheet' : 'sheets'}` });
           if (r.stats.hidden) notes.push({ de: `${r.stats.hidden} ${r.stats.hidden === 1 ? 'ausgeblendetes Blatt wurde' : 'ausgeblendete Blätter wurden'} nicht übernommen.`, en: `${r.stats.hidden} hidden ${r.stats.hidden === 1 ? 'sheet was' : 'sheets were'} left out.` });
+        } else if (kind === 'docx' && r.stats.math && !notes.some(n => n.math)) {
+          notes.push({ math: true, de: 'Formeln wurden als einfacher Text übernommen (z. B. a/b, x^2) – das Formel-Layout selbst kann dieses Werkzeug nicht setzen.', en: 'Equations were taken over as plain text (e.g. a/b, x^2) – this tool cannot lay out the equation itself.' });
         } else if (kind === 'pptx') note = ctx.t({ de: `${r.stats.slides} Folien`, en: `${r.stats.slides} slides` });
         outputs.push({ name: ctx.fileName(input.name, '', 'pdf'), blob: new Blob([r.pdf], { type: 'application/pdf' }), pages, note, meta: { preview: f === 0 } });
         await ctx.tick();

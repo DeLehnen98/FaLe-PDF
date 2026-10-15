@@ -3,12 +3,27 @@
   "category": "organize",
   "icon": "rotate",
   "module": "tools/rotate-pdf.js",
-  "accepts": ["application/pdf", ".pdf"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
   "popular": true,
   "order": 35,
-  "related": ["organize-pdf", "split-halves", "compress-pdf"],
-  "next": ["compress-pdf", "merge-pdf", "organize-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "related": [
+    "rotate-image",
+    "organize-pdf",
+    "split-halves",
+    "compress-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf",
+    "organize-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
   "de": {
     "slug": "pdf-drehen",
     "name": "PDF drehen",
@@ -18,24 +33,69 @@
     "metaDescription": "PDF-Seiten dauerhaft drehen: alle, ausgewählte, nur Quer- oder Hochformat oder jede Seite einzeln per Fingertipp. Verlustfrei, gratis, ohne Upload.",
     "lede": "Dreh die ganze PDF oder einzelne Seiten – die Vorschau zeigt sofort das Ergebnis.",
     "primaryButton": "Speichern",
-    "keywords": ["rotieren", "seite drehen", "querformat", "hochformat", "umdrehen", "auf dem kopf", "ausrichten", "drehen speichern"],
+    "keywords": [
+      "rotieren",
+      "seite drehen",
+      "querformat",
+      "hochformat",
+      "umdrehen",
+      "auf dem kopf",
+      "ausrichten",
+      "drehen speichern"
+    ],
     "steps": [
-      {"title": "PDF auswählen", "text": "Wähle die PDF aus. Alle Seiten erscheinen als Vorschaubilder."},
-      {"title": "Drehen", "text": "Die Pfeile oben drehen alle Seiten – oder nur die, die du angetippt hast. Der runde Knopf auf einer Seite dreht nur diese eine. Mit „Quer“ oder „Hoch“ wählst du alle Seiten eines Formats auf einmal aus."},
-      {"title": "Speichern", "text": "Tippe auf „Speichern“. Die Seiten bleiben in jedem Programm so gedreht."}
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF aus. Alle Seiten erscheinen als Vorschaubilder."
+      },
+      {
+        "title": "Drehen",
+        "text": "Die Pfeile oben drehen alle Seiten – oder nur die, die du angetippt hast. Der runde Knopf auf einer Seite dreht nur diese eine. Mit „Quer“ oder „Hoch“ wählst du alle Seiten eines Formats auf einmal aus."
+      },
+      {
+        "title": "Speichern",
+        "text": "Tippe auf „Speichern“. Die Seiten bleiben in jedem Programm so gedreht."
+      }
     ],
     "why": [
-      {"title": "Sofort sichtbar", "text": "Jede Drehung siehst du direkt in der Vorschau, bevor du speicherst."},
-      {"title": "Einzeln oder alle", "text": "Ein Knopf pro Seite für schnelle Korrekturen, die Leiste oben für alle oder ausgewählte Seiten."},
-      {"title": "Nach Format auswählen", "text": "Alle Querformat- oder Hochformat-Seiten mit einem Tipp auswählen – praktisch bei gemischten Scans."},
-      {"title": "Verlustfrei", "text": "Es ändert sich nur die Ausrichtung der Seite. Text, Bilder und Qualität bleiben exakt erhalten."}
+      {
+        "title": "Sofort sichtbar",
+        "text": "Jede Drehung siehst du direkt in der Vorschau, bevor du speicherst."
+      },
+      {
+        "title": "Einzeln oder alle",
+        "text": "Ein Knopf pro Seite für schnelle Korrekturen, die Leiste oben für alle oder ausgewählte Seiten."
+      },
+      {
+        "title": "Nach Format auswählen",
+        "text": "Alle Querformat- oder Hochformat-Seiten mit einem Tipp auswählen – praktisch bei gemischten Scans."
+      },
+      {
+        "title": "Verlustfrei",
+        "text": "Es ändert sich nur die Ausrichtung der Seite. Text, Bilder und Qualität bleiben exakt erhalten."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die PDF wird in deinem Browser gedreht und verlässt dein Gerät nicht."},
-      {"q": "Ist die Drehung dauerhaft?", "a": "Ja. Die Drehung wird in der PDF gespeichert, sie bleibt in jedem Anzeigeprogramm und beim Drucken erhalten."},
-      {"q": "Verliert die PDF beim Drehen an Qualität?", "a": "Nein. Es wird nur die Ausrichtung der Seiten geändert, Inhalt und Bilder bleiben unverändert. Die Datei bleibt praktisch genauso groß."},
-      {"q": "Wie drehe ich nur bestimmte Seiten?", "a": "Tippe auf den runden Drehknopf einer Seite, um nur diese zu drehen. Oder tippe mehrere Seiten an und nutze dann die Pfeile oben – sie wirken nur auf die Auswahl."},
-      {"q": "Bleibt ein Passwortschutz erhalten?", "a": "Ja. Wenn du eine geschützte PDF mit Passwort öffnest, wird die gedrehte PDF wieder mit demselben Passwort geschützt."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die PDF wird in deinem Browser gedreht und verlässt dein Gerät nicht."
+      },
+      {
+        "q": "Ist die Drehung dauerhaft?",
+        "a": "Ja. Die Drehung wird in der PDF gespeichert, sie bleibt in jedem Anzeigeprogramm und beim Drucken erhalten."
+      },
+      {
+        "q": "Verliert die PDF beim Drehen an Qualität?",
+        "a": "Nein. Es wird nur die Ausrichtung der Seiten geändert, Inhalt und Bilder bleiben unverändert. Die Datei bleibt praktisch genauso groß."
+      },
+      {
+        "q": "Wie drehe ich nur bestimmte Seiten?",
+        "a": "Tippe auf den runden Drehknopf einer Seite, um nur diese zu drehen. Oder tippe mehrere Seiten an und nutze dann die Pfeile oben – sie wirken nur auf die Auswahl."
+      },
+      {
+        "q": "Bleibt ein Passwortschutz erhalten?",
+        "a": "Ja. Wenn du eine geschützte PDF mit Passwort öffnest, wird die gedrehte PDF wieder mit demselben Passwort geschützt."
+      }
     ]
   },
   "en": {
@@ -47,24 +107,68 @@
     "metaDescription": "Rotate PDF pages permanently: all, selected, only landscape or portrait pages, or each page with a tap. Lossless, free and without any upload.",
     "lede": "Rotate the whole PDF or single pages – the preview shows the result right away.",
     "primaryButton": "Save",
-    "keywords": ["turn pages", "rotate page", "landscape", "portrait", "upside down", "flip", "orientation"],
+    "keywords": [
+      "turn pages",
+      "rotate page",
+      "landscape",
+      "portrait",
+      "upside down",
+      "flip",
+      "orientation"
+    ],
     "steps": [
-      {"title": "Choose a PDF", "text": "Pick your PDF. Every page shows up as a thumbnail."},
-      {"title": "Rotate", "text": "The arrows on top rotate all pages – or only the ones you tapped. The round button on a page turns just that page. “Landscape” or “Portrait” selects all pages of one format at once."},
-      {"title": "Save", "text": "Tap “Save”. The pages stay rotated in every app."}
+      {
+        "title": "Choose a PDF",
+        "text": "Pick your PDF. Every page shows up as a thumbnail."
+      },
+      {
+        "title": "Rotate",
+        "text": "The arrows on top rotate all pages – or only the ones you tapped. The round button on a page turns just that page. “Landscape” or “Portrait” selects all pages of one format at once."
+      },
+      {
+        "title": "Save",
+        "text": "Tap “Save”. The pages stay rotated in every app."
+      }
     ],
     "why": [
-      {"title": "See it instantly", "text": "Every rotation shows up in the preview right away, before you save."},
-      {"title": "One or all", "text": "A button on each page for quick fixes, the bar on top for all or selected pages."},
-      {"title": "Select by format", "text": "Select all landscape or portrait pages with one tap – handy for mixed scans."},
-      {"title": "Lossless", "text": "Only the orientation of the page changes. Text, images and quality stay exactly the same."}
+      {
+        "title": "See it instantly",
+        "text": "Every rotation shows up in the preview right away, before you save."
+      },
+      {
+        "title": "One or all",
+        "text": "A button on each page for quick fixes, the bar on top for all or selected pages."
+      },
+      {
+        "title": "Select by format",
+        "text": "Select all landscape or portrait pages with one tap – handy for mixed scans."
+      },
+      {
+        "title": "Lossless",
+        "text": "Only the orientation of the page changes. Text, images and quality stay exactly the same."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. The PDF is rotated in your browser and never leaves your device."},
-      {"q": "Is the rotation permanent?", "a": "Yes. The rotation is saved in the PDF, so it stays in every viewer and when printing."},
-      {"q": "Does rotating reduce the quality?", "a": "No. Only the orientation of the pages changes, content and images stay untouched. The file keeps practically the same size."},
-      {"q": "How do I rotate only some pages?", "a": "Tap the round rotate button on a page to turn just that one. Or tap several pages and then use the arrows on top – they only affect the selection."},
-      {"q": "Is password protection kept?", "a": "Yes. If you open a protected PDF with its password, the rotated PDF is protected again with the same password."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The PDF is rotated in your browser and never leaves your device."
+      },
+      {
+        "q": "Is the rotation permanent?",
+        "a": "Yes. The rotation is saved in the PDF, so it stays in every viewer and when printing."
+      },
+      {
+        "q": "Does rotating reduce the quality?",
+        "a": "No. Only the orientation of the pages changes, content and images stay untouched. The file keeps practically the same size."
+      },
+      {
+        "q": "How do I rotate only some pages?",
+        "a": "Tap the round rotate button on a page to turn just that one. Or tap several pages and then use the arrows on top – they only affect the selection."
+      },
+      {
+        "q": "Is password protection kept?",
+        "a": "Yes. If you open a protected PDF with its password, the rotated PDF is protected again with the same password."
+      }
     ]
   }
 }

@@ -2,7 +2,7 @@
 // date, file name and title (German and English names both work), Bates numbering, font, size,
 // colour, margins, mirrored for duplex, page selection. Drawn in each page's visual frame.
 import { loadPdfLib } from '../lib/pdf.js';
-import { frame, drawVisual, fontCache, hexColor, winAnsi, lostWarning, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource, selectPages, userError } from '../lib/edit-draw.js';
+import { frame, drawVisual, fontCache, fitText, lostOf, hexColor, lostWarning, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource, selectPages, userError } from '../lib/edit-draw.js';
 import { createPreview } from '../lib/edit-preview.js';
 import { tokenChips } from '../lib/edit-controls.js';
 import { baseName } from '../lib/format.js';
@@ -50,7 +50,6 @@ function slotTexts(opts) {
 
 async function decorate(doc, PDFLib, opts, ctx, meta, { only = null, onPage = null } = {}) {
   const fonts = fontCache(doc, PDFLib);
-  const font = await fonts(opts.font);
   const color = hexColor(PDFLib, opts.color, '#333333');
   const count = only ? only.count : doc.getPageCount();
   const sel = selectPages(opts.scope === 'skip' ? 'all' : opts.scope, opts.pages, count, ctx.parsePages);
@@ -70,11 +69,16 @@ async function decorate(doc, PDFLib, opts, ctx, meta, { only = null, onPage = nu
     const f = frame(page);
     const mv = Math.min(mm(+opts.marginV || 10), f.H / 5), mh = Math.min(mm(+opts.marginH || 15), f.W / 5);
     const mirror = opts.mirror && i % 2 === 1;
+    const items = [];
+    for (const s of SLOTS) {
+      if (!texts[s].trim()) continue;
+      const r = await fitText(fonts, opts.font, fill(texts[s], info).replace(/\s*\n\s*/g, ' '));
+      for (const [a, b] of r.lost) lost.set(a, b);
+      items.push([s, r]);
+    }
     drawVisual(page, PDFLib, f, () => {
-      for (const s of SLOTS) {
-        if (!texts[s].trim()) continue;
-        const r = winAnsi(fill(texts[s], info).replace(/\s*\n\s*/g, ' '));
-        for (const [a, b] of r.lost) lost.set(a, b);
+      for (const [s, r] of items) {
+        const font = r.font;
         let col = s[1];
         if (mirror) col = { l: 'r', r: 'l', c: 'c' }[col];
         let size = size0;
@@ -147,8 +151,8 @@ export default {
         let opts = values;
         try { ctx.parsePages(values.pages || '', src.getPageCount()); } catch { opts = { ...values, pages: '' }; }
         const r = await decorate(doc, PDFLib, opts, ctx, metaFor(input, src, ctx.lang), { only: { index, count: src.getPageCount() } });
-        const probe = winAnsi(SLOTS.map(s => values[s] || '').join(' ') + (values.bates ? values.batesPrefix || '' : ''));
-        pv.setWarning(lostWarning(r.lost, probe.lost));
+        const probe = lostOf(SLOTS.map(s => values[s] || '').join(' ') + (values.bates ? values.batesPrefix || '' : ''));
+        pv.setWarning(lostWarning(r.lost, probe));
         return savePreview(doc);
       },
     });

@@ -10,6 +10,7 @@
   "multiple": true,
   "minFiles": 1,
   "order": 44,
+  "next": ["compress-image", "jpg-to-pdf"],
   "related": [
     "pdf-to-jpg",
     "pdf-to-png",

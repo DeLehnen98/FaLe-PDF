@@ -3,13 +3,33 @@
   "category": "images",
   "icon": "resize",
   "module": "tools/resize-image.js",
-  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
   "multiple": true,
   "minFiles": 1,
   "popular": true,
   "order": 42,
-  "related": ["compress-image", "convert-image", "passport-photo"],
-  "next": ["compress-image", "jpg-to-pdf"],
+  "related": [
+    "rotate-image",
+    "crop-image",
+    "compress-image",
+    "convert-image",
+    "passport-photo"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
   "de": {
     "slug": "bildgroesse-aendern",
     "name": "Bildgröße ändern",
@@ -20,24 +40,71 @@
     "lede": "Bring Fotos auf die passende Größe – in Pixeln, Prozent oder für Social Media.",
     "pickLabel": "Bilder auswählen",
     "primaryButton": "Größe ändern",
-    "keywords": ["bild verkleinern", "pixel ändern", "auflösung ändern", "skalieren", "instagram format", "story format", "quadratisch", "zuschneiden", "4k", "full hd"],
+    "keywords": [
+      "bild verkleinern",
+      "pixel ändern",
+      "auflösung ändern",
+      "skalieren",
+      "instagram format",
+      "story format",
+      "quadratisch",
+      "zuschneiden",
+      "4k",
+      "full hd"
+    ],
     "steps": [
-      {"title": "Bilder auswählen", "text": "Wähle ein oder mehrere Fotos aus der Galerie oder nimm direkt eins mit der Kamera auf."},
-      {"title": "Größe festlegen", "text": "Nimm eine Vorlage wie Quadrat 1:1 oder Story 9:16, gib Pixel oder Prozent ein oder begrenze die längste Seite. Beim Zuschneiden tippst du auf das Wichtigste im Bild."},
-      {"title": "Speichern oder teilen", "text": "Tippe auf „Größe ändern“ und teile die Bilder direkt oder lade sie herunter – mehrere auch als ZIP."}
+      {
+        "title": "Bilder auswählen",
+        "text": "Wähle ein oder mehrere Fotos aus der Galerie oder nimm direkt eins mit der Kamera auf."
+      },
+      {
+        "title": "Größe festlegen",
+        "text": "Nimm eine Vorlage wie Quadrat 1:1 oder Story 9:16, gib Pixel oder Prozent ein oder begrenze die längste Seite. Beim Zuschneiden tippst du auf das Wichtigste im Bild."
+      },
+      {
+        "title": "Speichern oder teilen",
+        "text": "Tippe auf „Größe ändern“ und teile die Bilder direkt oder lade sie herunter – mehrere auch als ZIP."
+      }
     ],
     "why": [
-      {"title": "Fokuspunkt beim Zuschneiden", "text": "Wird ein Querformat zum Quadrat, entscheidest du per Fingertipp, welcher Teil bleibt – für jedes Bild einzeln oder für alle gleich."},
-      {"title": "Saubere Verkleinerung", "text": "Große Fotos werden in mehreren Schritten verkleinert. Feine Muster flimmern dadurch nicht, Kanten bleiben ruhig."},
-      {"title": "Vorlagen ohne Rechnen", "text": "Quadrat, Hochformat 4:5, Story, Link-Vorschau, Titelbild, E-Mail, Full HD und 4K – mit den gängigen Pixelmaßen."},
-      {"title": "Ohne Upload", "text": "Deine Fotos bleiben auf dem Gerät. Standort und Kameradaten werden auf Wunsch gleich mit entfernt."}
+      {
+        "title": "Fokuspunkt beim Zuschneiden",
+        "text": "Wird ein Querformat zum Quadrat, entscheidest du per Fingertipp, welcher Teil bleibt – für jedes Bild einzeln oder für alle gleich."
+      },
+      {
+        "title": "Saubere Verkleinerung",
+        "text": "Große Fotos werden in mehreren Schritten verkleinert. Feine Muster flimmern dadurch nicht, Kanten bleiben ruhig."
+      },
+      {
+        "title": "Vorlagen ohne Rechnen",
+        "text": "Quadrat, Hochformat 4:5, Story, Link-Vorschau, Titelbild, E-Mail, Full HD und 4K – mit den gängigen Pixelmaßen."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Fotos bleiben auf dem Gerät. Standort und Kameradaten werden auf Wunsch gleich mit entfernt."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Die Bilder werden in deinem Browser verarbeitet und verlassen dein Gerät nicht."},
-      {"q": "Was ist der Unterschied zwischen Zuschneiden, Rand und Verzerren?", "a": "Zuschneiden füllt das Format komplett und schneidet überstehende Ränder ab – du wählst, welcher Teil bleibt. Mit Rand bleibt das ganze Bild sichtbar, freie Flächen bekommen eine Farbe deiner Wahl. Verzerren staucht das Bild auf das Format, was meist unnatürlich aussieht."},
-      {"q": "Kann ich mehrere Bilder gleichzeitig ändern?", "a": "Ja. Alle Bilder bekommen dieselbe Größe; beim Zuschneiden kannst du den Ausschnitt pro Bild wählen oder einen für alle übernehmen. Die Bilder werden nacheinander verarbeitet, damit das Handy nicht überlastet wird."},
-      {"q": "Kann ich ein Bild auch vergrößern?", "a": "Ja, aber es wird dadurch nicht schärfer. Deshalb ist „Kleine Bilder nicht vergrößern“ voreingestellt. Bei festen Formaten wie 1080 × 1080 wird bei Bedarf vergrößert, und du bekommst einen Hinweis."},
-      {"q": "Bleibt die Qualität erhalten?", "a": "Beim Verkleinern wird in mehreren Schritten gerechnet, das hält Details sauber. Für JPG und WebP stellst du die Qualität selbst ein, voreingestellt sind 90 %."}
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Die Bilder werden in deinem Browser verarbeitet und verlassen dein Gerät nicht."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Zuschneiden, Rand und Verzerren?",
+        "a": "Zuschneiden füllt das Format komplett und schneidet überstehende Ränder ab – du wählst, welcher Teil bleibt. Mit Rand bleibt das ganze Bild sichtbar, freie Flächen bekommen eine Farbe deiner Wahl. Verzerren staucht das Bild auf das Format, was meist unnatürlich aussieht."
+      },
+      {
+        "q": "Kann ich mehrere Bilder gleichzeitig ändern?",
+        "a": "Ja. Alle Bilder bekommen dieselbe Größe; beim Zuschneiden kannst du den Ausschnitt pro Bild wählen oder einen für alle übernehmen. Die Bilder werden nacheinander verarbeitet, damit das Handy nicht überlastet wird."
+      },
+      {
+        "q": "Kann ich ein Bild auch vergrößern?",
+        "a": "Ja, aber es wird dadurch nicht schärfer. Deshalb ist „Kleine Bilder nicht vergrößern“ voreingestellt. Bei festen Formaten wie 1080 × 1080 wird bei Bedarf vergrößert, und du bekommst einen Hinweis."
+      },
+      {
+        "q": "Bleibt die Qualität erhalten?",
+        "a": "Beim Verkleinern wird in mehreren Schritten gerechnet, das hält Details sauber. Für JPG und WebP stellst du die Qualität selbst ein, voreingestellt sind 90 %."
+      }
     ]
   },
   "en": {
@@ -50,24 +117,70 @@
     "lede": "Get photos to the right size – in pixels, percent or for social media.",
     "pickLabel": "Choose images",
     "primaryButton": "Resize",
-    "keywords": ["image resizer", "change pixels", "change resolution", "scale", "square", "story size", "crop", "4k", "full hd"],
+    "keywords": [
+      "image resizer",
+      "change pixels",
+      "change resolution",
+      "scale",
+      "square",
+      "story size",
+      "crop",
+      "4k",
+      "full hd"
+    ],
     "steps": [
-      {"title": "Choose images", "text": "Pick one or more photos from your gallery or take one with your camera."},
-      {"title": "Set the size", "text": "Use a preset like square 1:1 or story 9:16, enter pixels or percent, or limit the longest side. When cropping, tap the most important part of the picture."},
-      {"title": "Save or share", "text": "Tap “Resize” and share the images right away or download them – several also as a ZIP."}
+      {
+        "title": "Choose images",
+        "text": "Pick one or more photos from your gallery or take one with your camera."
+      },
+      {
+        "title": "Set the size",
+        "text": "Use a preset like square 1:1 or story 9:16, enter pixels or percent, or limit the longest side. When cropping, tap the most important part of the picture."
+      },
+      {
+        "title": "Save or share",
+        "text": "Tap “Resize” and share the images right away or download them – several also as a ZIP."
+      }
     ],
     "why": [
-      {"title": "Focal point when cropping", "text": "When a landscape photo becomes a square, a tap decides which part stays – for each image or the same for all."},
-      {"title": "Clean downscaling", "text": "Large photos are reduced in several steps, so fine patterns don’t shimmer and edges stay calm."},
-      {"title": "Presets, no maths", "text": "Square, portrait 4:5, story, link preview, header image, e-mail, Full HD and 4K – with the usual pixel sizes."},
-      {"title": "No upload", "text": "Your photos stay on your device. Location and camera data can be removed at the same time."}
+      {
+        "title": "Focal point when cropping",
+        "text": "When a landscape photo becomes a square, a tap decides which part stays – for each image or the same for all."
+      },
+      {
+        "title": "Clean downscaling",
+        "text": "Large photos are reduced in several steps, so fine patterns don’t shimmer and edges stay calm."
+      },
+      {
+        "title": "Presets, no maths",
+        "text": "Square, portrait 4:5, story, link preview, header image, e-mail, Full HD and 4K – with the usual pixel sizes."
+      },
+      {
+        "title": "No upload",
+        "text": "Your photos stay on your device. Location and camera data can be removed at the same time."
+      }
     ],
     "faq": [
-      {"q": "Are my images uploaded?", "a": "No. The images are processed in your browser and never leave your device."},
-      {"q": "What’s the difference between crop, borders and stretch?", "a": "Crop fills the format completely and cuts off what sticks out – you choose which part stays. With borders the whole image stays visible and free space gets a colour of your choice. Stretch squashes the image into the format, which usually looks unnatural."},
-      {"q": "Can I resize several images at once?", "a": "Yes. All images get the same size; when cropping you can pick the area per image or use one for all. Images are processed one after another so the phone isn’t overloaded."},
-      {"q": "Can I make an image larger?", "a": "Yes, but it won’t get sharper. That’s why “Don’t enlarge small images” is on by default. Fixed formats like 1080 × 1080 are enlarged if needed, and you get a note."},
-      {"q": "Is the quality preserved?", "a": "Downscaling is done in several steps, which keeps details clean. For JPG and WebP you set the quality yourself; the default is 90 %."}
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. The images are processed in your browser and never leave your device."
+      },
+      {
+        "q": "What’s the difference between crop, borders and stretch?",
+        "a": "Crop fills the format completely and cuts off what sticks out – you choose which part stays. With borders the whole image stays visible and free space gets a colour of your choice. Stretch squashes the image into the format, which usually looks unnatural."
+      },
+      {
+        "q": "Can I resize several images at once?",
+        "a": "Yes. All images get the same size; when cropping you can pick the area per image or use one for all. Images are processed one after another so the phone isn’t overloaded."
+      },
+      {
+        "q": "Can I make an image larger?",
+        "a": "Yes, but it won’t get sharper. That’s why “Don’t enlarge small images” is on by default. Fixed formats like 1080 × 1080 are enlarged if needed, and you get a note."
+      },
+      {
+        "q": "Is the quality preserved?",
+        "a": "Downscaling is done in several steps, which keeps details clean. For JPG and WebP you set the quality yourself; the default is 90 %."
+      }
     ]
   }
 }

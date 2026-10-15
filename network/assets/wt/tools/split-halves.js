@@ -4,7 +4,7 @@
 import { loadPdfLib, renderPage } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
 import { pgIcon, loadGridCss } from '../lib/pagegrid.js';
-import { rearrange, saveLike, pdfBlob, userError } from '../lib/org-common.js';
+import { rearrange, saveLike, pdfBlob, userError, inputHint } from '../lib/org-common.js';
 
 let V = null;
 
@@ -183,7 +183,7 @@ export default {
       split++;
       if (i % 4 === 3) await ctx.tick();
     }
-    if (!split) throw userError('Keine Seite passt zum Teilen. Schalte „Nur passende Seiten teilen“ aus oder wähle die andere Richtung.', 'No page fits for splitting. Turn off “Only split suitable pages” or choose the other direction.');
+    if (!split) throw inputHint('Keine Seite passt zum Teilen. Schalte „Nur passende Seiten teilen“ aus oder wähle die andere Richtung.', 'No page fits for splitting. Turn off “Only split suitable pages” or choose the other direction.');
     rearrange(doc, PDFLib, spec);
     const out = doc.getPages();
     out.forEach((p, k) => {

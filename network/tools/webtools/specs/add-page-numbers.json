@@ -9,7 +9,7 @@
   "order": 40,
   "related": ["header-footer", "watermark-pdf", "edit-pdf-text", "merge-pdf"],
   "next": ["compress-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
   "trademarkNote": false,
   "de": {
     "slug": "seitenzahlen-einfuegen",

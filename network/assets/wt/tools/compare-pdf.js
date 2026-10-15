@@ -4,7 +4,8 @@
 // report as PDF (summary, list of changes, visual difference pages).
 import { el, clear } from '../lib/dom.js';
 import { loadPdfLib, saveDoc, canvasToBlob } from '../lib/pdf.js';
-import { ensureCss, tr, ic, btn, userError, statusLine, pageNav, wipeCanvas, stageWidth, renderPage, pdfBlob, watchUnlock, winAnsiSafe } from '../lib/sec-ui.js';
+import { ensureCss, tr, ic, btn, userError, statusLine, pageNav, wipeCanvas, stageWidth, renderPage, pdfBlob, watchUnlock } from '../lib/sec-ui.js';
+import { prepareText, missingWarning } from '../lib/unifont.js';
 import { diffTokens } from '../lib/sec-diff.js';
 import { wrapText } from '../lib/sec-draw.js';
 
@@ -140,40 +141,42 @@ export default {
     ctx.progress(0.02, { de: 'Texte werden verglichen …', en: 'Comparing the texts …' });
     await compute(pair, f => ctx.progress(0.3 * f, { de: 'Texte werden verglichen …', en: 'Comparing the texts …' }));
     const PDFLib = await loadPdfLib();
-    const { rgb, StandardFonts } = PDFLib;
+    const { rgb } = PDFLib;
     const doc = await PDFLib.PDFDocument.create();
-    const font = await doc.embedFont(StandardFonts.Helvetica);
-    const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+    const lostChars = [];
     const A4 = [595.28, 841.89], M = 48;
     let page = doc.addPage(A4), y = A4[1] - M;
     const L = ctx.lang;
     const T = (de, en) => (L === 'de' ? de : en);
-    const line = (text, { f = font, size = 10.5, color = rgb(0.1, 0.1, 0.18), indent = 0, gap = 1.35 } = {}) => {
-      for (const ln of wrapText(f, winAnsiSafe(f, text).text, size, A4[0] - 2 * M - indent)) {
+    // Helvetica, or the embedded Unicode font for lines with Polish, Greek, Cyrillic … text (lib/unifont.js)
+    const line = async (text, { b = false, size = 10.5, color = rgb(0.1, 0.1, 0.18), indent = 0, gap = 1.35 } = {}) => {
+      const { font: f, text: clean, missing } = await prepareText(doc, text, { bold: b, PDFLib });
+      lostChars.push(...missing);
+      for (const ln of wrapText(f, clean, size, A4[0] - 2 * M - indent)) {
         if (y < M + size) { page = doc.addPage(A4); y = A4[1] - M; }
         page.drawText(ln, { x: M + indent, y: y - size, size, font: f, color });
         y -= size * gap;
       }
     };
     const s = D.stats;
-    line(T('Vergleichsbericht', 'Comparison report'), { f: bold, size: 20 });
+    await line(T('Vergleichsbericht', 'Comparison report'), { b: true, size: 20 });
     y -= 6;
-    line(`${T('Erste Datei (alt)', 'First file (old)')}: ${pair[0].name} · ${D.A.numPages} ${T('Seiten', 'pages')}`);
-    line(`${T('Zweite Datei (neu)', 'Second file (new)')}: ${pair[1].name} · ${D.B.numPages} ${T('Seiten', 'pages')}`);
-    line(`${T('Erstellt', 'Created')}: ${new Date().toLocaleString(L === 'de' ? 'de-DE' : 'en-GB')} · FaLe Werkzeuge`, { color: rgb(0.4, 0.4, 0.5), size: 9 });
+    await line(`${T('Erste Datei (alt)', 'First file (old)')}: ${pair[0].name} · ${D.A.numPages} ${T('Seiten', 'pages')}`);
+    await line(`${T('Zweite Datei (neu)', 'Second file (new)')}: ${pair[1].name} · ${D.B.numPages} ${T('Seiten', 'pages')}`);
+    await line(`${T('Erstellt', 'Created')}: ${new Date().toLocaleString(L === 'de' ? 'de-DE' : 'en-GB')} · FaLe Werkzeuge`, { color: rgb(0.4, 0.4, 0.5), size: 9 });
     y -= 8;
-    line(T(`${s.changes} Änderungen · ${s.ins} Wörter eingefügt · ${s.del} Wörter gelöscht`, `${s.changes} changes · ${s.ins} words inserted · ${s.del} words deleted`), { f: bold, size: 12 });
+    await line(T(`${s.changes} Änderungen · ${s.ins} Wörter eingefügt · ${s.del} Wörter gelöscht`, `${s.changes} changes · ${s.ins} words inserted · ${s.del} words deleted`), { b: true, size: 12 });
     y -= 10;
-    if (!s.changes) line(T('Der Text beider Dateien ist identisch.', 'The text of both files is identical.'));
-    D.changes.forEach((c, i) => {
+    if (!s.changes) await line(T('Der Text beider Dateien ist identisch.', 'The text of both files is identical.'));
+    for (const [i, c] of D.changes.entries()) {
       if (y < M + 60) { page = doc.addPage(A4); y = A4[1] - M; }
       const where = c.type === 'ins' ? `${T('Seite', 'Page')} ${c.pageB} (${T('neu', 'new')})` : c.type === 'del' ? `${T('Seite', 'Page')} ${c.pageA} (${T('alt', 'old')})` : `${T('Seite', 'Page')} ${c.pageA} → ${c.pageB}`;
       const kind = { ins: T('Eingefügt', 'Inserted'), del: T('Gelöscht', 'Deleted'), replace: T('Geändert', 'Changed') }[c.type];
-      line(`${i + 1}. ${kind} · ${where}`, { f: bold, size: 10.5 });
-      if (c.a) line(`– ${c.a.slice(0, 1500)}`, { color: rgb(0.75, 0.12, 0.12), indent: 12 });
-      if (c.b) line(`+ ${c.b.slice(0, 1500)}`, { color: rgb(0.1, 0.5, 0.2), indent: 12 });
+      await line(`${i + 1}. ${kind} · ${where}`, { b: true, size: 10.5 });
+      if (c.a) await line(`– ${c.a.slice(0, 1500)}`, { color: rgb(0.75, 0.12, 0.12), indent: 12 });
+      if (c.b) await line(`+ ${c.b.slice(0, 1500)}`, { color: rgb(0.1, 0.5, 0.2), indent: 12 });
       y -= 6;
-    });
+    }
     if (opts.visual) {
       const n = Math.max(D.A.numPages, D.B.numPages);
       for (let p = 1; p <= n; p++) {
@@ -185,13 +188,16 @@ export default {
         wipeCanvas(r.canvas);
         const img = await doc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
         const pg = doc.addPage(A4);
-        pg.drawText(winAnsiSafe(bold, T(`Seite ${p}: rot = nur in der ersten Datei, grün = nur in der zweiten, orange = Farbe geändert`, `Page ${p}: red = only in the first file, green = only in the second, orange = colour changed`)).text, { x: M, y: A4[1] - M + 10, size: 11, font: bold });
+        const cap = await prepareText(doc, T(`Seite ${p}: rot = nur in der ersten Datei, grün = nur in der zweiten, orange = Farbe geändert`, `Page ${p}: red = only in the first file, green = only in the second, orange = colour changed`), { bold: true, PDFLib });
+        pg.drawText(cap.text, { x: M, y: A4[1] - M + 10, size: 11, font: cap.font });
         const maxW = A4[0] - 2 * M, maxH = A4[1] - 2 * M - 20;
         const w = Math.min(maxW, maxH / ratio), h = w * ratio;
         pg.drawImage(img, { x: (A4[0] - w) / 2, y: A4[1] - M - 14 - h, width: w, height: h });
         await ctx.tick();
       }
     }
+    const lw = missingWarning(lostChars);
+    if (lw) ctx.note(lw);
     const bytes = await saveDoc(doc, { title: T('Vergleichsbericht', 'Comparison report') });
     const base = pair[0].name.replace(/\.pdf$/i, '');
     return { outputs: [{ name: ctx.safeFileName(`${base} – ${T('Vergleich', 'comparison')}.pdf`), blob: pdfBlob(bytes), pages: doc.getPageCount(),

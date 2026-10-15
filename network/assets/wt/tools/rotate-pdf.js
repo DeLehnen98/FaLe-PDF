@@ -2,7 +2,7 @@
 // Lossless: only the page's /Rotate value changes, the content stays byte-identical.
 import { loadPdfLib } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
-import { PageStage, saveLike, pdfBlob, userError, norm } from '../lib/org-common.js';
+import { PageStage, saveLike, pdfBlob, userError, inputHint, norm } from '../lib/org-common.js';
 
 let stage = null;
 let values = null;
@@ -94,7 +94,7 @@ export default {
     const input = inputs[0];
     const rot = opts.rot || {};
     const keys = Object.keys(rot).filter(k => rot[k]);
-    if (!keys.length) throw userError('Drehe zuerst mindestens eine Seite – mit den Pfeilen oben oder dem Knopf auf einer Seite.', 'Rotate at least one page first – with the arrows above or the button on a page.');
+    if (!keys.length) throw inputHint('Drehe zuerst mindestens eine Seite – mit den Pfeilen oben oder dem Knopf auf einer Seite.', 'Rotate at least one page first – with the arrows above or the button on a page.');
     const PDFLib = await loadPdfLib();
     const doc = await input.pdfDoc();
     const pages = doc.getPages();

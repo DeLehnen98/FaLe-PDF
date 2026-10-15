@@ -308,12 +308,12 @@ export async function slideCanvas(pres, slide, widthPx) {
 /** Presentation → PDF (one page per slide, image + invisible text layer for search/copy). */
 export async function presToPdf(pres, { title = 'Präsentation', onProgress } = {}) {
   const { loadPdfLib } = await import('../pdflib.js');
-  const { fontKit, winAnsi } = await import('./pdftext.js');
+  const { fontKit, safeText, needsUnicode } = await import('./pdftext.js');
   const PDFLib = await loadPdfLib();
   const pdf = await PDFLib.PDFDocument.create();
   pdf.setTitle(title); pdf.setProducer('FaLe PDF'); pdf.setCreator('FaLe PDF');
   const fk = await fontKit(pdf);
-  const font = fk.sync('sans', false, false);
+  let uniReady = false;
   const PW = pres.w * 72, PH = pres.h * 72;
   for (let i = 0; i < pres.slides.length; i++) {
     const { canvas, texts, scale } = await slideCanvas(pres, pres.slides[i], 1600);
@@ -323,7 +323,10 @@ export async function presToPdf(pres, { title = 'Präsentation', onProgress } = 
     page.drawImage(jpg, { x: 0, y: 0, width: PW, height: PH });
     const k = 72 / scale;
     for (const t of texts) {
-      const str = winAnsi(t.text);
+      // standard font, or the embedded Unicode subset for Polish, Greek, Cyrillic … text (./unifont.js)
+      if (!uniReady && needsUnicode(t.text)) uniReady = await fk.ensureUnicode() || 'failed';
+      const font = fk.pick(t.text);
+      const str = safeText(t.text, font);
       if (!str.trim()) continue;
       const size = Math.max(2, t.size * k);
       const natural = font.widthOfTextAtSize(str, size);

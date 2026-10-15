@@ -2,7 +2,8 @@
 // so values can no longer be changed and look the same everywhere. Links can be kept. Fallback: render
 // every page as an image (for broken forms / annotations without appearance).
 import { loadPdfLib, saveDoc, canvasToBlob, saveEncrypted } from '../lib/pdf.js';
-import { flattenDoc, countAnnots, refreshFieldAppearances } from '../lib/sec-flatten.js';
+import { flattenDoc, countAnnots, refreshFieldAppearances, fieldValueText } from '../lib/sec-flatten.js';
+import { stdFont, getFont, needsUnicode, cleanText } from '../lib/unifont.js';
 import { pdfBlob, renderPage } from '../lib/sec-ui.js';
 
 export default {
@@ -64,11 +65,17 @@ export default {
         continue;
       }
       if (forms && before.widgets) {
-        // fields filled in other programs often have no up-to-date appearance → regenerate (Helvetica, umlauts OK)
-        const font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+        // fields filled in other programs often have no up-to-date appearance → regenerate (Helvetica, or an
+        // embedded Unicode subset for values with Polish, Greek, Cyrillic … characters – lib/unifont.js)
         const acro = doc.catalog.lookup(PDFLib.PDFName.of('AcroForm'));
         const need = acro && acro.lookup?.(PDFLib.PDFName.of('NeedAppearances'));
-        if (need && need.asBoolean?.()) badFont += refreshFieldAppearances(PDFLib, doc, font).length;
+        if (need && need.asBoolean?.()) {
+          const helv = await stdFont(doc, { PDFLib });
+          let uni = null;
+          try { if (doc.getForm().getFields().some(f => needsUnicode(fieldValueText(f)))) uni = await getFont(doc, { PDFLib }); } catch { /* no font: Helvetica only */ }
+          badFont += refreshFieldAppearances(PDFLib, doc, v => (uni && needsUnicode(v) ? uni : helv),
+            { unsupported: (v, f) => cleanText(v, f).missing.length > 0 }).length;
+        }
       }
       const st = await flattenDoc(PDFLib, doc, { forms, annots, keepLinks: !!opts.keepLinks, tick: ctx.tick,
         onPage: (i, n) => part(0.1 + 0.8 * (i / n), { de: `Seite ${i + 1} von ${n}`, en: `Page ${i + 1} of ${n}` }) });
@@ -81,7 +88,7 @@ export default {
       await ctx.tick();
     }
     if (missing) ctx.note({ de: `${missing} Element(e) hatten kein Erscheinungsbild und wurden entfernt. Fehlt etwas, nimm „Als Bild“.`, en: `${missing} item(s) had no appearance and were removed. If something is missing, use “As image”.` });
-    if (badFont) ctx.note({ de: 'Manche Feldwerte enthalten Zeichen außerhalb des westeuropäischen Zeichensatzes und behalten ihr bisheriges Aussehen.', en: 'Some field values contain characters outside the Western European character set and keep their previous look.' });
+    if (badFont) ctx.note({ de: 'Manche Feldwerte enthalten Zeichen, die die eingebettete Schrift nicht darstellen kann (z. B. chinesische oder arabische Schrift, Emoji), und behalten ihr bisheriges Aussehen.', en: 'Some field values contain characters the embedded font cannot show (e.g. Chinese or Arabic script, emoji) and keep their previous look.' });
     if (opts.method === 'raster') ctx.note({ de: 'Als Bild geglättet: Text ist nicht mehr markier- oder durchsuchbar, Links sind entfernt.', en: 'Flattened as images: text can no longer be selected or searched, links are removed.' });
     return { outputs };
   },

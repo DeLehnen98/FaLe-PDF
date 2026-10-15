@@ -9,7 +9,7 @@
   "order": 15,
   "related": ["add-page-numbers", "watermark-pdf", "crop-pdf", "compress-pdf"],
   "next": ["compress-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-bearbeiten",

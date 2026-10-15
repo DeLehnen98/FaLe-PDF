@@ -1,0 +1,75 @@
+{
+  "id": "ocr-pdf",
+  "category": "convert-from-pdf",
+  "icon": "ocr",
+  "module": "tools/ocr-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "popular": true,
+  "order": 18,
+  "related": ["image-to-text", "pdf-to-text", "scan-to-pdf", "compress-pdf"],
+  "next": ["compress-pdf", "merge-pdf", "sign-pdf", "protect-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "de": {
+    "slug": "pdf-texterkennung",
+    "name": "PDF Texterkennung (OCR)",
+    "short": "Gescannte PDFs durchsuchbar machen – Text erkennen, kopieren, finden.",
+    "title": "PDF Texterkennung (OCR) – Scan durchsuchbar machen | FaleNetwork",
+    "h1": "PDF-Texterkennung (OCR)",
+    "metaDescription": "Mach gescannte PDFs durchsuchbar: Die Texterkennung legt eine unsichtbare Textebene über den Scan. Deutsch und Englisch, kostenlos und ohne Upload.",
+    "lede": "Mach gescannte PDFs durchsuchbar und kopierbar – die Erkennung läuft komplett auf deinem Gerät.",
+    "pickLabel": "Gescannte PDF auswählen",
+    "primaryButton": "Text erkennen",
+    "keywords": ["ocr", "pdf durchsuchbar machen", "texterkennung", "scan in text", "pdf text erkennen", "gescannte pdf bearbeiten", "durchsuchbares pdf", "ocr deutsch"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere gescannte PDFs aus. Passwortgeschützte Dateien kannst du direkt hier entsperren."},
+      {"title": "Sprache wählen", "text": "Stell ein, ob der Text Deutsch, Englisch oder beides ist, und grenz bei Bedarf die Seiten ein."},
+      {"title": "Text erkennen", "text": "Die Seiten werden nacheinander gelesen. Danach speicherst du die durchsuchbare PDF und kopierst den Text oder sicherst ihn als TXT."}
+    ],
+    "why": [
+      {"title": "Der Scan bleibt, wie er ist", "text": "Über jede Seite kommt eine unsichtbare Textebene. Das Bild wird nicht neu komprimiert – die PDF sieht genauso aus wie vorher."},
+      {"title": "Kein Upload", "text": "Die Texterkennung läuft in deinem Browser. Deine Dokumente verlassen dein Gerät nicht – auch nicht für die Erkennung."},
+      {"title": "Mitgedacht", "text": "Seiten, die schon Text haben, werden übersprungen. Quer oder kopfüber gescannte Seiten erkennt das Werkzeug, wenn sie schlecht lesbar sind."},
+      {"title": "Danach offline", "text": "Die Erkennungsdaten werden beim ersten Mal einmalig geladen. Danach funktioniert die Texterkennung auch ohne Internet."}
+    ],
+    "faq": [
+      {"q": "Was bedeutet „durchsuchbar“?", "a": "Nach der Texterkennung kannst du in der PDF nach Wörtern suchen, Text markieren und kopieren. Das Aussehen der Seiten ändert sich nicht, der Text liegt unsichtbar über dem Scan."},
+      {"q": "Welche Sprachen werden erkannt?", "a": "Deutsch und Englisch, auch gemischt. Umlaute und ß werden erkannt. Andere Sprachen mit lateinischer Schrift klappen teilweise, aber nicht zuverlässig."},
+      {"q": "Wie gut ist die Erkennung?", "a": "Bei sauberen Scans mit 300 dpi sehr gut. Handschrift, sehr kleine Schrift, Fotos mit starken Schatten oder Tabellen mit vielen Linien werden schlechter erkannt. Prüf wichtige Stellen im Ergebnis – du kannst den Text vor dem Kopieren korrigieren."},
+      {"q": "Wie lange dauert das?", "a": "Je nach Gerät einige Sekunden pro Seite. Beim ersten Mal kommen das Laden der Erkennungsdaten (ca. 5–7 MB) hinzu. Du kannst jederzeit abbrechen."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die PDF wird in deinem Browser gelesen und die Texterkennung läuft auf deinem Gerät. Es wird nichts an einen Server geschickt."},
+      {"q": "Was passiert mit Seiten, die schon Text haben?", "a": "Sie werden standardmäßig übersprungen und unverändert übernommen. So entsteht kein doppelter Text. Wenn du willst, kannst du das ausschalten."}
+    ]
+  },
+  "en": {
+    "slug": "ocr-pdf",
+    "name": "OCR PDF",
+    "short": "Make scanned PDFs searchable – recognise, copy and find text.",
+    "title": "OCR PDF – make scanned PDFs searchable, free | FaleNetwork",
+    "h1": "OCR PDF",
+    "metaDescription": "Make scanned PDFs searchable: text recognition adds an invisible text layer over the scan. English and German, free and without uploading your files.",
+    "lede": "Make scanned PDFs searchable and copyable – recognition runs entirely on your device.",
+    "pickLabel": "Choose scanned PDF",
+    "primaryButton": "Recognise text",
+    "keywords": ["ocr", "searchable pdf", "text recognition", "scan to text", "make pdf searchable", "pdf ocr free"],
+    "steps": [
+      {"title": "Choose PDF", "text": "Pick one or more scanned PDFs. You can unlock password-protected files right here."},
+      {"title": "Choose the language", "text": "Set whether the text is English, German or both, and limit the pages if you like."},
+      {"title": "Recognise text", "text": "The pages are read one after another. Then save the searchable PDF and copy the text or save it as TXT."}
+    ],
+    "why": [
+      {"title": "The scan stays as it is", "text": "An invisible text layer is placed over each page. The image is not recompressed – the PDF looks exactly as before."},
+      {"title": "No upload", "text": "Text recognition runs in your browser. Your documents never leave your device – not even for recognition."},
+      {"title": "Thought through", "text": "Pages that already contain text are skipped. Pages scanned sideways or upside down are detected when they read poorly."},
+      {"title": "Offline afterwards", "text": "The recognition data is downloaded once the first time. After that, text recognition also works without internet."}
+    ],
+    "faq": [
+      {"q": "What does “searchable” mean?", "a": "After recognition you can search the PDF for words, select text and copy it. The pages look the same; the text sits invisibly over the scan."},
+      {"q": "Which languages are recognised?", "a": "English and German, also mixed. Other languages using the Latin alphabet partly work, but not reliably."},
+      {"q": "How accurate is it?", "a": "Very good on clean scans at 300 dpi. Handwriting, very small print, photos with strong shadows or tables with many lines are recognised less well. Check important parts of the result – you can correct the text before copying it."},
+      {"q": "How long does it take?", "a": "A few seconds per page, depending on your device. The first time, loading the recognition data (about 5–7 MB) adds to that. You can cancel at any time."},
+      {"q": "Are my files uploaded?", "a": "No. The PDF is read in your browser and text recognition runs on your device. Nothing is sent to a server."},
+      {"q": "What happens to pages that already contain text?", "a": "By default they are skipped and kept unchanged, so no text is duplicated. You can switch this off."}
+    ]
+  }
+}

@@ -9,7 +9,7 @@
   "popular": true,
   "order": 10,
   "related": ["compress-pdf", "jpg-to-pdf"],
-  "next": ["compress-pdf"],
+  "next": ["compress-pdf", "protect-pdf"],
   "needs": ["pdfjs", "pdflib"],
   "trademarkNote": false,
   "de": {
@@ -39,7 +39,7 @@
       {"q": "Wie viele Dateien kann ich zusammenfügen?", "a": "Es gibt keine feste Grenze. Begrenzt wird es nur durch den Arbeitsspeicher deines Geräts. Auf aktuellen Handys sind auch Dokumente mit mehreren Hundert Seiten kein Problem."},
       {"q": "Bleiben Links, Text und Formularfelder erhalten?", "a": "Ja. Die Seiten werden unverändert übernommen, Text bleibt durchsuchbar und Links funktionieren weiter. Lesezeichen aus den Ausgangsdateien werden nicht übernommen; stattdessen kannst du pro Datei ein neues setzen."},
       {"q": "Kann ich auch Fotos vom Handy einfügen?", "a": "Ja. JPG, PNG, WebP, GIF, BMP und AVIF werden direkt unterstützt, HEIC-Fotos vom iPhone, wenn dein Browser das Format öffnen kann. Fotos kommen auf eine A4-Seite oder behalten auf Wunsch ihre eigene Größe."},
-      {"q": "Was passiert mit passwortgeschützten PDFs?", "a": "Du gibst das Passwort direkt an der Datei ein. Die zusammengefügte PDF wird ohne Passwort gespeichert. Wenn du sie wieder schützen möchtest, kannst du das in der FaLe PDF App tun."}
+      {"q": "Was passiert mit passwortgeschützten PDFs?", "a": "Du gibst das Passwort direkt an der Datei ein. Die zusammengefügte PDF wird ohne Passwort gespeichert. Möchtest du sie wieder schützen, tippst du nach dem Zusammenfügen auf „Weiter mit: PDF mit Passwort schützen“."}
     ]
   },
   "en": {
@@ -69,7 +69,7 @@
       {"q": "How many files can I merge?", "a": "There is no fixed limit. The only limit is your device’s memory. On current phones, documents with several hundred pages are no problem."},
       {"q": "Are links, text and form fields kept?", "a": "Yes. Pages are copied unchanged, text stays searchable and links keep working. Bookmarks from the source files are not carried over; instead you can add a new bookmark for each file."},
       {"q": "Can I add photos from my phone?", "a": "Yes. JPG, PNG, WebP, GIF, BMP and AVIF are supported directly, HEIC photos from an iPhone if your browser can open the format. Photos are placed on an A4 page or keep their own size if you prefer."},
-      {"q": "What happens with password-protected PDFs?", "a": "You type the password right on the file. The merged PDF is saved without a password. If you want to protect it again, you can do that in the FaLe PDF app."}
+      {"q": "What happens with password-protected PDFs?", "a": "You type the password right on the file. The merged PDF is saved without a password. To protect it again, tap “Continue with: Protect PDF” after merging."}
     ]
   }
 }

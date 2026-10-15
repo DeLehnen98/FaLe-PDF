@@ -58,7 +58,7 @@ export async function docxToHtml(data, name = 'Dokument') {
     return pt.cols > 1 && inner ? `<div class="sect" data-cols="${Math.min(4, pt.cols)}" data-gap="${Math.round(pt.gap || 18)}" style="columns:${Math.min(4, pt.cols)};column-gap:${Math.round(pt.gap || 18)}pt">${inner}</div>` : inner;
   }).join('') || '<p><br></p>';
   const hf = sect ? await readHeaderFooter(zip, rels, sect) : null;
-  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf, styles: ctx.styles.defs };
+  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf, styles: ctx.styles.defs, math: ctx.math || 0 };
 }
 
 /** comments.xml / footnotes.xml → Map(id → {text, author, date}) */
@@ -401,6 +401,26 @@ function wrapCmt(html, ctx) {
 }
 const fieldName = instr => { const m = /MERGEFIELD\s+"?([^"\\]+?)"?(\s+\\|\s*$)/i.exec(String(instr).trim() + ' '); return m ? m[1].trim() : null; };
 const mfHtml = name => `<span class="mf" data-field="${esc(name)}" contenteditable="false">«${esc(name)}»</span>`;
+/** OMML → linear text: fractions (a)/(b), scripts x^2 / x_i, roots √(…), delimiters, n-ary operators. */
+function mathText(n) {
+  const ln = n.localName;
+  const part = name => { const k = kid(n, name); return k ? mathText(k) : ''; };
+  const grp = s => (s.length > 1 && !/^[\w.]+$/.test(s) ? `(${s})` : s);
+  const prVal = (pr, name, def) => { const p = kid(n, pr); const v = p && kid(p, name); return v ? (attr(v, 'val') ?? '') : def; };
+  switch (ln) {
+    case 't': return n.textContent;
+    case 'f': return `${grp(part('num'))}/${grp(part('den'))}`;
+    case 'sSup': return `${part('e')}^${grp(part('sup'))}`;
+    case 'sSub': return `${part('e')}_${grp(part('sub'))}`;
+    case 'sSubSup': return `${part('e')}_${grp(part('sub'))}^${grp(part('sup'))}`;
+    case 'sPre': return `${grp(part('sub'))}${grp(part('sup'))}${part('e')}`;
+    case 'rad': { const deg = part('deg'); return `${deg ? deg : ''}√(${part('e')})`; }
+    case 'd': { const es = kids(n).filter(c => c.localName === 'e').map(mathText); return prVal('dPr', 'begChr', '(') + es.join(prVal('dPr', 'sepChr', '|')) + prVal('dPr', 'endChr', ')'); }
+    case 'nary': { const sub = part('sub'), sup = part('sup'); return `${prVal('naryPr', 'chr', '∫')}${sub ? '_' + grp(sub) : ''}${sup ? '^' + grp(sup) : ''} ${part('e')}`; }
+    case 'oMathPara': return kids(n).filter(c => c.localName === 'oMath').map(mathText).join('   ');
+    default: return ln && ln.endsWith('Pr') ? '' : kids(n).map(mathText).join('');
+  }
+}
 async function renderInline(n, st, cur, pageBreak, link = null) {
   const ln = n.localName;
   if (ln === 'commentRangeStart') { st.ctx.openCmts.push(attr(n, 'id')); return; }
@@ -462,6 +482,8 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
   if (['smartTag', 'customXml', 'bdo', 'dir', 'moveTo'].includes(ln)) { for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
   if (ln === 'sdt') { for (const c of kids(kid(n, 'sdtContent'))) await renderInline(c, st, cur, pageBreak); return; }
   if (ln === 'AlternateContent') { const ch = kid(n, 'Choice') || kid(n, 'Fallback'); if (ch) for (const c of kids(ch)) await renderInline(c, st, cur, pageBreak); }
+  // Office Math (OMML): no formula layout – the formula is kept as readable linear text (a/b, x^2, √(…))
+  if (ln === 'oMath' || ln === 'oMathPara') { const t = mathText(n).trim(); if (t) { st.ctx.math = (st.ctx.math || 0) + 1; cur.push(`<i>${esc(t)}</i>`); } return; }
   // del, moveFrom, bookmarks, proofErr, commentRange …: ignored
 }
 

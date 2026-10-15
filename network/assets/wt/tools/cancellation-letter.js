@@ -7,6 +7,7 @@
 import { el, icon, clear } from '../lib/dom.js';
 import { loadPdfLib, saveDoc } from '../lib/pdf.js';
 import { ensureCss, newCanvas, ctx2d, release, T, segmented, field, check, userError } from '../lib/img-core.js';
+import { fontForText, cleanText, missingWarning } from '../lib/unifont.js';
 
 ensureCss();
 
@@ -154,33 +155,19 @@ export function letterText(m) {
 }
 
 // ---------------------------------------------------------------- PDF (DIN 5008 form B)
-const WINANSI = new Set('€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ');
-/** Map text to what the standard PDF font can show; returns [text, replaced?]. */
-export function winAnsi(s) {
-  let out = '', changed = false;
-  for (const ch of String(s)) {
-    const c = ch.codePointAt(0);
-    if ((c >= 32 && c <= 126) || (c >= 160 && c <= 255) || WINANSI.has(ch)) { out += ch; continue; }
-    if (ch === '\t') { out += ' '; continue; }
-    const base = ch.normalize('NFD').replace(/[̀-ͯ]/g, '');
-    const map = { 'ł': 'l', 'Ł': 'L', 'đ': 'd', 'Đ': 'D', 'ı': 'i', 'ø': 'o', '‐': '-', '‑': '-', '−': '-', ' ': ' ', ' ': ' ' };
-    const r = map[ch] || ([...base].every(x => x.codePointAt(0) < 256) ? base : '?');
-    out += r;
-    changed = true;
-  }
-  return [out, changed];
-}
-
 async function makePdf(m, sig, lang) {
   const PDFLib = await loadPdfLib();
-  const { PDFDocument, StandardFonts, rgb } = PDFLib;
+  const { PDFDocument, rgb } = PDFLib;
   const doc = await PDFDocument.create();
-  const font = await doc.embedFont(StandardFonts.Helvetica);
-  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  // one face for the whole letter: Helvetica, or Liberation Sans (embedded Unicode subset, lib/unifont.js)
+  // as soon as any line needs it (Polish, Czech, Turkish, Greek, Cyrillic … names and addresses)
+  const all = [...m.sender, ...m.contact, ...m.recipient, ...m.refs.flat(), m.dateLine, m.subject, m.salutation, ...m.body, m.closing, m.name].join('\n');
+  const font = await fontForText(doc, all, { PDFLib });
+  const bold = await fontForText(doc, all, { bold: true, PDFLib });
   const mm = v => v * 72 / 25.4;
   const W = 595.28, H = 841.89;
-  let replaced = false;
-  const txt = s => { const [t, c] = winAnsi(s); if (c) replaced = true; return t; };
+  const missing = new Set();
+  const txt = s => { const r = cleanText(s, font); r.missing.forEach(c => missing.add(c)); return r.text; };
   let page = doc.addPage([W, H]);
   const marks = p => {
     for (const y of [105, 210]) p.drawLine({ start: { x: mm(3), y: H - mm(y) }, end: { x: mm(8), y: H - mm(y) }, thickness: 0.4, color: rgb(0.6, 0.6, 0.6) });
@@ -253,10 +240,10 @@ async function makePdf(m, sig, lang) {
     y -= h + 2;
   } else y -= LH * 2.2;
   if (m.name) para(m.name);
-  doc.setTitle(txt(m.subject));
+  doc.setTitle(m.subject);
   doc.setLanguage(lang === 'de' ? 'de-DE' : 'en');
-  const bytes = await saveDoc(doc, { title: txt(m.subject) });
-  return { bytes, replaced };
+  const bytes = await saveDoc(doc, { title: m.subject });
+  return { bytes, missing: [...missing] };
 }
 
 // ---------------------------------------------------------------- signature pad
@@ -326,10 +313,11 @@ export default {
     const m = buildLetter(v, ctx.lang);
     ctx.progress(0.3, { de: 'PDF wird erstellt …', en: 'Creating PDF …' });
     const sig = stageCtl ? await stageCtl.signature() : null;
-    const { bytes, replaced } = await makePdf(m, sig, ctx.lang);
+    const { bytes, missing } = await makePdf(m, sig, ctx.lang);
     const k = TYPES[v.type] || TYPES.other;
     const name = ctx.safeFileName(`${ctx.t({ de: 'Kündigung', en: 'Cancellation' })} ${ctx.t(k.label).replace(/\s*\/\s*/g, '-')}${v.rName ? ' – ' + String(v.rName).trim() : ''}.pdf`);
-    if (replaced) ctx.note({ de: 'Einige Sonderzeichen kann die PDF-Standardschrift nicht darstellen; sie wurden vereinfacht (z. B. „ł“ → „l“). Der kopierte Text enthält sie unverändert.', en: 'Some special characters can’t be shown by the standard PDF font and were simplified (e.g. “ł” → “l”). The copied text keeps them unchanged.' });
+    const mw = missingWarning(missing);
+    if (mw) ctx.note({ de: mw.de + ' Der kopierte Text enthält sie unverändert.', en: mw.en + ' The copied text keeps them unchanged.' });
     if (k.paper && ctx.lang === 'de') ctx.note({ de: 'Wichtig: Diese Kündigung musst du ausdrucken und eigenhändig unterschreiben – eine E-Mail oder eine eingefügte Unterschrift reicht nicht.', en: '' });
     else if (k.paper) ctx.note({ de: '', en: 'Some contracts, such as tenancies, may require a handwritten signature on paper – check your agreement.' });
     ctx.note({ de: 'Tipp: Verschick die Kündigung nachweisbar, z. B. per Einschreiben, und heb den Beleg auf.', en: 'Tip: send the letter in a way you can prove, e.g. by recorded delivery, and keep the receipt.' });

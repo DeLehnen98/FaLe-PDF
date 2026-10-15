@@ -11,6 +11,7 @@
   "minFiles": 1,
   "order": 46,
   "related": [
+    "ocr-pdf",
     "pdf-to-markdown",
     "pdf-to-word",
     "pdf-to-jpg"

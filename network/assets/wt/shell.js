@@ -453,7 +453,21 @@ function init(cfg) {
   }
 
   // ---------------------------------------------------------------- phases + bar
+  // phone back button: showing a result adds a history entry, so "back" returns to the files (with the
+  // options as they were) instead of leaving the page and losing everything
+  let resultEntry = false, popping = false;
+  window.addEventListener('popstate', () => {
+    if (!resultEntry) return;
+    resultEntry = false;
+    if (state.phase === 'result' || state.phase === 'error') { popping = true; backToFiles(); popping = false; }
+  });
+  function backToFiles() { setPhase('files'); renderOpts(); setPhase('files'); update(); primary.focus({ preventScroll: true }); }
+
   function setPhase(phase) {
+    if (resultEntry && !popping && (phase === 'files' || phase === 'pick')) {
+      resultEntry = false;
+      if (history.state?.wtResult) history.back();
+    }
     state.phase = phase;
     app.dataset.state = phase;
     const hasFiles = state.inputs.length > 0 || noFiles;
@@ -560,6 +574,17 @@ function init(cfg) {
         if (previous !== 'result') update();
         say(T('cancelled'));
         primary.focus();
+      } else if (err?.stay && err.userMessage && previous === 'files') {
+        // input problem the user can fix right here (nothing selected yet …): stay on the files, say why
+        setPhase('files');
+        update();
+        const msg = P(err.userMessage);
+        barHint.textContent = msg;
+        barHint.hidden = false;
+        alertLive.textContent = '';
+        setTimeout(() => { alertLive.textContent = msg; }, 30);
+        try { navigator.vibrate?.([18, 60, 18]); } catch { /* not supported */ }
+        primary.focus({ preventScroll: true });
       } else {
         console.warn(err);
         showError(err);
@@ -582,6 +607,17 @@ function init(cfg) {
       note: P(o.note) || '', meta: o.meta ?? null,
     }));
     if (!outputs.length) throw Object.assign(new Error('no output'), { wtKey: 'error_generic' });
+    // unique names (case-insensitive): "a.pdf", "a (2).pdf" – same-named outputs would overwrite each other in the ZIP
+    const seen = new Set();
+    for (const o of outputs) {
+      let n = o.name;
+      if (seen.has(n.toLowerCase())) {
+        const m = /^(.*?)(\.[^.]{1,8})?$/.exec(n);
+        for (let k = 2; seen.has(n.toLowerCase()); k++) n = `${m[1]} (${k})${m[2] || ''}`;
+      }
+      seen.add(n.toLowerCase());
+      o.name = n;
+    }
     return { outputs, notes: [...ctx.notes, ...(r.notes || []).map(P)], inputs: inputs.length };
   }
 
@@ -590,6 +626,7 @@ function init(cfg) {
   function showResult(res) {
     state.current = res;
     setPhase('result');
+    if (!resultEntry && !history.state?.wtResult) { try { history.pushState({ wtResult: 1 }, ''); resultEntry = true; } catch { /* sandboxed */ } }
     objectUrls.forEach(u => URL.revokeObjectURL(u));
     objectUrls = [];
     clear(result);
@@ -603,8 +640,20 @@ function init(cfg) {
     }
 
     const ul = el('ul', { class: 'wt-outputs' });
-    for (const o of res.outputs) ul.append(outputRow(o));
+    // many outputs (300 page images …): the first rows, the rest on demand – the ZIP button gets them all
+    const FIRST = 10;
+    const rows = res.outputs.map(outputRow);
+    ul.append(...rows);
     result.append(ul);
+    if (rows.length > FIRST + 4) {
+      rows.slice(FIRST).forEach(r => { r.hidden = true; });
+      const more = el('button', { type: 'button', class: 'wt-btn wt-btn-quiet wt-out-more', onclick: () => {
+        rows.forEach(r => { r.hidden = false; });
+        more.remove();
+        rows[FIRST].querySelector('button')?.focus();
+      } }, lang === 'de' ? `Alle ${rows.length} Dateien einzeln anzeigen` : `Show all ${rows.length} files`);
+      result.append(more);
+    }
     for (const n of res.notes.filter(Boolean)) result.append(el('p', { class: 'wt-note' }, icon('alert'), el('span', {}, n)));
 
     const actions = el('div', { class: 'wt-result-actions' });
@@ -618,13 +667,14 @@ function init(cfg) {
     // optional tool hook: add a preview (e.g. before/after comparison) to the result card
     try { state.tool.onResult?.(result, res, ctxBase()); } catch (err) { console.warn(err); }
 
-    const nexts = (cfg.next || []).filter(n => res.outputs.every(o => accepted({ type: o.blob.type, name: o.name }, n.accepts)));
+    // a one-file tool is only offered for a single result (it would silently keep just the first file)
+    const nexts = (cfg.next || []).filter(n => (n.multiple !== false || res.outputs.length === 1) && res.outputs.every(o => accepted({ type: o.blob.type, name: o.name }, n.accepts)));
     if (nexts.length) {
       result.append(el('div', { class: 'wt-next' }, el('p', { class: 'wt-next-title' }, T('continue_with')),
         el('ul', {}, nexts.map(n => el('li', {}, el('button', { type: 'button', class: 'wt-next-chip', onclick: () => continueWith(n, res) }, el('span', {}, n.name), icon('arrow')))))));
     }
     result.append(el('div', { class: 'wt-restart' },
-      el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: () => { setPhase('files'); renderOpts(); setPhase('files'); update(); primary.focus(); } }, L('back_to_files')),
+      el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: backToFiles }, L('back_to_files')),
       el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: restart }, icon('restart'), T('restart'))));
 
     // sticky bar: the main action is within thumb reach
@@ -650,7 +700,7 @@ function init(cfg) {
 
   function outputRow(o) {
     const thumb = el('div', { class: 'wt-thumb wt-thumb-lg', 'aria-hidden': 'true' }, icon(o.blob.type.startsWith('image/') ? 'image' : 'file'));
-    renderOutputThumb(o, thumb);
+    lazyThumb(o, thumb);
     const size = el('p', { class: 'wt-out-size' });
     if (o.before != null) {
       size.append(T('before_after', { before: formatSize(o.before, lang), after: formatSize(o.blob.size, lang) }));
@@ -665,6 +715,23 @@ function init(cfg) {
     if (canShare([o])) btns.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet wt-btn-sm', onclick: () => doShare([o]) }, icon('share'), T('share')));
     return el('li', { class: 'wt-output' }, thumb, el('div', { class: 'wt-out-info' },
       el('p', { class: 'wt-file-name', title: o.name }, o.name), size, o.note ? el('p', { class: 'wt-out-note' }, o.note) : null, btns));
+  }
+
+  // thumbnails only for rows on (or near) the screen, one at a time – decoding hundreds of page images at
+  // once would spike the memory of a phone
+  let thumbIO = null, thumbQueue = Promise.resolve();
+  function lazyThumb(o, box) {
+    if (typeof IntersectionObserver !== 'function') { renderOutputThumb(o, box); return; }
+    thumbIO = thumbIO || new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        thumbIO.unobserve(e.target);
+        const job = e.target._wtThumb;
+        thumbQueue = thumbQueue.then(() => (e.target.isConnected ? renderOutputThumb(job, e.target) : null));
+      }
+    }, { rootMargin: '300px 0px' });
+    box._wtThumb = o;
+    thumbIO.observe(box);
   }
 
   async function renderOutputThumb(o, box) {
@@ -775,7 +842,9 @@ function init(cfg) {
     const reg = await registerSW();
     if (!reg) return;
     await ready;
-    const urls = [location.pathname, cfg.module, ...performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(p => p.startsWith('/assets/wt/'))];
+    // lazily imported by the shell for every tool ("Alle als ZIP", unlocking a PDF) – cache them up front
+    const lazy = ['./lib/shared/zip.js', './lib/shared/pdfcrypt.js'].map(u => new URL(u, import.meta.url).pathname);
+    const urls = [location.pathname, cfg.module, ...lazy, ...performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(p => p.startsWith('/assets/wt/'))];
     const ok = await warmUp([...new Set(urls)], cfg.needs || []);
     if (ok) {
       document.documentElement.dataset.wtOffline = 'ready';

@@ -423,7 +423,7 @@ def page_tool(sp, lang, by_id):
         'accepts': sp['accepts'], 'multiple': multiple, 'minFiles': sp.get('minFiles', 1),
         'maxFiles': sp.get('maxFiles'), 'name': c['name'], 'primary': c['primaryButton'],
         'needs': sp.get('needs', []), 'hub': HUB[lang], 'app': bp.PDF_APP,
-        'next': [{'id': n, 'name': by_id[n][lang]['name'], 'url': tool_path(by_id[n], lang), 'accepts': by_id[n]['accepts']}
+        'next': [{'id': n, 'name': by_id[n][lang]['name'], 'url': tool_path(by_id[n], lang), 'accepts': by_id[n]['accepts'], 'multiple': bool(by_id[n].get('multiple'))}
                  for n in sp.get('next', []) if n in by_id],
         'categoryColour': colour,
     }

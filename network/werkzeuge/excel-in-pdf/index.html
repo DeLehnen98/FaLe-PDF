@@ -107,7 +107,7 @@
     </div>
   </section>
 </main>
-<script type="application/json" id="wt-config">{"accepts":[".xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],"app":"https://fale-pdf.vercel.app/","categoryColour":"convert","hub":"/werkzeuge/","id":"excel-to-pdf","lang":"de","maxFiles":null,"minFiles":1,"module":"/assets/wt/tools/excel-to-pdf.js","multiple":true,"name":"Excel in PDF","needs":["pdflib","jszip","office"],"next":[{"accepts":["application/pdf",".pdf","image/*",".jpg",".jpeg",".png",".webp",".gif",".bmp",".avif",".heic",".heif"],"id":"merge-pdf","name":"PDF zusammenfügen","url":"/werkzeuge/pdf-zusammenfuegen/"},{"accepts":["application/pdf",".pdf"],"id":"compress-pdf","name":"PDF komprimieren","url":"/werkzeuge/pdf-komprimieren/"}],"primary":"In PDF umwandeln","v":1}</script>
+<script type="application/json" id="wt-config">{"accepts":[".xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],"app":"https://fale-pdf.vercel.app/","categoryColour":"convert","hub":"/werkzeuge/","id":"excel-to-pdf","lang":"de","maxFiles":null,"minFiles":1,"module":"/assets/wt/tools/excel-to-pdf.js","multiple":true,"name":"Excel in PDF","needs":["pdflib","jszip","office","unicodefont"],"next":[{"accepts":["application/pdf",".pdf","image/*",".jpg",".jpeg",".png",".webp",".gif",".bmp",".avif",".heic",".heif"],"id":"merge-pdf","multiple":true,"name":"PDF zusammenfügen","url":"/werkzeuge/pdf-zusammenfuegen/"},{"accepts":["application/pdf",".pdf"],"id":"compress-pdf","multiple":true,"name":"PDF komprimieren","url":"/werkzeuge/pdf-komprimieren/"}],"primary":"In PDF umwandeln","v":1}</script>
 <script type="module" src="/assets/wt/shell.js"></script>
 <footer class="site-foot">
   <div class="wrap">

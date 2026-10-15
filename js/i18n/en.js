@@ -5016,6 +5016,7 @@ export default {
   "Das Bild": "The image",
   "{0}Der Link führt zu {1} – öffne nur Links, denen du vertraust.": "{0}The link leads to {1} – only open links you trust.",
   "Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (": "Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (",
+  "Diese Zeichen kann die eingebettete Schrift nicht darstellen (z. B. chinesische, arabische oder hebräische Schrift, Emoji) – sie wurden durch „?“ ersetzt: {0}": "The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji) – they were replaced by \"?\": {0}",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

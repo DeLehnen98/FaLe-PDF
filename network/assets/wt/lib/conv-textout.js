@@ -49,11 +49,11 @@ export function makeTextTool(kind) {
         await ctx.tick();
       }
       if (!outputs.length) fail(
-        'In dieser PDF ist kein Text gespeichert – vermutlich ist sie gescannt oder fotografiert. Mit der FaLe PDF-App kannst du die Texterkennung (OCR) offline auf deinem Gerät ausführen.',
-        'This PDF contains no stored text – it is probably scanned or photographed. The FaLe PDF app can run text recognition (OCR) offline on your device.');
+        'In dieser PDF ist kein Text gespeichert – vermutlich ist sie gescannt oder fotografiert. Nutze zuerst das Werkzeug „PDF Texterkennung (OCR)“ – es läuft ebenfalls nur auf deinem Gerät.',
+        'This PDF contains no stored text – it is probably scanned or photographed. Run the “OCR PDF” tool first – it also works only on your device.');
       if (scannedPages) ctx.note({
-        de: `${scannedPages} von ${totalPages} Seiten enthalten keinen Text (Scan oder Bild). Für sie braucht es eine Texterkennung (OCR), zum Beispiel in der FaLe PDF-App.`,
-        en: `${scannedPages} of ${totalPages} pages contain no text (scan or image). They need text recognition (OCR), for example in the FaLe PDF app.`,
+        de: `${scannedPages} von ${totalPages} Seiten enthalten keinen Text (Scan oder Bild). Für sie hilft vorher das Werkzeug „PDF Texterkennung (OCR)“.`,
+        en: `${scannedPages} of ${totalPages} pages contain no text (scan or image). Run the “OCR PDF” tool on them first.`,
       });
       if (columns) ctx.note({ de: 'Mehrspaltige Seiten wurden Spalte für Spalte gelesen.', en: 'Pages with several columns were read column by column.' });
       return { outputs };

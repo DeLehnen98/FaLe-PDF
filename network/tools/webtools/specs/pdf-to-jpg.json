@@ -11,6 +11,7 @@
   "minFiles": 1,
   "popular": true,
   "order": 40,
+  "next": ["compress-image", "resize-image"],
   "related": [
     "pdf-to-png",
     "extract-images",

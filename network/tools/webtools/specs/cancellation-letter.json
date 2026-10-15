@@ -7,9 +7,17 @@
   "minFiles": 0,
   "popular": true,
   "order": 62,
-  "related": ["qr-code", "scan-to-pdf", "merge-pdf"],
+  "related": [
+    "invoice-generator",
+    "qr-code",
+    "scan-to-pdf",
+    "merge-pdf"
+  ],
   "next": [],
-  "needs": ["pdflib"],
+  "needs": [
+    "pdflib",
+    "unicodefont"
+  ],
   "de": {
     "slug": "kuendigung-schreiben",
     "name": "Kündigung schreiben",
@@ -19,24 +27,70 @@
     "metaDescription": "Kündigungsschreiben erstellen für Handy, Internet, Fitnessstudio, Strom, Versicherung, Abo oder Wohnung: Brief fürs Fensterkuvert, Unterschrift per Finger, gratis.",
     "lede": "Erstelle in zwei Minuten ein sauberes Kündigungsschreiben – als PDF fürs Fensterkuvert.",
     "primaryButton": "PDF erstellen",
-    "keywords": ["kündigungsschreiben", "kündigung vorlage", "handyvertrag kündigen", "fitnessstudio kündigen", "abo kündigen", "sonderkündigung", "mietvertrag kündigen", "dsgvo löschung", "lastschrift widerrufen"],
+    "keywords": [
+      "kündigungsschreiben",
+      "kündigung vorlage",
+      "handyvertrag kündigen",
+      "fitnessstudio kündigen",
+      "abo kündigen",
+      "sonderkündigung",
+      "mietvertrag kündigen",
+      "dsgvo löschung",
+      "lastschrift widerrufen"
+    ],
     "steps": [
-      {"title": "Vertrag wählen", "text": "Wähle die Vertragsart und trag Kunden-, Vertrags- oder Mitgliedsnummer ein. Leg fest, ob zum nächstmöglichen Zeitpunkt oder zu einem Datum gekündigt wird."},
-      {"title": "Empfänger und Absender", "text": "Gib die Anschrift des Anbieters und deine eigene ein. Auf Wunsch merkt sich dein Browser deinen Absender für das nächste Mal."},
-      {"title": "Unterschreiben und speichern", "text": "Unterschreib mit dem Finger oder später auf dem Ausdruck, erstelle die PDF und verschick sie – oder kopiere den Text in eine E-Mail."}
+      {
+        "title": "Vertrag wählen",
+        "text": "Wähle die Vertragsart und trag Kunden-, Vertrags- oder Mitgliedsnummer ein. Leg fest, ob zum nächstmöglichen Zeitpunkt oder zu einem Datum gekündigt wird."
+      },
+      {
+        "title": "Empfänger und Absender",
+        "text": "Gib die Anschrift des Anbieters und deine eigene ein. Auf Wunsch merkt sich dein Browser deinen Absender für das nächste Mal."
+      },
+      {
+        "title": "Unterschreiben und speichern",
+        "text": "Unterschreib mit dem Finger oder später auf dem Ausdruck, erstelle die PDF und verschick sie – oder kopiere den Text in eine E-Mail."
+      }
     ],
     "why": [
-      {"title": "Passt ins Fensterkuvert", "text": "Der Brief ist nach DIN 5008 gesetzt: Anschrift im Sichtfenster, Rücksendeangabe, Falz- und Lochmarken."},
-      {"title": "An alles gedacht", "text": "Bitte um Bestätigung, Widerruf der Lastschrift, auf Wunsch Datenlöschung nach DSGVO und eine hilfsweise fristgerechte Kündigung bei Sonderkündigungen."},
-      {"title": "Fristen-Hilfe", "text": "Zu jeder Vertragsart erklären wir, welche Fristen typisch sind – ehrlich als Orientierung, nicht als Rechtsberatung."},
-      {"title": "Deine Daten bleiben bei dir", "text": "Der Brief entsteht in deinem Browser. Nichts wird gesendet; den Absender speichert dein Browser nur, wenn du es willst."}
+      {
+        "title": "Passt ins Fensterkuvert",
+        "text": "Der Brief ist nach DIN 5008 gesetzt: Anschrift im Sichtfenster, Rücksendeangabe, Falz- und Lochmarken."
+      },
+      {
+        "title": "An alles gedacht",
+        "text": "Bitte um Bestätigung, Widerruf der Lastschrift, auf Wunsch Datenlöschung nach DSGVO und eine hilfsweise fristgerechte Kündigung bei Sonderkündigungen."
+      },
+      {
+        "title": "Fristen-Hilfe",
+        "text": "Zu jeder Vertragsart erklären wir, welche Fristen typisch sind – ehrlich als Orientierung, nicht als Rechtsberatung."
+      },
+      {
+        "title": "Deine Daten bleiben bei dir",
+        "text": "Der Brief entsteht in deinem Browser. Nichts wird gesendet; den Absender speichert dein Browser nur, wenn du es willst."
+      }
     ],
     "faq": [
-      {"q": "Ist das Schreiben rechtssicher?", "a": "Die Formulierungen sind bewährt und klar, ersetzen aber keine Rechtsberatung. Welche Frist gilt und ob ein Sonderkündigungsrecht besteht, hängt von deinem Vertrag und der aktuellen Rechtslage ab."},
-      {"q": "Wie verschicke ich die Kündigung am besten?", "a": "So, dass du den Zugang beweisen kannst – zum Beispiel per Einschreiben. Viele Anbieter akzeptieren auch E-Mail oder Fax; online geschlossene Verträge kannst du oft über den Kündigungsbutton auf der Webseite kündigen."},
-      {"q": "Muss ich die Kündigung unterschreiben?", "a": "Bei den meisten Verbraucherverträgen genügt die Textform, also auch eine E-Mail. Eine Wohnung kannst du als Mieter aber nur schriftlich mit eigenhändiger Unterschrift auf Papier kündigen – das Werkzeug weist dich darauf hin."},
-      {"q": "Was bedeutet „zum nächstmöglichen Zeitpunkt“?", "a": "Der Vertrag endet zum frühesten Termin, der nach deinem Vertrag möglich ist. So musst du die Frist nicht selbst ausrechnen und riskierst keine unwirksame Kündigung wegen eines falschen Datums."},
-      {"q": "Werden meine Angaben gespeichert?", "a": "Nein. Alles bleibt in deinem Browser. Nur wenn du „Absender merken“ einschaltest, speichert dein Browser Name und Anschrift auf diesem Gerät – ausschalten löscht sie wieder."}
+      {
+        "q": "Ist das Schreiben rechtssicher?",
+        "a": "Die Formulierungen sind bewährt und klar, ersetzen aber keine Rechtsberatung. Welche Frist gilt und ob ein Sonderkündigungsrecht besteht, hängt von deinem Vertrag und der aktuellen Rechtslage ab."
+      },
+      {
+        "q": "Wie verschicke ich die Kündigung am besten?",
+        "a": "So, dass du den Zugang beweisen kannst – zum Beispiel per Einschreiben. Viele Anbieter akzeptieren auch E-Mail oder Fax; online geschlossene Verträge kannst du oft über den Kündigungsbutton auf der Webseite kündigen."
+      },
+      {
+        "q": "Muss ich die Kündigung unterschreiben?",
+        "a": "Bei den meisten Verbraucherverträgen genügt die Textform, also auch eine E-Mail. Eine Wohnung kannst du als Mieter aber nur schriftlich mit eigenhändiger Unterschrift auf Papier kündigen – das Werkzeug weist dich darauf hin."
+      },
+      {
+        "q": "Was bedeutet „zum nächstmöglichen Zeitpunkt“?",
+        "a": "Der Vertrag endet zum frühesten Termin, der nach deinem Vertrag möglich ist. So musst du die Frist nicht selbst ausrechnen und riskierst keine unwirksame Kündigung wegen eines falschen Datums."
+      },
+      {
+        "q": "Werden meine Angaben gespeichert?",
+        "a": "Nein. Alles bleibt in deinem Browser. Nur wenn du „Absender merken“ einschaltest, speichert dein Browser Name und Anschrift auf diesem Gerät – ausschalten löscht sie wieder."
+      }
     ]
   },
   "en": {
@@ -48,24 +102,68 @@
     "metaDescription": "Create a cancellation letter for a phone, internet, gym, energy, insurance, subscription or tenancy contract. Window-envelope layout, finger signature, no sign-up.",
     "lede": "Create a clean cancellation letter in two minutes – as a PDF for a window envelope.",
     "primaryButton": "Create PDF",
-    "keywords": ["cancel contract letter", "cancellation template", "cancel gym membership", "cancel subscription", "termination letter", "gdpr erasure request", "cancel direct debit"],
+    "keywords": [
+      "cancel contract letter",
+      "cancellation template",
+      "cancel gym membership",
+      "cancel subscription",
+      "termination letter",
+      "gdpr erasure request",
+      "cancel direct debit"
+    ],
     "steps": [
-      {"title": "Choose the contract", "text": "Pick the type of contract and enter your customer, contract or membership number. Choose the earliest possible date or a specific date."},
-      {"title": "Recipient and sender", "text": "Enter the company’s address and your own. Your browser can remember your sender details for next time if you like."},
-      {"title": "Sign and save", "text": "Sign with your finger or later on the printout, create the PDF and send it – or copy the text into an e-mail."}
+      {
+        "title": "Choose the contract",
+        "text": "Pick the type of contract and enter your customer, contract or membership number. Choose the earliest possible date or a specific date."
+      },
+      {
+        "title": "Recipient and sender",
+        "text": "Enter the company’s address and your own. Your browser can remember your sender details for next time if you like."
+      },
+      {
+        "title": "Sign and save",
+        "text": "Sign with your finger or later on the printout, create the PDF and send it – or copy the text into an e-mail."
+      }
     ],
     "why": [
-      {"title": "Fits a window envelope", "text": "The letter follows the DIN 5008 layout: address in the window, return address line, fold and punch marks."},
-      {"title": "Nothing forgotten", "text": "Request for confirmation, withdrawal of the direct debit, an optional data erasure request and a fallback regular cancellation for special cancellations."},
-      {"title": "Clear wording", "text": "Polite, unambiguous sentences that say exactly what you want – no legal claims about any particular country."},
-      {"title": "Your data stays with you", "text": "The letter is created in your browser. Nothing is sent; your sender details are only stored by your browser if you want."}
+      {
+        "title": "Fits a window envelope",
+        "text": "The letter follows the DIN 5008 layout: address in the window, return address line, fold and punch marks."
+      },
+      {
+        "title": "Nothing forgotten",
+        "text": "Request for confirmation, withdrawal of the direct debit, an optional data erasure request and a fallback regular cancellation for special cancellations."
+      },
+      {
+        "title": "Clear wording",
+        "text": "Polite, unambiguous sentences that say exactly what you want – no legal claims about any particular country."
+      },
+      {
+        "title": "Your data stays with you",
+        "text": "The letter is created in your browser. Nothing is sent; your sender details are only stored by your browser if you want."
+      }
     ],
     "faq": [
-      {"q": "Is this legal advice?", "a": "No. The tool gives you a clear, polite letter. Notice periods and special cancellation rights depend on your contract and the law where you live – check them before sending."},
-      {"q": "How should I send the letter?", "a": "In a way you can prove, for example by recorded delivery. Many companies also accept e-mail; for online contracts there is often a cancellation option in your account."},
-      {"q": "Do I need to sign it?", "a": "Many contracts can be cancelled in writing without a handwritten signature, but some – tenancies, for example – may require a signed paper letter. Check your agreement."},
-      {"q": "What does “earliest possible date” mean?", "a": "The contract ends on the earliest date your contract allows. You don’t have to calculate the notice period yourself and avoid an invalid date."},
-      {"q": "Is my information stored?", "a": "No. Everything stays in your browser. Only if you switch on “Remember sender” does your browser keep your name and address on this device – switching it off deletes them."}
+      {
+        "q": "Is this legal advice?",
+        "a": "No. The tool gives you a clear, polite letter. Notice periods and special cancellation rights depend on your contract and the law where you live – check them before sending."
+      },
+      {
+        "q": "How should I send the letter?",
+        "a": "In a way you can prove, for example by recorded delivery. Many companies also accept e-mail; for online contracts there is often a cancellation option in your account."
+      },
+      {
+        "q": "Do I need to sign it?",
+        "a": "Many contracts can be cancelled in writing without a handwritten signature, but some – tenancies, for example – may require a signed paper letter. Check your agreement."
+      },
+      {
+        "q": "What does “earliest possible date” mean?",
+        "a": "The contract ends on the earliest date your contract allows. You don’t have to calculate the notice period yourself and avoid an invalid date."
+      },
+      {
+        "q": "Is my information stored?",
+        "a": "No. Everything stays in your browser. Only if you switch on “Remember sender” does your browser keep your name and address on this device – switching it off deletes them."
+      }
     ]
   }
 }

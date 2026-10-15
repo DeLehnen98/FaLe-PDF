@@ -2,7 +2,7 @@
 // diagonal per page), size relative to the page, one position (tap on the preview) or tiled, above or
 // below the page content, page selection. Drawn in each page's visual frame (/Rotate, CropBox offsets).
 import { loadPdfLib } from '../lib/pdf.js';
-import { frame, drawVisual, fontCache, hexColor, winAnsi, lostWarning, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource, selectPages, drawCentered, rotatedBox, userError } from '../lib/edit-draw.js';
+import { frame, drawVisual, fontCache, fitText, hexColor, lostWarning, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource, selectPages, drawCentered, rotatedBox, userError } from '../lib/edit-draw.js';
 import { createPreview, positionZones } from '../lib/edit-preview.js';
 import { filePicker } from '../lib/edit-controls.js';
 import { embedImage } from '../lib/imgembed.js';
@@ -31,9 +31,9 @@ async function makeAssets(doc, PDFLib, opts) {
     return { img };
   }
   const fonts = fontCache(doc, PDFLib);
-  const r = winAnsi(String(opts.text || '').replace(/\s*\n\s*/g, ' ').trim());
+  const r = await fitText(fonts, opts.font, String(opts.text || '').replace(/\s*\n\s*/g, ' ').trim());
   if (!r.text.trim()) return null;
-  return { font: await fonts(opts.font), text: r.text, lost: r.lost, color: hexColor(PDFLib, opts.color, '#c8102e') };
+  return { font: r.font, text: r.text, lost: r.lost, color: hexColor(PDFLib, opts.color, '#c8102e') };
 }
 
 function stamp(page, PDFLib, a, opts) {

@@ -3,8 +3,9 @@
 //   DOCX: docx-read → HTML → docmodel → docpdf (text stays text; headings, lists, tables, images, page size)
 //   XLSX: xlsx-read → workbook → sheetpdf (all visible sheets as tables, values as shown, charts as images)
 //   PPTX: pptx-read → slide-render → one page per slide (picture + invisible text layer)
-// The PDF writers use the 14 standard PDF fonts: Latin script incl. ä ö ü ß € works; other scripts are
-// replaced – unicodeReport() lists exactly which characters, so nothing is dropped silently.
+// The PDF writers use the 14 standard PDF fonts and, for text they can't show (Polish, Turkish, Greek,
+// Cyrillic …), Liberation Sans as an embedded Unicode subset (shared/office/unifont.js). Scripts that font
+// lacks (Chinese, Arabic, emoji …) are replaced – unicodeReport() lists exactly which characters.
 import './conv-office-shim.js'; // safe DOMParser for the office readers (Trusted Types)
 import { userError } from './conv-common.js';
 import { loadJSZip } from './pdf.js';
@@ -42,20 +43,15 @@ export function fileTile(label, color) {
   return c;
 }
 
-/** Characters the standard PDF fonts can't show (→ replaced by the writer), with counts. */
+/**
+ * Characters neither the standard PDF fonts nor the embedded Unicode font (Liberation Sans, lib/unifont.js)
+ * can show – the writer replaces them – with counts. Polish, Turkish, Greek, Cyrillic … are not reported.
+ */
 export async function unicodeReport(texts) {
-  const { winAnsi } = await import('./shared/office/pdftext.js');
+  const { unsupportedChars, loadUniTtf } = await import('./unifont.js');
+  try { await loadUniTtf(); } catch { /* estimate without the font file */ }
   const bad = new Map();
-  for (const t of texts) {
-    for (const ch of String(t || '').normalize('NFC')) {
-      if (/\s/.test(ch)) continue;
-      const c = ch.codePointAt(0);
-      if (c < 0x7f) continue;
-      const w = winAnsi(ch);
-      if (w === ch) continue;
-      bad.set(ch, (bad.get(ch) || 0) + 1);
-    }
-  }
+  for (const t of texts) for (const ch of unsupportedChars(t)) bad.set(ch, (bad.get(ch) || 0) + 1);
   return bad;
 }
 
@@ -64,8 +60,8 @@ export function unicodeNote(ctx, bad) {
   const list = [...bad.keys()].slice(0, 24).join(' ');
   const more = bad.size > 24 ? ' …' : '';
   ctx.note({
-    de: `Achtung: ${bad.size} Sonderzeichen kann die PDF-Standardschrift nicht darstellen. Sie wurden durch ähnliche Zeichen oder „?“ ersetzt: ${list}${more}`,
-    en: `Note: the standard PDF font can’t show ${bad.size} special characters. They were replaced by similar characters or “?”: ${list}${more}`,
+    de: `Achtung: ${bad.size} Zeichen kann die eingebettete Schrift nicht darstellen (z. B. chinesische, arabische oder hebräische Schrift, Emoji). Sie wurden durch ähnliche Zeichen oder „?“ ersetzt oder weggelassen: ${list}${more}`,
+    en: `Note: the embedded font can’t show ${bad.size} characters (e.g. Chinese, Arabic or Hebrew script, emoji). They were replaced by similar characters or “?”, or left out: ${list}${more}`,
   });
 }
 
@@ -94,7 +90,7 @@ export async function docxToPdf(bytes, name, ctx) {
     if (r.hf) texts.push(r.hf.header || '', r.hf.footer || '');
     const bad = await unicodeReport(texts);
     const pdf = await modelToPdf(model, { title: name.replace(/\.docx?$/i, ''), page: r.page, hf: r.hf, onProgress: p => ctx.progress(0.35 + 0.6 * p, { de: 'Seiten werden gesetzt …', en: 'Laying out the pages …' }) });
-    return { pdf, bad, stats: { images: (r.html.match(/<img\b/g) || []).length, tables: (r.html.match(/<table\b/g) || []).length } };
+    return { pdf, bad, stats: { images: (r.html.match(/<img\b/g) || []).length, tables: (r.html.match(/<table\b/g) || []).length, math: r.math || 0 } };
   } catch (err) { throw userError(err, 'The Word document could not be read. It may be damaged or use features this tool doesn’t support.'); }
 }
 

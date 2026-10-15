@@ -8,7 +8,7 @@
   "order": 42,
   "related": ["add-page-numbers", "header-footer", "overlay-pdf"],
   "next": ["compress-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
   "trademarkNote": false,
   "de": {
     "slug": "wasserzeichen-einfuegen",

@@ -339,7 +339,8 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     return r;
   };
   const parOf = (st, extra = {}) => {
-    const p = { spacing: { before: tw(st.before ?? 0), after: tw(st.after ?? 0), ...(st.line ? { line: Math.round(st.line * 240) } : {}) }, ...extra };
+    // w:line without w:lineRule: Word reads "auto" (multiple), LibreOffice an exact height (clips pictures)
+    const p = { spacing: { before: tw(st.before ?? 0), after: tw(st.after ?? 0), ...(st.line ? { line: Math.round(st.line * 240), lineRule: D.LineRuleType ? D.LineRuleType.AUTO : 'auto' } : {}) }, ...extra };
     if (st.align && ALIGN[st.align]) p.alignment = ALIGN[st.align];
     if (st.keepNext) p.keepNext = true;
     if (st.indent) p.indent = { left: tw(st.indent) };

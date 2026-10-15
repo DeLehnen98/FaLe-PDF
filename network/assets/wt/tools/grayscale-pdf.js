@@ -105,6 +105,7 @@ export default {
       } else {
         await (await import('../lib/org-gray.js')).grayscaleDoc(doc, PDFLib, {
           decodeJpeg, tick: ctx.tick,
+          encodeGrayJpeg: async (px, w, h) => (await import('../lib/aud1-grayjpeg.js')).encodeGrayJpeg(px, w, h, 88, ctx.tick),
           onProgress: (i, total) => ctx.progress(share(0.5 * i / total), { de: `Farben werden umgewandelt … Seite ${i + 1} von ${total}`, en: `Converting colours … page ${i + 1} of ${total}` }),
         });
         // check the result: render every page and look for colour

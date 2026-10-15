@@ -4,7 +4,7 @@
 import { loadPdfLib } from '../lib/pdf.js';
 import { el } from '../lib/dom.js';
 import { PageGrid, ThumbSource, loadGridCss, toolbar, moveIds, haptic } from '../lib/pagegrid.js';
-import { rearrange, saveLike, pdfBlob, userError, norm } from '../lib/org-common.js';
+import { rearrange, saveLike, pdfBlob, userError, inputHint, norm } from '../lib/org-common.js';
 
 const SIZES = [72, 92, 120, 160, 210];
 let S = null; // stage state
@@ -241,7 +241,7 @@ export default {
 
   async run(inputs, opts, ctx) {
     const layout = opts.layout || [];
-    if (!layout.length) throw userError('Es sind keine Seiten übrig.', 'There are no pages left.');
+    if (!layout.length) throw inputHint('Es sind keine Seiten übrig.', 'There are no pages left.');
     const PDFLib = await loadPdfLib();
     const byId = new Map(inputs.map(i => [i.id, i]));
     const baseId = (layout.find(l => l.f && byId.has(l.f)) || {}).f || inputs.find(i => i.kind === 'pdf')?.id;
@@ -268,7 +268,7 @@ export default {
       else if (l.f === baseId) { if (basePages[l.p]) spec.push({ page: basePages[l.p], rot: l.r }); }
       else { const pg = foreign.get(l.f)?.get(l.p); if (pg) spec.push({ page: pg, rot: l.r }); }
     }
-    if (!spec.length) throw userError('Es sind keine Seiten übrig.', 'There are no pages left.');
+    if (!spec.length) throw inputHint('Es sind keine Seiten übrig.', 'There are no pages left.');
     ctx.progress(0.6, { de: 'Wird gespeichert …', en: 'Saving …' });
     await ctx.tick();
     rearrange(doc, PDFLib, spec);

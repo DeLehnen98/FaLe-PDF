@@ -23,7 +23,8 @@
   "needs": [
     "pdflib",
     "jszip",
-    "office"
+    "office",
+    "unicodefont"
   ],
   "trademarkNote": true,
   "de": {

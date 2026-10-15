@@ -9,7 +9,7 @@
   "maxFiles": 2,
   "related": ["redact-pdf", "edit-metadata", "sign-pdf"],
   "next": [],
-  "needs": ["pdfjs", "pdflib"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-vergleichen",

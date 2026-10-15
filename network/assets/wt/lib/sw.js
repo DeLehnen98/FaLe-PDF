@@ -27,9 +27,11 @@ const VENDOR = {
     '/assets/wt/lib/shared/office/chart-xml.js',
     '/assets/wt/lib/shared/office/kinds.js',
     '/assets/wt/lib/shared/office/pptx-read.js',
-    '/assets/wt/lib/shared/office/slide-render.js'],
+    '/assets/wt/lib/shared/office/slide-render.js',
+    '/assets/wt/lib/shared/office/unifont.js', '/assets/wt/lib/unifont.js'],
   unicodefont: ['/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-Regular.ttf', '/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-Bold.ttf',
-    '/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-Italic.ttf', '/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-BoldItalic.ttf'],
+    '/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-Italic.ttf', '/assets/wt/vendor/pdfjs/standard_fonts/LiberationSans-BoldItalic.ttf',
+    '/assets/wt/lib/unifont.js', '/assets/wt/lib/shared/office/unifont.js'],
 };
 
 export async function registerSW() {

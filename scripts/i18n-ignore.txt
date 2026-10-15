@@ -537,3 +537,14 @@ Comma
 Equal
 Space
 {0} showErrorMessage="1" errorTitle="Ungültiger Wert" error="{1}"
+Pr
+Font
+LiberationSans-Regular.ttf
+LiberationSans-Bold.ttf
+LiberationSans-Italic.ttf
+LiberationSans-BoldItalic.ttf
+Adobe
+/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CIDSystemInfo << /Registry (Adobe) /Ordering (UCS) /Supplement 0 >> def /CMapName /Adobe-Identity-UCS def /CMapType 2 def 1 begincodespacerange <0000>
+Type0
+Identity-H
+The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji) – they were replaced by "?": {0}

@@ -7,7 +7,7 @@
   "multiple": true,
   "related": ["fill-pdf-form", "sign-pdf", "protect-pdf"],
   "next": ["protect-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-glaetten",

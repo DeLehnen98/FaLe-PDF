@@ -382,6 +382,7 @@ export async function grayscaleDoc(doc, PDFLib, env = {}) {
     if (!W || !H || bpc !== 8 || d.has(N('Decode'))) { problem('image format'); return; }
     const nc = kind === 'cmyk' ? 4 : 3;
     let px = null; // gray bytes
+    let wasJpeg = false;
     try {
       if (filters.length && filters[filters.length - 1] === 'DCTDecode' && filters.slice(0, -1).every(f => /^(ASCII85Decode|A85|ASCIIHexDecode|AHx|FlateDecode|Fl|LZWDecode|LZW|RunLengthDecode|RL)$/.test(f))) {
         if (!env.decodeJpeg) { problem('jpeg'); return; }
@@ -392,6 +393,7 @@ export async function grayscaleDoc(doc, PDFLib, env = {}) {
           td.delete(N('DecodeParms'));
           jpg = PDFLib.decodePDFRawStream(PDFRawStream.of(td, jpg)).decode();
         }
+        wasJpeg = true;
         const { w, h, rgba } = await env.decodeJpeg(jpg);
         if (w !== W || h !== H) { problem('jpeg size'); return; }
         px = new Uint8Array(W * H);
@@ -417,7 +419,12 @@ export async function grayscaleDoc(doc, PDFLib, env = {}) {
     }
     nd.set(N('ColorSpace'), N('DeviceGray'));
     nd.set(N('BitsPerComponent'), PDFNumber.of(8));
-    const stream = ctx.flateStream(px);
+    // photos that were JPEGs stay JPEGs (gray, 1 component) – as Flate they would be several times larger
+    let stream = null;
+    if (wasJpeg && env.encodeGrayJpeg) {
+      try { stream = ctx.stream(await env.encodeGrayJpeg(px, W, H), { Filter: 'DCTDecode' }); } catch (err) { console.warn('gray jpeg', err); }
+    }
+    if (!stream) stream = ctx.flateStream(px);
     for (const [k, v] of nd.entries()) stream.dict.set(k, v);
     ctx.assign(ref, stream);
     stats.images++;

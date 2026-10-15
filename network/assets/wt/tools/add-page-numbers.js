@@ -3,7 +3,7 @@
 // mirrored positions for duplex printing. Drawn in the visual frame of each page (respects /Rotate
 // and CropBox offsets). Live preview of any page.
 import { loadPdfLib } from '../lib/pdf.js';
-import { frame, drawVisual, fontCache, hexColor, winAnsi, lostWarning, roman, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource } from '../lib/edit-draw.js';
+import { frame, drawVisual, fontCache, fitText, lostOf, hexColor, lostWarning, roman, mm, FONT_CHOICES, onePageDoc, savePreview, pageLang, saveResult, previewSource } from '../lib/edit-draw.js';
 import { createPreview, positionZones } from '../lib/edit-preview.js';
 import { el } from '../lib/dom.js';
 
@@ -67,16 +67,15 @@ async function numberDoc(doc, PDFLib, opts, ctx, { only = null, onPage = null } 
   const count = only ? only.count : doc.getPageCount();
   const { numbers, total } = plan(count, opts, ctx.parsePages);
   const fonts = fontCache(doc, PDFLib);
-  const font = await fonts(opts.font);
   const lost = new Map();
   const pages = doc.getPages();
   let done = 0;
   for (const [index, n] of numbers) {
     const page = only ? (index === only.index ? pages[0] : null) : pages[index];
     if (!page) continue;
-    const r = winAnsi(formatNumber(n, total, opts, ctx.lang));
+    const r = await fitText(fonts, opts.font, formatNumber(n, total, opts, ctx.lang).replace(/\n/g, ' '));
     for (const [k, v] of r.lost) lost.set(k, v);
-    await stampPage(page, PDFLib, font, r.text.replace(/\n/g, ' '), opts, index);
+    await stampPage(page, PDFLib, r.font, r.text, opts, index);
     if (onPage && ++done % 10 === 0) await onPage(done, numbers.size);
   }
   return { lost, numbered: numbers.size };
@@ -130,7 +129,7 @@ export default {
         let opts = values;
         try { ctx.parsePages(values.pages || '', src.getPageCount()); } catch { opts = { ...values, pages: '' }; }
         const r = await numberDoc(doc, PDFLib, opts, ctx, { only: { index, count: src.getPageCount() } });
-        pv.setWarning(lostWarning(r.lost, winAnsi(formatNumber(1, 1, values, ctx.lang)).lost));
+        pv.setWarning(lostWarning(r.lost, lostOf(formatNumber(1, 1, values, ctx.lang))));
         return savePreview(doc);
       },
     });
