@@ -16,6 +16,7 @@ const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '
   'package.json', 'package-lock.json', 'vercel.json', 'README.md', 'vendor-extra',
   'android', 'store', 'capacitor.config.json',
   'api', 'supabase', 'network', // serverless functions + DB migrations are not static app files
+  'one', // FaLe One web app: its own Vercel project (root directory one/)
   'docs', 'SECURITY.md']); // documentation only
 // `--native` (or FALE_TARGET=native): build for the Android app (Capacitor webDir).
 const NATIVE = process.argv.includes('--native') || process.env.FALE_TARGET === 'native';

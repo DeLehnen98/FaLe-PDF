@@ -2,6 +2,7 @@
 #  - secret scan of all files and the full git history (scripts/check-secrets.mjs; values are never printed)
 #  - vendor/ integrity against vendor/MANIFEST.json (SHA-256 of every third-party file)
 #  - network/assets/wt/{vendor,lib/shared} = exact copies of vendor/ + js/ (scripts/sync-webtools-vendor.mjs --check)
+#  - one/{js/shared,vendor} = exact copies of js/ + vendor/, one/sw.js precache list current (scripts/sync-one-shared.mjs --check)
 #  - CSP <meta> in index.html == CSP header in vercel.json (checked by the web build)
 #  - npm audit of the production dependencies (report only)
 name: Security
@@ -39,6 +40,8 @@ jobs:
         run: node scripts/vendor-manifest.mjs
       - name: Web tools vendor copies in sync (network/assets/wt)
         run: node scripts/sync-webtools-vendor.mjs --check
+      - name: FaLe One shared copies + precache list in sync (one/)
+        run: node scripts/sync-one-shared.mjs --check
       - name: Web build (CSP consistency, vendor check)
         env:
           FALE_MINIFY: '0'
