@@ -267,10 +267,14 @@ async function dismissSystemUi(re) {
   if (!await waitFor(() => appOnTop(), { timeout: 6000, interval: 500 })) await ensureApp();
 }
 /** Bring the app back to the front (never with BACK: on the start screen that closes the app). */
+const appFocused = () => { const f = focusedWindow(); return /mCurrentFocus=null/.test(f) ? appOnTop() : f.includes(PKG + '/'); };
 async function ensureApp() {
-  if (!appOnTop()) {
+  // the window focus matters, not only the resumed activity: on the API 34 image the launcher can keep
+  // the focus (taps then never reach the app) although the app's activity is resumed
+  for (let i = 0; i < 3 && !(appOnTop() && appFocused()); i++) {
+    if (i === 2) { sh('input keyevent 3', { allowFail: true }); await sleep(1500); } // HOME, then start again
     sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
-    await waitFor(() => appOnTop(), { timeout: 15000, interval: 700 });
+    await waitFor(() => appOnTop() && appFocused(), { timeout: 10000, interval: 700 });
     await sleep(800);
   }
   const pid = appPid();
