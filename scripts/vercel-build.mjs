@@ -73,7 +73,8 @@ if (existsSync(join(LOCAL_VENDOR, 'pdfjs', 'pdf.min.mjs')) && !process.env.FALE_
   // SHA-256 list in vendor/MANIFEST.json (supply-chain integrity; see scripts/vendor-manifest.mjs).
   const problems = verifyVendor(ROOT, LOCAL_VENDOR);
   if (problems.length) throw new Error('vendor/ weicht von vendor/MANIFEST.json ab:\n  ' + problems.slice(0, 30).join('\n  '));
-  cpSync(LOCAL_VENDOR, join(DIST, 'vendor'), { recursive: true });
+  // vendor/onnx (background removal, ~22 MB) is only used by the FaLe Werkzeuge web tool – not shipped with the app
+  cpSync(LOCAL_VENDOR, join(DIST, 'vendor'), { recursive: true, filter: src => relative(LOCAL_VENDOR, src).split(sep)[0] !== 'onnx' });
 } else {
   const PDFJS = 'pdfjs-dist';
   copy(`${PDFJS}/legacy/build/pdf.min.mjs`, 'vendor/pdfjs/pdf.min.mjs');

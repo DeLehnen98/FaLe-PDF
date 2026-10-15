@@ -1,0 +1,167 @@
+{
+  "id": "payment-reminder",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4\"/><path d=\"M12 10v4\"/><path d=\"M12 17h.01\"/>",
+  "module": "tools/payment-reminder.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 67,
+  "related": [
+    "invoice-generator",
+    "receipt",
+    "din-letter"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "mahnung-schreiben",
+    "name": "Mahnung schreiben",
+    "short": "Zahlungserinnerung oder Mahnung mit Verzugszinsen als PDF.",
+    "title": "Mahnung schreiben – Vorlage mit Verzugszinsen | FaleNetwork",
+    "h1": "Mahnung schreiben",
+    "metaDescription": "Schreib eine Zahlungserinnerung, 1. oder 2. Mahnung oder letzte Mahnung: offene Rechnungen, Verzugszinsen-Rechner, neue Frist und passender Ton – als PDF.",
+    "lede": "Von der freundlichen Zahlungserinnerung bis zur letzten Mahnung – mit Zinsrechner und neuer Frist.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "mahnung vorlage",
+      "zahlungserinnerung vorlage",
+      "erste mahnung",
+      "zweite mahnung",
+      "letzte mahnung",
+      "verzugszinsen berechnen",
+      "basiszinssatz",
+      "mahngebühr",
+      "verzugspauschale"
+    ],
+    "steps": [
+      {
+        "title": "Stufe und Ton wählen",
+        "text": "Zahlungserinnerung, 1. oder 2. Mahnung oder letzte Mahnung – freundlich, sachlich oder bestimmt. Die neue Frist wird passend vorgeschlagen."
+      },
+      {
+        "title": "Rechnungen eintragen",
+        "text": "Trag eine oder mehrere offene Rechnungen ein, auch mit Teilzahlungen. Auf Wunsch rechnet das Werkzeug Verzugszinsen und die Pauschale für Unternehmen aus."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Ergänze Empfänger, Absender und Bankverbindung, prüf die Vorschau und erstelle das PDF – oder kopiere den Text in eine E-Mail."
+      }
+    ],
+    "why": [
+      {
+        "title": "Vier Stufen, drei Tonarten",
+        "text": "Die Texte steigern sich von der höflichen Erinnerung bis zur letzten Mahnung mit Hinweis auf weitere Schritte."
+      },
+      {
+        "title": "Zinsen nachvollziehbar",
+        "text": "Basiszinssatz plus fünf bzw. neun Prozentpunkte, taggenau gerechnet. Den Basiszinssatz kannst du selbst anpassen."
+      },
+      {
+        "title": "Mehrere Rechnungen",
+        "text": "Offene Posten mit Teilzahlungen in einer Tabelle, Summe und Gesamtbetrag stehen automatisch im Brief."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Kundendaten und Beträge verlassen deinen Browser nicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Muss ich vor einer Mahnung eine Zahlungserinnerung schicken?",
+        "a": "Nein, das ist keine Pflicht. Viele schicken zuerst eine freundliche Erinnerung, weil eine Rechnung oft einfach übersehen wurde. Eine bestimmte Zahl von Mahnungen schreibt das Gesetz nicht vor."
+      },
+      {
+        "q": "Wie hoch sind die Verzugszinsen?",
+        "a": "Gegenüber Verbrauchern fünf Prozentpunkte über dem Basiszinssatz, zwischen Unternehmen neun Prozentpunkte. Der Basiszinssatz ändert sich zum 1. Januar und 1. Juli – das Werkzeug zeigt einen Stand mit Datum, den du prüfen und ändern kannst."
+      },
+      {
+        "q": "Ab wann darf ich Zinsen verlangen?",
+        "a": "In der Regel ab Verzug: nach einer Mahnung, bei einem fest vereinbarten Zahlungsdatum oder 30 Tage nach Fälligkeit und Zugang der Rechnung – bei Verbrauchern nur, wenn die Rechnung darauf hinweist. Das Werkzeug rechnet vereinfacht ab dem Tag nach Fälligkeit; das ist keine Rechtsberatung."
+      },
+      {
+        "q": "Was ist die Verzugspauschale?",
+        "a": "Ist der Schuldner kein Verbraucher, kannst du bei Verzug eine Pauschale von 40 € je Forderung verlangen. Gegenüber Verbrauchern gibt es sie nicht – deshalb erscheint die Option nur bei Unternehmen."
+      },
+      {
+        "q": "Werden die Daten gespeichert?",
+        "a": "Nein. Nur deinen Absender kann sich der Browser auf Wunsch merken."
+      }
+    ]
+  },
+  "en": {
+    "slug": "payment-reminder",
+    "name": "Payment reminder",
+    "short": "Payment reminder or overdue notice with interest as a PDF.",
+    "title": "Payment reminder letter – free template as PDF | FaleNetwork",
+    "h1": "Write a payment reminder",
+    "metaDescription": "Write a payment reminder, a second reminder or a final notice: open invoices, optional interest and fee, new deadline and the right tone – as a PDF.",
+    "lede": "From a friendly reminder to a final notice – with open invoices, optional interest and a new deadline.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "payment reminder template",
+      "overdue invoice letter",
+      "final notice",
+      "late payment letter",
+      "debt reminder",
+      "collection letter"
+    ],
+    "steps": [
+      {
+        "title": "Pick level and tone",
+        "text": "Payment reminder, first or second reminder or final notice – friendly, neutral or firm. A new deadline is suggested."
+      },
+      {
+        "title": "Add the invoices",
+        "text": "Enter one or more open invoices, including partial payments. Add interest at your own rate and a fee if your terms allow it."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Add recipient, sender and bank details, check the preview and create the PDF – or copy the text into an e-mail."
+      }
+    ],
+    "why": [
+      {
+        "title": "Four levels, three tones",
+        "text": "The wording escalates from a polite reminder to a final notice that mentions further steps."
+      },
+      {
+        "title": "Clear numbers",
+        "text": "Outstanding amounts, interest per day at your rate and the total appear in a table in the letter."
+      },
+      {
+        "title": "Several invoices",
+        "text": "List several open invoices with partial payments in one letter."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "Customer data and amounts never leave your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which interest rate should I use?",
+        "a": "The rate in your terms of business or the statutory rate where you or your customer are based. The tool does not assume any country’s rules – you enter the rate."
+      },
+      {
+        "q": "How is the interest calculated?",
+        "a": "Simple interest per day: outstanding amount × annual rate × days late / 365, from the day after the due date to the date you choose."
+      },
+      {
+        "q": "How many reminders should I send?",
+        "a": "That is up to you. A friendly reminder first often works, because invoices are frequently just overlooked."
+      },
+      {
+        "q": "Is this legal advice?",
+        "a": "No. The tool helps you write a clear letter. Check the rules that apply to you before charging interest or fees."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "No. Only your sender details can be remembered by your browser if you switch that on."
+      }
+    ]
+  }
+}

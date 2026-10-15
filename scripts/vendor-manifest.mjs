@@ -26,6 +26,10 @@ const LIBS = {
   dompurify: { name: 'DOMPurify', version: '3.4.14', license: 'MPL-2.0 OR Apache-2.0', source: 'https://www.npmjs.com/package/dompurify' },
   tesseract: { name: 'tesseract.js + tesseract.js-core + tessdata_fast (deu, eng)', versionsFile: 'tesseract/VERSIONS.json', license: 'Apache-2.0', source: 'https://www.npmjs.com/package/tesseract.js' },
   fonts: { name: 'Bricolage Grotesque (Bold)', license: 'OFL-1.1', source: 'https://fonts.google.com/specimen/Bricolage+Grotesque' },
+  // background removal (remove-background): written by .github/workflows/vendor-bg.yml
+  onnx: { name: 'onnxruntime-web (WASM) + U²-Netp + MODNet (quantized) segmentation models', versionsFile: 'onnx/VERSIONS.json',
+    license: 'MIT (onnxruntime-web); Apache-2.0 (U²-Net / U²-Netp, MODNet models)',
+    source: 'https://www.npmjs.com/package/onnxruntime-web; https://github.com/xuebinqin/U-2-Net; https://github.com/ZHKKKe/MODNet; https://huggingface.co/Xenova/modnet' },
 };
 
 export function walk(dir) {

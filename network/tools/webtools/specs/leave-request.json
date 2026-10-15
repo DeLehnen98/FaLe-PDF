@@ -1,0 +1,161 @@
+{
+  "id": "leave-request",
+  "category": "everyday",
+  "icon": "calendar",
+  "module": "tools/leave-request.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 68,
+  "related": [
+    "power-of-attorney",
+    "sign-pdf",
+    "din-letter"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "urlaubsantrag",
+    "name": "Urlaubsantrag",
+    "short": "Urlaubsantrag mit automatisch gezählten Arbeitstagen als PDF.",
+    "title": "Urlaubsantrag Vorlage – Arbeitstage automatisch | FaleNetwork",
+    "h1": "Urlaubsantrag erstellen",
+    "metaDescription": "Erstelle einen Urlaubsantrag als PDF: Arbeitstage ohne Wochenenden und Feiertage deines Bundeslands gezählt, mit Resturlaub, Vertretung und Unterschrift.",
+    "lede": "Zeitraum wählen – die Arbeitstage zählt das Werkzeug, inklusive Feiertage deines Bundeslands.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "urlaubsantrag vorlage",
+      "urlaubsantrag pdf",
+      "urlaubstage berechnen",
+      "arbeitstage zählen",
+      "feiertage bundesland",
+      "resturlaub",
+      "urlaubsschein",
+      "sonderurlaub antrag"
+    ],
+    "steps": [
+      {
+        "title": "Zeitraum wählen",
+        "text": "Gib einen oder mehrere Zeiträume ein. Wochenenden und die gesetzlichen Feiertage deines Bundeslands werden automatisch abgezogen."
+      },
+      {
+        "title": "Angaben ergänzen",
+        "text": "Name, Abteilung, Urlaubsart, Vertretung und auf Wunsch dein Jahresanspruch – dann siehst du gleich den Resturlaub."
+      },
+      {
+        "title": "Unterschreiben und abgeben",
+        "text": "Unterschreib per Finger oder auf dem Ausdruck. Für die Genehmigung gibt es ein Feld mit Unterschriftslinien."
+      }
+    ],
+    "why": [
+      {
+        "title": "Feiertage aller Bundesländer",
+        "text": "Inklusive Ostern, Pfingsten, Fronleichnam, Buß- und Bettag und Co. – für jedes Jahr berechnet, Saarland ist voreingestellt."
+      },
+      {
+        "title": "Resturlaub auf einen Blick",
+        "text": "Anspruch, bereits genommene Tage und dieser Antrag ergeben sofort den Resturlaub."
+      },
+      {
+        "title": "Fertig für die Personalakte",
+        "text": "Felder für Genehmigung, Vorgesetzte und Personalabteilung – sauber auf einer A4-Seite."
+      },
+      {
+        "title": "Bleibt bei dir",
+        "text": "Alles entsteht im Browser. Deine Angaben speichert er nur, wenn du es willst."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Feiertage werden abgezogen?",
+        "a": "Die landesweiten gesetzlichen Feiertage des gewählten Bundeslands. Rein örtliche Feiertage wie das Augsburger Friedensfest zählt das Werkzeug nicht – das steht auch als Hinweis dabei."
+      },
+      {
+        "q": "Was ist mit Heiligabend und Silvester?",
+        "a": "Sie sind keine gesetzlichen Feiertage. Viele Betriebe geben dort aber frei oder zählen einen halben Urlaubstag – das kannst du per Schalter einstellen."
+      },
+      {
+        "q": "Ich arbeite auch samstags – was nun?",
+        "a": "Stell die 6-Tage-Woche ein. Dann zählen Montag bis Samstag als Arbeitstage."
+      },
+      {
+        "q": "Ist der Antrag damit genehmigt?",
+        "a": "Nein. Der Antrag ist dein Wunsch; genehmigen muss ihn der Arbeitgeber. Dafür gibt es das Feld unten auf der Seite."
+      },
+      {
+        "q": "Werden meine Daten gespeichert?",
+        "a": "Nur wenn du „Meine Angaben merken“ einschaltest – dann in diesem Browser. Ausschalten löscht sie."
+      }
+    ]
+  },
+  "en": {
+    "slug": "leave-request",
+    "name": "Leave request",
+    "short": "Leave request form with working days counted for you, as a PDF.",
+    "title": "Leave request form – working days counted | FaleNetwork",
+    "h1": "Create a leave request",
+    "metaDescription": "Create a leave request as a PDF: working days counted without weekends (and German public holidays if needed), with remaining days and signature fields.",
+    "lede": "Pick your dates – the tool counts the working days for you.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "leave request form",
+      "holiday request form",
+      "vacation request",
+      "annual leave form",
+      "working days calculator"
+    ],
+    "steps": [
+      {
+        "title": "Choose the dates",
+        "text": "Enter one or more periods. Weekends are left out; if you work in Germany, pick your state to leave out its public holidays too."
+      },
+      {
+        "title": "Add your details",
+        "text": "Name, department, type of leave, stand-in and, if you like, your annual entitlement to see what is left."
+      },
+      {
+        "title": "Sign and hand in",
+        "text": "Sign with your finger or on the printout. There is a box with signature lines for the approval."
+      }
+    ],
+    "why": [
+      {
+        "title": "Working days counted",
+        "text": "Weekends, optional German public holidays per state, 5- or 6-day week and half days on 24 and 31 December."
+      },
+      {
+        "title": "Remaining leave at a glance",
+        "text": "Entitlement, days already taken and this request give you the remaining days right away."
+      },
+      {
+        "title": "Ready for HR",
+        "text": "Fields for approval, manager and HR – neatly on one A4 page."
+      },
+      {
+        "title": "Stays with you",
+        "text": "Everything is created in your browser and only stored if you want."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which public holidays are counted?",
+        "a": "None by default. You can choose a German state to leave out its statewide public holidays; other countries are not included."
+      },
+      {
+        "q": "I also work on Saturdays – what now?",
+        "a": "Choose the 6-day week, then Monday to Saturday count as working days."
+      },
+      {
+        "q": "Is the request approved by this?",
+        "a": "No. Your employer approves it – there is a box for that at the bottom of the page."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "Only if you switch on “Remember my details” – then in this browser. Switching it off deletes them."
+      }
+    ]
+  }
+}

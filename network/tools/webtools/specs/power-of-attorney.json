@@ -1,0 +1,161 @@
+{
+  "id": "power-of-attorney",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4\"/><path d=\"M9 11h6\"/><path d=\"M9 14h4\"/><path d=\"M9 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0\"/>",
+  "module": "tools/power-of-attorney.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 64,
+  "related": [
+    "cancellation-letter",
+    "sign-pdf",
+    "scan-to-pdf"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "vollmacht-vorlage",
+    "name": "Vollmacht",
+    "short": "Vollmacht für Post, Behörde, Kfz, Kita-Abholung & Co. als PDF.",
+    "title": "Vollmacht Vorlage – Post, Behörde, Kfz als PDF | FaleNetwork",
+    "h1": "Vollmacht erstellen",
+    "metaDescription": "Erstelle eine einfache Vollmacht für Post und Pakete, Behördengänge, Kfz-Zulassung, Kita-Abholung oder Wohnungsübergabe – mit Unterschrift, als PDF.",
+    "lede": "Eine einfache Vollmacht für Alltagsdinge – fertig zum Ausdrucken und Unterschreiben.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "vollmacht vorlage",
+      "vollmacht muster",
+      "vollmacht post abholen",
+      "paket abholen vollmacht",
+      "vollmacht behörde",
+      "vollmacht kfz zulassung",
+      "abholvollmacht kita",
+      "vollmacht wohnungsübergabe"
+    ],
+    "steps": [
+      {
+        "title": "Zweck wählen",
+        "text": "Post abholen, Behördengang, Fahrzeug an- oder abmelden, Kind abholen, Wohnungsübergabe oder ein eigener Text – die passenden Felder erscheinen von selbst."
+      },
+      {
+        "title": "Personen und Gültigkeit",
+        "text": "Trag dich und die bevollmächtigte Person ein und leg fest, ob die Vollmacht an einem Tag, in einem Zeitraum oder bis auf Widerruf gilt."
+      },
+      {
+        "title": "Unterschreiben",
+        "text": "Unterschreib mit dem Finger oder auf dem Ausdruck. Die bevollmächtigte Person kann ihre Unterschriftsprobe auf dem Ausdruck ergänzen."
+      }
+    ],
+    "why": [
+      {
+        "title": "Fertige Formulierungen",
+        "text": "Für jeden Zweck ein klarer Text – etwa inklusive Einschreiben und Nachnahme bei der Postvollmacht."
+      },
+      {
+        "title": "Ehrliche Hinweise",
+        "text": "Wo Banken, Kitas oder Zulassungsstellen meist eigene Formulare wollen, sagt dir das Werkzeug das vorher."
+      },
+      {
+        "title": "Ausweisnummer nur im PDF",
+        "text": "Die Ausweisnummer ist freiwillig, steht nur im Dokument und wird nirgends gespeichert."
+      },
+      {
+        "title": "Live-Vorschau",
+        "text": "Du siehst die Vollmacht beim Ausfüllen genau so, wie sie gedruckt wird."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Ist so eine Vollmacht überall gültig?",
+        "a": "Für viele Alltagsdinge reicht eine einfache schriftliche Vollmacht. Banken, Notare, Grundbuchämter und manche Behörden verlangen aber eigene Formulare oder eine beglaubigte Vollmacht. Frag im Zweifel vorher nach – das Werkzeug ersetzt keine Rechtsberatung."
+      },
+      {
+        "q": "Muss ich die Vollmacht unterschreiben?",
+        "a": "Ja. Du kannst mit dem Finger unterschreiben oder den Ausdruck eigenhändig unterschreiben – Letzteres wird häufiger akzeptiert."
+      },
+      {
+        "q": "Brauche ich eine Ausweiskopie?",
+        "a": "Oft möchten Post, Ämter oder Zulassungsstellen deinen Ausweis oder eine Kopie sehen. Die bevollmächtigte Person zeigt in jedem Fall ihren eigenen Ausweis."
+      },
+      {
+        "q": "Ist das eine Vorsorgevollmacht?",
+        "a": "Nein. Für eine Vorsorge- oder Generalvollmacht gelten andere Anforderungen; dafür ist dieses Werkzeug nicht gedacht."
+      },
+      {
+        "q": "Was passiert mit meinen Daten?",
+        "a": "Nichts – alles bleibt in deinem Browser. Nur wenn du es einschaltest, merkt sich der Browser deinen Namen und deine Anschrift."
+      }
+    ]
+  },
+  "en": {
+    "slug": "power-of-attorney-template",
+    "name": "Letter of authorisation",
+    "short": "Simple authorisation for post, offices, vehicles, child pick-up as a PDF.",
+    "title": "Letter of authorisation template – free PDF | FaleNetwork",
+    "h1": "Create a letter of authorisation",
+    "metaDescription": "Create a simple letter of authorisation to collect post and parcels, deal with an office, register a vehicle, pick up a child or hand over a flat – as a PDF.",
+    "lede": "A simple authorisation for everyday matters – ready to print and sign.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "authorization letter",
+      "power of attorney template",
+      "authorisation to collect parcel",
+      "letter of authority",
+      "pick up child authorization"
+    ],
+    "steps": [
+      {
+        "title": "Choose the purpose",
+        "text": "Collect post, deal with an office, register a vehicle, pick up a child, hand over a flat or write your own text."
+      },
+      {
+        "title": "People and validity",
+        "text": "Enter yourself and the authorised person and choose whether it is valid on one day, for a period or until revoked."
+      },
+      {
+        "title": "Sign",
+        "text": "Sign with your finger or on the printout. The authorised person can add a specimen signature."
+      }
+    ],
+    "why": [
+      {
+        "title": "Ready-made wording",
+        "text": "A clear text for each purpose that you can extend with your own notes."
+      },
+      {
+        "title": "Honest notes",
+        "text": "Banks, schools and offices often want their own forms – the tool tells you where that is common."
+      },
+      {
+        "title": "ID number only in the PDF",
+        "text": "The ID number is optional, printed only in the document and never stored."
+      },
+      {
+        "title": "Live preview",
+        "text": "You see the document exactly as it will be printed while you fill it in."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Will this be accepted everywhere?",
+        "a": "A simple written authorisation is enough for many everyday matters, but banks, notaries and some authorities require their own forms or a certified document. Ask beforehand – this is not legal advice."
+      },
+      {
+        "q": "Do I have to sign it?",
+        "a": "Yes. You can sign with your finger or sign the printout by hand, which is more widely accepted."
+      },
+      {
+        "q": "Is this a lasting power of attorney?",
+        "a": "No. Long-term or general powers of attorney have stricter requirements depending on your country; this tool is not meant for them."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "No. Everything stays in your browser. Only if you switch it on does your browser remember your name and address."
+      }
+    ]
+  }
+}

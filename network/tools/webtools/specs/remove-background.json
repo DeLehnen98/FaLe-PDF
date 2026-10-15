@@ -1,0 +1,73 @@
+{
+  "id": "remove-background",
+  "category": "images",
+  "iconSvg": "<path d=\"M4 4h4M4 4v4M20 4h-4M20 4v4M4 20h4M4 20v-4M20 20h-4M20 20v-4\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/><path d=\"M7 18c1-2.6 2.8-4 5-4s4 1.4 5 4\"/>",
+  "module": "tools/remove-background.js",
+  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".bmp", ".heic", ".heif"],
+  "multiple": true,
+  "popular": true,
+  "order": 46,
+  "related": ["passport-photo", "crop-image", "convert-image", "compress-image"],
+  "next": ["crop-image", "resize-image", "compress-image", "png-to-pdf"],
+  "needs": [],
+  "de": {
+    "slug": "hintergrund-entfernen",
+    "name": "Hintergrund entfernen",
+    "short": "Motiv freistellen – transparent, Farbe oder unscharf, ohne Upload.",
+    "title": "Hintergrund entfernen – Bild freistellen, kostenlos | FaleNetwork",
+    "h1": "Hintergrund entfernen",
+    "metaDescription": "Entferne den Hintergrund von Fotos direkt auf deinem Gerät: KI stellt das Motiv frei, du korrigierst mit dem Finger. PNG mit Transparenz, ohne Upload.",
+    "lede": "Eine KI auf deinem Gerät stellt Produkte, Tiere und Personen frei. Nichts wird hochgeladen.",
+    "primaryButton": "Freistellen",
+    "keywords": ["hintergrund entfernen", "bild freistellen", "foto freistellen", "hintergrund transparent", "png transparent machen", "hintergrund weiß", "hintergrund unscharf", "remove background"],
+    "steps": [
+      {"title": "Fotos wählen", "text": "Wähl ein oder mehrere Fotos. Beim ersten Mal lädt dein Browser einmalig das KI-Modell, danach geht es auch offline."},
+      {"title": "Prüfen und korrigieren", "text": "Die Vorschau zeigt das freigestellte Motiv. Mit „Behalten“ und „Entfernen“ malst du Fehler mit dem Finger weg, mit zwei Fingern zoomst du."},
+      {"title": "Hintergrund wählen und speichern", "text": "Transparent, eine Farbe, das unscharfe Original oder ein eigenes Bild – dann als PNG, WebP oder JPG speichern."}
+    ],
+    "why": [
+      {"title": "Kein Upload", "text": "Das KI-Modell läuft in deinem Browser. Deine Fotos verlassen dein Gerät nicht – auch nicht für die Vorschau."},
+      {"title": "Volle Auflösung", "text": "Das Ergebnis hat die Pixelgröße deines Fotos. Die Kante wird an den Konturen des Fotos ausgerichtet statt nur grob vergrößert."},
+      {"title": "Mit dem Finger nachbessern", "text": "Pinsel zum Behalten und Entfernen, Zoom mit zwei Fingern, Rückgängig und Regler für Kante und Weichheit."},
+      {"title": "Viele Fotos, auch offline", "text": "Mehrere Bilder auf einmal, ohne Wasserzeichen und ohne Limit. Nach dem ersten Laden funktioniert es ohne Internet."}
+    ],
+    "faq": [
+      {"q": "Werden meine Fotos hochgeladen?", "a": "Nein. Die Erkennung läuft mit einem kleinen KI-Modell direkt in deinem Browser. Heruntergeladen wird nur einmalig das Modell selbst – deine Bilder bleiben auf deinem Gerät."},
+      {"q": "Wie groß ist der Download beim ersten Mal?", "a": "Einmalig etwa 7 MB für das Objekt-Modell und 8 MB für das Personen-Modell (ohne Komprimierung bis zu 16 bzw. 18 MB). Danach ist das Modell gespeichert und das Werkzeug funktioniert auch offline."},
+      {"q": "Wie gut ist das Ergebnis?", "a": "Bei klaren Motiven vor ruhigem Hintergrund – Produkte, Tiere, Personen – meist sehr gut. Feine Haare, Fell, Glas, Rauch und Motive mit wenig Kontrast zum Hintergrund trennt das Modell oft nicht sauber. Das korrigierst du mit dem Pinsel. Große Rechenzentrums-Modelle sind bei schwierigen Fotos genauer."},
+      {"q": "Welches Modell soll ich wählen?", "a": "„Objekt, Produkt, Tier“ passt für die meisten Fotos, auch für Personen in ganzer Größe. „Person (Porträt)“ ist für Porträts und Oberkörper gedacht und genauer an Haaren – Gegenstände ohne Person erkennt es nicht."},
+      {"q": "Warum ist der Hintergrund bei JPG weiß?", "a": "JPG kann keine Transparenz speichern. Für einen durchsichtigen Hintergrund wähl PNG oder WebP."},
+      {"q": "Wie lange dauert es?", "a": "Auf einem aktuellen Computer ein bis drei Sekunden pro Foto, auf älteren Handys auch länger. Die Rechnung läuft im Hintergrund, die Seite bleibt bedienbar."}
+    ]
+  },
+  "en": {
+    "slug": "remove-background",
+    "name": "Remove background",
+    "short": "Cut out the subject – transparent, colour or blurred, no upload.",
+    "title": "Remove background from image – free, no upload | FaleNetwork",
+    "h1": "Remove background",
+    "metaDescription": "Remove the background from photos right on your device: AI cuts out the subject, you touch it up with your finger. Transparent PNG, no upload.",
+    "lede": "An AI on your device cuts out products, animals and people. Nothing is uploaded.",
+    "primaryButton": "Cut out",
+    "keywords": ["remove background", "background remover", "transparent background", "cut out image", "make png transparent", "white background", "blur background"],
+    "steps": [
+      {"title": "Choose photos", "text": "Choose one or more photos. The first time, your browser downloads the AI model once – after that it also works offline."},
+      {"title": "Check and touch up", "text": "The preview shows the cut-out subject. Paint mistakes away with “Keep” and “Remove”, zoom with two fingers."},
+      {"title": "Pick a background and save", "text": "Transparent, a colour, the blurred original or your own picture – then save as PNG, WebP or JPG."}
+    ],
+    "why": [
+      {"title": "No upload", "text": "The AI model runs in your browser. Your photos never leave your device – not even for the preview."},
+      {"title": "Full resolution", "text": "The result has the pixel size of your photo. The edge is aligned with the contours of the photo instead of just being scaled up."},
+      {"title": "Touch up with your finger", "text": "Keep and remove brushes, two-finger zoom, undo, and sliders for the edge and its softness."},
+      {"title": "Many photos, offline too", "text": "Several pictures at once, no watermark and no limits. After the first load it works without internet."}
+    ],
+    "faq": [
+      {"q": "Are my photos uploaded?", "a": "No. Detection runs with a small AI model right in your browser. Only the model itself is downloaded once – your pictures stay on your device."},
+      {"q": "How big is the first download?", "a": "Once, about 7 MB for the object model and 8 MB for the person model (up to 16 or 18 MB without compression). After that the model is stored and the tool also works offline."},
+      {"q": "How good is the result?", "a": "For clear subjects against a calm background – products, animals, people – usually very good. Fine hair, fur, glass, smoke and subjects with little contrast to the background are often not separated cleanly. You fix that with the brush. Large data-centre models are more accurate on difficult photos."},
+      {"q": "Which model should I choose?", "a": "“Object, product, animal” suits most photos, including full-length people. “Person (portrait)” is meant for portraits and upper bodies and is more precise with hair – it does not detect objects without a person."},
+      {"q": "Why is the background white with JPG?", "a": "JPG can’t store transparency. For a see-through background choose PNG or WebP."},
+      {"q": "How long does it take?", "a": "One to three seconds per photo on a current computer, longer on older phones. The work runs in the background and the page stays usable."}
+    ]
+  }
+}

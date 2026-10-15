@@ -12,15 +12,18 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '82c817d853bd';
+const VERSION = '113174adb568';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-bb9b11629538';
+const VENDOR = 'wt-vendor-47647d05af44';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/hub.js",
   "/assets/wt/lib/aud1-asciistrip.js",
   "/assets/wt/lib/aud1-grayjpeg.js",
   "/assets/wt/lib/aud1-ocg.js",
+  "/assets/wt/lib/bg-core.js",
+  "/assets/wt/lib/bg-worker.js",
+  "/assets/wt/lib/bg.css",
   "/assets/wt/lib/conv-common.js",
   "/assets/wt/lib/conv-docpreview.js",
   "/assets/wt/lib/conv-domparse.js",
@@ -87,6 +90,14 @@ const PRECACHE = [
   "/assets/wt/lib/seo.css",
   "/assets/wt/lib/strings.js",
   "/assets/wt/lib/sw.js",
+  "/assets/wt/lib/tpl-core.js",
+  "/assets/wt/lib/tpl-cv.js",
+  "/assets/wt/lib/tpl-holidays.js",
+  "/assets/wt/lib/tpl-interest.js",
+  "/assets/wt/lib/tpl-letterui.js",
+  "/assets/wt/lib/tpl-pdf.js",
+  "/assets/wt/lib/tpl-words.js",
+  "/assets/wt/lib/tpl.css",
   "/assets/wt/lib/tt.js",
   "/assets/wt/lib/unifont.js",
   "/assets/wt/shell.js",

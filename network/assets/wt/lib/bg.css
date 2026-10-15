@@ -1,0 +1,26 @@
+/* remove-background (agent bg): editor with pinch-zoom + brush, model status. Loaded by tools/remove-background.js */
+.bg-status { display: flex; align-items: center; gap: 10px; min-height: 44px; margin: 0 0 10px; font-size: 0.95rem; }
+.bg-status progress { flex: 1 1 auto; min-width: 80px; height: 10px; accent-color: var(--primary); }
+.bg-status-text { flex: 1 1 100%; }
+.bg-view { position: relative; overflow: hidden; height: min(62vh, 520px); min-height: 260px; border-radius: var(--radius-md);
+  background: repeating-conic-gradient(var(--surface-2) 0 25%, var(--surface) 0 50%) 0 0 / 20px 20px;
+  touch-action: none; user-select: none; -webkit-user-select: none; border: 1px solid var(--border); }
+.bg-view canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; image-rendering: auto; }
+.bg-view[data-mode="pan"] { cursor: grab; }
+.bg-view[data-mode="keep"], .bg-view[data-mode="erase"] { cursor: crosshair; }
+.bg-view:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.bg-ring { position: absolute; pointer-events: none; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6); display: none; }
+.bg-view.is-brushing .bg-ring { display: block; }
+.bg-empty { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; color: var(--text-2); }
+.bg-modes { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; padding: 0; border: 0; }
+.bg-modes legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.bg-modes .new-chip { display: inline-flex; align-items: center; gap: 6px; }
+.bg-modes .new-chip[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.bg-modes .new-chip svg { width: 18px; height: 18px; }
+.bg-limits { margin: 10px 0 0; }
+.bg-bgimg { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 8px 0 0; }
+.bg-bgimg img { width: 56px; height: 42px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.bg-file { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.bg-empty[hidden] { display: none; }
+.bg-bgimg[hidden] { display: none; }
+.bg-box [hidden] { display: none !important; }

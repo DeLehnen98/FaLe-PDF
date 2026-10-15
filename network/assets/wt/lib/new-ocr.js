@@ -93,6 +93,8 @@ function drop(entry) {
   entry.dead = true;
   const i = pool.indexOf(entry);
   if (i >= 0) pool.splice(i, 1);
+  if (entry.terminated) return; // terminating twice makes tesseract.js post to a worker that is already gone
+  entry.terminated = true;
   entry.ready.then(w => w.terminate()).catch(() => {});
 }
 /** Terminate all OCR workers (frees 100–200 MB). */

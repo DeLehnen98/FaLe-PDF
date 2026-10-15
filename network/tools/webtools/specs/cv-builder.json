@@ -1,0 +1,167 @@
+{
+  "id": "cv-builder",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M5 3h14v18H5z\"/><circle cx=\"9.5\" cy=\"8\" r=\"2\"/><path d=\"M7 12.5c.6-1.2 1.5-1.7 2.5-1.7s1.9.5 2.5 1.7\"/><path d=\"M14 7h3\"/><path d=\"M14 10h3\"/><path d=\"M8 15.5h9\"/><path d=\"M8 18h6\"/>",
+  "module": "tools/cv-builder.js",
+  "accepts": [],
+  "minFiles": 0,
+  "popular": true,
+  "order": 61,
+  "related": [
+    "cover-letter",
+    "passport-photo",
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "lebenslauf-erstellen",
+    "name": "Lebenslauf erstellen",
+    "short": "Tabellarischer Lebenslauf in drei Designs als PDF – mit Foto.",
+    "title": "Lebenslauf erstellen – kostenlos als PDF, mit Foto | FaleNetwork",
+    "h1": "Lebenslauf erstellen",
+    "metaDescription": "Erstelle deinen tabellarischen Lebenslauf in drei Designs: Foto rund oder eckig, Kenntnisse und Sprachen mit Niveau, Live-Vorschau – als PDF, ohne Anmeldung.",
+    "lede": "Abschnitt für Abschnitt ausfüllen, Design wählen, fertig – mit Live-Vorschau.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "lebenslauf vorlage",
+      "lebenslauf pdf",
+      "tabellarischer lebenslauf",
+      "cv erstellen",
+      "lebenslauf mit foto",
+      "bewerbung lebenslauf",
+      "lebenslauf muster",
+      "sprachkenntnisse niveau"
+    ],
+    "steps": [
+      {
+        "title": "Design wählen",
+        "text": "Klassisch, modern mit Seitenleiste oder kompakt – jeweils mit Akzentfarbe. Du kannst jederzeit wechseln."
+      },
+      {
+        "title": "Abschnitte ausfüllen",
+        "text": "Persönliches mit Foto, Berufserfahrung, Ausbildung, Weiterbildung, Kenntnisse und Sprachen. Reihenfolge und Sichtbarkeit legst du selbst fest."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Die Vorschau zeigt jede Seite. Erstelle das PDF und füg es danach mit Anschreiben und Zeugnissen zusammen."
+      }
+    ],
+    "why": [
+      {
+        "title": "Drei saubere Designs",
+        "text": "Ruhig und klar statt verspielt – so, wie Personaler es lesen wollen. Mehrseitig läuft der Inhalt automatisch weiter."
+      },
+      {
+        "title": "Foto direkt zuschneiden",
+        "text": "Rund oder im Format 3:4, mit Verschieben und Zoom per Finger. Das Foto verlässt dein Gerät nicht."
+      },
+      {
+        "title": "Am Handy gut bedienbar",
+        "text": "Ein Abschnitt nach dem anderen, große Felder und Einträge, die du per Knopf nach oben oder unten schiebst."
+      },
+      {
+        "title": "Entwurf nur auf Wunsch",
+        "text": "Auf Wunsch speichert dein Browser den Entwurf, damit du später weitermachen kannst – ein Klick löscht ihn wieder."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Brauche ich ein Foto im Lebenslauf?",
+        "a": "Nein. In Deutschland ist ein Bewerbungsfoto freiwillig. Viele nutzen trotzdem eins – du entscheidest. Ohne Foto passt sich das Layout an."
+      },
+      {
+        "q": "Wie lang sollte der Lebenslauf sein?",
+        "a": "Meist ein bis zwei Seiten. Wenn deiner länger wird, probier das Design „Kompakt“ oder kürze ältere Stationen."
+      },
+      {
+        "q": "Wie gebe ich Sprachkenntnisse an?",
+        "a": "Am besten mit den Stufen des Gemeinsamen Europäischen Referenzrahmens (A1 bis C2) oder als Muttersprache. Das Werkzeug ergänzt eine kurze Beschreibung."
+      },
+      {
+        "q": "Wo werden meine Daten gespeichert?",
+        "a": "Nirgends, solange du „Entwurf speichern“ nicht einschaltest. Dann bleibt der Entwurf nur in diesem Browser (IndexedDB). Ausschalten löscht ihn."
+      },
+      {
+        "q": "Wie mache ich daraus eine Bewerbungsmappe?",
+        "a": "Erstell mit „Bewerbung schreiben“ ein Anschreiben im selben Design und füg danach alles mit deinen Zeugnissen über „PDF zusammenfügen“ zu einer Datei zusammen."
+      }
+    ]
+  },
+  "en": {
+    "slug": "cv-builder",
+    "name": "CV builder",
+    "short": "Clean CV in three designs as a PDF – with optional photo.",
+    "title": "CV builder – free CV as PDF, no sign-up | FaleNetwork",
+    "h1": "Build your CV",
+    "metaDescription": "Build your CV in three clean designs: optional photo with circle or rectangle crop, skills and languages with levels, live preview, PDF export – no sign-up.",
+    "lede": "Fill in section by section, pick a design, done – with a live preview.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "cv template",
+      "resume builder",
+      "cv maker",
+      "curriculum vitae",
+      "resume pdf",
+      "cv with photo"
+    ],
+    "steps": [
+      {
+        "title": "Pick a design",
+        "text": "Classic, modern with a sidebar or compact – each with an accent colour. Switch at any time."
+      },
+      {
+        "title": "Fill in the sections",
+        "text": "Personal details, experience, education, training, skills and languages. You choose order and visibility."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "The preview shows every page. Create the PDF and merge it with your cover letter and certificates."
+      }
+    ],
+    "why": [
+      {
+        "title": "Three clean designs",
+        "text": "Calm and readable, the way recruiters like it. Longer CVs flow onto the next page automatically."
+      },
+      {
+        "title": "Crop your photo",
+        "text": "Circle or 3:4, drag and zoom with your finger. The photo never leaves your device."
+      },
+      {
+        "title": "Made for phones",
+        "text": "One section at a time, big inputs and entries you move up or down with a tap."
+      },
+      {
+        "title": "Draft only if you want",
+        "text": "Your browser can keep the draft so you can continue later – one tap deletes it."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Should I add a photo?",
+        "a": "It depends on the country. In many English-speaking countries photos are not expected; in German-speaking countries they are optional. The layout works with or without."
+      },
+      {
+        "q": "How long should a CV be?",
+        "a": "Usually one or two pages. If yours gets longer, try the “Compact” design."
+      },
+      {
+        "q": "How do I state language skills?",
+        "a": "Using the CEFR levels A1 to C2 or “native” is widely understood. The tool adds a short description."
+      },
+      {
+        "q": "Where is my data stored?",
+        "a": "Nowhere unless you switch on “Save the draft”. Then it stays only in this browser (IndexedDB); switching off deletes it."
+      }
+    ]
+  }
+}

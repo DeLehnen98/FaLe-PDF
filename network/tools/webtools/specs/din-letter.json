@@ -1,0 +1,168 @@
+{
+  "id": "din-letter",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M5 3h14v18H5z\"/><path d=\"M8 7h5\"/><path d=\"M8 10h4\"/><path d=\"M14 7h2\"/><path d=\"M8 14h8\"/><path d=\"M8 17h6\"/><path d=\"M3 8h1.5\"/>",
+  "module": "tools/din-letter.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 69,
+  "related": [
+    "cancellation-letter",
+    "payment-reminder",
+    "cover-letter",
+    "sign-pdf"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "brief-din-5008",
+    "name": "Brief nach DIN 5008",
+    "short": "Geschäftsbrief nach DIN 5008 Form A oder B als PDF – fürs Fensterkuvert.",
+    "title": "Brief nach DIN 5008 schreiben – Vorlage als PDF | FaleNetwork",
+    "h1": "Brief nach DIN 5008",
+    "metaDescription": "Schreib einen Brief nach DIN 5008 (Form A oder B) mit Infoblock, Bezugszeichen, Anlagen und Falzmarken – passend fürs Fensterkuvert, als PDF im Browser.",
+    "lede": "Ein sauber gesetzter Brief fürs Fensterkuvert – mit Live-Vorschau und Unterschrift per Finger.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "brief vorlage",
+      "din 5008 vorlage",
+      "geschäftsbrief",
+      "briefvorlage word",
+      "anschreiben vorlage",
+      "fensterkuvert",
+      "infoblock",
+      "bezugszeichenzeile",
+      "privatbrief"
+    ],
+    "steps": [
+      {
+        "title": "Briefform wählen",
+        "text": "Form B ist der Standard, Form A lässt weniger Platz für den Briefkopf. Wähl Informationsblock oder Bezugszeichenzeile und auf Wunsch einen Vermerk wie „Einschreiben“."
+      },
+      {
+        "title": "Text schreiben",
+        "text": "Trag Empfänger, Betreff und deinen Text ein. Die Vorschau zeigt sofort, wie die Seite aussieht – auch wenn der Brief auf eine zweite Seite läuft."
+      },
+      {
+        "title": "Unterschreiben und speichern",
+        "text": "Unterschreib mit dem Finger oder später auf dem Ausdruck und erstelle das PDF. Den Text kannst du auch kopieren, etwa für eine E-Mail."
+      }
+    ],
+    "why": [
+      {
+        "title": "Passt ins Fensterkuvert",
+        "text": "Anschriftfeld, Rücksendeangabe, Informationsblock sowie Falz- und Lochmarken sitzen an den Positionen nach DIN 5008 für DIN-lang- und C5-Umschläge."
+      },
+      {
+        "title": "Alles, was ein Geschäftsbrief braucht",
+        "text": "Vermerke, Ihr/Unser Zeichen, Ansprechpartner, Betreff, Anlagen, Verteiler und Seitenzahlen bei mehrseitigen Briefen."
+      },
+      {
+        "title": "Live-Vorschau",
+        "text": "Du siehst die fertige Seite schon beim Tippen und kannst Form A und B direkt vergleichen."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Der Brief entsteht in deinem Browser. Deinen Absender speichert der Browser nur, wenn du es einschaltest."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was ist der Unterschied zwischen Form A und Form B?",
+        "a": "Bei Form A beginnt das Anschriftfeld 27 mm vom oberen Rand, bei Form B 45 mm. Form B lässt mehr Platz für einen Briefkopf und ist im Alltag üblicher. Die Falzmarken liegen entsprechend anders."
+      },
+      {
+        "q": "Welcher Umschlag passt?",
+        "a": "Gefaltet in drei Teile passt der Brief in einen DIN-lang-Fensterumschlag, ungefaltet bzw. einmal gefaltet in C5 oder C4. Die Anschrift sitzt im Sichtfenster."
+      },
+      {
+        "q": "Informationsblock oder Bezugszeichenzeile?",
+        "a": "Der Informationsblock steht rechts neben der Anschrift und ist heute üblich. Die Bezugszeichenzeile ist die ältere Variante unter der Anschrift – manche Behörden und Firmen nutzen sie noch."
+      },
+      {
+        "q": "Kann ich mehrseitige Briefe schreiben?",
+        "a": "Ja. Längerer Text läuft automatisch auf die nächste Seite, und alle Seiten bekommen „Seite x von y“."
+      },
+      {
+        "q": "Werden meine Angaben gespeichert?",
+        "a": "Nein. Alles bleibt in deinem Browser. Nur wenn du „Absender merken“ einschaltest, behält dein Browser Name und Anschrift auf diesem Gerät – ausschalten löscht sie."
+      }
+    ]
+  },
+  "en": {
+    "slug": "letter-template",
+    "name": "Letter template (DIN 5008)",
+    "short": "Formal letter in the DIN 5008 layout as a PDF – fits a window envelope.",
+    "title": "Formal letter template (DIN 5008) – free PDF | FaleNetwork",
+    "h1": "Write a formal letter",
+    "metaDescription": "Write a formal letter in the DIN 5008 layout (form A or B) with information block, references, enclosures and fold marks – fits a window envelope.",
+    "lede": "A neatly set letter for a window envelope – with live preview and finger signature.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "letter template",
+      "business letter",
+      "formal letter",
+      "window envelope letter",
+      "din 5008",
+      "german letter format"
+    ],
+    "steps": [
+      {
+        "title": "Choose the layout",
+        "text": "Form B is the usual layout, form A leaves less room for a letterhead. Pick an information block or a reference line, and add a notice such as “Registered mail” if you like."
+      },
+      {
+        "title": "Write the letter",
+        "text": "Enter the recipient, subject and your text. The preview shows the page right away – also when the letter runs onto a second page."
+      },
+      {
+        "title": "Sign and save",
+        "text": "Sign with your finger or later on the printout and create the PDF. You can also copy the text, for example into an e-mail."
+      }
+    ],
+    "why": [
+      {
+        "title": "Fits a window envelope",
+        "text": "Address field, return line, information block and fold and punch marks are placed as DIN 5008 describes for DL and C5 window envelopes."
+      },
+      {
+        "title": "Everything a business letter needs",
+        "text": "Notices, your/our reference, contact person, subject, enclosures, copy list and page numbers on longer letters."
+      },
+      {
+        "title": "Live preview",
+        "text": "You see the finished page while you type and can compare form A and B directly."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "The letter is made in your browser. Your sender details are only stored if you switch that on."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is DIN 5008?",
+        "a": "The German standard for business letters. It fixes where the address, the information block and the fold marks go, so the address shows in the window of standard envelopes."
+      },
+      {
+        "q": "What is the difference between form A and form B?",
+        "a": "In form A the address field starts 27 mm from the top, in form B 45 mm. Form B leaves more room for a letterhead and is the more common choice."
+      },
+      {
+        "q": "Which envelope fits?",
+        "a": "Folded in three, the letter fits a DL window envelope; folded once or not at all, a C5 or C4 window envelope."
+      },
+      {
+        "q": "Can I write longer letters?",
+        "a": "Yes. Longer text continues on the next page, and every page gets “Page x of y”."
+      },
+      {
+        "q": "Is my information stored?",
+        "a": "No. Everything stays in your browser. Only if you switch on “Remember sender” does your browser keep your name and address on this device – switching it off deletes them."
+      }
+    ]
+  }
+}

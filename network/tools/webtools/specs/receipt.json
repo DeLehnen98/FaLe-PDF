@@ -1,0 +1,69 @@
+{
+  "id": "receipt",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 21z\"/><path d=\"M9 8h6\"/><path d=\"M9 11.5h6\"/><path d=\"M9 15h3\"/>",
+  "module": "tools/receipt.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 65,
+  "related": ["invoice-generator", "payment-reminder", "qr-code"],
+  "next": [],
+  "needs": ["pdflib", "pdfjs", "unicodefont"],
+  "de": {
+    "slug": "quittung-vorlage",
+    "name": "Quittung",
+    "short": "Quittung mit Betrag in Worten und MwSt. als PDF – auch 2 oder 3 pro Seite.",
+    "title": "Quittung Vorlage – mit Betrag in Worten als PDF | FaleNetwork",
+    "h1": "Quittung erstellen",
+    "metaDescription": "Erstelle eine Quittung mit Betrag in Ziffern und Worten, auf Wunsch mit ausgewiesener MwSt. oder als Kleinbetragsrechnung – eine, zwei oder drei pro A4-Seite.",
+    "lede": "Betrag eintippen, der Rest steht schon da – inklusive Betrag in Worten.",
+    "primaryButton": "PDF erstellen",
+    "keywords": ["quittung vorlage", "quittung pdf", "quittungsvordruck", "quittung ausfüllen", "betrag in worten", "kleinbetragsrechnung", "barzahlung quittung", "quittungsblock"],
+    "steps": [
+      { "title": "Betrag eingeben", "text": "Der Betrag in Worten erscheint sofort. Auf Wunsch weist die Quittung die enthaltene Mehrwertsteuer aus." },
+      { "title": "Wofür und von wem", "text": "Trag Zweck, Zahler, Zahlungsart und dich als Empfänger ein. Leere Felder werden zu Linien zum Ausfüllen von Hand." },
+      { "title": "Drucken", "text": "Wähl eine, zwei oder drei Quittungen pro A4-Seite – etwa Original und Durchschrift – und erstelle das PDF." }
+    ],
+    "why": [
+      { "title": "Betrag in Worten", "text": "Von „null Euro und ein Cent“ bis „eine Million Euro“ – korrekt ausgeschrieben, damit niemand nachträglich Ziffern ändert." },
+      { "title": "Mit oder ohne MwSt.", "text": "Netto, Steuer und Brutto getrennt, als Kleinbetragsrechnung bis 250 € oder mit Kleinunternehmer-Hinweis." },
+      { "title": "Mehrere pro Seite", "text": "Zwei oder drei Quittungen pro Seite mit Schnittlinien – auch als Blanko-Vordruck." },
+      { "title": "Bleibt bei dir", "text": "Alles entsteht in deinem Browser, nichts wird hochgeladen." }
+    ],
+    "faq": [
+      { "q": "Was muss auf eine Quittung?", "a": "Üblich sind Betrag in Ziffern und Worten, Zahler, Zweck, Datum, Ort und die Unterschrift des Empfängers. Eine Nummer hilft beim Ablegen." },
+      { "q": "Was ist eine Kleinbetragsrechnung?", "a": "Bei Beträgen bis 250 € brutto genügen vereinfachte Angaben: Name und Anschrift des leistenden Unternehmens, Ausstellungsdatum, Art und Menge der Leistung, Gesamtbetrag und Steuersatz. Das Werkzeug zeigt dir, was dafür noch fehlt – ohne Steuerberatung zu ersetzen." },
+      { "q": "Kann ich Blanko-Quittungen drucken?", "a": "Ja. Lass den Betrag und weitere Felder leer und wähl drei pro Seite – die leeren Felder werden als Linien gedruckt." },
+      { "q": "Ist die Unterschrift per Finger gültig?", "a": "Sie zeigt, wer den Betrag erhalten hat. Für wichtige Zahlungen ist eine eigenhändige Unterschrift auf dem Ausdruck üblicher." },
+      { "q": "Werden meine Daten gespeichert?", "a": "Nein. Nur wenn du es einschaltest, merkt sich dein Browser deine Empfänger-Angaben." }
+    ]
+  },
+  "en": {
+    "slug": "receipt-template",
+    "name": "Receipt",
+    "short": "Receipt with the amount in words and optional tax as a PDF.",
+    "title": "Receipt template with amount in words – free PDF | FaleNetwork",
+    "h1": "Create a receipt",
+    "metaDescription": "Create a receipt with the amount in figures and words, optional tax breakdown and payment method – one, two or three per A4 page, made in your browser.",
+    "lede": "Type the amount – the rest is ready, including the amount in words.",
+    "primaryButton": "Create PDF",
+    "keywords": ["receipt template", "cash receipt", "payment receipt", "amount in words", "receipt book", "blank receipt"],
+    "steps": [
+      { "title": "Enter the amount", "text": "The amount in words appears right away. Show the included tax if you need it." },
+      { "title": "What for and from whom", "text": "Add the purpose, payer, payment method and yourself as recipient. Empty fields become lines to fill in by hand." },
+      { "title": "Print", "text": "Choose one, two or three receipts per A4 page – for example an original and a copy – and create the PDF." }
+    ],
+    "why": [
+      { "title": "Amount in words", "text": "From “zero euros and one cent” to “one million euros”, written out correctly." },
+      { "title": "With or without tax", "text": "Net, tax and total shown separately, with your own tax name and rate." },
+      { "title": "Several per page", "text": "Two or three receipts per page with cut lines – also as blank forms." },
+      { "title": "Stays with you", "text": "Everything is made in your browser; nothing is uploaded." }
+    ],
+    "faq": [
+      { "q": "What should a receipt contain?", "a": "Usually the amount in figures and words, the payer, the purpose, the date and place, and the recipient’s signature. A number helps with filing." },
+      { "q": "Can I print blank receipts?", "a": "Yes. Leave the amount and other fields empty and choose three per page – empty fields are printed as lines." },
+      { "q": "Which currencies are supported?", "a": "Euro, pound sterling, US dollar and Swiss franc, including the amount in words." },
+      { "q": "Is my data stored?", "a": "No. Only if you switch it on does your browser remember your recipient details." }
+    ]
+  }
+}

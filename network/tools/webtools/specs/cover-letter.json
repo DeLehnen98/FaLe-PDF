@@ -1,0 +1,164 @@
+{
+  "id": "cover-letter",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M4 6h16v12H4z\"/><path d=\"M4 7l8 6 8-6\"/><path d=\"M15.5 19.5l1.5 1.5 3-3\"/>",
+  "module": "tools/cover-letter.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 62,
+  "related": [
+    "cv-builder",
+    "merge-pdf",
+    "compress-pdf",
+    "din-letter"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "bewerbung-anschreiben",
+    "name": "Bewerbung schreiben",
+    "short": "Anschreiben nach DIN 5008 im Design deines Lebenslaufs als PDF.",
+    "title": "Bewerbung schreiben – Anschreiben Vorlage als PDF | FaleNetwork",
+    "h1": "Bewerbung schreiben",
+    "metaDescription": "Schreib dein Anschreiben nach DIN 5008 im Design deines Lebenslaufs: Hinweise für jeden Absatz, Betreff mit Kennziffer – danach die Bewerbungsmappe als PDF.",
+    "lede": "Ein Anschreiben im Design deines Lebenslaufs – mit Hinweisen für jeden Absatz.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "anschreiben vorlage",
+      "bewerbung vorlage",
+      "bewerbungsschreiben",
+      "anschreiben din 5008",
+      "bewerbungsmappe pdf",
+      "bewerbung zusammenfügen",
+      "motivationsschreiben"
+    ],
+    "steps": [
+      {
+        "title": "Stelle und Unternehmen",
+        "text": "Trag Stelle, Kennziffer und Ansprechperson ein. Hast du einen Lebenslauf-Entwurf gespeichert, übernimmst du Name, Anschrift und Design mit einem Tipp."
+      },
+      {
+        "title": "Text schreiben",
+        "text": "Vier Absätze mit Hinweisen: Einstieg, was du mitbringst, warum dieses Unternehmen, Schluss. Eintrittstermin und Gehaltsvorstellung ergänzt du per Feld."
+      },
+      {
+        "title": "Bewerbungsmappe bauen",
+        "text": "Erstelle Anschreiben (und auf Wunsch den Lebenslauf), füg mit „PDF zusammenfügen“ deine Zeugnisse hinzu und verkleinere die Datei mit „PDF komprimieren“."
+      }
+    ],
+    "why": [
+      {
+        "title": "Passt zum Lebenslauf",
+        "text": "Dieselben drei Designs und Akzentfarben wie beim Lebenslauf – Anschreiben und Lebenslauf sehen aus wie aus einem Guss."
+      },
+      {
+        "title": "Hilfe beim Aufbau",
+        "text": "Zu jedem Absatz ein Hinweis, worauf es ankommt. Den Text schreibst du selbst – keine austauschbaren Floskeln."
+      },
+      {
+        "title": "DIN 5008 und Fensterkuvert",
+        "text": "Anschrift im Sichtfenster, Betreff, Anlagen – auch für Bewerbungen per Post."
+      },
+      {
+        "title": "Von der Vorlage zur Mappe",
+        "text": "Direkt weiter zu „PDF zusammenfügen“ und „PDF komprimieren“ – alles im Browser, nichts wird hochgeladen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie lang sollte ein Anschreiben sein?",
+        "a": "Eine Seite. Die Vorschau zeigt dir sofort, ob dein Text auf eine Seite passt."
+      },
+      {
+        "q": "Schreibt das Werkzeug den Text für mich?",
+        "a": "Nein. Es gibt dir Struktur und Hinweise, den Inhalt schreibst du. So bleibt das Anschreiben persönlich."
+      },
+      {
+        "q": "Wie gebe ich die Gehaltsvorstellung an?",
+        "a": "Wenn die Anzeige danach fragt, als Bruttojahresgehalt, zum Beispiel „48.000 € brutto im Jahr“. Das Feld ist optional."
+      },
+      {
+        "q": "Wie erstelle ich eine Bewerbungsmappe als PDF?",
+        "a": "Anschreiben (und Lebenslauf) hier erstellen, dann „PDF zusammenfügen“ wählen, Zeugnisse hinzufügen und die Reihenfolge prüfen. Mit „PDF komprimieren“ wird die Datei klein genug für Bewerbungsportale."
+      },
+      {
+        "q": "Werden meine Daten gespeichert?",
+        "a": "Nein. Nur deinen Absender kann sich der Browser auf Wunsch merken; den Lebenslauf-Entwurf nur, wenn du das beim Lebenslauf einschaltest."
+      }
+    ]
+  },
+  "en": {
+    "slug": "cover-letter",
+    "name": "Cover letter",
+    "short": "Cover letter matching your CV design, as a PDF.",
+    "title": "Cover letter template – matching your CV, PDF | FaleNetwork",
+    "h1": "Write a cover letter",
+    "metaDescription": "Write a cover letter in the same design as your CV: hints for every paragraph, subject with reference, enclosures – then build your full application PDF.",
+    "lede": "A cover letter in the design of your CV – with hints for each paragraph.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "cover letter template",
+      "application letter",
+      "job application pdf",
+      "motivation letter",
+      "cover letter format"
+    ],
+    "steps": [
+      {
+        "title": "Position and company",
+        "text": "Enter the position, reference and contact person. If you saved a CV draft, take over your details and design with one tap."
+      },
+      {
+        "title": "Write the text",
+        "text": "Four paragraphs with hints: opening, what you offer, why this company, closing. Add your start date and salary expectation if asked."
+      },
+      {
+        "title": "Build the application",
+        "text": "Create the cover letter (and your CV), add your certificates with “Merge PDF” and shrink the file with “Compress PDF”."
+      }
+    ],
+    "why": [
+      {
+        "title": "Matches your CV",
+        "text": "The same three designs and accent colours as the CV builder."
+      },
+      {
+        "title": "Help with structure",
+        "text": "A hint for every paragraph. You write the text – no generic filler."
+      },
+      {
+        "title": "Formal letter layout",
+        "text": "Address in the window, subject line and enclosures – also for applications by post."
+      },
+      {
+        "title": "From template to full application",
+        "text": "Continue straight to “Merge PDF” and “Compress PDF” – all in your browser."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How long should a cover letter be?",
+        "a": "One page. The preview shows straight away whether your text fits."
+      },
+      {
+        "q": "Does the tool write the text for me?",
+        "a": "No. It gives you structure and hints; you write the content so it stays personal."
+      },
+      {
+        "q": "How do I make one PDF with everything?",
+        "a": "Create the cover letter (and CV) here, then choose “Merge PDF”, add your certificates and check the order. “Compress PDF” makes the file small enough for application portals."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "No. Your browser only remembers your sender details or CV draft if you switch that on."
+      }
+    ]
+  }
+}

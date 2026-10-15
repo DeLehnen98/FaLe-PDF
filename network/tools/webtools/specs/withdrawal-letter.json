@@ -1,0 +1,166 @@
+{
+  "id": "withdrawal-letter",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4\"/><path d=\"M14 14H9\"/><path d=\"M11 11.5L8.5 14l2.5 2.5\"/>",
+  "module": "tools/withdrawal-letter.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 66,
+  "related": [
+    "cancellation-letter",
+    "din-letter",
+    "scan-to-pdf"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "widerruf-schreiben",
+    "name": "Widerruf schreiben",
+    "short": "Online-Kauf oder Vertrag widerrufen – Widerrufsschreiben als PDF.",
+    "title": "Widerruf schreiben – Vorlage für Online-Käufe | FaleNetwork",
+    "h1": "Widerruf schreiben",
+    "metaDescription": "Widerrufe einen Online-Kauf oder Vertrag mit einem klaren Schreiben: Bestell- und Erhaltdatum, Artikel, Bitte um Rückzahlung – als PDF oder Text für die E-Mail.",
+    "lede": "Ein klares Widerrufsschreiben für Online- und Telefonkäufe – als PDF oder zum Kopieren in eine E-Mail.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "widerruf vorlage",
+      "widerrufsformular",
+      "muster widerruf",
+      "online kauf widerrufen",
+      "vertrag widerrufen",
+      "fernabsatz widerruf",
+      "rückgabe",
+      "widerrufsfrist"
+    ],
+    "steps": [
+      {
+        "title": "Bestellung angeben",
+        "text": "Wähl Ware oder Dienstleistung, trag Bestellnummer, Bestell- und Erhaltdatum und die Artikel ein. Das Werkzeug zeigt dir, wann 14 Tage ab Erhalt enden würden."
+      },
+      {
+        "title": "Händler und Rückzahlung",
+        "text": "Gib die Anschrift des Händlers ein und auf Wunsch ein Konto für die Erstattung, eine Sendungsnummer oder die Bitte um ein Retourenetikett."
+      },
+      {
+        "title": "Abschicken",
+        "text": "Erstelle das PDF oder kopiere den Text in eine E-Mail. Verschick den Widerruf so, dass du den Zugang belegen kannst."
+      }
+    ],
+    "why": [
+      {
+        "title": "Eindeutig formuliert",
+        "text": "Der Text lehnt sich an das gesetzliche Muster-Widerrufsformular an und sagt klar, dass du den Vertrag widerrufst."
+      },
+      {
+        "title": "Rückzahlung inklusive",
+        "text": "Bitte um Erstattung aller Zahlungen einschließlich der Hinsendekosten, auf Wunsch auf ein bestimmtes Konto."
+      },
+      {
+        "title": "Frist im Blick",
+        "text": "Du siehst, wann 14 Tage ab Erhalt bzw. Vertragsschluss enden würden – als Orientierung, nicht als Rechtsberatung."
+      },
+      {
+        "title": "Bleibt bei dir",
+        "text": "Alles passiert in deinem Browser. Nichts wird hochgeladen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie lange kann ich widerrufen?",
+        "a": "Bei Online- und Telefonkäufen haben Verbraucher in der Regel 14 Tage Zeit, bei Waren meist ab Erhalt. Maßgeblich ist die Widerrufsbelehrung des Händlers; es gibt Ausnahmen, etwa für angefertigte oder versiegelte Ware. Das Werkzeug ersetzt keine Rechtsberatung."
+      },
+      {
+        "q": "Reicht es, die Ware einfach zurückzuschicken?",
+        "a": "In der Regel nicht. Du musst den Widerruf eindeutig erklären – zum Beispiel mit diesem Schreiben per E-Mail oder Brief. Für die Frist zählt, dass du ihn rechtzeitig abschickst."
+      },
+      {
+        "q": "Muss ich unterschreiben?",
+        "a": "Nur wenn du den Widerruf auf Papier verschickst, ist eine Unterschrift üblich. Per E-Mail genügt der Text."
+      },
+      {
+        "q": "Bekomme ich die Versandkosten zurück?",
+        "a": "Die Kosten der Hinsendung in der Standardversandart muss der Händler in der Regel erstatten. Wer die Rücksendung bezahlt, steht in der Widerrufsbelehrung."
+      },
+      {
+        "q": "Werden meine Daten gespeichert?",
+        "a": "Nein. Das Schreiben entsteht in deinem Browser. Deinen Absender behält der Browser nur, wenn du „Absender merken“ einschaltest."
+      }
+    ]
+  },
+  "en": {
+    "slug": "withdrawal-letter",
+    "name": "Withdrawal letter",
+    "short": "Withdraw from an online purchase or contract – letter as a PDF.",
+    "title": "Withdrawal letter for online purchases – free PDF | FaleNetwork",
+    "h1": "Write a withdrawal letter",
+    "metaDescription": "Withdraw from an online purchase or a contract with a clear letter: order and delivery dates, items and refund request – as a PDF or as text for an e-mail.",
+    "lede": "A clear withdrawal letter for online and phone purchases – as a PDF or to copy into an e-mail.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "withdrawal form",
+      "right of withdrawal letter",
+      "cancel online order",
+      "return letter",
+      "cooling off period letter",
+      "refund request letter"
+    ],
+    "steps": [
+      {
+        "title": "Describe the order",
+        "text": "Choose goods or a service and enter the order number, order and delivery dates and the items."
+      },
+      {
+        "title": "Seller and refund",
+        "text": "Enter the seller’s address and, if you like, an account for the refund, a tracking number or a request for a returns label."
+      },
+      {
+        "title": "Send it",
+        "text": "Create the PDF or copy the text into an e-mail. Send it in a way you can prove."
+      }
+    ],
+    "why": [
+      {
+        "title": "Clear wording",
+        "text": "The letter states plainly that you withdraw from the contract and lists what it concerns."
+      },
+      {
+        "title": "Refund included",
+        "text": "Asks for all payments to be refunded, including the original delivery costs, to a specific account if you want."
+      },
+      {
+        "title": "Dates at a glance",
+        "text": "Shows when a 14-day period from delivery would end – as a guide only, not legal advice."
+      },
+      {
+        "title": "Stays with you",
+        "text": "Everything happens in your browser. Nothing is uploaded."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How long do I have to withdraw?",
+        "a": "That depends on where you live and on the seller’s terms. Many countries give consumers a period such as 14 days for online purchases. Check before relying on it – this tool is not legal advice."
+      },
+      {
+        "q": "Is sending the goods back enough?",
+        "a": "Often not. It is safer to state clearly that you withdraw – for example with this letter by e-mail or post."
+      },
+      {
+        "q": "Do I need to sign it?",
+        "a": "A signature is usual on a paper letter. By e-mail the text is normally enough."
+      },
+      {
+        "q": "Will I get the delivery costs back?",
+        "a": "The letter asks for them. Whether the seller has to refund them, and who pays for the return, depends on the terms and the applicable law."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "No. The letter is made in your browser. Your sender details are only kept if you switch on “Remember sender”."
+      }
+    ]
+  }
+}
