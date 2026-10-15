@@ -1,0 +1,88 @@
+# End-to-end test of the real Android app on an emulator: installs the debug APK built by the
+# "Android" workflow, drives the app's WebView over the Chrome DevTools Protocol (debug builds allow
+# WebView debugging) and real touch input (adb), and checks print, share, edit text, sign, download
+# and opening a file from another app. Results are reported as ::notice / ::error annotations
+# (readable via the Checks API); screenshots + logcat are uploaded as an artifact.
+name: Android E2E
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Android]
+    types: [completed]
+    branches: [main]
+
+# Least privilege: read the repository, download the APK (artifact of the triggering run or the
+# android-latest pre-release). Third-party actions are pinned to full commit SHAs.
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: android-e2e
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Get debug APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          mkdir -p apk e2e-out
+          if [ -n "$RUN_ID" ]; then
+            gh run download "$RUN_ID" -R "$GITHUB_REPOSITORY" -D apk || true
+          fi
+          if ! find apk -name '*-debug.apk' | grep -q .; then
+            gh release download android-latest -R "$GITHUB_REPOSITORY" -p '*-debug.apk' -D apk
+          fi
+          APK=$(find apk -name '*-debug.apk' | head -n 1)
+          echo "APK=$PWD/$APK" >> "$GITHUB_ENV"
+          echo "::notice title=E2E APK::$(basename "$APK")"
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Emulator + tests
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          ram-size: 4096M
+          disk-size: 6G
+          disable-animations: true
+          emulator-boot-timeout: 900
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
+          script: bash scripts/android-e2e/run.sh
+
+      - name: Upload screenshots + logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: android-e2e
+          path: e2e-out/
+          if-no-files-found: ignore
+          retention-days: 14
