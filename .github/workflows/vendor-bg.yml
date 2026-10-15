@@ -1,0 +1,105 @@
+# Holt die Laufzeit (onnxruntime-web, WASM) und die Segmentierungsmodelle für das Werkzeug
+# „Hintergrund entfernen“ einmalig in vendor/onnx/ und committet sie. Alle Downloads sind auf
+# exakte Versionen gepinnt und werden gegen fest eingetragene Prüfsummen geprüft.
+#
+# Lizenzen (alle kommerziell nutzbar und weiterverteilbar):
+#   onnxruntime-web 1.22.0 – MIT (https://github.com/microsoft/onnxruntime)
+#   U²-Netp (u2netp.onnx)   – Apache-2.0 (https://github.com/xuebinqin/U-2-Net; ONNX-Export aus dem
+#                             rembg-Release v0.0.0, rembg selbst MIT)
+#   MODNet (quantisiert)    – Apache-2.0 (https://github.com/ZHKKKe/MODNet; ONNX-Export
+#                             https://huggingface.co/Xenova/modnet, Commit fa2fa546…)
+name: Vendor Hintergrund-Entfernung
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write # commits vendor/onnx (push to main)
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+      - name: Download runtime and models
+        env:
+          ORT_VERSION: '1.22.0'
+          ORT_INTEGRITY: 'sha512-Ud/+EBo6mhuaQWt/OjaOk0iNWjXqJoeeMFr6xQEERZdIZH2OWpGzuujz7lfuOBjUa6TEE/sc4nb7Da5dNL34fg=='
+          U2NETP_URL: 'https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx'
+          U2NETP_SHA256: '309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8'
+          MODNET_URL: 'https://huggingface.co/Xenova/modnet/resolve/fa2fa546052fba4c08921230a26cc69a333fca12/onnx/model_quantized.onnx'
+          MODNET_SHA256: '92e49898c3e05a6d7a944fc67a8cb87c4aad754ffb6ebd949528c7d1105fee3a'
+          U2NET_LICENSE: 'https://raw.githubusercontent.com/xuebinqin/U-2-Net/master/LICENSE'
+          MODNET_LICENSE: 'https://raw.githubusercontent.com/ZHKKKe/MODNet/master/LICENSE'
+          ORT_LICENSE: 'https://raw.githubusercontent.com/microsoft/onnxruntime/v1.22.0/LICENSE'
+        run: |
+          set -euo pipefail
+          check() { # file expected-sha256
+            local got; got=$(sha256sum "$1" | cut -d' ' -f1)
+            if [ "$got" != "$2" ]; then echo "::error::SHA-256 mismatch for $1: got $got, expected $2"; exit 1; fi
+          }
+          mkdir -p tmp && cd tmp
+          npm pack "onnxruntime-web@$ORT_VERSION" > /dev/null
+          TGZ=onnxruntime-web-$ORT_VERSION.tgz
+          GOT="sha512-$(openssl dgst -sha512 -binary "$TGZ" | base64 -w0)"
+          if [ "$GOT" != "$ORT_INTEGRITY" ]; then echo "::error::npm integrity mismatch for $TGZ: $GOT"; exit 1; fi
+          tar xzf "$TGZ" && mv package ort
+          cd ..
+          D=vendor/onnx
+          rm -rf $D && mkdir -p $D/ort $D/models
+          # WASM-only ES module build + its single SIMD wasm binary (works single-threaded without
+          # cross-origin isolation). The WebGPU build is not vendored (much larger download).
+          for f in ort.wasm.min.mjs ort-wasm-simd-threaded.mjs ort-wasm-simd-threaded.wasm; do
+            if [ ! -f tmp/ort/dist/$f ]; then echo "::error::onnxruntime-web $ORT_VERSION has no dist/$f"; ls tmp/ort/dist; exit 1; fi
+            cp tmp/ort/dist/$f $D/ort/
+          done
+          sed -i -E '/^\/\/# sourceMappingURL=/d' $D/ort/*.mjs
+          sed -i -E 's#//\# sourceMappingURL=[^ "]*\.map##g' $D/ort/*.mjs
+          curl -sSfL "$ORT_LICENSE" -o $D/ort/LICENSE
+          [ -f tmp/ort/ThirdPartyNotices.txt ] && cp tmp/ort/ThirdPartyNotices.txt $D/ort/ThirdPartyNotices.txt || true
+
+          curl -sSfL "$U2NETP_URL" -o $D/models/u2netp.onnx
+          check $D/models/u2netp.onnx "$U2NETP_SHA256"
+          curl -sSfL "$U2NET_LICENSE" -o $D/models/LICENSE-U2Net
+          curl -sSfL "$MODNET_URL" -o $D/models/modnet-quantized.onnx
+          check $D/models/modnet-quantized.onnx "$MODNET_SHA256"
+          curl -sSfL "$MODNET_LICENSE" -o $D/models/LICENSE-MODNet
+          grep -q 'Apache License' $D/models/LICENSE-U2Net || { echo "::error::U-2-Net LICENSE is not Apache"; exit 1; }
+          grep -q 'Apache License' $D/models/LICENSE-MODNet || { echo "::error::MODNet LICENSE is not Apache"; exit 1; }
+          grep -q 'MIT License' $D/ort/LICENSE || { echo "::error::onnxruntime LICENSE is not MIT"; exit 1; }
+
+          cat > $D/VERSIONS.json <<EOF
+          {
+            "onnxruntime-web": "$ORT_VERSION",
+            "u2netp": "U-2-Net u2netp, ONNX from rembg release v0.0.0, sha256 $U2NETP_SHA256",
+            "modnet": "MODNet, ONNX model_quantized.onnx from Xenova/modnet@fa2fa546052fba4c08921230a26cc69a333fca12, sha256 $MODNET_SHA256"
+          }
+          EOF
+          sed -i -E 's/^          //' $D/VERSIONS.json
+          node -e 'JSON.parse(require("fs").readFileSync("vendor/onnx/VERSIONS.json","utf8"))'
+          ls -laR $D
+          rm -rf tmp
+          # record the SHA-256 values of vendor/onnx/ (the build verifies vendor/MANIFEST.json) …
+          node scripts/vendor-manifest.mjs --write onnx
+          # … and the library entry (same shape as scripts/vendor-manifest.mjs LIBS writes it)
+          node -e '
+            const fs = require("fs"), p = "vendor/MANIFEST.json", m = JSON.parse(fs.readFileSync(p, "utf8"));
+            m.libraries.onnx = {
+              name: "onnxruntime-web (WASM) + U²-Netp + MODNet (quantized) segmentation models",
+              license: "MIT (onnxruntime-web); Apache-2.0 (U²-Net / U²-Netp, MODNet models)",
+              source: "https://www.npmjs.com/package/onnxruntime-web; https://github.com/xuebinqin/U-2-Net; https://github.com/ZHKKKe/MODNet; https://huggingface.co/Xenova/modnet",
+              version: JSON.parse(fs.readFileSync("vendor/onnx/VERSIONS.json", "utf8")),
+            };
+            fs.writeFileSync(p, JSON.stringify(m, null, 2) + "\n");'
+          node scripts/vendor-manifest.mjs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vendor/onnx vendor/MANIFEST.json
+          git diff --cached --quiet && echo "nothing new" || git commit -m "vendor: onnxruntime-web + Segmentierungsmodelle (Hintergrund entfernen, offline)"
+          git pull --rebase
+          git push
