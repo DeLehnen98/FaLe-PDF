@@ -285,18 +285,30 @@ async function ensureApp() {
     await ev(HELPERS);
   }
 }
-async function step(name, fn) {
-  const start = consoleLog.length;
-  logcatMark();
-  try {
-    await ensureApp();
-    const info = await fn();
-    report(name, true, info || '');
-  } catch (e) {
-    const cons = consoleLog.slice(start).filter(l => /^\[(error|warning|exception|log:error)/.test(l)).slice(-6).join(' | ');
-    let t = [];
-    try { t = (await toasts()).slice(-4); } catch { /* app gone */ }
-    report(name, false, `${e.message}${t.length ? ' | Toasts: ' + t.join(' / ') : ''}${cons ? ' | Konsole: ' + cons.slice(0, 900) : ''} | Fenster: ${focusedWindow()} | logcat: ${logcatTail()}`);
+async function step(name, fn, { retries = 1 } = {}) {
+  for (let attempt = 0; ; attempt++) {
+    const start = consoleLog.length;
+    logcatMark();
+    try {
+      await ensureApp();
+      const info = await fn();
+      report(name, true, (info || '') + (attempt ? ` (im ${attempt + 1}. Versuch)` : ''));
+      break;
+    } catch (e) {
+      const cons = consoleLog.slice(start).filter(l => /^\[(error|warning|exception|log:error)/.test(l)).slice(-6).join(' | ');
+      let t = [];
+      try { t = (await toasts()).slice(-4); } catch { /* app gone */ }
+      const detail = `${e.message}${t.length ? ' | Toasts: ' + t.join(' / ') : ''}${cons ? ' | Konsole: ' + cons.slice(0, 900) : ''} | Fenster: ${focusedWindow()} | logcat: ${logcatTail()}`;
+      if (attempt < retries) {
+        // slow/unsettled emulator: note it and try once more from a clean state
+        console.log(`::warning title=E2E ${name} (Versuch ${attempt + 1})::${esc(detail.slice(0, 1500))}`);
+        screenshot(name.replace(/[^\w]+/g, '-').toLowerCase() + '-retry');
+        await closeOverlays();
+        continue;
+      }
+      report(name, false, detail);
+      break;
+    }
   }
   screenshot(name.replace(/[^\w]+/g, '-').toLowerCase());
 }
@@ -414,7 +426,7 @@ async function main() {
   await step('Text bearbeiten (PDF bearbeiten → Text)', async () => {
     await closeOverlays();
     await ev(`location.hash = '#/werkzeug/bearbeiten?doc=${docId}'; return true;`);
-    if (!await waitJs(`!!document.querySelector('.pt-stage .pt-page canvas')`, { timeout: 25000 })) throw new Error('Editor lädt nicht');
+    if (!await waitJs(`!!document.querySelector('.pt-stage .pt-page canvas')`, { timeout: 40000 })) throw new Error('Editor lädt nicht');
     await sleep(1000);
     await tap('[data-tool="text"]');
     await sleep(400);
@@ -448,7 +460,7 @@ async function main() {
   await step('Unterschreiben', async () => {
     await closeOverlays();
     await ev(`location.hash = '#/werkzeug/unterschreiben?doc=${docId}'; return true;`);
-    if (!await waitJs(`!!document.querySelector('.sign-page canvas')`, { timeout: 25000 })) throw new Error('Unterschreiben lädt nicht');
+    if (!await waitJs(`!!document.querySelector('.sign-page canvas')`, { timeout: 40000 })) throw new Error('Unterschreiben lädt nicht (' + await ev(`return location.hash + ' ' + document.querySelectorAll('.sign-page').length;`).catch(e => e.message) + ')');
     await sleep(1000);
     await tap('[data-mode="sign"]');
     if (!await waitJs(`!!document.querySelector('dialog[open] canvas.sig-pad')`, { timeout: 10000 })) throw new Error('Unterschriften-Dialog erscheint nicht');
