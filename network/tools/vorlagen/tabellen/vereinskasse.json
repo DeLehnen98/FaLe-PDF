@@ -1,0 +1,109 @@
+{
+ "id": "vereinskasse",
+ "slug": "vereinskasse",
+ "cat": "Verein",
+ "name": "Kassenbericht Verein",
+ "short": "Buchungen für Kasse und Bank, Jahresbericht mit Endbestand",
+ "desc": "Kassenbericht für Vereine als Excel-Vorlage (XLSX): Buchungen für Kasse und Bank erfassen, Jahresbericht nach Bereichen mit Anfangs- und Endbestand und Kontrollsumme.",
+ "search": "kassenwart verein kasse",
+ "intro": "Für Kassenwartinnen und Kassenwarte: Im Blatt „Buchungen“ landet jede Ein- und Auszahlung mit Beleg, Bereich und Konto. Der Kassenbericht fasst das Geschäftsjahr nach Bereichen zusammen, rechnet die Endbestände von Kasse und Bank und prüft mit einer Kontrollsumme, ob alles aufgeht.",
+ "uses": [
+  "Kassenbericht für die Mitgliederversammlung",
+  "Unterlagen für die Kassenprüfung",
+  "Übergabe der Kasse an die Nachfolge"
+ ],
+ "cols": [
+  [
+   "Bereich",
+   "In beiden Blättern: Mitgliedsbeiträge, Spenden, Veranstaltungen … Die Namen im Kassenbericht bilden die Auswahlliste der Buchungen."
+  ],
+  [
+   "Einnahmen",
+   "SUMMEWENNS addiert alle Einnahmen des Bereichs im eingetragenen Geschäftsjahr."
+  ],
+  [
+   "Ausgaben",
+   "Dasselbe für die Ausgaben."
+  ],
+  [
+   "Saldo",
+   "Einnahmen minus Ausgaben je Bereich."
+  ],
+  [
+   "Bestände",
+   "Kasse und Bank getrennt: Anfangsbestand, Bewegung im Jahr und Endbestand."
+  ],
+  [
+   "Anfang",
+   "Die Anfangsbestände aus den gelben Feldern oben."
+  ],
+  [
+   "Bewegung",
+   "Einnahmen minus Ausgaben des Jahres, nur für das jeweilige Konto."
+  ],
+  [
+   "Ende",
+   "Anfang plus Bewegung – sollte mit Kassenzählung und Kontoauszug übereinstimmen."
+  ],
+  [
+   "Datum",
+   "Buchungsdatum."
+  ],
+  [
+   "Beleg-Nr.",
+   "Nummer auf dem Beleg, z. B. K-01 für Kasse, B-01 für Bank."
+  ],
+  [
+   "Buchungstext",
+   "Wofür."
+  ],
+  [
+   "Konto",
+   "Kasse oder Bank."
+  ],
+  [
+   "Einnahme",
+   "Eingang, positiv."
+  ],
+  [
+   "Ausgabe",
+   "Ausgang, positiv."
+  ]
+ ],
+ "tips": [
+  "Die Zeile „Kontrolle“ muss 0 sein. Steht dort etwas anderes, fehlt eine Buchung oder ein Datum liegt außerhalb des Geschäftsjahrs.",
+  "Heb alle Belege geordnet nach Beleg-Nummer auf – die Kassenprüfer werden danach fragen."
+ ],
+ "faq": [
+  {
+   "q": "Reicht das für einen gemeinnützigen Verein?",
+   "a": "Für einen einfachen Kassenbericht ja. Steuerbegünstigte Vereine müssen ihre Einnahmen und Ausgaben für das Finanzamt oft nach Tätigkeitsbereichen trennen (ideeller Bereich, Vermögensverwaltung, Zweckbetrieb, wirtschaftlicher Geschäftsbetrieb). Dafür kannst du die Bereiche umbenennen – im Zweifel frag eine Steuerberatung."
+  },
+  {
+   "q": "Kann die Kasse mehrere Konten haben?",
+   "a": "Die Vorlage unterscheidet Kasse und Bank. Für ein zweites Bankkonto ergänzt du in der Auswahlliste der Spalte „Konto“ einen Namen und kopierst die Bestandszeile."
+  }
+ ],
+ "related": [
+  "mitgliederliste",
+  "kassenbuch",
+  "euer"
+ ],
+ "en": {
+  "slug": "club-cash-report",
+  "name": "Club cash report",
+  "short": "Cash and bank bookings with a yearly report and closing balances",
+  "desc": "Club cash report spreadsheet (XLSX): record cash and bank bookings and get a yearly report by area with opening and closing balances and a control total.",
+  "intro": "For club treasurers: every payment goes into the bookings sheet with receipt, area and account. The report summarises the year by area, calculates cash and bank balances and checks that everything adds up.",
+  "inside": [
+   "Income and spending per area for one year (SUMIFS)",
+   "Opening, movement and closing balance for cash and bank",
+   "Control total that must be zero",
+   "Lines for the auditors’ signatures"
+  ],
+  "uses": [
+   "Annual general meetings",
+   "Handing over the treasurer role"
+  ]
+ }
+}

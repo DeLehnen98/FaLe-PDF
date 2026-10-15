@@ -1,0 +1,167 @@
+{
+ "id": "lohnbuchhalter",
+ "field": "finanzen",
+ "name": "Lohnbuchhalter/in (Entgeltabrechnung)",
+ "search": "lohnbuchhalter lohnbuchhalterin entgeltabrechnung gehaltsabrechnung payroll personalabrechnung bewerbung",
+ "short": "Löhne, Gehälter, Meldungen – pünktlich und korrekt.",
+ "desc": "Bewerbung als Lohnbuchhalter/in oder Payroll-Spezialist/in: Muster-Anschreiben für erfahrene Entgeltabrechnerin und Steuerfachangestellten im Wechsel, mit Lebenslauf.",
+ "intro": "Lohnbuchhalterinnen und -buchhalter rechnen Löhne und Gehälter ab, kennen Steuer- und Sozialversicherungsrecht, erstellen Meldungen und beantworten Fragen von Beschäftigten. Unternehmen achten auf Erfahrung mit Sonderfällen, Programmen und Abrechnungsvolumen.",
+ "lookFor": [
+  "Ausbildung und Weiterbildung in Entgeltabrechnung",
+  "Lohnsteuer- und Sozialversicherungsrecht",
+  "Abrechnungsprogramme",
+  "Sonderfälle: Teilzeit, Minijobs, Pfändungen, Zuschläge",
+  "Diskretion und Termintreue"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Entgeltabrechnerin",
+   "level": "erfahren",
+   "position": "Lohnbuchhalterin",
+   "to": {
+    "org": "Maschinenbau Hohenlohe AG",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Industriestraße 30",
+    "city": "74523 Schwäbisch Hall"
+   },
+   "body": [
+    "rund 450 Mitarbeitende rechne ich jeden Monat ab, mit Schichtzuschlägen, Kurzarbeit in einer Abteilung und drei Pfändungen. Seit sechs Jahren hat noch nie jemand sein Gehalt zu spät bekommen, und das soll so bleiben, auch wenn ich zu Ihnen wechsle.",
+    "Ich bin Steuerfachangestellte mit Weiterbildung zur Fachkraft für Lohn und Gehalt und arbeite seit acht Jahren in der Entgeltabrechnung. Tarifverträge der Metallindustrie kenne ich gut. Ihr Unternehmen stellt gerade auf ein neues Abrechnungsprogramm um; Umstellungen habe ich bereits zweimal begleitet."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Zertifikat Lohn und Gehalt",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Steuerfachangestellter wechselt in die Industrie",
+   "level": "erfahren",
+   "position": "Payroll-Spezialist",
+   "to": {
+    "org": "Logistik Hohenlohe GmbH",
+    "sal": "none",
+    "street": "Am Güterbahnhof 2",
+    "city": "74564 Crailsheim"
+   },
+   "body": [
+    "in der Kanzlei habe ich für 30 Mandanten Löhne abgerechnet, vom Friseursalon mit drei Minijobberinnen bis zum Bauunternehmen mit 80 Leuten. Ich möchte jetzt für ein Unternehmen arbeiten und die Prozesse dort verbessern, statt für viele nur das Nötigste zu tun.",
+    "Ich kenne Meldeverfahren, Sachbezüge, Dienstwagenbesteuerung und die Abrechnung von Saisonkräften. Schichtzuschläge in der Logistik wären neu, aber gut lernbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Daniel Rapp",
+    "Schillerstraße 30",
+    "74564 Crailsheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "classic",
+  "accent": 5,
+  "name": "Simone Bauer",
+  "title": "Lohnbuchhalterin, Steuerfachangestellte",
+  "street": "Gelbinger Gasse 20",
+  "city": "74523 Schwäbisch Hall",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Entgeltabrechnerin",
+    "Metallwerke Kocher",
+    "Künzelsau",
+    "- Rund 450 Abrechnungen monatlich\n- Schichtzuschläge, Kurzarbeit, Pfändungen\n- Umstellung auf neues Abrechnungsprogramm"
+   ],
+   [
+    "2018",
+    "2020",
+    "Steuerfachangestellte Lohn",
+    "Kanzlei Hohenlohe",
+    "Öhringen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2020",
+    "Fachkraft für Lohn und Gehalt",
+    "IHK Heilbronn-Franken",
+    "Heilbronn",
+    ""
+   ],
+   [
+    "2015",
+    "2018",
+    "Ausbildung Steuerfachangestellte",
+    "Kanzlei Hohenlohe",
+    "Öhringen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Entgeltabrechnung",
+    5
+   ],
+   [
+    "Sozialversicherung",
+    5
+   ],
+   [
+    "Lohnsteuer",
+    5
+   ],
+   [
+    "Tarifrecht Metall",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Wandern, Nähen"
+ },
+ "do": [
+  "Abrechnungsvolumen und Sonderfälle nennen.",
+  "Weiterbildungen angeben.",
+  "Termintreue betonen."
+ ],
+ "dont": [
+  "Vertrauliche Gehaltsdaten in Beispielen.",
+  "Programme aufzählen ohne Praxis.",
+  "Fehler verschweigen, wenn danach gefragt wird."
+ ],
+ "questions": [
+  "Wie rechnen Sie einen Minijob ab?",
+  "Was tun Sie bei einer Pfändung?",
+  "Wie sichern Sie den Monatsabschluss gegen Fehler?",
+  "Welche Programme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Weiterbildung lohnt sich?",
+   "a": "Gefragt sind Lehrgänge wie Fachkraft Lohn und Gehalt oder Personalfachkaufmann/-frau. Laufende Seminare zu Gesetzesänderungen zum Jahreswechsel sind in diesem Beruf fast Pflicht."
+  }
+ ],
+ "related": [
+  "buchhalter",
+  "steuerfachangestellte",
+  "personalsachbearbeiter",
+  "werkstudent-finanzen"
+ ]
+}

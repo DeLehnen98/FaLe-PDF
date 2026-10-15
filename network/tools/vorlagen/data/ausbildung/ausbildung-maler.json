@@ -1,0 +1,165 @@
+{
+ "id": "ausbildung-maler",
+ "field": "ausbildung",
+ "name": "Ausbildung Maler/in und Lackierer/in",
+ "search": "ausbildung maler lackierer malerin lackiererin azubi handwerk gestaltung fassade bewerbung",
+ "short": "Wände, Fassaden, Gestaltung – mit Muster-Anschreiben für Schüler.",
+ "desc": "Bewerbung für die Ausbildung zum Maler und Lackierer / zur Malerin und Lackiererin: Muster-Anschreiben für Schüler und Wiedereinsteigerin, Lebenslauf und Tipps.",
+ "intro": "Malerbetriebe streichen nicht nur Wände. Sie spachteln, tapezieren, dämmen Fassaden, gestalten Flächen und arbeiten oft in bewohnten Räumen. Gesucht werden Leute mit Auge für Farbe, sauberer Arbeitsweise und Respekt vor fremden Wohnungen.",
+ "lookFor": [
+  "Hauptschul- oder Realschulabschluss",
+  "Sorgfalt und Sauberkeit",
+  "Gefühl für Farben und Flächen",
+  "Schwindelfreiheit für Gerüstarbeit",
+  "Höflicher Umgang mit Kunden"
+ ],
+ "letters": [
+  {
+   "label": "Schüler, der beim Renovieren hilft",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Maler und Lackierer",
+   "to": {
+    "org": "Malerbetrieb Kühn & Sohn",
+    "sal": "m",
+    "contact": "Kühn",
+    "street": "Breite Straße 22",
+    "city": "06108 Halle (Saale)"
+   },
+   "body": [
+    "in den letzten Sommerferien haben wir die Wohnung meiner Oma renoviert. Ich habe alte Tapeten abgelöst, Löcher gespachtelt, geschliffen und zweimal gestrichen. Als ein Nachbar fragte, ob das ein Maler gemacht hat, wusste ich, was ich lernen will.",
+    "Ich besuche die 9. Klasse der Gemeinschaftsschule Kastanienallee und mache nächstes Jahr meinen Hauptschulabschluss. In Kunst habe ich eine Eins. Am liebsten würde ich bei Ihnen vorher ein Praktikum machen, um zu sehen, wie der Alltag auf der Baustelle aussieht.",
+    "Ich bin zuverlässig und morgens früh wach, das kommt vom Zeitungsaustragen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 8",
+    "Halbjahreszeugnis Klasse 9"
+   ]
+  },
+  {
+   "label": "Mutter, 31, beginnt nach der Familienzeit eine Ausbildung",
+   "level": "quereinstieg",
+   "position": "Auszubildende zur Malerin und Lackiererin (Teilzeit möglich?)",
+   "to": {
+    "org": "Farbraum Gestaltung GmbH",
+    "sal": "f",
+    "contact": "Yilmaz",
+    "street": "Merseburger Straße 101",
+    "city": "06112 Halle (Saale)"
+   },
+   "body": [
+    "nach der Schule habe ich keine Ausbildung gemacht, sondern früh zwei Kinder bekommen. Jetzt sind beide in der Schule, und ich möchte einen richtigen Beruf lernen. Gestrichen und tapeziert habe ich in den letzten Jahren für Freunde und Familie so oft, dass man mich inzwischen fragt, bevor man den Baumarkt betritt.",
+    "Gelesen habe ich, dass eine Ausbildung auch in Teilzeit möglich ist, wenn Betrieb und Kammer zustimmen. Falls das für Sie in Frage kommt, wäre es für mich ideal; in Vollzeit würde ich es mit Hilfe meiner Mutter ebenfalls schaffen. Besonders interessiert mich Ihr Schwerpunkt auf Wandgestaltung mit Kalkputz und Lasuren.",
+    "Ich bin 31, habe einen Realschulabschluss und den Führerschein. Ein Probearbeiten würde mir helfen, Ihnen zu zeigen, wie ich arbeite."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Realschulzeugnis",
+    "Fotos von Arbeiten"
+   ],
+   "from": [
+    "Natalia Becker",
+    "Lessingstraße 12",
+    "06114 Halle (Saale)"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "compact",
+  "accent": 4,
+  "name": "Paul Engelhardt",
+  "title": "Schüler",
+  "street": "Ludwig-Wucherer-Straße 18",
+  "city": "06108 Halle (Saale)",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Zeitungszusteller (Minijob)",
+    "Zustelldienst Halle",
+    "Halle",
+    "- Zustellung dreimal pro Woche, frühmorgens"
+   ],
+   [
+    "07/2025",
+    "08/2025",
+    "Renovierung einer Wohnung (Familie)",
+    "",
+    "",
+    "- Tapezieren, Spachteln, Streichen"
+   ]
+  ],
+  "edu": [
+   [
+    "2021",
+    "2027",
+    "Gemeinschaftsschule, zurzeit Klasse 9",
+    "Gemeinschaftsschule Kastanienallee",
+    "Halle",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Streichen und Spachteln",
+    3
+   ],
+   [
+    "Farbgefühl",
+    4
+   ],
+   [
+    "Sorgfalt",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Graffiti auf legalen Flächen, Basketball"
+ },
+ "do": [
+  "Erste Renovierungserfahrung beschreiben.",
+  "Kunstnote oder Zeichentalent erwähnen.",
+  "Nach einem Praktikum fragen."
+ ],
+ "dont": [
+  "Schreiben, man sei „kreativ“, ohne ein Beispiel.",
+  "Höhenangst verschweigen – Gerüste gehören dazu.",
+  "Unsaubere Bewerbungsunterlagen bei einem Beruf, in dem es um saubere Arbeit geht."
+ ],
+ "questions": [
+  "Was haben Sie schon renoviert?",
+  "Wie schützen Sie Möbel und Böden beim Kunden?",
+  "Haben Sie Höhenangst?",
+  "Welche Farbe würden Sie für ein kleines, dunkles Zimmer vorschlagen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Kann ich die Ausbildung in Teilzeit machen?",
+   "a": "Teilzeitausbildung ist möglich, wenn Betrieb und Kammer zustimmen. Sprich es im Anschreiben oder spätestens im Gespräch offen an."
+  }
+ ],
+ "related": [
+  "maler-lackierer",
+  "ausbildung-tischler",
+  "fliesenleger",
+  "bauhelfer"
+ ]
+}

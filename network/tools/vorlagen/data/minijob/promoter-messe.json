@@ -1,0 +1,160 @@
+{
+ "id": "promoter-messe",
+ "field": "minijob",
+ "name": "Promoter/in und Messehostess",
+ "search": "promoter promoterin messehostess hostess messe event aushilfe verkostung minijob studentenjob bewerbung",
+ "short": "Messen, Verkostungen, Events – tageweise Einsätze.",
+ "desc": "Bewerbung als Promoter/in oder Messehostess: kurze Muster-Anschreiben für Studentin mit Sprachen und Promoter mit Verkostungserfahrung, Lebenslauf und Tipps.",
+ "intro": "Promoter und Messehostessen arbeiten tageweise auf Messen, in Supermärkten oder bei Events. Agenturen achten auf Auftreten, Sprachen, Verfügbarkeit und Zuverlässigkeit. Schreib, welche Einsätze du schon hattest und an welchen Tagen du kannst.",
+ "lookFor": [
+  "Offenes, gepflegtes Auftreten",
+  "Fremdsprachen für Messen",
+  "Verfügbarkeit an Messetagen und Wochenenden",
+  "Zuverlässigkeit bei Kurzfristeinsätzen",
+  "Erfahrung mit Kunden oder Verkauf"
+ ],
+ "letters": [
+  {
+   "label": "Studentin mit drei Sprachen",
+   "level": "minijob",
+   "position": "Messehostess (tageweise)",
+   "to": {
+    "org": "Rhein-Main Eventpersonal GmbH",
+    "sal": "f",
+    "contact": "Kaiser",
+    "street": "Ludwig-Erhard-Anlage 1",
+    "city": "60327 Frankfurt am Main"
+   },
+   "body": [
+    "auf der Buchmesse im letzten Herbst habe ich einem Verlag ausgeholfen, Besucher am Stand begrüßt und auf Englisch und Französisch Fragen beantwortet. Das hat so viel Spaß gemacht, dass ich mich jetzt bei Ihnen für weitere Messeeinsätze bewerbe.",
+    "Ich studiere Übersetzungswissenschaften im vierten Semester. Englisch spreche ich auf C1, Französisch auf C1, Italienisch auf B1. Messetage unter der Woche kann ich mir durch flexible Vorlesungen gut freihalten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Foto (Ganzkörper, auf Anfrage)"
+   ]
+  },
+  {
+   "label": "Promoter mit Erfahrung aus Verkostungen",
+   "level": "minijob",
+   "position": "Promoter für Verkostungen (Wochenende)",
+   "to": {
+    "org": "Promotionteam Hessen",
+    "sal": "none",
+    "street": "Kaiserstraße 50",
+    "city": "60329 Frankfurt am Main"
+   },
+   "body": [
+    "an rund 30 Samstagen habe ich im letzten Jahr in Supermärkten Säfte, Käse und Kaffee verkostet. Mir liegt es, Menschen anzusprechen, ohne aufdringlich zu sein, und ich weiß, wie man mit einem kleinen Stand auch nach sechs Stunden noch freundlich aussieht.",
+    "Hygieneschulung und Belehrung nach dem Infektionsschutzgesetz habe ich. Ich habe ein Auto und kann auch Einsätze im Umland übernehmen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Belehrung Infektionsschutzgesetz"
+   ],
+   "from": [
+    "Marc Eberhardt",
+    "Berger Straße 210",
+    "60385 Frankfurt am Main"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 2,
+  "name": "Julie Moreau",
+  "title": "Studentin Übersetzungswissenschaft",
+  "street": "Leipziger Straße 50",
+  "city": "60487 Frankfurt am Main",
+  "exp": [
+   [
+    "10/2025",
+    "10/2025",
+    "Standbetreuung Buchmesse (5 Tage)",
+    "Verlag Weißer Rabe",
+    "Frankfurt am Main",
+    "- Besucherempfang, Fragen auf Englisch und Französisch"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Übersetzungswissenschaft (B. A.), 4. Semester",
+    "Universität Mainz, Germersheim",
+    "Germersheim",
+    ""
+   ],
+   [
+    "2016",
+    "2024",
+    "Abitur",
+    "Lycée Français Victor Hugo",
+    "Frankfurt am Main",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenansprache",
+    4
+   ],
+   [
+    "Präsentation",
+    4
+   ],
+   [
+    "Organisation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Französisch",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "C2"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Italienisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Theater, Reisen"
+ },
+ "do": [
+  "Sprachen mit Niveau nennen.",
+  "Bisherige Einsätze aufzählen.",
+  "Verfügbarkeit klar machen."
+ ],
+ "dont": [
+  "Kurzfristige Absagen schon im Anschreiben ankündigen.",
+  "Unpassende Fotos.",
+  "Messe-Einsätze ohne Arbeitsvertrag annehmen."
+ ],
+ "questions": [
+  "Welche Sprachen sprechen Sie?",
+  "Wie sprechen Sie Leute an, die vorbeigehen?",
+  "Können Sie kurzfristig einspringen?",
+  "Wie gehen Sie mit langen Stehzeiten um?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "veranstaltungskaufmann",
+  "verkaeuferin-minijob",
+  "servicekraft",
+  "callcenter-agent"
+ ]
+}

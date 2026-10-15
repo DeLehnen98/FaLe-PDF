@@ -1,0 +1,163 @@
+{
+ "id": "disponent",
+ "field": "logistik",
+ "name": "Disponent/in",
+ "search": "disponent disponentin disposition tourenplanung fuhrpark spedition transport einsatzplanung bewerbung",
+ "short": "Touren planen, Fahrer einteilen, Kunden informieren.",
+ "desc": "Bewerbung als Disponent/in in Spedition oder Transport: Muster-Anschreiben für Speditionskaufmann und Berufskraftfahrer mit Wechselwunsch, Lebenslauf und Tipps.",
+ "intro": "Disponentinnen und Disponenten planen Touren und Fahrzeuge, teilen Fahrer ein, reagieren auf Staus, Ausfälle und Eilaufträge und halten Kunden auf dem Laufenden. Gefragt sind Nerven, Organisationstalent, Ortskenntnis und Wissen über Lenk- und Ruhezeiten. Ein Telefon klingelt immer.",
+ "lookFor": [
+  "Kaufmännische Ausbildung oder Erfahrung als Fahrer",
+  "Wissen über Lenk- und Ruhezeiten und Kabotage",
+  "Tourenplanung mit Software",
+  "Belastbarkeit und schnelle Entscheidungen",
+  "Gute Geografie-Kenntnisse"
+ ],
+ "letters": [
+  {
+   "label": "Speditionskaufmann mit Nahverkehr-Erfahrung",
+   "level": "erfahren",
+   "position": "Disponent Nahverkehr",
+   "to": {
+    "org": "Spedition Kurz & Partner GmbH",
+    "sal": "f",
+    "contact": "Kurz",
+    "street": "Industriestraße 77",
+    "city": "90765 Fürth"
+   },
+   "body": [
+    "morgens um fünf ruft ein Fahrer an, sein Fahrzeug springt nicht an, und um sieben erwartet ein Supermarkt seine Ware. Solche Morgen kenne ich aus drei Jahren Disposition im Nahverkehr. Ich habe gelernt, dass die Lösung meistens drei Anrufe entfernt ist und dass man den Kunden informiert, bevor er fragt.",
+    "Gelernt habe ich Kaufmann für Spedition und Logistikdienstleistung. Ich plane mit Tourensoftware für 25 Fahrzeuge, kenne Lenk- und Ruhezeiten und lese die Daten der Fahrerkarten aus. Mit Fahrern komme ich gut aus, weil ich ihnen zuhöre, wenn sie sagen, dass eine Tour nicht zu schaffen ist.",
+    "Kündigungsfrist: vier Wochen zum Monatsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Berufskraftfahrer wechselt in die Disposition",
+   "level": "quereinstieg",
+   "position": "Disponent (Quereinstieg aus dem Fahrdienst)",
+   "to": {
+    "org": "Frankentrans Logistik",
+    "sal": "none",
+    "street": "Hafenstraße 10",
+    "city": "90451 Nürnberg"
+   },
+   "body": [
+    "fünfzehn Jahre bin ich gefahren, Fern- und Nahverkehr, Kühl- und Planenfahrzeuge. Ich weiß, welche Rampen um sieben Uhr verstopft sind, wo man parken kann und was ein Fahrer denkt, wenn er um 17 Uhr noch eine Zusatztour bekommt. Nach einem Bandscheibenvorfall möchte ich die Seite wechseln.",
+    "In meiner jetzigen Firma springe ich seit einem Jahr in der Disposition ein, wenn Not am Mann ist. Die Tourensoftware beherrsche ich in den Grundzügen, den Rest lerne ich schnell."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Fahrerqualifizierung"
+   ],
+   "from": [
+    "Uwe Krämer",
+    "Fürther Straße 200",
+    "90429 Nürnberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "modern",
+  "accent": 5,
+  "name": "Patrick Maier",
+  "title": "Disponent, Kaufmann für Spedition und Logistikdienstleistung",
+  "street": "Schwabacher Straße 50",
+  "city": "90762 Fürth",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Disponent Nahverkehr",
+    "Lebensmittellogistik Franken",
+    "Nürnberg",
+    "- Tourenplanung für 25 Fahrzeuge\n- Fahrerkarten, Lenk- und Ruhezeiten\n- Kundenkommunikation bei Verspätungen"
+   ],
+   [
+    "2020",
+    "2023",
+    "Sachbearbeiter Auftragsannahme",
+    "Lebensmittellogistik Franken",
+    "Nürnberg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2020",
+    "Ausbildung Kaufmann für Spedition und Logistikdienstleistung",
+    "Spedition Bayern-Nord",
+    "Fürth",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tourenplanung",
+    5
+   ],
+   [
+    "Lenk- und Ruhezeiten",
+    4
+   ],
+   [
+    "Tourensoftware",
+    4
+   ],
+   [
+    "Krisenmanagement",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Polnisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Radfahren, Darts"
+ },
+ "do": [
+  "Flottengröße und Verkehrsart nennen.",
+  "Beispiel für schnelle Lösung eines Problems.",
+  "Wissen über Vorschriften zeigen."
+ ],
+ "dont": [
+  "Disposition als Bürojob ohne Stress darstellen.",
+  "Fahrer schlechtmachen.",
+  "Lange Kündigungsfrist verschweigen."
+ ],
+ "questions": [
+  "Ein Fahrer fällt morgens aus – was tun Sie?",
+  "Wie planen Sie Touren?",
+  "Was wissen Sie über Lenk- und Ruhezeiten?",
+  "Wie bleiben Sie ruhig, wenn alles gleichzeitig passiert?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne kaufmännische Ausbildung Disponent werden?",
+   "a": "Ja, vor allem ehemalige Fahrer wechseln oft in die Disposition. Ihre Praxiserfahrung ist sehr gefragt. Kurse zu Tourenplanung und Rechtsvorschriften helfen beim Einstieg."
+  }
+ ],
+ "related": [
+  "speditionskaufmann",
+  "lkw-fahrer",
+  "einkaeufer",
+  "kurierfahrer"
+ ]
+}

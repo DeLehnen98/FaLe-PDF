@@ -4,6 +4,7 @@
 import { openZip, zipXml, kids, kid, attr, rid as relId, readRels, zipImageDataUrl, desc } from './vendor.js';
 import { esc, UserError } from '../ui.js';
 import { fontCss } from './fonts.js';
+import { toSimple } from './hfnorm.js';
 
 const HIGHLIGHT = { yellow: '#FFFF00', green: '#00FF00', cyan: '#00FFFF', magenta: '#FF00FF', blue: '#0000FF', red: '#FF0000', darkBlue: '#000080', darkCyan: '#008080', darkGreen: '#008000', darkMagenta: '#800080', darkRed: '#800000', darkYellow: '#808000', darkGray: '#808080', lightGray: '#C0C0C0', black: '#000000' };
 const on = el => el && !['0', 'false', 'off', 'none'].includes(String(attr(el, 'val') ?? 'true'));
@@ -18,46 +19,66 @@ export async function docxToHtml(data, name = 'Dokument') {
   if (!doc) throw new UserError(`„${name}“ enthält kein Word-Dokument.`);
   const rels = await readRels(zip, mainPath);
   const dir = mainPath.slice(0, mainPath.lastIndexOf('/') + 1);
-  let styles = null, numbering = null, commentsDoc = null, footnotesDoc = null;
+  let styles = null, numbering = null, commentsDoc = null, footnotesDoc = null, endnotesDoc = null, settingsDoc = null;
   for (const r of rels.values()) {
     if (r.type === 'styles') styles = await zipXml(zip, r.target);
     if (r.type === 'numbering') numbering = await zipXml(zip, r.target);
     if (r.type === 'comments') commentsDoc = await zipXml(zip, r.target);
     if (r.type === 'footnotes') footnotesDoc = await zipXml(zip, r.target);
+    if (r.type === 'endnotes') endnotesDoc = await zipXml(zip, r.target);
+    if (r.type === 'settings') settingsDoc = await zipXml(zip, r.target);
   }
   if (!styles) styles = await zipXml(zip, dir + 'styles.xml');
   if (!numbering) numbering = await zipXml(zip, dir + 'numbering.xml');
 
-  const ctx = { zip, rels, styles: readStyles(styles), num: readNumbering(numbering), images: new Map(), listCounters: new Map(), comments: readNotes(commentsDoc, 'comment'), footnotes: readNotes(footnotesDoc, 'footnote'), openCmts: [], inToc: false, tocDone: false, depth: 0 };
   const body = desc(doc, 'body')[0];
   if (!body) throw new UserError(`„${name}“ ist leer oder beschädigt.`);
+  const used = new Set(desc(body, 'pStyle').map(x => attr(x, 'val')));
+  const ctx = { zip, rels, styles: readStyles(styles, used), num: readNumbering(numbering), images: new Map(), listCounters: new Map(), comments: readNotes(commentsDoc, 'comment'), footnotes: readNotes(footnotesDoc, 'footnote'), endnotes: readNotes(endnotesDoc, 'endnote'), openCmts: [], inToc: false, tocDone: false, depth: 0, numberedHeadings: new Set(), dropLetter: null };
 
-  // page setup from the last section
-  const sect = kids(body, 'sectPr').pop() || desc(body, 'sectPr').pop();
+  // sections: paragraph-level w:sectPr end a section, the body-level one describes the last section
+  const sect = kids(body, 'sectPr').pop() || null;
+  const allSects = [...desc(body, 'pPr').map(p => kid(p, 'sectPr')).filter(Boolean), ...(sect ? [sect] : [])];
+  const tw = v => (v != null && !isNaN(+v) ? +v / 20 : null);
+  // page setup from the first section (later sections may switch orientation)
+  const sect0 = allSects[0] || sect;
   const page = { w: 595.3, h: 841.9, mt: 70.9, mr: 70.9, mb: 56.7, ml: 70.9 };
-  if (sect) {
-    const sz = kid(sect, 'pgSz'), mar = kid(sect, 'pgMar');
-    const tw = v => (v != null && !isNaN(+v) ? +v / 20 : null);
+  if (sect0) {
+    const sz = kid(sect0, 'pgSz'), mar = kid(sect0, 'pgMar');
     if (sz) { page.w = tw(attr(sz, 'w')) || page.w; page.h = tw(attr(sz, 'h')) || page.h; }
     if (mar) { page.mt = tw(attr(mar, 'top')) ?? page.mt; page.mr = tw(attr(mar, 'right')) ?? page.mr; page.mb = tw(attr(mar, 'bottom')) ?? page.mb; page.ml = tw(attr(mar, 'left')) ?? page.ml; }
   }
   const blocks = await renderBlocks(kids(body), ctx);
-  // multi-column sections: paragraphs carrying a w:sectPr end a section
-  const finalCols = sect && kid(sect, 'cols') ? +(attr(kid(sect, 'cols'), 'num') || 1) : 1;
   const parts = [];
   let curPart = [];
   for (const b of blocks) {
-    if (b && typeof b === 'object' && b.sectEnd) { parts.push({ cols: b.cols, gap: b.gap, items: curPart }); curPart = []; continue; }
+    if (b && typeof b === 'object' && b.sectEnd) { parts.push({ ...b.info, items: curPart }); curPart = []; continue; }
     curPart.push(b);
   }
-  parts.push({ cols: finalCols, gap: sect && kid(sect, 'cols') ? +(attr(kid(sect, 'cols'), 'space') || 425) / 20 : 18, items: curPart });
-  const html = parts.map(pt => {
+  parts.push({ ...sectInfo(sect), items: curPart });
+  const firstOrient = orientOf(sect0) || (page.w > page.h ? 'landscape' : 'portrait');
+  let prevOrient = firstOrient;
+  const html = parts.map((pt, i) => {
     const inner = closeLists(pt.items).join('');
-    return pt.cols > 1 && inner ? `<div class="sect" data-cols="${Math.min(4, pt.cols)}" data-gap="${Math.round(pt.gap || 18)}" style="columns:${Math.min(4, pt.cols)};column-gap:${Math.round(pt.gap || 18)}pt">${inner}</div>` : inner;
+    const body2 = pt.cols > 1 && inner ? `<div class="sect" data-cols="${Math.min(4, pt.cols)}" data-gap="${Math.round(pt.gap || 18)}" style="columns:${Math.min(4, pt.cols)};column-gap:${Math.round(pt.gap || 18)}pt">${inner}</div>` : inner;
+    let brk = '';
+    const orient = pt.orient || prevOrient;
+    if (i > 0 && pt.type !== 'continuous' && (orient !== prevOrient || pt.type === 'nextPage' || pt.type === 'oddPage' || pt.type === 'evenPage')) brk = `<hr data-page-break data-break="section"${orient !== prevOrient || orient !== firstOrient ? ` data-orient="${orient}"` : ''}>`;
+    prevOrient = orient;
+    return brk + body2;
   }).join('') || '<p><br></p>';
-  const hf = sect ? await readHeaderFooter(zip, rels, sect) : null;
-  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf, styles: ctx.styles.defs, math: ctx.math || 0 };
+  // header/footer of the first section that defines one
+  const hfSect = allSects.find(sp => kids(sp, 'headerReference').length || kids(sp, 'footerReference').length) || sect;
+  const evenAndOdd = !!(settingsDoc && desc(settingsDoc, 'evenAndOddHeaders')[0] && on(desc(settingsDoc, 'evenAndOddHeaders')[0]));
+  const hf = hfSect ? await readHeaderFooter(zip, rels, hfSect, evenAndOdd) : null;
+  // numbered headings (heading paragraphs with decimal numbering) → numbered heading styles
+  let defs = ctx.styles.defs;
+  if (ctx.numberedHeadings.size) { defs = { ...(defs || {}) }; for (const l of ctx.numberedHeadings) defs[`h${l}`] = { ...(defs[`h${l}`] || {}), numbered: true }; }
+  return { html, page, baseSize: ctx.styles.baseSize, baseFont: ctx.styles.baseFont, hf, styles: defs, math: ctx.math || 0 };
 }
+
+const orientOf = sp => { const sz = sp && kid(sp, 'pgSz'); if (!sz) return null; const w = +attr(sz, 'w'), h = +attr(sz, 'h'); return attr(sz, 'orient') === 'landscape' || (w && h && w > h) ? 'landscape' : 'portrait'; };
+const sectInfo = sp => { const cols = sp && kid(sp, 'cols'); const ty = sp && kid(sp, 'type'); return { cols: cols ? +(attr(cols, 'num') || 1) : 1, gap: cols ? +(attr(cols, 'space') || 425) / 20 : 18, orient: orientOf(sp), type: ty ? attr(ty, 'val') : 'nextPage' }; };
 
 /** comments.xml / footnotes.xml → Map(id → {text, author, date}) */
 function readNotes(doc, tag) {
@@ -65,46 +86,110 @@ function readNotes(doc, tag) {
   if (!doc) return map;
   for (const el of desc(doc, tag)) {
     const id = attr(el, 'id');
-    if (tag === 'footnote' && (attr(el, 'type') === 'separator' || attr(el, 'type') === 'continuationSeparator')) continue;
+    if ((tag === 'footnote' || tag === 'endnote') && /separator|continuationNotice/i.test(attr(el, 'type') || '')) continue;
     const text = desc(el, 'p').map(p => desc(p, 't').map(t => t.textContent).join('')).join('\n').trim();
     map.set(id, { text, author: attr(el, 'author') || '', date: attr(el, 'date') || '' });
   }
   return map;
 }
 
-/** Default header/footer text + page-number detection. */
-async function readHeaderFooter(zip, rels, sect) {
-  const out = { header: '', headerAlign: 'left', footer: '', footerAlign: 'left', pageNumbers: 'none', pageFormat: 'n' };
-  let any = false;
-  for (const [tag, key] of [['headerReference', 'header'], ['footerReference', 'footer']]) {
-    const ref = kids(sect, tag).find(r => attr(r, 'type') === 'default') || kids(sect, tag)[0];
+/** Header/footer zones (left · centre · right with fields), first/even pages, numbering format, watermark. */
+async function readHeaderFooter(zip, rels, sect, evenAndOdd = false) {
+  const refs = { h: {}, f: {} };
+  for (const [tag, w] of [['headerReference', 'h'], ['footerReference', 'f']]) for (const r of kids(sect, tag)) refs[w][attr(r, 'type') || 'default'] = r;
+  let watermark = null;
+  const parse = async ref => {
     const rel = ref && rels.get(relId(ref));
-    if (!rel) continue;
+    if (!rel) return null;
     const doc = await zipXml(zip, rel.target);
-    if (!doc) continue;
-    const paras = desc(doc, 'p');
-    const texts = [];
-    for (const p of paras) {
-      const instr = desc(p, 'instrText').map(x => x.textContent).join(' ') + ' ' + desc(p, 'fldSimple').map(x => attr(x, 'instr') || '').join(' ');
-      const jc = desc(p, 'jc')[0];
-      const align = { center: 'center', right: 'right', end: 'right' }[jc && attr(jc, 'val')] || 'left';
-      const t = desc(p, 't').map(x => x.textContent).join('').trim();
-      if (/\bPAGE\b/.test(instr)) {
-        out.pageNumbers = `${key}-${align}`;
-        out.pageFormat = /NUMPAGES/.test(instr) ? 'n-of-m' : 'n';
-        const rest = t.replace(/^Seite\s*/i, '').replace(/\s*von\s*$/i, '').replace(/[·\-–]\s*$/, '').trim();
-        if (rest && !/^\d+$/.test(rest)) { texts.push(rest); out[`${key}Align`] = align; }
-      } else if (t) { texts.push(t); out[`${key}Align`] = align; }
+    if (!doc) return null;
+    if (!watermark) {
+      const tp = desc(doc, 'textpath').find(x => attr(x, 'string'));
+      if (tp) {
+        const shape = tp.parentNode;
+        const fill = shape && desc(shape, 'fill')[0];
+        const fc = (shape && attr(shape, 'fillcolor')) || '';
+        const op = fill && attr(fill, 'opacity');
+        const opv = op ? (/f$/.test(op) ? +op.slice(0, -1) / 65536 : +op) : 0.45;
+        watermark = { text: attr(tp, 'string').slice(0, 60), color: /^#[0-9a-f]{6}$/i.test(fc) ? fc.toUpperCase() : fc === 'silver' ? '#B4B8CC' : '#B4B8CC', opacity: Number.isFinite(opv) && opv > 0 ? Math.round(opv * 100) / 100 : 0.45 };
+      }
     }
-    if (texts.length) out[key] = texts.join(' ');
-    if (texts.length || out.pageNumbers !== 'none') any = true;
+    return zonesOfPart(doc);
+  };
+  const z = { h: {}, f: {} };
+  for (const w of ['h', 'f']) for (const t of ['default', 'first', 'even']) z[w][t] = await parse(refs[w][t]);
+  const titlePg = !!(kid(sect, 'titlePg') && on(kid(sect, 'titlePg')));
+  const E = ['', '', ''];
+  const adv = { zones: { h: z.h.default || E.slice(), f: z.f.default || E.slice() } };
+  if (titlePg) adv.first = { h: z.h.first || E.slice(), f: z.f.first || E.slice() };
+  if (evenAndOdd && (z.h.even || z.f.even)) adv.even = { h: z.h.even || E.slice(), f: z.f.even || E.slice() };
+  const pnt = kid(sect, 'pgNumType');
+  if (pnt) {
+    const st = attr(pnt, 'start'), fmt = attr(pnt, 'fmt');
+    if (st != null && !isNaN(+st)) adv.pnStart = +st;
+    const F = { lowerRoman: 'i', upperRoman: 'I', lowerLetter: 'a', upperLetter: 'A' };
+    if (F[fmt]) adv.pnStyle = F[fmt];
   }
-  if (attr(kid(sect, 'titlePg'), 'val') !== '0' && kid(sect, 'titlePg')) out.firstPage = false;
-  return any ? out : null;
+  if (watermark) adv.watermark = watermark;
+  const any = [adv.zones, adv.first, adv.even].some(x => x && [...x.h, ...x.f].some(Boolean));
+  if (!any && !watermark) return null;
+  if (!any) return { watermark };
+  return toSimple(adv) || adv;
+}
+
+/** One header/footer part → [left, centre, right] with {SEITE}/{SEITEN}/{DATUM}/{TITEL} fields. */
+function zonesOfPart(doc) {
+  const out = ['', '', ''];
+  const add = (k, t) => { t = t.replace(/\s+/g, ' ').trim(); if (t) out[k] = out[k] ? `${out[k]} ${t}` : t; };
+  for (const p of desc(doc, 'p')) {
+    if (p.parentNode && p.parentNode.localName === 'txbxContent') continue;
+    const pPr = kid(p, 'pPr');
+    const jc = pPr && kid(pPr, 'jc');
+    const align = { center: 1, right: 2, end: 2 }[jc && attr(jc, 'val')] ?? 0;
+    const tabs = pPr && kid(pPr, 'tabs') ? kids(kid(pPr, 'tabs'), 'tab').map(t => attr(t, 'val')).filter(v => v !== 'clear') : [];
+    // segments split at tabs; fields become placeholders
+    const segs = [''];
+    const segAlign = [align];
+    let fld = null;
+    const fieldTok = instr => { const m = /^\s*(PAGE|NUMPAGES|SECTIONPAGES|DATE|TIME|TITLE)\b/i.exec(instr || ''); return m ? { PAGE: '{SEITE}', NUMPAGES: '{SEITEN}', SECTIONPAGES: '{SEITEN}', DATE: '{DATUM}', TIME: '{DATUM}', TITLE: '{TITEL}' }[m[1].toUpperCase()] : null; };
+    const walk = el => {
+      for (const c of kids(el)) {
+        const ln = c.localName;
+        if (ln === 'fldSimple') { const tok = fieldTok(attr(c, 'instr')); if (tok) segs[segs.length - 1] += tok; else walk(c); continue; }
+        if (ln === 'r') {
+          // a run may hold text, field characters and instructions in any order (e.g. "Seite " PAGE " von " NUMPAGES)
+          for (const x of kids(c)) {
+            const xl = x.localName;
+            if (xl === 'fldChar') { const t = attr(x, 'fldCharType'); if (t === 'begin') fld = { instr: '', phase: 'instr' }; else if (t === 'separate' && fld) fld.phase = 'result'; else if (t === 'end' && fld) { const tok = fieldTok(fld.instr); segs[segs.length - 1] += tok || fld.result || ''; fld = null; } continue; }
+            if (xl === 'instrText') { if (fld) fld.instr += x.textContent; continue; }
+            if (fld && fld.phase === 'instr') continue;
+            if (xl === 't') { if (fld && fld.phase === 'result') fld.result = (fld.result || '') + x.textContent; else segs[segs.length - 1] += x.textContent; }
+            else if (xl === 'tab') { segs.push(''); segAlign.push(null); }
+            else if (xl === 'ptab') { segs.push(''); segAlign.push({ center: 1, right: 2 }[attr(x, 'alignment')] ?? null); }
+            else if (xl === 'pgNum') segs[segs.length - 1] += '{SEITE}';
+          }
+          continue;
+        }
+        if (['hyperlink', 'smartTag', 'sdt', 'sdtContent', 'ins', 'customXml'].includes(ln)) walk(c);
+      }
+    };
+    walk(p);
+    if (segs.length === 1) { add(align, segs[0]); continue; }
+    // tab positions: centre/right stops (or a default "left · centre · right" layout)
+    const kinds = segs.map((_, i) => (i === 0 ? 0 : segAlign[i] != null ? segAlign[i] : null));
+    let ti = 0;
+    for (let i = 1; i < segs.length; i++) {
+      if (kinds[i] != null) continue;
+      const tv = tabs[ti++];
+      kinds[i] = tv === 'center' ? 1 : tv === 'right' || tv === 'end' ? 2 : segs.length === 2 ? 2 : Math.min(2, i);
+    }
+    segs.forEach((t, i) => add(kinds[i], t));
+  }
+  return out;
 }
 
 // ---------------- styles ----------------
-function readStyles(doc) {
+function readStyles(doc, used = new Set()) {
   const map = new Map();
   const res = { map, baseSize: 11, baseFont: '', defaultPara: null, defs: null };
   if (!doc) return res;
@@ -121,7 +206,7 @@ function readStyles(doc) {
     const id = attr(s, 'styleId');
     const nameEl = kid(s, 'name');
     const st = {
-      id, type: attr(s, 'type'), name: (nameEl ? attr(nameEl, 'val') : id || '').toLowerCase(),
+      id, type: attr(s, 'type'), name: (nameEl ? attr(nameEl, 'val') : id || '').toLowerCase(), displayName: nameEl ? attr(nameEl, 'val') : id || '', custom: attr(s, 'customStyle') === '1' || attr(s, 'customStyle') === 'true',
       basedOn: kid(s, 'basedOn') ? attr(kid(s, 'basedOn'), 'val') : null,
       pPr: kid(s, 'pPr'), rPr: kid(s, 'rPr'), tblPr: kid(s, 'tblPr'),
       isDefault: attr(s, 'default') === '1' || attr(s, 'default') === 'true',
@@ -162,11 +247,24 @@ function readStyles(doc) {
     h3: find(['Heading3', 'berschrift3', 'Überschrift3'], ['heading 3', 'überschrift 3']), h4: find(['Heading4', 'berschrift4', 'Überschrift4'], ['heading 4', 'überschrift 4']),
     quote: find(['Quote', 'Zitat'], ['quote', 'zitat']), code: find(['Code', 'HTMLPreformatted', 'HTMLVorformatiert'], ['code', 'html preformatted', 'html vorformatiert']),
     nospace: find(['NoSpacing', 'KeinLeerraum'], ['no spacing', 'kein leerraum']),
+    caption: find(['Caption', 'Beschriftung'], ['caption', 'beschriftung']),
   };
+  // user-defined paragraph styles that the document uses → u1, u2 … (max. 30)
+  let un = 0;
+  for (const st of map.values()) {
+    if (un >= 30) break;
+    if (st.type !== 'paragraph' || !st.custom || !used.has(st.id) || Object.values(ids).includes(st.id)) continue;
+    if (/^(toc|verzeichnis|header|footer|kopfzeile|fußzeile|list|listenabsatz)/i.test(st.name)) continue;
+    ids[`u${++un}`] = st.id;
+  }
   res.ids = ids;
   res.styleIdMap = new Map(Object.entries(ids).filter(([, v]) => v).map(([k, v]) => [v, k]));
   const defs = {};
-  for (const [k, id] of Object.entries(ids)) { const d = defOf(id, k === 'normal'); if (d && Object.keys(d).length) defs[k] = d; }
+  for (const [k, id] of Object.entries(ids)) {
+    const d = defOf(id, k === 'normal');
+    if (/^u\d+$/.test(k)) { const st = map.get(id); defs[k] = { ...(d || {}), name: (st.displayName || id).slice(0, 40), custom: true }; const ind = prop(chainOf(id), 'pPr', 'ind'); const left = ind && +(attr(ind, 'left') ?? attr(ind, 'start') ?? 0) / 20; if (left > 2) defs[k].indent = left; continue; }
+    if (d && Object.keys(d).length) defs[k] = d;
+  }
   if (defs.normal && !defs.normal.size) defs.normal.size = res.baseSize;
   res.defs = Object.keys(defs).length ? defs : null;
   return res;
@@ -247,17 +345,21 @@ async function renderBlocks(nodes, ctx) {
       const pStyle = desc(n, 'pStyle')[0];
       const sv = pStyle ? attr(pStyle, 'val') || '' : '';
       const instr = desc(n, 'instrText').map(x => x.textContent).join(' ');
-      if (/^TOCHeading$|^Inhaltsverzeichnisberschrift$/i.test(sv) && !ctx.tocDone) { ctx.tocTitle = desc(n, 't').map(t => t.textContent).join('').trim(); continue; }
-      if (/\bTOC\b/.test(instr) && !ctx.tocDone) {
+      if (/^TOCHeading$|^Inhaltsverzeichnisberschrift$/i.test(sv) && !ctx.inToc) { ctx.tocTitle = desc(n, 't').map(t => t.textContent).join('').trim(); continue; }
+      if (/\bTOC\b/.test(instr) && !ctx.inToc) {
         ctx.inToc = true; ctx.tocDone = true;
-        out.push(TOC_BLOCK(ctx.tocTitle || 'Inhaltsverzeichnis'));
+        const cap = /\\c\s+"?([^"\\]+?)"?\s*(\\|$)/.exec(instr);
+        out.push(cap ? `<div class="toc" data-toc data-toc-kind="${esc(cap[1].trim())}" data-toc-title="${esc(ctx.tocTitle || `${cap[1].trim()}sverzeichnis`)}" contenteditable="false"></div>` : TOC_BLOCK(ctx.tocTitle || 'Inhaltsverzeichnis'));
+        ctx.tocTitle = null;
         if (desc(n, 'fldChar').some(f => attr(f, 'fldCharType') === 'end')) ctx.inToc = false;
         continue;
       }
       if (ctx.inToc) { if (desc(n, 'fldChar').some(f => attr(f, 'fldCharType') === 'end')) ctx.inToc = false; continue; }
-      out.push(...await renderParagraph(n, ctx));
       const pPr = kid(n, 'pPr'), sp = pPr && kid(pPr, 'sectPr');
-      if (sp && ctx.depth === 0) { const cols = kid(sp, 'cols'); out.push({ sectEnd: true, cols: cols ? +(attr(cols, 'num') || 1) : 1, gap: cols ? +(attr(cols, 'space') || 425) / 20 : 18 }); }
+      // an empty paragraph that only carries the section properties is not content
+      if (sp && ctx.depth === 0 && !desc(n, 't').length && !desc(n, 'drawing').length && !desc(n, 'pict').length && !desc(n, 'br').length) { out.push({ sectEnd: true, info: sectInfo(sp) }); continue; }
+      out.push(...await renderParagraph(n, ctx));
+      if (sp && ctx.depth === 0) out.push({ sectEnd: true, info: sectInfo(sp) });
     }
     else if (ln === 'tbl') out.push(await renderTable(n, ctx));
     else if (ln === 'sdt') {
@@ -285,11 +387,13 @@ async function renderParagraph(p, ctx) {
   if (!numPr) numPr = styleProp(ctx, styleId, 'pPr', 'numPr');
   let list = null;
   if (numPr && kid(numPr, 'numId')) list = listInfo(ctx, attr(kid(numPr, 'numId'), 'val'), kid(numPr, 'ilvl') ? +attr(kid(numPr, 'ilvl'), 'val') : 0);
+  // numbered headings stay headings (the numbering becomes the heading style's "numbered" option)
+  if (list && level >= 1 && sid !== 'title') { if (list.ordered) ctx.numberedHeadings.add(level); list = null; }
   // alignment / indentation / spacing (direct formatting; style values come from the Formatvorlagen)
   const jcEl = (pPr && kid(pPr, 'jc')) || (known ? null : styleProp(ctx, styleId, 'pPr', 'jc'));
   const jc = jcEl ? attr(jcEl, 'val') : null;
   const styles = [];
-  const align = { center: 'center', right: 'right', end: 'right', both: 'justify', distribute: 'justify' }[jc];
+  const align = { center: 'center', right: 'right', end: 'right', both: 'justify', distribute: 'justify' }[jc] || ((jc === 'left' || jc === 'start') && pPr && kid(pPr, 'jc') ? 'left' : null);
   if (align) styles.push(`text-align:${align}`);
   const ind = (pPr && kid(pPr, 'ind')) || (known ? null : styleProp(ctx, styleId, 'pPr', 'ind'));
   if (ind && !list) {
@@ -314,7 +418,16 @@ async function renderParagraph(p, ctx) {
   const pbBefore = (pPr && on(kid(pPr, 'pageBreakBefore'))) || false;
   const keepNext = (pPr && on(kid(pPr, 'keepNext'))) && !level;
   const tabsEl = pPr && kid(pPr, 'tabs');
-  const tabs = tabsEl ? kids(tabsEl, 'tab').filter(t => attr(t, 'val') !== 'clear' && attr(t, 'pos') != null).map(t => Math.round(+attr(t, 'pos') / 2) / 10).filter(x => x > 0 && x < 2000).slice(0, 20) : [];
+  const TAB_AL = { center: 'c', right: 'r', end: 'r', decimal: 'd' }, TAB_LD = { dot: 'dot', middleDot: 'dot', hyphen: 'dash', underscore: 'line', heavy: 'line' };
+  const tabs = tabsEl ? kids(tabsEl, 'tab').filter(t => attr(t, 'val') !== 'clear' && attr(t, 'pos') != null).map(t => { const pos = Math.round(+attr(t, 'pos') / 2) / 10; const a = TAB_AL[attr(t, 'val')] || '', l = TAB_LD[attr(t, 'leader')] || ''; return pos > 0 && pos < 2000 ? `${pos}${a || l ? `:${a || 'l'}${l ? `:${l}` : ''}` : ''}` : null; }).filter(Boolean).slice(0, 20) : [];
+  // drop cap: a framed paragraph holding the first letter of the next paragraph
+  const frame = pPr && kid(pPr, 'framePr');
+  if (frame && /drop|margin/.test(attr(frame, 'dropCap') || '')) {
+    const letter = desc(p, 't').map(t => t.textContent).join('').trim();
+    if (letter && letter.length <= 3) { ctx.dropLetter = letter; return []; }
+  }
+  const dropLetter = ctx.dropLetter;
+  ctx.dropLetter = null;
 
   const segments = [];
   const extra = [];
@@ -332,8 +445,8 @@ async function renderParagraph(p, ctx) {
     const inner = seg.join('');
     if (i > 0 && !inner.trim()) return;
     if (i === 0 && !inner.trim() && segments.length > 1 && !list) return; // paragraph holding only a page break
-    const content = inner || '<br>';
-    const sAttr = (styles.length ? ` style="${styles.join(';')}"` : '') + (keepNext ? ' data-keep-next' : '') + (tabs.length ? ` data-tabs="${tabs.join(',')}"` : '');
+    const content = (i === 0 && dropLetter ? esc(dropLetter) : '') + inner || '<br>';
+    const sAttr = (styles.length ? ` style="${styles.join(';')}"` : '') + (keepNext ? ' data-keep-next' : '') + (tabs.length ? ` data-tabs="${tabs.join(',')}"` : '') + (i === 0 && dropLetter ? ' data-dropcap' : '');
     if (list && i === 0) out.push({ li: true, level: list.level, ordered: list.ordered, type: list.type, start: list.start, key: list.key, ml: list.ml, bullet: list.bullet, html: content, style: sAttr });
     else if (level) out.push(`<h${level}${sAttr}>${content}</h${level}>`);
     else if (sid === 'title') out.push(`<p class="title"${sAttr}>${content}</p>`);
@@ -341,6 +454,8 @@ async function renderParagraph(p, ctx) {
     else if (sid === 'quote') out.push(`<p class="quote"${sAttr}>${content}</p>`);
     else if (sid === 'nospace') out.push(`<p class="nospace"${sAttr}>${content}</p>`);
     else if (sid === 'code') out.push(`<pre${sAttr}>${content}</pre>`);
+    else if (sid === 'caption') out.push(`<p class="caption"${sAttr}>${content}</p>`);
+    else if (sid && /^u\d+$/.test(sid)) out.push(`<p class="us-${sid}"${sAttr}>${content}</p>`);
     else out.push(`<p${sAttr}>${content}</p>`);
   });
   out.push(...extra);
@@ -350,7 +465,7 @@ async function renderParagraph(p, ctx) {
 function runStyle(rPr, st) {
   const ctx = st.ctx;
   let rStyle = rPr && kid(rPr, 'rStyle') ? attr(kid(rPr, 'rStyle'), 'val') : null;
-  const get = name => (rPr && kid(rPr, name)) || (rStyle && styleProp(ctx, rStyle, 'rPr', name)) || (!st.isHeading && st.styleId && st.styleId !== ctx.styles.defaultPara ? styleProp(ctx, st.styleId, 'rPr', name) : null);
+  const get = name => (rPr && kid(rPr, name)) || (rStyle && styleProp(ctx, rStyle, 'rPr', name)) || (!st.isHeading && !st.sid && st.styleId && st.styleId !== ctx.styles.defaultPara ? styleProp(ctx, st.styleId, 'rPr', name) : null);
   const f = {};
   const b = get('b'); if (b && on(b)) f.b = true;
   const i = get('i'); if (i && on(i)) f.i = true;
@@ -397,6 +512,21 @@ function wrapCmt(html, ctx) {
   if (!c) return html;
   return `<span class="cmt" data-cmt="c${esc(id)}" data-cmt-text="${esc(c.text)}" data-cmt-author="${esc(c.author)}" data-cmt-date="${esc(c.date)}">${html}</span>`;
 }
+/** REF / PAGEREF / SEQ / = (formula) fields → editor spans with the cached result. */
+const specialKind = instr => { const m = /^\s*(REF|PAGEREF|SEQ|=)/i.exec(instr || ''); return m ? m[1].toUpperCase() : null; };
+const FMT_OF_PIC = { '#.##0,00 €': '0,00 €', '#,##0.00 €': '0,00 €', '#.##0,00': '0,00', '#,##0.00': '0,00', '0': '0', '0 %': '0 %', '0%': '0 %' };
+function specialField(instr, result) {
+  const kind = specialKind(instr);
+  const res = esc(String(result || '').trim());
+  if (kind === 'REF' || kind === 'PAGEREF') { const m = /^\s*(?:REF|PAGEREF)\s+"?([^"\s\\]+)/i.exec(instr); if (!m) return res; return `<span class="xref" data-ref="${esc(m[1])}" data-xk="${kind === 'PAGEREF' ? 'page' : 'text'}" contenteditable="false">${res || '?'}</span>`; }
+  if (kind === 'SEQ') { const m = /^\s*SEQ\s+"?([^"\s\\]+)/i.exec(instr); return `<span class="seq" data-seq="${esc(m ? m[1] : 'Abbildung')}" contenteditable="false">${res || '1'}</span>`; }
+  if (kind === '=') {
+    const pic = /\\#\s*"([^"]+)"/.exec(instr) || /\\#\s*(\S+)/.exec(instr);
+    const f = instr.replace(/\\#\s*("[^"]*"|\S+)/, '').replace(/\\\*\s*\S+/g, '').trim();
+    return `<span class="tf" data-f="${esc(f)}" data-fmt="${esc(pic ? FMT_OF_PIC[pic[1].trim()] || '' : '')}" contenteditable="false">${res || '0'}</span>`;
+  }
+  return res;
+}
 const fieldName = instr => { const m = /MERGEFIELD\s+"?([^"\\]+?)"?(\s+\\|\s*$)/i.exec(String(instr).trim() + ' '); return m ? m[1].trim() : null; };
 const mfHtml = name => `<span class="mf" data-field="${esc(name)}" contenteditable="false">«${esc(name)}»</span>`;
 /** OMML → linear text: fractions (a)/(b), scripts x^2 / x_i, roots √(…), delimiters, n-ary operators. */
@@ -423,18 +553,25 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
   const ln = n.localName;
   if (ln === 'commentRangeStart') { st.ctx.openCmts.push(attr(n, 'id')); return; }
   if (ln === 'commentRangeEnd') { const id = attr(n, 'id'); st.ctx.openCmts = st.ctx.openCmts.filter(x => x !== id); return; }
+  if (ln === 'bookmarkStart') { const nm = attr(n, 'name') || ''; if (nm && !/^_(GoBack|Toc|Hlk)/i.test(nm) && nm.length <= 60) cur.push(`<span class="bm" data-bm="${esc(nm)}" contenteditable="false"></span>`); return; }
   if (ln === 'r') {
-    // complex fields (MERGEFIELD): begin → instrText → separate → result → end
+    // complex fields: begin → instrText → separate → result → end (MERGEFIELD, REF/PAGEREF, SEQ, = formulas)
     const fc = kid(n, 'fldChar');
     if (fc) {
       const t = attr(fc, 'fldCharType');
-      if (t === 'begin') st.field = { instr: '', phase: 'instr' };
-      else if (t === 'separate' && st.field) st.field.phase = 'result';
-      else if (t === 'end' && st.field) { const nm = fieldName(st.field.instr); st.field = null; if (nm) cur.push(mfHtml(nm)); }
+      if (t === 'begin') { if (st.field) st.field.depth = (st.field.depth || 0) + 1; else st.field = { instr: '', phase: 'instr', result: '' }; }
+      else if (t === 'separate' && st.field && !st.field.depth) st.field.phase = 'result';
+      else if (t === 'end' && st.field) {
+        if (st.field.depth) { st.field.depth--; return; }
+        const f = st.field; st.field = null;
+        const nm = fieldName(f.instr);
+        if (nm) cur.push(mfHtml(nm));
+        else { const h = specialField(f.instr, f.result); if (h) cur.push(h); }
+      }
       return;
     }
     if (st.field && st.field.phase === 'instr') { const it = kid(n, 'instrText'); if (it) st.field.instr += it.textContent; return; }
-    if (st.field && st.field.phase === 'result' && fieldName(st.field.instr)) return;
+    if (st.field && st.field.phase === 'result' && (fieldName(st.field.instr) || specialKind(st.field.instr))) { st.field.result += desc(n, 't').map(x => x.textContent).join(''); return; }
     const f = runStyle(kid(n, 'rPr'), st);
     let buf = '';
     const flush = () => { if (buf) { cur.push(wrapCmt(wrapRun(buf, f), st.ctx)); buf = ''; } };
@@ -453,6 +590,7 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
       else if (cn === 'AlternateContent') { flush(); const ch = kid(c, 'Choice') || kid(c, 'Fallback'); if (ch) for (const d of kids(ch)) if (['drawing', 'pict'].includes(d.localName)) cur.push(await renderDrawing(d, st)); }
       else if (cn === 'lastRenderedPageBreak') { /* layout hint only */ }
       else if (cn === 'footnoteReference') { flush(); const fn = st.ctx.footnotes.get(attr(c, 'id')); if (fn) cur.push(`<sup class="fn" data-fn="${esc(fn.text)}" contenteditable="false"></sup>`); }
+      else if (cn === 'endnoteReference') { flush(); const en = st.ctx.endnotes.get(attr(c, 'id')); if (en) cur.push(`<sup class="en" data-en="${esc(en.text)}" contenteditable="false"></sup>`); }
       else if (cn === 'commentReference') { /* anchor only */ }
     }
     flush();
@@ -461,11 +599,12 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
   if (ln === 'hyperlink') {
     const rid = relId(n);
     const rel = rid && st.ctx.rels.get(rid);
-    const href = rel && rel.external ? rel.target : null;
+    const anchor = attr(n, 'anchor');
+    const href = rel && rel.external ? rel.target : anchor && !/^_Toc/i.test(anchor) ? `#${anchor}` : null;
     const inner = [];
     for (const c of kids(n)) await renderInline(c, st, inner, pageBreak);
     const html = inner.join('');
-    if (href && /^(https?:|mailto:|tel:)/i.test(href)) cur.push(`<a href="${esc(href)}">${html}</a>`);
+    if (href && /^(https?:|mailto:|tel:|#)/i.test(href)) cur.push(`<a href="${esc(href)}">${html}</a>`);
     else cur.push(html);
     return;
   }
@@ -476,9 +615,31 @@ async function renderInline(n, st, cur, pageBreak, link = null) {
     if (html) cur.push(`<${ln} class="tc" data-author="${esc(attr(n, 'author') || '')}" data-date="${esc(attr(n, 'date') || '')}">${html}</${ln}>`);
     return;
   }
-  if (ln === 'fldSimple') { const nm = fieldName(attr(n, 'instr') || ''); if (nm) { cur.push(mfHtml(nm)); return; } for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
+  if (ln === 'fldSimple') {
+    const instr = attr(n, 'instr') || '';
+    const nm = fieldName(instr);
+    if (nm) { cur.push(mfHtml(nm)); return; }
+    if (specialKind(instr)) { const h = specialField(instr, desc(n, 't').map(x => x.textContent).join('')); if (h) cur.push(h); return; }
+    for (const c of kids(n)) await renderInline(c, st, cur, pageBreak);
+    return;
+  }
   if (['smartTag', 'customXml', 'bdo', 'dir', 'moveTo'].includes(ln)) { for (const c of kids(n)) await renderInline(c, st, cur, pageBreak); return; }
-  if (ln === 'sdt') { for (const c of kids(kid(n, 'sdtContent'))) await renderInline(c, st, cur, pageBreak); return; }
+  if (ln === 'sdt') {
+    const tag = desc(kid(n, 'sdtPr'), 'tag')[0];
+    const tv = tag ? attr(tag, 'val') || '' : '';
+    if (tv.startsWith('fale-tf:')) {
+      const [fmt, ...f] = tv.slice(8).split('|');
+      const inner = [];
+      for (const c of kids(kid(n, 'sdtContent'))) await renderInline(c, st, inner, pageBreak);
+      const raw = inner.join('');
+      const text = raw.replace(/<[^>]+>/g, '');
+      const span = `<span class="tf" data-f="${esc(f.join('|'))}" data-fmt="${esc(fmt)}" contenteditable="false">${text || '0'}</span>`;
+      cur.push(/<strong>/.test(raw) ? `<strong>${span}</strong>` : span);
+      return;
+    }
+    for (const c of kids(kid(n, 'sdtContent'))) await renderInline(c, st, cur, pageBreak);
+    return;
+  }
   if (ln === 'AlternateContent') { const ch = kid(n, 'Choice') || kid(n, 'Fallback'); if (ch) for (const c of kids(ch)) await renderInline(c, st, cur, pageBreak); }
   // Office Math (OMML): no formula layout – the formula is kept as readable linear text (a/b, x^2, √(…))
   if (ln === 'oMath' || ln === 'oMathPara') { const t = mathText(n).trim(); if (t) { st.ctx.math = (st.ctx.math || 0) + 1; cur.push(`<i>${esc(t)}</i>`); } return; }

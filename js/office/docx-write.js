@@ -1,14 +1,23 @@
-// Document model → .docx (docx library, loaded lazily). Formatvorlagen, Absatzformate, Listen (auch mehrstufig),
-// Tabellen (Kopfzeilen, Rahmen, Schattierung), Bilder (auch umflossen), Spalten-Abschnitte, Änderungen (w:ins/w:del),
-// Seriendruckfelder, Kommentare, Fußnoten, Inhaltsverzeichnis, Kopf-/Fußzeilen.
+// Document model → .docx (docx library, loaded lazily). Formatvorlagen (auch eigene), Absatzformate, Tabstopps mit
+// Füllzeichen, Listen (auch mehrstufig), nummerierte Überschriften, Tabellen (Kopfzeilen, Rahmen, Schattierung,
+// Formelfelder), Bilder (auch umflossen), Abschnitte (Spalten, Hoch-/Querformat je Abschnitt), Änderungen
+// (w:ins/w:del), Seriendruckfelder, Kommentare, Fuß- und Endnoten, Textmarken, interne Links, Querverweise,
+// Beschriftungen (SEQ), Inhalts- und Abbildungsverzeichnis, Kopf-/Fußzeilen (drei Bereiche, erste/gerade Seiten,
+// Seitenzahlformat), Wasserzeichen, Initialen.
 import { loadDocx, imageToBytes, loadJSZip } from './vendor.js';
-import { modelHeadings, bulletChar } from './docmodel.js';
-import { normalizeStyles, STYLE_OF_TAG } from './docstyles.js';
+import { bulletChar, tocEntries } from './docmodel.js';
+import { normalizeStyles, STYLE_OF_TAG, customStyleIds } from './docstyles.js';
 import { fontKind } from './fonts.js';
+import { isAdvanced, fieldParts } from './hfnorm.js';
 
 const hex = c => (c ? c.replace('#', '').toUpperCase() : undefined);
 const tw = pt => Math.round(pt * 20);
 const FONT_OF_KIND = { sans: 'Arial', serif: 'Times New Roman', mono: 'Courier New' };
+const esc2 = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/** Word bookmark names: letter first, letters/digits/underscore, max. 40 characters. */
+export const bookmarkName = n => { let s = String(n || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9_]+/g, '_').replace(/^_+(?!Ref)/, ''); if (!/^[A-Za-z_]/.test(s)) s = 'M' + s; return s.slice(0, 40) || 'Marke'; };
+/** Word number picture for a table formula display format. */
+
 
 export async function modelToDocx(model, { title = 'Dokument', page = null, hf = null, author = '', trackChanges = false } = {}) {
   const D = await loadDocx();
@@ -16,6 +25,7 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
   const base = model.baseSize || S.normal.size || 11;
   if (!model.styles && base !== 11) S.normal.size = base;
   const pg = page || { w: 595.3, h: 841.9, mt: 70.9, mr: 70.9, mb: 56.7, ml: 70.9 };
+  const pgOf = orient => { const pw = Math.min(pg.w, pg.h), ph = Math.max(pg.w, pg.h); const land = orient ? orient === 'landscape' : pg.w > pg.h; return { ...pg, w: land ? ph : pw, h: land ? pw : ph }; };
   const contentW = pg.w - pg.ml - pg.mr;
 
   // pre-encode images
@@ -30,13 +40,13 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     try { images.set(src, await imageToBytes(src)); } catch (e) { console.warn('Bild übersprungen', e); }
   }
 
-  // comments (numeric ids) + footnotes + tables of contents
+  // comments (numeric ids) + foot-/endnotes + tables of contents + drop caps
   const cmtIds = new Map();
   const cmtNum = id => { if (!cmtIds.has(id)) cmtIds.set(id, cmtIds.size); return cmtIds.get(id); };
   let openCmt = null;
-  const footnoteMap = {};
-  let fnCount = 0;
-  const tocs = [];
+  const footnoteMap = {}, endnoteMap = {};
+  let fnCount = 0, enCount = 0;
+  const tocs = [], dropCaps = [], tfs = [];
   let revId = 1;
   const closeCmt = out => {
     if (openCmt == null) return;
@@ -80,6 +90,8 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     });
     return out;
   };
+  /** A field with a cached result (w:fldSimple) – Word/LibreOffice update it, other readers show the result. */
+  const field = (instr, r) => new D.SimpleField(instr, r && r.text != null ? String(r.text) : '');
 
   const inline = (runs, maxW) => {
     const out = [];
@@ -91,8 +103,21 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
         if (r.cmt && model.comments && model.comments[r.cmt]) { openCmt = r.cmt; out.push(new D.CommentRangeStart(cmtNum(r.cmt))); }
       }
       if (r.fn != null) { fnCount++; footnoteMap[fnCount] = { children: [new D.Paragraph({ children: [new D.TextRun({ text: r.fn, size: 18 })] })] }; out.push(new D.FootnoteReferenceRun(fnCount)); i++; continue; }
+      if (r.en != null) { enCount++; endnoteMap[enCount] = { children: [new D.Paragraph({ children: [new D.TextRun({ text: r.en, size: 18 })] })] }; out.push(new D.EndnoteReferenceRun(enCount)); i++; continue; }
+      if (r.bm != null) { out.push(new D.Bookmark({ id: bookmarkName(r.bm), children: [] })); i++; continue; }
       if (r.br) { out.push(new D.TextRun({ break: 1 })); i++; continue; }
       if (r.field != null) { out.push(new D.SimpleMailMergeField(r.field)); i++; continue; }
+      if (r.xref) { out.push(field(r.xref.kind === 'page' ? ` PAGEREF ${bookmarkName(r.xref.name)} \\h ` : ` REF ${bookmarkName(r.xref.name)} \\h `, r)); i++; continue; }
+      if (r.seq) { out.push(field(` SEQ ${String(r.seq).replace(/[^\p{L}\p{N}_]/gu, '')} \\* ARABIC `, r)); i++; continue; }
+      if (r.tf) {
+        // table formula: the result as text inside a tagged content control (Word and LibreOffice show the value;
+        // our reader restores the live formula from the tag) – formula fields would be recalculated to 0 by
+        // readers that do not recognise "85,00 €" as a number
+        const k = tfs.length;
+        tfs.push(r.tf);
+        out.push(new D.TextRun({ text: `FALETFA${k}X` }), ...textRuns(r), new D.TextRun({ text: `FALETFB${k}X` }));
+        i++; continue;
+      }
       if (r.img) {
         const im = images.get(r.img.src);
         if (im) {
@@ -108,6 +133,13 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
               wrap: { type: D.TextWrappingType.SQUARE, side: D.TextWrappingSide.BOTH_SIDES },
               margins: { left: 114300, right: 114300, top: 0, bottom: 57150 },
             };
+          } else if (r.img.wrap === 'center' && runs.some(x => x !== r && ((x.text && x.text.trim()) || x.img))) {
+            opts.floating = {
+              horizontalPosition: { relative: D.HorizontalPositionRelativeFrom.COLUMN, align: D.HorizontalPositionAlign.CENTER },
+              verticalPosition: { relative: D.VerticalPositionRelativeFrom.PARAGRAPH, offset: 0 },
+              wrap: { type: D.TextWrappingType.TOP_AND_BOTTOM },
+              margins: { top: 57150, bottom: 57150 },
+            };
           }
           out.push(new D.ImageRun(opts));
         }
@@ -118,6 +150,7 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
         const kids = [];
         while (i < runs.length && runs[i].href === href && runs[i].text != null) { kids.push(...textRuns(runs[i], { color: hex(runs[i].color) || '0563C1', underline: {} })); i++; }
         if (/^(https?:|mailto:|tel:)/i.test(href)) out.push(new D.ExternalHyperlink({ link: href, children: kids }));
+        else if (href.startsWith('#') && href.length > 1) out.push(new D.InternalHyperlink({ anchor: bookmarkName(decodeURIComponent(href.slice(1))), children: kids }));
         else out.push(...kids);
         continue;
       }
@@ -127,9 +160,12 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     return out;
   };
 
-  const ALIGN = { center: D.AlignmentType.CENTER, right: D.AlignmentType.RIGHT, justify: D.AlignmentType.JUSTIFIED };
+  const ALIGN = { left: D.AlignmentType.LEFT, center: D.AlignmentType.CENTER, right: D.AlignmentType.RIGHT, justify: D.AlignmentType.JUSTIFIED };
   const HEAD = { h1: D.HeadingLevel.HEADING_1, h2: D.HeadingLevel.HEADING_2, h3: D.HeadingLevel.HEADING_3, h4: D.HeadingLevel.HEADING_4, h5: D.HeadingLevel.HEADING_5, h6: D.HeadingLevel.HEADING_6, title: D.HeadingLevel.TITLE };
-  const PSTYLE = { subtitle: 'Subtitle', quote: 'Quote', code: 'Code', nospace: 'NoSpacing' };
+  const PSTYLE = { subtitle: 'Subtitle', quote: 'Quote', code: 'Code', nospace: 'NoSpacing', caption: 'Caption' };
+  const TABTYPE = { left: D.TabStopType.LEFT, center: D.TabStopType.CENTER, right: D.TabStopType.RIGHT, decimal: D.TabStopType.DECIMAL };
+  const LEADER = { dot: D.LeaderType.DOT, dash: D.LeaderType.HYPHEN, line: D.LeaderType.UNDERSCORE };
+  const customId = id => `FaleStyle${id.slice(1)}`;
 
   // numbering configurations (created on demand)
   const numConfigs = new Map();
@@ -161,11 +197,51 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     if (!numConfigs.has(key)) numConfigs.set(key, { reference: key, levels: make() });
     return key;
   }
+  // numbered headings: 1 / 1.1 / 1.1.1 followed by a space (German convention, no trailing dot)
+  const headingNumRef = () => {
+    if (!numConfigs.has('fale-headings')) numConfigs.set('fale-headings', { reference: 'fale-headings', levels: Array.from({ length: 9 }, (_, l) => ({ level: l, format: D.LevelFormat.DECIMAL, text: Array.from({ length: l + 1 }, (_, k) => `%${k + 1}`).join('.'), alignment: D.AlignmentType.START, start: 1, suffix: D.LevelSuffix.SPACE, style: { paragraph: { indent: { left: 0, hanging: 0 } } } })) });
+    return 'fale-headings';
+  };
 
   const paragraph = (b, maxW, extraOpts = {}) => {
-    const o = { children: inline(b.runs, maxW - (b.indent || 0)), ...extraOpts };
+    let runs = b.runs;
+    // drop cap: the first letter becomes a framed paragraph (inserted before this one after packing)
+    let dropMark = null;
+    if (b.dropCap) {
+      const k = runs.findIndex(r => r.text && r.text.trim());
+      if (k >= 0) {
+        const t = runs[k].text.replace(/^\s+/, '');
+        const letter = Array.from(t)[0];
+        runs = runs.slice(); runs[k] = { ...runs[k], text: t.slice(letter.length) };
+        dropMark = `FALEDROPCAP${dropCaps.length}X`;
+        dropCaps.push({ letter, run: runs[k], style: S[STYLE_OF_TAG[b.tag] || 'normal'] || S.normal });
+      }
+    }
+    // bookmarks on headings / captions span the text, so a reference shows "Abbildung 2" or the heading
+    const marks = runs.filter(r => r.bm != null).map(r => bookmarkName(r.bm));
+    let children;
+    const spanning = marks.length && (/^h[1-6]$/.test(b.tag) || b.tag === 'caption' || b.tag === 'title');
+    if (spanning) {
+      const rest = runs.filter(r => r.bm == null);
+      const cut = b.tag === 'caption' ? rest.findIndex(r => r.seq) + 1 : rest.length;
+      const head = inline(rest.slice(0, cut || rest.length), maxW - (b.indent || 0));
+      const tail = cut ? inline(rest.slice(cut), maxW - (b.indent || 0)) : [];
+      let inner = head;
+      marks.forEach((m, k) => { inner = [new D.Bookmark({ id: m, children: k === 0 ? inner : [] })]; });
+      children = [...inner, ...tail];
+    } else if (marks.length) {
+      // other paragraphs: a bookmark covers the text up to the next bookmark / the end of the paragraph
+      children = [];
+      let segRuns = [], mark = null;
+      const flushSeg = () => { const kids = inline(segRuns, maxW - (b.indent || 0)); if (mark) children.push(new D.Bookmark({ id: mark, children: kids })); else children.push(...kids); segRuns = []; };
+      for (const r of runs) { if (r.bm != null) { flushSeg(); mark = bookmarkName(r.bm); } else segRuns.push(r); }
+      flushSeg();
+    } else children = inline(runs, maxW - (b.indent || 0));
+    if (dropMark) children.unshift(new D.TextRun({ text: dropMark, vanish: true }));
+    const o = { children, ...extraOpts };
     if (HEAD[b.tag]) o.heading = HEAD[b.tag];
     else if (PSTYLE[b.tag]) o.style = PSTYLE[b.tag];
+    if (b.cstyle && S[b.cstyle]) o.style = customId(b.cstyle);
     if (ALIGN[b.align]) o.alignment = ALIGN[b.align];
     else if (b.align == null) { const im = b.runs.length === 1 && b.runs[0].img; if (im && im.wrap === 'center') o.alignment = D.AlignmentType.CENTER; }
     if (b.bg) o.shading = { type: D.ShadingType.CLEAR, fill: hex(b.bg), color: 'auto' };
@@ -182,6 +258,7 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
       o.numbering = { reference: ref, level: Math.min(8, b.list.level), instance: listInstances.get(ik) };
       if (spacing.after == null) spacing.after = tw(3);
     } else {
+      if (b.hnum && HEAD[b.tag] && b.tag !== 'title') o.numbering = { reference: headingNumRef(), level: Math.min(8, +b.tag[1] - 1), instance: 0 };
       const ind = {};
       if (b.indent) ind.left = tw(b.indent);
       if (b.indentR) ind.right = tw(b.indentR);
@@ -192,7 +269,8 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     if (Object.keys(spacing).length) o.spacing = spacing;
     if (b.keepNext) o.keepNext = true;
     if (b.pageBreakBefore) o.pageBreakBefore = true;
-    if (b.tabs && b.tabs.length) o.tabStops = b.tabs.map(t => ({ type: D.TabStopType.LEFT, position: tw(t) }));
+    if (b.tabDefs && b.tabDefs.length) o.tabStops = b.tabDefs.map(t => ({ type: TABTYPE[t.align] || D.TabStopType.LEFT, position: tw(t.pos), ...(LEADER[t.leader] ? { leader: LEADER[t.leader] } : {}) }));
+    else if (b.tabs && b.tabs.length) o.tabStops = b.tabs.map(t => ({ type: D.TabStopType.LEFT, position: tw(t) }));
     if (!o.children.length) o.children = [new D.TextRun('')];
     return new D.Paragraph(o);
   };
@@ -219,7 +297,7 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
         const isHead = ri < (b.headerRows || 0) || (tStyle && tStyle.head && ri === 0);
         let blocks = c.blocks;
         if (tStyle && tStyle.headColor && isHead) blocks = blocks.map(x => (x.type === 'para' ? { ...x, runs: x.runs.map(r => ({ ...r, color: r.color || '#' + tStyle.headColor, b: true })) } : x));
-        const kids = convert(blocks, totalW * (span / Math.max(1, b.cols)) - 10).filter(x => !(x instanceof D.Table && false));
+        const kids = convert(blocks, totalW * (span / Math.max(1, b.cols)) - 10);
         const cell = { children: kids.length ? kids : [new D.Paragraph('')], margins: { top: 60, bottom: 60, left: 100, right: 100 } };
         if (span > 1) cell.columnSpan = span;
         if ((c.rowspan || 1) > 1) cell.rowSpan = c.rowspan;
@@ -275,19 +353,25 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     return out;
   };
 
-  // split top-level content into sections (multi-column sections become their own docx sections)
+  // split top-level content into sections: multi-column parts (continuous) and section breaks (next page,
+  // optionally with another orientation)
   const groups = [];
-  let cur = { cols: 1, blocks: [] };
+  let cur = { cols: 1, blocks: [], orient: null, nextPage: false };
   for (const b of model.blocks) {
     if (b.type === 'section' && b.cols > 1) {
       if (cur.blocks.length) groups.push(cur);
-      groups.push({ cols: b.cols, gap: b.gap || 18, blocks: b.blocks });
-      cur = { cols: 1, blocks: [] };
+      groups.push({ cols: b.cols, gap: b.gap || 18, blocks: b.blocks, orient: cur.orient, nextPage: !cur.blocks.length && cur.nextPage });
+      cur = { cols: 1, blocks: [], orient: cur.orient, nextPage: false };
+    } else if (b.type === 'pagebreak' && b.section) {
+      if (cur.blocks.length || !groups.length) groups.push(cur);
+      cur = { cols: 1, blocks: [], orient: b.orient || cur.orient, nextPage: true };
     } else cur.blocks.push(b);
   }
-  if (cur.blocks.length || !groups.length) groups.push(cur);
+  if (cur.blocks.length || !groups.length || cur.nextPage) groups.push(cur);
   const groupChildren = groups.map(g => {
-    const kids = convert(g.blocks, g.cols > 1 ? (contentW - (g.cols - 1) * g.gap) / g.cols : contentW);
+    const gp = pgOf(g.orient);
+    const cw = gp.w - gp.ml - gp.mr;
+    const kids = convert(g.blocks, g.cols > 1 ? (cw - (g.cols - 1) * g.gap) / g.cols : cw);
     return kids.length ? kids : [new D.Paragraph('')];
   });
   if (openCmt != null) { const tail = []; closeCmt(tail); groupChildren[groupChildren.length - 1].push(new D.Paragraph({ children: tail })); }
@@ -298,28 +382,56 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     return { id: n, author: c.author || author || 'FaLe', initials: (c.author || author || 'F').split(/\s+/).map(x => x[0]).join('').slice(0, 3).toUpperCase(), date: isNaN(d) ? new Date() : d, children: [new D.Paragraph({ children: [new D.TextRun(c.text || '')] })] };
   });
   // header / footer / page numbers
-  const pnRun = fmt => new D.TextRun({ children: fmt === 'n-of-m' ? ['Seite ', D.PageNumber.CURRENT, ' von ', D.PageNumber.TOTAL_PAGES] : [D.PageNumber.CURRENT], size: 18, color: '5A607F' });
+  const HF_RUN = { size: 18, color: '5A607F' };
+  const pnRun = fmt => new D.TextRun({ children: fmt === 'n-of-m' ? ['Seite ', D.PageNumber.CURRENT, ' von ', D.PageNumber.TOTAL_PAGES] : [D.PageNumber.CURRENT], ...HF_RUN });
   const AL = { left: D.AlignmentType.LEFT, center: D.AlignmentType.CENTER, right: D.AlignmentType.RIGHT };
   const hfParas = (text, align, where) => {
     const pn = (hf && hf.pageNumbers) || 'none';
     const paras = [];
-    const kids = text ? [new D.TextRun({ text, size: 18, color: '5A607F' })] : [];
+    const kids = text ? [new D.TextRun({ text, ...HF_RUN })] : [];
     if (pn.startsWith(where)) {
       const a = pn.split('-')[1];
-      if (text && a === align) paras.push(new D.Paragraph({ alignment: AL[a], children: [...kids, new D.TextRun({ text: ' · ', size: 18, color: '5A607F' }), pnRun(hf.pageFormat)] }));
+      if (text && a === align) paras.push(new D.Paragraph({ alignment: AL[a], children: [...kids, new D.TextRun({ text: ' · ', ...HF_RUN }), pnRun(hf.pageFormat)] }));
       else { if (text) paras.push(new D.Paragraph({ alignment: AL[align] || AL.left, children: kids })); paras.push(new D.Paragraph({ alignment: AL[a], children: [pnRun(hf.pageFormat)] })); }
     } else if (text) paras.push(new D.Paragraph({ alignment: AL[align] || AL.left, children: kids }));
     return paras;
   };
+  // advanced: one paragraph with centre/right tab stops (left · centre · right) and real fields
+  const zoneRuns = text => fieldParts(text || '').map(p => {
+    if (p.text != null) return new D.TextRun({ text: p.text, ...HF_RUN });
+    if (p.field === 'PAGE') return new D.TextRun({ children: [D.PageNumber.CURRENT], ...HF_RUN });
+    if (p.field === 'NUMPAGES') return new D.TextRun({ children: [D.PageNumber.TOTAL_PAGES], ...HF_RUN });
+    if (p.field === 'DATE') return new D.SimpleField(' DATE \\@ "dd.MM.yyyy" ', new Date().toLocaleDateString('de-DE'));
+    return new D.SimpleField(' TITLE ', title);
+  });
+  const zonePara = zones => {
+    const z = [0, 1, 2].map(k => (zones && zones[k]) || '');
+    const filled = z.map((t, k) => [t, k]).filter(([t]) => t);
+    if (!filled.length) return [new D.Paragraph('')];
+    if (filled.length === 1) return [new D.Paragraph({ alignment: [AL.left, AL.center, AL.right][filled[0][1]], children: zoneRuns(filled[0][0]) })];
+    const tab = () => new D.TextRun({ children: [new D.Tab()], ...HF_RUN });
+    return [new D.Paragraph({ tabStops: [{ type: D.TabStopType.CENTER, position: tw(contentW / 2) }, { type: D.TabStopType.RIGHT, position: tw(contentW) }], children: [...zoneRuns(z[0]), tab(), ...zoneRuns(z[1]), tab(), ...zoneRuns(z[2])] })];
+  };
   const sectionExtra = {};
-  if (hf) {
+  let evenAndOdd = false;
+  const wm = hf && hf.watermark && hf.watermark.text ? hf.watermark : null;
+  if (hf && isAdvanced(hf)) {
+    const H = {}, F = {};
+    H.default = new D.Header({ children: zonePara(hf.zones.h) });
+    F.default = new D.Footer({ children: zonePara(hf.zones.f) });
+    if (hf.first) { H.first = new D.Header({ children: zonePara(hf.first.h) }); F.first = new D.Footer({ children: zonePara(hf.first.f) }); sectionExtra.properties = { titlePage: true }; }
+    if (hf.even) { H.even = new D.Header({ children: zonePara(hf.even.h) }); F.even = new D.Footer({ children: zonePara(hf.even.f) }); evenAndOdd = true; }
+    sectionExtra.headers = H; sectionExtra.footers = F;
+    const NF = { i: D.NumberFormat.LOWER_ROMAN, I: D.NumberFormat.UPPER_ROMAN, a: D.NumberFormat.LOWER_LETTER, A: D.NumberFormat.UPPER_LETTER };
+    if ((hf.pnStart != null && +hf.pnStart !== 1) || NF[hf.pnStyle]) sectionExtra.pageNumbers = { ...(hf.pnStart != null && +hf.pnStart !== 1 ? { start: +hf.pnStart } : {}), ...(NF[hf.pnStyle] ? { formatType: NF[hf.pnStyle] } : {}) };
+  } else if (hf) {
     const hp = hfParas(hf.header || '', hf.headerAlign || 'left', 'header');
     const fp = hfParas(hf.footer || '', hf.footerAlign || 'left', 'footer');
-    if (hp.length) sectionExtra.headers = { default: new D.Header({ children: hp }) };
+    if (hp.length || wm) sectionExtra.headers = { default: new D.Header({ children: hp.length ? hp : [new D.Paragraph('')] }) };
     if (fp.length) sectionExtra.footers = { default: new D.Footer({ children: fp }) };
     if (hf.firstPage === false && (hp.length || fp.length)) {
       sectionExtra.properties = { titlePage: true };
-      if (hp.length) sectionExtra.headers.first = new D.Header({ children: [new D.Paragraph('')] });
+      if (hp.length || wm) sectionExtra.headers.first = new D.Header({ children: [new D.Paragraph('')] });
       if (fp.length) sectionExtra.footers.first = new D.Footer({ children: [new D.Paragraph('')] });
     }
   }
@@ -351,14 +463,17 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     { id: 'Quote', name: 'Quote', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: runOf(S.quote), paragraph: { ...parOf(S.quote), border: { left: { color: 'C9CCDA', space: 8, style: D.BorderStyle.SINGLE, size: 18 } } } },
     { id: 'Code', name: 'Code', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { ...runOf(S.code), font: S.code.font || 'Courier New' }, paragraph: { ...parOf(S.code), ...(S.code.bg ? { shading: { type: D.ShadingType.CLEAR, fill: hex(S.code.bg), color: 'auto' } } : {}) } },
     { id: 'NoSpacing', name: 'No Spacing', basedOn: 'Normal', quickFormat: true, run: runOf(S.nospace), paragraph: parOf(S.nospace) },
+    { id: 'Caption', name: 'caption', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: runOf(S.caption), paragraph: parOf(S.caption) },
+    ...customStyleIds(S).map(id => ({ id: customId(id), name: S[id].name || `Formatvorlage ${id.slice(1)}`, basedOn: 'Normal', next: customId(id), quickFormat: true, run: runOf(S[id]), paragraph: parOf(S[id]) })),
   ];
   const landscape = pg.w > pg.h;
-  const pageProps = { size: { width: tw(Math.min(pg.w, pg.h)), height: tw(Math.max(pg.w, pg.h)), orientation: landscape ? D.PageOrientation.LANDSCAPE : D.PageOrientation.PORTRAIT }, margin: { top: tw(pg.mt), right: tw(pg.mr), bottom: tw(pg.mb), left: tw(pg.ml), header: tw(Math.min(36, pg.mt / 2)), footer: tw(Math.min(36, pg.mb / 2)) } };
+  const pagePropsOf = (gp, first) => ({ size: { width: tw(Math.min(gp.w, gp.h)), height: tw(Math.max(gp.w, gp.h)), orientation: gp.w > gp.h ? D.PageOrientation.LANDSCAPE : D.PageOrientation.PORTRAIT }, margin: { top: tw(gp.mt), right: tw(gp.mr), bottom: tw(gp.mb), left: tw(gp.ml), header: tw(Math.min(36, gp.mt / 2)), footer: tw(Math.min(36, gp.mb / 2)) }, ...(first && sectionExtra.pageNumbers ? { pageNumbers: sectionExtra.pageNumbers } : {}) });
+  void landscape;
   const sections = groups.map((g, i) => ({
     properties: {
       ...(i === 0 ? sectionExtra.properties || {} : {}),
-      ...(i > 0 ? { type: D.SectionType.CONTINUOUS } : {}),
-      page: pageProps,
+      ...(i > 0 ? { type: g.nextPage ? D.SectionType.NEXT_PAGE : D.SectionType.CONTINUOUS } : {}),
+      page: pagePropsOf(pgOf(g.orient), i === 0),
       ...(g.cols > 1 ? { column: { count: g.cols, space: tw(g.gap || 18), equalWidth: true } } : {}),
     },
     ...(i === 0 && sectionExtra.headers ? { headers: sectionExtra.headers } : {}),
@@ -372,6 +487,8 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     description: 'Erstellt mit FaLe PDF',
     ...(commentList.length ? { comments: { children: commentList } } : {}),
     ...(fnCount ? { footnotes: footnoteMap } : {}),
+    ...(enCount ? { endnotes: endnoteMap } : {}),
+    ...(evenAndOdd ? { evenAndOddHeaderAndFooters: true } : {}),
     features: { ...(tocs.length ? { updateFields: true } : {}), ...(trackChanges ? { trackRevisions: true } : {}) },
     styles: {
       default: {
@@ -396,33 +513,74 @@ export async function modelToDocx(model, { title = 'Dokument', page = null, hf =
     if (!/w:default="1"[^>]*w:type="paragraph"|w:type="paragraph"[^>]*w:default="1"/.test(xml)) {
       xml = xml.replace(/<w:style w:type="paragraph" w:styleId="Normal"/, '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"');
     }
-    // German display names for the gallery in Word ("Überschrift 1" …) via aliases
+    // user-defined styles are marked as such (Word lists them under "custom", our reader restores them)
+    xml = xml.replace(/<w:style w:type="paragraph" w:styleId="(FaleStyle\d+)"/g, '<w:style w:type="paragraph" w:customStyle="1" w:styleId="$1"');
     zip.file('word/styles.xml', xml);
   }
-  // tables of contents as a real TOC field with cached entries (Word/LibreOffice can update it)
+  const dx = zip.file('word/document.xml');
+  let docXml = await dx.async('string');
+  // tables of contents / figures as real TOC fields with cached entries (Word/LibreOffice can update them)
   if (tocs.length) {
-    const dx = zip.file('word/document.xml');
-    let xml = await dx.async('string');
     let pages = new Map();
-    try { const { modelToPdf } = await import('./docpdf.js'); pages = await modelToPdf(model, { page: pg, measureOnly: true }); } catch (e) { console.warn('TOC-Seiten', e); }
+    try { const { modelToPdf } = await import('./docpdf.js'); pages = await modelToPdf(model, { page: pg, hf, measureOnly: true }); } catch (e) { console.warn('TOC-Seiten', e); }
     const right = tw(contentW);
-    const esc2 = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     tocs.forEach((b, k) => {
-      const entries = modelHeadings(model, b.depth || 3);
-      const instr = ` TOC \\o "1-${b.depth || 3}" \\h \\z \\u `;
-      const ppr = lv => `<w:pPr><w:pStyle w:val="TOC${lv}"/><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="${right}"/></w:tabs><w:spacing w:after="60"/><w:ind w:left="${(lv - 1) * 280}"/></w:pPr>`;
-      const begin = `<w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve">${instr}</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r>`;
+      const entries = tocEntries(model, b);
+      const caps = b.kind === 'captions';
+      const instr = caps ? ` TOC \\h \\z \\c "${String(b.label || 'Abbildung').replace(/"/g, '')}" ` : ` TOC \\o "1-${b.depth || 3}" \\h \\z \\u `;
+      const ppr = lv => `<w:pPr><w:pStyle w:val="${caps ? 'TableofFigures' : `TOC${lv}`}"/><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="${right}"/></w:tabs><w:spacing w:after="60"/><w:ind w:left="${caps ? 0 : (lv - 1) * 280}"/></w:pPr>`;
+      const begin = `<w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve">${instr.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r>`;
       const end = '<w:r><w:fldChar w:fldCharType="end"/></w:r>';
       let out = `<w:p><w:pPr><w:pStyle w:val="TOCHeading"/><w:spacing w:before="120" w:after="160"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="30"/></w:rPr><w:t xml:space="preserve">${esc2(b.title || 'Inhaltsverzeichnis')}</w:t></w:r></w:p>`;
-      if (!entries.length) out += `<w:p>${ppr(1)}${begin}<w:r><w:t>Keine Überschriften gefunden.</w:t></w:r>${end}</w:p>`;
+      if (!entries.length) out += `<w:p>${ppr(1)}${begin}<w:r><w:t>${caps ? 'Keine Beschriftungen gefunden.' : 'Keine Überschriften gefunden.'}</w:t></w:r>${end}</w:p>`;
       entries.forEach((en, i) => {
-        out += `<w:p>${ppr(en.level)}${i === 0 ? begin : ''}<w:r>${en.level === 1 ? '<w:rPr><w:b/></w:rPr>' : ''}<w:t xml:space="preserve">${esc2(en.text)}</w:t></w:r><w:r><w:tab/></w:r><w:r><w:t>${pages.get ? (pages.get(en.index) || '') : ''}</w:t></w:r>${i === entries.length - 1 ? end : ''}</w:p>`;
+        out += `<w:p>${ppr(en.level)}${i === 0 ? begin : ''}<w:r>${en.level === 1 && !caps ? '<w:rPr><w:b/></w:rPr>' : ''}<w:t xml:space="preserve">${esc2(en.text)}</w:t></w:r><w:r><w:tab/></w:r><w:r><w:t>${pages.get ? (pages.get(en.index) || '') : ''}</w:t></w:r>${i === entries.length - 1 ? end : ''}</w:p>`;
       });
-      xml = xml.replace(new RegExp(`<w:p>(?:(?!<w:p>|<w:p ).)*?FALETOCMARK${k}X.*?</w:p>`, 's'), out);
+      docXml = docXml.replace(new RegExp(`<w:p>(?:(?!<w:p>|<w:p ).)*?FALETOCMARK${k}X.*?</w:p>`, 's'), out);
     });
-    zip.file('word/document.xml', xml);
+  }
+  // drop caps: a framed paragraph with the first letter in front of the paragraph
+  dropCaps.forEach((dc, k) => {
+    const size = (dc.run.size || dc.style.size || S.normal.size || base);
+    const lineMul = dc.style.line || S.normal.line || 1.15;
+    const lineTw = Math.round(size * lineMul * 1.17 * 3 * 20);
+    const sz = Math.round(size * lineMul * 3 * 0.92 * 2);
+    const font = dc.run.font || dc.style.font || S.normal.font || 'Arial';
+    const color = dc.run.color ? hex(dc.run.color) : null;
+    const dropP = `<w:p><w:pPr><w:keepNext/><w:framePr w:dropCap="drop" w:lines="3" w:wrap="around" w:vAnchor="text" w:hAnchor="text"/><w:spacing w:before="0" w:after="0" w:line="${lineTw}" w:lineRule="exact"/><w:textAlignment w:val="baseline"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="${esc2(font)}" w:hAnsi="${esc2(font)}"/><w:position w:val="-6"/><w:sz w:val="${sz}"/>${color ? `<w:color w:val="${color}"/>` : ''}</w:rPr><w:t>${esc2(dc.letter)}</w:t></w:r></w:p>`;
+    const re = new RegExp(`(<w:p>|<w:p [^>]*>)((?:(?!<w:p>|<w:p ).)*?)<w:r>(?:(?!</w:r>).)*?FALEDROPCAP${k}X(?:(?!</w:r>).)*?</w:r>`, 's');
+    docXml = docXml.replace(re, (m, open, mid) => `${dropP}${open}${mid}`);
+  });
+  tfs.forEach((t, k) => {
+    const re = new RegExp(`<w:r>(?:(?!</w:r>).)*?FALETFA${k}X(?:(?!</w:r>).)*?</w:r>(.*?)<w:r>(?:(?!</w:r>).)*?FALETFB${k}X(?:(?!</w:r>).)*?</w:r>`, 's');
+    docXml = docXml.replace(re, (m, inner) => `<w:sdt><w:sdtPr><w:alias w:val="Formel"/><w:tag w:val="${esc2(`fale-tf:${t.fmt || ''}|${t.f}`)}"/></w:sdtPr><w:sdtContent>${inner}</w:sdtContent></w:sdt>`);
+  });
+  zip.file('word/document.xml', docXml);
+  // watermark: VML text shape behind the text in every header of the first section
+  if (wm) {
+    const names = Object.keys(zip.files).filter(n => /^word\/header\d*\.xml$/.test(n));
+    for (const n of names) {
+      let xml = await zip.file(n).async('string');
+      if (!/xmlns:v=/.test(xml)) xml = xml.replace(/<w:hdr\b/, '<w:hdr xmlns:v="urn:schemas-microsoft-com:vml"');
+      if (!/xmlns:o=/.test(xml)) xml = xml.replace(/<w:hdr\b/, '<w:hdr xmlns:o="urn:schemas-microsoft-com:office:office"');
+      xml = xml.replace(/(<w:p\b[^>]*>(?:<w:pPr>.*?<\/w:pPr>)?)/s, `$1${watermarkRun(wm, pg)}`);
+      zip.file(n, xml);
+    }
   }
   return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', compression: 'DEFLATE' });
+}
+
+/** Word's diagonal text watermark (VML text path, behind the text, centred on the page margin box). */
+function watermarkRun(wm, pg) {
+  const text = esc2(wm.text);
+  const w = Math.round(Math.min(pg.w, pg.h) * 0.85 * 10) / 10;
+  const h = Math.round(w / Math.max(4, wm.text.length * 0.62) * 10) / 10;
+  const color = /^#[0-9a-f]{6}$/i.test(wm.color || '') ? wm.color : '#B4B8CC';
+  const op = Math.max(0.05, Math.min(1, +wm.opacity || 0.45));
+  return '<w:r><w:rPr><w:noProof/></w:rPr><w:pict>'
+    + '<v:shapetype id="_x0000_t136" coordsize="21600,21600" o:spt="136" adj="10800" path="m@7,l@8,m@5,21600l@6,21600e"><v:formulas><v:f eqn="sum #0 0 10800"/><v:f eqn="prod #0 2 1"/><v:f eqn="sum 21600 0 @1"/><v:f eqn="sum 0 0 @2"/><v:f eqn="sum 21600 0 @3"/><v:f eqn="if @0 @3 0"/><v:f eqn="if @0 21600 @1"/><v:f eqn="if @0 0 @2"/><v:f eqn="if @0 @4 21600"/><v:f eqn="mid @5 @6"/><v:f eqn="mid @8 @5"/><v:f eqn="mid @7 @8"/><v:f eqn="mid @6 @7"/><v:f eqn="sum @6 0 @5"/></v:formulas><v:path textpathok="t" o:connecttype="custom" o:connectlocs="@9,0;@10,10800;@11,21600;@12,10800" o:connectangles="270,180,90,0"/><v:textpath on="t" fitshape="t"/><v:handles><v:h position="#0,bottomRight" xrange="6629,14971"/></v:handles><o:lock v:ext="edit" text="t" shapetype="t"/></v:shapetype>'
+    + `<v:shape id="PowerPlusWaterMarkObject1" o:spid="_x0000_s2049" type="#_x0000_t136" style="position:absolute;margin-left:0;margin-top:0;width:${w}pt;height:${h}pt;rotation:315;z-index:-251657216;mso-position-horizontal:center;mso-position-horizontal-relative:margin;mso-position-vertical:center;mso-position-vertical-relative:margin" o:allowincell="f" fillcolor="${color}" stroked="f"><v:fill opacity="${op}"/><v:textpath style="font-family:&quot;Arial&quot;;font-size:1pt" string="${text}"/><w10:wrap anchorx="margin" anchory="margin" xmlns:w10="urn:schemas-microsoft-com:office:word"/></v:shape>`
+    + '</w:pict></w:r>';
 }
 
 export { STYLE_OF_TAG, fontKind, FONT_OF_KIND };

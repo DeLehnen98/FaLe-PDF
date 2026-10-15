@@ -1,0 +1,83 @@
+{
+ "id": "notenrechner",
+ "slug": "notenrechner",
+ "cat": "Schule & Freizeit",
+ "name": "Notenrechner",
+ "short": "Schulnoten je Fach mit Gewichtung und Notenspiegel",
+ "desc": "Notenrechner als Excel-Vorlage (XLSX): schriftliche und mündliche Noten je Fach eintragen, Gewichtung festlegen und Zeugnisnote samt Notenspiegel sehen.",
+ "search": "",
+ "intro": "Für Schülerinnen, Schüler und Eltern: Pro Fach trägst du bis zu drei schriftliche und drei mündliche Noten ein. Die Vorlage bildet die Durchschnitte, gewichtet sie und zeigt die voraussichtliche Zeugnisnote.",
+ "uses": [
+  "Vor dem Zeugnis sehen, wo man steht",
+  "Prüfen, welche Note in der nächsten Arbeit nötig wäre",
+  "Den Notenspiegel als Diagramm zeigen"
+ ],
+ "cols": [
+  [
+   "Fach",
+   "Die Schulfächer – frei änderbar."
+  ],
+  [
+   "Schr. 1 · Schr. 2 · Schr. 3",
+   "Noten aus Klassenarbeiten oder Klausuren, 1 bis 6, auch Zwischennoten wie 2,5."
+  ],
+  [
+   "Mündl. 1 · Mündl. 2 · Mündl. 3",
+   "Mündliche Noten und sonstige Leistungen."
+  ],
+  [
+   "Ø schriftl.",
+   "MITTELWERT der schriftlichen Noten; leer, wenn noch keine da ist."
+  ],
+  [
+   "Ø mündl.",
+   "MITTELWERT der mündlichen Noten."
+  ],
+  [
+   "Gesamt",
+   "Schriftlich mal Gewichtung plus mündlich mal Rest-Gewichtung. Fehlt ein Teil, zählt der andere allein."
+  ],
+  [
+   "Zeugnis",
+   "Gesamt auf eine ganze Note gerundet. Ab 5 wird die Zelle rot."
+  ],
+  [
+   "Note",
+   "Rechts: die Noten 1 bis 6 für den Notenspiegel."
+  ],
+  [
+   "Anzahl",
+   "ZÄHLENWENN zählt, wie oft jede Zeugnisnote vorkommt."
+  ]
+ ],
+ "tips": [
+  "Die Gewichtung oben ist für alle Fächer gleich. Wenn ein Fach anders gewichtet wird, trag dort einfach die Noten mehrfach ein."
+ ],
+ "faq": [
+  {
+   "q": "Rechnen alle Schulen so?",
+   "a": "Nein. Wie mündliche und schriftliche Noten verrechnet werden, legt die Schule oder das Bundesland fest, und die Lehrkraft hat Spielraum. Die Vorlage gibt eine Schätzung, keine sichere Zeugnisnote."
+  }
+ ],
+ "related": [
+  "lesetagebuch",
+  "trainingsplan",
+  "aufgabenliste"
+ ],
+ "en": {
+  "slug": "grade-calculator",
+  "name": "Grade calculator",
+  "short": "School grades per subject with weighting",
+  "desc": "Grade calculator spreadsheet (XLSX) for the German 1–6 scale: enter written and oral grades per subject, set the weighting and see the report grade and grade distribution.",
+  "intro": "Enter up to three written and three oral grades per subject on the German 1–6 scale. The template averages and weights them and shows the expected report grade.",
+  "inside": [
+   "Averages of written and oral grades",
+   "Adjustable weighting",
+   "Rounded report grade with warning colours",
+   "Grade distribution chart"
+  ],
+  "uses": [
+   "Pupils and parents in German schools"
+  ]
+ }
+}

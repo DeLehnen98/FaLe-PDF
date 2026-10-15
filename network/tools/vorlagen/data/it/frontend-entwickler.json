@@ -1,0 +1,313 @@
+{
+ "id": "frontend-entwickler",
+ "field": "it",
+ "name": "Frontend-Entwickler/in",
+ "search": "frontend entwickler frontend developer webentwickler javascript typescript react vue css barrierefreiheit bewerbung",
+ "short": "Weboberflächen bauen – zugänglich, schnell, wartbar.",
+ "desc": "Bewerbung als Frontend-Entwickler/in: Muster-Anschreiben für erfahrenen Entwickler, Quereinsteigerin nach Weiterbildung und Junior nach dem Studium, mit Lebenslauf.",
+ "intro": "Frontend-Entwickler bauen die Oberflächen von Webanwendungen: Komponenten, Layouts, Formulare, Zustandslogik, Barrierefreiheit und Performance. Firmen wollen Code sehen – ein Repository, eine Live-Seite, einen Beitrag zu einem Open-Source-Projekt. Erklär, welche Probleme du gelöst hast, nicht nur welche Frameworks du kennst.",
+ "lookFor": [
+  "HTML, CSS, JavaScript/TypeScript",
+  "Erfahrung mit einem Komponenten-Framework",
+  "Barrierefreiheit und Performance",
+  "Tests und Code-Reviews",
+  "Zusammenarbeit mit Design und Backend"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrener Entwickler mit Fokus Barrierefreiheit",
+   "level": "erfahren",
+   "position": "Senior Frontend-Entwickler",
+   "to": {
+    "org": "Bürgerportal Digital GmbH",
+    "sal": "f",
+    "contact": "Lenz",
+    "street": "Friedrichstraße 100",
+    "city": "10117 Berlin"
+   },
+   "body": [
+    "ein Formular, das mit Screenreader nicht bedienbar ist, schließt Menschen aus. Diesen Satz habe ich vor drei Jahren in einem Audit gelesen und seitdem jedes Projekt danach ausgerichtet. In meinem letzten Projekt haben wir ein Antragsportal so umgebaut, dass es die Anforderungen der BITV erfüllt und gleichzeitig schneller lädt.",
+    "Seit sieben Jahren entwickle ich Frontends mit TypeScript, zuletzt mit einem komponentenbasierten Framework und einem eigenen Designsystem. Ich schreibe Tests, reviewe Code und erkläre Designern, warum ein Kontrast von 3:1 nicht reicht. Ihre Arbeit für Behörden passt zu dem, was ich wichtig finde.",
+    "Kündigungsfrist: drei Monate. Code-Beispiele finden Sie im Lebenslauf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteigerin nach Weiterbildung",
+   "level": "quereinstieg",
+   "position": "Junior Frontend-Entwicklerin",
+   "to": {
+    "org": "Agentur Pixelwerk",
+    "sal": "none",
+    "street": "Oranienstraße 30",
+    "city": "10999 Berlin"
+   },
+   "body": [
+    "als Grafikdesignerin habe ich jahrelang Entwürfe an Entwickler übergeben und mich gefragt, warum die Hälfte im Browser anders aussah. Vor einem Jahr habe ich angefangen, es selbst zu bauen, und eine geförderte Weiterbildung zur Webentwicklerin abgeschlossen.",
+    "Mein Abschlussprojekt ist eine Rezept-App mit Suche, Favoriten und Offline-Modus, getestet und auf einem Server online. Ich bringe ein gutes Auge für Typografie, Abstände und Details mit. Bei Ihnen würde ich gern als Junior lernen, wie große Projekte strukturiert werden."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat Weiterbildung",
+    "Link zu Projekten"
+   ],
+   "from": [
+    "Sina Hoffmann",
+    "Wiener Straße 12",
+    "10999 Berlin"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 2,
+  "name": "Jonas Weidemann",
+  "title": "Senior Frontend-Entwickler",
+  "street": "Kastanienallee 40",
+  "city": "10435 Berlin",
+  "web": "code.example/jonas-w",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Frontend-Entwickler",
+    "Verwaltungssoftware Berlin GmbH",
+    "Berlin",
+    "- Umbau eines Antragsportals nach BITV\n- Designsystem mit 60 Komponenten\n- Tests, Code-Reviews, Mentoring"
+   ],
+   [
+    "2019",
+    "2022",
+    "Webentwickler",
+    "Agentur Spreeufer",
+    "Berlin",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2019",
+    "Medieninformatik (B. Sc.)",
+    "Hochschule für Technik und Wirtschaft",
+    "Berlin",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "TypeScript",
+    5
+   ],
+   [
+    "CSS und Layout",
+    5
+   ],
+   [
+    "Barrierefreiheit",
+    5
+   ],
+   [
+    "Testautomatisierung",
+    4
+   ],
+   [
+    "Performance",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Bouldern, Open Source"
+ },
+ "do": [
+  "Code oder Live-Projekte verlinken.",
+  "Gelöste Probleme beschreiben, nicht nur Frameworks.",
+  "Barrierefreiheit und Tests erwähnen."
+ ],
+ "dont": [
+  "Framework-Listen ohne Projekte.",
+  "Tutorial-Projekte als Kundenarbeit ausgeben.",
+  "Design ignorieren."
+ ],
+ "questions": [
+  "Wie machen Sie ein Formular barrierefrei?",
+  "Wie verbessern Sie die Ladezeit einer Seite?",
+  "Wie strukturieren Sie Zustand in einer großen Anwendung?",
+  "Zeigen Sie uns ein Projekt, auf das Sie stolz sind."
+ ],
+ "faq": [
+  {
+   "q": "Wie wichtig ist ein Studium?",
+   "a": "Weniger als Projekte. Viele Frontend-Entwickler kommen über Weiterbildungen oder Selbststudium. Ein gepflegtes Repository und eine erklärbare Architektur sind oft wichtiger als ein Abschluss."
+  }
+ ],
+ "related": [
+  "softwareentwickler",
+  "backend-entwickler",
+  "ux-ui-designer",
+  "werkstudent-it"
+ ],
+ "en": {
+  "slug": "frontend-developer",
+  "name": "Frontend developer",
+  "search": "frontend developer front-end web developer javascript typescript accessibility ui",
+  "short": "Building web interfaces – accessible, fast, maintainable.",
+  "desc": "Frontend developer cover letter examples: an accessibility-focused senior and a designer turned junior developer, plus a ready CV with placeholder portrait.",
+  "intro": "Frontend developers build the interfaces of web applications: components, layouts, forms, state, accessibility and performance. Show code – a repository, a live site, an open-source contribution – and explain the problems you solved.",
+  "lookFor": [
+   "HTML, CSS, JavaScript/TypeScript",
+   "A component framework",
+   "Accessibility and performance",
+   "Testing and code review",
+   "Working with design and backend"
+  ],
+  "letters": [
+   {
+    "label": "Senior with an accessibility focus",
+    "level": "erfahren",
+    "position": "Senior frontend developer",
+    "to": {
+     "org": "CivicTech Services",
+     "sal": "f",
+     "contact": "Lewis",
+     "street": "100 Victoria Street",
+     "city": "London SW1E 5JL"
+    },
+    "body": [
+     "a form that cannot be used with a screen reader shuts people out. I read that sentence in an audit three years ago, and every project since has been shaped by it. On my last project we rebuilt an application portal to meet accessibility standards and made it load faster at the same time.",
+     "I have built frontends in TypeScript for seven years, most recently with a component framework and our own design system. I write tests, review code and explain to designers why a 3:1 contrast ratio is not enough. Your work for public services matches what I care about."
+    ],
+    "att": [
+     "CV",
+     "Code samples"
+    ]
+   },
+   {
+    "label": "Designer turned junior developer",
+    "level": "quereinstieg",
+    "position": "Junior frontend developer",
+    "to": {
+     "org": "Pixelworks Studio",
+     "sal": "none",
+     "street": "30 Hoxton Street",
+     "city": "London N1 6LP"
+    },
+    "body": [
+     "as a graphic designer I handed designs to developers for years and wondered why half of them looked different in the browser. A year ago I started building them myself and completed a web development course.",
+     "My final project is a recipe app with search, favourites and offline mode, tested and deployed. I bring a good eye for typography, spacing and detail, and I would like to learn how larger projects are structured as a junior in your team."
+    ],
+    "att": [
+     "CV",
+     "Project links"
+    ],
+    "from": [
+     "Sinead Hoffman",
+     "12 Kingsland Road",
+     "London E2 8DA"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a24",
+   "design": "modern",
+   "accent": 2,
+   "name": "Joel Whitman",
+   "title": "Senior frontend developer",
+   "street": "40 Stoke Newington Road",
+   "city": "London N16 7XN",
+   "web": "code.example/joel-w",
+   "exp": [
+    [
+     "2022",
+     "",
+     "Frontend developer",
+     "GovSoft Ltd",
+     "London",
+     "- Accessible rebuild of an application portal\n- Design system with 60 components\n- Testing, code review, mentoring"
+    ],
+    [
+     "2019",
+     "2022",
+     "Web developer",
+     "Riverside Agency",
+     "London",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2015",
+     "2019",
+     "BSc Computer Science",
+     "University of Westminster",
+     "London",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "TypeScript",
+     5
+    ],
+    [
+     "CSS and layout",
+     5
+    ],
+    [
+     "Accessibility",
+     5
+    ],
+    [
+     "Testing",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Bouldering, open source"
+  },
+  "do": [
+   "Link to code or live projects.",
+   "Describe problems solved, not just frameworks.",
+   "Mention accessibility and testing."
+  ],
+  "dont": [
+   "List frameworks without projects.",
+   "Present tutorials as client work.",
+   "Ignore design."
+  ],
+  "questions": [
+   "How do you make a form accessible?",
+   "How would you speed up a slow page?",
+   "How do you structure state in a large app?",
+   "Show us a project you are proud of."
+  ],
+  "faq": [
+   {
+    "q": "Do I need a degree?",
+    "a": "Less than you might think. A maintained repository and an architecture you can explain often matter more."
+   }
+  ]
+ }
+}

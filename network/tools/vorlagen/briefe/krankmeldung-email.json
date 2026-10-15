@@ -1,0 +1,61 @@
+{
+ "id": "krankmeldung-email",
+ "group": "arbeit",
+ "tool": "din-letter",
+ "order": 20,
+ "name": "Krankmeldung per E-Mail",
+ "short": "Arbeitgeber über Arbeitsunfähigkeit informieren",
+ "desc": "Krankmeldung an den Arbeitgeber als Muster-E-Mail: kurz, ohne Diagnose, mit voraussichtlicher Dauer – plus Infos zur elektronischen AU und zur Frist.",
+ "search": "krank krankmeldung au arbeitsunfähig",
+ "when": [
+  "Du bist krank und kannst nicht arbeiten. Dann musst du deinem Arbeitgeber die Arbeitsunfähigkeit und ihre voraussichtliche Dauer sofort mitteilen – in der Regel vor Arbeitsbeginn am ersten Tag. Wie (Anruf, E-Mail, Nachricht), regelt oft der Arbeitsvertrag.",
+  "Dauert die Krankheit länger als drei Kalendertage, brauchst du spätestens am vierten Tag eine ärztliche Bescheinigung; dein Arbeitgeber kann sie auch früher verlangen."
+ ],
+ "must": [
+  "Dass du arbeitsunfähig bist – ohne Diagnose",
+  "Ab wann und voraussichtlich bis wann",
+  "Ob du beim Arzt warst und die Bescheinigung elektronisch abgerufen werden kann",
+  "Wichtige Termine oder Übergaben, die jemand übernehmen muss"
+ ],
+ "notes": [
+  "Gesetzlich Versicherte bekommen seit 2023 eine elektronische Arbeitsunfähigkeitsbescheinigung: Die Praxis meldet sie an die Krankenkasse, der Arbeitgeber ruft sie dort ab. Du musst keinen gelben Schein mehr abgeben – krankmelden musst du dich trotzdem selbst.",
+  "Privat Versicherte bekommen weiterhin eine Bescheinigung auf Papier und reichen sie selbst ein.",
+  "Die Diagnose geht deinen Arbeitgeber nichts an."
+ ],
+ "faq": [
+  {
+   "q": "Reicht eine WhatsApp-Nachricht?",
+   "a": "Wenn dein Arbeitgeber das so akzeptiert, ja. Wichtig ist, dass die Nachricht rechtzeitig ankommt und die richtige Person erreicht. Ein Anruf plus kurze E-Mail ist oft am sichersten."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "kuendigung-arbeitsvertrag",
+  "urlaubsantrag-erholungsurlaub",
+  "entschuldigung-schule"
+ ],
+ "from": [
+  "Sevgi Arslan",
+  "Hafenstraße 21",
+  "28217 Bremen"
+ ],
+ "to": {
+  "org": "Muster Logistik GmbH",
+  "attn": "Herr Brandt, Teamleitung Lager",
+  "street": "Industriestraße 10",
+  "city": "28197 Bremen"
+ },
+ "letter": {
+  "subject": "Krankmeldung – Sevgi Arslan",
+  "salutation": "Guten Morgen Herr Brandt,",
+  "body": [
+   "ich bin heute krank und kann nicht zur Arbeit kommen. Laut meiner Hausärztin werde ich voraussichtlich bis einschließlich [Datum] arbeitsunfähig sein; die Bescheinigung ist elektronisch an meine Krankenkasse gemeldet.",
+   "Die Inventur am Mittwoch kann Herr Lange übernehmen, die Liste liegt im Ordner „Inventur“ auf dem Laufwerk. Sollte sich etwas ändern, melde ich mich sofort."
+  ],
+  "closing": "Viele Grüße",
+  "att": []
+ },
+ "mail": true
+}

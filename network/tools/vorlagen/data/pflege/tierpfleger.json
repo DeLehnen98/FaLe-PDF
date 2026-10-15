@@ -1,0 +1,158 @@
+{
+ "id": "tierpfleger",
+ "field": "pflege",
+ "name": "Tierpfleger/in",
+ "search": "tierpfleger tierpflegerin tierheim zoo tierpension hundepension forschung tiere pflegen bewerbung",
+ "short": "Tierheim, Zoo, Pension oder Forschung.",
+ "desc": "Bewerbung als Tierpfleger/in in Tierheim, Zoo oder Tierpension: Muster-Anschreiben für ausgebildete Tierpflegerin und Quereinsteiger, mit Lebenslauf und Tipps.",
+ "intro": "Tierpflegerinnen und Tierpfleger füttern, reinigen, beobachten und beschäftigen Tiere, dokumentieren Auffälligkeiten und beraten Besucher oder Interessenten. Die Ausbildung gibt es in den Fachrichtungen Zoo, Forschung und Klinik sowie Tierheim und Tierpension. Gefragt sind Verlässlichkeit, Beobachtungsgabe und Bereitschaft zu Wochenenddiensten.",
+ "lookFor": [
+  "Ausbildung Tierpfleger/in oder Erfahrung",
+  "Beobachtungsgabe und Dokumentation",
+  "Körperliche Arbeit bei jedem Wetter",
+  "Wochenend- und Feiertagsdienste",
+  "Umgang mit Menschen (Besucher, Vermittlung)"
+ ],
+ "letters": [
+  {
+   "label": "Ausgebildete Tierpflegerin für den Zoo",
+   "level": "erfahren",
+   "position": "Tierpflegerin Revier Huftiere",
+   "to": {
+    "org": "Zoologischer Garten Ostsee",
+    "sal": "m",
+    "contact": "Brandt",
+    "street": "Zooweg 1",
+    "city": "18055 Rostock"
+   },
+   "body": [
+    "im Wildpark, in dem ich seit fünf Jahren arbeite, betreue ich Rothirsche, Wisente und Wildschweine. Ich habe gelernt, an der Art, wie ein Tier steht, zu sehen, ob etwas nicht stimmt, lange bevor es lahmt.",
+    "Meine Ausbildung habe ich in der Fachrichtung Zoo gemacht. Ihr Huftierrevier mit Zuchtprogrammen für bedrohte Arten wäre der nächste Schritt für mich. Kommentierte Fütterungen für Besucher mache ich gern, auch vor großen Gruppen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteiger für das Tierheim",
+   "level": "quereinstieg",
+   "position": "Tierpfleger Tierheim (Quereinstieg)",
+   "to": {
+    "org": "Tierheim Rostock e. V.",
+    "sal": "none",
+    "street": "Am Waldrand 5",
+    "city": "18069 Rostock"
+   },
+   "body": [
+    "jeden Samstag gehe ich seit vier Jahren ehrenamtlich mit Hunden aus Ihrem Tierheim spazieren, inzwischen auch mit den schwierigen, die nicht jeder nehmen darf. Ich möchte diese Arbeit zu meinem Beruf machen.",
+    "Gelernt habe ich Lagerist, bin körperlich fit und gewohnt, früh anzufangen. Einen Sachkundenachweis für Hunde habe ich, und ich würde gern berufsbegleitend die Prüfung als Tierpfleger ablegen, wenn das möglich ist."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Ehrenamt",
+    "Sachkundenachweis"
+   ],
+   "from": [
+    "Steffen Holz",
+    "Lütten Klein 30",
+    "18107 Rostock"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "compact",
+  "accent": 1,
+  "name": "Paula Rehberg",
+  "title": "Tierpflegerin (Fachrichtung Zoo)",
+  "street": "Doberaner Straße 40",
+  "city": "18057 Rostock",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Tierpflegerin",
+    "Wildpark Mecklenburg",
+    "Güstrow",
+    "- Rothirsche, Wisente, Wildschweine\n- Gesundheitskontrolle, Dokumentation\n- Kommentierte Fütterungen"
+   ],
+   [
+    "2018",
+    "2021",
+    "Auszubildende Tierpflegerin",
+    "Zoo Schwerin",
+    "Schwerin",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2021",
+    "Abschlussprüfung Tierpflegerin, Fachrichtung Zoo",
+    "Landwirtschaftskammer",
+    "Schwerin",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Huftiere",
+    5
+   ],
+   [
+    "Tierbeobachtung",
+    5
+   ],
+   [
+    "Dokumentation",
+    4
+   ],
+   [
+    "Besucherführung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Reiten, Naturfotografie"
+ },
+ "do": [
+  "Tierarten und Fachrichtung nennen.",
+  "Beobachtungsgabe mit Beispiel zeigen.",
+  "Wochenenddienste ansprechen."
+ ],
+ "dont": [
+  "Nur „Ich liebe Tiere“.",
+  "Körperliche Arbeit unterschätzen.",
+  "Allergien verschweigen."
+ ],
+ "questions": [
+  "Woran erkennen Sie, dass ein Tier krank ist?",
+  "Wie gehen Sie mit einem aggressiven Hund um?",
+  "Wie würden Sie eine Fütterung für Besucher kommentieren?",
+  "Wie stehen Sie zu Wochenenddiensten?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Fachrichtungen gibt es?",
+   "a": "Zoo, Forschung und Klinik sowie Tierheim und Tierpension. Die Fachrichtung steht auf deinem Abschluss und sollte zur Stelle passen; Wechsel sind mit Erfahrung möglich."
+  }
+ ],
+ "related": [
+  "tiermedizinische-fachangestellte",
+  "ausbildung-tfa",
+  "ausbildung-landwirt",
+  "gaertner"
+ ]
+}

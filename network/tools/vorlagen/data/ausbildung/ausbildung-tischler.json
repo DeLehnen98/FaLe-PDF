@@ -1,0 +1,191 @@
+{
+ "id": "ausbildung-tischler",
+ "field": "ausbildung",
+ "name": "Ausbildung Tischler/in (Schreiner/in)",
+ "search": "ausbildung tischler tischlerin schreiner schreinerin holz möbel azubi handwerk bewerbung werkstatt",
+ "short": "Holz, Möbel, Innenausbau – mit Werkstück-Beispielen.",
+ "desc": "Bewerbung für die Ausbildung zum Tischler / zur Schreinerin: Muster-Anschreiben für Schülerin, Abiturient und Quereinsteiger, Lebenslauf und Fragen aus dem Vorstellungsgespräch.",
+ "intro": "Tischlereien und Schreinereien bauen Möbel, Treppen, Fenster und Innenausbauten, oft nach Maß. In der Bewerbung zählt, was du schon mit Holz gemacht hast. Ein Foto von einem selbst gebauten Regal sagt mehr als jeder Satz über Kreativität.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss, Abitur willkommen",
+  "Räumliches Denken und genaues Arbeiten",
+  "Erste Werkstücke aus Schule oder Freizeit",
+  "Freude an Handarbeit und an Maschinen",
+  "Montage beim Kunden: Auftreten und Sorgfalt"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin mit eigenem Möbelstück",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Tischlerin",
+   "to": {
+    "org": "Möbeltischlerei Hagedorn",
+    "sal": "m",
+    "contact": "Hagedorn",
+    "street": "Am Mühlenbach 5",
+    "city": "32052 Herford"
+   },
+   "body": [
+    "im Werkunterricht haben wir Vogelhäuser gebaut. Mir war das zu wenig, deshalb habe ich danach zu Hause aus alten Gerüstbohlen einen Couchtisch gebaut: abgeschliffen, geölt, mit Holzdübeln verbunden. Er steht seitdem in unserem Wohnzimmer, und ich sehe jeden Tag, was ich beim nächsten Mal besser machen würde.",
+    "Im Sommer schließe ich die Realschule ab. Ihre Werkstatt kenne ich vom Tag der offenen Tür im letzten Jahr. Mir hat gefallen, dass bei Ihnen noch viel von Hand gemacht wird und dass Sie auch alte Möbel restaurieren.",
+    "Fotos von meinem Tisch habe ich angehängt. Ein Praktikum vor der Ausbildung würde ich in den Osterferien gern machen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Fotos eigener Arbeiten"
+   ]
+  },
+  {
+   "label": "Abiturient mit Ziel Innenausbau",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Schreiner",
+   "to": {
+    "org": "Schreinerei Lechner GmbH & Co. KG",
+    "sal": "f",
+    "contact": "Lechner",
+    "street": "Gewerbestraße 18",
+    "city": "83022 Rosenheim"
+   },
+   "body": [
+    "an der Hochschule hier in Rosenheim könnte ich Holztechnik studieren. Ich möchte vorher aber das Handwerk richtig lernen und habe mich deshalb für eine Ausbildung entschieden. Ihre Schreinerei baut Ladeneinrichtungen und Hotelzimmer – große Projekte, bei denen viel geplant werden muss.",
+    "Im Juni mache ich Abitur. Ich zeichne gern am Rechner und habe mir ein Konstruktionsprogramm für Möbel selbst beigebracht. Damit habe ich den Kleiderschrank für mein Zimmer geplant und in der Werkstatt meines Großvaters gebaut. Mit Formatkreissäge und Oberfräse habe ich unter seiner Aufsicht gearbeitet; ich weiß, dass ich da noch viel lernen muss.",
+    "Ein Gespräch oder ein Probetag in Ihrer Werkstatt wäre für mich der beste nächste Schritt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Zeichnungen und Fotos"
+   ],
+   "from": [
+    "Maximilian Huber",
+    "Kufsteiner Straße 40",
+    "83022 Rosenheim"
+   ]
+  },
+  {
+   "label": "Lagerist sucht Neuanfang mit 27",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Tischler",
+   "to": {
+    "org": "Holzwerkstatt Nordheide",
+    "sal": "none",
+    "street": "Am Sägewerk 2",
+    "city": "21244 Buchholz"
+   },
+   "body": [
+    "im Lager eines Möbelhauses arbeite ich seit sechs Jahren. Ich packe Schränke ein, die andere gebaut haben, und habe irgendwann angefangen, mich über schlecht verleimte Kanten zu ärgern. Mit 27 möchte ich jetzt die Ausbildung zum Tischler machen.",
+    "Am Wochenende baue ich in einer offenen Werkstatt, zuletzt eine Garderobe aus Eiche für meine Schwester. Aus dem Lager bringe ich Staplerschein, Kraft und Ordnung mit. Mir ist klar, dass ich mit Mitschülern lerne, die zehn Jahre jünger sind; das stört mich nicht.",
+    "Finanziell habe ich mich auf die Ausbildungsvergütung eingestellt. Ich könnte zum August anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Fotos eigener Möbel"
+   ],
+   "from": [
+    "Sascha Möller",
+    "Bremer Straße 77",
+    "21244 Buchholz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "classic",
+  "accent": 4,
+  "name": "Marie Kortkamp",
+  "title": "Schülerin",
+  "street": "Bielefelder Straße 31",
+  "city": "32051 Herford",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Möbelbau in Eigenregie",
+    "",
+    "",
+    "- Couchtisch aus Gerüstbohlen, geölt"
+   ],
+   [
+    "10/2024",
+    "10/2024",
+    "Schülerpraktikum (1 Woche)",
+    "Raumausstattung Peters",
+    "Herford",
+    "- Polster- und Zuschnittarbeiten"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Realschule Herford-Mitte",
+    "Herford",
+    "Wahlpflichtfach Technik"
+   ]
+  ],
+  "skills": [
+   [
+    "Holzbearbeitung",
+    3
+   ],
+   [
+    "Genaues Arbeiten",
+    4
+   ],
+   [
+    "Technisches Zeichnen",
+    3
+   ],
+   [
+    "Geduld",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Möbel aufarbeiten, Zeichnen, Volleyball"
+ },
+ "do": [
+  "Fotos eigener Werkstücke anhängen.",
+  "Schreiben, warum gerade dieser Betrieb (Möbel, Innenausbau, Restaurierung).",
+  "Ein Praktikum anbieten."
+ ],
+ "dont": [
+  "„Ich arbeite gern mit Holz“ als einzige Begründung.",
+  "Riesige Bilddateien anhängen.",
+  "Ein Betriebsprofil ignorieren – Fensterbau ist etwas anderes als Möbelbau."
+ ],
+ "questions": [
+  "Was haben Sie schon aus Holz gebaut?",
+  "Welche Holzarten kennen Sie?",
+  "Wie gehen Sie mit einem Fehler am Werkstück um?",
+  "Können Sie sich Montage beim Kunden vorstellen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Tischler oder Schreiner – was ist richtig?",
+   "a": "Beides. Im Norden sagt man meist Tischler, im Süden Schreiner. Die Ausbildung ist dieselbe; schreib die Bezeichnung, die der Betrieb in der Anzeige benutzt."
+  }
+ ],
+ "related": [
+  "tischler",
+  "ausbildung-maler",
+  "zimmerer",
+  "ausbildung-mechatroniker"
+ ]
+}

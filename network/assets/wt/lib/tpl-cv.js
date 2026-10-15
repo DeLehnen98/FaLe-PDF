@@ -3,12 +3,16 @@
 // matching letterhead for the cover letter. Content flows over as many pages as needed (usually 1–2).
 // Used by tools/cv-builder.js and tools/cover-letter.js.
 import { createWriter, collectText, mm, hexColor, tint } from './tpl-pdf.js';
+import { MORE_DESIGNS, isMoreDesign, cvPdfMore, cvHeadMore } from './arc2-cvdesigns.js';
 
 export const ACCENTS = ['#2b59c3', '#0f766e', '#7c3aed', '#b91c1c', '#c2410c', '#334155'];
-export const SECTION_IDS = ['exp', 'edu', 'courses', 'skills', 'langs', 'hobbies'];
+export const SECTION_IDS = ['exp', 'edu', 'courses', 'skills', 'langs', 'hobbies', 'pubs'];
+/** All designs: [{id, de, en}] – the first three are drawn here, the others in lib/arc2-cvdesigns.js. */
+export const DESIGNS = [{ id: 'classic', de: 'Klassisch', en: 'Classic' }, { id: 'modern', de: 'Modern', en: 'Modern' }, { id: 'compact', de: 'Kompakt', en: 'Compact' }, ...MORE_DESIGNS.map(({ id, de, en }) => ({ id, de, en }))];
 export const SECTION_TITLES = {
   exp: { de: 'Berufserfahrung', en: 'Work experience' }, edu: { de: 'Ausbildung', en: 'Education' }, courses: { de: 'Weiterbildung', en: 'Training & certificates' },
   skills: { de: 'Kenntnisse', en: 'Skills' }, langs: { de: 'Sprachen', en: 'Languages' }, hobbies: { de: 'Interessen', en: 'Interests' },
+  pubs: { de: 'Publikationen & Vorträge', en: 'Publications & talks' },
 };
 export const SKILL_LEVELS = {
   de: ['', 'Grundkenntnisse', 'Erweiterte Kenntnisse', 'Gute Kenntnisse', 'Sehr gute Kenntnisse', 'Expertenwissen'],
@@ -24,7 +28,7 @@ export function newCv(lang) {
   return {
     design: 'modern', accent: ACCENTS[0], photoShape: 'circle',
     name: '', title: '', street: '', city: '', phone: '', email: '', web: '', birth: '', nationality: '',
-    exp: [{ from: '', to: '', role: '', org: '', place: '', desc: '' }], edu: [{ from: '', to: '', role: '', org: '', place: '', desc: '' }], courses: [],
+    exp: [{ from: '', to: '', role: '', org: '', place: '', desc: '' }], edu: [{ from: '', to: '', role: '', org: '', place: '', desc: '' }], courses: [], pubs: [],
     skills: [{ name: '', level: '3' }], langs: [{ name: lang === 'de' ? 'Deutsch' : 'English', level: 'native' }], hobbies: '',
     order: [...SECTION_IDS], hide: {}, signLine: lang === 'de', place: '', date: '',
   };
@@ -37,7 +41,9 @@ const span = (e, lang) => {
   return a && b ? `${a} – ${b}` : a ? `${lang === 'de' ? 'seit' : 'since'} ${a}` : b;
 };
 const filled = e => t(e.role) || t(e.org) || t(e.desc);
-export const visibleSections = (v) => (v.order || SECTION_IDS).filter(id => SECTION_IDS.includes(id) && !v.hide?.[id] && hasContent(v, id));
+/** Section order of a CV; ids added later (e.g. 'pubs') are appended to older saved orders. */
+export const normOrder = v => { const o = (Array.isArray(v.order) ? v.order : SECTION_IDS).filter(id => SECTION_IDS.includes(id)); return [...new Set([...o, ...SECTION_IDS])]; };
+export const visibleSections = (v) => normOrder(v).filter(id => SECTION_IDS.includes(id) && !v.hide?.[id] && hasContent(v, id));
 function hasContent(v, id) {
   if (id === 'hobbies') return !!t(v.hobbies);
   return (v[id] || []).some(e => (id === 'skills' || id === 'langs' ? t(e.name) : filled(e)));
@@ -46,6 +52,7 @@ export const contactLines = v => [t(v.street) && t(v.city) ? `${t(v.street)}, ${
 
 /** CV → PDF. photo: {bytes, type: 'png'|'jpg', width, height} or null. → {bytes, missing, pages} */
 export async function cvPdf(v, lang, photo = null) {
+  if (isMoreDesign(v.design)) return cvPdfMore(v, lang, photo, HELPERS);
   const de = lang === 'de';
   const design = ['classic', 'modern', 'compact'].includes(v.design) ? v.design : 'modern';
   const text = collectText({ ...v, hide: null }).join('\n') + Object.values(SECTION_TITLES).map(x => x[lang]).join(' ');
@@ -151,7 +158,7 @@ export async function cvPdf(v, lang, photo = null) {
       const y0 = w.y;
       w.line(SECTION_TITLES[id][lang], x, y0 - sizes.head, { size: sizes.head - 1, font: w.bold, color: accent, maxWidth: mm(30) });
       const cx = x + mm(32), cwid = width - mm(32);
-      if (id === 'exp' || id === 'edu' || id === 'courses') entries(v[id], cx, cwid);
+      if (id === 'exp' || id === 'edu' || id === 'courses' || id === 'pubs') entries(v[id] || [], cx, cwid);
       else if (id === 'skills') w.para(inline(v.skills.filter(e => t(e.name)).map(e => (+e.level ? `${t(e.name)} (${SKILL_LEVELS[lang][+e.level]})` : t(e.name)))), { size: sizes.body, x: cx, width: cwid, lead: 1.4, after: 3 });
       else if (id === 'langs') w.para(inline(v.langs.filter(e => t(e.name)).map(e => `${t(e.name)} (${LANG_LEVELS[lang][e.level] || ''})`)), { size: sizes.body, x: cx, width: cwid, lead: 1.4, after: 3 });
       else if (id === 'hobbies') w.para(t(v.hobbies), { size: sizes.body, x: cx, width: cwid, lead: 1.4, after: 3 });
@@ -159,7 +166,7 @@ export async function cvPdf(v, lang, photo = null) {
       return;
     }
     head(SECTION_TITLES[id][lang], x, width);
-    if (id === 'exp' || id === 'edu' || id === 'courses') entries(v[id], x, width);
+    if (id === 'exp' || id === 'edu' || id === 'courses' || id === 'pubs') entries(v[id] || [], x, width);
     else if (id === 'skills') skillList(x, width, style);
     else if (id === 'langs') langList(x, width, style);
     else if (id === 'hobbies') w.para(t(v.hobbies), { size: sizes.body, x, width, lead: 1.4, after: 2 });
@@ -205,10 +212,13 @@ export async function cvPdf(v, lang, photo = null) {
   w.numberPages({ y: mm(8) });
   return w.finish({ title: `${de ? 'Lebenslauf' : 'CV'} ${t(v.name)}`.trim() });
 }
+// helpers for the designs in lib/arc2-cvdesigns.js (passed in, so that module does not import this one)
+const HELPERS = { SECTION_IDS, SECTION_TITLES, SKILL_LEVELS, LANG_LEVELS, LANG_SCORE, visibleSections, normOrder, contactLines, span, filled, t, fmtD: (iso, lang) => fmtD(iso, lang) };
 const fmtD = (iso, lang) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return !m ? iso : lang === 'de' ? `${m[3]}.${m[2]}.${m[1]}` : new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); };
 
 /** Letterhead in the CV design for the cover letter (drawLetter head hook). */
 export function cvHead(v) {
+  if (isMoreDesign(v.design)) return cvHeadMore(v);
   return (w, m) => {
     const design = v.design || 'modern';
     const accent = hexColor(w.PDFLib, v.accent);

@@ -1,0 +1,111 @@
+{
+ "id": "projektzeiten",
+ "slug": "projektzeiten",
+ "cat": "Arbeit",
+ "name": "Zeiterfassung Projekte",
+ "short": "Arbeitszeiten je Projekt, abrechenbar mit Stundensatz und Budget",
+ "desc": "Projekt-Zeiterfassung als Excel-Vorlage (XLSX): Zeiten je Projekt mit Pause erfassen, abrechenbare Stunden mit Stundensatz bewerten und den Budget-Rest je Projekt sehen.",
+ "search": "stunden freelancer",
+ "intro": "Für Freelancer und Teams, die nach Stunden abrechnen: Im Blatt „Zeiten“ trägst du Datum, Projekt, Beginn, Ende und Pause ein. Die Vorlage rechnet die Stunden und – wenn die Zeit abrechenbar ist – den Betrag mit dem Stundensatz des Projekts. Das Blatt „Projekte“ zeigt erfasste Stunden gegen das Budget.",
+ "uses": [
+  "Stunden für die Rechnung an Kunden sammeln",
+  "Sehen, ob ein Projekt im Stundenbudget bleibt",
+  "Interne Zeit von abrechenbarer trennen"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Arbeitstag."
+  ],
+  [
+   "Projekt",
+   "In den Zeiten: Auswahl aus dem Blatt „Projekte“. Dort: der Projektname."
+  ],
+  [
+   "Tätigkeit",
+   "Was du gemacht hast – steht später auf der Rechnung."
+  ],
+  [
+   "Beginn",
+   "Uhrzeit, z. B. 09:15."
+  ],
+  [
+   "Ende",
+   "Uhrzeit."
+  ],
+  [
+   "Pause (Min.)",
+   "Pausen in Minuten."
+  ],
+  [
+   "Stunden",
+   "(Ende − Beginn) in Stunden minus Pause, auf zwei Stellen gerundet. Über Mitternacht wird richtig gerechnet."
+  ],
+  [
+   "Abrechenbar",
+   "Ja oder Nein. Nicht abrechenbare Zeilen sind grau und haben keinen Betrag."
+  ],
+  [
+   "Betrag",
+   "Stunden mal Stundensatz – SVERWEIS holt den Satz aus dem Blatt „Projekte“."
+  ],
+  [
+   "Überblick",
+   "Stunden in dieser Woche und diesem Monat, abrechenbarer Betrag des Monats und der Anteil abrechenbarer Zeit."
+  ],
+  [
+   "Kunde",
+   "Für wen das Projekt läuft."
+  ],
+  [
+   "Stundensatz",
+   "Netto-Stundensatz des Projekts."
+  ],
+  [
+   "Budget (Std.)",
+   "Vereinbarte Stunden, falls es ein Budget gibt."
+  ],
+  [
+   "Erfasst",
+   "SUMMEWENN addiert alle Stunden des Projekts aus dem Blatt „Zeiten“."
+  ],
+  [
+   "Rest (Std.)",
+   "Budget minus erfasst – negativ und rot, wenn das Budget überschritten ist."
+  ],
+  [
+   "Abrechenbar",
+   "Im Blatt „Projekte“: Summe der Beträge des Projekts."
+  ]
+ ],
+ "tips": [
+  "Trag die Zeiten am selben Tag ein – im Nachhinein schätzt man fast immer zu wenig."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich daraus direkt eine Rechnung machen?",
+   "a": "Die Tabelle liefert die Stunden und Beträge. Die Rechnung selbst schreibst du mit dem Rechnungs-Werkzeug von FaLe; filtere dazu die Zeiten nach Projekt und Monat."
+  }
+ ],
+ "related": [
+  "stundenzettel",
+  "rechnungsausgangsbuch",
+  "projektplan"
+ ],
+ "en": {
+  "slug": "project-time-tracking",
+  "name": "Project time tracking",
+  "short": "Hours per project, billable with hourly rate and budget",
+  "desc": "Project time tracking spreadsheet (XLSX): log time per project with breaks, value billable hours at the project rate and see the remaining budget per project.",
+  "intro": "For freelancers and teams who bill by the hour: log date, project, start, end and break. Hours and – if billable – the amount at the project rate are calculated; a second sheet compares hours with the budget.",
+  "inside": [
+   "Hours = end − start − break",
+   "Billable amount with VLOOKUP of the rate",
+   "Hours this week and month",
+   "Budget vs. logged hours per project"
+  ],
+  "uses": [
+   "Billing clients by the hour"
+  ]
+ }
+}

@@ -1,0 +1,210 @@
+{
+ "id": "umschulung",
+ "field": "ausbildung",
+ "name": "Umschulung (betrieblich)",
+ "search": "umschulung umschüler bildungsgutschein agentur für arbeit jobcenter rentenversicherung reha betriebliche umschulung bewerbung umschulungsplatz",
+ "short": "Neuer Beruf mit Förderung – Bewerbung um einen Umschulungsplatz.",
+ "desc": "Bewerbung um einen betrieblichen Umschulungsplatz: Muster-Anschreiben für Kauffrau für Büromanagement, Fachinformatiker und Lagerlogistik, mit Lebenslauf und Tipps zur Förderung.",
+ "intro": "Eine Umschulung führt in kürzerer Zeit als eine reguläre Ausbildung zu einem anerkannten Berufsabschluss. Gefördert wird sie oft von der Agentur für Arbeit, dem Jobcenter oder der Rentenversicherung. Bei der betrieblichen Umschulung brauchst du einen Betrieb, der dich aufnimmt – und dafür eine gute Bewerbung, die erklärt, warum du wechselst.",
+ "lookFor": [
+  "Klarer Grund für den Berufswechsel",
+  "Förderzusage oder laufender Antrag",
+  "Erfahrung aus dem bisherigen Beruf, die nützt",
+  "Lernbereitschaft im Erwachsenenalter",
+  "Verlässlichkeit bei Schule und Betrieb"
+ ],
+ "letters": [
+  {
+   "label": "Pflegehelferin mit Rückenproblemen wird Bürokauffrau",
+   "level": "quereinstieg",
+   "position": "Umschulung zur Kauffrau für Büromanagement",
+   "to": {
+    "org": "Baustoffhandel Klinger GmbH",
+    "sal": "f",
+    "contact": "Klinger",
+    "street": "Gewerbestraße 30",
+    "city": "06844 Dessau-Roßlau"
+   },
+   "body": [
+    "nach neun Jahren in der Altenpflege darf ich aus gesundheitlichen Gründen nicht mehr schwer heben. Die Rentenversicherung hat mir eine Umschulung zur Kauffrau für Büromanagement bewilligt, die Bescheinigung liegt bei. Jetzt suche ich einen Betrieb für den praktischen Teil.",
+    "Im Pflegeheim war ich nicht nur am Bett. Ich habe Dienstpläne mitgeschrieben, Pflegedokumentation am Computer geführt und Angehörige am Telefon beraten. Ordnung, Belastbarkeit und ein freundlicher Ton am Telefon sind mir also nicht fremd. Mit Tabellen arbeite ich inzwischen sicher, dafür habe ich im Winter einen Kurs an der Volkshochschule besucht.",
+    "Die Umschulung dauert 24 Monate, Start wäre am 1. September. Kosten entstehen Ihnen bis auf die Einarbeitung nicht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bewilligungsbescheid",
+    "Arbeitszeugnis",
+    "Zertifikat Tabellenkalkulation"
+   ]
+  },
+  {
+   "label": "Lagerist will in die IT",
+   "level": "quereinstieg",
+   "position": "Praktikumsplatz im Rahmen der Umschulung zum Fachinformatiker für Systemintegration",
+   "to": {
+    "org": "Systemhaus Mittelelbe",
+    "sal": "m",
+    "contact": "Pohl",
+    "street": "Breiter Weg 12",
+    "city": "39104 Magdeburg"
+   },
+   "body": [
+    "zuhause betreue ich seit Jahren das Netzwerk meiner Familie und das meines Fußballvereins, mit eigenem kleinem Server und einer Backup-Lösung, die ich selbst eingerichtet habe. Nach acht Jahren im Lager mache ich jetzt eine Umschulung zum Fachinformatiker für Systemintegration bei einem Bildungsträger in Magdeburg, gefördert über einen Bildungsgutschein.",
+    "Für das Praktikum im zweiten Jahr suche ich einen Betrieb, in dem ich echte Kundenumgebungen kennenlerne. Ihr Systemhaus betreut Arztpraxen und Kanzleien, also genau die kleinen Netzwerke, mit denen ich mich am meisten beschäftigt habe. Aus dem Lager kenne ich Warenwirtschaft, Scanner und Etikettendrucker – und die Geduld, die es braucht, wenn morgens um sechs nichts druckt.",
+    "Das Praktikum dauert zwölf Monate ab Februar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Bildungsträger",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Marcel Richter",
+    "Halberstädter Straße 88",
+    "39112 Magdeburg"
+   ]
+  },
+  {
+   "label": "Friseurin mit Allergie wechselt in die Logistik",
+   "level": "quereinstieg",
+   "position": "Umschulung zur Fachkraft für Lagerlogistik",
+   "to": {
+    "org": "Elbe-Saale Logistikzentrum GmbH",
+    "sal": "none",
+    "street": "Am Hafen 20",
+    "city": "06406 Bernburg"
+   },
+   "body": [
+    "eine Kontaktallergie gegen Haarfarben hat meine Arbeit als Friseurin nach sieben Jahren beendet. Mein Arzt und die Berufsgenossenschaft haben mir zu einem Wechsel geraten, und die Agentur für Arbeit fördert eine Umschulung. Ich habe mich für die Logistik entschieden.",
+    "Im Salon habe ich Bestellungen geplant, Lieferungen geprüft und die Lagerliste geführt; das hat mir Spaß gemacht. Ein Probetag bei Ihnen im Wareneingang hat bestätigt, dass mir die Arbeit liegt. Ich bin 29, körperlich fit und kann im Schichtsystem arbeiten.",
+    "Ein Gespräch mit Ihnen und meiner Beraterin bei der Agentur würde ich gern zeitnah vereinbaren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Bescheinigung Probetag"
+   ],
+   "from": [
+    "Jessica Neumann",
+    "Kustrenaer Straße 4",
+    "06406 Bernburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "classic",
+  "accent": 1,
+  "name": "Nadine Schulze",
+  "title": "Umschülerin Kauffrau für Büromanagement",
+  "street": "Antoinettenstraße 14",
+  "city": "06844 Dessau-Roßlau",
+  "exp": [
+   [
+    "09/2016",
+    "06/2025",
+    "Pflegehelferin",
+    "Seniorenzentrum am Georgium",
+    "Dessau-Roßlau",
+    "- Grundpflege, Mobilisation\n- Pflegedokumentation am PC\n- Mitarbeit an Dienstplänen\n- Angehörigengespräche am Telefon"
+   ]
+  ],
+  "edu": [
+   [
+    "2026",
+    "2028",
+    "Umschulung Kauffrau für Büromanagement (bewilligt)",
+    "Bildungszentrum Dessau",
+    "Dessau-Roßlau",
+    ""
+   ],
+   [
+    "2014",
+    "2015",
+    "Pflegebasiskurs",
+    "Pflegeschule Anhalt",
+    "Dessau-Roßlau",
+    ""
+   ],
+   [
+    "2004",
+    "2014",
+    "Realschulabschluss",
+    "Sekundarschule Kreuzberge",
+    "Dessau-Roßlau",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Tabellenkalkulation Aufbaukurs",
+    "Volkshochschule Dessau",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Textverarbeitung",
+    4
+   ],
+   [
+    "Telefon und Kundenkontakt",
+    5
+   ],
+   [
+    "Dokumentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Wandern, Nähen"
+ },
+ "do": [
+  "Den Grund für den Wechsel kurz und sachlich nennen.",
+  "Förderzusage oder Antrag beilegen.",
+  "Übertragbare Fähigkeiten aus dem alten Beruf zeigen."
+ ],
+ "dont": [
+  "Krankheiten im Detail ausbreiten.",
+  "Den alten Beruf schlechtmachen.",
+  "Unklar lassen, wer die Kosten trägt."
+ ],
+ "questions": [
+  "Warum möchten Sie den Beruf wechseln?",
+  "Wie organisieren Sie Schule und Betrieb?",
+  "Was nehmen Sie aus Ihrem alten Beruf mit?",
+  "Wer fördert die Umschulung?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange dauert eine Umschulung?",
+   "a": "Meist etwa zwei Drittel einer regulären Ausbildung, also oft 24 statt 36 Monate. Am Ende steht dieselbe Prüfung vor der Kammer."
+  },
+  {
+   "q": "Wer bezahlt die Umschulung?",
+   "a": "Je nach Situation die Agentur für Arbeit, das Jobcenter, die Rentenversicherung oder die Berufsgenossenschaft. Kläre die Förderung, bevor du einen Betrieb zusagst."
+  }
+ ],
+ "related": [
+  "ausbildung-bueromanagement",
+  "quereinstieg-buero",
+  "bewerbung-nach-arbeitslosigkeit",
+  "ausbildung-fachkraft-lagerlogistik"
+ ]
+}

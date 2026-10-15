@@ -1,0 +1,313 @@
+{
+ "id": "restaurantleitung",
+ "field": "gastro",
+ "name": "Restaurantleiter/in",
+ "search": "restaurantleiter restaurantleiterin restaurantleitung betriebsleitung gastronomie service leitung f&b bewerbung",
+ "short": "Service, Team und Zahlen im Restaurant verantworten.",
+ "desc": "Bewerbung als Restaurantleiter/in: Muster-Anschreiben für Oberkellnerin mit Aufstiegswunsch und erfahrenen Betriebsleiter, mit Lebenslauf und Fragen zu Kennzahlen.",
+ "intro": "Restaurantleiterinnen und -leiter führen das Serviceteam, planen Dienste, achten auf Wareneinsatz und Umsatz und sind Gastgeber für die Gäste. In der Bewerbung zählen Teamgröße, Umsatzentwicklung, Bewertungen und wie du mit Personalmangel umgehst.",
+ "lookFor": [
+  "Erfahrung im gehobenen Service",
+  "Führung eines Serviceteams",
+  "Kennzahlen: Umsatz, Personalkosten, Wareneinsatz",
+  "Gastgeberqualität",
+  "Ausbildung von Nachwuchs"
+ ],
+ "letters": [
+  {
+   "label": "Oberkellnerin will Verantwortung",
+   "level": "erfahren",
+   "position": "Restaurantleiterin",
+   "to": {
+    "org": "Gasthof Zum Löwen",
+    "sal": "m",
+    "contact": "Brandl",
+    "street": "Marktplatz 4",
+    "city": "83646 Bad Tölz"
+   },
+   "body": [
+    "an Sommerwochenenden empfangen wir bis zu 300 Gäste auf der Terrasse, und ich verteile die Tische, teile die Aushilfen ein und kümmere mich um die Beschwerden, die bei so vielen Menschen unvermeidlich sind. Seit drei Jahren bin ich Oberkellnerin, und mein Chef lässt mich das Restaurant führen, wenn er unterwegs ist.",
+    "Gelernt habe ich Restaurantfachfrau. Seitdem habe ich in zwei gehobenen Häusern gearbeitet und die Weinkarte im jetzigen Betrieb mitentwickelt. Was ich lernen möchte, ist die kaufmännische Seite: Personalkosten, Wareneinsatz, Kalkulation. Dafür besuche ich gerade einen Lehrgang.",
+    "Ein Traditionsgasthaus mit guter Küche ist genau der Ort, an dem ich das tun möchte."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Betriebsleiter aus der Systemgastronomie",
+   "level": "erfahren",
+   "position": "Restaurantleiter",
+   "to": {
+    "org": "Restaurant Seeblick GmbH",
+    "sal": "f",
+    "contact": "Huber",
+    "street": "Seestraße 20",
+    "city": "83684 Tegernsee"
+   },
+   "body": [
+    "fünf Jahre Betriebsleitung eines Schnellrestaurants mit 45 Mitarbeitenden haben mir Zahlen, Prozesse und Personalführung beigebracht. Jetzt möchte ich in die klassische Gastronomie zurück, wo ich als Kellner angefangen habe.",
+    "In meinem Betrieb habe ich die Personalkosten um vier Prozentpunkte gesenkt, ohne den Service zu verschlechtern, und die Fluktuation halbiert, indem ich feste Dienstpläne zwei Wochen im Voraus eingeführt habe. Ihr Restaurant hat Saisonbetrieb und viele Aushilfen; die Planung dafür liegt mir."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Florian Wagner",
+    "Rosenstraße 12",
+    "83703 Gmund am Tegernsee"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "classic",
+  "accent": 3,
+  "name": "Theresa Bachmair",
+  "title": "Oberkellnerin, Restaurantfachfrau",
+  "street": "Marktstraße 40",
+  "city": "83646 Bad Tölz",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Oberkellnerin",
+    "Brauereigasthof Isarwinkel",
+    "Bad Tölz",
+    "- Leitung des Service an Wochenenden bis 300 Gäste\n- Einteilung der Aushilfen, Beschwerdemanagement\n- Mitentwicklung der Weinkarte"
+   ],
+   [
+    "2019",
+    "2023",
+    "Chef de Rang",
+    "Hotel Alpenrose",
+    "Garmisch-Partenkirchen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Ausbildung Restaurantfachfrau",
+    "Hotel Alpenrose",
+    "Garmisch-Partenkirchen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Serviceleitung",
+    4
+   ],
+   [
+    "Weinberatung",
+    4
+   ],
+   [
+    "Dienstplanung",
+    4
+   ],
+   [
+    "Kalkulation",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Italienisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Bergsteigen, Wein"
+ },
+ "do": [
+  "Teamgröße und Gästezahlen nennen.",
+  "Kennzahlen, wenn vorhanden.",
+  "Zeigen, wie du Personal hältst."
+ ],
+ "dont": [
+  "Nur Gastgeberqualität, keine Zahlen.",
+  "Den alten Betrieb kritisieren.",
+  "Arbeitszeiten verhandeln, bevor das Gespräch stattfindet."
+ ],
+ "questions": [
+  "Wie senken Sie Personalkosten, ohne dass der Service leidet?",
+  "Wie gehen Sie mit einem Gast um, der lautstark reklamiert?",
+  "Wie halten Sie gute Leute?",
+  "Welche Kennzahlen schauen Sie wöchentlich an?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Weiterbildung?",
+   "a": "Nicht zwingend. Lehrgänge zum Restaurantmeister oder Betriebswirt im Gastgewerbe helfen aber, die kaufmännische Seite zu lernen, und werden gern gesehen."
+  }
+ ],
+ "related": [
+  "servicekraft",
+  "barkeeper",
+  "koch",
+  "systemgastronomie"
+ ],
+ "en": {
+  "slug": "restaurant-manager",
+  "name": "Restaurant manager",
+  "search": "restaurant manager general manager front of house hospitality operations",
+  "short": "Leading the team, the floor and the numbers.",
+  "desc": "Restaurant manager cover letter examples: a head waitress stepping up and a fast-food general manager returning to full service, plus a ready CV.",
+  "intro": "Restaurant managers lead the front-of-house team, plan rotas, watch labour and food costs, and host guests. Bring team size, sales development, reviews and how you handle staff shortages.",
+  "lookFor": [
+   "Experience in quality service",
+   "Leading a team",
+   "Numbers: sales, labour cost, food cost",
+   "Hospitality",
+   "Training young staff"
+  ],
+  "letters": [
+   {
+    "label": "Head waitress stepping up",
+    "level": "erfahren",
+    "position": "Restaurant manager",
+    "to": {
+     "org": "The Lion Inn",
+     "sal": "m",
+     "contact": "Brand",
+     "street": "4 Market Place",
+     "city": "Keswick CA12 5BG"
+    },
+    "body": [
+     "on summer weekends we welcome up to 300 guests on the terrace. I seat them, organise the casual staff and deal with the complaints that are bound to come with so many people. I have been head waitress for three years, and I run the restaurant whenever the owner is away.",
+     "What I want to learn now is the commercial side: labour cost, food cost, pricing. I am taking a course in it at the moment, and a traditional inn with a good kitchen is exactly where I want to put it into practice."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Fast-food general manager returning to full service",
+    "level": "erfahren",
+    "position": "Restaurant manager",
+    "to": {
+     "org": "Lakeside Restaurant Ltd",
+     "sal": "f",
+     "contact": "Hughes",
+     "street": "20 Lake Road",
+     "city": "Windermere LA23 2BY"
+    },
+    "body": [
+     "five years running a fast-food restaurant with 45 staff taught me numbers, processes and people management. Now I want to return to full-service hospitality, where I started as a waiter.",
+     "I cut labour cost by four percentage points without hurting service and halved staff turnover by publishing rotas two weeks ahead. Your restaurant is seasonal with many casual staff, and planning for that is something I do well."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Fraser Wade",
+     "12 Rose Street",
+     "Bowness LA23 3AS"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a11",
+   "design": "classic",
+   "accent": 3,
+   "name": "Tessa Bowman",
+   "title": "Head waitress",
+   "street": "40 Main Street",
+   "city": "Keswick CA12 5DX",
+   "exp": [
+    [
+     "2023",
+     "",
+     "Head waitress",
+     "Brewery Inn",
+     "Keswick",
+     "- Weekend service for up to 300 guests\n- Casual staff, complaints\n- Wine list"
+    ],
+    [
+     "2019",
+     "2023",
+     "Waitress",
+     "Alpine Hotel",
+     "Ambleside",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2019",
+     "Hospitality apprenticeship",
+     "Alpine Hotel",
+     "Ambleside",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Service leadership",
+     4
+    ],
+    [
+     "Wine",
+     4
+    ],
+    [
+     "Rotas",
+     4
+    ],
+    [
+     "Costing",
+     2
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Italian",
+     "A2"
+    ]
+   ],
+   "hobbies": "Climbing, wine"
+  },
+  "do": [
+   "Give team size and covers.",
+   "Add numbers where you have them.",
+   "Show how you keep staff."
+  ],
+  "dont": [
+   "Talk only about hospitality, no numbers.",
+   "Criticise your current employer.",
+   "Negotiate hours before the interview."
+  ],
+  "questions": [
+   "How would you cut labour cost without hurting service?",
+   "How do you handle a loud complaint?",
+   "How do you keep good staff?",
+   "Which figures do you check weekly?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a management qualification?",
+    "a": "Not necessarily, but a hospitality management course helps with the commercial side and is valued by employers."
+   }
+  ]
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "id": "bewerbung-nach-kuendigung",
+ "field": "buero",
+ "name": "Bewerbung nach Kündigung",
+ "search": "bewerbung nach kündigung gekündigt betriebsbedingt insolvenz eigene kündigung probezeit jobverlust neuanfang",
+ "short": "Gekündigt oder selbst gekündigt – wie du es im Anschreiben erklärst.",
+ "desc": "Bewerbung nach einer Kündigung: Muster-Anschreiben nach betriebsbedingter Kündigung, nach Insolvenz und nach eigener Kündigung, mit Lebenslauf und Tipps für das Gespräch.",
+ "intro": "Eine Kündigung ist kein Makel, aber sie wird im Gespräch Thema. Bei betriebsbedingten Gründen oder Insolvenz reicht ein sachlicher Satz. Bei einer Kündigung in der Probezeit oder aus persönlichen Gründen: ehrlich, kurz, ohne Schuldzuweisung. Der Großteil des Anschreibens gehört deinen Fähigkeiten.",
+ "lookFor": [
+  "Sachliche Erklärung des Wechsels",
+  "Fokus auf Erfahrung und Erfolge",
+  "Verfügbarkeit (Kündigungsfrist, Freistellung)",
+  "Keine Schuldzuweisung",
+  "Positiver Blick nach vorn"
+ ],
+ "letters": [
+  {
+   "label": "Betriebsbedingt gekündigt nach Umstrukturierung",
+   "level": "erfahren",
+   "position": "Sachbearbeiter Vertriebsinnendienst",
+   "to": {
+    "org": "Elektrogroßhandel Rhein-Ruhr",
+    "sal": "f",
+    "contact": "Schmitz",
+    "street": "Duisburger Straße 120",
+    "city": "46049 Oberhausen"
+   },
+   "body": [
+    "mein Arbeitgeber legt zwei Standorte zusammen, und meine Stelle in Mülheim fällt zum 30. Juni weg. Ich habe die Kündigung mit einem guten Zeugnis erhalten und bin ab Mai freigestellt, kann also kurzfristig beginnen.",
+    "Acht Jahre Vertriebsinnendienst bei einem Hersteller von Schaltschränken haben mir beigebracht, Angebote schnell und fehlerfrei zu kalkulieren, Lieferzeiten realistisch zuzusagen und Kunden auch dann zu halten, wenn etwas schiefgeht. Ich habe zuletzt rund 300 Kunden aus dem Elektrohandwerk betreut. Ihr Sortiment kenne ich, viele Ihrer Kunden sind auch meine.",
+    "Ein persönliches Gespräch wäre mir lieb, gern auch schon im April."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Nach der Insolvenz des Arbeitgebers",
+   "level": "erfahren",
+   "position": "Mitarbeiterin Personalabrechnung",
+   "to": {
+    "org": "Klinikverbund Niederrhein",
+    "sal": "none",
+    "street": "Weseler Straße 30",
+    "city": "47169 Duisburg"
+   },
+   "body": [
+    "im Februar hat mein Arbeitgeber, ein Modehändler mit 40 Filialen, Insolvenz angemeldet. Die Abrechnung für 900 Beschäftigte habe ich bis zuletzt gemacht, inklusive Insolvenzgeld-Bescheinigungen, und jetzt suche ich eine neue Aufgabe.",
+    "Meine Stärke ist Entgeltabrechnung mit vielen Sonderfällen: Teilzeit, Minijobs, Zuschläge, Pfändungen. In einem Krankenhaus mit Schichtdienst und Tarifvertrag ist das ganz ähnlich, nur mit anderen Zuschlägen. Den Tarifvertrag für den öffentlichen Dienst würde ich mir schnell erarbeiten.",
+    "Ich bin sofort verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Zertifikat Entgeltabrechnung"
+   ],
+   "from": [
+    "Sabine Kowalski",
+    "Mülheimer Straße 50",
+    "47058 Duisburg"
+   ]
+  },
+  {
+   "label": "Eigene Kündigung nach kurzer Zeit",
+   "level": "erfahren",
+   "position": "Teamassistenz Vertrieb",
+   "to": {
+    "org": "Spedition Rheinhafen GmbH",
+    "sal": "m",
+    "contact": "Kurz",
+    "street": "Hafenstraße 22",
+    "city": "47119 Duisburg"
+   },
+   "body": [
+    "nach vier Monaten habe ich meine letzte Stelle selbst gekündigt. Die Aufgaben waren anders als beschrieben, ich war fast nur mit Telefonakquise beschäftigt. Das war für beide Seiten nicht passend, und ich möchte das offen sagen, bevor Sie sich über die kurze Station im Lebenslauf wundern.",
+    "Davor war ich sechs Jahre Assistentin im Vertrieb eines Logistikunternehmens. Angebote vorbereiten, Termine koordinieren, Kundendaten pflegen und Messen organisieren, das ist meine Welt. Ihre Ausschreibung beschreibt genau diese Mischung.",
+    "Meine Kündigungsfrist endet am 31. März."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Jana Mertens",
+    "Königstraße 77",
+    "47051 Duisburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 5,
+  "name": "Ralf Brinkmann",
+  "title": "Sachbearbeiter Vertriebsinnendienst",
+  "street": "Mülheimer Straße 200",
+  "city": "46045 Oberhausen",
+  "exp": [
+   [
+    "04/2018",
+    "06/2026",
+    "Sachbearbeiter Vertriebsinnendienst",
+    "Schaltanlagen Ruhr GmbH",
+    "Mülheim an der Ruhr",
+    "- Betreuung von rund 300 Kunden aus dem Elektrohandwerk\n- Angebotskalkulation, Auftragsabwicklung\n- Reklamationen und Lieferterminsteuerung"
+   ],
+   [
+    "08/2013",
+    "03/2018",
+    "Kaufmann im Groß- und Außenhandel",
+    "Elektro Kontor West",
+    "Essen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2013",
+    "Ausbildung Kaufmann im Groß- und Außenhandel",
+    "Elektro Kontor West",
+    "Essen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Angebotskalkulation",
+    5
+   ],
+   [
+    "Kundenbetreuung",
+    5
+   ],
+   [
+    "ERP-Systeme",
+    4
+   ],
+   [
+    "Elektrotechnik-Grundlagen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Radfahren, Fußballtrainer Jugend"
+ },
+ "do": [
+  "Kündigung in einem Satz sachlich erklären.",
+  "Verfügbarkeit (Freistellung, Frist) nennen.",
+  "Den Rest des Anschreibens für Stärken nutzen."
+ ],
+ "dont": [
+  "Über den alten Arbeitgeber schimpfen.",
+  "Die Kündigung verschweigen, wenn der Lebenslauf sie zeigt.",
+  "Lange Rechtfertigungen."
+ ],
+ "questions": [
+  "Warum wurde Ihnen gekündigt?",
+  "Was haben Sie aus der letzten Stelle gelernt?",
+  "Wann können Sie anfangen?",
+  "Wie bewerten Sie die Zeit dort rückblickend?"
+ ],
+ "faq": [
+  {
+   "q": "Wann muss ich mich arbeitsuchend melden?",
+   "a": "Spätestens drei Monate vor dem Ende des Arbeitsverhältnisses. Erfährst du später davon, innerhalb von drei Tagen. Sonst droht eine Sperrzeit beim Arbeitslosengeld."
+  },
+  {
+   "q": "Muss ich die Kündigung im Anschreiben erwähnen?",
+   "a": "Nicht zwingend, aber wenn die Lücke oder die kurze Station im Lebenslauf auffällt, ist ein sachlicher Satz besser als Rätselraten."
+  }
+ ],
+ "related": [
+  "bewerbung-nach-arbeitslosigkeit",
+  "bewerbung-50-plus",
+  "sachbearbeiter",
+  "vertrieb-innendienst"
+ ]
+}

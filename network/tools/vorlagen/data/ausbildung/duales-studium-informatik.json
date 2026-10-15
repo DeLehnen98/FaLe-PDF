@@ -1,0 +1,166 @@
+{
+ "id": "duales-studium-informatik",
+ "field": "ausbildung",
+ "name": "Duales Studium Informatik",
+ "search": "duales studium informatik wirtschaftsinformatik bachelor praxispartner softwareentwicklung it bewerbung abiturient",
+ "short": "Informatik oder Wirtschaftsinformatik mit Gehalt und Praxis.",
+ "desc": "Bewerbung für ein duales Studium Informatik oder Wirtschaftsinformatik: Muster-Anschreiben für Abiturienten mit Projekt und Abiturientin aus der Mathe-AG, mit Lebenslauf.",
+ "intro": "Für ein duales Informatikstudium wollen Unternehmen sehen, dass du programmierst oder zumindest gern logisch knobelst. Ein eigenes Projekt, ein Wettbewerb oder eine Informatik-AG wiegen oft mehr als eine Eins in Deutsch. Nenn den Studiengang genau.",
+ "lookFor": [
+  "Abitur oder Fachhochschulreife",
+  "Gute Noten in Mathe und Informatik",
+  "Eigene Projekte oder Wettbewerbe",
+  "Englisch für Fachtexte",
+  "Teamarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Abiturient mit eigener App",
+   "level": "ausbildung",
+   "position": "Duales Studium Informatik (B. Sc.)",
+   "to": {
+    "org": "Datenwerk Software GmbH",
+    "sal": "none",
+    "street": "Theodor-Heuss-Straße 9",
+    "city": "70174 Stuttgart"
+   },
+   "body": [
+    "unsere Schule hatte einen Vertretungsplan als PDF, das niemand auf dem Handy lesen konnte. Ich habe ein kleines Programm geschrieben, das das PDF jeden Morgen ausliest und als Liste in einer App anzeigt. Inzwischen nutzen es rund 400 Schülerinnen und Schüler, und die Schulleitung hat mir ihr Okay gegeben.",
+    "Programmieren habe ich mir mit 14 selbst beigebracht, mit Python und später Kotlin. Im Abitur habe ich Mathe und Informatik als Leistungskurse. Ihr Unternehmen entwickelt Software für Logistikfirmen, und mich interessiert, wie man Programme baut, die unter echter Last laufen und nicht nur bei 400 Schülern.",
+    "Den Code der App zeige ich Ihnen gern im Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Link zum Projekt"
+   ]
+  },
+  {
+   "label": "Abiturientin aus der Mathe-AG",
+   "level": "ausbildung",
+   "position": "Duales Studium Wirtschaftsinformatik (B. Sc.)",
+   "to": {
+    "org": "Versicherungsgruppe Neckar",
+    "sal": "f",
+    "contact": "Pham",
+    "street": "Rotebühlstraße 50",
+    "city": "70178 Stuttgart"
+   },
+   "body": [
+    "programmiert habe ich bisher nur in der Schule, aber ich habe drei Jahre lang an der Mathe-Olympiade teilgenommen und es zweimal in die Landesrunde geschafft. Knobeln und Strukturen erkennen liegen mir. Wirtschaftsinformatik verbindet das mit der Frage, wie Unternehmen ihre Daten nutzen.",
+    "Im Praktikum bei Ihnen im letzten Sommer habe ich mit einem Team Daten aus Schadenmeldungen in Tabellen ausgewertet und Diagramme für eine Präsentation gebaut. Das Team hat mich ermutigt, mich für das duale Studium zu bewerben.",
+    "Ich habe mein Abitur im Juni und bin ab Oktober verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Urkunden Mathematik-Olympiade",
+    "Praktikumszeugnis"
+   ],
+   "from": [
+    "Hanna Vogel",
+    "Schwabstraße 18",
+    "70197 Stuttgart"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "modern",
+  "accent": 2,
+  "name": "David Neumann",
+  "title": "Schüler",
+  "street": "Hohenheimer Straße 30",
+  "city": "70184 Stuttgart",
+  "web": "code.example/david-neumann",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Vertretungsplan-App (eigenes Projekt)",
+    "Wagenburg-Gymnasium",
+    "Stuttgart",
+    "- PDF auslesen, App-Anzeige\n- rund 400 aktive Nutzer"
+   ],
+   [
+    "07/2025",
+    "07/2025",
+    "Ferienjob IT-Support",
+    "Stadtbücherei",
+    "Stuttgart",
+    "- PCs einrichten, Drucker betreuen"
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Wagenburg-Gymnasium",
+    "Stuttgart",
+    "Leistungskurse Mathematik, Informatik"
+   ]
+  ],
+  "skills": [
+   [
+    "Python",
+    4
+   ],
+   [
+    "Kotlin",
+    3
+   ],
+   [
+    "Datenbanken",
+    2
+   ],
+   [
+    "Git",
+    3
+   ],
+   [
+    "Mathe",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Programmieren, Klettern"
+ },
+ "do": [
+  "Studiengang genau nennen (Informatik, Wirtschaftsinformatik, Data Science).",
+  "Projekte mit Nutzerzahlen oder Ergebnis.",
+  "Code-Link, wenn vorhanden."
+ ],
+ "dont": [
+  "Programmiersprachen aufzählen, die du nur vom Hören kennst.",
+  "Gaming als einzigen IT-Bezug.",
+  "Die Firma nicht kennen."
+ ],
+ "questions": [
+  "Erklären Sie uns Ihr Projekt.",
+  "Was ist eine Schleife, was eine Funktion?",
+  "Wie lösen Sie ein Problem, bei dem Sie nicht weiterkommen?",
+  "Warum Informatik und nicht Wirtschaftsinformatik (oder umgekehrt)?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich schon programmieren können?",
+   "a": "Nein, aber es hilft. Mathe und logisches Denken sind wichtiger. Ein kleines eigenes Projekt zeigt, dass du dich von selbst mit dem Thema beschäftigst."
+  }
+ ],
+ "related": [
+  "duales-studium-bwl",
+  "werkstudent-it",
+  "softwareentwickler",
+  "ausbildung-fachinformatiker"
+ ]
+}

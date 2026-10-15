@@ -1,0 +1,92 @@
+{
+ "id": "hochzeitsbudget",
+ "slug": "hochzeitsbudget",
+ "cat": "Finanzen",
+ "name": "Hochzeitsplaner – Budget",
+ "short": "Hochzeitskosten planen: Angebote, Anzahlungen, Kosten pro Gast",
+ "desc": "Hochzeitsbudget als Excel-Vorlage (XLSX): Kosten planen, Angebote und Anzahlungen eintragen, offene Beträge und Kosten pro Gast sehen – mit Übersicht nach Kategorien.",
+ "search": "hochzeit budget feier",
+ "intro": "Eine Hochzeit hat viele Posten, und die Preise ändern sich von der ersten Schätzung bis zum Angebot. Die Vorlage rechnet deshalb mit einem „Ansatz“: Solange kein Angebot da ist, zählt der geplante Betrag, danach das Angebot. So weißt du jederzeit, wie viel vom Budget übrig ist.",
+ "uses": [
+  "Das Hochzeitsbudget von der ersten Idee bis zur Schlussrechnung",
+  "Anzahlungen und Fälligkeiten nicht übersehen",
+  "Kosten pro Gast ausrechnen, bevor die Gästeliste fix ist"
+ ],
+ "cols": [
+  [
+   "Posten",
+   "Was gebraucht wird – Location, Fotografin, Ringe …"
+  ],
+  [
+   "Kategorie",
+   "In der Liste: die Kategorie des Postens (Auswahl aus der Tabelle rechts). Rechts: die Kategorien für die Auswertung – du kannst sie umbenennen."
+  ],
+  [
+   "Geplant",
+   "Deine Schätzung, bevor ein Angebot da ist."
+  ],
+  [
+   "Angebot / Ist",
+   "Der Preis aus dem Angebot oder der Rechnung."
+  ],
+  [
+   "Bezahlt",
+   "Was du schon bezahlt hast, etwa eine Anzahlung."
+  ],
+  [
+   "Rest offen",
+   "Ansatz minus bezahlt – das, was noch kommt."
+  ],
+  [
+   "Fällig am",
+   "Wann die nächste Zahlung fällig ist. Ist das Datum vorbei und noch etwas offen, wird die Zeile rot."
+  ],
+  [
+   "Status",
+   "Offen, Angefragt, Gebucht oder Bezahlt."
+  ],
+  [
+   "Notiz",
+   "Kontakt, Vertragsdetails, Absprachen."
+  ],
+  [
+   "Ansatz",
+   "Nimmt das Angebot, solange keins da ist den geplanten Betrag. Alle Summen oben rechnen mit diesem Wert. Rechts: die Summe des Ansatzes je Kategorie."
+  ],
+  [
+   "Anteil",
+   "Anteil der Kategorie am gesamten Ansatz, mit Balken – zeigt, wo das meiste Geld hingeht."
+  ]
+ ],
+ "tips": [
+  "„Übrig vom Budget“ ist grün, solange der Ansatz unter dem Gesamtbudget liegt, und rot, wenn du drüber bist.",
+  "Plan einen Puffer von etwa zehn Prozent für Kleinigkeiten ein, die erst spät auffallen."
+ ],
+ "faq": [
+  {
+   "q": "Warum gibt es die Spalte „Ansatz“?",
+   "a": "Weil Planungen sich ändern: Am Anfang hast du nur Schätzungen, später echte Angebote. Der Ansatz nimmt automatisch den besten bekannten Wert, damit die Summe nie doppelt zählt."
+  }
+ ],
+ "related": [
+  "umzugscheckliste",
+  "monatsbudget",
+  "geburtstagskalender"
+ ],
+ "en": {
+  "slug": "wedding-budget",
+  "name": "Wedding budget planner",
+  "short": "Plan wedding costs: quotes, deposits and cost per guest",
+  "desc": "Wedding budget spreadsheet (XLSX): plan costs, enter quotes and deposits, see open amounts and the cost per guest – with a summary by category.",
+  "intro": "Prices change from first estimate to final quote, so the template works with an “estimate”: the planned amount until a quote arrives, then the quote. You always know how much budget is left.",
+  "inside": [
+   "Planned, quoted, paid and outstanding per item",
+   "Due dates with overdue highlighting",
+   "Total, budget left and cost per guest",
+   "Spending per category with a chart"
+  ],
+  "uses": [
+   "Planning a wedding from first idea to final bill"
+  ]
+ }
+}

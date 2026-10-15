@@ -1,0 +1,280 @@
+{
+ "id": "compact",
+ "de": {
+  "name": "Industriemechaniker",
+  "cv": {
+   "avatar": "a21",
+   "accent": 4,
+   "name": "Stefan Wirth",
+   "title": "Industriemechaniker, Instandhaltung",
+   "street": "Hüttenstraße 61",
+   "city": "66763 Dillingen",
+   "exp": [
+    [
+     "04/2018",
+     "",
+     "Schichtführer Instandhaltung",
+     "Saarstahlwerk Röchling GmbH",
+     "Dillingen",
+     "- Leitung einer Schicht mit sechs Mechanikern\n- Planung vorbeugender Wartung für Walzstraße 2\n- Einweisung neuer Kollegen und Azubis"
+    ],
+    [
+     "03/2011",
+     "03/2018",
+     "Industriemechaniker Instandhaltung",
+     "Saarstahlwerk Röchling GmbH",
+     "Dillingen",
+     "- Störungsbehebung an Hydraulik und Antrieben\n- Ersatzteilfertigung an Dreh- und Fräsmaschinen"
+    ],
+    [
+     "09/2008",
+     "02/2011",
+     "Industriemechaniker",
+     "Maschinenbau Lauer",
+     "Saarlouis",
+     "- Montage von Sondermaschinen\n- Inbetriebnahmen bei Kunden in Frankreich"
+    ],
+    [
+     "09/2005",
+     "07/2008",
+     "Ausbildung zum Industriemechaniker",
+     "Maschinenbau Lauer",
+     "Saarlouis",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "09/2005",
+     "07/2008",
+     "Industriemechaniker – IHK-Prüfung",
+     "Berufsbildungszentrum",
+     "Saarlouis",
+     ""
+    ],
+    [
+     "1999",
+     "2005",
+     "Mittlerer Bildungsabschluss",
+     "Gemeinschaftsschule",
+     "Dillingen",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "Elektrofachkraft für festgelegte Tätigkeiten",
+     "TÜV-Akademie",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "Ausbildereignung (AEVO)",
+     "IHK Saarland",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "Hydraulik Aufbaukurs",
+     "Herstellerschulung",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Hydraulik und Pneumatik",
+     5
+    ],
+    [
+     "Vorbeugende Instandhaltung",
+     5
+    ],
+    [
+     "Drehen und Fräsen",
+     4
+    ],
+    [
+     "Schweißen (MAG)",
+     3
+    ],
+    [
+     "Instandhaltungssoftware",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Französisch",
+     "B1"
+    ],
+    [
+     "Englisch",
+     "A2"
+    ]
+   ],
+   "hobbies": "Freiwillige Feuerwehr, Oldtimer-Traktoren"
+  },
+  "letter": {
+   "label": "Erfahrener Instandhalter",
+   "position": "Meister Instandhaltung (m/w/d)",
+   "to": {
+    "org": "Kronauer Kunststofftechnik GmbH",
+    "sal": "f",
+    "contact": "Wagner",
+    "street": "Am Hafen 9",
+    "city": "66740 Saarlouis"
+   },
+   "body": [
+    "im Stahlwerk leite ich seit 2018 eine Instandhaltungsschicht. Ich plane die Wartung für unsere Walzstraße, verteile die Aufträge und stehe selbst an der Maschine, wenn eine Hydraulik ausfällt und die Produktion wartet.",
+    "Den Meister habe ich nicht, aber die Ausbildereignung und die Elektrofachkraft für festgelegte Tätigkeiten. Wenn Sie die Stelle mit jemandem besetzen möchten, der die Meisterschule berufsbegleitend nachholt, wäre ich dazu bereit.",
+    "Vom Wechselschichtbetrieb in einen Betrieb mit Tagschicht zu gehen, ist für mich ein bewusster Schritt. Ein Probearbeitstag in Ihrer Werkstatt wäre mir sehr recht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Weiterbildungsnachweise"
+   ]
+  }
+ },
+ "en": {
+  "name": "Maintenance fitter",
+  "cv": {
+   "avatar": "a21",
+   "accent": 4,
+   "name": "Stefan Wirth",
+   "title": "Maintenance fitter",
+   "street": "61 Foundry Street",
+   "city": "Rotherham S60 1AB",
+   "exp": [
+    [
+     "04/2018",
+     "",
+     "Maintenance shift leader",
+     "Don Valley Steel Ltd",
+     "Rotherham",
+     "- Leading a shift of six fitters\n- Planning preventive maintenance for rolling mill 2\n- Training new staff and apprentices"
+    ],
+    [
+     "03/2011",
+     "03/2018",
+     "Maintenance fitter",
+     "Don Valley Steel Ltd",
+     "Rotherham",
+     "- Fault finding on hydraulics and drives\n- Making spare parts on lathes and mills"
+    ],
+    [
+     "09/2008",
+     "02/2011",
+     "Mechanical fitter",
+     "Lauer Machine Builders",
+     "Sheffield",
+     "- Building special-purpose machines\n- Commissioning at customer sites in France"
+    ],
+    [
+     "09/2005",
+     "07/2008",
+     "Engineering apprentice",
+     "Lauer Machine Builders",
+     "Sheffield",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2005",
+     "2008",
+     "Advanced apprenticeship, mechanical engineering",
+     "Sheffield College",
+     "Sheffield",
+     ""
+    ],
+    [
+     "2000",
+     "2005",
+     "GCSEs",
+     "Wath Academy",
+     "Rotherham",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "18th Edition wiring regulations",
+     "Training provider",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "Advanced hydraulics",
+     "Manufacturer training",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Hydraulics and pneumatics",
+     5
+    ],
+    [
+     "Preventive maintenance",
+     5
+    ],
+    [
+     "Turning and milling",
+     4
+    ],
+    [
+     "MIG welding",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "B1"
+    ]
+   ],
+   "hobbies": "Retained firefighter, vintage tractors"
+  },
+  "letter": {
+   "label": "Experienced maintenance fitter",
+   "position": "Maintenance supervisor",
+   "to": {
+    "org": "Kronauer Plastics Ltd",
+    "sal": "f",
+    "contact": "Walker",
+    "street": "9 Canal Wharf",
+    "city": "Doncaster DN1 3BB"
+   },
+   "body": [
+    "For six years I have led a maintenance shift at a steel mill. I plan the servicing for our rolling mill, hand out the jobs and still pick up the spanners myself when the hydraulics fail and production is waiting.",
+    "I have no formal supervisor qualification yet, but I hold the 18th Edition and have trained four apprentices. If you would like someone who completes a management course alongside the job, I am ready to do that.",
+    "Moving from rotating shifts to a day-shift site is a deliberate step for me. A trial day in your workshop would suit me well."
+   ],
+   "att": [
+    "CV",
+    "Certificates"
+   ]
+  }
+ }
+}

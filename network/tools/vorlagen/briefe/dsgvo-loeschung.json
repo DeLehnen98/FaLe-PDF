@@ -1,0 +1,116 @@
+{
+ "id": "dsgvo-loeschung",
+ "group": "datenschutz",
+ "tool": "din-letter",
+ "order": 29,
+ "name": "Löschung von Daten verlangen (Art. 17 DSGVO)",
+ "short": "Ein Unternehmen auffordern, deine Daten zu löschen",
+ "desc": "Daten löschen lassen nach Art. 17 DSGVO: Muster für die Löschungsaufforderung mit Bestätigung und Weitergabe an Empfänger – inklusive Ausnahmen und Frist erklärt.",
+ "search": "dsgvo löschung daten löschen art 17 werbung",
+ "when": [
+  "Du hast ein Konto gekündigt, bekommst ungewollt Werbung oder willst einfach nicht mehr in einer Kundendatei stehen. Nach Art. 17 DSGVO kannst du verlangen, dass deine Daten gelöscht werden – etwa wenn sie für den Zweck nicht mehr nötig sind oder du deine Einwilligung widerrufst.",
+  "Daten, die das Unternehmen aufbewahren muss – zum Beispiel Rechnungen für das Finanzamt –, darf es behalten, aber nur noch dafür nutzen."
+ ],
+ "must": [
+  "Angaben, mit denen man dich findet",
+  "Die Aufforderung zur Löschung nach Art. 17 DSGVO",
+  "Widerruf erteilter Einwilligungen und Widerspruch gegen Werbung",
+  "Bitte, auch Empfänger zu informieren (Art. 19)",
+  "Bitte um Bestätigung – Frist ein Monat"
+ ],
+ "notes": [
+  "Wenn du nur keine Werbung mehr willst, reicht ein Widerspruch gegen die Nutzung für Werbung (Art. 21 Abs. 2) – den enthält das Muster gleich mit.",
+  "Behält das Unternehmen Daten wegen Aufbewahrungspflichten, muss es sie sperren und dir sagen, warum.",
+  "Antwortet niemand, hilft eine Beschwerde bei der Datenschutzaufsichtsbehörde."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich begründen, warum ich die Löschung will?",
+   "a": "Nein, eine ausführliche Begründung ist nicht nötig. Es hilft aber, den Grund kurz zu nennen, etwa „Vertrag beendet“ oder „Einwilligung widerrufen“."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "dsgvo-auskunft",
+  "kuendigung-streaming",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Muster Shopping GmbH",
+  "attn": "Datenschutzbeauftragte",
+  "street": "Handelsweg 3",
+  "city": "20095 Hamburg"
+ },
+ "letter": {
+  "subject": "Löschung meiner personenbezogenen Daten nach Art. 17 DSGVO – Kundennummer 5544-21",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "mein Kundenkonto bei Ihnen ist beendet. Ich fordere Sie daher auf, alle personenbezogenen Daten, die Sie über mich speichern, nach Art. 17 DSGVO unverzüglich zu löschen. Erteilte Einwilligungen, etwa für den Newsletter, widerrufe ich; der Nutzung meiner Daten für Werbung widerspreche ich nach Art. 21 Abs. 2 DSGVO.",
+   "Soweit Sie Daten aufgrund gesetzlicher Aufbewahrungspflichten nicht löschen dürfen, schränken Sie bitte deren Verarbeitung ein und teilen mir mit, welche Daten das sind und bis wann sie aufbewahrt werden. Haben Sie meine Daten an andere weitergegeben, informieren Sie diese bitte nach Art. 19 DSGVO über die Löschung.",
+   "Bitte bestätigen Sie mir die Löschung innerhalb eines Monats."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ },
+ "en": {
+  "name": "Erasure request (GDPR Art. 17)",
+  "slug": "gdpr-erasure-request",
+  "short": "Ask a company to delete your personal data",
+  "desc": "Free GDPR erasure request template (Art. 17, “right to be forgotten”): ask a company to delete your data and confirm it – exceptions and deadline explained.",
+  "h1": "Erasure request under the GDPR (Art. 17)",
+  "when": [
+   "You have closed an account, receive marketing you do not want or simply no longer want to be in a customer database. Under Article 17 GDPR you can ask for your data to be erased – for example when it is no longer needed or you withdraw your consent.",
+   "Data the company must keep by law, such as invoices for the tax office, may be kept but only used for that purpose."
+  ],
+  "must": [
+   "Details that identify you",
+   "The request to erase under Art. 17 GDPR",
+   "Withdrawal of consent and objection to marketing",
+   "A request to inform recipients (Art. 19)",
+   "A request for confirmation – deadline one month"
+  ],
+  "notes": [
+   "If you only want to stop marketing, an objection under Art. 21(2) is enough – the template includes it.",
+   "If data is kept because of legal retention duties, it must be restricted and you must be told why.",
+   "If nobody answers, complain to the data protection supervisory authority."
+  ],
+  "faq": [
+   {
+    "q": "Do I have to say why?",
+    "a": "No detailed reason is needed, but it helps to name one briefly, such as “contract ended” or “consent withdrawn”."
+   }
+  ],
+  "from": [
+   "Jana Beispiel",
+   "12 Linden Street",
+   "Bristol BS1 4AA"
+  ],
+  "to": {
+   "org": "Example Shopping Ltd",
+   "attn": "Data Protection Officer",
+   "street": "3 Market Way",
+   "city": "London EC1A 1AA"
+  },
+  "letter": {
+   "subject": "Erasure of my personal data under Article 17 GDPR – customer number 5544-21",
+   "salutation": "Dear Sir or Madam,",
+   "body": [
+    "My customer account with you has ended. I therefore ask you to erase without undue delay all personal data you hold about me under Article 17 GDPR. I withdraw any consent I have given, for example for your newsletter, and I object to the use of my data for marketing under Article 21(2) GDPR.",
+    "Where you may not erase data because of legal retention duties, please restrict its processing and tell me which data this is and how long it will be kept. If you have shared my data with others, please inform them of the erasure under Article 19 GDPR.",
+    "Please confirm the erasure within one month."
+   ],
+   "closing": "Yours faithfully,",
+   "att": []
+  },
+  "fields": {
+   "notice": "none"
+  }
+ }
+}

@@ -1,0 +1,350 @@
+{
+ "id": "projektmanager",
+ "field": "buero",
+ "name": "Projektmanager/in",
+ "search": "projektmanager projektmanagerin projektleiter projektleitung pm scrum agil wasserfall zertifizierung bewerbung",
+ "short": "Projekte steuern – in IT, Bau, Industrie oder Agentur.",
+ "desc": "Bewerbung als Projektmanager/in: Muster-Anschreiben für erfahrene Projektleiterin, Quereinsteiger aus der Technik und Berufseinsteigerin, mit Lebenslauf und Interviewfragen.",
+ "intro": "Projektmanagerinnen und -manager halten Zeit, Budget und Qualität im Gleichgewicht und bringen Leute zusammen, die nicht an sie berichten. In der Bewerbung zählen Projekte mit Umfang, Rolle und Ergebnis. Zertifikate helfen, ersetzen aber keine Erfahrung.",
+ "lookFor": [
+  "Projekterfahrung mit Budget- und Terminverantwortung",
+  "Methodenkenntnis (klassisch, agil, hybrid)",
+  "Stakeholder-Management",
+  "Strukturierte Kommunikation",
+  "Branchenkenntnis"
+ ],
+ "letters": [
+  {
+   "label": "Projektleiterin mit Erfahrung im Bau",
+   "level": "erfahren",
+   "position": "Projektmanagerin Bau (Schulbau)",
+   "to": {
+    "org": "Kreisbau Ortenau GmbH",
+    "sal": "m",
+    "contact": "Huber",
+    "street": "Badstraße 20",
+    "city": "77652 Offenburg"
+   },
+   "body": [
+    "drei Schulerweiterungen habe ich in den letzten fünf Jahren als Projektleiterin bei einem Generalunternehmer betreut, die größte mit einem Volumen von zwölf Millionen Euro. Alle drei wurden zum Schuljahresbeginn fertig, einmal mit zwei Wochenenden Sonderschicht, über die ich heute noch mit dem Polier lache.",
+    "Ich möchte die Seite wechseln und als Bauherrenvertreterin arbeiten. Ich kenne die Probleme der ausführenden Firmen und weiß, welche Informationen sie wann brauchen. Ausschreibungen nach VOB, Nachtragsmanagement und Terminplanung sind mein Alltag.",
+    "Ich bin Bauingenieurin (M. Sc.) und lebe in Offenburg. Kündigungsfrist: drei Monate zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Arbeitszeugnis",
+    "Projektliste"
+   ]
+  },
+  {
+   "label": "Techniker wird Projektmanager",
+   "level": "quereinstieg",
+   "position": "Projektmanager Anlagenbau",
+   "to": {
+    "org": "Schwarzwald Anlagentechnik GmbH",
+    "sal": "none",
+    "street": "Industriestraße 45",
+    "city": "77656 Offenburg"
+   },
+   "body": [
+    "Inbetriebnahmen im Ausland sind seit acht Jahren mein Job. In dieser Zeit habe ich gesehen, welche Projekte gut laufen und welche nicht, und fast immer lag es nicht an der Technik, sondern an Abstimmung, Planung und Erwartungen. Daran möchte ich künftig arbeiten.",
+    "Als Servicetechniker habe ich Teams von bis zu sechs Leuten auf Baustellen in Polen, Mexiko und Indien koordiniert, Tagesberichte geschrieben, Änderungen mit Kunden verhandelt und Mängellisten abgearbeitet. Eine Zertifizierung im Projektmanagement habe ich im letzten Jahr berufsbegleitend erworben.",
+    "Ich spreche Englisch fließend, Spanisch gut, und Reisen schreckt mich nicht ab, wenn es nicht mehr 200 Tage im Jahr sind."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat Projektmanagement",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Michael Lehmann",
+    "Hauptstraße 7",
+    "77704 Oberkirch"
+   ]
+  },
+  {
+   "label": "Berufseinsteigerin aus dem Studium",
+   "level": "berufseinstieg",
+   "position": "Junior-Projektmanagerin",
+   "to": {
+    "org": "Digitalagentur Rheinblick",
+    "sal": "f",
+    "contact": "Zimmer",
+    "street": "Kinzigstraße 10",
+    "city": "77652 Offenburg"
+   },
+   "body": [
+    "in meinem Praktikum bei einer Agentur in Freiburg hat mich die Projektleiterin nach drei Wochen gefragt, ob ich das Kundenprojekt für eine Bäckereikette mitbetreuen will. Ich habe Protokolle geschrieben, Aufgaben im Board gepflegt, den Kunden an Freigaben erinnert und am Ende den Launch mitorganisiert.",
+    "Im Februar habe ich meinen Bachelor in Medienmanagement abgeschlossen. Ich arbeite gern strukturiert, bin aber nicht dogmatisch, was Methoden angeht. Ihre Agentur betreut viele mittelständische Kunden aus der Region, für die Digitales neu ist; das stelle ich mir als besonders lohnend vor.",
+    "Ich kann sofort anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Praktikumszeugnis"
+   ],
+   "from": [
+    "Mira Lang",
+    "Okenstraße 30",
+    "77652 Offenburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "classic",
+  "accent": 0,
+  "name": "Katrin Bühler",
+  "title": "Bauingenieurin (M. Sc.), Projektleiterin",
+  "street": "Wilhelmstraße 18",
+  "city": "77654 Offenburg",
+  "exp": [
+   [
+    "03/2021",
+    "",
+    "Projektleiterin",
+    "Generalbau Baden GmbH",
+    "Freiburg",
+    "- Drei Schulerweiterungen, bis 12 Mio. Euro Volumen\n- Termin- und Kostensteuerung, Nachtragsmanagement\n- Führung von Bauleitern und Nachunternehmern"
+   ],
+   [
+    "10/2017",
+    "02/2021",
+    "Bauleiterin",
+    "Hochbau Kaiser",
+    "Lahr",
+    "- Wohnungsbau, Bauüberwachung"
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2017",
+    "Bauingenieurwesen (M. Sc.)",
+    "Karlsruher Institut für Technologie",
+    "Karlsruhe",
+    ""
+   ],
+   [
+    "2011",
+    "2015",
+    "Bauingenieurwesen (B. Eng.)",
+    "Hochschule Karlsruhe",
+    "Karlsruhe",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Terminplanung",
+    5
+   ],
+   [
+    "VOB und Ausschreibung",
+    4
+   ],
+   [
+    "Kostensteuerung",
+    4
+   ],
+   [
+    "Verhandlung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Wandern, Chor"
+ },
+ "do": [
+  "Projekte mit Umfang, Dauer, Rolle und Ergebnis.",
+  "Methoden nennen, die du angewendet hast.",
+  "Zeigen, wie du mit Stakeholdern umgehst."
+ ],
+ "dont": [
+  "Zertifikate als Hauptargument.",
+  "Nur Erfolge, keine Lernmomente.",
+  "Fachbegriffe ohne Inhalt."
+ ],
+ "questions": [
+  "Was war Ihr schwierigstes Projekt?",
+  "Wie gehen Sie mit Scope Creep um?",
+  "Wann ist ein Projekt für Sie erfolgreich?",
+  "Wie führen Sie Menschen, die Ihnen nicht unterstellt sind?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Zertifikat?",
+   "a": "Nicht zwingend. Viele Arbeitgeber schätzen Zertifizierungen, entscheidend sind aber Projekterfahrung und Ergebnisse. Für den Quereinstieg kann ein Zertifikat helfen, deine Kenntnisse nachzuweisen."
+  }
+ ],
+ "related": [
+  "teamleiter",
+  "it-projektleiter",
+  "trainee",
+  "office-manager"
+ ],
+ "en": {
+  "slug": "project-manager",
+  "name": "Project manager",
+  "search": "project manager project lead pm agile delivery construction engineering",
+  "short": "Delivering projects in construction, engineering, IT or agencies.",
+  "desc": "Project manager cover letter examples: an experienced construction project lead and an engineer moving into project management, plus a ready CV.",
+  "intro": "Project managers balance time, budget and quality and bring together people who do not report to them. Show projects with scope, your role and the outcome. Certificates help but do not replace experience.",
+  "lookFor": [
+   "Projects with budget and schedule responsibility",
+   "Knowledge of methods (traditional, agile, hybrid)",
+   "Stakeholder management",
+   "Structured communication",
+   "Sector knowledge"
+  ],
+  "letters": [
+   {
+    "label": "Construction project lead moving to the client side",
+    "level": "erfahren",
+    "position": "Project manager (school buildings)",
+    "to": {
+     "org": "County Estates Department",
+     "sal": "m",
+     "contact": "Hughes",
+     "street": "County Hall, Main Street",
+     "city": "Taunton TA1 4DY"
+    },
+    "body": [
+     "three school extensions in five years, the largest worth twelve million pounds: all of them were handed over before the start of term, one after two weekends of extra shifts that the site manager and I still joke about.",
+     "I would now like to move to the client side. I know what contractors struggle with and what information they need, and when. Tendering, change control and programme management are my daily work. I am a chartered civil engineer and live locally."
+    ],
+    "att": [
+     "CV",
+     "Project list"
+    ]
+   },
+   {
+    "label": "Field engineer moving into project management",
+    "level": "quereinstieg",
+    "position": "Project manager (industrial equipment)",
+    "to": {
+     "org": "Westcountry Process Systems",
+     "sal": "none",
+     "street": "Unit 9, Marsh Barton",
+     "city": "Exeter EX2 8NP"
+    },
+    "body": [
+     "commissioning jobs abroad have been my work for eight years. I have seen which projects go well and which do not, and it is rarely the engineering. It is planning, coordination and expectations, and that is where I want to work now.",
+     "As a field engineer I have coordinated teams of up to six on sites in Poland, Mexico and India, written daily reports, agreed changes with clients and worked through snag lists. Last year I gained a project management qualification part time.",
+     "Travel does not put me off, as long as it is no longer 200 days a year."
+    ],
+    "att": [
+     "CV",
+     "Qualification certificate"
+    ],
+    "from": [
+     "Michael Lane",
+     "7 High Street",
+     "Crediton EX17 3AH"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a23",
+   "design": "classic",
+   "accent": 0,
+   "name": "Kate Bailey",
+   "title": "Chartered civil engineer, project lead",
+   "street": "18 Wellington Road",
+   "city": "Taunton TA1 4EH",
+   "exp": [
+    [
+     "03/2021",
+     "",
+     "Project lead",
+     "Southwest Build Ltd",
+     "Bristol",
+     "- Three school extensions up to £12m\n- Programme and cost control, change management"
+    ],
+    [
+     "10/2017",
+     "02/2021",
+     "Site engineer",
+     "Kaiser Construction",
+     "Exeter",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2013",
+     "2017",
+     "MEng Civil Engineering",
+     "University of Bath",
+     "Bath",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Programme planning",
+     5
+    ],
+    [
+     "Tendering and contracts",
+     4
+    ],
+    [
+     "Cost control",
+     4
+    ],
+    [
+     "Negotiation",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "B1"
+    ]
+   ],
+   "hobbies": "Hiking, choir"
+  },
+  "do": [
+   "Give scope, duration, role and outcome.",
+   "Name the methods you have actually used.",
+   "Show how you handle stakeholders."
+  ],
+  "dont": [
+   "Lead with certificates.",
+   "Only list successes, no lessons.",
+   "Use jargon without substance."
+  ],
+  "questions": [
+   "What was your hardest project?",
+   "How do you deal with scope creep?",
+   "When is a project successful?",
+   "How do you lead people who do not report to you?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a certificate?",
+    "a": "Not necessarily. Many employers value certifications, but experience and results decide. If you are changing career, a certificate can help prove your knowledge."
+   }
+  ]
+ }
+}

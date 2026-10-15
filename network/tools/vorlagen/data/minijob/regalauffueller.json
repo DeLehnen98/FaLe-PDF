@@ -1,0 +1,151 @@
+{
+ "id": "regalauffueller",
+ "field": "minijob",
+ "name": "Regalauffüller/in (Minijob)",
+ "search": "regalauffüller regalauffüllerin warenverräumung supermarkt minijob aushilfe frühschicht nachtschicht bewerbung",
+ "short": "Ware einräumen im Supermarkt – früh, spät oder nachts.",
+ "desc": "Bewerbung als Regalauffüller/in im Minijob: kurze Muster-Anschreiben für Studentin, Rentner und Schüler, Lebenslauf und typische Fragen zum Schichtbeginn.",
+ "intro": "Regalauffüller räumen Ware ein, prüfen Haltbarkeitsdaten und halten die Gänge ordentlich, oft frühmorgens vor Ladenöffnung oder abends. Märkte suchen Leute, die zuverlässig kommen und zügig arbeiten. Ein kurzes Anschreiben mit Verfügbarkeit genügt.",
+ "lookFor": [
+  "Zuverlässigkeit bei frühen oder späten Schichten",
+  "Zügiges, ordentliches Arbeiten",
+  "Körperliche Fitness",
+  "Feste Wochentage",
+  "Wohnort in der Nähe"
+ ],
+ "letters": [
+  {
+   "label": "Studentin für die Frühschicht",
+   "level": "minijob",
+   "position": "Aushilfe Warenverräumung (Minijob, Frühschicht)",
+   "to": {
+    "org": "Frischmarkt Hansaring",
+    "sal": "none",
+    "street": "Hansaring 40",
+    "city": "48155 Münster"
+   },
+   "body": [
+    "dienstags und freitags beginnen meine Vorlesungen erst um zwölf. Die Stunden davor würde ich gern bei Ihnen nutzen und von sechs bis zehn Uhr Ware einräumen.",
+    "Ich studiere Geografie im zweiten Semester und habe im Abi-Jahr bereits in einem Drogeriemarkt Regale aufgefüllt, also kenne ich Rollcontainer, Preisschilder und das Prinzip „Neues nach hinten“. Ich wohne zwei Straßen weiter."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ]
+  },
+  {
+   "label": "Rentner möchte aktiv bleiben",
+   "level": "minijob",
+   "position": "Regalauffüller (Minijob)",
+   "to": {
+    "org": "Supermarkt Brinkmann",
+    "sal": "m",
+    "contact": "Brinkmann",
+    "street": "Warendorfer Straße 99",
+    "city": "48145 Münster"
+   },
+   "body": [
+    "mit 67 bin ich seit einem Jahr in Rente und merke, dass mir eine feste Aufgabe fehlt. Früher war ich Lagerist in einem Großhandel. Ware einräumen und Ordnung halten ist also genau mein Ding.",
+    "Ich kann an drei Vormittagen pro Woche kommen, auch samstags. Schwer heben möchte ich nicht mehr den ganzen Tag, aber Getränkekisten und Kartons sind kein Problem."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Heinz Kortmann",
+    "Wolbecker Straße 12",
+    "48155 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "compact",
+  "accent": 0,
+  "name": "Nora Achterberg",
+  "title": "Studentin Geografie (B. Sc.)",
+  "street": "Hansaring 25",
+  "city": "48155 Münster",
+  "exp": [
+   [
+    "2024",
+    "2025",
+    "Aushilfe Warenverräumung",
+    "Drogeriemarkt am Bahnhof",
+    "Bielefeld",
+    "- Ware einräumen, MHD prüfen, Preise auszeichnen"
+   ]
+  ],
+  "edu": [
+   [
+    "2025",
+    "",
+    "Geografie (B. Sc.), 2. Semester",
+    "Universität Münster",
+    "Münster",
+    ""
+   ],
+   [
+    "2016",
+    "2025",
+    "Abitur",
+    "Ratsgymnasium",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Warenverräumung",
+    4
+   ],
+   [
+    "Ordnung",
+    4
+   ],
+   [
+    "Frühes Aufstehen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Radfahren, Kochen"
+ },
+ "do": [
+  "Feste Tage und Uhrzeiten nennen.",
+  "Erfahrung mit Warenverräumung erwähnen.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Offenlassen, ob du früh kannst.",
+  "Lange Erklärungen.",
+  "Die Filiale verwechseln."
+ ],
+ "questions": [
+  "Können Sie um sechs Uhr anfangen?",
+  "Wie viele Tage pro Woche?",
+  "Haben Sie schon im Einzelhandel gearbeitet?",
+  "Was machen Sie mit Ware, die abgelaufen ist?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "verkaeuferin-minijob",
+  "kassiererin",
+  "ausbildung-verkaeufer",
+  "ferienjob"
+ ]
+}

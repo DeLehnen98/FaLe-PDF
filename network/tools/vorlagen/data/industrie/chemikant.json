@@ -1,0 +1,168 @@
+{
+ "id": "chemikant",
+ "field": "industrie",
+ "name": "Chemikant/in",
+ "search": "chemikant chemikantin chemie produktion anlagenfahrer schichtarbeit messwarte prozessleitsystem bewerbung",
+ "short": "Chemische Produktionsanlagen steuern – im Schichtbetrieb.",
+ "desc": "Bewerbung als Chemikant/in: Muster-Anschreiben für Chemikanten mit Messwarten-Erfahrung und Quereinsteiger aus der Produktion, mit Lebenslauf und Fragen zum Schichtdienst.",
+ "intro": "Chemikantinnen und Chemikanten fahren Produktionsanlagen, überwachen Prozesse in der Messwarte, nehmen Proben und halten Sicherheitsvorschriften ein. Unternehmen der Chemie- und Pharmaindustrie suchen sorgfältige Leute, die im Wechselschichtsystem zuverlässig sind und bei Störungen einen kühlen Kopf behalten.",
+ "lookFor": [
+  "Ausbildung Chemikant/in oder Produktionsfachkraft Chemie",
+  "Erfahrung mit Prozessleitsystemen",
+  "Sicherheitsbewusstsein, Umgang mit Gefahrstoffen",
+  "Wechselschicht",
+  "Dokumentation nach Vorgaben (z. B. GMP)"
+ ],
+ "letters": [
+  {
+   "label": "Chemikant mit Messwarten-Erfahrung",
+   "level": "erfahren",
+   "position": "Chemikant Messwarte",
+   "to": {
+    "org": "Rheinchemie Werke AG",
+    "sal": "f",
+    "contact": "Fischer",
+    "street": "Chemiepark 1",
+    "city": "67056 Ludwigshafen am Rhein"
+   },
+   "body": [
+    "um drei Uhr nachts meldet das Prozessleitsystem eine Temperaturabweichung im Reaktor. Ich habe vier Jahre lang in solchen Momenten entschieden, ob wir eingreifen oder beobachten, und meine Schicht hatte in dieser Zeit keinen Störfall.",
+    "Nach der Ausbildung zum Chemikanten habe ich in der Polymerproduktion gearbeitet, zuerst draußen an der Anlage, seit drei Jahren in der Messwarte. Ich dokumentiere sauber, arbeite Neue ein und bin Ersthelfer meiner Schicht. Ihr Standort wächst gerade in der Spezialchemie, und dort möchte ich mich weiterentwickeln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Produktionsmitarbeiter mit Ziel Chemikant",
+   "level": "quereinstieg",
+   "position": "Produktionsmitarbeiter Chemie (mit Weiterbildung)",
+   "to": {
+    "org": "Pfalzpharm GmbH",
+    "sal": "none",
+    "street": "Industriestraße 10",
+    "city": "67346 Speyer"
+   },
+   "body": [
+    "an einer Verpackungslinie für Tabletten arbeite ich seit fünf Jahren und habe dabei die strengen Hygieneregeln der Pharmaproduktion kennengelernt. Was hinter der Wand im Reinraum passiert, interessiert mich mehr als das Verpacken.",
+    "Ich möchte in die Wirkstoffproduktion wechseln und die Prüfung zum Chemikanten als Externer ablegen. Die Voraussetzungen habe ich mit der Kammer besprochen. Wechselschicht und Dokumentation nach Vorgaben kenne ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Schulungsnachweise"
+   ],
+   "from": [
+    "Oliver Brandt",
+    "Landauer Straße 40",
+    "67346 Speyer"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "modern",
+  "accent": 1,
+  "name": "Marcel Schreiber",
+  "title": "Chemikant",
+  "street": "Mundenheimer Straße 120",
+  "city": "67061 Ludwigshafen am Rhein",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Chemikant",
+    "Kunststoffchemie Rhein-Neckar",
+    "Mannheim",
+    "- Polymerproduktion, seit 2023 Messwarte\n- Prozessleitsystem, Probenahme\n- Ersthelfer, Einarbeitung neuer Kollegen"
+   ],
+   [
+    "2016",
+    "2019",
+    "Auszubildender Chemikant",
+    "Kunststoffchemie Rhein-Neckar",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Abschlussprüfung Chemikant",
+    "IHK Rhein-Neckar",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Ersthelfer-Auffrischung",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Prozessleitsystem",
+    5
+   ],
+   [
+    "Anlagenfahren",
+    4
+   ],
+   [
+    "Gefahrstoffe",
+    4
+   ],
+   [
+    "Dokumentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Angeln"
+ },
+ "do": [
+  "Anlagenarten und Leitsysteme nennen.",
+  "Sicherheitsbewusstsein belegen.",
+  "Schichtbereitschaft klarmachen."
+ ],
+ "dont": [
+  "Störfälle verharmlosen.",
+  "Nur „Ich arbeite gern in der Chemie“.",
+  "Schichtdienst als Problem darstellen."
+ ],
+ "questions": [
+  "Wie reagieren Sie auf eine Alarmmeldung?",
+  "Was bedeutet GMP für Sie?",
+  "Wie dokumentieren Sie eine Probenahme?",
+  "Wie gehen Sie mit Wechselschicht um?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne Ausbildung Chemikant werden?",
+   "a": "Mit ausreichender Berufserfahrung in der Chemieproduktion kannst du bei der IHK die Zulassung zur Prüfung als Externer beantragen. Viele Unternehmen unterstützen das."
+  }
+ ],
+ "related": [
+  "ausbildung-chemielaborant",
+  "qualitaetspruefer",
+  "maschinen-anlagenfuehrer",
+  "produktionshelfer"
+ ]
+}

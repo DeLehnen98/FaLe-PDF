@@ -1,0 +1,310 @@
+{
+ "id": "babysitter",
+ "field": "minijob",
+ "name": "Babysitter/in",
+ "search": "babysitter babysitterin kinderbetreuung nanny abends betreuen minijob familie bewerbung",
+ "short": "Kinder betreuen am Abend oder nach der Schule.",
+ "desc": "Bewerbung als Babysitter/in bei einer Familie: kurze Muster-Anschreiben für Schülerin mit Babysitterkurs und Student, Lebenslauf und Antworten auf Elternfragen.",
+ "intro": "Eltern wollen vor allem wissen, ob sie dir vertrauen können. Erzähl, mit welchen Kindern du schon zu tun hattest, ob du einen Babysitter- oder Erste-Hilfe-Kurs gemacht hast und wann du Zeit hast. Referenzen von anderen Familien helfen sehr.",
+ "lookFor": [
+  "Erfahrung mit Kindern im passenden Alter",
+  "Babysitter- oder Erste-Hilfe-Kurs",
+  "Zuverlässigkeit, auch spätabends",
+  "Referenzen",
+  "Wohnort in der Nähe"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin mit Babysitterkurs",
+   "level": "minijob",
+   "position": "Babysitterin",
+   "to": {
+    "org": "Familie Schröder",
+    "sal": "f",
+    "contact": "Schröder",
+    "street": "Ahornweg 12",
+    "city": "38102 Braunschweig"
+   },
+   "body": [
+    "Ihre Anzeige am Schwarzen Brett im Kinderladen habe ich gelesen und würde gern auf Ihre beiden Kinder aufpassen. Ich bin 16 und habe im Frühjahr einen Babysitterkurs bei der Familienbildungsstätte gemacht, inklusive Erste Hilfe am Kind.",
+    "Seit einem Jahr betreue ich regelmäßig die Zwillinge unserer Nachbarn, sie sind vier. Vorlesen, Abendbrot, Zähneputzen, und dann warten, bis beide schlafen, das kenne ich gut. Ich habe abends unter der Woche bis 22 Uhr Zeit, am Wochenende länger.",
+    "Frau Kühne, unsere Nachbarin, gibt Ihnen gern Auskunft."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Teilnahmebescheinigung Babysitterkurs"
+   ]
+  },
+  {
+   "label": "Student mit Erfahrung aus der Jugendarbeit",
+   "level": "minijob",
+   "position": "Babysitter (nachmittags)",
+   "to": {
+    "org": "Familie Okonkwo",
+    "sal": "m",
+    "contact": "Okonkwo",
+    "street": "Wilhelmitorwall 8",
+    "city": "38118 Braunschweig"
+   },
+   "body": [
+    "nachmittags zwischen Schule und Feierabend ist bei vielen Familien die schwierigste Zeit, das weiß ich von meiner Schwester. Ich studiere Lehramt im dritten Semester und hätte dienstags und donnerstags ab 13 Uhr Zeit, um Ihren Sohn von der Grundschule abzuholen und bis 18 Uhr zu betreuen.",
+    "Als Jugendleiter bei den Pfadfindern bin ich seit fünf Jahren mit Gruppen von Kindern unterwegs. Hausaufgabenbegleitung, Fußball im Park, gemeinsames Kochen: Das mache ich gern und zuverlässig.",
+    "Ein erweitertes Führungszeugnis habe ich für die Pfadfinder ohnehin."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Erweitertes Führungszeugnis"
+   ],
+   "from": [
+    "Jonas Wendt",
+    "Kastanienallee 30",
+    "38102 Braunschweig"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "compact",
+  "accent": 2,
+  "name": "Emma Rietdorf",
+  "title": "Schülerin",
+  "street": "Ahornweg 4",
+  "city": "38102 Braunschweig",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Babysitterin",
+    "Nachbarsfamilie",
+    "Braunschweig",
+    "- Zwillinge, 4 Jahre, ein- bis zweimal pro Woche"
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2027",
+    "Gymnasium, zurzeit Klasse 11",
+    "Wilhelm-Gymnasium",
+    "Braunschweig",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Babysitterkurs mit Erste Hilfe am Kind",
+    "Familienbildungsstätte",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kinderbetreuung",
+    4
+   ],
+   [
+    "Vorlesen und Spielen",
+    5
+   ],
+   [
+    "Erste Hilfe am Kind",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Turnen, Lesen"
+ },
+ "do": [
+  "Erfahrung mit Alter der Kinder nennen.",
+  "Kurse und Referenzen erwähnen.",
+  "Zeiten konkret angeben."
+ ],
+ "dont": [
+  "Unklar lassen, bis wann du abends kannst.",
+  "Ohne Absprache Freunde mitbringen wollen.",
+  "Handy-Nutzung im Dienst als selbstverständlich darstellen."
+ ],
+ "questions": [
+  "Was machen Sie, wenn das Kind nicht schlafen will?",
+  "Was tun Sie bei einem Notfall?",
+  "Bis wann können Sie abends bleiben?",
+  "Wer kann Ihnen eine Referenz geben?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich als Babysitter einen Kurs?",
+   "a": "Vorgeschrieben ist er nicht. Ein Babysitter- oder Erste-Hilfe-am-Kind-Kurs gibt Eltern aber Sicherheit und dir auch."
+  },
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "schuelerjob",
+  "nachhilfelehrer",
+  "kinderpflegerin",
+  "tagesmutter"
+ ],
+ "en": {
+  "slug": "babysitter",
+  "name": "Babysitter",
+  "search": "babysitter babysitting childminder nanny evenings after school part-time",
+  "short": "Looking after children in the evening or after school.",
+  "desc": "Babysitter cover letter examples: two short letters to families from a teenager with a first aid course and a student, plus a ready CV with placeholder portrait.",
+  "intro": "Parents want to know one thing above all: can they trust you? Say which ages you have looked after, whether you have done a babysitting or paediatric first aid course, and when you are free. A reference from another family helps a lot.",
+  "lookFor": [
+   "Experience with children of a similar age",
+   "Paediatric first aid or babysitting course",
+   "Reliability, including late evenings",
+   "References",
+   "Living nearby"
+  ],
+  "letters": [
+   {
+    "label": "Teenager with a babysitting course",
+    "level": "minijob",
+    "position": "Babysitter",
+    "to": {
+     "org": "The Morgan family",
+     "sal": "f",
+     "contact": "Morgan",
+     "street": "12 Elm Grove",
+     "city": "Bristol BS7 8LS"
+    },
+    "body": [
+     "your note on the board at the community centre caught my eye, and I would love to look after your two children. I am 16 and this spring I completed a babysitting course that included paediatric first aid.",
+     "For the past year I have regularly looked after our neighbours’ twins, who are four. Stories, tea, teeth, and then waiting until both are asleep – I know the routine well. I am free until 10 pm on weekdays and later at weekends.",
+     "Mrs Kaur, our neighbour, is happy to give you a reference."
+    ],
+    "att": [
+     "CV",
+     "Course certificate"
+    ]
+   },
+   {
+    "label": "Student with youth group experience",
+    "level": "minijob",
+    "position": "After-school babysitter",
+    "to": {
+     "org": "The Okafor family",
+     "sal": "m",
+     "contact": "Okafor",
+     "street": "3 Belmont Road",
+     "city": "Bristol BS6 5AS"
+    },
+    "body": [
+     "the hours between school pick-up and the end of the working day are often the hardest for parents – my sister tells me so every week. I am a second-year education student and could collect your son from school on Tuesdays and Thursdays and stay until six.",
+     "I have been a youth group leader for five years. Homework, football in the park and cooking something simple together are things I enjoy and do reliably. I already hold an enhanced background check for my volunteering."
+    ],
+    "att": [
+     "CV",
+     "Background check"
+    ],
+    "from": [
+     "Sam Patel",
+     "40 Gloucester Road",
+     "Bristol BS7 8AE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a01",
+   "design": "compact",
+   "accent": 2,
+   "name": "Ellie Watson",
+   "title": "Student",
+   "street": "4 Elm Grove",
+   "city": "Bristol BS7 8LS",
+   "exp": [
+    [
+     "2025",
+     "",
+     "Babysitter",
+     "Neighbouring family",
+     "Bristol",
+     "- Twins aged four, once or twice a week"
+    ]
+   ],
+   "edu": [
+    [
+     "2020",
+     "2027",
+     "Secondary school, year 12",
+     "Cotham School",
+     "Bristol",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "Babysitting course incl. paediatric first aid",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Childcare",
+     4
+    ],
+    [
+     "Reading and play",
+     5
+    ],
+    [
+     "First aid for children",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "A2"
+    ]
+   ],
+   "hobbies": "Gymnastics, reading"
+  },
+  "do": [
+   "Say which ages you have looked after.",
+   "Mention courses and references.",
+   "Give exact days and times."
+  ],
+  "dont": [
+   "Leave it unclear how late you can stay.",
+   "Plan to bring friends along.",
+   "Treat phone use as a given."
+  ],
+  "questions": [
+   "What do you do if a child will not go to sleep?",
+   "What would you do in an emergency?",
+   "How late can you stay?",
+   "Who can give you a reference?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a babysitting course?",
+    "a": "It is not required, but a babysitting or paediatric first aid course reassures parents – and you."
+   }
+  ]
+ }
+}

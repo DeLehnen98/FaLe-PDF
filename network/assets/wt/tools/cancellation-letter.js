@@ -8,6 +8,7 @@ import { el, icon, clear } from '../lib/dom.js';
 import { loadPdfLib, saveDoc } from '../lib/pdf.js';
 import { ensureCss, newCanvas, ctx2d, release, T, segmented, field, check, userError } from '../lib/img-core.js';
 import { fontForText, cleanText, missingWarning } from '../lib/unifont.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -302,7 +303,7 @@ const REQUIRED = v => ({ sName: !!String(v.sName || '').trim(), rName: !!String(
 export default {
   labels: { back_to_files: { de: 'Zurück zum Bearbeiten', en: 'Back to editing' } },
   options: [],
-  mountStage(stage, state, ctx) { stageCtl = letterStage(stage, state, ctx); },
+  mountStage(stage, state, ctx) { stageCtl = letterStage(stage, state, ctx); briefVorlage('cancellation-letter', 'letter', stage, state, ctx, () => { stageCtl = letterStage(stage, state, ctx); }); },
 
   status(v) {
     const L = v.letter || {};

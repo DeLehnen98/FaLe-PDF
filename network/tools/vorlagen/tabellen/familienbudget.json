@@ -1,0 +1,88 @@
+{
+ "id": "familienbudget",
+ "slug": "familienbudget",
+ "cat": "Finanzen",
+ "name": "Haushaltsübersicht Familie",
+ "short": "Einnahmen und Kosten mit Rhythmus auf den Monat umgerechnet",
+ "desc": "Haushaltsübersicht für Familien als Excel-Vorlage (XLSX): Einnahmen und Kosten mit Rhythmus eintragen, alles auf Monat und Jahr umgerechnet – inklusive Kosten pro Kind.",
+ "search": "familie budget",
+ "intro": "Viele Kosten fallen nicht monatlich an: die Kfz-Versicherung einmal im Jahr, der Rundfunkbeitrag vierteljährlich, der Sportverein halbjährlich. Diese Übersicht rechnet jeden Posten auf einen Monatsanteil um. So siehst du, was wirklich jeden Monat übrig bleibt.",
+ "uses": [
+  "Das Familienbudget einmal vollständig aufstellen",
+  "Jahreszahlungen als monatliche Rücklage einplanen",
+  "Wissen, was die Kinder im Monat kosten"
+ ],
+ "cols": [
+  [
+   "Posten",
+   "Einnahme oder Ausgabe, eine pro Zeile."
+  ],
+  [
+   "Bereich",
+   "Einnahmen, Fixkosten, Variable Kosten, Kinder oder Sparen – die Auswertung rechts summiert danach."
+  ],
+  [
+   "Betrag",
+   "Der Betrag, wie er gezahlt wird – also der Jahresbeitrag bei jährlichen Zahlungen."
+  ],
+  [
+   "Rhythmus",
+   "In der Liste: wie oft der Betrag fällig ist. Rechts: die Rhythmen mit der Zahl der Zahlungen pro Jahr."
+  ],
+  [
+   "Pro Monat",
+   "Pro Jahr geteilt durch zwölf."
+  ],
+  [
+   "Pro Jahr",
+   "Betrag mal Zahlungen pro Jahr – SVERWEIS holt die Zahl aus der Rhythmus-Tabelle."
+  ],
+  [
+   "Konto / Wer",
+   "Von welchem Konto oder wer zahlt."
+  ],
+  [
+   "Notiz",
+   "Kündigungsfristen, Vertragsnummern."
+  ],
+  [
+   "Zahlungen pro Jahr",
+   "12, 4, 2 oder 1 – Grundlage für die Umrechnung."
+  ],
+  [
+   "Pro Monat",
+   "In der Auswertung rechts: die Summe je Bereich pro Monat. „Bleibt übrig“ ist Einnahmen minus alle Ausgaben und Sparbeträge."
+  ]
+ ],
+ "tips": [
+  "Kosten pro Kind: Trag rechts die Zahl der Kinder ein – die Vorlage teilt die Kinderkosten durch sie.",
+  "Beispielwerte unbedingt mit deinen eigenen Beträgen überschreiben."
+ ],
+ "faq": [
+  {
+   "q": "Wohin mit Ausgaben, die mal so, mal so hoch sind?",
+   "a": "Nimm einen Durchschnitt aus den letzten Monaten, etwa für Lebensmittel. Wenn du es genau wissen willst, führ parallel ein paar Wochen das Haushaltsbuch."
+  }
+ ],
+ "related": [
+  "haushaltsbuch",
+  "monatsbudget",
+  "nebenkosten"
+ ],
+ "en": {
+  "slug": "family-budget-overview",
+  "name": "Family budget overview",
+  "short": "Income and costs with any payment interval, shown per month",
+  "desc": "Family budget spreadsheet (XLSX): enter income and costs with their payment interval – everything is converted to a monthly and yearly figure, including the cost per child.",
+  "intro": "Many costs are not monthly: car insurance once a year, club fees twice a year. The overview converts every item into a monthly share, so you see what is really left each month.",
+  "inside": [
+   "Monthly, quarterly, half-yearly and yearly items",
+   "Per month and per year with VLOOKUP",
+   "Totals per area and what is left",
+   "Child costs per child and savings rate"
+  ],
+  "uses": [
+   "Setting up a complete family budget"
+  ]
+ }
+}

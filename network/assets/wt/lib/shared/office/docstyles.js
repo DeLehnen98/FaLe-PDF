@@ -8,7 +8,7 @@ import { fontCss } from './fonts.js';
  * Paragraph markup: Standard <p>, Titel <p class="title">, Untertitel <p class="subtitle">, Überschrift 1–6 <h1>…<h6>,
  * Zitat <p class="quote"> (und <blockquote>), Code <pre>, Kein Abstand <p class="nospace">.
  */
-export const STYLE_ORDER = ['normal', 'title', 'subtitle', 'h1', 'h2', 'h3', 'h4', 'quote', 'code', 'nospace'];
+export const STYLE_ORDER = ['normal', 'title', 'subtitle', 'h1', 'h2', 'h3', 'h4', 'quote', 'caption', 'code', 'nospace'];
 export const DEFAULT_STYLES = {
   normal: { name: 'Standard', font: 'Arial', size: 11, color: null, b: false, i: false, before: 0, after: 6, line: 1.15, align: null, docx: 'Normal' },
   title: { name: 'Titel', font: null, size: 26, color: '#1B1E33', b: true, i: false, before: 0, after: 12, line: 1.05, align: null, docx: 'Title' },
@@ -22,18 +22,49 @@ export const DEFAULT_STYLES = {
   quote: { name: 'Zitat', font: null, size: null, color: '#3A3F58', b: false, i: true, before: 4, after: 8, line: 1.15, align: null, indent: 14, docx: 'Quote' },
   code: { name: 'Code', font: 'Courier New', size: 10, color: null, b: false, i: false, before: 0, after: 6, line: 1.2, align: null, bg: '#F3F4F8', docx: 'Code' },
   nospace: { name: 'Kein Abstand', font: null, size: null, color: null, b: false, i: false, before: 0, after: 0, line: 1, align: null, docx: 'NoSpacing' },
+  caption: { name: 'Beschriftung', font: null, size: 9, color: '#3A3F58', b: false, i: true, before: 2, after: 10, line: 1.1, align: null, docx: 'Caption' },
 };
-const SEL = { normal: 'p', title: 'p.title', subtitle: 'p.subtitle', h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6', quote: 'p.quote, blockquote', code: 'pre', nospace: 'p.nospace' };
+/** Defaults of a new user-defined paragraph style (Formatvorlage „Neu“). */
+export const CUSTOM_BASE = { font: null, size: null, color: null, b: false, i: false, u: false, before: 0, after: 6, line: 1.15, align: null, custom: true };
+export const isCustomStyle = id => /^u\d+$/.test(String(id || ''));
+const SEL = { normal: 'p', title: 'p.title', subtitle: 'p.subtitle', h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6', quote: 'p.quote, blockquote', code: 'pre', nospace: 'p.nospace', caption: 'p.caption' };
 /** Block element description of a style: tag + class. */
-export const STYLE_BLOCK = { normal: ['p', ''], title: ['p', 'title'], subtitle: ['p', 'subtitle'], h1: ['h1', ''], h2: ['h2', ''], h3: ['h3', ''], h4: ['h4', ''], h5: ['h5', ''], h6: ['h6', ''], quote: ['p', 'quote'], code: ['pre', ''], nospace: ['p', 'nospace'] };
-export const STYLE_CLASSES = ['title', 'subtitle', 'quote', 'nospace'];
+export const STYLE_BLOCK = { normal: ['p', ''], title: ['p', 'title'], subtitle: ['p', 'subtitle'], h1: ['h1', ''], h2: ['h2', ''], h3: ['h3', ''], h4: ['h4', ''], h5: ['h5', ''], h6: ['h6', ''], quote: ['p', 'quote'], code: ['pre', ''], nospace: ['p', 'nospace'], caption: ['p', 'caption'] };
+export const STYLE_CLASSES = ['title', 'subtitle', 'quote', 'nospace', 'caption'];
+/** Tag + class of any style id (custom styles: <p class="us-u1">). */
+export const blockOfStyle = id => STYLE_BLOCK[id] || (isCustomStyle(id) ? ['p', `us-${id}`] : STYLE_BLOCK.normal);
 
 export function cloneStyles(st) { return JSON.parse(JSON.stringify(st || DEFAULT_STYLES)); }
 /** Merge loaded/partial styles over the defaults. */
 export function normalizeStyles(st) {
   const out = cloneStyles(DEFAULT_STYLES);
-  if (st) for (const [k, v] of Object.entries(st)) if (out[k] && v) out[k] = { ...out[k], ...v };
+  if (st) for (const [k, v] of Object.entries(st)) {
+    if (!v || typeof v !== 'object') continue;
+    if (out[k]) out[k] = { ...out[k], ...v };
+    else if (isCustomStyle(k)) out[k] = { ...CUSTOM_BASE, name: `Formatvorlage ${k.slice(1)}`, ...v, custom: true };
+  }
   return out;
+}
+/** Ids of user-defined styles, in creation order. */
+export const customStyleIds = styles => Object.keys(styles || {}).filter(isCustomStyle).sort((a, b) => +a.slice(1) - +b.slice(1));
+
+/**
+ * Heading numbering ("1", "1.2", "1.2.3") for heading styles marked numbered. Returns a stateful function
+ * tag → label | null (call in reading order); .any tells whether any heading style is numbered.
+ */
+export function headingNumberer(styles) {
+  const S = styles || {};
+  const on = [1, 2, 3, 4, 5, 6].map(l => !!(S[`h${l}`] && S[`h${l}`].numbered));
+  const counters = [0, 0, 0, 0, 0, 0];
+  const fn = tag => {
+    const l = +String(tag).slice(1);
+    if (!(l >= 1 && l <= 6) || !on[l - 1]) return null;
+    counters[l - 1]++;
+    for (let k = l; k < 6; k++) counters[k] = 0;
+    return counters.slice(0, l).join('.');
+  };
+  fn.any = on.some(Boolean);
+  return fn;
 }
 /** Style id of a block element (p/h1…/pre/blockquote). */
 export function styleOfBlock(el) {
@@ -42,7 +73,10 @@ export function styleOfBlock(el) {
   if (/^H[1-6]$/.test(t)) return t.toLowerCase();
   if (t === 'PRE') return 'code';
   if (t === 'BLOCKQUOTE' || (el.closest && el.closest('blockquote'))) return 'quote';
-  for (const c of STYLE_CLASSES) if (el.classList && el.classList.contains(c)) return c;
+  if (el.classList) {
+    for (const c of STYLE_CLASSES) if (el.classList.contains(c)) return c;
+    for (const c of el.classList) { const m = /^us-(u\d+)$/.exec(c); if (m) return m[1]; }
+  }
   return 'normal';
 }
 
@@ -74,11 +108,16 @@ export function stylesCss(styles, scope = '.doc-page') {
     out += `${sel}{${rule(st)}}`;
     if (id === 'quote') out += `${scope} p.quote{padding-left:${st.indent ?? 14}pt;border-left:3px solid #C9CCDA}`;
   }
+  for (const id of customStyleIds(S)) {
+    const st = S[id];
+    out += `${scope} p.us-${id}{${rule(st)}${st.indent ? `;margin-left:${st.indent}pt` : ''}}`;
+  }
+  for (let l = 1; l <= 6; l++) if (S[`h${l}`] && S[`h${l}`].numbered) out += `${scope} h${l}[data-hnum]::before{content:attr(data-hnum) "\\00a0\\00a0";}`;
   out += `${scope} li p, ${scope} td p, ${scope} th p{margin-top:0}`;
   out += `${scope} li{margin-bottom:${Math.min(n.after ?? 6, 3)}pt}`;
   return out;
 }
 
 /** Model tag for a block (used by the PDF and DOCX exporters). */
-export const TAG_OF_STYLE = { normal: 'p', title: 'title', subtitle: 'subtitle', h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6', quote: 'quote', code: 'code', nospace: 'nospace' };
+export const TAG_OF_STYLE = { normal: 'p', title: 'title', subtitle: 'subtitle', h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6', quote: 'quote', code: 'code', nospace: 'nospace', caption: 'caption' };
 export const STYLE_OF_TAG = Object.fromEntries(Object.entries(TAG_OF_STYLE).map(([k, v]) => [v, k]));

@@ -1,0 +1,158 @@
+{
+ "id": "fachinformatiker-systemintegration",
+ "field": "it",
+ "name": "Fachinformatiker/in Systemintegration",
+ "search": "fachinformatiker systemintegration fisi it administrator netzwerk server client support systemhaus bewerbung",
+ "short": "Netzwerke, Server, Clients – nach der Ausbildung oder mit Erfahrung.",
+ "desc": "Bewerbung als Fachinformatiker/in für Systemintegration: Muster-Anschreiben für Junggesellen nach der Ausbildung und erfahrene Fachinformatikerin im Systemhaus, Lebenslauf.",
+ "intro": "Fachinformatiker für Systemintegration richten Netzwerke, Server und Arbeitsplätze ein, betreuen Benutzer und sorgen für Backups und Sicherheit. Systemhäuser und IT-Abteilungen achten auf praktische Erfahrung, Zertifikate und den Umgang mit Anwendern. Erzähl von Projekten aus Ausbildung oder Job.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung oder vergleichbare Erfahrung",
+  "Netzwerk- und Serverkenntnisse",
+  "Client-Management und Support",
+  "Backup und IT-Sicherheit",
+  "Freundlicher Umgang mit Anwendern"
+ ],
+ "letters": [
+  {
+   "label": "Junggeselle nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Fachinformatiker für Systemintegration",
+   "to": {
+    "org": "Systemhaus Weserbergland",
+    "sal": "m",
+    "contact": "Fricke",
+    "street": "Bahnhofstraße 12",
+    "city": "31785 Hameln"
+   },
+   "body": [
+    "mein Abschlussprojekt war die Migration von 40 Arbeitsplätzen einer Arztpraxis auf eine neue Domäne, inklusive Druckern, Praxissoftware und einer Backup-Lösung, die jede Nacht prüft, ob die Sicherung lesbar ist. Die Praxis lief am Montag danach ohne Ausfall.",
+    "Im Februar habe ich die Prüfung mit 1,8 bestanden. In der Ausbildung habe ich Netzwerke mit VLANs aufgebaut, Firewalls konfiguriert und den Support für 15 Kunden mitgetragen. Ihr Systemhaus betreut ähnliche Kunden, und ich möchte dort Verantwortung für eigene Projekte übernehmen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Fachinformatikerin wechselt in die Inhouse-IT",
+   "level": "erfahren",
+   "position": "Systemadministratorin (Inhouse)",
+   "to": {
+    "org": "Versorgungsbetriebe Weserbergland",
+    "sal": "none",
+    "street": "Am Wasserwerk 5",
+    "city": "31785 Hameln"
+   },
+   "body": [
+    "fünfzig Kunden, drei Notrufe am Tag und nie genug Zeit, um etwas wirklich gut zu machen: So sieht mein Alltag im Systemhaus seit sechs Jahren aus. Ich möchte in eine Inhouse-IT wechseln, wo ich eine Umgebung kenne und sie Schritt für Schritt verbessern kann.",
+    "Netzwerke, Virtualisierung, Verzeichnisdienste, Backup und Patch-Management gehören zu meinem Handwerk. Bei einem Versorger sind Verfügbarkeit und Sicherheit besonders wichtig; ich habe zwei Kunden aus der kritischen Infrastruktur betreut und kenne die Anforderungen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Zertifikate"
+   ],
+   "from": [
+    "Jana Krüger",
+    "Deisterallee 20",
+    "31785 Hameln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "compact",
+  "accent": 0,
+  "name": "Paul Wendland",
+  "title": "Fachinformatiker für Systemintegration",
+  "street": "Ostertorwall 8",
+  "city": "31785 Hameln",
+  "exp": [
+   [
+    "2023",
+    "2026",
+    "Auszubildender Fachinformatiker Systemintegration",
+    "IT-Partner Bad Pyrmont",
+    "Bad Pyrmont",
+    "- Abschlussprojekt: Domänenmigration einer Praxis (40 Plätze)\n- Netzwerke, VLANs, Firewall\n- Kundensupport"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Abschlussprüfung Fachinformatiker Systemintegration (1,8)",
+    "IHK Hannover",
+    "Hannover",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Viktoria-Luise-Gymnasium",
+    "Hameln",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Netzwerke",
+    4
+   ],
+   [
+    "Windows- und Linux-Server",
+    4
+   ],
+   [
+    "Backup",
+    4
+   ],
+   [
+    "Support",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Homelab, Volleyball"
+ },
+ "do": [
+  "Projekte aus Ausbildung oder Job beschreiben.",
+  "Umgebungsgrößen nennen (Nutzer, Server, Standorte).",
+  "Zertifikate angeben."
+ ],
+ "dont": [
+  "Nur Produktnamen aufzählen.",
+  "Support als Nebensache abtun.",
+  "Sicherheit vergessen."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein ganzer Standort kein Netz hat?",
+  "Wie sichern Sie Backups ab?",
+  "Wie erklären Sie einem Anwender ein Problem?",
+  "Was war Ihr Abschlussprojekt?"
+ ],
+ "faq": [
+  {
+   "q": "Systemhaus oder Inhouse-IT?",
+   "a": "Im Systemhaus lernst du viele Umgebungen kennen und hast viel Abwechslung. In der Inhouse-IT betreust du eine Umgebung tiefer und planst langfristiger. Beides hat seinen Reiz."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "it-support",
+  "ausbildung-fachinformatiker",
+  "devops-engineer"
+ ]
+}

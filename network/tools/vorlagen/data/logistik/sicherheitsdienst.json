@@ -1,0 +1,352 @@
+{
+ "id": "sicherheitsdienst",
+ "field": "logistik",
+ "name": "Sicherheitsmitarbeiter/in",
+ "search": "sicherheitsdienst sicherheitsmitarbeiter security wachmann objektschutz empfang 34a unterrichtung sachkunde werkschutz bewerbung",
+ "short": "Objektschutz, Empfang, Veranstaltungen – mit 34a.",
+ "desc": "Bewerbung als Sicherheitsmitarbeiter/in: Muster-Anschreiben für Objektschutz und Empfangsdienst, Lebenslauf und Infos zu Unterrichtung und Sachkunde nach § 34a.",
+ "intro": "Sicherheitsmitarbeitende bewachen Gebäude, kontrollieren Zugänge, machen Rundgänge und sind bei Veranstaltungen im Einsatz. Für die Arbeit im Bewachungsgewerbe brauchst du mindestens die Unterrichtung nach § 34a Gewerbeordnung, für bestimmte Tätigkeiten die Sachkundeprüfung. Zuverlässigkeit wird geprüft, ein einwandfreies Führungszeugnis ist Pflicht.",
+ "lookFor": [
+  "Unterrichtung oder Sachkundeprüfung nach § 34a GewO",
+  "Einwandfreies Führungszeugnis",
+  "Ruhe und Deeskalation",
+  "Schicht-, Nacht- und Wochenenddienste",
+  "Gutes Deutsch, weitere Sprachen ein Plus"
+ ],
+ "letters": [
+  {
+   "label": "Objektschutz mit Sachkundeprüfung",
+   "level": "erfahren",
+   "position": "Sicherheitsmitarbeiter Objektschutz",
+   "to": {
+    "org": "Rhein-Main Sicherheitsdienste GmbH",
+    "sal": "m",
+    "contact": "Bauer",
+    "street": "Hanauer Landstraße 150",
+    "city": "60314 Frankfurt am Main"
+   },
+   "body": [
+    "nachts ist ein Bürogebäude ein anderer Ort: Bewegungsmelder, die wegen einer Spinne anschlagen, Reinigungskräfte, die ihren Ausweis vergessen haben, und einmal im Jahr jemand, der wirklich nicht hineingehört. Seit drei Jahren bin ich im Objektschutz und weiß, wie man in allen drei Fällen ruhig bleibt.",
+    "Die Sachkundeprüfung nach § 34a habe ich bestanden, im Bewacherregister bin ich eingetragen. Ich habe Erfahrung mit Zutrittskontrollsystemen, Brandmeldezentralen und Videoüberwachung und schreibe saubere Wachberichte. Erste Hilfe frische ich jedes Jahr auf.",
+    "Nachtdienste und Wochenenden sind für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Sachkundeprüfung",
+    "Führungszeugnis",
+    "Erste-Hilfe-Nachweis"
+   ]
+  },
+  {
+   "label": "Quereinsteigerin für den Empfangsdienst",
+   "level": "quereinstieg",
+   "position": "Sicherheitsmitarbeiterin Empfang (Unterrichtung vorhanden)",
+   "to": {
+    "org": "Sicherheit Hessen Süd",
+    "sal": "f",
+    "contact": "Klein",
+    "street": "Rheinstraße 40",
+    "city": "64283 Darmstadt"
+   },
+   "body": [
+    "Besucher empfangen, Ausweise prüfen, Firmenschlüssel ausgeben: Das hat mich an der Pforte eines großen Labors schon als Aushilfe begeistert. Jetzt habe ich die Unterrichtung nach § 34a gemacht und möchte in den Empfangsdienst eines Sicherheitsunternehmens.",
+    "Ich spreche Deutsch, Englisch und Russisch und bleibe freundlich, auch wenn jemand ohne Termin vor mir steht und darauf besteht, „nur kurz“ hineinzumüssen. Tagdienste wären mir am liebsten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Unterrichtung § 34a",
+    "Führungszeugnis"
+   ],
+   "from": [
+    "Olga Petrenko",
+    "Heinrichstraße 20",
+    "64283 Darmstadt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 5,
+  "name": "Malik Hassan",
+  "title": "Sicherheitsmitarbeiter, Sachkunde § 34a GewO",
+  "street": "Berger Straße 300",
+  "city": "60385 Frankfurt am Main",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Sicherheitsmitarbeiter Objektschutz",
+    "Wachdienst Frankfurt-Ost",
+    "Frankfurt am Main",
+    "- Nacht- und Wochenendschutz von Bürogebäuden\n- Zutrittskontrolle, Rundgänge, Wachberichte\n- Bedienung von Brandmelde- und Videoanlagen"
+   ],
+   [
+    "2019",
+    "2023",
+    "Lagerarbeiter",
+    "Logistik Fechenheim",
+    "Frankfurt am Main",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2016",
+    "Realschulabschluss",
+    "Ernst-Reuter-Schule",
+    "Frankfurt am Main",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "Sachkundeprüfung § 34a GewO",
+    "IHK Frankfurt am Main",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2026",
+    "Erste-Hilfe-Auffrischung",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Zutrittskontrolle",
+    5
+   ],
+   [
+    "Deeskalation",
+    4
+   ],
+   [
+    "Wachberichte",
+    4
+   ],
+   [
+    "Brandmeldetechnik (Bedienung)",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Arabisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Boxen, Laufen"
+ },
+ "do": [
+  "Unterrichtung oder Sachkunde nennen.",
+  "Einsatzarten (Objekt, Veranstaltung, Empfang) angeben.",
+  "Schichtbereitschaft klar machen."
+ ],
+ "dont": [
+  "Mit Kampfsport-Erfahrung prahlen.",
+  "Einträge im Führungszeugnis verschweigen.",
+  "Konflikte als Machtspiel beschreiben."
+ ],
+ "questions": [
+  "Wie reagieren Sie auf jemanden, der ohne Berechtigung hinein will?",
+  "Was steht in einem guten Wachbericht?",
+  "Wie gehen Sie mit Langeweile im Nachtdienst um?",
+  "Was tun Sie bei einem Feueralarm?"
+ ],
+ "faq": [
+  {
+   "q": "Unterrichtung oder Sachkundeprüfung – was brauche ich?",
+   "a": "Die Unterrichtung nach § 34a GewO ist die Mindestvoraussetzung für viele Bewachungstätigkeiten. Für einige Tätigkeiten, etwa Kontrollgänge im öffentlichen Raum, Einlass bei Diskotheken oder Schutz von Unterkünften in leitender Funktion, ist die Sachkundeprüfung nötig. Beides läuft über die IHK."
+  }
+ ],
+ "related": [
+  "empfangsmitarbeiter",
+  "hausmeister",
+  "bodenverkehrsdienst",
+  "tankstelle-aushilfe"
+ ],
+ "en": {
+  "slug": "security-officer",
+  "name": "Security officer",
+  "search": "security officer guard site security reception concierge events door supervisor",
+  "short": "Site security, reception and events.",
+  "desc": "Security officer cover letter examples: an experienced night-shift officer and a career changer for front-of-house security, plus a ready CV with placeholder portrait.",
+  "intro": "Security officers protect buildings, control access, patrol and work at events. In most countries you need a recognised security licence for this work, and your background is checked. Say which licence you hold and which kinds of sites you know.",
+  "lookFor": [
+   "A valid security licence for your country",
+   "Clean background check",
+   "Calm, de-escalating manner",
+   "Night, weekend and shift work",
+   "Clear written reports"
+  ],
+  "letters": [
+   {
+    "label": "Night-shift officer",
+    "level": "erfahren",
+    "position": "Security officer (static guarding)",
+    "to": {
+     "org": "Thames Valley Security Services",
+     "sal": "m",
+     "contact": "Barker",
+     "street": "150 London Road",
+     "city": "Reading RG1 5AN"
+    },
+    "body": [
+     "an office building at night is a different place: motion sensors set off by a spider, cleaners who have forgotten their passes, and once a year someone who really should not be there. I have spent three years on night shifts and know how to stay calm in all three cases.",
+     "I hold a current security licence, am confident with access control, fire panels and CCTV, and write clear incident reports. I refresh my first aid every year."
+    ],
+    "att": [
+     "CV",
+     "Licence",
+     "First aid certificate"
+    ]
+   },
+   {
+    "label": "Career changer for front-of-house security",
+    "level": "quereinstieg",
+    "position": "Front-of-house security officer",
+    "to": {
+     "org": "Southern Guarding Ltd",
+     "sal": "f",
+     "contact": "Klein",
+     "street": "40 Queen Street",
+     "city": "Reading RG1 4BD"
+    },
+    "body": [
+     "welcoming visitors, checking passes and issuing keys: I enjoyed all of it as a temp on the gate of a large laboratory. I have now completed my security licence training and would like to work front of house.",
+     "I speak English, Russian and Polish and stay polite even when someone without an appointment insists they only need “two minutes”. Day shifts would suit me best."
+    ],
+    "att": [
+     "CV",
+     "Licence"
+    ],
+    "from": [
+     "Olga Petrova",
+     "20 Oxford Road",
+     "Reading RG1 7LG"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a18",
+   "design": "compact",
+   "accent": 5,
+   "name": "Malik Hassan",
+   "title": "Security officer",
+   "street": "300 Oxford Road",
+   "city": "Reading RG30 1AD",
+   "exp": [
+    [
+     "2023",
+     "",
+     "Security officer",
+     "Reading Guarding Co.",
+     "Reading",
+     "- Night and weekend site security\n- Access control, patrols, reports\n- Fire panel and CCTV operation"
+    ],
+    [
+     "2019",
+     "2023",
+     "Warehouse operative",
+     "Western Distribution",
+     "Theale",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2010",
+     "2016",
+     "Secondary school",
+     "Reading Girls’ and Boys’ Academy",
+     "Reading",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2023",
+     "Security licence training",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "First aid refresher",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Access control",
+     5
+    ],
+    [
+     "De-escalation",
+     4
+    ],
+    [
+     "Report writing",
+     4
+    ],
+    [
+     "CCTV",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "Arabic",
+     "native"
+    ]
+   ],
+   "hobbies": "Boxing, running"
+  },
+  "do": [
+   "Name your licence.",
+   "Say which kinds of sites you know.",
+   "Be clear about shifts."
+  ],
+  "dont": [
+   "Boast about martial arts.",
+   "Hide anything a background check will show.",
+   "Describe conflicts as power games."
+  ],
+  "questions": [
+   "How do you deal with someone who tries to get in without authorisation?",
+   "What makes a good incident report?",
+   "How do you stay alert on a quiet night shift?",
+   "What do you do when the fire alarm goes off?"
+  ],
+  "faq": [
+   {
+    "q": "Which licence do I need?",
+    "a": "That depends on your country and the type of work. Check the requirements of your national licensing authority before you apply."
+   }
+  ]
+ }
+}

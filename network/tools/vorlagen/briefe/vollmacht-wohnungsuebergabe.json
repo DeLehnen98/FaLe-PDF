@@ -1,0 +1,74 @@
+{
+ "id": "vollmacht-wohnungsuebergabe",
+ "group": "vollmacht",
+ "tool": "power-of-attorney",
+ "order": 25,
+ "name": "Vollmacht für die Wohnungsübergabe",
+ "short": "Jemand anderen zur Übergabe schicken",
+ "desc": "Vollmacht für die Wohnungsübergabe: Muster, damit eine Vertrauensperson Protokoll, Zählerstände und Schlüssel für dich erledigt – ausfüllen und als PDF drucken.",
+ "search": "übergabe wohnung vollmacht auszug",
+ "when": [
+  "Du kannst beim Übergabetermin nicht selbst dabei sein – etwa weil du schon in eine andere Stadt gezogen bist. Mit dieser Vollmacht darf eine Person deines Vertrauens das Übergabeprotokoll unterschreiben, Zählerstände festhalten und Schlüssel übergeben oder entgegennehmen."
+ ],
+ "must": [
+  "Deine Daten als Mieterin oder Mieter (Vollmachtgeber)",
+  "Name und Anschrift der bevollmächtigten Person",
+  "Anschrift der Wohnung und Datum der Übergabe",
+  "Was die Person darf: Protokoll unterschreiben, Zählerstände, Schlüssel",
+  "Gültigkeit – hier am besten nur für den Übergabetag",
+  "Deine Unterschrift"
+ ],
+ "notes": [
+  "Die bevollmächtigte Person nimmt am besten ihren Ausweis und eine Kopie deines Ausweises mit.",
+  "Sprich vorher mit ihr durch, worauf sie achten soll: Mängel, die schon beim Einzug da waren, gehören ins Protokoll.",
+  "Mit der Unterschrift unter dem Protokoll werden Zustand und Zählerstände festgehalten – das kann später nur schwer korrigiert werden."
+ ],
+ "faq": [
+  {
+   "q": "Muss die Vollmacht notariell beglaubigt sein?",
+   "a": "Nein, für die Wohnungsübergabe reicht eine einfache schriftliche Vollmacht mit deiner Unterschrift."
+  }
+ ],
+ "fields": {
+  "purpose": "flat",
+  "gName": "Jana Beispiel",
+  "gStreet": "Neue Gasse 4",
+  "gCity": "10115 Berlin",
+  "aName": "Paul Beispiel",
+  "aStreet": "Lindenstraße 30",
+  "aCity": "66111 Saarbrücken",
+  "flatAddr": "Lindenstraße 12, 2. OG links, 66111 Saarbrücken",
+  "valid": "day"
+ },
+ "related": [
+  "kuendigung-mietvertrag",
+  "vollmacht-post",
+  "maengelanzeige-wohnung"
+ ],
+ "doc": [
+  [
+   "Titel",
+   "Vollmacht für die Wohnungsübergabe"
+  ],
+  [
+   "Vollmachtgeberin",
+   "Jana Beispiel, Neue Gasse 4, 10115 Berlin"
+  ],
+  [
+   "Bevollmächtigter",
+   "Paul Beispiel, Lindenstraße 30, 66111 Saarbrücken"
+  ],
+  [
+   "Text",
+   "Hiermit bevollmächtige ich … mich bei der Übergabe der Wohnung Lindenstraße 12, 2. OG links, 66111 Saarbrücken am [Datum] zu vertreten, insbesondere das Übergabeprotokoll zu unterzeichnen, Zählerstände festzuhalten und Schlüssel zu übergeben bzw. entgegenzunehmen."
+  ],
+  [
+   "Gültigkeit",
+   "Nur am Übergabetag"
+  ],
+  [
+   "Unterschriften",
+   "Vollmachtgeberin; Unterschriftsprobe des Bevollmächtigten"
+  ]
+ ]
+}

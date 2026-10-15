@@ -7,6 +7,7 @@ import { el, T, s, form, ensureCss, isoDate, fmtDate, parseNum, money, note, rem
 import { createWriter, collectText, mm, drawSig } from '../lib/tpl-pdf.js';
 import { amountWords } from '../lib/tpl-words.js';
 import { missingWarning } from '../lib/unifont.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -112,7 +113,7 @@ let api = null;
 export default {
   labels: { back_to_files: { de: 'Zurück zur Quittung', en: 'Back to the receipt' } },
   options: [],
-  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); briefVorlage('receipt', 'rc', stage, state, ctx, () => { api = stageFn(stage, state, ctx); }); },
   status(values, inputs, lang) {
     const v = values.rc || {};
     const n = receiptNumbers(v, lang);

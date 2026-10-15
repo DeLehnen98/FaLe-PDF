@@ -1,0 +1,68 @@
+{
+ "id": "sparplan",
+ "slug": "sparplan",
+ "cat": "Finanzen",
+ "name": "Sparplan",
+ "short": "Vermögensaufbau mit Sparrate, Zins und jährlicher Erhöhung",
+ "desc": "Sparplan-Rechner als Excel-Vorlage (XLSX): Startkapital, Sparrate, Zins und Laufzeit eintragen und sehen, wie das Geld Jahr für Jahr wächst – mit Diagramm.",
+ "search": "",
+ "intro": "Der Sparplan zeigt, wie aus regelmäßigen Raten mit Zins und Zinseszins ein Vermögen wird. Eine jährliche Erhöhung der Rate ist eingebaut. Die Tabelle trennt, was du eingezahlt hast und was durch Zinsen dazukam.",
+ "uses": [
+  "Einen ETF- oder Banksparplan grob durchrechnen",
+  "Sehen, was eine jährlich steigende Rate bewirkt",
+  "Ein Sparziel für einen bestimmten Zeitpunkt planen"
+ ],
+ "cols": [
+  [
+   "Jahr",
+   "Laufendes Jahr des Sparplans, bis zur eingetragenen Laufzeit (höchstens 40 Jahre)."
+  ],
+  [
+   "Eingezahlt",
+   "Alles, was du bis Ende des Jahres eingezahlt hast – Startkapital plus Raten."
+  ],
+  [
+   "Kontostand",
+   "ZW rechnet den Stand am Jahresende mit monatlicher Verzinsung aus."
+  ],
+  [
+   "Rate/Monat",
+   "Die Sparrate in diesem Jahr, jedes Jahr um die eingetragene Erhöhung höher."
+  ],
+  [
+   "Zinsen im Jahr",
+   "Kontostand-Zuwachs minus eingezahlte Raten in diesem Jahr."
+  ]
+ ],
+ "tips": [
+  "Rechne lieber vorsichtig: Eine angenommene Rendite ist keine Garantie, Steuern und Kosten sind nicht berücksichtigt."
+ ],
+ "faq": [
+  {
+   "q": "Sind Steuern und Gebühren eingerechnet?",
+   "a": "Nein. Die Vorlage rechnet mit einem gleichbleibenden Zins ohne Abgeltungsteuer, Freibeträge und Depotkosten. Für eine grobe Planung reicht das; das echte Ergebnis wird davon abweichen."
+  }
+ ],
+ "related": [
+  "kreditrechner",
+  "monatsbudget",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "savings-plan",
+  "name": "Savings plan",
+  "short": "Savings growth with monthly amount, interest and yearly increase",
+  "desc": "Savings plan calculator (XLSX): enter starting capital, monthly amount, interest and term and see how your money grows year by year – with a chart.",
+  "intro": "Shows how regular payments grow with compound interest, with an optional yearly increase of the monthly amount. It separates what you paid in from the interest earned.",
+  "inside": [
+   "Balance per year with FV",
+   "Paid in vs. interest",
+   "Monthly amount rising each year",
+   "Chart of the growth"
+  ],
+  "uses": [
+   "Rough planning of a savings plan",
+   "Seeing the effect of increasing the amount"
+  ]
+ }
+}

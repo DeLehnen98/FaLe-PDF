@@ -1,0 +1,159 @@
+{
+ "id": "fachverkaeufer-lebensmittel",
+ "field": "handel",
+ "name": "Fachverkäufer/in Lebensmittel (Metzgerei, Feinkost)",
+ "search": "fachverkäufer fachverkäuferin lebensmittelhandwerk metzgerei fleischerei feinkost käsetheke frischetheke bewerbung",
+ "short": "Fleisch-, Wurst-, Käse- oder Feinkosttheke.",
+ "desc": "Bewerbung als Fachverkäufer/in im Lebensmittelhandwerk oder an der Frischetheke: Muster-Anschreiben für Metzgerei und Käsetheke, Lebenslauf und Tipps.",
+ "intro": "An der Frischetheke zählt Beratung: Welches Stück für welchen Braten, welcher Käse zu welchem Wein. Dazu kommen Hygiene, Aufschnittmaschinen, Platten für Feiern und ein freundliches Wort für Stammkunden. Nenn Erfahrung, Warenkenntnis und deine Belehrung nach dem Infektionsschutzgesetz.",
+ "lookFor": [
+  "Warenkenntnis",
+  "Hygiene und Belehrung nach Infektionsschutzgesetz",
+  "Freundlichkeit an der Theke",
+  "Erfahrung mit Platten und Catering",
+  "Frühe Schichten und Samstage"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Metzgereifachverkäuferin",
+   "level": "erfahren",
+   "position": "Fachverkäuferin Fleischerei",
+   "to": {
+    "org": "Metzgerei Brunner",
+    "sal": "m",
+    "contact": "Brunner",
+    "street": "Hauptstraße 22",
+    "city": "84028 Landshut"
+   },
+   "body": [
+    "seit 14 Jahren stehe ich hinter einer Fleischtheke und weiß, dass die Frage „Was nehme ich für Gulasch?“ immer mit einer Gegenfrage beantwortet werden sollte: Für wie viele, und wie lange haben Sie Zeit? Diese Art von Beratung möchte ich in einem Familienbetrieb wie Ihrem weitermachen.",
+    "In meinem jetzigen Betrieb habe ich das Partyservice-Geschäft mit aufgebaut. Wir liefern inzwischen jedes Wochenende Platten für Hochzeiten, Geburtstage und Firmenfeiern. Kalkulation, Garnieren und Absprache mit Kunden mache ich selbst.",
+    "Mein Wunsch ist eine Vollzeitstelle mit festen Tagen. Ab Mai kann ich beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteigerin für die Käsetheke",
+   "level": "quereinstieg",
+   "position": "Verkäuferin Käse- und Feinkosttheke (Teilzeit)",
+   "to": {
+    "org": "Feinkost am Dreifaltigkeitsplatz",
+    "sal": "none",
+    "street": "Dreifaltigkeitsplatz 4",
+    "city": "84028 Landshut"
+   },
+   "body": [
+    "Käse ist in unserer Familie Gesprächsthema, seit mein Großvater eine Sennerei im Allgäu hatte. Ich selbst habe Bürokauffrau gelernt und arbeite seit Jahren in der Verwaltung, aber jeden Samstag auf dem Wochenmarkt merke ich, wo ich lieber wäre.",
+    "Die Belehrung nach dem Infektionsschutzgesetz habe ich, außerdem eine Weiterbildung zur Käsesommelière in einem Abendkurs. Für 20 Stunden pro Woche, vor allem freitags und samstags, wäre ich gern bei Ihnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Infektionsschutzgesetz",
+    "Zertifikat Käsekunde"
+   ],
+   "from": [
+    "Barbara Hiendl",
+    "Seligenthaler Straße 20",
+    "84034 Landshut"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "classic",
+  "accent": 3,
+  "name": "Rosa Gruber",
+  "title": "Fachverkäuferin im Lebensmittelhandwerk (Fleischerei)",
+  "street": "Altstadt 100",
+  "city": "84028 Landshut",
+  "exp": [
+   [
+    "09/2015",
+    "",
+    "Fachverkäuferin",
+    "Metzgerei Huber",
+    "Ergolding",
+    "- Beratung und Verkauf an der Theke\n- Aufbau Partyservice, Platten für bis zu 150 Personen\n- Kalkulation, Kundenabsprachen"
+   ],
+   [
+    "09/2012",
+    "08/2015",
+    "Fachverkäuferin",
+    "Landmetzgerei Ostermeier",
+    "Landshut",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2009",
+    "2012",
+    "Ausbildung Fachverkäuferin im Lebensmittelhandwerk",
+    "Landmetzgerei Ostermeier",
+    "Landshut",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Warenkunde Fleisch",
+    5
+   ],
+   [
+    "Partyservice",
+    5
+   ],
+   [
+    "Hygiene",
+    5
+   ],
+   [
+    "Kalkulation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Kochen, Trachtenverein"
+ },
+ "do": [
+  "Warenkenntnis mit Beispiel zeigen.",
+  "Hygienebelehrung erwähnen.",
+  "Catering- oder Plattenerfahrung nennen."
+ ],
+ "dont": [
+  "Nur „Ich bin freundlich“.",
+  "Hygiene nicht erwähnen.",
+  "Arbeitszeiten offenlassen."
+ ],
+ "questions": [
+  "Was empfehlen Sie für einen Sonntagsbraten für sechs Personen?",
+  "Wie gehen Sie mit einer Reklamation um?",
+  "Wie reinigen Sie eine Aufschnittmaschine?",
+  "Wann können Sie arbeiten?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Belehrung nach dem Infektionsschutzgesetz?",
+   "a": "Für die Arbeit mit offenen Lebensmitteln ja. Die Erstbelehrung bekommst du beim Gesundheitsamt oder bei zugelassenen Stellen, oft auch online. Danach belehrt dich der Arbeitgeber regelmäßig."
+  }
+ ],
+ "related": [
+  "verkaeuferin-baeckerei",
+  "verkaeuferin",
+  "koch",
+  "kassiererin"
+ ]
+}

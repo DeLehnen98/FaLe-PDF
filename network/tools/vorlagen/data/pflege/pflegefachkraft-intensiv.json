@@ -1,0 +1,182 @@
+{
+ "id": "pflegefachkraft-intensiv",
+ "field": "pflege",
+ "name": "Pflegefachkraft Intensivstation",
+ "search": "intensivpflege intensivstation pflegefachkraft intensiv anästhesie fachweiterbildung beatmung its bewerbung",
+ "short": "Intensiv- und Anästhesiepflege – mit oder ohne Fachweiterbildung.",
+ "desc": "Bewerbung als Pflegefachkraft auf der Intensivstation: Muster-Anschreiben für Fachpflegerin Intensiv und Normalstation-Pflegekraft im Wechsel, mit Lebenslauf.",
+ "intro": "Auf der Intensivstation betreust du wenige, schwer kranke Patienten mit Beatmung, Monitoring und vielen Medikamenten. Kliniken suchen Pflegefachkräfte, die Ruhe bewahren, genau beobachten und lernen wollen. Die zweijährige Fachweiterbildung Intensiv- und Anästhesiepflege ist kein Muss für den Einstieg, wird aber oft angeboten.",
+ "lookFor": [
+  "Examen als Pflegefachkraft",
+  "Erfahrung auf Intensiv oder IMC, alternativ Lernbereitschaft",
+  "Fachweiterbildung Intensiv- und Anästhesiepflege (wünschenswert)",
+  "Ruhe in Notfällen",
+  "Schichtdienst"
+ ],
+ "letters": [
+  {
+   "label": "Fachpflegerin wechselt in ein Herzzentrum",
+   "level": "erfahren",
+   "position": "Fachpflegerin Intensivpflege",
+   "to": {
+    "org": "Herzzentrum Rhein-Ruhr",
+    "sal": "m",
+    "contact": "Dr. Albrecht",
+    "street": "Klinikstraße 1",
+    "city": "47137 Duisburg"
+   },
+   "body": [
+    "acht Patienten, vier Pflegekräfte, und in einem Zimmer piept es, weil der Blutdruck fällt: So sieht ein Nachtdienst auf unserer operativen Intensivstation aus. Ich arbeite dort seit sechs Jahren, habe die Fachweiterbildung Intensiv- und Anästhesiepflege abgeschlossen und bin Praxisanleiterin.",
+    "Kardiochirurgische Patienten mit Kreislaufunterstützung interessieren mich besonders. Bei uns sind sie selten, bei Ihnen Alltag. Beatmung, invasives Monitoring, Nierenersatzverfahren und Notfallmanagement gehören zu meiner täglichen Arbeit.",
+    "Kündigungsfrist: sechs Wochen zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Fachweiterbildung",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Pflegefachkraft von der Normalstation",
+   "level": "erfahren",
+   "position": "Pflegefachkraft Intensivstation (Einarbeitung)",
+   "to": {
+    "org": "Klinikum Niederrhein-Süd",
+    "sal": "none",
+    "street": "Am Stadtwald 40",
+    "city": "47805 Krefeld"
+   },
+   "body": [
+    "auf meiner internistischen Station habe ich immer wieder Patienten auf die Intensiv verlegt und mich gefragt, wie es dort weitergeht. Nach drei Jahren als Pflegefachfrau möchte ich das selbst erleben.",
+    "Ich bin examinierte Pflegefachfrau, arbeite sicher mit Perfusoren, Überwachungsmonitoren und Notfallsituationen auf Station und habe im letzten Jahr eine Hospitation auf Ihrer Intensivstation gemacht. Überzeugt hat mich Ihr Einarbeitungskonzept mit festem Mentor und späterer Fachweiterbildung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Laura Nowak",
+    "Dionysiusstraße 30",
+    "47798 Krefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "modern",
+  "accent": 1,
+  "name": "Sarah Hendricks",
+  "title": "Fachpflegerin Intensiv- und Anästhesiepflege",
+  "street": "Königstraße 80",
+  "city": "47051 Duisburg",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Pflegefachkraft Intensivstation",
+    "Klinikum Duisburg-Nord",
+    "Duisburg",
+    "- Operative Intensivstation, 16 Betten\n- Beatmung, invasives Monitoring, Dialyse\n- Praxisanleitung"
+   ],
+   [
+    "2018",
+    "2020",
+    "Pflegefachkraft Chirurgie",
+    "Klinikum Duisburg-Nord",
+    "Duisburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2021",
+    "2023",
+    "Fachweiterbildung Intensiv- und Anästhesiepflege",
+    "Weiterbildungsinstitut Rhein-Ruhr",
+    "Essen",
+    ""
+   ],
+   [
+    "2015",
+    "2018",
+    "Ausbildung Gesundheits- und Krankenpflegerin (Examen)",
+    "Pflegeschule Duisburg",
+    "Duisburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Praxisanleitung (300 Stunden)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Beatmung",
+    5
+   ],
+   [
+    "Monitoring",
+    5
+   ],
+   [
+    "Notfallmanagement",
+    5
+   ],
+   [
+    "Praxisanleitung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Niederländisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Triathlon, Lesen"
+ },
+ "do": [
+  "Station, Bettenzahl und Patientengruppen nennen.",
+  "Weiterbildungen angeben.",
+  "Ruhe in Notfällen belegen."
+ ],
+ "dont": [
+  "Heldengeschichten.",
+  "Medizinische Details mit Patientendaten.",
+  "Unrealistische Erfahrung behaupten."
+ ],
+ "questions": [
+  "Wie reagieren Sie auf einen plötzlichen Blutdruckabfall?",
+  "Wie gehen Sie mit Angehörigen am Sterbebett um?",
+  "Welche Beatmungsformen kennen Sie?",
+  "Was erwarten Sie von der Einarbeitung?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich die Fachweiterbildung?",
+   "a": "Für den Einstieg nicht. Viele Kliniken arbeiten neue Kolleginnen über Monate ein und bieten danach die zweijährige Fachweiterbildung an."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "ota",
+  "notfallsanitaeter",
+  "pflegedienstleitung"
+ ]
+}

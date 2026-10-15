@@ -1,0 +1,312 @@
+{
+ "id": "e-commerce-manager",
+ "field": "handel",
+ "name": "E-Commerce-Manager/in",
+ "search": "e-commerce manager onlineshop online handel shopmanager marktplätze conversion digital commerce bewerbung",
+ "short": "Onlineshop und Marktplätze steuern – mit Zahlen.",
+ "desc": "Bewerbung als E-Commerce-Manager/in: Muster-Anschreiben für Shopmanager mit Zahlen, Einzelhändlerin mit eigenem Onlineshop und Berufseinsteiger, mit Lebenslauf.",
+ "intro": "E-Commerce-Manager kümmern sich um den Onlineshop: Sortiment, Produktdaten, Kampagnen, Marktplätze, Conversion und Retouren. Wer hier überzeugen will, liefert Zahlen: Umsatzentwicklung, Conversion-Rate, Warenkorbwert. Und zeigt, dass er Kunden versteht.",
+ "lookFor": [
+  "Erfahrung mit Shopsystemen und Marktplätzen",
+  "Analytisches Denken, Kennzahlen",
+  "Produktdaten und Content",
+  "Online-Marketing-Grundlagen",
+  "Abstimmung mit Logistik und Kundenservice"
+ ],
+ "letters": [
+  {
+   "label": "Shopmanager mit messbaren Ergebnissen",
+   "level": "erfahren",
+   "position": "E-Commerce-Manager",
+   "to": {
+    "org": "Outdoor Ausrüster Nord GmbH",
+    "sal": "f",
+    "contact": "Petersen",
+    "street": "Spaldingstraße 160",
+    "city": "20097 Hamburg"
+   },
+   "body": [
+    "die Conversion-Rate unseres Shops lag vor zwei Jahren bei 1,1 Prozent. Heute liegt sie bei 2,3. Dafür habe ich die Produktseiten neu strukturiert, den Checkout von fünf auf drei Schritte verkürzt und gemeinsam mit dem Kundenservice die zehn häufigsten Fragen direkt auf die Seiten geholt.",
+    "Seit vier Jahren betreue ich den Onlineshop eines Sportfachhändlers mit 6.000 Artikeln, dazu zwei Marktplätze. Ich arbeite eng mit Einkauf, Lager und Marketing zusammen und berichte monatlich an die Geschäftsführung. Outdoor ist meine eigene Welt, ich verbringe jeden Urlaub in den Bergen.",
+    "Ich wäre ab Juli verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Einzelhändlerin mit eigenem Onlineshop",
+   "level": "quereinstieg",
+   "position": "E-Commerce-Managerin (Teilzeit)",
+   "to": {
+    "org": "Papeterie Hansen",
+    "sal": "m",
+    "contact": "Hansen",
+    "street": "Colonnaden 20",
+    "city": "20354 Hamburg"
+   },
+   "body": [
+    "in der Pandemie habe ich für unseren kleinen Wollladen in Altona innerhalb von drei Wochen einen Onlineshop gebaut. Heute macht er 40 Prozent des Umsatzes, und ich habe alles selbst gelernt: Produktfotos, Versand, Bewertungen, Newsletter.",
+    "Der Laden wird an meine Nachfolgerin übergeben, und ich möchte meine Erfahrung in einem größeren Betrieb einbringen. Ihre Papeterie hat einen schönen Laden, aber online noch Potenzial. Ich hätte ein paar Ideen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Shop-Kennzahlen (Übersicht)"
+   ],
+   "from": [
+    "Silke Brandt",
+    "Große Bergstraße 100",
+    "22767 Hamburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "modern",
+  "accent": 1,
+  "name": "Jannik Voss",
+  "title": "E-Commerce-Manager",
+  "street": "Eppendorfer Weg 60",
+  "city": "20259 Hamburg",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Onlineshop-Manager",
+    "Sport Krüger GmbH",
+    "Hamburg",
+    "- Shop mit 6.000 Artikeln und zwei Marktplätze\n- Conversion von 1,1 auf 2,3 Prozent\n- Monatliches Reporting an die Geschäftsführung"
+   ],
+   [
+    "2019",
+    "2022",
+    "Junior Online-Marketing",
+    "Agentur Hafenblick",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2019",
+    "Medienwirtschaft (B. A.)",
+    "Hochschule für Angewandte Wissenschaften",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Shopsysteme",
+    5
+   ],
+   [
+    "Webanalyse",
+    4
+   ],
+   [
+    "Produktdaten",
+    4
+   ],
+   [
+    "Marktplätze",
+    4
+   ],
+   [
+    "Newsletter",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Bergwandern, Fotografie"
+ },
+ "do": [
+  "Kennzahlen mit Vorher-nachher nennen.",
+  "Shopgröße und Kanäle angeben.",
+  "Zusammenarbeit mit anderen Abteilungen zeigen."
+ ],
+ "dont": [
+  "Tool-Listen ohne Ergebnisse.",
+  "Zahlen aus dem Zusammenhang reißen.",
+  "Den Kunden vergessen."
+ ],
+ "questions": [
+  "Wie würden Sie die Conversion unseres Shops verbessern?",
+  "Welche Kennzahlen schauen Sie täglich an?",
+  "Wie gehen Sie mit hohen Retourenquoten um?",
+  "Welche Marktplätze kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Studium für E-Commerce?",
+   "a": "Nein. Viele kommen aus dem Handel und haben sich online weitergebildet. Eine Ausbildung zum Kaufmann/zur Kauffrau im E-Commerce gibt es auch. Ergebnisse zählen mehr als Abschlüsse."
+  }
+ ],
+ "related": [
+  "online-marketing-manager",
+  "marketing-manager",
+  "kaufmann-im-einzelhandel",
+  "content-manager"
+ ],
+ "en": {
+  "slug": "e-commerce-manager",
+  "name": "E-commerce manager",
+  "search": "e-commerce manager ecommerce online shop marketplace conversion digital trading",
+  "short": "Running an online shop and marketplaces – with numbers.",
+  "desc": "E-commerce manager cover letter examples: a shop manager with measurable results and a retailer who built her own web shop, plus a ready CV.",
+  "intro": "E-commerce managers look after the online shop: range, product data, campaigns, marketplaces, conversion and returns. Bring numbers – revenue growth, conversion rate, basket value – and show that you understand customers.",
+  "lookFor": [
+   "Experience with shop platforms and marketplaces",
+   "Analytical thinking",
+   "Product data and content",
+   "Online marketing basics",
+   "Working with logistics and customer service"
+  ],
+  "letters": [
+   {
+    "label": "Online shop manager with results",
+    "level": "erfahren",
+    "position": "E-commerce manager",
+    "to": {
+     "org": "Northern Outdoor Supplies",
+     "sal": "f",
+     "contact": "Peterson",
+     "street": "160 Leith Walk",
+     "city": "Edinburgh EH6 5DX"
+    },
+    "body": [
+     "two years ago our shop converted at 1.1 per cent. Today it is 2.3. I restructured the product pages, cut checkout from five steps to three and worked with customer service to answer the ten most common questions right on the page.",
+     "I have run the web shop of a sports retailer with 6,000 products for four years, plus two marketplaces. I work closely with buying, warehouse and marketing and report monthly to the directors. Outdoor gear is my own world – every holiday I spend in the hills."
+    ],
+    "att": [
+     "CV",
+     "Reference"
+    ]
+   },
+   {
+    "label": "Shop owner who built her own web shop",
+    "level": "quereinstieg",
+    "position": "E-commerce manager (part time)",
+    "to": {
+     "org": "Hansen Stationery",
+     "sal": "m",
+     "contact": "Hansen",
+     "street": "20 George Street",
+     "city": "Edinburgh EH2 2PF"
+    },
+    "body": [
+     "during the pandemic I built an online shop for our small wool shop in three weeks. It now brings in forty per cent of revenue, and I learned everything myself: product photos, shipping, reviews, newsletters.",
+     "I am handing the shop over to my successor and would like to bring this experience to a larger business. Your shop is beautiful in person and has room to grow online, and I already have a few ideas."
+    ],
+    "att": [
+     "CV",
+     "Shop figures"
+    ],
+    "from": [
+     "Shona Baird",
+     "100 Leith Walk",
+     "Edinburgh EH6 5HB"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a10",
+   "design": "modern",
+   "accent": 1,
+   "name": "Jamie Ross",
+   "title": "E-commerce manager",
+   "street": "60 Easter Road",
+   "city": "Edinburgh EH7 5QA",
+   "exp": [
+    [
+     "2022",
+     "",
+     "Online shop manager",
+     "Krueger Sports",
+     "Edinburgh",
+     "- 6,000 products and two marketplaces\n- Conversion from 1.1 to 2.3 per cent\n- Monthly reporting to the directors"
+    ],
+    [
+     "2019",
+     "2022",
+     "Junior digital marketer",
+     "Harbour Agency",
+     "Edinburgh",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2015",
+     "2019",
+     "BA Business and Marketing",
+     "Edinburgh Napier University",
+     "Edinburgh",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Shop platforms",
+     5
+    ],
+    [
+     "Web analytics",
+     4
+    ],
+    [
+     "Product data",
+     4
+    ],
+    [
+     "Marketplaces",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Hillwalking, photography"
+  },
+  "do": [
+   "Give before-and-after numbers.",
+   "Say how large the shop and channels were.",
+   "Show cross-team work."
+  ],
+  "dont": [
+   "List tools without results.",
+   "Quote figures out of context.",
+   "Forget the customer."
+  ],
+  "questions": [
+   "How would you improve our conversion rate?",
+   "Which metrics do you check daily?",
+   "How do you deal with high return rates?",
+   "Which marketplaces do you know?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a degree for e-commerce?",
+    "a": "No. Many people come from retail and learned online selling on the job. Results count more than qualifications."
+   }
+  ]
+ }
+}

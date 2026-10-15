@@ -1,0 +1,313 @@
+{
+ "id": "fitnesstrainer",
+ "field": "pflege",
+ "name": "Fitnesstrainer/in",
+ "search": "fitnesstrainer fitnesstrainerin personal trainer fitnessstudio kursleiter trainerlizenz gesundheitssport bewerbung",
+ "short": "Studio, Kurse, Personal Training – mit Lizenz.",
+ "desc": "Bewerbung als Fitnesstrainer/in im Studio oder Gesundheitszentrum: Muster-Anschreiben für Trainerin mit Lizenz und Sportstudent, mit Lebenslauf und Tipps.",
+ "intro": "Fitnesstrainerinnen und -trainer erstellen Trainingspläne, betreuen Mitglieder auf der Fläche, leiten Kurse und verkaufen manchmal auch Mitgliedschaften. Studios schauen auf Lizenzen, Erfahrung mit verschiedenen Zielgruppen und Auftreten. Erzähl, wie du Menschen motivierst, ohne sie zu überfordern.",
+ "lookFor": [
+  "Trainerlizenz oder Ausbildung/Studium im Sport",
+  "Trainingsplanung für verschiedene Zielgruppen",
+  "Kursleitung",
+  "Freundliches, motivierendes Auftreten",
+  "Abend- und Wochenendschichten"
+ ],
+ "letters": [
+  {
+   "label": "Trainerin mit Lizenz und Rehasport",
+   "level": "erfahren",
+   "position": "Fitnesstrainerin Gesundheitssport",
+   "to": {
+    "org": "Gesundheitszentrum Vital",
+    "sal": "m",
+    "contact": "Kaiser",
+    "street": "Bahnhofstraße 40",
+    "city": "86150 Augsburg"
+   },
+   "body": [
+    "viele unserer Mitglieder sind über 60 und kommen mit Rücken- oder Knieproblemen. Für sie habe ich in meinem Studio ein Programm mit kleinen Gruppen entwickelt, das inzwischen jeden Abend ausgebucht ist.",
+    "Ich habe eine Fitnesstrainer-B-Lizenz und eine Übungsleiterlizenz für Rehasport und arbeite seit fünf Jahren auf der Fläche und in Kursen. Ihr Zentrum arbeitet eng mit Physiotherapeuten zusammen; davon möchte ich lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Lizenzen",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Sportstudent für Abend- und Wochenendschichten",
+   "level": "minijob",
+   "position": "Fitnesstrainer (Minijob)",
+   "to": {
+    "org": "Fitnessstudio Lechpark",
+    "sal": "none",
+    "street": "Lechstraße 10",
+    "city": "86161 Augsburg"
+   },
+   "body": [
+    "dienstag- und donnerstagabends sowie sonntags hätte ich Zeit für Schichten auf der Fläche. Ich studiere Sportwissenschaft im vierten Semester und trainiere selbst seit sechs Jahren.",
+    "Trainingspläne für Einsteiger erstelle ich schon für Freunde und Kommilitonen, und im Sommer habe ich eine Trainerlizenz erworben, damit ich das auch offiziell darf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Lizenz",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Moritz Huber",
+    "Universitätsstraße 20",
+    "86159 Augsburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "modern",
+  "accent": 1,
+  "name": "Jasmin Kraus",
+  "title": "Fitnesstrainerin (B-Lizenz), Übungsleiterin Rehasport",
+  "street": "Hochfeldstraße 30",
+  "city": "86159 Augsburg",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Fitnesstrainerin",
+    "Studio Fit am Dom",
+    "Augsburg",
+    "- Trainingsplanung und Flächenbetreuung\n- Programm Rücken und Knie 60+ (ausgebucht)\n- Kurse: Funktionstraining, Rückenfit"
+   ],
+   [
+    "2019",
+    "2021",
+    "Servicekraft Theke",
+    "Studio Fit am Dom",
+    "Augsburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Ausbildung Sport- und Fitnesskauffrau",
+    "Studio Fit am Dom",
+    "Augsburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2021",
+    "Fitnesstrainer-B-Lizenz",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2023",
+    "Übungsleiterlizenz Rehasport",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Trainingsplanung",
+    5
+   ],
+   [
+    "Gesundheitssport",
+    5
+   ],
+   [
+    "Kursleitung",
+    4
+   ],
+   [
+    "Beratung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Klettern, Yoga"
+ },
+ "do": [
+  "Lizenzen nennen.",
+  "Zielgruppen und Erfolge beschreiben.",
+  "Schichtbereitschaft angeben."
+ ],
+ "dont": [
+  "Nur eigenes Training erwähnen.",
+  "Gesundheitsversprechen machen.",
+  "Verkauf ausblenden, wenn er zum Job gehört."
+ ],
+ "questions": [
+  "Wie erstellen Sie einen Plan für einen Einsteiger mit Rückenproblemen?",
+  "Wie motivieren Sie ein Mitglied, das nicht mehr kommt?",
+  "Welche Kurse können Sie leiten?",
+  "Wie stehen Sie zu Vertrieb im Studio?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Lizenz?",
+   "a": "Der Beruf ist nicht geschützt, aber Studios erwarten in der Regel eine Trainerlizenz, eine Ausbildung zur Sport- und Fitnesskauffrau oder ein Sportstudium."
+  }
+ ],
+ "related": [
+  "physiotherapeut",
+  "ergotherapeut",
+  "kosmetikerin",
+  "promoter-messe"
+ ],
+ "en": {
+  "slug": "personal-trainer",
+  "name": "Personal trainer / fitness instructor",
+  "search": "personal trainer fitness instructor gym coach exercise class instructor",
+  "short": "Gym floor, classes and personal training.",
+  "desc": "Personal trainer cover letter examples: a qualified instructor with rehab focus and a sports student for evening shifts, plus a ready CV.",
+  "intro": "Fitness instructors write programmes, look after members on the gym floor, run classes and sometimes sell memberships. Gyms look at qualifications, experience with different groups and how you come across.",
+  "lookFor": [
+   "Recognised fitness qualification",
+   "Programming for different groups",
+   "Class instruction",
+   "Friendly, motivating manner",
+   "Evening and weekend shifts"
+  ],
+  "letters": [
+   {
+    "label": "Qualified instructor with a health focus",
+    "level": "erfahren",
+    "position": "Fitness instructor (health and rehab)",
+    "to": {
+     "org": "Vitality Health Club",
+     "sal": "m",
+     "contact": "Kaiser",
+     "street": "40 Station Road",
+     "city": "Bath BA1 1JN"
+    },
+    "body": [
+     "many of our members are over sixty and come in with back or knee problems. I developed a small-group programme for them that is now fully booked every evening.",
+     "I hold a recognised personal training qualification and an exercise referral certificate, and I have worked on the gym floor and in classes for five years. Your club works closely with physiotherapists, and I would like to learn from them."
+    ],
+    "att": [
+     "CV",
+     "Certificates"
+    ]
+   },
+   {
+    "label": "Sports student for evening shifts",
+    "level": "minijob",
+    "position": "Fitness instructor (part time)",
+    "to": {
+     "org": "Riverside Gym",
+     "sal": "none",
+     "street": "10 River Street",
+     "city": "Bath BA2 3AS"
+    },
+    "body": [
+     "on Tuesday and Thursday evenings and on Sundays I could cover gym floor shifts. Sports science is my degree subject, now in year two, and I have trained for six years myself.",
+     "I already write beginner programmes for friends and classmates and completed a gym instructor course this summer."
+    ],
+    "att": [
+     "CV",
+     "Certificate"
+    ],
+    "from": [
+     "Max Hubbard",
+     "20 Claverton Street",
+     "Bath BA2 4LE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a20",
+   "design": "modern",
+   "accent": 1,
+   "name": "Jasmine Cross",
+   "title": "Personal trainer",
+   "street": "30 Wells Road",
+   "city": "Bath BA2 3AP",
+   "exp": [
+    [
+     "2021",
+     "",
+     "Fitness instructor",
+     "Abbey Fitness",
+     "Bath",
+     "- Programming and gym floor\n- 60+ back and knee programme (fully booked)\n- Classes: functional training, back care"
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2019",
+     "Sport and fitness diploma",
+     "Bath College",
+     "Bath",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Programming",
+     5
+    ],
+    [
+     "Health and rehab",
+     5
+    ],
+    [
+     "Classes",
+     4
+    ],
+    [
+     "Advice",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Climbing, yoga"
+  },
+  "do": [
+   "Name your qualifications.",
+   "Describe groups you train and results.",
+   "Say which shifts you can do."
+  ],
+  "dont": [
+   "Only talk about your own training.",
+   "Make health promises.",
+   "Ignore sales if it is part of the job."
+  ],
+  "questions": [
+   "How would you plan for a beginner with back pain?",
+   "How do you re-engage a member who stopped coming?",
+   "Which classes can you teach?",
+   "How do you feel about selling memberships?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a qualification?",
+    "a": "The title is not protected, but gyms usually expect a recognised fitness or personal training qualification."
+   }
+  ]
+ }
+}

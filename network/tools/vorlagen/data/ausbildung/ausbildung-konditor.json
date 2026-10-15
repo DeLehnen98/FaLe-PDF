@@ -1,0 +1,165 @@
+{
+ "id": "ausbildung-konditor",
+ "field": "ausbildung",
+ "name": "Ausbildung Konditor/in",
+ "search": "ausbildung konditor konditorin torten patisserie café azubi lebensmittelhandwerk bewerbung",
+ "short": "Torten, Pralinen, Patisserie – mit Fotos deiner Werke.",
+ "desc": "Bewerbung für die Ausbildung zum Konditor / zur Konditorin: Muster-Anschreiben für Realschülerin und Abiturienten, Lebenslauf und Tipps zur Bewerbung mit Fotos.",
+ "intro": "Konditorinnen und Konditoren stellen Torten, Gebäck, Pralinen und Desserts her, oft für Cafés, Hochzeiten und Feste. Gefragt sind Geduld, ein ruhiges Händchen und ein Auge für Formen und Farben. Fotos deiner besten Torte sind in dieser Bewerbung erlaubt und erwünscht.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss, Abitur willkommen",
+  "Kreativität mit Beispiel",
+  "Genaues Arbeiten nach Rezept",
+  "Sauberkeit und Hygiene",
+  "Wochenendarbeit vor Feiertagen und Hochzeiten"
+ ],
+ "letters": [
+  {
+   "label": "Realschülerin mit Torten-Hobby",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Konditorin",
+   "to": {
+    "org": "Café & Konditorei Rosenthal",
+    "sal": "f",
+    "contact": "Rosenthal",
+    "street": "Markt 9",
+    "city": "99084 Erfurt"
+   },
+   "body": [
+    "zum 60. Geburtstag meiner Oma habe ich eine dreistöckige Torte mit Buttercreme und Zuckerblumen gemacht. Sie hat mich zwei Wochenenden gekostet und einen Versuch, der beim Transport eingesackt ist. Beim zweiten Mal habe ich Stützen eingebaut, und es hat gehalten.",
+    "Im Sommer beende ich die Regelschule mit dem Realschulabschluss. Ihr Café besuche ich oft mit meiner Mutter, und Ihre Auslage hat mich mehr als einmal davon abgehalten, selbst zu backen. Bei Ihnen würde ich gern lernen, wie man Pralinen temperiert und Zucker zieht.",
+    "Fotos meiner Torten hängen an. Ich freue mich, wenn ich einen Tag in Ihrer Backstube mitarbeiten darf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Fotos eigener Torten"
+   ]
+  },
+  {
+   "label": "Abiturient mit Ziel Patisserie im Hotel",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Konditor",
+   "to": {
+    "org": "Konditorei Baumann",
+    "sal": "m",
+    "contact": "Baumann",
+    "street": "Anger 37",
+    "city": "99084 Erfurt"
+   },
+   "body": [
+    "was mich an der Konditorei reizt, ist die Genauigkeit. In der Chemie-AG habe ich gelernt, dass zwei Grad Unterschied das ganze Ergebnis verändern können, und beim Backen ist es genauso. Nach dem Abi möchte ich deshalb nicht studieren, sondern Konditor werden.",
+    "Zu Hause habe ich mich durch die klassischen französischen Grundrezepte gearbeitet: Brandteig, Blätterteig, Crème pâtissière. Nicht alles gelingt, aber ich notiere jeden Versuch. Langfristig reizt mich die Patisserie in einem Hotel, zuerst aber das Handwerk.",
+    "Das Abiturzeugnis bekomme ich im Juli. Ich bin ab August verfügbar und arbeite gern auch an Samstagen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Fotos"
+   ],
+   "from": [
+    "Ole Hartung",
+    "Juri-Gagarin-Ring 90",
+    "99084 Erfurt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 3,
+  "name": "Leonie Krämer",
+  "title": "Schülerin",
+  "street": "Krämpferstraße 11",
+  "city": "99084 Erfurt",
+  "exp": [
+   [
+    "09/2025",
+    "09/2025",
+    "Schülerpraktikum (1 Woche)",
+    "Café Krönbacken",
+    "Erfurt",
+    "- Mithilfe bei Kuchen und Tartes\n- Verkauf an der Theke"
+   ],
+   [
+    "2024",
+    "",
+    "Motivtorten für Familie und Freunde",
+    "",
+    "",
+    "- u. a. dreistöckige Hochzeitstorte für einen Geburtstag"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Regelschule, voraussichtlich Realschulabschluss",
+    "Regelschule am Johannesplatz",
+    "Erfurt",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tortengestaltung",
+    4
+   ],
+   [
+    "Arbeiten nach Rezept",
+    4
+   ],
+   [
+    "Geduld",
+    5
+   ],
+   [
+    "Zeichnen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Backen, Zeichnen, Reiten"
+ },
+ "do": [
+  "Fotos eigener Arbeiten beilegen (klein, als PDF).",
+  "Geduld und Genauigkeit mit einem Beispiel zeigen.",
+  "Wochenenden vor Festtagen ansprechen."
+ ],
+ "dont": [
+  "Nur „Ich backe gern Kuchen“.",
+  "Bilder in voller Auflösung mailen.",
+  "Fremde Fotos aus dem Netz verwenden."
+ ],
+ "questions": [
+  "Was war Ihr schwierigstes Backprojekt?",
+  "Wie gehen Sie mit einem misslungenen Teig um?",
+  "Was wissen Sie über Schokolade temperieren?",
+  "Wie stehen Sie zu Arbeit an Feiertagen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Konditor oder Bäcker?",
+   "a": "Bäcker machen vor allem Brot, Brötchen und Kleingebäck. Konditoren konzentrieren sich auf Torten, feines Gebäck, Pralinen und Desserts. In kleinen Betrieben überschneidet sich das oft."
+  }
+ ],
+ "related": [
+  "ausbildung-baecker",
+  "baecker",
+  "barista",
+  "ausbildung-koch"
+ ]
+}

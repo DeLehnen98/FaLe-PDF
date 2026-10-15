@@ -1,0 +1,159 @@
+{
+ "id": "elektroniker-betriebstechnik",
+ "field": "industrie",
+ "name": "Elektroniker/in für Betriebstechnik",
+ "search": "elektroniker betriebstechnik elektronikerin instandhaltung industrie schaltschrank sps steuerung bewerbung",
+ "short": "Instandhaltung und Anlagen in der Industrie.",
+ "desc": "Bewerbung als Elektroniker/in für Betriebstechnik in der Industrie: Muster-Anschreiben für Instandhalter mit SPS-Erfahrung und Junggesellin, mit Lebenslauf.",
+ "intro": "Elektroniker für Betriebstechnik halten Produktionsanlagen am Laufen: Fehlersuche, Wartung, Umbauten, Schaltschränke, Steuerungen. Unternehmen suchen Leute, die systematisch Fehler finden, Steuerungen lesen können und Bereitschaftsdienste übernehmen.",
+ "lookFor": [
+  "Ausbildung Elektroniker/in für Betriebstechnik oder vergleichbar",
+  "Fehlersuche an Anlagen",
+  "SPS-Kenntnisse",
+  "Elektrofachkraft mit Prüfkenntnissen",
+  "Schicht- oder Bereitschaftsdienst"
+ ],
+ "letters": [
+  {
+   "label": "Instandhalter mit SPS-Erfahrung",
+   "level": "erfahren",
+   "position": "Elektroniker für Betriebstechnik (Instandhaltung)",
+   "to": {
+    "org": "Papierfabrik Weser GmbH",
+    "sal": "m",
+    "contact": "Thiele",
+    "street": "Am Hafen 30",
+    "city": "37603 Holzminden"
+   },
+   "body": [
+    "die Papiermaschine, an der ich seit sechs Jahren arbeite, ist 120 Meter lang und hat mehr als 80 Antriebe. Wenn sie steht, kostet jede Minute. Ich habe gelernt, Fehler systematisch einzugrenzen, im Steuerungsprogramm die Ursache zu finden und erst dann den Schraubendreher in die Hand zu nehmen.",
+    "Ich bin Elektroniker für Betriebstechnik, programmiere und ändere SPS-Programme im Rahmen von Umbauten und mache Prüfungen ortsveränderlicher und ortsfester Anlagen. Bereitschaftsdienst kenne ich. Ihr Werk liegt näher an meinem Wohnort, und Sie modernisieren gerade Ihre Linien."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Junggesellin nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Elektronikerin für Betriebstechnik",
+   "to": {
+    "org": "Glaswerke Solling AG",
+    "sal": "f",
+    "contact": "Klages",
+    "street": "Glashüttenweg 2",
+    "city": "37603 Holzminden"
+   },
+   "body": [
+    "im Prüfungsprojekt habe ich die Steuerung einer Förderbandstrecke umgebaut und dokumentiert. Die Prüfer wollten wissen, warum ich einen Not-Halt anders verdrahtet habe als im Plan, und ich konnte es erklären. Note: 1,6.",
+    "Meine Ausbildung habe ich im Januar abgeschlossen, mein Betrieb kann mich nicht übernehmen. Ich möchte in der Instandhaltung eines Werks mit Schichtbetrieb arbeiten und Erfahrung sammeln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis"
+   ],
+   "from": [
+    "Lea Brakemeier",
+    "Bahnhofstraße 30",
+    "37603 Holzminden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "compact",
+  "accent": 0,
+  "name": "Marvin Kruse",
+  "title": "Elektroniker für Betriebstechnik",
+  "street": "Obere Straße 20",
+  "city": "37671 Höxter",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Elektroniker Instandhaltung",
+    "Papierwerk Höxter",
+    "Höxter",
+    "- Fehlersuche an Papiermaschine mit 80+ Antrieben\n- SPS-Änderungen bei Umbauten\n- Prüfungen ortsfester und ortsveränderlicher Anlagen"
+   ],
+   [
+    "2016",
+    "2020",
+    "Auszubildender Elektroniker für Betriebstechnik",
+    "Papierwerk Höxter",
+    "Höxter",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2020",
+    "Abschlussprüfung Elektroniker für Betriebstechnik",
+    "IHK Ostwestfalen",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fehlersuche",
+    5
+   ],
+   [
+    "SPS",
+    4
+   ],
+   [
+    "Antriebstechnik",
+    4
+   ],
+   [
+    "Prüfen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Motorrad, Feuerwehr"
+ },
+ "do": [
+  "Anlagen und Steuerungen nennen.",
+  "Fehlersuche mit Beispiel belegen.",
+  "Bereitschaft ansprechen."
+ ],
+ "dont": [
+  "„Alle elektrischen Arbeiten“.",
+  "Sicherheitsregeln vernachlässigen.",
+  "SPS-Kenntnisse übertreiben."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einer Störung vor?",
+  "Welche Steuerungen kennen Sie?",
+  "Was prüfen Sie nach einer Reparatur?",
+  "Wie stehen Sie zu Bereitschaftsdiensten?"
+ ],
+ "faq": [
+  {
+   "q": "Elektroniker für Betriebstechnik oder Energie- und Gebäudetechnik?",
+   "a": "Betriebstechnik ist die Industrievariante mit Anlagen und Steuerungen, Energie- und Gebäudetechnik eher Handwerk mit Gebäudeinstallation. Wechsel sind möglich, brauchen aber Einarbeitung."
+  }
+ ],
+ "related": [
+  "mechatroniker",
+  "elektriker",
+  "industriemechaniker",
+  "ausbildung-elektroniker"
+ ]
+}

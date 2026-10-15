@@ -1,0 +1,58 @@
+{
+ "id": "kuendigung-bausparvertrag",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 14,
+ "name": "Kündigung Bausparvertrag",
+ "short": "Bausparvertrag kündigen und Guthaben auszahlen lassen",
+ "desc": "Bausparvertrag kündigen mit Musterschreiben: Vertragsnummer, Kündigung, Auszahlung des Guthabens – mit Hinweisen zu Kündigungsfrist, Gebühren und Alternativen.",
+ "search": "bausparen bausparkasse guthaben",
+ "when": [
+  "Du brauchst das Guthaben für etwas anderes oder willst keinen Bausparkredit. Die Kündigungsfrist steht in den Bausparbedingungen, häufig drei Monate. Bei manchen Bausparkassen geht es gegen einen Abschlag schneller.",
+  "Bevor du kündigst, lohnt ein Blick auf die Alternativen: Du kannst den Vertrag oft ruhen lassen, teilen oder die Bausparsumme herabsetzen."
+ ],
+ "must": [
+  "Vertragsnummer",
+  "Klare Kündigung des Bausparvertrags",
+  "Wohin das Guthaben überwiesen werden soll (IBAN)",
+  "Bitte um Bestätigung",
+  "Widerruf der Lastschrift für die Sparraten"
+ ],
+ "notes": [
+  "Die Abschlussgebühr bekommst du in der Regel nicht zurück. Rechne nach, ob sich ein Weitersparen bis zur Zuteilung doch lohnt.",
+  "Hast du staatliche Förderung (z. B. Wohnungsbauprämie) bekommen, kann eine vorzeitige Auszahlung Folgen haben – frag vorher nach.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Kann die Bausparkasse mir kündigen?",
+   "a": "Ja, unter bestimmten Bedingungen, etwa wenn der Vertrag seit über zehn Jahren zuteilungsreif ist. Hier geht es um deine eigene Kündigung als Sparerin oder Sparer."
+  }
+ ],
+ "fields": {
+  "type": "other",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "thing": "meinen Bausparvertrag Nr. 55 123 456",
+  "number": "55 123 456"
+ },
+ "related": [
+  "kuendigung-kfz-versicherung",
+  "kuendigungsbestaetigung-anfordern",
+  "quittung-privatverkauf"
+ ],
+ "from": [
+  "Markus Probe",
+  "Am Kirchberg 3",
+  "54290 Trier"
+ ],
+ "to": {
+  "org": "Muster Bausparkasse AG",
+  "attn": "Kundenservice",
+  "street": "Postfach 50 60 70",
+  "city": "54203 Trier"
+ }
+}

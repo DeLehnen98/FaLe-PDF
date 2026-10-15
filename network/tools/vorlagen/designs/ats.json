@@ -1,0 +1,210 @@
+{
+ "id": "ats",
+ "de": {
+  "name": "Sachbearbeiter Einkauf",
+  "cv": {
+   "avatar": "a05",
+   "accent": 0,
+   "name": "Tobias Kranz",
+   "title": "Sachbearbeiter Einkauf",
+   "street": "Weidenweg 15",
+   "city": "44137 Dortmund",
+   "exp": [
+    [
+     "06/2020",
+     "",
+     "Sachbearbeiter Einkauf",
+     "Westfalen Haustechnik GmbH",
+     "Dortmund",
+     "- Disposition von rund 3.000 Artikeln für zwei Lager\n- Angebotsvergleiche und Preisverhandlungen mit 60 Lieferanten\n- Reklamationsbearbeitung und Lieferantenbewertung"
+    ],
+    [
+     "08/2017",
+     "05/2020",
+     "Kaufmann im Groß- und Außenhandel",
+     "Ruhr Elektro Großhandel",
+     "Bochum",
+     "- Auftragsbearbeitung im Innendienst"
+    ]
+   ],
+   "edu": [
+    [
+     "08/2014",
+     "06/2017",
+     "Ausbildung Kaufmann im Groß- und Außenhandel",
+     "Ruhr Elektro Großhandel",
+     "Bochum",
+     ""
+    ],
+    [
+     "2005",
+     "2014",
+     "Fachoberschulreife",
+     "Gesamtschule",
+     "Dortmund",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2023",
+     "Geprüfter Fachkaufmann für Einkauf und Logistik (IHK)",
+     "IHK Dortmund",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Warenwirtschaftssystem",
+     5
+    ],
+    [
+     "Disposition",
+     5
+    ],
+    [
+     "Verhandlung",
+     4
+    ],
+    [
+     "Tabellenkalkulation",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "B2"
+    ],
+    [
+     "Polnisch",
+     "B1"
+    ]
+   ],
+   "hobbies": "Fußballtrainer der D-Jugend"
+  },
+  "letter": {
+   "label": "Bewerbung über ein Online-Portal",
+   "position": "Strategischer Einkäufer (m/w/d)",
+   "ref": "EK-417",
+   "to": {
+    "org": "Hellweg Gebäudetechnik AG",
+    "sal": "none",
+    "street": "Emscherallee 70",
+    "city": "44369 Dortmund"
+   },
+   "body": [
+    "im Einkauf eines Haustechnik-Großhändlers disponiere ich seit sechs Jahren rund 3.000 Artikel und verhandle mit 60 Lieferanten. Im letzten Jahr habe ich die Rahmenverträge für Kupferrohr neu ausgeschrieben und dabei 7 Prozent unter dem Vorjahrespreis abgeschlossen.",
+    "Seit 2023 bin ich geprüfter Fachkaufmann für Einkauf und Logistik. Den Wechsel vom operativen in den strategischen Einkauf habe ich in der Weiterbildung vorbereitet: Lieferantenbewertung, Risikomanagement, Warengruppenstrategien.",
+    "Bei Ihnen würde ich gern die Warengruppen Sanitär und Heizung verantworten. Mein frühester Eintrittstermin ist der 1. April."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "IHK-Zeugnis"
+   ]
+  }
+ },
+ "en": {
+  "name": "Purchasing coordinator",
+  "cv": {
+   "avatar": "a05",
+   "accent": 0,
+   "name": "Tobias Kranz",
+   "title": "Purchasing coordinator",
+   "street": "15 Willow Way",
+   "city": "Wolverhampton WV1 4QT",
+   "exp": [
+    [
+     "06/2020",
+     "",
+     "Purchasing coordinator",
+     "Midland Building Services Ltd",
+     "Wolverhampton",
+     "- Stock planning for about 3,000 items in two warehouses\n- Quote comparisons and price negotiations with 60 suppliers\n- Supplier complaints and ratings"
+    ],
+    [
+     "08/2017",
+     "05/2020",
+     "Sales administrator",
+     "Black Country Electrical Wholesale",
+     "Walsall",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2021",
+     "2023",
+     "CIPS Level 4 Diploma in Procurement and Supply",
+     "Professional study",
+     "Birmingham",
+     ""
+    ],
+    [
+     "2010",
+     "2015",
+     "GCSEs",
+     "Heath Park Academy",
+     "Wolverhampton",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Inventory systems",
+     5
+    ],
+    [
+     "Stock planning",
+     5
+    ],
+    [
+     "Negotiation",
+     4
+    ],
+    [
+     "Spreadsheets",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Polish",
+     "B1"
+    ]
+   ],
+   "hobbies": "Youth football coach"
+  },
+  "letter": {
+   "label": "Applying through a job portal",
+   "position": "Strategic buyer",
+   "ref": "EK-417",
+   "to": {
+    "org": "Hellway Building Technology plc",
+    "sal": "none",
+    "street": "70 Canal Street",
+    "city": "Birmingham B1 2JR"
+   },
+   "body": [
+    "At a building services wholesaler I have planned stock for about 3,000 items and negotiated with 60 suppliers for six years. Last year I re-tendered our copper pipe contracts and closed them 7 per cent below the previous price.",
+    "I completed the CIPS Level 4 Diploma in 2023 to prepare for the move from operational to strategic purchasing: supplier evaluation, risk management and category strategy.",
+    "I would like to take on your plumbing and heating categories. The earliest date I can start is 1 April."
+   ],
+   "att": [
+    "CV",
+    "Certificates"
+   ]
+  }
+ }
+}

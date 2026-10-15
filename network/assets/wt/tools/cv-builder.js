@@ -4,7 +4,7 @@
 // (pdf.js), 1–2+ pages auto-flow, Unicode. Opt-in local draft in IndexedDB (deletable), shared with the cover
 // letter tool. PDF via lib/tpl-cv.js.
 import { el, icon, T, s, form, userError, ensureCss, isoDate, note, entryList, pdfPreview, drafts, local, checkRow } from '../lib/tpl-core.js';
-import { cvPdf, newCv, ACCENTS, SECTION_TITLES, SKILL_LEVELS, LANG_LEVELS, visibleSections, loadPhotoSource, cropBox, cropPhoto } from '../lib/tpl-cv.js';
+import { cvPdf, newCv, ACCENTS, SECTION_TITLES, SKILL_LEVELS, LANG_LEVELS, visibleSections, loadPhotoSource, cropBox, cropPhoto, DESIGNS, normOrder } from '../lib/tpl-cv.js';
 import { missingWarning } from '../lib/unifont.js';
 import { vorlageParam, loadVorlage, vorlagePhoto, vorlageNotice, vorlageMissing } from '../lib/arc-vorlage.js';
 
@@ -21,7 +21,8 @@ export default {
   status(values) {
     const v = values.cv || {};
     const n = visibleSections(v).length;
-    const summary = { de: `Lebenslauf · ${{ classic: 'Klassisch', modern: 'Modern', compact: 'Kompakt' }[v.design] || 'Modern'}`, en: `CV · ${{ classic: 'Classic', modern: 'Modern', compact: 'Compact' }[v.design] || 'Modern'}` };
+    const dn = DESIGNS.find(d => d.id === v.design) || DESIGNS[1];
+    const summary = { de: `Lebenslauf · ${dn.de}`, en: `CV · ${dn.en}` };
     if (!s(v.name)) return { ok: false, summary, hint: { de: 'Noch nötig: dein Name.', en: 'Still needed: your name.' } };
     if (!n) return { ok: false, summary, hint: { de: 'Noch nötig: mindestens ein Abschnitt mit Inhalt, z. B. Berufserfahrung.', en: 'Still needed: at least one section with content, e.g. work experience.' } };
     return { summary };
@@ -144,6 +145,8 @@ function cvStage(stage, state, ctx) {
   stage.append(root);
 
   function build() {
+    v.order = normOrder(v); // drafts and examples from before the 'pubs' section
+    if (!Array.isArray(v.pubs)) v.pubs = [];
     const f = form(v, lang, changed);
     const acc = (id, title, open, ...kids) => {
       const d = el('details', { class: 'tpl-acc', id: `tpl-acc-${id}`, open }, el('summary', {}, el('span', { class: 'tpl-acc-t' }, T(lang, title))), el('div', { class: 'tpl-acc-body' }, ...kids));
@@ -196,7 +199,8 @@ function cvStage(stage, state, ctx) {
     } }, icon('restart'), T(lang, { de: 'Formular leeren', en: 'Clear form' }));
     formCol.replaceChildren(
       acc('design', { de: '1. Design', en: '1. Design' }, true,
-        f.seg('design', { de: 'Design', en: 'Design' }, [{ value: 'classic', label: { de: 'Klassisch', en: 'Classic' } }, { value: 'modern', label: { de: 'Modern', en: 'Modern' } }, { value: 'compact', label: { de: 'Kompakt', en: 'Compact' } }]),
+        f.seg('design', { de: 'Design', en: 'Design' }, DESIGNS.map(d => ({ value: d.id, label: { de: d.de, en: d.en } }))),
+        el('p', { class: 'img-muted' }, T(lang, { de: '„ATS-freundlich“ ist einspaltig, ohne Grafiken und ohne Foto – für Bewerbungsportale, die Lebensläufe automatisch auslesen. „Schule & Ausbildung“ stellt die Schulbildung nach vorn.', en: '“ATS-friendly” is one column, without graphics or photo – for job portals that read CVs automatically. “School leaver” puts education first.' })),
         el('p', { class: 'img-seg-legend' }, T(lang, { de: 'Akzentfarbe', en: 'Accent colour' })), swatches),
       acc('person', { de: '2. Persönliche Angaben', en: '2. Personal details' }, false, f.grid(
         f.field('name', { de: 'Vor- und Nachname', en: 'Full name' }, { autocomplete: 'name', wide: true }), f.field('title', { de: 'Berufsbezeichnung (optional)', en: 'Job title (optional)' }, { wide: true }),
@@ -213,6 +217,8 @@ function cvStage(stage, state, ctx) {
       acc('courses', SECTION_TITLES.courses, false, entrySec('courses', { add: { de: 'Weiterbildung hinzufügen', en: 'Add training' }, item: { de: 'Weiterbildung', en: 'Training' }, role: { de: 'Kurs / Zertifikat', en: 'Course / certificate' }, org: { de: 'Anbieter', en: 'Provider' } }).root),
       acc('skills', SECTION_TITLES.skills, false, skills.root),
       acc('langs', SECTION_TITLES.langs, false, langs.root),
+      acc('pubs', SECTION_TITLES.pubs, false, el('p', { class: 'img-muted' }, T(lang, { de: 'Optional – vor allem für wissenschaftliche Stellen (Design „Akademisch“). Leer lassen, wenn du nichts veröffentlicht hast.', en: 'Optional – mainly for academic positions (“Academic” design). Leave empty if you have not published anything.' })),
+        entrySec('pubs', { add: { de: 'Publikation hinzufügen', en: 'Add publication' }, item: { de: 'Publikation', en: 'Publication' }, role: { de: 'Titel', en: 'Title' }, org: { de: 'Zeitschrift / Verlag / Konferenz', en: 'Journal / publisher / conference' } }).root),
       acc('hobbies', SECTION_TITLES.hobbies, false, f.area('hobbies', { de: 'Interessen und Hobbys (optional)', en: 'Interests (optional)' }, { rows: 2, placeholder: { de: 'z. B. Laufen, Ehrenamt im Sportverein, Fotografie', en: 'e.g. running, volunteering, photography' } })),
       acc('order', { de: 'Reihenfolge und Abschluss', en: 'Order and finish' }, false,
         el('p', { class: 'img-muted' }, T(lang, { de: 'Abschnitte ein-/ausblenden und sortieren. Im Design „Modern“ stehen Kenntnisse, Sprachen und Interessen in der Seitenleiste.', en: 'Show, hide and sort sections. In the “Modern” design, skills, languages and interests go in the sidebar.' })),
@@ -228,6 +234,7 @@ function cvStage(stage, state, ctx) {
     if (!d || !d.v) return;
     for (const k of Object.keys(v)) delete v[k];
     Object.assign(v, newCv(lang), d.v);
+    applyDesign();
     if (d.photo?.blob) await cropper.load(d.photo.blob, d.photo.crop);
     cropper.setShape(v.photoShape || 'circle');
     rebuild();
@@ -235,6 +242,9 @@ function cvStage(stage, state, ctx) {
     changed('restore');
   };
   // example CV from the Vorlagen-Archiv (?vorlage=<id>) – asks before it replaces a saved draft and never overwrites it
+  // ?design=<id> (Design-Galerie of the Vorlagen-Archiv): open the builder in that design
+  const designParam = (() => { const x = new URLSearchParams(location.search).get('design'); return DESIGNS.some(d => d.id === x) ? x : null; })();
+  const applyDesign = () => { if (designParam) v.design = designParam; };
   async function applyVorlage(savePref) {
     const [t, d] = await Promise.all([loadVorlage(), savePref ? drafts.get(DRAFT_KEY) : null]);
     if (!t?.data?.cv) { saveOn = savePref; stage.prepend(vorlageMissing(lang)); return restoreDraft(d); }
@@ -243,6 +253,7 @@ function cvStage(stage, state, ctx) {
     const { photo, ...cv } = t.data.cv;
     for (const k of Object.keys(v)) delete v[k];
     Object.assign(v, newCv(lang), cv, { date: isoDate() });
+    applyDesign();
     const blob = await vorlagePhoto(photo);
     if (blob) await cropper.load(blob, { zoom: 1, cx: 0.5, cy: 0.45 });
     cropper.setShape(v.photoShape || 'circle');
@@ -260,6 +271,7 @@ function cvStage(stage, state, ctx) {
   if (vorlageParam()) { const savePref = saveOn; saveOn = false; applyVorlage(savePref); } // saving is held while the example loads
   else if (saveOn) drafts.get(DRAFT_KEY).then(restoreDraft);
   if (!v.date) v.date = isoDate();
+  if (designParam && v.design !== designParam) { applyDesign(); rebuild(); }
   changed('init');
   return { photo: () => cropper.export() };
 }

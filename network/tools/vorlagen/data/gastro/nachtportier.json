@@ -1,0 +1,164 @@
+{
+ "id": "nachtportier",
+ "field": "gastro",
+ "name": "Nachtportier / Night Auditor",
+ "search": "nachtportier nachtrezeption night auditor hotel nachtdienst rezeption empfang bewerbung",
+ "short": "Hotelrezeption in der Nacht – mit Tagesabschluss.",
+ "desc": "Bewerbung als Nachtportier oder Night Auditor im Hotel: Muster-Anschreiben für Student und erfahrene Rezeptionistin, mit Lebenslauf und Tipps zum Nachtdienst.",
+ "intro": "Nachts ist der Portier oft allein im Haus: späte Anreisen, Gäste mit Problemen, Sicherheitsrundgänge und der Tagesabschluss im Hotelprogramm. Hotels suchen ruhige, verlässliche Leute mit Sprachen und Zahlenverständnis.",
+ "lookFor": [
+  "Erfahrung an einer Rezeption, gern im Hotelprogramm",
+  "Tagesabschluss / Night Audit",
+  "Sicherheitsbewusstsein",
+  "Sprachen",
+  "Ruhe allein in der Nacht"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Rezeptionistin wechselt in die Nacht",
+   "level": "erfahren",
+   "position": "Night Auditor (Vollzeit)",
+   "to": {
+    "org": "Hotel Domblick",
+    "sal": "m",
+    "contact": "Schäfer",
+    "street": "Domstraße 12",
+    "city": "50668 Köln"
+   },
+   "body": [
+    "nachts im Hotel zu arbeiten, ist für mich keine Notlösung. Ich mag die Ruhe zwischen zwei und fünf Uhr, in der man den Tagesabschluss sauber machen kann, und die späten Gäste, die sich freuen, dass jemand sie anlächelt.",
+    "Sieben Jahre Rezeption, davon zwei mit regelmäßigen Nachtdiensten, liegen hinter mir. Ich mache den Night Audit im Hotelprogramm, prüfe Kassen und Kreditkartenabrechnungen und schreibe die Übergabe für den Frühdienst. Englisch und Französisch spreche ich fließend."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Student für Wochenendnächte",
+   "level": "minijob",
+   "position": "Nachtportier (Aushilfe, Wochenende)",
+   "to": {
+    "org": "Boardinghouse am Rhein",
+    "sal": "none",
+    "street": "Rheinuferstraße 3",
+    "city": "50679 Köln"
+   },
+   "body": [
+    "freitag- und samstagnachts habe ich Zeit, und ich lerne gern, wenn es ruhig ist. Als Student der Wirtschaftsinformatik komme ich mit jedem Buchungssystem zurecht, und Rechnen ist kein Problem.",
+    "An der Kinokasse habe ich zwei Jahre Spätschichten gemacht und weiß, wie man freundlich bleibt, wenn jemand nach Mitternacht schlechte Laune hat."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Jonas Peters",
+    "Zülpicher Straße 40",
+    "50674 Köln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "classic",
+  "accent": 0,
+  "name": "Amira Benali",
+  "title": "Rezeptionistin, Night Auditor",
+  "street": "Venloer Straße 100",
+  "city": "50672 Köln",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Rezeptionistin mit Nachtdiensten",
+    "Hotel Rheinpark",
+    "Köln",
+    "- Check-in, Reservierungen\n- Night Audit, Kassenprüfung\n- Übergabe an den Frühdienst"
+   ],
+   [
+    "2017",
+    "2019",
+    "Rezeptionistin",
+    "Stadthotel Bonn",
+    "Bonn",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2014",
+    "2017",
+    "Ausbildung Hotelfachfrau",
+    "Stadthotel Bonn",
+    "Bonn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Night Audit",
+    5
+   ],
+   [
+    "Hotelprogramme",
+    5
+   ],
+   [
+    "Gästebetreuung",
+    4
+   ],
+   [
+    "Sicherheitsrundgänge",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "C1"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Arabisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Lesen, Yoga"
+ },
+ "do": [
+  "Night-Audit-Erfahrung nennen.",
+  "Sprachen angeben.",
+  "Ruhe und Selbstständigkeit zeigen."
+ ],
+ "dont": [
+  "Nachtdienst als bequemen Job darstellen.",
+  "Unklare Zahl an Nächten.",
+  "Sicherheit nicht erwähnen."
+ ],
+ "questions": [
+  "Was machen Sie, wenn um drei Uhr ein Gast ohne Reservierung kommt?",
+  "Wie läuft ein Tagesabschluss?",
+  "Wie gehen Sie mit einem Notfall um?",
+  "Wie viele Nächte möchten Sie arbeiten?"
+ ],
+ "faq": [
+  {
+   "q": "Was ist ein Night Audit?",
+   "a": "Der Tagesabschluss im Hotelprogramm: Buchungen prüfen, Kassen abgleichen, Berichte erstellen, das Datum wechseln. In vielen Häusern macht das der Nachtdienst."
+  }
+ ],
+ "related": [
+  "rezeptionist",
+  "hotelfachfrau",
+  "sicherheitsdienst",
+  "empfangsmitarbeiter"
+ ]
+}

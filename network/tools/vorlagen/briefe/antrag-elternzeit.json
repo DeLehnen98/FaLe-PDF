@@ -1,0 +1,68 @@
+{
+ "id": "antrag-elternzeit",
+ "group": "arbeit",
+ "tool": "din-letter",
+ "order": 18,
+ "name": "Antrag auf Elternzeit",
+ "short": "Elternzeit beim Arbeitgeber anmelden",
+ "desc": "Elternzeit beantragen: Muster für die Anmeldung beim Arbeitgeber mit Zeitraum, Verteilung und Teilzeitwunsch – mit Fristen und dem Hinweis zur Form nach Geburtsdatum.",
+ "search": "elternzeit baby geburt arbeitgeber",
+ "when": [
+  "Du willst nach der Geburt oder Adoption deines Kindes Elternzeit nehmen. Für die Zeit bis zum dritten Geburtstag musst du sie spätestens sieben Wochen vor Beginn verlangen, für eine Zeit zwischen dem dritten und achten Geburtstag spätestens 13 Wochen vorher.",
+  "Für Kinder, die ab dem 1. Mai 2025 geboren oder adoptiert wurden, reicht die Textform – also auch eine E-Mail. Für ältere Kinder brauchst du einen unterschriebenen Brief. Mit Unterschrift auf Papier bist du in beiden Fällen auf der sicheren Seite."
+ ],
+ "must": [
+  "Name und Geburtsdatum des Kindes (oder errechneter Termin)",
+  "Den genauen Zeitraum der Elternzeit – bei Beginn direkt nach der Geburt verbindlich für die ersten zwei Jahre",
+  "Ob du Elternzeit in Abschnitten nimmst",
+  "Falls gewünscht: Teilzeit während der Elternzeit mit Stunden und Verteilung",
+  "Bitte um Bestätigung"
+ ],
+ "notes": [
+  "Ab dem Antrag, frühestens acht Wochen vor Beginn der Elternzeit, gilt ein besonderer Kündigungsschutz.",
+  "Elterngeld beantragst du nicht beim Arbeitgeber, sondern bei der Elterngeldstelle.",
+  "Der Arbeitgeber soll dir die Elternzeit bescheinigen – bitte ausdrücklich darum."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich die ganze Elternzeit sofort festlegen?",
+   "a": "Du legst dich verbindlich für die ersten zwei Jahre ab dem Beginn fest. Die übrige Zeit bis zum achten Geburtstag kannst du später anmelden."
+  },
+  {
+   "q": "Kann ich während der Elternzeit Teilzeit arbeiten?",
+   "a": "Ja, bis zu 32 Wochenstunden im Durchschnitt des Monats. Unter bestimmten Voraussetzungen hast du einen Anspruch darauf; den Wunsch kannst du gleich in diesem Schreiben nennen."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "antrag-teilzeit",
+  "krankmeldung-email",
+  "urlaubsantrag-erholungsurlaub"
+ ],
+ "from": [
+  "Katrin Neumann",
+  "Rosenweg 14",
+  "79098 Freiburg im Breisgau"
+ ],
+ "to": {
+  "org": "Muster Software GmbH",
+  "attn": "Personalabteilung",
+  "street": "Kaiser-Joseph-Straße 200",
+  "city": "79098 Freiburg im Breisgau"
+ },
+ "letter": {
+  "subject": "Antrag auf Elternzeit",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "unser Kind ist am [Datum] zur Welt gekommen. Ich nehme Elternzeit vom [Datum] bis zum [Datum] und lege mich für diesen Zeitraum verbindlich fest.",
+   "Während der Elternzeit möchte ich ab dem [Datum] in Teilzeit mit 20 Stunden pro Woche arbeiten, verteilt auf Montag bis Donnerstag jeweils vormittags. Über die Einzelheiten spreche ich gern mit Frau Kaiser aus meinem Team.",
+   "Bitte bestätigen Sie mir die Elternzeit schriftlich. Die Geburtsurkunde reiche ich nach, sobald sie vorliegt."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": [
+   "Kopie der Geburtsurkunde (folgt)"
+  ]
+ }
+}

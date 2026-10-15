@@ -1,0 +1,177 @@
+{
+ "id": "tiermedizinische-fachangestellte",
+ "field": "pflege",
+ "name": "Tiermedizinische Fachangestellte (TFA)",
+ "search": "tfa tiermedizinische fachangestellte tierarzthelferin tierarztpraxis tierklinik op assistenz labor bewerbung",
+ "short": "Für ausgelernte TFA: Praxis, Klinik, OP oder Labor.",
+ "desc": "Bewerbung als Tiermedizinische Fachangestellte (TFA) mit Erfahrung: Muster-Anschreiben für OP-Assistenz in der Tierklinik und Wechsel in die Pferdepraxis, mit Lebenslauf.",
+ "intro": "Ausgelernte TFA arbeiten in Kleintierpraxen, Pferde- und Gemischtpraxen oder Tierkliniken. Je nach Haus übernimmst du OP-Assistenz, Narkoseüberwachung, Labor, Röntgen und Empfang. Nenn Tierarten, Schwerpunkte und Fortbildungen.",
+ "lookFor": [
+  "Abschluss als TFA",
+  "Schwerpunkte: OP, Labor, Röntgen, Empfang",
+  "Erfahrung mit bestimmten Tierarten",
+  "Fortbildungen",
+  "Notdienste"
+ ],
+ "letters": [
+  {
+   "label": "TFA mit OP-Schwerpunkt",
+   "level": "erfahren",
+   "position": "TFA OP-Assistenz und Narkoseüberwachung",
+   "to": {
+    "org": "Tierklinik am Rhein",
+    "sal": "m",
+    "contact": "Dr. Fuchs",
+    "street": "Rheinallee 100",
+    "city": "50733 Köln"
+   },
+   "body": [
+    "narkoseüberwachung ist der Teil meiner Arbeit, den ich am ernstesten nehme: Atmung, Kreislauf, Temperatur, und das bei einer Katze genauso wie bei einem 60-Kilo-Hund. Seit vier Jahren assistiere ich in einer Kleintierpraxis bei Operationen und habe die Fortbildung Anästhesie für TFA abgeschlossen.",
+    "In einer Klinik mit Notdienst und mehr Fachrichtungen möchte ich mich weiterentwickeln, besonders in Orthopädie und Weichteilchirurgie. Röntgen mit Strahlenschutz-Kenntnisnachweis gehört ebenfalls zu meinen Aufgaben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Fortbildungsnachweise"
+   ]
+  },
+  {
+   "label": "Wechsel in die Pferdepraxis",
+   "level": "erfahren",
+   "position": "TFA Pferdepraxis",
+   "to": {
+    "org": "Pferdepraxis Rheinland",
+    "sal": "f",
+    "contact": "Dr. Möller",
+    "street": "Gestütsweg 4",
+    "city": "41470 Neuss"
+   },
+   "body": [
+    "mit Pferden bin ich aufgewachsen, mit Kleintieren habe ich gearbeitet: Fünf Jahre Kleintierpraxis haben mich zu einer sicheren TFA gemacht. Jetzt möchte ich beides verbinden.",
+    "Ich habe den Führerschein BE und kann den Anhänger fahren, bin bei Außeneinsätzen gern dabei und kenne den Umgang mit nervösen Pferden aus dem eigenen Stall."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Jana Schmitz",
+    "Kölner Straße 20",
+    "41464 Neuss"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "modern",
+  "accent": 1,
+  "name": "Vanessa Kühn",
+  "title": "Tiermedizinische Fachangestellte",
+  "street": "Neusser Straße 200",
+  "city": "50733 Köln",
+  "exp": [
+   [
+    "2022",
+    "",
+    "TFA",
+    "Kleintierpraxis Nippes",
+    "Köln",
+    "- OP-Assistenz, Narkoseüberwachung\n- Röntgen, Labor\n- Empfang und Besitzerberatung"
+   ],
+   [
+    "2019",
+    "2022",
+    "Auszubildende TFA",
+    "Kleintierpraxis Nippes",
+    "Köln",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2022",
+    "Abschlussprüfung TFA",
+    "Tierärztekammer Nordrhein",
+    "Krefeld",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Fortbildung Anästhesie für TFA",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2022",
+    "Kenntnisse im Strahlenschutz",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "OP-Assistenz",
+    5
+   ],
+   [
+    "Narkoseüberwachung",
+    4
+   ],
+   [
+    "Röntgen",
+    4
+   ],
+   [
+    "Labor",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Reiten, Hundesport"
+ },
+ "do": [
+  "Tierarten und Schwerpunkte nennen.",
+  "Fortbildungen angeben.",
+  "Notdienstbereitschaft klären."
+ ],
+ "dont": [
+  "Nur Tierliebe.",
+  "Fälle mit Besitzernamen.",
+  "Notdienste ausschließen, wenn die Klinik sie braucht."
+ ],
+ "questions": [
+  "Wie überwachen Sie eine Narkose?",
+  "Was tun Sie bei einem Notfall im Wartezimmer?",
+  "Welche Laboruntersuchungen machen Sie selbst?",
+  "Wie beraten Sie Besitzer am Empfang?"
+ ],
+ "faq": [
+  {
+   "q": "Klinik oder Praxis?",
+   "a": "In Kliniken gibt es mehr Spezialisierung und Notdienste, in Praxen oft engeren Kontakt zu Stammkunden. Beides bietet gute Weiterbildung."
+  }
+ ],
+ "related": [
+  "ausbildung-tfa",
+  "tierpfleger",
+  "medizinische-fachangestellte",
+  "zahnmedizinische-fachangestellte"
+ ]
+}

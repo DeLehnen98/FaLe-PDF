@@ -1,0 +1,103 @@
+{
+ "id": "mahnliste",
+ "slug": "mahnliste",
+ "cat": "Business",
+ "name": "Rechnungs-Mahnliste",
+ "short": "Offene Rechnungen mit Verzugstagen und Mahnstufe",
+ "desc": "Mahnliste als Excel-Vorlage (XLSX): offene Rechnungen mit Fälligkeit, Tagen im Verzug und Mahnstufe – die Stufen-Grenzen legst du selbst fest, Überfälliges ist sofort sichtbar.",
+ "search": "offene posten mahnung",
+ "intro": "Die Mahnliste zeigt alle Rechnungen, die noch nicht bezahlt sind, und wie lange sie überfällig sind. Daraus ergibt sich die Mahnstufe: von der freundlichen Zahlungserinnerung bis zur letzten Mahnung. Sobald ein Zahlungsdatum drinsteht, ist die Rechnung erledigt.",
+ "uses": [
+  "Offene Posten wöchentlich durchgehen",
+  "Entscheiden, wer eine Erinnerung oder Mahnung bekommt",
+  "Die Summe der Außenstände kennen"
+ ],
+ "cols": [
+  [
+   "Rechnungsnr.",
+   "Nummer der Rechnung."
+  ],
+  [
+   "Kunde",
+   "An wen die Rechnung ging."
+  ],
+  [
+   "Rechnungsdatum",
+   "Datum der Rechnung."
+  ],
+  [
+   "Ziel (Tage)",
+   "Zahlungsziel in Tagen, z. B. 14."
+  ],
+  [
+   "Fällig am",
+   "Rechnungsdatum plus Zahlungsziel."
+  ],
+  [
+   "Betrag",
+   "Offener Rechnungsbetrag."
+  ],
+  [
+   "Bezahlt am",
+   "Datum des Zahlungseingangs. Die Zeile wird grau und zählt nicht mehr."
+  ],
+  [
+   "Tage über",
+   "Heute minus Fälligkeit, solange nicht bezahlt – 0, wenn die Rechnung noch nicht fällig ist."
+  ],
+  [
+   "Mahnstufe",
+   "0 bis 3, je nachdem, welche Grenze aus der Tabelle rechts überschritten ist. Stufe 1 gelb, 2 orange, 3 rot."
+  ],
+  [
+   "Letzte Mahnung",
+   "Wann du zuletzt erinnert oder gemahnt hast."
+  ],
+  [
+   "Notiz",
+   "Absprachen, Ratenzahlung, Zusagen."
+  ],
+  [
+   "Mahnstufen",
+   "Die Bezeichnung der Stufen."
+  ],
+  [
+   "ab Tag",
+   "Ab wie vielen Tagen Verzug die Stufe gilt – gelbe Felder, frei änderbar."
+  ],
+  [
+   "Überblick",
+   "Offene Summe, davon überfällig, Zahl der überfälligen Rechnungen und wie viele in Stufe 3 sind."
+  ]
+ ],
+ "tips": [
+  "Eine Zahlungserinnerung oder Mahnung als Brief erstellst du mit dem Werkzeug „Mahnung schreiben“."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich dreimal mahnen?",
+   "a": "Nein. Gesetzlich ist keine bestimmte Zahl an Mahnungen vorgeschrieben; bei Verbrauchern tritt Verzug unter bestimmten Voraussetzungen auch ohne Mahnung ein. Die Stufen sind eine übliche, höfliche Praxis. Bevor du ein gerichtliches Mahnverfahren startest, lass dich im Zweifel beraten."
+  }
+ ],
+ "related": [
+  "rechnungsausgangsbuch",
+  "kundenliste",
+  "euer"
+ ],
+ "en": {
+  "slug": "invoice-dunning-list",
+  "name": "Overdue invoice list",
+  "short": "Unpaid invoices with days overdue and reminder level",
+  "desc": "Overdue invoice spreadsheet (XLSX): unpaid invoices with due date, days overdue and reminder level – you set the thresholds, overdue amounts are visible at once.",
+  "intro": "Shows all unpaid invoices and how long they are overdue. That gives the reminder level, from a friendly reminder to a final notice. As soon as a payment date is entered the invoice is done.",
+  "inside": [
+   "Due date = invoice date + payment term",
+   "Days overdue while unpaid",
+   "Reminder level from your own thresholds",
+   "Totals of open and overdue amounts"
+  ],
+  "uses": [
+   "Weekly review of unpaid invoices"
+  ]
+ }
+}

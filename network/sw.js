@@ -12,13 +12,17 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '13298f364be7';
+const VERSION = '366b14715be0';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-41504356711b';
+const VENDOR = 'wt-vendor-35233f891a8b';
 const PAGES = 'wt-pages';
 const PRECACHE = [
+  "/assets/wt/arc2-sheet.js",
+  "/assets/wt/arc2.css",
   "/assets/wt/hub.js",
   "/assets/wt/lib/arc-vorlage.js",
+  "/assets/wt/lib/arc2-brief.js",
+  "/assets/wt/lib/arc2-cvdesigns.js",
   "/assets/wt/lib/aud1-asciistrip.js",
   "/assets/wt/lib/aud1-grayjpeg.js",
   "/assets/wt/lib/aud1-ocg.js",

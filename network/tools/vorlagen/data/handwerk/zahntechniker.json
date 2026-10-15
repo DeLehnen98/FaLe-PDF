@@ -1,0 +1,162 @@
+{
+ "id": "zahntechniker",
+ "field": "handwerk",
+ "name": "Zahntechniker/in",
+ "search": "zahntechniker zahntechnikerin dentallabor zahnersatz kronen brücken cad cam keramik handwerk bewerbung",
+ "short": "Kronen, Brücken, Prothesen – im Dentallabor.",
+ "desc": "Bewerbung als Zahntechniker/in im Dentallabor: Muster-Anschreiben für erfahrene Keramikerin und Zahntechniker mit CAD-Schwerpunkt, mit Lebenslauf und Tipps.",
+ "intro": "Zahntechnikerinnen und Zahntechniker fertigen Kronen, Brücken, Implantataufbauten und Prothesen, zunehmend digital mit CAD/CAM. Labore suchen Leute mit ruhiger Hand, ästhetischem Blick und Erfahrung in bestimmten Bereichen. Nenn deine Schwerpunkte und Programme.",
+ "lookFor": [
+  "Gesellenbrief Zahntechniker/in",
+  "Schwerpunkte: Keramik, Kombitechnik, Prothetik, Implantologie",
+  "CAD/CAM-Erfahrung",
+  "Feinmotorik und Genauigkeit",
+  "Absprache mit Praxen"
+ ],
+ "letters": [
+  {
+   "label": "Keramikerin mit ästhetischem Schwerpunkt",
+   "level": "erfahren",
+   "position": "Zahntechnikerin Keramik",
+   "to": {
+    "org": "Dentallabor Schönfeld",
+    "sal": "m",
+    "contact": "Schönfeld",
+    "street": "Kurfürstenstraße 20",
+    "city": "10785 Berlin"
+   },
+   "body": [
+    "Frontzahnkronen, bei denen niemand merkt, dass es Kronen sind, sind seit fünf Jahren meine Aufgabe in einem Labor in Potsdam. Ich schichte Keramik, stimme Farben mit Patienten direkt ab und arbeite eng mit zwei ästhetisch spezialisierten Praxen zusammen.",
+    "Ihr Labor ist für Vollkeramik und Veneers bekannt. Ich möchte in einem Team arbeiten, in dem ästhetische Arbeiten nicht die Ausnahme sind, sondern der Alltag."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Fotos eigener Arbeiten"
+   ]
+  },
+  {
+   "label": "Zahntechniker mit CAD-Schwerpunkt",
+   "level": "erfahren",
+   "position": "Zahntechniker CAD/CAM",
+   "to": {
+    "org": "Digitaldental Berlin GmbH",
+    "sal": "none",
+    "street": "Prenzlauer Allee 100",
+    "city": "10405 Berlin"
+   },
+   "body": [
+    "die Umstellung auf digitale Abformung habe ich in meinem Labor begleitet: Scanner eingerichtet, Praxen geschult und die Konstruktion von Kronen und Brücken am Rechner übernommen. Heute entstehen bei uns zwei Drittel der Arbeiten digital.",
+    "Ich bin seit sieben Jahren Zahntechniker und arbeite sicher mit gängigen Konstruktionsprogrammen und Fräsmaschinen. Bei Ihnen würde ich gern mehr mit Implantatarbeiten und Schienen aus dem 3D-Drucker zu tun haben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Kai Lindner",
+    "Schönhauser Allee 50",
+    "10437 Berlin"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 1,
+  "name": "Yuki Tanaka-Weber",
+  "title": "Zahntechnikerin",
+  "street": "Brandenburger Straße 30",
+  "city": "14467 Potsdam",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Zahntechnikerin Keramik",
+    "Dentallabor Havel",
+    "Potsdam",
+    "- Keramikschichtung Frontzahn\n- Farbabstimmung mit Patienten\n- Zusammenarbeit mit ästhetischen Praxen"
+   ],
+   [
+    "2017",
+    "2021",
+    "Auszubildende Zahntechnikerin",
+    "Dentallabor Havel",
+    "Potsdam",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2021",
+    "Gesellenprüfung Zahntechnikerin",
+    "Handwerkskammer Potsdam",
+    "Potsdam",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Keramikschichtung",
+    5
+   ],
+   [
+    "Farbbestimmung",
+    5
+   ],
+   [
+    "CAD-Konstruktion",
+    3
+   ],
+   [
+    "Implantataufbauten",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Japanisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Keramik töpfern, Klettern"
+ },
+ "do": [
+  "Schwerpunkte und Programme nennen.",
+  "Fotos von Arbeiten (anonymisiert).",
+  "Zusammenarbeit mit Praxen zeigen."
+ ],
+ "dont": [
+  "Patientendaten auf Fotos.",
+  "Nur „Ich arbeite genau“.",
+  "Programme aufzählen ohne Praxis."
+ ],
+ "questions": [
+  "Wie bestimmen Sie die Zahnfarbe?",
+  "Welche CAD-Programme nutzen Sie?",
+  "Was tun Sie, wenn eine Krone in der Praxis nicht passt?",
+  "Welche Werkstoffe kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Analog oder digital – was zählt mehr?",
+   "a": "Beides. Viele Labore arbeiten hybrid. Handwerkliches Können bei Keramik und Prothetik ist weiterhin gefragt, CAD/CAM-Erfahrung wird immer wichtiger."
+  }
+ ],
+ "related": [
+  "zahnmedizinische-fachangestellte",
+  "ausbildung-zfa",
+  "technischer-produktdesigner",
+  "pta"
+ ]
+}

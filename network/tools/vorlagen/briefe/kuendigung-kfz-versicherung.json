@@ -1,0 +1,61 @@
+{
+ "id": "kuendigung-kfz-versicherung",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 8,
+ "name": "Kündigung Kfz-Versicherung",
+ "short": "Autoversicherung zum Ablauf oder nach Verkauf kündigen",
+ "desc": "Kfz-Versicherung kündigen mit Muster: Versicherungsnummer, Kündigung zum Ablauf des Versicherungsjahres – mit Hinweisen zu Stichtag, Wechsel und Sonderkündigung.",
+ "search": "auto kfz versicherung wechsel stichtag",
+ "when": [
+  "Du wechselst zu einem günstigeren Tarif, brauchst die Kfz-Versicherung nicht mehr oder willst nach einem Ärgernis weg. Meist läuft das Versicherungsjahr mit dem Kalenderjahr, und die Kündigung muss einen Monat vorher ankommen – also bis zum 30. November. Nach einem Schaden oder einer Beitragserhöhung gibt es ein Sonderkündigungsrecht. Beim Verkauf des Autos geht die Versicherung zunächst auf den Käufer über; er oder du kann sie dann kündigen."
+ ],
+ "must": [
+  "Versicherungsnummer (steht auf dem Versicherungsschein)",
+  "Art der Versicherung",
+  "Kündigung zum Ablauf des Versicherungsjahres – oder zum nächstmöglichen Zeitpunkt",
+  "Bitte um schriftliche Bestätigung mit dem Vertragsende",
+  "Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Ein zugelassenes Auto muss immer versichert sein. Kündigst du ohne neue Versicherung, meldet der Versicherer das der Zulassungsstelle. Beim Wechsel kündigt oft die neue Versicherung für dich – frag dort nach.",
+  "Für eine außerordentliche Kündigung nach Beitragserhöhung oder Schaden setzt du in der Vorlage den Haken „Außerordentliche Kündigung“ und wählst den Grund.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Was ist mit dem Schadenfreiheitsrabatt?",
+   "a": "Der Schadenfreiheitsrabatt geht mit dir zur neuen Versicherung. Der alte Versicherer übermittelt ihn auf Anfrage des neuen."
+  },
+  {
+   "q": "Reicht eine E-Mail?",
+   "a": "Bei vielen Versicherungen reicht heute die Textform, also auch eine E-Mail. Ein Brief per Einschreiben ist trotzdem der sicherste Nachweis, dass deine Kündigung rechtzeitig angekommen ist."
+  }
+ ],
+ "fields": {
+  "type": "insurance",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "kind": "Kfz-Versicherung",
+  "policy": "KH-12 345 678-9"
+ },
+ "related": [
+  "kuendigung-haftpflichtversicherung",
+  "vollmacht-kfz-zulassung",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Lukas Wagner",
+  "Schillerstraße 40",
+  "04109 Leipzig"
+ ],
+ "to": {
+  "org": "Musterversicherung AG",
+  "attn": "Vertragsabteilung",
+  "street": "Postfach 40 50 60",
+  "city": "04001 Leipzig"
+ }
+}

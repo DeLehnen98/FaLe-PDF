@@ -1,0 +1,85 @@
+{
+ "id": "monatsbudget",
+ "slug": "monatsbudget",
+ "cat": "Finanzen",
+ "name": "Monatsbudget nach 50/30/20",
+ "short": "Einkommen auf Bedürfnisse, Wünsche und Sparen aufteilen",
+ "desc": "Monatsbudget-Vorlage nach der 50/30/20-Regel als Excel (XLSX): Nettoeinkommen eintragen, Ausgaben zuordnen und sofort sehen, wo du im Rahmen bleibst.",
+ "search": "",
+ "intro": "Die 50/30/20-Regel teilt das Nettoeinkommen in drei Töpfe: Bedürfnisse, Wünsche und Sparen. Die Vorlage rechnet die Zielbeträge aus und vergleicht sie mit deinen geplanten Ausgaben. Die Prozente kannst du anpassen.",
+ "uses": [
+  "Ein erstes Budget aufstellen, ohne jede Ausgabe einzeln zu verbuchen",
+  "Prüfen, ob die Fixkosten zu viel vom Einkommen schlucken",
+  "Eine feste Sparrate festlegen und im Blick behalten"
+ ],
+ "cols": [
+  [
+   "Bereich",
+   "Die drei Töpfe der Regel: Bedürfnisse (Miete, Strom, Lebensmittel), Wünsche (Freizeit, Abos) und Sparen & Schulden."
+  ],
+  [
+   "Ziel",
+   "Nettoeinkommen mal Ziel-Prozent. Bei 2.600 € und 50 % sind das 1.300 € für Bedürfnisse."
+  ],
+  [
+   "Geplant",
+   "SUMMEWENN addiert alle Ausgaben aus der Liste darunter, die diesem Bereich zugeordnet sind."
+  ],
+  [
+   "Abweichung",
+   "Geplant minus Ziel. Ein positiver Wert heißt: In diesem Topf planst du mehr aus, als die Regel vorsieht."
+  ],
+  [
+   "Ziel %",
+   "Die Aufteilung, standardmäßig 50 %, 30 % und 20 %. Gelbe Felder – du kannst z. B. 60/20/20 eintragen. Die Summe darunter sollte 100 % ergeben."
+  ],
+  [
+   "Ausgabe",
+   "Ein Posten pro Zeile, etwa „Miete (warm)“ oder „Streaming & Abos“."
+  ],
+  [
+   "Betrag/Monat",
+   "Was der Posten im Monat kostet. Jahresbeträge teilst du vorher durch zwölf."
+  ],
+  [
+   "Fällig am",
+   "Der Tag im Monat, an dem abgebucht wird – hilfreich, damit das Konto zum Monatsanfang nicht leer läuft."
+  ],
+  [
+   "Bemerkung",
+   "Freies Feld für Hinweise wie „kündbar ab März“."
+  ]
+ ],
+ "tips": [
+  "„Noch verfügbar“ zeigt, was nach allen geplanten Ausgaben vom Einkommen übrig bleibt – das ist dein Puffer."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich mich genau an 50/30/20 halten?",
+   "a": "Nein. Die Regel ist ein Startpunkt. In teuren Städten liegen die Bedürfnisse oft höher; dann ist eine Aufteilung wie 60/20/20 realistischer. Wichtig ist, dass der Spar-Topf nicht bei null landet."
+  }
+ ],
+ "related": [
+  "haushaltsbuch",
+  "familienbudget",
+  "sparplan"
+ ],
+ "en": {
+  "slug": "monthly-budget-50-30-20",
+  "name": "Monthly budget (50/30/20)",
+  "short": "Split your income into needs, wants and savings",
+  "desc": "Monthly budget template using the 50/30/20 rule (XLSX): enter your net income, assign your costs and see at once where you stay within the plan.",
+  "intro": "The 50/30/20 rule splits net income into needs, wants and savings. The template calculates the target amounts and compares them with your planned spending; the percentages can be changed.",
+  "inside": [
+   "Target amount per area = income × percentage",
+   "Planned spending per area with SUMIF",
+   "Deviation with red/green colour rules",
+   "“Still available” after all planned costs"
+  ],
+  "uses": [
+   "Setting up a first budget",
+   "Checking whether fixed costs are too high",
+   "Fixing a regular savings amount"
+  ]
+ }
+}

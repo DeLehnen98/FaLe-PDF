@@ -1,0 +1,96 @@
+{
+ "id": "lesetagebuch",
+ "slug": "lesetagebuch",
+ "cat": "Schule & Freizeit",
+ "name": "Lesetagebuch",
+ "short": "Gelesene Bücher mit Lesedauer, Bewertung und Jahresbilanz",
+ "desc": "Lesetagebuch als Excel-Vorlage (XLSX): Bücher mit Seiten, Beginn und Ende eintragen – Lesedauer, Seiten pro Tag, Bewertung und Jahresbilanz rechnen sich automatisch.",
+ "search": "bücher lesen",
+ "intro": "Für alle, die festhalten wollen, was sie lesen – in der Schule, im Lesekreis oder einfach für sich. Pro Buch rechnet die Vorlage, wie lange du gelesen hast und wie viele Seiten pro Tag das waren; rechts steht die Bilanz des Jahres.",
+ "uses": [
+  "Lesetagebuch für die Schule oder die Leseförderung zu Hause",
+  "Leseziele fürs Jahr verfolgen",
+  "Empfehlungen und Lieblingszitate sammeln"
+ ],
+ "cols": [
+  [
+   "Titel",
+   "Buchtitel."
+  ],
+  [
+   "Autor/in",
+   "Wer das Buch geschrieben hat."
+  ],
+  [
+   "Genre",
+   "In der Liste: das Genre des Buchs (Auswahl aus der Tabelle rechts). Rechts: die Genres für die Auswertung."
+  ],
+  [
+   "Seiten",
+   "Seitenzahl des Buchs."
+  ],
+  [
+   "Begonnen",
+   "Tag, an dem du angefangen hast."
+  ],
+  [
+   "Beendet",
+   "Tag, an dem du fertig warst – leer, solange du noch liest (die Zeile ist dann gelb)."
+  ],
+  [
+   "Tage",
+   "Beendet minus begonnen plus eins, also Start- und Endtag mitgezählt."
+  ],
+  [
+   "Seiten/Tag",
+   "Seiten geteilt durch Tage."
+  ],
+  [
+   "Bewertung",
+   "1 (naja) bis 5 (großartig). Das Fähnchen zeigt hohe, mittlere und niedrige Bewertungen."
+  ],
+  [
+   "Notiz / Lieblingszitat",
+   "Was hängen geblieben ist."
+  ],
+  [
+   "Bilanz",
+   "Bücher und Seiten in diesem Jahr (gezählt nach dem Enddatum), alle beendeten Bücher, wie viele du gerade liest und die durchschnittliche Bewertung."
+  ],
+  [
+   "Bücher",
+   "ZÄHLENWENN zählt die Bücher je Genre."
+  ]
+ ],
+ "tips": [
+  "Für Kinder: Lass die Spalte „Notiz“ zum Lieblingssatz oder zu einer Zeichnungsidee werden."
+ ],
+ "faq": [
+  {
+   "q": "Zählt ein Buch, das ich im Dezember begonnen und im Januar beendet habe?",
+   "a": "Ja, und zwar im Januar: Die Jahresbilanz richtet sich nach dem Datum, an dem du fertig geworden bist."
+  }
+ ],
+ "related": [
+  "notenrechner",
+  "gewichtstagebuch",
+  "trainingsplan"
+ ],
+ "en": {
+  "slug": "reading-log",
+  "name": "Reading log",
+  "short": "Books read with reading time, rating and a yearly tally",
+  "desc": "Reading log spreadsheet (XLSX): enter books with pages, start and finish date – reading time, pages per day, rating and a yearly tally are calculated automatically.",
+  "intro": "For anyone who wants to keep track of their reading. For each book the template works out how long you read and how many pages per day; the yearly tally is on the right.",
+  "inside": [
+   "Days and pages per day per book",
+   "Rating with flag icons",
+   "Books and pages this year",
+   "Books per genre"
+  ],
+  "uses": [
+   "School reading diaries",
+   "Personal reading goals"
+  ]
+ }
+}

@@ -1,0 +1,217 @@
+{
+ "id": "school",
+ "de": {
+  "name": "Schüler – Ausbildung Kfz-Mechatroniker",
+  "cv": {
+   "avatar": "a10",
+   "accent": 4,
+   "name": "Leon Becker",
+   "title": "Schüler der 10. Klasse",
+   "street": "Brunnenstraße 9",
+   "city": "66450 Bexbach",
+   "order": [
+    "edu",
+    "exp",
+    "courses",
+    "skills",
+    "langs",
+    "hobbies"
+   ],
+   "exp": [
+    [
+     "",
+     "03/2026",
+     "Schülerpraktikum (zwei Wochen)",
+     "Autohaus Kuhn",
+     "Homburg",
+     "- Reifenwechsel und Radmontage mit dem Gesellen\n- Ölwechsel und Sichtprüfung unter Aufsicht"
+    ],
+    [
+     "06/2025",
+     "",
+     "Aushilfe (Minijob, samstags)",
+     "Getränkemarkt Bexbach",
+     "Bexbach",
+     "- Leergut annehmen, Regale auffüllen"
+    ]
+   ],
+   "edu": [
+    [
+     "08/2020",
+     "06/2027",
+     "Gemeinschaftsschule, angestrebter Abschluss: Mittlerer Bildungsabschluss",
+     "Gemeinschaftsschule Bexbach",
+     "Bexbach",
+     "Lieblingsfächer: Technik (Note 1), Mathematik (Note 2)"
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Erste-Hilfe-Kurs",
+     "Jugendrotkreuz",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Mofa-Prüfbescheinigung",
+     "Fahrschule",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Umgang mit Werkzeug",
+     4
+    ],
+    [
+     "Technisches Verständnis",
+     4
+    ],
+    [
+     "Tabellen und Textverarbeitung",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "B1"
+    ]
+   ],
+   "hobbies": "Mopedschrauben mit meinem Onkel, Tischtennis im Verein"
+  },
+  "letter": {
+   "label": "Ausbildung nach dem Praktikum",
+   "position": "Auszubildender Kfz-Mechatroniker (Ausbildungsbeginn 2027)",
+   "to": {
+    "org": "Autohaus Kuhn GmbH",
+    "sal": "m",
+    "contact": "Kuhn",
+    "street": "Saarbrücker Straße 140",
+    "city": "66424 Homburg"
+   },
+   "body": [
+    "im März war ich zwei Wochen als Praktikant in Ihrer Werkstatt. Am letzten Tag durfte ich unter Aufsicht einen Ölwechsel allein machen, und Herr Schäfer meinte, ich solle mich bewerben. Das tue ich hiermit gern.",
+    "Im Sommer 2027 mache ich meinen Mittleren Bildungsabschluss. In Technik habe ich eine Eins, in Mathe eine Zwei. Zu Hause schraube ich mit meinem Onkel an seinem alten Moped – zuletzt haben wir den Vergaser gereinigt und neu eingestellt.",
+    "Samstags arbeite ich im Getränkemarkt, deshalb weiß ich, wie es ist, pünktlich zu sein und mit anzupacken. Über einen Termin für ein Gespräch würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Letztes Zeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  }
+ },
+ "en": {
+  "name": "School leaver – car mechanic apprenticeship",
+  "cv": {
+   "avatar": "a10",
+   "accent": 4,
+   "name": "Leon Becker",
+   "title": "Year 11 student",
+   "street": "9 Well Street",
+   "city": "Mansfield NG18 1QB",
+   "order": [
+    "edu",
+    "exp",
+    "courses",
+    "skills",
+    "langs",
+    "hobbies"
+   ],
+   "exp": [
+    [
+     "",
+     "03/2026",
+     "Work experience (two weeks)",
+     "Kuhn Motors",
+     "Mansfield",
+     "- Tyre changes with a technician\n- Oil change and visual checks under supervision"
+    ],
+    [
+     "06/2025",
+     "",
+     "Saturday job",
+     "Corner Drinks Store",
+     "Mansfield",
+     "- Stocking shelves, bottle returns"
+    ]
+   ],
+   "edu": [
+    [
+     "09/2021",
+     "06/2027",
+     "GCSEs expected 2027 (incl. Engineering and Maths)",
+     "Mansfield Academy",
+     "Mansfield",
+     "Favourite subjects: Engineering, Maths"
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "First aid course",
+     "Youth first aid group",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Using hand tools",
+     4
+    ],
+    [
+     "Technical understanding",
+     4
+    ],
+    [
+     "Office software",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "A2"
+    ]
+   ],
+   "hobbies": "Fixing mopeds with my uncle, table tennis club"
+  },
+  "letter": {
+   "label": "Apprenticeship after work experience",
+   "position": "Apprentice vehicle technician (starting 2027)",
+   "to": {
+    "org": "Kuhn Motors Ltd",
+    "sal": "m",
+    "contact": "Kuhn",
+    "street": "140 Nottingham Road",
+    "city": "Mansfield NG18 4AB"
+   },
+   "body": [
+    "In March I spent two weeks on work experience in your workshop. On the last day I was allowed to do an oil change on my own under supervision, and Mr Shaw told me I should apply. So I am.",
+    "I take my GCSEs in summer 2027 and my best subjects are Engineering and Maths. At home I work on my uncle’s old moped – most recently we cleaned and re-tuned the carburettor.",
+    "I also have a Saturday job, so I know what it means to be on time and to get stuck in. I can come in for a chat any afternoon after school."
+   ],
+   "att": [
+    "CV",
+    "School report",
+    "Work experience certificate"
+   ]
+  }
+ }
+}

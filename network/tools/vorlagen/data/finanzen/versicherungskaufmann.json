@@ -1,0 +1,171 @@
+{
+ "id": "versicherungskaufmann",
+ "field": "finanzen",
+ "name": "Versicherungskaufmann/-frau",
+ "search": "versicherungskaufmann versicherungskauffrau versicherung innendienst außendienst agentur schaden vertrag bewerbung",
+ "short": "Innendienst, Schaden oder Agentur – nach der Ausbildung.",
+ "desc": "Bewerbung als Kaufmann/Kauffrau für Versicherungen und Finanzanlagen mit Erfahrung: Muster-Anschreiben für Schadensachbearbeiterin und Agenturberater, mit Lebenslauf.",
+ "intro": "Ausgelernte Versicherungskaufleute arbeiten im Innendienst (Vertrag, Schaden, Leistung), in Agenturen oder im Außendienst. Je nach Stelle zählen Fachwissen in Sparten, Kundenorientierung und Abschlussstärke. Für die Vermittlung brauchen Selbstständige eine Erlaubnis; Angestellte arbeiten unter der des Unternehmens.",
+ "lookFor": [
+  "Abschluss Kaufmann/-frau für Versicherungen und Finanzanlagen",
+  "Spartenkenntnis (Kfz, Sach, Leben, Kranken)",
+  "Kundenkontakt am Telefon und persönlich",
+  "Weiterbildungen, z. B. Fachwirt",
+  "Sorgfalt"
+ ],
+ "letters": [
+  {
+   "label": "Schadensachbearbeiterin will in die Großschadenregulierung",
+   "level": "erfahren",
+   "position": "Sachbearbeiterin Großschaden Sach",
+   "to": {
+    "org": "Rheinische Versicherung AG",
+    "sal": "m",
+    "contact": "Schäfer",
+    "street": "Konrad-Adenauer-Ufer 10",
+    "city": "50668 Köln"
+   },
+   "body": [
+    "ein Wasserschaden in einem Mehrfamilienhaus betrifft selten nur eine Wohnung. Seit fünf Jahren reguliere ich Sachschäden, zuletzt Schäden bis 50.000 Euro, und koordiniere dabei Sachverständige, Handwerker und manchmal sehr verzweifelte Kunden.",
+    "Ich bin Versicherungskauffrau und habe berufsbegleitend die Fachwirtin abgeschlossen. Die Großschadenregulierung reizt mich, weil dort Verhandlung und technisches Verständnis noch wichtiger werden."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Fachwirt-Zeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Agenturberater wechselt in den Innendienst",
+   "level": "erfahren",
+   "position": "Vertragssachbearbeiter Gewerbe",
+   "to": {
+    "org": "Versicherungsgruppe Niederrhein",
+    "sal": "none",
+    "street": "Ostwall 50",
+    "city": "47798 Krefeld"
+   },
+   "body": [
+    "nach siebenjähriger Agenturarbeit weiß ich, welche Fragen Gewerbekunden haben, bevor sie unterschreiben. Im Innendienst möchte ich diese Verträge prüfen und gestalten, statt sie zu verkaufen.",
+    "Betriebshaftpflicht, Inhalts- und Ertragsausfallversicherung für Handwerksbetriebe und Gastronomie habe ich hundertfach angeboten. Ich kenne die Bedingungen und die typischen Lücken."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Stefan Lenz",
+    "Rheinstraße 20",
+    "47799 Krefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "classic",
+  "accent": 0,
+  "name": "Melanie Arslan",
+  "title": "Versicherungskauffrau, Fachwirtin",
+  "street": "Aachener Straße 100",
+  "city": "50674 Köln",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Sachbearbeiterin Schaden Sach",
+    "Versicherung Kölner Bucht",
+    "Köln",
+    "- Regulierung bis 50.000 Euro\n- Koordination von Sachverständigen und Handwerkern\n- Kundenkommunikation"
+   ],
+   [
+    "2018",
+    "2021",
+    "Auszubildende",
+    "Versicherung Kölner Bucht",
+    "Köln",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2022",
+    "2024",
+    "Geprüfte Fachwirtin für Versicherungen und Finanzen",
+    "IHK Köln",
+    "Köln",
+    ""
+   ],
+   [
+    "2018",
+    "2021",
+    "Ausbildung Kauffrau für Versicherungen und Finanzanlagen",
+    "IHK Köln",
+    "Köln",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Schadenregulierung",
+    5
+   ],
+   [
+    "Sachversicherung",
+    5
+   ],
+   [
+    "Verhandlung",
+    4
+   ],
+   [
+    "Kundenkommunikation",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Volleyball, Kochen"
+ },
+ "do": [
+  "Sparten und Schadenhöhen nennen.",
+  "Weiterbildungen angeben.",
+  "Wechselgrund klar formulieren."
+ ],
+ "dont": [
+  "Kundendaten in Beispielen.",
+  "Vertrieb und Innendienst verwechseln.",
+  "Abschlusszahlen erfinden."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einem Wasserschaden vor?",
+  "Wie erklären Sie einem Kunden eine Ablehnung?",
+  "Welche Sparten kennen Sie?",
+  "Wie organisieren Sie Ihre Fälle?"
+ ],
+ "faq": [
+  {
+   "q": "Innendienst oder Außendienst?",
+   "a": "Im Innendienst bearbeitest du Verträge und Schäden, im Außendienst und in Agenturen berätst und verkaufst du. Gehalt und Arbeitszeiten unterscheiden sich, ebenso der Anteil variabler Vergütung."
+  }
+ ],
+ "related": [
+  "ausbildung-kaufmann-versicherungen",
+  "bankkaufmann",
+  "kundenservice-mitarbeiter",
+  "immobilienmakler"
+ ]
+}

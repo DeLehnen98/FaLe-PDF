@@ -1,0 +1,208 @@
+{
+ "id": "fachkraft-anerkennung",
+ "field": "industrie",
+ "name": "Bewerbung mit ausländischem Abschluss (Anerkennung)",
+ "search": "anerkennung ausländischer abschluss internationale fachkräfte zuwanderung fachkräfteeinwanderung gleichwertigkeit ingenieur elektriker bewerbung deutschland",
+ "short": "Internationale Fachkräfte: Bewerben mit Anerkennung oder im Verfahren.",
+ "desc": "Bewerbung mit ausländischem Berufsabschluss: Muster-Anschreiben für Elektroniker aus der Ukraine, Ingenieurin aus Indien und Schweißer aus Brasilien, Lebenslauf, Tipps.",
+ "intro": "Wer im Ausland gelernt oder studiert hat, kann in Deutschland arbeiten, oft auch, bevor die Anerkennung abgeschlossen ist. Bei nicht reglementierten Berufen ist sie nicht vorgeschrieben, hilft aber sehr. Schreib klar, welchen Abschluss du hast, wie weit das Verfahren ist und welches Deutschniveau du mitbringst.",
+ "lookFor": [
+  "Abschluss mit Übersetzung und, wenn vorhanden, Anerkennungsbescheid",
+  "Deutschkenntnisse mit Zertifikat",
+  "Berufserfahrung mit konkreten Aufgaben",
+  "Arbeitserlaubnis bzw. Aufenthaltsstatus",
+  "Bereitschaft zu Anpassungsqualifizierung"
+ ],
+ "letters": [
+  {
+   "label": "Elektroniker aus der Ukraine mit voller Anerkennung",
+   "level": "erfahren",
+   "position": "Elektroniker für Betriebstechnik",
+   "to": {
+    "org": "Elbe Energie Magdeburg GmbH, Personalabteilung",
+    "sal": "f",
+    "contact": "Krüger",
+    "street": "Hafenstraße 4",
+    "city": "39104 Magdeburg"
+   },
+   "body": [
+    "in Charkiw war ich elf Jahre Elektriker in einem Heizkraftwerk, zuständig für Schaltanlagen bis 10 Kilovolt und die Instandhaltung von Pumpenantrieben. Seit zwei Jahren lebe ich in Magdeburg. Meine Ausbildung hat die Handwerkskammer als voll gleichwertig mit dem Elektroniker für Betriebstechnik anerkannt.",
+    "Deutsch spreche ich auf B2-Niveau, das Fachvokabular habe ich in einem berufsbezogenen Sprachkurs gelernt. Vorschriften und Normen in Deutschland unterscheiden sich in Details von denen, die ich kenne. In meinem Praktikum bei einem Elektrobetrieb hier habe ich die wichtigsten Prüfungen nach deutschen Vorgaben kennengelernt.",
+    "Bei einem Versorger kann ich meine Erfahrung am besten einsetzen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Anerkennungsbescheid",
+    "Sprachzertifikat B2",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Ingenieurin aus Indien mit Zeugnisbewertung",
+   "level": "erfahren",
+   "position": "Entwicklungsingenieurin Elektronik",
+   "to": {
+    "org": "Embedded Systems Mitteldeutschland GmbH",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Universitätsplatz 2",
+    "city": "39104 Magdeburg"
+   },
+   "body": [
+    "sieben Jahre habe ich in Bangalore Steuergeräte für Haushaltsgeräte entwickelt, von der Schaltung bis zum Test. Für meinen Master in Elektrotechnik liegt eine Zeugnisbewertung der Zentralstelle für ausländisches Bildungswesen vor, und ich bin mit einer Blauen Karte in Deutschland.",
+    "Ich arbeite mit gängigen Werkzeugen für Schaltungsdesign und Leiterplattenlayout und programmiere Mikrocontroller in C. Im Team habe ich mit Kollegen in Europa auf Englisch gearbeitet; Deutsch lerne ich seit einem Jahr und bin auf B1-Niveau. Ich bin bereit, im Alltag zunehmend Deutsch zu sprechen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis mit Übersetzung",
+    "Zeugnisbewertung",
+    "Sprachzertifikat B1"
+   ],
+   "from": [
+    "Priya Raman",
+    "Breiter Weg 120",
+    "39104 Magdeburg"
+   ]
+  },
+  {
+   "label": "Schweißer aus Brasilien im laufenden Verfahren",
+   "level": "erfahren",
+   "position": "Schweißer MAG/WIG",
+   "to": {
+    "org": "Stahlbau Börde GmbH",
+    "sal": "none",
+    "street": "Gewerbering 9",
+    "city": "39387 Oschersleben (Bode)"
+   },
+   "body": [
+    "zehn Jahre Schweißen im Schiffbau in Santos haben mich zu einem sicheren MAG- und WIG-Schweißer gemacht. Meine Anerkennung läuft, die Kammer hat eine teilweise Gleichwertigkeit festgestellt und empfiehlt eine Anpassungsqualifizierung, die ich gern bei Ihnen machen würde.",
+    "Eine Schweißerprüfung nach europäischer Norm habe ich hier bereits abgelegt. Deutsch spreche ich auf A2-Niveau, ich besuche einen Kurs am Abend und verstehe auf der Baustelle die meisten Anweisungen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheid über teilweise Gleichwertigkeit",
+    "Schweißerprüfung",
+    "Sprachzertifikat A2"
+   ],
+   "from": [
+    "Rafael Souza",
+    "Halberstädter Straße 70",
+    "39387 Oschersleben (Bode)"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "classic",
+  "accent": 0,
+  "name": "Oleksandr Kovalenko",
+  "title": "Elektroniker für Betriebstechnik (Anerkennung)",
+  "street": "Olvenstedter Straße 40",
+  "city": "39108 Magdeburg",
+  "exp": [
+   [
+    "09/2025",
+    "11/2025",
+    "Praktikum",
+    "Elektro Elbe GmbH",
+    "Magdeburg",
+    "- Prüfungen nach DIN VDE\n- Instandhaltung von Antrieben"
+   ],
+   [
+    "2012",
+    "2023",
+    "Elektriker",
+    "Heizkraftwerk Charkiw",
+    "Charkiw (Ukraine)",
+    "- Schaltanlagen bis 10 kV\n- Instandhaltung von Pumpenantrieben\n- Störungsbeseitigung im Schichtdienst"
+   ]
+  ],
+  "edu": [
+   [
+    "2008",
+    "2012",
+    "Berufsausbildung Elektriker (in Deutschland als gleichwertig anerkannt)",
+    "Berufsschule für Energietechnik",
+    "Charkiw (Ukraine)",
+    ""
+   ],
+   [
+    "2024",
+    "2025",
+    "Berufssprachkurs Deutsch B2",
+    "Volkshochschule",
+    "Magdeburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Schaltanlagen",
+    5
+   ],
+   [
+    "Antriebstechnik",
+    4
+   ],
+   [
+    "Fehlersuche",
+    5
+   ],
+   [
+    "Prüfen nach DIN VDE",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Ukrainisch",
+    "native"
+   ],
+   [
+    "Russisch",
+    "C2"
+   ],
+   [
+    "Deutsch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Schach, Radfahren"
+ },
+ "do": [
+  "Abschluss und Stand der Anerkennung klar nennen.",
+  "Deutschniveau mit Zertifikat angeben.",
+  "Konkrete Aufgaben aus dem Herkunftsland beschreiben."
+ ],
+ "dont": [
+  "Abschlüsse ohne Übersetzung schicken.",
+  "Den Aufenthaltsstatus offenlassen.",
+  "Deutschkenntnisse übertreiben."
+ ],
+ "questions": [
+  "Wie weit ist Ihr Anerkennungsverfahren?",
+  "Wie haben Sie Deutsch gelernt?",
+  "Welche Unterschiede sehen Sie zu Ihrem Herkunftsland?",
+  "Was bräuchten Sie für die Einarbeitung?"
+ ],
+ "faq": [
+  {
+   "q": "Muss mein Abschluss anerkannt sein?",
+   "a": "Bei reglementierten Berufen wie Pflege, Medizin oder Lehramt ja. Bei vielen anderen Berufen nicht, aber ein Anerkennungsbescheid macht deine Qualifikation für Arbeitgeber verständlich. Informationen gibt es auf dem Portal „Anerkennung in Deutschland“."
+  },
+  {
+   "q": "Was ist eine Zeugnisbewertung?",
+   "a": "Für Hochschulabschlüsse in nicht reglementierten Berufen stellt die Zentralstelle für ausländisches Bildungswesen eine Zeugnisbewertung aus. Sie beschreibt, welchem deutschen Abschluss deiner entspricht."
+  }
+ ],
+ "related": [
+  "pflegefachkraft-anerkennung",
+  "maurer",
+  "elektriker",
+  "maschinenbauingenieur"
+ ]
+}

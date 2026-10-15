@@ -1,0 +1,164 @@
+{
+ "id": "ausbildung-industriemechaniker",
+ "field": "ausbildung",
+ "name": "Ausbildung Industriemechaniker/in",
+ "search": "ausbildung industriemechaniker industriemechanikerin metall instandhaltung maschinenbau azubi ihk bewerbung",
+ "short": "Maschinen bauen, warten und reparieren – in der Industrie.",
+ "desc": "Bewerbung für die Ausbildung zum Industriemechaniker / zur Industriemechanikerin: Muster-Anschreiben für Realschüler und Hauptschülerin, Lebenslauf, Fragen zum Einstellungstest.",
+ "intro": "Industriemechaniker montieren Maschinen, halten Anlagen in Schuss und fertigen Bauteile. In großen Betrieben gibt es meist eine Lehrwerkstatt und einen Einstellungstest. Wer schon gefeilt, gebohrt oder an Fahrrädern geschraubt hat, sollte das im Anschreiben nennen.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Mathe- und Physikgrundlagen",
+  "Handwerkliches Geschick",
+  "Technisches Verständnis",
+  "Bereitschaft zu Schichtarbeit nach der Ausbildung"
+ ],
+ "letters": [
+  {
+   "label": "Realschüler mit Fahrradwerkstatt",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Industriemechaniker",
+   "to": {
+    "org": "Weserland Maschinenbau AG",
+    "sal": "none",
+    "street": "Hafenstraße 50",
+    "city": "28217 Bremen"
+   },
+   "body": [
+    "an unserer Schule gibt es eine Fahrradwerkstatt, die ich seit zwei Jahren mit einem Lehrer betreue. Wir reparieren Räder von Mitschülern, wechseln Ketten, zentrieren Laufräder und haben im letzten Jahr ein Lastenrad aus Spenden aufgebaut. Ich möchte jetzt an größeren Maschinen arbeiten.",
+    "Der Realschulabschluss steht im Sommer an. In Mathe habe ich eine 2, in Technik eine 1. Bei meinem Praktikum in Ihrer Lehrwerkstatt habe ich einen Würfel gefeilt und einen Flaschenöffner gebaut; der liegt seitdem bei uns in der Küche.",
+    "Am Einstellungstest nehme ich gern teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Hauptschülerin mit Metallbau-Erfahrung",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Industriemechanikerin",
+   "to": {
+    "org": "Hansa Fördertechnik GmbH",
+    "sal": "m",
+    "contact": "Wiechmann",
+    "street": "Industriestraße 8",
+    "city": "27755 Delmenhorst"
+   },
+   "body": [
+    "beim Girls’Day vor zwei Jahren stand ich zum ersten Mal an einer Drehmaschine. Ich habe mir danach von meinem Onkel, der Schlosser ist, so viel wie möglich zeigen lassen und in den Ferien in seiner Werkstatt mitgearbeitet: Bleche zuschneiden, bohren, entgraten, schweißen zusehen.",
+    "Mein Hauptschulabschluss nach Klasse 10 kommt im Sommer. Rechnen kann ich gut, beim Lesen von technischen Zeichnungen habe ich durch meinen Onkel schon Übung. Ihr Unternehmen baut Förderanlagen für Häfen; ich wohne in Delmenhorst und bin mit dem Bus schnell bei Ihnen.",
+    "Ich würde mich freuen, wenn Sie mir eine Chance im Einstellungstest geben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9",
+    "Bescheinigung Girls’Day"
+   ],
+   "from": [
+    "Melina Hoppe",
+    "Bremer Straße 112",
+    "27751 Delmenhorst"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "modern",
+  "accent": 0,
+  "name": "Mats Lüdemann",
+  "title": "Schüler",
+  "street": "Waller Heerstraße 70",
+  "city": "28217 Bremen",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Schülerfahrradwerkstatt",
+    "Oberschule Findorff",
+    "Bremen",
+    "- Reparaturen für Mitschüler\n- Aufbau eines Lastenrads"
+   ],
+   [
+    "11/2025",
+    "11/2025",
+    "Praktikum Lehrwerkstatt (1 Woche)",
+    "Weserland Maschinenbau AG",
+    "Bremen",
+    "- Feilen, Bohren, Gewindeschneiden"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschulabschluss (voraussichtlich)",
+    "Oberschule Findorff",
+    "Bremen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Metallbearbeitung von Hand",
+    3
+   ],
+   [
+    "Technisches Verständnis",
+    4
+   ],
+   [
+    "Mathe",
+    3
+   ],
+   [
+    "Fahrradtechnik",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Radfahren, Basteln an alten Rädern"
+ },
+ "do": [
+  "Praktische Projekte (Werkstatt, Fahrrad, Moped) nennen.",
+  "Noten in Mathe/Technik erwähnen.",
+  "Bereit für den Test sein: Übungsaufgaben machen."
+ ],
+ "dont": [
+  "Lange Texte über Hobbys ohne Technikbezug.",
+  "Die Firma mit falschem Produkt beschreiben.",
+  "Keine Zeugnisse anhängen."
+ ],
+ "questions": [
+  "Was haben Sie zuletzt repariert?",
+  "Welche Werkzeuge kennen Sie?",
+  "Wie würden Sie eine technische Zeichnung lesen?",
+  "Warum Industrie und nicht Handwerk?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Industriemechaniker oder Mechatroniker?",
+   "a": "Industriemechaniker arbeiten stärker mechanisch, an Bauteilen und Maschinen. Mechatroniker haben einen größeren Anteil Elektrik und Steuerungen. Beides passt gut, wenn du technisch interessiert bist."
+  }
+ ],
+ "related": [
+  "industriemechaniker",
+  "ausbildung-mechatroniker",
+  "zerspanungsmechaniker",
+  "metallbauer"
+ ]
+}

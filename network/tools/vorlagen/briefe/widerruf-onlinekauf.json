@@ -1,0 +1,76 @@
+{
+ "id": "widerruf-onlinekauf",
+ "group": "kauf",
+ "tool": "withdrawal-letter",
+ "order": 36,
+ "name": "Widerruf eines Onlinekaufs",
+ "short": "Bestellung innerhalb von 14 Tagen widerrufen",
+ "desc": "Widerruf für Onlinekäufe als Muster: Bestellung innerhalb der 14-Tage-Frist widerrufen, Erstattung inklusive Versandkosten verlangen – vorausgefüllt als PDF.",
+ "search": "widerruf rückgabe online bestellung 14 tage",
+ "when": [
+  "Du hast etwas im Internet, am Telefon oder per Katalog bestellt und willst es doch nicht behalten. Als Verbraucher kannst du solche Verträge in der Regel innerhalb von 14 Tagen ohne Grund widerrufen. Die Frist beginnt bei Waren meist mit dem Tag, an dem du die Ware bekommen hast.",
+  "Das Zurückschicken allein ist oft kein wirksamer Widerruf – du musst ihn eindeutig erklären. Ein kurzer Brief oder eine E-Mail mit diesem Text reicht."
+ ],
+ "must": [
+  "Bestellnummer und Bestelldatum",
+  "Welche Waren du zurückgibst",
+  "Datum, an dem du die Ware erhalten hast",
+  "Die Bitte um Erstattung aller Zahlungen inklusive der ursprünglichen Versandkosten",
+  "Bitte um Bestätigung"
+ ],
+ "notes": [
+  "Die Kosten der Rücksendung musst du tragen, wenn der Händler vorher darauf hingewiesen hat – viele übernehmen sie trotzdem.",
+  "Der Händler muss innerhalb von 14 Tagen erstatten, darf aber warten, bis die Ware zurück ist oder du den Versand nachweist.",
+  "Kein Widerrufsrecht gibt es zum Beispiel bei maßgefertigter Ware, schnell verderblichen Lebensmitteln oder entsiegelter Software."
+ ],
+ "faq": [
+  {
+   "q": "Reicht es, das Paket einfach zurückzuschicken?",
+   "a": "Nicht sicher. Seit 2014 musst du den Widerruf ausdrücklich erklären. Leg den Brief ins Paket und schick ihn zusätzlich per E-Mail."
+  }
+ ],
+ "fields": {
+  "kind": "goods",
+  "orderNo": "2026-118823",
+  "customerNo": "K-55 210",
+  "items": "Winterjacke, Größe M, Farbe Blau\nMütze, Farbe Grau",
+  "refund": true,
+  "confirm": true,
+  "label": true
+ },
+ "related": [
+  "widerruf-dienstleistung",
+  "beschwerde",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Musterversand GmbH",
+  "attn": "Retourenabteilung",
+  "street": "Logistikring 7",
+  "city": "54294 Trier"
+ },
+ "doc": [
+  [
+   "Betreff",
+   "Widerruf meiner Bestellung 2026-118823"
+  ],
+  [
+   "Text",
+   "Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über den Kauf der folgenden Waren (Bestellnummer 2026-118823): – Winterjacke, Größe M, Farbe Blau – Mütze, Farbe Grau. Bestellt am …, erhalten am … Bitte erstatten Sie mir alle geleisteten Zahlungen einschließlich der Kosten der ursprünglichen Lieferung über das Zahlungsmittel, das ich bei der Bestellung verwendet habe. Bitte senden Sie mir für die Rücksendung ein Retourenetikett … Bitte bestätigen Sie mir den Eingang dieses Widerrufs."
+  ],
+  [
+   "Absender / Empfänger",
+   "Jana Beispiel → Musterversand GmbH, Retourenabteilung"
+  ],
+  [
+   "Infoblock",
+   "Bestellnummer, Kundennummer, Datum"
+  ]
+ ],
+ "doc_intro": "Das Werkzeug setzt den Widerruf als Brief nach DIN 5008. Mit den Beispieldaten steht darin:"
+}

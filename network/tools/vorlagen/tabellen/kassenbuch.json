@@ -1,0 +1,80 @@
+{
+ "id": "kassenbuch",
+ "slug": "kassenbuch",
+ "cat": "Business",
+ "name": "Kassenbuch",
+ "short": "Bareinnahmen und -ausgaben mit laufendem Bestand",
+ "desc": "Kassenbuch als Excel-Vorlage (XLSX): Bareinnahmen und -ausgaben mit Beleg und Steuersatz eintragen – der laufende Kassenbestand rechnet sich, Minus wird rot.",
+ "search": "",
+ "intro": "Das Kassenbuch zählt jede Barbewegung mit Belegnummer. Aus Anfangsbestand, Einnahmen und Ausgaben entsteht nach jeder Zeile der aktuelle Bestand; wird er negativ, ist ein Fehler im Spiel und die Zelle wird rot.",
+ "uses": [
+  "Bargeld im Laden, am Kiosk oder auf dem Markt dokumentieren",
+  "Kaffeekasse im Büro",
+  "Kasse bei Veranstaltungen"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Tag der Barbewegung."
+  ],
+  [
+   "Beleg",
+   "Laufende Belegnummer – erscheint automatisch, sobald ein Buchungstext da ist."
+  ],
+  [
+   "Buchungstext",
+   "Wofür das Geld kam oder ging."
+  ],
+  [
+   "Einnahme",
+   "Bareinnahme, positiv."
+  ],
+  [
+   "Ausgabe",
+   "Barausgabe, positiv – nicht mit Minus."
+  ],
+  [
+   "USt-Satz",
+   "19 %, 7 % oder 0 % – für die spätere Buchhaltung."
+  ],
+  [
+   "Bestand",
+   "Anfangsbestand plus alle Einnahmen bis hier minus alle Ausgaben bis hier. Rot, wenn negativ."
+  ],
+  [
+   "Auswertung",
+   "Summe Einnahmen und Ausgaben, Endbestand und Zahl der Buchungen."
+  ]
+ ],
+ "tips": [
+  "Zähl die Kasse regelmäßig und vergleich das Ergebnis mit dem Bestand in der Tabelle."
+ ],
+ "faq": [
+  {
+   "q": "Ist das Kassenbuch steuerlich anerkannt?",
+   "a": "Für Betriebe mit Bargeld gelten strenge Regeln, etwa dass Einträge nicht unbemerkt geändert werden können. Eine Tabelle erfüllt das nicht automatisch. Für Vereinskassen oder Kaffeekassen ist sie gut; als Betrieb sprich am besten mit deiner Steuerberatung."
+  }
+ ],
+ "related": [
+  "vereinskasse",
+  "euer",
+  "rechnungsausgangsbuch"
+ ],
+ "en": {
+  "slug": "cash-book",
+  "name": "Cash book",
+  "short": "Cash income and spending with a running balance",
+  "desc": "Cash book spreadsheet (XLSX): enter cash income and spending with receipt number and VAT rate – the running cash balance is calculated and turns red below zero.",
+  "intro": "Records every cash movement with a receipt number. The running balance after each row is calculated from the opening balance; a negative balance is highlighted.",
+  "inside": [
+   "Automatic receipt numbers",
+   "Running balance",
+   "Totals and closing balance",
+   "Warning when the balance is negative"
+  ],
+  "uses": [
+   "Small shops and market stalls",
+   "Office coffee funds"
+  ]
+ }
+}

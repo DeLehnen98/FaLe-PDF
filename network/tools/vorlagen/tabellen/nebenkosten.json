@@ -1,0 +1,71 @@
+{
+ "id": "nebenkosten",
+ "slug": "nebenkosten",
+ "cat": "Zuhause",
+ "name": "Nebenkosten-Rechner",
+ "short": "Anteil einer Wohnung an den Betriebskosten prüfen",
+ "desc": "Nebenkosten-Rechner als Excel-Vorlage (XLSX): Betriebskosten des Hauses nach Wohnfläche, Personen oder Einheiten umlegen und Nachzahlung oder Guthaben prüfen.",
+ "search": "",
+ "intro": "Mit dem Rechner prüfst du die Betriebskostenabrechnung: Du trägst die Kosten des ganzen Hauses und den Umlageschlüssel ein, die Vorlage rechnet den Anteil deiner Wohnung und vergleicht ihn mit deinen Vorauszahlungen.",
+ "uses": [
+  "Die Nebenkostenabrechnung nachrechnen",
+  "Eine neue Vorauszahlung abschätzen",
+  "Als Vermieter eine Abrechnung vorbereiten"
+ ],
+ "cols": [
+  [
+   "Kostenart",
+   "Grundsteuer, Wasser, Müll, Hausmeister … jede Position der Abrechnung."
+  ],
+  [
+   "Kosten Haus",
+   "Was diese Position für das ganze Haus gekostet hat."
+  ],
+  [
+   "Umlageschlüssel",
+   "Wohnfläche, Personen, Einheiten oder Direkt – wie die Kosten verteilt werden. Steht in der Abrechnung oder im Mietvertrag."
+  ],
+  [
+   "Anteil",
+   "Je nach Schlüssel: Wohnfläche der Wohnung ÷ Gesamtfläche, Personen ÷ Personen im Haus, 1 ÷ Einheiten oder 100 % bei „Direkt“."
+  ],
+  [
+   "Anteil Wohnung",
+   "Kosten Haus mal Anteil."
+  ],
+  [
+   "Bemerkung",
+   "Notizen zur Position."
+  ]
+ ],
+ "tips": [
+  "Unten siehst du die Summe, die geleisteten Vorauszahlungen und ob eine Nachzahlung oder ein Guthaben herauskommt – plus einen Vorschlag für die monatliche Vorauszahlung."
+ ],
+ "faq": [
+  {
+   "q": "Was mache ich, wenn meine Abrechnung anders rechnet?",
+   "a": "Frag beim Vermieter nach und lass dir Belege zeigen – das Recht auf Belegeinsicht hast du als Mieter. Bei Streit helfen Mietervereine weiter."
+  }
+ ],
+ "related": [
+  "familienbudget",
+  "stromzaehler",
+  "umzugscheckliste"
+ ],
+ "en": {
+  "slug": "service-charge-calculator",
+  "name": "Service charge calculator",
+  "short": "Check your flat’s share of the building’s running costs",
+  "desc": "Service charge calculator (XLSX): split a building’s running costs by floor area, persons or units and check whether you owe money or get a refund.",
+  "intro": "Enter the building’s costs and the allocation key; the template calculates your flat’s share and compares it with your advance payments – as used in German service charge statements.",
+  "inside": [
+   "Allocation by area, persons, units or direct",
+   "Share per cost type",
+   "Total vs. advance payments",
+   "Suggested new monthly payment"
+  ],
+  "uses": [
+   "Checking a German Nebenkosten statement"
+  ]
+ }
+}

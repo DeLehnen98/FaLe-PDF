@@ -1,0 +1,165 @@
+{
+ "id": "ausbildung-gaertner",
+ "field": "ausbildung",
+ "name": "Ausbildung Gärtner/in",
+ "search": "ausbildung gärtner gärtnerin galabau garten landschaftsbau zierpflanzen baumschule azubi bewerbung gaertner",
+ "short": "Garten- und Landschaftsbau, Zierpflanzen, Baumschule.",
+ "desc": "Bewerbung für die Ausbildung zum Gärtner / zur Gärtnerin (z. B. Garten- und Landschaftsbau): Muster-Anschreiben für Schüler und Abiturientin, Lebenslauf und Tipps.",
+ "intro": "Die Ausbildung gibt es in mehreren Fachrichtungen, am häufigsten Garten- und Landschaftsbau, daneben Zierpflanzenbau, Baumschule, Gemüsebau, Obstbau, Staudengärtnerei und Friedhofsgärtnerei. Nenn die Fachrichtung im Anschreiben und zeig, dass du gern draußen arbeitest.",
+ "lookFor": [
+  "Hauptschul- oder Realschulabschluss",
+  "Arbeit an der frischen Luft bei jedem Wetter",
+  "Körperliche Fitness",
+  "Interesse an Pflanzen und Gestaltung",
+  "Technisches Verständnis für Maschinen"
+ ],
+ "letters": [
+  {
+   "label": "Schüler für Garten- und Landschaftsbau",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Gärtner, Fachrichtung Garten- und Landschaftsbau",
+   "to": {
+    "org": "Grünwerk Galabau GmbH",
+    "sal": "m",
+    "contact": "Sommer",
+    "street": "Am Kiesgrund 3",
+    "city": "79108 Freiburg im Breisgau"
+   },
+   "body": [
+    "unseren Garten habe ich letztes Jahr fast allein umgestaltet: Rasen abgetragen, einen Weg aus Natursteinplatten verlegt, Hochbeete gebaut und bepflanzt. Mein Vater meinte, ich hätte damit einen Profi gespart. Das möchte ich jetzt richtig lernen.",
+    "Ich gehe in die 9. Klasse der Gemeinschaftsschule und mache im nächsten Jahr den Hauptschulabschluss. Im Praktikum bei einem Galabaubetrieb habe ich Pflasterarbeiten und Heckenschnitt kennengelernt. Mir gefällt, dass man abends sieht, was man geschafft hat.",
+    "Einen Probetag mache ich gern, Regen inklusive."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 8",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Interesse an Stauden",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Gärtnerin, Fachrichtung Staudengärtnerei",
+   "to": {
+    "org": "Staudengärtnerei Kaiserstuhl",
+    "sal": "f",
+    "contact": "Gutmann",
+    "street": "Weinbergstraße 12",
+    "city": "79346 Endingen am Kaiserstuhl"
+   },
+   "body": [
+    "Biologie war im Abitur mein bestes Fach, aber ein Studium im Hörsaal reizt mich nicht. In Ihrer Gärtnerei habe ich im Frühjahr Pflanzen für unseren Schulgarten gekauft und mich eine halbe Stunde mit Ihrem Mitarbeiter über trockenheitsverträgliche Stauden unterhalten. Auf dem Heimweg stand mein Entschluss fest.",
+    "Unser Schulgarten ist mein Projekt seit drei Jahren: Wir haben eine Wildblumenwiese angelegt und zählen jedes Jahr die Insekten. Ich weiß, wie man Pflanzen vermehrt, teilt und pikiert, und ich lerne lateinische Namen gern.",
+    "Ab August kann ich anfangen. Über einen Termin zum Kennenlernen in Ihrer Gärtnerei freue ich mich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Bericht Schulgarten-Projekt"
+   ],
+   "from": [
+    "Lea Zimmermann",
+    "Habsburgerstraße 70",
+    "79104 Freiburg im Breisgau"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "compact",
+  "accent": 1,
+  "name": "Jakob Hug",
+  "title": "Schüler",
+  "street": "Lehener Straße 101",
+  "city": "79106 Freiburg im Breisgau",
+  "exp": [
+   [
+    "03/2025",
+    "03/2025",
+    "Schülerpraktikum (2 Wochen)",
+    "Gartenbau Riesterer",
+    "Freiburg",
+    "- Pflasterarbeiten, Heckenschnitt\n- Laden und Sichern der Werkzeuge"
+   ],
+   [
+    "2025",
+    "",
+    "Umgestaltung des Familiengartens",
+    "",
+    "",
+    "- Natursteinweg, Hochbeete, Bepflanzung"
+   ]
+  ],
+  "edu": [
+   [
+    "2021",
+    "2027",
+    "Gemeinschaftsschule, zurzeit Klasse 9",
+    "Gemeinschaftsschule Weingarten",
+    "Freiburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Pflanzenkenntnis",
+    3
+   ],
+   [
+    "Handwerkliches Arbeiten",
+    4
+   ],
+   [
+    "Körperliche Fitness",
+    4
+   ],
+   [
+    "Ausdauer",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Mountainbike, Gartenarbeit"
+ },
+ "do": [
+  "Fachrichtung im Anschreiben nennen.",
+  "Eigene Gartenprojekte beschreiben.",
+  "Wetterfestigkeit mit einem Beispiel zeigen."
+ ],
+ "dont": [
+  "Nur „Ich mag Natur“.",
+  "Fachrichtungen verwechseln.",
+  "Allergien wie Heuschnupfen verschweigen, wenn sie dich stark einschränken."
+ ],
+ "questions": [
+  "Welche Pflanzen kennen Sie?",
+  "Wie gehen Sie mit schwerer Arbeit bei Hitze um?",
+  "Warum diese Fachrichtung?",
+  "Haben Sie schon Maschinen wie Rasenmäher oder Heckenschere bedient?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Welche Fachrichtung ist die richtige?",
+   "a": "Garten- und Landschaftsbau ist am stärksten gefragt und hat viel mit Bauen zu tun. Zierpflanzen, Stauden und Baumschule sind eher Produktion. Ein Praktikum zeigt dir schnell, was zu dir passt."
+  }
+ ],
+ "related": [
+  "gaertner",
+  "ausbildung-landwirt",
+  "hausmeister",
+  "bauhelfer"
+ ]
+}

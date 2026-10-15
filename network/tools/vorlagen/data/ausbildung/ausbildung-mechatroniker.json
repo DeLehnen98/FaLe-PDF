@@ -1,0 +1,202 @@
+{
+ "id": "ausbildung-mechatroniker",
+ "field": "ausbildung",
+ "name": "Ausbildung Mechatroniker/in",
+ "search": "ausbildung mechatroniker mechatronikerin azubi technik elektrik mechanik automatisierung industrie ihk bewerbung schüler",
+ "short": "Mechanik, Elektrik und Steuerungen – für Schüler mit Technik-Faible.",
+ "desc": "Bewerbung für die Ausbildung zum Mechatroniker / zur Mechatronikerin: drei Muster-Anschreiben für Realschüler, Abiturientin und Ausbildungswechsler, dazu Lebenslauf und Tipps.",
+ "intro": "Mechatronikerinnen und Mechatroniker bauen Anlagen auf, verdrahten Schaltschränke, programmieren Steuerungen und suchen Fehler, wenn eine Maschine steht. Betriebe achten bei der Bewerbung auf Mathe und Physik, vor allem aber darauf, ob du schon mal etwas zerlegt, repariert oder gebaut hast. Erzähl davon, so konkret wie möglich.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur, ordentliche Noten in Mathe und Physik",
+  "Handwerkliches Geschick und Interesse an Elektrik und Mechanik",
+  "Erste Erfahrungen: Praktikum, Technik-AG, Moped, Modellbau, Elektronik-Bastelei",
+  "Räumliches Vorstellungsvermögen",
+  "Bereitschaft zu Schichtarbeit in manchen Betrieben (steht in der Anzeige)"
+ ],
+ "letters": [
+  {
+   "label": "Realschüler mit Moped und Praktikum",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Mechatroniker",
+   "to": {
+    "org": "Brenner Antriebstechnik GmbH",
+    "sal": "f",
+    "contact": "Lindner",
+    "street": "Gewerbering 12",
+    "city": "73430 Aalen"
+   },
+   "body": [
+    "mein Moped ist Baujahr 1994 und lief nicht, als ich es gekauft habe. Inzwischen fährt es wieder: Vergaser gereinigt, Zündkerze, neue Kabel zum Rücklicht. Bei der Fehlersuche an der Elektrik habe ich gemerkt, dass mich genau diese Mischung aus Mechanik und Strom am meisten interessiert.",
+    "Im Sommer mache ich an der Realschule Wasseralfingen meinen Abschluss. In Mathe und Technik stehe ich auf einer Zwei. Mein zweiwöchiges Praktikum habe ich bei einem Hersteller von Förderbändern gemacht, dort durfte ich beim Verdrahten eines Schaltkastens zusehen und kleine Teile davon selbst übernehmen. Der Ausbilder hat mir am Ende gesagt, ich solle mich bei Ihnen umsehen, weil Sie ähnliche Anlagen bauen.",
+    "Zu Ihrem Werk fahre ich mit dem Bus 20 Minuten. Für einen Probetag oder einen Eignungstest komme ich gern vorbei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis Klasse 10",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin, die nicht studieren will",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Mechatronikerin",
+   "to": {
+    "org": "Kessler Verpackungsmaschinen AG",
+    "sal": "none",
+    "street": "Robert-Bosch-Straße 3",
+    "city": "89522 Heidenheim"
+   },
+   "body": [
+    "eigentlich wollte ich nach dem Abitur Maschinenbau studieren. Zwei Probevorlesungen und ein Gespräch mit meinem Cousin, der bei Ihnen Instandhalter ist, haben mich umgestimmt: Ich will an echten Maschinen arbeiten, nicht nur an Formeln.",
+    "Physik und Mathe waren meine Leistungsfächer. In der Robotik-AG haben wir drei Jahre lang einen Roboter für einen Schülerwettbewerb gebaut; ich war für Sensoren und Verkabelung zuständig und habe die Steuerung in einer einfachen Programmiersprache geschrieben. Dass das Ding beim Wettbewerb in der ersten Runde liegen blieb, lag übrigens an einem Wackelkontakt. Seitdem löte ich ordentlicher.",
+    "Ein verkürzter Ausbildungsweg wäre für mich interessant, falls das bei Ihnen möglich ist. Ich habe den Führerschein und bin ab August verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Teilnahmebescheinigung Robotik-Wettbewerb"
+   ],
+   "from": [
+    "Johanna Seitz",
+    "Schlossstraße 9",
+    "89518 Heidenheim"
+   ]
+  },
+  {
+   "label": "Wechsel aus einer abgebrochenen Ausbildung",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Mechatroniker (Ausbildungswechsel)",
+   "to": {
+    "org": "Fahrzeugtechnik Ostalb GmbH",
+    "sal": "m",
+    "contact": "Ohnmacht",
+    "street": "Am Bahnhof 4",
+    "city": "73441 Bopfingen"
+   },
+   "body": [
+    "seit September bin ich im ersten Lehrjahr als Kaufmann für Büromanagement. Nach einem Jahr kann ich ehrlich sagen: Die Arbeit am Schreibtisch liegt mir nicht. Ich möchte die Ausbildung zum Mechatroniker beginnen und habe mit meinem jetzigen Betrieb schon offen darüber gesprochen.",
+    "Zu Hause habe ich unsere Garage zur Werkstatt umgebaut. Dort repariere ich Rasenmäher und Fahrräder für Nachbarn und habe zuletzt eine alte Drehbank wieder in Gang gebracht. In der Berufsschule hatte ich in Mathe eine 1,7, auch wenn es dort um Prozentrechnung statt um Hebelgesetze geht.",
+    "Ich kann zum 1. September wechseln. Mein Ausbilder schreibt mir gern eine Bescheinigung über das bisherige Jahr."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Mittlere Reife",
+    "Zwischenbeurteilung Ausbildungsbetrieb"
+   ],
+   "from": [
+    "Tobias Wekenmann",
+    "Kirchgasse 6",
+    "73441 Bopfingen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "modern",
+  "accent": 0,
+  "name": "Luca Reiter",
+  "title": "Schüler",
+  "street": "Stiewingstraße 22",
+  "city": "73433 Aalen",
+  "exp": [
+   [
+    "03/2025",
+    "03/2025",
+    "Schülerpraktikum (2 Wochen)",
+    "Förderanlagen Härtsfeld GmbH",
+    "Aalen",
+    "- Mithilfe beim Verdrahten eines Schaltkastens\n- Montage kleiner Baugruppen"
+   ],
+   [
+    "2024",
+    "",
+    "Restaurierung eines Mopeds (privat)",
+    "",
+    "",
+    "- Vergaser, Zündung, Beleuchtung"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Realschule Wasseralfingen",
+    "Aalen",
+    "Wahlpflichtfach Technik"
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Mofa-Prüfbescheinigung",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Handwerkliches Geschick",
+    4
+   ],
+   [
+    "Elektrik-Grundlagen",
+    3
+   ],
+   [
+    "Mathe/Physik",
+    3
+   ],
+   [
+    "Löten",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Moped schrauben, Handball"
+ },
+ "do": [
+  "Ein Technikprojekt beschreiben, bei dem du einen Fehler gefunden hast.",
+  "Praktikum mit Firma und Aufgaben nennen.",
+  "Noten in Mathe und Physik ehrlich angeben; wenn sie mittel sind, mit Praxis ausgleichen."
+ ],
+ "dont": [
+  "„Ich interessiere mich für Technik“ ohne Beispiel.",
+  "Den Firmennamen aus einer anderen Bewerbung stehen lassen.",
+  "Zeugnisse weglassen, weil sie nicht so gut sind – die werden ohnehin verlangt."
+ ],
+ "questions": [
+  "Was haben Sie schon einmal repariert?",
+  "Wie würden Sie vorgehen, wenn eine Maschine plötzlich stehen bleibt?",
+  "Was ist für Sie der Unterschied zwischen Mechatroniker und Elektroniker?",
+  "Können Sie sich Schichtarbeit vorstellen?"
+ ],
+ "pay": "Die Ausbildungsvergütung hängt von Branche und Tarifvertrag ab. In der Metall- und Elektroindustrie gibt es Tarifverträge; frag im Gespräch ruhig nach Vergütung und Zuschlägen.",
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Gibt es einen Einstellungstest?",
+   "a": "Viele Industriebetriebe testen Mathe, Logik und Technikverständnis online oder vor Ort. Übe Dreisatz, Prozentrechnung und einfache Schaltungen; dann bist du gut vorbereitet."
+  }
+ ],
+ "related": [
+  "mechatroniker",
+  "ausbildung-elektroniker",
+  "ausbildung-industriemechaniker",
+  "ausbildung-kfz-mechatroniker"
+ ]
+}

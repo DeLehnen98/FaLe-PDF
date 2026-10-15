@@ -1,0 +1,61 @@
+{
+ "id": "entschuldigung-schule",
+ "group": "familie",
+ "tool": "din-letter",
+ "order": 30,
+ "name": "Entschuldigung für die Schule",
+ "short": "Fehlen des Kindes wegen Krankheit entschuldigen",
+ "desc": "Entschuldigung für die Schule als Vorlage: Fehlzeit des Kindes wegen Krankheit schriftlich entschuldigen – mit Hinweisen zu Fristen und Attest. Ausfüllen, drucken, unterschreiben.",
+ "search": "schule entschuldigung kind krank fehlen eltern",
+ "when": [
+  "Dein Kind war krank und konnte nicht zur Schule. Die meisten Schulen verlangen, dass du am ersten Tag morgens anrufst oder eine Nachricht schickst und das Fehlen danach schriftlich entschuldigst. Wann die schriftliche Entschuldigung da sein muss, regeln Schulgesetz und Schulordnung – oft innerhalb von drei Tagen."
+ ],
+ "must": [
+  "Name und Klasse des Kindes",
+  "Zeitraum des Fehlens mit Daten",
+  "Grund – „Krankheit“ reicht, eine Diagnose nicht nötig",
+  "Ob ihr am ersten Tag telefonisch Bescheid gegeben habt",
+  "Unterschrift eines Elternteils"
+ ],
+ "notes": [
+  "Bei längeren Fehlzeiten oder kurz vor Klassenarbeiten kann die Schule ein ärztliches Attest verlangen.",
+  "Volljährige Schülerinnen und Schüler entschuldigen sich in der Regel selbst.",
+  "Für Termine wie eine Familienfeier brauchst du vorher eine Beurlaubung – nachträglich entschuldigen geht dafür meist nicht."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich die Krankheit genau beschreiben?",
+   "a": "Nein. „Wegen Krankheit“ genügt. Nur wenn eine ansteckende Krankheit wie Läuse oder Scharlach dahintersteckt, muss die Schule das wissen."
+  }
+ ],
+ "fields": {
+  "notice": "none",
+  "folds": true
+ },
+ "related": [
+  "einverstaendnis-klassenfahrt",
+  "vollmacht-kind-abholen",
+  "kuendigung-kita-platz"
+ ],
+ "from": [
+  "Katrin Neumann",
+  "Rosenweg 14",
+  "79098 Freiburg im Breisgau"
+ ],
+ "to": {
+  "org": "Muster-Grundschule",
+  "attn": "Frau Peters, Klassenlehrerin der 3b",
+  "street": "Schulstraße 5",
+  "city": "79102 Freiburg im Breisgau"
+ },
+ "letter": {
+  "subject": "Entschuldigung für Paul Neumann, Klasse 3b",
+  "salutation": "Sehr geehrte Frau Peters,",
+  "body": [
+   "mein Sohn Paul konnte vom [Datum] bis einschließlich [Datum] wegen Krankheit nicht am Unterricht teilnehmen. Am ersten Tag habe ich ihn morgens telefonisch im Sekretariat abgemeldet.",
+   "Bitte entschuldigen Sie sein Fehlen. Die Hausaufgaben aus diesen Tagen holt Paul bis Ende der Woche nach; seine Sitznachbarin hat ihm die Arbeitsblätter schon mitgebracht."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ }
+}

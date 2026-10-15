@@ -1,0 +1,93 @@
+{
+ "id": "geburtstagskalender",
+ "slug": "geburtstagskalender",
+ "cat": "Zuhause",
+ "name": "Geburtstagskalender",
+ "short": "Geburtstage mit Alter, Countdown und Monatsübersicht",
+ "desc": "Geburtstagskalender als Excel-Vorlage (XLSX): Namen und Geburtsdaten eintragen – Alter, Tage bis zum Geburtstag und Wochentag rechnen sich, die nächsten werden markiert.",
+ "search": "geburtstagsliste",
+ "intro": "Nie wieder einen Geburtstag verpassen: Die Liste rechnet für jede Person, wann der nächste Geburtstag ist, wie viele Tage es noch sind, auf welchen Wochentag er fällt und wie alt die Person wird. Rechts zeigt eine Monatsübersicht, wann besonders viel los ist.",
+ "uses": [
+  "Familie, Freunde und Kollegen an einem Ort",
+  "Geburtstage im Verein oder in der Kita-Gruppe",
+  "Geschenkideen das Jahr über sammeln"
+ ],
+ "cols": [
+  [
+   "Name",
+   "Wer Geburtstag hat."
+  ],
+  [
+   "Gruppe",
+   "Familie, Freunde, Arbeit … aus der Liste – zum Filtern."
+  ],
+  [
+   "Geburtsdatum",
+   "Tag, Monat und Jahr. Wenn du das Jahr nicht weißt, trag ein ungefähres ein; dann stimmt nur „Wird“ nicht genau."
+  ],
+  [
+   "Wird",
+   "Das Alter, das die Person am nächsten Geburtstag erreicht: Jahr des nächsten Geburtstags minus Geburtsjahr."
+  ],
+  [
+   "Nächster Geburtstag",
+   "Der Geburtstag in diesem Jahr – oder im nächsten, wenn er schon vorbei ist. DATUM baut ihn aus dem aktuellen Jahr, Monat und Tag."
+  ],
+  [
+   "In Tagen",
+   "Nächster Geburtstag minus heute. 0 heißt: heute! Bis 14 Tage wird die Zeile grün."
+  ],
+  [
+   "Wochentag",
+   "Auf welchen Tag der Geburtstag fällt – WAHL übersetzt die Zahl aus WOCHENTAG in Mo bis So."
+  ],
+  [
+   "Geschenkidee / Notiz",
+   "Für Ideen, Wünsche oder „anrufen“."
+  ],
+  [
+   "Überblick",
+   "Wer als Nächstes dran ist (INDEX und VERGLEICH auf den kleinsten Countdown), wie viele Geburtstage in den nächsten 30 Tagen anstehen und wie viele Einträge es gibt."
+  ],
+  [
+   "Monat",
+   "Januar bis Dezember für die Monatsübersicht."
+  ],
+  [
+   "Geburtstage",
+   "SUMMENPRODUKT zählt die Geburtsdaten, deren Monat passt. Das Säulendiagramm zeigt die Verteilung übers Jahr."
+  ]
+ ],
+ "tips": [
+  "Sortier die Liste über den Filter nach „In Tagen“ – dann stehen die nächsten Geburtstage oben.",
+  "Am 29. Februar Geborene feiern in Nicht-Schaltjahren laut Formel am 1. März."
+ ],
+ "faq": [
+  {
+   "q": "Werde ich erinnert?",
+   "a": "Eine Tabelle kann keine Benachrichtigung schicken. Öffne sie zum Monatsanfang oder übernimm die wichtigsten Termine in deinen Kalender – die grüne Markierung zeigt dir, was in den nächsten zwei Wochen kommt."
+  }
+ ],
+ "related": [
+  "kontaktliste",
+  "mitgliederliste",
+  "hochzeitsbudget"
+ ],
+ "en": {
+  "slug": "birthday-calendar",
+  "name": "Birthday calendar",
+  "short": "Birthdays with age, countdown and monthly overview",
+  "desc": "Birthday calendar spreadsheet (XLSX): enter names and dates of birth – age, days until the birthday and weekday are calculated, and upcoming ones are highlighted.",
+  "intro": "For every person the list works out the next birthday, the days left, the weekday and the age they will turn. A monthly overview shows when there are many birthdays.",
+  "inside": [
+   "Next birthday and days until it",
+   "Age at the next birthday and weekday",
+   "Highlighting for the next 14 days and today",
+   "Birthdays per month with a chart"
+  ],
+  "uses": [
+   "Family and friends",
+   "Clubs and nursery groups"
+  ]
+ }
+}

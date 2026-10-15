@@ -1,0 +1,88 @@
+{
+ "id": "putzplan",
+ "slug": "putzplan",
+ "cat": "Zuhause",
+ "name": "Putzplan",
+ "short": "Haushaltsaufgaben mit Rhythmus, nächstem Termin und Zuständigkeit",
+ "desc": "Putzplan als Excel-Vorlage (XLSX): Aufgaben mit Rhythmus in Tagen anlegen – das nächste Mal rechnet sich aus „zuletzt erledigt“, Fälliges wird gelb, Überfälliges rot.",
+ "search": "haushalt wg",
+ "intro": "Statt fester Wochentage arbeitet dieser Putzplan mit Rhythmen: Bad alle sieben Tage, Fenster alle 60. Nach dem Putzen aktualisierst du nur das Datum, und die Tabelle sagt dir, was als Nächstes dran ist und wer zuständig ist.",
+ "uses": [
+  "Haushalt in Familie oder WG fair aufteilen",
+  "Seltene Aufgaben wie Backofen oder Entkalken nicht vergessen",
+  "Kindern eigene Aufgaben geben"
+ ],
+ "cols": [
+  [
+   "Aufgabe",
+   "Was zu tun ist."
+  ],
+  [
+   "Raum",
+   "Wo – zum Filtern nach Räumen."
+  ],
+  [
+   "Alle … Tage",
+   "Der Rhythmus in Tagen: 1 täglich, 7 wöchentlich, 14 alle zwei Wochen, 30 monatlich."
+  ],
+  [
+   "Zuletzt erledigt",
+   "Datum des letzten Putzens. Das ist das einzige Feld, das du regelmäßig änderst."
+  ],
+  [
+   "Nächstes Mal",
+   "Zuletzt erledigt plus Rhythmus."
+  ],
+  [
+   "Fällig in",
+   "Nächstes Mal minus heute in Tagen. Negativ heißt überfällig (rot), 0 oder 1 heißt heute oder morgen (gelb)."
+  ],
+  [
+   "Wer",
+   "Zuständige Person aus der Namensliste rechts."
+  ],
+  [
+   "Notiz",
+   "Putzmittel, Tipps, Absprachen."
+  ],
+  [
+   "Überblick",
+   "Wie viele Aufgaben überfällig sind und wie viele heute oder morgen anstehen."
+  ],
+  [
+   "Aufgaben",
+   "Rechts: ZÄHLENWENN zählt, wie viele Aufgaben jede Person hat – gut, um die Arbeit gerecht zu verteilen. Die Namen in den gelben Feldern darfst du ändern."
+  ]
+ ],
+ "tips": [
+  "Sortier nach „Fällig in“, dann steht das Dringendste oben."
+ ],
+ "faq": [
+  {
+   "q": "Wie trage ich am schnellsten das heutige Datum ein?",
+   "a": "In den meisten Tabellenprogrammen fügt Strg + Punkt (Mac: Cmd + Punkt oder Ctrl + ;) das heutige Datum ein. Hier im Browser tippst du das Datum einfach ein, etwa 15.10.2026."
+  }
+ ],
+ "related": [
+  "aufgabenliste",
+  "essensplan",
+  "umzugscheckliste"
+ ],
+ "en": {
+  "slug": "cleaning-schedule",
+  "name": "Cleaning schedule",
+  "short": "Household chores with interval, next date and who does it",
+  "desc": "Cleaning schedule spreadsheet (XLSX): set an interval in days for each chore – the next date follows from the last time, due chores turn yellow and overdue ones red.",
+  "intro": "Instead of fixed weekdays this schedule works with intervals: bathroom every 7 days, windows every 60. After cleaning you update one date and the sheet tells you what is next and whose turn it is.",
+  "inside": [
+   "Interval in days and last done date",
+   "Next date and days until due",
+   "Yellow/red highlighting",
+   "Tasks per person"
+  ],
+  "uses": [
+   "Families and flat shares",
+   "Not forgetting rare chores"
+  ]
+ }
+}

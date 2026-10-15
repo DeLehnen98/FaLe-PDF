@@ -1,0 +1,70 @@
+{
+ "id": "vollmacht-behoerde",
+ "group": "vollmacht",
+ "tool": "power-of-attorney",
+ "order": 33,
+ "name": "Vollmacht für einen Behördengang",
+ "short": "Jemanden zum Amt schicken",
+ "desc": "Vollmacht für Behördengänge: Muster, damit eine Vertrauensperson bei Amt oder Bürgerbüro für dich Anträge stellt oder Dokumente abholt – mit Hinweisen, was persönlich sein muss.",
+ "search": "amt behörde bürgerbüro vollmacht ausweis abholen",
+ "when": [
+  "Du kannst einen Termin beim Amt nicht selbst wahrnehmen und möchtest jemanden schicken – etwa um einen fertigen Ausweis abzuholen, Unterlagen einzureichen oder eine Bescheinigung zu beantragen."
+ ],
+ "must": [
+  "Deine Daten mit Geburtsdatum",
+  "Name und Anschrift der bevollmächtigten Person",
+  "Die Behörde und die konkrete Angelegenheit",
+  "Gültigkeit",
+  "Deine Unterschrift"
+ ],
+ "notes": [
+  "Manches geht nur persönlich, etwa der Antrag auf einen Personalausweis oder Reisepass (Fingerabdrücke, Unterschrift). Das Abholen ist mit Vollmacht dagegen oft möglich – frag vorher beim Amt.",
+  "Viele Ämter haben eigene Vollmachtsformulare auf ihrer Website.",
+  "Die bevollmächtigte Person bringt ihren Ausweis und deinen Ausweis bzw. eine Kopie mit."
+ ],
+ "faq": [
+  {
+   "q": "Wie genau muss ich die Angelegenheit beschreiben?",
+   "a": "So konkret wie möglich, z. B. „Abholung meines neuen Personalausweises“. Eine zu allgemeine Vollmacht wird oft nicht akzeptiert."
+  }
+ ],
+ "fields": {
+  "purpose": "authority",
+  "gName": "Thomas Muster",
+  "gStreet": "Birkenallee 8",
+  "gCity": "34117 Kassel",
+  "aName": "Ingrid Muster",
+  "aStreet": "Weserstraße 19",
+  "aCity": "34125 Kassel",
+  "office": "Bürgerbüro der Stadt Musterstadt",
+  "matter": "Abholung meines neuen Personalausweises",
+  "valid": "revoke"
+ },
+ "related": [
+  "vollmacht-post",
+  "vollmacht-kfz-zulassung",
+  "widerspruch-bescheid"
+ ],
+ "doc": [
+  [
+   "Vollmachtgeber/in",
+   "Thomas Muster, Birkenallee 8, 34117 Kassel"
+  ],
+  [
+   "Bevollmächtigte Person",
+   "Ingrid Muster, Weserstraße 19, 34125 Kassel"
+  ],
+  [
+   "Text",
+   "Hiermit bevollmächtige ich …, mich gegenüber Bürgerbüro der Stadt Musterstadt in folgender Angelegenheit zu vertreten: Abholung meines neuen Personalausweises. Die Vollmacht umfasst das Stellen von Anträgen, die Abgabe und Entgegennahme von Erklärungen und Unterlagen sowie die Abholung von Bescheiden und Dokumenten."
+  ],
+  [
+   "Gültigkeit",
+   "Bis auf Widerruf"
+  ],
+  [
+   "Unterschriften",
+   "Vollmachtgeber/in; Unterschriftsprobe der bevollmächtigten Person"
+  ]
+ ]
+}

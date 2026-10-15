@@ -1,0 +1,80 @@
+{
+ "id": "essensplan",
+ "slug": "essensplan",
+ "cat": "Zuhause",
+ "name": "Essensplan & Einkaufsliste",
+ "short": "Wochenplan für alle Mahlzeiten und Einkaufsliste mit Kosten",
+ "desc": "Essensplan mit Einkaufsliste als Excel-Vorlage (XLSX): Mahlzeiten für die Woche planen, Einkäufe abhaken und die ungefähren Kosten im Blick behalten.",
+ "search": "",
+ "intro": "Zwei Blätter: Im Wochenplan stehen Frühstück, Mittag, Abendessen und Snacks für sieben Tage. Die Einkaufsliste daneben sammelt die Zutaten nach Kategorien; abgehakte Artikel werden grau, und die offenen Kosten rechnen sich mit.",
+ "uses": [
+  "Familienessen für die Woche planen und Reste verwerten",
+  "Nur einmal pro Woche einkaufen gehen",
+  "Das Essensbudget kontrollieren"
+ ],
+ "cols": [
+  [
+   "Montag · Dienstag · Mittwoch · Donnerstag · Freitag · Samstag · Sonntag",
+   "Die Spalten des Wochenplans – pro Tag eine Zelle je Mahlzeit."
+  ],
+  [
+   "Artikel",
+   "Was eingekauft werden soll."
+  ],
+  [
+   "Menge",
+   "Wie viel."
+  ],
+  [
+   "Einheit",
+   "Packung, kg, Stück …"
+  ],
+  [
+   "Kategorie",
+   "Obst & Gemüse, Vorrat … – so lässt sich die Liste nach Gängen im Laden sortieren."
+  ],
+  [
+   "Preis (ca.)",
+   "Geschätzter Preis."
+  ],
+  [
+   "Erledigt",
+   "Ein ✓ aus der Liste hakt den Artikel ab; die Zeile wird grau."
+  ],
+  [
+   "Übersicht",
+   "Zählt die offenen Artikel und summiert die offenen und die gesamten Kosten mit ZÄHLENWENNS und SUMMEWENN."
+  ]
+ ],
+ "tips": [
+  "Plan einen Resteabend ein – das spart Geld und Lebensmittel."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich die Liste auf dem Handy abhaken?",
+   "a": "Ja, in jedem Tabellenprogramm auf dem Handy. Oder du öffnest die Vorlage hier im Browser und änderst „Erledigt“ direkt."
+  }
+ ],
+ "related": [
+  "monatsbudget",
+  "putzplan",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "meal-plan-shopping-list",
+  "name": "Meal plan & shopping list",
+  "short": "Weekly meal plan and a shopping list with costs",
+  "desc": "Meal plan and shopping list spreadsheet (XLSX): plan the meals for the week, tick off your shopping and keep an eye on the approximate cost.",
+  "intro": "Two sheets: a weekly plan for breakfast, lunch, dinner and snacks, and a shopping list by category. Ticked items turn grey and the open cost is totalled.",
+  "inside": [
+   "Seven days × four meals",
+   "Shopping list with categories and prices",
+   "Tick-off column with grey-out",
+   "Open items and cost"
+  ],
+  "uses": [
+   "Family meal planning",
+   "Keeping to a food budget"
+  ]
+ }
+}

@@ -1,0 +1,169 @@
+{
+ "id": "ausbildung-fachkraft-lagerlogistik",
+ "field": "ausbildung",
+ "name": "Ausbildung Fachkraft für Lagerlogistik",
+ "search": "ausbildung fachkraft lagerlogistik fachlagerist lager logistik azubi stapler warenannahme bewerbung",
+ "short": "Wareneingang, Lager, Versand – auch als Fachlagerist.",
+ "desc": "Bewerbung für die Ausbildung zur Fachkraft für Lagerlogistik oder zum Fachlageristen: Muster-Anschreiben für Hauptschüler, Abiturientin und Umsteiger mit Lebenslauf.",
+ "intro": "In der Lagerlogistik nimmst du Ware an, prüfst sie, lagerst sie ein, stellst Aufträge zusammen und planst den Versand. Betriebe suchen Azubis, die ordentlich und körperlich fit sind und mit Zahlen umgehen können. Erzähl von Jobs, in denen du Ware bewegt oder sortiert hast.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Ordnung und Genauigkeit",
+  "Rechnen mit Mengen und Gewichten",
+  "Körperliche Fitness",
+  "Bereitschaft zu Schichtarbeit, je nach Betrieb"
+ ],
+ "letters": [
+  {
+   "label": "Hauptschüler mit Erfahrung im Getränkemarkt",
+   "level": "ausbildung",
+   "position": "Auszubildender zur Fachkraft für Lagerlogistik",
+   "to": {
+    "org": "Nordwest Logistik GmbH",
+    "sal": "f",
+    "contact": "Bruns",
+    "street": "Am Güterverkehrszentrum 6",
+    "city": "26129 Oldenburg"
+   },
+   "body": [
+    "jeden Samstag sortiere ich in einem Getränkemarkt Leergut, räume Paletten ein und helfe bei der Anlieferung. Der Fahrer hat mir gezeigt, wie man eine Palette richtig packt, damit nichts kippt. Seitdem will ich wissen, wie so etwas im großen Lager funktioniert.",
+    "Ich mache im Sommer meinen Hauptschulabschluss an der Oberschule Eversten. Mathe liegt mir, besonders Rechnen mit Mengen und Gewichten. Im Praktikum bei einem Baustoffhändler habe ich Lieferscheine mit der Ware verglichen und Fehlmengen gemeldet.",
+    "Schichtarbeit ist für mich kein Problem. Mit dem Rad bin ich in 15 Minuten bei Ihnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Interesse an Abläufen",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Fachkraft für Lagerlogistik",
+   "to": {
+    "org": "Emsland Versandhandel GmbH",
+    "sal": "m",
+    "contact": "Kötter",
+    "street": "Industriepark 14",
+    "city": "49716 Meppen"
+   },
+   "body": [
+    "ein Studium kam für mich nach dem Abitur nicht in Frage, Logistik dagegen schon. Mich fasziniert, dass eine Bestellung abends um zehn eingeht und am nächsten Morgen schon unterwegs ist. Ich möchte wissen, was dazwischen passiert.",
+    "In meinem Ferienjob bei einem Online-Händler habe ich im Versand gearbeitet: Pakete gepackt, Etiketten gedruckt, Retouren geprüft. In der Schule hatte ich Mathe als Prüfungsfach und kann gut mit Tabellen umgehen.",
+    "Später kann ich mir eine Weiterbildung zur Logistikmeisterin vorstellen. Erst einmal möchte ich aber das Lager von Grund auf kennenlernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Bescheinigung Ferienjob"
+   ],
+   "from": [
+    "Antonia Wilkens",
+    "Am Hasepark 7",
+    "49716 Meppen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 5,
+  "name": "Yusuf Demir",
+  "title": "Schüler",
+  "street": "Hauptstraße 90",
+  "city": "26122 Oldenburg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe (Minijob, samstags)",
+    "Getränkemarkt am Damm",
+    "Oldenburg",
+    "- Leergut sortieren, Paletten einräumen\n- Warenannahme mit dem Fahrer"
+   ],
+   [
+    "05/2025",
+    "05/2025",
+    "Schülerpraktikum (2 Wochen)",
+    "Baustoffe Oltmanns",
+    "Oldenburg",
+    "- Abgleich Lieferschein und Ware"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Hauptschulabschluss (voraussichtlich)",
+    "Oberschule Eversten",
+    "Oldenburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Ware einräumen",
+    4
+   ],
+   [
+    "Rechnen",
+    3
+   ],
+   [
+    "Ordnung",
+    4
+   ],
+   [
+    "Körperliche Fitness",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fitnessstudio, Fußball"
+ },
+ "do": [
+  "Nebenjobs mit Ware erwähnen (Getränkemarkt, Supermarkt, Versand).",
+  "Genauigkeit mit einem Beispiel zeigen.",
+  "Schichtbereitschaft klar sagen, wenn es stimmt."
+ ],
+ "dont": [
+  "Fachkraft und Fachlagerist verwechseln – schau, wofür der Betrieb ausbildet.",
+  "Rechtschreibfehler im Firmennamen.",
+  "Rückenprobleme verschweigen, wenn sie dich wirklich einschränken."
+ ],
+ "questions": [
+  "Wie würden Sie eine Palette mit unterschiedlich schweren Kartons packen?",
+  "Was machen Sie, wenn auf dem Lieferschein mehr steht als geliefert wurde?",
+  "Können Sie Schicht arbeiten?",
+  "Warum Logistik?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Fachkraft für Lagerlogistik oder Fachlagerist?",
+   "a": "Der Fachlagerist ist die kürzere Ausbildung (zwei Jahre), die Fachkraft dauert drei Jahre und umfasst mehr Planung und Organisation. Nach dem Fachlageristen kannst du oft ein drittes Jahr anhängen."
+  }
+ ],
+ "related": [
+  "lagerist",
+  "kommissionierer",
+  "staplerfahrer",
+  "ausbildung-berufskraftfahrer"
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "id": "qualitaetspruefer",
+ "field": "industrie",
+ "name": "Qualitätsprüfer/in",
+ "search": "qualitätsprüfer qualitätsprüferin qualitätssicherung qs messtechnik prüfer wareneingang endkontrolle industrie bewerbung",
+ "short": "Messen, prüfen, dokumentieren – in Wareneingang und Fertigung.",
+ "desc": "Bewerbung als Qualitätsprüfer/in in der Industrie: Muster-Anschreiben für Zerspaner mit Messerfahrung und Produktionshelferin mit Prüferfahrung, mit Lebenslauf.",
+ "intro": "Qualitätsprüferinnen und -prüfer kontrollieren Teile im Wareneingang, in der Fertigung und vor der Auslieferung, messen mit Messschieber, Bügelmessschraube und Messmaschine und dokumentieren Abweichungen. Gesucht sind Genauigkeit, Zeichnungsverständnis und Durchhaltevermögen bei wiederkehrenden Prüfungen.",
+ "lookFor": [
+  "Technische Ausbildung oder Erfahrung in der Fertigung",
+  "Messmittel und Zeichnungslesen",
+  "Genauigkeit und Ausdauer",
+  "Dokumentation, Prüfberichte",
+  "Schichtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Zerspaner wechselt in die Qualitätssicherung",
+   "level": "erfahren",
+   "position": "Qualitätsprüfer Messraum",
+   "to": {
+    "org": "Präzisionsteile Hohenlohe GmbH",
+    "sal": "m",
+    "contact": "Weidner",
+    "street": "Industriestraße 5",
+    "city": "74653 Künzelsau"
+   },
+   "body": [
+    "an der CNC-Maschine habe ich jedes Teil selbst gemessen, bevor es in die Kiste ging, und dabei gemerkt, dass mir das Messen fast mehr Spaß macht als das Fräsen. Seit einem Jahr springe ich im Messraum ein, wenn Kollegen fehlen, und habe die Koordinatenmessmaschine bedienen gelernt.",
+    "Ich bin Zerspanungsmechaniker mit sieben Jahren Erfahrung, lese Zeichnungen inklusive Form- und Lagetoleranzen und kenne die typischen Fehlerbilder an Dreh- und Frästeilen. Erstmusterprüfberichte habe ich mit erstellt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Produktionshelferin mit Prüferfahrung",
+   "level": "quereinstieg",
+   "position": "Qualitätsprüferin Endkontrolle",
+   "to": {
+    "org": "Elektrokomponenten Tauber",
+    "sal": "f",
+    "contact": "Ehrlich",
+    "street": "Gewerbering 20",
+    "city": "97941 Tauberbischofsheim"
+   },
+   "body": [
+    "optische Kontrolle von Platinen ist seit drei Jahren mein Arbeitsplatz: Lötstellen, Bauteile, Beschriftung. Ich finde Fehler, die andere übersehen, sagt meine Schichtleiterin, und meine Fehlerquote bei Audits liegt bei null.",
+    "Ich möchte in die Endkontrolle eines Herstellers wechseln, in der ich auch elektrisch prüfe und Prüfberichte schreibe. Einen Kurs zu Messtechnik-Grundlagen habe ich im Frühjahr gemacht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Natalia Wolf",
+    "Hauptstraße 70",
+    "97941 Tauberbischofsheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "classic",
+  "accent": 5,
+  "name": "Florian Ehrmann",
+  "title": "Zerspanungsmechaniker, Qualitätsprüfer",
+  "street": "Hauptstraße 30",
+  "city": "74653 Künzelsau",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Zerspanungsmechaniker, ab 2025 Vertretung im Messraum",
+    "Antriebsteile Kocher GmbH",
+    "Ingelfingen",
+    "- CNC-Fräsen und -Drehen\n- Messung an der Koordinatenmessmaschine\n- Mitarbeit an Erstmusterprüfberichten"
+   ],
+   [
+    "2016",
+    "2019",
+    "Auszubildender Zerspanungsmechaniker",
+    "Antriebsteile Kocher GmbH",
+    "Ingelfingen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Abschlussprüfung Zerspanungsmechaniker",
+    "IHK Heilbronn-Franken",
+    "Heilbronn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Messtechnik",
+    4
+   ],
+   [
+    "Zeichnungslesen",
+    5
+   ],
+   [
+    "Koordinatenmessmaschine",
+    3
+   ],
+   [
+    "Prüfdokumentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Motorradfahren, Feuerwehr"
+ },
+ "do": [
+  "Messmittel und Prüfarten nennen.",
+  "Fehlerquote oder Auditergebnisse, wenn gut.",
+  "Dokumentation erwähnen."
+ ],
+ "dont": [
+  "Nur „Ich bin genau“.",
+  "Messmittel aufzählen, die du nie benutzt hast.",
+  "Schichtbereitschaft offenlassen."
+ ],
+ "questions": [
+  "Wie prüfen Sie eine Bohrung mit Toleranz?",
+  "Was tun Sie mit einem Teil, das knapp außerhalb liegt?",
+  "Wie lesen Sie Form- und Lagetoleranzen?",
+  "Wie bleiben Sie bei Serienprüfungen konzentriert?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Weiterbildung?",
+   "a": "Für den Einstieg reicht oft eine technische Ausbildung. Wer weiterkommen will, macht Kurse in Messtechnik oder Qualitätsmanagement, z. B. zum Qualitätsbeauftragten."
+  }
+ ],
+ "related": [
+  "zerspanungsmechaniker",
+  "chemikant",
+  "industriemechaniker",
+  "produktionshelfer"
+ ]
+}

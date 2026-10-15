@@ -1,0 +1,161 @@
+{
+ "id": "ausbildung-landwirt",
+ "field": "ausbildung",
+ "name": "Ausbildung Landwirt/in",
+ "search": "ausbildung landwirt landwirtin bauernhof landwirtschaft milchvieh ackerbau azubi grüner beruf bewerbung",
+ "short": "Hof, Tiere, Ackerbau – auch für Leute ohne eigenen Betrieb.",
+ "desc": "Bewerbung für die Ausbildung zum Landwirt / zur Landwirtin: Muster-Anschreiben für Hofkind, Stadtkind und Abiturientin, Lebenslauf und Tipps zum Betriebswechsel.",
+ "intro": "Landwirtinnen und Landwirte kümmern sich um Tiere, Felder und Maschinen, planen Fruchtfolgen und rechnen mit Preisen. Viele Azubis kommen von einem Hof, doch Betriebe nehmen auch Leute ohne landwirtschaftlichen Hintergrund. Wichtig sind Zupacken, Verantwortung und Verständnis dafür, dass Tiere auch sonntags versorgt werden müssen.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss, Abitur ebenso gefragt",
+  "Körperliche Fitness und Arbeit bei jedem Wetter",
+  "Umgang mit Tieren und Maschinen",
+  "Verantwortungsbewusstsein",
+  "Führerschein oder Bereitschaft dazu (Traktor: Klasse T)"
+ ],
+ "letters": [
+  {
+   "label": "Stadtkind ohne eigenen Hof",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Landwirt",
+   "to": {
+    "org": "Milchhof Jensen",
+    "sal": "m",
+    "contact": "Jensen",
+    "street": "Dorfstraße 22",
+    "city": "25840 Friedrichstadt"
+   },
+   "body": [
+    "einen eigenen Hof hat in meiner Familie niemand. Ich bin in Husum aufgewachsen und habe in den letzten drei Sommern auf einem Milchviehbetrieb in der Nachbarschaft ausgeholfen: Kälber tränken, Boxen einstreuen, beim Melken zusehen und später selbst ansetzen. Seitdem weiß ich, was ich werden will.",
+    "Mir ist klar, dass ich gegenüber Hofkindern einiges aufholen muss, zum Beispiel beim Traktorfahren. Dafür bringe ich mit, dass ich mir das bewusst ausgesucht habe. Den Realschulabschluss mache ich im Sommer.",
+    "Ihre Anzeige habe ich im Bauernblatt gesehen. Für eine Probewoche komme ich gern und bringe Gummistiefel mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Bestätigung Ferienarbeit"
+   ]
+  },
+  {
+   "label": "Hofnachfolgerin, die woanders lernen möchte",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Landwirtin",
+   "to": {
+    "org": "Gut Wittenfelde",
+    "sal": "f",
+    "contact": "Carstens",
+    "street": "Gutsweg 1",
+    "city": "24376 Kappeln"
+   },
+   "body": [
+    "zu Hause haben wir einen Ackerbaubetrieb mit Zuckerrüben und Raps, den ich später übernehmen soll. Gerade deshalb möchte ich die Ausbildung nicht nur bei meinen Eltern machen, sondern auf Betrieben, die anders arbeiten. Ihr Gut betreibt Ackerbau und Schweinehaltung und setzt seit einigen Jahren auf Direktsaat, das interessiert mich besonders.",
+    "Den Traktor fahre ich seit meinem 16. Lebensjahr auf unseren Flächen, mit Führerschein Klasse T. Ich kann einfache Wartungen selbst machen und habe bei der Ernte mitgeholfen, seit ich denken kann. Im Juni mache ich Abitur.",
+    "Ein Kennenlernen auf dem Hof wäre schön, am besten vor der Ernte."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Führerschein (Kopie)"
+   ],
+   "from": [
+    "Frieda Matthiesen",
+    "Westerholm 4",
+    "24392 Süderbrarup"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 1,
+  "name": "Hauke Petersen",
+  "title": "Schüler",
+  "street": "Norderstraße 18",
+  "city": "25813 Husum",
+  "exp": [
+   [
+    "2023",
+    "2025",
+    "Ferienarbeit (Sommer)",
+    "Milchviehbetrieb Brodersen",
+    "Husum",
+    "- Kälberaufzucht, Einstreuen, Melken\n- Mithilfe bei der Grasernte"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Theodor-Storm-Schule",
+    "Husum",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Tieren",
+    4
+   ],
+   [
+    "Körperliche Arbeit",
+    4
+   ],
+   [
+    "Technik-Grundlagen",
+    3
+   ],
+   [
+    "Verantwortung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Dänisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Handball, Angeln"
+ },
+ "do": [
+  "Erfahrung auf Höfen konkret beschreiben.",
+  "Zeigen, dass du Wetter, Wochenende und Stallarbeit kennst.",
+  "Betrieb und Schwerpunkt (Milchvieh, Ackerbau, Bio) kennen."
+ ],
+ "dont": [
+  "Landleben romantisieren.",
+  "Tierhaltung kritisieren, ohne den Betrieb zu kennen.",
+  "Den Führerschein-Wunsch verschweigen – Betriebe helfen oft."
+ ],
+ "questions": [
+  "Warum Landwirtschaft?",
+  "Haben Sie schon mit Tieren gearbeitet?",
+  "Wie gehen Sie mit Wochenenddiensten um?",
+  "Was interessiert Sie mehr: Tiere oder Ackerbau?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Muss ich den Betrieb während der Ausbildung wechseln?",
+   "a": "Vorgeschrieben ist das nicht überall, aber viele Azubis wechseln nach einem Jahr den Betrieb, um verschiedene Schwerpunkte kennenzulernen. Frag die Landwirtschaftskammer in deinem Bundesland."
+  }
+ ],
+ "related": [
+  "ausbildung-gaertner",
+  "tierpfleger",
+  "gaertner",
+  "ausbildung-berufskraftfahrer"
+ ]
+}

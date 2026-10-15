@@ -1,0 +1,61 @@
+{
+ "id": "einverstaendnis-klassenfahrt",
+ "group": "familie",
+ "tool": "din-letter",
+ "order": 31,
+ "name": "Einverständniserklärung Klassenfahrt",
+ "short": "Erlaubnis, Notfallkontakt und wichtige Hinweise",
+ "desc": "Einverständniserklärung für die Klassenfahrt als Muster: Teilnahme, Notfallnummer, Allergien, Medikamente und Erlaubnisse wie Schwimmen – ausfüllen und unterschreiben.",
+ "search": "klassenfahrt schullandheim einverständnis eltern erlaubnis",
+ "when": [
+  "Vor einer Klassenfahrt oder einem Schullandheim braucht die Schule eine schriftliche Erklärung der Eltern. Oft gibt die Schule ein eigenes Formular aus – dann nimm das. Fehlt es oder willst du zusätzliche Hinweise geben, hilft diese Vorlage."
+ ],
+ "must": [
+  "Name und Klasse des Kindes, Ziel und Zeitraum der Fahrt",
+  "Eure Erreichbarkeit während der Fahrt",
+  "Allergien, Unverträglichkeiten, Medikamente",
+  "Erlaubnisse: Schwimmen, Freizeit in kleinen Gruppen ohne Aufsicht, Fotos",
+  "Unterschrift aller Sorgeberechtigten"
+ ],
+ "notes": [
+  "Medikamente gibst du mit Einnahmeplan und genauer Dosierung mit – am besten in der Originalverpackung.",
+  "Ob dein Kind schwimmen darf, hängt auch davon ab, wie sicher es schwimmt. Schreib das ehrlich dazu.",
+  "Bei gemeinsamem Sorgerecht unterschreiben beide Elternteile."
+ ],
+ "faq": [
+  {
+   "q": "Was ist mit der Krankenversicherungskarte?",
+   "a": "Gib die Gesundheitskarte oder eine Kopie mit, je nachdem, was die Schule wünscht. Für Fahrten ins Ausland ist die Rückseite der Karte (Europäische Krankenversicherungskarte) wichtig."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "entschuldigung-schule",
+  "vollmacht-kind-abholen",
+  "kuendigung-kita-platz"
+ ],
+ "from": [
+  "Katrin Neumann",
+  "Rosenweg 14",
+  "79098 Freiburg im Breisgau"
+ ],
+ "to": {
+  "org": "Muster-Gymnasium",
+  "attn": "Herr Kurz, Klassenleitung 7a",
+  "street": "Schulweg 12",
+  "city": "79100 Freiburg im Breisgau"
+ },
+ "letter": {
+  "subject": "Einverständniserklärung zur Klassenfahrt der 7a nach [Ziel] vom [Datum] bis [Datum]",
+  "salutation": "Sehr geehrter Herr Kurz,",
+  "body": [
+   "wir sind damit einverstanden, dass unsere Tochter Lena Neumann an der Klassenfahrt teilnimmt. Während der Fahrt sind wir unter 0761 1234567 und 0151 98765432 erreichbar.",
+   "Lena hat eine Nussallergie (Haselnuss und Walnuss) und nimmt keine regelmäßigen Medikamente. Ein Notfallset mit Anleitung geben wir ihr mit. Sie schwimmt sicher und darf unter Aufsicht schwimmen gehen. In der Freizeit darf sie sich in Gruppen von mindestens drei Kindern ohne Begleitung im Ort bewegen, wenn die Lehrkräfte das erlauben.",
+   "Fotos, auf denen Lena zu sehen ist, dürfen für den Klassenrückblick, aber nicht auf der Website der Schule verwendet werden."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ }
+}

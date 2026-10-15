@@ -1,0 +1,165 @@
+{
+ "id": "ausbildung-tfa",
+ "field": "ausbildung",
+ "name": "Ausbildung Tiermedizinische Fachangestellte (TFA)",
+ "search": "ausbildung tfa tiermedizinische fachangestellte tierarzthelferin tierarztpraxis tierklinik tiere azubi bewerbung",
+ "short": "Tierarztpraxis oder Tierklinik – Assistenz, Labor, Empfang.",
+ "desc": "Bewerbung für die Ausbildung zur Tiermedizinischen Fachangestellten (TFA): Muster-Anschreiben für Schülerin und Abiturienten, Lebenslauf und Tipps für den Praxisalltag.",
+ "intro": "TFA assistieren bei Untersuchungen und Operationen, halten Tiere fest, arbeiten im Labor, beraten Besitzer und kümmern sich um Termine. Tierliebe allein reicht nicht: Praxen suchen Azubis, die bei blutigen Wunden ruhig bleiben, Hygiene ernst nehmen und mit besorgten Menschen umgehen können.",
+ "lookFor": [
+  "Mittlerer Schulabschluss, Hauptschulabschluss je nach Praxis",
+  "Ruhiger Umgang mit Tieren",
+  "Keine Angst vor Blut, Kot und Eingriffen",
+  "Freundlich zu besorgten Besitzern",
+  "Sorgfalt bei Hygiene und Medikamenten"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin mit Reiterfahrung und Praktikum",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Tiermedizinischen Fachangestellten",
+   "to": {
+    "org": "Tierarztpraxis am Stadtwald",
+    "sal": "f",
+    "contact": "Dr. Lindemann",
+    "street": "Waldweg 3",
+    "city": "33615 Bielefeld"
+   },
+   "body": [
+    "an meinem zweiten Praktikumstag in Ihrer Praxis kam ein Hund nach einem Autounfall. Ich durfte ihn mit festhalten, während Sie die Wunde versorgt haben. Mir war mulmig, aber ich habe nicht losgelassen. Abends wusste ich: Das ist der richtige Beruf.",
+    "Seit sechs Jahren reite ich und helfe im Stall bei Fütterung, Hufpflege und kleineren Behandlungen. Im Praktikum habe ich außerdem Blutproben beschriftet, Behandlungsräume desinfiziert und am Empfang Termine eingetragen. Den Realschulabschluss mache ich im Juni.",
+    "Ihre Praxis wäre meine erste Wahl."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturient, der sich auf Tiermedizin vorbereitet",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Tiermedizinischen Fachangestellten",
+   "to": {
+    "org": "Kleintierklinik Ostwestfalen",
+    "sal": "m",
+    "contact": "Wiegand",
+    "street": "Detmolder Straße 400",
+    "city": "33605 Bielefeld"
+   },
+   "body": [
+    "für das Studium der Tiermedizin reicht mein Abiturschnitt vorerst nicht. Eine Ausbildung zum TFA ist für mich aber kein Plan B, sondern eine Grundlage, auf die ich in jedem Fall bauen will. Eine Klinik mit Notdienst ist dafür der beste Ort.",
+    "Ehrenamtlich gehe ich seit drei Jahren jeden Samstag ins Tierheim. Dort helfe ich bei der Versorgung von Katzen, auch von kranken und ängstlichen. Vor Nachtschichten oder Wochenenddiensten habe ich keine Angst.",
+    "Ich bin ab August verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Bescheinigung Tierheim"
+   ],
+   "from": [
+    "Paul Siebert",
+    "Jöllenbecker Straße 33",
+    "33613 Bielefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 1,
+  "name": "Marlene Fischer",
+  "title": "Schülerin",
+  "street": "Stapenhorststraße 50",
+  "city": "33615 Bielefeld",
+  "exp": [
+   [
+    "01/2026",
+    "01/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Tierarztpraxis am Stadtwald",
+    "Bielefeld",
+    "- Tiere halten, Räume desinfizieren\n- Blutproben beschriften, Empfang"
+   ],
+   [
+    "2020",
+    "",
+    "Mithilfe im Reitstall",
+    "Reitverein Quelle",
+    "Bielefeld",
+    "- Fütterung, Hufpflege"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschulabschluss (voraussichtlich)",
+    "Realschule Jöllenbeck",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Tieren",
+    5
+   ],
+   [
+    "Hygiene",
+    3
+   ],
+   [
+    "Ruhe in Stresssituationen",
+    4
+   ],
+   [
+    "Empfang und Telefon",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Reiten, Fotografie"
+ },
+ "do": [
+  "Praktikum in Praxis oder Klinik erwähnen.",
+  "Eine Situation beschreiben, in der du ruhig geblieben bist.",
+  "Wochenend- und Notdienste ansprechen."
+ ],
+ "dont": [
+  "„Ich liebe Tiere“ als Hauptargument.",
+  "Den Besitzerkontakt unterschätzen.",
+  "Verschweigen, dass dir bei Blut schlecht wird."
+ ],
+ "questions": [
+  "Wie halten Sie eine ängstliche Katze fest?",
+  "Was tun Sie, wenn ein Besitzer weinend am Empfang steht?",
+  "Wie stehen Sie zu Einschläferungen?",
+  "Welche Tiere kennen Sie gut?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Arzthelferin für Tiere – heißt das so?",
+   "a": "Die offizielle Bezeichnung ist Tiermedizinische/r Fachangestellte/r (TFA). Früher sagte man Tierarzthelferin. Nimm im Anschreiben die aktuelle Bezeichnung."
+  }
+ ],
+ "related": [
+  "tiermedizinische-fachangestellte",
+  "tierpfleger",
+  "ausbildung-mfa",
+  "ausbildung-zfa"
+ ]
+}

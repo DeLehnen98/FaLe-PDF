@@ -1,0 +1,93 @@
+{
+ "id": "schichtplan",
+ "slug": "schichtplan",
+ "cat": "Arbeit",
+ "name": "Schichtplan",
+ "short": "Wochenplan mit Früh-, Spät- und Nachtschicht und Mindestbesetzung",
+ "desc": "Schichtplan als Excel-Vorlage (XLSX): Früh-, Spät- und Nachtschicht per Kürzel eintragen, Stunden je Person und Besetzung pro Tag automatisch – Unterbesetzung wird rot.",
+ "search": "dienstplan rota",
+ "intro": "Ein Wochenplan für Teams im Schichtdienst. Pro Person und Tag trägst du nur ein Kürzel ein. Die Vorlage rechnet die Stunden jeder Person aus der Schichtlegende und zählt, wie viele Leute in jeder Schicht sind – fehlt jemand zur Mindestbesetzung, wird der Tag rot.",
+ "uses": [
+  "Dienstplan für Pflege, Gastronomie, Einzelhandel oder Produktion",
+  "Kontrollieren, ob jede Schicht ausreichend besetzt ist",
+  "Wochenstunden je Person auf einen Blick"
+ ],
+ "cols": [
+  [
+   "Mitarbeiter/in",
+   "Die Namen im Team, eine Zeile pro Person. Zwei leere Zeilen sind schon vorbereitet."
+  ],
+  [
+   "Mo · Di · Mi · Do · Fr · Sa · So",
+   "Pro Tag ein Kürzel aus der Liste: F (früh), S (spät), N (nacht), U (Urlaub), K (krank) oder X (frei). Jedes Kürzel hat eine eigene Farbe. Das Datum darunter rechnet sich aus „Woche ab“."
+  ],
+  [
+   "Stunden",
+   "Bei den Personen: ZÄHLENWENN zählt, wie oft F, S und N vorkommen, und multipliziert das mit den Stunden der jeweiligen Schicht aus der Legende. In der Legende: die Netto-Stunden einer Schicht."
+  ],
+  [
+   "Schichten",
+   "Wie viele Arbeitsschichten die Person in dieser Woche hat – Urlaub, Krankheit und freie Tage zählen nicht."
+  ],
+  [
+   "Kürzel",
+   "Das Zeichen, das du im Plan einträgst. Die drei Arbeitsschichten F, S und N stehen oben, darunter U, K und X ohne Stunden."
+  ],
+  [
+   "Schicht",
+   "Name der Schicht – kannst du ändern, z. B. in „Mittelschicht“."
+  ],
+  [
+   "Beginn",
+   "Uhrzeit, zu der die Schicht beginnt (gelbes Eingabefeld)."
+  ],
+  [
+   "Ende",
+   "Uhrzeit, zu der sie endet. Liegt das Ende vor dem Beginn, geht die Schicht über Mitternacht – die Formel rechnet dann einen Tag dazu."
+  ],
+  [
+   "Pause (Min.)",
+   "Pause in Minuten, die von der Schicht abgezogen wird."
+  ],
+  [
+   "Mindestbesetzung",
+   "Wie viele Personen mindestens in der Schicht sein sollen. Die Besetzungszeilen unter dem Plan werden rot, wenn es weniger sind."
+  ]
+ ],
+ "tips": [
+  "Kopier das Blatt für die nächste Woche und ändere nur „Woche ab“ – die Daten wandern mit.",
+  "Teilzeit? Leg eine eigene Schicht mit kürzeren Zeiten an, etwa „M“ für Mittags, und erweitere die Formeln in der Spalte „Stunden“ entsprechend."
+ ],
+ "faq": [
+  {
+   "q": "Prüft die Vorlage Ruhezeiten?",
+   "a": "Nein. Die Vorlage zählt Stunden und Besetzung. Ob zwischen zwei Schichten genug Ruhezeit liegt (in Deutschland in der Regel elf Stunden), musst du selbst im Blick behalten – etwa wenn auf eine Spätschicht direkt eine Frühschicht folgt."
+  },
+  {
+   "q": "Kann ich mehr Personen eintragen?",
+   "a": "Ja. Füge Zeilen innerhalb des Plans ein, bevor die Besetzungszeilen beginnen, und zieh die Formeln für „Stunden“ und „Schichten“ nach unten. Den Bereich der Besetzungsformeln passt du einmal an."
+  }
+ ],
+ "related": [
+  "urlaubsplaner",
+  "stundenzettel",
+  "teamurlaub"
+ ],
+ "en": {
+  "slug": "shift-schedule",
+  "name": "Shift schedule",
+  "short": "Weekly plan with early, late and night shifts and minimum staffing",
+  "desc": "Shift schedule spreadsheet (XLSX): enter early, late and night shifts as codes, get hours per person and staffing per day – understaffed shifts turn red.",
+  "intro": "A weekly plan for shift work. Enter one code per person and day; the template calculates each person’s hours from the shift legend and counts the staff per shift, highlighting days below the minimum.",
+  "inside": [
+   "Shift codes with colours (early, late, night, holiday, sick, off)",
+   "Hours per person from the shift times (also over midnight)",
+   "Staff count per shift and day",
+   "Minimum staffing check"
+  ],
+  "uses": [
+   "Care homes, restaurants, shops, production",
+   "Checking staffing before publishing the rota"
+  ]
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "id": "ausbildung-berufskraftfahrer",
+ "field": "ausbildung",
+ "name": "Ausbildung Berufskraftfahrer/in",
+ "search": "ausbildung berufskraftfahrer berufskraftfahrerin lkw führerschein ce güterverkehr personenverkehr bus azubi bewerbung",
+ "short": "Güter- oder Personenverkehr – Führerschein inklusive Ausbildung.",
+ "desc": "Bewerbung für die Ausbildung zum Berufskraftfahrer / zur Berufskraftfahrerin: Muster-Anschreiben für Schulabgänger und Umsteigerin, Lebenslauf und Tipps zum Führerschein.",
+ "intro": "In der Ausbildung lernst du Fahrzeugtechnik, Ladungssicherung, Routenplanung und Vorschriften zu Lenk- und Ruhezeiten. Der passende Führerschein ist Teil der Ausbildung, oft übernimmt der Betrieb die Kosten. Schwerpunkt ist entweder Güter- oder Personenverkehr.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Führerschein Klasse B von Vorteil",
+  "Gesundheitliche Eignung (Untersuchung für den Führerschein)",
+  "Verantwortung im Straßenverkehr",
+  "Bereitschaft zu Touren und frühem Start"
+ ],
+ "letters": [
+  {
+   "label": "Schulabgänger aus einer Fahrerfamilie",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Berufskraftfahrer (Güterverkehr)",
+   "to": {
+    "org": "Spedition Lenz & Söhne GmbH",
+    "sal": "m",
+    "contact": "Lenz",
+    "street": "Am Autohof 4",
+    "city": "36251 Bad Hersfeld"
+   },
+   "body": [
+    "mein Vater fährt seit zwanzig Jahren Fernverkehr. In den Ferien durfte ich ab und zu mit auf Tour, zuletzt nach Rotterdam und zurück. Ich habe gesehen, wie er die Ladung sichert, die Pausen plant und auf der Autobahn auch nach neun Stunden noch ruhig bleibt.",
+    "Mein Hauptschulabschluss kommt im Sommer. Den Pkw-Führerschein mache ich gerade im begleiteten Fahren. Ich schraube gern und kenne mich mit Reifendruck, Ölstand und Beleuchtung aus, weil ich bei uns die Autos der Familie checke.",
+    "Ihre Spedition fährt viel im Nahverkehr rund um Bad Hersfeld. Für den Anfang wäre mir das sehr recht, damit ich abends zu Hause bin."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9"
+   ]
+  },
+  {
+   "label": "Umsteigerin aus der Pflege für den Busverkehr",
+   "level": "quereinstieg",
+   "position": "Auszubildende zur Berufskraftfahrerin (Personenverkehr)",
+   "to": {
+    "org": "Verkehrsbetriebe Fulda-Rhön",
+    "sal": "none",
+    "street": "Petersberger Straße 77",
+    "city": "36037 Fulda"
+   },
+   "body": [
+    "zwölf Jahre in der Altenpflege haben meinem Rücken mehr zugesetzt, als mir lieb ist. Fahren und Menschen begleiten möchte ich weiterhin, nur anders. Deshalb bewerbe ich mich mit 36 bei Ihnen für die Ausbildung im Personenverkehr.",
+    "In der Pflege habe ich gelernt, unter Zeitdruck freundlich zu bleiben und auch mit verwirrten oder ungehaltenen Menschen umzugehen. Seit Jahren fahre ich unseren Pflegedienst-Bus mit Rollstuhlplätzen, sicher und ohne Unfall. Den Führerschein Klasse B habe ich seit 18 Jahren.",
+    "Falls Sie auch eine verkürzte Umschulung anbieten, wäre das für mich ebenfalls interessant. Ich bin ab dem 1. Oktober verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Altenpflege",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Katharina Weigand",
+    "Leipziger Straße 51",
+    "36037 Fulda"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 5,
+  "name": "Dennis Lenz",
+  "title": "Schüler",
+  "street": "Breitenstraße 12",
+  "city": "36251 Bad Hersfeld",
+  "exp": [
+   [
+    "2024",
+    "2025",
+    "Beifahrer in den Ferien (Familie)",
+    "",
+    "",
+    "- Touren nach Rotterdam und Hamburg\n- Ladungssicherung zusehen, Pausenplanung"
+   ],
+   [
+    "2025",
+    "",
+    "Aushilfe Autowäsche (Minijob)",
+    "Waschpark Hersfeld",
+    "Bad Hersfeld",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Hauptschulabschluss (voraussichtlich)",
+    "Gesamtschule Obersberg",
+    "Bad Hersfeld",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Führerschein Klasse B (begleitetes Fahren, in Ausbildung)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fahrzeugpflege",
+    4
+   ],
+   [
+    "Technikverständnis",
+    3
+   ],
+   [
+    "Orientierung",
+    4
+   ],
+   [
+    "Ruhe am Steuer (begleitet)",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Kartfahren, Motorsport schauen"
+ },
+ "do": [
+  "Schwerpunkt Güter- oder Personenverkehr nennen.",
+  "Führerscheinstand angeben.",
+  "Zeigen, dass du Verantwortung im Verkehr ernst nimmst."
+ ],
+ "dont": [
+  "Punkte in Flensburg verschweigen – sie fallen beim Führerschein ohnehin auf.",
+  "Fahren als Abenteuer darstellen.",
+  "Schichtzeiten erst im Vertrag lesen."
+ ],
+ "questions": [
+  "Warum möchten Sie Berufskraftfahrer werden?",
+  "Wie gehen Sie mit Stau und Zeitdruck um?",
+  "Was wissen Sie über Ladungssicherung?",
+  "Können Sie sich Übernachtungen im Fahrzeug vorstellen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Wer bezahlt den Lkw- oder Busführerschein?",
+   "a": "In der Ausbildung ist der Führerschein Teil des Ausbildungsplans, die Kosten trägt in der Regel der Betrieb. Frag im Gespräch, ob es Rückzahlungsklauseln gibt, falls du nach der Ausbildung wechselst."
+  }
+ ],
+ "related": [
+  "lkw-fahrer",
+  "busfahrer",
+  "ausbildung-fachkraft-lagerlogistik",
+  "disponent"
+ ]
+}

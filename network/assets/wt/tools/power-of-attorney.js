@@ -7,6 +7,7 @@
 import { el, T, s, form, userError, ensureCss, isoDate, fmtDate, note, remember, signaturePad, pdfPreview, dateLine } from '../lib/tpl-core.js';
 import { createWriter, collectText, mm } from '../lib/tpl-pdf.js';
 import { missingWarning } from '../lib/unifont.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -93,7 +94,7 @@ const REQ = v => [{ ok: !!s(v.gName), de: 'den Namen des Vollmachtgebers', en: '
 export default {
   labels: { back_to_files: { de: 'Zurück zur Vollmacht', en: 'Back to the form' } },
   options: [],
-  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); briefVorlage('power-of-attorney', 'poa', stage, state, ctx, () => { api = stageFn(stage, state, ctx); }); },
   status(values) {
     const v = values.poa || {};
     const summary = (P[v.purpose] || P.post).title;

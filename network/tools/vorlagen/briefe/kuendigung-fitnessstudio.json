@@ -1,0 +1,57 @@
+{
+ "id": "kuendigung-fitnessstudio",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 5,
+ "name": "Kündigung Fitnessstudio",
+ "short": "Mitgliedschaft im Fitnessstudio kündigen",
+ "desc": "Fitnessstudio kündigen mit Vorlage: Mitgliedsnummer, Standort, Kündigung zum nächstmöglichen Termin – mit ehrlichen Infos zu Fristen und Sonderkündigung. Als PDF.",
+ "search": "fitness gym studio sport mitgliedschaft",
+ "when": [
+  "Du trainierst nicht mehr, ziehst weg oder willst das Studio wechseln. Bei Verträgen, die seit März 2022 geschlossen wurden, gilt nach der Erstlaufzeit meist: Die Mitgliedschaft verlängert sich nur noch auf unbestimmte Zeit und ist dann monatlich kündbar.",
+  "Bei älteren Verträgen steht die Frist im Vertrag oder in den Bedingungen des Studios."
+ ],
+ "must": [
+  "Mitgliedsnummer und, bei Ketten, den Standort",
+  "Kündigung zum nächstmöglichen Zeitpunkt",
+  "Bitte um schriftliche Bestätigung mit dem genauen Ende",
+  "Widerruf der Lastschrift zum Vertragsende"
+ ],
+ "notes": [
+  "Ein Umzug ist nach der Rechtsprechung kein automatischer Grund für eine fristlose Kündigung beim Fitnessstudio. Eine ärztlich bescheinigte Krankheit, die das Training dauerhaft unmöglich macht, kann einer sein – lass dich dann beraten.",
+  "Viele Studios haben online einen Kündigungsbutton. Er ist genauso wirksam wie ein Brief.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich die Mitgliedschaft auch pausieren?",
+   "a": "Manche Studios bieten eine Ruhezeit an, etwa bei Krankheit oder Schwangerschaft. Ob und wie lange, steht im Vertrag. Eine Pause verlängert die Laufzeit oft entsprechend."
+  }
+ ],
+ "fields": {
+  "type": "fitness",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": true,
+  "member": "000815-24",
+  "site": "Musterstadt-Mitte"
+ },
+ "related": [
+  "kuendigung-verein",
+  "kuendigung-streaming",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Sevgi Arslan",
+  "Hafenstraße 21",
+  "28217 Bremen"
+ ],
+ "to": {
+  "org": "FitMuster Studios GmbH",
+  "attn": "Mitgliederverwaltung",
+  "street": "Sportallee 5",
+  "city": "28195 Bremen"
+ }
+}

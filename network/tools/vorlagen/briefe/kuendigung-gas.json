@@ -1,0 +1,58 @@
+{
+ "id": "kuendigung-gas",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 4,
+ "name": "Kündigung Gasvertrag",
+ "short": "Gasliefervertrag kündigen, Zählerstand mitteilen",
+ "desc": "Gasvertrag kündigen mit Vorlage: Kundennummer, Zählernummer und Bitte um Schlussrechnung – mit Infos zu Grundversorgung, Sonderkündigung und Umzug. Kostenlos als PDF.",
+ "search": "gas heizung energie zähler",
+ "when": [
+  "Du ziehst um, wechselst den Anbieter oder baust auf eine andere Heizung um. Die Frist hängt vom Vertrag ab: in der Grundversorgung meist zwei Wochen, bei Sonderverträgen steht sie im Vertrag.",
+  "Wohnst du zur Miete und der Vermieter liefert die Wärme über die Nebenkosten, hast du keinen eigenen Gasvertrag – dann brauchst du diese Kündigung nicht."
+ ],
+ "must": [
+  "Kundennummer und Zählernummer des Gaszählers",
+  "Kündigungszeitpunkt",
+  "Zählerstand mit Datum, sobald du ihn hast",
+  "Schlussrechnung an die neue Adresse",
+  "Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Gaszähler zeigen Kubikmeter. Der Versorger rechnet sie mit Brennwert und Zustandszahl in kWh um – deshalb stimmt deine eigene Rechnung selten auf den Cent.",
+  "Nach einer Preiserhöhung kannst du außerordentlich kündigen. Wähl dann in der Vorlage „Außerordentliche Kündigung“ mit dem Grund „Preiserhöhung“.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Wann sollte ich den Zählerstand ablesen?",
+   "a": "Am Auszugstag oder am letzten Liefertag. Schreib den Stand mit Datum auf und mach ein Foto; die Vorlage kann ihn in den Brief übernehmen."
+  }
+ ],
+ "fields": {
+  "type": "energy",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "customer": "GAS-77 0012 45",
+  "meter": "7GMT0042113"
+ },
+ "related": [
+  "kuendigung-strom",
+  "kuendigung-mietvertrag",
+  "maengelanzeige-wohnung"
+ ],
+ "from": [
+  "Markus Probe",
+  "Am Kirchberg 3",
+  "54290 Trier"
+ ],
+ "to": {
+  "org": "Beispielgas Energie GmbH",
+  "attn": "Vertragsservice",
+  "street": "Postfach 12 34",
+  "city": "54203 Trier"
+ }
+}

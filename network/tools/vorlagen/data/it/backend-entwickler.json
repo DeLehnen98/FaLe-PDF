@@ -1,0 +1,311 @@
+{
+ "id": "backend-entwickler",
+ "field": "it",
+ "name": "Backend-Entwickler/in",
+ "search": "backend entwickler backend developer server api datenbank java python go node microservices bewerbung",
+ "short": "APIs, Datenbanken, Server – das, was man nicht sieht.",
+ "desc": "Bewerbung als Backend-Entwickler/in: Muster-Anschreiben für erfahrene Entwicklerin mit Datenbankfokus und Absolventen mit Abschlussprojekt, mit Lebenslauf.",
+ "intro": "Backend-Entwickler bauen Schnittstellen, Datenmodelle und Dienste, die zuverlässig unter Last laufen. Unternehmen fragen nach Sprachen, Datenbanken, Tests, Sicherheit und Betrieb. Erzähl von einem System, das du verbessert hast, mit Zahlen zu Antwortzeiten, Ausfällen oder Kosten.",
+ "lookFor": [
+  "Eine oder mehrere Backend-Sprachen",
+  "Relationale und andere Datenbanken",
+  "API-Design, Tests, Sicherheit",
+  "Grundlagen in Betrieb und Monitoring",
+  "Teamarbeit mit Code-Reviews"
+ ],
+ "letters": [
+  {
+   "label": "Entwicklerin mit Datenbankfokus",
+   "level": "erfahren",
+   "position": "Backend-Entwicklerin",
+   "to": {
+    "org": "Logistiksoftware Rhein GmbH",
+    "sal": "m",
+    "contact": "Becker",
+    "street": "Rheinallee 12",
+    "city": "55116 Mainz"
+   },
+   "body": [
+    "die langsamste Abfrage unseres Systems brauchte vier Sekunden und wurde 20.000-mal am Tag aufgerufen. Nach einer Woche mit Ausführungsplänen, zwei neuen Indizes und einer umgebauten Abfrage lag sie bei 80 Millisekunden. Solche Arbeit liebe ich.",
+    "Fünf Jahre Backend-Entwicklung in Java und Python, überwiegend für Abrechnungs- und Lagersysteme, haben mir beigebracht, Datenmodelle sauber zu entwerfen und Schnittstellen so zu bauen, dass andere Teams sie gern benutzen. Ich schreibe Tests vor dem Merge und habe Rufbereitschaft mitgetragen.",
+    "Ihre Software steuert Lager mit Millionen Buchungen am Tag. Das ist genau die Größenordnung, die mich interessiert."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Absolvent mit Abschlussprojekt",
+   "level": "berufseinstieg",
+   "position": "Junior Backend-Entwickler",
+   "to": {
+    "org": "Fintech Mainufer",
+    "sal": "f",
+    "contact": "Kraus",
+    "street": "Hanauer Landstraße 200",
+    "city": "60314 Frankfurt am Main"
+   },
+   "body": [
+    "meine Bachelorarbeit war ein Zahlungsdienst für eine Studierendenkantine, der Aufladungen per App verbucht, ohne dass ein Euro doppelt gezählt wird. Idempotente Schnittstellen, Transaktionen und Tests mit simulierten Netzwerkausfällen waren die Kernthemen.",
+    "Ich habe Informatik an der Hochschule Darmstadt studiert und programmiere in Go und Python. Ein Fintech, in dem jede Buchung stimmen muss, ist für mich der richtige Ort, um zu lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Link zum Projekt"
+   ],
+   "from": [
+    "Niklas Werner",
+    "Heinrichstraße 50",
+    "64283 Darmstadt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 0,
+  "name": "Mei Lin Zhou",
+  "title": "Backend-Entwicklerin",
+  "street": "Kaiserstraße 60",
+  "city": "55116 Mainz",
+  "web": "code.example/meilin-z",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Backend-Entwicklerin",
+    "Abrechnungssysteme Mainz GmbH",
+    "Mainz",
+    "- Java- und Python-Dienste für Abrechnung und Lager\n- Abfrageoptimierung: 4 s auf 80 ms\n- Rufbereitschaft, Monitoring"
+   ],
+   [
+    "2019",
+    "2021",
+    "Werkstudentin Softwareentwicklung",
+    "Datenwerk Wiesbaden",
+    "Wiesbaden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2021",
+    "Informatik (M. Sc.)",
+    "Johannes Gutenberg-Universität",
+    "Mainz",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Java",
+    5
+   ],
+   [
+    "Python",
+    4
+   ],
+   [
+    "SQL und Datenbanken",
+    5
+   ],
+   [
+    "API-Design",
+    4
+   ],
+   [
+    "Monitoring",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Chinesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Tischtennis, Brettspiele"
+ },
+ "do": [
+  "Systeme mit Zahlen beschreiben.",
+  "Sprachen, Datenbanken und Betrieb nennen.",
+  "Code-Link oder Projekt anfügen."
+ ],
+ "dont": [
+  "Buzzword-Listen.",
+  "Firmengeheimnisse in Beispielen.",
+  "Betrieb und Tests ignorieren."
+ ],
+ "questions": [
+  "Wie entwerfen Sie eine API für eine mobile App?",
+  "Wie finden Sie eine langsame Abfrage?",
+  "Was ist Idempotenz?",
+  "Wie gehen Sie mit einem Produktionsfehler um?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich DevOps können?",
+   "a": "Grundlagen helfen: Container, Logs, Monitoring, Deployment. Viele Teams erwarten, dass Backend-Entwickler ihre Dienste auch betreiben können."
+  }
+ ],
+ "related": [
+  "softwareentwickler",
+  "frontend-entwickler",
+  "devops-engineer",
+  "data-analyst"
+ ],
+ "en": {
+  "slug": "backend-developer",
+  "name": "Backend developer",
+  "search": "backend developer back-end server api database java python go engineer",
+  "short": "APIs, databases and services – the part nobody sees.",
+  "desc": "Backend developer cover letter examples: an experienced database-focused developer and a graduate with a payments project, plus a ready CV.",
+  "intro": "Backend developers build interfaces, data models and services that run reliably under load. Employers ask about languages, databases, testing, security and operations. Describe a system you improved, with numbers.",
+  "lookFor": [
+   "One or more backend languages",
+   "Relational and other databases",
+   "API design, testing, security",
+   "Operations and monitoring basics",
+   "Code review culture"
+  ],
+  "letters": [
+   {
+    "label": "Database-focused developer",
+    "level": "erfahren",
+    "position": "Backend developer",
+    "to": {
+     "org": "Warehouse Systems Ltd",
+     "sal": "m",
+     "contact": "Baker",
+     "street": "12 Station Road",
+     "city": "Cambridge CB1 2JD"
+    },
+    "body": [
+     "our slowest query took four seconds and ran twenty thousand times a day. A week of query plans, two new indexes and a rewritten join brought it down to eighty milliseconds. That is the kind of work I enjoy most.",
+     "I have five years of backend development in Java and Python, mostly for billing and warehouse systems. I design clean data models, build APIs other teams like using, write tests before merging and have shared on-call duty. Your software runs warehouses with millions of transactions a day."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Graduate with a payments project",
+    "level": "berufseinstieg",
+    "position": "Junior backend developer",
+    "to": {
+     "org": "Riverbank Fintech",
+     "sal": "f",
+     "contact": "Kraus",
+     "street": "200 Bishopsgate",
+     "city": "London EC2M 4NR"
+    },
+    "body": [
+     "my final-year project was a payments service for a student canteen that records top-ups from an app without counting a penny twice. Idempotent APIs, transactions and tests with simulated network failures were at its core.",
+     "I write Go and Python. A fintech where every transaction has to be right is the place where I want to learn."
+    ],
+    "att": [
+     "CV",
+     "Project link"
+    ],
+    "from": [
+     "Nick Warner",
+     "50 Mill Road",
+     "Cambridge CB1 2AS"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a16",
+   "design": "modern",
+   "accent": 0,
+   "name": "Mei Lin Zhou",
+   "title": "Backend developer",
+   "street": "60 Hills Road",
+   "city": "Cambridge CB2 1LA",
+   "web": "code.example/meilin-z",
+   "exp": [
+    [
+     "2021",
+     "",
+     "Backend developer",
+     "Billing Systems Ltd",
+     "Cambridge",
+     "- Java and Python services\n- Query optimisation: 4 s to 80 ms\n- On-call, monitoring"
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2021",
+     "MSc Computer Science",
+     "University of Cambridge",
+     "Cambridge",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Java",
+     5
+    ],
+    [
+     "Python",
+     4
+    ],
+    [
+     "SQL",
+     5
+    ],
+    [
+     "API design",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "C2"
+    ],
+    [
+     "Chinese",
+     "native"
+    ]
+   ],
+   "hobbies": "Table tennis, board games"
+  },
+  "do": [
+   "Describe systems with numbers.",
+   "Name languages, databases and operations work.",
+   "Link code or projects."
+  ],
+  "dont": [
+   "Buzzword lists.",
+   "Company secrets in examples.",
+   "Ignore testing and operations."
+  ],
+  "questions": [
+   "How would you design an API for a mobile app?",
+   "How do you find a slow query?",
+   "What is idempotency?",
+   "How do you handle a production incident?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need DevOps skills?",
+    "a": "The basics help: containers, logs, monitoring, deployment. Many teams expect backend developers to run what they build."
+   }
+  ]
+ }
+}

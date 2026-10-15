@@ -1,0 +1,175 @@
+{
+ "id": "ferienjob",
+ "field": "minijob",
+ "name": "Ferienjob für Schüler/innen",
+ "search": "ferienjob schüler sommerferien ferienarbeit jugendliche 15 16 17 nebenjob aushilfe bewerbung",
+ "short": "In den Ferien Geld verdienen – Supermarkt, Freibad, Produktion.",
+ "desc": "Bewerbung um einen Ferienjob als Schüler/in: kurze Muster-Anschreiben für Supermarkt, Freibad-Kiosk und Produktion, Lebenslauf und die wichtigsten Regeln für Jugendliche.",
+ "intro": "Ferienjobs sind ideal für erste Arbeitserfahrung. Für Jugendliche unter 18 gelten Regeln aus dem Jugendarbeitsschutzgesetz, zum Beispiel wie lange und wann du arbeiten darfst. Schreib im Anschreiben dein Alter, genau welche Wochen du Zeit hast und wie du zur Arbeit kommst.",
+ "lookFor": [
+  "Genaue Ferienwochen",
+  "Alter (wegen Jugendschutz)",
+  "Zuverlässigkeit und Pünktlichkeit",
+  "Anreise: Rad, Bus, Mitfahrgelegenheit",
+  "Bereitschaft zu einfachen Tätigkeiten"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin, 16, für den Supermarkt",
+   "level": "minijob",
+   "position": "Ferienjob (Aushilfe Warenverräumung)",
+   "to": {
+    "org": "Nahkauf am Marktplatz",
+    "sal": "m",
+    "contact": "Schultz",
+    "street": "Marktplatz 3",
+    "city": "23843 Bad Oldesloe"
+   },
+   "body": [
+    "in den Sommerferien vom 14. Juli bis 8. August möchte ich mir Geld für einen Führerschein dazuverdienen. Ihren Markt kenne ich gut, weil ich dort mit meinen Eltern einkaufe, und ich habe gesehen, dass Sie einen Aushang für Ferienhilfen hatten.",
+    "Ich bin 16, besuche die 10. Klasse des Gymnasiums und kann vormittags oder nachmittags arbeiten. Regale einräumen, Leergut sortieren oder an der Fleischtheke putzen – ich mache, was anfällt.",
+    "Zu Ihnen komme ich mit dem Rad in zehn Minuten."
+   ],
+   "att": [
+    "Lebenslauf"
+   ]
+  },
+  {
+   "label": "Schüler, 15, für den Freibad-Kiosk",
+   "level": "minijob",
+   "position": "Ferienjob im Freibad-Kiosk",
+   "to": {
+    "org": "Freibad-Kiosk Waldbad",
+    "sal": "f",
+    "contact": "Petersen",
+    "street": "Am Waldbad 1",
+    "city": "23843 Bad Oldesloe"
+   },
+   "body": [
+    "letzten Sommer war ich fast jeden Tag bei Ihnen im Waldbad und habe gesehen, wie lang die Schlange am Kiosk mittags wird. Ich würde in diesem Sommer gern auf der anderen Seite stehen.",
+    "Ich bin 15 und darf in den Ferien bis zu vier Wochen arbeiten. Kopfrechnen kann ich gut, und ich bleibe freundlich, auch wenn es heiß ist und alle gleichzeitig Pommes wollen. Zeit habe ich vom 21. Juli bis 15. August.",
+    "Meine Eltern sind einverstanden."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Einverständnis der Eltern"
+   ],
+   "from": [
+    "Lasse Möller",
+    "Hamburger Straße 40",
+    "23843 Bad Oldesloe"
+   ]
+  },
+  {
+   "label": "Schülerin, 17, für die Produktion",
+   "level": "minijob",
+   "position": "Ferienarbeit in der Produktion",
+   "to": {
+    "org": "Nordverpackung GmbH",
+    "sal": "none",
+    "street": "Industriestraße 15",
+    "city": "23843 Bad Oldesloe"
+   },
+   "body": [
+    "von meiner Freundin weiß ich, dass Sie in den Sommerferien Schülerinnen und Schüler an der Verpackungslinie einsetzen. Ich bin 17 und habe vom 7. Juli bis 15. August Zeit, auch in der Frühschicht.",
+    "Im letzten Jahr habe ich in einer Bäckerei ausgeholfen und weiß, wie es ist, früh aufzustehen und mehrere Stunden konzentriert am Band zu stehen. Ich bin pünktlich und frage nach, wenn ich etwas nicht verstehe.",
+    "Einen Lebenslauf und meine Steuer-ID füge ich bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Steuer-ID"
+   ],
+   "from": [
+    "Zoe Hartwig",
+    "Lübecker Straße 77",
+    "23843 Bad Oldesloe"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "compact",
+  "accent": 1,
+  "name": "Lotta Schultheiß",
+  "title": "Schülerin",
+  "street": "Königstraße 18",
+  "city": "23843 Bad Oldesloe",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Babysitting (privat)",
+    "",
+    "Bad Oldesloe",
+    "- zwei Kinder, 5 und 8 Jahre"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2028",
+    "Gymnasium, zurzeit Klasse 10",
+    "Theodor-Mommsen-Schule",
+    "Bad Oldesloe",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "Freundlichkeit",
+    4
+   ],
+   [
+    "Rechnen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Handball, Gitarre"
+ },
+ "do": [
+  "Genaue Wochen angeben.",
+  "Alter nennen.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Unklare Verfügbarkeit („irgendwann im Sommer“).",
+  "Zu spät bewerben – viele Ferienjobs sind im Frühjahr vergeben.",
+  "Lange Texte."
+ ],
+ "questions": [
+  "Welche Wochen haben Sie Zeit?",
+  "Wie kommen Sie zu uns?",
+  "Haben Sie schon einmal gejobbt?",
+  "Was würden Sie tun, wenn Sie sich verspäten?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange darf ich als Schüler in den Ferien arbeiten?",
+   "a": "Jugendliche ab 15 dürfen laut Jugendarbeitsschutzgesetz in den Schulferien höchstens vier Wochen im Kalenderjahr arbeiten. Zusätzlich gelten Grenzen für Stunden pro Tag und Uhrzeiten."
+  },
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "schuelerjob",
+  "regalauffueller",
+  "produktionshelfer",
+  "kuechenhilfe"
+ ]
+}

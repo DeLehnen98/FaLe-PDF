@@ -1,0 +1,248 @@
+{
+ "id": "timeline",
+ "de": {
+  "name": "Pflegefachfrau",
+  "cv": {
+   "avatar": "a19",
+   "accent": 1,
+   "name": "Aylin Demir",
+   "title": "Pflegefachfrau, Praxisanleiterin",
+   "street": "Lindenring 4",
+   "city": "55116 Mainz",
+   "exp": [
+    [
+     "10/2022",
+     "",
+     "Praxisanleiterin und Pflegefachfrau",
+     "Universitätsmedizin Rheinhessen, Kardiologie",
+     "Mainz",
+     "- Anleitung von bis zu vier Auszubildenden pro Einsatz\n- Planung der Praxisaufgaben mit der Pflegeschule"
+    ],
+    [
+     "10/2019",
+     "09/2022",
+     "Pflegefachfrau",
+     "Universitätsmedizin Rheinhessen, Kardiologie",
+     "Mainz",
+     "- Versorgung nach Herzkatheter-Eingriffen\n- Überwachung am Monitor"
+    ],
+    [
+     "10/2016",
+     "09/2019",
+     "Ausbildung Gesundheits- und Krankenpflege",
+     "Katholisches Klinikum",
+     "Mainz",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "10/2016",
+     "09/2019",
+     "Gesundheits- und Krankenpflegerin – Examen, Note 1,6",
+     "Pflegeschule am Katholischen Klinikum",
+     "Mainz",
+     ""
+    ],
+    [
+     "2007",
+     "2016",
+     "Abitur",
+     "Gymnasium Mainz-Oberstadt",
+     "Mainz",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2022",
+     "Weiterbildung Praxisanleitung (300 Stunden)",
+     "Bildungsinstitut Gesundheit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Basic Life Support Instruktorin",
+     "Reanimationsrat",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Kardiologische Pflege",
+     5
+    ],
+    [
+     "Praxisanleitung",
+     5
+    ],
+    [
+     "Monitoring",
+     4
+    ],
+    [
+     "Pflegedokumentation",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Türkisch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "B2"
+    ]
+   ],
+   "hobbies": "Laufen, Ehrenamt in der Hausaufgabenhilfe"
+  },
+  "letter": {
+   "label": "Praxisanleitung als Schwerpunkt",
+   "position": "Zentrale Praxisanleitung (m/w/d)",
+   "to": {
+    "org": "Klinikverbund Rhein-Selz gGmbH",
+    "sal": "f",
+    "contact": "Lorenz",
+    "street": "Kurfürstenstraße 2",
+    "city": "55218 Ingelheim"
+   },
+   "body": [
+    "zwölf Auszubildende habe ich in den letzten drei Jahren auf unserer kardiologischen Station angeleitet. Alle haben ihr Examen bestanden, zwei sind bei uns geblieben. Ihre Ausschreibung für eine zentrale Praxisanleitung beschreibt genau den Teil meiner Arbeit, der mir am meisten bedeutet.",
+    "Ich plane die Lernaufgaben mit der Pflegeschule, führe Anleitungsgespräche und nehme praktische Prüfungen ab. Was ich gelernt habe: Gute Anleitung braucht Zeit, die auf der Station oft fehlt. Eine Stelle, in der diese Zeit eingeplant ist, würde ich gern mit aufbauen.",
+    "In Vollzeit könnte ich zum 1. Januar wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Nachweis Praxisanleitung"
+   ]
+  }
+ },
+ "en": {
+  "name": "Nurse and practice educator",
+  "cv": {
+   "avatar": "a19",
+   "accent": 1,
+   "name": "Aylin Demir",
+   "title": "Registered nurse, practice educator",
+   "street": "4 Linden Rise",
+   "city": "Leicester LE2 1TQ",
+   "exp": [
+    [
+     "10/2022",
+     "",
+     "Practice educator and staff nurse",
+     "Leicester Royal Infirmary, cardiology",
+     "Leicester",
+     "- Supporting up to four student nurses per placement\n- Planning placement learning with the university"
+    ],
+    [
+     "10/2019",
+     "09/2022",
+     "Staff nurse",
+     "Leicester Royal Infirmary, cardiology",
+     "Leicester",
+     "- Care after cardiac catheter procedures\n- Cardiac monitoring"
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2019",
+     "BSc Nursing (Adult)",
+     "De Montfort University",
+     "Leicester",
+     ""
+    ],
+    [
+     "2009",
+     "2016",
+     "A levels",
+     "Gateway College",
+     "Leicester",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2022",
+     "Practice assessor and supervisor course",
+     "University short course",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Basic life support instructor",
+     "Resuscitation training body",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Cardiac nursing",
+     5
+    ],
+    [
+     "Practice education",
+     5
+    ],
+    [
+     "Monitoring",
+     4
+    ],
+    [
+     "Documentation",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Turkish",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Running, homework club volunteer"
+  },
+  "letter": {
+   "label": "Focusing on practice education",
+   "position": "Clinical practice educator",
+   "to": {
+    "org": "Rhein Valley Hospitals NHS Trust",
+    "sal": "f",
+    "contact": "Lawrence",
+    "street": "2 Abbey Road",
+    "city": "Nottingham NG2 5AB"
+   },
+   "body": [
+    "Over the last three years I have supported twelve student nurses on our cardiology ward. All of them qualified and two stayed with us. Your advert for a clinical practice educator describes the part of my work that matters most to me.",
+    "I plan placement learning with the university, run supervision meetings and sign off practical assessments. What I have learnt is that good teaching needs time that a busy ward rarely has. I would like to help build a role where that time is planned in.",
+    "I could start full-time on 1 January."
+   ],
+   "att": [
+    "CV",
+    "Registration details"
+   ]
+  }
+ }
+}

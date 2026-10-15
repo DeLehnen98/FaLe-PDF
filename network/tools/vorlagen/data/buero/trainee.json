@@ -1,0 +1,211 @@
+{
+ "id": "trainee",
+ "field": "buero",
+ "name": "Traineeprogramm",
+ "search": "trainee traineeprogramm berufseinstieg absolvent hochschulabsolvent management nachwuchs rotation bewerbung",
+ "short": "Nach dem Studium: Rotation durch mehrere Abteilungen.",
+ "desc": "Bewerbung für ein Traineeprogramm nach dem Studium: Muster-Anschreiben für Wirtschaftsabsolventin, Ingenieur und Geisteswissenschaftlerin, mit Lebenslauf und Tipps.",
+ "intro": "Traineeprogramme dauern meist zwölf bis 24 Monate, du durchläufst mehrere Abteilungen und bekommst ein eigenes Projekt. Unternehmen suchen Absolventinnen und Absolventen, die Orientierung mit Richtung verbinden: offen für vieles, aber mit einer Idee, wohin es gehen soll. Praktika und Auslandserfahrung zählen.",
+ "lookFor": [
+  "Abgeschlossenes Studium (Bachelor oder Master)",
+  "Praktika oder Werkstudentenjobs",
+  "Mobilität für Stationen an anderen Standorten",
+  "Interesse an der Branche, nicht nur am Programm",
+  "Englisch, oft verhandlungssicher"
+ ],
+ "letters": [
+  {
+   "label": "Wirtschaftsabsolventin mit Logistikfokus",
+   "level": "berufseinstieg",
+   "position": "Trainee Supply Chain Management",
+   "to": {
+    "org": "Weserfracht Gruppe",
+    "sal": "f",
+    "contact": "Kühl",
+    "street": "Überseestadt 12",
+    "city": "28217 Bremen"
+   },
+   "body": [
+    "wie kommt eine Tonne Kaffee aus Kolumbien in eine Rösterei in Bremen? In meiner Masterarbeit habe ich diesen Weg für einen Importeur nachgezeichnet, mit allen Übergaben, Wartezeiten und Kosten. Am Ende stand ein Vorschlag, der die Lagerzeit im Hafen um vier Tage verkürzt. Seitdem weiß ich, wohin ich beruflich will.",
+    "Ich habe Wirtschaftsingenieurwesen in Bremen studiert und im März meinen Master abgeschlossen. Zwei Praktika, eines in der Disposition eines Spediteurs und eines im Einkauf eines Lebensmittelherstellers, haben mir beide Seiten der Lieferkette gezeigt. Ihr Programm mit Stationen in Bremen, Rotterdam und Singapur würde mir die dritte zeigen.",
+    "Englisch spreche ich verhandlungssicher, Niederländisch lerne ich gerade. Ich bin ab Juni verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Praktikumszeugnisse"
+   ]
+  },
+  {
+   "label": "Ingenieur, der in den Vertrieb will",
+   "level": "berufseinstieg",
+   "position": "Trainee Technischer Vertrieb",
+   "to": {
+    "org": "Kältetechnik Nord AG",
+    "sal": "m",
+    "contact": "Reimers",
+    "street": "Am Wall 140",
+    "city": "28195 Bremen"
+   },
+   "body": [
+    "in meinen Praktika war ich immer dann am besten, wenn ich Technik erklären musste. Bei einem Kundentermin mit einem Supermarktbetreiber habe ich unserem Vertriebsleiter geholfen, die Vorteile einer neuen Kühlanlage verständlich zu machen, und er hat mich danach gefragt, ob ich mir den Vertrieb vorstellen kann. Ja, kann ich.",
+    "Ich habe Maschinenbau mit Schwerpunkt Energietechnik studiert, Bachelor 2024, Master 2026. Kältetechnik war Thema meiner Masterarbeit. Ihr Traineeprogramm verbindet ein halbes Jahr in Entwicklung und Service mit einem Jahr im Vertrieb, und das finde ich genau richtig.",
+    "Reisebereitschaft bringe ich mit, Führerschein habe ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Bachelorzeugnis"
+   ],
+   "from": [
+    "Hendrik Oltmanns",
+    "Bismarckstraße 50",
+    "28203 Bremen"
+   ]
+  },
+  {
+   "label": "Geisteswissenschaftlerin für Kommunikation",
+   "level": "berufseinstieg",
+   "position": "Trainee Unternehmenskommunikation",
+   "to": {
+    "org": "Hanseatische Energieversorgung",
+    "sal": "none",
+    "street": "Theodor-Heuss-Allee 20",
+    "city": "28215 Bremen"
+   },
+   "body": [
+    "Geschichte zu studieren heißt, Quellen kritisch zu lesen und komplizierte Zusammenhänge so zu erklären, dass andere sie verstehen. In der Energiewende brauchen Unternehmen genau das: Mit Bürgern sprechen, die Angst vor höheren Preisen haben, und mit Journalisten, die schnelle Antworten wollen.",
+    "Neben dem Master habe ich drei Jahre als Werkstudentin in der Pressestelle der Universität gearbeitet, Pressemitteilungen geschrieben und den Newsletter betreut. Ein Praktikum bei einer Lokalzeitung hat mir gezeigt, wie die andere Seite arbeitet.",
+    "Ihr Programm mit Stationen in Pressestelle, interner Kommunikation und Public Affairs würde mir die Breite geben, die ich suche."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Arbeitsproben"
+   ],
+   "from": [
+    "Charlotte Wendt",
+    "Am Dobben 70",
+    "28203 Bremen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 0,
+  "name": "Aylin Doğan",
+  "title": "M. Sc. Wirtschaftsingenieurwesen",
+  "street": "Buntentorsteinweg 200",
+  "city": "28201 Bremen",
+  "exp": [
+   [
+    "04/2025",
+    "09/2025",
+    "Praktikantin Disposition",
+    "Spedition Hanse Cargo",
+    "Bremen",
+    "- Tourenplanung, Zollpapiere\n- Auswertung von Laufzeiten"
+   ],
+   [
+    "10/2023",
+    "03/2024",
+    "Praktikantin Einkauf",
+    "Feinkost Weser GmbH",
+    "Bremen",
+    "- Lieferantenvergleich, Bestellungen"
+   ],
+   [
+    "2022",
+    "2025",
+    "Werkstudentin Controlling",
+    "Universität Bremen",
+    "Bremen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "2026",
+    "Wirtschaftsingenieurwesen (M. Sc.), Note 1,6",
+    "Universität Bremen",
+    "Bremen",
+    "Masterarbeit: Lieferkette Rohkaffee – Verkürzung der Hafenliegezeit"
+   ],
+   [
+    "2020",
+    "2024",
+    "Wirtschaftsingenieurwesen (B. Sc.)",
+    "Hochschule Bremen",
+    "Bremen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Supply Chain Analyse",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    5
+   ],
+   [
+    "Projektmanagement",
+    3
+   ],
+   [
+    "Präsentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Niederländisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Kaffeerösten"
+ },
+ "do": [
+  "Gewünschten Bereich nennen, auch wenn das Programm rotiert.",
+  "Praktika mit Ergebnis beschreiben.",
+  "Mobilität ansprechen."
+ ],
+ "dont": [
+  "Nur das Programm loben.",
+  "Noten seitenlang erklären.",
+  "Sich für fünf Traineeprogramme mit demselben Text bewerben."
+ ],
+ "questions": [
+  "Warum ein Traineeprogramm und kein Direkteinstieg?",
+  "Welche Station interessiert Sie am meisten?",
+  "Wie gehen Sie mit Ortswechseln um?",
+  "Wo sehen Sie sich nach dem Programm?"
+ ],
+ "faq": [
+  {
+   "q": "Trainee oder Direkteinstieg?",
+   "a": "Trainees lernen das Unternehmen breit kennen und bekommen oft Mentoring. Beim Direkteinstieg bist du schneller in einer festen Rolle. Für Absolventen, die sich noch orientieren, ist ein Traineeprogramm ein guter Weg."
+  }
+ ],
+ "related": [
+  "duales-studium-bwl",
+  "projektmanager",
+  "controller",
+  "marketing-manager"
+ ]
+}

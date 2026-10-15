@@ -1,0 +1,70 @@
+{
+ "id": "vollmacht-kind-abholen",
+ "group": "vollmacht",
+ "tool": "power-of-attorney",
+ "order": 35,
+ "name": "Vollmacht zur Abholung des Kindes",
+ "short": "Kind von Kita, Schule oder Verein abholen lassen",
+ "desc": "Abholvollmacht für Kita und Schule: Muster, damit Großeltern, Nachbarn oder Freunde dein Kind abholen dürfen – mit Gültigkeit und Unterschrift beider Eltern.",
+ "search": "kita schule kind abholen oma vollmacht",
+ "when": [
+  "Jemand anderes soll dein Kind von der Kita, der Schule oder dem Training abholen – regelmäßig oder an einem bestimmten Tag. Viele Einrichtungen geben Kinder nur an Personen heraus, die schriftlich bevollmächtigt sind."
+ ],
+ "must": [
+  "Name und Geburtsdatum des Kindes",
+  "Name und Anschrift der abholenden Person",
+  "Einrichtung",
+  "Gültigkeit – ein Tag, ein Zeitraum oder bis auf Widerruf",
+  "Unterschrift der Sorgeberechtigten"
+ ],
+ "notes": [
+  "Stell die abholende Person in der Einrichtung am besten einmal vor.",
+  "Die abholende Person sollte ihren Ausweis dabeihaben.",
+  "Bei gemeinsamem Sorgerecht unterschreiben beide Elternteile."
+ ],
+ "faq": [
+  {
+   "q": "Dürfen auch ältere Geschwister abholen?",
+   "a": "Das entscheidet die Einrichtung; viele Kitas verlangen ein Mindestalter, oft zwölf oder 14 Jahre. Frag nach."
+  }
+ ],
+ "fields": {
+  "purpose": "child",
+  "gName": "Katrin Neumann",
+  "gStreet": "Rosenweg 14",
+  "gCity": "79098 Freiburg im Breisgau",
+  "aName": "Brigitte Neumann",
+  "aStreet": "Am Rebhang 2",
+  "aCity": "79112 Freiburg im Breisgau",
+  "childName": "Mia Neumann",
+  "institution": "Kita Sonnenblume",
+  "valid": "revoke"
+ },
+ "related": [
+  "einverstaendnis-klassenfahrt",
+  "kuendigung-kita-platz",
+  "entschuldigung-schule"
+ ],
+ "doc": [
+  [
+   "Vollmachtgeber/in",
+   "Katrin Neumann, Rosenweg 14, 79098 Freiburg im Breisgau"
+  ],
+  [
+   "Bevollmächtigte Person",
+   "Brigitte Neumann, Am Rebhang 2, 79112 Freiburg im Breisgau"
+  ],
+  [
+   "Text",
+   "Hiermit bevollmächtige ich …, mein Kind Mia Neumann aus der Einrichtung Kita Sonnenblume abzuholen."
+  ],
+  [
+   "Gültigkeit",
+   "Bis auf Widerruf"
+  ],
+  [
+   "Unterschriften",
+   "Vollmachtgeber/in; Unterschriftsprobe der bevollmächtigten Person"
+  ]
+ ]
+}

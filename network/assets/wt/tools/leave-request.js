@@ -7,6 +7,7 @@ import { el, T, s, form, userError, ensureCss, isoDate, fmtDate, note, remember,
 import { createWriter, collectText, mm } from '../lib/tpl-pdf.js';
 import { STATES, NOTES, workingDays } from '../lib/tpl-holidays.js';
 import { missingWarning } from '../lib/unifont.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -85,7 +86,7 @@ const REQ = v => [{ ok: !!s(v.name), de: 'deinen Namen', en: 'your name' }, { ok
 export default {
   labels: { back_to_files: { de: 'Zurück zum Antrag', en: 'Back to the request' } },
   options: [],
-  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); briefVorlage('leave-request', 'lv', stage, state, ctx, () => { api = stageFn(stage, state, ctx); }); },
   status(values, inputs, lang) {
     const v = values.lv || {};
     const t = compute(v).total;

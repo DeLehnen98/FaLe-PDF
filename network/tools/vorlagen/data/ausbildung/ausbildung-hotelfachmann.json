@@ -1,0 +1,187 @@
+{
+ "id": "ausbildung-hotelfachmann",
+ "field": "ausbildung",
+ "name": "Ausbildung Hotelfachmann/-frau",
+ "search": "ausbildung hotelfachmann hotelfachfrau hotel rezeption service housekeeping azubi gastronomie bewerbung",
+ "short": "Rezeption, Restaurant, Etage – alle Bereiche im Hotel.",
+ "desc": "Bewerbung für die Ausbildung zum Hotelfachmann / zur Hotelfachfrau: Muster-Anschreiben für Realschülerin, Abiturient und Quereinsteigerin, mit Lebenslauf.",
+ "intro": "In der Ausbildung lernst du alle Abteilungen kennen: Etage, Restaurant, Bankett, Rezeption, Büro. Hotels suchen Azubis, die gern Gastgeber sind, Fremdsprachen mögen und auch am Wochenende und an Feiertagen arbeiten. Wer schon im Service oder als Aushilfe gejobbt hat, sollte das zeigen.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Freude am Umgang mit Gästen",
+  "Englisch, weitere Sprachen ein Plus",
+  "Gepflegtes Auftreten",
+  "Bereitschaft zu Schicht- und Wochenendarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Realschülerin mit Aushilfsjob im Café",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Hotelfachfrau",
+   "to": {
+    "org": "Seehotel Ammerblick",
+    "sal": "f",
+    "contact": "Hofer",
+    "street": "Seestraße 30",
+    "city": "82211 Herrsching am Ammersee"
+   },
+   "body": [
+    "an den Wochenenden bediene ich seit einem Jahr in einem Café an der Seepromenade. Viele unserer Gäste übernachten bei Ihnen, und einige erzählen mir beim Kaffee, wie freundlich sie empfangen wurden. Das hat mich neugierig gemacht.",
+    "Im Sommer bin ich mit der Realschule fertig. Englisch spreche ich gut, Italienisch lerne ich in einem Volkshochschulkurs. Im Café habe ich gelernt, sieben Tische gleichzeitig im Blick zu behalten und auch bei Hochbetrieb freundlich zu bleiben.",
+    "Wochenenden und Feiertage machen mir nichts aus. Ich würde gern bei einem Probetag reinschnuppern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Bescheinigung Aushilfstätigkeit"
+   ]
+  },
+  {
+   "label": "Abiturient mit Auslandserfahrung",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Hotelfachmann",
+   "to": {
+    "org": "Grandhotel Residenz",
+    "sal": "m",
+    "contact": "Brandstätter",
+    "street": "Sonnenstraße 40",
+    "city": "80331 München"
+   },
+   "body": [
+    "sechs Monate Au-pair in Dublin liegen hinter mir. Am meisten gelernt habe ich nicht im Haushalt, sondern an den Abenden, an denen ich in einem kleinen Bed & Breakfast ausgeholfen habe: Frühstück servieren, Zimmer übergeben, Gäste aus aller Welt einchecken.",
+    "Ich möchte die Hotellerie von Grund auf lernen und später ins internationale Management. Ihr Haus bildet in allen Abteilungen aus und bietet einen Austausch mit Partnerhotels an. Das ist für mich ein starkes Argument.",
+    "Englisch spreche ich verhandlungssicher, Spanisch auf B1-Niveau. Ab September stehe ich zur Verfügung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Referenz B&B Dublin"
+   ],
+   "from": [
+    "Moritz Lang",
+    "Tegernseer Landstraße 80",
+    "81539 München"
+   ]
+  },
+  {
+   "label": "Bürokauffrau wechselt mit 26 in die Hotellerie",
+   "level": "quereinstieg",
+   "position": "Auszubildende zur Hotelfachfrau",
+   "to": {
+    "org": "Hotel Stadtgarten",
+    "sal": "none",
+    "street": "Bahnhofplatz 2",
+    "city": "86150 Augsburg"
+   },
+   "body": [
+    "vier Jahre Büroarbeit bei einer Versicherung haben mir gezeigt, was ich nicht mehr will: acht Stunden am Bildschirm, ohne Menschen zu sehen. Im letzten Urlaub habe ich mich dabei erwischt, wie ich der Rezeptionistin bei der Arbeit zugeschaut und gedacht habe, das wäre mein Platz.",
+    "Aus dem Büro bringe ich Organisation, Telefonroutine und Sicherheit am Computer mit. Das hilft an der Rezeption und im Bankettbüro. Was ich lernen muss, ist der Service, und dafür habe ich mir bereits zwei Probeschichten im Restaurant eines Bekannten organisiert.",
+    "Mit 26 bin ich älter als die meisten Azubis. Ich weiß aber genau, warum ich diesen Schritt mache."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Kauffrau für Büromanagement",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sarah Wiedemann",
+    "Gögginger Straße 15",
+    "86159 Augsburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "modern",
+  "accent": 2,
+  "name": "Anna Stadler",
+  "title": "Schülerin",
+  "street": "Mühlfelder Straße 9",
+  "city": "82211 Herrsching am Ammersee",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Servicekraft (Aushilfe)",
+    "Café Seepromenade",
+    "Herrsching",
+    "- Service an bis zu sieben Tischen\n- Kasse, Kuchentheke"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Realschule Herrsching",
+    "Herrsching",
+    "Wahlpflichtfach Französisch"
+   ]
+  ],
+  "skills": [
+   [
+    "Gästeservice",
+    4
+   ],
+   [
+    "Englisch",
+    4
+   ],
+   [
+    "Organisation",
+    3
+   ],
+   [
+    "Freundlichkeit unter Stress",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Italienisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Kochen"
+ },
+ "do": [
+  "Erfahrung im Service oder mit Gästen nennen.",
+  "Sprachen mit Niveau angeben.",
+  "Wochenend- und Feiertagsbereitschaft ansprechen."
+ ],
+ "dont": [
+  "Hotelfachmann mit Hotelkaufmann verwechseln – lies die Anzeige.",
+  "Nur über Reisen schreiben statt über Arbeit.",
+  "Ein Foto in Freizeitkleidung."
+ ],
+ "questions": [
+  "Was macht für Sie einen guten Gastgeber aus?",
+  "Ein Gast beschwert sich über sein Zimmer – was tun Sie?",
+  "In welcher Abteilung sehen Sie sich?",
+  "Wie gehen Sie mit Wochenendarbeit um?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Gibt es neue Ausbildungsberufe im Hotel?",
+   "a": "Seit 2022 gibt es neben Hotelfachmann/-frau auch Kaufmann/-frau für Hotelmanagement mit mehr kaufmännischen Inhalten. Schau, welcher Beruf in der Anzeige steht, und bewirb dich passend."
+  }
+ ],
+ "related": [
+  "hotelfachfrau",
+  "rezeptionist",
+  "ausbildung-koch",
+  "housekeeping"
+ ]
+}

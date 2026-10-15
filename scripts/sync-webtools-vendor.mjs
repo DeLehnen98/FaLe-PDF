@@ -121,9 +121,11 @@ const SHARED = {
 // readers, document model and PDF/DOCX writers unchanged. Their few app-level imports (ui.js,
 // security.js, pdflib.js, icons.js) are redirected to the hand-written lib/conv-office-shim.js, the
 // vendor paths are re-based; any other import that is not a synced sibling fails the sync.
-const OFFICE = ['vendor.js', 'fonts.js', 'docstyles.js', 'docmodel.js', 'docx-read.js', 'docx-write.js', 'docpdf.js', 'pdftext.js',
+const OFFICE = ['vendor.js', 'hfnorm.js', 'fonts.js', 'docstyles.js', 'docmodel.js', 'docx-read.js', 'docx-write.js', 'docpdf.js', 'pdftext.js',
   'workbook.js', 'formula.js', 'numfmt.js', 'sheetfx.js', 'xlsx-read.js', 'sheetpdf.js', 'chart.js', 'chart-xml.js', 'kinds.js',
-  'pptx-read.js', 'slide-render.js', 'unifont.js'];
+  'pptx-read.js', 'slide-render.js', 'unifont.js',
+  // spreadsheet templates of the Vorlagen-Archiv (/vorlagen/tabellen/): template data + builder, XLSX and CSV writers
+  'sheet-templates.js', 'xlsx-write.js', 'csv.js'];
 function officeModule(name) {
   let text = readFileSync(join(ROOT, 'js/office', name), 'utf8');
   text = text.replace(/(from\s*|import\(\s*)(['"])\.\.\/(ui|security|pdflib|icons)\.js\2/g, (m, pre, q) => `${pre}${q}../../conv-office-shim.js${q}`);
@@ -185,6 +187,18 @@ if (CHECK) {
     else if (!readFileSync(abs).equals(buf)) problems.push(`differs: ${p}`);
   }
   for (const p of actualFiles) if (!expected.has(p)) problems.push(`unexpected: ${p}`);
+  // offline: every synced office module imported by a module in lib/sw.js's "office" warm-up list must be listed too
+  // (otherwise the conversion tools break offline the first time the app adds a new import)
+  const swSrc = readFileSync(join(WT, 'lib', 'sw.js'), 'utf8');
+  const officeList = (swSrc.match(/office:\s*\[([\s\S]*?)\]/) || [, ''])[1];
+  const listed = new Set([...officeList.matchAll(/lib\/shared\/office\/([\w.-]+\.js)/g)].map(m => m[1]));
+  for (const name of listed) {
+    const abs = join(WT, 'lib', 'shared', 'office', name);
+    if (!existsSync(abs)) continue;
+    for (const m of readFileSync(abs, 'utf8').matchAll(/(?:from|import\()\s*['"]\.\/([\w.-]+\.js)['"]/g)) {
+      if (!listed.has(m[1])) problems.push(`offline list lib/sw.js (office) misses lib/shared/office/${m[1]} (imported by ${name})`);
+    }
+  }
   if (problems.length) {
     console.error(`network/assets/wt is out of sync with vendor/ and js/ (${problems.length}):\n  ` + problems.slice(0, 40).join('\n  ') +
       (problems.length > 40 ? `\n  … and ${problems.length - 40} more` : '') + '\nRun: node scripts/sync-webtools-vendor.mjs');

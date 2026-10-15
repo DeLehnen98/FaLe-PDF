@@ -1,0 +1,67 @@
+{
+ "id": "kuendigung-arbeitsvertrag",
+ "group": "kuendigung",
+ "tool": "din-letter",
+ "order": 12,
+ "name": "Kündigung Arbeitsvertrag (Arbeitnehmer)",
+ "short": "Als Arbeitnehmer kündigen – auf Papier mit Unterschrift",
+ "desc": "Arbeitsvertrag kündigen als Arbeitnehmer: Muster mit Kündigungsfrist, Bitte um Arbeitszeugnis und Resturlaub – mit Hinweis, warum du auf Papier unterschreiben musst.",
+ "search": "job arbeit stelle kündigen arbeitgeber",
+ "when": [
+  "Du hast eine neue Stelle oder willst aus anderen Gründen gehen. Als Arbeitnehmer brauchst du für eine ordentliche Kündigung keinen Grund. Die gesetzliche Frist beträgt vier Wochen zum 15. oder zum Ende eines Kalendermonats; in deinem Arbeits- oder Tarifvertrag kann eine längere Frist stehen.",
+  "Wichtig: Eine Kündigung des Arbeitsverhältnisses muss schriftlich sein – auf Papier, eigenhändig unterschrieben. Eine E-Mail, eine Nachricht im Chat oder ein Scan reichen nicht."
+ ],
+ "must": [
+  "Deinen Namen und, wenn vorhanden, deine Personalnummer",
+  "Den Satz, dass du das Arbeitsverhältnis kündigst, mit dem Datum – „hilfsweise zum nächstmöglichen Zeitpunkt“ fängt eine falsch berechnete Frist auf",
+  "Die Bitte um ein qualifiziertes Arbeitszeugnis",
+  "Einen Hinweis zum Resturlaub und zu Überstunden",
+  "Deine eigenhändige Unterschrift"
+ ],
+ "notes": [
+  "Übergib die Kündigung am besten persönlich und lass dir den Empfang auf einer Kopie mit Datum quittieren. Alternativ: Einwurf-Einschreiben.",
+  "Melde dich spätestens drei Monate vor dem Ende bei der Agentur für Arbeit arbeitssuchend, wenn du noch keine neue Stelle hast – sonst droht eine Sperrzeit.",
+  "In der Probezeit gilt oft eine Frist von zwei Wochen."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich per E-Mail kündigen?",
+   "a": "Nein. Für die Kündigung eines Arbeitsverhältnisses schreibt das Gesetz die Schriftform vor: Papier und deine Unterschrift mit Kugelschreiber. Druck das PDF aus und unterschreib es."
+  },
+  {
+   "q": "Muss ich einen Grund nennen?",
+   "a": "Nein. Du kannst einen Satz des Danks ergänzen, wenn du magst – nötig ist er nicht."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "antrag-teilzeit",
+  "krankmeldung-email",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Sevgi Arslan",
+  "Hafenstraße 21",
+  "28217 Bremen"
+ ],
+ "to": {
+  "org": "Muster Logistik GmbH",
+  "attn": "Personalabteilung",
+  "street": "Industriestraße 10",
+  "city": "28197 Bremen"
+ },
+ "letter": {
+  "subject": "Kündigung meines Arbeitsverhältnisses – Personalnummer 30418",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "hiermit kündige ich mein Arbeitsverhältnis fristgerecht zum [Datum], hilfsweise zum nächstmöglichen Zeitpunkt.",
+   "Bitte stellen Sie mir ein qualifiziertes Arbeitszeugnis aus, das sich auf Leistung und Verhalten erstreckt. Meinen restlichen Urlaub von [Anzahl] Tagen möchte ich bis zum Ende des Arbeitsverhältnisses nehmen; einen Vorschlag für die Zeiträume schicke ich Ihnen gesondert.",
+   "Für die Zusammenarbeit in den vergangenen Jahren bedanke ich mich. Bitte bestätigen Sie mir den Eingang dieser Kündigung und das Ende des Arbeitsverhältnisses schriftlich."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ },
+ "paper": true
+}

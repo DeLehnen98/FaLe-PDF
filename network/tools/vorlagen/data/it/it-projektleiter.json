@@ -1,0 +1,158 @@
+{
+ "id": "it-projektleiter",
+ "field": "it",
+ "name": "IT-Projektleiter/in",
+ "search": "it projektleiter it projektmanager projektleitung software einführung erp digitalisierung scrum master product owner bewerbung",
+ "short": "Software-Einführungen, Migrationen, Digitalprojekte steuern.",
+ "desc": "Bewerbung als IT-Projektleiter/in: Muster-Anschreiben für Projektleiterin mit ERP-Einführung und Entwickler im Wechsel in die Projektleitung, mit Lebenslauf.",
+ "intro": "IT-Projektleiter verbinden Fachbereiche, Entwickler und Dienstleister. Sie planen, priorisieren, kommunizieren und halten Termine und Budgets. Zeig Projekte mit Umfang, Methode und Ergebnis – und wie du mit Widerstand in Fachbereichen umgegangen bist.",
+ "lookFor": [
+  "IT-Projekte mit Budget und Terminverantwortung",
+  "Klassische und agile Methoden",
+  "Technisches Grundverständnis",
+  "Stakeholder- und Dienstleistersteuerung",
+  "Kommunikation mit Fachbereichen"
+ ],
+ "letters": [
+  {
+   "label": "Projektleiterin mit ERP-Einführung",
+   "level": "erfahren",
+   "position": "IT-Projektleiterin",
+   "to": {
+    "org": "Möbelwerke Ostwestfalen GmbH",
+    "sal": "m",
+    "contact": "Kuhlmann",
+    "street": "Industriestraße 60",
+    "city": "32051 Herford"
+   },
+   "body": [
+    "im vergangenen Jahr haben wir in drei Werken ein neues ERP-System eingeführt, ohne einen Tag Produktionsstillstand. Ich habe das Projekt mit einem Budget von 2,4 Millionen Euro geleitet, ein Team aus zwölf internen Key-Usern und einem externen Dienstleister geführt und die Werksleiter überzeugt, die ihre alten Listen lieber behalten hätten.",
+    "Ich bin Wirtschaftsinformatikerin und seit neun Jahren in IT-Projekten, die letzten fünf als Projektleiterin. Ich arbeite hybrid: klassisch für Meilensteine und Budget, agil in den Umsetzungsteams. Ihr Unternehmen steht vor einer ähnlichen Umstellung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Projektliste"
+   ]
+  },
+  {
+   "label": "Entwickler wechselt in die Projektleitung",
+   "level": "quereinstieg",
+   "position": "IT-Projektleiter (Junior)",
+   "to": {
+    "org": "Versicherung Lippe IT GmbH",
+    "sal": "none",
+    "street": "Hornsche Straße 40",
+    "city": "32756 Detmold"
+   },
+   "body": [
+    "als Entwickler habe ich in den letzten zwei Jahren immer öfter die Abstimmung mit dem Fachbereich übernommen, weil die Kollegen sagten, ich könne „das übersetzen“. Ich habe Anforderungen geschrieben, Sprints geplant und Abnahmen vorbereitet. Daraus soll jetzt mein Beruf werden.",
+    "Sechs Jahre Softwareentwicklung geben mir ein realistisches Gefühl dafür, wie lange Dinge dauern. Eine Zertifizierung als Scrum Master habe ich im letzten Jahr gemacht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Felix Oberdiek",
+    "Bielefelder Straße 10",
+    "32756 Detmold"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "classic",
+  "accent": 2,
+  "name": "Sabine Rohlfing",
+  "title": "IT-Projektleiterin, Wirtschaftsinformatikerin",
+  "street": "Goebenstraße 20",
+  "city": "32052 Herford",
+  "exp": [
+   [
+    "2021",
+    "",
+    "IT-Projektleiterin",
+    "Küchenhersteller Ravensberg",
+    "Bünde",
+    "- ERP-Einführung in drei Werken (2,4 Mio. Euro)\n- Führung von 12 Key-Usern und externem Dienstleister\n- Hybrides Projektmanagement"
+   ],
+   [
+    "2017",
+    "2021",
+    "IT-Consultant",
+    "Systemberatung OWL",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2017",
+    "Wirtschaftsinformatik (M. Sc.)",
+    "Universität Paderborn",
+    "Paderborn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Projektleitung",
+    5
+   ],
+   [
+    "ERP-Prozesse",
+    5
+   ],
+   [
+    "Agile Methoden",
+    4
+   ],
+   [
+    "Dienstleistersteuerung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Rudern, Lesen"
+ },
+ "do": [
+  "Projekte mit Budget, Dauer, Team und Ergebnis.",
+  "Methoden praktisch beschreiben.",
+  "Umgang mit Widerständen zeigen."
+ ],
+ "dont": [
+  "Zertifikate statt Projekte.",
+  "Fehlschläge verschweigen.",
+  "Fachbegriffe ohne Inhalt."
+ ],
+ "questions": [
+  "Wie überzeugen Sie einen Fachbereich, der nicht mitziehen will?",
+  "Was machen Sie, wenn ein Dienstleister Termine reißt?",
+  "Wann arbeiten Sie agil, wann klassisch?",
+  "Welches Projekt ist gescheitert, und was haben Sie gelernt?"
+ ],
+ "faq": [
+  {
+   "q": "IT-Projektleiter oder Product Owner?",
+   "a": "Projektleiter verantworten ein Vorhaben mit Ende, Budget und Termin. Product Owner verantworten ein Produkt dauerhaft und priorisieren die Arbeit eines Teams. In vielen Firmen überschneidet sich das."
+  }
+ ],
+ "related": [
+  "projektmanager",
+  "softwareentwickler",
+  "it-systemadministrator",
+  "teamleiter"
+ ]
+}

@@ -7,7 +7,7 @@ import { $, $$, h, esc, toast, errorToast, openDialog, promptDialog, debounce, p
 import { createShell, exportPdfFlow, tb } from './shell.js';
 import { officeMenu, oicon, KINDS, stripExt } from './kinds.js';
 import { htmlToModel, modelToText, modelToMarkdown, textToHtml, markdownToHtml } from './docmodel.js';
-import { DOC_TEMPLATES } from './templates.js';
+import { DOC_TEMPLATES, buildDocTemplate } from './templates.js';
 import { fileToDataUrl, decodeText } from './vendor.js';
 import { speechSupported, ReadAloud, getVoices } from '../readaloud.js';
 import { sanitizeDocHtml, sanitizeDocHtmlSync, purifyLoaded, openExternal } from '../security.js';
@@ -19,10 +19,14 @@ import { createPageView, cleanEditorHtml, clearPagination, PAGE_GAP } from './pa
 import { createHistory } from './whistory.js';
 import { createTracker } from './trackchanges.js';
 import { createRuler } from './ruler.js';
+import { hfTexts, hfHas, isAdvanced, pageNumberOf } from './hfnorm.js';
+import { hfEl } from './pagelayout.js';
+import { createWriterExtras } from './writer-extras.js';
+import { isCustomStyle, customStyleIds, CUSTOM_BASE } from './docstyles.js';
 export { decodeText };
 
 const PX = 96 / 72; // pt → css px
-const STYLE_OPTS = [['p', 'normal', 'Standard'], ['title', 'title', 'Titel'], ['subtitle', 'subtitle', 'Untertitel'], ['h1', 'h1', 'Überschrift 1'], ['h2', 'h2', 'Überschrift 2'], ['h3', 'h3', 'Überschrift 3'], ['h4', 'h4', 'Überschrift 4'], ['blockquote', 'quote', 'Zitat'], ['pre', 'code', 'Code'], ['nospace', 'nospace', 'Kein Abstand']];
+const STYLE_OPTS = [['p', 'normal', 'Standard'], ['title', 'title', 'Titel'], ['subtitle', 'subtitle', 'Untertitel'], ['h1', 'h1', 'Überschrift 1'], ['h2', 'h2', 'Überschrift 2'], ['h3', 'h3', 'Überschrift 3'], ['h4', 'h4', 'Überschrift 4'], ['h5', 'h5', 'Überschrift 5'], ['h6', 'h6', 'Überschrift 6'], ['blockquote', 'quote', 'Zitat'], ['caption', 'caption', 'Beschriftung'], ['pre', 'code', 'Code'], ['nospace', 'nospace', 'Kein Abstand']];
 const VAL_OF_STYLE = Object.fromEntries(STYLE_OPTS.map(([v, id]) => [id, v]));
 const STYLE_OF_VAL = Object.fromEntries(STYLE_OPTS.map(([v, id]) => [v, id]));
 const HILITES = [['#FDE047', 'Gelb'], ['#A7F3D0', 'Mint'], ['#BFDBFE', 'Hellblau'], ['#FBCFE8', 'Rosa'], ['#FED7AA', 'Apricot'], ['#D9F99D', 'Hellgrün'], ['#E9D5FF', 'Flieder'], ['#D1D5DB', 'Grau']];
@@ -55,9 +59,9 @@ export async function mountWriter(screen, { id = null, template = null }) {
     }
     db.updateDoc(id, { openedAt: Date.now() }).catch(() => {});
   } else {
-    const t = DOC_TEMPLATES.find(x => x.id === template) || DOC_TEMPLATES[0];
-    html = t.html();
-    name = (t.id === 'leer' ? 'Neues Dokument' : t.title.replace(/ – /g, ' ')) + '.docx';
+    const t = buildDocTemplate(DOC_TEMPLATES.some(x => x.id === template) ? template : 'leer');
+    html = t.html; page = t.page; hf = t.hf; if (t.styles) styles = t.styles;
+    name = t.name + '.docx';
   }
   // imported documents are untrusted: DOMPurify (editor profile) on top of the escaping importers
   try { html = await sanitizeDocHtml(html); } catch (e) { console.warn('sanitizer unavailable', e); }
@@ -79,6 +83,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
       { label: 'Als Markdown (.md) herunterladen', icon: 'download', onClick: () => dl('md') },
       kind !== 'docx' ? { label: 'Als Word-Dokument speichern', icon: 'kdoc', onClick: async () => { const b = await serialize('docx'); await shell.saveAsKind(b, 'docx'); } } : null,
       '-',
+      { label: 'Neues Dokument aus Vorlage …', icon: 'template', onClick: () => { location.hash = '#/vorlagen/dokument'; } },
       { label: 'Suchen & ersetzen', icon: 'replace', onClick: () => openFind(true) },
       { label: 'Seite einrichten …', icon: 'pageSetup', onClick: () => pageSetup() },
       { label: 'Inhaltsverzeichnis einfügen', icon: 'toc', onClick: () => insertToc() },
@@ -108,7 +113,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
         ${[['start', 'Start'], ['insert', 'Einfügen'], ['layout', 'Layout'], ['review', 'Überprüfen'], ['mailings', 'Sendungen'], ['view', 'Ansicht'], ['table', 'Tabelle'], ['image', 'Bild']].map(([k, l], i) => `<button class="rb-tab${k === 'table' || k === 'image' ? ' rb-ctx' : ''}" type="button" role="tab" data-rb="${k}" aria-selected="${i === 0}"${k === 'table' || k === 'image' ? ' hidden' : ''}>${l}</button>`).join('')}
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Formatierung" data-rbp="start">
-        <div class="tb-group">${tb('undo', 'Rückgängig (Strg+Z)', 'data-cmd="undo"')}${tb('redo', 'Wiederholen (Strg+Y)', 'data-cmd="redo"')}${tb('painter', 'Format übertragen (Strg+Umschalt+C / V)', 'data-x="painter"')}</div>
+        <div class="tb-group">${tb('undo', 'Rückgängig (Strg+Z)', 'data-cmd="undo"')}${tb('redo', 'Wiederholen (Strg+Y)', 'data-cmd="redo"')}${tb('pasteText', 'Als reinen Text einfügen (Strg+Umschalt+Alt+V)', 'data-x="paste-text"')}${tb('painter', 'Format übertragen (Strg+Umschalt+C / V)', 'data-x="painter"')}</div>
         <div class="tb-group">
           <label class="sr-only" for="w-block">Formatvorlage</label>
           <select class="tb-select tb-style" id="w-block" data-block title="Formatvorlage">${STYLE_OPTS.map(([v, , l]) => `<option value="${v}">${l}</option>`).join('')}</select>
@@ -134,18 +139,20 @@ export async function mountWriter(screen, { id = null, template = null }) {
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Einfügen" data-rbp="insert" hidden>
         <div class="tb-group">${tbl('table', 'Tabelle', 'data-x="ins-table"')}${tbl('image', 'Bild', 'data-x="ins-image"')}${tbl('shapes', 'Form', 'data-x="ins-shape"')}${tbl('textbox', 'Textfeld', 'data-x="ins-textbox"')}</div>
-        <div class="tb-group">${tbl('link', 'Link', 'data-x="ins-link"')}${tbl('pages', 'Seitenumbruch', 'data-x="ins-pagebreak"')}${tbl('sectionBreak', 'Abschnittsumbruch', 'data-x="ins-section"')}</div>
-        <div class="tb-group">${tbl('toc', 'Inhaltsverzeichnis', 'data-x="ins-toc"')}${tbl('footnote', 'Fußnote', 'data-x="ins-footnote"')}${tbl('comment', 'Kommentar', 'data-x="ins-comment"')}</div>
-        <div class="tb-group">${tbl('header', 'Kopf- und Fußzeile', 'data-x="ins-hf"')}${tbl('hash', 'Seitenzahlen', 'data-x="ins-pn"')}${tbl('dateIns', 'Datum', 'data-x="ins-date"')}${tbl('sparkle', 'Symbol', 'data-x="ins-symbol"')}</div>
+        <div class="tb-group">${tbl('link', 'Link', 'data-x="ins-link"')}${tbl('bookmark', 'Textmarke', 'data-x="ins-bookmark"')}${tbl('crossRef', 'Querverweis', 'data-x="ins-xref"')}</div>
+        <div class="tb-group">${tbl('pages', 'Seitenumbruch', 'data-x="ins-pagebreak"')}${tbl('sectionBreak', 'Abschnittsumbruch', 'data-x="ins-section"')}</div>
+        <div class="tb-group">${tbl('toc', 'Inhaltsverzeichnis', 'data-x="ins-toc"')}${tbl('footnote', 'Fußnote', 'data-x="ins-footnote"')}${tbl('endnote', 'Endnote', 'data-x="ins-endnote"')}${tbl('caption', 'Beschriftung', 'data-x="ins-caption"')}${tbl('comment', 'Kommentar', 'data-x="ins-comment"')}</div>
+        <div class="tb-group">${tbl('header', 'Kopf- und Fußzeile', 'data-x="ins-hf"')}${tbl('hash', 'Seitenzahlen', 'data-x="ins-pn"')}${tbl('dateIns', 'Datum', 'data-x="ins-date"')}${tbl('sparkle', 'Symbol', 'data-x="ins-symbol"')}${tbl('dropCap', 'Initiale', 'data-x="ins-dropcap"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Layout" data-rbp="layout" hidden>
         <div class="tb-group">${tbl('pageSetup', 'Seitenränder', 'data-x="margins"')}${tbl('rotate', 'Ausrichtung', 'data-x="orient"')}${tbl('page', 'Format', 'data-x="size"')}</div>
         <div class="tb-group">${tbl('columns2', 'Spalten', 'data-x="columns"')}${tbl('sectionBreak', 'Umbrüche', 'data-x="breaks"')}</div>
-        <div class="tb-group">${tbl('indentInc', 'Absatz …', 'data-x="para"')}${tbl('lineSpacing', 'Abstand', 'data-x="spacing2"')}</div>
+        <div class="tb-group">${tbl('indentInc', 'Absatz …', 'data-x="para"')}${tbl('lineSpacing', 'Abstand', 'data-x="spacing2"')}${tbl('tabStops', 'Tabstopps', 'data-x="tabs"')}</div>
+        <div class="tb-group">${tbl('header', 'Kopf- und Fußzeile', 'data-x="ins-hf"')}${tbl('hash', 'Seitenzahlen', 'data-x="ins-pn"')}${tbl('watermark', 'Wasserzeichen', 'data-x="watermark"')}</div>
         <div class="tb-group">${tbl('pageSetup', 'Seite einrichten …', 'data-x="pagesetup"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Überprüfen" data-rbp="review" hidden>
-        <div class="tb-group">${tbl('spell', 'Rechtschreibung', 'data-x="spell"')}${tbl('wordCount', 'Wörter zählen', 'data-x="wordcount"')}</div>
+        <div class="tb-group">${tbl('spell', 'Rechtschreibung', 'data-x="spell"')}${tbl('language', 'Sprache', 'data-x="lang"')}${tbl('wordCount', 'Wörter zählen', 'data-x="wordcount"')}</div>
         <div class="tb-group">${tbl('comment', 'Neuer Kommentar', 'data-x="ins-comment2"')}${tbl('panel', 'Kommentare', 'data-x="comments"')}</div>
         <div class="tb-group">${tbl('track', 'Änderungen nachverfolgen', 'data-x="track"')}<label class="sr-only" for="w-markup">Markup-Anzeige</label><select class="tb-select" id="w-markup" data-markup title="Markup-Anzeige"><option value="all">Alle Markups</option><option value="final">Kein Markup</option><option value="original">Original</option></select>${tbl('panel', 'Änderungen', 'data-x="changes"')}</div>
         <div class="tb-group">${tb('chevronUp', 'Vorherige Änderung', 'data-x="tc-prev"')}${tb('chevronDown', 'Nächste Änderung', 'data-x="tc-next"')}${tbl('accept', 'Annehmen', 'data-x="accept"')}${tbl('reject', 'Ablehnen', 'data-x="reject"')}</div>
@@ -156,7 +163,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
         <div class="tb-group">${tbl('check', 'Fertigstellen', 'data-x="mm-finish"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Ansicht" data-rbp="view" hidden>
-        <div class="tb-group">${tbl('pageView', 'Seitenlayout', 'data-x="view-page"')}${tbl('webView', 'Webansicht', 'data-x="view-web"')}</div>
+        <div class="tb-group">${tbl('pageView', 'Seitenlayout', 'data-x="view-page"')}${tbl('webView', 'Webansicht', 'data-x="view-web"')}${tbl('readMode', 'Lesemodus', 'data-x="view-read"')}${tbl('focusMode', 'Fokusmodus', 'data-x="view-focus"')}</div>
         <div class="tb-group">${tbl('ruler', 'Lineal', 'data-x="ruler"')}${tbl('outline', 'Navigation', 'data-x="nav"')}${tbl('text', 'Formatierungszeichen', 'data-x="marks"')}</div>
         <div class="tb-group">${tb('zoomOut', 'Verkleinern', 'data-x="zoom-out"')}<label class="sr-only" for="w-zoom">Zoom</label><select class="tb-select tb-zoom" id="w-zoom" data-zoom title="Zoom">${ZOOMS.map(z => `<option value="${z}">${Math.round(z * 100)} %</option>`).join('')}<option value="fit">Seitenbreite</option></select>${tb('zoomIn', 'Vergrößern', 'data-x="zoom-in"')}${tbl('fitWidth', 'Seitenbreite', 'data-x="zoom-fit"')}</div>
         <div class="tb-group">${tbl('gotoPage', 'Gehe zu Seite', 'data-x="goto"')}${tbl('versions', 'Versionen', 'data-x="versions"')}${tbl('check', 'Automatisch speichern', 'data-x="autosave"')}${tbl('keyboard', 'Tastenkürzel', 'data-x="keys"')}</div>
@@ -166,10 +173,12 @@ export async function mountWriter(screen, { id = null, template = null }) {
         <div class="tb-group">${tbl('rowDel', 'Zeile löschen', 'data-t="del-row"')}${tbl('colDel', 'Spalte löschen', 'data-t="del-col"')}${tbl('trash', 'Tabelle löschen', 'data-t="del-table"')}</div>
         <div class="tb-group">${tbl('cellMerge', 'Zellen verbinden', 'data-t="merge"')}${tbl('cellSplit', 'Zelle teilen', 'data-t="split"')}${tbl('fitWidth', 'Spalten verteilen', 'data-t="distribute"')}</div>
         <div class="tb-group">${tbl('shading', 'Schattierung', 'data-t="shade"')}${tbl('border', 'Rahmen', 'data-t="borders"')}${tbl('tableStyle', 'Tabellenformat', 'data-t="style"')}${tbl('headerRow', 'Überschriftenzeile', 'data-t="header"')}${tbl('settings', 'Eigenschaften', 'data-t="props"')}</div>
+        <div class="tb-group">${tbl('sortAsc', 'Sortieren', 'data-t="sort"')}${tbl('fx', 'Formel', 'data-t="formula"')}${tbl('textToTable', 'In Text umwandeln', 'data-t="totext"')}${tbl('caption', 'Beschriftung', 'data-x="ins-caption"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Bild" data-rbp="image" hidden>
         <div class="tb-group">${tbl('wrapText', 'Textumbruch', 'data-i="wrap"')}${tbl('alignCenter', 'Ausrichten', 'data-i="align"')}</div>
-        <div class="tb-group">${tbl('resize', 'Größe …', 'data-i="size"')}${tbl('altText', 'Alternativtext', 'data-i="alt"')}${tbl('trash', 'Löschen', 'data-i="delete"')}</div>
+        <div class="tb-group">${tbl('crop', 'Zuschneiden', 'data-i="crop"')}${tbl('rotateImg', 'Drehen', 'data-i="rotate"')}${tbl('resize', 'Größe …', 'data-i="size"')}</div>
+        <div class="tb-group">${tbl('altText', 'Alternativtext', 'data-i="alt"')}${tbl('caption', 'Beschriftung', 'data-x="ins-caption"')}${tbl('trash', 'Löschen', 'data-i="delete"')}</div>
       </div>
     </div>
     <div class="findbar w-find" hidden>
@@ -193,6 +202,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
         <button class="doc-hf top" type="button" data-hf="header" hidden></button>
         <div class="doc-page${plain ? ' plain-text' : ''}" contenteditable="true" spellcheck="true" lang="de-DE" role="textbox" aria-multiline="true" aria-label="Dokumentinhalt"></div>
         <div class="doc-fn-area" hidden></div>
+        <div class="doc-en-area" hidden></div>
         <button class="doc-hf bottom" type="button" data-hf="footer" hidden></button>
         <div class="img-handles" hidden><i data-h="nw"></i><i data-h="ne"></i><i data-h="sw"></i><i data-h="se"></i></div>
       </div></div>
@@ -201,6 +211,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
         <div class="w-tc-actions"><button class="btn btn-ghost btn-sm" type="button" data-tcall="accept">Alle annehmen</button><button class="btn btn-ghost btn-sm" type="button" data-tcall="reject">Alle ablehnen</button></div><div class="w-tc-list"></div></aside>
     </div>
     <div class="readbar w-readbar" hidden></div>
+    <button class="w-modeexit" type="button" hidden>${oicon('close')}<span>Fokusmodus beenden</span></button>
     <div class="dictate-pill" hidden aria-live="polite"></div>
     <input type="color" class="sr-only" data-colorinput aria-label="Farbe wählen" tabindex="-1">
   </div>`);
@@ -250,6 +261,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   // ---------- history (own undo stack) ----------
   const hist = createHistory(ed, { onRestore: () => { shell.markDirty(); afterChange(); } });
   const changed = () => { shell.markDirty(); updateState(); onInput(); };
+  let extras = null;
   const capture = (k = 'op') => hist.capture(k);
   ed.addEventListener('beforeinput', e => {
     const t = e.inputType;
@@ -459,12 +471,25 @@ export async function mountWriter(screen, { id = null, template = null }) {
       case 'ins-shape': return shapeMenu(b);
       case 'ins-textbox': return insertTextbox();
       case 'ins-link': return insertLink();
+      case 'ins-bookmark': return extras.bookmarkDialog();
+      case 'ins-xref': return extras.crossRefDialog();
+      case 'ins-endnote': return extras.insertEndnote();
+      case 'ins-caption': return extras.captionDialog();
+      case 'ins-dropcap': return extras.toggleDropCap();
+      case 'tabs': return extras.tabsDialog();
+      case 'paste-text': return pasteAsText();
+      case 'lang': return languageMenu(b);
+      case 'view-read': return setMode(mode === 'read' ? null : 'read');
+      case 'view-focus': return setMode(mode === 'focus' ? null : 'focus');
       case 'ins-pagebreak': return insertPageBreak();
       case 'ins-section': return insertSectionBreak();
-      case 'ins-toc': return insertToc();
+      case 'ins-toc': return tocMenu(b);
       case 'ins-footnote': return insertFootnote();
       case 'ins-comment': case 'ins-comment2': return addComment();
-      case 'ins-hf': case 'ins-pn': case 'pagesetup': return pageSetup();
+      case 'ins-hf': return editHf();
+      case 'ins-pn': return pageNumberMenu(b);
+      case 'watermark': return editWatermark();
+      case 'pagesetup': return pageSetup();
       case 'ins-date': return insertDate(b);
       case 'ins-symbol': return symbolMenu(b);
       case 'margins': return marginsMenu(b);
@@ -506,7 +531,12 @@ export async function mountWriter(screen, { id = null, template = null }) {
 
   // ---------- styles (Formatvorlagen) ----------
   const blockSel = $('[data-block]', wrap);
-  blockSel.addEventListener('change', () => { const id = STYLE_OF_VAL[blockSel.value] || 'normal'; setBlockStyle(id); });
+  blockSel.addEventListener('change', () => { const v = blockSel.value; const id = STYLE_OF_VAL[v] || (v.startsWith('us:') ? v.slice(3) : 'normal'); setBlockStyle(id); });
+  function fillStyleSelect() {
+    const custom = customStyleIds(styles);
+    blockSel.innerHTML = STYLE_OPTS.map(([v, , l]) => `<option value="${v}">${esc(l)}</option>`).join('') + (custom.length ? `<optgroup label="Eigene Formatvorlagen">${custom.map(id => `<option value="us:${id}">${esc(styles[id].name || id)}</option>`).join('')}</optgroup>` : '');
+  }
+  fillStyleSelect();
   function setBlockStyle(id) {
     const nb = op(() => F.applyStyle(ed, selBlocks(), id));
     const s = getSelection();
@@ -517,20 +547,25 @@ export async function mountWriter(screen, { id = null, template = null }) {
   async function stylesDialog() {
     const blk = F.blockOf(ed, curRange() && curRange().startContainer);
     const curId = blk ? styleOfBlock(blk) : 'normal';
+    const ids = [...STYLE_ORDER, ...customStyleIds(styles)];
+    const numbered = !!(styles.h1 && styles.h1.numbered);
     const r = await openDialog({
       title: 'Formatvorlagen', wide: true,
-      body: `<div class="w-stylelist">${STYLE_ORDER.map(sid => `<div class="w-st-row${sid === curId ? ' on' : ''}"><span class="w-st-prev w-sty-${sid}">${esc(styles[sid].name)}</span><span class="w-st-count muted small">${$$(selectorOf(sid), ed).length} ×</span>
-        <span class="w-st-btns"><button class="btn btn-ghost btn-sm" type="button" data-apply="${sid}">Anwenden</button><button class="btn btn-ghost btn-sm" type="button" data-mod="${sid}">Ändern …</button><button class="btn btn-ghost btn-sm" type="button" data-upd="${sid}" title="Formatvorlage an die Formatierung des aktuellen Absatzes anpassen">Aus Markierung</button><button class="btn btn-ghost btn-sm" type="button" data-all="${sid}" title="Direkte Formatierung bei allen Absätzen dieser Formatvorlage entfernen">Alle angleichen</button></span></div>`).join('')}</div>
+      body: `<div class="w-st-top"><button class="btn btn-ghost btn-sm" type="button" data-new>${oicon('styleNew')}<span>Neue Formatvorlage …</span></button>
+        <label class="check"><input type="checkbox" data-hnum ${numbered ? 'checked' : ''}> Überschriften nummerieren (1 · 1.1 · 1.1.1)</label></div>
+        <div class="w-stylelist">${ids.map(sid => `<div class="w-st-row${sid === curId ? ' on' : ''}"><span class="w-st-prev w-sty-${sid}">${esc(styles[sid].name || sid)}</span><span class="w-st-count muted small">${$$(selectorOf(sid), ed).length} ×</span>
+        <span class="w-st-btns"><button class="btn btn-ghost btn-sm" type="button" data-apply="${sid}">Anwenden</button><button class="btn btn-ghost btn-sm" type="button" data-mod="${sid}">Ändern …</button><button class="btn btn-ghost btn-sm" type="button" data-upd="${sid}" title="Formatvorlage an die Formatierung des aktuellen Absatzes anpassen">Aus Markierung</button><button class="btn btn-ghost btn-sm" type="button" data-all="${sid}" title="Direkte Formatierung bei allen Absätzen dieser Formatvorlage entfernen">Alle angleichen</button>${isCustomStyle(sid) ? `<button class="btn btn-ghost btn-sm" type="button" data-delstyle="${sid}">Löschen</button>` : ''}</span></div>`).join('')}</div>
         <p class="hint">Formatvorlagen werden in der Word-Datei gespeichert (styles.xml) und beim Öffnen übernommen.</p>`,
       actions: [{ label: 'Schließen', value: 'cancel', kind: 'btn-primary' }],
       onMount: dlg => {
         let todo = null;
         dlg.addEventListener('click', e => {
-          const x = e.target.closest('[data-apply],[data-mod],[data-upd],[data-all]');
-          if (!x) return;
-          todo = x.dataset.apply ? ['apply', x.dataset.apply] : x.dataset.mod ? ['mod', x.dataset.mod] : x.dataset.upd ? ['upd', x.dataset.upd] : ['all', x.dataset.all];
+          const x2 = e.target.closest('[data-apply],[data-mod],[data-upd],[data-all],[data-delstyle],[data-new]');
+          if (!x2) return;
+          todo = x2.dataset.apply ? ['apply', x2.dataset.apply] : x2.dataset.mod ? ['mod', x2.dataset.mod] : x2.dataset.upd ? ['upd', x2.dataset.upd] : x2.dataset.delstyle ? ['del', x2.dataset.delstyle] : x2.hasAttribute('data-new') ? ['new'] : ['all', x2.dataset.all];
           dlg.close();
         });
+        $('[data-hnum]', dlg).addEventListener('change', e => { todo = ['hnum', e.target.checked]; dlg.close(); });
         return { collect: () => todo };
       },
     });
@@ -551,10 +586,35 @@ export async function mountWriter(screen, { id = null, template = null }) {
     } else if (what === 'all') {
       op(() => F.resetDirectFormatting($$(selectorOf(sid), ed)));
       toast('Absätze angeglichen', 'success');
+    } else if (what === 'new') {
+      const n = Math.max(0, ...customStyleIds(styles).map(id => +id.slice(1))) + 1;
+      const id = `u${n}`;
+      const baseSt = blk ? F.styleFromBlock(blk, { ...CUSTOM_BASE }) : { ...CUSTOM_BASE };
+      styles[id] = { ...baseSt, name: '', custom: true };
+      const ns = await F.styleModifyDialog(styles, id);
+      if (!ns) { delete styles[id]; return; }
+      capture();
+      styles[id] = { ...ns, custom: true, name: ns.name || `Formatvorlage ${n}` };
+      stylesChanged();
+      if (blk) setBlockStyle(id);
+      toast(`Formatvorlage „${styles[id].name}“ erstellt`, 'success');
+    } else if (what === 'del') {
+      capture();
+      $$(`.us-${sid}`, ed).forEach(el => { el.classList.remove(`us-${sid}`); if (!el.getAttribute('class')) el.removeAttribute('class'); });
+      const nm = styles[sid].name;
+      delete styles[sid];
+      stylesChanged();
+      toast(`Formatvorlage „${nm}“ gelöscht`, 'success');
+    } else if (what === 'hnum') {
+      capture();
+      for (const k of ['h1', 'h2', 'h3', 'h4']) styles[k] = { ...styles[k], numbered: !!sid };
+      stylesChanged(); refreshStructure();
+      toast(sid ? 'Überschriften werden nummeriert.' : 'Nummerierung der Überschriften aus.', 'success');
     }
   }
-  const selectorOf = sid => ({ normal: 'p:not(.title):not(.subtitle):not(.quote):not(.nospace)', title: 'p.title', subtitle: 'p.subtitle', quote: 'p.quote, blockquote', code: 'pre', nospace: 'p.nospace' }[sid] || sid);
+  const selectorOf = sid => ({ normal: 'p:not(.title):not(.subtitle):not(.quote):not(.nospace):not(.caption)', title: 'p.title', subtitle: 'p.subtitle', quote: 'p.quote, blockquote', code: 'pre', nospace: 'p.nospace', caption: 'p.caption' }[sid] || (isCustomStyle(sid) ? `p.us-${sid}` : sid));
   function stylesChanged() {
+    fillStyleSelect();
     applyStylesCss();
     $$('.w-sty', wrap).forEach(b => { const s = styles[b.dataset.sty]; if (s) { b.title = s.name; b.firstElementChild.textContent = s.name; } });
     galleryCss();
@@ -562,7 +622,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   }
   function galleryCss() {
     // previews in the gallery use the document's style fonts/colours (small)
-    const css = ['normal', 'title', 'subtitle', 'h1', 'h2', 'h3', 'h4', 'quote', 'code', 'nospace'].map(sid => {
+    const css = ['normal', 'title', 'subtitle', 'h1', 'h2', 'h3', 'h4', 'quote', 'caption', 'code', 'nospace', ...customStyleIds(styles)].map(sid => {
       const s = styles[sid];
       return `.writer .w-sty-${sid}{font-family:${fontCss(s.font || styles.normal.font || 'Arial')};${s.color ? `color:${s.color};` : ''}font-weight:${s.b ? 700 : 400};font-style:${s.i ? 'italic' : 'normal'}}`;
     }).join('');
@@ -695,7 +755,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
     const blk = s.rangeCount && ed.contains(s.anchorNode) ? currentBlock() : null;
     if (blk) {
       const sid = styleOfBlock(blk);
-      blockSel.value = VAL_OF_STYLE[sid] || 'p';
+      blockSel.value = VAL_OF_STYLE[sid] || (isCustomStyle(sid) && styles[sid] ? `us:${sid}` : 'p');
       $$('.w-sty', wrap).forEach(x => x.setAttribute('aria-pressed', String(x.dataset.sty === sid)));
       const f = F.currentFmt(ed, s.anchorNode);
       if (f) {
@@ -716,7 +776,13 @@ export async function mountWriter(screen, { id = null, template = null }) {
     if (rulerOn) rulerPaint();
   }
   const onSelChange = () => {
-    if (ed.contains(getSelection().anchorNode)) { saveSel(); tables.syncSelection(); updateState(); }
+    const sel = getSelection();
+    if (ed.contains(sel.anchorNode)) {
+      saveSel(); tables.syncSelection();
+      // the caret moved away from the selected picture → picture tools off
+      if (selImg && selImg.isConnected) { const blk = F.blockOf(ed, selImg); if (!(blk && blk.contains(sel.anchorNode)) && sel.anchorNode !== selImg) { selectImage(null); return; } }
+      updateState();
+    }
   };
   document.addEventListener('selectionchange', onSelChange);
 
@@ -748,6 +814,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
     insertBlock(t);
     changed();
   }
+  const lastCell = () => { const r = savedRange; const el = r && (r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement); const td = el && el.closest('td,th'); return td && ed.contains(td) ? td : null; };
   async function tableCmd(t, b) {
     restoreSel();
     switch (t) {
@@ -778,6 +845,9 @@ export async function mountWriter(screen, { id = null, template = null }) {
       case 'style': return officeMenu(b, [['', 'Standard'], ...TABLE_STYLES].map(([k, l]) => ({ label: l, icon: 'tableStyle', onClick: () => { restoreSel(); tables.style(k); } })), { label: 'Tabellenformatvorlagen' });
       case 'header': { const on = tables.header(); toast(on ? 'Erste Zeile wird auf jeder Seite wiederholt.' : 'Überschriftenzeile aus.', 'info'); return null; }
       case 'props': { const td = tables.current(); if (!td) return null; capture(); if (await tables.propsDialog(td.closest('table'))) changed(); return null; }
+      case 'sort': { const td = tables.current() || lastCell(); if (td) await extras.sortDialog(td); return null; }
+      case 'formula': { const td = tables.current() || lastCell(); if (!td) { toast('Setze den Cursor in eine Tabellenzelle.', 'info'); return null; } await extras.formulaDialog(td); return null; }
+      case 'totext': { const td = tables.current() || lastCell(); if (td) extras.tableToText(td.closest('table')); return null; }
       default: return null;
     }
   }
@@ -812,18 +882,12 @@ export async function mountWriter(screen, { id = null, template = null }) {
     if (box) { const r = document.createRange(); r.selectNodeContents(box.querySelector('p')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
     changed();
   }
-  async function insertLink() {
-    const s = savedRange ? savedRange.toString() : '';
-    const url = await promptDialog('Link einfügen', 'Adresse (https://…)', 'https://', { okLabel: 'Einfügen' });
-    if (!url || url === 'https://') return;
-    const href = /^(https?:|mailto:|tel:)/i.test(url) ? url : `https://${url}`;
-    restoreSel(); capture();
-    if (s) document.execCommand('createLink', false, href);
-    else insertInline(`<a href="${esc(href)}">${esc(url)}</a>&nbsp;`);
-    changed();
-  }
+  async function insertLink() { return extras.linkDialog(); }
   function insertPageBreak() { capture(); insertBlock('<hr data-page-break>'); changed(); }
-  function insertSectionBreak() { capture(); insertBlock('<hr data-page-break data-break="section">'); changed(); }
+  function insertSectionBreak(orient = null) {
+    capture(); insertBlock(`<hr data-page-break data-break="section"${orient ? ` data-orient="${orient}"` : ''}>`); changed();
+    if (orient) toast(orient === 'landscape' ? 'Die folgenden Seiten werden im Querformat gedruckt (PDF und .docx-Datei).' : 'Die folgenden Seiten werden im Hochformat gedruckt (PDF und .docx-Datei).', 'info');
+  }
   function insertDate(b) {
     const d = new Date();
     const fm = [d.toLocaleDateString('de-DE'), d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }), d.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), d.toISOString().slice(0, 10), `${d.toLocaleDateString('de-DE')} ${d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`];
@@ -869,8 +933,10 @@ export async function mountWriter(screen, { id = null, template = null }) {
   async function imageCmd(i, b) {
     const img = selImg;
     if (!img) return;
+    if (i === 'crop') { await extras.cropDialog(img); return; }
+    if (i === 'rotate') { await extras.rotateImage(img, 1); return; }
     if (i === 'wrap') {
-      officeMenu(b, [['inline', 'Mit Text in Zeile'], ['left', 'Links, Text umfließt rechts'], ['right', 'Rechts, Text umfließt links']].map(([k, l]) => ({ label: `${(img.getAttribute('data-wrap') || 'inline') === k ? '✓ ' : ''}${l}`, icon: 'wrapText', onClick: () => op(() => { if (k === 'inline') img.removeAttribute('data-wrap'); else img.setAttribute('data-wrap', k); setTimeout(placeHandles, 30); }) })), { label: 'Textumbruch' });
+      officeMenu(b, [['inline', 'Mit Text in Zeile'], ['left', 'Links, Text umfließt rechts'], ['right', 'Rechts, Text umfließt links'], ['center', 'Oben und unten']].map(([k, l]) => ({ label: `${(img.getAttribute('data-wrap') || 'inline') === k ? '✓ ' : ''}${l}`, icon: 'wrapText', onClick: () => op(() => { if (k === 'inline') img.removeAttribute('data-wrap'); else img.setAttribute('data-wrap', k); setTimeout(placeHandles, 30); }) })), { label: 'Textumbruch' });
     } else if (i === 'align') {
       officeMenu(b, [['left', 'Links'], ['center', 'Zentriert'], ['right', 'Rechts']].map(([k, l]) => ({ label: l, icon: k === 'left' ? 'alignLeft' : k === 'center' ? 'alignCenter' : 'alignRight', onClick: () => op(() => { img.removeAttribute('data-wrap'); const p = F.blockOf(ed, img); if (p) F.applyPara([p], { align: k }); setTimeout(placeHandles, 30); }) })), { label: 'Bild ausrichten' });
     } else if (i === 'size') {
@@ -893,7 +959,10 @@ export async function mountWriter(screen, { id = null, template = null }) {
         { label: 'Größer', icon: 'zoomIn', onClick: () => resize(1.25) },
         { label: 'Volle Breite', icon: 'fitWidth', onClick: () => resize('full') },
         { label: 'Textumbruch …', icon: 'wrapText', onClick: () => { showRibbon('image'); imageCmd('wrap', $('[data-i="wrap"]', wrap)); } },
+        { label: 'Zuschneiden …', icon: 'crop', onClick: () => imageCmd('crop') },
+        { label: 'Um 90° drehen', icon: 'rotateImg', onClick: () => imageCmd('rotate') },
         { label: 'Alternativtext …', icon: 'altText', onClick: () => imageCmd('alt') },
+        { label: 'Beschriftung einfügen …', icon: 'caption', onClick: () => extras.captionDialog() },
         { label: 'Bild löschen', icon: 'trash', danger: true, onClick: () => { op(() => img.remove()); selectImage(null); } },
       ], { label: 'Bild' });
       return;
@@ -936,6 +1005,8 @@ export async function mountWriter(screen, { id = null, template = null }) {
     officeMenu(b, [
       { label: 'Seitenumbruch', icon: 'pages', onClick: () => insertPageBreak() },
       { label: 'Abschnittsumbruch (nächste Seite)', icon: 'sectionBreak', onClick: () => insertSectionBreak() },
+      { label: 'Abschnittsumbruch: folgende Seiten im Querformat', icon: 'rotate', onClick: () => insertSectionBreak('landscape') },
+      { label: 'Abschnittsumbruch: folgende Seiten im Hochformat', icon: 'page', onClick: () => insertSectionBreak('portrait') },
       { label: 'Seitenumbruch oberhalb des Absatzes', icon: 'pages', onClick: () => op(() => selBlocks().forEach(x => x.toggleAttribute('data-pbb'))) },
       { label: 'Nicht vom nächsten Absatz trennen', icon: 'pages', onClick: () => op(() => selBlocks().forEach(x => x.toggleAttribute('data-keep-next'))) },
     ], { label: 'Umbrüche' });
@@ -963,11 +1034,32 @@ export async function mountWriter(screen, { id = null, template = null }) {
     e.preventDefault();
     capture();
     if (tracker.enabled) { tracker.insertText(dt.getData('text/plain')); changed(); return; }
-    if (htmlData && !plain) { const clean = sanitizeHtml(htmlData); document.execCommand('insertHTML', false, purifyLoaded() ? sanitizeDocHtmlSync(clean) : clean); }
-    else document.execCommand('insertText', false, dt.getData('text/plain'));
+    const asText = pasteTextOnce; pasteTextOnce = false;
+    if (htmlData && !plain && !asText) {
+      const clean0 = sanitizeHtml(htmlData);
+      const clean = purifyLoaded() ? sanitizeDocHtmlSync(clean0) : clean0;
+      document.execCommand('insertHTML', false, clean);
+      changed();
+      if (/<(b|strong|i|em|u|span|font|h[1-6]|table|ul|ol|a)\b|style=/i.test(clean)) setTimeout(() => extras.offerPasteOptions({ html: clean, text: dt.getData('text/plain'), at: Date.now() }), 30);
+      return;
+    }
+    document.execCommand('insertText', false, dt.getData('text/plain'));
     changed();
   });
   ed.addEventListener('cut', () => capture());
+  let pasteTextOnce = false;
+  async function pasteAsText() {
+    try {
+      const t = await navigator.clipboard.readText();
+      restoreSel(); capture();
+      if (tracker.enabled) tracker.insertText(t); else document.execCommand('insertText', false, t);
+      changed();
+    } catch {
+      pasteTextOnce = true;
+      ed.focus({ preventScroll: true });
+      toast('Füge jetzt mit Strg+V bzw. „Einfügen“ ein – es wird nur der Text übernommen.', 'info');
+    }
+  }
   screen.onDropFiles = files => {
     const imgs = files.filter(f => /^image\//.test(f.type));
     if (imgs.length) insertImage(imgs);
@@ -1080,6 +1172,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   // ---------- structure: outline, TOC, comments, footnotes, header/footer ----------
   const outlinePanel = $('.w-outline', wrap), cmtPanel = $('.w-comments', wrap), tcPanel = $('.w-changes', wrap);
   const fnArea = $('.doc-fn-area', wrap);
+  const enArea = $('.doc-en-area', wrap);
   const hfTop = $('.doc-hf.top', wrap), hfBottom = $('.doc-hf.bottom', wrap);
   let profileName = null;
   async function authorName() {
@@ -1087,7 +1180,9 @@ export async function mountWriter(screen, { id = null, template = null }) {
     return profileName || 'Ich';
   }
   authorName();
-  const headings = () => $$('h1,h2,h3', ed).filter(x => !x.closest('[data-toc]') && x.textContent.trim());
+  const headings = (depth = 3) => $$('h1,h2,h3,h4,h5,h6', ed).filter(x => +x.tagName[1] <= depth && !x.closest('[data-toc]') && x.textContent.trim());
+  const headText = hd => `${hd.getAttribute('data-hnum') ? `${hd.getAttribute('data-hnum')} ` : ''}${hd.textContent.replace(/\u200b/g, '').trim()}`;
+  const captionsOf = label => $$('p.caption', ed).filter(c => { const sq = c.querySelector('span.seq'); return sq && (sq.getAttribute('data-seq') || 'Abbildung') === label && c.textContent.trim(); });
   function togglePanel(which, force) {
     const p = which === 'outline' ? outlinePanel : which === 'changes' ? tcPanel : cmtPanel;
     const open = force != null ? force : p.hidden;
@@ -1104,6 +1199,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   }
   $$('[data-close-panel]', wrap).forEach(b => b.addEventListener('click', () => togglePanel(b.closest('.w-outline') ? 'outline' : b.closest('.w-changes') ? 'changes' : 'comments', false)));
   function refreshStructure() {
+    if (extras) { extras.updateFields(); extras.renderEndnotes(enArea); }
     refreshTocs();
     if (!outlinePanel.hidden) renderOutline();
     renderComments();
@@ -1121,37 +1217,59 @@ export async function mountWriter(screen, { id = null, template = null }) {
   }
   function renderOutline() {
     const list = $('.w-outline-list', outlinePanel);
-    const hs = headings();
+    const hs = headings(6);
     list.innerHTML = hs.length ? '' : '<p class="panel-empty">Noch keine Überschriften. Nutze „Überschrift 1–3“ im Absatzformat, dann erscheint hier die Gliederung.</p>';
+    const curH = (() => { const r = curRange(); if (!r) return null; let found = null; for (const hd of hs) { if (r.comparePoint(hd, 0) <= 0 || hd.contains(r.startContainer)) found = hd; else break; } return found; })();
     hs.forEach(hd => {
-      const b = h(`<button class="w-ol-item l${hd.tagName[1]}" type="button"${pv.on ? ` data-pg="${pv.pageOf(hd)}"` : ''}>${esc(hd.textContent.trim().slice(0, 120))}</button>`);
-      b.addEventListener('click', () => jumpTo(hd));
-      list.appendChild(b);
+      const lv = hd.tagName[1];
+      const row = h(`<div class="w-ol-row l${lv}${hd === curH ? ' cur' : ''}"><button class="w-ol-item l${lv}" type="button"${pv.on ? ` data-pg="${pv.pageOf(hd)}"` : ''}>${esc(headText(hd).slice(0, 120))}</button>
+        <span class="w-ol-acts"><button class="icon-btn" type="button" data-ol="up" aria-label="Abschnitt nach oben" title="Abschnitt nach oben">${oicon('chevronUp')}</button><button class="icon-btn" type="button" data-ol="down" aria-label="Abschnitt nach unten" title="Abschnitt nach unten">${oicon('chevronDown')}</button><button class="icon-btn" type="button" data-ol="promote" aria-label="Höher stufen" title="Höher stufen"${lv === '1' ? ' disabled' : ''}>${oicon('indentDec')}</button><button class="icon-btn" type="button" data-ol="demote" aria-label="Tiefer stufen" title="Tiefer stufen"${lv === '6' ? ' disabled' : ''}>${oicon('indentInc')}</button></span></div>`);
+      $('.w-ol-item', row).addEventListener('click', () => jumpTo(hd));
+      $('.w-ol-acts', row).addEventListener('click', e => {
+        const b = e.target.closest('[data-ol]');
+        if (!b) return;
+        const k = b.dataset.ol;
+        if (k === 'up' || k === 'down') { if (!extras.moveSection(hd, k === 'up' ? -1 : 1)) toast('Hier geht es nicht weiter.', 'info'); }
+        else { const n = +hd.tagName[1] + (k === 'promote' ? -1 : 1); if (n >= 1 && n <= 6) op(() => F.applyStyle(ed, [hd], `h${n}`)); }
+        refreshStructure();
+      });
+      list.appendChild(row);
     });
   }
   function refreshTocs() {
     const tocs = $$('[data-toc]', ed);
     if (!tocs.length) return;
-    const hs = headings();
     tocs.forEach(t => {
       t.setAttribute('contenteditable', 'false');
-      const title = t.getAttribute('data-toc-title') || 'Inhaltsverzeichnis';
-      const html2 = `<p class="toc-title">${esc(title)}</p>` + (hs.length ? hs.map((hd, i) => `<p class="toc-e l${hd.tagName[1]}" data-toc-i="${i}"><span>${esc(hd.textContent.trim())}</span>${pv.on ? `<b class="toc-pg">${pv.pageOf(hd)}</b>` : ''}</p>`).join('') : '<p class="toc-e muted">Noch keine Überschriften – das Verzeichnis füllt sich automatisch.</p>');
+      const kind = t.getAttribute('data-toc-kind');
+      const title = t.getAttribute('data-toc-title') || (kind ? TOC_TITLES[kind] || `${kind}sverzeichnis` : 'Inhaltsverzeichnis');
+      const list = kind ? captionsOf(kind) : headings(+(t.getAttribute('data-toc-depth') || 3));
+      const empty = kind ? `Noch keine Beschriftungen „${esc(kind)}“ – das Verzeichnis füllt sich automatisch.` : 'Noch keine Überschriften – das Verzeichnis füllt sich automatisch.';
+      const html2 = `<p class="toc-title">${esc(title)}</p>` + (list.length ? list.map((el, i) => `<p class="toc-e l${kind ? 1 : el.tagName[1]}" data-toc-i="${i}"><span>${esc(kind ? el.textContent.replace(/\s+/g, ' ').trim() : headText(el))}</span>${pv.on ? `<b class="toc-pg">${tocPage(el)}</b>` : ''}</p>`).join('') : `<p class="toc-e muted">${empty}</p>`);
       if (t._html !== html2) { t.innerHTML = html2; t._html = html2; }
     });
   }
-  function insertToc() {
+  const tocPage = el => { const i = pv.pageOf(el) - 1; return hf ? pageNumberOf(hf, i) : String(i + 1); };
+  const TOC_TITLES = { Abbildung: 'Abbildungsverzeichnis', Tabelle: 'Tabellenverzeichnis', Gleichung: 'Gleichungsverzeichnis' };
+  function tocMenu(b) {
+    officeMenu(b, [
+      { label: 'Inhaltsverzeichnis', icon: 'toc', onClick: () => insertToc() },
+      { label: 'Abbildungsverzeichnis', icon: 'figures', onClick: () => insertToc('Abbildung') },
+      { label: 'Tabellenverzeichnis', icon: 'figures', onClick: () => insertToc('Tabelle') },
+    ], { label: 'Verzeichnis einfügen' });
+  }
+  function insertToc(kind = null) {
     if (plain) { toast('Ein Inhaltsverzeichnis gibt es nur in Word-Dokumenten.', 'info'); return; }
     capture();
-    insertBlock('<div class="toc" data-toc data-toc-title="Inhaltsverzeichnis" contenteditable="false"></div>');
+    insertBlock(kind ? `<div class="toc" data-toc data-toc-kind="${esc(kind)}" data-toc-title="${esc(TOC_TITLES[kind] || `${kind}sverzeichnis`)}" contenteditable="false"></div>` : '<div class="toc" data-toc data-toc-title="Inhaltsverzeichnis" contenteditable="false"></div>');
     changed(); refreshStructure();
-    toast('Inhaltsverzeichnis eingefügt – es aktualisiert sich automatisch.', 'success');
+    toast(kind ? `${TOC_TITLES[kind] || 'Verzeichnis'} eingefügt – es aktualisiert sich automatisch.` : 'Inhaltsverzeichnis eingefügt – es aktualisiert sich automatisch.', 'success');
   }
   ed.addEventListener('click', e => {
     const toc = e.target.closest('[data-toc]');
     if (toc) {
       const ent = e.target.closest('[data-toc-i]');
-      if (ent) { const hd = headings()[+ent.dataset.tocI]; if (hd) { jumpTo(hd); return; } }
+      if (ent) { const kind = toc.getAttribute('data-toc-kind'); const el = (kind ? captionsOf(kind) : headings(+(toc.getAttribute('data-toc-depth') || 3)))[+ent.dataset.tocI]; if (el) { jumpTo(el); return; } }
       officeMenu(toc, [
         { label: 'Verzeichnis aktualisieren', icon: 'restore', onClick: () => { toc._html = null; refreshTocs(); toast('Aktualisiert'); } },
         { label: 'Verzeichnis entfernen', icon: 'trash', danger: true, onClick: () => op(() => toc.remove()) },
@@ -1160,6 +1278,14 @@ export async function mountWriter(screen, { id = null, template = null }) {
     }
     const fn = e.target.closest('sup.fn');
     if (fn) { footnoteMenu(fn); return; }
+    const en = e.target.closest('sup.en');
+    if (en) { extras.endnoteMenu(en); return; }
+    const tfx = e.target.closest('span.tf');
+    if (tfx && !plain) { const td = tfx.closest('td,th'); if (td) { extras.formulaDialog(td, tfx); return; } }
+    const xr = e.target.closest('span.xref');
+    if (xr && (e.ctrlKey || e.metaKey)) { extras.gotoTarget(xr.getAttribute('data-ref')); return; }
+    const ia = e.target.closest('a[href^="#"]');
+    if (ia && (e.ctrlKey || e.metaKey)) { extras.gotoTarget(decodeURIComponent(ia.getAttribute('href').slice(1))); return; }
     const cm = e.target.closest('[data-cmt]');
     if (cm) { togglePanel('comments', true); focusComment(cm.getAttribute('data-cmt')); }
     const tc = e.target.closest('ins.tc, del.tc');
@@ -1314,19 +1440,66 @@ export async function mountWriter(screen, { id = null, template = null }) {
     renderHf();
   }
   function renderHf() {
-    const n = pv.on ? pv.pages : null;
-    const pn = hf && hf.pageNumbers && hf.pageNumbers !== 'none' ? (hf.pageFormat === 'n-of-m' ? `Seite 1 von ${n || 'N'}` : '1') : '';
-    const head = [hf && hf.header, pn && hf.pageNumbers.startsWith('header') ? pn : ''].filter(Boolean).join(' · ');
-    const foot = [hf && hf.footer, pn && hf.pageNumbers.startsWith('footer') ? pn : ''].filter(Boolean).join(' · ');
-    const skip = pv.on && hf && hf.firstPage === false;
-    hfTop.hidden = !head || skip; hfBottom.hidden = !foot || skip;
-    hfTop.textContent = head; hfBottom.textContent = foot;
-    hfTop.style.textAlign = (hf && hf.header ? hf.headerAlign : hf && hf.pageNumbers ? hf.pageNumbers.split('-')[1] : 'left') || 'left';
-    hfBottom.style.textAlign = (hf && hf.footer ? hf.footerAlign : hf && hf.pageNumbers ? hf.pageNumbers.split('-')[1] : 'left') || 'left';
+    const ctx = { pages: pv.on ? pv.pages : null, title: stripExt(shell.name) };
+    const H = hf && hfHas(hf) ? hf : null;
+    // page view: page 1 as it will print; web view: the standard header/footer
+    const kind = pv.on ? null : 'odd';
+    const fill = (btn, zones) => {
+      btn.replaceChildren(); btn.classList.remove('z3'); btn.style.textAlign = '';
+      const el = hfEl(zones, 'x', 'span');
+      if (!el) { btn.hidden = true; return; }
+      btn.hidden = false;
+      if (el.classList.contains('z3')) { btn.classList.add('z3'); btn.append(...Array.from(el.childNodes)); }
+      else { btn.textContent = el.textContent; btn.style.textAlign = el.style.textAlign; }
+    };
+    fill(hfTop, H ? hfTexts(H, 0, 'h', ctx, kind) : ['', '', '']);
+    fill(hfBottom, H ? hfTexts(H, 0, 'f', ctx, kind) : ['', '', '']);
     hfTop.title = hfBottom.title = 'Kopf- und Fußzeile bearbeiten';
   }
-  [hfTop, hfBottom].forEach(b => b.addEventListener('click', () => pageSetup()));
-  pagesEl.addEventListener('click', e => { if (e.target.closest('.pv-hf')) pageSetup(); });
+  [hfTop, hfBottom].forEach(b => b.addEventListener('click', () => editHf()));
+  pagesEl.addEventListener('click', e => { if (e.target.closest('.pv-hf')) editHf(); });
+  async function editHf() {
+    if (plain) { toast('Kopf- und Fußzeilen gibt es nur in .docx-Dokumenten.', 'info'); return; }
+    const { hfDialog } = await import('./writer-hf.js');
+    const v = await hfDialog(hf);
+    if (v === undefined) return;
+    capture(); hf = v; applyPage(); pv.refresh(); shell.markDirty();
+  }
+  async function editWatermark() {
+    if (plain) { toast('Wasserzeichen gibt es nur in .docx-Dokumenten.', 'info'); return; }
+    const { watermarkDialog } = await import('./writer-hf.js');
+    const v = await watermarkDialog(hf && hf.watermark);
+    if (v === undefined) return;
+    capture();
+    const next = { ...(hf || {}) };
+    if (v) next.watermark = v; else delete next.watermark;
+    hf = hfHas(next) ? next : null;
+    if (!pv.on && v) setView('page');
+    applyPage(); pv.refresh(); shell.markDirty();
+    toast(v ? 'Wasserzeichen eingefügt – sichtbar in der Seitenansicht.' : 'Wasserzeichen entfernt', 'success');
+  }
+  function pageNumberMenu(b) {
+    const set = (where, align, fmt) => {
+      capture();
+      if (!hf || !isAdvanced(hf)) hf = { ...(hf || {}), pageNumbers: where ? `${where}-${align}` : 'none', pageFormat: fmt || 'n' };
+      else {
+        const strip = z => z.map(t => t.replace(/(\s*·\s*)?(Seite \{SEITE\} von \{SEITEN\}|\{SEITE\})/g, '').trim());
+        for (const set2 of [hf.zones, hf.first, hf.even].filter(Boolean)) { set2.h = strip(set2.h); set2.f = strip(set2.f); }
+        if (where) { const k = { left: 0, center: 1, right: 2 }[align]; const z = hf.zones[where === 'header' ? 'h' : 'f']; const lab = fmt === 'n-of-m' ? 'Seite {SEITE} von {SEITEN}' : '{SEITE}'; z[k] = z[k] ? `${z[k]} · ${lab}` : lab; }
+      }
+      if (!hfHas(hf)) hf = hf && hf.watermark ? { watermark: hf.watermark } : null;
+      applyPage(); pv.refresh(); shell.markDirty();
+    };
+    officeMenu(b, [
+      { label: 'Unten mittig', icon: 'hash', onClick: () => set('footer', 'center', 'n') },
+      { label: 'Unten rechts', icon: 'hash', onClick: () => set('footer', 'right', 'n') },
+      { label: 'Oben rechts', icon: 'hash', onClick: () => set('header', 'right', 'n') },
+      { label: '„Seite X von Y“ unten mittig', icon: 'hash', onClick: () => set('footer', 'center', 'n-of-m') },
+      '-',
+      { label: 'Format und Startwert …', icon: 'settings', onClick: () => editHf() },
+      { label: 'Seitenzahlen entfernen', icon: 'trash', onClick: () => set(null) },
+    ], { label: 'Seitenzahlen' });
+  }
   async function pageSetup() {
     if (plain) { toast('Seitenformat gibt es nur in Word-Dokumenten.', 'info'); return; }
     const land = page.w > page.h;
@@ -1334,6 +1507,8 @@ export async function mountWriter(screen, { id = null, template = null }) {
     const fmt = Object.entries(PAGE_FORMATS).find(([, v]) => Math.abs(v[0] - pw) < 3 && Math.abs(v[1] - ph) < 3);
     const mar = Object.entries(MARGINS).find(([, v]) => [page.mt, page.mr, page.mb, page.ml].every((x, i) => Math.abs(x - v[i]) < 1.5));
     const H = hf || {};
+    const adv = isAdvanced(hf);
+    let wantAdv = false;
     const r = await openDialog({
       title: 'Seite einrichten', wide: true,
       body: `<div class="ps-dlg">
@@ -1342,21 +1517,24 @@ export async function mountWriter(screen, { id = null, template = null }) {
         <label class="field"><span class="field-label">Ränder</span><select class="select" name="mar">${Object.entries(MARGINS).map(([k, v]) => `<option value="${k}" ${mar && mar[0] === k ? 'selected' : ''}>${v[4]}</option>`).join('')}<option value="custom" ${mar ? '' : 'selected'}>Eigene (mm)</option></select></label>
         <div class="ps-custom" ${mar ? 'hidden' : ''}><div class="ps-grid">${[['mt', 'Oben'], ['mb', 'Unten'], ['ml', 'Links'], ['mr', 'Rechts']].map(([k, l]) => `<label class="field"><span class="field-label">${l}</span><input class="input" name="${k}" inputmode="decimal" value="${String(mm2(page[k])).replace('.', ',')}"></label>`).join('')}</div></div>
         <h3 class="ps-h">Kopf- und Fußzeile</h3>
+        ${adv ? `<p class="hint">Erweitert eingerichtet (drei Bereiche, Felder oder andere erste/gerade Seiten).</p>` : `<div class="ps-simple">
         <div class="field-row"><label class="field"><span class="field-label">Kopfzeile</span><input class="input" name="header" value="${esc(H.header || '')}" placeholder="z. B. Projektbericht"></label>
           <label class="field"><span class="field-label">Ausrichtung</span><select class="select" name="headerAlign">${[['left', 'Links'], ['center', 'Mitte'], ['right', 'Rechts']].map(([k, l]) => `<option value="${k}" ${(H.headerAlign || 'left') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div>
         <div class="field-row"><label class="field"><span class="field-label">Fußzeile</span><input class="input" name="footer" value="${esc(H.footer || '')}" placeholder="z. B. Vertraulich"></label>
           <label class="field"><span class="field-label">Ausrichtung</span><select class="select" name="footerAlign">${[['left', 'Links'], ['center', 'Mitte'], ['right', 'Rechts']].map(([k, l]) => `<option value="${k}" ${(H.footerAlign || 'left') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div>
         <div class="field-row"><label class="field"><span class="field-label">Seitenzahlen</span><select class="select" name="pn">${[['none', 'Keine'], ['footer-center', 'Unten mittig'], ['footer-right', 'Unten rechts'], ['header-right', 'Oben rechts']].map(([k, l]) => `<option value="${k}" ${(H.pageNumbers || 'none') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
           <label class="field"><span class="field-label">Schreibweise</span><select class="select" name="pf"><option value="n" ${H.pageFormat !== 'n-of-m' ? 'selected' : ''}>1, 2, 3 …</option><option value="n-of-m" ${H.pageFormat === 'n-of-m' ? 'selected' : ''}>Seite 1 von 3</option></select></label></div>
-        <label class="check"><input type="checkbox" name="first" ${H.firstPage === false ? 'checked' : ''}> Nicht auf der ersten Seite (Deckblatt)</label>
+        <label class="check"><input type="checkbox" name="first" ${H.firstPage === false ? 'checked' : ''}> Nicht auf der ersten Seite (Deckblatt)</label></div>`}
+        <button type="button" class="btn btn-ghost btn-sm" data-hfadv>${oicon('header')}<span>${adv ? 'Kopf- und Fußzeile bearbeiten …' : 'Mehr Optionen: drei Bereiche, Felder, gerade Seiten …'}</span></button>
       </div>`,
       actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Übernehmen', value: 'ok', kind: 'btn-primary', default: true }],
       onMount: dlg => {
         let orient = land ? 'quer' : 'hoch';
         $$('[data-or]', dlg).forEach(b => b.addEventListener('click', () => { orient = b.dataset.or; $$('[data-or]', dlg).forEach(x => x.setAttribute('aria-pressed', String(x === b))); }));
         $('[name=mar]', dlg).addEventListener('change', e => { $('.ps-custom', dlg).hidden = e.target.value !== 'custom'; });
-        const v = n => $(`[name=${n}]`, dlg).value;
-        return { collect: () => ({ fmt: v('fmt'), orient, mar: v('mar'), mt: v('mt'), mb: v('mb'), ml: v('ml'), mr: v('mr'), header: v('header').trim(), headerAlign: v('headerAlign'), footer: v('footer').trim(), footerAlign: v('footerAlign'), pn: v('pn'), pf: v('pf'), first: $('[name=first]', dlg).checked }) };
+        $('[data-hfadv]', dlg).addEventListener('click', () => { wantAdv = true; const ok = $('button[value=ok]', dlg); if (ok) ok.click(); });
+        const v = n => { const el = $(`[name=${n}]`, dlg); return el ? el.value : ''; };
+        return { collect: () => ({ fmt: v('fmt'), orient, mar: v('mar'), mt: v('mt'), mb: v('mb'), ml: v('ml'), mr: v('mr'), header: v('header').trim(), headerAlign: v('headerAlign'), footer: v('footer').trim(), footerAlign: v('footerAlign'), pn: v('pn') || 'none', pf: v('pf'), first: !!($('[name=first]', dlg) || {}).checked }) };
       },
     });
     if (r.value !== 'ok' || !r.data) return;
@@ -1367,15 +1545,20 @@ export async function mountWriter(screen, { id = null, template = null }) {
     const m = d.mar === 'custom' ? [toPt(d.mt), toPt(d.mr), toPt(d.mb), toPt(d.ml)] : MARGINS[d.mar].slice(0, 4);
     capture();
     page = { w, h: hh, mt: m[0], mr: m[1], mb: m[2], ml: m[3] };
-    hf = d.header || d.footer || d.pn !== 'none' ? { header: d.header, headerAlign: d.headerAlign, footer: d.footer, footerAlign: d.footerAlign, pageNumbers: d.pn, pageFormat: d.pf, firstPage: d.first ? false : undefined } : null;
+    if (!adv) {
+      const wm = hf && hf.watermark;
+      hf = d.header || d.footer || d.pn !== 'none' ? { header: d.header, headerAlign: d.headerAlign, footer: d.footer, footerAlign: d.footerAlign, pageNumbers: d.pn, pageFormat: d.pf, firstPage: d.first ? false : undefined } : null;
+      if (wm) hf = { ...(hf || {}), watermark: wm };
+    }
     applyPage();
     pv.refresh();
     shell.markDirty();
+    if (wantAdv) { editHf(); return; }
     toast('Seite eingerichtet', 'success');
   }
 
   // ---------- page layout view, zoom, ruler, formatting marks ----------
-  const pv = createPageView({ ed, pagesEl, getPage: () => page, getHf: () => hf, getStyles: () => styles, onLayout: n => { renderHf(); updatePageInfo(n); } });
+  const pv = createPageView({ ed, pagesEl, getPage: () => page, getHf: () => hf, getTitle: () => stripExt(shell.name), getStyles: () => styles, onLayout: n => { renderHf(); updatePageInfo(n); } });
   let view = 'web', zoom = 1, zoomFit = false;
   function updatePageInfo(n) { pageInfo.textContent = pv.on ? `Seite ${pv.pageOf(curRange() && curRange().startContainer)} von ${n}` : ''; }
   function setView(v) {
@@ -1637,7 +1820,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
     ['Strg+Enter', 'Seitenumbruch'], ['Strg+Umschalt+1 … 4', 'Überschrift 1 … 4'], ['Strg+Umschalt+N', 'Formatvorlage Standard'], ['Strg+L / E / R / J', 'Links / Zentriert / Rechts / Blocksatz'],
     ['Strg+1 / 5 / 2', 'Zeilenabstand 1 / 1,5 / 2'], ['Strg+M / Strg+Umschalt+M', 'Einzug vergrößern / verkleinern'], ['Strg+Umschalt+L', 'Aufzählung'], ['Strg+Umschalt+> / <', 'Schrift größer / kleiner'],
     ['Strg+Umschalt++ / Strg+#', 'Hochgestellt / Tiefgestellt'], ['Strg+Leertaste', 'Zeichenformat löschen'], ['Strg+Umschalt+C / V', 'Format kopieren / übertragen'], ['Umschalt+F3', 'Groß-/Kleinschreibung wechseln'],
-    ['Strg+G', 'Gehe zu Seite'], ['Strg+Alt+M', 'Kommentar'], ['Strg+Umschalt+E', 'Änderungen nachverfolgen'], ['Tab / Umschalt+Tab', 'Nächste Zelle · Listenebene · Tabulator'], ['Strg+S', 'Speichern'], ['F1', 'Diese Übersicht'],
+    ['Strg+G', 'Gehe zu Seite'], ['Strg+Alt+M', 'Kommentar'], ['Strg+Alt+F / Strg+Alt+D', 'Fußnote / Endnote'], ['Strg+Umschalt+F5', 'Textmarke'], ['Strg+Umschalt+Alt+V', 'Als reinen Text einfügen'], ['Esc', 'Fokus- oder Lesemodus beenden'], ['Strg+Umschalt+E', 'Änderungen nachverfolgen'], ['Tab / Umschalt+Tab', 'Nächste Zelle · Listenebene · Tabulator'], ['Strg+S', 'Speichern'], ['F1', 'Diese Übersicht'],
   ];
   function shortcutsDialog() {
     openDialog({
@@ -1686,6 +1869,11 @@ export async function mountWriter(screen, { id = null, template = null }) {
     if (sh && k === 'c') return run(() => { painter = F.copyFormat(ed); if (painter) toast('Format kopiert (Strg+Umschalt+V zum Übertragen)', 'info'); });
     if (sh && k === 'v') return run(() => { if (painter) { const p = painter; painter = { ...p, sticky: true }; painterApply(); painter = p; } });
     if (!sh && k === 'g') return run(gotoPageDialog);
+    const altGr = e.getModifierState && e.getModifierState('AltGraph');
+    if (e.altKey && !altGr && !sh && k === 'f') return run(() => insertFootnote());
+    if (e.altKey && !altGr && !sh && k === 'd') return run(() => extras.insertEndnote());
+    if (sh && e.key === 'F5') return run(() => extras.bookmarkDialog());
+    if (sh && e.altKey && !altGr && k === 'v') return run(() => pasteAsText());
     if (e.altKey && k === 'm') return run(() => addComment());
     if (sh && k === 'e') return run(() => setTracking(!tracker.enabled));
     return undefined;
@@ -1695,6 +1883,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
     const mod = e.ctrlKey || e.metaKey;
     if (mod && !e.shiftKey && (e.key === 'f' || e.key === 'h')) { e.preventDefault(); saveSel(); openFind(true, e.key === 'h'); }
     if (e.key === 'F1') { e.preventDefault(); shortcutsDialog(); }
+    if (e.key === 'Escape' && mode && !document.querySelector('dialog[open]') && !document.querySelector('.menu-layer .menu')) { setMode(null); }
     const t = e.target;
     if (mod && !e.altKey && /^[zy]$/i.test(e.key) && !(t.closest && t.closest('input,textarea,select,[contenteditable="true"],dialog')) && !document.querySelector('dialog[open]')) {
       e.preventDefault();
@@ -1806,6 +1995,59 @@ export async function mountWriter(screen, { id = null, template = null }) {
     $('[data-read]', tbEl).setAttribute('aria-pressed', 'false');
   }
 
+  // ---------- focus / reading mode ----------
+  let mode = null, viewBeforeRead = null;
+  const modeExit = $('.w-modeexit', wrap);
+  modeExit.addEventListener('click', () => setMode(null));
+  function setMode(m) {
+    const was = mode;
+    mode = m;
+    wrap.classList.toggle('w-focus', m === 'focus');
+    wrap.classList.toggle('w-read', m === 'read');
+    screen.root.classList.toggle('w-immersive', !!m);
+    ed.setAttribute('contenteditable', m === 'read' ? 'false' : 'true');
+    modeExit.hidden = !m;
+    $('span', modeExit).textContent = m === 'read' ? 'Lesemodus beenden' : 'Fokusmodus beenden';
+    $('[data-x="view-read"]', wrap).setAttribute('aria-pressed', String(m === 'read'));
+    $('[data-x="view-focus"]', wrap).setAttribute('aria-pressed', String(m === 'focus'));
+    if (m === 'read' && was !== 'read') { viewBeforeRead = view; if (view !== 'web') setView('web'); }
+    if (was === 'read' && m !== 'read' && viewBeforeRead && viewBeforeRead !== view) setView(viewBeforeRead);
+    if (m) { extras.placeFbar(); toast(m === 'read' ? 'Lesemodus – Esc oder „Lesemodus beenden“ zum Bearbeiten.' : 'Fokusmodus – Esc beendet ihn.', 'info'); }
+    if (m === 'focus') setTimeout(() => ed.focus({ preventScroll: true }), 30);
+  }
+
+  // ---------- language (spell checking) ----------
+  const LANGS = [['de-DE', 'Deutsch (Deutschland)'], ['de-AT', 'Deutsch (Österreich)'], ['de-CH', 'Deutsch (Schweiz)'], ['en-US', 'Englisch (USA)'], ['en-GB', 'Englisch (Großbritannien)'], ['fr-FR', 'Französisch'], ['es-ES', 'Spanisch'], ['it-IT', 'Italienisch'], ['nl-NL', 'Niederländisch'], ['pl-PL', 'Polnisch'], ['tr-TR', 'Türkisch']];
+  function languageMenu(b) {
+    const r = curRange();
+    const selBl = r && !r.collapsed ? selBlocks() : [];
+    officeMenu(b, LANGS.map(([k, l]) => ({ label: `${(selBl.length ? selBl[0].lang || ed.lang : ed.lang) === k ? '✓ ' : ''}${l}`, icon: 'language', onClick: () => {
+      if (selBl.length) { op(() => selBl.forEach(x2 => { if (k === ed.lang) x2.removeAttribute('lang'); else x2.setAttribute('lang', k); })); toast(`Sprache der Markierung: ${l}`, 'success'); }
+      else { ed.lang = k; LS.set('fale-w-lang', k); setSpell(spellOn); toast(`Dokumentsprache: ${l} – die Rechtschreibprüfung deines Geräts prüft in dieser Sprache.`, 'success'); }
+    } })), { label: selBl.length ? 'Sprache der Markierung' : 'Sprache des Dokuments' });
+  }
+  ed.lang = LS.get('fale-w-lang', 'de-DE');
+
+  // ---------- floating format bar ----------
+  function fbarAction(k, b) {
+    switch (k) {
+      case 'bold': case 'italic': case 'underline': return exec(k);
+      case 'hilite': colorMode = 'back'; return applyColor('#FDE047');
+      case 'color': return officeMenu(b, ['#1A1A1A', '#C2410C', '#B91C1C', '#3B37A0', '#0B8F80', '#15803D', '#7E22CE', '#6B7194'].map(c => ({ label: colorName(c), icon: 'color', onClick: () => { colorMode = 'fore'; applyColor(c); } })), { label: 'Textfarbe' });
+      case 'style': return officeMenu(b, [['normal', 'Standard'], ['h1', 'Überschrift 1'], ['h2', 'Überschrift 2'], ['h3', 'Überschrift 3'], ['quote', 'Zitat'], ['title', 'Titel']].map(([id, l]) => ({ label: l, icon: 'heading', onClick: () => setBlockStyle(id) })), { label: 'Formatvorlage' });
+      case 'list': return exec('insertUnorderedList');
+      case 'link': return insertLink();
+      case 'comment': return addComment();
+      case 'clear': return clearFormatting();
+      default: return null;
+    }
+  }
+  extras = createWriterExtras({
+    ed, wrap, plain, capture, changed, op, insertBlock, insertInline, restoreSel, saveSel, curRange, selBlocks, toast,
+    get pv() { return pv; }, getHf: () => hf, getStyles: () => styles, jumpTo, refresh: () => refreshStructure(), undo: () => doUndo(),
+    getSelImg: () => selImg, placeHandles: () => placeHandles(), contentWidthPx: () => Math.round((page.w - page.ml - page.mr) * PX), fbarAction,
+  });
+
   // ---------- start ----------
   applyPage();
   setSpell(spellOn);
@@ -1823,7 +2065,8 @@ export async function mountWriter(screen, { id = null, template = null }) {
   wrap._writerApi = {
     ed, hf: () => hf, page: () => page, styles: () => styles, setHf: v => { hf = v; renderHf(); pv.refresh(); shell.markDirty(); }, setPage: v => { page = v; applyPage(); pv.refresh(); shell.markDirty(); },
     addComment, insertToc, insertFootnote, refresh: refreshStructure, pv, view: () => view, setView, setZoom, tables, tracker, setTracking, hist, undo: doUndo, redo: doRedo,
-    setStyle: setBlockStyle, setStyles: (sid, v) => { styles[sid] = { ...styles[sid], ...v }; stylesChanged(); }, model: modelNow, serialize, mm, mmPreview, gotoPage, act, F,
+    setStyle: setBlockStyle, setStyles: (sid, v) => { styles[sid] = { ...styles[sid], ...v }; stylesChanged(); refreshStructure(); }, model: modelNow, serialize, mm, mmPreview, gotoPage, act, F,
+    extras, setMode, mode: () => mode, insertToc, tableCmd, imageCmd, selectImage, exportPdf, editHf,
   };
 
   if (screen._query) { fq.value = screen._query; openFind(false); }
@@ -1834,6 +2077,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
     if (dictating) { dictating = false; try { rec && rec.stop(); } catch {} }
     clearInterval(autosaveTimer);
     tracker.destroy();
+    extras.destroy();
     document.removeEventListener('selectionchange', onSelChange);
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('resize', onResize);

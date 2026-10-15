@@ -1,0 +1,315 @@
+{
+ "id": "altenpfleger",
+ "field": "pflege",
+ "name": "Altenpfleger/in",
+ "search": "altenpfleger altenpflegerin pflegefachkraft altenpflege pflegeheim seniorenheim stationär examiniert bewerbung",
+ "short": "Stationäre Altenpflege – examiniert, mit Herz und Struktur.",
+ "desc": "Bewerbung als Altenpfleger/in oder Pflegefachkraft im Pflegeheim: Muster-Anschreiben für Wohnbereichsleitung, Rückkehrerin und Berufseinsteiger, mit Lebenslauf.",
+ "intro": "In der stationären Altenpflege betreust du Menschen, die oft viele Jahre im Heim leben. Neben Grund- und Behandlungspflege zählen Biografiearbeit, Umgang mit Demenz, Angehörigenarbeit und Dokumentation. Seit 2020 heißt die Ausbildung Pflegefachfrau/Pflegefachmann; ältere Abschlüsse als Altenpfleger/in gelten weiter.",
+ "lookFor": [
+  "Examen als Altenpfleger/in oder Pflegefachfrau/-mann",
+  "Erfahrung mit Demenz und Palliativpflege",
+  "Dokumentation und Pflegeplanung",
+  "Angehörigenarbeit",
+  "Schicht- und Wochenenddienst"
+ ],
+ "letters": [
+  {
+   "label": "Pflegefachkraft will Wohnbereichsleitung werden",
+   "level": "erfahren",
+   "position": "Wohnbereichsleitung",
+   "to": {
+    "org": "Seniorenresidenz Lindenhof",
+    "sal": "f",
+    "contact": "Krämer",
+    "street": "Lindenallee 5",
+    "city": "34117 Kassel"
+   },
+   "body": [
+    "auf meinem Wohnbereich leben 32 Menschen, davon die Hälfte mit Demenz. Seit zwei Jahren bin ich dort stellvertretende Leitung, plane Dienste, führe Pflegevisiten und spreche mit Angehörigen, wenn es schwierig wird. Jetzt möchte ich die Leitung eines eigenen Bereichs übernehmen.",
+    "Examinierte Altenpflegerin bin ich seit neun Jahren, mit Weiterbildungen in Palliativ Care und gerontopsychiatrischer Pflege. Ihr Haus arbeitet mit Hausgemeinschaften, in denen Bewohner mitkochen und den Tag mitgestalten; das entspricht meiner Vorstellung von guter Pflege.",
+    "Den Kurs für Wohnbereichsleitungen beginne ich im Herbst."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Weiterbildungsnachweise",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Rückkehr in die Pflege nach Jahren in der Verwaltung",
+   "level": "quereinstieg",
+   "position": "Pflegefachkraft (Teilzeit, Wiedereinstieg)",
+   "to": {
+    "org": "Altenzentrum Kassel-Nord",
+    "sal": "none",
+    "street": "Holländische Straße 100",
+    "city": "34127 Kassel"
+   },
+   "body": [
+    "vor sechs Jahren habe ich die Pflege verlassen und in der Verwaltung einer Krankenkasse gearbeitet. Ich habe dort viel gelernt, aber mir fehlen die Menschen. Mein Examen als Altenpflegerin ist gültig, und ich habe im Frühjahr einen Auffrischungskurs zu Expertenstandards und Wundversorgung absolviert.",
+    "Ich möchte mit 25 Stunden pro Woche zurückkehren, gern im Frühdienst. Aus der Kasse bringe ich Wissen über Pflegegrade und Hilfsmittel mit, das bei Anträgen für Bewohner hilft."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Monika Wiegand",
+    "Wilhelmshöher Allee 200",
+    "34119 Kassel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "classic",
+  "accent": 1,
+  "name": "Katharina Baum",
+  "title": "Altenpflegerin, stellv. Wohnbereichsleitung",
+  "street": "Friedrich-Ebert-Straße 80",
+  "city": "34119 Kassel",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Altenpflegerin, ab 2024 stellv. Wohnbereichsleitung",
+    "Pflegezentrum am Park",
+    "Kassel",
+    "- Wohnbereich mit 32 Bewohnern, Schwerpunkt Demenz\n- Dienstplanung, Pflegevisiten\n- Angehörigengespräche"
+   ],
+   [
+    "2017",
+    "2019",
+    "Altenpflegerin",
+    "Seniorenheim Baunatal",
+    "Baunatal",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2014",
+    "2017",
+    "Ausbildung Altenpflegerin (Examen)",
+    "Altenpflegeschule Kassel",
+    "Kassel",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "Palliative Care (160 Stunden)",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Gerontopsychiatrische Pflege",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Demenzpflege",
+    5
+   ],
+   [
+    "Palliativpflege",
+    4
+   ],
+   [
+    "Pflegeplanung",
+    5
+   ],
+   [
+    "Dienstplanung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Garten, Chor"
+ },
+ "do": [
+  "Bereich, Bewohnerzahl und Schwerpunkte nennen.",
+  "Weiterbildungen angeben.",
+  "Haltung mit einem Beispiel zeigen."
+ ],
+ "dont": [
+  "„Ich helfe gern alten Menschen“ ohne Inhalt.",
+  "Über Personalmangel klagen.",
+  "Gültigkeit des Examens offenlassen."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einer Bewohnerin um, die abends zur Arbeit will?",
+  "Wie führen Sie ein schwieriges Angehörigengespräch?",
+  "Wie organisieren Sie einen Frühdienst mit einer Kraft zu wenig?",
+  "Was bedeutet gute Sterbebegleitung für Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Altenpfleger oder Pflegefachmann – was schreibe ich?",
+   "a": "Schreib die Bezeichnung aus deiner Urkunde. Seit 2020 gibt es die generalistische Ausbildung zur Pflegefachfrau/zum Pflegefachmann; vorher erworbene Abschlüsse in der Altenpflege bleiben gültig."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "pflegehelfer",
+  "betreuungskraft",
+  "pflegedienstleitung"
+ ],
+ "en": {
+  "slug": "care-worker",
+  "name": "Care worker",
+  "search": "care worker care assistant senior carer nursing home residential care dementia",
+  "short": "Residential care – dementia, personal care, families.",
+  "desc": "Care worker cover letter examples: a senior carer stepping up and a returner after years in administration, plus a ready CV with placeholder portrait.",
+  "intro": "In residential care you support people who often live in the home for years. Alongside personal care, it is about life stories, dementia, families and records. Say which settings you know and what training you have.",
+  "lookFor": [
+   "Care qualification or experience",
+   "Dementia and end-of-life care",
+   "Care planning and records",
+   "Working with families",
+   "Shifts and weekends"
+  ],
+  "letters": [
+   {
+    "label": "Senior carer stepping up",
+    "level": "erfahren",
+    "position": "Unit manager",
+    "to": {
+     "org": "Linden Court Care Home",
+     "sal": "f",
+     "contact": "Kramer",
+     "street": "5 Linden Avenue",
+     "city": "Chester CH2 3HP"
+    },
+    "body": [
+     "thirty-two people live on my unit, half of them with dementia. For two years I have been deputy manager, planning rotas, running care reviews and talking to families when things get difficult. I would now like to run a unit myself.",
+     "I have nine years in residential care with additional training in palliative and dementia care. Your home is organised in small households where residents help cook and shape their day, which matches my idea of good care."
+    ],
+    "att": [
+     "CV",
+     "Training certificates"
+    ]
+   },
+   {
+    "label": "Returning to care after administration",
+    "level": "quereinstieg",
+    "position": "Care worker (part time)",
+    "to": {
+     "org": "Riverside Care Centre",
+     "sal": "none",
+     "street": "100 Hoole Road",
+     "city": "Chester CH2 3NL"
+    },
+    "body": [
+     "six years ago I left care to work in administration. I learned a lot there, but I miss the people. This spring I completed refresher training in moving and handling, medication, infection control and wound care, so that I can start safely from day one.",
+     "I would like to return on 25 hours a week, ideally early shifts. From administration I bring knowledge of funding assessments that helps residents and families."
+    ],
+    "att": [
+     "CV",
+     "Training certificates"
+    ],
+    "from": [
+     "Monica Wade",
+     "200 Liverpool Road",
+     "Chester CH2 1AQ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a07",
+   "design": "classic",
+   "accent": 1,
+   "name": "Kate Bowen",
+   "title": "Senior carer, deputy unit manager",
+   "street": "80 Brook Street",
+   "city": "Chester CH1 3DZ",
+   "exp": [
+    [
+     "2019",
+     "",
+     "Senior carer, deputy unit manager from 2024",
+     "Parkside Care Home",
+     "Chester",
+     "- Unit of 32 residents, dementia focus\n- Rotas, care reviews\n- Family meetings"
+    ]
+   ],
+   "edu": [
+    [
+     "2014",
+     "2017",
+     "Health and social care diploma",
+     "West Cheshire College",
+     "Chester",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Dementia care",
+     5
+    ],
+    [
+     "Palliative care",
+     4
+    ],
+    [
+     "Care planning",
+     5
+    ],
+    [
+     "Rotas",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Gardening, choir"
+  },
+  "do": [
+   "Give the setting, number of residents and focus.",
+   "List training.",
+   "Show your values with an example."
+  ],
+  "dont": [
+   "Say you “like helping old people” and stop.",
+   "Complain about staffing.",
+   "Leave your qualifications unclear."
+  ],
+  "questions": [
+   "How would you support a resident who wants to “go to work” in the evening?",
+   "How do you handle a difficult family conversation?",
+   "How would you run a shift one person short?",
+   "What does good end-of-life care mean to you?"
+  ],
+  "faq": [
+   {
+    "q": "Which qualifications do I need?",
+    "a": "That depends on your country and the role. Many homes train new care workers; senior roles usually require a recognised care qualification."
+   }
+  ]
+ }
+}

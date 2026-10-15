@@ -1,0 +1,321 @@
+{
+ "id": "maschinenbauingenieur",
+ "field": "industrie",
+ "name": "Maschinenbauingenieur/in",
+ "search": "maschinenbauingenieur ingenieur maschinenbau konstruktion entwicklung berechnung absolvent bewerbung",
+ "short": "Konstruktion, Entwicklung, Projektierung – vom Absolventen bis zum Profi.",
+ "desc": "Bewerbung als Maschinenbauingenieur/in: Muster-Anschreiben für Absolventin, Konstrukteur mit Erfahrung und Ingenieur im Wechsel in die Projektierung, mit Lebenslauf.",
+ "intro": "Maschinenbauingenieure konstruieren, berechnen, testen und begleiten Produkte bis zur Serie. Unternehmen schauen auf Fachgebiet, Projekte, Programme und Branchenkenntnis. Erzähl von einem technischen Problem, das du gelöst hast, mit Ergebnis.",
+ "lookFor": [
+  "Studium Maschinenbau oder vergleichbar",
+  "CAD, Berechnung, Simulation",
+  "Projekterfahrung (Abschlussarbeit, Industrie)",
+  "Englisch",
+  "Teamarbeit mit Fertigung und Vertrieb"
+ ],
+ "letters": [
+  {
+   "label": "Absolventin mit Abschlussarbeit in der Industrie",
+   "level": "berufseinstieg",
+   "position": "Entwicklungsingenieurin Antriebstechnik",
+   "to": {
+    "org": "Getriebebau Nord GmbH",
+    "sal": "m",
+    "contact": "Hansen",
+    "street": "Industriestraße 80",
+    "city": "24768 Rendsburg"
+   },
+   "body": [
+    "meine Masterarbeit habe ich bei einem Windkraftzulieferer geschrieben: Lebensdauerberechnung für ein Planetengetriebe unter wechselnden Lasten. Die Methode, die ich entwickelt habe, nutzt die Abteilung inzwischen für zwei weitere Baureihen.",
+    "Studiert habe ich Maschinenbau in Kiel, Schwerpunkt Konstruktion und Antriebstechnik. 3D-CAD und FEM gehören für mich zum Handwerkszeug, und nach einem Auslandssemester in Dänemark arbeite ich auf Englisch genauso selbstverständlich wie auf Deutsch, was bei Ihren Kunden aus dem internationalen Schiffbau sicher hilft. Schiffsgetriebe reizen mich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Bachelorzeugnis"
+   ]
+  },
+  {
+   "label": "Konstrukteur mit Erfahrung im Sondermaschinenbau",
+   "level": "erfahren",
+   "position": "Konstrukteur Sondermaschinenbau",
+   "to": {
+    "org": "Automation Holstein AG",
+    "sal": "f",
+    "contact": "Petersen",
+    "street": "Am Kanal 10",
+    "city": "24106 Kiel"
+   },
+   "body": [
+    "vierzig Sondermaschinen in acht Jahren, vom Lastenheft bis zur Abnahme beim Kunden: Das ist meine Bilanz bei einem Hersteller von Montageanlagen. Ich habe dabei gelernt, dass die beste Konstruktion die ist, die der Monteur ohne Rückfrage aufbauen kann.",
+    "Ich bin Diplomingenieur (FH), arbeite mit 3D-CAD und Datenmanagementsystemen und habe in den letzten zwei Jahren ein Team von drei Konstrukteuren fachlich geleitet. Ihr Unternehmen arbeitet für die Medizintechnik, ein Bereich mit hohen Anforderungen, der mich reizt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Diplomzeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Thomas Ruge",
+    "Holtenauer Straße 30",
+    "24105 Kiel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 0,
+  "name": "Lina Carstensen",
+  "title": "M. Sc. Maschinenbau",
+  "street": "Knooper Weg 40",
+  "city": "24103 Kiel",
+  "exp": [
+   [
+    "03/2025",
+    "02/2026",
+    "Masterandin",
+    "Windtechnik Schleswig GmbH",
+    "Husum",
+    "- Lebensdauerberechnung Planetengetriebe\n- Methode für weitere Baureihen übernommen"
+   ],
+   [
+    "2022",
+    "2024",
+    "Werkstudentin Konstruktion",
+    "Hafenkran Kiel",
+    "Kiel",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "2026",
+    "Maschinenbau (M. Sc.), Note 1,4",
+    "Christian-Albrechts-Universität",
+    "Kiel",
+    "Schwerpunkt Konstruktion und Antriebstechnik"
+   ],
+   [
+    "2020",
+    "2024",
+    "Maschinenbau (B. Sc.)",
+    "Christian-Albrechts-Universität",
+    "Kiel",
+    "Auslandssemester in Aalborg, Dänemark"
+   ]
+  ],
+  "skills": [
+   [
+    "3D-CAD",
+    5
+   ],
+   [
+    "FEM",
+    4
+   ],
+   [
+    "Antriebstechnik",
+    4
+   ],
+   [
+    "Lebensdauerberechnung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Dänisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Segeln, Klettern"
+ },
+ "do": [
+  "Fachgebiet und Projekte mit Ergebnis nennen.",
+  "Programme und Methoden angeben.",
+  "Bezug zu Produkten des Unternehmens."
+ ],
+ "dont": [
+  "Software-Listen ohne Projekte.",
+  "Allgemeines Lob für den „Innovationsführer“.",
+  "Noten seitenlang ausbreiten."
+ ],
+ "questions": [
+  "Erklären Sie Ihre Abschlussarbeit in drei Minuten.",
+  "Wie gehen Sie mit einem Zielkonflikt zwischen Kosten und Qualität um?",
+  "Wie arbeiten Sie mit der Fertigung zusammen?",
+  "Welche Programme nutzen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Ist „Ingenieur“ geschützt?",
+   "a": "Ja, die Berufsbezeichnung ist durch Landesgesetze geschützt. Mit einem deutschen Abschluss in einer Ingenieurwissenschaft darfst du sie führen; mit ausländischem Abschluss klärt die zuständige Stelle im Bundesland die Anerkennung."
+  }
+ ],
+ "related": [
+  "werkstudent-ingenieur",
+  "technischer-produktdesigner",
+  "trainee",
+  "fachkraft-anerkennung"
+ ],
+ "en": {
+  "slug": "mechanical-engineer",
+  "name": "Mechanical engineer",
+  "search": "mechanical engineer design engineer graduate engineer cad fea product development",
+  "short": "Design, development, projects – from graduate to senior.",
+  "desc": "Mechanical engineer cover letter examples: a graduate with an industry dissertation and an experienced special-purpose machine designer, plus a ready CV.",
+  "intro": "Mechanical engineers design, calculate, test and support products into production. Employers look at your field, projects, tools and industry knowledge. Describe a technical problem you solved and what came of it.",
+  "lookFor": [
+   "Degree in mechanical engineering or similar",
+   "CAD, calculation, simulation",
+   "Project experience",
+   "Clear technical communication",
+   "Working with production and sales"
+  ],
+  "letters": [
+   {
+    "label": "Graduate with an industry dissertation",
+    "level": "berufseinstieg",
+    "position": "Graduate design engineer (drivetrain)",
+    "to": {
+     "org": "Northern Gear Systems Ltd",
+     "sal": "m",
+     "contact": "Hansen",
+     "street": "80 Riverside Way",
+     "city": "Newcastle NE6 1BU"
+    },
+    "body": [
+     "my master’s dissertation, written with a wind turbine supplier, was a fatigue life calculation for a planetary gearbox under variable loads. The method I developed is now used by the team for two further product ranges.",
+     "I studied mechanical engineering with a focus on design and drivetrains, and I am confident with 3D CAD and finite element analysis. Your marine propulsion gearboxes are exactly the field I want to go deeper into."
+    ],
+    "att": [
+     "CV",
+     "Degree certificate"
+    ]
+   },
+   {
+    "label": "Experienced special-purpose machine designer",
+    "level": "erfahren",
+    "position": "Senior design engineer",
+    "to": {
+     "org": "Precision Automation Ltd",
+     "sal": "f",
+     "contact": "Peters",
+     "street": "10 Canal Road",
+     "city": "Leeds LS12 2PL"
+    },
+    "body": [
+     "forty special-purpose machines in eight years, from specification to customer acceptance: that is my record at a builder of assembly systems. I have learned that the best design is the one a fitter can build without asking a question.",
+     "I am an incorporated engineer, work daily with 3D CAD and data management, and for the last two years I have technically led a team of three designers. Your work for the medical sector, with its strict requirements, is what draws me."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Tom Ruddock",
+     "30 Kirkstall Road",
+     "Leeds LS3 1LH"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a14",
+   "design": "modern",
+   "accent": 0,
+   "name": "Lina Carter",
+   "title": "MEng Mechanical Engineering",
+   "street": "40 Jesmond Road",
+   "city": "Newcastle NE2 1NL",
+   "exp": [
+    [
+     "03/2025",
+     "02/2026",
+     "Dissertation placement",
+     "Windtech Components",
+     "Blyth",
+     "- Fatigue life calculation for a planetary gearbox\n- Method adopted for two further ranges"
+    ],
+    [
+     "2022",
+     "2024",
+     "Summer placements, design office",
+     "Tyne Cranes",
+     "Newcastle",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2021",
+     "2026",
+     "MEng Mechanical Engineering, First",
+     "Newcastle University",
+     "Newcastle",
+     "Exchange semester in Aalborg, Denmark"
+    ]
+   ],
+   "skills": [
+    [
+     "3D CAD",
+     5
+    ],
+    [
+     "FEA",
+     4
+    ],
+    [
+     "Drivetrains",
+     4
+    ],
+    [
+     "Fatigue analysis",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Danish",
+     "B1"
+    ]
+   ],
+   "hobbies": "Sailing, climbing"
+  },
+  "do": [
+   "Name your field and projects with results.",
+   "List tools and methods you have used.",
+   "Connect to the company’s products."
+  ],
+  "dont": [
+   "List software without projects.",
+   "Praise the company as an “innovation leader”.",
+   "Dwell on grades."
+  ],
+  "questions": [
+   "Explain your dissertation in three minutes.",
+   "How do you handle a trade-off between cost and quality?",
+   "How do you work with production?",
+   "Which tools do you use?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need chartered status?",
+    "a": "Not to start. Many engineers work towards chartered or incorporated status after graduating, often with employer support."
+   }
+  ]
+ }
+}

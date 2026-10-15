@@ -556,3 +556,20 @@ TargetMode="External"
 Gesamt{0}
 Esc
 data-a="ins-chart"
+{SEITE}
+{SEITEN}
+Seite {SEITE} von {SEITEN}
+Caption
+FaleStyle{0}
+Marke
+Keine Beschriftungen gefunden.
+(Noch keine Beschriftungen)
+!Fehler
+MUSTER
+NICHT KOPIEREN
+data-x="paste-text"
+data-x="ins-bookmark"
+data-x="ins-xref"
+data-x="ins-endnote"
+data-x="ins-caption"
+data-x="ins-dropcap"

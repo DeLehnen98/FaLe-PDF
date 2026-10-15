@@ -1,0 +1,168 @@
+{
+ "id": "pflegedienstleitung",
+ "field": "pflege",
+ "name": "Pflegedienstleitung (PDL)",
+ "search": "pflegedienstleitung pdl verantwortliche pflegefachkraft leitung pflegedienst pflegeheim führung bewerbung",
+ "short": "Verantwortung für Pflegeteam, Qualität und Organisation.",
+ "desc": "Bewerbung als Pflegedienstleitung (PDL) in Pflegeheim oder ambulantem Dienst: Muster-Anschreiben für stellvertretende PDL und Wohnbereichsleitung, mit Lebenslauf.",
+ "intro": "Pflegedienstleitungen verantworten Pflegequalität, Dienstplanung, Personal, Prüfungen durch den Medizinischen Dienst und die Zusammenarbeit mit Ärzten und Angehörigen. Für die verantwortliche Pflegefachkraft gelten gesetzliche Vorgaben zu Berufserfahrung und Weiterbildung. Zeig Führungserfahrung, Qualitätsarbeit und Zahlen.",
+ "lookFor": [
+  "Examen und Berufserfahrung in der Pflege",
+  "Weiterbildung für leitende Funktionen",
+  "Führung und Personalplanung",
+  "Qualitätsmanagement und Prüfungen",
+  "Kommunikation mit Ärzten, Angehörigen, Kassen"
+ ],
+ "letters": [
+  {
+   "label": "Stellvertretende PDL übernimmt die Leitung",
+   "level": "erfahren",
+   "position": "Pflegedienstleitung (stationär)",
+   "to": {
+    "org": "Seniorenzentrum Am Wall",
+    "sal": "m",
+    "contact": "Hollmann",
+    "street": "Am Wall 20",
+    "city": "28195 Bremen"
+   },
+   "body": [
+    "die letzte Qualitätsprüfung in unserem Haus mit 110 Plätzen habe ich als stellvertretende Pflegedienstleitung vorbereitet und begleitet; wir haben in allen Bereichen gut abgeschnitten. Seit unsere PDL in Elternzeit ist, leite ich das Pflegeteam mit 60 Mitarbeitenden kommissarisch.",
+    "Die Weiterbildung für leitende Funktionen habe ich abgeschlossen. Ich habe den Dienstplan auf ein Modell mit festen Teams umgestellt, die Krankheitsquote ist danach gesunken. Ihr Haus wird neu gebaut, und ich möchte die Pflegeorganisation von Anfang an mitgestalten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Weiterbildungsnachweis",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Wohnbereichsleitung bewirbt sich im ambulanten Dienst",
+   "level": "erfahren",
+   "position": "Pflegedienstleitung (ambulant)",
+   "to": {
+    "org": "Pflegedienst Hansestadt",
+    "sal": "f",
+    "contact": "Ahrens",
+    "street": "Waller Heerstraße 50",
+    "city": "28217 Bremen"
+   },
+   "body": [
+    "zwölf Pflegekräfte, 40 Bewohner, und kein Tag wie der andere: Seit fünf Jahren leite ich einen Wohnbereich und habe in dieser Zeit die Weiterbildung zur PDL abgeschlossen. Den ambulanten Dienst kenne ich aus meinen ersten Berufsjahren und möchte dorthin zurück, jetzt in Leitungsfunktion.",
+    "Tourenplanung, Abrechnung mit Kassen und Kostenträgern und die Prüfung durch den Medizinischen Dienst müsste ich mir im ambulanten Kontext auffrischen. Führung, Qualität und Angehörigenarbeit bringe ich mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Weiterbildungsnachweis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Heike Struß",
+    "Hastedter Heerstraße 100",
+    "28207 Bremen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a08",
+  "design": "classic",
+  "accent": 1,
+  "name": "Birgit Hagen",
+  "title": "Stellv. Pflegedienstleitung, Altenpflegerin",
+  "street": "Schwachhauser Heerstraße 60",
+  "city": "28209 Bremen",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Stellv. Pflegedienstleitung, seit 2025 kommissarische PDL",
+    "Seniorenstift Weserblick",
+    "Bremen",
+    "- 110 Plätze, 60 Mitarbeitende\n- Vorbereitung und Begleitung der Qualitätsprüfung\n- Dienstplanumstellung auf feste Teams"
+   ],
+   [
+    "2014",
+    "2021",
+    "Wohnbereichsleitung",
+    "Seniorenstift Weserblick",
+    "Bremen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2020",
+    "Weiterbildung Leitung einer Pflegeeinrichtung (PDL, 460+ Stunden)",
+    "Bildungswerk Pflege Bremen",
+    "Bremen",
+    ""
+   ],
+   [
+    "2005",
+    "2008",
+    "Ausbildung Altenpflegerin (Examen)",
+    "Altenpflegeschule Bremen",
+    "Bremen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Personalführung",
+    5
+   ],
+   [
+    "Qualitätsmanagement",
+    5
+   ],
+   [
+    "Dienstplanung",
+    5
+   ],
+   [
+    "Pflegeplanung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Radfahren, Theater"
+ },
+ "do": [
+  "Einrichtungsgröße und Teamgröße nennen.",
+  "Prüfungsergebnisse und Verbesserungen belegen.",
+  "Weiterbildung zur Leitung angeben."
+ ],
+ "dont": [
+  "Nur Pflegeerfahrung, keine Leitung.",
+  "Konflikte mit Trägern ausbreiten.",
+  "Gesetzliche Voraussetzungen offenlassen."
+ ],
+ "questions": [
+  "Wie bereiten Sie eine Qualitätsprüfung vor?",
+  "Wie senken Sie Krankheitsquoten?",
+  "Wie führen Sie ein Team in Personalnot?",
+  "Wie gehen Sie mit Beschwerden von Angehörigen um?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Voraussetzungen brauche ich als PDL?",
+   "a": "Für die verantwortliche Pflegefachkraft nach SGB XI verlangt das Gesetz ein Examen, Berufserfahrung in den letzten Jahren und eine Weiterbildung für leitende Funktionen mit mindestens 460 Stunden. Lass dir die genauen Anforderungen vom Träger bestätigen."
+  }
+ ],
+ "related": [
+  "altenpfleger",
+  "ambulante-pflege",
+  "pflegefachkraft",
+  "teamleiter"
+ ]
+}

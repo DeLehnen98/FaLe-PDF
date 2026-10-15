@@ -1,0 +1,326 @@
+{
+ "id": "barkeeper",
+ "field": "gastro",
+ "name": "Barkeeper/in",
+ "search": "barkeeper barkeeperin bartender barmixer bar cocktails hotelbar gastronomie theke bewerbung",
+ "short": "Cocktailbar, Hotelbar oder Club – mit Rezepten und Tempo.",
+ "desc": "Bewerbung als Barkeeper/in: Muster-Anschreiben für erfahrenen Bartender, Servicekraft mit Barerfahrung und Aushilfe, mit Lebenslauf und Tipps zum Probeshift.",
+ "intro": "Hinter der Bar zählen Tempo, Sauberkeit, Rezeptsicherheit und Gastgeberqualität. Bars wollen wissen, wo du gearbeitet hast, wie viele Gäste du an einem vollen Abend bedienst und welche Drinks du sicher machst. Fast immer gibt es einen Probeshift.",
+ "lookFor": [
+  "Erfahrung an einer Bar oder Theke",
+  "Rezeptkenntnis, klassische Cocktails",
+  "Tempo und Sauberkeit an vollen Abenden",
+  "Gastgeberqualität und Verantwortung beim Ausschank",
+  "Abend- und Wochenendarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Bartender wechselt in die Hotelbar",
+   "level": "erfahren",
+   "position": "Barkeeper Hotelbar",
+   "to": {
+    "org": "Hotel Elbresidenz",
+    "sal": "m",
+    "contact": "Kramer",
+    "street": "Am Kaiserkai 10",
+    "city": "20457 Hamburg"
+   },
+   "body": [
+    "an einem Freitag in unserer Bar auf St. Pauli mixen wir zu dritt rund 400 Drinks. Das hat mich schnell gemacht. Was mir dort fehlt, ist Zeit für Gäste: einen Whisky erklären, einen Drink auf jemanden abstimmen, eine Geschichte zum Gin erzählen. Genau das schätze ich an Hotelbars.",
+    "Hinter der Bar stehe ich seit sechs Jahren, davon drei als Head Bartender. Ich habe unsere Karte zweimal neu entwickelt, kalkuliere Rezepte und schule neue Kollegen. Englisch spreche ich fließend, Spanisch gut.",
+    "Einen Probeshift mache ich gern an einem Ihrer vollen Abende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Barkarte (Auszug)"
+   ]
+  },
+  {
+   "label": "Servicekraft will an die Bar",
+   "level": "berufseinstieg",
+   "position": "Barkeeperin (Einstieg)",
+   "to": {
+    "org": "Bar Kontor",
+    "sal": "f",
+    "contact": "Lindqvist",
+    "street": "Schanzenstraße 40",
+    "city": "20357 Hamburg"
+   },
+   "body": [
+    "tagsüber Service im Restaurant, jeden zweiten Abend Aushilfe am Tresen, und das seit drei Jahren: Ich habe gemerkt, dass ich hinter der Bar glücklicher bin. Seit einem Jahr übe ich zu Hause die Klassiker und habe einen Barkurs am Wochenende gemacht.",
+    "Ihre Bar kenne ich als Gast. Mir gefällt, dass Sie mit wenigen, guten Zutaten arbeiten. Ich bin schnell, ordentlich und freundlich, wenn es voll wird, und ich lerne gern von erfahrenen Leuten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Ida Svensson",
+    "Bartelsstraße 12",
+    "20357 Hamburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 3,
+  "name": "Leon Ahrens",
+  "title": "Head Bartender",
+  "street": "Paul-Roosen-Straße 20",
+  "city": "22767 Hamburg",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Head Bartender",
+    "Bar Vierundzwanzig",
+    "Hamburg",
+    "- Team von 5 Bartendern\n- Neuentwicklung der Karte, Kalkulation\n- Bis 400 Drinks an Freitagabenden"
+   ],
+   [
+    "2020",
+    "2023",
+    "Bartender",
+    "Bar Vierundzwanzig",
+    "Hamburg",
+    ""
+   ],
+   [
+    "2018",
+    "2020",
+    "Servicekraft",
+    "Brasserie Altona",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2018",
+    "Ausbildung Restaurantfachmann",
+    "Hotel Hafenblick",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Klassische Cocktails",
+    5
+   ],
+   [
+    "Kalkulation",
+    4
+   ],
+   [
+    "Tempo",
+    5
+   ],
+   [
+    "Gästeberatung",
+    4
+   ],
+   [
+    "Teamführung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Kochen, Rennrad"
+ },
+ "do": [
+  "Volumen und Art der Bar nennen.",
+  "Eigene Karten oder Kreationen erwähnen.",
+  "Probeshift anbieten."
+ ],
+ "dont": [
+  "Nur „Ich liebe Cocktails“.",
+  "Trinkgeschichten im Anschreiben.",
+  "Unklare Verfügbarkeit an Wochenenden."
+ ],
+ "questions": [
+  "Mixen Sie uns einen Klassiker Ihrer Wahl.",
+  "Wie gehen Sie mit einem betrunkenen Gast um?",
+  "Wie halten Sie die Bar sauber, wenn es voll ist?",
+  "Wie kalkulieren Sie einen Drink?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung?",
+   "a": "Nein, viele Barkeeper kommen aus dem Service. Eine Ausbildung in Gastronomie oder ein Barkurs hilft, entscheidend ist aber der Probeshift."
+  }
+ ],
+ "related": [
+  "servicekraft",
+  "barista",
+  "restaurantleitung",
+  "hotelfachfrau"
+ ],
+ "en": {
+  "slug": "bartender",
+  "name": "Bartender",
+  "search": "bartender barman barmaid cocktail bar hotel bar mixologist bar staff",
+  "short": "Cocktail bars, hotel bars and busy venues.",
+  "desc": "Bartender cover letter examples: an experienced head bartender moving to a hotel bar and a waitress stepping behind the bar, plus a ready CV.",
+  "intro": "Behind the bar, speed, cleanliness, recipe knowledge and hospitality count. Say where you have worked, how busy it was and which drinks you make with confidence. Expect a trial shift.",
+  "lookFor": [
+   "Bar or counter experience",
+   "Classic cocktail knowledge",
+   "Speed and cleanliness on busy nights",
+   "Responsible service of alcohol",
+   "Evening and weekend work"
+  ],
+  "letters": [
+   {
+    "label": "Head bartender moving to a hotel bar",
+    "level": "erfahren",
+    "position": "Hotel bartender",
+    "to": {
+     "org": "The Riverside Hotel",
+     "sal": "m",
+     "contact": "Kramer",
+     "street": "10 Quayside",
+     "city": "Newcastle NE1 3DX"
+    },
+    "body": [
+     "on a Friday night three of us make around 400 drinks in our bar. That made me fast. What I miss there is time for guests: explaining a whisky, tuning a drink to someone’s taste, telling the story behind a gin. That is what I value about hotel bars.",
+     "I have six years behind the bar, three as head bartender. I have rewritten our menu twice, cost recipes and train new staff. I would happily do a trial shift on one of your busiest evenings."
+    ],
+    "att": [
+     "CV",
+     "Reference",
+     "Menu sample"
+    ]
+   },
+   {
+    "label": "Waitress moving behind the bar",
+    "level": "berufseinstieg",
+    "position": "Bartender (entry level)",
+    "to": {
+     "org": "The Copper Room",
+     "sal": "f",
+     "contact": "Lind",
+     "street": "40 High Bridge",
+     "city": "Newcastle NE1 1EN"
+    },
+    "body": [
+     "three years on the restaurant floor, helping out at the bar every other night, have shown me that I am happier behind it. For the past year I have practised the classics at home and done a weekend bar course.",
+     "I know your bar as a guest and like that you work with a few good ingredients. I am quick, tidy and friendly when it gets busy, and I like learning from experienced people."
+    ],
+    "att": [
+     "CV",
+     "Course certificate"
+    ],
+    "from": [
+     "Isla Simpson",
+     "12 Osborne Road",
+     "Newcastle NE2 2AE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a24",
+   "design": "modern",
+   "accent": 3,
+   "name": "Liam Ahearn",
+   "title": "Head bartender",
+   "street": "20 Westgate Road",
+   "city": "Newcastle NE1 4AF",
+   "exp": [
+    [
+     "2023",
+     "",
+     "Head bartender",
+     "Bar Twenty-Four",
+     "Newcastle",
+     "- Team of five\n- New menu, costing\n- Up to 400 drinks on Fridays"
+    ],
+    [
+     "2020",
+     "2023",
+     "Bartender",
+     "Bar Twenty-Four",
+     "Newcastle",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2018",
+     "Hospitality diploma",
+     "Newcastle College",
+     "Newcastle",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Classic cocktails",
+     5
+    ],
+    [
+     "Costing",
+     4
+    ],
+    [
+     "Speed",
+     5
+    ],
+    [
+     "Guest advice",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Spanish",
+     "B1"
+    ]
+   ],
+   "hobbies": "Cooking, cycling"
+  },
+  "do": [
+   "Say how busy your bar was.",
+   "Mention menus you created.",
+   "Offer a trial shift."
+  ],
+  "dont": [
+   "Only say you “love cocktails”.",
+   "Tell drinking stories.",
+   "Be vague about weekends."
+  ],
+  "questions": [
+   "Make us a classic of your choice.",
+   "How do you handle a drunk guest?",
+   "How do you keep the bar clean when it is busy?",
+   "How do you cost a drink?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a qualification?",
+    "a": "Not usually. Many bartenders come from waiting tables. Courses help, but the trial shift decides."
+   }
+  ]
+ }
+}

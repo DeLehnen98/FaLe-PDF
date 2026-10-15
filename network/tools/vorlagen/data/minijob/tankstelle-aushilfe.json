@@ -1,0 +1,156 @@
+{
+ "id": "tankstelle-aushilfe",
+ "field": "minijob",
+ "name": "Aushilfe Tankstelle",
+ "search": "tankstelle aushilfe kassierer tankwart shop nachtschicht wochenende minijob bewerbung",
+ "short": "Kasse, Shop und Bistro – oft abends und am Wochenende.",
+ "desc": "Bewerbung als Aushilfe an der Tankstelle: kurze Muster-Anschreiben für Studenten und Teilzeitkraft mit Kassenerfahrung, Lebenslauf und Fragen zur Schichtarbeit.",
+ "intro": "An Tankstellen arbeitest du an der Kasse, im Shop und oft im Bistro, häufig abends, nachts und am Wochenende. Pächter suchen Leute, die mit Geld sorgfältig sind und auch mit schwierigen Kunden ruhig bleiben. Nenn Kassenerfahrung und Schichtwünsche.",
+ "lookFor": [
+  "Kassenerfahrung",
+  "Abend-, Nacht- und Wochenendschichten",
+  "Ruhe im Umgang mit Kunden",
+  "Sorgfalt mit Bargeld",
+  "Freundlichkeit"
+ ],
+ "letters": [
+  {
+   "label": "Student für Nachtschichten",
+   "level": "minijob",
+   "position": "Aushilfe (Nachtschicht)",
+   "to": {
+    "org": "Tankstelle Autobahnzubringer Nord",
+    "sal": "m",
+    "contact": "Kaya",
+    "street": "Industriestraße 2",
+    "city": "76829 Landau in der Pfalz"
+   },
+   "body": [
+    "Nachtschichten passen gut zu meinem Studium, weil ich ohnehin abends am besten lernen kann und die ruhigen Stunden zwischen zwei und fünf Uhr dafür nutzen würde, sofern das bei Ihnen in Ordnung ist. Zweimal pro Woche wäre ideal.",
+    "Kassenerfahrung habe ich aus einem Jahr im Kino, inklusive Kassenabschluss am Ende der Schicht. Ich bleibe ruhig, wenn jemand nachts schlechte Laune hat, und weiß, wann ich die Polizei rufe."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ]
+  },
+  {
+   "label": "Teilzeitkraft für Wochenenden",
+   "level": "minijob",
+   "position": "Aushilfe Kasse und Bistro (Wochenende)",
+   "to": {
+    "org": "Freie Tankstelle Queichtal",
+    "sal": "f",
+    "contact": "Bender",
+    "street": "Queichheimer Hauptstraße 5",
+    "city": "76829 Landau in der Pfalz"
+   },
+   "body": [
+    "unter der Woche arbeite ich halbtags in einer Bäckerei, am Wochenende hätte ich Zeit für einen Minijob. Belegte Brötchen, Kaffee und Kasse kenne ich also schon.",
+    "Samstags und sonntags kann ich jeweils die Frühschicht übernehmen. Ich bin 45, wohne in Queichheim und brauche keine zehn Minuten zu Ihnen."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Petra Heller",
+    "Kirchstraße 4",
+    "76829 Landau in der Pfalz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "compact",
+  "accent": 5,
+  "name": "Kemal Arslan",
+  "title": "Student Umweltwissenschaften",
+  "street": "Westring 18",
+  "city": "76829 Landau in der Pfalz",
+  "exp": [
+   [
+    "2024",
+    "2025",
+    "Aushilfe Kasse und Einlass",
+    "Kino am Rathaus",
+    "Landau",
+    "- Kasse, Kassenabschluss\n- Snacks und Getränke"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Umweltwissenschaften (B. Sc.)",
+    "Rheinland-Pfälzische Technische Universität",
+    "Landau",
+    ""
+   ],
+   [
+    "2015",
+    "2024",
+    "Abitur",
+    "Eduard-Spranger-Gymnasium",
+    "Landau",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kasse",
+    4
+   ],
+   [
+    "Ruhe unter Stress",
+    4
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Klettern, Gitarre"
+ },
+ "do": [
+  "Kassenerfahrung nennen.",
+  "Gewünschte Schichten angeben.",
+  "Ruhe im Umgang mit schwierigen Kunden zeigen."
+ ],
+ "dont": [
+  "Nachtschichten zusagen, die du nicht durchhältst.",
+  "Kassendifferenzen aus früheren Jobs verschweigen, wenn danach gefragt wird.",
+  "Lange Texte."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem betrunkenen Kunden um?",
+  "Welche Schichten können Sie?",
+  "Haben Sie schon einen Kassenabschluss gemacht?",
+  "Was tun Sie bei einem Überfall?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "kassiererin",
+  "verkaeuferin-minijob",
+  "sicherheitsdienst",
+  "regalauffueller"
+ ]
+}

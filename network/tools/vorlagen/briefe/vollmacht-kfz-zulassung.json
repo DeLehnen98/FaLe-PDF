@@ -1,0 +1,72 @@
+{
+ "id": "vollmacht-kfz-zulassung",
+ "group": "vollmacht",
+ "tool": "power-of-attorney",
+ "order": 34,
+ "name": "Vollmacht für die Kfz-Zulassung",
+ "short": "Auto an-, ab- oder ummelden lassen",
+ "desc": "Vollmacht für die Zulassungsstelle: Muster, um ein Auto von einer anderen Person anmelden, abmelden oder ummelden zu lassen – mit Liste der nötigen Unterlagen.",
+ "search": "auto zulassung anmelden abmelden kennzeichen vollmacht",
+ "when": [
+  "Du willst dein Auto zulassen, abmelden oder umschreiben, hast aber keine Zeit für die Zulassungsstelle. Mit dieser Vollmacht kann eine andere Person den Termin für dich übernehmen."
+ ],
+ "must": [
+  "Deine Daten als Halterin oder Halter",
+  "Name und Anschrift der bevollmächtigten Person",
+  "Was erledigt werden soll: Zulassung, Abmeldung oder Umschreibung",
+  "Kennzeichen und Fahrzeug-Identifizierungsnummer",
+  "Unterschrift"
+ ],
+ "notes": [
+  "Für die Zulassung braucht die bevollmächtigte Person meist auch deinen Ausweis oder eine Kopie, die Zulassungsbescheinigungen Teil I und II, die elektronische Versicherungsbestätigung (eVB) und ein SEPA-Mandat für die Kfz-Steuer.",
+  "Viele Zulassungsstellen haben ein eigenes Vollmachtsformular – das wird dort am schnellsten akzeptiert.",
+  "Abmelden geht in vielen Fällen auch online."
+ ],
+ "faq": [
+  {
+   "q": "Kann auch ein Zulassungsdienst die Vollmacht nutzen?",
+   "a": "Ja. Trag dann den Namen des Dienstes oder der Person ein, die den Termin übernimmt."
+  }
+ ],
+ "fields": {
+  "purpose": "vehicle",
+  "gName": "Thomas Muster",
+  "gStreet": "Birkenallee 8",
+  "gCity": "34117 Kassel",
+  "aName": "Ingrid Muster",
+  "aStreet": "Weserstraße 19",
+  "aCity": "34125 Kassel",
+  "action": "zul",
+  "plate": "KS-AB 123",
+  "vin": "WVWZZZ1KZ6W000001",
+  "office": "Zulassungsstelle Musterstadt",
+  "valid": "period"
+ },
+ "related": [
+  "vollmacht-behoerde",
+  "kuendigung-kfz-versicherung",
+  "vollmacht-post"
+ ],
+ "doc": [
+  [
+   "Vollmachtgeber/in",
+   "Thomas Muster, Birkenallee 8, 34117 Kassel"
+  ],
+  [
+   "Bevollmächtigte Person",
+   "Ingrid Muster, Weserstraße 19, 34125 Kassel"
+  ],
+  [
+   "Text",
+   "Hiermit bevollmächtige ich …, für mich bei Zulassungsstelle Musterstadt die Zulassung des Fahrzeugs mit dem Kennzeichen KS-AB 123 (FIN WVWZZZ1KZ6W000001) zu beantragen, alle dafür nötigen Erklärungen abzugeben und Unterlagen, Kennzeichen und Plaketten entgegenzunehmen."
+  ],
+  [
+   "Gültigkeit",
+   "Für einen Zeitraum (Von – bis)"
+  ],
+  [
+   "Unterschriften",
+   "Vollmachtgeber/in; Unterschriftsprobe der bevollmächtigten Person"
+  ]
+ ]
+}

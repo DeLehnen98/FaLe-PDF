@@ -1,0 +1,61 @@
+{
+ "id": "kuendigung-hausratversicherung",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 10,
+ "name": "Kündigung Hausratversicherung",
+ "short": "Hausrat kündigen, z. B. nach Umzug oder Wechsel",
+ "desc": "Hausratversicherung kündigen mit Vorlage: Versicherungsnummer, Kündigung zum Ablauf, Hinweise zum Umzug und zur Sonderkündigung – direkt als PDF ausfüllen.",
+ "search": "hausrat versicherung umzug",
+ "when": [
+  "Du wechselst zu einem günstigeren Tarif, brauchst die Hausratversicherung nicht mehr oder willst nach einem Ärgernis weg. In der Regel gilt eine Frist von drei Monaten zum Ende des Versicherungsjahres. Ziehst du um, geht die Versicherung meist mit in die neue Wohnung; erhöht sich dadurch der Beitrag, kannst du oft kündigen. Auch nach einem Schaden gibt es ein Sonderkündigungsrecht."
+ ],
+ "must": [
+  "Versicherungsnummer (steht auf dem Versicherungsschein)",
+  "Art der Versicherung",
+  "Kündigung zum Ablauf des Versicherungsjahres – oder zum nächstmöglichen Zeitpunkt",
+  "Bitte um schriftliche Bestätigung mit dem Vertragsende",
+  "Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Prüf vor dem Kündigen die Versicherungssumme der neuen Police: Sie sollte zum Wert deines Hausrats passen. Die Inventarliste hilft beim Schätzen.",
+  "Für eine außerordentliche Kündigung nach Beitragserhöhung oder Schaden setzt du in der Vorlage den Haken „Außerordentliche Kündigung“ und wählst den Grund.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Was passiert, wenn zwei Haushalte zusammenziehen?",
+   "a": "Dann gibt es oft zwei Hausratversicherungen für eine Wohnung. Ein Vertrag kann meist wegen Doppelversicherung angepasst oder beendet werden – sprich mit beiden Versicherern."
+  },
+  {
+   "q": "Reicht eine E-Mail?",
+   "a": "Bei vielen Versicherungen reicht heute die Textform, also auch eine E-Mail. Ein Brief per Einschreiben ist trotzdem der sicherste Nachweis, dass deine Kündigung rechtzeitig angekommen ist."
+  }
+ ],
+ "fields": {
+  "type": "insurance",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "kind": "Hausratversicherung",
+  "policy": "HR 77-221-005"
+ },
+ "related": [
+  "kuendigung-haftpflichtversicherung",
+  "kuendigung-mietvertrag",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Lukas Wagner",
+  "Schillerstraße 40",
+  "04109 Leipzig"
+ ],
+ "to": {
+  "org": "Musterversicherung AG",
+  "attn": "Vertragsabteilung",
+  "street": "Postfach 40 50 60",
+  "city": "04001 Leipzig"
+ }
+}

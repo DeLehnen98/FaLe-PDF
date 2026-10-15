@@ -1,0 +1,88 @@
+{
+ "id": "zahlungserinnerung",
+ "group": "kauf",
+ "tool": "payment-reminder",
+ "order": 38,
+ "name": "Zahlungserinnerung",
+ "short": "Freundlich an eine offene Rechnung erinnern",
+ "desc": "Zahlungserinnerung schreiben: Vorlage mit offener Rechnung, neuer Frist und Bankverbindung – freundlich im Ton, auf Wunsch mit Mahnstufe und Verzugszinsen.",
+ "search": "mahnung zahlungserinnerung rechnung offen kunde",
+ "when": [
+  "Ein Kunde hat eine Rechnung nicht bezahlt, die Frist ist abgelaufen. Meist ist es ein Versehen – eine freundliche Zahlungserinnerung mit neuer Frist klärt das am schnellsten. Erst wenn darauf nichts kommt, folgen Mahnungen."
+ ],
+ "must": [
+  "Rechnungsnummer, Rechnungsdatum und Betrag",
+  "Ursprüngliche Fälligkeit",
+  "Eine neue, konkrete Zahlungsfrist",
+  "Bankverbindung",
+  "Ein freundlicher Satz für den Fall, dass sich das Schreiben mit der Zahlung überschnitten hat"
+ ],
+ "notes": [
+  "Bei Verbrauchern tritt Verzug spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung ein, wenn auf der Rechnung darauf hingewiesen wurde – sonst in der Regel erst mit einer Mahnung.",
+  "Ab Verzug kannst du Verzugszinsen verlangen; bei Geschäftskunden zusätzlich eine Pauschale von 40 Euro. Das Werkzeug rechnet beides auf Wunsch aus.",
+  "Behalte die Übersicht über alle offenen Rechnungen mit der Rechnungs-Mahnliste."
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Mahnungen muss ich schicken?",
+   "a": "Keine bestimmte Zahl. Üblich sind eine Zahlungserinnerung und ein bis zwei Mahnungen, bevor man ein gerichtliches Mahnverfahren oder ein Inkassobüro einschaltet."
+  }
+ ],
+ "fields": {
+  "level": "reminder",
+  "tone": "friendly",
+  "customerNo": "K-1042",
+  "invoices": [
+   {
+    "no": "RE-2026-118",
+    "date": "",
+    "due": "",
+    "amount": "480,00",
+    "paid": ""
+   }
+  ],
+  "bank": "Musterbank Saar",
+  "iban": "DE00 1234 5678 9012 3456 78",
+  "bic": "",
+  "holder": "Jana Beispiel Grafikdesign"
+ },
+ "related": [
+  "beschwerde",
+  "quittung-privatverkauf",
+  "widerruf-onlinekauf"
+ ],
+ "from": [
+  "Jana Beispiel Grafikdesign",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Bäckerei Sonnenschein",
+  "attn": "Herrn Albert Sonnenschein",
+  "street": "Marktplatz 3",
+  "city": "66111 Saarbrücken"
+ },
+ "doc": [
+  [
+   "Stufe",
+   "Zahlungserinnerung, Ton freundlich"
+  ],
+  [
+   "Rechnung",
+   "RE-2026-118 über 480,00 € (Datum und Fälligkeit trägst du ein)"
+  ],
+  [
+   "Text",
+   "Sicher ist es Ihnen im Alltag durchgerutscht: Die Rechnung … ist noch offen. Bitte überweisen Sie den Betrag bis zum … auf das unten genannte Konto. Sollten Sie inzwischen gezahlt haben, betrachten Sie dieses Schreiben bitte als gegenstandslos."
+  ],
+  [
+   "Bankverbindung",
+   "Musterbank Saar, IBAN DE00 1234 5678 9012 3456 78"
+  ],
+  [
+   "Optional",
+   "Verzugszinsen und Pauschale ab der 1. Mahnung"
+  ]
+ ],
+ "doc_intro": "Das Werkzeug schreibt die Erinnerung je nach Stufe und Tonfall selbst. Mit den Beispieldaten ist sie so aufgebaut:"
+}

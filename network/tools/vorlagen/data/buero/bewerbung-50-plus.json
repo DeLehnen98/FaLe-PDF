@@ -1,0 +1,355 @@
+{
+ "id": "bewerbung-50-plus",
+ "field": "buero",
+ "name": "Bewerbung mit 50 plus",
+ "search": "bewerbung 50 plus ältere bewerber erfahrung alter 55 60 jobwechsel lebenslauf kürzen ältere arbeitnehmer",
+ "short": "Erfahrung zeigen, ohne sich zu rechtfertigen.",
+ "desc": "Bewerbung mit 50 plus: Muster-Anschreiben für Buchhalterin nach Firmenschließung, Ingenieur mit 58 und Quereinsteiger, Lebenslauf-Tipps für lange Berufsjahre.",
+ "intro": "Ab 50 hast du oft mehr Erfahrung als die ganze Abteilung, in die du dich bewirbst. Die Kunst ist, sie gezielt einzusetzen: die letzten zehn bis 15 Jahre ausführlich, alles davor kurz. Zeig, dass du mit aktuellen Werkzeugen arbeitest und gern weiterlernst. Ein Geburtsdatum musst du nicht angeben.",
+ "lookFor": [
+  "Relevante Erfahrung der letzten Jahre",
+  "Aktuelle Kenntnisse und Weiterbildungen",
+  "Klarheit, warum du wechselst",
+  "Bereitschaft, sich in Neues einzuarbeiten",
+  "Verlässlichkeit und Ruhe"
+ ],
+ "letters": [
+  {
+   "label": "Buchhalterin, 54, nach Betriebsschließung",
+   "level": "erfahren",
+   "position": "Finanzbuchhalterin",
+   "to": {
+    "org": "Bauunternehmung Hartmann GmbH",
+    "sal": "m",
+    "contact": "Hartmann",
+    "street": "Gewerbering 5",
+    "city": "56070 Koblenz"
+   },
+   "body": [
+    "nach 22 Jahren schließt mein Arbeitgeber, ein Baustoffhändler, zum Jahresende seinen Standort. Ich habe dort die Buchhaltung von der Belegerfassung bis zum Jahresabschluss betreut, zuletzt als einzige Fachkraft mit einer Aushilfe.",
+    "Mit 54 bringe ich mit, was in einer Buchhaltung zählt: Ruhe im Monatsabschluss, ein Gefühl dafür, wann eine Zahl nicht stimmt, und ein gutes Verhältnis zu Steuerberatung und Betriebsprüfern. Die Umstellung auf elektronische Rechnungen habe ich im letzten Jahr selbst eingeführt. Bauwirtschaft kenne ich von der Lieferantenseite, Abschlagsrechnungen und Bauabzugsteuer würde ich mir gezielt erarbeiten.",
+    "Ab Januar stehe ich zur Verfügung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Abschlusszeugnis Bilanzbuchhalterin"
+   ]
+  },
+  {
+   "label": "Ingenieur, 58, will noch einmal wechseln",
+   "level": "erfahren",
+   "position": "Qualitätsingenieur",
+   "to": {
+    "org": "Präzisionstechnik Mittelrhein",
+    "sal": "f",
+    "contact": "Krämer",
+    "street": "Industriestraße 14",
+    "city": "56218 Mülheim-Kärlich"
+   },
+   "body": [
+    "warum wechselt jemand mit 58? Bei mir ist es ganz einfach: Mein jetziger Arbeitgeber verlagert die Fertigung ins Ausland, und ich möchte noch einige Jahre dort arbeiten, wo Teile tatsächlich hergestellt werden.",
+    "Seit 30 Jahren arbeite ich in der Qualitätssicherung metallverarbeitender Betriebe, davon 14 als Leiter einer Abteilung mit acht Leuten. Ich habe zwei Zertifizierungen nach den gängigen Normen begleitet und Lieferantenaudits in ganz Europa gemacht. Was ich weitergeben kann, ist Erfahrung mit Fehlern, die man nicht zweimal macht.",
+    "Eine Führungsrolle brauche ich nicht. Wichtig ist mir, dass meine Erfahrung gebraucht wird."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Auditorenzertifikat"
+   ],
+   "from": [
+    "Werner Schäfer",
+    "Moselweißer Straße 7",
+    "56073 Koblenz"
+   ]
+  },
+  {
+   "label": "Lkw-Disponent, 52, wechselt in die Verwaltung",
+   "level": "quereinstieg",
+   "position": "Verwaltungsmitarbeiter Fuhrpark",
+   "to": {
+    "org": "Kreisverwaltung Mittelrhein",
+    "sal": "none",
+    "street": "Am Kreishaus 9",
+    "city": "56068 Koblenz"
+   },
+   "body": [
+    "zwanzig Jahre Disposition bei einer Spedition haben mir Termindruck, Telefondauerbetrieb und Fahrer beschert, die um vier Uhr morgens anrufen. Mit 52 möchte ich in ruhigere Bahnen, ohne mein Wissen über Fahrzeuge, Wartung und Kosten aufzugeben.",
+    "Für Ihren Fuhrpark mit 80 Fahrzeugen kann ich Wartungspläne, Schadenmeldungen, Tankkarten und Leasingverträge übernehmen; all das habe ich in der Spedition für 45 Lkw verantwortet. Mit Tabellen und Flottenprogrammen arbeite ich sicher.",
+    "Ich weiß, dass der öffentliche Dienst eigene Regeln hat, und ich lerne sie gern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Thomas Neis",
+    "Andernacher Straße 120",
+    "56070 Koblenz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a08",
+  "design": "classic",
+  "accent": 5,
+  "name": "Gabriele Wirtz",
+  "title": "Finanzbuchhalterin, Bilanzbuchhalterin (IHK)",
+  "street": "Mainzer Straße 80",
+  "city": "56075 Koblenz",
+  "exp": [
+   [
+    "04/2004",
+    "",
+    "Finanzbuchhalterin",
+    "Baustoffhandel Rhein-Mosel GmbH",
+    "Koblenz",
+    "- Buchhaltung bis zum Jahresabschluss\n- Einführung elektronischer Rechnungen\n- Ansprechpartnerin für Steuerberatung und Prüfer"
+   ],
+   [
+    "1996",
+    "2004",
+    "Buchhalterin",
+    "Weinkellerei Koblenz",
+    "Koblenz",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2008",
+    "2010",
+    "Geprüfte Bilanzbuchhalterin (IHK), berufsbegleitend",
+    "IHK Koblenz",
+    "Koblenz",
+    ""
+   ],
+   [
+    "1993",
+    "1996",
+    "Ausbildung Industriekauffrau",
+    "Weinkellerei Koblenz",
+    "Koblenz",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Seminar E-Rechnung und Umsatzsteuer",
+    "IHK Koblenz",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Finanzbuchhaltung",
+    5
+   ],
+   [
+    "Jahresabschluss",
+    5
+   ],
+   [
+    "E-Rechnung",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Wandern, Chor"
+ },
+ "do": [
+  "Die letzten 10–15 Jahre ausführlich, Älteres kurz.",
+  "Aktuelle Weiterbildungen nennen.",
+  "Grund für den Wechsel sachlich erklären."
+ ],
+ "dont": [
+  "Sich für das Alter rechtfertigen.",
+  "Jede Station seit der Ausbildung ausbreiten.",
+  "Überheblich auf jüngere Teams blicken."
+ ],
+ "questions": [
+  "Warum wechseln Sie jetzt?",
+  "Wie gehen Sie mit einer jüngeren Führungskraft um?",
+  "Welche neuen Werkzeuge haben Sie zuletzt gelernt?",
+  "Wie lange möchten Sie noch arbeiten?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich mein Geburtsdatum angeben?",
+   "a": "Nein. Seit dem Allgemeinen Gleichbehandlungsgesetz sind Geburtsdatum und Foto freiwillig. Viele lassen das Datum weg und konzentrieren sich auf die letzten Berufsjahre."
+  },
+  {
+   "q": "Wie lang darf der Lebenslauf sein?",
+   "a": "Zwei Seiten sind auch mit vielen Berufsjahren genug. Fass frühe Stationen zusammen, z. B. „1990–2004 verschiedene Positionen in der Buchhaltung“."
+  }
+ ],
+ "related": [
+  "wiedereinstieg-elternzeit",
+  "bewerbung-nach-kuendigung",
+  "buchhalter",
+  "quereinstieg-oeffentlicher-dienst"
+ ],
+ "en": {
+  "slug": "job-application-over-50",
+  "name": "Job application over 50",
+  "search": "job application over 50 older worker experienced career change age cv length",
+  "short": "Showing experience without justifying your age.",
+  "desc": "Cover letter examples for applicants over 50: an accountant after a closure and an engineer at 58, plus CV tips for long careers and a ready CV.",
+  "intro": "After 50 you often have more experience than the team you are joining. Use it selectively: the last ten to fifteen years in detail, everything earlier in a line or two. Show you use current tools and keep learning. You do not need to state your date of birth.",
+  "lookFor": [
+   "Relevant recent experience",
+   "Current skills and training",
+   "A clear reason for moving",
+   "Willingness to learn new systems",
+   "Reliability and calm"
+  ],
+  "letters": [
+   {
+    "label": "Accountant, 54, after a site closure",
+    "level": "erfahren",
+    "position": "Accounts assistant / bookkeeper",
+    "to": {
+     "org": "Hartley Construction Ltd",
+     "sal": "m",
+     "contact": "Hartley",
+     "street": "5 Commerce Way",
+     "city": "Lincoln LN6 3QR"
+    },
+    "body": [
+     "after 22 years, my employer, a builders’ merchant, is closing its local branch at the end of the year. I ran the accounts there from purchase ledger to year end, latterly as the only qualified member of staff with one assistant.",
+     "At 54 I bring what an accounts department needs: calm at month end, a feel for when a number is wrong, and good relationships with external accountants and auditors. Last year I introduced electronic invoicing myself. I know construction from the supplier side and would quickly learn the contractor side."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Engineer, 58, making one more move",
+    "level": "erfahren",
+    "position": "Quality engineer",
+    "to": {
+     "org": "Precision Components Midlands",
+     "sal": "f",
+     "contact": "Kaur",
+     "street": "Unit 14, Tollgate Park",
+     "city": "Nottingham NG7 2PW"
+    },
+    "body": [
+     "why would anyone change jobs at 58? In my case it is simple: my employer is moving production abroad, and I want to spend my remaining working years where parts are actually made.",
+     "I have thirty years in quality assurance in metalworking, fourteen of them leading a department of eight. I have taken two sites through certification and audited suppliers across Europe. What I can pass on is experience of mistakes you do not make twice.",
+     "I do not need a management role. I need my experience to be useful."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Bill Shepherd",
+     "7 Mansfield Road",
+     "Nottingham NG5 2BQ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a08",
+   "design": "classic",
+   "accent": 5,
+   "name": "Gail Wright",
+   "title": "Bookkeeper and accounts manager",
+   "street": "80 Newport",
+   "city": "Lincoln LN1 3DF",
+   "exp": [
+    [
+     "04/2004",
+     "",
+     "Accounts manager",
+     "Lincoln Building Supplies",
+     "Lincoln",
+     "- Accounts to year end\n- Introduced e-invoicing\n- Contact for auditors"
+    ],
+    [
+     "1996",
+     "2004",
+     "Bookkeeper",
+     "Wolds Wine Merchants",
+     "Lincoln",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2008",
+     "2010",
+     "Professional accounting qualification (part time)",
+     "",
+     "Lincoln",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Bookkeeping",
+     5
+    ],
+    [
+     "Year-end accounts",
+     5
+    ],
+    [
+     "E-invoicing",
+     4
+    ],
+    [
+     "Spreadsheets",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Walking, choir"
+  },
+  "do": [
+   "Detail the last 10–15 years, summarise the rest.",
+   "Mention recent training.",
+   "Explain the move factually."
+  ],
+  "dont": [
+   "Justify your age.",
+   "List every job since school.",
+   "Talk down to younger teams."
+  ],
+  "questions": [
+   "Why are you moving now?",
+   "How would you work with a younger manager?",
+   "Which new tools have you learned recently?",
+   "How long do you plan to keep working?"
+  ],
+  "faq": [
+   {
+    "q": "Do I have to give my date of birth?",
+    "a": "No. Leave it out and focus on the experience that matters for the role."
+   }
+  ]
+ }
+}

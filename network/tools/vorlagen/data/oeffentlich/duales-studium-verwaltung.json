@@ -1,0 +1,162 @@
+{
+ "id": "duales-studium-verwaltung",
+ "field": "oeffentlich",
+ "name": "Duales Studium Verwaltung (gehobener Dienst)",
+ "search": "duales studium verwaltung public administration bachelor of laws beamtenanwärter gehobener dienst inspektoranwärter kommune bewerbung",
+ "short": "Bachelor in Verwaltung als Beamtenanwärter/in.",
+ "desc": "Bewerbung für ein duales Studium Verwaltung im gehobenen Dienst: Muster-Anschreiben für Abiturientin mit Ehrenamt und Fachabiturienten, mit Lebenslauf und Tipps.",
+ "intro": "Im dualen Studium Verwaltung (je nach Land Bachelor of Laws oder Public Administration) studierst du an einer Hochschule für öffentliche Verwaltung und lernst in der Praxis bei Stadt, Kreis oder Land. Oft bist du Beamtin oder Beamter auf Widerruf und erhältst Anwärterbezüge. Bewerbung meist ein Jahr im Voraus, mit Auswahltest.",
+ "lookFor": [
+  "Abitur oder Fachhochschulreife",
+  "Gute Noten in Deutsch und Mathe",
+  "Interesse an Recht und Gesellschaft",
+  "Engagement (Ehrenamt, Schülervertretung)",
+  "Bewerbungsfrist und Auswahltest beachten"
+ ],
+ "letters": [
+  {
+   "label": "Abiturientin aus der Schülervertretung",
+   "level": "ausbildung",
+   "position": "Duales Studium Bachelor of Laws (Allgemeine Verwaltung)",
+   "to": {
+    "org": "Stadt Hagen – Ausbildungsleitung",
+    "sal": "none",
+    "street": "Am Volkspark 11",
+    "city": "58095 Hagen"
+   },
+   "body": [
+    "als Schülersprecherin habe ich zwei Jahre lang Anträge an die Schulkonferenz geschrieben, Protokolle geführt und mit der Stadt über die Sanierung unserer Toiletten verhandelt. Es hat elf Monate gedauert, aber sie sind saniert. Seitdem interessiert mich, wie Entscheidungen in einer Stadt entstehen.",
+    "Mein Abitur mache ich im Frühjahr mit Sozialwissenschaften und Deutsch als Leistungskursen. Das Studium mit Recht, Wirtschaft und Praxisphasen in verschiedenen Ämtern passt zu mir. Besonders reizt mich das Jugendamt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Bescheinigung Schülervertretung"
+   ]
+  },
+  {
+   "label": "Fachabiturient nach Ausbildung",
+   "level": "ausbildung",
+   "position": "Duales Studium Public Administration (Kreisverwaltung)",
+   "to": {
+    "org": "Kreisverwaltung Lennetal – Personal",
+    "sal": "f",
+    "contact": "Ebbinghaus",
+    "street": "Am Kreishaus 15",
+    "city": "58762 Altena"
+   },
+   "body": [
+    "die Fachhochschulreife habe ich nach meiner Ausbildung zum Kaufmann für Büromanagement nachgeholt. Ich möchte mich jetzt im öffentlichen Dienst weiterentwickeln, und ein Studium mit Bezahlung macht das für mich möglich.",
+    "In der Ausbildung habe ich in Personal, Buchhaltung und Einkauf gearbeitet und weiß, wie wichtig saubere Abläufe sind. Ich bin 22 und habe seit vier Jahren das Amt des Kassenwarts im Sportverein."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Fachhochschulreife",
+    "Abschlusszeugnis Ausbildung"
+   ],
+   "from": [
+    "Kevin Schulte",
+    "Lennestraße 40",
+    "58762 Altena"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 2,
+  "name": "Hira Siddiqui",
+  "title": "Schülerin",
+  "street": "Elberfelder Straße 60",
+  "city": "58095 Hagen",
+  "exp": [
+   [
+    "2023",
+    "2025",
+    "Schülersprecherin",
+    "Fichte-Gymnasium",
+    "Hagen",
+    "- Anträge an die Schulkonferenz, Protokolle\n- Verhandlungen mit der Stadt zur Sanierung"
+   ],
+   [
+    "2024",
+    "",
+    "Nachhilfe Deutsch (privat)",
+    "",
+    "Hagen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Fichte-Gymnasium",
+    "Hagen",
+    "Leistungskurse Sozialwissenschaften, Deutsch"
+   ]
+  ],
+  "skills": [
+   [
+    "Schriftliches Deutsch",
+    5
+   ],
+   [
+    "Protokolle und Anträge",
+    4
+   ],
+   [
+    "Verhandlung",
+    3
+   ],
+   [
+    "Tabellen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Urdu",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Debattieren, Badminton"
+ },
+ "do": [
+  "Engagement mit Ergebnis nennen.",
+  "Fristen und Auswahltest beachten.",
+  "Interesse an konkreten Bereichen zeigen."
+ ],
+ "dont": [
+  "„Ich will Beamter werden“ als Motivation.",
+  "Unvollständige Unterlagen.",
+  "Den Studiengang verwechseln."
+ ],
+ "questions": [
+  "Warum der öffentliche Dienst?",
+  "Was ist der Unterschied zwischen Beamten und Tarifbeschäftigten?",
+  "Wie würden Sie einem Bürger eine Ablehnung erklären?",
+  "Welche Ämter interessieren Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Bekomme ich Geld im Studium?",
+   "a": "Als Beamtin oder Beamter auf Widerruf erhältst du in der Regel Anwärterbezüge. Die Höhe regelt das jeweilige Land."
+  }
+ ],
+ "related": [
+  "ausbildung-verwaltungsfachangestellte",
+  "verwaltungsfachangestellte",
+  "duales-studium-bwl",
+  "polizei"
+ ]
+}

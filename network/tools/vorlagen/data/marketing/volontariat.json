@@ -1,0 +1,162 @@
+{
+ "id": "volontariat",
+ "field": "marketing",
+ "name": "Volontariat (Journalismus, Redaktion)",
+ "search": "volontariat volontär volontärin journalismus redaktion zeitung lokalredaktion rundfunk online redakteur bewerbung",
+ "short": "Der klassische Einstieg in den Journalismus.",
+ "desc": "Bewerbung um ein Volontariat in Zeitung, Online-Redaktion oder Rundfunk: Muster-Anschreiben für Absolventin mit freier Mitarbeit und Quereinsteiger, mit Lebenslauf.",
+ "intro": "Ein Volontariat ist die praktische Ausbildung zur Redakteurin oder zum Redakteur, meist über zwei Jahre, mit Stationen in verschiedenen Ressorts. Redaktionen erwarten Arbeitsproben – am besten veröffentlichte Texte, Beiträge oder Podcasts – und Neugier auf die Region oder das Thema.",
+ "lookFor": [
+  "Veröffentlichte Arbeitsproben (freie Mitarbeit, Uni-Medien)",
+  "Sicheres Deutsch, Recherche",
+  "Neugier und Interesse an Region oder Thema",
+  "Studium oder Ausbildung, nicht zwingend Journalismus",
+  "Flexibilität bei Dienstzeiten"
+ ],
+ "letters": [
+  {
+   "label": "Absolventin mit freier Mitarbeit in der Lokalredaktion",
+   "level": "berufseinstieg",
+   "position": "Volontärin Lokalredaktion",
+   "to": {
+    "org": "Westfälische Allgemeine Rundschau",
+    "sal": "m",
+    "contact": "Brinkmann",
+    "street": "Pressehaus, Am Markt 3",
+    "city": "59065 Hamm"
+   },
+   "body": [
+    "der Gemeinderat in Bönen tagt donnerstags um 18 Uhr, und seit zwei Jahren sitze ich als freie Mitarbeiterin Ihrer Zeitung in der letzten Reihe. Aus diesen Sitzungen sind über 80 Berichte entstanden, zwei davon auf der Titelseite, als es um die Schließung des Freibads ging.",
+    "Im Sommer habe ich meinen Bachelor in Politikwissenschaft abgeschlossen. Ich fotografiere meine Termine selbst und habe für den Online-Auftritt kurze Videos geschnitten. Mich reizt der Lokaljournalismus, weil man dort sieht, was Berichterstattung bewirkt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben (5 Artikel)",
+    "Bachelorzeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteiger aus der Pflege für Gesundheitsjournalismus",
+   "level": "quereinstieg",
+   "position": "Volontär Online-Redaktion Gesundheit",
+   "to": {
+    "org": "Gesundheitsportal Rhein GmbH",
+    "sal": "none",
+    "street": "Mediapark 4",
+    "city": "50670 Köln"
+   },
+   "body": [
+    "sieben Jahre als Pflegefachmann haben mir gezeigt, wie oft Patienten falsch informiert in die Klinik kommen, weil sie im Internet Unsinn gelesen haben. Ich möchte Gesundheitsthemen verständlich und richtig erklären.",
+    "Seit einem Jahr schreibe ich einen Blog über Pflegealltag, der von einer Fachzeitschrift zweimal zitiert wurde. Ich habe einen Kurs für Online-Journalismus besucht und weiß, dass ich handwerklich noch viel lernen muss. Medizinisches Wissen und die Erfahrung, wie Menschen in Krankheit denken, bringe ich mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Blogtexte",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Marcel Önal",
+    "Venloer Straße 200",
+    "50823 Köln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "classic",
+  "accent": 3,
+  "name": "Lea Wiegand",
+  "title": "Freie Mitarbeiterin, Politikwissenschaftlerin (B. A.)",
+  "street": "Ostring 30",
+  "city": "59063 Hamm",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Freie Mitarbeiterin Lokalredaktion",
+    "Westfälische Allgemeine Rundschau",
+    "Hamm",
+    "- Über 80 Berichte aus Gemeinderat und Vereinen\n- Fotos und kurze Videos für online"
+   ],
+   [
+    "2022",
+    "2024",
+    "Redakteurin Campusradio",
+    "Universität Münster",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2021",
+    "2025",
+    "Politikwissenschaft (B. A.)",
+    "Universität Münster",
+    "Münster",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Nachricht und Bericht",
+    5
+   ],
+   [
+    "Recherche",
+    4
+   ],
+   [
+    "Fotografie",
+    3
+   ],
+   [
+    "Videoschnitt",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Podcasts"
+ },
+ "do": [
+  "Veröffentlichte Arbeitsproben beilegen.",
+  "Bezug zur Region oder zum Thema zeigen.",
+  "Multimediale Fähigkeiten nennen."
+ ],
+ "dont": [
+  "Allgemeines Interesse am „Schreiben“.",
+  "Uni-Hausarbeiten als Arbeitsproben.",
+  "Dienstzeiten ausschließen."
+ ],
+ "questions": [
+  "Welche Geschichte würden Sie in unserer Stadt als Erstes recherchieren?",
+  "Wie prüfen Sie eine Information?",
+  "Was lesen Sie selbst?",
+  "Wie gehen Sie mit Kritik am Text um?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich Journalismus studiert haben?",
+   "a": "Nein. Viele Volontäre haben ganz andere Fächer studiert oder eine Ausbildung. Entscheidend sind Arbeitsproben und Neugier."
+  }
+ ],
+ "related": [
+  "texter",
+  "pr-referent",
+  "content-manager",
+  "praktikum-marketing"
+ ]
+}

@@ -1,0 +1,88 @@
+{
+ "id": "fahrtenbuch",
+ "slug": "fahrtenbuch",
+ "cat": "Arbeit",
+ "name": "Fahrtenbuch",
+ "short": "Fahrten mit Kilometerstand und Zweck, Anteil dienstlich",
+ "desc": "Fahrtenbuch als Excel-Vorlage (XLSX): Fahrten mit Kilometerstand, Ziel und Anlass erfassen, dienstliche Kilometer und Erstattung automatisch auswerten.",
+ "search": "",
+ "intro": "Jede Fahrt bekommt eine Zeile mit Start- und End-Kilometerstand, Zweck und Ziel. Der Startstand der nächsten Fahrt wird aus dem Endstand übernommen. Rechts siehst du, wie viele Kilometer dienstlich, privat oder Arbeitsweg waren.",
+ "uses": [
+  "Dienstfahrten mit dem Privatauto für die Erstattung sammeln",
+  "Ausgaben für die Steuererklärung vorbereiten",
+  "Firmenwagen: Anteil privater Fahrten zeigen"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Tag der Fahrt."
+  ],
+  [
+   "Start-km",
+   "Kilometerstand bei Fahrtbeginn. Ab der zweiten Zeile kommt er automatisch aus dem Ende-km der vorigen Fahrt."
+  ],
+  [
+   "Ende-km",
+   "Kilometerstand bei Fahrtende."
+  ],
+  [
+   "Gefahren",
+   "Ende-km minus Start-km."
+  ],
+  [
+   "Zweck",
+   "Dienstlich, Privat oder Arbeitsweg aus der Auswahlliste – danach richtet sich die Auswertung."
+  ],
+  [
+   "Ziel / Route",
+   "Wohin du gefahren bist, z. B. „Saarbrücken – Homburg“."
+  ],
+  [
+   "Anlass / Kunde",
+   "Warum, bei Dienstfahrten am besten mit Kunde oder Termin."
+  ],
+  [
+   "Fahrer/in",
+   "Wer gefahren ist, wenn mehrere Personen das Auto nutzen."
+  ],
+  [
+   "Auswertung",
+   "Rechts neben der Tabelle: SUMMEWENN addiert die Kilometer je Zweck, darunter Gesamtstrecke und Anteil dienstlich."
+  ],
+  [
+   "km",
+   "Die Kilometer je Zweck. „Erstattung dienstlich“ ist dienstliche km mal Pauschale je km aus dem Kopf."
+  ]
+ ],
+ "tips": [
+  "Trag die Pauschale je km ein, die dein Arbeitgeber erstattet – die Vorlage rechnet den Betrag aus."
+ ],
+ "faq": [
+  {
+   "q": "Erkennt das Finanzamt diese Tabelle als Fahrtenbuch an?",
+   "a": "Für die 1-%-Regel beim Firmenwagen verlangt das Finanzamt ein ordnungsgemäßes Fahrtenbuch, das nachträglich nicht unbemerkt geändert werden kann. Eine frei änderbare Tabelle reicht dafür in der Regel nicht. Als Nachweis für Erstattungen oder als Gedächtnisstütze ist sie gut geeignet."
+  }
+ ],
+ "related": [
+  "tankbuch",
+  "projektzeiten",
+  "euer"
+ ],
+ "en": {
+  "slug": "mileage-log",
+  "name": "Mileage log",
+  "short": "Trips with odometer readings and purpose, share of business use",
+  "desc": "Mileage log spreadsheet (XLSX): record trips with odometer readings, destination and purpose, and see business kilometres and the reimbursement at once.",
+  "intro": "One row per trip with start and end odometer reading, purpose and destination; the next start reading is taken from the previous end. The summary shows business, private and commuting kilometres.",
+  "inside": [
+   "Distance = end − start, start taken from the previous trip",
+   "Purpose drop-down (business / private / commute)",
+   "Kilometres per purpose and share of business use",
+   "Reimbursement = business km × rate per km"
+  ],
+  "uses": [
+   "Claiming business trips with a private car",
+   "Showing the private share of a company car"
+  ]
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "id": "bauhelfer",
+ "field": "handwerk",
+ "name": "Bauhelfer/in",
+ "search": "bauhelfer bauhelferin helfer baustelle hilfsarbeiter bauarbeiter ohne ausbildung quereinstieg bau bewerbung",
+ "short": "Ohne Ausbildung auf die Baustelle – zupacken und lernen.",
+ "desc": "Bewerbung als Bauhelfer/in: kurze Muster-Anschreiben für Schulabgänger, Quereinsteiger aus der Gastronomie und Helfer mit Sprachkurs, mit Lebenslauf.",
+ "intro": "Bauhelfer tragen Material, bereiten Baustellen vor, mischen Mörtel, räumen auf und unterstützen Fachleute. Eine Ausbildung ist nicht nötig, aber Pünktlichkeit, Kraft und Lernbereitschaft. Viele Betriebe bieten guten Helfern später eine Ausbildung an.",
+ "lookFor": [
+  "Körperliche Fitness",
+  "Pünktlichkeit",
+  "Lernbereitschaft",
+  "Sicherheitsschuhe und Arbeitskleidung (oft gestellt)",
+  "Führerschein von Vorteil"
+ ],
+ "letters": [
+  {
+   "label": "Schulabgänger ohne Ausbildungsplatz",
+   "level": "berufseinstieg",
+   "position": "Bauhelfer",
+   "to": {
+    "org": "Bauunternehmen Pfeiffer",
+    "sal": "m",
+    "contact": "Pfeiffer",
+    "street": "Am Kieswerk 3",
+    "city": "34117 Kassel"
+   },
+   "body": [
+    "einen Ausbildungsplatz habe ich in diesem Jahr nicht bekommen, aber herumsitzen will ich nicht. Ich möchte bei Ihnen als Helfer anfangen und zeigen, dass ich anpacken kann. Wenn es passt, mache ich nächstes Jahr gern die Ausbildung zum Maurer bei Ihnen.",
+    "Ich bin 17, habe meinen Hauptschulabschluss und spiele seit Jahren Rugby, wo man lernt, dass Regen, Matsch und blaue Flecken dazugehören und niemand deswegen früher nach Hause geht. Schwer tragen? Kein Problem."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis"
+   ]
+  },
+  {
+   "label": "Ex-Koch will auf den Bau",
+   "level": "quereinstieg",
+   "position": "Bauhelfer (Vollzeit)",
+   "to": {
+    "org": "Hochbau Nordhessen",
+    "sal": "none",
+    "street": "Industriestraße 40",
+    "city": "34123 Kassel"
+   },
+   "body": [
+    "zwölf Stunden in einer heißen Küche, und das sechs Tage die Woche: Nach acht Jahren als Koch möchte ich tagsüber arbeiten und abends meine Kinder sehen. Auf dem Bau habe ich bei Freunden schon oft geholfen, beim Hausbau meines Schwagers ein ganzes Jahr lang an den Wochenenden.",
+    "Ich bin belastbar, sauber und gewohnt, unter Zeitdruck im Team zu arbeiten. Führerschein Klasse B habe ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Dennis Wagner",
+    "Wilhelmshöher Allee 120",
+    "34121 Kassel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "compact",
+  "accent": 4,
+  "name": "Luis Fernandes",
+  "title": "Schulabgänger",
+  "street": "Holländische Straße 50",
+  "city": "34127 Kassel",
+  "exp": [
+   [
+    "2025",
+    "2025",
+    "Ferienjob Gartenbau (4 Wochen)",
+    "Gartenbau Kassel-Nord",
+    "Kassel",
+    "- Pflastersteine tragen, Erde verteilen"
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2025",
+    "Hauptschulabschluss",
+    "Carl-Schomburg-Schule",
+    "Kassel",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Körperliche Arbeit",
+    5
+   ],
+   [
+    "Pünktlichkeit",
+    4
+   ],
+   [
+    "Teamarbeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Portugiesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Rugby, Fitness"
+ },
+ "do": [
+  "Kurz und klar bleiben.",
+  "Arbeitsbereitschaft zeigen.",
+  "Wunsch nach Ausbildung ansprechen."
+ ],
+ "dont": [
+  "Lange Texte.",
+  "Unpünktlichkeit beim Probetag.",
+  "Sicherheitsvorschriften belächeln."
+ ],
+ "questions": [
+  "Können Sie früh anfangen?",
+  "Wie kommen Sie zur Baustelle?",
+  "Haben Sie schon auf dem Bau gearbeitet?",
+  "Möchten Sie später eine Ausbildung machen?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  }
+ ],
+ "related": [
+  "maurer",
+  "ausbildung-anlagenmechaniker-shk",
+  "produktionshelfer",
+  "dachdecker"
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "id": "tankbuch",
+ "slug": "tankbuch",
+ "cat": "Zuhause",
+ "name": "Tankbuch",
+ "short": "Tankstopps mit Verbrauch und Kosten pro 100 km",
+ "desc": "Tankbuch als Excel-Vorlage (XLSX): Datum, Kilometerstand, Liter und Preis eintragen – Verbrauch auf 100 km, Kosten pro 100 km und Durchschnittswerte rechnen sich.",
+ "search": "sprit verbrauch auto",
+ "intro": "Mit dem Tankbuch siehst du, was dein Auto wirklich verbraucht und kostet. Wichtig ist nur eins: immer volltanken. Dann entsprechen die getankten Liter genau dem Verbrauch seit dem letzten Tanken.",
+ "uses": [
+  "Den echten Verbrauch mit der Herstellerangabe vergleichen",
+  "Spritkosten pro Monat oder Jahr kennen",
+  "Ein Problem am Auto früh bemerken, wenn der Verbrauch plötzlich steigt"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Tag des Tankens."
+  ],
+  [
+   "Kilometerstand",
+   "Stand des Kilometerzählers beim Tanken."
+  ],
+  [
+   "Liter",
+   "Getankte Menge laut Zapfsäule."
+  ],
+  [
+   "Preis pro Liter",
+   "Literpreis mit drei Nachkommastellen."
+  ],
+  [
+   "Betrag",
+   "Liter mal Preis pro Liter, auf Cent gerundet."
+  ],
+  [
+   "Gefahrene km",
+   "Kilometerstand minus Kilometerstand beim vorigen Tanken."
+  ],
+  [
+   "l/100 km",
+   "Getankte Liter geteilt durch gefahrene km mal 100. Niedrige Werte sind grün, hohe rot."
+  ],
+  [
+   "Kosten/100 km",
+   "Betrag geteilt durch gefahrene km mal 100."
+  ],
+  [
+   "Tankstelle / Notiz",
+   "Wo getankt, Besonderheiten wie Anhänger oder Winterreifen."
+  ],
+  [
+   "Auswertung",
+   "Gesamtkilometer, Liter und Kosten ohne den Startwert, dazu der Durchschnittsverbrauch, die Kosten pro 100 km und der durchschnittliche Literpreis."
+  ]
+ ],
+ "tips": [
+  "Die erste Zeile ist der Startwert: Ihre Liter zählen nicht zum Verbrauch, weil die Kilometer davor fehlen.",
+  "Einmal nicht vollgetankt? Dann trag die Liter trotzdem ein – über mehrere Tankstopps gleicht sich der Durchschnitt wieder aus."
+ ],
+ "faq": [
+  {
+   "q": "Geht das auch für ein Elektroauto?",
+   "a": "Ja, sinngemäß: Trag statt Liter die geladenen kWh und den kWh-Preis ein. Die Spalte „l/100 km“ zeigt dann kWh pro 100 km – Ladeverluste sind dabei schon mitgezählt."
+  }
+ ],
+ "related": [
+  "fahrtenbuch",
+  "stromzaehler",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "fuel-log",
+  "name": "Fuel log",
+  "short": "Fill-ups with consumption and cost per 100 km",
+  "desc": "Fuel log spreadsheet (XLSX): enter date, odometer reading, litres and price – consumption and cost per 100 km and the averages are calculated for you.",
+  "intro": "Shows what your car really uses and costs. Always fill the tank completely: then the litres you buy equal what you used since the last stop.",
+  "inside": [
+   "Amount = litres × price",
+   "Distance since last fill-up",
+   "l/100 km and cost per 100 km",
+   "Averages over all fill-ups"
+  ],
+  "uses": [
+   "Checking real fuel consumption",
+   "Knowing your fuel costs"
+  ]
+ }
+}

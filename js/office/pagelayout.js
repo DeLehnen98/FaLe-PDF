@@ -5,6 +5,8 @@
 // Nichts davon landet im Dokument: alle Markierungen (data-pg…, --pg-…) werden vor jedem Lauf entfernt
 // und von docmodel/Export ignoriert.
 
+import { hfTexts } from './hfnorm.js';
+
 const PX = 96 / 72;
 export const PAGE_GAP = 22; // px between pages (unzoomed)
 
@@ -222,21 +224,21 @@ export function createPageView(o) {
   }
 
   function paintPages(g) {
-    const hf = o.getHf() || {};
-    const pn = hf.pageNumbers && hf.pageNumbers !== 'none' ? hf.pageNumbers : null;
-    const label = n => (hf.pageFormat === 'n-of-m' ? `Seite ${n} von ${pages}` : String(n));
+    const hf = o.getHf() || null;
+    const ctx = { pages, title: o.getTitle ? o.getTitle() : '' };
+    const wm = hf && hf.watermark && hf.watermark.text ? hf.watermark : null;
     const frag = document.createDocumentFragment();
     for (let k = 0; k < pages; k++) {
       const d = document.createElement('div');
       d.className = 'pv-page';
       d.style.top = `${k * g.stride}px`;
       d.dataset.page = String(k + 1);
-      if (k > 0 || o.ownFirst === false) {
-        const skip = k === 0 && hf.firstPage === false;
-        const head = [hf.header, pn && pn.startsWith('header') ? label(k + 1) : ''].filter(Boolean).join(' · ');
-        const foot = [hf.footer, pn && pn.startsWith('footer') ? label(k + 1) : ''].filter(Boolean).join(' · ');
-        if (head && !skip) { const x = document.createElement('div'); x.className = 'pv-hf top'; x.textContent = head; x.style.textAlign = (hf.header ? hf.headerAlign : pn && pn.split('-')[1]) || 'left'; d.appendChild(x); }
-        if (foot && !skip) { const x = document.createElement('div'); x.className = 'pv-hf bottom'; x.textContent = foot; x.style.textAlign = (hf.footer ? hf.footerAlign : pn && pn.split('-')[1]) || 'left'; d.appendChild(x); }
+      if (wm) d.appendChild(watermarkEl(wm));
+      if (hf && (k > 0 || o.ownFirst === false)) {
+        const top = hfEl(hfTexts(hf, k, 'h', ctx), 'pv-hf top');
+        const bottom = hfEl(hfTexts(hf, k, 'f', ctx), 'pv-hf bottom');
+        if (top) d.appendChild(top);
+        if (bottom) d.appendChild(bottom);
       }
       frag.appendChild(d);
     }
@@ -273,4 +275,27 @@ export function createPageView(o) {
     pageTop(n) { const g = geometry(); return (Math.max(1, Math.min(pages, n)) - 1) * g.stride; },
     pageTops: () => pageTops.slice(),
   };
+}
+
+/** Header/footer element: one text (aligned) or three zones (left · centre · right). null when empty. */
+export function hfEl(zones, cls, tag = 'div') {
+  const filled = zones.map((t, k) => [t, k]).filter(([t]) => t);
+  if (!filled.length) return null;
+  const x = document.createElement(tag);
+  x.className = cls;
+  if (filled.length === 1) { x.textContent = filled[0][0]; x.style.textAlign = ['left', 'center', 'right'][filled[0][1]]; }
+  else { x.classList.add('z3'); zones.forEach(t => { const sp = document.createElement('span'); sp.textContent = t; x.appendChild(sp); }); }
+  return x;
+}
+/** Diagonal watermark text behind a page. */
+export function watermarkEl(wm) {
+  const x = document.createElement('div');
+  x.className = 'pv-wm';
+  x.setAttribute('aria-hidden', 'true');
+  const sp = document.createElement('span');
+  sp.textContent = wm.text;
+  if (wm.color && /^#[0-9a-f]{6}$/i.test(wm.color)) sp.style.color = wm.color;
+  if (wm.opacity) sp.style.opacity = String(Math.max(0.05, Math.min(1, +wm.opacity)));
+  x.appendChild(sp);
+  return x;
 }

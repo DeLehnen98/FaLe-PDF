@@ -1,0 +1,168 @@
+{
+ "id": "werkstudent-ingenieur",
+ "field": "praktikum",
+ "name": "Werkstudent/in Ingenieurwesen",
+ "search": "werkstudent werkstudentin ingenieur maschinenbau elektrotechnik konstruktion entwicklung cad studentenjob bewerbung",
+ "short": "Konstruktion, Versuch, Fertigung – für Studierende der Technik.",
+ "desc": "Bewerbung als Werkstudent/in im Ingenieurwesen (Maschinenbau, Elektrotechnik): Muster-Anschreiben mit Formula-Student-Erfahrung und für Elektrotechnik, Lebenslauf.",
+ "intro": "Ingenieurbüros und Industrie beschäftigen Werkstudierende in Konstruktion, Versuch, Fertigung und Qualitätssicherung. Wichtig sind Studienfortschritt, Programme, mit denen du arbeiten kannst, und Projekte aus Studium oder Hochschulteam. Formula Student, Robotik-Teams und Abschlussarbeiten sind gute Argumente.",
+ "lookFor": [
+  "Studium Maschinenbau, Elektrotechnik, Mechatronik o. Ä.",
+  "CAD- oder Simulationskenntnisse",
+  "Praxiserfahrung aus Projekten oder Werkstatt",
+  "Strukturiertes Arbeiten und Dokumentation",
+  "Englisch für Datenblätter"
+ ],
+ "letters": [
+  {
+   "label": "Maschinenbaustudent aus dem Rennteam",
+   "level": "praktikum",
+   "position": "Werkstudent Konstruktion",
+   "to": {
+    "org": "Antriebstechnik Lahn GmbH",
+    "sal": "m",
+    "contact": "Dittmar",
+    "street": "Industriestraße 22",
+    "city": "35394 Gießen"
+   },
+   "body": [
+    "für unser Formula-Student-Team habe ich den Radträger des letzten Fahrzeugs konstruiert, Gewicht gegenüber dem Vorjahr um 18 Prozent reduziert, Festigkeit nachgewiesen und die Fertigung mit unserem Sponsor abgestimmt. Bei der Abnahme hat er gehalten, beim Rennen auch.",
+    "Ich studiere Maschinenbau an der Technischen Hochschule Mittelhessen im sechsten Semester. Konstruieren im 3D-Programm, technische Zeichnungen nach Norm und einfache Simulationen gehören für mich zum Alltag. Ihr Unternehmen entwickelt Getriebe für Landmaschinen, und Lastfälle mit Staub, Stößen und Dauerbetrieb reizen mich.",
+    "Zwei Tage pro Woche kann ich bei Ihnen vor Ort sein."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Konstruktionsbeispiele"
+   ]
+  },
+  {
+   "label": "Elektrotechnikstudentin für Prüffeld und Versuch",
+   "level": "praktikum",
+   "position": "Werkstudentin Versuch und Prüffeld",
+   "to": {
+    "org": "Hessen Energiesysteme AG",
+    "sal": "none",
+    "street": "Frankfurter Straße 300",
+    "city": "35392 Gießen"
+   },
+   "body": [
+    "Messungen, die nicht zur Theorie passen, sind mir die liebsten. Im Laborpraktikum Leistungselektronik hatten wir einen Wechselrichter, dessen Wirkungsgrad deutlich unter dem Datenblatt lag. Ich habe zwei Wochen nach der Ursache gesucht und sie in einem schlecht dimensionierten Kühlkörper gefunden.",
+    "Ich studiere Elektrotechnik im fünften Semester, Schwerpunkt Energietechnik, und kann mit Oszilloskop, Leistungsanalysator und Labornetzteil umgehen, wobei ich Messprotokolle so schreibe, dass auch jemand anderes die Messung später wiederholen kann. Mein Wunsch: das Prüffeld für Batteriespeicher.",
+    "Ab April habe ich 18 Stunden pro Woche frei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Sophie Jäger",
+    "Licher Straße 60",
+    "35394 Gießen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "modern",
+  "accent": 0,
+  "name": "Lukas Wagner",
+  "title": "Student Maschinenbau (B. Eng.), 6. Semester",
+  "street": "Ludwigstraße 40",
+  "city": "35390 Gießen",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Konstrukteur Fahrwerk",
+    "Formula-Student-Team der Hochschule",
+    "Gießen",
+    "- Konstruktion Radträger, minus 18 % Gewicht\n- Festigkeitsnachweis, Abstimmung mit Fertigung"
+   ],
+   [
+    "2022",
+    "2023",
+    "Produktionshelfer (Semesterferien)",
+    "Metallbau Wetzlar",
+    "Wetzlar",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "",
+    "Maschinenbau (B. Eng.), 6. Semester",
+    "Technische Hochschule Mittelhessen",
+    "Gießen",
+    ""
+   ],
+   [
+    "2014",
+    "2022",
+    "Abitur",
+    "Landgraf-Ludwigs-Gymnasium",
+    "Gießen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "3D-Konstruktion",
+    4
+   ],
+   [
+    "Technisches Zeichnen",
+    4
+   ],
+   [
+    "FEM-Grundlagen",
+    3
+   ],
+   [
+    "Fertigungsverfahren",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Motorsport, Mountainbike"
+ },
+ "do": [
+  "Projekte mit messbarem Ergebnis nennen.",
+  "Programme und Messgeräte, die du sicher beherrschst.",
+  "Tage vor Ort konkret angeben."
+ ],
+ "dont": [
+  "Alle Programme aufzählen, die du einmal geöffnet hast.",
+  "Team-Erfolge als Einzelleistung darstellen.",
+  "Fehlende Studiendauer – Firmen planen gern länger."
+ ],
+ "questions": [
+  "Erklären Sie uns Ihr Projekt im Team.",
+  "Wie gehen Sie mit einer Messung um, die nicht zur Erwartung passt?",
+  "Welche Programme nutzen Sie?",
+  "Wann schreiben Sie Ihre Abschlussarbeit?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Stunden darf ich als Werkstudent arbeiten?",
+   "a": "Damit der Werkstudentenstatus in der Sozialversicherung erhalten bleibt, gilt in der Vorlesungszeit in der Regel eine Grenze von 20 Wochenstunden; in den Semesterferien darf es mehr sein. Lass dir die Details von der Personalabteilung oder deiner Krankenkasse bestätigen."
+  }
+ ],
+ "related": [
+  "maschinenbauingenieur",
+  "technischer-produktdesigner",
+  "werkstudent-it",
+  "duales-studium-informatik"
+ ]
+}

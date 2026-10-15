@@ -1,0 +1,331 @@
+{
+ "id": "staplerfahrer",
+ "field": "logistik",
+ "name": "Staplerfahrer/in",
+ "search": "staplerfahrer staplerfahrerin gabelstapler staplerschein flurförderzeug lager logistik bewerbung",
+ "short": "Gabelstapler im Lager, in der Produktion oder im Wareneingang.",
+ "desc": "Bewerbung als Staplerfahrer/in: Muster-Anschreiben für erfahrenen Fahrer, Quereinsteigerin mit frischem Staplerschein und Schichtfahrer, mit Lebenslauf und Tipps.",
+ "intro": "Staplerfahrer laden Lkw, lagern Paletten ein und versorgen die Produktion mit Material. Verlangt werden ein Staplerschein und eine schriftliche Beauftragung durch den Arbeitgeber, dazu Sorgfalt, räumliches Sehen und Erfahrung mit Scannern. Nenn die Gerätetypen, die du fährst.",
+ "lookFor": [
+  "Fahrausweis für Flurförderzeuge (Staplerschein)",
+  "Erfahrung mit Front-, Schubmast- oder Seitenstapler",
+  "Mindestalter 18 Jahre",
+  "Sorgfalt und Sicherheitsbewusstsein",
+  "Schichtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrener Fahrer im Hochregallager",
+   "level": "erfahren",
+   "position": "Staplerfahrer Hochregallager",
+   "to": {
+    "org": "Logistikzentrum Erfurter Kreuz",
+    "sal": "m",
+    "contact": "Wolf",
+    "street": "Am Logistikpark 3",
+    "city": "99334 Amt Wachsenburg"
+   },
+   "body": [
+    "zwölf Meter Hubhöhe, Schmalgang, Paletten mit Glasflaschen: Das ist seit fünf Jahren mein Arbeitsplatz bei einem Getränkegroßhändler. Ich fahre Schubmast- und Schmalgangstapler und habe in dieser Zeit keinen meldepflichtigen Schaden gehabt.",
+    "Ihr neues Lager am Erfurter Kreuz suche ich mir aus, weil ich in Arnstadt wohne und mir die Fahrt nach Leipzig sparen möchte. Ich arbeite gern in Wechselschicht, bin geübt mit Handscannern und Lagerverwaltung, und ich weise neue Kollegen ein, wenn es gebraucht wird.",
+    "Ich kann zum 1. des übernächsten Monats anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staplerschein",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteigerin mit frischem Staplerschein",
+   "level": "quereinstieg",
+   "position": "Staplerfahrerin Wareneingang",
+   "to": {
+    "org": "Thüringer Möbelvertrieb GmbH",
+    "sal": "f",
+    "contact": "Kühn",
+    "street": "Gewerbestraße 10",
+    "city": "99091 Erfurt"
+   },
+   "body": [
+    "früher habe ich als Kassiererin gearbeitet. Seit ich im Frühjahr über die Agentur für Arbeit den Staplerschein gemacht habe, weiß ich, dass mir Logistik mehr liegt. In der Praxisphase durfte ich zwei Wochen in einem Lager fahren und habe Lkw entladen, ohne einmal anzuecken.",
+    "Ich bin genau, ruhig und mag es, wenn am Ende des Tages alles am richtigen Platz steht. Frühschicht ist mir am liebsten, aber auch Spätschicht geht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staplerschein",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Doreen Seifert",
+    "Magdeburger Allee 80",
+    "99086 Erfurt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "compact",
+  "accent": 5,
+  "name": "Ronny Walther",
+  "title": "Staplerfahrer",
+  "street": "Erfurter Straße 30",
+  "city": "99310 Arnstadt",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Staplerfahrer",
+    "Getränkegroßhandel Mitteldeutschland",
+    "Leipzig",
+    "- Schubmast- und Schmalgangstapler bis 12 m Hubhöhe\n- Ein- und Auslagerung, Verladung\n- Einweisung neuer Kollegen"
+   ],
+   [
+    "2016",
+    "2021",
+    "Lagerhelfer",
+    "Baustoffe Thüringen",
+    "Arnstadt",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2007",
+    "2010",
+    "Ausbildung Fachlagerist",
+    "Baustoffe Thüringen",
+    "Arnstadt",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2021",
+    "Fahrausweis Flurförderzeuge inkl. Schmalgang",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Jährliche Unterweisung Flurförderzeuge",
+    "Arbeitgeber",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Schubmaststapler",
+    5
+   ],
+   [
+    "Schmalgangstapler",
+    4
+   ],
+   [
+    "Handscanner",
+    4
+   ],
+   [
+    "Ladungssicherung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ]
+  ],
+  "hobbies": "Angeln, Fußball"
+ },
+ "do": [
+  "Gerätetypen und Hubhöhen nennen.",
+  "Unfallfreiheit erwähnen, wenn sie stimmt.",
+  "Schichtbereitschaft angeben."
+ ],
+ "dont": [
+  "Staplerschein ohne Praxis überbewerten.",
+  "Schäden verschweigen, wenn danach gefragt wird.",
+  "Unklare Verfügbarkeit."
+ ],
+ "questions": [
+  "Welche Stapler sind Sie schon gefahren?",
+  "Was prüfen Sie vor Schichtbeginn am Stapler?",
+  "Wie sichern Sie eine Ladung?",
+  "Was tun Sie, wenn eine Palette beschädigt ist?"
+ ],
+ "faq": [
+  {
+   "q": "Reicht der Staplerschein allein?",
+   "a": "Nein. Zusätzlich braucht es eine schriftliche Beauftragung durch den Arbeitgeber und eine Unterweisung im Betrieb. Den Schein selbst gibt es nach einer Ausbildung mit Prüfung."
+  }
+ ],
+ "related": [
+  "lagerist",
+  "kommissionierer",
+  "ausbildung-fachkraft-lagerlogistik",
+  "produktionshelfer"
+ ],
+ "en": {
+  "slug": "forklift-operator",
+  "name": "Forklift operator",
+  "search": "forklift operator counterbalance reach warehouse licence lift",
+  "short": "Counterbalance, reach or VNA – warehouse and production.",
+  "desc": "Forklift operator cover letter examples: an experienced reach operator and a career changer with a new licence, plus a ready CV with placeholder portrait.",
+  "intro": "Forklift operators load and unload, put away pallets and keep production supplied. You need recognised forklift training for the types you drive, care and good spatial awareness. Name the machines you are trained on.",
+  "lookFor": [
+   "Recognised forklift training and certificate",
+   "Counterbalance, reach or VNA experience",
+   "Safety awareness",
+   "Scanner and warehouse system use",
+   "Shift work"
+  ],
+  "letters": [
+   {
+    "label": "Experienced reach operator",
+    "level": "erfahren",
+    "position": "Reach truck operator",
+    "to": {
+     "org": "Midlands Distribution Centre",
+     "sal": "m",
+     "contact": "Wolfe",
+     "street": "Unit 3, Logistics Way",
+     "city": "Coventry CV3 4PE"
+    },
+    "body": [
+     "twelve-metre racking, narrow aisles and pallets of glass bottles have been my workplace for five years at a drinks wholesaler. I operate reach and very-narrow-aisle machines and have had no reportable damage in that time.",
+     "I live in Coventry and would like to stop commuting to Birmingham. I am happy on rotating shifts, confident with handheld scanners and the warehouse system, and I help induct new starters when needed."
+    ],
+    "att": [
+     "CV",
+     "Licence",
+     "Reference"
+    ]
+   },
+   {
+    "label": "Career changer with a new licence",
+    "level": "quereinstieg",
+    "position": "Forklift operator, goods in",
+    "to": {
+     "org": "Heartland Furniture Ltd",
+     "sal": "f",
+     "contact": "Cook",
+     "street": "10 Trade Park",
+     "city": "Coventry CV6 5RZ"
+    },
+    "body": [
+     "until last year I worked on a supermarket checkout. Since passing my counterbalance training this spring, I know logistics suits me better. During the work placement I unloaded lorries for two weeks without a single knock.",
+     "I am careful, calm and like it when everything is in its place at the end of the day. Early shifts suit me best, but lates are fine."
+    ],
+    "att": [
+     "CV",
+     "Certificate"
+    ],
+    "from": [
+     "Donna Sefton",
+     "80 Foleshill Road",
+     "Coventry CV1 4JF"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a12",
+   "design": "compact",
+   "accent": 5,
+   "name": "Ryan Walsh",
+   "title": "Forklift operator",
+   "street": "30 Binley Road",
+   "city": "Coventry CV3 1HZ",
+   "exp": [
+    [
+     "2021",
+     "",
+     "Forklift operator",
+     "Midlands Drinks Wholesale",
+     "Birmingham",
+     "- Reach and VNA up to 12 m\n- Put-away, picking, loading\n- Inducting new colleagues"
+    ],
+    [
+     "2016",
+     "2021",
+     "Warehouse operative",
+     "Coventry Building Supplies",
+     "Coventry",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2005",
+     "2010",
+     "Secondary school",
+     "Caludon Castle School",
+     "Coventry",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2021",
+     "Forklift training: reach, VNA, counterbalance",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Reach truck",
+     5
+    ],
+    [
+     "VNA",
+     4
+    ],
+    [
+     "Scanners",
+     4
+    ],
+    [
+     "Load safety",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Fishing, football"
+  },
+  "do": [
+   "Name the machine types and lift heights.",
+   "Mention a clean safety record if true.",
+   "Say which shifts you can do."
+  ],
+  "dont": [
+   "Overstate a licence without practice.",
+   "Hide damage if asked.",
+   "Leave availability unclear."
+  ],
+  "questions": [
+   "Which trucks have you operated?",
+   "What do you check before a shift?",
+   "How do you secure a load?",
+   "What do you do with a damaged pallet?"
+  ],
+  "faq": [
+   {
+    "q": "Is a certificate enough?",
+    "a": "You also need to be authorised by your employer and given site-specific training for the equipment you will use."
+   }
+  ]
+ }
+}

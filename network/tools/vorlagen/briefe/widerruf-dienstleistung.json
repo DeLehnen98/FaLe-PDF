@@ -1,0 +1,70 @@
+{
+ "id": "widerruf-dienstleistung",
+ "group": "kauf",
+ "tool": "withdrawal-letter",
+ "order": 37,
+ "name": "Widerruf eines Dienstleistungsvertrags",
+ "short": "Online oder am Telefon geschlossenen Vertrag widerrufen",
+ "desc": "Dienstleistungsvertrag widerrufen: Muster für Verträge, die online, am Telefon oder an der Haustür geschlossen wurden – mit 14-Tage-Frist und Hinweisen zu Wertersatz.",
+ "search": "widerruf vertrag telefon haustür dienstleistung",
+ "when": [
+  "Am Telefon wurde dir ein neuer Stromtarif, ein Zeitschriftenpaket oder ein Handwerkerauftrag verkauft, oder du hast online einen Dienst gebucht und es bereut. Bei Verträgen außerhalb von Geschäftsräumen und im Fernabsatz hast du als Verbraucher meist 14 Tage Zeit zum Widerruf – bei Dienstleistungen ab Vertragsschluss."
+ ],
+ "must": [
+  "Was für ein Vertrag es ist und mit wem",
+  "Datum des Vertragsschlusses",
+  "Vertrags- oder Kundennummer",
+  "Klarer Widerruf und Bitte um Erstattung",
+  "Bitte um Bestätigung"
+ ],
+ "notes": [
+  "Hast du verlangt, dass die Leistung schon während der Widerrufsfrist beginnt, musst du für das bereits Geleistete eventuell anteilig zahlen (Wertersatz).",
+  "Wurdest du nicht richtig über das Widerrufsrecht belehrt, verlängert sich die Frist – höchstens auf ein Jahr und 14 Tage.",
+  "Am Telefon untergeschobene Verträge kannst du auch widerrufen, wenn du dich an keine Zustimmung erinnerst – sicher ist sicher."
+ ],
+ "faq": [
+  {
+   "q": "Was ist, wenn die Dienstleistung schon komplett erbracht ist?",
+   "a": "Dann kann das Widerrufsrecht erloschen sein, wenn du ausdrücklich zugestimmt hast, dass vor Ablauf der Frist begonnen wird. Lass dich in diesem Fall beraten."
+  }
+ ],
+ "fields": {
+  "kind": "service",
+  "orderNo": "V-2026-0912",
+  "customerNo": "",
+  "items": "Jahresabo „Sprachkurs online Plus“",
+  "refund": true,
+  "confirm": true
+ },
+ "related": [
+  "widerruf-onlinekauf",
+  "kuendigung-streaming",
+  "beschwerde"
+ ],
+ "from": [
+  "Markus Probe",
+  "Am Kirchberg 3",
+  "54290 Trier"
+ ],
+ "to": {
+  "org": "Lernmuster Online GmbH",
+  "attn": "Kundenservice",
+  "street": "Akademiestraße 4",
+  "city": "54290 Trier"
+ },
+ "doc": [
+  [
+   "Betreff",
+   "Widerruf meiner Bestellung V-2026-0912"
+  ],
+  [
+   "Text",
+   "Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung (Bestellnummer V-2026-0912): – Jahresabo „Sprachkurs online Plus“. Bestellt am … Bitte erstatten Sie mir alle geleisteten Zahlungen … Bitte bestätigen Sie mir den Eingang dieses Widerrufs."
+  ],
+  [
+   "Absender / Empfänger",
+   "Markus Probe → Lernmuster Online GmbH, Kundenservice"
+  ]
+ ],
+ "doc_intro": "Das Werkzeug setzt den Widerruf als Brief nach DIN 5008. Mit den Beispieldaten steht darin:"
+}

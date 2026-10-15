@@ -1,0 +1,214 @@
+{
+ "id": "bewerbung-nach-arbeitslosigkeit",
+ "field": "buero",
+ "name": "Bewerbung aus der Arbeitslosigkeit",
+ "search": "bewerbung arbeitslosigkeit arbeitslos langzeitarbeitslos jobcenter agentur für arbeit lücke lebenslauf neustart wiedereinstieg",
+ "short": "Neustart nach Monaten ohne Job – offen und selbstbewusst.",
+ "desc": "Bewerbung aus der Arbeitslosigkeit: Muster-Anschreiben nach einem halben Jahr, nach längerer Krankheit und nach Langzeitarbeitslosigkeit, Lebenslauf ohne Rechtfertigungen.",
+ "intro": "Wer länger ohne Job ist, sollte die Zeit nicht verstecken, aber auch nicht in den Mittelpunkt stellen. Nenn sie kurz im Lebenslauf und füll sie mit dem, was du getan hast: Kurse, Ehrenamt, Pflege von Angehörigen, Bewerbungen. Im Anschreiben zählen deine Fähigkeiten und dein Wille, wieder anzufangen.",
+ "lookFor": [
+  "Fähigkeiten aus früheren Jobs",
+  "Aktivitäten in der Zeit ohne Job",
+  "Klare Motivation für genau diese Stelle",
+  "Sofortige Verfügbarkeit",
+  "Zuverlässigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Nach sechs Monaten Arbeitslosigkeit",
+   "level": "erfahren",
+   "position": "Lagermitarbeiter",
+   "to": {
+    "org": "Getränkelogistik Ruhrgebiet GmbH",
+    "sal": "m",
+    "contact": "Wilms",
+    "street": "Am Kanal 8",
+    "city": "45881 Gelsenkirchen"
+   },
+   "body": [
+    "sechs Monate ohne Job sind zu lang für jemanden, der gern arbeitet. Nach dem Ende meines befristeten Vertrags im letzten Herbst habe ich die Zeit genutzt, um den Staplerschein aufzufrischen und einen Kurs zur Lagerverwaltung am Computer zu machen.",
+    "Davor war ich insgesamt fünf Jahre in zwei Lagern tätig, Kommissionierung mit Handscanner, Warenannahme und Inventur. Ich bin pünktlich, arbeite gern im Team und habe kein Problem mit Wochenendschichten in der Hochsaison.",
+    "Ich kann morgen anfangen, wenn Sie wollen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staplerschein",
+    "Kursbescheinigung",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Nach längerer Krankheit",
+   "level": "erfahren",
+   "position": "Sachbearbeiterin Auftragsannahme (Teilzeit)",
+   "to": {
+    "org": "Möbelversand Westfalen",
+    "sal": "f",
+    "contact": "Hagen",
+    "street": "Industriestraße 4",
+    "city": "45699 Herten"
+   },
+   "body": [
+    "nach einer Erkrankung, die inzwischen gut behandelt ist, war ich anderthalb Jahre nicht berufstätig. Ich bin wieder voll belastbar und möchte mit 30 Stunden pro Woche zurück in die Auftragsbearbeitung, die ich zuvor neun Jahre lang gemacht habe.",
+    "Bestellungen erfassen, Liefertermine abstimmen, Reklamationen bearbeiten: Das kann ich. Um wieder in den Rhythmus zu kommen, habe ich im Frühjahr ein sechswöchiges Praktikum bei einem Versandhändler gemacht, das sehr gut gelaufen ist. Die Bescheinigung liegt bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Praktikumsbescheinigung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Andrea Lenz",
+    "Ewaldstraße 50",
+    "45699 Herten"
+   ]
+  },
+  {
+   "label": "Nach drei Jahren Langzeitarbeitslosigkeit",
+   "level": "quereinstieg",
+   "position": "Mitarbeiter Hausmeisterservice",
+   "to": {
+    "org": "Wohnungsgesellschaft Emscher eG",
+    "sal": "none",
+    "street": "Bahnhofstraße 30",
+    "city": "45879 Gelsenkirchen"
+   },
+   "body": [
+    "drei Jahre suche ich jetzt Arbeit, und ich gebe nicht auf. In dieser Zeit habe ich bei der Tafel Lebensmittel abgeholt und ausgegeben, in unserem Mietshaus kleine Reparaturen für ältere Nachbarn übernommen und über das Jobcenter einen Kurs für Gebäudetechnik-Grundlagen gemacht.",
+    "Gelernt habe ich Maler und Lackierer. Streichen, kleine Holzarbeiten, Wasserhähne tauschen, Hecken schneiden, das kann ich alles. Ihre Gesellschaft hat viele Wohnungen in meinem Stadtteil, und ich weiß, wie wichtig es Mietern ist, dass jemand vorbeikommt, wenn etwas kaputt ist.",
+    "Eine Probearbeit von ein paar Tagen wäre für mich die beste Chance, Sie zu überzeugen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Kursbescheinigung",
+    "Bestätigung Ehrenamt"
+   ],
+   "from": [
+    "Dirk Gerlach",
+    "Hochstraße 10",
+    "45894 Gelsenkirchen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 5,
+  "name": "Ahmet Kaya",
+  "title": "Lagermitarbeiter",
+  "street": "Bochumer Straße 70",
+  "city": "45886 Gelsenkirchen",
+  "exp": [
+   [
+    "10/2025",
+    "",
+    "Arbeitsuchend",
+    "",
+    "",
+    "- Auffrischung Staplerschein\n- Kurs Lagerverwaltung am PC"
+   ],
+   [
+    "04/2023",
+    "09/2025",
+    "Lagermitarbeiter (befristet)",
+    "Logistikzentrum Herne",
+    "Herne",
+    "- Kommissionierung mit Handscanner\n- Warenannahme, Inventur"
+   ],
+   [
+    "03/2020",
+    "03/2023",
+    "Lagerhelfer",
+    "Baumarkt-Zentrallager Bottrop",
+    "Bottrop",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2016",
+    "Hauptschulabschluss nach Klasse 10",
+    "Gesamtschule Berger Feld",
+    "Gelsenkirchen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Flurförderzeuge – Auffrischung",
+    "Bildungswerk Ruhr",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kommissionierung",
+    5
+   ],
+   [
+    "Stapler",
+    4
+   ],
+   [
+    "Warenannahme",
+    4
+   ],
+   [
+    "Lagerverwaltung am PC",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball, Fitness"
+ },
+ "do": [
+  "Die Zeit im Lebenslauf benennen und füllen.",
+  "Aktivitäten zeigen (Kurse, Ehrenamt, Praktikum).",
+  "Selbstbewusst und kurz bleiben."
+ ],
+ "dont": [
+  "Sich wortreich entschuldigen.",
+  "Gesundheitliche Details ausbreiten.",
+  "Massenbewerbungen mit identischem Text."
+ ],
+ "questions": [
+  "Was haben Sie in der Zeit ohne Job gemacht?",
+  "Warum möchten Sie genau hier arbeiten?",
+  "Wann können Sie anfangen?",
+  "Wie würden frühere Kollegen Sie beschreiben?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich eine Krankheit angeben?",
+   "a": "Nein. Du musst keine Diagnose nennen. Ein Satz, dass du wieder voll belastbar bist, reicht. Bei einer Schwerbehinderung entscheidest du selbst, ob du sie angibst."
+  },
+  {
+   "q": "Wie schreibe ich Arbeitslosigkeit in den Lebenslauf?",
+   "a": "Als Zeitraum mit „arbeitsuchend“ und darunter, was du getan hast. Eine Lücke ohne Erklärung wirft mehr Fragen auf als eine ehrliche Angabe."
+  }
+ ],
+ "related": [
+  "bewerbung-nach-kuendigung",
+  "umschulung",
+  "lagerist",
+  "hausmeister"
+ ]
+}

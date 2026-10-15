@@ -1,0 +1,68 @@
+{
+ "id": "maengelanzeige-wohnung",
+ "group": "wohnen",
+ "tool": "din-letter",
+ "order": 24,
+ "name": "Mängelanzeige an den Vermieter",
+ "short": "Schimmel, Heizung, Wasserschaden melden mit Frist",
+ "desc": "Mängelanzeige für die Mietwohnung: Muster, um Schimmel, Heizungsausfall oder Feuchtigkeit zu melden und eine Frist zu setzen – mit Hinweisen zur Mietminderung.",
+ "search": "schimmel heizung mangel miete vermieter mietminderung",
+ "when": [
+  "In deiner Wohnung ist etwas kaputt oder beschädigt: Die Heizung fällt aus, an der Wand bildet sich Schimmel, das Fenster schließt nicht mehr. Als Mieter musst du solche Mängel dem Vermieter unverzüglich melden – sonst kannst du für Folgeschäden haften.",
+  "Eine schriftliche Mängelanzeige mit Frist ist der erste Schritt, wenn ein kurzer Anruf nichts gebracht hat oder es um etwas Ernstes geht."
+ ],
+ "must": [
+  "Genaue Beschreibung des Mangels: was, wo, seit wann",
+  "Fotos mit Datum als Anlage",
+  "Bitte um Beseitigung und eine angemessene Frist",
+  "Erreichbarkeit für Handwerkertermine",
+  "Vorbehalt der Mietminderung"
+ ],
+ "notes": [
+  "Die Miete mindert sich bei einem erheblichen Mangel kraft Gesetzes. Wie viel angemessen ist, ist oft strittig – mindere nicht auf eigene Faust zu stark, sondern zahl im Zweifel „unter Vorbehalt“ und lass dich beraten, etwa beim Mieterverein.",
+  "Bei Gefahr (Wasserrohrbruch, Gasgeruch, kein Strom) ruf sofort an oder den Notdienst – der Brief kommt danach.",
+  "Heb Kopien aller Schreiben und Fotos auf."
+ ],
+ "faq": [
+  {
+   "q": "Was ist eine angemessene Frist?",
+   "a": "Das hängt vom Mangel ab. Bei Heizungsausfall im Winter sind es wenige Tage, bei einem klemmenden Fenster eher zwei Wochen."
+  },
+  {
+   "q": "Darf ich selbst einen Handwerker beauftragen?",
+   "a": "Nur in Ausnahmefällen, etwa wenn der Vermieter trotz Frist nichts tut oder ein Notfall vorliegt. Sonst bleibst du auf den Kosten sitzen – lass dich vorher beraten."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "kuendigung-mietvertrag",
+  "beschwerde",
+  "vollmacht-wohnungsuebergabe"
+ ],
+ "from": [
+  "Sevgi Arslan",
+  "Hafenstraße 21",
+  "28217 Bremen"
+ ],
+ "to": {
+  "org": "Hausverwaltung Muster & Partner",
+  "attn": "Herr Berger",
+  "street": "Am Wall 101",
+  "city": "28195 Bremen"
+ },
+ "letter": {
+  "subject": "Mängelanzeige: Feuchtigkeit und Schimmel im Schlafzimmer, Hafenstraße 21, 1. OG rechts",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "seit Anfang des Monats bildet sich im Schlafzimmer meiner Wohnung an der Außenwand hinter dem Kleiderschrank Schimmel. Die betroffene Fläche ist inzwischen etwa einen halben Quadratmeter groß, die Tapete fühlt sich feucht an. Ich lüfte mehrmals täglich stoßweise und heize den Raum auf etwa 18 Grad.",
+   "Bitte lassen Sie die Ursache untersuchen und den Mangel bis zum [Datum] beseitigen. Für einen Termin mit dem Handwerksbetrieb bin ich werktags ab 15 Uhr erreichbar, Telefon 0421 123456.",
+   "Bis zur Beseitigung des Mangels behalte ich mir eine Minderung der Miete vor. Fotos vom [Datum] lege ich bei."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": [
+   "Fotos des Schadens (3 Stück)"
+  ]
+ }
+}

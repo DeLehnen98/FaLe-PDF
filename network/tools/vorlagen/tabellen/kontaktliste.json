@@ -1,0 +1,96 @@
+{
+ "id": "kontaktliste",
+ "slug": "kontaktliste",
+ "cat": "Zuhause",
+ "name": "Kontaktliste",
+ "short": "Adressen, Telefon, E-Mail und Geburtstage mit Filter",
+ "desc": "Kontaktliste als Excel-Vorlage (XLSX): Adressen, Telefonnummern, E-Mails und Geburtstage mit Gruppen und Filter – anstehende Geburtstage werden grün markiert.",
+ "search": "",
+ "intro": "Eine Adressliste für Familie, Freunde, Verein oder Nachbarschaft. Mit dem Filter in der Kopfzeile findest du schnell eine Gruppe; Alter und nächster Geburtstag rechnen sich aus dem Geburtsdatum.",
+ "uses": [
+  "Telefonliste für Verein oder Elternabend",
+  "Adressen für Weihnachtskarten sammeln",
+  "Geburtstage nicht mehr vergessen"
+ ],
+ "cols": [
+  [
+   "Vorname",
+   "Vorname der Person – oder der Name einer Praxis oder Firma."
+  ],
+  [
+   "Nachname",
+   "Nachname."
+  ],
+  [
+   "Gruppe",
+   "Familie, Freunde, Arbeit … aus der Auswahlliste."
+  ],
+  [
+   "Telefon",
+   "Als Text gespeichert, damit führende Nullen bleiben."
+  ],
+  [
+   "E-Mail",
+   "Als Link – ein Tipp öffnet das Mailprogramm."
+  ],
+  [
+   "Straße",
+   "Straße und Hausnummer."
+  ],
+  [
+   "PLZ",
+   "Postleitzahl, fünfstellig mit führender Null."
+  ],
+  [
+   "Ort",
+   "Wohnort."
+  ],
+  [
+   "Geburtstag",
+   "Geburtsdatum, falls bekannt."
+  ],
+  [
+   "Alter",
+   "DATEDIF rechnet die vollen Jahre bis heute."
+  ],
+  [
+   "Nächster Geb.",
+   "Der nächste Geburtstag ab heute – liegt er dieses Jahr schon hinter dir, wird das nächste Jahr genommen. Grün, wenn er in den nächsten 14 Tagen ist."
+  ],
+  [
+   "Notiz",
+   "Freies Feld."
+  ]
+ ],
+ "tips": [
+  "Bewahr die Liste sicher auf und gib sie nur an Leute weiter, die die Daten brauchen – auch private Listen enthalten personenbezogene Daten."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich die Liste ins Handy übernehmen?",
+   "a": "Speicher die Kontakte als CSV. Viele Adressbücher können CSV importieren; die Spalten musst du beim Import meist einmal zuordnen."
+  }
+ ],
+ "related": [
+  "geburtstagskalender",
+  "mitgliederliste",
+  "kundenliste"
+ ],
+ "en": {
+  "slug": "contact-list",
+  "name": "Contact list",
+  "short": "Addresses, phone, e-mail and birthdays with filters",
+  "desc": "Contact list spreadsheet (XLSX): addresses, phone numbers, e-mails and birthdays with groups and filters – upcoming birthdays are highlighted in green.",
+  "intro": "An address list for family, friends, clubs or neighbours. Filter by group in the header; age and next birthday are calculated from the date of birth.",
+  "inside": [
+   "Groups with a drop-down list",
+   "Phone numbers kept as text",
+   "Age (DATEDIF) and next birthday",
+   "Birthdays in the next 14 days in green"
+  ],
+  "uses": [
+   "Club phone lists",
+   "Christmas card addresses"
+  ]
+ }
+}

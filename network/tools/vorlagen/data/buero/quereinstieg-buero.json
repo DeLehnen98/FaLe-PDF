@@ -1,0 +1,208 @@
+{
+ "id": "quereinstieg-buero",
+ "field": "buero",
+ "name": "Quereinstieg ins Büro",
+ "search": "quereinstieg büro bürokraft ohne ausbildung quereinsteiger verwaltung bürojob wechsel aus pflege handwerk gastronomie",
+ "short": "Vom Handwerk, Handel oder der Pflege an den Schreibtisch.",
+ "desc": "Quereinstieg ins Büro: Muster-Anschreiben für Friseurin, Koch und Pflegekraft auf dem Weg in die Sachbearbeitung, mit Lebenslauf und Tipps zu übertragbaren Fähigkeiten.",
+ "intro": "Viele wechseln aus körperlich anstrengenden Berufen ins Büro. Ohne kaufmännische Ausbildung musst du zeigen, was du trotzdem kannst: Termine planen, Bestellungen, Kasse, Dokumentation, Kundengespräche. Ein Kurs für Büroprogramme macht die Bewerbung deutlich stärker.",
+ "lookFor": [
+  "Übertragbare Fähigkeiten aus dem alten Beruf",
+  "Sicherer Umgang mit Büroprogrammen",
+  "Klare Begründung für den Wechsel",
+  "Lernbereitschaft",
+  "Branchenkenntnis als Vorteil"
+ ],
+ "letters": [
+  {
+   "label": "Friseurmeisterin wechselt in die Innung",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiterin Mitgliederbetreuung",
+   "to": {
+    "org": "Handwerksverband Region Trier, Betriebsberatung",
+    "sal": "m",
+    "contact": "Thielen",
+    "street": "Gewerbeweg 18",
+    "city": "54292 Trier"
+   },
+   "body": [
+    "zwölf Jahre Friseurhandwerk, davon fünf als Meisterin mit eigenem Salon, haben mir gezeigt, wie viel ein kleiner Betrieb nebenbei schaffen muss: Steuern, Ausbildungsverträge, Hygienevorgaben, Personal. Ich habe den Salon im Frühjahr aus gesundheitlichen Gründen verkauft und möchte jetzt anderen Betrieben helfen, das alles zu bewältigen.",
+    "Kaufmännisch bringe ich mit, was die Meisterprüfung und der eigene Betrieb verlangt haben: Buchhaltung in Grundzügen, Personalplanung, Verhandlungen mit Lieferanten und Vermietern. Die Büroprogramme habe ich mir in einem Kurs noch einmal sauber beigebracht.",
+    "Ich kenne die Sorgen der Mitglieder aus eigener Erfahrung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Meisterbrief",
+    "Kursbescheinigung"
+   ]
+  },
+  {
+   "label": "Koch wechselt in den Einkauf eines Caterers",
+   "level": "quereinstieg",
+   "position": "Mitarbeiter Einkauf und Disposition",
+   "to": {
+    "org": "Moselcatering GmbH",
+    "sal": "f",
+    "contact": "Becker",
+    "street": "Zurmaiener Straße 100",
+    "city": "54292 Trier"
+   },
+   "body": [
+    "in meiner Küche habe ich fünf Jahre lang den Einkauf gemacht: Wochenbestellungen bei zwölf Lieferanten, Preisvergleiche, Warenannahme und Inventur. Kochen möchte ich nach 15 Jahren am Herd nicht mehr täglich, aber mit Lebensmitteln arbeiten schon.",
+    "Bei einem Caterer zählt, dass Mengen stimmen. Ich weiß, wie viel Rinderbrust man für 200 Gäste braucht und welcher Großhändler freitags gern zu spät kommt. Mit Tabellen und Warenwirtschaft habe ich in meinem letzten Betrieb täglich gearbeitet."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief Koch",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Jens Thiel",
+    "Saarstraße 30",
+    "54290 Trier"
+   ]
+  },
+  {
+   "label": "Pflegefachkraft wechselt zur Krankenkasse",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiterin Pflegeversicherung",
+   "to": {
+    "org": "Gesundheitskasse Rheinland",
+    "sal": "none",
+    "street": "Ostallee 20",
+    "city": "54290 Trier"
+   },
+   "body": [
+    "wie ein Antrag auf einen Pflegegrad aus Sicht der Familie aussieht, weiß ich aus zehn Jahren ambulanter Pflege sehr genau. Ich möchte jetzt auf die andere Seite wechseln und Anträge bearbeiten, Versicherte beraten und Leistungen prüfen.",
+    "Aus der Pflege bringe ich Fachwissen über Pflegegrade, Hilfsmittel und Verordnungen mit. Ich habe Angehörige beraten, Pflegedokumentation geführt und mit Kassen telefoniert, oft mit Geduld auf beiden Seiten. Seit einem Jahr arbeite ich nur noch in Teilzeit in der Pflege und habe in der freien Zeit einen Kurs Sozialversicherungsrecht absolviert."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Kursbescheinigung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Monika Schuler",
+    "Paulinstraße 12",
+    "54292 Trier"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 4,
+  "name": "Nicole Hansen",
+  "title": "Friseurmeisterin",
+  "street": "Saarstraße 50",
+  "city": "54290 Trier",
+  "exp": [
+   [
+    "2020",
+    "2026",
+    "Inhaberin",
+    "Salon Haarzeit",
+    "Trier",
+    "- Führung von vier Mitarbeitenden, Ausbildung\n- Buchhaltung, Einkauf, Personalplanung"
+   ],
+   [
+    "2014",
+    "2020",
+    "Friseurin",
+    "Salon Mosel",
+    "Trier",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2019",
+    "Meisterprüfung Friseurhandwerk",
+    "Handwerkskammer Trier",
+    "Trier",
+    ""
+   ],
+   [
+    "2011",
+    "2014",
+    "Ausbildung Friseurin",
+    "Salon Mosel",
+    "Trier",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Büroprogramme Kompaktkurs",
+    "Volkshochschule Trier",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenkontakt",
+    5
+   ],
+   [
+    "Büroprogramme",
+    3
+   ],
+   [
+    "Personalplanung",
+    4
+   ],
+   [
+    "Buchhaltung (Grundlagen)",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Laufen, Kochen"
+ },
+ "do": [
+  "Übertragbare Fähigkeiten konkret benennen.",
+  "Branchenwissen als Vorteil darstellen.",
+  "Büro-Kurs oder Zertifikat beilegen."
+ ],
+ "dont": [
+  "„Ich wollte schon immer ins Büro.“",
+  "Den alten Beruf abwerten.",
+  "Keine Belege für PC-Kenntnisse."
+ ],
+ "questions": [
+  "Warum möchten Sie ins Büro wechseln?",
+  "Was aus Ihrem alten Beruf hilft Ihnen hier?",
+  "Wie sicher sind Sie am PC?",
+  "Wie gehen Sie mit wenig Bewegung im Arbeitsalltag um?"
+ ],
+ "faq": [
+  {
+   "q": "Geht Büro ohne kaufmännische Ausbildung?",
+   "a": "Ja, vor allem dort, wo dein Fachwissen gebraucht wird: Kasse und Pflegeversicherung für Pflegekräfte, Einkauf für Köche, Kammern und Verbände für Handwerker. Ein Kurs für Büroprogramme hilft beim Einstieg."
+  }
+ ],
+ "related": [
+  "umschulung",
+  "sachbearbeiter",
+  "wiedereinstieg-elternzeit",
+  "quereinstieg-oeffentlicher-dienst"
+ ]
+}

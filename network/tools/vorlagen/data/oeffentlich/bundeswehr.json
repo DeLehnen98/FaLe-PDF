@@ -1,0 +1,158 @@
+{
+ "id": "bundeswehr",
+ "field": "oeffentlich",
+ "name": "Bundeswehr (Soldat/in auf Zeit, zivile Laufbahn)",
+ "search": "bundeswehr soldat auf zeit feldwebel offizier freiwilliger wehrdienst zivile laufbahn karrierecenter motivationsschreiben bewerbung",
+ "short": "Militärische oder zivile Laufbahn – Motivationsschreiben und Lebenslauf.",
+ "desc": "Bewerbung bei der Bundeswehr: Muster-Motivationsschreiben für die Feldwebellaufbahn mit IT-Bezug und für eine zivile Stelle in der Verwaltung, mit Lebenslauf und Tipps.",
+ "intro": "Die Bundeswehr bietet militärische Laufbahnen (Mannschaften, Feldwebel, Offiziere, freiwilliger Wehrdienst) und zivile Stellen als Beamte oder Tarifbeschäftigte. Für militärische Laufbahnen bewirbst du dich über die Karriereberatung bzw. das Bewerbungsportal, mit anschließendem Eignungsverfahren. Zivile Stellen werden einzeln ausgeschrieben.",
+ "lookFor": [
+  "Schulabschluss und ggf. Berufsausbildung je nach Laufbahn",
+  "Eignung im Auswahlverfahren",
+  "Sportliche Grundfitness",
+  "Bereitschaft zu Versetzungen und Einsätzen (militärisch)",
+  "Einwandfreies Führungszeugnis, Sicherheitsüberprüfung je nach Stelle"
+ ],
+ "letters": [
+  {
+   "label": "Fachinformatiker für die Feldwebellaufbahn",
+   "level": "erfahren",
+   "position": "Feldwebel IT (Soldat auf Zeit)",
+   "to": {
+    "org": "Karrierecenter der Bundeswehr – Bewerbungsstelle",
+    "sal": "none",
+    "street": "Kasernenstraße 1",
+    "city": "30173 Hannover"
+   },
+   "body": [
+    "zwei Jahre Systemhaus nach der Ausbildung zum Fachinformatiker für Systemintegration liegen hinter mir. Ich möchte meine Fähigkeiten dort einsetzen, wo Netzwerke und Kommunikation unter schwierigen Bedingungen funktionieren müssen, und mich für die Feldwebellaufbahn im IT-Bereich bewerben.",
+    "In der Beratung beim Karrierecenter habe ich erfahren, dass meine Ausbildung anerkannt werden kann und welche Verpflichtungszeit üblich ist. Mir ist bewusst, dass zum Beruf Grundausbildung, Übungen und mögliche Auslandseinsätze gehören. Ich bin sportlich, war Kapitän meiner Fußballmannschaft und arbeite gern im Team."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Fachinformatiker",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Verwaltungsangestellte für eine zivile Dienststelle",
+   "level": "erfahren",
+   "position": "Sachbearbeiterin Personalverwaltung (zivil, TVöD)",
+   "to": {
+    "org": "Bundeswehrdienstleistungszentrum – Personal",
+    "sal": "m",
+    "contact": "Wagner",
+    "street": "Am Fliegerhorst 3",
+    "city": "31515 Wunstorf"
+   },
+   "body": [
+    "als Verwaltungsfachangestellte arbeite ich seit sechs Jahren in einer Stadtverwaltung und bearbeite dort Personalangelegenheiten. Ihre Ausschreibung für die Personalverwaltung einer Dienststelle in Wunstorf passt fachlich genau und liegt zehn Minuten von meinem Wohnort entfernt.",
+    "Ich kenne Tarifrecht, Beihilfe und Personalakten aus dem kommunalen Dienst; die Besonderheiten des Bundes und der militärischen Dienststellen würde ich mir erarbeiten. Eine Sicherheitsüberprüfung ist für mich kein Problem."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis Verwaltungsfachangestellte",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Nicole Sander",
+    "Hindenburgstraße 20",
+    "31515 Wunstorf"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "compact",
+  "accent": 5,
+  "name": "Marvin Seidel",
+  "title": "Fachinformatiker für Systemintegration",
+  "street": "Lister Meile 40",
+  "city": "30161 Hannover",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Fachinformatiker Systemintegration",
+    "Systemhaus Leine",
+    "Hannover",
+    "- Netzwerke und Server für Mittelstandskunden\n- Störungsbehebung, Rufbereitschaft"
+   ]
+  ],
+  "edu": [
+   [
+    "2021",
+    "2024",
+    "Ausbildung Fachinformatiker für Systemintegration",
+    "Systemhaus Leine",
+    "Hannover",
+    ""
+   ],
+   [
+    "2014",
+    "2021",
+    "Fachhochschulreife",
+    "BBS Me",
+    "Hannover",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Netzwerke",
+    4
+   ],
+   [
+    "Server",
+    4
+   ],
+   [
+    "Fehlersuche",
+    5
+   ],
+   [
+    "Teamarbeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Fußball, Laufen"
+ },
+ "do": [
+  "Laufbahn bzw. Stelle genau nennen.",
+  "Beratungsgespräch erwähnen, wenn es stattfand.",
+  "Bereitschaft zu Ausbildung, Versetzung und Einsatz realistisch ansprechen."
+ ],
+ "dont": [
+  "Abenteuerlust als Hauptmotiv.",
+  "Unklare Laufbahn.",
+  "Gesundheitliche Einschränkungen verschweigen."
+ ],
+ "questions": [
+  "Warum möchten Sie zur Bundeswehr?",
+  "Wie stehen Sie zu Auslandseinsätzen?",
+  "Welche Laufbahn passt zu Ihnen?",
+  "Wie gehen Sie mit Befehl und Gehorsam um?"
+ ],
+ "faq": [
+  {
+   "q": "Wie bewerbe ich mich bei der Bundeswehr?",
+   "a": "Für militärische Laufbahnen über die Karriereberatung bzw. das Online-Portal; danach folgt ein Eignungsverfahren. Zivile Stellen werden einzeln ausgeschrieben, dort bewirbst du dich wie bei anderen Behörden."
+  }
+ ],
+ "related": [
+  "polizei",
+  "fachinformatiker-systemintegration",
+  "verwaltungsfachangestellte",
+  "quereinstieg-oeffentlicher-dienst"
+ ]
+}

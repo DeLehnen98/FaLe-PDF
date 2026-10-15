@@ -1,0 +1,65 @@
+{
+ "id": "break-even",
+ "slug": "break-even",
+ "cat": "Business",
+ "name": "Break-even-Rechner",
+ "short": "Gewinnschwelle, Deckungsbeitrag und Gewinn-Verlust-Tabelle",
+ "desc": "Break-even-Rechner als Excel-Vorlage (XLSX): Fixkosten, Preis und variable Kosten eintragen – Deckungsbeitrag, Gewinnschwelle und Gewinn je Menge mit Diagramm.",
+ "search": "gewinnschwelle",
+ "intro": "Ab wie vielen verkauften Stück trägt sich ein Produkt? Der Rechner ermittelt den Deckungsbeitrag pro Stück und daraus die Gewinnschwelle. Die Tabelle rechts zeigt Umsatz, Kosten und Gewinn für verschiedene Mengen, das Diagramm den Schnittpunkt.",
+ "uses": [
+  "Eine Geschäftsidee grob durchrechnen",
+  "Preise und Kosten eines Produkts abwägen",
+  "Ein Ziel für die Verkaufsmenge festlegen"
+ ],
+ "cols": [
+  [
+   "Menge",
+   "Verkaufte Stück pro Monat, von 0 an in der eingetragenen Schrittweite."
+  ],
+  [
+   "Umsatz",
+   "Menge mal Verkaufspreis."
+  ],
+  [
+   "Gesamtkosten",
+   "Fixkosten plus Menge mal variable Kosten."
+  ],
+  [
+   "Gewinn / Verlust",
+   "Umsatz minus Gesamtkosten – rot im Verlust, grün im Gewinn."
+  ]
+ ],
+ "tips": [
+  "Deckungsbeitrag = Preis minus variable Kosten. Break-even-Menge = Fixkosten ÷ Deckungsbeitrag, aufgerundet auf ganze Stück.",
+  "Der Sicherheitsabstand sagt, um wie viel Prozent die geplante Menge sinken darf, bevor du Verlust machst."
+ ],
+ "faq": [
+  {
+   "q": "Was zählt zu den Fixkosten?",
+   "a": "Alles, was unabhängig von der Menge anfällt: Miete, Versicherungen, Software, dein eigenes Gehalt, Kreditraten. Variable Kosten wachsen mit jedem Stück: Material, Verpackung, Versand, Zahlungsgebühren."
+  }
+ ],
+ "related": [
+  "preiskalkulation",
+  "angebotsvergleich",
+  "euer"
+ ],
+ "en": {
+  "slug": "break-even-calculator",
+  "name": "Break-even calculator",
+  "short": "Break-even point, contribution margin and profit table",
+  "desc": "Break-even calculator spreadsheet (XLSX): enter fixed costs, price and variable costs – contribution margin, break-even point and profit per quantity with a chart.",
+  "intro": "How many units must you sell before a product pays for itself? The calculator works out the contribution margin per unit and the break-even point; the table and chart show revenue, cost and profit for different quantities.",
+  "inside": [
+   "Contribution margin and ratio",
+   "Break-even quantity and revenue",
+   "Profit at the planned quantity and safety margin",
+   "Revenue vs. cost chart"
+  ],
+  "uses": [
+   "Testing a business idea",
+   "Setting a sales target"
+  ]
+ }
+}

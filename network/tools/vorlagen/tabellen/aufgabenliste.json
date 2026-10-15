@@ -1,0 +1,80 @@
+{
+ "id": "aufgabenliste",
+ "slug": "aufgabenliste",
+ "cat": "Arbeit",
+ "name": "Aufgabenliste",
+ "short": "Aufgaben mit Priorität, Fälligkeit und Status",
+ "desc": "Aufgabenliste als Excel-Vorlage (XLSX): To-dos mit Priorität, Fälligkeit, Status und Verantwortlichen – Überfälliges wird rot, Erledigtes durchgestrichen.",
+ "search": "",
+ "intro": "Eine einfache To-do-Liste für dich oder ein kleines Team. Aufgaben mit hoher Priorität sind gelb, überfällige rot, erledigte grau und durchgestrichen. Rechts siehst du, wie viel schon geschafft ist.",
+ "uses": [
+  "Aufgaben im Team verteilen",
+  "Den Überblick über Fristen behalten",
+  "Eine wöchentliche Besprechung vorbereiten"
+ ],
+ "cols": [
+  [
+   "Aufgabe",
+   "Was zu tun ist."
+  ],
+  [
+   "Priorität",
+   "Hoch, Mittel oder Niedrig – „Hoch“ wird gelb."
+  ],
+  [
+   "Fällig am",
+   "Bis wann."
+  ],
+  [
+   "Status",
+   "Offen, In Arbeit, Wartet oder Erledigt."
+  ],
+  [
+   "Verantwortlich",
+   "Wer zuständig ist."
+  ],
+  [
+   "Erledigt am",
+   "Wann fertig geworden."
+  ],
+  [
+   "Notiz",
+   "Freies Feld."
+  ],
+  [
+   "Überblick",
+   "Zählt offene, überfällige und erledigte Aufgaben mit ZÄHLENWENNS; „Fortschritt“ ist erledigt geteilt durch alle."
+  ]
+ ],
+ "tips": [
+  "Sortier die Liste über den Filter nach „Fällig am“, dann steht das Dringende oben."
+ ],
+ "faq": [
+  {
+   "q": "Wie markiere ich eine Aufgabe als erledigt?",
+   "a": "Setz den Status auf „Erledigt“. Die Zeile wird grau und durchgestrichen und zählt im Fortschritt mit."
+  }
+ ],
+ "related": [
+  "projektplan",
+  "putzplan",
+  "kundenliste"
+ ],
+ "en": {
+  "slug": "task-list",
+  "name": "Task list",
+  "short": "Tasks with priority, due date and status",
+  "desc": "Task list spreadsheet (XLSX): to-dos with priority, due date, status and owner – overdue tasks turn red and completed ones are struck through.",
+  "intro": "A simple to-do list for you or a small team. High priority is yellow, overdue is red, done is grey and struck through; the summary shows your progress.",
+  "inside": [
+   "Priority and status drop-downs",
+   "Overdue highlighting by formula",
+   "Open / overdue / done counters",
+   "Progress bar"
+  ],
+  "uses": [
+   "Small teams",
+   "Keeping track of deadlines"
+  ]
+ }
+}

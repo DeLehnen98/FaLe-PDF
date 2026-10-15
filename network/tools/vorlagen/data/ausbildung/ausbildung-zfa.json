@@ -1,0 +1,195 @@
+{
+ "id": "ausbildung-zfa",
+ "field": "ausbildung",
+ "name": "Ausbildung Zahnmedizinische Fachangestellte (ZFA)",
+ "search": "ausbildung zfa zahnmedizinische fachangestellte zahnarzthelferin zahnarztpraxis azubi bewerbung prophylaxe",
+ "short": "Praxisalltag beim Zahnarzt – Assistenz, Hygiene, Empfang.",
+ "desc": "Bewerbung für die Ausbildung zur Zahnmedizinischen Fachangestellten (ZFA): Muster-Anschreiben für Schülerin, Abiturientin und Wechsler, mit Lebenslauf und Tipps.",
+ "intro": "ZFA assistieren am Behandlungsstuhl, bereiten Instrumente auf, kümmern sich um Hygiene, Termine und Abrechnung. Praxen suchen Azubis, die Patienten beruhigen können, sauber arbeiten und keine Angst vor Blut oder Speichel haben. Ein Praktikum zeigt dir schnell, ob es passt.",
+ "lookFor": [
+  "Mittlerer Schulabschluss, oft auch Hauptschulabschluss möglich",
+  "Freundlicher Umgang mit ängstlichen Patienten",
+  "Sorgfalt bei Hygiene und Dokumentation",
+  "Teamfähigkeit im kleinen Praxisteam",
+  "Interesse an Medizin und Abläufen"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin nach Praktikum",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Zahnmedizinischen Fachangestellten",
+   "to": {
+    "org": "Zahnarztpraxis Dr. Nguyen",
+    "sal": "f",
+    "contact": "Nguyen",
+    "street": "Hauptstraße 63",
+    "city": "69117 Heidelberg"
+   },
+   "body": [
+    "beim Zahnarzt hatte ich als Kind große Angst. Unsere ZFA hat mir damals jedes Instrument erklärt, bevor es in meinen Mund kam. Das habe ich nie vergessen, und genau so möchte ich später mit Patienten umgehen.",
+    "Im Herbst habe ich zwei Wochen in einer Praxis in Wieblingen hospitiert, durfte Trays vorbereiten, beim Sterilisieren zusehen und am Empfang Termine eintragen, und an einem Nachmittag kam ein Notfallpatient mit stark blutender Lippe herein. Das Team blieb ruhig. Mich hat das beeindruckt.",
+    "Die Realschule beende ich in diesem Sommer, ab August hätte ich Zeit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Wunsch nach Praxis vor dem Studium",
+   "level": "ausbildung",
+   "position": "Auszubildende zur ZFA",
+   "to": {
+    "org": "Praxis für Kieferorthopädie Weiß",
+    "sal": "m",
+    "contact": "Weiß",
+    "street": "Bergheimer Straße 120",
+    "city": "69115 Heidelberg"
+   },
+   "body": [
+    "für ein Zahnmedizinstudium reicht meine Abiturnote im Moment nicht. Statt zu warten, möchte ich eine Ausbildung machen, die mich fachlich weiterbringt und die ich auch ohne Studium gern ausüben würde.",
+    "In Biologie und Chemie hatte ich zuletzt 13 und 12 Punkte. Kieferorthopädie interessiert mich besonders, weil man Patienten oft über Jahre begleitet. Bei Ihnen sind das viele Jugendliche, und mit denen kann ich gut: Ich trainiere seit drei Jahren eine Mädchenmannschaft im Handball.",
+    "Ich kann ab September anfangen und bin flexibel bei Spätterminen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Trainerlizenz (Kopie)"
+   ],
+   "from": [
+    "Ronja Meister",
+    "Rohrbacher Straße 45",
+    "69115 Heidelberg"
+   ]
+  },
+  {
+   "label": "Wechsel aus der Gastronomie",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Zahnmedizinischen Fachangestellten",
+   "to": {
+    "org": "Gemeinschaftspraxis Neckarblick",
+    "sal": "none",
+    "street": "Ladenburger Straße 9",
+    "city": "69120 Heidelberg"
+   },
+   "body": [
+    "Männer sind in Zahnarztpraxen noch selten, als Azubi umso mehr. Ich bin 21, habe drei Jahre im Service eines Hotels gearbeitet und weiß inzwischen, dass ich lieber mit Menschen in einem medizinischen Umfeld zu tun haben möchte.",
+    "Aus dem Hotel kenne ich Stress, Hygienevorschriften in der Küche und Gäste, die schlechte Laune haben. Bei meinem Probetag in einer Praxis in Mannheim habe ich gemerkt, dass mich Absaugen und Instrumentenkunde mehr interessieren als jeder Cocktail.",
+    "Meinen Realschulabschluss habe ich mit 2,4 gemacht. Wann darf ich mich vorstellen?"
+   ],
+   "att": [
+    "Lebenslauf",
+    "Realschulzeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Adrian Kaya",
+    "Brückenstraße 3",
+    "69120 Heidelberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 1,
+  "name": "Thi Hoa Pham",
+  "title": "Schülerin",
+  "street": "Eppelheimer Straße 30",
+  "city": "69115 Heidelberg",
+  "exp": [
+   [
+    "10/2025",
+    "10/2025",
+    "Hospitation (2 Wochen)",
+    "Zahnarztpraxis am Wieblinger Weg",
+    "Heidelberg",
+    "- Trays vorbereiten, Aufbereitung beobachten\n- Empfang und Terminvergabe"
+   ],
+   [
+    "2024",
+    "",
+    "Nachhilfe Mathe (privat)",
+    "",
+    "Heidelberg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Theodor-Heuss-Realschule",
+    "Heidelberg",
+    "Wahlpflichtfach Alltagskultur, Ernährung, Soziales"
+   ]
+  ],
+  "skills": [
+   [
+    "Sorgfalt",
+    4
+   ],
+   [
+    "Umgang mit Patienten",
+    4
+   ],
+   [
+    "Terminplanung",
+    3
+   ],
+   [
+    "PC-Kenntnisse",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Vietnamesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Zeichnen, Badminton"
+ },
+ "do": [
+  "Praktikum oder Hospitation erwähnen.",
+  "Zeigen, dass du mit ängstlichen Menschen umgehen kannst.",
+  "Hygiene und Sorgfalt mit einem Beispiel belegen."
+ ],
+ "dont": [
+  "Sagen, du willst „irgendwas mit Medizin“.",
+  "Die Praxis mit „Sehr geehrte Damen und Herren“ anschreiben, obwohl der Name auf dem Schild steht.",
+  "Ekel vor Speichel verschweigen und erst im Praktikum merken."
+ ],
+ "questions": [
+  "Warum möchten Sie in eine Zahnarztpraxis?",
+  "Wie beruhigen Sie ein Kind, das Angst hat?",
+  "Was gehört für Sie zu guter Hygiene?",
+  "Können Sie sich vorstellen, am Empfang zu arbeiten?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "ZFA oder MFA – was ist der Unterschied?",
+   "a": "ZFA arbeiten in Zahnarzt- und Kieferorthopädiepraxen, MFA in Arztpraxen. Beide Ausbildungen dauern in der Regel drei Jahre, die Inhalte unterscheiden sich vor allem bei Assistenz und Abrechnung."
+  }
+ ],
+ "related": [
+  "zahnmedizinische-fachangestellte",
+  "ausbildung-mfa",
+  "medizinische-fachangestellte",
+  "zahntechniker"
+ ]
+}

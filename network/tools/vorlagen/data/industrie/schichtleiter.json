@@ -1,0 +1,171 @@
+{
+ "id": "schichtleiter",
+ "field": "industrie",
+ "name": "Schichtleiter/in Produktion",
+ "search": "schichtleiter schichtleiterin schichtführer produktion meister vorarbeiter fertigung industrie führung bewerbung",
+ "short": "Eine Schicht in der Produktion führen – Menschen, Anlagen, Kennzahlen.",
+ "desc": "Bewerbung als Schichtleiter/in in der Produktion: Muster-Anschreiben für Maschinenführer mit Aufstiegswunsch und Industriemeisterin, mit Lebenslauf und Fragen.",
+ "intro": "Schichtleiter sind verantwortlich für Personal, Anlagen, Qualität und Ausbringung ihrer Schicht. Sie verteilen Arbeit, reagieren auf Störungen und führen Gespräche. In der Bewerbung zählen Teamgröße, Kennzahlen und wie du mit Konflikten und Ausfällen umgehst.",
+ "lookFor": [
+  "Technische Ausbildung, oft Meister oder Techniker",
+  "Führungserfahrung (Vorarbeit, Vertretung)",
+  "Kennzahlen: Ausbringung, Ausschuss, Stillstand",
+  "Arbeitssicherheit",
+  "Wechselschicht"
+ ],
+ "letters": [
+  {
+   "label": "Maschinenführer wird Schichtleiter",
+   "level": "erfahren",
+   "position": "Schichtleiter Extrusion",
+   "to": {
+    "org": "Folienwerk Westerwald GmbH",
+    "sal": "f",
+    "contact": "Schmidt",
+    "street": "Industriestraße 40",
+    "city": "56410 Montabaur"
+   },
+   "body": [
+    "wenn unser Schichtleiter Urlaub hat, übernehme ich seit zwei Jahren die Schicht mit elf Leuten an vier Extrusionslinien. In dieser Zeit lag unsere Ausschussquote stabil unter zwei Prozent, und es gab keinen Arbeitsunfall. Ich möchte diese Aufgabe jetzt dauerhaft übernehmen.",
+    "Gelernt habe ich Verfahrensmechaniker für Kunststofftechnik, seit neun Jahren arbeite ich an Extrusionsanlagen. Den Industriemeister mache ich berufsbegleitend und bin im zweiten Jahr. Ihr Werk erweitert gerade die Produktion; in so einer Phase ist eine stabile Schichtleitung wichtig."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Anmeldung Meisterkurs",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Industriemeisterin wechselt das Unternehmen",
+   "level": "erfahren",
+   "position": "Schichtleiterin Montage",
+   "to": {
+    "org": "Fahrzeugtechnik Lahn AG",
+    "sal": "none",
+    "street": "Werkstraße 1",
+    "city": "35576 Wetzlar"
+   },
+   "body": [
+    "sechs Jahre führe ich jetzt eine Schicht in der Montage mit 25 Mitarbeitenden, darunter viele Leiharbeiter und Menschen mit wenig Deutsch. Ich habe gelernt, Arbeitsanweisungen mit Bildern zu erklären, und unsere Fehlerquote in der Endkontrolle ist dadurch deutlich gesunken.",
+    "Als Industriemeisterin Metall bringe ich die Grundlagen in Arbeitsorganisation, Personalführung und Arbeitssicherheit mit. Ich möchte zu einem Arbeitgeber wechseln, der mehr in Weiterbildung investiert, und Ihr Ausbildungszentrum hat einen guten Ruf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Meisterbrief",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Sandra Köhler",
+    "Bahnhofstraße 22",
+    "35578 Wetzlar"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 5,
+  "name": "Jürgen Becker",
+  "title": "Verfahrensmechaniker, stellv. Schichtleiter",
+  "street": "Koblenzer Straße 30",
+  "city": "56410 Montabaur",
+  "exp": [
+   [
+    "2017",
+    "",
+    "Maschinenführer, seit 2024 stellv. Schichtleiter",
+    "Kunststofffolien Westerwald",
+    "Ransbach-Baumbach",
+    "- Vertretung der Schichtleitung (11 Personen, 4 Linien)\n- Ausschuss unter 2 Prozent\n- Störungsbehebung, Rüsten"
+   ],
+   [
+    "2014",
+    "2017",
+    "Verfahrensmechaniker",
+    "Kunststofftechnik Limburg",
+    "Limburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2025",
+    "",
+    "Industriemeister Kunststoff und Kautschuk (berufsbegleitend)",
+    "IHK Koblenz",
+    "Koblenz",
+    ""
+   ],
+   [
+    "2011",
+    "2014",
+    "Ausbildung Verfahrensmechaniker für Kunststoff- und Kautschuktechnik",
+    "Kunststofftechnik Limburg",
+    "Limburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Extrusion",
+    5
+   ],
+   [
+    "Schichtorganisation",
+    4
+   ],
+   [
+    "Arbeitssicherheit",
+    4
+   ],
+   [
+    "Kennzahlen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ],
+   [
+    "Russisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fußballtrainer, Wandern"
+ },
+ "do": [
+  "Teamgröße und Kennzahlen nennen.",
+  "Ein Beispiel für Problemlösung in der Schicht.",
+  "Weiterbildungen (Meister, Techniker) angeben."
+ ],
+ "dont": [
+  "Führung als Kontrolle beschreiben.",
+  "Unfälle verschweigen, wenn danach gefragt wird.",
+  "Frühere Kollegen kritisieren."
+ ],
+ "questions": [
+  "Eine Linie steht und zwei Leute fehlen – was tun Sie?",
+  "Wie sprechen Sie einen Mitarbeiter an, der Sicherheitsregeln missachtet?",
+  "Welche Kennzahlen verfolgen Sie?",
+  "Wie übergeben Sie an die nächste Schicht?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich einen Meister?",
+   "a": "Viele Unternehmen wünschen ihn, aber erfahrene Facharbeiter mit Führungserfahrung werden oft auch ohne Meister Schichtleiter. Eine laufende Weiterbildung zeigt, dass du dich entwickelst."
+  }
+ ],
+ "related": [
+  "maschinen-anlagenfuehrer",
+  "teamleiter",
+  "industriemechaniker",
+  "qualitaetspruefer"
+ ]
+}

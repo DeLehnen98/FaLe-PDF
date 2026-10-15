@@ -1,0 +1,168 @@
+{
+ "id": "ausbildung-friseur",
+ "field": "ausbildung",
+ "name": "Ausbildung Friseur/in",
+ "search": "ausbildung friseur friseurin azubi salon haare styling handwerk bewerbung schülerin",
+ "short": "Salon, Schnitt, Farbe – Ausbildung für Leute mit Gespür für Menschen.",
+ "desc": "Bewerbung für die Ausbildung zur Friseurin / zum Friseur: Muster-Anschreiben für Schülerin und Umsteiger, Lebenslauf und Tipps zum Probetag im Salon.",
+ "intro": "Im Salon zählen Fingerspitzengefühl, gute Laune und die Fähigkeit, Kundinnen und Kunden zuzuhören. Viele Salons laden zum Probetag ein: Haare waschen, fegen, zuschauen, Kaffee anbieten. Zeig in der Bewerbung, dass du weißt, worauf du dich einlässt.",
+ "lookFor": [
+  "Freundliches Auftreten und Kontaktfreude",
+  "Geschickte Hände",
+  "Eigene Erfahrungen: Freundinnen frisieren, Flechten, Videos nachmachen",
+  "Stehen den ganzen Tag macht dir nichts aus",
+  "Gepflegtes Äußeres"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin, die Freundinnen frisiert",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Friseurin",
+   "to": {
+    "org": "Salon Haarwerk",
+    "sal": "f",
+    "contact": "Petrović",
+    "street": "Marktplatz 7",
+    "city": "74072 Heilbronn"
+   },
+   "body": [
+    "vor dem Abschlussball haben vier Freundinnen bei mir im Zimmer gesessen, und ich habe ihnen Hochsteckfrisuren gemacht. Zwei Stunden, viel Haarspray und am Ende vier glückliche Gesichter. Spätestens da war mir klar, dass ich Friseurin werden will.",
+    "Im Juli bin ich mit der Realschule fertig. Ihr Salon ist mir aufgefallen, weil Sie auf Ihrer Seite Vorher-nachher-Bilder von Farbkorrekturen zeigen. Farbe interessiert mich am meisten. Ich habe aber auch Respekt davor, deshalb möchte ich es richtig lernen.",
+    "An einem Probetag würde ich mich gern bei Ihnen vorstellen. Samstag passt mir auch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis"
+   ]
+  },
+  {
+   "label": "Ehemaliger Verkäufer startet mit 24 neu",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Friseur",
+   "to": {
+    "org": "Barbershop Nordstadt",
+    "sal": "m",
+    "contact": "Aydın",
+    "street": "Weststraße 54",
+    "city": "74072 Heilbronn"
+   },
+   "body": [
+    "vier Jahre Verkauf in einem Sportgeschäft haben mir gezeigt, dass ich gern mit Kunden rede. Was mir fehlt: etwas mit den Händen zu machen. Seit einem Jahr schneide ich Freunden die Haare mit der Maschine und habe mir Fades und Bartkonturen selbst beigebracht, mit Videos und viel Übung.",
+    "Ich möchte das jetzt richtig lernen, mit Gesellenbrief. Ihren Laden kenne ich als Kunde und weiß, wie viel Wert Sie auf saubere Übergänge legen. Ich bin 24, pünktlich und habe kein Problem mit Abendterminen oder Samstagen.",
+    "Wenn Sie mich ausprobieren wollen: Ich bringe gern einen Freund als Modell mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Fotos von Schnitten"
+   ],
+   "from": [
+    "Jannis Wolf",
+    "Karlstraße 8",
+    "74076 Heilbronn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 2,
+  "name": "Lina Bauer",
+  "title": "Schülerin",
+  "street": "Sülmerstraße 15",
+  "city": "74072 Heilbronn",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Aushilfe im Café (Minijob)",
+    "Café am Kiliansplatz",
+    "Heilbronn",
+    "- Service, Kasse"
+   ],
+   [
+    "03/2025",
+    "03/2025",
+    "Schülerpraktikum (1 Woche)",
+    "Friseursalon Schnittpunkt",
+    "Neckarsulm",
+    "- Haare waschen, Kundenempfang, zuschauen"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Mönchseeschule",
+    "Heilbronn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Flechten und Hochstecken",
+    4
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ],
+   [
+    "Geschickte Hände",
+    4
+   ],
+   [
+    "Sauberkeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Kroatisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Make-up, Tanzen"
+ },
+ "do": [
+  "Erzählen, was du schon frisiert hast.",
+  "Fotos anhängen, wenn du welche hast.",
+  "Zeigen, dass du Samstage und lange Tage kennst."
+ ],
+ "dont": [
+  "„Ich wollte schon immer Friseurin werden“ – lieber zeigen, warum.",
+  "Ungepflegte eigene Haare beim Vorstellungstermin.",
+  "Erst im Gespräch fragen, ob samstags gearbeitet wird."
+ ],
+ "questions": [
+  "Welche Frisur haben Sie zuletzt gemacht?",
+  "Was tun Sie, wenn eine Kundin unzufrieden ist?",
+  "Wie gehen Sie mit langem Stehen um?",
+  "Welche Trends finden Sie gerade spannend?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Wie läuft ein Probetag im Salon ab?",
+   "a": "Meist hilfst du mit: Haare waschen, fegen, Handtücher falten, Getränke anbieten. Dabei sieht der Salon, wie du mit Kunden umgehst. Komm gepflegt, freundlich und mit Fragen."
+  }
+ ],
+ "related": [
+  "friseurin",
+  "kosmetikerin",
+  "ausbildung-verkaeufer",
+  "verkaeuferin"
+ ]
+}

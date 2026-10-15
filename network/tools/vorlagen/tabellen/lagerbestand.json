@@ -1,0 +1,104 @@
+{
+ "id": "lagerbestand",
+ "slug": "lagerbestand",
+ "cat": "Business",
+ "name": "Lagerbestand mit Mindestbestand",
+ "short": "Bestand, Mindestbestand und Bestellvorschlag je Artikel",
+ "desc": "Lagerbestand-Vorlage als Excel (XLSX): Artikel mit Bestand, Mindestbestand und Bestellmenge – Nachbestellen und leere Artikel werden markiert, Lagerwert inklusive.",
+ "search": "lager bestand inventur",
+ "intro": "Ein einfaches Lager für Büro, Werkstatt, Praxis oder kleinen Shop. Sobald der Bestand eines Artikels den Mindestbestand erreicht, zeigt die Status-Spalte „Nachbestellen“ und schlägt eine Menge vor. Leere Artikel werden rot.",
+ "uses": [
+  "Verbrauchsmaterial im Büro oder in der Praxis",
+  "Ersatzteile und Kleinteile in der Werkstatt",
+  "Waren eines kleinen Online-Shops"
+ ],
+ "cols": [
+  [
+   "Art.-Nr.",
+   "Eigene Artikelnummer – hilft beim Bestellen."
+  ],
+  [
+   "Artikel",
+   "Bezeichnung."
+  ],
+  [
+   "Lagerort",
+   "Regal, Raum oder Fach."
+  ],
+  [
+   "Bestand",
+   "Aktuelle Menge. Nach jeder Entnahme oder Lieferung anpassen."
+  ],
+  [
+   "Mindestbestand",
+   "Ab diesem Bestand (oder darunter) soll nachbestellt werden."
+  ],
+  [
+   "Bestellmenge",
+   "Die übliche Menge pro Bestellung."
+  ],
+  [
+   "Einheit",
+   "Stück, Pack, Rolle …"
+  ],
+  [
+   "EK-Preis",
+   "Einkaufspreis pro Einheit."
+  ],
+  [
+   "Lagerwert",
+   "Bestand mal EK-Preis."
+  ],
+  [
+   "Status",
+   "OK, „Nachbestellen“ (Bestand höchstens Mindestbestand) oder „Leer – bestellen“ (Bestand 0). Grün, gelb und rot markiert."
+  ],
+  [
+   "Vorschlag",
+   "Bei Bedarf die Bestellmenge – ist das Lager stark unterschritten, so viel mehr, dass danach Mindestbestand plus Bestellmenge erreicht wird (MAX)."
+  ],
+  [
+   "Lieferant",
+   "Bei wem du bestellst."
+  ],
+  [
+   "Notiz",
+   "Lieferzeit, Bestelllink, Ansprechpartner."
+  ],
+  [
+   "Überblick",
+   "Anzahl Artikel, wie viele nachbestellt werden müssen, davon leer, und der gesamte Lagerwert."
+  ]
+ ],
+ "tips": [
+  "Filter die Spalte „Status“ auf „Nachbestellen“ und „Leer – bestellen“ – das ist deine Einkaufsliste."
+ ],
+ "faq": [
+  {
+   "q": "Bucht die Vorlage Entnahmen automatisch ab?",
+   "a": "Nein, den Bestand änderst du von Hand. Für ein kleines Lager ist das meist schneller als ein Buchungssystem. Wenn du Bewegungen nachvollziehen musst, führ zusätzlich eine Liste mit Datum, Artikel und Menge."
+  }
+ ],
+ "related": [
+  "inventarliste",
+  "angebotsvergleich",
+  "preiskalkulation"
+ ],
+ "en": {
+  "slug": "stock-list-reorder-level",
+  "name": "Stock list with reorder level",
+  "short": "Stock, minimum level and order suggestion per item",
+  "desc": "Stock list spreadsheet (XLSX): items with stock, minimum level and order quantity – items to reorder and empty items are highlighted, with total stock value.",
+  "intro": "A simple stock list for an office, workshop or small shop. When an item reaches its minimum level, the status says “reorder” and suggests a quantity; empty items turn red.",
+  "inside": [
+   "Status OK / reorder / empty with colours",
+   "Order suggestion per item",
+   "Stock value per item and total",
+   "Count of items to reorder"
+  ],
+  "uses": [
+   "Office and practice supplies",
+   "Workshops and small shops"
+  ]
+ }
+}

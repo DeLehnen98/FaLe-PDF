@@ -1,0 +1,166 @@
+{
+ "id": "duales-studium-soziale-arbeit",
+ "field": "ausbildung",
+ "name": "Duales Studium Soziale Arbeit",
+ "search": "duales studium soziale arbeit sozialpädagogik bachelor praxisstelle jugendhilfe träger bewerbung",
+ "short": "Studium mit Praxisstelle bei einem sozialen Träger.",
+ "desc": "Bewerbung für ein duales Studium Soziale Arbeit bei einem Träger: Muster-Anschreiben nach FSJ und für eine Erzieherin, mit Lebenslauf und Tipps zur Praxisstelle.",
+ "intro": "Im dualen Studium Soziale Arbeit bist du bei einem Träger angestellt, etwa in Jugendhilfe, Schulsozialarbeit oder Eingliederungshilfe, und studierst parallel. Träger achten auf Praxiserfahrung, Haltung und Belastbarkeit. Erzähl von Begegnungen, die dich geprägt haben, ohne pathetisch zu werden.",
+ "lookFor": [
+  "Abitur oder Fachhochschulreife",
+  "Praxiserfahrung (FSJ, Ehrenamt, Jugendarbeit)",
+  "Reflexionsfähigkeit",
+  "Belastbarkeit in schwierigen Situationen",
+  "Erweitertes Führungszeugnis"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem FSJ in der Jugendhilfe",
+   "level": "ausbildung",
+   "position": "Duales Studium Soziale Arbeit (B. A.) – Kinder- und Jugendhilfe",
+   "to": {
+    "org": "Jugendhilfe Rhein-Main e. V.",
+    "sal": "m",
+    "contact": "Bauer",
+    "street": "Mainzer Landstraße 160",
+    "city": "60327 Frankfurt am Main"
+   },
+   "body": [
+    "in meinem FSJ in einer Wohngruppe für Jugendliche hat mir ein 15-Jähriger am dritten Tag gesagt, ich solle verschwinden. Nach drei Monaten hat er mir seine Bewerbung für ein Praktikum gezeigt und gefragt, ob die so gut sei. Diese Entwicklung mitzuerleben hat mich mehr berührt, als ich erwartet hatte.",
+    "Ich möchte jetzt das Fachwissen dazu erwerben und Soziale Arbeit dual studieren. Ihr Verein betreibt Wohngruppen, ambulante Hilfen und Schulsozialarbeit; ich würde gern verschiedene Bereiche kennenlernen. Im FSJ habe ich Alltagsbegleitung, Freizeitangebote und Dokumentation übernommen und an Teamsitzungen und Fallbesprechungen teilgenommen.",
+    "Mein Abitur habe ich mit 2,1 abgeschlossen. Ein Führungszeugnis liegt vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "FSJ-Zeugnis",
+    "Erweitertes Führungszeugnis"
+   ]
+  },
+  {
+   "label": "Erzieherin möchte studieren",
+   "level": "ausbildung",
+   "position": "Duales Studium Soziale Arbeit (B. A.) – Schulsozialarbeit",
+   "to": {
+    "org": "Soziale Dienste Offenbach e. V.",
+    "sal": "f",
+    "contact": "Kraft",
+    "street": "Frankfurter Straße 30",
+    "city": "63065 Offenbach am Main"
+   },
+   "body": [
+    "fünf Jahre Hort haben mir gezeigt, wo die Grenzen meiner Rolle liegen: Wenn ein Kind zu Hause Gewalt erlebt oder die Familie vor der Räumung steht, kann ich als Erzieherin trösten, aber nicht viel mehr. Ich möchte Soziale Arbeit studieren, um an diesen Stellen handeln zu können.",
+    "Mit meiner Ausbildung und der Fachhochschulreife erfülle ich die Zugangsvoraussetzungen. Schulsozialarbeit reizt mich, weil ich den Schulalltag aus dem Hort sehr gut kenne und die Zusammenarbeit mit Lehrkräften schon geübt habe.",
+    "Mir ist wichtig, dass ich während des Studiums nicht ganz aus der Praxis rausgehe. Ihr Modell erlaubt genau das."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Erzieherin",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Daniela Ruppert",
+    "Bieberer Straße 90",
+    "63071 Offenbach am Main"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "modern",
+  "accent": 1,
+  "name": "Noemi Gerlach",
+  "title": "FSJ in der Jugendhilfe",
+  "street": "Leipziger Straße 22",
+  "city": "60487 Frankfurt am Main",
+  "exp": [
+   [
+    "09/2025",
+    "08/2026",
+    "Freiwilliges Soziales Jahr",
+    "Jugendwohngruppe Bockenheim",
+    "Frankfurt am Main",
+    "- Alltagsbegleitung von Jugendlichen\n- Freizeitangebote, Dokumentation\n- Teilnahme an Fallbesprechungen"
+   ],
+   [
+    "2022",
+    "2025",
+    "Ehrenamt Hausaufgabenhilfe",
+    "Stadtteilzentrum Gallus",
+    "Frankfurt am Main",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2025",
+    "Abitur (2,1)",
+    "Bettinaschule",
+    "Frankfurt am Main",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Gesprächsführung",
+    3
+   ],
+   [
+    "Dokumentation",
+    3
+   ],
+   [
+    "Konfliktlösung",
+    3
+   ],
+   [
+    "Gruppenangebote",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Italienisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Theater, Fußballtraining für Mädchen"
+ },
+ "do": [
+  "Praxiserfahrung konkret und mit Haltung beschreiben.",
+  "Arbeitsbereich des Trägers kennen.",
+  "Führungszeugnis früh beantragen."
+ ],
+ "dont": [
+  "Pathos („Ich will die Welt verbessern“).",
+  "Persönliche Krisen ausbreiten.",
+  "Den Träger mit einem anderen verwechseln – viele heißen ähnlich."
+ ],
+ "questions": [
+  "Wie gehen Sie mit Ablehnung durch Jugendliche um?",
+  "Wo liegen Ihre Grenzen?",
+  "Was bedeutet Nähe und Distanz für Sie?",
+  "Wie bekommen Sie Studium und Arbeit unter einen Hut?"
+ ],
+ "faq": [
+  {
+   "q": "Bekomme ich im dualen Studium Soziale Arbeit Geld?",
+   "a": "In der Regel ja, du bist beim Träger angestellt. Wie hoch die Vergütung ist, hängt vom Träger und dessen Tarif ab."
+  }
+ ],
+ "related": [
+  "sozialarbeiter",
+  "ausbildung-erzieher",
+  "praktikum-soziale-arbeit",
+  "fsj-bfd"
+ ]
+}

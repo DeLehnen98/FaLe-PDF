@@ -1,0 +1,67 @@
+{
+ "id": "kuendigung-mietvertrag",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 11,
+ "name": "Kündigung Mietvertrag (Mieter)",
+ "short": "Wohnung als Mieter fristgerecht kündigen",
+ "desc": "Mietvertrag kündigen als Mieter: Muster mit Kündigungsfrist, Übergabetermin und Kaution – inklusive Frist-Rechner und Hinweis zur Unterschrift auf Papier.",
+ "search": "wohnung miete auszug vermieter",
+ "when": [
+  "Du ziehst aus und musst deine Mietwohnung kündigen. Für Mieter gilt bei unbefristeten Verträgen in der Regel eine Frist von drei Monaten. Die Kündigung muss spätestens am dritten Werktag eines Monats beim Vermieter ankommen, damit dieser Monat mitzählt.",
+  "Die Vorlage rechnet das voraussichtliche Ende aus dem Tag aus, an dem der Brief ankommt, und bittet gleich um einen Übergabetermin und die Abrechnung der Kaution."
+ ],
+ "must": [
+  "Die Anschrift der Wohnung und die Lage (z. B. 2. OG links)",
+  "Die Namen aller Mieterinnen und Mieter, die im Vertrag stehen – alle müssen unterschreiben",
+  "Kündigungszeitpunkt – „zum nächstmöglichen Termin“ ist am sichersten",
+  "Bitte um Termine für die Übergabe",
+  "Bitte um Abrechnung und Auszahlung der Kaution"
+ ],
+ "notes": [
+  "Stehen mehrere Personen im Mietvertrag, müssen alle kündigen und unterschreiben – sonst ist die Kündigung unwirksam.",
+  "Bei einem Zeitmietvertrag oder einem vereinbarten Kündigungsverzicht kannst du oft nicht vor einem bestimmten Datum kündigen. Lies deinen Vertrag genau.",
+  "Wirf den Brief selbst mit einer Zeugin ein oder schick ihn per Einwurf-Einschreiben – dann kannst du den Zugang belegen."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich früher raus, wenn ich einen Nachmieter stelle?",
+   "a": "Einen Anspruch darauf hast du nur, wenn es im Vertrag steht oder du einen besonderen Grund hast. Viele Vermieter lassen sich aber darauf ein – frag freundlich nach und schlag geeignete Nachmieter vor."
+  },
+  {
+   "q": "Wann bekomme ich die Kaution zurück?",
+   "a": "Der Vermieter darf sich einige Monate Zeit lassen, um Ansprüche zu prüfen, und einen Teil für die nächste Nebenkostenabrechnung einbehalten. Üblich sind drei bis sechs Monate."
+  }
+ ],
+ "fields": {
+  "type": "rent",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "object": "Lindenstraße 12, 66111 Saarbrücken",
+  "floor": "2. OG links",
+  "cotenants": "",
+  "handover": true,
+  "deposit": true,
+  "iban": ""
+ },
+ "related": [
+  "maengelanzeige-wohnung",
+  "vollmacht-wohnungsuebergabe",
+  "kuendigung-strom"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Hausverwaltung Muster & Partner",
+  "attn": "Frau Weber",
+  "street": "Bahnhofstraße 22",
+  "city": "66111 Saarbrücken"
+ },
+ "paper": true
+}

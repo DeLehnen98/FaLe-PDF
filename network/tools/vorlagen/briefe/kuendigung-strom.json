@@ -1,0 +1,58 @@
+{
+ "id": "kuendigung-strom",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 3,
+ "name": "Kündigung Stromvertrag",
+ "short": "Stromliefervertrag kündigen, Schlussrechnung anfordern",
+ "desc": "Vorlage zur Kündigung des Stromvertrags: Kundennummer, Zählernummer, Bitte um Schlussrechnung – mit Hinweisen zu Fristen, Umzug und Preiserhöhung. Als PDF ausfüllen.",
+ "search": "strom energie versorger umzug zähler",
+ "when": [
+  "Du ziehst aus, hast einen günstigeren Tarif gefunden oder der Versorger hat die Preise erhöht. In der Grundversorgung beträgt die Frist meist zwei Wochen; bei Sonderverträgen steht sie im Vertrag.",
+  "Beim Wechsel zu einem neuen Anbieter übernimmt meist der neue Anbieter die Kündigung. Selbst kündigen musst du vor allem beim Umzug oder wenn du den Wechsel selbst in der Hand behalten willst."
+ ],
+ "must": [
+  "Kundennummer und Zählernummer",
+  "Den Kündigungszeitpunkt – beim Umzug am besten den Auszugstag",
+  "Zählerstand mit Ablesedatum, wenn du schon abgelesen hast",
+  "Die Bitte um die Schlussrechnung an deine (neue) Anschrift",
+  "Widerruf der Einzugsermächtigung"
+ ],
+ "notes": [
+  "Nach einer Preiserhöhung hast du ein Sonderkündigungsrecht. Die Frist dafür steht im Schreiben zur Preisänderung – nicht zu lange warten.",
+  "Fotografier den Zähler beim Auszug mit Datum. So kannst du deinen Verbrauch später belegen.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Bleibe ich ohne Strom, wenn ich kündige und keinen neuen Vertrag habe?",
+   "a": "Nein. Wer ohne Vertrag Strom bezieht, wird automatisch vom Grundversorger beliefert – allerdings meist zu höheren Preisen. Schließ also rechtzeitig einen neuen Vertrag ab."
+  }
+ ],
+ "fields": {
+  "type": "energy",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "customer": "1002-334455",
+  "meter": "1APA0123456789"
+ },
+ "related": [
+  "kuendigung-gas",
+  "kuendigung-mietvertrag",
+  "kuendigung-internetvertrag"
+ ],
+ "from": [
+  "Markus Probe",
+  "Am Kirchberg 3",
+  "54290 Trier"
+ ],
+ "to": {
+  "org": "Stadtwerke Musterstadt GmbH",
+  "attn": "Kundenservice Energie",
+  "street": "Werkstraße 1",
+  "city": "54292 Trier"
+ }
+}

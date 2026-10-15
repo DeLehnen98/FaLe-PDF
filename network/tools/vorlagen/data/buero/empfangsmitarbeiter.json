@@ -1,0 +1,168 @@
+{
+ "id": "empfangsmitarbeiter",
+ "field": "buero",
+ "name": "Empfangsmitarbeiter/in (Büro, Praxis, Kanzlei)",
+ "search": "empfang empfangsmitarbeiterin empfangskraft rezeption büro telefonzentrale front office empfangsdame bewerbung",
+ "short": "Erster Eindruck im Unternehmen – Telefon, Besucher, Post.",
+ "desc": "Bewerbung als Empfangsmitarbeiter/in in Unternehmen, Kanzlei oder Praxis: Muster-Anschreiben für Wiedereinsteigerin, Hotelfachmann und Schulabgängerin, mit Lebenslauf.",
+ "intro": "Am Empfang bist du die Stimme und das Gesicht der Firma. Du nimmst Anrufe an, begrüßt Besucher, verteilst Post, buchst Räume und behältst den Überblick, wenn alles gleichzeitig passiert. Freundlichkeit, ein gutes Gedächtnis für Namen und Ruhe sind wichtiger als jeder Abschluss.",
+ "lookFor": [
+  "Freundliches, gepflegtes Auftreten",
+  "Telefonroutine",
+  "Organisation von Räumen, Post, Besuchern",
+  "Englisch, oft gewünscht",
+  "Diskretion"
+ ],
+ "letters": [
+  {
+   "label": "Hotelfachmann wechselt an den Firmenempfang",
+   "level": "quereinstieg",
+   "position": "Empfangsmitarbeiter (Vollzeit)",
+   "to": {
+    "org": "Ingenieurgesellschaft Sander & Partner",
+    "sal": "f",
+    "contact": "Sander",
+    "street": "Hafenstraße 2",
+    "city": "48153 Münster"
+   },
+   "body": [
+    "nach sieben Jahren an Hotelrezeptionen möchte ich in feste Tagdienste wechseln, ohne meinen Beruf aufzugeben. Begrüßen, Fragen beantworten, Besucher dorthin bringen, wo sie hinwollen, das kann ich im Schlaf, und das sage ich nach vielen Nachtschichten nicht leichtfertig.",
+    "Im Hotel habe ich täglich bis zu 150 Gäste ein- und ausgecheckt, Beschwerden aufgenommen und Konferenzräume vorbereitet. Englisch spreche ich fließend, Spanisch gut. Ihr Unternehmen empfängt viele internationale Kunden, das passt.",
+    "Ab dem 1. März stehe ich zur Verfügung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Hotelfachmann",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Schulabgängerin mit Praxiserfahrung",
+   "level": "berufseinstieg",
+   "position": "Empfangskraft (Arztpraxis, Teilzeit)",
+   "to": {
+    "org": "Orthopädie Gemeinschaftspraxis am Dom",
+    "sal": "m",
+    "contact": "Dr. Albers",
+    "street": "Domplatz 5",
+    "city": "48143 Münster"
+   },
+   "body": [
+    "Telefonieren mit Fremden fand ich früher schwierig. Dann habe ich zwei Jahre lang im Schreibwarenladen meiner Tante ausgeholfen und gemerkt, dass ich es kann, sobald ich weiß, was ich sagen soll. Heute macht es mir Spaß.",
+    "Im Sommer habe ich das Fachabitur Gesundheit und Soziales abgeschlossen. Im Praktikum bei einem Hausarzt habe ich am Empfang Termine vergeben, Versichertenkarten eingelesen und Patienten in den Wartebereich begleitet. Ich möchte zunächst in Teilzeit arbeiten und nebenbei die Ausbildung zur MFA vorbereiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Fachabiturzeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Lena Hölscher",
+    "Hammer Straße 30",
+    "48153 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "classic",
+  "accent": 1,
+  "name": "Rafael Costa",
+  "title": "Hotelfachmann, Rezeptionist",
+  "street": "Wolbecker Straße 60",
+  "city": "48155 Münster",
+  "exp": [
+   [
+    "05/2019",
+    "",
+    "Rezeptionist",
+    "Hotel am Aasee",
+    "Münster",
+    "- Check-in und -out, bis 150 Gäste täglich\n- Konferenzräume vorbereiten\n- Beschwerdemanagement"
+   ],
+   [
+    "08/2016",
+    "04/2019",
+    "Hotelfachmann",
+    "Parkhotel Osnabrück",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2013",
+    "2016",
+    "Ausbildung Hotelfachmann",
+    "Parkhotel Osnabrück",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Gästeempfang",
+    5
+   ],
+   [
+    "Telefon",
+    5
+   ],
+   [
+    "Raumorganisation",
+    4
+   ],
+   [
+    "Englisch",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Portugiesisch",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Fußball, Kochen"
+ },
+ "do": [
+  "Telefon- und Besuchererfahrung nennen.",
+  "Sprachen angeben.",
+  "Arbeitszeitwunsch klarmachen."
+ ],
+ "dont": [
+  "Den Empfang als „nur Telefon“ beschreiben.",
+  "Fehler im Anschreiben.",
+  "Ungepflegtes Foto."
+ ],
+ "questions": [
+  "Wie begrüßen Sie einen Besucher, der zu früh kommt?",
+  "Was tun Sie, wenn drei Telefone gleichzeitig klingeln?",
+  "Wie gehen Sie mit unhöflichen Anrufern um?",
+  "Wie merken Sie sich Namen?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine kaufmännische Ausbildung?",
+   "a": "Nicht immer. Viele Empfangskräfte kommen aus Hotel, Handel oder Praxis. Wichtig sind Auftreten, Telefonroutine und Organisation."
+  }
+ ],
+ "related": [
+  "rezeptionist",
+  "office-manager",
+  "callcenter-agent",
+  "kauffrau-bueromanagement"
+ ]
+}

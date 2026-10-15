@@ -1,0 +1,65 @@
+{
+ "id": "kuendigungsbestaetigung-anfordern",
+ "group": "kuendigung",
+ "tool": "din-letter",
+ "order": 17,
+ "name": "Kündigungsbestätigung anfordern",
+ "short": "Nachhaken, wenn keine Bestätigung kommt",
+ "desc": "Keine Antwort auf deine Kündigung? Vorlage, um die Kündigungsbestätigung mit Vertragsende anzufordern – mit Frist, Bezug auf dein Schreiben und Hinweisen zum Nachweis.",
+ "search": "bestätigung kündigung keine antwort nachhaken",
+ "when": [
+  "Du hast gekündigt, aber nach zwei, drei Wochen ist noch keine Bestätigung da. Dann lohnt ein freundliches, klares Nachhaken mit Frist. Die Bestätigung ist zwar keine Voraussetzung dafür, dass die Kündigung wirkt – aber sie ist dein bester Nachweis, falls später doch noch abgebucht wird."
+ ],
+ "must": [
+  "Bezug auf deine Kündigung mit Datum und Versandart",
+  "Kunden- oder Vertragsnummer",
+  "Die Bitte um Bestätigung mit dem genauen Vertragsende",
+  "Eine Frist, z. B. 14 Tage",
+  "Hinweis, dass du weitere Abbuchungen zurückbuchen lässt"
+ ],
+ "notes": [
+  "Leg eine Kopie deiner Kündigung bei. Wenn du sie per Einschreiben geschickt hast, auch den Beleg.",
+  "Wird nach dem Vertragsende weiter abgebucht, kannst du SEPA-Lastschriften in der Regel innerhalb von acht Wochen bei deiner Bank zurückgeben.",
+  "Bleibt der Anbieter stumm, helfen Verbraucherzentralen weiter."
+ ],
+ "faq": [
+  {
+   "q": "Ist meine Kündigung ohne Bestätigung unwirksam?",
+   "a": "Nein. Eine Kündigung wirkt, wenn sie beim Empfänger angekommen ist. Die Bestätigung ist ein Beweismittel – deshalb ist der Nachweis des Zugangs so wichtig."
+  }
+ ],
+ "fields": {
+  "notice": "einschreiben"
+ },
+ "related": [
+  "kuendigung-handyvertrag",
+  "kuendigung-fitnessstudio",
+  "beschwerde"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "FitMuster Studios GmbH",
+  "attn": "Mitgliederverwaltung",
+  "street": "Sportallee 5",
+  "city": "28195 Bremen"
+ },
+ "letter": {
+  "subject": "Bestätigung meiner Kündigung vom [Datum] – Mitgliedsnummer 000815-24",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "mit Schreiben vom [Datum], per Einwurf-Einschreiben verschickt, habe ich meine Mitgliedschaft zum nächstmöglichen Zeitpunkt gekündigt. Eine Bestätigung habe ich bis heute nicht erhalten.",
+   "Bitte bestätigen Sie mir die Kündigung und das genaue Ende der Mitgliedschaft bis zum [Datum] schriftlich. Eine Kopie meines Kündigungsschreibens und den Einlieferungsbeleg lege ich bei.",
+   "Nach dem Vertragsende werde ich weitere Abbuchungen zurückbuchen lassen."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": [
+   "Kopie der Kündigung",
+   "Einlieferungsbeleg"
+  ],
+  "notice": "einschreiben"
+ }
+}

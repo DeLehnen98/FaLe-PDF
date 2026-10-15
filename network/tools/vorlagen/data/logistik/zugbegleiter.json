@@ -1,0 +1,162 @@
+{
+ "id": "zugbegleiter",
+ "field": "logistik",
+ "name": "Zugbegleiter/in",
+ "search": "zugbegleiter zugbegleiterin kundenbetreuer im nahverkehr bahn zug fahrkartenkontrolle quereinsteiger eisenbahn bewerbung",
+ "short": "Fahrgäste betreuen, Fahrkarten prüfen, Sicherheit im Zug.",
+ "desc": "Bewerbung als Zugbegleiter/in bei einem Eisenbahnunternehmen: Muster-Anschreiben für Quereinsteigerin aus dem Einzelhandel und Busfahrer, mit Lebenslauf und Tipps.",
+ "intro": "Zugbegleiterinnen und Zugbegleiter kontrollieren Fahrkarten, informieren bei Verspätungen, helfen beim Ein- und Aussteigen und sorgen im Notfall für Sicherheit. Viele Eisenbahnunternehmen bilden Quereinsteiger selbst aus. Wichtig sind Kundenfreundlichkeit, Konfliktfähigkeit und Bereitschaft zu Schicht- und Wochenenddiensten.",
+ "lookFor": [
+  "Freundlicher Umgang mit Fahrgästen",
+  "Ruhe in Konflikten",
+  "Schicht-, Wochenend- und Feiertagsdienste",
+  "Gesundheitliche Eignung",
+  "Englisch, gern weitere Sprachen"
+ ],
+ "letters": [
+  {
+   "label": "Verkäuferin mit Lust auf Bewegung",
+   "level": "quereinstieg",
+   "position": "Zugbegleiterin (Quereinstieg mit Ausbildung)",
+   "to": {
+    "org": "Regionalbahn Elbe-Weser GmbH",
+    "sal": "f",
+    "contact": "Lüders",
+    "street": "Bahnhofsplatz 2",
+    "city": "21682 Stade"
+   },
+   "body": [
+    "jeden Morgen fahre ich mit Ihrem Zug nach Hamburg zur Arbeit und sehe der Zugbegleiterin zu, wie sie gleichzeitig Fahrkarten prüft, einem älteren Herrn mit dem Koffer hilft und einer genervten Pendlerin die Verspätung erklärt. Das ist das, was ich seit zwölf Jahren im Einzelhandel tue, nur mit mehr Bewegung.",
+    "Konflikte an der Kasse, Umtausch ohne Bon, Kunden, die laut werden: Damit kann ich umgehen. Schichtdienste kenne ich aus dem Handel mit langen Öffnungszeiten. Englisch spreche ich gut, Plattdeutsch auch, was auf der Strecke nach Cuxhaven manchmal hilft.",
+    "Ihre Ausbildung für Quereinsteigende möchte ich gern im nächsten Durchgang beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Busfahrer wechselt auf die Schiene",
+   "level": "quereinstieg",
+   "position": "Zugbegleiter",
+   "to": {
+    "org": "Nordbahn Verkehrsgesellschaft",
+    "sal": "none",
+    "street": "Am Bahnhof 7",
+    "city": "21614 Buxtehude"
+   },
+   "body": [
+    "acht Jahre im Linienbus haben mir gezeigt, dass ich Fahrgäste mag, auch die schwierigen. Nach zwei Unfällen von anderen Fahrern auf meiner Strecke möchte ich aber nicht mehr am Steuer sitzen und trotzdem im Nahverkehr bleiben.",
+    "Fahrkarten, Tarife, Anschlüsse, Hilfe für Menschen im Rollstuhl, Deeskalation bei Betrunkenen: Das ist mein Alltag. Deeskalationstrainings habe ich bei meinem jetzigen Arbeitgeber zweimal mitgemacht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Teilnahmebescheinigungen Deeskalation"
+   ],
+   "from": [
+    "Thomas Behrens",
+    "Harburger Straße 30",
+    "21614 Buxtehude"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "classic",
+  "accent": 5,
+  "name": "Kirsten Lühmann",
+  "title": "Verkäuferin, Quereinsteigerin Bahn",
+  "street": "Harsefelder Straße 40",
+  "city": "21680 Stade",
+  "exp": [
+   [
+    "2014",
+    "",
+    "Verkäuferin, ab 2019 Kassenverantwortliche",
+    "Kaufhaus Hamburg-Mitte",
+    "Hamburg",
+    "- Kasse, Umtausch, Reklamationen\n- Schichtdienst mit langen Öffnungszeiten"
+   ],
+   [
+    "2011",
+    "2014",
+    "Ausbildung Verkäuferin",
+    "Modehaus Stade",
+    "Stade",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2002",
+    "2011",
+    "Realschulabschluss",
+    "Realschule Camper Höhe",
+    "Stade",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenkontakt",
+    5
+   ],
+   [
+    "Konfliktlösung",
+    4
+   ],
+   [
+    "Englisch",
+    4
+   ],
+   [
+    "Tarife und Kasse",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Niederdeutsch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Radfahren, Kochen"
+ },
+ "do": [
+  "Erfahrung mit Kunden und Konflikten nennen.",
+  "Schichtbereitschaft klar sagen.",
+  "Strecke oder Region kennen."
+ ],
+ "dont": [
+  "Den Job auf Fahrkartenkontrolle reduzieren.",
+  "Unflexible Zeiten nennen.",
+  "Konflikterfahrungen beschönigen."
+ ],
+ "questions": [
+  "Ein Fahrgast hat keine Fahrkarte und wird laut – was tun Sie?",
+  "Wie informieren Sie bei einer langen Verspätung?",
+  "Wie stehen Sie zu Diensten an Feiertagen?",
+  "Welche Sprachen sprechen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung?",
+   "a": "Es gibt die Ausbildung zum Eisenbahner/zur Eisenbahnerin im Betriebsdienst, aber viele Unternehmen bilden Quereinsteigende in einigen Wochen bis Monaten selbst aus. Die Anforderungen stehen in der Ausschreibung."
+  }
+ ],
+ "related": [
+  "busfahrer",
+  "quereinstieg-lokfuehrer",
+  "kundenservice-mitarbeiter",
+  "sicherheitsdienst"
+ ]
+}

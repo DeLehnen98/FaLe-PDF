@@ -1,0 +1,173 @@
+{
+ "id": "kinderpflegerin",
+ "field": "soziales",
+ "name": "Kinderpfleger/in",
+ "search": "kinderpflegerin kinderpfleger kita krippe kindergarten ergänzungskraft pädagogische fachkraft zweitkraft bewerbung",
+ "short": "Zweitkraft in Krippe, Kindergarten oder Hort.",
+ "desc": "Bewerbung als Kinderpfleger/in in Kita oder Krippe: Muster-Anschreiben für Berufseinsteigerin, erfahrenen Kinderpfleger und Wiedereinsteigerin, mit Lebenslauf.",
+ "intro": "Kinderpflegerinnen und Kinderpfleger arbeiten als Zweit- oder Ergänzungskräfte in Krippe, Kindergarten oder Hort. Sie begleiten den Alltag, gestalten Angebote, wickeln, trösten und sprechen mit Eltern. Je nach Bundesland heißt die Ausbildung anders oder wird durch die Sozialassistenz ersetzt.",
+ "lookFor": [
+  "Abschluss als Kinderpfleger/in oder Sozialassistent/in",
+  "Erfahrung mit Kindern der Altersgruppe",
+  "Geduld und Verlässlichkeit",
+  "Zusammenarbeit mit Erzieherinnen und Eltern",
+  "Erweitertes Führungszeugnis"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinsteigerin für die Krippe",
+   "level": "berufseinstieg",
+   "position": "Kinderpflegerin Krippe",
+   "to": {
+    "org": "Kinderkrippe Zwergenland",
+    "sal": "f",
+    "contact": "Seitz",
+    "street": "Am Anger 4",
+    "city": "93047 Regensburg"
+   },
+   "body": [
+    "die Eingewöhnung eines eineinhalbjährigen Mädchens hat in meinem letzten Praxiseinsatz drei Wochen gedauert. Am Ende hat sie mir morgens die Arme entgegengestreckt, wenn die Mutter ging. Diese Arbeit möchte ich jetzt beruflich machen.",
+    "Im Juli habe ich die Ausbildung zur Kinderpflegerin an der Berufsfachschule abgeschlossen, mit Praxis in Krippe und Kindergarten. Wickeln, Schlafbegleitung, Fingerspiele, ruhige Übergänge und Beobachtungsbögen habe ich dort gelernt, und ich mache es gern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Praktikumsbeurteilungen",
+    "Führungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrener Kinderpfleger für den Hort",
+   "level": "erfahren",
+   "position": "Kinderpfleger Hort (Teilzeit)",
+   "to": {
+    "org": "Hort an der Donau",
+    "sal": "none",
+    "street": "Schulstraße 12",
+    "city": "93053 Regensburg"
+   },
+   "body": [
+    "sechzehn Grundschulkinder nach der Schule, Hausaufgaben, Streit um den Fußball und ein Kind, das weint, weil die Mathearbeit schlecht war: Das ist seit fünf Jahren mein Nachmittag. Ich möchte in einen Hort wechseln, der mehr Zeit für Projekte lässt.",
+    "Als Kinderpfleger habe ich zuvor drei Jahre im Kindergarten gearbeitet. Im Hort leite ich eine Fußball-AG und ein Kochprojekt. 30 Wochenstunden wären ideal."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sebastian Dorn",
+    "Kumpfmühler Straße 50",
+    "93051 Regensburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 1,
+  "name": "Lena Wimmer",
+  "title": "Kinderpflegerin",
+  "street": "Prüfeninger Straße 20",
+  "city": "93049 Regensburg",
+  "exp": [
+   [
+    "2025",
+    "2026",
+    "Praxiseinsätze",
+    "Krippe Sonnenblume, Kindergarten St. Wolfgang",
+    "Regensburg",
+    "- Eingewöhnung, Wickeln, Schlafbegleitung\n- Angebote mit Musik und Bewegung\n- Beobachtungsbögen"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "2026",
+    "Ausbildung Kinderpflegerin",
+    "Berufsfachschule für Kinderpflege",
+    "Regensburg",
+    ""
+   ],
+   [
+    "2018",
+    "2024",
+    "Mittlere Reife",
+    "Realschule am Judenstein",
+    "Regensburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste Hilfe am Kind",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Arbeit mit Kleinkindern",
+    4
+   ],
+   [
+    "Eingewöhnung",
+    4
+   ],
+   [
+    "Musik und Bewegung",
+    4
+   ],
+   [
+    "Dokumentation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Flöte, Schwimmen"
+ },
+ "do": [
+  "Altersgruppe und Praxiseinsätze nennen.",
+  "Ein Beispiel aus dem Alltag.",
+  "Arbeitszeitwunsch angeben."
+ ],
+ "dont": [
+  "„Ich liebe Kinder“ als einziges Argument.",
+  "Vertrauliches über Familien.",
+  "Führungszeugnis vergessen."
+ ],
+ "questions": [
+  "Wie gestalten Sie eine Eingewöhnung?",
+  "Was tun Sie, wenn ein Kind ein anderes beißt?",
+  "Wie arbeiten Sie mit der Gruppenleitung zusammen?",
+  "Welche Angebote machen Sie gern?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Führungszeugnis?",
+   "a": "Für die Arbeit mit Kindern verlangen Träger ein erweitertes Führungszeugnis. Du beantragst es beim Bürgeramt oder online; mit einer Bescheinigung des Trägers ist es oft kostenlos."
+  },
+  {
+   "q": "Kinderpflegerin oder Erzieherin?",
+   "a": "Kinderpflegerinnen sind meist Zweit- oder Ergänzungskräfte, Erzieherinnen pädagogische Fachkräfte mit Gruppenleitung. Mit Berufserfahrung kannst du in vielen Bundesländern die Erzieherausbildung anschließen."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "ausbildung-erzieher",
+  "ausbildung-sozialassistent",
+  "tagesmutter"
+ ]
+}

@@ -1,0 +1,195 @@
+{
+ "id": "minimal",
+ "de": {
+  "name": "Controller",
+  "cv": {
+   "avatar": "a08",
+   "accent": 5,
+   "name": "Paul Lindner",
+   "title": "Senior Controller",
+   "street": "Oskar-von-Miller-Ring 12",
+   "city": "60313 Frankfurt am Main",
+   "exp": [
+    [
+     "02/2020",
+     "",
+     "Senior Controller",
+     "Rheinwerk Logistik AG",
+     "Frankfurt am Main",
+     "- Planung und Forecast für vier Standorte mit 180 Mio. € Umsatz\n- Monatsberichte für Vorstand und Aufsichtsrat\n- Einführung einer rollierenden Planung"
+    ],
+    [
+     "07/2015",
+     "01/2020",
+     "Controller",
+     "Mainfracht Spedition GmbH",
+     "Offenbach",
+     "- Kostenstellenrechnung und Abweichungsanalysen"
+    ]
+   ],
+   "edu": [
+    [
+     "2012",
+     "2015",
+     "M.Sc. Finance and Accounting",
+     "Goethe-Universität",
+     "Frankfurt am Main",
+     ""
+    ],
+    [
+     "2009",
+     "2012",
+     "B.Sc. Betriebswirtschaftslehre",
+     "Universität Mannheim",
+     "Mannheim",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Planung und Forecast",
+     5
+    ],
+    [
+     "Berichtswesen",
+     5
+    ],
+    [
+     "Datenbanken und Abfragen",
+     4
+    ],
+    [
+     "Tabellenkalkulation",
+     5
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "C1"
+    ]
+   ],
+   "hobbies": "Rennrad, Schach"
+  },
+  "letter": {
+   "label": "Leitung Controlling",
+   "position": "Leitung Controlling (m/w/d)",
+   "to": {
+    "org": "Taunus Systemtechnik GmbH",
+    "sal": "n",
+    "contact": "Kim Albers",
+    "street": "Am Weinberg 30",
+    "city": "65812 Bad Soden"
+   },
+   "body": [
+    "vier Standorte, ein Planungsprozess, der früher drei Monate gedauert hat und heute sechs Wochen: Das ist das Ergebnis meiner letzten Jahre im Controlling eines Logistikkonzerns. Jetzt suche ich eine Aufgabe, in der ich ein kleines Team führe.",
+    "Ihr Unternehmen wächst und stellt das Berichtswesen gerade neu auf. Ich habe genau das schon einmal gemacht: Kennzahlen mit den Fachbereichen festgelegt, Berichte automatisiert und die Zahl der Monatsreports von 23 auf 9 reduziert, ohne dass jemand etwas vermisst hat.",
+    "Meine Kündigungsfrist beträgt drei Monate zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ]
+  }
+ },
+ "en": {
+  "name": "Financial controller",
+  "cv": {
+   "avatar": "a08",
+   "accent": 5,
+   "name": "Paul Lindner",
+   "title": "Senior financial analyst",
+   "street": "12 Miller Court",
+   "city": "Leeds LS1 4AP",
+   "exp": [
+    [
+     "02/2020",
+     "",
+     "Senior financial analyst",
+     "Northgate Logistics plc",
+     "Leeds",
+     "- Budgeting and forecasting for four sites\n- Monthly board reporting\n- Introduced rolling forecasts"
+    ],
+    [
+     "07/2015",
+     "01/2020",
+     "Management accountant",
+     "Aire Freight Ltd",
+     "Bradford",
+     "- Cost centre reporting and variance analysis"
+    ]
+   ],
+   "edu": [
+    [
+     "2012",
+     "2015",
+     "CIMA qualification",
+     "Professional study",
+     "Leeds",
+     ""
+    ],
+    [
+     "2009",
+     "2012",
+     "BSc Accounting and Finance",
+     "University of Leeds",
+     "Leeds",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Budgeting and forecasting",
+     5
+    ],
+    [
+     "Management reporting",
+     5
+    ],
+    [
+     "Databases and queries",
+     4
+    ],
+    [
+     "Spreadsheets",
+     5
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B2"
+    ]
+   ],
+   "hobbies": "Road cycling, chess"
+  },
+  "letter": {
+   "label": "Head of finance",
+   "position": "Head of FP&A",
+   "to": {
+    "org": "Taunus Systems Ltd",
+    "sal": "n",
+    "contact": "Kim Albers",
+    "street": "30 Vineyard Way",
+    "city": "York YO1 7HH"
+   },
+   "body": [
+    "Four sites and a planning cycle that used to take three months and now takes six weeks: that is what the last years in a logistics group have produced. I am now looking for a role in which I lead a small team.",
+    "Your company is growing and rebuilding its reporting. I have done exactly that before: agreed the key figures with each department, automated the reports and cut the monthly pack from 23 reports to 9 without anyone missing one.",
+    "My notice period is three months."
+   ],
+   "att": [
+    "CV",
+    "References"
+   ]
+  }
+ }
+}

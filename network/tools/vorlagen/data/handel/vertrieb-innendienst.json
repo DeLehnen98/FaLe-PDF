@@ -1,0 +1,158 @@
+{
+ "id": "vertrieb-innendienst",
+ "field": "handel",
+ "name": "Vertriebsmitarbeiter/in Innendienst",
+ "search": "vertrieb innendienst vertriebsinnendienst sales angebot auftragsabwicklung kundenbetreuung b2b bewerbung",
+ "short": "Angebote, Aufträge, Kundenbetreuung am Telefon.",
+ "desc": "Bewerbung im Vertriebsinnendienst: Muster-Anschreiben für Industriekaufmann, Quereinsteigerin aus dem Handel und Wechsler aus dem Außendienst, mit Lebenslauf.",
+ "intro": "Im Vertriebsinnendienst kalkulierst du Angebote, wickelst Aufträge ab, betreust Kunden am Telefon und unterstützt den Außendienst. Gefragt sind Produktkenntnis, Sorgfalt bei Zahlen und ein freundlicher, verbindlicher Ton. Branchenwissen ist oft wichtiger als ein bestimmter Abschluss.",
+ "lookFor": [
+  "Kaufmännische Ausbildung oder Vertriebserfahrung",
+  "Angebotskalkulation",
+  "ERP-Kenntnisse",
+  "Telefonische Kundenbetreuung",
+  "Englisch, je nach Kunden"
+ ],
+ "letters": [
+  {
+   "label": "Industriekaufmann nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Mitarbeiter Vertriebsinnendienst",
+   "to": {
+    "org": "Pumpentechnik Weserbergland GmbH",
+    "sal": "f",
+    "contact": "Hahn",
+    "street": "Industriestraße 40",
+    "city": "31785 Hameln"
+   },
+   "body": [
+    "die Station, in der ich während der Ausbildung am liebsten war, ist der Vertriebsinnendienst. Ein Kunde ruft an, braucht ein Ersatzteil für eine 20 Jahre alte Pumpe, und man findet heraus, was passt und wann es da ist. Diese Detektivarbeit macht mir Spaß.",
+    "Meine Ausbildung zum Industriekaufmann bei einem Hersteller von Hydraulikkomponenten schließe ich im Juni ab. Im Vertrieb habe ich Angebote vorbereitet, Aufträge im ERP-System angelegt und Liefertermine mit der Fertigung geklärt. Technische Zeichnungen lesen kann ich in Grundzügen.",
+    "Mein Ausbildungsbetrieb übernimmt in diesem Jahr niemanden im Vertrieb, deshalb bewerbe ich mich bei Ihnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zwischenzeugnis Ausbildung",
+    "Berufsschulzeugnis"
+   ]
+  },
+  {
+   "label": "Außendienstler will in den Innendienst",
+   "level": "erfahren",
+   "position": "Vertriebsinnendienst (Key Accounts)",
+   "to": {
+    "org": "Sanitärsysteme Niedersachsen AG",
+    "sal": "none",
+    "street": "Hildesheimer Straße 200",
+    "city": "30519 Hannover"
+   },
+   "body": [
+    "rund 50.000 Kilometer im Jahr, neun Jahre lang: Nach dieser Zeit im Außendienst möchte ich mehr Zeit zu Hause verbringen, ohne den Kontakt zu Kunden aufzugeben. Im Innendienst kann ich das, was ich draußen gelernt habe, für die Kollegen auf der Straße nutzen.",
+    "Ich kenne die Großhändler und Installateure in Niedersachsen persönlich, weiß, welche Fragen nach einem Termin kommen und wie wichtig schnelle Angebote sind. Mit Ihren Produkten habe ich als Wettbewerber oft zu tun gehabt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Jörg Meinecke",
+    "Sallstraße 30",
+    "30171 Hannover"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "classic",
+  "accent": 0,
+  "name": "Simon Fricke",
+  "title": "Industriekaufmann (Abschluss 06/2026)",
+  "street": "Deisterstraße 20",
+  "city": "31785 Hameln",
+  "exp": [
+   [
+    "08/2023",
+    "06/2026",
+    "Auszubildender Industriekaufmann",
+    "Hydraulik Hameln GmbH",
+    "Hameln",
+    "- Vertriebsinnendienst: Angebote, Auftragsanlage\n- Einkauf, Buchhaltung, Personal\n- Abstimmung von Lieferterminen mit der Fertigung"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Berufsschule, Industriekaufmann",
+    "Eugen-Reintjes-Schule",
+    "Hameln",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Albert-Einstein-Gymnasium",
+    "Hameln",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Angebotserstellung",
+    4
+   ],
+   [
+    "ERP-Systeme",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ],
+   [
+    "Technische Zeichnungen lesen",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Handball, Angeln"
+ },
+ "do": [
+  "Produkt- und Branchenwissen zeigen.",
+  "ERP- und Angebotserfahrung nennen.",
+  "Zusammenarbeit mit Außendienst ansprechen."
+ ],
+ "dont": [
+  "Den Innendienst als Sachbearbeitung ohne Kunden darstellen.",
+  "Fehler in Zahlen.",
+  "Unklare Wechselgründe."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein Kunde ein Teil sofort braucht, es aber nicht da ist?",
+  "Wie kalkulieren Sie ein Angebot?",
+  "Wie arbeiten Sie mit dem Außendienst zusammen?",
+  "Welche ERP-Systeme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Innendienst oder Außendienst?",
+   "a": "Im Innendienst arbeitest du vom Büro aus, telefonierst viel und hältst die Fäden zusammen. Im Außendienst besuchst du Kunden vor Ort. Viele beginnen im Innendienst und wechseln später, oder umgekehrt."
+  }
+ ],
+ "related": [
+  "aussendienst",
+  "einkaeufer",
+  "kundenservice-mitarbeiter",
+  "ausbildung-kaufmann-gross-aussenhandel"
+ ]
+}

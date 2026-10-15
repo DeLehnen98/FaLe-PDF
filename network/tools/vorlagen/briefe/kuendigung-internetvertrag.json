@@ -1,0 +1,63 @@
+{
+ "id": "kuendigung-internetvertrag",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 2,
+ "name": "Kündigung Internetvertrag",
+ "short": "DSL-, Kabel- oder Glasfaservertrag kündigen",
+ "desc": "Kündigung für den Internetvertrag (DSL, Kabel, Glasfaser) als Muster: Kundennummer, Vertragsnummer, Router-Rückgabe – vorausgefüllt und als PDF fürs Fensterkuvert.",
+ "search": "dsl kabel glasfaser internet router",
+ "when": [
+  "Du ziehst um, wechselst zu einem schnelleren Anschluss oder brauchst den Vertrag nicht mehr. Nach der Mindestlaufzeit sind die meisten Internetverträge mit einem Monat Frist kündbar.",
+  "Der Brief fragt gleich mit, ob und wohin du den Router oder andere Leihgeräte zurückschicken sollst – sonst stellt dir der Anbieter sie später oft in Rechnung."
+ ],
+ "must": [
+  "Kundennummer und, wenn vorhanden, Vertragsnummer",
+  "Anschlussadresse oder Rufnummer des Anschlusses",
+  "Kündigungszeitpunkt",
+  "Frage nach der Rückgabe überlassener Geräte",
+  "Bitte um Bestätigung"
+ ],
+ "notes": [
+  "Beim Umzug gibt es ein Sonderkündigungsrecht, wenn der Anbieter am neuen Wohnort die vereinbarte Leistung nicht liefern kann. Dann gilt in der Regel eine Frist von einem Monat ab dem Auszug.",
+  "Willst du den Anbieter wechseln, beauftrage den Wechsel beim neuen Anbieter – der kümmert sich oft auch um die Kündigung, und du bist ohne Unterbrechung online.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Was passiert mit meiner Festnetznummer?",
+   "a": "Die kannst du zum neuen Anbieter mitnehmen. Gib das beim neuen Anbieter an; der alte Anbieter muss die Nummer freigeben."
+  },
+  {
+   "q": "Muss ich den Router zurückschicken?",
+   "a": "Nur wenn er gemietet oder geliehen war. Ein gekaufter Router gehört dir. Im Zweifel steht es im Vertrag oder auf der Rechnung."
+  }
+ ],
+ "fields": {
+  "type": "internet",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "customer": "800 123 456",
+  "contract": "V-2023-55821",
+  "line": "Lindenstraße 12, Saarbrücken"
+ },
+ "related": [
+  "kuendigung-handyvertrag",
+  "kuendigung-strom",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Netzwerk Muster AG",
+  "attn": "Kündigungen",
+  "street": "Postfach 20 30 40",
+  "city": "50667 Köln"
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "id": "kuendigung-haftpflichtversicherung",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 9,
+ "name": "Kündigung Haftpflichtversicherung",
+ "short": "Private Haftpflicht kündigen oder wechseln",
+ "desc": "Haftpflichtversicherung kündigen: Vorlage mit Versicherungsnummer, Kündigung zum Ablauf, Bitte um Bestätigung – mit Tipps, damit keine Lücke im Schutz entsteht.",
+ "search": "haftpflicht versicherung privat",
+ "when": [
+  "Du wechselst zu einem günstigeren Tarif, brauchst die Privathaftpflichtversicherung nicht mehr oder willst nach einem Ärgernis weg. Die Frist steht im Versicherungsschein, häufig drei Monate zum Ende des Versicherungsjahres. Nach einem Schadenfall oder einer Beitragserhöhung kannst du oft außerordentlich kündigen. Die genauen Fristen dafür stehen in den Versicherungsbedingungen."
+ ],
+ "must": [
+  "Versicherungsnummer (steht auf dem Versicherungsschein)",
+  "Art der Versicherung",
+  "Kündigung zum Ablauf des Versicherungsjahres – oder zum nächstmöglichen Zeitpunkt",
+  "Bitte um schriftliche Bestätigung mit dem Vertragsende",
+  "Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Schließ die neue Haftpflicht ab, bevor du die alte kündigst. Eine Lücke von auch nur einem Tag kann teuer werden, wenn genau dann etwas passiert.",
+  "Für eine außerordentliche Kündigung nach Beitragserhöhung oder Schaden setzt du in der Vorlage den Haken „Außerordentliche Kündigung“ und wählst den Grund.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich nach dem Zusammenziehen zwei Haftpflichtversicherungen?",
+   "a": "Paare und Familien können meist einen gemeinsamen Vertrag haben. Dann kündigt eine Person ihren Einzelvertrag, oft mit Sonderkündigungsrecht wegen Wegfall des Risikos – frag bei beiden Versicherern nach."
+  },
+  {
+   "q": "Reicht eine E-Mail?",
+   "a": "Bei vielen Versicherungen reicht heute die Textform, also auch eine E-Mail. Ein Brief per Einschreiben ist trotzdem der sicherste Nachweis, dass deine Kündigung rechtzeitig angekommen ist."
+  }
+ ],
+ "fields": {
+  "type": "insurance",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "kind": "Privathaftpflichtversicherung",
+  "policy": "PHV-2019-554433"
+ },
+ "related": [
+  "kuendigung-hausratversicherung",
+  "kuendigung-kfz-versicherung",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Lukas Wagner",
+  "Schillerstraße 40",
+  "04109 Leipzig"
+ ],
+ "to": {
+  "org": "Musterversicherung AG",
+  "attn": "Vertragsabteilung",
+  "street": "Postfach 40 50 60",
+  "city": "04001 Leipzig"
+ }
+}

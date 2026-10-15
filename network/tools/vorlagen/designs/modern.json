@@ -1,0 +1,215 @@
+{
+ "id": "modern",
+ "de": {
+  "name": "Kaufmann im E-Commerce",
+  "cv": {
+   "avatar": "a17",
+   "accent": 0,
+   "name": "Jonas Albrecht",
+   "title": "Kaufmann im E-Commerce",
+   "street": "Ulmenweg 3",
+   "city": "67655 Kaiserslautern",
+   "exp": [
+    [
+     "01/2022",
+     "",
+     "Kaufmann im E-Commerce",
+     "Feldwerk Outdoor GmbH (Onlineshop für Campingbedarf)",
+     "Kaiserslautern",
+     "- Pflege von rund 2.400 Artikeln im Shop und auf zwei Marktplätzen\n- Auswertung von Absatz und Retouren, Vorschläge für das Sortiment\n- Newsletter mit 18.000 Empfängern"
+    ],
+    [
+     "08/2019",
+     "12/2021",
+     "Ausbildung zum Kaufmann im E-Commerce",
+     "Feldwerk Outdoor GmbH",
+     "Kaiserslautern",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "08/2019",
+     "06/2022",
+     "Kaufmann im E-Commerce – IHK-Prüfung, Note 1,9",
+     "Berufsbildende Schule Wirtschaft",
+     "Kaiserslautern",
+     ""
+    ],
+    [
+     "2013",
+     "2019",
+     "Fachhochschulreife Wirtschaft",
+     "Berufsbildende Schule",
+     "Kaiserslautern",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "Suchmaschinenoptimierung für Shops",
+     "IHK-Bildungszentrum",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Shopsysteme und Produktdaten",
+     5
+    ],
+    [
+     "Webanalyse",
+     4
+    ],
+    [
+     "Newsletter-Marketing",
+     4
+    ],
+    [
+     "Bildbearbeitung",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "C1"
+    ]
+   ],
+   "hobbies": "Klettern, Fahrradreparatur für Freunde"
+  },
+  "letter": {
+   "label": "Mehr Verantwortung im Onlinehandel",
+   "position": "Category Manager Online (m/w/d)",
+   "to": {
+    "org": "Holzmann Haus & Garten KG",
+    "sal": "m",
+    "contact": "Seidel",
+    "street": "Industriestraße 12",
+    "city": "67059 Ludwigshafen"
+   },
+   "body": [
+    "zwei Marktplätze, ein eigener Shop und 2.400 Artikel: Das ist mein Alltag bei einem Onlinehändler für Campingbedarf. Für die Kategorie Zelte habe ich im letzten Jahr die Produkttexte neu geschrieben und die Retourenquote von elf auf acht Prozent gesenkt.",
+    "Ihre Stelle als Category Manager reizt mich, weil ich dort nicht nur pflegen, sondern entscheiden kann: welche Artikel ins Sortiment kommen, welche rausfliegen und wie sie präsentiert werden. Die Zahlen dafür lese ich jeden Montag aus der Webanalyse.",
+    "Mein Vertrag hat eine Kündigungsfrist von drei Monaten. Einen ersten Eindruck von meiner Arbeit gebe ich Ihnen gern bei einem Gespräch – auch per Video."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ]
+  }
+ },
+ "en": {
+  "name": "E-commerce assistant",
+  "cv": {
+   "avatar": "a17",
+   "accent": 0,
+   "name": "Jonas Albrecht",
+   "title": "E-commerce executive",
+   "street": "3 Elm Close",
+   "city": "Kendal LA9 4RT",
+   "exp": [
+    [
+     "01/2022",
+     "",
+     "E-commerce executive",
+     "Fieldworks Outdoor Ltd",
+     "Kendal",
+     "- Product data for about 2,400 items in the web shop and two marketplaces\n- Weekly sales and returns reports\n- Newsletter to 18,000 subscribers"
+    ],
+    [
+     "09/2019",
+     "12/2021",
+     "Digital marketing apprentice",
+     "Fieldworks Outdoor Ltd",
+     "Kendal",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2019",
+     "2021",
+     "Level 3 Digital Marketer apprenticeship",
+     "Kendal College",
+     "Kendal",
+     ""
+    ],
+    [
+     "2014",
+     "2019",
+     "BTEC Business",
+     "Kirkbie Kendal School",
+     "Kendal",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "SEO for online shops",
+     "Online course",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Shop systems and product data",
+     5
+    ],
+    [
+     "Web analytics",
+     4
+    ],
+    [
+     "E-mail marketing",
+     4
+    ],
+    [
+     "Image editing",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Climbing, fixing bikes for friends"
+  },
+  "letter": {
+   "label": "Next step in online retail",
+   "position": "Online category manager",
+   "to": {
+    "org": "Holloway Home & Garden Ltd",
+    "sal": "m",
+    "contact": "Seddon",
+    "street": "12 Mill Lane",
+    "city": "Preston PR1 2XY"
+   },
+   "body": [
+    "Two marketplaces, one web shop and 2,400 products: that is my working week at an outdoor retailer. Last year I rewrote the product pages for our tents and the return rate fell from eleven to eight per cent.",
+    "Your category manager role appeals to me because it is about deciding, not just maintaining: which products come in, which go, and how they are shown. I already read the numbers for those decisions every Monday.",
+    "My notice period is three months. I would be glad to show you some of my work in an interview, in person or by video."
+   ],
+   "att": [
+    "CV",
+    "References"
+   ]
+  }
+ }
+}

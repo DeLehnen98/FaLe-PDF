@@ -1,0 +1,191 @@
+{
+ "id": "ausbildung-koch",
+ "field": "ausbildung",
+ "name": "Ausbildung Koch/Köchin",
+ "search": "ausbildung koch köchin küche azubi restaurant gastronomie kochen bewerbung kuche",
+ "short": "Profiküche statt Kantine – für Schüler und Quereinsteiger.",
+ "desc": "Bewerbung für die Ausbildung zum Koch / zur Köchin: Muster-Anschreiben für Hauptschüler, Abiturientin und Quereinsteiger, Lebenslauf und typische Fragen beim Probekochen.",
+ "intro": "Köche lernen Grundtechniken, Warenkunde, Hygiene und Teamarbeit unter Zeitdruck. Restaurants wollen sehen, dass du gern kochst, Stress aushältst und dich für Lebensmittel interessierst. Ein Probetag in der Küche gehört fast immer dazu.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Freude am Kochen und an Lebensmitteln",
+  "Belastbarkeit in Stoßzeiten",
+  "Sauberkeit und Hygiene",
+  "Abend- und Wochenendarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Hauptschüler, der zu Hause kocht",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Koch",
+   "to": {
+    "org": "Gasthaus zur Linde",
+    "sal": "m",
+    "contact": "Brenninger",
+    "street": "Dorfplatz 1",
+    "city": "94469 Deggendorf"
+   },
+   "body": [
+    "bei uns zu Hause koche ich seit zwei Jahren am Wochenende für die ganze Familie, sechs Leute. Angefangen hat es mit Spaghetti, inzwischen mache ich Schweinebraten mit Knödeln, und meine Oma sagt, die Soße ist besser als ihre.",
+    "Im Sommer bekomme ich meinen Mittelschulabschluss. Mein Praktikum habe ich in einer Kantine gemacht, dort habe ich Gemüse geschnitten, Salate angerichtet und gelernt, wie wichtig Hygiene ist. Für Ihr Gasthaus bewerbe ich mich, weil Sie regional kochen und Ihre Zutaten von Bauern aus der Gegend holen.",
+    "Ich weiß, dass Köche am Wochenende arbeiten, und das ist für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 8",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Ziel gehobene Küche",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Köchin",
+   "to": {
+    "org": "Restaurant Feldkind",
+    "sal": "f",
+    "contact": "Ehrlich",
+    "street": "Lindwurmstraße 66",
+    "city": "80337 München"
+   },
+   "body": [
+    "Ihre Speisekarte wechselt jede Woche, und auf Ihrem Account sehe ich, wie viel Sie selbst fermentieren, einlegen und räuchern. Genau dieses Handwerk möchte ich lernen, bevor ich irgendwann über eigene Gerichte nachdenke.",
+    "Nach dem Abitur habe ich drei Monate in einer Bäckerei und zwei Monate in der Küche eines Cateringunternehmens gejobbt. Dort war ich hauptsächlich für Vorbereitung und Abwasch zuständig, durfte aber am Ende auch Vorspeisen für Hochzeiten anrichten. Ich bin schnell, ich mag es, wenn es laut wird, und ich frage nach, wenn ich etwas nicht verstehe.",
+    "Bei Ihrem Probetag bin ich gern dabei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Bescheinigungen Aushilfsjobs"
+   ],
+   "from": [
+    "Hannah Fuchs",
+    "Kapuzinerstraße 21",
+    "80469 München"
+   ]
+  },
+  {
+   "label": "Quereinsteiger, 29, aus der Logistik",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Koch",
+   "to": {
+    "org": "Hotel-Restaurant Donauhof",
+    "sal": "none",
+    "street": "Am Hafen 12",
+    "city": "93047 Regensburg"
+   },
+   "body": [
+    "acht Jahre habe ich als Lagerist gearbeitet und dabei immer gekocht, für Freunde, für Grillfeste, für den Betriebsausflug mit 40 Leuten. Jetzt möchte ich es richtig lernen und mache mit 29 eine Ausbildung zum Koch.",
+    "Mir ist klar, was das heißt: weniger Geld in den nächsten Jahren, Arbeit an Abenden und Feiertagen, viel Stress. Ich habe mit meiner Freundin alles durchgerechnet und bin bereit dafür. Aus dem Lager bringe ich Ordnung, Warenkunde beim Wareneingang und eine gute Belastbarkeit mit.",
+    "Zwei Probetage in einem Restaurant habe ich schon hinter mir. Der Koch dort hat mir geraten, mich in einem Haus mit à-la-carte-Küche zu bewerben, und so bin ich auf Sie gekommen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Hauptschulzeugnis"
+   ],
+   "from": [
+    "Kevin Schreiner",
+    "Prüfeninger Straße 54",
+    "93049 Regensburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "compact",
+  "accent": 3,
+  "name": "Elias Wimmer",
+  "title": "Schüler",
+  "street": "Graflinger Straße 7",
+  "city": "94469 Deggendorf",
+  "exp": [
+   [
+    "06/2025",
+    "06/2025",
+    "Praktikum (1 Woche)",
+    "Betriebskantine Donauwerke",
+    "Deggendorf",
+    "- Gemüse vorbereiten, Salate anrichten\n- Hygieneregeln, Reinigung"
+   ],
+   [
+    "2024",
+    "",
+    "Kochen für die Familie (6 Personen)",
+    "",
+    "",
+    "- Wochenendgerichte, Einkauf planen"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Mittelschule, voraussichtlich Mittelschulabschluss",
+    "Mittelschule Deggendorf",
+    "Deggendorf",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kochen",
+    3
+   ],
+   [
+    "Hygiene",
+    3
+   ],
+   [
+    "Belastbarkeit",
+    4
+   ],
+   [
+    "Teamarbeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Kochen, Angeln, Eishockey"
+ },
+ "do": [
+  "Erzählen, was du schon kochst.",
+  "Das Restaurant kennen: Karte, Stil, regionale Küche.",
+  "Wochenend- und Abendarbeit ansprechen."
+ ],
+ "dont": [
+  "„Ich esse gern“ als Motivation.",
+  "Lange Erklärungen zu TV-Kochshows.",
+  "Unpünktlich zum Probetag kommen."
+ ],
+ "questions": [
+  "Was haben Sie zuletzt gekocht?",
+  "Wie gehen Sie mit Stress in der Küche um?",
+  "Was bedeutet Hygiene für Sie?",
+  "Welche Küche interessiert Sie am meisten?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Was bringe ich zum Probetag mit?",
+   "a": "Frag vorher nach. Oft reichen feste, rutschfeste Schuhe, zusammengebundene Haare und ein Notizblock. Kochjacke und Messer stellt meist der Betrieb."
+  }
+ ],
+ "related": [
+  "koch",
+  "kuechenhilfe",
+  "ausbildung-hotelfachmann",
+  "ausbildung-baecker"
+ ]
+}

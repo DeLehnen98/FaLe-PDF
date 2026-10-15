@@ -1,0 +1,158 @@
+{
+ "id": "mediengestalter",
+ "field": "marketing",
+ "name": "Mediengestalter/in (Berufserfahrung)",
+ "search": "mediengestalter mediengestalterin digital print druckvorstufe layout gestaltung agentur druckerei bewerbung",
+ "short": "Gestaltung, Druckvorstufe, Digital – nach der Ausbildung.",
+ "desc": "Bewerbung als Mediengestalter/in Digital und Print mit Berufserfahrung: Muster-Anschreiben für Druckvorstufe und Agentur-Gestalterin, mit Lebenslauf und Mappe.",
+ "intro": "Ausgelernte Mediengestalterinnen und Mediengestalter arbeiten in Agenturen, Druckereien, Verlagen oder Inhouse-Abteilungen. Je nach Fachrichtung zählen Gestaltung, Druckvorstufe, Animation oder Web. Eine aktuelle Mappe und klare Angaben zu Programmen und Projekten sind Pflicht.",
+ "lookFor": [
+  "Abschluss Mediengestalter/in Digital und Print",
+  "Aktuelle Mappe",
+  "Sicherer Umgang mit Layout- und Bildprogrammen",
+  "Druckvorstufe oder Web, je nach Stelle",
+  "Termintreue"
+ ],
+ "letters": [
+  {
+   "label": "Druckvorstufe mit Erfahrung",
+   "level": "erfahren",
+   "position": "Mediengestalter Druckvorstufe",
+   "to": {
+    "org": "Druckerei Hansen & Söhne",
+    "sal": "f",
+    "contact": "Hansen",
+    "street": "Gutenbergstraße 4",
+    "city": "23566 Lübeck"
+   },
+   "body": [
+    "falsch angelegte Daten erkenne ich, bevor sie an die Maschine gehen: fehlende Beschnittzugabe, Schriften als RGB, zu dünne Linien. Seit sechs Jahren prüfe und optimiere ich in einer Druckerei Kundendaten und habe dort ein Merkblatt geschrieben, das unsere Reklamationsquote deutlich gesenkt hat.",
+    "Ich bin Mediengestalter Digital und Print, Fachrichtung Gestaltung und Technik, arbeite mit Ausschießprogrammen und Farbmanagement und betreue Kunden telefonisch, wenn Daten nicht passen. Ihr Betrieb investiert in Digitaldruck, dort möchte ich mich weiterentwickeln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Agenturgestalterin will Inhouse arbeiten",
+   "level": "erfahren",
+   "position": "Mediengestalterin Inhouse-Marketing",
+   "to": {
+    "org": "Ostsee Ferienparks GmbH",
+    "sal": "none",
+    "street": "Strandallee 50",
+    "city": "23669 Timmendorfer Strand"
+   },
+   "body": [
+    "Tempo und Vielseitigkeit habe ich in vier Jahren Agentur gelernt. Jetzt möchte ich eine Marke langfristig begleiten, von Broschüre und Website bis zu Schildern im Park.",
+    "Ich gestalte für Print und Web, baue Vorlagen für Social Media und habe für einen Tourismuskunden ein komplettes Erscheinungsbild umgesetzt. Meine Mappe liegt bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Mappe (PDF)",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Svenja Behrens",
+    "Fackenburger Allee 40",
+    "23554 Lübeck"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "modern",
+  "accent": 2,
+  "name": "Tim Brodersen",
+  "title": "Mediengestalter Digital und Print",
+  "street": "Moislinger Allee 70",
+  "city": "23558 Lübeck",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Mediengestalter Druckvorstufe",
+    "Druckhaus Holstein",
+    "Lübeck",
+    "- Datenprüfung und -optimierung\n- Ausschießen, Farbmanagement\n- Merkblatt Druckdaten (Reklamationen gesenkt)"
+   ],
+   [
+    "2017",
+    "2020",
+    "Auszubildender Mediengestalter",
+    "Druckhaus Holstein",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2020",
+    "Abschlussprüfung Mediengestalter Digital und Print",
+    "IHK Lübeck",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Druckvorstufe",
+    5
+   ],
+   [
+    "Farbmanagement",
+    4
+   ],
+   [
+    "Layout",
+    4
+   ],
+   [
+    "Kundenberatung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fotografie, Segeln"
+ },
+ "do": [
+  "Fachrichtung und Schwerpunkt nennen.",
+  "Mappe aktuell halten.",
+  "Konkrete Verbesserungen beschreiben."
+ ],
+ "dont": [
+  "Mappe von der Ausbildung ohne Update.",
+  "Nur Programme aufzählen.",
+  "Kundendaten in der Mappe ohne Freigabe."
+ ],
+ "questions": [
+  "Wie prüfen Sie Druckdaten?",
+  "Wie gehen Sie mit einem Kunden um, der falsche Daten liefert?",
+  "Welche Arbeit in Ihrer Mappe zeigt Sie am besten?",
+  "Wie organisieren Sie mehrere Projekte gleichzeitig?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich nach der Ausbildung eine neue Mappe machen?",
+   "a": "Ja, aktualisiere sie regelmäßig. Zeig Arbeiten aus dem Job (mit Freigabe) und neue eigene Projekte, nicht nur Prüfungsstücke."
+  }
+ ],
+ "related": [
+  "ausbildung-mediengestalter",
+  "grafikdesigner",
+  "fotograf",
+  "online-marketing-manager"
+ ]
+}

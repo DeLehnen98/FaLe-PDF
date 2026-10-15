@@ -2,7 +2,7 @@
 // Groß-/Kleinschreibung, Formatierung löschen, Format übertragen, Listen (mehrstufig, Aufzählungszeichen).
 import { $, $$, esc, openDialog } from '../ui.js';
 import { FONTS, fontCss, fontNameOf } from './fonts.js';
-import { STYLE_ORDER, STYLE_BLOCK, STYLE_CLASSES, styleOfBlock, normalizeStyles, DEFAULT_STYLES } from './docstyles.js';
+import { STYLE_ORDER, STYLE_BLOCK, STYLE_CLASSES, styleOfBlock, normalizeStyles, DEFAULT_STYLES, blockOfStyle, CUSTOM_BASE, isCustomStyle } from './docstyles.js';
 import { BULLETS } from './docmodel.js';
 
 export const SIZES = [8, 9, 10, 10.5, 11, 12, 14, 16, 18, 20, 24, 28, 36, 48, 72];
@@ -77,8 +77,9 @@ function flattenQuote(bq) {
   bq.replaceWith(...out);
   return out;
 }
+const dropStyleClasses = el => { STYLE_CLASSES.forEach(c => el.classList.remove(c)); Array.from(el.classList).forEach(c => { if (/^us-u\d+$/.test(c)) el.classList.remove(c); }); };
 export function applyStyle(ed, blocks, id) {
-  const [tag, cls] = STYLE_BLOCK[id] || STYLE_BLOCK.normal;
+  const [tag, cls] = blockOfStyle(id);
   const res = [];
   for (let b of blocks) {
     if (!b.isConnected) continue;
@@ -88,7 +89,7 @@ export function applyStyle(ed, blocks, id) {
       if (b === bq) { parts.forEach(p => res.push(...applyStyle(ed, [p], id))); continue; }
     }
     if (b.tagName === 'LI') {
-      STYLE_CLASSES.forEach(c => b.classList.remove(c));
+      dropStyleClasses(b);
       if (cls && id !== 'title') b.classList.add(cls);
       res.push(b);
       continue;
@@ -96,7 +97,7 @@ export function applyStyle(ed, blocks, id) {
     if (b.tagName === 'DIV' && b.parentElement !== ed && b.closest('td,th,.textbox,.sect') == null && tag === 'p' && !cls) { res.push(b); continue; }
     if (b.tagName === 'PRE' && tag !== 'pre') { b.innerHTML = esc(b.textContent).replace(/\n/g, '<br>') || '<br>'; }
     b = retag(b, tag);
-    STYLE_CLASSES.forEach(c => b.classList.remove(c));
+    dropStyleClasses(b);
     if (cls) b.classList.add(cls);
     if (!b.getAttribute('class')) b.removeAttribute('class');
     if (!b.firstChild) b.appendChild(document.createElement('br'));
@@ -111,8 +112,8 @@ export function styleModifyDialog(styles, id) {
   const s = S[id];
   const fontOpts = `<option value="">(wie Standard)</option>` + FONTS.map(f => `<option value="${esc(f.name)}" ${s.font === f.name ? 'selected' : ''}>${esc(f.name)}</option>`).join('');
   return openDialog({
-    title: `Formatvorlage ändern: ${s.name}`, wide: true,
-    body: `<div class="wf-dlg">
+    title: isCustomStyle(id) && !s.name ? 'Neue Formatvorlage' : `Formatvorlage ändern: ${s.name}`, wide: true,
+    body: `<div class="wf-dlg">${isCustomStyle(id) ? `<label class="field"><span class="field-label">Name</span><input class="input" name="name" maxlength="40" value="${esc(s.name || '')}" placeholder="z. B. Hinweis, Adresse, Merksatz"></label>` : ''}
       <div class="field-row"><label class="field"><span class="field-label">Schriftart</span><select class="select" name="font">${fontOpts}</select></label>
         <label class="field"><span class="field-label">Größe (pt)</span><input class="input" name="size" inputmode="decimal" value="${s.size ? de(s.size) : ''}" placeholder="wie Standard"></label></div>
       <div class="field-row"><label class="field"><span class="field-label">Farbe</span><input class="input" type="color" name="color" value="${s.color || '#1A1A1A'}"></label>
@@ -127,6 +128,7 @@ export function styleModifyDialog(styles, id) {
       collect: () => {
         const v = n => $(`[name=${n}]`, dlg);
         return {
+          ...(v('name') ? { name: v('name').value.trim().slice(0, 40) || s.name || 'Eigene Formatvorlage' } : {}),
           font: v('font').value || null, size: num(v('size').value), color: v('color').value.toUpperCase(), align: v('align').value || null,
           b: v('b').checked, i: v('i').checked, u: v('u').checked, keepNext: v('keepNext').checked,
           before: num(v('before').value) ?? 0, after: num(v('after').value) ?? 0, line: Math.max(0.5, Math.min(5, num(v('line').value) || 1.15)),
@@ -134,7 +136,7 @@ export function styleModifyDialog(styles, id) {
       },
     }),
   }).then(r => {
-    if (r.value === 'reset') return { ...DEFAULT_STYLES[id] };
+    if (r.value === 'reset') return isCustomStyle(id) ? { ...CUSTOM_BASE, name: s.name } : { ...DEFAULT_STYLES[id] };
     if (r.value !== 'ok' || !r.data) return null;
     const d = r.data;
     if (id === 'normal' && !d.font) d.font = 'Arial';

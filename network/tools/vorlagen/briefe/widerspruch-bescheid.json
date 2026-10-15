@@ -1,0 +1,68 @@
+{
+ "id": "widerspruch-bescheid",
+ "group": "behoerde",
+ "tool": "din-letter",
+ "order": 26,
+ "name": "Widerspruch gegen einen Bescheid",
+ "short": "Fristwahrend Widerspruch einlegen – Begründung folgt",
+ "desc": "Widerspruch gegen einen Bescheid einlegen: allgemeines Muster mit Aktenzeichen, Frist und nachgereichter Begründung – mit klaren Hinweisen, keine Rechtsberatung.",
+ "search": "widerspruch bescheid behörde amt frist einspruch",
+ "when": [
+  "Du hast einen Bescheid bekommen, mit dem du nicht einverstanden bist – etwa von einer Behörde, der Familienkasse oder der Krankenkasse. Unten im Bescheid steht in der Rechtsbehelfsbelehrung, ob und bis wann du Widerspruch einlegen kannst. Meist ist es ein Monat ab Bekanntgabe.",
+  "Wenn die Zeit knapp ist, legst du zuerst nur fristwahrend Widerspruch ein und reichst die Begründung nach. Genau das macht dieses Muster."
+ ],
+ "must": [
+  "Behörde und Aktenzeichen aus dem Bescheid",
+  "Datum des Bescheids und worum es geht",
+  "Den klaren Satz „Hiermit lege ich Widerspruch ein“",
+  "Begründung – oder den Hinweis, dass sie folgt",
+  "Bitte um Akteneinsicht, falls du Unterlagen brauchst",
+  "Deine Unterschrift"
+ ],
+ "notes": [
+  "Achte auf die Frist: Sie beginnt mit der Bekanntgabe. Bei einfacher Post gilt der Bescheid in der Regel am vierten Tag nach Absendung als bekannt gegeben.",
+  "Ein Widerspruch per einfacher E-Mail ist oft nicht wirksam. Schick ihn per Post, gib ihn persönlich ab oder nutze den elektronischen Weg, den die Rechtsbehelfsbelehrung nennt.",
+  "Ein Widerspruch hat nicht immer aufschiebende Wirkung – eine geforderte Zahlung kann trotzdem fällig sein.",
+  "Hilfe bekommst du je nach Thema bei Sozialverbänden, Verbraucherzentralen, Lohnsteuerhilfevereinen, Mietervereinen oder einer Anwältin bzw. einem Anwalt."
+ ],
+ "faq": [
+  {
+   "q": "Kostet ein Widerspruch Geld?",
+   "a": "Bei Sozialleistungen ist das Widerspruchsverfahren in der Regel kostenfrei. In anderen Bereichen können Gebühren anfallen, wenn der Widerspruch erfolglos bleibt – steht oft in der Rechtsbehelfsbelehrung oder lässt sich bei der Behörde erfragen."
+  },
+  {
+   "q": "Was passiert nach dem Widerspruch?",
+   "a": "Die Behörde prüft den Fall noch einmal. Sie hilft dem Widerspruch ab oder erlässt einen Widerspruchsbescheid. Gegen diesen kannst du dann meist klagen – auch dafür gilt eine Frist."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "beschwerde",
+  "dsgvo-auskunft",
+  "abmeldung-rundfunkbeitrag"
+ ],
+ "from": [
+  "Thomas Muster",
+  "Birkenallee 8",
+  "34117 Kassel"
+ ],
+ "to": {
+  "org": "Stadt Musterstadt",
+  "attn": "Amt für Soziales, Sachgebiet 50.2",
+  "street": "Rathausplatz 1",
+  "city": "34117 Kassel"
+ },
+ "letter": {
+  "subject": "Widerspruch gegen Ihren Bescheid vom [Datum], Aktenzeichen [Aktenzeichen]",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "gegen Ihren oben genannten Bescheid, mir zugegangen am [Datum], lege ich Widerspruch ein.",
+   "Die Begründung reiche ich nach, sobald mir alle Unterlagen vorliegen. Bitte gewähren Sie mir dazu Einsicht in die Verwaltungsakte oder senden Sie mir Kopien der Unterlagen, auf die sich der Bescheid stützt.",
+   "Bitte bestätigen Sie mir den Eingang dieses Widerspruchs."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ }
+}

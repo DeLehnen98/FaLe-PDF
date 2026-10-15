@@ -1,0 +1,76 @@
+{
+ "id": "projektplan",
+ "slug": "projektplan",
+ "cat": "Arbeit",
+ "name": "Projektplan mit Zeitleiste",
+ "short": "Aufgaben, Verantwortliche, Fortschritt und Gantt-Raster",
+ "desc": "Projektplan-Vorlage mit Gantt-Zeitleiste als Excel (XLSX): Aufgaben mit Start und Dauer eintragen – das Wochenraster färbt sich, Fortschritt und Status inklusive.",
+ "search": "",
+ "intro": "Der Projektplan verbindet eine Aufgabenliste mit einem einfachen Gantt-Diagramm. Jede Aufgabe startet automatisch nach der vorherigen, das Ende wird in Arbeitstagen gerechnet, und das Wochenraster rechts färbt sich nach Start und Ende.",
+ "uses": [
+  "Kleine Projekte im Team planen",
+  "Termine für eine Veranstaltung oder einen Umzug strukturieren",
+  "Den Stand eines Projekts in einer Besprechung zeigen"
+ ],
+ "cols": [
+  [
+   "Aufgabe",
+   "Was zu tun ist."
+  ],
+  [
+   "Verantwortlich",
+   "Wer sich darum kümmert."
+  ],
+  [
+   "Start",
+   "Die erste Aufgabe startet am Projektstart. Jede weitere beginnt am Arbeitstag nach dem Ende der vorigen (ARBEITSTAG) – du kannst aber jederzeit ein eigenes Datum eintragen."
+  ],
+  [
+   "Dauer",
+   "Dauer in Arbeitstagen, ohne Wochenenden."
+  ],
+  [
+   "Ende",
+   "Start plus Dauer in Arbeitstagen."
+  ],
+  [
+   "Fortschritt",
+   "0 bis 100 %. Der Balken zeigt den Stand; ab 100 % wird die Aufgabe im Raster grün."
+  ],
+  [
+   "Status",
+   "Offen, In Arbeit, Wartet, Erledigt oder Blockiert – farbig markiert."
+  ]
+ ],
+ "tips": [
+  "Die Kalenderwochen über dem Raster rechnen sich aus dem Projektstart; die aktuelle Woche ist gelb hinterlegt."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich mehr als zwölf Wochen anzeigen?",
+   "a": "Das Raster hat zwölf Wochenspalten. Für längere Projekte kopierst du die letzte Spalte nach rechts – Formeln und Farbregeln laufen mit, wenn du den Bereich der Farbregeln erweiterst."
+  }
+ ],
+ "related": [
+  "aufgabenliste",
+  "projektzeiten",
+  "schichtplan"
+ ],
+ "en": {
+  "slug": "project-plan-gantt",
+  "name": "Project plan with timeline",
+  "short": "Tasks, owners, progress and a weekly Gantt grid",
+  "desc": "Project plan template with a Gantt timeline (XLSX): enter tasks with start and duration – the weekly grid colours itself, with progress and status.",
+  "intro": "A task list combined with a simple Gantt chart. Each task starts after the previous one, the end date counts working days, and the weekly grid is coloured by start and end.",
+  "inside": [
+   "Start / duration / end in working days (WORKDAY)",
+   "Progress bars and status colours",
+   "12-week grid with calendar weeks",
+   "Current week highlighted"
+  ],
+  "uses": [
+   "Small team projects",
+   "Planning an event"
+  ]
+ }
+}

@@ -6,7 +6,6 @@ import './lib/tt.js';
 import { registerSW } from './lib/sw.js';
 
 const cfgEl = document.getElementById('vl-config');
-if (cfgEl) init(JSON.parse(cfgEl.textContent));
 
 function init(cfg) {
   document.documentElement.classList.add('wt-js');
@@ -26,6 +25,8 @@ function directory(cfg) {
   const nohits = document.querySelector('[data-vl-nohits]');
   const groups = [...document.querySelectorAll('[data-vl-group]')];
   const cards = [...document.querySelectorAll('.vl-card')];
+  // haystack = synonyms from data-search + the visible card text (name, short line, situation pills), folded like the build
+  const hays = new Map(cards.map(c => [c, `${c.dataset.search || ''} ${fold(foldDe(c.textContent))}`.replace(/\s+/g, ' ')]));
   const state = { field: '', level: '' };
   document.querySelectorAll('[data-vl-search], [data-vl-filter]').forEach(n => { n.hidden = false; });
   const params = new URLSearchParams(location.search);
@@ -46,7 +47,7 @@ function directory(cfg) {
     const words = (q ? q.value : '').trim().split(/\s+/).filter(Boolean).map(w => [fold(w), foldDe(w)]);
     let n = 0;
     for (const c of cards) {
-      const hay = c.dataset.search || '';
+      const hay = hays.get(c);
       const ok = (!state.field || c.dataset.field === state.field)
         && (!state.level || (c.dataset.levels || '').split(' ').includes(state.level))
         && words.every(([a, b]) => hay.includes(a) || hay.includes(b));
@@ -87,3 +88,6 @@ function copyButtons(cfg) {
     });
   }
 }
+
+// last, so every const above (fold, foldDe, …) is initialised before init() runs
+if (cfgEl) init(JSON.parse(cfgEl.textContent));

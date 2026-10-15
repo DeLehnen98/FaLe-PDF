@@ -1,0 +1,310 @@
+{
+ "id": "office-manager",
+ "field": "buero",
+ "name": "Office-Manager/in",
+ "search": "office manager officemanagerin büroleitung büromanagement verwaltung startup assistenz bewerbung",
+ "short": "Büro organisieren – vom Einkauf bis zum Onboarding.",
+ "desc": "Bewerbung als Office-Manager/in: Muster-Anschreiben für erfahrene Assistentin, Rezeptionist mit Aufstiegswunsch und Wiedereinsteigerin, mit Lebenslauf.",
+ "intro": "Office-Managerinnen und -Manager halten den Laden zusammen: Einkauf, Dienstleister, Reisen, Veranstaltungen, Onboarding, oft auch Buchhaltungsvorbereitung und HR-Unterstützung. Gefragt ist jemand, der Dinge erledigt, bevor jemand fragt. Beschreib, was du organisiert hast und wie viele Leute davon profitiert haben.",
+ "lookFor": [
+  "Kaufmännische Ausbildung oder Erfahrung im Büro",
+  "Organisationstalent und Überblick",
+  "Sicherer Umgang mit Office-Programmen",
+  "Freundlich, aber bestimmt im Umgang mit Dienstleistern",
+  "Diskretion"
+ ],
+ "letters": [
+  {
+   "label": "Assistentin übernimmt das ganze Büro",
+   "level": "erfahren",
+   "position": "Office-Managerin",
+   "to": {
+    "org": "Softwarehaus Elbhang GmbH",
+    "sal": "f",
+    "contact": "Pohl",
+    "street": "Schillerplatz 9",
+    "city": "01309 Dresden"
+   },
+   "body": [
+    "als ich bei meinem jetzigen Arbeitgeber anfing, waren wir 18 Leute in einer Etage. Heute sind es 65 an zwei Standorten, und ich habe beide Umzüge organisiert, die Küche ausgestattet, einen Rahmenvertrag mit der Reinigungsfirma ausgehandelt und ein Onboarding-Paket gebaut, das jeder Neue am ersten Tag auf dem Tisch hat.",
+    "Gelernt habe ich Kauffrau für Büromanagement, seitdem arbeite ich seit elf Jahren in Assistenz und Office-Management. Rechnungen vorkontieren, Reisen buchen, Weihnachtsfeiern für 80 Personen planen und die Geschäftsführung entlasten gehören zu meinem Alltag. Ich möchte nun in einem Unternehmen arbeiten, das wie Ihres gerade wächst und jemanden braucht, der Strukturen aufbaut.",
+    "Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Abschlusszeugnis"
+   ]
+  },
+  {
+   "label": "Empfangsmitarbeiter mit Aufstiegswunsch",
+   "level": "erfahren",
+   "position": "Office-Manager (Teilzeit, 30 Stunden)",
+   "to": {
+    "org": "Kanzlei Weber Rechtsanwälte",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Prager Straße 2",
+    "city": "01069 Dresden"
+   },
+   "body": [
+    "seit vier Jahren sitze ich am Empfang eines Coworking-Hauses. In dieser Zeit habe ich mehr übernommen, als in meiner Stellenbeschreibung steht: Raumbuchungen, Wartungsverträge, Getränkebestellungen, das Ticket-System für Mieter. Ich möchte den nächsten Schritt machen und ein Büro verantworten.",
+    "Eine Kanzlei mit zehn Anwälten und eigenen Abläufen ist für mich die richtige Größe. Diskretion und ein klarer Kopf, wenn drei Dinge gleichzeitig brennen, kann ich. Fristenkalender kenne ich noch nicht, das lerne ich gern.",
+    "Teilzeit mit 30 Stunden wäre ideal, Beginn ab dem nächsten Monatsersten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zwischenzeugnis"
+   ],
+   "from": [
+    "Tobias Sommer",
+    "Alaunstraße 60",
+    "01099 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 2,
+  "name": "Juliane Fritsch",
+  "title": "Office-Managerin",
+  "street": "Loschwitzer Straße 20",
+  "city": "01309 Dresden",
+  "exp": [
+   [
+    "08/2019",
+    "",
+    "Assistenz der Geschäftsführung, ab 2022 Office-Managerin",
+    "Datenfluss GmbH",
+    "Dresden",
+    "- Wachstum von 18 auf 65 Mitarbeitende begleitet\n- Zwei Umzüge, Dienstleistersteuerung\n- Onboarding, Events bis 80 Personen"
+   ],
+   [
+    "08/2015",
+    "07/2019",
+    "Sachbearbeiterin",
+    "Elektro Großhandel Sachsen",
+    "Dresden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung Kauffrau für Büromanagement",
+    "IHK Dresden",
+    "Dresden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Organisation",
+    5
+   ],
+   [
+    "Dienstleistersteuerung",
+    4
+   ],
+   [
+    "Office-Programme",
+    5
+   ],
+   [
+    "Vorkontierung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Kanu, Gärtnern"
+ },
+ "do": [
+  "Konkrete Beispiele für Organisiertes nennen.",
+  "Größe des Büros oder Teams angeben.",
+  "Zeigen, wo du Strukturen aufgebaut hast."
+ ],
+ "dont": [
+  "„Ich bin ein Organisationstalent“ ohne Beleg.",
+  "Nur Telefon und Post erwähnen.",
+  "Die Stelle mit Sekretariat gleichsetzen."
+ ],
+ "questions": [
+  "Welche Strukturen haben Sie im Büro aufgebaut?",
+  "Wie priorisieren Sie, wenn drei Leute gleichzeitig etwas wollen?",
+  "Wie gehen Sie mit Dienstleistern um, die nicht liefern?",
+  "Wie behalten Sie Budgets im Blick?"
+ ],
+ "faq": [
+  {
+   "q": "Office-Manager oder Assistenz der Geschäftsführung?",
+   "a": "Office-Manager kümmern sich um das ganze Büro, Assistenz um eine oder wenige Führungskräfte. In kleinen Firmen ist es oft dieselbe Person. Lies die Aufgaben in der Anzeige genau."
+  }
+ ],
+ "related": [
+  "assistenz-geschaeftsfuehrung",
+  "kauffrau-bueromanagement",
+  "empfangsmitarbeiter",
+  "teamleiter"
+ ],
+ "en": {
+  "slug": "office-manager",
+  "name": "Office manager",
+  "search": "office manager office administrator workplace operations facilities startup",
+  "short": "Running the office – suppliers, onboarding, events and more.",
+  "desc": "Office manager cover letter examples: an experienced assistant taking on a growing office and a receptionist stepping up, plus a ready CV with placeholder portrait.",
+  "intro": "Office managers keep everything running: suppliers, travel, events, onboarding, often finance admin and HR support. Show what you organised and how many people relied on it.",
+  "lookFor": [
+   "Office or administrative experience",
+   "Organisation and overview",
+   "Confident with office software",
+   "Friendly but firm with suppliers",
+   "Discretion"
+  ],
+  "letters": [
+   {
+    "label": "Assistant who grew with the company",
+    "level": "erfahren",
+    "position": "Office manager",
+    "to": {
+     "org": "Brightline Software Ltd",
+     "sal": "f",
+     "contact": "Shah",
+     "street": "45 Deansgate",
+     "city": "Manchester M3 2AY"
+    },
+    "body": [
+     "when I joined my current employer there were 18 of us on one floor. There are now 65 across two sites, and I ran both moves, set up the kitchen, negotiated the cleaning contract and built a welcome pack that every new starter finds on their desk on day one.",
+     "I have eleven years in office administration and executive support. Coding invoices, booking travel, planning a Christmas party for 80 and keeping the directors free to do their jobs are part of my normal week. I would like to join a company that, like yours, is growing and needs someone to build structure."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Receptionist stepping up",
+    "level": "erfahren",
+    "position": "Office manager (part time)",
+    "to": {
+     "org": "Weber Solicitors",
+     "sal": "m",
+     "contact": "Weber",
+     "street": "2 King Street",
+     "city": "Manchester M2 4LQ"
+    },
+    "body": [
+     "four years on reception in a co-working building have given me far more than my job description: room bookings, maintenance contracts, supplies, and the ticket system for tenants. I would now like to run an office myself.",
+     "A firm of ten solicitors is the right size for me. I am discreet and calm when three things go wrong at once. I have not managed a deadline diary yet, and I am keen to learn."
+    ],
+    "att": [
+     "CV",
+     "Reference"
+    ],
+    "from": [
+     "Tom Fletcher",
+     "60 Oldham Street",
+     "Manchester M4 1LE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a04",
+   "design": "modern",
+   "accent": 2,
+   "name": "Julia Fisher",
+   "title": "Office manager",
+   "street": "20 Wilmslow Road",
+   "city": "Manchester M14 5TQ",
+   "exp": [
+    [
+     "08/2019",
+     "",
+     "Executive assistant, office manager from 2022",
+     "Dataflow Ltd",
+     "Manchester",
+     "- Supported growth from 18 to 65 staff\n- Two office moves, supplier management\n- Onboarding, events up to 80 people"
+    ],
+    [
+     "08/2015",
+     "07/2019",
+     "Administrator",
+     "Northern Wholesale",
+     "Salford",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2013",
+     "2015",
+     "Business administration diploma",
+     "Manchester College",
+     "Manchester",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Organisation",
+     5
+    ],
+    [
+     "Supplier management",
+     4
+    ],
+    [
+     "Office software",
+     5
+    ],
+    [
+     "Invoice coding",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Canoeing, gardening"
+  },
+  "do": [
+   "Give concrete examples of what you organised.",
+   "Say how big the office or team was.",
+   "Show where you built structure."
+  ],
+  "dont": [
+   "Call yourself “highly organised” without proof.",
+   "Only mention phones and post.",
+   "Treat the role as a secretary job."
+  ],
+  "questions": [
+   "What structures have you built in an office?",
+   "How do you prioritise when three people need something now?",
+   "How do you deal with suppliers who do not deliver?",
+   "How do you keep budgets under control?"
+  ],
+  "faq": [
+   {
+    "q": "Office manager or executive assistant?",
+    "a": "Office managers look after the whole office; executive assistants support one or a few leaders. In small companies it is often the same person – read the duties in the advert carefully."
+   }
+  ]
+ }
+}

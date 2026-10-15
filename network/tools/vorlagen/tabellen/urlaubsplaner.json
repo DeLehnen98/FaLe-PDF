@@ -1,0 +1,100 @@
+{
+ "id": "urlaubsplaner",
+ "slug": "urlaubsplaner",
+ "cat": "Arbeit",
+ "name": "Urlaubsplaner",
+ "short": "Urlaubstage je Person, Resturlaub und Feiertage",
+ "desc": "Urlaubsplaner als Excel-Vorlage (XLSX): Urlaube je Person eintragen, Arbeitstage ohne Wochenenden und Feiertage zählen lassen und den Resturlaub sehen.",
+ "search": "",
+ "intro": "Der Urlaubsplaner zählt für jede Person die genommenen Urlaubstage und den Rest. Arbeitstage rechnet er ohne Wochenenden und ohne die Feiertage aus dem zweiten Blatt – Ostern und die davon abhängigen Feiertage berechnet die Vorlage für das eingetragene Jahr selbst.",
+ "uses": [
+  "Kleine Teams, Praxen oder Vereine, die Urlaube abstimmen",
+  "Den eigenen Urlaub übers Jahr planen",
+  "Krankheitstage getrennt vom Urlaub zählen"
+ ],
+ "cols": [
+  [
+   "Mitarbeiter/in",
+   "Die Namen im Team. Sie erscheinen in der Auswahlliste der Urlaubseinträge."
+  ],
+  [
+   "Anspruch",
+   "Urlaubstage pro Jahr laut Vertrag."
+  ],
+  [
+   "Genommen",
+   "SUMMEWENNS addiert die Arbeitstage aller Einträge dieser Person mit der Art „Urlaub“."
+  ],
+  [
+   "Resturlaub",
+   "Anspruch minus genommen."
+  ],
+  [
+   "Krankheitstage",
+   "Wie „Genommen“, aber für Einträge mit der Art „Krank“ – sie zählen nicht vom Urlaub ab."
+  ],
+  [
+   "Von",
+   "Erster Tag der Abwesenheit."
+  ],
+  [
+   "Bis",
+   "Letzter Tag der Abwesenheit."
+  ],
+  [
+   "Arbeitstage",
+   "NETTOARBEITSTAGE zählt Montag bis Freitag zwischen Von und Bis und lässt die Feiertage aus dem Blatt „Feiertage“ weg."
+  ],
+  [
+   "Art",
+   "Urlaub, Krank oder eine andere Art aus der Liste."
+  ],
+  [
+   "Bemerkung",
+   "Freies Feld, z. B. „Brückentag“."
+  ],
+  [
+   "Feiertag",
+   "Name des Feiertags im Blatt „Feiertage“. Bundesweite Feiertage stehen schon drin; regionale kannst du in den leeren Zeilen ergänzen."
+  ],
+  [
+   "Datum",
+   "Für feste Feiertage aus dem Jahr gebildet; Ostersonntag rechnet eine Formel aus, Karfreitag, Ostermontag, Himmelfahrt und Pfingstmontag hängen daran."
+  ],
+  [
+   "Wochentag",
+   "Zeigt, ob ein Feiertag auf ein Wochenende fällt – dann kostet er keinen Urlaubstag."
+  ]
+ ],
+ "tips": [
+  "Ändere oben das Jahr – alle Feiertage und Beispieltermine wandern mit."
+ ],
+ "faq": [
+  {
+   "q": "Sind die Feiertage für mein Bundesland richtig?",
+   "a": "Vorgegeben sind die bundesweiten Feiertage. Regionale Feiertage wie Fronleichnam oder Reformationstag trägst du im Blatt „Feiertage“ in die leeren Zeilen ein; die Arbeitstage rechnen dann automatisch richtig."
+  }
+ ],
+ "related": [
+  "teamurlaub",
+  "stundenzettel",
+  "schichtplan"
+ ],
+ "en": {
+  "slug": "holiday-planner",
+  "name": "Holiday planner",
+  "short": "Leave days per person, remaining leave and public holidays",
+  "desc": "Holiday planner spreadsheet (XLSX): enter absences per person, count working days without weekends and public holidays, and see the remaining leave.",
+  "intro": "The planner counts the leave days taken and remaining for each person. Working days exclude weekends and the German public holidays on the second sheet; Easter is calculated for the chosen year.",
+  "inside": [
+   "Entitlement, taken and remaining leave per person",
+   "Absence entries with working days (NETWORKDAYS)",
+   "Public holiday sheet with Easter-based dates",
+   "Sick days counted separately"
+  ],
+  "uses": [
+   "Small teams coordinating holidays",
+   "Planning your own leave for the year"
+  ]
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "id": "pflegefachkraft-anerkennung",
+ "field": "pflege",
+ "name": "Pflegefachkraft aus dem Ausland (Anerkennung)",
+ "search": "pflegefachkraft ausland anerkennung internationale pflegekräfte kenntnisprüfung anpassungslehrgang defizitbescheid b2 pflege bewerbung",
+ "short": "Bewerbung im Anerkennungsverfahren oder mit Anerkennung.",
+ "desc": "Bewerbung als Pflegefachkraft mit ausländischem Abschluss: Muster-Anschreiben für Pflegekraft im Anpassungslehrgang und mit voller Anerkennung, mit Lebenslauf und Tipps.",
+ "intro": "Pflege ist in Deutschland ein reglementierter Beruf: Für die Arbeit als Pflegefachkraft brauchst du eine Anerkennung durch die zuständige Landesbehörde und Deutschkenntnisse, meist auf B2-Niveau. Bis dahin arbeiten viele als Pflegehilfskraft und schließen Anpassungslehrgang oder Kenntnisprüfung an. Schreib klar, wie weit dein Verfahren ist.",
+ "lookFor": [
+  "Pflegeabschluss mit Anerkennung oder laufendem Verfahren",
+  "Deutschzertifikat (meist B2 für die Anerkennung)",
+  "Berufserfahrung mit Fachbereich",
+  "Aufenthalts- und Arbeitserlaubnis",
+  "Bereitschaft zu Anpassungslehrgang oder Kenntnisprüfung"
+ ],
+ "letters": [
+  {
+   "label": "Pflegekraft aus den Philippinen im Anpassungslehrgang",
+   "level": "quereinstieg",
+   "position": "Pflegehilfskraft mit Anpassungslehrgang zur Pflegefachkraft",
+   "to": {
+    "org": "Klinikum Oberbayern-Nord, Pflegedirektion",
+    "sal": "f",
+    "contact": "Bauer",
+    "street": "Am Klinikpark 25",
+    "city": "85049 Ingolstadt"
+   },
+   "body": [
+    "in Manila habe ich sechs Jahre als Krankenschwester auf einer chirurgischen Station gearbeitet. Seit acht Monaten lebe ich in Ingolstadt. Die Regierung von Oberbayern hat mir einen Bescheid mit Ausgleichsmaßnahme ausgestellt, und ich möchte den Anpassungslehrgang bei Ihnen machen.",
+    "Mein Deutsch ist auf B2-Niveau, das Zertifikat liegt bei. Ich arbeite bis zur Anerkennung gern als Pflegehilfskraft und lerne jeden Tag dazu, auch die Dokumentation auf Deutsch, die mir am meisten Mühe macht. Wundversorgung, Vitalzeichen, Mobilisation nach Operationen und Medikamentenrichten kenne ich gut."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheid der Anerkennungsstelle",
+    "Deutschzertifikat B2",
+    "Diplom mit Übersetzung"
+   ]
+  },
+  {
+   "label": "Pflegefachkraft aus Bosnien mit voller Anerkennung",
+   "level": "erfahren",
+   "position": "Pflegefachkraft Innere Medizin",
+   "to": {
+    "org": "Kreisklinik Hallertau",
+    "sal": "none",
+    "street": "Am Hopfengarten 70",
+    "city": "85276 Pfaffenhofen an der Ilm"
+   },
+   "body": [
+    "seit dem letzten Monat darf ich die Berufsbezeichnung Pflegefachfrau führen; meine Anerkennung ist abgeschlossen, die Urkunde liegt bei. Davor habe ich neun Jahre in Sarajevo und ein Jahr als Pflegehilfskraft in einem Pflegeheim hier gearbeitet.",
+    "Innere Medizin ist mein Fachgebiet: Diabetes, Herzinsuffizienz, Atemwegserkrankungen. Ich möchte zurück ins Krankenhaus, und Ihre Klinik bietet ein Einarbeitungsprogramm für internationale Pflegekräfte mit Mentorin."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Erlaubnisurkunde",
+    "Deutschzertifikat B2",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Amra Hodžić",
+    "Ingolstädter Straße 20",
+    "85276 Pfaffenhofen an der Ilm"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 1,
+  "name": "Maria Santos",
+  "title": "Krankenschwester (Philippinen), Anerkennung in Deutschland läuft",
+  "street": "Friedrich-Ebert-Straße 40",
+  "city": "85055 Ingolstadt",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Pflegehilfskraft",
+    "Seniorenheim Ingolstadt-Nord",
+    "Ingolstadt",
+    "- Grundpflege, Mobilisation\n- Dokumentation auf Deutsch"
+   ],
+   [
+    "2018",
+    "2024",
+    "Krankenschwester Chirurgie",
+    "Metro Manila General Hospital",
+    "Manila (Philippinen)",
+    "- Postoperative Pflege, Wundversorgung\n- Medikamentenmanagement"
+   ]
+  ],
+  "edu": [
+   [
+    "2014",
+    "2018",
+    "Bachelor of Science in Nursing",
+    "University of Santo Tomas",
+    "Manila (Philippinen)",
+    ""
+   ],
+   [
+    "2024",
+    "2025",
+    "Deutschkurs bis B2 (Pflege)",
+    "Sprachschule",
+    "Ingolstadt",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Postoperative Pflege",
+    5
+   ],
+   [
+    "Wundversorgung",
+    5
+   ],
+   [
+    "Mobilisation",
+    4
+   ],
+   [
+    "Dokumentation auf Deutsch",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Tagalog",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C2"
+   ],
+   [
+    "Deutsch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Singen, Kochen"
+ },
+ "do": [
+  "Stand der Anerkennung und Behörde nennen.",
+  "Deutschniveau mit Zertifikat angeben.",
+  "Fachbereiche aus dem Herkunftsland beschreiben."
+ ],
+ "dont": [
+  "Den Titel Pflegefachkraft vor der Anerkennung verwenden.",
+  "Unübersetzte Dokumente schicken.",
+  "Den Aufenthaltsstatus offenlassen."
+ ],
+ "questions": [
+  "Wie weit ist Ihr Anerkennungsverfahren?",
+  "Was ist in der Pflege hier anders als in Ihrem Herkunftsland?",
+  "Wie üben Sie die Dokumentation auf Deutsch?",
+  "Welche Unterstützung brauchen Sie bei der Einarbeitung?"
+ ],
+ "faq": [
+  {
+   "q": "Was ist ein Defizitbescheid?",
+   "a": "Stellt die Anerkennungsstelle wesentliche Unterschiede fest, kannst du sie mit einem Anpassungslehrgang oder einer Kenntnisprüfung ausgleichen. Viele Kliniken bieten Anpassungslehrgänge an und stellen dich bis dahin als Pflegehilfskraft ein."
+  },
+  {
+   "q": "Welches Deutschniveau brauche ich?",
+   "a": "Für die Anerkennung als Pflegefachkraft verlangen die Bundesländer in der Regel Deutschkenntnisse auf Niveau B2. Die genauen Vorgaben nennt die zuständige Stelle."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "pflegehelfer",
+  "fachkraft-anerkennung",
+  "altenpfleger"
+ ]
+}

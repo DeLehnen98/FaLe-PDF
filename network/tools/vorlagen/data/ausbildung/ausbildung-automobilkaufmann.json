@@ -1,0 +1,156 @@
+{
+ "id": "ausbildung-automobilkaufmann",
+ "field": "ausbildung",
+ "name": "Ausbildung Automobilkaufmann/-frau",
+ "search": "ausbildung automobilkaufmann automobilkauffrau autohaus verkauf teiledienst werkstatt azubi bewerbung auto",
+ "short": "Autohaus: Verkauf, Teile, Werkstattannahme, Buchhaltung.",
+ "desc": "Bewerbung für die Ausbildung zum Automobilkaufmann / zur Automobilkauffrau im Autohaus: Muster-Anschreiben für Autofan und Realschülerin, Lebenslauf und Tipps.",
+ "intro": "Automobilkaufleute arbeiten im Autohaus zwischen Verkauf, Teiledienst, Serviceannahme und Buchhaltung. Autohäuser wünschen sich Interesse an Fahrzeugen, aber auch an Zahlen und Kunden. Wer nur von PS schwärmt, verschenkt Punkte; wer erklären kann, warum ihn die Mischung reizt, gewinnt.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Interesse an Fahrzeugen und Technik",
+  "Kaufmännisches Denken",
+  "Kundenorientierung",
+  "Führerschein oder Bereitschaft dazu"
+ ],
+ "letters": [
+  {
+   "label": "Schüler mit Werkstatterfahrung",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Automobilkaufmann",
+   "to": {
+    "org": "Autohaus Möller GmbH",
+    "sal": "m",
+    "contact": "Möller",
+    "street": "Rendsburger Landstraße 200",
+    "city": "24113 Kiel"
+   },
+   "body": [
+    "im Praktikum in einer Kfz-Werkstatt habe ich gemerkt, dass ich lieber vorn an der Annahme stehe als unter dem Auto liege. Ich mochte es, den Kunden zu erklären, was gemacht wurde, Termine zu planen und Rechnungen zu prüfen.",
+    "Autos interessieren mich seit Jahren; ich lese Testberichte und kenne die Unterschiede zwischen Elektro, Hybrid und Verbrenner ziemlich genau. Wichtiger ist mir aber, wie ein Autohaus als Betrieb funktioniert. Den Realschulabschluss mache ich im Sommer mit Schwerpunkt Wirtschaft.",
+    "Den Führerschein mache ich gerade und bin im Juli fertig."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Blick auf Elektromobilität",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Automobilkauffrau",
+   "to": {
+    "org": "Autozentrum Ostsee KG",
+    "sal": "f",
+    "contact": "Kramer",
+    "street": "Werftstraße 5",
+    "city": "24143 Kiel"
+   },
+   "body": [
+    "vor dem Kauf unseres ersten Elektroautos hat meine Familie drei Autohäuser besucht. In zweien wurde uns etwas vorgelesen, in Ihrem wurde uns zugehört. Die Verkäuferin wusste auf jede Frage zur Ladeinfrastruktur in Kiel eine Antwort. So möchte ich auch arbeiten.",
+    "Im Abitur hatte ich Wirtschaft und Englisch als Leistungskurse, und in meinem Nebenjob an einer Tankstelle habe ich in den letzten zwei Jahren Kasse, Bestellungen, Inventur und den Umgang mit Kunden kennengelernt, die um Mitternacht nur noch schnell tanken wollen. Langweilig war es nie.",
+    "Ab August kann ich bei Ihnen beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis"
+   ],
+   "from": [
+    "Merle Thomsen",
+    "Holtenauer Straße 120",
+    "24105 Kiel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 5,
+  "name": "Ole Jürgensen",
+  "title": "Schüler",
+  "street": "Eckernförder Straße 80",
+  "city": "24116 Kiel",
+  "exp": [
+   [
+    "02/2025",
+    "02/2025",
+    "Schülerpraktikum (2 Wochen)",
+    "Kfz-Meisterbetrieb Hansen",
+    "Kiel",
+    "- Mithilfe in der Werkstatt\n- Serviceannahme und Terminplanung"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschulabschluss (voraussichtlich)",
+    "Gemeinschaftsschule Friedrichsort",
+    "Kiel",
+    "Profil Wirtschaft"
+   ]
+  ],
+  "skills": [
+   [
+    "Fahrzeugtechnik (Grundlagen)",
+    3
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Organisation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Dänisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Kartfahren"
+ },
+ "do": [
+  "Interesse an Fahrzeugen und an Kunden verbinden.",
+  "Praktikum in Werkstatt oder Autohaus nennen.",
+  "Führerscheinstand angeben."
+ ],
+ "dont": [
+  "Nur Lieblingsmarken und PS-Zahlen aufzählen.",
+  "Den Mehrmarkenhändler mit einer einzigen Marke ansprechen.",
+  "Lässiges Outfit im Verkaufsraum."
+ ],
+ "questions": [
+  "Was reizt Sie am Autohaus?",
+  "Wie würden Sie einem Kunden Elektro und Hybrid erklären?",
+  "Welche Abteilung interessiert Sie am meisten?",
+  "Wie gehen Sie mit einem unzufriedenen Kunden um?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  }
+ ],
+ "related": [
+  "automobilverkaeufer",
+  "ausbildung-kfz-mechatroniker",
+  "kfz-mechatroniker",
+  "ausbildung-einzelhandel"
+ ]
+}

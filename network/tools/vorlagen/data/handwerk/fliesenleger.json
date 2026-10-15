@@ -1,0 +1,167 @@
+{
+ "id": "fliesenleger",
+ "field": "handwerk",
+ "name": "Fliesenleger/in",
+ "search": "fliesenleger fliesenlegerin fliesen platten mosaik bad sanierung großformat abdichtung handwerk bewerbung",
+ "short": "Bäder, Böden, Großformate – sauber und präzise.",
+ "desc": "Bewerbung als Fliesenleger/in: Muster-Anschreiben für erfahrenen Gesellen und Helfer mit Praxis, mit Lebenslauf und Tipps zum Probearbeiten.",
+ "intro": "Fliesenleger verlegen Fliesen und Platten in Bädern, Küchen und auf Terrassen, dichten ab und bauen bodengleiche Duschen. Kunden erwarten saubere Fugen und eine ordentliche Baustelle. Betriebe fragen nach Großformaten, Abdichtung und Arbeit in bewohnten Räumen.",
+ "lookFor": [
+  "Gesellenbrief oder Erfahrung",
+  "Großformate und Abdichtung",
+  "Genauigkeit bei Fugen und Gefälle",
+  "Sauberes Arbeiten beim Kunden",
+  "Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Geselle mit Spezialisierung auf Bäder",
+   "level": "erfahren",
+   "position": "Fliesenleger (Geselle)",
+   "to": {
+    "org": "Fliesen Weber GmbH",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Gewerbestraße 18",
+    "city": "67059 Ludwigshafen am Rhein"
+   },
+   "body": [
+    "bodengleiche Duschen mit Großformaten bis 120 mal 260 Zentimeter, Abdichtung nach Norm, Gefälle so, dass kein Tropfen stehen bleibt: Das ist seit drei Jahren mein Schwerpunkt. In meinem Betrieb gelte ich als der, der die schwierigen Bäder bekommt.",
+    "Gelernt habe ich Fliesen-, Platten- und Mosaikleger, seitdem arbeite ich zu 80 Prozent in Bestandswohnungen. Ich weiß, wie man in einer bewohnten Wohnung arbeitet, ohne dass das Wohnzimmer danach aussieht wie die Baustelle.",
+    "Gern würde ich in einen größeren Betrieb mit eigener Badplanung wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Fotos von Bädern"
+   ]
+  },
+  {
+   "label": "Helfer mit drei Jahren Praxis",
+   "level": "quereinstieg",
+   "position": "Fliesenlegerhelfer",
+   "to": {
+    "org": "Bad & Boden Neumann",
+    "sal": "f",
+    "contact": "Neumann",
+    "street": "Mundenheimer Straße 30",
+    "city": "67061 Ludwigshafen am Rhein"
+   },
+   "body": [
+    "zuschneiden, mischen, abdichten, verfugen und am Ende putzen, bis alles glänzt: Das mache ich seit drei Jahren als Helfer bei einem Fliesenleger. Einfache Wandflächen lege ich inzwischen selbst, mein Chef kontrolliert nur noch die Ecken.",
+    "Gesucht: ein Betrieb mit mehr Verantwortung für mich und vielleicht der Chance, später die Gesellenprüfung als Externer abzulegen. Führerschein habe ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Arbeitgeber"
+   ],
+   "from": [
+    "Ali Rahimi",
+    "Rheinallee 70",
+    "67061 Ludwigshafen am Rhein"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 4,
+  "name": "Daniele Russo",
+  "title": "Fliesen-, Platten- und Mosaikleger",
+  "street": "Bismarckstraße 50",
+  "city": "67059 Ludwigshafen am Rhein",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Fliesenleger",
+    "Fliesen Pfalz",
+    "Ludwigshafen",
+    "- Bodengleiche Duschen, Großformate\n- Abdichtung in Nassräumen\n- Sanierung in bewohnten Wohnungen"
+   ],
+   [
+    "2016",
+    "2019",
+    "Auszubildender",
+    "Fliesen Pfalz",
+    "Ludwigshafen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Gesellenprüfung Fliesen-, Platten- und Mosaikleger",
+    "Handwerkskammer der Pfalz",
+    "Kaiserslautern",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Großformate",
+    5
+   ],
+   [
+    "Abdichtung",
+    5
+   ],
+   [
+    "Gefälleestrich",
+    4
+   ],
+   [
+    "Mosaik",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Italienisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball, Kochen"
+ },
+ "do": [
+  "Schwerpunkte (Bad, Großformat, Außen) nennen.",
+  "Fotos eigener Arbeiten beilegen.",
+  "Arbeit in bewohnten Räumen ansprechen."
+ ],
+ "dont": [
+  "Unscharfe Handyfotos.",
+  "Abdichtung nicht erwähnen.",
+  "Ungenaue Angaben zur Erfahrung."
+ ],
+ "questions": [
+  "Wie dichten Sie eine bodengleiche Dusche ab?",
+  "Wie verlegen Sie Großformate ohne Überzahn?",
+  "Wie schützen Sie die Wohnung des Kunden?",
+  "Was tun Sie, wenn der Untergrund nicht eben ist?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  },
+  {
+   "q": "Kann ich als Helfer die Gesellenprüfung machen?",
+   "a": "Mit ausreichend Berufserfahrung kannst du bei der Handwerkskammer die Zulassung zur Gesellenprüfung als Externer beantragen. Die Kammer sagt dir, welche Nachweise sie braucht."
+  }
+ ],
+ "related": [
+  "maler-lackierer",
+  "maurer",
+  "anlagenmechaniker-shk",
+  "bauhelfer"
+ ]
+}

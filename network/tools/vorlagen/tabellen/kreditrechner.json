@@ -1,0 +1,72 @@
+{
+ "id": "kreditrechner",
+ "slug": "kreditrechner",
+ "cat": "Finanzen",
+ "name": "Kreditrechner mit Tilgungsplan",
+ "short": "Monatsrate, Gesamtzinsen und Restschuld für jeden Monat",
+ "desc": "Kreditrechner als Excel-Vorlage (XLSX): Kreditbetrag, Zins und Laufzeit eintragen – Monatsrate, Gesamtzinsen und ein Tilgungsplan Monat für Monat entstehen automatisch.",
+ "search": "",
+ "intro": "Der Kreditrechner rechnet ein Annuitätendarlehen mit gleichbleibender Monatsrate. Darunter steht der Tilgungsplan: Für jeden Monat siehst du, wie viel von der Rate Zinsen sind, wie viel getilgt wird und wie hoch die Restschuld ist.",
+ "uses": [
+  "Angebote für einen Ratenkredit vergleichen",
+  "Sehen, was eine kürzere Laufzeit an Zinsen spart",
+  "Den Tilgungsplan der Bank nachrechnen"
+ ],
+ "cols": [
+  [
+   "Nr.",
+   "Die laufende Rate. Die Liste endet automatisch nach Laufzeit mal zwölf Monaten."
+  ],
+  [
+   "Datum",
+   "Fälligkeit der Rate: erste Rate plus Monate (EDATUM)."
+  ],
+  [
+   "Rate",
+   "Die Monatsrate aus RMZ(Zins/12; Laufzeit in Monaten; Kreditbetrag) – bleibt jeden Monat gleich."
+  ],
+  [
+   "Zinsen",
+   "Zinsanteil dieser Rate (ZINSZ). Er wird jeden Monat kleiner, weil die Restschuld sinkt."
+  ],
+  [
+   "Tilgung",
+   "Rate minus Zinsen – der Teil, der die Schuld wirklich verringert."
+  ],
+  [
+   "Restschuld",
+   "Schuld nach dieser Rate. In der letzten Zeile steht 0."
+  ]
+ ],
+ "tips": [
+  "Die Vorlage rechnet mit dem Sollzins. Im Angebot der Bank steht oft der effektive Jahreszins, der Gebühren enthält – vergleiche Angebote am besten über ihn."
+ ],
+ "faq": [
+  {
+   "q": "Warum weicht die Rate der Bank leicht ab?",
+   "a": "Banken runden unterschiedlich oder rechnen mit taggenauen Zinsen. Kleine Abweichungen von wenigen Cent sind normal."
+  }
+ ],
+ "related": [
+  "sparplan",
+  "haushaltsbuch",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "loan-calculator",
+  "name": "Loan calculator with repayment plan",
+  "short": "Monthly payment, total interest and balance for each month",
+  "desc": "Loan calculator spreadsheet (XLSX): enter amount, interest rate and term – monthly payment, total interest and a month-by-month repayment plan are calculated.",
+  "intro": "An annuity loan with a fixed monthly payment. The repayment plan shows for every month how much is interest, how much repays the loan and what is left.",
+  "inside": [
+   "Monthly payment with PMT",
+   "Interest and principal per payment (IPMT)",
+   "Remaining balance per month",
+   "Total interest and total amount"
+  ],
+  "uses": [
+   "Comparing loan offers",
+   "Seeing what a shorter term saves"
+  ]
+ }
+}

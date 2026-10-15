@@ -1,0 +1,172 @@
+{
+ "id": "einkaeufer",
+ "field": "handel",
+ "name": "Einkäufer/in",
+ "search": "einkäufer einkäuferin einkauf beschaffung strategischer einkauf operativer einkauf purchasing lieferanten bewerbung",
+ "short": "Operativ oder strategisch – Lieferanten, Preise, Verträge.",
+ "desc": "Bewerbung als Einkäufer/in im operativen oder strategischen Einkauf: Muster-Anschreiben für erfahrenen Einkäufer, Berufseinsteigerin und Wechsel aus der Disposition.",
+ "intro": "Im Einkauf geht es um mehr als Preise: Lieferanten auswählen und bewerten, Verträge verhandeln, Risiken in Lieferketten erkennen. Unternehmen wollen Zahlen sehen – Einsparungen, Volumen, Warengruppen – und Verhandlungsgeschick. Englisch ist oft Pflicht.",
+ "lookFor": [
+  "Kaufmännische Ausbildung oder Studium",
+  "Warengruppenkenntnis",
+  "Verhandlungsstärke",
+  "ERP-Systeme und Tabellenkalkulation",
+  "Englisch, oft weitere Sprachen"
+ ],
+ "letters": [
+  {
+   "label": "Strategischer Einkäufer mit Erfahrung in Elektronik",
+   "level": "erfahren",
+   "position": "Strategischer Einkäufer Elektronik",
+   "to": {
+    "org": "Messtechnik Bodensee GmbH",
+    "sal": "f",
+    "contact": "Graf",
+    "street": "Seestraße 80",
+    "city": "88045 Friedrichshafen"
+   },
+   "body": [
+    "während der Chipkrise habe ich für meinen Arbeitgeber ein Programm aufgesetzt, mit dem wir für die 40 kritischsten Bauteile jeweils eine zweite Quelle qualifiziert haben. Wir mussten in dieser Zeit nicht einen Liefertermin absagen. Das war die anstrengendste und lehrreichste Zeit meines Berufslebens.",
+    "Seit sieben Jahren verantworte ich die Warengruppe Elektronik mit einem Einkaufsvolumen von rund 25 Millionen Euro. Lieferanten in Asien und Europa kenne ich persönlich, Rahmenverträge verhandle ich auf Englisch. Bei Ihnen reizt mich die Nähe zur Entwicklung, weil ich lieber früh mitrede, als später zu teuer einzukaufen.",
+    "Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Masterzeugnis"
+   ]
+  },
+  {
+   "label": "Disponentin wechselt in den Einkauf",
+   "level": "quereinstieg",
+   "position": "Operative Einkäuferin",
+   "to": {
+    "org": "Lebensmittelwerke Allgäu",
+    "sal": "m",
+    "contact": "Kempter",
+    "street": "Industriestraße 8",
+    "city": "87700 Memmingen"
+   },
+   "body": [
+    "bestellen musste ich als Disponentin in der Produktionsplanung schon immer, nur waren Preise und Verträge nicht meine Sache. Seit einem Jahr unterstütze ich unseren Einkäufer bei Preisanfragen und Lieferantenbewertungen und habe gemerkt, dass ich dort hingehöre.",
+    "Ich kenne Rohstoffe, Verpackungen und die Folgen, wenn ein Lieferant zu spät liefert, aus erster Hand. Eine Weiterbildung zur Fachkauffrau für Einkauf und Logistik habe ich im Herbst begonnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Anmeldebestätigung Weiterbildung"
+   ],
+   "from": [
+    "Tanja Schmid",
+    "Kalchstraße 20",
+    "87700 Memmingen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 0,
+  "name": "Martin Keller",
+  "title": "Strategischer Einkäufer",
+  "street": "Riedleparkstraße 10",
+  "city": "88045 Friedrichshafen",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Strategischer Einkäufer Elektronik",
+    "Antriebe Oberschwaben GmbH",
+    "Ravensburg",
+    "- Einkaufsvolumen ca. 25 Mio. Euro\n- Second-Source-Programm für 40 kritische Bauteile\n- Rahmenverträge mit Lieferanten in Europa und Asien"
+   ],
+   [
+    "2014",
+    "2019",
+    "Operativer Einkäufer",
+    "Antriebe Oberschwaben GmbH",
+    "Ravensburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2014",
+    "Wirtschaftsingenieurwesen (M. Sc.)",
+    "Hochschule Ravensburg-Weingarten",
+    "Weingarten",
+    ""
+   ],
+   [
+    "2009",
+    "2012",
+    "Wirtschaftsingenieurwesen (B. Eng.)",
+    "Hochschule Ravensburg-Weingarten",
+    "Weingarten",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Verhandlung",
+    5
+   ],
+   [
+    "Lieferantenmanagement",
+    5
+   ],
+   [
+    "Elektronikbauteile",
+    4
+   ],
+   [
+    "Risikomanagement",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Chinesisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Laufen"
+ },
+ "do": [
+  "Volumen, Warengruppen und Einsparungen nennen.",
+  "Ein Beispiel für Risikomanagement.",
+  "Sprachen und Verhandlungserfahrung angeben."
+ ],
+ "dont": [
+  "Nur „Ich kann gut verhandeln“.",
+  "Vertrauliche Preise aus dem alten Job.",
+  "Einkauf auf Preisdrücken reduzieren."
+ ],
+ "questions": [
+  "Wie bewerten Sie einen neuen Lieferanten?",
+  "Wie bereiten Sie eine Verhandlung vor?",
+  "Was tun Sie, wenn ein wichtiger Lieferant ausfällt?",
+  "Wie arbeiten Sie mit der Entwicklung zusammen?"
+ ],
+ "faq": [
+  {
+   "q": "Operativer oder strategischer Einkauf?",
+   "a": "Operative Einkäufer bestellen, überwachen Termine und klären Probleme im Tagesgeschäft. Strategische Einkäufer wählen Lieferanten aus, verhandeln Verträge und planen Warengruppen langfristig."
+  }
+ ],
+ "related": [
+  "vertrieb-innendienst",
+  "speditionskaufmann",
+  "controller",
+  "disponent"
+ ]
+}

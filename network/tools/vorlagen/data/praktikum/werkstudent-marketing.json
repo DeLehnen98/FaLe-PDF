@@ -1,0 +1,368 @@
+{
+ "id": "werkstudent-marketing",
+ "field": "praktikum",
+ "name": "Werkstudent/in Marketing",
+ "search": "werkstudent werkstudentin marketing social media content online marketing studentenjob studium bewerbung",
+ "short": "Social Media, Content, Kampagnen – neben dem Studium.",
+ "desc": "Bewerbung als Werkstudent/in im Marketing: Muster-Anschreiben für BWL-Studentin, Medienstudent und Masterstudentin, Lebenslauf mit Projekten und Tipps zur Wochenarbeitszeit.",
+ "intro": "Werkstudierende im Marketing betreuen Kanäle, schreiben Texte, bauen Grafiken, werten Kampagnen aus. Unternehmen wollen sehen, was du schon gemacht hast – ein Uni-Projekt, ein Vereinsaccount, ein eigener Blog. Nenn deine Wochenstunden und wie lange du noch studierst.",
+ "lookFor": [
+  "Eingeschrieben an einer Hochschule, meist noch mindestens zwei Semester",
+  "Erste Erfahrungen mit Social Media, Texten oder Grafik",
+  "Analytisches Interesse an Kennzahlen",
+  "Selbstständiges Arbeiten mit wenigen Stunden pro Woche",
+  "Gutes Deutsch, oft auch Englisch"
+ ],
+ "letters": [
+  {
+   "label": "BWL-Studentin mit Vereinsaccount",
+   "level": "praktikum",
+   "position": "Werkstudentin Marketing (Social Media)",
+   "to": {
+    "org": "Fahrradmanufaktur Elbspeiche GmbH",
+    "sal": "f",
+    "contact": "Brandt",
+    "street": "Am Elbufer 12",
+    "city": "01097 Dresden"
+   },
+   "body": [
+    "den Instagram-Account unseres Rudervereins habe ich vor einem Jahr mit 300 Followern übernommen. Heute sind es 2.100, und zum Anrudern kamen so viele Neue wie seit Jahren nicht. Gelungen ist das nicht mit Werbung, sondern mit kurzen Videos aus dem Training und Porträts unserer ältesten Mitglieder.",
+    "Ich studiere BWL im vierten Semester an der TU Dresden mit Schwerpunkt Marketing. Ihre Räder sehe ich jeden Tag auf dem Weg zur Uni, Ihren Kanal verfolge ich seit Monaten. Ich hätte Ideen für Formate, die Ihre Werkstatt zeigen, ohne nach Werbung auszusehen.",
+    "Neben dem Studium sind 16 bis 20 Wochenstunden drin, während der vorlesungsfreien Zeit auch Vollzeit. Fertig bin ich voraussichtlich in drei Semestern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung",
+    "Notenübersicht",
+    "Beispiele aus dem Vereinsaccount"
+   ]
+  },
+  {
+   "label": "Medienstudent mit Videoerfahrung",
+   "level": "praktikum",
+   "position": "Werkstudent Content Creation (Video)",
+   "to": {
+    "org": "Sachsenbräu Brauerei GmbH",
+    "sal": "m",
+    "contact": "Kretschmer",
+    "street": "Brauereistraße 1",
+    "city": "01277 Dresden"
+   },
+   "body": [
+    "kurze Videos schneiden, Untertitel setzen, Thumbnails bauen: Das mache ich seit drei Jahren für einen Kochkanal mit 40.000 Abonnenten, der einem Freund gehört. Jetzt möchte ich wissen, wie das für eine Marke funktioniert, die mehr als ein Gesicht hat.",
+    "An der Hochschule studiere ich Medieninformatik im fünften Semester. Ihre Brauerei hat eine Geschichte, die sich erzählen lässt: 150 Jahre, ein Familienbetrieb, Brauer, die man vor die Kamera holen kann. Für den Anfang würde ich vorschlagen, Ihre Brauerführungen in kurzen Clips zu zeigen.",
+    "Wöchentlich habe ich 15 bis 20 Stunden frei. Eine Arbeitsprobe schicke ich gern als Link."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung",
+    "Link zu Arbeitsproben"
+   ],
+   "from": [
+    "Tobias Lehmann",
+    "Bautzner Straße 31",
+    "01099 Dresden"
+   ]
+  },
+  {
+   "label": "Masterstudentin mit Analysefokus",
+   "level": "praktikum",
+   "position": "Werkstudentin Performance-Marketing",
+   "to": {
+    "org": "Reiseportal Ostsachsen GmbH",
+    "sal": "none",
+    "street": "Prager Straße 8",
+    "city": "01069 Dresden"
+   },
+   "body": [
+    "bezahlte Anzeigen auszuwerten, macht mir mehr Spaß als sie zu gestalten. In meiner Masterarbeit untersuche ich, welche Kennzahlen kleine Online-Händler wirklich brauchen und welche sie nur verwirren. Bei Ihnen würde ich gern sehen, wie ein Reiseportal Budgets über verschiedene Kanäle verteilt.",
+    "Studiert habe ich Wirtschaftswissenschaften im Bachelor, jetzt bin ich im dritten Mastersemester Marketing. Mit Tabellenkalkulation und Pivot-Auswertungen arbeite ich täglich, in einem Praktikum habe ich Suchmaschinenanzeigen betreut und Berichte für die Geschäftsführung gebaut.",
+    "Mit bis zu 20 Stunden pro Woche stehe ich ab März zur Verfügung, voraussichtlich bis Ende des Jahres."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Immatrikulationsbescheinigung",
+    "Praktikumszeugnis"
+   ],
+   "from": [
+    "Annika Weber",
+    "Nürnberger Straße 44",
+    "01187 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 2,
+  "name": "Marie Schubert",
+  "title": "Studentin BWL (B. Sc.), 4. Semester",
+  "street": "Louisenstraße 50",
+  "city": "01099 Dresden",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Social Media (ehrenamtlich)",
+    "Dresdner Ruderverein",
+    "Dresden",
+    "- Account von 300 auf 2.100 Follower\n- Videoformate aus Training und Vereinsleben"
+   ],
+   [
+    "2024",
+    "",
+    "Aushilfe Service",
+    "Café Neustadt",
+    "Dresden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Betriebswirtschaftslehre (B. Sc.), 4. Semester",
+    "Technische Universität Dresden",
+    "Dresden",
+    "Schwerpunkt Marketing"
+   ],
+   [
+    "2016",
+    "2024",
+    "Abitur (1,8)",
+    "Gymnasium Dresden-Plauen",
+    "Dresden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Social Media",
+    4
+   ],
+   [
+    "Videoschnitt",
+    3
+   ],
+   [
+    "Texten",
+    4
+   ],
+   [
+    "Kennzahlen auswerten",
+    3
+   ],
+   [
+    "Bildbearbeitung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Rudern, Fotografie"
+ },
+ "do": [
+  "Wochenstunden und Studiendauer nennen.",
+  "Arbeitsproben verlinken.",
+  "Eine konkrete Idee für das Unternehmen andeuten."
+ ],
+ "dont": [
+  "Nur „Ich bin social-media-affin“.",
+  "Follower-Zahlen ohne Zusammenhang.",
+  "Eine Mappe ohne Erklärung, was dein Anteil war."
+ ],
+ "questions": [
+  "Welche Kampagne hat Ihnen zuletzt gefallen und warum?",
+  "Wie messen Sie Erfolg auf Social Media?",
+  "Wie viele Stunden können Sie arbeiten?",
+  "Welche Tools nutzen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Stunden darf ich als Werkstudent arbeiten?",
+   "a": "Damit der Werkstudentenstatus in der Sozialversicherung erhalten bleibt, gilt in der Vorlesungszeit in der Regel eine Grenze von 20 Wochenstunden; in den Semesterferien darf es mehr sein. Lass dir die Details von der Personalabteilung oder deiner Krankenkasse bestätigen."
+  },
+  {
+   "q": "Werkstudent oder Praktikum?",
+   "a": "Ein Praktikum dauert meist einige Monate in Vollzeit. Als Werkstudent arbeitest du über einen längeren Zeitraum wenige Stunden pro Woche neben dem Studium und bekommst ein Gehalt."
+  }
+ ],
+ "related": [
+  "praktikum-marketing",
+  "social-media-manager",
+  "werkstudent-it",
+  "online-marketing-manager"
+ ],
+ "en": {
+  "slug": "marketing-intern",
+  "name": "Marketing intern / student job",
+  "search": "marketing intern internship student part-time social media content campaigns graduate",
+  "short": "Social media, content and campaigns alongside your degree.",
+  "desc": "Marketing intern cover letter examples for students: two complete letters with social media and analytics focus, plus a ready CV with placeholder portrait.",
+  "intro": "Marketing teams take on students for social media, content and campaign reporting. Show something you made – a society account, a blog, a project – and say how many hours a week you can work and until when.",
+  "lookFor": [
+   "Currently enrolled at university or college",
+   "Some hands-on experience with social media, writing or design",
+   "Curiosity about numbers behind campaigns",
+   "Ability to work independently on a few hours per week",
+   "Good written English"
+  ],
+  "letters": [
+   {
+    "label": "Student running a sports club account",
+    "level": "praktikum",
+    "position": "Marketing intern (social media)",
+    "to": {
+     "org": "Riverside Bikes Ltd",
+     "sal": "f",
+     "contact": "Clarke",
+     "street": "7 Wharf Street",
+     "city": "Leeds LS2 7EQ"
+    },
+    "body": [
+     "a year ago I took over our rowing club’s social media account. It had 300 followers and posted twice a month. It now has just over 2,000, and our open day brought in more new members than the club has seen in years. Short training clips and interviews with our oldest rowers did that, not paid ads.",
+     "I am in the second year of a business degree, specialising in marketing. I ride past your workshop every morning, and I think your mechanics would make great subjects for short videos.",
+     "During term I can work up to 20 hours a week, and full time over the summer. I graduate in eighteen months."
+    ],
+    "att": [
+     "CV",
+     "Examples of my work"
+    ]
+   },
+   {
+    "label": "Master’s student who likes data",
+    "level": "praktikum",
+    "position": "Digital marketing intern (analytics)",
+    "to": {
+     "org": "Northway Travel",
+     "sal": "none",
+     "street": "21 Park Row",
+     "city": "Leeds LS1 5JF"
+    },
+    "body": [
+     "what interests me most is not designing ads but finding out which ones work. My dissertation looks at which metrics small online shops actually need and which simply confuse them.",
+     "Before my master’s I spent six months in a small agency, managing search ads for three clients and building monthly reports for their owners. I work with spreadsheets every day and I am comfortable explaining numbers to people who do not like them.",
+     "I am available from March for up to 20 hours a week."
+    ],
+    "att": [
+     "CV",
+     "Degree transcript"
+    ],
+    "from": [
+     "Hannah Reid",
+     "4 Hyde Terrace",
+     "Leeds LS2 9LN"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a13",
+   "design": "modern",
+   "accent": 2,
+   "name": "Megan Holt",
+   "title": "Business student (BA), year 2",
+   "street": "15 Cardigan Road",
+   "city": "Leeds LS6 3AE",
+   "exp": [
+    [
+     "2025",
+     "",
+     "Social media (volunteer)",
+     "Leeds Rowing Club",
+     "Leeds",
+     "- Grew followers from 300 to 2,000\n- Short video formats"
+    ],
+    [
+     "2024",
+     "",
+     "Barista (part time)",
+     "Corner Café",
+     "Leeds",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2024",
+     "",
+     "BA Business Management, year 2",
+     "University of Leeds",
+     "Leeds",
+     "Marketing pathway"
+    ],
+    [
+     "2017",
+     "2024",
+     "A levels",
+     "Roundhay School",
+     "Leeds",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Social media",
+     4
+    ],
+    [
+     "Video editing",
+     3
+    ],
+    [
+     "Copywriting",
+     4
+    ],
+    [
+     "Analytics",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "B1"
+    ]
+   ],
+   "hobbies": "Rowing, photography"
+  },
+  "do": [
+   "Say how many hours a week you can work.",
+   "Link to real examples.",
+   "Suggest one idea for the company."
+  ],
+  "dont": [
+   "Call yourself “social media savvy” without proof.",
+   "Quote follower counts without context.",
+   "Send a portfolio without saying what your part was."
+  ],
+  "questions": [
+   "Which campaign impressed you recently?",
+   "How would you measure success on social media?",
+   "How many hours can you work?",
+   "Which tools do you use?"
+  ],
+  "faq": [
+   {
+    "q": "Internship or part-time student job?",
+    "a": "An internship is usually a few months full time. A part-time student job runs alongside your studies for a longer period with fewer hours per week."
+   }
+  ]
+ }
+}

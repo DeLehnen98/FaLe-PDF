@@ -1,0 +1,159 @@
+{
+ "id": "essenslieferant",
+ "field": "minijob",
+ "name": "Essenslieferant/in (Fahrradkurier)",
+ "search": "essenslieferant lieferfahrer fahrradkurier essen ausliefern pizza minijob nebenjob roller bewerbung",
+ "short": "Essen ausliefern mit Rad, Roller oder Auto.",
+ "desc": "Bewerbung als Essenslieferant/in oder Fahrradkurier im Minijob: kurze Muster-Anschreiben für Studenten und Pizzeria-Aushilfe, Lebenslauf und Tipps.",
+ "intro": "Restaurants und Lieferdienste suchen Fahrerinnen und Fahrer für Abende und Wochenenden. Wichtig sind Ortskenntnis, ein Fahrzeug, ein Smartphone und Freundlichkeit an der Tür. Ob du angestellt bist oder selbstständig fährst, sollte im Vertrag klar geregelt sein.",
+ "lookFor": [
+  "Fahrrad, E-Bike, Roller oder Auto mit passendem Führerschein",
+  "Ortskenntnis",
+  "Verfügbarkeit abends und am Wochenende",
+  "Smartphone",
+  "Freundlichkeit und Pünktlichkeit"
+ ],
+ "letters": [
+  {
+   "label": "Student mit E-Bike",
+   "level": "minijob",
+   "position": "Fahrer Essenslieferung (Minijob)",
+   "to": {
+    "org": "Pizzeria Da Marco",
+    "sal": "m",
+    "contact": "Russo",
+    "street": "Steinstraße 18",
+    "city": "44575 Castrop-Rauxel"
+   },
+   "body": [
+    "Freitag- und Samstagabend sind bei mir frei, und ich fahre ohnehin jeden Tag mit dem E-Bike zur Uni nach Dortmund. Wenn Sie noch jemanden für die Auslieferung suchen, wäre ich gern dabei.",
+    "Ich kenne Castrop-Rauxel gut, weil ich hier aufgewachsen bin. Eine Thermotasche fürs Rad habe ich schon, die Route plane ich mit dem Handy. Bei Regen fahre ich trotzdem."
+   ],
+   "att": [
+    "Lebenslauf"
+   ]
+  },
+  {
+   "label": "Schülerin, 18, mit Rollerführerschein",
+   "level": "minijob",
+   "position": "Aushilfe Auslieferung",
+   "to": {
+    "org": "Asia Kitchen Lan",
+    "sal": "f",
+    "contact": "Nguyen",
+    "street": "Bahnhofstraße 22",
+    "city": "44623 Herne"
+   },
+   "body": [
+    "seit meinem 16. Geburtstag fahre ich Roller und kenne Herne und Wanne inzwischen besser als meine Eltern. Ich bin jetzt 18, mache nächstes Jahr Abitur und möchte am Wochenende arbeiten.",
+    "An der Tür bin ich freundlich, auch wenn jemand im Bademantel aufmacht. Wechselgeld zähle ich nach und kenne Kartenzahlung mit dem mobilen Gerät aus meinem letzten Ferienjob im Freibad."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Melisa Yilmaz",
+    "Hauptstraße 70",
+    "44651 Herne"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 4,
+  "name": "Daniel Mensah",
+  "title": "Student Maschinenbau",
+  "street": "Wittener Straße 30",
+  "city": "44575 Castrop-Rauxel",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe Getränkelieferung",
+    "Getränkeservice Ickern",
+    "Castrop-Rauxel",
+    "- Auslieferung, Kasse"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Maschinenbau (B. Sc.), 3. Semester",
+    "Technische Universität Dortmund",
+    "Dortmund",
+    ""
+   ],
+   [
+    "2015",
+    "2024",
+    "Abitur",
+    "Adalbert-Stifter-Gymnasium",
+    "Castrop-Rauxel",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Ortskenntnis",
+    5
+   ],
+   [
+    "Radfahren",
+    5
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Twi",
+    "B1"
+   ]
+  ],
+  "hobbies": "Radfahren, Basketball"
+ },
+ "do": [
+  "Fahrzeug und Führerschein nennen.",
+  "Verfügbare Abende angeben.",
+  "Ortskenntnis erwähnen."
+ ],
+ "dont": [
+  "Unklar lassen, ob du ein eigenes Fahrzeug hast.",
+  "Sich bei Unwetter schon im Anschreiben abmelden.",
+  "Lange Texte."
+ ],
+ "questions": [
+  "Mit welchem Fahrzeug fahren Sie?",
+  "Wann können Sie arbeiten?",
+  "Was tun Sie, wenn niemand öffnet?",
+  "Wie gut kennen Sie die Stadt?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich mein eigenes Rad mitbringen?",
+   "a": "Das ist unterschiedlich. Manche Restaurants stellen Roller oder E-Bikes, andere erwarten ein eigenes Fahrzeug und zahlen eine Pauschale. Frag nach, bevor du unterschreibst."
+  },
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "kurierfahrer",
+  "paketzusteller",
+  "servicekraft",
+  "zeitungszusteller"
+ ]
+}

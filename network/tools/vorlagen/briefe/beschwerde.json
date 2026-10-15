@@ -1,0 +1,65 @@
+{
+ "id": "beschwerde",
+ "group": "behoerde",
+ "tool": "din-letter",
+ "order": 27,
+ "name": "Beschwerde an ein Unternehmen",
+ "short": "Sachlich beschweren und eine Lösung verlangen",
+ "desc": "Beschwerdebrief an ein Unternehmen als Muster: Problem sachlich schildern, Nachweise beilegen, konkrete Lösung und Frist verlangen – mit Tipps für den nächsten Schritt.",
+ "search": "beschwerde reklamation kundenservice ärger",
+ "when": [
+  "Eine Lieferung kommt immer wieder zu spät, ein Handwerker hat schlecht gearbeitet oder du wartest seit Wochen auf eine Erstattung. Wenn Anrufe und Chat nichts bringen, hilft eine schriftliche Beschwerde: Sie ist dokumentiert, landet oft bei einer anderen Stelle und setzt eine Frist."
+ ],
+ "must": [
+  "Kunden-, Auftrags- oder Rechnungsnummer",
+  "Was passiert ist – mit Daten, kurz und sachlich",
+  "Was du bisher unternommen hast",
+  "Was du konkret willst: Nachbesserung, Erstattung, Gutschrift",
+  "Eine Frist",
+  "Nachweise als Anlage"
+ ],
+ "notes": [
+  "Bleib sachlich, auch wenn du dich ärgerst – ein ruhiger Brief wird eher an die richtige Stelle weitergegeben.",
+  "Hilft auch die Beschwerde nicht, kannst du dich an eine Verbraucherschlichtungsstelle wenden; viele Unternehmen nennen auf ihrer Website, an welcher sie teilnehmen.",
+  "Bei Mängeln an gekaufter Ware hast du gesetzliche Gewährleistungsrechte – unabhängig von einer Garantie."
+ ],
+ "faq": [
+  {
+   "q": "Wie lang sollte eine Beschwerde sein?",
+   "a": "So kurz wie möglich, so lang wie nötig. Eine Seite reicht fast immer. Daten und Nummern sind wichtiger als ausführliche Schilderungen."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "kuendigungsbestaetigung-anfordern",
+  "widerruf-onlinekauf",
+  "maengelanzeige-wohnung"
+ ],
+ "from": [
+  "Markus Probe",
+  "Am Kirchberg 3",
+  "54290 Trier"
+ ],
+ "to": {
+  "org": "Musterversand GmbH",
+  "attn": "Beschwerdemanagement",
+  "street": "Logistikring 7",
+  "city": "54294 Trier"
+ },
+ "letter": {
+  "subject": "Beschwerde zu Auftrag 2026-447812: Erstattung seit sechs Wochen offen",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "am [Datum] habe ich die Bestellung 2026-447812 vollständig an Sie zurückgeschickt; laut Sendungsverfolgung ist das Paket zwei Tage später bei Ihnen angekommen. Die Erstattung über 189,90 Euro ist bis heute nicht auf meinem Konto eingegangen.",
+   "Ihr Kundenservice hat mir am Telefon zweimal zugesagt, die Erstattung „in den nächsten Tagen“ anzuweisen, zuletzt am [Datum]. Passiert ist seitdem nichts.",
+   "Bitte erstatten Sie den Betrag bis zum [Datum] über die Zahlungsart, mit der ich bestellt habe. Den Einlieferungsbeleg und die Sendungsverfolgung lege ich bei."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": [
+   "Einlieferungsbeleg",
+   "Ausdruck der Sendungsverfolgung"
+  ]
+ }
+}

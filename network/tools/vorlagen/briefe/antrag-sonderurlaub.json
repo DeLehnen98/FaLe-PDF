@@ -1,0 +1,70 @@
+{
+ "id": "antrag-sonderurlaub",
+ "group": "arbeit",
+ "tool": "leave-request",
+ "order": 22,
+ "name": "Antrag auf Sonderurlaub",
+ "short": "Freistellung für Hochzeit, Umzug oder Todesfall",
+ "desc": "Sonderurlaub beantragen: Vorlage für Hochzeit, Geburt, Umzug oder Trauerfall mit Anlass und Zeitraum – mit ehrlichem Hinweis, wann es einen Anspruch gibt.",
+ "search": "sonderurlaub hochzeit umzug todesfall freistellung",
+ "when": [
+  "Bei bestimmten Anlässen gibt es bezahlte Freistellung, ohne dass ein Urlaubstag verbraucht wird – etwa bei der eigenen Hochzeit, der Geburt eines Kindes oder einem Todesfall in der Familie. Ob und wie viele Tage, regeln vor allem Tarifvertrag, Arbeitsvertrag oder Betriebsvereinbarung.",
+  "Steht dort nichts, kann ein Anspruch aus dem Gesetz für eine kurze, unvermeidbare Verhinderung bestehen – dieser kann aber im Vertrag ausgeschlossen sein."
+ ],
+ "must": [
+  "Anlass und Datum",
+  "Zeitraum der Freistellung",
+  "Bezug auf die Regel im Tarif- oder Arbeitsvertrag, falls vorhanden",
+  "Nachweis, den du beilegst oder nachreichst",
+  "Unterschrift"
+ ],
+ "notes": [
+  "Frag im Zweifel in der Personalabteilung oder beim Betriebsrat nach, welche Anlässe bei euch gelten.",
+  "Für einen Umzug gibt es bei vielen Arbeitgebern einen Tag – aber nicht überall.",
+  "Wenn kein Anspruch besteht, kannst du die Tage als Erholungsurlaub oder unbezahlten Urlaub beantragen."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich einen Nachweis bringen?",
+   "a": "Oft ja, etwa die Heiratsurkunde oder die Sterbeurkunde. Leg ihn bei oder reich ihn nach."
+  }
+ ],
+ "fields": {
+  "kind": "special",
+  "name": "Markus Probe",
+  "staffNo": "7741",
+  "dept": "Produktion",
+  "boss": "Herr Klein",
+  "stand": "",
+  "note": "Anlass: eigene Eheschließung am [Datum]. Freistellung nach § 12 des Manteltarifvertrags (bitte prüfen). Die Heiratsurkunde reiche ich nach.",
+  "state": "RP"
+ },
+ "related": [
+  "urlaubsantrag-erholungsurlaub",
+  "antrag-bildungsurlaub",
+  "antrag-elternzeit"
+ ],
+ "doc": [
+  [
+   "Art",
+   "Sonderurlaub"
+  ],
+  [
+   "Antragsteller",
+   "Markus Probe, Personalnummer 7741, Produktion"
+  ],
+  [
+   "Zeitraum",
+   "Von – bis, mit Arbeitstagen"
+  ],
+  [
+   "Bemerkung",
+   "Anlass: eigene Eheschließung am [Datum]. Freistellung nach § 12 des Manteltarifvertrags (bitte prüfen). Die Heiratsurkunde reiche ich nach."
+  ],
+  [
+   "Unterschriften",
+   "Mitarbeiter, Feld für die Genehmigung"
+  ]
+ ],
+ "doc_intro": "Sonderurlaub wird mit demselben Formular beantragt wie Erholungsurlaub – nur die Art und die Bemerkung unterscheiden sich:"
+}

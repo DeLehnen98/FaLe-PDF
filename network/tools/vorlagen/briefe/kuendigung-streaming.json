@@ -1,0 +1,59 @@
+{
+ "id": "kuendigung-streaming",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 7,
+ "name": "Kündigung Streaming-Abo",
+ "short": "Video-, Musik- oder Hörbuch-Abo kündigen",
+ "desc": "Streaming-Abo kündigen, wenn es im Konto nicht klappt: Vorlage mit E-Mail-Adresse des Kontos und Kündigung zum Ende des bezahlten Zeitraums – als PDF oder Text.",
+ "search": "netflix spotify video musik hörbuch abo",
+ "when": [
+  "Die meisten Streamingdienste kannst du direkt im Konto oder über den Kündigungsbutton auf der Website kündigen – das ist der schnellste Weg. Ein Brief ist sinnvoll, wenn das nicht klappt, das Konto gesperrt ist oder du einen Nachweis brauchst.",
+  "Das Abo läuft in der Regel bis zum Ende des bezahlten Zeitraums weiter."
+ ],
+ "must": [
+  "Name des Dienstes",
+  "Die E-Mail-Adresse, mit der das Konto angelegt ist",
+  "Kunden- oder Abonummer, falls vorhanden",
+  "Kündigung zum nächstmöglichen Zeitpunkt",
+  "Bitte um Bestätigung"
+ ],
+ "notes": [
+  "Hast du das Abo über einen App-Store abgeschlossen, kündigst du es dort in den Abo-Einstellungen – der Dienst selbst kann es oft nicht beenden.",
+  "Achte bei Paketen mit dem Handy- oder Internetvertrag darauf, wer der Vertragspartner ist.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Was passiert mit meinen Daten nach der Kündigung?",
+   "a": "Wenn du willst, dass das Konto gelöscht wird, setz in der Vorlage den Haken „Löschung meiner Daten verlangen (Art. 17 DSGVO)“."
+  }
+ ],
+ "fields": {
+  "type": "streaming",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": true,
+  "noAds": false,
+  "service": "StreamMuster",
+  "account": "jana.beispiel@example.com"
+ },
+ "related": [
+  "kuendigung-zeitschrift",
+  "dsgvo-loeschung",
+  "kuendigung-handyvertrag"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "StreamMuster Europe B.V.",
+  "attn": "Kundenservice",
+  "street": "Musterkade 12",
+  "city": "1011 AB Amsterdam",
+  "country": ""
+ }
+}

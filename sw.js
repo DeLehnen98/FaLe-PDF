@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-1b84a3763e';
+const VERSION = 'v1.0.0-918762f606';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -103,6 +103,7 @@ const ASSETS = [
   "./js/office/chart.js",
   "./js/office/convert.js",
   "./js/office/csv.js",
+  "./js/office/doc-templates.js",
   "./js/office/docmodel.js",
   "./js/office/docpdf.js",
   "./js/office/docstyles.js",
@@ -113,6 +114,7 @@ const ASSETS = [
   "./js/office/fonts.js",
   "./js/office/formula.js",
   "./js/office/handout.js",
+  "./js/office/hfnorm.js",
   "./js/office/kinds.js",
   "./js/office/mailmerge.js",
   "./js/office/numfmt.js",
@@ -133,6 +135,7 @@ const ASSETS = [
   "./js/office/shell.js",
   "./js/office/slide-render.js",
   "./js/office/slides.js",
+  "./js/office/tablecalc.js",
   "./js/office/templates.js",
   "./js/office/trackchanges.js",
   "./js/office/unifont.js",
@@ -140,7 +143,9 @@ const ASSETS = [
   "./js/office/versions.js",
   "./js/office/whistory.js",
   "./js/office/workbook.js",
+  "./js/office/writer-extras.js",
   "./js/office/writer-format.js",
+  "./js/office/writer-hf.js",
   "./js/office/writer-table.js",
   "./js/office/writer.js",
   "./js/office/xlsx-read.js",

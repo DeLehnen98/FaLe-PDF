@@ -1,0 +1,174 @@
+{
+ "id": "duales-studium-bwl",
+ "field": "ausbildung",
+ "name": "Duales Studium BWL",
+ "search": "duales studium bwl betriebswirtschaft dhbw berufsakademie bachelor praxispartner bewerbung abiturient",
+ "short": "Bachelor plus Praxis im Unternehmen – Bewerbung beim Praxispartner.",
+ "desc": "Bewerbung für ein duales Studium BWL beim Praxisunternehmen: Muster-Anschreiben für Abiturientin, Fachabiturient und Bankkauffrau mit Lebenslauf und Tipps zum Auswahlverfahren.",
+ "intro": "Im dualen Studium wechselst du zwischen Hochschule und Unternehmen. Bewerben musst du dich in der Regel beim Unternehmen, oft ein Jahr vor Studienbeginn. Firmen achten auf Noten, Engagement und darauf, ob du weißt, warum du gerade bei ihnen studieren willst.",
+ "lookFor": [
+  "Abitur oder Fachhochschulreife (je nach Hochschule)",
+  "Gute Noten in Mathe, Deutsch, Englisch",
+  "Engagement neben der Schule",
+  "Organisationstalent – zwei Lernorte, ein Kalender",
+  "Klares Interesse an der Branche"
+ ],
+ "letters": [
+  {
+   "label": "Abiturientin mit Schülerfirma",
+   "level": "ausbildung",
+   "position": "Duales Studium BWL – Industrie",
+   "to": {
+    "org": "Albmetall GmbH",
+    "sal": "f",
+    "contact": "Haas",
+    "street": "Zeppelinstraße 40",
+    "city": "72764 Reutlingen"
+   },
+   "body": [
+    "in unserer Schülerfirma verkaufen wir Kaffee und selbst bedruckte Taschen. Ich bin seit einem Jahr für die Finanzen zuständig, habe eine Kalkulation aufgestellt, die Preise angepasst und dafür gesorgt, dass wir zum ersten Mal Gewinn machen. Klingt klein, war es auch, aber mir hat es gezeigt, dass ich Betriebswirtschaft studieren will.",
+    "Ein duales Studium passt zu mir, weil ich Theorie gern sofort anwende. Ihr Unternehmen exportiert Präzisionsteile in über 30 Länder. Besonders interessieren mich Controlling und Einkauf. Mein Abitur mache ich im Frühjahr mit Mathe und Wirtschaft als Leistungskursen; Englisch spreche ich nach einem Austauschjahr in Kanada fließend.",
+    "An Ihrem Assessment-Center nehme ich gern teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Bescheinigung Schülerfirma"
+   ]
+  },
+  {
+   "label": "Fachabiturient aus der Ausbildung",
+   "level": "ausbildung",
+   "position": "Duales Studium BWL – Handel",
+   "to": {
+    "org": "Filialkette Grünmarkt Süd",
+    "sal": "m",
+    "contact": "Erdem",
+    "street": "Lindenstraße 2",
+    "city": "72762 Reutlingen"
+   },
+   "body": [
+    "nach meiner Ausbildung zum Kaufmann im Einzelhandel habe ich berufsbegleitend die Fachhochschulreife nachgeholt. Jetzt möchte ich den nächsten Schritt machen und BWL mit Schwerpunkt Handel dual studieren, am liebsten bei Ihnen.",
+    "Als stellvertretender Marktleiter habe ich Bestellmengen geplant, Personal eingeteilt und die monatlichen Kennzahlen mit der Bezirksleitung besprochen. Mir fehlt das theoretische Fundament, um diese Zahlen besser zu verstehen und zu steuern. Aus der Praxis weiß ich, wie ein Markt funktioniert, aus dem Studium möchte ich lernen, warum.",
+    "Ich bin 24 und kann zum Oktober wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Fachhochschulreife",
+    "Abschlusszeugnis Ausbildung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Philipp Gänßle",
+    "Gartenstraße 10",
+    "72764 Reutlingen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 0,
+  "name": "Selin Aydın",
+  "title": "Schülerin",
+  "street": "Lederstraße 66",
+  "city": "72764 Reutlingen",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Finanzvorstand der Schülerfirma",
+    "Isolde-Kurz-Gymnasium",
+    "Reutlingen",
+    "- Kalkulation und Preisgestaltung\n- Erster Jahresgewinn der Schülerfirma"
+   ],
+   [
+    "08/2023",
+    "06/2024",
+    "Austauschjahr",
+    "High School",
+    "Halifax, Kanada",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Isolde-Kurz-Gymnasium",
+    "Reutlingen",
+    "Leistungskurse Mathematik, Wirtschaft"
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    4
+   ],
+   [
+    "Präsentation",
+    4
+   ],
+   [
+    "Kalkulation",
+    3
+   ],
+   [
+    "Projektorganisation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Debattieren, Tennis"
+ },
+ "do": [
+  "Früh bewerben – oft ein Jahr vor Studienbeginn.",
+  "Begründen, warum dual und warum diese Branche.",
+  "Engagement mit Ergebnis zeigen."
+ ],
+ "dont": [
+  "Die Hochschule loben statt das Unternehmen.",
+  "Allgemeine Sätze über Wirtschaft.",
+  "Die Studienrichtung offenlassen, wenn die Firma mehrere anbietet."
+ ],
+ "questions": [
+  "Warum ein duales Studium?",
+  "Wie gehen Sie mit zwei Lernorten gleichzeitig um?",
+  "Welche Abteilung interessiert Sie?",
+  "Was wissen Sie über unsere Branche?"
+ ],
+ "faq": [
+  {
+   "q": "Wo bewerbe ich mich – Hochschule oder Unternehmen?",
+   "a": "Meist beim Unternehmen. Hat es dich angenommen, schreibt es dich bei der Partnerhochschule ein. Bei manchen Modellen musst du dich zusätzlich bei der Hochschule bewerben; das steht in der Ausschreibung."
+  },
+  {
+   "q": "Wann sollte ich mich bewerben?",
+   "a": "Große Unternehmen besetzen ihre Plätze oft zwölf bis 15 Monate vor Studienbeginn. Fang im Sommer vor dem Abiturjahr an zu suchen."
+  }
+ ],
+ "related": [
+  "duales-studium-informatik",
+  "trainee",
+  "ausbildung-industriekaufmann",
+  "pflichtpraktikum-bwl"
+ ]
+}

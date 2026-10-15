@@ -69,7 +69,10 @@ LEVELS = [
     ('initiativ', 'Initiativbewerbung', 'Speculative'),
 ]
 LEVEL = {lv[0]: lv for lv in LEVELS}
-DESIGNS = {'classic': ('Klassisch', 'Classic'), 'modern': ('Modern', 'Modern'), 'compact': ('Kompakt', 'Compact')}
+DESIGNS = {'classic': ('Klassisch', 'Classic'), 'modern': ('Modern', 'Modern'), 'compact': ('Kompakt', 'Compact'),
+           # more designs of lib/tpl-cv.js (lib/arc2-cvdesigns.js)
+           'elegant': ('Elegant', 'Elegant'), 'timeline': ('Zeitstrahl', 'Timeline'), 'minimal': ('Minimal', 'Minimal'), 'creative': ('Kreativ', 'Creative'),
+           'ats': ('ATS-freundlich', 'ATS-friendly'), 'academic': ('Akademisch', 'Academic'), 'school': ('Schule & Ausbildung', 'School leaver')}
 ACCENTS = ['#2b59c3', '#0f766e', '#7c3aed', '#b91c1c', '#c2410c', '#334155']   # = lib/tpl-cv.js ACCENTS
 CV_SECTIONS = ['exp', 'edu', 'courses', 'skills', 'langs', 'hobbies']           # = lib/tpl-cv.js SECTION_IDS
 LANG_LEVEL_KEYS = ('native', 'C2', 'C1', 'B2', 'B1', 'A2', 'A1')
@@ -180,6 +183,27 @@ S = {
 
 class DataError(Exception):
     pass
+
+
+# Extra sections of the archive, built by modules in this folder: build(wb, bp, vb, jobs, wb_specs) →
+# {'written', 'entries' (sitemap), 'data' ({file name: text} for /vorlagen/data/), 'hub' (lang → html for the hub), 'summary'}
+EXTENSIONS = ('arc2_sections',)   # Excel-/Tabellen-Vorlagen, Briefvorlagen, Lebenslauf-Design-Galerie
+HUB_EXTRA = []                    # filled by main(): lang → html block on the hub pages
+
+
+def run_extensions(wb, bp, jobs, wb_specs, standalone):
+    import importlib
+    out = []
+    for name in EXTENSIONS:
+        try:
+            mod = importlib.import_module(name)
+            this = sys.modules.get(__name__) or __import__('types').SimpleNamespace(**globals())  # loaded via importlib by webtools/build.py
+            out.append(mod.build(wb, bp, this, jobs, wb_specs))
+        except DataError as ex:
+            print(f'Vorlagen extension {name}: data errors:\n{ex}', file=sys.stderr)
+            if standalone:
+                sys.exit(1)
+    return out
 
 
 # --------------------------------------------------------------------------------------------- helpers
@@ -540,13 +564,23 @@ def ld_faq(items, lang):
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in items]}
 
 
-def job_card(job, lang, heading='h3'):
+def icon_sprite():
+    """Field icons as <symbol>s, once per page; cards reference them with <use> (keeps the 200+ card directory small)."""
+    return ('<svg class="vl-sprite" hidden aria-hidden="true">' + ''.join(
+        f'<symbol id="vl-i-{f[0]}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+        f'stroke-linejoin="round">{f[4]}</symbol>' for f in FIELDS) + '</svg>')
+
+
+def job_card(job, lang, heading='h3', sprite=False):
     s = S[lang]
     src = job if lang == 'de' else job['en']
-    kw = ' '.join([src['name'], src['short'], src.get('search', ''), FIELD[job['field']][1 if lang == 'de' else 2],
-                   ' '.join(LEVEL[lv][1 if lang == 'de' else 2] for lv in job['levels'])])
+    # name, short text and level pills are visible card text – vl.js adds the card's text to the search haystack
+    kw = ' '.join([src.get('search', ''), FIELD[job['field']][1 if lang == 'de' else 2]])
+    f = FIELD[job['field']]
+    icon = (f'<span class="wt-chip-ic tic-{f[3]} vl-fic"><svg width="24" height="24" aria-hidden="true"><use href="#vl-i-{f[0]}"/></svg></span>'
+            if sprite else field_icon(job['field']))
     return (f'<li class="wt-card vl-card" data-field="{job["field"]}" data-levels="{" ".join(job["levels"])}" data-search="{esc(fold(kw))}">'
-            f'<a href="{job_path(job, lang)}">{field_icon(job["field"])}<{heading} class="wt-card-name">{esc(src["name"])}</{heading}>'
+            f'<a href="{job_path(job, lang)}">{icon}<{heading} class="wt-card-name">{esc(src["name"])}</{heading}>'
             f'<span class="wt-card-desc">{esc(src["short"])}</span><span class="vl-pills">{level_pills(job["levels"], lang)}</span></a></li>')
 
 
@@ -704,7 +738,7 @@ def page_section(wb, bp, jobs, guides, wb_specs):
     used = [f for f in FIELDS if any(j['field'] == f[0] for j in jobs)]
     groups = ''
     for f in used:
-        cards = ''.join(job_card(j, 'de') for j in jobs if j['field'] == f[0])
+        cards = ''.join(job_card(j, 'de', sprite=True) for j in jobs if j['field'] == f[0])
         groups += (f'<section class="wt-catsec" id="feld-{f[0]}" data-vl-group="{f[0]}" aria-labelledby="g-{f[0]}">'
                    f'<div class="wt-catsec-head"><h2 id="g-{f[0]}">{esc(f[1])}</h2></div><ul class="wt-grid">{cards}</ul></section>')
     guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}"><h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides) + kuendigung_card(wb_specs)
@@ -733,7 +767,7 @@ def page_section(wb, bp, jobs, guides, wb_specs):
     {level_chips}
     <p class="vl-count" data-vl-count aria-live="polite"></p>
     <p class="wt-nohits" data-vl-nohits hidden>{s['no_hits']}</p>
-    {groups}
+    {icon_sprite()}{groups}
   </div>
   <section class="section wt-sec" aria-labelledby="guides-h">
     <div class="wrap">
@@ -804,6 +838,7 @@ def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     <h1>{s['hub_h1']}</h1>
     <p class="wt-lede">{esc(lede)}</p>
     {main_block}
+    {''.join(h(lang) for h in HUB_EXTRA)}
   </div>
   <section class="section wt-sec" aria-labelledby="how-h">
     <div class="wrap">
@@ -949,6 +984,8 @@ def main(wb=None):
     wb_specs = {sp['id']: sp for sp in wb.load_specs()}
     by_id = {j['id']: j for j in jobs}
     written, entries, keep_data = [], [], set()
+    exts = run_extensions(wb, bp, jobs, wb_specs, standalone)
+    HUB_EXTRA[:] = [x['hub'] for x in exts if x.get('hub')]
     written.append(wb.write(HUB['de'], page_hub(wb, bp, jobs, guides, wb_specs, 'de')))
     written.append(wb.write(HUB['en'], page_hub(wb, bp, jobs, guides, wb_specs, 'en')))
     entries += [(HUB['de'], dict(HUB)), (HUB['en'], dict(HUB))]
@@ -967,6 +1004,13 @@ def main(wb=None):
             fname = data['id'] + '.json'
             keep_data.add(fname)
             written.append(wb.write(DATA_URL + fname, json.dumps(data, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'))
+    for x in exts:
+        written += x['written']
+        entries += x['entries']
+        for fname, text in sorted(x['data'].items()):
+            keep_data.add(fname)
+            written.append(wb.write(DATA_URL + fname, text))
+        print(x.get('summary', ''))
     written.append(wb.write(DATA_URL + 'index.json', json.dumps({'v': 1, 'ids': sorted(f[:-5] for f in keep_data)}, separators=(',', ':')) + '\n'))
     keep_data.add('index.json')
     for aid in AVATARS:

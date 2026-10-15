@@ -1,0 +1,87 @@
+{
+ "id": "haushaltsbuch",
+ "slug": "haushaltsbuch",
+ "cat": "Finanzen",
+ "name": "Haushaltsbuch",
+ "short": "Buchungen erfassen, Plan und Ist je Kategorie vergleichen",
+ "desc": "Kostenloses Haushaltsbuch als Excel-Vorlage (XLSX): Buchungen eintragen, Kategorien mit Plan und Ist vergleichen, Sparquote ablesen – auch im Browser ausfüllbar.",
+ "search": "",
+ "intro": "Das Haushaltsbuch hat zwei Blätter: In „Buchungen“ trägst du jede Einnahme und Ausgabe ein, die „Übersicht“ sortiert alles automatisch nach Kategorien und zeigt dir, wo du über oder unter deinem Plan liegst.",
+ "uses": [
+  "Einen Monat lang genau wissen, wohin das Geld geht",
+  "Geplante Beträge je Kategorie mit dem echten Verbrauch vergleichen",
+  "Die eigene Sparquote ausrechnen, ohne selbst zu rechnen",
+  "Als Grundlage für ein Gespräch über das gemeinsame Budget"
+ ],
+ "cols": [
+  [
+   "Kategorie",
+   "Die Ausgabenbereiche (Gehalt, Miete, Lebensmittel …). Du kannst sie umbenennen – im Blatt „Buchungen“ erscheinen die neuen Namen dann in der Auswahlliste."
+  ],
+  [
+   "Geplant",
+   "Dein Budget je Kategorie, gelb hinterlegt. Einnahmen positiv, Ausgaben mit Minus eintragen."
+  ],
+  [
+   "Tatsächlich",
+   "SUMMEWENN addiert alle Buchungen, deren Kategorie zu dieser Zeile passt. Du musst hier nichts eintragen."
+  ],
+  [
+   "Differenz",
+   "Tatsächlich minus geplant. Rot heißt: mehr ausgegeben als vorgesehen; grün heißt: unter dem Plan geblieben."
+  ],
+  [
+   "Anteil Ausgaben",
+   "Welcher Teil aller Ausgaben auf diese Kategorie fällt. Die Formel teilt die Ausgaben der Zeile durch die Summe aller negativen Beträge; der Balken zeigt es auf einen Blick."
+  ],
+  [
+   "Datum",
+   "Tag der Buchung im Blatt „Buchungen“. Mit Filter und Sortierung in der Kopfzeile findest du einzelne Monate schnell."
+  ],
+  [
+   "Beschreibung",
+   "Wofür das Geld war, z. B. „Wochenmarkt“ oder „Tankstelle“."
+  ],
+  [
+   "Betrag",
+   "Einnahmen positiv, Ausgaben negativ. Negative Beträge werden rot angezeigt."
+  ],
+  [
+   "Notiz",
+   "Freies Feld, etwa für „Dauerauftrag“ oder „zurückgegeben“."
+  ]
+ ],
+ "tips": [
+  "Trag Ausgaben am besten gleich am Abend ein – fünf Minuten am Tag sind leichter als ein ganzer Nachmittag am Monatsende.",
+  "Für einen neuen Monat kopierst du die Datei oder löschst die Buchungen; die Übersicht rechnet dann wieder von null."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich weitere Kategorien anlegen?",
+   "a": "Die Übersicht hat sechs Zeilen. Du kannst die Namen frei ändern. Für mehr Kategorien fügst du in der Übersicht eine Zeile innerhalb des Bereichs ein, dann passen sich Summen und Auswahlliste an."
+  }
+ ],
+ "related": [
+  "monatsbudget",
+  "familienbudget",
+  "sparplan"
+ ],
+ "en": {
+  "slug": "household-budget",
+  "name": "Household budget",
+  "short": "Log transactions and compare plan and actual by category",
+  "desc": "Free household budget spreadsheet (XLSX): log income and spending, compare each category with your plan and see your savings rate – fill it in right in the browser.",
+  "intro": "Two sheets: log every transaction in “Buchungen”; the “Übersicht” sheet groups everything by category and shows where you are over or under plan.",
+  "inside": [
+   "A transaction log with date, description, category (drop-down) and amount",
+   "Plan vs. actual per category with SUMIF formulas",
+   "Share of total spending per category with data bars",
+   "Income, spending and savings rate"
+  ],
+  "uses": [
+   "Tracking one month of spending in detail",
+   "Comparing a planned budget with reality",
+   "Working out your savings rate automatically"
+  ]
+ }
+}

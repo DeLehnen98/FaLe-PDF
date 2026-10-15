@@ -1,0 +1,162 @@
+{
+ "id": "notarfachangestellte",
+ "field": "finanzen",
+ "name": "Notarfachangestellte/r",
+ "search": "notarfachangestellte notarfachangestellter notariat notar urkunden grundbuch rechtsanwalts- und notarfachangestellte bewerbung",
+ "short": "Urkunden, Grundbuch, Termine – im Notariat.",
+ "desc": "Bewerbung als Notarfachangestellte/r oder Rechtsanwalts- und Notarfachangestellte/r: Muster-Anschreiben für Berufseinsteigerin und erfahrene Fachkraft, mit Lebenslauf.",
+ "intro": "Notarfachangestellte bereiten Beurkundungen vor, entwerfen Urkunden nach Vorgabe, kommunizieren mit Grundbuchamt und Registergericht und betreuen Beteiligte. Gefragt sind Genauigkeit, Diskretion, Fristenbewusstsein und ein freundlicher Ton am Telefon.",
+ "lookFor": [
+  "Ausbildung Notarfachangestellte/r oder Rechtsanwalts- und Notarfachangestellte/r",
+  "Grundstücks-, Gesellschafts- oder Erbrecht in der Praxis",
+  "Elektronischer Rechtsverkehr",
+  "Genauigkeit und Diskretion",
+  "Freundlicher Umgang mit Beteiligten"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinsteigerin nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Notarfachangestellte",
+   "to": {
+    "org": "Notariat am Domplatz",
+    "sal": "m",
+    "contact": "Dr. Lindemann",
+    "street": "Domplatz 8",
+    "city": "48143 Münster"
+   },
+   "body": [
+    "ein Kaufvertrag hat mehr Schritte, als die Beteiligten ahnen: Grundbuchauszug, Entwurf, Vorkaufsrechtsanfragen, Vollzug, Löschungen. In meiner Ausbildung habe ich gelernt, diese Kette zuverlässig im Blick zu behalten, und meine Ausbilderin hat mich am Ende die Vorgänge selbstständig betreuen lassen.",
+    "Im Juni habe ich die Abschlussprüfung als Notarfachangestellte bestanden. Grundstücksverträge, Grundschuldbestellungen und einfache Vollmachten bereite ich sicher vor. Gesellschaftsrecht möchte ich bei Ihnen vertiefen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Fachkraft mit Erbrecht-Schwerpunkt",
+   "level": "erfahren",
+   "position": "Notarfachangestellte (Teilzeit)",
+   "to": {
+    "org": "Notare Becker & Hoffmann",
+    "sal": "none",
+    "street": "Prinzipalmarkt 20",
+    "city": "48143 Münster"
+   },
+   "body": [
+    "Testamente, Erbverträge und Erbscheinsanträge sind seit neun Jahren mein Schwerpunkt. Ich weiß, wie man mit Menschen spricht, die gerade einen Angehörigen verloren haben und trotzdem eine Unterschrift leisten müssen.",
+    "Ich möchte meine Stunden auf 25 pro Woche reduzieren und suche ein Notariat, das das ermöglicht. Fristen, elektronischer Rechtsverkehr und Kostenrechnung sind für mich Routine."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Ursula Westermann",
+    "Weseler Straße 40",
+    "48151 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "classic",
+  "accent": 5,
+  "name": "Anna Duong",
+  "title": "Notarfachangestellte",
+  "street": "Ludgeristraße 50",
+  "city": "48143 Münster",
+  "exp": [
+   [
+    "2023",
+    "2026",
+    "Auszubildende Notarfachangestellte",
+    "Notariat am Bült",
+    "Münster",
+    "- Grundstückskaufverträge, Grundschulden\n- Vollzug mit Grundbuchamt\n- Terminvorbereitung, Beteiligtenkontakt"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Abschlussprüfung Notarfachangestellte",
+    "Notarkammer",
+    "Hamm",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Gymnasium Paulinum",
+    "Münster",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Grundstücksrecht (Praxis)",
+    4
+   ],
+   [
+    "Urkundenvorbereitung",
+    4
+   ],
+   [
+    "Elektronischer Rechtsverkehr",
+    4
+   ],
+   [
+    "Diskretion",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Vietnamesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Badminton, Lesen"
+ },
+ "do": [
+  "Rechtsgebiete aus der Praxis nennen.",
+  "Genauigkeit und Diskretion belegen.",
+  "Arbeitszeitwunsch angeben."
+ ],
+ "dont": [
+  "Mandanten- oder Beteiligtendaten in Beispielen.",
+  "Fehler im Anschreiben.",
+  "Fachbegriffe falsch verwenden."
+ ],
+ "questions": [
+  "Wie bereiten Sie einen Grundstückskaufvertrag vor?",
+  "Wie gehen Sie mit einer Frist um, die zu platzen droht?",
+  "Wie sprechen Sie mit trauernden Beteiligten?",
+  "Welche Programme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Notarfachangestellte oder ReNo?",
+   "a": "Es gibt die Ausbildung zur/zum Notarfachangestellten (meist im Bereich des hauptberuflichen Notariats) und zur/zum Rechtsanwalts- und Notarfachangestellten. Beide sind gefragt, die Schwerpunkte unterscheiden sich."
+  }
+ ],
+ "related": [
+  "rechtsanwaltsfachangestellte",
+  "justizfachangestellte",
+  "immobilienkaufmann",
+  "steuerfachangestellte"
+ ]
+}

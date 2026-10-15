@@ -1,0 +1,168 @@
+{
+ "id": "bodenverkehrsdienst",
+ "field": "logistik",
+ "name": "Mitarbeiter/in Bodenverkehrsdienst (Flughafen)",
+ "search": "bodenverkehrsdienst flughafen ground handling vorfeld gepäck flugzeugabfertigung ramp agent schicht bewerbung",
+ "short": "Gepäck, Vorfeld, Flugzeugabfertigung – im Schichtdienst.",
+ "desc": "Bewerbung im Bodenverkehrsdienst am Flughafen: Muster-Anschreiben für Lagerarbeiter und Studentin im Aushilfsjob, Lebenslauf und Infos zur Zuverlässigkeitsüberprüfung.",
+ "intro": "Im Bodenverkehrsdienst wird Gepäck verladen, Flugzeuge werden betankt, gezogen und abgefertigt. Die Arbeit ist körperlich, im Freien und im Schichtdienst, und du brauchst eine Zuverlässigkeitsüberprüfung nach dem Luftsicherheitsgesetz, bevor du in den Sicherheitsbereich darfst. Ein lückenloser Lebenslauf erleichtert diese Prüfung.",
+ "lookFor": [
+  "Körperliche Fitness",
+  "Schicht-, Wochenend- und Feiertagsdienste",
+  "Zuverlässigkeitsüberprüfung (wird vom Arbeitgeber beantragt)",
+  "Führerschein Klasse B, oft gewünscht",
+  "Englisch-Grundkenntnisse"
+ ],
+ "letters": [
+  {
+   "label": "Lagerarbeiter mit Schichterfahrung",
+   "level": "quereinstieg",
+   "position": "Mitarbeiter Vorfeld / Gepäckabfertigung",
+   "to": {
+    "org": "Airport Ground Services Leipzig/Halle GmbH",
+    "sal": "m",
+    "contact": "Pietsch",
+    "street": "Terminalring 11",
+    "city": "04435 Schkeuditz"
+   },
+   "body": [
+    "im Paketzentrum am Flughafen arbeite ich seit vier Jahren in der Nachtschicht und sehe jede Nacht die Frachtflieger landen. Ich möchte näher ran: Gepäck und Fracht verladen, Flugzeuge abfertigen, draußen arbeiten.",
+    "Schwere Pakete, enge Zeitfenster und Wechselschichten kenne ich. Ich habe Staplerschein und Führerschein Klasse B, Englisch reicht für Funk und Hinweise. Mein Lebenslauf ist lückenlos, die Zuverlässigkeitsüberprüfung sehe ich deshalb gelassen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staplerschein",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Studentin als Aushilfe im Sommer",
+   "level": "minijob",
+   "position": "Aushilfe Gepäckabfertigung (Saison)",
+   "to": {
+    "org": "Flughafen Dresden Bodendienste",
+    "sal": "f",
+    "contact": "Schulze",
+    "street": "Flughafenstraße 1",
+    "city": "01109 Dresden"
+   },
+   "body": [
+    "im Sommer fliegen mehr Menschen in den Urlaub, und ich habe in den Semesterferien von Juli bis September Zeit. Als Sportstudentin bin ich fit und schleppe lieber Koffer, als im Café zu sitzen.",
+    "Wechselschichten machen mir nichts aus, früh aufstehen auch nicht, weil ich im Ruderverein trainiere. Unterlagen für die Zuverlässigkeitsüberprüfung reiche ich sofort ein."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Josephine Hahn",
+    "Bautzner Landstraße 20",
+    "01324 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 5,
+  "name": "Marcel Krüger",
+  "title": "Lagerarbeiter, Staplerfahrer",
+  "street": "Leipziger Straße 50",
+  "city": "04435 Schkeuditz",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Lagerarbeiter Nachtschicht",
+    "Paketzentrum Flughafen",
+    "Schkeuditz",
+    "- Sortierung, Verladung, Stapler\n- Wechselschicht"
+   ],
+   [
+    "2018",
+    "2022",
+    "Produktionshelfer",
+    "Automobilzulieferer Leipzig-Nord",
+    "Leipzig",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2008",
+    "2014",
+    "Realschulabschluss",
+    "Oberschule Schkeuditz",
+    "Schkeuditz",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2020",
+    "Staplerschein",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Verladung",
+    5
+   ],
+   [
+    "Stapler",
+    4
+   ],
+   [
+    "Schichtarbeit",
+    5
+   ],
+   [
+    "Englisch Grundlagen",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball, Flugzeuge beobachten"
+ },
+ "do": [
+  "Lückenlosen Lebenslauf vorbereiten.",
+  "Schichterfahrung nennen.",
+  "Fitness und Führerschein angeben."
+ ],
+ "dont": [
+  "Lücken im Lebenslauf unerklärt lassen.",
+  "Schichtdienst unterschätzen.",
+  "Unvollständige Unterlagen für die Überprüfung."
+ ],
+ "questions": [
+  "Wie gehen Sie mit Hitze, Kälte und Lärm um?",
+  "Können Sie Schichtdienst?",
+  "Haben Sie Erfahrung mit schweren Lasten?",
+  "Wie reagieren Sie auf Zeitdruck bei der Abfertigung?"
+ ],
+ "faq": [
+  {
+   "q": "Was ist die Zuverlässigkeitsüberprüfung?",
+   "a": "Wer am Flughafen im Sicherheitsbereich arbeitet, wird nach dem Luftsicherheitsgesetz überprüft. Der Arbeitgeber beantragt die Überprüfung, du füllst Formulare aus und gibst die Wohnorte der letzten Jahre an."
+  }
+ ],
+ "related": [
+  "staplerfahrer",
+  "sicherheitsdienst",
+  "lagerist",
+  "ferienjob"
+ ]
+}

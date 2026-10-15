@@ -1,0 +1,320 @@
+{
+ "id": "it-sicherheit",
+ "field": "it",
+ "name": "IT-Security-Analyst/in",
+ "search": "it sicherheit it security analyst informationssicherheit cybersecurity soc pentest isms incident response bewerbung",
+ "short": "Angriffe erkennen, Systeme absichern, Vorfälle aufklären.",
+ "desc": "Bewerbung als IT-Security-Analyst/in: Muster-Anschreiben für Administratorin mit Sicherheitsfokus und SOC-Analyst, mit Lebenslauf und typischen Interviewfragen.",
+ "intro": "IT-Sicherheitsfachleute überwachen Systeme, werten Alarme aus, untersuchen Vorfälle, härten Konfigurationen und schulen Mitarbeitende. Unternehmen achten auf praktische Erfahrung, Verständnis von Netzwerken und Betriebssystemen und auf saubere Kommunikation im Ernstfall. Zertifikate helfen, Praxis wiegt mehr.",
+ "lookFor": [
+  "Netzwerk-, System- und Protokollkenntnisse",
+  "Erfahrung mit Monitoring und Log-Analyse",
+  "Incident Response",
+  "Kenntnis von Normen und Rahmenwerken",
+  "Klare Kommunikation unter Druck"
+ ],
+ "letters": [
+  {
+   "label": "Administratorin mit Sicherheitsfokus",
+   "level": "quereinstieg",
+   "position": "IT-Security-Analystin",
+   "to": {
+    "org": "Privatbank Taunus AG",
+    "sal": "m",
+    "contact": "Wagner",
+    "street": "Hauptstraße 30",
+    "city": "65307 Bad Schwalbach"
+   },
+   "body": [
+    "als im letzten Herbst eine Phishing-Welle durch unser Unternehmen ging, war ich diejenige, die den ersten verdächtigen Login bemerkt, die betroffenen Konten gesperrt und die Spuren gesichert hat. Danach habe ich mich entschieden, mich auf Sicherheit zu spezialisieren.",
+    "Sieben Jahre Systemadministration in einem Mittelständler haben mir die Basis gegeben: Netzwerke, Verzeichnisdienste, Firewalls, Patch-Management. In den letzten zwei Jahren habe ich zusätzlich die Log-Auswertung aufgebaut, Mitarbeiterschulungen zu Phishing gehalten und eine Zertifizierung im Bereich Incident Handling abgeschlossen.",
+    "Bei einer Bank sind die Anforderungen hoch. Genau deshalb möchte ich dort arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "SOC-Analyst sucht mehr Tiefe",
+   "level": "erfahren",
+   "position": "Senior Security Analyst (Incident Response)",
+   "to": {
+    "org": "CyberDefense Rhein-Main GmbH",
+    "sal": "f",
+    "contact": "Hartmann",
+    "street": "Mainzer Landstraße 50",
+    "city": "60329 Frankfurt am Main"
+   },
+   "body": [
+    "im Schichtbetrieb eines Security Operations Centers habe ich in drei Jahren gelernt, aus tausend Alarmen den einen zu finden, der zählt. Ich möchte jetzt weiter gehen und Vorfälle nicht nur melden, sondern selbst forensisch untersuchen.",
+    "Ich analysiere Logs, Netzwerkverkehr und Endpunktdaten, schreibe Erkennungsregeln und habe bei zwei Ransomware-Vorfällen im Kundenumfeld mitgearbeitet. In meiner Freizeit nehme ich an Capture-the-Flag-Wettbewerben teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikate",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Daniel Osei",
+    "Leipziger Straße 70",
+    "60487 Frankfurt am Main"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "modern",
+  "accent": 3,
+  "name": "Elena Petrova",
+  "title": "Systemadministratorin, IT-Sicherheit",
+  "street": "Rheinstraße 40",
+  "city": "65185 Wiesbaden",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Systemadministratorin, ab 2024 Schwerpunkt Sicherheit",
+    "Werkzeugbau Taunus GmbH",
+    "Idstein",
+    "- Aufbau der Log-Auswertung\n- Reaktion auf Phishing-Vorfall, Beweissicherung\n- Schulungen zu Phishing für 300 Mitarbeitende"
+   ],
+   [
+    "2016",
+    "2019",
+    "IT-Support",
+    "Systemhaus Wiesbaden",
+    "Wiesbaden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2013",
+    "2016",
+    "Ausbildung Fachinformatikerin für Systemintegration",
+    "Systemhaus Wiesbaden",
+    "Wiesbaden",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Zertifizierung Incident Handling",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Log-Analyse",
+    4
+   ],
+   [
+    "Netzwerke",
+    5
+   ],
+   [
+    "Incident Response",
+    3
+   ],
+   [
+    "Härtung",
+    4
+   ],
+   [
+    "Awareness-Schulung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Russisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Schach, Capture the Flag"
+ },
+ "do": [
+  "Konkrete Vorfälle (anonymisiert) beschreiben.",
+  "Werkzeuge und Methoden nennen.",
+  "Kommunikation im Ernstfall zeigen."
+ ],
+ "dont": [
+  "Kundendetails oder interne Schwachstellen ausplaudern.",
+  "Hacker-Klischees.",
+  "Zertifikate ohne Praxis."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einem Verdacht auf Ransomware vor?",
+  "Wie unterscheiden Sie einen Fehlalarm von einem echten Vorfall?",
+  "Wie erklären Sie einem Vorstand ein Risiko?",
+  "Welche Logs schauen Sie zuerst an?"
+ ],
+ "faq": [
+  {
+   "q": "Wie komme ich in die IT-Sicherheit?",
+   "a": "Oft über Administration, Netzwerke oder Entwicklung. Praktische Erfahrung, eigene Übungsumgebungen und Wettbewerbe zählen viel. Zertifikate helfen beim Quereinstieg."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "devops-engineer",
+  "fachinformatiker-systemintegration",
+  "data-analyst"
+ ],
+ "en": {
+  "slug": "cybersecurity-analyst",
+  "name": "Cybersecurity analyst",
+  "search": "cybersecurity analyst security analyst soc incident response information security infosec",
+  "short": "Spotting attacks, hardening systems, investigating incidents.",
+  "desc": "Cybersecurity analyst cover letter examples: a sysadmin moving into security and a SOC analyst seeking incident response depth, plus a ready CV.",
+  "intro": "Security analysts monitor systems, triage alerts, investigate incidents, harden configurations and train staff. Employers look for hands-on experience, a solid grasp of networks and operating systems, and calm communication under pressure.",
+  "lookFor": [
+   "Networks, systems and protocols",
+   "Monitoring and log analysis",
+   "Incident response",
+   "Frameworks and standards",
+   "Clear communication under pressure"
+  ],
+  "letters": [
+   {
+    "label": "Sysadmin moving into security",
+    "level": "quereinstieg",
+    "position": "Cybersecurity analyst",
+    "to": {
+     "org": "Regional Building Society",
+     "sal": "m",
+     "contact": "Walker",
+     "street": "30 High Street",
+     "city": "Guildford GU1 3DY"
+    },
+    "body": [
+     "when a phishing wave hit our company last autumn, I was the one who spotted the first suspicious login, locked the affected accounts and preserved the evidence. After that I decided to specialise in security.",
+     "Seven years of systems administration gave me the foundation: networks, directory services, firewalls, patching. In the last two years I also built our log analysis, ran phishing awareness sessions and earned an incident handling certification. A financial institution sets a high bar, which is exactly why I want to work for one."
+    ],
+    "att": [
+     "CV",
+     "Certificate"
+    ]
+   },
+   {
+    "label": "SOC analyst seeking more depth",
+    "level": "erfahren",
+    "position": "Senior incident response analyst",
+    "to": {
+     "org": "CyberDefence South",
+     "sal": "f",
+     "contact": "Hart",
+     "street": "50 London Road",
+     "city": "Reading RG1 5AS"
+    },
+    "body": [
+     "three years of shifts in a security operations centre taught me to find the one alert that matters among thousands. I now want to go further and investigate incidents myself, not just escalate them.",
+     "I analyse logs, network traffic and endpoint data, write detection rules and have worked on two ransomware incidents for clients. In my spare time I compete in capture-the-flag events."
+    ],
+    "att": [
+     "CV",
+     "Certificates"
+    ],
+    "from": [
+     "Daniel Owusu",
+     "70 Oxford Road",
+     "Reading RG1 7LT"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a20",
+   "design": "modern",
+   "accent": 3,
+   "name": "Elena Petrova",
+   "title": "Systems administrator, security",
+   "street": "40 Woodbridge Road",
+   "city": "Guildford GU1 4PU",
+   "exp": [
+    [
+     "2019",
+     "",
+     "Systems administrator, security focus from 2024",
+     "Surrey Tooling Ltd",
+     "Woking",
+     "- Built log analysis\n- Phishing incident response and evidence preservation\n- Awareness sessions for 300 staff"
+    ]
+   ],
+   "edu": [
+    [
+     "2013",
+     "2016",
+     "IT apprenticeship",
+     "Guildford College",
+     "Guildford",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Log analysis",
+     4
+    ],
+    [
+     "Networking",
+     5
+    ],
+    [
+     "Incident response",
+     3
+    ],
+    [
+     "Hardening",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "Russian",
+     "native"
+    ]
+   ],
+   "hobbies": "Chess, capture the flag"
+  },
+  "do": [
+   "Describe real incidents, anonymised.",
+   "Name tools and methods.",
+   "Show how you communicate in a crisis."
+  ],
+  "dont": [
+   "Share client details or internal weaknesses.",
+   "Hacker clichés.",
+   "Certificates without practice."
+  ],
+  "questions": [
+   "How would you respond to suspected ransomware?",
+   "How do you tell a false positive from a real incident?",
+   "How would you explain a risk to the board?",
+   "Which logs do you check first?"
+  ],
+  "faq": [
+   {
+    "q": "How do I get into cybersecurity?",
+    "a": "Often through administration, networking or development. Hands-on experience, home labs and competitions count; certificates help career changers."
+   }
+  ]
+ }
+}

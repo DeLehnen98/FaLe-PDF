@@ -1,0 +1,165 @@
+{
+ "id": "ausbildung-kaufmann-gross-aussenhandel",
+ "field": "ausbildung",
+ "name": "Ausbildung Kaufmann/-frau für Groß- und Außenhandelsmanagement",
+ "search": "ausbildung kaufmann großhandel außenhandel groß- und außenhandelsmanagement einkauf export azubi bewerbung grosshandel",
+ "short": "Einkauf, Vertrieb, Export – kaufmännisch im Großhandel.",
+ "desc": "Bewerbung für die Ausbildung zum Kaufmann / zur Kauffrau für Groß- und Außenhandelsmanagement: Muster-Anschreiben für Realschüler und Abiturientin mit Sprachen.",
+ "intro": "Im Großhandel kaufst du Ware bei Herstellern ein und verkaufst sie an andere Unternehmen, manchmal über Landesgrenzen hinweg. Die Ausbildung hat zwei Fachrichtungen: Großhandel und Außenhandel. Sprachen, Zahlenverständnis und Freude am Telefonieren sind gute Argumente.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Gute Noten in Deutsch, Mathe, Englisch",
+  "Kontaktfreude, auch am Telefon",
+  "Interesse an Waren und Märkten",
+  "Weitere Fremdsprachen für den Außenhandel"
+ ],
+ "letters": [
+  {
+   "label": "Realschüler mit Verkaufserfahrung",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Kaufmann für Groß- und Außenhandelsmanagement (Großhandel)",
+   "to": {
+    "org": "Sanitär-Großhandel Nordbayern GmbH",
+    "sal": "f",
+    "contact": "Pfeiffer",
+    "street": "Hafenstraße 40",
+    "city": "90411 Nürnberg"
+   },
+   "body": [
+    "im Baumarkt, in dem ich samstags aushelfe, kommen morgens um sieben die Handwerker und holen ihre Bestellungen ab. Mich hat immer interessiert, woher die ganze Ware kommt und wie man den Überblick über zehntausend Artikel behält. Ihr Großhandel beliefert genau diese Betriebe.",
+    "Im Juli schließe ich die Wirtschaftsschule ab, mit Schwerpunkt Rechnungswesen und Übungsfirma. In der Übungsfirma war ich ein Halbjahr Einkaufsleiter: Angebote vergleichen, Bestellungen schreiben, Rechnungen prüfen. Klingt nach Schule, hat mir aber gezeigt, dass mir diese Arbeit liegt.",
+    "Gern stelle ich mich bei Ihnen vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Bescheinigung Aushilfsjob"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Spanisch für den Außenhandel",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Kauffrau für Groß- und Außenhandelsmanagement (Außenhandel)",
+   "to": {
+    "org": "Fruchtimport Franken KG",
+    "sal": "m",
+    "contact": "Dorn",
+    "street": "Am Großmarkt 6",
+    "city": "90441 Nürnberg"
+   },
+   "body": [
+    "Spanisch ist für mich mehr als ein Schulfach: Meine Mutter kommt aus Valencia, und wir verbringen jeden Sommer bei den Großeltern zwischen Orangenplantagen. Dass Ihr Unternehmen Zitrusfrüchte aus genau dieser Region importiert, hat mich sofort angesprochen.",
+    "Im Abitur hatte ich Englisch und Wirtschaft als Leistungsfächer. Spanisch spreche ich fließend. Im Praktikum bei einer Spedition habe ich Zollpapiere sortiert und erste Einblicke in Lieferbedingungen bekommen. Ich telefoniere gern und bleibe auch dann freundlich, wenn ein Lkw zwei Tage zu spät ist.",
+    "Ab September stehe ich zur Verfügung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Lucía Hoffmann",
+    "Fürther Straße 200",
+    "90429 Nürnberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "classic",
+  "accent": 0,
+  "name": "Benedikt Rauh",
+  "title": "Schüler",
+  "street": "Allersberger Straße 99",
+  "city": "90461 Nürnberg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe (samstags)",
+    "Baumarkt Südstadt",
+    "Nürnberg",
+    "- Kasse, Warenverräumung, Abholung für Gewerbekunden"
+   ],
+   [
+    "2025",
+    "2025",
+    "Übungsfirma, Leitung Einkauf (Schulprojekt)",
+    "Städtische Wirtschaftsschule",
+    "Nürnberg",
+    "- Angebotsvergleich, Bestellung, Rechnungsprüfung"
+   ]
+  ],
+  "edu": [
+   [
+    "2022",
+    "2026",
+    "Wirtschaftsschule, voraussichtlich Mittlerer Schulabschluss",
+    "Städtische Wirtschaftsschule",
+    "Nürnberg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Rechnungswesen",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ],
+   [
+    "Englisch",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Basketball, Modelleisenbahn"
+ },
+ "do": [
+  "Fachrichtung Groß- oder Außenhandel nennen.",
+  "Sprachen mit Niveau angeben.",
+  "Kaufmännische Schulprojekte (Übungsfirma) erwähnen."
+ ],
+ "dont": [
+  "Den alten Berufsnamen ohne Bezug zur Anzeige verwenden.",
+  "Nur über Lieblingsprodukte schreiben.",
+  "Sprachen übertreiben."
+ ],
+ "questions": [
+  "Was macht ein Großhändler?",
+  "Wie würden Sie zwei Angebote vergleichen?",
+  "Welche Sprachen sprechen Sie?",
+  "Wie reagieren Sie, wenn ein Kunde reklamiert?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Was ist der Unterschied zum Einzelhandel?",
+   "a": "Der Einzelhandel verkauft an Endkunden im Laden oder online. Der Großhandel kauft große Mengen ein und verkauft an Unternehmen, z. B. Handwerksbetriebe, Gastronomie oder Händler."
+  }
+ ],
+ "related": [
+  "ausbildung-industriekaufmann",
+  "einkaeufer",
+  "speditionskaufmann",
+  "vertrieb-innendienst"
+ ]
+}

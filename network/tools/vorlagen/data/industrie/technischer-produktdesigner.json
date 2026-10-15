@@ -1,0 +1,162 @@
+{
+ "id": "technischer-produktdesigner",
+ "field": "industrie",
+ "name": "Technische/r Produktdesigner/in (Technische/r Zeichner/in)",
+ "search": "technischer produktdesigner technische produktdesignerin technischer zeichner cad konstruktion zeichnung bewerbung",
+ "short": "CAD-Konstruktion und technische Zeichnungen.",
+ "desc": "Bewerbung als Technische/r Produktdesigner/in oder Technische/r Zeichner/in: Muster-Anschreiben für Berufseinsteiger und erfahrene Konstrukteurin, mit Lebenslauf.",
+ "intro": "Technische Produktdesigner erstellen 3D-Modelle und technische Zeichnungen, stimmen sich mit Ingenieuren ab und bereiten Unterlagen für die Fertigung vor. Gesucht sind sichere CAD-Kenntnisse, Normenwissen und ein Blick für fertigungsgerechte Details.",
+ "lookFor": [
+  "Ausbildung Technische/r Produktdesigner/in oder Zeichner/in",
+  "3D-CAD und Zeichnungsableitung",
+  "Normen, Toleranzen, Oberflächenangaben",
+  "Abstimmung mit Fertigung und Entwicklung",
+  "Genauigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinsteiger nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Technischer Produktdesigner (Maschinen- und Anlagenkonstruktion)",
+   "to": {
+    "org": "Fördertechnik Mittelhessen GmbH",
+    "sal": "f",
+    "contact": "Bender",
+    "street": "Industriestraße 12",
+    "city": "35394 Gießen"
+   },
+   "body": [
+    "mein Prüfungsstück war eine Spannvorrichtung für eine Fräsmaschine, vom Entwurf bis zur Stückliste. Die Werkstatt hat sie danach tatsächlich gebaut, und sie wird heute noch benutzt. Das hat mir gezeigt, wie viel Freude es macht, wenn Zeichnung und Wirklichkeit zusammenpassen.",
+    "Im Juni habe ich die Ausbildung zum Technischen Produktdesigner abgeschlossen und arbeite seitdem sicher mit 3D-CAD, Zeichnungsableitung und Stücklisten, wobei ich Toleranzen und Passungen nicht aus Gewohnheit eintrage, sondern begründen kann. Übernommen werde ich nicht. Die Konstruktion zieht an einen anderen Standort."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Zeichnungsbeispiele"
+   ]
+  },
+  {
+   "label": "Erfahrene Konstrukteurin will in Teilzeit",
+   "level": "erfahren",
+   "position": "Technische Produktdesignerin (Teilzeit, 30 Stunden)",
+   "to": {
+    "org": "Messgerätebau Lahn",
+    "sal": "none",
+    "street": "Am Wehr 4",
+    "city": "35578 Wetzlar"
+   },
+   "body": [
+    "zwölf Jahre Konstruktion von optischen Baugruppen haben mich zu einer Spezialistin für kleine Toleranzen gemacht. Nach der Elternzeit möchte ich mit 30 Stunden zurück in die Konstruktion, am liebsten in der Feinwerktechnik.",
+    "Ich arbeite mit 3D-CAD und PDM-Systemen, betreue Änderungsanträge und stimme mich mit Lieferanten über Fertigungsdetails ab. Eine Schulung zur neuesten Version unseres CAD-Programms habe ich vor dem Wiedereinstieg absolviert."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Birgit Lang",
+    "Philosophenweg 20",
+    "35578 Wetzlar"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "modern",
+  "accent": 0,
+  "name": "Kerem Aydemir",
+  "title": "Technischer Produktdesigner",
+  "street": "Frankfurter Straße 50",
+  "city": "35392 Gießen",
+  "exp": [
+   [
+    "2023",
+    "2026",
+    "Auszubildender Technischer Produktdesigner",
+    "Werkzeugbau Lahn GmbH",
+    "Wetzlar",
+    "- 3D-Modelle, Zeichnungen, Stücklisten\n- Prüfungsstück: Spannvorrichtung (in Nutzung)"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Abschlussprüfung Technischer Produktdesigner",
+    "IHK Lahn-Dill",
+    "Wetzlar",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife Technik",
+    "Max-Weber-Schule",
+    "Gießen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "3D-CAD",
+    4
+   ],
+   [
+    "Technisches Zeichnen",
+    5
+   ],
+   [
+    "Toleranzen und Passungen",
+    4
+   ],
+   [
+    "Stücklisten",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Modellbau, Basketball"
+ },
+ "do": [
+  "Projekte oder Prüfungsstück beschreiben.",
+  "CAD-Systeme und Normen nennen.",
+  "Zeichnungsbeispiele beilegen (ohne Firmengeheimnisse)."
+ ],
+ "dont": [
+  "Zeichnungen mit Kundendaten anhängen.",
+  "Nur Softwarenamen.",
+  "Fertigungswissen auslassen."
+ ],
+ "questions": [
+  "Wie legen Sie eine Toleranz fest?",
+  "Wie gehen Sie mit einer Änderung kurz vor Fertigungsstart um?",
+  "Welche Normen kennen Sie?",
+  "Wie stimmen Sie sich mit der Werkstatt ab?"
+ ],
+ "faq": [
+  {
+   "q": "Technischer Zeichner oder Produktdesigner?",
+   "a": "Der Ausbildungsberuf heißt heute Technische/r Produktdesigner/in, im Bauwesen Technische/r Systemplaner/in. „Technischer Zeichner“ verstehen aber alle."
+  }
+ ],
+ "related": [
+  "maschinenbauingenieur",
+  "werkstudent-ingenieur",
+  "zerspanungsmechaniker",
+  "praktikum-architektur"
+ ]
+}

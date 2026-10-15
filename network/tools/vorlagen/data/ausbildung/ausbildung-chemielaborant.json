@@ -1,0 +1,164 @@
+{
+ "id": "ausbildung-chemielaborant",
+ "field": "ausbildung",
+ "name": "Ausbildung Chemielaborant/in",
+ "search": "ausbildung chemielaborant chemielaborantin labor analytik chemie azubi industrie bewerbung",
+ "short": "Analysen, Synthesen, Messgeräte – Ausbildung im Labor.",
+ "desc": "Bewerbung für die Ausbildung zum Chemielaboranten / zur Chemielaborantin: Muster-Anschreiben für Abiturientin und Realschüler, Lebenslauf und Fragen im Auswahltest.",
+ "intro": "Chemielaborantinnen und -laboranten führen Analysen und Synthesen durch, bedienen Messgeräte und dokumentieren jeden Schritt. Unternehmen aus Chemie, Pharma und Lebensmittelindustrie suchen sorgfältige Leute mit guten Noten in Chemie und Mathe. Ein Laborpraktikum macht deine Bewerbung deutlich stärker.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Gute Noten in Chemie, Mathe, Physik",
+  "Sehr genaues, sauberes Arbeiten",
+  "Verantwortungsbewusstsein im Umgang mit Gefahrstoffen",
+  "Englisch lesen können"
+ ],
+ "letters": [
+  {
+   "label": "Abiturientin aus der Chemie-AG",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Chemielaborantin",
+   "to": {
+    "org": "Rheinchem Spezialprodukte GmbH",
+    "sal": "none",
+    "street": "Industriestraße 300",
+    "city": "50389 Wesseling"
+   },
+   "body": [
+    "bei unserem Projekt für den Schülerwettbewerb haben wir untersucht, wie viel Vitamin C in Orangensaft nach dem Öffnen verloren geht. Drei Wochen Titrationen, eine Tabelle mit über hundert Werten und am Ende die Erkenntnis, dass der Kühlschrank weniger hilft als gedacht. Seitdem weiß ich, dass ich im Labor arbeiten will.",
+    "Mein Abitur mache ich im Frühjahr mit Chemie und Biologie als Leistungskursen. Ein Studium habe ich überlegt, ich möchte aber zuerst die Praxis lernen. In der Schule bin ich diejenige, die das Laborjournal führt, weil ich es ordentlicher mache als die anderen.",
+    "Am Auswahltest nehme ich gern teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Urkunde Schülerwettbewerb"
+   ]
+  },
+  {
+   "label": "Realschüler mit Praktikum im Werklabor",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Chemielaboranten",
+   "to": {
+    "org": "Kölner Lacke und Farben AG",
+    "sal": "f",
+    "contact": "Esser",
+    "street": "Hafenstraße 9",
+    "city": "51063 Köln"
+   },
+   "body": [
+    "zwei Wochen im Labor einer Kläranlage haben mir gezeigt, wie viel Chemie im Alltag steckt. Ich habe Proben genommen, pH-Werte gemessen und gelernt, dass man jede Messung aufschreibt, auch die, die nicht passt.",
+    "Chemie ist mein bestes Fach, in Mathe stehe ich auf 2. Ich arbeite gern konzentriert und genau, zu Hause baue ich Modelle, bei denen ein halber Millimeter entscheidet. Ihre Firma entwickelt Lacke für Autos und Möbel; dass man mit Analytik die Qualität so direkt sichert, finde ich interessant.",
+    "Den Realschulabschluss habe ich im Juli in der Tasche."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Jan Wolter",
+    "Berliner Straße 410",
+    "51063 Köln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "classic",
+  "accent": 1,
+  "name": "Ida Brückner",
+  "title": "Schülerin",
+  "street": "Kölner Straße 77",
+  "city": "50389 Wesseling",
+  "exp": [
+   [
+    "2024",
+    "2025",
+    "Projekt Schülerwettbewerb Chemie",
+    "Gymnasium Wesseling",
+    "Wesseling",
+    "- Vitamin-C-Gehalt in Säften, über 100 Titrationen"
+   ],
+   [
+    "07/2025",
+    "07/2025",
+    "Ferienpraktikum (2 Wochen)",
+    "Wasserlabor Rhein-Erft",
+    "Brühl",
+    "- Probenvorbereitung, Messreihen"
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Gymnasium Wesseling",
+    "Wesseling",
+    "Leistungskurse Chemie und Biologie"
+   ]
+  ],
+  "skills": [
+   [
+    "Titration",
+    4
+   ],
+   [
+    "Laborjournal",
+    5
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Englisch Fachtexte",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Klavier, Laufen"
+ },
+ "do": [
+  "Laborerfahrung aus Schule oder Praktikum genau beschreiben.",
+  "Sorgfalt belegen (Laborjournal, Messreihen).",
+  "Noten in Naturwissenschaften nennen."
+ ],
+ "dont": [
+  "„Chemie fand ich immer spannend“ ohne Beispiel.",
+  "Sicherheit im Labor kleinreden.",
+  "Unsaubere Unterlagen."
+ ],
+ "questions": [
+  "Was passiert bei einer Titration?",
+  "Wie gehen Sie mit einem Messwert um, der nicht passt?",
+  "Was bedeutet Arbeitssicherheit für Sie?",
+  "Warum Ausbildung statt Studium?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Gibt es einen Einstellungstest?",
+   "a": "Bei größeren Unternehmen fast immer: Mathe, Chemie, Logik, manchmal ein praktischer Teil. Wiederhole Stöchiometrie, Prozentrechnung und Einheiten."
+  }
+ ],
+ "related": [
+  "chemikant",
+  "qualitaetspruefer",
+  "pta",
+  "ausbildung-mechatroniker"
+ ]
+}

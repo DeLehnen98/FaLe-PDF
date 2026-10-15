@@ -1,0 +1,205 @@
+{
+ "id": "creative",
+ "de": {
+  "name": "Social-Media-Managerin",
+  "cv": {
+   "avatar": "a13",
+   "accent": 3,
+   "name": "Mara Schulte",
+   "title": "Social-Media-Managerin",
+   "street": "Schanzenstraße 88",
+   "city": "20357 Hamburg",
+   "exp": [
+    [
+     "03/2022",
+     "",
+     "Social-Media-Managerin",
+     "Brausewerk Hamburg (Limonadenmanufaktur)",
+     "Hamburg",
+     "- Drei Kanäle mit zusammen 85.000 Followern\n- Redaktionsplan, Kurzvideos und Fotos, Zusammenarbeit mit Creators\n- Monatliche Auswertung für die Geschäftsführung"
+    ],
+    [
+     "09/2019",
+     "02/2022",
+     "Volontärin Online-Redaktion",
+     "Elbe Medienhaus",
+     "Hamburg",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2015",
+     "2019",
+     "B.A. Medien- und Kommunikationswissenschaft",
+     "Universität Hamburg",
+     "Hamburg",
+     ""
+    ],
+    [
+     "2007",
+     "2015",
+     "Abitur",
+     "Gymnasium Altona",
+     "Hamburg",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2023",
+     "Videoschnitt am Smartphone",
+     "Medienakademie",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Kurzvideo und Schnitt",
+     5
+    ],
+    [
+     "Redaktionsplanung",
+     5
+    ],
+    [
+     "Community Management",
+     4
+    ],
+    [
+     "Fotografie",
+     4
+    ],
+    [
+     "Social-Media-Analyse",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "C1"
+    ],
+    [
+     "Spanisch",
+     "A2"
+    ]
+   ],
+   "hobbies": "Analogfotografie, Stadtteilfest-Orga"
+  },
+  "letter": {
+   "label": "Wechsel in eine Agentur",
+   "position": "Senior Social Media Managerin",
+   "to": {
+    "org": "Hafenkante Kommunikation GmbH",
+    "sal": "n",
+    "contact": "Robin Hansen",
+    "street": "Große Elbstraße 145",
+    "city": "22767 Hamburg"
+   },
+   "body": [
+    "unser meistgesehenes Video bei der Limonadenmanufaktur hat 1,2 Millionen Aufrufe und hat 14 Euro gekostet: Zitronen, ein Stativ und eine Kollegin aus der Abfüllung, die gut erklären kann. Seitdem weiß ich, dass gute Ideen wichtiger sind als großes Budget.",
+    "Drei Jahre habe ich die Kanäle einer einzigen Marke betreut und von 9.000 auf 85.000 Follower gebracht. In Ihrer Agentur würde ich gern für mehrere Kunden arbeiten, mit Kolleginnen, von denen ich etwas lernen kann.",
+    "Eine Auswahl meiner Arbeiten schicke ich Ihnen gern vorab."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben (Link)"
+   ]
+  }
+ },
+ "en": {
+  "name": "Social media manager",
+  "cv": {
+   "avatar": "a13",
+   "accent": 3,
+   "name": "Mara Schulte",
+   "title": "Social media manager",
+   "street": "88 Quayside",
+   "city": "Bristol BS1 4RN",
+   "exp": [
+    [
+     "03/2022",
+     "",
+     "Social media manager",
+     "Fizzworks Bristol (craft lemonade)",
+     "Bristol",
+     "- Three channels with 85,000 followers\n- Content plan, short videos and photos, creator partnerships\n- Monthly reporting to the owners"
+    ],
+    [
+     "09/2019",
+     "02/2022",
+     "Junior content editor",
+     "Harbour Media Group",
+     "Bristol",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2019",
+     "BA Media and Communication",
+     "University of the West of England",
+     "Bristol",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Short video and editing",
+     5
+    ],
+    [
+     "Content planning",
+     5
+    ],
+    [
+     "Community management",
+     4
+    ],
+    [
+     "Photography",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Spanish",
+     "A2"
+    ]
+   ],
+   "hobbies": "Film photography, organising a street festival"
+  },
+  "letter": {
+   "label": "Moving to an agency",
+   "position": "Senior social media manager",
+   "to": {
+    "org": "Quayside Communications Ltd",
+    "sal": "n",
+    "contact": "Robin Hansen",
+    "street": "145 Harbour Walk",
+    "city": "Bristol BS1 5TT"
+   },
+   "body": [
+    "Our most watched video at the lemonade company has 1.2 million views and cost £12: lemons, a tripod and a colleague from the bottling line who explains things well. Since then I know that good ideas matter more than big budgets.",
+    "For three years I have run the channels of a single brand and grown them from 9,000 to 85,000 followers. At your agency I would like to work for several clients, with colleagues I can learn from.",
+    "I am happy to send you a selection of my work beforehand."
+   ],
+   "att": [
+    "CV",
+    "Portfolio (link)"
+   ]
+  }
+ }
+}

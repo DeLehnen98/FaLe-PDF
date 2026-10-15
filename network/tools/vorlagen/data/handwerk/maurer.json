@@ -1,0 +1,162 @@
+{
+ "id": "maurer",
+ "field": "handwerk",
+ "name": "Maurer/in",
+ "search": "maurer maurerin bau rohbau hochbau mauern beton schalung geselle polier handwerk bewerbung",
+ "short": "Rohbau, Sanierung, Schalung – auf der Baustelle.",
+ "desc": "Bewerbung als Maurer/in: Muster-Anschreiben für erfahrenen Gesellen, Vorarbeiter und Maurer aus dem Ausland mit Anerkennung, mit Lebenslauf und Tipps.",
+ "intro": "Maurer mauern Wände, betonieren, schalen, setzen Fertigteile und sanieren alte Gebäude. Bauunternehmen achten auf Erfahrung im Rohbau, Sorgfalt beim Messen und Teamarbeit. Wer Pläne lesen und Mitarbeitende anleiten kann, sollte das herausstellen.",
+ "lookFor": [
+  "Gesellenbrief oder gleichwertige Qualifikation",
+  "Rohbau, Schalung, Bewehrung",
+  "Pläne lesen und Maße übertragen",
+  "Körperliche Fitness",
+  "Führerschein, gern mit Anhänger"
+ ],
+ "letters": [
+  {
+   "label": "Geselle möchte Vorarbeiter werden",
+   "level": "erfahren",
+   "position": "Maurer / Vorarbeiter Hochbau",
+   "to": {
+    "org": "Bauunternehmung Kessler GmbH",
+    "sal": "m",
+    "contact": "Kessler",
+    "street": "Gewerbegebiet Süd 4",
+    "city": "97616 Bad Neustadt an der Saale"
+   },
+   "body": [
+    "im letzten Jahr hat mich mein Polier bei zwei Einfamilienhäusern allein mit einem Helfer arbeiten lassen. Vom Kellergeschoss bis zum Ringanker haben wir alles termingerecht übergeben. Ich möchte jetzt den nächsten Schritt machen und als Vorarbeiter eine eigene Kolonne führen.",
+    "Maurer bin ich seit sieben Jahren, Schalung, Bewehrung und Mauerwerk aus Planstein und Ziegel kann ich sicher. Pläne lese ich ohne Rückfragen, und das Einmessen mit dem Tachymeter habe ich mir vom Vermesser zeigen lassen. Ein Weiterbildungskurs zum Vorarbeiter ist für den Herbst geplant."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Maurer aus Rumänien mit Anerkennung",
+   "level": "erfahren",
+   "position": "Maurer",
+   "to": {
+    "org": "Hochbau Franken",
+    "sal": "none",
+    "street": "Industriestraße 30",
+    "city": "97424 Schweinfurt"
+   },
+   "body": [
+    "in Rumänien habe ich neun Jahre als Maurer gearbeitet, zuletzt im Wohnungsbau in Cluj. Seit einem Jahr lebe ich in Schweinfurt und habe meine Berufsqualifikation von der Handwerkskammer als gleichwertig anerkennen lassen. Der Bescheid liegt bei.",
+    "Mein Deutsch reicht für die Baustelle und wird jeden Tag besser; ich besuche einen Sprachkurs am Abend. Auf der Baustelle bin ich zuverlässig, schnell und genau. Ich habe einen Führerschein und kann ab sofort anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Anerkennungsbescheid",
+    "Sprachzertifikat B1"
+   ],
+   "from": [
+    "Ionuț Popescu",
+    "Hauptstraße 50",
+    "97421 Schweinfurt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "compact",
+  "accent": 4,
+  "name": "Tobias Reuß",
+  "title": "Maurer (Geselle)",
+  "street": "Bahnhofstraße 20",
+  "city": "97616 Bad Neustadt an der Saale",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Maurer",
+    "Bau Rhön GmbH",
+    "Mellrichstadt",
+    "- Ein- und Mehrfamilienhäuser im Rohbau\n- Schalung, Bewehrung, Mauerwerk\n- Eigenständige Ausführung mit Helfer"
+   ],
+   [
+    "2016",
+    "2019",
+    "Auszubildender Maurer",
+    "Bau Rhön GmbH",
+    "Mellrichstadt",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Gesellenprüfung Maurer",
+    "Handwerkskammer für Unterfranken",
+    "Würzburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Mauerwerk",
+    5
+   ],
+   [
+    "Schalung",
+    4
+   ],
+   [
+    "Pläne lesen",
+    4
+   ],
+   [
+    "Einmessen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Motocross, Feuerwehr"
+ },
+ "do": [
+  "Projekte und Bauweisen nennen.",
+  "Eigenständiges Arbeiten mit Beispiel zeigen.",
+  "Führungsambitionen klar sagen."
+ ],
+ "dont": [
+  "„Alle anfallenden Arbeiten“.",
+  "Sicherheit vergessen.",
+  "Anerkennungsstand im Ausland verschweigen."
+ ],
+ "questions": [
+  "Wie lesen Sie einen Bewehrungsplan?",
+  "Was tun Sie, wenn ein Maß im Plan nicht stimmt?",
+  "Wie leiten Sie einen Helfer an?",
+  "Welche Mauersteine kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  },
+  {
+   "q": "Wie lasse ich einen ausländischen Abschluss anerkennen?",
+   "a": "Für Handwerksberufe ist meist die Handwerkskammer zuständig. Sie prüft, ob deine Qualifikation gleichwertig ist. Informationen gibt es beim Portal „Anerkennung in Deutschland“."
+  }
+ ],
+ "related": [
+  "bauhelfer",
+  "zimmerer",
+  "fliesenleger",
+  "fachkraft-anerkennung"
+ ]
+}

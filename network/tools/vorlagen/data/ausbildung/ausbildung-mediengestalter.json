@@ -1,0 +1,166 @@
+{
+ "id": "ausbildung-mediengestalter",
+ "field": "ausbildung",
+ "name": "Ausbildung Mediengestalter/in Digital und Print",
+ "search": "ausbildung mediengestalter mediengestalterin digital print grafik design agentur druckerei azubi bewerbung mappe",
+ "short": "Gestaltung für Print und Web – mit Mappe.",
+ "desc": "Bewerbung für die Ausbildung zum Mediengestalter / zur Mediengestalterin Digital und Print: Muster-Anschreiben mit Mappe, Lebenslauf und Tipps zur Arbeitsprobe.",
+ "intro": "Mediengestalterinnen und Mediengestalter entwerfen Flyer, Plakate, Websites und Social-Media-Grafiken und bereiten Dateien für den Druck vor. Die Ausbildung hat drei Fachrichtungen. Ohne Arbeitsproben geht es nicht: eine kleine, gut ausgewählte Mappe mit fünf bis zehn Arbeiten wirkt besser als dreißig mittelmäßige.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Mappe mit eigenen Arbeiten",
+  "Sicherer Umgang mit Grafikprogrammen oder Bereitschaft zum Lernen",
+  "Gefühl für Schrift, Farbe und Layout",
+  "Sorgfalt bei Druckdaten"
+ ],
+ "letters": [
+  {
+   "label": "Abiturientin mit Schülerzeitung",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Mediengestalterin Digital und Print (Gestaltung und Technik)",
+   "to": {
+    "org": "Druckhaus Saalfeld GmbH",
+    "sal": "m",
+    "contact": "Fiedler",
+    "street": "Am Saaleufer 9",
+    "city": "07318 Saalfeld/Saale"
+   },
+   "body": [
+    "das Layout unserer Schülerzeitung mache ich seit drei Jahren, 24 Seiten pro Ausgabe, viermal im Jahr. Am Anfang sahen die Seiten aus wie ein Flickenteppich, inzwischen haben wir ein Raster, zwei Schriften und eine Farbpalette, an die sich alle halten. Bei der letzten Ausgabe hat Ihre Druckerei uns erklärt, warum unsere Bilder im Druck zu dunkel waren. Seitdem rechne ich mit Tonwertzuwachs.",
+    "Im Juni mache ich Abitur mit Kunst als Leistungsfach. Ich arbeite mit gängigen Programmen für Layout und Bildbearbeitung, die ich mir überwiegend selbst beigebracht habe.",
+    "Meine Mappe mit acht Arbeiten liegt als PDF bei. Ich freue mich über Feedback, auch wenn es kritisch ist."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Mappe (PDF, 8 Arbeiten)"
+   ]
+  },
+  {
+   "label": "Realschüler mit Fokus auf Web",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Mediengestalter Digital und Print (Konzeption und Visualisierung)",
+   "to": {
+    "org": "Pixelhof Werbeagentur",
+    "sal": "f",
+    "contact": "Wendt",
+    "street": "Ernst-Abbe-Platz 3",
+    "city": "07743 Jena"
+   },
+   "body": [
+    "der Sportverein meines Bruders hatte eine Website von 2012. Ich habe ihm eine neue entworfen, mit Spielplan, Galerie und Anmeldeformular, und sie zusammen mit dem Vorstand online gebracht. Der Verein hat seitdem neun neue Mitglieder, die sagen, sie seien über die Seite gekommen.",
+    "Im Sommer beende ich die Regelschule. Mich interessiert vor allem, wie man eine Idee entwickelt, bevor man das erste Pixel setzt: Wer sind die Leute, was sollen sie fühlen, was sollen sie tun. Ihre Agentur zeigt auf der Website nicht nur Ergebnisse, sondern auch Skizzen. Das gefällt mir.",
+    "Einen Link zu meinen Arbeiten finden Sie im Lebenslauf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Link zur Mappe"
+   ],
+   "from": [
+    "Tom Hecker",
+    "Löbdergraben 20",
+    "07743 Jena"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 2,
+  "name": "Clara Wiesner",
+  "title": "Schülerin",
+  "street": "Obere Straße 15",
+  "city": "07318 Saalfeld/Saale",
+  "web": "mappe.example/clara-wiesner",
+  "exp": [
+   [
+    "2023",
+    "2026",
+    "Layout der Schülerzeitung",
+    "Gymnasium Saalfeld",
+    "Saalfeld",
+    "- Gestaltungsraster, 24 Seiten pro Ausgabe\n- Bildbearbeitung, Druckvorbereitung"
+   ],
+   [
+    "2025",
+    "",
+    "Flyer und Plakate für den Ortsverein (ehrenamtlich)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Gymnasium Saalfeld",
+    "Saalfeld",
+    "Leistungsfach Kunst"
+   ]
+  ],
+  "skills": [
+   [
+    "Layout",
+    4
+   ],
+   [
+    "Bildbearbeitung",
+    3
+   ],
+   [
+    "Typografie",
+    3
+   ],
+   [
+    "Zeichnen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Zeichnen, Fotografie, Kino"
+ },
+ "do": [
+  "Eine kleine, kuratierte Mappe beilegen.",
+  "Fachrichtung nennen.",
+  "Bei jeder Arbeit kurz sagen, was die Aufgabe war."
+ ],
+ "dont": [
+  "Programme aufzählen statt Arbeiten zu zeigen.",
+  "Eine Mappe mit 40 MB als Anhang.",
+  "Fremde Vorlagen als eigene Arbeit ausgeben."
+ ],
+ "questions": [
+  "Welche Arbeit in Ihrer Mappe gefällt Ihnen selbst am wenigsten – und warum?",
+  "Was ist ein Gestaltungsraster?",
+  "Wie bereiten Sie eine Datei für den Druck vor?",
+  "Welche Fachrichtung interessiert Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Was gehört in die Mappe?",
+   "a": "Fünf bis zehn Arbeiten, die zeigen, was du kannst: Plakat, Flyer, Logo, Website, Fotos, Zeichnungen. Schulprojekte und Arbeiten für Vereine zählen. Exportiere alles als ein PDF unter 10 MB oder verlinke eine Online-Mappe."
+  }
+ ],
+ "related": [
+  "grafikdesigner",
+  "mediengestalter",
+  "praktikum-marketing",
+  "fotograf"
+ ]
+}

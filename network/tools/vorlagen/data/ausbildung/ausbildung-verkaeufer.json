@@ -1,0 +1,160 @@
+{
+ "id": "ausbildung-verkaeufer",
+ "field": "ausbildung",
+ "name": "Ausbildung Verkäufer/in",
+ "search": "ausbildung verkäufer verkäuferin einzelhandel azubi supermarkt mode kasse zwei jahre bewerbung verkaeufer",
+ "short": "Zwei Jahre Verkauf – mit Option auf das dritte Jahr.",
+ "desc": "Bewerbung für die Ausbildung zum Verkäufer / zur Verkäuferin: Muster-Anschreiben für Hauptschüler, Schülerin mit Minijob und Wiedereinsteiger, Lebenslauf und Tipps.",
+ "intro": "Die Ausbildung zur Verkäuferin oder zum Verkäufer dauert zwei Jahre. Danach kannst du oft ein drittes Jahr anhängen und Kaufmann/-frau im Einzelhandel werden. Gesucht werden Azubis, die gern auf Menschen zugehen, ordentlich sind und an der Kasse den Überblick behalten.",
+ "lookFor": [
+  "Hauptschulabschluss oder höher",
+  "Freundliches Auftreten",
+  "Rechnen und Umgang mit Geld",
+  "Belastbarkeit an vollen Tagen",
+  "Bereitschaft zu Samstagsarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Hauptschüler mit Erfahrung im Supermarkt",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Verkäufer",
+   "to": {
+    "org": "Frischemarkt Weber e. K.",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Mühlenstraße 18",
+    "city": "45127 Essen"
+   },
+   "body": [
+    "seit einem halben Jahr räume ich bei Ihnen zweimal die Woche nach der Schule Regale ein. Ihre Marktleiterin, Frau Kaya, hat mir vorgeschlagen, mich für die Ausbildung zu bewerben, und genau das tue ich hiermit gern.",
+    "Ich kenne die Abläufe im Markt schon: Ware annehmen, Mindesthaltbarkeitsdaten prüfen, Preisschilder tauschen. Kundinnen fragen mich oft, wo etwas steht, und ich kann meistens helfen. Den Hauptschulabschluss mache ich im Sommer, in Mathe habe ich eine Drei, im Sozialverhalten eine Eins.",
+    "Meine Arbeitszeiten kann ich in den Ferien gern erhöhen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9"
+   ]
+  },
+  {
+   "label": "Schülerin mit Interesse an Mode",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Verkäuferin (Textil)",
+   "to": {
+    "org": "Modehaus Kerkhoff",
+    "sal": "f",
+    "contact": "Kerkhoff",
+    "street": "Westenhellweg 50",
+    "city": "44137 Dortmund"
+   },
+   "body": [
+    "welche Jacke zu welcher Hose passt, frage ich mich nicht nur morgens vor dem Spiegel. Freundinnen schicken mir Fotos aus der Umkleide und wollen meine Meinung hören. Diese Beratung möchte ich zu meinem Beruf machen.",
+    "Ihr Modehaus ist familiengeführt und hat eine Abteilung für Jugendliche, in der ich selbst gern einkaufe. Im Praktikum bei einer Boutique habe ich Ware ausgezeichnet, Kundinnen beraten und an der Kasse gestanden. Am meisten Spaß hat mir gemacht, ein Schaufenster mitzugestalten.",
+    "Meinen Realschulabschluss bekomme ich im Juni."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Alina Kowalski",
+    "Rheinische Straße 13",
+    "44137 Dortmund"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 2,
+  "name": "Samuel Osei",
+  "title": "Schüler",
+  "street": "Altendorfer Straße 210",
+  "city": "45143 Essen",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Aushilfe Warenverräumung (Minijob)",
+    "Frischemarkt Weber e. K.",
+    "Essen",
+    "- Ware annehmen und einräumen\n- MHD-Kontrolle, Preisschilder\n- Kundenfragen beantworten"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Hauptschulabschluss (voraussichtlich)",
+    "Gesamtschule Bockmühle",
+    "Essen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Warenverräumung",
+    4
+   ],
+   [
+    "Kundenkontakt",
+    4
+   ],
+   [
+    "Kasse (Grundlagen)",
+    2
+   ],
+   [
+    "Pünktlichkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Twi",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fußball, Musik"
+ },
+ "do": [
+  "Schon vorhandene Jobs im Laden erwähnen.",
+  "Zeigen, dass du gern mit Kunden sprichst.",
+  "Samstagsarbeit ansprechen."
+ ],
+ "dont": [
+  "Den Laden nur als Kunde kennen und das nicht erwähnen.",
+  "Schlechte Mathe-Noten verschweigen – lieber zeigen, dass du an der Kasse sicher bist.",
+  "Unpassende Kleidung im Vorstellungsgespräch."
+ ],
+ "questions": [
+  "Wie gehen Sie auf einen Kunden zu?",
+  "Was machen Sie, wenn an der Kasse Geld fehlt?",
+  "Können Sie samstags arbeiten?",
+  "Welche Abteilung interessiert Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Verkäufer oder Kaufmann im Einzelhandel?",
+   "a": "Der Verkäufer ist die zweijährige Ausbildung. Wer danach weitermachen möchte, kann oft direkt ein drittes Jahr anschließen und den Abschluss Kaufmann/-frau im Einzelhandel erwerben."
+  }
+ ],
+ "related": [
+  "ausbildung-einzelhandel",
+  "verkaeuferin",
+  "kassiererin",
+  "regalauffueller"
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "id": "ausbildung-anlagenmechaniker-shk",
+ "field": "ausbildung",
+ "name": "Ausbildung Anlagenmechaniker/in SHK",
+ "search": "ausbildung anlagenmechaniker shk sanitär heizung klima installateur azubi handwerk wärmepumpe bad bewerbung",
+ "short": "Sanitär, Heizung, Klima – Ausbildung im Handwerksbetrieb.",
+ "desc": "Bewerbung für die Ausbildung zum Anlagenmechaniker / zur Anlagenmechanikerin SHK: Muster-Anschreiben für Hauptschüler, Realschülerin und Studienabbrecher, mit Lebenslauf und Tipps.",
+ "intro": "Wer Anlagenmechaniker/in für Sanitär-, Heizungs- und Klimatechnik lernt, baut Bäder, schließt Heizungen und Wärmepumpen an und ist oft beim Kunden zu Hause. Betriebe suchen Leute, die zupacken, pünktlich sind und mit Menschen umgehen können. Ein Praktikum im Betrieb ist der beste Türöffner.",
+ "lookFor": [
+  "Hauptschul- oder Realschulabschluss",
+  "Handwerkliches Geschick und körperliche Belastbarkeit",
+  "Freundliches Auftreten bei Kunden",
+  "Interesse an Technik, z. B. Heizung, Wasser, Wärmepumpen",
+  "Pünktlichkeit – der Bus zur Baustelle wartet nicht"
+ ],
+ "letters": [
+  {
+   "label": "Hauptschüler nach Praktikum im Betrieb",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Anlagenmechaniker SHK",
+   "to": {
+    "org": "Haustechnik Brüggemann",
+    "sal": "m",
+    "contact": "Brüggemann",
+    "street": "Hammer Straße 41",
+    "city": "59425 Unna"
+   },
+   "body": [
+    "zwei Wochen war ich im Februar bei Ihnen im Praktikum, meistens mit Herrn Kowalski auf der Baustelle in Königsborn. Wir haben dort ein Bad komplett raus- und wieder eingebaut. Am Ende durfte ich die Vorwandinstallation für das WC mit montieren. Das hat mir so gefallen, dass ich gern bei Ihnen die Ausbildung machen möchte.",
+    "Ich mache im Sommer meinen Hauptschulabschluss nach Klasse 10. Mathe ist nicht mein stärkstes Fach, aber Messen und Anreißen auf der Baustelle hat gut geklappt. Ich bin gern draußen unterwegs und habe kein Problem damit, schwere Sachen zu tragen.",
+    "Herr Kowalski kann Ihnen sicher sagen, wie ich mich angestellt habe. Ich komme jederzeit zum Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9",
+    "Praktikumsbeurteilung"
+   ]
+  },
+  {
+   "label": "Realschülerin mit Interesse an Wärmepumpen",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Anlagenmechanikerin SHK",
+   "to": {
+    "org": "Wärme & Bad Schulte GmbH",
+    "sal": "f",
+    "contact": "Schulte",
+    "street": "Ostring 8",
+    "city": "59174 Kamen"
+   },
+   "body": [
+    "als wir zu Hause im letzten Herbst eine Wärmepumpe bekommen haben, stand ich fast jeden Tag neben den Monteuren. Ich wollte wissen, warum die Außeneinheit so leise ist, was im Pufferspeicher passiert und warum unsere Heizkörper jetzt größer sein müssen. Die beiden haben mir alles erklärt und gesagt: Mach das doch selbst.",
+    "Ich gehe in die 10. Klasse der Realschule Kamen und habe in Physik und Technik gute Noten. Mädchen sind in dem Beruf noch selten, das weiß ich. Mein Onkel ist Installateurmeister, und ich habe schon mehrfach bei ihm mitgeholfen, unter anderem beim Austausch von Heizkörpern.",
+    "Auf Ihrer Website steht, dass Sie vor allem Wärmepumpen und Badsanierungen machen. Genau das möchte ich lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Bescheinigung Girls’Day"
+   ],
+   "from": [
+    "Emily Krause",
+    "Weststraße 17",
+    "59174 Kamen"
+   ]
+  },
+  {
+   "label": "Studienabbrecher wechselt ins Handwerk",
+   "level": "quereinstieg",
+   "position": "Auszubildender zum Anlagenmechaniker SHK",
+   "to": {
+    "org": "Gebäudetechnik Ruhr-Lippe GmbH",
+    "sal": "none",
+    "street": "Werner Straße 70",
+    "city": "59379 Selm"
+   },
+   "body": [
+    "nach vier Semestern Energietechnik habe ich mein Studium beendet. Die Theorie war nicht das Problem; mir hat gefehlt, dass am Ende des Tages etwas fertig ist. Seit März jobbe ich bei einem Installateur als Helfer und weiß jetzt, wo ich hinwill.",
+    "Aus dem Studium bringe ich Grundlagen in Thermodynamik, Strömungslehre und technischem Zeichnen mit. Als Helfer habe ich Rohre in Kupfer und Mehrschichtverbund verlegt, Heizkörper gesetzt und bei der Inbetriebnahme von zwei Gasbrennwertgeräten zugeschaut. Ich bin 23 und habe den Führerschein Klasse B.",
+    "Falls die Ausbildung bei mir wegen des Abiturs und der Vorkenntnisse verkürzt werden kann, wäre ich dafür offen. Wichtiger ist mir aber, gründlich zu lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Notenübersicht Studium",
+    "Bescheinigung Helfertätigkeit"
+   ],
+   "from": [
+    "Niklas Bode",
+    "Kreisstraße 33",
+    "59379 Selm"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "compact",
+  "accent": 1,
+  "name": "Dominik Wessel",
+  "title": "Schüler",
+  "street": "Bahnhofstraße 50",
+  "city": "59423 Unna",
+  "exp": [
+   [
+    "02/2026",
+    "02/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Haustechnik Brüggemann",
+    "Unna",
+    "- Badsanierung: Demontage, Vorwandinstallation\n- Material vorbereiten, Baustelle aufräumen"
+   ],
+   [
+    "2024",
+    "",
+    "Aushilfe Getränkemarkt (Minijob)",
+    "Getränke Hoff",
+    "Unna",
+    "- Ware einräumen, Leergut sortieren"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Hauptschulabschluss nach Klasse 10 (voraussichtlich)",
+    "Hellweg-Gesamtschule",
+    "Unna",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Handwerkliches Arbeiten",
+    4
+   ],
+   [
+    "Körperliche Belastbarkeit",
+    4
+   ],
+   [
+    "Messen und Anreißen",
+    3
+   ],
+   [
+    "Pünktlichkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Polnisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball (Kreisliga Jugend), Angeln"
+ },
+ "do": [
+  "Praktikum mit Namen und konkreter Aufgabe erwähnen.",
+  "Zeigen, dass du gern draußen und beim Kunden arbeitest.",
+  "Interesse an Wärmepumpen oder Bad nennen, wenn der Betrieb das macht."
+ ],
+ "dont": [
+  "Schwache Noten wegerklären wollen statt Praxis zu zeigen.",
+  "Ein Anschreiben über eine ganze Seite für einen Handwerksbetrieb.",
+  "Den Meister mit falschem Namen anschreiben."
+ ],
+ "questions": [
+  "Warum möchten Sie ins Handwerk?",
+  "Was würden Sie tun, wenn Sie beim Kunden etwas beschädigen?",
+  "Wie kommen Sie morgens zum Betrieb?",
+  "Was wissen Sie über Wärmepumpen?"
+ ],
+ "pay": "Im SHK-Handwerk regeln Tarifverträge der Innungen die Vergütung, die je nach Bundesland unterschiedlich ist. Frag die Handwerkskammer oder den Betrieb.",
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Lohnt sich ein Praktikum vor der Bewerbung?",
+   "a": "Im Handwerk sehr. Viele Betriebe vergeben ihre Ausbildungsplätze an Leute, die sie aus einem Praktikum kennen. Ruf einfach an und frag nach einer oder zwei Wochen."
+  }
+ ],
+ "related": [
+  "anlagenmechaniker-shk",
+  "ausbildung-elektroniker",
+  "ausbildung-mechatroniker",
+  "bauhelfer"
+ ]
+}

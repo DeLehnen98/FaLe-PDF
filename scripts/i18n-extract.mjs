@@ -27,7 +27,7 @@ const SKIP_PATHS = [/^js\/i18n\//, /^vendor/, /^node_modules/, /^dist/, /^androi
 const SKIP_HTML = new Set(['datenschutz.html', 'impressum.html', 'info.html', 'info-en.html']);
 // Generated document content that stays German on purpose (German letters, DIN 5008, legal templates).
 // Strings from these places are still listed with --all but not counted as missing.
-const CONTENT_FILES = new Set(['js/office/sheet-templates.js']); // spreadsheet template cells stay German (the gallery titles are translated in en.js)
+const CONTENT_FILES = new Set(['js/office/sheet-templates.js', 'js/office/doc-templates.js']); // spreadsheet template cells stay German (the gallery titles are translated in en.js)
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {

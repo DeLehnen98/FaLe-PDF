@@ -1,0 +1,158 @@
+{
+ "id": "arbeitsvermittler",
+ "field": "oeffentlich",
+ "name": "Arbeitsvermittler/in (Jobcenter, Agentur)",
+ "search": "arbeitsvermittler arbeitsvermittlerin jobcenter integrationsfachkraft fallmanager beratung arbeitslose bewerbung",
+ "short": "Menschen in Arbeit bringen – im Jobcenter oder bei Trägern.",
+ "desc": "Bewerbung als Arbeitsvermittler/in oder Integrationsfachkraft: Muster-Anschreiben für Personalerin im Wechsel und Sozialarbeiter, mit Lebenslauf und Fragen.",
+ "intro": "Arbeitsvermittler beraten Arbeitsuchende, vermitteln in Stellen und Maßnahmen und arbeiten mit Arbeitgebern zusammen. Gefragt sind Beratungskompetenz, Kenntnisse des Arbeitsmarkts und die Fähigkeit, Regeln freundlich und konsequent umzusetzen. Viele kommen aus Personal, Sozialarbeit oder Verwaltung.",
+ "lookFor": [
+  "Studium oder Ausbildung mit Bezug zu Beratung, Personal, Verwaltung",
+  "Gesprächsführung",
+  "Arbeitsmarktkenntnis",
+  "Rechtsgrundlagen im Sozialrecht oder Bereitschaft dazu",
+  "Belastbarkeit bei hohen Fallzahlen"
+ ],
+ "letters": [
+  {
+   "label": "Personalerin wechselt ins Jobcenter",
+   "level": "quereinstieg",
+   "position": "Integrationsfachkraft (Arbeitsvermittlung)",
+   "to": {
+    "org": "Jobcenter Landkreis Weserland",
+    "sal": "f",
+    "contact": "Meier",
+    "street": "Am Markt 7",
+    "city": "27283 Verden (Aller)"
+   },
+   "body": [
+    "in fünf Jahren Recruiting für einen Logistiker habe ich viele Menschen eingestellt, die anderswo abgelehnt worden waren, weil eine Lücke im Lebenslauf stand. Die meisten sind geblieben. Ich möchte jetzt auf der anderen Seite arbeiten und Menschen helfen, wieder Fuß zu fassen.",
+    "Ich kenne die Betriebe in der Region, weiß, was Arbeitgeber wirklich verlangen, und kann Bewerbungsunterlagen in zehn Minuten so umbauen, dass sie funktionieren. Das Sozialrecht muss ich lernen; einen Grundlagenkurs zum SGB II habe ich bereits besucht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Kursbescheinigung"
+   ]
+  },
+  {
+   "label": "Sozialarbeiter mit Beratungserfahrung",
+   "level": "erfahren",
+   "position": "Arbeitsvermittler für junge Menschen (U25)",
+   "to": {
+    "org": "Jugendberufsagentur Weserland",
+    "sal": "none",
+    "street": "Bahnhofstraße 30",
+    "city": "27283 Verden (Aller)"
+   },
+   "body": [
+    "jugendliche, die mit 19 keinen Abschluss und keinen Plan haben, sind seit sechs Jahren meine Klienten in der Jugendhilfe. Ich habe gelernt, dass der erste Schritt oft nicht ein Job ist, sondern ein Termin, der eingehalten wird.",
+    "Als Sozialarbeiter (B. A.) bringe ich Beratungserfahrung, Netzwerke zu Schulen und Trägern und Geduld mit. In einer Jugendberufsagentur kann ich diese Arbeit mit Vermittlung verbinden."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Tim Ahlers",
+    "Grüne Straße 12",
+    "27283 Verden (Aller)"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 0,
+  "name": "Daniela Kühn",
+  "title": "Personalreferentin",
+  "street": "Große Straße 40",
+  "city": "27283 Verden (Aller)",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Personalreferentin Recruiting",
+    "Logistikzentrum Weser",
+    "Achim",
+    "- Einstellung von Lager- und Fahrpersonal\n- Kooperation mit Jobcenter und Trägern\n- Onboarding"
+   ],
+   [
+    "2018",
+    "2021",
+    "Personalsachbearbeiterin",
+    "Spedition Nord",
+    "Bremen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2014",
+    "2018",
+    "Betriebswirtschaft (B. A.), Schwerpunkt Personal",
+    "Hochschule Bremen",
+    "Bremen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Gesprächsführung",
+    5
+   ],
+   [
+    "Arbeitsmarkt Region",
+    4
+   ],
+   [
+    "Bewerbungsberatung",
+    5
+   ],
+   [
+    "Sozialrecht (Grundlagen)",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Reiten, Lesen"
+ },
+ "do": [
+  "Beratungserfahrung mit Beispiel.",
+  "Arbeitsmarktkenntnis zeigen.",
+  "Bereitschaft zum Lernen des Sozialrechts."
+ ],
+ "dont": [
+  "Arbeitsuchende abwerten.",
+  "Rettermotiv übertreiben.",
+  "Fallzahlen unterschätzen."
+ ],
+ "questions": [
+  "Wie motivieren Sie jemanden, der seit Jahren keinen Job hat?",
+  "Wie reagieren Sie auf Beschimpfungen?",
+  "Wie arbeiten Sie mit Arbeitgebern zusammen?",
+  "Was wissen Sie über das SGB II?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein bestimmtes Studium?",
+   "a": "Häufig werden Studiengänge in Sozialer Arbeit, Verwaltung, Wirtschaft oder Pädagogik verlangt, manchmal auch vergleichbare Erfahrung. Die Ausschreibung nennt die Voraussetzungen."
+  }
+ ],
+ "related": [
+  "sozialarbeiter",
+  "recruiter",
+  "quereinstieg-oeffentlicher-dienst",
+  "sachbearbeiter-buergeramt"
+ ]
+}

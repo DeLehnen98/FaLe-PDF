@@ -1,0 +1,169 @@
+{
+ "id": "metallbauer",
+ "field": "handwerk",
+ "name": "Metallbauer/in",
+ "search": "metallbauer metallbauerin konstruktionstechnik schlosser schweißen geländer treppen stahlbau handwerk bewerbung",
+ "short": "Treppen, Geländer, Stahlbau – Werkstatt und Montage.",
+ "desc": "Bewerbung als Metallbauer/in (Konstruktionstechnik): Muster-Anschreiben für Gesellen mit Schweißzertifikaten und Quereinsteiger aus der Industrie, mit Lebenslauf.",
+ "intro": "Metallbauer fertigen Treppen, Geländer, Tore, Vordächer und Stahlkonstruktionen und montieren sie beim Kunden. Gesucht sind sichere Schweißer, Leute, die Zeichnungen lesen und auf der Baustelle mitdenken. Schweißzertifikate sind ein starkes Argument.",
+ "lookFor": [
+  "Gesellenbrief Metallbauer/in oder vergleichbar",
+  "Schweißen (MAG, WIG), gern mit Zertifikat",
+  "Zeichnungen lesen, Aufmaß",
+  "Montage beim Kunden",
+  "Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Geselle mit Schweißzertifikaten",
+   "level": "erfahren",
+   "position": "Metallbauer Konstruktionstechnik",
+   "to": {
+    "org": "Metallbau Riedel GmbH",
+    "sal": "f",
+    "contact": "Riedel",
+    "street": "Werkstraße 5",
+    "city": "09111 Chemnitz"
+   },
+   "body": [
+    "die Wendeltreppe aus Edelstahl, die ich im letzten Jahr für ein Hotel in Dresden gebaut habe, hat 21 Stufen und keine sichtbare Schweißnaht. Darauf bin ich stolz, und solche Aufträge möchte ich weiter machen.",
+    "Seit sechs Jahren arbeite ich als Metallbauer in einem kleinen Betrieb. Ich schweiße MAG und WIG mit gültigen Prüfungen, nehme beim Kunden Aufmaß und montiere selbstständig. Ihre Firma ist größer und baut auch für öffentliche Auftraggeber, das reizt mich.",
+    "Eine Arbeitsprobe in Ihrer Werkstatt mache ich gern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Schweißerprüfungen"
+   ]
+  },
+  {
+   "label": "Industriemechaniker wechselt ins Handwerk",
+   "level": "quereinstieg",
+   "position": "Metallbauer Montage",
+   "to": {
+    "org": "Stahl- und Metallbau Erzgebirge",
+    "sal": "none",
+    "street": "Annaberger Straße 80",
+    "city": "09125 Chemnitz"
+   },
+   "body": [
+    "die Instandhaltung einer Gießerei hat mich in acht Jahren zum guten Schweißer gemacht, aber ich möchte wieder etwas bauen, das man sieht. Tore, Geländer, Vordächer interessieren mich mehr als Ersatzteile.",
+    "Ich bin Industriemechaniker, kann MAG schweißen, Bleche zuschneiden und biegen und arbeite sicher mit Zeichnungen. In der Montage beim Kunden fehlt mir Erfahrung, die würde ich gern bei Ihnen sammeln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Steffen Ullrich",
+    "Zschopauer Straße 120",
+    "09126 Chemnitz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "compact",
+  "accent": 0,
+  "name": "René Hofmann",
+  "title": "Metallbauer (Geselle)",
+  "street": "Leipziger Straße 40",
+  "city": "09113 Chemnitz",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Metallbauer",
+    "Schlosserei Kunze",
+    "Chemnitz",
+    "- Treppen, Geländer, Tore aus Stahl und Edelstahl\n- Aufmaß und Montage beim Kunden\n- MAG- und WIG-Schweißen"
+   ],
+   [
+    "2017",
+    "2020",
+    "Auszubildender Metallbauer",
+    "Schlosserei Kunze",
+    "Chemnitz",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2020",
+    "Gesellenprüfung Metallbauer, Konstruktionstechnik",
+    "Handwerkskammer Chemnitz",
+    "Chemnitz",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Schweißerprüfung MAG und WIG (gültig)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "MAG-Schweißen",
+    5
+   ],
+   [
+    "WIG-Schweißen",
+    4
+   ],
+   [
+    "Edelstahl",
+    4
+   ],
+   [
+    "Montage",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Mountainbike, Schmieden"
+ },
+ "do": [
+  "Ein besonderes Projekt beschreiben.",
+  "Schweißverfahren und Prüfungen nennen.",
+  "Arbeitsprobe anbieten."
+ ],
+ "dont": [
+  "„Alle Metallarbeiten“.",
+  "Abgelaufene Zertifikate als gültig angeben.",
+  "Montageerfahrung übertreiben."
+ ],
+ "questions": [
+  "Welche Schweißverfahren beherrschen Sie?",
+  "Wie nehmen Sie ein Aufmaß für eine Treppe?",
+  "Was tun Sie, wenn ein Teil auf der Baustelle nicht passt?",
+  "Haben Sie Erfahrung mit Edelstahl?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  }
+ ],
+ "related": [
+  "schweisser",
+  "industriemechaniker",
+  "ausbildung-industriemechaniker",
+  "zerspanungsmechaniker"
+ ]
+}

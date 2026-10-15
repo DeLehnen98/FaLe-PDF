@@ -1,0 +1,85 @@
+{
+ "id": "stromzaehler",
+ "slug": "stromzaehler",
+ "cat": "Zuhause",
+ "name": "Stromzähler-Verbrauch",
+ "short": "Zählerstände erfassen, Jahresverbrauch und Nachzahlung abschätzen",
+ "desc": "Stromverbrauch-Rechner als Excel-Vorlage (XLSX): Zählerstände eintragen, Verbrauch pro Tag und Hochrechnung sehen und mit dem Abschlag vergleichen – Nachzahlung früh erkennen.",
+ "search": "strom zähler verbrauch",
+ "intro": "Wer seinen Zähler regelmäßig abliest, erlebt bei der Jahresabrechnung keine Überraschung. Die Vorlage rechnet aus den Ablesungen den Verbrauch je Zeitraum, rechnet ihn aufs Jahr hoch und vergleicht die geschätzten Kosten mit deinen Abschlägen.",
+ "uses": [
+  "Eine Nachzahlung früh erkennen und den Abschlag anpassen",
+  "Sehen, ob neue Geräte den Verbrauch erhöht haben",
+  "Verbrauch im Winter und Sommer vergleichen"
+ ],
+ "cols": [
+  [
+   "Ablesedatum",
+   "Tag der Ablesung. Am besten immer am gleichen Tag im Monat."
+  ],
+  [
+   "Zählerstand (kWh)",
+   "Der Stand auf dem Zähler in Kilowattstunden, ohne Nachkommastellen."
+  ],
+  [
+   "Verbrauch (kWh)",
+   "Zählerstand minus vorheriger Zählerstand."
+  ],
+  [
+   "Tage",
+   "Tage seit der vorherigen Ablesung."
+  ],
+  [
+   "kWh pro Tag",
+   "Verbrauch geteilt durch Tage – damit lassen sich unterschiedlich lange Zeiträume vergleichen."
+  ],
+  [
+   "Hochrechnung Jahr",
+   "kWh pro Tag mal 365."
+  ],
+  [
+   "Kosten Zeitraum",
+   "Verbrauch mal Arbeitspreis plus der Grundpreis anteilig für die Tage des Zeitraums."
+  ],
+  [
+   "Notiz",
+   "Besonderheiten, etwa „neuer Kühlschrank“ oder „zwei Wochen Urlaub“."
+  ],
+  [
+   "Auswertung",
+   "Gesamtverbrauch und Zeitraum, Durchschnitt pro Tag, Hochrechnung aufs Jahr in kWh und Euro, die Abschläge eines Jahres und ob voraussichtlich eine Nachzahlung (rot) oder ein Guthaben (grün) herauskommt."
+  ]
+ ],
+ "tips": [
+  "Arbeitspreis und Grundpreis findest du auf deiner letzten Abrechnung oder im Vertrag.",
+  "Die Hochrechnung aus wenigen Sommermonaten fällt zu niedrig aus – im Winter brauchen die meisten Haushalte mehr Strom."
+ ],
+ "faq": [
+  {
+   "q": "Funktioniert das auch für Gas oder Wasser?",
+   "a": "Ja. Trag statt kWh einfach Kubikmeter ein und passe Arbeitspreis und Grundpreis an. Bei Gas rechnet der Versorger Kubikmeter mit Brennwert und Zustandszahl in kWh um – die Hochrechnung bleibt dann eine grobe Schätzung."
+  }
+ ],
+ "related": [
+  "nebenkosten",
+  "familienbudget",
+  "tankbuch"
+ ],
+ "en": {
+  "slug": "electricity-meter-log",
+  "name": "Electricity meter log",
+  "short": "Log meter readings, estimate yearly use and the final bill",
+  "desc": "Electricity meter log spreadsheet (XLSX): enter meter readings, see use per day and a yearly projection, and compare it with your monthly payments.",
+  "intro": "Regular readings mean no surprise at the annual bill. The template calculates use per period, projects it to a year and compares the estimated cost with your monthly payments.",
+  "inside": [
+   "Consumption and days between readings",
+   "kWh per day and yearly projection",
+   "Cost with unit price and standing charge",
+   "Expected extra payment or refund"
+  ],
+  "uses": [
+   "Spotting a large extra payment early",
+   "Gas or water meters too"
+  ]
+ }
+}

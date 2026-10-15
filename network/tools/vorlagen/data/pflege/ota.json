@@ -1,0 +1,158 @@
+{
+ "id": "ota",
+ "field": "pflege",
+ "name": "Operationstechnische/r Assistent/in (OTA)",
+ "search": "ota operationstechnische assistentin op pflege instrumentieren springer zentralsterilisation op-saal bewerbung",
+ "short": "Instrumentieren, Springen, OP vorbereiten.",
+ "desc": "Bewerbung als Operationstechnische/r Assistent/in (OTA) oder Pflegefachkraft im OP: Muster-Anschreiben für OTA nach der Ausbildung und Pflegekraft im Wechsel, Lebenslauf.",
+ "intro": "OTA bereiten Operationen vor, instrumentieren, springen, lagern Patienten und kümmern sich um Hygiene und Sterilgut. Die Ausbildung ist seit 2022 bundesweit geregelt. Kliniken achten auf Fachgebiete, Erfahrung mit Eingriffen, Belastbarkeit bei langen OPs und sauberes Arbeiten.",
+ "lookFor": [
+  "Abschluss als OTA oder Pflegefachkraft mit OP-Erfahrung",
+  "Instrumentieren und Springen",
+  "Hygiene und Sterilgutaufbereitung",
+  "Konzentration bei langen Eingriffen",
+  "Bereitschaftsdienste"
+ ],
+ "letters": [
+  {
+   "label": "OTA nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Operationstechnische Assistentin",
+   "to": {
+    "org": "Klinikum Mainfranken, Zentral-OP",
+    "sal": "m",
+    "contact": "Schäfer",
+    "street": "Am Klinikpark 6",
+    "city": "97080 Würzburg"
+   },
+   "body": [
+    "bei meiner Abschlussprüfung habe ich eine laparoskopische Gallenblasenentfernung instrumentiert. Die Operateurin hat danach gesagt, sie habe nicht gemerkt, dass eine Prüfung läuft. Das war das schönste Kompliment meiner Ausbildung.",
+    "Im September habe ich die Ausbildung zur OTA abgeschlossen. Ich habe in Allgemein-, Unfall- und Gefäßchirurgie instrumentiert und gesprungen und einen Einsatz in der Zentralsterilisation gehabt. In einem großen Klinikum mit vielen Fachgebieten möchte ich mich breit aufstellen, bevor ich mich spezialisiere."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis OTA",
+    "Einsatznachweise"
+   ]
+  },
+  {
+   "label": "Pflegefachkraft wechselt in den OP",
+   "level": "quereinstieg",
+   "position": "Pflegefachkraft OP (Einarbeitung)",
+   "to": {
+    "org": "Kreisklinik Main-Spessart",
+    "sal": "none",
+    "street": "Kreiskrankenhausstraße 3",
+    "city": "97753 Karlstadt"
+   },
+   "body": [
+    "auf der Unfallchirurgie habe ich in fünf Jahren gesehen, was nach einer Operation passiert. Jetzt möchte ich wissen, was davor und währenddessen geschieht, und in den OP wechseln.",
+    "Ich habe zwei Hospitationstage in Ihrem OP gemacht und dabei gemerkt, wie sehr mir die konzentrierte, ruhige Arbeit am Tisch liegt. Die Fachweiterbildung OP würde ich gern nach der Einarbeitung beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Tobias Reinhardt",
+    "Hauptstraße 20",
+    "97753 Karlstadt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 1,
+  "name": "Lena Hübner",
+  "title": "Operationstechnische Assistentin",
+  "street": "Sanderstraße 30",
+  "city": "97070 Würzburg",
+  "exp": [
+   [
+    "2023",
+    "2026",
+    "Auszubildende OTA",
+    "Klinik am Main",
+    "Würzburg",
+    "- Allgemein-, Unfall- und Gefäßchirurgie\n- Instrumentieren und Springen\n- Einsatz Zentralsterilisation"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Ausbildung Operationstechnische Assistentin (staatlich anerkannt)",
+    "OTA-Schule Würzburg",
+    "Würzburg",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Riemenschneider-Gymnasium",
+    "Würzburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Instrumentieren",
+    4
+   ],
+   [
+    "Springen",
+    4
+   ],
+   [
+    "Sterilgut",
+    4
+   ],
+   [
+    "Lagerung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Rudern, Klavier"
+ },
+ "do": [
+  "Fachgebiete und Eingriffe nennen.",
+  "Hygiene und Sterilgut erwähnen.",
+  "Bereitschaft ansprechen."
+ ],
+ "dont": [
+  "Spektakuläre OP-Geschichten.",
+  "Patientendaten.",
+  "Bereitschaftsdienste ausschließen."
+ ],
+ "questions": [
+  "Wie bereiten Sie einen Tisch für eine Laparoskopie vor?",
+  "Was tun Sie bei einer Sterilitätsverletzung?",
+  "Wie bleiben Sie in langen Eingriffen konzentriert?",
+  "Welche Fachgebiete interessieren Sie?"
+ ],
+ "faq": [
+  {
+   "q": "OTA oder Fachweiterbildung OP?",
+   "a": "OTA ist eine eigene dreijährige Ausbildung. Pflegefachkräfte können über die Fachweiterbildung Operationsdienst in den OP wechseln. Beide arbeiten am Tisch."
+  }
+ ],
+ "related": [
+  "pflegefachkraft-intensiv",
+  "pflegefachkraft",
+  "medizinische-fachangestellte",
+  "praktikum-krankenhaus"
+ ]
+}

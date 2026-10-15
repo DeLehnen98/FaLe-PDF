@@ -1,0 +1,168 @@
+{
+ "id": "kosmetikerin",
+ "field": "handwerk",
+ "name": "Kosmetiker/in",
+ "search": "kosmetikerin kosmetiker kosmetikstudio beauty gesichtsbehandlung maniküre spa wellness bewerbung",
+ "short": "Kosmetikstudio, Spa oder Hotel – Behandlung und Beratung.",
+ "desc": "Bewerbung als Kosmetiker/in: Muster-Anschreiben für erfahrene Kosmetikerin im Hotel-Spa und Berufseinsteigerin nach der Ausbildung, mit Lebenslauf.",
+ "intro": "Kosmetikerinnen und Kosmetiker führen Gesichtsbehandlungen, Maniküre, Pediküre und Haarentfernung durch und beraten zu Pflegeprodukten. Studios und Spas achten auf Fachwissen, Hygiene, Feingefühl und Verkaufstalent. Nenn Behandlungen, die du sicher beherrschst, und Weiterbildungen.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung oder Fachschule",
+  "Gesichtsbehandlungen, Hand- und Fußpflege",
+  "Hygiene und Hautkenntnis",
+  "Produktberatung und Verkauf",
+  "Freundliche, ruhige Art"
+ ],
+ "letters": [
+  {
+   "label": "Kosmetikerin wechselt ins Hotel-Spa",
+   "level": "erfahren",
+   "position": "Kosmetikerin Hotel-Spa",
+   "to": {
+    "org": "Wellnesshotel Bodensee",
+    "sal": "f",
+    "contact": "Hartmann",
+    "street": "Uferstraße 20",
+    "city": "88709 Meersburg"
+   },
+   "body": [
+    "im Studio habe ich viele Stammkundinnen, die seit Jahren alle vier Wochen kommen. Im Spa eines Hotels sind die Gäste nur ein paar Tage da, und genau das reizt mich: in einer Behandlung etwas zu bewirken, an das sich jemand nach dem Urlaub erinnert.",
+    "Seit sechs Jahren bin ich staatlich geprüfte Kosmetikerin. Gesichtsbehandlungen mit Apparatekosmetik, Massagen, Maniküre und Pediküre gehören zu meinem Alltag, dazu kommt eine Weiterbildung in Hot-Stone- und Aromaölmassage. Englisch spreche ich gut, was bei Ihren Schweizer und internationalen Gästen hilft."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Weiterbildungszertifikate"
+   ]
+  },
+  {
+   "label": "Berufseinsteigerin nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Kosmetikerin",
+   "to": {
+    "org": "Beauty Lounge Konstanz",
+    "sal": "m",
+    "contact": "Erdem",
+    "street": "Rosgartenstraße 8",
+    "city": "78462 Konstanz"
+   },
+   "body": [
+    "im Juli habe ich die Ausbildung zur Kosmetikerin abgeschlossen, mit der praktischen Prüfung als bestem Teil. Jetzt suche ich ein Studio, in dem ich mich weiterentwickeln kann, am liebsten mit Schwerpunkt auf Hautbildanalyse.",
+    "Ihre Lounge bietet auch Behandlungen für Männer an; im Ausbildungsbetrieb waren das etwa ein Viertel unserer Kunden, und ich habe gelernt, wie man sie ohne Floskeln berät. Samstage sind für mich selbstverständlich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis"
+   ],
+   "from": [
+    "Sophie Brunner",
+    "Mainaustraße 30",
+    "78464 Konstanz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 2,
+  "name": "Larissa Engel",
+  "title": "Staatlich geprüfte Kosmetikerin",
+  "street": "Stefan-Lochner-Straße 5",
+  "city": "88709 Meersburg",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Kosmetikerin",
+    "Kosmetikstudio Seerose",
+    "Überlingen",
+    "- Gesichtsbehandlungen, Apparatekosmetik\n- Maniküre, Pediküre, Massagen\n- Produktberatung und Verkauf"
+   ],
+   [
+    "2018",
+    "2020",
+    "Kosmetikerin (Teilzeit)",
+    "Hautpflege am Markt",
+    "Friedrichshafen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2018",
+    "Berufsfachschule Kosmetik, staatlich geprüft",
+    "Kosmetikschule Bodensee",
+    "Friedrichshafen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Hot-Stone- und Aromaölmassage",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Gesichtsbehandlung",
+    5
+   ],
+   [
+    "Massagen",
+    4
+   ],
+   [
+    "Hand- und Fußpflege",
+    4
+   ],
+   [
+    "Produktberatung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Yoga, Schwimmen"
+ },
+ "do": [
+  "Behandlungen und Weiterbildungen nennen.",
+  "Hygiene erwähnen.",
+  "Verkaufserfolge, wenn vorhanden."
+ ],
+ "dont": [
+  "Nur „Ich interessiere mich für Beauty“.",
+  "Unrealistische Versprechen über Hautwirkungen.",
+  "Fotos ohne Einwilligung der Kundinnen."
+ ],
+ "questions": [
+  "Wie bereiten Sie eine Gesichtsbehandlung vor?",
+  "Wie beraten Sie eine Kundin mit empfindlicher Haut?",
+  "Wie verkaufen Sie Produkte, ohne aufdringlich zu sein?",
+  "Welche Weiterbildungen planen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Ausbildung brauche ich?",
+   "a": "Es gibt die duale Ausbildung zur Kosmetikerin sowie schulische Ausbildungen an Berufsfachschulen. Viele Studios erwarten eine abgeschlossene Ausbildung; Weiterbildungen bringen Pluspunkte."
+  }
+ ],
+ "related": [
+  "friseurin",
+  "ausbildung-friseur",
+  "modeberater",
+  "fitnesstrainer"
+ ]
+}

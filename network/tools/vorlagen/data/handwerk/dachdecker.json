@@ -1,0 +1,177 @@
+{
+ "id": "dachdecker",
+ "field": "handwerk",
+ "name": "Dachdecker/in",
+ "search": "dachdecker dachdeckerin dach steildach flachdach abdichtung solar handwerk geselle vorarbeiter bewerbung",
+ "short": "Steildach, Flachdach, Solar – für Schwindelfreie.",
+ "desc": "Bewerbung als Dachdecker/in: Muster-Anschreiben für Gesellen, Vorarbeiter und Helfer mit Wunsch nach Ausbildung, mit Lebenslauf und Tipps zum Probearbeiten.",
+ "intro": "Dachdecker decken Steildächer, dichten Flachdächer ab, dämmen und montieren Solaranlagen. Betriebe suchen Leute, die schwindelfrei und sicherheitsbewusst sind und bei jedem Wetter sauber arbeiten. Nenn deine Schwerpunkte und ob du eine Kolonne führen kannst.",
+ "lookFor": [
+  "Gesellenbrief als Dachdecker/in oder Erfahrung",
+  "Schwindelfreiheit und Absturzsicherung",
+  "Schwerpunkte: Steildach, Flachdach, Fassade, Solar",
+  "Führerschein, gern mit Anhänger",
+  "Teamarbeit in der Kolonne"
+ ],
+ "letters": [
+  {
+   "label": "Geselle mit Schwerpunkt Flachdach",
+   "level": "erfahren",
+   "position": "Dachdecker (Geselle)",
+   "to": {
+    "org": "Bedachungen Oltmann GmbH",
+    "sal": "m",
+    "contact": "Oltmann",
+    "street": "Hafenweg 12",
+    "city": "26721 Emden"
+   },
+   "body": [
+    "seit meiner Gesellenprüfung vor fünf Jahren arbeite ich überwiegend auf Flachdächern von Gewerbehallen: Bitumen, Kunststoffbahnen, Gründächer, Lichtkuppeln. Wind an der Küste kenne ich, und ich weiß, warum man Bahnen nicht bei jedem Wetter verlegt.",
+    "Ich möchte in einen Betrieb wechseln, der auch Steildach und Solar macht, damit ich wieder breiter arbeite. Mit dem Führerschein BE fahre ich den Anhänger mit Material, und ich habe den Lehrgang zur Absturzsicherung im letzten Jahr aufgefrischt.",
+    "Probearbeiten gern, Kündigungsfrist zwei Wochen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Helfer will die Ausbildung nachholen",
+   "level": "quereinstieg",
+   "position": "Dachdeckerhelfer mit Ziel Ausbildung",
+   "to": {
+    "org": "Dachdeckerei Janssen",
+    "sal": "f",
+    "contact": "Janssen",
+    "street": "Am Deich 3",
+    "city": "26789 Leer (Ostfriesland)"
+   },
+   "body": [
+    "zwei Jahre arbeite ich jetzt als Helfer bei einem Dachdecker und habe gemerkt: Das ist mein Beruf. Mein Chef geht in Rente und schließt den Betrieb, deshalb suche ich einen neuen Platz, am liebsten mit der Möglichkeit, die Ausbildung zu machen.",
+    "Ziegel tragen, Lattung setzen, Dachrinnen montieren, Gerüst auf- und abbauen kann ich. Höhenangst habe ich nicht. Ich bin 24 und bereit, mit Azubigehalt anzufangen, wenn ich dafür einen Gesellenbrief bekomme."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Arbeitgeber"
+   ],
+   "from": [
+    "Mehmet Aydın",
+    "Heisfelder Straße 40",
+    "26789 Leer (Ostfriesland)"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 4,
+  "name": "Jannes Siebels",
+  "title": "Dachdecker (Geselle)",
+  "street": "Große Straße 30",
+  "city": "26721 Emden",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Dachdecker",
+    "Dachtechnik Ostfriesland",
+    "Aurich",
+    "- Flachdachabdichtung, Gründächer\n- Lichtkuppeln, Attikaverkleidungen\n- Materialtransport mit Anhänger"
+   ],
+   [
+    "2018",
+    "2021",
+    "Auszubildender Dachdecker",
+    "Dachtechnik Ostfriesland",
+    "Aurich",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2021",
+    "Gesellenprüfung Dachdecker",
+    "Handwerkskammer für Ostfriesland",
+    "Aurich",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Absturzsicherung – Auffrischung",
+    "Berufsgenossenschaft",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2019",
+    "Führerschein BE",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Flachdach",
+    5
+   ],
+   [
+    "Steildach",
+    3
+   ],
+   [
+    "Absturzsicherung",
+    5
+   ],
+   [
+    "Gründach",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Kitesurfen, Fußball"
+ },
+ "do": [
+  "Schwerpunkte und Dacharten nennen.",
+  "Sicherheitsschulungen erwähnen.",
+  "Führerscheinklasse angeben."
+ ],
+ "dont": [
+  "Höhenangst verschweigen.",
+  "Nur „alle Dacharbeiten“.",
+  "Sicherheit kleinreden."
+ ],
+ "questions": [
+  "Wie sichern Sie sich auf einem Steildach?",
+  "Welche Abdichtungen kennen Sie?",
+  "Wie arbeiten Sie bei Regen?",
+  "Können Sie eine Kolonne führen?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  }
+ ],
+ "related": [
+  "zimmerer",
+  "bauhelfer",
+  "elektriker",
+  "maurer"
+ ]
+}

@@ -5,7 +5,9 @@
 // (add certificates) → compress-pdf gives the complete application file ("Bewerbungsmappe").
 import { el, icon, T, s, form, userError, ensureCss, isoDate, note, drafts, local } from '../lib/tpl-core.js';
 import { letterPdf } from '../lib/tpl-pdf.js';
-import { cvHead, cvPdf, ACCENTS, loadPhotoSource, cropPhoto } from '../lib/tpl-cv.js';
+import { cvHead, cvPdf, ACCENTS, loadPhotoSource, cropPhoto, DESIGNS } from '../lib/tpl-cv.js';
+
+const SERIF = ['classic', 'elegant', 'academic'];
 import { missingWarning } from '../lib/unifont.js';
 import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS, SENDER_KEY } from '../lib/tpl-letterui.js';
 import { vorlageParam, loadVorlage, vorlageNotice, vorlageMissing } from '../lib/arc-vorlage.js';
@@ -61,7 +63,7 @@ export default {
     ctx.progress(0.2, { de: 'Anschreiben wird erstellt …', en: 'Creating the cover letter …' });
     const m = buildModel(v, ctx.lang);
     const de = ctx.lang === 'de';
-    const { bytes, missing, pages } = await letterPdf({ ...m, sig: await api?.sig() }, { lang: ctx.lang, family: v.design === 'classic' ? 'serif' : 'sans' });
+    const { bytes, missing, pages } = await letterPdf({ ...m, sig: await api?.sig() }, { lang: ctx.lang, family: SERIF.includes(v.design) ? 'serif' : 'sans' });
     const outputs = [{ name: ctx.safeFileName(`${de ? 'Anschreiben' : 'Cover letter'} ${s(v.sName)} – ${s(v.rName)}.pdf`), blob: new Blob([bytes], { type: 'application/pdf' }), pages, note: m.subject }];
     const allMissing = [...missing];
     if (pages > 1) ctx.note({ de: 'Dein Anschreiben ist länger als eine Seite. Üblich ist eine Seite – kürz am besten etwas.', en: 'Your cover letter is longer than one page. One page is usual – consider shortening it.' });
@@ -93,7 +95,7 @@ function stageFn(stage, state, ctx) {
   const f = form(v, lang, changed);
   const sender = senderSection(f, v, lang, { title: { de: 'Deine Angaben', en: 'Your details' } }); rem = sender.rem;
   const sig = signatureSection(f, lang, () => changed('sig'));
-  pvs = previewSection(f, lang, () => buildModel(v, lang), () => sig.pad.export(), { family: () => (v.design === 'classic' ? 'serif' : 'sans'),
+  pvs = previewSection(f, lang, () => buildModel(v, lang), () => sig.pad.export(), { family: () => (SERIF.includes(v.design) ? 'serif' : 'sans'),
     foot: el('p', { class: 'img-muted' }, T(lang, { de: 'DIN 5008, passend fürs Fensterkuvert – und im selben Design wie dein Lebenslauf.', en: 'DIN 5008 layout for window envelopes – in the same design as your CV.' })) });
   const cvBox = el('div', {});
   const swatches = () => el('div', { class: 'tpl-colors', role: 'radiogroup', aria: { label: T(lang, { de: 'Akzentfarbe', en: 'Accent colour' }) } }, ACCENTS.map((c, i) => {
@@ -103,7 +105,7 @@ function stageFn(stage, state, ctx) {
   }));
   const designSec = el('div', {});
   const renderDesign = () => designSec.replaceChildren(
-    f.seg('design', { de: 'Design (wie beim Lebenslauf)', en: 'Design (as in the CV)' }, [{ value: 'classic', label: { de: 'Klassisch', en: 'Classic' } }, { value: 'modern', label: { de: 'Modern', en: 'Modern' } }, { value: 'compact', label: { de: 'Kompakt', en: 'Compact' } }]),
+    f.seg('design', { de: 'Design (wie beim Lebenslauf)', en: 'Design (as in the CV)' }, DESIGNS.map(d => ({ value: d.id, label: { de: d.de, en: d.en } }))),
     el('p', { class: 'img-seg-legend' }, T(lang, { de: 'Akzentfarbe', en: 'Accent colour' })), swatches());
   function renderCv() {
     if (!cvDraft) {

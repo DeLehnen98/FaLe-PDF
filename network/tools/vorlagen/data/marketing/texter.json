@@ -1,0 +1,312 @@
+{
+ "id": "texter",
+ "field": "marketing",
+ "name": "Texter/in (Copywriter)",
+ "search": "texter texterin copywriter werbetexter konzeptioner agentur content texten seo texte bewerbung",
+ "short": "Werbung, Websites, Kampagnen – mit Textproben.",
+ "desc": "Bewerbung als Texter/in oder Copywriter in Agentur oder Unternehmen: Muster-Anschreiben für Junior-Texterin und erfahrenen Texter mit Kampagnen, mit Lebenslauf.",
+ "intro": "Texter schreiben Anzeigen, Websites, Produkttexte, Claims und Social-Media-Beiträge. Agenturen lesen dein Anschreiben als erste Arbeitsprobe. Halte es kurz, konkret, mit eigener Stimme, und leg drei bis fünf starke Textproben bei.",
+ "lookFor": [
+  "Mappe mit Textproben",
+  "Sicheres Deutsch, Gespür für Ton und Zielgruppe",
+  "Konzeptdenken",
+  "Erfahrung mit verschiedenen Formaten",
+  "Zusammenarbeit mit Grafik und Kunden"
+ ],
+ "letters": [
+  {
+   "label": "Junior-Texterin nach dem Volontariat",
+   "level": "berufseinstieg",
+   "position": "Junior-Texterin",
+   "to": {
+    "org": "Agentur Fuchs & Feder",
+    "sal": "m",
+    "contact": "Fuchs",
+    "street": "Schanzenstraße 70",
+    "city": "20357 Hamburg"
+   },
+   "body": [
+    "zwölf Wörter für ein Plakat, das an einer Bushaltestelle hängt, an der Leute im Schnitt 40 Sekunden warten: Diese Aufgabe hat mich im Volontariat einer Kreativagentur zwei Wochen beschäftigt. Die Kampagne lief im Herbst in vier Städten.",
+    "Nach dem Germanistikstudium habe ich ein Jahr als Volontärin Texte für Websites, Anzeigen und Social Media geschrieben, für einen Bioladen genauso wie für einen Maschinenbauer. Ich mag es, mich in Themen einzuarbeiten, die ich vorher nicht kannte.",
+    "Drei Arbeitsproben liegen bei. Den Rest zeige ich gern im Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben (PDF)",
+    "Zeugnis Volontariat"
+   ]
+  },
+  {
+   "label": "Erfahrener Texter wechselt auf Unternehmensseite",
+   "level": "erfahren",
+   "position": "Senior Copywriter (Inhouse)",
+   "to": {
+    "org": "Outdoor-Ausrüster Nordwand GmbH",
+    "sal": "f",
+    "contact": "Larsen",
+    "street": "Hafenstraße 12",
+    "city": "24103 Kiel"
+   },
+   "body": [
+    "nach acht Jahren Agentur heißt das für mich: 30 Kunden, hunderte Claims und immer wieder das Gefühl, eine Marke gerade kennengelernt zu haben, wenn das Projekt schon vorbei ist. Ich möchte für eine einzige Marke schreiben und sie über Jahre prägen.",
+    "Ich habe Kampagnen für Sportmarken, Tourismus und Mobilität konzipiert und getextet, zuletzt als Creative Lead in einem Team mit zwei Grafikern. Ihre Produkte nutze ich seit Jahren auf Touren in Norwegen. Ich glaube, ich weiß, wie sich Ihre Kundinnen fühlen, wenn das Zelt bei Sturm hält."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Portfolio-Link",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Jan Ole Matthiesen",
+    "Holtenauer Straße 60",
+    "24105 Kiel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "modern",
+  "accent": 2,
+  "name": "Johanna Weller",
+  "title": "Junior-Texterin",
+  "street": "Max-Brauer-Allee 80",
+  "city": "22765 Hamburg",
+  "web": "texte.example/johanna-weller",
+  "exp": [
+   [
+    "2025",
+    "2026",
+    "Volontärin Text",
+    "Kreativagentur Elbbrücke",
+    "Hamburg",
+    "- Plakat- und Anzeigentexte\n- Websites und Social Media\n- Kunden aus Handel und Industrie"
+   ],
+   [
+    "2022",
+    "2024",
+    "Werkstudentin Redaktion",
+    "Stadtmagazin Hamburg",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2024",
+    "Germanistik und Medienwissenschaft (B. A.)",
+    "Universität Hamburg",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Texten",
+    5
+   ],
+   [
+    "Konzeption",
+    4
+   ],
+   [
+    "Lektorat",
+    4
+   ],
+   [
+    "Suchmaschinenoptimierte Texte",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Poetry Slam, Rennrad"
+ },
+ "do": [
+  "Anschreiben als Arbeitsprobe begreifen.",
+  "Drei bis fünf starke Proben beilegen.",
+  "Bandbreite und eigene Stimme zeigen."
+ ],
+ "dont": [
+  "Floskeln – ausgerechnet hier.",
+  "Zu lange Anschreiben.",
+  "Proben ohne Angabe deines Anteils."
+ ],
+ "questions": [
+  "Welcher Ihrer Texte ist Ihr liebster und warum?",
+  "Wie gehen Sie mit Kundenkorrekturen um?",
+  "Schreiben Sie uns spontan einen Claim für …",
+  "Wie recherchieren Sie ein Thema, das Sie nicht kennen?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Arbeitsproben?",
+   "a": "Drei bis fünf gute reichen. Lieber wenige starke als viele mittelmäßige. Schreib zu jeder Probe kurz Aufgabe, Zielgruppe und deinen Anteil."
+  }
+ ],
+ "related": [
+  "content-manager",
+  "pr-referent",
+  "social-media-manager",
+  "volontariat"
+ ],
+ "en": {
+  "slug": "copywriter",
+  "name": "Copywriter",
+  "search": "copywriter writer advertising agency content brand copy creative",
+  "short": "Ads, websites, campaigns – with writing samples.",
+  "desc": "Copywriter cover letter examples: a junior copywriter after a traineeship and a senior agency writer moving in-house, plus a ready CV with placeholder portrait.",
+  "intro": "Copywriters write ads, websites, product copy, taglines and social posts. Agencies read your cover letter as your first writing sample. Keep it short, specific and in your own voice, and attach three to five strong samples.",
+  "lookFor": [
+   "Portfolio of writing samples",
+   "Strong language and a feel for tone",
+   "Conceptual thinking",
+   "Range of formats",
+   "Working with designers and clients"
+  ],
+  "letters": [
+   {
+    "label": "Junior after a traineeship",
+    "level": "berufseinstieg",
+    "position": "Junior copywriter",
+    "to": {
+     "org": "Fox & Quill",
+     "sal": "m",
+     "contact": "Fox",
+     "street": "70 Shoreditch High Street",
+     "city": "London E1 6JJ"
+    },
+    "body": [
+     "twelve words for a poster at a bus stop where people wait forty seconds on average: that brief kept me busy for two weeks during my traineeship at a creative agency. The campaign ran in four cities last autumn.",
+     "After my English degree I spent a year writing websites, ads and social posts for clients from an organic grocer to an engineering firm. I enjoy getting into subjects I knew nothing about. Three samples are attached."
+    ],
+    "att": [
+     "CV",
+     "Writing samples"
+    ]
+   },
+   {
+    "label": "Senior agency writer moving in-house",
+    "level": "erfahren",
+    "position": "Senior copywriter (in-house)",
+    "to": {
+     "org": "Northwall Outdoor Gear Ltd",
+     "sal": "f",
+     "contact": "Larsen",
+     "street": "12 Harbour Street",
+     "city": "Plymouth PL1 2LY"
+    },
+    "body": [
+     "eight years in agencies mean thirty clients, hundreds of taglines and the feeling of only just getting to know a brand when the project ends. I want to write for one brand and shape it over years.",
+     "I have conceived and written campaigns for sports, tourism and mobility brands, most recently as creative lead with two designers. I have used your gear on trips in Norway for years, and I think I know how your customers feel when the tent holds in a storm."
+    ],
+    "att": [
+     "CV",
+     "Portfolio link"
+    ],
+    "from": [
+     "Ollie Matthews",
+     "60 Mutley Plain",
+     "Plymouth PL4 6LF"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a01",
+   "design": "modern",
+   "accent": 2,
+   "name": "Josie Weller",
+   "title": "Junior copywriter",
+   "street": "80 Kingsland Road",
+   "city": "London E2 8AG",
+   "web": "texts.example/josie-weller",
+   "exp": [
+    [
+     "2025",
+     "2026",
+     "Copywriting trainee",
+     "Bridge Creative",
+     "London",
+     "- Posters and ads\n- Websites and social"
+    ],
+    [
+     "2022",
+     "2024",
+     "Student editor",
+     "City magazine",
+     "London",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2019",
+     "2024",
+     "BA English",
+     "University of Leeds",
+     "Leeds",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Copywriting",
+     5
+    ],
+    [
+     "Concepts",
+     4
+    ],
+    [
+     "Editing",
+     4
+    ],
+    [
+     "Search-friendly copy",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B2"
+    ]
+   ],
+   "hobbies": "Spoken word, cycling"
+  },
+  "do": [
+   "Treat the cover letter as a writing sample.",
+   "Attach three to five strong pieces.",
+   "Show range and your own voice."
+  ],
+  "dont": [
+   "Clichés – of all places, here.",
+   "Long letters.",
+   "Samples without saying what your part was."
+  ],
+  "questions": [
+   "Which of your pieces do you like best and why?",
+   "How do you handle client edits?",
+   "Write us a tagline for … on the spot.",
+   "How do you research a subject you do not know?"
+  ],
+  "faq": [
+   {
+    "q": "How many samples?",
+    "a": "Three to five good ones are enough. Add a line on the brief, audience and your role for each."
+   }
+  ]
+ }
+}

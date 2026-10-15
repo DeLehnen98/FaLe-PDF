@@ -1,0 +1,117 @@
+{
+ "id": "dsgvo-auskunft",
+ "group": "datenschutz",
+ "tool": "din-letter",
+ "order": 28,
+ "name": "Auskunft über gespeicherte Daten (Art. 15 DSGVO)",
+ "short": "Erfahren, welche Daten ein Unternehmen über dich hat",
+ "desc": "DSGVO-Auskunft nach Art. 15 anfordern: Muster für die Selbstauskunft bei Unternehmen oder Behörden – mit allen Punkten, die dir zustehen, und der Frist von einem Monat.",
+ "search": "dsgvo auskunft daten selbstauskunft datenschutz art 15",
+ "when": [
+  "Du willst wissen, welche Daten eine Firma, ein Verein oder eine Behörde über dich speichert – etwa nach Werbung, die du nie bestellt hast, oder vor einer Kündigung. Nach Art. 15 der Datenschutz-Grundverordnung hast du einen Anspruch auf Auskunft und eine Kopie deiner Daten. Gründe musst du nicht nennen.",
+  "Die Stelle muss in der Regel innerhalb eines Monats antworten; in schwierigen Fällen kann sich die Frist um bis zu zwei Monate verlängern, das muss sie dir aber mitteilen."
+ ],
+ "must": [
+  "Deine Angaben, mit denen man dich findet: Name, Anschrift, Kundennummer, E-Mail",
+  "Die Bitte um Bestätigung, ob Daten verarbeitet werden",
+  "Die Punkte aus Art. 15: Zwecke, Kategorien, Empfänger, Speicherdauer, Herkunft, automatisierte Entscheidungen",
+  "Die Bitte um eine Kopie der Daten",
+  "Frist: ein Monat"
+ ],
+ "notes": [
+  "Die Auskunft ist kostenlos. Für weitere Kopien darf ein angemessenes Entgelt verlangt werden.",
+  "Schick die Anfrage an den Datenschutzbeauftragten oder die Adresse, die in der Datenschutzerklärung genannt ist. Eine E-Mail ist zulässig.",
+  "Kommt keine oder eine unvollständige Antwort, kannst du dich bei der Datenschutzaufsichtsbehörde beschweren."
+ ],
+ "faq": [
+  {
+   "q": "Darf die Firma meinen Ausweis verlangen?",
+   "a": "Nur wenn sie begründete Zweifel an deiner Identität hat. Dann kann sie zusätzliche Angaben verlangen. Eine Ausweiskopie solltest du nur geschwärzt schicken (alles außer Name, Anschrift und Gültigkeit)."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "dsgvo-loeschung",
+  "widerspruch-bescheid",
+  "kuendigung-streaming"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Muster Shopping GmbH",
+  "attn": "Datenschutzbeauftragte",
+  "street": "Handelsweg 3",
+  "city": "20095 Hamburg"
+ },
+ "letter": {
+  "subject": "Auskunft nach Art. 15 DSGVO – Kundennummer 5544-21",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "bitte teilen Sie mir mit, ob Sie personenbezogene Daten über mich verarbeiten. Falls ja, bitte ich um Auskunft nach Art. 15 DSGVO über diese Daten, die Zwecke der Verarbeitung, die Empfänger, die geplante Speicherdauer, die Herkunft der Daten und darüber, ob eine automatisierte Entscheidungsfindung einschließlich Profiling stattfindet.",
+   "Außerdem bitte ich um eine Kopie der Daten nach Art. 15 Abs. 3 DSGVO, gern als PDF per E-Mail an jana.beispiel@example.com.",
+   "Ich erwarte Ihre Antwort innerhalb eines Monats nach Eingang dieses Schreibens. Zu meiner Identifizierung: Bei Ihnen bin ich unter der Kundennummer 5544-21 und der E-Mail-Adresse jana.beispiel@example.com registriert."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ },
+ "en": {
+  "name": "Subject access request (GDPR Art. 15)",
+  "slug": "gdpr-subject-access-request",
+  "short": "Find out what personal data a company holds about you",
+  "desc": "Free GDPR subject access request template (Art. 15): ask a company what personal data it holds about you and get a copy – with the one-month deadline explained.",
+  "h1": "Subject access request under the GDPR (Art. 15)",
+  "when": [
+   "You want to know what data a company, club or public body holds about you – for example after marketing you never asked for. Under Article 15 GDPR you have a right to access and to a copy of your data. You do not need to give a reason.",
+   "The organisation must usually reply within one month. In complex cases this can be extended by up to two further months, but they have to tell you."
+  ],
+  "must": [
+   "Details that identify you: name, address, customer number, e-mail",
+   "A request to confirm whether your data is processed",
+   "The points of Art. 15: purposes, categories, recipients, retention period, source, automated decisions",
+   "A request for a copy of the data",
+   "Deadline: one month"
+  ],
+  "notes": [
+   "Access is free of charge. A reasonable fee may be charged for further copies.",
+   "Send the request to the data protection officer or the address given in the privacy notice; e-mail is fine.",
+   "If you get no or an incomplete answer, you can complain to the data protection supervisory authority.",
+   "In the UK the UK GDPR applies with the same right of access."
+  ],
+  "faq": [
+   {
+    "q": "Can the company ask for my ID?",
+    "a": "Only if it has reasonable doubts about your identity. Then it may ask for further information. If you send a copy of an ID document, black out everything except your name, address and validity."
+   }
+  ],
+  "from": [
+   "Jana Beispiel",
+   "12 Linden Street",
+   "Bristol BS1 4AA"
+  ],
+  "to": {
+   "org": "Example Shopping Ltd",
+   "attn": "Data Protection Officer",
+   "street": "3 Market Way",
+   "city": "London EC1A 1AA"
+  },
+  "letter": {
+   "subject": "Subject access request under Article 15 GDPR – customer number 5544-21",
+   "salutation": "Dear Sir or Madam,",
+   "body": [
+    "Please confirm whether you process personal data about me. If you do, I request access under Article 15 GDPR to that data, the purposes of the processing, the recipients, the intended retention period, the source of the data and whether any automated decision-making, including profiling, takes place.",
+    "I also request a copy of the data under Article 15(3) GDPR, preferably as a PDF by e-mail to jana.beispiel@example.com.",
+    "I expect your reply within one month of receiving this letter. To identify me: I am registered with you under customer number 5544-21 and the e-mail address jana.beispiel@example.com."
+   ],
+   "closing": "Yours faithfully,",
+   "att": []
+  },
+  "fields": {
+   "notice": "none"
+  }
+ }
+}

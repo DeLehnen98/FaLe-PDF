@@ -231,6 +231,26 @@ const P = {
   tableStyle: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><path d="M3.5 9h17" stroke-width="3"/><path d="M3.5 13.5h17M3.5 17h17" opacity=".6"/>',
   headerRow: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.6"/><rect x="3.5" y="4.5" width="17" height="4.5" rx="1.6" fill="currentColor" opacity=".35"/><path d="M3.5 13.5h17M9 9v10.5M15 9v10.5"/>',
   shading: '<rect x="4" y="4" width="16" height="16" rx="1.6"/><path d="M4 14 14 4M4 20 20 4M10 20l10-10" opacity=".7"/>',
+  // Office 4 – Textverarbeitung
+  watermark: '<path d="M14 3.5H7.2c-.9 0-1.7.8-1.7 1.7v13.6c0 .9.8 1.7 1.7 1.7h9.6c.9 0 1.7-.8 1.7-1.7V8z"/><path d="M14 3.5V8h4.5"/><path d="m8 17 8-7" opacity=".55" stroke-width="2.6"/>',
+  crop: '<path d="M7 3.5V17h13.5"/><path d="M3.5 7H17v13.5"/>',
+  rotateImg: '<rect x="4" y="9" width="11" height="11" rx="1.6"/><path d="M12 4.5h2.5a5 5 0 0 1 5 5V12"/><path d="m17.2 10 2.3 2.4 2.3-2.4"/>',
+  bookmark: '<path d="M7 3.5h10a1 1 0 0 1 1 1v16l-6-4-6 4v-16a1 1 0 0 1 1-1z"/>',
+  crossRef: '<path d="M10 7H6.5a3 3 0 0 0 0 6H10M14 11h3.5a3 3 0 0 1 0 6H14"/><path d="M8.5 10h7"/>',
+  caption: '<rect x="4" y="3.5" width="16" height="11" rx="1.6"/><path d="m7 11.5 3-3 2.5 2.5 1.8-1.5 2.7 2.5"/><path d="M5 18h14M5 21h9"/>',
+  endnote: '<path d="M5 5h14M5 9h14M5 13h9"/><path d="M5 18.5h6" stroke-width="2.2"/><path d="M16 16v5M14 18.5h4"/>',
+  focusMode: '<path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15"/><circle cx="12" cy="12" r="2.5"/>',
+  readMode: '<path d="M3.5 6.5c3-1.4 6-1.4 8.5.5 2.5-1.9 5.5-1.9 8.5-.5v12c-3-1.4-6-1.4-8.5.5-2.5-1.9-5.5-1.9-8.5-.5z"/><path d="M12 7v12"/>',
+  pasteText: '<rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 10h7M12 10v7"/>',
+  dropCap: '<path d="M4.5 13V5h3.5a4 4 0 0 1 0 8z"/><path d="M14 6h6M14 10h6M4.5 15.5h15.5M4.5 19.5h15.5"/>',
+  tabStops: '<path d="M3.5 18h17"/><path d="M6 18V8M6 8h4M14 18V8M12 8h4M18.5 18V8M14.5 8h4"/>',
+  styleNew: '<path d="M5 18V6h5.5a3 3 0 0 1 0 6H5"/><path d="M17 13v7M13.5 16.5h7"/>',
+  headingNum: '<path d="M4 6h2v5M4 11h4M11 7h9M11 17h9"/><path d="M4 15.5c0-1 .8-1.5 1.6-1.5S7.2 14.6 7.2 15.4c0 1.4-3.2 2.2-3.2 4.1h3.4"/>',
+  textToTable: '<path d="M4 5h7M4 9h7M4 13h7"/><path d="m12.5 9 2 0M13.5 7.5 15 9l-1.5 1.5"/><rect x="15.5" y="4.5" width="5" height="15" rx="1"/><path d="M15.5 9.5h5M15.5 14.5h5"/>',
+  figures: '<rect x="4" y="4" width="7" height="6" rx="1"/><path d="M14 5.5h6M14 8.5h4"/><rect x="4" y="14" width="7" height="6" rx="1"/><path d="M14 15.5h6M14 18.5h4"/>',
+  language: '<path d="M4 6h8M8 4v2M5.5 6c.6 3 2.5 5.5 5.5 6.5M10.5 6c-.6 3-2.5 5.5-5.5 6.5"/><path d="m12.5 20 3.5-8.5 3.5 8.5M13.8 17h4.4"/>',
+  outlineMove: '<path d="M5 6h9M5 12h9M5 18h9"/><path d="m18 9-2-2.5L18 4M16 6.5h4.5M18 15l2 2.5-2 2.5M15.5 17.5H20"/>',
+  formatBar: '<rect x="3.5" y="7" width="17" height="10" rx="2.5"/><path d="M7.5 10v4M10.5 10h2a1 1 0 0 1 0 2h-2v2h2.3a1 1 0 0 0 0-2"/>',
 };
 
 /** Icon lookup: office icons first, then the app icon set. */

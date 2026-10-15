@@ -3,7 +3,7 @@
 // Neutral document model shared by the .docx writer, the PDF exporter and text export.
 // Built from editor HTML (tags + inline styles only, no layout needed → works off-screen).
 import { fontNameOf } from './fonts.js';
-import { styleOfBlock, TAG_OF_STYLE } from './docstyles.js';
+import { styleOfBlock, TAG_OF_STYLE, headingNumberer } from './docstyles.js';
 
 export const HEADING_PT = { h1: 20, h2: 16, h3: 13.5, h4: 12, h5: 11, h6: 11, subtitle: 13 };
 export const PARA_SPACE = { p: [0, 6], h1: [14, 8], h2: [14, 6], h3: [12, 4], h4: [10, 4], h5: [8, 4], h6: [8, 4], subtitle: [0, 10], li: [0, 3] };
@@ -125,6 +125,11 @@ function inlineNode(c, f, runs) {
   const t = c.tagName;
   if (t === 'BR') { runs.push({ br: true }); return; }
   if (t === 'SUP' && c.classList && c.classList.contains('fn')) { runs.push({ fn: c.getAttribute('data-fn') || '' }); return; }
+  if (t === 'SUP' && c.classList && c.classList.contains('en')) { runs.push({ en: c.getAttribute('data-en') || '' }); return; }
+  if (t === 'SPAN' && c.classList && c.classList.contains('bm')) { const nm = c.getAttribute('data-bm'); if (nm) runs.push({ bm: nm }); return; }
+  if (t === 'SPAN' && c.classList && c.classList.contains('xref')) { runs.push({ ...pickFmt(fmtFromElement(c, f)), xref: { name: c.getAttribute('data-ref') || '', kind: c.getAttribute('data-xk') || 'text' }, text: cleanText(c.textContent, f) || '?' }); return; }
+  if (t === 'SPAN' && c.classList && c.classList.contains('seq')) { runs.push({ ...pickFmt(fmtFromElement(c, f)), seq: c.getAttribute('data-seq') || 'Abbildung', text: cleanText(c.textContent, f) || '1' }); return; }
+  if (t === 'SPAN' && c.classList && c.classList.contains('tf')) { runs.push({ ...pickFmt(fmtFromElement(c, f)), tf: { f: c.getAttribute('data-f') || '', fmt: c.getAttribute('data-fmt') || '' }, text: cleanText(c.textContent, f) || '0' }); return; }
   if (t === 'SPAN' && c.classList && c.classList.contains('mf')) { runs.push({ ...pickFmt(fmtFromElement(c, f)), field: c.getAttribute('data-field') || '', text: `«${c.getAttribute('data-field') || ''}»` }); return; }
   if (t === 'IMG') {
     const src = c.getAttribute('src');
@@ -151,6 +156,7 @@ function blockAttrs(el) {
   const a = {};
   const ta = st.textAlign || el.getAttribute('align');
   if (ta && ['center', 'right', 'justify'].includes(ta)) a.align = ta;
+  else if (ta === 'left' && st.textAlign === 'left') a.align = 'left';
   if (st.marginLeft) { const v = parseSize(st.marginLeft, 12); if (v > 2) a.indent = v; }
   if (st.paddingLeft && el.tagName !== 'LI' && !(el.classList && el.classList.contains('quote'))) { const v = parseSize(st.paddingLeft, 12); if (v > 2) a.indent = (a.indent || 0) + v; }
   if (st.marginRight) { const v = parseSize(st.marginRight, 12); if (v > 2) a.indentR = v; }
@@ -160,7 +166,8 @@ function blockAttrs(el) {
   if (st.marginBottom) { const v = parseSize(st.marginBottom, 12); if (v !== null && v >= 0) a.after = v; }
   if (el.hasAttribute && el.hasAttribute('data-keep-next')) a.keepNext = true;
   if (el.hasAttribute && el.hasAttribute('data-pbb')) a.pageBreakBefore = true;
-  if (el.hasAttribute && el.hasAttribute('data-tabs')) { const t = el.getAttribute('data-tabs').split(',').map(Number).filter(x => x > 0 && x < 2000); if (t.length) a.tabs = t; }
+  if (el.hasAttribute && el.hasAttribute('data-tabs')) { const d = parseTabs(el.getAttribute('data-tabs')); if (d.length) { a.tabs = d.map(x => x.pos); if (d.some(x => x.align !== 'left' || x.leader !== 'none')) a.tabDefs = d; } }
+  if (el.hasAttribute && el.hasAttribute('data-dropcap')) a.dropCap = true;
   const bg = normColor(st.backgroundColor);
   if (bg && bg !== '#FFFFFF') a.bg = bg;
   return a;
@@ -183,6 +190,7 @@ export function htmlToModel(rootOrHtml, { baseSize = 11, styles = null } = {}) {
   const base = { base: baseSize };
   const blocks = [];
   walkBlocks(root, base, blocks, { level: -1, indent: 0 });
+  if (styles) numberHeadings(blocks, styles);
   const comments = {};
   root.querySelectorAll('[data-cmt]').forEach(el => {
     const id = el.getAttribute('data-cmt');
@@ -212,9 +220,9 @@ function walkBlocks(parent, f, out, ctx) {
     }
     flush();
     if (c.classList && (c.classList.contains('pg-sp') || c.classList.contains('img-handles'))) continue;
-    if (c.hasAttribute('data-toc')) { out.push({ type: 'toc', title: c.getAttribute('data-toc-title') || 'Inhaltsverzeichnis', depth: +(c.getAttribute('data-toc-depth') || 3) }); continue; }
+    if (c.hasAttribute('data-toc')) { out.push({ type: 'toc', title: c.getAttribute('data-toc-title') || (c.getAttribute('data-toc-kind') ? `${c.getAttribute('data-toc-kind')}verzeichnis` : 'Inhaltsverzeichnis'), depth: +(c.getAttribute('data-toc-depth') || 3), ...(c.getAttribute('data-toc-kind') ? { kind: 'captions', label: c.getAttribute('data-toc-kind') } : {}) }); continue; }
     const ff = fmtFromElement(c, f);
-    if (t === 'HR') { out.push(c.hasAttribute('data-page-break') ? { type: 'pagebreak', ...(c.getAttribute('data-break') === 'section' ? { section: true } : {}) } : { type: 'hr' }); continue; }
+    if (t === 'HR') { out.push(c.hasAttribute('data-page-break') ? { type: 'pagebreak', ...(c.getAttribute('data-break') === 'section' ? { section: true, ...(/^(landscape|portrait)$/.test(c.getAttribute('data-orient') || '') ? { orient: c.getAttribute('data-orient') } : {}) } : {}) } : { type: 'hr' }); continue; }
     if (t === 'TABLE') { out.push(tableModel(c, ff)); continue; }
     if (t === 'UL' || t === 'OL') { listModel(c, ff, out, ctx.level + 1, ctx.indent || 0, ctx.listPath || []); continue; }
     if (t === 'DIV' && c.classList.contains('sect')) {
@@ -236,7 +244,7 @@ function walkBlocks(parent, f, out, ctx) {
       const fm = t === 'PRE' ? { ...ff, mono: true } : ff;
       const runs = trimRuns(inlineRuns(c, fm, []));
       const ba = blockAttrs(c);
-      out.push({ type: 'para', tag, runs, ...ba, indent: (ba.indent || 0) + (ctx.indent || 0) });
+      out.push({ type: 'para', tag, runs, ...ba, indent: (ba.indent || 0) + (ctx.indent || 0), ...(TAG_OF_STYLE[sid] ? {} : { cstyle: sid }) });
       continue;
     }
     if (t === 'BLOCKQUOTE') { const inner = []; walkBlocks(c, ff, inner, { ...ctx }); inner.forEach(b => { if (b.type === 'para' && b.tag === 'p') b.tag = 'quote'; }); out.push(...inner); continue; }
@@ -320,17 +328,55 @@ function tableModel(tbl, f) {
   return { type: 'table', rows, widths, borderless: tbl.classList.contains('borderless'), cols: maxCols, headerRows, ...(styleCls ? { style: styleCls.slice(3) } : {}), ...(width && width < 100 ? { widthPct: width } : {}), ...(tbl.getAttribute('data-align') ? { align: tbl.getAttribute('data-align') } : {}) };
 }
 
-/** Headings of a model for tables of contents: [{ level, text, index }] */
+/** Heading numbers ("1.2") on numbered heading styles (styles.hN.numbered), in reading order. */
+function numberHeadings(blocks, styles) {
+  const num = headingNumberer(styles);
+  if (!num.any) return;
+  const walk = bs => bs.forEach(b => { if (b.type === 'para' && /^h[1-6]$/.test(b.tag)) { const n = num(b.tag); if (n) b.hnum = n; } else if (b.type === 'section') walk(b.blocks); });
+  walk(blocks);
+}
+
+/** Text of a paragraph's runs (deleted text skipped). */
+export function runsText(runs) { return runs.map(r => (r.del ? '' : r.text || '')).join('').replace(/\s+/g, ' ').trim(); }
+
+/** Headings of a model for tables of contents: [{ level, text, index }] (index = top-level block index) */
 export function modelHeadings(model, depth = 3) {
   const out = [];
   model.blocks.forEach((b, i) => {
     if (b.type !== 'para' || !/^h[1-6]$/.test(b.tag)) return;
     const level = +b.tag[1];
     if (level > depth) return;
-    const text = b.runs.map(r => r.text || '').join('').replace(/\s+/g, ' ').trim();
-    if (text) out.push({ level, text, index: i });
+    const text = runsText(b.runs);
+    if (text) out.push({ level, text: b.hnum ? `${b.hnum} ${text}` : text, index: i });
   });
   return out;
+}
+/** Captions with a given label for a table of figures: [{ level: 1, text, index }] */
+export function modelCaptions(model, label) {
+  const out = [];
+  model.blocks.forEach((b, i) => {
+    if (b.type !== 'para' || !b.runs.some(r => r.seq === label)) return;
+    const text = runsText(b.runs);
+    if (text) out.push({ level: 1, text, index: i });
+  });
+  return out;
+}
+/** Entries of a toc block (headings or captions). */
+export function tocEntries(model, b) { return b.kind === 'captions' ? modelCaptions(model, b.label || 'Abbildung') : modelHeadings(model, b.depth || 3); }
+
+/** Tab stops: "120,240:r:dot" → [{ pos, align, leader }] (pos in pt). */
+export function parseTabs(v) {
+  const AL = { l: 'left', c: 'center', r: 'right', d: 'decimal' };
+  return String(v || '').split(',').map(x => {
+    const [p, a, l] = x.split(':');
+    const pos = parseFloat(p);
+    if (!(pos > 0 && pos < 2000)) return null;
+    return { pos, align: AL[a] || 'left', leader: ['dot', 'dash', 'line'].includes(l) ? l : 'none' };
+  }).filter(Boolean).sort((a, b) => a.pos - b.pos).slice(0, 20);
+}
+export function formatTabs(list) {
+  const AL = { left: 'l', center: 'c', right: 'r', decimal: 'd' };
+  return list.map(t => `${Math.round(t.pos * 10) / 10}${t.align !== 'left' || t.leader !== 'none' ? `:${AL[t.align] || 'l'}${t.leader !== 'none' ? `:${t.leader}` : ''}` : ''}`).join(',');
 }
 
 /** Plain text of a model (for .txt export and search). */
@@ -340,7 +386,7 @@ export function modelToText(model) {
   const walk = blocks => {
     for (const b of blocks) {
       if (b.type === 'para') {
-        let prefix = '';
+        let prefix = b.hnum ? `${b.hnum} ` : '';
         if (b.list) prefix = '  '.repeat(b.list.level) + (b.list.ordered ? `${listLabel(b.list)} ` : '• ');
         out.push(prefix + paraText(b));
       } else if (b.type === 'table') {
@@ -358,8 +404,10 @@ export function modelToText(model) {
 /** Markdown export. */
 export function modelToMarkdown(model) {
   const out = [];
+  const notes = [];
   const inline = runs => runs.map(r => {
     if (r.del) return '';
+    if (r.fn != null || r.en != null) { notes.push(r.fn != null ? r.fn : r.en); return `[^${notes.length}]`; }
     if (r.br) return '  \n';
     if (r.img) return r.img.alt ? `![${r.img.alt}]` : '';
     let t = (r.text || '').replace(/([*_`\\])/g, '\\$1');
@@ -380,7 +428,7 @@ export function modelToMarkdown(model) {
       if (b.tag === 'title') out.push('# ' + text.replace(/\*\*/g, ''), '');
       else if (b.tag === 'quote') out.push('> ' + text, '');
       else if (b.tag === 'code') out.push('```', b.runs.map(r => (r.br ? '\n' : r.text || '')).join(''), '```', '');
-      else if (/^h[1-6]$/.test(b.tag)) out.push('#'.repeat(+b.tag[1]) + ' ' + text.replace(/\*\*/g, ''), '');
+      else if (/^h[1-6]$/.test(b.tag)) out.push('#'.repeat(+b.tag[1]) + ' ' + (b.hnum ? `${b.hnum} ` : '') + text.replace(/\*\*/g, ''), '');
       else if (b.list) out.push('   '.repeat(b.list.level) + (b.list.ordered ? `${b.list.index}. ` : '- ') + text);
       else out.push(text, '');
     } else if (b.type === 'table') {
@@ -389,6 +437,7 @@ export function modelToMarkdown(model) {
       out.push(...rows, '');
     } else if (b.type === 'hr' || b.type === 'pagebreak') out.push('---', '');
   }
+  if (notes.length) out.push('', ...notes.map((t, i) => `[^${i + 1}]: ${t.replace(/\n/g, ' ')}`));
   return out.join('\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
 }
 
@@ -415,8 +464,10 @@ export function textToHtml(text) {
   return paras.map(l => `<p>${l ? escH(l) : '<br>'}</p>`).join('');
 }
 
+let mdNotes = null; // footnote definitions of the Markdown text being converted
 function mdInline(s) {
   let t = escH(s);
+  if (mdNotes) t = t.replace(/\[\^([^\]\s]+)\]/g, (m, id) => (mdNotes.has(id) ? `<sup class="fn" data-fn="${escH(mdNotes.get(id))}" contenteditable="false"></sup>` : m));
   t = t.replace(/`([^`]+)`/g, '<code>$1</code>');
   t = t.replace(/!\[([^\]]*)\]\(([^)\s]+)[^)]*\)/g, (m, alt) => alt ? `[${alt}]` : '');
   t = t.replace(/\[([^\]]+)\]\(((?:https?:|mailto:)[^)\s]+)\)/g, '<a href="$2">$1</a>');
@@ -427,7 +478,8 @@ function mdInline(s) {
 }
 
 export function markdownToHtml(md) {
-  const lines = String(md).replace(/\r\n?/g, '\n').split('\n');
+  mdNotes = new Map();
+  const lines = String(md).replace(/\r\n?/g, '\n').split('\n').filter(l => { const m = /^\[\^([^\]\s]+)\]:\s?(.*)$/.exec(l); if (m) { mdNotes.set(m[1], m[2].trim()); return false; } return true; });
   const out = [];
   let para = [];
   let listStack = [];

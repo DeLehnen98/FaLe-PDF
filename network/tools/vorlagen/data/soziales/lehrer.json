@@ -1,0 +1,172 @@
+{
+ "id": "lehrer",
+ "field": "soziales",
+ "name": "Lehrer/in (nach dem Referendariat, Vertretung)",
+ "search": "lehrer lehrerin lehrkraft referendariat vertretungslehrer privatschule gymnasium grundschule schuldienst bewerbung",
+ "short": "Nach dem Referendariat, an Privatschulen oder als Vertretung.",
+ "desc": "Bewerbung als Lehrer/in: Muster-Anschreiben für Gymnasiallehrerin nach dem Referendariat an einer Privatschule, Vertretungslehrer und Grundschullehrerin im Ländertausch.",
+ "intro": "An staatlichen Schulen läuft die Einstellung meist über Verfahren und Portale der Länder, oft ohne klassisches Anschreiben. An Privatschulen, für Vertretungsstellen und bei schulscharfen Ausschreibungen schreibst du dagegen direkt. Nenn Fächer, Schulform, Schwerpunkte und was du ins Schulleben einbringst.",
+ "lookFor": [
+  "Lehramtsstudium und Zweites Staatsexamen (für Planstellen)",
+  "Fächerkombination passend zur Ausschreibung",
+  "Unterrichtserfahrung, z. B. Referendariat oder Vertretung",
+  "Engagement im Schulleben",
+  "Digitale Unterrichtsmethoden"
+ ],
+ "letters": [
+  {
+   "label": "Gymnasiallehrerin an einer Privatschule",
+   "level": "berufseinstieg",
+   "position": "Lehrerin für Biologie und Chemie (Gymnasium)",
+   "to": {
+    "org": "Freie Schule am Bodensee",
+    "sal": "m",
+    "contact": "Dr. Brandt",
+    "street": "Seeweg 10",
+    "city": "88662 Überlingen"
+   },
+   "body": [
+    "mein Referendariat habe ich im Juli mit dem Zweiten Staatsexamen abgeschlossen, in Biologie und Chemie für das Gymnasium. Besonders gern unterrichte ich in Projekten: Mit meiner zehnten Klasse habe ich ein Jahr lang die Wasserqualität eines Baches untersucht und die Ergebnisse bei der Gemeinde vorgestellt.",
+    "Ihre Schule arbeitet mit Lernateliers und viel Praxis draußen. Das passt zu meiner Art zu unterrichten. Ich würde gern die Bienen-AG übernehmen, von der ich auf Ihrer Website gelesen habe; Imkerin bin ich seit drei Jahren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Zweites Staatsexamen",
+    "Zeugnis Erstes Staatsexamen",
+    "Beurteilung Referendariat"
+   ]
+  },
+  {
+   "label": "Vertretungslehrer mit Master, ohne Lehramt",
+   "level": "quereinstieg",
+   "position": "Vertretungslehrkraft Mathematik (befristet)",
+   "to": {
+    "org": "Gemeinschaftsschule Seepark",
+    "sal": "f",
+    "contact": "Ehrlich",
+    "street": "Schulstraße 5",
+    "city": "78462 Konstanz"
+   },
+   "body": [
+    "im Sommer habe ich meinen Master in Mathematik abgeschlossen und möchte für das kommende Halbjahr die Vertretung für Ihre Mathelehrerin in Elternzeit übernehmen. Lehramt habe ich nicht studiert, aber Nachhilfe und zwei Jahre als Tutor an der Uni haben mir gezeigt, dass ich gut erklären kann.",
+    "Ich weiß, dass Unterricht vor 28 Jugendlichen etwas anderes ist als Tutorium. Ich habe deshalb an Ihrer Schule zwei Tage hospitiert und mich mit Ihren Kolleginnen über Klassenführung unterhalten. Für einen Quereinstieg in den Schuldienst wäre die Vertretung ein guter Anfang."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Bescheinigung Tutorentätigkeit"
+   ],
+   "from": [
+    "Jonas Albrecht",
+    "Hussenstraße 20",
+    "78462 Konstanz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "classic",
+  "accent": 1,
+  "name": "Franziska Moser",
+  "title": "Studienrätin z. A. für Biologie und Chemie",
+  "street": "Münsterstraße 30",
+  "city": "88662 Überlingen",
+  "exp": [
+   [
+    "2024",
+    "2026",
+    "Referendarin",
+    "Gymnasium Meersburg",
+    "Meersburg",
+    "- Biologie und Chemie, Klassen 5 bis 12\n- Projekt Wasserqualität mit Klasse 10\n- Mitarbeit in der Umwelt-AG"
+   ],
+   [
+    "2020",
+    "2023",
+    "Tutorin Chemie",
+    "Universität Konstanz",
+    "Konstanz",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "2026",
+    "Vorbereitungsdienst, Zweites Staatsexamen",
+    "Seminar für Ausbildung und Fortbildung der Lehrkräfte",
+    "Rottweil",
+    ""
+   ],
+   [
+    "2018",
+    "2024",
+    "Lehramt Gymnasium Biologie und Chemie, Erstes Staatsexamen",
+    "Universität Konstanz",
+    "Konstanz",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Projektunterricht",
+    5
+   ],
+   [
+    "Experimentieren",
+    5
+   ],
+   [
+    "Digitale Medien im Unterricht",
+    4
+   ],
+   [
+    "Klassenführung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Imkerei, Segeln"
+ },
+ "do": [
+  "Fächer, Schulform und Examen klar nennen.",
+  "Ein Projekt oder eine Unterrichtsidee beschreiben.",
+  "Beitrag zum Schulleben anbieten."
+ ],
+ "dont": [
+  "Lange pädagogische Grundsatzaufsätze.",
+  "Bewerbungsverfahren des Landes ignorieren.",
+  "Die Schulform verwechseln."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einer unruhigen Klasse um?",
+  "Wie differenzieren Sie im Unterricht?",
+  "Was bringen Sie ins Schulleben ein?",
+  "Wie arbeiten Sie mit Eltern zusammen?"
+ ],
+ "faq": [
+  {
+   "q": "Bewerbe ich mich bei der Schule oder beim Land?",
+   "a": "Für Planstellen an staatlichen Schulen läuft die Einstellung meist über Verfahren der Länder; bei schulscharfen Ausschreibungen bewirbst du dich direkt bei der Schule. Privatschulen stellen selbst ein."
+  }
+ ],
+ "related": [
+  "lehrer-quereinstieg",
+  "nachhilfelehrer",
+  "schulbegleiter",
+  "sozialarbeiter"
+ ]
+}

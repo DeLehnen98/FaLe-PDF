@@ -1,0 +1,100 @@
+{
+ "id": "kundenliste",
+ "slug": "kundenliste",
+ "cat": "Business",
+ "name": "Kundenliste (CRM light)",
+ "short": "Kunden mit Status, letztem Kontakt und Wiedervorlage",
+ "desc": "Kundenliste als Excel-Vorlage (XLSX), ein CRM light: Kontakte mit Status, letztem Kontakt, nächstem Schritt und Wiedervorlage – fällige und überfällige werden markiert.",
+ "search": "crm kunden",
+ "intro": "Für Selbstständige und kleine Teams, die kein großes CRM brauchen: Jede Firma oder Person bekommt eine Zeile mit Status, Quelle und dem nächsten Schritt. Die Wiedervorlage sagt dir, wann du dich melden willst – überfällige werden rot, heutige gelb.",
+ "uses": [
+  "Interessenten nachfassen, ohne den Überblick zu verlieren",
+  "Sehen, woher neue Kunden kommen",
+  "Umsatz je Kunde grob festhalten"
+ ],
+ "cols": [
+  [
+   "Firma / Name",
+   "Kunde oder Interessent."
+  ],
+  [
+   "Ansprechpartner/in",
+   "Mit wem du sprichst."
+  ],
+  [
+   "Telefon",
+   "Als Text gespeichert, damit die Null vorn bleibt."
+  ],
+  [
+   "E-Mail",
+   "Als Link zum direkten Schreiben."
+  ],
+  [
+   "Status",
+   "Interessent, Angebot, Kunde, Stammkunde oder Inaktiv – die Stufen stehen rechts und lassen sich umbenennen. Inaktive Zeilen werden grau."
+  ],
+  [
+   "Quelle",
+   "Woher der Kontakt kam: Empfehlung, Website, Messe …"
+  ],
+  [
+   "Erster Kontakt",
+   "Wann ihr zum ersten Mal Kontakt hattet."
+  ],
+  [
+   "Letzter Kontakt",
+   "Wann zuletzt."
+  ],
+  [
+   "Nächster Schritt",
+   "Was als Nächstes passieren soll."
+  ],
+  [
+   "Wiedervorlage",
+   "Wann du dich wieder meldest. Rot, wenn das Datum vorbei ist (außer bei inaktiven), gelb, wenn es heute ist."
+  ],
+  [
+   "Umsatz bisher",
+   "Summe der bisherigen Aufträge."
+  ],
+  [
+   "Notiz",
+   "Wünsche, Besonderheiten."
+  ],
+  [
+   "Überblick",
+   "ZÄHLENWENN zählt die Kontakte je Status; darunter überfällige und heutige Wiedervorlagen und der Gesamtumsatz."
+  ]
+ ],
+ "tips": [
+  "Sortier jeden Morgen nach „Wiedervorlage“ – die oberen Zeilen sind deine Anrufliste für heute."
+ ],
+ "faq": [
+  {
+   "q": "Darf ich Kundendaten einfach in einer Tabelle speichern?",
+   "a": "Ja, wenn du sie für deine Geschäftsbeziehung brauchst. Die Datenschutz-Grundverordnung verlangt aber, dass du sie sicher aufbewahrst, nur Nötiges speicherst und auf Anfrage Auskunft gibst oder löschst. Leg die Datei nicht ungeschützt in geteilte Ordner."
+  }
+ ],
+ "related": [
+  "angebotsvergleich",
+  "mahnliste",
+  "rechnungsausgangsbuch"
+ ],
+ "en": {
+  "slug": "customer-list-crm",
+  "name": "Customer list (CRM light)",
+  "short": "Customers with status, last contact and follow-up date",
+  "desc": "Customer list spreadsheet (XLSX), a light CRM: contacts with status, last contact, next step and follow-up date – due and overdue follow-ups are highlighted.",
+  "intro": "For freelancers and small teams who do not need a big CRM: each company or person gets a row with status, source and next step. Overdue follow-ups turn red, today’s yellow.",
+  "inside": [
+   "Status stages you can rename",
+   "Follow-up date with highlighting",
+   "Contacts per status",
+   "Revenue per customer and total"
+  ],
+  "uses": [
+   "Following up leads",
+   "Seeing where customers come from"
+  ]
+ }
+}

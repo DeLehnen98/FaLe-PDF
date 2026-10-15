@@ -1,0 +1,162 @@
+{
+ "id": "ergotherapeut",
+ "field": "pflege",
+ "name": "Ergotherapeut/in",
+ "search": "ergotherapeut ergotherapeutin ergotherapie praxis klinik neurologie pädiatrie psychiatrie heilmittel bewerbung",
+ "short": "Praxis, Klinik oder Reha – Pädiatrie, Neurologie, Psychiatrie.",
+ "desc": "Bewerbung als Ergotherapeut/in: Muster-Anschreiben für Berufseinsteigerin mit Pädiatrie-Schwerpunkt und erfahrenen Therapeuten in die Neuroreha, mit Lebenslauf.",
+ "intro": "Ergotherapeutinnen und -therapeuten helfen Menschen, Alltag, Arbeit und Freizeit trotz Einschränkungen zu bewältigen. Praxen und Kliniken suchen Leute mit Fachwissen in ihrem Bereich, guter Dokumentation und Gespür für Patienten. Nenn Schwerpunkte und Fortbildungen.",
+ "lookFor": [
+  "Staatliche Anerkennung als Ergotherapeut/in",
+  "Schwerpunkt: Pädiatrie, Neurologie, Psychiatrie, Geriatrie, Orthopädie",
+  "Fortbildungen in Therapiekonzepten",
+  "Dokumentation und Berichte",
+  "Hausbesuche, oft mit Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinsteigerin mit Pädiatrie-Schwerpunkt",
+   "level": "berufseinstieg",
+   "position": "Ergotherapeutin Pädiatrie",
+   "to": {
+    "org": "Praxis für Ergotherapie Kinderleicht",
+    "sal": "f",
+    "contact": "Behrendt",
+    "street": "Bahnhofstraße 12",
+    "city": "49074 Osnabrück"
+   },
+   "body": [
+    "ein Sechsjähriger in meinem Praktikum, der keinen Stift halten wollte, hat nach zehn Wochen seinen Namen geschrieben und ihn stolz seiner Mutter gezeigt. Den Moment werde ich nicht vergessen, und er ist der Grund, warum ich in der Pädiatrie arbeiten möchte.",
+    "Im Juli habe ich mein Examen als Ergotherapeutin bestanden. Praktika hatte ich in Pädiatrie, Psychiatrie und Neurologie. Sensorische Integration interessiert mich besonders; die Fortbildung würde ich gern berufsbegleitend machen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Praktikumsbeurteilungen"
+   ]
+  },
+  {
+   "label": "Erfahrener Therapeut wechselt in die Neuroreha",
+   "level": "erfahren",
+   "position": "Ergotherapeut Neurologische Rehabilitation",
+   "to": {
+    "org": "Rehaklinik Teutoburger Wald",
+    "sal": "none",
+    "street": "Kurpark 5",
+    "city": "49186 Bad Iburg"
+   },
+   "body": [
+    "durch den Praxisalltag mit Hausbesuchen habe ich in sechs Jahren gesehen, wie Menschen nach einem Schlaganfall zu Hause zurechtkommen oder auch nicht. In der Reha würde ich gern früher ansetzen.",
+    "Ich habe Fortbildungen in neurologischen Behandlungskonzepten und Spiegeltherapie und arbeite viel mit Hilfsmittelberatung. Ein interdisziplinäres Team mit Physiotherapie und Logopädie wäre für mich ein großer Gewinn."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde",
+    "Fortbildungsnachweise"
+   ],
+   "from": [
+    "Lars Kemper",
+    "Iburger Straße 90",
+    "49082 Osnabrück"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 1,
+  "name": "Miriam Ndiaye",
+  "title": "Ergotherapeutin (staatlich anerkannt)",
+  "street": "Lotter Straße 50",
+  "city": "49078 Osnabrück",
+  "exp": [
+   [
+    "2025",
+    "2026",
+    "Praktika",
+    "Kinderpraxis, Psychiatrie, Neurologie",
+    "Osnabrück",
+    "- Feinmotorik, Wahrnehmung, Alltagstraining\n- Berichte und Verlaufsdokumentation"
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2026",
+    "Ausbildung Ergotherapeutin (Examen)",
+    "Schule für Ergotherapie",
+    "Osnabrück",
+    ""
+   ],
+   [
+    "2014",
+    "2022",
+    "Abitur",
+    "Ratsgymnasium",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Pädiatrie",
+    4
+   ],
+   [
+    "Feinmotorik-Förderung",
+    4
+   ],
+   [
+    "Dokumentation",
+    4
+   ],
+   [
+    "Elternberatung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "C1"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Basteln, Tanzen"
+ },
+ "do": [
+  "Schwerpunkt und Fortbildungen nennen.",
+  "Ein Patientenbeispiel ohne Namen.",
+  "Hausbesuche und Führerschein ansprechen."
+ ],
+ "dont": [
+  "Allgemeines „Ich möchte helfen“.",
+  "Therapieerfolge übertreiben.",
+  "Datenschutz verletzen."
+ ],
+ "questions": [
+  "Wie gestalten Sie eine Erstbefundung?",
+  "Wie arbeiten Sie mit Eltern zusammen?",
+  "Welche Fortbildungen planen Sie?",
+  "Wie dokumentieren Sie den Verlauf?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich Fortbildungen?",
+   "a": "Für den Einstieg nicht, aber sie sind in der Ergotherapie wichtig und werden oft vom Arbeitgeber unterstützt. Frag im Gespräch nach Budget und Freistellung."
+  }
+ ],
+ "related": [
+  "physiotherapeut",
+  "heilerziehungspfleger",
+  "betreuungskraft",
+  "schulbegleiter"
+ ]
+}

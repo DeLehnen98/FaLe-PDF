@@ -1,0 +1,177 @@
+{
+ "id": "ausbildung-sozialassistent",
+ "field": "ausbildung",
+ "name": "Ausbildung Sozialassistent/in",
+ "search": "ausbildung sozialassistent sozialassistentin sozialpädagogische assistenz berufsfachschule praktikum kita pflege bewerbung",
+ "short": "Schulische Ausbildung mit Praktika – Einstieg in soziale Berufe.",
+ "desc": "Bewerbung als Sozialassistent/in: Muster-Anschreiben für den Praktikumsplatz in Kita und Wohngruppe während der schulischen Ausbildung, mit Lebenslauf und Tipps.",
+ "intro": "Die Ausbildung zur Sozialassistentin oder zum Sozialassistenten läuft an einer Berufsfachschule, je nach Bundesland mit eigenem Namen und Schwerpunkt. Zur Ausbildung gehören Praktika in Kitas, in der Behindertenhilfe oder in Senioreneinrichtungen. Für diese Praktikumsplätze brauchst du eine kurze, freundliche Bewerbung.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss (je nach Bundesland)",
+  "Interesse an Menschen jeden Alters",
+  "Geduld und Einfühlungsvermögen",
+  "Zuverlässigkeit bei Praktikumszeiten",
+  "Erweitertes Führungszeugnis"
+ ],
+ "letters": [
+  {
+   "label": "Praktikumsplatz in einer Kita",
+   "level": "praktikum",
+   "position": "Praktikum im Rahmen der Ausbildung zur Sozialassistentin",
+   "to": {
+    "org": "Kita Löwenzahn",
+    "sal": "f",
+    "contact": "Behrens",
+    "street": "Am Stadtpark 7",
+    "city": "30159 Hannover"
+   },
+   "body": [
+    "seit August besuche ich die Berufsfachschule Sozialassistenz an der BBS 8 in Hannover. Für das erste Praktikum von Februar bis April suche ich einen Platz in einer Kita und würde es sehr gern bei Ihnen machen.",
+    "Kinder kenne ich gut: Ich habe drei jüngere Cousins, für die ich oft da bin, und habe in der 9. Klasse ein Schulpraktikum in einer Grundschulbetreuung gemacht. Dort habe ich mit Kindern gebastelt, gelesen und Hausaufgaben begleitet. Mir fällt es leicht, ruhig zu bleiben, wenn viele gleichzeitig etwas wollen.",
+    "Die Praktikumsunterlagen der Schule schicke ich Ihnen gern zu. Ein erweitertes Führungszeugnis habe ich bereits beantragt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schulbescheinigung",
+    "Praktikumsvereinbarung (Vordruck)"
+   ]
+  },
+  {
+   "label": "Praktikum in einer Wohngruppe für Menschen mit Behinderung",
+   "level": "praktikum",
+   "position": "Praktikum Sozialassistenz (Behindertenhilfe)",
+   "to": {
+    "org": "Wohnhaus am Maschsee gGmbH",
+    "sal": "m",
+    "contact": "Grote",
+    "street": "Uferweg 5",
+    "city": "30173 Hannover"
+   },
+   "body": [
+    "mein Bruder hat eine geistige Behinderung, und ich habe mit ihm mehr gelernt als in jedem Unterricht. Für mein zweites Praktikum in der Ausbildung zum Sozialassistenten möchte ich deshalb bewusst in die Behindertenhilfe.",
+    "Im ersten Ausbildungsjahr habe ich in einer Kita gearbeitet. Jetzt möchte ich erwachsene Menschen im Alltag begleiten: beim Kochen, bei Freizeitangeboten, bei Arztterminen. Ich bin 18, habe den Führerschein und bin auch an Wochenenden einsetzbar, wenn das im Praktikum vorgesehen ist.",
+    "Der Praktikumszeitraum ist von September bis Dezember."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schulbescheinigung",
+    "Beurteilung erstes Praktikum"
+   ],
+   "from": [
+    "Finn Schröder",
+    "Davenstedter Straße 60",
+    "30453 Hannover"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "modern",
+  "accent": 2,
+  "name": "Zeynep Arslan",
+  "title": "Schülerin Berufsfachschule Sozialassistenz",
+  "street": "Limmerstraße 33",
+  "city": "30451 Hannover",
+  "exp": [
+   [
+    "2024",
+    "2024",
+    "Schulpraktikum (2 Wochen)",
+    "Grundschulbetreuung Linden",
+    "Hannover",
+    "- Basteln, Vorlesen, Hausaufgabenbegleitung"
+   ],
+   [
+    "2023",
+    "",
+    "Betreuung von Cousins (privat)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2025",
+    "2027",
+    "Berufsfachschule Sozialassistenz, 1. Jahr",
+    "BBS 8",
+    "Hannover",
+    "Schwerpunkt Sozialpädagogik"
+   ],
+   [
+    "2019",
+    "2025",
+    "Realschulabschluss",
+    "IGS Linden",
+    "Hannover",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Arbeit mit Kindern",
+    3
+   ],
+   [
+    "Geduld",
+    5
+   ],
+   [
+    "Kreatives Gestalten",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Malen, Volleyball"
+ },
+ "do": [
+  "Zeitraum des Praktikums und Schule nennen.",
+  "Persönliche Erfahrung kurz und ehrlich erwähnen.",
+  "Schulvordrucke direkt mitschicken."
+ ],
+ "dont": [
+  "Kein Bezug zur Einrichtung.",
+  "Unsicherheit über Zeitraum.",
+  "Private Details zu Angehörigen ausbreiten, wenn sie dir nicht gut tun."
+ ],
+ "questions": [
+  "Warum diese Einrichtung?",
+  "Wie würden Sie ein Kind trösten, das seine Eltern vermisst?",
+  "Was möchten Sie im Praktikum lernen?",
+  "Wie gehen Sie mit Ekel um, z. B. beim Wickeln?"
+ ],
+ "faq": [
+  {
+   "q": "Wie geht es nach der Sozialassistenz weiter?",
+   "a": "Viele machen danach die Ausbildung zur Erzieherin oder zum Heilerziehungspfleger. In manchen Bundesländern ist die Sozialassistenz eine der Zugangsvoraussetzungen dafür."
+  },
+  {
+   "q": "Bekomme ich während der Ausbildung Geld?",
+   "a": "Die Sozialassistenz ist eine schulische Ausbildung, eine Vergütung gibt es normalerweise nicht. Informiere dich über BAföG für Schülerinnen und Schüler."
+  }
+ ],
+ "related": [
+  "ausbildung-erzieher",
+  "kinderpflegerin",
+  "heilerziehungspfleger",
+  "fsj-bfd"
+ ]
+}

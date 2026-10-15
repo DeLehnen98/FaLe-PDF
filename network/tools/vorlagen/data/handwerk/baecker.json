@@ -1,0 +1,158 @@
+{
+ "id": "baecker",
+ "field": "handwerk",
+ "name": "Bäcker/in (Geselle)",
+ "search": "bäcker bäckerin backstube geselle brot handwerksbäckerei backstubenleiter bewerbung baecker",
+ "short": "Gesellen und Backstubenleitung im Handwerk.",
+ "desc": "Bewerbung als Bäcker/in mit Gesellenbrief: Muster-Anschreiben für Gesellin mit Sauerteig-Schwerpunkt und Bäcker mit Wunsch nach Backstubenleitung, mit Lebenslauf.",
+ "intro": "Handwerksbäckereien suchen Gesellinnen und Gesellen, die selbstständig Teige führen, Öfen beschicken und auch im Nachtdienst Verantwortung übernehmen. Erzähl, welche Produkte du sicher kannst, ob du Sauerteig führst und ob du schon Azubis angeleitet hast.",
+ "lookFor": [
+  "Gesellenbrief Bäcker/in",
+  "Selbstständiges Arbeiten in der Nacht",
+  "Teigführung, Sauerteig",
+  "Hygiene",
+  "Anleitung von Azubis"
+ ],
+ "letters": [
+  {
+   "label": "Gesellin mit Schwerpunkt Sauerteig",
+   "level": "erfahren",
+   "position": "Bäckerin (Gesellin)",
+   "to": {
+    "org": "Bäckerei Kornblume",
+    "sal": "m",
+    "contact": "Wiesner",
+    "street": "Lange Straße 30",
+    "city": "26122 Oldenburg"
+   },
+   "body": [
+    "vor drei Jahren habe ich in meinem Betrieb die Sauerteigführung übernommen und unsere Roggenbrote von Backmitteln auf lange Teigführung umgestellt. Der Verkauf der Brote ist seitdem gestiegen, und die Kundinnen fragen am Samstag nach, wenn das Bauernbrot aus ist.",
+    "Ich bin Bäckergesellin seit fünf Jahren, arbeite selbstständig in der Nacht und leite unseren Azubi an. Ihre Bäckerei backt mit Getreide aus der Region und hat eine eigene Mühle als Partner. Das passt zu dem, was ich machen möchte."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Bäcker will Backstubenleitung übernehmen",
+   "level": "erfahren",
+   "position": "Backstubenleiter",
+   "to": {
+    "org": "Landbäckerei Brinkmann",
+    "sal": "none",
+    "street": "Hauptstraße 4",
+    "city": "26203 Wardenburg"
+   },
+   "body": [
+    "in unserer Backstube arbeiten sechs Leute in der Nacht, und seit unser Leiter krank ist, plane ich die Produktion und die Schichten. Das läuft gut, und ich möchte es als feste Aufgabe übernehmen.",
+    "Bäckermeister bin ich seit zwei Jahren. Ich kalkuliere Rezepte, bestelle Rohstoffe und habe die Reinigungs- und Hygienepläne überarbeitet. Ein Familienbetrieb mit fünf Filialen hat genau die Größe, die mir liegt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Meisterbrief",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Hendrik Gerdes",
+    "Bremer Straße 12",
+    "26135 Oldenburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "compact",
+  "accent": 4,
+  "name": "Svenja Hinrichs",
+  "title": "Bäckerin (Gesellin)",
+  "street": "Nadorster Straße 70",
+  "city": "26123 Oldenburg",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Bäckerin",
+    "Bäckerei am Pferdemarkt",
+    "Oldenburg",
+    "- Sauerteigführung, Roggen- und Mischbrote\n- Nachtdienst, selbstständige Produktion\n- Anleitung eines Azubis"
+   ],
+   [
+    "2018",
+    "2021",
+    "Auszubildende Bäckerin",
+    "Bäckerei am Pferdemarkt",
+    "Oldenburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2021",
+    "Gesellenprüfung Bäckerin",
+    "Handwerkskammer Oldenburg",
+    "Oldenburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Sauerteig",
+    5
+   ],
+   [
+    "Brot und Brötchen",
+    5
+   ],
+   [
+    "Hygiene",
+    4
+   ],
+   [
+    "Azubis anleiten",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Gärtnern"
+ },
+ "do": [
+  "Produkte und Schwerpunkte nennen.",
+  "Selbstständigkeit in der Nacht zeigen.",
+  "Azubianleitung erwähnen."
+ ],
+ "dont": [
+  "Nur „Ich backe gern“.",
+  "Hygiene vergessen.",
+  "Arbeitszeiten offenlassen."
+ ],
+ "questions": [
+  "Wie führen Sie einen Sauerteig?",
+  "Wie planen Sie die Nachtproduktion?",
+  "Was tun Sie, wenn ein Ofen ausfällt?",
+  "Wie leiten Sie Azubis an?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  }
+ ],
+ "related": [
+  "ausbildung-baecker",
+  "ausbildung-konditor",
+  "verkaeuferin-baeckerei",
+  "koch"
+ ]
+}

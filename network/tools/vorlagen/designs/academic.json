@@ -1,0 +1,286 @@
+{
+ "id": "academic",
+ "de": {
+  "name": "Wissenschaftliche Mitarbeiterin",
+  "cv": {
+   "avatar": "a23",
+   "accent": 1,
+   "name": "Dr. Nele Hartmann",
+   "title": "Wissenschaftliche Mitarbeiterin, Umweltwissenschaften",
+   "street": "Am Botanischen Garten 6",
+   "city": "24118 Kiel",
+   "exp": [
+    [
+     "04/2022",
+     "",
+     "Wissenschaftliche Mitarbeiterin (Postdoc)",
+     "Institut für Ökosystemforschung, Universität Kiel",
+     "Kiel",
+     "- Projekt zu Bodenfeuchte und Trockenstress in Buchenwäldern\n- Lehre: Seminar Feldmethoden (2 SWS)\n- Betreuung von drei Masterarbeiten"
+    ],
+    [
+     "10/2018",
+     "03/2022",
+     "Doktorandin",
+     "Institut für Ökosystemforschung, Universität Kiel",
+     "Kiel",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "10/2018",
+     "03/2022",
+     "Promotion Dr. rer. nat., magna cum laude",
+     "Christian-Albrechts-Universität",
+     "Kiel",
+     "Dissertation: Wasserhaushalt von Buchenbeständen auf Sandböden"
+    ],
+    [
+     "2016",
+     "2018",
+     "M.Sc. Umweltwissenschaften",
+     "Universität Greifswald",
+     "Greifswald",
+     ""
+    ],
+    [
+     "2013",
+     "2016",
+     "B.Sc. Geoökologie",
+     "Universität Potsdam",
+     "Potsdam",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "Nachwuchsstipendium für Feldforschung",
+     "Stiftung Waldforschung Nord",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "Hochschuldidaktik Basiszertifikat",
+     "Universität Kiel",
+     "",
+     ""
+    ]
+   ],
+   "pubs": [
+    [
+     "",
+     "2025",
+     "Hartmann, N.; Petersen, J.: Bodenfeuchte unter Buchen in Trockenjahren",
+     "Zeitschrift für Waldökologie 41 (2), S. 112–128",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Hartmann, N. et al.: Preiswerte Sensoren für Langzeitmessungen im Wald",
+     "Umweltmesstechnik 18, S. 45–59",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "Vortrag: Was Buchen im Dürresommer verraten",
+     "Jahrestagung Ökologie Nord, Rostock",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Statistik mit R",
+     5
+    ],
+    [
+     "Feldmesstechnik",
+     5
+    ],
+    [
+     "Geodaten",
+     4
+    ],
+    [
+     "Wissenschaftliches Schreiben",
+     5
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "C1"
+    ],
+    [
+     "Dänisch",
+     "A2"
+    ]
+   ],
+   "hobbies": "Segeln, Bürgerwissenschaft im Naturschutzverein"
+  },
+  "letter": {
+   "label": "Bewerbung auf eine Nachwuchsgruppe",
+   "position": "Leitung einer Nachwuchsgruppe Waldhydrologie",
+   "ref": "NG-2027-03",
+   "to": {
+    "org": "Forschungszentrum für Landschaft und Klima",
+    "sal": "f",
+    "contact": "Prof. Dr. Andersen",
+    "street": "Seeweg 21",
+    "city": "17489 Greifswald"
+   },
+   "body": [
+    "in Buchenwäldern auf Sandböden entscheidet oft ein trockener Sommer darüber, wie es dem Bestand zehn Jahre später geht. Damit beschäftige ich mich seit meiner Promotion; die Messreihen aus drei Dürrejahren liegen inzwischen ausgewertet vor.",
+    "Für die Nachwuchsgruppe möchte ich diese Messungen auf Mischbestände ausweiten und mit Fernerkundungsdaten verbinden. Die Sensortechnik dafür haben wir in Kiel selbst gebaut und in einer Veröffentlichung beschrieben; sie kostet rund ein Zehntel kommerzieller Systeme.",
+    "Erfahrung in der Betreuung bringe ich aus drei Masterarbeiten und meinem Seminar zu Feldmethoden mit. Ein Konzept für die ersten drei Jahre lege ich bei."
+   ],
+   "att": [
+    "Lebenslauf mit Publikationsliste",
+    "Forschungskonzept",
+    "Promotionsurkunde"
+   ]
+  }
+ },
+ "en": {
+  "name": "Postdoctoral researcher",
+  "cv": {
+   "avatar": "a23",
+   "accent": 1,
+   "name": "Dr Nele Hartmann",
+   "title": "Postdoctoral researcher, environmental science",
+   "street": "6 Botanic Gardens Road",
+   "city": "Aberdeen AB24 3UU",
+   "exp": [
+    [
+     "04/2022",
+     "",
+     "Postdoctoral research fellow",
+     "Institute of Ecosystem Research",
+     "Aberdeen",
+     "- Project on soil moisture and drought stress in beech forests\n- Teaching: field methods seminar\n- Supervising three MSc theses"
+    ],
+    [
+     "10/2018",
+     "03/2022",
+     "PhD researcher",
+     "Institute of Ecosystem Research",
+     "Aberdeen",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2018",
+     "2022",
+     "PhD Environmental Science",
+     "University of Aberdeen",
+     "Aberdeen",
+     "Thesis: Water balance of beech stands on sandy soils"
+    ],
+    [
+     "2016",
+     "2018",
+     "MSc Environmental Science",
+     "University of Greifswald",
+     "Greifswald",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "Early career field research grant",
+     "Northern Forest Research Trust",
+     "",
+     ""
+    ]
+   ],
+   "pubs": [
+    [
+     "",
+     "2025",
+     "Hartmann, N.; Petersen, J.: Soil moisture under beech in drought years",
+     "Journal of Forest Ecology 41(2), 112–128",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Hartmann, N. et al.: Low-cost sensors for long-term forest monitoring",
+     "Environmental Monitoring Methods 18, 45–59",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Statistics in R",
+     5
+    ],
+    [
+     "Field instrumentation",
+     5
+    ],
+    [
+     "GIS",
+     4
+    ],
+    [
+     "Scientific writing",
+     5
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "German",
+     "native"
+    ],
+    [
+     "Danish",
+     "A2"
+    ]
+   ],
+   "hobbies": "Sailing, citizen science"
+  },
+  "letter": {
+   "label": "Applying for a research group",
+   "position": "Research group leader, forest hydrology",
+   "ref": "NG-2027-03",
+   "to": {
+    "org": "Centre for Landscape and Climate Research",
+    "sal": "f",
+    "contact": "Professor Anderson",
+    "street": "21 Lake Road",
+    "city": "Stirling FK9 4LA"
+   },
+   "body": [
+    "In beech forests on sandy soils, one dry summer often decides how a stand will be doing ten years later. This has been my subject since my PhD, and the data from three drought years are now analysed.",
+    "With the research group I would extend these measurements to mixed stands and combine them with remote sensing. We built the sensor system ourselves and described it in a paper; it costs about a tenth of commercial systems.",
+    "I have supervised three MSc theses and teach a field methods seminar. A plan for the first three years is enclosed."
+   ],
+   "att": [
+    "CV with publications",
+    "Research plan"
+   ]
+  }
+ }
+}

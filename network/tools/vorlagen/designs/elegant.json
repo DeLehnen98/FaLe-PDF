@@ -1,0 +1,243 @@
+{
+ "id": "elegant",
+ "de": {
+  "name": "Front Office Managerin",
+  "cv": {
+   "avatar": "a14",
+   "accent": 2,
+   "name": "Clara Okafor",
+   "title": "Front Office Managerin",
+   "street": "Prinzregentenstraße 27",
+   "city": "80538 München",
+   "exp": [
+    [
+     "05/2021",
+     "",
+     "Front Office Managerin",
+     "Hotel Isarufer ****S",
+     "München",
+     "- Leitung von Rezeption, Concierge und Reservierung mit 14 Mitarbeitenden\n- Dienstplanung, Einarbeitung und Gästebeschwerden\n- Einführung eines kontaktlosen Check-ins"
+    ],
+    [
+     "03/2017",
+     "04/2021",
+     "Assistant Front Office Manager",
+     "Seehotel Tegernblick",
+     "Bad Wiessee",
+     ""
+    ],
+    [
+     "09/2014",
+     "02/2017",
+     "Rezeptionistin",
+     "Grand Hotel am Dom",
+     "Köln",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2012",
+     "2014",
+     "Hotelfachfrau – IHK-Prüfung",
+     "Grand Hotel am Dom",
+     "Köln",
+     ""
+    ],
+    [
+     "2004",
+     "2012",
+     "Abitur",
+     "Humboldt-Gymnasium",
+     "Köln",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2023",
+     "Revenue Management Grundlagen",
+     "Hotelfachschule",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Hotelsoftware und Reservierungssysteme",
+     5
+    ],
+    [
+     "Mitarbeiterführung",
+     4
+    ],
+    [
+     "Beschwerdemanagement",
+     5
+    ],
+    [
+     "Revenue Management",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "Deutsch",
+     "native"
+    ],
+    [
+     "Englisch",
+     "C2"
+    ],
+    [
+     "Französisch",
+     "B2"
+    ],
+    [
+     "Igbo",
+     "B1"
+    ]
+   ],
+   "hobbies": "Klassische Musik, Kochkurse"
+  },
+  "letter": {
+   "label": "Leitung im Luxushotel",
+   "position": "Director of Rooms (m/w/d)",
+   "to": {
+    "org": "Palais Kaltenberg Hotelbetriebs GmbH",
+    "sal": "m",
+    "contact": "Dr. Reuter",
+    "street": "Maximilianplatz 5",
+    "city": "80333 München"
+   },
+   "body": [
+    "ein Gast, der um zwei Uhr nachts ankommt und sein Zimmer nicht findet, merkt sich diese Nacht länger als das Frühstücksbuffet. Seit dreizehn Jahren arbeite ich am Empfang großer Häuser, heute leite ich das Front Office eines Fünf-Sterne-Superior-Hotels mit 14 Mitarbeitenden.",
+    "In meiner Zeit wurde unser Haus in einer großen Gästeumfrage beim Empfang von 8,6 auf 9,3 Punkte bewertet. Dazu beigetragen hat ein kontaktloser Check-in, den ich mit der IT eingeführt habe, vor allem aber ein Team, das Entscheidungen selbst treffen darf.",
+    "Als Director of Rooms möchte ich Housekeeping und Front Office zusammenführen. Ein persönliches Gespräch bei Ihnen im Haus wäre ein guter Anfang."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ]
+  }
+ },
+ "en": {
+  "name": "Front office manager",
+  "cv": {
+   "avatar": "a14",
+   "accent": 2,
+   "name": "Clara Okafor",
+   "title": "Front office manager",
+   "street": "27 Regent Terrace",
+   "city": "Edinburgh EH7 5BS",
+   "exp": [
+    [
+     "05/2021",
+     "",
+     "Front office manager",
+     "The Calton Hotel",
+     "Edinburgh",
+     "- Reception, concierge and reservations team of 14\n- Rotas, training and guest complaints\n- Introduced contactless check-in"
+    ],
+    [
+     "03/2017",
+     "04/2021",
+     "Assistant front office manager",
+     "Loch View Hotel",
+     "Perth",
+     ""
+    ],
+    [
+     "09/2014",
+     "02/2017",
+     "Receptionist",
+     "The Grand on the Square",
+     "Glasgow",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2012",
+     "2014",
+     "HND Hospitality Management",
+     "City of Glasgow College",
+     "Glasgow",
+     ""
+    ],
+    [
+     "2006",
+     "2012",
+     "Highers",
+     "Hillhead High School",
+     "Glasgow",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2023",
+     "Revenue management essentials",
+     "Hospitality institute",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Property management systems",
+     5
+    ],
+    [
+     "Team leadership",
+     4
+    ],
+    [
+     "Complaint handling",
+     5
+    ],
+    [
+     "Revenue management",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "B2"
+    ],
+    [
+     "Igbo",
+     "B1"
+    ]
+   ],
+   "hobbies": "Classical music, cookery classes"
+  },
+  "letter": {
+   "label": "Leading rooms in a luxury hotel",
+   "position": "Director of Rooms",
+   "to": {
+    "org": "Kaltenberg House Hotel",
+    "sal": "m",
+    "contact": "Reid",
+    "street": "5 Charlotte Square",
+    "city": "Edinburgh EH2 4DR"
+   },
+   "body": [
+    "A guest who arrives at two in the morning and cannot find their room remembers that night longer than the breakfast. I have worked at the front desk of large hotels for thirteen years and now run the front office of a five-star property with a team of 14.",
+    "During my time our reception score in a large guest survey rose from 8.6 to 9.3. A contactless check-in I introduced with our IT team helped, but mostly it was a team that is trusted to make decisions.",
+    "As Director of Rooms I would like to bring housekeeping and the front office closer together. A conversation at your hotel would be a good start."
+   ],
+   "att": [
+    "CV",
+    "References"
+   ]
+  }
+ }
+}

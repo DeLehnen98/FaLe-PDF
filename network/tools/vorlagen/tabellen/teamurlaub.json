@@ -1,0 +1,111 @@
+{
+ "id": "teamurlaub",
+ "slug": "teamurlaub",
+ "cat": "Arbeit",
+ "name": "Urlaubsübersicht Team",
+ "short": "Urlaubsanspruch, Resturlaub und Arbeitstage je Mitarbeiter/in",
+ "desc": "Urlaubsübersicht fürs Team als Excel-Vorlage (XLSX): Anspruch und Resturlaub je Person, Urlaubseinträge mit Arbeitstagen und Feiertagsliste – Überplanung wird rot.",
+ "search": "urlaubsplanung team",
+ "intro": "Für Teams, die Urlaub zentral planen: In der Übersicht stehen Anspruch, Rest aus dem Vorjahr, genommene und geplante Tage. Die Einträge im zweiten Blatt bekommen einen Status – geplant, genehmigt oder genommen – und die Arbeitstage zählen ohne Wochenenden und eingetragene Feiertage.",
+ "uses": [
+  "Urlaubsanträge im Team sammeln und genehmigen",
+  "Resturlaub zum Jahresende im Blick behalten",
+  "Engpässe erkennen, wenn zu viele gleichzeitig fehlen"
+ ],
+ "cols": [
+  [
+   "Mitarbeiter/in",
+   "In der Übersicht: die Namen des Teams. In den Einträgen: Auswahl aus diesen Namen."
+  ],
+  [
+   "Abteilung",
+   "Zum Filtern und Sortieren."
+  ],
+  [
+   "Anspruch",
+   "Urlaubstage im Jahr laut Vertrag."
+  ],
+  [
+   "Rest Vorjahr",
+   "Übertragene Tage aus dem Vorjahr."
+  ],
+  [
+   "Gesamt",
+   "Anspruch plus Rest."
+  ],
+  [
+   "Genommen",
+   "SUMMEWENNS addiert die Arbeitstage aller Einträge der Person mit Art „Urlaub“ und Status „genommen“ im eingestellten Jahr."
+  ],
+  [
+   "Geplant",
+   "Dasselbe für Einträge, die noch „geplant“ oder „genehmigt“ sind."
+  ],
+  [
+   "Verbleibend",
+   "Gesamt minus genommen minus geplant. Rot, wenn mehr verplant ist, als da ist."
+  ],
+  [
+   "Genommen in %",
+   "Anteil des Urlaubs, der schon genommen ist."
+  ],
+  [
+   "Von",
+   "Erster Urlaubstag."
+  ],
+  [
+   "Bis",
+   "Letzter Urlaubstag."
+  ],
+  [
+   "Arbeitstage",
+   "NETTOARBEITSTAGE zählt Montag bis Freitag ohne die Feiertage aus Spalte I. Halbe Tage korrigierst du von Hand."
+  ],
+  [
+   "Art",
+   "Urlaub, Sonderurlaub, Unbezahlt oder Überstundenausgleich – nur „Urlaub“ zählt gegen den Anspruch."
+  ],
+  [
+   "Status",
+   "Geplant (gelb), genehmigt oder genommen (grau)."
+  ],
+  [
+   "Notiz",
+   "Vertretung, Anlass."
+  ],
+  [
+   "Feiertage",
+   "Bundesweite Feiertage mit festem Datum sind vorgegeben. Ostern, Pfingsten, Himmelfahrt und regionale Feiertage trägst du in die gelben Zeilen ein."
+  ]
+ ],
+ "tips": [
+  "Stell den Status nach dem Urlaub auf „genommen“ – dann wandern die Tage von „Geplant“ zu „Genommen“."
+ ],
+ "faq": [
+  {
+   "q": "Wie viel Urlaub steht gesetzlich zu?",
+   "a": "Der gesetzliche Mindesturlaub in Deutschland liegt bei 24 Werktagen bei einer Sechstagewoche, also 20 Arbeitstagen bei fünf Tagen pro Woche. Viele Verträge und Tarifverträge geben mehr. Maßgeblich ist dein Vertrag."
+  }
+ ],
+ "related": [
+  "urlaubsplaner",
+  "schichtplan",
+  "projektzeiten"
+ ],
+ "en": {
+  "slug": "team-leave-overview",
+  "name": "Team leave overview",
+  "short": "Leave entitlement, remaining days and working days per person",
+  "desc": "Team leave spreadsheet (XLSX): entitlement and remaining leave per person, leave entries with working days and a holiday list – over-planned leave turns red.",
+  "intro": "For teams planning leave centrally: entitlement, carried-over days, days taken and days planned per person. Entries have a status and working days exclude weekends and listed public holidays.",
+  "inside": [
+   "Taken vs. planned leave with SUMIFS",
+   "Working days with NETWORKDAYS and a holiday list",
+   "Remaining days with warning colour",
+   "Status: planned / approved / taken"
+  ],
+  "uses": [
+   "Small teams approving leave"
+  ]
+ }
+}

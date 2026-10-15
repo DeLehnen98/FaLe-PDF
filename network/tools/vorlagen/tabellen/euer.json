@@ -1,0 +1,83 @@
+{
+ "id": "euer",
+ "slug": "euer",
+ "cat": "Business",
+ "name": "Einnahmen-Überschuss-Rechnung (light)",
+ "short": "Einnahmen und Ausgaben nach Kategorien, Gewinn und Zahllast",
+ "desc": "EÜR-Vorlage (light) als Excel (XLSX): Buchungen brutto eintragen, Netto und Umsatzsteuer herausrechnen, Gewinn und Umsatzsteuer-Zahllast fürs Jahr sehen.",
+ "search": "",
+ "intro": "Eine vereinfachte Einnahmen-Überschuss-Rechnung für Selbstständige und Nebengewerbe. Du buchst brutto, die Vorlage rechnet Netto und Umsatzsteuer heraus, fasst alles nach Kategorien fürs gewählte Jahr zusammen und zeigt Gewinn und Zahllast.",
+ "uses": [
+  "Nebengewerbe und kleine Selbstständigkeit im Überblick",
+  "Gewinn fürs Jahr grob abschätzen",
+  "Umsatzsteuer und Vorsteuer gegenüberstellen"
+ ],
+ "cols": [
+  [
+   "Kategorie",
+   "Einnahme- und Ausgabenkategorien in der Übersicht – dieselben stehen in der Auswahlliste der Buchungen."
+  ],
+  [
+   "Art",
+   "Einnahme oder Ausgabe."
+  ],
+  [
+   "Netto",
+   "In der Übersicht: SUMMEWENNS addiert die Nettobeträge der Kategorie für das gewählte Jahr. In den Buchungen: Brutto ÷ (1 + Steuersatz), auf Cent gerundet."
+  ],
+  [
+   "USt",
+   "In der Übersicht die Umsatzsteuer der Kategorie; in den Buchungen Brutto minus Netto."
+  ],
+  [
+   "Brutto",
+   "In den Buchungen der gezahlte bzw. erhaltene Betrag; in der Übersicht Netto plus USt."
+  ],
+  [
+   "Datum",
+   "Buchungsdatum – zählt für die Jahreszuordnung."
+  ],
+  [
+   "Beleg",
+   "Belegnummer, damit du die Quittung wiederfindest."
+  ],
+  [
+   "Beschreibung",
+   "Wofür die Zahlung war."
+  ],
+  [
+   "USt-Satz",
+   "19 %, 7 % oder 0 %. Als Kleinunternehmer trägst du 0 % ein."
+  ]
+ ],
+ "tips": [
+  "„Zahllast“ ist eingenommene Umsatzsteuer minus gezahlte Vorsteuer – positiv heißt: ans Finanzamt abführen."
+ ],
+ "faq": [
+  {
+   "q": "Ersetzt die Vorlage das amtliche EÜR-Formular?",
+   "a": "Nein. Für die Steuererklärung brauchst du das amtliche Formular und alle Belege. Die Vorlage ist eine Hilfe zur Orientierung und keine Steuerberatung."
+  }
+ ],
+ "related": [
+  "rechnungsausgangsbuch",
+  "kassenbuch",
+  "preiskalkulation"
+ ],
+ "en": {
+  "slug": "profit-and-loss-light",
+  "name": "Simple profit and loss (EÜR light)",
+  "short": "Income and costs by category, profit and VAT balance",
+  "desc": "Simple profit and loss spreadsheet (XLSX) after the German EÜR: enter gross amounts, get net and VAT, and see profit and VAT payable for the year.",
+  "intro": "A simplified cash-basis profit calculation as used by German freelancers. Enter gross amounts; the template extracts net and VAT, totals everything by category for the chosen year and shows profit and VAT payable.",
+  "inside": [
+   "Bookings with gross, VAT rate, net and VAT",
+   "Totals per category for one year (SUMIFS)",
+   "Profit or loss",
+   "Output VAT minus input VAT"
+  ],
+  "uses": [
+   "Side businesses and small freelancers in Germany"
+  ]
+ }
+}

@@ -1,0 +1,314 @@
+{
+ "id": "recruiter",
+ "field": "buero",
+ "name": "Recruiter/in",
+ "search": "recruiter recruiterin personalgewinnung talent acquisition personalberatung hr recruiting bewerbung",
+ "short": "Personalgewinnung im Unternehmen oder in der Personalberatung.",
+ "desc": "Bewerbung als Recruiter/in: Muster-Anschreiben für erfahrene Recruiterin, Quereinsteiger aus dem Vertrieb und Personalsachbearbeiterin, mit Lebenslauf und Fragen.",
+ "intro": "Recruiter finden passende Menschen für offene Stellen: Anzeigen schreiben, Kandidaten ansprechen, Gespräche führen, Fachbereiche beraten. Gefragt sind Gespür für Menschen, Ausdauer und Zahlenverständnis – Time-to-hire und Quellen gehören dazu. Erzähl von Stellen, die du besetzt hast.",
+ "lookFor": [
+  "Erfahrung in Personalgewinnung oder Vertrieb",
+  "Gesprächsführung und Menschenkenntnis",
+  "Active Sourcing in Netzwerken",
+  "Kennzahlen im Blick",
+  "Kenntnis im Arbeitsrecht (AGG)"
+ ],
+ "letters": [
+  {
+   "label": "Recruiterin aus der Personalberatung wechselt ins Unternehmen",
+   "level": "erfahren",
+   "position": "Recruiterin (Inhouse)",
+   "to": {
+    "org": "Medizintechnik Rhein GmbH",
+    "sal": "m",
+    "contact": "Schulz",
+    "street": "Kaiserswerther Straße 80",
+    "city": "40477 Düsseldorf"
+   },
+   "body": [
+    "in der Personalberatung habe ich vier Jahre lang Ingenieure und Techniker für Mittelständler gesucht, im Schnitt 25 Besetzungen im Jahr. Was mir dabei gefehlt hat, ist der Blick danach: Wie geht es den Leuten nach einem Jahr? Inhouse kann ich das begleiten.",
+    "Meine Stärke ist die Direktansprache von Fachkräften, die eigentlich gar nicht wechseln wollen. Ich verstehe genug von Technik, um mit einem Elektroingenieur über seine Arbeit zu reden, ohne mich zu blamieren. Ihre Firma wächst und sucht laut Karriereseite 30 Leute in Entwicklung und Produktion. Da möchte ich helfen.",
+    "Eintritt wäre zum 1. April möglich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Zertifikat Eignungsdiagnostik"
+   ]
+  },
+  {
+   "label": "Vertriebler wechselt ins Recruiting",
+   "level": "quereinstieg",
+   "position": "Junior Recruiter",
+   "to": {
+    "org": "Personalberatung Westfalen Talent",
+    "sal": "f",
+    "contact": "Krause",
+    "street": "Königsallee 50",
+    "city": "40212 Düsseldorf"
+   },
+   "body": [
+    "sechs Jahre Außendienst im Getränkehandel haben mir beigebracht, wie man Menschen anruft, die keinen Anruf erwartet haben. Im letzten Jahr habe ich zwei Bekannte für offene Stellen bei meinem Arbeitgeber gewonnen und gemerkt: Menschen zusammenzubringen macht mir mehr Spaß als Kisten zu verkaufen.",
+    "Ich habe einen Weiterbildungskurs Recruiting abgeschlossen und kenne die Grundlagen des AGG. Telefonieren, Netzwerken und Hartnäckigkeit sind meine Stärken; das Fachliche lerne ich in Ihrem Team."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat Recruiting",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Marc Hoffmann",
+    "Bilker Allee 30",
+    "40219 Düsseldorf"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 2,
+  "name": "Nadja Ilić",
+  "title": "Recruiterin",
+  "street": "Nordstraße 70",
+  "city": "40477 Düsseldorf",
+  "exp": [
+   [
+    "03/2022",
+    "",
+    "Personalberaterin",
+    "Technik Personal Rhein-Ruhr",
+    "Düsseldorf",
+    "- Rund 25 Besetzungen pro Jahr (Ingenieure, Techniker)\n- Direktansprache, Interviews, Kundenberatung"
+   ],
+   [
+    "10/2019",
+    "02/2022",
+    "Personalreferentin (Elternzeitvertretung, anschließend befristet)",
+    "Logistik West GmbH",
+    "Neuss",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2019",
+    "Psychologie (B. Sc.)",
+    "Heinrich-Heine-Universität",
+    "Düsseldorf",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Direktansprache",
+    5
+   ],
+   [
+    "Interviewführung",
+    4
+   ],
+   [
+    "Eignungsdiagnostik",
+    4
+   ],
+   [
+    "Kennzahlen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Serbisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Laufen, Fotografie"
+ },
+ "do": [
+  "Besetzungen mit Zahlen nennen.",
+  "Bereich und Zielgruppen angeben.",
+  "Zeigen, dass du Kandidaten fair behandelst."
+ ],
+ "dont": [
+  "Nur „Ich bin ein People-Person“.",
+  "Kennzahlen weglassen.",
+  "Vertrauliches aus Kundenprojekten nennen."
+ ],
+ "questions": [
+  "Wie sprechen Sie einen Kandidaten an, der nicht wechseln will?",
+  "Wie messen Sie Recruiting-Erfolg?",
+  "Was beachten Sie nach dem AGG?",
+  "Wie gehen Sie mit einem Fachbereich um, der zu viel verlangt?"
+ ],
+ "faq": [
+  {
+   "q": "Wie komme ich ohne HR-Studium ins Recruiting?",
+   "a": "Viele Recruiter kommen aus Vertrieb, Kundenservice oder Psychologie. Ein Kurs zu Recruiting und Arbeitsrecht und erste Erfahrungen, etwa mit Mitarbeiterempfehlungen, sind ein guter Start."
+  }
+ ],
+ "related": [
+  "personalsachbearbeiter",
+  "werkstudent-personal",
+  "aussendienst",
+  "teamleiter"
+ ],
+ "en": {
+  "slug": "recruiter",
+  "name": "Recruiter",
+  "search": "recruiter talent acquisition in-house recruitment consultant hr sourcing",
+  "short": "In-house or agency – finding the right people for the right roles.",
+  "desc": "Recruiter cover letter examples: an agency recruiter moving in-house and a sales professional switching to recruitment, plus a ready CV with placeholder portrait.",
+  "intro": "Recruiters find the right people for open roles: writing adverts, sourcing, interviewing, advising hiring managers. Say how many roles you have filled and in which areas, and show that you treat candidates fairly.",
+  "lookFor": [
+   "Experience in recruitment or sales",
+   "Interviewing and judgement",
+   "Sourcing on professional networks",
+   "Comfort with metrics",
+   "Knowledge of equality law"
+  ],
+  "letters": [
+   {
+    "label": "Agency recruiter moving in-house",
+    "level": "erfahren",
+    "position": "In-house recruiter",
+    "to": {
+     "org": "Meridian Medical Devices",
+     "sal": "m",
+     "contact": "Shaw",
+     "street": "80 Aztec West",
+     "city": "Bristol BS32 4TD"
+    },
+    "body": [
+     "four years at an engineering recruitment agency have meant around 25 placements a year, mostly engineers and technicians for mid-sized manufacturers. What I missed was seeing how people were doing a year later. In-house, I can.",
+     "My strength is approaching specialists who are not looking to move. I understand enough engineering to talk about someone’s work without embarrassing myself. Your careers page lists thirty open roles in development and production, and I would like to help fill them."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Sales professional moving into recruitment",
+    "level": "quereinstieg",
+    "position": "Trainee recruitment consultant",
+    "to": {
+     "org": "Westgate Talent Partners",
+     "sal": "f",
+     "contact": "Clarke",
+     "street": "50 Queen Square",
+     "city": "Bristol BS1 4LH"
+    },
+    "body": [
+     "six years of field sales have taught me how to call people who were not expecting my call. Last year I introduced two friends to open roles at my company, and I realised that matching people to jobs suits me better than selling drinks.",
+     "I have completed a short recruitment course and know the basics of equality law. Phone work, networking and persistence are my strengths; the specialist knowledge I will learn in your team."
+    ],
+    "att": [
+     "CV",
+     "Course certificate"
+    ],
+    "from": [
+     "Mark Hill",
+     "30 Gloucester Road",
+     "Bristol BS7 8AE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a09",
+   "design": "modern",
+   "accent": 2,
+   "name": "Nadia Ilic",
+   "title": "Recruiter",
+   "street": "70 Cheltenham Road",
+   "city": "Bristol BS6 5RL",
+   "exp": [
+    [
+     "03/2022",
+     "",
+     "Recruitment consultant",
+     "Technical Talent West",
+     "Bristol",
+     "- Around 25 placements a year\n- Direct sourcing, interviews, client advice"
+    ],
+    [
+     "10/2019",
+     "02/2022",
+     "HR assistant",
+     "Western Logistics",
+     "Avonmouth",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2015",
+     "2019",
+     "BSc Psychology",
+     "University of the West of England",
+     "Bristol",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Sourcing",
+     5
+    ],
+    [
+     "Interviewing",
+     4
+    ],
+    [
+     "Assessment",
+     4
+    ],
+    [
+     "Metrics",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Serbian",
+     "native"
+    ]
+   ],
+   "hobbies": "Running, photography"
+  },
+  "do": [
+   "Give placement numbers.",
+   "Name your sectors and candidate groups.",
+   "Show you treat candidates fairly."
+  ],
+  "dont": [
+   "Call yourself a “people person” and stop there.",
+   "Leave out metrics.",
+   "Mention confidential client details."
+  ],
+  "questions": [
+   "How do you approach someone who is not looking?",
+   "How do you measure recruitment success?",
+   "What does equality law mean in practice?",
+   "How do you handle a hiring manager with unrealistic demands?"
+  ],
+  "faq": [
+   {
+    "q": "Can I move into recruitment without an HR degree?",
+    "a": "Yes. Many recruiters come from sales, customer service or psychology. A short course on recruitment and employment law plus some referral experience is a good start."
+   }
+  ]
+ }
+}

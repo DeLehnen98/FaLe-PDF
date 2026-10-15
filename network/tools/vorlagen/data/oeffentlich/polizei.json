@@ -1,0 +1,182 @@
+{
+ "id": "polizei",
+ "field": "oeffentlich",
+ "name": "Polizei (Bewerbung / Motivationsschreiben)",
+ "search": "polizei polizist polizistin polizeivollzugsdienst kommissaranwärter mittlerer dienst gehobener dienst einstellungstest motivationsschreiben bewerbung",
+ "short": "Motivationsschreiben für Ausbildung oder Studium bei der Polizei.",
+ "desc": "Bewerbung bei der Polizei: Muster-Motivationsschreiben für mittleren und gehobenen Dienst, mit Lebenslauf und Tipps zum Auswahlverfahren.",
+ "intro": "Bei der Polizei der Länder und des Bundes bewirbst du dich meist über ein Online-Portal mit festen Fristen, danach folgen schriftlicher Test, Sporttest, ärztliche Untersuchung und Gespräch. Ob ein Anschreiben verlangt wird, ist unterschiedlich; ein gutes Motivationsschreiben hilft dir aber auch im Gespräch. Voraussetzungen wie Alter, Schulabschluss, Sport und Gesundheit stehen in der jeweiligen Ausschreibung.",
+ "lookFor": [
+  "Schulabschluss nach Laufbahn (mittlerer oder gehobener Dienst)",
+  "Staatsangehörigkeit und weitere Voraussetzungen laut Ausschreibung",
+  "Sportliche Fitness, oft mit Schwimm- und Sportnachweis",
+  "Charakterliche Eignung, einwandfreies Führungszeugnis",
+  "Führerschein Klasse B, je nach Land bis zur Einstellung"
+ ],
+ "letters": [
+  {
+   "label": "Realschüler für den mittleren Dienst",
+   "level": "ausbildung",
+   "position": "Ausbildung im Polizeivollzugsdienst (mittlerer Dienst)",
+   "to": {
+    "org": "Polizeiakademie – Einstellungsberatung",
+    "sal": "none",
+    "street": "Am Polizeipräsidium 1",
+    "city": "30169 Hannover"
+   },
+   "body": [
+    "bei uns im Dorf ist die Polizei nicht der Gegner, sondern die Frau, die beim Schulfest die Verkehrserziehung macht, und der Kollege, der meinem Großvater nach dem Einbruch zwei Stunden zugehört hat. So möchte ich auch arbeiten: ansprechbar, fair und da, wenn es ernst wird.",
+    "Im Sommer mache ich den Realschulabschluss. Ich spiele seit acht Jahren Handball, laufe dreimal pro Woche und habe das Sportabzeichen in Gold. Seit zwei Jahren bin ich in der Jugendfeuerwehr und weiß, wie wichtig klare Absprachen im Einsatz sind.",
+    "Auf den Einstellungstest bereite ich mich gerade mit Übungsaufgaben vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Sportabzeichen",
+    "Bescheinigung Jugendfeuerwehr"
+   ]
+  },
+  {
+   "label": "Abiturientin für das Studium im gehobenen Dienst",
+   "level": "ausbildung",
+   "position": "Bachelorstudium Polizeivollzugsdienst (gehobener Dienst)",
+   "to": {
+    "org": "Polizei – Einstellungsstelle",
+    "sal": "none",
+    "street": "Polizeiweg 5",
+    "city": "40476 Düsseldorf"
+   },
+   "body": [
+    "seit meinem Schülerpraktikum auf einer Polizeiwache weiß ich, dass dieser Beruf zu großen Teilen aus Schreibarbeit, Gesprächen und Geduld besteht und nur selten aus dem, was man im Fernsehen sieht. Gerade das hat mich überzeugt.",
+    "Im Frühjahr steht das Abitur an, Leistungskurse Sozialwissenschaften und Englisch. Ich spreche Russisch als Muttersprache, was bei Einsätzen mit russischsprachigen Menschen helfen kann. Im Sportverein trainiere ich eine Kindergruppe im Judo.",
+    "Am Auswahlverfahren nehme ich gern teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Alina Petrow",
+    "Kölner Landstraße 50",
+    "40591 Düsseldorf"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 0,
+  "name": "Jonas Lüttge",
+  "title": "Schüler",
+  "street": "Dorfstraße 8",
+  "city": "31515 Wunstorf",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Jugendfeuerwehr",
+    "Freiwillige Feuerwehr Wunstorf",
+    "Wunstorf",
+    "- Übungsdienste, Wettbewerbe"
+   ],
+   [
+    "2018",
+    "",
+    "Handball",
+    "TSV Wunstorf",
+    "Wunstorf",
+    "- Mannschaftskapitän B-Jugend"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Realschulabschluss",
+    "Realschule Wunstorf",
+    "Wunstorf",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Deutsches Sportabzeichen (Gold)",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Erste-Hilfe-Kurs",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Sportliche Fitness",
+    5
+   ],
+   [
+    "Teamarbeit",
+    5
+   ],
+   [
+    "Ruhe in Stresssituationen",
+    4
+   ],
+   [
+    "Schriftliches Deutsch",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Handball, Laufen"
+ },
+ "do": [
+  "Motivation mit eigenen Erlebnissen begründen.",
+  "Sport und Engagement nennen.",
+  "Fristen und Portal der richtigen Polizei beachten."
+ ],
+ "dont": [
+  "Action-Film-Vorstellungen.",
+  "Einträge im Führungszeugnis verschweigen.",
+  "Voraussetzungen aus einem anderen Bundesland annehmen."
+ ],
+ "questions": [
+  "Warum möchten Sie zur Polizei?",
+  "Wie reagieren Sie, wenn Sie beleidigt werden?",
+  "Was wissen Sie über die Aufgaben im Streifendienst?",
+  "Wie bereiten Sie sich auf den Sporttest vor?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Anschreiben?",
+   "a": "Das hängt vom Bundesland bzw. von der Bundespolizei ab. Viele Portale fragen die Motivation in Formularfeldern ab. Ein vorbereiteter Text hilft dir in jedem Fall, auch im Auswahlgespräch."
+  },
+  {
+   "q": "Wo finde ich die genauen Voraussetzungen?",
+   "a": "In der Ausschreibung der jeweiligen Landespolizei oder der Bundespolizei. Alter, Abschluss, Sportnachweise, Gesundheit und Führerschein sind dort verbindlich geregelt und unterscheiden sich."
+  }
+ ],
+ "related": [
+  "bundeswehr",
+  "sicherheitsdienst",
+  "verwaltungsfachangestellte",
+  "justizfachangestellte"
+ ]
+}

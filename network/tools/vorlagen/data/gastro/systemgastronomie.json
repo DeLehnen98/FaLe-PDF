@@ -1,0 +1,161 @@
+{
+ "id": "systemgastronomie",
+ "field": "gastro",
+ "name": "Schichtführer/in Systemgastronomie",
+ "search": "systemgastronomie schichtführer schichtleiter fast food restaurant burger crew trainer fachmann systemgastronomie bewerbung",
+ "short": "Schnellrestaurant, Kantine, Kette – mit Führungsverantwortung.",
+ "desc": "Bewerbung als Schichtführer/in in der Systemgastronomie: Muster-Anschreiben für Crew-Trainerin mit Aufstiegswunsch und Quereinsteiger, mit Lebenslauf und Tipps.",
+ "intro": "In der Systemgastronomie arbeiten Restaurants nach festen Standards. Schichtführer leiten die Crew, achten auf Hygiene, Tempo und Kasse und lösen Probleme, wenn es eng wird. Wer schon als Crew-Trainer gearbeitet hat, bringt das wichtigste Argument mit.",
+ "lookFor": [
+  "Erfahrung als Crew-Mitglied oder Trainer",
+  "Führung einer Schicht",
+  "Hygiene- und Qualitätsstandards",
+  "Kassenabschluss",
+  "Früh-, Spät- und Wochenendschichten"
+ ],
+ "letters": [
+  {
+   "label": "Crew-Trainerin will Schichtführerin werden",
+   "level": "erfahren",
+   "position": "Schichtführerin",
+   "to": {
+    "org": "Burgerhaus Hauptbahnhof",
+    "sal": "m",
+    "contact": "Arslan",
+    "street": "Bahnhofsplatz 1",
+    "city": "30159 Hannover"
+   },
+   "body": [
+    "in meiner Filiale arbeite ich seit drei Jahren, zuerst an der Kasse, dann in der Küche, seit einem Jahr als Crew-Trainerin. Ich arbeite neue Kolleginnen ein und übernehme die Schicht, wenn der Schichtführer Pause macht. Am Hauptbahnhof ist mehr los als bei uns, und ich möchte zeigen, dass ich das kann.",
+    "Hygienestandards, Temperaturkontrollen und die Zeiten am Drive kenne ich auswendig. Bei unserem letzten Qualitätsaudit hatte meine Schicht die besten Werte im Bezirk. Ich bin 21, mache gerade Abitur an der Abendschule und bin tagsüber flexibel."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Crew-Trainer"
+   ]
+  },
+  {
+   "label": "Quereinsteiger aus der Produktion",
+   "level": "quereinstieg",
+   "position": "Schichtführer (Quereinstieg)",
+   "to": {
+    "org": "Kantinenservice Nord GmbH",
+    "sal": "f",
+    "contact": "Behrens",
+    "street": "Lister Meile 50",
+    "city": "30161 Hannover"
+   },
+   "body": [
+    "sechs Jahre als Vorarbeiter in einer Lebensmittelproduktion bedeuten: Hygiene ist für mich kein Fremdwort, Takt auch nicht. Ich habe eine Linie mit acht Leuten geführt und möchte in die Gastronomie wechseln, weil ich mehr Kontakt zu Menschen will, die das essen, was wir machen.",
+    "Ihre Kantinen arbeiten nach festen Standards und mit hohen Stückzahlen. Das ist meinem jetzigen Job näher, als man denkt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Andrzej Nowicki",
+    "Podbielskistraße 70",
+    "30177 Hannover"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "compact",
+  "accent": 3,
+  "name": "Rania Haddad",
+  "title": "Crew-Trainerin",
+  "street": "Vahrenwalder Straße 90",
+  "city": "30165 Hannover",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Crew-Mitglied, seit 2025 Crew-Trainerin",
+    "Burgerhaus Kröpcke",
+    "Hannover",
+    "- Einarbeitung neuer Crew\n- Vertretung des Schichtführers\n- Bestwerte im Bezirksaudit"
+   ]
+  ],
+  "edu": [
+   [
+    "2025",
+    "",
+    "Abendgymnasium (Abitur angestrebt)",
+    "Abendgymnasium Hannover",
+    "Hannover",
+    ""
+   ],
+   [
+    "2014",
+    "2021",
+    "Realschulabschluss",
+    "IGS List",
+    "Hannover",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Schichtorganisation",
+    4
+   ],
+   [
+    "Hygiene",
+    5
+   ],
+   [
+    "Einarbeitung",
+    4
+   ],
+   [
+    "Kasse",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Arabisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Volleyball, Kochen"
+ },
+ "do": [
+  "Rolle als Trainer oder Vertretung nennen.",
+  "Audit- oder Qualitätsergebnisse erwähnen.",
+  "Schichtbereitschaft angeben."
+ ],
+ "dont": [
+  "Systemgastronomie abwerten.",
+  "Nur Kassenerfahrung.",
+  "Unflexible Zeiten."
+ ],
+ "questions": [
+  "Wie motivieren Sie eine Crew an einem stressigen Samstag?",
+  "Was tun Sie, wenn die Kasse nicht stimmt?",
+  "Wie prüfen Sie Hygiene in der Schicht?",
+  "Wie gehen Sie mit einem Mitarbeiter um, der nicht erscheint?"
+ ],
+ "faq": [
+  {
+   "q": "Gibt es eine Ausbildung?",
+   "a": "Ja, Fachmann/-frau für Systemgastronomie. Viele Schichtführer kommen aber auch aus der Crew und werden intern weitergebildet."
+  }
+ ],
+ "related": [
+  "restaurantleitung",
+  "servicekraft",
+  "kuechenhilfe",
+  "stellvertretende-filialleitung"
+ ]
+}

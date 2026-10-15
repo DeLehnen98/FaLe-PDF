@@ -1,0 +1,351 @@
+{
+ "id": "wiedereinstieg-elternzeit",
+ "field": "buero",
+ "name": "Bewerbung nach der Elternzeit (Wiedereinstieg)",
+ "search": "wiedereinstieg elternzeit bewerbung nach elternzeit mutter vater familienzeit teilzeit lücke lebenslauf rückkehr",
+ "short": "Zurück in den Beruf nach Familienzeit – mit Teilzeitwunsch.",
+ "desc": "Bewerbung nach der Elternzeit: Muster-Anschreiben für Sachbearbeiterin nach drei Jahren, Vater nach Elternzeit und Wiedereinstieg nach acht Jahren, mit Lebenslauf.",
+ "intro": "Nach Elternzeit oder längerer Familienzeit fragen sich viele, wie sie die Zeit im Lebenslauf darstellen sollen. Die Antwort: offen und kurz. Schreib die Elternzeit als eigenen Eintrag, nenn deinen Arbeitszeitwunsch und zeig, dass du fachlich auf dem Laufenden bist. Entschuldigen musst du dich für nichts.",
+ "lookFor": [
+  "Fachliche Erfahrung vor der Elternzeit",
+  "Klarer Arbeitszeitwunsch",
+  "Aktuelle Kenntnisse (Kurse, Lektüre, Ehrenamt)",
+  "Organisation von Betreuung",
+  "Selbstbewusster Umgang mit der Lücke"
+ ],
+ "letters": [
+  {
+   "label": "Sachbearbeiterin nach drei Jahren Elternzeit",
+   "level": "erfahren",
+   "position": "Sachbearbeiterin Einkauf (Teilzeit, 25 Stunden)",
+   "to": {
+    "org": "Kunststofftechnik Lippe GmbH",
+    "sal": "f",
+    "contact": "Meyer",
+    "street": "Industriestraße 30",
+    "city": "32758 Detmold"
+   },
+   "body": [
+    "drei Jahre Elternzeit mit zwei Kindern liegen hinter mir, und im August beginnt für beide die Kita. Ich möchte zurück in den Einkauf, in Teilzeit mit 25 Stunden an fünf Vormittagen. Meinen alten Arbeitgeber gibt es nicht mehr, deshalb bewerbe ich mich bei Ihnen.",
+    "Vor der Elternzeit war ich sechs Jahre Einkäuferin bei einem Möbelzulieferer: Lieferanten auswählen, Preise verhandeln, Liefertermine überwachen. Im letzten Halbjahr habe ich einen Online-Kurs zu nachhaltiger Beschaffung abgeschlossen und die Lieferkettengesetzgebung verfolgt, die seit meiner Elternzeit ein großes Thema geworden ist.",
+    "Kinderbetreuung ist organisiert, auch für Krankheitstage gibt es mit den Großeltern einen Plan."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Zertifikat Online-Kurs"
+   ]
+  },
+  {
+   "label": "Vater nach einem Jahr Elternzeit",
+   "level": "erfahren",
+   "position": "Bauzeichner (Vollzeit, flexible Arbeitszeit)",
+   "to": {
+    "org": "Architekturbüro Neumann",
+    "sal": "m",
+    "contact": "Neumann",
+    "street": "Bruchstraße 15",
+    "city": "32756 Detmold"
+   },
+   "body": [
+    "ein Jahr lang war ich zu Hause bei unserer Tochter, während meine Frau ihre Facharztausbildung abgeschlossen hat. Jetzt geht die Kleine in die Krippe, und ich steige wieder ein, gern bei Ihnen.",
+    "Als Bauzeichner habe ich zehn Jahre lang Ausführungs- und Detailpläne für Wohn- und Gewerbebauten gezeichnet. In der Elternzeit habe ich mich in die neueste Version unseres Planungsprogramms eingearbeitet, weil ich wusste, dass mein Büro umstellt. Diese Umstellung steht laut Ihrer Anzeige bei Ihnen gerade an.",
+    "Vollzeit ist möglich, wenn ich zweimal in der Woche um 15 Uhr gehen kann und die Stunden an anderen Tagen nacharbeite."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Florian Kemper",
+    "Paulinenstraße 40",
+    "32756 Detmold"
+   ]
+  },
+  {
+   "label": "Wiedereinstieg nach acht Jahren Familienzeit",
+   "level": "quereinstieg",
+   "position": "Bürokraft (Teilzeit, 20 Stunden)",
+   "to": {
+    "org": "Steuerkanzlei Richter",
+    "sal": "none",
+    "street": "Lange Straße 60",
+    "city": "32756 Detmold"
+   },
+   "body": [
+    "acht Jahre Familie mit drei Kindern, Elternbeirat, Schulfeste und die Kasse des Sportvereins: Ich habe in dieser Zeit mehr organisiert als in meinem letzten Bürojob. Jetzt, wo die Jüngste in die dritte Klasse geht, möchte ich zurück ins Berufsleben, an 20 Stunden pro Woche.",
+    "Gelernt habe ich Kauffrau für Bürokommunikation und danach fünf Jahre in einer Versicherungsagentur gearbeitet. Um wieder sicher am Rechner zu sein, habe ich im Frühjahr einen Kurs für Büroprogramme an der Volkshochschule abgeschlossen. Die Vereinskasse führe ich seit drei Jahren digital.",
+    "Ich arbeite gern vormittags und bin ab sofort verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Stefanie Wiebe",
+    "Hornsche Straße 12",
+    "32756 Detmold"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "classic",
+  "accent": 1,
+  "name": "Christina Lohmann",
+  "title": "Einkäuferin",
+  "street": "Bielefelder Straße 44",
+  "city": "32758 Detmold",
+  "exp": [
+   [
+    "09/2023",
+    "07/2026",
+    "Elternzeit (zwei Kinder)",
+    "",
+    "",
+    "- Online-Kurs Nachhaltige Beschaffung (2026)"
+   ],
+   [
+    "03/2017",
+    "08/2023",
+    "Einkäuferin",
+    "Möbelteile Ostwestfalen GmbH",
+    "Lemgo",
+    "- Lieferantenauswahl und -bewertung\n- Preisverhandlungen, Rahmenverträge\n- Terminüberwachung"
+   ],
+   [
+    "08/2014",
+    "02/2017",
+    "Kauffrau im Groß- und Außenhandel",
+    "Holzhandel Lippe",
+    "Detmold",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2014",
+    "Ausbildung Kauffrau im Groß- und Außenhandel",
+    "Holzhandel Lippe",
+    "Detmold",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Lieferantenmanagement",
+    5
+   ],
+   [
+    "Verhandlung",
+    4
+   ],
+   [
+    "ERP-Systeme",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Wandern, Elternbeirat Kita"
+ },
+ "do": [
+  "Elternzeit als eigenen Eintrag in den Lebenslauf.",
+  "Arbeitszeitwunsch klar nennen.",
+  "Zeigen, wie du dich fachlich auf dem Laufenden gehalten hast."
+ ],
+ "dont": [
+  "Sich für die Familienzeit entschuldigen.",
+  "Details zur Kinderbetreuung ausbreiten.",
+  "Teilzeit erst im Gespräch ansprechen."
+ ],
+ "questions": [
+  "Wie haben Sie sich in der Elternzeit fachlich auf dem Laufenden gehalten?",
+  "Welche Arbeitszeit stellen Sie sich vor?",
+  "Was hat sich in Ihrem Bereich verändert?",
+  "Wie flexibel sind Sie bei kurzfristigen Terminen?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich die Kinderbetreuung erklären?",
+   "a": "Nein. Ein Satz, dass die Betreuung organisiert ist, reicht. Fragen nach Familienplanung sind im Vorstellungsgespräch unzulässig."
+  },
+  {
+   "q": "Wie schreibe ich die Elternzeit in den Lebenslauf?",
+   "a": "Als eigenen Eintrag mit Zeitraum, z. B. „Elternzeit“. Wenn du in der Zeit Kurse gemacht oder dich engagiert hast, schreib das darunter."
+  }
+ ],
+ "related": [
+  "bewerbung-50-plus",
+  "quereinstieg-buero",
+  "sachbearbeiter",
+  "kauffrau-bueromanagement"
+ ],
+ "en": {
+  "slug": "returning-to-work",
+  "name": "Returning to work after parental leave",
+  "search": "returning to work after maternity leave parental leave career break part time gap cv returner",
+  "short": "Back to work after a career break – with flexible hours if you need them.",
+  "desc": "Cover letter examples for returning to work after parental leave or a longer career break, with part-time requests, plus a ready CV.",
+  "intro": "After parental leave or a longer career break, many people worry about the gap on their CV. Be open and brief: list the break as its own entry, say what hours you want and show you are up to date. You do not need to apologise.",
+  "lookFor": [
+   "Experience from before the break",
+   "Clear working-hours request",
+   "Up-to-date knowledge (courses, reading, volunteering)",
+   "Childcare arranged",
+   "Confidence about the gap"
+  ],
+  "letters": [
+   {
+    "label": "Purchasing specialist after three years at home",
+    "level": "erfahren",
+    "position": "Purchasing administrator (part time, 25 hours)",
+    "to": {
+     "org": "Lakeside Plastics Ltd",
+     "sal": "f",
+     "contact": "Moore",
+     "street": "Unit 7, Lakeside Industrial Estate",
+     "city": "Preston PR2 5BD"
+    },
+    "body": [
+     "three years at home with two small children are coming to an end, as both start nursery in August. I would like to return to purchasing on 25 hours a week, mornings only.",
+     "Before my break I spent six years as a buyer for a furniture supplier: selecting suppliers, negotiating prices and chasing delivery dates. This spring I finished an online course on sustainable sourcing, which has become a much bigger topic while I was away.",
+     "Childcare is arranged, including a plan for sick days."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Father returning after a year at home",
+    "level": "erfahren",
+    "position": "Architectural technician (full time, flexible hours)",
+    "to": {
+     "org": "Newman Architects",
+     "sal": "m",
+     "contact": "Newman",
+     "street": "15 Fishergate",
+     "city": "Preston PR1 3LJ"
+    },
+    "body": [
+     "while my wife finished her specialist medical training, I spent a year at home with our daughter. She has now started nursery, and I am ready to return.",
+     "I have ten years’ experience producing construction and detail drawings for residential and commercial buildings. During my leave I learned the latest version of our design software, which your advert says you are moving to.",
+     "Full time works for me if I can leave at three twice a week and make up the hours on other days."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Tom Kemp",
+     "40 Watling Street Road",
+     "Preston PR2 8BP"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a01",
+   "design": "classic",
+   "accent": 1,
+   "name": "Claire Lomax",
+   "title": "Buyer",
+   "street": "44 Garstang Road",
+   "city": "Preston PR1 1NA",
+   "exp": [
+    [
+     "09/2023",
+     "07/2026",
+     "Career break (parental leave)",
+     "",
+     "",
+     "- Online course in sustainable sourcing (2026)"
+    ],
+    [
+     "03/2017",
+     "08/2023",
+     "Buyer",
+     "Northwest Furniture Components",
+     "Blackburn",
+     "- Supplier selection and review\n- Price negotiation, framework agreements"
+    ]
+   ],
+   "edu": [
+    [
+     "2011",
+     "2014",
+     "BA Business Studies",
+     "University of Central Lancashire",
+     "Preston",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Supplier management",
+     5
+    ],
+    [
+     "Negotiation",
+     4
+    ],
+    [
+     "ERP systems",
+     4
+    ],
+    [
+     "Spreadsheets",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "A2"
+    ]
+   ],
+   "hobbies": "Walking, nursery parents’ committee"
+  },
+  "do": [
+   "List the break as its own CV entry.",
+   "State the hours you want.",
+   "Show how you kept up to date."
+  ],
+  "dont": [
+   "Apologise for the break.",
+   "Go into detail about childcare.",
+   "Leave part-time hours until the interview."
+  ],
+  "questions": [
+   "How have you kept up to date?",
+   "What hours are you looking for?",
+   "What has changed in your field?",
+   "How flexible are you with short-notice meetings?"
+  ],
+  "faq": [
+   {
+    "q": "How do I show a career break on my CV?",
+    "a": "As its own entry with dates, for example “Career break – parental leave”. Add any courses or volunteering underneath."
+   }
+  ]
+ }
+}

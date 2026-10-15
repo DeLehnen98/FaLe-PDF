@@ -10,6 +10,7 @@ const VENDOR = {
   pptxgenjs: ['/assets/wt/vendor/pptxgenjs/pptxgen.bundle.js'],
   office: ['/assets/wt/lib/conv-office-shim.js', '/assets/wt/lib/conv-domparse.js', '/assets/wt/lib/conv-office.js',
     '/assets/wt/lib/shared/office/vendor.js',
+    '/assets/wt/lib/shared/office/hfnorm.js',
     '/assets/wt/lib/shared/office/fonts.js',
     '/assets/wt/lib/shared/office/docstyles.js',
     '/assets/wt/lib/shared/office/docmodel.js',

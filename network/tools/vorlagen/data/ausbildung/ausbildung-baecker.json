@@ -1,0 +1,164 @@
+{
+ "id": "ausbildung-baecker",
+ "field": "ausbildung",
+ "name": "Ausbildung Bäcker/in",
+ "search": "ausbildung bäcker bäckerin backstube brot brötchen azubi lebensmittelhandwerk frühaufsteher bewerbung baecker",
+ "short": "Backstube statt Schulbank – für Frühaufsteher.",
+ "desc": "Bewerbung für die Ausbildung zum Bäcker / zur Bäckerin: Muster-Anschreiben für Schüler und Quereinsteigerin, Lebenslauf und Antworten auf typische Fragen zur Arbeitszeit.",
+ "intro": "In der Backstube beginnt der Tag, wenn andere schlafen. Dafür ist am Mittag Schluss. Bäckereien suchen Azubis, die früh aufstehen können, sauber arbeiten und Spaß daran haben, Teig mit den Händen zu formen. Wer schon zu Hause backt, hat einen guten Einstieg ins Anschreiben.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Frühes Aufstehen ohne Drama",
+  "Sauberkeit und Hygiene",
+  "Geschickte Hände",
+  "Interesse an Rohstoffen und Rezepten"
+ ],
+ "letters": [
+  {
+   "label": "Schüler, der zu Hause Sauerteig pflegt",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Bäcker",
+   "to": {
+    "org": "Bäckerei Hollmann",
+    "sal": "m",
+    "contact": "Hollmann",
+    "street": "Kirchstraße 4",
+    "city": "48653 Coesfeld"
+   },
+   "body": [
+    "in unserem Kühlschrank steht seit über einem Jahr ein Glas Sauerteig, den ich jeden Samstag füttere. Daraus backe ich Brot für die Familie und für zwei Nachbarn, die inzwischen fest damit rechnen. Ich möchte lernen, wie man das jeden Tag in großen Mengen und gleichbleibend gut schafft.",
+    "Den Hauptschulabschluss mache ich im Sommer an der Gesamtschule Coesfeld. Ihre Bäckerei kenne ich, seit ich klein bin, und ich weiß, dass Sie noch viel selbst machen, statt Teiglinge zu kaufen. Mein Praktikum habe ich bei einer Großbäckerei gemacht: interessant, aber ich möchte lieber in einen Handwerksbetrieb.",
+    "Mein Wecker klingelt schon jetzt um fünf, weil ich vor der Schule trainiere."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 9",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Quereinsteigerin aus dem Verkauf",
+   "level": "quereinstieg",
+   "position": "Auszubildende zur Bäckerin",
+   "to": {
+    "org": "Landbäckerei Overbeck",
+    "sal": "none",
+    "street": "Münsterstraße 51",
+    "city": "48727 Billerbeck"
+   },
+   "body": [
+    "hinter der Theke stehe ich seit drei Jahren als Bäckereifachverkäuferin. Ich verkaufe jeden Tag Brote, über die ich gern mehr wüsste: Warum reißt die Kruste bei diesem so schön auf, warum ist jenes nach zwei Tagen noch saftig? Die Antworten liegen in der Backstube, und dorthin möchte ich wechseln.",
+    "Meine Ausbildung als Fachverkäuferin habe ich mit 2,3 abgeschlossen. Ich kenne Hygieneregeln, Allergenkennzeichnung und die Wünsche der Kundschaft. Ab und zu durfte ich in der Backstube aushelfen, beim Abwiegen und Formen von Brötchen.",
+    "Ich bin 22 und kann früh anfangen. Ein Probetag ist jederzeit möglich, am liebsten an einem Freitag, wenn bei Ihnen viel los ist."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Svenja Terhorst",
+    "Darfelder Straße 3",
+    "48727 Billerbeck"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "compact",
+  "accent": 4,
+  "name": "Tim Gerdemann",
+  "title": "Schüler",
+  "street": "Bahnhofstraße 14",
+  "city": "48653 Coesfeld",
+  "exp": [
+   [
+    "04/2025",
+    "04/2025",
+    "Schülerpraktikum (2 Wochen)",
+    "Großbäckerei Münsterland",
+    "Dülmen",
+    "- Teig abwiegen, Bleche bestücken\n- Reinigung nach Hygieneplan"
+   ],
+   [
+    "2024",
+    "",
+    "Sauerteigbrot für Familie und Nachbarn (privat)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Hauptschulabschluss (voraussichtlich)",
+    "Gesamtschule Coesfeld",
+    "Coesfeld",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Brot backen",
+    3
+   ],
+   [
+    "Sauberkeit",
+    4
+   ],
+   [
+    "Frühes Aufstehen",
+    5
+   ],
+   [
+    "Ausdauer",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Backen, Leichtathletik"
+ },
+ "do": [
+  "Erzählen, was du schon backst.",
+  "Klar sagen, dass dir frühe Arbeitszeiten bewusst sind.",
+  "Den Betrieb kennen: Handwerk, Filialen, Spezialitäten."
+ ],
+ "dont": [
+  "Den Arbeitsbeginn im Gespräch als Überraschung behandeln.",
+  "Nur Kuchen erwähnen, wenn du dich als Bäcker bewirbst.",
+  "Allergien verschweigen, z. B. gegen Mehlstaub."
+ ],
+ "questions": [
+  "Wann stehen Sie normalerweise auf?",
+  "Was haben Sie zuletzt gebacken?",
+  "Wie wichtig ist Ihnen Hygiene?",
+  "Bäcker oder Konditor – warum Bäcker?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Ab wann darf ich als Azubi unter 18 in der Backstube anfangen?",
+   "a": "Für Jugendliche gilt das Jugendarbeitsschutzgesetz mit besonderen Regeln für Bäckereien. Der Betrieb muss sie einhalten; frag im Gespräch, wie die Arbeitszeiten für dich aussehen."
+  }
+ ],
+ "related": [
+  "ausbildung-konditor",
+  "baecker",
+  "verkaeuferin-baeckerei",
+  "ausbildung-koch"
+ ]
+}

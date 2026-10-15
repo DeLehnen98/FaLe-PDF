@@ -6,6 +6,7 @@ import { el, T, s, form, userError, ensureCss, isoDate } from '../lib/tpl-core.j
 import { letterPdf } from '../lib/tpl-pdf.js';
 import { missingWarning } from '../lib/unifont.js';
 import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS } from '../lib/tpl-letterui.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -45,7 +46,7 @@ const REQ = v => [{ ok: !!s(v.sName), de: 'deinen Namen', en: 'your name' }, { o
 export default {
   labels: { back_to_files: { de: 'Zurück zum Brief', en: 'Back to the letter' } },
   options: [],
-  mountStage(stage, state, ctx) { api = letterStage(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = letterStage(stage, state, ctx); briefVorlage('din-letter', 'letter', stage, state, ctx, () => { api = letterStage(stage, state, ctx); }); },
   status(values) {
     const v = values.letter || {};
     const miss = REQ(v).filter(r => !r.ok);

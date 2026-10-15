@@ -6,6 +6,7 @@ import { el, T, s, form, userError, ensureCss, isoDate, fmtDate, addDays, note }
 import { letterPdf } from '../lib/tpl-pdf.js';
 import { missingWarning } from '../lib/unifont.js';
 import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS } from '../lib/tpl-letterui.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -53,7 +54,7 @@ const REQ = v => [{ ok: !!s(v.sName), de: 'deinen Namen', en: 'your name' }, { o
 export default {
   labels: { back_to_files: { de: 'Zurück zum Widerruf', en: 'Back to the letter' } },
   options: [],
-  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); briefVorlage('withdrawal-letter', 'wd', stage, state, ctx, () => { api = stageFn(stage, state, ctx); }); },
   status(values) {
     const v = values.wd || {};
     const miss = REQ(v).filter(r => !r.ok);

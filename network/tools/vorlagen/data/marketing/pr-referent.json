@@ -1,0 +1,162 @@
+{
+ "id": "pr-referent",
+ "field": "marketing",
+ "name": "PR-Referent/in (Pressearbeit, Kommunikation)",
+ "search": "pr referent pr referentin pressereferent pressesprecher unternehmenskommunikation öffentlichkeitsarbeit kommunikation bewerbung",
+ "short": "Presse- und Öffentlichkeitsarbeit für Unternehmen, Verbände, Behörden.",
+ "desc": "Bewerbung als PR-Referent/in oder Pressereferent/in: Muster-Anschreiben für Journalistin im Seitenwechsel und PR-Berater aus der Agentur, mit Lebenslauf.",
+ "intro": "PR-Referenten schreiben Pressemitteilungen, pflegen Kontakte zu Medien, organisieren Termine, betreuen Social Media und beraten Führungskräfte in Kommunikationsfragen. Gefragt sind Schreibstärke, Netzwerk, Krisenfestigkeit und Verständnis für Themen des Arbeitgebers.",
+ "lookFor": [
+  "Studium oder Volontariat",
+  "Pressemitteilungen und Medienkontakte",
+  "Krisenkommunikation",
+  "Social Media und interne Kommunikation",
+  "Sicheres Auftreten"
+ ],
+ "letters": [
+  {
+   "label": "Journalistin wechselt die Seite",
+   "level": "quereinstieg",
+   "position": "Pressereferentin",
+   "to": {
+    "org": "Energieversorgung Kurpfalz AG",
+    "sal": "m",
+    "contact": "Wolff",
+    "street": "Luisenring 50",
+    "city": "68159 Mannheim"
+   },
+   "body": [
+    "aus der Wirtschaftsredaktion einer Regionalzeitung weiß ich nach acht Jahren, welche Pressemitteilungen gelesen und welche gelöscht werden. Die meisten scheitern am ersten Satz. Mein Ziel: die Seite wechseln und für einen Versorger kommunizieren, der in der Energiewende viel zu erklären hat.",
+    "Ich habe Energiethemen jahrelang journalistisch begleitet, kenne die Kolleginnen und Kollegen in den Redaktionen der Region und weiß, wie man komplizierte Tarifänderungen in drei Sätzen erklärt. Krisenkommunikation kenne ich von der Gegenseite, aus vielen Anrufen bei Pressestellen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Agenturberater will ins Unternehmen",
+   "level": "erfahren",
+   "position": "PR-Referent Unternehmenskommunikation",
+   "to": {
+    "org": "Medizintechnik Kurpfalz AG",
+    "sal": "none",
+    "street": "Speyerer Straße 10",
+    "city": "69115 Heidelberg"
+   },
+   "body": [
+    "bei einer PR-Agentur betreue ich seit fünf Jahren Kunden aus Gesundheit und Technik, von der Pressemitteilung bis zur Fachpressekonferenz. Ich möchte mich auf ein Unternehmen konzentrieren und dessen Themen über Jahre aufbauen.",
+    "Medizinprodukte sind kommunikativ anspruchsvoll, weil vieles rechtlich geprüft werden muss. Ich habe mit Regulatory-Abteilungen zusammengearbeitet und weiß, wie man trotzdem lesbare Texte schreibt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Philipp Wenzel",
+    "Rohrbacher Straße 60",
+    "69115 Heidelberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "classic",
+  "accent": 0,
+  "name": "Katharina Brenner",
+  "title": "Wirtschaftsredakteurin",
+  "street": "Augustaanlage 30",
+  "city": "68165 Mannheim",
+  "exp": [
+   [
+    "2018",
+    "",
+    "Redakteurin Wirtschaft",
+    "Kurpfälzer Tageblatt",
+    "Mannheim",
+    "- Energie, Industrie, Mittelstand\n- Interviews, Analysen, Kommentare\n- Moderation von Podiumsdiskussionen"
+   ],
+   [
+    "2016",
+    "2018",
+    "Volontärin",
+    "Kurpfälzer Tageblatt",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2016",
+    "Volkswirtschaftslehre (M. Sc.)",
+    "Universität Mannheim",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Texten",
+    5
+   ],
+   [
+    "Medienkontakte",
+    5
+   ],
+   [
+    "Energiewirtschaft",
+    4
+   ],
+   [
+    "Moderation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Tennis, Lesen"
+ },
+ "do": [
+  "Arbeitsproben (Pressemitteilungen, Artikel) beilegen.",
+  "Themenkenntnis der Branche zeigen.",
+  "Krisenerfahrung beschreiben."
+ ],
+ "dont": [
+  "PR mit Werbung verwechseln.",
+  "Vertrauliches aus Agentur oder Redaktion.",
+  "Lange Floskeln über „Storytelling“."
+ ],
+ "questions": [
+  "Schreiben Sie in fünf Minuten den Einstieg einer Pressemitteilung.",
+  "Wie reagieren Sie auf eine kritische Presseanfrage am Freitagabend?",
+  "Welche Journalisten sollten wir kennen?",
+  "Wie messen Sie den Erfolg von PR?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein PR-Volontariat?",
+   "a": "Nicht zwingend. Viele kommen aus dem Journalismus, aus Agenturen oder über ein PR-Volontariat. Arbeitsproben und Medienverständnis zählen mehr als der Weg."
+  }
+ ],
+ "related": [
+  "volontariat",
+  "texter",
+  "marketing-manager",
+  "content-manager"
+ ]
+}

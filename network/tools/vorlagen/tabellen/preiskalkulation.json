@@ -1,0 +1,63 @@
+{
+ "id": "preiskalkulation",
+ "slug": "preiskalkulation",
+ "cat": "Business",
+ "name": "Preisrechner (Kalkulation)",
+ "short": "Vom Material über Zuschläge zum Netto- und Bruttopreis",
+ "desc": "Preiskalkulation als Excel-Vorlage (XLSX): Material, Arbeitszeit, Gemeinkosten- und Gewinnzuschlag eintragen – Netto, Brutto, Marge und Rückwärtsrechnung inklusive.",
+ "search": "kalkulation zuschlag",
+ "intro": "Die Vorlage rechnet eine Zuschlagskalkulation, wie sie Handwerk und kleine Betriebe nutzen: Material und Lohn ergeben die Einzelkosten, darauf kommen Gemeinkosten und Gewinn, dann die Umsatzsteuer. Im unteren Teil rechnest du rückwärts: Was darf ein Auftrag kosten, wenn der Marktpreis feststeht?",
+ "uses": [
+  "Angebote im Handwerk oder für Dienstleistungen kalkulieren",
+  "Prüfen, ob ein Marktpreis die eigenen Kosten deckt",
+  "Einen runden Verkaufspreis finden"
+ ],
+ "cols": [
+  [
+   "Position",
+   "Die Rechenschritte von oben nach unten: Materialkosten, Lohnkosten (Arbeitszeit mal Stundensatz), Fremdleistungen, Einzelkosten, Zuschläge, Netto- und Bruttopreis."
+  ],
+  [
+   "Eingabe",
+   "Gelbe Felder: Beträge, Stunden und Prozentsätze. Gemeinkostenzuschlag ist der Anteil für Miete, Fahrzeug, Versicherungen und Verwaltung; Gewinnzuschlag ist dein Gewinn."
+  ],
+  [
+   "Betrag",
+   "Das Ergebnis jeder Zeile. Einzelkosten = Material + Lohn + Fremdleistungen; Selbstkosten = Einzelkosten + Gemeinkosten; Netto = Selbstkosten + Gewinn; Brutto = Netto + Umsatzsteuer. OBERGRENZE rundet den Bruttopreis auf volle 5 € (oder einen anderen Schritt) auf."
+  ],
+  [
+   "Rückwärts: Was darf es kosten?",
+   "Vom Zielpreis brutto zurück: Umsatzsteuer, Gewinn und Gemeinkosten werden herausgerechnet. Übrig bleiben die höchstens erlaubten Einzelkosten und wie viele Arbeitsstunden darin Platz haben."
+  ]
+ ],
+ "tips": [
+  "„Marge netto beim gerundeten Preis“ zeigt, was nach dem Runden wirklich als Gewinn bleibt. Rot heißt: Der gerundete Preis deckt die Selbstkosten nicht."
+ ],
+ "faq": [
+  {
+   "q": "Woher weiß ich meinen Gemeinkostenzuschlag?",
+   "a": "Teil die Gemeinkosten eines Jahres (alles, was nicht direkt einem Auftrag zuzuordnen ist) durch die Einzelkosten aller Aufträge. Wer noch keine Zahlen hat, startet mit einer Schätzung und prüft sie nach ein paar Monaten."
+  }
+ ],
+ "related": [
+  "break-even",
+  "angebotsvergleich",
+  "euer"
+ ],
+ "en": {
+  "slug": "price-calculator",
+  "name": "Price calculator (cost-plus)",
+  "short": "From materials and labour via mark-ups to net and gross price",
+  "desc": "Price calculator spreadsheet (XLSX): enter materials, labour time, overhead and profit mark-up – net and gross price, margin and a backwards calculation included.",
+  "intro": "A cost-plus calculation as used by trades and small businesses: materials and labour give direct costs, overhead and profit are added, then VAT. The lower part works backwards from a market price.",
+  "inside": [
+   "Labour cost = hours × rate",
+   "Overhead and profit mark-ups",
+   "Net, VAT, gross and rounded price",
+   "Backwards: maximum costs and hours for a target price"
+  ],
+  "uses": [
+   "Quoting jobs in trades and services"
+  ]
+ }
+}

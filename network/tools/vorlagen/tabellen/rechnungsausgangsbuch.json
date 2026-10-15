@@ -1,0 +1,96 @@
+{
+ "id": "rechnungsausgangsbuch",
+ "slug": "rechnungsausgangsbuch",
+ "cat": "Business",
+ "name": "Rechnungsausgangsbuch",
+ "short": "Rechnungen mit Umsatzsteuer, Fälligkeit und Zahlungsstatus",
+ "desc": "Rechnungsausgangsbuch als Excel-Vorlage (XLSX): Rechnungen mit Netto, Umsatzsteuer und Brutto erfassen, Fälligkeit und Status automatisch – offene Beträge im Blick.",
+ "search": "",
+ "intro": "Für Selbstständige und kleine Firmen: Jede ausgestellte Rechnung bekommt eine Zeile. Rechnungsnummer, Umsatzsteuer, Brutto und Fälligkeit rechnet die Vorlage; sobald du das Zahlungsdatum einträgst, springt der Status auf „bezahlt“.",
+ "uses": [
+  "Überblick über alle ausgestellten Rechnungen",
+  "Offene und überfällige Rechnungen sofort sehen",
+  "Umsatz und Umsatzsteuer für die Voranmeldung zusammenzählen"
+ ],
+ "cols": [
+  [
+   "Rechnungsnr.",
+   "Wird aus Jahr und laufender Zeile gebildet, z. B. RE-2026-001. Du kannst auch eigene Nummern eintragen."
+  ],
+  [
+   "Datum",
+   "Rechnungsdatum."
+  ],
+  [
+   "Kunde",
+   "An wen die Rechnung ging."
+  ],
+  [
+   "Leistung",
+   "Kurz, wofür."
+  ],
+  [
+   "Netto",
+   "Rechnungsbetrag ohne Umsatzsteuer."
+  ],
+  [
+   "USt-Satz",
+   "19 %, 7 % oder 0 % (z. B. als Kleinunternehmer)."
+  ],
+  [
+   "USt",
+   "Netto mal Steuersatz, auf Cent gerundet."
+  ],
+  [
+   "Brutto",
+   "Netto plus Umsatzsteuer."
+  ],
+  [
+   "Fällig am",
+   "Rechnungsdatum plus Zahlungsziel aus dem Kopf."
+  ],
+  [
+   "Bezahlt am",
+   "Hier trägst du das Datum des Zahlungseingangs ein."
+  ],
+  [
+   "Status",
+   "Bezahlt, sobald ein Zahlungsdatum da ist; sonst „überfällig“, wenn heute nach der Fälligkeit liegt, ansonsten „offen“."
+  ],
+  [
+   "Auswertung",
+   "Umsatz netto, Umsatzsteuer, Umsatz brutto sowie offene und überfällige Beträge – SUMMEWENN nach Status."
+  ]
+ ],
+ "tips": [
+  "Für Mahnungen gibt es die Rechnungs-Mahnliste mit Mahnstufen; eine einzelne Mahnung schreibst du mit dem Werkzeug „Mahnung schreiben“."
+ ],
+ "faq": [
+  {
+   "q": "Ersetzt das eine Buchhaltung?",
+   "a": "Nein. Die Vorlage hilft beim Überblick. Für Steuererklärung und Voranmeldung brauchst du deine vollständigen Belege; im Zweifel hilft eine Steuerberatung."
+  }
+ ],
+ "related": [
+  "mahnliste",
+  "euer",
+  "kassenbuch"
+ ],
+ "en": {
+  "slug": "invoice-register",
+  "name": "Invoice register",
+  "short": "Invoices with VAT, due dates and payment status",
+  "desc": "Invoice register spreadsheet (XLSX): record invoices with net, VAT and gross, get due dates and payment status automatically and keep unpaid amounts in view.",
+  "intro": "One row per invoice you send. Invoice number, VAT, gross amount and due date are calculated; as soon as you enter the payment date the status changes to paid.",
+  "inside": [
+   "Automatic invoice numbers (RE-year-number)",
+   "VAT and gross amount per invoice",
+   "Status: open / overdue / paid",
+   "Totals and unpaid / overdue amounts"
+  ],
+  "uses": [
+   "Freelancers and small businesses",
+   "Seeing overdue invoices at a glance"
+  ]
+ }
+}

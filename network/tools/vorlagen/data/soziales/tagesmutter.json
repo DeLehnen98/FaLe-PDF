@@ -1,0 +1,181 @@
+{
+ "id": "tagesmutter",
+ "field": "soziales",
+ "name": "Tagesmutter / Tagesvater (Kindertagespflege)",
+ "search": "tagesmutter tagesvater kindertagespflege tagespflegeperson großtagespflege pflegeerlaubnis jugendamt bewerbung",
+ "short": "Kindertagespflege – angestellt in der Großtagespflege oder als Vertretung.",
+ "desc": "Bewerbung als Tagesmutter oder Tagesvater: Muster-Anschreiben für Großtagespflege und Vertretungsmodell, mit Lebenslauf und Infos zur Pflegeerlaubnis.",
+ "intro": "Tagesmütter und Tagesväter betreuen kleine Kinder in familiärem Rahmen, oft selbstständig, manchmal angestellt in einer Großtagespflegestelle oder im Vertretungsmodell einer Kommune. Für die Tätigkeit brauchst du in der Regel eine Pflegeerlaubnis vom Jugendamt und eine Qualifizierung.",
+ "lookFor": [
+  "Qualifizierung in der Kindertagespflege",
+  "Pflegeerlaubnis des Jugendamts",
+  "Erfahrung mit Kindern unter drei",
+  "Erste Hilfe am Kind",
+  "Verlässlichkeit und Absprachen mit Eltern"
+ ],
+ "letters": [
+  {
+   "label": "Tagesmutter für eine Großtagespflege",
+   "level": "erfahren",
+   "position": "Tagespflegeperson (angestellt, Großtagespflege)",
+   "to": {
+    "org": "Großtagespflege Kleine Füße",
+    "sal": "f",
+    "contact": "Behrens",
+    "street": "Lindenweg 8",
+    "city": "24534 Neumünster"
+   },
+   "body": [
+    "fünf Kinder unter drei, ein Garten mit Sandkasten und ein Tagesablauf, auf den sich alle verlassen können: So habe ich sechs Jahre lang als selbstständige Tagesmutter gearbeitet. Jetzt möchte ich nicht mehr allein sein, sondern im Team mit zwei Kolleginnen arbeiten.",
+    "Meine Pflegeerlaubnis und die Qualifizierung sind aktuell, Erste Hilfe am Kind frische ich alle zwei Jahre auf. Eltern schätzen an mir, dass ich jeden Tag ein paar Sätze über ihr Kind aufschreibe, nicht nur, ob es gegessen hat."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Pflegeerlaubnis",
+    "Qualifizierungsnachweis",
+    "Erste-Hilfe-Nachweis"
+   ]
+  },
+  {
+   "label": "Vertretung im Tagespflege-Modell der Stadt",
+   "level": "quereinstieg",
+   "position": "Vertretungstagespflegeperson",
+   "to": {
+    "org": "Stadt Neumünster – Fachdienst Kindertagespflege",
+    "sal": "none",
+    "street": "Am Teich 9",
+    "city": "24534 Neumünster"
+   },
+   "body": [
+    "wenn eine Tagesmutter krank wird, stehen fünf Familien ohne Betreuung da. Ihr Vertretungsmodell löst das, und ich möchte dazugehören.",
+    "Als Erzieherin habe ich zehn Jahre in einer Krippe gearbeitet und kenne viele Familien in Neumünster. Die Qualifizierung zur Kindertagespflege habe ich im Frühjahr abgeschlossen. Wechselnde Gruppen und kurzfristige Einsätze schrecken mich nicht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde Erzieherin",
+    "Qualifizierungsnachweis"
+   ],
+   "from": [
+    "Kerstin Lange",
+    "Kieler Straße 90",
+    "24534 Neumünster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "compact",
+  "accent": 1,
+  "name": "Sabine Thiessen",
+  "title": "Tagesmutter (Kindertagespflege)",
+  "street": "Lindenweg 3",
+  "city": "24534 Neumünster",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Selbstständige Tagesmutter",
+    "",
+    "Neumünster",
+    "- Betreuung von fünf Kindern unter drei\n- Tagesberichte für Eltern\n- Kooperation mit dem Fachdienst"
+   ],
+   [
+    "2010",
+    "2019",
+    "Sachbearbeiterin",
+    "Versicherungsagentur Nord",
+    "Neumünster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "2020",
+    "Qualifizierung Kindertagespflege",
+    "Familienbildungsstätte",
+    "Neumünster",
+    ""
+   ],
+   [
+    "2006",
+    "2009",
+    "Ausbildung Kauffrau für Bürokommunikation",
+    "Versicherungsagentur Nord",
+    "Neumünster",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste Hilfe am Kind (Auffrischung)",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kleinkindbetreuung",
+    5
+   ],
+   [
+    "Elternkommunikation",
+    5
+   ],
+   [
+    "Tagesstruktur",
+    5
+   ],
+   [
+    "Erste Hilfe am Kind",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Gärtnern, Basteln"
+ },
+ "do": [
+  "Pflegeerlaubnis und Qualifizierung nennen.",
+  "Tagesablauf und Elternkommunikation beschreiben.",
+  "Arbeitsmodell (angestellt, Vertretung) klarmachen."
+ ],
+ "dont": [
+  "Erlaubnis und Qualifizierung offenlassen.",
+  "Eltern-Interna erzählen.",
+  "Räume unbeschrieben lassen, wenn sie zählen."
+ ],
+ "questions": [
+  "Wie sieht ein Tag bei Ihnen aus?",
+  "Wie gestalten Sie die Eingewöhnung?",
+  "Was tun Sie, wenn ein Kind krank wird?",
+  "Wie halten Sie Eltern auf dem Laufenden?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Pflegeerlaubnis?",
+   "a": "Wer Kinder außerhalb ihres Haushalts mehr als 15 Stunden pro Woche gegen Entgelt länger als drei Monate betreut, braucht nach dem Sozialgesetzbuch eine Pflegeerlaubnis des Jugendamts. Die Voraussetzungen erfährst du dort."
+  },
+  {
+   "q": "Brauche ich ein Führungszeugnis?",
+   "a": "Für die Arbeit mit Kindern verlangen Träger ein erweitertes Führungszeugnis. Du beantragst es beim Bürgeramt oder online; mit einer Bescheinigung des Trägers ist es oft kostenlos."
+  }
+ ],
+ "related": [
+  "kinderpflegerin",
+  "erzieherin",
+  "babysitter",
+  "kita-leitung"
+ ]
+}

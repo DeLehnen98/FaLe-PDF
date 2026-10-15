@@ -1,0 +1,167 @@
+{
+ "id": "kita-leitung",
+ "field": "soziales",
+ "name": "Kita-Leitung",
+ "search": "kita leitung kitaleitung einrichtungsleitung kindergartenleitung stellvertretende leitung erzieherin führung bewerbung",
+ "short": "Führung einer Kita – pädagogisch und organisatorisch.",
+ "desc": "Bewerbung als Kita-Leitung: Muster-Anschreiben für stellvertretende Leitung und Gruppenleiter mit Studium, Lebenslauf und Fragen zu Konzept, Team und Eltern.",
+ "intro": "Kita-Leitungen verantworten Pädagogik, Team, Elternarbeit, Belegung, Budget und Zusammenarbeit mit Träger und Jugendamt. Träger wollen wissen, wie du führst, welches Konzept du vertrittst und wie du mit Personalmangel umgehst. Nenn Größe der Einrichtung und Teams.",
+ "lookFor": [
+  "Staatlich anerkannte Erzieher/in oder Studium (z. B. Kindheitspädagogik)",
+  "Leitungserfahrung (Stellvertretung, Gruppenleitung)",
+  "Konzeptarbeit und Qualitätsentwicklung",
+  "Personalführung und Dienstplanung",
+  "Elternarbeit und Kooperationen"
+ ],
+ "letters": [
+  {
+   "label": "Stellvertretende Leitung übernimmt eine Kita",
+   "level": "erfahren",
+   "position": "Leitung Kindertagesstätte (85 Plätze)",
+   "to": {
+    "org": "Kita gGmbH Westfalen",
+    "sal": "m",
+    "contact": "Holtkamp",
+    "street": "Kirchstraße 4",
+    "city": "48143 Münster"
+   },
+   "body": [
+    "als stellvertretende Leitung einer Kita mit 70 Plätzen habe ich in vier Jahren gemerkt, dass mich Führung erfüllt. Ich habe in dieser Zeit die Dienstplanung übernommen, das Beschwerdeverfahren für Kinder eingeführt und mit dem Team das Konzept auf offene Arbeit umgestellt.",
+    "Ich bin staatlich anerkannte Erzieherin und habe berufsbegleitend die Weiterbildung zur Kita-Leitung abgeschlossen. Ihre neue Kita mit Familienzentrum reizt mich besonders: Ich möchte ein Team aufbauen, das von Anfang an eine gemeinsame Haltung entwickelt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde",
+    "Weiterbildungszertifikat",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Kindheitspädagoge mit Gruppenleitung",
+   "level": "erfahren",
+   "position": "Kita-Leitung (Kindheitspädagoge B. A.)",
+   "to": {
+    "org": "Stadt Bielefeld – Amt für Jugend und Familie",
+    "sal": "none",
+    "street": "Am Bachlauf 30",
+    "city": "33602 Bielefeld"
+   },
+   "body": [
+    "ein Waldtag pro Woche, ein Kinderparlament, Elterncafés auf Türkisch und Arabisch: Diese Dinge habe ich in meiner Gruppe und später im ganzen Haus angestoßen. Als Gruppenleiter mit Bachelor in Kindheitspädagogik möchte ich jetzt eine Einrichtung leiten.",
+    "Die Verantwortung für Personal und Budget wäre neu für mich; dafür habe ich einen Leitungskurs belegt und begleite unsere Leitung seit einem Jahr bei Belegungsplanung und Gesprächen mit dem Träger."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Yunus Kaplan",
+    "Jöllenbecker Straße 70",
+    "33613 Bielefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "classic",
+  "accent": 1,
+  "name": "Andrea Lohmann",
+  "title": "Staatlich anerkannte Erzieherin, stellv. Kita-Leitung",
+  "street": "Wolbecker Straße 100",
+  "city": "48155 Münster",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Stellvertretende Leitung",
+    "Kita Regenbogen",
+    "Münster",
+    "- Kita mit 70 Plätzen, 14 Mitarbeitende\n- Dienstplanung, Beschwerdeverfahren für Kinder\n- Umstellung auf offene Arbeit"
+   ],
+   [
+    "2014",
+    "2022",
+    "Gruppenleitung",
+    "Kita Regenbogen",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "2024",
+    "Weiterbildung Kita-Leitung",
+    "Bildungsinstitut Münster",
+    "Münster",
+    ""
+   ],
+   [
+    "2010",
+    "2013",
+    "Ausbildung Erzieherin",
+    "Fachschule für Sozialpädagogik",
+    "Münster",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Teamführung",
+    4
+   ],
+   [
+    "Konzeptarbeit",
+    5
+   ],
+   [
+    "Elternarbeit",
+    5
+   ],
+   [
+    "Dienstplanung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Chor"
+ },
+ "do": [
+  "Größe der Einrichtung und des Teams nennen.",
+  "Konkrete Entwicklungen beschreiben.",
+  "Haltung und Konzept zeigen."
+ ],
+ "dont": [
+  "Nur pädagogische Erfahrung, keine Organisation.",
+  "Den aktuellen Träger kritisieren.",
+  "Personalmangel als Ausrede."
+ ],
+ "questions": [
+  "Wie führen Sie ein Team mit sehr unterschiedlichen Haltungen?",
+  "Wie gehen Sie mit Personalausfall um?",
+  "Wie arbeiten Sie mit Eltern, die sich beschweren?",
+  "Welche Konzeption vertreten Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Führungszeugnis?",
+   "a": "Für die Arbeit mit Kindern verlangen Träger ein erweitertes Führungszeugnis. Du beantragst es beim Bürgeramt oder online; mit einer Bescheinigung des Trägers ist es oft kostenlos."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "teamleiter",
+  "sozialarbeiter",
+  "kinderpflegerin"
+ ]
+}

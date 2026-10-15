@@ -1,0 +1,84 @@
+{
+ "id": "stundenzettel",
+ "slug": "stundenzettel",
+ "cat": "Arbeit",
+ "name": "Arbeitszeiterfassung",
+ "short": "Stundenzettel für einen Monat mit Soll, Ist und Überstunden",
+ "desc": "Stundenzettel als Excel-Vorlage (XLSX): Beginn, Ende und Pause eintragen – Ist-Stunden, Soll, Überstunden und Monatssumme rechnen sich automatisch.",
+ "search": "",
+ "intro": "Ein Monatsblatt für die eigene Arbeitszeit. Du wählst oben den Monat, die Tage füllen sich selbst. Pro Tag trägst du Beginn, Ende und Pause ein; die Vorlage rechnet Ist-Stunden und die Differenz zum Soll – auch über Mitternacht.",
+ "uses": [
+  "Minijob oder Teilzeit: Stunden nachweisen",
+  "Überstunden im Blick behalten",
+  "Gleitzeit für dich selbst dokumentieren"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Erster Tag kommt aus dem Monat oben; jede weitere Zeile nimmt den nächsten Tag, bis der Monat zu Ende ist."
+  ],
+  [
+   "Tag",
+   "Der Wochentag zum Datum, damit Wochenenden auffallen."
+  ],
+  [
+   "Beginn",
+   "Arbeitsbeginn als Uhrzeit, z. B. 08:30."
+  ],
+  [
+   "Ende",
+   "Arbeitsende als Uhrzeit."
+  ],
+  [
+   "Pause (Min.)",
+   "Pausen in Minuten. Sie werden von der Arbeitszeit abgezogen."
+  ],
+  [
+   "Ist (Std.)",
+   "(Ende − Beginn) in Stunden minus Pause. REST(…;1) sorgt dafür, dass auch eine Nachtschicht über Mitternacht richtig zählt."
+  ],
+  [
+   "Soll",
+   "Die Soll-Stunden pro Tag aus dem Kopf; an Samstagen und Sonntagen ist das Soll 0."
+  ],
+  [
+   "Differenz",
+   "Ist minus Soll – positive Werte sind Überstunden, negative Minusstunden."
+  ],
+  [
+   "Tätigkeit / Notiz",
+   "Woran du gearbeitet hast oder „Urlaub“, „krank“."
+  ]
+ ],
+ "tips": [
+  "Die Summenzeile unten zeigt Monatssummen und wie viele Tage du gearbeitet hast."
+ ],
+ "faq": [
+  {
+   "q": "Reicht dieser Stundenzettel als offizieller Nachweis?",
+   "a": "Für viele Fälle ja – etwa als Aufzeichnung der Arbeitszeit im Minijob. Manche Arbeitgeber haben aber ein eigenes System oder Formular. Frag im Zweifel nach, welche Form verlangt wird."
+  }
+ ],
+ "related": [
+  "projektzeiten",
+  "urlaubsplaner",
+  "schichtplan"
+ ],
+ "en": {
+  "slug": "timesheet",
+  "name": "Timesheet",
+  "short": "Monthly timesheet with target hours and overtime",
+  "desc": "Monthly timesheet template (XLSX): enter start, end and break – actual hours, target hours, overtime and monthly totals are calculated automatically.",
+  "intro": "Pick the month and the days fill in by themselves. Enter start, end and break per day; the sheet calculates actual hours and the difference to your target, even across midnight.",
+  "inside": [
+   "Dates and weekdays for the chosen month",
+   "Hours = end − start − break (works over midnight)",
+   "Target hours per weekday, overtime per day",
+   "Monthly totals"
+  ],
+  "uses": [
+   "Recording hours in a part-time job",
+   "Keeping track of overtime"
+  ]
+ }
+}

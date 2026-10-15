@@ -1,0 +1,196 @@
+{
+ "id": "quereinstieg-oeffentlicher-dienst",
+ "field": "oeffentlich",
+ "name": "Quereinstieg in den öffentlichen Dienst",
+ "search": "quereinstieg öffentlicher dienst verwaltung tvöd tv-l quereinsteiger behörde kommune verwaltungslehrgang bewerbung",
+ "short": "Aus der Privatwirtschaft in Stadt, Land oder Bund.",
+ "desc": "Quereinstieg in den öffentlichen Dienst: Muster-Anschreiben für Bauingenieur, IT-Fachfrau und Kaufmann, mit Lebenslauf und Tipps zu Tarif und Laufbahn.",
+ "intro": "Der öffentliche Dienst sucht in vielen Bereichen Fachleute aus der Privatwirtschaft: Bau, IT, Finanzen, Soziales, Technik. Als Tarifbeschäftigte nach TVöD oder TV-L kannst du ohne Verwaltungsausbildung einsteigen; berufsbegleitend gibt es Lehrgänge. Achte auf das Anforderungsprofil, Fristen und die Unterlagen, die verlangt werden.",
+ "lookFor": [
+  "Abschluss passend zum Anforderungsprofil",
+  "Berufserfahrung im Fachgebiet",
+  "Interesse an Verwaltungsabläufen",
+  "Bereitschaft zu Lehrgängen",
+  "Vollständige Unterlagen und Einhaltung der Frist"
+ ],
+ "letters": [
+  {
+   "label": "Bauingenieur aus dem Ingenieurbüro ins Bauamt",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiter Hochbau (Bauamt)",
+   "to": {
+    "org": "Stadt Paderborn – Amt für Gebäudemanagement",
+    "sal": "none",
+    "street": "Rathausgasse 11",
+    "city": "33098 Paderborn"
+   },
+   "body": [
+    "Schulen, Kitas und Feuerwachen für Kommunen habe ich zehn Jahre lang in einem Ingenieurbüro geplant. Jetzt möchte ich auf die Seite des Bauherrn wechseln und die Gebäude betreuen, die ich bisher nur bis zur Übergabe gesehen habe.",
+    "Ich bin Bauingenieur (M. Eng.) und kenne die Vergabe nach VOB und das Zusammenspiel mit Fachplanern. Haushaltsrecht und Verwaltungsabläufe sind mir aus Sicht des Auftragnehmers vertraut, die Innensicht lerne ich gern. Ein Verwaltungslehrgang begleitend wäre für mich selbstverständlich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "IT-Fachfrau wechselt zum Land",
+   "level": "quereinstieg",
+   "position": "IT-Sachbearbeiterin (TV-L)",
+   "to": {
+    "org": "Landesamt für digitale Verwaltung",
+    "sal": "m",
+    "contact": "Schröder",
+    "street": "Am Hafen 51",
+    "city": "40476 Düsseldorf"
+   },
+   "body": [
+    "sieben Jahre IT bei einem Versicherer haben mir viel beigebracht, nur nicht, warum ich morgens aufstehe. Die Digitalisierung von Verwaltungsleistungen ist eine Aufgabe, bei der das Ergebnis Millionen Menschen betrifft.",
+    "Ich habe Projekte zur Einführung von Fachanwendungen geleitet, Schnittstellen spezifiziert und Fachbereiche geschult. Ich weiß, dass Abläufe im öffentlichen Dienst eigene Regeln haben und Geduld verlangen, und ich bringe beides mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Svenja Brandt",
+    "Kaiserswerther Straße 80",
+    "40477 Düsseldorf"
+   ]
+  },
+  {
+   "label": "Kaufmann ins Ordnungsamt",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiter Gewerbeangelegenheiten (Ordnungsamt)",
+   "to": {
+    "org": "Stadt Gütersloh – Fachbereich Ordnung",
+    "sal": "f",
+    "contact": "Pohlmann",
+    "street": "Am Rathaus 2",
+    "city": "33330 Gütersloh"
+   },
+   "body": [
+    "als Kaufmann im Einzelhandel habe ich selbst eine Filiale angemeldet, Genehmigungen für den Außenverkauf eingeholt und mit dem Ordnungsamt über Ladenöffnungen an Sonntagen gesprochen. Ich weiß also, wie sich Verwaltung von außen anfühlt, und möchte jetzt dazu beitragen, dass es sich für Gewerbetreibende besser anfühlt.",
+    "Gewerbeanmeldungen, Gaststättenerlaubnisse und Marktgenehmigungen sind mir als Kunde vertraut. Den Verwaltungslehrgang I würde ich gern bald beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Ralf Kühne",
+    "Kökerstraße 30",
+    "33330 Gütersloh"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 0,
+  "name": "Thomas Brenken",
+  "title": "Bauingenieur (M. Eng.)",
+  "street": "Detmolder Straße 50",
+  "city": "33102 Paderborn",
+  "exp": [
+   [
+    "2016",
+    "",
+    "Projektingenieur Hochbau",
+    "Ingenieurbüro Lippe-Ems",
+    "Paderborn",
+    "- Planung von Schulen, Kitas, Feuerwachen für Kommunen\n- Vergabe nach VOB, Kostenverfolgung\n- Bauüberwachung"
+   ],
+   [
+    "2014",
+    "2016",
+    "Junior-Ingenieur",
+    "Planungsgruppe Ostwestfalen",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2014",
+    "Bauingenieurwesen (M. Eng.)",
+    "Technische Hochschule Ostwestfalen-Lippe",
+    "Detmold",
+    ""
+   ],
+   [
+    "2009",
+    "2012",
+    "Bauingenieurwesen (B. Eng.)",
+    "Technische Hochschule Ostwestfalen-Lippe",
+    "Detmold",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Hochbauplanung",
+    5
+   ],
+   [
+    "VOB-Vergabe",
+    4
+   ],
+   [
+    "Kostenkontrolle",
+    4
+   ],
+   [
+    "Bauüberwachung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Radfahren, Fußballtrainer"
+ },
+ "do": [
+  "Anforderungsprofil Punkt für Punkt erfüllen.",
+  "Fachwissen aus der Privatwirtschaft als Gewinn darstellen.",
+  "Bereitschaft zu Lehrgängen nennen."
+ ],
+ "dont": [
+  "Sicherheit als einziges Motiv.",
+  "Frist oder geforderte Unterlagen übersehen.",
+  "Die Verwaltung belächeln."
+ ],
+ "questions": [
+  "Warum wechseln Sie in den öffentlichen Dienst?",
+  "Was wissen Sie über unsere Behörde?",
+  "Wie gehen Sie mit langen Entscheidungswegen um?",
+  "Welche Erfahrung bringen Sie mit, die uns fehlt?"
+ ],
+ "faq": [
+  {
+   "q": "Werde ich Beamter?",
+   "a": "Als Quereinsteiger bist du meist Tarifbeschäftigte/r nach TVöD oder TV-L. Eine Verbeamtung ist in manchen Bereichen später möglich, hängt aber von Laufbahnrecht, Alter und Qualifikation ab."
+  },
+  {
+   "q": "Wie läuft die Auswahl ab?",
+   "a": "Nach Fristende werden Bewerbungen mit dem Anforderungsprofil abgeglichen. Danach folgen strukturierte Interviews, manchmal mit Arbeitsprobe. Die Gleichstellungsbeauftragte und der Personalrat sind oft beteiligt."
+  }
+ ],
+ "related": [
+  "verwaltungsfachangestellte",
+  "bewerbung-50-plus",
+  "arbeitsvermittler",
+  "quereinstieg-buero"
+ ]
+}

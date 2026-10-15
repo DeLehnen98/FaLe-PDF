@@ -1,0 +1,164 @@
+{
+ "id": "stellvertretende-filialleitung",
+ "field": "handel",
+ "name": "Stellvertretende Filialleitung",
+ "search": "stellvertretende filialleitung stellvertretender filialleiter erstkraft marktleitung stellvertretung einzelhandel bewerbung",
+ "short": "Der nächste Schritt nach dem Verkauf – Verantwortung im Markt.",
+ "desc": "Bewerbung als stellvertretende Filialleitung im Einzelhandel: Muster-Anschreiben für Erstkraft, Kaufmann im Einzelhandel und Wechslerin aus der Gastronomie, mit Lebenslauf.",
+ "intro": "Als Stellvertretung der Filialleitung bist du für Schichtpläne, Warenfluss, Kasse und Team mitverantwortlich und leitest den Laden, wenn die Chefin nicht da ist. Unternehmen suchen Leute, die schon im Verkauf Verantwortung übernommen haben und mit Kennzahlen umgehen können.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung im Handel oder Erfahrung",
+  "Erste Führungserfahrung (Erstkraft, Azubis)",
+  "Kennzahlen: Umsatz, Inventur, Personal",
+  "Belastbarkeit und Flexibilität",
+  "Freundlicher, klarer Ton im Team"
+ ],
+ "letters": [
+  {
+   "label": "Erstkraft im Drogeriemarkt",
+   "level": "erfahren",
+   "position": "Stellvertretende Filialleiterin",
+   "to": {
+    "org": "Drogeriemarkt am Kennedyplatz",
+    "sal": "m",
+    "contact": "Lehmann",
+    "street": "Bahnhofstraße 15",
+    "city": "45127 Essen"
+   },
+   "body": [
+    "wenn unsere Filialleiterin im Urlaub ist, führe ich die Filiale mit neun Mitarbeitenden allein. Schichtpläne, Bestellungen, Kassenabrechnung und die Frage, wer am Samstag für die kranke Kollegin einspringt, kenne ich also schon. Jetzt möchte ich offiziell Verantwortung übernehmen.",
+    "Kauffrau im Einzelhandel bin ich seit sechs Jahren, seit zwei Jahren Erstkraft. Ich betreue unsere drei Azubis und habe die letzte Inventur mit einer Differenz unter dem Bezirksdurchschnitt abgeschlossen. Der Ausbilderschein ist vorhanden.",
+    "Mein Ziel ist, in einigen Jahren eine eigene Filiale zu führen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Ausbildereignung"
+   ]
+  },
+  {
+   "label": "Schichtleiter aus der Systemgastronomie",
+   "level": "quereinstieg",
+   "position": "Stellvertretender Marktleiter Lebensmittel",
+   "to": {
+    "org": "Frischemarkt Rüttenscheid",
+    "sal": "none",
+    "street": "Rüttenscheider Straße 120",
+    "city": "45131 Essen"
+   },
+   "body": [
+    "in einem Schnellrestaurant mit 40 Mitarbeitenden habe ich vier Jahre lang Schichten geleitet, an manchen Tagen mit 800 Bestellungen. Personalplanung, Warenbestellung, Hygiene und Kassenabschluss gehören dort zum Alltag. Den Einzelhandel möchte ich als nächstes kennenlernen.",
+    "Frische Ware, Kühlkette, Abschriften und Inventur sind mir aus der Gastronomie vertraut, das Sortiment eines Supermarkts lerne ich gern. Ich bin 29, habe ein Fachabitur und eine Weiterbildung zur Schichtführung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Kevin Owusu",
+    "Altendorfer Straße 80",
+    "45143 Essen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "classic",
+  "accent": 1,
+  "name": "Fatma Yıldız",
+  "title": "Kauffrau im Einzelhandel, Erstkraft",
+  "street": "Viehofer Straße 30",
+  "city": "45127 Essen",
+  "exp": [
+   [
+    "2020",
+    "",
+    "Verkäuferin, seit 2024 Erstkraft",
+    "Drogeriemarkt Essen-Mitte",
+    "Essen",
+    "- Filialvertretung bei 9 Mitarbeitenden\n- Betreuung von drei Azubis\n- Bestellungen, Schichtplanung, Inventur"
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2020",
+    "Ausbildung Kauffrau im Einzelhandel",
+    "Drogeriemarkt Essen-Mitte",
+    "Essen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Ausbildereignungsprüfung (AEVO)",
+    "IHK Essen",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Teamkoordination",
+    4
+   ],
+   [
+    "Warenwirtschaft",
+    4
+   ],
+   [
+    "Kassenabrechnung",
+    5
+   ],
+   [
+    "Azubibetreuung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fitness, Kochen"
+ },
+ "do": [
+  "Bisherige Verantwortung konkret nennen.",
+  "Kennzahlen (Inventur, Umsatz) einbauen.",
+  "Ziel Filialleitung ansprechen."
+ ],
+ "dont": [
+  "Nur Verkaufserfahrung ohne Verantwortung.",
+  "Konflikte im Team ausbreiten.",
+  "Arbeitszeiten zu eng setzen."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem Mitarbeiter um, der ständig zu spät kommt?",
+  "Wie planen Sie eine Woche mit drei Krankmeldungen?",
+  "Was tun Sie bei einer hohen Inventurdifferenz?",
+  "Wo sehen Sie sich in drei Jahren?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich den Ausbilderschein?",
+   "a": "Nicht immer, aber er hilft, weil Stellvertretungen oft Azubis betreuen. Viele Händler unterstützen die Prüfung."
+  }
+ ],
+ "related": [
+  "filialleiter",
+  "kaufmann-im-einzelhandel",
+  "teamleiter",
+  "modeberater"
+ ]
+}

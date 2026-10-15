@@ -1,0 +1,111 @@
+{
+ "id": "mitgliederliste",
+ "slug": "mitgliederliste",
+ "cat": "Verein",
+ "name": "Mitgliederliste Verein",
+ "short": "Mitglieder mit Beitragsgruppe, Jahresbeitrag und Jubiläen",
+ "desc": "Mitgliederliste für Vereine als Excel-Vorlage (XLSX): Mitglieder mit Beitragsgruppe, Beitrag aus der Beitragstabelle, Zahlungsstand, Alter und Jubiläen verwalten.",
+ "search": "verein mitglieder",
+ "intro": "Die Mitgliederliste verbindet die Stammdaten mit der Beitragsordnung: Die Beitragsgruppe wählst du aus, der Jahresbeitrag kommt automatisch aus dem zweiten Blatt. Offene Beiträge werden rot, runde Mitgliedsjahre gelb – praktisch für die Ehrungen bei der Jahreshauptversammlung.",
+ "uses": [
+  "Mitglieder kleiner und mittlerer Vereine verwalten",
+  "Beitragseinzug vorbereiten und offene Beiträge sehen",
+  "Jubilare für die Versammlung finden"
+ ],
+ "cols": [
+  [
+   "Nr.",
+   "Laufende Mitgliedsnummer, sobald ein Vorname eingetragen ist."
+  ],
+  [
+   "Vorname",
+   "Vorname."
+  ],
+  [
+   "Nachname",
+   "Nachname."
+  ],
+  [
+   "Geburtsdatum",
+   "Für Altersgruppen und Glückwünsche – nur eintragen, wenn ihr es wirklich braucht."
+  ],
+  [
+   "Alter",
+   "Volle Jahre bis heute (DATEDIF)."
+  ],
+  [
+   "Eintritt",
+   "Datum des Vereinseintritts."
+  ],
+  [
+   "Jahre",
+   "Volle Jahre seit dem Eintritt."
+  ],
+  [
+   "Beitragsgruppe",
+   "In der Liste: die Gruppe des Mitglieds aus der Beitragstabelle. Im Blatt „Beiträge“: die Gruppen laut Beitragsordnung."
+  ],
+  [
+   "Jahresbeitrag",
+   "SVERWEIS holt den Beitrag der Gruppe aus dem Blatt „Beiträge“. Ausgetretene Mitglieder zahlen nichts mehr. Im Blatt „Beiträge“ trägst du die Beträge ein."
+  ],
+  [
+   "Bezahlt",
+   "Ja oder Nein. Ist ein Beitrag fällig und nicht bezahlt, wird die Zelle rot."
+  ],
+  [
+   "E-Mail",
+   "Für Einladungen und Rundschreiben."
+  ],
+  [
+   "Austritt",
+   "Austrittsdatum. Die Zeile wird grau und zählt nicht mehr zu den aktiven Mitgliedern."
+  ],
+  [
+   "Jubiläum",
+   "Zeigt „10 Jahre“, „25 Jahre“, „40 Jahre“ oder „50 Jahre“, wenn das runde Jubiläum in diesem Kalenderjahr ist."
+  ],
+  [
+   "Überblick",
+   "Einträge, aktive Mitglieder, Beiträge laut Liste, davon bezahlt, noch offen und das Durchschnittsalter."
+  ],
+  [
+   "Hinweis",
+   "Im Blatt „Beiträge“: Erklärung zur Gruppe, etwa die Altersgrenze."
+  ]
+ ],
+ "tips": [
+  "Datenschutz: Erfasse nur, was der Verein braucht, und gib die Liste nicht weiter. Für Bankdaten zum Lastschrifteinzug gelten strengere Regeln – die gehören nicht in eine offene Tabelle."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich weitere Beitragsgruppen anlegen?",
+   "a": "Ja. Im Blatt „Beiträge“ sind fünf leere Zeilen vorbereitet. Was du dort einträgst, erscheint sofort in der Auswahlliste."
+  },
+  {
+   "q": "Wie zähle ich Familienmitgliedschaften?",
+   "a": "Am einfachsten bekommt ein Mitglied der Familie die Gruppe „Familie“ mit dem Familienbeitrag, die anderen die Gruppe „Ehrenmitglied“ oder eine eigene beitragsfreie Gruppe „Familie (mit)“."
+  }
+ ],
+ "related": [
+  "vereinskasse",
+  "kontaktliste",
+  "geburtstagskalender"
+ ],
+ "en": {
+  "slug": "club-membership-list",
+  "name": "Club membership list",
+  "short": "Members with fee group, yearly fee, payment status and anniversaries",
+  "desc": "Club membership spreadsheet (XLSX): manage members with fee group, yearly fee from a fee table, payment status, age and membership anniversaries.",
+  "intro": "Combines member details with the fee rules: choose a fee group and the yearly fee comes from the second sheet. Unpaid fees turn red, round membership anniversaries yellow.",
+  "inside": [
+   "Fee lookup per group (VLOOKUP)",
+   "Paid / unpaid with highlighting",
+   "Active members, fees due and paid",
+   "Anniversaries of 10, 25, 40 and 50 years"
+  ],
+  "uses": [
+   "Small and medium-sized clubs"
+  ]
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "id": "quittung-privatverkauf",
+ "group": "kauf",
+ "tool": "receipt",
+ "order": 39,
+ "name": "Quittung für einen Privatverkauf",
+ "short": "Barzahlung beim Verkauf bestätigen",
+ "desc": "Quittung für den Privatverkauf: Vorlage für Bargeld beim Verkauf von Fahrrad, Möbeln oder Auto – Betrag in Ziffern und Worten, Zweck, Unterschrift. Als PDF.",
+ "search": "quittung bar verkauf privat fahrrad beleg",
+ "when": [
+  "Du verkaufst etwas privat – ein Fahrrad, ein Sofa, eine Kamera – und bekommst Bargeld. Mit einer Quittung bestätigst du, dass das Geld angekommen ist. Das schützt beide Seiten, falls es später Streit gibt."
+ ],
+ "must": [
+  "Betrag in Ziffern und in Worten",
+  "Wofür: der verkaufte Gegenstand, möglichst genau (z. B. Rahmennummer)",
+  "Name und Anschrift von Käufer und Verkäufer",
+  "Datum und Ort",
+  "Unterschrift der Person, die das Geld bekommt"
+ ],
+ "notes": [
+  "Bei privaten Verkäufen kannst du die Gewährleistung ausschließen – das gehört aber in einen Kaufvertrag, nicht in die Quittung. Für teure Dinge wie ein Auto ist ein schriftlicher Kaufvertrag sinnvoll.",
+  "Die Quittung bekommt der Käufer; eine Kopie behältst du.",
+  "Umsatzsteuer weist du als Privatperson nicht aus."
+ ],
+ "faq": [
+  {
+   "q": "Muss der Betrag in Worten drauf?",
+   "a": "Es ist nicht vorgeschrieben, macht spätere Änderungen aber schwerer. Das Werkzeug schreibt den Betrag automatisch in Worten aus."
+  }
+ ],
+ "fields": {
+  "amount": "350,00",
+  "purpose": "Trekkingrad „Tourer 28“, Rahmennummer WTU 123456, gebraucht wie besichtigt",
+  "payer": "Jonas Muster",
+  "payerAddr": "Kirchgasse 9, 66119 Saarbrücken",
+  "receiver": "Jana Beispiel",
+  "receiverAddr": "Lindenstraße 12, 66111 Saarbrücken",
+  "pay": "cash",
+  "vat": "none",
+  "place": "Saarbrücken",
+  "number": ""
+ },
+ "related": [
+  "zahlungserinnerung",
+  "widerruf-onlinekauf",
+  "vollmacht-post"
+ ],
+ "doc": [
+  [
+   "Betrag",
+   "350,00 € – in Worten: dreihundertfünfzig Euro"
+  ],
+  [
+   "Für",
+   "Trekkingrad „Tourer 28“, Rahmennummer WTU 123456, gebraucht wie besichtigt"
+  ],
+  [
+   "Von",
+   "Jonas Muster, Kirchgasse 9, 66119 Saarbrücken"
+  ],
+  [
+   "Erhalten von",
+   "Jana Beispiel, Lindenstraße 12, 66111 Saarbrücken"
+  ],
+  [
+   "Zahlungsart",
+   "Bar"
+  ],
+  [
+   "Ort, Datum, Unterschrift",
+   "Saarbrücken, Datum des Verkaufs, Unterschrift der Verkäuferin"
+  ]
+ ],
+ "doc_intro": "Die Quittung ist ein Beleg, kein Brief. Mit den Beispieldaten steht darauf:"
+}

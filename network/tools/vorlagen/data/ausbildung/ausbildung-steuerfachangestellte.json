@@ -1,0 +1,164 @@
+{
+ "id": "ausbildung-steuerfachangestellte",
+ "field": "ausbildung",
+ "name": "Ausbildung Steuerfachangestellte/r",
+ "search": "ausbildung steuerfachangestellte steuerfachangestellter steuerberatung kanzlei buchhaltung azubi bewerbung",
+ "short": "Kanzlei, Zahlen, Mandanten – für alle, die gern Ordnung schaffen.",
+ "desc": "Bewerbung für die Ausbildung zur/zum Steuerfachangestellten in der Steuerkanzlei: Muster-Anschreiben für Realschüler, Abiturientin und Ausbildungswechsler, Lebenslauf.",
+ "intro": "Steuerfachangestellte buchen Belege, erstellen Lohnabrechnungen und bereiten Steuererklärungen und Jahresabschlüsse vor. Kanzleien suchen Azubis, die gern mit Zahlen arbeiten, verschwiegen sind und mit Mandanten freundlich telefonieren. Mathe und Wirtschaft sollten nicht deine schwächsten Fächer sein.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Sicherer Umgang mit Zahlen",
+  "Sorgfalt und Verschwiegenheit",
+  "Interesse an Wirtschaft und Recht",
+  "Freundlicher Ton am Telefon"
+ ],
+ "letters": [
+  {
+   "label": "Realschüler, der den Kassenbuch-Job im Verein macht",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Steuerfachangestellten",
+   "to": {
+    "org": "Steuerberatung Albers & Kollegen",
+    "sal": "f",
+    "contact": "Albers",
+    "street": "Lange Straße 19",
+    "city": "49074 Osnabrück"
+   },
+   "body": [
+    "unser Tischtennisverein hatte jahrelang ein Kassenbuch in einem Schulheft. Letztes Jahr habe ich es mit dem Kassenwart in eine Tabelle übertragen, mit Belegnummern und Monatsübersicht. Seitdem weiß ich, dass mir Ordnung in Zahlen Spaß macht.",
+    "Im Juni schließe ich die Realschule ab, in Mathe und Wirtschaft habe ich eine Zwei. Bei meinem Praktikum in einer Kanzlei in Georgsmarienhütte durfte ich Belege vorsortieren und habe zum ersten Mal gesehen, wie eine Umsatzsteuervoranmeldung entsteht.",
+    "Verschwiegenheit ist für mich selbstverständlich; im Verein kennt außer mir und dem Kassenwart niemand die Beitragsrückstände."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturientin mit Blick auf den Steuerberater",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Steuerfachangestellten",
+   "to": {
+    "org": "Kanzlei Möllers Steuerberatung",
+    "sal": "m",
+    "contact": "Möllers",
+    "street": "Heger-Tor-Wall 5",
+    "city": "49078 Osnabrück"
+   },
+   "body": [
+    "langfristig möchte ich Steuerberaterin werden, und zwar über die Praxis. Ich habe mich informiert: Nach der Ausbildung und einigen Jahren Berufserfahrung ist die Prüfung auch ohne Studium möglich. Den ersten Schritt würde ich gern bei Ihnen machen.",
+    "Im Abitur hatte ich Mathe und Wirtschaft als Leistungskurse. Seit einem Jahr helfe ich meinen Eltern bei der Buchhaltung ihres Blumenladens und habe dabei gelernt, wie wichtig vollständige Belege sind. Ihre Kanzlei betreut viele kleine Betriebe aus dem Einzelhandel, das passt zu meinen Erfahrungen.",
+    "Ich bin ab August verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis"
+   ],
+   "from": [
+    "Carla Niehaus",
+    "Iburger Straße 77",
+    "49082 Osnabrück"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "classic",
+  "accent": 5,
+  "name": "Jonas Tiemann",
+  "title": "Schüler",
+  "street": "Martinistraße 40",
+  "city": "49078 Osnabrück",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Kassenführung (Ehrenamt)",
+    "TTC Osnabrück-West",
+    "Osnabrück",
+    "- Umstellung Kassenbuch auf Tabelle\n- Monatsübersicht für den Vorstand"
+   ],
+   [
+    "01/2026",
+    "01/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Steuerkanzlei Dröge",
+    "Georgsmarienhütte",
+    "- Belege vorsortieren, Ablage"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Realschule Sonnenhügel",
+    "Osnabrück",
+    "Profil Wirtschaft"
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    4
+   ],
+   [
+    "Rechnen",
+    4
+   ],
+   [
+    "Sorgfalt",
+    5
+   ],
+   [
+    "Ablage und Ordnung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Tischtennis, Schach"
+ },
+ "do": [
+  "Erfahrung mit Zahlen zeigen (Vereinskasse, Familienbetrieb, Mathe).",
+  "Verschwiegenheit ansprechen.",
+  "Kurz und fehlerfrei schreiben – Kanzleien achten darauf."
+ ],
+ "dont": [
+  "Nur „Ich kann gut rechnen“.",
+  "Rechtschreibfehler.",
+  "Lange Ausführungen über Steuerrecht, das du noch nicht kennst."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein Beleg fehlt?",
+  "Was bedeutet Verschwiegenheit für Sie?",
+  "Was wissen Sie über die Aufgaben in einer Kanzlei?",
+  "Wo sehen Sie sich in fünf Jahren?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Muss ich gut in Mathe sein?",
+   "a": "Du brauchst kein Mathe-Ass, aber sicheres Rechnen mit Prozent und Dreisatz. Wichtiger sind Sorgfalt und Ausdauer bei Belegen und Formularen."
+  }
+ ],
+ "related": [
+  "steuerfachangestellte",
+  "buchhalter",
+  "ausbildung-bankkaufmann",
+  "lohnbuchhalter"
+ ]
+}

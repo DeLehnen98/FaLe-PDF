@@ -1,0 +1,159 @@
+{
+ "id": "automobilverkaeufer",
+ "field": "handel",
+ "name": "Automobilverkäufer/in",
+ "search": "automobilverkäufer autoverkäufer verkaufsberater autohaus neuwagen gebrauchtwagen verkauf provision bewerbung",
+ "short": "Neu- und Gebrauchtwagen im Autohaus verkaufen.",
+ "desc": "Bewerbung als Automobilverkäufer/in: Muster-Anschreiben für erfahrenen Verkaufsberater, Automobilkauffrau nach der Ausbildung und Quereinsteiger, Lebenslauf.",
+ "intro": "Automobilverkäufer beraten, machen Probefahrten, kalkulieren Finanzierungen und Inzahlungnahmen und kümmern sich um ihre Kunden über Jahre. Autohäuser schauen auf Verkaufszahlen, Kundenzufriedenheit und Produktwissen. Zahlen aus deinem bisherigen Job sind das stärkste Argument.",
+ "lookFor": [
+  "Verkaufserfahrung, gern im Autohaus",
+  "Produkt- und Technikwissen",
+  "Finanzierung und Leasing erklären",
+  "Kundenbindung",
+  "Führerschein Klasse B"
+ ],
+ "letters": [
+  {
+   "label": "Verkaufsberater wechselt das Autohaus",
+   "level": "erfahren",
+   "position": "Verkaufsberater Neuwagen",
+   "to": {
+    "org": "Autohaus Zentral GmbH",
+    "sal": "m",
+    "contact": "Rieger",
+    "street": "Frankfurter Ring 100",
+    "city": "80807 München"
+   },
+   "body": [
+    "im letzten Jahr habe ich 142 Fahrzeuge verkauft, davon knapp ein Drittel an Stammkunden, die zum zweiten oder dritten Mal bei mir waren. Bei den Kundenzufriedenheitsumfragen des Herstellers lag ich in unserem Betrieb seit drei Jahren vorn.",
+    "Nach acht Jahren in einem Autohaus mit einer Marke reizt mich ein Mehrmarkenbetrieb, in dem ich Kunden wirklich das passende Fahrzeug anbieten kann. Elektrofahrzeuge verkaufe ich seit 2021, Ladeinfrastruktur, Förderungen und Leasing für Gewerbekunden kann ich erklären.",
+    "Meine Kündigungsfrist beträgt drei Monate zum Monatsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Automobilkauffrau nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Junior-Verkaufsberaterin Gebrauchtwagen",
+   "to": {
+    "org": "Autowelt Nord",
+    "sal": "f",
+    "contact": "Bauer",
+    "street": "Ingolstädter Straße 50",
+    "city": "80807 München"
+   },
+   "body": [
+    "in meiner Ausbildung zur Automobilkauffrau hat mir der Gebrauchtwagenverkauf am meisten Spaß gemacht. Dort zählt nicht nur das Fahrzeug, sondern auch, ob man einem Kunden ehrlich sagen kann, was die Bremsen in einem Jahr kosten werden.",
+    "Die Abschlussprüfung habe ich im Januar mit 1,9 bestanden. In den letzten sechs Monaten durfte ich eigene Kunden betreuen, Probefahrten machen und Inzahlungnahmen bewerten. Ihre Gebrauchtwagenabteilung ist eine der größten in München, und ich möchte dort lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis"
+   ],
+   "from": [
+    "Lea Steiner",
+    "Leopoldstraße 150",
+    "80804 München"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "modern",
+  "accent": 5,
+  "name": "Stefan Berger",
+  "title": "Verkaufsberater Neuwagen",
+  "street": "Schleißheimer Straße 200",
+  "city": "80809 München",
+  "exp": [
+   [
+    "2018",
+    "",
+    "Verkaufsberater Neu- und Vorführwagen",
+    "Autohaus Isar",
+    "München",
+    "- 142 verkaufte Fahrzeuge (2025)\n- Spitzenwerte bei Kundenzufriedenheit\n- Gewerbekunden, Leasing, Elektromobilität"
+   ],
+   [
+    "2015",
+    "2018",
+    "Serviceberater",
+    "Autohaus Isar",
+    "München",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung Automobilkaufmann",
+    "Autohaus Isar",
+    "München",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Verkauf",
+    5
+   ],
+   [
+    "Finanzierung und Leasing",
+    4
+   ],
+   [
+    "Elektromobilität",
+    4
+   ],
+   [
+    "Kundenbindung",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Motorrad, Skifahren"
+ },
+ "do": [
+  "Verkaufszahlen und Kundenbindung nennen.",
+  "Elektro- und Leasing-Kenntnisse zeigen.",
+  "Kündigungsfrist angeben."
+ ],
+ "dont": [
+  "Mit Abschlussquoten prahlen, ohne Zufriedenheit zu erwähnen.",
+  "Eine Marke schlechtmachen.",
+  "Provisionswünsche ins Anschreiben schreiben."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem Kunden um, der nur den Preis wissen will?",
+  "Wie halten Sie Kontakt nach dem Kauf?",
+  "Erklären Sie uns Leasing in drei Sätzen.",
+  "Wie viele Fahrzeuge haben Sie im letzten Jahr verkauft?"
+ ],
+ "faq": [
+  {
+   "q": "Wie wird im Autoverkauf bezahlt?",
+   "a": "Meist mit Fixum und Provision. Die Aufteilung ist sehr unterschiedlich. Frag im Gespräch, wie Provision berechnet wird und ob es ein Mindesteinkommen gibt."
+  }
+ ],
+ "related": [
+  "ausbildung-automobilkaufmann",
+  "aussendienst",
+  "kfz-mechatroniker",
+  "vertrieb-innendienst"
+ ]
+}

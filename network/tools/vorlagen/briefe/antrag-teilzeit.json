@@ -1,0 +1,62 @@
+{
+ "id": "antrag-teilzeit",
+ "group": "arbeit",
+ "tool": "din-letter",
+ "order": 19,
+ "name": "Antrag auf Teilzeit",
+ "short": "Arbeitszeit dauerhaft oder befristet verringern",
+ "desc": "Teilzeit beantragen beim Arbeitgeber: Muster mit gewünschter Stundenzahl, Verteilung und Beginn – mit den Voraussetzungen und der Drei-Monats-Frist erklärt.",
+ "search": "teilzeit stunden reduzieren arbeitszeit brückenteilzeit",
+ "when": [
+  "Du willst weniger arbeiten – wegen Kindern, Pflege, Weiterbildung oder einfach mehr Zeit. Ein gesetzlicher Anspruch auf Teilzeit besteht, wenn du länger als sechs Monate im Betrieb bist und dein Arbeitgeber in der Regel mehr als 15 Beschäftigte hat. Den Wunsch musst du spätestens drei Monate vor dem gewünschten Beginn in Textform äußern.",
+  "Für eine befristete Teilzeit von ein bis fünf Jahren mit Rückkehrrecht (Brückenteilzeit) gelten strengere Voraussetzungen, unter anderem mehr als 45 Beschäftigte."
+ ],
+ "must": [
+  "Die gewünschte Wochenarbeitszeit",
+  "Den gewünschten Beginn – mindestens drei Monate nach dem Antrag",
+  "Wie die Stunden verteilt werden sollen",
+  "Ob dauerhaft oder befristet (Brückenteilzeit) mit Enddatum",
+  "Bitte um ein Gespräch und eine schriftliche Antwort"
+ ],
+ "notes": [
+  "Der Arbeitgeber muss den Wunsch mit dir erörtern und kann ihn nur aus betrieblichen Gründen ablehnen.",
+  "Lehnt er nicht spätestens einen Monat vor dem gewünschten Beginn in Textform ab, gilt deine Teilzeit nach dem Gesetz als vereinbart.",
+  "In Tarifverträgen oder Betriebsvereinbarungen können günstigere Regeln stehen."
+ ],
+ "faq": [
+  {
+   "q": "Was ist der Unterschied zur Teilzeit in Elternzeit?",
+   "a": "Teilzeit während der Elternzeit ist ein eigener Anspruch nach dem Elterngeld- und Elternzeitgesetz. Für Eltern in Elternzeit ist das passende Muster der Antrag auf Elternzeit."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "antrag-elternzeit",
+  "urlaubsantrag-erholungsurlaub",
+  "kuendigung-arbeitsvertrag"
+ ],
+ "from": [
+  "Thomas Muster",
+  "Birkenallee 8",
+  "34117 Kassel"
+ ],
+ "to": {
+  "org": "Muster Handel GmbH & Co. KG",
+  "attn": "Personalabteilung",
+  "street": "Wilhelmshöher Allee 77",
+  "city": "34119 Kassel"
+ },
+ "letter": {
+  "subject": "Antrag auf Verringerung meiner Arbeitszeit",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "nach § 8 des Teilzeit- und Befristungsgesetzes beantrage ich, meine Arbeitszeit ab dem [Datum] von 40 auf 30 Stunden pro Woche zu verringern.",
+   "Die Stunden würde ich gern auf Montag bis Freitag von 8 bis 14 Uhr verteilen. So kann ich meine Mutter nachmittags bei Arztterminen begleiten. Meine Aufgaben in der Disposition lassen sich nach meiner Einschätzung gut in dieser Zeit erledigen; für Übergaben am Nachmittag habe ich eine Lösung mit Herrn Yilmaz besprochen.",
+   "Über ein Gespräch dazu freue ich mich. Bitte antworten Sie mir schriftlich."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": []
+ }
+}

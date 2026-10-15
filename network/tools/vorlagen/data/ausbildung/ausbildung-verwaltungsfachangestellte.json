@@ -1,0 +1,169 @@
+{
+ "id": "ausbildung-verwaltungsfachangestellte",
+ "field": "ausbildung",
+ "name": "Ausbildung Verwaltungsfachangestellte/r",
+ "search": "ausbildung verwaltungsfachangestellte verwaltungsfachangestellter stadtverwaltung kommune rathaus öffentlicher dienst azubi bewerbung",
+ "short": "Rathaus, Kreisverwaltung, Behörde – Ausbildung im öffentlichen Dienst.",
+ "desc": "Bewerbung für die Ausbildung zur/zum Verwaltungsfachangestellten: Muster-Anschreiben für Realschülerin und Abiturient, Lebenslauf und Tipps zum Auswahlverfahren.",
+ "intro": "Verwaltungsfachangestellte bearbeiten Anträge, beraten Bürgerinnen und Bürger, arbeiten mit Gesetzen und Haushaltsplänen. Kommunen bewerben ihre Ausbildungsplätze meist ein Jahr im Voraus und haben feste Fristen und Auswahltests. Im Anschreiben zählt, warum du für die Allgemeinheit arbeiten willst.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Gutes Deutsch in Wort und Schrift",
+  "Interesse an Recht und an Abläufen in der Gemeinde",
+  "Freundlicher Umgang auch mit schwierigen Anliegen",
+  "Genauigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Realschülerin mit Engagement im Jugendparlament",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Verwaltungsfachangestellten (Fachrichtung Kommunalverwaltung)",
+   "to": {
+    "org": "Stadt Bamberg – Personalamt",
+    "sal": "none",
+    "street": "Rathausgasse 3",
+    "city": "96047 Bamberg"
+   },
+   "body": [
+    "seit zwei Jahren sitze ich im Jugendparlament unserer Stadt. Wir haben durchgesetzt, dass am Hain neue Bänke und ein Trinkbrunnen aufgestellt werden. Dabei habe ich gelernt, wie lange es von der Idee bis zum Beschluss dauert und wie viele Ämter beteiligt sind. Genau diese Arbeit hinter den Kulissen interessiert mich.",
+    "Im Sommer schließe ich die Realschule mit voraussichtlich 2,0 ab. Deutsch und Wirtschaft und Recht gehören zu meinen besten Fächern. In meinem Praktikum im Bürgerbüro habe ich Anträge vorsortiert und gesehen, wie viel Geduld man manchmal braucht.",
+    "Am Auswahltest im Herbst nehme ich gern teil."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Bescheinigung Jugendparlament",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Abiturient, der lieber Praxis als Studium will",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Verwaltungsfachangestellten",
+   "to": {
+    "org": "Landratsamt Fränkische Schweiz",
+    "sal": "f",
+    "contact": "Wunder",
+    "street": "Am Kreishaus 3",
+    "city": "91301 Forchheim"
+   },
+   "body": [
+    "zwei meiner Mitschüler beginnen im Herbst ein duales Studium in der Verwaltung. Ich habe mich bewusst für die Ausbildung entschieden: Ich möchte schneller in die Praxis und später, wenn es passt, den Verwaltungslehrgang II anschließen.",
+    "Im Landratsamt interessieren mich besonders Bauamt und Ausländerbehörde. In beiden Bereichen geht es um Entscheidungen, die für Menschen viel bedeuten. Ich habe Abitur mit Leistungskursen Deutsch und Geschichte und arbeite seit zwei Jahren ehrenamtlich bei der Tafel, wo ich die Ausgabe am Samstag mitorganisiere.",
+    "Ich wohne in Forchheim und wäre zum 1. September verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Bescheinigung Ehrenamt"
+   ],
+   "from": [
+    "Lukas Fröhlich",
+    "Bayreuther Straße 12",
+    "91301 Forchheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "classic",
+  "accent": 0,
+  "name": "Mira Schuster",
+  "title": "Schülerin",
+  "street": "Luitpoldstraße 21",
+  "city": "96052 Bamberg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Mitglied im Jugendparlament",
+    "Stadt Bamberg",
+    "Bamberg",
+    "- Antrag für Bänke und Trinkbrunnen am Hain"
+   ],
+   [
+    "02/2025",
+    "02/2025",
+    "Schülerpraktikum (1 Woche)",
+    "Bürgerbüro Stadt Bamberg",
+    "Bamberg",
+    "- Anträge vorsortieren, Wartebereich betreuen"
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschule, voraussichtlich Mittlere Reife",
+    "Graf-Stauffenberg-Realschule",
+    "Bamberg",
+    "Wahlpflichtfach Wirtschaft"
+   ]
+  ],
+  "skills": [
+   [
+    "Deutsch schriftlich",
+    4
+   ],
+   [
+    "PC und Tabellen",
+    3
+   ],
+   [
+    "Gesprächsführung",
+    4
+   ],
+   [
+    "Genauigkeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Jugendparlament, Querflöte"
+ },
+ "do": [
+  "Engagement für die Allgemeinheit nennen (Ehrenamt, Schülervertretung).",
+  "Bewerbungsfrist und gewünschte Fachrichtung beachten.",
+  "Online-Formular sorgfältig ausfüllen – Tippfehler fallen auf."
+ ],
+ "dont": [
+  "„Sicherer Job“ als einziges Motiv.",
+  "Fristen verpassen – der öffentliche Dienst verlängert selten.",
+  "Einen Lebenslauf mit Lücken ohne Erklärung."
+ ],
+ "questions": [
+  "Warum möchten Sie in die Verwaltung?",
+  "Wie reagieren Sie auf eine Bürgerin, die laut wird?",
+  "Was wissen Sie über unsere Stadt?",
+  "Welche Ämter interessieren Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Wann muss ich mich bewerben?",
+   "a": "Viele Kommunen schreiben die Plätze schon im Spätsommer oder Herbst für das folgende Jahr aus. Achte auf die Frist in der Ausschreibung und auf das gewünschte Format (oft Online-Portal)."
+  }
+ ],
+ "related": [
+  "verwaltungsfachangestellte",
+  "duales-studium-verwaltung",
+  "sachbearbeiter-buergeramt",
+  "ausbildung-bueromanagement"
+ ]
+}

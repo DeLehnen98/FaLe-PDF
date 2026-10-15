@@ -1,0 +1,361 @@
+{
+ "id": "teamleiter",
+ "field": "buero",
+ "name": "Teamleiter/in",
+ "search": "teamleiter teamleiterin teamleitung führungskraft gruppenleiter erste führungsposition kundenservice bewerbung",
+ "short": "Erste Führungsposition oder Wechsel als erfahrene Teamleitung.",
+ "desc": "Bewerbung als Teamleiter/in: Muster-Anschreiben für den ersten Schritt in die Führung, für erfahrene Teamleitung und für eine interne Bewerbung, mit Lebenslauf.",
+ "intro": "Teamleitungen verantworten Menschen und Ergebnisse. In der Bewerbung zählt, wie du führst: Wie viele Leute, welche Ziele, welche Schwierigkeiten? Erzähl von einer Situation, in der du ein Team durch etwas gebracht hast. Zahlen helfen, aber auch der Umgang mit Konflikten.",
+ "lookFor": [
+  "Fachliche Erfahrung im Bereich",
+  "Erste Führungserfahrung (auch stellvertretend, Projekte, Azubis)",
+  "Klare Kommunikation",
+  "Umgang mit Kennzahlen",
+  "Konfliktfähigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Sachbearbeiter wird erstmals Teamleiter",
+   "level": "erfahren",
+   "position": "Teamleiter Kundenservice",
+   "to": {
+    "org": "Energieversorgung Saarbrücken-West GmbH",
+    "sal": "f",
+    "contact": "Klein",
+    "street": "Am Kraftwerk 4",
+    "city": "66117 Saarbrücken"
+   },
+   "body": [
+    "unsere Teamleiterin vertrete ich seit zwei Jahren, wenn sie im Urlaub oder krank ist. In dieser Zeit verteile ich die Anfragen auf acht Kolleginnen und Kollegen, führe die Kurzbesprechung am Morgen und springe ein, wenn ein Kunde nur mit „jemandem von oben“ sprechen will. Jetzt möchte ich den Schritt ganz machen.",
+    "Im Kundenservice eines Energieversorgers arbeite ich seit sieben Jahren, die meisten davon im Bereich Abrechnung und Beschwerden. Letztes Jahr habe ich ein Projekt geleitet, das die Bearbeitungszeit für Abschlagsänderungen von neun auf drei Tage gesenkt hat. Dafür habe ich mit IT und Abrechnung zusammengearbeitet, ohne dass mir jemand unterstellt war.",
+    "Führung lerne ich gerade auch formal: Ich besuche einen Kurs für neue Führungskräfte bei der IHK. Ein Gespräch mit Ihnen wäre mir wichtig."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zwischenzeugnis",
+    "Teilnahmebestätigung Führungskurs"
+   ]
+  },
+  {
+   "label": "Erfahrene Teamleiterin wechselt die Branche",
+   "level": "erfahren",
+   "position": "Teamleiterin Auftragsabwicklung",
+   "to": {
+    "org": "Saar-Elektronik GmbH",
+    "sal": "m",
+    "contact": "Becker",
+    "street": "Am Torhaus 3",
+    "city": "66113 Saarbrücken"
+   },
+   "body": [
+    "ein Team von zwölf Leuten im Versandhandel habe ich fünf Jahre lang geführt, durch zwei Weihnachtsgeschäfte mit dreifachem Auftragsvolumen und einen Systemwechsel, den keiner wollte. Die Fluktuation im Team lag am Ende bei unter fünf Prozent, im Haus bei 18.",
+    "Ich möchte in die Industrie wechseln, weil mich die engere Verbindung zu Produktion und Kunden reizt. Bei Ihnen läuft Auftragsabwicklung direkt mit Fertigung und Technik zusammen, das ist anspruchsvoller als im Handel, aber auch spannender. Mitarbeitergespräche, Zielvereinbarungen und Personaleinsatzplanung gehören für mich zum Alltag.",
+    "Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Melanie Hoffmann",
+    "Mainzer Straße 80",
+    "66121 Saarbrücken"
+   ]
+  },
+  {
+   "label": "Interne Bewerbung auf die Nachfolge",
+   "level": "erfahren",
+   "position": "Teamleitung Lager (interne Bewerbung)",
+   "to": {
+    "org": "Logistikzentrum Saarlouis, Personalabteilung",
+    "sal": "m",
+    "contact": "Weber",
+    "street": "Am Hafen 1",
+    "city": "66740 Saarlouis"
+   },
+   "body": [
+    "Herr Schmitt geht im Herbst in Rente, und ich möchte mich um seine Nachfolge als Teamleiter im Wareneingang bewerben. Nach neun Jahren bei uns, davon vier als Vorarbeiter, kenne ich das Team, die Abläufe und die Schwachstellen.",
+    "Als Vorarbeiter teile ich die Schichten ein, arbeite Neue ein und bin Ansprechpartner, wenn Lieferanten zu spät kommen. Den Ausbilderschein habe ich, und ich habe drei Azubis bis zur Prüfung begleitet. Was ich noch lernen muss, sind Budgetplanung und Kennzahlenberichte; dafür würde ich gern die interne Führungskräfteschulung besuchen.",
+    "Ein Gespräch zu dritt mit Herrn Schmitt wäre ideal."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Ausbildereignung"
+   ],
+   "from": [
+    "Andreas Biehl",
+    "Lisdorfer Straße 22",
+    "66740 Saarlouis"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "classic",
+  "accent": 5,
+  "name": "Patrick Schwarz",
+  "title": "Sachbearbeiter Kundenservice, stellv. Teamleiter",
+  "street": "Dudweilerstraße 50",
+  "city": "66111 Saarbrücken",
+  "exp": [
+   [
+    "04/2019",
+    "",
+    "Sachbearbeiter Kundenservice, ab 2024 stellv. Teamleiter",
+    "Energieversorgung Saar",
+    "Saarbrücken",
+    "- Vertretung der Teamleitung (8 Personen)\n- Projektleitung: Bearbeitungszeit Abschlagsänderungen von 9 auf 3 Tage\n- Eskalationsfälle und Beschwerdemanagement"
+   ],
+   [
+    "09/2016",
+    "03/2019",
+    "Kaufmann für Büromanagement",
+    "Autohaus Rathke",
+    "Saarbrücken",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2013",
+    "2016",
+    "Ausbildung Kaufmann für Büromanagement",
+    "Autohaus Rathke",
+    "Saarbrücken",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Lehrgang Neue Führungskräfte",
+    "IHK Saarland",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Teamkoordination",
+    4
+   ],
+   [
+    "Beschwerdemanagement",
+    5
+   ],
+   [
+    "Prozessverbesserung",
+    4
+   ],
+   [
+    "Kennzahlen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Kochen"
+ },
+ "do": [
+  "Teamgröße und Verantwortung nennen.",
+  "Ein Beispiel für Führung in schwierigen Zeiten.",
+  "Ehrlich sagen, was du noch lernst."
+ ],
+ "dont": [
+  "„Ich führe kooperativ“ ohne Beispiel.",
+  "Erfolge des Teams als eigene darstellen.",
+  "Den bisherigen Chef schlechtmachen."
+ ],
+ "questions": [
+  "Wie führen Sie ein Gespräch mit einem Mitarbeiter, der nachlässt?",
+  "Wie sind Sie mit Ihrem schwierigsten Konflikt umgegangen?",
+  "Wie würden Sie Ihre ersten 100 Tage gestalten?",
+  "Wie gehen Sie damit um, Vorgesetzter früherer Kollegen zu werden?"
+ ],
+ "faq": [
+  {
+   "q": "Ich habe keine offizielle Führungserfahrung – kann ich mich trotzdem bewerben?",
+   "a": "Ja, wenn du zeigen kannst, dass du schon geführt hast: Vertretungen, Projektleitung, Azubis betreut, Schichten eingeteilt. Beschreib das konkret und sag, wie du dich auf die Rolle vorbereitest."
+  }
+ ],
+ "related": [
+  "projektmanager",
+  "schichtleiter",
+  "filialleiter",
+  "kundenservice-mitarbeiter"
+ ],
+ "en": {
+  "slug": "team-leader",
+  "name": "Team leader",
+  "search": "team leader supervisor first management role line manager customer service",
+  "short": "Your first leadership role, or a move as an experienced team leader.",
+  "desc": "Team leader cover letter examples: a first step into management and an experienced team leader changing sector, plus a ready CV with placeholder portrait.",
+  "intro": "Team leaders are responsible for people and results. Say how many people you have led, what changed under your lead and how you handle conflict. Numbers help, but so does one honest story.",
+  "lookFor": [
+   "Experience in the area you will lead",
+   "Some leadership: acting up, projects, training new starters",
+   "Clear communication",
+   "Comfortable with targets and data",
+   "Handling conflict fairly"
+  ],
+  "letters": [
+   {
+    "label": "Stepping up into a first team leader role",
+    "level": "erfahren",
+    "position": "Customer service team leader",
+    "to": {
+     "org": "Severn Water Services",
+     "sal": "f",
+     "contact": "Evans",
+     "street": "Unit 4, Riverside Park",
+     "city": "Cardiff CF10 5BZ"
+    },
+    "body": [
+     "for the last two years I have covered for my team leader whenever she is away. That means allocating work across eight colleagues, running the morning huddle and taking the calls from customers who insist on speaking to “someone senior”. I would now like to take on the role properly.",
+     "I have worked in customer service for seven years, mostly on billing and complaints. Last year I led a small project with our IT and billing teams that cut the time to change a payment plan from nine days to three, without anyone reporting to me.",
+     "I am currently completing a first-line management course. I would value the chance to talk to you."
+    ],
+    "att": [
+     "CV",
+     "Course details"
+    ]
+   },
+   {
+    "label": "Experienced team leader moving into manufacturing",
+    "level": "erfahren",
+    "position": "Order management team leader",
+    "to": {
+     "org": "Cambrian Electronics Ltd",
+     "sal": "m",
+     "contact": "Davies",
+     "street": "Pontprennau Business Park",
+     "city": "Cardiff CF23 8RS"
+    },
+    "body": [
+     "five years leading a team of twelve in online retail have taken me through two peak seasons at triple volume and a system change nobody asked for. Staff turnover in my team ended up under five per cent; across the site it was eighteen.",
+     "I want to move into manufacturing because order management there sits much closer to production and engineering. One-to-ones, objectives and rota planning are part of my normal week. My notice period is three months."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Rachel Hughes",
+     "18 Albany Road",
+     "Cardiff CF24 3RQ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a12",
+   "design": "classic",
+   "accent": 5,
+   "name": "Owen Price",
+   "title": "Customer service adviser, deputy team leader",
+   "street": "50 Crwys Road",
+   "city": "Cardiff CF24 4NN",
+   "exp": [
+    [
+     "04/2019",
+     "",
+     "Customer service adviser, deputy team leader from 2024",
+     "Valleys Energy",
+     "Cardiff",
+     "- Acting team leader (8 people)\n- Led project: payment plan changes from 9 to 3 days\n- Complaints and escalations"
+    ],
+    [
+     "09/2016",
+     "03/2019",
+     "Office administrator",
+     "Bay Motors",
+     "Cardiff",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2014",
+     "2016",
+     "Business administration apprenticeship",
+     "Cardiff and Vale College",
+     "Cardiff",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "First-line management course",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Team coordination",
+     4
+    ],
+    [
+     "Complaint handling",
+     5
+    ],
+    [
+     "Process improvement",
+     4
+    ],
+    [
+     "Reporting",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Welsh",
+     "B1"
+    ]
+   ],
+   "hobbies": "Running, cooking"
+  },
+  "do": [
+   "Give team size and responsibilities.",
+   "Describe leading through a difficult period.",
+   "Say honestly what you are still learning."
+  ],
+  "dont": [
+   "Claim a “collaborative style” without an example.",
+   "Present team results as yours alone.",
+   "Criticise your current manager."
+  ],
+  "questions": [
+   "How would you handle a team member whose performance has dropped?",
+   "Tell us about a difficult conflict.",
+   "What would your first 100 days look like?",
+   "How will you manage former peers?"
+  ],
+  "faq": [
+   {
+    "q": "I have never officially managed anyone – can I still apply?",
+    "a": "Yes, if you can show leadership: acting up, leading projects, training new starters, planning rotas. Describe it concretely and explain how you are preparing for the role."
+   }
+  ]
+ }
+}

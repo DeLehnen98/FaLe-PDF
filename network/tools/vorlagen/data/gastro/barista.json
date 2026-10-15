@@ -1,0 +1,322 @@
+{
+ "id": "barista",
+ "field": "gastro",
+ "name": "Barista",
+ "search": "barista kaffee café espresso siebträger kaffeebar rösterei latte art gastronomie bewerbung",
+ "short": "Espresso, Milchschaum, Gäste – im Café oder in der Rösterei.",
+ "desc": "Bewerbung als Barista im Café oder in der Rösterei: Muster-Anschreiben für erfahrene Barista, Studentin im Nebenjob und Quereinsteiger, mit Lebenslauf.",
+ "intro": "Baristas bereiten Kaffee zu, stellen die Mühle ein, schäumen Milch, beraten Gäste und halten die Maschine sauber. Cafés achten auf Tempo am Morgen, Sauberkeit und echtes Interesse an Kaffee. Erzähl, mit welchen Maschinen du gearbeitet hast und was du über Bohnen weißt.",
+ "lookFor": [
+  "Erfahrung an der Siebträgermaschine",
+  "Mühle einstellen, Extraktion verstehen",
+  "Milch schäumen, Latte Art",
+  "Tempo in der Morgenspitze",
+  "Freundlichkeit und Sauberkeit"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Barista für eine Spezialitätenrösterei",
+   "level": "erfahren",
+   "position": "Barista / Schichtleitung Kaffeebar",
+   "to": {
+    "org": "Rösterei Kornfeld",
+    "sal": "m",
+    "contact": "Albers",
+    "street": "Hansaring 70",
+    "city": "48155 Münster"
+   },
+   "body": [
+    "jeden Morgen stelle ich als Erstes die Mühle ein, weil sich die Bohnen über Nacht und mit dem Wetter verändern. Für viele Gäste ist das Nebensache, für mich der Unterschied zwischen einem guten und einem sehr guten Espresso. Diese Sorgfalt würde ich gern in Ihre Kaffeebar mitbringen.",
+    "Seit vier Jahren arbeite ich in einem Café mit eigener Siebträger-Bar, seit einem Jahr als Schichtleitung mit Kassenverantwortung. Ich habe einen Barista-Grundkurs und einen Kurs zur Sensorik gemacht und kann Gästen erklären, warum ein äthiopischer Filterkaffee nach Beeren schmecken darf.",
+    "Für Cuppings und Schulungen in der Rösterei bin ich gern zu haben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Kursbescheinigungen"
+   ]
+  },
+  {
+   "label": "Studentin für die Morgenschicht",
+   "level": "minijob",
+   "position": "Barista (Aushilfe, Frühschicht)",
+   "to": {
+    "org": "Café Prinzipal",
+    "sal": "f",
+    "contact": "Seidel",
+    "street": "Prinzipalmarkt 15",
+    "city": "48143 Münster"
+   },
+   "body": [
+    "montags, mittwochs und freitags habe ich erst ab elf Uhr Vorlesungen. Die Morgenspitze zwischen sieben und zehn würde ich gern bei Ihnen hinter der Maschine verbringen.",
+    "In meinem Heimatort habe ich zwei Jahre in einer Bäckerei mit Kaffeebar gearbeitet, Cappuccino und Flat White kann ich sicher, Herzen gelingen meistens. Ihren Kaffee trinke ich vor jeder Klausur."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Paula Brandt",
+    "Kreuzstraße 10",
+    "48143 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 4,
+  "name": "Jasmin Okafor",
+  "title": "Barista, Schichtleitung",
+  "street": "Hammer Straße 80",
+  "city": "48153 Münster",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Barista, seit 2025 Schichtleitung",
+    "Café Bohne & Blatt",
+    "Münster",
+    "- Siebträger-Bar, Mühle einstellen\n- Schichtplanung und Kasse\n- Einarbeitung neuer Kolleginnen"
+   ],
+   [
+    "2020",
+    "2022",
+    "Servicekraft",
+    "Bistro am Aasee",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2020",
+    "Fachoberschule Ernährung",
+    "Hansa-Berufskolleg",
+    "Münster",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Barista-Grundkurs",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Sensorik-Seminar Kaffee",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Espresso und Extraktion",
+    5
+   ],
+   [
+    "Milchschaum und Latte Art",
+    4
+   ],
+   [
+    "Sensorik",
+    3
+   ],
+   [
+    "Kasse",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Igbo",
+    "B1"
+   ]
+  ],
+  "hobbies": "Kaffee rösten, Radfahren"
+ },
+ "do": [
+  "Maschinen und Kaffeewissen nennen.",
+  "Tempo und Sauberkeit belegen.",
+  "Bezug zum Café zeigen."
+ ],
+ "dont": [
+  "Nur „Ich liebe Kaffee“.",
+  "Latte-Art-Fotos statt Erfahrung.",
+  "Frühschichten ausschließen."
+ ],
+ "questions": [
+  "Wie stellen Sie die Mühle ein?",
+  "Was tun Sie, wenn der Espresso sauer schmeckt?",
+  "Wie bleiben Sie in der Morgenspitze freundlich?",
+  "Wie reinigen Sie die Maschine?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich einen Barista-Kurs?",
+   "a": "Nicht zwingend. Viele Cafés lernen selbst an. Ein Kurs zeigt aber Interesse und gibt dir Grundlagen, die du im Probetag vorzeigen kannst."
+  }
+ ],
+ "related": [
+  "servicekraft",
+  "barkeeper",
+  "ausbildung-konditor",
+  "verkaeuferin-baeckerei"
+ ],
+ "en": {
+  "slug": "barista",
+  "name": "Barista",
+  "search": "barista coffee shop cafe espresso roastery latte art",
+  "short": "Espresso, milk and guests – in a café or roastery.",
+  "desc": "Barista cover letter examples: an experienced barista for a specialty roastery and a student for the morning shift, plus a ready CV with placeholder portrait.",
+  "intro": "Baristas dial in the grinder, pull shots, steam milk, look after guests and keep the machine clean. Cafés care about speed at the morning rush, cleanliness and real interest in coffee.",
+  "lookFor": [
+   "Espresso machine experience",
+   "Dialling in and extraction",
+   "Milk texturing and latte art",
+   "Speed at the morning rush",
+   "Friendly and tidy"
+  ],
+  "letters": [
+   {
+    "label": "Experienced barista for a roastery",
+    "level": "erfahren",
+    "position": "Barista / shift lead",
+    "to": {
+     "org": "Cornfield Coffee Roasters",
+     "sal": "m",
+     "contact": "Albers",
+     "street": "70 North Road",
+     "city": "Brighton BN1 1YD"
+    },
+    "body": [
+     "the first thing I do every morning is dial in the grinder, because beans change overnight and with the weather. For many customers that is a detail; for me it is the difference between a good espresso and a very good one.",
+     "I have worked at a specialty café for four years, for the last year as shift lead with cash responsibility. I have completed a barista foundation course and a sensory course, and I can explain why an Ethiopian filter can taste of berries. I would gladly help with cuppings and training."
+    ],
+    "att": [
+     "CV",
+     "Certificates"
+    ]
+   },
+   {
+    "label": "Student for the morning shift",
+    "level": "minijob",
+    "position": "Barista (part time, mornings)",
+    "to": {
+     "org": "Café Principal",
+     "sal": "f",
+     "contact": "Seddon",
+     "street": "15 Bond Street",
+     "city": "Brighton BN1 1RD"
+    },
+    "body": [
+     "on Mondays, Wednesdays and Fridays my lectures start at eleven. I would like to spend the morning rush from seven to ten behind your machine.",
+     "At home I worked for two years in a bakery with a coffee bar. Cappuccinos and flat whites are no problem, and my hearts come out right most of the time."
+    ],
+    "att": [
+     "CV"
+    ],
+    "from": [
+     "Poppy Bennett",
+     "10 Trafalgar Street",
+     "Brighton BN1 4EQ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a09",
+   "design": "modern",
+   "accent": 4,
+   "name": "Jasmine Okoro",
+   "title": "Barista and shift lead",
+   "street": "80 Lewes Road",
+   "city": "Brighton BN2 3HZ",
+   "exp": [
+    [
+     "2022",
+     "",
+     "Barista, shift lead from 2025",
+     "Bean & Leaf",
+     "Brighton",
+     "- Dialling in, espresso bar\n- Rotas and cash\n- Training new staff"
+    ]
+   ],
+   "edu": [
+    [
+     "2017",
+     "2020",
+     "BTEC Hospitality",
+     "City College",
+     "Brighton",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Espresso",
+     5
+    ],
+    [
+     "Milk and latte art",
+     4
+    ],
+    [
+     "Sensory skills",
+     3
+    ],
+    [
+     "Till",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Igbo",
+     "B1"
+    ]
+   ],
+   "hobbies": "Home roasting, cycling"
+  },
+  "do": [
+   "Name machines and coffee knowledge.",
+   "Show speed and cleanliness.",
+   "Connect to the café."
+  ],
+  "dont": [
+   "Only say you love coffee.",
+   "Send latte art photos instead of experience.",
+   "Rule out early shifts."
+  ],
+  "questions": [
+   "How do you dial in a grinder?",
+   "What do you do if the espresso tastes sour?",
+   "How do you stay friendly at the morning rush?",
+   "How do you clean the machine?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a barista course?",
+    "a": "Not necessarily. Many cafés train you themselves, but a course shows interest and gives you basics you can demonstrate on a trial shift."
+   }
+  ]
+ }
+}

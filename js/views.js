@@ -35,7 +35,7 @@ export async function importFromDevice() {
 function scanTool() { return TOOLS.find(t => t.id === 'scannen') || TOOLS.find(t => t.group === 'scannen'); }
 
 const CREATE = [
-  { id: 'doc', label: 'Dokument', icon: 'kdoc', color: KINDS.docx.color, href: '#/neu/dokument' },
+  { id: 'doc', label: 'Dokument', icon: 'kdoc', color: KINDS.docx.color, href: '#/vorlagen/dokument' },
   { id: 'sheet', label: 'Tabelle', icon: 'ksheet', color: KINDS.xlsx.color, href: '#/vorlagen/tabelle' },
   { id: 'slides', label: 'Präsentation', icon: 'kslides', color: KINDS.pptx.color, href: '#/neu/praesentation' },
   { id: 'images', label: 'PDF aus Bildern', icon: 'image', color: KINDS.image.color, href: '#/werkzeug/bilder' },
@@ -45,7 +45,7 @@ function createHref(c) { if (c.id !== 'scan') return c.href; const t = scanTool(
 
 export function showNewMenu(anchor) {
   officeMenu(anchor, [
-    { label: 'Neues Dokument', icon: 'kdoc', onClick: () => { location.hash = '#/neu/dokument'; } },
+    { label: 'Neues Dokument', icon: 'kdoc', onClick: () => { location.hash = '#/vorlagen/dokument'; } },
     { label: 'Neue Tabelle', icon: 'ksheet', onClick: () => { location.hash = '#/vorlagen/tabelle'; } },
     { label: 'Neue Präsentation', icon: 'kslides', onClick: () => { location.hash = '#/neu/praesentation'; } },
     { label: 'Aus Vorlage …', icon: 'template', onClick: () => { location.hash = '#/vorlagen'; } },
@@ -247,7 +247,7 @@ export function renderTools(initialQ = null) {
       <div data-groups></div>
       <p class="panel-empty" data-noresult hidden>Kein Werkzeug gefunden.</p>`;
     const officeCards = [
-      { id: 'o-doc', title: 'Neues Dokument', desc: 'Briefe, Lebensläufe, Notizen – speichern als .docx oder PDF.', icon: 'kdoc', href: '#/neu/dokument' },
+      { id: 'o-doc', title: 'Neues Dokument', desc: 'Leer oder mit Vorlage: Brief, Lebenslauf, Rechnung, Hausarbeit … – als .docx oder PDF.', icon: 'kdoc', href: '#/vorlagen/dokument' },
       { id: 'o-sheet', title: 'Neue Tabelle', desc: 'Leer oder mit Vorlage: Haushaltsbuch, Urlaubsplaner, Rechnungen … – als .xlsx.', icon: 'ksheet', href: '#/vorlagen/tabelle' },
       { id: 'o-slides', title: 'Neue Präsentation', desc: 'Folien mit eigenen Designs erstellen und präsentieren – als .pptx.', icon: 'kslides', href: '#/neu/praesentation' },
       { id: 'o-tpl', title: 'Vorlagen', desc: 'Lebenslauf, Anschreiben, Brief nach DIN 5008, Rechnung und mehr.', icon: 'template', href: '#/vorlagen' },

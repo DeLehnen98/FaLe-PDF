@@ -1,0 +1,63 @@
+{
+ "id": "kuendigung-handyvertrag",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 1,
+ "name": "Kündigung Handyvertrag",
+ "short": "Mobilfunkvertrag kündigen, Rufnummer mitnehmen",
+ "desc": "Kündigung für den Handyvertrag als Vorlage: mit Kundennummer, Rufnummer und Wunsch zur Rufnummernmitnahme – erklärt, ausgefüllt und direkt als PDF speichern.",
+ "search": "mobilfunk handy smartphone vertrag rufnummer",
+ "when": [
+  "Du willst den Anbieter wechseln, brauchst den Vertrag nicht mehr oder die Mindestlaufzeit endet bald. Läuft der Vertrag nach der Mindestlaufzeit stillschweigend weiter, kannst du ihn in der Regel mit einer Frist von einem Monat kündigen.",
+  "Wenn du deine Nummer behalten willst, steht der Wunsch zur Rufnummernmitnahme gleich mit im Brief. Den Wechsel selbst beauftragst du beim neuen Anbieter."
+ ],
+ "must": [
+  "Deinen Namen und deine Anschrift, wie sie beim Anbieter hinterlegt sind",
+  "Kundennummer und die Rufnummer, um die es geht",
+  "Den Kündigungszeitpunkt – „zum nächstmöglichen Zeitpunkt“ ist am sichersten",
+  "Die Bitte um eine schriftliche Bestätigung mit Vertragsende",
+  "Falls gewünscht: Rufnummernmitnahme und Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Online abgeschlossene Verträge kannst du auch über den Kündigungsbutton auf der Website des Anbieters kündigen. Mach dann einen Screenshot der Bestätigung.",
+  "Die Rufnummer kannst du auch während der Vertragslaufzeit mitnehmen; der alte Vertrag läuft dann bis zum Ende weiter und kostet weiter Grundgebühr.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Darf mich der Anbieter nach der Kündigung anrufen?",
+   "a": "Viele Anbieter melden sich mit einem „Rückholangebot“. Wenn du das nicht willst, setz in der Vorlage den Haken „Rückgewinnungs-Anrufe untersagen“."
+  },
+  {
+   "q": "Muss ich einen Grund angeben?",
+   "a": "Nein. Eine ordentliche Kündigung braucht keinen Grund. Nur bei einer außerordentlichen Kündigung, etwa nach einer Preiserhöhung, nennst du den Anlass."
+  }
+ ],
+ "fields": {
+  "type": "handy",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": true,
+  "customer": "4711-2026-88",
+  "phone": "0151 23456789",
+  "port": true
+ },
+ "related": [
+  "kuendigung-internetvertrag",
+  "kuendigungsbestaetigung-anfordern",
+  "kuendigung-streaming"
+ ],
+ "from": [
+  "Jana Beispiel",
+  "Lindenstraße 12",
+  "66111 Saarbrücken"
+ ],
+ "to": {
+  "org": "Beispielfunk Mobil GmbH",
+  "attn": "Kundenservice",
+  "street": "Postfach 10 11 12",
+  "city": "40001 Düsseldorf"
+ }
+}

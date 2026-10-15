@@ -1,0 +1,92 @@
+{
+ "id": "trainingsplan",
+ "slug": "trainingsplan",
+ "cat": "Schule & Freizeit",
+ "name": "Trainingsplan",
+ "short": "Wochenplan mit Sätzen, Wiederholungen, Gewicht und Fortschritt",
+ "desc": "Trainingsplan als Excel-Vorlage (XLSX): Übungen je Tag mit Sätzen, Wiederholungen und Gewicht planen, Volumen berechnen und Bestwerte im Fortschritts-Log sehen.",
+ "search": "",
+ "intro": "Ein Wochenplan fürs Krafttraining mit zweitem Blatt für den Fortschritt. Das Trainingsvolumen pro Übung und Tag rechnet die Vorlage aus; im Fortschritts-Log werden neue Bestwerte grün.",
+ "uses": [
+  "Ein festes Trainingsprogramm für das Studio aufschreiben",
+  "Steigerungen über Wochen sichtbar machen",
+  "Trainingstage gleichmäßig verteilen"
+ ],
+ "cols": [
+  [
+   "Tag",
+   "Wochentag aus der Liste; die Tage sind abwechselnd hinterlegt."
+  ],
+  [
+   "Übung",
+   "Name der Übung."
+  ],
+  [
+   "Muskelgruppe",
+   "Beine, Brust, Rücken … aus der Liste."
+  ],
+  [
+   "Sätze",
+   "Anzahl der Sätze."
+  ],
+  [
+   "Wdh.",
+   "Wiederholungen pro Satz – bei Haltezeiten die Sekunden."
+  ],
+  [
+   "Gewicht",
+   "Zusatzgewicht in kg; leer bei Übungen mit dem eigenen Körpergewicht."
+  ],
+  [
+   "Volumen",
+   "Sätze × Wiederholungen × Gewicht. Leer, wenn kein Gewicht da ist. Rechts addiert SUMMEWENN das Volumen je Tag."
+  ],
+  [
+   "Pause (Sek.)",
+   "Pause zwischen den Sätzen."
+  ],
+  [
+   "Notiz",
+   "Freies Feld, z. B. Sitzeinstellung am Gerät."
+  ],
+  [
+   "Datum",
+   "Im Blatt „Fortschritt“: Tag des Trainings."
+  ],
+  [
+   "Bestwert bisher",
+   "MAXWENNS sucht das höchste bisher eingetragene Gewicht dieser Übung. Ist das neue Gewicht ein Bestwert, wird es grün."
+  ]
+ ],
+ "tips": [
+  "Steiger dich in kleinen Schritten und trag jedes Training ein – der Verlauf motiviert mehr als jedes Ziel auf dem Papier."
+ ],
+ "faq": [
+  {
+   "q": "Ist der Plan für Anfänger geeignet?",
+   "a": "Die Beispielübungen sind ein allgemeiner Ganzkörperplan. Wenn du neu anfängst oder gesundheitliche Beschwerden hast, lass dir die Übungen vorher von einer Trainerin oder einem Trainer zeigen."
+  }
+ ],
+ "related": [
+  "gewichtstagebuch",
+  "essensplan",
+  "lesetagebuch"
+ ],
+ "en": {
+  "slug": "workout-plan",
+  "name": "Workout plan",
+  "short": "Weekly plan with sets, reps, weight and a progress log",
+  "desc": "Workout plan spreadsheet (XLSX): plan exercises per day with sets, reps and weight, calculate training volume and track personal bests in a progress log.",
+  "intro": "A weekly strength training plan with a second sheet for progress. Volume per exercise and day is calculated; new personal bests turn green in the log.",
+  "inside": [
+   "Volume = sets × reps × weight",
+   "Volume per weekday with a chart",
+   "Progress log with best so far (MAXIFS)",
+   "Drop-downs for days and muscle groups"
+  ],
+  "uses": [
+   "Writing down a gym programme",
+   "Seeing progress over weeks"
+  ]
+ }
+}

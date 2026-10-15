@@ -1,0 +1,304 @@
+{
+ "id": "housekeeping",
+ "field": "gastro",
+ "name": "Housekeeping / Zimmermädchen und Roomboy",
+ "search": "housekeeping zimmermädchen zimmerfrau roomboy etage hotel reinigung hausdame zimmerreinigung bewerbung",
+ "short": "Zimmer und Etage im Hotel – mit System und Blick fürs Detail.",
+ "desc": "Bewerbung im Housekeeping eines Hotels: Muster-Anschreiben für erfahrene Zimmerfrau, Quereinsteiger und Hausdame, mit Lebenslauf und Tipps.",
+ "intro": "Im Housekeeping werden Zimmer gereinigt, Betten bezogen, Minibars aufgefüllt und Mängel gemeldet, oft unter Zeitdruck zwischen Check-out und Check-in. Hotels suchen Leute, die gründlich und schnell sind, diskret mit den Sachen der Gäste umgehen und im Team arbeiten.",
+ "lookFor": [
+  "Gründlichkeit und Tempo",
+  "Diskretion",
+  "Körperliche Belastbarkeit",
+  "Teamarbeit auf der Etage",
+  "Wochenend- und Feiertagsdienste"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Zimmerfrau",
+   "level": "erfahren",
+   "position": "Zimmerfrau (Vollzeit)",
+   "to": {
+    "org": "Hotel am Stadtgarten",
+    "sal": "f",
+    "contact": "Novak",
+    "street": "Stadtgartenstraße 3",
+    "city": "79098 Freiburg im Breisgau"
+   },
+   "body": [
+    "vierzehn Zimmer in einer Schicht, jedes so, als würde der Hotelchef selbst einchecken: So habe ich es in meinem bisherigen Hotel gelernt, und so arbeite ich seit fünf Jahren. Mir fallen ein Haar im Waschbecken und eine lockere Gardinenstange auf, bevor es der Gast tut.",
+    "Ich kenne die Abläufe mit Wäscherei, Minibar und Fundsachen, melde Mängel an die Haustechnik und arbeite neue Kolleginnen ein. Deutsch spreche ich gut, Kroatisch ist meine Muttersprache.",
+    "Ich würde gern in einem kleineren Haus arbeiten, in dem man sich kennt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Kraft bewirbt sich als Hausdame",
+   "level": "erfahren",
+   "position": "Hausdame / Leitung Housekeeping",
+   "to": {
+    "org": "Schwarzwaldhotel Feldberg",
+    "sal": "m",
+    "contact": "Kaltenbach",
+    "street": "Am Seebuck 2",
+    "city": "79868 Feldberg (Schwarzwald)"
+   },
+   "body": [
+    "unsere Hausdame vertrete ich seit drei Jahren und bin für zwölf Mitarbeitende auf vier Etagen zuständig. Dienstpläne, Zimmerkontrollen, Wäschebestellung und die Abstimmung mit der Rezeption gehören dazu.",
+    "Ich möchte jetzt selbst eine Abteilung führen. Ein Ferienhotel mit Wellnessbereich ist eine neue Aufgabe, weil sich Abreise und Anreise dort am Samstag ballen. Gerade solche Spitzentage organisiere ich gern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Agnieszka Wróbel",
+    "Lehener Straße 50",
+    "79106 Freiburg im Breisgau"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "compact",
+  "accent": 1,
+  "name": "Ivana Marić",
+  "title": "Zimmerfrau",
+  "street": "Wiehre, Günterstalstraße 30",
+  "city": "79102 Freiburg im Breisgau",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Zimmerfrau",
+    "Hotel Schwabentor",
+    "Freiburg im Breisgau",
+    "- 14 Zimmer pro Schicht\n- Mängelmeldung, Minibar, Fundsachen\n- Einarbeitung neuer Kolleginnen"
+   ],
+   [
+    "2018",
+    "2021",
+    "Reinigungskraft",
+    "Gebäudereinigung Breisgau",
+    "Freiburg im Breisgau",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2006",
+    "2014",
+    "Schulabschluss",
+    "Grundschule und Gymnasium",
+    "Split (Kroatien)",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Zimmerreinigung",
+    5
+   ],
+   [
+    "Tempo",
+    4
+   ],
+   [
+    "Diskretion",
+    5
+   ],
+   [
+    "Einarbeitung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Kroatisch",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Wandern, Nähen"
+ },
+ "do": [
+  "Anzahl der Zimmer pro Schicht nennen.",
+  "Diskretion und Sorgfalt mit Beispiel zeigen.",
+  "Sprachen angeben."
+ ],
+ "dont": [
+  "Sich als „nur Putzkraft“ darstellen.",
+  "Fundsachen-Geschichten mit Gästenamen.",
+  "Wochenenden ausschließen."
+ ],
+ "questions": [
+  "Wie viele Zimmer schaffen Sie in einer Schicht?",
+  "Was tun Sie, wenn Sie Wertsachen im Zimmer finden?",
+  "Wie gehen Sie mit einem Gast um, der sich beschwert?",
+  "Was prüfen Sie vor der Freigabe eines Zimmers?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung?",
+   "a": "Nein. Viele Hotels lernen an. Für die Leitung als Hausdame ist Erfahrung wichtiger als ein Abschluss; eine Ausbildung im Hotel oder als Hauswirtschafterin hilft."
+  }
+ ],
+ "related": [
+  "reinigungskraft",
+  "gebaeudereiniger",
+  "hotelfachfrau",
+  "rezeptionist"
+ ],
+ "en": {
+  "slug": "housekeeper",
+  "name": "Hotel housekeeper / room attendant",
+  "search": "housekeeper room attendant chambermaid hotel cleaning housekeeping supervisor",
+  "short": "Rooms and floors in a hotel – thorough and fast.",
+  "desc": "Hotel housekeeper cover letter examples: an experienced room attendant and a deputy head housekeeper stepping up, plus a ready CV with placeholder portrait.",
+  "intro": "Room attendants clean rooms, change beds, restock minibars and report faults, often against the clock between check-out and check-in. Hotels look for people who are thorough and fast, discreet with guests’ belongings and good team players.",
+  "lookFor": [
+   "Thoroughness and speed",
+   "Discretion",
+   "Physical stamina",
+   "Teamwork on the floor",
+   "Weekend and holiday shifts"
+  ],
+  "letters": [
+   {
+    "label": "Experienced room attendant",
+    "level": "erfahren",
+    "position": "Room attendant (full time)",
+    "to": {
+     "org": "The Park Hotel",
+     "sal": "f",
+     "contact": "Novak",
+     "street": "3 Park Place",
+     "city": "York YO1 7HB"
+    },
+    "body": [
+     "fourteen rooms a shift, each one as if the general manager were checking in: that is how I was trained, and how I have worked for five years. I notice a hair in the basin or a loose curtain rail before the guest does.",
+     "I know the routines with laundry, minibars and lost property, report faults to maintenance and train new colleagues. I would like to work in a smaller hotel where people know each other."
+    ],
+    "att": [
+     "CV",
+     "Reference"
+    ]
+   },
+   {
+    "label": "Deputy stepping up to head housekeeper",
+    "level": "erfahren",
+    "position": "Head housekeeper",
+    "to": {
+     "org": "Dales Country Hotel",
+     "sal": "m",
+     "contact": "Kettlewell",
+     "street": "Main Street",
+     "city": "Grassington BD23 5AD"
+    },
+    "body": [
+     "for three years I have deputised for our head housekeeper, responsible for twelve staff across four floors. Rotas, room checks, linen orders and coordinating with reception are all part of it.",
+     "I would now like to run a department myself. A leisure hotel where departures and arrivals pile up on a Saturday is a new challenge, and peak days like that are exactly what I enjoy organising."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Agnes Wrobel",
+     "50 Bishopthorpe Road",
+     "York YO23 1JJ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a20",
+   "design": "compact",
+   "accent": 1,
+   "name": "Ivana Maric",
+   "title": "Room attendant",
+   "street": "30 Fishergate",
+   "city": "York YO10 4AP",
+   "exp": [
+    [
+     "2021",
+     "",
+     "Room attendant",
+     "Minster Hotel",
+     "York",
+     "- 14 rooms per shift\n- Fault reporting, minibars, lost property\n- Training new staff"
+    ]
+   ],
+   "edu": [
+    [
+     "2006",
+     "2014",
+     "Secondary school",
+     "",
+     "Split, Croatia",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Room cleaning",
+     5
+    ],
+    [
+     "Speed",
+     4
+    ],
+    [
+     "Discretion",
+     5
+    ],
+    [
+     "Training",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "Croatian",
+     "native"
+    ],
+    [
+     "English",
+     "B2"
+    ]
+   ],
+   "hobbies": "Walking, sewing"
+  },
+  "do": [
+   "Say how many rooms you do per shift.",
+   "Show discretion with an example.",
+   "List your languages."
+  ],
+  "dont": [
+   "Describe yourself as “just a cleaner”.",
+   "Tell lost-property stories with names.",
+   "Rule out weekends."
+  ],
+  "questions": [
+   "How many rooms can you do in a shift?",
+   "What do you do if you find valuables?",
+   "How do you handle a complaint?",
+   "What do you check before releasing a room?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a qualification?",
+    "a": "No. Most hotels train you. For head housekeeper roles, experience counts more than certificates."
+   }
+  ]
+ }
+}

@@ -1,0 +1,80 @@
+/* Vorlagen-Archiv – spreadsheet, letter and CV design pages (arc2_sections.py). On top of site.css, wt.css, vl.css. Mobile first. */
+.arc2-page .wt-head h1 { overflow-wrap: anywhere; hyphens: auto; }
+.arc2-dl { margin-top: 18px; }
+.arc2-dl .btn { flex: 1 1 200px; }
+@media (min-width: 820px) { .arc2-dl .btn { flex: 0 0 auto; } }
+.arc2-app { margin-top: 10px; font-size: var(--step--1); }
+.arc2-more { margin-top: 16px; }
+.arc2-toolnote { font-size: var(--step--1); color: var(--text-3); margin: 0; }
+.arc2-prose { max-width: 68ch; display: grid; gap: 10px; }
+.arc2-prose p { margin: 0; }
+
+/* column explanations */
+.arc2-cols { display: grid; gap: 10px; max-width: 860px; }
+.arc2-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md, 14px); padding: 12px 14px; display: grid; gap: 4px; }
+@media (min-width: 720px) { .arc2-col { grid-template-columns: 210px 1fr; gap: 16px; align-items: baseline; } }
+.arc2-col dt { font-weight: 750; color: var(--text); overflow-wrap: anywhere; }
+.arc2-col dd { margin: 0; color: var(--text-2); }
+
+/* live grid */
+.arc2-sheet { min-height: 120px; }
+.arc2-nojs { color: var(--text-3); }
+.arc2-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; }
+.arc2-tab { flex: none; min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border-strong, var(--border)); background: var(--surface); color: var(--text); font: inherit; font-weight: 650; font-size: 0.925rem; cursor: pointer; }
+.arc2-tab[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.arc2-bar { position: sticky; top: 0; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 6px 8px; align-items: center; padding: 10px; margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md, 14px); box-shadow: 0 4px 14px rgba(19, 18, 46, .06); }
+.arc2-barl { grid-column: 1 / -1; font-size: var(--step--1); font-weight: 700; color: var(--text-2); }
+.arc2-in { min-width: 0; min-height: 44px; }
+.arc2-apply { min-height: 44px; }
+.arc2-fx { grid-column: 1 / -1; margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; color: var(--text-2); overflow-wrap: anywhere; }
+.arc2-grid { overflow: auto; max-height: 70vh; border: 1px solid var(--border); border-radius: 10px; background: #fff; -webkit-overflow-scrolling: touch; }
+.arc2-grid:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.arc2-table { border-collapse: collapse; table-layout: fixed; font-size: 0.8rem; color: #1d1c2b; min-width: 100%; }
+.arc2-table th, .arc2-table td { border: 1px solid #e3e4ec; padding: 4px 6px; height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arc2-table thead th { position: sticky; top: 0; background: #f3f4f8; color: #6b7194; font-weight: 600; font-size: 0.72rem; z-index: 1; }
+.arc2-table .arc2-rh, .arc2-table .arc2-corner { background: #f3f4f8; color: #6b7194; font-weight: 600; font-size: 0.72rem; text-align: center; position: sticky; left: 0; z-index: 1; }
+.arc2-table .arc2-corner { z-index: 2; }
+.arc2-table col.arc2-rn { width: 38px; }
+.arc2-table td { cursor: cell; background: #fff; }
+.arc2-table td.b { font-weight: 700; }
+.arc2-table td.i { font-style: italic; }
+.arc2-table td.st { text-decoration: line-through; }
+.arc2-table td.big { font-size: 1rem; }
+.arc2-table td.al-right { text-align: right; }
+.arc2-table td.al-center { text-align: center; }
+.arc2-table td.fx { cursor: help; }
+.arc2-table td.ovf { overflow: visible; text-overflow: clip; position: relative; }
+.arc2-table td.sel { outline: 2px solid var(--primary); outline-offset: -2px; }
+.arc2-ic { font-size: 0.75rem; }
+.arc2-gridfoot { margin-top: 10px; }
+.arc2-status { margin-top: 8px; font-size: var(--step--1); color: var(--text-3); min-height: 1.4em; }
+
+/* letters */
+.arc2-warn { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--warn-soft); color: var(--text); max-width: 72ch; font-size: 0.95rem; }
+.arc2-warn-strong { border-left: 4px solid var(--danger); font-weight: 600; }
+.arc2-notice { font-size: 0.8em; color: #4a4e6e; text-decoration: underline; }
+.arc2-doc .arc2-col dd { white-space: pre-line; }
+
+/* CV design gallery */
+.arc2-designs { list-style: none; display: grid; gap: 18px; margin-top: 22px; }
+@media (min-width: 720px) { .arc2-designs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; } }
+@media (min-width: 1100px) { .arc2-designs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.arc2-design { display: grid; grid-template-columns: minmax(0, 132px) minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px; border-radius: var(--radius-lg, 22px); background: var(--surface); border: 1px solid var(--border); }
+@media (min-width: 720px) { .arc2-design { grid-template-columns: 1fr; } }
+.arc2-design-img { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #fff; box-shadow: 0 6px 18px rgba(19, 18, 46, .08); }
+.arc2-design-img img { display: block; width: 100%; height: auto; }
+.arc2-design-t { display: grid; gap: 8px; min-width: 0; }
+.arc2-design-t h2 { font-size: 1.2rem; margin: 0; }
+.arc2-design-t p { margin: 0; color: var(--text-2); font-size: 0.95rem; }
+.arc2-design-t .btn-row { margin-top: 4px; }
+.arc2-design-t .btn { flex: 1 1 180px; }
+.arc2-good { font-size: 0.875rem !important; }
+
+/* hub */
+.arc2-hub { margin-top: 26px; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .arc2-grid { border-color: transparent; }
+}
+:root[data-theme="dark"] .arc2-grid { border-color: transparent; }

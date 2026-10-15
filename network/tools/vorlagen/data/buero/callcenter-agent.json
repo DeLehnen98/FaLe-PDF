@@ -1,0 +1,158 @@
+{
+ "id": "callcenter-agent",
+ "field": "buero",
+ "name": "Callcenter-Agent / Telefonist/in",
+ "search": "callcenter agent call center telefonist telefonistin hotline inbound outbound kundenhotline telefonservice bewerbung",
+ "short": "Inbound-Hotline, Outbound oder Telefonzentrale.",
+ "desc": "Bewerbung als Callcenter-Agent oder Telefonist/in: Muster-Anschreiben für Inbound-Hotline, Studentin im Nebenjob und Wiedereinsteiger, mit Lebenslauf und Tipps.",
+ "intro": "Im Callcenter beantwortest du Fragen zu Verträgen, Rechnungen oder Technik, nimmst Bestellungen auf oder rufst selbst Kunden an. Gesucht sind eine angenehme Stimme, Geduld, sicheres Tippen und Ruhe bei verärgerten Anrufern. Wer schon einmal mit Kunden telefoniert hat, sollte das nennen.",
+ "lookFor": [
+  "Klare Aussprache, gutes Deutsch",
+  "Geduld und Freundlichkeit",
+  "Schnelles, sicheres Tippen",
+  "Schichtbereitschaft je nach Hotline",
+  "Fremdsprachen für internationale Hotlines"
+ ],
+ "letters": [
+  {
+   "label": "Verkäuferin wechselt an die Hotline",
+   "level": "quereinstieg",
+   "position": "Kundenberaterin Inbound-Hotline",
+   "to": {
+    "org": "Servicecenter Rostock GmbH",
+    "sal": "f",
+    "contact": "Brandt",
+    "street": "Am Strande 3",
+    "city": "18055 Rostock"
+   },
+   "body": [
+    "acht Stunden stehen hat mir nach zehn Jahren im Modehandel den Rest gegeben. Mit Kunden reden möchte ich aber weiter, und am Telefon kann ich das genauso gut wie an der Kasse. Ihre Anzeige für die Hotline eines Energieversorgers kommt deshalb genau richtig.",
+    "Reklamationen, Umtausch, Kunden, die schon schlechte Laune haben, bevor sie den Laden betreten: Das ist mein Alltag. Am PC arbeite ich sicher, an der Kasse habe ich mit Warenwirtschaft und Kundenkonto gearbeitet. Ich tippe schnell und behalte trotzdem im Blick, was der Mensch am anderen Ende eigentlich will.",
+    "Früh- und Spätschichten sind kein Problem."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Studentin im Nebenjob mit Französisch",
+   "level": "minijob",
+   "position": "Teilzeit-Agentin Kundenservice Französisch",
+   "to": {
+    "org": "Ostsee Teleservice",
+    "sal": "m",
+    "contact": "Peters",
+    "street": "Lange Straße 40",
+    "city": "18055 Rostock"
+   },
+   "body": [
+    "Französisch spreche ich seit meinem Austauschjahr in Lyon fließend, und am Telefon traue ich mich inzwischen sogar Witze zu machen. Für Ihre französischsprachige Hotline würde ich gern 15 Stunden pro Woche arbeiten.",
+    "Ich studiere Romanistik und Wirtschaft im vierten Semester. Erfahrung am Telefon habe ich aus dem Studierendensekretariat, wo ich zwei Semester lang Anrufe von Erstsemestern beantwortet habe."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Anna Krüger",
+    "Doberaner Straße 20",
+    "18057 Rostock"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "compact",
+  "accent": 0,
+  "name": "Sandra Wolff",
+  "title": "Verkäuferin, Kundenberaterin",
+  "street": "Kröpeliner Straße 50",
+  "city": "18055 Rostock",
+  "exp": [
+   [
+    "2015",
+    "",
+    "Verkäuferin",
+    "Modehaus Hanse",
+    "Rostock",
+    "- Beratung, Kasse, Reklamationen\n- Warenwirtschaft und Kundenkonto"
+   ],
+   [
+    "2013",
+    "2015",
+    "Aushilfe",
+    "Bäckerei Kluth",
+    "Rostock",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2013",
+    "Ausbildung Verkäuferin",
+    "Modehaus Hanse",
+    "Rostock",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    5
+   ],
+   [
+    "Reklamationen",
+    4
+   ],
+   [
+    "Tippen",
+    4
+   ],
+   [
+    "Geduld",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen, Lesen"
+ },
+ "do": [
+  "Erfahrung mit Kunden und Reklamationen nennen.",
+  "Sprachen mit Niveau angeben.",
+  "Schichtwünsche klären."
+ ],
+ "dont": [
+  "Telefonieren als einfache Arbeit darstellen.",
+  "Nur Sprachen ohne Niveau.",
+  "Unklare Arbeitszeiten."
+ ],
+ "questions": [
+  "Wie beruhigen Sie einen wütenden Anrufer?",
+  "Was tun Sie, wenn Sie die Antwort nicht wissen?",
+  "Wie schnell tippen Sie?",
+  "Welche Schichten passen Ihnen?"
+ ],
+ "faq": [
+  {
+   "q": "Wie läuft ein Telefoninterview ab?",
+   "a": "Oft ruft dich jemand an und spielt ein kurzes Kundengespräch durch. Sprich klar, frag nach, fass zusammen. Genau das wird später erwartet."
+  }
+ ],
+ "related": [
+  "kundenservice-mitarbeiter",
+  "empfangsmitarbeiter",
+  "promoter-messe",
+  "versicherungskaufmann"
+ ]
+}

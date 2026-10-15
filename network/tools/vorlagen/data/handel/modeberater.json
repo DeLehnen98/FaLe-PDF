@@ -1,0 +1,162 @@
+{
+ "id": "modeberater",
+ "field": "handel",
+ "name": "Modeberater/in (Verkauf Mode)",
+ "search": "modeberater modeberaterin verkäuferin mode textil boutique modehaus fashion verkauf beratung bewerbung",
+ "short": "Beraten, stylen, verkaufen – im Modehaus oder in der Boutique.",
+ "desc": "Bewerbung als Modeberater/in oder Verkäufer/in im Modehandel: Muster-Anschreiben für erfahrene Verkäuferin, Quereinsteiger und Teilzeitkraft, mit Lebenslauf.",
+ "intro": "Modeberaterinnen und Modeberater helfen Kunden, das Passende zu finden, und machen daraus Umsatz. Gefragt sind Stilgefühl, Menschenkenntnis und Verkaufszahlen. Erzähl, wie du berätst und welche Ergebnisse du erzielt hast – zum Beispiel Stammkundinnen, Zusatzverkäufe oder Auszeichnungen.",
+ "lookFor": [
+  "Erfahrung im Verkauf, gern Mode",
+  "Stilgefühl und Interesse an Trends",
+  "Beratungskompetenz und Verkaufsstärke",
+  "Visual Merchandising",
+  "Samstagsarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Verkäuferin wechselt ins Premium-Modehaus",
+   "level": "erfahren",
+   "position": "Modeberaterin Damen",
+   "to": {
+    "org": "Modehaus am Schlossplatz",
+    "sal": "f",
+    "contact": "Scholz",
+    "street": "Königstraße 30",
+    "city": "70173 Stuttgart"
+   },
+   "body": [
+    "eine Kundin hat mir einmal gesagt, sie komme nicht wegen der Kleider, sondern weil ich ihr ehrlich sage, wenn etwas nicht steht. Seitdem bringe ich das jeder neuen Kollegin bei: Ehrlichkeit verkauft auf Dauer mehr als Komplimente.",
+    "Seit sechs Jahren arbeite ich in einer Filiale einer Modekette, seit zwei Jahren als Erstkraft. Ich habe eine Stammkundenkartei mit über 120 Kundinnen aufgebaut, die ich bei neuen Kollektionen anrufe. Unser Umsatz pro Kunde liegt bei meinen Beratungen deutlich über dem Filialschnitt.",
+    "Im Premiumsegment möchte ich mehr Zeit für die einzelne Kundin haben. Kündigungsfrist: ein Monat."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinsteiger aus der Gastronomie",
+   "level": "quereinstieg",
+   "position": "Modeberater Herren (Teilzeit)",
+   "to": {
+    "org": "Herrenausstatter Lindner",
+    "sal": "m",
+    "contact": "Lindner",
+    "street": "Calwer Straße 12",
+    "city": "70173 Stuttgart"
+   },
+   "body": [
+    "zehn Jahre Service in einem gehobenen Restaurant haben mich gelehrt, Gäste zu lesen: Wer will beraten werden, wer will in Ruhe gelassen werden? Genau das braucht ein guter Herrenausstatter, und Anzüge interessieren mich seit Jahren mehr als Weinkarten.",
+    "Maßnehmen und Stoffkunde lerne ich gern, ein Abendkurs zu Herrenmode an der Volkshochschule war ein erster Schritt. An Samstagen und in der Hochzeitssaison bin ich gern im Laden, unter der Woche mit 25 Stunden."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Marco De Luca",
+    "Schwabstraße 70",
+    "70197 Stuttgart"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 2,
+  "name": "Mai Anh Vo",
+  "title": "Modeberaterin, Erstkraft",
+  "street": "Hauptstätter Straße 40",
+  "city": "70173 Stuttgart",
+  "exp": [
+   [
+    "03/2020",
+    "",
+    "Verkäuferin, ab 2024 Erstkraft",
+    "Modekette Urban Style",
+    "Stuttgart",
+    "- Stammkundenkartei mit über 120 Kundinnen\n- Einarbeitung neuer Kolleginnen\n- Schaufenster- und Flächengestaltung"
+   ],
+   [
+    "08/2017",
+    "02/2020",
+    "Verkäuferin",
+    "Schuhhaus Weber",
+    "Esslingen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2015",
+    "2017",
+    "Ausbildung Verkäuferin",
+    "Schuhhaus Weber",
+    "Esslingen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Modeberatung",
+    5
+   ],
+   [
+    "Stammkundenpflege",
+    5
+   ],
+   [
+    "Visual Merchandising",
+    4
+   ],
+   [
+    "Kasse",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Vietnamesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Nähen, Flohmärkte"
+ },
+ "do": [
+  "Beratungsstil und Ergebnisse beschreiben.",
+  "Stammkunden oder Zusatzverkäufe nennen.",
+  "Samstage ansprechen."
+ ],
+ "dont": [
+  "Nur „Mode ist mein Leben“.",
+  "Umsatzzahlen erfinden.",
+  "Unpassendes Outfit beim Vorstellungsgespräch."
+ ],
+ "questions": [
+  "Wie sprechen Sie eine Kundin an, die nur schaut?",
+  "Wie verkaufen Sie ein zweites Teil dazu?",
+  "Was tun Sie, wenn etwas nicht steht?",
+  "Welche Trends sehen Sie gerade?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viel Persönlichkeit darf in die Bewerbung?",
+   "a": "In der Mode gern etwas mehr: ein Foto, das deinen Stil zeigt, und ein Anschreiben, das nach dir klingt. Fehlerfrei und klar muss es trotzdem sein."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "kaufmann-im-einzelhandel",
+  "stellvertretende-filialleitung",
+  "kosmetikerin"
+ ]
+}

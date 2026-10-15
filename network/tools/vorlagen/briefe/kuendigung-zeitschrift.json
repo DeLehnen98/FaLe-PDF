@@ -1,0 +1,58 @@
+{
+ "id": "kuendigung-zeitschrift",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 6,
+ "name": "Kündigung Zeitschriften-Abo",
+ "short": "Abonnement einer Zeitschrift oder Zeitung kündigen",
+ "desc": "Zeitschriften- oder Zeitungsabo kündigen: Vorlage mit Abo-Nummer und Titel, Kündigung zum nächstmöglichen Termin – vorausgefüllt und sofort als PDF fürs Kuvert.",
+ "search": "zeitung zeitschrift magazin abo",
+ "when": [
+  "Du liest die Zeitschrift nicht mehr oder ein Probeabo soll nicht in ein teures Jahresabo übergehen. Abos, die seit März 2022 abgeschlossen wurden, sind nach der Mindestlaufzeit in der Regel monatlich kündbar.",
+  "Für ein Probeabo zählt die Frist aus dem Angebot – oft musst du schon vor der letzten Gratisausgabe kündigen."
+ ],
+ "must": [
+  "Titel der Zeitschrift",
+  "Abo- oder Kundennummer (steht auf dem Adressaufkleber)",
+  "Kündigungszeitpunkt",
+  "Bitte um Bestätigung",
+  "Widerruf der Lastschrift"
+ ],
+ "notes": [
+  "Bei Geschenkabos kündigt in der Regel die Person, die das Abo bezahlt.",
+  "Online abgeschlossene Abos lassen sich auch über den Kündigungsbutton auf der Verlagsseite kündigen.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Bekomme ich Geld zurück, wenn ich im Voraus bezahlt habe?",
+   "a": "Endet das Abo vor dem Ende des bezahlten Zeitraums, muss der Verlag den Rest in der Regel erstatten. Frag in der Kündigung danach, falls du jährlich im Voraus zahlst."
+  }
+ ],
+ "fields": {
+  "type": "magazine",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "title": "Beispiel Garten",
+  "subno": "ABO-559 210"
+ },
+ "related": [
+  "kuendigung-streaming",
+  "kuendigung-verein",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Thomas Muster",
+  "Birkenallee 8",
+  "34117 Kassel"
+ ],
+ "to": {
+  "org": "Verlag Musterpresse GmbH",
+  "attn": "Aboservice",
+  "street": "Postfach 30 40 50",
+  "city": "34001 Kassel"
+ }
+}

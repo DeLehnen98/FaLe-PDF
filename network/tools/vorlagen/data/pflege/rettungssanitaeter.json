@@ -1,0 +1,176 @@
+{
+ "id": "rettungssanitaeter",
+ "field": "pflege",
+ "name": "Rettungssanitäter/in",
+ "search": "rettungssanitäter rettungssanitäterin rettungsdienst krankentransport rettungswagen ehrenamt hauptamtlich bewerbung",
+ "short": "Krankentransport und Rettungsdienst – haupt- oder nebenamtlich.",
+ "desc": "Bewerbung als Rettungssanitäter/in im Rettungsdienst oder Krankentransport: Muster-Anschreiben für Student und hauptamtliche Rettungssanitäterin, mit Lebenslauf.",
+ "intro": "Rettungssanitäter fahren Krankentransporte, unterstützen Notfallsanitäter auf dem Rettungswagen und fahren Einsatzfahrzeuge. Die Qualifikation umfasst mehrere Hundert Stunden Theorie und Praxis, Details regeln die Länder. Viele arbeiten nebenbei, etwa im Studium; andere machen es zum Beruf oder als Vorstufe zum Notfallsanitäter.",
+ "lookFor": [
+  "Qualifikation als Rettungssanitäter/in",
+  "Führerschein, oft Klasse C1",
+  "Belastbarkeit und Ruhe",
+  "Schicht- und Wochenenddienst",
+  "Teamarbeit mit Notfallsanitätern"
+ ],
+ "letters": [
+  {
+   "label": "Medizinstudent im Nebenjob",
+   "level": "minijob",
+   "position": "Rettungssanitäter (Teilzeit, Wochenenddienste)",
+   "to": {
+    "org": "Rettungsdienst Rhein-Sieg gGmbH",
+    "sal": "m",
+    "contact": "Krause",
+    "street": "Rettungswache 1",
+    "city": "53721 Siegburg"
+   },
+   "body": [
+    "meine Ausbildung zum Rettungssanitäter habe ich vor dem Studium gemacht und seitdem ehrenamtlich bei Sanitätsdiensten und im Katastrophenschutz gearbeitet. Jetzt studiere ich Medizin in Bonn und möchte an Wochenenden auf dem Krankentransportwagen oder Rettungswagen fahren.",
+    "Ich habe den Führerschein C1 und kenne den Rhein-Sieg-Kreis gut. Zwei bis drei Dienste im Monat sind mit dem Studium gut vereinbar, in den Semesterferien mehr."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde Rettungssanitäter",
+    "Führerschein C1"
+   ]
+  },
+  {
+   "label": "Hauptamtliche Rettungssanitäterin mit Ziel Notfallsanitäterin",
+   "level": "erfahren",
+   "position": "Rettungssanitäterin (Vollzeit)",
+   "to": {
+    "org": "Kreis Euskirchen – Rettungsdienst",
+    "sal": "none",
+    "street": "Am Rettungszentrum 2",
+    "city": "53879 Euskirchen"
+   },
+   "body": [
+    "Krankentransport und Rettungswagen bei einem privaten Anbieter haben mir in drei Jahren gezeigt, dass ich diesen Beruf langfristig machen will. Mein Ziel ist die Ausbildung zur Notfallsanitäterin, und Ihr Kreis bildet regelmäßig aus.",
+    "Ich arbeite sicher mit Trage, Tragestuhl, EKG und Sauerstoff, dokumentiere sauber und bleibe ruhig, wenn Angehörige aufgeregt sind. Wechselschichten und 24-Stunden-Dienste kenne ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Melanie Pütz",
+    "Kölner Straße 70",
+    "53879 Euskirchen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "compact",
+  "accent": 3,
+  "name": "Noah Bergstein",
+  "title": "Rettungssanitäter, Student der Medizin",
+  "street": "Endenicher Allee 30",
+  "city": "53115 Bonn",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Rettungssanitäter (ehrenamtlich)",
+    "Hilfsorganisation Kreisverband Bonn",
+    "Bonn",
+    "- Sanitätsdienste bei Veranstaltungen\n- Katastrophenschutz-Einheit"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Humanmedizin, 4. Semester",
+    "Universität Bonn",
+    "Bonn",
+    ""
+   ],
+   [
+    "2023",
+    "2023",
+    "Ausbildung Rettungssanitäter",
+    "Rettungsdienstschule Köln",
+    "Köln",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Anno-Gymnasium",
+    "Siegburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "Führerschein C1",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Patientenversorgung",
+    4
+   ],
+   [
+    "Tragetechnik",
+    4
+   ],
+   [
+    "Dokumentation",
+    4
+   ],
+   [
+    "Ruhe in Notfällen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Laufen, Gitarre"
+ },
+ "do": [
+  "Qualifikation und Führerscheinklasse nennen.",
+  "Einsatzerfahrung angeben.",
+  "Dienstwünsche klar sagen."
+ ],
+ "dont": [
+  "Einsatz-Geschichten mit Details zu Patienten.",
+  "Blaulicht-Romantik.",
+  "Unklare Verfügbarkeit."
+ ],
+ "questions": [
+  "Wie gehen Sie mit belastenden Einsätzen um?",
+  "Was machen Sie zuerst bei einem bewusstlosen Patienten?",
+  "Wie viele Dienste können Sie übernehmen?",
+  "Wollen Sie Notfallsanitäter werden?"
+ ],
+ "faq": [
+  {
+   "q": "Rettungssanitäter oder Notfallsanitäter?",
+   "a": "Rettungssanitäter ist eine kürzere Qualifikation für Krankentransport und Unterstützung auf dem Rettungswagen. Notfallsanitäter ist eine dreijährige Berufsausbildung mit erweiterten Kompetenzen."
+  }
+ ],
+ "related": [
+  "notfallsanitaeter",
+  "pflegefachkraft-intensiv",
+  "praktikum-krankenhaus",
+  "fsj-bfd"
+ ]
+}

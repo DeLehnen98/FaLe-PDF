@@ -1,0 +1,69 @@
+{
+ "id": "vollmacht-post",
+ "group": "vollmacht",
+ "tool": "power-of-attorney",
+ "order": 32,
+ "name": "Vollmacht zur Abholung von Post und Paketen",
+ "short": "Jemand anderen Briefe und Pakete abholen lassen",
+ "desc": "Vollmacht für Post und Pakete: Muster, damit eine Vertrauensperson Sendungen und Einschreiben in der Filiale oder im Paketshop für dich abholen darf – als PDF.",
+ "search": "post paket abholen vollmacht einschreiben",
+ "when": [
+  "Du kannst eine Sendung nicht selbst abholen – du bist krank, verreist oder arbeitest zu den Öffnungszeiten. Mit dieser Vollmacht darf eine andere Person Briefe, Pakete und Einschreiben für dich abholen und den Empfang quittieren."
+ ],
+ "must": [
+  "Deine Daten (Vollmachtgeber)",
+  "Name und Anschrift der Person, die abholt",
+  "Was abgeholt werden darf und wo",
+  "Gültigkeit – ein Tag, ein Zeitraum oder bis auf Widerruf",
+  "Deine Unterschrift"
+ ],
+ "notes": [
+  "Die abholende Person braucht ihren eigenen Ausweis, oft auch eine Kopie deines Ausweises oder den Benachrichtigungsschein.",
+  "Manche Paketdienste haben eigene Vollmachtsformulare oder lassen die Vollmacht direkt in der App erteilen.",
+  "Für behördliche Schreiben mit Zustellungsurkunde gelten eigene Regeln."
+ ],
+ "faq": [
+  {
+   "q": "Darf ich auch eine Dauer-Vollmacht ausstellen?",
+   "a": "Ja, „bis auf Widerruf“. Gib sie aber nur Menschen, denen du wirklich vertraust, und widerrufe sie schriftlich, wenn sie nicht mehr gelten soll."
+  }
+ ],
+ "fields": {
+  "purpose": "post",
+  "gName": "Thomas Muster",
+  "gStreet": "Birkenallee 8",
+  "gCity": "34117 Kassel",
+  "aName": "Ingrid Muster",
+  "aStreet": "Weserstraße 19",
+  "aCity": "34125 Kassel",
+  "where": "Postfiliale am Marktplatz",
+  "valid": "period"
+ },
+ "related": [
+  "vollmacht-behoerde",
+  "vollmacht-wohnungsuebergabe",
+  "quittung-privatverkauf"
+ ],
+ "doc": [
+  [
+   "Vollmachtgeber/in",
+   "Thomas Muster, Birkenallee 8, 34117 Kassel"
+  ],
+  [
+   "Bevollmächtigte Person",
+   "Ingrid Muster, Weserstraße 19, 34125 Kassel"
+  ],
+  [
+   "Text",
+   "Hiermit bevollmächtige ich …, für mich bestimmte Briefe, Pakete und sonstige Sendungen – auch Einschreiben und Nachnahmesendungen – bei Postfiliale am Marktplatz abzuholen, in Empfang zu nehmen und den Empfang zu quittieren."
+  ],
+  [
+   "Gültigkeit",
+   "Für einen Zeitraum (Von – bis)"
+  ],
+  [
+   "Unterschriften",
+   "Vollmachtgeber/in; Unterschriftsprobe der bevollmächtigten Person"
+  ]
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "id": "schuelerjob",
+ "field": "minijob",
+ "name": "Schülerjob / Nebenjob ab 13",
+ "search": "schülerjob nebenjob schüler 13 14 taschengeld minijob prospekte nachhilfe tiere ausführen bewerbung",
+ "short": "Kleine Jobs neben der Schule – mit Einverständnis der Eltern.",
+ "desc": "Bewerbung um einen Schülerjob ab 13 Jahren: sehr kurze Muster-Anschreiben für Gassi gehen, Gartenhilfe und Prospekte verteilen, mit Lebenslauf und den wichtigsten Regeln.",
+ "intro": "Ab 13 dürfen Schülerinnen und Schüler mit Einverständnis der Eltern leichte Arbeiten übernehmen, zum Beispiel Zeitschriften austragen, Nachhilfe geben, Tiere versorgen oder im Garten helfen. Es gelten enge Grenzen bei Stunden und Uhrzeiten. Ein kurzes, freundliches Anschreiben reicht völlig.",
+ "lookFor": [
+  "Einverständnis der Eltern",
+  "Zuverlässigkeit",
+  "Feste Zeiten neben der Schule",
+  "Wohnort in der Nähe",
+  "Freundliches Auftreten"
+ ],
+ "letters": [
+  {
+   "label": "Gassi gehen für eine Hundeschule",
+   "level": "minijob",
+   "position": "Gassi-Service (Schülerjob)",
+   "to": {
+    "org": "Hundeschule Pfotenglück",
+    "sal": "f",
+    "contact": "Martens",
+    "street": "Feldweg 9",
+    "city": "24534 Neumünster"
+   },
+   "body": [
+    "unser Nachbar hat einen alten Labrador, mit dem ich seit einem Jahr jeden Nachmittag eine Runde drehe. Ich habe gelesen, dass Sie Hilfe beim Ausführen von Pensionshunden suchen, und würde das gern übernehmen.",
+    "Ich bin 14 und kann montags bis freitags von 15 bis 17 Uhr. Meine Eltern sind einverstanden. Bei Ihnen in der Nähe wohne ich, mit dem Rad sind es fünf Minuten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Einverständnis der Eltern"
+   ]
+  },
+  {
+   "label": "Gartenhilfe bei einer Gärtnerei",
+   "level": "minijob",
+   "position": "Gartenhilfe (Schülerjob)",
+   "to": {
+    "org": "Gärtnerei Lindemann",
+    "sal": "m",
+    "contact": "Lindemann",
+    "street": "Rendsburger Straße 140",
+    "city": "24537 Neumünster"
+   },
+   "body": [
+    "jeden Herbst helfe ich meinen Großeltern im Garten, Laub harken, Beete abräumen, Hecke schneiden mit der Handschere. Ich mag das, und ich wäre froh, damit ein bisschen Geld zu verdienen.",
+    "Ich bin 13 und kann am Mittwochnachmittag und samstags vormittags zwei Stunden helfen, Töpfe sortieren, gießen oder fegen. Ein Schreiben meiner Mutter liegt bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Einverständnis der Mutter"
+   ],
+   "from": [
+    "Mattis Krohn",
+    "Am Teich 3",
+    "24537 Neumünster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "compact",
+  "accent": 1,
+  "name": "Finn Brodersen",
+  "title": "Schüler",
+  "street": "Kieler Straße 50",
+  "city": "24534 Neumünster",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Hund des Nachbarn ausführen",
+    "privat",
+    "Neumünster",
+    "- täglich, seit einem Jahr"
+   ]
+  ],
+  "edu": [
+   [
+    "2022",
+    "",
+    "Gemeinschaftsschule, zurzeit Klasse 8",
+    "Gemeinschaftsschule Brachenfeld",
+    "Neumünster",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Hunden",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "Pünktlichkeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball, Hunde"
+ },
+ "do": [
+  "Alter und Zeiten nennen.",
+  "Einverständnis der Eltern erwähnen.",
+  "Sehr kurz bleiben."
+ ],
+ "dont": [
+  "Jobs annehmen, die nach 18 Uhr enden – das ist für unter 15-Jährige nicht erlaubt.",
+  "Ohne Wissen der Eltern zusagen.",
+  "Lange Briefe."
+ ],
+ "questions": [
+  "Wann haben Sie Zeit?",
+  "Haben Sie schon Erfahrung mit Tieren oder Pflanzen?",
+  "Was sagen Ihre Eltern?",
+  "Wie kommen Sie zu uns?"
+ ],
+ "faq": [
+  {
+   "q": "Ab welchem Alter darf ich jobben?",
+   "a": "Ab 13 Jahren mit Einverständnis der Eltern, nur leichte, für Kinder geeignete Arbeiten, höchstens zwei Stunden am Tag, nicht zwischen 18 und 8 Uhr und nicht während des Unterrichts."
+  },
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar Sätze dazu, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "ferienjob",
+  "zeitungszusteller",
+  "babysitter",
+  "nachhilfelehrer"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "id": "abmeldung-rundfunkbeitrag",
+ "group": "kuendigung",
+ "tool": "din-letter",
+ "order": 16,
+ "name": "Abmeldung Rundfunkbeitrag",
+ "short": "Beitragskonto abmelden, z. B. nach Zusammenzug",
+ "desc": "Rundfunkbeitrag abmelden: Muster für die Abmeldung des Beitragskontos nach Zusammenzug, Umzug ins Ausland oder Todesfall – mit Beitragsnummern und Nachweisen.",
+ "search": "rundfunk beitragsservice abmelden wohnung",
+ "when": [
+  "Der Rundfunkbeitrag wird pro Wohnung gezahlt, nicht pro Person. Ziehst du zu jemandem, der schon zahlt, kannst du dein eigenes Beitragskonto abmelden. Auch beim Umzug ins Ausland oder wenn eine Person verstorben ist, wird abgemeldet.",
+  "Am einfachsten geht das mit dem Online-Formular des Beitragsservice. Ein Brief ist eine Alternative, wenn du lieber auf Papier schreibst oder Nachweise beilegen willst."
+ ],
+ "must": [
+  "Deine Beitragsnummer",
+  "Den Grund der Abmeldung und das Datum, ab dem er gilt",
+  "Bei Zusammenzug: Name und Beitragsnummer der Person, die für die gemeinsame Wohnung weiter zahlt",
+  "Deine neue Anschrift",
+  "Bei Todesfall: Kopie der Sterbeurkunde"
+ ],
+ "notes": [
+  "Eine Abmeldung „weil ich keinen Fernseher habe“ ist nicht möglich – der Beitrag hängt an der Wohnung, nicht an Geräten.",
+  "Eine Befreiung oder Ermäßigung (z. B. bei Bürgergeld oder BAföG) ist etwas anderes als eine Abmeldung und wird gesondert beantragt.",
+  "Die Postanschrift steht auf jedem Schreiben des Beitragsservice; nutze diese."
+ ],
+ "faq": [
+  {
+   "q": "Bekomme ich zu viel gezahlte Beiträge zurück?",
+   "a": "Ja, wenn du für eine Zeit doppelt gezahlt hast. Bitte im Brief ausdrücklich um Erstattung auf dein Konto und gib die IBAN an."
+  }
+ ],
+ "fields": {
+  "notice": "none"
+ },
+ "related": [
+  "kuendigungsbestaetigung-anfordern",
+  "kuendigung-mietvertrag",
+  "widerspruch-bescheid"
+ ],
+ "from": [
+  "Lukas Wagner",
+  "Schillerstraße 40",
+  "04109 Leipzig"
+ ],
+ "to": {
+  "org": "Beitragsservice",
+  "street": "[Anschrift aus deinem letzten Schreiben]",
+  "city": ""
+ },
+ "letter": {
+  "subject": "Abmeldung meines Beitragskontos – Beitragsnummer 123 456 789",
+  "salutation": "Sehr geehrte Damen und Herren,",
+  "body": [
+   "zum [Datum] bin ich in die Wohnung von Frau Anna Schmidt, Schillerstraße 40, 04109 Leipzig, gezogen. Für diese Wohnung wird der Rundfunkbeitrag bereits unter der Beitragsnummer 987 654 321 gezahlt.",
+   "Ich bitte Sie deshalb, mein Beitragskonto ab diesem Zeitpunkt abzumelden. Falls ich für die Zeit danach Beiträge gezahlt habe, überweisen Sie diese bitte auf mein Konto IBAN DE00 1234 5678 9012 3456 78.",
+   "Eine Bestätigung der Abmeldung hätte ich gern schriftlich."
+  ],
+  "closing": "Mit freundlichen Grüßen",
+  "att": [
+   "Kopie der Meldebescheinigung"
+  ]
+ }
+}

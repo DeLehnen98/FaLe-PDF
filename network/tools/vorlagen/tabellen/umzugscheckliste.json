@@ -1,0 +1,81 @@
+{
+ "id": "umzugscheckliste",
+ "slug": "umzugscheckliste",
+ "cat": "Zuhause",
+ "name": "Umzugscheckliste",
+ "short": "Alle Umzugsaufgaben mit Termin ab dem Umzugstag",
+ "desc": "Umzugscheckliste als Excel-Vorlage (XLSX): Umzugstag eintragen – jede Aufgabe von der Kündigung bis zur Ummeldung bekommt ihr Datum, Überfälliges wird rot.",
+ "search": "umzug checkliste",
+ "intro": "Ein Umzug besteht aus vielen kleinen Fristen. In der Checkliste steht bei jeder Aufgabe, wie viele Wochen vor oder nach dem Umzug sie dran ist; aus dem Umzugstag entsteht ein konkretes Datum. Erledigte Aufgaben werden durchgestrichen, vergessene rot.",
+ "uses": [
+  "Umzug in eine neue Wohnung planen",
+  "Aufgaben in der Familie oder WG verteilen",
+  "Nichts Wichtiges vergessen – vom Nachsendeauftrag bis zur Ummeldung"
+ ],
+ "cols": [
+  [
+   "Aufgabe",
+   "Was zu tun ist. Die Beispielaufgaben kannst du ändern, löschen oder ergänzen."
+  ],
+  [
+   "Wochen vorher",
+   "Wie viele Wochen vor dem Umzugstag. 0 heißt am Umzugstag, negative Werte bedeuten nach dem Umzug, Kommazahlen sind Tage (0,3 ≈ zwei Tage vorher)."
+  ],
+  [
+   "Fällig am",
+   "Umzugstag minus Wochen mal sieben."
+  ],
+  [
+   "Erledigt",
+   "Ja oder Nein. Bei „Ja“ wird die Zeile grau durchgestrichen."
+  ],
+  [
+   "Wer",
+   "Wer sich kümmert."
+  ],
+  [
+   "Notiz",
+   "Telefonnummern, Kundennummern, Termine."
+  ],
+  [
+   "Fortschritt",
+   "Anzahl der Aufgaben, wie viele erledigt sind, wie viele schon überfällig sind und der Fortschritt in Prozent – dazu die Tage bis zum Umzug."
+  ]
+ ],
+ "tips": [
+  "Bei der Ummeldung im Bürgeramt ist die Frist kurz – in Deutschland meist zwei Wochen nach dem Einzug. Termine sind oft knapp, buch also früh.",
+  "Fotografier die Zählerstände in beiden Wohnungen mit Datum."
+ ],
+ "faq": [
+  {
+   "q": "Gelten die Fristen in der Liste für mich?",
+   "a": "Die Wochenangaben sind Erfahrungswerte. Die Kündigungsfrist deiner alten Wohnung steht im Mietvertrag; für eine Halteverbotszone verlangen manche Städte mehr Vorlauf. Pass die Zahlen an deine Situation an."
+  },
+  {
+   "q": "Kann ich die Liste mit anderen teilen?",
+   "a": "Ja. Lade die Datei herunter und teile sie; in der Spalte „Wer“ seht ihr, wer was übernimmt."
+  }
+ ],
+ "related": [
+  "putzplan",
+  "inventarliste",
+  "nebenkosten"
+ ],
+ "en": {
+  "slug": "moving-checklist",
+  "name": "Moving checklist",
+  "short": "All moving tasks with dates counted from moving day",
+  "desc": "Moving checklist spreadsheet (XLSX): enter your moving day – every task from giving notice to registering your new address gets its date, and overdue tasks turn red.",
+  "intro": "Each task says how many weeks before or after the move it is due; the moving day turns that into a real date. Done tasks are struck through, missed ones turn red. Tasks follow German practice.",
+  "inside": [
+   "Due date = moving day − weeks × 7",
+   "Done column with strike-through",
+   "Overdue highlighting",
+   "Progress and days until the move"
+  ],
+  "uses": [
+   "Planning a move",
+   "Sharing tasks in a family or flat share"
+  ]
+ }
+}

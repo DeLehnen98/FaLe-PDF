@@ -9,6 +9,7 @@ import { reminderTotals, lateRate, BASE_RATE } from '../lib/tpl-interest.js';
 import { missingWarning } from '../lib/unifont.js';
 import { formatIban } from '../lib/new-invoice.js';
 import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS } from '../lib/tpl-letterui.js';
+import { briefVorlage } from '../lib/arc2-brief.js';
 
 ensureCss();
 
@@ -114,7 +115,7 @@ const REQ = (v, lang) => [{ ok: !!s(v.sName), de: 'deinen Namen', en: 'your name
 export default {
   labels: { back_to_files: { de: 'Zurück zur Mahnung', en: 'Back to the reminder' } },
   options: [],
-  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); },
+  mountStage(stage, state, ctx) { api = stageFn(stage, state, ctx); briefVorlage('payment-reminder', 'pr', stage, state, ctx, () => { api = stageFn(stage, state, ctx); }); },
   status(values, inputs, lang) {
     const v = values.pr || {};
     const t = totals(v, lang);

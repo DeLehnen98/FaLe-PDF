@@ -1,0 +1,158 @@
+{
+ "id": "ambulante-pflege",
+ "field": "pflege",
+ "name": "Pflegefachkraft ambulanter Pflegedienst",
+ "search": "ambulante pflege ambulanter pflegedienst pflegefachkraft tour hausbesuch häusliche pflege bewerbung",
+ "short": "Hausbesuche statt Station – selbstständig auf Tour.",
+ "desc": "Bewerbung als Pflegefachkraft im ambulanten Pflegedienst: Muster-Anschreiben für Pflegekraft aus dem Krankenhaus und Teilzeit-Rückkehrerin, mit Lebenslauf.",
+ "intro": "Im ambulanten Dienst fährst du allein zu Patientinnen und Patienten nach Hause: Medikamente, Verbände, Insulin, Grundpflege, Beratung. Du entscheidest viel selbst und bist Gast in fremden Wohnungen. Ein Führerschein ist fast immer Pflicht.",
+ "lookFor": [
+  "Examen als Pflegefachkraft",
+  "Selbstständiges Arbeiten",
+  "Führerschein Klasse B",
+  "Behandlungspflege und Beratung",
+  "Respekt vor dem Zuhause anderer"
+ ],
+ "letters": [
+  {
+   "label": "Pflegekraft aus dem Krankenhaus",
+   "level": "erfahren",
+   "position": "Pflegefachkraft ambulant",
+   "to": {
+    "org": "Pflegedienst Lebensnah",
+    "sal": "f",
+    "contact": "Martens",
+    "street": "Hauptstraße 50",
+    "city": "23552 Lübeck"
+   },
+   "body": [
+    "im Krankenhaus sehe ich Patienten fünf Tage, dann gehen sie nach Hause, und ich weiß nicht, wie es weitergeht. Bei Ihnen möchte ich Menschen über längere Zeit begleiten und sehen, ob die Wunde wirklich heilt.",
+    "Sieben Jahre Innere Medizin haben mir Sicherheit in Behandlungspflege gegeben: Wundversorgung, Insulin, Kompressionen, Portversorgung. Ich arbeite gern selbstständig und habe einen Führerschein seit 15 Jahren, unfallfrei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Rückkehrerin mit Wunsch nach festen Touren",
+   "level": "erfahren",
+   "position": "Pflegefachkraft (Teilzeit, Frühtour)",
+   "to": {
+    "org": "Sozialstation Lübeck-Süd",
+    "sal": "none",
+    "street": "Kronsforder Allee 20",
+    "city": "23560 Lübeck"
+   },
+   "body": [
+    "vormittags, wenn meine Kinder in der Schule sind, hätte ich Zeit für eine Frühtour. Bevor die Kinder kamen, war ich vier Jahre im ambulanten Dienst und kenne Tourenpläne, Leistungsnachweise und Hausbesuche bei Menschen, die nicht immer gut gelaunt sind.",
+    "Mein Examen ist gültig, eine Fortbildung zur Wundexpertin habe ich während der Elternzeit online gemacht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Zertifikat Wundexpertin"
+   ],
+   "from": [
+    "Sandra Petersen",
+    "Moislinger Allee 40",
+    "23558 Lübeck"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "compact",
+  "accent": 1,
+  "name": "Nina Brockmann",
+  "title": "Pflegefachfrau",
+  "street": "Schwartauer Allee 80",
+  "city": "23554 Lübeck",
+  "exp": [
+   [
+    "2019",
+    "",
+    "Pflegefachfrau Innere Medizin",
+    "Klinikum Lübeck",
+    "Lübeck",
+    "- Wundversorgung, Portversorgung\n- Insulin, Kompression\n- Entlassmanagement"
+   ],
+   [
+    "2016",
+    "2019",
+    "Ausbildung Gesundheits- und Krankenpflegerin",
+    "Klinikum Lübeck",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Examen Gesundheits- und Krankenpflege",
+    "Pflegeschule Lübeck",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Behandlungspflege",
+    5
+   ],
+   [
+    "Wundversorgung",
+    4
+   ],
+   [
+    "Beratung",
+    4
+   ],
+   [
+    "Selbstständiges Arbeiten",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Segeln, Radfahren"
+ },
+ "do": [
+  "Selbstständigkeit und Behandlungspflege betonen.",
+  "Führerschein angeben.",
+  "Arbeitszeitwunsch nennen."
+ ],
+ "dont": [
+  "Unsicherheit beim Autofahren verschweigen.",
+  "Nur Grundpflege nennen.",
+  "Respekt vor dem Zuhause vergessen."
+ ],
+ "questions": [
+  "Was tun Sie, wenn ein Patient nicht öffnet?",
+  "Wie gehen Sie mit Zeitdruck auf der Tour um?",
+  "Wie dokumentieren Sie unterwegs?",
+  "Wie reagieren Sie auf eine verwahrloste Wohnung?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich Erfahrung im ambulanten Dienst?",
+   "a": "Nicht unbedingt. Viele Dienste arbeiten Pflegekräfte aus Klinik oder Heim ein. Wichtig sind Sicherheit in der Behandlungspflege und Selbstständigkeit."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "altenpfleger",
+  "pflegehelfer",
+  "pflegedienstleitung"
+ ]
+}

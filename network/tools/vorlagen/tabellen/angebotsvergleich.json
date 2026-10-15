@@ -1,0 +1,69 @@
+{
+ "id": "angebotsvergleich",
+ "slug": "angebotsvergleich",
+ "cat": "Business",
+ "name": "Angebotsvergleich",
+ "short": "Drei Angebote gewichtet nach Preis, Lieferzeit, Garantie und Qualität",
+ "desc": "Angebotsvergleich als Excel-Vorlage (XLSX): drei Angebote nach Preis, Lieferzeit, Garantie und eigenen Kriterien gewichtet bewerten – mit Rangfolge und Preis-Leistung.",
+ "search": "nutzwertanalyse vergleich",
+ "intro": "Das günstigste Angebot ist nicht immer das beste. Die Vorlage vergleicht drei Anbieter in einer Nutzwertanalyse: Preis, Lieferzeit und Garantie werden automatisch bepunktet, Qualität und Service bewertest du selbst. Mit der Gewichtung legst du fest, was dir wichtig ist.",
+ "uses": [
+  "Handwerker-, Software- oder Lieferantenangebote vergleichen",
+  "Eine Entscheidung im Team nachvollziehbar machen",
+  "Größere private Anschaffungen abwägen"
+ ],
+ "cols": [
+  [
+   "Eckdaten",
+   "Die harten Zahlen aus den Angeboten: Preis, Lieferzeit, Garantie und Zahlungsziel."
+  ],
+  [
+   "Einheit",
+   "Euro, Tage oder Monate."
+  ],
+  [
+   "Anbieter A · Anbieter B · Anbieter C",
+   "Je eine Spalte pro Angebot. Die Überschriften kannst du in die Namen der Anbieter ändern."
+  ],
+  [
+   "Bewertung (0–10 Punkte)",
+   "Die Kriterien. Preis: das günstigste Angebot bekommt 10, die anderen anteilig weniger. Lieferzeit: die schnellste bekommt 10. Garantie: die längste bekommt 10. Qualität und Service trägst du selbst ein."
+  ],
+  [
+   "Gewichtung",
+   "Wie wichtig das Kriterium ist. Zusammen sollen es 100 % sein – sonst wird die Summe rot markiert. „Gewichtete Punkte“ ist SUMMENPRODUKT aus Gewichtung und Punkten."
+  ]
+ ],
+ "tips": [
+  "„Rang“ ordnet die Angebote nach den gewichteten Punkten (RANG); der erste Platz wird grün.",
+  "„Punkte je 1.000 €“ zeigt, wie viel Leistung du pro Euro bekommst – hilfreich, wenn die Preise weit auseinanderliegen."
+ ],
+ "faq": [
+  {
+   "q": "Wie lege ich die Gewichtung fest?",
+   "a": "Am besten bevor die Angebote da sind – sonst verschiebt man die Gewichte unbewusst zugunsten des Lieblings. Ein Daumenwert: Was ein K.-o.-Kriterium ist, gehört gar nicht in die Bewertung, sondern sortiert Angebote vorher aus."
+  }
+ ],
+ "related": [
+  "preiskalkulation",
+  "kundenliste",
+  "lagerbestand"
+ ],
+ "en": {
+  "slug": "quote-comparison",
+  "name": "Quote comparison",
+  "short": "Three quotes scored by price, delivery, warranty and quality",
+  "desc": "Quote comparison spreadsheet (XLSX): score three quotes by price, delivery time, warranty and your own criteria with weights – with ranking and value for money.",
+  "intro": "The cheapest quote is not always the best. The template compares three suppliers in a weighted scoring model: price, delivery time and warranty are scored automatically, quality and service by you.",
+  "inside": [
+   "Automatic points for price, delivery and warranty",
+   "Your own scores for quality and service",
+   "Weighted total (SUMPRODUCT) and rank",
+   "Points per 1,000 € spent"
+  ],
+  "uses": [
+   "Comparing tradespeople or suppliers",
+   "Explaining a decision to a team"
+  ]
+ }
+}

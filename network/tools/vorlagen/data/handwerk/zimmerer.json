@@ -1,0 +1,170 @@
+{
+ "id": "zimmerer",
+ "field": "handwerk",
+ "name": "Zimmerer/Zimmerin",
+ "search": "zimmerer zimmerin zimmermann holzbau dachstuhl fachwerk abbund holzrahmenbau handwerk bewerbung",
+ "short": "Dachstühle, Holzrahmenbau, Sanierung.",
+ "desc": "Bewerbung als Zimmerer/Zimmerin: Muster-Anschreiben für Gesellin nach der Wanderschaft und Zimmerer mit Holzrahmenbau-Erfahrung, mit Lebenslauf.",
+ "intro": "Zimmerer bauen Dachstühle, Holzhäuser und Aufstockungen, sanieren Fachwerk und arbeiten zunehmend mit vorgefertigten Elementen. Betriebe suchen Leute mit räumlichem Denken, Erfahrung an der Abbundanlage oder im Handabbund und sicherer Arbeit in der Höhe.",
+ "lookFor": [
+  "Gesellenbrief Zimmerer/Zimmerin",
+  "Abbund, Holzrahmenbau, Sanierung",
+  "Schwindelfreiheit",
+  "Pläne und Holzlisten lesen",
+  "Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Zimmerin nach der Walz",
+   "level": "erfahren",
+   "position": "Zimmerin (Gesellin)",
+   "to": {
+    "org": "Holzbau Kirchner",
+    "sal": "m",
+    "contact": "Kirchner",
+    "street": "Sägewerkstraße 7",
+    "city": "79822 Titisee-Neustadt"
+   },
+   "body": [
+    "auf Wanderschaft war ich drei Jahre und einen Tag, auf Baustellen in Norwegen, in der Schweiz und zuletzt in Frankreich, wo wir eine Fachwerkscheune aus dem 18. Jahrhundert restauriert haben. Jetzt bin ich zurück im Schwarzwald und möchte sesshaft werden.",
+    "Handabbund, Holzverbindungen und Sanierung von altem Gebälk sind meine Stärken. In Norwegen habe ich Holzrahmenbau mit vorgefertigten Elementen kennengelernt, der bei Ihnen ein großer Teil der Arbeit ist. Ihr Betrieb verbindet beides, deshalb diese Bewerbung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Referenzen von der Wanderschaft"
+   ]
+  },
+  {
+   "label": "Zimmerer mit Holzrahmenbau-Erfahrung",
+   "level": "erfahren",
+   "position": "Zimmerer Vorfertigung und Montage",
+   "to": {
+    "org": "Schwarzwälder Holzhaus GmbH",
+    "sal": "none",
+    "street": "Am Bahnhof 15",
+    "city": "79843 Löffingen"
+   },
+   "body": [
+    "an der Abbundanlage und in der Wandvorfertigung habe ich in den letzten vier Jahren rund 60 Holzhäuser mitgebaut. Ich kann die Maschine bedienen, Daten prüfen und Elemente auf der Baustelle mit dem Kran montieren.",
+    "Ich möchte näher an meinem Wohnort arbeiten und in einem Betrieb, der auch Aufstockungen in der Stadt macht. Einen Kranschein habe ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Kranschein"
+   ],
+   "from": [
+    "Benedikt Faller",
+    "Hauptstraße 30",
+    "79843 Löffingen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "compact",
+  "accent": 4,
+  "name": "Johanna Maier",
+  "title": "Zimmerin (Gesellin)",
+  "street": "Feldbergstraße 8",
+  "city": "79822 Titisee-Neustadt",
+  "exp": [
+   [
+    "2022",
+    "2025",
+    "Wanderschaft",
+    "",
+    "Norwegen, Schweiz, Frankreich",
+    "- Holzrahmenbau, Fachwerksanierung\n- Restaurierung einer Scheune (18. Jh.)"
+   ],
+   [
+    "2019",
+    "2022",
+    "Zimmerin",
+    "Zimmerei Ruf",
+    "Lenzkirch",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Ausbildung Zimmerin",
+    "Zimmerei Ruf",
+    "Lenzkirch",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Handabbund",
+    5
+   ],
+   [
+    "Holzverbindungen",
+    5
+   ],
+   [
+    "Holzrahmenbau",
+    3
+   ],
+   [
+    "Sanierung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ],
+   [
+    "Norwegisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Skitouren, Schnitzen"
+ },
+ "do": [
+  "Projekte und Bauweisen nennen.",
+  "Maschinen und Scheine angeben.",
+  "Bezug zum Betriebsprofil zeigen."
+ ],
+ "dont": [
+  "Nur „Ich arbeite gern mit Holz“.",
+  "Sicherheit weglassen.",
+  "Wanderschaft als Lücke ohne Inhalt."
+ ],
+ "questions": [
+  "Welche Holzverbindungen beherrschen Sie?",
+  "Wie gehen Sie mit einem fehlerhaften Element um?",
+  "Haben Sie an einer Abbundanlage gearbeitet?",
+  "Wie sichern Sie sich auf dem Dach?"
+ ],
+ "faq": [
+  {
+   "q": "Was erwartet mich beim Probearbeiten?",
+   "a": "Meist ein ganzer Tag mit auf der Baustelle oder in der Werkstatt. Pünktlich sein, Arbeitskleidung und Sicherheitsschuhe mitbringen, mit anpacken und Fragen stellen – mehr wird nicht erwartet."
+  },
+  {
+   "q": "Gehört die Wanderschaft in den Lebenslauf?",
+   "a": "Ja, unbedingt. Nenn Länder, Betriebe und Projekte. Für viele Zimmereien ist das eine besondere Empfehlung."
+  }
+ ],
+ "related": [
+  "dachdecker",
+  "tischler",
+  "maurer",
+  "ausbildung-tischler"
+ ]
+}

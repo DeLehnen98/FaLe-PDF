@@ -1,0 +1,160 @@
+{
+ "id": "werkstudent-finanzen",
+ "field": "praktikum",
+ "name": "Werkstudent/in Finanzen und Controlling",
+ "search": "werkstudent werkstudentin controlling finanzen buchhaltung accounting rechnungswesen studentenjob bewerbung",
+ "short": "Buchhaltung, Reporting, Controlling – Zahlen neben dem Studium.",
+ "desc": "Bewerbung als Werkstudent/in in Finanzen, Buchhaltung oder Controlling: Muster-Anschreiben für BWL-Studenten und Wirtschaftsmathematikerin, mit Lebenslauf und Tipps.",
+ "intro": "In Finanzabteilungen helfen Werkstudierende bei Monatsabschlüssen, Rechnungsprüfung, Reportings und Auswertungen. Gefragt sind Tabellenkalkulation auf gutem Niveau, Genauigkeit und Interesse an Abläufen. Schreib, welche Kurse du schon hattest und was du in einem Tabellenblatt sicher kannst.",
+ "lookFor": [
+  "Studium der Wirtschaftswissenschaften oder ähnlich",
+  "Sichere Tabellenkalkulation (Formeln, Pivot)",
+  "Kenntnisse in Rechnungswesen",
+  "Genauigkeit",
+  "Zuverlässigkeit bei Fristen wie Monatsabschluss"
+ ],
+ "letters": [
+  {
+   "label": "BWL-Student mit Buchhaltungserfahrung",
+   "level": "praktikum",
+   "position": "Werkstudent Buchhaltung",
+   "to": {
+    "org": "Elbtal Möbel GmbH & Co. KG",
+    "sal": "f",
+    "contact": "Grünberg",
+    "street": "Pirnaer Landstraße 120",
+    "city": "01237 Dresden"
+   },
+   "body": [
+    "im elterlichen Malerbetrieb buche ich seit zwei Jahren die Eingangsrechnungen und bereite die Unterlagen für den Steuerberater vor. Was ich dort gelernt habe, ist vor allem: Fehler am Anfang kosten am Monatsende das Dreifache an Zeit.",
+    "Ich studiere BWL an der HTW Dresden im vierten Semester, Kostenrechnung und Bilanzierung habe ich mit 1,7 und 2,0 abgeschlossen. In Tabellen arbeite ich mit Verweisen, Pivot-Tabellen und bedingten Formatierungen. Ein Möbelhersteller mit eigenem Handel ist für mich interessant, weil Einkauf, Produktion und Verkauf alle in einer Buchhaltung zusammenlaufen.",
+    "Montags und donnerstags habe ich keine Vorlesungen. Insgesamt kann ich 16 Stunden pro Woche arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Immatrikulationsbescheinigung"
+   ]
+  },
+  {
+   "label": "Wirtschaftsmathematikerin fürs Controlling",
+   "level": "praktikum",
+   "position": "Werkstudentin Controlling",
+   "to": {
+    "org": "Energieversorgung Elbtal GmbH",
+    "sal": "none",
+    "street": "Am Kraftwerk 12",
+    "city": "01067 Dresden"
+   },
+   "body": [
+    "ein Budget von 30.000 Euro hat unsere Studierendenvertretung jedes Jahr zu verteilen, und ich habe als Finanzreferentin eine Übersicht gebaut, die zeigt, wofür das Geld tatsächlich ausgegeben wird. Seitdem gibt es in den Sitzungen weniger Streit und mehr Fakten.",
+    "Ich studiere Wirtschaftsmathematik im fünften Semester. Statistik, Prognosemodelle und Datenauswertung sind mein Schwerpunkt; neben Tabellen arbeite ich mit einer Statistiksprache. Bei einem Versorger interessiert mich, wie Verbrauchsprognosen in die Planung eingehen.",
+    "Ab dem Sommersemester kann ich 20 Stunden pro Woche arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Paula Richter",
+    "Hechtstraße 12",
+    "01097 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "classic",
+  "accent": 5,
+  "name": "Felix Uhlig",
+  "title": "Student BWL (B. A.), 4. Semester",
+  "street": "Wiener Straße 40",
+  "city": "01219 Dresden",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Buchhaltung (Teilzeit)",
+    "Malerbetrieb Uhlig",
+    "Dresden",
+    "- Eingangsrechnungen buchen\n- Unterlagen für die Steuerkanzlei"
+   ]
+  ],
+  "edu": [
+   [
+    "2024",
+    "",
+    "Betriebswirtschaft (B. A.), 4. Semester",
+    "Hochschule für Technik und Wirtschaft",
+    "Dresden",
+    "Schwerpunkt Rechnungswesen"
+   ],
+   [
+    "2016",
+    "2024",
+    "Abitur",
+    "Martin-Andersen-Nexö-Gymnasium",
+    "Dresden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    5
+   ],
+   [
+    "Buchhaltung",
+    3
+   ],
+   [
+    "Kostenrechnung",
+    4
+   ],
+   [
+    "Genauigkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Schach, Laufen"
+ },
+ "do": [
+  "Kurse und Noten in Rechnungswesen nennen.",
+  "Konkrete Tabellen-Fähigkeiten aufzählen.",
+  "Feste Arbeitstage angeben."
+ ],
+ "dont": [
+  "„Gute Excel-Kenntnisse“ ohne Inhalt.",
+  "Verfügbarkeit im Monatsabschluss offenlassen.",
+  "Lange Erklärungen zu Börse und Aktien."
+ ],
+ "questions": [
+  "Was ist der Unterschied zwischen Aufwand und Ausgabe?",
+  "Wie bauen Sie eine Pivot-Auswertung?",
+  "Wie gehen Sie mit einer Abweichung um, die Sie nicht erklären können?",
+  "An welchen Tagen sind Sie verfügbar?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Stunden darf ich als Werkstudent arbeiten?",
+   "a": "Damit der Werkstudentenstatus in der Sozialversicherung erhalten bleibt, gilt in der Vorlesungszeit in der Regel eine Grenze von 20 Wochenstunden; in den Semesterferien darf es mehr sein. Lass dir die Details von der Personalabteilung oder deiner Krankenkasse bestätigen."
+  }
+ ],
+ "related": [
+  "controller",
+  "buchhalter",
+  "werkstudent-personal",
+  "pflichtpraktikum-bwl"
+ ]
+}

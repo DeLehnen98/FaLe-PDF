@@ -1,0 +1,96 @@
+{
+ "id": "inventarliste",
+ "slug": "inventarliste",
+ "cat": "Zuhause",
+ "name": "Inventarliste",
+ "short": "Gegenstände mit Wert, Kaufdatum und Garantie",
+ "desc": "Inventarliste als Excel-Vorlage (XLSX): Gegenstände mit Raum, Wert und Kaufdatum erfassen, ablaufende Garantien sehen – praktisch für die Hausratversicherung.",
+ "search": "",
+ "intro": "Die Inventarliste sammelt alles Wertvolle im Haushalt mit Kaufdatum, Preis und Garantie. Im Schadensfall weißt du, was du hattest und was es gekostet hat; Garantien, die bald ablaufen, werden markiert.",
+ "uses": [
+  "Nachweis für die Hausratversicherung nach Einbruch oder Wasserschaden",
+  "Garantiezeiten von Geräten im Blick behalten",
+  "Vor einem Umzug den Hausrat erfassen"
+ ],
+ "cols": [
+  [
+   "Nr.",
+   "Laufende Nummer, sobald ein Gegenstand eingetragen ist."
+  ],
+  [
+   "Gegenstand",
+   "Was es ist, möglichst mit Marke und Modell."
+  ],
+  [
+   "Kategorie",
+   "Elektronik, Möbel, Schmuck … aus der Liste."
+  ],
+  [
+   "Raum",
+   "Wo der Gegenstand steht."
+  ],
+  [
+   "Anzahl",
+   "Wie viele Stück."
+  ],
+  [
+   "Einzelpreis",
+   "Kaufpreis pro Stück."
+  ],
+  [
+   "Gesamtwert",
+   "Anzahl mal Einzelpreis."
+  ],
+  [
+   "Kaufdatum",
+   "Wann gekauft."
+  ],
+  [
+   "Garantie (Mon.)",
+   "Garantiedauer in Monaten; 0 oder leer, wenn keine."
+  ],
+  [
+   "Garantie bis",
+   "Kaufdatum plus Garantiemonate (EDATUM). Gelb, wenn sie in den nächsten 60 Tagen endet, grau, wenn sie abgelaufen ist."
+  ],
+  [
+   "Seriennummer / Notiz",
+   "Seriennummer oder Rahmennummer – hilft der Polizei und der Versicherung."
+  ],
+  [
+   "Auswertung",
+   "Gesamtwert aller Gegenstände, Anzahl und wie viele Garantien bald enden oder abgelaufen sind."
+  ]
+ ],
+ "tips": [
+  "Fotografiere Kassenbons und Geräte und speichere die Bilder getrennt – am besten nicht nur auf dem Handy."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich wirklich alles erfassen?",
+   "a": "Nein. Wichtig sind teure Dinge wie Elektronik, Schmuck, Fahrräder und Möbel. Den Gesamtwert kannst du auch mit der Versicherungssumme vergleichen, um eine Unterversicherung zu erkennen."
+  }
+ ],
+ "related": [
+  "umzugscheckliste",
+  "lagerbestand",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "home-inventory",
+  "name": "Home inventory",
+  "short": "Items with value, purchase date and warranty",
+  "desc": "Home inventory spreadsheet (XLSX): list your belongings with room, value and purchase date and see warranties that are about to end – handy for home insurance.",
+  "intro": "Lists everything valuable in your home with purchase date, price and warranty. After a burglary or water damage you know what you had and what it cost; warranties ending soon are highlighted.",
+  "inside": [
+   "Items with category and room (drop-downs)",
+   "Total value per item and overall",
+   "Warranty end date with highlighting",
+   "Counts of expiring and expired warranties"
+  ],
+  "uses": [
+   "Home contents insurance claims",
+   "Tracking warranties"
+  ]
+ }
+}

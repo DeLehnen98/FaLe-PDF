@@ -1,0 +1,159 @@
+{
+ "id": "immobilienmakler",
+ "field": "finanzen",
+ "name": "Immobilienmakler/in",
+ "search": "immobilienmakler maklerin immobilien vermittlung verkauf vermietung 34c makler bewerbung",
+ "short": "Immobilien vermitteln – angestellt im Maklerbüro.",
+ "desc": "Bewerbung als Immobilienmakler/in: Muster-Anschreiben für Immobilienkauffrau und Quereinsteiger aus dem Vertrieb, mit Lebenslauf und Tipps zu Erlaubnis und Weiterbildung.",
+ "intro": "Maklerinnen und Makler bewerten Immobilien, erstellen Exposés, führen Besichtigungen und begleiten Verkauf oder Vermietung bis zum Notartermin. Für die selbstständige Tätigkeit braucht es eine Erlaubnis nach § 34c Gewerbeordnung; Angestellte arbeiten unter der Erlaubnis des Arbeitgebers und müssen regelmäßige Weiterbildungen nachweisen.",
+ "lookFor": [
+  "Immobilienkaufmann/-frau oder Vertriebserfahrung",
+  "Marktkenntnis der Region",
+  "Exposés, Besichtigungen, Verhandlung",
+  "Seriöses Auftreten",
+  "Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Immobilienkauffrau wechselt in den Verkauf",
+   "level": "erfahren",
+   "position": "Immobilienmaklerin (angestellt)",
+   "to": {
+    "org": "Immobilien Kurpfalz GmbH",
+    "sal": "m",
+    "contact": "Wagner",
+    "street": "Hauptstraße 100",
+    "city": "69117 Heidelberg"
+   },
+   "body": [
+    "Eigentümer betreuen, Mieterwechsel organisieren, Nebenkosten abrechnen: Das ist seit fünf Jahren mein Alltag in der Hausverwaltung. Gemerkt habe ich dabei, dass mich die Gespräche über Verkauf und Wertentwicklung viel mehr interessieren.",
+    "Ich bin Immobilienkauffrau und kenne die Wohnlagen in Heidelberg und an der Bergstraße gut. Im letzten Jahr habe ich drei Verkäufe für Eigentümer aus unserem Bestand vorbereitet, Exposés erstellt und Besichtigungen geführt. Die Pflichtweiterbildung habe ich regelmäßig absolviert."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis",
+    "Weiterbildungsnachweise"
+   ]
+  },
+  {
+   "label": "Quereinsteiger aus dem Autovertrieb",
+   "level": "quereinstieg",
+   "position": "Immobilienberater (Quereinstieg)",
+   "to": {
+    "org": "Bergstraße Immobilien",
+    "sal": "none",
+    "street": "Darmstädter Straße 20",
+    "city": "64625 Bensheim"
+   },
+   "body": [
+    "im Autoverkauf habe ich in zehn Jahren gelernt, dass Menschen bei großen Anschaffungen vor allem Vertrauen kaufen. Ein Haus ist die größte Anschaffung überhaupt, und ich möchte Menschen dabei begleiten.",
+    "Ich habe einen Lehrgang zum Immobilienmakler mit IHK-Zertifikat abgeschlossen und kenne die Region seit meiner Kindheit. Verhandeln, Finanzierungen erklären und Kunden über Jahre halten kann ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zertifikat",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Markus Heil",
+    "Rodensteinstraße 10",
+    "64625 Bensheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "classic",
+  "accent": 0,
+  "name": "Julia Reinhardt",
+  "title": "Immobilienkauffrau",
+  "street": "Rohrbacher Straße 30",
+  "city": "69115 Heidelberg",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Immobilienkauffrau Verwaltung",
+    "Hausverwaltung Neckarblick",
+    "Heidelberg",
+    "- Betreuung von Eigentümern\n- Mieterwechsel, Wohnungsübergaben\n- Vorbereitung von drei Verkäufen"
+   ],
+   [
+    "2018",
+    "2021",
+    "Auszubildende Immobilienkauffrau",
+    "Hausverwaltung Neckarblick",
+    "Heidelberg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2021",
+    "Abschlussprüfung Immobilienkauffrau",
+    "IHK Rhein-Neckar",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Exposés",
+    4
+   ],
+   [
+    "Besichtigungen",
+    4
+   ],
+   [
+    "Marktkenntnis Region",
+    5
+   ],
+   [
+    "Verhandlung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Laufen, Architektur"
+ },
+ "do": [
+  "Regionale Marktkenntnis zeigen.",
+  "Vermittlungs- oder Vertriebserfolge nennen.",
+  "Weiterbildungen angeben."
+ ],
+ "dont": [
+  "Provisionswünsche im Anschreiben.",
+  "Übertriebene Versprechungen.",
+  "Fehlende Seriosität im Auftreten."
+ ],
+ "questions": [
+  "Wie bewerten Sie eine Wohnung?",
+  "Wie gehen Sie mit einem Verkäufer um, der einen zu hohen Preis will?",
+  "Wie bereiten Sie eine Besichtigung vor?",
+  "Welche Stadtteile kennen Sie gut?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Erlaubnis nach § 34c?",
+   "a": "Selbstständige Makler brauchen sie. Als Angestellte/r arbeitest du unter der Erlaubnis des Arbeitgebers, musst aber regelmäßig Weiterbildungen nachweisen."
+  }
+ ],
+ "related": [
+  "immobilienkaufmann",
+  "automobilverkaeufer",
+  "versicherungskaufmann",
+  "aussendienst"
+ ]
+}

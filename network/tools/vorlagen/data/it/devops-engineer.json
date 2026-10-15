@@ -1,0 +1,310 @@
+{
+ "id": "devops-engineer",
+ "field": "it",
+ "name": "DevOps-Engineer",
+ "search": "devops engineer cloud engineer platform engineer ci cd kubernetes container infrastruktur automatisierung sre bewerbung",
+ "short": "Deployments, Cloud, Automatisierung und Betrieb.",
+ "desc": "Bewerbung als DevOps-Engineer: Muster-Anschreiben für Systemadministrator im Wechsel und erfahrene Plattform-Engineerin, mit Lebenslauf und Interviewfragen.",
+ "intro": "DevOps-Engineers bauen Pipelines, automatisieren Infrastruktur, betreiben Container-Plattformen und sorgen dafür, dass Teams schnell und sicher ausliefern können. Gefragt sind Erfahrung mit Cloud, Infrastruktur als Code, Monitoring und Incident-Handling. Zeig, was du automatisiert hast und welchen Unterschied es gemacht hat.",
+ "lookFor": [
+  "Linux und Netzwerke",
+  "CI/CD-Pipelines",
+  "Container und Orchestrierung",
+  "Infrastruktur als Code",
+  "Monitoring, Logging, Incident-Handling"
+ ],
+ "letters": [
+  {
+   "label": "Systemadministrator wechselt zu DevOps",
+   "level": "quereinstieg",
+   "position": "DevOps-Engineer",
+   "to": {
+    "org": "Onlinehandel Süd GmbH",
+    "sal": "f",
+    "contact": "Maurer",
+    "street": "Landsberger Straße 300",
+    "city": "80687 München"
+   },
+   "body": [
+    "früher haben wir bei uns neue Server per Hand aufgesetzt, mit einer Checkliste in einem Wiki, die niemand aktuell hielt. Vor zwei Jahren habe ich angefangen, das zu automatisieren. Heute steht ein neuer Server in zehn Minuten, und die Checkliste gibt es nicht mehr.",
+    "Ich bin Fachinformatiker für Systemintegration und seit acht Jahren Administrator in einem mittelständischen Unternehmen. Container, Pipelines und Infrastruktur als Code habe ich mir in Projekten und über eine Zertifizierung angeeignet. Ich möchte jetzt in einem Team arbeiten, in dem das der Standard ist."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Plattform-Engineerin mit Erfahrung im Betrieb",
+   "level": "erfahren",
+   "position": "Senior DevOps-/Platform-Engineerin",
+   "to": {
+    "org": "Mobilitätsplattform Isar AG",
+    "sal": "m",
+    "contact": "Brandl",
+    "street": "Arnulfstraße 50",
+    "city": "80335 München"
+   },
+   "body": [
+    "unsere Entwicklerteams deployen heute zwanzigmal am Tag statt einmal pro Woche. Dahinter steckt eine Plattform, die ich mit zwei Kollegen aufgebaut habe: Pipelines, Container-Cluster, Secrets-Management und ein Monitoring, das Probleme meldet, bevor Kunden sie bemerken.",
+    "Sechs Jahre Betrieb, davon drei mit Rufbereitschaft, haben mich gelehrt, dass gute Postmortems wichtiger sind als Schuldige. Ich möchte zu einem Unternehmen wechseln, das Mobilität im Alltag vieler Menschen betreibt und deshalb Stabilität ernst nimmt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Katharina Vogt",
+    "Westendstraße 120",
+    "80339 München"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "compact",
+  "accent": 0,
+  "name": "Ralf Dietrich",
+  "title": "Systemadministrator, DevOps",
+  "street": "Fürstenrieder Straße 40",
+  "city": "80686 München",
+  "exp": [
+   [
+    "2018",
+    "",
+    "Systemadministrator",
+    "Maschinenhandel Bayern GmbH",
+    "München",
+    "- Automatisierung der Serverbereitstellung (10 Min. statt 2 Tage)\n- Container für interne Anwendungen\n- Backup, Monitoring, Netzwerk"
+   ],
+   [
+    "2015",
+    "2018",
+    "Fachinformatiker Systemintegration",
+    "IT-Service Oberland",
+    "Weilheim",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung Fachinformatiker für Systemintegration",
+    "IT-Service Oberland",
+    "Weilheim",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Zertifizierung Container-Orchestrierung",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Linux",
+    5
+   ],
+   [
+    "Automatisierung",
+    4
+   ],
+   [
+    "Container",
+    4
+   ],
+   [
+    "CI/CD",
+    3
+   ],
+   [
+    "Netzwerke",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Bergsteigen, Homelab"
+ },
+ "do": [
+  "Automatisierungen mit Wirkung beschreiben.",
+  "Betriebserfahrung und Rufbereitschaft nennen.",
+  "Cloud und Werkzeuge konkret angeben."
+ ],
+ "dont": [
+  "Werkzeuglisten ohne Ergebnis.",
+  "Incidents verschweigen oder anderen zuschieben.",
+  "Sicherheit auslassen."
+ ],
+ "questions": [
+  "Wie bauen Sie eine Pipeline für einen neuen Dienst auf?",
+  "Wie gehen Sie mit einem Ausfall in der Nacht um?",
+  "Was gehört in ein gutes Postmortem?",
+  "Wie verwalten Sie Secrets?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich Zertifikate?",
+   "a": "Sie helfen beim Quereinstieg, ersetzen aber keine Praxis. Ein eigenes Projekt mit Pipeline und Infrastruktur als Code zeigt oft mehr."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "backend-entwickler",
+  "it-sicherheit",
+  "fachinformatiker-systemintegration"
+ ],
+ "en": {
+  "slug": "devops-engineer",
+  "name": "DevOps engineer",
+  "search": "devops engineer platform engineer sre cloud infrastructure ci cd containers automation",
+  "short": "Deployments, cloud, automation and operations.",
+  "desc": "DevOps engineer cover letter examples: a sysadmin moving into DevOps and an experienced platform engineer, plus a ready CV with placeholder portrait.",
+  "intro": "DevOps engineers build pipelines, automate infrastructure, run container platforms and help teams ship quickly and safely. Show what you automated and what difference it made.",
+  "lookFor": [
+   "Linux and networking",
+   "CI/CD pipelines",
+   "Containers and orchestration",
+   "Infrastructure as code",
+   "Monitoring and incident response"
+  ],
+  "letters": [
+   {
+    "label": "Sysadmin moving into DevOps",
+    "level": "quereinstieg",
+    "position": "DevOps engineer",
+    "to": {
+     "org": "Southern Retail Online",
+     "sal": "f",
+     "contact": "Moore",
+     "street": "300 Wilton Road",
+     "city": "Salisbury SP2 7AA"
+    },
+    "body": [
+     "we used to build new servers by hand from a wiki checklist nobody kept up to date. Two years ago I started automating it. A new server now takes ten minutes, and the checklist no longer exists.",
+     "I have eight years as a systems administrator at a mid-sized company. I picked up containers, pipelines and infrastructure as code through projects and a certification, and I would now like to work in a team where that is the norm."
+    ],
+    "att": [
+     "CV",
+     "Certificate"
+    ]
+   },
+   {
+    "label": "Experienced platform engineer",
+    "level": "erfahren",
+    "position": "Senior platform engineer",
+    "to": {
+     "org": "Transit Platform Ltd",
+     "sal": "m",
+     "contact": "Brand",
+     "street": "50 Temple Street",
+     "city": "Bristol BS1 6EN"
+    },
+    "body": [
+     "our development teams deploy twenty times a day instead of once a week. Behind that is a platform I built with two colleagues: pipelines, container clusters, secrets management and monitoring that flags problems before customers notice.",
+     "Six years in operations, three of them on call, have taught me that a good postmortem matters more than finding someone to blame. I want to join a company that runs everyday transport for many people and therefore takes stability seriously."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Kate Voss",
+     "120 Gloucester Road",
+     "Bristol BS7 8NT"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a21",
+   "design": "compact",
+   "accent": 0,
+   "name": "Ralph Dean",
+   "title": "Systems administrator, DevOps",
+   "street": "40 Castle Street",
+   "city": "Salisbury SP1 3SP",
+   "exp": [
+    [
+     "2018",
+     "",
+     "Systems administrator",
+     "Wessex Machinery",
+     "Salisbury",
+     "- Automated server provisioning (10 min instead of 2 days)\n- Containerised internal apps\n- Backup, monitoring, network"
+    ]
+   ],
+   "edu": [
+    [
+     "2012",
+     "2015",
+     "IT apprenticeship",
+     "Wiltshire College",
+     "Salisbury",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Linux",
+     5
+    ],
+    [
+     "Automation",
+     4
+    ],
+    [
+     "Containers",
+     4
+    ],
+    [
+     "CI/CD",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Hiking, home lab"
+  },
+  "do": [
+   "Describe automation and its impact.",
+   "Mention operations and on-call experience.",
+   "Be specific about cloud and tools."
+  ],
+  "dont": [
+   "Tool lists without results.",
+   "Hide incidents or blame others.",
+   "Leave out security."
+  ],
+  "questions": [
+   "How would you build a pipeline for a new service?",
+   "How do you handle an outage at night?",
+   "What goes into a good postmortem?",
+   "How do you manage secrets?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need certifications?",
+    "a": "They help when changing career but do not replace experience. A personal project with a pipeline and infrastructure as code often shows more."
+   }
+  ]
+ }
+}

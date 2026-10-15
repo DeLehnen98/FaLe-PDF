@@ -1,0 +1,56 @@
+{
+ "id": "kuendigung-verein",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 13,
+ "name": "Kündigung Vereinsmitgliedschaft",
+ "short": "Aus einem Verein austreten",
+ "desc": "Austritt aus dem Verein mit Vorlage: Kündigung der Mitgliedschaft zum nächstmöglichen Termin, Mitgliedsnummer, Widerruf der Lastschrift – sofort als PDF.",
+ "search": "verein austritt sportverein mitgliedschaft",
+ "when": [
+  "Du nutzt das Angebot des Vereins nicht mehr, ziehst weg oder dein Kind hat aufgehört. Wie und wann du austreten kannst, regelt die Satzung des Vereins – oft zum Ende des Kalender- oder Geschäftsjahres mit einer Frist von einigen Wochen oder Monaten."
+ ],
+ "must": [
+  "Name des Mitglieds – bei Kindern auch dein Name als Elternteil",
+  "Mitgliedsnummer, falls vorhanden",
+  "Kündigung zum nächstmöglichen Zeitpunkt",
+  "Bitte um Bestätigung",
+  "Widerruf der Lastschrift zum Ende der Mitgliedschaft"
+ ],
+ "notes": [
+  "Schick die Kündigung an die Adresse, die in der Satzung oder auf der Website steht – meist der Vorstand oder die Geschäftsstelle, nicht die Trainerin.",
+  "Leihgaben wie Trikots oder Schlüssel gibst du am besten gegen Quittung zurück.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Wo finde ich die Kündigungsfrist?",
+   "a": "In der Satzung des Vereins. Viele Vereine stellen sie auf ihre Website; sonst kannst du sie beim Vorstand anfordern."
+  }
+ ],
+ "fields": {
+  "type": "club",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "member": "M-1187"
+ },
+ "related": [
+  "kuendigung-fitnessstudio",
+  "kuendigung-zeitschrift",
+  "kuendigungsbestaetigung-anfordern"
+ ],
+ "from": [
+  "Thomas Muster",
+  "Birkenallee 8",
+  "34117 Kassel"
+ ],
+ "to": {
+  "org": "TV Musterdorf 1907 e. V.",
+  "attn": "Vorstand",
+  "street": "Am Sportplatz 1",
+  "city": "34128 Kassel"
+ }
+}

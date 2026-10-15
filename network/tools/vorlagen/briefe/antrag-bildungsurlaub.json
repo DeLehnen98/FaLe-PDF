@@ -1,0 +1,70 @@
+{
+ "id": "antrag-bildungsurlaub",
+ "group": "arbeit",
+ "tool": "leave-request",
+ "order": 23,
+ "name": "Antrag auf Bildungsurlaub",
+ "short": "Bezahlte Freistellung für eine Weiterbildung",
+ "desc": "Bildungsurlaub beantragen: Vorlage mit Seminar, Veranstalter und Anerkennung – mit Hinweisen zu Fristen und Ländergesetzen. Arbeitstage werden automatisch gezählt.",
+ "search": "bildungsurlaub weiterbildung seminar freistellung",
+ "when": [
+  "In fast allen Bundesländern hast du Anspruch auf einige Tage bezahlten Bildungsurlaub pro Jahr, meist fünf Tage. Die Veranstaltung muss im jeweiligen Bundesland anerkannt sein. In Bayern und Sachsen gibt es kein Bildungsurlaubsgesetz.",
+  "Den Antrag musst du rechtzeitig stellen – je nach Land meist sechs bis acht Wochen vor Beginn."
+ ],
+ "must": [
+  "Titel, Termin und Ort der Veranstaltung",
+  "Veranstalter und Nachweis der Anerkennung",
+  "Zeitraum und Arbeitstage",
+  "Bezug auf das Bildungsurlaubsgesetz deines Landes",
+  "Programm als Anlage"
+ ],
+ "notes": [
+  "Die Anerkennung steht meist auf der Website des Veranstalters oder in der Kursbeschreibung.",
+  "Der Arbeitgeber kann den Bildungsurlaub nur aus wichtigen betrieblichen Gründen verschieben; das muss er rechtzeitig sagen.",
+  "Nach dem Kurs brauchst du meist eine Teilnahmebestätigung für den Arbeitgeber."
+ ],
+ "faq": [
+  {
+   "q": "Muss das Seminar mit meinem Beruf zu tun haben?",
+   "a": "Nicht unbedingt. Viele Ländergesetze erlauben auch politische Bildung oder Sprachkurse. Was genau zählt, regelt das Gesetz deines Bundeslandes."
+  }
+ ],
+ "fields": {
+  "kind": "edu",
+  "name": "Thomas Muster",
+  "staffNo": "L-118",
+  "dept": "Vertrieb",
+  "boss": "Frau Richter",
+  "stand": "",
+  "note": "Seminar „Präsentieren und Moderieren“, Veranstalter: Bildungswerk Muster e. V., anerkannt nach dem Bildungsurlaubsgesetz des Landes. Programm und Anerkennung liegen bei.",
+  "state": "HE"
+ },
+ "related": [
+  "urlaubsantrag-erholungsurlaub",
+  "antrag-sonderurlaub",
+  "antrag-teilzeit"
+ ],
+ "doc": [
+  [
+   "Art",
+   "Bildungsurlaub"
+  ],
+  [
+   "Antragsteller",
+   "Thomas Muster, Personalnummer L-118, Vertrieb"
+  ],
+  [
+   "Zeitraum",
+   "Von – bis, mit Arbeitstagen"
+  ],
+  [
+   "Bemerkung",
+   "Seminar „Präsentieren und Moderieren“, Veranstalter: Bildungswerk Muster e. V., anerkannt nach dem Bildungsurlaubsgesetz des Landes. Programm und Anerkennung liegen bei."
+  ],
+  [
+   "Unterschriften",
+   "Mitarbeiter, Feld für die Genehmigung"
+  ]
+ ],
+ "doc_intro": "Der Antrag nutzt das Urlaubsformular mit der Art „Bildungsurlaub“. Wähl im Formular dein Bundesland – Bildungsurlaub gibt es nicht in jedem Land:"
+}

@@ -1,0 +1,174 @@
+{
+ "id": "praktikum-soziale-arbeit",
+ "field": "praktikum",
+ "name": "Praktikum Soziale Arbeit (Praxissemester)",
+ "search": "praktikum soziale arbeit praxissemester anerkennungsjahr sozialpädagogik studium praktikumsplatz bewerbung",
+ "short": "Praxissemester oder Anerkennungspraktikum im Studium.",
+ "desc": "Bewerbung für das Praxissemester oder Anerkennungspraktikum in der Sozialen Arbeit: Muster-Anschreiben für Beratungsstelle und Wohnungslosenhilfe, mit Lebenslauf.",
+ "intro": "Im Studium der Sozialen Arbeit gehört ein längeres Praktikum dazu, oft als Praxissemester, in manchen Bundesländern zusätzlich als Anerkennungsjahr. Einrichtungen brauchen Praktikanten, die bleiben, nachfragen und Verantwortung übernehmen. Nenn Zeitraum, Studienstand und die Vorgaben deiner Hochschule.",
+ "lookFor": [
+  "Studium der Sozialen Arbeit, Zeitraum laut Studienordnung",
+  "Interesse am konkreten Arbeitsfeld",
+  "Erste Praxiserfahrung (Ehrenamt, Nebenjob)",
+  "Reflexion und Bereitschaft zur Supervision",
+  "Erweitertes Führungszeugnis, je nach Einrichtung"
+ ],
+ "letters": [
+  {
+   "label": "Praxissemester in der Schuldnerberatung",
+   "level": "praktikum",
+   "position": "Praxissemester Soziale Arbeit",
+   "to": {
+    "org": "Schuldnerberatung Bonn-Nord e. V.",
+    "sal": "f",
+    "contact": "Reuter",
+    "street": "Am Frankenbad 8",
+    "city": "53111 Bonn"
+   },
+   "body": [
+    "Geld ist in fast jeder Beratung ein Thema, wird aber im Studium erstaunlich wenig behandelt. Deshalb möchte ich mein Praxissemester in der Schuldnerberatung machen und lernen, wie man mit Menschen arbeitet, denen Mahnungen über den Kopf wachsen.",
+    "Ich studiere Soziale Arbeit an der Katholischen Hochschule im fünften Semester. Das Praxissemester umfasst laut Studienordnung 100 Präsenztage zwischen März und August. In einem Nebenjob in der Hausverwaltung habe ich mit Mietrückständen zu tun gehabt und weiß, wie unangenehm diese Gespräche für alle Seiten sind.",
+    "Die Praxisanleitung muss eine staatlich anerkannte Sozialarbeiterin übernehmen. Wenn das bei Ihnen möglich ist, würde ich mich sehr gern vorstellen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung",
+    "Vorgaben der Hochschule"
+   ]
+  },
+  {
+   "label": "Anerkennungsjahr in der Wohnungslosenhilfe",
+   "level": "praktikum",
+   "position": "Berufspraktikum zur staatlichen Anerkennung",
+   "to": {
+    "org": "Hilfe für Wohnungslose Köln e. V.",
+    "sal": "m",
+    "contact": "Brück",
+    "street": "Bayenstraße 20",
+    "city": "50678 Köln"
+   },
+   "body": [
+    "im Winter habe ich zwei Monate ehrenamtlich im Kältebus mitgearbeitet. Wir haben Tee, Schlafsäcke und Gespräche verteilt, und ich habe gelernt, wie viel Vertrauen es braucht, bis jemand sagt, was er wirklich braucht.",
+    "Mein Bachelor in Sozialer Arbeit ist abgeschlossen, für die staatliche Anerkennung fehlt mir das Berufspraktikum. Ich möchte es in der Wohnungslosenhilfe machen, weil mich die Arbeit an der Schnittstelle von Straße, Ämtern und Gesundheitssystem interessiert. In meiner Bachelorarbeit habe ich Zugangsbarrieren zu Notunterkünften untersucht.",
+    "Beginn könnte im Oktober sein."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Bescheinigung Ehrenamt",
+    "Erweitertes Führungszeugnis"
+   ],
+   "from": [
+    "Tim Becker",
+    "Zülpicher Straße 100",
+    "50937 Köln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 1,
+  "name": "Laura Engels",
+  "title": "Studentin Soziale Arbeit (B. A.), 5. Semester",
+  "street": "Kaiserstraße 70",
+  "city": "53113 Bonn",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Aushilfe Hausverwaltung",
+    "Immobilienverwaltung Rheinaue",
+    "Bonn",
+    "- Mieterkontakt, auch bei Rückständen\n- Ablage, Terminvereinbarung"
+   ],
+   [
+    "2022",
+    "",
+    "Ehrenamt Lernpatin",
+    "Stadtteilzentrum Tannenbusch",
+    "Bonn",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "",
+    "Soziale Arbeit (B. A.), 5. Semester",
+    "Katholische Hochschule NRW, Abteilung Köln",
+    "Köln",
+    ""
+   ],
+   [
+    "2014",
+    "2022",
+    "Abitur",
+    "Beethoven-Gymnasium",
+    "Bonn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Beratungsgespräche (Grundlagen)",
+    3
+   ],
+   [
+    "Sozialrecht",
+    3
+   ],
+   [
+    "Dokumentation",
+    4
+   ],
+   [
+    "Geduld",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Chor, Radreisen"
+ },
+ "do": [
+  "Zeitraum und Vorgaben der Hochschule nennen.",
+  "Interesse am Arbeitsfeld begründen.",
+  "Praxisanleitung ansprechen."
+ ],
+ "dont": [
+  "„Ich möchte helfen“ ohne Konkretes.",
+  "Den Zeitraum offenlassen.",
+  "Berichte über Klienten aus anderen Einrichtungen mit Namen."
+ ],
+ "questions": [
+  "Warum dieses Arbeitsfeld?",
+  "Wie gehen Sie mit belastenden Geschichten um?",
+  "Was erwarten Sie von der Praxisanleitung?",
+  "Wie viele Tage umfasst das Praktikum?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Praxisanleitung?",
+   "a": "Ja. Hochschulen verlangen meist, dass eine staatlich anerkannte Fachkraft dich anleitet. Frag das bei der Einrichtung früh ab."
+  }
+ ],
+ "related": [
+  "sozialarbeiter",
+  "duales-studium-soziale-arbeit",
+  "praktikum-erzieher",
+  "fsj-bfd"
+ ]
+}

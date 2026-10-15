@@ -1,0 +1,76 @@
+{
+ "id": "gewichtstagebuch",
+ "slug": "gewichtstagebuch",
+ "cat": "Schule & Freizeit",
+ "name": "Gewichtstagebuch",
+ "short": "Gewicht notieren: Veränderung und Durchschnitt, ohne Zielvorgaben",
+ "desc": "Gewichtstagebuch als Excel-Vorlage (XLSX): Gewicht mit Datum eintragen und Veränderung, gleitenden Durchschnitt und Verlauf sehen – neutral, ohne Zielwerte oder Bewertung.",
+ "search": "waage protokoll",
+ "intro": "Ein schlichtes Protokoll für das Körpergewicht – zum Beispiel, weil die Ärztin darum gebeten hat oder weil du Veränderungen nachvollziehen willst. Die Vorlage bewertet nichts und setzt keine Ziele. Sie zeigt die Veränderung zum letzten Eintrag und zum Beginn und glättet Tagesschwankungen mit einem Durchschnitt.",
+ "uses": [
+  "Gewicht für einen Arzttermin dokumentieren",
+  "Schwankungen über Wochen nachvollziehen",
+  "Den Verlauf als Diagramm sehen"
+ ],
+ "cols": [
+  [
+   "Datum",
+   "Tag der Messung."
+  ],
+  [
+   "Gewicht",
+   "Gemessenes Gewicht in kg, z. B. 71,8."
+  ],
+  [
+   "Seit letztem Eintrag",
+   "Gewicht minus vorheriges Gewicht, mit Vorzeichen."
+  ],
+  [
+   "Seit Beginn",
+   "Gewicht minus erster Eintrag."
+  ],
+  [
+   "Ø letzte 7 Einträge",
+   "MITTELWERT der letzten sieben Messungen. Tagesschwankungen von ein bis zwei Kilo durch Wasser oder Essen fallen so weniger ins Gewicht."
+  ],
+  [
+   "Notiz",
+   "Uhrzeit, Umstände, Medikamente – was dir wichtig ist."
+  ],
+  [
+   "Überblick",
+   "Anzahl der Einträge, erster und letzter Wert, Veränderung insgesamt sowie niedrigster und höchster Wert."
+  ]
+ ],
+ "tips": [
+  "Wiege dich unter ähnlichen Bedingungen, zum Beispiel morgens vor dem Frühstück – dann sind die Werte vergleichbar.",
+  "Trag die Werte ohne Lücken untereinander ein; der „letzte Wert“ nimmt die letzte gefüllte Zeile."
+ ],
+ "faq": [
+  {
+   "q": "Warum gibt es keine Zielwerte oder BMI-Berechnung?",
+   "a": "Mit Absicht: Die Vorlage soll nur dokumentieren. Was ein gesundes Gewicht für dich ist, hängt von vielen Dingen ab und gehört in ein Gespräch mit Ärztin oder Arzt, nicht in eine Tabelle."
+  }
+ ],
+ "related": [
+  "trainingsplan",
+  "lesetagebuch",
+  "essensplan"
+ ],
+ "en": {
+  "slug": "weight-log",
+  "name": "Weight log",
+  "short": "Record your weight: changes and average, no targets",
+  "desc": "Weight log spreadsheet (XLSX): enter your weight with the date and see changes, a moving average and the trend – neutral, without targets or judgement.",
+  "intro": "A plain log of body weight – for example because your doctor asked for it. The template sets no goals and makes no judgement; it shows changes and smooths daily swings with an average.",
+  "inside": [
+   "Change since last entry and since the start",
+   "Average of the last seven entries",
+   "Lowest, highest and latest value",
+   "Line chart of the trend"
+  ],
+  "uses": [
+   "Documenting weight for a doctor’s appointment"
+  ]
+ }
+}

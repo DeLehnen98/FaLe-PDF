@@ -1,0 +1,307 @@
+{
+ "id": "fotograf",
+ "field": "marketing",
+ "name": "Fotograf/in",
+ "search": "fotograf fotografin fotostudio produktfotografie werbefotografie hochzeit portrait bildbearbeitung bewerbung",
+ "short": "Studio, Produkt, Porträt – angestellt oder als Assistenz.",
+ "desc": "Bewerbung als Fotograf/in oder Fotoassistenz: Muster-Anschreiben für Produktfotografin im Onlinehandel und Fotoassistent im Studio, mit Lebenslauf und Mappe.",
+ "intro": "Fotografinnen und Fotografen arbeiten in Studios, für Onlinehändler, Agenturen, Verlage oder Unternehmen. Gefragt sind ein eigener Blick, Technik (Licht, Kamera, Bearbeitung), Tempo bei Serienproduktion und der Umgang mit Menschen vor der Kamera. Eine kuratierte Mappe ist das wichtigste Dokument.",
+ "lookFor": [
+  "Kuratierte Mappe",
+  "Licht, Kamera, Bildbearbeitung",
+  "Serienproduktion oder Porträt, je nach Stelle",
+  "Kundenkontakt",
+  "Ausbildung oder Studium, nicht zwingend"
+ ],
+ "letters": [
+  {
+   "label": "Produktfotografin für einen Onlinehändler",
+   "level": "erfahren",
+   "position": "Produktfotografin (Inhouse-Studio)",
+   "to": {
+    "org": "Möbelversand Westfalen GmbH",
+    "sal": "m",
+    "contact": "Rott",
+    "street": "Industriestraße 40",
+    "city": "33334 Gütersloh"
+   },
+   "body": [
+    "an einem guten Tag fotografiere ich 120 Produkte, freigestellt, farbtreu und so, dass ein Stuhl in der Liste genauso aussieht wie im Wohnzimmer der Kundin. Seit vier Jahren mache ich Produktfotografie für einen Onlinehändler mit Wohnaccessoires.",
+    "Ich habe Fotografin gelernt und arbeite mit Studioblitz, Tethering und einem standardisierten Workflow bis zur Bildauslieferung an den Shop. Bei Ihnen reizen mich größere Produkte und die Inszenierung in Raumsets. Meine Mappe liegt bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Mappe (PDF)"
+   ]
+  },
+  {
+   "label": "Fotoassistent mit Studium",
+   "level": "berufseinstieg",
+   "position": "Fotoassistent",
+   "to": {
+    "org": "Studio Lichtwerk",
+    "sal": "f",
+    "contact": "Kaya",
+    "street": "Hafenweg 8",
+    "city": "48155 Münster"
+   },
+   "body": [
+    "Licht aufbauen, Kabel verlegen, Tethering betreuen, Kaffee holen, wenn es sein muss: Ich weiß, wie Assistenz aussieht, und will genau dort anfangen. Im Studium habe ich Fotodesign studiert und dabei gelernt, dass mir Menschen vor der Kamera mehr liegen als Stillleben.",
+    "Ihre Porträts für Unternehmen haben eine Ruhe, die ich selten sehe. Ich würde gern lernen, wie Sie das in 20 Minuten mit einem nervösen Vorstand schaffen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Mappe (Link)"
+   ],
+   "from": [
+    "Lukas Engel",
+    "Hammer Straße 40",
+    "48153 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "modern",
+  "accent": 4,
+  "name": "Leyla Aksoy",
+  "title": "Fotografin (Produkt und Studio)",
+  "street": "Kökerstraße 20",
+  "city": "33330 Gütersloh",
+  "web": "mappe.example/leyla-aksoy",
+  "exp": [
+   [
+    "2022",
+    "",
+    "Produktfotografin",
+    "Wohnaccessoires Online GmbH",
+    "Bielefeld",
+    "- Bis zu 120 Produkte am Tag\n- Studioblitz, Tethering, Farbmanagement\n- Workflow bis zur Shop-Auslieferung"
+   ],
+   [
+    "2019",
+    "2022",
+    "Fotografin",
+    "Fotostudio Lichtblick",
+    "Gütersloh",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Ausbildung Fotografin",
+    "Fotostudio Lichtblick",
+    "Gütersloh",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Produktfotografie",
+    5
+   ],
+   [
+    "Studiolicht",
+    5
+   ],
+   [
+    "Bildbearbeitung",
+    4
+   ],
+   [
+    "Farbmanagement",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Analogfotografie, Wandern"
+ },
+ "do": [
+  "Mappe passend zur Stelle zusammenstellen.",
+  "Technik und Workflow beschreiben.",
+  "Mengen und Tempo nennen."
+ ],
+ "dont": [
+  "Hunderte Bilder ohne Auswahl.",
+  "Bilder ohne Rechte zeigen.",
+  "Nur Technik, kein Blick."
+ ],
+ "questions": [
+  "Wie bauen Sie Licht für ein glänzendes Produkt?",
+  "Wie entspannen Sie einen nervösen Menschen vor der Kamera?",
+  "Wie sieht Ihr Workflow nach dem Shooting aus?",
+  "Welches Bild in Ihrer Mappe ist Ihr stärkstes?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung?",
+   "a": "Fotograf ist ein Handwerk mit Ausbildung, aber für Angestellte ist sie oft nicht Pflicht. Studium, Assistenz oder Quereinstieg sind ebenso üblich; die Mappe entscheidet."
+  }
+ ],
+ "related": [
+  "grafikdesigner",
+  "mediengestalter",
+  "social-media-manager",
+  "texter"
+ ],
+ "en": {
+  "slug": "photographer",
+  "name": "Photographer",
+  "search": "photographer product photographer studio portrait photo assistant ecommerce imagery",
+  "short": "Studio, product or portrait – employed or as an assistant.",
+  "desc": "Photographer cover letter examples: an in-house product photographer and a photo assistant after a degree, plus a ready CV with placeholder portrait.",
+  "intro": "Photographers work in studios, for online retailers, agencies, publishers and companies. You need an eye, technique (light, camera, editing), speed for volume work and a way with people in front of the lens. A curated portfolio is your most important document.",
+  "lookFor": [
+   "Curated portfolio",
+   "Lighting, camera, editing",
+   "Volume or portrait work, depending on the role",
+   "Client contact",
+   "Training or degree, not always required"
+  ],
+  "letters": [
+   {
+    "label": "In-house product photographer",
+    "level": "erfahren",
+    "position": "Product photographer (in-house studio)",
+    "to": {
+     "org": "Westfield Furniture Online",
+     "sal": "m",
+     "contact": "Rott",
+     "street": "40 Industrial Way",
+     "city": "Leicester LE4 1AA"
+    },
+    "body": [
+     "on a good day I shoot 120 products, cut out, colour-accurate and so that a chair on the listing looks the same as in the customer’s living room. I have done product photography for an online homeware retailer for four years.",
+     "I work with studio flash, tethered capture and a standard workflow through to delivery to the shop. Larger products and room sets are what draw me to your studio. My portfolio is attached."
+    ],
+    "att": [
+     "CV",
+     "Portfolio"
+    ]
+   },
+   {
+    "label": "Photo assistant after a degree",
+    "level": "berufseinstieg",
+    "position": "Photography assistant",
+    "to": {
+     "org": "Lightworks Studio",
+     "sal": "f",
+     "contact": "Kaya",
+     "street": "8 Canal Street",
+     "city": "Manchester M1 3HE"
+    },
+    "body": [
+     "setting up lights, running cables, managing the tether, fetching coffee if needed: I know what assisting looks like and that is exactly where I want to start. My photography degree taught me that I prefer people in front of the camera to still life.",
+     "Your corporate portraits have a calm I rarely see. I would love to learn how you manage that in twenty minutes with a nervous chief executive."
+    ],
+    "att": [
+     "CV",
+     "Portfolio link"
+    ],
+    "from": [
+     "Luke Engel",
+     "40 Oxford Road",
+     "Manchester M1 5QA"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a06",
+   "design": "modern",
+   "accent": 4,
+   "name": "Leyla Aksoy",
+   "title": "Product and studio photographer",
+   "street": "20 London Road",
+   "city": "Leicester LE2 0QB",
+   "web": "portfolio.example/leyla-aksoy",
+   "exp": [
+    [
+     "2022",
+     "",
+     "Product photographer",
+     "Homeware Online Ltd",
+     "Leicester",
+     "- Up to 120 products a day\n- Studio flash, tethering, colour management"
+    ]
+   ],
+   "edu": [
+    [
+     "2016",
+     "2019",
+     "BA Photography",
+     "De Montfort University",
+     "Leicester",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Product photography",
+     5
+    ],
+    [
+     "Studio lighting",
+     5
+    ],
+    [
+     "Editing",
+     4
+    ],
+    [
+     "Colour management",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "Turkish",
+     "native"
+    ]
+   ],
+   "hobbies": "Film photography, hiking"
+  },
+  "do": [
+   "Tailor the portfolio to the role.",
+   "Describe technique and workflow.",
+   "Give volumes and speed."
+  ],
+  "dont": [
+   "Hundreds of unsorted images.",
+   "Images you do not have rights to.",
+   "Technique without an eye."
+  ],
+  "questions": [
+   "How would you light a glossy product?",
+   "How do you relax a nervous sitter?",
+   "What is your post-shoot workflow?",
+   "Which image in your portfolio is your strongest?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a qualification?",
+    "a": "Not always. A degree, assisting or a career change are all common routes; the portfolio decides."
+   }
+  ]
+ }
+}

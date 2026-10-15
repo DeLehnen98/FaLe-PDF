@@ -1,0 +1,57 @@
+{
+ "id": "kuendigung-kita-platz",
+ "group": "kuendigung",
+ "tool": "cancellation-letter",
+ "order": 15,
+ "name": "Kündigung Kita-Platz",
+ "short": "Betreuungsvertrag in Kita oder Krippe kündigen",
+ "desc": "Kita-Platz kündigen mit Vorlage: Betreuungsvertrag, Name des Kindes, Kündigung zum nächstmöglichen Termin – mit Hinweisen zu Fristen in Satzung und Vertrag.",
+ "search": "kita krippe kindergarten betreuung",
+ "when": [
+  "Ihr zieht um, euer Kind wechselt in eine andere Einrichtung oder kommt in die Schule. Bei städtischen Kitas regelt oft eine Satzung die Frist, bei freien Trägern der Betreuungsvertrag – häufig ein bis drei Monate zum Monatsende. Manche Träger schließen eine Kündigung vor den Sommerferien aus."
+ ],
+ "must": [
+  "Name und Geburtsdatum des Kindes",
+  "Name der Einrichtung und Vertragsnummer, falls vorhanden",
+  "Kündigungszeitpunkt",
+  "Bitte um Bestätigung und Abrechnung der Beiträge",
+  "Widerruf der Lastschrift für Beiträge und Essensgeld"
+ ],
+ "notes": [
+  "Stehen beide Eltern im Vertrag, sollten auch beide unterschreiben.",
+  "Beim Wechsel in die Schule endet der Vertrag manchmal automatisch – prüf den Vertrag, bevor du kündigst.",
+  "Schick die Kündigung so, dass du den Zugang beweisen kannst, und heb den Beleg auf."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich Essensgeld weiterzahlen?",
+   "a": "Bis zum Vertragsende meist ja. Frag in der Kündigung nach einer Abrechnung, wenn du im Voraus gezahlt hast."
+  }
+ ],
+ "fields": {
+  "type": "other",
+  "when": "next",
+  "confirm": true,
+  "sepa": true,
+  "gdpr": false,
+  "noAds": false,
+  "thing": "den Betreuungsvertrag für meine Tochter Mia Neumann in der Kita Sonnenblume",
+  "number": "K-2024-031"
+ },
+ "related": [
+  "entschuldigung-schule",
+  "einverstaendnis-klassenfahrt",
+  "vollmacht-kind-abholen"
+ ],
+ "from": [
+  "Katrin Neumann",
+  "Rosenweg 14",
+  "79098 Freiburg im Breisgau"
+ ],
+ "to": {
+  "org": "Kita Sonnenblume",
+  "attn": "Träger: Musterverein Kinderbetreuung e. V.",
+  "street": "Gartenweg 2",
+  "city": "79100 Freiburg im Breisgau"
+ }
+}

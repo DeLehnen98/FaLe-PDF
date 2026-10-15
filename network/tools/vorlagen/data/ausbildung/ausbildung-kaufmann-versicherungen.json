@@ -1,0 +1,159 @@
+{
+ "id": "ausbildung-kaufmann-versicherungen",
+ "field": "ausbildung",
+ "name": "Ausbildung Kaufmann/-frau für Versicherungen und Finanzanlagen",
+ "search": "ausbildung versicherungskaufmann versicherungskauffrau versicherungen finanzanlagen agentur innendienst außendienst azubi bewerbung",
+ "short": "Beraten, Verträge betreuen, Schäden regeln – in Agentur oder Innendienst.",
+ "desc": "Bewerbung für die Ausbildung zum Kaufmann / zur Kauffrau für Versicherungen und Finanzanlagen: Muster-Anschreiben für Abiturient und Realschülerin, mit Lebenslauf.",
+ "intro": "In der Ausbildung lernst du, Kundinnen und Kunden zu beraten, Verträge zu betreuen und Schäden zu bearbeiten – entweder in einer Agentur vor Ort oder im Innendienst eines Versicherers. Gefragt sind Kontaktfreude, Zahlenverständnis und Geduld beim Erklären.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder Abitur",
+  "Gute Noten in Deutsch und Mathe",
+  "Freude an Beratung und Gesprächen",
+  "Diskretion",
+  "Gepflegtes, sicheres Auftreten"
+ ],
+ "letters": [
+  {
+   "label": "Abiturient mit Nebenjob im Verkauf",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Kaufmann für Versicherungen und Finanzanlagen",
+   "to": {
+    "org": "Versicherungsagentur Brandl",
+    "sal": "m",
+    "contact": "Brandl",
+    "street": "Ludwigstraße 14",
+    "city": "93047 Regensburg"
+   },
+   "body": [
+    "als unser Keller vor zwei Jahren nach einem Starkregen unter Wasser stand, kam Ihr Kollege noch am selben Abend vorbei, hat fotografiert, Formulare erklärt und meine Mutter beruhigt. Das hat mir gezeigt, dass Versicherung nicht nur Verträge ist, sondern ziemlich viel mit Menschen zu tun hat.",
+    "Mein Abitur mache ich im Juni mit Wirtschaft und Mathe als Prüfungsfächern. Seit zwei Jahren arbeite ich in einem Elektrofachmarkt an der Information und verkaufe dort auch Garantieverlängerungen. Ich weiß also, wie es ist, etwas zu erklären, das Kunden zunächst nicht interessiert.",
+    "Ihre Agentur betreut viele Familien und kleine Betriebe hier in Regensburg. Ich wohne in der Nähe und bin ab August verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Bescheinigung Nebenjob"
+   ]
+  },
+  {
+   "label": "Realschülerin für den Innendienst",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Kauffrau für Versicherungen und Finanzanlagen (Innendienst)",
+   "to": {
+    "org": "Ostbayerische Versicherung AG",
+    "sal": "none",
+    "street": "Prüfeninger Straße 20",
+    "city": "93049 Regensburg"
+   },
+   "body": [
+    "Zahlen und Regeln liegen mir, Telefonieren auch. Bei der Berufsberatung kam heraus, dass beides zusammen in einem Versicherungsinnendienst gefragt ist, und nach einem Praktikumstag in Ihrer Schadenabteilung war ich überzeugt.",
+    "An diesem Tag habe ich zugehört, wie eine Kollegin einen Kfz-Schaden aufgenommen hat, und gesehen, wie viele Schritte dahinter stecken, bis Geld überwiesen wird. In der Schule bin ich Klassensprecherin und vermittle oft zwischen Lehrern und Mitschülern. Mein Realschulabschluss wird voraussichtlich bei 1,8 liegen.",
+    "Den Online-Test mache ich gern, sobald Sie mir den Link schicken."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis"
+   ],
+   "from": [
+    "Selina Groß",
+    "Kumpfmühler Straße 31",
+    "93051 Regensburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "classic",
+  "accent": 0,
+  "name": "Valentin Ederer",
+  "title": "Schüler",
+  "street": "Dechbettener Straße 12",
+  "city": "93049 Regensburg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe Information (Minijob)",
+    "Elektrofachmarkt am Donaueinkaufszentrum",
+    "Regensburg",
+    "- Kundenfragen, Reparaturannahme\n- Verkauf von Garantieverlängerungen"
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2026",
+    "Gymnasium, voraussichtlich Abitur",
+    "Goethe-Gymnasium",
+    "Regensburg",
+    "Prüfungsfächer Wirtschaft und Mathematik"
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Präsentieren",
+    4
+   ],
+   [
+    "Rechnen",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Volleyball, Debattierclub"
+ },
+ "do": [
+  "Kontakt zu Kunden mit Beispiel zeigen.",
+  "Agentur oder Innendienst unterscheiden.",
+  "Seriöses Foto und fehlerfreie Unterlagen."
+ ],
+ "dont": [
+  "Verkaufen als einzige Motivation nennen.",
+  "Versicherungsfachbegriffe einstreuen, die du nicht erklären kannst.",
+  "Übertriebene Selbstsicherheit."
+ ],
+ "questions": [
+  "Wie würden Sie einem Kunden eine Haftpflichtversicherung erklären?",
+  "Was tun Sie, wenn ein Kunde verärgert anruft?",
+  "Agentur oder Innendienst – was reizt Sie?",
+  "Wie gehen Sie mit Absagen um?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Unterlagen gehören zur Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten beiden Zeugnisse. Praktikumsbescheinigungen, Kurse oder Ehrenamt legst du dazu, wenn du sie hast. Schick alles als eine PDF-Datei."
+  },
+  {
+   "q": "Muss ich im Vertrieb arbeiten?",
+   "a": "Das hängt vom Betrieb ab. In Agenturen ist Beratung und Verkauf Alltag, im Innendienst von Versicherern stehen Vertragsbearbeitung und Schäden im Vordergrund. Frag im Gespräch nach."
+  }
+ ],
+ "related": [
+  "versicherungskaufmann",
+  "ausbildung-bankkaufmann",
+  "ausbildung-steuerfachangestellte",
+  "kundenservice-mitarbeiter"
+ ]
+}

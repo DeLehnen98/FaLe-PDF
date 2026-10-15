@@ -28,6 +28,7 @@ export async function openOfficeRoute(parts, params, { goBack }) {
   const top = parts[0];
   const onBack = async () => { const s = currentScreen(); if (await confirmLeave(s)) { if (s) s.isDirty = () => false; goBack(); } };
   if (top === 'vorlagen' && parts[1] === 'tabelle') return sheetTemplatesScreen(onBack);
+  if (top === 'vorlagen' && parts[1] === 'dokument') return docTemplatesScreen(onBack);
   if (top === 'vorlagen') return templatesScreen(onBack, params.get('art'));
   let mount, opts = {}, title = '';
   if (top === 'bearbeiten') {
@@ -169,5 +170,71 @@ async function sheetTemplatesScreen(onBack) {
       if (el) el.innerHTML = `<table>${rows.map((row, i) => `<tr>${row.map((x, c) => (i === 0 ? (c === 0 ? `<td colspan="5" class="stp-title">${esc(x.t)}</td>` : '') : `<td class="${x.s.fill && x.s.b ? 'h' : x.s.fill ? 'in' : ''}${typeof x.t === 'string' && /^-?[\d.,]+( €| %| km)?$/.test(x.t) ? ' n' : ''}${x.s.b ? ' b' : ''}">${esc(x.t)}</td>`)).join('')}</tr>`).join('')}</table>`;
     } catch (e) { console.warn('Vorschau übersprungen', t.id, e); }
   }
+}
+// ---------------- document start screen: blank page or a template (live previews of the real template) ----------------
+async function docTemplatesScreen(onBack) {
+  const screen = openScreen({ title: 'Neues Dokument', sub: 'Leer beginnen oder eine Vorlage wählen', onBack });
+  const [T, { stylesCss, normalizeStyles }] = await Promise.all([import('./doc-templates.js'), import('./docstyles.js')]);
+  if (screen.signal.aborted) return;
+  const cats = T.DOC_TEMPLATE_CATS;
+  const built = new Map(T.DOC_TEMPLATE_LIST.map(t => [t.id, T.buildDocTemplate(t.id)]));
+  const PX = 96 / 72;
+  screen.body.innerHTML = `<div class="screen-inner stp dtp">
+    <div class="stp-bar"><input class="input" type="search" data-q placeholder="Vorlage suchen, z. B. Lebenslauf, Rechnung, Hausarbeit …" aria-label="Vorlagen durchsuchen">
+      <div class="chips stp-cats" role="tablist" aria-label="Kategorien">${cats.map((c, i) => `<button type="button" class="chip" role="tab" data-cat="${esc(c)}" aria-selected="${i === 0}">${esc(c)}</button>`).join('')}</div></div>
+    <div class="stp-grid">${T.DOC_TEMPLATE_LIST.map(t => {
+      const b = built.get(t.id);
+      const land = b.page.w > b.page.h;
+      return `<div class="stp-card" data-id="${esc(t.id)}">
+      <a class="stp-open" href="#/neu/dokument?vorlage=${encodeURIComponent(t.id)}" aria-label="${esc(t.title)} öffnen"><span class="stp-prev dtp-prev${land ? ' land' : ''}" data-no-i18n aria-hidden="true"><span class="doc-page dtp-page dtp-id-${esc(t.id)}" style="--pw:${Math.round(b.page.w * PX)}px;--ph:${Math.round(b.page.h * PX)}px;padding:${Math.round(b.page.mt * PX)}px ${Math.round(b.page.mr * PX)}px ${Math.round(b.page.mb * PX)}px ${Math.round(b.page.ml * PX)}px"></span></span>
+        <span class="tpl-txt"><strong>${esc(t.title)}</strong><span>${esc(t.desc)}</span></span></a>
+      ${t.id === 'leer' ? '' : `<button class="icon-btn stp-dl" type="button" data-dl="${esc(t.id)}" aria-label="${esc(t.title)} als .docx-Datei herunterladen" title="Als .docx-Datei herunterladen">${oicon('download')}</button>`}
+    </div>`;
+    }).join('')}</div>
+    <p class="muted small stp-note">Alle Vorlagen sind eigene Entwürfe zum Überschreiben – mit Formatvorlagen, Kopf- und Fußzeilen und rechnenden Tabellen, wo es passt.</p>
+  </div>`;
+  // template styles (fonts, sizes, colours) scoped to each preview
+  const css = document.createElement('style');
+  css.textContent = T.DOC_TEMPLATE_LIST.map(t => stylesCss(normalizeStyles(built.get(t.id).styles), `.dtp-page.dtp-id-${t.id}`)).join('');
+  screen.body.prepend(css);
+  // fill previews with the real template content (own, static HTML – no user data)
+  for (const t of T.DOC_TEMPLATE_LIST) {
+    const el = $(`.stp-card[data-id="${t.id}"] .dtp-page`, screen.body);
+    if (!el) continue;
+    el.innerHTML = built.get(t.id).html;
+    $$('[data-toc]', el).forEach(toc => {
+      const hs = $$('h1,h2,h3', el).filter(x => !x.closest('[data-toc]'));
+      toc.innerHTML = `<p class="toc-title">${esc(toc.getAttribute('data-toc-title') || 'Inhaltsverzeichnis')}</p>` + hs.map((x, i) => `<p class="toc-e l${x.tagName[1]}"><span>${esc(x.textContent)}</span><b class="toc-pg">${i + 2}</b></p>`).join('');
+    });
+    $$('[contenteditable]', el).forEach(x => x.removeAttribute('contenteditable'));
+  }
+  const fit = () => { for (const prev of $$('.dtp-prev', screen.body)) { const pg = prev.firstElementChild; const w = parseFloat(pg.style.getPropertyValue('--pw')) || 794; if (prev.clientWidth) pg.style.transform = `scale(${(prev.clientWidth - 20) / w})`; } };
+  fit();
+  const ro = new ResizeObserver(() => fit());
+  ro.observe($('.stp-grid', screen.body));
+  const q = $('[data-q]', screen.body);
+  let cat = cats[0];
+  const texts = new Map(T.DOC_TEMPLATE_LIST.map(t => [t.id, `${t.title} ${t.desc} ${t.keywords || ''} ${t.cat} ${T.docTemplateText(t.id)}`.toLocaleLowerCase('de')]));
+  const filter = () => {
+    const term = q.value.trim().toLocaleLowerCase('de');
+    for (const card of $$('.stp-card', screen.body)) {
+      const t = T.DOC_TEMPLATE_LIST.find(x => x.id === card.dataset.id);
+      card.hidden = !((cat === cats[0] || t.cat === cat || t.id === 'leer') && (!term || term.split(/\s+/).every(w => texts.get(t.id).includes(w))));
+    }
+  };
+  q.addEventListener('input', filter);
+  const catBtns = $$('.stp-cats [data-cat]', screen.body);
+  catBtns.forEach(b => b.addEventListener('click', () => { cat = b.dataset.cat; catBtns.forEach(x => x.setAttribute('aria-selected', String(x === b))); filter(); }));
+  screen.body.addEventListener('click', async e => {
+    const b = e.target.closest('[data-dl]');
+    if (!b) return;
+    try {
+      const t = built.get(b.dataset.dl);
+      const [{ htmlToModel }, { modelToDocx }, { sanitizeDocHtml }] = await Promise.all([import('./docmodel.js'), import('./docx-write.js'), import('../security.js')]);
+      const model = htmlToModel(await sanitizeDocHtml(t.html), { baseSize: 11, styles: normalizeStyles(t.styles) });
+      downloadBlob(await modelToDocx(model, { title: t.title, page: t.page, hf: t.hf }), `${t.name}.docx`);
+    } catch (err) { errorToast(err, 'Die Vorlage konnte nicht erstellt werden.'); }
+  });
+  screen.cleanup = () => ro.disconnect();
 }
 function emptyGrid() { return `<table>${Array.from({ length: 8 }, () => `<tr>${'<td></td>'.repeat(5)}</tr>`).join('')}</table>`; }

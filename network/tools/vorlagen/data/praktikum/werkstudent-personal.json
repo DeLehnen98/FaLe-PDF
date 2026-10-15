@@ -1,0 +1,169 @@
+{
+ "id": "werkstudent-personal",
+ "field": "praktikum",
+ "name": "Werkstudent/in Personal (HR)",
+ "search": "werkstudent werkstudentin personal hr human resources recruiting personalwesen studentenjob bewerbung",
+ "short": "Recruiting, Personalakten, Onboarding – neben dem Studium.",
+ "desc": "Bewerbung als Werkstudent/in im Personalbereich (HR): Muster-Anschreiben für Psychologiestudentin und BWL-Student mit Recruiting-Erfahrung, Lebenslauf und Tipps.",
+ "intro": "In der Personalabteilung unterstützen Werkstudierende beim Recruiting, bei der Organisation von Vorstellungsgesprächen, beim Onboarding und in der Personalverwaltung. Diskretion ist das wichtigste Wort. Zeig, dass du organisiert bist und mit sensiblen Daten umgehen kannst.",
+ "lookFor": [
+  "Studium mit Bezug zu Personal, BWL, Psychologie oder Recht",
+  "Diskretion und Sorgfalt",
+  "Organisationstalent",
+  "Sicherer Umgang mit Office-Programmen",
+  "Freundliche Kommunikation mit Bewerbern"
+ ],
+ "letters": [
+  {
+   "label": "Psychologiestudentin mit Interesse an Eignungsdiagnostik",
+   "level": "praktikum",
+   "position": "Werkstudentin Recruiting",
+   "to": {
+    "org": "Medizintechnik Kurpfalz GmbH",
+    "sal": "f",
+    "contact": "Ehrhardt",
+    "street": "Im Neuenheimer Feld 50",
+    "city": "69120 Heidelberg"
+   },
+   "body": [
+    "Eignungsdiagnostik klingt trocken, ist aber in meinem Studium das Fach, bei dem ich die Zeit vergesse. Wie findet man heraus, ob jemand zu einer Stelle passt, ohne sich auf Bauchgefühl und Notendurchschnitt zu verlassen? Bei Ihnen würde ich gern sehen, wie das in einem Unternehmen mit 400 Mitarbeitenden praktisch aussieht.",
+    "Ich studiere Psychologie im sechsten Semester an der Universität Heidelberg. Als Hilfskraft am Lehrstuhl organisiere ich Versuchstermine, betreue Teilnehmende und pflege eine Datenbank mit vertraulichen Angaben. Termine koordinieren, freundlich nachfassen und nichts ausplaudern kann ich also.",
+    "Zwölf bis 18 Stunden pro Woche sind für mich gut machbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung",
+    "Notenübersicht"
+   ]
+  },
+  {
+   "label": "BWL-Student mit Erfahrung als Schichtleiter",
+   "level": "praktikum",
+   "position": "Werkstudent Personalverwaltung",
+   "to": {
+    "org": "Logistikpark Rhein-Neckar GmbH",
+    "sal": "m",
+    "contact": "Schuster",
+    "street": "Am Hafen 5",
+    "city": "68159 Mannheim"
+   },
+   "body": [
+    "als Schichtleiter in einem Fitnessstudio habe ich zwei Jahre lang Dienstpläne für 15 Aushilfen geschrieben, Krankmeldungen weitergegeben und neue Kolleginnen eingearbeitet. Das war mein erster Blick in Personalarbeit, und er hat mich überzeugt, im Studium den Schwerpunkt Personal zu wählen.",
+    "Im fünften Semester BWL an der Universität Mannheim belege ich Arbeitsrecht und Personalmanagement. Bei Ihnen würde ich gern in der Personalverwaltung mitarbeiten: Verträge vorbereiten, Personalakten pflegen, Fragen von Mitarbeitenden beantworten.",
+    "Bis zu 20 Stunden pro Woche, auch an festen Tagen, sind möglich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Jonas Schäfer",
+    "Seckenheimer Straße 21",
+    "68165 Mannheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "classic",
+  "accent": 2,
+  "name": "Lisa Morgenstern",
+  "title": "Studentin Psychologie (B. Sc.), 6. Semester",
+  "street": "Bergheimer Straße 90",
+  "city": "69115 Heidelberg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Studentische Hilfskraft",
+    "Psychologisches Institut",
+    "Heidelberg",
+    "- Terminorganisation für Studien\n- Betreuung von Teilnehmenden\n- Pflege vertraulicher Daten"
+   ],
+   [
+    "2022",
+    "2024",
+    "Aushilfe Empfang",
+    "Physiotherapiepraxis Weststadt",
+    "Heidelberg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "",
+    "Psychologie (B. Sc.), 6. Semester",
+    "Universität Heidelberg",
+    "Heidelberg",
+    "Schwerpunkt Arbeits- und Organisationspsychologie"
+   ],
+   [
+    "2014",
+    "2022",
+    "Abitur (1,5)",
+    "Helmholtz-Gymnasium",
+    "Heidelberg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Terminorganisation",
+    5
+   ],
+   [
+    "Datenpflege",
+    4
+   ],
+   [
+    "Statistik",
+    4
+   ],
+   [
+    "Gesprächsführung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Yoga, Kochen"
+ },
+ "do": [
+  "Diskretion mit einem Beispiel belegen.",
+  "Studienschwerpunkt mit Bezug zu HR nennen.",
+  "Organisationserfahrung zeigen."
+ ],
+ "dont": [
+  "Vertrauliche Infos aus früheren Jobs ausplaudern.",
+  "HR nur als „Arbeit mit Menschen“ beschreiben.",
+  "Fehler im Anschreiben – ausgerechnet bei HR."
+ ],
+ "questions": [
+  "Wie gehen Sie mit vertraulichen Daten um?",
+  "Wie würden Sie ein Bewerbungsgespräch organisieren?",
+  "Was interessiert Sie an HR?",
+  "Wie viele Stunden haben Sie Zeit?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Stunden darf ich als Werkstudent arbeiten?",
+   "a": "Damit der Werkstudentenstatus in der Sozialversicherung erhalten bleibt, gilt in der Vorlesungszeit in der Regel eine Grenze von 20 Wochenstunden; in den Semesterferien darf es mehr sein. Lass dir die Details von der Personalabteilung oder deiner Krankenkasse bestätigen."
+  }
+ ],
+ "related": [
+  "personalsachbearbeiter",
+  "recruiter",
+  "werkstudent-marketing",
+  "pflichtpraktikum-bwl"
+ ]
+}

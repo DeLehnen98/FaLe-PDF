@@ -1,0 +1,175 @@
+{
+ "id": "praktikum-krankenhaus",
+ "field": "praktikum",
+ "name": "Praktikum im Krankenhaus (Pflegepraktikum)",
+ "search": "praktikum krankenhaus pflegepraktikum medizinstudium krankenpflegedienst klinik station bewerbung",
+ "short": "Pflegepraktikum vor dem Medizinstudium oder Orientierung.",
+ "desc": "Bewerbung für ein Praktikum im Krankenhaus, z. B. das Pflegepraktikum vor dem Medizinstudium: Muster-Anschreiben für Abiturientin und Schüler, mit Lebenslauf und Tipps.",
+ "intro": "Krankenhäuser nehmen Praktikantinnen und Praktikanten für die Orientierung, für das Pflegepraktikum vor dem Medizinstudium und für Schulpraktika. Auf Station hilfst du bei Grundpflege, Essen, Betten machen, Transporten. Nenn Zeitraum, Zweck und ob du eine Station bevorzugst.",
+ "lookFor": [
+  "Zeitraum und Zweck des Praktikums",
+  "Belastbarkeit und Respekt vor Patienten",
+  "Bereitschaft zum Schichtdienst",
+  "Masern-Impfschutz bzw. Nachweise nach Vorgabe der Klinik",
+  "Diskretion"
+ ],
+ "letters": [
+  {
+   "label": "Abiturientin vor dem Medizinstudium",
+   "level": "praktikum",
+   "position": "Pflegepraktikum vor dem Medizinstudium (Krankenpflegedienst)",
+   "to": {
+    "org": "Klinikum Münsterland, Pflegedirektion",
+    "sal": "none",
+    "street": "Klinikweg 1",
+    "city": "48149 Münster"
+   },
+   "body": [
+    "meinen Studienplatz in Medizin habe ich zum Wintersemester bekommen. Davor möchte ich den vorgeschriebenen Krankenpflegedienst ableisten, und zwar in einem Haus, in dem ich viele Fachrichtungen erlebe.",
+    "Ich habe im Sommer zwei Wochen in einem Altenheim hospitiert und dabei gelernt, wie man jemanden lagert, Essen anreicht und Würde wahrt, wenn jemand nicht mehr allein zur Toilette kann. Früh aufstehen und Schichtdienst schrecken mich nicht ab. Am liebsten wäre mir eine internistische oder chirurgische Station.",
+    "Mein Wunschzeitraum ist der 1. Juli bis 30. September. Nachweise über Impfungen lege ich bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Zulassungsbescheid",
+    "Impfnachweis"
+   ]
+  },
+  {
+   "label": "Schüler, der sich zwischen Pflege und Rettungsdienst entscheiden will",
+   "level": "praktikum",
+   "position": "Orientierungspraktikum Pflege (4 Wochen)",
+   "to": {
+    "org": "St.-Josef-Krankenhaus",
+    "sal": "f",
+    "contact": "Kleinert",
+    "street": "Kapellenweg 2",
+    "city": "48653 Coesfeld"
+   },
+   "body": [
+    "seit drei Jahren bin ich beim Jugendrotkreuz und weiß, dass ich beruflich mit Menschen und Medizin zu tun haben will. Nur ob Pflege oder Rettungsdienst, kann ich noch nicht sagen. Ein vierwöchiges Praktikum auf Station soll mir helfen, das herauszufinden.",
+    "Ich bin 17 und gehe in die 11. Klasse. In den Sommerferien vom 20. Juli bis 15. August hätte ich Zeit. Mir ist klar, dass ich nur unterstützen darf, und genau das möchte ich: zuschauen, fragen, mit anpacken.",
+    "Eine Einverständniserklärung meiner Eltern liegt bei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Klasse 10",
+    "Einverständniserklärung"
+   ],
+   "from": [
+    "Ben Hüging",
+    "Dülmener Straße 19",
+    "48653 Coesfeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "classic",
+  "accent": 3,
+  "name": "Clara Overmeyer",
+  "title": "Abiturientin",
+  "street": "Hammer Straße 120",
+  "city": "48153 Münster",
+  "exp": [
+   [
+    "08/2025",
+    "08/2025",
+    "Hospitation (2 Wochen)",
+    "Seniorenheim St. Mauritz",
+    "Münster",
+    "- Lagern, Essen anreichen, Begleitung"
+   ],
+   [
+    "2023",
+    "",
+    "Nachhilfe Biologie",
+    "privat",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2017",
+    "2026",
+    "Abitur (1,3)",
+    "Annette-Gymnasium",
+    "Münster",
+    "Leistungskurse Biologie, Chemie"
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste-Hilfe-Kurs",
+    "Hilfsorganisation",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit älteren Menschen",
+    3
+   ],
+   [
+    "Biologie",
+    5
+   ],
+   [
+    "Belastbarkeit",
+    4
+   ],
+   [
+    "Diskretion",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Latein",
+    "A2"
+   ]
+  ],
+  "hobbies": "Hockey, Lesen"
+ },
+ "do": [
+  "Zeitraum und Zweck klar nennen.",
+  "Impf- und Gesundheitsnachweise bereithalten.",
+  "Zeigen, dass du dir der einfachen Tätigkeiten bewusst bist."
+ ],
+ "dont": [
+  "Erwarten, Ärzten über die Schulter zu schauen statt zu pflegen.",
+  "Zu spät bewerben – Plätze in den Sommerferien sind gefragt.",
+  "Schichtdienst ausschließen."
+ ],
+ "questions": [
+  "Warum möchten Sie das Praktikum bei uns machen?",
+  "Wie gehen Sie mit Ekel und Tod um?",
+  "Können Sie Frühdienst ab sechs Uhr?",
+  "Was erwarten Sie von der Station?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange dauert das Pflegepraktikum für das Medizinstudium?",
+   "a": "Die Approbationsordnung schreibt einen Krankenpflegedienst vor; Dauer und Fristen findest du auf der Seite deines Landesprüfungsamts. Viele leisten ihn vor Studienbeginn oder in den Semesterferien ab."
+  }
+ ],
+ "related": [
+  "pflegehelfer",
+  "pflegefachkraft",
+  "ausbildung-pflegefachfrau",
+  "rettungssanitaeter"
+ ]
+}

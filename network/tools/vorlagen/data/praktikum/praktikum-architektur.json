@@ -1,0 +1,173 @@
+{
+ "id": "praktikum-architektur",
+ "field": "praktikum",
+ "name": "Praktikum Architektur",
+ "search": "praktikum architektur architekturbüro planung entwurf studium praxissemester baustelle bewerbung portfolio",
+ "short": "Architekturbüro im Studium – mit Portfolio.",
+ "desc": "Bewerbung für ein Praktikum im Architekturbüro: Muster-Anschreiben für Bachelorstudentin im Praxissemester und Masterstudenten, Lebenslauf und Tipps zum Portfolio.",
+ "intro": "Architekturbüros wählen Praktikanten vor allem nach dem Portfolio aus. Wichtig sind außerdem Programme, mit denen du planen kannst, und der Zeitraum. Schreib, was du im Büro lernen willst – Werkplanung, Wettbewerbe, Bauleitung – und warum gerade dieses Büro.",
+ "lookFor": [
+  "Studium Architektur oder Innenarchitektur",
+  "Portfolio mit Entwürfen und Zeichnungen",
+  "CAD-Kenntnisse, Modellbau",
+  "Interesse an der Arbeit des Büros",
+  "Zeitraum von mehreren Monaten"
+ ],
+ "letters": [
+  {
+   "label": "Praxissemester mit Interesse an Holzbau",
+   "level": "praktikum",
+   "position": "Praktikantin im Praxissemester (6 Monate)",
+   "to": {
+    "org": "Holzwerk Architekten PartGmbB",
+    "sal": "m",
+    "contact": "Strasser",
+    "street": "Mozartstraße 4",
+    "city": "87435 Kempten (Allgäu)"
+   },
+   "body": [
+    "ihr Kindergarten in Durach ist der Grund, warum ich mich bei Ihnen bewerbe. Ich habe ihn auf einer Exkursion besucht: Sichtbare Holzkonstruktion, Fenster auf Kinderhöhe, ein Dach, das bis zum Boden reicht. Ich habe danach mein Semesterprojekt in Holz geplant.",
+    "Ich studiere Architektur an der Hochschule Augsburg im fünften Semester und muss ein Praxissemester von 20 Wochen absolvieren. Mit 3D-Planungsprogrammen arbeite ich sicher, Modellbau mache ich gern von Hand. Am meisten interessieren mich Werkplanung und Details, weil wir im Studium oft beim Entwurf aufhören.",
+    "Mein Portfolio mit vier Projekten hängt an (12 Seiten). Zeitraum: März bis August."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Portfolio (PDF)",
+    "Bescheinigung Praxissemester"
+   ]
+  },
+  {
+   "label": "Masterstudent für Wettbewerbe",
+   "level": "praktikum",
+   "position": "Praktikant Wettbewerbe (3 Monate)",
+   "to": {
+    "org": "Büro Lanz Architektur",
+    "sal": "f",
+    "contact": "Lanz",
+    "street": "Kornhausplatz 2",
+    "city": "87439 Kempten (Allgäu)"
+   },
+   "body": [
+    "zwei studentische Wettbewerbe habe ich bisher mitgemacht, einmal mit einer Anerkennung. Mich reizen die Wochen, in denen man unter Zeitdruck eine Idee bis zum Plakat bringt. Ihr Büro nimmt regelmäßig an Wettbewerben für Schulen und Rathäuser teil.",
+    "Im Master studiere ich an der TU München im zweiten Semester und arbeite am liebsten mit Skizzen und schnellen Arbeitsmodellen aus Pappe, bevor ich etwas am Rechner visualisiere. Das spart Zeit. Drei Monate in der Wettbewerbsphase eines Büros wären für mich eine wertvolle Lehrzeit.",
+    "Verfügbar bin ich von Juli bis September."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Portfolio (PDF)",
+    "Bachelorzeugnis"
+   ],
+   "from": [
+    "Jakob Rainer",
+    "Nymphenburger Straße 100",
+    "80636 München"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 5,
+  "name": "Theresa Mayr",
+  "title": "Studentin Architektur (B. A.), 5. Semester",
+  "street": "Gögginger Straße 80",
+  "city": "86199 Augsburg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe Modellbau",
+    "Modellbauwerkstatt Augsburg",
+    "Augsburg",
+    "- Architekturmodelle für Büros"
+   ],
+   [
+    "2023",
+    "2023",
+    "Bauhelferin (Semesterferien)",
+    "Zimmerei Heiß",
+    "Kempten",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2023",
+    "",
+    "Architektur (B. A.), 5. Semester",
+    "Technische Hochschule Augsburg",
+    "Augsburg",
+    "Semesterprojekt: Kindertagesstätte in Holzbauweise"
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Allgäu-Gymnasium",
+    "Kempten",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "3D-Planung",
+    4
+   ],
+   [
+    "Modellbau",
+    5
+   ],
+   [
+    "Handskizze",
+    4
+   ],
+   [
+    "Visualisierung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Italienisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Skitouren, Zeichnen"
+ },
+ "do": [
+  "Portfolio klein und gut halten (unter 10 MB).",
+  "Ein Projekt des Büros nennen, das dich interessiert.",
+  "Zeitraum und Pflichtpraktikum klar angeben."
+ ],
+ "dont": [
+  "Allgemeines Lob für „tolle Architektur“.",
+  "Portfolio mit 80 Seiten.",
+  "Fehlende Angaben zu Programmen."
+ ],
+ "questions": [
+  "Erzählen Sie uns von Ihrem besten Projekt.",
+  "Was möchten Sie im Büro lernen?",
+  "Welche Programme nutzen Sie?",
+  "Haben Sie schon auf einer Baustelle gearbeitet?"
+ ],
+ "faq": [
+  {
+   "q": "Wie umfangreich sollte mein Portfolio sein?",
+   "a": "Drei bis fünf Projekte reichen, gut ausgewählt und mit kurzen Texten. Viele Büros wollen ein PDF unter 10 MB; größere Dateien verlinkst du."
+  }
+ ],
+ "related": [
+  "werkstudent-ingenieur",
+  "technischer-produktdesigner",
+  "pflichtpraktikum-bwl",
+  "zimmerer"
+ ]
+}
