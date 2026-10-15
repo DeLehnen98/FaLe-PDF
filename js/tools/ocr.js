@@ -104,10 +104,10 @@ function copyText(text) {
 }
 
 async function shareText(text, title) {
-  try {
-    if (navigator.share) { await navigator.share({ title, text }); return; }
-  } catch (e) { if (e && e.name === 'AbortError') return; }
-  const { shareFile } = await import('../platform.js');
+  // Android app: Share plugin (the WebView has no navigator.share); web: Web Share API
+  const { shareFile, shareTextOrLink } = await import('../platform.js');
+  const r = await shareTextOrLink({ title, text });
+  if (r.ok || r.cancelled) return;
   await shareFile(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${title}.txt`, 'text/plain', { title });
 }
 

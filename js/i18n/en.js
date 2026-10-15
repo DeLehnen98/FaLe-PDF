@@ -5761,6 +5761,7 @@ export default {
   "Privat & Freizeit": "Personal & leisure",
   "Drucken ist hier nicht direkt möglich – wähle eine Druck-App zum Teilen.": "Printing is not directly possible here – choose a printing app to share with.",
   "Drucken ist fehlgeschlagen.": "Printing failed.",
+  "Das Teilen-Menü ist noch geöffnet.": "The share menu is still open.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

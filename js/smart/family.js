@@ -563,7 +563,13 @@ async function inviteDialog(res) {
       $('[data-codev]', dlg).value = res.code;
       $('[data-qr]', dlg).dataset.link = res.link;
       $('[data-copy]', dlg).addEventListener('click', async () => { if (await copyText(res.link)) toast('Link kopiert', 'success'); });
-      $('[data-share]', dlg).addEventListener('click', async () => { try { if (navigator.share) await navigator.share({ title: 'Einladung in den FaLe Familien-Ordner', url: res.link }); else if (await copyText(res.link)) toast('Link kopiert', 'success'); } catch {} });
+      $('[data-share]', dlg).addEventListener('click', async () => {
+        try {
+          const { shareTextOrLink } = await import('../platform.js'); // Android: Share plugin (no navigator.share in the WebView)
+          const r = await shareTextOrLink({ title: 'Einladung in den FaLe Familien-Ordner', url: res.link });
+          if (!r.ok && !r.cancelled && await copyText(res.link)) toast('Link kopiert', 'success');
+        } catch {}
+      });
       return null;
     },
   });

@@ -18,3 +18,7 @@ Thumbs.db
 .idea/
 .vscode/
 __pycache__/
+
+# Android E2E (CI) outputs
+e2e-out/
+apk/

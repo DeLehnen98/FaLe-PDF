@@ -108,6 +108,7 @@ async function connect() {
   if (!target) throw new Error('WebView-Debug-Ziel nicht gefunden (WebView-Debugging aus?)');
   cdp = new Cdp(target.webSocketDebuggerUrl);
   await cdp.open();
+  cdp.pid = pid;
   cdp.handlers.push(msg => {
     if (msg.method === 'Runtime.consoleAPICalled') {
       const fmt = a => {
@@ -195,11 +196,13 @@ function stroke(points) {
 }
 /** Warnings/errors the app process logged since the last logcatMark() (Capacitor, plugins, chromium). */
 function logcatMark() { adb(['logcat', '-c'], { allowFail: true }); }
-function logcatTail(n = 12) {
+function logcatTail(n = 14) {
   const pid = appPid();
-  const out = adb(['logcat', '-d', '-v', 'brief', ...(pid ? [`--pid=${pid}`] : []), '*:W'], { allowFail: true });
-  const sys = adb(['logcat', '-d', '-v', 'brief', 'FaleIncoming:V', 'FalePrint:V', 'Capacitor:V', 'Capacitor/Plugin:V', 'ActivityTaskManager:I', '*:S'], { allowFail: true });
-  return (out + sys).split('\n').filter(l => l.trim() && !/beginning of/.test(l)).slice(-n).join(' | ').slice(0, 1800);
+  const noise = /Handling local request|ZappDownloader|ChimeraConfig|Vision|abht|dumpsys|beginning of/;
+  const sys = adb(['logcat', '-d', '-v', 'brief', 'FaleIncoming:V', 'FalePrint:V', 'Capacitor/Plugin:V', 'Capacitor/Console:V', 'ActivityTaskManager:W', 'AndroidRuntime:E', '*:S'], { allowFail: true });
+  const app = adb(['logcat', '-d', '-v', 'brief', ...(pid ? [`--pid=${pid}`] : []), '*:W'], { allowFail: true });
+  const lines = [...new Set((sys + '\n' + app).split('\n'))].filter(l => l.trim() && !noise.test(l));
+  return lines.slice(-n).join(' | ').slice(0, 2000);
 }
 const back = () => sh('input keyevent 4', { allowFail: true });
 const hideKeyboard = () => sh('input keyevent 111', { allowFail: true }); // ESCAPE closes the IME without touching the page
@@ -252,12 +255,21 @@ async function pdfInfo(id) {
 async function closeOverlays() {
   await ev(`document.querySelectorAll('.menu-layer').forEach(m => m.remove()); document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('.onboard').forEach(o => o.remove()); return true;`).catch(() => {});
 }
+const appOnTop = () => new RegExp(`topResumedActivity=[^\\n]*${PKG.replace(/\./g, '\\.')}/`).test(sh('dumpsys activity activities', { allowFail: true }));
+/** Bring the app back to the front (never with BACK: on the start screen that closes the app). */
 async function ensureApp() {
-  if (!/dev\.fale\.pdf/.test(focusedWindow())) {
-    for (let i = 0; i < 3 && !/dev\.fale\.pdf/.test(focusedWindow()); i++) { back(); await sleep(1200); }
-    if (!/dev\.fale\.pdf/.test(focusedWindow())) { sh(`monkey -p ${PKG} -c android.intent.category.LAUNCHER 1`, { allowFail: true }); await sleep(2500); }
+  if (!appOnTop()) {
+    sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
+    await waitFor(() => appOnTop(), { timeout: 15000, interval: 700 });
+    await sleep(800);
   }
-  if (!cdp || cdp.closed) { await connect(); await ev(HELPERS); }
+  const pid = appPid();
+  if (!cdp || cdp.closed || cdp.pid !== pid) {
+    await connect();
+    cdp.pid = appPid();
+    await waitJs(`document.readyState === 'complete' && !!document.querySelector('#view-start, main')`, { timeout: 30000 });
+    await ev(HELPERS);
+  }
 }
 async function step(name, fn) {
   const start = consoleLog.length;
@@ -300,12 +312,24 @@ async function main() {
   let docId = null;
   await step('PDF aus anderer App öffnen (VIEW-Intent)', async () => {
     adb(['push', local, '/sdcard/Download/e2e-test.pdf']);
-    sh(`appops set --uid ${PKG} MANAGE_EXTERNAL_STORAGE allow`, { allowFail: true });
-    const am = sh(`am start -W -a android.intent.action.VIEW -d file:///sdcard/Download/e2e-test.pdf -t application/pdf -n ${PKG}/.MainActivity`, { allowFail: true });
+    // index the file in MediaStore → content://media/… URI that the shell can grant to the app
+    sh('content call --uri content://media/none --method scan_volume --arg external_primary', { allowFail: true, timeout: 60000 });
+    sh('am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/e2e-test.pdf', { allowFail: true });
+    let uri = '';
+    for (let i = 0; i < 10 && !uri; i++) {
+      const q = sh(`content query --uri content://media/external/file --projection _id:_display_name --where "_display_name='e2e-test.pdf'"`, { allowFail: true });
+      const m = q.match(/_id=(\d+)/);
+      if (m) uri = `content://media/external/file/${m[1]}`;
+      else await sleep(1500);
+    }
+    const am = uri
+      ? sh(`am start -W -a android.intent.action.VIEW -d ${uri} -t application/pdf --grant-read-uri-permission -n ${PKG}/.MainActivity`, { allowFail: true })
+      : sh(`am start -W -a android.intent.action.VIEW -d file:///sdcard/Download/e2e-test.pdf -t application/pdf -n ${PKG}/.MainActivity`, { allowFail: true });
+    console.log('VIEW', uri || 'file://', am.replace(/\s+/g, ' ').slice(0, 200));
     await sleep(2500);
-    if (cdp.closed) await connect();
+    if (cdp.closed || cdp.pid !== appPid()) { await connect(); await ev(HELPERS); }
     const d = await waitFor(async () => (await docs()).find(x => x.name === 'e2e-test.pdf'), { timeout: 20000 });
-    if (!d) throw new Error('Datei kam nicht in der App an (am: ' + am.replace(/\s+/g, ' ').slice(0, 300) + ')');
+    if (!d) throw new Error(`Datei kam nicht in der App an (${uri || 'file://'}; am: ${am.replace(/\s+/g, ' ').slice(0, 300)})`);
     docId = d.id;
     const hash = await waitJs(`location.hash.includes(${JSON.stringify(d.id)}) && location.hash`, { timeout: 10000 });
     return `importiert und geöffnet (${hash})`;

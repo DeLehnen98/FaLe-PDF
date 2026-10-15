@@ -190,9 +190,9 @@ async function uniqueName(fs, name) {
  * Resolves {ok, method: 'share'|'download'|null, cancelled}.
  */
 export async function shareFile(blobOrBytes, filename, mime, { title, text, silent } = {}) {
-  const name = cleanName(filename);
   const blob = toBlob(blobOrBytes, mime);
   const type = mime || blob.type || 'application/octet-stream';
+  const name = withExt(cleanName(filename), type); // receiving apps pick the handler by extension
   if (!isNative()) {
     const file = new File([blob], name, { type });
     try {
@@ -210,6 +210,8 @@ export async function shareFile(blobOrBytes, filename, mime, { title, text, sile
     uiToast('Teilen wird hier nicht unterstützt – die Datei wurde heruntergeladen.');
     return { ok: false, method: 'download', cancelled: false };
   }
+  // Android: never navigator.share (absent in the WebView) – the file goes to cache/share/ and the
+  // Share plugin hands it to the system share sheet as a FileProvider content:// URI.
   const fs = plugin('Filesystem');
   const share = plugin('Share');
   try {
@@ -223,11 +225,53 @@ export async function shareFile(blobOrBytes, filename, mime, { title, text, sile
     return { ok: true, method: 'share', cancelled: false };
   } catch (err) {
     const msg = String((err && (err.message || err.errorMessage)) || err || '');
+    // "Share canceled" = the user closed the sheet: not an error
     if (/cancel/i.test(msg)) return { ok: false, method: null, cancelled: true };
     console.warn('Teilen fehlgeschlagen', err);
-    if (!silent) uiToast('Teilen ist fehlgeschlagen.', 'error');
+    if (!silent) {
+      const busy = /in progress/i.test(msg);
+      uiToast(busy ? 'Das Teilen-Menü ist noch geöffnet.' : 'Teilen ist fehlgeschlagen.', 'error', {
+        timeout: 7000,
+        action: busy ? undefined : { label: t('Herunterladen'), onClick: () => { saveFile(blob, name, type); } },
+      });
+    }
     return { ok: false, method: null, cancelled: false };
   }
+}
+
+/** PDFs always leave the app with a .pdf name (receiving apps pick the handler by extension). */
+function withExt(name, type) {
+  const ext = String(type || '').split(';')[0].trim().toLowerCase() === 'application/pdf' ? '.pdf' : '';
+  if (!ext || name.toLowerCase().endsWith(ext)) return name;
+  return name.replace(/\.+$/, '') + ext;
+}
+
+/**
+ * Share plain text and/or a link. Android: Capacitor Share plugin (the WebView has no navigator.share);
+ * web: Web Share API. Resolves {ok, cancelled, method: 'share'|null} – callers fall back to copying.
+ */
+export async function shareTextOrLink({ title = '', text = '', url = '' } = {}) {
+  if (isNative()) {
+    const share = plugin('Share');
+    if (!share) return { ok: false, cancelled: false, method: null };
+    try {
+      const opts = { title, dialogTitle: t('Teilen') };
+      if (text) opts.text = text;
+      if (url) opts.url = url;
+      await share.share(opts);
+      return { ok: true, cancelled: false, method: 'share' };
+    } catch (err) {
+      const msg = String((err && (err.message || err.errorMessage)) || err || '');
+      if (/cancel/i.test(msg)) return { ok: false, cancelled: true, method: null };
+      console.warn('Teilen fehlgeschlagen', err);
+      return { ok: false, cancelled: false, method: null };
+    }
+  }
+  if (navigator.share) {
+    try { await navigator.share({ title, text, url: url || undefined }); return { ok: true, cancelled: false, method: 'share' }; }
+    catch (err) { if (err && err.name === 'AbortError') return { ok: false, cancelled: true, method: null }; console.warn(err); }
+  }
+  return { ok: false, cancelled: false, method: null };
 }
 
 // ---------------------------------------------------------------- print

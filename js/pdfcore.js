@@ -4,7 +4,8 @@ import { openDialog, esc, UserError } from './ui.js';
 import { LIMITS, canvasScaleCap } from './security.js';
 
 const VENDOR = new URL('../vendor/pdfjs/', import.meta.url).href;
-pdfjsLib.GlobalWorkerOptions.workerSrc = VENDOR + 'pdf.worker.min.mjs';
+// worker entry with polyfills for older Android WebViews (js/pdfworker.mjs → vendor worker)
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./pdfworker.mjs', import.meta.url).href;
 
 export { pdfjsLib };
 

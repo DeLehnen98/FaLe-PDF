@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-918762f606';
+const VERSION = 'v1.0.0-abede73c1d';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -10,6 +10,7 @@ const ASSETS = [
   "./",
   "./.github/dependabot.yml",
   "./.github/workflows/ai-smoke.yml",
+  "./.github/workflows/android-e2e.yml",
   "./.github/workflows/android.yml",
   "./.github/workflows/codeql.yml",
   "./.github/workflows/db-migrate.yml",
@@ -153,6 +154,8 @@ const ASSETS = [
   "./js/pdfcore.js",
   "./js/pdfcrypt.js",
   "./js/pdflib.js",
+  "./js/pdfworker-compat.js",
+  "./js/pdfworker.mjs",
   "./js/platform.js",
   "./js/readaloud.js",
   "./js/screen.js",

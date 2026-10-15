@@ -99,16 +99,11 @@ export async function copyToClipboard(text, okMsg = 'Link kopiert.') {
 export async function shareText({ title, text, url }) {
   const full = text ? `${text}\n${url}` : url;
   try {
-    const { isNative, plugin } = await import('../platform.js');
-    if (isNative()) {
-      const p = plugin('Share');
-      if (p) { await p.share({ title, text: full, dialogTitle: title }); return true; }
-    }
-  } catch (e) { if (/cancel/i.test(String((e && e.message) || e))) return false; }
-  if (navigator.share) {
-    try { await navigator.share({ title, text: text || '', url }); return true; }
-    catch (e) { if (e && e.name === 'AbortError') return false; }
-  }
+    const { isNative, shareTextOrLink } = await import('../platform.js');
+    const r = await shareTextOrLink(isNative() ? { title, text: full } : { title, text: text || '', url });
+    if (r.ok) return true;
+    if (r.cancelled) return false;
+  } catch { /* fall back to copying */ }
   return copyToClipboard(full, 'Link kopiert – füge ihn in deine Nachricht ein.');
 }
 
