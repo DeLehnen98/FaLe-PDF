@@ -256,6 +256,16 @@ async function closeOverlays() {
   await ev(`document.querySelectorAll('.menu-layer').forEach(m => m.remove()); document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('.onboard').forEach(o => o.remove()); return true;`).catch(() => {});
 }
 const appOnTop = () => new RegExp(`topResumedActivity=[^\\n]*${PKG.replace(/\./g, '\\.')}/`).test(sh('dumpsys activity activities', { allowFail: true }));
+/** Close a system screen (print preview, share sheet) with BACK until the app is on top again. */
+async function dismissSystemUi(re) {
+  for (let i = 0; i < 3; i++) {
+    const top = topActivity();
+    if (appOnTop() || !re.test(top)) break;
+    back();
+    await waitFor(() => appOnTop() || !re.test(topActivity()), { timeout: 5000, interval: 500 });
+  }
+  if (!await waitFor(() => appOnTop(), { timeout: 6000, interval: 500 })) await ensureApp();
+}
 /** Bring the app back to the front (never with BACK: on the start screen that closes the app). */
 async function ensureApp() {
   if (!appOnTop()) {
@@ -362,8 +372,7 @@ async function main() {
     const act = await waitFor(() => { const a = topActivity() + ' ' + focusedWindow(); return /printspooler|PrintActivity/i.test(a) && a; }, { timeout: 25000, interval: 700 });
     screenshot('print-ui');
     if (!act) throw new Error('Android-Druckdialog erscheint nicht (' + topActivity() + ')');
-    back(); await sleep(1500);
-    if (/printspooler/i.test(focusedWindow())) { back(); await sleep(1500); }
+    await dismissSystemUi(/printspooler/i);
     return act.trim().slice(0, 160);
   });
 
@@ -374,7 +383,7 @@ async function main() {
     const act = await waitFor(() => { const a = topActivity() + ' ' + focusedWindow(); return /Chooser|Resolver|intentresolver/i.test(a) && a; }, { timeout: 20000, interval: 700 });
     screenshot('share-sheet');
     if (!act) throw new Error('System-Teilen-Dialog erscheint nicht (' + topActivity() + ')');
-    back(); await sleep(1500);
+    await dismissSystemUi(/Chooser|Resolver|intentresolver/i);
     const t = await toasts();
     if (t.some(x => /^error/.test(x) && /Teilen/.test(x))) throw new Error('Fehlermeldung nach dem Schließen: ' + t.join(' / '));
     return act.trim().slice(0, 160);
