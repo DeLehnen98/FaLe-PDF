@@ -198,14 +198,16 @@ export default {
       outputs.push({
         name: ctx.fileName(input.name, ctx.t({ de: ' (durchsuchbar)', en: ' (searchable)' }), 'pdf'),
         blob: new Blob([bytes], { type: 'application/pdf' }),
-        note: ctx.t({ de: `${ocred.length} ${ocred.length === 1 ? 'Seite' : 'Seiten'} erkannt · ${words.toLocaleString('de-DE')} Wörter`, en: `${ocred.length} ${ocred.length === 1 ? 'page' : 'pages'} recognised · ${words.toLocaleString('en-GB')} words` }),
+        // no word count here: the text panel below counts the (editable) text – two different numbers confused
+        note: ctx.t({ de: `${ocred.length} ${ocred.length === 1 ? 'Seite' : 'Seiten'} erkannt`, en: `${ocred.length} ${ocred.length === 1 ? 'page' : 'pages'} recognised` }),
         meta: { text: txt, txtName: ctx.fileName(input.name, '', 'txt'), source: input.name },
       });
     }
     if (!outputs.length) {
-      if (skippedTotal && !ocrTotal) throw userError(
+      // the user fixes this on the same screen (switch the option off): a hint in the bar, not an error card
+      if (skippedTotal && !ocrTotal) throw Object.assign(userError(
         'Alle gewählten Seiten enthalten schon Text – die PDF ist bereits durchsuchbar. Schalte „Seiten mit vorhandenem Text überspringen“ aus, wenn du sie trotzdem erkennen lassen willst.',
-        'All selected pages already contain text – the PDF is already searchable. Turn off “Skip pages that already contain text” to recognise them anyway.');
+        'All selected pages already contain text – the PDF is already searchable. Turn off “Skip pages that already contain text” to recognise them anyway.'), { stay: true });
       throw userError('Es konnte kein Text erkannt werden.', 'No text could be recognised.');
     }
     if (inputs.some(i => i.password)) ctx.note({ de: 'Die durchsuchbare PDF ist nicht mehr mit einem Passwort geschützt. Mit „PDF schützen“ kannst du wieder eins setzen.', en: 'The searchable PDF is no longer password-protected. Use “Protect PDF” to set a password again.' });

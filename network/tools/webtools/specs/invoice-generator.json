@@ -7,9 +7,17 @@
   "minFiles": 0,
   "popular": true,
   "order": 61,
-  "related": ["signature-maker", "cancellation-letter", "qr-code", "merge-pdf"],
+  "related": [
+    "signature-maker",
+    "cancellation-letter",
+    "qr-code",
+    "merge-pdf"
+  ],
   "next": [],
-  "needs": ["pdflib", "unicodefont"],
+  "needs": [
+    "pdflib",
+    "unicodefont"
+  ],
   "de": {
     "slug": "rechnung-schreiben",
     "name": "Rechnung schreiben",
@@ -19,25 +27,73 @@
     "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben nach § 14 UStG: 19 % und 7 % USt., Kleinunternehmer, Rabatt, GiroCode. Als PDF – kostenlos, ohne Anmeldung.",
     "lede": "Schreib eine saubere Rechnung mit allen Pflichtangaben – direkt als PDF. Deine Daten bleiben auf deinem Gerät.",
     "primaryButton": "Rechnung erstellen",
-    "keywords": ["rechnung erstellen", "rechnungsvorlage", "rechnung pdf", "kleinunternehmer rechnung", "rechnung 19 prozent", "rechnungsgenerator", "girocode rechnung", "rechnung muster"],
+    "keywords": [
+      "rechnung erstellen",
+      "rechnungsvorlage",
+      "rechnung pdf",
+      "kleinunternehmer rechnung",
+      "rechnung 19 prozent",
+      "rechnungsgenerator",
+      "girocode rechnung",
+      "rechnung muster"
+    ],
     "steps": [
-      {"title": "Daten eintragen", "text": "Trag Rechnungsnummer, Kunde und Positionen ein. Summen, Steuer je Steuersatz und Zahlungsziel siehst du sofort."},
-      {"title": "Pflichtangaben prüfen", "text": "Der Check zeigt, welche Angaben nach § 14 UStG noch fehlen. Als Kleinunternehmer setzt du ein Häkchen – der Hinweis kommt automatisch."},
-      {"title": "PDF erstellen", "text": "Erstelle die Rechnung als PDF – auf Wunsch mit Logo und GiroCode – und schick sie per Mail oder druck sie aus."}
+      {
+        "title": "Daten eintragen",
+        "text": "Trag Rechnungsnummer, Kunde und Positionen ein. Summen, Steuer je Steuersatz und Zahlungsziel siehst du sofort."
+      },
+      {
+        "title": "Pflichtangaben prüfen",
+        "text": "Der Check zeigt, welche Angaben nach § 14 UStG noch fehlen. Als Kleinunternehmer setzt du ein Häkchen – der Hinweis kommt automatisch."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Erstelle die Rechnung als PDF – auf Wunsch mit Logo und GiroCode – und schick sie per Mail oder druck sie aus."
+      }
     ],
     "why": [
-      {"title": "Alle Pflichtangaben im Blick", "text": "Steuernummer oder USt-IdNr., fortlaufende Nummer, Leistungsdatum oder -zeitraum, Nettobeträge und Steuer je Steuersatz – der Check zeigt, was fehlt."},
-      {"title": "Schneller bezahlt", "text": "Der GiroCode enthält Empfänger, IBAN, Betrag und Verwendungszweck. Dein Kunde scannt ihn mit der Banking-App und überweist ohne Tippfehler."},
-      {"title": "Fürs Fensterkuvert", "text": "Das Layout folgt DIN 5008: Anschrift im Sichtfenster, Infoblock rechts, Falzmarken und eine Fußzeile mit deinen Daten auf jeder Seite."},
-      {"title": "Bleibt bei dir", "text": "Kein Konto, kein Upload. Absender und Nummernkreis merkt sich auf Wunsch nur dein Browser."}
+      {
+        "title": "Alle Pflichtangaben im Blick",
+        "text": "Steuernummer oder USt-IdNr., fortlaufende Nummer, Leistungsdatum oder -zeitraum, Nettobeträge und Steuer je Steuersatz – der Check zeigt, was fehlt."
+      },
+      {
+        "title": "Schneller bezahlt",
+        "text": "Der GiroCode enthält Empfänger, IBAN, Betrag und Verwendungszweck. Dein Kunde scannt ihn mit der Banking-App und überweist ohne Tippfehler."
+      },
+      {
+        "title": "Fürs Fensterkuvert",
+        "text": "Das Layout folgt DIN 5008: Anschrift im Sichtfenster, Infoblock rechts, Falzmarken und eine Fußzeile mit deinen Daten auf jeder Seite."
+      },
+      {
+        "title": "Bleibt bei dir",
+        "text": "Kein Konto, kein Upload. Absender und Nummernkreis merkt sich auf Wunsch nur dein Browser."
+      }
     ],
     "faq": [
-      {"q": "Welche Angaben muss eine Rechnung enthalten?", "a": "Nach § 14 UStG unter anderem: Name und Anschrift von dir und deinem Kunden, Steuernummer oder USt-IdNr., Rechnungsdatum, fortlaufende Rechnungsnummer, Menge und Art der Leistung, Leistungsdatum oder -zeitraum, Entgelt nach Steuersätzen, Steuerbetrag und gegebenenfalls Hinweise auf Steuerbefreiungen. Der Check im Werkzeug zeigt, was noch fehlt."},
-      {"q": "Ich bin Kleinunternehmer – was muss ich beachten?", "a": "Setz das Häkchen „Kleinunternehmer“. Dann wird keine Umsatzsteuer berechnet und der Hinweis auf § 19 UStG steht auf der Rechnung. Steuernummer oder USt-IdNr. gehören trotzdem drauf."},
-      {"q": "Kann ich 19 % und 7 % mischen?", "a": "Ja. Jede Position bekommt ihren Steuersatz. Auf der Rechnung stehen Netto und Steuer je Steuersatz getrennt."},
-      {"q": "Ist das eine E-Rechnung (XRechnung)?", "a": "Nein, das Werkzeug erstellt ein normales PDF. Für Rechnungen an Unternehmen wird die E-Rechnung schrittweise ab 2027 Pflicht. Für Rechnungen an Privatpersonen bleibt das PDF erlaubt."},
-      {"q": "Ist das eine Steuerberatung?", "a": "Nein. Das Werkzeug ist eine Ausfüllhilfe und prüft nur, ob die Angaben vorhanden sind – nicht, ob sie inhaltlich stimmen. Bei Fragen hilft deine Steuerberatung."},
-      {"q": "Wo werden meine Daten gespeichert?", "a": "Nirgends, solange du nichts merkst. Mit den Häkchen speichert dein Browser Absender, Bankdaten, Logo und die letzte Rechnungsnummer auf diesem Gerät. Ausschalten löscht sie."}
+      {
+        "q": "Welche Angaben muss eine Rechnung enthalten?",
+        "a": "Nach § 14 UStG unter anderem: Name und Anschrift von dir und deinem Kunden, Steuernummer oder USt-IdNr., Rechnungsdatum, fortlaufende Rechnungsnummer, Menge und Art der Leistung, Leistungsdatum oder -zeitraum, Entgelt nach Steuersätzen, Steuerbetrag und gegebenenfalls Hinweise auf Steuerbefreiungen. Der Check im Werkzeug zeigt, was noch fehlt."
+      },
+      {
+        "q": "Ich bin Kleinunternehmer – was muss ich beachten?",
+        "a": "Setz das Häkchen „Kleinunternehmer“. Dann wird keine Umsatzsteuer berechnet und der Hinweis auf § 19 UStG steht auf der Rechnung. Steuernummer oder USt-IdNr. gehören trotzdem drauf."
+      },
+      {
+        "q": "Kann ich 19 % und 7 % mischen?",
+        "a": "Ja. Jede Position bekommt ihren Steuersatz. Auf der Rechnung stehen Netto und Steuer je Steuersatz getrennt."
+      },
+      {
+        "q": "Ist das eine E-Rechnung (XRechnung)?",
+        "a": "Nein, das Werkzeug erstellt ein normales PDF. Für Rechnungen an Unternehmen wird die E-Rechnung schrittweise ab 2027 Pflicht. Für Rechnungen an Privatpersonen bleibt das PDF erlaubt."
+      },
+      {
+        "q": "Ist das eine Steuerberatung?",
+        "a": "Nein. Das Werkzeug ist eine Ausfüllhilfe und prüft nur, ob die Angaben vorhanden sind – nicht, ob sie inhaltlich stimmen. Bei Fragen hilft deine Steuerberatung."
+      },
+      {
+        "q": "Wo werden meine Daten gespeichert?",
+        "a": "Nirgends, solange du nichts merkst. Mit den Häkchen speichert dein Browser Absender, Bankdaten, Logo und die letzte Rechnungsnummer auf diesem Gerät. Ausschalten löscht sie."
+      }
     ]
   },
   "en": {
@@ -49,23 +105,64 @@
     "metaDescription": "Create invoices online as PDF: line items, tax rates, discount, payment terms, logo and an optional payment QR code. Free, no sign-up, data stays on your device.",
     "lede": "Write a clean invoice and save it as a PDF. Your data stays on your device.",
     "primaryButton": "Create invoice",
-    "keywords": ["invoice generator", "invoice template", "free invoice", "invoice pdf", "create invoice", "invoice maker"],
+    "keywords": [
+      "invoice generator",
+      "invoice template",
+      "free invoice",
+      "invoice pdf",
+      "create invoice",
+      "invoice maker"
+    ],
     "steps": [
-      {"title": "Enter the details", "text": "Add the invoice number, your customer and the line items. Totals, tax per rate and the due date update as you type."},
-      {"title": "Check", "text": "The checklist shows what is still missing. Choose the currency and name your tax (VAT, GST, sales tax) – or turn tax off."},
-      {"title": "Create the PDF", "text": "Create the invoice as a PDF – with your logo and an optional payment QR code – and e-mail or print it."}
+      {
+        "title": "Enter the details",
+        "text": "Add the invoice number, your customer and the line items. Totals, tax per rate and the due date update as you type."
+      },
+      {
+        "title": "Check",
+        "text": "The checklist shows what is still missing. Choose the currency and name your tax (VAT, GST, sales tax) – or turn tax off."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Create the invoice as a PDF – with your logo and an optional payment QR code – and e-mail or print it."
+      }
     ],
     "why": [
-      {"title": "Everything in one place", "text": "Line items with quantity, unit and price, several tax rates, discount, payment terms and bank details on a tidy A4 page."},
-      {"title": "Paid faster in the euro area", "text": "For EUR invoices the EPC QR code holds payee, IBAN, amount and reference – customers scan it with their banking app."},
-      {"title": "Stays with you", "text": "No account, no upload. Your details and the numbering are only remembered by your browser if you want."}
+      {
+        "title": "Everything in one place",
+        "text": "Line items with quantity, unit and price, several tax rates, discount, payment terms and bank details on a tidy A4 page."
+      },
+      {
+        "title": "Paid faster in the euro area",
+        "text": "For EUR invoices the EPC QR code holds payee, IBAN, amount and reference – customers scan it with their banking app."
+      },
+      {
+        "title": "Stays with you",
+        "text": "No account, no upload. Your details and the numbering are only remembered by your browser if you want."
+      }
     ],
     "faq": [
-      {"q": "Which currencies and tax rates can I use?", "a": "EUR, USD, GBP, CHF, CAD and AUD. Each line gets its own tax rate, and you can name the tax (e.g. VAT, GST or sales tax) or leave tax out entirely."},
-      {"q": "Does the invoice meet the legal requirements of my country?", "a": "The tool doesn’t give tax or legal advice – requirements differ between countries. Check what your invoices must contain; the German page of this tool covers the German rules."},
-      {"q": "What is the payment QR code?", "a": "An EPC QR code (also called GiroCode) for SEPA transfers in euros. Many European banking apps read the payee, IBAN, amount and reference from it. It is only added for EUR invoices with a valid IBAN."},
-      {"q": "Where is my data stored?", "a": "Nowhere unless you ask for it. With the tick boxes your browser remembers your details, bank data, logo and the last invoice number on this device. Switching off deletes them."},
-      {"q": "Can I add my logo?", "a": "Yes – a PNG or JPG. It appears at the top left of the invoice."}
+      {
+        "q": "Which currencies and tax rates can I use?",
+        "a": "EUR, USD, GBP, CHF, CAD and AUD. Each line gets its own tax rate, and you can name the tax (e.g. VAT, GST or sales tax) or leave tax out entirely."
+      },
+      {
+        "q": "Does the invoice meet the legal requirements of my country?",
+        "a": "The tool doesn’t give tax or legal advice – requirements differ between countries. Check what your invoices must contain; the German page of this tool covers the German rules."
+      },
+      {
+        "q": "What is the payment QR code?",
+        "a": "An EPC QR code (also called GiroCode) for SEPA transfers in euros. Many European banking apps read the payee, IBAN, amount and reference from it. It is only added for EUR invoices with a valid IBAN."
+      },
+      {
+        "q": "Where is my data stored?",
+        "a": "Nowhere unless you ask for it. With the tick boxes your browser remembers your details, bank data, logo and the last invoice number on this device. Switching off deletes them."
+      },
+      {
+        "q": "Can I add my logo?",
+        "a": "Yes – a PNG or JPG. It appears at the top left of the invoice."
+      }
     ]
-  }
+  },
+  "trademarkNote": true
 }

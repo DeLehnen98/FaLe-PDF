@@ -29,7 +29,11 @@ const pageText = async n => {
       const pt = await pageChars(page, base);
       let annots = [];
       try { annots = await page.getAnnotations({ intent: 'display' }); } catch { /* ignore */ }
-      p.annots = annots.map(a => ({ rect: vpRect(base, a.rect), text: [a.fieldValue, a.contentsObj?.str, a.textContent?.join?.(' ')].flat().filter(v => typeof v === 'string' && v).join(' ') }))
+      // also link targets (mailto:/web addresses behind "click here"), comment authors, field tooltips and
+      // dropdown entries: they are not drawn on the page but stay in the file
+      p.annots = annots.map(a => ({ rect: vpRect(base, a.rect), text: [a.fieldValue, a.contentsObj?.str, a.textContent?.join?.(' '), a.url || a.unsafeUrl,
+        a.titleObj?.str, a.alternativeText, (a.options || []).map(o => [o?.displayValue, o?.exportValue])].flat(2).filter(v => typeof v === 'string' && v)
+        .map(t => t.replace(/^mailto:/i, '')).join(' ') }))
         .filter(a => a.text);
       p.base = base;
       return pt;
@@ -377,7 +381,7 @@ function build(stage, state, L) {
           const t = a.text;
           const hit = typeof q === 'string' ? (R.whole ? new RegExp(`(^|[^\\p{L}\\p{N}_])${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[^\\p{L}\\p{N}_])`, 'iu').test(t) : t.toLowerCase().includes(q.toLowerCase()))
             : new RegExp(q.source, q.flags.replace('g', '')).test(t);
-          if (hit) found.push({ page: p, x0: a.rect[0], y0: a.rect[1], x1: a.rect[2], y1: a.rect[3], text: typeof q === 'string' ? q : t.slice(0, 60), label: tr(L, 'Formularfeld/Kommentar', 'Form field/comment') });
+          if (hit) found.push({ page: p, x0: a.rect[0], y0: a.rect[1], x1: a.rect[2], y1: a.rect[3], text: typeof q === 'string' ? q : t.slice(0, 60), label: tr(L, 'Link, Kommentar oder Formularfeld', 'Link, comment or form field') });
         }
       }
       if (p % 10 === 0) { status.set(tr(L, `Suche … Seite ${p} von ${n}`, `Searching … page ${p} of ${n}`)); await new Promise(r => setTimeout(r, 0)); }

@@ -31,7 +31,10 @@ export default {
     const t = computeTotals(v);
     const miss = checks(v, lang).filter(c => !c.ok && !c.optional);
     const summary = { de: `Rechnung · ${money(t.gross, 'de', 'EUR')}`, en: `Invoice · ${money(t.gross, 'en', v.currency || 'EUR')}` };
-    if (!String(v.number || '').trim() || !t.lines.some(l => l.ok)) return { ok: false, summary, hint: { de: 'Noch nötig: Rechnungsnummer und mindestens eine Position.', en: 'Still needed: invoice number and at least one line item.' } };
+    const noNum = !String(v.number || '').trim(), noLine = !t.lines.some(l => l.ok);
+    if (noNum || noLine) return { ok: false, summary, hint: noNum && noLine ? { de: 'Noch nötig: Rechnungsnummer und mindestens eine Position.', en: 'Still needed: invoice number and at least one line item.' }
+      : noNum ? { de: 'Noch nötig: Rechnungsnummer.', en: 'Still needed: invoice number.' }
+        : { de: 'Noch nötig: mindestens eine Position mit Beschreibung, Menge und Preis.', en: 'Still needed: at least one line item with description, quantity and price.' } };
     if (miss.length) return { summary, hint: { de: `Es fehlen Pflichtangaben (${miss.length}) – siehe Check.`, en: `${miss.length} recommended ${miss.length === 1 ? 'detail is' : 'details are'} missing – see the checklist.` } };
     return { summary };
   },
@@ -61,6 +64,7 @@ function invoiceStage(stage, state, ctx) {
     items: [{ desc: '', qty: '1', unit: de ? 'Stk.' : 'pcs', price: '', vat: de ? '19' : '20' }],
     noTax: false, girocode: true, currency: 'EUR', taxLabel: 'VAT', exemptNote: '', intro: '', closing: de ? 'Vielen Dank für Ihren Auftrag!' : 'Thank you for your business!',
   });
+  v.lang = lang; // computeTotals: "1.000" is a thousand on the German page
   let logo = null, logoUrl = null;
   // remembered sender (opt-in)
   const saved = store.get(SENDER_KEY);

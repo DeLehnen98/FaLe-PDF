@@ -86,6 +86,8 @@ export default {
       const maxSide = +opts.maxSide || 0;
       const { canvas, width, height } = await loadCanvas(input, { maxSide });
       const resized = canvas.width !== width || canvas.height !== height;
+      // very large photos (> 40 MP) are reduced by loadCanvas even without a size limit – say so
+      const capped = canvas.width < Math.round(width * Math.min(1, maxSide ? maxSide / Math.max(width, height) : 1)) - 1;
       if (input.format === 'gif') firstFrame++;
       let blob, outW = canvas.width, outH = canvas.height, note = '';
       try {
@@ -98,6 +100,7 @@ export default {
           else if (r.scaled) note = ctx.t({ de: `Auf ${outW} × ${outH} px verkleinert, um unter ${formatSize(target, ctx.lang)} zu bleiben.`, en: `Scaled to ${outW} × ${outH} px to stay under ${formatSize(target, ctx.lang)}.` });
         } else {
           if (!F.alpha && ['png', 'webp', 'gif', 'avif'].includes(input.format) && hasAlpha(canvas)) note = ctx.t({ de: 'Transparente Stellen haben jetzt die gewählte Hintergrundfarbe.', en: 'Transparent areas now have the chosen background colour.' });
+          else if (capped) note = ctx.t({ de: `Auf ${canvas.width} × ${canvas.height} px verkleinert – so große Bilder kann der Browser nicht am Stück bearbeiten.`, en: `Reduced to ${canvas.width} × ${canvas.height} px – the browser can’t process images this large in one piece.` });
           blob = await encode(canvas, { format: fmt, quality: (+opts.quality || 75) / 100, background: opts.background });
         }
       } finally { release(canvas); }

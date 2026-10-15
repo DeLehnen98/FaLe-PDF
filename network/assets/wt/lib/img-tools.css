@@ -60,7 +60,7 @@
 .img-cmp-tag-r { right: 8px; }
 .img-cmp-range { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 2px; margin: 0; opacity: 0; pointer-events: none; }
 .img-cmp-cap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: 8px; font-size: var(--step--1); color: var(--text-2); }
-.img-cmp-cap .wt-btn { min-height: 40px; }
+.img-cmp-cap .wt-btn { min-height: 44px; }
 
 /* ---------------------------------------------------------------- resize: focal point */
 .img-strip { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; margin: 8px 0 4px; scrollbar-width: thin; }
@@ -104,7 +104,7 @@
 .img-scan-add { border-style: dashed; color: var(--primary); }
 .img-scan-add svg { width: 26px; height: 26px; }
 .img-scan-view { margin: 4px 0 8px; display: flex; justify-content: center; background: var(--surface-2); border-radius: var(--radius-md); padding: 22px; }
-.img-scan-editor { position: relative; width: fit-content; max-width: 100%; touch-action: none; }
+.img-scan-editor { position: relative; width: fit-content; max-width: 100%; touch-action: pan-y pinch-zoom; } /* only the corner handles drag – the page must still scroll over the photo */
 .img-scan-editor[hidden], .img-scan-result[hidden] { display: none; }
 .img-scan-img canvas { display: block; max-width: 100%; max-height: 62vh; width: auto; height: auto; border-radius: 2px; }
 .img-scan-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }

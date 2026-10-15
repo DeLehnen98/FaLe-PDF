@@ -25,7 +25,8 @@ function kindOf(PDFLib, field) {
 function hints(name) {
   const n = name.toLowerCase();
   if (/e-?mail/.test(n)) return { type: 'email', inputmode: 'email', autocomplete: 'email' };
-  if (/tel|phone|mobil|handy|fax/.test(n)) return { type: 'tel', inputmode: 'tel', autocomplete: 'tel' };
+  // "tel" only as its own word ("Tel.", "Tel-Nr") – not inside "Titel", "Hotel", "Stellung"
+  if (/telefon|phone|mobil|handy|(^|[^a-z])fax|(^|[^a-z])tel(?![a-z])|(^|[^a-z])tel(nr|nummer)/.test(n)) return { type: 'tel', inputmode: 'tel', autocomplete: 'tel' };
   if (/plz|postleitzahl|zip|postal/.test(n)) return { inputmode: 'numeric', autocomplete: 'postal-code' };
   if (/iban/.test(n)) return { autocapitalize: 'characters', spellcheck: 'false' };
   if (/betrag|summe|preis|amount|total|euro|€/.test(n)) return { inputmode: 'decimal' };
@@ -34,7 +35,8 @@ function hints(name) {
   if (/nachname|familienname|last ?name|surname/.test(n)) return { autocomplete: 'family-name', autocapitalize: 'words' };
   if (/stra(ss|ß)e|street|anschrift|adresse|address/.test(n)) return { autocomplete: 'street-address' };
   if (/(^|[^a-z])(ort|stadt|city|wohnort)([^a-z]|$)/.test(n)) return { autocomplete: 'address-level2', autocapitalize: 'words' };
-  if (/datum|date|geburt|birth/.test(n)) return { inputmode: 'numeric', placeholder: 'TT.MM.JJJJ', date: true };
+  // dates – but not "Geburtsort", "Geburtsname", "place of birth", "country of birth"
+  if (/datum|date|geburtstag|birthday|(^|[^a-z])dob([^a-z]|$)/.test(n) || (/geburt|birth/.test(n) && !/ort|name|land|stadt|place|country|city|name/.test(n))) return { inputmode: 'numeric', placeholder: 'TT.MM.JJJJ', date: true };
   if (/(^|[^a-z])name([^a-z]|$)/.test(n)) return { autocomplete: 'name', autocapitalize: 'words' };
   return {};
 }
@@ -151,10 +153,12 @@ export default {
     const doc = await input.pdfDoc();
     const lost = [], lostChars = [];
     // Helvetica when it can show the value, otherwise the Unicode font; `missing`: characters no font here has
-    const pick = async text => { const r = await prepareText(doc, text, { PDFLib }); lostChars.push(...r.missing); return r; };
+    const usedFonts = new Map();
+    const pick = async text => { const r = await prepareText(doc, text, { PDFLib }); lostChars.push(...r.missing); if (r.font?.ref) usedFonts.set(r.font.name, r.font.ref); return r; };
     let changed = 0;
     if (F.mode === 'acro') {
       const form = doc.getForm();
+      plainDA(PDFLib, doc, form);
       for (const f of F.fields) {
         if (!F.values.has(f.name) || f.readOnly) continue;
         const v = F.values.get(f.name);
@@ -186,10 +190,9 @@ export default {
       }
       // pdf-lib must not regenerate appearances on save (it would use Helvetica and fail on other characters)
       for (const field of form.getFields()) { try { form.markFieldAsClean(field); } catch { /* ignore */ } }
-      if (lost.length) {
-        const acro = doc.catalog.lookup(PDFLib.PDFName.of('AcroForm'));
-        acro?.set?.(PDFLib.PDFName.of('NeedAppearances'), PDFLib.PDFBool.True);
-      }
+      const acro = doc.catalog.lookup(PDFLib.PDFName.of('AcroForm'));
+      if (lost.length) acro?.set?.(PDFLib.PDFName.of('NeedAppearances'), PDFLib.PDFBool.True);
+      else if (acro instanceof PDFLib.PDFDict) fixNeedAppearances(PDFLib, doc, form, acro, usedFonts);
       await ctx.tick();
       if (opts.flatten) {
         ctx.progress(0.6, { de: 'Wird geglättet …', en: 'Flattening …' });
@@ -230,6 +233,50 @@ export default {
       note: ctx.t({ de: `${changed} Feld(er) ausgefüllt${opts.flatten && F.mode === 'acro' ? ' · geglättet' : ''}`, en: `${changed} field(s) filled${opts.flatten && F.mode === 'acro' ? ' · flattened' : ''}` }) }] };
   },
 };
+
+/**
+ * Some producers write /DA with escaped characters ("\\057Helv 0 Tf" for "/Helv 0 Tf"). pdf-lib reads the raw
+ * string, finds no Tf operator and refuses to resize or redraw such a field – store the decoded text instead.
+ */
+function plainDA(PDFLib, doc, form) {
+  const { PDFName, PDFString, PDFHexString, PDFDict } = PDFLib;
+  const fix = dict => {
+    if (!(dict instanceof PDFDict)) return;
+    const da = dict.lookup(PDFName.of('DA'));
+    if ((da instanceof PDFString && da.asString().includes('\\')) || da instanceof PDFHexString) {
+      try { dict.set(PDFName.of('DA'), PDFString.of(da.decodeText())); } catch { /* leave it */ }
+    }
+  };
+  fix(doc.catalog.lookup(PDFName.of('AcroForm')));
+  for (const f of form.getFields()) {
+    try { fix(f.acroField.dict); for (const w of f.acroField.getWidgets()) fix(w.dict); } catch { /* ignore */ }
+  }
+}
+
+/**
+ * Many forms come with NeedAppearances = true: viewers then redraw every field from its /DA font name, which
+ * must be in the form's /DR – the fonts written here (Helvetica, the Unicode subset) are not, so Greek or
+ * Cyrillic values and dropdown texts came out empty or garbled in such viewers. Register the fonts and, when
+ * every widget has its own appearance now, switch the flag off so all viewers show what was drawn here.
+ */
+function fixNeedAppearances(PDFLib, doc, form, acro, usedFonts) {
+  const { PDFName, PDFDict } = PDFLib;
+  if (usedFonts.size) {
+    let dr = acro.lookup(PDFName.of('DR'));
+    if (!(dr instanceof PDFDict)) { dr = doc.context.obj({}); acro.set(PDFName.of('DR'), dr); }
+    let fonts = dr.lookup(PDFName.of('Font'));
+    if (!(fonts instanceof PDFDict)) { fonts = doc.context.obj({}); dr.set(PDFName.of('Font'), fonts); }
+    for (const [name, ref] of usedFonts) if (!fonts.has(PDFName.of(name))) fonts.set(PDFName.of(name), ref);
+  }
+  if (!acro.has(PDFName.of('NeedAppearances'))) return;
+  try {
+    const all = form.getFields().every(f => f.acroField.getWidgets().every(w => {
+      const ap = w.dict.lookup(PDFName.of('AP'));
+      return ap instanceof PDFDict && ap.has(PDFName.of('N'));
+    }));
+    if (all) acro.delete(PDFName.of('NeedAppearances'));
+  } catch { /* keep the flag */ }
+}
 
 // ---------------------------------------------------------------- UI
 function render(stage, state, L) {

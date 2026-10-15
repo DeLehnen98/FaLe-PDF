@@ -5,17 +5,22 @@ import { loadPdfLib, saveDoc } from './pdf.js';
 import { encodeQR, qrPdfOps } from './shared/qr.js';
 
 // ---------------------------------------------------------------- numbers, dates
-export function parseNum(s) {
+/** Number typed by a person. With lang 'de', "1.000" is a thousand and "1,500" one and a half. */
+export function parseNum(s, lang = null) {
   if (typeof s === 'number') return Number.isFinite(s) ? s : NaN;
   let t = String(s ?? '').trim().replace(/\s|€|\$|£/g, '');
   if (!t) return NaN;
   if (/,\d{1,}$/.test(t) && t.includes('.')) t = t.replace(/\./g, '').replace(',', '.');   // 1.234,56
-  else if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(t)) t = t.replace(/,/g, '');                    // 1,234.56
+  else if (lang === 'de' && /^-?\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');       // 1.000 (de)
+  else if (lang !== 'de' && /^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(t)) t = t.replace(/,/g, ''); // 1,234.56
   else t = t.replace(',', '.');
   return /^-?\d*\.?\d+$/.test(t) ? parseFloat(t) : NaN;
 }
 const round = v => Math.round(v + Math.sign(v) * 1e-9);
 export const money = (cents, lang, currency = 'EUR') => new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-GB', { style: 'currency', currency }).format(cents / 100);
+/** Unit price: like money(), but keeps up to 4 decimals when the price has them (0,333 € stays 0,333 €). */
+export const unitMoney = (price, lang, currency = 'EUR') => (Math.abs(price * 100 - Math.round(price * 100)) < 1e-6 ? money(round(price * 100), lang, currency)
+  : new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-GB', { style: 'currency', currency, minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(price));
 export const num = (v, lang) => new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-GB', { maximumFractionDigits: 3 }).format(v);
 const pad = n => String(n).padStart(2, '0');
 export const isoDate = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
@@ -64,11 +69,12 @@ export function girocodePayload({ name, iban, bic = '', cents, text = '' }) {
  */
 export function computeTotals(v) {
   const noTax = !!v.noTax;
-  const d = Math.min(100, Math.max(0, parseNum(v.discount) || 0));
+  const lang = v.lang || null; // set by the form: how "1.000" / "1,500" are meant
+  const d = Math.min(100, Math.max(0, parseNum(v.discount, lang) || 0));
   const lines = (v.items || []).map(it => {
-    const qty = parseNum(it.qty), price = parseNum(it.price);
+    const qty = parseNum(it.qty, lang), price = parseNum(it.price, lang);
     const ok = String(it.desc || '').trim() && Number.isFinite(qty) && Number.isFinite(price);
-    const rate = noTax ? 0 : Math.max(0, parseNum(it.vat) || 0);
+    const rate = noTax ? 0 : Math.max(0, parseNum(it.vat, lang) || 0);
     return { ...it, qtyN: qty, priceN: price, rate, ok: !!ok, cents: ok ? round(qty * price * 100) : 0 };
   });
   const byRate = new Map();
@@ -293,7 +299,7 @@ export async function invoicePdf(v, lang, logo = null) {
     const dl = wrap(l.desc, cols.find(c => c.k === 'desc').w - 8, 9.5);
     const h = Math.max(1, dl.length) * 12.5 + 6;
     if (ensure(h)) header();
-    const vals = { pos: String(posNo), qty: num(l.qtyN, lang), unit: l.unit || '', price: money(round(l.priceN * 100), lang, cur), vat: `${num(l.rate, lang)} %`, total: money(l.cents, lang, cur) };
+    const vals = { pos: String(posNo), qty: num(l.qtyN, lang), unit: l.unit || '', price: unitMoney(l.priceN, lang, cur), vat: `${num(l.rate, lang)} %`, total: money(l.cents, lang, cur) };
     for (const c of cols) {
       if (c.k === 'desc') dl.forEach((s, i) => txt(s, cellX(c), y - i * 12.5, { size: 9.5 }));
       else txt(vals[c.k], cellX(c), y, { size: 9.5, align: c.a || 'left' });

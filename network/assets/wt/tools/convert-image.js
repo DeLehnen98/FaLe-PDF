@@ -61,6 +61,7 @@ export function makeConverter({ to = null } = {}) {
         if ((input.format === 'jpeg' ? 'jpg' : input.format) === fmt) same++;
         if (input.format === 'gif') gif++;
         const { canvas, width, height } = await loadCanvas(input);
+        const cw = canvas.width, ch = canvas.height; // < width × height for very large photos (canvas limit)
         let blob;
         try {
           if (!F.alpha && hasAlpha(canvas)) flattened++;
@@ -78,8 +79,8 @@ export function makeConverter({ to = null } = {}) {
           }
         }
         outputs.push({ name: ctx.fileName(input.name, '', F.ext), blob, before: input.size,
-          note: `${LABEL[input.format] || input.format.toUpperCase()} → ${F.label} · ${width} × ${height} px`,
-          meta: { input, width, height } });
+          note: `${LABEL[input.format] || input.format.toUpperCase()} → ${F.label} · ${cw} × ${ch} px` + (cw < width ? ctx.t({ de: ' · verkleinert, weil der Browser so große Bilder nicht am Stück bearbeiten kann', en: ' · reduced – the browser can’t process images this large in one piece' }) : ''),
+          meta: { input, width: cw, height: ch } });
         await ctx.tick();
       }
       if (flattened) ctx.note({ de: `Transparente Stellen ${flattened === 1 ? 'hat das Bild' : `haben ${flattened} Bilder`} jetzt die gewählte Hintergrundfarbe.`, en: `Transparent areas ${flattened === 1 ? 'now have' : `of ${flattened} images now have`} the chosen background colour.` });

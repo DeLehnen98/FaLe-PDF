@@ -21,7 +21,7 @@
 
 /* ---- image editor (crop-image, rotate-image, image-to-text region) */
 .new-ed { position: relative; margin: 0 0 12px; }
-.new-ed-view { position: relative; display: grid; place-items: center; background: var(--surface-2); background-image: linear-gradient(45deg, var(--surface-3) 25%, transparent 25%, transparent 75%, var(--surface-3) 75%), linear-gradient(45deg, var(--surface-3) 25%, transparent 25%, transparent 75%, var(--surface-3) 75%); background-size: 20px 20px; background-position: 0 0, 10px 10px; border-radius: var(--radius-md); overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; min-height: 200px; padding: 16px; }
+.new-ed-view { position: relative; display: grid; place-items: center; background: var(--surface-2); background-image: linear-gradient(45deg, var(--surface-3) 25%, transparent 25%, transparent 75%, var(--surface-3) 75%), linear-gradient(45deg, var(--surface-3) 25%, transparent 25%, transparent 75%, var(--surface-3) 75%); background-size: 20px 20px; background-position: 0 0, 10px 10px; border-radius: var(--radius-md); overflow: hidden; touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; min-height: 200px; padding: 16px; }
 .new-ed-view canvas { display: block; max-width: 100%; }
 .new-ed-crop { position: absolute; box-sizing: border-box; border: 2px solid #fff; box-shadow: 0 0 0 9999px rgba(10, 12, 30, 0.55); outline: 1px solid rgba(0, 0, 0, 0.5); cursor: move; touch-action: none; }
 .new-ed-crop:focus-visible { outline: 3px solid var(--primary); }
@@ -50,6 +50,8 @@
 /* ---- signature maker */
 .new-sig-prev { display: grid; place-items: center; min-height: 160px; padding: 16px; border-radius: var(--radius-md); border: 1px dashed var(--border-strong); background-color: #fff; background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%), linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%); background-size: 16px 16px; background-position: 0 0, 8px 8px; }
 .new-sig-prev img { max-width: 100%; max-height: 220px; }
+.new-sig-prev .new-muted { color: #4a4d63; } /* the preview stays light in dark mode */
+.new-sig-prev.is-dark .new-muted { color: #c9cbe0; }
 .new-sig-prev.is-dark { background-color: #1b1d2b; background-image: none; }
 .new-sig-saved { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
 .new-sig-saved li { display: flex; align-items: center; gap: 4px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 4px; background: #fff; }

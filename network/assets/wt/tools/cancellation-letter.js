@@ -192,8 +192,18 @@ async function makePdf(m, sig, lang) {
     draw(fitted, L, H - mm(45 + 17.7) + 2, retSize, font, rgb(0.35, 0.35, 0.4));
     page.drawLine({ start: { x: L, y: H - mm(45 + 17.7) }, end: { x: L + font.widthOfTextAtSize(fitted, retSize), y: H - mm(45 + 17.7) }, thickness: 0.3, color: rgb(0.35, 0.35, 0.4) });
   }
-  y = H - mm(45 + 17.7) - 13;
-  for (const s of m.recipient.slice(0, 6)) { draw(s, L, y, 11); y -= 13.5; }
+  // recipient: every line must stay inside the window (x ≤ 105 mm, baseline ≤ 88.5 mm from the top) –
+  // long company names get a smaller size, six lines a tighter leading
+  const rec = m.recipient.slice(0, 6);
+  const first = mm(45 + 17.7) + 13, lead = Math.min(13.5, rec.length > 1 ? (mm(88.5) - first) / (rec.length - 1) : 13.5);
+  y = H - first;
+  for (const s of rec) {
+    let size = Math.min(11, lead / 1.15);
+    while (size > 7 && font.widthOfTextAtSize(txt(s), size) > mm(79)) size -= 0.25;
+    let t = txt(s);
+    while (t.length > 1 && font.widthOfTextAtSize(t, size) > mm(79)) t = t.slice(0, -1);
+    draw(t, L, y, size); y -= lead;
+  }
   // information block: x 125 mm, from 50 mm
   y = H - mm(50);
   const info = [...m.refs.map(r => `${r[0]}: ${r[1]}`), m.dateLine];

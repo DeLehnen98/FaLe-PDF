@@ -53,8 +53,8 @@
 
 /* page preview + navigation */
 .sec-nav { display: flex; align-items: center; justify-content: center; gap: 6px; }
-.sec-nav-label { min-width: 9em; text-align: center; font-weight: 650; font-variant-numeric: tabular-nums; }
-.sec-nav-btn { width: 48px; height: 48px; }
+.sec-nav-label { flex: 0 1 9em; min-width: 0; text-align: center; font-weight: 650; font-variant-numeric: tabular-nums; }
+.sec-nav-btn { width: 48px; height: 48px; flex: none; } /* never squeezed by large text */
 .sec-page { position: relative; margin: 0 auto; box-shadow: var(--paper-shadow, var(--shadow-md)); background: #fff; touch-action: pan-x pan-y; user-select: none; -webkit-user-select: none; max-width: 100%; }
 .sec-page-canvas { display: block; max-width: 100%; }
 .sec-overlay { position: absolute; inset: 0; }

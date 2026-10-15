@@ -82,6 +82,17 @@ function init(cfg) {
   const result = el('div', { class: 'wt-result', hidden: true });
   const errorBox = el('div', { class: 'wt-error', hidden: true, role: 'alert' });
   app.append(notice, filesSec, stage, optsSec, progress, result, errorBox, bar, live, alertLive);
+  // typing on a phone: the on-screen keyboard leaves little room, so the sticky bar (up to ~160 px with a hint)
+  // scrolls with the page instead of covering the field being typed in; it sticks again once the field loses focus
+  const typing = () => {
+    const a = document.activeElement;
+    const text = a && app.contains(a) && !bar.contains(a) && (a.tagName === 'TEXTAREA' || a.isContentEditable
+      || (a.tagName === 'INPUT' && !/^(checkbox|radio|range|button|submit|reset|file|color|image)$/.test(a.type)));
+    app.classList.toggle('wt-typing', !!text && (window.visualViewport?.height || innerHeight) < 560);
+  };
+  app.addEventListener('focusin', typing);
+  app.addEventListener('focusout', () => setTimeout(typing, 0));
+  window.visualViewport?.addEventListener('resize', typing);
 
   // ---------------------------------------------------------------- tool module
   let optsUI = null;

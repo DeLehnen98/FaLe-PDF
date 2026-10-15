@@ -48,7 +48,8 @@ export default {
           continue;
         }
       }
-      const { canvas } = await loadCanvas(input);
+      const { canvas, width: srcW } = await loadCanvas(input);
+      const capped = canvas.width < srcW; // > 40 MP: reduced by the canvas limit
       const [W, H] = turnedSize(canvas.width, canvas.height, t.rot);
       const out = document.createElement('canvas');
       out.width = W; out.height = H;
@@ -57,7 +58,8 @@ export default {
       let fmt = input.format === 'jpeg' || input.format === 'heic' ? 'jpg' : input.format === 'webp' && support.webp ? 'webp' : input.format === 'avif' && support.avif ? 'avif' : 'png';
       const blob = await encode(out, { format: fmt, quality: 0.95 });
       release(out);
-      outputs.push({ name: ctx.fileName(input.name, suffix, FORMATS[fmt].ext), blob, note: fmt === 'png' ? ctx.t({ de: 'verlustfrei (PNG)', en: 'lossless (PNG)' }) : ctx.t({ de: 'neu gespeichert', en: 're-saved' }) });
+      outputs.push({ name: ctx.fileName(input.name, suffix, FORMATS[fmt].ext), blob, note: (fmt === 'png' ? ctx.t({ de: 'verlustfrei (PNG)', en: 'lossless (PNG)' }) : ctx.t({ de: 'neu gespeichert', en: 're-saved' }))
+        + (capped ? ctx.t({ de: ` · auf ${W} × ${H} px verkleinert (sehr großes Bild)`, en: ` · reduced to ${W} × ${H} px (very large image)` }) : '') });
       await ctx.tick();
     }
     if (lossless) ctx.note({ de: 'JPG-Fotos wurden verlustfrei über die Ausrichtungs-Angabe gedreht. Sehr alte Programme ignorieren sie manchmal – dann wähle „Pixel drehen und neu speichern“.', en: 'JPG photos were rotated losslessly via the orientation flag. Some very old programs ignore it – then choose “Rotate pixels and re-save”.' });

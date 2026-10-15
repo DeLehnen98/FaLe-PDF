@@ -11,6 +11,22 @@ import { floodMask, replaceMasked, adjust } from '../lib/shared/imgproc.js';
 ensureCss();
 
 const DPI = 600, PPM = DPI / 25.4, MM = 72 / 25.4;
+
+/** Write 600 dpi into the JPEG's JFIF header, so "print at actual size" gives exactly 35 × 45 mm / 10 × 15 cm. */
+async function withDpi(blob) {
+  const b = new Uint8Array(await blob.arrayBuffer());
+  const jfif = b[2] === 0xff && b[3] === 0xe0 && b[6] === 0x4a && b[7] === 0x46 && b[8] === 0x49 && b[9] === 0x46 && b[10] === 0;
+  let out = b;
+  if (!jfif) {
+    out = new Uint8Array(b.length + 18);
+    out.set(b.subarray(0, 2));
+    out.set([0xff, 0xe0, 0, 16, 0x4a, 0x46, 0x49, 0x46, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], 2);
+    out.set(b.subarray(2), 20);
+  }
+  out[13] = 1; // dots per inch
+  out[14] = DPI >> 8; out[15] = DPI & 255; out[16] = DPI >> 8; out[17] = DPI & 255;
+  return new Blob([out], { type: 'image/jpeg' });
+}
 const BG = [236, 236, 236];
 const NAMES = {
   de: { de: 'Biometrisch 35 × 45 mm', en: 'Biometric 35 × 45 mm' },
@@ -138,7 +154,7 @@ export default {
     const label = ctx.t(NAMES[tpl.id] || tpl.label);
     try {
       if (opts.output === 'single') {
-        const blob = await encode(photo, { format: 'jpg', quality: 0.95 });
+        const blob = await withDpi(await encode(photo, { format: 'jpg', quality: 0.95 }));
         return { outputs: [{ name: `${ctx.t({ de: 'Passfoto', en: 'Passport photo' })} ${name}.jpg`, blob, note: `${label} · ${photo.width} × ${photo.height} px (${DPI} dpi)` }] };
       }
       const lay = sheetLayout(tpl, +opts.count || 99);
@@ -166,7 +182,7 @@ export default {
       g.font = `${Math.round(PPM * 2)}px sans-serif`;
       g.fillText(`${label} · ${ctx.t({ de: 'in Originalgröße (100 %) drucken', en: 'print at actual size (100 %)' })}`, PPM * 3, sheet.height - PPM * 1.2);
       let blob;
-      try { blob = await encode(sheet, { format: 'jpg', quality: 0.93 }); } finally { release(sheet); }
+      try { blob = await withDpi(await encode(sheet, { format: 'jpg', quality: 0.93 })); } finally { release(sheet); }
       return { outputs: [{ name: `${ctx.t({ de: 'Passfotos', en: 'Passport photos' })} ${name} 10x15.jpg`, blob, note }] };
     } finally { release(photo); }
   },

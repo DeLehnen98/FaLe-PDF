@@ -200,6 +200,7 @@ input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--primary
   .wt-bar .wt-btn-primary { flex: 1 1 100%; max-width: none; }
 }
 @media (min-width: 720px) { .wt-bar { margin: 22px 0 0; border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 12px 12px 20px; bottom: 12px; } }
+.wt-typing .wt-bar { position: static; box-shadow: none; } /* on-screen keyboard open: the bar must not cover the field (shell.js) */
 
 /* ---------------------------------------------------------------- progress */
 .wt-progress { display: grid; justify-items: center; gap: 14px; padding: 32px 16px; text-align: center; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); }

@@ -17,6 +17,7 @@
 @media (prefers-reduced-motion: reduce) { .ed-pv-spin { animation-duration: 3s; } }
 .ed-pv-nav { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .ed-pv-nav[hidden] { display: none; }
+.ed-pv-nav .wt-icon-btn { flex: none; } /* keep 44 × 44 px at 320 px / 200 % text */
 .ed-pv-label { min-width: 9em; text-align: center; font-weight: 650; font-size: 0.95rem; font-variant-numeric: tabular-nums; color: var(--text-2); }
 .ed-pv-btn { border: 1px solid var(--border-strong); background: var(--surface); }
 .ed-rot-l { transform: rotate(-90deg); } .ed-rot-r { transform: rotate(90deg); }

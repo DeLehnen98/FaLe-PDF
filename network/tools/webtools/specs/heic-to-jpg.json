@@ -27,7 +27,7 @@
     "short": "iPhone-Fotos (HEIC) als JPG speichern – wo der Browser HEIC öffnen kann.",
     "title": "HEIC in JPG umwandeln – iPhone-Fotos, ohne Upload | FaleNetwork",
     "h1": "HEIC in JPG umwandeln",
-    "metaDescription": "iPhone-Fotos von HEIC in JPG umwandeln, direkt im Browser und ohne Upload. Funktioniert in Browsern, die HEIC öffnen können, zum Beispiel Safari. Aufnahmedatum bleibt.",
+    "metaDescription": "iPhone-Fotos von HEIC in JPG umwandeln, direkt im Browser und ohne Upload. Klappt in Browsern, die HEIC öffnen können, etwa Safari. Das Aufnahmedatum bleibt.",
     "lede": "Mach aus iPhone-Fotos (HEIC) JPGs – in Browsern, die HEIC öffnen können.",
     "pickLabel": "HEIC-Fotos auswählen",
     "primaryButton": "In JPG umwandeln",
@@ -148,5 +148,6 @@
         "a": "Yes, if the option is on. Location, camera and other data are removed."
       }
     ]
-  }
+  },
+  "trademarkNote": true
 }
