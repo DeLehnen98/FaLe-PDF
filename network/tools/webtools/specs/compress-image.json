@@ -33,10 +33,10 @@
     "slug": "bild-komprimieren",
     "name": "Bild komprimieren",
     "short": "Fotos verkleinern – nach Qualität oder auf eine Zielgröße in KB.",
-    "title": "Bild komprimieren – JPG, PNG, WebP verkleinern | FaleNetwork",
-    "h1": "Bilder komprimieren",
+    "title": "Bild verkleinern – JPG, PNG, WebP komprimieren | FaleNetwork",
+    "h1": "Bild verkleinern",
     "metaDescription": "Fotos und Bilder verkleinern: nach Qualität oder unter eine Zielgröße in KB, mit Vorher-nachher-Vergleich. Viele Bilder auf einmal, ohne Upload, gratis.",
-    "lede": "Mach Fotos kleiner – für E-Mail, Formulare und Nachrichten. Mit Vorher-nachher-Vergleich.",
+    "lede": "Mach Fotos kleiner in KB – für E-Mail, Formulare und Nachrichten. Mit Vorher-nachher-Vergleich.",
     "pickLabel": "Bilder auswählen",
     "primaryButton": "Komprimieren",
     "keywords": [
@@ -57,7 +57,7 @@
       },
       {
         "title": "Stärke festlegen",
-        "text": "Wähle eine Qualität oder gib eine Zielgröße in KB ein, zum Beispiel 500 KB für ein Upload-Formular. Optional begrenzt du die Kantenlänge oder wechselst das Format."
+        "text": "Wähle eine Qualität oder gib eine Zielgröße in KB ein, zum Beispiel 500 KB für ein Upload-Formular. Optional begrenzt du die Kantenlänge oder wechselst das Format. Für exakte Pixelmaße nimm „Bildgröße ändern“."
       },
       {
         "title": "Vergleichen und teilen",
@@ -113,10 +113,10 @@
     "slug": "compress-image",
     "name": "Compress image",
     "short": "Make photos smaller – by quality or to a target size in KB.",
-    "title": "Compress image – reduce JPG, PNG, WebP size | FaleNetwork",
+    "title": "Image compressor – reduce JPG, PNG, WebP size | FaleNetwork",
     "h1": "Compress images",
     "metaDescription": "Make photos and images smaller: by quality or below a target size in KB, with a before/after comparison. Many images at once, no upload, free.",
-    "lede": "Make photos smaller – for e-mail, forms and messages. With a before/after comparison.",
+    "lede": "Make photos smaller in KB – for e-mail, forms and messages. With a before/after comparison.",
     "pickLabel": "Choose images",
     "primaryButton": "Compress",
     "keywords": [
@@ -137,7 +137,7 @@
       },
       {
         "title": "Set the strength",
-        "text": "Choose a quality or enter a target size in KB, for example 500 KB for an upload form. Optionally limit the edge length or change the format."
+        "text": "Choose a quality or enter a target size in KB, for example 500 KB for an upload form. Optionally limit the edge length or change the format. For exact pixel sizes, use “Resize image”."
       },
       {
         "title": "Compare and share",

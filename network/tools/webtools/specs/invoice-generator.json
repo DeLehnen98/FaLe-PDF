@@ -22,10 +22,10 @@
     "slug": "rechnung-schreiben",
     "name": "Rechnung schreiben",
     "short": "Rechnung mit allen Pflichtangaben als PDF – mit GiroCode.",
-    "title": "Rechnung schreiben – Rechnungsvorlage als PDF, gratis | FaleNetwork",
+    "title": "Rechnung schreiben – Rechnungsvorlage als PDF | FaleNetwork",
     "h1": "Rechnung schreiben",
     "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben nach § 14 UStG: 19 % und 7 % USt., Kleinunternehmer, Rabatt, GiroCode. Als PDF – kostenlos, ohne Anmeldung.",
-    "lede": "Schreib eine saubere Rechnung mit allen Pflichtangaben – direkt als PDF. Deine Daten bleiben auf deinem Gerät.",
+    "lede": "Erstelle eine saubere Rechnung mit allen Pflichtangaben – direkt als PDF. Deine Daten bleiben auf deinem Gerät.",
     "primaryButton": "Rechnung erstellen",
     "keywords": [
       "rechnung erstellen",
@@ -102,7 +102,7 @@
     "short": "Create a clean invoice as PDF – with tax, discount and payment QR.",
     "title": "Invoice generator – free invoice template as PDF | FaleNetwork",
     "h1": "Invoice generator",
-    "metaDescription": "Create invoices online as PDF: line items, tax rates, discount, payment terms, logo and an optional payment QR code. Free, no sign-up, data stays on your device.",
+    "metaDescription": "Create invoices as PDF: line items, tax rates, discount, payment terms, logo and an optional payment QR code. Free, no sign-up, data stays on your device.",
     "lede": "Write a clean invoice and save it as a PDF. Your data stays on your device.",
     "primaryButton": "Create invoice",
     "keywords": [

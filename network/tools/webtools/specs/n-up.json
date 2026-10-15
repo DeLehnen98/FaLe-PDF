@@ -17,7 +17,7 @@
     "title": "Mehrere PDF-Seiten pro Blatt drucken – ohne Upload | FaleNetwork",
     "h1": "Mehrere Seiten auf ein Blatt",
     "metaDescription": "Lege 2, 4, 6, 8, 9 oder 16 PDF-Seiten auf ein Blatt – spart Papier bei Folien, Skripten und Handouts. Reihenfolge, Ränder, Rahmen frei wählbar. Ohne Upload.",
-    "lede": "Folien, Skripte und Handouts platzsparend drucken – mit Vorschau jedes Blatts.",
+    "lede": "Spar Papier: Folien, Skripte und Handouts mit mehreren Seiten pro Blatt drucken – mit Vorschau.",
     "primaryButton": "Seiten anordnen",
     "keywords": ["n-up", "handout", "folien drucken", "papier sparen", "2 seiten auf 1", "4 auf 1", "seiten pro blatt"],
     "steps": [
@@ -46,7 +46,7 @@
     "title": "Print several PDF pages per sheet – no upload | FaleNetwork",
     "h1": "Several pages on one sheet",
     "metaDescription": "Put 2, 4, 6, 8, 9 or 16 PDF pages on one sheet – saves paper for slides, lecture notes and handouts. Choose order, margins and frames. No upload.",
-    "lede": "Print slides, notes and handouts without wasting paper – with a preview of every sheet.",
+    "lede": "Save paper: print slides, notes and handouts with several pages per sheet – with a preview.",
     "primaryButton": "Arrange pages",
     "keywords": ["n-up", "handout", "print slides", "save paper", "2 pages per sheet", "4 up", "multiple pages per sheet"],
     "steps": [

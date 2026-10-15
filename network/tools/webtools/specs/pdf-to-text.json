@@ -27,7 +27,7 @@
     "title": "PDF in Text umwandeln – TXT in Lesereihenfolge | FaleNetwork",
     "h1": "PDF in Text umwandeln",
     "metaDescription": "Hol den Text aus einer PDF – mit Absätzen in richtiger Lesereihenfolge, auch bei zwei Spalten, ohne Seitenzahlen. Kopieren oder als TXT speichern, ohne Upload.",
-    "lede": "Der ganze Text deiner PDF – sauber in Absätzen, zum Kopieren oder als TXT-Datei.",
+    "lede": "Extrahiere den ganzen Text deiner PDF – sauber in Absätzen, zum Kopieren oder als TXT-Datei.",
     "pickLabel": "PDF auswählen",
     "primaryButton": "Text herausholen",
     "keywords": [
@@ -98,7 +98,7 @@
     "title": "PDF to text – TXT in reading order, no upload | FaleNetwork",
     "h1": "Convert PDF to text",
     "metaDescription": "Get the text out of a PDF – as paragraphs in the right reading order, even with two columns, without page numbers. Copy it or save it as TXT, no upload.",
-    "lede": "All the text of your PDF – cleanly in paragraphs, to copy or as a TXT file.",
+    "lede": "Extract all the text from your PDF – cleanly in paragraphs, to copy or as a TXT file.",
     "pickLabel": "Choose PDF",
     "primaryButton": "Get text",
     "keywords": [

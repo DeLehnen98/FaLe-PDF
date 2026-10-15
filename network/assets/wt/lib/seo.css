@@ -1,0 +1,33 @@
+/* password-generator and barcode-generator (loaded by lib/seo-ui.js); builds on img-tools.css */
+.seo-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.seo-copy-ta { position: fixed; top: 0; left: -9999px; opacity: 0; }
+
+/* password list */
+.seo-pw-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.seo-pw-item { display: flex; align-items: center; gap: 8px; padding: 8px 8px 8px 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface-2); min-width: 0; }
+.seo-pw-value { flex: 1 1 auto; min-width: 0; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: 1rem; line-height: 1.4; overflow-wrap: anywhere; word-break: break-all; color: var(--text); user-select: all; }
+.seo-pw-list.is-phrase .seo-pw-value { word-break: normal; }
+.seo-pw-item.is-single { padding: 12px 10px 12px 14px; }
+.seo-pw-item.is-single .seo-pw-value { font-size: 1.25rem; }
+.seo-copy { flex: none; min-height: 44px; padding: 0 14px; }
+.seo-copy.is-done { background: var(--accent); }
+.seo-pw-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+.seo-pw-actions .wt-btn { min-height: 44px; }
+
+/* strength meter */
+.seo-meter { height: 10px; border-radius: 99px; background: var(--surface-3); overflow: hidden; margin: 12px 0 6px; }
+.seo-meter[hidden] { display: none; }
+.seo-meter-bar { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--danger); transition: width .2s ease; }
+.seo-meter[data-level="1"] .seo-meter-bar { background: var(--warn); }
+.seo-meter[data-level="2"] .seo-meter-bar { background: var(--accent); }
+.seo-meter[data-level="3"] .seo-meter-bar, .seo-meter[data-level="4"] .seo-meter-bar { background: var(--primary); }
+.seo-pw-strength { font-weight: 650; margin: 0; }
+.seo-details { margin-top: 10px; font-size: var(--step--1); color: var(--text-2); }
+.seo-details summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; color: var(--primary); }
+.seo-details p { margin: 4px 0 8px; }
+
+/* barcode preview */
+.seo-bc-frame { display: grid; place-items: center; min-height: 140px; width: 100%; padding: 16px 8px; border-radius: var(--radius-md); background: repeating-conic-gradient(var(--surface-2) 0 25%, var(--surface) 0 50%) 0 0 / 16px 16px; overflow: hidden; }
+.seo-bc-canvas { display: block; max-width: 100%; height: auto; image-rendering: pixelated; box-shadow: var(--shadow-sm); }
+.seo-bc-canvas[hidden] { display: none; }
+.seo-bc .img-qr-empty.is-error { color: var(--danger); font-weight: 600; }

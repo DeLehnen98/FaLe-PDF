@@ -13,10 +13,10 @@
     "slug": "pdf-teilen",
     "name": "PDF teilen",
     "short": "Eine PDF in mehrere Dateien aufteilen – per Fingertipp.",
-    "title": "PDF teilen – kostenlos, ohne Upload | FaleNetwork",
-    "h1": "PDF teilen",
-    "metaDescription": "PDF in mehrere Dateien aufteilen: nach Bereichen, alle N Seiten, nach Lesezeichen, Dateigröße oder gerade/ungerade. Schnitte per Fingertipp. Ohne Upload, gratis.",
-    "lede": "Tippe zwischen zwei Seiten, um dort zu schneiden – oder lass automatisch teilen.",
+    "title": "PDF teilen & trennen – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "PDF teilen & trennen",
+    "metaDescription": "PDF teilen und in mehrere Dateien trennen: nach Bereichen, alle N Seiten, Lesezeichen, Dateigröße oder in Einzelseiten. Per Fingertipp, ohne Upload.",
+    "lede": "Tippe zwischen zwei Seiten, um dort zu trennen – oder lass automatisch aufteilen, auch in einzelne Seiten.",
     "primaryButton": "Teilen",
     "keywords": ["aufteilen", "trennen", "splitten", "zerlegen", "seiten trennen", "einzelne seiten", "pdf aufsplitten", "kapitel"],
     "steps": [
@@ -45,7 +45,7 @@
     "title": "Split PDF – free, no upload | FaleNetwork",
     "h1": "Split a PDF",
     "metaDescription": "Split a PDF into several files: by ranges, every N pages, by bookmarks, by file size or odd/even pages. Set cuts with a tap. No upload, free, no account.",
-    "lede": "Tap between two pages to cut there – or let it split automatically.",
+    "lede": "Tap between two pages to cut there – or split automatically, even into single pages.",
     "primaryButton": "Split",
     "keywords": ["separate", "divide", "break apart", "single pages", "chapters", "burst", "cut pdf"],
     "steps": [

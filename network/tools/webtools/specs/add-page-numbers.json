@@ -15,7 +15,7 @@
     "slug": "seitenzahlen-einfuegen",
     "name": "Seitenzahlen einfügen",
     "short": "PDF-Seiten nummerieren – mit Live-Vorschau.",
-    "title": "Seitenzahlen in PDF einfügen – kostenlos, ohne Upload | FaleNetwork",
+    "title": "Seitenzahlen in PDF einfügen – gratis, ohne Upload | FaleNetwork",
     "h1": "Seitenzahlen einfügen",
     "metaDescription": "Nummeriere deine PDF: Position per Fingertipp wählen, Format wie „Seite 1 von 10“, Deckblatt auslassen, Live-Vorschau. Gratis, ohne Konto, ohne Upload.",
     "lede": "Tipp auf die Stelle, an der die Zahl stehen soll – die Vorschau zeigt sofort das Ergebnis.",
@@ -47,7 +47,7 @@
     "title": "Add page numbers to PDF – free, no upload | FaleNetwork",
     "h1": "Add page numbers to a PDF",
     "metaDescription": "Number your PDF: pick the position with a tap, formats like “Page 1 of 10”, skip the cover, live preview. Free, no account, no upload – it runs in your browser.",
-    "lede": "Tap where the number should go – the preview shows the result right away.",
+    "lede": "Number your pages: tap where the number should go – the preview shows the result right away.",
     "primaryButton": "Add page numbers",
     "keywords": ["number pages", "paginate", "page numbering", "page 1 of", "footer number", "number pdf"],
     "steps": [

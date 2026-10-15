@@ -1,0 +1,161 @@
+{
+  "id": "png-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "image-pdf",
+  "module": "tools/png-to-pdf.js",
+  "accepts": [
+    "image/png",
+    ".png"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 31,
+  "related": [
+    "jpg-to-pdf",
+    "png-to-jpg",
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdflib"
+  ],
+  "de": {
+    "slug": "png-in-pdf",
+    "name": "PNG in PDF",
+    "short": "PNG-Bilder und Screenshots verlustfrei als PDF speichern.",
+    "title": "PNG in PDF umwandeln – verlustfrei, ohne Upload | FaleNetwork",
+    "h1": "PNG in PDF umwandeln",
+    "metaDescription": "PNG in PDF umwandeln: Screenshots und Grafiken verlustfrei übernehmen, Transparenz bleibt erhalten, viele Bilder in eine PDF. Gratis, ohne Upload.",
+    "lede": "Mach aus Screenshots und Grafiken eine PDF – Pixel für Pixel, ohne Qualitätsverlust.",
+    "pickLabel": "PNG auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "png zu pdf",
+      "screenshot in pdf",
+      "png konvertieren",
+      "grafik in pdf",
+      "transparent"
+    ],
+    "steps": [
+      {
+        "title": "PNG auswählen",
+        "text": "Wähle ein oder mehrere PNG-Bilder aus, etwa Screenshots, Diagramme oder Logos. Die Reihenfolge änderst du per Ziehen."
+      },
+      {
+        "title": "Seite wählen",
+        "text": "Für Screenshots passt „Bildgröße“ am besten: Jede Seite ist dann genau so groß wie das Bild. Zum Drucken nimmst du A4 oder Letter."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Tippe auf „PDF erstellen“ und lade die PDF herunter – alle Bilder in einer Datei oder eine PDF pro Bild."
+      }
+    ],
+    "why": [
+      {
+        "title": "Verlustfrei",
+        "text": "PNGs werden ohne Umrechnung in JPG übernommen. Schrift in Screenshots bleibt scharf, ohne die typischen Artefakte."
+      },
+      {
+        "title": "Transparenz bleibt",
+        "text": "Durchsichtige Bereiche bleiben durchsichtig – auf weißem Papier sieht das Logo so aus wie im Original."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Gerade Screenshots zeigen oft Privates. Hier bleiben sie auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wird mein PNG in der PDF unscharf?",
+        "a": "Nein. Das PNG wird verlustfrei eingebettet, jedes Pixel bleibt erhalten. Wie scharf es beim Zoomen wirkt, hängt nur von der Auflösung des Bildes ab."
+      },
+      {
+        "q": "Was passiert mit transparenten Bereichen?",
+        "a": "Sie bleiben transparent. In PDF-Programmen und auf dem Ausdruck erscheint dort der weiße Seitenhintergrund."
+      },
+      {
+        "q": "Welche Seitengröße ist für Screenshots die beste?",
+        "a": "„Bildgröße“: Dann bekommt jede Seite genau das Seitenverhältnis des Screenshots, ohne weiße Ränder. Für Ausdrucke ist A4 praktischer."
+      },
+      {
+        "q": "Warum ist die PDF so groß wie meine PNGs?",
+        "a": "Weil nichts weggerechnet wird. Brauchst du eine kleinere Datei, tippe danach auf „Weiter mit: PDF komprimieren“."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Die PDF entsteht vollständig in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "png-to-pdf",
+    "name": "PNG to PDF",
+    "short": "Save PNG images and screenshots losslessly as a PDF.",
+    "title": "PNG to PDF – convert losslessly, no upload | FaleNetwork",
+    "h1": "Convert PNG to PDF",
+    "metaDescription": "Convert PNG to PDF: screenshots and graphics are kept losslessly, transparency stays, many images in one PDF. Free and no upload – right in your browser.",
+    "lede": "Turn screenshots and graphics into a PDF – pixel for pixel, without any quality loss.",
+    "pickLabel": "Choose PNG",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "png to pdf converter",
+      "screenshot to pdf",
+      "graphic to pdf",
+      "transparent png"
+    ],
+    "steps": [
+      {
+        "title": "Choose PNG",
+        "text": "Pick one or more PNG images, such as screenshots, charts or logos. Drag to change the order."
+      },
+      {
+        "title": "Pick the page",
+        "text": "“Image size” suits screenshots best: every page is exactly as large as the image. For printing, choose A4 or Letter."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Tap “Create PDF” and download it – all images in one file or one PDF per image."
+      }
+    ],
+    "why": [
+      {
+        "title": "Lossless",
+        "text": "PNGs are not turned into JPG on the way. Text in screenshots stays crisp, without the usual artefacts."
+      },
+      {
+        "title": "Transparency kept",
+        "text": "Transparent areas stay transparent – on white paper the logo looks just like the original."
+      },
+      {
+        "title": "No upload",
+        "text": "Screenshots often show private things. Here they stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Will my PNG get blurry in the PDF?",
+        "a": "No. The PNG is embedded losslessly, every pixel is kept. How sharp it looks when zooming depends only on the image’s resolution."
+      },
+      {
+        "q": "What happens to transparent areas?",
+        "a": "They stay transparent. PDF viewers and printouts show the white page background there."
+      },
+      {
+        "q": "Which page size is best for screenshots?",
+        "a": "“Image size”: every page gets exactly the screenshot’s proportions, without white margins. For printing, A4 or Letter is handier."
+      },
+      {
+        "q": "Why is the PDF as large as my PNGs?",
+        "a": "Because nothing is thrown away. If you need a smaller file, tap “Continue with: Compress PDF” afterwards."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. The PDF is created entirely in your browser."
+      }
+    ]
+  }
+}

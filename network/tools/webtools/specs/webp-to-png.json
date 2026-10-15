@@ -1,0 +1,158 @@
+{
+  "id": "webp-to-png",
+  "category": "images",
+  "iconSvg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1.5\"/><path d=\"M15 4h2a2 2 0 0 1 2 2v3\"/><path d=\"M17 7l2 2 2-2\"/><path d=\"M9 20H7a2 2 0 0 1-2-2v-3\"/><path d=\"M3 17l2-2 2 2\"/>",
+  "module": "tools/webp-to-png.js",
+  "accepts": [
+    "image/webp",
+    ".webp"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 49,
+  "related": [
+    "webp-to-jpg",
+    "convert-image",
+    "png-to-jpg"
+  ],
+  "next": [
+    "png-to-pdf",
+    "compress-image"
+  ],
+  "de": {
+    "slug": "webp-in-png",
+    "name": "WebP in PNG",
+    "short": "WebP-Bilder als PNG speichern – Transparenz bleibt erhalten.",
+    "title": "WebP in PNG umwandeln – Transparenz bleibt, gratis | FaleNetwork",
+    "h1": "WebP in PNG umwandeln",
+    "metaDescription": "WebP in PNG umwandeln: Transparenz bleibt erhalten, keine weitere Kompression, viele Bilder auf einmal. Gratis, ohne Upload, direkt im Browser.",
+    "lede": "Speichere WebP-Bilder als PNG – mit Transparenz und ohne weiteren Qualitätsverlust.",
+    "pickLabel": "WebP auswählen",
+    "primaryButton": "In PNG umwandeln",
+    "keywords": [
+      "webp zu png",
+      "webp transparent",
+      "webp konvertieren",
+      "webp öffnen",
+      "sticker png"
+    ],
+    "steps": [
+      {
+        "title": "WebP auswählen",
+        "text": "Wähle ein oder mehrere WebP-Bilder aus, zum Beispiel Logos, Sticker oder Grafiken aus dem Web."
+      },
+      {
+        "title": "Umwandeln",
+        "text": "Tippe auf „In PNG umwandeln“. Durchsichtige Stellen bleiben durchsichtig."
+      },
+      {
+        "title": "Speichern oder teilen",
+        "text": "Lade die PNGs herunter oder teile sie direkt – mehrere auch als ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Transparenz bleibt",
+        "text": "Anders als bei JPG bekommen Logos und Sticker keinen weißen Kasten."
+      },
+      {
+        "title": "Keine weitere Kompression",
+        "text": "PNG speichert verlustfrei. Was im WebP steckt, kommt Pixel für Pixel ins PNG."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Bilder bleiben auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "PNG oder JPG – was ist für mein WebP besser?",
+        "a": "Für Logos, Grafiken, Screenshots und alles mit Transparenz PNG. Für Fotos ist JPG meist die bessere Wahl, weil die Datei viel kleiner wird – dafür gibt es „WebP in JPG“."
+      },
+      {
+        "q": "Warum ist das PNG größer als das WebP?",
+        "a": "WebP komprimiert stärker, PNG speichert verlustfrei. Bei Fotos kann das PNG ein Vielfaches größer werden."
+      },
+      {
+        "q": "Bleibt die Transparenz erhalten?",
+        "a": "Ja. Durchsichtige und halbdurchsichtige Bereiche werden genau so ins PNG übernommen."
+      },
+      {
+        "q": "Was passiert mit animierten WebP-Bildern?",
+        "a": "PNG kann hier keine Animation speichern, es wird das erste Bild der Animation übernommen."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Die Umwandlung passiert in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "webp-to-png",
+    "name": "WebP to PNG",
+    "short": "Save WebP images as PNG – transparency is kept.",
+    "title": "WebP to PNG converter – keeps transparency, free | FaleNetwork",
+    "h1": "Convert WebP to PNG",
+    "metaDescription": "Convert WebP to PNG: transparency is kept, no further compression, many images at once. Free, no upload – it all runs right in your browser.",
+    "lede": "Save WebP images as PNG – with transparency and without any further quality loss.",
+    "pickLabel": "Choose WebP",
+    "primaryButton": "Convert to PNG",
+    "keywords": [
+      "webp to png converter",
+      "transparent webp",
+      "convert webp",
+      "open webp",
+      "sticker png"
+    ],
+    "steps": [
+      {
+        "title": "Choose WebP",
+        "text": "Pick one or more WebP images, for example logos, stickers or graphics from the web."
+      },
+      {
+        "title": "Convert",
+        "text": "Tap “Convert to PNG”. Transparent areas stay transparent."
+      },
+      {
+        "title": "Save or share",
+        "text": "Download the PNGs or share them right away – several also as a ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Transparency kept",
+        "text": "Unlike with JPG, logos and stickers don’t get a white box."
+      },
+      {
+        "title": "No further compression",
+        "text": "PNG is lossless. Whatever is in the WebP goes into the PNG pixel for pixel."
+      },
+      {
+        "title": "No upload",
+        "text": "Your images stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "PNG or JPG – which is better for my WebP?",
+        "a": "PNG for logos, graphics, screenshots and anything with transparency. For photos JPG is usually better because the file gets much smaller – use “WebP to JPG” for that."
+      },
+      {
+        "q": "Why is the PNG larger than the WebP?",
+        "a": "WebP compresses harder, PNG is lossless. For photos the PNG can be many times larger."
+      },
+      {
+        "q": "Is transparency kept?",
+        "a": "Yes. Transparent and semi-transparent areas are carried over into the PNG exactly."
+      },
+      {
+        "q": "What about animated WebP images?",
+        "a": "PNG can’t store the animation here, so the first frame is used."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. The conversion happens in your browser."
+      }
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "heic-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "image-pdf",
+  "module": "tools/heic-to-pdf.js",
+  "accepts": [
+    "image/heic",
+    "image/heif",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 32,
+  "related": [
+    "heic-to-jpg",
+    "jpg-to-pdf",
+    "scan-to-pdf",
+    "merge-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdflib"
+  ],
+  "trademarkNote": true,
+  "de": {
+    "slug": "heic-in-pdf",
+    "name": "HEIC in PDF",
+    "short": "iPhone-Fotos (HEIC) als PDF – wo der Browser HEIC öffnen kann.",
+    "title": "HEIC in PDF umwandeln – iPhone-Fotos als PDF | FaleNetwork",
+    "h1": "HEIC in PDF umwandeln",
+    "metaDescription": "iPhone-Fotos (HEIC) in eine PDF umwandeln, direkt im Browser und ohne Upload. Klappt in Browsern, die HEIC öffnen können, etwa Safari auf iPhone und Mac.",
+    "lede": "Mach aus iPhone-Fotos (HEIC) eine PDF – in Browsern, die HEIC öffnen können.",
+    "pickLabel": "HEIC-Fotos auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "heic zu pdf",
+      "heif",
+      "iphone foto pdf",
+      "iphone fotos als pdf",
+      "heic konvertieren"
+    ],
+    "steps": [
+      {
+        "title": "HEIC-Fotos auswählen",
+        "text": "Wähle die Fotos aus. An der Vorschau siehst du sofort, ob dein Browser HEIC öffnen kann."
+      },
+      {
+        "title": "Seite einrichten",
+        "text": "Wähle A4, Letter oder „Bildgröße“ und einen Rand. Hochkant-Fotos werden automatisch richtig gedreht."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Tippe auf „PDF erstellen“ und teile die PDF direkt oder lade sie herunter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Ehrlich",
+        "text": "Wir liefern keinen eigenen HEIC-Decoder mit. Kann dein Browser HEIC nicht lesen, steht das sofort an der Datei – mit einem Tipp, wie du trotzdem zur PDF kommst."
+      },
+      {
+        "title": "Mehrere Fotos, eine Datei",
+        "text": "Alle Fotos landen in einer PDF, in der Reihenfolge, die du festlegst – praktisch für Belege, Unterlagen oder Fotoserien."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Fotos bleiben auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "In welchen Browsern funktioniert das?",
+        "a": "In Browsern, die HEIC selbst öffnen können – vor allem Safari auf iPhone, iPad und Mac. Viele andere Browser können HEIC nicht lesen. Das siehst du direkt nach der Auswahl."
+      },
+      {
+        "q": "Mein Browser kann HEIC nicht öffnen – was nun?",
+        "a": "Öffne die Seite in Safari, teile das Foto in der Fotos-App „als JPG“ oder stelle auf dem iPhone unter Einstellungen → Kamera → Formate „Maximale Kompatibilität“ ein. JPGs nimmt „Bild in PDF umwandeln“ in jedem Browser an."
+      },
+      {
+        "q": "Warum ist HEIC so verbreitet?",
+        "a": "Das iPhone speichert Fotos standardmäßig als HEIC, weil die Dateien bei gleicher Qualität kleiner sind als JPG. Viele Programme und Formulare können damit aber nichts anfangen – eine PDF schon."
+      },
+      {
+        "q": "Wie groß wird die PDF?",
+        "a": "Die Fotos werden als JPG in hoher Qualität gespeichert, die PDF ist darum meist größer als die HEIC-Dateien. Mit „Weiter mit: PDF komprimieren“ machst du sie kleiner."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Die PDF entsteht in deinem Browser auf deinem Gerät."
+      }
+    ]
+  },
+  "en": {
+    "slug": "heic-to-pdf",
+    "name": "HEIC to PDF",
+    "short": "iPhone photos (HEIC) as a PDF – where the browser can open HEIC.",
+    "title": "HEIC to PDF – convert iPhone photos to PDF | FaleNetwork",
+    "h1": "Convert HEIC to PDF",
+    "metaDescription": "Convert iPhone photos (HEIC) into a PDF right in your browser, without uploading. Works in browsers that can open HEIC, such as Safari on iPhone and Mac.",
+    "lede": "Turn iPhone photos (HEIC) into a PDF – in browsers that can open HEIC.",
+    "pickLabel": "Choose HEIC photos",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "heic to pdf converter",
+      "heif",
+      "iphone photo to pdf",
+      "iphone photos as pdf"
+    ],
+    "steps": [
+      {
+        "title": "Choose HEIC photos",
+        "text": "Pick the photos. The preview shows right away whether your browser can open HEIC."
+      },
+      {
+        "title": "Set up the page",
+        "text": "Choose A4, Letter or “Image size” and a margin. Portrait photos are rotated correctly."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Tap “Create PDF” and share it right away or download it."
+      }
+    ],
+    "why": [
+      {
+        "title": "Honest",
+        "text": "We don’t ship our own HEIC decoder. If your browser can’t read HEIC, the file says so right away – with a tip on how to get your PDF anyway."
+      },
+      {
+        "title": "Many photos, one file",
+        "text": "All photos go into one PDF in the order you choose – handy for receipts, paperwork or photo series."
+      },
+      {
+        "title": "No upload",
+        "text": "Your photos stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which browsers does this work in?",
+        "a": "In browsers that can open HEIC themselves – mainly Safari on iPhone, iPad and Mac. Many other browsers can’t read HEIC. You’ll see this right after choosing."
+      },
+      {
+        "q": "My browser can’t open HEIC – what now?",
+        "a": "Open the page in Safari, share the photo from the Photos app “as JPG”, or on the iPhone set Settings → Camera → Formats to “Most Compatible”. “JPG to PDF” accepts JPGs in any browser."
+      },
+      {
+        "q": "Why is HEIC so common?",
+        "a": "The iPhone saves photos as HEIC by default because the files are smaller than JPG at the same quality. Many programs and forms can’t handle it, though – a PDF they can."
+      },
+      {
+        "q": "How large will the PDF be?",
+        "a": "The photos are stored as high-quality JPG, so the PDF is usually larger than the HEIC files. “Continue with: Compress PDF” makes it smaller."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. The PDF is created in your browser on your device."
+      }
+    ]
+  }
+}

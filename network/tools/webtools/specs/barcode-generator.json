@@ -1,0 +1,178 @@
+{
+  "id": "barcode-generator",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M3 5v14\"/><path d=\"M6 5v14\"/><path d=\"M9.5 5v14\"/><path d=\"M13 5v14\"/><path d=\"M15.5 5v14\"/><path d=\"M18 5v14\"/><path d=\"M21 5v14\"/>",
+  "module": "tools/barcode-generator.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 61,
+  "related": [
+    "qr-code",
+    "invoice-generator",
+    "password-generator"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "barcode-generator",
+    "name": "Barcode-Generator",
+    "short": "EAN, UPC, Code 128, Code 39 und ITF-14 als PNG, SVG oder PDF.",
+    "title": "Barcode-Generator – EAN-13, Code 128 & mehr, gratis | FaleNetwork",
+    "h1": "Barcode erstellen",
+    "metaDescription": "Barcode erstellen: EAN-13, EAN-8, UPC-A, Code 128, Code 39 und ITF-14 mit Prüfziffer, Klartext und Größe in mm. Als PNG, SVG oder PDF, ohne Upload.",
+    "lede": "Erstelle EAN-, UPC-, Code-128-, Code-39- oder ITF-14-Barcodes – mit Prüfziffer und Selbsttest.",
+    "primaryButton": "Barcode speichern",
+    "keywords": [
+      "barcode erstellen",
+      "ean code erstellen",
+      "ean 13",
+      "strichcode",
+      "code 128",
+      "code 39",
+      "upc",
+      "itf 14",
+      "gtin",
+      "barcode generator kostenlos"
+    ],
+    "steps": [
+      {
+        "title": "Typ und Inhalt",
+        "text": "Wähle den Barcode-Typ und gib die Nummer oder den Text ein. Bei EAN, UPC und ITF-14 wird die Prüfziffer ergänzt oder geprüft."
+      },
+      {
+        "title": "Größe und Farbe",
+        "text": "Leg Strichbreite und Höhe in Millimetern fest, schalte den Klartext ein oder aus und wähle die Farben. Die Vorschau prüft sofort, ob der Code lesbar ist."
+      },
+      {
+        "title": "Speichern",
+        "text": "Speichere den Barcode als PNG für Office und Etiketten, als SVG für Grafikprogramme oder als PDF zum Drucken."
+      }
+    ],
+    "why": [
+      {
+        "title": "Mit Prüfziffer",
+        "text": "Die Prüfziffer wird nach GS1-Regel berechnet. Gibst du die volle Nummer ein, sagen wir dir, ob sie stimmt – und welche Ziffer richtig wäre."
+      },
+      {
+        "title": "Selbsttest",
+        "text": "Jeder Barcode wird nach dem Erstellen wieder eingelesen. Erst wenn er sich genau als dein Inhalt liest, gilt der Test als bestanden."
+      },
+      {
+        "title": "Echte Größe",
+        "text": "Strichbreite in Millimetern, SVG und PDF in Originalgröße und PNG mit hinterlegter Auflösung – so stimmt die Größe auch im Ausdruck."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Der Barcode entsteht in deinem Browser. Nichts wird gespeichert oder gesendet."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welcher Barcode-Typ ist der richtige?",
+        "a": "Für Produkte im Handel EAN-13 (in Nordamerika UPC-A), für kleine Packungen EAN-8, für Versandkartons ITF-14. Für Inventar, Lager und eigene Nummern mit Buchstaben eignen sich Code 128 oder Code 39."
+      },
+      {
+        "q": "Bekomme ich hier eine offizielle EAN-Nummer?",
+        "a": "Nein. Der Generator zeichnet nur den Barcode. Nummern für den Handel vergibt die GS1-Organisation deines Landes; mit einer ausgedachten Nummer nehmen Händler deine Ware nicht an."
+      },
+      {
+        "q": "Wie groß muss ich den Barcode drucken?",
+        "a": "Die Normgröße für EAN und UPC ist 0,33 mm pro Modul (EAN-13 dann etwa 37 × 26 mm). Kleiner als 80 % davon lesen Kassenscanner oft nicht zuverlässig. Lass rechts und links den hellen Rand frei."
+      },
+      {
+        "q": "Welche Farben kann ich nehmen?",
+        "a": "Dunkle Striche auf hellem Grund – am besten Schwarz auf Weiß. Rot oder hellgelb erkennen viele Scanner nicht, und helle Striche auf dunklem Grund lesen die meisten gar nicht."
+      },
+      {
+        "q": "Kann Code 128 hier GS1-128 (mit FNC1)?",
+        "a": "Nein, der Generator erstellt normalen Code 128 aus druckbaren ASCII-Zeichen und wechselt automatisch in den platzsparenden Ziffernmodus. GS1-128 mit Datenbezeichnern ist nicht enthalten."
+      },
+      {
+        "q": "Werden meine Daten hochgeladen?",
+        "a": "Nein. Der Barcode entsteht vollständig in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "barcode-generator",
+    "name": "Barcode generator",
+    "short": "EAN, UPC, Code 128, Code 39 and ITF-14 as PNG, SVG or PDF.",
+    "title": "Barcode generator – EAN-13, UPC, Code 128, free | FaleNetwork",
+    "h1": "Create a barcode",
+    "metaDescription": "Create barcodes: EAN-13, EAN-8, UPC-A, Code 128, Code 39 and ITF-14 with check digit, readable text and size in mm. As PNG, SVG or PDF – free, no upload.",
+    "lede": "Create EAN, UPC, Code 128, Code 39 or ITF-14 barcodes – with check digit and self-test.",
+    "primaryButton": "Save barcode",
+    "keywords": [
+      "create barcode",
+      "ean barcode",
+      "ean 13",
+      "upc barcode",
+      "code 128",
+      "code 39",
+      "itf 14",
+      "gtin",
+      "free barcode maker"
+    ],
+    "steps": [
+      {
+        "title": "Type and content",
+        "text": "Choose the barcode type and enter the number or text. For EAN, UPC and ITF-14 the check digit is added or checked."
+      },
+      {
+        "title": "Size and colour",
+        "text": "Set bar width and height in millimetres, turn the human-readable text on or off and choose the colours. The preview checks right away that the code is readable."
+      },
+      {
+        "title": "Save",
+        "text": "Save the barcode as PNG for office and labels, as SVG for design programs or as PDF for printing."
+      }
+    ],
+    "why": [
+      {
+        "title": "With check digit",
+        "text": "The check digit is calculated by the GS1 rule. If you enter the full number, we tell you whether it is right – and which digit would be."
+      },
+      {
+        "title": "Self-test",
+        "text": "Every barcode is read back after it is created. The test only passes if it reads exactly as your content."
+      },
+      {
+        "title": "True size",
+        "text": "Bar width in millimetres, SVG and PDF at their real size and PNG with its resolution stored – so the size is right when printed."
+      },
+      {
+        "title": "No upload",
+        "text": "The barcode is created in your browser. Nothing is stored or sent."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which barcode type do I need?",
+        "a": "For retail products EAN-13 (UPC-A in North America), EAN-8 for small packs, ITF-14 for shipping cartons. For inventory, warehouses and your own numbers with letters, use Code 128 or Code 39."
+      },
+      {
+        "q": "Do I get an official EAN number here?",
+        "a": "No. The generator only draws the barcode. Numbers for retail are issued by the GS1 organisation in your country; retailers won’t accept goods with a made-up number."
+      },
+      {
+        "q": "How large should I print the barcode?",
+        "a": "The nominal size for EAN and UPC is 0.33 mm per module (EAN-13 is then about 37 × 26 mm). Below 80 % of that, checkout scanners often fail. Keep the light margin on the left and right free."
+      },
+      {
+        "q": "Which colours can I use?",
+        "a": "Dark bars on a light background – ideally black on white. Many scanners can’t see red or light yellow, and most can’t read light bars on a dark background at all."
+      },
+      {
+        "q": "Does Code 128 support GS1-128 (with FNC1)?",
+        "a": "No, the generator creates standard Code 128 from printable ASCII characters and switches to the compact digit mode automatically. GS1-128 with application identifiers is not included."
+      },
+      {
+        "q": "Is my data uploaded?",
+        "a": "No. The barcode is created entirely in your browser."
+      }
+    ]
+  }
+}

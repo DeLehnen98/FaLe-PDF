@@ -16,7 +16,7 @@
     "title": "PDF schwärzen – Text dauerhaft entfernen | FaleNetwork",
     "h1": "PDF schwärzen",
     "metaDescription": "Schwärze Namen, E-Mail-Adressen, Telefonnummern, IBAN und beliebige Bereiche in PDFs – der Text wird wirklich entfernt, nicht nur überdeckt. Ohne Upload.",
-    "lede": "Entferne vertrauliche Stellen dauerhaft – nicht nur schwarz überdeckt.",
+    "lede": "Anonymisiere Dokumente: Vertrauliche Stellen werden dauerhaft entfernt – nicht nur schwarz überdeckt.",
     "primaryButton": "Schwärzen",
     "keywords": ["schwärzen", "anonymisieren", "zensieren", "unkenntlich machen", "dsgvo", "personenbezogene daten", "abdecken", "redigieren"],
     "steps": [
@@ -45,7 +45,7 @@
     "title": "Redact PDF – remove text for good, no upload | FaleNetwork",
     "h1": "Redact a PDF",
     "metaDescription": "Redact names, e-mail addresses, phone numbers, IBANs and any area in PDFs – the text is really removed, not just covered. No upload, right in your browser.",
-    "lede": "Remove confidential passages for good – not just covered in black.",
+    "lede": "Remove confidential passages for good – not just blacked out.",
     "primaryButton": "Redact",
     "keywords": ["redact", "anonymize", "censor", "black out", "gdpr", "personal data", "hide text", "sanitize"],
     "steps": [

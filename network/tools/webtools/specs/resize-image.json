@@ -34,10 +34,10 @@
     "slug": "bildgroesse-aendern",
     "name": "Bildgröße ändern",
     "short": "Bilder auf Pixel, Prozent oder Social-Media-Formate bringen.",
-    "title": "Bildgröße ändern – Pixel, Prozent, Formate | FaleNetwork",
+    "title": "Bildgröße ändern – Pixel und Auflösung anpassen | FaleNetwork",
     "h1": "Bildgröße ändern",
-    "metaDescription": "Bildgröße ändern in Pixeln, Prozent oder nach Vorlage (Quadrat, Story, HD, 4K). Zuschneiden mit Fokuspunkt, viele Bilder auf einmal. Gratis, ohne Upload, im Browser.",
-    "lede": "Bring Fotos auf die passende Größe – in Pixeln, Prozent oder für Social Media.",
+    "metaDescription": "Bildgröße ändern in Pixeln, Prozent oder nach Vorlage (Quadrat, Story, HD, 4K). Zuschneiden mit Fokuspunkt, viele Bilder auf einmal. Gratis, ohne Upload.",
+    "lede": "Ändere Breite und Höhe in Pixeln, in Prozent oder für Social Media – mit Zuschnitt nach Fokuspunkt.",
     "pickLabel": "Bilder auswählen",
     "primaryButton": "Größe ändern",
     "keywords": [
@@ -104,6 +104,10 @@
       {
         "q": "Bleibt die Qualität erhalten?",
         "a": "Beim Verkleinern wird in mehreren Schritten gerechnet, das hält Details sauber. Für JPG und WebP stellst du die Qualität selbst ein, voreingestellt sind 90 %."
+      },
+      {
+        "q": "Ich will nur die Dateigröße in KB verringern – was nehme ich?",
+        "a": "Dafür ist „Bild komprimieren“ besser: Es verkleinert die Datei gezielt, auf Wunsch unter eine Zielgröße in KB, ohne dass du Pixelmaße ausrechnen musst. „Bildgröße ändern“ ist für genaue Pixelmaße da."
       }
     ]
   },
@@ -111,10 +115,10 @@
     "slug": "resize-image",
     "name": "Resize image",
     "short": "Resize images by pixels, percent or social media formats.",
-    "title": "Resize image – pixels, percent, social formats | FaleNetwork",
+    "title": "Image resizer – pixels, percent, social sizes | FaleNetwork",
     "h1": "Resize images",
     "metaDescription": "Resize images by pixels, percent or preset (square, story, HD, 4K). Crop with a focal point, many images at once. Free, no upload, right in your browser.",
-    "lede": "Get photos to the right size – in pixels, percent or for social media.",
+    "lede": "Change width and height in pixels, percent or for social media – with cropping around a focal point.",
     "pickLabel": "Choose images",
     "primaryButton": "Resize",
     "keywords": [
@@ -180,6 +184,10 @@
       {
         "q": "Is the quality preserved?",
         "a": "Downscaling is done in several steps, which keeps details clean. For JPG and WebP you set the quality yourself; the default is 90 %."
+      },
+      {
+        "q": "I only want a smaller file in KB – which tool do I use?",
+        "a": "“Compress image” is better for that: it shrinks the file directly, below a target size in KB if you like, without working out pixel sizes. “Resize image” is for exact pixel dimensions."
       }
     ]
   }

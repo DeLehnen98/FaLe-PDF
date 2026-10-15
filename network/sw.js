@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '09793160b5e8';
+const VERSION = '82c817d853bd';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-bb9b11629538';
 const PAGES = 'wt-pages';
@@ -79,6 +79,12 @@ const PRECACHE = [
   "/assets/wt/lib/sec-textgeom.js",
   "/assets/wt/lib/sec-ui.js",
   "/assets/wt/lib/sec.css",
+  "/assets/wt/lib/seo-barcode.js",
+  "/assets/wt/lib/seo-pwgen.js",
+  "/assets/wt/lib/seo-ui.js",
+  "/assets/wt/lib/seo-words-de.js",
+  "/assets/wt/lib/seo-words-en.js",
+  "/assets/wt/lib/seo.css",
   "/assets/wt/lib/strings.js",
   "/assets/wt/lib/sw.js",
   "/assets/wt/lib/tt.js",

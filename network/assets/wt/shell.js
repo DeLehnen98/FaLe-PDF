@@ -540,7 +540,7 @@ function init(cfg) {
       notes: [],
       note(text) { this.notes.push(P(text)); },
       announce: say,
-      refresh: () => update(),   // stage UIs: re-evaluate the bar (status hook) after their data changed
+      refresh: () => { optsUI?.refresh(); update(); },   // stage UIs: re-evaluate option visibility (when) and the bar (status hook) after their data changed
     };
   }
 

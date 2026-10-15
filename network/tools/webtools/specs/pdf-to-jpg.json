@@ -25,10 +25,10 @@
     "slug": "pdf-in-jpg",
     "name": "PDF in JPG",
     "short": "PDF-Seiten als JPG-Bilder speichern – in wählbarer Auflösung.",
-    "title": "PDF in JPG umwandeln – Seiten als Bild, ohne Upload | FaleNetwork",
+    "title": "PDF in JPG umwandeln – PDF als Bild speichern | FaleNetwork",
     "h1": "PDF in JPG umwandeln",
     "metaDescription": "Wandle PDF-Seiten in JPG-Bilder um: Seiten auswählen, Auflösung von 72 bis 600 dpi, Qualität einstellbar, direkt teilen. Gratis, ohne Upload, im Browser.",
-    "lede": "Jede Seite als scharfes JPG – zum Teilen, Posten oder Weiterbearbeiten.",
+    "lede": "Speichere jede PDF-Seite als scharfes JPG-Bild – zum Teilen, Posten oder Weiterbearbeiten.",
     "pickLabel": "PDF auswählen",
     "primaryButton": "In JPG umwandeln",
     "keywords": [
@@ -81,7 +81,7 @@
         "a": "Für Messenger und Bildschirme reichen 100 bis 150 dpi. Zum Drucken nimm 300 dpi. 600 dpi lohnt sich nur bei sehr kleinen Details, die Dateien werden dann groß."
       },
       {
-        "q": "Kann ich nur einzelne Seiten umwandeln?",
+        "q": "Kann ich nur eine Seite als Bild speichern?",
         "a": "Ja. Trag die gewünschten Seiten ein, zum Beispiel „2“ oder „1-3, 7“. Leer bedeutet: alle Seiten."
       },
       {
@@ -157,7 +157,7 @@
         "a": "For messengers and screens, 100 to 150 dpi is enough. For printing use 300 dpi. 600 dpi only pays off for very small details; the files get large."
       },
       {
-        "q": "Can I convert only some pages?",
+        "q": "Can I save just one page as an image?",
         "a": "Yes. Enter the pages you want, for example “2” or “1-3, 7”. Empty means all pages."
       },
       {

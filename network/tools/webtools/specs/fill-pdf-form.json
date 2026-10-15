@@ -29,10 +29,10 @@
     "slug": "pdf-formular-ausfuellen",
     "name": "PDF-Formular ausfüllen",
     "short": "Formulare bequem auf dem Handy ausfüllen – ohne Zoomen.",
-    "title": "PDF-Formular ausfüllen – am Handy, ohne Upload | FaleNetwork",
+    "title": "PDF ausfüllen – Formulare am Handy, ohne Upload | FaleNetwork",
     "h1": "PDF-Formular ausfüllen",
     "metaDescription": "Fülle PDF-Formulare auf dem Handy aus wie ein normales Formular: große Eingabefelder, passende Tastatur, Vorschau der Seite. Gratis und ohne Upload.",
-    "lede": "Fülle PDF-Formulare aus wie eine normale Eingabemaske – ohne Zoomen und Tippen auf winzige Felder.",
+    "lede": "PDF ausfüllen ohne Zoomen: Alle Formularfelder erscheinen als einfache Eingabemaske.",
     "primaryButton": "Speichern",
     "keywords": [
       "formular",
@@ -47,7 +47,7 @@
     "steps": [
       {
         "title": "Formular auswählen",
-        "text": "Wähle die PDF mit dem Formular aus. Alle Felder erscheinen als übersichtliche Eingabemaske, nach Seiten sortiert."
+        "text": "Wähle die PDF mit dem Formular aus, etwa einen Antrag. Alle Felder erscheinen als übersichtliche Eingabemaske, nach Seiten sortiert."
       },
       {
         "title": "Ausfüllen",
@@ -106,7 +106,7 @@
     "title": "Fill PDF form – on your phone, no upload | FaleNetwork",
     "h1": "Fill in a PDF form",
     "metaDescription": "Fill in PDF forms on your phone like a normal web form: big input fields, the right keyboard, a page preview. Free and no upload – right in your browser.",
-    "lede": "Fill in PDF forms like a normal web form – no zooming, no tapping on tiny boxes.",
+    "lede": "Fill in fillable PDF forms like a normal web form – no zooming, no tapping on tiny boxes.",
     "primaryButton": "Save",
     "keywords": [
       "form",

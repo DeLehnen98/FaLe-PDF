@@ -1,0 +1,170 @@
+{
+  "id": "photo-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "image-pdf",
+  "module": "tools/photo-to-pdf.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".gif",
+    ".bmp",
+    ".avif",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 34,
+  "related": [
+    "scan-to-pdf",
+    "jpg-to-pdf",
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdflib"
+  ],
+  "de": {
+    "slug": "foto-in-pdf",
+    "name": "Foto in PDF",
+    "short": "Handyfotos aus der Galerie oder Kamera als PDF.",
+    "title": "Foto in PDF umwandeln – Handyfotos als PDF, gratis | FaleNetwork",
+    "h1": "Foto in PDF umwandeln",
+    "metaDescription": "Fotos vom Handy in eine PDF umwandeln: aus der Galerie oder direkt mit der Kamera, richtig gedreht, mehrere Fotos in einer Datei. Gratis, ohne Upload.",
+    "lede": "Wähl Fotos aus der Galerie oder mach direkt eins – daraus wird eine PDF.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "foto zu pdf",
+      "handyfoto pdf",
+      "bild als pdf speichern",
+      "fotos zusammenfassen",
+      "kamera pdf"
+    ],
+    "steps": [
+      {
+        "title": "Fotos auswählen",
+        "text": "Wähle Fotos aus der Galerie oder tippe auf „Kamera“ und fotografiere direkt. Die Reihenfolge änderst du per Ziehen."
+      },
+      {
+        "title": "Seite einrichten",
+        "text": "A4 passt zum Ausdrucken und Verschicken, „Bildgröße“ zum Ansehen am Bildschirm. Hoch- und Querformat ergeben sich automatisch aus jedem Foto."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Tippe auf „PDF erstellen“. Die PDF kannst du direkt per Messenger oder Mail teilen – oder vorher noch verkleinern."
+      }
+    ],
+    "why": [
+      {
+        "title": "Fotos bleiben, wie sie sind",
+        "text": "Handyfotos (JPG) werden ohne erneute Kompression übernommen – du verlierst keine Qualität."
+      },
+      {
+        "title": "Richtig herum",
+        "text": "Die Drehung, die das Handy im Foto vermerkt, wird beachtet. Kein Foto liegt quer auf der Seite."
+      },
+      {
+        "title": "Ohne App und Upload",
+        "text": "Läuft im Browser deines Handys, die Fotos verlassen es nicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Foto in PDF oder Dokument scannen – was ist der Unterschied?",
+        "a": "Hier wird das Foto so übernommen, wie es ist. Fotografierst du ein Blatt Papier, ist „Dokumente scannen“ besser: Es schneidet die Seite zu, rückt sie gerade und macht sie gut lesbar."
+      },
+      {
+        "q": "Wie bekomme ich mehrere Fotos in eine PDF?",
+        "a": "Wähl einfach alle Fotos auf einmal aus oder tippe danach auf „Weitere hinzufügen“. Jedes Foto wird eine Seite, in der Reihenfolge, die du festlegst."
+      },
+      {
+        "q": "Die PDF ist zu groß für die E-Mail – was tun?",
+        "a": "Handyfotos haben viele Megapixel. Tippe nach dem Erstellen auf „Weiter mit: PDF komprimieren“, dann wird die PDF oft um ein Vielfaches kleiner."
+      },
+      {
+        "q": "Welche Fotoformate gehen?",
+        "a": "JPG, PNG, WebP, GIF, BMP und AVIF. HEIC-Fotos vom iPhone klappen, wenn dein Browser HEIC öffnen kann, etwa Safari."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Die PDF entsteht auf deinem Gerät."
+      }
+    ]
+  },
+  "en": {
+    "slug": "photo-to-pdf",
+    "name": "Photo to PDF",
+    "short": "Phone photos from your gallery or camera as a PDF.",
+    "title": "Photo to PDF – turn phone photos into a PDF, free | FaleNetwork",
+    "h1": "Convert photos to PDF",
+    "metaDescription": "Turn photos from your phone into a PDF: from the gallery or straight from the camera, rotated correctly, several photos in one file. Free, no upload.",
+    "lede": "Pick photos from your gallery or take one now – they become a PDF.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "picture to pdf",
+      "phone photo to pdf",
+      "save photo as pdf",
+      "combine photos",
+      "camera to pdf"
+    ],
+    "steps": [
+      {
+        "title": "Choose photos",
+        "text": "Pick photos from your gallery or tap “Camera” and take one now. Drag to change the order."
+      },
+      {
+        "title": "Set up the page",
+        "text": "A4 or Letter suits printing and sending, “Image size” suits viewing on screen. Portrait or landscape follows each photo automatically."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Tap “Create PDF”. Share it right away via a messenger or e-mail – or make it smaller first."
+      }
+    ],
+    "why": [
+      {
+        "title": "Photos stay as they are",
+        "text": "Phone photos (JPG) are embedded without recompression – you lose no quality."
+      },
+      {
+        "title": "The right way up",
+        "text": "The rotation your phone stores in the photo is respected. No photo ends up sideways on the page."
+      },
+      {
+        "title": "No app, no upload",
+        "text": "Runs in your phone’s browser, and the photos never leave it."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Photo to PDF or scan a document – what’s the difference?",
+        "a": "Here the photo is taken as it is. If you photograph a sheet of paper, “Scan documents” is better: it crops the page, straightens it and makes it easy to read."
+      },
+      {
+        "q": "How do I get several photos into one PDF?",
+        "a": "Just pick all photos at once, or tap “Add more” afterwards. Each photo becomes a page, in the order you choose."
+      },
+      {
+        "q": "The PDF is too large for e-mail – what now?",
+        "a": "Phone photos have lots of megapixels. Tap “Continue with: Compress PDF” after creating it, and the PDF often gets many times smaller."
+      },
+      {
+        "q": "Which photo formats work?",
+        "a": "JPG, PNG, WebP, GIF, BMP and AVIF. HEIC photos from an iPhone work if your browser can open HEIC, such as Safari."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. The PDF is created on your device."
+      }
+    ]
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "id": "webp-to-pdf",
+  "category": "convert-to-pdf",
+  "icon": "image-pdf",
+  "module": "tools/webp-to-pdf.js",
+  "accepts": [
+    "image/webp",
+    ".webp"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 33,
+  "related": [
+    "jpg-to-pdf",
+    "webp-to-jpg",
+    "webp-to-png",
+    "merge-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdflib"
+  ],
+  "de": {
+    "slug": "webp-in-pdf",
+    "name": "WebP in PDF",
+    "short": "WebP-Bilder aus dem Web als PDF speichern.",
+    "title": "WebP in PDF umwandeln – kostenlos, ohne Upload | FaleNetwork",
+    "h1": "WebP in PDF umwandeln",
+    "metaDescription": "WebP in PDF umwandeln: gespeicherte Bilder aus dem Web als PDF, die jeder öffnen und drucken kann. Viele Bilder in eine Datei, gratis, ohne Upload.",
+    "lede": "Mach aus WebP-Bildern eine PDF, die jeder öffnen und drucken kann.",
+    "pickLabel": "WebP auswählen",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "webp zu pdf",
+      "webp konvertieren",
+      "webp drucken",
+      "webp öffnen"
+    ],
+    "steps": [
+      {
+        "title": "WebP auswählen",
+        "text": "Wähle ein oder mehrere WebP-Bilder aus, zum Beispiel aus deinem Download-Ordner."
+      },
+      {
+        "title": "Seite einrichten",
+        "text": "Wähle A4, Letter oder „Bildgröße“ und einen Rand. Die Reihenfolge der Bilder änderst du per Ziehen."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Tippe auf „PDF erstellen“ und lade die PDF herunter oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Überall lesbar",
+        "text": "Manche Programme und Formulare nehmen kein WebP an. Eine PDF öffnet dagegen fast jedes Gerät."
+      },
+      {
+        "title": "Transparenz bedacht",
+        "text": "WebP mit durchsichtigen Stellen wird verlustfrei übernommen, damit nichts schwarz wird. Fotos ohne Transparenz werden platzsparend gespeichert."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Bilder bleiben auf deinem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum speichern Webseiten Bilder als WebP?",
+        "a": "WebP ist kleiner als JPG oder PNG und lädt deshalb schneller. Speicherst du ein Bild aus dem Browser, landet es darum oft als WebP auf deinem Gerät."
+      },
+      {
+        "q": "Wie wird das WebP in die PDF übernommen?",
+        "a": "Bilder mit Transparenz werden verlustfrei eingebettet. Bilder ohne Transparenz werden als JPG in hoher Qualität gespeichert – mit bloßem Auge siehst du keinen Unterschied."
+      },
+      {
+        "q": "Was passiert mit animierten WebP-Bildern?",
+        "a": "In die PDF kommt das erste Bild der Animation. Eine PDF kann keine Animation abspielen."
+      },
+      {
+        "q": "Kann ich WebP und andere Formate mischen?",
+        "a": "Auf dieser Seite geht es um WebP. Für gemischte Bilder (JPG, PNG, WebP …) nimm „Bild in PDF umwandeln“."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser."
+      }
+    ]
+  },
+  "en": {
+    "slug": "webp-to-pdf",
+    "name": "WebP to PDF",
+    "short": "Save WebP images from the web as a PDF.",
+    "title": "WebP to PDF converter – free, no upload | FaleNetwork",
+    "h1": "Convert WebP to PDF",
+    "metaDescription": "Convert WebP to PDF: images saved from the web become a PDF anyone can open and print. Many images in one file, free, no upload, right in your browser.",
+    "lede": "Turn WebP images into a PDF that anyone can open and print.",
+    "pickLabel": "Choose WebP",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "webp to pdf converter",
+      "convert webp",
+      "print webp",
+      "open webp"
+    ],
+    "steps": [
+      {
+        "title": "Choose WebP",
+        "text": "Pick one or more WebP images, for example from your downloads."
+      },
+      {
+        "title": "Set up the page",
+        "text": "Choose A4, Letter or “Image size” and a margin. Drag to change the order of the images."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "Tap “Create PDF” and download the PDF or share it right away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Opens everywhere",
+        "text": "Some programs and upload forms don’t accept WebP. A PDF opens on almost any device."
+      },
+      {
+        "title": "Transparency handled",
+        "text": "WebP images with transparent areas are embedded losslessly so nothing turns black. Photos without transparency are stored compactly."
+      },
+      {
+        "title": "No upload",
+        "text": "Your images stay on your device."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why do websites save images as WebP?",
+        "a": "WebP is smaller than JPG or PNG, so pages load faster. When you save an image from your browser, it often ends up as WebP on your device."
+      },
+      {
+        "q": "How is the WebP put into the PDF?",
+        "a": "Images with transparency are embedded losslessly. Images without transparency are stored as high-quality JPG – you won’t see a difference with the naked eye."
+      },
+      {
+        "q": "What about animated WebP images?",
+        "a": "The PDF gets the first frame of the animation. A PDF can’t play animations."
+      },
+      {
+        "q": "Can I mix WebP with other formats?",
+        "a": "This page is about WebP. For mixed images (JPG, PNG, WebP …) use “JPG to PDF”."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. Everything happens in your browser."
+      }
+    ]
+  }
+}
