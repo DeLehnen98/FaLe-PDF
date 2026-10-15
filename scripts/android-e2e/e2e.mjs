@@ -110,7 +110,12 @@ async function connect() {
   await cdp.open();
   cdp.handlers.push(msg => {
     if (msg.method === 'Runtime.consoleAPICalled') {
-      const text = msg.params.args.map(a => a.value !== undefined ? String(a.value) : (a.description || a.type)).join(' ');
+      const fmt = a => {
+        if (a.value !== undefined) return typeof a.value === 'string' ? a.value : JSON.stringify(a.value);
+        if (a.preview && a.preview.properties) return (a.description || '') + JSON.stringify(Object.fromEntries(a.preview.properties.map(p => [p.name, p.value])));
+        return a.description || a.type;
+      };
+      const text = msg.params.args.map(fmt).join(' ');
       consoleLog.push(`[${msg.params.type}] ${text}`);
     } else if (msg.method === 'Runtime.exceptionThrown') {
       const d = msg.params.exceptionDetails;
@@ -188,6 +193,14 @@ function stroke(points) {
     for (let i = 1; i < d.length; i++) sh(`input swipe ${d[i - 1][0]} ${d[i - 1][1]} ${d[i][0]} ${d[i][1]} 120`, { allowFail: true });
   }
 }
+/** Warnings/errors the app process logged since the last logcatMark() (Capacitor, plugins, chromium). */
+function logcatMark() { adb(['logcat', '-c'], { allowFail: true }); }
+function logcatTail(n = 12) {
+  const pid = appPid();
+  const out = adb(['logcat', '-d', '-v', 'brief', ...(pid ? [`--pid=${pid}`] : []), '*:W'], { allowFail: true });
+  const sys = adb(['logcat', '-d', '-v', 'brief', 'FaleIncoming:V', 'FalePrint:V', 'Capacitor:V', 'Capacitor/Plugin:V', 'ActivityTaskManager:I', '*:S'], { allowFail: true });
+  return (out + sys).split('\n').filter(l => l.trim() && !/beginning of/.test(l)).slice(-n).join(' | ').slice(0, 1800);
+}
 const back = () => sh('input keyevent 4', { allowFail: true });
 const hideKeyboard = () => sh('input keyevent 111', { allowFail: true }); // ESCAPE closes the IME without touching the page
 
@@ -248,6 +261,7 @@ async function ensureApp() {
 }
 async function step(name, fn) {
   const start = consoleLog.length;
+  logcatMark();
   try {
     await ensureApp();
     const info = await fn();
@@ -256,14 +270,15 @@ async function step(name, fn) {
     const cons = consoleLog.slice(start).filter(l => /^\[(error|warning|exception|log:error)/.test(l)).slice(-6).join(' | ');
     let t = [];
     try { t = (await toasts()).slice(-4); } catch { /* app gone */ }
-    report(name, false, `${e.message}${t.length ? ' | Toasts: ' + t.join(' / ') : ''}${cons ? ' | Konsole: ' + cons.slice(0, 900) : ''} | Fenster: ${focusedWindow()}`);
+    report(name, false, `${e.message}${t.length ? ' | Toasts: ' + t.join(' / ') : ''}${cons ? ' | Konsole: ' + cons.slice(0, 900) : ''} | Fenster: ${focusedWindow()} | logcat: ${logcatTail()}`);
   }
   screenshot(name.replace(/[^\w]+/g, '-').toLowerCase());
 }
 
 // ------------------------------------------------------------------ main
 async function main() {
-  console.log('Android', sh('getprop ro.build.version.release').trim(), '| WebView', (sh('dumpsys package com.google.android.webview', { allowFail: true }).match(/versionName=(\S+)/) || [])[1]);
+  const env = `Android ${sh('getprop ro.build.version.release').trim()} (API ${sh('getprop ro.build.version.sdk').trim()}), WebView ${(sh('dumpsys webviewupdate', { allowFail: true }).match(/Current WebView package \(name, version\): \(([^)]*)\)/) || [])[1] || '?'}`;
+  console.log(`::notice title=E2E Gerät::${esc(env)}`);
   sh(`pm clear ${PKG}`, { allowFail: true });
   sh(`monkey -p ${PKG} -c android.intent.category.LAUNCHER 1`, { allowFail: true });
   await sleep(4000);
@@ -286,11 +301,11 @@ async function main() {
   await step('PDF aus anderer App öffnen (VIEW-Intent)', async () => {
     adb(['push', local, '/sdcard/Download/e2e-test.pdf']);
     sh(`appops set --uid ${PKG} MANAGE_EXTERNAL_STORAGE allow`, { allowFail: true });
-    sh(`am start -W -a android.intent.action.VIEW -d file:///sdcard/Download/e2e-test.pdf -t application/pdf -n ${PKG}/.MainActivity`, { allowFail: true });
+    const am = sh(`am start -W -a android.intent.action.VIEW -d file:///sdcard/Download/e2e-test.pdf -t application/pdf -n ${PKG}/.MainActivity`, { allowFail: true });
     await sleep(2500);
     if (cdp.closed) await connect();
     const d = await waitFor(async () => (await docs()).find(x => x.name === 'e2e-test.pdf'), { timeout: 20000 });
-    if (!d) throw new Error('Datei kam nicht in der App an');
+    if (!d) throw new Error('Datei kam nicht in der App an (am: ' + am.replace(/\s+/g, ' ').slice(0, 300) + ')');
     docId = d.id;
     const hash = await waitJs(`location.hash.includes(${JSON.stringify(d.id)}) && location.hash`, { timeout: 10000 });
     return `importiert und geöffnet (${hash})`;
@@ -347,7 +362,12 @@ async function main() {
     const before = (await toasts()).length;
     await menuItem('Herunterladen');
     const ok = await waitFor(async () => (await toasts()).slice(before).find(x => /Gespeichert in/.test(x)), { timeout: 15000 });
-    if (!ok) throw new Error('keine Bestätigung');
+    if (!ok) {
+      const probe = await ev(`const { plugin } = await import('/js/platform.js'); const fs = plugin('Filesystem');
+        try { const r = await fs.writeFile({ path: 'FaLe PDF/e2e-probe.txt', data: btoa('x'), directory: 'DOCUMENTS', recursive: true }); return 'writeFile ok ' + JSON.stringify(r); }
+        catch (e) { return 'writeFile: ' + (e && (e.message || e.errorMessage)) + ' code=' + (e && e.code); }`).catch(e => e.message);
+      throw new Error('keine Bestätigung; Probe: ' + probe);
+    }
     const ls = sh('ls "/sdcard/Documents/FaLe PDF/"', { allowFail: true });
     if (!/e2e-test/.test(ls)) throw new Error('Datei fehlt in Dokumente/FaLe PDF: ' + ls.trim());
     return ok;

@@ -1,6 +1,6 @@
 // FaLe PDF – first script of index.html (classic, synchronous, before the app module).
 // It replaces the former inline <script>, so the Content-Security-Policy can forbid ALL inline script
-// (script-src 'self'; no 'unsafe-inline'). Three jobs:
+// (script-src 'self'; no 'unsafe-inline'). Four jobs:
 //   1. theme before first paint (no flash)
 //   2. UI language (Automatisch = first German/English entry of navigator.languages, else English);
 //      in English mode the page stays hidden until the first translation pass (max. 150 ms)
@@ -10,6 +10,9 @@
 //      it removes active content (script/iframe/object/embed/base/meta, on* handlers, javascript: URLs)
 //      that should never be there. Script URLs (workers, vendor scripts) must be same-origin or blob:,
 //      string-to-code (eval, new Function, setTimeout("…")) is refused. See docs/SECURITY.md.
+//   4. small polyfills for older Android System WebViews (AbortSignal.any, async iteration of
+//      ReadableStream – pdf.js 6 uses both on the main thread; missing → text layer, search and
+//      "Ersetzen" fail with "… is not async iterable" / "AbortSignal.any is not a function")
 (function () {
   'use strict';
   try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
@@ -84,5 +87,38 @@
       createScriptURL: sameOriginScript,
       createScript: function () { return null; }, // no eval / new Function / setTimeout(string)
     });
+  } catch (e) {}
+
+  // ---------------------------------------------------------------- compat (older WebViews)
+  try {
+    if (typeof AbortSignal !== 'undefined' && typeof AbortSignal.any !== 'function') {
+      AbortSignal.any = function (signals) {
+        var ctrl = new AbortController();
+        var list = Array.prototype.slice.call(signals || []);
+        for (var i = 0; i < list.length; i++) if (list[i].aborted) { ctrl.abort(list[i].reason); return ctrl.signal; }
+        var onAbort = function (ev) {
+          ctrl.abort(ev && ev.target ? ev.target.reason : undefined);
+          for (var j = 0; j < list.length; j++) list[j].removeEventListener('abort', onAbort);
+        };
+        for (var k = 0; k < list.length; k++) list[k].addEventListener('abort', onAbort);
+        return ctrl.signal;
+      };
+    }
+    if (typeof ReadableStream !== 'undefined' && typeof Symbol !== 'undefined' && !ReadableStream.prototype[Symbol.asyncIterator]) {
+      var streamValues = function (opts) {
+        var reader = this.getReader();
+        var keep = !!(opts && opts.preventCancel);
+        var it = {
+          next: function () { return reader.read().then(function (r) { if (r.done) reader.releaseLock(); return r; }); },
+          'return': function (v) {
+            return (keep ? Promise.resolve() : reader.cancel(v)).then(function () { reader.releaseLock(); return { done: true, value: v }; });
+          },
+        };
+        it[Symbol.asyncIterator] = function () { return it; };
+        return it;
+      };
+      Object.defineProperty(ReadableStream.prototype, 'values', { value: streamValues, configurable: true, writable: true });
+      Object.defineProperty(ReadableStream.prototype, Symbol.asyncIterator, { value: streamValues, configurable: true, writable: true });
+    }
   } catch (e) {}
 })();

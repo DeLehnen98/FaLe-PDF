@@ -185,6 +185,9 @@ export async function mount(screen, { docId }) {
     const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
     it.fresh = false;
     span.onkeydown = e => { if (e.key === 'Escape') span.blur(); e.stopPropagation(); };
+    // keep the text (and the Save button) current while typing: on phones the field often never
+    // loses focus (hiding the keyboard does not blur), so waiting for blur left "Speichern" disabled
+    span.oninput = () => { it.text = span.innerText.replace(/\n+$/, ''); markDirty(); };
     span.onblur = () => {
       span.contentEditable = 'false';
       it.el.classList.remove('editing');

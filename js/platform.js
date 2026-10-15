@@ -5,6 +5,7 @@
 //   isNative()                                   → boolean
 //   saveFile(blobOrBytes, filename, mime)        → {ok, where}
 //   shareFile(blobOrBytes, filename, mime, {title, text}) → {ok, method}
+//   printPdf(bytes, filename)                    → {ok, method} (Android print dialog; web: caller prints)
 //   scheduleNotification({id, at, title, body, route}) → boolean (system notification scheduled?)
 //   cancelNotification(id)                       → void
 //   dueReminders({remove}) / listReminders()     → in-app reminder list (web + native)
@@ -226,6 +227,43 @@ export async function shareFile(blobOrBytes, filename, mime, { title, text, sile
     console.warn('Teilen fehlgeschlagen', err);
     if (!silent) uiToast('Teilen ist fehlgeschlagen.', 'error');
     return { ok: false, method: null, cancelled: false };
+  }
+}
+
+// ---------------------------------------------------------------- print
+/** True when PDFs can be printed through the Android print framework (FalePrint plugin). */
+export function canPrintNative() {
+  return isNative() && !!plugin('FalePrint') && !!plugin('Filesystem');
+}
+
+/**
+ * Print a PDF on Android: the WebView ignores window.print(), so the PDF goes to the system print
+ * dialog (print preview, "Als PDF speichern", installed print services) via the FalePrint plugin.
+ * Web: returns {ok:false, method:'web'} – the caller prints in the page (window.print).
+ * Resolves {ok, method: 'native'|'share'|'web'|null}.
+ */
+export async function printPdf(bytes, filename) {
+  if (!isNative()) return { ok: false, method: 'web' };
+  let name = cleanName(filename);
+  if (!/\.pdf$/i.test(name)) name += '.pdf';
+  const blob = toBlob(bytes, 'application/pdf');
+  const fs = plugin('Filesystem');
+  const pr = plugin('FalePrint');
+  try {
+    if (!fs || !pr) throw new Error('FalePrint/Filesystem fehlt');
+    const path = `print/${Date.now()}-${name}`;
+    const res = await writeChunked(fs, blob, path, 'CACHE');
+    let uri = res && res.uri;
+    if (!uri) uri = (await fs.getUri({ path, directory: 'CACHE' })).uri;
+    await pr.printPdf({ path: uri, name: name.replace(/\.pdf$/i, '') });
+    return { ok: true, method: 'native' };
+  } catch (err) {
+    console.warn('Drucken über Android fehlgeschlagen', err);
+    // last resort: hand the PDF to another app (e.g. a printer app, Drive, "Drucken" share target)
+    const r = await shareFile(blob, name, 'application/pdf', { title: name, silent: true });
+    if (r.ok) { uiToast('Drucken ist hier nicht direkt möglich – wähle eine Druck-App zum Teilen.', 'info', { timeout: 6000 }); return { ok: true, method: 'share' }; }
+    if (!r.cancelled) uiToast('Drucken ist fehlgeschlagen.', 'error');
+    return { ok: false, method: null };
   }
 }
 

@@ -1,5 +1,6 @@
 // Document viewer built on the pdf.js viewer components.
-import { pdfjsLib, loadPdf, renderPage, canvasToBlob, pageText, PasswordCancelled } from './pdfcore.js';
+import { pdfjsLib, loadPdf, renderPage, canvasToBlob, pageText, PasswordCancelled, knownPassword } from './pdfcore.js';
+import { isNative, printPdf } from './platform.js';
 import { EventBus, PDFLinkService, PDFFindController, PDFViewer, GenericL10n, LinkTarget } from '../vendor/pdfjs/pdf_viewer.mjs';
 import * as db from './db.js';
 import { icon } from './icons.js';
@@ -679,10 +680,13 @@ function closeReflow(page) {
 
 const saveLastPage = debounce(n => { if (cur) db.updateDoc(cur.doc.id, { lastPage: n }).catch(() => {}); }, 700);
 
-// ---- print (renders pages to images so it works everywhere) ----
+// ---- print ----
+// Android app: the WebView ignores window.print() → the PDF goes to the system print dialog
+// (platform.printPdf). Web: pages are rendered to images so printing looks the same in every browser.
 async function printDoc() {
   if (!cur) return;
   const session = cur;
+  if (isNative()) { await printNative(session); return; }
   const n = session.pdf.numPages;
   if (n > 300) { toast('Zum Drucken sehr großer Dokumente bitte herunterladen und extern drucken.', 'error'); return; }
   const prog = progress('Druck wird vorbereitet …');
@@ -703,7 +707,7 @@ async function printDoc() {
       area.appendChild(img);
       page.cleanup();
     }
-    await Promise.all(Array.from(area.images).map(img => img.decode().catch(() => {})));
+    await Promise.all(Array.from(area.querySelectorAll('img')).map(img => img.decode().catch(() => {})));
     prog.done();
     const cleanup = () => { area.innerHTML = ''; urls.forEach(u => URL.revokeObjectURL(u)); window.removeEventListener('afterprint', cleanup); };
     window.addEventListener('afterprint', cleanup);
@@ -714,6 +718,41 @@ async function printDoc() {
     urls.forEach(u => URL.revokeObjectURL(u));
     errorToast(e, 'Drucken fehlgeschlagen.');
   }
+}
+
+async function printNative(session) {
+  const prog = progress('Druck wird vorbereitet …');
+  try {
+    // password-protected PDFs cannot be opened by the system print preview → print an unprotected image copy
+    const bytes = knownPassword(session.doc.id)
+      ? await imagePdf(session, (i, n) => prog.set(`Druck wird vorbereitet … ${i}/${n}`))
+      : new Uint8Array(await (await db.getFile(session.doc.id)).arrayBuffer());
+    prog.done();
+    await printPdf(bytes, session.doc.name);
+  } catch (e) {
+    prog.done();
+    errorToast(e, 'Drucken fehlgeschlagen.');
+  }
+}
+
+/** PDF made of page images (150 dpi JPEG) – used to print protected documents. */
+async function imagePdf(session, onPage) {
+  const { loadPdfLib } = await import('./pdflib.js');
+  const PDFLib = await loadPdfLib();
+  const out = await PDFLib.PDFDocument.create();
+  const n = session.pdf.numPages;
+  if (n > 300) throw Object.assign(new Error('too many pages'), { userMessage: 'Zum Drucken sehr großer Dokumente bitte herunterladen und extern drucken.' });
+  for (let i = 1; i <= n; i++) {
+    onPage(i, n);
+    const page = await session.pdf.getPage(i);
+    const vp = page.getViewport({ scale: 1, rotation: page.rotate });
+    const canvas = await renderPage(page, { scale: 150 / 72 });
+    const jpg = await out.embedJpg(new Uint8Array(await (await canvasToBlob(canvas, 'image/jpeg', 0.92)).arrayBuffer()));
+    canvas.width = canvas.height = 0;
+    out.addPage([vp.width, vp.height]).drawImage(jpg, { x: 0, y: 0, width: vp.width, height: vp.height });
+    page.cleanup();
+  }
+  return out.save();
 }
 
 // ---- read aloud ----
