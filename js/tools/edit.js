@@ -256,7 +256,16 @@ export async function mount(screen, { docId }) {
       it.fresh = true;
       setMode('select');
       select(it);
-      setTimeout(() => editText(it), 30);
+      // Touch: focus only once the finger is lifted. A touch pointerdown carries no user activation, so
+      // focus() 30 ms later put the caret in the field but Android never opened the keyboard.
+      if (e.pointerType === 'mouse') setTimeout(() => editText(it), 30);
+      else {
+        let done = false;
+        const go = () => { if (done) return; done = true; window.removeEventListener('pointerup', go, true); window.removeEventListener('pointercancel', go, true); editText(it); };
+        window.addEventListener('pointerup', go, true);
+        window.addEventListener('pointercancel', go, true);
+        setTimeout(go, 1500); // safety net (pointerup lost)
+      }
       return;
     }
     if (mode === 'image') {

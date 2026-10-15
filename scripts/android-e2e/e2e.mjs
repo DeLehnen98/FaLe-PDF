@@ -407,7 +407,11 @@ async function main() {
     await sleep(400);
     const r = await rectOf('.pt-stage .pt-page');
     tapXY(r.x + r.w * 0.2, r.y + Math.min(r.h * 0.45, 260));
-    await sleep(1200);
+    // a real user can only type when the on-screen keyboard opens
+    const ime = await waitFor(() => /mInputShown=true|isInputViewShown=true|mIsInputViewShown=true/.test(sh('dumpsys input_method', { allowFail: true })), { timeout: 6000, interval: 500 });
+    screenshot('edit-keyboard');
+    report('Text bearbeiten: Tastatur öffnet sich', !!ime, ime ? 'Bildschirmtastatur sichtbar' : 'Feld fokussiert, aber keine Bildschirmtastatur');
+    await sleep(600);
     const typed = `${MARK}x`;
     sh(`input text ${typed}`);
     await sleep(800);
