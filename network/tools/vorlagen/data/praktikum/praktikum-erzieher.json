@@ -1,0 +1,156 @@
+{
+ "id": "praktikum-erzieher",
+ "field": "praktikum",
+ "name": "Praktikum in der Kita",
+ "search": "praktikum kita praktikum kindergarten vorpraktikum erzieher praktikum krippe sozialassistent praktikum",
+ "short": "Vorpraktikum für die Erzieherausbildung oder Orientierungspraktikum.",
+ "desc": "Bewerbung für ein Praktikum in der Kita: Musteranschreiben für das Vorpraktikum zur Erzieherausbildung und ein Orientierungspraktikum, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Für ein Praktikum in der Kita zählen Interesse an Kindern, Zuverlässigkeit und Offenheit. Nenn den Zweck (Vorpraktikum, Schulpraktikum, Orientierung), den Zeitraum und erzähl von Erfahrungen mit Kindern.",
+ "lookFor": [
+  "Zweck und Zeitraum des Praktikums",
+  "Erfahrungen mit Kindern",
+  "Interesse am Konzept der Kita",
+  "Erweitertes Führungszeugnis (ab 14 meist nötig)",
+  "Masernschutz-Nachweis"
+ ],
+ "letters": [
+  {
+   "label": "Vorpraktikum für die Erzieherausbildung",
+   "level": "praktikum",
+   "position": "Praktikantin im Vorpraktikum (6 Monate)",
+   "to": {
+    "org": "Kita Sonnenschein",
+    "sal": "f",
+    "street": "Gartenweg 6",
+    "city": "01219 Dresden",
+    "contact": "Krüger"
+   },
+   "body": [
+    "für die Ausbildung zur Erzieherin brauche ich ein Vorpraktikum von sechs Monaten. Ich möchte es gern in Ihrer Kita machen, weil Sie nach dem offenen Konzept arbeiten und ich erleben will, wie Kinder sich ihren Tag selbst einteilen.",
+    "Ich habe im Sommer meinen Realschulabschluss gemacht. Seit zwei Jahren betreue ich jeden Mittwoch die Kinder einer Nachbarsfamilie, mache mit ihnen Hausaufgaben und gehe auf den Spielplatz. In der Schule habe ich bei den Projekttagen die Bastelgruppe der Fünftklässler geleitet.",
+    "Mein erweitertes Führungszeugnis habe ich beantragt. Ich kann ab September beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Nachweis Masernschutz"
+   ]
+  },
+  {
+   "label": "Orientierungspraktikum nach der Schule",
+   "level": "praktikum",
+   "position": "Praktikant (Orientierungspraktikum, 4 Wochen)",
+   "to": {
+    "org": "Waldkindergarten Eichhörnchen e. V.",
+    "sal": "none",
+    "street": "Am Forsthaus 1",
+    "city": "01324 Dresden"
+   },
+   "body": [
+    "nach dem Abitur möchte ich herausfinden, ob ein sozialer Beruf zu mir passt, und dafür vier Wochen in Ihrem Waldkindergarten mitarbeiten.",
+    "Ich bin Pfadfinder und leite seit einem Jahr eine Gruppe mit zehn Kindern zwischen sieben und zehn Jahren. Wir sind bei jedem Wetter draußen, bauen Zelte und kochen über dem Feuer. Ich weiß, dass Kinder im Kindergarten jünger sind und andere Bedürfnisse haben, und genau das möchte ich kennenlernen.",
+    "Ich wäre im Mai und Juni verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Bestätigung Pfadfinder"
+   ],
+   "from": [
+    "Moritz Lehmann",
+    "Bautzner Landstraße 40",
+    "01324 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "modern",
+  "accent": 4,
+  "name": "Paula Schuster",
+  "title": "Schulabgängerin",
+  "street": "Stübelallee 60",
+  "city": "01309 Dresden",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Kinderbetreuung (privat, wöchentlich)",
+    "Nachbarsfamilie",
+    "Dresden",
+    "- Hausaufgaben, Spielplatz, Basteln"
+   ],
+   [
+    "2025",
+    "2025",
+    "Leitung Bastelgruppe an Projekttagen",
+    "Oberschule Dresden-Johannstadt",
+    "Dresden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2020",
+    "2026",
+    "Realschulabschluss",
+    "Oberschule Dresden-Johannstadt",
+    "Dresden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Kindern",
+    4
+   ],
+   [
+    "Basteln und Gestalten",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Zeichnen, Fahrrad fahren"
+ },
+ "do": [
+  "Zweck und Zeitraum nennen.",
+  "Erfahrung mit Kindern konkret beschreiben.",
+  "Bezug zum Kita-Konzept."
+ ],
+ "dont": [
+  "„Ich mag Kinder“ als einziger Grund.",
+  "Führungszeugnis vergessen.",
+  "Zu lange Texte."
+ ],
+ "questions": [
+  "Was würden Sie mit einer Gruppe Dreijähriger an einem Regentag machen?",
+  "Was interessiert Sie an unserem Konzept?",
+  "Wie reagieren Sie, wenn zwei Kinder streiten?",
+  "Was möchten Sie im Praktikum lernen?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Führungszeugnis für ein Kita-Praktikum?",
+   "a": "Meist ja, ab 14 Jahren ein erweitertes Führungszeugnis. Beantrage es rechtzeitig beim Bürgeramt; mit Bestätigung der Kita ist es oft kostenlos."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "fsj-bfd",
+  "schuelerpraktikum",
+  "schulbegleiter"
+ ]
+}

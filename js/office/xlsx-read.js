@@ -1,10 +1,10 @@
 // .xlsx reader (own parser on top of JSZip). Fast string scanning for sheet data (large files stay responsive).
 import { openZip, zipXml, kids, kid, attr, rid, readRels, desc, tick } from './vendor.js';
 import { newWorkbook, newSheet, KEY, recalc } from './workbook.js';
-import { errFromCode, shiftRefs, canonicalFn } from './formula.js';
+import { errFromCode, shiftRefs, canonicalFn, toDisplay, parseAddr } from './formula.js';
 import { UserError } from '../ui.js';
 import { parseXml } from './vendor.js';
-import { CF_STYLES, CF_SCALES, ensureSheetExtras, parseList, filterHidden } from './sheetfx.js';
+import { CF_STYLES, CF_SCALES, CF_BARS, CF_ICONS, ensureSheetExtras, parseList, filterHidden, safeUrl } from './sheetfx.js';
 
 const BUILTIN_FMT = {
   0: 'General', 1: '0', 2: '0.00', 3: '#,##0', 4: '#,##0.00', 9: '0%', 10: '0.00%', 11: '0.00E+00', 12: '# ?/?', 13: '# ??/??',
@@ -90,7 +90,7 @@ function readStyles(doc, theme) {
   xfs.dxfs = desc(kid(doc.documentElement, 'dxfs'), 'dxf').map(d => {
     const font = kid(d, 'font'), fill = kid(d, 'fill');
     const pf = fill && kid(fill, 'patternFill');
-    return { b: !!(font && kid(font, 'b')), color: font ? colorOf(kid(font, 'color'), theme) : null, fill: pf ? colorOf(kid(pf, 'bgColor'), theme) || colorOf(kid(pf, 'fgColor'), theme) : null };
+    return { b: !!(font && kid(font, 'b')), ...(font && kid(font, 'strike') ? { st: true } : {}), color: font ? colorOf(kid(font, 'color'), theme) : null, fill: pf ? colorOf(kid(pf, 'bgColor'), theme) || colorOf(kid(pf, 'fgColor'), theme) : null };
   });
   const cellXfs = kid(doc.documentElement, 'cellXfs');
   for (const x of kids(cellXfs, 'xf')) {
@@ -192,9 +192,12 @@ function parseSheetXml(xml, sh, sst, xfs) {
     const rr = /\br="(\d+)"/.exec(hm[1]);
     if (!rr) continue;
     if (/\bhidden="(1|true)"/.test(hm[1])) sh.hiddenRows.add(+rr[1] - 1);
+    const ol = /\boutlineLevel="(\d)"/.exec(hm[1]);
+    if (ol && +ol[1] > 0) sh.outline.set(+rr[1] - 1, Math.min(7, +ol[1]));
     const ht = /\bht="([\d.]+)"/.exec(hm[1]);
     if (ht && /customHeight="(1|true)"/.test(hm[1]) && Math.abs(+ht[1] - 15) > 0.5) sh.rowH.set(+rr[1] - 1, Math.max(8, Math.round(+ht[1] * ROW_PX_PER_PT)));
   }
+  parsePageSetup(xml, sh);
   parseSheetExtras(xml, sh, xfs);
   // cells
   const dataStart = xml.search(/<(?:\w+:)?sheetData/);
@@ -280,7 +283,7 @@ function parseSheetExtras(xml, sh, xfs) {
   if (!rootM) return;
   const tailStart = xml.indexOf('>', endData) + 1;
   const tail = xml.slice(tailStart);
-  if (!/autoFilter|conditionalFormatting|dataValidation/.test(tail)) return;
+  if (!/autoFilter|conditionalFormatting|dataValidation|hyperlink/.test(tail)) return;
   let doc;
   try { doc = parseXml(rootM[0] + tail); } catch { return; }
   const root = doc.documentElement;
@@ -325,16 +328,34 @@ function parseSheetExtras(xml, sh, xfs) {
       const type = attr(rule, 'type');
       const fs = kids(rule, 'formula').map(f => f.textContent.replace(/^"|"$/g, ''));
       const dx = xfs.dxfs && xfs.dxfs[+attr(rule, 'dxfId')];
-      const st = dx ? (CF_STYLES.find(x => x.fill && dx.fill && x.fill.toUpperCase() === dx.fill.toUpperCase()) || null) : null;
+      const st = dx ? (CF_STYLES.find(x => x.fill && dx.fill && x.fill.toUpperCase() === dx.fill.toUpperCase() && !!x.st === !!dx.st) || null) : null;
       const base = { id: Math.random().toString(36).slice(2, 9), range, style: st ? st.id : 'custom', custom: !st && dx ? dx : null };
       if (type === 'cellIs') {
-        const op = { greaterThan: 'gt', lessThan: 'lt', between: 'between', equal: 'eq', greaterThanOrEqual: 'gt', lessThanOrEqual: 'lt' }[attr(rule, 'operator')];
+        const op = { greaterThan: 'gt', lessThan: 'lt', between: 'between', equal: 'eq', greaterThanOrEqual: 'ge', lessThanOrEqual: 'le', notEqual: 'ne' }[attr(rule, 'operator')];
         if (op) sh.cf.push({ ...base, type: op, v1: fs[0] || '', v2: fs[1] || '' });
       } else if (type === 'containsText') sh.cf.push({ ...base, type: 'contains', v1: attr(rule, 'text') || '' });
       else if (type === 'colorScale') {
         const cols = desc(rule, 'color').map(c => attr(c, 'rgb') || '').map(c => '#' + c.slice(-6).toUpperCase());
         const sc = CF_SCALES.find(x => x.min.toUpperCase() === cols[0] && x.max.toUpperCase() === cols[cols.length - 1]);
         sh.cf.push({ ...base, type: 'scale', scale: sc ? sc.id : 'rg' });
+      } else if (type === 'dataBar') {
+        const col = desc(rule, 'color').map(c => '#' + (attr(c, 'rgb') || '').slice(-6).toUpperCase())[0];
+        const b = CF_BARS.find(x => x.color.toUpperCase() === col);
+        sh.cf.push({ ...base, type: 'bar', bar: b ? b.id : 'blue' });
+      } else if (type === 'iconSet') {
+        const set = attr(desc(rule, 'iconSet')[0] || rule, 'iconSet') || '3TrafficLights1';
+        const ic = CF_ICONS.find(x => x.xlsx === set) || (/Arrow/i.test(set) ? CF_ICONS[0] : /Symbol|Sign/i.test(set) ? CF_ICONS[2] : /Flag/i.test(set) ? CF_ICONS[3] : CF_ICONS[1]);
+        sh.cf.push({ ...base, type: 'icons', icons: ic.id });
+      } else if (type === 'top10') sh.cf.push({ ...base, type: attr(rule, 'bottom') === '1' ? 'bottom' : 'top', v1: attr(rule, 'rank') || '10', ...(attr(rule, 'percent') === '1' ? { percent: true } : {}) });
+      else if (type === 'aboveAverage') sh.cf.push({ ...base, type: attr(rule, 'aboveAverage') === '0' ? 'belowAvg' : 'aboveAvg' });
+      else if (type === 'duplicateValues') sh.cf.push({ ...base, type: 'dup' });
+      else if (type === 'uniqueValues') sh.cf.push({ ...base, type: 'unique' });
+      else if (type === 'containsBlanks') sh.cf.push({ ...base, type: 'blank' });
+      else if (type === 'notContainsBlanks') sh.cf.push({ ...base, type: 'notblank' });
+      else if (type === 'containsErrors') sh.cf.push({ ...base, type: 'error' });
+      else if (type === 'expression') {
+        const f0 = kids(rule, 'formula')[0];
+        if (f0 && f0.textContent.trim()) { const f = normFormula(f0.textContent.trim()); sh.cf.push({ ...base, type: 'formula', f, fd: toDisplay(f) }); }
       }
     }
   }
@@ -355,8 +376,62 @@ function parseSheetExtras(xml, sh, xfs) {
   }
 }
 
+/** printOptions, pageMargins, pageSetup, headerFooter → sh.page */
+function parsePageSetup(xml, sh) {
+  const tagA = name => { const m = new RegExp(`<(?:\\w+:)?${name}\\s([^>]*?)/?>`).exec(xml); return m ? m[1] : null; };
+  const ps = tagA('pageSetup'), po = tagA('printOptions'), pm = tagA('pageMargins'), fit = tagA('pageSetUpPr');
+  const footer = /<(?:\w+:)?oddFooter>[^<]*&amp;P/.test(xml);
+  if (!ps && !po && !footer && !(fit && /fitToPage="(1|true)"/.test(fit))) return;
+  const page = {};
+  const a = (s, n) => { const m = s && new RegExp(`\\b${n}="([^"]*)"`).exec(s); return m ? m[1] : null; };
+  const o = a(ps, 'orientation'); if (o === 'landscape' || o === 'portrait') page.orient = o;
+  if (fit && /fitToPage="(1|true)"/.test(fit)) page.fit = a(ps, 'fitToHeight') === '0' ? 'width' : 'page';
+  if (po) { page.grid = /gridLines="(1|true)"/.test(po); page.head = /headings="(1|true)"/.test(po); page.center = /horizontalCentered="(1|true)"/.test(po); }
+  else { page.grid = false; page.head = false; }
+  const left = parseFloat(a(pm, 'left'));
+  if (Number.isFinite(left)) page.margins = left <= 0.3 ? 'narrow' : left >= 0.95 ? 'wide' : 'normal';
+  page.footer = footer;
+  sh.page = page;
+}
+
 function normFormula(f) {
   return f.replace(/_xlfn\.|_xlws\.|_xlpm\./g, '').replace(/^=/, '').replace(/\b([A-Z][A-Z0-9.]*)\(/g, (m, n) => canonicalFn(n) + '(');
+}
+
+/** Hyperlinks (<hyperlinks> + sheet relationships) and notes (comments part) of a sheet. */
+async function readLinksAndNotes(zip, sheetPath, xml, sh) {
+  const hasLinks = /<(?:\w+:)?hyperlink\s/.test(xml), hasLegacy = /<(?:\w+:)?legacyDrawing\s/.test(xml);
+  const rels = hasLinks || hasLegacy || /<(?:\w+:)?drawing\s/.test(xml) ? await readRels(zip, sheetPath) : new Map();
+  if (hasLinks) {
+    const re = /<(?:\w+:)?hyperlink\s([^>]*?)\/?>/g;
+    let m;
+    while ((m = re.exec(xml))) {
+      const a = m[1];
+      const ref = (/\bref="([A-Z]+\d+)/.exec(a) || [])[1];
+      if (!ref) continue;
+      const p = parseAddr(ref);
+      const id = (/\br:id="([^"]+)"/.exec(a) || /\bid="([^"]+)"/.exec(a) || [])[1];
+      const loc = (/\blocation="([^"]*)"/.exec(a) || [])[1];
+      if (id && rels.get(id) && rels.get(id).external) { const u = safeUrl(unxml(rels.get(id).target)); if (u) sh.links.set(KEY(p.r, p.c), { url: u }); }
+      else if (loc) sh.links.set(KEY(p.r, p.c), { ref: unxml(loc) });
+    }
+  }
+  for (const r of rels.values()) {
+    if (r.type !== 'comments' || !zip.file(r.target)) continue;
+    const cx = await zip.file(r.target).async('string');
+    const re = /<(?:\w+:)?comment\s[^>]*?ref="([A-Z]+\d+)"[^>]*>([\s\S]*?)<\/(?:\w+:)?comment>/g;
+    let m;
+    while ((m = re.exec(cx))) {
+      const p = parseAddr(m[1]);
+      let text = '';
+      const tr = /<(?:\w+:)?t(?:\s[^>]*)?>([\s\S]*?)<\/(?:\w+:)?t>/g;
+      let t;
+      while ((t = tr.exec(m[2]))) text += unxml(t[1]);
+      // threaded-comment placeholders start with a long note text; keep the readable part
+      text = text.replace(/^\[Threaded comment\][\s\S]*?Comment:\s*/i, '').trim();
+      if (p && text) sh.notes.set(KEY(p.r, p.c), { text: text.slice(0, 4000) });
+    }
+  }
 }
 
 /**
@@ -411,6 +486,7 @@ export async function readXlsx(data, name = 'Tabelle', onProgress) {
         } catch (e) { console.warn('Diagramme übersprungen', e); }
       }
       if (sh.autoFilter) for (const r of filterHidden(sh)) sh.hiddenRows.delete(r);
+      try { await readLinksAndNotes(zip, rel.target, xml, sh); } catch (e) { console.warn('Links/Notizen übersprungen', e); }
     }
     if (wb.date1904) for (const cell of sh.cells.values()) if (typeof cell.v === 'number' && cell.s && cell.s.fmt && /[dmy]/i.test(cell.s.fmt)) cell.v += 1462;
     wb.sheets.push(sh);
@@ -422,6 +498,15 @@ export async function readXlsx(data, name = 'Tabelle', onProgress) {
   // defined names (named ranges)
   for (const dn of desc(wbDoc, 'definedName')) {
     const nm = attr(dn, 'name') || '';
+    const lsi = attr(dn, 'localSheetId');
+    if (/^_xlnm\.Print_(Area|Titles)$/i.test(nm) && lsi != null && wb.sheets[+lsi]) {
+      const sh = wb.sheets[+lsi];
+      const txt = (dn.textContent || '').trim().replace(/^=/, '');
+      const part = txt.split(',').map(x => x.replace(/^.*!/, '').replace(/\$/g, ''));
+      if (/Area/i.test(nm)) { const m = /^([A-Z]+\d+)(?::([A-Z]+\d+))?$/.exec(part[0] || ''); if (m) sh.page = { ...(sh.page || {}), area: m[2] ? `${m[1]}:${m[2]}` : m[1] }; }
+      else { const rows = part.find(x => /^\d+:\d+$/.test(x)); if (rows) { const [a, b] = rows.split(':').map(Number); sh.page = { ...(sh.page || {}), titleRows: { r1: a - 1, r2: b - 1 } }; } }
+      continue;
+    }
     if (!nm || /^_xlnm\./i.test(nm) || attr(dn, 'hidden') === '1') continue;
     const ref = (dn.textContent || '').trim().replace(/^=/, '');
     if (!ref || /#REF!/.test(ref)) continue;

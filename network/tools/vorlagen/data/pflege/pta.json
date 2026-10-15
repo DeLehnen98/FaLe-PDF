@@ -1,0 +1,191 @@
+{
+ "id": "pta",
+ "field": "pflege",
+ "name": "Pharmazeutisch-technische/r Assistent/in (PTA)",
+ "search": "pta apotheke pharmazeutisch technische assistentin rezeptur beratung apothekenhelfer pka",
+ "short": "Beratung, Rezeptur und Labor in der öffentlichen Apotheke.",
+ "desc": "Bewerbung als PTA in der Apotheke: Muster-Anschreiben für Berufsstart und Rückkehr in den Beruf, Lebenslauf zum Übernehmen und typische Fragen im Gespräch.",
+ "intro": "In der Apotheke stehen PTA vor allem in der Offizin: Rezepte beliefern, beraten, Wechselwirkungen erkennen, Rezepturen herstellen. Apothekenleitungen achten auf sicheres Fachwissen, einen freundlichen Umgang auch mit schwierigen Kunden und Erfahrung mit der Warenwirtschaft. Schwerpunkte wie Dermokosmetik, Heimversorgung oder Mutter-Kind-Beratung helfen dir, dich abzuheben.",
+ "lookFor": [
+  "Staatliche Prüfung als PTA und Sicherheit in Beratung und Abgabe nach Vorgaben",
+  "Erfahrung in Rezeptur und Defektur, inklusive Dokumentation und Plausibilitätsprüfung",
+  "Umgang mit Warenwirtschaft, E-Rezept und Rabattverträgen",
+  "Freundliche, klare Beratung – auch bei Zeitdruck an der Kasse",
+  "Interessen und Fortbildungen, die zum Profil der Apotheke passen"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem Praktikum in der öffentlichen Apotheke",
+   "level": "berufseinstieg",
+   "position": "PTA in Vollzeit",
+   "to": {
+    "org": "Löwen-Apotheke am Markt",
+    "sal": "f",
+    "street": "Markt 12",
+    "city": "04109 Leipzig",
+    "contact": "Winkler"
+   },
+   "body": [
+    "mein halbes Jahr Praktikum habe ich in einer Apotheke im Leipziger Osten gemacht, und dort habe ich gelernt, dass gute Beratung meistens mit einer Rückfrage beginnt. Im Januar lege ich den dritten Prüfungsabschnitt ab und suche danach eine Stelle in einer Apotheke mit viel Laufkundschaft.",
+    "Im Praktikum habe ich Rezepte beliefert, Kundinnen zu Schnupfen, Sodbrennen und Hautproblemen beraten und mehrere Salben und Kapseln in der Rezeptur hergestellt, inklusive Plausibilitätsprüfung und Herstellungsprotokoll. Bei einer älteren Kundin ist mir eine doppelte Verordnung von zwei Blutdruckmitteln aufgefallen; nach Rücksprache mit der Praxis wurde eines gestrichen. Seitdem frage ich bei Dauermedikation noch genauer nach.",
+    "Ihre Apotheke hat einen Schwerpunkt auf Naturheilkunde und Kosmetik, beides interessiert mich. Ich bin ab dem 1. Februar verfügbar und arbeite gern auch samstags."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis der PTA-Schule",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Rückkehr nach einigen Jahren Pause",
+   "level": "erfahren",
+   "position": "PTA in Teilzeit (24 Stunden)",
+   "to": {
+    "org": "Apotheke im Ärztehaus",
+    "sal": "none",
+    "street": "Prager Straße 140",
+    "city": "04317 Leipzig"
+   },
+   "body": [
+    "Landapotheke, acht Jahre, dann drei Jahre Familienpause: So sieht mein Berufsweg als PTA bisher aus. Jetzt möchte ich zurück, und eine Apotheke im Ärztehaus mit vielen Folgerezepten ist für mich genau das Richtige.",
+    "Mein Schwerpunkt war die Versorgung von zwei Pflegeheimen: Medikationspläne abgleichen, Wochenblister vorbereiten, Rücksprache mit Hausärzten halten. In der Offizin habe ich Diabetiker zu Messgeräten und Pens geschult. Mir ist bewusst, dass sich mit E-Rezept und neuen Abgaberegeln einiges verändert hat. Ich habe deshalb im Frühjahr zwei Online-Fortbildungen der Kammer zu genau diesen Themen gemacht. Beide mit Abschlusstest.",
+    "Montags bis donnerstags kann ich von 8 bis 14 Uhr, ein Samstag im Monat ist auch möglich. Ich würde mich freuen, wenn Sie mich zu einem Gespräch einladen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde PTA",
+    "Arbeitszeugnis",
+    "Fortbildungsnachweise"
+   ],
+   "from": [
+    "Doreen Schubert",
+    "Gorkistraße 37",
+    "04347 Leipzig"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "classic",
+  "accent": 0,
+  "name": "Mai Linh Tran",
+  "title": "Pharmazeutisch-technische Assistentin",
+  "street": "Eisenbahnstraße 101",
+  "city": "04315 Leipzig",
+  "exp": [
+   [
+    "07/2026",
+    "12/2026",
+    "Praktikantin PTA (6 Monate)",
+    "Rosen-Apotheke",
+    "Leipzig",
+    "- Rezeptbelieferung und Selbstmedikationsberatung\n- Rezeptur und Defektur mit Dokumentation\n- Warenannahme und Retouren"
+   ],
+   [
+    "2023",
+    "2024",
+    "Aushilfe Drogeriemarkt (Minijob)",
+    "Drogerie am Torgauer Platz",
+    "Leipzig",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "08/2024",
+    "06/2026",
+    "Ausbildung zur PTA, schulischer Teil",
+    "Berufsfachschule für PTA",
+    "Leipzig",
+    ""
+   ],
+   [
+    "2015",
+    "2023",
+    "Abitur",
+    "Wilhelm-Ostwald-Schule",
+    "Leipzig",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Dermokosmetik-Grundlagen",
+    "Apothekerkammer Sachsen (Online)",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Beratung Selbstmedikation",
+    4
+   ],
+   [
+    "Rezeptur und Defektur",
+    4
+   ],
+   [
+    "Interaktionscheck",
+    3
+   ],
+   [
+    "Warenwirtschaft",
+    3
+   ],
+   [
+    "Hautpflegeberatung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Vietnamesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Kräutergarten, Badminton"
+ },
+ "do": [
+  "Beschreib ein Beratungsbeispiel, das zeigt, wie du denkst.",
+  "Nenn Schwerpunkte wie Heimversorgung, Kosmetik, Diabetes, Mutter und Kind.",
+  "Gib an, wann du arbeiten kannst, inklusive Samstage."
+ ],
+ "dont": [
+  "Nur „Kundenberatung“ schreiben, ohne Themen zu nennen.",
+  "Rezeptur als Nebensache darstellen.",
+  "Zu verschweigen, dass du länger raus warst – sag lieber, wie du dich aufgefrischt hast."
+ ],
+ "questions": [
+  "Eine Kundin will ein Schmerzmittel für jeden Tag. Wie reagieren Sie?",
+  "Wie gehen Sie bei einer Rezeptur mit unklarer Verordnung vor?",
+  "Welche Warenwirtschaft kennen Sie?",
+  "Wie bleiben Sie fachlich auf dem Laufenden?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange dauert die PTA-Ausbildung?",
+   "a": "Sie dauert zweieinhalb Jahre: zwei Jahre Berufsfachschule und ein halbes Jahr Praktikum in einer Apotheke. Bewirb dich gern schon während des Praktikums für die Zeit danach."
+  },
+  {
+   "q": "Was ist der Unterschied zwischen PTA und PKA?",
+   "a": "PTA dürfen unter Aufsicht beraten, Arzneimittel abgeben und herstellen. PKA (Pharmazeutisch-kaufmännische Angestellte) kümmern sich um Einkauf, Lager, Abrechnung und Verwaltung – die Bewerbung sollte jeweils diese Aufgaben betonen."
+  }
+ ],
+ "related": [
+  "medizinische-fachangestellte",
+  "zahnmedizinische-fachangestellte",
+  "verkaeuferin",
+  "pflegefachkraft"
+ ]
+}

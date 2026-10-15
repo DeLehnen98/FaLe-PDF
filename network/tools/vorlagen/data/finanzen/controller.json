@@ -1,0 +1,175 @@
+{
+ "id": "controller",
+ "field": "finanzen",
+ "name": "Controller/in",
+ "search": "controllerin controller financial controller vertriebscontroller kostenrechnung reporting fp&a",
+ "short": "Planung, Reporting, Analysen – Junior oder erfahren.",
+ "desc": "Bewerbung als Controller/in: Musteranschreiben für den Einstieg nach dem Studium und erfahrene Controllerin mit Systemprojekt, Lebenslauf und Fallfragen.",
+ "intro": "Controller liefern Zahlen, die Entscheidungen tragen. Arbeitgeber suchen analytische Stärke, sichere Tabellen- und ERP-Kenntnisse und die Fähigkeit, Ergebnisse klar zu erklären – auch dann, wenn sie unbequem sind.",
+ "lookFor": [
+  "Wirtschaftsstudium oder kaufmännische Ausbildung mit Weiterbildung",
+  "Planung, Forecast, Abweichungsanalysen",
+  "Kostenrechnung und Reporting",
+  "ERP, Tabellen, gern BI-Werkzeuge",
+  "Kommunikation mit Fachbereichen"
+ ],
+ "letters": [
+  {
+   "label": "Einstieg nach dem Master",
+   "level": "berufseinstieg",
+   "position": "Junior Controller",
+   "to": {
+    "org": "Schwarzwälder Maschinenbau AG",
+    "sal": "none",
+    "street": "Industriestraße 30",
+    "city": "79111 Freiburg"
+   },
+   "body": [
+    "für den Vertrieb habe ich als Werkstudent einen Deckungsbeitragsbericht je Produktgruppe gebaut. Bei der ersten Auswertung stellte sich heraus, dass eine gut verkaufte Produktlinie kaum Geld verdient. Das Gespräch mit dem Vertriebsleiter war nicht einfach, aber die Preise wurden danach angepasst.",
+    "Meinen Master in Betriebswirtschaft mit Schwerpunkt Controlling schließe ich im September ab. Ich arbeite sicher mit Tabellen, Datenbanken und einem ERP-System, habe bei der Jahresplanung mitgearbeitet und Abweichungsanalysen für die Geschäftsleitung vorbereitet.",
+    "Ein produzierendes Unternehmen ist für mich der spannendste Ort fürs Controlling, weil man die Kosten anfassen kann."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Notenübersicht Master",
+    "Arbeitszeugnis Werkstudent"
+   ]
+  },
+  {
+   "label": "Erfahrene Controllerin",
+   "level": "erfahren",
+   "position": "Senior Controllerin",
+   "to": {
+    "org": "Badische Energie GmbH",
+    "sal": "none",
+    "street": "Kaiser-Joseph-Straße 10",
+    "city": "79098 Freiburg"
+   },
+   "body": [
+    "sieben Jahre Controlling in einem Handelskonzern, die letzten drei mit Verantwortung für die Planung von 40 Filialen. Ich möchte in ein Unternehmen, in dem Investitionsentscheidungen eine größere Rolle spielen, und die Energiewende liefert davon reichlich.",
+    "Ich habe den Planungsprozess von Tabellenmappen auf ein Planungstool umgestellt, die Monatsberichte auf eine Seite für die Geschäftsführung verdichtet und Investitionsrechnungen für Filialumbauten erstellt. Ich erkläre Zahlen gern Leuten, die keine Zahlenmenschen sind.",
+    "Meine Kündigungsfrist beträgt drei Monate zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Katharina Vogt",
+    "Habsburgerstraße 50",
+    "79104 Freiburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "classic",
+  "accent": 5,
+  "name": "Moritz Keller",
+  "title": "M.Sc. Betriebswirtschaft (Controlling)",
+  "street": "Wilhelmstraße 20",
+  "city": "79098 Freiburg",
+  "exp": [
+   [
+    "10/2024",
+    "09/2026",
+    "Werkstudent Controlling",
+    "Breisgau Antriebstechnik GmbH",
+    "Freiburg",
+    "- Deckungsbeitragsbericht je Produktgruppe\n- Mitarbeit an der Jahresplanung\n- Abweichungsanalysen"
+   ],
+   [
+    "2022",
+    "2024",
+    "Tutor Kostenrechnung",
+    "Universität Freiburg",
+    "Freiburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2024",
+    "09/2026",
+    "M.Sc. Betriebswirtschaft",
+    "Universität Freiburg",
+    "Freiburg",
+    ""
+   ],
+   [
+    "10/2020",
+    "09/2024",
+    "B.Sc. Betriebswirtschaft",
+    "Universität Freiburg",
+    "Freiburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kostenrechnung",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    5
+   ],
+   [
+    "ERP",
+    3
+   ],
+   [
+    "Datenbanken / SQL",
+    3
+   ],
+   [
+    "Präsentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Trailrunning, Schach"
+ },
+ "do": [
+  "Ein Analysebeispiel mit Wirkung.",
+  "Systeme und Prozesse nennen.",
+  "Kommunikation mit Fachbereichen zeigen."
+ ],
+ "dont": [
+  "Vertrauliche Zahlen.",
+  "Nur Werkzeuge aufzählen.",
+  "Zu viel Fachjargon."
+ ],
+ "questions": [
+  "Die Marge sinkt. Wie gehen Sie vor?",
+  "Wie erklären Sie eine Abweichung der Geschäftsführung?",
+  "Was ist ein Deckungsbeitrag?",
+  "Wie würden Sie unsere Planung verbessern?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich SQL können?",
+   "a": "Nicht immer, aber es hilft zunehmend. Tabellenkalkulation auf hohem Niveau und ERP-Kenntnisse sind fast immer gefragt."
+  }
+ ],
+ "related": [
+  "buchhalter",
+  "data-analyst",
+  "bankkaufmann",
+  "pflichtpraktikum-bwl"
+ ]
+}

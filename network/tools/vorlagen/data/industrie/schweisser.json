@@ -1,0 +1,190 @@
+{
+ "id": "schweisser",
+ "field": "industrie",
+ "name": "Schweißer/in",
+ "search": "schweisser schweißerin mag wig schweißen metallbauer konstruktionsmechaniker schweisserpruefung",
+ "short": "MAG, WIG, Stahl- und Metallbau – mit gültigen Prüfungen.",
+ "desc": "Bewerbung als Schweißer/in: Musteranschreiben für erfahrene WIG/MAG-Schweißer und Quereinsteiger mit Schweißkurs, Lebenslauf mit Foto-Platzhalter und Tipps.",
+ "intro": "Bei Schweißern zählen Verfahren, Werkstoffe, Positionen und gültige Schweißerprüfungen. Die Prüfungsnachweise gehören in die Anlagen. Betriebe fragen außerdem nach Zeichnungslesen, Montageerfahrung und Bereitschaft zu Einsätzen auf Baustellen.",
+ "lookFor": [
+  "Gültige Schweißerprüfungen für die geforderten Verfahren (z. B. MAG, WIG)",
+  "Erfahrung mit Werkstoffen wie Stahl, Edelstahl, Aluminium",
+  "Zeichnungen lesen, Schweißnahtsymbole",
+  "Ausbildung im Metallbereich von Vorteil",
+  "Montagebereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "WIG-Schweißer mit Edelstahl-Erfahrung",
+   "level": "erfahren",
+   "position": "WIG-Schweißer Edelstahl",
+   "to": {
+    "org": "Edelstahlbau Nordheide GmbH",
+    "sal": "none",
+    "street": "Am Hafen 22",
+    "city": "21423 Winsen (Luhe)"
+   },
+   "body": [
+    "acht Jahre Rohrleitungsbau für Lebensmittelbetriebe: Ich schweiße Edelstahlrohre mit WIG, auch in Zwangslagen, so, dass die Innenseite glatt bleibt und die Qualitätssicherung nichts zu meckern hat.",
+    "Ich habe gültige Schweißerprüfungen für WIG an Edelstahlrohren und MAG an Stahlblechen. Ich lese Isometrien, schneide und richte Rohre selbst vor und arbeite auf Montage in Molkereien und Brauereien. Meine Prüfnähte bestehen die Durchstrahlungsprüfung regelmäßig ohne Befund.",
+    "Ich möchte weniger auf Montage und mehr in der Werkstatt arbeiten. Ihre Vorfertigung passt dazu."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schweißerprüfungsbescheinigungen",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinstieg nach Schweißkurs",
+   "level": "quereinstieg",
+   "position": "Schweißer MAG (Quereinstieg)",
+   "to": {
+    "org": "Stahlbau Elbmarsch",
+    "sal": "none",
+    "street": "Industriestraße 15",
+    "city": "21423 Winsen (Luhe)"
+   },
+   "body": [
+    "nach zehn Jahren als Lagerist habe ich über die Agentur für Arbeit einen Schweißkurs gemacht und im Sommer die Prüfung für MAG an Blech bestanden. Schweißen ist das Erste in meinem Berufsleben, bei dem ich abends noch daran denke, wie ich die nächste Naht besser hinbekomme.",
+    "Im Kurs habe ich Kehl- und Stumpfnähte in verschiedenen Positionen geschweißt und Grundlagen des Zeichnungslesens gelernt. Aus dem Lager bringe ich Ordnung, Staplerschein und Kranschein mit, was in einer Stahlbauhalle praktisch ist.",
+    "Ich bin bereit, weitere Prüfungen zu machen, und kann sofort anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schweißerprüfungsbescheinigung",
+    "Kursnachweis"
+   ],
+   "from": [
+    "Rico Hartmann",
+    "Lüneburger Straße 30",
+    "21423 Winsen (Luhe)"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 3,
+  "name": "Piotr Nowak",
+  "title": "Schweißer WIG/MAG",
+  "street": "Bahnhofstraße 70",
+  "city": "21423 Winsen (Luhe)",
+  "exp": [
+   [
+    "04/2018",
+    "",
+    "Schweißer Rohrleitungsbau",
+    "Anlagenbau Elbe GmbH",
+    "Hamburg",
+    "- WIG-Schweißen von Edelstahlrohren\n- Montage in Lebensmittelbetrieben\n- Vorfertigung nach Isometrie"
+   ],
+   [
+    "2014",
+    "2018",
+    "Metallbauer",
+    "Metallbau Krause",
+    "Lüneburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2014",
+    "Ausbildung zum Metallbauer",
+    "Metallbau Krause",
+    "Lüneburg",
+    ""
+   ],
+   [
+    "2002",
+    "2011",
+    "Hauptschulabschluss",
+    "Oberschule Winsen",
+    "Winsen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Schweißerprüfung WIG Edelstahlrohr (gültig)",
+    "Schweißtechnische Lehranstalt",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Schweißerprüfung MAG Blech (gültig)",
+    "Schweißtechnische Lehranstalt",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "WIG Edelstahl",
+    5
+   ],
+   [
+    "MAG Stahl",
+    4
+   ],
+   [
+    "Isometrien lesen",
+    4
+   ],
+   [
+    "Montage",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Polnisch",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "C1"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Angeln, Grillbau aus Stahl"
+ },
+ "do": [
+  "Verfahren, Werkstoffe, Positionen nennen.",
+  "Prüfungsnachweise beilegen.",
+  "Montagebereitschaft klar sagen."
+ ],
+ "dont": [
+  "Abgelaufene Prüfungen als gültig angeben.",
+  "Nur „Schweißerfahrung“ schreiben.",
+  "Arbeitssicherheit vernachlässigen."
+ ],
+ "questions": [
+  "Welche Prüfungen haben Sie, und wann laufen sie ab?",
+  "Wie bereiten Sie eine Naht vor?",
+  "Welche Positionen schweißen Sie?",
+  "Wie gehen Sie mit Verzug um?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange sind Schweißerprüfungen gültig?",
+   "a": "Sie müssen regelmäßig bestätigt und nach bestimmten Fristen erneuert werden. Gib im Lebenslauf das Verfahren und den Stand an und leg die Bescheinigungen bei."
+  }
+ ],
+ "related": [
+  "industriemechaniker",
+  "zerspanungsmechaniker",
+  "produktionshelfer",
+  "maschinen-anlagenfuehrer"
+ ]
+}

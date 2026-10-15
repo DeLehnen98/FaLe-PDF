@@ -1,0 +1,202 @@
+{
+ "id": "sozialarbeiter",
+ "field": "soziales",
+ "name": "Sozialarbeiter/in / Sozialpädagoge/-in",
+ "search": "sozialpaedagogin sozialpädagoge soziale arbeit jugendamt jugendhilfe beratungsstelle schulsozialarbeit asd",
+ "short": "Jugendhilfe, Schulsozialarbeit oder Beratung – mit oder ohne Berufserfahrung.",
+ "desc": "Bewerbung als Sozialarbeiter/in oder Sozialpädagoge: Musteranschreiben für Berufseinstieg und Wechsel zum Jugendamt, Lebenslauf und Tipps fürs Auswahlgespräch.",
+ "intro": "In der Sozialen Arbeit wollen Arbeitgeber wissen, mit welchen Zielgruppen du gearbeitet hast, welche Methoden du sicher einsetzt und wie du mit Belastung umgehst. Öffentliche Träger achten außerdem auf formale Anforderungen wie die staatliche Anerkennung und folgen oft einem festen Auswahlverfahren.",
+ "lookFor": [
+  "Abschluss in Sozialer Arbeit oder Sozialpädagogik (Bachelor/Diplom), je nach Bundesland mit staatlicher Anerkennung",
+  "Erfahrung mit der Zielgruppe: Kinder und Familien, Jugendliche, Wohnungslose, Geflüchtete, Sucht",
+  "Methoden: Gesprächsführung, Hilfeplanung, Gruppenarbeit, Fallarbeit nach § 8a SGB VIII",
+  "Belastbarkeit, Abgrenzung und die Bereitschaft zu Supervision",
+  "Sicherer Umgang mit Akten, Berichten und Fristen"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinstieg in der Schulsozialarbeit",
+   "level": "berufseinstieg",
+   "position": "Schulsozialarbeiterin an der Gesamtschule (75 %)",
+   "to": {
+    "org": "Diakonisches Werk Bochum",
+    "sal": "f",
+    "street": "Westring 26",
+    "city": "44787 Bochum",
+    "contact": "Kowalczyk"
+   },
+   "body": [
+    "meine Bachelorarbeit habe ich über Mobbing in Klassenchats geschrieben, nachdem ich im Praxissemester an einer Hauptschule erlebt hatte, wie schnell aus einem Witz in der Gruppe ein Problem für die ganze Klasse wird. Ihre Stelle an der Gesamtschule Wattenscheid ist deshalb genau das, was ich suche.",
+    "Im Praxissemester habe ich Einzelberatungen geführt, einen Klassenrat in zwei siebten Klassen aufgebaut und Elterngespräche mit der Klassenleitung vorbereitet. Ein Schüler, der fast jeden Montag fehlte, kam nach mehreren Gesprächen und einer Absprache mit seiner Mutter wieder regelmäßig. Mehr als der Erfolg hat mich dabei beschäftigt, wie lange es gedauert hat, bis er erzählt hat, was zu Hause los war.",
+    "Die staatliche Anerkennung erhalte ich im Oktober. Ich spreche Polnisch, was an Ihrer Schule mit vielen polnischsprachigen Familien hilfreich sein kann.",
+    "Ich würde mich freuen, wenn ich mich persönlich vorstellen darf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Praxisbericht-Beurteilung"
+   ]
+  },
+  {
+   "label": "Mit Erfahrung, Wechsel in den Allgemeinen Sozialen Dienst",
+   "level": "erfahren",
+   "position": "Sozialarbeiter im Allgemeinen Sozialen Dienst",
+   "to": {
+    "org": "Stadt Dortmund – Jugendamt",
+    "sal": "none",
+    "street": "Ostwall 64",
+    "city": "44122 Dortmund"
+   },
+   "body": [
+    "seit fünf Jahren arbeite ich in der ambulanten Familienhilfe eines freien Trägers. Ich habe Familien in sehr unterschiedlichen Lagen begleitet, oft mit Kinderschutzthemen, und arbeite eng mit dem ASD zusammen. Jetzt möchte ich auf die andere Seite des Schreibtisches wechseln: dorthin, wo Hilfen geplant und verantwortet werden.",
+    "Ich betreue derzeit sieben Familien. Ich schreibe Entwicklungsberichte, nehme an Hilfeplangesprächen teil und habe mehrere Gefährdungseinschätzungen gemeinsam mit der insoweit erfahrenen Fachkraft durchgeführt. Den Umgang mit Spannungen zwischen Hilfe und Kontrolle kenne ich aus erster Hand. Dass Eltern mich in einem Gespräch anschreien und eine Woche später trotzdem anrufen, gehört dazu.",
+    "Im letzten Jahr habe ich die Weiterbildung zur Kinderschutzfachkraft abgeschlossen. Supervision nutze ich regelmäßig. Ich bin bereit, Rufbereitschaften zu übernehmen, und freue mich auf das Auswahlverfahren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Diplom- bzw. Bachelorzeugnis",
+    "Staatliche Anerkennung",
+    "Zertifikat Kinderschutzfachkraft",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Mehmet Aydın",
+    "Rheinische Straße 140",
+    "44147 Dortmund"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "classic",
+  "accent": 0,
+  "name": "Agnieszka Nowak",
+  "title": "Sozialarbeiterin (B.A.)",
+  "street": "Alleestraße 80",
+  "city": "44793 Bochum",
+  "exp": [
+   [
+    "09/2025",
+    "02/2026",
+    "Praxissemester Schulsozialarbeit",
+    "Hauptschule Am Hellweg",
+    "Bochum",
+    "- Einzelberatung von Schülerinnen und Schülern\n- Aufbau eines Klassenrats in zwei Klassen\n- Vorbereitung von Elterngesprächen"
+   ],
+   [
+    "2022",
+    "2025",
+    "Studentische Mitarbeiterin",
+    "Offene Ganztagsschule Bochum-Mitte",
+    "Bochum",
+    "- Hausaufgabenbetreuung und Freizeitangebote"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2022",
+    "09/2026",
+    "Bachelor Soziale Arbeit",
+    "Evangelische Hochschule Rheinland-Westfalen-Lippe",
+    "Bochum",
+    "Bachelorarbeit: Mobbing in Klassenchats – Handlungsansätze der Schulsozialarbeit"
+   ],
+   [
+    "2013",
+    "2022",
+    "Abitur",
+    "Gymnasium am Ostring",
+    "Bochum",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Systemische Gesprächsführung (Einführung)",
+    "Hochschule",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Konfliktschlichtung an Schulen",
+    "Jugendring Bochum",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Beratung und Gesprächsführung",
+    4
+   ],
+   [
+    "Gruppenarbeit / Klassenrat",
+    4
+   ],
+   [
+    "Kinderschutz-Grundlagen",
+    3
+   ],
+   [
+    "Dokumentation",
+    4
+   ],
+   [
+    "MS Office",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Polnisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Theater-AG-Leitung im Jugendzentrum, Laufen"
+ },
+ "do": [
+  "Nenn Zielgruppen, Methoden und rechtliche Grundlagen, mit denen du gearbeitet hast.",
+  "Zeig, wie du mit Belastung umgehst – Supervision, Teamberatung.",
+  "Erwähne Sprachen, die in der Arbeit helfen."
+ ],
+ "dont": [
+  "Fälle so schildern, dass Familien erkennbar sind.",
+  "„Ich möchte Menschen helfen“ ohne Beispiel.",
+  "Formale Unterlagen wie die staatliche Anerkennung vergessen."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn eine Lehrerin Ihnen eine Kindeswohlgefährdung meldet?",
+  "Wie bauen Sie Vertrauen zu Jugendlichen auf, die keine Hilfe wollen?",
+  "Wie grenzen Sie sich nach belastenden Gesprächen ab?",
+  "Wie würden Sie mit einem unzufriedenen Kooperationspartner umgehen?"
+ ],
+ "pay": "Öffentliche und viele freie Träger zahlen nach Tarifen für den Sozial- und Erziehungsdienst. Die Eingruppierung hängt von der Stelle ab – frag danach im Gespräch.",
+ "faq": [
+  {
+   "q": "Brauche ich die staatliche Anerkennung?",
+   "a": "Für viele Stellen, besonders beim Jugendamt, ja. Sie wird je nach Bundesland mit dem Studium oder nach einem Anerkennungsjahr vergeben. Steht sie noch aus, schreib, wann du sie erhältst."
+  },
+  {
+   "q": "Wie läuft ein Auswahlverfahren beim Jugendamt ab?",
+   "a": "Oft gibt es ein strukturiertes Interview mit Fallbeispiel vor einer Kommission, manchmal auch eine schriftliche Fallbearbeitung. Bereite dich auf Fragen zum Kinderschutz und zur Hilfeplanung vor."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "schulbegleiter",
+  "heilerziehungspfleger",
+  "verwaltungsfachangestellte"
+ ]
+}

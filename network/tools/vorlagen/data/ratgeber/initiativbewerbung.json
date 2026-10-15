@@ -1,0 +1,53 @@
+{
+ "id": "initiativbewerbung",
+ "order": 2,
+ "card": "Initiativbewerbung",
+ "short": "Bewerben, ohne dass eine Stelle ausgeschrieben ist.",
+ "title": "Initiativbewerbung schreiben: Aufbau und Beispiele | FaleNetwork",
+ "h1": "Initiativbewerbung – so bewirbst du dich ohne Stellenanzeige",
+ "desc": "Initiativbewerbung schreiben: wann sie sich lohnt, wie du den richtigen Ansprechpartner findest und wie Anschreiben und Lebenslauf aufgebaut sein sollten – mit Beispielen.",
+ "lede": "Viele Stellen werden nie ausgeschrieben, vor allem in kleinen Betrieben. Eine gute Initiativbewerbung zeigt, dass du genau weißt, was du dort tun willst.",
+ "sections": [
+  {
+   "h": "Wann sich eine Initiativbewerbung lohnt",
+   "text": [
+    "Besonders bei Handwerksbetrieben, Arztpraxen, kleinen Agenturen, Kitas und Hotels. Dort wird oft eingestellt, wenn die passende Person auftaucht. Auch große Unternehmen haben manchmal eigene Formulare für Initiativbewerbungen."
+   ]
+  },
+  {
+   "h": "Vorher anrufen",
+   "text": [
+    "Ein kurzer Anruf klärt, wer zuständig ist und ob gerade Bedarf besteht. Danach kannst du das Anschreiben mit „wie mit Ihnen am Telefon besprochen“ beginnen – das hebt dich sofort ab."
+   ]
+  },
+  {
+   "h": "Aufbau des Anschreibens",
+   "steps": [
+    "Einstieg: Warum genau dieses Unternehmen? Ein konkreter Anlass wirkt stärker als Lob.",
+    "Was du anbietest: eine klare Rolle (z. B. „Kundendienst“, „Prophylaxe“) statt „irgendeine Stelle“.",
+    "Belege: zwei Erfahrungen oder Ergebnisse, die zu dieser Rolle passen.",
+    "Schluss: Verfügbarkeit und ein konkretes Angebot, etwa ein Probetag."
+   ]
+  },
+  {
+   "h": "Beispiele aus dem Archiv",
+   "text": [
+    "Diese Berufe haben je ein ausformuliertes Beispiel für eine Initiativbewerbung:"
+   ],
+   "jobs": [
+    "elektriker",
+    "pflegefachkraft"
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Was schreibe ich in den Betreff?",
+   "a": "„Initiativbewerbung als …“ mit der konkreten Rolle. In den Vorlagen-Werkzeugen kannst du die Stelle als „Elektroniker (Initiativbewerbung)“ eintragen."
+  },
+  {
+   "q": "Wie lange sollte ich auf eine Antwort warten?",
+   "a": "Nach etwa zwei Wochen kannst du freundlich nachfragen, am besten telefonisch."
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "id": "verkaeuferin-baeckerei",
+ "field": "handel",
+ "name": "Fachverkäufer/in Bäckerei",
+ "search": "bäckereifachverkäuferin backwaren verkäuferin bäckerei fachverkäuferin lebensmittelhandwerk konditorei café frühschicht",
+ "short": "Frühschicht, Theke, Café – mit Ausbildung oder Quereinstieg.",
+ "desc": "Bewerbung als Fachverkäufer/in in der Bäckerei: zwei Musteranschreiben für Fachkraft und Quereinstieg, Lebenslauf mit Foto-Platzhalter und Tipps für den Probetag.",
+ "intro": "In der Bäckerei beginnt der Tag früh, die Schlange ist am Samstag lang und die Stammkunden wollen ihr Brot, bevor sie es bestellen. Gesucht sind Leute, die Frühschichten mögen, freundlich und schnell bedienen und Hygieneregeln genau einhalten.",
+ "lookFor": [
+  "Ausbildung als Fachverkäufer/in im Lebensmittelhandwerk (Bäckerei) oder Erfahrung im Verkauf",
+  "Frühschicht ab 5 oder 6 Uhr, Wochenenden",
+  "Produktwissen zu Broten, Teigen, Allergenen",
+  "Hygiene und Infektionsschutz-Belehrung",
+  "Kasse und Snack- oder Cafébereich"
+ ],
+ "letters": [
+  {
+   "label": "Fachverkäuferin mit Filialverantwortung",
+   "level": "erfahren",
+   "position": "Fachverkäuferin mit Filialverantwortung",
+   "to": {
+    "org": "Bäckerei Hollerbach",
+    "sal": "m",
+    "street": "Bahnhofstraße 2",
+    "city": "91054 Erlangen",
+    "contact": "Hollerbach"
+   },
+   "body": [
+    "um 5:30 Uhr schließe ich in meiner jetzigen Filiale die Tür auf, schalte die Öfen für die Aufbackware ein und richte die Theke so, dass der erste Handwerker um sechs seine belegten Brötchen hat. Das mache ich seit sechs Jahren, und ich mache es gern.",
+    "Als Filialverantwortliche erstelle ich den Dienstplan für vier Kolleginnen, bestelle die Ware für den nächsten Tag nach Abverkauf und mache die Kassenabrechnung. Dank genauerer Bestellung haben wir die Retouren im letzten Jahr spürbar verringert. Kunden mit Allergien berate ich anhand der Zutatenliste und sage ehrlich, wenn ich mir nicht sicher bin.",
+    "Ihre Bäckerei backt noch mit Natursauerteig, das schmeckt man. Ich würde gern bei Ihnen arbeiten, ab dem 1. Februar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis",
+    "Belehrung nach Infektionsschutzgesetz"
+   ]
+  },
+  {
+   "label": "Quereinstieg in Teilzeit",
+   "level": "quereinstieg",
+   "position": "Verkäuferin in Teilzeit (Frühschicht)",
+   "to": {
+    "org": "Café-Bäckerei Sonnenkorn",
+    "sal": "none",
+    "street": "Nürnberger Straße 30",
+    "city": "91052 Erlangen"
+   },
+   "body": [
+    "früh aufstehen ist für mich keine Strafe: Ich habe zehn Jahre in der Zeitungszustellung gearbeitet, mein Wecker klingelt seit Langem um vier. Jetzt suche ich eine Arbeit mit mehr Menschen und weniger Regen.",
+    "Ich bin zuverlässig, war in zehn Jahren keine Woche krank und kenne viele Leute im Viertel. Kasse und Theke würde ich bei Ihnen lernen; Kopfrechnen kann ich gut. Kuchen backe ich selbst gern und weiß, wie man eine Torte schneidet, ohne dass sie auseinanderfällt.",
+    "Ich kann montags bis samstags von 5:30 bis 11:30 Uhr arbeiten. Einen Probetag mache ich gern."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Gisela Hornung",
+    "Werner-von-Siemens-Straße 8",
+    "91052 Erlangen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "modern",
+  "accent": 4,
+  "name": "Renate Fischer",
+  "title": "Fachverkäuferin im Lebensmittelhandwerk",
+  "street": "Goethestraße 41",
+  "city": "91054 Erlangen",
+  "exp": [
+   [
+    "05/2020",
+    "",
+    "Fachverkäuferin mit Filialverantwortung",
+    "Bäckerei Kornfeld",
+    "Erlangen",
+    "- Filialöffnung um 5:30 Uhr\n- Dienstplan für vier Mitarbeiterinnen\n- Bestellung und Kassenabrechnung"
+   ],
+   [
+    "2008",
+    "2020",
+    "Fachverkäuferin",
+    "Bäckerei Kornfeld",
+    "Erlangen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2005",
+    "2008",
+    "Ausbildung zur Fachverkäuferin im Lebensmittelhandwerk (Bäckerei)",
+    "Bäckerei Kornfeld",
+    "Erlangen",
+    ""
+   ],
+   [
+    "1996",
+    "2005",
+    "Mittelschulabschluss",
+    "Mittelschule Erlangen",
+    "Erlangen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Allergenkennzeichnung",
+    "Bäckerinnung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Verkauf und Beratung",
+    5
+   ],
+   [
+    "Kasse und Abrechnung",
+    5
+   ],
+   [
+    "Warenbestellung",
+    4
+   ],
+   [
+    "Hygiene",
+    5
+   ],
+   [
+    "Dienstplanung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ]
+  ],
+  "hobbies": "Backen, Kirchenchor"
+ },
+ "do": [
+  "Sag klar, dass Frühschichten für dich passen.",
+  "Erwähne Hygiene und Allergenwissen.",
+  "Nenn Verantwortung: Öffnen, Kasse, Bestellung."
+ ],
+ "dont": [
+  "Frühschichten zusagen, die du nicht schaffst.",
+  "Die Infektionsschutz-Belehrung vergessen.",
+  "Lange Anschreiben – kurz und freundlich reicht."
+ ],
+ "questions": [
+  "Wann können Sie morgens anfangen?",
+  "Ein Kunde fragt nach glutenfreien Produkten. Was sagen Sie?",
+  "Wie gehen Sie mit einer langen Schlange am Samstag um?",
+  "Was machen Sie mit übrig gebliebener Ware?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Gesundheitszeugnis?",
+   "a": "Für die Arbeit mit offenen Lebensmitteln brauchst du eine Erstbelehrung nach dem Infektionsschutzgesetz beim Gesundheitsamt oder einer beauftragten Stelle. Viele Bäckereien helfen dir, den Termin zu bekommen."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "kassiererin",
+  "servicekraft",
+  "verkaeuferin-minijob"
+ ]
+}

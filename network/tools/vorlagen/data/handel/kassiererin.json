@@ -1,0 +1,173 @@
+{
+ "id": "kassiererin",
+ "field": "handel",
+ "name": "Kassierer/in",
+ "search": "kassierer kassiererin kasse supermarkt kassenkraft discounter kassenaufsicht",
+ "short": "Kasse im Supermarkt oder Baumarkt – auch in Teilzeit.",
+ "desc": "Bewerbung als Kassierer/in: zwei kurze Muster-Anschreiben für Supermarkt und Baumarkt, Lebenslauf zum Übernehmen und Tipps für das Vorstellungsgespräch.",
+ "intro": "An der Kasse zählen Genauigkeit, Tempo und Freundlichkeit. Arbeitgeber achten darauf, dass Kassenabschlüsse stimmen, du ruhig bleibst, wenn die Schlange lang wird, und Regeln beim Jugendschutz einhältst. Für Kassenstellen reicht oft ein kurzes Anschreiben.",
+ "lookFor": [
+  "Erfahrung an der Kasse oder im Umgang mit Bargeld",
+  "Genauigkeit beim Kassenabschluss",
+  "Freundlichkeit und Tempo",
+  "Jugendschutz und Kontrolle von Ausweisen",
+  "Flexible Arbeitszeiten"
+ ],
+ "letters": [
+  {
+   "label": "Kassiererin mit Erfahrung, Teilzeit",
+   "level": "erfahren",
+   "position": "Kassiererin in Teilzeit (25 Stunden)",
+   "to": {
+    "org": "Frischemarkt Weber KG",
+    "sal": "none",
+    "street": "Hauptstraße 120",
+    "city": "41747 Viersen"
+   },
+   "body": [
+    "fünf Jahre lang war ich an der Kasse eines Discounters, und in dieser Zeit hatte ich keine einzige Kassendifferenz über fünf Euro. Ich bin schnell, aber nicht hektisch, und ich grüße auch den hundertsten Kunden noch freundlich.",
+    "Neben der Kasse habe ich Leergut angenommen, Ware verräumt und abends den Kassenabschluss gemacht. Bei Alkohol und Tabak frage ich konsequent nach dem Ausweis, auch wenn mancher Kunde das lästig findet. Ich wechsle, weil ich in Ihren Markt fünf Minuten zu Fuß habe und meine Kinder morgens in die Schule bringen möchte.",
+    "Ich kann vormittags und an zwei Abenden pro Woche arbeiten. Gern komme ich persönlich vorbei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Wiedereinstieg im Baumarkt",
+   "level": "quereinstieg",
+   "position": "Kassierer im Baumarkt",
+   "to": {
+    "org": "Baumarkt Rheinland GmbH",
+    "sal": "none",
+    "street": "Gewerbegebiet Nord 2",
+    "city": "41749 Viersen"
+   },
+   "body": [
+    "nach vielen Jahren als Lagerarbeiter suche ich eine Arbeit, die meinen Rücken schont, mich aber nicht an einen Schreibtisch fesselt. Die Kasse in einem Baumarkt passt dazu, zumal ich die Hälfte Ihres Sortiments aus dem eigenen Keller kenne.",
+    "Mit Lieferscheinen, Rechnungen und Scannern habe ich im Lager täglich gearbeitet. Ich zähle genau und weiß, wie wichtig es ist, dass am Ende des Tages alles stimmt. Wenn ein Kunde an der Kasse fragt, welcher Dübel für Porenbeton taugt, kann ich ihm meistens helfen.",
+    "Ich bin flexibel und kann auch samstags arbeiten. Einen Probetag mache ich gern."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Ralf Beckers",
+    "Gladbacher Straße 15",
+    "41747 Viersen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "compact",
+  "accent": 0,
+  "name": "Olga Schneider",
+  "title": "Kassiererin",
+  "street": "Lindenstraße 8",
+  "city": "41747 Viersen",
+  "exp": [
+   [
+    "03/2021",
+    "",
+    "Kassiererin und Verkäuferin",
+    "Discountmarkt Rheinland",
+    "Mönchengladbach",
+    "- Kasse und Kassenabschluss\n- Leergut, Warenverräumung\n- Jugendschutzkontrolle"
+   ],
+   [
+    "2016",
+    "2021",
+    "Familienzeit",
+    "",
+    "",
+    ""
+   ],
+   [
+    "2005",
+    "2016",
+    "Verkäuferin",
+    "Kaufhaus Viersen",
+    "Viersen",
+    "- Kasse, Damenoberbekleidung"
+   ]
+  ],
+  "edu": [
+   [
+    "2002",
+    "2005",
+    "Ausbildung zur Verkäuferin",
+    "Kaufhaus Viersen",
+    "Viersen",
+    ""
+   ],
+   [
+    "1993",
+    "2002",
+    "Hauptschulabschluss",
+    "Hauptschule Viersen",
+    "Viersen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kasse und Kassenabschluss",
+    5
+   ],
+   [
+    "Kundenfreundlichkeit",
+    5
+   ],
+   [
+    "Warenverräumung",
+    4
+   ],
+   [
+    "Jugendschutz",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Russisch",
+    "native"
+   ]
+  ],
+  "hobbies": "Gartenarbeit, Spaziergänge mit dem Hund"
+ },
+ "do": [
+  "Nenn Erfahrung mit Kassenabschluss und Bargeld.",
+  "Sag, wann du arbeiten kannst.",
+  "Halte das Anschreiben kurz."
+ ],
+ "dont": [
+  "Familienzeit verschweigen – ein Satz im Lebenslauf reicht.",
+  "Lange Erklärungen zu früheren Problemen.",
+  "Unklar bleiben bei Samstagen."
+ ],
+ "questions": [
+  "Was tun Sie, wenn Ihre Kasse am Abend nicht stimmt?",
+  "Ein Jugendlicher will Bier kaufen und hat keinen Ausweis. Was sagen Sie?",
+  "Wie bleiben Sie bei langen Schlangen freundlich?",
+  "Welche Schichten passen Ihnen?"
+ ],
+ "faq": [
+  {
+   "q": "Reicht für eine Kassenstelle ein kurzes Anschreiben?",
+   "a": "Ja. Drei kurze Absätze genügen: wer du bist, was du an der Kasse kannst, wann du arbeiten kannst. Viele Märkte stellen nach einem kurzen Gespräch und einem Probetag ein."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "verkaeuferin-minijob",
+  "kaufmann-im-einzelhandel",
+  "lagerist"
+ ]
+}

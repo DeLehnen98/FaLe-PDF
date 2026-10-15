@@ -1,0 +1,153 @@
+{
+ "id": "verkaeuferin-minijob",
+ "field": "minijob",
+ "popular": true,
+ "name": "Verkäufer/in im Minijob",
+ "search": "verkäuferin minijob aushilfe verkauf minijob supermarkt 556 euro job nebenjob verkäufer aushilfe samstags",
+ "short": "Aushilfe im Verkauf – neben Schule, Studium oder Familie.",
+ "desc": "Bewerbung als Verkäufer/in auf Minijob-Basis: zwei kurze Musteranschreiben für Schülerin und Rentner, Lebenslauf mit Foto-Platzhalter und Tipps für den Probetag.",
+ "intro": "Für Minijobs im Verkauf zählen Verlässlichkeit, Freundlichkeit und klare Angaben, wann du arbeiten kannst. Händler suchen oft Aushilfen für Samstage, Abende oder die Weihnachtszeit.",
+ "lookFor": [
+  "Klare Verfügbarkeit (Tage und Uhrzeiten)",
+  "Freundlichkeit und Zuverlässigkeit",
+  "Erste Kassenerfahrung von Vorteil",
+  "Bereitschaft für Samstage",
+  "Kurzes, freundliches Anschreiben"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin, Samstagsjob",
+   "level": "minijob",
+   "position": "Aushilfe im Verkauf (Minijob, samstags)",
+   "to": {
+    "org": "Buchhandlung Lesezeichen",
+    "sal": "none",
+    "street": "Hauptstraße 30",
+    "city": "76829 Landau in der Pfalz"
+   },
+   "body": [
+    "ich bin 18, gehe in die zwölfte Klasse und lese mehr Bücher, als mein Taschengeld hergibt. Ein Samstagsjob in Ihrer Buchhandlung wäre deshalb ideal.",
+    "Ich kann jeden Samstag von 9 bis 16 Uhr arbeiten. Erfahrung habe ich vom Kuchenverkauf bei unserem Schulfest, wo ich die Kasse gemacht habe. Fantasy und Jugendbücher kenne ich gut und kann sie gern empfehlen.",
+    "Über einen Probetag würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf"
+   ]
+  },
+  {
+   "label": "Rentner als Aushilfe im Baumarkt",
+   "level": "minijob",
+   "position": "Aushilfe in der Gartenabteilung (Minijob)",
+   "to": {
+    "org": "Baumarkt Südpfalz GmbH",
+    "sal": "none",
+    "street": "Industriestraße 4",
+    "city": "76829 Landau in der Pfalz"
+   },
+   "body": [
+    "seit einem halben Jahr bin ich in Rente und merke, dass mir der Kontakt zu Menschen fehlt. In Ihrer Gartenabteilung würde ich gern als Aushilfe arbeiten.",
+    "Ich war 40 Jahre Landschaftsgärtner und kenne mich mit Pflanzen, Erde und Werkzeug aus. Wenn jemand fragt, warum sein Rhododendron gelb wird, habe ich meistens eine Antwort. Ich bin körperlich fit und kann dienstags, donnerstags und samstags arbeiten.",
+    "Ich freue mich auf Ihre Antwort."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Gerhard Schäfer",
+    "Weinstraße 12",
+    "76829 Landau in der Pfalz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 4,
+  "name": "Johanna Reuter",
+  "title": "Schülerin, Klasse 12",
+  "street": "Marktstraße 50",
+  "city": "76829 Landau in der Pfalz",
+  "exp": [
+   [
+    "2025",
+    "2025",
+    "Kasse beim Schulfest",
+    "Max-Slevogt-Gymnasium",
+    "Landau",
+    "- Kuchenverkauf und Kassenabrechnung"
+   ]
+  ],
+  "edu": [
+   [
+    "2019",
+    "",
+    "Gymnasium, zurzeit Klasse 12",
+    "Max-Slevogt-Gymnasium",
+    "Landau",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenkontakt",
+    3
+   ],
+   [
+    "Buchkenntnis (Jugendbuch, Fantasy)",
+    5
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Lesen, Schreib-AG"
+ },
+ "do": [
+  "Verfügbarkeit klar angeben.",
+  "Kurze Sätze.",
+  "Unter 18: Einverständnis der Eltern bereithalten."
+ ],
+ "dont": [
+  "Unklare Zeiten.",
+  "Zu lange Texte.",
+  "Den Minijob als Notlösung darstellen."
+ ],
+ "questions": [
+  "Wann können Sie arbeiten?",
+  "Haben Sie schon an der Kasse gearbeitet?",
+  "Was machen Sie, wenn ein Kunde etwas sucht, das Sie nicht kennen?",
+  "Wie lange möchten Sie bleiben?"
+ ],
+ "pay": "Für Minijobs gilt der gesetzliche Mindestlohn und eine monatliche Verdienstgrenze, die regelmäßig angepasst wird. Prüf den aktuellen Wert bei der Minijob-Zentrale.",
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  },
+  {
+   "q": "Darf ich als Schülerin oder Schüler unter 18 jobben?",
+   "a": "Ja, aber mit Grenzen: Wer noch zur Schule geht, darf ab 13 mit Einverständnis der Eltern leichte Arbeiten übernehmen – mit festen Höchststunden und Uhrzeiten nach dem Jugendarbeitsschutzgesetz. In den Ferien gelten erweiterte Regeln. Frag den Arbeitgeber, wie er das handhabt."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "kassiererin",
+  "kuechenhilfe",
+  "zeitungszusteller"
+ ]
+}

@@ -1,0 +1,168 @@
+{
+ "id": "rechtsanwaltsfachangestellte",
+ "field": "finanzen",
+ "name": "Rechtsanwaltsfachangestellte/r",
+ "search": "rechtsanwaltsfachangestellter rechtsanwaltsfachangestellte rena reno kanzlei anwaltskanzlei notarfachangestellte sekretariat",
+ "short": "Kanzlei: Akten, Fristen, Mandanten – nach der Ausbildung oder erfahren.",
+ "desc": "Bewerbung als Rechtsanwaltsfachangestellte/r: Musteranschreiben für Berufsstart und erfahrene Fachangestellte mit Abrechnung, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Kanzleien suchen ReFas, die Fristen sicher im Griff haben, Schriftsätze sauber vorbereiten, mit Mandanten freundlich umgehen und Gebühren abrechnen. Rechtsgebiete, Kanzleisoftware und elektronischer Rechtsverkehr gehören ins Anschreiben.",
+ "lookFor": [
+  "Ausbildung als Rechtsanwaltsfachangestellte/r",
+  "Fristenkontrolle und Aktenführung",
+  "Gebührenabrechnung nach RVG, Mahn- und Vollstreckungswesen",
+  "Elektronischer Rechtsverkehr und Kanzleisoftware",
+  "Diskretion und Mandantenkontakt"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Rechtsanwaltsfachangestellte",
+   "to": {
+    "org": "Kanzlei Dr. Lorenz & Kollegen",
+    "sal": "none",
+    "street": "Königsallee 50",
+    "city": "40212 Düsseldorf"
+   },
+   "body": [
+    "meine Ausbildung habe ich in einer Kanzlei für Familien- und Erbrecht gemacht. Dort habe ich gelernt, dass Mandanten in schwierigen Lebenslagen zuerst eine freundliche Stimme am Telefon brauchen und dann eine Kanzlei, die keine Frist versäumt.",
+    "Ich habe den Fristenkalender geführt, Schriftsätze nach Diktat geschrieben, den elektronischen Rechtsverkehr betreut und Kostennoten nach RVG erstellt. Im letzten Halbjahr habe ich außerdem gerichtliche Mahnverfahren selbstständig eingeleitet. Meine Abschlussnote: 2,0.",
+    "Ihre Kanzlei mit Schwerpunkt Arbeitsrecht wäre für mich ein neues Rechtsgebiet, auf das ich mich freue."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene ReFa, Bürovorsteherin-Aufgaben",
+   "level": "erfahren",
+   "position": "Rechtsanwaltsfachangestellte mit Büroleitung",
+   "to": {
+    "org": "Hoffmann Rechtsanwälte PartG mbB",
+    "sal": "f",
+    "street": "Kaiserswerther Straße 100",
+    "city": "40476 Düsseldorf",
+    "contact": "Hoffmann"
+   },
+   "body": [
+    "in einer Kanzlei mit sechs Anwälten koordiniere ich seit vier Jahren das Sekretariat, die Abrechnung und die Ausbildung unserer Azubis. Fristversäumnisse hatten wir in dieser Zeit keine, und darauf bin ich stolz.",
+    "Ich erstelle Kostenrechnungen, betreue die Zwangsvollstreckung, organisiere die Kanzleisoftware und schule neue Kolleginnen. Bei der Umstellung auf die vollständig digitale Akte war ich für die Abläufe zuständig. Die Fortbildung zur geprüften Rechtsfachwirtin habe ich abgeschlossen.",
+    "Ich möchte mich gern in einer größeren Kanzlei mit eigener Büroleitung weiterentwickeln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Rechtsfachwirtin",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Simone Krüger",
+    "Nordstraße 20",
+    "40477 Düsseldorf"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "classic",
+  "accent": 5,
+  "name": "Yasemin Öztürk",
+  "title": "Rechtsanwaltsfachangestellte",
+  "street": "Bilker Allee 40",
+  "city": "40219 Düsseldorf",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Rechtsanwaltsfachangestellte",
+    "Kanzlei Behrens Familienrecht",
+    "Düsseldorf",
+    "- Fristenkalender und Aktenführung\n- Schriftsätze nach Diktat, elektronischer Rechtsverkehr\n- Kostennoten nach RVG, gerichtliche Mahnverfahren"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung Rechtsanwaltsfachangestellte, Note 2,0",
+    "Berufskolleg",
+    "Düsseldorf",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Berufskolleg Wirtschaft",
+    "Düsseldorf",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fristenkontrolle",
+    5
+   ],
+   [
+    "RVG-Abrechnung",
+    4
+   ],
+   [
+    "Elektronischer Rechtsverkehr",
+    4
+   ],
+   [
+    "Mahnverfahren",
+    4
+   ],
+   [
+    "Schreiben nach Diktat",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Tanzen, Ehrenamt in der Hausaufgabenhilfe"
+ },
+ "do": [
+  "Rechtsgebiete und Aufgaben nennen.",
+  "Fristenkontrolle betonen.",
+  "Fortbildungen angeben."
+ ],
+ "dont": [
+  "Mandatsdetails.",
+  "Fehler in Rechtschreibung und Zeichensetzung.",
+  "Kanzleisoftware übertreiben."
+ ],
+ "questions": [
+  "Wie notieren Sie eine Frist?",
+  "Ein Mandant will am Telefon Rechtsrat. Was sagen Sie?",
+  "Wie erstellen Sie eine Kostennote?",
+  "Welche Rechtsgebiete kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "ReFa, ReNo, Notarfachangestellte – was ist der Unterschied?",
+   "a": "Rechtsanwaltsfachangestellte arbeiten in Anwaltskanzleien; ReNos haben zusätzlich die Notarausbildung. Notarfachangestellte arbeiten nur im Notariat. Nenn deine genaue Ausbildung."
+  }
+ ],
+ "related": [
+  "justizfachangestellte",
+  "steuerfachangestellte",
+  "assistenz-geschaeftsfuehrung",
+  "immobilienkaufmann"
+ ]
+}

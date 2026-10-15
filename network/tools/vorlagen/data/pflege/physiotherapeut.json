@@ -1,0 +1,193 @@
+{
+ "id": "physiotherapeut",
+ "field": "pflege",
+ "name": "Physiotherapeut/in",
+ "search": "physiotherapeutin krankengymnast physio praxis reha manuelle therapie lymphdrainage bobath",
+ "short": "Praxis, Klinik oder Reha – als Berufsanfänger oder mit Zertifikaten.",
+ "desc": "Bewerbung als Physiotherapeut/in: Anschreiben-Muster für Berufsstart und Wechsel mit Zertifikaten, fertiger Lebenslauf und Fragen fürs Vorstellungsgespräch.",
+ "intro": "Praxen und Kliniken suchen Physiotherapeutinnen und -therapeuten, die selbstständig behandeln, sauber dokumentieren und Patienten zum Mitmachen bewegen. Ein großer Teil der Entscheidung hängt an den Zertifikatsweiterbildungen, weil sie bestimmen, welche Heilmittel abgerechnet werden dürfen. Sag deshalb klar, was du hast und was gerade läuft.",
+ "lookFor": [
+  "Staatliche Anerkennung als Physiotherapeut/in (Berufsfachschule oder Studium)",
+  "Zertifikate wie Manuelle Therapie, Manuelle Lymphdrainage oder KG-ZNS – sie sind abrechnungsrelevant",
+  "Erfahrung mit dem Patientenspektrum der Einrichtung: Orthopädie, Neurologie, Geriatrie, Sport",
+  "Saubere Befundung und Dokumentation, Verständnis für Heilmittelverordnungen",
+  "Bereitschaft zu Hausbesuchen oder Abendterminen, wenn die Praxis sie anbietet"
+ ],
+ "letters": [
+  {
+   "label": "Berufsstart nach dem Examen",
+   "level": "berufseinstieg",
+   "position": "Physiotherapeutin in Vollzeit",
+   "to": {
+    "org": "Physiotherapie im Hafenviertel",
+    "sal": "n",
+    "street": "Am Kaiserhafen 6",
+    "city": "27568 Bremerhaven",
+    "contact": "Jannik Ohlsen"
+   },
+   "body": [
+    "im September bekomme ich meine Urkunde als Physiotherapeutin. Mein letzter Praxiseinsatz war in einer orthopädischen Reha, und dort habe ich gemerkt, dass mich vor allem die Arbeit nach Knie- und Schulter-OPs reizt. Ihre Praxis hat genau diesen Schwerpunkt.",
+    "Ich befunde selbstständig, plane die Behandlung und erkläre Patienten ihre Übungen so, dass sie sie zu Hause wirklich machen. Bei einem Patienten nach Kreuzbandplastik habe ich mit einem Wochenplan und Fotos seiner eigenen Übungen gearbeitet; er hat mir am Ende erzählt, dass das Blatt neben seiner Kaffeemaschine hängt. Die Gerätetrainingseinheiten in der Reha haben mir gezeigt, wie viel ein gut erklärtes Training bringt.",
+    "Mit der Weiterbildung Manuelle Therapie möchte ich im nächsten Jahr beginnen. Wenn Sie Fortbildungen unterstützen, ist das für mich ein wichtiges Argument. Abendtermine bis 20 Uhr sind für mich kein Problem.",
+    "Ich freue mich über eine Einladung zum Probearbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examenszeugnis",
+    "Praktikumsbeurteilungen"
+   ]
+  },
+  {
+   "label": "Mit Zertifikaten, Wechsel in die neurologische Klinik",
+   "level": "erfahren",
+   "position": "Physiotherapeut für die neurologische Frührehabilitation",
+   "to": {
+    "org": "Fachklinik Am Deich GmbH",
+    "sal": "f",
+    "street": "Deichstraße 30",
+    "city": "26954 Nordenham",
+    "contact": "Ehlers"
+   },
+   "body": [
+    "seit sechs Jahren behandle ich in einer Praxis in Oldenburg, seit drei Jahren mit dem Zertifikat KG-ZNS nach Bobath. Die Hausbesuche bei Schlaganfallpatienten sind mir mit der Zeit am wichtigsten geworden, und ich möchte jetzt dort arbeiten, wo die Reha beginnt: in der Frühphase.",
+    "Zu meinen Patienten gehören Menschen nach Schlaganfall, mit Multipler Sklerose und mit Parkinson. Ich arbeite viel mit Angehörigen, damit Transfers und Lagerung auch zu Hause sicher klappen. Seit dem letzten Jahr bin ich außerdem für Manuelle Lymphdrainage zertifiziert. In der Praxis betreue ich zwei Praktikanten der Berufsfachschule und bin Ansprechpartner für das Hilfsmittelmanagement.",
+    "Interdisziplinäres Arbeiten mit Pflege, Ergotherapie und Logopädie kenne ich bisher nur in kleinem Rahmen aus Fallbesprechungen. Genau das reizt mich an Ihrer Klinik. Ich könnte zum 1. April anfangen und würde gern in Vollzeit arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Urkunde Physiotherapie",
+    "Zertifikate KG-ZNS und MLD",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Malte Brinkmann",
+    "Bismarckstraße 22",
+    "26122 Oldenburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "modern",
+  "accent": 1,
+  "name": "Hannah Petersen",
+  "title": "Physiotherapeutin",
+  "street": "Hafenstraße 41",
+  "city": "27568 Bremerhaven",
+  "exp": [
+   [
+    "03/2026",
+    "05/2026",
+    "Praxiseinsatz Orthopädische Rehabilitation",
+    "Reha-Zentrum Weserblick",
+    "Bremerhaven",
+    "- Befund und Behandlung nach Knie-, Hüft- und Schulter-OP\n- Gerätegestützte Krankengymnastik in Gruppen"
+   ],
+   [
+    "2023",
+    "2026",
+    "Weitere Praxiseinsätze",
+    "Klinikum Bremerhaven, Praxis Thiele",
+    "Bremerhaven",
+    "- Chirurgie, Innere, Neurologie, Pädiatrie"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2023",
+    "09/2026",
+    "Ausbildung zur Physiotherapeutin (staatliche Prüfung)",
+    "Berufsfachschule für Physiotherapie",
+    "Bremerhaven",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Lessing-Gymnasium",
+    "Bremerhaven",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Kinesio-Taping Grundkurs",
+    "Fortbildungszentrum Nord",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Befundung und Behandlungsplanung",
+    4
+   ],
+   [
+    "Krankengymnastik am Gerät",
+    4
+   ],
+   [
+    "Orthopädie / Chirurgie",
+    4
+   ],
+   [
+    "Taping",
+    3
+   ],
+   [
+    "Dokumentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Dänisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Rudern, Trainerin einer Kinder-Leichtathletikgruppe"
+ },
+ "do": [
+  "Liste deine Zertifikate mit Jahr und Stundenumfang auf.",
+  "Nenn Patientengruppen und Behandlungsansätze, mit denen du sicher arbeitest.",
+  "Sag, ob Hausbesuche und Abendtermine möglich sind."
+ ],
+ "dont": [
+  "Zertifikate angeben, die noch nicht abgeschlossen sind, ohne das zu kennzeichnen.",
+  "Nur Techniken aufzählen, ohne ein Beispiel aus der Behandlung.",
+  "Das Thema Fortbildung erst im Gespräch ansprechen, wenn es dir wichtig ist."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein Patient seine Übungen zu Hause nicht macht?",
+  "Wie sieht Ihr Befund bei Schulterschmerzen aus?",
+  "Welche Fortbildung möchten Sie als Nächstes machen?",
+  "Wie viele Patienten pro Tag halten Sie für realistisch?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Zertifikate sind besonders gefragt?",
+   "a": "In Praxen vor allem Manuelle Therapie, Manuelle Lymphdrainage und die neurologischen Konzepte (KG-ZNS). Sie erlauben die Abrechnung bestimmter Heilmittel und erhöhen damit deinen Wert für die Praxis."
+  },
+  {
+   "q": "Bewerbe ich mich mit Studium anders als mit Ausbildung?",
+   "a": "Im Kern nicht. Nenn den Abschluss und die staatliche Anerkennung, und erwähne Themen aus dem Studium, die zur Stelle passen – etwa evidenzbasierte Behandlung oder eine Abschlussarbeit mit Praxisbezug."
+  }
+ ],
+ "related": [
+  "medizinische-fachangestellte",
+  "pflegefachkraft",
+  "notfallsanitaeter",
+  "heilerziehungspfleger"
+ ]
+}

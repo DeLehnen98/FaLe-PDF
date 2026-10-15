@@ -1,0 +1,184 @@
+{
+ "id": "friseurin",
+ "field": "handwerk",
+ "name": "Friseur/in",
+ "search": "friseur friseurin salon haare stylist coloration barbier barber friseurgesellin",
+ "short": "Salon, Barbershop oder Wiedereinstieg – mit Gesellenbrief.",
+ "desc": "Bewerbung als Friseur/in: Musteranschreiben für Gesellen mit Coloration-Schwerpunkt und Wiedereinstieg, Lebenslauf mit Platzhalterporträt und Tipps zum Probearbeiten.",
+ "intro": "Salons suchen Friseurinnen und Friseure, die Kundinnen beraten, sauber schneiden und färben und gut mit Stammkunden umgehen. Ein Probearbeiten mit Modell ist üblich. Fotos deiner Arbeiten auf einer Seite helfen – lass dir dafür das Einverständnis der Kunden geben.",
+ "lookFor": [
+  "Gesellenbrief als Friseur/in",
+  "Schwerpunkte: Coloration, Balayage, Herrenschnitte, Hochsteckfrisuren",
+  "Beratung und Verkauf von Pflegeprodukten",
+  "Freundlicher Umgang, auch bei Reklamationen",
+  "Bereitschaft zu Samstagsarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Gesellin mit Coloration-Schwerpunkt",
+   "level": "erfahren",
+   "position": "Friseurin mit Schwerpunkt Farbe",
+   "to": {
+    "org": "Salon Haarwerk",
+    "sal": "n",
+    "street": "Breite Straße 15",
+    "city": "23552 Lübeck",
+    "contact": "Nora Ahrens"
+   },
+   "body": [
+    "seit vier Jahren bin ich Friseurin, und seit zwei Jahren kommen in meinem Salon die meisten Kundinnen wegen Farbe zu mir. Balayage und Farbkorrekturen nach misslungenen Versuchen zu Hause mache ich am liebsten.",
+    "Ich habe zwei Colorationsseminare bei Herstellern besucht und arbeite mit Strähnen-, Folien- und Freihandtechniken. Wichtig ist mir die Beratung vorher: Was ist realistisch, was hält die Haarstruktur aus, wie viele Termine braucht es? Eine Kundin wollte in einem Termin von Schwarz zu Platinblond. Wir haben es in drei Terminen gemacht, und sie kommt bis heute.",
+    "Ihr Salon arbeitet mit pflanzlichen Farben, damit möchte ich mich gern intensiver beschäftigen. Ich bin samstags flexibel und kann im März beginnen. Zum Probearbeiten bringe ich gern ein Modell mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Fotos von Arbeiten",
+    "Seminarnachweise"
+   ]
+  },
+  {
+   "label": "Wiedereinstieg nach der Familienzeit",
+   "level": "erfahren",
+   "position": "Friseurin in Teilzeit",
+   "to": {
+    "org": "Friseur am Rathaus",
+    "sal": "none",
+    "street": "Rathausplatz 3",
+    "city": "23843 Bad Oldesloe"
+   },
+   "body": [
+    "nach sieben Jahren Familienpause möchte ich wieder im Salon arbeiten. Geschnitten habe ich in dieser Zeit trotzdem: die Haare meiner drei Kinder, ihrer Freunde und von halb unserem Dorf.",
+    "Vor der Pause war ich zehn Jahre in einem Salon in Hamburg, zuletzt mit eigener Stammkundschaft. Damenschnitte und Dauerwellen, die bei älteren Kundinnen wieder gefragt sind, beherrsche ich sicher. Damit ich bei Trends und Farben auf dem aktuellen Stand bin, habe ich im Herbst einen Auffrischungskurs bei der Innung gemacht.",
+    "Ich kann dienstags bis freitags von 8:30 bis 14:00 Uhr arbeiten und jeden zweiten Samstag. Über ein Kennenlernen würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis",
+    "Kursbescheinigung"
+   ],
+   "from": [
+    "Susanne Peters",
+    "Dorfstraße 22",
+    "23845 Grabau"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 2,
+  "name": "Jasmin Koch",
+  "title": "Friseurin",
+  "street": "Fleischhauerstraße 40",
+  "city": "23552 Lübeck",
+  "exp": [
+   [
+    "08/2022",
+    "",
+    "Friseurin",
+    "Salon Schnittpunkt",
+    "Lübeck",
+    "- Damen- und Herrenschnitte\n- Coloration, Balayage, Farbkorrekturen\n- Beratung und Produktverkauf"
+   ],
+   [
+    "08/2019",
+    "07/2022",
+    "Ausbildung zur Friseurin",
+    "Salon Schnittpunkt",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2019",
+    "Mittlerer Schulabschluss",
+    "Gemeinschaftsschule St. Jürgen",
+    "Lübeck",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Seminar Balayage",
+    "Herstellerakademie",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Farbkorrektur",
+    "Friseurinnung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Coloration und Balayage",
+    5
+   ],
+   [
+    "Damenschnitte",
+    4
+   ],
+   [
+    "Herrenschnitte",
+    3
+   ],
+   [
+    "Hochsteckfrisuren",
+    3
+   ],
+   [
+    "Kundenberatung",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fotografie, Yoga"
+ },
+ "do": [
+  "Nenn deinen Schwerpunkt und Seminare.",
+  "Leg eine Fotoseite bei – mit Einverständnis der Kundinnen.",
+  "Sag, an welchen Tagen und Samstagen du arbeitest."
+ ],
+ "dont": [
+  "Nur Trends aufzählen.",
+  "Stammkunden „mitnehmen“ wollen – das kommt beim neuen Salon nicht gut an.",
+  "Ungeprüfte Fotos von Fremden verwenden."
+ ],
+ "questions": [
+  "Eine Kundin ist mit der Farbe unzufrieden. Was tun Sie?",
+  "Welche Produkte empfehlen Sie für feines Haar?",
+  "Wie viele Kunden schaffen Sie an einem Tag?",
+  "Wie bilden Sie sich weiter?"
+ ],
+ "faq": [
+  {
+   "q": "Wie läuft ein Probearbeiten im Salon ab?",
+   "a": "Meist bringst du ein Modell mit und zeigst einen Schnitt, oft auch eine Farbe oder ein Styling. Die Inhaberin achtet auf Beratung, Technik, Sauberkeit und Tempo."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "rezeptionist",
+  "verkaeuferin-minijob",
+  "kauffrau-bueromanagement"
+ ]
+}

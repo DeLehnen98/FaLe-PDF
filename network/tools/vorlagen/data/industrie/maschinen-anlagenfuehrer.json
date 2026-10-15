@@ -1,0 +1,169 @@
+{
+ "id": "maschinen-anlagenfuehrer",
+ "field": "industrie",
+ "name": "Maschinen- und Anlagenführer/in",
+ "search": "maschinenführer anlagenführer maschinenbediener anlagenfahrer produktion linienführer",
+ "short": "Anlagen rüsten, überwachen und am Laufen halten.",
+ "desc": "Bewerbung als Maschinen- und Anlagenführer/in: Musteranschreiben für erfahrene Anlagenführer und den Aufstieg vom Helfer, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Anlagenführer rüsten Maschinen, überwachen die Produktion, beheben kleinere Störungen und prüfen die Qualität. Betriebe achten auf Erfahrung mit ähnlichen Anlagen, technisches Verständnis und Schichtbereitschaft.",
+ "lookFor": [
+  "Ausbildung als Maschinen- und Anlagenführer/in oder Erfahrung an Produktionsanlagen",
+  "Rüsten und Einstellen",
+  "Störungen erkennen und beheben",
+  "Qualitätsprüfung und Dokumentation",
+  "Schichtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Anlagenführer in der Kunststoffverarbeitung",
+   "level": "erfahren",
+   "position": "Anlagenführer Extrusion",
+   "to": {
+    "org": "Rohrwerk Westerwald GmbH",
+    "sal": "none",
+    "street": "Industriegebiet 7",
+    "city": "56457 Westerburg"
+   },
+   "body": [
+    "sechs Jahre an Spritzgussmaschinen haben mich gelehrt, dass eine Anlage spricht, wenn man zuhört. Ein anderes Geräusch beim Auswerfen, eine Schliere im Teil: Ich merke es meist, bevor der Ausschuss steigt.",
+    "Ich rüste Werkzeuge um, stelle Prozessparameter ein, prüfe Teile nach Prüfplan und dokumentiere die Schichtdaten. Kleinere Störungen behebe ich selbst, bei größeren arbeite ich mit der Instandhaltung zusammen. Die Ausschussquote an meiner Maschine lag zuletzt unter dem Hallendurchschnitt.",
+    "Extrusion wäre für mich neu, das Prinzip ist mir aber vertraut. Ich arbeite im Drei-Schicht-System."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Vom Helfer zur Anlagenführerin",
+   "level": "quereinstieg",
+   "position": "Anlagenführerin Verpackung",
+   "to": {
+    "org": "Getränkeabfüllung Sauerland GmbH",
+    "sal": "none",
+    "street": "Brunnenweg 3",
+    "city": "59872 Meschede"
+   },
+   "body": [
+    "drei Jahre Abfüllanlage als Produktionshelferin, und mit jedem Monat habe ich meinem Anlagenführer öfter über die Schulter geschaut. Inzwischen rüste ich Formatteile unter Aufsicht selbst um. Den nächsten Schritt möchte ich jetzt gehen.",
+    "Ich kenne Etikettierer, Packer und Palettierer, überwache die Linie, wechsle Material und kontrolliere die Qualität. Im Frühjahr habe ich eine Teilqualifizierung als Maschinen- und Anlagenführerin begonnen, die ich berufsbegleitend fortsetzen möchte.",
+    "Schichtdienst kenne ich und kann ihn weiter leisten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Nachweis Teilqualifizierung"
+   ],
+   "from": [
+    "Sandra Hellwig",
+    "Ruhrstraße 9",
+    "59872 Meschede"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "compact",
+  "accent": 5,
+  "name": "Dennis Pohl",
+  "title": "Maschinen- und Anlagenführer",
+  "street": "Hauptstraße 50",
+  "city": "56457 Westerburg",
+  "exp": [
+   [
+    "08/2020",
+    "",
+    "Maschinenführer Spritzguss",
+    "Kunststofftechnik Westerwald",
+    "Hachenburg",
+    "- Rüsten von Werkzeugen, Prozessparameter\n- Qualitätsprüfung nach Prüfplan\n- Schichtdokumentation"
+   ],
+   [
+    "08/2018",
+    "07/2020",
+    "Ausbildung Maschinen- und Anlagenführer",
+    "Kunststofftechnik Westerwald",
+    "Hachenburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2009",
+    "2018",
+    "Berufsreife",
+    "Realschule plus Westerburg",
+    "Westerburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "Staplerschein",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Rüsten",
+    5
+   ],
+   [
+    "Prozessüberwachung",
+    4
+   ],
+   [
+    "Qualitätsprüfung",
+    4
+   ],
+   [
+    "Störungsbehebung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Motocross, Feuerwehr"
+ },
+ "do": [
+  "Anlagentyp und Aufgaben nennen.",
+  "Qualitäts- oder Ausschusszahlen.",
+  "Weiterbildung zeigen."
+ ],
+ "dont": [
+  "Nur „Maschinen bedienen“.",
+  "Sicherheitsvorschriften kleinreden.",
+  "Schicht unklar lassen."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einem Werkzeugwechsel vor?",
+  "Was tun Sie bei steigendem Ausschuss?",
+  "Welche Anlagen kennen Sie?",
+  "Wie dokumentieren Sie Ihre Schicht?"
+ ],
+ "faq": [
+  {
+   "q": "Was ist eine Teilqualifizierung?",
+   "a": "Ein Weg für Erwachsene ohne Berufsabschluss, einen Beruf in Modulen zu lernen und am Ende die Externenprüfung zu machen. Angebote gibt es über die Agentur für Arbeit und Bildungsträger."
+  }
+ ],
+ "related": [
+  "produktionshelfer",
+  "industriemechaniker",
+  "mechatroniker",
+  "zerspanungsmechaniker"
+ ]
+}

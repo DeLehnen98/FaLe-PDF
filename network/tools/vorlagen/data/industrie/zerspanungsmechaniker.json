@@ -1,0 +1,172 @@
+{
+ "id": "zerspanungsmechaniker",
+ "field": "industrie",
+ "name": "Zerspanungsmechaniker/in (CNC)",
+ "search": "zerspanungsmechanikerin cnc fräser cnc dreher maschinenbediener zerspanung drehen fräsen programmierung",
+ "short": "Drehen und Fräsen an CNC-Maschinen – mit Programmierung.",
+ "desc": "Bewerbung als Zerspanungsmechaniker/in: Musteranschreiben für CNC-Fräser mit Erfahrung und für den Berufseinstieg, Lebenslauf und Fragen im Fachgespräch.",
+ "intro": "Zerspanungsbetriebe suchen Fachkräfte, die Zeichnungen lesen, CNC-Maschinen einrichten und programmieren und Teile prüfen. Nenn Steuerungen, Werkstoffe, Toleranzen und ob du eher Einzelteile oder Serien fertigst.",
+ "lookFor": [
+  "Ausbildung als Zerspanungsmechaniker/in",
+  "Einrichten und Programmieren an CNC-Dreh- oder Fräsmaschinen",
+  "Steuerungen und CAM-Erfahrung",
+  "Messtechnik und Qualitätsprüfung",
+  "Schichtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "CNC-Fräser mit 5-Achs-Erfahrung",
+   "level": "erfahren",
+   "position": "Zerspanungsmechaniker 5-Achs-Fräsen",
+   "to": {
+    "org": "Präzisionsteile Schwarzwald GmbH",
+    "sal": "none",
+    "street": "Talstraße 8",
+    "city": "78048 Villingen-Schwenningen"
+   },
+   "body": [
+    "Teile für die Medizintechnik mit Toleranzen im Hundertstelbereich, aus Titan und Edelstahl, in Losgrößen von eins bis fünfzig: Das ist seit fünf Jahren mein Alltag an einer 5-Achs-Fräsmaschine.",
+    "Ich richte die Maschine selbst ein, programmiere an der Steuerung und mit CAM, optimiere Werkzeugwege und prüfe die Teile mit Messmaschine und Handmessmitteln. Bei einem schwierigen Implantat-Bauteil habe ich durch eine andere Aufspannung die Bearbeitungszeit deutlich gesenkt. Neue Kollegen lerne ich an.",
+    "Ich suche einen Betrieb, in dem ich mehr Verantwortung für die Programmierung übernehmen kann. Wechsel ist in drei Monaten möglich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Junggeselle Drehen",
+   "level": "berufseinstieg",
+   "position": "Zerspanungsmechanikerin Drehtechnik",
+   "to": {
+    "org": "Drehteile Baar GmbH",
+    "sal": "none",
+    "street": "Industriering 2",
+    "city": "78166 Donaueschingen"
+   },
+   "body": [
+    "eine 1,8 im praktischen Teil, abgeschlossen im Januar: Meine Ausbildung zur Zerspanungsmechanikerin ist geschafft. Am liebsten arbeite ich an der Drehmaschine, und Ihre Firma ist in der Region für Drehteile bekannt.",
+    "Ich kann Programme an der Steuerung erstellen und anpassen, Werkzeuge vermessen, Maschinen einrichten und Erstmuster prüfen. Im letzten Ausbildungsjahr habe ich eine kleine Serie Hydraulikbuchsen eigenständig gefertigt, von der Programmierung bis zur Prüfung.",
+    "Zwei-Schicht-Betrieb ist für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief"
+   ],
+   "from": [
+    "Anna Wehrle",
+    "Karlstraße 20",
+    "78166 Donaueschingen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 5,
+  "name": "Jonas Kieninger",
+  "title": "Zerspanungsmechaniker",
+  "street": "Bickenstraße 10",
+  "city": "78050 Villingen-Schwenningen",
+  "exp": [
+   [
+    "02/2021",
+    "",
+    "Zerspanungsmechaniker 5-Achs-Fräsen",
+    "Medizinpräzision Baar GmbH",
+    "Tuttlingen",
+    "- Fertigung von Medizintechnik-Teilen aus Titan und Edelstahl\n- Einrichten, Programmieren, CAM\n- Messtechnik, Erstmusterprüfung"
+   ],
+   [
+    "09/2017",
+    "01/2021",
+    "Ausbildung Zerspanungsmechaniker",
+    "Medizinpräzision Baar GmbH",
+    "Tuttlingen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2008",
+    "2017",
+    "Realschulabschluss",
+    "Realschule Villingen",
+    "Villingen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "CAM-Programmierung 5-Achs",
+    "Herstellerschulung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "5-Achs-Fräsen",
+    5
+   ],
+   [
+    "CNC-Programmierung",
+    4
+   ],
+   [
+    "CAM",
+    4
+   ],
+   [
+    "Messtechnik",
+    4
+   ],
+   [
+    "Titan und Edelstahl",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Mountainbike, Uhren reparieren"
+ },
+ "do": [
+  "Maschinen, Steuerungen, Werkstoffe, Toleranzen nennen.",
+  "Ein Verbesserungsbeispiel.",
+  "Einzelteil oder Serie klar sagen."
+ ],
+ "dont": [
+  "Steuerungen erfinden.",
+  "Nur „CNC-Erfahrung“ schreiben.",
+  "Qualitätsprüfung vergessen."
+ ],
+ "questions": [
+  "Wie richten Sie ein neues Teil ein?",
+  "Wie gehen Sie vor, wenn ein Maß außerhalb der Toleranz liegt?",
+  "Welche Steuerungen kennen Sie?",
+  "Wie optimieren Sie eine Bearbeitungszeit?"
+ ],
+ "faq": [
+  {
+   "q": "Sollte ich Steuerungsnamen nennen?",
+   "a": "Ja, wenn du sie wirklich beherrschst – das ist bei Zerspanern eine der wichtigsten Informationen. Nenn auch, ob du an der Maschine oder mit CAM programmierst."
+  }
+ ],
+ "related": [
+  "industriemechaniker",
+  "maschinen-anlagenfuehrer",
+  "tischler",
+  "schweisser"
+ ]
+}

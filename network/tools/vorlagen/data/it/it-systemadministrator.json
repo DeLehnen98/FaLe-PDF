@@ -1,0 +1,352 @@
+{
+ "id": "it-systemadministrator",
+ "field": "it",
+ "popular": true,
+ "name": "IT-Systemadministrator/in",
+ "search": "systemadministrator sysadmin it-administrator netzwerkadministrator fachinformatiker systemintegration linux windows server cloud",
+ "short": "Server, Netzwerk, Clients – Fachinformatiker oder erfahrener Admin.",
+ "desc": "Bewerbung als IT-Systemadministrator/in: Muster-Anschreiben für Fachinformatiker nach der Ausbildung und erfahrene Admins, fertiger Lebenslauf und typische Fragen.",
+ "intro": "Arbeitgeber suchen Admins, die Systeme stabil halten, Sicherheitslücken ernst nehmen und Kolleginnen ohne Fachjargon helfen. Wichtiger als eine lange Liste von Produkten sind Umgebung, Verantwortung und Beispiele: Wie viele Nutzer, welche Systeme, was hast du eingeführt oder verbessert?",
+ "lookFor": [
+  "Ausbildung Fachinformatiker/in Systemintegration, Studium oder gleichwertige Erfahrung",
+  "Server (Windows/Linux), Virtualisierung, Verzeichnisdienste, Netzwerk",
+  "Backup, Patch-Management, Monitoring, IT-Sicherheit",
+  "Automatisierung mit Skripten",
+  "Dokumentation und verständliche Kommunikation mit Anwendern"
+ ],
+ "letters": [
+  {
+   "label": "Fachinformatiker nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Junior-Systemadministrator",
+   "to": {
+    "org": "Stadtwerke Bielefeld GmbH",
+    "sal": "m",
+    "street": "Schildescher Straße 16",
+    "city": "33611 Bielefeld",
+    "contact": "Hartmann"
+   },
+   "body": [
+    "für mein Abschlussprojekt habe ich die Backup-Strategie meines Ausbildungsbetriebs neu aufgesetzt: vorher ein NAS im Serverraum, jetzt eine 3-2-1-Lösung mit verschlüsselter Kopie außer Haus und monatlichem Wiederherstellungstest. Der erste Test hat gleich eine fehlerhafte Datenbanksicherung entdeckt. Genau so eine Arbeit möchte ich bei Ihnen machen.",
+    "Ich bin Fachinformatiker für Systemintegration (Abschluss Juni, Note 1,9) und habe in einem Ingenieurbüro mit 80 Mitarbeitenden gelernt. Dort habe ich Clients ausgerollt, Benutzer im Verzeichnisdienst verwaltet, Firewall-Regeln dokumentiert und den Helpdesk mitbetreut. Linux-Server verwalte ich privat und im Betrieb, wiederkehrende Aufgaben automatisiere ich mit PowerShell und Bash.",
+    "Bei einem Versorger ist IT-Sicherheit keine Kür. Mich interessiert besonders, wie Sie Büro-IT und Netzleittechnik voneinander trennen. Anfangen kann ich zum 1. August."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Administratorin, Wechsel in den Mittelstand",
+   "level": "erfahren",
+   "position": "Systemadministratorin (Senior)",
+   "to": {
+    "org": "Ostwestfalen Maschinenbau GmbH",
+    "sal": "none",
+    "street": "Industriestraße 50",
+    "city": "33689 Bielefeld"
+   },
+   "body": [
+    "in einem großen IT-Dienstleister betreue ich seit acht Jahren die Infrastruktur von Kunden, aber ich sehe nie, was mit ihr passiert. Ich möchte zurück in ein Unternehmen, in dem ich die Leute kenne, für die ich die Systeme betreibe.",
+    "Ich verantworte derzeit rund 200 virtuelle Server, die Verzeichnisdienste mehrerer Kunden und die Migration von lokalen Mailservern in die Cloud. Im letzten Jahr habe ich bei einem Kunden nach einem Ransomware-Vorfall den Wiederanlauf koordiniert – seitdem predige ich Offline-Backups und Netzsegmentierung, wo ich kann. Ich arbeite mit Ticketsystemen, Monitoring und Infrastructure as Code.",
+    "Ihre Produktion mit vernetzten Anlagen ist eine Umgebung, in der ich mich gern einarbeite. Ich bin offen für Rufbereitschaft und kann nach drei Monaten Kündigungsfrist wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikate",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Anja Kowalski",
+    "Arndtstraße 20",
+    "33602 Bielefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 0,
+  "name": "Daniel Osei",
+  "title": "Fachinformatiker für Systemintegration",
+  "street": "Stapenhorststraße 40",
+  "city": "33615 Bielefeld",
+  "exp": [
+   [
+    "08/2023",
+    "06/2026",
+    "Auszubildender Fachinformatiker Systemintegration",
+    "Ingenieurbüro Lutter & Partner",
+    "Bielefeld",
+    "- Client-Rollout und Benutzerverwaltung\n- Helpdesk für 80 Mitarbeitende\n- Abschlussprojekt: neues Backup-Konzept mit Wiederherstellungstests"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "06/2026",
+    "Ausbildung Fachinformatiker Systemintegration, IHK 1,9",
+    "Carl-Severing-Berufskolleg",
+    "Bielefeld",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Berufskolleg Senne",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Linux-Administration (Grundlagen-Zertifikat)",
+    "Online-Kurs",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Netzwerkgrundlagen",
+    "IHK",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Windows Server / Verzeichnisdienst",
+    4
+   ],
+   [
+    "Linux",
+    3
+   ],
+   [
+    "Backup und Recovery",
+    4
+   ],
+   [
+    "PowerShell / Bash",
+    3
+   ],
+   [
+    "Netzwerk (VLAN, Firewall)",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Twi",
+    "B1"
+   ]
+  ],
+  "hobbies": "Homelab, Basketball"
+ },
+ "do": [
+  "Beschreib deine Umgebung mit Zahlen: Nutzer, Server, Standorte.",
+  "Nenn ein Projekt mit Ergebnis.",
+  "Zeig, wie du Sicherheit mitdenkst."
+ ],
+ "dont": [
+  "Endlose Tool-Listen.",
+  "Zertifikate nennen, die abgelaufen sind, ohne Hinweis.",
+  "Sicherheitsdetails früherer Arbeitgeber verraten."
+ ],
+ "questions": [
+  "Ein Benutzer kann sich nicht anmelden. Wie gehen Sie vor?",
+  "Wie würden Sie ein Patch-Management aufsetzen?",
+  "Erzählen Sie von einem Ausfall und wie Sie ihn gelöst haben.",
+  "Wie dokumentieren Sie Ihre Arbeit?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich Zertifikate beilegen?",
+   "a": "Leg die wichtigsten bei, die zur Stelle passen. Im Lebenslauf reicht eine Liste mit Jahr; im Gespräch interessiert mehr, was du praktisch damit gemacht hast."
+  }
+ ],
+ "related": [
+  "it-support",
+  "softwareentwickler",
+  "ausbildung-fachinformatiker",
+  "werkstudent-it"
+ ],
+ "en": {
+  "slug": "it-support-systems-administrator",
+  "name": "IT support / systems administrator",
+  "search": "systems administrator sysadmin it support engineer infrastructure network administrator",
+  "short": "Servers, networks and users – junior or senior.",
+  "desc": "Systems administrator CV and cover letter examples: letters for a junior admin and an experienced engineer, plus a ready CV with placeholder portrait.",
+  "intro": "Employers want admins who keep systems stable, take security seriously and can explain things to colleagues without jargon. Describe your environment and what you changed rather than listing every product.",
+  "lookFor": [
+   "Windows and/or Linux servers, directory services, virtualisation",
+   "Backups, patching, monitoring, security",
+   "Networking basics",
+   "Scripting and automation",
+   "Clear documentation and user communication"
+  ],
+  "letters": [
+   {
+    "label": "Junior administrator",
+    "level": "berufseinstieg",
+    "position": "Junior systems administrator",
+    "to": {
+     "org": "Northfield Water",
+     "sal": "m",
+     "street": "Riverside House",
+     "city": "Sheffield S1 2GH",
+     "contact": "Hart"
+    },
+    "body": [
+     "For my final apprenticeship project I rebuilt the backup strategy at an 80-person engineering firm: from a single NAS in the server room to a 3-2-1 setup with an encrypted offsite copy and monthly restore tests. The first test found a broken database backup.",
+     "I have rolled out laptops, managed users and groups, documented firewall rules and helped run the service desk. I manage Linux servers at work and at home, and I automate routine tasks with PowerShell and Bash.",
+     "At a utility, security is not optional, and I would like to learn how you separate office IT from operational systems. I can start in August."
+    ],
+    "att": [
+     "CV",
+     "Qualification certificate"
+    ]
+   },
+   {
+    "label": "Experienced engineer",
+    "level": "erfahren",
+    "position": "Senior systems administrator",
+    "to": {
+     "org": "Peak Engineering Ltd",
+     "sal": "none",
+     "street": "Unit 5, Meadowhall Way",
+     "city": "Sheffield S9 1EP"
+    },
+    "body": [
+     "For eight years at a managed service provider I have looked after other companies’ infrastructure without ever seeing what it is used for. I would like to work in-house again, for people I know.",
+     "I am responsible for around 200 virtual servers, several customers’ directories and their migration from on-premises mail to the cloud. Last year I coordinated recovery after a ransomware incident; since then I push offline backups and network segmentation wherever I can.",
+     "I am happy to join the on-call rota and can move after three months’ notice."
+    ],
+    "att": [
+     "CV",
+     "Certifications"
+    ],
+    "from": [
+     "Anna Kowalska",
+     "20 Ecclesall Road",
+     "Sheffield S11 8HN"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a24",
+   "design": "modern",
+   "accent": 0,
+   "name": "Daniel Mensah",
+   "title": "IT support / junior systems administrator",
+   "street": "40 Abbeydale Road",
+   "city": "Sheffield S7 1FD",
+   "exp": [
+    [
+     "08/2023",
+     "06/2026",
+     "IT apprentice",
+     "Lutter Engineering",
+     "Sheffield",
+     "- Laptop rollout and user management\n- Service desk for 80 staff\n- Final project: new backup concept with restore tests"
+    ]
+   ],
+   "edu": [
+    [
+     "2023",
+     "2026",
+     "IT infrastructure apprenticeship",
+     "Sheffield College",
+     "Sheffield",
+     ""
+    ],
+    [
+     "2018",
+     "2023",
+     "Secondary school and sixth form",
+     "King Edward VII School",
+     "Sheffield",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Linux administration (foundation)",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Windows Server / directory",
+     4
+    ],
+    [
+     "Linux",
+     3
+    ],
+    [
+     "Backup and recovery",
+     4
+    ],
+    [
+     "PowerShell / Bash",
+     3
+    ],
+    [
+     "Networking",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Twi",
+     "B1"
+    ]
+   ],
+   "hobbies": "Homelab, basketball"
+  },
+  "do": [
+   "Describe your environment with numbers.",
+   "Name one project and its result.",
+   "Show how you think about security."
+  ],
+  "dont": [
+   "Paste endless tool lists.",
+   "Reveal security details of past employers.",
+   "List expired certifications without saying so."
+  ],
+  "questions": [
+   "A user cannot log in. Walk us through it.",
+   "How would you set up patch management?",
+   "Tell us about an outage you fixed.",
+   "How do you document your work?"
+  ],
+  "faq": [
+   {
+    "q": "Are certifications essential?",
+    "a": "They help, especially for junior roles, but interviewers care more about what you actually did with the technology."
+   }
+  ]
+ }
+}

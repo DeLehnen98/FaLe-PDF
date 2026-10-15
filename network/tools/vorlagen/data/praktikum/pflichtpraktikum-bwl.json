@@ -1,0 +1,158 @@
+{
+ "id": "pflichtpraktikum-bwl",
+ "field": "praktikum",
+ "name": "Pflichtpraktikum BWL / Wirtschaft",
+ "search": "pflichtpraktikum bwl praktikum wirtschaft praktikum controlling praktikum finanzen praxissemester student",
+ "short": "Praxissemester in Controlling, Einkauf, Personal oder Finance.",
+ "desc": "Bewerbung für ein Pflichtpraktikum im BWL-Studium: Musteranschreiben für Controlling und Personalwesen, Lebenslauf für Studierende mit Foto-Platzhalter und Tipps.",
+ "intro": "Im Praxissemester wollen Unternehmen sehen, welcher Bereich dich interessiert und warum. Nenn Semester, Schwerpunkt, Zeitraum und was du schon kannst – Tabellen, Statistik, erste Erfahrungen aus Nebenjobs.",
+ "lookFor": [
+  "Studium der Wirtschaftswissenschaften, Semester und Schwerpunkt",
+  "Zeitraum und Pflichtcharakter",
+  "Tabellenkalkulation, gern erste ERP- oder Datenkenntnisse",
+  "Interesse am Fachbereich",
+  "Englisch"
+ ],
+ "letters": [
+  {
+   "label": "Praxissemester im Controlling",
+   "level": "praktikum",
+   "position": "Praktikant im Controlling (Praxissemester, September 2027 bis Februar 2028)",
+   "to": {
+    "org": "Autozulieferer Weser GmbH",
+    "sal": "none",
+    "street": "Industriepark 10",
+    "city": "32423 Minden"
+   },
+   "body": [
+    "in der Vorlesung Kostenrechnung hat mich vor allem interessiert, warum zwei Firmen mit gleichem Umsatz völlig unterschiedlich viel verdienen. Im Praxissemester möchte ich das an einem echten Unternehmen sehen – am liebsten in einem produzierenden Betrieb wie Ihrem.",
+    "Ich studiere im fünften Semester Betriebswirtschaft an der Fachhochschule Bielefeld, Schwerpunkt Controlling. Mit Tabellen arbeite ich sicher, Pivot-Tabellen und Verweisfunktionen inklusive. Neben dem Studium jobbe ich in der Buchhaltung eines Handwerksbetriebs und bereite dort die Belege für den Steuerberater vor.",
+    "Das Praxissemester dauert 22 Wochen. Ich freue mich über eine Rückmeldung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Bescheinigung der Hochschule"
+   ]
+  },
+  {
+   "label": "Praktikum im Personalwesen",
+   "level": "praktikum",
+   "position": "Praktikantin Human Resources (Pflichtpraktikum)",
+   "to": {
+    "org": "Klinikverbund Ostwestfalen gGmbH",
+    "sal": "none",
+    "street": "Hans-Nolte-Straße 1",
+    "city": "32429 Minden"
+   },
+   "body": [
+    "im Nebenjob am Empfang eines Fitnessstudios habe ich gemerkt, wie viel es ausmacht, ob neue Kolleginnen gut eingearbeitet werden. Dieses Thema möchte ich im Praktikum in einer Personalabteilung kennenlernen.",
+    "Ich studiere Wirtschaftspsychologie im vierten Semester. Für ein Seminar habe ich eine kleine Befragung zur Zufriedenheit von Auszubildenden ausgewertet. Ich arbeite sicher mit Office-Programmen und bin verschwiegen.",
+    "Mein Pflichtpraktikum soll zwölf Wochen dauern, ab März."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht"
+   ],
+   "from": [
+    "Hanna Bergmann",
+    "Königstraße 30",
+    "32423 Minden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "modern",
+  "accent": 5,
+  "name": "Tim Hellmann",
+  "title": "Student Betriebswirtschaft (Controlling)",
+  "street": "Marienstraße 40",
+  "city": "32423 Minden",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Aushilfe Buchhaltung (Minijob)",
+    "Dachdeckerei Lüke",
+    "Minden",
+    "- Belegvorbereitung für den Steuerberater\n- Rechnungsablage, offene Posten"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2024",
+    "",
+    "B.A. Betriebswirtschaft, Schwerpunkt Controlling (5. Semester)",
+    "Fachhochschule",
+    "Bielefeld",
+    ""
+   ],
+   [
+    "2015",
+    "2024",
+    "Abitur",
+    "Ratsgymnasium",
+    "Minden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    4
+   ],
+   [
+    "Kostenrechnung",
+    3
+   ],
+   [
+    "Statistik",
+    3
+   ],
+   [
+    "Präsentation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Rudern, Schach"
+ },
+ "do": [
+  "Semester, Schwerpunkt, Zeitraum nennen.",
+  "Fachinteresse begründen.",
+  "Nebenjobs mit Bezug nennen."
+ ],
+ "dont": [
+  "Allgemeine Motivation ohne Bereich.",
+  "Notenübersicht vergessen.",
+  "Zu lange Texte."
+ ],
+ "questions": [
+  "Warum dieser Fachbereich?",
+  "Welche Vorlesung hat Ihnen am meisten gebracht?",
+  "Was wollen Sie im Praktikum lernen?",
+  "Wie gehen Sie mit Fehlern um?"
+ ],
+ "faq": [
+  {
+   "q": "Wann sollte ich mich für das Praxissemester bewerben?",
+   "a": "Drei bis sechs Monate vorher, bei großen Unternehmen auch früher."
+  }
+ ],
+ "related": [
+  "praktikum-marketing",
+  "controller",
+  "personalsachbearbeiter",
+  "werkstudent-it"
+ ]
+}

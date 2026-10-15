@@ -1,0 +1,178 @@
+{
+ "id": "busfahrer",
+ "field": "logistik",
+ "name": "Busfahrer/in",
+ "search": "busfahrerin omnibusfahrer linienbus reisebus fahrdienst öpnv klasse d berufskraftfahrer personenverkehr quereinstieg",
+ "short": "Linienverkehr oder Reisebus – erfahren oder Quereinstieg mit Ausbildung.",
+ "desc": "Bewerbung als Busfahrer/in: Muster-Anschreiben für den Quereinstieg mit Führerscheinförderung und erfahrene Fahrer, Lebenslauf mit Foto-Platzhalter und Tipps.",
+ "intro": "Verkehrsbetriebe suchen Fahrerinnen und Fahrer, die sicher fahren, freundlich mit Fahrgästen umgehen und Dienstpläne mit geteilten Diensten akzeptieren. Viele bilden Quereinsteiger selbst aus und finanzieren den Führerschein Klasse D.",
+ "lookFor": [
+  "Führerschein D bzw. DE und Berufskraftfahrerqualifikation – oder die Bereitschaft, sie zu machen",
+  "Freundlichkeit und Gelassenheit mit Fahrgästen",
+  "Pünktlichkeit und Ortskenntnis",
+  "Schichtdienst inklusive Wochenenden",
+  "Unfallfreies Fahren"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg mit Führerscheinförderung",
+   "level": "quereinstieg",
+   "position": "Busfahrer im Linienverkehr (Quereinstieg)",
+   "to": {
+    "org": "Verkehrsbetriebe Kassel",
+    "sal": "none",
+    "street": "Königstor 3",
+    "city": "34117 Kassel"
+   },
+   "body": [
+    "dass Sie Quereinsteigern den Busführerschein finanzieren, habe ich auf Ihrer Website gelesen. Ich bin 46, seit 25 Jahren unfallfrei mit dem Auto unterwegs und möchte meine zweite Berufshälfte am Steuer eines Linienbusses verbringen.",
+    "In meinem bisherigen Job als Hausmeister an einer Gesamtschule habe ich jeden Tag mit Hunderten Jugendlichen zu tun gehabt. Ich weiß, wie man freundlich, aber bestimmt bleibt. Kassel kenne ich als Gebürtiger sehr gut, viele Linien bin ich als Fahrgast selbst gefahren.",
+    "Geteilte Dienste und Wochenenden schrecken mich nicht. Ich freue mich auf Ihre Rückmeldung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Führerschein B (Kopie)"
+   ]
+  },
+  {
+   "label": "Erfahrene Reisebusfahrerin, Wechsel in den Linienverkehr",
+   "level": "erfahren",
+   "position": "Busfahrerin im Linienverkehr",
+   "to": {
+    "org": "Regionalbus Nordhessen GmbH",
+    "sal": "f",
+    "street": "Am Bahnhof 2",
+    "city": "34560 Fritzlar",
+    "contact": "Möller"
+   },
+   "body": [
+    "Klassenfahrten, Vereinsausflügen und Touren bis nach Kroatien: Acht Jahre bin ich Reisebus gefahren, jetzt möchte ich jeden Abend zu Hause schlafen. Ihr Linienverkehr in Nordhessen ist dafür ideal.",
+    "Ich habe den Führerschein DE und die Weiterbildung nach dem Berufskraftfahrer-Qualifikationsgesetz bis 2028 eingetragen. Im Reiseverkehr habe ich gelernt, auf Fahrgäste einzugehen, mit Verspätungen umzugehen und auch bei Schnee in den Alpen ruhig zu fahren. Ticketverkauf und Kasse habe ich bei Tagesfahrten selbst gemacht.",
+    "Ich bin ab dem 1. März verfügbar. Gern komme ich zu einer Probefahrt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Führerschein und Fahrerkarte (Kopie)",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Anja Wiegand",
+    "Marktplatz 6",
+    "34576 Homberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a08",
+  "design": "classic",
+  "accent": 5,
+  "name": "Wolfgang Krüger",
+  "title": "Hausmeister, angehender Busfahrer",
+  "street": "Friedrich-Ebert-Straße 77",
+  "city": "34119 Kassel",
+  "exp": [
+   [
+    "08/2008",
+    "",
+    "Schulhausmeister",
+    "Stadt Kassel, Gesamtschule Nord",
+    "Kassel",
+    "- Haustechnik und Kleinreparaturen\n- Ansprechpartner für Schüler und Lehrkräfte"
+   ],
+   [
+    "1998",
+    "2008",
+    "Tischler",
+    "Tischlerei Wenzel",
+    "Kassel",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "1995",
+    "1998",
+    "Ausbildung zum Tischler",
+    "Tischlerei Wenzel",
+    "Kassel",
+    ""
+   ],
+   [
+    "1986",
+    "1995",
+    "Realschulabschluss",
+    "Realschule Kassel",
+    "Kassel",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Erste Hilfe",
+    "DRK",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Unfallfreies Fahren (Klasse B, 25 Jahre)",
+    5
+   ],
+   [
+    "Ortskenntnis Kassel",
+    5
+   ],
+   [
+    "Umgang mit Jugendlichen",
+    5
+   ],
+   [
+    "Technisches Verständnis",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Wandern im Habichtswald, Modelleisenbahn"
+ },
+ "do": [
+  "Unfallfreiheit nennen.",
+  "Erfahrung mit Menschen betonen.",
+  "Bereitschaft zu geteilten Diensten klar sagen."
+ ],
+ "dont": [
+  "Ungeduld mit Fahrgästen andeuten.",
+  "Den Führerschein-Status unklar lassen.",
+  "Gesundheitliche Fragen ignorieren – es gibt eine Untersuchung."
+ ],
+ "questions": [
+  "Ein Fahrgast hat kein Ticket und wird laut. Was tun Sie?",
+  "Wie gehen Sie mit Verspätungen um?",
+  "Wie stehen Sie zu geteilten Diensten?",
+  "Was reizt Sie am Busfahren?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne Busführerschein Busfahrer werden?",
+   "a": "Ja. Viele Verkehrsbetriebe bilden aus und zahlen den Führerschein D und die Berufskraftfahrerqualifikation. Voraussetzung ist meist der Führerschein B, ein Mindestalter und eine ärztliche Untersuchung."
+  }
+ ],
+ "related": [
+  "lkw-fahrer",
+  "quereinstieg-lokfuehrer",
+  "paketzusteller",
+  "notfallsanitaeter"
+ ]
+}

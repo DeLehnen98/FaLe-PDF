@@ -44,6 +44,7 @@ SHARE_LANDING = {'de': '/werkzeuge/?geteilt=1', 'en': '/en/tools/?shared=1'}
 MANIFEST = {'de': '/werkzeuge/manifest.webmanifest', 'en': '/en/tools/manifest.webmanifest'}
 OG_IMAGE = {'de': '/assets/og/og-tools-de.png', 'en': '/assets/og/og-tools-en.png'}
 LANGS = ('de', 'en')
+VORLAGEN_SCOPES = ['/vorlagen/', '/en/templates/']  # pages of the Vorlagen-Archiv: network first, offline copy
 
 # ------------------------------------------------------------------ categories (fixed order)
 # id (used in specs) -> per language (anchor slug, label, one-line description), colour token
@@ -638,7 +639,7 @@ def service_worker():
     out = (tpl.replace('__VERSION__', version).replace('__VENDOR_VERSION__', vendor_ver)
            .replace('__PRECACHE__', json.dumps(precache, indent=2))
            .replace('__SHARE__', json.dumps({SHARE_ACTION[l]: SHARE_LANDING[l] for l in LANGS}))
-           .replace('__SCOPES__', json.dumps([HUB['de'], HUB['en']]))
+           .replace('__SCOPES__', json.dumps([HUB['de'], HUB['en'], *VORLAGEN_SCOPES]))
            .replace('__HUBS__', json.dumps(HUB)))
     return out, version
 
@@ -715,6 +716,14 @@ def main():
     for p in written:
         print(p.relative_to(ROOT), p.stat().st_size, 'bytes')
     print(f'{len(specs)} tools, service worker version {version}')
+    # FaLe Vorlagen-Archiv (job application templates, ../vorlagen/build.py): same chrome, merged into the sitemap
+    vb = HERE.parent / 'vorlagen' / 'build.py'
+    if vb.exists():
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('vorlagen_build', vb)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        mod.main(sys.modules[__name__])
 
 
 if __name__ == '__main__':

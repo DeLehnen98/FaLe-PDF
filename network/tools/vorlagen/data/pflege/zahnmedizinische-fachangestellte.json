@@ -1,0 +1,188 @@
+{
+ "id": "zahnmedizinische-fachangestellte",
+ "field": "pflege",
+ "name": "Zahnmedizinische Fachangestellte (ZFA)",
+ "search": "zfa zahnarzthelferin zahnarzthelfer zahnmedizinischer fachangestellter zahnarztpraxis prophylaxe zmp stuhlassistenz",
+ "short": "Stuhlassistenz, Prophylaxe oder Verwaltung in der Zahnarztpraxis.",
+ "desc": "Bewerbung als Zahnmedizinische Fachangestellte (ZFA): Muster-Anschreiben für Assistenz und Prophylaxe, Lebenslauf mit Foto-Platzhalter und Gesprächstipps.",
+ "intro": "In der Zahnarztpraxis zählt, dass du am Stuhl mitdenkst, Hygieneabläufe sicher beherrschst und Patienten die Angst nimmst. Für Prophylaxe- oder Verwaltungsstellen kommen Fortbildungen und Abrechnungswissen dazu. Praxen fragen außerdem gern nach den Kenntnissen im Strahlenschutz.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung als ZFA und Erfahrung in der Stuhlassistenz",
+  "Hygiene und Aufbereitung von Medizinprodukten nach den geltenden Vorgaben",
+  "Kenntnisse im Strahlenschutz für das Anfertigen von Röntgenaufnahmen",
+  "Für Prophylaxe: Zusatzqualifikation (z. B. ZMP) und ein Händchen für Patientenmotivation",
+  "Abrechnung nach BEMA und GOZ, wenn Verwaltung dazugehört"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene ZFA, Wechsel in die Prophylaxe",
+   "level": "erfahren",
+   "position": "ZFA / Prophylaxeassistentin",
+   "to": {
+    "org": "Zahnarztpraxis Dr. Martin Sauer",
+    "sal": "m",
+    "street": "Hauptstraße 40",
+    "city": "69117 Heidelberg",
+    "contact": "Dr. Sauer"
+   },
+   "body": [
+    "fünf Jahre Stuhlassistenz, davon zwei in der Implantologie, und seit April die Prüfung zur Zahnmedizinischen Prophylaxeassistentin: Ich möchte jetzt den Schritt in die Prophylaxe machen, und Ihre Praxis sucht genau dafür jemanden.",
+    "In meiner jetzigen Praxis habe ich seit der Fortbildung zwei Prophylaxetage pro Woche übernommen. Ich mache professionelle Zahnreinigungen, Fluoridierungen und Mundhygieneberatung, auch für Kinder. Mein Ziel ist, dass Patienten nicht mit schlechtem Gewissen gehen, sondern mit einem Plan, der in ihren Alltag passt. Bei einer älteren Patientin hat eine Munddusche mehr bewirkt als drei Vorträge über Zahnseide.",
+    "Die Aufbereitung der Instrumente und die Dokumentation im Hygieneplan kenne ich aus dem Effeff, die Kenntnisse im Strahlenschutz sind aktuell. Ich würde gern in Vollzeit arbeiten und könnte zum 1. Oktober wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis ZFA",
+    "Zeugnis Prophylaxeassistenz",
+    "Nachweis Strahlenschutz"
+   ]
+  },
+  {
+   "label": "Nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Zahnmedizinische Fachangestellte für die Stuhlassistenz",
+   "to": {
+    "org": "Zahngesundheit Neckarbogen",
+    "sal": "n",
+    "street": "Neckarstaden 18",
+    "city": "69117 Heidelberg",
+    "contact": "Lisa Haag"
+   },
+   "body": [
+    "ich habe gerade meine Ausbildung zur ZFA abgeschlossen und suche eine Praxis, in der ich weiter lernen kann. Dass Sie viel mit Angstpatienten arbeiten, steht auf Ihrer Website. Das hat mich neugierig gemacht.",
+    "In meinem Ausbildungsbetrieb war ich vor allem am Stuhl: Behandlungszimmer vorbereiten, absaugen, Abformungen nehmen, Patienten nach der Behandlung erklären, was sie in den nächsten Stunden beachten müssen. Ich habe gemerkt, dass ich gut beruhigen kann. Eine Patientin, die beim ersten Termin geweint hat, hat beim dritten gefragt, ob ich wieder assistiere.",
+    "In der Abschlussprüfung hatte ich eine 2. Röntgen darf ich mit den Kenntnissen im Strahlenschutz aus der Ausbildung, und Abrechnung nach BEMA traue ich mir für einfache Fälle zu. Ich bin flexibel bei den Arbeitszeiten und kann ab sofort anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Kenntnisse im Strahlenschutz"
+   ],
+   "from": [
+    "Elif Kaya",
+    "Bergheimer Straße 88",
+    "69115 Heidelberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 2,
+  "name": "Franziska Lutz",
+  "title": "Zahnmedizinische Fachangestellte, Prophylaxeassistentin",
+  "street": "Rohrbacher Straße 12",
+  "city": "69115 Heidelberg",
+  "exp": [
+   [
+    "08/2021",
+    "",
+    "Zahnmedizinische Fachangestellte",
+    "Praxis für Zahnmedizin und Implantologie Dr. Kraft",
+    "Heidelberg",
+    "- Stuhlassistenz, seit 2024 auch Implantologie\n- seit 04/2026 zwei Prophylaxetage pro Woche\n- Hygiene und Aufbereitung von Medizinprodukten"
+   ],
+   [
+    "08/2018",
+    "07/2021",
+    "Ausbildung zur ZFA",
+    "Zahnarztpraxis Schmitt",
+    "Leimen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2018",
+    "Mittlere Reife",
+    "Realschule Leimen",
+    "Leimen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "10/2025",
+    "04/2026",
+    "Zahnmedizinische Prophylaxeassistentin (ZMP)",
+    "Fortbildungsakademie der Landeszahnärztekammer",
+    "Stuttgart",
+    ""
+   ],
+   [
+    "2024",
+    "",
+    "Aktualisierung Kenntnisse im Strahlenschutz",
+    "Landeszahnärztekammer",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Stuhlassistenz",
+    5
+   ],
+   [
+    "Professionelle Zahnreinigung",
+    4
+   ],
+   [
+    "Hygiene und Sterilgutaufbereitung",
+    5
+   ],
+   [
+    "Röntgen",
+    4
+   ],
+   [
+    "Abrechnung BEMA/GOZ",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Klettern, Backen"
+ },
+ "do": [
+  "Schreib, in welchen Behandlungsbereichen du assistiert hast (Implantologie, Kieferorthopädie, Kinder).",
+  "Nenn Fortbildungen mit Abschluss und Jahr.",
+  "Erzähl, wie du mit ängstlichen Patienten umgehst – ein Satz mit Beispiel reicht."
+ ],
+ "dont": [
+  "Nur „Assistenz“ schreiben, ohne zu sagen, wobei.",
+  "Die Hygiene als lästige Pflicht darstellen.",
+  "Lücken wegen eines Praxiswechsels verschweigen – kurz erklären genügt."
+ ],
+ "questions": [
+  "Wie bereiten Sie das Zimmer für eine Wurzelbehandlung vor?",
+  "Was tun Sie, wenn ein Patient Panik bekommt?",
+  "Wie läuft bei Ihnen die Aufbereitung eines Hand- und Winkelstücks ab?",
+  "Welche Fortbildung möchten Sie als Nächstes machen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Fortbildungen sind für ZFA gefragt?",
+   "a": "Sehr gefragt sind die Prophylaxe-Fortbildungen (ZMP), die Verwaltungsfortbildung (ZMV) und die Dentalhygiene (DH). Auch kürzere Kurse, etwa zur Kinderprophylaxe, kannst du im Lebenslauf unter Weiterbildung aufführen."
+  },
+  {
+   "q": "Muss ich ein Zeugnis über den Strahlenschutz beilegen?",
+   "a": "Wenn du Röntgenaufnahmen machen sollst, ja – leg den Nachweis über die Kenntnisse im Strahlenschutz bei und achte darauf, dass er aktuell ist. Die Aktualisierung ist in regelmäßigen Abständen vorgeschrieben."
+  }
+ ],
+ "related": [
+  "medizinische-fachangestellte",
+  "pta",
+  "ausbildung-mfa",
+  "rezeptionist"
+ ]
+}

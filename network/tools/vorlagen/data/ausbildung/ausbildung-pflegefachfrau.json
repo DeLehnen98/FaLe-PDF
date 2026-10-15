@@ -1,0 +1,162 @@
+{
+ "id": "ausbildung-pflegefachfrau",
+ "field": "ausbildung",
+ "name": "Ausbildung Pflegefachfrau/-mann",
+ "search": "ausbildung pflegefachfrau pflegefachmann pflege ausbildung bewerbung pflegeschule generalistisch krankenschwester ausbildung",
+ "short": "Bewerbung um die generalistische Pflegeausbildung.",
+ "desc": "Bewerbung für die Ausbildung zur Pflegefachfrau / zum Pflegefachmann: Musteranschreiben nach dem FSJ und mit Mittlerem Abschluss, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Für die Pflegeausbildung bewirbst du dich beim Ausbildungsträger – Klinik, Pflegeheim oder ambulanter Dienst – und bei der Pflegeschule. Gefragt sind Mittlerer Schulabschluss (oder Hauptschulabschluss mit Berufsausbildung), Interesse an Menschen und Belastbarkeit. Ein Praktikum oder FSJ ist sehr hilfreich.",
+ "lookFor": [
+  "Mittlerer Schulabschluss oder gleichwertiger Abschluss",
+  "Praktikum, FSJ oder Pflegeerfahrung",
+  "Einfühlungsvermögen und Belastbarkeit",
+  "Bereitschaft zum Schichtdienst",
+  "Gesundheitliche Eignung"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem FSJ im Krankenhaus",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Pflegefachmann",
+   "to": {
+    "org": "Klinikum Am Gesundbrunnen – Pflegeschule",
+    "sal": "none",
+    "street": "Am Gesundbrunnen 20",
+    "city": "74078 Heilbronn"
+   },
+   "body": [
+    "mein Freiwilliges Soziales Jahr auf einer chirurgischen Station endet im August. Ich habe Patienten zum OP gebracht, Betten gemacht, beim Essen geholfen und mit älteren Menschen geredet, die nachts nicht schlafen konnten. Das Team hat mich gefragt, ob ich bleiben möchte – deshalb bewerbe ich mich jetzt für die Ausbildung bei Ihnen.",
+    "Ich habe die Fachhochschulreife und bin 19. Im FSJ habe ich Früh- und Spätdienst gearbeitet und weiß, wie anstrengend Pflege sein kann. Mich interessiert besonders die Intensivpflege, aber ich freue mich auf alle Einsätze der generalistischen Ausbildung.",
+    "Die Stationsleitung schreibt mir gern eine Beurteilung, die ich nachreiche."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis der Fachhochschulreife",
+    "FSJ-Bescheinigung"
+   ]
+  },
+  {
+   "label": "Mit Mittlerem Abschluss und Pflegepraktikum",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Pflegefachfrau",
+   "to": {
+    "org": "Seniorenstift Neckarblick gGmbH",
+    "sal": "f",
+    "street": "Neckarweg 4",
+    "city": "74074 Heilbronn",
+    "contact": "Ott"
+   },
+   "body": [
+    "in Ihrem Haus habe ich mein zweiwöchiges Praktikum in der neunten Klasse gemacht. Frau B. hat mir damals jeden Tag ein Rätsel gestellt, und ich habe am letzten Tag das erste gelöst. Seitdem ist die Altenpflege für mich nicht mehr nur ein Beruf auf einem Plakat.",
+    "Ich mache im Sommer meinen Realschulabschluss. Meine Großmutter wohnt bei uns, und ich helfe ihr jeden Tag beim Anziehen und mit den Tabletten. Ich bin geduldig, auch wenn es langsam geht, und erzähle gern.",
+    "Meine Ausbildung würde ich gern bei Ihnen machen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Laura Schmid",
+    "Wilhelmstraße 14",
+    "74074 Heilbronn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "modern",
+  "accent": 1,
+  "name": "Noah Weber",
+  "title": "FSJ-ler, angehender Pflegefachmann",
+  "street": "Moltkestraße 40",
+  "city": "74076 Heilbronn",
+  "exp": [
+   [
+    "09/2025",
+    "08/2026",
+    "Freiwilliges Soziales Jahr",
+    "Klinikum Am Gesundbrunnen, Chirurgie",
+    "Heilbronn",
+    "- Patiententransporte, Betten, Essenshilfe\n- Früh- und Spätdienst\n- Gespräche mit Patienten"
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2025",
+    "Fachhochschulreife",
+    "Kaufmännisches Berufskolleg",
+    "Heilbronn",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste-Hilfe-Kurs",
+    "Johanniter",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Patienten",
+    4
+   ],
+   [
+    "Schichtdienst",
+    4
+   ],
+   [
+    "Teamarbeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Schwimmen, Gaming"
+ },
+ "do": [
+  "Praktikum, FSJ oder Pflege in der Familie konkret beschreiben.",
+  "Schichtdienst ansprechen.",
+  "Zeigen, dass du die Generalistik kennst."
+ ],
+ "dont": [
+  "Nur „Ich helfe gern“.",
+  "Bewohner mit vollem Namen nennen.",
+  "Belastung ausblenden."
+ ],
+ "questions": [
+  "Warum Pflege?",
+  "Wie gehen Sie mit dem Tod eines Patienten um?",
+  "Was erwarten Sie von der Ausbildung?",
+  "Wie erholen Sie sich?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Bei wem bewerbe ich mich – Schule oder Klinik?",
+   "a": "Meist beim Ausbildungsträger (Klinik, Heim, ambulanter Dienst), der mit einer Pflegeschule kooperiert. Manche Pflegeschulen nehmen Bewerbungen zentral an. Lies die Ausschreibung."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "ausbildung-mfa",
+  "fsj-bfd",
+  "pflegehelfer"
+ ]
+}

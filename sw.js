@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-3317927337';
+const VERSION = 'v1.0.0-1b84a3763e';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -13,7 +13,9 @@ const ASSETS = [
   "./.github/workflows/android.yml",
   "./.github/workflows/codeql.yml",
   "./.github/workflows/db-migrate.yml",
+  "./.github/workflows/live-smoke.yml",
   "./.github/workflows/security.yml",
+  "./.github/workflows/vendor-bg.yml",
   "./.github/workflows/vendor-ocr.yml",
   "./.well-known/security.txt",
   "./css/account.css",
@@ -124,6 +126,7 @@ const ASSETS = [
   "./js/office/ruler.js",
   "./js/office/sheet-dialogs.js",
   "./js/office/sheet-ops.js",
+  "./js/office/sheet-templates.js",
   "./js/office/sheet.js",
   "./js/office/sheetfx.js",
   "./js/office/sheetpdf.js",
@@ -132,6 +135,7 @@ const ASSETS = [
   "./js/office/slides.js",
   "./js/office/templates.js",
   "./js/office/trackchanges.js",
+  "./js/office/unifont.js",
   "./js/office/vendor.js",
   "./js/office/versions.js",
   "./js/office/whistory.js",
@@ -235,6 +239,15 @@ const ASSETS = [
   "./vendor/fonts/bricolage-grotesque/OFL.txt",
   "./vendor/jszip/LICENSE.markdown",
   "./vendor/jszip/jszip.min.js",
+  "./vendor/onnx/VERSIONS.json",
+  "./vendor/onnx/models/LICENSE-MODNet",
+  "./vendor/onnx/models/LICENSE-U2Net",
+  "./vendor/onnx/models/modnet-quantized.onnx",
+  "./vendor/onnx/models/u2netp.onnx",
+  "./vendor/onnx/ort/LICENSE",
+  "./vendor/onnx/ort/ort-wasm-simd-threaded.mjs",
+  "./vendor/onnx/ort/ort-wasm-simd-threaded.wasm",
+  "./vendor/onnx/ort/ort.wasm.min.mjs",
   "./vendor/pdf-lib/LICENSE.md",
   "./vendor/pdf-lib/THIRD_PARTY_LICENSES.txt",
   "./vendor/pdf-lib/pdf-lib.min.js",

@@ -1,0 +1,381 @@
+{
+ "id": "medizinische-fachangestellte",
+ "field": "pflege",
+ "popular": true,
+ "name": "Medizinische Fachangestellte (MFA)",
+ "search": "mfa arzthelferin arzthelfer medizinischer fachangestellter praxis hausarzt anmeldung rezeption praxis",
+ "short": "Hausarzt, Facharzt oder MVZ – nach der Ausbildung oder mit Erfahrung.",
+ "desc": "Bewerbung als Medizinische Fachangestellte (MFA): drei Musteranschreiben für Berufsstart, Praxiswechsel und Wiedereinstieg plus fertiger Lebenslauf.",
+ "intro": "Arztpraxen suchen MFA, die Patienten freundlich empfangen, sicher Blut abnehmen und die Abrechnung im Griff haben. Praxisinhaber achten besonders darauf, ob du mit ihrer Praxissoftware und ihrem Fachgebiet schon zu tun hattest. Und sie wollen wissen, wann du anfangen kannst – oft wird eine Stelle schnell gebraucht.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung als MFA (früher Arzthelferin) und Erfahrung im passenden Fachgebiet",
+  "Sicherheit bei Blutentnahme, EKG, Impfungen, Verbandswechsel oder Labor",
+  "Abrechnung nach EBM und GOÄ, Umgang mit Praxisverwaltungssystemen und der Telematikinfrastruktur",
+  "Ruhe am Empfang, wenn Telefon, Wartezimmer und Rezeptwünsche gleichzeitig rufen",
+  "Verschwiegenheit und ein freundlicher, klarer Ton"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung in die Hausarztpraxis",
+   "level": "berufseinstieg",
+   "position": "Medizinische Fachangestellte in Vollzeit",
+   "to": {
+    "org": "Hausarztpraxis Dr. med. Ines Gruber",
+    "sal": "f",
+    "street": "Marktstraße 8",
+    "city": "66424 Homburg",
+    "contact": "Dr. Gruber"
+   },
+   "body": [
+    "meine Ausbildung zur Medizinischen Fachangestellten habe ich im Juni in einer internistischen Praxis abgeschlossen. Ich möchte jetzt in eine Hausarztpraxis wechseln, weil mir der Kontakt zu Patientinnen und Patienten über Jahre hinweg wichtig ist – bei uns kamen viele nur einmal zur Darmspiegelung.",
+    "In der Ausbildung war ich drei Jahre lang abwechselnd am Empfang, im Labor und in der Funktionsdiagnostik. Blutentnahmen, Langzeit-EKG anlegen und Lungenfunktion messen gehören zu meinem Alltag. Am Empfang habe ich gelernt, eine volle Leitung, einen ungeduldigen Patienten und eine Überweisung gleichzeitig zu jonglieren, ohne dass einer zu kurz kommt. Die Abschlussprüfung habe ich mit 2,0 bestanden, in Abrechnung hatte ich eine 1.",
+    "Ihre Praxis kenne ich als Patientin seit meiner Kindheit, und ich weiß, wie viele Menschen aus den umliegenden Dörfern zu Ihnen kommen. Hausbesuche würde ich gern begleiten; den Führerschein habe ich.",
+    "Ich kann zum 1. August anfangen. Über einen Probetag in Ihrem Team würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis MFA",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Praxiswechsel mit Berufserfahrung",
+   "level": "erfahren",
+   "position": "MFA in Teilzeit für die orthopädische Praxis",
+   "to": {
+    "org": "Orthopädie am Schlossgarten MVZ GmbH",
+    "sal": "m",
+    "street": "Schlossgartenstraße 15",
+    "city": "76133 Karlsruhe",
+    "contact": "Lang"
+   },
+   "body": [
+    "seit sieben Jahren arbeite ich als MFA in einer chirurgischen Praxis mit D-Arzt-Zulassung. Weil unsere Praxis zum Jahresende schließt, suche ich eine neue Stelle – und Ihr MVZ steht ganz oben auf meiner Liste.",
+    "Viel von dem, was Sie in der Anzeige beschreiben, mache ich täglich: Verbände und Gipse anlegen, bei Injektionen und kleinen Eingriffen assistieren, Röntgenaufnahmen nach Anordnung erstellen. Die Kenntnisse im Strahlenschutz habe ich, sie wurden im März aktualisiert. Außerdem rechne ich die BG-Fälle ab, was in unserer Praxis rund ein Drittel der Patienten betrifft. Neue Auszubildende arbeite ich seit drei Jahren ein.",
+    "Ich möchte 25 bis 30 Stunden arbeiten, am liebsten an vier Tagen. Ihre Praxissoftware kenne ich noch nicht, wir arbeiten mit einem anderen System. Das Einarbeiten in eine neue Software habe ich aber schon einmal gut hinter mich gebracht, als unsere Praxis gewechselt hat."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Nachweis Kenntnisse im Strahlenschutz",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Natalia Wróbel",
+    "Durlacher Allee 61",
+    "76131 Karlsruhe"
+   ]
+  },
+  {
+   "label": "Wiedereinstieg nach der Elternzeit",
+   "level": "erfahren",
+   "position": "Medizinische Fachangestellte (20 Stunden, vormittags)",
+   "to": {
+    "org": "Kinderarztpraxis am Bahnhof",
+    "sal": "none",
+    "street": "Bahnhofplatz 3",
+    "city": "35390 Gießen"
+   },
+   "body": [
+    "nach drei Jahren Elternzeit mit zwei Kindern möchte ich wieder in meinen Beruf zurück. Ihre Anzeige für eine Vormittagskraft passt genau zu dem, was ich anbieten kann: Montag bis Freitag von 7:30 bis 12:00 Uhr.",
+    "Vor der Elternzeit war ich sechs Jahre in einer pädiatrischen Praxis tätig. U-Untersuchungen vorbereiten, Hör- und Sehtests machen, Impfpässe kontrollieren und Eltern am Telefon einschätzen, ob ihr Kind heute noch kommen sollte – das war mein Alltag. Gerade das Telefonieren mit besorgten Eltern hat mir immer gelegen. Damit ich nicht ganz aus der Übung komme, habe ich im letzten Herbst einen Auffrischungskurs zu Notfällen in der Praxis besucht.",
+    "Mir ist bewusst, dass sich in der Abrechnung und bei den digitalen Abläufen einiges geändert hat, etwa beim E-Rezept. Ich lerne das schnell und frage lieber einmal mehr nach.",
+    "Die Betreuung meiner Kinder ist ab Januar gesichert. Ich würde mich freuen, Ihr Team kennenzulernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis MFA",
+    "Arbeitszeugnis",
+    "Teilnahmebescheinigung Notfallkurs"
+   ],
+   "from": [
+    "Julia Ackermann",
+    "Frankfurter Straße 109",
+    "35392 Gießen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "modern",
+  "accent": 0,
+  "name": "Sophie Wagner",
+  "title": "Medizinische Fachangestellte",
+  "street": "Talstraße 23",
+  "city": "66424 Homburg",
+  "exp": [
+   [
+    "08/2023",
+    "06/2026",
+    "Auszubildende zur MFA",
+    "Internistische Gemeinschaftspraxis Dres. Kühn",
+    "Homburg",
+    "- Empfang, Terminvergabe, Telefon\n- Blutentnahme, EKG, Lungenfunktion, Labor\n- Abrechnung nach EBM und GOÄ"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "06/2026",
+    "Ausbildung zur Medizinischen Fachangestellten, Abschluss 2,0",
+    "Berufsbildungszentrum Homburg",
+    "Homburg",
+    ""
+   ],
+   [
+    "2017",
+    "2023",
+    "Mittlerer Bildungsabschluss",
+    "Gemeinschaftsschule Bexbach",
+    "Bexbach",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "2025",
+    "",
+    "Impfkurs für MFA",
+    "Ärztekammer des Saarlandes",
+    "",
+    ""
+   ],
+   [
+    "2024",
+    "",
+    "Notfallmanagement in der Arztpraxis",
+    "Bildungsinstitut für Gesundheitsberufe",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Blutentnahme und i.v.-Zugang",
+    4
+   ],
+   [
+    "EKG und Lungenfunktion",
+    4
+   ],
+   [
+    "Abrechnung EBM/GOÄ",
+    4
+   ],
+   [
+    "Praxisverwaltungssoftware",
+    4
+   ],
+   [
+    "Hygiene und Medizinprodukteaufbereitung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Russisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Volleyball, Kochen für Freunde"
+ },
+ "do": [
+  "Nenn das Fachgebiet und die Aufgaben, die du sicher beherrschst.",
+  "Erwähne Zusatzqualifikationen: Strahlenschutz, Impfen, Wundversorgung, VERAH.",
+  "Schreib, ab wann und wie viele Stunden du arbeiten kannst."
+ ],
+ "dont": [
+  "Patientengeschichten mit erkennbaren Details erzählen – Schweigepflicht gilt auch im Anschreiben.",
+  "Unsicherheiten bei Blutentnahmen kleinreden; sag lieber ehrlich, wo du Übung brauchst.",
+  "Eine Massenbewerbung ohne Bezug zur Praxis schicken."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem Patienten um, der am Empfang laut wird?",
+  "Welche Praxissoftware kennen Sie?",
+  "Wie priorisieren Sie, wenn Telefon und Empfang gleichzeitig Hilfe brauchen?",
+  "Welche Aufgaben haben Sie bisher selbstständig übernommen?"
+ ],
+ "pay": "Für MFA gibt es einen Gehaltstarifvertrag mit Tätigkeitsgruppen, an dem sich viele Praxen orientieren. Frag, nach welcher Gruppe du eingestuft wirst.",
+ "faq": [
+  {
+   "q": "Arzthelferin oder MFA – wie schreibe ich das?",
+   "a": "Die Ausbildung heißt seit 2006 Medizinische Fachangestellte bzw. Medizinischer Fachangestellter. Wenn du noch als Arzthelferin gelernt hast, schreib die Bezeichnung aus deiner Urkunde und gern dazu „(heute MFA)“."
+  },
+  {
+   "q": "Muss ich mich direkt beim Arzt bewerben?",
+   "a": "In Einzelpraxen meist ja, adressiert an die Praxisinhaberin oder den Praxisinhaber. MVZ und größere Praxen haben oft eine Praxismanagerin oder Personalabteilung – nimm den Namen aus der Anzeige."
+  },
+  {
+   "q": "Darf ich mich auch bewerben, wenn keine Stelle ausgeschrieben ist?",
+   "a": "Ja, bei Arztpraxen sind Initiativbewerbungen üblich, gern auch persönlich mit der Mappe am Empfang. Ruf vorher kurz an und frag, wer zuständig ist."
+  }
+ ],
+ "related": [
+  "zahnmedizinische-fachangestellte",
+  "pflegefachkraft",
+  "ausbildung-mfa",
+  "rezeptionist"
+ ],
+ "en": {
+  "slug": "medical-receptionist",
+  "name": "Medical receptionist / assistant",
+  "search": "medical receptionist medical assistant gp receptionist healthcare assistant clinic",
+  "short": "GP surgery, clinic or practice – first job or experienced.",
+  "desc": "Medical receptionist and assistant CV and cover letter examples: letters for a first role and an experienced practice assistant, plus a ready CV.",
+  "intro": "Practices want people who greet patients warmly, keep appointments running, handle confidential information carefully and – for assistant roles – support with clinical tasks such as blood tests or ECGs where permitted.",
+  "lookFor": [
+   "Experience on a busy front desk or in healthcare",
+   "Appointment systems and practice software",
+   "Confidentiality and data protection",
+   "Calm handling of phone, queue and requests at the same time",
+   "Clinical skills where the role includes them"
+  ],
+  "letters": [
+   {
+    "label": "First practice role",
+    "level": "berufseinstieg",
+    "position": "Medical receptionist",
+    "to": {
+     "org": "Hillside Medical Practice",
+     "sal": "f",
+     "street": "8 Market Street",
+     "city": "Shrewsbury SY1 1LE",
+     "contact": "Gruber"
+    },
+    "body": [
+     "I have just completed a health and social care course with a placement at an internal medicine practice. I would now like to join a GP surgery because I value getting to know patients over many years.",
+     "On placement I worked on reception, booked appointments, handled repeat prescription requests and helped prepare patients for ECGs. I learned to juggle a full phone line, an impatient patient and a referral letter without anyone being forgotten. It never got boring.",
+     "I have known your practice as a patient since I was a child. I can start in August and would be glad to come in for a trial day."
+    ],
+    "att": [
+     "CV",
+     "Course certificate",
+     "Placement reference"
+    ]
+   },
+   {
+    "label": "Returning after parental leave",
+    "level": "erfahren",
+    "position": "Medical receptionist (mornings)",
+    "to": {
+     "org": "Riverside Children’s Clinic",
+     "sal": "none",
+     "street": "3 Station Square",
+     "city": "Shrewsbury SY1 2DQ"
+    },
+    "body": [
+     "After three years of parental leave with two children, I would like to return to my profession. Your advert for a morning role fits exactly: Monday to Friday, 7.30 to 12.00.",
+     "Before my leave I spent six years at a paediatric clinic. Preparing check-ups, hearing and sight tests and judging on the phone whether a child should be seen today were part of every day. I took a refresher course on practice emergencies last autumn.",
+     "I know systems have changed and I learn quickly. Childcare is in place from January."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Julia Acker",
+     "109 Abbey Foregate",
+     "Shrewsbury SY2 6AH"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a01",
+   "design": "modern",
+   "accent": 0,
+   "name": "Sophie Walker",
+   "title": "Medical receptionist",
+   "street": "23 Castle Street",
+   "city": "Shrewsbury SY1 2BB",
+   "exp": [
+    [
+     "09/2025",
+     "06/2026",
+     "Placement, reception and clinical support",
+     "Kühn & Partners Practice",
+     "Shrewsbury",
+     "- Reception and appointments\n- Repeat prescriptions\n- ECG preparation"
+    ]
+   ],
+   "edu": [
+    [
+     "2024",
+     "2026",
+     "Health and social care course (level 3)",
+     "Shrewsbury College",
+     "Shrewsbury",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Basic life support",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Appointment systems",
+     4
+    ],
+    [
+     "Patient communication",
+     5
+    ],
+    [
+     "Confidentiality",
+     5
+    ],
+    [
+     "ECG preparation",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Polish",
+     "B1"
+    ]
+   ],
+   "hobbies": "Volleyball, cooking for friends"
+  },
+  "do": [
+   "Mention systems and tasks you handle.",
+   "Show calm under pressure with an example.",
+   "State hours and start date."
+  ],
+  "dont": [
+   "Share identifiable patient stories.",
+   "Overstate clinical skills.",
+   "Send a generic letter."
+  ],
+  "questions": [
+   "How would you deal with an angry patient at the desk?",
+   "Which systems do you know?",
+   "How do you prioritise phone and desk?",
+   "What does confidentiality mean to you?"
+  ],
+  "faq": [
+   {
+    "q": "Is a cover letter expected for receptionist roles?",
+    "a": "Usually yes. A short letter that shows you know the practice and can handle a busy desk helps a lot."
+   }
+  ]
+ }
+}

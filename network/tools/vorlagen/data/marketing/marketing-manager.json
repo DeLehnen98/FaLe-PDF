@@ -1,0 +1,331 @@
+{
+ "id": "marketing-manager",
+ "field": "marketing",
+ "popular": true,
+ "name": "Marketing Manager/in",
+ "search": "marketing manager marketingmanagerin online marketing manager performance marketing produktmarketing kampagnen marketingreferent",
+ "short": "Online- und Produktmarketing – Junior, erfahren oder Branchenwechsel.",
+ "desc": "Bewerbung als Marketing Manager/in: Musteranschreiben für Junior nach dem Studium und erfahrene Online-Marketing-Managerin, Lebenslauf und Gesprächsfragen.",
+ "intro": "Im Marketing zählen Ergebnisse: Was hast du ausprobiert, gemessen und verbessert? Nenn Kanäle, Budgets in Größenordnungen, Kennzahlen und was du daraus gelernt hast. Eine Kampagne, die nicht funktioniert hat, und was du daraus gemacht hast, ist oft überzeugender als eine Erfolgsliste.",
+ "lookFor": [
+  "Studium oder Ausbildung im Marketing oder vergleichbare Praxis",
+  "Kanäle: Suchmaschinen, Social, E-Mail, Content, Messen",
+  "Analyse und Kennzahlen",
+  "Budget- und Agentursteuerung",
+  "Gute Texte und Präsentationen"
+ ],
+ "letters": [
+  {
+   "label": "Junior nach dem Studium",
+   "level": "berufseinstieg",
+   "position": "Junior Online Marketing Manager",
+   "to": {
+    "org": "Teehaus Nordsee GmbH",
+    "sal": "none",
+    "street": "Am Deich 5",
+    "city": "26506 Norden"
+   },
+   "body": [
+    "im Praxissemester habe ich für einen kleinen Onlineshop für Kaffee den Newsletter neu aufgesetzt: weniger Rabatte, mehr Geschichten über die Röstereien. Die Öffnungsrate stieg deutlich, die Abmeldungen sanken. Ihr Teehandel mit eigenen Teegärten hat mindestens so viele Geschichten.",
+    "Ich habe meinen Bachelor in Medienwirtschaft im Sommer abgeschlossen. Im Praktikum habe ich Suchanzeigen betreut, Produktseiten für Suchmaschinen überarbeitet und monatliche Auswertungen für die Geschäftsführung gebaut. Ich schreibe gern, ich rechne gern, und ich finde es spannend, wenn beides zusammenkommt.",
+    "Für die richtige Stelle ziehe ich sofort an die Küste."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Praktikumszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Managerin, Wechsel ins B2B",
+   "level": "erfahren",
+   "position": "Marketing Managerin B2B",
+   "to": {
+    "org": "Hydraulik Systeme Nord GmbH",
+    "sal": "f",
+    "street": "Industrieweg 12",
+    "city": "26603 Aurich",
+    "contact": "Janssen"
+   },
+   "body": [
+    "sechs Jahre Marketing für einen Modehändler haben mir beigebracht, wie man in Wochen denkt: neue Kollektion, neue Kampagne, neue Zahlen. Im B2B dauert ein Kaufentscheid eher Monate. Genau das reizt mich, weil Marketing dort Beziehungen aufbaut statt Impulse auszulösen.",
+    "Ich habe ein Jahresbudget im mittleren sechsstelligen Bereich gesteuert, zwei Agenturen geführt und unser Tracking neu aufgestellt, sodass wir zum ersten Mal sehen konnten, welche Kanäle wirklich verkaufen. Einige teure Maßnahmen haben wir danach gestrichen. Aus meinem Ingenieurinnen-Elternhaus bringe ich keine Angst vor technischen Produkten mit, sondern Neugier.",
+    "Ich würde gern zuerst mit Ihrem Vertrieb sprechen, um zu verstehen, wie Ihre Kunden kaufen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Katja Ubben",
+    "Großstraße 10",
+    "26506 Norden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "modern",
+  "accent": 2,
+  "name": "Finn Martens",
+  "title": "Online-Marketing (B.A. Medienwirtschaft)",
+  "street": "Osterstraße 22",
+  "city": "26506 Norden",
+  "exp": [
+   [
+    "03/2025",
+    "08/2025",
+    "Praxissemester Online-Marketing",
+    "Röstwerk Ostfriesland",
+    "Leer",
+    "- Newsletter-Konzept und Umsetzung\n- Suchanzeigen und Produktseiten-Optimierung\n- Monatsberichte für die Geschäftsführung"
+   ],
+   [
+    "2023",
+    "2025",
+    "Werkstudent Social Media",
+    "Stadtmarketing Emden",
+    "Emden",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2022",
+    "09/2026",
+    "B.A. Medienwirtschaft",
+    "Hochschule Emden/Leer",
+    "Emden",
+    ""
+   ],
+   [
+    "2013",
+    "2022",
+    "Abitur",
+    "Ulrichsgymnasium",
+    "Norden",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Newsletter-Marketing",
+    4
+   ],
+   [
+    "Suchmaschinenwerbung",
+    3
+   ],
+   [
+    "Webanalyse",
+    4
+   ],
+   [
+    "Texten",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Plattdeutsch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Kitesurfen, Fotografie"
+ },
+ "do": [
+  "Kennzahlen und Lernmomente.",
+  "Kanäle mit Beispielen.",
+  "Bezug zum Produkt des Unternehmens."
+ ],
+ "dont": [
+  "Buzzword-Bingo.",
+  "Vertrauliche Zahlen.",
+  "Nur Social Media, wenn die Stelle mehr verlangt."
+ ],
+ "questions": [
+  "Welche Kampagne ist nicht gelaufen, und was haben Sie daraus gelernt?",
+  "Wie würden Sie unser Budget aufteilen?",
+  "Welche Kennzahlen sind für uns wichtig?",
+  "Wie arbeiten Sie mit dem Vertrieb zusammen?"
+ ],
+ "faq": [
+  {
+   "q": "Soll ich Arbeitsproben beilegen?",
+   "a": "Ein bis zwei kurze Beispiele oder ein Link auf ein Portfolio helfen sehr – mit kurzer Erklärung, was dein Anteil war."
+  }
+ ],
+ "related": [
+  "social-media-manager",
+  "content-manager",
+  "grafikdesigner",
+  "praktikum-marketing"
+ ],
+ "en": {
+  "slug": "marketing-manager",
+  "name": "Marketing manager",
+  "search": "marketing manager digital marketing executive marketing coordinator brand marketing",
+  "short": "Digital and product marketing – junior or experienced.",
+  "desc": "Marketing manager CV and cover letter examples: letters for a graduate marketer and an experienced manager moving into B2B, plus a ready CV.",
+  "intro": "In marketing, results matter: what did you try, measure and improve? Name channels, budgets as orders of magnitude, metrics and what you learned. A campaign that failed and what you changed can be more convincing than a list of wins.",
+  "lookFor": [
+   "Marketing degree or relevant practice",
+   "Channels: search, social, email, content, events",
+   "Analytics and KPIs",
+   "Budget and agency management",
+   "Strong writing and presenting"
+  ],
+  "letters": [
+   {
+    "label": "Graduate marketer",
+    "level": "berufseinstieg",
+    "position": "Junior digital marketing executive",
+    "to": {
+     "org": "Northern Leaf Tea Co.",
+     "sal": "none",
+     "street": "5 Harbour Street",
+     "city": "Whitby YO21 3PA"
+    },
+    "body": [
+     "During my placement year I rebuilt the newsletter of a small online coffee shop: fewer discounts, more stories about the roasters. Open rates went up and unsubscribes went down. Your tea gardens have at least as many stories.",
+     "I graduated in media business this summer. I ran search ads, rewrote product pages for search and built monthly reports for the owners. I like writing and I like numbers, and the best work happens where they meet.",
+     "I would happily move to the coast for the right role."
+    ],
+    "att": [
+     "CV",
+     "Degree certificate"
+    ]
+   },
+   {
+    "label": "Experienced manager moving into B2B",
+    "level": "erfahren",
+    "position": "B2B marketing manager",
+    "to": {
+     "org": "Northline Hydraulics Ltd",
+     "sal": "f",
+     "street": "Industrial Park",
+     "city": "Hull HU7 0YQ",
+     "contact": "Jones"
+    },
+    "body": [
+     "Six years in fashion marketing taught me to think in weeks: new collection, new campaign, new numbers. In B2B a decision takes months – which is exactly why it appeals to me.",
+     "I managed a mid six-figure annual budget, led two agencies and rebuilt our tracking so we could finally see which channels sold. We cut several expensive activities afterwards.",
+     "I would like to start by talking to your sales team to understand how your customers buy."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Kate Wilson",
+     "10 Newland Park",
+     "Hull HU5 2DT"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a17",
+   "design": "modern",
+   "accent": 2,
+   "name": "Finn Marsh",
+   "title": "Digital marketing (BA Media Business)",
+   "street": "22 Flowergate",
+   "city": "Whitby YO21 3BA",
+   "exp": [
+    [
+     "09/2024",
+     "06/2025",
+     "Marketing placement",
+     "Roastworks Ltd",
+     "Leeds",
+     "- Newsletter concept and delivery\n- Search ads and product page optimisation\n- Monthly reports"
+    ]
+   ],
+   "edu": [
+    [
+     "2022",
+     "2026",
+     "BA Media Business",
+     "University of Leeds",
+     "Leeds",
+     ""
+    ],
+    [
+     "2015",
+     "2022",
+     "Secondary school and sixth form",
+     "Caedmon College",
+     "Whitby",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Email marketing",
+     4
+    ],
+    [
+     "Paid search",
+     3
+    ],
+    [
+     "Web analytics",
+     4
+    ],
+    [
+     "Copywriting",
+     4
+    ],
+    [
+     "Spreadsheets",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "B1"
+    ]
+   ],
+   "hobbies": "Kitesurfing, photography"
+  },
+  "do": [
+   "Use metrics and lessons learned.",
+   "Explain channels with examples.",
+   "Link your experience to the company’s product."
+  ],
+  "dont": [
+   "Buzzwords without substance.",
+   "Confidential figures.",
+   "Only social media if the role needs more."
+  ],
+  "questions": [
+   "Which campaign failed, and what did you learn?",
+   "How would you split our budget?",
+   "Which KPIs matter for us?",
+   "How do you work with sales?"
+  ],
+  "faq": [
+   {
+    "q": "Should I include work samples?",
+    "a": "One or two short examples or a portfolio link help – with a line on what your part was."
+   }
+  ]
+ }
+}

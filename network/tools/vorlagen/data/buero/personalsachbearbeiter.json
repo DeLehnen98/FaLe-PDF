@@ -1,0 +1,190 @@
+{
+ "id": "personalsachbearbeiter",
+ "field": "buero",
+ "name": "Personalsachbearbeiter/in",
+ "search": "personalreferentin personalsachbearbeiterin hr generalist personalwesen lohnbuchhaltung entgeltabrechnung personalabteilung",
+ "short": "Personalverwaltung und Entgeltabrechnung – mit Erfahrung oder nach der Weiterbildung.",
+ "desc": "Bewerbung als Personalsachbearbeiter/in: Musteranschreiben für erfahrene HR-Sachbearbeitung und den Einstieg nach der Weiterbildung, plus fertiger Lebenslauf.",
+ "intro": "In der Personalabteilung verwaltest du Verträge, Zeiten, Abwesenheiten und oft auch die Entgeltabrechnung. Gesucht werden Leute mit arbeitsrechtlichem Grundwissen, Sicherheit im Abrechnungssystem und viel Fingerspitzengefühl im Umgang mit Mitarbeitenden.",
+ "lookFor": [
+  "Kaufmännische Ausbildung und Erfahrung im Personalwesen oder eine Weiterbildung (z. B. Personalfachkaufmann/-frau)",
+  "Entgeltabrechnung inklusive Sozialversicherung und Lohnsteuer",
+  "Arbeitsverträge, Bescheinigungen, Zeugnisse",
+  "Sicherer Umgang mit Personal- und Zeiterfassungssystemen",
+  "Vertraulichkeit"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene HR-Sachbearbeiterin",
+   "level": "erfahren",
+   "position": "Personalsachbearbeiterin mit Schwerpunkt Entgeltabrechnung",
+   "to": {
+    "org": "Klinikverbund Ostalb gGmbH",
+    "sal": "m",
+    "street": "Im Kälblesrain 1",
+    "city": "73430 Aalen",
+    "contact": "Brenner"
+   },
+   "body": [
+    "jeden Monat rechne ich für rund 450 Beschäftigte die Gehälter ab, mit Schichtzulagen, Teilzeitmodellen und allem, was ein Pflegeheimverbund mit sich bringt. Ein Krankenhaus mit Tarifvertrag und Bereitschaftsdiensten wäre für mich der nächste Schritt.",
+    "Neben der Abrechnung erstelle ich Arbeitsverträge, Bescheinigungen und Zeugnisentwürfe, pflege die Personalakten und bin Ansprechpartnerin für Krankenkassen und Rentenversicherung. Bei Betriebsprüfungen der Rentenversicherung habe ich die Unterlagen vorbereitet – die letzte Prüfung lief ohne Beanstandung. Kolleginnen kommen mit Fragen zu Elternzeit oder Steuerklasse oft zuerst zu mir.",
+    "Die Weiterbildung zur Personalfachkauffrau habe ich 2023 abgeschlossen. Ich kann zum 1. April beginnen und freue mich, Sie kennenzulernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Personalfachkauffrau",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Einstieg nach der Weiterbildung",
+   "level": "quereinstieg",
+   "position": "Personalsachbearbeiter (Junior)",
+   "to": {
+    "org": "Ostalb Metallbau GmbH",
+    "sal": "none",
+    "street": "Industriestraße 30",
+    "city": "73431 Aalen"
+   },
+   "body": [
+    "nach fünf Jahren als Teamleiter in der Produktion weiß ich, wie Personalfragen von unten aussehen: Urlaubsanträge, Schichttausch, Kollegen mit Fragen zur Lohnabrechnung, die ich nicht beantworten konnte. Das hat mich so interessiert, dass ich nebenberuflich die Weiterbildung zum Personalfachkaufmann gemacht habe.",
+    "Im Juni habe ich die IHK-Prüfung bestanden. In meinem Betrieb durfte ich während der Weiterbildung zwei Monate in der Personalabteilung mitarbeiten: Ich habe Zeiterfassungen korrigiert, Einstellungsunterlagen vorbereitet und die Abrechnung unter Anleitung geprüft. Aus der Produktion bringe ich mit, dass ich weiß, was Schichtarbeit bedeutet, und dass Mitarbeitende mir vertrauen.",
+    "Ich suche einen Einstieg in die Personalsachbearbeitung, gern in einem Industriebetrieb. Für ein Gespräch bin ich flexibel."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis Personalfachkaufmann",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Dominik Haller",
+    "Bahnhofstraße 14",
+    "73430 Aalen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "modern",
+  "accent": 2,
+  "name": "Sabrina Kuhn",
+  "title": "Personalfachkauffrau (IHK)",
+  "street": "Gartenstraße 9",
+  "city": "73430 Aalen",
+  "exp": [
+   [
+    "05/2019",
+    "",
+    "Personalsachbearbeiterin",
+    "Seniorenstifte Ostwürttemberg",
+    "Aalen",
+    "- Entgeltabrechnung für ca. 450 Beschäftigte\n- Arbeitsverträge, Bescheinigungen, Zeugnisentwürfe\n- Vorbereitung von Betriebsprüfungen"
+   ],
+   [
+    "08/2015",
+    "04/2019",
+    "Kauffrau für Büromanagement",
+    "Autohaus Härtsfeld",
+    "Aalen",
+    "- Lohnvorbereitung, Personalakten"
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung Kauffrau für Bürokommunikation",
+    "Autohaus Härtsfeld",
+    "Aalen",
+    ""
+   ],
+   [
+    "2006",
+    "2012",
+    "Mittlere Reife",
+    "Realschule Aalen",
+    "Aalen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "Geprüfte Personalfachkauffrau (IHK)",
+    "IHK Ostwürttemberg",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Update Lohnsteuer und Sozialversicherung",
+    "Bildungsträger",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Entgeltabrechnung",
+    5
+   ],
+   [
+    "Arbeitsrecht-Grundlagen",
+    4
+   ],
+   [
+    "Personalsoftware",
+    4
+   ],
+   [
+    "Zeugniserstellung",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Chor, Radfahren"
+ },
+ "do": [
+  "Nenn Zahlen: Beschäftigte, Abrechnungen, Standorte.",
+  "Erwähne Weiterbildungen und Updates zu Lohnsteuer und Sozialversicherung.",
+  "Zeig Vertraulichkeit, ohne Interna zu nennen."
+ ],
+ "dont": [
+  "Beispiele mit erkennbaren Kollegen.",
+  "Abrechnungssysteme übertreiben.",
+  "Arbeitsrechtliche Fragen in der Bewerbung lösen wollen."
+ ],
+ "questions": [
+  "Ein Mitarbeiter beschwert sich, dass seine Abrechnung falsch ist. Wie gehen Sie vor?",
+  "Welche Bescheinigungen haben Sie bereits erstellt?",
+  "Wie bleiben Sie bei Änderungen im Sozialversicherungsrecht auf dem Stand?",
+  "Wie gehen Sie mit vertraulichen Gesprächen um?"
+ ],
+ "faq": [
+  {
+   "q": "Personalsachbearbeiter oder Personalreferent?",
+   "a": "Sachbearbeitung ist eher administrativ (Verträge, Abrechnung, Akten), Referenten beraten Führungskräfte und betreuen Prozesse wie Recruiting. Bewirb dich mit den Beispielen, die zur jeweiligen Rolle passen."
+  }
+ ],
+ "related": [
+  "buchhalter",
+  "assistenz-geschaeftsfuehrung",
+  "kauffrau-bueromanagement",
+  "steuerfachangestellte"
+ ]
+}

@@ -1,0 +1,164 @@
+{
+ "id": "ausbildung-bueromanagement",
+ "field": "ausbildung",
+ "name": "Ausbildung Kaufmann/-frau für Büromanagement",
+ "search": "ausbildung bürokauffrau büromanagement bewerbung ausbildungsplatz kaufmännische ausbildung büro schüler",
+ "short": "Kaufmännische Ausbildung im Büro – Bewerbung als Schüler oder Umschüler.",
+ "desc": "Bewerbung für die Ausbildung zur Kauffrau / zum Kaufmann für Büromanagement: Musteranschreiben für Schülerin und Umschüler, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Für Büro-Ausbildungen zählen gute Deutschnoten, Interesse an Organisation und ein freundliches Auftreten. Schreib, was dich an Büroarbeit reizt, und zeig es mit einem Beispiel – Schülerzeitung, Vereinsarbeit, Praktikum.",
+ "lookFor": [
+  "Realschulabschluss oder Abitur, gute Noten in Deutsch",
+  "Organisation und Sorgfalt",
+  "PC-Kenntnisse",
+  "Freundliche Kommunikation",
+  "Praktikum oder Ehrenamt"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin mit Vereinsarbeit",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Kauffrau für Büromanagement",
+   "to": {
+    "org": "Stadtverwaltung Fulda – Ausbildung",
+    "sal": "none",
+    "street": "Schlossstraße 1",
+    "city": "36037 Fulda"
+   },
+   "body": [
+    "in unserem Reitverein führe ich seit einem Jahr die Mitgliederliste und schreibe die Einladungen zu Turnieren. Dabei habe ich gemerkt, dass ich Ordnung schaffen kann, wo vorher Zettelchaos war. Und dass mir das Spaß macht.",
+    "Im Sommer schließe ich die Realschule ab, mit guten Noten in Deutsch und Englisch. Ich arbeite sicher mit Textverarbeitung und Tabellen und habe im Praktikum in einem Steuerbüro Post bearbeitet, Akten abgelegt und Telefonate angenommen.",
+    "In der Stadtverwaltung würde ich gern die Ausbildung machen, weil ich dort viele verschiedene Bereiche kennenlerne."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Umschulung aus der Gastronomie",
+   "level": "ausbildung",
+   "position": "Umschüler zum Kaufmann für Büromanagement",
+   "to": {
+    "org": "Logistik Osthessen GmbH",
+    "sal": "none",
+    "street": "Am Rangierbahnhof 3",
+    "city": "36041 Fulda"
+   },
+   "body": [
+    "wegen meines Rückens habe ich mich nach acht Jahren als Koch für eine Umschulung entschieden. Die Agentur für Arbeit fördert die Umschulung zum Kaufmann für Büromanagement, und für den praktischen Teil suche ich einen Betrieb.",
+    "Aus der Küche bringe ich Organisationstalent mit: Ich habe Bestellungen geschrieben, Lieferungen geprüft und Dienstpläne erstellt. Mit Tabellen kenne ich mich aus, weil ich die Warenkalkulation für unser Restaurant geführt habe. In einer Logistikfirma geht es ebenfalls um Timing, und das kann ich.",
+    "Wann darf ich vorbeikommen?"
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief Koch",
+    "Bildungsgutschein",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sven Hartung",
+    "Leipziger Straße 50",
+    "36037 Fulda"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 0,
+  "name": "Emma Schreiber",
+  "title": "Schülerin",
+  "street": "Petersberger Straße 20",
+  "city": "36037 Fulda",
+  "exp": [
+   [
+    "03/2026",
+    "03/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Steuerbüro Kraus",
+    "Fulda",
+    "- Postbearbeitung, Ablage, Telefon"
+   ],
+   [
+    "2025",
+    "",
+    "Mitgliederverwaltung (ehrenamtlich)",
+    "Reitverein Fulda",
+    "Fulda",
+    "- Mitgliederliste, Turniereinladungen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2021",
+    "07/2027",
+    "Realschule (voraussichtlich Realschulabschluss)",
+    "Realschule Fulda",
+    "Fulda",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Textverarbeitung",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Organisation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Reiten, Lesen"
+ },
+ "do": [
+  "Ein Organisationsbeispiel.",
+  "PC-Kenntnisse ehrlich.",
+  "Bezug zum Betrieb."
+ ],
+ "dont": [
+  "Floskeln wie „teamfähig, belastbar, flexibel“.",
+  "Lange Absätze.",
+  "Fehler in Rechtschreibung."
+ ],
+ "questions": [
+  "Warum eine Büroausbildung?",
+  "Wie organisieren Sie Ihre Schulaufgaben?",
+  "Was wissen Sie über uns?",
+  "Welche Programme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Gibt es die Ausbildung als Umschulung?",
+   "a": "Ja. Die Umschulung dauert meist zwei Jahre und wird oft von der Agentur für Arbeit oder der Rentenversicherung gefördert. Du brauchst einen Praktikums- oder Umschulungsbetrieb."
+  }
+ ],
+ "related": [
+  "kauffrau-bueromanagement",
+  "ausbildung-industriekaufmann",
+  "verwaltungsfachangestellte",
+  "schuelerpraktikum"
+ ]
+}

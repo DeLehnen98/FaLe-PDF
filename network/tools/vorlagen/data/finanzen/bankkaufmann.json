@@ -1,0 +1,171 @@
+{
+ "id": "bankkaufmann",
+ "field": "finanzen",
+ "name": "Bankkaufmann/Bankkauffrau",
+ "search": "bankkauffrau bankkaufmann kundenberater bank privatkundenberater sparkasse genossenschaftsbank filiale",
+ "short": "Service und Beratung in der Filiale oder im Backoffice.",
+ "desc": "Bewerbung als Bankkaufmann/Bankkauffrau: Musteranschreiben für Berufsstart in der Privatkundenberatung und den Wechsel ins Firmenkundengeschäft, Lebenslauf.",
+ "intro": "Banken suchen Mitarbeitende, die Vertrauen aufbauen, sorgfältig arbeiten und Regeln einhalten. Für Beratungsstellen zählen Kundengespräche und Vertriebserfolge, für das Backoffice Genauigkeit und Prozesswissen.",
+ "lookFor": [
+  "Ausbildung als Bankkaufmann/-frau",
+  "Beratung zu Konten, Zahlungsverkehr, Geldanlage oder Finanzierung",
+  "Regulatorik und Dokumentation",
+  "Vertriebsorientierung",
+  "Weiterbildungen wie Bankfachwirt/in"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung in die Privatkundenberatung",
+   "level": "berufseinstieg",
+   "position": "Privatkundenberater",
+   "to": {
+    "org": "Volksbank Hohenlohe eG",
+    "sal": "none",
+    "street": "Marktplatz 3",
+    "city": "74653 Künzelsau"
+   },
+   "body": [
+    "viele Kunden in meiner Ausbildungsfiliale kannten mich nach ein paar Monaten mit Namen und fragten gezielt nach mir. Das lag weniger an meinem Fachwissen als daran, dass ich zuhöre, bevor ich ein Produkt vorschlage.",
+    "Ich habe meine Ausbildung zum Bankkaufmann im Januar abgeschlossen. Ich habe Konten eröffnet, Kunden zum Online-Banking beraten, erste Sparpläne und Ratenkredite unter Aufsicht abgeschlossen und die Dokumentation vollständig geführt. Im letzten Ausbildungsjahr habe ich eine Infoveranstaltung für Berufsanfänger zum Thema erstes Gehalt organisiert.",
+    "Ich bin in Hohenlohe aufgewachsen und möchte hier bleiben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Wechsel ins Firmenkundengeschäft",
+   "level": "erfahren",
+   "position": "Firmenkundenbetreuerin (Assistenz)",
+   "to": {
+    "org": "Sparkasse Hohenlohekreis",
+    "sal": "none",
+    "street": "Stuttgarter Straße 5",
+    "city": "74653 Künzelsau"
+   },
+   "body": [
+    "ins Firmenkundengeschäft möchte ich nach sechs Jahren in der Privatkundenberatung wechseln. Viele meiner Kunden sind Handwerker und Selbstständige, und ich habe gemerkt, dass mich ihre betrieblichen Fragen mehr interessieren als die privaten.",
+    "Ich berate zu Geldanlage und Baufinanzierung und bereite Kreditunterlagen vor. Für Selbstständige habe ich Finanzierungsanfragen an das Firmenkundenteam übergeben und dabei die ersten Bilanzanalysen begleitet. Die Weiterbildung zur Bankfachwirtin habe ich im letzten Jahr abgeschlossen, mit Schwerpunkt Firmenkundenkredit.",
+    "Für ein Gespräch nehme ich mir gern Zeit, auch kurzfristig."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis Bankfachwirtin",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Nina Bauer",
+    "Hauptstraße 22",
+    "74638 Waldenburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "classic",
+  "accent": 0,
+  "name": "Lukas Schad",
+  "title": "Bankkaufmann",
+  "street": "Keltergasse 12",
+  "city": "74653 Künzelsau",
+  "exp": [
+   [
+    "09/2023",
+    "01/2026",
+    "Auszubildender Bankkaufmann",
+    "Raiffeisenbank Kocher-Jagst eG",
+    "Künzelsau",
+    "- Kontoeröffnung, Zahlungsverkehr, Online-Banking-Beratung\n- Sparpläne und Ratenkredite unter Aufsicht\n- Infoveranstaltung „Erstes Gehalt“"
+   ],
+   [
+    "02/2026",
+    "",
+    "Bankkaufmann Service",
+    "Raiffeisenbank Kocher-Jagst eG",
+    "Künzelsau",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "09/2023",
+    "01/2026",
+    "Ausbildung Bankkaufmann",
+    "Kaufmännische Schule",
+    "Künzelsau",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Ganerben-Gymnasium",
+    "Künzelsau",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    4
+   ],
+   [
+    "Zahlungsverkehr",
+    4
+   ],
+   [
+    "Geldanlage-Grundlagen",
+    3
+   ],
+   [
+    "Kreditvorbereitung",
+    3
+   ],
+   [
+    "Dokumentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Musikverein (Trompete), Radfahren"
+ },
+ "do": [
+  "Kundengespräche und Ergebnisse beschreiben.",
+  "Weiterbildungen nennen.",
+  "Regionale Verbundenheit erwähnen, wenn echt."
+ ],
+ "dont": [
+  "Kundennamen.",
+  "Vertriebszahlen übertreiben.",
+  "Regulatorik als lästig darstellen."
+ ],
+ "questions": [
+  "Wie beraten Sie einen Kunden, der „sicher und hohe Zinsen“ will?",
+  "Wie gehen Sie mit einer Beschwerde über Gebühren um?",
+  "Was sind Ihre Vertriebsziele?",
+  "Welche Weiterbildung planen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Ist die Bank ein guter Arbeitgeber für Quereinsteiger?",
+   "a": "Im Service und im Backoffice teilweise ja, in der Beratung sind Ausbildung und Zertifikate meist Voraussetzung."
+  }
+ ],
+ "related": [
+  "buchhalter",
+  "immobilienkaufmann",
+  "controller",
+  "ausbildung-bankkaufmann"
+ ]
+}

@@ -548,3 +548,11 @@ Adobe
 Type0
 Identity-H
 The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji) – they were replaced by "?": {0}
+BESTIMMTHEITSMAß
+FEHLER.TYP(A1)
+&CSeite &P von &N
+False
+TargetMode="External"
+Gesamt{0}
+Esc
+data-a="ins-chart"

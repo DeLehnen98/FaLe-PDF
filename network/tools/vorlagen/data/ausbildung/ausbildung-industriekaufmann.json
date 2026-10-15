@@ -1,0 +1,181 @@
+{
+ "id": "ausbildung-industriekaufmann",
+ "field": "ausbildung",
+ "popular": true,
+ "name": "Ausbildung Industriekaufmann/-frau",
+ "search": "ausbildung industriekauffrau industriekaufmann bewerbung ausbildungsplatz kaufmännische ausbildung schüler abitur realschule",
+ "short": "Bewerbung um den Ausbildungsplatz – mit Realschulabschluss oder Abitur.",
+ "desc": "Bewerbung für die Ausbildung zum Industriekaufmann / zur Industriekauffrau: zwei Musteranschreiben für Realschule und Abitur, Schüler-Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Ausbildungsbetriebe wissen, dass du noch keine Berufserfahrung hast. Sie wollen sehen, dass du dich mit dem Beruf und dem Unternehmen beschäftigt hast, dass du zuverlässig bist und Interesse an kaufmännischen Abläufen hast. Ein Praktikum, eine Schülerfirma oder ein Nebenjob sind starke Beispiele.",
+ "lookFor": [
+  "Guter Realschulabschluss oder (Fach-)Abitur, ordentliche Noten in Mathe und Deutsch",
+  "Interesse an Zahlen, Organisation und Produkten des Betriebs",
+  "Praktika, Nebenjobs oder Schülerfirma",
+  "Sicherer Umgang mit PC und Tabellen",
+  "Freundliches Auftreten, Teamarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Mit Realschulabschluss und Praktikum",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Industriekaufmann (Ausbildungsbeginn 1. August 2027)",
+   "to": {
+    "org": "Möbelwerke Sauerland GmbH",
+    "sal": "f",
+    "street": "Industriestraße 20",
+    "city": "59821 Arnsberg",
+    "contact": "Rademacher"
+   },
+   "body": [
+    "bei meinem zweiwöchigen Praktikum in Ihrer Auftragsabwicklung im letzten Herbst habe ich gesehen, wie aus einer Bestellung eines Möbelhauses ein fertiger Schrank wird, der eine Woche später auf dem LKW steht. Seitdem weiß ich, welche Ausbildung ich machen will.",
+    "Im nächsten Sommer schließe ich die zehnte Klasse der Realschule ab, voraussichtlich mit der Fachoberschulreife. Mathe und Wirtschaft gehören zu meinen besten Fächern. In unserer Schülerfirma verkaufen wir Pausensnacks, und ich bin dort für den Einkauf und die Kasse zuständig – mit einer Tabelle, die ich selbst gebaut habe und die jeden Freitag stimmen muss.",
+    "Ich freue mich, wenn ich mich noch einmal persönlich bei Ihnen vorstellen darf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis Klasse 10",
+    "Zeugnis Klasse 9",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Nach dem Abitur",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Industriekauffrau",
+   "to": {
+    "org": "Sauerländer Armaturen AG",
+    "sal": "none",
+    "street": "Ruhrstraße 100",
+    "city": "59821 Arnsberg"
+   },
+   "body": [
+    "nach dem Abitur möchte ich nicht sofort studieren, sondern erst einmal arbeiten und Geld verdienen – und trotzdem viel lernen. Ihre Ausbildung zur Industriekauffrau mit Zusatzqualifikation Fremdsprachen passt genau zu diesem Plan.",
+    "Ich mache im Frühjahr Abitur mit den Leistungskursen Englisch und Mathe. Seit zwei Jahren jobbe ich samstags in einem Sportgeschäft, wo ich an der Kasse und bei der Inventur helfe. Bei einem Austausch mit unserer Partnerschule in Leeds habe ich die Organisation der Reisekasse übernommen.",
+    "Ihr Unternehmen exportiert in über 30 Länder. Genau dort möchte ich später arbeiten, im Vertrieb oder Einkauf. Ich freue mich auf das Auswahlverfahren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Bescheinigung Nebenjob"
+   ],
+   "from": [
+    "Mara Schulte",
+    "Lange Wende 30",
+    "59755 Arnsberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "modern",
+  "accent": 0,
+  "name": "Ben Kowalczyk",
+  "title": "Schüler",
+  "street": "Klosterstraße 5",
+  "city": "59821 Arnsberg",
+  "exp": [
+   [
+    "10/2025",
+    "10/2025",
+    "Schülerpraktikum Auftragsabwicklung (2 Wochen)",
+    "Möbelwerke Sauerland GmbH",
+    "Arnsberg",
+    "- Erfassen von Aufträgen\n- Einblick in Einkauf und Versand"
+   ],
+   [
+    "09/2024",
+    "",
+    "Schülerfirma „Pausenkiosk“",
+    "Realschule Arnsberg",
+    "Arnsberg",
+    "- Einkauf, Kasse, Abrechnung mit Tabellenkalkulation"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2021",
+    "07/2027",
+    "Realschule, voraussichtlich Fachoberschulreife",
+    "Realschule Arnsberg",
+    "Arnsberg",
+    "Lieblingsfächer: Mathematik, Wirtschaft"
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste-Hilfe-Kurs",
+    "DRK",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Tabellenkalkulation",
+    3
+   ],
+   [
+    "Textverarbeitung",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "Teamarbeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Polnisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Handball (Jugendmannschaft), Gitarre"
+ },
+ "do": [
+  "Schreib, wie du auf den Beruf gekommen bist – konkret.",
+  "Nenn Praktika, Nebenjobs, Schülerfirma.",
+  "Nenn den Ausbildungsbeginn im Betreff."
+ ],
+ "dont": [
+  "„Hiermit bewerbe ich mich“ als erster Satz.",
+  "Lieblingsfächer ohne Bezug auflisten.",
+  "Rechtschreibfehler – lass jemanden gegenlesen."
+ ],
+ "questions": [
+  "Warum möchten Sie Industriekaufmann werden?",
+  "Was wissen Sie über unser Unternehmen?",
+  "Wie arbeiten Sie in einer Gruppe?",
+  "Was machen Sie in Ihrer Freizeit?"
+ ],
+ "pay": "Die Ausbildungsvergütung steht oft in der Anzeige oder im Tarifvertrag. Im Anschreiben musst du dazu nichts schreiben.",
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Wann sollte ich mich bewerben?",
+   "a": "Große Unternehmen suchen oft ein Jahr im Voraus, also im Sommer oder Herbst vor dem Ausbildungsjahr. Kleinere Betriebe vergeben Plätze auch noch kurzfristig."
+  }
+ ],
+ "related": [
+  "ausbildung-bueromanagement",
+  "ausbildung-einzelhandel",
+  "ausbildung-bankkaufmann",
+  "schuelerpraktikum"
+ ]
+}

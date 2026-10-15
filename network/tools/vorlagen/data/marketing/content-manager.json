@@ -1,0 +1,175 @@
+{
+ "id": "content-manager",
+ "field": "marketing",
+ "name": "Content Manager/in (Redakteur/in)",
+ "search": "content manager redakteur redakteurin online redakteur texter content marketing seo texter",
+ "short": "Texte, Website, Newsletter – Redaktion im Unternehmen.",
+ "desc": "Bewerbung als Content Manager/in oder Online-Redakteur/in: Musteranschreiben für Volontariat-Absolventin und Quereinsteiger, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Content Manager planen und schreiben Inhalte für Website, Newsletter und Social Media. Arbeitgeber wollen Textproben sehen und wissen, ob du Themen findest, Suchmaschinen verstehst und Erfolg misst. Das Anschreiben ist selbst eine Textprobe.",
+ "lookFor": [
+  "Sehr gute Texte, sicher in Rechtschreibung und Stil",
+  "Themenplanung und Recherche",
+  "Suchmaschinen-Grundlagen und Content-Management-Systeme",
+  "Erfolgsmessung",
+  "Arbeitsproben"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem Volontariat",
+   "level": "berufseinstieg",
+   "position": "Content Managerin",
+   "to": {
+    "org": "Bergwandern Verlag GmbH",
+    "sal": "none",
+    "street": "Am Rathaus 4",
+    "city": "83646 Bad Tölz"
+   },
+   "body": [
+    "mein Volontariat habe ich bei einer Regionalzeitung gemacht, und in der Zeit habe ich mehr über Kühe in Oberbayern gelernt, als ich je wissen wollte. Mein liebster Text war trotzdem eine Wanderreportage über den Blomberg, die bei uns online lange auf Platz eins stand.",
+    "Ich recherchiere, schreibe und redigiere, pflege Artikel im Redaktionssystem und kenne die Grundlagen der Suchmaschinenoptimierung. Für die Onlineredaktion habe ich eine Serie mit Ausflugstipps aufgebaut und anhand der Zugriffszahlen weiterentwickelt. Fotografieren kann ich auch, zumindest gut genug für die Website.",
+    "Ihre Wanderführer habe ich im Rucksack. Arbeitsproben finden Sie im Lebenslauf verlinkt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben",
+    "Volontariatszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinstieg aus der Technik",
+   "level": "quereinstieg",
+   "position": "Technischer Redakteur / Content Manager",
+   "to": {
+    "org": "Solarsysteme Oberland GmbH",
+    "sal": "none",
+    "street": "Gewerbering 9",
+    "city": "83607 Holzkirchen"
+   },
+   "body": [
+    "als Elektrotechniker habe ich jahrelang Anleitungen gelesen, die keiner versteht. Irgendwann habe ich angefangen, sie für unsere Monteure neu zu schreiben, und gemerkt, dass mir das liegt. Sehr sogar.",
+    "In meinem Betrieb habe ich die Montageanleitungen überarbeitet und ein kleines Wiki für den Kundendienst aufgebaut. Die Rückfragen bei der Hotline zu Standardfehlern sind danach deutlich zurückgegangen. Nebenher habe ich einen Kurs Technische Redaktion abgeschlossen und schreibe einen Blog über Photovoltaik für Hausbesitzer.",
+    "Ich kann Technik so erklären, dass sie bei Kunden ankommt. Für Ihre Website und Ihre Anleitungen wäre das, glaube ich, nützlich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Kurszertifikat",
+    "Arbeitsproben"
+   ],
+   "from": [
+    "Andreas Huber",
+    "Marktplatz 8",
+    "83607 Holzkirchen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 1,
+  "name": "Theresa Gruber",
+  "title": "Redakteurin, Content Managerin",
+  "street": "Marktstraße 30",
+  "city": "83646 Bad Tölz",
+  "exp": [
+   [
+    "10/2024",
+    "09/2026",
+    "Volontärin",
+    "Isar-Loisach-Kurier",
+    "Bad Tölz",
+    "- Recherche, Reportagen, Lokalnachrichten\n- Onlineredaktion und Redaktionssystem\n- Aufbau einer Serie mit Ausflugstipps"
+   ],
+   [
+    "2022",
+    "2024",
+    "Freie Mitarbeiterin",
+    "Isar-Loisach-Kurier",
+    "Bad Tölz",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2019",
+    "09/2024",
+    "B.A. Germanistik und Geographie",
+    "Ludwig-Maximilians-Universität",
+    "München",
+    ""
+   ],
+   [
+    "2010",
+    "2019",
+    "Abitur",
+    "Gymnasium Bad Tölz",
+    "Bad Tölz",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Schreiben und Redigieren",
+    5
+   ],
+   [
+    "Recherche",
+    5
+   ],
+   [
+    "Suchmaschinen-Grundlagen",
+    3
+   ],
+   [
+    "Redaktionssystem",
+    4
+   ],
+   [
+    "Fotografie",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Italienisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Bergwandern, Skitouren"
+ },
+ "do": [
+  "Arbeitsproben verlinken.",
+  "Ein Text mit messbarer Wirkung.",
+  "Das Anschreiben als Textprobe ernst nehmen."
+ ],
+ "dont": [
+  "Floskeln – gerade hier fallen sie auf.",
+  "Rechtschreibfehler.",
+  "Zu lange Absätze."
+ ],
+ "questions": [
+  "Wie finden Sie Themen?",
+  "Wie schreiben Sie für Suchmaschinen und Menschen gleichzeitig?",
+  "Welche Kennzahlen schauen Sie sich an?",
+  "Wie gehen Sie mit Änderungswünschen um?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Arbeitsproben sind sinnvoll?",
+   "a": "Drei bis fünf, möglichst unterschiedlich: ein längerer Text, ein kurzer Webtext, ein Newsletter oder Social-Media-Beitrag."
+  }
+ ],
+ "related": [
+  "marketing-manager",
+  "social-media-manager",
+  "grafikdesigner",
+  "fami"
+ ]
+}

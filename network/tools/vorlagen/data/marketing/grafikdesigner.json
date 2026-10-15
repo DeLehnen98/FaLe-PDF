@@ -1,0 +1,164 @@
+{
+ "id": "grafikdesigner",
+ "field": "marketing",
+ "name": "Grafikdesigner/in (Mediengestalter/in)",
+ "search": "grafikdesignerin mediengestalter mediengestalterin digital print kommunikationsdesign grafiker layout",
+ "short": "Print und Digital – mit Ausbildung, Studium und Portfolio.",
+ "desc": "Bewerbung als Grafikdesigner/in oder Mediengestalter/in: Musteranschreiben für Berufseinstieg und erfahrene Gestalter, Lebenslauf und Tipps zur Mappe.",
+ "intro": "Für Gestaltungsstellen ist die Mappe das Wichtigste. Das Anschreiben macht neugierig darauf: ein Projekt, eine Idee, ein Ergebnis. Agenturen achten außerdem auf Tempo, Druckvorstufe und den Umgang mit Kundenkorrekturen.",
+ "lookFor": [
+  "Ausbildung Mediengestalter/in oder Designstudium",
+  "Sichere Gestaltungssoftware und Druckvorstufe",
+  "Typografie und Layout",
+  "Digitale Formate und Animation",
+  "Portfolio"
+ ],
+ "letters": [
+  {
+   "label": "Mediengestalterin nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Mediengestalterin Digital und Print",
+   "to": {
+    "org": "Werbeagentur Kranich & Kollegen",
+    "sal": "none",
+    "street": "Breite Straße 20",
+    "city": "39104 Magdeburg"
+   },
+   "body": [
+    "das Plakat für das Stadtteilfest in Stadtfeld habe ich in meinem letzten Ausbildungsjahr gestaltet. Es hing an jeder Laterne, und eine Woche später hat mich ein Bäcker gefragt, ob ich auch seine Brötchentüten machen kann. Das hat mich mehr gefreut als die Note.",
+    "Ich bin Mediengestalterin Digital und Print, Fachrichtung Gestaltung und Technik. Ich gestalte Logos, Flyer, Anzeigen und Social-Media-Grafiken, bereite Druckdaten vor und habe in der Ausbildung auch kleinere Animationen umgesetzt. Kundenkorrekturen nehme ich nicht persönlich; meistens wird das Ergebnis dadurch klarer.",
+    "Meine Mappe ist im Lebenslauf verlinkt. Ich freue mich, sie Ihnen zu zeigen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Portfolio-Link"
+   ]
+  },
+  {
+   "label": "Erfahrener Designer, Wechsel ins Inhouse-Team",
+   "level": "erfahren",
+   "position": "Grafikdesigner Corporate Design",
+   "to": {
+    "org": "Stadtwerke Magdeburg",
+    "sal": "none",
+    "street": "Am Alten Theater 1",
+    "city": "39104 Magdeburg"
+   },
+   "body": [
+    "acht Jahre Agentur bedeutet: Hunderte Projekte, viele Kunden, wenig Zeit, um eine Marke wirklich wachsen zu sehen. Ich möchte ins Inhouse-Design eines Unternehmens und dort das Erscheinungsbild über Jahre mitprägen.",
+    "Ich habe Corporate Designs entwickelt, Gestaltungsrichtlinien geschrieben und Vorlagen gebaut, mit denen auch Nicht-Designer ordentliche Präsentationen machen können. Für einen Kunden habe ich ein Designsystem für Print und Web eingeführt, das bis heute genutzt wird. Druckvorstufe und Produktionsüberwachung beim Drucker gehören für mich dazu.",
+    "Ihre Kundenkommunikation zu Energie und Wasser verständlich und gut aussehend zu machen, wäre eine Aufgabe nach meinem Geschmack."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Portfolio",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Martin Seidel",
+    "Hegelstraße 30",
+    "39104 Magdeburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 3,
+  "name": "Lisa Kühn",
+  "title": "Mediengestalterin Digital und Print",
+  "street": "Große Diesdorfer Straße 100",
+  "city": "39110 Magdeburg",
+  "web": "portfolio.example/lisa-kuehn",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Mediengestalterin",
+    "Druck & Design Elbe",
+    "Magdeburg",
+    "- Logos, Flyer, Anzeigen, Social-Media-Grafiken\n- Druckdatenvorbereitung\n- Kleine Animationen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung Mediengestalterin Digital und Print",
+    "Berufsbildende Schulen",
+    "Magdeburg",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Hegelgymnasium",
+    "Magdeburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Layout und Typografie",
+    4
+   ],
+   [
+    "Bildbearbeitung",
+    4
+   ],
+   [
+    "Druckvorstufe",
+    4
+   ],
+   [
+    "Animation",
+    3
+   ],
+   [
+    "Illustration",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Linoldruck, Konzerte"
+ },
+ "do": [
+  "Mappe verlinken, Auswahl treffen.",
+  "Ein Projekt mit Wirkung erzählen.",
+  "Druck und Digital klar benennen."
+ ],
+ "dont": [
+  "Riesige Dateien anhängen.",
+  "Fremde Arbeiten oder Vorlagen als eigene zeigen.",
+  "Nur Software aufzählen."
+ ],
+ "questions": [
+  "Erklären Sie ein Projekt aus Ihrer Mappe.",
+  "Wie gehen Sie mit vielen Korrekturen um?",
+  "Wie bereiten Sie Druckdaten vor?",
+  "Welche Gestaltung gefällt Ihnen gerade und warum?"
+ ],
+ "faq": [
+  {
+   "q": "Wie groß darf die Mappe sein?",
+   "a": "Als PDF möglichst unter 5 bis 10 MB, sonst als Link. Mit „PDF komprimieren“ verkleinerst du die Datei direkt im Browser."
+  }
+ ],
+ "related": [
+  "ux-ui-designer",
+  "social-media-manager",
+  "marketing-manager",
+  "content-manager"
+ ]
+}

@@ -1,0 +1,167 @@
+{
+ "id": "kuechenhilfe",
+ "field": "minijob",
+ "name": "Küchenhilfe",
+ "search": "küchenhilfe spülkraft küchenhelfer aushilfe küche minijob gastronomie kantine spüler",
+ "short": "Spülen, vorbereiten, aufräumen – in Restaurant oder Kantine.",
+ "desc": "Bewerbung als Küchenhilfe: zwei kurze Musteranschreiben für Minijob und Teilzeit in der Kantine, Lebenslauf mit Foto-Platzhalter und typische Fragen.",
+ "intro": "Küchenhilfen spülen, schneiden Gemüse, richten Salate an und halten die Küche sauber. Gefragt sind Tempo, Sauberkeit und Zuverlässigkeit. Für Arbeit mit Lebensmitteln brauchst du eine Belehrung nach dem Infektionsschutzgesetz.",
+ "lookFor": [
+  "Zuverlässigkeit und Pünktlichkeit",
+  "Sauberkeit und Hygiene",
+  "Tempo im Stress",
+  "Belehrung nach Infektionsschutzgesetz",
+  "Abend- und Wochenendbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Minijob am Wochenende",
+   "level": "minijob",
+   "position": "Küchenhilfe (Minijob, Freitag bis Sonntag)",
+   "to": {
+    "org": "Gasthaus Zur Linde",
+    "sal": "none",
+    "street": "Dorfplatz 1",
+    "city": "97437 Haßfurt"
+   },
+   "body": [
+    "ich suche einen Minijob für die Wochenenden und habe gehört, dass Sie in der Küche Hilfe brauchen. Ich arbeite unter der Woche als Lagerarbeiter und kann freitags ab 17 Uhr sowie samstags und sonntags ganztags.",
+    "In einer Pizzeria habe ich zwei Jahre lang gespült, Gemüse geschnitten und die Küche nach Feierabend sauber gemacht. Ich bin schnell und weiß, dass es am Samstagabend vor allem auf saubere Teller ankommt.",
+    "Die Belehrung nach dem Infektionsschutzgesetz habe ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bescheinigung Belehrung IfSG"
+   ]
+  },
+  {
+   "label": "Teilzeit in der Kantine",
+   "level": "minijob",
+   "position": "Küchenhilfe in Teilzeit (vormittags)",
+   "to": {
+    "org": "Kantine im Technologiepark",
+    "sal": "none",
+    "street": "Am Technologiepark 2",
+    "city": "97424 Schweinfurt"
+   },
+   "body": [
+    "vormittags, während meine Kinder in der Schule sind, möchte ich arbeiten. Eine Kantine mit Mittagessen passt dafür perfekt.",
+    "Ich koche jeden Tag für fünf Personen, und wenn sonntags die ganze Familie kommt, schäle ich Kartoffeln für zwölf und habe trotzdem noch Zeit für den Abwasch. Früher habe ich in einer Bäckerei gearbeitet und kenne Hygieneregeln. Ich arbeite gern im Team und bin immer pünktlich.",
+    "Ich kann montags bis freitags von 7 bis 13 Uhr."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Elena Popescu",
+    "Hauptstraße 70",
+    "97421 Schweinfurt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "compact",
+  "accent": 4,
+  "name": "Dariusz Wiśniewski",
+  "title": "Lagerarbeiter, Küchenhilfe",
+  "street": "Bahnhofstraße 20",
+  "city": "97437 Haßfurt",
+  "exp": [
+   [
+    "2021",
+    "",
+    "Lagerarbeiter",
+    "Logistik Mainfranken",
+    "Haßfurt",
+    "- Kommissionieren und Verladen"
+   ],
+   [
+    "2019",
+    "2021",
+    "Küchenhilfe (Aushilfe)",
+    "Pizzeria Bella Vista",
+    "Haßfurt",
+    "- Spülen, Gemüse vorbereiten, Küchenreinigung"
+   ]
+  ],
+  "edu": [
+   [
+    "2006",
+    "2014",
+    "Schulabschluss (Gimnazjum)",
+    "Schule in Opole",
+    "Polen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2019",
+    "Belehrung nach Infektionsschutzgesetz",
+    "Gesundheitsamt",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Spülen und Reinigung",
+    5
+   ],
+   [
+    "Gemüsevorbereitung",
+    4
+   ],
+   [
+    "Arbeiten unter Zeitdruck",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Polnisch",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fußball, Kochen"
+ },
+ "do": [
+  "Verfügbarkeit nennen.",
+  "Hygiene-Belehrung erwähnen.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Lange Texte.",
+  "Unklare Zeiten.",
+  "Hygiene als unwichtig darstellen."
+ ],
+ "questions": [
+  "Wann können Sie arbeiten?",
+  "Haben Sie schon in einer Küche gearbeitet?",
+  "Was tun Sie, wenn Sie krank sind?",
+  "Haben Sie eine Belehrung nach Infektionsschutzgesetz?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  },
+  {
+   "q": "Was ist die Belehrung nach dem Infektionsschutzgesetz?",
+   "a": "Eine kurze Belehrung beim Gesundheitsamt oder einer beauftragten Stelle, die du vor der ersten Arbeit mit offenen Lebensmitteln brauchst. Die Bescheinigung darf bei Arbeitsbeginn nicht älter als drei Monate sein."
+  }
+ ],
+ "related": [
+  "koch",
+  "servicekraft",
+  "reinigungskraft",
+  "verkaeuferin-minijob"
+ ]
+}

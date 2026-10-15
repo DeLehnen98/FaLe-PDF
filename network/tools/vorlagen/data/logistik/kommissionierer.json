@@ -1,0 +1,160 @@
+{
+ "id": "kommissionierer",
+ "field": "logistik",
+ "name": "Kommissionierer/in",
+ "search": "kommissioniererin picker lagerhelfer kommissionierung versandmitarbeiter packer lager helfer ohne ausbildung",
+ "short": "Waren zusammenstellen und verpacken – oft ohne Ausbildung möglich.",
+ "desc": "Bewerbung als Kommissionierer/in: zwei kurze Musteranschreiben für Berufseinsteiger und Erfahrene, Lebenslauf zum Übernehmen und typische Fragen.",
+ "intro": "Kommissioniererinnen und Kommissionierer stellen Aufträge im Lager zusammen – mit Scanner, Pick-by-Voice oder Pick-by-Light. Gefragt sind Tempo, Genauigkeit und Ausdauer. Viele Lager stellen ohne Ausbildung ein, oft über Zeitarbeit mit Übernahmechance.",
+ "lookFor": [
+  "Genauigkeit und Tempo",
+  "Körperliche Fitness",
+  "Erfahrung mit Scanner oder Pick-by-Voice",
+  "Schichtbereitschaft",
+  "Zuverlässigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinstieg nach der Schule",
+   "level": "berufseinstieg",
+   "position": "Kommissionierer in Vollzeit",
+   "to": {
+    "org": "Logistikzentrum Westfalenhalle GmbH",
+    "sal": "none",
+    "street": "Am Hafen 30",
+    "city": "44147 Dortmund"
+   },
+   "body": [
+    "ich habe im Sommer meinen Hauptschulabschluss gemacht und suche jetzt eine Arbeit, bei der ich mich bewegen kann und am Ende des Tages sehe, was ich geschafft habe.",
+    "In den letzten zwei Sommerferien habe ich bei einem Getränkehändler ausgeholfen: Kisten kommissioniert, Paletten gepackt, LKW beladen. Mein Chef hat mir eine Bescheinigung geschrieben, die ich beilege. Pünktlich bin ich, und schwere Arbeit macht mir nichts aus.",
+    "Ich kann in Früh- und Spätschicht arbeiten. Wenn es bei Ihnen später die Möglichkeit gibt, die Ausbildung zum Fachlageristen zu machen, würde mich das sehr interessieren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schulzeugnis",
+    "Bescheinigung Ferienjob"
+   ]
+  },
+  {
+   "label": "Erfahrene Kommissioniererin, Wechsel aus der Zeitarbeit",
+   "level": "erfahren",
+   "position": "Kommissioniererin (Festanstellung)",
+   "to": {
+    "org": "Ruhr Pharma Logistik GmbH",
+    "sal": "f",
+    "street": "Wittener Straße 120",
+    "city": "44149 Dortmund",
+    "contact": "Yilmaz"
+   },
+   "body": [
+    "drei Jahre lang habe ich über eine Zeitarbeitsfirma in verschiedenen Lagern kommissioniert: Textil, Elektronik, zuletzt Kosmetik. Ich bin schnell, aber meine Stärke ist die Genauigkeit. In meinem letzten Einsatz lag meine Fehlerquote deutlich unter dem Durchschnitt der Halle.",
+    "Mit Pick-by-Voice und Handscannern arbeite ich sicher, Kleinteile zu kommissionieren macht mir nichts aus. In einem Pharmalager zählt jede Packung, und ich weiß, wie wichtig Chargen und Verfallsdaten sind.",
+    "Ich wünsche mir eine Festanstellung, in der ich länger bleiben kann. Schichtarbeit ist für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Einsatzbescheinigungen"
+   ],
+   "from": [
+    "Ewa Lis",
+    "Mallinckrodtstraße 150",
+    "44145 Dortmund"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "compact",
+  "accent": 1,
+  "name": "Marvin Becker",
+  "title": "Kommissionierer",
+  "street": "Brackeler Hellweg 50",
+  "city": "44309 Dortmund",
+  "exp": [
+   [
+    "07/2025",
+    "08/2025",
+    "Ferienjob Lager",
+    "Getränke Ruhrpott",
+    "Dortmund",
+    "- Kommissionieren, Paletten packen, LKW beladen"
+   ],
+   [
+    "07/2024",
+    "08/2024",
+    "Ferienjob Lager",
+    "Getränke Ruhrpott",
+    "Dortmund",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2026",
+    "Hauptschulabschluss nach Klasse 10",
+    "Gesamtschule Brackel",
+    "Dortmund",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kommissionieren",
+    3
+   ],
+   [
+    "Körperliche Belastbarkeit",
+    5
+   ],
+   [
+    "Pünktlichkeit",
+    5
+   ],
+   [
+    "Handscanner",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Boxen, Fahrrad"
+ },
+ "do": [
+  "Kurze, klare Sätze.",
+  "Erfahrung mit Scannern und Systemen nennen.",
+  "Schichten angeben."
+ ],
+ "dont": [
+  "Zu lange Anschreiben.",
+  "Pausen- oder Urlaubswünsche im Anschreiben.",
+  "Fehlzeiten-Probleme aus früheren Jobs ausbreiten."
+ ],
+ "questions": [
+  "Wie viele Positionen pro Stunde haben Sie bisher geschafft?",
+  "Was tun Sie, wenn ein Artikel nicht am Platz ist?",
+  "Welche Schichten können Sie?",
+  "Wie gehen Sie mit Monotonie um?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich mich bei der Zeitarbeitsfirma bewerben oder beim Lager?",
+   "a": "Beides ist möglich. Viele Lager stellen über Zeitarbeit ein und übernehmen später. Wenn du direkt eine Festanstellung suchst, bewirb dich beim Unternehmen und schreib das dazu."
+  }
+ ],
+ "related": [
+  "lagerist",
+  "produktionshelfer",
+  "paketzusteller",
+  "verkaeuferin-minijob"
+ ]
+}

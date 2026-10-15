@@ -35,8 +35,9 @@ export function chartSpaceXml(wb, sh, chart) {
       : `<c:cat><c:strRef><c:f>${xmlEsc(s.cat)}</c:f>${strCache(data.cats)}</c:strRef></c:cat>`) : '';
     const val = type === 'scatter' ? `<c:yVal><c:numRef><c:f>${xmlEsc(s.val)}</c:f>${numCache(d.values)}</c:numRef></c:yVal>` : `<c:val><c:numRef><c:f>${xmlEsc(s.val)}</c:f>${numCache(d.values)}</c:numRef></c:val>`;
     const head = `<c:idx val="${i}"/><c:order val="${i}"/>${tx}`;
-    if (type === 'col' || type === 'bar') return `<c:ser>${head}<c:spPr><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></c:spPr><c:invertIfNegative val="0"/>${cat}${val}</c:ser>`;
-    if (type === 'line') return `<c:ser>${head}<c:spPr><a:ln w="28575" cap="rnd"><a:solidFill><a:srgbClr val="${color}"/></a:solidFill><a:round/></a:ln></c:spPr><c:marker><c:symbol val="circle"/><c:size val="6"/><c:spPr><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></c:spPr></c:marker>${cat}${val}<c:smooth val="0"/></c:ser>`;
+    const asLine = type === 'line' || (type === 'combo' && i === series.length - 1 && series.length > 1);
+    if (type === 'col' || type === 'bar' || (type === 'combo' && !asLine)) return `<c:ser>${head}<c:spPr><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></c:spPr><c:invertIfNegative val="0"/>${cat}${val}</c:ser>`;
+    if (asLine) return `<c:ser>${head}<c:spPr><a:ln w="28575" cap="rnd"><a:solidFill><a:srgbClr val="${color}"/></a:solidFill><a:round/></a:ln></c:spPr><c:marker><c:symbol val="circle"/><c:size val="6"/><c:spPr><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></c:spPr></c:marker>${cat}${val}<c:smooth val="0"/></c:ser>`;
     if (type === 'area') return `<c:ser>${head}<c:spPr><a:solidFill><a:srgbClr val="${color}"><a:alpha val="45000"/></a:srgbClr></a:solidFill><a:ln w="19050"><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></a:ln></c:spPr>${cat}${val}</c:ser>`;
     if (type === 'scatter') return `<c:ser>${head}<c:spPr><a:ln w="19050"><a:noFill/></a:ln></c:spPr><c:marker><c:symbol val="circle"/><c:size val="7"/><c:spPr><a:solidFill><a:srgbClr val="${color}"/></a:solidFill></c:spPr></c:marker>${cat}${val}<c:smooth val="0"/></c:ser>`;
     // pie: one colour per point
@@ -49,6 +50,9 @@ export function chartSpaceXml(wb, sh, chart) {
   const valAx = (id, cross, pos, t, grid = true) => `<c:valAx><c:axId val="${id}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="${pos}"/>${grid ? '<c:majorGridlines><c:spPr><a:ln w="9525"><a:solidFill><a:srgbClr val="E6E7EE"/></a:solidFill></a:ln></c:spPr></c:majorGridlines>' : ''}${axTitle(t, pos === 'l' ? -5400000 : null)}<c:numFmt formatCode="General" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/><c:crossAx val="${cross}"/><c:crosses val="autoZero"/><c:crossBetween val="${type === 'scatter' ? 'midCat' : 'between'}"/></c:valAx>`;
   let plot;
   if (type === 'col' || type === 'bar') plot = `<c:barChart><c:barDir val="${type === 'bar' ? 'bar' : 'col'}"/><c:grouping val="clustered"/><c:varyColors val="0"/>${sers.join('')}<c:gapWidth val="80"/><c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:barChart>${catAx(type === 'bar' ? 'l' : 'b', type === 'bar' ? chart.yTitle : chart.xTitle)}${valAx(ax2, ax1, type === 'bar' ? 'b' : 'l', type === 'bar' ? chart.xTitle : chart.yTitle)}`;
+  else if (type === 'combo' && sers.length > 1) plot = `<c:barChart><c:barDir val="col"/><c:grouping val="clustered"/><c:varyColors val="0"/>${sers.slice(0, -1).join('')}<c:gapWidth val="80"/><c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:barChart><c:lineChart><c:grouping val="standard"/><c:varyColors val="0"/>${sers[sers.length - 1]}<c:marker val="1"/><c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:lineChart>${catAx('b', chart.xTitle)}${valAx(ax2, ax1, 'l', chart.yTitle)}`;
+  else if (type === 'combo') plot = `<c:barChart><c:barDir val="col"/><c:grouping val="clustered"/><c:varyColors val="0"/>${sers.join('')}<c:gapWidth val="80"/><c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:barChart>${catAx('b', chart.xTitle)}${valAx(ax2, ax1, 'l', chart.yTitle)}`;
+  else if (type === 'doughnut') plot = `<c:doughnutChart><c:varyColors val="1"/>${sers.slice(0, 1).join('')}<c:firstSliceAng val="0"/><c:holeSize val="55"/></c:doughnutChart>`;
   else if (type === 'line') plot = `<c:lineChart><c:grouping val="standard"/><c:varyColors val="0"/>${sers.join('')}<c:marker val="1"/><c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:lineChart>${catAx('b', chart.xTitle)}${valAx(ax2, ax1, 'l', chart.yTitle)}`;
   else if (type === 'area') plot = `<c:areaChart><c:grouping val="standard"/><c:varyColors val="0"/>${sers.join('')}<c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:areaChart>${catAx('b', chart.xTitle)}${valAx(ax2, ax1, 'l', chart.yTitle)}`;
   else if (type === 'scatter') plot = `<c:scatterChart><c:scatterStyle val="lineMarker"/><c:varyColors val="0"/>${sers.join('')}<c:axId val="${ax1}"/><c:axId val="${ax2}"/></c:scatterChart>${valAx(ax1, ax2, 'b', chart.xTitle, false)}${valAx(ax2, ax1, 'l', chart.yTitle)}`;
@@ -88,7 +92,7 @@ export function drawingXml(sh, charts, chartNums) {
 }
 
 // ---------------- reading ----------------
-const TYPE_MAP = { barChart: null, bar3DChart: null, lineChart: 'line', line3DChart: 'line', pieChart: 'pie', pie3DChart: 'pie', doughnutChart: 'pie', ofPieChart: 'pie', areaChart: 'area', area3DChart: 'area', scatterChart: 'scatter', bubbleChart: 'scatter', radarChart: 'line' };
+const TYPE_MAP = { barChart: null, bar3DChart: null, lineChart: 'line', line3DChart: 'line', pieChart: 'pie', pie3DChart: 'pie', doughnutChart: 'doughnut', ofPieChart: 'pie', areaChart: 'area', area3DChart: 'area', scatterChart: 'scatter', bubbleChart: 'scatter', radarChart: 'line' };
 function textOf(el) { return el ? desc(el, 't').map(t => t.textContent).join('') : ''; }
 function refOf(el) { const f = el && desc(el, 'f')[0]; return f ? f.textContent.trim() : null; }
 function colorOf(spPr) {
@@ -108,10 +112,13 @@ export function parseChartXml(doc) {
   for (const k of kids(plot)) if (k.localName in TYPE_MAP) { typeEl = k; type = TYPE_MAP[k.localName]; break; }
   if (!typeEl) return null;
   if (type === null) { const bd = kid(typeEl, 'barDir'); type = bd && attr(bd, 'val') === 'bar' ? 'bar' : 'col'; }
+  // columns + a line in one plot area → combo chart (the line series come last)
+  const extraLines = type === 'col' ? kids(plot).filter(k => k.localName === 'lineChart') : [];
+  if (extraLines.length) type = 'combo';
   const chartEl = desc(doc, 'chart')[0];
   const titleEl = chartEl && kid(chartEl, 'title');
   const series = [], colors = [];
-  for (const s of kids(typeEl, 'ser')) {
+  for (const s of [...kids(typeEl, 'ser'), ...extraLines.flatMap(l => kids(l, 'ser'))]) {
     const tx = kid(s, 'tx');
     const nameRef = tx ? refOf(tx) : null;
     const nameLit = tx && !nameRef ? (kid(tx, 'v') ? kid(tx, 'v').textContent : textOf(tx)) : null;
@@ -120,8 +127,8 @@ export function parseChartXml(doc) {
     const vref = refOf(val);
     if (!vref) continue;
     series.push({ name: nameRef || nameLit || null, cat: refOf(cat), val: vref });
-    if (type === 'pie' && !series[1]) for (const dp of kids(s, 'dPt')) { const ix = +attr(kid(dp, 'idx'), 'val'); const c = colorOf(kid(dp, 'spPr')); if (c) colors[ix] = c; }
-    else if (type !== 'pie') colors.push(colorOf(kid(s, 'spPr')) || colorOf(xpath(s, 'marker', 'spPr')));
+    if ((type === 'pie' || type === 'doughnut') && !series[1]) for (const dp of kids(s, 'dPt')) { const ix = +attr(kid(dp, 'idx'), 'val'); const c = colorOf(kid(dp, 'spPr')); if (c) colors[ix] = c; }
+    else if (type !== 'pie' && type !== 'doughnut') colors.push(colorOf(kid(s, 'spPr')) || colorOf(xpath(s, 'marker', 'spPr')));
   }
   if (!series.length) return null;
   const axTitle = name => { for (const ax of kids(plot)) if (/Ax$/.test(ax.localName)) { const pos = attr(kid(ax, 'axPos'), 'val'); if (pos === name && kid(ax, 'title')) return textOf(kid(ax, 'title')); } return ''; };

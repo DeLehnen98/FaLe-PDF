@@ -1,0 +1,174 @@
+{
+ "id": "ausbildung-mfa",
+ "field": "ausbildung",
+ "name": "Ausbildung Medizinische Fachangestellte (MFA)",
+ "search": "ausbildung mfa medizinische fachangestellte bewerbung ausbildungsplatz arztpraxis arzthelferin schülerin",
+ "short": "Bewerbung um die Ausbildung in der Arztpraxis.",
+ "desc": "Bewerbung für die Ausbildung zur Medizinischen Fachangestellten: Musteranschreiben mit Realschulabschluss und als Umschülerin, Schüler-Lebenslauf zum Anpassen.",
+ "intro": "Arztpraxen suchen Azubis, die freundlich, verschwiegen und sorgfältig sind und kein Problem mit Blut oder kranken Menschen haben. Ein Praktikum in einer Praxis oder ein soziales Engagement zeigt, dass du weißt, worauf du dich einlässt.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss",
+  "Freundlichkeit und Einfühlungsvermögen",
+  "Sorgfalt und Verschwiegenheit",
+  "Interesse an Medizin und Organisation",
+  "Praktikum oder Erste-Hilfe-Kurs"
+ ],
+ "letters": [
+  {
+   "label": "Schülerin mit Praxispraktikum",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Medizinischen Fachangestellten",
+   "to": {
+    "org": "Hausarztpraxis Dr. Klein",
+    "sal": "m",
+    "street": "Bahnhofstraße 5",
+    "city": "73728 Esslingen am Neckar",
+    "contact": "Dr. Klein"
+   },
+   "body": [
+    "bei meinem Praktikum in einer Kinderarztpraxis durfte ich am dritten Tag zum ersten Mal zusehen, wie einem Kind Blut abgenommen wurde, und die Mutter beruhigen. Das hat mich nicht abgeschreckt, im Gegenteil.",
+    "Ich mache im Sommer meinen Realschulabschluss, meine besten Fächer sind Biologie und Deutsch. Im Praktikum habe ich am Empfang Versichertenkarten eingelesen, Termine vergeben und Behandlungszimmer vorbereitet. Ich habe einen Erste-Hilfe-Kurs gemacht und bin beim Jugendrotkreuz aktiv.",
+    "Ihre Praxis liegt zehn Minuten von meinem Zuhause. Gern komme ich zu einem Probetag."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Umschulung nach Familienzeit",
+   "level": "ausbildung",
+   "position": "Auszubildende zur MFA (Teilzeitausbildung)",
+   "to": {
+    "org": "Gemeinschaftspraxis am Markt",
+    "sal": "none",
+    "street": "Marktplatz 12",
+    "city": "73728 Esslingen am Neckar"
+   },
+   "body": [
+    "mit 34 Jahren und zwei Kindern im Grundschulalter möchte ich eine Ausbildung machen, die ich mir lange gewünscht habe. Eine Teilzeitausbildung zur MFA würde mir das ermöglichen, und ich habe gelesen, dass Sie das anbieten.",
+    "Nach der Schule habe ich als ungelernte Kraft im Einzelhandel gearbeitet, danach war ich für meine Kinder zu Hause. In dieser Zeit habe ich meinen Vater bis zu seinem Tod gepflegt und dabei viele Arztbesuche, Medikamentenpläne und Gespräche mit Praxen erlebt. Ich weiß, wie wichtig eine freundliche Stimme am Empfang ist.",
+    "Ich kann montags bis freitags von 8 bis 14 Uhr arbeiten. Über ein Gespräch würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schulzeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Natascha Becker",
+    "Pliensaustraße 30",
+    "73728 Esslingen am Neckar"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "modern",
+  "accent": 1,
+  "name": "Hira Malik",
+  "title": "Schülerin",
+  "street": "Mülberger Straße 20",
+  "city": "73728 Esslingen am Neckar",
+  "exp": [
+   [
+    "02/2026",
+    "02/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Kinderarztpraxis Dr. Sommer",
+    "Esslingen",
+    "- Empfang und Terminvergabe\n- Vorbereitung der Behandlungszimmer"
+   ],
+   [
+    "2024",
+    "",
+    "Jugendrotkreuz",
+    "DRK Ortsverein Esslingen",
+    "Esslingen",
+    "- Sanitätsdienst bei Veranstaltungen"
+   ]
+  ],
+  "edu": [
+   [
+    "09/2021",
+    "07/2027",
+    "Realschule (voraussichtlich Realschulabschluss)",
+    "Realschule Esslingen",
+    "Esslingen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Erste-Hilfe-Kurs",
+    "DRK",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Freundlicher Umgang",
+    5
+   ],
+   [
+    "Organisation",
+    4
+   ],
+   [
+    "PC-Kenntnisse",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Urdu",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Jugendrotkreuz, Zeichnen"
+ },
+ "do": [
+  "Praktikum in der Praxis beschreiben.",
+  "Erste Hilfe oder Ehrenamt nennen.",
+  "Teilzeitwunsch offen sagen."
+ ],
+ "dont": [
+  "Patientendaten aus dem Praktikum erwähnen.",
+  "Angst vor Blut verschweigen.",
+  "Floskeln."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem weinenden Kind um?",
+  "Was bedeutet Schweigepflicht für Sie?",
+  "Warum MFA und nicht Pflege?",
+  "Was haben Sie im Praktikum gelernt?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Gibt es die MFA-Ausbildung in Teilzeit?",
+   "a": "Ja, eine Teilzeitausbildung ist rechtlich möglich, wenn Praxis und Kammer zustimmen. Frag direkt danach – viele Praxen sind offen."
+  }
+ ],
+ "related": [
+  "medizinische-fachangestellte",
+  "ausbildung-pflegefachfrau",
+  "zahnmedizinische-fachangestellte",
+  "schuelerpraktikum"
+ ]
+}

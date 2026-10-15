@@ -1,0 +1,173 @@
+{
+ "id": "rezeptionist",
+ "field": "gastro",
+ "name": "Rezeptionist/in (Hotelrezeption)",
+ "search": "rezeptionistin rezeption hotel empfang front office guest relations nachtportier empfangsmitarbeiter",
+ "short": "Hotelrezeption oder Empfang – mit Hotelausbildung oder Quereinstieg.",
+ "desc": "Bewerbung als Rezeptionist/in an der Hotelrezeption: Musteranschreiben für Hotelfachkraft und Quereinsteigerin mit Sprachen, Lebenslauf mit Platzhalterporträt.",
+ "intro": "An der Rezeption bist du das Gesicht des Hauses: Check-in, Reservierungen, Beschwerden, Fragen nach dem besten Restaurant in der Nähe. Hotels achten auf Sprachen, Erfahrung mit Hotelsoftware und Schichtbereitschaft – Früh-, Spät- und Nachtdienst.",
+ "lookFor": [
+  "Ausbildung als Hotelfachmann/-frau oder Erfahrung am Empfang",
+  "Englisch sicher, weitere Sprachen sehr gefragt",
+  "Hotelsoftware, Reservierung, Kassenabrechnung",
+  "Souveräner Umgang mit Beschwerden",
+  "Schichtdienst inklusive Wochenende"
+ ],
+ "letters": [
+  {
+   "label": "Hotelfachfrau, Wechsel in ein Stadthotel",
+   "level": "erfahren",
+   "position": "Rezeptionistin (Front Office Agent)",
+   "to": {
+    "org": "Hotel am Gendarmenmarkt",
+    "sal": "f",
+    "street": "Charlottenstraße 50",
+    "city": "10117 Berlin",
+    "contact": "Neumann"
+   },
+   "body": [
+    "in einem Ferienhotel an der Ostsee kenne ich jeden Gast nach drei Tagen mit Namen. In einem Berliner Stadthotel mit vielen Geschäftsreisenden wird das schwieriger, und genau das reizt mich.",
+    "Ich arbeite seit vier Jahren an der Rezeption: Check-in und Check-out, Reservierungen über verschiedene Kanäle, Gruppenanreisen, Kassenabschluss in der Spätschicht. Bei Überbuchungen finde ich Lösungen mit Partnerhotels, bevor der Gast merkt, dass es knapp war. Englisch spreche ich fließend, Schwedisch gut, weil viele unserer Gäste aus Skandinavien kommen.",
+    "Nachtdienste übernehme ich gern im Wechsel. Ich kann zum 1. Februar wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinstieg mit Sprachen",
+   "level": "quereinstieg",
+   "position": "Mitarbeiter an der Rezeption",
+   "to": {
+    "org": "Boardinghouse Spree Apartments",
+    "sal": "none",
+    "street": "Stralauer Allee 5",
+    "city": "10245 Berlin"
+   },
+   "body": [
+    "vier Sprachen und sieben Jahre Erfahrung als Reiseleiter: Ich habe Gruppen durch Portugal, Spanien und Italien geführt und kenne die Fragen, die Menschen fern von zu Hause stellen. Jetzt möchte ich sesshaft werden und am Empfang Ihres Boardinghouses arbeiten.",
+    "Als Reiseleiter habe ich Hotelzimmer kontrolliert, Beschwerden geklärt, Ausflüge gebucht und Notfälle organisiert, vom verlorenen Pass bis zum Krankenhausbesuch. Mit Buchungssystemen von Reiseveranstaltern habe ich täglich gearbeitet; eine Hotelsoftware lerne ich schnell.",
+    "Ich spreche Deutsch, Portugiesisch, Spanisch und Englisch. Schichtdienst ist kein Problem."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Tiago Costa",
+    "Warschauer Straße 30",
+    "10243 Berlin"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 0,
+  "name": "Linnea Bergmann",
+  "title": "Hotelfachfrau, Rezeption",
+  "street": "Boxhagener Straße 70",
+  "city": "10245 Berlin",
+  "exp": [
+   [
+    "08/2022",
+    "",
+    "Rezeptionistin",
+    "Strandhotel Kühlungsborn",
+    "Kühlungsborn",
+    "- Check-in, Check-out, Reservierungen\n- Gruppenanreisen, Überbuchungsmanagement\n- Kassenabschluss"
+   ],
+   [
+    "2019",
+    "2022",
+    "Ausbildung zur Hotelfachfrau",
+    "Strandhotel Kühlungsborn",
+    "Kühlungsborn",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2019",
+    "Abitur",
+    "Gymnasium Bad Doberan",
+    "Bad Doberan",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Beschwerdemanagement",
+    "DEHOGA",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Hotelsoftware",
+    4
+   ],
+   [
+    "Reservierung",
+    5
+   ],
+   [
+    "Beschwerdemanagement",
+    4
+   ],
+   [
+    "Kassenabschluss",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Schwedisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Segeln, Reisen"
+ },
+ "do": [
+  "Sprachen mit Niveau angeben.",
+  "Beispiel für eine gelöste Gästebeschwerde.",
+  "Schichtbereitschaft nennen."
+ ],
+ "dont": [
+  "Gäste mit Namen nennen.",
+  "Hotelsoftware übertreiben.",
+  "Nachtdienste ablehnen, ohne es offen zu sagen."
+ ],
+ "questions": [
+  "Ein Gast kommt an und sein Zimmer ist nicht fertig. Was tun Sie?",
+  "Wie gehen Sie mit einer Überbuchung um?",
+  "Welche Sprachen sprechen Sie im Alltag?",
+  "Können Sie Nachtdienste übernehmen?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne Hotelausbildung an der Rezeption arbeiten?",
+   "a": "Ja, viele Häuser stellen Quereinsteiger mit Sprachen und Erfahrung im Kundenkontakt ein. Erfahrungen aus Tourismus, Einzelhandel oder Service zählen."
+  }
+ ],
+ "related": [
+  "hotelfachfrau",
+  "servicekraft",
+  "kundenservice-mitarbeiter",
+  "medizinische-fachangestellte"
+ ]
+}

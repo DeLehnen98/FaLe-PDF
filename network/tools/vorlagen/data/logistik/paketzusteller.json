@@ -1,0 +1,172 @@
+{
+ "id": "paketzusteller",
+ "field": "logistik",
+ "name": "Paketzusteller/in (Kurierfahrer/in)",
+ "search": "paketzustellerin zusteller kurierfahrer auslieferungsfahrer lieferfahrer transporterfahrer paketbote sprinter",
+ "short": "Pakete ausliefern mit Transporter – oft Quereinstieg mit Führerschein B.",
+ "desc": "Bewerbung als Paketzusteller/in oder Kurierfahrer: zwei kurze Musteranschreiben für Quereinstieg und erfahrene Fahrer, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Zustelldienste suchen zuverlässige Fahrerinnen und Fahrer mit Führerschein B, die zügig und freundlich ausliefern und mit Scanner und Navigation zurechtkommen. Zeig, dass du Tempo, Ordnung im Fahrzeug und Kundenkontakt beherrschst.",
+ "lookFor": [
+  "Führerschein Klasse B, sicheres Fahren mit Transportern",
+  "Körperliche Fitness",
+  "Ordnung beim Beladen und Tourenplanung",
+  "Umgang mit Scanner und App",
+  "Freundlichkeit an der Haustür"
+ ],
+ "letters": [
+  {
+   "label": "Quereinsteiger aus der Gastronomie",
+   "level": "quereinstieg",
+   "position": "Paketzusteller in Vollzeit",
+   "to": {
+    "org": "City Express Zustellung GmbH",
+    "sal": "none",
+    "street": "Rheinallee 40",
+    "city": "40549 Düsseldorf"
+   },
+   "body": [
+    "als Koch habe ich gelernt, unter Zeitdruck den Überblick zu behalten, und genau das braucht man auch, wenn 150 Pakete in der richtigen Reihenfolge im Wagen liegen sollen.",
+    "Den Führerschein habe ich seit zwölf Jahren, Transporter bin ich schon oft gefahren, zuletzt beim Catering für Großveranstaltungen. Düsseldorf kenne ich gut, weil ich hier aufgewachsen bin. Ich bin körperlich fit und mache auch bei Regen gern mit.",
+    "Ich kann ab sofort anfangen. Eine Probetour mit einem erfahrenen Kollegen fände ich gut."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Führerschein (Kopie)"
+   ]
+  },
+  {
+   "label": "Erfahrene Zustellerin, Wechsel",
+   "level": "erfahren",
+   "position": "Kurierfahrerin Expresssendungen",
+   "to": {
+    "org": "Rhein Kurier Service",
+    "sal": "m",
+    "street": "Erkrather Straße 200",
+    "city": "40233 Düsseldorf",
+    "contact": "Hartung"
+   },
+   "body": [
+    "vier Jahre lang habe ich für einen großen Paketdienst täglich über 120 Stopps gefahren. Ich suche jetzt einen Kurierdienst mit Expresssendungen, weil mir die Fahrten zu Firmenkunden mehr liegen als die Wohngebiete.",
+    "Ich plane meine Tour selbst um, wenn es Staus gibt, belade nach Route und bin selten länger als geplant unterwegs. Unfallfrei bin ich seit über zehn Jahren. Bei Firmenkunden kenne ich die Ansprechpartner am Empfang mit Namen.",
+    "Meine Kündigungsfrist beträgt zwei Wochen. Ich würde mich über einen Anruf freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sonja Lehnert",
+    "Kölner Straße 90",
+    "40227 Düsseldorf"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 5,
+  "name": "Pascal Mbeki",
+  "title": "Koch, Paketzusteller (Quereinstieg)",
+  "street": "Kölner Landstraße 20",
+  "city": "40591 Düsseldorf",
+  "exp": [
+   [
+    "2016",
+    "",
+    "Koch",
+    "Catering Rheinufer",
+    "Düsseldorf",
+    "- Großveranstaltungen bis 500 Gäste\n- Transporterfahrten zu Einsatzorten"
+   ],
+   [
+    "2013",
+    "2016",
+    "Ausbildung zum Koch",
+    "Hotel Am Park",
+    "Düsseldorf",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2004",
+    "2013",
+    "Fachoberschulreife",
+    "Realschule Benrath",
+    "Düsseldorf",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2014",
+    "Führerschein Klasse B",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fahren mit Transportern",
+    4
+   ],
+   [
+    "Ortskenntnis Düsseldorf",
+    5
+   ],
+   [
+    "Arbeiten unter Zeitdruck",
+    5
+   ],
+   [
+    "Belastbarkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Basketball, Kochen für die Familie"
+ },
+ "do": [
+  "Führerschein und Unfallfreiheit nennen.",
+  "Ortskenntnis betonen.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Punkte oder Fahrverbote verschweigen.",
+  "Unrealistische Stoppzahlen versprechen.",
+  "Lange Erklärungen."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein Kunde nicht zu Hause ist?",
+  "Wie beladen Sie Ihr Fahrzeug?",
+  "Wie reagieren Sie auf einen Stau?",
+  "Hatten Sie Unfälle?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für Paketzustellung einen besonderen Führerschein?",
+   "a": "Für Transporter bis 3,5 Tonnen reicht Klasse B. Für größere Fahrzeuge brauchst du C1 oder C und dann auch die Berufskraftfahrerqualifikation."
+  }
+ ],
+ "related": [
+  "lkw-fahrer",
+  "kommissionierer",
+  "zeitungszusteller",
+  "busfahrer"
+ ]
+}

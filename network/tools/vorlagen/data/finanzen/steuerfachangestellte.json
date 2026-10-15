@@ -1,0 +1,165 @@
+{
+ "id": "steuerfachangestellte",
+ "field": "finanzen",
+ "name": "Steuerfachangestellte/r",
+ "search": "steuerfachangestellter steuerfachangestellte steuerkanzlei lohnbuchhaltung jahresabschluss steuererklärung",
+ "short": "Kanzlei: Buchhaltung, Lohn, Steuererklärungen.",
+ "desc": "Bewerbung als Steuerfachangestellte/r: Musteranschreiben für den Berufsstart nach der Ausbildung und den Kanzleiwechsel mit Lohnschwerpunkt, plus fertiger Lebenslauf.",
+ "intro": "Kanzleien suchen Steuerfachangestellte, die Buchhaltungen, Lohnabrechnungen und Steuererklärungen sicher und termingerecht erstellen und mit Mandanten gut kommunizieren. Nenn deine Schwerpunkte, die Zahl der Mandanten und Branchen sowie Weiterbildungen.",
+ "lookFor": [
+  "Ausbildung als Steuerfachangestellte/r",
+  "Finanz- und Lohnbuchhaltung",
+  "Steuererklärungen und Jahresabschlüsse",
+  "Kanzleisoftware und digitale Belegverarbeitung",
+  "Mandantenkommunikation"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Steuerfachangestellte",
+   "to": {
+    "org": "Steuerberatung Albers & Partner mbB",
+    "sal": "f",
+    "street": "Domhof 20",
+    "city": "49074 Osnabrück",
+    "contact": "Albers"
+   },
+   "body": [
+    "im Juni habe ich meine Prüfung zur Steuerfachangestellten bestanden. In meinem Ausbildungsbetrieb, einer kleinen Kanzlei mit vier Mitarbeitenden, durfte ich früh selbstständig arbeiten: Ich habe Finanzbuchhaltungen für zwölf Mandanten gebucht und die ersten Einkommensteuererklärungen selbst vorbereitet.",
+    "Mit digitaler Belegverarbeitung habe ich von Anfang an gearbeitet und mehrere Mandanten bei der Umstellung von Pendelordnern begleitet; einer davon hat mir danach gesagt, dass er das Thema Buchhaltung zum ersten Mal nicht hasst. Lohnabrechnungen kenne ich aus der Ausbildung in Grundzügen und würde den Bereich gern ausbauen.",
+    "Ihre Kanzlei ist größer und auf Heilberufe spezialisiert, das reizt mich. Ich kann zum 1. August anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Kanzleiwechsel mit Lohnschwerpunkt",
+   "level": "erfahren",
+   "position": "Steuerfachangestellter Lohn",
+   "to": {
+    "org": "Westfalen Treuhand Steuerberatungsgesellschaft mbH",
+    "sal": "none",
+    "street": "Neumarkt 10",
+    "city": "49074 Osnabrück"
+   },
+   "body": [
+    "jeden Monat rechne ich die Löhne für rund 600 Beschäftigte bei 35 Mandanten ab, darunter zwei Gastronomiebetriebe mit Saisonkräften und ein Pflegedienst mit Schichtzulagen. Ich suche eine Kanzlei, in der Lohn ein eigenes Team ist.",
+    "Ich kenne Sonderfälle wie kurzfristige Beschäftigung, Übungsleiterpauschale und Pfändungen, erstelle Meldungen an Sozialversicherungsträger und begleite Mandanten bei Lohnsteuer-Außenprüfungen. Mandanten rufen mich direkt an, wenn eine Mitarbeiterin in Elternzeit geht oder ein Minijobber mehr arbeiten will.",
+    "Die Weiterbildung zum Fachassistenten Lohn und Gehalt habe ich 2024 abgeschlossen. Wenn Sie mögen, rufen Sie mich einfach an."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Zertifikat Fachassistent Lohn und Gehalt",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Jan Overbeck",
+    "Lotter Straße 50",
+    "49078 Osnabrück"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "classic",
+  "accent": 0,
+  "name": "Lara Hüsemann",
+  "title": "Steuerfachangestellte",
+  "street": "Iburger Straße 20",
+  "city": "49082 Osnabrück",
+  "exp": [
+   [
+    "08/2023",
+    "06/2026",
+    "Auszubildende Steuerfachangestellte",
+    "Steuerbüro Kampmann",
+    "Osnabrück",
+    "- Finanzbuchhaltungen für 12 Mandanten\n- Einkommensteuererklärungen\n- Umstellung auf digitale Belegverarbeitung"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "06/2026",
+    "Ausbildung zur Steuerfachangestellten",
+    "Berufsbildende Schulen am Pottgraben",
+    "Osnabrück",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Ratsgymnasium",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Finanzbuchhaltung",
+    4
+   ],
+   [
+    "Einkommensteuer",
+    4
+   ],
+   [
+    "Digitale Belegverarbeitung",
+    4
+   ],
+   [
+    "Lohn-Grundlagen",
+    3
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Handball, Backen"
+ },
+ "do": [
+  "Mandantenzahl und Branchen nennen.",
+  "Schwerpunkte und Weiterbildungen.",
+  "Kanzleisoftware ehrlich angeben."
+ ],
+ "dont": [
+  "Mandanten benennen.",
+  "Fachgebiete übertreiben.",
+  "Lücken in der Prüfung verschweigen."
+ ],
+ "questions": [
+  "Welche Steuererklärungen haben Sie erstellt?",
+  "Wie organisieren Sie Fristen?",
+  "Ein Mandant liefert Belege zu spät. Was tun Sie?",
+  "Welche Weiterbildung planen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Weiterbildungen lohnen sich?",
+   "a": "Beliebt sind Steuerfachwirt/in, Fachassistent/in Lohn und Gehalt sowie Bilanzbuchhalter/in. Langfristig ist auch die Steuerberaterprüfung möglich."
+  }
+ ],
+ "related": [
+  "buchhalter",
+  "personalsachbearbeiter",
+  "rechtsanwaltsfachangestellte",
+  "bankkaufmann"
+ ]
+}

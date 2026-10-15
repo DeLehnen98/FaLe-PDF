@@ -1,0 +1,179 @@
+{
+ "id": "speditionskaufmann",
+ "field": "logistik",
+ "name": "Kaufmann/Kauffrau für Spedition und Logistikdienstleistung",
+ "search": "speditionskauffrau speditionskaufmann disponent disposition logistik kaufmann spedition export zoll",
+ "short": "Disposition, Export, Kundenbetreuung in der Spedition.",
+ "desc": "Bewerbung als Speditionskaufmann/-frau oder Disponent: Musteranschreiben für Berufsstart und erfahrene Disposition, Lebenslauf und typische Gesprächsfragen.",
+ "intro": "In der Spedition zählen Organisation, Verhandlungsgeschick und ein kühler Kopf, wenn ein LKW ausfällt. Arbeitgeber fragen nach Verkehrsträgern (Straße, See, Luft), Länderkenntnissen, Zollwissen und Erfahrung mit Transportmanagementsystemen.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung als Kaufmann/-frau für Spedition und Logistikdienstleistung",
+  "Disposition, Frachtenbörsen, Tourenplanung",
+  "Zoll- und Exportkenntnisse je nach Bereich",
+  "Englisch, gern weitere Sprachen",
+  "Stressresistenz"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung in die Seefracht",
+   "level": "berufseinstieg",
+   "position": "Speditionskaufmann Seefracht Export",
+   "to": {
+    "org": "Hanseatic Ocean Forwarding GmbH",
+    "sal": "f",
+    "street": "Am Sandtorkai 40",
+    "city": "20457 Hamburg",
+    "contact": "Sievers"
+   },
+   "body": [
+    "zwei Monate meiner Ausbildung habe ich in der Seefrachtabteilung verbracht, und seitdem will ich dorthin zurück. Mein Ausbildungsbetrieb hat vor allem Landverkehre, deshalb bewerbe ich mich bei Ihnen.",
+    "Ich habe Buchungen bei Reedereien angefragt, Containerstellungen organisiert, Bills of Lading geprüft und Ausfuhranmeldungen vorbereitet. Mit einem großen Kunden aus dem Maschinenbau habe ich drei Sendungen nach Brasilien bis zur Verschiffung begleitet, inklusive eines verlorenen Ursprungszeugnisses, das wir zwei Tage vor Closing noch neu bekommen haben. Die Abschlussprüfung habe ich mit 2,1 bestanden.",
+    "Englisch spreche ich sicher, Spanisch auf Grundniveau. Ab August bin ich verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Disponentin im Landverkehr",
+   "level": "erfahren",
+   "position": "Disponentin Teil- und Komplettladungen",
+   "to": {
+    "org": "Nordspedition Kühl GmbH",
+    "sal": "m",
+    "street": "Billbrookdeich 100",
+    "city": "22113 Hamburg",
+    "contact": "Kühl"
+   },
+   "body": [
+    "jeden Tag disponiere ich 40 Fahrzeuge zwischen Hamburg, Polen und Tschechien. Wenn um 6 Uhr ein Fahrer krank ist, weiß ich bis halb sieben, wer die Tour übernimmt.",
+    "Ich plane Touren im Transportmanagementsystem, kaufe Laderaum über Frachtenbörsen zu, verhandle Preise mit Subunternehmern und halte Kunden über Verspätungen auf dem Laufenden, bevor sie anrufen. Die Auslastung unserer Flotte habe ich in meinem Bereich durch Rückladungen deutlich verbessert. Polnisch spreche ich fließend, was mit Fahrern und Partnern vieles leichter macht.",
+    "Ich möchte in eine Spedition wechseln, in der ich auch Kundenverantwortung übernehme. Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Marta Zielińska",
+    "Hammer Landstraße 70",
+    "20537 Hamburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "modern",
+  "accent": 0,
+  "name": "Niklas Brandt",
+  "title": "Kaufmann für Spedition und Logistikdienstleistung",
+  "street": "Stresemannstraße 300",
+  "city": "22761 Hamburg",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildender Speditionskaufmann",
+    "Elbe Land Logistik GmbH",
+    "Hamburg",
+    "- Disposition im Landverkehr\n- Seefracht-Export: Buchungen, B/L-Prüfung, Ausfuhranmeldungen\n- Kundenkommunikation auf Englisch"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung Kaufmann für Spedition und Logistikdienstleistung, IHK 2,1",
+    "Berufliche Schule Logistik",
+    "Hamburg",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Gymnasium Altona",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Grundlagen Zoll und Export",
+    "IHK-Akademie",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Seefracht-Export",
+    3
+   ],
+   [
+    "Disposition",
+    3
+   ],
+   [
+    "Zoll-Grundlagen",
+    3
+   ],
+   [
+    "Transportmanagementsystem",
+    3
+   ],
+   [
+    "Englisch im Beruf",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Fotografie am Hafen"
+ },
+ "do": [
+  "Nenn Verkehrsträger, Länder und Systeme.",
+  "Beschreib eine Krisensituation und deine Lösung.",
+  "Sprachen mit Einsatz im Alltag."
+ ],
+ "dont": [
+  "Kundennamen nennen.",
+  "Fachbegriffe ohne Inhalt.",
+  "Stresssituationen nur mit „belastbar“ beschreiben."
+ ],
+ "questions": [
+  "Ein LKW steht an der Grenze fest. Was tun Sie?",
+  "Wie kalkulieren Sie einen Frachtpreis?",
+  "Welche Incoterms kennen Sie?",
+  "Wie gehen Sie mit einem verärgerten Kunden um?"
+ ],
+ "faq": [
+  {
+   "q": "Was ist der Unterschied zur Fachkraft für Lagerlogistik?",
+   "a": "Speditionskaufleute organisieren Transporte am Schreibtisch – Disposition, Verkauf, Abrechnung, Zoll. Fachkräfte für Lagerlogistik arbeiten im Lager mit der Ware."
+  }
+ ],
+ "related": [
+  "lkw-fahrer",
+  "lagerist",
+  "sachbearbeiter",
+  "kauffrau-bueromanagement"
+ ]
+}

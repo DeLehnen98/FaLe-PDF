@@ -1,0 +1,184 @@
+{
+ "id": "it-support",
+ "field": "it",
+ "name": "IT-Support / Helpdesk",
+ "search": "it support helpdesk servicedesk first level second level it-supporter anwenderbetreuung it quereinstieg",
+ "short": "First- und Second-Level-Support – Einstieg in die IT.",
+ "desc": "Bewerbung im IT-Support oder Helpdesk: Musteranschreiben für Quereinsteiger und erfahrene Supporter, Lebenslauf mit Foto-Platzhalter und Fragen für das Gespräch.",
+ "intro": "Im IT-Support zählen Geduld, eine klare Sprache und systematisches Vorgehen genauso wie Technikwissen. Viele Teams nehmen Quereinsteiger mit nachweisbarem Interesse; Zertifikate und ein eigenes Homelab helfen. Beschreib, wie du Probleme eingrenzt und Nutzern hilfst.",
+ "lookFor": [
+  "Grundwissen zu Betriebssystemen, Netzwerken, Office-Anwendungen",
+  "Erfahrung mit Ticketsystemen",
+  "Freundliche, geduldige Kommunikation",
+  "Systematische Fehlersuche",
+  "Bereitschaft zu Vor-Ort-Einsätzen"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg aus dem Einzelhandel",
+   "level": "quereinstieg",
+   "position": "IT-Supporter First Level",
+   "to": {
+    "org": "Rhein-Main IT Services GmbH",
+    "sal": "none",
+    "street": "Hanauer Landstraße 300",
+    "city": "60314 Frankfurt am Main"
+   },
+   "body": [
+    "im Elektronikmarkt war ich jahrelang derjenige, zu dem Kunden mit ihrem Laptop kamen, wenn „gar nichts mehr geht“. Meistens ging doch noch etwas. Jetzt möchte ich das professionell machen.",
+    "Ich habe nebenberuflich ein IT-Grundlagenzertifikat abgeschlossen und zu Hause ein kleines Netzwerk mit einem Linux-Server, VLANs und einem eigenen Backup aufgebaut. Im Markt habe ich Geräte eingerichtet, Daten übertragen und Kunden erklärt, wie sie ihr WLAN absichern. Am wichtigsten finde ich, Menschen ernst zu nehmen, die sich mit Technik schwertun.",
+    "Ich kann sofort anfangen, Schichtdienst ist möglich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Supporterin in den Second Level",
+   "level": "erfahren",
+   "position": "IT-Supporterin Second Level",
+   "to": {
+    "org": "Klinikum Frankfurt-Höchst",
+    "sal": "none",
+    "street": "Gotenstraße 6",
+    "city": "65929 Frankfurt am Main"
+   },
+   "body": [
+    "vier Jahre First-Level-Support in einem Callcenter für Softwarekunden haben mir gezeigt, wo die eigentlichen Probleme liegen. Inzwischen löse ich viele Fälle, die eigentlich an den Second Level gehen würden, und möchte das jetzt offiziell tun.",
+    "Ich arbeite mit Ticketsystemen, Fernwartung und Verzeichnisdiensten, setze Passwörter zurück, richte Drucker und Clients ein und schreibe Anleitungen für wiederkehrende Probleme. Unsere Wissensdatenbank habe ich im letzten Jahr aufgeräumt und um 40 Artikel ergänzt; die Lösungsquote im ersten Kontakt ist seitdem gestiegen.",
+    "Ein Krankenhaus mit 24-Stunden-Betrieb ist für mich besonders interessant, weil IT dort unmittelbar wichtig ist. Rufbereitschaft übernehme ich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Mira Fischer",
+    "Leipziger Straße 30",
+    "60487 Frankfurt am Main"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "modern",
+  "accent": 0,
+  "name": "Kevin Adeyemi",
+  "title": "IT-Supporter",
+  "street": "Berger Straße 150",
+  "city": "60385 Frankfurt am Main",
+  "exp": [
+   [
+    "04/2017",
+    "",
+    "Verkäufer und Techniker-Service",
+    "Elektronikmarkt Zeil",
+    "Frankfurt",
+    "- Einrichtung von PCs, Laptops, Smartphones\n- Datenübertragung und Router-Konfiguration\n- Kundenberatung"
+   ],
+   [
+    "2014",
+    "2017",
+    "Ausbildung Kaufmann im Einzelhandel",
+    "Elektronikmarkt Zeil",
+    "Frankfurt",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2005",
+    "2014",
+    "Fachoberschulreife",
+    "Gesamtschule Nordend",
+    "Frankfurt",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "IT-Grundlagen-Zertifikat (Hardware, Betriebssysteme, Netzwerk)",
+    "Online-Bildungsträger",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Linux-Einführung",
+    "Volkshochschule",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Client-Einrichtung",
+    4
+   ],
+   [
+    "Netzwerk-Grundlagen",
+    3
+   ],
+   [
+    "Linux",
+    2
+   ],
+   [
+    "Kundenkommunikation",
+    5
+   ],
+   [
+    "Fehlersuche",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Yoruba",
+    "B1"
+   ]
+  ],
+  "hobbies": "Homelab, Fußball"
+ },
+ "do": [
+  "Zeig dein Vorgehen bei Fehlersuche.",
+  "Erwähne Homelab, Zertifikate, Wissensdatenbank.",
+  "Betone Geduld mit Anwendern."
+ ],
+ "dont": [
+  "Anwender als „DAU“ bezeichnen.",
+  "Wissen vortäuschen.",
+  "Schichtbereitschaft offenlassen."
+ ],
+ "questions": [
+  "Ein Drucker druckt nicht. Wie gehen Sie vor?",
+  "Wie erklären Sie einem Laien, was ein VPN ist?",
+  "Wie gehen Sie mit einem ungeduldigen Nutzer um?",
+  "Welche Systeme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne IT-Ausbildung in den Support?",
+   "a": "Ja, viele Teams stellen Quereinsteiger ein, wenn Interesse und Grundwissen erkennbar sind. Ein Zertifikat oder ein eigenes Projekt beweist beides."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "kundenservice-mitarbeiter",
+  "werkstudent-it",
+  "softwareentwickler"
+ ]
+}

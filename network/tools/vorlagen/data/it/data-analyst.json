@@ -1,0 +1,176 @@
+{
+ "id": "data-analyst",
+ "field": "it",
+ "name": "Data Analyst",
+ "search": "data analyst datenanalyst datenanalystin business intelligence bi analyst sql reporting dashboard",
+ "short": "Daten auswerten, Dashboards bauen, Entscheidungen vorbereiten.",
+ "desc": "Bewerbung als Data Analyst: Musteranschreiben für den Einstieg nach dem Studium und den Wechsel aus dem Controlling, Lebenslauf und typische Fragen im Fallinterview.",
+ "intro": "Data Analysts übersetzen Daten in Antworten. Gesucht sind sichere SQL-Kenntnisse, ein Werkzeug für Analysen (z. B. Python oder R), Erfahrung mit Dashboards und vor allem die Fähigkeit, Ergebnisse verständlich zu erklären. Ein Beispiel mit echter Wirkung ist im Anschreiben Gold wert.",
+ "lookFor": [
+  "SQL, Tabellen und ein Analysewerkzeug wie Python oder R",
+  "Dashboards und Reporting",
+  "Statistik-Grundlagen",
+  "Fachverständnis für das Geschäft",
+  "Klare Kommunikation von Ergebnissen"
+ ],
+ "letters": [
+  {
+   "label": "Einstieg nach dem Master",
+   "level": "berufseinstieg",
+   "position": "Junior Data Analyst",
+   "to": {
+    "org": "Fahrradverleih Urban Wheels GmbH",
+    "sal": "none",
+    "street": "Schanzenstraße 20",
+    "city": "20357 Hamburg"
+   },
+   "body": [
+    "für meine Masterarbeit habe ich ein Jahr Ausleihdaten eines Bike-Sharing-Systems ausgewertet und herausgefunden, an welchen Stationen morgens Räder fehlen und wo sie sich abends stapeln. Die Umverteilungsfahrten ließen sich im Modell deutlich reduzieren. Ihre Anzeige klingt, als hätten Sie genau diese Frage.",
+    "Ich arbeite mit SQL, Python und Visualisierungen, bereite Daten auf und baue Dashboards, die ohne Erklärung verstanden werden. In meinem Praktikum bei einem Versandhändler habe ich ein Retouren-Dashboard gebaut, das die Kategorieleitungen jede Woche nutzen. Ich habe gelernt, dass die Frage hinter der Frage oft wichtiger ist als die Methode.",
+    "Ich kann ab Oktober beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Praktikumszeugnis"
+   ]
+  },
+  {
+   "label": "Wechsel aus dem Controlling",
+   "level": "quereinstieg",
+   "position": "Data Analyst (Vertrieb)",
+   "to": {
+    "org": "Nordsee Versicherung AG",
+    "sal": "f",
+    "street": "Ballindamm 10",
+    "city": "20095 Hamburg",
+    "contact": "Vollmer"
+   },
+   "body": [
+    "in sechs Jahren Controlling habe ich gemerkt, dass ich die Monatsberichte am liebsten in die Tiefe treibe: Warum steigt die Stornoquote in einer Region? Dafür habe ich mir SQL und Python beigebracht und automatisiere inzwischen einen Großteil unseres Reportings.",
+    "Mit einem automatisierten Bericht spare ich unserem Team jeden Monat rund zwei Arbeitstage. Ich habe Datenmodelle für den Vertrieb aufgebaut und Präsentationen für den Vorstand vorbereitet. Mein Vorteil gegenüber reinen Datenleuten: Ich weiß, was eine Zahl im Geschäft bedeutet und welche Frage ein Vertriebsleiter wirklich hat.",
+    "Ein Beispiel-Dashboard bringe ich gern zum Gespräch mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Kurszertifikate"
+   ],
+   "from": [
+    "Ole Hansen",
+    "Grindelallee 100",
+    "20146 Hamburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 2,
+  "name": "Mei Lin Chen",
+  "title": "M.Sc. Wirtschaftsinformatik",
+  "street": "Osterstraße 60",
+  "city": "20259 Hamburg",
+  "exp": [
+   [
+    "03/2025",
+    "08/2025",
+    "Praktikum Data Analytics",
+    "Versandhaus Alster GmbH",
+    "Hamburg",
+    "- Retouren-Dashboard für Kategorieleitungen\n- SQL-Abfragen und Datenaufbereitung"
+   ],
+   [
+    "2023",
+    "2025",
+    "Studentische Hilfskraft Statistik",
+    "Universität Hamburg",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2024",
+    "09/2026",
+    "M.Sc. Wirtschaftsinformatik",
+    "Universität Hamburg",
+    "Hamburg",
+    "Masterarbeit: Nachfrageprognose im Bike-Sharing"
+   ],
+   [
+    "10/2020",
+    "09/2024",
+    "B.Sc. Betriebswirtschaft",
+    "Universität Hamburg",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "SQL",
+    4
+   ],
+   [
+    "Python (Datenanalyse)",
+    4
+   ],
+   [
+    "Dashboards",
+    4
+   ],
+   [
+    "Statistik",
+    4
+   ],
+   [
+    "Präsentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "C2"
+   ],
+   [
+    "Chinesisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Radfahren, Datenvisualisierung als Hobby"
+ },
+ "do": [
+  "Ein Beispiel mit messbarer Wirkung.",
+  "Werkzeuge mit Einsatz nennen.",
+  "Zeig Geschäftsverständnis."
+ ],
+ "dont": [
+  "Methoden aufzählen ohne Ergebnis.",
+  "Vertrauliche Zahlen nennen.",
+  "Zu viel Fachjargon."
+ ],
+ "questions": [
+  "Die Umsätze fallen in einer Region. Wie gehen Sie vor?",
+  "Wie erklären Sie ein Ergebnis einem Nicht-Analysten?",
+  "Was ist der Unterschied zwischen Korrelation und Kausalität?",
+  "Welches Dashboard würden Sie für uns bauen?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich programmieren können?",
+   "a": "SQL ist fast immer Pflicht, Python oder R sehr häufig. Für reine BI-Stellen reichen manchmal SQL und ein Dashboard-Werkzeug."
+  }
+ ],
+ "related": [
+  "softwareentwickler",
+  "controller",
+  "marketing-manager",
+  "werkstudent-it"
+ ]
+}

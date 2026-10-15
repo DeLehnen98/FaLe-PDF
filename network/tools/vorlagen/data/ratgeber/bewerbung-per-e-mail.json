@@ -1,0 +1,70 @@
+{
+ "id": "bewerbung-per-e-mail",
+ "order": 1,
+ "card": "Bewerbung per E-Mail",
+ "short": "Mustertext für die E-Mail und die Bewerbungsmappe als eine PDF.",
+ "title": "Bewerbung per E-Mail: Mustertext und PDF-Mappe | FaleNetwork",
+ "h1": "Bewerbung per E-Mail – Mustertext und Bewerbungsmappe als PDF",
+ "desc": "So schickst du deine Bewerbung per E-Mail: Mustertext für die Mail, Betreff, Dateiname und die ganze Mappe als eine kleine PDF – direkt im Browser erstellt.",
+ "lede": "Die meisten Bewerbungen laufen heute per E-Mail oder über ein Portal. Mit diesen Schritten kommt deine Mappe vollständig, ordentlich und in einer Datei an.",
+ "sections": [
+  {
+   "h": "Die E-Mail selbst: kurz, mit klarem Betreff",
+   "text": [
+    "Die E-Mail ist nicht das Anschreiben. Sie begleitet die Anlage, nennt die Stelle und sagt, was im Anhang ist. Drei bis fünf Sätze reichen. Schreib sie von einer seriösen Adresse aus, am besten mit Vor- und Nachnamen."
+   ],
+   "example": {
+    "subject": "Betreff: Bewerbung als Medizinische Fachangestellte – Ihre Anzeige vom 2. Oktober",
+    "lines": [
+     "Sehr geehrte Frau Dr. Gruber,",
+     "anbei sende ich Ihnen meine Bewerbung für die Stelle als Medizinische Fachangestellte in Ihrer Praxis. Im Anhang finden Sie mein Anschreiben, meinen Lebenslauf und meine Zeugnisse in einer PDF-Datei.",
+     "Ab dem 1. August könnte ich bei Ihnen anfangen. Für Rückfragen erreichen Sie mich unter der Telefonnummer in der Signatur.",
+     "Mit freundlichen Grüßen",
+     "Sophie Wagner",
+     "Talstraße 23 · 66424 Homburg · 030 23125 412"
+    ]
+   }
+  },
+  {
+   "h": "Alles in eine PDF: die Bewerbungsmappe",
+   "steps": [
+    "Anschreiben und Lebenslauf als PDF erstellen – zum Beispiel mit den Vorlagen aus dem Archiv.",
+    "Zeugnisse einscannen oder abfotografieren und in PDF umwandeln.",
+    "Alles in der richtigen Reihenfolge zu einer Datei zusammenfügen: Anschreiben, Lebenslauf, Zeugnisse (das neueste zuerst), Bescheinigungen.",
+    "Die fertige Datei verkleinern, damit sie unter der Grenze des Portals oder Postfachs bleibt – oft 3 bis 5 MB.",
+    "Datei sinnvoll benennen, z. B. „Bewerbung_Sophie_Wagner_MFA.pdf“."
+   ],
+   "tools": [
+    "cover-letter",
+    "cv-builder",
+    "scan-to-pdf",
+    "merge-pdf",
+    "compress-pdf"
+   ]
+  },
+  {
+   "h": "Häufige Fehler",
+   "list": [
+    "Mehrere einzelne Anhänge mit Namen wie „Scan_0012.jpg“.",
+    "Eine 25-MB-Datei, die im Postfach hängen bleibt.",
+    "Das Anschreiben in den E-Mail-Text kopieren und zusätzlich anhängen.",
+    "Eine Spaßadresse als Absender.",
+    "Falscher Firmenname aus einer früheren Bewerbung."
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Soll das Anschreiben in die E-Mail oder in den Anhang?",
+   "a": "In den Anhang, als Teil der PDF-Mappe. Die E-Mail selbst bleibt kurz. Manche Unternehmen wünschen es ausdrücklich anders – dann hältst du dich an die Anzeige."
+  },
+  {
+   "q": "Wie groß darf die Datei sein?",
+   "a": "So klein wie möglich, meist reichen 2 bis 5 MB. Steht eine Grenze in der Anzeige oder im Portal, halte sie ein. „PDF komprimieren“ verkleinert die Mappe direkt im Browser, ohne dass deine Dokumente hochgeladen werden."
+  },
+  {
+   "q": "Darf ich die Bewerbung an mehrere Firmen gleichzeitig schicken?",
+   "a": "Ja, aber immer einzeln, mit persönlicher Anrede. Eine E-Mail mit vielen Empfängern im Verteiler wirkt wie eine Massenbewerbung."
+  }
+ ]
+}

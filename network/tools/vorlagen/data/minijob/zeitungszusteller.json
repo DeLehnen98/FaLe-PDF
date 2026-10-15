@@ -1,0 +1,148 @@
+{
+ "id": "zeitungszusteller",
+ "field": "minijob",
+ "name": "Zeitungszusteller/in",
+ "search": "zeitungszusteller zeitungsausträger zusteller prospektverteiler zeitung austragen minijob schüler rentner frühmorgens",
+ "short": "Früh morgens Zeitungen oder Prospekte austragen.",
+ "desc": "Bewerbung als Zeitungszusteller/in oder Prospektverteiler: zwei sehr kurze Musteranschreiben für Schüler und Rentnerin, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Zustellerinnen und Zusteller sind frühmorgens unterwegs, bei jedem Wetter, und müssen zuverlässig sein. Ein kurzes Anschreiben mit Wohnort, Verfügbarkeit und Fahrrad oder Auto reicht völlig.",
+ "lookFor": [
+  "Zuverlässigkeit",
+  "Wohnort im Zustellgebiet",
+  "Frühes Aufstehen",
+  "Fahrrad, Roller oder Auto",
+  "Alter: Prospekte oft ab 13, Tageszeitungen wegen der frühen Uhrzeit meist ab 18"
+ ],
+ "letters": [
+  {
+   "label": "Schüler, Prospekte",
+   "level": "minijob",
+   "position": "Prospektverteiler (Minijob)",
+   "to": {
+    "org": "Werbeverteilung Nordhessen",
+    "sal": "none",
+    "street": "Industriestraße 5",
+    "city": "34123 Kassel"
+   },
+   "body": [
+    "ich bin 14 und möchte mir mit dem Verteilen von Prospekten etwas Geld dazuverdienen. Ich wohne in Kassel-Wilhelmshöhe und kenne die Straßen gut.",
+    "Ich kann mittwochs und samstags nachmittags verteilen und habe ein Fahrrad mit Anhänger. Meine Eltern sind einverstanden.",
+    "Über eine Zusage würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Einverständniserklärung der Eltern"
+   ]
+  },
+  {
+   "label": "Rentnerin, Zeitungszustellung",
+   "level": "minijob",
+   "position": "Zeitungszustellerin (Minijob)",
+   "to": {
+    "org": "Zustelldienst Kasseler Tageblatt",
+    "sal": "none",
+    "street": "Frankfurter Straße 168",
+    "city": "34121 Kassel"
+   },
+   "body": [
+    "mit 64 bin ich immer noch Frühaufsteherin und gehe jeden Morgen ohnehin eine Runde mit dem Hund. Warum nicht dabei Zeitungen austragen?",
+    "Ich wohne in Kassel-Bettenhausen und kann sechs Tage pro Woche zustellen. Ich bin zuverlässig, war im Berufsleben als Postbotin unterwegs und kenne das Wetter in Nordhessen von seiner schlechtesten Seite.",
+    "Ich freue mich auf Ihren Anruf."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Ingrid Wolf",
+    "Leipziger Straße 200",
+    "34123 Kassel"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "compact",
+  "accent": 5,
+  "name": "Max Schneider",
+  "title": "Schüler",
+  "street": "Wilhelmshöher Allee 200",
+  "city": "34119 Kassel",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Rasenmähen für Nachbarn",
+    "privat",
+    "Kassel",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2022",
+    "",
+    "Gesamtschule, zurzeit Klasse 9",
+    "Offene Schule Waldau",
+    "Kassel",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "Ortskenntnis",
+    4
+   ],
+   [
+    "Fahrrad mit Anhänger",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "BMX, Fußball"
+ },
+ "do": [
+  "Wohnort und Verfügbarkeit nennen.",
+  "Fahrzeug angeben.",
+  "Sehr kurz bleiben."
+ ],
+ "dont": [
+  "Unklare Tage.",
+  "Zu lange Texte.",
+  "Alter verschweigen."
+ ],
+ "questions": [
+  "Wann stehen Sie morgens auf?",
+  "Was machen Sie bei Glatteis?",
+  "Wie viele Tage pro Woche können Sie?",
+  "Haben Sie ein Fahrrad oder Auto?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  },
+  {
+   "q": "Ab welchem Alter darf ich Zeitungen austragen?",
+   "a": "Prospekte und Anzeigenblätter dürfen Jugendliche ab 13 mit Einschränkungen verteilen. Tageszeitungen werden meist in den frühen Morgenstunden zugestellt; zu dieser Zeit dürfen Minderjährige in der Regel nicht arbeiten, deshalb suchen Verlage dafür meist Volljährige."
+  }
+ ],
+ "related": [
+  "paketzusteller",
+  "verkaeuferin-minijob",
+  "kommissionierer",
+  "nachhilfelehrer"
+ ]
+}

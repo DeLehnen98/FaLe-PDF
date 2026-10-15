@@ -1,0 +1,194 @@
+{
+ "id": "assistenz-geschaeftsfuehrung",
+ "field": "buero",
+ "name": "Assistenz der Geschäftsführung",
+ "search": "assistentin geschäftsführung chefsekretärin office manager executive assistant vorstandsassistenz sekretärin",
+ "short": "Rechte Hand der Geschäftsführung – mit Erfahrung im Sekretariat.",
+ "desc": "Bewerbung als Assistenz der Geschäftsführung: zwei ausformulierte Anschreiben für erfahrene Assistenzen und den Aufstieg aus dem Sekretariat, plus Lebenslauf.",
+ "intro": "Als Assistenz der Geschäftsführung organisierst du Termine, Reisen, Sitzungen und Unterlagen – und hältst der Chefin oder dem Chef den Rücken frei. Gefragt sind Diskretion, Englisch, souveräner Umgang mit Office-Programmen und ein Gespür dafür, was wichtig ist, bevor jemand es sagt.",
+ "lookFor": [
+  "Mehrjährige Erfahrung im Sekretariat oder in der Assistenz",
+  "Termin-, Reise- und Sitzungsmanagement inklusive Protokoll",
+  "Sehr gutes Englisch, oft eine weitere Sprache",
+  "Präsentationen und Auswertungen vorbereiten",
+  "Diskretion und Loyalität"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Assistenz, Wechsel in ein Familienunternehmen",
+   "level": "erfahren",
+   "position": "Assistenz der Geschäftsführung",
+   "to": {
+    "org": "Bremer Kaffeerösterei Hagen GmbH & Co. KG",
+    "sal": "m",
+    "street": "Überseestadt 12",
+    "city": "28217 Bremen",
+    "contact": "Hagen"
+   },
+   "body": [
+    "Aufsichtsratssitzungen, Hauptversammlungen, Reisen nach Shanghai und Chicago: Das war acht Jahre lang mein Alltag im Vorstandsbüro eines börsennotierten Logistikkonzerns. Ich habe dort gelernt, dass ein Kalender ein politisches Dokument sein kann. Jetzt möchte ich in ein Unternehmen, in dem die Wege kürzer sind und man den Chef nicht nur aus Meetings kennt.",
+    "Was ich für Sie übernehmen würde: den Kalender, die Vorbereitung von Gesprächen mit Banken und Kunden, Präsentationen, Protokolle, die Korrespondenz in Deutsch und Englisch. Im Konzern habe ich auch interne Projekte koordiniert, zuletzt die Umstellung der Reisekostenabrechnung auf ein digitales System für 200 Führungskräfte.",
+    "Ihre Rösterei kenne ich von meinem Wochenmarkt. Dass ein Familienunternehmen mit 120 Mitarbeitenden international einkauft und trotzdem bodenständig bleibt, hat mich neugierig gemacht. Meine Kündigungsfrist beträgt drei Monate zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Zertifikat Business English"
+   ]
+  },
+  {
+   "label": "Aufstieg aus dem Teamsekretariat",
+   "level": "berufseinstieg",
+   "position": "Assistentin der Geschäftsführung",
+   "to": {
+    "org": "IT Nordwest Consulting GmbH",
+    "sal": "f",
+    "street": "Konsul-Smidt-Straße 8",
+    "city": "28217 Bremen",
+    "contact": "Dr. Meinert"
+   },
+   "body": [
+    "seit drei Jahren betreue ich das Sekretariat einer Abteilung mit 25 Beratern. Inzwischen fragt mich unser Bereichsleiter bei Kundenterminen um Rat, bevor er zusagt – weil ich weiß, wer wann wo ist. Ich möchte jetzt den Schritt in die Assistenz einer Geschäftsführung gehen.",
+    "Ich koordiniere Termine und Reisen, bereite Kundenpräsentationen vor und organisiere zweimal im Jahr unsere Teamtage mit Hotel, Programm und Budget. Seit Kurzem übernehme ich auch die monatliche Auslastungsauswertung für den Bereich. Englisch spreche ich verhandlungssicher, ich habe ein Jahr in Dublin gearbeitet.",
+    "Ich habe mich mit Ihrem Unternehmen beschäftigt und weiß, dass Sie in den nächsten Jahren stark wachsen wollen. Genau dann braucht eine Geschäftsführung jemanden, der Strukturen schafft. Gern stelle ich mich persönlich vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Lara Heinemann",
+    "Am Wall 140",
+    "28195 Bremen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a08",
+  "design": "classic",
+  "accent": 5,
+  "name": "Gabriele Stein",
+  "title": "Assistenz der Geschäftsführung",
+  "street": "Schwachhauser Heerstraße 88",
+  "city": "28209 Bremen",
+  "exp": [
+   [
+    "01/2018",
+    "",
+    "Assistenz des Vorstands",
+    "Weser Logistik AG",
+    "Bremen",
+    "- Vorbereitung von Vorstands- und Aufsichtsratssitzungen\n- Internationale Reiseplanung\n- Projektkoordination: digitale Reisekostenabrechnung"
+   ],
+   [
+    "03/2012",
+    "12/2017",
+    "Teamassistenz Vertrieb",
+    "Hanseatic Shipping GmbH",
+    "Bremen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2009",
+    "2012",
+    "Ausbildung zur Kauffrau für Bürokommunikation",
+    "Hanseatic Shipping GmbH",
+    "Bremen",
+    ""
+   ],
+   [
+    "2000",
+    "2009",
+    "Abitur",
+    "Gymnasium Horn",
+    "Bremen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "Geprüfte Management-Assistentin (IHK)",
+    "IHK Bremen",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2019",
+    "Business English (C1-Zertifikat)",
+    "Sprachschule",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Termin- und Reisemanagement",
+    5
+   ],
+   [
+    "Sitzungsvorbereitung und Protokoll",
+    5
+   ],
+   [
+    "Präsentationen",
+    4
+   ],
+   [
+    "Projektkoordination",
+    4
+   ],
+   [
+    "Office-Programme",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Klavier, Wandern"
+ },
+ "do": [
+  "Beschreib Verantwortung mit Beispielen: Sitzungen, Projekte, Budgets.",
+  "Zeig Sprachkenntnisse mit Situationen.",
+  "Erwähne Diskretion, ohne Vertrauliches zu verraten."
+ ],
+ "dont": [
+  "Interna früherer Chefs ausplaudern.",
+  "Nur Tätigkeiten statt Ergebnisse.",
+  "Einen zu langen Brief – Kürze ist Teil der Probe."
+ ],
+ "questions": [
+  "Ihr Chef hat zwei Termine zur selben Zeit zugesagt. Was tun Sie?",
+  "Wie bereiten Sie eine Geschäftsreise vor?",
+  "Wie gehen Sie mit vertraulichen Informationen um?",
+  "Was erwarten Sie von Ihrer Führungskraft?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Weiterbildungen helfen?",
+   "a": "Gefragt sind zum Beispiel die IHK-Abschlüsse Geprüfte/r Management-Assistent/in oder Wirtschaftsfachwirt/in sowie Sprachzertifikate. Nenn sie mit Jahr im Lebenslauf."
+  }
+ ],
+ "related": [
+  "kauffrau-bueromanagement",
+  "personalsachbearbeiter",
+  "sachbearbeiter",
+  "veranstaltungskaufmann"
+ ]
+}

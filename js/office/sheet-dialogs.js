@@ -3,7 +3,7 @@
 import { $, $$, h, esc, toast, openDialog } from '../ui.js';
 import { oicon } from './kinds.js';
 import { KEY, getCell, setCell, valueAt, displayOf, formatValue, FORMAT_PRESETS, formatKind, parseInput, newSheet, CELL_STYLES } from './workbook.js';
-import { colName, addr, parseRangeAddr, toDisplay, toCanonical, isValidName, FUNCTION_LIST, FN_CATEGORIES, KNOWN_FUNCTIONS, canonicalFn } from './formula.js';
+import { colName, addr, parseRangeAddr, toDisplay, toCanonical, isValidName, FUNCTION_LIST, FN_CATEGORIES, KNOWN_FUNCTIONS, canonicalFn, quoteSheet, FN_ARGS } from './formula.js';
 import { fromGermanCode, toGermanCode } from './numfmt.js';
 import { FONTS } from './fonts.js';
 import { rangeStr, parseRange, FILTER_OPS, DV_TYPES, DV_OPS, parseList } from './sheetfx.js';
@@ -399,7 +399,7 @@ export async function insertFunctionDialog() {
   const popular = new Set(FUNCTION_LIST.slice(0, 16).map(f => f[0]));
   const r = await openDialog({
     title: 'Funktion einfügen', wide: true,
-    body: `<div class="fx-dlg"><input class="input" type="search" name="q" placeholder="Funktion suchen, z. B. Summe, Datum, SVERWEIS …" autofocus>
+    body: `<div class="fx-dlg"><input class="input" type="search" name="q" placeholder="Funktion suchen, z. B. Summe, Datum, SVERWEIS, VLOOKUP …" autofocus>
       <div class="chips fx-cats">${['Häufig verwendet', ...cats].map((c, i) => `<button type="button" class="chip" data-cat="${esc(c)}" aria-selected="${i === 0}">${esc(c)}</button>`).join('')}</div>
       <div class="fx-list" role="listbox"></div>
       <p class="fx-info" data-info></p></div>`,
@@ -407,17 +407,23 @@ export async function insertFunctionDialog() {
     onMount: dlg => {
       let cat = 'Häufig verwendet', pick = null;
       const list = $('.fx-list', dlg), info = $('[data-info]', dlg), q = $('[name=q]', dlg);
+      // syntax (argument names) + example of the chosen function
+      const showInfo = (n, ex) => {
+        if (!n) { info.textContent = ''; return; }
+        const sig = FN_ARGS[canonicalFn(n)];
+        info.innerHTML = `${sig != null ? `<span class="fx-sig"><strong>${esc(n)}</strong>(${esc(sig)})</span><br>` : ''}<code>=${esc(ex)}</code>`;
+      };
       const paint = () => {
         const term = q.value.trim().toLocaleLowerCase('de');
         const items = FUNCTION_LIST.filter(([n, c, d]) => (term ? (n.toLocaleLowerCase('de').includes(term) || d.toLocaleLowerCase('de').includes(term) || canonicalFn(n).toLowerCase().includes(term)) : cat === 'Alle' ? true : cat === 'Häufig verwendet' ? popular.has(n) : c === cat));
-        list.innerHTML = items.map(([n, , d, ex]) => `<button type="button" class="fx-item" role="option" data-fn="${esc(n)}" data-ex="${esc(ex)}"><strong>${esc(n)}</strong><span>${esc(d)}</span></button>`).join('') || '<p class="panel-empty">Keine Funktion gefunden.</p>';
+        list.innerHTML = items.map(([n, , d, ex]) => { const en = canonicalFn(n); return `<button type="button" class="fx-item" role="option" data-fn="${esc(n)}" data-ex="${esc(ex)}"><strong>${esc(n)}${en !== n ? ` <em class="fx-en">${esc(en)}</em>` : ''}</strong><span>${esc(d)}</span></button>`; }).join('') || '<p class="panel-empty">Keine Funktion gefunden.</p>';
         pick = items[0] ? items[0][3] : null;
-        info.textContent = items[0] ? `=${items[0][3]}` : '';
+        showInfo(items[0] ? items[0][0] : null, pick);
         const first = $('.fx-item', list); if (first) first.setAttribute('aria-selected', 'true');
       };
       $$('[data-cat]', dlg).forEach(b => b.addEventListener('click', () => { cat = b.dataset.cat; q.value = ''; $$('[data-cat]', dlg).forEach(x => x.setAttribute('aria-selected', String(x === b))); paint(); }));
       q.addEventListener('input', paint);
-      list.addEventListener('click', e => { const b = e.target.closest('.fx-item'); if (!b) return; pick = b.dataset.ex; info.textContent = '=' + pick; $$('.fx-item', list).forEach(x => x.setAttribute('aria-selected', String(x === b))); });
+      list.addEventListener('click', e => { const b = e.target.closest('.fx-item'); if (!b) return; pick = b.dataset.ex; showInfo(b.dataset.fn, pick); $$('.fx-item', list).forEach(x => x.setAttribute('aria-selected', String(x === b))); });
       list.addEventListener('dblclick', e => { if (e.target.closest('.fx-item')) $('.dlg-actions .btn-primary', dlg).click(); });
       paint();
       return { collect: () => pick };
@@ -546,3 +552,127 @@ export async function sizeDialog(kind, value) {
 }
 
 export { CELL_STYLES, addr, parseRangeAddr, setCell, newSheet };
+
+// ---------------------------------------------------------------- Notiz, Link
+export async function noteDialog(where, text = '') {
+  const r = await openDialog({
+    title: text ? 'Notiz bearbeiten' : 'Notiz einfügen',
+    body: `<label class="field"><span class="field-label">Notiz zu ${esc(where)}</span><textarea class="input note-ta" name="note" rows="5" maxlength="4000" autofocus>${esc(text)}</textarea></label>
+      <p class="hint">Zellen mit Notiz haben ein rotes Dreieck oben rechts. Die Notiz wird in der .xlsx-Datei als Kommentar gespeichert.</p>`,
+    actions: [...(text ? [{ label: 'Löschen', value: 'del', kind: 'btn-danger-ghost' }] : []), { label: 'Abbrechen', value: 'cancel' }, { label: 'Speichern', value: 'ok', kind: 'btn-primary', default: true }],
+    onMount: dlg => ({ collect: () => $('[name=note]', dlg).value }),
+  });
+  if (r.value === 'del') return '';
+  return r.value === 'ok' ? r.data : null;
+}
+export async function linkDialog({ target = '', text = '', sheets = [] } = {}) {
+  const r = await openDialog({
+    title: target ? 'Link bearbeiten' : 'Link einfügen',
+    body: `<label class="field"><span class="field-label">Ziel</span><input class="input" name="target" value="${esc(target)}" placeholder="https://… · name@example.de · Tabelle2!A1" spellcheck="false" autocomplete="off" autofocus list="lnk-sheets"></label>
+      <datalist id="lnk-sheets">${sheets.map(n => `<option value="${esc(quoteSheet(n))}!A1"></option>`).join('')}</datalist>
+      <label class="field"><span class="field-label">Angezeigter Text (optional)</span><input class="input" name="text" value="${esc(text)}" autocomplete="off"></label>
+      <p class="hint">Erlaubt sind Webadressen, E-Mail-Adressen, Telefonnummern (tel:…) und Zellen in dieser Datei. Externe Links werden erst nach einer Rückfrage geöffnet.</p>`,
+    actions: [...(target ? [{ label: 'Link entfernen', value: 'del', kind: 'btn-danger-ghost' }] : []), { label: 'Abbrechen', value: 'cancel' }, { label: 'Übernehmen', value: 'ok', kind: 'btn-primary', default: true }],
+    validate: (v, dlg) => { if (v === 'ok' && !$('[name=target]', dlg).value.trim()) { toast('Bitte gib ein Ziel an.', 'error'); return false; } return true; },
+    onMount: dlg => ({ collect: () => ({ target: $('[name=target]', dlg).value, text: $('[name=text]', dlg).value }) }),
+  });
+  if (r.value === 'del') return { remove: true };
+  return r.value === 'ok' ? r.data : null;
+}
+
+// ---------------------------------------------------------------- Seite einrichten
+export async function pageSetupDialog(api, p) {
+  const [r1, r2, c1, c2] = api.bounds();
+  const selText = rangeStr({ r1, r2, c1, c2 });
+  const titles = p.titleRows ? `${p.titleRows.r1 + 1}:${p.titleRows.r2 + 1}` : '';
+  const radio = (name, list, cur) => `<div class="seg" role="radiogroup">${list.map(([v, l]) => `<label class="seg-opt"><input type="radio" name="${name}" value="${v}"${String(cur) === v ? ' checked' : ''}><span>${l}</span></label>`).join('')}</div>`;
+  const r = await openDialog({
+    title: 'Seite einrichten', wide: true,
+    body: `<div class="sps-dlg">
+      <div class="field"><span class="field-label">Ausrichtung</span>${radio('orient', [['auto', 'Automatisch'], ['portrait', 'Hochformat'], ['landscape', 'Querformat']], p.orient)}</div>
+      <div class="field"><span class="field-label">Skalierung</span>${radio('fit', [['none', 'Normal (Spalten aufteilen)'], ['width', 'Alle Spalten auf eine Seite'], ['page', 'Blatt auf eine Seite']], p.fit)}</div>
+      <div class="field"><span class="field-label">Seitenränder</span>${radio('margins', [['narrow', 'Schmal'], ['normal', 'Normal'], ['wide', 'Breit']], p.margins)}</div>
+      <div class="field-row">
+        <label class="field"><span class="field-label">Druckbereich</span><input class="input" name="area" value="${esc(p.area || '')}" placeholder="z. B. A1:F40 (leer = alles)" spellcheck="false"></label>
+        <label class="field"><span class="field-label">Zeilen wiederholen</span><input class="input" name="titles" value="${esc(titles)}" placeholder="z. B. 1:1" spellcheck="false"></label>
+      </div>
+      <p class="hint"><button class="btn btn-ghost btn-sm" type="button" data-use-sel>Markierung ${esc(selText)} als Druckbereich</button></p>
+      <label class="check"><input type="checkbox" name="grid"${p.grid ? ' checked' : ''}> Gitternetzlinien drucken</label>
+      <label class="check"><input type="checkbox" name="head"${p.head ? ' checked' : ''}> Zeilen- und Spaltenköpfe drucken (A, B, C … / 1, 2, 3 …)</label>
+      <label class="check"><input type="checkbox" name="center"${p.center ? ' checked' : ''}> Auf der Seite horizontal zentrieren</label>
+      <label class="check"><input type="checkbox" name="footer"${p.footer ? ' checked' : ''}> Seitenzahlen in der Fußzeile („Seite 1 von 3“)</label>
+    </div>`,
+    actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Übernehmen', value: 'ok', kind: 'btn-primary', default: true }],
+    validate: (v, dlg) => {
+      if (v !== 'ok') return true;
+      const a = $('[name=area]', dlg).value.trim();
+      if (a && !parseRange(a)) { toast('Druckbereich ungültig – z. B. A1:F40.', 'error'); return false; }
+      const t = $('[name=titles]', dlg).value.trim();
+      if (t && !/^\$?\d+(:\$?\d+)?$/.test(t)) { toast('Zeilen wiederholen: z. B. 1:1 oder 1:2.', 'error'); return false; }
+      return true;
+    },
+    onMount: dlg => {
+      $('[data-use-sel]', dlg).addEventListener('click', () => { $('[name=area]', dlg).value = selText; });
+      return {
+        collect: () => {
+          const val = n => ($(`[name=${n}]:checked`, dlg) || {}).value;
+          const a = $('[name=area]', dlg).value.trim();
+          const t = $('[name=titles]', dlg).value.trim().replace(/\$/g, '');
+          const tm = /^(\d+)(?::(\d+))?$/.exec(t);
+          return {
+            orient: val('orient') || 'auto', fit: val('fit') || 'none', margins: val('margins') || 'normal',
+            area: a ? rangeStr(parseRange(a)) : null,
+            titleRows: tm ? { r1: Math.min(+tm[1], +(tm[2] || tm[1])) - 1, r2: Math.max(+tm[1], +(tm[2] || tm[1])) - 1 } : null,
+            grid: $('[name=grid]', dlg).checked, head: $('[name=head]', dlg).checked, center: $('[name=center]', dlg).checked, footer: $('[name=footer]', dlg).checked,
+          };
+        },
+      };
+    },
+  });
+  return r.value === 'ok' ? r.data : null;
+}
+
+// ---------------------------------------------------------------- Gehe zu
+export async function gotoDialog(wb, si) {
+  const names = (wb.names || []).filter(n => /^[^(]*![$A-Z]|^\$?[A-Z]+\$?\d/.test(n.ref) && (n.si == null || n.si < 0 || n.si === si)).map(n => n.name);
+  const specials = [['blank', 'Leerzellen'], ['formulas', 'Formeln'], ['constants', 'Konstanten (Werte ohne Formel)'], ['errors', 'Fehlerwerte'], ['notes', 'Zellen mit Notiz'], ['cf', 'Bedingte Formatierung'], ['dv', 'Datenüberprüfung']];
+  const r = await openDialog({
+    title: 'Gehe zu',
+    body: `<label class="field"><span class="field-label">Zelle, Bereich oder Name</span><input class="input" name="ref" placeholder="z. B. B7, A1:C20, Tabelle2!A1" spellcheck="false" autocomplete="off" autofocus list="goto-names"></label>
+      <datalist id="goto-names">${names.map(n => `<option value="${esc(n)}"></option>`).join('')}</datalist>
+      <span class="field-label">Oder Inhalte markieren (in der Markierung, sonst im ganzen Blatt)</span>
+      <div class="goto-special">${specials.map(([k, l]) => `<button type="button" class="chip" data-special="${k}">${esc(l)}</button>`).join('')}</div>`,
+    actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Gehe zu', value: 'ok', kind: 'btn-primary', default: true }],
+    onMount: dlg => {
+      let special = null;
+      $$('[data-special]', dlg).forEach(b => b.addEventListener('click', () => { special = b.dataset.special; dlg.close(); }));
+      dlg.addEventListener('close', () => { if (special) dlg._special = special; });
+      return { collect: () => ({ ref: $('[name=ref]', dlg).value.trim(), special: dlg._special || special }) };
+    },
+  });
+  if (r.data && r.data.special) return { special: r.data.special };
+  if (r.value !== 'ok' || !r.data || !r.data.ref) return null;
+  return { ref: r.data.ref };
+}
+
+// ---------------------------------------------------------------- Teilergebnisse
+export async function subtotalDialog(api, rg) {
+  const sh = api.sh;
+  const fields = [];
+  for (let c = rg.c1; c <= rg.c2; c++) fields.push({ c, name: displayOf(getCell(sh, rg.r1, c)) || `Spalte ${colName(c)}` });
+  const numeric = fields.filter(f => { for (let r = rg.r1 + 1; r <= Math.min(rg.r2, rg.r1 + 30); r++) if (typeof valueAt(sh, r, f.c) === 'number') return true; return false; });
+  const r = await openDialog({
+    title: 'Teilergebnisse',
+    body: `<div class="st-dlg">
+      <label class="field"><span class="field-label">Gruppieren nach</span><select class="select" name="by">${fields.map(f => `<option value="${f.c}">${esc(f.name)}</option>`).join('')}</select></label>
+      <label class="field"><span class="field-label">Funktion</span><select class="select" name="fn"><option value="sum">Summe</option><option value="count">Anzahl</option><option value="avg">Mittelwert</option><option value="max">Maximum</option><option value="min">Minimum</option></select></label>
+      <span class="field-label">Teilergebnis für</span>
+      <div class="st-cols">${fields.map(f => `<label class="check"><input type="checkbox" name="col" value="${f.c}"${numeric.includes(f) ? ' checked' : ''}> ${esc(f.name)}</label>`).join('')}</div>
+      <label class="check"><input type="checkbox" name="sort" checked> Vorher nach der Gruppierungsspalte sortieren</label>
+      <p class="hint">Bereich ${esc(rangeStr(rg))}. Nach jeder Gruppe wird eine Zeile mit TEILERGEBNIS eingefügt; die Gruppen lassen sich am Zeilenkopf zuklappen.</p></div>`,
+    actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Einfügen', value: 'ok', kind: 'btn-primary', default: true }],
+    validate: (v, dlg) => { if (v === 'ok' && !$$('[name=col]:checked', dlg).length) { toast('Wähle mindestens eine Spalte.', 'error'); return false; } return true; },
+    onMount: dlg => ({ collect: () => ({ by: +$('[name=by]', dlg).value, fn: $('[name=fn]', dlg).value, cols: $$('[name=col]:checked', dlg).map(x => +x.value), sort: $('[name=sort]', dlg).checked }) }),
+  });
+  return r.value === 'ok' ? r.data : null;
+}

@@ -1,0 +1,357 @@
+{
+ "id": "lagerist",
+ "field": "logistik",
+ "popular": true,
+ "name": "Lagerist/in (Fachkraft für Lagerlogistik)",
+ "search": "lagerist lageristin lagerarbeiter lagerhelfer fachlagerist fachkraft lagerlogistik staplerfahrer kommissionierer wareneingang versand",
+ "short": "Wareneingang, Lager, Versand – Fachkraft, Fachlagerist oder Helfer.",
+ "desc": "Bewerbung als Lagerist/in oder Fachkraft für Lagerlogistik: Muster-Anschreiben für Fachkraft und Quereinsteiger, Lebenslauf mit Foto-Platzhalter und Gesprächstipps.",
+ "intro": "Im Lager zählen Genauigkeit, Tempo, Sicherheit und Erfahrung mit Flurförderzeugen und Lagerverwaltungssystemen. Ein Staplerschein ist fast immer gefragt. Zeig im Anschreiben, in welchen Bereichen du gearbeitet hast und welche Verantwortung du übernommen hast.",
+ "lookFor": [
+  "Ausbildung als Fachkraft für Lagerlogistik oder Fachlagerist/in oder Erfahrung im Lager",
+  "Staplerschein und Erfahrung mit Schubmast-, Front- oder Hochregalstaplern",
+  "Scanner, Lagerverwaltungssystem, Inventur",
+  "Sorgfalt bei Wareneingang und Kommissionierung",
+  "Schichtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Fachkraft mit Verantwortung im Wareneingang",
+   "level": "erfahren",
+   "position": "Fachkraft für Lagerlogistik – Wareneingang",
+   "to": {
+    "org": "Rheinland Food Logistics GmbH",
+    "sal": "f",
+    "street": "Am Güterbahnhof 5",
+    "city": "50829 Köln",
+    "contact": "Schwarz"
+   },
+   "body": [
+    "in unserem Wareneingang kommen pro Schicht etwa 30 LKW an, und ich bin dafür zuständig, dass jede Palette richtig gebucht und am richtigen Platz landet. Das mache ich seit fünf Jahren, mit einer Fehlerquote, auf die ich ein bisschen stolz bin.",
+    "Ich prüfe Lieferscheine gegen Bestellungen, kontrolliere Mindesthaltbarkeit und Temperatur bei Kühlware, buche im Lagerverwaltungssystem und kläre Abweichungen mit dem Einkauf. Ich fahre Front- und Schubmaststapler und bin im Team Ansprechpartner für neue Kollegen. Bei der Umstellung auf das neue Scannersystem im letzten Jahr habe ich die Schulungen für die Frühschicht übernommen.",
+    "Ich möchte in ein größeres Lager mit Lebensmitteln wechseln und mich langfristig zum Schichtleiter entwickeln. Wechselschicht ist kein Problem."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Staplerschein",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinstieg als Lagerhelfer",
+   "level": "quereinstieg",
+   "position": "Lagermitarbeiter (Quereinstieg)",
+   "to": {
+    "org": "Domstadt Versand GmbH",
+    "sal": "none",
+    "street": "Robert-Perthel-Straße 70",
+    "city": "50739 Köln"
+   },
+   "body": [
+    "sechs Jahre bin ich als Fahrradkurier durch Köln gefahren. Jetzt suche ich eine feste Stelle mit geregelten Schichten. Pakete und Lieferscheine sind mir nicht fremd, nur kenne ich sie bisher vom anderen Ende der Kette.",
+    "Ich bin körperlich fit, schnell und genau: Als Kurier habe ich am Tag bis zu 80 Sendungen zugestellt und dabei Scanner, App und Unterschriften im Griff gehabt. Einen Staplerschein habe ich im Sommer gemacht, Erfahrung auf dem Stapler fehlt mir noch. Die würde ich gern bei Ihnen sammeln.",
+    "Früh- und Spätschicht sind möglich, Nachtschicht nach Absprache. Ich kann sofort anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staplerschein"
+   ],
+   "from": [
+    "Yusuf Celik",
+    "Neusser Straße 300",
+    "50733 Köln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "compact",
+  "accent": 1,
+  "name": "Sebastian Kowalski",
+  "title": "Fachkraft für Lagerlogistik",
+  "street": "Venloer Straße 400",
+  "city": "50825 Köln",
+  "exp": [
+   [
+    "08/2021",
+    "",
+    "Fachkraft für Lagerlogistik, Wareneingang",
+    "Kölner Getränke- und Lebensmittelgroßhandel",
+    "Köln",
+    "- Annahme von ca. 30 LKW pro Schicht\n- Prüfung von MHD und Temperatur\n- Buchung im Lagerverwaltungssystem\n- Schulung zum neuen Scannersystem"
+   ],
+   [
+    "08/2018",
+    "07/2021",
+    "Ausbildung Fachkraft für Lagerlogistik",
+    "Kölner Getränke- und Lebensmittelgroßhandel",
+    "Köln",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2018",
+    "Fachoberschulreife",
+    "Gesamtschule Ehrenfeld",
+    "Köln",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2019",
+    "Staplerschein (Front- und Schubmaststapler)",
+    "Berufsgenossenschaft",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Ladungssicherung",
+    "IHK Köln",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Wareneingang und Buchung",
+    5
+   ],
+   [
+    "Staplerfahren",
+    5
+   ],
+   [
+    "Lagerverwaltungssystem",
+    4
+   ],
+   [
+    "Inventur",
+    4
+   ],
+   [
+    "Einarbeitung neuer Kollegen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Polnisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fußball (Kreisliga), Grillen"
+ },
+ "do": [
+  "Nenn Stapler-Typen und Systeme.",
+  "Gib Mengen an: LKW, Paletten, Positionen pro Stunde.",
+  "Sag, welche Schichten du kannst."
+ ],
+ "dont": [
+  "Staplerschein erfinden – der wird kontrolliert.",
+  "Rückenprobleme verschweigen, wenn du schwer heben sollst.",
+  "Nur „Lagertätigkeiten“ schreiben."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn die Lieferung nicht zum Lieferschein passt?",
+  "Welche Stapler sind Sie gefahren?",
+  "Wie vermeiden Sie Fehler beim Kommissionieren?",
+  "Welche Schichten können Sie übernehmen?"
+ ],
+ "faq": [
+  {
+   "q": "Fachkraft für Lagerlogistik oder Fachlagerist – was ist der Unterschied?",
+   "a": "Fachlageristen lernen zwei Jahre, Fachkräfte für Lagerlogistik drei. Die Fachkraft übernimmt zusätzlich planende und kaufmännische Aufgaben, etwa Tourenplanung oder Bestandsauswertungen."
+  },
+  {
+   "q": "Brauche ich einen Staplerschein?",
+   "a": "Für die meisten Lagerjobs ja. Gemeint ist der Fahrausweis nach der Ausbildung gemäß DGUV-Grundsatz; der Arbeitgeber muss dich zusätzlich schriftlich beauftragen. Kurse dauern meist wenige Tage."
+  }
+ ],
+ "related": [
+  "kommissionierer",
+  "lkw-fahrer",
+  "speditionskaufmann",
+  "produktionshelfer"
+ ],
+ "en": {
+  "slug": "warehouse-operative",
+  "name": "Warehouse operative",
+  "search": "warehouse operative warehouse worker picker packer forklift driver stock controller",
+  "short": "Goods in, picking, dispatch – experienced or career changer.",
+  "desc": "Warehouse operative CV and cover letter examples: letters for an experienced goods-in operative and a career changer, plus a ready CV with placeholder portrait.",
+  "intro": "Warehouses want people who are accurate, quick and safe, ideally with forklift experience and some time on a warehouse management system. Say which areas you have worked in and what responsibility you have taken on.",
+  "lookFor": [
+   "Experience in goods-in, picking, packing or dispatch",
+   "Forklift licence (counterbalance, reach, VNA)",
+   "Scanners and warehouse management systems",
+   "Accuracy and safe working",
+   "Flexibility for shifts"
+  ],
+  "letters": [
+   {
+    "label": "Experienced goods-in operative",
+    "level": "erfahren",
+    "position": "Goods-in team leader",
+    "to": {
+     "org": "Midlands Food Distribution",
+     "sal": "f",
+     "street": "Junction 15 Park",
+     "city": "Northampton NN4 9BX",
+     "contact": "Walker"
+    },
+    "body": [
+     "Around thirty trucks arrive in our goods-in area every shift, and I make sure every pallet is booked correctly and put in the right location. I have done this for five years with an error rate I am quite proud of.",
+     "I check deliveries against orders, inspect use-by dates and temperatures for chilled goods, book stock on the WMS and resolve discrepancies with purchasing. I drive counterbalance and reach trucks and trained the early shift when we switched to new scanners.",
+     "I would like to grow into a team leader role in a larger food warehouse. Rotating shifts are fine."
+    ],
+    "att": [
+     "CV",
+     "Forklift licence",
+     "Reference"
+    ]
+   },
+   {
+    "label": "Career changer from courier work",
+    "level": "quereinstieg",
+    "position": "Warehouse operative",
+    "to": {
+     "org": "Swift Parcels Hub",
+     "sal": "none",
+     "street": "Brackmills Industrial Estate",
+     "city": "Northampton NN4 7PB"
+    },
+    "body": [
+     "After six years as a cycle courier I am looking for a permanent job with regular shifts. I know parcels and delivery notes – just from the other end of the chain. Now I want the other end.",
+     "I am fit, quick and accurate: I delivered up to 80 items a day using a scanner and app. I passed my forklift course this summer and would like to build experience with you.",
+     "I can work early and late shifts and can start immediately."
+    ],
+    "att": [
+     "CV",
+     "Forklift certificate"
+    ],
+    "from": [
+     "Ryan Patel",
+     "7 Abington Street",
+     "Northampton NN1 2AJ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a22",
+   "design": "compact",
+   "accent": 1,
+   "name": "Tom Kowalski",
+   "title": "Warehouse operative",
+   "street": "44 Kettering Road",
+   "city": "Northampton NN1 4AW",
+   "exp": [
+    [
+     "08/2021",
+     "",
+     "Warehouse operative, goods-in",
+     "Central Food Wholesale",
+     "Northampton",
+     "- Receiving around 30 trucks per shift\n- Date and temperature checks\n- WMS booking, scanner training"
+    ]
+   ],
+   "edu": [
+    [
+     "2013",
+     "2018",
+     "Secondary school",
+     "Northampton Academy",
+     "Northampton",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2019",
+     "Counterbalance and reach truck licence",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "Manual handling",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Goods-in and booking",
+     5
+    ],
+    [
+     "Forklift",
+     5
+    ],
+    [
+     "WMS",
+     4
+    ],
+    [
+     "Stock counts",
+     4
+    ],
+    [
+     "Training colleagues",
+     3
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Polish",
+     "B2"
+    ]
+   ],
+   "hobbies": "Football, barbecues"
+  },
+  "do": [
+   "Name truck types and systems.",
+   "Give volumes: trucks, pallets, picks per hour.",
+   "State your shift availability."
+  ],
+  "dont": [
+   "Claim a forklift licence you do not hold.",
+   "Write only “general warehouse duties”.",
+   "Ignore health limits for heavy lifting."
+  ],
+  "questions": [
+   "What do you do when a delivery does not match the paperwork?",
+   "Which trucks have you driven?",
+   "How do you avoid picking errors?",
+   "Which shifts can you work?"
+  ],
+  "faq": [
+   {
+    "q": "Is a cover letter needed for warehouse jobs?",
+    "a": "Many agencies only ask for a CV, but a short letter with your licences and shift availability can move you up the list."
+   }
+  ]
+ }
+}

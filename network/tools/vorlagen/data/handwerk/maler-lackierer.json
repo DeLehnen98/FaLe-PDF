@@ -1,0 +1,181 @@
+{
+ "id": "maler-lackierer",
+ "field": "handwerk",
+ "name": "Maler/in und Lackierer/in",
+ "search": "malerin maler lackierer anstreicher fassade tapezieren trockenbau wdvs malergeselle",
+ "short": "Innenraum, Fassade, Trockenbau – Geselle oder Quereinstieg als Helfer.",
+ "desc": "Bewerbung als Maler/in und Lackierer/in: Musteranschreiben für Gesellen und Quereinsteiger als Helfer, Lebenslauf mit Platzhalterfoto und Tipps für den Probetag.",
+ "intro": "Malerbetriebe suchen Leute, die sauber und zuverlässig arbeiten, beim Kunden höflich auftreten und mit Material sparsam umgehen. Gesellen mit Erfahrung in Fassade, Wärmedämmung oder Gestaltungstechniken haben gute Chancen; auch Helfer werden gesucht.",
+ "lookFor": [
+  "Gesellenbrief Maler/in und Lackierer/in oder Erfahrung als Helfer",
+  "Untergrundvorbereitung, Spachteln, Tapezieren, Lackieren",
+  "Fassade, WDVS, Gerüstarbeit",
+  "Sauberkeit beim Kunden: Abdecken, Aufräumen",
+  "Führerschein"
+ ],
+ "letters": [
+  {
+   "label": "Geselle mit Fassadenerfahrung",
+   "level": "erfahren",
+   "position": "Malergeselle",
+   "to": {
+    "org": "Malerbetrieb Farbwerk Sauer",
+    "sal": "m",
+    "street": "Lindenstraße 40",
+    "city": "36037 Fulda",
+    "contact": "Sauer"
+   },
+   "body": [
+    "seit acht Jahren bin ich Malergeselle, die letzten drei überwiegend an Fassaden: Altputz sanieren, Wärmedämmverbundsysteme anbringen, Anstriche bis zum dritten Stock vom Gerüst aus. Ich suche einen Betrieb, in dem ich auch wieder mehr Innenräume gestalte.",
+    "Kunden sagen mir oft, dass sie am Abend kaum merken, dass Handwerker im Haus waren. Darauf lege ich Wert: Möbel abdecken, Böden schützen, abends den Staubsauger durchziehen. Bei Spachteltechniken und Lasuren war ich in meinem Ausbildungsbetrieb der Ansprechpartner. Einen Altbau mit Stuck habe ich vor zwei Jahren mit einem Restaurator zusammen bearbeitet.",
+    "Ich kann ab Januar anfangen und bringe den Führerschein BE mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Quereinstieg als Helfer",
+   "level": "quereinstieg",
+   "position": "Malerhelfer in Vollzeit",
+   "to": {
+    "org": "Maler Krämer GmbH",
+    "sal": "none",
+    "street": "Petersberger Straße 9",
+    "city": "36037 Fulda"
+   },
+   "body": [
+    "ich habe in den letzten Jahren als Lagerarbeiter gearbeitet und in meiner Freizeit mit meinem Onkel, der Maler ist, mehrere Wohnungen renoviert. Das hat mir so viel mehr Spaß gemacht als Paletten zu stapeln, dass ich jetzt wechseln möchte.",
+    "Abkleben, schleifen, grundieren, tapezieren und rollen kann ich ordentlich. Zum Spachteln und für saubere Kanten an der Decke brauche ich noch Übung, die würde ich mir bei Ihnen gern holen. Ich bin pünktlich, schwindelfrei und körperlich fit; im Lager habe ich drei Jahre lang Frühschicht ab 5 Uhr gemacht.",
+    "Später kann ich mir auch eine Umschulung oder Externenprüfung vorstellen. Für einen Probetag stehe ich jederzeit bereit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Arben Krasniqi",
+    "Leipziger Straße 61",
+    "36037 Fulda"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "compact",
+  "accent": 4,
+  "name": "Marco Weidner",
+  "title": "Maler- und Lackierergeselle",
+  "street": "Heinrichstraße 18",
+  "city": "36037 Fulda",
+  "exp": [
+   [
+    "08/2018",
+    "",
+    "Malergeselle",
+    "Fassaden & Farbe Hessen GmbH",
+    "Fulda",
+    "- Fassadensanierung, WDVS\n- Anstriche vom Gerüst\n- Innenraumgestaltung, Spachteltechniken"
+   ],
+   [
+    "08/2015",
+    "07/2018",
+    "Ausbildung zum Maler und Lackierer",
+    "Malerbetrieb Hahn",
+    "Hünfeld",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2009",
+    "2015",
+    "Hauptschulabschluss",
+    "Gesamtschule Hünfeld",
+    "Hünfeld",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Fachkurs WDVS",
+    "Malerinnung",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2021",
+    "Gerüstbau-Unterweisung",
+    "Berufsgenossenschaft",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fassade und WDVS",
+    4
+   ],
+   [
+    "Spachteltechniken",
+    4
+   ],
+   [
+    "Tapezieren",
+    5
+   ],
+   [
+    "Lackierarbeiten",
+    4
+   ],
+   [
+    "Gerüstarbeit",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Motorradtouren, Vereinsfußball"
+ },
+ "do": [
+  "Nenn Techniken und Bereiche: Fassade, Lackierung, Gestaltung, Trockenbau.",
+  "Betone Sauberkeit und Kundenkontakt.",
+  "Als Helfer: sag ehrlich, was du kannst und was nicht."
+ ],
+ "dont": [
+  "„Renovierungserfahrung“ ohne Beispiel.",
+  "Schwarzarbeit als Referenz nennen.",
+  "Höhenangst verschweigen, wenn Gerüstarbeit dazugehört."
+ ],
+ "questions": [
+  "Wie bereiten Sie einen stark saugenden Untergrund vor?",
+  "Wie schützen Sie die Wohnung des Kunden?",
+  "Haben Sie Erfahrung mit Gerüstarbeiten?",
+  "Welche Technik würden Sie gern vertiefen?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne Ausbildung als Maler arbeiten?",
+   "a": "Als Helfer ja. Wer später den Gesellenbrief möchte, kann eine Umschulung machen oder nach ausreichender Berufserfahrung zur Externenprüfung bei der Handwerkskammer gehen."
+  }
+ ],
+ "related": [
+  "tischler",
+  "hausmeister",
+  "anlagenmechaniker-shk",
+  "reinigungskraft"
+ ]
+}

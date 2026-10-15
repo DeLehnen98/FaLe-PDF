@@ -1,0 +1,194 @@
+{
+ "id": "schulbegleiter",
+ "field": "soziales",
+ "name": "Schulbegleiter/in (Integrationshelfer)",
+ "search": "schulbegleitung schulbegleiterin integrationshelfer integrationshelferin inklusionsassistenz teilhabeassistenz schulassistenz quereinstieg",
+ "short": "Kinder mit Unterstützungsbedarf im Schulalltag begleiten – oft ohne Fachausbildung möglich.",
+ "desc": "Bewerbung als Schulbegleiter/in bzw. Integrationshelfer: zwei Anschreiben für Quereinstieg und Erfahrung, Lebenslauf mit Foto-Platzhalter und Tipps für das Gespräch.",
+ "intro": "Schulbegleiterinnen und Schulbegleiter unterstützen ein Kind mit Behinderung oder besonderem Förderbedarf im Unterricht und in den Pausen. Viele Träger stellen auch Menschen ohne pädagogische Ausbildung ein, wenn Haltung, Geduld und Zuverlässigkeit stimmen. Arbeitszeiten richten sich nach dem Stundenplan, Ferien sind oft unbezahlt oder werden ausgeglichen – frag nach.",
+ "lookFor": [
+  "Geduld, Ruhe und Verlässlichkeit – das Kind braucht eine feste Bezugsperson",
+  "Erfahrung mit Kindern, gern mit Autismus, ADHS oder körperlichen Einschränkungen",
+  "Bereitschaft zur Zusammenarbeit mit Lehrkräften und Eltern, ohne den Unterricht zu übernehmen",
+  "Eventuell pflegerische Hilfen (Toilettengang, Essen) je nach Kind",
+  "Erweitertes Führungszeugnis"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg als Mutter mit Teilzeitwunsch",
+   "level": "quereinstieg",
+   "position": "Schulbegleiterin an einer Grundschule (Teilzeit, vormittags)",
+   "to": {
+    "org": "Inklusionsdienst Pfalz gGmbH",
+    "sal": "f",
+    "street": "Maximilianstraße 12",
+    "city": "67433 Neustadt an der Weinstraße",
+    "contact": "Ritter"
+   },
+   "body": [
+    "ich bin gelernte Industriekauffrau und habe zwölf Jahre im Einkauf gearbeitet. Seit meine Tochter mit ADHS die Grundschule besucht, kenne ich Schulbegleitung aus Elternsicht – und ich habe gesehen, was eine gute Begleiterin bewirkt.",
+    "Was ich mitbringe: Ich bleibe ruhig, wenn es laut wird, und finde schnell heraus, was ein Kind gerade braucht, ob eine Pause, eine klare Ansage oder einfach jemand, der danebensitzt. Im letzten Schuljahr habe ich ehrenamtlich die Lesepatenschaft in der Klasse meiner Tochter übernommen und zweimal pro Woche mit drei Kindern gelesen.",
+    "Mir ist klar, dass ich als Schulbegleiterin nicht unterrichte, sondern dem Kind helfe, am Unterricht teilzunehmen. Die Absprachen mit Lehrkräften und Eltern sind mir deshalb wichtig. Ich kann montags bis freitags von 7:45 bis 13:00 Uhr arbeiten. Ein erweitertes Führungszeugnis habe ich beantragt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Bestätigung Lesepatenschaft"
+   ]
+  },
+  {
+   "label": "Mit Erfahrung in der Begleitung eines autistischen Kindes",
+   "level": "erfahren",
+   "position": "Schulbegleiter für einen Schüler der Sekundarstufe",
+   "to": {
+    "org": "Lebenshilfe Ludwigshafen",
+    "sal": "none",
+    "street": "Bürgermeister-Grünzweig-Straße 30",
+    "city": "67059 Ludwigshafen"
+   },
+   "body": [
+    "drei Jahre lang habe ich einen Jungen mit Autismus von der fünften bis zur siebten Klasse begleitet. Er hat jetzt so viel Selbstständigkeit gewonnen, dass die Stundenzahl der Begleitung reduziert wird. Ich suche deshalb eine neue Begleitung, gern wieder im Autismusbereich.",
+    "Gemeinsam mit seinen Lehrkräften habe ich Rückzugsorte und einen visuellen Tagesplan eingeführt. Bei Reizüberflutung habe ich ihn in einen ruhigen Raum begleitet und mit ihm Strategien entwickelt, damit er das irgendwann selbst kann. Inzwischen meldet er sich ab, bevor es zu viel wird. Das war unser größter Erfolg.",
+    "Vor der Schulbegleitung war ich Fitnesstrainer. Bewegungspausen sind deshalb ein festes Werkzeug von mir. Ich habe an einer Fortbildung zu Autismus im Schulalltag teilgenommen und kann sofort beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Fortbildungsbescheinigung"
+   ],
+   "from": [
+    "Luca Ferrari",
+    "Rheinuferstraße 4",
+    "67061 Ludwigshafen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 4,
+  "name": "Christina Becker",
+  "title": "Schulbegleiterin",
+  "street": "Hauptstraße 101",
+  "city": "67433 Neustadt an der Weinstraße",
+  "exp": [
+   [
+    "08/2025",
+    "07/2026",
+    "Lesepatin (ehrenamtlich)",
+    "Grundschule Am Weinberg",
+    "Neustadt",
+    "- Lesetraining mit drei Kindern, zweimal pro Woche"
+   ],
+   [
+    "08/2013",
+    "07/2025",
+    "Industriekauffrau im Einkauf",
+    "Pfälzer Maschinenbau GmbH",
+    "Neustadt",
+    "- Lieferantenkommunikation und Bestellwesen\n- Einarbeitung von Auszubildenden"
+   ],
+   [
+    "08/2010",
+    "07/2013",
+    "Ausbildung zur Industriekauffrau",
+    "Pfälzer Maschinenbau GmbH",
+    "Neustadt",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2001",
+    "2010",
+    "Fachhochschulreife",
+    "BBS Neustadt",
+    "Neustadt",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Grundlagen Schulbegleitung (40 Std.)",
+    "Volkshochschule Neustadt",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2026",
+    "Erste Hilfe am Kind",
+    "DRK",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Strukturierung und Organisation",
+    5
+   ],
+   [
+    "Ruhe in Konfliktsituationen",
+    4
+   ],
+   [
+    "Lesetraining",
+    3
+   ],
+   [
+    "Kommunikation mit Eltern",
+    4
+   ],
+   [
+    "MS Office",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Wandern im Pfälzerwald, Elternbeirat"
+ },
+ "do": [
+  "Erzähl, was du aus eigener Erfahrung über Kinder mit Förderbedarf weißt.",
+  "Sag, zu welchen Zeiten du verlässlich da bist.",
+  "Zeig, dass du deine Rolle neben der Lehrkraft verstehst."
+ ],
+ "dont": [
+  "Dich als Ersatzlehrkraft anbieten.",
+  "Diagnosen eines Kindes aus deinem Umfeld detailliert schildern.",
+  "Die Ferienregelung ungeklärt lassen."
+ ],
+ "questions": [
+  "Was tun Sie, wenn das Kind den Unterricht stört?",
+  "Wie gehen Sie damit um, wenn Lehrkraft und Eltern unterschiedliche Erwartungen haben?",
+  "Wie fördern Sie Selbstständigkeit?",
+  "Sind Sie bereit, bei Toilettengängen zu helfen?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung als Schulbegleiter?",
+   "a": "Nicht immer. Viele Träger stellen Quereinsteiger ein und schulen sie. Bei Kindern mit hohem Pflege- oder Förderbedarf wird teils eine Fachkraft verlangt, etwa Heilerziehungspfleger oder Erzieherin."
+  },
+  {
+   "q": "Werde ich in den Ferien bezahlt?",
+   "a": "Das ist je nach Träger und Vertrag unterschiedlich: manche zahlen weiter, andere setzen Überstunden ein oder beschäftigen in den Ferien anderswo. Frag im Gespräch konkret danach."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "heilerziehungspfleger",
+  "sozialarbeiter",
+  "nachhilfelehrer"
+ ]
+}

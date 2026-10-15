@@ -1,0 +1,154 @@
+{
+ "id": "ausbildung-bankkaufmann",
+ "field": "ausbildung",
+ "name": "Ausbildung Bankkaufmann/-frau",
+ "search": "ausbildung bankkauffrau bankkaufmann bewerbung ausbildungsplatz bank sparkasse volksbank abitur",
+ "short": "Bewerbung bei Bank oder Sparkasse – meist mit Abitur oder sehr gutem Realschulabschluss.",
+ "desc": "Bewerbung für die Ausbildung zum Bankkaufmann / zur Bankkauffrau: Musteranschreiben nach dem Abitur und mit Realschulabschluss, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Banken legen Wert auf gute Noten, ein gepflegtes Auftreten, Freude an Kundengesprächen und Interesse an Wirtschaft. Oft gibt es Online-Tests und Assessment-Center. Zeig im Anschreiben, dass du gern mit Menschen über Geld sprichst.",
+ "lookFor": [
+  "Abitur oder sehr guter Realschulabschluss",
+  "Interesse an Wirtschaft und Finanzen",
+  "Kommunikationsstärke",
+  "Zuverlässigkeit und Diskretion",
+  "Nebenjobs mit Kundenkontakt"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem Abitur",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Bankkauffrau",
+   "to": {
+    "org": "Sparkasse Rhein-Nahe",
+    "sal": "none",
+    "street": "Kreuzstraße 10",
+    "city": "55543 Bad Kreuznach"
+   },
+   "body": [
+    "in der Oberstufe haben wir im Wirtschaftskurs ein Börsenspiel gemacht, und meine Gruppe lag am Ende auf dem letzten Platz. Ich wollte verstehen, warum, und habe mich seitdem viel mit Geldanlage beschäftigt. Ehrlich gesagt hat genau dieser letzte Platz mein Interesse an der Bank geweckt.",
+    "Im Frühjahr mache ich Abitur, mit den Leistungskursen Mathe und Wirtschaft. Seit einem Jahr arbeite ich samstags in einer Bäckerei und bin für die Kasse verantwortlich. Freunde fragen mich, wie sie ihr erstes Gehalt aufteilen sollen.",
+    "Ich freue mich auf das Auswahlverfahren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse"
+   ]
+  },
+  {
+   "label": "Mit Realschulabschluss",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Bankkaufmann",
+   "to": {
+    "org": "Volksbank Nahetal eG",
+    "sal": "none",
+    "street": "Salinenstraße 5",
+    "city": "55543 Bad Kreuznach"
+   },
+   "body": [
+    "eine Beraterin hat mir in meinem Praktikum in einer Filiale erklärt, dass gute Bankberatung oft bedeutet, einem Kunden von etwas abzuraten. Das hat mich beeindruckt.",
+    "Ich schließe im Sommer die Realschule mit einem Schnitt von 1,8 ab. Ich bin Kassenwart im Jugendraum unseres Dorfes und kümmere mich um die Einnahmen aus Veranstaltungen.",
+    "Ich bin in der Region verwurzelt und möchte bei einer Bank arbeiten, die ihre Kunden persönlich kennt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Jonas Mayer",
+    "Hauptstraße 8",
+    "55595 Wallhausen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "classic",
+  "accent": 0,
+  "name": "Clara Hoffmann",
+  "title": "Schülerin",
+  "street": "Mannheimer Straße 100",
+  "city": "55543 Bad Kreuznach",
+  "exp": [
+   [
+    "09/2025",
+    "",
+    "Aushilfe (Samstage)",
+    "Bäckerei Nahegold",
+    "Bad Kreuznach",
+    "- Kasse und Kassenabrechnung\n- Kundenberatung"
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2027",
+    "Gymnasium (voraussichtlich Abitur)",
+    "Lina-Hilger-Gymnasium",
+    "Bad Kreuznach",
+    "Leistungskurse Mathematik und Wirtschaft"
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenkontakt",
+    4
+   ],
+   [
+    "Zahlenverständnis",
+    4
+   ],
+   [
+    "Tabellenkalkulation",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Spanisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Volleyball, Börsenspiel-AG"
+ },
+ "do": [
+  "Interesse an Finanzen mit Beispiel.",
+  "Kundenkontakt aus Nebenjobs.",
+  "Regionale Bindung, wenn echt."
+ ],
+ "dont": [
+  "„Ich interessiere mich für Geld“ ohne Inhalt.",
+  "Floskeln.",
+  "Lässige Sprache."
+ ],
+ "questions": [
+  "Was ist ein Girokonto, und wie erklären Sie es einem Kind?",
+  "Warum eine Bank und nicht eine Versicherung?",
+  "Wie gehen Sie mit einem unzufriedenen Kunden um?",
+  "Was wissen Sie über uns?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Wie bereite ich mich auf das Assessment-Center vor?",
+   "a": "Rechne mit Gruppenaufgaben, einem Rollenspiel als Beraterin und einer kurzen Präsentation. Übe, frei zu sprechen, und informiere dich über aktuelle Wirtschaftsthemen."
+  }
+ ],
+ "related": [
+  "bankkaufmann",
+  "ausbildung-industriekaufmann",
+  "ausbildung-bueromanagement",
+  "schuelerpraktikum"
+ ]
+}

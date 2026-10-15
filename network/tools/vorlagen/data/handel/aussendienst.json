@@ -1,0 +1,181 @@
+{
+ "id": "aussendienst",
+ "field": "handel",
+ "name": "Vertriebsmitarbeiter/in im Außendienst",
+ "search": "außendienst aussendienstmitarbeiter vertrieb sales key account gebietsverkaufsleiter handelsvertreter b2b vertriebler",
+ "short": "Kunden im Gebiet betreuen und neue gewinnen – B2B oder Handel.",
+ "desc": "Bewerbung im Außendienst: Musteranschreiben für erfahrene Vertriebler und den Wechsel aus dem Innendienst, Lebenslauf mit Foto-Platzhalter und Gesprächsfragen.",
+ "intro": "Im Außendienst zählt, was du verkauft und aufgebaut hast. Personaler suchen Zahlen: Neukunden, Umsatzwachstum, Gebietsgröße. Außerdem wichtig: Reisebereitschaft, Selbstorganisation und das Gespür, wann ein Kunde zuhören will und wann nicht.",
+ "lookFor": [
+  "Vertriebserfolge mit Zahlen",
+  "Erfahrung in der Branche oder mit ähnlichen Kunden",
+  "Selbstorganisation, Tourenplanung, CRM-Pflege",
+  "Reisebereitschaft und Führerschein",
+  "Verhandlungsgeschick"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrener Außendienstler, Branchenwechsel",
+   "level": "erfahren",
+   "position": "Gebietsverkaufsleiter Süd-West",
+   "to": {
+    "org": "AgrarTech Systeme GmbH",
+    "sal": "m",
+    "street": "Landstraße 77",
+    "city": "74072 Heilbronn",
+    "contact": "Kurz"
+   },
+   "body": [
+    "zwölf Jahre im Außendienst für Landtechnik, ein Gebiet von Karlsruhe bis zum Bodensee und rund 400 Höfe, auf denen man mich mit Vornamen kennt: Das ist, was ich mitbringe. Ich möchte jetzt für einen Hersteller arbeiten, der Digitalisierung in die Landwirtschaft bringt.",
+    "In meinem Gebiet habe ich den Umsatz in den letzten fünf Jahren um gut ein Drittel gesteigert, vor allem mit Ersatzteilverträgen und Serviceangeboten. Ich weiß, dass ein Landwirt im Mai keine Zeit für Termine hat und im Januar gern zwei Stunden über neue Technik redet. Mein CRM pflege ich täglich, auch wenn mancher Kollege darüber lacht.",
+    "Mit Lenksystemen und Ertragskartierung habe ich als Händler schon gearbeitet, ihre Möglichkeiten kann ich glaubhaft erklären. Ich bin zu einem Gespräch jederzeit bereit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Wechsel aus dem Innendienst",
+   "level": "quereinstieg",
+   "position": "Vertriebsmitarbeiterin im Außendienst",
+   "to": {
+    "org": "Dentalvertrieb Süd GmbH",
+    "sal": "none",
+    "street": "Wilhelmstraße 20",
+    "city": "74074 Heilbronn"
+   },
+   "body": [
+    "fünf Jahre habe ich im Innendienst eines Dentaldepots Zahnarztpraxen am Telefon beraten. Viele meiner Kunden habe ich nie gesehen, und trotzdem rufen sie bei Fragen gezielt mich an. Jetzt möchte ich raus zu ihnen.",
+    "Ich kenne Verbrauchsmaterial, Hygieneprodukte und die Abläufe in Praxen, weil ich vor dem Vertrieb selbst als ZFA gearbeitet habe. Im Innendienst habe ich Angebote erstellt, Aufträge bearbeitet und für den Außendienst Kundentermine vorbereitet. Bei Aktionen zu neuen Produkten lag ich mit meinem Telefonverkauf regelmäßig vorn.",
+    "Den Führerschein habe ich seit 14 Jahren, Reisen in der Region Heilbronn-Franken schrecken mich nicht. Ich freue mich auf das Gespräch mit Ihnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Diana Schreiber",
+    "Karlstraße 100",
+    "74076 Heilbronn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 5,
+  "name": "Rolf Kurtz",
+  "title": "Vertriebsmitarbeiter Außendienst",
+  "street": "Weinsberger Straße 32",
+  "city": "74072 Heilbronn",
+  "exp": [
+   [
+    "04/2014",
+    "",
+    "Außendienst Landtechnik",
+    "Landmaschinen Kraichgau GmbH",
+    "Bruchsal",
+    "- Betreuung von rund 400 landwirtschaftlichen Betrieben\n- Umsatzsteigerung um gut ein Drittel in fünf Jahren\n- Aufbau von Service- und Ersatzteilverträgen"
+   ],
+   [
+    "2008",
+    "2014",
+    "Verkäufer im Innendienst",
+    "Raiffeisen Warenzentrale",
+    "Heilbronn",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2005",
+    "2008",
+    "Ausbildung Kaufmann im Groß- und Außenhandel",
+    "Raiffeisen Warenzentrale",
+    "Heilbronn",
+    ""
+   ],
+   [
+    "1996",
+    "2005",
+    "Fachhochschulreife",
+    "Wirtschaftsschule",
+    "Heilbronn",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "Verhandlungstraining",
+    "Vertriebsakademie",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenbetreuung",
+    5
+   ],
+   [
+    "Neukundengewinnung",
+    4
+   ],
+   [
+    "CRM",
+    4
+   ],
+   [
+    "Landtechnik",
+    5
+   ],
+   [
+    "Präsentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Weinberg der Familie, Mountainbike"
+ },
+ "do": [
+  "Erfolge mit Zahlen.",
+  "Branchenkenntnis zeigen.",
+  "Reisebereitschaft klar benennen."
+ ],
+ "dont": [
+  "Vertrauliche Kunden nennen.",
+  "Übertreiben – im Gespräch wird nachgefragt.",
+  "Nur über dich reden, nicht über den Nutzen für den Kunden."
+ ],
+ "questions": [
+  "Wie gewinnen Sie einen Kunden, der seit Jahren bei der Konkurrenz kauft?",
+  "Wie planen Sie Ihre Woche?",
+  "Wie gehen Sie mit einem Preisnachlass-Wunsch um?",
+  "Welches war Ihr größter Abschluss?"
+ ],
+ "pay": "Im Vertrieb ist ein Fixum mit variablem Anteil üblich. Frag nach dem Verhältnis, nach Zielvereinbarungen und nach dem Dienstwagen.",
+ "faq": [
+  {
+   "q": "Wie schreibe ich über Vertriebserfolge, ohne Interna zu verraten?",
+   "a": "Nutze Prozentwerte, Rangplätze im Team oder Größenordnungen. Kundennamen lässt du weg, Branchen darfst du nennen."
+  }
+ ],
+ "related": [
+  "filialleiter",
+  "kaufmann-im-einzelhandel",
+  "marketing-manager",
+  "kundenservice-mitarbeiter"
+ ]
+}

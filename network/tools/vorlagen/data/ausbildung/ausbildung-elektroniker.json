@@ -1,0 +1,152 @@
+{
+ "id": "ausbildung-elektroniker",
+ "field": "ausbildung",
+ "name": "Ausbildung Elektroniker/in",
+ "search": "ausbildung elektroniker elektronikerin energie gebäudetechnik bewerbung ausbildungsplatz elektriker ausbildung schüler",
+ "short": "Energie- und Gebäudetechnik oder Betriebstechnik – Bewerbung als Schüler.",
+ "desc": "Bewerbung für die Ausbildung zum Elektroniker / zur Elektronikerin: zwei Musteranschreiben für Schüler und Studienabbrecher, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Elektrobetriebe suchen Azubis mit Interesse an Technik, guten Grundlagen in Mathe und Physik und Lust aufs Arbeiten auf der Baustelle oder in der Industrie. Ein Praktikum oder Basteleien mit Elektronik sind starke Argumente.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss, gute Mathe- und Physiknoten",
+  "Technisches Interesse",
+  "Praktikum",
+  "Keine Farbsehschwäche bei Leitungsfarben – frag nach, falls unsicher",
+  "Zuverlässigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Schüler mit Praktikum",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Elektroniker für Energie- und Gebäudetechnik",
+   "to": {
+    "org": "Elektro Hahn GmbH",
+    "sal": "m",
+    "street": "Weberstraße 30",
+    "city": "53113 Bonn",
+    "contact": "Hahn"
+   },
+   "body": [
+    "in meinem Praktikum bei Ihnen durfte ich in einem Neubau Leerrohre verlegen und Dosen setzen. Am letzten Tag hat Ihr Geselle Markus mir gezeigt, wie man eine Steckdose anschließt, und ich durfte die zweite selbst machen, natürlich unter Aufsicht.",
+    "Ich mache im Sommer den Realschulabschluss. In Physik habe ich eine Zwei, in Mathe eine Zwei minus. Zu Hause habe ich mit einem Mikrocontroller eine Lichtsteuerung für mein Zimmer gebaut, die mit dem Handy schaltet.",
+    "Ich würde meine Ausbildung sehr gern bei Ihnen machen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Nach dem Studienabbruch",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Elektronikerin für Betriebstechnik",
+   "to": {
+    "org": "Rheinische Kunststoffwerke AG",
+    "sal": "none",
+    "street": "Industriestraße 50",
+    "city": "53119 Bonn"
+   },
+   "body": [
+    "drei Semester Elektrotechnik an der Hochschule haben mir viel Theorie gegeben. Was gefehlt hat, war das Arbeiten mit den Händen. Deshalb möchte ich jetzt eine Ausbildung machen.",
+    "Ich bringe Grundlagen in Schaltungstechnik, Mathematik und Messtechnik mit und habe im Labor Schaltungen aufgebaut und gemessen. Mit meinem Abitur ist eine Verkürzung möglich. In einem Industriebetrieb mit großen Anlagen sehe ich die beste Mischung aus Technik und Praxis.",
+    "Ich freue mich auf Ihre Einladung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Notenübersicht Hochschule"
+   ],
+   "from": [
+    "Alina Becker",
+    "Kölnstraße 80",
+    "53111 Bonn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 0,
+  "name": "Malik Haddad",
+  "title": "Schüler",
+  "street": "Bornheimer Straße 40",
+  "city": "53111 Bonn",
+  "exp": [
+   [
+    "01/2026",
+    "01/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Elektro Hahn GmbH",
+    "Bonn",
+    "- Leerrohre verlegen, Dosen setzen\n- Mithilfe beim Anschluss von Steckdosen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2021",
+    "07/2027",
+    "Realschule (voraussichtlich Realschulabschluss)",
+    "Realschule Bonn-Nord",
+    "Bonn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Technisches Verständnis",
+    4
+   ],
+   [
+    "Mikrocontroller-Basteln",
+    3
+   ],
+   [
+    "Mathematik",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Arabisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Elektronikbasteln, Basketball"
+ },
+ "do": [
+  "Praktikum und Basteleien beschreiben.",
+  "Fachrichtung nennen.",
+  "Noten in Mathe/Physik erwähnen, wenn gut."
+ ],
+ "dont": [
+  "Gefährliche Basteleien am Stromnetz erwähnen.",
+  "Floskeln.",
+  "Zu lange Texte."
+ ],
+ "questions": [
+  "Was ist der Unterschied zwischen Spannung und Strom?",
+  "Was hat Ihnen im Praktikum gefallen?",
+  "Haben Sie Höhenangst?",
+  "Wie kommen Sie zur Baustelle?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  }
+ ],
+ "related": [
+  "elektriker",
+  "ausbildung-kfz-mechatroniker",
+  "mechatroniker",
+  "schuelerpraktikum"
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "id": "bewerbung-nach-der-ausbildung",
+ "order": 4,
+ "card": "Bewerbung nach der Ausbildung",
+ "short": "Der erste Job als Fachkraft – im Betrieb bleiben oder wechseln.",
+ "title": "Bewerbung nach der Ausbildung: Tipps und Muster | FaleNetwork",
+ "h1": "Bewerbung nach der Ausbildung – der erste Job als Fachkraft",
+ "desc": "Bewerbung nach der Ausbildung: wann du dich bewirbst, wie du ohne viel Berufserfahrung überzeugst und welche Vorlagen aus dem Archiv dafür passen.",
+ "lede": "Nach der Ausbildung hast du mehr zu bieten, als du denkst: drei Jahre Praxis, eine Prüfung, konkrete Aufgaben. So machst du daraus eine starke Bewerbung.",
+ "sections": [
+  {
+   "h": "Der richtige Zeitpunkt",
+   "text": [
+    "Bewirb dich drei bis sechs Monate vor der Abschlussprüfung. Leg das letzte Berufsschul- oder Zwischenzeugnis bei und reich das Prüfungszeugnis nach. Wenn dein Ausbildungsbetrieb dich übernehmen möchte, sprich offen darüber, bevor du anderswo zusagst."
+   ]
+  },
+  {
+   "h": "Was ins Anschreiben gehört",
+   "list": [
+    "Abschluss mit Datum und, wenn gut, Note.",
+    "Zwei, drei Aufgaben, die du in der Ausbildung selbstständig übernommen hast.",
+    "Ein Projekt, Gesellenstück oder Abschlussprojekt mit Ergebnis.",
+    "Warum du wechseln willst – positiv formuliert (neuer Schwerpunkt, Region, Größe des Betriebs).",
+    "Ab wann du anfangen kannst."
+   ]
+  },
+  {
+   "h": "Beispiele aus dem Archiv",
+   "text": [
+    "Diese Berufsseiten enthalten ein Anschreiben für den Berufsstart nach der Ausbildung:"
+   ],
+   "jobs": [
+    "kauffrau-bueromanagement",
+    "elektriker",
+    "medizinische-fachangestellte",
+    "it-systemadministrator",
+    "koch",
+    "erzieherin"
+   ]
+  },
+  {
+   "h": "Mappe fertig machen",
+   "text": [
+    "Anschreiben und Lebenslauf aus den Vorlagen erstellen, Zeugnisse dazu, alles in eine PDF und verkleinern."
+   ],
+   "tools": [
+    "cover-letter",
+    "cv-builder",
+    "merge-pdf",
+    "compress-pdf"
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Ich wurde nicht übernommen. Wie schreibe ich das?",
+   "a": "Gar nicht im Anschreiben. Im Gespräch reicht ein sachlicher Satz, z. B. dass der Betrieb in diesem Jahr niemanden übernimmt. Konzentrier dich auf das, was du gelernt hast."
+  },
+  {
+   "q": "Gehört mein Ausbildungszeugnis in die Bewerbung?",
+   "a": "Ja, das Ausbildungszeugnis des Betriebs und das Prüfungszeugnis. Wenn sie noch fehlen, das letzte Berufsschulzeugnis und ein Zwischenzeugnis."
+  }
+ ]
+}

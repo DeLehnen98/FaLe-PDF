@@ -1,0 +1,370 @@
+{
+ "id": "kundenservice-mitarbeiter",
+ "field": "buero",
+ "name": "Mitarbeiter/in im Kundenservice",
+ "search": "kundenberater kundenbetreuer callcenter service center telefonischer kundenservice kundenservicemitarbeiterin hotline chat support quereinstieg homeoffice",
+ "short": "Telefon, Chat, E-Mail – Quereinstieg oder mit Erfahrung, oft im Homeoffice.",
+ "desc": "Bewerbung im Kundenservice: Muster-Anschreiben für Quereinsteiger und erfahrene Kundenberater, fertiger Lebenslauf und typische Fragen im Telefoninterview.",
+ "intro": "Im Kundenservice zählen Freundlichkeit unter Druck, eine klare Sprache, Geduld und sicheres Arbeiten mit mehreren Systemen gleichzeitig. Viele Unternehmen nehmen Quereinsteiger und schulen sie; im Auswahlverfahren gibt es oft ein Telefoninterview oder ein Rollenspiel.",
+ "lookFor": [
+  "Freundlichkeit und Gelassenheit bei verärgerten Kunden",
+  "Klare, fehlerfreie Sprache am Telefon und schriftlich",
+  "Schnelles Arbeiten mit PC, Ticket- und Kundensystemen",
+  "Bereitschaft zu Schichten oder Samstagsdiensten",
+  "Für Homeoffice: ruhiger Arbeitsplatz und stabile Internetverbindung"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg aus der Gastronomie",
+   "level": "quereinstieg",
+   "position": "Kundenberaterin im telefonischen Service (Homeoffice)",
+   "to": {
+    "org": "Energiepartner Saar GmbH",
+    "sal": "f",
+    "street": "Hafenstraße 25",
+    "city": "66111 Saarbrücken",
+    "contact": "Lorenz"
+   },
+   "body": [
+    "wer acht Jahre in einem vollen Restaurant gekellnert hat, kennt den Moment, in dem ein Gast wütend wird, weil das Essen kalt ist, die Rechnung nicht stimmt und überhaupt alles schiefläuft. Ich habe gelernt, in diesem Moment ruhig zu bleiben und das Problem zu lösen. Genau das möchte ich jetzt am Telefon tun.",
+    "Mit Abrechnungen kenne ich mich aus: Ich habe jahrelang die Tagesabrechnung im Restaurant gemacht und Kassensysteme bedient. Am PC arbeite ich schnell, ich tippe zehn Finger blind. Für Fragen zu Strom- und Gastarifen habe ich mich eingelesen und einen Online-Kurs zu Kundenservice am Telefon abgeschlossen.",
+    "Ein ruhiges Arbeitszimmer und eine Glasfaserleitung habe ich. Früh- und Spätschichten sind möglich, Samstage auch. Sie können mich jederzeit für ein Telefoninterview anrufen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Kursbestätigung"
+   ]
+  },
+  {
+   "label": "Erfahrener Kundenberater, Wechsel in den Second Level",
+   "level": "erfahren",
+   "position": "Kundenservice Second Level",
+   "to": {
+    "org": "Saarnetz Telekommunikation AG",
+    "sal": "none",
+    "street": "Trierer Straße 8",
+    "city": "66111 Saarbrücken"
+   },
+   "body": [
+    "rund 30.000 Kundengespräche in vier Jahren, die meisten zu Internetstörungen und Rechnungsfragen. Ich möchte jetzt die Fälle bearbeiten, die im ersten Kontakt nicht gelöst werden können.",
+    "Meine Zufriedenheitswerte lagen seit zwei Jahren über dem Teamdurchschnitt, und ich bin im Team für die Einarbeitung neuer Kolleginnen zuständig. Bei Routerstörungen führe ich Kunden Schritt für Schritt durch die Einstellungen und weiß, wann ein Techniker raus muss. Komplizierte Fälle dokumentiere ich so, dass niemand den Kunden ein zweites Mal dasselbe fragen muss.",
+    "Ich arbeite gern in Schichten, auch am Wochenende. Für ein Gespräch richte ich mich nach Ihnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Dennis Klein",
+    "Mainzer Straße 70",
+    "66121 Saarbrücken"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "modern",
+  "accent": 1,
+  "name": "Melanie Hoffmann",
+  "title": "Kundenberaterin",
+  "street": "Dudweiler Landstraße 50",
+  "city": "66123 Saarbrücken",
+  "exp": [
+   [
+    "04/2018",
+    "",
+    "Servicekraft und Schichtleitung",
+    "Restaurant Am Staden",
+    "Saarbrücken",
+    "- Gästebetreuung bis 120 Plätze\n- Tagesabrechnung und Kassensystem\n- Reklamationen und Einarbeitung neuer Kräfte"
+   ],
+   [
+    "2014",
+    "2018",
+    "Servicekraft",
+    "Hotel Saarland",
+    "Saarbrücken",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2014",
+    "Ausbildung zur Restaurantfachfrau",
+    "Hotel Saarland",
+    "Saarbrücken",
+    ""
+   ],
+   [
+    "2005",
+    "2011",
+    "Mittlerer Bildungsabschluss",
+    "Gemeinschaftsschule Dudweiler",
+    "Saarbrücken",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Kundenservice am Telefon (Online-Kurs)",
+    "Bildungsplattform",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Tastschreiben (10-Finger)",
+    "Volkshochschule",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundengespräche und Deeskalation",
+    5
+   ],
+   [
+    "Abrechnung und Kasse",
+    4
+   ],
+   [
+    "PC und Office",
+    4
+   ],
+   [
+    "Schnelles Tippen",
+    4
+   ],
+   [
+    "Schichtarbeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Joggen, Brettspiele"
+ },
+ "do": [
+  "Bring ein Beispiel, wie du einen unzufriedenen Kunden zufriedengestellt hast.",
+  "Nenn Kennzahlen, wenn du sie kennst.",
+  "Sag, wann du arbeiten kannst und ob Homeoffice technisch klappt."
+ ],
+ "dont": [
+  "Kunden als „nervig“ beschreiben.",
+  "Fehler in der E-Mail – du bewirbst dich auch für schriftlichen Kundenkontakt.",
+  "Die Erreichbarkeit fürs Telefoninterview offenlassen."
+ ],
+ "questions": [
+  "Ein Kunde schreit Sie am Telefon an. Was tun Sie?",
+  "Wie erklären Sie einem älteren Kunden eine Tarifänderung?",
+  "Wie gehen Sie mit vielen Anrufen hintereinander um?",
+  "Welche Schichten können Sie übernehmen?"
+ ],
+ "faq": [
+  {
+   "q": "Wie läuft ein Telefoninterview ab?",
+   "a": "Meist ruft jemand aus dem Recruiting an und spielt eine kurze Kundensituation mit dir durch. Es geht um Ton, Klarheit und Lösungsorientierung, nicht um Fachwissen – das lernst du in der Schulung."
+  },
+  {
+   "q": "Ist Kundenservice im Homeoffice üblich?",
+   "a": "Bei vielen Unternehmen ja, oft nach einer Einarbeitung vor Ort. Arbeitgeber fragen nach einem ruhigen Arbeitsplatz und einer stabilen Internetverbindung; manche stellen Technik."
+  }
+ ],
+ "related": [
+  "kauffrau-bueromanagement",
+  "verkaeuferin",
+  "rezeptionist",
+  "it-support"
+ ],
+ "en": {
+  "slug": "customer-service-advisor",
+  "name": "Customer service advisor",
+  "search": "customer service advisor call centre contact centre agent support helpdesk",
+  "short": "Phone, chat and email support – career changer or experienced.",
+  "desc": "Customer service advisor CV and cover letter examples: letters for career changers and experienced advisors, plus a ready CV with placeholder portrait.",
+  "intro": "Contact centres look for people who stay friendly under pressure, explain things clearly and work quickly across several systems. Many hire career changers and train them; expect a phone screening or a short role play.",
+  "lookFor": [
+   "Calm, friendly manner with frustrated customers",
+   "Clear spoken and written English",
+   "Quick, accurate work on a PC with several systems open",
+   "Flexibility for shifts or weekends",
+   "A quiet space and reliable internet for remote roles"
+  ],
+  "letters": [
+   {
+    "label": "Career changer from hospitality",
+    "level": "quereinstieg",
+    "position": "Customer service advisor (remote)",
+    "to": {
+     "org": "Brightwater Energy",
+     "sal": "f",
+     "street": "1 Riverside Way",
+     "city": "Cardiff CF10 4AB",
+     "contact": "Evans"
+    },
+    "body": [
+     "After eight years waiting tables in busy restaurants, I know the moment when a customer’s patience runs out – and how to bring the conversation back. I would like to use that skill on the phone with your customers.",
+     "I handled table bookings, complaints and the end-of-day cash-up, and I trained new staff on our till system. I type quickly and accurately, and I have completed an online course on telephone customer service to prepare for this move.",
+     "I have a quiet home office with a fibre connection and can work early and late shifts, including Saturdays. I would be glad to take part in a phone interview."
+    ],
+    "att": [
+     "CV",
+     "Reference"
+    ]
+   },
+   {
+    "label": "Experienced advisor moving to second line",
+    "level": "erfahren",
+    "position": "Second-line support advisor",
+    "to": {
+     "org": "Cityline Broadband Ltd",
+     "sal": "none",
+     "street": "55 Queen Street",
+     "city": "Cardiff CF10 2BH"
+    },
+    "body": [
+     "Over the past four years I have handled more than 30,000 customer contacts, mainly about broadband faults and bills. I would now like to work on the cases that cannot be solved in the first call.",
+     "My satisfaction scores have been above the team average for two years, and I train new starters on our systems. I walk customers through router settings step by step and know when to book an engineer. Most faults are simpler than they sound. I write case notes so that nobody has to ask the customer the same question twice.",
+     "I am happy to work shifts and weekends and can start with four weeks’ notice."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Owen Price",
+     "12 Cathedral Road",
+     "Cardiff CF11 9LJ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a20",
+   "design": "modern",
+   "accent": 1,
+   "name": "Megan Lewis",
+   "title": "Customer service advisor",
+   "street": "4 Albany Road",
+   "city": "Cardiff CF24 3RP",
+   "exp": [
+    [
+     "04/2018",
+     "",
+     "Waitress and shift supervisor",
+     "The Quayside Kitchen",
+     "Cardiff",
+     "- Guest service for up to 120 covers\n- Complaints, cash-up and till system\n- Training new staff"
+    ],
+    [
+     "2015",
+     "2018",
+     "Waitress",
+     "Hotel Bay View",
+     "Cardiff",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2010",
+     "2015",
+     "Secondary school",
+     "Cathays High School",
+     "Cardiff",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "Telephone customer service (online)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "Touch typing",
+     "Community college",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "De-escalation",
+     5
+    ],
+    [
+     "Cash handling",
+     4
+    ],
+    [
+     "PC and office software",
+     4
+    ],
+    [
+     "Typing speed",
+     4
+    ],
+    [
+     "Shift work",
+     5
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Welsh",
+     "B1"
+    ]
+   ],
+   "hobbies": "Running, board games"
+  },
+  "do": [
+   "Give one example of turning an unhappy customer around.",
+   "Mention metrics if you have them.",
+   "State your availability and home set-up for remote roles."
+  ],
+  "dont": [
+   "Describe customers as annoying.",
+   "Send an application with typos.",
+   "Miss the screening call – keep your phone on."
+  ],
+  "questions": [
+   "A customer is shouting at you. What do you do?",
+   "How would you explain a price rise to an elderly customer?",
+   "How do you stay focused after many calls in a row?",
+   "Which shifts can you work?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need experience for a customer service job?",
+    "a": "Not always. Many employers train new advisors. Show examples from other jobs where you dealt with people, solved problems and kept calm."
+   }
+  ]
+ }
+}

@@ -1,0 +1,410 @@
+{
+ "id": "erzieherin",
+ "field": "soziales",
+ "popular": true,
+ "name": "Erzieher/in",
+ "search": "erzieher erzieherin kita kindergarten krippe hort pädagogische fachkraft kinderbetreuung sozialpädagogische assistenz",
+ "short": "Kita, Krippe oder Hort – als Berufsanfängerin, erfahren oder im Quereinstieg.",
+ "desc": "Bewerbung als Erzieher/in: drei Musteranschreiben für Berufsstart, Erfahrung und Quereinstieg, dazu ein Lebenslauf mit Foto-Platzhalter und Tipps für die Hospitation.",
+ "intro": "Kitas und Horte suchen Fachkräfte, die Kinder beobachten, begleiten und mit Eltern auf Augenhöhe sprechen. Leitungen lesen genau, ob du das pädagogische Konzept der Einrichtung kennst und wie du es im Alltag umsetzen würdest. Konkrete Beispiele aus Praktika oder der Gruppe zählen mehr als Schlagworte wie „Partizipation“.",
+ "lookFor": [
+  "Staatliche Anerkennung als Erzieher/in oder eine andere anerkannte Fachkraftqualifikation (je nach Bundesland unterschiedlich geregelt)",
+  "Erfahrung mit der Altersgruppe: Krippe, Elementarbereich oder Hort",
+  "Bezug zum Konzept der Kita – situationsorientiert, offen, Montessori, Waldkita",
+  "Beobachtung und Dokumentation, z. B. Bildungs- und Lerngeschichten, und Elterngespräche",
+  "Erweitertes Führungszeugnis und Masernschutz-Nachweis"
+ ],
+ "letters": [
+  {
+   "label": "Nach dem Anerkennungsjahr",
+   "level": "berufseinstieg",
+   "position": "Erzieherin im Krippenbereich (35 Stunden)",
+   "to": {
+    "org": "Kita Pusteblume der Stadt Mainz",
+    "sal": "f",
+    "street": "Rheinallee 70",
+    "city": "55118 Mainz",
+    "contact": "Schreiner"
+   },
+   "body": [
+    "mein Anerkennungsjahr habe ich in einer Krippengruppe mit zwölf Kindern zwischen einem und drei Jahren verbracht. Am meisten hat mich dort die Eingewöhnung beschäftigt: wie unterschiedlich Kinder und Eltern diese ersten Wochen erleben. Ihre Kita arbeitet nach dem Berliner Modell, das kenne ich aus der Praxis, und ich würde gern bei Ihnen anfangen.",
+    "Im letzten halben Jahr habe ich drei Eingewöhnungen selbst begleitet, mit Vorgespräch, täglichem Austausch mit den Eltern und Abschlussgespräch. Ein Junge hat in der zweiten Woche nur geweint, sobald die Mutter den Raum verließ. Wir haben die Trennungsphasen verkürzt und sein Kuscheltier zum festen Ritual gemacht; nach vier Wochen ist er morgens allein zu mir gelaufen. Für meine Facharbeit habe ich ein Projekt zu Matschküche und Sinneserfahrungen im Garten geplant und durchgeführt.",
+    "Ich arbeite gern im Team und bringe mich in Teamsitzungen ein, auch mit Fragen, die nicht bequem sind. Mein erweitertes Führungszeugnis liegt vor.",
+    "Ab August stehe ich zur Verfügung. Für einen Hospitationstag komme ich gern vorbei."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis der Fachschule",
+    "Staatliche Anerkennung",
+    "Praktikumsbeurteilung"
+   ]
+  },
+  {
+   "label": "Erzieher mit Erfahrung im Hort",
+   "level": "erfahren",
+   "position": "Erzieher mit stellvertretender Gruppenleitung im Hort",
+   "to": {
+    "org": "Ev. Kinder- und Jugendhaus Regenbogen",
+    "sal": "m",
+    "street": "Pfarrgasse 2",
+    "city": "55116 Mainz",
+    "contact": "Pfeifer"
+   },
+   "body": [
+    "seit sieben Jahren arbeite ich im Hort einer Grundschule in Wiesbaden. Von 50 Kindern kenne ich jedes beim Namen, und die meisten auch bei ihren Lieblingsausreden für die Hausaufgabenzeit. Weil ich nach Mainz ziehe, suche ich eine neue Stelle mit Schulkindern.",
+    "Ich koordiniere bei uns die Hausaufgabenbetreuung und halte den Kontakt zu den Lehrkräften. Vor zwei Jahren habe ich einen Kinderrat eingeführt, der einmal im Monat über Ausflüge, Regeln und die Gestaltung der Räume mitentscheidet. Das hat mehr verändert als jede Regel, die wir Erwachsenen aufgestellt haben: Die Streitereien beim Fußball sind seitdem deutlich weniger geworden, weil die Kinder die Regeln selbst gemacht haben.",
+    "Mit der Zusatzqualifikation zur Fachkraft für Kinderschutz habe ich mich in den letzten Jahren auf ein Thema spezialisiert, das in jeder Einrichtung wichtig ist. Ihr evangelisches Profil passt zu mir, ich bin selbst in der Gemeindearbeit aktiv.",
+    "Meine Kündigungsfrist beträgt sechs Wochen zum Quartalsende. Gern komme ich zu einem Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staatliche Anerkennung",
+    "Zertifikat Kinderschutz",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Daniel Fuchs",
+    "Biebricher Allee 55",
+    "65187 Wiesbaden"
+   ]
+  },
+  {
+   "label": "Quereinstieg über die berufsbegleitende Ausbildung",
+   "level": "quereinstieg",
+   "position": "Erzieherin in praxisintegrierter Ausbildung",
+   "to": {
+    "org": "Waldkindergarten Wurzelkinder e. V.",
+    "sal": "n",
+    "street": "Am Lennebergwald 1",
+    "city": "55124 Mainz",
+    "contact": "Kerstin Vogt"
+   },
+   "body": [
+    "ich bin 38, gelernte Hotelfachfrau und habe in den letzten zehn Jahren Gäste empfangen, Dienstpläne geschrieben und Beschwerden gelöst. Seit mein Sohn in einen Waldkindergarten geht und ich dort zwei Jahre im Elternbeirat war, weiß ich, wo ich eigentlich hinwill.",
+    "Ab August möchte ich die praxisintegrierte Ausbildung zur Erzieherin beginnen; die Zusage der Fachschule habe ich. Dafür suche ich eine Einrichtung, die mich ausbildet. In Ihrem Kindergarten habe ich im Frühjahr zwei Wochen hospitiert und erlebt, wie viel die Kinder draußen selbst entdecken, wenn man sie lässt.",
+    "Aus dem Hotel bringe ich Organisationstalent, ein dickes Fell bei schlechtem Wetter und Erfahrung mit sehr unterschiedlichen Menschen mit. Erste-Hilfe-Kurs am Kind und erweitertes Führungszeugnis habe ich bereits.",
+    "Wenn Sie mich ausbilden, bleibe ich: Wir wohnen fünf Minuten vom Lennebergwald entfernt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zusage der Fachschule",
+    "Hospitationsbestätigung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sandra Lehmann",
+    "Kirschgarten 9",
+    "55124 Mainz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 4,
+  "name": "Amara Okafor",
+  "title": "Staatlich anerkannte Erzieherin",
+  "street": "Kaiserstraße 24",
+  "city": "55116 Mainz",
+  "exp": [
+   [
+    "08/2025",
+    "07/2026",
+    "Erzieherin im Anerkennungsjahr",
+    "Kita Sonnenblume",
+    "Mainz",
+    "- Krippengruppe mit 12 Kindern (1–3 Jahre)\n- Eingewöhnung nach dem Berliner Modell\n- Entwicklungsdokumentation und Elterngespräche"
+   ],
+   [
+    "2023",
+    "2025",
+    "Aushilfe Ferienbetreuung",
+    "Jugendamt Mainz",
+    "Mainz",
+    "- Ferienspiele für 6- bis 10-Jährige"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zur Erzieherin (staatliche Anerkennung)",
+    "Fachschule für Sozialwesen",
+    "Mainz",
+    "Facharbeit: Sinneserfahrungen im Krippenalter – die Matschküche"
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Berufsbildende Schule Sozialwesen",
+    "Mainz",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Erste Hilfe am Kind",
+    "Johanniter",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "Sprachbildung im Alltag",
+    "Landesinstitut für Pädagogik",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Eingewöhnung",
+    4
+   ],
+   [
+    "Beobachtung und Dokumentation",
+    4
+   ],
+   [
+    "Elterngespräche",
+    3
+   ],
+   [
+    "Musik und Bewegung",
+    4
+   ],
+   [
+    "Sprachförderung",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Igbo",
+    "B1"
+   ]
+  ],
+  "hobbies": "Trommeln, Kinderchor in der Gemeinde"
+ },
+ "do": [
+  "Bezieh dich auf das Konzept der Einrichtung und sag, was dir daran gefällt.",
+  "Erzähl eine kurze Situation mit einem Kind – anonymisiert.",
+  "Nenn Zusatzqualifikationen: Sprachförderung, Kinderschutz, Inklusion, Krippenpädagogik."
+ ],
+ "dont": [
+  "„Ich liebe Kinder“ als Hauptargument.",
+  "Kinder oder Eltern in Beispielen erkennbar machen.",
+  "Pädagogische Fachbegriffe ohne Beispiel aneinanderreihen."
+ ],
+ "questions": [
+  "Wie gestalten Sie eine Eingewöhnung?",
+  "Ein Elternteil beschwert sich über einen Konflikt zwischen zwei Kindern. Was tun Sie?",
+  "Wie setzen Sie Partizipation im Alltag um?",
+  "Wie dokumentieren Sie die Entwicklung eines Kindes?"
+ ],
+ "pay": "Kommunale Kitas zahlen meist nach dem Tarif für den Sozial- und Erziehungsdienst, kirchliche Träger nach eigenen Richtlinien. Frag nach der Eingruppierung und nach Zulagen für Leitungsaufgaben.",
+ "faq": [
+  {
+   "q": "Was gehört zu einer Bewerbung als Erzieherin dazu?",
+   "a": "Anschreiben, Lebenslauf, das Zeugnis der Fachschule und die staatliche Anerkennung, dazu Praktikums- oder Arbeitszeugnisse. Das erweiterte Führungszeugnis und den Nachweis über den Masernschutz brauchst du spätestens bei Arbeitsbeginn."
+  },
+  {
+   "q": "Ist eine Hospitation üblich?",
+   "a": "Ja, viele Kitas laden zu einem Hospitationstag ein. Sieh ihn als Gespräch in beide Richtungen: Du lernst Team und Räume kennen, die Leitung sieht, wie du mit Kindern umgehst."
+  },
+  {
+   "q": "Kann ich als Quereinsteiger Erzieher werden?",
+   "a": "Ja, über die praxisintegrierte oder berufsbegleitende Ausbildung an einer Fachschule. Die Zugangsvoraussetzungen unterscheiden sich je nach Bundesland; frag bei der Fachschule nach, welche Vorbildung angerechnet wird."
+  }
+ ],
+ "related": [
+  "heilerziehungspfleger",
+  "schulbegleiter",
+  "sozialarbeiter",
+  "fsj-bfd"
+ ],
+ "en": {
+  "slug": "early-years-educator",
+  "name": "Early years educator",
+  "search": "early years educator nursery practitioner nursery nurse childcare preschool teacher",
+  "short": "Nursery or preschool – newly qualified or experienced.",
+  "desc": "Early years educator CV and cover letter examples: letters for a newly qualified practitioner and an experienced room leader, plus a ready CV.",
+  "intro": "Nurseries want practitioners who observe and support children, work closely with parents and understand the setting’s approach. A short, anonymous example from your practice says more than buzzwords.",
+  "lookFor": [
+   "A recognised childcare qualification for your country",
+   "Experience with the age group: babies, toddlers, preschool",
+   "Observation, planning and record keeping",
+   "Confident, kind communication with parents",
+   "Safeguarding awareness and background checks"
+  ],
+  "letters": [
+   {
+    "label": "Newly qualified practitioner",
+    "level": "berufseinstieg",
+    "position": "Nursery practitioner – toddler room",
+    "to": {
+     "org": "Little Acorns Nursery",
+     "sal": "f",
+     "street": "70 Orchard Lane",
+     "city": "Bath BA1 1AA",
+     "contact": "Schreiner"
+    },
+    "body": [
+     "During my final placement I worked in a room of twelve children aged one to three, and the settling-in period fascinated me most: how differently children and parents experience those first weeks.",
+     "I led three settling-in periods myself, with a first meeting, daily updates for parents and a review at the end. One little boy cried every time his mum left; we shortened the separations and made his cuddly toy part of the routine, and after four weeks he ran to me in the morning.",
+     "I hold a current paediatric first aid certificate and my background check is complete. I can start in August."
+    ],
+    "att": [
+     "CV",
+     "Qualification certificate",
+     "Placement report"
+    ]
+   },
+   {
+    "label": "Experienced after-school lead",
+    "level": "erfahren",
+    "position": "After-school club lead",
+    "to": {
+     "org": "Riverside Children’s Centre",
+     "sal": "m",
+     "street": "2 Church Street",
+     "city": "Bath BA1 1NL",
+     "contact": "Fox"
+    },
+    "body": [
+     "For seven years I have worked with school-age children in an after-school club, and I know all fifty of them by name – and by their favourite excuses at homework time. I am moving and looking for a new role with school-age children.",
+     "I introduced a children’s council that decides on outings, rules and how we use our rooms. Arguments over football dropped noticeably once the children had made the rules themselves. I have also completed advanced safeguarding training.",
+     "My notice period is six weeks. I would welcome the chance to visit."
+    ],
+    "att": [
+     "CV",
+     "Certificates",
+     "Reference"
+    ],
+    "from": [
+     "Daniel Fox",
+     "55 Wells Road",
+     "Bath BA2 3AP"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a09",
+   "design": "modern",
+   "accent": 4,
+   "name": "Amara Okoye",
+   "title": "Early years practitioner",
+   "street": "24 Walcot Street",
+   "city": "Bath BA1 5BG",
+   "exp": [
+    [
+     "08/2025",
+     "07/2026",
+     "Practitioner (final placement)",
+     "Sunflower Nursery",
+     "Bath",
+     "- Toddler room, 12 children aged 1–3\n- Settling-in and parent updates\n- Observations and learning journals"
+    ],
+    [
+     "2023",
+     "2025",
+     "Holiday club assistant",
+     "Bath Leisure Services",
+     "Bath",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2023",
+     "2026",
+     "Early years educator qualification (level 3)",
+     "Bath College",
+     "Bath",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "Paediatric first aid",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "Safeguarding children",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Settling-in",
+     4
+    ],
+    [
+     "Observation and planning",
+     4
+    ],
+    [
+     "Parent communication",
+     3
+    ],
+    [
+     "Music and movement",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Igbo",
+     "B1"
+    ]
+   ],
+   "hobbies": "Drumming, children’s choir"
+  },
+  "do": [
+   "Refer to the setting’s approach.",
+   "Give a short, anonymous example.",
+   "Mention first aid and safeguarding."
+  ],
+  "dont": [
+   "Say “I love children” as your main reason.",
+   "Make children or parents identifiable.",
+   "Rely on jargon."
+  ],
+  "questions": [
+   "How do you support a child during settling-in?",
+   "A parent complains about a conflict between two children. What do you do?",
+   "How do you plan around children’s interests?",
+   "How do you record development?"
+  ],
+  "faq": [
+   {
+    "q": "Will the nursery ask me to visit?",
+    "a": "Often yes – a short visit or working session lets you meet the team and lets them see how you interact with children."
+   }
+  ]
+ }
+}

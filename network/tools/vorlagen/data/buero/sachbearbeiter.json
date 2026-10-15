@@ -1,0 +1,187 @@
+{
+ "id": "sachbearbeiter",
+ "field": "buero",
+ "name": "Sachbearbeiter/in",
+ "search": "sachbearbeiterin kaufmännische sachbearbeitung verwaltung innendienst auftragsabwicklung einkauf backoffice",
+ "short": "Auftragsabwicklung, Einkauf, Innendienst – mit kaufmännischer Ausbildung.",
+ "desc": "Bewerbung als Sachbearbeiter/in: Musteranschreiben für Auftragsabwicklung und den Quereinstieg in den Einkauf, Lebenslauf mit Foto-Platzhalter und Tipps.",
+ "intro": "„Sachbearbeitung“ kann vieles sein: Auftragsabwicklung, Einkauf, Versicherungsfälle, Fördermittel, Reklamationen. Lies die Anzeige genau und nenn die Aufgaben, die dazu passen. Arbeitgeber achten auf Genauigkeit, Systemkenntnisse und darauf, ob du Fälle eigenständig bis zum Ende bearbeitest.",
+ "lookFor": [
+  "Kaufmännische Ausbildung oder vergleichbare Berufserfahrung",
+  "Eigenständige Bearbeitung von Vorgängen von Anfang bis Ende",
+  "Erfahrung mit ERP-Systemen und Tabellen",
+  "Genauigkeit, Fristenbewusstsein",
+  "Kommunikation mit Kunden, Lieferanten oder internen Abteilungen"
+ ],
+ "letters": [
+  {
+   "label": "Auftragsabwicklung mit ERP-Erfahrung",
+   "level": "erfahren",
+   "position": "Sachbearbeiter Auftragsabwicklung",
+   "to": {
+    "org": "Nordlicht Leuchten GmbH",
+    "sal": "f",
+    "street": "Am Sandtorkai 20",
+    "city": "20457 Hamburg",
+    "contact": "Jansen"
+   },
+   "body": [
+    "bei uns im Lager hieß es oft: „Frag Jonas, der weiß, wo der Auftrag hängt.“ Seit sechs Jahren bin ich in der Auftragsabwicklung eines Elektrogroßhändlers und kenne den Weg einer Bestellung vom Eingang bis zur Rechnung in jedem Detail.",
+    "Ich erfasse täglich 60 bis 80 Aufträge im ERP-System, prüfe Verfügbarkeiten, stimme Liefertermine mit Lager und Spedition ab und kläre Reklamationen. Für Sonderanfertigungen habe ich eine Checkliste eingeführt, seitdem gibt es deutlich weniger Rückfragen aus der Produktion. Englische Korrespondenz mit Kunden aus Skandinavien gehört dazu.",
+    "Ihre Leuchten habe ich in unserem Sortiment oft verkauft und kenne die Produktpalette. Mich reizt, beim Hersteller selbst zu arbeiten und näher an der Produktion zu sein. Ein Wechsel ist zum 1. Januar möglich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Quereinstieg in den Einkauf",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiterin Einkauf",
+   "to": {
+    "org": "Hanse Gastro Service GmbH",
+    "sal": "none",
+    "street": "Billstraße 100",
+    "city": "20539 Hamburg"
+   },
+   "body": [
+    "zehn Jahre lang habe ich als Köchin bestellt, verglichen und mit Lieferanten über Preise und Qualität diskutiert. Dass das ein eigener Beruf ist, ist mir erst klar geworden, als ich mich nach einem Bandscheibenvorfall neu orientieren musste.",
+    "In meiner letzten Stelle als Sous-Chefin in einer Hotelküche war ich für den Wareneinkauf von rund 40.000 Euro im Monat zuständig. Ich habe Angebote eingeholt, Lieferanten bewertet und den Wareneinsatz monatlich ausgewertet. Mit dem Warenwirtschaftssystem und mit Tabellenkalkulation arbeite ich sicher. Im Sommer habe ich zusätzlich einen IHK-Kurs „Grundlagen Einkauf“ abgeschlossen.",
+    "Für einen Lebensmittel- und Gastrogroßhändler bringe ich Fachwissen mit, das man in keinem Kurs lernt: Ich weiß, was ein Koch meint, wenn er sagt, die Ware sei „nicht so wie letzte Woche“. Gern erzähle ich Ihnen im Gespräch, wie das in der Praxis aussah."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief Köchin",
+    "IHK-Zertifikat",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Miriam Hollstein",
+    "Wandsbeker Chaussee 50",
+    "22089 Hamburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a10",
+  "design": "classic",
+  "accent": 5,
+  "name": "Jonas Petersen",
+  "title": "Sachbearbeiter Auftragsabwicklung",
+  "street": "Eppendorfer Weg 120",
+  "city": "20259 Hamburg",
+  "exp": [
+   [
+    "04/2020",
+    "",
+    "Sachbearbeiter Auftragsabwicklung",
+    "Elektro-Großhandel Nord GmbH",
+    "Hamburg",
+    "- 60–80 Aufträge täglich im ERP-System\n- Liefertermine mit Lager und Spedition\n- Reklamationsbearbeitung, englische Korrespondenz"
+   ],
+   [
+    "08/2017",
+    "03/2020",
+    "Kaufmann im Groß- und Außenhandel",
+    "Baustoffe Lüders",
+    "Hamburg",
+    "- Innendienst und Angebote"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2014",
+    "07/2017",
+    "Ausbildung Kaufmann im Groß- und Außenhandel",
+    "Baustoffe Lüders / Berufliche Schule",
+    "Hamburg",
+    ""
+   ],
+   [
+    "2005",
+    "2014",
+    "Fachhochschulreife",
+    "Stadtteilschule Eimsbüttel",
+    "Hamburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Reklamationsmanagement",
+    "IHK-Akademie",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "ERP-Systeme",
+    5
+   ],
+   [
+    "Tabellenkalkulation",
+    4
+   ],
+   [
+    "Reklamationsbearbeitung",
+    4
+   ],
+   [
+    "Lieferantenkommunikation",
+    4
+   ],
+   [
+    "Englische Korrespondenz",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Dänisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Segeln, Kochen"
+ },
+ "do": [
+  "Nenn Mengen: Aufträge pro Tag, Kunden, Budget.",
+  "Beschreib Abläufe, die du verbessert hast.",
+  "Zeig Fachwissen aus der Branche."
+ ],
+ "dont": [
+  "Aufgaben auflisten, die jeder Sachbearbeiter hat.",
+  "Systeme nennen, die du nur vom Hörensagen kennst.",
+  "Den Quereinstieg entschuldigen – erklär ihn."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einem Kunden um, dessen Lieferung zu spät kommt?",
+  "Wie behalten Sie bei vielen Vorgängen den Überblick?",
+  "Welche ERP-Erfahrung haben Sie?",
+  "Wann haben Sie zuletzt einen Fehler gemacht, und was haben Sie daraus gelernt?"
+ ],
+ "faq": [
+  {
+   "q": "Ist Sachbearbeiter ein Ausbildungsberuf?",
+   "a": "Nein, das ist eine Funktionsbezeichnung. Meist wird eine kaufmännische Ausbildung oder Erfahrung im Fachgebiet erwartet, im öffentlichen Dienst oft eine Verwaltungsausbildung oder ein Verwaltungslehrgang."
+  }
+ ],
+ "related": [
+  "kauffrau-bueromanagement",
+  "speditionskaufmann",
+  "buchhalter",
+  "sachbearbeiter-buergeramt"
+ ]
+}

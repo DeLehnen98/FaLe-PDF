@@ -1,0 +1,163 @@
+{
+ "id": "veranstaltungskaufmann",
+ "field": "marketing",
+ "name": "Veranstaltungskaufmann/-frau (Eventmanager/in)",
+ "search": "veranstaltungskauffrau veranstaltungskaufmann eventmanager eventmanagerin messe kongress eventagentur projektleitung events",
+ "short": "Messen, Kongresse, Firmenevents – planen und durchführen.",
+ "desc": "Bewerbung als Veranstaltungskaufmann/-frau oder Eventmanager/in: Musteranschreiben für Berufsstart und erfahrene Projektleitung, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Eventjobs vergibt man an Leute, die Ruhe behalten, wenn der Caterer im Stau steht. Zeig Veranstaltungen mit Größe und Budget in Größenordnungen, deine Rolle und eine Situation, in der etwas schiefging und du es gelöst hast.",
+ "lookFor": [
+  "Ausbildung als Veranstaltungskaufmann/-frau oder Erfahrung im Eventmanagement",
+  "Planung, Budget, Dienstleistersteuerung",
+  "Vertragswesen und Genehmigungen",
+  "Belastbarkeit vor Ort",
+  "Wochenend- und Abendarbeit"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Junior Projektleiterin Events",
+   "to": {
+    "org": "Kongresswerk Leipzig GmbH",
+    "sal": "none",
+    "street": "Messe-Allee 1",
+    "city": "04356 Leipzig"
+   },
+   "body": [
+    "drei Jahre Ausbildung in einer Eventagentur, und mein prägendster Moment war ein Firmenjubiläum mit 800 Gästen, bei dem eine Stunde vor Einlass der Strom in der Halle ausfiel. Wir haben improvisiert, das Notstromaggregat kam rechtzeitig, die Gäste haben nichts gemerkt.",
+    "Ich habe Veranstaltungen von der Angebotskalkulation bis zur Nachbereitung begleitet: Dienstleister angefragt, Ablaufpläne geschrieben, Teilnehmermanagement betreut und vor Ort koordiniert. Bei zwei Kundenevents mit je 150 Gästen hatte ich die Projektleitung unter Aufsicht. Die Abschlussprüfung habe ich mit 1,9 bestanden.",
+    "Kongresse interessieren mich besonders, weil es dort neben dem Ablauf um Inhalte geht."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrener Eventmanager, Wechsel zum Unternehmen",
+   "level": "erfahren",
+   "position": "Eventmanager im Unternehmen",
+   "to": {
+    "org": "Medtech Sachsen AG",
+    "sal": "none",
+    "street": "Deutscher Platz 5",
+    "city": "04103 Leipzig"
+   },
+   "body": [
+    "nach neun Jahren auf Agenturseite, mit rund 150 Veranstaltungen von der Pressekonferenz bis zur Händlertagung, möchte ich jetzt für ein Unternehmen arbeiten und dessen Veranstaltungen über Jahre entwickeln.",
+    "Ich verantworte Budgets im sechsstelligen Bereich, verhandle mit Locations und Dienstleistern und führe Teams vor Ort mit bis zu 30 Leuten. Für einen Kunden aus der Medizintechnik habe ich drei Jahre lang Fachkongresse organisiert und kenne deshalb die Regeln für Veranstaltungen mit Ärztinnen und Ärzten. Nachhaltigkeit ist bei meinen Projekten seit Jahren ein fester Punkt im Konzept.",
+    "Ich würde gern Ihre Kundenevents und Messeauftritte betreuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Projektliste"
+   ],
+   "from": [
+    "Sebastian Wolf",
+    "Karl-Heine-Straße 50",
+    "04229 Leipzig"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 4,
+  "name": "Charlotte Meißner",
+  "title": "Veranstaltungskauffrau",
+  "street": "Könneritzstraße 40",
+  "city": "04229 Leipzig",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Veranstaltungskauffrau",
+    "Eventagentur Lichtspiel",
+    "Leipzig",
+    "- Firmenevents bis 800 Gäste\n- Dienstleistersteuerung und Ablaufpläne\n- Projektleitung unter Aufsicht (2 Events)"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung Veranstaltungskauffrau, IHK 1,9",
+    "Berufliches Schulzentrum",
+    "Leipzig",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Thomasschule",
+    "Leipzig",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Veranstaltungsplanung",
+    4
+   ],
+   [
+    "Budgetkalkulation",
+    3
+   ],
+   [
+    "Teilnehmermanagement",
+    4
+   ],
+   [
+    "Vor-Ort-Koordination",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Konzerte, Stadtführungen als Gästeführerin"
+ },
+ "do": [
+  "Größe, Art und Rolle bei Events nennen.",
+  "Eine gelöste Krise erzählen.",
+  "Wochenendbereitschaft ansprechen."
+ ],
+ "dont": [
+  "Nur „kreativ“ und „organisiert“ schreiben.",
+  "Kundennamen ohne Erlaubnis.",
+  "Budgets genau beziffern, wenn vertraulich."
+ ],
+ "questions": [
+  "Was tun Sie, wenn der Caterer eine Stunde vor Beginn absagt?",
+  "Wie planen Sie ein Budget?",
+  "Welche Veranstaltung war Ihre schwierigste?",
+  "Wie gehen Sie mit Stress vor Ort um?"
+ ],
+ "faq": [
+  {
+   "q": "Soll ich eine Projektliste beilegen?",
+   "a": "Ja, eine kurze Liste mit Art der Veranstaltung, Gästezahl, Jahr und deiner Rolle ist bei Erfahrenen sehr hilfreich."
+  }
+ ],
+ "related": [
+  "marketing-manager",
+  "hotelfachfrau",
+  "assistenz-geschaeftsfuehrung",
+  "content-manager"
+ ]
+}

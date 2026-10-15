@@ -1,0 +1,197 @@
+{
+ "id": "lehrer-quereinstieg",
+ "field": "soziales",
+ "name": "Lehrkraft im Quereinstieg",
+ "search": "quereinsteiger lehrer seiteneinstieg lehramt lehrerin vertretungslehrer schule mint lehrkraft ohne lehramt",
+ "short": "Mit Fachstudium an die Schule – Seiteneinstieg, Quereinstieg oder Vertretung.",
+ "desc": "Bewerbung als Lehrkraft im Quereinstieg: Musteranschreiben für Seiteneinstieg mit MINT-Studium und Vertretungsstelle, Lebenslauf und ehrliche Hinweise zu den Regeln der Länder.",
+ "intro": "Viele Bundesländer holen Fachleute ohne Lehramtsstudium an die Schulen, vor allem in Mangelfächern. Die Wege heißen je nach Land Quereinstieg, Seiteneinstieg oder Vertretung und unterscheiden sich stark: Voraussetzungen, berufsbegleitendes Referendariat, Bezahlung. Prüf die Regeln deines Landes, bevor du schreibst, und zeig im Anschreiben, warum du unterrichten willst und was du fachlich mitbringst.",
+ "lookFor": [
+  "Ein Hochschulabschluss, aus dem sich meist ein oder zwei Unterrichtsfächer ableiten lassen – die genauen Anforderungen legt jedes Land selbst fest",
+  "Erfahrung im Erklären: Nachhilfe, Ausbildung von Azubis, Trainertätigkeit, Lehraufträge",
+  "Bereitschaft zur berufsbegleitenden Qualifizierung oder zum Vorbereitungsdienst",
+  "Belastbarkeit, Klassenführung, Freude an Jugendlichen"
+ ],
+ "letters": [
+  {
+   "label": "Ingenieurin mit Ziel Physik und Mathematik",
+   "level": "quereinstieg",
+   "position": "Lehrkraft für Physik und Mathematik im Seiteneinstieg",
+   "to": {
+    "org": "Gesamtschule Am Schillerpark",
+    "sal": "m",
+    "street": "Schillerstraße 40",
+    "city": "45127 Essen",
+    "contact": "Krüger"
+   },
+   "body": [
+    "seit elf Jahren entwickle ich Messtechnik für Windkraftanlagen. Erklärt habe ich in dieser Zeit fast genauso viel wie entwickelt: Azubis, Werkstudenten, Kunden, die wissen wollen, warum ihr Sensor ausfällt. Ich möchte das jetzt zu meinem Beruf machen und an Ihrer Schule Physik und Mathematik unterrichten.",
+    "Mit meinem Diplom in Elektrotechnik erfülle ich nach Auskunft der Bezirksregierung die Voraussetzungen für den Seiteneinstieg in beiden Fächern. Unterrichtserfahrung habe ich aus fünf Jahren als Betreuerin der Schüler-AG „Jugend forscht“ in unserem Unternehmen. Eine Gruppe aus der neunten Klasse hat mit einem selbst gebauten Windmesser den Landeswettbewerb erreicht. Ich weiß, dass eine Klasse mit 28 Jugendlichen etwas anderes ist als eine AG mit sechs Freiwilligen.",
+    "Deshalb habe ich im Frühjahr zwei Wochen in einer achten Klasse hospitiert und einige Stunden selbst gehalten. Die pädagogische Einführung und die berufsbegleitende Ausbildung nehme ich bewusst in Kauf.",
+    "Wenn Sie im kommenden Schuljahr Bedarf haben, stelle ich mich gern vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Diplomzeugnis",
+    "Arbeitszeugnis",
+    "Hospitationsbestätigung"
+   ]
+  },
+  {
+   "label": "Vertretungsstelle mit Masterabschluss",
+   "level": "berufseinstieg",
+   "position": "Vertretungslehrkraft für Englisch und Geschichte (befristet)",
+   "to": {
+    "org": "Städtisches Gymnasium Mülheim-Broich",
+    "sal": "none",
+    "street": "Ritterstraße 21",
+    "city": "45479 Mülheim an der Ruhr"
+   },
+   "body": [
+    "für die Elternzeitvertretung im Fach Englisch suchen Sie eine Lehrkraft ab Februar. Ich habe meinen Master in Anglistik und Geschichte im vergangenen Jahr abgeschlossen und arbeite seitdem als Lektorin in einem Schulbuchverlag. Dabei habe ich gemerkt, dass ich lieber vor der Klasse stehe als hinter den Arbeitsblättern.",
+    "Während des Studiums habe ich drei Jahre lang Englisch-Nachhilfe gegeben, überwiegend für Oberstufenschülerinnen kurz vor dem Abitur. Im Verlag erstelle ich Übungsmaterial für die Sekundarstufe I und kenne die Kernlehrpläne deshalb gut. Ein Jahr Auslandsstudium in Leeds hat mein Englisch auf C2-Niveau gebracht.",
+    "Mir ist bewusst, dass eine Vertretungsstelle befristet ist. Für mich ist sie der Test, ob ich danach den Weg ins Lehramt gehe. Ich kann zum 1. Februar beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Masterzeugnis",
+    "Nachweis Auslandsstudium",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Clara Neumann",
+    "Kaiserstraße 8",
+    "45468 Mülheim an der Ruhr"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "classic",
+  "accent": 0,
+  "name": "Dr.-Ing. Petra Hagedorn",
+  "title": "Dipl.-Ing. Elektrotechnik",
+  "street": "Rüttenscheider Straße 95",
+  "city": "45130 Essen",
+  "exp": [
+   [
+    "04/2015",
+    "",
+    "Entwicklungsingenieurin Messtechnik",
+    "Windtec Sensorik GmbH",
+    "Essen",
+    "- Entwicklung von Sensoren für Rotorblätter\n- Ausbildungsbeauftragte für Elektroniker/innen\n- Betreuung der Schüler-AG „Jugend forscht“ (seit 2021)"
+   ],
+   [
+    "10/2010",
+    "03/2015",
+    "Wissenschaftliche Mitarbeiterin",
+    "Lehrstuhl für Messtechnik, Universität",
+    "Duisburg",
+    "- Promotion, Betreuung von Übungen und Laborpraktika"
+   ]
+  ],
+  "edu": [
+   [
+    "2004",
+    "2010",
+    "Diplom Elektrotechnik",
+    "Technische Universität",
+    "Dortmund",
+    ""
+   ],
+   [
+    "",
+    "2015",
+    "Promotion (Dr.-Ing.)",
+    "Universität",
+    "Duisburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Hospitation Klasse 8, Physik (2 Wochen)",
+    "Gesamtschule Essen-Nord",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Ausbildereignung (AEVO)",
+    "IHK Essen",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Physik und Mathematik",
+    5
+   ],
+   [
+    "Erklären komplexer Inhalte",
+    5
+   ],
+   [
+    "Projektarbeit mit Jugendlichen",
+    4
+   ],
+   [
+    "Digitale Messwerterfassung",
+    5
+   ],
+   [
+    "Präsentation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Chor, Segeln auf dem Baldeneysee"
+ },
+ "do": [
+  "Informier dich über die Regeln deines Bundeslandes und nenn den passenden Weg.",
+  "Zeig Erklär-Erfahrung mit konkreten Beispielen.",
+  "Sag offen, dass du die berufsbegleitende Ausbildung machen willst."
+ ],
+ "dont": [
+  "Das Lehramtsstudium kleinreden.",
+  "Nur mit dem Fachwissen argumentieren – Pädagogik zählt.",
+  "Unterrichtsfächer angeben, für die dein Abschluss nicht reicht."
+ ],
+ "questions": [
+  "Warum wollen Sie Lehrerin werden – und warum jetzt?",
+  "Wie gehen Sie mit einer unruhigen Klasse um?",
+  "Wie würden Sie den Satz des Pythagoras in einer 8. Klasse einführen?",
+  "Wie stellen Sie sich die Zusammenarbeit im Kollegium vor?"
+ ],
+ "pay": "Die Eingruppierung von Quer- und Seiteneinsteigern ist in jedem Land eigens geregelt und hängt vom Abschluss und vom Qualifizierungsweg ab. Frag bei der Schulbehörde oder im Gespräch genau nach.",
+ "faq": [
+  {
+   "q": "Kann ich mich direkt bei der Schule bewerben?",
+   "a": "Das hängt vom Land ab. Teils schreiben Schulen Stellen selbst aus, teils läuft die Bewerbung über ein Landesportal oder die Schulbehörde. Lies die Ausschreibung genau, und richte das Anschreiben an die dort genannte Stelle."
+  },
+  {
+   "q": "Welche Fächer haben gute Chancen?",
+   "a": "Häufig gesucht werden MINT-Fächer, Informatik, Musik, Kunst, Sport und berufliche Fächer an Berufsschulen. Welche Fächer aktuell im Quereinstieg geöffnet sind, legt jedes Land fest."
+  }
+ ],
+ "related": [
+  "nachhilfelehrer",
+  "erzieherin",
+  "sozialarbeiter",
+  "schulbegleiter"
+ ]
+}

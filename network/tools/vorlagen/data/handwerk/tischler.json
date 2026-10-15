@@ -1,0 +1,182 @@
+{
+ "id": "tischler",
+ "field": "handwerk",
+ "name": "Tischler/in (Schreiner/in)",
+ "search": "schreiner schreinerin tischlerin möbelbau innenausbau montage cnc holz werkstatt",
+ "short": "Möbelbau, Innenausbau oder Montage – Geselle oder mit CNC-Erfahrung.",
+ "desc": "Bewerbung als Tischler/in oder Schreiner/in: Anschreiben-Muster für Junggesellen und erfahrene Fachkräfte mit CNC, Lebenslauf zum Übernehmen und Tipps.",
+ "intro": "Tischlereien suchen Gesellen, die präzise arbeiten, Zeichnungen lesen und beim Kunden montieren können. Je nach Betrieb zählen Erfahrung an der CNC-Maschine, im Innenausbau, im Fensterbau oder bei Einzelanfertigungen. Bilder deiner Arbeiten – Gesellenstück, Projekte – sind ein starkes Argument; leg sie als kleine Mappe bei.",
+ "lookFor": [
+  "Gesellenbrief als Tischler/in bzw. Schreiner/in",
+  "Sicherer Umgang mit Maschinen, gern CNC-Programmierung",
+  "Montageerfahrung beim Kunden, ordentlicher Auftritt",
+  "Gefühl für Material und Oberflächen",
+  "Führerschein, gern mit Anhänger"
+ ],
+ "letters": [
+  {
+   "label": "Junggesellin mit Gesellenstück",
+   "level": "berufseinstieg",
+   "position": "Tischlerin im Möbelbau",
+   "to": {
+    "org": "Holzwerkstatt Lenz",
+    "sal": "m",
+    "street": "Am Sägewerk 2",
+    "city": "79104 Freiburg",
+    "contact": "Lenz"
+   },
+   "body": [
+    "mein Gesellenstück, ein Sideboard aus Kirsche mit Schiebetüren und gezinkten Schubkästen, hat bei der Innung eine Belobigung bekommen. Ein Foto liegt bei. Ich möchte genau diese Art von Möbeln weiter bauen, und Ihre Werkstatt ist in Freiburg die erste Adresse dafür.",
+    "In meinem Ausbildungsbetrieb habe ich überwiegend Küchen und Einbauschränke gefertigt und montiert. Ich habe an der Formatkreissäge, der Kantenanleimmaschine und an der CNC gearbeitet; einfache Programme schreibe ich selbst. Oberflächen mit Öl und Lack mache ich sorgfältig, auch wenn es länger dauert.",
+    "Ich bin ab August frei und kann in Vollzeit arbeiten. Gern komme ich zu einem Probetag in die Werkstatt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Fotos von Arbeiten"
+   ]
+  },
+  {
+   "label": "Erfahrener Geselle für die CNC",
+   "level": "erfahren",
+   "position": "Tischler für CNC-Programmierung und Fertigung",
+   "to": {
+    "org": "Innenausbau Ehret GmbH",
+    "sal": "none",
+    "street": "Gewerbepark 18",
+    "city": "79211 Denzlingen"
+   },
+   "body": [
+    "seit sechs Jahren programmiere und bediene ich das CNC-Bearbeitungszentrum in einem Betrieb für Ladenbau. Pro Woche gehen bei uns rund 150 Teile über die Maschine, von Korpussen bis zu gefrästen Fronten. Ich suche jetzt einen Betrieb, in dem ich näher an Planung und Arbeitsvorbereitung bin.",
+    "Ich arbeite mit CAD/CAM-Software, erstelle Stücklisten, optimiere Zuschnittpläne und halte die Maschine in Schuss. Bei uns habe ich den Plattenverschnitt durch neue Nesting-Einstellungen messbar gesenkt. Montageerfahrung habe ich aus den ersten Gesellenjahren, als ich Ladeneinrichtungen in ganz Baden-Württemberg aufgebaut habe.",
+    "Ihr Schwerpunkt auf hochwertigem Innenausbau reizt mich. Beim Eintrittstermin bin ich flexibel."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Matthias Gerber",
+    "Habsburgerstraße 77",
+    "79104 Freiburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "classic",
+  "accent": 4,
+  "name": "Lena Hug",
+  "title": "Tischlerin",
+  "street": "Wiehre-Straße 3",
+  "city": "79102 Freiburg",
+  "exp": [
+   [
+    "09/2023",
+    "07/2026",
+    "Auszubildende Tischlerin",
+    "Schreinerei Bühler",
+    "Emmendingen",
+    "- Küchen und Einbauschränke: Fertigung und Montage\n- Arbeit an Formatkreissäge, Kantenanleimmaschine, CNC\n- Oberflächenbehandlung mit Öl und Lack"
+   ]
+  ],
+  "edu": [
+   [
+    "09/2023",
+    "07/2026",
+    "Ausbildung zur Tischlerin, Gesellenstück mit Belobigung",
+    "Gewerbeschule",
+    "Freiburg",
+    "Gesellenstück: Sideboard aus Kirsche mit Schiebetüren"
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Kepler-Gymnasium",
+    "Freiburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "CNC-Grundkurs",
+    "Holzfachschule",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Massivholzverbindungen",
+    4
+   ],
+   [
+    "CNC-Bedienung",
+    3
+   ],
+   [
+    "Oberflächen",
+    4
+   ],
+   [
+    "Montage",
+    3
+   ],
+   [
+    "Technisches Zeichnen / CAD",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Restaurieren alter Stühle, Bouldern"
+ },
+ "do": [
+  "Leg Fotos deiner Arbeiten bei (klein, als PDF).",
+  "Nenn Maschinen und Software, die du beherrschst.",
+  "Sag, ob du lieber in der Werkstatt oder in der Montage arbeitest."
+ ],
+ "dont": [
+  "Nur „handwerklich geschickt“ schreiben.",
+  "Riesige Bilddateien anhängen.",
+  "Die Montage beim Kunden verschweigen, wenn sie dir schwerfällt – klär das im Gespräch."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn ein Maß vor Ort nicht passt?",
+  "Welche Holzverbindungen bevorzugen Sie und warum?",
+  "Haben Sie schon CNC-Programme geschrieben?",
+  "Wie arbeiten Sie bei einem Kunden in einer bewohnten Wohnung?"
+ ],
+ "faq": [
+  {
+   "q": "Tischler oder Schreiner – was ist richtig?",
+   "a": "Beides bezeichnet denselben Beruf; in Süddeutschland sagt man eher Schreiner. Schreib die Bezeichnung aus deinem Gesellenbrief."
+  },
+  {
+   "q": "Soll ich Fotos meiner Arbeiten beilegen?",
+   "a": "Ja, zwei bis vier gute Fotos auf einer PDF-Seite sagen viel. Achte auf eine kleine Dateigröße – mit „Bild in PDF“ und „PDF komprimieren“ geht das direkt im Browser."
+  }
+ ],
+ "related": [
+  "maler-lackierer",
+  "hausmeister",
+  "zerspanungsmechaniker",
+  "elektriker"
+ ]
+}

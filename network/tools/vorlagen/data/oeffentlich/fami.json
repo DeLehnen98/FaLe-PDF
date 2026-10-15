@@ -1,0 +1,165 @@
+{
+ "id": "fami",
+ "field": "oeffentlich",
+ "name": "Fachangestellte/r für Medien- und Informationsdienste",
+ "search": "fami bibliothek bibliothekar archiv fachangestellte medien informationsdienste stadtbibliothek dokumentation",
+ "short": "Bibliothek, Archiv oder Dokumentation – nach der Ausbildung oder Wechsel.",
+ "desc": "Bewerbung als Fachangestellte/r für Medien- und Informationsdienste (FaMI): Musteranschreiben für Bibliothek und Archiv, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "FaMIs arbeiten in Bibliotheken, Archiven und Dokumentationsstellen: Medien erwerben und erschließen, Nutzer beraten, Veranstaltungen begleiten, Bestände digitalisieren. Die Fachrichtung ist wichtig – nenn sie ausdrücklich.",
+ "lookFor": [
+  "Ausbildung FaMI in der passenden Fachrichtung",
+  "Katalogisierung, Medienbearbeitung, Bibliothekssoftware",
+  "Beratung und Veranstaltungen, z. B. Leseförderung",
+  "Digitalisierung und digitale Angebote",
+  "Freundlichkeit im Publikumsverkehr"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung in die Stadtbibliothek",
+   "level": "berufseinstieg",
+   "position": "FaMI (Fachrichtung Bibliothek)",
+   "to": {
+    "org": "Stadtbibliothek Göttingen",
+    "sal": "f",
+    "street": "Gotmarstraße 8",
+    "city": "37073 Göttingen",
+    "contact": "Brandes"
+   },
+   "body": [
+    "meine Ausbildung zur FaMI in der Fachrichtung Bibliothek habe ich an einer Universitätsbibliothek gemacht, aber die schönsten Wochen hatte ich im Praktikum in einer Kinderbibliothek. Dort habe ich zum ersten Mal einen Bilderbuchnachmittag gestaltet. Deshalb möchte ich in eine öffentliche Bibliothek.",
+    "Ich katalogisiere, bearbeite Medien, betreue die Ausleihe und berate an der Information. Im Praktikum habe ich eine Klassenführung für eine dritte Klasse geplant und durchgeführt, mit einer Rallye durch die Regale. Digitale Angebote wie die Onleihe erkläre ich auch älteren Leserinnen geduldig.",
+    "Ihr Programm „Lesestart“ würde ich gern mitgestalten. Ich bin ab August verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Wechsel ins Archiv",
+   "level": "erfahren",
+   "position": "FaMI im Stadtarchiv",
+   "to": {
+    "org": "Stadt Hildesheim – Stadtarchiv",
+    "sal": "none",
+    "street": "Am Steine 7",
+    "city": "31134 Hildesheim"
+   },
+   "body": [
+    "von der Bibliothek ins Archiv: Diesen Wechsel möchte ich nach sechs Jahren machen. Den Anstoß gab ein Projekt, bei dem ich alte Fotos unserer Bibliotheksgeschichte digitalisiert und erschlossen habe; ich habe dabei mehr Zeit im Stadtarchiv verbracht als an meinem eigenen Schreibtisch.",
+    "Ich habe Metadaten erfasst, Digitalisate in einem Repositorium bereitgestellt und eine kleine Ausstellung vorbereitet. In der Bibliothek bin ich für Erwerbung und Bestandspflege im Sachbuchbereich zuständig. Den Fortbildungskurs Archivkunde für FaMIs habe ich im Frühjahr abgeschlossen.",
+    "Alte Handschriften lesen kann ich in Ansätzen – ich übe jeden Sonntag mit Kirchenbüchern aus meinem Heimatdorf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Fortbildungsnachweis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Tobias Ahrens",
+    "Goslarsche Straße 20",
+    "31134 Hildesheim"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a23",
+  "design": "classic",
+  "accent": 1,
+  "name": "Merle Brandt",
+  "title": "Fachangestellte für Medien- und Informationsdienste",
+  "street": "Weender Straße 50",
+  "city": "37073 Göttingen",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende FaMI, Fachrichtung Bibliothek",
+    "Universitätsbibliothek",
+    "Göttingen",
+    "- Katalogisierung und Medienbearbeitung\n- Ausleihe und Information\n- Praktikum Kinderbibliothek: Bilderbuchnachmittage, Klassenführungen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung FaMI",
+    "Berufsbildende Schulen",
+    "Hannover",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Felix-Klein-Gymnasium",
+    "Göttingen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Katalogisierung",
+    4
+   ],
+   [
+    "Bibliothekssoftware",
+    4
+   ],
+   [
+    "Leseförderung",
+    4
+   ],
+   [
+    "Digitale Angebote",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Latein",
+    "A2"
+   ]
+  ],
+  "hobbies": "Lesen (natürlich), Brettspiele, Poetry Slam"
+ },
+ "do": [
+  "Fachrichtung nennen.",
+  "Ein Projekt oder eine Veranstaltung beschreiben.",
+  "Digitalkompetenz zeigen."
+ ],
+ "dont": [
+  "„Ich lese gern“ als Hauptargument.",
+  "Nur Ausleihe erwähnen.",
+  "Publikumsverkehr unterschätzen."
+ ],
+ "questions": [
+  "Wie würden Sie Jugendliche in die Bibliothek holen?",
+  "Wie erklären Sie einer Seniorin die Onleihe?",
+  "Was ist bei der Katalogisierung wichtig?",
+  "Welche Veranstaltung würden Sie planen?"
+ ],
+ "faq": [
+  {
+   "q": "Welche Fachrichtungen gibt es?",
+   "a": "Archiv, Bibliothek, Information und Dokumentation, Bildagentur und medizinische Dokumentation. Für die Stelle zählt vor allem, ob deine Fachrichtung passt."
+  }
+ ],
+ "related": [
+  "verwaltungsfachangestellte",
+  "justizfachangestellte",
+  "content-manager",
+  "erzieherin"
+ ]
+}

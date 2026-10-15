@@ -1,0 +1,164 @@
+{
+ "id": "justizfachangestellte",
+ "field": "oeffentlich",
+ "name": "Justizfachangestellte/r",
+ "search": "justizfachangestellter justizfachangestellte gericht amtsgericht serviceeinheit geschäftsstelle staatsanwaltschaft justiz",
+ "short": "Serviceeinheit an Gericht oder Staatsanwaltschaft.",
+ "desc": "Bewerbung als Justizfachangestellte/r: Musteranschreiben für den Berufsstart und den Wechsel aus der Anwaltskanzlei, Lebenslauf mit Foto-Platzhalter und Hinweise.",
+ "intro": "Justizfachangestellte führen Akten, protokollieren Sitzungen, fertigen Ladungen und Urteilsausfertigungen und sind Ansprechpartner für Beteiligte. Gefragt sind Genauigkeit, sichere Rechtschreibung, schnelles Schreiben und Verschwiegenheit.",
+ "lookFor": [
+  "Ausbildung als Justizfachangestellte/r oder als Rechtsanwaltsfachangestellte/r",
+  "Aktenführung und Fristenkontrolle",
+  "Protokollführung und schnelles Schreiben",
+  "Erfahrung mit elektronischer Akte",
+  "Verschwiegenheit"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Justizfachangestellte in einer Serviceeinheit",
+   "to": {
+    "org": "Oberlandesgericht Koblenz – Personalstelle",
+    "sal": "none",
+    "street": "Stresemannstraße 1",
+    "city": "56068 Koblenz"
+   },
+   "body": [
+    "am Amtsgericht Mayen habe ich meine Ausbildung zur Justizfachangestellten gemacht und im Sommer abgeschlossen. Am liebsten war ich in der Familienabteilung, weil dort hinter jeder Akte eine Geschichte steckt und Fristen besonders zählen.",
+    "Ich habe Akten angelegt und geführt, Ladungen und Zustellungen veranlasst, in Sitzungen Protokoll geführt und Entscheidungen ausgefertigt. Die Umstellung auf die elektronische Akte habe ich in meinem letzten Ausbildungsjahr mitgemacht und kenne die Abläufe. Ich schreibe schnell und fehlerfrei; im Tastschreiben hatte ich die Bestnote meines Jahrgangs.",
+    "Ich würde gern im Bezirk des Oberlandesgerichts Koblenz bleiben."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Ausbildungsbeurteilung"
+   ]
+  },
+  {
+   "label": "Wechsel aus der Kanzlei",
+   "level": "quereinstieg",
+   "position": "Justizbeschäftigter in der Serviceeinheit (Quereinstieg)",
+   "to": {
+    "org": "Landgericht Trier – Verwaltung",
+    "sal": "none",
+    "street": "Justizstraße 2",
+    "city": "54290 Trier"
+   },
+   "body": [
+    "zehn Jahre als Rechtsanwaltsfachangestellter haben mich viele Schriftsätze ans Landgericht schicken lassen. Jetzt möchte ich auf der anderen Seite arbeiten und mich bei Ihnen bewerben.",
+    "Ich kenne Zivilprozess, Fristen und Zustellungen aus der Praxis, arbeite täglich mit dem elektronischen Rechtsverkehr und habe in der Kanzlei den Fristenkalender verantwortet – ohne eine einzige versäumte Frist. Mit Mandanten am Telefon umzugehen, die aufgeregt sind, gehört zu meinem Alltag.",
+    "Mir ist klar, dass ich mich in die Abläufe eines Gerichts einarbeiten muss. Darauf freue ich mich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Stefan Kaiser",
+    "Saarstraße 15",
+    "54290 Trier"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a01",
+  "design": "classic",
+  "accent": 5,
+  "name": "Annika Schuster",
+  "title": "Justizfachangestellte",
+  "street": "Marktstraße 20",
+  "city": "56727 Mayen",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Justizfachangestellte",
+    "Amtsgericht Mayen",
+    "Mayen",
+    "- Familien-, Zivil- und Strafabteilung\n- Aktenführung, Ladungen, Zustellungen\n- Protokollführung in Sitzungen\n- Elektronische Akte"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zur Justizfachangestellten",
+    "Berufsbildende Schule",
+    "Koblenz",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Megina-Gymnasium",
+    "Mayen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Aktenführung",
+    4
+   ],
+   [
+    "Protokollführung",
+    4
+   ],
+   [
+    "Tastschreiben",
+    5
+   ],
+   [
+    "Elektronische Akte",
+    4
+   ],
+   [
+    "Rechtschreibung",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Theatergruppe, Joggen"
+ },
+ "do": [
+  "Abteilungen und Aufgaben nennen.",
+  "Schreibgeschwindigkeit und Genauigkeit betonen.",
+  "Erfahrung mit elektronischer Akte zeigen."
+ ],
+ "dont": [
+  "Fälle mit Details schildern.",
+  "Rechtschreibfehler.",
+  "Unvollständige Unterlagen."
+ ],
+ "questions": [
+  "Wie behalten Sie Fristen im Blick?",
+  "Was tun Sie, wenn ein Beteiligter am Telefon um Rechtsrat bittet?",
+  "Wie führen Sie ein Protokoll?",
+  "Welche Abteilung interessiert Sie?"
+ ],
+ "pay": "Die Bezahlung richtet sich nach dem Tarifvertrag der Länder und der Entgeltgruppe der Ausschreibung.",
+ "faq": [
+  {
+   "q": "Darf ich Rechtsfragen beantworten?",
+   "a": "Nein, Rechtsberatung gehört nicht zur Aufgabe. Du gibst Auskunft zu Verfahrensständen und Abläufen. Im Gespräch kommt diese Frage häufig."
+  }
+ ],
+ "related": [
+  "rechtsanwaltsfachangestellte",
+  "verwaltungsfachangestellte",
+  "sachbearbeiter-buergeramt",
+  "fami"
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "id": "social-media-manager",
+ "field": "marketing",
+ "name": "Social Media Manager/in",
+ "search": "social media manager social media managerin community manager content creator instagram redaktion social media redakteur",
+ "short": "Kanäle planen, Inhalte produzieren, Community betreuen.",
+ "desc": "Bewerbung als Social Media Manager/in: Musteranschreiben für Berufseinstieg und erfahrene Community-Managerin, Lebenslauf mit Foto-Platzhalter und Tipps.",
+ "intro": "Social-Media-Stellen werden über Beispiele vergeben. Zeig Kanäle, die du betreut hast, Formate, die funktioniert haben, und wie du mit Kritik in den Kommentaren umgehst. Reichweite allein überzeugt weniger als Interaktion und klare Ziele.",
+ "lookFor": [
+  "Erfahrung mit Redaktionsplanung und Content-Produktion",
+  "Community-Management und Krisenkommunikation",
+  "Analyse und Reporting",
+  "Gefühl für Plattformen und Formate",
+  "Rechtliche Grundlagen (Bildrechte, Kennzeichnung)"
+ ],
+ "letters": [
+  {
+   "label": "Einstieg mit eigenem Kanal und Werkstudentenjob",
+   "level": "berufseinstieg",
+   "position": "Junior Social Media Managerin",
+   "to": {
+    "org": "Zoo Wuppertal Förderverein e. V.",
+    "sal": "none",
+    "street": "Hubertusallee 30",
+    "city": "42117 Wuppertal"
+   },
+   "body": [
+    "als Werkstudentin habe ich die Kanäle eines Sportvereins mit 2.000 Mitgliedern betreut und gelernt, dass ein Video vom Zeugwart, der Trikots faltet, besser läuft als jedes Spielergebnis. Menschen wollen Menschen sehen. Bei einem Zoo sind es eben auch Tiere und Pflegerinnen.",
+    "Ich plane Inhalte im Redaktionsplan, filme und schneide mit dem Smartphone, schreibe Texte und beantworte Kommentare, auch die unfreundlichen. Monatlich habe ich dem Vorstand einen kurzen Bericht geschickt, was funktioniert hat und was nicht. Mein Studium der Kommunikationswissenschaft schließe ich im Herbst ab.",
+    "Ich könnte mir gut eine Serie über die Arbeit hinter den Kulissen vorstellen. Ich freue mich, Ihnen Ideen zu zeigen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitsproben (Links)",
+    "Zeugnis Werkstudentin"
+   ]
+  },
+  {
+   "label": "Erfahrene Community-Managerin",
+   "level": "erfahren",
+   "position": "Social Media Manager (Senior)",
+   "to": {
+    "org": "Stadtwerke Bergisch Land",
+    "sal": "none",
+    "street": "Bromberger Straße 39",
+    "city": "42281 Wuppertal"
+   },
+   "body": [
+    "einen Stromausfall an einem Freitagabend in den sozialen Netzwerken zu begleiten, ist keine schöne Aufgabe. Ich habe es zweimal gemacht, für einen Verkehrsverbund, und beide Male waren die Kommentare am Ende freundlicher als am Anfang. Für Ihre Stadtwerke bringe ich genau diese Erfahrung mit.",
+    "Seit fünf Jahren verantworte ich die Kanäle eines Verkehrsunternehmens: Redaktionsplan, Störungskommunikation, Kampagnen, Agentursteuerung. Ich habe Leitlinien für den Umgang mit Kritik geschrieben und ein kleines Team aufgebaut. Statt Reichweite um jeden Preis messe ich, wie viele Fragen wir direkt beantworten konnten.",
+    "Meine Kündigungsfrist beträgt drei Monate. Gern stelle ich mich persönlich vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Sina Karaca",
+    "Friedrich-Ebert-Straße 100",
+    "42103 Wuppertal"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a09",
+  "design": "modern",
+  "accent": 2,
+  "name": "Johanna Wirth",
+  "title": "Social Media (Kommunikationswissenschaft B.A.)",
+  "street": "Luisenstraße 60",
+  "city": "42103 Wuppertal",
+  "exp": [
+   [
+    "01/2024",
+    "",
+    "Werkstudentin Social Media",
+    "Turnverein Wuppertal 1861",
+    "Wuppertal",
+    "- Redaktionsplanung und Video-Produktion\n- Community-Management\n- Monatliche Auswertung für den Vorstand"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2022",
+    "09/2026",
+    "B.A. Kommunikationswissenschaft",
+    "Universität Duisburg-Essen",
+    "Essen",
+    ""
+   ],
+   [
+    "2013",
+    "2022",
+    "Abitur",
+    "Gymnasium Bayreuther Straße",
+    "Wuppertal",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Redaktionsplanung",
+    4
+   ],
+   [
+    "Videoschnitt mobil",
+    4
+   ],
+   [
+    "Community-Management",
+    4
+   ],
+   [
+    "Social-Media-Analyse",
+    3
+   ],
+   [
+    "Texten",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Turnen, Fotografie"
+ },
+ "do": [
+  "Links zu Arbeitsproben.",
+  "Erfolge mit Interaktion statt nur Followern.",
+  "Umgang mit Kritik zeigen."
+ ],
+ "dont": [
+  "Privatkanäle verlinken, die nicht passen.",
+  "Nur Trends aufzählen.",
+  "Rechtliches ignorieren."
+ ],
+ "questions": [
+  "Wie reagieren Sie auf einen Shitstorm?",
+  "Welche Formate würden Sie für uns testen?",
+  "Wie messen Sie Erfolg?",
+  "Wie planen Sie eine Woche Content?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich einen eigenen Kanal haben?",
+   "a": "Nein, aber Arbeitsproben sind wichtig. Wenn dein eigener Kanal zeigt, was du kannst, verlinke ihn – sonst lieber Beispiele aus Praktika oder Ehrenamt."
+  }
+ ],
+ "related": [
+  "marketing-manager",
+  "content-manager",
+  "grafikdesigner",
+  "praktikum-marketing"
+ ]
+}

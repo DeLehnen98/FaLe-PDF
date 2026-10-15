@@ -66,6 +66,28 @@ const NAMES = [
   ['NA', 'NV'], ['ERROR.TYPE', 'FEHLER.TYP'], ['TYPE', 'TYP'],
   ['PMT', 'RMZ'], ['FV', 'ZW'], ['PV', 'BW'], ['RATE', 'ZINS'], ['NPER', 'ZZR'], ['NPV', 'NBW'], ['IRR', 'IKV'], ['IPMT', 'ZINSZ'], ['PPMT', 'KAPZ'],
   ['EFFECT', 'EFFEKTIV'], ['NOMINAL', 'NOMINAL'], ['SLN', 'LIA'], ['XNPV', 'XKAPITALWERT'], ['XIRR', 'XINTZINSFUSS'], ['CUMIPMT', 'KUMZINSZ'], ['CUMPRINC', 'KUMKAPITAL'],
+  // lambda & array helpers
+  ['LAMBDA', 'LAMBDA'], ['MAP', 'MAP'], ['REDUCE', 'REDUCE'], ['SCAN', 'SCAN'], ['BYROW', 'NACHZEILE'], ['BYCOL', 'NACHSPALTE'], ['MAKEARRAY', 'MATRIXERSTELLEN'],
+  ['ISOMITTED', 'ISTAUSGELASSEN'], ['TEXTSPLIT', 'TEXTTEILEN'], ['VSTACK', 'VSTAPELN'], ['HSTACK', 'HSTAPELN'], ['TAKE', 'ÜBERNEHMEN', 'UEBERNEHMEN'], ['DROP', 'WEGLASSEN'],
+  ['CHOOSEROWS', 'ZEILENWAHL'], ['CHOOSECOLS', 'SPALTENWAHL'], ['TOCOL', 'ZUSPALTE'], ['TOROW', 'ZUZEILE'], ['WRAPROWS', 'ZEILENUMBRUCH'], ['WRAPCOLS', 'SPALTENUMBRUCH'], ['EXPAND', 'ERWEITERN'],
+  // statistics
+  ['FREQUENCY', 'HÄUFIGKEIT', 'HAEUFIGKEIT'], ['SLOPE', 'STEIGUNG'], ['INTERCEPT', 'ACHSENABSCHNITT'], ['RSQ', 'BESTIMMTHEITSMASS', 'BESTIMMTHEITSMAß'], ['FORECAST', 'SCHÄTZER', 'SCHAETZER'],
+  ['FORECAST.LINEAR', 'PROGNOSE.LINEAR'], ['TREND', 'TREND'], ['PERCENTRANK', 'QUANTILSRANG'], ['PERCENTRANK.INC', 'QUANTILSRANG.INKL'], ['PERCENTILE.EXC', 'QUANTIL.EXKL'],
+  ['QUARTILE.EXC', 'QUARTILE.EXKL'], ['TRIMMEAN', 'GESTUTZTMITTEL'], ['HARMEAN', 'HARMITTEL'], ['DEVSQ', 'SUMQUADABW'], ['KURT', 'KURT'], ['SKEW', 'SCHIEFE'],
+  ['STANDARDIZE', 'STANDARDISIERUNG'], ['COVARIANCE.P', 'KOVARIANZ.P'], ['COVARIANCE.S', 'KOVARIANZ.S'], ['PEARSON', 'PEARSON'], ['NORM.DIST', 'NORM.VERT'], ['NORM.INV', 'NORM.INV'],
+  ['NORM.S.DIST', 'NORM.S.VERT'], ['NORM.S.INV', 'NORM.S.INV'], ['BINOM.DIST', 'BINOM.VERT'], ['POISSON.DIST', 'POISSON.VERT'], ['EXPON.DIST', 'EXPON.VERT'], ['CONFIDENCE.NORM', 'KONFIDENZ.NORM'],
+  ['PERMUT', 'VARIATIONEN'], ['COUNTUNIQUE', 'ANZAHLEINDEUTIG'],
+  // math
+  ['SINH', 'SINHYP'], ['COSH', 'COSHYP'], ['TANH', 'TANHYP'], ['ASINH', 'ARCSINHYP'], ['ACOSH', 'ARCCOSHYP'], ['ATANH', 'ARCTANHYP'], ['COT', 'COT'], ['SQRTPI', 'WURZELPI'],
+  ['FACTDOUBLE', 'ZWEIFAKULTÄT', 'ZWEIFAKULTAET'], ['MULTINOMIAL', 'POLYNOMIAL'], ['ROMAN', 'RÖMISCH', 'ROEMISCH'], ['ARABIC', 'ARABISCH'], ['BASE', 'BASIS'], ['DECIMAL', 'DEZIMAL'],
+  ['DEC2BIN', 'DEZINBIN'], ['BIN2DEC', 'BININDEZ'], ['DEC2HEX', 'DEZINHEX'], ['HEX2DEC', 'HEXINDEZ'], ['DEC2OCT', 'DEZINOKT'], ['OCT2DEC', 'OKTINDEZ'],
+  ['MMULT', 'MMULT'], ['MDETERM', 'MDET'], ['MINVERSE', 'MINV'], ['MUNIT', 'MEINHEIT'], ['SUMX2MY2', 'SUMMEX2MY2'], ['SUMX2PY2', 'SUMMEX2PY2'], ['SUMXMY2', 'SUMMEXMY2'], ['AGGREGATE', 'AGGREGAT'],
+  // text & information
+  ['VALUETOTEXT', 'WERTZUTEXT'], ['ARRAYTOTEXT', 'MATRIXZUTEXT'], ['REGEXTEST', 'REGEXTEST'], ['REGEXEXTRACT', 'REGEXEXTRAKT', 'REGEXEXTRAHIEREN'], ['REGEXREPLACE', 'REGEXERSETZEN'],
+  ['HYPERLINK', 'HYPERLINK'], ['FORMULATEXT', 'FORMELTEXT'], ['SHEET', 'BLATT'], ['SHEETS', 'BLÄTTER', 'BLAETTER'], ['CELL', 'ZELLE'],
+  // financial & database
+  ['DB', 'GDA2'], ['DDB', 'GDA'], ['SYD', 'DIA'], ['MIRR', 'QIKV'], ['FVSCHEDULE', 'ZW2'], ['PDURATION', 'PDURATION'], ['RRI', 'ZSATZINVEST'], ['ISPMT', 'ISPMT'],
+  ['DSUM', 'DBSUMME'], ['DCOUNT', 'DBANZAHL'], ['DCOUNTA', 'DBANZAHL2'], ['DAVERAGE', 'DBMITTELWERT'], ['DMAX', 'DBMAX'], ['DMIN', 'DBMIN'], ['DGET', 'DBAUSZUG'], ['DPRODUCT', 'DBPRODUKT'],
 ];
 const DE_EN = {};
 const EN_DE = {};
@@ -85,8 +107,13 @@ const XLFN = {
   'WORKDAY.INTL': '_xlfn.WORKDAY.INTL', UNICHAR: '_xlfn.UNICHAR', UNICODE: '_xlfn.UNICODE', NUMBERVALUE: '_xlfn.NUMBERVALUE',
   TEXTBEFORE: '_xlfn.TEXTBEFORE', TEXTAFTER: '_xlfn.TEXTAFTER', 'ERROR.TYPE': 'ERROR.TYPE',
 };
+for (const n of ['LAMBDA', 'MAP', 'REDUCE', 'SCAN', 'BYROW', 'BYCOL', 'MAKEARRAY', 'ISOMITTED', 'TEXTSPLIT', 'VSTACK', 'HSTACK', 'TAKE', 'DROP', 'CHOOSEROWS', 'CHOOSECOLS',
+  'TOCOL', 'TOROW', 'WRAPROWS', 'WRAPCOLS', 'EXPAND', 'FORECAST.LINEAR', 'PERCENTRANK.INC', 'PERCENTILE.EXC', 'QUARTILE.EXC', 'COVARIANCE.P', 'COVARIANCE.S', 'NORM.DIST',
+  'NORM.INV', 'NORM.S.DIST', 'NORM.S.INV', 'BINOM.DIST', 'POISSON.DIST', 'EXPON.DIST', 'CONFIDENCE.NORM', 'COT', 'ARABIC', 'BASE', 'DECIMAL', 'MUNIT', 'AGGREGATE',
+  'VALUETOTEXT', 'ARRAYTOTEXT', 'REGEXTEST', 'REGEXEXTRACT', 'REGEXREPLACE', 'FORMULATEXT', 'SHEET', 'SHEETS', 'PDURATION', 'RRI']) XLFN[n] = '_xlfn.' + n;
 /** Functions whose result is an array that spills (for the xlsx writer: dynamic-array metadata). */
-export const ARRAY_FUNCTIONS = new Set(['FILTER', 'SORT', 'SORTBY', 'UNIQUE', 'SEQUENCE', 'RANDARRAY', 'TRANSPOSE']);
+export const ARRAY_FUNCTIONS = new Set(['FILTER', 'SORT', 'SORTBY', 'UNIQUE', 'SEQUENCE', 'RANDARRAY', 'TRANSPOSE', 'TEXTSPLIT', 'VSTACK', 'HSTACK', 'TAKE', 'DROP', 'CHOOSEROWS',
+  'CHOOSECOLS', 'TOCOL', 'TOROW', 'WRAPROWS', 'WRAPCOLS', 'EXPAND', 'MAP', 'SCAN', 'BYROW', 'BYCOL', 'MAKEARRAY', 'MMULT', 'MINVERSE', 'MUNIT', 'FREQUENCY']);
 /** Volatile functions are recalculated on every change. */
 export const VOLATILE = new Set(['RAND', 'RANDBETWEEN', 'RANDARRAY', 'NOW', 'TODAY', 'OFFSET', 'INDIRECT']);
 
@@ -313,9 +340,21 @@ export function toDisplay(canonical) {
 export function toXlsx(canonical) {
   try {
     let tokens = tokenize(canonical, 'en');
-    // LET parameters are written as _xlpm.name
+    // LET / LAMBDA parameters are written as _xlpm.name
     const params = new Set();
     tokens.forEach((t, i) => {
+      if (t.t === 'fn' && t.v === 'LAMBDA') {
+        let depth = 0;
+        for (let j = i + 1; j < tokens.length; j++) {
+          const x = tokens[j];
+          if (x.t === 'ws') continue;
+          if (x.t === '(') { depth++; continue; }
+          if (x.t === ')') { depth--; if (!depth) break; continue; }
+          const nx = tokens.slice(j + 1).find(y => y.t !== 'ws');
+          if (depth === 1 && x.t === 'name' && nx && nx.t === 'sep') params.add(x.v.toUpperCase());
+        }
+        return;
+      }
       if (t.t !== 'fn' || t.v !== 'LET') return;
       let depth = 0, argi = 0;
       for (let j = i + 1; j < tokens.length; j++) {
@@ -435,7 +474,7 @@ export function parse(tokens) {
       case 'name': return { k: 'name', v: t.v };
       case 'refErr': return { k: 'lit', v: ERR.REF };
       case '{': return arrayConst();
-      case '(': { const e = cmp(); expect(')'); return e; }
+      case '(': { const e = cmp(); expect(')'); return postfixCall(e); }
       case 'fn': {
         expect('(');
         const args = [];
@@ -448,10 +487,28 @@ export function parse(tokens) {
           if (x.t === ')') break;
           if (x.t !== 'sep') throw new SyntaxError('Ungültige Formel');
         }
-        return { k: 'fn', name: t.v, args };
+        return postfixCall({ k: 'fn', name: t.v, args });
       }
       default: throw new SyntaxError('Ungültige Formel');
     }
+  }
+  // LAMBDA(x, x+1)(5): call the result of a function with arguments
+  function postfixCall(node) {
+    while (peek() && peek().t === '(') {
+      next();
+      const args = [];
+      if (peek() && peek().t === ')') { next(); node = { k: 'call', f: node, args }; continue; }
+      for (;;) {
+        if (peek() && (peek().t === 'sep' || peek().t === ')')) args.push({ k: 'missing' });
+        else args.push(cmp());
+        const x = next();
+        if (!x) throw new SyntaxError('Klammer fehlt');
+        if (x.t === ')') break;
+        if (x.t !== 'sep') throw new SyntaxError('Ungültige Formel');
+      }
+      node = { k: 'call', f: node, args };
+    }
+    return node;
   }
   const ast = cmp();
   if (p < toks.length) throw new SyntaxError('Ungültige Formel');
@@ -482,6 +539,7 @@ export function precedents(ast) {
       case 'neg': case 'pct': case 'at': walk(n.a); break;
       case 'bin': walk(n.a); walk(n.b); break;
       case 'fn': if (VOLATILE.has(n.name)) volatile = true; n.args.forEach(walk); break;
+      case 'call': walk(n.f); n.args.forEach(walk); break;
     }
   };
   walk(ast);
@@ -497,6 +555,7 @@ export function evaluate(ast, ctx, { dynamic = false } = {}) {
   ctx.legacy = !dynamic; ctx.fnDepth = 0;
   try { v = ev(ast, ctx); } catch (e) { if (e instanceof RangeError) return ERR.CIRC; throw e; } finally { ctx.legacy = prevLegacy; ctx.fnDepth = prevDepth; }
   if (v === undefined) return null;
+  if (v instanceof Lambda) return ERR.CALC;
   if (v && v.range) {
     if (v.r1 === v.r2 && v.c1 === v.c2) return ctx.get(v.sheet, v.r1, v.c1);
     return dynamic ? rangeToArr(v, ctx) : implicitIntersect(v, ctx);
@@ -561,7 +620,7 @@ function ev(n, ctx) {
       return clampRange(s, n.r1, n.c1, n.r2, n.c2, ctx);
     }
     case 'name': {
-      if (ctx.locals) { const u = n.v.toUpperCase(); if (u in ctx.locals) return ctx.locals[u]; }
+      if (ctx.locals) { const u = n.v.toUpperCase(); if (u in ctx.locals) { const lv = ctx.locals[u]; return lv === OMITTED ? null : lv; } }
       const def = ctx.name ? ctx.name(n.v) : null;
       if (def == null) return ERR.NAME;
       if (nameDepth > 20) return ERR.CIRC;
@@ -580,6 +639,12 @@ function ev(n, ctx) {
     case 'at': { const v = ev(n.a, ctx); if (v && v.range) return implicitIntersect(v, ctx); if (v instanceof Arr) return v.rows[0][0]; return v; }
     case 'bin': return binop(n.op, legacy(ev(n.a, ctx), ctx), legacy(ev(n.b, ctx), ctx), ctx);
     case 'fn': { ctx.fnDepth = (ctx.fnDepth || 0) + 1; try { return callFn(n, ctx); } finally { ctx.fnDepth--; } }
+    case 'call': {
+      const f = ev(n.f, ctx);
+      if (!(f instanceof Lambda)) return isErr(f) ? f : ERR.VALUE;
+      ctx.fnDepth = (ctx.fnDepth || 0) + 1;
+      try { return invokeLambda(f, n.args.map(a => (a.k === 'missing' ? OMITTED : ev(a, ctx))), ctx); } finally { ctx.fnDepth--; }
+    }
   }
   return ERR.VALUE;
 }
@@ -1813,9 +1878,658 @@ def('XIRR', (A, ctx) => {
   return r === null ? ERR.NUM : tame(r);
 });
 
+// ---------------- LAMBDA & helper functions ----------------
+/** A LAMBDA value: parameters (upper case), body AST and the LET/LAMBDA variables visible where it was created. */
+class Lambda {
+  constructor(params, body, closure) { this.params = params; this.body = body; this.closure = closure; }
+}
+const OMITTED = Object.freeze({ omitted: true });
+let lambdaDepth = 0;
+function invokeLambda(lam, args, ctx) {
+  if (args.length > lam.params.length) return ERR.VALUE;
+  if (lambdaDepth > 400) return ERR.CALC;
+  const saved = ctx.locals;
+  const loc = Object.assign(Object.create(null), lam.closure || {});
+  lam.params.forEach((p, i) => { loc[p] = i < args.length ? args[i] : OMITTED; });
+  ctx.locals = loc;
+  lambdaDepth++;
+  try {
+    const v = ev(lam.body, ctx);
+    return v === OMITTED ? null : v;
+  } finally { lambdaDepth--; ctx.locals = saved; }
+}
+/** Evaluated argument → Lambda (or error). */
+function lambdaArg(A, i, ctx) {
+  if (!A[i] || A[i].k === 'missing') return ERR.VALUE;
+  const f = ev(A[i], ctx);
+  return f instanceof Lambda ? f : isErr(f) ? f : ERR.VALUE;
+}
+/** Result of a lambda call used as one array element: must be a single value. */
+function lamScalar(v, ctx) {
+  if (v instanceof Lambda) return ERR.CALC;
+  if (isMulti(v)) return ERR.CALC;
+  const s = scalar(v, ctx);
+  return s === null || s === undefined ? 0 : s;
+}
+const asArr = (v, ctx) => new Arr(grid(v, ctx).map(r => r.map(x => (x === undefined ? null : x))));
+def('LAMBDA', (A, ctx) => {
+  if (!A.length) return ERR.VALUE;
+  const params = [];
+  for (let i = 0; i < A.length - 1; i++) {
+    if (A[i].k !== 'name') return ERR.VALUE;
+    const p = A[i].v.toUpperCase();
+    if (params.includes(p)) return ERR.VALUE;
+    params.push(p);
+  }
+  return new Lambda(params, A[A.length - 1], ctx.locals ? Object.assign(Object.create(null), ctx.locals) : null);
+});
+def('ISOMITTED', (A, ctx) => {
+  if (A.length !== 1) return ERR.VALUE;
+  if (A[0].k === 'name' && ctx.locals) { const u = A[0].v.toUpperCase(); if (u in ctx.locals) return ctx.locals[u] === OMITTED; }
+  return A[0].k === 'missing';
+});
+def('MAP', (A, ctx) => {
+  if (A.length < 2) return ERR.VALUE;
+  const lam = lambdaArg(A, A.length - 1, ctx); if (isErr(lam)) return lam;
+  const gs = A.slice(0, -1).map(a => grid(ev(a, ctx), ctx));
+  const H = Math.max(...gs.map(g => g.length)), W = Math.max(...gs.map(g => (g[0] || []).length));
+  const rows = [];
+  for (let r = 0; r < H; r++) {
+    const row = [];
+    for (let c = 0; c < W; c++) {
+      const args = gs.map(g => { const gh = g.length, gw = (g[0] || []).length; const rr = gh === 1 ? 0 : r, cc = gw === 1 ? 0 : c; return rr < gh && cc < gw ? g[rr][cc] : ERR.NA; });
+      row.push(lamScalar(invokeLambda(lam, args, ctx), ctx));
+    }
+    rows.push(row);
+  }
+  return new Arr(rows);
+});
+def('REDUCE SCAN', (A, ctx, name) => {
+  if (A.length !== 3) return ERR.VALUE;
+  let acc = A[0].k === 'missing' ? 0 : scalar(ev(A[0], ctx), ctx);
+  const g = grid(ev(A[1], ctx), ctx);
+  const lam = lambdaArg(A, 2, ctx); if (isErr(lam)) return lam;
+  const out = g.map(row => row.map(x => { acc = invokeLambda(lam, [acc, x], ctx); if (name === 'SCAN') { acc = lamScalar(acc, ctx); } return acc; }));
+  if (name === 'SCAN') return new Arr(out);
+  return acc instanceof Lambda ? ERR.CALC : acc;
+});
+def('BYROW BYCOL', (A, ctx, name) => {
+  if (A.length !== 2) return ERR.VALUE;
+  const g = grid(ev(A[0], ctx), ctx);
+  const lam = lambdaArg(A, 1, ctx); if (isErr(lam)) return lam;
+  if (name === 'BYROW') return new Arr(g.map(row => [lamScalar(invokeLambda(lam, [new Arr([row])], ctx), ctx)]));
+  const W = (g[0] || []).length;
+  return new Arr([Array.from({ length: W }, (_, c) => lamScalar(invokeLambda(lam, [new Arr(g.map(r => [r[c]]))], ctx), ctx))]);
+});
+def('MAKEARRAY', (A, ctx) => {
+  if (A.length !== 3) return ERR.VALUE;
+  const R = Math.trunc(num(argN(A, 0, ctx))), C = Math.trunc(num(argN(A, 1, ctx)));
+  if (isErr(R) || isErr(C)) return ERR.VALUE;
+  if (R < 1 || C < 1 || R * C > 1e6) return ERR.VALUE;
+  const lam = lambdaArg(A, 2, ctx); if (isErr(lam)) return lam;
+  return new Arr(Array.from({ length: R }, (_, r) => Array.from({ length: C }, (_, c) => lamScalar(invokeLambda(lam, [r + 1, c + 1], ctx), ctx))));
+});
+
+// array shaping
+const NA_PAD = () => ERR.NA;
+function stack(A, ctx, vertical) {
+  if (!A.length) return ERR.VALUE;
+  const gs = A.map(a => grid(ev(a, ctx), ctx).map(r => r.map(x => (x === null || x === undefined ? 0 : x))));
+  if (vertical) {
+    const W = Math.max(...gs.map(g => (g[0] || []).length));
+    return new Arr(gs.flatMap(g => g.map(r => Array.from({ length: W }, (_, c) => (c < r.length ? r[c] : NA_PAD())))));
+  }
+  const H = Math.max(...gs.map(g => g.length));
+  return new Arr(Array.from({ length: H }, (_, r) => gs.flatMap(g => { const w = (g[0] || []).length; return r < g.length ? g[r] : new Array(w).fill(ERR.NA); })));
+}
+def('VSTACK', (A, ctx) => stack(A, ctx, true));
+def('HSTACK', (A, ctx) => stack(A, ctx, false));
+const clean0 = g => g.map(r => r.map(x => (x === null || x === undefined ? 0 : x)));
+def('TAKE DROP', (A, ctx, name) => {
+  if (A.length < 2 || A.length > 3) return ERR.VALUE;
+  const g = clean0(grid(ev(A[0], ctx), ctx));
+  const H = g.length, W = (g[0] || []).length;
+  const rn = has(A, 1) ? Math.trunc(num(argN(A, 1, ctx))) : null, cn = has(A, 2) ? Math.trunc(num(argN(A, 2, ctx))) : null;
+  if (isErr(rn) || isErr(cn)) return ERR.VALUE;
+  const pick = (len, n) => {
+    if (n === null) return [0, len];
+    if (name === 'TAKE') return n >= 0 ? [0, Math.min(n, len)] : [Math.max(0, len + n), len];
+    return n >= 0 ? [Math.min(n, len), len] : [0, Math.max(0, len + n)];
+  };
+  const [r1, r2] = pick(H, rn), [c1, c2] = pick(W, cn);
+  if (r2 <= r1 || c2 <= c1) return ERR.CALC;
+  return new Arr(g.slice(r1, r2).map(r => r.slice(c1, c2)));
+});
+def('CHOOSEROWS CHOOSECOLS', (A, ctx, name) => {
+  if (A.length < 2) return ERR.VALUE;
+  let g = clean0(grid(ev(A[0], ctx), ctx));
+  const byCol = name === 'CHOOSECOLS';
+  if (byCol) g = g[0].map((_, c) => g.map(r => r[c]));
+  const idx = [];
+  for (const a of A.slice(1)) for (const v of flatVals(ev(a, ctx), ctx)) { const n = Math.trunc(num(v)); if (isErr(n)) return n; idx.push(n); }
+  const out = [];
+  for (const n of idx) { if (n === 0 || Math.abs(n) > g.length) return ERR.VALUE; out.push(g[n > 0 ? n - 1 : g.length + n]); }
+  return new Arr(byCol ? out[0].map((_, r) => out.map(col => col[r])) : out);
+});
+def('TOCOL TOROW', (A, ctx, name) => {
+  const g = grid(ev(A[0], ctx), ctx);
+  const ignore = has(A, 1) ? Math.trunc(num(argN(A, 1, ctx))) : 0, byCol = has(A, 2) ? bool(argN(A, 2, ctx)) === true : false;
+  if (isErr(ignore) || ignore < 0 || ignore > 3) return ERR.VALUE;
+  const seq = byCol ? (g[0] || []).flatMap((_, c) => g.map(r => r[c])) : g.flat();
+  const keep = seq.filter(v => !((ignore & 1) && (v === null || v === undefined)) && !((ignore & 2) && isErr(v))).map(v => (v === null || v === undefined ? 0 : v));
+  if (!keep.length) return ERR.CALC;
+  return new Arr(name === 'TOCOL' ? keep.map(v => [v]) : [keep]);
+});
+def('WRAPROWS WRAPCOLS', (A, ctx, name) => {
+  const v = flatVals(ev(A[0], ctx), ctx).map(x => (x === null || x === undefined ? 0 : x));
+  const n = Math.trunc(num(argN(A, 1, ctx))); if (isErr(n)) return n;
+  if (n < 1) return ERR.NUM;
+  const pad = has(A, 2) ? argN(A, 2, ctx) : ERR.NA;
+  const chunks = [];
+  for (let i = 0; i < v.length; i += n) { const ch = v.slice(i, i + n); while (ch.length < n) ch.push(pad); chunks.push(ch); }
+  if (!chunks.length) return ERR.CALC;
+  return new Arr(name === 'WRAPROWS' ? chunks : chunks[0].map((_, r) => chunks.map(c => c[r])));
+});
+def('EXPAND', (A, ctx) => {
+  const g = clean0(grid(ev(A[0], ctx), ctx));
+  const H = g.length, W = (g[0] || []).length;
+  const R = has(A, 1) ? Math.trunc(num(argN(A, 1, ctx))) : H, C = has(A, 2) ? Math.trunc(num(argN(A, 2, ctx))) : W;
+  if (isErr(R) || isErr(C)) return ERR.VALUE;
+  if (R < H || C < W) return ERR.VALUE;
+  const pad = has(A, 3) ? argN(A, 3, ctx) : ERR.NA;
+  return new Arr(Array.from({ length: R }, (_, r) => Array.from({ length: C }, (_, c) => (r < H && c < W ? g[r][c] : pad))));
+});
+def('TEXTSPLIT', (A, ctx) => {
+  if (A.length < 2 || A.length > 6) return ERR.VALUE;
+  const text = argN(A, 0, ctx); if (isErr(text)) return text;
+  const delims = v => (v === null ? [] : flatVals(v, ctx).map(str).filter(s => s !== ''));
+  const cd = has(A, 1) ? delims(ev(A[1], ctx)) : [], rd = has(A, 2) ? delims(ev(A[2], ctx)) : [];
+  if (!cd.length && !rd.length) return ERR.VALUE;
+  const ignoreEmpty = has(A, 3) ? bool(argN(A, 3, ctx)) === true : false;
+  const ci = has(A, 4) ? num(argN(A, 4, ctx)) === 1 : false;
+  const pad = has(A, 5) ? argN(A, 5, ctx) : ERR.NA;
+  const re = list => (list.length ? new RegExp(list.sort((a, b) => b.length - a.length).map(d => d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), ci ? 'i' : '') : null);
+  const rre = re(rd), cre = re(cd);
+  let lines = rre ? str(text).split(rre) : [str(text)];
+  if (ignoreEmpty) lines = lines.filter(l => l !== '');
+  const rows = lines.map(l => { let p = cre ? l.split(cre) : [l]; if (ignoreEmpty) p = p.filter(x => x !== ''); return p; }).filter(r => r.length);
+  if (!rows.length) return ERR.CALC;
+  const W = Math.max(...rows.map(r => r.length));
+  return new Arr(rows.map(r => Array.from({ length: W }, (_, c) => (c < r.length ? r[c] : pad))));
+});
+
+// statistics
+/** Numbers of a value (range/array/scalar): errors propagate, text and blanks skipped. */
+function numsOf(v, ctx) {
+  const out = [];
+  for (const x of flatVals(v, ctx)) { if (isErr(x)) return x; if (typeof x === 'number') out.push(x); }
+  return out;
+}
+/** Paired numbers (y, x) of two equally sized ranges: pairs where both are numbers. */
+function pairs(A, ctx, iy = 0, ix = 1) {
+  const a = flatVals(ev(A[iy], ctx), ctx), b = flatVals(ev(A[ix], ctx), ctx);
+  if (a.length !== b.length) return ERR.NA;
+  const ys = [], xs = [];
+  for (let i = 0; i < a.length; i++) { if (isErr(a[i])) return a[i]; if (isErr(b[i])) return b[i]; if (typeof a[i] === 'number' && typeof b[i] === 'number') { ys.push(a[i]); xs.push(b[i]); } }
+  return { ys, xs };
+}
+function linreg(ys, xs) {
+  const n = xs.length;
+  const mx = xs.reduce((p, q) => p + q, 0) / n, my = ys.reduce((p, q) => p + q, 0) / n;
+  let sxy = 0, sxx = 0, syy = 0;
+  for (let i = 0; i < n; i++) { sxy += (xs[i] - mx) * (ys[i] - my); sxx += (xs[i] - mx) ** 2; syy += (ys[i] - my) ** 2; }
+  return { n, mx, my, sxy, sxx, syy, slope: sxx ? sxy / sxx : NaN, icpt: sxx ? my - (sxy / sxx) * mx : NaN };
+}
+def('SLOPE INTERCEPT RSQ PEARSON', (A, ctx, name) => {
+  if (A.length !== 2) return ERR.VALUE;
+  const p = pairs(A, ctx); if (isErr(p)) return p;
+  if (p.xs.length < (name === 'PEARSON' || name === 'RSQ' ? 2 : 1)) return ERR.DIV0;
+  const L = linreg(p.ys, p.xs);
+  if (!L.sxx) return ERR.DIV0;
+  if (name === 'SLOPE') return tame(L.slope);
+  if (name === 'INTERCEPT') return tame(L.icpt);
+  if (!L.syy) return ERR.DIV0;
+  const r = L.sxy / Math.sqrt(L.sxx * L.syy);
+  return tame(name === 'RSQ' ? r * r : r);
+});
+def('FORECAST FORECAST.LINEAR', (A, ctx) => lift(A.slice(0, 1), ctx, x => {
+  const xv = num(x); if (isErr(xv)) return xv;
+  const p = pairs(A, ctx, 1, 2); if (isErr(p)) return p;
+  if (!p.xs.length) return ERR.DIV0;
+  const L = linreg(p.ys, p.xs); if (!L.sxx) return ERR.DIV0;
+  return tame(L.icpt + L.slope * xv);
+}, { min: 1, max: 1 }));
+def('TREND', (A, ctx) => {
+  const ys = flatVals(ev(A[0], ctx), ctx);
+  const xsV = has(A, 1) ? ev(A[1], ctx) : null;
+  const xs = xsV ? flatVals(xsV, ctx) : ys.map((_, i) => i + 1);
+  if (xs.length !== ys.length) return ERR.REF;
+  if ([...xs, ...ys].some(v => typeof v !== 'number')) return ERR.VALUE;
+  const L = linreg(ys, xs);
+  const konst = has(A, 3) ? bool(argN(A, 3, ctx)) !== false : true;
+  let slope = L.slope, icpt = L.icpt;
+  if (!konst) { const sxy = xs.reduce((s, x, i) => s + x * ys[i], 0), sxx = xs.reduce((s, x) => s + x * x, 0); slope = sxx ? sxy / sxx : NaN; icpt = 0; }
+  if (!Number.isFinite(slope)) return ERR.DIV0;
+  const nv = has(A, 2) ? ev(A[2], ctx) : (xsV || new Arr(xs.map(x => [x])));
+  const g = grid(nv, ctx);
+  const res = g.map(r => r.map(x => (typeof x === 'number' ? tame(icpt + slope * x) : ERR.VALUE)));
+  return res.length === 1 && res[0].length === 1 ? res[0][0] : new Arr(res);
+});
+def('FREQUENCY', (A, ctx) => {
+  const data = numsOf(ev(A[0], ctx), ctx); if (isErr(data)) return data;
+  const bins = numsOf(ev(A[1], ctx), ctx); if (isErr(bins)) return bins;
+  const order = bins.map((b, i) => i).sort((a, b) => bins[a] - bins[b]);
+  const counts = new Array(bins.length + 1).fill(0);
+  for (const x of data) { let k = order.find(i => x <= bins[i]); counts[k === undefined ? bins.length : k]++; }
+  return new Arr(counts.map(c => [c]));
+});
+def('PERCENTRANK PERCENTRANK.INC', (A, ctx) => {
+  const xs = numsOf(ev(A[0], ctx), ctx); if (isErr(xs)) return xs;
+  const x = num(argN(A, 1, ctx)); if (isErr(x)) return x;
+  const sig = has(A, 2) ? Math.trunc(num(argN(A, 2, ctx))) : 3; if (isErr(sig)) return sig;
+  if (!xs.length || sig < 1) return ERR.NUM;
+  const s = [...xs].sort((a, b) => a - b), n = s.length;
+  if (x < s[0] || x > s[n - 1]) return ERR.NA;
+  if (n === 1) return 1;
+  let rank;
+  const lo = s.filter(v => v < x).length;
+  if (s.includes(x)) rank = lo / (n - 1);
+  else { const a = s[lo - 1], b = s[lo]; rank = (lo - 1 + (x - a) / (b - a)) / (n - 1); }
+  const f = Math.pow(10, sig);
+  return Math.floor(+(rank * f).toPrecision(12)) / f;
+});
+function percentileExc(xs, k) {
+  const s = [...xs].sort((a, b) => a - b), n = s.length;
+  const pos = k * (n + 1);
+  if (!n || k <= 0 || k >= 1 || pos < 1 || pos > n) return ERR.NUM;
+  const lo = Math.floor(pos);
+  return tame(lo >= n ? s[n - 1] : s[lo - 1] + (s[lo] - s[lo - 1]) * (pos - lo));
+}
+def('PERCENTILE.EXC', (A, ctx) => { const xs = numsOf(ev(A[0], ctx), ctx); if (isErr(xs)) return xs; const k = num(argN(A, 1, ctx)); if (isErr(k)) return k; return percentileExc(xs, k); });
+def('QUARTILE.EXC', (A, ctx) => { const xs = numsOf(ev(A[0], ctx), ctx); if (isErr(xs)) return xs; const q = Math.trunc(num(argN(A, 1, ctx))); if (isErr(q)) return q; if (q < 1 || q > 3) return ERR.NUM; return percentileExc(xs, q / 4); });
+def('TRIMMEAN', (A, ctx) => {
+  const xs = numsOf(ev(A[0], ctx), ctx); if (isErr(xs)) return xs;
+  const p = num(argN(A, 1, ctx)); if (isErr(p)) return p;
+  if (p < 0 || p >= 1 || !xs.length) return ERR.NUM;
+  const k = Math.floor(xs.length * p / 2);
+  const s = [...xs].sort((a, b) => a - b).slice(k, xs.length - k);
+  return tame(s.reduce((a, b) => a + b, 0) / s.length);
+});
+def('HARMEAN', (A, ctx) => { const xs = numbersOf(A, ctx); if (isErr(xs)) return xs; if (!xs.length || xs.some(x => x <= 0)) return ERR.NUM; return tame(xs.length / xs.reduce((a, b) => a + 1 / b, 0)); });
+def('DEVSQ', (A, ctx) => { const xs = numbersOf(A, ctx); if (isErr(xs)) return xs; if (!xs.length) return ERR.NUM; return tame(stats(xs).ss); });
+def('KURT', (A, ctx) => {
+  const xs = numbersOf(A, ctx); if (isErr(xs)) return xs;
+  const n = xs.length; if (n < 4) return ERR.DIV0;
+  const { mean, ss } = stats(xs); const sd = Math.sqrt(ss / (n - 1)); if (!sd) return ERR.DIV0;
+  const s4 = xs.reduce((a, x) => a + ((x - mean) / sd) ** 4, 0);
+  return tame(n * (n + 1) / ((n - 1) * (n - 2) * (n - 3)) * s4 - 3 * (n - 1) ** 2 / ((n - 2) * (n - 3)));
+});
+def('SKEW', (A, ctx) => {
+  const xs = numbersOf(A, ctx); if (isErr(xs)) return xs;
+  const n = xs.length; if (n < 3) return ERR.DIV0;
+  const { mean, ss } = stats(xs); const sd = Math.sqrt(ss / (n - 1)); if (!sd) return ERR.DIV0;
+  return tame(n / ((n - 1) * (n - 2)) * xs.reduce((a, x) => a + ((x - mean) / sd) ** 3, 0));
+});
+def('STANDARDIZE', (A, ctx) => lift(A, ctx, (x, m, s) => { const a = num(x), b = num(m), c = num(s); const e = firstErr(a, b, c); if (e) return e; if (c <= 0) return ERR.NUM; return tame((a - b) / c); }, { min: 3, max: 3 }));
+def('COVARIANCE.P COVARIANCE.S', (A, ctx, name) => {
+  const p = pairs(A, ctx); if (isErr(p)) return p;
+  const n = p.xs.length; if (n < (name === 'COVARIANCE.S' ? 2 : 1)) return ERR.DIV0;
+  const L = linreg(p.ys, p.xs);
+  return tame(L.sxy / (name === 'COVARIANCE.S' ? n - 1 : n));
+});
+// normal distribution
+function erf(x) {
+  // high-precision erf via series / continued fraction (|error| < 1e-14)
+  const ax = Math.abs(x);
+  if (ax < 2.5) { let sum = x, term = x; const x2 = x * x; for (let n = 1; n < 200; n++) { term *= -x2 / n; const t = term / (2 * n + 1); sum += t; if (Math.abs(t) < 1e-17) break; } return 2 / Math.sqrt(Math.PI) * sum; }
+  return Math.sign(x) * (1 - erfcCf(ax));
+}
+function erfcCf(x) {
+  // continued fraction for erfc (x > 0)
+  let f = 0;
+  for (let n = 60; n >= 1; n--) f = n / 2 / (x + f);
+  return Math.exp(-x * x) / Math.sqrt(Math.PI) / (x + f);
+}
+const normCdf = z => (z < -2.5 ? erfcCf(-z / Math.SQRT2) / 2 : z > 2.5 ? 1 - erfcCf(z / Math.SQRT2) / 2 : 0.5 * (1 + erf(z / Math.SQRT2)));
+const normPdf = z => Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+function normInv(p) {
+  // Acklam's rational approximation + one Halley refinement step
+  const a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+  const b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+  const c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+  const d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+  const pl = 0.02425;
+  let x;
+  if (p < pl) { const q = Math.sqrt(-2 * Math.log(p)); x = (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1); }
+  else if (p <= 1 - pl) { const q = p - 0.5, r = q * q; x = (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1); }
+  else { const q = Math.sqrt(-2 * Math.log(1 - p)); x = -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1); }
+  for (let i = 0; i < 2; i++) { const e = normCdf(x) - p; const u = e * Math.sqrt(2 * Math.PI) * Math.exp(x * x / 2); x = x - u / (1 + x * u / 2); }
+  return x;
+}
+def('NORM.DIST', (A, ctx) => lift(A, ctx, (x, m, s, cum) => {
+  const a = num(x), b = num(m), c = num(s), k = bool(cum); const e = firstErr(a, b, c, k); if (e) return e;
+  if (c <= 0) return ERR.NUM;
+  const z = (a - b) / c;
+  return tame(k ? normCdf(z) : normPdf(z) / c);
+}, { min: 4, max: 4 }));
+def('NORM.S.DIST', (A, ctx) => lift(A, ctx, (x, cum) => { const z = num(x), k = cum === undefined ? true : bool(cum); const e = firstErr(z, k); if (e) return e; return tame(k ? normCdf(z) : normPdf(z)); }, { min: 1, max: 2 }));
+def('NORM.INV', (A, ctx) => lift(A, ctx, (p, m, s) => { const a = num(p), b = num(m), c = num(s); const e = firstErr(a, b, c); if (e) return e; if (a <= 0 || a >= 1 || c <= 0) return ERR.NUM; return tame(b + c * normInv(a)); }, { min: 3, max: 3 }));
+def('NORM.S.INV', (A, ctx) => lift(A, ctx, p => { const a = num(p); if (isErr(a)) return a; if (a <= 0 || a >= 1) return ERR.NUM; return tame(normInv(a)); }, { min: 1, max: 1 }));
+def('CONFIDENCE.NORM', (A, ctx) => lift(A, ctx, (al, s, n) => { const a = num(al), b = num(s), c = Math.trunc(num(n)); const e = firstErr(a, b, c); if (e) return e; if (a <= 0 || a >= 1 || b <= 0 || c < 1) return ERR.NUM; return tame(normInv(1 - a / 2) * b / Math.sqrt(c)); }, { min: 3, max: 3 }));
+const lnFact = n => { let s = 0; for (let i = 2; i <= n; i++) s += Math.log(i); return s; };
+def('BINOM.DIST', (A, ctx) => lift(A, ctx, (k0, n0, p0, cum) => {
+  const k = Math.trunc(num(k0)), n = Math.trunc(num(n0)), p = num(p0), c = bool(cum); const e = firstErr(k, n, p, c); if (e) return e;
+  if (k < 0 || k > n || p < 0 || p > 1) return ERR.NUM;
+  const pmf = i => (p === 0 ? (i === 0 ? 1 : 0) : p === 1 ? (i === n ? 1 : 0) : Math.exp(lnFact(n) - lnFact(i) - lnFact(n - i) + i * Math.log(p) + (n - i) * Math.log(1 - p)));
+  if (!c) return tame(pmf(k));
+  let s = 0; for (let i = 0; i <= k; i++) s += pmf(i);
+  return tame(Math.min(1, s));
+}, { min: 4, max: 4 }));
+def('POISSON.DIST', (A, ctx) => lift(A, ctx, (x0, m0, cum) => {
+  const x = Math.trunc(num(x0)), m = num(m0), c = bool(cum); const e = firstErr(x, m, c); if (e) return e;
+  if (x < 0 || m < 0) return ERR.NUM;
+  if (m === 0) return c || x === 0 ? 1 : 0;
+  const pmf = i => Math.exp(-m + i * Math.log(m) - lnFact(i));
+  if (!c) return tame(pmf(x));
+  let s = 0; for (let i = 0; i <= x; i++) s += pmf(i);
+  return tame(Math.min(1, s));
+}, { min: 3, max: 3 }));
+def('EXPON.DIST', (A, ctx) => lift(A, ctx, (x0, l0, cum) => { const x = num(x0), l = num(l0), c = bool(cum); const e = firstErr(x, l, c); if (e) return e; if (x < 0 || l <= 0) return ERR.NUM; return tame(c ? 1 - Math.exp(-l * x) : l * Math.exp(-l * x)); }, { min: 3, max: 3 }));
+def('PERMUT', (A, ctx) => lift(A, ctx, (a, b) => { const n = Math.trunc(num(a)), k = Math.trunc(num(b)); const e = firstErr(n, k); if (e) return e; if (n < 0 || k < 0 || k > n) return ERR.NUM; let r = 1; for (let i = 0; i < k; i++) r *= n - i; return Number.isFinite(r) ? r : ERR.NUM; }, { min: 2, max: 2 }));
+def('COUNTUNIQUE', (A, ctx) => { const seen = new Set(); for (const { v } of values(A, ctx)) if (v !== null && v !== undefined && v !== '') seen.add(keyOf(v)); return seen.size; });
+
+// math
+def('SINH', N1(x => tame(Math.sinh(x)))); def('COSH', N1(x => tame(Math.cosh(x)))); def('TANH', N1(x => tame(Math.tanh(x))));
+def('ASINH', N1(x => tame(Math.asinh(x)))); def('ACOSH', N1(x => (x < 1 ? ERR.NUM : tame(Math.acosh(x))))); def('ATANH', N1(x => (Math.abs(x) >= 1 ? ERR.NUM : tame(Math.atanh(x)))));
+def('COT', N1(x => (x === 0 ? ERR.DIV0 : tame(1 / Math.tan(x)))));
+def('SQRTPI', N1(x => (x < 0 ? ERR.NUM : tame(Math.sqrt(x * Math.PI)))));
+def('FACTDOUBLE', N1(x => { if (x < 0) return ERR.NUM; let r = 1; for (let i = Math.floor(x); i > 1; i -= 2) r *= i; return Number.isFinite(r) ? r : ERR.NUM; }));
+def('MULTINOMIAL', (A, ctx) => {
+  const xs = numbersOf(A, ctx); if (isErr(xs)) return xs;
+  if (xs.some(x => x < 0)) return ERR.NUM;
+  const ks = xs.map(Math.floor); const total = ks.reduce((a, b) => a + b, 0);
+  return Math.round(Math.exp(lnFact(total) - ks.reduce((a, k) => a + lnFact(k), 0)));
+});
+const ROMAN = [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+def('ROMAN', (A, ctx) => lift(A, ctx, x => { let n = Math.trunc(num(x)); if (isErr(n)) return n; if (n < 0 || n > 3999) return ERR.VALUE; let s = ''; for (const [v, r] of ROMAN) while (n >= v) { s += r; n -= v; } return s; }, { min: 1, max: 2 }));
+def('ARABIC', T1(s => {
+  const t = s.trim().toUpperCase(); if (!t) return 0;
+  const neg = t.startsWith('-'); const u = neg ? t.slice(1) : t;
+  if (!/^[MDCLXVI]+$/.test(u)) return ERR.VALUE;
+  const val = { M: 1000, D: 500, C: 100, L: 50, X: 10, V: 5, I: 1 };
+  let n = 0; for (let i = 0; i < u.length; i++) { const a = val[u[i]], b = val[u[i + 1]] || 0; n += a < b ? -a : a; }
+  return neg ? -n : n;
+}));
+def('BASE', (A, ctx) => lift(A, ctx, (x, r, l) => {
+  const n = Math.trunc(num(x)), rad = Math.trunc(num(r)), len = l === undefined ? 0 : Math.trunc(num(l)); const e = firstErr(n, rad, len); if (e) return e;
+  if (n < 0 || n >= 2 ** 53 || rad < 2 || rad > 36 || len < 0 || len > 255) return ERR.NUM;
+  return n.toString(rad).toUpperCase().padStart(len, '0');
+}, { min: 2, max: 3 }));
+def('DECIMAL', (A, ctx) => lift(A, ctx, (t, r) => {
+  const s = str(t).trim(), rad = Math.trunc(num(r)); if (isErr(rad)) return rad;
+  if (rad < 2 || rad > 36 || s.length > 255) return ERR.NUM;
+  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.slice(0, rad);
+  let n = 0; for (const ch of s.toUpperCase()) { const d = digits.indexOf(ch); if (d < 0) return ERR.NUM; n = n * rad + d; }
+  return n;
+}, { min: 2, max: 2 }));
+// engineering base conversions (10 digit two's complement like spreadsheet apps)
+const BASES = { BIN: [2, 10], OCT: [8, 10], HEX: [16, 10] };
+function fromBase(s, radix) {
+  const t = str(s).trim().toUpperCase();
+  if (!t) return 0;
+  if (t.length > 10 || !new RegExp(`^[${'0123456789ABCDEF'.slice(0, radix)}]+$`).test(t)) return ERR.NUM;
+  let n = parseInt(t, radix);
+  const full = radix ** 10;
+  if (t.length === 10 && n >= full / 2) n -= full;
+  return n;
+}
+function toBase(n, radix, places) {
+  const full = radix ** 10;
+  const lim = { 2: 512, 8: 536870912, 16: 549755813888 }[radix];
+  n = Math.trunc(n);
+  if (n < -lim || n > lim - 1) return ERR.NUM;
+  if (n < 0) return (full + n).toString(radix).toUpperCase();
+  const s = n.toString(radix).toUpperCase();
+  if (places !== undefined && places !== null) { const p = Math.trunc(places); if (p < s.length || p > 10) return ERR.NUM; return s.padStart(p, '0'); }
+  return s;
+}
+for (const [k, [radix]] of Object.entries(BASES)) {
+  def(`${k}2DEC`, (A, ctx) => lift(A, ctx, s => (isErr(s) ? s : fromBase(typeof s === 'number' ? String(s) : s, radix)), { min: 1, max: 1 }));
+  def(`DEC2${k}`, (A, ctx) => lift(A, ctx, (x, p) => { const n = num(x), pl = p === undefined ? undefined : num(p); const e = firstErr(n, pl); if (e) return e; return toBase(n, radix, pl); }, { min: 1, max: 2 }));
+}
+// matrices
+function numMatrix(v, ctx) {
+  const g = grid(v, ctx);
+  for (const r of g) for (const x of r) { if (isErr(x)) return x; if (typeof x !== 'number') return ERR.VALUE; }
+  return g;
+}
+def('MMULT', (A, ctx) => {
+  if (A.length !== 2) return ERR.VALUE;
+  const a = numMatrix(ev(A[0], ctx), ctx), b = numMatrix(ev(A[1], ctx), ctx);
+  if (isErr(a)) return a; if (isErr(b)) return b;
+  if ((a[0] || []).length !== b.length) return ERR.VALUE;
+  return new Arr(a.map(r => b[0].map((_, j) => tame(r.reduce((s, x, k) => s + x * b[k][j], 0)))));
+});
+function luDet(m) {
+  const n = m.length, a = m.map(r => r.slice());
+  let det = 1;
+  for (let i = 0; i < n; i++) {
+    let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(a[r][i]) > Math.abs(a[p][i])) p = r;
+    if (!a[p][i]) return 0;
+    if (p !== i) { [a[p], a[i]] = [a[i], a[p]]; det = -det; }
+    det *= a[i][i];
+    for (let r = i + 1; r < n; r++) { const f = a[r][i] / a[i][i]; for (let c = i; c < n; c++) a[r][c] -= f * a[i][c]; }
+  }
+  return det;
+}
+def('MDETERM', (A, ctx) => { const m = numMatrix(ev(A[0], ctx), ctx); if (isErr(m)) return m; if (m.length !== (m[0] || []).length) return ERR.VALUE; return tame(luDet(m)); });
+def('MINVERSE', (A, ctx) => {
+  const m = numMatrix(ev(A[0], ctx), ctx); if (isErr(m)) return m;
+  const n = m.length; if (n !== (m[0] || []).length) return ERR.VALUE;
+  const a = m.map((r, i) => [...r, ...Array.from({ length: n }, (_, j) => (i === j ? 1 : 0))]);
+  for (let i = 0; i < n; i++) {
+    let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(a[r][i]) > Math.abs(a[p][i])) p = r;
+    if (Math.abs(a[p][i]) < 1e-15) return ERR.NUM;
+    [a[p], a[i]] = [a[i], a[p]];
+    const d = a[i][i]; for (let c = 0; c < 2 * n; c++) a[i][c] /= d;
+    for (let r = 0; r < n; r++) if (r !== i) { const f = a[r][i]; if (f) for (let c = 0; c < 2 * n; c++) a[r][c] -= f * a[i][c]; }
+  }
+  return new Arr(a.map(r => r.slice(n).map(x => tame(x) || 0)));
+});
+def('MUNIT', (A, ctx) => { const n = Math.trunc(num(argN(A, 0, ctx))); if (isErr(n)) return n; if (n < 1 || n > 1000) return ERR.VALUE; return new Arr(Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? 1 : 0)))); });
+def('SUMX2MY2 SUMX2PY2 SUMXMY2', (A, ctx, name) => {
+  if (A.length !== 2) return ERR.VALUE;
+  const a = flatVals(ev(A[0], ctx), ctx), b = flatVals(ev(A[1], ctx), ctx);
+  if (a.length !== b.length) return ERR.NA;
+  let s = 0;
+  for (let i = 0; i < a.length; i++) {
+    if (isErr(a[i])) return a[i]; if (isErr(b[i])) return b[i];
+    if (typeof a[i] !== 'number' || typeof b[i] !== 'number') continue;
+    s += name === 'SUMX2MY2' ? a[i] ** 2 - b[i] ** 2 : name === 'SUMX2PY2' ? a[i] ** 2 + b[i] ** 2 : (a[i] - b[i]) ** 2;
+  }
+  return tame(s);
+});
+const AGG_FN = { 1: 'AVERAGE', 2: 'COUNT', 3: 'COUNTA', 4: 'MAX', 5: 'MIN', 6: 'PRODUCT', 7: 'STDEV.S', 8: 'STDEV.P', 9: 'SUM', 10: 'VAR.S', 11: 'VAR.P', 12: 'MEDIAN', 13: 'MODE.SNGL', 14: 'LARGE', 15: 'SMALL', 16: 'PERCENTILE.INC', 17: 'QUARTILE.INC', 18: 'PERCENTILE.EXC', 19: 'QUARTILE.EXC' };
+def('AGGREGATE', (A, ctx) => {
+  if (A.length < 3) return ERR.VALUE;
+  const code = Math.trunc(num(argN(A, 0, ctx))), opt = Math.trunc(num(argN(A, 1, ctx)));
+  if (isErr(code) || isErr(opt)) return ERR.VALUE;
+  const fn = AGG_FN[code]; if (!fn || opt < 0 || opt > 7) return ERR.VALUE;
+  const skipHidden = opt === 1 || opt === 3 || opt === 5 || opt === 7, skipErr = opt === 2 || opt === 3 || opt === 6 || opt === 7, skipNested = opt <= 3;
+  const refs = code >= 14 ? [A[2]] : A.slice(2);
+  const vals = [];
+  for (const a of refs) {
+    const v = ev(a, ctx);
+    if (v && v.range) {
+      for (let r = v.r1; r <= v.r2; r++) {
+        if (skipHidden && ctx.rowHidden && ctx.rowHidden(v.sheet, r)) continue;
+        for (let c = v.c1; c <= v.c2; c++) {
+          const f = skipNested && ctx.formulaOf && ctx.formulaOf(v.sheet, r, c);
+          if (f && /\b(SUBTOTAL|AGGREGATE)\(/i.test(f)) continue;
+          const x = ctx.get(v.sheet, r, c);
+          if (skipErr && isErr(x)) continue;
+          vals.push(x);
+        }
+      }
+    } else for (const x of flatVals(v, ctx)) { if (skipErr && isErr(x)) continue; vals.push(x); }
+  }
+  const arg = { k: 'lit', v: new Arr([vals.length ? vals : [null]]) };
+  if (code >= 14) { if (!has(A, 3)) return ERR.VALUE; return F[fn]([arg, A[3]], ctx, fn); }
+  return F[fn]([arg], ctx, fn);
+});
+
+// text & information
+const valueText = (v, strict) => (typeof v === 'string' ? (strict ? '"' + v.replace(/"/g, '""') + '"' : v) : str(v));
+def('VALUETOTEXT', (A, ctx) => lift(A, ctx, (v, f) => { const m = f === undefined ? 0 : num(f); if (isErr(m)) return m; if (m !== 0 && m !== 1) return ERR.VALUE; return valueText(v, m === 1); }, { min: 1, max: 2, liftIdx: [0] }));
+def('ARRAYTOTEXT', (A, ctx) => {
+  const g = grid(ev(A[0], ctx), ctx);
+  const m = has(A, 1) ? num(argN(A, 1, ctx)) : 0; if (isErr(m)) return m;
+  if (m !== 0 && m !== 1) return ERR.VALUE;
+  if (m === 0) return g.flat().map(v => valueText(v, false)).join('; ');
+  return '{' + g.map(r => r.map(v => valueText(v, true)).join('.')).join(';') + '}';
+});
+function userRegex(pat, flags) {
+  const p = str(pat);
+  if (p.length > 1000) return ERR.VALUE;
+  // nested quantifiers like (a+)+ or (\w*)* can take exponential time (files may come from others) → refused
+  if (/\((?:[^()\\]|\\.)*[+*}]\)\s*[+*{]/.test(p)) return ERR.VALUE;
+  try { return new RegExp(p, flags + 'u'); } catch { try { return new RegExp(p, flags); } catch { return ERR.VALUE; } }
+}
+def('REGEXTEST', (A, ctx) => lift(A, ctx, (t, p, cs) => {
+  if (isErr(t)) return t; const ci = cs === undefined ? 0 : num(cs); if (isErr(ci)) return ci;
+  const re = userRegex(p, ci === 1 ? 'i' : ''); if (isErr(re)) return re;
+  return re.test(str(t).slice(0, 32767));
+}, { min: 2, max: 3 }));
+def('REGEXEXTRACT', (A, ctx) => {
+  if (A.length < 2 || A.length > 4) return ERR.VALUE;
+  const t = argN(A, 0, ctx); if (isErr(t)) return t;
+  const mode = has(A, 2) ? Math.trunc(num(argN(A, 2, ctx))) : 0, ci = has(A, 3) ? num(argN(A, 3, ctx)) : 0;
+  if (isErr(mode) || mode < 0 || mode > 2) return ERR.VALUE;
+  const re = userRegex(argN(A, 1, ctx), (ci === 1 ? 'i' : '') + (mode === 1 ? 'g' : '')); if (isErr(re)) return re;
+  const s = str(t).slice(0, 32767);
+  if (mode === 1) { const all = [...s.matchAll(re)].map(m => m[0]); return all.length ? (all.length === 1 ? all[0] : new Arr(all.map(x => [x]))) : ERR.NA; }
+  const m = re.exec(s);
+  if (!m) return ERR.NA;
+  if (mode === 2) { const gs = m.slice(1).map(x => x ?? ''); return gs.length ? (gs.length === 1 ? gs[0] : new Arr([gs])) : ERR.NA; }
+  return m[0];
+});
+def('REGEXREPLACE', (A, ctx) => lift(A, ctx, (t, p, rep, occ, cs) => {
+  if (isErr(t)) return t;
+  const o = occ === undefined ? 0 : Math.trunc(num(occ)), ci = cs === undefined ? 0 : num(cs); const e = firstErr(o, ci); if (e) return e;
+  const re = userRegex(p, 'g' + (ci === 1 ? 'i' : '')); if (isErr(re)) return re;
+  const s = str(t).slice(0, 32767), r = str(rep);
+  if (!o) return s.replace(re, r);
+  const all = [...s.matchAll(re)];
+  const m = all[o > 0 ? o - 1 : all.length + o];
+  if (!m) return s;
+  const one = new RegExp(re.source, re.flags.replace('g', ''));
+  return s.slice(0, m.index) + m[0].replace(one, r) + s.slice(m.index + m[0].length);
+}, { min: 3, max: 5 }));
+def('HYPERLINK', (A, ctx) => lift(A, ctx, (url, name) => (isErr(url) ? url : name === undefined || name === null ? str(url) : name), { min: 1, max: 2 }));
+def('FORMULATEXT', (A, ctx) => {
+  const v = A[0] ? ev(A[0], ctx) : null;
+  if (!v || !v.range) return ERR.VALUE;
+  const f = ctx.formulaOf && ctx.formulaOf(v.sheet, v.r1, v.c1);
+  return f ? '=' + toDisplay(f) : ERR.NA;
+});
+def('SHEET', (A, ctx) => {
+  if (!A.length || A[0].k === 'missing') return ctx.sheet + 1;
+  const v = ev(A[0], ctx);
+  if (v && v.range) return v.sheet + 1;
+  const s = scalar(v, ctx); if (isErr(s)) return s;
+  const i = ctx.sheetIndex(str(s)); return i < 0 ? ERR.NA : i + 1;
+});
+def('SHEETS', (A, ctx) => (A.length && A[0].k !== 'missing' ? (() => { const v = ev(A[0], ctx); return v && v.range ? 1 : ERR.VALUE; })() : ctx.sheetCount ? ctx.sheetCount() : 1));
+def('CELL', (A, ctx) => {
+  const t = str(argN(A, 0, ctx)).toLowerCase();
+  const v = has(A, 1) ? ev(A[1], ctx) : { range: true, sheet: ctx.sheet, r1: ctx.cur ? ctx.cur.r : 0, c1: ctx.cur ? ctx.cur.c : 0, r2: 0, c2: 0 };
+  if (!v || !v.range) return ERR.VALUE;
+  const x = ctx.get(v.sheet, v.r1, v.c1);
+  switch (t) {
+    case 'address': case 'adresse': return `$${colName(v.c1)}$${v.r1 + 1}`;
+    case 'row': case 'zeile': return v.r1 + 1;
+    case 'col': case 'spalte': return v.c1 + 1;
+    case 'contents': case 'inhalt': return x ?? 0;
+    case 'type': case 'typ': return x === null || x === undefined ? 'b' : typeof x === 'string' ? 'l' : 'v';
+    default: return ERR.VALUE;
+  }
+});
+
+// financial
+def('DB', (A, ctx) => {
+  const a = fin(A, ctx, 5, [undefined, undefined, undefined, undefined, 12]); if (isErr(a)) return a;
+  const [cost, salv, life, per, mon] = a;
+  if (cost < 0 || salv < 0 || life <= 0 || per <= 0 || mon < 1 || mon > 12 || per > life + 1) return ERR.NUM;
+  const rate = cost === 0 ? 0 : Math.round((1 - Math.pow(salv / cost, 1 / life)) * 1000) / 1000;
+  let total = 0, dep = cost * rate * mon / 12;
+  if (per === 1) return tame(dep);
+  total = dep;
+  for (let p = 2; p <= per; p++) { dep = p === life + 1 ? (cost - total) * rate * (12 - mon) / 12 : (cost - total) * rate; if (p < per) total += dep; }
+  return tame(dep);
+});
+def('DDB', (A, ctx) => {
+  const a = fin(A, ctx, 5, [undefined, undefined, undefined, undefined, 2]); if (isErr(a)) return a;
+  const [cost, salv, life, per, fac] = a;
+  if (cost < 0 || salv < 0 || life <= 0 || per <= 0 || per > life || fac <= 0) return ERR.NUM;
+  let book = cost, dep = 0;
+  for (let p = 1; p <= per; p++) { dep = Math.min(book * fac / life, Math.max(0, book - salv)); book -= dep; }
+  return tame(dep);
+});
+def('SYD', (A, ctx) => { const a = fin(A, ctx, 4, []); if (isErr(a)) return a; const [cost, salv, life, per] = a; if (life <= 0 || per <= 0 || per > life) return ERR.NUM; return tame((cost - salv) * (life - per + 1) * 2 / (life * (life + 1))); });
+def('MIRR', (A, ctx) => {
+  const xs = flatVals(ev(A[0], ctx), ctx).filter(v => typeof v === 'number');
+  const fr = num(argN(A, 1, ctx)), rr = num(argN(A, 2, ctx)); const e = firstErr(fr, rr); if (e) return e;
+  const n = xs.length;
+  if (!xs.some(v => v > 0) || !xs.some(v => v < 0)) return ERR.DIV0;
+  const pvNeg = xs.reduce((s, v, i) => s + (v < 0 ? v / Math.pow(1 + fr, i) : 0), 0);
+  const fvPos = xs.reduce((s, v, i) => s + (v > 0 ? v * Math.pow(1 + rr, n - 1 - i) : 0), 0);
+  return tame(Math.pow(-fvPos / pvNeg, 1 / (n - 1)) - 1);
+});
+def('FVSCHEDULE', (A, ctx) => { const p = num(argN(A, 0, ctx)); if (isErr(p)) return p; let v = p; for (const r of flatVals(ev(A[1], ctx), ctx)) { const x = num(r); if (isErr(x)) return ERR.VALUE; v *= 1 + x; } return tame(v); });
+def('PDURATION', (A, ctx) => { const a = fin(A, ctx, 3, []); if (isErr(a)) return a; const [r, pv, fv] = a; if (r <= 0 || pv <= 0 || fv <= 0) return ERR.NUM; return tame((Math.log(fv) - Math.log(pv)) / Math.log(1 + r)); });
+def('RRI', (A, ctx) => { const a = fin(A, ctx, 3, []); if (isErr(a)) return a; const [n, pv, fv] = a; if (n <= 0 || pv === 0) return ERR.NUM; const r = Math.pow(fv / pv, 1 / n) - 1; return Number.isFinite(r) ? tame(r) : ERR.NUM; });
+def('ISPMT', (A, ctx) => { const a = fin(A, ctx, 4, []); if (isErr(a)) return a; const [r, per, n, pv] = a; if (n === 0) return ERR.DIV0; return tame(pv * r * (per / n - 1)); });
+
+// database functions: (database with header row, field = header or 1-based index, criteria range with header row)
+def('DSUM DCOUNT DCOUNTA DAVERAGE DMAX DMIN DGET DPRODUCT', (A, ctx, name) => {
+  if (A.length !== 3) return ERR.VALUE;
+  const db = grid(ev(A[0], ctx), ctx), crit = grid(ev(A[2], ctx), ctx);
+  if (db.length < 1 || crit.length < 1) return ERR.VALUE;
+  const head = db[0].map(h => str(h).trim().toLocaleLowerCase('de'));
+  let fi = -1;
+  if (A[1].k !== 'missing') {
+    const f = argN(A, 1, ctx);
+    if (typeof f === 'number') fi = Math.trunc(f) - 1; else fi = head.indexOf(str(f).trim().toLocaleLowerCase('de'));
+    if (fi < 0 || fi >= head.length) return ERR.VALUE;
+  } else if (name !== 'DCOUNT' && name !== 'DCOUNTA') return ERR.VALUE;
+  const chead = crit[0].map(h => head.indexOf(str(h).trim().toLocaleLowerCase('de')));
+  const tests = crit.slice(1).map(row => row.map((v, j) => (v === null || v === '' ? null : { c: chead[j], t: criterion(v) })).filter(Boolean));
+  const ok = row => !tests.length || tests.some(conds => conds.every(({ c, t }) => c >= 0 && t(row[c])));
+  const picked = db.slice(1).filter(ok).map(r => (fi >= 0 ? r[fi] : 1));
+  const nums = picked.filter(v => typeof v === 'number');
+  switch (name) {
+    case 'DSUM': return tame(nums.reduce((a, b) => a + b, 0));
+    case 'DPRODUCT': return nums.length ? tame(nums.reduce((a, b) => a * b, 1)) : 0;
+    case 'DCOUNT': return fi >= 0 ? nums.length : picked.length;
+    case 'DCOUNTA': return picked.filter(v => v !== null && v !== undefined && v !== '').length;
+    case 'DAVERAGE': return nums.length ? tame(nums.reduce((a, b) => a + b, 0) / nums.length) : ERR.DIV0;
+    case 'DMAX': return nums.length ? Math.max(...nums) : 0;
+    case 'DMIN': return nums.length ? Math.min(...nums) : 0;
+    case 'DGET': return picked.length === 1 ? picked[0] ?? 0 : picked.length ? ERR.NUM : ERR.VALUE;
+  }
+  return ERR.VALUE;
+});
+
 function callFn(n, ctx) {
   const fn = F[n.name];
-  if (!fn) return ERR.NAME;
+  if (!fn) {
+    // LET/LAMBDA variable or a defined name that holds a LAMBDA
+    let lam = null;
+    if (ctx.locals && n.name in ctx.locals) lam = ctx.locals[n.name];
+    else if (ctx.name && ctx.name(n.name) != null) lam = ev({ k: 'name', v: n.name }, ctx);
+    if (lam instanceof Lambda) return invokeLambda(lam, n.args.map(a => (a.k === 'missing' ? OMITTED : ev(a, ctx))), ctx);
+    return ERR.NAME;
+  }
   return fn(n.args, ctx, n.name);
 }
 
@@ -1882,5 +2596,136 @@ export const FUNCTION_LIST = [
   ['EFFEKTIV', 'Finanzmathematik', 'Effektiver Jahreszins', 'EFFEKTIV(5%;12)'], ['LIA', 'Finanzmathematik', 'Lineare Abschreibung', 'LIA(10000;1000;5)'],
   ['XKAPITALWERT', 'Finanzmathematik', 'Kapitalwert mit Datumsangaben', 'XKAPITALWERT(8%;B2:B6;A2:A6)'], ['XINTZINSFUSS', 'Finanzmathematik', 'Interner Zinsfuß mit Datumsangaben', 'XINTZINSFUSS(B2:B6;A2:A6)'],
 ];
+
+// further functions for the catalogue (German name, category, description, example)
+FUNCTION_LIST.push(
+  ['QUADRATESUMME', 'Mathematik', 'Summe der Quadrate', 'QUADRATESUMME(3;4)'], ['OBERGRENZE.MATHEMATIK', 'Mathematik', 'Auf Vielfaches aufrunden (mit Modus)', 'OBERGRENZE.MATHEMATIK(-4,3;1;1)'],
+  ['UNTERGRENZE.MATHEMATIK', 'Mathematik', 'Auf Vielfaches abrunden (mit Modus)', 'UNTERGRENZE.MATHEMATIK(4,7;0,5)'], ['LOG10', 'Mathematik', 'Zehnerlogarithmus', 'LOG10(1000)'],
+  ['GERADE', 'Mathematik', 'Auf gerade Zahl aufrunden', 'GERADE(3,2)'], ['UNGERADE', 'Mathematik', 'Auf ungerade Zahl aufrunden', 'UNGERADE(2,1)'],
+  ['KOMBINATIONEN', 'Mathematik', 'Anzahl Kombinationen ohne Wiederholung', 'KOMBINATIONEN(49;6)'], ['ZUFALLSMATRIX', 'Mathematik', 'Matrix mit Zufallszahlen (überläuft)', 'ZUFALLSMATRIX(3;2;1;6;WAHR)'],
+  ['QUOTIENT', 'Mathematik', 'Ganzzahliger Anteil einer Division', 'QUOTIENT(17;5)'], ['COS', 'Mathematik', 'Kosinus (Bogenmaß)', 'COS(PI())'], ['TAN', 'Mathematik', 'Tangens (Bogenmaß)', 'TAN(PI()/4)'],
+  ['ARCSIN', 'Mathematik', 'Arkussinus', 'ARCSIN(1)'], ['ARCCOS', 'Mathematik', 'Arkuskosinus', 'ARCCOS(0)'], ['ARCTAN', 'Mathematik', 'Arkustangens', 'ARCTAN(1)'],
+  ['ARCTAN2', 'Mathematik', 'Winkel aus x- und y-Koordinate', 'ARCTAN2(1;1)'], ['SINHYP', 'Mathematik', 'Sinus hyperbolicus', 'SINHYP(1)'], ['COSHYP', 'Mathematik', 'Kosinus hyperbolicus', 'COSHYP(1)'],
+  ['TANHYP', 'Mathematik', 'Tangens hyperbolicus', 'TANHYP(0,5)'], ['ARCSINHYP', 'Mathematik', 'Umkehrfunktion des Sinus hyperbolicus', 'ARCSINHYP(1)'],
+  ['ARCCOSHYP', 'Mathematik', 'Umkehrfunktion des Kosinus hyperbolicus', 'ARCCOSHYP(2)'], ['ARCTANHYP', 'Mathematik', 'Umkehrfunktion des Tangens hyperbolicus', 'ARCTANHYP(0,5)'],
+  ['COT', 'Mathematik', 'Kotangens', 'COT(1)'], ['WURZELPI', 'Mathematik', 'Wurzel aus Zahl mal π', 'WURZELPI(2)'], ['ZWEIFAKULTÄT', 'Mathematik', 'Doppelfakultät', 'ZWEIFAKULTÄT(7)'],
+  ['POLYNOMIAL', 'Mathematik', 'Multinomialkoeffizient', 'POLYNOMIAL(2;3;4)'], ['RÖMISCH', 'Mathematik', 'Zahl als römische Zahl', 'RÖMISCH(2026)'], ['ARABISCH', 'Mathematik', 'Römische Zahl in arabische Zahl', 'ARABISCH("MMXXVI")'],
+  ['BASIS', 'Mathematik', 'Zahl in andere Basis umwandeln', 'BASIS(255;16)'], ['DEZIMAL', 'Mathematik', 'Text einer Basis in Dezimalzahl', 'DEZIMAL("FF";16)'],
+  ['MMULT', 'Mathematik', 'Matrixprodukt (überläuft)', 'MMULT(A1:B2;D1:E2)'], ['MDET', 'Mathematik', 'Determinante einer Matrix', 'MDET(A1:C3)'], ['MINV', 'Mathematik', 'Inverse Matrix (überläuft)', 'MINV(A1:B2)'],
+  ['MEINHEIT', 'Mathematik', 'Einheitsmatrix (überläuft)', 'MEINHEIT(3)'], ['SUMMEX2MY2', 'Mathematik', 'Summe der Differenzen der Quadrate', 'SUMMEX2MY2(A1:A5;B1:B5)'],
+  ['SUMMEX2PY2', 'Mathematik', 'Summe der Summen der Quadrate', 'SUMMEX2PY2(A1:A5;B1:B5)'], ['SUMMEXMY2', 'Mathematik', 'Summe der quadrierten Differenzen', 'SUMMEXMY2(A1:A5;B1:B5)'],
+  ['AGGREGAT', 'Mathematik', 'Teilergebnis, das Fehler und ausgeblendete Zeilen ignorieren kann', 'AGGREGAT(9;6;A1:A10)'],
+  ['MITTELWERTA', 'Statistik', 'Durchschnitt (Text = 0, WAHR = 1)', 'MITTELWERTA(A1:A10)'], ['MAXA', 'Statistik', 'Größter Wert inkl. Wahrheitswerte', 'MAXA(A1:A10)'], ['MINA', 'Statistik', 'Kleinster Wert inkl. Wahrheitswerte', 'MINA(A1:A10)'],
+  ['MODUS.EINF', 'Statistik', 'Häufigster Wert', 'MODUS.EINF(A1:A10)'], ['STABW', 'Statistik', 'Standardabweichung (Stichprobe, ältere Form)', 'STABW(A1:A10)'], ['STABWN', 'Statistik', 'Standardabweichung (Grundgesamtheit, ältere Form)', 'STABWN(A1:A10)'],
+  ['VARIANZ', 'Statistik', 'Varianz (Stichprobe, ältere Form)', 'VARIANZ(A1:A10)'], ['VARIANZEN', 'Statistik', 'Varianz (Grundgesamtheit, ältere Form)', 'VARIANZEN(A1:A10)'], ['VAR.P', 'Statistik', 'Varianz (Grundgesamtheit)', 'VAR.P(A1:A10)'],
+  ['RANG', 'Statistik', 'Rang einer Zahl (ältere Form)', 'RANG(A1;A$1:A$10)'], ['RANG.MITTELW', 'Statistik', 'Rang mit Mittelwert bei Gleichstand', 'RANG.MITTELW(A1;A$1:A$10)'],
+  ['QUANTIL', 'Statistik', 'Quantil (ältere Form)', 'QUANTIL(A1:A10;0,9)'], ['QUARTILE', 'Statistik', 'Quartil (ältere Form)', 'QUARTILE(A1:A10;1)'], ['GEOMITTEL', 'Statistik', 'Geometrisches Mittel', 'GEOMITTEL(A1:A10)'],
+  ['MITTELABW', 'Statistik', 'Mittlere absolute Abweichung', 'MITTELABW(A1:A10)'], ['HÄUFIGKEIT', 'Statistik', 'Werte in Klassen zählen (überläuft)', 'HÄUFIGKEIT(A1:A20;C1:C4)'],
+  ['STEIGUNG', 'Statistik', 'Steigung der Regressionsgeraden', 'STEIGUNG(B1:B10;A1:A10)'], ['ACHSENABSCHNITT', 'Statistik', 'Achsenabschnitt der Regressionsgeraden', 'ACHSENABSCHNITT(B1:B10;A1:A10)'],
+  ['BESTIMMTHEITSMASS', 'Statistik', 'Bestimmtheitsmaß R²', 'BESTIMMTHEITSMASS(B1:B10;A1:A10)'], ['SCHÄTZER', 'Statistik', 'Linearer Schätzwert (ältere Form)', 'SCHÄTZER(11;B1:B10;A1:A10)'],
+  ['PROGNOSE.LINEAR', 'Statistik', 'Linearer Prognosewert', 'PROGNOSE.LINEAR(11;B1:B10;A1:A10)'], ['TREND', 'Statistik', 'Werte entlang eines linearen Trends', 'TREND(B1:B10;A1:A10;A11:A12)'],
+  ['QUANTILSRANG', 'Statistik', 'Relativer Rang (ältere Form)', 'QUANTILSRANG(A1:A10;A3)'], ['QUANTILSRANG.INKL', 'Statistik', 'Relativer Rang einer Zahl (0 bis 1)', 'QUANTILSRANG.INKL(A1:A10;A3)'],
+  ['QUANTIL.EXKL', 'Statistik', 'Quantil ohne 0 und 1', 'QUANTIL.EXKL(A1:A10;0,25)'], ['QUARTILE.EXKL', 'Statistik', 'Quartil ohne Minimum und Maximum', 'QUARTILE.EXKL(A1:A10;1)'],
+  ['GESTUTZTMITTEL', 'Statistik', 'Mittelwert ohne Randwerte', 'GESTUTZTMITTEL(A1:A20;0,1)'], ['HARMITTEL', 'Statistik', 'Harmonisches Mittel', 'HARMITTEL(A1:A10)'],
+  ['SUMQUADABW', 'Statistik', 'Summe der quadrierten Abweichungen', 'SUMQUADABW(A1:A10)'], ['KURT', 'Statistik', 'Kurtosis (Wölbung)', 'KURT(A1:A10)'], ['SCHIEFE', 'Statistik', 'Schiefe einer Verteilung', 'SCHIEFE(A1:A10)'],
+  ['STANDARDISIERUNG', 'Statistik', 'Standardisierter Wert (z-Wert)', 'STANDARDISIERUNG(A1;50;10)'], ['KOVARIANZ.P', 'Statistik', 'Kovarianz (Grundgesamtheit)', 'KOVARIANZ.P(A1:A10;B1:B10)'],
+  ['KOVARIANZ.S', 'Statistik', 'Kovarianz (Stichprobe)', 'KOVARIANZ.S(A1:A10;B1:B10)'], ['PEARSON', 'Statistik', 'Pearsonscher Korrelationskoeffizient', 'PEARSON(A1:A10;B1:B10)'],
+  ['NORM.VERT', 'Statistik', 'Normalverteilung', 'NORM.VERT(42;40;1,5;WAHR)'], ['NORM.INV', 'Statistik', 'Quantil der Normalverteilung', 'NORM.INV(0,95;40;1,5)'],
+  ['NORM.S.VERT', 'Statistik', 'Standardnormalverteilung', 'NORM.S.VERT(1;WAHR)'], ['NORM.S.INV', 'Statistik', 'Quantil der Standardnormalverteilung', 'NORM.S.INV(0,975)'],
+  ['BINOM.VERT', 'Statistik', 'Binomialverteilung', 'BINOM.VERT(6;10;0,5;FALSCH)'], ['POISSON.VERT', 'Statistik', 'Poisson-Verteilung', 'POISSON.VERT(2;5;WAHR)'],
+  ['EXPON.VERT', 'Statistik', 'Exponentialverteilung', 'EXPON.VERT(0,2;10;WAHR)'], ['KONFIDENZ.NORM', 'Statistik', 'Konfidenzintervall (Normalverteilung)', 'KONFIDENZ.NORM(0,05;2,5;50)'],
+  ['VARIATIONEN', 'Statistik', 'Anzahl Variationen (Reihenfolge zählt)', 'VARIATIONEN(10;3)'], ['ANZAHLEINDEUTIG', 'Statistik', 'Anzahl verschiedener Werte', 'ANZAHLEINDEUTIG(A1:A20)'],
+  ['WAHR', 'Logik', 'Wahrheitswert WAHR', 'WAHR()'], ['FALSCH', 'Logik', 'Wahrheitswert FALSCH', 'FALSCH()'],
+  ['LAMBDA', 'Logik', 'Eigene Funktion mit Parametern', 'LAMBDA(x;x*2)(A1)'], ['MAP', 'Logik', 'LAMBDA auf jeden Wert anwenden (überläuft)', 'MAP(A1:A5;LAMBDA(x;x*2))'],
+  ['REDUCE', 'Logik', 'Werte mit LAMBDA zu einem Ergebnis zusammenfassen', 'REDUCE(0;A1:A5;LAMBDA(s;x;s+x))'], ['SCAN', 'Logik', 'Zwischenergebnisse einer LAMBDA-Berechnung (überläuft)', 'SCAN(0;A1:A5;LAMBDA(s;x;s+x))'],
+  ['NACHZEILE', 'Logik', 'LAMBDA je Zeile anwenden (überläuft)', 'NACHZEILE(A1:C5;LAMBDA(z;SUMME(z)))'], ['NACHSPALTE', 'Logik', 'LAMBDA je Spalte anwenden (überläuft)', 'NACHSPALTE(A1:C5;LAMBDA(s;MAX(s)))'],
+  ['MATRIXERSTELLEN', 'Logik', 'Matrix aus LAMBDA berechnen (überläuft)', 'MATRIXERSTELLEN(3;3;LAMBDA(z;s;z*s))'], ['ISTAUSGELASSEN', 'Logik', 'Wurde ein LAMBDA-Parameter weggelassen?', 'LAMBDA(a;b;WENN(ISTAUSGELASSEN(b);a;a+b))(1)'],
+  ['VERWEIS', 'Nachschlagen & Verweisen', 'Wert in sortierter Liste suchen', 'VERWEIS(A1;D1:D10;E1:E10)'], ['VSTAPELN', 'Nachschlagen & Verweisen', 'Bereiche untereinander anfügen (überläuft)', 'VSTAPELN(A1:B3;D1:E3)'],
+  ['HSTAPELN', 'Nachschlagen & Verweisen', 'Bereiche nebeneinander anfügen (überläuft)', 'HSTAPELN(A1:A5;C1:C5)'], ['ÜBERNEHMEN', 'Nachschlagen & Verweisen', 'Erste/letzte Zeilen oder Spalten nehmen (überläuft)', 'ÜBERNEHMEN(A1:C20;5)'],
+  ['WEGLASSEN', 'Nachschlagen & Verweisen', 'Zeilen oder Spalten weglassen (überläuft)', 'WEGLASSEN(A1:C20;1)'], ['ZEILENWAHL', 'Nachschlagen & Verweisen', 'Bestimmte Zeilen wählen (überläuft)', 'ZEILENWAHL(A1:C20;1;3)'],
+  ['SPALTENWAHL', 'Nachschlagen & Verweisen', 'Bestimmte Spalten wählen (überläuft)', 'SPALTENWAHL(A1:E20;1;3)'], ['ZUSPALTE', 'Nachschlagen & Verweisen', 'Bereich in eine Spalte umwandeln (überläuft)', 'ZUSPALTE(A1:C3)'],
+  ['ZUZEILE', 'Nachschlagen & Verweisen', 'Bereich in eine Zeile umwandeln (überläuft)', 'ZUZEILE(A1:C3)'], ['ZEILENUMBRUCH', 'Nachschlagen & Verweisen', 'Liste zeilenweise umbrechen (überläuft)', 'ZEILENUMBRUCH(A1:A12;3)'],
+  ['SPALTENUMBRUCH', 'Nachschlagen & Verweisen', 'Liste spaltenweise umbrechen (überläuft)', 'SPALTENUMBRUCH(A1:A12;3)'], ['ERWEITERN', 'Nachschlagen & Verweisen', 'Bereich auf Größe auffüllen (überläuft)', 'ERWEITERN(A1:B2;4;4;"")'],
+  ['UNIZEICHEN', 'Text', 'Zeichen aus Unicode-Wert', 'UNIZEICHEN(8364)'], ['UNICODE', 'Text', 'Unicode-Wert des ersten Zeichens', 'UNICODE("€")'], ['ZAHLENWERT', 'Text', 'Text mit Trennzeichen in Zahl', 'ZAHLENWERT("1.234,5";",";".")'],
+  ['T', 'Text', 'Text oder leer', 'T(A1)'], ['TEXTTEILEN', 'Text', 'Text an Trennzeichen aufteilen (überläuft)', 'TEXTTEILEN(A1;",")'], ['WERTZUTEXT', 'Text', 'Wert als Text', 'WERTZUTEXT(A1)'],
+  ['MATRIXZUTEXT', 'Text', 'Bereich als Text', 'MATRIXZUTEXT(A1:B3)'], ['REGEXTEST', 'Text', 'Passt der Text zu einem Suchmuster (regulärer Ausdruck)?', 'REGEXTEST(A1;"^\\d{5}$")'],
+  ['REGEXEXTRAKT', 'Text', 'Teil per regulärem Ausdruck herausziehen', 'REGEXEXTRAKT(A1;"\\d+")'], ['REGEXERSETZEN', 'Text', 'Text per regulärem Ausdruck ersetzen', 'REGEXERSETZEN(A1;"\\s+";" ")'],
+  ['HYPERLINK', 'Text', 'Anklickbarer Link', 'HYPERLINK("https://example.org";"Webseite")'],
+  ['NETTOARBEITSTAGE.INTL', 'Datum & Uhrzeit', 'Arbeitstage mit eigenem Wochenende', 'NETTOARBEITSTAGE.INTL(A1;B1;11)'], ['ARBEITSTAG.INTL', 'Datum & Uhrzeit', 'Datum nach Arbeitstagen mit eigenem Wochenende', 'ARBEITSTAG.INTL(A1;10;11)'],
+  ['ZEITWERT', 'Datum & Uhrzeit', 'Text in Uhrzeit umwandeln', 'ZEITWERT("14:30")'], ['TAGE360', 'Datum & Uhrzeit', 'Tage auf Basis von 360 Tagen', 'TAGE360(A1;B1)'],
+  ['ISTKTEXT', 'Information', 'Ist kein Text?', 'ISTKTEXT(A1)'], ['ISTFEHL', 'Information', 'Fehler außer #NV?', 'ISTFEHL(A1)'], ['ISTLOG', 'Information', 'Ist ein Wahrheitswert?', 'ISTLOG(A1)'],
+  ['ISTUNGERADE', 'Information', 'Ungerade Zahl?', 'ISTUNGERADE(A1)'], ['ISTBEZUG', 'Information', 'Ist ein Bezug?', 'ISTBEZUG(A1)'], ['FEHLER.TYP', 'Information', 'Nummer eines Fehlerwerts', 'FEHLER.TYP(A1)'],
+  ['N', 'Information', 'Wert als Zahl', 'N(A1)'], ['FORMELTEXT', 'Information', 'Formel einer Zelle als Text', 'FORMELTEXT(A1)'], ['BLATT', 'Information', 'Nummer des Tabellenblatts', 'BLATT()'],
+  ['BLÄTTER', 'Information', 'Anzahl der Tabellenblätter', 'BLÄTTER()'], ['ZELLE', 'Information', 'Angaben zu einer Zelle', 'ZELLE("adresse";A1)'],
+  ['NOMINAL', 'Finanzmathematik', 'Nominalzins aus Effektivzins', 'NOMINAL(5%;12)'], ['KUMZINSZ', 'Finanzmathematik', 'Summe der Zinsen über Perioden', 'KUMZINSZ(5%/12;60;20000;1;12;0)'],
+  ['KUMKAPITAL', 'Finanzmathematik', 'Summe der Tilgung über Perioden', 'KUMKAPITAL(5%/12;60;20000;1;12;0)'], ['GDA2', 'Finanzmathematik', 'Geometrisch-degressive Abschreibung', 'GDA2(10000;1000;5;1)'],
+  ['GDA', 'Finanzmathematik', 'Doppelt degressive Abschreibung', 'GDA(10000;1000;5;1)'], ['DIA', 'Finanzmathematik', 'Arithmetisch-degressive Abschreibung', 'DIA(10000;1000;5;1)'],
+  ['QIKV', 'Finanzmathematik', 'Modifizierter interner Zinsfuß', 'QIKV(B1:B6;5%;8%)'], ['ZW2', 'Finanzmathematik', 'Endwert mit wechselnden Zinsen', 'ZW2(1000;{0,02.0,03.0,025})'],
+  ['PDURATION', 'Finanzmathematik', 'Perioden bis zum Zielwert', 'PDURATION(5%;1000;2000)'], ['ZSATZINVEST', 'Finanzmathematik', 'Effektiver Zins für Wertzuwachs', 'ZSATZINVEST(10;1000;2000)'],
+  ['ISPMT', 'Finanzmathematik', 'Zinsen bei gleichen Tilgungsraten', 'ISPMT(5%/12;1;60;20000)'],
+  ['DBSUMME', 'Datenbank', 'Summe der Datensätze, die Kriterien erfüllen', 'DBSUMME(A1:E50;"Betrag";G1:H2)'], ['DBANZAHL', 'Datenbank', 'Anzahl Zahlen der passenden Datensätze', 'DBANZAHL(A1:E50;"Betrag";G1:H2)'],
+  ['DBANZAHL2', 'Datenbank', 'Anzahl nicht leerer Werte der passenden Datensätze', 'DBANZAHL2(A1:E50;"Name";G1:H2)'], ['DBMITTELWERT', 'Datenbank', 'Mittelwert der passenden Datensätze', 'DBMITTELWERT(A1:E50;"Betrag";G1:H2)'],
+  ['DBMAX', 'Datenbank', 'Größter Wert der passenden Datensätze', 'DBMAX(A1:E50;"Betrag";G1:H2)'], ['DBMIN', 'Datenbank', 'Kleinster Wert der passenden Datensätze', 'DBMIN(A1:E50;"Betrag";G1:H2)'],
+  ['DBAUSZUG', 'Datenbank', 'Genau einen passenden Wert holen', 'DBAUSZUG(A1:E50;"Betrag";G1:H2)'], ['DBPRODUKT', 'Datenbank', 'Produkt der passenden Datensätze', 'DBPRODUKT(A1:E50;"Faktor";G1:H2)'],
+  ['DEZINBIN', 'Technisch', 'Dezimalzahl in Binärzahl', 'DEZINBIN(9;8)'], ['BININDEZ', 'Technisch', 'Binärzahl in Dezimalzahl', 'BININDEZ("1001")'], ['DEZINHEX', 'Technisch', 'Dezimalzahl in Hexadezimalzahl', 'DEZINHEX(255)'],
+  ['HEXINDEZ', 'Technisch', 'Hexadezimalzahl in Dezimalzahl', 'HEXINDEZ("FF")'], ['DEZINOKT', 'Technisch', 'Dezimalzahl in Oktalzahl', 'DEZINOKT(58)'], ['OKTINDEZ', 'Technisch', 'Oktalzahl in Dezimalzahl', 'OKTINDEZ("72")'],
+);
+FN_CATEGORIES.push('Datenbank', 'Technisch');
+
+// argument names per function (German, "; " separated, optional arguments in [ ])
+const ARGS_SRC = {
+  'Zahl1; [Zahl2]; …': 'SUM PRODUCT SUMSQ AVERAGE AVERAGEA MIN MAX MINA MAXA MEDIAN MODE MODE.SNGL STDEV STDEV.S STDEVP STDEV.P VAR VAR.S VARP VAR.P GEOMEAN AVEDEV HARMEAN DEVSQ KURT SKEW GCD LCM MULTINOMIAL',
+  'Wert1; [Wert2]; …': 'COUNT COUNTA COUNTBLANK COUNTUNIQUE CONCAT',
+  'Zahl': 'ABS SIGN INT SQRT EXP LN LOG10 SIN COS TAN ASIN ACOS ATAN DEGREES RADIANS EVEN ODD FACT SINH COSH TANH ASINH ACOSH ATANH COT SQRTPI FACTDOUBLE ISEVEN ISODD',
+  'Zahl; [Basis]': 'LOG', 'Zahl; Anzahl_Stellen': 'ROUND ROUNDUP ROUNDDOWN', 'Zahl; [Anzahl_Stellen]': 'TRUNC', 'Zahl; Vielfaches': 'MROUND',
+  'Zahl; [Schritt]': 'CEILING FLOOR', 'Zahl; [Schritt]; [Modus]': 'CEILING.MATH FLOOR.MATH', 'Dividend; Divisor': 'MOD QUOTIENT', 'Basis; Exponent': 'POWER',
+  'n; k': 'COMBIN PERMUT', 'Untere_Zahl; Obere_Zahl': 'RANDBETWEEN', '[Zeilen]; [Spalten]; [Min]; [Max]; [Ganze_Zahl]': 'RANDARRAY', 'x; y': 'ATAN2',
+  'Funktion; Bezug1; [Bezug2]; …': 'SUBTOTAL', 'Funktion; Optionen; Bezug1; [Bezug2]; …': 'AGGREGATE',
+  'Bereich; Kriterium; [Summe_Bereich]': 'SUMIF', 'Bereich; Kriterium; [Mittelwert_Bereich]': 'AVERAGEIF', 'Bereich; Kriterium': 'COUNTIF',
+  'Summe_Bereich; Kriterien_Bereich1; Kriterium1; …': 'SUMIFS', 'Kriterien_Bereich1; Kriterium1; …': 'COUNTIFS',
+  'Mittelwert_Bereich; Kriterien_Bereich1; Kriterium1; …': 'AVERAGEIFS', 'Max_Bereich; Kriterien_Bereich1; Kriterium1; …': 'MAXIFS', 'Min_Bereich; Kriterien_Bereich1; Kriterium1; …': 'MINIFS',
+  'Matrix1; [Matrix2]; …': 'SUMPRODUCT', 'Matrix; k': 'LARGE SMALL', 'Zahl; Bezug; [Reihenfolge]': 'RANK RANK.EQ RANK.AVG', 'Matrix; k ': 'PERCENTILE PERCENTILE.INC PERCENTILE.EXC',
+  'Matrix; Quartil': 'QUARTILE QUARTILE.INC QUARTILE.EXC', 'Matrix1; Matrix2': 'CORREL PEARSON COVARIANCE.P COVARIANCE.S MMULT SUMX2MY2 SUMX2PY2 SUMXMY2',
+  'Daten; Klassen': 'FREQUENCY', 'Y_Werte; X_Werte': 'SLOPE INTERCEPT RSQ', 'x; Y_Werte; X_Werte': 'FORECAST FORECAST.LINEAR', 'Y_Werte; [X_Werte]; [Neue_X_Werte]; [Konstante]': 'TREND',
+  'Matrix; x; [Genauigkeit]': 'PERCENTRANK PERCENTRANK.INC', 'Matrix; Prozent': 'TRIMMEAN', 'x; Mittelwert; Standardabweichung': 'STANDARDIZE',
+  'x; Mittelwert; Standardabweichung; Kumuliert': 'NORM.DIST', 'Wahrscheinlichkeit; Mittelwert; Standardabweichung': 'NORM.INV', 'z; [Kumuliert]': 'NORM.S.DIST', 'Wahrscheinlichkeit': 'NORM.S.INV',
+  'Erfolge; Versuche; Erfolgswahrscheinlichkeit; Kumuliert': 'BINOM.DIST', 'x; Mittelwert; Kumuliert': 'POISSON.DIST', 'x; Lambda; Kumuliert': 'EXPON.DIST', 'Alpha; Standardabweichung; Umfang': 'CONFIDENCE.NORM',
+  'Prüfung; [Dann_Wert]; [Sonst_Wert]': 'IF', 'Prüfung1; Wert1; [Prüfung2; Wert2]; …': 'IFS', 'Wert; Wert_falls_Fehler': 'IFERROR', 'Wert; Wert_falls_NV': 'IFNA',
+  'Wahrheitswert1; [Wahrheitswert2]; …': 'AND OR XOR', 'Wahrheitswert': 'NOT', '': 'TRUE FALSE PI RAND TODAY NOW NA SHEETS',
+  'Ausdruck; Wert1; Ergebnis1; …; [Standard]': 'SWITCH', 'Name1; Wert1; …; Berechnung': 'LET', '[Parameter1]; …; Berechnung': 'LAMBDA',
+  'Matrix1; …; LAMBDA(Wert1; …)': 'MAP', 'Startwert; Matrix; LAMBDA(Akku; Wert)': 'REDUCE SCAN', 'Matrix; LAMBDA(Zeile)': 'BYROW', 'Matrix; LAMBDA(Spalte)': 'BYCOL',
+  'Zeilen; Spalten; LAMBDA(Zeile; Spalte)': 'MAKEARRAY', 'Parameter': 'ISOMITTED',
+  'Suchkriterium; Matrix; Spaltenindex; [Bereich_Verweis]': 'VLOOKUP', 'Suchkriterium; Matrix; Zeilenindex; [Bereich_Verweis]': 'HLOOKUP',
+  'Suchkriterium; Suchmatrix; Rückgabematrix; [Wenn_nicht_gefunden]; [Vergleichsmodus]; [Suchmodus]': 'XLOOKUP', 'Suchkriterium; Suchmatrix; [Vergleichstyp]': 'MATCH',
+  'Suchkriterium; Suchmatrix; [Vergleichsmodus]; [Suchmodus]': 'XMATCH', 'Matrix; Zeile; [Spalte]': 'INDEX', 'Index; Wert1; [Wert2]; …': 'CHOOSE', '[Bezug]': 'ROW COLUMN SHEET',
+  'Matrix': 'ROWS COLUMNS TRANSPOSE MDETERM MINVERSE', 'Bezug; Zeilen; Spalten; [Höhe]; [Breite]': 'OFFSET', 'Bezug_Text; [A1]': 'INDIRECT',
+  'Zeile; Spalte; [Abs]; [A1]; [Tabellenname]': 'ADDRESS', 'Suchkriterium; Suchvektor; [Ergebnisvektor]': 'LOOKUP', 'Matrix; Einschließen; [Wenn_leer]': 'FILTER',
+  'Matrix; [Sortierindex]; [Sortierreihenfolge]; [Nach_Spalte]': 'SORT', 'Matrix; Nach_Matrix1; [Reihenfolge1]; …': 'SORTBY', 'Matrix; [Nach_Spalte]; [Genau_einmal]': 'UNIQUE',
+  'Zeilen; [Spalten]; [Anfang]; [Schritt]': 'SEQUENCE', 'Matrix1; [Matrix2]; … ': 'VSTACK HSTACK', 'Matrix; [Zeilen]; [Spalten]': 'TAKE DROP', 'Matrix; Zeile1; [Zeile2]; …': 'CHOOSEROWS',
+  'Matrix; Spalte1; [Spalte2]; …': 'CHOOSECOLS', 'Matrix; [Ignorieren]; [Nach_Spalte]': 'TOCOL TOROW', 'Vektor; Anzahl; [Auffüllen_mit]': 'WRAPROWS WRAPCOLS',
+  'Matrix; Zeilen; [Spalten]; [Auffüllen_mit]': 'EXPAND', 'Text1; [Text2]; …': 'CONCATENATE', 'Trennzeichen; Leere_ignorieren; Text1; [Text2]; …': 'TEXTJOIN',
+  'Text; [Anzahl_Zeichen]': 'LEFT RIGHT', 'Text; Erstes_Zeichen; Anzahl_Zeichen': 'MID', 'Text': 'LEN UPPER LOWER PROPER TRIM CLEAN VALUE CODE UNICODE T ARABIC DATEVALUE TIMEVALUE',
+  'Suchtext; Text; [Erstes_Zeichen]': 'FIND SEARCH', 'Alter_Text; Erstes_Zeichen; Anzahl_Zeichen; Neuer_Text': 'REPLACE', 'Text; Alter_Text; Neuer_Text; [ntes_Auftreten]': 'SUBSTITUTE',
+  'Wert; Textformat': 'TEXT', 'Text; [Dezimaltrennzeichen]; [Gruppentrennzeichen]': 'NUMBERVALUE', 'Text; Multiplikator': 'REPT', 'Text1; Text2': 'EXACT',
+  'Zahl ': 'CHAR UNICHAR ROMAN', 'Zahl; [Dezimalstellen]; [Keine_Punkte]': 'FIXED', 'Wert': 'N ISBLANK ISNUMBER ISTEXT ISNONTEXT ISERROR ISERR ISNA ISLOGICAL ISREF ERROR.TYPE TYPE',
+  'Text; Trennzeichen; [Instanz]; [Vergleichsmodus]; [Bei_Ende]; [Wenn_nicht_gefunden]': 'TEXTBEFORE TEXTAFTER',
+  'Text; Spaltentrenner; [Zeilentrenner]; [Leere_ignorieren]; [Vergleichsmodus]; [Auffüllen_mit]': 'TEXTSPLIT', 'Wert; [Format]': 'VALUETOTEXT', 'Matrix; [Format]': 'ARRAYTOTEXT',
+  'Text; Muster; [Groß_klein]': 'REGEXTEST', 'Text; Muster; [Rückgabemodus]; [Groß_klein]': 'REGEXEXTRACT', 'Text; Muster; Ersetzung; [Vorkommen]; [Groß_klein]': 'REGEXREPLACE',
+  'Adresse; [Anzeigename]': 'HYPERLINK', 'Bezug': 'FORMULATEXT ISFORMULA', 'Infotyp; [Bezug]': 'CELL', 'Zahl; Basis; [Mindestlänge]': 'BASE', 'Text; Basis': 'DECIMAL',
+  'Zahl; [Stellen]': 'DEC2BIN DEC2HEX DEC2OCT', 'Zahl  ': 'BIN2DEC HEX2DEC OCT2DEC', 'Größe': 'MUNIT',
+  'Jahr; Monat; Tag': 'DATE', 'Stunde; Minute; Sekunde': 'TIME', 'Zahl   ': 'YEAR MONTH DAY HOUR MINUTE SECOND ISOWEEKNUM', 'Zahl; [Typ]': 'WEEKDAY WEEKNUM',
+  'Ausgangsdatum; Monate': 'EDATE EOMONTH', 'Ausgangsdatum; Enddatum; [Freie_Tage]': 'NETWORKDAYS', 'Ausgangsdatum; Enddatum; [Wochenende]; [Freie_Tage]': 'NETWORKDAYS.INTL',
+  'Ausgangsdatum; Tage; [Freie_Tage]': 'WORKDAY', 'Ausgangsdatum; Tage; [Wochenende]; [Freie_Tage]': 'WORKDAY.INTL', 'Ausgangsdatum; Enddatum; Einheit': 'DATEDIF',
+  'Enddatum; Ausgangsdatum': 'DAYS', 'Ausgangsdatum; Enddatum; [Methode]': 'DAYS360', 'Ausgangsdatum; Enddatum; [Basis]': 'YEARFRAC',
+  'Zins; Zzr; Bw; [Zw]; [F]': 'PMT', 'Zins; Zzr; Rmz; [Bw]; [F]': 'FV', 'Zins; Zzr; Rmz; [Zw]; [F]': 'PV', 'Zzr; Rmz; Bw; [Zw]; [F]; [Schätzwert]': 'RATE', 'Zins; Rmz; Bw; [Zw]; [F]': 'NPER',
+  'Zins; Wert1; [Wert2]; …': 'NPV', 'Werte; [Schätzwert]': 'IRR', 'Zins; Zr; Zzr; Bw; [Zw]; [F]': 'IPMT PPMT', 'Nominalzins; Perioden': 'EFFECT', 'Effektivzins; Perioden': 'NOMINAL',
+  'Ansch_Wert; Restwert; Nutzungsdauer': 'SLN', 'Zins; Werte; Zeitpunkte': 'XNPV', 'Werte; Zeitpunkte; [Schätzwert]': 'XIRR', 'Zins; Zzr; Bw; Zeitraum_Anfang; Zeitraum_Ende; F': 'CUMIPMT CUMPRINC',
+  'Ansch_Wert; Restwert; Nutzungsdauer; Periode; [Monate]': 'DB', 'Ansch_Wert; Restwert; Nutzungsdauer; Periode; [Faktor]': 'DDB', 'Ansch_Wert; Restwert; Nutzungsdauer; Periode': 'SYD',
+  'Werte; Investition; Reinvestition': 'MIRR', 'Kapital; Zinsen': 'FVSCHEDULE', 'Zins; Bw; Zw': 'PDURATION', 'Zzr; Bw; Zw': 'RRI', 'Zins; Zr; Zzr; Bw': 'ISPMT',
+  'Datenbank; Datenbankfeld; Suchkriterien': 'DSUM DCOUNT DCOUNTA DAVERAGE DMAX DMIN DGET DPRODUCT',
+};
+/** Argument help per function (canonical English name → German argument list, "; " separated). */
+export const FN_ARGS = {};
+for (const [args, names] of Object.entries(ARGS_SRC)) for (const n of names.split(' ')) FN_ARGS[n] = args.trim();
 
 export { fmtGeneralDe };

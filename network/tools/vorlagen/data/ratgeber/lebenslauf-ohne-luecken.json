@@ -1,0 +1,54 @@
+{
+ "id": "lebenslauf-ohne-luecken",
+ "order": 3,
+ "card": "Lebenslauf ohne Lücken",
+ "short": "Arbeitslosigkeit, Krankheit, Pflege oder Elternzeit ehrlich und souverän darstellen.",
+ "title": "Lücken im Lebenslauf richtig erklären | FaleNetwork",
+ "h1": "Lücken im Lebenslauf – ehrlich und souverän erklären",
+ "desc": "Lücken im Lebenslauf richtig darstellen: Elternzeit, Pflege, Krankheit, Arbeitslosigkeit oder Neuorientierung – mit Formulierungen, die ehrlich sind und nichts zu viel verraten.",
+ "lede": "Fast jeder Lebenslauf hat Lücken. Problematisch wird es erst, wenn sie unerklärt bleiben. Ein kurzer, sachlicher Eintrag reicht meistens.",
+ "sections": [
+  {
+   "h": "Welche Lücken auffallen",
+   "text": [
+    "Ein, zwei Monate zwischen zwei Stellen fallen niemandem auf. Ab etwa drei Monaten fragen sich Personaler, was passiert ist. Schreib den Zeitraum lieber selbst in den Lebenslauf, als ihn zu verstecken – etwa durch Jahresangaben statt Monaten, das wirkt schnell unehrlich."
+   ]
+  },
+  {
+   "h": "Formulierungen, die funktionieren",
+   "list": [
+    "„Elternzeit“ oder „Familienzeit“ – ohne weitere Details.",
+    "„Pflege eines Angehörigen“ – zeigt Verantwortung, mehr musst du nicht sagen.",
+    "„Berufliche Neuorientierung, Weiterbildung in …“ – wenn du die Zeit genutzt hast.",
+    "„Arbeitssuchend“ – ehrlich und neutral, gern mit Kursen, die du in der Zeit gemacht hast.",
+    "„Auszeit nach längerer Erkrankung, heute voll belastbar“ – Krankheiten musst du nicht nennen.",
+    "„Reise / Sabbatical“ – mit einem Satz, was du mitgenommen hast."
+   ]
+  },
+  {
+   "h": "Was du nicht schreiben musst",
+   "text": [
+    "Gesundheitliche Details, private Krisen oder Gründe für eine Kündigung gehören nicht in den Lebenslauf. Im Gespräch reicht ein Satz, der zeigt, dass das Thema abgeschlossen ist. Ein Foto, dein Geburtsdatum, Familienstand oder Religion sind in Deutschland ebenfalls freiwillig."
+   ]
+  },
+  {
+   "h": "Im Editor umsetzen",
+   "text": [
+    "Im Lebenslauf-Editor kannst du eine Station ohne Arbeitgeber anlegen – nur mit Zeitraum und Bezeichnung wie „Familienzeit“."
+   ],
+   "tools": [
+    "cv-builder"
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Muss ich jede Lücke erklären?",
+   "a": "Nein. Kurze Pausen von wenigen Wochen bleiben unerwähnt. Längere Zeiträume ab etwa drei Monaten solltest du mit einem neutralen Stichwort füllen."
+  },
+  {
+   "q": "Darf ich Lücken mit falschen Angaben füllen?",
+   "a": "Nein. Falsche Angaben im Lebenslauf können später sogar eine Kündigung rechtfertigen. Ehrlich und knapp ist immer die bessere Wahl."
+  }
+ ]
+}

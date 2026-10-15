@@ -1,0 +1,163 @@
+{
+ "id": "ausbildung-fachinformatiker",
+ "field": "ausbildung",
+ "name": "Ausbildung Fachinformatiker/in",
+ "search": "ausbildung fachinformatiker anwendungsentwicklung systemintegration bewerbung ausbildungsplatz it ausbildung schüler",
+ "short": "Anwendungsentwicklung oder Systemintegration – mit Projekten.",
+ "desc": "Bewerbung für die Ausbildung zum Fachinformatiker / zur Fachinformatikerin: Musteranschreiben für Anwendungsentwicklung und Systemintegration, Lebenslauf mit Projekten.",
+ "intro": "IT-Betriebe wollen sehen, dass du dich schon mit Technik beschäftigt hast: ein selbst gebauter PC, ein kleines Programm, ein Server zu Hause. Nenn die Fachrichtung und zeig ein Projekt, das du erklären kannst.",
+ "lookFor": [
+  "Realschulabschluss oder Abitur, gern gute Noten in Mathe und Englisch",
+  "Eigene Projekte: Programme, Webseiten, Homeserver",
+  "Logisches Denken",
+  "Englisch lesen können",
+  "Lernbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Anwendungsentwicklung mit eigenem Projekt",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Fachinformatiker für Anwendungsentwicklung",
+   "to": {
+    "org": "Software Werkstatt Ulm GmbH",
+    "sal": "none",
+    "street": "Frauenstraße 20",
+    "city": "89073 Ulm"
+   },
+   "body": [
+    "unser Fußballverein hat seine Mannschaftsaufstellungen bis letztes Jahr per Gruppenchat verschickt. Ich habe eine kleine Web-App programmiert, mit der Trainer und Spieler zu- und absagen können. Inzwischen nutzen sie sechs Mannschaften.",
+    "Ich mache im Frühjahr Abitur, Informatik ist eines meiner Prüfungsfächer. Ich programmiere seit drei Jahren in Python und JavaScript und habe für die App eine Datenbank aufgesetzt und gelernt, warum man Passwörter nicht im Klartext speichert. Den Code zeige ich Ihnen gern.",
+    "Ihre Firma entwickelt Software für Handwerksbetriebe. Dass Programme dort wirklich jemandem die Arbeit erleichtern, finde ich das Beste daran."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis 12. Klasse",
+    "Link zum Projekt"
+   ]
+  },
+  {
+   "label": "Systemintegration mit Homelab",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Fachinformatikerin für Systemintegration",
+   "to": {
+    "org": "Stadtwerke Ulm/Neu-Ulm",
+    "sal": "none",
+    "street": "Karlstraße 1",
+    "city": "89073 Ulm"
+   },
+   "body": [
+    "in unserem Keller steht ein alter Laptop, auf dem ein kleiner Linux-Server läuft. Er sichert die Fotos meiner Familie und blockiert Werbung im WLAN. Aufgesetzt habe ich ihn mit Anleitungen aus dem Internet und viel Ausprobieren.",
+    "Im Sommer schließe ich die Realschule ab. In der Schule bin ich im Technik-Team, das die Beamer und Tablets betreut. Ich habe einen PC selbst zusammengebaut und erkläre meinen Großeltern geduldig, warum sie Updates installieren sollen.",
+    "Bei einem Versorger ist IT für die ganze Stadt wichtig. Das möchte ich lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis"
+   ],
+   "from": [
+    "Sophie Kaya",
+    "Söflinger Straße 50",
+    "89077 Ulm"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 0,
+  "name": "Elias Brandner",
+  "title": "Schüler",
+  "street": "Olgastraße 70",
+  "city": "89073 Ulm",
+  "web": "github.example/elias-b",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Web-App für Mannschaftsaufstellungen (eigenes Projekt)",
+    "SV Ulm-Söflingen",
+    "Ulm",
+    "- Python, JavaScript, Datenbank\n- Nutzung durch sechs Mannschaften"
+   ],
+   [
+    "07/2025",
+    "07/2025",
+    "Schülerpraktikum IT (2 Wochen)",
+    "Systemhaus Donau",
+    "Ulm",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2027",
+    "Gymnasium (voraussichtlich Abitur)",
+    "Kepler-Gymnasium",
+    "Ulm",
+    "Prüfungsfach Informatik"
+   ]
+  ],
+  "skills": [
+   [
+    "Python",
+    3
+   ],
+   [
+    "JavaScript",
+    3
+   ],
+   [
+    "Datenbanken",
+    2
+   ],
+   [
+    "Linux",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Fußball, Programmieren"
+ },
+ "do": [
+  "Ein eigenes Projekt erklären.",
+  "Fachrichtung im Betreff.",
+  "Code-Link, wenn vorhanden."
+ ],
+ "dont": [
+  "Nur „Gaming“ als IT-Erfahrung.",
+  "Fremden Code als eigenen ausgeben.",
+  "Floskeln."
+ ],
+ "questions": [
+  "Erzählen Sie von Ihrem Projekt.",
+  "Was ist der Unterschied zwischen RAM und Festplatte?",
+  "Wie lösen Sie ein Problem, das Sie nicht kennen?",
+  "Welche Fachrichtung interessiert Sie und warum?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  },
+  {
+   "q": "Welche Fachrichtungen gibt es?",
+   "a": "Anwendungsentwicklung, Systemintegration, Daten- und Prozessanalyse sowie digitale Vernetzung. Nenn die Fachrichtung im Betreff."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "softwareentwickler",
+  "werkstudent-it",
+  "ausbildung-elektroniker"
+ ]
+}

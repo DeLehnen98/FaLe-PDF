@@ -46,7 +46,7 @@ export const CELL_STYLES = [
 ];
 
 export function newSheet(name) {
-  return { name, cells: new Map(), colW: [], rowH: new Map(), merges: [], freeze: 0, freezeC: 0, maxR: -1, maxC: -1, charts: [], cf: [], dv: [], autoFilter: null, hiddenRows: new Set(), hiddenColW: {}, spill: new Map(), tabColor: null, protect: null, pivot: null };
+  return { name, cells: new Map(), colW: [], rowH: new Map(), merges: [], freeze: 0, freezeC: 0, maxR: -1, maxC: -1, charts: [], cf: [], dv: [], autoFilter: null, hiddenRows: new Set(), hiddenColW: {}, spill: new Map(), tabColor: null, protect: null, pivot: null, notes: new Map(), links: new Map(), outline: new Map(), page: null };
 }
 export function newWorkbook() {
   return { sheets: [newSheet('Tabelle1')], date1904: false, names: [] };
@@ -257,6 +257,7 @@ export function makeCtx(wb, { dirty = null } = {}) {
     spillChanges, circular,
     sheetIndex: name => (idxByName.has(String(name).toLowerCase()) ? idxByName.get(String(name).toLowerCase()) : -1),
     bound: si => ({ maxR: wb.sheets[si].maxR, maxC: wb.sheets[si].maxC }),
+    sheetCount: () => wb.sheets.length,
     fmt: (v, code) => formatValue(v, code),
     name: n => { const d = findName(wb, n, ctx.sheet); return d ? { f: d.ref, si: d.si } : null; },
     isFormula: (si, r, c) => { const x = wb.sheets[si] && wb.sheets[si].cells.get(KEY(r, c)); return !!(x && x.f); },

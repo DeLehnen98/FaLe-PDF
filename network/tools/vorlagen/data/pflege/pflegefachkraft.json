@@ -1,0 +1,415 @@
+{
+ "id": "pflegefachkraft",
+ "field": "pflege",
+ "popular": true,
+ "name": "Pflegefachkraft",
+ "search": "pflegefachfrau pflegefachmann krankenschwester krankenpfleger gesundheits- und krankenpflegerin altenpflegerin examinierte pflegekraft station klinik",
+ "short": "Nach dem Examen, mit Stationserfahrung oder initiativ beim ambulanten Dienst.",
+ "desc": "Bewerbung als Pflegefachkraft: drei ausformulierte Anschreiben (Examen, Erfahrung, Initiativ), Lebenslauf mit Foto-Platzhalter und Tipps fürs Gespräch.",
+ "intro": "Pflegeeinrichtungen suchen händeringend Personal – trotzdem lesen Pflegedienstleitungen genau, wer zu ihrem Team passt. Wichtig sind die Berufserlaubnis, Erfahrung im passenden Bereich und ehrliche Angaben zu Schichten und Stunden. Wer konkret erzählt, wie er mit Stress, Angehörigen und Dokumentation umgeht, hebt sich ab.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung als Pflegefachfrau/-mann oder nach altem Recht (Gesundheits- und Krankenpflege, Altenpflege) und die Erlaubnis zum Führen der Berufsbezeichnung",
+  "Klarheit über Dienstmodell: Wechselschicht, Dauernacht, Wochenenden, Teilzeit – sag, was du leisten kannst",
+  "Fachliche Schwerpunkte wie Wundversorgung, Palliativpflege, Intensiv oder Gerontopsychiatrie mit Beispielen",
+  "Sorgfältige Pflegedokumentation und Erfahrung mit dem dort genutzten Dokumentationssystem oder die Bereitschaft, es schnell zu lernen",
+  "Ruhe im Umgang mit Angehörigen, Ärztinnen und Ärzten und mit Situationen, die nicht nach Plan laufen"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinsteigerin direkt nach dem Examen",
+   "level": "berufseinstieg",
+   "position": "Pflegefachfrau auf der Station für Innere Medizin",
+   "ref": "PF-2027-14",
+   "to": {
+    "org": "Kreiskrankenhaus St. Annen gGmbH",
+    "sal": "m",
+    "contact": "Brenner",
+    "street": "Am Klosterberg 3",
+    "city": "66606 St. Wendel"
+   },
+   "body": [
+    "auf der 4B Ihres Hauses habe ich im zweiten Ausbildungsjahr meinen Praxiseinsatz in der Inneren gemacht. Damals hat mich Ihre Stationsleitung am letzten Tag gefragt, ob ich nach dem Examen wiederkommen möchte. Im September habe ich die staatliche Prüfung zur Pflegefachfrau mit 1,8 bestanden – und die Antwort ist ja.",
+    "In der generalistischen Ausbildung war ich in Akutklinik, Langzeitpflege und ambulantem Dienst. Am meisten gelernt habe ich in der Inneren: Patientinnen mit Herzinsuffizienz, Diabetes und Mehrfacherkrankungen, viele Aufnahmen pro Schicht, enge Absprachen mit dem ärztlichen Dienst. Meinen Prüfungsfall habe ich zur Sturzprophylaxe nach dem Expertenstandard geschrieben. Die Dokumentation am PC macht mir keine Mühe, und in Nachtdiensten unter Anleitung habe ich gemerkt, dass ich auch dann ruhig bleibe, wenn zwei Klingeln gleichzeitig gehen.",
+    "Ich suche ein Haus, in dem Neue eine echte Einarbeitung bekommen. Dass Sie Berufsanfängern in den ersten Wochen eine feste Ansprechperson zur Seite stellen, hat mir Ihre Praxisanleiterin damals erzählt, und genau das hat den Ausschlag gegeben. Wechselschicht in Vollzeit ist für mich in Ordnung, die Wochenenddienste plane ich ein.",
+    "Starten könnte ich zum 1. November. Für ein Gespräch komme ich gern auf die Station, auch kurzfristig."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examenszeugnis",
+    "Urkunde zur Berufsbezeichnung",
+    "Beurteilungen der Praxiseinsätze"
+   ]
+  },
+  {
+   "label": "Mit Stationserfahrung, Wechsel in die ambulante Pflege",
+   "level": "erfahren",
+   "position": "Pflegefachkraft in Teilzeit (30 Stunden)",
+   "to": {
+    "org": "Ambulanter Pflegedienst Saarblick GmbH",
+    "sal": "f",
+    "contact": "Kessler",
+    "street": "Bahnhofstraße 41",
+    "city": "66333 Völklingen"
+   },
+   "from": [
+    "Dennis Morawietz",
+    "Hohlstraße 18",
+    "66333 Völklingen"
+   ],
+   "body": [
+    "seit neun Jahren arbeite ich als Gesundheits- und Krankenpfleger in der Unfallchirurgie, die letzten vier davon als stellvertretende Stationsleitung. Ich möchte weiter pflegen, aber anders: mit mehr Zeit für den einzelnen Menschen und ohne den Takt einer 32-Betten-Station. Ihre Anzeige für die Tour im Raum Völklingen kam deshalb genau richtig.",
+    "Was ich mitbringe, passt gut in die häusliche Versorgung. Ich bin Wundexperte nach ICW und versorge seit Jahren chronische und postoperative Wunden, inklusive Vakuumtherapie. Ich habe Medikamentenpläne mit Hausarztpraxen abgestimmt, Entlassungen organisiert und Angehörige angeleitet, wie sie Kompressionsstrümpfe anziehen oder einen Port pflegen. Als Stellvertretung habe ich Dienstpläne geschrieben und neue Kolleginnen eingearbeitet – ich weiß also auch, wie es sich anfühlt, wenn jemand kurzfristig ausfällt.",
+    "Einen Führerschein der Klasse B habe ich seit 2009, die Gegend kenne ich, weil ich hier aufgewachsen bin. Mit 30 Wochenstunden kann ich Früh- und Spätdienste übernehmen, jedes zweite Wochenende ist kein Problem.",
+    "Meine Kündigungsfrist beträgt drei Monate zum Quartalsende. Ich würde mich freuen, Sie und Ihr Team bei einem Gespräch oder einer Hospitation kennenzulernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde",
+    "Zertifikat Wundexperte ICW",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Initiativbewerbung beim Hospiz",
+   "level": "initiativ",
+   "position": "Pflegefachkraft (Initiativbewerbung)",
+   "to": {
+    "org": "Hospiz Haus Lichtblick e. V.",
+    "sal": "n",
+    "contact": "Miriam Ohl",
+    "street": "Waldweg 12",
+    "city": "66119 Saarbrücken"
+   },
+   "from": [
+    "Sabine Krämer-Yilmaz",
+    "Am Staden 27",
+    "66121 Saarbrücken"
+   ],
+   "body": [
+    "auf Ihrer Website steht gerade keine Stelle ausgeschrieben. Ich schreibe Ihnen trotzdem, weil ich mich nach 14 Jahren in der stationären Altenpflege bewusst für die Arbeit im Hospiz entschieden habe und dafür auch schon etwas getan habe.",
+    "Im vergangenen Jahr habe ich die Weiterbildung Palliative Care mit 160 Stunden abgeschlossen. In meinem Wohnbereich begleite ich seitdem die meisten Bewohnerinnen und Bewohner am Lebensende mit, ich bespreche mit Hausärzten die Schmerztherapie und führe die Gespräche mit den Familien, wenn es um Wünsche für die letzten Tage geht. Was mir dabei immer gefehlt hat, ist Zeit. Zwanzig Minuten am Bett, während auf dem Flur das Abendessen verteilt werden muss, reichen oft nicht.",
+    "Ich weiß, dass Hospizarbeit belastend ist. Supervision nehme ich gern in Anspruch, und ich habe für mich einen guten Umgang mit Abschieden gefunden. Ich bin examinierte Altenpflegerin, arbeite derzeit 35 Stunden und könnte mir 25 bis 35 Stunden bei Ihnen vorstellen, auch im Nachtdienst.",
+    "Wenn Sie in nächster Zeit eine Pflegekraft brauchen, rufen Sie mich gern an. Ich komme auch zu einem Hospitationstag, damit wir beide sehen, ob es passt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Examensurkunde Altenpflege",
+    "Zertifikat Palliative Care",
+    "Zwischenzeugnis"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a07",
+  "design": "modern",
+  "accent": 1,
+  "name": "Lea Brandt",
+  "title": "Pflegefachfrau",
+  "street": "Kastanienweg 7",
+  "city": "66606 St. Wendel",
+  "exp": [
+   [
+    "10/2023",
+    "09/2026",
+    "Auszubildende Pflegefachfrau",
+    "Klinikum Ostertal",
+    "Ottweiler",
+    "- Einsätze in Innerer Medizin, Chirurgie und Geriatrie\n- Praxiseinsatz Innere Medizin im Kreiskrankenhaus St. Annen\n- Nachtdienste unter Anleitung"
+   ],
+   [
+    "04/2021",
+    "09/2023",
+    "Aushilfe in der Betreuung (Minijob)",
+    "Seniorenresidenz Am Weiher",
+    "St. Wendel",
+    "- Gruppenangebote und Einzelbetreuung\n- Begleitung bei Spaziergängen und Arztterminen"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2023",
+    "09/2026",
+    "Ausbildung zur Pflegefachfrau – staatliche Prüfung, Note 1,8",
+    "Pflegeschule am Klinikum Ostertal",
+    "Ottweiler",
+    "Praxiseinsätze: Akutpflege, stationäre Langzeitpflege, ambulante Pflege, Pädiatrie, Psychiatrie"
+   ],
+   [
+    "08/2014",
+    "06/2023",
+    "Allgemeine Hochschulreife",
+    "Gymnasium Wendalinum",
+    "St. Wendel",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "03/2026",
+    "",
+    "Kinästhetik Grundkurs",
+    "Bildungszentrum Pflege Saar",
+    "",
+    ""
+   ],
+   [
+    "2022",
+    "",
+    "Gruppenleiter-Schulung (Juleica)",
+    "Jugendrotkreuz",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Expertenstandards (Sturz, Dekubitus, Schmerz)",
+    4
+   ],
+   [
+    "Pflegedokumentation am PC",
+    4
+   ],
+   [
+    "Wundversorgung",
+    3
+   ],
+   [
+    "Kinästhetik",
+    3
+   ],
+   [
+    "Medikamentenmanagement",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Handball im Verein, Gruppenleiterin beim Jugendrotkreuz"
+ },
+ "do": [
+  "Schreib konkret, in welchem Bereich du gearbeitet hast und was du dort täglich gemacht hast.",
+  "Nenn Weiterbildungen mit Stundenumfang, z. B. Praxisanleitung oder Palliative Care.",
+  "Sag ehrlich, welche Dienste du übernehmen kannst – das spart beiden Seiten Zeit."
+ ],
+ "dont": [
+  "Floskeln wie „Ich arbeite gern mit Menschen“ ohne Beispiel – das schreiben fast alle.",
+  "Über den alten Arbeitgeber oder die Personalsituation dort schimpfen.",
+  "Die Berufsurkunde vergessen – ohne sie darf niemand dich als Fachkraft einsetzen."
+ ],
+ "questions": [
+  "Wie gehen Sie vor, wenn zwei Patienten gleichzeitig Hilfe brauchen?",
+  "Erzählen Sie von einer Situation mit schwierigen Angehörigen.",
+  "Welche Dienste können Sie übernehmen, und wie viele Wochenenden im Monat?",
+  "Was tun Sie, wenn Ihnen ein Fehler bei der Medikamentengabe auffällt?"
+ ],
+ "pay": "In vielen Häusern gelten Tarifverträge oder kirchliche Arbeitsvertragsrichtlinien. Frag im Gespräch nach der Eingruppierung und nach Zulagen für Nacht-, Wochenend- und Feiertagsdienste.",
+ "faq": [
+  {
+   "q": "Darf ich mich vor dem Examen schon bewerben?",
+   "a": "Ja, das ist üblich. Bewirb dich drei bis sechs Monate vor dem Abschluss, leg dein letztes Zwischenzeugnis bei und schreib, wann die Prüfung ist. Die Urkunde reichst du nach."
+  },
+  {
+   "q": "Ich habe noch eine Ausbildung nach altem Recht. Gilt die?",
+   "a": "Ja. Wer Gesundheits- und Krankenpflege, Kinderkrankenpflege oder Altenpflege abgeschlossen hat, behält seine Berufsbezeichnung und darf weiterhin als Fachkraft arbeiten. Nenn die genaue Bezeichnung aus deiner Urkunde."
+  },
+  {
+   "q": "Wie bewerbe ich mich mit einem Pflegeabschluss aus dem Ausland?",
+   "a": "In Deutschland brauchst du eine Anerkennung durch die zuständige Landesbehörde. Schreib im Anschreiben, wie weit das Verfahren ist (z. B. Defizitbescheid, Anpassungslehrgang, Kenntnisprüfung) und welches Deutschniveau du hast – viele Arbeitgeber begleiten den Weg."
+  }
+ ],
+ "related": [
+  "pflegehelfer",
+  "medizinische-fachangestellte",
+  "betreuungskraft",
+  "erzieherin"
+ ],
+ "en": {
+  "slug": "nurse",
+  "name": "Nurse",
+  "search": "nurse registered nurse staff nurse nursing home ward nurse newly qualified",
+  "short": "Newly qualified, experienced or moving into community nursing.",
+  "desc": "Nurse CV and cover letter examples: letters for a newly qualified nurse and an experienced nurse moving into community care, plus a ready CV.",
+  "intro": "Healthcare employers read carefully who will fit their team. They want to see your registration, the settings you have worked in, the shifts you can cover and concrete examples of how you handle pressure, families and documentation.",
+  "lookFor": [
+   "Registration with the nursing regulator of your country",
+   "Experience in the relevant setting: acute ward, care home, community, intensive care",
+   "Clarity about shifts, nights and weekends",
+   "Careful documentation and medication management",
+   "Calm communication with patients, families and doctors"
+  ],
+  "letters": [
+   {
+    "label": "Newly qualified nurse",
+    "level": "berufseinstieg",
+    "position": "Staff nurse – medical ward",
+    "to": {
+     "org": "St Anne’s Hospital",
+     "sal": "m",
+     "street": "Abbey Road",
+     "city": "Lancaster LA1 4RP",
+     "contact": "Brennan"
+    },
+    "body": [
+     "I did my second-year placement on your Ward 4B, and on my last day the ward manager asked whether I would come back once I qualified. I passed my final assessments in September – and the answer is yes.",
+     "On placement I cared for patients with heart failure, diabetes and several conditions at once, with frequent admissions and close teamwork with the medical team. My final project was on falls prevention. I document carefully and stay calm on nights when two call bells go at once.",
+     "I am looking for a ward with a proper preceptorship, and I know you offer one. Full-time rotating shifts suit me. I could start in November."
+    ],
+    "att": [
+     "CV",
+     "Registration confirmation",
+     "Placement reports"
+    ]
+   },
+   {
+    "label": "Experienced nurse moving into the community",
+    "level": "erfahren",
+    "position": "Community nurse (30 hours)",
+    "to": {
+     "org": "Bayview Community Care",
+     "sal": "f",
+     "street": "41 Station Road",
+     "city": "Morecambe LA4 5HF",
+     "contact": "Kessler"
+    },
+    "body": [
+     "After nine years on a trauma ward, the last four as deputy ward manager, I still want to nurse – but differently: with more time for each person.",
+     "I am a qualified tissue viability link nurse and have managed chronic and post-operative wounds for years, including negative pressure therapy. I have coordinated discharges, agreed medication plans with GPs and taught families how to manage compression stockings.",
+     "I have held a driving licence since 2009 and know the area well. Earlies, lates and every other weekend are fine; my notice period is three months."
+    ],
+    "att": [
+     "CV",
+     "Registration",
+     "References"
+    ],
+    "from": [
+     "Daniel Morgan",
+     "18 Bare Lane",
+     "Morecambe LA4 6DE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a07",
+   "design": "modern",
+   "accent": 1,
+   "name": "Leah Brandon",
+   "title": "Registered nurse",
+   "street": "7 Chestnut Walk",
+   "city": "Lancaster LA1 3QE",
+   "exp": [
+    [
+     "09/2023",
+     "09/2026",
+     "Student nurse placements",
+     "St Anne’s Hospital and community teams",
+     "Lancaster",
+     "- Medical, surgical and older people’s wards\n- Admissions, discharges and documentation\n- Night shifts under supervision"
+    ],
+    [
+     "2021",
+     "2023",
+     "Healthcare assistant (part-time)",
+     "Willow Court Care Home",
+     "Lancaster",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2023",
+     "2026",
+     "BSc Nursing (Adult)",
+     "University of Cumbria",
+     "Lancaster",
+     "Final project: falls prevention on medical wards"
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "Moving and handling",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "Basic life support",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Patient assessment",
+     4
+    ],
+    [
+     "Documentation",
+     4
+    ],
+    [
+     "Wound care",
+     3
+    ],
+    [
+     "Medication rounds",
+     3
+    ],
+    [
+     "Falls prevention",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "A2"
+    ]
+   ],
+   "hobbies": "Netball, volunteering with St John Ambulance"
+  },
+  "do": [
+   "Say exactly which settings you have worked in.",
+   "Name training with hours or dates.",
+   "Be honest about shifts you can cover."
+  ],
+  "dont": [
+   "Write “I love working with people” without an example.",
+   "Criticise previous employers or staffing.",
+   "Forget your registration details."
+  ],
+  "questions": [
+   "How do you prioritise two patients needing help at once?",
+   "Tell us about a difficult conversation with a family.",
+   "Which shifts can you work?",
+   "What would you do if you noticed a medication error?"
+  ],
+  "faq": [
+   {
+    "q": "Can I apply before I qualify?",
+    "a": "Yes. Most nurses apply in their final months of training. Mention when you expect to qualify and register."
+   }
+  ]
+ }
+}

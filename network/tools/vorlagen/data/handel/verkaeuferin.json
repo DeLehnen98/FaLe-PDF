@@ -1,0 +1,178 @@
+{
+ "id": "verkaeuferin",
+ "field": "handel",
+ "name": "Verkäufer/in",
+ "search": "verkäufer verkaeufer verkaeuferin verkauf laden supermarkt textil mode boutique quereinstieg",
+ "short": "Lebensmittel, Mode, Fachhandel – mit Ausbildung oder Quereinstieg.",
+ "desc": "Bewerbung als Verkäufer/in: Musteranschreiben für Quereinstieg in den Modehandel und erfahrene Verkäuferin im Supermarkt, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Für Verkaufsstellen zählen Freundlichkeit, Zuverlässigkeit und Tempo. Viele Händler stellen auch Quereinsteiger ein. Zeig, dass du mit Kunden kannst, Ware ordentlich hältst und bei Kasse und Inventur sorgfältig bist.",
+ "lookFor": [
+  "Ausbildung als Verkäufer/in oder Erfahrung im Handel bzw. Kundenkontakt",
+  "Kundenfreundlichkeit und Beratung",
+  "Kasse und Warenverräumung",
+  "Flexibilität bei Arbeitszeiten",
+  "Zuverlässigkeit und Pünktlichkeit"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg in den Modehandel",
+   "level": "quereinstieg",
+   "position": "Verkäuferin in Teilzeit",
+   "to": {
+    "org": "Modehaus Lindemann",
+    "sal": "f",
+    "street": "Lange Straße 17",
+    "city": "26122 Oldenburg",
+    "contact": "Lindemann"
+   },
+   "body": [
+    "meine Freundinnen fragen mich vor jeder Hochzeit, was sie anziehen sollen. Bisher habe ich das nebenbei gemacht, neben meinem Job als Zahnarzthelferin. Jetzt möchte ich daraus meinen Beruf machen.",
+    "In der Praxis habe ich jeden Tag Patienten empfangen, beruhigt und beraten, oft unter Zeitdruck. Mit Kasse und Abrechnung kenne ich mich aus. Mode verfolge ich nicht nur in Zeitschriften: Ich nähe seit Jahren selbst und weiß, wie ein Schnitt sitzen muss und welche Stoffe nach drei Wäschen noch gut aussehen.",
+    "Ich kann 25 Stunden pro Woche arbeiten, auch samstags. Über einen Probetag in Ihrem Haus würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene Verkäuferin im Lebensmittelhandel",
+   "level": "erfahren",
+   "position": "Verkäuferin Frischetheke",
+   "to": {
+    "org": "Frischmarkt Ammerland GmbH",
+    "sal": "none",
+    "street": "Langenhof 3",
+    "city": "26160 Bad Zwischenahn"
+   },
+   "body": [
+    "an der Käsetheke bin ich in meinem jetzigen Markt diejenige, die weiß, welcher Kunde seinen Gouda „mittelalt, aber nicht zu salzig“ möchte. Zwölf Jahre Frischetheke haben mich gelehrt, dass Stammkunden wegen der Theke kommen und nicht wegen der Sonderangebote.",
+    "Ich bediene an Käse-, Wurst- und Fleischtheke, schneide, portioniere und richte Platten für Feiern. Die Hygienevorschriften und die Dokumentation der Temperaturen halte ich genau ein; bei der letzten Kontrolle durch das Veterinäramt gab es keine Beanstandung. Ich bestelle die Ware für die Theke und habe die Abschriften durch bessere Planung spürbar verringert.",
+    "Ihr Markt ist für seine Theke bekannt. Ich bin ab dem 1. März verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis",
+    "Belehrung nach Infektionsschutzgesetz"
+   ],
+   "from": [
+    "Heike Janssen",
+    "Peterstraße 9",
+    "26160 Bad Zwischenahn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "modern",
+  "accent": 2,
+  "name": "Tatjana Reimer",
+  "title": "Verkäuferin",
+  "street": "Donnerschweer Straße 70",
+  "city": "26123 Oldenburg",
+  "exp": [
+   [
+    "08/2015",
+    "",
+    "Zahnmedizinische Fachangestellte",
+    "Zahnarztpraxis Dr. Ahlers",
+    "Oldenburg",
+    "- Empfang und Terminplanung\n- Abrechnung und Kasse\n- Patientenberatung"
+   ],
+   [
+    "2012",
+    "2015",
+    "Ausbildung zur ZFA",
+    "Zahnarztpraxis Dr. Ahlers",
+    "Oldenburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2003",
+    "2012",
+    "Realschulabschluss",
+    "Realschule Ofenerdiek",
+    "Oldenburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Nähkurs Schnittkonstruktion",
+    "Volkshochschule Oldenburg",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    5
+   ],
+   [
+    "Kasse",
+    4
+   ],
+   [
+    "Stil- und Stoffkenntnis",
+    4
+   ],
+   [
+    "Nähen",
+    4
+   ],
+   [
+    "Terminorganisation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Russisch",
+    "C1"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Nähen, Flohmärkte"
+ },
+ "do": [
+  "Bring ein Beispiel für gute Beratung.",
+  "Zeig Sortimentskenntnis.",
+  "Nenn deine Verfügbarkeit."
+ ],
+ "dont": [
+  "Kassenerfahrung erfinden.",
+  "Lange Erklärungen zum Jobwechsel.",
+  "Unpassende Fotos oder Selfies."
+ ],
+ "questions": [
+  "Wie beraten Sie eine Kundin, die unsicher ist?",
+  "Was tun Sie, wenn viele Kunden gleichzeitig warten?",
+  "Wann können Sie arbeiten?",
+  "Was würden Sie an unserem Laden verbessern?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung als Verkäuferin?",
+   "a": "Nein, viele Händler stellen Quereinsteiger ein. Mit Erfahrung im Kundenkontakt, Kasse oder Lager hast du gute Chancen. Die zweijährige Ausbildung kannst du auch später noch machen."
+  }
+ ],
+ "related": [
+  "kaufmann-im-einzelhandel",
+  "kassiererin",
+  "verkaeuferin-baeckerei",
+  "verkaeuferin-minijob"
+ ]
+}

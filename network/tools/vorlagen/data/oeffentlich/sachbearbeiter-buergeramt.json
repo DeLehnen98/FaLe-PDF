@@ -1,0 +1,175 @@
+{
+ "id": "sachbearbeiter-buergeramt",
+ "field": "oeffentlich",
+ "name": "Sachbearbeiter/in im Bürgeramt",
+ "search": "bürgeramt bürgerbüro sachbearbeiter bürgerservice einwohnermeldeamt pass ausweis quereinstieg öffentlicher dienst",
+ "short": "Pässe, Meldewesen, Bürgerservice – auch für Quereinsteiger.",
+ "desc": "Bewerbung als Sachbearbeiter/in im Bürgeramt: Musteranschreiben für Quereinstieg aus dem Kundenservice und für Verwaltungsfachkräfte, plus Lebenslauf.",
+ "intro": "Im Bürgeramt stellst du Ausweise aus, bearbeitest An- und Abmeldungen und beantwortest Fragen aller Art – freundlich, korrekt und oft unter Zeitdruck. Viele Städte stellen auch Quereinsteiger mit kaufmännischer Ausbildung ein und bilden über einen Verwaltungslehrgang weiter.",
+ "lookFor": [
+  "Verwaltungsausbildung oder kaufmännische Ausbildung mit Kundenerfahrung",
+  "Freundlichkeit und Belastbarkeit im Publikumsverkehr",
+  "Genauigkeit bei Daten und Dokumenten",
+  "Fremdsprachen sind ein Plus",
+  "Bereitschaft zu Abend- oder Samstagsöffnungszeiten"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg aus dem Kundenservice",
+   "level": "quereinstieg",
+   "position": "Sachbearbeiterin im Bürgerbüro",
+   "to": {
+    "org": "Stadt Offenbach am Main – Personalservice",
+    "sal": "none",
+    "street": "Berliner Straße 100",
+    "city": "63065 Offenbach am Main"
+   },
+   "body": [
+    "neun Jahre Kundenservice in einer Bankfiliale: Ich habe Konten eröffnet, Ausweise geprüft, Formulare erklärt und gelernt, dass die meisten Menschen geduldig bleiben, wenn man ihnen sagt, was als Nächstes passiert. Für Ihr Bürgerbüro bewerbe ich mich unter der Kennziffer 33-2026.",
+    "Den Umgang mit sensiblen Daten und die Prüfung von Identitätsdokumenten kenne ich aus der Bank. Ich spreche Türkisch und Englisch, was in Offenbach oft hilft. Mir ist klar, dass ich das Melde- und Passrecht erst lernen muss. Den Verwaltungslehrgang würde ich berufsbegleitend absolvieren.",
+    "Den Wechsel in den öffentlichen Dienst habe ich mir gut überlegt: Ich möchte Menschen helfen, ohne ihnen etwas verkaufen zu müssen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnis"
+   ],
+   "ref": "33-2026"
+  },
+  {
+   "label": "Verwaltungsfachangestellter mit Erfahrung",
+   "level": "erfahren",
+   "position": "Sachbearbeiter Meldewesen",
+   "to": {
+    "org": "Stadt Darmstadt – Personal- und Organisationsamt",
+    "sal": "none",
+    "street": "Luisenplatz 5",
+    "city": "64283 Darmstadt"
+   },
+   "body": [
+    "im Bürgerbüro einer kleinen Gemeinde bin ich seit fünf Jahren für alles zuständig, vom Personalausweis bis zur Hundesteuer. Ich möchte mich jetzt in einer größeren Stadt auf das Meldewesen und die Ausweisstelle spezialisieren.",
+    "Ich bearbeite An-, Um- und Abmeldungen, stelle Ausweis- und Passdokumente aus, erteile Auskünfte aus dem Melderegister und kenne die Fachverfahren. Bei der Umstellung auf Online-Terminbuchung habe ich die Abläufe im Bürgerbüro neu geordnet, damit Wartezeiten kürzer wurden.",
+    "Samstagsdienste und lange Donnerstage sind für mich selbstverständlich."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Dienstzeugnis"
+   ],
+   "from": [
+    "Florian Weber",
+    "Heinrichstraße 40",
+    "64283 Darmstadt"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a20",
+  "design": "classic",
+  "accent": 0,
+  "name": "Elif Şahin",
+  "title": "Bankkauffrau, Kundenservice",
+  "street": "Frankfurter Straße 90",
+  "city": "63067 Offenbach am Main",
+  "exp": [
+   [
+    "08/2017",
+    "",
+    "Kundenberaterin Service",
+    "Mainbank eG, Filiale Offenbach",
+    "Offenbach",
+    "- Kontoeröffnung und Legitimationsprüfung\n- Serviceanliegen und Formulare\n- Beschwerden und Vermittlung an Fachabteilungen"
+   ],
+   [
+    "2014",
+    "2017",
+    "Ausbildung zur Bankkauffrau",
+    "Mainbank eG",
+    "Offenbach",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2005",
+    "2014",
+    "Fachhochschulreife",
+    "Rudolf-Koch-Schule",
+    "Offenbach",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Datenschutz-Grundlagen",
+    "Bankakademie",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    5
+   ],
+   [
+    "Dokumentenprüfung",
+    4
+   ],
+   [
+    "Datenschutz",
+    4
+   ],
+   [
+    "Office-Programme",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Volleyball, Lesepatin"
+ },
+ "do": [
+  "Kundenerfahrung mit Beispielen.",
+  "Kennziffer nennen.",
+  "Sprachen hervorheben."
+ ],
+ "dont": [
+  "Bürger als „Kunden“ abwerten oder verkaufen wollen.",
+  "Fristen verpassen.",
+  "Unvollständige Unterlagen."
+ ],
+ "questions": [
+  "Ein Bürger hat vergessen, Unterlagen mitzubringen, und ist verärgert. Was tun Sie?",
+  "Wie gehen Sie mit vertraulichen Daten um?",
+  "Warum der öffentliche Dienst?",
+  "Wie reagieren Sie auf lange Warteschlangen?"
+ ],
+ "pay": "Die Bezahlung richtet sich nach dem Tarifvertrag und der Entgeltgruppe aus der Ausschreibung.",
+ "faq": [
+  {
+   "q": "Kann ich ohne Verwaltungsausbildung im Bürgeramt arbeiten?",
+   "a": "Viele Kommunen stellen Quereinsteiger mit kaufmännischer Ausbildung ein und ermöglichen einen Verwaltungslehrgang. Lies die Ausschreibung genau, welche Abschlüsse anerkannt werden."
+  }
+ ],
+ "related": [
+  "verwaltungsfachangestellte",
+  "kundenservice-mitarbeiter",
+  "justizfachangestellte",
+  "bankkaufmann"
+ ]
+}

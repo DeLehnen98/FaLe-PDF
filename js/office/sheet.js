@@ -5,10 +5,13 @@ import { $, $$, h, esc, toast, errorToast, promptDialog, confirmDialog, download
 import { createShell, exportPdfFlow, tb } from './shell.js';
 import { officeMenu, oicon, KINDS, stripExt } from './kinds.js';
 import { newWorkbook, newSheet, getCell, setCell, recalc, recalcCells, displayOf, formatCell, formatValue, editTextOf, parseInput, formatKind, FORMATS, KEY, R_OF, C_OF,
-  DEFAULT_COL_W, ROW_H, insertRows, deleteRows, insertCols, deleteCols, sortRows, sortRowsMulti, recomputeBounds, currentRegion, valueAt, ensureSheetModel, findName, CELL_STYLES, invalidateDeps } from './workbook.js';
-import { colName, addr, parseAddr, parseRangeAddr, toDisplay, shiftRefs, renameSheetRefs, isErr, FUNCTION_LIST, dateToSerial, compile, precedents, isValidName, KNOWN_FUNCTIONS, canonicalFn, quoteSheet } from './formula.js';
+  DEFAULT_COL_W, ROW_H, insertRows, deleteRows, insertCols, deleteCols, sortRows, sortRowsMulti, recomputeBounds, currentRegion, valueAt, ensureSheetModel, findName, CELL_STYLES, invalidateDeps, makeCtx } from './workbook.js';
+import { colName, addr, parseAddr, parseRangeAddr, toDisplay, toCanonical, shiftRefs, renameSheetRefs, isErr, FUNCTION_LIST, dateToSerial, compile, precedents, isValidName, KNOWN_FUNCTIONS, canonicalFn, quoteSheet, evaluate, FN_ARGS } from './formula.js';
+import { t as tr } from '../i18n/index.js';
+import { openExternal } from '../security.js';
 import { SHEET_TEMPLATES } from './templates.js';
-import { ensureSheetExtras, cfStyle, filterHidden, columnValues, validationAt, shiftSheetRanges, extrasSnapshot, restoreExtras, rangeStr, parseRange, CF_TYPES, CF_STYLES, CF_SCALES, EMPTY, dvAllows, dvDescribe } from './sheetfx.js';
+import { buildSheetTemplate } from './sheet-templates.js';
+import { ensureSheetExtras, cfStyle, filterHidden, columnValues, validationAt, shiftSheetRanges, extrasSnapshot, restoreExtras, rangeStr, parseRange, CF_TYPES, CF_STYLES, CF_SCALES, EMPTY, dvAllows, dvDescribe, cfDescribe, CF_NEEDS_V1, CF_BARS, CF_ICONS, noteAt, linkAt, safeUrl, pageOf } from './sheetfx.js';
 import { chartSvg, chartData, newChartId } from './chart.js';
 import { planFill, parseTsv, toTsv, parseHtmlTable } from './sheet-ops.js';
 import * as D from './sheet-dialogs.js';
@@ -35,7 +38,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
   } else {
     wb = buildTemplate(template);
     const t = SHEET_TEMPLATES.find(x => x.id === template);
-    name = (t && t.id !== 'leer' ? t.title : 'Neue Tabelle') + '.xlsx';
+    name = (t && t.id !== 'leer' ? t.title.replace(/[\\/:*?"<>|]+/g, '-') : 'Neue Tabelle') + '.xlsx';
   }
   if (screen.signal.aborted) return;
   wb.names = wb.names || [];
@@ -53,6 +56,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     serialize: () => serialize(kind),
     menu: () => [
       { label: 'Als PDF exportieren', icon: 'kpdf', onClick: exportPdf },
+      { label: 'Seite einrichten …', icon: 'pageSetup', onClick: () => pageSetup() },
       { label: 'Excel-Datei (.xlsx) herunterladen', icon: 'download', onClick: async () => downloadBlob(await serialize('xlsx'), stripExt(shell.name) + '.xlsx') },
       { label: 'Blatt als CSV herunterladen', icon: 'download', onClick: async () => downloadBlob(await serialize('csv'), stripExt(shell.name) + (wb.sheets.length > 1 ? ` – ${sh.name}` : '') + '.csv') },
       kind === 'csv' ? { label: 'Als Excel-Tabelle speichern', icon: 'ksheet', onClick: async () => shell.saveAsKind(await serialize('xlsx'), 'xlsx') } : null,
@@ -63,6 +67,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
       { label: 'Namens-Manager …', icon: 'names', onClick: () => D.nameManagerDialog(api) },
       { label: 'Formel-Assistent (KI) …', icon: 'fx', onClick: () => import('../ai/assist.js').then(m => m.formulaAssist({ sheet: sh, cell: addr(sel.r, sel.c), insert: f => { if (editing) cancel(); startEdit(f); } })) },
       { label: 'Tastenkürzel', icon: 'keyboard', onClick: () => shortcutsDialog() },
+      { label: 'Neue Tabelle aus Vorlage …', icon: 'template', onClick: () => { location.hash = '#/vorlagen/tabelle'; } },
       { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await serialize(kind), shell.name, KINDS[kind].mime) },
       { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },
       { label: 'Umbenennen', icon: 'edit', onClick: () => shell.rename() },
@@ -90,7 +95,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
   const root = h(`<div class="sheet-app">
     <div class="ribbon">
       <div class="rb-tabs" role="tablist" aria-label="Menüband">
-        ${[['start', 'Start'], ['insert', 'Einfügen'], ['formulas', 'Formeln'], ['data', 'Daten'], ['view', 'Ansicht']].map(([k, l], i) => `<button class="rb-tab" type="button" role="tab" data-rb="${k}" aria-selected="${i === 0}">${l}</button>`).join('')}
+        ${[['start', 'Start'], ['insert', 'Einfügen'], ['page', 'Seitenlayout'], ['formulas', 'Formeln'], ['data', 'Daten'], ['view', 'Ansicht']].map(([k, l], i) => `<button class="rb-tab" type="button" role="tab" data-rb="${k}" aria-selected="${i === 0}">${l}</button>`).join('')}
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Tabellenwerkzeuge" data-rbp="start">
         <div class="tb-group">${tb('undo', 'Rückgängig (Strg+Z)', 'data-a="undo"')}${tb('redo', 'Wiederholen (Strg+Y)', 'data-a="redo"')}</div>
@@ -111,6 +116,11 @@ export async function mountSheet(screen, { id = null, template = null }) {
         <div class="tb-group">${tbl('pivot', 'Pivot-Tabelle', 'data-a="pivot"')}</div>
         <div class="tb-group">${tbl('dateIns', 'Datum', 'data-a="ins-date"')}${tbl('timeIns', 'Uhrzeit', 'data-a="ins-time"')}</div>
         <div class="tb-group">${tbl('names', 'Name definieren', 'data-a="defname"')}${tbl('series', 'Reihe ausfüllen', 'data-a="series"')}</div>
+        <div class="tb-group">${tbl('note', 'Notiz', 'data-a="note"')}${tbl('link', 'Link', 'data-a="link"')}${tbl('chart', 'Diagramm', 'data-a="ins-chart"')}</div>
+      </div>
+      <div class="office-toolbar" role="toolbar" aria-label="Seitenlayout" data-rbp="page" hidden>
+        <div class="tb-group">${tbl('pageSetup', 'Seite einrichten', 'data-a="pagesetup"')}${tbl('kpdf', 'Als PDF', 'data-a="pdf"')}</div>
+        <div class="tb-group">${tbl('printArea', 'Druckbereich festlegen', 'data-a="printarea"')}${tbl('close', 'Druckbereich aufheben', 'data-a="printarea-clear"')}${tbl('printTitles', 'Drucktitel', 'data-a="printtitles"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Formeln" data-rbp="formulas" hidden>
         <div class="tb-group">${tbl('fxList', 'Funktion einfügen', 'data-a="fxdlg"')}${tbl('sigma', 'AutoSumme …', 'data-a="sumx"')}</div>
@@ -120,10 +130,12 @@ export async function mountSheet(screen, { id = null, template = null }) {
         <div class="tb-group">${tbl('sortCustom', 'Sortieren …', 'data-a="sortdlg"')}${tbl('filterClear', 'Filter löschen', 'data-a="filterclear"')}</div>
         <div class="tb-group">${tbl('dedupe', 'Duplikate entfernen', 'data-a="dedupe"')}${tbl('textCols', 'Text in Spalten', 'data-a="t2c"')}</div>
         <div class="tb-group">${tbl('protect', 'Blatt schützen', 'data-a="protect"')}${tbl('restore', 'Pivot aktualisieren', 'data-a="pivot-refresh"')}</div>
+        <div class="tb-group">${tbl('subtotal', 'Teilergebnisse', 'data-a="subtotal"')}${tbl('groupRows', 'Gruppieren', 'data-a="group"')}${tbl('ungroupRows', 'Gruppierung aufheben', 'data-a="ungroup"')}</div>
+        <div class="tb-group">${tbl('condfmt', 'Bedingte Formatierung', 'data-a="cf2"')}${tbl('dropdown', 'Datenüberprüfung', 'data-a="dv2"')}</div>
       </div>
       <div class="office-toolbar" role="toolbar" aria-label="Ansicht" data-rbp="view" hidden>
         <div class="tb-group">${tbl('freezePanes', 'Fixieren …', 'data-a="freezemenu"')}${tbl('gridlines', 'Gitternetzlinien', 'data-a="grid"')}${tbl('showFormulas', 'Formeln anzeigen', 'data-a="showf"')}</div>
-        <div class="tb-group">${tbl('keyboard', 'Tastenkürzel', 'data-a="keys"')}</div>
+        <div class="tb-group">${tbl('goto', 'Gehe zu …', 'data-a="goto"')}${tbl('keyboard', 'Tastenkürzel', 'data-a="keys"')}</div>
       </div>
     </div>
     <div class="findbar s-find" hidden>
@@ -136,6 +148,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
       <button class="btn btn-ghost btn-sm" type="button" data-freall>Alle</button>
       <label class="check find-opt"><input type="checkbox" data-fcase> Aa</label>
       <label class="check find-opt"><input type="checkbox" data-fwhole> Ganze Zelle</label>
+      <label class="check find-opt" title="Reguläre Ausdrücke (z. B. ^\\d{5}$)"><input type="checkbox" data-fregex> .*</label>
       <button class="icon-btn" type="button" data-fclose aria-label="Suche schließen">${oicon('close')}</button>
     </div>
     <div class="fbar">
@@ -275,8 +288,11 @@ export async function mountSheet(screen, { id = null, template = null }) {
     if ((!cell || (!cell.f && cell.v == null)) && sh.spill.size) { const sp = sh.spill.get(k); if (sp) spill = sp; }
     const cfx = sh.cf.length ? cfStyle(sh, r, c, cell, cfCache) : null;
     const af = afButton(r, c);
+    const note = sh.notes.size ? sh.notes.get(k) : null;
+    const noteMark = note ? '<span class="note-mark" aria-hidden="true"></span>' : '';
+    const noteTip = note ? ` title="${esc(note.text.slice(0, 400))}"` : '';
     if (!spill && (!cell || (!cfx && !cell.s && cell.v == null && !cell.f))) {
-      return `<div class="c e${af ? ' has-af' : ''}" style="left:${colX[c]}px;top:${top}px;width:${w}px;height:${hgt}px">${af}</div>`;
+      return `<div class="c e${af ? ' has-af' : ''}${note ? ' has-note' : ''}"${noteTip} style="left:${colX[c]}px;top:${top}px;width:${w}px;height:${hgt}px${cfx && cfx.fill ? `;background:${cfx.fill}` : ''}">${af}${noteMark}</div>`;
     }
     const id = colName(c) + (r + 1);
     let s = cfx ? { ...((cell && cell.s) || {}), ...cfx } : ((cell && cell.s) || {});
@@ -316,8 +332,16 @@ export async function mountSheet(screen, { id = null, template = null }) {
     }
     if (s.wrap) cls += ' wrap';
     if (af) cls += ' has-af';
+    if (note) cls += ' has-note';
+    if ((sh.links.size && sh.links.has(k)) || (cell && cell.f && /^HYPERLINK\(/.test(cell.f))) cls += ' lnk';
+    let deco = '';
+    if (cfx && cfx.bar) {
+      const b = cfx.bar, pct = b.pct * 100, z = b.zero * 100;
+      deco += `<span class="cf-bar" style="left:calc(${b.neg ? z - pct : z}% + 2px);width:calc(${pct}% - 4px);background:${b.color}"></span>`;
+    }
+    if (cfx && cfx.icon) deco += `<span class="cf-ic" style="color:${cfx.icon[1]}">${esc(cfx.icon[0])}</span>`;
     const inner = tall ? `<span class="ct">${esc(text)}</span>` : esc(text);
-    return `<div class="${cls}" data-cell="${id}" style="${style}">${inner}${af}</div>`;
+    return `<div class="${cls}${deco ? ' has-deco' : ''}" data-cell="${id}"${noteTip} style="${style}">${deco}${inner}${af}${noteMark}</div>`;
   }
 
   function render() {
@@ -325,6 +349,8 @@ export async function mountSheet(screen, { id = null, template = null }) {
     const vw = scroll.clientWidth, vh = scroll.clientHeight;
     const f = fr(), fc = fcN(), fw = fcW();
     cfCache = new Map();
+    cfCtx = null;
+    cfCache.evalAt = cfEval;
     afRange = sh.autoFilter ? parseRange(sh.autoFilter.range) : null;
     const r0 = Math.max(f, rowAt(rowTop(f) + st) - 2);
     const r1 = Math.min(nRows - 1, rowAt(rowTop(f) + st + vh) + 2);
@@ -348,7 +374,11 @@ export async function mountSheet(screen, { id = null, template = null }) {
         if (rowY && rowHidden(r)) continue;
         const top = rowTop(r) - rowTop(base);
         const hh = rowH(r);
-        if (cFrom === 0 || cFrom === c0) rh += `<div class="rh${r >= sr1 && r <= sr2 ? ' on' : ''}${rowY && rowHidden(r + 1) ? ' hid-next' : ''}" data-row="${r}" style="top:${top}px;height:${hh}px;line-height:${hh}px">${r + 1}<span class="rrz" data-rrz="${r}"></span></div>`;
+        if (cFrom === 0 || cFrom === c0) {
+          const lv = sh.outline.size ? sh.outline.get(r) || 0 : 0;
+          const tg = sh.outline.size && !lv && sh.outline.get(r - 1) ? `<button class="ol-btn" type="button" data-olt="${r}" aria-label="Gruppe ein-/ausblenden">${rowHidden(r - 1) ? '+' : '−'}</button>` : '';
+          rh += `<div class="rh${r >= sr1 && r <= sr2 ? ' on' : ''}${rowY && rowHidden(r + 1) ? ' hid-next' : ''}${lv ? ` ol ol${Math.min(lv, 3)}` : ''}" data-row="${r}" style="top:${top}px;height:${hh}px;line-height:${hh}px">${tg}${r + 1}<span class="rrz" data-rrz="${r}"></span></div>`;
+        }
         for (let c = cFrom; c <= cTo; c++) cells += cellHtml(r, c, top, false);
       }
       // merges whose origin is outside the window
@@ -370,12 +400,26 @@ export async function mountSheet(screen, { id = null, template = null }) {
     bodyFc.innerHTML = fc ? rowsHtml(r0, r1, f, 0, fc - 1)[1] + selHtml(f, nRows - 1, f, true) : '';
     if (editing && editingInCell) placeEditor();
     placeDvButton();
+    placeCellPop();
+  }
+  // formula rules of the conditional formatting: evaluated with the cached values (no recalculation)
+  let cfCtx = null;
+  function cfEval(f, dr, dc) {
+    try {
+      if (!cfCtx) cfCtx = makeCtx(wb, { dirty: new Set() });
+      const g = dr || dc ? shiftRefs(f, ref => ({ ...ref, r: ref.absR || ref.colOnly ? ref.r : ref.r + dr, c: ref.absC || ref.rowOnly ? ref.c : ref.c + dc })) : f;
+      cfCtx.sheet = si; cfCtx.cur = null;
+      return evaluate(compile(g), cfCtx, { dynamic: false });
+    } catch { return null; }
   }
 
   function rangeBounds() { if (sel.box) return [sel.box.r1, sel.box.r2, sel.box.c1, sel.box.c2]; return [Math.min(sel.r, sel.ar), Math.max(sel.r, sel.ar), Math.min(sel.c, sel.ac), Math.max(sel.c, sel.ac)]; }
   function mainRange() { const [r1, r2, c1, c2] = rangeBounds(); return { r1, r2, c1, c2 }; }
   function allRanges() { return [mainRange(), ...sel.more]; }
   let copyMark = null, fillPreview = null;
+  const coarseMq = matchMedia('(pointer: coarse)');
+  let coarse = coarseMq.matches;
+  coarseMq.addEventListener && coarseMq.addEventListener('change', () => { coarse = coarseMq.matches; schedule(); });
   function rectHtml(cls, r1, r2, c1, c2, from, to, base, inFc) {
     const fc = fcN();
     if (inFc) { if (c1 >= fc) return ''; c2 = Math.min(c2, fc - 1); } else if (fc && c2 < fc) return '';
@@ -403,8 +447,16 @@ export async function mountSheet(screen, { id = null, template = null }) {
       const hh = m ? rowTop(m.r2 + 1) - rowTop(m.r1) : rowH(sel.r);
       out += `<div class="sel-active" style="left:${colX[cc]}px;top:${rowTop(rr) - rowTop(base)}px;width:${w}px;height:${hh}px"></div>`;
     }
-    // fill handle at the bottom-right corner of the main range
-    if (!editing && r2 >= from && r2 <= to && (inFc ? c2 < fc : c2 >= fc || !fc)) out += `<div class="fill-handle" data-fh title="Ziehen zum Ausfüllen (Doppelklick: bis zum Datenende)" style="left:${colX[c2 + 1] - 4}px;top:${rowTop(r2 + 1) - rowTop(base) - 4}px"></div>`;
+    // fill handle at the bottom-right corner of the main range (touch: a tab below the middle of the range)
+    if (!editing && r2 >= from && r2 <= to && (inFc ? c2 < fc : c2 >= fc || !fc)) {
+      if (coarse) out += `<div class="fill-handle fh-touch" data-fh title="Ziehen zum Ausfüllen" style="left:${Math.round((colX[Math.max(c1, inFc ? 0 : fc)] + colX[c2 + 1]) / 2) - 14}px;top:${rowTop(r2 + 1) - rowTop(base) + 3}px"></div>`;
+      else out += `<div class="fill-handle" data-fh title="Ziehen zum Ausfüllen (Doppelklick: bis zum Datenende)" style="left:${colX[c2 + 1] - 4}px;top:${rowTop(r2 + 1) - rowTop(base) - 4}px"></div>`;
+    }
+    // touch: handles at the corners to resize the selection
+    if (coarse && !editing) {
+      if (r1 >= from && r1 <= to && (inFc ? c1 < fc : c1 >= fc || !fc)) out += `<div class="sel-knob tl" data-knob="tl" style="left:${colX[c1]}px;top:${rowTop(r1) - rowTop(base)}px"></div>`;
+      if (r2 >= from && r2 <= to && (inFc ? c2 < fc : c2 >= fc || !fc)) out += `<div class="sel-knob br" data-knob="br" style="left:${colX[c2 + 1]}px;top:${rowTop(r2 + 1) - rowTop(base)}px"></div>`;
+    }
     return out;
   }
 
@@ -456,7 +508,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     $('[data-a="wrap"]', root).setAttribute('aria-pressed', String(!!s.wrap));
     $('[data-a="merge"]', root).setAttribute('aria-pressed', String(!!mergeAt(sel.r, sel.c)));
     ['left', 'center', 'right'].forEach(a => $(`[data-a="al-${a}"]`, root).setAttribute('aria-pressed', String(s.align === a)));
-    live.textContent = `${addr(sel.r, sel.c)}: ${displayOf(cell) || 'leer'}`;
+    live.textContent = `${addr(sel.r, sel.c)}: ${displayOf(cell) || 'leer'}${noteAt(sh, sel.r, sel.c) ? ' · Notiz: ' + noteAt(sh, sel.r, sel.c).text : ''}`;
     // status: sum/avg/count of the selection (all ranges)
     const ranges = allRanges();
     const multi = ranges.length > 1 || r1 !== r2 || c1 !== c2;
@@ -647,25 +699,83 @@ export async function mountSheet(screen, { id = null, template = null }) {
     } else circWarned = false;
   }
 
-  // formula hint (syntax of the function at the caret)
+  // formula hint: function autocomplete while typing a name, argument help inside a call
   const fnHelp = new Map(FUNCTION_LIST.map(([n, cat, d, ex]) => [canonicalFn(n), { n, d, ex }]));
+  const fnNames = FUNCTION_LIST.map(([n, , d]) => ({ n, en: canonicalFn(n), d }));
+  let fxSuggest = [];
+  /** Split the argument text of a call at top-level separators (outside strings and brackets). */
+  function argIndex(text) {
+    let depth = 0, idx = 0, q = false;
+    for (const ch of text) {
+      if (ch === '"') q = !q;
+      else if (q) continue;
+      else if (ch === '(' || ch === '{') depth++;
+      else if (ch === ')' || ch === '}') depth--;
+      else if (depth === 0 && (ch === ';' || (ch === ',' && !/;/.test(text)))) idx++;
+    }
+    return idx;
+  }
   function fxHint() {
     const el = cellEditor || input;
+    fxSuggest = [];
     if (!editing || !el.value.startsWith('=')) { fxTip.hidden = true; return; }
     const pos = el.selectionStart ?? el.value.length;
     const before = el.value.slice(0, pos);
-    // innermost open function call
-    let depth = 0, name = null;
+    // 1) typing a function name: suggestions (German and English names)
+    const quotes = (before.match(/"/g) || []).length % 2;
+    const pm = !quotes && /(?:^=|[=(;,+\-*/^&<>:\s])([A-Za-zÄÖÜäöüß][\w.ÄÖÜäöüß]*)$/.exec(before);
+    if (pm && pm[1].length >= 1 && !/^[A-Za-z]{1,3}\d+$/.test(pm[1])) {
+      const w = pm[1].toLocaleUpperCase('de');
+      const starts = fnNames.filter(f => f.n.startsWith(w) || f.en.startsWith(w));
+      const more = w.length >= 3 ? fnNames.filter(f => !starts.includes(f) && (f.n.includes(w) || f.en.includes(w))) : [];
+      fxSuggest = [...starts.sort((a, b) => a.n.length - b.n.length), ...more].slice(0, 7);
+      if (fxSuggest.length && !(fxSuggest.length === 1 && fxSuggest[0].n === w)) {
+        fxTip.hidden = false;
+        fxTip.innerHTML = `<div class="fx-sug" role="listbox" aria-label="Funktionen">${fxSuggest.map((f, i) => `<button type="button" class="fx-sg${i === 0 ? ' on' : ''}" role="option" data-sug="${i}"><strong>${esc(f.n)}</strong><span>${esc(f.d)}</span></button>`).join('')}</div><div class="fx-sug-hint">${coarse ? 'Tippen zum Einfügen' : 'Tippen zum Einfügen · Tab übernimmt den ersten Vorschlag'}</div>`;
+        fxTip._word = pm[1];
+        return;
+      }
+    }
+    // 2) inside a call: syntax with the current argument highlighted
+    let depth = 0, name = null, open = -1;
     for (let i = before.length - 1; i >= 0; i--) {
       const ch = before[i];
       if (ch === ')') depth++;
-      else if (ch === '(') { if (depth === 0) { const m = /([A-Za-zÄÖÜäöüß_][\w.ÄÖÜäöüß]*)\s*$/.exec(before.slice(0, i)); name = m ? m[1] : null; break; } depth--; }
+      else if (ch === '(') { if (depth === 0) { const m = /([A-Za-zÄÖÜäöüß_][\w.ÄÖÜäöüß]*)\s*$/.exec(before.slice(0, i)); name = m ? m[1] : null; open = i; break; } depth--; }
     }
-    const info = name && fnHelp.get(canonicalFn(name));
+    const en = name && canonicalFn(name);
+    const info = en && fnHelp.get(en);
     if (!info) { fxTip.hidden = true; return; }
+    const sig = FN_ARGS[en];
+    const ai = argIndex(before.slice(open + 1));
+    let sigHtml = '';
+    if (sig != null) {
+      const args = tr(sig).split('; ').filter(Boolean);
+      // repeating arguments ("…"): highlight the last named one for higher indices
+      const rep = args[args.length - 1] === '…';
+      const at = rep && ai >= args.length - 1 ? args.length - 2 : Math.min(ai, args.length - 1);
+      sigHtml = `<div class="fx-sig"><strong>${esc(info.n)}</strong>(${args.map((a, i) => `<span class="fx-arg${i === at ? ' on' : ''}">${esc(a)}</span>`).join('; ')})</div>`;
+    }
     fxTip.hidden = false;
-    fxTip.innerHTML = `<strong>${esc(info.n)}</strong> – ${esc(info.d)}<br><code>=${esc(info.ex)}</code>`;
+    fxTip.innerHTML = `${sigHtml || `<strong>${esc(info.n)}</strong>`}<div class="fx-desc">${esc(info.d)}</div><code>=${esc(info.ex)}</code>`;
   }
+  function acceptSuggestion(i) {
+    const f = fxSuggest[i];
+    if (!f) return false;
+    const el = cellEditor || input;
+    const pos = el.selectionStart ?? el.value.length;
+    const word = fxTip._word || '';
+    const start = pos - word.length;
+    const tail = el.value.slice(pos);
+    el.value = el.value.slice(0, start) + f.n + '(' + (tail.startsWith('(') ? tail.slice(1) : tail);
+    const np = start + f.n.length + 1;
+    el.focus();
+    el.setSelectionRange(np, np);
+    if (el === cellEditor) input.value = el.value; else if (cellEditor) { cellEditor.value = el.value; growEditor(); }
+    fxHint();
+    return true;
+  }
+  fxTip.addEventListener('pointerdown', e => { const b = e.target.closest('[data-sug]'); if (b) { e.preventDefault(); acceptSuggestion(+b.dataset.sug); } });
 
   function cycleAbsRef(el) {
     // F4: A1 → $A$1 → A$1 → $A1 → A1 for the reference at the caret
@@ -687,6 +797,8 @@ export async function mountSheet(screen, { id = null, template = null }) {
     }
   }
   function editKeys(e) {
+    if (e.key === 'Tab' && !e.shiftKey && fxSuggest.length && !fxTip.hidden && fxTip.querySelector('.fx-sug')) { e.preventDefault(); acceptSuggestion(0); return; }
+    if (e.key === 'Escape' && !fxTip.hidden && fxTip.querySelector('.fx-sug')) { e.preventDefault(); fxTip.hidden = true; fxSuggest = []; return; }
     if (e.key === 'Enter' && (e.altKey || (e.ctrlKey && e.target === cellEditor && false))) {
       e.preventDefault();
       const el = e.target; const p = el.selectionStart ?? el.value.length;
@@ -816,6 +928,18 @@ export async function mountSheet(screen, { id = null, template = null }) {
     return { r: Math.max(0, rowAt(rowTop(inFrozenBand ? 0 : f) + Math.max(0, clientY - rect.top))), c: colAt(Math.max(0, clientX - rect.left)) };
   }
   let drag = null, longPress = null;
+  // the finger lifted after a long press must not "click" the menu that just opened (the touched cell element
+  // may already be re-rendered, so the click is swallowed at document level for a short moment)
+  function swallowNextClick(x, y) {
+    const t0 = Date.now();
+    const onClick = e => {
+      if (Date.now() - t0 > 1500 || Math.hypot(e.clientX - x, e.clientY - y) > 14) return; // a real tap elsewhere goes through
+      document.removeEventListener('click', onClick, true);
+      e.stopPropagation(); e.preventDefault();
+    };
+    document.addEventListener('click', onClick, true);
+    setTimeout(() => document.removeEventListener('click', onClick, true), 1500);
+  }
   scroll.addEventListener('pointerdown', e => {
     if (e.target.closest('.cell-editor')) return;
     if (e.button && e.button !== 0) return;
@@ -825,6 +949,16 @@ export async function mountSheet(screen, { id = null, template = null }) {
     const dvb = e.target.closest('[data-dv]');
     if (dvb) { e.preventDefault(); e.stopPropagation(); if (editing) commit(); dvMenu(dvb); return; }
     if (chartSel) selectChart(null);
+    if (e.target.closest('.cell-pop')) return;
+    const kn = e.target.closest('[data-knob]');
+    if (kn) {
+      e.preventDefault(); e.stopPropagation();
+      if (editing && !commit()) return;
+      const [r1, r2, c1, c2] = rangeBounds();
+      drag = { knob: kn.dataset.knob, anchor: kn.dataset.knob === 'tl' ? { r: r2, c: c2 } : { r: r1, c: c1 }, pointerId: e.pointerId };
+      try { scroll.setPointerCapture(e.pointerId); } catch {}
+      return;
+    }
     const fh = e.target.closest('[data-fh]');
     if (fh) { e.preventDefault(); e.stopPropagation(); if (editing && !commit()) return; startFillDrag(e); return; }
     const rz = e.target.closest('[data-rz]');
@@ -833,6 +967,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     if (rrz && e.pointerType === 'mouse') { startRowResize(e, +rrz.dataset.rrz); return; }
     const uh = e.target.closest('[data-unhide-c]');
     if (uh) { e.preventDefault(); unhideCols(+uh.dataset.unhideC, +uh.dataset.unhideC); return; }
+    if (e.target.closest('[data-olt]')) return;
     const chEl = e.target.closest('[data-col]');
     const rhEl = e.target.closest('[data-row]');
     const ctrl = e.ctrlKey || e.metaKey;
@@ -878,11 +1013,18 @@ export async function mountSheet(screen, { id = null, template = null }) {
     } else {
       drag = { touch: true, x: e.clientX, y: e.clientY, r, c, t: Date.now() };
       clearTimeout(longPress);
-      longPress = setTimeout(() => { if (drag && drag.touch && !drag.moved) { drag.long = true; select(r, c); cellMenu({ clientX: drag.x, clientY: drag.y }); } }, 550);
+      longPress = setTimeout(() => { if (drag && drag.touch && !drag.moved) { drag.long = true; swallowNextClick(drag.x, drag.y); const [r1, r2, c1, c2] = rangeBounds(); if (r < r1 || r > r2 || c < c1 || c > c2) select(r, c); cellMenu({ clientX: drag.x, clientY: drag.y }); } }, 550);
     }
   });
   scroll.addEventListener('pointermove', e => {
     if (!drag) return;
+    if (drag.knob) {
+      const { r, c } = cellFromPoint(e.clientX, e.clientY);
+      if (r === sel.r && c === sel.c) return;
+      sel.more = []; sel.box = null; sel.ar = drag.anchor.r; sel.ac = drag.anchor.c;
+      select(r, c, true);
+      return;
+    }
     if (drag.touch) { if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 10) { drag.moved = true; clearTimeout(longPress); } return; }
     if (drag.fill) { fillDragMove(e); return; }
     const { r, c } = drag.col || drag.row ? cellFromPoint(e.clientX, e.clientY) : cellFromEvent(e);
@@ -904,6 +1046,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
   });
   scroll.addEventListener('pointerup', e => {
     clearTimeout(longPress);
+    if (drag && drag.knob) { drag = null; updateBar(); schedule(); return; }
     if (drag && drag.fill) { fillDragEnd(); drag = null; return; }
     if (drag && drag.touch && !drag.long) {
       const moved = Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 10;
@@ -952,10 +1095,17 @@ export async function mountSheet(screen, { id = null, template = null }) {
       { label: 'Zeilen löschen', icon: 'rowDel', onClick: () => doAction('row-del') },
       { label: 'Spalten löschen', icon: 'colDel', onClick: () => doAction('col-del') },
       { label: 'Inhalte löschen', icon: 'eraser', onClick: () => clearSelection() },
+      ...(coarse ? ['-', { label: 'Nach unten ausfüllen', icon: 'series', onClick: () => fillDownRight('down') }, { label: 'Nach rechts ausfüllen', icon: 'series', onClick: () => fillDownRight('right') }, { label: 'Reihe ausfüllen …', icon: 'series', onClick: () => D.seriesDialog(api) }] : []),
+      '-',
+      { label: noteAt(sh, sel.r, sel.c) ? 'Notiz bearbeiten …' : 'Notiz einfügen …', icon: 'note', onClick: () => editNote() },
+      ...(noteAt(sh, sel.r, sel.c) ? [{ label: 'Notiz löschen', icon: 'trash', onClick: () => setNote(null) }] : []),
+      { label: linkAt(sh, sel.r, sel.c) ? 'Link bearbeiten …' : 'Link einfügen …', icon: 'link', onClick: () => editLink() },
+      ...(linkAt(sh, sel.r, sel.c) ? [{ label: 'Link entfernen', icon: 'close', onClick: () => setLink(null) }] : []),
       '-',
       { label: 'Aufsteigend sortieren', icon: 'sortAsc', onClick: () => doSort(true) },
       { label: 'Absteigend sortieren', icon: 'sortDesc', onClick: () => doSort(false) },
       { label: 'Nach diesem Wert filtern', icon: 'filter', onClick: () => filterBySelection() },
+      { label: 'Bedingte Formatierung …', icon: 'condfmt', onClick: () => cfDialog() },
       { label: 'Namen definieren …', icon: 'names', onClick: () => D.nameManagerDialog(api, { defineOnly: true }) },
     ], { label: 'Zelle' });
   }
@@ -969,6 +1119,10 @@ export async function mountSheet(screen, { id = null, template = null }) {
       { label: 'Optimale Höhe', icon: 'fitPage', onClick: () => autofitRows(r1, r2) },
       { label: 'Ausblenden', icon: 'eyeOff', onClick: () => hideRows(r1, r2) },
       { label: 'Einblenden', icon: 'eye', onClick: () => unhideRows(Math.max(0, r1 - 1), r2 + 1) },
+      '-',
+      { label: 'Gruppieren', icon: 'groupRows', onClick: () => groupRows(r1, r2, 1) },
+      { label: 'Gruppierung aufheben', icon: 'ungroupRows', onClick: () => groupRows(r1, r2, -1) },
+      { label: 'Als Drucktitel wiederholen', icon: 'printTitles', onClick: () => setPrintTitles(r1, r2) },
     ], { label: 'Zeile' });
   }
   function colMenu(e) {
@@ -1169,6 +1323,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
       if (rowY && dr) { const d = dr > 0 ? 1 : -1; while (r > 0 && r < nRows && rowHidden(r)) r += d; }
       select(r, sel.c + dc);
     };
+    if (e.altKey && e.shiftKey && (k === 'ArrowRight' || k === 'ArrowLeft')) { e.preventDefault(); const [r1, r2] = rangeBounds(); groupRows(r1, r2, k === 'ArrowRight' ? 1 : -1); return; }
     if (k === 'ArrowDown') return ctrl ? mv(edge(1, 0), 0) : mv(1, 0);
     if (k === 'ArrowUp') return ctrl ? mv(edge(-1, 0), 0) : mv(-1, 0);
     if (k === 'ArrowRight') return ctrl ? mv(0, edge(0, 1)) : mv(0, 1);
@@ -1183,6 +1338,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     if (k === 'PageUp') return mv(-Math.floor(scroll.clientHeight / ROW_H), 0);
     if (k === 'Home') { e.preventDefault(); select(ctrl ? fr() : sel.r, ctrl ? fcN() : fcN() && sel.c >= fcN() ? fcN() : 0, e.shiftKey); return; }
     if (k === 'End' && ctrl) { e.preventDefault(); select(Math.max(0, sh.maxR), Math.max(0, sh.maxC), e.shiftKey); return; }
+    if (k === 'F2' && e.shiftKey) { e.preventDefault(); editNote(); return; }
     if (k === 'F2') { e.preventDefault(); startEdit(); return; }
     if (k === 'Escape') { if (copyMark) { copyMark = null; schedule(); } if (sel.more.length) { sel.more = []; schedule(); } return; }
     if ((k === 'Delete' || k === 'Backspace') && chartSel) { e.preventDefault(); deleteChart(chartSel); return; }
@@ -1190,6 +1346,9 @@ export async function mountSheet(screen, { id = null, template = null }) {
     if (ctrl && k === ' ') { e.preventDefault(); sel.ar = 0; sel.ac = sel.c; select(Math.max(sh.maxR, 0), sel.c, true, { scrollInto: false }); return; }
     if (e.shiftKey && k === ' ' && !ctrl) { e.preventDefault(); sel.ac = 0; sel.ar = sel.r; select(sel.r, Math.max(sh.maxC, 0), true, { scrollInto: false }); return; }
     if (ctrl && (lk === 'f' || lk === 'h')) { e.preventDefault(); openFind(true); return; }
+    if ((ctrl && lk === 'g') || k === 'F5') { e.preventDefault(); gotoDialog(); return; }
+    if (ctrl && lk === 'k') { e.preventDefault(); editLink(); return; }
+    if (ctrl && lk === 'p') { e.preventDefault(); exportPdf(); return; }
     if (ctrl && lk === 'z') { e.preventDefault(); doUndo(); return; }
     if (ctrl && lk === 'y') { e.preventDefault(); doRedo(); return; }
     if (ctrl && lk === 'b') { e.preventDefault(); toggleStyle('b'); return; }
@@ -1415,7 +1574,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
   }
   function pushUndo(kind2 = 'sheet') {
     undo.push(snapshot(kind2));
-    const limit = sh.cells.size > 200000 ? 5 : 60;
+    const limit = sh.cells.size > 200000 ? 5 : sh.cells.size > 20000 ? 40 : 100;
     while (undo.length > limit) undo.shift();
     redo.length = 0;
   }
@@ -1511,11 +1670,11 @@ export async function mountSheet(screen, { id = null, template = null }) {
       case 'border': borderMenu(anchor); break;
       case 'wrap': toggleStyle('wrap'); break;
       case 'merge': mergeAction(); break;
-      case 'cf': cfDialog(); break;
+      case 'cf': case 'cf2': cfDialog(); break;
       case 'filter': toggleFilter(); break;
       case 'filterclear': if (sh.autoFilter) { pushUndo(); sh.autoFilter.filters = {}; changed({ full: true }); toast('Alle Filter gelöscht'); } else toast('Auf diesem Blatt ist kein Filter aktiv.', 'info'); break;
-      case 'dv': D.dvDialog(api); break;
-      case 'chart': insertChart(); break;
+      case 'dv': case 'dv2': D.dvDialog(api); break;
+      case 'chart': case 'ins-chart': insertChart(); break;
       case 'find': openFind(true); break;
       case 'sort-asc': case 'sort-desc': doSort(a === 'sort-asc'); break;
       case 'sortdlg': D.sortDialog(api); break;
@@ -1540,6 +1699,17 @@ export async function mountSheet(screen, { id = null, template = null }) {
       case 't2c': D.textToColumnsDialog(api); break;
       case 'series': D.seriesDialog(api); break;
       case 'protect': toggleProtect(); break;
+      case 'note': editNote(); break;
+      case 'link': editLink(); break;
+      case 'pagesetup': pageSetup(); break;
+      case 'pdf': exportPdf(); break;
+      case 'printarea': { const [r1, r2, c1, c2] = rangeBounds(); pushUndo(); sh.page = { ...(sh.page || {}), area: rangeStr({ r1, r2, c1, c2: Math.min(c2, Math.max(c1, sh.maxC)) }) }; shell.markDirty(); toast(`Druckbereich: ${sh.page.area}`, 'success'); break; }
+      case 'printarea-clear': if (sh.page && sh.page.area) { pushUndo(); sh.page = { ...sh.page, area: null }; shell.markDirty(); toast('Druckbereich aufgehoben'); } else toast('Es ist kein Druckbereich festgelegt.', 'info'); break;
+      case 'printtitles': { const [r1, r2] = rangeBounds(); setPrintTitles(r1, r2); break; }
+      case 'goto': gotoDialog(); break;
+      case 'group': { const [r1, r2] = rangeBounds(); groupRows(r1, r2, 1); break; }
+      case 'ungroup': { const [r1, r2] = rangeBounds(); groupRows(r1, r2, -1); break; }
+      case 'subtotal': subtotals(); break;
     }
   }
   const COLOR_LABELS = { '#1A1A1A': 'Schwarz', '#B91C1C': 'Rot', '#C2410C': 'Orange', '#B45309': 'Braun', '#15803D': 'Grün', '#0B8F80': 'Petrol', '#2F67D8': 'Blau', '#3B37A0': 'Indigo', '#7E22CE': 'Violett', '#6B7194': 'Grau', '#FDE047': 'Gelb', '#FED7AA': 'Apricot', '#FBCFE8': 'Rosa', '#A7F3D0': 'Mint', '#BFDBFE': 'Hellblau', '#E9E8FB': 'Lavendel', '#E5E7EB': 'Hellgrau', '#C6EFCE': 'Gut (grün)', '#FFC7CE': 'Schlecht (rot)', '#FFEB9C': 'Neutral (gelb)' };
@@ -1713,44 +1883,68 @@ export async function mountSheet(screen, { id = null, template = null }) {
     const [r1, r2, c1, c2] = rangeBounds();
     const def = rangeStr(r1 === r2 && c1 === c2 ? currentRegion(sh, sel.r, sel.c) : { r1, c1, r2, c2 });
     const rules = sh.cf;
+    const groups = [['Zellwert', ['gt', 'lt', 'ge', 'le', 'between', 'eq', 'ne']], ['Oben/unten', ['top', 'bottom', 'aboveAvg', 'belowAvg']], ['Text & Sonstiges', ['contains', 'dup', 'unique', 'blank', 'notblank', 'error']], ['Formel', ['formula']], ['Grafisch', ['scale', 'bar', 'icons']]];
+    const lbl = id => (CF_TYPES.find(t => t.id === id) || {}).label || id;
+    const swatchOf = x => (x.type === 'scale' ? 'linear-gradient(90deg,#F8696B,#FFEB84,#63BE7B)' : x.type === 'bar' ? `linear-gradient(90deg,${(CF_BARS.find(b2 => b2.id === x.bar) || CF_BARS[0]).color} 60%,transparent 60%)` : x.type === 'icons' ? 'conic-gradient(#1E9E5A 0 33%,#E8B400 0 66%,#C23A4B 0)' : ((x.custom || CF_STYLES.find(s2 => s2.id === x.style) || {}).fill || 'transparent'));
     const r = await openDialog({
       title: 'Bedingte Formatierung', wide: true,
       body: `<div class="cf-dlg">
-        ${rules.length ? `<div class="cf-list"><span class="field-label">Regeln auf diesem Blatt</span>${rules.map((x, i) => `<div class="cf-rule" data-i="${i}"><span class="cf-sw" style="background:${x.type === 'scale' ? 'linear-gradient(90deg,#F8696B,#FFEB84,#63BE7B)' : ((x.custom || CF_STYLES.find(s2 => s2.id === x.style) || {}).fill || 'transparent')}"></span><span>${esc(x.range)}: ${esc((CF_TYPES.find(t => t.id === x.type) || {}).label || '')} ${x.type === 'scale' ? '' : esc(x.v1 || '')}${x.type === 'between' ? ` und ${esc(x.v2 || '')}` : ''}</span><button class="icon-btn" type="button" data-del="${i}" aria-label="Regel entfernen">${oicon('trash')}</button></div>`).join('')}</div>` : ''}
+        ${rules.length ? `<div class="cf-list"><span class="field-label">Regeln auf diesem Blatt</span>${rules.map((x, i) => `<div class="cf-rule" data-i="${i}"><span class="cf-sw" style="background:${swatchOf(x)}"></span><span>${esc(x.range)}: ${esc(cfDescribe(x))}</span><button class="icon-btn" type="button" data-del="${i}" aria-label="Regel entfernen">${oicon('trash')}</button></div>`).join('')}</div>` : ''}
         <span class="field-label">Neue Regel</span>
         <label class="field"><span class="field-label">Bereich</span><input class="input" name="range" value="${esc(def)}" spellcheck="false"></label>
-        <div class="field-row"><label class="field"><span class="field-label">Wenn der Wert …</span><select class="select" name="type">${CF_TYPES.map(t => `<option value="${t.id}">${t.label}</option>`).join('')}</select></label>
-          <label class="field cf-v1"><span class="field-label">Wert</span><input class="input" name="v1" inputmode="decimal"></label></div>
+        <div class="field-row"><label class="field"><span class="field-label">Regel</span><select class="select" name="type">${groups.map(([g, ids]) => `<optgroup label="${esc(g)}">${ids.map(id => `<option value="${id}">${esc(lbl(id))}</option>`).join('')}</optgroup>`).join('')}</select></label>
+          <label class="field cf-v1"><span class="field-label" data-v1l>Wert</span><input class="input" name="v1" inputmode="decimal"></label></div>
         <label class="field cf-v2" hidden><span class="field-label">und</span><input class="input" name="v2" inputmode="decimal"></label>
+        <label class="check cf-pct" hidden><input type="checkbox" name="percent"> Prozent statt Anzahl</label>
+        <p class="hint cf-fhint" hidden>Formel für die erste Zelle des Bereichs, z. B. <code>=$C2&gt;100</code> (ganze Zeile hervorheben) oder <code>=REST(ZEILE();2)=0</code> (jede zweite Zeile). Bezüge passen sich für die anderen Zellen an.</p>
         <label class="field cf-style"><span class="field-label">dann formatieren als</span><select class="select" name="style">${CF_STYLES.map(st => `<option value="${st.id}">${st.label}</option>`).join('')}</select></label>
         <label class="field cf-scale" hidden><span class="field-label">Farbskala</span><select class="select" name="scale">${CF_SCALES.map(sc => `<option value="${sc.id}">${sc.label}</option>`).join('')}</select></label>
+        <label class="field cf-bar" hidden><span class="field-label">Balkenfarbe</span><select class="select" name="bar">${CF_BARS.map(b2 => `<option value="${b2.id}">${b2.label}</option>`).join('')}</select></label>
+        <label class="field cf-icons" hidden><span class="field-label">Symbole (oberes, mittleres, unteres Drittel)</span><select class="select" name="icons">${CF_ICONS.map(b2 => `<option value="${b2.id}">${b2.label} ${b2.icons.map(x => x[0]).join(' ')}</option>`).join('')}</select></label>
       </div>`,
       actions: [{ label: 'Schließen', value: 'cancel' }, { label: 'Regel hinzufügen', value: 'ok', kind: 'btn-primary', default: true }],
       validate: (v, dlg) => {
         if (v !== 'ok') return true;
         if (!parseRange($('[name=range]', dlg).value)) { toast('Bitte gib einen gültigen Bereich an, z. B. B2:B20.', 'error'); return false; }
         const t = $('[name=type]', dlg).value;
-        if (t !== 'scale' && !$('[name=v1]', dlg).value.trim()) { toast('Bitte gib einen Vergleichswert ein.', 'error'); return false; }
+        const v1 = $('[name=v1]', dlg).value.trim();
+        if (CF_NEEDS_V1.has(t) && !v1 && t !== 'top' && t !== 'bottom') { toast(t === 'formula' ? 'Bitte gib eine Formel ein, z. B. =$C2>100.' : 'Bitte gib einen Vergleichswert ein.', 'error'); return false; }
+        if (t === 'formula') { try { toCanonical(v1.replace(/^=/, '')); } catch (e) { toast(`Formel ungültig: ${e.message || 'bitte prüfen'}`, 'error'); return false; } }
         return true;
       },
       onMount: dlg => {
         const sync = () => {
           const t = $('[name=type]', dlg).value;
-          $('.cf-v1', dlg).hidden = t === 'scale';
+          const graphic = t === 'scale' || t === 'bar' || t === 'icons';
+          $('.cf-v1', dlg).hidden = !CF_NEEDS_V1.has(t);
           $('.cf-v2', dlg).hidden = t !== 'between';
-          $('.cf-style', dlg).hidden = t === 'scale';
+          $('.cf-pct', dlg).hidden = t !== 'top' && t !== 'bottom';
+          $('.cf-fhint', dlg).hidden = t !== 'formula';
+          $('.cf-style', dlg).hidden = graphic;
           $('.cf-scale', dlg).hidden = t !== 'scale';
-          $('[name=v1]', dlg).inputMode = t === 'contains' ? 'text' : 'decimal';
+          $('.cf-bar', dlg).hidden = t !== 'bar';
+          $('.cf-icons', dlg).hidden = t !== 'icons';
+          $('[data-v1l]', dlg).textContent = t === 'formula' ? 'Formel' : t === 'top' || t === 'bottom' ? 'Anzahl (Standard 10)' : 'Wert';
+          const v1 = $('[name=v1]', dlg);
+          v1.inputMode = t === 'contains' || t === 'formula' || t === 'eq' || t === 'ne' ? 'text' : 'decimal';
+          if (t === 'formula' && !v1.value) v1.value = '=';
         };
         $('[name=type]', dlg).addEventListener('change', sync);
         sync();
         $$('[data-del]', dlg).forEach(bt => bt.addEventListener('click', () => { pushUndo(); sh.cf.splice(+bt.dataset.del, 1); changed({ recalc: false }); bt.closest('.cf-rule').remove(); toast('Regel entfernt'); }));
-        return { collect: () => ({ range: $('[name=range]', dlg).value.trim().toUpperCase(), type: $('[name=type]', dlg).value, v1: $('[name=v1]', dlg).value.trim(), v2: $('[name=v2]', dlg).value.trim(), style: $('[name=style]', dlg).value, scale: $('[name=scale]', dlg).value }) };
+        return { collect: () => ({ range: $('[name=range]', dlg).value.trim().toUpperCase(), type: $('[name=type]', dlg).value, v1: $('[name=v1]', dlg).value.trim(), v2: $('[name=v2]', dlg).value.trim(), percent: $('[name=percent]', dlg).checked, style: $('[name=style]', dlg).value, scale: $('[name=scale]', dlg).value, bar: $('[name=bar]', dlg).value, icons: $('[name=icons]', dlg).value }) };
       },
     });
     if (r.value !== 'ok' || !r.data) return;
+    const d = r.data;
+    const rule = { id: newChartId(), range: rangeStr(parseRange(d.range)), type: d.type };
+    if (CF_NEEDS_V1.has(d.type)) rule.v1 = d.v1;
+    if (d.type === 'between') rule.v2 = d.v2;
+    if (d.type === 'top' || d.type === 'bottom') { rule.v1 = d.v1 || '10'; if (d.percent) rule.percent = true; }
+    if (d.type === 'formula') { rule.f = toCanonical(d.v1.replace(/^=/, '')); rule.fd = toDisplay(rule.f); delete rule.v1; }
+    if (d.type === 'scale') rule.scale = d.scale; else if (d.type === 'bar') rule.bar = d.bar; else if (d.type === 'icons') rule.icons = d.icons; else rule.style = d.style;
     pushUndo();
-    sh.cf.push({ id: newChartId(), ...r.data, range: rangeStr(parseRange(r.data.range)) });
+    sh.cf.push(rule);
     changed({ recalc: false });
     toast('Bedingte Formatierung angewendet', 'success');
   }
@@ -1869,7 +2063,12 @@ export async function mountSheet(screen, { id = null, template = null }) {
 
   // ---------------- Suchen & Ersetzen ----------------
   const fbar = $('.s-find', root);
-  const fq = $('[data-fq]', fbar), frIn = $('[data-fr]', fbar), fcount = $('[data-fcount]', fbar), fcase = $('[data-fcase]', fbar), fwhole = $('[data-fwhole]', fbar);
+  const fq = $('[data-fq]', fbar), frIn = $('[data-fr]', fbar), fcount = $('[data-fcount]', fbar), fcase = $('[data-fcase]', fbar), fwhole = $('[data-fwhole]', fbar), fregex = $('[data-fregex]', fbar);
+  /** Search pattern as RegExp (regex mode) or null when it is invalid; plain mode returns null. */
+  function findRe(flags = '') {
+    if (!fregex.checked || !fq.value) return null;
+    try { return new RegExp(fq.value.slice(0, 500), (fcase.checked ? '' : 'i') + flags); } catch { return false; }
+  }
   let findOpen = false, fmatches = [], fcur = -1;
   function openFind(focus) {
     findOpen = true; fbar.hidden = false;
@@ -1879,7 +2078,12 @@ export async function mountSheet(screen, { id = null, template = null }) {
   }
   function closeFind() { findOpen = false; fbar.hidden = true; fmatches = []; $('[data-a="find"]', root).setAttribute('aria-pressed', 'false'); scroll.focus({ preventScroll: true }); }
   const norm = t => (fcase.checked ? t : t.toLocaleLowerCase('de'));
-  function matchText(t, q) { return fwhole.checked ? norm(t) === q : norm(t).includes(q); }
+  function matchText(t, q) {
+    const re = findRe();
+    if (re === false) return false;
+    if (re) { const m = re.exec(t); return !!m && (!fwhole.checked || m[0] === t); }
+    return fwhole.checked ? norm(t) === q : norm(t).includes(q);
+  }
   function runFind(jump) {
     const q = norm(fq.value);
     fmatches = [];
@@ -1888,11 +2092,11 @@ export async function mountSheet(screen, { id = null, template = null }) {
       for (const k of keys) {
         const cell = sh.cells.get(k);
         const t = displayOf(cell);
-        if (matchText(t, q) || (cell.f && !fwhole.checked && norm('=' + toDisplay(cell.f)).includes(q))) fmatches.push({ r: R_OF(k), c: C_OF(k) });
+        if (matchText(t, q) || (cell.f && !fwhole.checked && !fregex.checked && norm('=' + toDisplay(cell.f)).includes(q))) fmatches.push({ r: R_OF(k), c: C_OF(k) });
       }
     }
     if (jump || fcur >= fmatches.length) fcur = fmatches.length ? 0 : -1;
-    fcount.textContent = fq.value ? (fmatches.length ? `${fcur + 1} von ${fmatches.length}` : 'Keine Treffer') : '';
+    fcount.textContent = fq.value ? (findRe() === false ? 'Ungültiges Muster' : fmatches.length ? `${fcur + 1} von ${fmatches.length}` : 'Keine Treffer') : '';
     fcount.classList.toggle('notfound', !!fq.value && !fmatches.length);
     if (jump && fcur >= 0) select(fmatches[fcur].r, fmatches[fcur].c);
   }
@@ -1903,7 +2107,14 @@ export async function mountSheet(screen, { id = null, template = null }) {
     if (lockedIn({ r1: r, r2: r, c1: c, c2: c })) return false;
     const txt = editTextOf(cell, toDisplay);
     let next;
-    if (fwhole.checked) { if (norm(txt.replace(/^'/, '')) !== norm(fq.value)) return false; next = frIn.value; }
+    const rx = findRe('g');
+    if (rx === false) return false;
+    if (rx) {
+      const plain = txt.replace(/^'/, '');
+      rx.lastIndex = 0;
+      if (fwhole.checked) { const m = new RegExp(`^(?:${rx.source})$`, rx.flags.replace('g', '')); if (!m.test(plain)) return false; next = plain.replace(m, frIn.value); }
+      else { if (!rx.test(plain)) return false; rx.lastIndex = 0; next = plain.replace(rx, frIn.value); }
+    } else if (fwhole.checked) { if (norm(txt.replace(/^'/, '')) !== norm(fq.value)) return false; next = frIn.value; }
     else {
       const re = new RegExp(fq.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), fcase.checked ? 'g' : 'gi');
       if (!re.test(txt)) return false;
@@ -1917,7 +2128,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     return true;
   }
   fq.addEventListener('input', () => runFind(true));
-  [fcase, fwhole].forEach(x => x.addEventListener('change', () => runFind(true)));
+  [fcase, fwhole, fregex].forEach(x => x.addEventListener('change', () => runFind(true)));
   fq.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); fstep(e.shiftKey ? -1 : 1); } if (e.key === 'Escape') closeFind(); });
   $('[data-fnext]', fbar).addEventListener('click', () => fstep(1));
   $('[data-fprev]', fbar).addEventListener('click', () => fstep(-1));
@@ -2191,6 +2402,8 @@ export async function mountSheet(screen, { id = null, template = null }) {
     s.cf = JSON.parse(JSON.stringify(src.cf || [])); s.dv = JSON.parse(JSON.stringify(src.dv || [])); s.autoFilter = src.autoFilter ? JSON.parse(JSON.stringify(src.autoFilter)) : null;
     s.charts = (src.charts || []).map(ch => ({ ...JSON.parse(JSON.stringify(ch)), id: newChartId() }));
     s.pivot = src.pivot ? JSON.parse(JSON.stringify(src.pivot)) : null;
+    s.notes = new Map([...(src.notes || [])].map(([k, v]) => [k, { ...v }])); s.links = new Map([...(src.links || [])].map(([k, v]) => [k, { ...v }]));
+    s.outline = new Map(src.outline || []); s.page = src.page ? JSON.parse(JSON.stringify(src.page)) : null;
     ensureSheetExtras(s); ensureSheetModel(s);
     recomputeBounds(s);
     wb.sheets.splice(i + 1, 0, s);
@@ -2228,10 +2441,220 @@ export async function mountSheet(screen, { id = null, template = null }) {
       ['Bearbeiten', [['F2', 'Zelle bearbeiten'], ['Alt+Eingabe', 'Zeilenumbruch in der Zelle'], [`${k}+Eingabe`, 'Eingabe in alle markierten Zellen'], ['F4', '$-Bezug umschalten (beim Bearbeiten)'], ['Entf', 'Inhalt löschen'], [`${k}+D / ${k}+R`, 'Nach unten / rechts ausfüllen'], [`${k}+; / ${k}+Umschalt+;`, 'Datum / Uhrzeit einfügen'], [`${k}+Z / ${k}+Y`, 'Rückgängig / Wiederholen']]],
       ['Zwischenablage', [[`${k}+C / X / V`, 'Kopieren / Ausschneiden / Einfügen'], [`${k}+Umschalt+V`, 'Inhalte einfügen …']]],
       ['Format', [[`${k}+B / I / U`, 'Fett / Kursiv / Unterstrichen'], [`${k}+5`, 'Durchgestrichen'], [`${k}+1`, 'Zellen formatieren …']]],
-      ['Sonstiges', [[`${k}+F`, 'Suchen & ersetzen'], [`${k}+S`, 'Speichern'], [`${k}++ / ${k}+-`, 'Zeilen/Spalten einfügen / löschen'], ['Umschalt+F11', 'Neues Blatt'], ['F9', 'Neu berechnen']]],
+      ['Sonstiges', [[`${k}+F`, 'Suchen & ersetzen'], [`${k}+G / F5`, 'Gehe zu …'], [`${k}+K`, 'Link einfügen'], ['Umschalt+F2', 'Notiz bearbeiten'], [`${k}+P`, 'Als PDF exportieren'], [`${k}+S`, 'Speichern'], [`${k}++ / ${k}+-`, 'Zeilen/Spalten einfügen / löschen'], ['Alt+Umschalt+→ / ←', 'Zeilen gruppieren / Gruppierung aufheben'], ['Umschalt+F11', 'Neues Blatt'], ['F9', 'Neu berechnen']]],
+      ['Formeln', [['Tab', 'Vorgeschlagene Funktion übernehmen'], ['F4', '$-Bezug umschalten'], ['Esc', 'Vorschläge schließen / Eingabe verwerfen']]],
     ];
     openDialog({ title: 'Tastenkürzel – Tabelle', wide: true, body: `<div class="keys-grid">${rows.map(([t, list]) => `<section><h3>${esc(t)}</h3><dl>${list.map(([a, b]) => `<dt><kbd>${esc(a)}</kbd></dt><dd>${esc(b)}</dd>`).join('')}</dl></section>`).join('')}</div>`, actions: [{ label: 'Schließen', value: 'ok', kind: 'btn-primary', default: true }] });
   }
+
+  // ---------------- Notizen & Links ----------------
+  const cellPop = h('<div class="cell-pop" hidden></div>');
+  root.appendChild(cellPop);
+  /** Link of a cell: a stored hyperlink or a HYPERLINK() formula. Returns {url|ref, label} or null. */
+  function cellLink(r, c) {
+    const l = linkAt(sh, r, c);
+    if (l) return { ...l, label: l.ref ? `Gehe zu ${l.ref}` : String(l.url || '').replace(/^mailto:/i, '') };
+    const cell = getCell(sh, r, c);
+    if (cell && cell.f && /^HYPERLINK\(/.test(cell.f)) {
+      try {
+        const ast = compile(cell.f);
+        const ctx = makeCtx(wb, { dirty: new Set() });
+        ctx.sheet = si; ctx.cur = { r, c };
+        const url = evaluate(ast.args[0], ctx);
+        if (typeof url === 'string' && url) return /^#/.test(url) ? { ref: url.slice(1), label: `Gehe zu ${url.slice(1)}` } : { url, label: url.replace(/^mailto:/i, '') };
+      } catch {}
+    }
+    return null;
+  }
+  function placeCellPop() {
+    const note = !editing && noteAt(sh, sel.r, sel.c);
+    const link = !editing && cellLink(sel.r, sel.c);
+    const act = $('.sel-active', root);
+    if ((!note && !link) || !act) { cellPop.hidden = true; cellPop._k = null; return; }
+    const key = `${si}:${sel.r}:${sel.c}:${note ? note.text : ''}:${link ? link.label : ''}`;
+    if (cellPop._k !== key) {
+      cellPop._k = key;
+      cellPop.innerHTML = `${note ? `<div class="cp-note"><span class="cp-h">Notiz</span>${esc(note.text)}</div>` : ''}${link ? `<button class="btn btn-ghost btn-sm cp-link" type="button" data-open-link title="Link öffnen">${oicon('link')}<span>${esc(link.label.length > 48 ? link.label.slice(0, 46) + '…' : link.label)}</span></button>` : ''}`;
+    }
+    const rc = act.getBoundingClientRect(), sc = scroll.getBoundingClientRect();
+    if (rc.bottom < sc.top + HH || rc.top > sc.bottom || rc.right < sc.left + HW || rc.left > sc.right) { cellPop.hidden = true; return; }
+    cellPop.hidden = false;
+    const pw = cellPop.offsetWidth, ph = cellPop.offsetHeight;
+    let x = rc.right + 6, y = rc.top;
+    if (x + pw > Math.min(innerWidth, sc.right) - 4) { x = Math.max(sc.left + 4, Math.min(rc.left, innerWidth - pw - 8)); y = rc.bottom + 6; }
+    if (y + ph > innerHeight - 8) y = Math.max(8, rc.top - ph - 6);
+    cellPop.style.left = `${Math.round(x)}px`; cellPop.style.top = `${Math.round(y)}px`;
+  }
+  cellPop.addEventListener('click', e => { if (e.target.closest('[data-open-link]')) openLink(sel.r, sel.c); });
+  async function openLink(r, c) {
+    const l = cellLink(r, c);
+    if (!l) return;
+    if (l.ref) { gotoRef(l.ref); scroll.focus({ preventScroll: true }); return; }
+    const url = safeUrl(l.url);
+    if (!url) { toast('Dieser Link wird aus Sicherheitsgründen nicht geöffnet (nur Web-, E-Mail- und Telefon-Links).', 'error'); return; }
+    await openExternal(url, { source: 'Die Tabelle enthält einen Link.' });
+  }
+  function setNote(text) {
+    if (!guard([{ r1: sel.r, r2: sel.r, c1: sel.c, c2: sel.c }])) return;
+    pushUndo();
+    const k = KEY(sel.r, sel.c);
+    if (text && text.trim()) sh.notes.set(k, { text: text.trim().slice(0, 4000) }); else sh.notes.delete(k);
+    shell.markDirty(); cellPop._k = null; schedule(); updateBar();
+    toast(text && text.trim() ? 'Notiz gespeichert' : 'Notiz gelöscht');
+  }
+  async function editNote() {
+    if (editing && !commit()) return;
+    const cur = noteAt(sh, sel.r, sel.c);
+    const t = await D.noteDialog(addr(sel.r, sel.c), cur ? cur.text : '');
+    if (t === null) return;
+    setNote(t);
+  }
+  function setLink(l, text = null) {
+    if (!guard([{ r1: sel.r, r2: sel.r, c1: sel.c, c2: sel.c }])) return;
+    pushUndo();
+    const k = KEY(sel.r, sel.c);
+    if (l) sh.links.set(k, l); else sh.links.delete(k);
+    const cell = getCell(sh, sel.r, sel.c);
+    if (l && (text || (!cell || (cell.v == null && !cell.f)))) applyInput(sel.r, sel.c, text || (l.ref ? l.ref : String(l.url).replace(/^mailto:/i, '')), { record: false });
+    shell.markDirty(); cellPop._k = null; changed({ recalc: false });
+    toast(l ? 'Link gespeichert' : 'Link entfernt');
+  }
+  async function editLink() {
+    if (editing && !commit()) return;
+    const cur = linkAt(sh, sel.r, sel.c);
+    const cell = getCell(sh, sel.r, sel.c);
+    const r = await D.linkDialog({ target: cur ? (cur.ref ? cur.ref : cur.url) : '', text: cell && !cell.f && typeof cell.v === 'string' ? cell.v : '', sheets: wb.sheets.map(x => x.name) });
+    if (!r) return;
+    if (r.remove) { setLink(null); return; }
+    const tgt = r.target.trim();
+    let l;
+    if (/^[^/:@\s]+![$A-Za-z]+\$?\d+/.test(tgt) || parseRangeAddr(tgt.replace(/\$/g, ''))) l = { ref: tgt.replace(/^#/, '') };
+    else { const u = safeUrl(tgt); if (!u) { toast('Bitte gib eine Webadresse (https://…), eine E-Mail-Adresse oder eine Zelle wie Tabelle2!A1 an.', 'error', { timeout: 6000 }); return; } l = { url: u }; }
+    setLink(l, r.text.trim() || null);
+  }
+
+  // ---------------- Seite einrichten / Druck ----------------
+  async function pageSetup() {
+    const p = await D.pageSetupDialog(api, pageOf(sh));
+    if (!p) return;
+    pushUndo();
+    sh.page = p;
+    shell.markDirty();
+    toast('Seiteneinstellungen gespeichert – sie gelten für „Als PDF exportieren“ und die .xlsx-Datei.', 'success', { timeout: 5000 });
+  }
+  function setPrintTitles(r1, r2) {
+    pushUndo();
+    sh.page = { ...(sh.page || {}), titleRows: { r1, r2 } };
+    shell.markDirty();
+    toast(`Zeile${r1 === r2 ? ` ${r1 + 1}` : `n ${r1 + 1}–${r2 + 1}`} wird auf jeder PDF-Seite wiederholt`, 'success');
+  }
+
+  // ---------------- Gehe zu ----------------
+  async function gotoDialog() {
+    if (editing && !commit()) return;
+    const r = await D.gotoDialog(wb, si);
+    if (!r) return;
+    if (r.ref) { gotoRef(r.ref); scroll.focus({ preventScroll: true }); return; }
+    // special cells inside the selection (or the used range when only one cell is selected)
+    const [r1, r2, c1, c2] = rangeBounds();
+    const one = r1 === r2 && c1 === c2;
+    const rg = one ? { r1: 0, c1: 0, r2: Math.max(0, sh.maxR), c2: Math.max(0, sh.maxC) } : { r1, r2: Math.min(r2, Math.max(r1, sh.maxR)), c1, c2: Math.min(c2, Math.max(c1, sh.maxC)) };
+    const test = {
+      blank: (cell, v) => v === null || v === undefined || v === '',
+      formulas: cell => !!(cell && cell.f),
+      constants: (cell, v) => !!(cell && !cell.f && v !== null && v !== undefined && v !== ''),
+      errors: (cell, v) => isErr(v),
+      notes: (cell, v, rr, cc) => !!noteAt(sh, rr, cc),
+      cf: (cell, v, rr, cc) => sh.cf.some(x => { const g = parseRange(x.range); return g && rr >= g.r1 && rr <= g.r2 && cc >= g.c1 && cc <= g.c2; }),
+      dv: (cell, v, rr, cc) => !!validationAt(sh, rr, cc),
+    }[r.special];
+    const hits = [];
+    for (let rr = rg.r1; rr <= rg.r2 && hits.length < 5000; rr++) {
+      if (rowHidden(rr)) continue;
+      for (let cc = rg.c1; cc <= rg.c2; cc++) { const cell = getCell(sh, rr, cc); if (test(cell, valueAt(sh, rr, cc), rr, cc)) hits.push({ r: rr, c: cc }); }
+    }
+    if (!hits.length) { toast('Keine passenden Zellen gefunden.', 'info'); return; }
+    // vertical runs per column → few ranges
+    const ranges = [];
+    hits.sort((a, b) => a.c - b.c || a.r - b.r);
+    for (const x of hits) { const last = ranges[ranges.length - 1]; if (last && last.c1 === x.c && last.r2 === x.r - 1) last.r2 = x.r; else ranges.push({ r1: x.r, r2: x.r, c1: x.c, c2: x.c }); }
+    const first = ranges.shift();
+    sel.ar = first.r1; sel.ac = first.c1; sel.box = null;
+    select(first.r2, first.c1, true);
+    sel.more = ranges.slice(0, 2000);
+    updateBar(); schedule();
+    toast(`${hits.length} Zelle${hits.length === 1 ? '' : 'n'} markiert`, 'success');
+  }
+
+  // ---------------- Gliederung (Zeilen gruppieren) & Teilergebnisse ----------------
+  function groupRows(r1, r2, delta) {
+    if (!guard([], { structural: true })) return;
+    if (r1 === 0 && r2 >= Math.max(sh.maxR, 0) && delta > 0 && r2 - r1 > 2000) { toast('Markiere die Zeilen, die gruppiert werden sollen.', 'info'); return; }
+    pushUndo();
+    let n = 0;
+    for (let r = r1; r <= r2; r++) {
+      const lv = (sh.outline.get(r) || 0) + delta;
+      if (lv < 0 || lv > 7) continue;
+      n++;
+      if (lv) sh.outline.set(r, lv); else { sh.outline.delete(r); }
+    }
+    if (delta < 0) for (let r = r1; r <= r2; r++) if (!sh.outline.get(r)) sh.hiddenRows.delete(r);
+    changed({ recalc: false });
+    toast(delta > 0 ? `${n} Zeile${n === 1 ? '' : 'n'} gruppiert – mit − / + am Zeilenkopf ein- und ausblenden` : 'Gruppierung aufgehoben');
+  }
+  /** Rows of the group that ends right above summary row r (level ≥ lv). */
+  function groupAbove(r) {
+    const lv = sh.outline.get(r - 1);
+    if (!lv) return null;
+    let a = r - 1;
+    while (a > 0 && (sh.outline.get(a - 1) || 0) >= lv) a--;
+    return { r1: a, r2: r - 1, lv };
+  }
+  function toggleGroup(r) {
+    const g = groupAbove(r);
+    if (!g) return;
+    pushUndo();
+    let collapse = false;
+    for (let x = g.r1; x <= g.r2; x++) if (!sh.hiddenRows.has(x)) { collapse = true; break; }
+    for (let x = g.r1; x <= g.r2; x++) { if (collapse) sh.hiddenRows.add(x); else if ((sh.outline.get(x) || 0) >= g.lv) sh.hiddenRows.delete(x); }
+    changed({ recalc: false });
+  }
+  async function subtotals() {
+    const rg = dataRange();
+    if (!rg || rg.r2 <= rg.r1) { toast('Markiere eine Tabelle mit Überschriften (mindestens zwei Zeilen).', 'info'); return; }
+    const spec = await D.subtotalDialog(api, rg);
+    if (!spec) return;
+    if (!guard([], { structural: true })) return;
+    pushUndo('wb');
+    if (spec.sort) sortRowsMulti(wb, si, rg.r1 + 1, rg.r2, rg.c1, rg.c2, [{ c: spec.by, asc: true }]);
+    const keyOf = r => displayOf(getCell(sh, r, spec.by));
+    // group boundaries (bottom-up so inserted rows do not move the ones still to come)
+    const groups = [];
+    let start = rg.r1 + 1;
+    for (let r = rg.r1 + 2; r <= rg.r2 + 1; r++) if (r > rg.r2 || keyOf(r) !== keyOf(start)) { groups.push({ r1: start, r2: r - 1, key: keyOf(start) }); start = r; }
+    const fnCode = { sum: 9, count: 3, avg: 1, max: 4, min: 5 }[spec.fn] || 9;
+    const label = { sum: 'Ergebnis', count: 'Anzahl', avg: 'Mittelwert', max: 'Maximum', min: 'Minimum' }[spec.fn] || 'Ergebnis';
+    for (let i = groups.length - 1; i >= 0; i--) {
+      const g = groups[i];
+      insertRows(wb, si, g.r2 + 1, 1);
+      shiftSheetRanges(sh, 'r', g.r2 + 1, 1, false);
+      const at = g.r2 + 1;
+      setCell(sh, at, spec.by, { v: `${g.key} ${label}`, s: { b: true } });
+      for (const c of spec.cols) setCell(sh, at, c, { f: `SUBTOTAL(${fnCode},${colName(c)}${g.r1 + 1}:${colName(c)}${g.r2 + 1})`, da: true, s: { b: true, ...((getCell(sh, g.r1, c) || {}).s && getCell(sh, g.r1, c).s.fmt ? { fmt: getCell(sh, g.r1, c).s.fmt } : {}) } });
+      for (let r = g.r1; r <= g.r2; r++) sh.outline.set(r, Math.max(1, sh.outline.get(r) || 0));
+    }
+    // grand total
+    const lastRow = rg.r2 + groups.length;
+    const tot = lastRow + 1;
+    insertRows(wb, si, tot, 1);
+    shiftSheetRanges(sh, 'r', tot, 1, false);
+    setCell(sh, tot, spec.by, { v: `Gesamt${label === 'Ergebnis' ? 'ergebnis' : ' – ' + label}`, s: { b: true, bd: { t: true } } });
+    for (const c of spec.cols) setCell(sh, tot, c, { f: `SUBTOTAL(${fnCode},${colName(c)}${rg.r1 + 2}:${colName(c)}${lastRow + 1})`, da: true, s: { b: true, bd: { t: true }, ...((getCell(sh, rg.r1 + 1, c) || {}).s && getCell(sh, rg.r1 + 1, c).s.fmt ? { fmt: getCell(sh, rg.r1 + 1, c).s.fmt } : {}) } });
+    invalidateDeps(wb);
+    changed({ full: true });
+    toast(`${groups.length} Teilergebnis${groups.length === 1 ? '' : 'se'} eingefügt – Gruppen lassen sich am Zeilenkopf mit − zuklappen`, 'success', { timeout: 5000 });
+  }
+  scroll.addEventListener('click', e => { const b = e.target.closest('[data-olt]'); if (b) { e.preventDefault(); toggleGroup(+b.dataset.olt); } });
 
   // ---------------- api for dialogs ----------------
   const api = {
@@ -2241,6 +2664,8 @@ export async function mountSheet(screen, { id = null, template = null }) {
   };
 
   // ---------------- init ----------------
+  if (sh.start) { const p0 = parseAddr(sh.start); if (p0) { sel.r = sel.ar = p0.r; sel.c = sel.ac = p0.c; } }
+  wb.sheets.forEach(x => { delete x.start; });
   layout(); renderTabs(); updateBar(); render(); renderCharts();
   setTimeout(() => scroll.focus({ preventScroll: true }), 60);
   screen.onDropFiles = () => toast('Öffne Tabellen über „Dateien“.', 'info');
@@ -2253,6 +2678,9 @@ export async function mountSheet(screen, { id = null, template = null }) {
     fill: (dir, n) => { const [r1, r2, c1, c2] = rangeBounds(); doFill(dir, n, { r1, r2, c1, c2 }); }, action: a => doAction(a), paste: (text, html) => pasteData(text, html || ''),
     copy: () => buildClip(false), pasteInternal: opts => pasteInternal(opts || {}), switchSheet: i => switchSheet(i), undo: () => doUndo(), redo: () => doRedo(),
     pivot: spec => buildPivot(spec), recalcAll: () => changed({ full: true }), freeze: (r, c) => setFreeze(r, c), sortRange: (a, keys) => { const p = parseRangeAddr(a); sortRange(p, keys); },
+    note: (a, text) => { const p = parseAddr(a); sel.r = sel.ar = p.r; sel.c = sel.ac = p.c; setNote(text); }, link: (a, l, text) => { const p = parseAddr(a); sel.r = sel.ar = p.r; sel.c = sel.ac = p.c; setLink(l, text); },
+    cellLink: a => { const p = parseAddr(a); return cellLink(p.r, p.c); }, group: (r1, r2, d) => groupRows(r1, r2, d), toggleGroup: r => toggleGroup(r), page: p => { sh.page = { ...(sh.page || {}), ...p }; shell.markDirty(); },
+    addCf: rule => { pushUndo(); sh.cf.push({ id: newChartId(), ...rule }); changed({ recalc: false }); }, sel: () => ({ ...mainRange(), more: sel.more.length }),
   };
 
   return () => {
@@ -2268,25 +2696,5 @@ export async function mountSheet(screen, { id = null, template = null }) {
 }
 
 function buildTemplate(id) {
-  const t = SHEET_TEMPLATES.find(x => x.id === id);
-  const wb = newWorkbook();
-  if (!t || !t.cells) return wb;
-  const def = t.cells();
-  const sh = wb.sheets[0];
-  sh.name = t.title.slice(0, 31);
-  def.rows.forEach((row, r) => row.forEach((item, c) => {
-    if (item === '' || item == null) return;
-    let val = item, style = null;
-    if (Array.isArray(item)) [val, style] = item;
-    const cell = {};
-    if (style) cell.s = { ...style };
-    if (val && typeof val === 'object' && val.date) { cell.v = dateToSerial(val.date); cell.s = { ...(cell.s || {}), fmt: 'dd.mm.yyyy' }; }
-    else if (typeof val === 'string' && val.startsWith('=')) { cell.f = parseInput(val).f; cell.da = true; }
-    else cell.v = val;
-    if (def.fmt && def.fmt.cols.includes(c) && r >= def.fmt.from) cell.s = { ...(cell.s || {}), fmt: def.fmt.code };
-    setCell(sh, r, c, cell);
-  }));
-  (def.widths || []).forEach((w, i) => { sh.colW[i] = w; });
-  sh.freeze = def.freeze || 0;
-  return wb;
+  return (id && buildSheetTemplate(id)) || newWorkbook();
 }

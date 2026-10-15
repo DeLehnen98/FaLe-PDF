@@ -1,0 +1,148 @@
+{
+ "id": "ausbildung-kfz-mechatroniker",
+ "field": "ausbildung",
+ "name": "Ausbildung Kfz-Mechatroniker/in",
+ "search": "ausbildung kfz mechatroniker bewerbung ausbildungsplatz werkstatt autohaus schüler kfz-mechatronikerin",
+ "short": "Bewerbung um die Werkstattausbildung – Schraubererfahrung zählt.",
+ "desc": "Bewerbung für die Ausbildung zum Kfz-Mechatroniker / zur Kfz-Mechatronikerin: zwei Musteranschreiben für Schüler, Schüler-Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Werkstätten suchen Azubis mit technischem Interesse, Geschick und Zuverlässigkeit. Wenn du schon am Moped, Fahrrad oder Auto geschraubt hast, erzähl davon. Gute Noten in Mathe und Physik helfen, aber Begeisterung, die man beim Probetag sieht, zählt viel.",
+ "lookFor": [
+  "Haupt- oder Realschulabschluss, gern gute Noten in Mathe/Physik",
+  "Technisches Interesse und Geschick",
+  "Praktikum in einer Werkstatt",
+  "Pünktlichkeit",
+  "Teamgeist"
+ ],
+ "letters": [
+  {
+   "label": "Schüler mit Mopederfahrung",
+   "level": "ausbildung",
+   "position": "Auszubildender zum Kfz-Mechatroniker",
+   "to": {
+    "org": "Autohaus Brenner GmbH",
+    "sal": "m",
+    "street": "Landstraße 12",
+    "city": "88212 Ravensburg",
+    "contact": "Brenner"
+   },
+   "body": [
+    "mein erstes eigenes Fahrzeug war ein Moped, das zwei Jahre in der Scheune meines Opas stand. Zusammen mit ihm habe ich den Vergaser gereinigt, die Zündkerze getauscht und neue Reifen montiert. Als es zum ersten Mal ansprang, war das ein besseres Gefühl als jedes Zeugnis.",
+    "Im Sommer mache ich den Realschulabschluss. In Physik und Technik habe ich eine Zwei. Mein Praktikum habe ich in einer freien Werkstatt gemacht, wo ich beim Reifenwechsel, bei Inspektionen und beim Ölwechsel geholfen habe. Der Meister hat gesagt, ich solle mich unbedingt bewerben.",
+    "Ich würde mich sehr über einen Probetag in Ihrer Werkstatt freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Halbjahreszeugnis",
+    "Praktikumsbescheinigung"
+   ]
+  },
+  {
+   "label": "Schülerin, Interesse an E-Mobilität",
+   "level": "ausbildung",
+   "position": "Auszubildende zur Kfz-Mechatronikerin, Schwerpunkt System- und Hochvolttechnik",
+   "to": {
+    "org": "E-Mobil Bodensee GmbH",
+    "sal": "none",
+    "street": "Seestraße 30",
+    "city": "88045 Friedrichshafen"
+   },
+   "body": [
+    "in meiner Familie fahren alle Elektroauto, und ich war immer die, die wissen wollte, warum es im Winter weniger Reichweite hat. Jetzt möchte ich lernen, wie man diese Autos repariert.",
+    "Ich gehe in die zehnte Klasse der Realschule und habe gute Noten in Mathe und Technik. In der Technik-AG haben wir ein kleines Elektroauto aus einem Bausatz gebaut und mit Sensoren ausgestattet. Mein Praktikum in einem Autohaus hat mir gezeigt, wie viel Diagnose am Computer heute zur Arbeit gehört.",
+    "Ich freue mich darauf, Ihre Werkstatt kennenzulernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse",
+    "Praktikumsbescheinigung"
+   ],
+   "from": [
+    "Lina Hafner",
+    "Riedleparkstraße 4",
+    "88045 Friedrichshafen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 3,
+  "name": "Jonas Rapp",
+  "title": "Schüler",
+  "street": "Schussenstraße 8",
+  "city": "88212 Ravensburg",
+  "exp": [
+   [
+    "03/2026",
+    "03/2026",
+    "Schülerpraktikum (2 Wochen)",
+    "Kfz-Werkstatt Huber",
+    "Ravensburg",
+    "- Reifenwechsel, Ölwechsel, Inspektionen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2021",
+    "07/2027",
+    "Realschule (voraussichtlich Realschulabschluss)",
+    "Realschule Ravensburg",
+    "Ravensburg",
+    "Gute Noten in Physik und Technik"
+   ]
+  ],
+  "skills": [
+   [
+    "Technisches Verständnis",
+    4
+   ],
+   [
+    "Handwerkliches Geschick",
+    4
+   ],
+   [
+    "Pünktlichkeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Moped restaurieren, Fußball"
+ },
+ "do": [
+  "Erzähl vom Schrauben.",
+  "Praktikum mit Tätigkeiten nennen.",
+  "Probetag anbieten."
+ ],
+ "dont": [
+  "Tuning oder Rennen als Hauptmotiv.",
+  "Unpünktlich zum Probetag kommen.",
+  "Floskeln."
+ ],
+ "questions": [
+  "Was haben Sie schon selbst repariert?",
+  "Was wissen Sie über Elektroautos?",
+  "Wie kommen Sie morgens in die Werkstatt?",
+  "Was machen Sie, wenn Sie einen Fehler gemacht haben?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört in eine Bewerbung um einen Ausbildungsplatz?",
+   "a": "Anschreiben, Lebenslauf und die letzten zwei Zeugnisse, dazu Praktikumsbescheinigungen und, wenn vorhanden, Nachweise über Ehrenamt oder Kurse. Alles zusammen als eine PDF-Datei, die nicht größer als ein paar MB ist."
+  }
+ ],
+ "related": [
+  "kfz-mechatroniker",
+  "ausbildung-elektroniker",
+  "ausbildung-industriekaufmann",
+  "schuelerpraktikum"
+ ]
+}

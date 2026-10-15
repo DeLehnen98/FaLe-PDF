@@ -1,0 +1,364 @@
+{
+ "id": "softwareentwickler",
+ "field": "it",
+ "popular": true,
+ "name": "Softwareentwickler/in",
+ "search": "softwareentwickler softwareentwicklerin programmierer developer entwickler fullstack backend frontend fachinformatiker anwendungsentwicklung web",
+ "short": "Backend, Frontend, Fullstack – Junior, Senior oder Quereinstieg.",
+ "desc": "Bewerbung als Softwareentwickler/in: Musteranschreiben für Junior nach dem Studium, erfahrene Entwicklerin und Quereinstieg über ein Bootcamp, plus Lebenslauf.",
+ "intro": "Entwicklerteams wollen sehen, was du gebaut hast. Ein Link auf ein öffentliches Projekt oder ein Beispiel aus dem Job sagt mehr als zehn Technologien im Lebenslauf. Zeig, wie du Probleme löst, im Team arbeitest und Qualität sicherst – Tests, Reviews, Dokumentation.",
+ "lookFor": [
+  "Studium, Ausbildung (Fachinformatiker/in Anwendungsentwicklung) oder nachweisbare Praxis",
+  "Erfahrung mit den Sprachen und Frameworks der Stelle",
+  "Tests, Code-Reviews, Versionskontrolle, CI/CD",
+  "Verständnis für Nutzer und Fachlichkeit",
+  "Projekte, die man sich ansehen kann"
+ ],
+ "letters": [
+  {
+   "label": "Junior nach dem Studium",
+   "level": "berufseinstieg",
+   "position": "Junior Backend Developer",
+   "to": {
+    "org": "Lieferkette Digital GmbH",
+    "sal": "n",
+    "street": "Torstraße 140",
+    "city": "10119 Berlin",
+    "contact": "Robin Schulze"
+   },
+   "body": [
+    "meine Bachelorarbeit hat eine Frage beantwortet, die Ihr Produkt jeden Tag stellt: Wie plant man Lieferfenster so, dass weniger Fahrten ins Leere gehen? Ich habe dafür einen Planungsdienst in Python geschrieben und mit echten, anonymisierten Daten eines Lieferdienstes getestet; die Leerfahrten sanken in der Simulation spürbar.",
+    "Im Studium und als Werkstudent habe ich vor allem Backend-Dienste gebaut: REST-APIs, PostgreSQL, Docker, Tests mit hoher Abdeckung, weil ich nachts ruhig schlafen möchte. Im Werkstudentenjob habe ich eine Schnittstelle zu einem Zahlungsdienstleister umgesetzt und dabei gelernt, wie wichtig saubere Fehlerbehandlung ist, wenn Geld im Spiel ist.",
+    "Mein Code liegt öffentlich in meinem Profil, den Link finden Sie im Lebenslauf. Ich würde mich freuen, wenn wir über die Stelle sprechen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Arbeitszeugnis Werkstudent"
+   ]
+  },
+  {
+   "label": "Erfahrene Entwicklerin, Wechsel",
+   "level": "erfahren",
+   "position": "Senior Frontend Engineer",
+   "to": {
+    "org": "Gesundheitsplattform Medify GmbH",
+    "sal": "none",
+    "street": "Kurfürstendamm 50",
+    "city": "10707 Berlin"
+   },
+   "body": [
+    "acht Jahre Frontend, davon fünf an einer Banking-App mit zwei Millionen Nutzerinnen: Ich weiß, wie es sich anfühlt, wenn ein Fehler im Release nicht nur einen Bug-Report, sondern eine Pressemitteilung auslöst. Seitdem schreibe ich lieber einen Test zu viel.",
+    "In meinem Team habe ich die Einführung von Barrierefreiheit-Prüfungen in die CI-Pipeline vorangetrieben, das Designsystem mitgebaut und neue Kolleginnen in die Codebasis eingearbeitet. Mit TypeScript und modernen Frameworks arbeite ich täglich, ebenso mit Performance-Messungen auf schwachen Geräten. Ich halte Code-Reviews für die beste Lernmöglichkeit im Team, in beide Richtungen.",
+    "Gesundheitsanwendungen, die auch ältere Menschen ohne Hilfe nutzen können, sind für mich ein guter Grund zu wechseln. Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Sarah Lindqvist",
+    "Schönhauser Allee 80",
+    "10439 Berlin"
+   ]
+  },
+  {
+   "label": "Quereinstieg nach einem Bootcamp",
+   "level": "quereinstieg",
+   "position": "Junior Webentwickler",
+   "to": {
+    "org": "Agentur Pixelwerk",
+    "sal": "none",
+    "street": "Görlitzer Straße 50",
+    "city": "10997 Berlin"
+   },
+   "body": [
+    "zehn Jahre lang habe ich als Tontechniker Konzerte gemischt. Als die Hallen geschlossen waren, habe ich angefangen zu programmieren, erst aus Neugier, dann mit Plan: ein Jahr Selbststudium und ein zwölfwöchiges Vollzeit-Bootcamp mit Abschlussprojekt.",
+    "Mein Abschlussprojekt ist ein Buchungstool für Proberäume, das ein Musikverein in Kreuzberg seit einem halben Jahr nutzt. Ich habe es mit JavaScript, Node und einer kleinen Datenbank gebaut und pflege es weiter; die Mitglieder melden Fehler direkt bei mir, das ist die ehrlichste Code-Review, die es gibt. Aus der Tontechnik bringe ich mit, dass ich unter Zeitdruck systematisch Fehler suche und mit Kunden rede, die genau wissen, was sie wollen, aber nicht, wie es heißt.",
+    "Ich weiß, dass ich als Junior starte. Eine Agentur mit vielen kleinen Projekten wäre für mich der beste Ort, um schnell zu lernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bootcamp-Zertifikat",
+    "Link zum Projekt"
+   ],
+   "from": [
+    "Erik Vogt",
+    "Wiener Straße 20",
+    "10999 Berlin"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "modern",
+  "accent": 2,
+  "name": "Noah Bergström",
+  "title": "Softwareentwickler (B.Sc. Informatik)",
+  "street": "Kastanienallee 30",
+  "city": "10435 Berlin",
+  "web": "github.example/noah-b",
+  "exp": [
+   [
+    "10/2024",
+    "09/2026",
+    "Werkstudent Backend-Entwicklung",
+    "Zahlwerk FinTech GmbH",
+    "Berlin",
+    "- REST-Schnittstelle zu einem Zahlungsdienstleister\n- Tests und Fehlerbehandlung\n- Code-Reviews im Team"
+   ],
+   [
+    "2023",
+    "2024",
+    "Tutor Programmierung 1",
+    "Hochschule für Technik und Wirtschaft",
+    "Berlin",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2022",
+    "09/2026",
+    "B.Sc. Informatik",
+    "Hochschule für Technik und Wirtschaft",
+    "Berlin",
+    "Bachelorarbeit: Planung von Lieferfenstern zur Vermeidung von Leerfahrten"
+   ],
+   [
+    "2013",
+    "2022",
+    "Abitur",
+    "Gymnasium Pankow",
+    "Berlin",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Python",
+    4
+   ],
+   [
+    "REST-APIs",
+    4
+   ],
+   [
+    "PostgreSQL",
+    3
+   ],
+   [
+    "Docker",
+    3
+   ],
+   [
+    "Testautomatisierung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Schwedisch",
+    "C1"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Open-Source-Beiträge, Bouldern"
+ },
+ "do": [
+  "Link zu Projekten oder Code.",
+  "Ein konkretes Problem und deine Lösung.",
+  "Qualitätsthemen: Tests, Reviews, Barrierefreiheit."
+ ],
+ "dont": [
+  "Technologie-Listen ohne Kontext.",
+  "Fremden Code als eigenen zeigen.",
+  "Firmengeheimnisse im Beispiel."
+ ],
+ "questions": [
+  "Erklären Sie ein Projekt, auf das Sie stolz sind.",
+  "Wie gehen Sie mit einem Bug in Produktion um?",
+  "Wie geben Sie Feedback in einem Code-Review?",
+  "Wie bleiben Sie technisch auf dem Laufenden?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich ein Anschreiben als Entwickler?",
+   "a": "Viele Firmen sind da locker, aber ein kurzes Anschreiben mit einem Projektbeispiel und einem Grund für genau dieses Team hebt dich ab – besonders als Junior oder Quereinsteiger."
+  },
+  {
+   "q": "Wie gehe ich mit einer Programmieraufgabe im Bewerbungsprozess um?",
+   "a": "Lies die Aufgabe genau, halte den Zeitrahmen ein und erkläre deine Entscheidungen in einer kurzen README. Lieber eine saubere, getestete Teillösung als alles halb."
+  }
+ ],
+ "related": [
+  "it-systemadministrator",
+  "data-analyst",
+  "ux-ui-designer",
+  "ausbildung-fachinformatiker"
+ ],
+ "en": {
+  "slug": "software-developer",
+  "name": "Software developer",
+  "search": "software developer software engineer programmer web developer backend frontend full stack junior",
+  "short": "Backend, frontend, full stack – junior, senior or career changer.",
+  "desc": "Software developer CV and cover letter examples: letters for a graduate, an experienced engineer and a bootcamp career changer, plus a ready CV.",
+  "intro": "Engineering teams want to see what you have built. A link to a public project or a concrete example from work says more than a list of technologies. Show how you solve problems, work with others and care about quality.",
+  "lookFor": [
+   "Relevant degree, apprenticeship or demonstrable practice",
+   "Experience with the stack in the advert",
+   "Tests, code review, version control, CI/CD",
+   "Interest in users and the domain",
+   "Projects people can look at"
+  ],
+  "letters": [
+   {
+    "label": "Graduate developer",
+    "level": "berufseinstieg",
+    "position": "Junior backend developer",
+    "to": {
+     "org": "Routewise Ltd",
+     "sal": "n",
+     "street": "140 Shoreditch High Street",
+     "city": "London E1 6JE",
+     "contact": "Robin Shaw"
+    },
+    "body": [
+     "My dissertation answered a question your product asks every day: how do you plan delivery slots so fewer vans drive empty? I built a planning service in Python and tested it on anonymised data from a delivery company; empty runs dropped noticeably in simulation.",
+     "As a student and part-time developer I built REST APIs with PostgreSQL and Docker, with good test coverage because I like to sleep at night. At my part-time job I integrated a payment provider and learned how much error handling matters when money is involved.",
+     "My code is public – the link is on my CV. I would be glad to talk about the role."
+    ],
+    "att": [
+     "CV",
+     "Degree certificate"
+    ]
+   },
+   {
+    "label": "Career changer after a bootcamp",
+    "level": "quereinstieg",
+    "position": "Junior web developer",
+    "to": {
+     "org": "Pixelworks Studio",
+     "sal": "none",
+     "street": "50 Brick Lane",
+     "city": "London E1 6RF"
+    },
+    "body": [
+     "For ten years I mixed live concerts as a sound engineer. When venues closed, I started coding – first out of curiosity, then with a plan: a year of self-study and a twelve-week full-time bootcamp.",
+     "My final project is a rehearsal-room booking tool that a music charity has used for six months. I built it with JavaScript, Node and a small database and still maintain it; users report bugs straight to me, which is the most honest code review there is.",
+     "I know I am starting as a junior. An agency with many small projects would be the best place for me to learn fast."
+    ],
+    "att": [
+     "CV",
+     "Bootcamp certificate",
+     "Project link"
+    ],
+    "from": [
+     "Eric Wood",
+     "20 Mare Street",
+     "London E8 4RP"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a03",
+   "design": "modern",
+   "accent": 2,
+   "name": "Noah Bergman",
+   "title": "Software developer (BSc Computer Science)",
+   "street": "30 Kingsland Road",
+   "city": "London E2 8DA",
+   "web": "github.example/noah-b",
+   "exp": [
+    [
+     "10/2024",
+     "09/2026",
+     "Part-time backend developer",
+     "Coinflow Ltd",
+     "London",
+     "- Payment provider integration\n- Tests and error handling\n- Code reviews"
+    ]
+   ],
+   "edu": [
+    [
+     "2022",
+     "2026",
+     "BSc Computer Science",
+     "University of London",
+     "London",
+     "Dissertation: delivery slot planning to reduce empty runs"
+    ],
+    [
+     "2015",
+     "2022",
+     "Secondary school and sixth form",
+     "Hackney Academy",
+     "London",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Python",
+     4
+    ],
+    [
+     "REST APIs",
+     4
+    ],
+    [
+     "PostgreSQL",
+     3
+    ],
+    [
+     "Docker",
+     3
+    ],
+    [
+     "Automated testing",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Swedish",
+     "C1"
+    ]
+   ],
+   "hobbies": "Open source, climbing"
+  },
+  "do": [
+   "Link to projects or code.",
+   "Describe one problem and your solution.",
+   "Mention testing, reviews, accessibility."
+  ],
+  "dont": [
+   "List technologies without context.",
+   "Show other people’s code as yours.",
+   "Share an employer’s confidential details."
+  ],
+  "questions": [
+   "Talk us through a project you are proud of.",
+   "How do you handle a bug in production?",
+   "How do you give feedback in a code review?",
+   "How do you keep learning?"
+  ],
+  "faq": [
+   {
+    "q": "Do developers need a cover letter?",
+    "a": "Not always, but a short one with a project example and a reason for choosing this team makes you stand out – especially as a junior or career changer."
+   }
+  ]
+ }
+}

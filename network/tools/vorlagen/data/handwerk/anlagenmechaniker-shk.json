@@ -1,0 +1,198 @@
+{
+ "id": "anlagenmechaniker-shk",
+ "field": "handwerk",
+ "name": "Anlagenmechaniker/in SHK",
+ "search": "anlagenmechaniker sanitaer heizung klima installateur heizungsbauer waermepumpe kundendienst shk",
+ "short": "Sanitär, Heizung, Wärmepumpe – Montage oder Kundendienst.",
+ "desc": "Bewerbung als Anlagenmechaniker/in SHK: Musteranschreiben für Gesellen mit Wärmepumpen-Erfahrung und Kundendienst, Lebenslauf und Tipps für das Gespräch.",
+ "intro": "SHK-Betriebe suchen dringend Gesellen für Montage und Kundendienst. Gefragt sind Erfahrung mit Wärmepumpen und Badsanierung, sauberes Arbeiten beim Kunden und die Bereitschaft zum Notdienst. Schreib, mit welchen Anlagen und Herstellern du gearbeitet hast und ob du eigenständig Baustellen führst.",
+ "lookFor": [
+  "Gesellenbrief Anlagenmechaniker/in SHK (oder Gas- und Wasserinstallateur, Zentralheizungs- und Lüftungsbauer)",
+  "Erfahrung mit Wärmepumpen, Gas-Brennwert, Pelletkesseln oder Badsanierung",
+  "Kundendienst: Wartung, Störungssuche, Notdienst",
+  "Hydraulischer Abgleich, Inbetriebnahme, Dokumentation",
+  "Führerschein Klasse B, oft auch BE für Anhänger"
+ ],
+ "letters": [
+  {
+   "label": "Geselle mit Wärmepumpen-Erfahrung",
+   "level": "erfahren",
+   "position": "Anlagenmechaniker SHK für Wärmepumpen-Montage",
+   "to": {
+    "org": "Haustechnik Becker GmbH",
+    "sal": "m",
+    "street": "Gewerbering 4",
+    "city": "49080 Osnabrück",
+    "contact": "Becker"
+   },
+   "body": [
+    "letztes Jahr habe ich mit meinem Kollegen 31 Luft-Wasser-Wärmepumpen im Bestand eingebaut, meistens als Ersatz für alte Ölkessel. Die meisten Kunden hatten vorher Sorge, ob ihre Heizkörper reichen. Bei fast allen haben wir nach dem hydraulischen Abgleich und dem Tausch von zwei, drei Heizkörpern gezeigt, dass es klappt.",
+    "Ich bin seit 2019 Geselle und mache von der Demontage über Hydraulik und Elektroanschluss im zulässigen Umfang bis zur Inbetriebnahme mit Herstellerschulung alles. Kältetechnik ist bei Monoblock-Geräten nicht nötig, für Split-Anlagen habe ich den Sachkundenachweis für Kältemittel gemacht.",
+    "Mein Betrieb verlagert sich auf Neubauten mit großen Bauträgern. Ich möchte lieber bei Sanierungen und beim Endkunden bleiben. Notdienst mache ich mit, eine Woche im Monat ist für mich in Ordnung.",
+    "Ich kann zum 1. November wechseln."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Sachkundenachweis Kältemittel",
+    "Herstellerschulungen",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Kundendiensttechnikerin, Rückkehr in die Region",
+   "level": "erfahren",
+   "position": "Kundendiensttechnikerin Heizung",
+   "to": {
+    "org": "Wärme & Bad Lindner",
+    "sal": "f",
+    "street": "Hansastraße 77",
+    "city": "49090 Osnabrück",
+    "contact": "Lindner"
+   },
+   "body": [
+    "nach fünf Jahren im Kundendienst eines großen Heizungsbetriebs in Hamburg ziehe ich zurück nach Osnabrück, wo meine Familie lebt. Ihre Anzeige für den Kundendienst passt genau zu dem, was ich gelernt habe und gern mache.",
+    "Ich warte Gas-Brennwertgeräte, Ölkessel und Wärmepumpen und finde Störungen meistens beim ersten Besuch. Ein Kunde hatte dreimal den gleichen Fehler an seiner Therme; am Ende war es ein falsch verlegtes Abgasrohr eines anderen Betriebs. Ich dokumentiere Wartungen in der App, schreibe Angebote für Reparaturen und erkläre Kunden, warum eine Investition sinnvoll ist oder eben nicht.",
+    "Ich habe den Führerschein BE und kann ab dem 1. Februar anfangen. Gern komme ich zu einem Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Jana Sommer",
+    "Lotter Straße 12",
+    "49078 Osnabrück"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "compact",
+  "accent": 4,
+  "name": "Florian Meyer",
+  "title": "Anlagenmechaniker SHK",
+  "street": "Bramscher Straße 44",
+  "city": "49088 Osnabrück",
+  "exp": [
+   [
+    "08/2019",
+    "",
+    "Anlagenmechaniker SHK (Geselle)",
+    "Haustechnik Nordwest GmbH",
+    "Osnabrück",
+    "- Montage von Luft-Wasser-Wärmepumpen im Bestand\n- Hydraulischer Abgleich und Inbetriebnahme\n- Badsanierungen\n- Notdienst"
+   ],
+   [
+    "08/2015",
+    "07/2019",
+    "Ausbildung zum Anlagenmechaniker SHK",
+    "Haustechnik Nordwest GmbH",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2009",
+    "2015",
+    "Hauptschulabschluss / Sekundarabschluss I",
+    "Oberschule Osnabrück",
+    "Osnabrück",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Sachkundenachweis Kältemittel (Kategorie I)",
+    "Handwerkskammer",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2023",
+    "Herstellerschulung Wärmepumpen",
+    "Herstellerakademie",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2022",
+    "Führerschein Klasse BE",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Wärmepumpen",
+    4
+   ],
+   [
+    "Gas-Brennwerttechnik",
+    4
+   ],
+   [
+    "Hydraulischer Abgleich",
+    4
+   ],
+   [
+    "Badsanierung",
+    3
+   ],
+   [
+    "Störungssuche",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Handball, Garten"
+ },
+ "do": [
+  "Nenn Anlagentypen und Stückzahlen.",
+  "Erwähne Sachkundenachweise und Herstellerschulungen.",
+  "Sag, ob Notdienst für dich möglich ist."
+ ],
+ "dont": [
+  "Nur „Heizungsbau“ schreiben.",
+  "Den Führerschein vergessen.",
+  "Über Kunden lästern – auch nicht im Beispiel."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einer Heizung vor, die nicht warm wird?",
+  "Was sagen Sie einem Kunden, der fragt, ob sich eine Wärmepumpe lohnt?",
+  "Wie oft können Sie Notdienst übernehmen?",
+  "Welche Hersteller kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich für Wärmepumpen eine Zusatzqualifikation haben?",
+   "a": "Für Monoblock-Geräte meist nicht, für Arbeiten an Kältekreisläufen von Split-Geräten brauchst du einen Sachkundenachweis. Viele Hersteller bieten zusätzlich Schulungen an – nenn sie im Lebenslauf."
+  },
+  {
+   "q": "Wie bewerbe ich mich bei einem kleinen Betrieb?",
+   "a": "Oft reicht eine kurze E-Mail mit Lebenslauf und Gesellenbrief, gern nach einem Anruf beim Chef. Ein Anschreiben, das zeigt, welche Arbeiten du selbstständig machst, wirkt trotzdem stärker."
+  }
+ ],
+ "related": [
+  "elektriker",
+  "hausmeister",
+  "kfz-mechatroniker",
+  "industriemechaniker"
+ ]
+}

@@ -1,0 +1,181 @@
+{
+ "id": "ux-ui-designer",
+ "field": "it",
+ "name": "UX/UI-Designer/in",
+ "search": "ux designer ui designer ux/ui produktdesigner interaction designer user experience webdesigner app design",
+ "short": "Nutzerforschung, Konzept, Interface – mit Portfolio.",
+ "desc": "Bewerbung als UX/UI-Designer/in: Musteranschreiben für Berufseinstieg und erfahrene Produktdesignerin, Lebenslauf mit Foto-Platzhalter und Tipps zum Portfolio.",
+ "intro": "Bei Designstellen entscheidet das Portfolio. Das Anschreiben soll neugierig machen: ein Projekt, ein Problem, deine Lösung und was sich dadurch für Nutzer verändert hat. Zeig, wie du forschst, testest und mit Entwicklung zusammenarbeitest.",
+ "lookFor": [
+  "Portfolio mit nachvollziehbaren Fallstudien",
+  "Nutzerforschung und Usability-Tests",
+  "Interface-Design, Designsysteme, Prototyping",
+  "Barrierefreiheit",
+  "Zusammenarbeit mit Entwicklung und Produktmanagement"
+ ],
+ "letters": [
+  {
+   "label": "Berufseinstieg nach dem Studium",
+   "level": "berufseinstieg",
+   "position": "Junior UX/UI Designer",
+   "to": {
+    "org": "Stadtmobil App GmbH",
+    "sal": "none",
+    "street": "Lindwurmstraße 60",
+    "city": "80337 München"
+   },
+   "body": [
+    "eine Fahrkarten-App, die meine 79-jährige Nachbarin allein bedienen kann: So hieß das Ziel meiner Abschlussarbeit. Ich habe mit zwölf älteren Menschen Interviews und Tests gemacht und am Ende einen Prototyp gebaut, mit dem alle Testpersonen ein Ticket kaufen konnten.",
+    "Im Studium Interaktionsgestaltung habe ich gelernt, Fragen zu stellen, bevor ich Bildschirme zeichne. Im Praxissemester bei einer Agentur habe ich an einem Designsystem mitgearbeitet und Komponenten so dokumentiert, dass die Entwickler nicht nachfragen mussten. Barrierefreiheit prüfe ich von Anfang an mit, Kontraste und Bildschirmleser-Tests inklusive.",
+    "Mein Portfolio mit drei Fallstudien ist im Lebenslauf verlinkt. Ich freue mich darauf, es Ihnen zu zeigen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Portfolio-Link"
+   ]
+  },
+  {
+   "label": "Erfahrene Produktdesignerin",
+   "level": "erfahren",
+   "position": "Senior Product Designer",
+   "to": {
+    "org": "Lernplattform Klassenzimmer GmbH",
+    "sal": "m",
+    "street": "Sonnenstraße 20",
+    "city": "80331 München",
+    "contact": "Kaiser"
+   },
+   "body": [
+    "fünf Jahre Produktdesign für eine Banking-App haben mir beigebracht, Komplexes einfach zu machen. Jetzt möchte ich das für Lernende und Lehrkräfte tun.",
+    "Ich habe den Onboarding-Prozess der App neu gestaltet, mit Interviews, Tests und Iterationen; die Abbruchrate ist danach deutlich gesunken. Ich arbeite eng mit Entwicklung und Produktmanagement, leite Workshops und habe zwei Junior-Designer begleitet. Im Designsystem habe ich die Barrierefreiheits-Richtlinien verantwortet.",
+    "Lehrkräfte haben wenig Zeit, Schülerinnen wenig Geduld – für beide gutes Design zu machen, reizt mich. Meine Kündigungsfrist beträgt drei Monate."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Portfolio-Link",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Clara Hofer",
+    "Leopoldstraße 100",
+    "80802 München"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "modern",
+  "accent": 2,
+  "name": "Amira Benali",
+  "title": "UX/UI-Designerin (B.A. Interaktionsgestaltung)",
+  "street": "Westendstraße 50",
+  "city": "80339 München",
+  "web": "portfolio.example/amira",
+  "exp": [
+   [
+    "03/2025",
+    "08/2025",
+    "Praxissemester UX Design",
+    "Agentur Formfolge",
+    "München",
+    "- Mitarbeit am Designsystem\n- Komponenten-Dokumentation\n- Usability-Tests"
+   ],
+   [
+    "2023",
+    "2025",
+    "Freiberufliche Gestaltung",
+    "Vereine und kleine Läden",
+    "München",
+    "- Websites und Logos"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2022",
+    "09/2026",
+    "B.A. Interaktionsgestaltung",
+    "Hochschule München",
+    "München",
+    "Abschlussarbeit: barrierearme Ticket-App für ältere Menschen"
+   ],
+   [
+    "2013",
+    "2022",
+    "Abitur",
+    "Gymnasium München-Pasing",
+    "München",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Nutzerforschung",
+    4
+   ],
+   [
+    "Prototyping",
+    4
+   ],
+   [
+    "Interface-Design",
+    4
+   ],
+   [
+    "Barrierefreiheit",
+    4
+   ],
+   [
+    "Designsysteme",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Arabisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B2"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Kalligrafie, Zeichnen im Café"
+ },
+ "do": [
+  "Ein Projekt mit Problem, Vorgehen, Ergebnis.",
+  "Portfolio-Link sichtbar.",
+  "Zusammenarbeit mit Entwicklung zeigen."
+ ],
+ "dont": [
+  "Nur schöne Screens ohne Prozess.",
+  "Fremde Projekte als eigene ausgeben.",
+  "Vertrauliche Kundenarbeiten ohne Erlaubnis zeigen."
+ ],
+ "questions": [
+  "Führen Sie uns durch eine Fallstudie.",
+  "Wie testen Sie ein Design mit Nutzern?",
+  "Wie gehen Sie mit Feedback um, das Ihrer Meinung widerspricht?",
+  "Wie stellen Sie Barrierefreiheit sicher?"
+ ],
+ "faq": [
+  {
+   "q": "Was gehört ins Portfolio?",
+   "a": "Zwei bis vier Fallstudien mit Ausgangslage, Vorgehen, Entscheidungen und Ergebnis. Weniger, aber gut erklärte Projekte überzeugen mehr als viele Screens."
+  }
+ ],
+ "related": [
+  "grafikdesigner",
+  "softwareentwickler",
+  "marketing-manager",
+  "praktikum-marketing"
+ ]
+}

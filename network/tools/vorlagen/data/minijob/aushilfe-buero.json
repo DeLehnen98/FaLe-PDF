@@ -1,0 +1,157 @@
+{
+ "id": "aushilfe-buero",
+ "field": "minijob",
+ "name": "Bürohilfe (Aushilfe im Büro)",
+ "search": "bürohilfe büroaushilfe aushilfe büro minijob bürokraft teilzeit studentische aushilfe verwaltung",
+ "short": "Ablage, Post, Telefon – stundenweise im Büro.",
+ "desc": "Bewerbung als Bürohilfe oder Aushilfe im Büro: zwei kurze Musteranschreiben für Studentin und Wiedereinsteigerin, Lebenslauf mit Foto-Platzhalter.",
+ "intro": "Bürohilfen übernehmen Ablage, Post, Telefon, Dateneingabe und kleine Organisationsaufgaben. Arbeitgeber wollen wissen, wann du kannst, welche Programme du beherrschst und dass du sorgfältig und diskret bist.",
+ "lookFor": [
+  "Sorgfalt und Diskretion",
+  "Office-Grundkenntnisse",
+  "Freundlicher Ton am Telefon",
+  "Feste Stunden pro Woche",
+  "Kurzfristige Einsatzbereitschaft von Vorteil"
+ ],
+ "letters": [
+  {
+   "label": "Studentin, Minijob",
+   "level": "minijob",
+   "position": "Bürohilfe (Minijob, 10 Stunden pro Woche)",
+   "to": {
+    "org": "Architekturbüro Weiß",
+    "sal": "none",
+    "street": "Kaiserstraße 40",
+    "city": "66111 Saarbrücken"
+   },
+   "body": [
+    "ich studiere Architektur im zweiten Semester und suche einen Nebenjob, bei dem ich nebenbei sehe, wie ein Büro arbeitet. Ihre Stelle als Bürohilfe ist dafür perfekt.",
+    "Ich arbeite sicher mit Office-Programmen, kann Pläne scannen und ablegen und bin am Telefon freundlich und klar. Dienstag und Donnerstag habe ich ab 13 Uhr Zeit.",
+    "Ich freue mich auf eine Rückmeldung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ]
+  },
+  {
+   "label": "Wiedereinstieg stundenweise",
+   "level": "minijob",
+   "position": "Büroaushilfe (vormittags)",
+   "to": {
+    "org": "Malerbetrieb Schuh",
+    "sal": "none",
+    "street": "Hauptstraße 70",
+    "city": "66125 Saarbrücken"
+   },
+   "body": [
+    "nach zehn Jahren Familienzeit möchte ich wieder stundenweise arbeiten. Eine Bürostelle in einem Handwerksbetrieb in meiner Nähe wäre ideal.",
+    "Vor der Familienzeit war ich Sachbearbeiterin in einer Versicherung. Ablage, Post, Telefon und Rechnungsablage traue ich mir sofort zu, mit Tabellen arbeite ich in unserem Sportverein als Kassenwartin.",
+    "Ich kann montags bis donnerstags von 8 bis 12 Uhr arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sabine Klein",
+    "Schulstraße 5",
+    "66125 Saarbrücken"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a16",
+  "design": "modern",
+  "accent": 0,
+  "name": "Lina Park",
+  "title": "Studentin Architektur",
+  "street": "Mainzer Straße 80",
+  "city": "66121 Saarbrücken",
+  "exp": [
+   [
+    "2024",
+    "2025",
+    "Aushilfe im Copyshop",
+    "Copy Center Uni",
+    "Saarbrücken",
+    "- Scannen, Drucken, Kasse"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2025",
+    "",
+    "B.A. Architektur (2. Semester)",
+    "Hochschule für Technik und Wirtschaft",
+    "Saarbrücken",
+    ""
+   ],
+   [
+    "2016",
+    "2025",
+    "Abitur",
+    "Ludwigsgymnasium",
+    "Saarbrücken",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Office-Programme",
+    4
+   ],
+   [
+    "Scannen und Ablage",
+    4
+   ],
+   [
+    "Telefon",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Koreanisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Skizzieren, Badminton"
+ },
+ "do": [
+  "Stunden und Tage nennen.",
+  "Office-Kenntnisse ehrlich angeben.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Zu lange Texte.",
+  "Unklare Zeiten.",
+  "Vertrauliches aus früheren Jobs."
+ ],
+ "questions": [
+  "Wann können Sie arbeiten?",
+  "Welche Programme kennen Sie?",
+  "Wie gehen Sie mit vertraulichen Unterlagen um?",
+  "Wie lange möchten Sie bleiben?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "kauffrau-bueromanagement",
+  "nachhilfelehrer",
+  "verkaeuferin-minijob",
+  "sachbearbeiter"
+ ]
+}

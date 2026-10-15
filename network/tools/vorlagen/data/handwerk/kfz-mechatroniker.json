@@ -1,0 +1,192 @@
+{
+ "id": "kfz-mechatroniker",
+ "field": "handwerk",
+ "name": "Kfz-Mechatroniker/in",
+ "search": "kfz mechaniker mechatroniker werkstatt autowerkstatt kfz-mechatronikerin hochvolt elektroauto service",
+ "short": "Werkstatt, Diagnose, Hochvolt – Geselle oder Wechsel in die freie Werkstatt.",
+ "desc": "Bewerbung als Kfz-Mechatroniker/in: Muster-Anschreiben für Gesellen nach der Ausbildung und Diagnosetechniker mit Hochvolt-Qualifikation, plus fertiger Lebenslauf.",
+ "intro": "Werkstätten suchen Kfz-Mechatroniker, die zügig und sauber arbeiten, Fehler mit Diagnosetechnik finden und mit Elektro- und Hybridfahrzeugen umgehen können. Gib an, welche Marken und Arbeiten du kennst und welche Hochvolt-Stufe du hast.",
+ "lookFor": [
+  "Gesellenbrief Kfz-Mechatroniker/in, gern mit Schwerpunkt (Pkw, Nfz, System- und Hochvolttechnik)",
+  "Erfahrung mit Diagnosegeräten und Schaltplänen",
+  "Hochvolt-Qualifikation für Arbeiten an E-Fahrzeugen",
+  "Inspektionen, Bremsen, Klima, HU-Vorbereitung",
+  "Führerschein und ordentliches Arbeiten mit dem Werkstattsystem"
+ ],
+ "letters": [
+  {
+   "label": "Geselle nach der Ausbildung im Autohaus",
+   "level": "berufseinstieg",
+   "position": "Kfz-Mechatroniker für die freie Werkstatt",
+   "to": {
+    "org": "Autoservice Klein",
+    "sal": "m",
+    "street": "Gewerbestraße 11",
+    "city": "33602 Bielefeld",
+    "contact": "Klein"
+   },
+   "body": [
+    "in einem Markenautohaus habe ich gelernt, wie man nach Herstellervorgabe arbeitet. In Ihrer freien Werkstatt möchte ich lernen, wie man ohne diese Vorgaben herausfindet, warum ein zwölf Jahre alter Kombi ruckelt.",
+    "Seit meiner Gesellenprüfung im Sommer arbeite ich im Serviceteam: Inspektionen, Bremsen, Reifen, Klimaservice und kleinere Reparaturen. Bei der Diagnose bin ich gern dabei, und mein Meister lässt mich zunehmend Fehlerspeicher auslesen und Messungen nach Schaltplan machen. Die Hochvolt-Qualifikation Stufe 2 habe ich in der Ausbildung gemacht.",
+    "Privat fahre ich einen Kleinwagen von 2009, den ich mit 17 als Bastelprojekt gekauft und selbst wieder durch die HU gebracht habe. Ich kann zum nächsten Monatsersten anfangen und würde gern einen Probetag bei Ihnen machen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Zertifikat Hochvolt"
+   ]
+  },
+  {
+   "label": "Diagnosetechniker mit Erfahrung",
+   "level": "erfahren",
+   "position": "Kfz-Mechatronikerin mit Schwerpunkt Diagnose",
+   "to": {
+    "org": "Autohaus Westfalen GmbH",
+    "sal": "f",
+    "street": "Herforder Straße 220",
+    "city": "33609 Bielefeld",
+    "contact": "Kaiser"
+   },
+   "body": [
+    "seit neun Jahren arbeite ich als Kfz-Mechatronikerin, die letzten fünf als Diagnosetechnikerin in einer Werkstatt mit vielen Elektro- und Hybridfahrzeugen. Fehler, die andere nach zwei Stunden aufgeben, sind meine liebsten Aufträge.",
+    "Ich habe die Hochvolt-Qualifikation Stufe 3, darf also an unter Spannung stehenden Systemen arbeiten, und bin für unsere Werkstatt Ansprechpartnerin für die Batteriediagnose. Neben der Fehlersuche schule ich Kolleginnen und Kollegen im Umgang mit dem Diagnosesystem und betreue Azubis. Den Meisterkurs habe ich im Teil III und IV abgeschlossen, die fachlichen Teile folgen nächstes Jahr.",
+    "In Ihrem Haus würde ich gern Verantwortung für die Diagnose übernehmen. Ein Gespräch mit Ihrem Werkstattleiter würde ich begrüßen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Hochvolt-Zertifikat Stufe 3",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Ronja Fischer",
+    "Detmolder Straße 3",
+    "33604 Bielefeld"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a18",
+  "design": "compact",
+  "accent": 3,
+  "name": "Emre Yıldız",
+  "title": "Kfz-Mechatroniker",
+  "street": "Jöllenbecker Straße 12",
+  "city": "33613 Bielefeld",
+  "exp": [
+   [
+    "07/2026",
+    "",
+    "Kfz-Mechatroniker (Geselle)",
+    "Autohaus Teutoburg GmbH",
+    "Bielefeld",
+    "- Inspektionen, Bremsen, Klimaservice\n- Diagnose mit Herstellertester\n- HU-Vorbereitung"
+   ],
+   [
+    "08/2022",
+    "06/2026",
+    "Ausbildung zum Kfz-Mechatroniker (Pkw-Technik)",
+    "Autohaus Teutoburg GmbH",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2022",
+    "Mittlerer Schulabschluss",
+    "Realschule Jöllenbeck",
+    "Bielefeld",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Hochvolt-Qualifikation Stufe 2 (fachkundige Person)",
+    "Überbetriebliche Ausbildung",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Klimaanlagen-Sachkunde",
+    "Kfz-Innung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Fahrzeugdiagnose",
+    3
+   ],
+   [
+    "Bremsen und Fahrwerk",
+    4
+   ],
+   [
+    "Klimaservice",
+    4
+   ],
+   [
+    "Hochvolt-Systeme (Stufe 2)",
+    3
+   ],
+   [
+    "Werkstattsoftware",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Karting, Fußball"
+ },
+ "do": [
+  "Nenn die Hochvolt-Stufe und Zusatzqualifikationen.",
+  "Beschreib eine Diagnose, auf die du stolz bist.",
+  "Erwähne Marken und Fahrzeugtypen."
+ ],
+ "dont": [
+  "Tuning-Hobbys in den Vordergrund stellen.",
+  "Werkstatt-Erfahrung übertreiben – beim Probetag fällt es auf.",
+  "Den Wechselgrund negativ formulieren."
+ ],
+ "questions": [
+  "Ein Kunde kommt mit einer Motorkontrollleuchte. Wie gehen Sie vor?",
+  "Welche Hochvolt-Arbeiten dürfen Sie durchführen?",
+  "Was machen Sie, wenn Sie einen Fehler beim Zusammenbau bemerken?",
+  "Wie gehen Sie mit Zeitvorgaben um?"
+ ],
+ "faq": [
+  {
+   "q": "Ist die Hochvolt-Qualifikation wichtig?",
+   "a": "Ja, bei immer mehr Elektro- und Hybridfahrzeugen fragen Werkstätten gezielt danach. Gib die Stufe an und, falls vorhanden, Herstellerschulungen."
+  },
+  {
+   "q": "Bewerbe ich mich beim Autohaus anders als bei der freien Werkstatt?",
+   "a": "Beim Autohaus zählen Markenerfahrung und Herstellerschulungen, in der freien Werkstatt eher Vielseitigkeit und Diagnose bei vielen Marken. Passe das Anschreiben entsprechend an."
+  }
+ ],
+ "related": [
+  "ausbildung-kfz-mechatroniker",
+  "mechatroniker",
+  "lkw-fahrer",
+  "elektriker"
+ ]
+}

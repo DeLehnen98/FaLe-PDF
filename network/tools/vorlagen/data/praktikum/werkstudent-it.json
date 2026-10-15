@@ -1,0 +1,160 @@
+{
+ "id": "werkstudent-it",
+ "field": "praktikum",
+ "name": "Werkstudent/in IT",
+ "search": "werkstudent it werkstudentin informatik werkstudent softwareentwicklung studentische hilfskraft it support studentenjob",
+ "short": "Neben dem Studium in Entwicklung, Support oder Daten arbeiten.",
+ "desc": "Bewerbung als Werkstudent/in in der IT: Musteranschreiben für Softwareentwicklung und IT-Support, Lebenslauf für Studierende mit Foto-Platzhalter und Tipps.",
+ "intro": "Werkstudenten arbeiten während des Semesters meist bis zu 20 Stunden pro Woche. Arbeitgeber wollen wissen, welche Stunden du verlässlich anbieten kannst, was du technisch schon gemacht hast und wie lange du noch studierst.",
+ "lookFor": [
+  "Studium im passenden Fach und voraussichtliches Studienende",
+  "Verfügbare Stunden pro Woche",
+  "Erste Projekte, Code, Uni-Praktika",
+  "Selbstständiges Arbeiten",
+  "Englisch"
+ ],
+ "letters": [
+  {
+   "label": "Werkstudent Softwareentwicklung",
+   "level": "praktikum",
+   "position": "Werkstudent Backend-Entwicklung (16 Stunden)",
+   "to": {
+    "org": "Fahrplan Digital GmbH",
+    "sal": "none",
+    "street": "Am Hauptbahnhof 5",
+    "city": "76137 Karlsruhe"
+   },
+   "body": [
+    "für ein Uniprojekt haben wir eine App gebaut, die Verspätungen im Karlsruher Nahverkehr vorhersagt. Sie war nicht besonders genau, aber ich habe viel gelernt: über Schnittstellen, schmutzige Daten und darüber, wie man im Team mit Git arbeitet, ohne sich zu hassen.",
+    "Ich studiere Informatik im vierten Semester und programmiere vor allem in Java und Python. Ich kann 16 Stunden pro Woche arbeiten, in den Semesterferien mehr. Mein Studium endet voraussichtlich in zwei Jahren.",
+    "Ihre Fahrplan-Software benutze ich jeden Tag. Ich würde gern daran mitarbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Immatrikulationsbescheinigung",
+    "Link zum Projekt"
+   ]
+  },
+  {
+   "label": "Werkstudentin IT-Support",
+   "level": "praktikum",
+   "position": "Werkstudentin IT-Support (20 Stunden)",
+   "to": {
+    "org": "Karlsruher Versicherungsgruppe",
+    "sal": "none",
+    "street": "Kaiserallee 20",
+    "city": "76133 Karlsruhe"
+   },
+   "body": [
+    "in meinem Studentenwohnheim bin ich inoffiziell die IT-Abteilung: WLAN-Probleme, Drucker, ein Laptop, der nach einem Kaffee nicht mehr starten wollte. Daraus möchte ich jetzt einen richtigen Job machen.",
+    "Ich studiere Wirtschaftsinformatik im dritten Semester. Ich kenne Windows und Linux, habe einen Raspberry Pi als Mediaserver eingerichtet und kann Probleme geduldig am Telefon erklären. Dienstag bis Donnerstag habe ich Zeit, insgesamt 20 Stunden.",
+    "Ein kurzes Telefonat passt bei mir fast immer nach 16 Uhr."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Zeynep Arslan",
+    "Durlacher Allee 70",
+    "76131 Karlsruhe"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a22",
+  "design": "modern",
+  "accent": 0,
+  "name": "Felix Neumann",
+  "title": "Student Informatik",
+  "street": "Kaiserstraße 120",
+  "city": "76133 Karlsruhe",
+  "web": "github.example/felix-n",
+  "exp": [
+   [
+    "2025",
+    "2025",
+    "Uniprojekt Verspätungsprognose ÖPNV",
+    "Karlsruher Institut für Technologie",
+    "Karlsruhe",
+    "- App mit Schnittstellen zu Fahrplandaten\n- Teamarbeit mit Git"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2024",
+    "",
+    "B.Sc. Informatik (4. Semester)",
+    "Karlsruher Institut für Technologie",
+    "Karlsruhe",
+    ""
+   ],
+   [
+    "2015",
+    "2024",
+    "Abitur",
+    "Bismarck-Gymnasium",
+    "Karlsruhe",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Java",
+    4
+   ],
+   [
+    "Python",
+    3
+   ],
+   [
+    "Git",
+    4
+   ],
+   [
+    "SQL",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Hackathons, Volleyball"
+ },
+ "do": [
+  "Stunden und Zeitraum nennen.",
+  "Projekt mit Lerneffekt.",
+  "Studienende angeben."
+ ],
+ "dont": [
+  "Zu viele Stunden versprechen.",
+  "Fremde Projekte als eigene.",
+  "Lange Texte."
+ ],
+ "questions": [
+  "Wie viele Stunden können Sie in der Prüfungszeit arbeiten?",
+  "Erzählen Sie von Ihrem Projekt.",
+  "Wie lernen Sie neue Technologien?",
+  "Wann endet Ihr Studium?"
+ ],
+ "faq": [
+  {
+   "q": "Wie viele Stunden darf ich als Werkstudent arbeiten?",
+   "a": "Im Semester in der Regel bis zu 20 Stunden pro Woche, in den Semesterferien mehr. Die genauen Regeln hängen von der Sozialversicherung ab – frag im Zweifel bei der Krankenkasse."
+  }
+ ],
+ "related": [
+  "softwareentwickler",
+  "it-support",
+  "data-analyst",
+  "ausbildung-fachinformatiker"
+ ]
+}

@@ -1,0 +1,228 @@
+{
+ "id": "pflegehelfer",
+ "field": "pflege",
+ "name": "Pflegehelfer/in",
+ "search": "pflegehelferin pflegehilfskraft pflegeassistenz pflegefachhelfer altenpflegehelfer krankenpflegehelfer quereinstieg pflege",
+ "short": "Quereinstieg in die Pflege, mit Helferausbildung oder als Aushilfe.",
+ "desc": "Bewerbung als Pflegehelfer/in: Muster-Anschreiben für Quereinstieg, mit Helferausbildung und Minijob, dazu ein fertiger Lebenslauf zum Anpassen.",
+ "intro": "Pflegehilfskräfte übernehmen in Heimen, Kliniken und ambulanten Diensten vor allem Grundpflege, Mobilisation und Hilfe beim Essen. Eine abgeschlossene Helferausbildung ist ein Plus, viele Einrichtungen stellen aber auch Quereinsteiger ein und bilden sie weiter. Wer zuverlässig ist, sich an Absprachen hält und freundlich bleibt, wenn es hektisch wird, hat gute Karten.",
+ "lookFor": [
+  "Zuverlässigkeit bei Schichtdiensten und Wochenenden – oft wichtiger als jedes Zeugnis",
+  "Erfahrung mit älteren oder kranken Menschen, auch aus der Familie oder einem Praktikum",
+  "Abgeschlossene Pflegehelfer- oder Pflegeassistenzausbildung (Dauer und Name je nach Bundesland unterschiedlich) oder der Wille, sie zu machen",
+  "Körperliche Belastbarkeit beim Lagern und Mobilisieren, mit rückenschonenden Techniken",
+  "Gute Deutschkenntnisse, damit Übergaben und Gespräche mit Bewohnern klappen"
+ ],
+ "letters": [
+  {
+   "label": "Quereinstieg aus dem Einzelhandel",
+   "level": "quereinstieg",
+   "position": "Pflegehelferin in Vollzeit",
+   "to": {
+    "org": "Seniorenzentrum Am Lindenhof",
+    "sal": "f",
+    "street": "Lindenstraße 22",
+    "city": "66482 Zweibrücken",
+    "contact": "Jung"
+   },
+   "body": [
+    "zwölf Jahre habe ich an der Kasse und in der Warenannahme eines Supermarkts gearbeitet. Als meine Großmutter im letzten Jahr pflegebedürftig wurde, habe ich sie ein halbes Jahr lang zu Hause mitversorgt – waschen, anziehen, Essen anreichen, Tabletten richten nach Plan. Dabei habe ich gemerkt, dass ich das kann und dass es mir mehr gibt als Regale einräumen.",
+    "Im Frühjahr habe ich deshalb ein zweiwöchiges Praktikum in Ihrem Haus auf dem Wohnbereich 2 gemacht. Die Kolleginnen haben mir gezeigt, wie man jemanden vom Bett in den Rollstuhl hilft, ohne sich den Rücken zu ruinieren, und wie die Dokumentation funktioniert. Frau Albers aus Zimmer 14 hat mir am letzten Tag einen gehäkelten Topflappen geschenkt; der hängt jetzt in meiner Küche.",
+    "Aus dem Handel bringe ich mit, dass ich unter Zeitdruck freundlich bleibe, im Schichtdienst seit Jahren pünktlich bin und auch an Samstagen arbeite. Den Basiskurs Pflegehilfe mit 200 Stunden würde ich gern berufsbegleitend machen, wenn Sie das unterstützen.",
+    "Mein jetziger Arbeitsvertrag endet am 31. Januar. Ich würde mich freuen, wenn wir uns noch einmal persönlich unterhalten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Praktikumsbescheinigung",
+    "Arbeitszeugnis"
+   ],
+   "ref": "WB2-03"
+  },
+  {
+   "label": "Mit einjähriger Helferausbildung",
+   "level": "berufseinstieg",
+   "position": "Pflegefachhelfer auf der geriatrischen Station",
+   "to": {
+    "org": "Klinikum Westpfalz – Personalabteilung",
+    "sal": "m",
+    "street": "Hellmut-Hartert-Straße 1",
+    "city": "67655 Kaiserslautern",
+    "contact": "Schäfer"
+   },
+   "body": [
+    "im Juli habe ich meine einjährige Ausbildung zum Pflegefachhelfer abgeschlossen. Den längsten Praxiseinsatz hatte ich in der Geriatrie, und genau dort möchte ich anfangen.",
+    "Ich übernehme die Grundpflege selbstständig, messe Blutdruck, Puls und Blutzucker, mache Prophylaxen nach Plan und dokumentiere alles direkt im System. Bei Patienten mit Demenz habe ich gelernt, nicht zu diskutieren, sondern abzulenken und Zeit zu lassen – das klappt nicht immer, aber oft. In der praktischen Prüfung habe ich die Note 2 bekommen, mein Praxisanleiter hat in der Beurteilung meine ruhige Art hervorgehoben.",
+    "Ich bin 21, wohne in Kaiserslautern und kann alle drei Schichten übernehmen. Langfristig möchte ich die verkürzte Ausbildung zum Pflegefachmann anschließen; wenn das bei Ihnen möglich ist, wäre das für mich ein großer Pluspunkt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis Pflegefachhilfe",
+    "Praxisbeurteilungen"
+   ],
+   "from": [
+    "Jonas Albrecht",
+    "Pfaffstraße 9",
+    "67655 Kaiserslautern"
+   ]
+  },
+  {
+   "label": "Minijob am Wochenende neben dem Studium",
+   "level": "minijob",
+   "position": "Pflegehilfskraft auf Minijob-Basis (Wochenenddienste)",
+   "to": {
+    "org": "Pflegeheim Haus Sonnenhang",
+    "sal": "none",
+    "street": "Am Sonnenhang 5",
+    "city": "66386 St. Ingbert"
+   },
+   "body": [
+    "für Ihre Wochenenddienste suchen Sie eine Aushilfe in der Pflege. Ich studiere im dritten Semester Soziale Arbeit in Saarbrücken und habe samstags und sonntags Zeit, auch im Frühdienst ab 6 Uhr.",
+    "Erfahrung habe ich aus meinem Freiwilligen Sozialen Jahr in einer Wohngruppe für Menschen mit Behinderung: Hilfe bei der Körperpflege, beim Essen und bei Toilettengängen ist für mich nichts Neues. Ich weiß auch, wie wichtig es ist, dass jemand am Wochenende nicht ständig ein neues Gesicht sieht. Deshalb würde ich mich gern verbindlich für zwei Wochenenden im Monat einplanen lassen.",
+    "Ein erweitertes Führungszeugnis kann ich kurzfristig beantragen. Für ein Kennenlernen bin ich jederzeit erreichbar, am besten nachmittags."
+   ],
+   "att": [
+    "Lebenslauf",
+    "FSJ-Zeugnis",
+    "Immatrikulationsbescheinigung"
+   ],
+   "from": [
+    "Aylin Demir",
+    "Kaiserstraße 70",
+    "66386 St. Ingbert"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 1,
+  "name": "Tanja Reinhardt",
+  "title": "Pflegehelferin",
+  "street": "Ixheimer Straße 31",
+  "city": "66482 Zweibrücken",
+  "exp": [
+   [
+    "04/2026",
+    "04/2026",
+    "Praktikum Pflegehilfe (2 Wochen)",
+    "Seniorenzentrum Am Lindenhof",
+    "Zweibrücken",
+    "- Grundpflege und Mobilisation unter Anleitung\n- Essen anreichen, Trinkprotokolle"
+   ],
+   [
+    "08/2014",
+    "",
+    "Verkäuferin, Kasse und Warenannahme",
+    "Frischemarkt Ostertal",
+    "Zweibrücken",
+    "- Kassenabrechnung und Kundenservice\n- Wareneingang, MHD-Kontrolle\n- Einarbeitung neuer Aushilfen"
+   ],
+   [
+    "08/2011",
+    "07/2014",
+    "Ausbildung zur Verkäuferin",
+    "Frischemarkt Ostertal",
+    "Zweibrücken",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "08/2005",
+    "07/2011",
+    "Mittlerer Bildungsabschluss",
+    "Gemeinschaftsschule Zweibrücken",
+    "Zweibrücken",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "2026",
+    "",
+    "Erste-Hilfe-Kurs (9 Unterrichtseinheiten)",
+    "Rettungsdienst-Schulungszentrum",
+    "",
+    ""
+   ],
+   [
+    "2025",
+    "",
+    "Pflegekurs für pflegende Angehörige",
+    "Pflegestützpunkt Zweibrücken",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Grundpflege und Mobilisation",
+    3
+   ],
+   [
+    "Umgang mit Menschen mit Demenz",
+    3
+   ],
+   [
+    "Kundenservice und Kommunikation",
+    5
+   ],
+   [
+    "Schichtdienst",
+    5
+   ],
+   [
+    "PC-Grundkenntnisse",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Spazierengehen mit meinem Hund, Häkeln"
+ },
+ "do": [
+  "Pflegeerfahrung aus der Familie ruhig erwähnen – konkret beschrieben zählt sie.",
+  "Schreib, welche Dienste und Wochenenden du übernehmen kannst.",
+  "Zeig, dass du dich weiterbilden willst, z. B. mit einem Basiskurs Pflegehilfe."
+ ],
+ "dont": [
+  "„Ich wollte schon immer in die Pflege“ – erzähl lieber, wann du es gemerkt hast.",
+  "Den Wechselgrund aus dem alten Job negativ formulieren.",
+  "Gesundheitliche Einschränkungen verschweigen, die für die Arbeit wichtig sind – sprich sie im Gespräch offen an."
+ ],
+ "questions": [
+  "Warum möchten Sie in die Pflege wechseln?",
+  "Wie gehen Sie mit Ekel oder unangenehmen Gerüchen um?",
+  "Was machen Sie, wenn ein Bewohner die Körperpflege ablehnt?",
+  "Wie erholen Sie sich nach anstrengenden Diensten?"
+ ],
+ "pay": "Viele Einrichtungen zahlen nach Tarif oder kirchlichen Richtlinien; für Pflegehilfskräfte gibt es außerdem einen gesetzlichen Pflegemindestlohn. Frag nach Zuschlägen für Wochenende und Nacht.",
+ "faq": [
+  {
+   "q": "Brauche ich eine Ausbildung als Pflegehelfer?",
+   "a": "Nicht unbedingt. Viele Häuser stellen ungelernte Kräfte ein und schulen sie. Mit einer staatlich anerkannten Helferausbildung (je nach Bundesland ein bis zwei Jahre) kannst du aber mehr Aufgaben übernehmen und wirst meist besser eingruppiert."
+  },
+  {
+   "q": "Was gehört in die Bewerbung, wenn ich keine Pflegeerfahrung habe?",
+   "a": "Erzähl von Situationen, in denen du dich um andere gekümmert hast – Familie, Ehrenamt, Praktikum – und von Eigenschaften aus deinem bisherigen Job: Pünktlichkeit, Schichtarbeit, Umgang mit Menschen. Ein kurzes Praktikum vorab überzeugt viele Einrichtungen."
+  },
+  {
+   "q": "Kann ich später noch Pflegefachkraft werden?",
+   "a": "Ja. Mit einer Helferausbildung oder Berufserfahrung lässt sich die dreijährige Ausbildung zur Pflegefachfrau oder zum Pflegefachmann teils verkürzen. Welche Anrechnung möglich ist, entscheidet die Pflegeschule bzw. die zuständige Behörde."
+  }
+ ],
+ "related": [
+  "pflegefachkraft",
+  "betreuungskraft",
+  "ausbildung-pflegefachfrau",
+  "reinigungskraft"
+ ]
+}

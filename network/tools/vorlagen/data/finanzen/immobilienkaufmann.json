@@ -1,0 +1,163 @@
+{
+ "id": "immobilienkaufmann",
+ "field": "finanzen",
+ "name": "Immobilienkaufmann/-frau",
+ "search": "immobilienkauffrau immobilienkaufmann hausverwaltung objektbetreuer immobilienverwalter makler vermietung weg-verwaltung",
+ "short": "Verwaltung, Vermietung, Vertrieb von Immobilien.",
+ "desc": "Bewerbung als Immobilienkaufmann/-frau: Musteranschreiben für Berufsstart in der Wohnungswirtschaft und erfahrene WEG-Verwalterin, Lebenslauf mit Platzhalterfoto.",
+ "intro": "In der Immobilienwirtschaft geht es um Vermietung, Verwaltung, Nebenkosten, Eigentümerversammlungen und Instandhaltung. Arbeitgeber wollen Zahl und Art der betreuten Einheiten, Erfahrung mit Verwaltungssoftware und Kommunikationsgeschick sehen.",
+ "lookFor": [
+  "Ausbildung als Immobilienkaufmann/-frau oder Weiterbildung (z. B. Immobilienverwalter/in)",
+  "Mietverwaltung oder WEG-Verwaltung",
+  "Betriebskostenabrechnung",
+  "Handwerkersteuerung",
+  "Konfliktlösung mit Mietern und Eigentümern"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung in die Wohnungswirtschaft",
+   "level": "berufseinstieg",
+   "position": "Immobilienkaufmann in der Mietverwaltung",
+   "to": {
+    "org": "Wohnungsbaugenossenschaft Ostend eG",
+    "sal": "none",
+    "street": "Hanauer Landstraße 50",
+    "city": "60314 Frankfurt am Main"
+   },
+   "body": [
+    "eine Mieterin hat mir zum Abschied ihrer Wohnungsabnahme Plätzchen geschenkt, obwohl ich ihr gerade Schönheitsreparaturen in Rechnung stellen musste. Ich glaube, das lag daran, dass ich ihr jeden Punkt erklärt habe. Fair und klar zu sein ist für mich das Wichtigste in der Verwaltung.",
+    "Meine Ausbildung habe ich bei einer Hausverwaltung mit rund 1.500 Einheiten gemacht. Ich habe Wohnungen vermietet, Übergaben gemacht, Reparaturaufträge vergeben und an Betriebskostenabrechnungen mitgearbeitet. Mit der Verwaltungssoftware arbeite ich sicher.",
+    "Das genossenschaftliche Modell finde ich überzeugend. Ich kann ab August beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrene WEG-Verwalterin",
+   "level": "erfahren",
+   "position": "WEG-Verwalterin",
+   "to": {
+    "org": "Main Immobilien Verwaltung GmbH",
+    "sal": "none",
+    "street": "Schweizer Straße 30",
+    "city": "60594 Frankfurt am Main"
+   },
+   "body": [
+    "achtzehn Eigentümergemeinschaften, rund 450 Einheiten und jedes Jahr ebenso viele Versammlungen: Ich weiß, wie man einen Abend leitet, an dem ein Dach saniert werden muss und niemand zahlen will.",
+    "Ich erstelle Wirtschaftspläne und Jahresabrechnungen, bereite Versammlungen vor und leite sie, setze Beschlüsse um und steuere Sanierungen mit Handwerkern und Planern. Den Sachkundenachweis als zertifizierte Verwalterin habe ich abgelegt.",
+    "Ich suche eine Verwaltung, in der ich weniger Objekte, dafür größere Sanierungsprojekte betreue."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zertifikat Verwalterin",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Petra Lindner",
+    "Oeder Weg 40",
+    "60318 Frankfurt am Main"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a03",
+  "design": "classic",
+  "accent": 1,
+  "name": "Kerem Aksoy",
+  "title": "Immobilienkaufmann",
+  "street": "Saalburgstraße 20",
+  "city": "60385 Frankfurt am Main",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildender Immobilienkaufmann",
+    "Hausverwaltung Mainufer GmbH",
+    "Frankfurt",
+    "- Vermietung, Wohnungsübergaben\n- Reparaturaufträge und Handwerkerkoordination\n- Mitarbeit Betriebskostenabrechnung (ca. 1.500 Einheiten)"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung Immobilienkaufmann",
+    "Berufsschule",
+    "Frankfurt",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Fachoberschule Wirtschaft",
+    "Frankfurt",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Vermietung",
+    4
+   ],
+   [
+    "Betriebskostenabrechnung",
+    3
+   ],
+   [
+    "Verwaltungssoftware",
+    4
+   ],
+   [
+    "Mieterkommunikation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Fußball, Architekturfotografie"
+ },
+ "do": [
+  "Einheiten und Objekte zahlenmäßig nennen.",
+  "Versammlungs- oder Sanierungserfahrung zeigen.",
+  "Konfliktlösung mit Beispiel."
+ ],
+ "dont": [
+  "Mieter abwertend beschreiben.",
+  "Zertifikate übertreiben.",
+  "Lange Floskeln."
+ ],
+ "questions": [
+  "Ein Eigentümer blockiert eine notwendige Sanierung. Was tun Sie?",
+  "Wie erstellen Sie eine Betriebskostenabrechnung?",
+  "Wie viele Einheiten haben Sie betreut?",
+  "Wie gehen Sie mit Beschwerden um?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für die WEG-Verwaltung einen Nachweis?",
+   "a": "Wohnungseigentümer können verlangen, dass ihr Verwalter zertifiziert ist; die Prüfung legst du bei der IHK ab. Wer Immobilienkaufmann/-frau gelernt hat, ist von bestimmten Anforderungen teils befreit – prüf das für dich."
+  }
+ ],
+ "related": [
+  "bankkaufmann",
+  "hausmeister",
+  "sachbearbeiter",
+  "rechtsanwaltsfachangestellte"
+ ]
+}

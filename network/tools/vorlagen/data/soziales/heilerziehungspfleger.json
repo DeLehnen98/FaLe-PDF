@@ -1,0 +1,198 @@
+{
+ "id": "heilerziehungspfleger",
+ "field": "soziales",
+ "name": "Heilerziehungspfleger/in",
+ "search": "heilerziehungspflegerin hep eingliederungshilfe wohngruppe behinderung werkstatt assistenz",
+ "short": "Wohngruppe, Werkstatt oder Schule – mit Menschen mit Behinderung.",
+ "desc": "Bewerbung als Heilerziehungspfleger/in: Anschreiben-Muster für Berufsstart und Wechsel in die ambulante Assistenz, Lebenslauf zum Anpassen und Fragen fürs Gespräch.",
+ "intro": "Heilerziehungspflegerinnen und -pfleger begleiten Menschen mit Behinderung im Alltag – pflegerisch, pädagogisch und mit dem Ziel, möglichst viel Selbstbestimmung zu ermöglichen. Einrichtungen achten auf eine assistierende Haltung, Erfahrung mit der jeweiligen Zielgruppe und Bereitschaft zu Schichtdienst.",
+ "lookFor": [
+  "Staatliche Anerkennung als Heilerziehungspfleger/in",
+  "Erfahrung mit der Zielgruppe: geistige, körperliche oder mehrfache Behinderung, Autismus, psychische Erkrankung",
+  "Grund- und Behandlungspflege im Rahmen der Ausbildung, Umgang mit Medikamenten",
+  "Unterstützte Kommunikation, Teilhabeplanung, Dokumentation",
+  "Schichtdienst, Wochenenden, gegebenenfalls Nachtbereitschaft"
+ ],
+ "letters": [
+  {
+   "label": "Berufsstart in der Wohngruppe",
+   "level": "berufseinstieg",
+   "position": "Heilerziehungspfleger in einer Wohngruppe",
+   "to": {
+    "org": "Lebenshilfe Westerwald e. V.",
+    "sal": "f",
+    "street": "Am Lindenplatz 6",
+    "city": "56410 Montabaur",
+    "contact": "Bauer"
+   },
+   "body": [
+    "im Juli schließe ich meine Ausbildung zum Heilerziehungspfleger ab. Meinen praktischen Teil habe ich in einer Wohngruppe für junge Erwachsene mit Autismus gemacht, und ich würde gern in diesem Bereich bleiben.",
+    "In der Gruppe habe ich gelernt, wie viel feste Abläufe, klare Ansagen und Bildkarten bewirken. Für einen Bewohner, der nicht spricht, habe ich mit dem Team einen Wochenplan mit Fotos entwickelt; er zeigt seitdem selbst, wann er einkaufen gehen möchte. Pflegerische Aufgaben, Medikamentengabe nach Plan und die Dokumentation im Teilhabeplan habe ich selbstständig übernommen.",
+    "Schichtdienst und Nachtbereitschaft kenne ich. Ich habe einen Führerschein und fahre auch den Gruppenbus. Gerne lerne ich Ihre Wohngruppe bei einem Probedienst kennen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis der Fachschule",
+    "Praxisbeurteilung"
+   ]
+  },
+  {
+   "label": "Erfahren, Wechsel in die ambulante Assistenz",
+   "level": "erfahren",
+   "position": "Heilerziehungspflegerin im ambulant betreuten Wohnen (30 Stunden)",
+   "to": {
+    "org": "Assistenz plus gGmbH",
+    "sal": "none",
+    "street": "Koblenzer Straße 15",
+    "city": "56410 Montabaur"
+   },
+   "body": [
+    "zwölf Jahre habe ich in einer Werkstatt für Menschen mit Behinderung gearbeitet, zuletzt als Gruppenleiterin in der Montage. Jetzt möchte ich Menschen dort unterstützen, wo sie leben: in der eigenen Wohnung.",
+    "In der Werkstatt habe ich Arbeitsplätze so angepasst, dass auch Beschäftigte mit starken Einschränkungen selbstständig arbeiten können, und Förderpläne mit ihnen gemeinsam geschrieben, nicht über sie hinweg. Einige von ihnen begleite ich seit Jahren und habe ihren Umzug aus dem Elternhaus in eine eigene Wohnung miterlebt. Dabei ist mir klar geworden, wie viel Unterstützung beim Einkaufen, bei Behördenpost und beim Kochen in den ersten Monaten nötig ist.",
+    "Ich arbeite gern selbstständig, plane meine Termine und halte den Kontakt zu rechtlichen Betreuern. Ein eigenes Auto für Einsätze ist vorhanden. Gern stelle ich mich bei Ihnen vor."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Staatliche Anerkennung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Birgit Hammes",
+    "Bahnhofstraße 7",
+    "56428 Dernbach"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a24",
+  "design": "modern",
+  "accent": 1,
+  "name": "Kevin Owusu",
+  "title": "Heilerziehungspfleger",
+  "street": "Kirchstraße 14",
+  "city": "56410 Montabaur",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Heilerziehungspfleger in Ausbildung",
+    "Wohnverbund Westerwald",
+    "Montabaur",
+    "- Wohngruppe für junge Erwachsene mit Autismus\n- Grundpflege, Medikamentengabe nach Plan\n- Freizeitbegleitung und Teilhabeplanung"
+   ],
+   [
+    "2021",
+    "2023",
+    "Bundesfreiwilligendienst",
+    "Förderschule am Wald",
+    "Westerburg",
+    "- Klassenassistenz, Begleitung im Schulbus"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zum Heilerziehungspfleger",
+    "Fachschule für Heilerziehungspflege",
+    "Montabaur",
+    ""
+   ],
+   [
+    "2014",
+    "2021",
+    "Sekundarabschluss I",
+    "Realschule plus",
+    "Montabaur",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Unterstützte Kommunikation (Grundkurs)",
+    "Fachverband UK",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Deeskalationstraining",
+    "Lebenshilfe Akademie",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Unterstützte Kommunikation",
+    4
+   ],
+   [
+    "Grund- und Behandlungspflege",
+    3
+   ],
+   [
+    "Deeskalation",
+    4
+   ],
+   [
+    "Teilhabeplanung",
+    3
+   ],
+   [
+    "Gitarre in der Gruppe",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Twi",
+    "B2"
+   ]
+  ],
+  "hobbies": "Fußballtrainer einer inklusiven Mannschaft"
+ },
+ "do": [
+  "Beschreib, wie du Selbstbestimmung im Alltag unterstützt hast.",
+  "Nenn Methoden wie Unterstützte Kommunikation, TEACCH oder Deeskalation.",
+  "Gib an, welche Dienste du übernehmen kannst."
+ ],
+ "dont": [
+  "Über Menschen mit Behinderung schreiben, als wären sie Objekte der Betreuung.",
+  "Pflege als lästige Pflicht darstellen.",
+  "Fachbegriffe ohne Beispiel."
+ ],
+ "questions": [
+  "Wie unterstützen Sie jemanden, der eine Entscheidung treffen soll, die Sie für falsch halten?",
+  "Wie reagieren Sie auf herausforderndes Verhalten?",
+  "Welche Erfahrung haben Sie mit Unterstützter Kommunikation?",
+  "Wie arbeiten Sie mit Angehörigen und gesetzlichen Betreuern zusammen?"
+ ],
+ "faq": [
+  {
+   "q": "Wo können Heilerziehungspfleger arbeiten?",
+   "a": "In Wohnangeboten, Werkstätten, Förderschulen, Kitas mit Inklusion, im ambulant betreuten Wohnen und in der Schulbegleitung. Schreib im Anschreiben, welcher Bereich dich warum interessiert."
+  },
+  {
+   "q": "Wird die Ausbildung in allen Bundesländern gleich anerkannt?",
+   "a": "Die Ausbildung ist landesrechtlich geregelt, die Abschlüsse werden aber in der Regel länderübergreifend anerkannt. Bei einem Umzug kann die neue Einrichtung beim zuständigen Landesamt nachfragen."
+  }
+ ],
+ "related": [
+  "erzieherin",
+  "schulbegleiter",
+  "pflegehelfer",
+  "sozialarbeiter"
+ ]
+}

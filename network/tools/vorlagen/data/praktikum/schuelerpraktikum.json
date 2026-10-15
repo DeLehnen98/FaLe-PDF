@@ -1,0 +1,165 @@
+{
+ "id": "schuelerpraktikum",
+ "field": "praktikum",
+ "popular": true,
+ "name": "Schülerpraktikum",
+ "search": "schülerpraktikum praktikum schule betriebspraktikum klasse 9 klasse 8 bewerbung praktikum schüler",
+ "short": "Bewerbung für das Betriebspraktikum in Klasse 8 bis 10.",
+ "desc": "Bewerbung für ein Schülerpraktikum: zwei kurze Musteranschreiben für Klasse 8 und 9, ein einfacher Schüler-Lebenslauf mit Foto-Platzhalter und Tipps für die erste Bewerbung.",
+ "intro": "Für das Schülerpraktikum erwartet niemand Erfahrung. Betriebe wollen sehen, dass du dich für den Beruf interessierst, höflich bist und den Zeitraum kennst. Ein kurzes Anschreiben mit einem persönlichen Grund reicht.",
+ "lookFor": [
+  "Zeitraum des Praktikums (von der Schule vorgegeben)",
+  "Ein persönlicher Grund für den Beruf",
+  "Höfliche, fehlerfreie Sprache",
+  "Zuverlässigkeit",
+  "Kontaktdaten der Eltern oder Schule, falls verlangt"
+ ],
+ "letters": [
+  {
+   "label": "Praktikum beim Tierarzt, Klasse 9",
+   "level": "praktikum",
+   "position": "Schülerpraktikantin (2. bis 13. Februar 2027)",
+   "to": {
+    "org": "Tierarztpraxis am Stadtpark",
+    "sal": "f",
+    "street": "Parkstraße 3",
+    "city": "33098 Paderborn",
+    "contact": "Dr. Hansen"
+   },
+   "body": [
+    "unsere Katze Mimi war im letzten Jahr bei Ihnen, als sie sich die Pfote verletzt hatte. Ich durfte mit ins Behandlungszimmer, und seitdem frage ich mich, wie ein Tag in einer Tierarztpraxis aussieht.",
+    "Ich gehe in die neunte Klasse des Gymnasiums Theodorianum und mache vom 2. bis 13. Februar 2027 ein Betriebspraktikum. Biologie ist mein Lieblingsfach. Ich habe keine Angst vor Tieren und helfe meiner Tante regelmäßig mit ihren Pferden.",
+    "Ich würde mich sehr freuen, wenn ich das Praktikum bei Ihnen machen darf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Letztes Zeugnis",
+    "Schreiben der Schule"
+   ]
+  },
+  {
+   "label": "Praktikum im Handwerk, Klasse 8",
+   "level": "praktikum",
+   "position": "Schülerpraktikant (Betriebspraktikum Klasse 8)",
+   "to": {
+    "org": "Schreinerei Wiegand",
+    "sal": "m",
+    "street": "Am Holzplatz 7",
+    "city": "33100 Paderborn",
+    "contact": "Wiegand"
+   },
+   "body": [
+    "mit meinem Opa habe ich ein Vogelhaus und ein kleines Regal gebaut, und es hat mir großen Spaß gemacht. Deshalb möchte ich mein Schülerpraktikum in einer Schreinerei machen.",
+    "Ich gehe in die achte Klasse der Gesamtschule Elsen. Das Praktikum geht vom 15. bis 26. März. In Technik habe ich eine Zwei.",
+    "Ich bin pünktlich und arbeite gern mit den Händen. Über eine Zusage würde ich mich sehr freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Letztes Zeugnis"
+   ],
+   "from": [
+    "Luis Neumann",
+    "Bahnhofstraße 12",
+    "33102 Paderborn"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a13",
+  "design": "modern",
+  "accent": 4,
+  "name": "Mia Hansen",
+  "title": "Schülerin, Klasse 9",
+  "street": "Riemekestraße 50",
+  "city": "33102 Paderborn",
+  "exp": [
+   [
+    "2025",
+    "",
+    "Hilfe im Reitstall (privat)",
+    "Familie",
+    "Paderborn",
+    "- Füttern, Ausmisten, Pflege der Pferde"
+   ]
+  ],
+  "edu": [
+   [
+    "2022",
+    "",
+    "Gymnasium, zurzeit Klasse 9",
+    "Gymnasium Theodorianum",
+    "Paderborn",
+    "Lieblingsfächer: Biologie, Deutsch"
+   ],
+   [
+    "2018",
+    "2022",
+    "Grundschule",
+    "Grundschule am Stadtpark",
+    "Paderborn",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Umgang mit Tieren",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "PC-Grundkenntnisse",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Reiten, Lesen, Klavier"
+ },
+ "do": [
+  "Den Zeitraum genau nennen.",
+  "Einen persönlichen Grund erzählen.",
+  "Kurz und höflich bleiben."
+ ],
+ "dont": [
+  "„Ich muss ein Praktikum machen“ als Grund.",
+  "Rechtschreibfehler – lass Eltern oder Lehrer gegenlesen.",
+  "Zu lange Texte."
+ ],
+ "questions": [
+  "Warum möchtest du das Praktikum bei uns machen?",
+  "Was interessiert dich an dem Beruf?",
+  "Was machst du in deiner Freizeit?",
+  "Wie kommst du zu uns?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich ein Foto einfügen?",
+   "a": "Nein. Ein Foto ist freiwillig, auch beim Schülerpraktikum. Wenn du eins nimmst, dann ein freundliches, ruhiges Bild – kein Selfie mit Filter."
+  },
+  {
+   "q": "Darf ich im Anschreiben „du“ schreiben?",
+   "a": "Nein, schreib „Sie“, auch wenn du die Leute kennst. Im Gespräch bieten sie dir vielleicht das Du an."
+  }
+ ],
+ "related": [
+  "ausbildung-industriekaufmann",
+  "ausbildung-kfz-mechatroniker",
+  "praktikum-erzieher",
+  "ausbildung-mfa"
+ ]
+}

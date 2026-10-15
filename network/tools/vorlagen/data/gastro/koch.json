@@ -1,0 +1,385 @@
+{
+ "id": "koch",
+ "field": "gastro",
+ "popular": true,
+ "name": "Koch / Köchin",
+ "search": "köchin koch jungkoch sous chef chef de partie küchenchef restaurant kantine gemeinschaftsverpflegung",
+ "short": "Restaurant, Hotel oder Kantine – Jungkoch, Chef de Partie oder Wechsel.",
+ "desc": "Bewerbung als Koch oder Köchin: Musteranschreiben für Jungkoch, Chef de Partie und den Wechsel in die Betriebsgastronomie, Lebenslauf und Tipps fürs Probekochen.",
+ "intro": "Küchenchefs wollen wissen, auf welchen Posten du gearbeitet hast, für wie viele Gäste und in welcher Küche – à la carte, Bankett, Gemeinschaftsverpflegung. Hygiene, Tempo und Teamfähigkeit unter Druck sind Grundvoraussetzung. Probekochen oder ein Probetag ist üblich.",
+ "lookFor": [
+  "Ausbildung als Koch/Köchin oder entsprechende Erfahrung",
+  "Posten und Küchenstil: Saucier, Entremetier, Patisserie, Garde-Manger",
+  "Hygiene nach HACCP, Allergenkennzeichnung",
+  "Warenwirtschaft und Kalkulation (für höhere Positionen)",
+  "Belastbarkeit im Service-Stress"
+ ],
+ "letters": [
+  {
+   "label": "Jungkoch nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Jungkoch / Commis de Cuisine",
+   "to": {
+    "org": "Restaurant Lindenhof",
+    "sal": "m",
+    "street": "Am Markt 4",
+    "city": "01067 Dresden",
+    "contact": "Wendt"
+   },
+   "body": [
+    "bei Ihnen habe ich im Frühjahr zum Geburtstag meiner Mutter gegessen. Das Rote-Bete-Tatar mit Meerrettichschaum habe ich danach zu Hause dreimal nachgekocht, und es war nie so gut. Deshalb möchte ich in Ihrer Küche lernen.",
+    "Meine Ausbildung habe ich im Juli in einem Hotel mit Bankettbetrieb abgeschlossen. Ich habe an allen Posten gearbeitet, am liebsten am Entremetier: Gemüse, Beilagen, Suppen. An Bankett-Tagen haben wir für 300 Gäste gekocht, à la carte bis zu 90 Couverts am Abend. Ich arbeite sauber, halte meinen Posten ordentlich und frage, wenn ich etwas nicht weiß.",
+    "Saisonale, regionale Küche interessiert mich am meisten. Zum Probekochen komme ich gern, wann es Ihnen passt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Chef de Partie mit Erfahrung",
+   "level": "erfahren",
+   "position": "Chef de Partie / Saucier",
+   "to": {
+    "org": "Hotel Elbresidenz",
+    "sal": "f",
+    "street": "Terrassenufer 10",
+    "city": "01069 Dresden",
+    "contact": "Krause"
+   },
+   "body": [
+    "den Saucenposten einer gehobenen Küche in München habe ich drei Jahre verantwortet: Fonds, Jus, Saucen und Fleischgerichte für bis zu 120 Gäste am Abend. Ich ziehe zurück nach Dresden und würde gern Ihre Küche verstärken.",
+    "Ich führe einen Commis und einen Auszubildenden, bestelle Fleisch und Fisch für meinen Posten und halte Rezepturen und Allergenlisten aktuell. Bei der Umstellung unserer Karte auf mehr vegetarische Hauptgänge habe ich zwei Gerichte entwickelt, die es dauerhaft auf die Karte geschafft haben. Mise en place, Timing und Ruhe im Pass sind für mich selbstverständlich.",
+    "Ich kann zum 1. April anfangen und komme gern zum Probekochen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Moritz Engel",
+    "Schäferstraße 33",
+    "01067 Dresden"
+   ]
+  },
+  {
+   "label": "Wechsel in die Betriebsgastronomie",
+   "level": "erfahren",
+   "position": "Koch in der Betriebsgastronomie",
+   "to": {
+    "org": "Firmenrestaurant Technologiepark Dresden",
+    "sal": "none",
+    "street": "Manfred-von-Ardenne-Ring 20",
+    "city": "01099 Dresden"
+   },
+   "body": [
+    "nach zwölf Jahren Restaurantküche mit Abend- und Wochenenddiensten möchte ich in die Betriebsgastronomie wechseln. Ich koche gern, aber ich möchte meine Kinder auch mal abends sehen.",
+    "Ich bringe Erfahrung mit großen Mengen mit: In einem Ausflugslokal an der Elbe haben wir im Sommer bis zu 600 Essen am Tag ausgegeben. Ich kalkuliere Rezepte, plane Speisepläne, achte auf Allergenkennzeichnung und kenne die HACCP-Dokumentation. Ein ausgewogenes Mittagessen für Leute, die danach noch konzentriert arbeiten müssen, ist eine Aufgabe, auf die ich mich freue.",
+    "Ich bin ab sofort verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Ronny Lehmann",
+    "Bautzner Straße 90",
+    "01099 Dresden"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a15",
+  "design": "modern",
+  "accent": 4,
+  "name": "Lukas Wendler",
+  "title": "Koch",
+  "street": "Louisenstraße 60",
+  "city": "01099 Dresden",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildender Koch",
+    "Hotel Zwinger Palais",
+    "Dresden",
+    "- Alle Posten, Schwerpunkt Entremetier\n- Bankette bis 300 Gäste, à la carte bis 90 Couverts\n- HACCP-Dokumentation"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zum Koch",
+    "Berufliches Schulzentrum für Gastgewerbe",
+    "Dresden",
+    ""
+   ],
+   [
+    "2013",
+    "2023",
+    "Realschulabschluss",
+    "Oberschule Dresden-Neustadt",
+    "Dresden",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Allergenmanagement",
+    "DEHOGA Sachsen",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Infektionsschutz-Belehrung",
+    "Gesundheitsamt",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Entremetier",
+    4
+   ],
+   [
+    "Saucen und Fonds",
+    3
+   ],
+   [
+    "Bankett",
+    4
+   ],
+   [
+    "Hygiene nach HACCP",
+    4
+   ],
+   [
+    "Regionale Küche",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Fermentieren, Pilze sammeln"
+ },
+ "do": [
+  "Nenn Posten, Gästezahlen und Küchenstil.",
+  "Erzähl von einem Gericht, das du entwickelt hast.",
+  "Sag, wann du zum Probekochen kannst."
+ ],
+ "dont": [
+  "Nur „Leidenschaft fürs Kochen“ schreiben – zeig sie mit Beispielen.",
+  "Hygiene als Nebensache.",
+  "Über frühere Küchenchefs schimpfen."
+ ],
+ "questions": [
+  "Was kochen Sie, wenn Sie drei Zutaten aus unserem Kühlhaus bekommen?",
+  "Wie organisieren Sie Ihre Mise en place?",
+  "Wie gehen Sie mit Kritik am Pass um?",
+  "Wie behandeln Sie Allergenanfragen?"
+ ],
+ "pay": "In der Gastronomie gibt es regionale Tarifverträge des Gastgewerbes. Frag nach Tarifbindung, Zuschlägen und der Regelung von Überstunden.",
+ "faq": [
+  {
+   "q": "Wie läuft ein Probekochen ab?",
+   "a": "Meist arbeitest du einen Tag oder einen Abend in der Küche mit, manchmal kochst du ein eigenes Gericht. Bring Messer, Kochjacke und Schuhe mit und arbeite so, wie du es im Alltag tust."
+  }
+ ],
+ "related": [
+  "servicekraft",
+  "kuechenhilfe",
+  "hotelfachfrau",
+  "verkaeuferin-baeckerei"
+ ],
+ "en": {
+  "slug": "chef",
+  "name": "Chef / cook",
+  "search": "chef cook commis chef chef de partie sous chef kitchen",
+  "short": "Restaurant, hotel or contract catering – commis to chef de partie.",
+  "desc": "Chef CV and cover letter examples: letters for a commis chef and an experienced chef de partie, plus a ready CV with placeholder portrait.",
+  "intro": "Head chefs want to know which sections you have run, for how many covers and in what kind of kitchen. Hygiene, speed and calm under pressure are a given; expect a trial shift.",
+  "lookFor": [
+   "Culinary qualification or equivalent experience",
+   "Sections and style: sauce, larder, pastry, banqueting",
+   "Food safety and allergen management",
+   "Ordering and costing for senior roles",
+   "Calm during service"
+  ],
+  "letters": [
+   {
+    "label": "Commis chef",
+    "level": "berufseinstieg",
+    "position": "Commis chef",
+    "to": {
+     "org": "The Linden Tree",
+     "sal": "m",
+     "street": "4 Market Place",
+     "city": "York YO1 8AA",
+     "contact": "West"
+    },
+    "body": [
+     "I ate at The Linden Tree for my mother’s birthday in spring and have tried to recreate your beetroot tartare three times since – never quite as good. That is why I want to learn in your kitchen.",
+     "I finished my training in July at a hotel with a busy banqueting operation. I worked every section and liked veg and garnish best. On banquet days we cooked for 300; à la carte we did up to 90 covers. I keep my section clean and ask when I do not know.",
+     "Seasonal, local cooking interests me most. I would be happy to do a trial shift whenever suits you."
+    ],
+    "att": [
+     "CV",
+     "Qualification certificate"
+    ]
+   },
+   {
+    "label": "Chef de partie",
+    "level": "erfahren",
+    "position": "Chef de partie – sauce section",
+    "to": {
+     "org": "Riverside Hotel",
+     "sal": "f",
+     "street": "10 Ouse Bank",
+     "city": "York YO1 6GH",
+     "contact": "Clarke"
+    },
+    "body": [
+     "For the past three years I have run the sauce section in a fine-dining kitchen in Manchester, cooking for up to 120 covers a night. I am moving back to York and would like to join your brigade.",
+     "I supervise a commis and an apprentice, order meat and fish for my section and keep recipes and allergen sheets up to date. When we added more vegetarian mains, two of my dishes made the permanent menu.",
+     "I can start in April and would welcome a trial shift."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Sam Fletcher",
+     "33 Bootham",
+     "York YO30 7BT"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a15",
+   "design": "modern",
+   "accent": 4,
+   "name": "Luke Harrison",
+   "title": "Commis chef",
+   "street": "60 Walmgate",
+   "city": "York YO1 9TJ",
+   "exp": [
+    [
+     "08/2023",
+     "07/2026",
+     "Apprentice chef",
+     "Minster Hotel",
+     "York",
+     "- All sections, mainly veg and garnish\n- Banquets for up to 300, à la carte up to 90 covers\n- Food safety records"
+    ]
+   ],
+   "edu": [
+    [
+     "2023",
+     "2026",
+     "Professional cookery qualification",
+     "York College",
+     "York",
+     ""
+    ],
+    [
+     "2018",
+     "2023",
+     "Secondary school",
+     "Fulford School",
+     "York",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Food hygiene level 2",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "Allergen awareness",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Veg and garnish",
+     4
+    ],
+    [
+     "Sauces",
+     3
+    ],
+    [
+     "Banqueting",
+     4
+    ],
+    [
+     "Food safety",
+     4
+    ],
+    [
+     "Seasonal cooking",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "A2"
+    ]
+   ],
+   "hobbies": "Fermenting, foraging"
+  },
+  "do": [
+   "Name sections, covers and kitchen style.",
+   "Mention a dish you created.",
+   "Offer a trial shift."
+  ],
+  "dont": [
+   "Rely on “passion for food” without examples.",
+   "Treat hygiene as an afterthought.",
+   "Criticise former head chefs."
+  ],
+  "questions": [
+   "What would you cook with three ingredients from our fridge?",
+   "How do you organise your mise en place?",
+   "How do you handle criticism at the pass?",
+   "How do you deal with allergen requests?"
+  ],
+  "faq": [
+   {
+    "q": "What should I bring to a trial shift?",
+    "a": "Knives, whites and safety shoes unless told otherwise. Work as you normally would: clean, organised and willing to ask."
+   }
+  ]
+ }
+}

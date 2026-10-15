@@ -1,0 +1,357 @@
+{
+ "id": "buchhalter",
+ "field": "finanzen",
+ "popular": true,
+ "name": "Buchhalter/in (Finanzbuchhaltung)",
+ "search": "buchhalterin buchhalter finanzbuchhalter finanzbuchhalterin kreditorenbuchhaltung debitorenbuchhaltung bilanzbuchhalter rechnungswesen",
+ "short": "Kreditoren, Debitoren, Abschlüsse – mit Ausbildung oder Weiterbildung.",
+ "desc": "Bewerbung als Buchhalter/in in der Finanzbuchhaltung: Musteranschreiben für erfahrene Finanzbuchhalterin und den Wechsel aus der Steuerkanzlei, Lebenslauf und Fragen.",
+ "intro": "In der Buchhaltung zählen Genauigkeit, Termintreue und Systemkenntnis. Nenn die Bereiche, die du verantwortest – Kreditoren, Debitoren, Anlagen, Monats- und Jahresabschluss – und die Größenordnung: Buchungen, Gesellschaften, Belege pro Monat.",
+ "lookFor": [
+  "Kaufmännische Ausbildung und Weiterbildung wie Finanzbuchhalter/in oder Bilanzbuchhalter/in",
+  "Kreditoren- und Debitorenbuchhaltung, Zahlungsverkehr, Mahnwesen",
+  "Mitarbeit bei Monats- und Jahresabschlüssen",
+  "Umsatzsteuer-Voranmeldungen",
+  "Sicherer Umgang mit ERP- und Buchhaltungssoftware"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Finanzbuchhalterin",
+   "level": "erfahren",
+   "position": "Finanzbuchhalterin",
+   "to": {
+    "org": "Pfälzer Weinkellerei eG",
+    "sal": "m",
+    "street": "Weinstraße 50",
+    "city": "67434 Neustadt an der Weinstraße",
+    "contact": "Becker"
+   },
+   "body": [
+    "jeden Monat gehen bei uns rund 1.200 Eingangsrechnungen über meinen Tisch, und ich sorge dafür, dass sie richtig kontiert, freigegeben und pünktlich bezahlt werden. Skonto lassen wir dabei so gut wie nie liegen. Diese Sorgfalt möchte ich in Ihre Genossenschaft einbringen.",
+    "In einem Großhandel mit drei Gesellschaften betreue ich die Kreditoren und den Zahlungsverkehr, bereite die Umsatzsteuer-Voranmeldungen vor und arbeite beim Monats- und Jahresabschluss mit: Abgrenzungen, Rückstellungen, Kontenabstimmungen. Bei der Einführung des digitalen Rechnungseingangs habe ich die Freigabewege mit den Abteilungen abgestimmt; die Durchlaufzeit einer Rechnung hat sich seitdem fast halbiert.",
+    "Die Weiterbildung zur geprüften Bilanzbuchhalterin beginne ich im Herbst. Meine Kündigungsfrist beträgt sechs Wochen zum Quartalsende."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Zertifikat Finanzbuchhalterin",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Wechsel aus der Steuerkanzlei",
+   "level": "erfahren",
+   "position": "Buchhalter (Debitoren und Hauptbuch)",
+   "to": {
+    "org": "Kurpfalz Bau GmbH",
+    "sal": "none",
+    "street": "Industriestraße 20",
+    "city": "67061 Ludwigshafen"
+   },
+   "body": [
+    "in der Kanzlei habe ich sieben Jahre lang für rund 40 Mandanten gebucht, von der Bäckerei bis zum Ingenieurbüro. Ich möchte jetzt in die Buchhaltung eines Unternehmens wechseln, um nicht nur Belege zu verarbeiten, sondern die Zahlen eines Betriebs wirklich zu kennen.",
+    "Ich bin Steuerfachangestellter, erstelle Finanzbuchhaltungen, Umsatzsteuer-Voranmeldungen und bereite Jahresabschlüsse vor. Für Bauunternehmen kenne ich Besonderheiten wie Abschlagsrechnungen und die Umkehr der Steuerschuldnerschaft. Mit dem Mahnwesen habe ich in der Kanzlei für einige Mandanten gearbeitet und weiß, wie man freundlich, aber bestimmt an offene Posten erinnert.",
+    "Gern zeige ich Ihnen im Gespräch, wie ich arbeite."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis Steuerfachangestellter",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Thomas Wagner",
+    "Mundenheimer Straße 30",
+    "67061 Ludwigshafen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "classic",
+  "accent": 5,
+  "name": "Sandra Meier",
+  "title": "Finanzbuchhalterin",
+  "street": "Maximilianstraße 15",
+  "city": "67433 Neustadt an der Weinstraße",
+  "exp": [
+   [
+    "03/2018",
+    "",
+    "Finanzbuchhalterin Kreditoren",
+    "Rhein-Pfalz Großhandel GmbH",
+    "Mannheim",
+    "- Kreditorenbuchhaltung für drei Gesellschaften (ca. 1.200 Rechnungen/Monat)\n- Zahlungsverkehr und Skontosteuerung\n- Umsatzsteuer-Voranmeldungen\n- Mitarbeit bei Monats- und Jahresabschluss"
+   ],
+   [
+    "2014",
+    "2018",
+    "Sachbearbeiterin Buchhaltung",
+    "Autohaus Haardt",
+    "Neustadt",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2011",
+    "2014",
+    "Ausbildung Industriekauffrau",
+    "Weingut & Sektkellerei Haardt",
+    "Neustadt",
+    ""
+   ],
+   [
+    "2002",
+    "2011",
+    "Fachhochschulreife",
+    "BBS Neustadt",
+    "Neustadt",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2020",
+    "Geprüfte Finanzbuchhalterin",
+    "IHK-Akademie",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "E-Rechnung in der Praxis",
+    "Bildungsträger",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kreditorenbuchhaltung",
+    5
+   ],
+   [
+    "Zahlungsverkehr",
+    5
+   ],
+   [
+    "Umsatzsteuer",
+    4
+   ],
+   [
+    "Abschlussarbeiten",
+    4
+   ],
+   [
+    "ERP-Buchhaltung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Wandern im Pfälzerwald, Kassenwartin im Turnverein"
+ },
+ "do": [
+  "Bereiche und Mengen nennen.",
+  "Abschlussarbeiten konkret beschreiben.",
+  "Weiterbildungen mit Jahr."
+ ],
+ "dont": [
+  "Nur „Buchhaltung“ schreiben.",
+  "Software übertreiben.",
+  "Zahlen früherer Arbeitgeber nennen."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einer Rechnung ohne Bestellung um?",
+  "Was gehört zu Ihrem Monatsabschluss?",
+  "Wie behandeln Sie eine Gutschrift?",
+  "Welche Systeme kennen Sie?"
+ ],
+ "faq": [
+  {
+   "q": "Finanzbuchhalter oder Bilanzbuchhalter?",
+   "a": "Finanzbuchhalter erledigen die laufende Buchhaltung und arbeiten bei Abschlüssen mit. Bilanzbuchhalter (IHK) dürfen Abschlüsse eigenverantwortlich erstellen. Nenn deinen Abschluss genau."
+  }
+ ],
+ "related": [
+  "steuerfachangestellte",
+  "controller",
+  "personalsachbearbeiter",
+  "kauffrau-bueromanagement"
+ ],
+ "en": {
+  "slug": "bookkeeper",
+  "name": "Bookkeeper / accounts assistant",
+  "search": "bookkeeper accounts assistant accounts payable accounts receivable finance assistant purchase ledger",
+  "short": "Purchase and sales ledger, month-end – experienced or from practice.",
+  "desc": "Bookkeeper and accounts assistant CV and cover letter examples: letters for an experienced purchase ledger clerk and a move from an accountancy practice, plus a ready CV.",
+  "intro": "Finance teams want accuracy, deadlines met and confident use of their systems. Name the areas you handle – purchase ledger, sales ledger, bank reconciliations, VAT returns, month-end – and the volume.",
+  "lookFor": [
+   "Bookkeeping qualification or solid experience",
+   "Purchase and sales ledger, payments, credit control",
+   "Bank and account reconciliations, month-end support",
+   "VAT returns",
+   "Accounting software and spreadsheets"
+  ],
+  "letters": [
+   {
+    "label": "Experienced purchase ledger",
+    "level": "erfahren",
+    "position": "Accounts assistant – purchase ledger",
+    "to": {
+     "org": "Valley Wines Ltd",
+     "sal": "m",
+     "street": "50 Cellar Lane",
+     "city": "Chichester PO19 1AA",
+     "contact": "Baker"
+    },
+    "body": [
+     "Around 1,200 supplier invoices cross my desk every month, and I make sure they are coded, approved and paid on time – we almost never miss an early-payment discount.",
+     "At a wholesaler with three companies I run purchase ledger and payments, prepare VAT returns and support month-end with accruals and reconciliations. When we moved to digital invoice approval, I mapped the approval routes with each department; processing time almost halved.",
+     "I am starting an advanced accounting qualification this autumn. My notice period is six weeks."
+    ],
+    "att": [
+     "CV",
+     "Certificates"
+    ]
+   },
+   {
+    "label": "From practice to industry",
+    "level": "erfahren",
+    "position": "Bookkeeper",
+    "to": {
+     "org": "Southbay Construction Ltd",
+     "sal": "none",
+     "street": "Harbour Road",
+     "city": "Portsmouth PO1 3BB"
+    },
+    "body": [
+     "For seven years at an accountancy practice I kept the books for around 40 clients, from a bakery to an engineering firm. I now want to work in-house and really understand one business.",
+     "I produce management accounts, VAT returns and year-end working papers, and I know construction specifics such as stage payments and the reverse charge. I have also chased overdue invoices – politely and firmly.",
+     "I would welcome an interview."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Tom Walker",
+     "30 Elm Grove",
+     "Southsea PO5 1JF"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a14",
+   "design": "classic",
+   "accent": 5,
+   "name": "Sarah Mills",
+   "title": "Accounts assistant",
+   "street": "15 West Street",
+   "city": "Chichester PO19 1QH",
+   "exp": [
+    [
+     "03/2018",
+     "",
+     "Accounts assistant, purchase ledger",
+     "Southern Wholesale Group",
+     "Portsmouth",
+     "- Purchase ledger for three companies (c. 1,200 invoices/month)\n- Payment runs and discounts\n- VAT returns, month-end support"
+    ],
+    [
+     "2014",
+     "2018",
+     "Finance administrator",
+     "Downs Motors",
+     "Chichester",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2009",
+     "2014",
+     "Secondary school",
+     "Bishop Luffa School",
+     "Chichester",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2020",
+     "Bookkeeping qualification (level 3)",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Purchase ledger",
+     5
+    ],
+    [
+     "Payments",
+     5
+    ],
+    [
+     "VAT",
+     4
+    ],
+    [
+     "Reconciliations",
+     4
+    ],
+    [
+     "Accounting software",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "A2"
+    ]
+   ],
+   "hobbies": "Walking on the Downs, treasurer of a sports club"
+  },
+  "do": [
+   "Give areas and volumes.",
+   "Describe month-end work concretely.",
+   "List qualifications with years."
+  ],
+  "dont": [
+   "Write only “accounts”.",
+   "Overstate software skills.",
+   "Share employers’ figures."
+  ],
+  "questions": [
+   "What do you do with an invoice that has no purchase order?",
+   "What is in your month-end?",
+   "How do you handle a credit note?",
+   "Which systems do you know?"
+  ],
+  "faq": [
+   {
+    "q": "Should I mention my qualification level?",
+    "a": "Yes – recruiters filter by it. Add the year and any study in progress."
+   }
+  ]
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "id": "verwaltungsfachangestellte",
+ "field": "oeffentlich",
+ "name": "Verwaltungsfachangestellte/r",
+ "search": "verwaltungsfachangestellter verwaltungsfachangestellte öffentlicher dienst kommune stadtverwaltung landratsamt behörde verwaltung",
+ "short": "Kommune, Kreis, Land – nach der Ausbildung oder mit Erfahrung.",
+ "desc": "Bewerbung als Verwaltungsfachangestellte/r im öffentlichen Dienst: Musteranschreiben für Berufsstart und Wechsel der Behörde, Lebenslauf und Tipps für das Auswahlverfahren.",
+ "intro": "Im öffentlichen Dienst sind Bewerbungen formaler: Fristen, vollständige Unterlagen und die Kennziffer der Ausschreibung sind Pflicht. Gute Anschreiben beziehen sich direkt auf die Anforderungen der Stellenausschreibung und zeigen, mit welchen Rechtsgebieten und Fachverfahren du gearbeitet hast.",
+ "lookFor": [
+  "Abschluss als Verwaltungsfachangestellte/r oder Verwaltungslehrgang I/II",
+  "Kenntnisse im Verwaltungsrecht und im Fachrecht der Stelle",
+  "Erfahrung mit Fachverfahren und Bescheiden",
+  "Bürgerfreundlichkeit und klare Sprache",
+  "Vollständige Unterlagen und Einhaltung der Frist"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung ins Sozialamt",
+   "level": "berufseinstieg",
+   "position": "Sachbearbeiterin im Bereich Wohngeld",
+   "to": {
+    "org": "Stadt Kaiserslautern – Personalamt",
+    "sal": "none",
+    "street": "Willy-Brandt-Platz 1",
+    "city": "67657 Kaiserslautern"
+   },
+   "body": [
+    "im Rahmen meiner Ausbildung zur Verwaltungsfachangestellten war ich drei Monate in der Wohngeldstelle der Verbandsgemeinde Otterbach. Seitdem weiß ich, dass ich in der Leistungsverwaltung arbeiten möchte, und bewerbe mich auf die Stelle mit der Kennziffer 2026/118.",
+    "In der Wohngeldstelle habe ich Anträge auf Vollständigkeit geprüft, Einkommen berechnet und Bescheide im Fachverfahren vorbereitet, die meine Ausbilderin dann unterschrieben hat. Viele Antragsteller kamen mit einem Stapel Papiere und der Sorge, etwas falsch zu machen. Ich habe ihnen erklärt, was fehlt und warum, und am Ende hatte fast jeder einen vollständigen Antrag. Die Abschlussprüfung habe ich mit „gut“ bestanden.",
+    "Ich bin ab dem 1. September verfügbar und freue mich auf das Auswahlgespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis",
+    "Beurteilungen der Ausbildungsstationen"
+   ],
+   "ref": "2026/118"
+  },
+  {
+   "label": "Wechsel vom Landkreis in die Stadtverwaltung",
+   "level": "erfahren",
+   "position": "Sachbearbeiter im Ordnungsamt",
+   "to": {
+    "org": "Stadt Speyer – Fachbereich Personal",
+    "sal": "none",
+    "street": "Maximilianstraße 100",
+    "city": "67346 Speyer"
+   },
+   "body": [
+    "die Bußgeldstelle eines Landkreises hat mir in acht Jahren gezeigt, wie Ordnungsrecht in der Praxis funktioniert. Ich möchte jetzt näher an die Menschen und in einer Stadtverwaltung arbeiten, in der ich auch Gaststätten-, Gewerbe- und Veranstaltungsrecht kennenlerne.",
+    "Ich bearbeite Verkehrsordnungswidrigkeiten vom Anhörungsbogen bis zum Bußgeldbescheid, prüfe Einsprüche und bereite Verfahren für das Amtsgericht vor. Bei der Einführung der elektronischen Akte war ich in unserem Sachgebiet Ansprechpartner für die Kolleginnen. Den Verwaltungslehrgang II habe ich 2023 abgeschlossen.",
+    "Mir ist bewusst, dass ein Ordnungsamt auch Außendienste und unbequeme Gespräche bedeutet. Ich freue mich auf das Auswahlverfahren."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Prüfungszeugnis",
+    "Zeugnis Verwaltungslehrgang II",
+    "Dienstzeugnis"
+   ],
+   "from": [
+    "Markus Lang",
+    "Landauer Straße 40",
+    "67346 Speyer"
+   ],
+   "ref": "ORD-26-04"
+  }
+ ],
+ "cv": {
+  "avatar": "a19",
+  "design": "classic",
+  "accent": 0,
+  "name": "Julia Engel",
+  "title": "Verwaltungsfachangestellte",
+  "street": "Pariser Straße 30",
+  "city": "67655 Kaiserslautern",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Verwaltungsfachangestellte",
+    "Verbandsgemeinde Otterbach-Otterberg",
+    "Otterbach",
+    "- Stationen: Bürgerbüro, Wohngeldstelle, Finanzverwaltung, Ordnungsamt\n- Vorbereitung von Bescheiden im Fachverfahren\n- Bürgerberatung am Schalter"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zur Verwaltungsfachangestellten, Note „gut“",
+    "Kommunale Verwaltungsschule",
+    "Kaiserslautern",
+    ""
+   ],
+   [
+    "2014",
+    "2023",
+    "Abitur",
+    "Gymnasium am Rittersberg",
+    "Kaiserslautern",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Verwaltungsrecht",
+    4
+   ],
+   [
+    "Bescheiderstellung",
+    4
+   ],
+   [
+    "Fachverfahren",
+    3
+   ],
+   [
+    "Bürgerberatung",
+    4
+   ],
+   [
+    "Office-Programme",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Chor, Ehrenamt in der Tafel"
+ },
+ "do": [
+  "Kennziffer und Frist beachten.",
+  "Rechtsgebiete und Fachverfahren nennen.",
+  "Alle geforderten Zeugnisse beilegen."
+ ],
+ "dont": [
+  "Unvollständige Unterlagen – das kann zum Ausschluss führen.",
+  "Allgemeine Floskeln statt Bezug auf die Ausschreibung.",
+  "Bürger negativ beschreiben."
+ ],
+ "questions": [
+  "Wie erklären Sie einem Bürger einen ablehnenden Bescheid?",
+  "Was ist ein Verwaltungsakt?",
+  "Wie gehen Sie mit einem Widerspruch um?",
+  "Warum möchten Sie in diesen Fachbereich?"
+ ],
+ "pay": "Im öffentlichen Dienst richtet sich die Bezahlung nach dem Tarifvertrag (TVöD oder TV-L) und der Entgeltgruppe in der Ausschreibung. Eine Gehaltsvorstellung ist deshalb meist nicht nötig.",
+ "faq": [
+  {
+   "q": "Muss ich die Kennziffer angeben?",
+   "a": "Ja, immer im Betreff oder in der ersten Zeile. Behörden schreiben oft viele Stellen gleichzeitig aus."
+  },
+  {
+   "q": "Wie läuft ein Auswahlverfahren ab?",
+   "a": "Häufig gibt es ein strukturiertes Interview vor einer Kommission, manchmal mit Personalrat und Gleichstellungsbeauftragter, teils auch eine schriftliche Aufgabe."
+  }
+ ],
+ "related": [
+  "sachbearbeiter-buergeramt",
+  "justizfachangestellte",
+  "sachbearbeiter",
+  "kauffrau-bueromanagement"
+ ]
+}

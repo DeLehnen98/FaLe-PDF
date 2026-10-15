@@ -1,0 +1,181 @@
+{
+ "id": "produktionshelfer",
+ "field": "industrie",
+ "popular": true,
+ "name": "Produktionshelfer/in",
+ "search": "produktionsmitarbeiter produktionshelferin helfer produktion fabrik montagehelfer maschinenbediener industrie ohne ausbildung schicht",
+ "short": "Montage, Verpackung, Maschinen bedienen – auch ohne Ausbildung.",
+ "desc": "Bewerbung als Produktionshelfer/in: zwei kurze Musteranschreiben für Berufseinsteiger und erfahrene Helfer, Lebenslauf mit Foto-Platzhalter und typische Fragen.",
+ "intro": "In der Produktion zählen Pünktlichkeit, Sorgfalt, Schichtbereitschaft und die Fähigkeit, Arbeitsanweisungen genau einzuhalten. Viele Betriebe stellen ohne Ausbildung ein und lernen an. Ein kurzes, klares Anschreiben reicht.",
+ "lookFor": [
+  "Zuverlässigkeit und Pünktlichkeit",
+  "Schichtbereitschaft (2- oder 3-Schicht)",
+  "Sorgfalt bei Montage und Qualitätskontrolle",
+  "Körperliche Belastbarkeit",
+  "Erfahrung mit Maschinen oder Staplerschein von Vorteil"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrener Helfer, Wechsel in Festanstellung",
+   "level": "erfahren",
+   "position": "Produktionsmitarbeiter in der Montage",
+   "to": {
+    "org": "Kunststoffwerk Ems GmbH",
+    "sal": "none",
+    "street": "Industriestraße 4",
+    "city": "48429 Rheine"
+   },
+   "body": [
+    "vier Jahre lang habe ich über Zeitarbeit in einem Automobilzulieferer Bauteile montiert, geprüft und verpackt. Ich kenne Taktarbeit, Prüfanweisungen und das Gefühl, wenn am Ende der Schicht die Stückzahl stimmt.",
+    "Zuletzt habe ich an einer halbautomatischen Montagelinie gearbeitet, Maschinen bestückt und bei Störungen den Einrichter informiert. Ich habe einen Staplerschein und bin auch Ameise gefahren. Krankheitstage hatte ich in vier Jahren drei.",
+    "Ich suche eine feste Stelle, bei der ich bleiben kann. Drei-Schicht-System ist für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Einsatzbescheinigungen",
+    "Staplerschein"
+   ]
+  },
+  {
+   "label": "Einstieg nach der Schule",
+   "level": "berufseinstieg",
+   "position": "Produktionshelferin",
+   "to": {
+    "org": "Süßwarenfabrik Weber KG",
+    "sal": "none",
+    "street": "Am Kanal 12",
+    "city": "48431 Rheine"
+   },
+   "body": [
+    "zwei Jahre Café nach der Schule waren gut, aber ich bin 19 und möchte etwas Festes. Am liebsten in der Produktion, mit festen Zeiten und einem Team. Ihre Fabrik kenne ich, weil meine Tante bei Ihnen in der Verpackung arbeitet.",
+    "Im Café habe ich gelernt, sauber und schnell zu arbeiten und Hygieneregeln einzuhalten. Ich bin geschickt mit den Händen und habe kein Problem mit gleichförmiger Arbeit, solange das Team stimmt.",
+    "Früh- und Spätschicht kann ich, Nachtschicht nach Absprache."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Schulzeugnis"
+   ],
+   "from": [
+    "Lea Sommer",
+    "Emsstraße 20",
+    "48431 Rheine"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 5,
+  "name": "Ahmad Rahimi",
+  "title": "Produktionsmitarbeiter",
+  "street": "Lingener Straße 70",
+  "city": "48429 Rheine",
+  "exp": [
+   [
+    "03/2022",
+    "",
+    "Produktionshelfer (Zeitarbeit)",
+    "Einsatz bei Automobilzulieferer",
+    "Rheine",
+    "- Montage und Sichtprüfung von Bauteilen\n- Bestücken einer halbautomatischen Linie\n- Verpackung und Etikettierung"
+   ],
+   [
+    "2019",
+    "2022",
+    "Lagerhelfer",
+    "Möbelhaus Münsterland",
+    "Rheine",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Hauptschulabschluss",
+    "Hauptschule Rheine",
+    "Rheine",
+    ""
+   ],
+   [
+    "",
+    "2019",
+    "Deutschkurs B1 (Integrationskurs)",
+    "Volkshochschule Rheine",
+    "Rheine",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "Staplerschein",
+    "Zeitarbeitsfirma",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Montage",
+    4
+   ],
+   [
+    "Qualitätskontrolle",
+    4
+   ],
+   [
+    "Staplerfahren",
+    3
+   ],
+   [
+    "Schichtarbeit",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Dari",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "B1"
+   ],
+   [
+    "Englisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Fußball, Kochen"
+ },
+ "do": [
+  "Kurz und klar.",
+  "Schichtbereitschaft und Pünktlichkeit nennen.",
+  "Maschinen- oder Staplererfahrung erwähnen."
+ ],
+ "dont": [
+  "Lange Lebensgeschichte.",
+  "Gesundheitliche Einschränkungen verschweigen, wenn sie wichtig sind.",
+  "Falsche Angaben zu Scheinen."
+ ],
+ "questions": [
+  "Haben Sie schon im Schichtdienst gearbeitet?",
+  "Was tun Sie, wenn Ihnen ein fehlerhaftes Teil auffällt?",
+  "Wie gehen Sie mit eintöniger Arbeit um?",
+  "Wann können Sie anfangen?"
+ ],
+ "faq": [
+  {
+   "q": "Muss ich bei Deutsch als Zweitsprache etwas beachten?",
+   "a": "Gib dein Niveau ehrlich an (z. B. B1). Viele Betriebe arbeiten mit Bildanweisungen; wichtig ist, dass du Sicherheitsunterweisungen verstehst."
+  }
+ ],
+ "related": [
+  "maschinen-anlagenfuehrer",
+  "kommissionierer",
+  "lagerist",
+  "schweisser"
+ ]
+}

@@ -1,0 +1,191 @@
+{
+ "id": "gaertner",
+ "field": "handwerk",
+ "name": "Gärtner/in (Garten- und Landschaftsbau)",
+ "search": "gaertnerin galabau landschaftsgaertner gartenbau grünpflege pflasterarbeiten baumpflege friedhofsgärtner",
+ "short": "GaLaBau, Grünpflege oder Baumpflege – Geselle oder Helfer.",
+ "desc": "Bewerbung als Gärtner/in im Garten- und Landschaftsbau: Muster-Anschreiben für Fachkraft und Quereinsteiger, Lebenslauf zum Anpassen und typische Fragen.",
+ "intro": "GaLaBau-Betriebe suchen Leute, die bei jedem Wetter mit anpacken, Maschinen sicher bedienen und Pflaster, Mauern, Pflanzungen und Rasen sauber ausführen. Führerschein und Erfahrung mit Baggern oder Radladern sind ein großes Plus.",
+ "lookFor": [
+  "Ausbildung als Gärtner/in (Fachrichtung Garten- und Landschaftsbau) oder Erfahrung als Helfer",
+  "Pflaster- und Natursteinarbeiten, Pflanzungen, Rasenbau",
+  "Bedienung von Minibagger, Radlader, Motorsäge (mit Nachweis)",
+  "Führerschein B, oft BE oder C1E",
+  "Teamarbeit und Wetterfestigkeit"
+ ],
+ "letters": [
+  {
+   "label": "Gärtner mit Erfahrung in Pflasterarbeiten",
+   "level": "erfahren",
+   "position": "Landschaftsgärtner / Vorarbeiter",
+   "to": {
+    "org": "Grünwerk GaLaBau GmbH",
+    "sal": "m",
+    "street": "Am Wiesengrund 7",
+    "city": "48159 Münster",
+    "contact": "Thiele"
+   },
+   "body": [
+    "eine Kolonne mit drei Leuten führe ich seit zwei Jahren, überwiegend bei Privatgärten: Terrassen, Wege, Trockenmauern, Bepflanzung. Ich möchte mich jetzt bei einem Betrieb bewerben, der auch öffentliche Aufträge hat, weil ich größere Flächen und Ausschreibungen kennenlernen will.",
+    "Pflaster und Platten verlege ich nach Plan und mit Gefälle, das auch nach dem ersten Starkregen noch stimmt. Ich fahre Minibagger und Radlader, habe den Motorsägenschein und den Führerschein BE. Im Winter arbeite ich im Winterdienst und bei Gehölzschnitten. Auf der Baustelle führe ich das Bautagebuch und stimme mich mit den Kunden ab.",
+    "Die Weiterbildung zum geprüften Vorarbeiter habe ich im Frühjahr abgeschlossen. Ich bin ab März verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Nachweis Vorarbeiter",
+    "Motorsägenschein"
+   ]
+  },
+  {
+   "label": "Quereinstieg aus dem Büro",
+   "level": "quereinstieg",
+   "position": "Helfer im Garten- und Landschaftsbau",
+   "to": {
+    "org": "Gartenbau Rosendahl",
+    "sal": "none",
+    "street": "Hauptstraße 50",
+    "city": "48301 Nottuln"
+   },
+   "body": [
+    "nach acht Jahren am Schreibtisch in einer Versicherung möchte ich nach draußen. Das klingt nach einer Laune, ist aber eine Entscheidung, die ich lange vorbereitet habe: Ich habe zwei Wochen Urlaub für ein Praktikum bei einem GaLaBau-Betrieb in Coesfeld genutzt und danach gewusst, dass ich das will.",
+    "In dem Praktikum habe ich Rasen gelegt, Hecken geschnitten, beim Pflastern geholfen und abends Muskelkater gehabt, der sich gut angefühlt hat. Zu Hause pflege ich einen großen Garten mit Obstbäumen und habe einen Teich selbst angelegt. Ich bin 34, körperlich fit und möchte gern später die Ausbildung als Umschulung oder die Externenprüfung machen.",
+    "Ich kann zum 1. April anfangen und habe einen Führerschein der Klasse B."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Praktikumsbescheinigung",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Philipp Vogel",
+    "Lindenallee 12",
+    "48301 Nottuln"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a05",
+  "design": "compact",
+  "accent": 1,
+  "name": "Kofi Mensah",
+  "title": "Landschaftsgärtner, geprüfter Vorarbeiter",
+  "street": "Hammer Straße 210",
+  "city": "48153 Münster",
+  "exp": [
+   [
+    "08/2019",
+    "",
+    "Landschaftsgärtner, seit 2024 Kolonnenführer",
+    "Garten Holtkamp",
+    "Münster",
+    "- Terrassen, Wege, Trockenmauern\n- Pflanzungen und Rasenbau\n- Führung einer Kolonne mit drei Mitarbeitern"
+   ],
+   [
+    "08/2016",
+    "07/2019",
+    "Ausbildung zum Gärtner, Garten- und Landschaftsbau",
+    "Garten Holtkamp",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2010",
+    "2016",
+    "Fachoberschulreife",
+    "Realschule Hiltrup",
+    "Münster",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2026",
+    "Geprüfter Vorarbeiter GaLaBau",
+    "Landwirtschaftskammer",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2021",
+    "Motorsägenkurs (Modul A + B)",
+    "Forstschule",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2020",
+    "Führerschein Klasse BE",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Pflaster- und Natursteinarbeiten",
+    5
+   ],
+   [
+    "Pflanzenkenntnisse",
+    4
+   ],
+   [
+    "Minibagger / Radlader",
+    4
+   ],
+   [
+    "Kolonnenführung",
+    3
+   ],
+   [
+    "Bautagebuch",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ]
+  ],
+  "hobbies": "Imkerei, Laufen"
+ },
+ "do": [
+  "Nenn Maschinen und Scheine.",
+  "Beschreib Projekte mit Größe und Aufgaben.",
+  "Als Quereinsteiger: zeig, dass du die körperliche Arbeit kennst."
+ ],
+ "dont": [
+  "Nur „Natur lieben“ als Motivation.",
+  "Gesundheitliche Grenzen verschweigen.",
+  "Führerscheinklassen weglassen."
+ ],
+ "questions": [
+  "Wie legen Sie das Gefälle einer Terrasse fest?",
+  "Welche Maschinen haben Sie schon bedient?",
+  "Wie gehen Sie mit schlechtem Wetter um?",
+  "Welche Pflanzen empfehlen Sie für einen schattigen Vorgarten?"
+ ],
+ "faq": [
+  {
+   "q": "Kann ich ohne Ausbildung im GaLaBau arbeiten?",
+   "a": "Ja, als Helfer. Viele Betriebe bilden auch Erwachsene aus oder unterstützen eine Umschulung. Nach einigen Jahren Praxis ist teils die Externenprüfung möglich."
+  }
+ ],
+ "related": [
+  "hausmeister",
+  "maler-lackierer",
+  "lkw-fahrer",
+  "tischler"
+ ]
+}

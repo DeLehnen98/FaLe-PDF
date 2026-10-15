@@ -1,0 +1,387 @@
+{
+ "id": "lkw-fahrer",
+ "field": "logistik",
+ "popular": true,
+ "name": "LKW-Fahrer/in (Berufskraftfahrer/in)",
+ "search": "lkw fahrer lkw-fahrerin berufskraftfahrer kraftfahrer fernverkehr nahverkehr ce c1e fahrer brummifahrer adr",
+ "short": "Nah- oder Fernverkehr – mit CE, Code 95 und vielleicht ADR.",
+ "desc": "Bewerbung als LKW-Fahrer/in: Muster-Anschreiben für Fernfahrer, Wechsel in den Nahverkehr und Quereinstieg, fertiger Lebenslauf und Tipps für das Gespräch.",
+ "intro": "Speditionen suchen Fahrerinnen und Fahrer, die zuverlässig und sicher fahren, Ladung richtig sichern und freundlich beim Kunden auftreten. Im Anschreiben gehören Führerscheinklassen, Berufskraftfahrerqualifikation (Code 95), Zusatzscheine und deine bevorzugte Tourenart nach vorn.",
+ "lookFor": [
+  "Führerschein CE (oder C/C1E), gültige Fahrerkarte",
+  "Berufskraftfahrerqualifikation mit gültigem Eintrag (Code 95)",
+  "Zusatzqualifikationen: ADR, Staplerschein, Kran, Kühlverkehr",
+  "Ladungssicherung, Lenk- und Ruhezeiten, saubere Dokumentation",
+  "Unfallfreies Fahren und Pünktlichkeit"
+ ],
+ "letters": [
+  {
+   "label": "Fernfahrer, Wechsel in den Nahverkehr",
+   "level": "erfahren",
+   "position": "Berufskraftfahrer im Nahverkehr",
+   "to": {
+    "org": "Spedition Brandt GmbH & Co. KG",
+    "sal": "m",
+    "street": "Hafenstraße 50",
+    "city": "28197 Bremen",
+    "contact": "Brandt"
+   },
+   "body": [
+    "elf Jahre Fernverkehr, davon acht im Kühlverkehr nach Skandinavien – ich kenne die Fähren nach Göteborg besser als manches Wohnzimmer. Jetzt möchte ich abends wieder zu Hause sein, und Ihre Nahverkehrstouren im Raum Bremen sind genau das.",
+    "In all den Jahren bin ich unfallfrei gefahren. Ladungssicherung mache ich ordentlich, auch wenn der Kunde drängelt, und die Lenk- und Ruhezeiten halte ich ein; Kontrollen in Schweden und Dänemark habe ich ohne Beanstandung hinter mich gebracht. Ich habe den ADR-Basisschein und einen Staplerschein, beide gültig. Die Weiterbildung für Code 95 ist bis 2029 eingetragen.",
+    "Ich bin 44, wohne in Bremen-Nord und kann nach einem Monat Kündigungsfrist anfangen. Für eine Probefahrt bin ich jederzeit da."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Führerschein und Fahrerkarte (Kopie)",
+    "ADR-Bescheinigung",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Quereinstieg mit frischem Führerschein",
+   "level": "quereinstieg",
+   "position": "Berufskraftfahrerin (Berufseinstieg)",
+   "to": {
+    "org": "Weser Logistik Express",
+    "sal": "none",
+    "street": "Industriestraße 12",
+    "city": "28199 Bremen"
+   },
+   "body": [
+    "den Führerschein CE und die beschleunigte Grundqualifikation habe ich im September bestanden, gefördert über einen Bildungsgutschein. Davor war ich zwölf Jahre Lageristin, die letzten vier mit Verantwortung für den Wareneingang. Ich weiß also, was an einer Rampe passiert, wenn ein Fahrer zu spät kommt.",
+    "Mir ist klar, dass ich als Fahranfängerin noch Erfahrung sammeln muss. Deshalb suche ich gezielt einen Arbeitgeber, der neue Fahrer begleitet, und Ihre Anzeige erwähnt eine Einarbeitung mit einem erfahrenen Kollegen. Im Lager bin ich Stapler, Schubmaststapler und Ameise gefahren und habe Ladungen für den Versand verpackt und gesichert.",
+    "Nahverkehr und Tagestouren wären mein Wunsch, Wechselschichten sind möglich. Ich freue mich auf eine Probefahrt."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Führerschein (Kopie)",
+    "Nachweis Grundqualifikation",
+    "Staplerschein",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Nicole Behrens",
+    "Lesumer Heerstraße 8",
+    "28717 Bremen"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a12",
+  "design": "compact",
+  "accent": 5,
+  "name": "Frank Gerdes",
+  "title": "Berufskraftfahrer",
+  "street": "Blumenthaler Straße 33",
+  "city": "28757 Bremen",
+  "exp": [
+   [
+    "03/2018",
+    "",
+    "Berufskraftfahrer Fernverkehr (Kühlverkehr Skandinavien)",
+    "Nordic Cool Transport GmbH",
+    "Bremerhaven",
+    "- Touren nach Schweden, Norwegen, Dänemark\n- Ladungssicherung, Temperaturdokumentation\n- unfallfrei"
+   ],
+   [
+    "04/2015",
+    "02/2018",
+    "Berufskraftfahrer Fernverkehr",
+    "Spedition Lohmann",
+    "Bremen",
+    "- Planen- und Containerverkehr in Deutschland"
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung zum Berufskraftfahrer",
+    "Spedition Lohmann",
+    "Bremen",
+    ""
+   ],
+   [
+    "2002",
+    "2011",
+    "Hauptschulabschluss",
+    "Oberschule Blumenthal",
+    "Bremen",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Weiterbildung Berufskraftfahrer (Code 95, gültig bis 2029)",
+    "Fahrschule Nord",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2025",
+    "ADR-Basisschein",
+    "IHK Bremen",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2016",
+    "Staplerschein",
+    "Bildungswerk",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Führerschein CE",
+    5
+   ],
+   [
+    "Ladungssicherung",
+    5
+   ],
+   [
+    "Kühlverkehr",
+    5
+   ],
+   [
+    "Digitaler Tachograf",
+    5
+   ],
+   [
+    "Staplerfahren",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Angeln, Modellbau"
+ },
+ "do": [
+  "Führerscheinklassen, Code 95 und Zusatzscheine nach oben.",
+  "Sag, welche Touren du willst: Nah, Fern, Tagestouren.",
+  "Unfallfreiheit und Erfahrungen mit Kontrollen erwähnen."
+ ],
+ "dont": [
+  "Abgelaufene Qualifikationen verschweigen.",
+  "Über Disponenten schimpfen.",
+  "Punkte in Flensburg verschweigen, wenn sie für die Stelle relevant sind – im Gespräch kommt es raus."
+ ],
+ "questions": [
+  "Wie sichern Sie eine gemischte Ladung?",
+  "Was tun Sie, wenn Sie Ihre Lenkzeit wegen eines Staus nicht einhalten können?",
+  "Welche Touren bevorzugen Sie?",
+  "Hatten Sie schon einmal einen Unfall?"
+ ],
+ "pay": "Im Transportgewerbe gibt es regional unterschiedliche Tarifverträge. Frag nach Grundlohn, Spesen, Zuschlägen für Nacht und Wochenende und danach, wie Wartezeiten bezahlt werden.",
+ "faq": [
+  {
+   "q": "Was ist Code 95?",
+   "a": "Der Eintrag „95“ im Führerschein zeigt, dass du die Berufskraftfahrerqualifikation hast und die Weiterbildung (35 Stunden alle fünf Jahre) gemacht hast. Ohne gültigen Eintrag darfst du gewerblich nicht fahren."
+  },
+  {
+   "q": "Kann ich als Quereinsteiger LKW-Fahrer werden?",
+   "a": "Ja. Du brauchst den passenden Führerschein und die Grundqualifikation oder beschleunigte Grundqualifikation. Beides wird häufig über die Agentur für Arbeit oder den Arbeitgeber gefördert."
+  }
+ ],
+ "related": [
+  "lagerist",
+  "paketzusteller",
+  "busfahrer",
+  "speditionskaufmann"
+ ],
+ "en": {
+  "slug": "hgv-driver",
+  "name": "HGV / truck driver",
+  "search": "hgv driver lorry driver truck driver class 1 class 2 c+e cpc adr",
+  "short": "Local or long-haul – with C+E, CPC and maybe ADR.",
+  "desc": "HGV / truck driver CV and cover letter examples: letters for experienced long-haul drivers and newly qualified drivers, plus a ready CV.",
+  "intro": "Hauliers want drivers who are safe, punctual and good with customers. Lead with your licence categories, your Driver CPC, extra tickets such as ADR or forklift, and the kind of work you want.",
+  "lookFor": [
+   "Full licence for the vehicle class (e.g. C or C+E) and a valid tachograph card",
+   "Current Driver CPC or the equivalent professional qualification",
+   "Extra tickets: ADR, forklift, HIAB, temperature-controlled",
+   "Load security and drivers’ hours compliance",
+   "A clean driving record"
+  ],
+  "letters": [
+   {
+    "label": "Long-haul driver moving to local work",
+    "level": "erfahren",
+    "position": "Class 1 driver – local deliveries",
+    "to": {
+     "org": "Severn Haulage Ltd",
+     "sal": "m",
+     "street": "Unit 12, Dockside",
+     "city": "Bristol BS11 9FQ",
+     "contact": "Collins"
+    },
+    "body": [
+     "Eleven years of long-haul work, eight of them on refrigerated runs to Scandinavia, have given me a lot of experience and very few evenings at home. Your local delivery routes would change that.",
+     "I have driven accident-free throughout my career, secure loads properly even when the customer is in a hurry, and keep my hours legal. I hold an ADR certificate and a forklift licence, and my Driver CPC is current.",
+     "I live twenty minutes from your depot and can start after one month’s notice. I am happy to do an assessment drive."
+    ],
+    "att": [
+     "CV",
+     "Licence and CPC card (copies)",
+     "ADR certificate"
+    ]
+   },
+   {
+    "label": "Newly qualified driver",
+    "level": "quereinstieg",
+    "position": "Class 2 driver (new entrant)",
+    "to": {
+     "org": "Avon Logistics",
+     "sal": "none",
+     "street": "4 Station Road",
+     "city": "Bristol BS2 0QA"
+    },
+    "body": [
+     "I passed my category C test and initial CPC in September after twelve years in warehousing. I know what happens on the loading bay when a driver is late – I was the person waiting for him.",
+     "I am looking for an employer that supports new drivers, and your advert mentions a mentoring period with an experienced driver. In the warehouse I drove counterbalance and reach trucks and packed and secured outgoing loads.",
+     "Day shifts would be ideal, but I am flexible. I would welcome an assessment drive."
+    ],
+    "att": [
+     "CV",
+     "Licence (copy)",
+     "CPC certificate",
+     "Forklift licence"
+    ],
+    "from": [
+     "Nicola Brown",
+     "30 Gloucester Road",
+     "Bristol BS7 8AE"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a12",
+   "design": "compact",
+   "accent": 5,
+   "name": "Steve Morgan",
+   "title": "HGV driver (Class 1)",
+   "street": "18 Avonmouth Way",
+   "city": "Bristol BS11 8DD",
+   "exp": [
+    [
+     "03/2018",
+     "",
+     "Long-haul HGV driver (refrigerated)",
+     "Nordic Cool Transport",
+     "Bristol",
+     "- Runs to Sweden, Norway and Denmark\n- Load security and temperature records\n- Accident-free"
+    ],
+    [
+     "2015",
+     "2018",
+     "HGV driver",
+     "Western Freight",
+     "Bristol",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2004",
+     "2009",
+     "Secondary school",
+     "Lawrence Weston School",
+     "Bristol",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2024",
+     "Driver CPC periodic training (35 hours)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "ADR certificate",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "Counterbalance forklift licence",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Category C+E",
+     5
+    ],
+    [
+     "Load security",
+     5
+    ],
+    [
+     "Refrigerated transport",
+     5
+    ],
+    [
+     "Digital tachograph",
+     5
+    ],
+    [
+     "Forklift",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ]
+   ],
+   "hobbies": "Fishing, model building"
+  },
+  "do": [
+   "Put licence classes and tickets at the top.",
+   "Say which routes or shifts you want.",
+   "Mention a clean record."
+  ],
+  "dont": [
+   "Hide expired qualifications.",
+   "Complain about previous transport planners.",
+   "Leave out penalty points the employer will check anyway."
+  ],
+  "questions": [
+   "How would you secure a mixed load?",
+   "What do you do if traffic means you will run out of hours?",
+   "Which kind of work do you prefer?",
+   "Have you had any accidents or incidents?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a cover letter as a driver?",
+    "a": "A short one helps: three paragraphs with your licence, experience and the work you want often get you a call faster than a CV alone."
+   }
+  ]
+ }
+}

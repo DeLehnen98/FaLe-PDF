@@ -1,0 +1,178 @@
+{
+ "id": "mechatroniker",
+ "field": "industrie",
+ "name": "Mechatroniker/in",
+ "search": "mechatronikerin mechatroniker automatisierung sps instandhaltung servicetechniker anlagen inbetriebnahme",
+ "short": "Mechanik, Elektrik, Steuerung – Instandhaltung oder Service.",
+ "desc": "Bewerbung als Mechatroniker/in: Musteranschreiben für Instandhaltung und Servicetechnik mit Inbetriebnahmen, Lebenslauf mit Foto-Platzhalter und Gesprächsfragen.",
+ "intro": "Mechatroniker verbinden Mechanik, Elektrik und Steuerungstechnik. Arbeitgeber fragen nach SPS-Erfahrung, Fehlersuche an Anlagen und, für Servicestellen, nach Reisebereitschaft und Kundenkontakt.",
+ "lookFor": [
+  "Ausbildung als Mechatroniker/in",
+  "Fehlersuche in Mechanik, Elektrik und Steuerung",
+  "SPS-Programmierung oder -Diagnose",
+  "Inbetriebnahme und Dokumentation",
+  "Reisebereitschaft bei Servicestellen"
+ ],
+ "letters": [
+  {
+   "label": "Servicetechniker mit Inbetriebnahmen",
+   "level": "erfahren",
+   "position": "Servicetechniker für Verpackungsanlagen",
+   "to": {
+    "org": "Packtech Allgäu GmbH",
+    "sal": "none",
+    "street": "Gewerbestraße 30",
+    "city": "87437 Kempten"
+   },
+   "body": [
+    "23 Anlagen habe ich in drei Jahren beim Kunden in Betrieb genommen, davon neun im Ausland. Ich mag diesen Moment, wenn die erste Packung sauber vom Band läuft und der Produktionsleiter zum ersten Mal lächelt.",
+    "Ich bin Mechatroniker und arbeite in der Inbetriebnahme eines Anlagenbauers. Ich nehme Anlagen mechanisch und elektrisch in Betrieb, passe SPS-Programme an, schule das Bedienpersonal und schreibe die Abnahmeprotokolle. Englisch spreche ich bei Einsätzen täglich, Grundlagen in Spanisch habe ich mir für Kunden in Mexiko angeeignet.",
+    "Ich möchte weiter im Service arbeiten, aber mit kürzeren Reisen. Ihr Kundenstamm im Alpenraum würde das ermöglichen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Nach der Ausbildung in die Instandhaltung",
+   "level": "berufseinstieg",
+   "position": "Mechatronikerin in der Instandhaltung",
+   "to": {
+    "org": "Molkerei Allgäuer Land eG",
+    "sal": "f",
+    "street": "Milchstraße 5",
+    "city": "87435 Kempten",
+    "contact": "Huber"
+   },
+   "body": [
+    "spinnt in meinem Ausbildungsbetrieb eine Lichtschranke, rufen die Kollegen mich. Ich habe meine Ausbildung zur Mechatronikerin im Februar abgeschlossen und möchte in der Instandhaltung einer Lebensmittelproduktion arbeiten.",
+    "Ich habe Sensoren und Antriebe getauscht, Schaltschränke verdrahtet, Fehler mit dem Programmiergerät eingegrenzt und mechanische Baugruppen instand gesetzt. Hygieneregeln in der Lebensmittelproduktion kenne ich aus einem Praktikum in einer Käserei.",
+    "Schichtdienst und Rufbereitschaft nach Einarbeitung sind für mich in Ordnung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Ausbildungszeugnis"
+   ],
+   "from": [
+    "Theresa Maier",
+    "Bahnhofstraße 50",
+    "87435 Kempten"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "compact",
+  "accent": 0,
+  "name": "Felix Strobel",
+  "title": "Mechatroniker, Inbetriebnahme",
+  "street": "Rottachstraße 12",
+  "city": "87439 Kempten",
+  "exp": [
+   [
+    "09/2020",
+    "",
+    "Mechatroniker Inbetriebnahme und Service",
+    "Allgäu Anlagenbau GmbH",
+    "Kempten",
+    "- 23 Inbetriebnahmen, davon 9 im Ausland\n- SPS-Anpassungen und Fehlersuche\n- Schulung von Bedienpersonal"
+   ],
+   [
+    "09/2017",
+    "08/2020",
+    "Ausbildung zum Mechatroniker",
+    "Allgäu Anlagenbau GmbH",
+    "Kempten",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2008",
+    "2017",
+    "Fachhochschulreife",
+    "FOS Kempten",
+    "Kempten",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "SPS-Programmierung Aufbaukurs",
+    "Herstellerschulung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Inbetriebnahme",
+    5
+   ],
+   [
+    "SPS",
+    4
+   ],
+   [
+    "Elektrische Fehlersuche",
+    4
+   ],
+   [
+    "Mechanische Montage",
+    4
+   ],
+   [
+    "Kundenschulung",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Spanisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Skitouren, Klettern"
+ },
+ "do": [
+  "Anzahl und Art der Anlagen nennen.",
+  "Steuerungs- und Programmiererfahrung beschreiben.",
+  "Reisebereitschaft klar angeben."
+ ],
+ "dont": [
+  "Nur Fachbegriffe ohne Beispiele.",
+  "Auslandseinsätze übertreiben.",
+  "Sicherheitsthemen ignorieren."
+ ],
+ "questions": [
+  "Ein Sensor meldet sporadisch Fehler. Wie suchen Sie?",
+  "Welche Steuerungen kennen Sie?",
+  "Wie schulen Sie Bedienpersonal?",
+  "Wie viel Reisezeit ist für Sie in Ordnung?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich SPS-Kenntnisse?",
+   "a": "Für viele Stellen ja, zumindest zur Diagnose. Schreib ehrlich, ob du Programme liest, änderst oder neu schreibst."
+  }
+ ],
+ "related": [
+  "industriemechaniker",
+  "elektriker",
+  "kfz-mechatroniker",
+  "maschinen-anlagenfuehrer"
+ ]
+}

@@ -27,6 +27,7 @@ export async function confirmLeave(screen) {
 export async function openOfficeRoute(parts, params, { goBack }) {
   const top = parts[0];
   const onBack = async () => { const s = currentScreen(); if (await confirmLeave(s)) { if (s) s.isDirty = () => false; goBack(); } };
+  if (top === 'vorlagen' && parts[1] === 'tabelle') return sheetTemplatesScreen(onBack);
   if (top === 'vorlagen') return templatesScreen(onBack, params.get('art'));
   let mount, opts = {}, title = '';
   if (top === 'bearbeiten') {
@@ -97,3 +98,76 @@ function templatesScreen(onBack, art) {
   screen.body.innerHTML = `<div class="screen-inner">${order.map(([id, title, cards]) => `<h2 class="section-title" id="tpl-${id}">${title}</h2><div class="tpl-grid">${cards.join('')}</div>`).join('')}</div>`;
   void $$;
 }
+
+// ---------------- spreadsheet start screen: blank workbook or a template ----------------
+async function sheetTemplatesScreen(onBack) {
+  const screen = openScreen({ title: 'Neue Tabelle', sub: 'Leer beginnen oder eine Vorlage wählen', onBack });
+  const T = await import('./sheet-templates.js');
+  const cats = T.SHEET_TEMPLATE_CATS;
+  screen.body.innerHTML = `<div class="screen-inner stp">
+    <div class="stp-bar"><input class="input" type="search" data-q placeholder="Vorlage suchen, z. B. Budget, Urlaub, Rechnung …" aria-label="Vorlagen durchsuchen">
+      <div class="chips stp-cats" role="tablist" aria-label="Kategorien">${cats.map((c, i) => `<button type="button" class="chip" role="tab" data-cat="${esc(c)}" aria-selected="${i === 0}">${esc(c)}</button>`).join('')}</div></div>
+    <div class="stp-grid">${T.SHEET_TEMPLATE_LIST.map(t => `<div class="stp-card" data-id="${esc(t.id)}">
+      <a class="stp-open" href="#/neu/tabelle?vorlage=${encodeURIComponent(t.id)}" aria-label="${esc(t.title)} öffnen"><span class="stp-prev stp-${esc(t.accent)}" data-no-i18n aria-hidden="true">${t.id === 'leer' ? emptyGrid() : '<span class="stp-load"></span>'}</span>
+        <span class="tpl-txt"><strong>${esc(t.title)}</strong><span>${esc(t.desc)}</span></span></a>
+      ${t.id === 'leer' ? '' : `<button class="icon-btn stp-dl" type="button" data-dl="${esc(t.id)}" aria-label="${esc(t.title)} als .xlsx-Datei herunterladen" title="Als .xlsx-Datei herunterladen">${oicon('download')}</button>`}
+    </div>`).join('')}</div>
+    <p class="muted small stp-note">Alle Vorlagen sind eigene Entwürfe mit fertigen Formeln, Dropdown-Listen und bedingter Formatierung. Gelbe Felder sind Eingaben.</p>
+  </div>`;
+  const q = $('[data-q]', screen.body);
+  let cat = cats[0];
+  const filter = () => {
+    const term = q.value.trim().toLocaleLowerCase('de');
+    for (const card of $$('.stp-card', screen.body)) {
+      const t = T.SHEET_TEMPLATE_LIST.find(x => x.id === card.dataset.id);
+      const hay = `${t.title} ${t.desc} ${t.keywords || ''} ${t.cat}`.toLocaleLowerCase('de');
+      card.hidden = !((cat === cats[0] || t.cat === cat || t.id === 'leer') && (!term || hay.includes(term)));
+    }
+  };
+  q.addEventListener('input', filter);
+  const catBtns = $$('.stp-cats [data-cat]', screen.body);
+  catBtns.forEach(b => b.addEventListener('click', () => { cat = b.dataset.cat; catBtns.forEach(x => x.setAttribute('aria-selected', String(x === b))); filter(); }));
+  screen.body.addEventListener('click', async e => {
+    const b = e.target.closest('[data-dl]');
+    if (!b) return;
+    try {
+      const wb = await builtTemplate(b.dataset.dl);
+      const { writeXlsx } = await import('./xlsx-write.js');
+      const t = T.SHEET_TEMPLATE_LIST.find(x => x.id === b.dataset.dl);
+      downloadBlob(await writeXlsx(wb, { title: t.title }), `${t.title.replace(/[\\/:*?"<>|]+/g, '-')}.xlsx`);
+    } catch (err) { errorToast(err, 'Die Vorlage konnte nicht erstellt werden.'); }
+  });
+  // live previews: build each template (with calculated values) one after another
+  const cache = new Map();
+  async function builtTemplate(id) {
+    if (cache.has(id)) return cache.get(id);
+    const [{ recalc, ensureSheetModel }, { ensureSheetExtras }] = await Promise.all([import('./workbook.js'), import('./sheetfx.js')]);
+    const wb = T.buildSheetTemplate(id);
+    wb.sheets.forEach(s => { ensureSheetExtras(s); ensureSheetModel(s); });
+    recalc(wb);
+    cache.set(id, wb);
+    return wb;
+  }
+  const { displayOf, KEY } = await import('./workbook.js');
+  for (const t of T.SHEET_TEMPLATE_LIST) {
+    if (t.id === 'leer' || screen.signal.aborted) continue;
+    await new Promise(r => setTimeout(r, 0));
+    try {
+      const wb = await builtTemplate(t.id);
+      const sh = wb.sheets[0];
+      const rows = [];
+      let r0 = 0;
+      for (let r = 0; r <= Math.min(sh.maxR, 40) && rows.length < 9; r++) {
+        if (r === 1) continue; // hint line
+        const row = [];
+        for (let c = 0; c < 5; c++) { const cell = sh.cells.get(KEY(r, c)); row.push({ t: cell ? displayOf(cell) : '', s: (cell && cell.s) || {} }); }
+        if (!rows.length) r0 = r;
+        rows.push(row);
+      }
+      void r0;
+      const el = $(`.stp-card[data-id="${t.id}"] .stp-prev`, screen.body);
+      if (el) el.innerHTML = `<table>${rows.map((row, i) => `<tr>${row.map((x, c) => (i === 0 ? (c === 0 ? `<td colspan="5" class="stp-title">${esc(x.t)}</td>` : '') : `<td class="${x.s.fill && x.s.b ? 'h' : x.s.fill ? 'in' : ''}${typeof x.t === 'string' && /^-?[\d.,]+( €| %| km)?$/.test(x.t) ? ' n' : ''}${x.s.b ? ' b' : ''}">${esc(x.t)}</td>`)).join('')}</tr>`).join('')}</table>`;
+    } catch (e) { console.warn('Vorschau übersprungen', t.id, e); }
+  }
+}
+function emptyGrid() { return `<table>${Array.from({ length: 8 }, () => `<tr>${'<td></td>'.repeat(5)}</tr>`).join('')}</table>`; }

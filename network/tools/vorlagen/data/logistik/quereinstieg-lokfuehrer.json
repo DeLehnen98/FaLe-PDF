@@ -1,0 +1,181 @@
+{
+ "id": "quereinstieg-lokfuehrer",
+ "field": "logistik",
+ "name": "Lokführer/in im Quereinstieg",
+ "search": "lokführer lokfuehrerin triebfahrzeugführer quereinsteiger bahn eisenbahn zugführer funktionsausbildung",
+ "short": "Mit Funktionsausbildung in den Führerstand – Bewerbung für den Quereinstieg.",
+ "desc": "Bewerbung als Lokführer/in im Quereinstieg: zwei Muster-Anschreiben für die Funktionsausbildung zum Triebfahrzeugführer, Lebenslauf und Tipps für den Eignungstest.",
+ "intro": "Eisenbahnunternehmen bilden Quereinsteiger in einer mehrmonatigen Funktionsausbildung zu Triebfahrzeugführern aus. Erwartet werden meist eine abgeschlossene Berufsausbildung, Bereitschaft zu Schichtdienst und das Bestehen ärztlicher und psychologischer Tests. Die genauen Voraussetzungen legen die Unternehmen fest – lies die Ausschreibung genau.",
+ "lookFor": [
+  "Abgeschlossene Berufsausbildung, oft gern im technischen Bereich – je nach Unternehmen",
+  "Bereitschaft zu Schicht-, Wochenend- und Feiertagsdienst",
+  "Konzentrationsfähigkeit und Verantwortungsbewusstsein",
+  "Gesundheitliche Eignung (Sehen, Hören) und psychologische Eignung",
+  "Technisches Verständnis"
+ ],
+ "letters": [
+  {
+   "label": "Industriemechaniker in die Funktionsausbildung",
+   "level": "quereinstieg",
+   "position": "Triebfahrzeugführer im Quereinstieg (Funktionsausbildung)",
+   "to": {
+    "org": "Regiobahn Rhein-Main GmbH",
+    "sal": "none",
+    "street": "Bahnhofsplatz 1",
+    "city": "60329 Frankfurt am Main"
+   },
+   "body": [
+    "zehn Jahre habe ich Maschinen gewartet, die stillstehen, wenn ich nicht aufpasse. Jetzt möchte ich etwas bewegen, das Hunderte Menschen jeden Morgen zur Arbeit bringt, und mich für Ihre Funktionsausbildung zum Triebfahrzeugführer bewerben.",
+    "Als Industriemechaniker in der Instandhaltung arbeite ich nach Checklisten, Prüfplänen und Sicherheitsvorschriften, die man nicht abkürzt. Ich bin Schichtdienst seit Jahren gewohnt, auch nachts und am Wochenende. Technische Störungen zu analysieren und ruhig zu bleiben, wenn der Produktionsleiter neben mir steht, gehört zu meinem Alltag.",
+    "Ich bin 33, sehe ohne Brille gut und bin bereit für die medizinischen und psychologischen Tests. Über eine Einladung zum Auswahlverfahren würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Rückkehr ins Berufsleben, Bahn als Ziel",
+   "level": "quereinstieg",
+   "position": "Lokführerin (Quereinstieg)",
+   "to": {
+    "org": "S-Bahn Mitteldeutschland",
+    "sal": "none",
+    "street": "Willy-Brandt-Platz 3",
+    "city": "04109 Leipzig"
+   },
+   "body": [
+    "mein Großvater war Lokführer, und als Kind durfte ich einmal im Führerstand mitfahren. Den Gedanken habe ich lange zur Seite geschoben. Mit 39 und zwei Kindern, die inzwischen selbstständig zur Schule gehen, ist für mich jetzt der richtige Zeitpunkt.",
+    "Ich bin gelernte Mechatronikerin und habe acht Jahre in der Qualitätsprüfung eines Automobilzulieferers gearbeitet. Konzentriertes Arbeiten über viele Stunden, Prüfvorschriften genau einhalten und Abweichungen dokumentieren: Das kenne ich. Schichtdienst habe ich vor der Familienzeit lange gemacht, und die Kinderbetreuung ist geregelt.",
+    "Ich bin bereit für die Tests und die monatelange Ausbildung mit Prüfung. Ich freue mich auf Ihre Antwort."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Facharbeiterbrief Mechatronikerin",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Juliane Pohl",
+    "Karl-Liebknecht-Straße 50",
+    "04275 Leipzig"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "compact",
+  "accent": 5,
+  "name": "Benjamin Roth",
+  "title": "Industriemechaniker",
+  "street": "Mainzer Landstraße 200",
+  "city": "60327 Frankfurt am Main",
+  "exp": [
+   [
+    "09/2016",
+    "",
+    "Industriemechaniker Instandhaltung",
+    "Main Kunststofftechnik GmbH",
+    "Hanau",
+    "- Wartung und Störungsbehebung an Spritzgussanlagen\n- Arbeit nach Prüfplänen\n- Drei-Schicht-Betrieb"
+   ],
+   [
+    "09/2013",
+    "08/2016",
+    "Ausbildung zum Industriemechaniker",
+    "Main Kunststofftechnik GmbH",
+    "Hanau",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2004",
+    "2013",
+    "Realschulabschluss",
+    "Realschule Hanau",
+    "Hanau",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2022",
+    "Elektrofachkraft für festgelegte Tätigkeiten",
+    "IHK",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2020",
+    "Hydraulik-Grundlagen",
+    "Herstellerschulung",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Störungsanalyse",
+    5
+   ],
+   [
+    "Arbeiten nach Vorschrift",
+    5
+   ],
+   [
+    "Schichtdienst",
+    5
+   ],
+   [
+    "Hydraulik und Pneumatik",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Modellbahn, Laufen"
+ },
+ "do": [
+  "Zeig Erfahrung mit Sicherheitsregeln und Schichtdienst.",
+  "Sag offen, dass du bereit für Tests und Prüfungen bist.",
+  "Erzähl, warum dich die Bahn reizt – kurz."
+ ],
+ "dont": [
+  "Nur Kindheitsträume als Begründung.",
+  "Schichtdienst kleinreden.",
+  "Gesundheitliche Einschränkungen verschweigen, die für die Eignung zählen."
+ ],
+ "questions": [
+  "Wie gehen Sie mit Monotonie bei langen Fahrten um?",
+  "Was tun Sie bei einer Störung auf freier Strecke?",
+  "Wie organisieren Sie Familie und Schichtdienst?",
+  "Warum möchten Sie Lokführer werden?"
+ ],
+ "faq": [
+  {
+   "q": "Wie lange dauert die Ausbildung im Quereinstieg?",
+   "a": "Je nach Unternehmen und Einsatz meist rund neun bis zwölf Monate, mit Theorie, Praxis im Führerstand und Prüfungen. Während der Ausbildung wirst du in der Regel bereits bezahlt."
+  },
+  {
+   "q": "Was wird im Auswahlverfahren getestet?",
+   "a": "Üblich sind ein ärztlicher Eignungstest (Sehen, Hören, allgemeine Gesundheit) und ein psychologischer Test zu Konzentration, Reaktion und Belastbarkeit. Dazu kommt ein Gespräch."
+  }
+ ],
+ "related": [
+  "busfahrer",
+  "lkw-fahrer",
+  "industriemechaniker",
+  "mechatroniker"
+ ]
+}

@@ -27,7 +27,7 @@ const SKIP_PATHS = [/^js\/i18n\//, /^vendor/, /^node_modules/, /^dist/, /^androi
 const SKIP_HTML = new Set(['datenschutz.html', 'impressum.html', 'info.html', 'info-en.html']);
 // Generated document content that stays German on purpose (German letters, DIN 5008, legal templates).
 // Strings from these places are still listed with --all but not counted as missing.
-const CONTENT_FILES = new Set([]);
+const CONTENT_FILES = new Set(['js/office/sheet-templates.js']); // spreadsheet template cells stay German (the gallery titles are translated in en.js)
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
@@ -310,7 +310,8 @@ async function main() {
     // covered = an exact dictionary entry (patterns are a runtime safety net only, they don't count)
     const ok = exactKeys.has(key) || FORMAT_RULES.some(([re]) => re.test(key));
     if (ok) covered++;
-    else missing.push({ key, file: locs[0].file, line: locs[0].line, count: locs.length, content: CONTENT_FILES.has(locs[0].file) });
+    else if (locs.every(l => CONTENT_FILES.has(l.file))) { covered++; continue; } // document content that stays German
+    else missing.push({ key, file: locs[0].file, line: locs[0].line, count: locs.length, content: false });
   }
   const total = found.size;
   if (args.has('--json')) {

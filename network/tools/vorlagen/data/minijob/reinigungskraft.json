@@ -1,0 +1,157 @@
+{
+ "id": "reinigungskraft",
+ "field": "minijob",
+ "name": "Reinigungskraft",
+ "search": "reinigungskraft putzkraft gebäudereinigung reinigung minijob büroreinigung raumpflegerin unterhaltsreinigung",
+ "short": "Büro-, Praxis- oder Unterhaltsreinigung, oft früh oder abends.",
+ "desc": "Bewerbung als Reinigungskraft: zwei kurze Musteranschreiben für Minijob und Teilzeit, Lebenslauf mit Foto-Platzhalter und typische Fragen im Gespräch.",
+ "intro": "Reinigungsfirmen und Praxen suchen zuverlässige Kräfte, die gründlich arbeiten und sich an Pläne halten. Viele Stellen sind früh am Morgen oder abends. Ein kurzes Anschreiben mit Verfügbarkeit reicht.",
+ "lookFor": [
+  "Zuverlässigkeit und Gründlichkeit",
+  "Erfahrung mit Reinigungsplänen und -mitteln",
+  "Verfügbarkeit früh oder abends",
+  "Diskretion in Büros und Praxen",
+  "Eventuell Führerschein für mehrere Objekte"
+ ],
+ "letters": [
+  {
+   "label": "Minijob abends",
+   "level": "minijob",
+   "position": "Reinigungskraft (Minijob, abends)",
+   "to": {
+    "org": "Gebäudeservice Blank GmbH",
+    "sal": "none",
+    "street": "Gewerbestraße 6",
+    "city": "56068 Koblenz"
+   },
+   "body": [
+    "für die Büroreinigung am Abend suchen Sie eine Aushilfe. Ich kann montags bis freitags ab 18 Uhr arbeiten, weil mein Mann dann zu Hause bei den Kindern ist.",
+    "Ich habe drei Jahre in einem Hotel als Zimmermädchen gearbeitet und weiß, wie man nach Plan reinigt und dabei nichts vergisst. Ich arbeite gründlich und ruhig und fasse auf fremden Schreibtischen nichts an, was ich nicht anfassen soll.",
+    "Ich freue mich auf Ihren Anruf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ]
+  },
+  {
+   "label": "Teilzeit in einer Arztpraxis",
+   "level": "minijob",
+   "position": "Reinigungskraft für Praxisräume (Teilzeit)",
+   "to": {
+    "org": "Ärztehaus am Moselufer",
+    "sal": "none",
+    "street": "Moselweißer Straße 10",
+    "city": "56073 Koblenz"
+   },
+   "body": [
+    "in einer Arztpraxis muss Sauberkeit mehr sein als ein schöner Eindruck. Das habe ich in zwei Jahren Reinigung in einer Zahnarztpraxis gelernt, wo ich nach Hygieneplan gearbeitet habe.",
+    "Ich desinfiziere Flächen, reinige Böden und Sanitärbereiche und dokumentiere die Arbeit im Plan. Ich bin zuverlässig und kann morgens ab 6 Uhr oder abends ab 19 Uhr arbeiten, 20 Stunden pro Woche.",
+    "Gern komme ich zu einem Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Fatma Kılıç",
+    "Lützeler Straße 20",
+    "56070 Koblenz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a14",
+  "design": "compact",
+  "accent": 1,
+  "name": "Grace Mensah",
+  "title": "Reinigungskraft",
+  "street": "Löhrstraße 40",
+  "city": "56068 Koblenz",
+  "exp": [
+   [
+    "2019",
+    "2022",
+    "Zimmermädchen",
+    "Hotel am Deutschen Eck",
+    "Koblenz",
+    "- Zimmerreinigung nach Plan\n- Wäschewechsel, Minibar-Kontrolle"
+   ],
+   [
+    "2022",
+    "",
+    "Familienzeit",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2004",
+    "2013",
+    "Schulabschluss (Senior High School)",
+    "Schule in Kumasi",
+    "Ghana",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Reinigung nach Plan",
+    5
+   ],
+   [
+    "Gründlichkeit",
+    5
+   ],
+   [
+    "Diskretion",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Englisch",
+    "native"
+   ],
+   [
+    "Twi",
+    "native"
+   ],
+   [
+    "Deutsch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Gospelchor, Kochen"
+ },
+ "do": [
+  "Verfügbarkeit genau angeben.",
+  "Erfahrung mit Plänen und Hygiene nennen.",
+  "Kurz bleiben."
+ ],
+ "dont": [
+  "Zu lange Texte.",
+  "Arbeitszeiten offenlassen.",
+  "Diskretion vergessen."
+ ],
+ "questions": [
+  "Wann können Sie arbeiten?",
+  "Welche Reinigungsmittel kennen Sie?",
+  "Was tun Sie, wenn Sie etwas kaputt machen?",
+  "Haben Sie einen Führerschein?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "hausmeister",
+  "kuechenhilfe",
+  "pflegehelfer",
+  "verkaeuferin-minijob"
+ ]
+}

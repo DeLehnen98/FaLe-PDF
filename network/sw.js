@@ -12,12 +12,13 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '113174adb568';
+const VERSION = '13298f364be7';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-47647d05af44';
+const VENDOR = 'wt-vendor-41504356711b';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/hub.js",
+  "/assets/wt/lib/arc-vorlage.js",
   "/assets/wt/lib/aud1-asciistrip.js",
   "/assets/wt/lib/aud1-grayjpeg.js",
   "/assets/wt/lib/aud1-ocg.js",
@@ -101,6 +102,8 @@ const PRECACHE = [
   "/assets/wt/lib/tt.js",
   "/assets/wt/lib/unifont.js",
   "/assets/wt/shell.js",
+  "/assets/wt/vl.css",
+  "/assets/wt/vl.js",
   "/assets/wt/wt.css",
   "/assets/fale-tokens.css",
   "/assets/site.css",
@@ -113,7 +116,7 @@ const PRECACHE = [
   "/en/tools/"
 ];
 const SHARE = {"/werkzeuge/teilen/": "/werkzeuge/?geteilt=1", "/en/tools/share/": "/en/tools/?shared=1"};
-const SCOPES = ["/werkzeuge/", "/en/tools/"];
+const SCOPES = ["/werkzeuge/", "/en/tools/", "/vorlagen/", "/en/templates/"];
 const HUBS = {"de": "/werkzeuge/", "en": "/en/tools/"};
 
 self.addEventListener('install', event => {

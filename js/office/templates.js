@@ -1,4 +1,5 @@
 // Document, spreadsheet and presentation templates (own designs). All texts are placeholders to overwrite.
+import { SHEET_TEMPLATE_LIST } from './sheet-templates.js';
 
 const today = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 const longDate = () => new Date().toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -136,40 +137,8 @@ export const DOC_TEMPLATES = [
 ];
 
 // ---------------- spreadsheet templates ----------------
-export const SHEET_TEMPLATES = [
-  { id: 'leer', title: 'Leere Tabelle', desc: 'Raster mit 26 Spalten', icon: 'ksheet', kind: 'xlsx', cells: null },
-  {
-    id: 'haushaltsbuch', title: 'Haushaltsbuch', desc: 'Einnahmen, Ausgaben und Saldo mit Formeln', icon: 'ksheet', kind: 'xlsx',
-    cells: () => {
-      const rows = [
-        [['Haushaltsbuch', { b: true, size: 14 }]],
-        [],
-        [['Kategorie', { b: true, fill: '#E9E8FB' }], ['Geplant', { b: true, fill: '#E9E8FB', align: 'right' }], ['Tatsächlich', { b: true, fill: '#E9E8FB', align: 'right' }], ['Differenz', { b: true, fill: '#E9E8FB', align: 'right' }]],
-        ['Gehalt', 2800, 2800, '=C4-B4'],
-        ['Miete', -950, -950, '=C5-B5'],
-        ['Lebensmittel', -400, -436.5, '=C6-B6'],
-        ['Mobilität', -150, -128.9, '=C7-B7'],
-        ['Freizeit', -200, -245, '=C8-B8'],
-        ['Sparen', -300, -300, '=C9-B9'],
-        [['Saldo', { b: true }], ['=SUMME(B4:B9)', { b: true }], ['=SUMME(C4:C9)', { b: true }], ['=C10-B10', { b: true }]],
-      ];
-      return { rows, fmt: { cols: [1, 2, 3], code: '#,##0.00 "€"', from: 3 }, widths: [150, 110, 110, 110], freeze: 0 };
-    },
-  },
-  {
-    id: 'stundenzettel', title: 'Stundenzettel', desc: 'Arbeitszeit pro Tag mit Summe', icon: 'ksheet', kind: 'xlsx',
-    cells: () => {
-      const rows = [[['Datum', { b: true, fill: '#D9F5F0' }], ['Tätigkeit', { b: true, fill: '#D9F5F0' }], ['Stunden', { b: true, fill: '#D9F5F0', align: 'right' }]]];
-      const d0 = new Date();
-      for (let i = 0; i < 5; i++) {
-        const d = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - (4 - i));
-        rows.push([{ date: d }, 'Projektarbeit', 8]);
-      }
-      rows.push([['Summe', { b: true }], '', ['=SUMME(C2:C6)', { b: true }]]);
-      return { rows, widths: [110, 220, 90], freeze: 1 };
-    },
-  },
-];
+// Spreadsheet templates live in sheet-templates.js (pure data + builder); this is the gallery list.
+export const SHEET_TEMPLATES = SHEET_TEMPLATE_LIST.map(t => ({ ...t, icon: 'ksheet', kind: 'xlsx' }));
 
 // ---------------- presentation themes (own designs) ----------------
 export const SLIDE_THEMES = [

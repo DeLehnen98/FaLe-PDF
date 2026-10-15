@@ -1,0 +1,178 @@
+{
+ "id": "praktikum-marketing",
+ "field": "praktikum",
+ "popular": true,
+ "name": "Praktikum Marketing",
+ "search": "praktikum marketing pflichtpraktikum marketing praktikant marketing kommunikation social media praktikum student",
+ "short": "Pflicht- oder freiwilliges Praktikum im Marketing.",
+ "desc": "Bewerbung für ein Praktikum im Marketing: zwei Musteranschreiben für Pflichtpraktikum und freiwilliges Praktikum, Lebenslauf für Studierende mit Foto-Platzhalter.",
+ "intro": "Für ein Marketingpraktikum zählen Neugier, gute Texte, Grundwissen über Kanäle und ein Gespür für Marken. Schreib, wann und wie lange du kannst, ob es ein Pflichtpraktikum ist, und zeig ein kleines Beispiel: ein Uniprojekt, ein Vereinskanal, eine eigene Idee für das Unternehmen.",
+ "lookFor": [
+  "Studium im Bereich Wirtschaft, Medien, Kommunikation oder ähnlich",
+  "Zeitraum und Art des Praktikums (Pflicht/freiwillig)",
+  "Erste Erfahrungen: Vereinskanal, Uniprojekt, Werkstudentenjob",
+  "Gute Texte, sichere Office-Kenntnisse",
+  "Interesse an der Marke"
+ ],
+ "letters": [
+  {
+   "label": "Pflichtpraktikum, 6 Monate",
+   "level": "praktikum",
+   "position": "Praktikantin im Marketing (Pflichtpraktikum, März bis August 2027)",
+   "to": {
+    "org": "Naturkosmetik Sonnenblume GmbH",
+    "sal": "n",
+    "street": "Am Mühlbach 4",
+    "city": "79102 Freiburg",
+    "contact": "Jule Berger"
+   },
+   "body": [
+    "meine Shampoo-Flasche von Ihnen steht seit zwei Jahren in unserer WG-Dusche, und meine drei Mitbewohnerinnen benutzen sie auch. Als ich auf Ihrer Website die Praktikumsstelle im Marketing gesehen habe, war die Entscheidung schnell gefallen.",
+    "Ich studiere im fünften Semester Betriebswirtschaft mit Schwerpunkt Marketing und muss im Sommersemester ein Pflichtpraktikum von sechs Monaten absolvieren. In einem Uniprojekt haben wir für ein Café eine Instagram-Kampagne entwickelt und umgesetzt; die Follower haben sich in acht Wochen verdoppelt, vor allem durch Videos vom Kuchenbacken. Ich schreibe gern und habe für unsere Fachschaftszeitung mehrere Artikel verfasst.",
+    "Mich würde interessieren, wie Sie Nachhaltigkeit glaubwürdig kommunizieren, ohne belehrend zu wirken. Ich freue mich auf Ihre Rückmeldung."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Notenübersicht",
+    "Bestätigung Pflichtpraktikum"
+   ]
+  },
+  {
+   "label": "Freiwilliges Praktikum nach dem Bachelor",
+   "level": "praktikum",
+   "position": "Praktikant im Content-Marketing (3 Monate)",
+   "to": {
+    "org": "Reiseportal Fernweh GmbH",
+    "sal": "none",
+    "street": "Rheinstraße 12",
+    "city": "79098 Freiburg"
+   },
+   "body": [
+    "zwischen Bachelor und Master habe ich drei Monate Zeit und möchte sie nutzen, um Praxis im Content-Marketing zu sammeln. Ihr Reiseportal lese ich seit Jahren, besonders die Wandertipps.",
+    "Ich habe Germanistik und Geographie studiert und schreibe seit drei Jahren einen kleinen Blog über Radtouren im Schwarzwald. Ich habe gelernt, Texte für Suchmaschinen zu strukturieren, Fotos zu bearbeiten und auszuwerten, welche Beiträge gelesen werden.",
+    "Ich kann vom 1. Juli bis 30. September in Vollzeit bei Ihnen arbeiten."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Bachelorzeugnis",
+    "Blog-Link"
+   ],
+   "from": [
+    "Paul Rieger",
+    "Sautierstraße 40",
+    "79104 Freiburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 2,
+  "name": "Lena Vogt",
+  "title": "Studentin BWL (Marketing)",
+  "street": "Stühlingerstraße 20",
+  "city": "79106 Freiburg",
+  "exp": [
+   [
+    "2025",
+    "2025",
+    "Uniprojekt Social-Media-Kampagne",
+    "Café Kornblume",
+    "Freiburg",
+    "- Konzept und Videos für Instagram\n- Verdopplung der Follower in acht Wochen"
+   ],
+   [
+    "2024",
+    "",
+    "Redaktion Fachschaftszeitung",
+    "Fachschaft Wirtschaft",
+    "Freiburg",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "10/2024",
+    "",
+    "B.Sc. Betriebswirtschaft, Schwerpunkt Marketing (5. Semester)",
+    "Hochschule Freiburg",
+    "Freiburg",
+    ""
+   ],
+   [
+    "2015",
+    "2024",
+    "Abitur",
+    "Gymnasium Emmendingen",
+    "Emmendingen",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Texten",
+    4
+   ],
+   [
+    "Social Media",
+    4
+   ],
+   [
+    "Bildbearbeitung",
+    3
+   ],
+   [
+    "Office-Programme",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Klettern, Fotografie"
+ },
+ "do": [
+  "Zeitraum und Art des Praktikums nennen.",
+  "Ein kleines Projekt mit Ergebnis.",
+  "Bezug zur Marke."
+ ],
+ "dont": [
+  "„Ich möchte Erfahrungen sammeln“ als einziger Grund.",
+  "Unklare Zeiträume.",
+  "Kopierte Texte."
+ ],
+ "questions": [
+  "Welche Kampagne von uns kennen Sie?",
+  "Was würden Sie an unserem Instagram-Auftritt ändern?",
+  "Was möchten Sie im Praktikum lernen?",
+  "Wie organisieren Sie mehrere Aufgaben gleichzeitig?"
+ ],
+ "pay": "Freiwillige Praktika über drei Monate fallen unter den Mindestlohn, Pflichtpraktika nicht. Frag nach der Vergütung, wenn sie nicht in der Anzeige steht.",
+ "faq": [
+  {
+   "q": "Muss ich angeben, dass es ein Pflichtpraktikum ist?",
+   "a": "Ja, das ist für das Unternehmen wichtig, unter anderem wegen der Vergütung. Leg die Bestätigung der Hochschule bei, wenn du sie hast."
+  },
+  {
+   "q": "Wie lang sollte das Anschreiben sein?",
+   "a": "Eine Seite, drei bis vier Absätze. Lieber ein konkretes Projekt als viele Eigenschaften."
+  }
+ ],
+ "related": [
+  "marketing-manager",
+  "social-media-manager",
+  "pflichtpraktikum-bwl",
+  "content-manager"
+ ]
+}

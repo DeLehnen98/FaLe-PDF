@@ -6,6 +6,7 @@
 import { el, icon, T, s, form, userError, ensureCss, isoDate, note, entryList, pdfPreview, drafts, local, checkRow } from '../lib/tpl-core.js';
 import { cvPdf, newCv, ACCENTS, SECTION_TITLES, SKILL_LEVELS, LANG_LEVELS, visibleSections, loadPhotoSource, cropBox, cropPhoto } from '../lib/tpl-cv.js';
 import { missingWarning } from '../lib/unifont.js';
+import { vorlageParam, loadVorlage, vorlagePhoto, vorlageNotice, vorlageMissing } from '../lib/arc-vorlage.js';
 
 ensureCss();
 
@@ -127,7 +128,7 @@ function cvStage(stage, state, ctx) {
   const saveDraft = () => {
     if (!saveOn) return;
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => { drafts.set(DRAFT_KEY, { v: JSON.parse(JSON.stringify(v)), photo: cropper.state(), savedAt: Date.now() }); }, 600);
+    saveTimer = setTimeout(() => { if (saveOn) drafts.set(DRAFT_KEY, { v: JSON.parse(JSON.stringify(v)), photo: cropper.state(), savedAt: Date.now() }); }, 600);
   };
   const changed = (key) => {
     v.photoRev = (v.photoRev || 0) + (key === 'photo' ? 1 : 0);
@@ -223,18 +224,41 @@ function cvStage(stage, state, ctx) {
   function rebuild() { build(); }
   build();
   // restore an opt-in draft
-  if (saveOn) {
-    drafts.get(DRAFT_KEY).then(async d => {
-      if (!d || !d.v) return;
-      for (const k of Object.keys(v)) delete v[k];
-      Object.assign(v, newCv(lang), d.v);
-      if (d.photo?.blob) await cropper.load(d.photo.blob, d.photo.crop);
-      cropper.setShape(v.photoShape || 'circle');
-      rebuild();
-      draftMsg.textContent = T(lang, { de: 'Gespeicherter Entwurf geladen.', en: 'Saved draft loaded.' });
-      changed('restore');
-    });
+  const restoreDraft = async d => {
+    if (!d || !d.v) return;
+    for (const k of Object.keys(v)) delete v[k];
+    Object.assign(v, newCv(lang), d.v);
+    if (d.photo?.blob) await cropper.load(d.photo.blob, d.photo.crop);
+    cropper.setShape(v.photoShape || 'circle');
+    rebuild();
+    draftMsg.textContent = T(lang, { de: 'Gespeicherter Entwurf geladen.', en: 'Saved draft loaded.' });
+    changed('restore');
+  };
+  // example CV from the Vorlagen-Archiv (?vorlage=<id>) – asks before it replaces a saved draft and never overwrites it
+  async function applyVorlage(savePref) {
+    const [t, d] = await Promise.all([loadVorlage(), savePref ? drafts.get(DRAFT_KEY) : null]);
+    if (!t?.data?.cv) { saveOn = savePref; stage.prepend(vorlageMissing(lang)); return restoreDraft(d); }
+    if (d?.v && !window.confirm(T(lang, { de: `Auf diesem Gerät ist ein Lebenslauf-Entwurf gespeichert${s(d.v.name) ? ` („${s(d.v.name)}“)` : ''}. Stattdessen das Beispiel öffnen? Dein Entwurf bleibt gespeichert.`, en: `A CV draft is saved on this device${s(d.v.name) ? ` (“${s(d.v.name)}”)` : ''}. Open the example instead? Your draft stays saved.` }))) { saveOn = savePref; return restoreDraft(d); }
+    saveOn = false; // the example never overwrites the saved draft – switching "save" on again is the user's choice
+    const { photo, ...cv } = t.data.cv;
+    for (const k of Object.keys(v)) delete v[k];
+    Object.assign(v, newCv(lang), cv, { date: isoDate() });
+    const blob = await vorlagePhoto(photo);
+    if (blob) await cropper.load(blob, { zoom: 1, cx: 0.5, cy: 0.45 });
+    cropper.setShape(v.photoShape || 'circle');
+    rebuild();
+    const person = formCol.querySelector('#tpl-acc-person');
+    if (person) person.open = true;
+    const own = el('label', { for: 'tpl-photo-file', class: 'wt-btn wt-btn-primary', id: 'arc-vl-photo' }, icon('image'), T(lang, { de: 'Eigenes Foto einsetzen', en: 'Use your own photo' }));
+    stage.prepend(vorlageNotice(lang, {
+      title: T(lang, { de: `Beispiel geladen: ${t.data.name}`, en: `Example loaded: ${t.data.name}` }),
+      body: T(lang, { de: 'Ersetze zuerst das gezeichnete Platzhalter-Porträt durch dein Foto (oder entferne es – ein Foto ist freiwillig). Danach überschreibst du Name, Stationen und Kenntnisse mit deinen Angaben.', en: 'First replace the illustrated placeholder with your photo (or remove it – a photo is optional). Then overwrite the name, jobs and skills with your own details.' }),
+    }, [own]));
+    if (d?.v) draftMsg.textContent = T(lang, { de: 'Dein gespeicherter Entwurf bleibt unverändert – Speichern ist für das Beispiel ausgeschaltet.', en: 'Your saved draft is unchanged – saving is switched off for the example.' });
+    changed('vorlage');
   }
+  if (vorlageParam()) { const savePref = saveOn; saveOn = false; applyVorlage(savePref); } // saving is held while the example loads
+  else if (saveOn) drafts.get(DRAFT_KEY).then(restoreDraft);
   if (!v.date) v.date = isoDate();
   changed('init');
   return { photo: () => cropper.export() };

@@ -7,7 +7,8 @@ import { el, icon, T, s, form, userError, ensureCss, isoDate, note, drafts, loca
 import { letterPdf } from '../lib/tpl-pdf.js';
 import { cvHead, cvPdf, ACCENTS, loadPhotoSource, cropPhoto } from '../lib/tpl-cv.js';
 import { missingWarning } from '../lib/unifont.js';
-import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS } from '../lib/tpl-letterui.js';
+import { baseModel, senderSection, recipientSection, signatureSection, previewSection, SENDER_FIELDS, SENDER_KEY } from '../lib/tpl-letterui.js';
+import { vorlageParam, loadVorlage, vorlageNotice, vorlageMissing } from '../lib/arc-vorlage.js';
 
 ensureCss();
 const CV_KEY = 'cv', CV_FLAG = 'fale-wt-cv-draft';
@@ -136,5 +137,24 @@ function stageFn(stage, state, ctx) {
     sender.sec, sig.sec), el('div', { class: 'tpl-side' }, pvs.sec)));
   pvs.refresh();
   ctx.refresh();
+  // example letter from the Vorlagen-Archiv (?vorlage=<id>&brief=<n>) – a remembered sender is kept, never overwritten
+  if (vorlageParam()) loadVorlage().then(t => {
+    const L = t?.data?.letters?.[t.letter], cl = L?.cl;
+    if (!cl) { stage.prepend(vorlageMissing(lang)); return; }
+    const saved = local.get(SENDER_KEY);
+    const keep = saved && typeof saved === 'object' ? SENDER_FIELDS.filter(k => s(v[k])) : [];
+    for (const [k, val] of Object.entries(cl)) if (!keep.includes(k)) v[k] = val;
+    v.letterDate = isoDate();
+    for (const k of Object.keys(cl)) {
+      const n = stage.querySelector(`#tpl-${k}`);
+      if (n && !keep.includes(k) && 'value' in n) n.value = v[k] ?? '';
+    }
+    renderDesign();
+    stage.prepend(vorlageNotice(lang, {
+      title: T(lang, { de: `Beispiel geladen: ${t.data.name} – ${L.label}`, en: `Example loaded: ${t.data.name} – ${L.label}` }),
+      body: T(lang, { de: `Ersetze Firma, Ansprechperson und vor allem den Text durch deine eigenen Erfahrungen – das Beispiel zeigt nur den Aufbau.${keep.length ? ' Deine gemerkten Absenderangaben bleiben erhalten.' : ''}`, en: `Replace the company, the contact and above all the text with your own experience – the example only shows the structure.${keep.length ? ' Your remembered sender details were kept.' : ''}` }),
+    }));
+    changed('vorlage');
+  });
   return { sig: () => sig.pad.export(), cvDraft: async () => cvDraft || (hasCvFlag ? await drafts.get(CV_KEY) : null) };
 }

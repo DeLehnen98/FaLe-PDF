@@ -1,0 +1,378 @@
+{
+ "id": "kauffrau-bueromanagement",
+ "field": "buero",
+ "popular": true,
+ "name": "Kaufmann/Kauffrau für Büromanagement",
+ "search": "bürokauffrau bürokaufmann büromanagement bürokraft sekretariat verwaltung office assistenz kaufmännische angestellte",
+ "short": "Büro, Sekretariat, Verwaltung – nach der Ausbildung, erfahren oder in Teilzeit.",
+ "desc": "Bewerbung als Kauffrau/Kaufmann für Büromanagement: drei Muster-Anschreiben für Berufsstart, Erfahrung und Teilzeit, fertiger Lebenslauf und Tipps zum Gespräch.",
+ "intro": "Im Büro zählen Organisation, sichere Software-Kenntnisse und ein freundlicher, klarer Ton am Telefon und in E-Mails. Arbeitgeber wollen wissen, welche Aufgaben du selbstständig übernommen hast – Rechnungsprüfung, Terminplanung, Personalakten, Einkauf – und mit welchen Programmen. Konkrete Beispiele schlagen allgemeine Begriffe wie „Organisationstalent“.",
+ "lookFor": [
+  "Abgeschlossene kaufmännische Ausbildung, gern mit Wahlqualifikationen, die zur Stelle passen",
+  "Sicherer Umgang mit Textverarbeitung, Tabellenkalkulation und einem ERP- oder Buchhaltungssystem",
+  "Selbstständige Organisation: Termine, Ablage, Korrespondenz, Reisekosten",
+  "Freundliche und präzise Kommunikation am Telefon und schriftlich",
+  "Diskretion im Umgang mit Personal- oder Kundendaten"
+ ],
+ "letters": [
+  {
+   "label": "Nach der Ausbildung im Handwerksbetrieb",
+   "level": "berufseinstieg",
+   "position": "Kauffrau für Büromanagement",
+   "to": {
+    "org": "Stadtwerke Lahntal GmbH",
+    "sal": "f",
+    "street": "Am Krekel 55",
+    "city": "35039 Marburg",
+    "contact": "Bergmann"
+   },
+   "body": [
+    "in einem Dachdeckerbetrieb mit 25 Leuten ist das Büro der Ort, an dem alles zusammenläuft: Kundenanrufe, Materialbestellungen, Stundenzettel, Rechnungen. Dort habe ich meine Ausbildung zur Kauffrau für Büromanagement gemacht und im Juni mit 1,7 abgeschlossen.",
+    "Ich habe Angebote nach Aufmaß geschrieben, Eingangsrechnungen geprüft und vorkontiert, die Stundenzettel für die Lohnabrechnung aufbereitet und die Baustellentermine im Kalender der Kolonnen gepflegt. Am Telefon war ich oft die erste Ansprechpartnerin für Kunden mit einem Wasserschaden nach Sturm – die wollen eine schnelle Antwort und keinen Rückruf in drei Tagen.",
+    "Bei den Stadtwerken reizt mich, dass ich im Kundenservice Verträge, Abschläge und Umzüge bearbeite. Mit Tabellen arbeite ich gern, auch mit SVERWEIS und Pivot-Auswertungen. Ich kann zum 1. September anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis IHK",
+    "Berufsschulzeugnis",
+    "Ausbildungszeugnis"
+   ],
+   "ref": "SW-26-311"
+  },
+  {
+   "label": "Mit Berufserfahrung, Wechsel in die Teamassistenz",
+   "level": "erfahren",
+   "position": "Teamassistenz im Vertrieb",
+   "to": {
+    "org": "Medica Labortechnik GmbH",
+    "sal": "m",
+    "street": "Pfaffenwaldring 4",
+    "city": "35043 Marburg",
+    "contact": "Ludwig"
+   },
+   "body": [
+    "neun Jahre Auftragsabwicklung in einem Großhandel haben mich gelehrt, dass gute Organisation unsichtbar ist: Wenn alles klappt, fällt niemandem auf, wie viel dahintersteckt. Für Ihr Vertriebsteam möchte ich genau diese Arbeit machen.",
+    "Ich betreue derzeit rund 300 Kunden in der Auftragserfassung, kläre Lieferverzögerungen mit Lieferanten und bereite monatlich die Umsatzauswertungen für die Vertriebsleitung vor. Die Reiseplanung für vier Außendienstler, inklusive Messen, liegt ebenfalls bei mir. Im letzten Jahr habe ich unsere Angebotsvorlagen überarbeitet, sodass ein Standardangebot jetzt in zehn statt in dreißig Minuten fertig ist.",
+    "Englisch spreche ich sicher, Telefonate mit unseren niederländischen und britischen Lieferanten führe ich täglich. Meine Kündigungsfrist beträgt drei Monate. Ein persönliches Gespräch wäre schön."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Nadine Krause",
+    "Biegenstraße 30",
+    "35037 Marburg"
+   ]
+  },
+  {
+   "label": "Teilzeit nach Elternzeit",
+   "level": "erfahren",
+   "position": "Bürokauffrau in Teilzeit (20 Stunden)",
+   "to": {
+    "org": "Steuerberatung Hahn & Kollegen",
+    "sal": "none",
+    "street": "Universitätsstraße 12",
+    "city": "35037 Marburg"
+   },
+   "body": [
+    "eine Stelle mit 20 Stunden am Vormittag, Aufgaben im Sekretariat und Mandantenkontakt: Ihre Anzeige liest sich, als hätte jemand meinen Wunschzettel gesehen.",
+    "Vor meiner Elternzeit war ich sieben Jahre Sachbearbeiterin in einer Hausverwaltung. Ich habe Nebenkostenabrechnungen vorbereitet, Handwerkertermine koordiniert und Eigentümerversammlungen organisiert, inklusive Protokoll. Fristen im Blick zu behalten und Menschen am Telefon zu beruhigen, die sich über ihre Abrechnung ärgern, gehörte zu meinem Alltag.",
+    "Mit einer DATEV-Oberfläche habe ich bislang nur in Ansätzen gearbeitet. Für den Wiedereinstieg habe ich deshalb einen Grundkurs an der Volkshochschule belegt, den ich im Dezember abschließe. Ab Januar bin ich montags bis freitags von 8 bis 12 Uhr verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Katharina Wolff",
+    "Weidenhäuser Straße 41",
+    "35037 Marburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a17",
+  "design": "modern",
+  "accent": 0,
+  "name": "Paula Richter",
+  "title": "Kauffrau für Büromanagement",
+  "street": "Ketzerbach 19",
+  "city": "35037 Marburg",
+  "exp": [
+   [
+    "08/2023",
+    "06/2026",
+    "Auszubildende Kauffrau für Büromanagement",
+    "Dachdeckerei Schreiber GmbH",
+    "Marburg",
+    "- Angebote und Rechnungen nach Aufmaß\n- Eingangsrechnungen prüfen und vorkontieren\n- Stundenzettel für die Lohnabrechnung\n- Kundentelefon und Terminplanung der Kolonnen"
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "06/2026",
+    "Ausbildung zur Kauffrau für Büromanagement, IHK-Abschluss 1,7",
+    "Käthe-Kollwitz-Schule",
+    "Marburg",
+    "Wahlqualifikationen: Auftragssteuerung, kaufmännische Steuerung und Kontrolle"
+   ],
+   [
+    "2014",
+    "2023",
+    "Fachhochschulreife",
+    "Adolf-Reichwein-Schule",
+    "Marburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Tabellenkalkulation für Fortgeschrittene",
+    "Volkshochschule Marburg",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Office-Programme",
+    5
+   ],
+   [
+    "Tabellenkalkulation (SVERWEIS, Pivot)",
+    4
+   ],
+   [
+    "Rechnungsprüfung",
+    4
+   ],
+   [
+    "Terminplanung",
+    4
+   ],
+   [
+    "Telefon und Kundenkontakt",
+    5
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Spanisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Handball, Vorstand im Jugendverein"
+ },
+ "do": [
+  "Nenn Aufgaben, die du selbstständig erledigst, und die Programme dazu.",
+  "Bring ein Beispiel, bei dem du einen Ablauf verbessert hast.",
+  "Passe die Schwerpunkte an die Stelle an: Buchhaltung, Personal, Vertrieb, Empfang."
+ ],
+ "dont": [
+  "„Ich bin organisiert und kommunikativ“ ohne Beleg.",
+  "Alle Programme aufzählen, die du je gesehen hast.",
+  "Rechtschreibfehler – im Büro fallen sie doppelt auf."
+ ],
+ "questions": [
+  "Wie organisieren Sie Ihren Tag, wenn drei Leute gleichzeitig etwas wollen?",
+  "Welche Tabellenfunktionen nutzen Sie regelmäßig?",
+  "Wie reagieren Sie auf einen verärgerten Anrufer?",
+  "Was haben Sie in Ihrer Ausbildung am liebsten gemacht?"
+ ],
+ "faq": [
+  {
+   "q": "Bürokauffrau oder Kauffrau für Büromanagement?",
+   "a": "Seit 2014 heißt die Ausbildung Kauffrau bzw. Kaufmann für Büromanagement. Ältere Abschlüsse (Bürokauffrau, Kauffrau für Bürokommunikation) nennst du so, wie sie auf deinem Zeugnis stehen."
+  },
+  {
+   "q": "Welche Software sollte im Lebenslauf stehen?",
+   "a": "Die, mit der du wirklich arbeiten kannst – Textverarbeitung, Tabellen, E-Mail und Kalender, dazu Fachsoftware wie ein ERP-System oder ein Buchhaltungsprogramm. Markennamen kannst du nennen, wenn die Anzeige sie fordert."
+  }
+ ],
+ "related": [
+  "sachbearbeiter",
+  "assistenz-geschaeftsfuehrung",
+  "ausbildung-bueromanagement",
+  "buchhalter"
+ ],
+ "en": {
+  "slug": "office-administrator",
+  "name": "Office administrator",
+  "search": "office administrator administrative assistant receptionist office manager admin",
+  "short": "Office admin, team assistant or part-time admin roles.",
+  "desc": "Office administrator CV and cover letter examples: two fully written letters for first jobs and experienced admins, plus a ready CV you can open and edit.",
+  "intro": "Employers hiring for admin roles want to see that you keep things moving: diaries, invoices, orders, phone calls and the hundred small jobs nobody else notices. Show which tasks you handle on your own and which software you use daily.",
+  "lookFor": [
+   "Reliable organisation of diaries, filing and correspondence",
+   "Confident use of word processing, spreadsheets and email",
+   "Experience with invoices, purchase orders or a finance system",
+   "A clear, friendly manner on the phone and in writing",
+   "Discretion with personal and customer data"
+  ],
+  "letters": [
+   {
+    "label": "First admin job after college",
+    "level": "berufseinstieg",
+    "position": "Office administrator",
+    "to": {
+     "org": "Greenway Housing Association",
+     "sal": "f",
+     "street": "40 Station Road",
+     "city": "Leeds LS1 4BT",
+     "contact": "Okoro"
+    },
+    "body": [
+     "I am writing about the office administrator role advertised on your website. I have just finished a business administration course and spent my placement year in the office of a building contractor, where the office is the place everything passes through.",
+     "During the placement I booked site visits, chased supplier invoices, kept the job sheets up to date and answered the main phone line. When a storm hit in February we had over sixty calls in one morning; I set up a simple spreadsheet so every caller got a reference and a call back the same day. My manager still uses it.",
+     "I would like to bring that care to tenants and colleagues at Greenway. I can start in September and would welcome the chance to talk."
+    ],
+    "att": [
+     "CV",
+     "Course certificate",
+     "Placement reference"
+    ]
+   },
+   {
+    "label": "Experienced administrator, part-time",
+    "level": "erfahren",
+    "position": "Part-time administrator (20 hours)",
+    "to": {
+     "org": "Hartley Accountants",
+     "sal": "none",
+     "street": "7 Park Square",
+     "city": "Leeds LS1 2NE"
+    },
+    "body": [
+     "Your advert for a morning administrator fits what I can offer: twenty hours a week, Monday to Friday, with eight years’ experience in a busy lettings office behind me.",
+     "I prepared tenancy paperwork, handled deposits and rent reminders, arranged repairs with contractors and kept a strict eye on deadlines. Most of my day was spent on the phone with tenants and landlords who were not always happy – I am good at calming people down and getting the facts straight.",
+     "I have taken a refresher course in accounting software this autumn so I can support your team from day one. I look forward to hearing whether there is a chance to meet."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ],
+    "from": [
+     "Helen Moore",
+     "18 Ash Grove",
+     "Leeds LS6 1AZ"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a17",
+   "design": "modern",
+   "accent": 0,
+   "name": "Grace Bennett",
+   "title": "Office administrator",
+   "street": "25 Kirkstall Lane",
+   "city": "Leeds LS5 3BE",
+   "exp": [
+    [
+     "09/2025",
+     "06/2026",
+     "Office assistant (placement)",
+     "Northfield Construction Ltd",
+     "Leeds",
+     "- Diary and site visit bookings\n- Supplier invoices and purchase orders\n- Main phone line and enquiries"
+    ]
+   ],
+   "edu": [
+    [
+     "2024",
+     "2026",
+     "Business administration course (level 3)",
+     "Leeds City College",
+     "Leeds",
+     ""
+    ],
+    [
+     "2019",
+     "2024",
+     "Secondary school",
+     "Roundhay School",
+     "Leeds",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2026",
+     "Spreadsheets for business (advanced)",
+     "Online course",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Word processing and email",
+     5
+    ],
+    [
+     "Spreadsheets",
+     4
+    ],
+    [
+     "Invoice processing",
+     3
+    ],
+    [
+     "Diary management",
+     4
+    ],
+    [
+     "Customer service",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "French",
+     "A2"
+    ]
+   ],
+   "hobbies": "Netball, volunteering at a food bank"
+  },
+  "do": [
+   "List tasks you do on your own, with the software.",
+   "Give one example of something you improved.",
+   "Match your examples to the job advert."
+  ],
+  "dont": [
+   "Write “organised and hard-working” without proof.",
+   "Send a letter full of typos – in admin it counts double.",
+   "List every program you have ever opened."
+  ],
+  "questions": [
+   "How do you prioritise when everyone needs something now?",
+   "Which spreadsheet functions do you use?",
+   "Tell us about a difficult caller.",
+   "What would you improve in a typical office?"
+  ],
+  "faq": [
+   {
+    "q": "How long should my cover letter be?",
+    "a": "Three or four short paragraphs on one page. Say why this role, what you bring with one or two examples, and when you can start."
+   }
+  ]
+ }
+}

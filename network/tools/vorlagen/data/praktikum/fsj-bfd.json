@@ -1,0 +1,170 @@
+{
+ "id": "fsj-bfd",
+ "field": "praktikum",
+ "name": "FSJ / Bundesfreiwilligendienst",
+ "search": "fsj freiwilliges soziales jahr bfd bundesfreiwilligendienst bufdi freiwilligendienst bewerbung nach der schule",
+ "short": "Freiwilligendienst nach der Schule oder als Orientierung.",
+ "desc": "Bewerbung für ein FSJ oder den Bundesfreiwilligendienst: zwei Musteranschreiben für Krankenhaus und Kita, Lebenslauf für Schulabgänger mit Foto-Platzhalter.",
+ "intro": "Für ein FSJ oder den Bundesfreiwilligendienst bewirbst du dich bei einem Träger oder direkt bei der Einsatzstelle. Erwartet wird kein Fachwissen, sondern Interesse, Zuverlässigkeit und ein ehrlicher Grund, warum du dich engagieren willst.",
+ "lookFor": [
+  "Ein ehrlicher Grund für den Freiwilligendienst",
+  "Wunschbereich: Krankenhaus, Kita, Behindertenhilfe, Sport, Kultur, Umwelt",
+  "Zeitraum",
+  "Erste Erfahrungen mit Menschen",
+  "Zuverlässigkeit"
+ ],
+ "letters": [
+  {
+   "label": "FSJ im Krankenhaus nach dem Abitur",
+   "level": "praktikum",
+   "position": "Freiwilliges Soziales Jahr im Krankenhaus (ab September 2027)",
+   "to": {
+    "org": "Diakonie Freiwilligendienste",
+    "sal": "none",
+    "street": "Lindenstraße 5",
+    "city": "30159 Hannover"
+   },
+   "body": [
+    "Medizin, Pflege oder etwas ganz anderes? Nach dem Abitur weiß ich noch nicht, was ich studieren oder lernen will. Ein Jahr im Krankenhaus soll mir helfen, das herauszufinden.",
+    "Ich habe in der Oberstufe zwei Wochen Praktikum in einer Rettungswache gemacht und bin seit drei Jahren beim Schulsanitätsdienst. Mir macht es nichts aus, früh aufzustehen oder am Wochenende zu arbeiten. Ich höre gut zu und bleibe ruhig, wenn etwas passiert.",
+    "Am liebsten wäre mir eine Einsatzstelle in Hannover, auf einer internistischen oder chirurgischen Station."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Letztes Zeugnis",
+    "Bescheinigung Schulsanitätsdienst"
+   ]
+  },
+  {
+   "label": "BFD in der Kita mit 27",
+   "level": "praktikum",
+   "position": "Bundesfreiwilligendienst in einer Kindertagesstätte",
+   "to": {
+    "org": "Kita Regenbogen",
+    "sal": "f",
+    "street": "Bödekerstraße 40",
+    "city": "30161 Hannover",
+    "contact": "Lange"
+   },
+   "body": [
+    "mit 27 und nach einer Ausbildung als Bürokauffrau habe ich gemerkt, dass ich nicht den ganzen Tag am Schreibtisch sitzen möchte. Bevor ich eine Ausbildung zur Erzieherin beginne, möchte ich ein Jahr Bundesfreiwilligendienst in einer Kita machen.",
+    "Ich bin Tante von drei Nichten und Neffen und betreue sie regelmäßig. Ich singe im Chor, bastle gern und habe keine Angst vor Matsch. Aus dem Büro bringe ich Organisation und Pünktlichkeit mit.",
+    "Ich könnte ab August beginnen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Svenja Koch",
+    "Lister Meile 80",
+    "30161 Hannover"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "modern",
+  "accent": 1,
+  "name": "Leon Wagner",
+  "title": "Abiturient",
+  "street": "Podbielskistraße 100",
+  "city": "30177 Hannover",
+  "exp": [
+   [
+    "2023",
+    "",
+    "Schulsanitätsdienst",
+    "Gymnasium Lister Meile",
+    "Hannover",
+    "- Erste Hilfe bei Schulveranstaltungen"
+   ],
+   [
+    "03/2025",
+    "03/2025",
+    "Praktikum Rettungswache (2 Wochen)",
+    "Rettungsdienst Hannover",
+    "Hannover",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2018",
+    "2027",
+    "Gymnasium (voraussichtlich Abitur)",
+    "Gymnasium Lister Meile",
+    "Hannover",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Sanitätskurs",
+    "Johanniter",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Erste Hilfe",
+    4
+   ],
+   [
+    "Zuverlässigkeit",
+    5
+   ],
+   [
+    "Kommunikation",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Spanisch",
+    "A2"
+   ]
+  ],
+  "hobbies": "Schwimmen, Gitarre"
+ },
+ "do": [
+  "Ehrlich sagen, warum du den Dienst machst.",
+  "Wunschbereich und Zeitraum nennen.",
+  "Erfahrungen mit Menschen beschreiben."
+ ],
+ "dont": [
+  "„Ich weiß nicht, was ich machen soll“ ohne weitere Erklärung.",
+  "Zu formell oder zu locker.",
+  "Den Zeitraum vergessen."
+ ],
+ "questions": [
+  "Warum möchten Sie einen Freiwilligendienst machen?",
+  "Was erwarten Sie von dem Jahr?",
+  "Wie gehen Sie mit schwierigen Situationen um?",
+  "Was machen Sie danach?"
+ ],
+ "faq": [
+  {
+   "q": "FSJ oder BFD – was ist der Unterschied?",
+   "a": "Das FSJ ist für Menschen bis 27, der Bundesfreiwilligendienst steht allen Altersgruppen offen. Die Arbeit ist sehr ähnlich, die Bewerbung läuft über einen Träger oder die Einsatzstelle."
+  }
+ ],
+ "related": [
+  "ausbildung-pflegefachfrau",
+  "erzieherin",
+  "praktikum-erzieher",
+  "heilerziehungspfleger"
+ ]
+}

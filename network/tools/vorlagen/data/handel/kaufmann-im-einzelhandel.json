@@ -1,0 +1,383 @@
+{
+ "id": "kaufmann-im-einzelhandel",
+ "field": "handel",
+ "popular": true,
+ "name": "Kaufmann/Kauffrau im Einzelhandel",
+ "search": "kauffrau einzelhandel einzelhandelskaufmann einzelhandelskauffrau verkauf laden filiale handel textil drogerie elektronikmarkt",
+ "short": "Verkauf, Ware und Kasse – nach der Ausbildung, erfahren oder als Stellvertretung.",
+ "desc": "Bewerbung als Kaufmann/Kauffrau im Einzelhandel: drei Muster-Anschreiben für Ausgelernte, Erfahrene und stellvertretende Filialleitung, Lebenslauf und Gesprächsfragen.",
+ "intro": "Im Einzelhandel wollen Arbeitgeber sehen, dass du gern verkaufst, Ware im Blick hast und Verantwortung übernimmst – an der Kasse, bei der Inventur oder beim Einarbeiten von Aushilfen. Zahlen wie Umsatzsteigerung, Inventurdifferenzen oder Kundenbewertungen sind im Handel gut zu verwenden.",
+ "lookFor": [
+  "Abgeschlossene Ausbildung als Kaufmann/-frau im Einzelhandel oder Verkäufer/in",
+  "Beratungs- und Verkaufsstärke, auch Zusatzverkauf",
+  "Warenwirtschaft: Bestellung, Warenannahme, Inventur, Preisauszeichnung",
+  "Kassenverantwortung und Kassenabschluss",
+  "Bereitschaft zu Spät- und Samstagsdiensten"
+ ],
+ "letters": [
+  {
+   "label": "Ausgelernte Kauffrau, Wechsel in den Sporthandel",
+   "level": "berufseinstieg",
+   "position": "Kauffrau im Einzelhandel für die Laufabteilung",
+   "to": {
+    "org": "Sport Jäger GmbH",
+    "sal": "m",
+    "street": "Königstraße 30",
+    "city": "70173 Stuttgart",
+    "contact": "Jäger"
+   },
+   "body": [
+    "dreimal pro Woche laufe ich am Neckar, und seit zwei Jahren berate ich Freunde, welche Schuhe sie kaufen sollen. Jetzt möchte ich das beruflich machen: in Ihrer Laufabteilung.",
+    "Meine Ausbildung zur Kauffrau im Einzelhandel habe ich im Juli in einem Schuhgeschäft abgeschlossen. Dort habe ich Kundinnen beraten, Bestellungen für die Saison mit vorbereitet, Ware angenommen und ausgezeichnet und die Kasse geführt, auch beim Abschluss am Abend. In meinem letzten Ausbildungsjahr hatte ich die Verantwortung für das Kinderschuh-Regal und habe dort mit einer neuen Präsentation den Absatz in der Saison deutlich erhöht.",
+    "Eine Laufbandanalyse kenne ich bisher nur als Kundin, das Prinzip aber gut. Ich arbeite gern samstags und kann ab dem 1. September bei Ihnen anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Ausbildungszeugnis"
+   ]
+  },
+  {
+   "label": "Erfahrener Verkäufer im Elektrofachhandel",
+   "level": "erfahren",
+   "position": "Kaufmann im Einzelhandel – Haushaltsgeräte",
+   "to": {
+    "org": "Elektro Fritz Fachmarkt",
+    "sal": "none",
+    "street": "Heilbronner Straße 200",
+    "city": "70191 Stuttgart"
+   },
+   "body": [
+    "eine Waschmaschine verkauft man nicht über den Preis, sondern über die Frage, wie viele Leute im Haushalt leben und was sie waschen. Das habe ich in sieben Jahren Fachhandel gelernt, und deshalb verkaufe ich mehr Garantieverlängerungen und weniger Rückläufer als die meisten im Team.",
+    "Ich berate zu Weißware und Kleingeräten, kümmere mich um Lieferungen und Anschlüsse und bearbeite Reklamationen mit den Herstellern. Im letzten Jahr hat mich die Filialleitung zum Abteilungsverantwortlichen für Haushaltsgeräte gemacht; ich plane seitdem die Bestellungen für meine Abteilung und arbeite zwei Aushilfen ein.",
+    "Mein jetziger Markt wird zum Jahresende geschlossen. Ich bin flexibel bei Schichten und freue mich über eine Einladung zum Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Marko Petrović",
+    "Pragstraße 12",
+    "70376 Stuttgart"
+   ]
+  },
+  {
+   "label": "Bewerbung als stellvertretende Filialleitung",
+   "level": "erfahren",
+   "position": "Stellvertretende Filialleiterin",
+   "to": {
+    "org": "Naturkost Grünkorn GmbH",
+    "sal": "f",
+    "street": "Marienplatz 4",
+    "city": "70178 Stuttgart",
+    "contact": "Ebner"
+   },
+   "body": [
+    "in meinem Drogeriemarkt bin ich inzwischen diejenige, die abends den Schlüssel hat, die Aushilfen einteilt und die Inventur organisiert. Den Titel „stellvertretende Filialleitung“ habe ich nicht, die Aufgaben schon. Bei Ihnen möchte ich beides zusammenbringen.",
+    "Ich erstelle die Wochenpläne für ein Team von zwölf Leuten, bestelle Ware nach Abverkauf und führe die Kassenabschlüsse. Die letzte Inventur hatte eine Differenz von unter einem Prozent. Mit Bio- und Naturkosmetik kenne ich mich aus, weil unser Markt das Sortiment vor drei Jahren deutlich ausgebaut hat und ich die Schulungen dafür übernommen habe.",
+    "Dass Ihr Markt regionale Lieferanten hat und die Mitarbeitenden bei der Sortimentsauswahl mitreden, finde ich spannend. Meine Kündigungsfrist beträgt einen Monat. Ich freue mich, Sie kennenzulernen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "IHK-Zeugnis",
+    "Arbeitszeugnisse"
+   ],
+   "from": [
+    "Svenja Kurz",
+    "Böblinger Straße 88",
+    "70199 Stuttgart"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a11",
+  "design": "modern",
+  "accent": 3,
+  "name": "Selin Arslan",
+  "title": "Kauffrau im Einzelhandel",
+  "street": "Neckarstraße 54",
+  "city": "70190 Stuttgart",
+  "exp": [
+   [
+    "08/2023",
+    "07/2026",
+    "Auszubildende Kauffrau im Einzelhandel",
+    "Schuhhaus Bauer",
+    "Stuttgart",
+    "- Kundenberatung und Verkauf\n- Warenannahme, Auszeichnung, Saisonbestellung\n- Kasse und Kassenabschluss\n- Verantwortung für das Kinderschuh-Sortiment"
+   ],
+   [
+    "2021",
+    "2023",
+    "Aushilfe (Minijob)",
+    "Bäckerei Merz",
+    "Stuttgart",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "08/2023",
+    "07/2026",
+    "Ausbildung zur Kauffrau im Einzelhandel",
+    "Berufsschule für Handel",
+    "Stuttgart",
+    ""
+   ],
+   [
+    "2013",
+    "2023",
+    "Realschulabschluss",
+    "Realschule Ostheim",
+    "Stuttgart",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Verkaufstraining",
+    "Handelsverband",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Kundenberatung",
+    5
+   ],
+   [
+    "Warenwirtschaft",
+    4
+   ],
+   [
+    "Kasse",
+    5
+   ],
+   [
+    "Warenpräsentation",
+    4
+   ],
+   [
+    "Inventur",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Türkisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Laufen (Halbmarathon), Kochen"
+ },
+ "do": [
+  "Nenn Zahlen aus dem Verkauf, wenn du sie kennst.",
+  "Zeig Sortimentswissen für den Laden, bei dem du dich bewirbst.",
+  "Schreib, welche Verantwortung du schon übernommen hast."
+ ],
+ "dont": [
+  "„Ich arbeite gern mit Menschen“ ohne Beispiel.",
+  "Samstagsarbeit ausschließen, ohne es offen zu sagen.",
+  "Über frühere Kunden lästern."
+ ],
+ "questions": [
+  "Wie verkaufen Sie einem Kunden, der „nur schauen“ will, trotzdem etwas Passendes?",
+  "Was tun Sie bei einer Kassendifferenz?",
+  "Wie reagieren Sie auf einen Ladendiebstahl?",
+  "Welche Produkte aus unserem Sortiment kennen Sie?"
+ ],
+ "pay": "Im Einzelhandel gibt es regionale Tarifverträge, an die nicht alle Händler gebunden sind. Frag nach Tarifbindung, Zuschlägen für Spätdienste und Personalrabatt.",
+ "faq": [
+  {
+   "q": "Verkäuferin oder Kauffrau im Einzelhandel – was ist der Unterschied?",
+   "a": "Die Ausbildung zur Verkäuferin dauert zwei Jahre, zur Kauffrau im Einzelhandel drei. Im dritten Jahr kommen kaufmännische Themen wie Personal, Controlling und Warenwirtschaft dazu – das zählt besonders bei Stellen mit Verantwortung."
+  },
+  {
+   "q": "Soll ich mich persönlich im Laden bewerben?",
+   "a": "Bei kleineren Geschäften kommt das gut an – mit Mappe, freundlich, zu einer ruhigen Uhrzeit. Bei Ketten läuft die Bewerbung meist über ein Onlineportal."
+  }
+ ],
+ "related": [
+  "verkaeuferin",
+  "filialleiter",
+  "ausbildung-einzelhandel",
+  "kassiererin"
+ ],
+ "en": {
+  "slug": "retail-sales-assistant",
+  "name": "Retail sales assistant",
+  "search": "retail sales assistant shop assistant store associate retail customer advisor",
+  "short": "Shop floor, tills and stock – first job or experienced.",
+  "desc": "Retail sales assistant CV and cover letter examples: letters for a first retail job and an experienced sales assistant, plus a ready-to-edit CV.",
+  "intro": "Retailers want people who enjoy helping customers, keep the shop floor tidy, handle cash accurately and stay friendly in the Saturday rush. Mention products you know, sales you have made and any responsibility you have taken on.",
+  "lookFor": [
+   "Friendly, confident service on the shop floor",
+   "Accurate cash handling and till experience",
+   "Stock work: deliveries, replenishment, stock counts",
+   "Product knowledge for the store",
+   "Weekend and holiday availability"
+  ],
+  "letters": [
+   {
+    "label": "First retail job",
+    "level": "berufseinstieg",
+    "position": "Sales assistant (part-time)",
+    "to": {
+     "org": "Northern Trail Outdoor",
+     "sal": "f",
+     "street": "12 High Street",
+     "city": "Keswick CA12 5AB",
+     "contact": "Graham"
+    },
+    "body": [
+     "I spend most weekends on the fells, so when a friend needs boots or a waterproof, I am the one they ask. I would like to bring that enthusiasm to your shop floor.",
+     "I have two years of Saturday work in a café, where I ran the till, handled cash at closing and dealt with queues out of the door in summer. I am quick to learn product details and happy to tell a customer honestly when a cheaper option is the better choice.",
+     "I can work weekends and school holidays and up to 20 hours during term. A trial shift would suit me any Saturday."
+    ],
+    "att": [
+     "CV"
+    ]
+   },
+   {
+    "label": "Experienced sales assistant",
+    "level": "erfahren",
+    "position": "Senior sales assistant – home appliances",
+    "to": {
+     "org": "Hartwell Electricals",
+     "sal": "none",
+     "street": "Retail Park, Unit 7",
+     "city": "Carlisle CA1 2NP"
+    },
+    "body": [
+     "You do not sell a washing machine on price; you sell it by asking how many people live in the house and what they wash. Seven years in electrical retail have taught me that, and it shows in my low return rate.",
+     "I advise on large and small appliances, arrange deliveries and installations and handle warranty claims with manufacturers. Last year I became responsible for ordering in my department and training two new colleagues.",
+     "My current store closes at the end of the year. I am flexible with shifts and would welcome an interview."
+    ],
+    "att": [
+     "CV",
+     "Reference"
+    ],
+    "from": [
+     "Daniel Hughes",
+     "9 Warwick Road",
+     "Carlisle CA1 1DH"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a11",
+   "design": "modern",
+   "accent": 3,
+   "name": "Ellie Robinson",
+   "title": "Sales assistant",
+   "street": "3 Lake Road",
+   "city": "Keswick CA12 5BX",
+   "exp": [
+    [
+     "06/2024",
+     "",
+     "Café assistant (Saturdays)",
+     "The Old Mill Café",
+     "Keswick",
+     "- Till and cash-up\n- Customer service at busy times"
+    ],
+    [
+     "2023",
+     "2023",
+     "Volunteer, charity shop",
+     "Lakes Hospice Shop",
+     "Keswick",
+     "- Sorting stock, window displays"
+    ]
+   ],
+   "edu": [
+    [
+     "2019",
+     "2026",
+     "Secondary school and sixth form",
+     "Keswick School",
+     "Keswick",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Food hygiene certificate",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Customer service",
+     4
+    ],
+    [
+     "Cash handling",
+     4
+    ],
+    [
+     "Outdoor equipment knowledge",
+     4
+    ],
+    [
+     "Visual merchandising",
+     3
+    ],
+    [
+     "Teamwork",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "German",
+     "A2"
+    ]
+   ],
+   "hobbies": "Fell walking, climbing"
+  },
+  "do": [
+   "Show product knowledge for that shop.",
+   "Give numbers if you have them.",
+   "State your availability clearly."
+  ],
+  "dont": [
+   "Say you “love people” without an example.",
+   "Leave weekends unclear.",
+   "Criticise previous customers."
+  ],
+  "questions": [
+   "How would you approach a customer who is just browsing?",
+   "What would you do if your till was short?",
+   "Tell us about a time you went beyond what was expected.",
+   "Which of our products do you know?"
+  ],
+  "faq": [
+   {
+    "q": "Should I hand my CV in at the shop?",
+    "a": "For independent shops, yes – at a quiet time, with a short note. Chains usually ask you to apply online, but a friendly visit can still help."
+   }
+  ]
+ }
+}

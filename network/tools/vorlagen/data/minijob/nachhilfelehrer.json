@@ -1,0 +1,158 @@
+{
+ "id": "nachhilfelehrer",
+ "field": "minijob",
+ "name": "Nachhilfelehrer/in",
+ "search": "nachhilfelehrer nachhilfelehrerin nachhilfe nachhilfeinstitut lernbegleiter nachhilfe mathe englisch student nebenjob",
+ "short": "Nachhilfe im Institut oder privat – neben Schule oder Studium.",
+ "desc": "Bewerbung als Nachhilfelehrer/in: zwei Musteranschreiben für Studentin und Oberstufenschüler, Lebenslauf mit Foto-Platzhalter und typische Fragen im Gespräch.",
+ "intro": "Nachhilfeinstitute suchen Leute, die gut erklären können, Geduld haben und zuverlässig sind. Nenn Fächer, Klassenstufen, deine Noten in diesen Fächern und wann du kannst. Ein Beispiel, wie du jemandem geholfen hast, wirkt besser als jede Eigenschaft.",
+ "lookFor": [
+  "Gute Noten in den angebotenen Fächern",
+  "Erfahrung im Erklären",
+  "Geduld",
+  "Feste Zeiten pro Woche",
+  "Erweitertes Führungszeugnis (oft verlangt)"
+ ],
+ "letters": [
+  {
+   "label": "Studentin für Mathe und Physik",
+   "level": "minijob",
+   "position": "Nachhilfelehrerin Mathematik und Physik",
+   "to": {
+    "org": "Lernstudio Kluge Köpfe",
+    "sal": "none",
+    "street": "Bahnhofstraße 30",
+    "city": "35037 Marburg"
+   },
+   "body": [
+    "mein kleiner Bruder hat in der achten Klasse in Mathe eine Fünf geschrieben. Ein halbes Jahr später war es eine Drei, und das lag an unseren Abenden am Küchentisch. Da habe ich gemerkt, dass ich gut erklären kann.",
+    "Ich studiere Physik im dritten Semester und hatte im Abitur in Mathe und Physik jeweils 14 Punkte. Ich kann Schülerinnen und Schüler der Klassen 5 bis 13 unterrichten, montags und mittwochs nachmittags sowie freitags.",
+    "Ein erweitertes Führungszeugnis bringe ich mit."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abiturzeugnis",
+    "Immatrikulationsbescheinigung"
+   ]
+  },
+  {
+   "label": "Schüler der Oberstufe für Englisch",
+   "level": "minijob",
+   "position": "Nachhilfelehrer Englisch (Unterstufe)",
+   "to": {
+    "org": "Nachhilfe Plus",
+    "sal": "none",
+    "street": "Universitätsstraße 5",
+    "city": "35037 Marburg"
+   },
+   "body": [
+    "ich gehe in die zwölfte Klasse und habe ein Jahr in Kanada an einer Highschool verbracht. Seitdem fällt mir Englisch leicht, und ich möchte das an Jüngere weitergeben.",
+    "Schon jetzt helfe ich zwei Sechstklässlern aus meiner Nachbarschaft bei den Vokabeln und Grammatik. Ich versuche, es lustig zu machen: mit Songtexten und kurzen Videos. Es funktioniert.",
+    "Ich kann dienstags und donnerstags ab 15 Uhr."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnis"
+   ],
+   "from": [
+    "Jakob Herrmann",
+    "Am Grün 20",
+    "35037 Marburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "modern",
+  "accent": 2,
+  "name": "Lisa Herzog",
+  "title": "Studentin Physik",
+  "street": "Biegenstraße 10",
+  "city": "35037 Marburg",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Private Nachhilfe Mathematik",
+    "Familie und Nachbarschaft",
+    "Marburg",
+    "- Klassen 7 bis 10"
+   ]
+  ],
+  "edu": [
+   [
+    "10/2025",
+    "",
+    "B.Sc. Physik (3. Semester)",
+    "Philipps-Universität",
+    "Marburg",
+    ""
+   ],
+   [
+    "2016",
+    "2025",
+    "Abitur (Mathe und Physik je 14 Punkte)",
+    "Gymnasium Philippinum",
+    "Marburg",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Mathematik",
+    5
+   ],
+   [
+    "Physik",
+    5
+   ],
+   [
+    "Erklären",
+    4
+   ],
+   [
+    "Geduld",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ]
+  ],
+  "hobbies": "Astronomie, Volleyball"
+ },
+ "do": [
+  "Fächer, Klassenstufen, Noten nennen.",
+  "Ein Erfolgsbeispiel erzählen.",
+  "Feste Zeiten angeben."
+ ],
+ "dont": [
+  "Fächer anbieten, in denen du selbst unsicher bist.",
+  "Unklare Verfügbarkeit.",
+  "Zu lange Texte."
+ ],
+ "questions": [
+  "Wie erklären Sie Bruchrechnung?",
+  "Was tun Sie, wenn ein Kind keine Lust hat?",
+  "Welche Klassenstufen können Sie unterrichten?",
+  "Wie lange möchten Sie bei uns bleiben?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Minijob ein Anschreiben?",
+   "a": "Nicht immer. Oft reicht eine kurze E-Mail mit Lebenslauf. Ein paar freundliche Sätze, wann du kannst und warum du passt, heben dich aber von anderen ab."
+  }
+ ],
+ "related": [
+  "lehrer-quereinstieg",
+  "schulbegleiter",
+  "werkstudent-it",
+  "aushilfe-buero"
+ ]
+}

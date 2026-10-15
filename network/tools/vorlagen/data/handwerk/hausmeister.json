@@ -1,0 +1,200 @@
+{
+ "id": "hausmeister",
+ "field": "handwerk",
+ "popular": true,
+ "name": "Hausmeister/in",
+ "search": "hausmeisterin haustechniker objektbetreuer facility hauswart gebaeudetechnik schulhausmeister hausmeisterservice",
+ "short": "Wohnanlage, Schule oder Firma – mit Handwerksberuf oder als Quereinsteiger.",
+ "desc": "Bewerbung als Hausmeister/in: zwei ausformulierte Anschreiben für Wohnanlage und Schule, Lebenslauf mit Foto-Platzhalter und Tipps für ein überzeugendes Gespräch.",
+ "intro": "Hausmeister kümmern sich um kleine Reparaturen, Technik, Außenanlagen, Winterdienst und sind oft die erste Ansprechperson für Mieter, Schüler oder Mitarbeiter. Arbeitgeber suchen vielseitige Leute, meist mit abgeschlossenem Handwerksberuf, die selbstständig arbeiten und freundlich bleiben, wenn zum dritten Mal jemand wegen derselben Tür anruft.",
+ "lookFor": [
+  "Handwerkliche Ausbildung (z. B. Elektro, SHK, Tischler, Maler) oder breite praktische Erfahrung",
+  "Selbstständige Planung von Wartung, Kontrollgängen und Reparaturen",
+  "Winterdienst, Grünpflege, Reinigung der Außenanlagen",
+  "Freundlicher Umgang mit Mietern, Lehrkräften oder Mitarbeitenden",
+  "Führerschein, oft Bereitschaftsdienst"
+ ],
+ "letters": [
+  {
+   "label": "Wohnanlage, mit SHK-Hintergrund",
+   "level": "erfahren",
+   "position": "Hausmeister für eine Wohnanlage mit 120 Einheiten",
+   "to": {
+    "org": "Wohnungsbau Rhein-Neckar eG",
+    "sal": "f",
+    "street": "Augustaanlage 10",
+    "city": "68165 Mannheim",
+    "contact": "Graf"
+   },
+   "body": [
+    "über dreißig Jahre Heizungs- und Sanitärinstallation haben mir zwei Dinge beigebracht: wie Haustechnik funktioniert und wie Menschen reagieren, wenn sie nicht funktioniert. Beides möchte ich als Hausmeister in Ihrer Wohnanlage in der Neckarstadt einsetzen.",
+    "Tropfende Wasserhähne, klemmende Fenster, ausgefallene Lampen im Treppenhaus erledige ich selbst. Bei größeren Schäden weiß ich, was ich der Fachfirma sagen muss, damit sie mit dem richtigen Teil kommt. Den Heizungsraum kontrolliere ich nicht nur, ich verstehe auch, was die Anzeige bedeutet. Außenanlagen, Winterdienst und Mülltonnenmanagement habe ich in den letzten zwei Jahren nebenbei für eine kleine Hausverwaltung übernommen.",
+    "Ich bin 54 und möchte mich nach Jahren auf Baustellen bewusst für eine Stelle mit festen Abläufen entscheiden. Bereitschaftsdienste übernehme ich. Wann darf ich mir die Anlage einmal mit Ihnen ansehen?"
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Arbeitszeugnisse"
+   ],
+   "ref": "HM-0426"
+  },
+  {
+   "label": "Schulhausmeister im Quereinstieg",
+   "level": "quereinstieg",
+   "position": "Schulhausmeister",
+   "to": {
+    "org": "Stadt Heidelberg – Amt für Schule und Bildung",
+    "sal": "none",
+    "street": "Marktplatz 10",
+    "city": "69117 Heidelberg"
+   },
+   "body": [
+    "als gelernter Kaufmann im Einzelhandel habe ich elf Jahre einen Baumarkt mitgeleitet. Ich kenne Werkzeuge, Material und die Leute, die damit arbeiten. Was mir dort gefehlt hat, ist selbst Hand anzulegen. Ihre Stelle als Schulhausmeister an der Grundschule im Pfaffengrund würde das ändern.",
+    "Privat habe ich unser altes Haus fast komplett selbst saniert: Böden verlegt, Wände verputzt, Türen eingestellt, unter Anleitung eines Elektrikers Leitungen verlegt. Im Baumarkt war ich für die Sicherheitsbegehungen und die Wartungsverträge der Haustechnik verantwortlich, also für genau den Teil, den Hausmeister mit Fachfirmen abstimmen.",
+    "An einer Grundschule ist man auch Ansprechpartner für Kinder. Ich trainiere seit Jahren eine F-Jugend im Fußball und weiß, dass man dort mit Geduld weiterkommt als mit Lautstärke. Ich bin ab dem 1. März verfügbar."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnis",
+    "Abschlusszeugnis"
+   ],
+   "from": [
+    "Thomas Riedel",
+    "Eppelheimer Straße 33",
+    "69115 Heidelberg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a21",
+  "design": "classic",
+  "accent": 5,
+  "name": "Bernd Schmitt",
+  "title": "Anlagenmechaniker SHK / Hausmeister",
+  "street": "Waldhofstraße 140",
+  "city": "68169 Mannheim",
+  "exp": [
+   [
+    "2024",
+    "",
+    "Hausmeisterdienste (Minijob)",
+    "Hausverwaltung Kurpfalz",
+    "Mannheim",
+    "- Außenanlagen, Winterdienst, Mülltonnen\n- Kleinreparaturen in zwei Mehrfamilienhäusern"
+   ],
+   [
+    "03/2006",
+    "",
+    "Anlagenmechaniker SHK",
+    "Heizung Sanitär Lorenz GmbH",
+    "Mannheim",
+    "- Heizungs- und Sanitärinstallation\n- Wartung von Heizungsanlagen\n- Kundendienst und Notdienst"
+   ],
+   [
+    "08/1990",
+    "02/2006",
+    "Gas- und Wasserinstallateur",
+    "Installationsbetrieb Wolf",
+    "Ludwigshafen",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "1987",
+    "1990",
+    "Ausbildung zum Gas- und Wasserinstallateur",
+    "Installationsbetrieb Wolf",
+    "Ludwigshafen",
+    ""
+   ],
+   [
+    "1978",
+    "1987",
+    "Hauptschulabschluss",
+    "Hauptschule Neckarstadt",
+    "Mannheim",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2023",
+    "Trinkwasserhygiene",
+    "SHK-Innung",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2022",
+    "Elektrofachkraft für festgelegte Tätigkeiten",
+    "Bildungszentrum",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Heizung und Sanitär",
+    5
+   ],
+   [
+    "Kleinreparaturen aller Art",
+    4
+   ],
+   [
+    "Winterdienst und Grünpflege",
+    4
+   ],
+   [
+    "Mieterkommunikation",
+    4
+   ],
+   [
+    "Dokumentation von Kontrollgängen",
+    3
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ]
+  ],
+  "hobbies": "Angeln, Kleingarten"
+ },
+ "do": [
+  "Zähl die Gewerke auf, in denen du selbst reparierst.",
+  "Zeig, wie du mit Mietern, Kindern oder Kollegen umgehst.",
+  "Erwähne Winterdienst, Bereitschaft und Führerschein."
+ ],
+ "dont": [
+  "Dich als „Mädchen für alles“ bezeichnen – sag konkret, was du kannst.",
+  "Arbeiten anbieten, für die eine Fachfirma nötig ist (z. B. Gasarbeiten ohne Qualifikation).",
+  "Die Pünktlichkeit morgens unterschätzen."
+ ],
+ "questions": [
+  "Ein Mieter meldet Wasser in der Decke. Was tun Sie?",
+  "Wie planen Sie Ihre Woche?",
+  "Welche Reparaturen erledigen Sie selbst, welche nicht?",
+  "Wie gehen Sie mit Beschwerden um?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich als Hausmeister eine Ausbildung?",
+   "a": "Nicht zwingend, aber viele Arbeitgeber erwarten einen Handwerksberuf. Ohne Ausbildung zählen nachweisbare praktische Erfahrung und Zusatzkurse, etwa zur Elektrofachkraft für festgelegte Tätigkeiten."
+  },
+  {
+   "q": "Was ist bei einer Stelle im öffentlichen Dienst anders?",
+   "a": "Die Bewerbung läuft oft über ein Onlineportal mit festen Fristen. Leg Zeugnisse vollständig bei – formal unvollständige Bewerbungen werden dort häufig aussortiert."
+  }
+ ],
+ "related": [
+  "anlagenmechaniker-shk",
+  "elektriker",
+  "gaertner",
+  "reinigungskraft"
+ ]
+}

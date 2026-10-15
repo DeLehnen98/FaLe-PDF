@@ -8,6 +8,8 @@ export const CHART_TYPES = [
   { id: 'col', label: 'Säulen' }, { id: 'bar', label: 'Balken' }, { id: 'line', label: 'Linie' },
   { id: 'pie', label: 'Kreis' }, { id: 'area', label: 'Fläche' }, { id: 'scatter', label: 'Punkte' },
 ];
+// variants of the base types (chosen in the dialog with a switch): ring chart, columns with the last series as a line
+const BASE_TYPE = { doughnut: 'pie', combo: 'col' };
 // validated categorical palette (fixed order, light / dark steps)
 const CAT_LIGHT = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#6250d6', '#e34948'];
 const CAT_DARK = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'];
@@ -132,7 +134,7 @@ export function chartSvg(chart, data, { w = 480, h = 300, mode = 'light' } = {})
   let top = 12, bottom = h - 10, left = 12, right = w - 12;
   if (chart.title) { out.push(`<text x="${w / 2}" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="${S.text}">${esc(clip(chart.title, Math.floor(w / 9)))}</text>`); top = 40; }
   const series = data.series;
-  const pie = type === 'pie';
+  const pie = type === 'pie' || type === 'doughnut';
   const legendItems = pie ? data.cats.map((c, i) => ({ name: c, color: (series[0] && series[0].color && chart.colors && chart.colors[i]) || ((PALETTES[chart.palette] || PALETTES.standard)[mode][i % 8]) })) : series.map(s => ({ name: s.name, color: s.color }));
   const legend = chart.legend || 'r';
   const showLegend = legend !== 'none' && (pie || series.length > 1 || legend !== 'r');
@@ -167,6 +169,7 @@ export function chartSvg(chart, data, { w = 480, h = 300, mode = 'light' } = {})
     const total = vals.reduce((a, b) => a + b, 0) || 1;
     const cx = (left + right) / 2, cy = (top + bottom) / 2, r = Math.max(10, Math.min(right - left, bottom - top) / 2 - 6);
     let a0 = -Math.PI / 2;
+    const labels = [];
     vals.forEach((v, i) => {
       if (!v) return;
       const a1 = a0 + (v / total) * Math.PI * 2;
@@ -175,9 +178,12 @@ export function chartSvg(chart, data, { w = 480, h = 300, mode = 'light' } = {})
       const d = v === total ? `M${cx - r},${cy}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0` : `M${cx},${cy}L${p(a0)}A${r},${r} 0 ${large},1 ${p(a1)}Z`;
       out.push(`<path d="${d}" fill="${legendItems[i] ? legendItems[i].color : s.color}" stroke="${S.bg}" stroke-width="2"><title>${esc(data.cats[i] || '')}: ${fmtNum(v)} (${Math.round(v / total * 100)} %)</title></path>`);
       const mid = (a0 + a1) / 2;
-      if (v / total > 0.06) out.push(`<text x="${(cx + r * 0.62 * Math.cos(mid)).toFixed(1)}" y="${(cy + r * 0.62 * Math.sin(mid) + 4).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${Math.round(v / total * 100)} %</text>`);
+      const lr = type === 'doughnut' ? 0.78 : 0.62;
+      if (v / total > 0.06) labels.push(`<text x="${(cx + r * lr * Math.cos(mid)).toFixed(1)}" y="${(cy + r * lr * Math.sin(mid) + 4).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${Math.round(v / total * 100)} %</text>`);
       a0 = a1;
     });
+    if (type === 'doughnut') out.push(`<circle cx="${cx}" cy="${cy}" r="${(r * 0.55).toFixed(1)}" fill="${S.bg}"/><text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${S.text}">${fmtNum(vals.reduce((a, b) => a + b, 0))}</text>`);
+    out.push(...labels);
     out.push('</svg>');
     return out.join('');
   }
@@ -230,10 +236,12 @@ export function chartSvg(chart, data, { w = 480, h = 300, mode = 'light' } = {})
     if (horiz) out.push(`<text x="${left - 6}" y="${mid + 4}" text-anchor="end" font-size="12" fill="${S.text2}">${esc(clip(c, 16))}</text>`);
     else out.push(`<text x="${mid}" y="${bottom + 15}" text-anchor="middle" font-size="11" fill="${S.text2}">${esc(clip(c, 14))}</text>`);
   });
-  if (type === 'col' || type === 'bar') {
-    const k = series.length;
+  if (type === 'col' || type === 'bar' || type === 'combo') {
+    // combo: all series but the last as columns, the last one as a line on the same axis
+    const bars = type === 'combo' && series.length > 1 ? series.slice(0, -1) : series;
+    const k = bars.length;
     const gw = band * 0.72, bw = Math.max(1, (gw - (k - 1) * 2) / k);
-    series.forEach((s, si) => s.values.forEach((v, i) => {
+    bars.forEach((s, si) => s.values.forEach((v, i) => {
       if (v == null) return;
       const off = (horiz ? top : left) + band * i + (band - gw) / 2 + si * (bw + 2);
       const a = vToPx(0 < yt.lo ? yt.lo : 0 > yt.hi ? yt.hi : 0), b = vToPx(v);
@@ -242,6 +250,13 @@ export function chartSvg(chart, data, { w = 480, h = 300, mode = 'light' } = {})
       out.push(horiz ? `<rect x="${lo.toFixed(1)}" y="${off.toFixed(1)}" width="${len.toFixed(1)}" height="${bw.toFixed(1)}" rx="${rr}" fill="${s.color}"><title>${esc(s.name)} · ${esc(data.cats[i] || '')}: ${fmtNum(v)}</title></rect>`
         : `<rect x="${off.toFixed(1)}" y="${lo.toFixed(1)}" width="${bw.toFixed(1)}" height="${len.toFixed(1)}" rx="${rr}" fill="${s.color}"><title>${esc(s.name)} · ${esc(data.cats[i] || '')}: ${fmtNum(v)}</title></rect>`);
     }));
+    if (type === 'combo' && series.length > 1) {
+      const s = series[series.length - 1];
+      const pts = s.values.map((v, i) => (v == null ? null : [left + band * (i + 0.5), vToPx(v)]));
+      const d = pts.filter(Boolean).map((pt, i) => `${i ? 'L' : 'M'}${pt[0].toFixed(1)},${pt[1].toFixed(1)}`).join('');
+      if (d) out.push(`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`);
+      if (n <= 40) pts.forEach((pt, i) => { if (pt) out.push(`<circle cx="${pt[0].toFixed(1)}" cy="${pt[1].toFixed(1)}" r="4" fill="${s.color}" stroke="${S.bg}" stroke-width="2"><title>${esc(s.name)} · ${esc(data.cats[i] || '')}: ${fmtNum(s.values[i])}</title></circle>`); });
+    }
   } else {
     series.forEach(s => {
       const pts = s.values.map((v, i) => (v == null ? null : [left + band * (i + 0.5), vToPx(v)]));
@@ -284,6 +299,8 @@ const TYPE_ICON = {
   bar: '<path d="M4 4v16"/><rect x="4" y="6" width="10" height="3" rx=".6"/><rect x="4" y="11" width="15" height="3" rx=".6"/><rect x="4" y="16" width="7" height="3" rx=".6"/>',
   line: '<path d="M4 20h16"/><path d="m4.5 15 4.5-5 4 3 6.5-7"/>',
   pie: '<circle cx="12" cy="12" r="8"/><path d="M12 4v8l6 5"/>',
+  doughnut: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 4v4.5M15 14.2l4 3"/>',
+  combo: '<path d="M4 20h16"/><rect x="6" y="12" width="3" height="8" rx=".6"/><rect x="11" y="9" width="3" height="11" rx=".6"/><rect x="16" y="13" width="3" height="7" rx=".6"/><path d="m5 9 5-4 5 3 5-4"/>',
   area: '<path d="M4 20h16"/><path d="M4.5 18 9 11l4 3 6.5-7V18z" fill="currentColor" fill-opacity=".3"/>',
   scatter: '<path d="M4 4v16h16"/><circle cx="9" cy="14" r="1.6" fill="currentColor"/><circle cx="13" cy="9" r="1.6" fill="currentColor"/><circle cx="17" cy="12" r="1.6" fill="currentColor"/><circle cx="16" cy="6" r="1.6" fill="currentColor"/>',
 };
@@ -295,7 +312,9 @@ export async function chartDialog(init, { getData, title = 'Diagramm einfügen',
   const r = await openDialog({
     title, wide: true,
     body: `<div class="chart-dlg">
-      <div class="cd-types" role="radiogroup" aria-label="Diagrammtyp">${CHART_TYPES.map(t => `<button type="button" class="cd-type" role="radio" data-type="${t.id}" aria-checked="${t.id === c.type}">${typeIcon(t.id)}<span>${t.label}</span></button>`).join('')}</div>
+      <div class="cd-types" role="radiogroup" aria-label="Diagrammtyp">${CHART_TYPES.map(t => `<button type="button" class="cd-type" role="radio" data-type="${t.id}" aria-checked="${t.id === (BASE_TYPE[c.type] || c.type)}">${typeIcon(t.id)}<span>${t.label}</span></button>`).join('')}</div>
+      <div class="cd-variants"><label class="check" data-var="pie"><input type="checkbox" name="ring"${c.type === 'doughnut' ? ' checked' : ''}> Als Ring (Loch in der Mitte)</label>
+        <label class="check" data-var="col"><input type="checkbox" name="combo"${c.type === 'combo' ? ' checked' : ''}> Letzte Reihe als Linie (Säulen + Linie)</label></div>
       <div class="cd-main">
         <div class="cd-form">
           <label class="field"><span class="field-label">Datenbereich</span><input class="input" name="range" value="${esc(c.range)}" placeholder="z. B. A1:C7" spellcheck="false"></label>
@@ -318,7 +337,10 @@ export async function chartDialog(init, { getData, title = 'Diagramm einfügen',
     onMount: dlg => {
       $('[name=legend]', dlg).value = c.legend;
       $('[name=byRows]', dlg).value = c.byRows == null ? 'auto' : c.byRows ? 'rows' : 'cols';
+      let base = BASE_TYPE[c.type] || c.type;
       const read = () => {
+        c.type = base === 'pie' && $('[name=ring]', dlg).checked ? 'doughnut' : base === 'col' && $('[name=combo]', dlg).checked ? 'combo' : base;
+        $$('[data-var]', dlg).forEach(x => { x.hidden = x.dataset.var !== base; });
         c.range = $('[name=range]', dlg).value.trim().toUpperCase();
         c.title = $('[name=title]', dlg).value; c.xTitle = $('[name=xTitle]', dlg).value; c.yTitle = $('[name=yTitle]', dlg).value;
         c.legend = $('[name=legend]', dlg).value;
@@ -329,7 +351,7 @@ export async function chartDialog(init, { getData, title = 'Diagramm einfügen',
         const prev = $('.cd-prev', dlg);
         try { prev.innerHTML = chartSvg(c, getData({ ...c, series: null }), { w: 360, h: 240, mode }); } catch { prev.innerHTML = '<p class="panel-empty">Keine Vorschau</p>'; }
       };
-      $$('[data-type]', dlg).forEach(b => b.addEventListener('click', () => { c.type = b.dataset.type; $$('[data-type]', dlg).forEach(x => x.setAttribute('aria-checked', String(x === b))); paint(); }));
+      $$('[data-type]', dlg).forEach(b => b.addEventListener('click', () => { base = b.dataset.type; $$('[data-type]', dlg).forEach(x => x.setAttribute('aria-checked', String(x === b))); paint(); }));
       $$('[data-pal]', dlg).forEach(b => b.addEventListener('click', () => { c.palette = b.dataset.pal; $$('[data-pal]', dlg).forEach(x => x.setAttribute('aria-checked', String(x === b))); paint(); }));
       dlg.addEventListener('input', paint);
       dlg.addEventListener('change', paint);

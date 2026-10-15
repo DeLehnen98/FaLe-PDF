@@ -1,0 +1,348 @@
+{
+ "id": "servicekraft",
+ "field": "gastro",
+ "name": "Servicekraft (Kellner/in)",
+ "search": "kellner kellnerin servicekraft restaurantfachmann restaurantfachfrau bedienung service gastronomie aushilfe",
+ "short": "Restaurant, Café oder Hotel – mit Erfahrung oder als Aushilfe.",
+ "desc": "Bewerbung als Servicekraft oder Kellner/in: zwei kurze Muster-Anschreiben für erfahrene Fachkraft und Aushilfe, Lebenslauf mit Foto-Platzhalter und Gesprächstipps.",
+ "intro": "Im Service zählen Freundlichkeit, Tempo, ein gutes Gedächtnis für Bestellungen und Gelassenheit, wenn alle Tische gleichzeitig winken. Für gehobene Häuser kommen Weinkenntnisse und Servierstandards dazu. Ein kurzes, persönliches Anschreiben reicht oft.",
+ "lookFor": [
+  "Erfahrung im Service oder Ausbildung als Fachmann/Fachfrau für Restaurants und Veranstaltungsgastronomie",
+  "Kassensysteme und Abrechnung",
+  "Getränke- und Weinkenntnisse",
+  "Freundlichkeit und Belastbarkeit",
+  "Abend- und Wochenenddienste"
+ ],
+ "letters": [
+  {
+   "label": "Erfahrene Servicekraft, gehobene Küche",
+   "level": "erfahren",
+   "position": "Servicemitarbeiterin im À-la-carte-Restaurant",
+   "to": {
+    "org": "Weinhaus am Rhein",
+    "sal": "m",
+    "street": "Rheinufer 3",
+    "city": "55116 Mainz",
+    "contact": "Kessler"
+   },
+   "body": [
+    "ein Gast, der sich zweimal hintereinander denselben Wein bestellt, ohne in die Karte zu sehen, ist für mich das schönste Kompliment. In meinem jetzigen Restaurant passiert das öfter, weil ich mir merke, was Stammgäste mögen.",
+    "Ich arbeite seit sieben Jahren im Service, die letzten vier in einem Restaurant mit 60 Plätzen und Weinkarte mit rund 200 Positionen. Ich empfehle Weine zum Menü, dekantiere, betreue Gruppen und rechne am Abend die Kasse ab. Im letzten Jahr habe ich einen Weinkurs mit Abschluss gemacht, weil ich besser erklären wollte, warum ein Riesling aus Rheinhessen zur Forelle passt.",
+    "Ihr Weinhaus mit Fokus auf regionale Winzer passt zu dem, was ich am liebsten mache. Ich kann ab dem 1. März anfangen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Arbeitszeugnisse",
+    "Zertifikat Weinkurs"
+   ]
+  },
+  {
+   "label": "Aushilfe am Wochenende",
+   "level": "minijob",
+   "position": "Servicekraft auf Minijob-Basis",
+   "to": {
+    "org": "Biergarten am Volkspark",
+    "sal": "none",
+    "street": "Volkspark 1",
+    "city": "55131 Mainz"
+   },
+   "body": [
+    "ich studiere in Mainz und suche für die Saison einen Job am Wochenende. Ihr Biergarten ist mein Lieblingsplatz im Sommer, und ich habe beobachtet, wie viel bei Ihnen an warmen Tagen los ist.",
+    "Erfahrung habe ich aus zwei Jahren Kellnern auf Weinfesten in meinem Heimatort. Ich kann drei Teller tragen, mir Bestellungen für einen Tisch mit zwölf Leuten merken und bleibe freundlich, wenn es voll wird. Kassensysteme lerne ich schnell.",
+    "Ich kann freitags ab 16 Uhr sowie samstags und sonntags ganztags arbeiten."
+   ],
+   "att": [
+    "Lebenslauf"
+   ],
+   "from": [
+    "Lukas Brenner",
+    "Binger Straße 40",
+    "55122 Mainz"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a06",
+  "design": "modern",
+  "accent": 3,
+  "name": "Leyla Haddad",
+  "title": "Servicefachkraft",
+  "street": "Rheinallee 120",
+  "city": "55118 Mainz",
+  "exp": [
+   [
+    "03/2022",
+    "",
+    "Servicemitarbeiterin",
+    "Restaurant Weinberg",
+    "Mainz",
+    "- À-la-carte-Service für 60 Plätze\n- Weinempfehlungen, Dekantieren\n- Gruppen und Kassenabrechnung"
+   ],
+   [
+    "2019",
+    "2022",
+    "Servicekraft",
+    "Hotel Rheinblick",
+    "Mainz",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2016",
+    "2019",
+    "Ausbildung zur Restaurantfachfrau",
+    "Hotel Rheinblick",
+    "Mainz",
+    ""
+   ],
+   [
+    "2007",
+    "2016",
+    "Realschulabschluss",
+    "Realschule plus Mainz",
+    "Mainz",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Weinkurs mit Abschlussprüfung",
+    "Weinakademie Rheinhessen",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Weinberatung",
+    4
+   ],
+   [
+    "Gästebetreuung",
+    5
+   ],
+   [
+    "Kassensystem",
+    4
+   ],
+   [
+    "Gruppen und Bankett",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Arabisch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B2"
+   ],
+   [
+    "Französisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Weinwanderungen, Salsa"
+ },
+ "do": [
+  "Kurz und freundlich schreiben.",
+  "Erfahrung mit Plätzen, Gästezahlen, Weinen nennen.",
+  "Verfügbarkeit angeben."
+ ],
+ "dont": [
+  "Trinkgeld als Motivation nennen.",
+  "Lange Erklärungen.",
+  "Unzuverlässigkeit andeuten („spontan verfügbar“)."
+ ],
+ "questions": [
+  "Ein Gast beschwert sich über kaltes Essen. Was tun Sie?",
+  "Wie viele Tische können Sie betreuen?",
+  "Welchen Wein empfehlen Sie zu Wild?",
+  "Wann können Sie arbeiten?"
+ ],
+ "faq": [
+  {
+   "q": "Brauche ich für einen Kellnerjob ein Anschreiben?",
+   "a": "Für Aushilfsjobs reicht oft eine kurze Nachricht mit Lebenslauf. Für feste Stellen in guten Häusern lohnt sich ein kurzes Anschreiben, das zeigt, dass du das Haus kennst."
+  }
+ ],
+ "related": [
+  "koch",
+  "hotelfachfrau",
+  "kuechenhilfe",
+  "verkaeuferin-baeckerei"
+ ],
+ "en": {
+  "slug": "waiter",
+  "name": "Waiter / waitress",
+  "search": "waiter waitress server front of house restaurant staff bartender",
+  "short": "Restaurant, café or hotel – experienced or weekend job.",
+  "desc": "Waiter and waitress CV and cover letter examples: a letter for experienced front-of-house staff and one for a weekend job, plus a ready CV.",
+  "intro": "Restaurants want people who are friendly, quick, remember orders and stay calm when every table wants something. For fine dining, wine knowledge and service standards count too. A short, personal letter is usually enough.",
+  "lookFor": [
+   "Front-of-house experience",
+   "Till and payment systems",
+   "Drinks and wine knowledge",
+   "Friendly, calm manner",
+   "Evening and weekend availability"
+  ],
+  "letters": [
+   {
+    "label": "Experienced server, fine dining",
+    "level": "erfahren",
+    "position": "Server – à la carte restaurant",
+    "to": {
+     "org": "The Vineyard Room",
+     "sal": "m",
+     "street": "3 River Walk",
+     "city": "Bath BA2 4AA",
+     "contact": "Reed"
+    },
+    "body": [
+     "When a guest orders the same wine twice without looking at the list, I take it as a compliment – and it happens often in my current restaurant because I remember what regulars like.",
+     "I have worked front of house for seven years, the last four in a 60-cover restaurant with around 200 wines. I recommend pairings, decant, look after groups and cash up at night. Last year I completed a wine course so I could explain pairings better.",
+     "Your focus on small producers matches what I enjoy most. I can start in March."
+    ],
+    "att": [
+     "CV",
+     "References"
+    ]
+   },
+   {
+    "label": "Weekend job while studying",
+    "level": "minijob",
+    "position": "Weekend server (seasonal)",
+    "to": {
+     "org": "Parkside Beer Garden",
+     "sal": "none",
+     "street": "Royal Victoria Park",
+     "city": "Bath BA1 2NR"
+    },
+    "body": [
+     "I am a student in Bath and looking for weekend work this season. Your beer garden is my favourite place in summer, and I have seen how busy it gets.",
+     "I have two summers of waiting experience at village festivals. I can carry three plates, remember orders for a table of twelve and stay friendly when it is packed. I pick up till systems quickly.",
+     "I can work Friday evenings and all day on weekends."
+    ],
+    "att": [
+     "CV"
+    ],
+    "from": [
+     "Lucas Green",
+     "40 Wells Road",
+     "Bath BA2 3AP"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a06",
+   "design": "modern",
+   "accent": 3,
+   "name": "Layla Hassan",
+   "title": "Server",
+   "street": "12 Pulteney Road",
+   "city": "Bath BA2 4EZ",
+   "exp": [
+    [
+     "03/2022",
+     "",
+     "Server",
+     "Weinberg Restaurant",
+     "Bath",
+     "- À la carte service for 60 covers\n- Wine pairing and decanting\n- Groups and cash-up"
+    ],
+    [
+     "2019",
+     "2022",
+     "Waitress",
+     "Riverside Hotel",
+     "Bath",
+     ""
+    ]
+   ],
+   "edu": [
+    [
+     "2014",
+     "2019",
+     "Secondary school",
+     "Beechen Cliff School",
+     "Bath",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "Wine course with exam",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Wine service",
+     4
+    ],
+    [
+     "Guest care",
+     5
+    ],
+    [
+     "Till systems",
+     4
+    ],
+    [
+     "Groups and events",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Arabic",
+     "native"
+    ],
+    [
+     "French",
+     "B1"
+    ]
+   ],
+   "hobbies": "Wine tastings, salsa"
+  },
+  "do": [
+   "Keep it short and friendly.",
+   "Mention covers and wine knowledge.",
+   "State availability."
+  ],
+  "dont": [
+   "Mention tips as your motivation.",
+   "Write long explanations.",
+   "Sound unreliable."
+  ],
+  "questions": [
+   "A guest says their food is cold. What do you do?",
+   "How many tables can you handle?",
+   "What would you recommend with venison?",
+   "When can you work?"
+  ],
+  "faq": [
+   {
+    "q": "Do restaurants read cover letters?",
+    "a": "For casual work a short message with your CV is usually enough. For good restaurants a brief letter that shows you know the place helps."
+   }
+  ]
+ }
+}

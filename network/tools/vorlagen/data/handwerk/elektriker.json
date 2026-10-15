@@ -1,0 +1,406 @@
+{
+ "id": "elektriker",
+ "field": "handwerk",
+ "popular": true,
+ "name": "Elektriker/in (Elektroniker/in)",
+ "search": "elektronikerin elektroniker energie gebaeudetechnik elektroinstallateur elektrofachkraft handwerk baustelle e-check photovoltaik",
+ "short": "Gebäudetechnik, Service oder Industrie – Geselle, Meister oder Wiedereinstieg.",
+ "desc": "Bewerbung als Elektriker/in bzw. Elektroniker/in: Muster-Anschreiben für Gesellen, erfahrene Fachkräfte und Initiativbewerbung, Lebenslauf und Tipps zum Probetag.",
+ "intro": "Elektrobetriebe suchen Fachkräfte, die selbstständig auf der Baustelle arbeiten, Prüfungen sauber dokumentieren und beim Kunden einen guten Eindruck hinterlassen. Wichtig sind deine Schwerpunkte – Neubau, Altbausanierung, Photovoltaik, Gebäudeautomation, Service – und der Führerschein. Ein Probetag gehört fast immer dazu.",
+ "lookFor": [
+  "Gesellenbrief als Elektroniker/in (Energie- und Gebäudetechnik) oder vergleichbarer Abschluss",
+  "Selbstständiges Arbeiten von der Rohinstallation bis zur Inbetriebnahme",
+  "Prüfen und Messen nach den einschlägigen DIN-VDE-Normen mit Protokoll",
+  "Schwerpunkte wie Photovoltaik, Wallboxen, KNX, Brandmeldetechnik",
+  "Führerschein Klasse B, Zuverlässigkeit und ein ordentlicher Auftritt beim Kunden"
+ ],
+ "letters": [
+  {
+   "label": "Junggeselle nach der Ausbildung",
+   "level": "berufseinstieg",
+   "position": "Elektroniker für Energie- und Gebäudetechnik",
+   "to": {
+    "org": "Elektro Wagner GmbH & Co. KG",
+    "sal": "m",
+    "street": "Industriestraße 9",
+    "city": "97080 Würzburg",
+    "contact": "Wagner"
+   },
+   "body": [
+    "im Januar habe ich meine Gesellenprüfung als Elektroniker für Energie- und Gebäudetechnik bestanden, im praktischen Teil mit 1,9. Mein Ausbildungsbetrieb arbeitet fast nur im Neubau. Ich möchte jetzt in einem Betrieb arbeiten, der auch Sanierung und Photovoltaik macht, und Ihre Projektliste auf der Website zeigt genau diese Mischung.",
+    "In der Ausbildung habe ich in Mehrfamilienhäusern Unterverteilungen bestückt, Leitungen gezogen, Schalter und Steckdosen gesetzt und die Erstprüfungen mit meinem Gesellen gemacht. In meinem Gesellenstück habe ich eine Wohnungsverteilung mit Überspannungsschutz geplant und aufgebaut. PV-Anlagen kenne ich bisher nur aus zwei Baustellen, auf denen ich beim Montieren der Unterkonstruktion geholfen habe. Da will ich mehr lernen.",
+    "Ich bin 20, habe den Führerschein seit zwei Jahren und wohne in Würzburg-Lengfeld, zehn Minuten von Ihnen. Höhenarbeit macht mir nichts aus.",
+    "Einen Probetag mache ich gern, auch an einem Samstag."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Abschlusszeugnis Berufsschule"
+   ]
+  },
+  {
+   "label": "Erfahrene Fachkraft mit Schwerpunkt Photovoltaik",
+   "level": "erfahren",
+   "position": "Elektroniker/in für PV-Anlagen und Speicher",
+   "to": {
+    "org": "Sonnenwerk Unterfranken GmbH",
+    "sal": "f",
+    "street": "Am Mainkai 14",
+    "city": "97070 Würzburg",
+    "contact": "Hartmann"
+   },
+   "body": [
+    "in den letzten vier Jahren habe ich rund 150 Photovoltaikanlagen mit Speicher auf Einfamilienhäusern angeschlossen, bei vielen davon auch die Wallbox. Ich kenne die Wechselrichter der gängigen Hersteller, die Anmeldung beim Netzbetreiber und die Fragen, die Kunden beim Abschlussgespräch stellen.",
+    "Mein jetziger Arbeitgeber zieht sich aus dem PV-Geschäft zurück und konzentriert sich wieder auf Industrieinstallation. Ich möchte bei Photovoltaik bleiben, und zwar dort, wo nicht nur montiert, sondern sauber geplant wird. Dass Sie jede Anlage mit eigener Elektrofachkraft in Betrieb nehmen, statt den Anschluss an Subunternehmer zu geben, spricht für Sie.",
+    "Ich führe meine Baustellen selbstständig mit einem Helfer, erstelle Prüfprotokolle und Anlagendokumentation und weise Kunden in die App ein. Seit 2023 bin ich zertifizierte Fachkraft für Speichersysteme.",
+    "Kündigungsfrist: ein Monat zum Monatsende. Über ein Gespräch würde ich mich freuen."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Zertifikat Speichersysteme",
+    "Arbeitszeugnis"
+   ],
+   "from": [
+    "Sven Albrecht",
+    "Ludwigstraße 21",
+    "97209 Veitshöchheim"
+   ]
+  },
+  {
+   "label": "Initiativbewerbung nach Jahren in der Industrie",
+   "level": "initiativ",
+   "position": "Elektroniker im Kundendienst (Initiativbewerbung)",
+   "to": {
+    "org": "Elektro Kraus Haustechnik",
+    "sal": "none",
+    "street": "Lindleinstraße 30",
+    "city": "97080 Würzburg"
+   },
+   "body": [
+    "eine offene Stelle habe ich auf Ihrer Website nicht gefunden, aber Ihr Fahrzeug steht oft bei uns in der Straße, und das hat mich auf eine Idee gebracht. Ich bin Elektroniker für Betriebstechnik und arbeite seit acht Jahren in der Instandhaltung eines Getränkeabfüllers. Ich möchte zurück ins Handwerk und zu Kunden, die ich persönlich kenne.",
+    "Fehlersuche ist das, was ich am besten kann. Wenn nachts um drei eine Abfüllanlage steht, findet man schnell heraus, ob man systematisch vorgeht. Steuerungen, Antriebe, Schaltschränke und Messungen sind mein Alltag. In der Hausinstallation bin ich aus der Übung, aber ich habe in der Ausbildung zwei Jahre in einem Handwerksbetrieb verbracht und lerne schnell wieder rein.",
+    "Ich bin 31, wohne in Würzburg und kann mir den Kundendienst mit Bereitschaft gut vorstellen. Wenn Sie in nächster Zeit jemanden brauchen, freue ich mich über einen Anruf."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Gesellenbrief",
+    "Zwischenzeugnis"
+   ],
+   "from": [
+    "Andreas Nowak",
+    "Sanderglacisstraße 6",
+    "97072 Würzburg"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a02",
+  "design": "compact",
+  "accent": 0,
+  "name": "Leon Hofmann",
+  "title": "Elektroniker für Energie- und Gebäudetechnik",
+  "street": "Lengfelder Straße 70",
+  "city": "97076 Würzburg",
+  "exp": [
+   [
+    "09/2022",
+    "01/2026",
+    "Auszubildender Elektroniker",
+    "Elektro Schmitt GmbH",
+    "Würzburg",
+    "- Elektroinstallation in Mehrfamilienhäusern\n- Bestücken von Unterverteilungen\n- Erstprüfungen mit Protokoll\n- Mithilfe bei zwei PV-Montagen"
+   ],
+   [
+    "02/2026",
+    "",
+    "Elektroniker (Geselle)",
+    "Elektro Schmitt GmbH",
+    "Würzburg",
+    "- Neubauinstallation, Inbetriebnahme"
+   ]
+  ],
+  "edu": [
+   [
+    "09/2022",
+    "01/2026",
+    "Ausbildung zum Elektroniker für Energie- und Gebäudetechnik, Gesellenprüfung praktisch 1,9",
+    "Josef-Greising-Schule",
+    "Würzburg",
+    ""
+   ],
+   [
+    "2016",
+    "2022",
+    "Mittlere Reife",
+    "Realschule Würzburg",
+    "Würzburg",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2025",
+    "Führerschein Klasse B",
+    "",
+    "",
+    ""
+   ],
+   [
+    "",
+    "2024",
+    "Arbeiten unter Spannung – Unterweisung",
+    "Berufsgenossenschaft",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Elektroinstallation",
+    4
+   ],
+   [
+    "Prüfen nach DIN VDE",
+    4
+   ],
+   [
+    "Unterverteilungen",
+    4
+   ],
+   [
+    "Photovoltaik",
+    2
+   ],
+   [
+    "KNX-Grundlagen",
+    2
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Kickboxen, Schrauben an alten Mopeds"
+ },
+ "do": [
+  "Nenn Schwerpunkte und Projekte mit Zahlen (Anlagen, Wohneinheiten, Baustellen).",
+  "Schreib, ob du Baustellen selbstständig führst.",
+  "Erwähne Zertifikate: PV, Speicher, KNX, Brandmeldetechnik, E-Check."
+ ],
+ "dont": [
+  "Nur „alle anfallenden Elektroarbeiten“ schreiben.",
+  "Prüfen und Messen weglassen – das ist ein Kernpunkt.",
+  "Führerscheinklasse vergessen."
+ ],
+ "questions": [
+  "Wie gehen Sie bei einer Fehlersuche in einer Altbauinstallation vor?",
+  "Welche Messungen machen Sie vor der Übergabe?",
+  "Wie verhalten Sie sich beim Kunden in der Wohnung?",
+  "Welche Bereiche möchten Sie in den nächsten Jahren vertiefen?"
+ ],
+ "pay": "Im Elektrohandwerk gibt es regionale Tarifverträge. Frag nach der Lohngruppe, nach Auslösung für Montage und nach der Vergütung von Bereitschaftsdiensten.",
+ "faq": [
+  {
+   "q": "Elektriker oder Elektroniker – was schreibe ich?",
+   "a": "Die Ausbildung heißt heute Elektroniker/in mit Fachrichtung, z. B. Energie- und Gebäudetechnik. Schreib die genaue Bezeichnung aus deinem Gesellenbrief; „Elektriker“ verstehen trotzdem alle."
+  },
+  {
+   "q": "Lohnt sich eine Initiativbewerbung im Handwerk?",
+   "a": "Ja, viele kleinere Betriebe schreiben Stellen gar nicht aus. Ruf vorher kurz an, frag nach dem Ansprechpartner und schick die Bewerbung dann per E-Mail."
+  },
+  {
+   "q": "Was erwartet mich beim Probetag?",
+   "a": "Meist fährst du einen Tag mit auf die Baustelle. Achte auf Pünktlichkeit, eigenes Werkzeug (wenn abgesprochen), Arbeitssicherheit und darauf, wie du mit Kunden umgehst. Fragen sind erwünscht."
+  }
+ ],
+ "related": [
+  "anlagenmechaniker-shk",
+  "mechatroniker",
+  "ausbildung-elektroniker",
+  "hausmeister"
+ ],
+ "en": {
+  "slug": "electrician",
+  "name": "Electrician",
+  "search": "electrician electrical installer apprentice qualified solar pv maintenance",
+  "short": "Domestic, commercial or solar – newly qualified or experienced.",
+  "desc": "Electrician CV and cover letter examples: two fully written letters for newly qualified and experienced electricians, plus a ready CV with placeholder portrait.",
+  "intro": "Electrical contractors want people who work safely and tidily, test and certify their work properly and are good with customers. Say which kind of work you know – domestic, commercial, industrial, solar – and which qualifications and cards you hold.",
+  "lookFor": [
+   "A recognised electrical qualification for your country and proof of competence",
+   "Safe isolation, testing and certification done properly every time",
+   "Experience with the kind of work the firm does: new builds, rewires, solar, EV chargers, maintenance",
+   "Driving licence and reliability",
+   "Clear, polite communication with customers"
+  ],
+  "letters": [
+   {
+    "label": "Newly qualified electrician",
+    "level": "berufseinstieg",
+    "position": "Electrician",
+    "to": {
+     "org": "Harbour Electrical Ltd",
+     "sal": "m",
+     "street": "14 Dock Road",
+     "city": "Bristol BS1 6QA",
+     "contact": "Hughes"
+    },
+    "body": [
+     "I finished my apprenticeship with a domestic contractor in March and passed my final assessment first time. I am looking for a firm with a broader mix of work, and your recent commercial fit-outs caught my eye.",
+     "Over four years I have worked on new-build houses, kitchen and bathroom rewires and a handful of consumer unit upgrades. I carry out safe isolation without being reminded, complete test certificates carefully and leave a site the way I found it. On one rewire in an occupied home I planned the work room by room so the family never lost power to the fridge or the boiler overnight – a small thing that got us two referrals.",
+     "I hold a full driving licence and my own hand tools, and I am happy to travel within the region. I would welcome the chance to come in for a trial day."
+    ],
+    "att": [
+     "CV",
+     "Copy of qualification",
+     "Apprenticeship reference"
+    ]
+   },
+   {
+    "label": "Experienced electrician moving into solar",
+    "level": "erfahren",
+    "position": "Solar PV and battery installer",
+    "to": {
+     "org": "Sunfield Renewables",
+     "sal": "f",
+     "street": "Unit 3, Quarry Park",
+     "city": "Bath BA2 3DQ",
+     "contact": "Ali"
+    },
+    "body": [
+     "For the past six years I have worked as an electrician on commercial maintenance contracts, and for the last two I have installed solar PV and battery systems as a side line for our domestic customers. I would now like to do that full time.",
+     "I have connected around 40 domestic systems, including inverter set-up, battery commissioning and the paperwork for the network operator. I also fit EV chargers. Customers usually ask the same three questions at handover, so I made a one-page guide with photos of their own system; our office still sends it out.",
+     "I am organised, used to working alone or leading a small team, and I hold a current first aid certificate. I am available with one month’s notice."
+    ],
+    "att": [
+     "CV",
+     "Certificates",
+     "Reference"
+    ],
+    "from": [
+     "Priya Sharma",
+     "22 Wells Road",
+     "Bristol BS4 2AG"
+    ]
+   }
+  ],
+  "cv": {
+   "avatar": "a02",
+   "design": "modern",
+   "accent": 0,
+   "name": "Jack Turner",
+   "title": "Electrician",
+   "street": "8 Mill Lane",
+   "city": "Bristol BS3 4EP",
+   "exp": [
+    [
+     "09/2022",
+     "03/2026",
+     "Apprentice electrician",
+     "Avon Domestic Electrical",
+     "Bristol",
+     "- Rewires, kitchen and bathroom installations\n- Consumer unit upgrades\n- Testing and certification under supervision"
+    ],
+    [
+     "04/2026",
+     "",
+     "Electrician",
+     "Avon Domestic Electrical",
+     "Bristol",
+     "- Domestic installations and fault finding"
+    ]
+   ],
+   "edu": [
+    [
+     "2022",
+     "2026",
+     "Electrical installation apprenticeship (final assessment passed)",
+     "City College",
+     "Bristol",
+     ""
+    ],
+    [
+     "2017",
+     "2022",
+     "Secondary school",
+     "Southville Academy",
+     "Bristol",
+     ""
+    ]
+   ],
+   "courses": [
+    [
+     "",
+     "2025",
+     "First aid at work",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "skills": [
+    [
+     "Domestic installation",
+     4
+    ],
+    [
+     "Testing and certification",
+     4
+    ],
+    [
+     "Fault finding",
+     3
+    ],
+    [
+     "EV chargers",
+     2
+    ],
+    [
+     "Customer contact",
+     4
+    ]
+   ],
+   "langs": [
+    [
+     "English",
+     "native"
+    ],
+    [
+     "Spanish",
+     "A2"
+    ]
+   ],
+   "hobbies": "Five-a-side football, restoring old bikes"
+  },
+  "do": [
+   "Name the type of work and give numbers (installs, rewires, sites).",
+   "Mention testing and certification explicitly.",
+   "List cards, licences and certificates."
+  ],
+  "dont": [
+   "Write “all aspects of electrical work” without examples.",
+   "Leave out your driving licence.",
+   "Overstate experience you would need to prove on a trial day."
+  ],
+  "questions": [
+   "Talk us through safe isolation.",
+   "How do you approach a fault you cannot find?",
+   "How do you deal with a customer who is unhappy with the mess?",
+   "What kind of work would you like to do more of?"
+  ],
+  "faq": [
+   {
+    "q": "Do I need a cover letter for a trade job?",
+    "a": "Often a short email is enough, but a few clear paragraphs about your experience and availability make you stand out from the people who only send a CV."
+   }
+  ]
+ }
+}

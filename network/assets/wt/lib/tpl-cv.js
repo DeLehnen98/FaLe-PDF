@@ -121,7 +121,7 @@ export async function cvPdf(v, lang, photo = null) {
       w.ensure(sizes.body * 2.6);
       if (style === 'bar') {
         w.para(t(sk.name), { size: sizes.body - 0.5, x, width, lead: 1.25 });
-        if (lvl) { bar(x, w.y - 1, width, lvl); w.space(9); }
+        if (lvl) { bar(x, w.y - 4.5, width, lvl); w.space(11); } // below the descenders of the name
       } else {
         const nameW = width - (lvl ? mm(52) : 0);
         const y0 = w.y;
@@ -138,7 +138,7 @@ export async function cvPdf(v, lang, photo = null) {
       if (style === 'bar') {
         w.para(t(l.name), { size: sizes.body - 0.5, x, width, lead: 1.25 });
         w.para(LV[l.level] || '', { size: sizes.small - 0.4, x, width, color: w.GREY, lead: 1.25 });
-        bar(x, w.y - 1, width, LANG_SCORE[l.level] || 0); w.space(9);
+        bar(x, w.y - 4.5, width, LANG_SCORE[l.level] || 0); w.space(11);
       } else w.kv([[t(l.name), LV[l.level] || '']], { size: sizes.body, labelWidth: Math.min(mm(40), width * 0.4), x, width, after: 1 });
     }
   };

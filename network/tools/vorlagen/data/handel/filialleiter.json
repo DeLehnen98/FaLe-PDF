@@ -1,0 +1,193 @@
+{
+ "id": "filialleiter",
+ "field": "handel",
+ "name": "Filialleiter/in",
+ "search": "filialleiterin marktleiter storemanager storeleiter leitung filiale einzelhandel verkaufsstellenleiter",
+ "short": "Verantwortung für Team, Umsatz und Ware – Aufstieg oder Wechsel.",
+ "desc": "Bewerbung als Filialleiter/in im Einzelhandel: Musteranschreiben für den Aufstieg aus der Stellvertretung und den Wechsel als erfahrene Marktleitung, plus Lebenslauf.",
+ "intro": "Als Filialleitung trägst du Verantwortung für Umsatz, Personal, Kosten und Ware. Gute Bewerbungen nennen Kennzahlen – Umsatzentwicklung, Inventurergebnisse, Personalkosten, Fluktuation – und zeigen, wie du ein Team führst.",
+ "lookFor": [
+  "Kaufmännische Ausbildung im Handel und Führungserfahrung",
+  "Kennzahlen: Umsatz, Rohertrag, Inventur, Personalkostenquote",
+  "Personalplanung, Einarbeitung, Mitarbeitergespräche",
+  "Warenwirtschaft und Sortimentspflege",
+  "Belastbarkeit und Präsenz auf der Fläche"
+ ],
+ "letters": [
+  {
+   "label": "Aufstieg aus der Stellvertretung",
+   "level": "erfahren",
+   "position": "Filialleiterin",
+   "to": {
+    "org": "Buchhandlung Seitenweise GmbH",
+    "sal": "f",
+    "street": "Domplatz 6",
+    "city": "48143 Münster",
+    "contact": "Overbeck"
+   },
+   "body": [
+    "die letzten acht Monate habe ich unsere Filiale am Prinzipalmarkt kommissarisch geleitet, weil die Leitung in Elternzeit ist. Ich habe gemerkt, dass ich diese Aufgabe dauerhaft möchte, und die Stelle in Ihrer Filiale in der Ludgeristraße ist dafür ideal.",
+    "In der Zeit habe ich die Personalplanung für neun Kolleginnen und vier Aushilfen gemacht, die Inventur verantwortet und mit dem Einkauf die Sortimentsschwerpunkte abgestimmt. Den Umsatz im Weihnachtsgeschäft haben wir gegenüber dem Vorjahr leicht gesteigert, obwohl die Laufkundschaft weniger wurde – vor allem mit Lesungen und einem Geschenk-Service für Firmenkunden, den ich aufgebaut habe.",
+    "Buchhändlerin bin ich seit 2015, ich kenne das Geschäft also von der Kasse bis zur Remission."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Abschlusszeugnis",
+    "Arbeitszeugnisse"
+   ]
+  },
+  {
+   "label": "Erfahrener Marktleiter, Wechsel",
+   "level": "erfahren",
+   "position": "Filialleiter Lebensmitteleinzelhandel",
+   "to": {
+    "org": "Frischkauf Nordwest GmbH",
+    "sal": "none",
+    "street": "Robert-Bosch-Straße 5",
+    "city": "48153 Münster"
+   },
+   "body": [
+    "vier Jahre leite ich meinen jetzigen Markt. In dieser Zeit haben wir die Abschriften im Frischebereich fast halbiert und die Fluktuation im Team deutlich gesenkt. Beides hängt zusammen: Wer gern bei uns arbeitet, achtet besser auf die Ware.",
+    "Ich führe 35 Mitarbeitende, davon zwei Auszubildende pro Jahr, und verantworte einen Jahresumsatz im zweistelligen Millionenbereich. Ich plane Personal nach Kundenfrequenz, führe Jahresgespräche und habe zwei Mitarbeiterinnen zur Stellvertretung entwickelt. Mit Lieferanten aus der Region verhandle ich selbst über Sonderplatzierungen.",
+    "Ich möchte in ein Unternehmen wechseln, das seinen Marktleitern mehr Spielraum bei Sortiment und Personal lässt. Gerne erzähle ich Ihnen mehr im persönlichen Gespräch."
+   ],
+   "att": [
+    "Lebenslauf",
+    "Zeugnisse"
+   ],
+   "from": [
+    "Uwe Brockmann",
+    "Wolbecker Straße 44",
+    "48155 Münster"
+   ]
+  }
+ ],
+ "cv": {
+  "avatar": "a04",
+  "design": "classic",
+  "accent": 5,
+  "name": "Katrin Overhage",
+  "title": "Buchhändlerin, kommissarische Filialleitung",
+  "street": "Hammer Straße 20",
+  "city": "48153 Münster",
+  "exp": [
+   [
+    "02/2026",
+    "",
+    "Kommissarische Filialleiterin",
+    "Buchhaus Westfalen",
+    "Münster",
+    "- Personalplanung für 13 Mitarbeitende\n- Inventur und Sortimentsplanung\n- Aufbau Geschenkservice für Firmenkunden"
+   ],
+   [
+    "08/2018",
+    "01/2026",
+    "Stellvertretende Filialleiterin",
+    "Buchhaus Westfalen",
+    "Münster",
+    ""
+   ],
+   [
+    "08/2015",
+    "07/2018",
+    "Buchhändlerin",
+    "Buchhandlung Raesfeld",
+    "Münster",
+    ""
+   ]
+  ],
+  "edu": [
+   [
+    "2012",
+    "2015",
+    "Ausbildung zur Buchhändlerin",
+    "Buchhandlung Raesfeld",
+    "Münster",
+    ""
+   ],
+   [
+    "2003",
+    "2012",
+    "Abitur",
+    "Gymnasium Paulinum",
+    "Münster",
+    ""
+   ]
+  ],
+  "courses": [
+   [
+    "",
+    "2024",
+    "Führen im Handel",
+    "Handelsverband",
+    "",
+    ""
+   ]
+  ],
+  "skills": [
+   [
+    "Personalplanung",
+    4
+   ],
+   [
+    "Sortimentsplanung",
+    5
+   ],
+   [
+    "Kennzahlen und Controlling",
+    4
+   ],
+   [
+    "Veranstaltungen",
+    4
+   ],
+   [
+    "Warenwirtschaft",
+    4
+   ]
+  ],
+  "langs": [
+   [
+    "Deutsch",
+    "native"
+   ],
+   [
+    "Englisch",
+    "C1"
+   ],
+   [
+    "Niederländisch",
+    "B1"
+   ]
+  ],
+  "hobbies": "Lesekreis, Radtouren durchs Münsterland"
+ },
+ "do": [
+  "Nenn Kennzahlen und Teamgrößen.",
+  "Beschreib, wie du Mitarbeitende entwickelt hast.",
+  "Zeig unternehmerisches Denken mit einem Beispiel."
+ ],
+ "dont": [
+  "Interne Umsatzzahlen des alten Arbeitgebers genau nennen – Größenordnungen reichen.",
+  "Nur über Verkauf reden, nicht über Führung.",
+  "Den alten Arbeitgeber schlechtmachen."
+ ],
+ "questions": [
+  "Wie gehen Sie mit einer Mitarbeiterin um, die häufig zu spät kommt?",
+  "Wie planen Sie Personal in der Vorweihnachtszeit?",
+  "Ihre Inventur zeigt eine hohe Differenz. Was tun Sie?",
+  "Wie motivieren Sie Ihr Team?"
+ ],
+ "faq": [
+  {
+   "q": "Darf ich Umsatzzahlen meines Arbeitgebers nennen?",
+   "a": "Genaue Zahlen sind oft vertraulich. Nutze Größenordnungen („zweistelliger Millionenbetrag“) oder Veränderungen in Prozent – das reicht, um deine Wirkung zu zeigen."
+  }
+ ],
+ "related": [
+  "kaufmann-im-einzelhandel",
+  "aussendienst",
+  "verkaeuferin",
+  "personalsachbearbeiter"
+ ]
+}
