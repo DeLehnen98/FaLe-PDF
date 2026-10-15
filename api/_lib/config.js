@@ -34,6 +34,10 @@ const PROVIDERS = {
 };
 
 const DEFAULT_ORIGINS = ['https://fale-pdf.vercel.app', 'https://localhost', 'http://localhost', 'capacitor://localhost'];
+// FaLe One (Drive + Fotos) web app origins. FALE_ONE_ORIGINS (comma-separated) replaces this default list.
+const DEFAULT_ONE_ORIGINS = ['https://fale-one.vercel.app', 'https://one.fale.network'];
+const oneOrigins = () => (env('FALE_ONE_ORIGINS') ? env('FALE_ONE_ORIGINS').split(',') : DEFAULT_ONE_ORIGINS)
+  .map(s => s.trim().replace(/\/+$/, '')).filter(s => /^https:\/\/[a-z0-9.-]+(:\d{2,5})?$/i.test(s) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(s));
 
 function getConfig() {
   const provider = (env('AI_PROVIDER') || 'anthropic').toLowerCase();
@@ -73,7 +77,7 @@ function getConfig() {
     supabaseKey: env('SUPABASE_PUBLISHABLE_KEY'),
     store: (env('FALE_STORE') || 'supabase').toLowerCase(),
     timeZone: env('FALE_TIME_ZONE') || 'Europe/Berlin',
-    allowedOrigins: [...DEFAULT_ORIGINS, ...env('AI_ALLOWED_ORIGINS').split(',').map(s => s.trim()).filter(Boolean)],
+    allowedOrigins: [...DEFAULT_ORIGINS, ...oneOrigins(), ...env('AI_ALLOWED_ORIGINS').split(',').map(s => s.trim()).filter(Boolean)],
     playPackage: env('PLAY_PACKAGE_NAME') || 'dev.fale.pdf',
     playSaJson: env('GOOGLE_PLAY_SA_JSON'),
     plusProducts: (env('PLUS_PRODUCTS') || 'fale_plus_monthly,fale_plus_yearly').split(',').map(s => s.trim()).filter(Boolean),
@@ -123,4 +127,4 @@ function accountConfigured(cfg) {
   return !!(cfg.accountsEnabled && cfg.supabaseUrl && cfg.supabaseKey);
 }
 
-module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, accountConfigured, PROVIDERS };
+module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, accountConfigured, PROVIDERS, DEFAULT_ONE_ORIGINS };

@@ -24,6 +24,13 @@ function makeAccountCore(overrides = {}) {
     getConfig: C.getConfig, getAccountStore, getShareStore,
     fetchImpl: (...a) => fetch(...a), now: () => new Date(),
     verify: (cfg, token, opts) => A.verifyAccessToken(cfg, token, { fetchImpl: deps.fetchImpl, ...opts }),
+    afterDelete: async (cfg) => {
+      const B = require('./blobstore');
+      if (B.blobConfig().kind !== 's3' || !B.s3Configured(B.blobConfig())) return;
+      const { runGc } = require('./drive');
+      const store = require('./drivestore').getDriveStore(cfg);
+      await runGc(cfg, { store, blobs: B.makeBlobstore(store, { fetchImpl: deps.fetchImpl }), budgetMs: 8000 });
+    },
     ...overrides,
   };
 
@@ -132,7 +139,8 @@ function makeAccountCore(overrides = {}) {
       await limit(cfg, req, user, 'acct');
       let wiped = { deleted: 0, complete: false };
       try { wiped = await wipeObjects(cfg, token, user.id, Date.now() + 35000); } catch { /* storage not reachable – remaining objects are reported below */ }
-      const r = await deps.getAccountStore(cfg).deleteAccount({ user: user.id });
+      const r = await deps.getAccountStore(cfg).deleteAccount({ user: user.id }); // incl. FaLe One rows (chunks cascade)
+      await deps.afterDelete(cfg).catch(() => {}); // FaLe One on S3: remove the queued objects now (the rest: gc worker)
       let authDeleted = !!r.authDeleted;
       if (!authDeleted && await adminDeleteUser(cfg, user.id)) {
         authDeleted = true;
