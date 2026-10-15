@@ -465,6 +465,9 @@ async function main() {
 
   writeFileSync(join(OUT, 'console.txt'), consoleLog.join('\n'));
   writeFileSync(join(OUT, 'results.json'), JSON.stringify(results, null, 2));
+  // uncaught exceptions anywhere in the run (e.g. APIs an older WebView lacks) – a hint, not a failure
+  const exc = [...new Set(consoleLog.filter(l => /^\[exception\]/.test(l)).map(l => l.split('\n')[0].slice(0, 220)))];
+  if (exc.length) console.log(`::warning title=E2E JS-Ausnahmen (${exc.length})::${esc(exc.slice(0, 12).join('\n'))}`);
   const failed = results.filter(r => !r.ok);
   console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
   if (failed.length) console.log('::error title=E2E Zusammenfassung::' + esc(failed.map(f => f.name).join(', ') + ' fehlgeschlagen'));

@@ -80,6 +80,8 @@ npm run android:open     # Android Studio öffnen → Run
 - Manifest: Kamera (optional als Hardware), Benachrichtigungen, Vibration, Speicher bis Android 10,
   `adjustResize`, Intent-Filter **VIEW / SEND / SEND_MULTIPLE** für PDF, DOCX, XLSX, PPTX, CSV, TXT, MD, Bilder
 - `MainActivity.java` + `FaleIncomingPlugin.java` (eingehende Dateien, Statusleisten-Farben)
+  + `FalePrintPlugin.java` (Drucken über das Android-Druckmenü – die WebView ignoriert `window.print()`)
+- FileProvider-Pfade (`res/xml/file_paths.xml`) decken `cache/share/` für das Teilen ab
 - Theme-/Splash-Farben (`#F5F6FB` hell, `#171542` dunkel), Splash ohne Capacitor-Logo
 - Launcher-Icons (adaptiv + monochrom + Legacy) und Benachrichtigungs-Icon aus `icons/*.png`
   (reiner Node-PNG-Code, deterministisch)
@@ -103,7 +105,9 @@ Alle Funktionen haben einen Web-Fallback und können überall importiert werden.
 |---|---|---|
 | `isNative()` | `false` | `true` |
 | `saveFile(blobOrBytes, name, mime)` → `{ok, where}` | normaler Download | `Dokumente/FaLe PDF/<name>` (eindeutiger Name, Toast), Fallback Teilen-Dialog |
-| `shareFile(blobOrBytes, name, mime, {title, text})` → `{ok, method, cancelled}` | Web Share API (Fallback Download) | Cache-Datei + System-Teilen |
+| `shareFile(blobOrBytes, name, mime, {title, text})` → `{ok, method, cancelled}` | Web Share API (Fallback Download) | Cache-Datei + System-Teilen (Share-Plugin; Abbrechen ≠ Fehler, Fehler-Toast mit „Herunterladen“) |
+| `shareTextOrLink({title, text, url})` → `{ok, cancelled}` | Web Share API | Share-Plugin (kein `navigator.share` in der WebView) |
+| `printPdf(bytes, name)` → `{ok, method}` | `{ok:false, method:'web'}` – der Viewer druckt per `window.print()` | PDF → `cache/print/` → FalePrint → System-Druckdialog (Fallback: Teilen) |
 | `scheduleNotification({id, at, title, body, route})` → `boolean` | Notification-API, solange die Seite offen ist | LocalNotifications (Erlaubnis wird bei Bedarf gefragt; Tippen öffnet `route`) |
 | `cancelNotification(id)` | ✓ | ✓ |
 | `listReminders()`, `dueReminders({remove})` | in-App-Anzeige fälliger Erinnerungen (localStorage) | dto. |
@@ -113,7 +117,9 @@ Alle Funktionen haben einen Web-Fallback und können überall importiert werden.
 | `openLegalPage('datenschutz.html')` | neuer Tab | Dialog in der App |
 
 `downloadBlob`/`shareBlob` aus `js/ui.js` delegieren an `saveFile`/`shareFile` – Werkzeuge müssen nichts
-Besonderes tun. Der Service Worker wird in der Android-App nicht registriert (Assets liegen lokal).
+Besonderes tun. Ende-zu-Ende-Test der echten App: `.github/workflows/android-e2e.yml` (Emulator API 34 + 36,
+nach jedem erfolgreichen „Android“-Build; Drucken, Teilen, Herunterladen, Öffnen mit, Text bearbeiten,
+Unterschreiben – Ergebnisse als Annotationen, Screenshots als Artefakt). Der Service Worker wird in der Android-App nicht registriert (Assets liegen lokal).
 
 ## Release
 

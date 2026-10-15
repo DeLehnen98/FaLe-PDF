@@ -12,7 +12,8 @@
 //
 // What it does: app id/name/version, release signing from env (FALE_KEYSTORE_*), permissions
 // (camera, legacy storage), "Öffnen mit"/"Teilen" intent filters, MainActivity + FaleIncoming
-// plugin (incoming files, system bar colours, FLAG_SECURE), theme colours, splash, launcher +
+// plugin (incoming files, system bar colours, FLAG_SECURE) + FalePrint plugin (system print dialog –
+// the WebView ignores window.print()), FileProvider paths for sharing, theme colours, splash, launcher +
 // notification icons – and security hardening (docs/SECURITY.md): no backups / device transfer of app
 // data, no cleartext traffic, system CAs only for release builds, explicit exported=false on the
 // FileProvider, WebView without file/content URL access, no WebView debugging in release builds,
