@@ -57,6 +57,23 @@
       if (mq.addEventListener) mq.addEventListener('change', syncButtons);
     }
 
+    // The "Mehr" menu in the header is a plain <details> (works without JS); here it only learns to close
+    // on a tap outside, on Escape and after picking a link.
+    var menus = document.querySelectorAll('[data-nav-more]');
+    if (menus.length) {
+      document.addEventListener('click', function (ev) {
+        var inside = ev.target.closest ? ev.target.closest('[data-nav-more]') : null;
+        for (var n = 0; n < menus.length; n++) if (menus[n] !== inside) menus[n].open = false;
+        if (inside && ev.target.closest('a')) inside.open = false;
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Escape') return;
+        for (var n = 0; n < menus.length; n++) {
+          if (menus[n].open) { menus[n].open = false; menus[n].querySelector('summary').focus(); }
+        }
+      });
+    }
+
     var links = document.querySelectorAll('[data-konto-link]');
     for (var j = 0; j < links.length; j++) links[j].setAttribute('href', FALE_CONFIG.kontoUrl);
     if (FALE_CONFIG.kontoAvailable) {

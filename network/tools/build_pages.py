@@ -77,12 +77,17 @@ T = {
         'skip': 'Zum Inhalt springen',
         'home_label': 'FaleNetwork – Startseite',
         'nav_label': 'Hauptnavigation',
-        'nav': [('Apps', '/#apps'), ('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe-Konto', '/konto/'), ('Neuigkeiten', '/#news'), ('FAQ', '/#faq')],
+        'nav': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('Apps', '/#apps')],
+        'more': 'Mehr', 'more_label': 'Weitere Seiten',
+        'more_links': [('Neuigkeiten', '/#news'), ('Häufige Fragen', '/#faq'), ('FaLe-Konto (kommt bald)', '/konto/')],
+        'lang_label': 'Sprache', 'lang_name': 'Deutsch', 'lang_current': 'Deutsch – aktuelle Sprache',
         'other_lang': 'English', 'other_lang_code': 'en',
+        'lang_fallback': 'English – this page is only available in German; opens the English overview',
         'theme_dark': 'Dunkles Design', 'theme_light': 'Helles Design',
         'foot_claim': 'Freie Apps von FaLe.dev – ohne Konto, ohne Tracking, mit deinen Daten auf deinem Gerät.',
-        'foot_apps': 'Apps', 'foot_legal': 'Rechtliches',
-        'foot_links_apps': [('FaLe PDF', '/apps/pdf/'), ('Online-Werkzeuge', '/werkzeuge/'), ('FaLe Clean', '/apps/clean/'), ('FaLe-Konto', '/konto/')],
+        'foot_apps': 'Angebot', 'foot_more': 'Mehr', 'foot_legal': 'Rechtliches',
+        'foot_links_apps': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe PDF', '/apps/pdf/'), ('FaLe Clean', '/apps/clean/')],
+        'foot_links_more': [('Neuigkeiten', '/#news'), ('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('English', '/en/')],
         'foot_links_legal': [('Impressum', '/impressum/'), ('Datenschutz', '/datenschutz/'), ('Sicherheit melden', '/.well-known/security.txt')],
         'foot_note': 'Diese Website setzt keine Cookies und lädt nichts von fremden Servern.',
         'locale': 'de_DE', 'locale_alt': 'en_GB',
@@ -92,12 +97,17 @@ T = {
         'skip': 'Skip to content',
         'home_label': 'FaleNetwork – home',
         'nav_label': 'Main navigation',
-        'nav': [('Apps', '/en/#apps'), ('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe Account', '/en/account/'), ('News', '/en/#news'), ('FAQ', '/en/#faq')],
+        'nav': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('Apps', '/en/#apps')],
+        'more': 'More', 'more_label': 'More pages',
+        'more_links': [('News', '/en/#news'), ('FAQ', '/en/#faq'), ('FaLe Account (coming soon)', '/en/account/')],
+        'lang_label': 'Language', 'lang_name': 'English', 'lang_current': 'English – current language',
         'other_lang': 'Deutsch', 'other_lang_code': 'de',
+        'lang_fallback': 'Deutsch – diese Seite gibt es nur auf Englisch; öffnet die deutsche Übersicht',
         'theme_dark': 'Dark theme', 'theme_light': 'Light theme',
         'foot_claim': 'Free apps by FaLe.dev – no account, no tracking, your data stays on your device.',
-        'foot_apps': 'Apps', 'foot_legal': 'Legal',
-        'foot_links_apps': [('FaLe PDF', '/en/apps/pdf/'), ('Online tools', '/en/tools/'), ('FaLe Clean', '/en/apps/clean/'), ('FaLe Account', '/en/account/')],
+        'foot_apps': 'What’s here', 'foot_more': 'More', 'foot_legal': 'Legal',
+        'foot_links_apps': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe PDF', '/en/apps/pdf/'), ('FaLe Clean', '/en/apps/clean/')],
+        'foot_links_more': [('News', '/en/#news'), ('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Deutsch', '/')],
         'foot_links_legal': [('Legal notice', '/en/imprint/'), ('Privacy', '/en/privacy/'), ('Report a security issue', '/.well-known/security.txt')],
         'foot_note': 'This website sets no cookies and loads nothing from third-party servers.',
         'locale': 'en_GB', 'locale_alt': 'de_DE',
@@ -159,22 +169,48 @@ def head(lang, key, title, desc, extra_ld=None, noindex=False, paths=None, og_im
 </head>'''
 
 
-def header(lang, key, current=None, other_url=None):
+def lang_switch(lang, other_url, fallback=False):
+    """Segmented "DE | EN" control: the current language is highlighted (not a link), the other one is a plain
+    link to the same page in that language – or, when the page has no translation (fallback=True), to the
+    other language's overview, which its accessible name and tooltip say. Works without JavaScript."""
+    t = T[lang]
+    other = 'en' if lang == 'de' else 'de'
+    o = T[other]
+    cur = (f'<span class="ls-opt" aria-current="true" lang="{lang}" title="{t["lang_current"]}">'
+           f'<span aria-hidden="true">{lang.upper()}</span><span class="sr-only">{t["lang_current"]}</span></span>')
+    name = t['lang_fallback'] if fallback else o['lang_name']
+    cls = 'ls-opt ls-fallback' if fallback else 'ls-opt'
+    oth = (f'<a class="{cls}" href="{other_url}" hreflang="{other}" lang="{other}" title="{name}">'
+           f'<span aria-hidden="true">{other.upper()}</span><span class="sr-only">{name}</span></a>')
+    a, b = (cur, oth) if lang == 'de' else (oth, cur)
+    return f'<nav class="lang-switch" aria-label="{t["lang_label"]} / {o["lang_label"]}">{a}{b}</nav>'
+
+
+def header(lang, key, current=None, other_url=None, fallback=False):
+    """Site header. current = href of the active main-nav item; other_url = this page in the other language
+    (fallback=True when it is only the other language's overview because no translation exists)."""
     t = T[lang]
     other = 'en' if lang == 'de' else 'de'
     other_url = other_url or url(key, other)
     home = url('home', lang)
-    nav = ''.join(
-        f'<a href="{href}"{" aria-current=\"page\"" if current == href else ""}>{label}</a>'
-        for label, href in t['nav'])
+    if current is None and key in ('pdf', 'clean'):
+        current = t['nav'][2][1]          # the app pages belong to "Apps"
+
+    def cur(href):
+        return ' aria-current="page"' if current == href else ''
+    nav = ''.join(f'<a href="{href}"{cur(href)}>{label}</a>' for label, href in t['nav'])
+    more_cur = ' is-current' if any(current == h for _, h in t['more_links']) else ''
+    more = ''.join(f'<li><a href="{href}"{cur(href)}>{label}</a></li>' for label, href in t['more_links'])
+    chev = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>')
     return f'''<body>
 <a class="skip" href="#main">{t['skip']}</a>
 <header class="site-head">
   <div class="wrap head-row">
     <a class="brand" href="{home}" aria-label="{t['home_label']}"><img src="/assets/logo/fale-network-mark.svg" width="34" height="34" alt=""><span>Fale<b>Network</b></span></a>
-    <nav class="nav" aria-label="{t['nav_label']}">{nav}</nav>
+    <nav class="nav" aria-label="{t['nav_label']}">{nav}<details class="nav-more{more_cur}" data-nav-more><summary>{t['more']}{chev}</summary><ul class="nav-more-menu" aria-label="{t['more_label']}">{more}</ul></details></nav>
     <div class="head-tools">
-      <a class="lang" href="{other_url}" hreflang="{other}" lang="{other}">{t['other_lang']}</a>
+      {lang_switch(lang, other_url, fallback)}
       <button class="icon-btn" type="button" data-theme-toggle hidden aria-pressed="false" aria-label="{t['theme_dark']}" title="{t['theme_dark']}" data-label-dark="{t['theme_dark']}" data-label-light="{t['theme_light']}">{ic('moon', 'i-moon')}{ic('sun', 'i-sun')}</button>
     </div>
   </div>
@@ -184,8 +220,13 @@ def header(lang, key, current=None, other_url=None):
 def footer(lang):
     t = T[lang]
     home = url('home', lang)
-    apps = ''.join(f'<li><a href="{h}">{l}</a></li>' for l, h in t['foot_links_apps'])
-    legal = ''.join(f'<li><a href="{h}">{l}</a></li>' for l, h in t['foot_links_legal'])
+
+    def li(label, href):
+        lg = {'English': ' hreflang="en" lang="en"', 'Deutsch': ' hreflang="de" lang="de"'}.get(label, '')
+        return f'<li><a href="{href}"{lg}>{label}</a></li>'
+    apps = ''.join(li(l, h) for l, h in t['foot_links_apps'])
+    more = ''.join(li(l, h) for l, h in t['foot_links_more'])
+    legal = ''.join(li(l, h) for l, h in t['foot_links_legal'])
     return f'''<footer class="site-foot">
   <div class="wrap">
     <div class="foot-grid">
@@ -194,6 +235,7 @@ def footer(lang):
         <p>{t['foot_claim']}</p>
       </div>
       <div><h2>{t['foot_apps']}</h2><ul>{apps}</ul></div>
+      <div><h2>{t['foot_more']}</h2><ul>{more}</ul></div>
       <div><h2>{t['foot_legal']}</h2><ul>{legal}</ul></div>
     </div>
     <div class="foot-base"><span>© {YEAR} FaLe.dev</span><span>{t['foot_note']}</span></div>
@@ -220,16 +262,21 @@ def pill(kind, text):
 # ================================================================= HOME
 HOME = {
     'de': {
-        'title': 'FaleNetwork – freie Apps, die deine Daten respektieren',
-        'desc': 'FaleNetwork ist die Familie freier Apps von FaLe.dev: FaLe PDF, bald FaLe Clean und mehr. Kein Konto nötig, Verarbeitung auf deinem Gerät, kein Tracking.',
-        'h1': 'Freie Apps, die auf deinem Gerät bleiben.',
-        'lede': 'FaleNetwork ist eine wachsende Familie kostenloser Apps von FaLe.dev. Sie arbeiten direkt auf deinem Handy oder PC, brauchen kein Konto und verkaufen keine Daten – sie sammeln gar keine.',
+        'title': 'FaleNetwork – freie Werkzeuge, Vorlagen und Apps',
+        'desc': 'Kostenlose PDF- und Bild-Werkzeuge, Vorlagen für Bewerbung, Briefe und Tabellen sowie die FaLe-Apps. Kein Konto nötig, Verarbeitung auf deinem Gerät, kein Tracking.',
+        'h1': 'Freie Werkzeuge, Vorlagen und Apps – direkt auf deinem Gerät.',
+        'lede': 'FaleNetwork bündelt alles, was FaLe.dev kostenlos anbietet. Kein Konto, kein Tracking – deine Dateien bleiben bei dir.',
+        'entry_label': 'Womit willst du anfangen?',
+        'entries': [('tools', 'Werkzeuge', '{n} Werkzeuge für PDF und Bilder', 'Zusammenfügen, verkleinern, umwandeln, unterschreiben – direkt im Browser.'),
+                    ('templates', 'Vorlagen', 'Bewerbung, Lebenslauf, Briefe, Tabellen', 'Beispiel öffnen, eigene Daten eintragen, als PDF speichern.'),
+                    ('apps', 'Apps', 'FaLe PDF · FaLe Clean (bald)', 'Die PDF-App für Browser und Android – bald auch ein Aufräum-Programm für Windows.')],
+        'n_tools': 'Über {n}',
         'cta1': 'FaLe PDF öffnen', 'cta2': 'Alle Apps ansehen',
         'shelf_title': 'Deine FaLe-Apps', 'shelf_state': 'Stand: Oktober 2026',
         'shelf_pdf_meta': 'Web und Android', 'shelf_clean_meta': 'Windows', 'soon': 'Bald', 'free_slot': 'Frei',
         'free_slot_sr': 'Freier Platz für eine künftige App',
         'shelf_note': 'Jede App funktioniert für sich allein. Ein gemeinsames Konto ist freiwillig und kommt bald.',
-        'apps_h': 'Die Apps', 'apps_p': 'Jede App läuft eigenständig. Installiere nur, was du wirklich brauchst.',
+        'apps_h': 'Die Apps', 'apps_p': 'Jede App läuft eigenständig – nutze nur, was du brauchst.',
         'live': 'Verfügbar', 'coming': 'Bald verfügbar',
         'pdf_platform': 'Im Browser und als Android-App',
         'pdf_desc': 'PDFs lesen, ausfüllen, unterschreiben, scannen mit Texterkennung und umwandeln – dazu Dokumente, Tabellen und Präsentationen. Über 40 Werkzeuge, die meisten auch offline.',
@@ -241,11 +288,11 @@ HOME = {
         'clean_hint': 'Noch nicht zum Download – FaLe Clean läuft gerade auf Test-PCs.',
         'next_h': 'Die nächste App',
         'next_p': 'Neue Apps kündigen wir hier an, sobald es etwas Echtes zu zeigen gibt. Keine Versprechen auf Vorrat.',
-        'tools_h': 'Online-Werkzeuge für PDF und Bilder',
-        'tools_p': 'PDFs zusammenfügen, verkleinern oder Fotos in eine PDF verwandeln – direkt hier im Browser. Deine Dateien werden dabei nicht hochgeladen.',
+        'tools_h': 'Beliebte Werkzeuge',
+        'tools_p': 'Laufen direkt im Browser – deine Dateien werden nicht hochgeladen.',
         'tools_all': 'Alle Werkzeuge ansehen', 'tools_label': 'Beliebte Werkzeuge',
-        'prom_h': 'Was für jede FaLe-App gilt',
-        'prom_p': 'Diese Regeln gelten für FaLe PDF, FaLe Clean und für alles, was noch dazukommt.',
+        'prom_h': 'Was hier überall gilt',
+        'prom_p': 'Für die Werkzeuge, die Vorlagen und jede FaLe-App.',
         'promises': [
             ('no-user', 'Kein Konto nötig', 'App öffnen und loslegen. Keine Registrierung, keine E-Mail-Adresse, kein Login – auch nicht für Funktionen, die anderswo ein Abo kosten.'),
             ('device', 'Verarbeitung auf deinem Gerät', 'Dateien, Scans und Einstellungen bleiben auf deinem Handy oder PC. Was ohne Server geht, läuft ohne Server – oft auch offline.'),
@@ -262,7 +309,7 @@ HOME = {
         'plus_note': 'In FaLe PDF ist FaLe Plus bereits eingebaut. Mit dem FaLe-Konto gilt es künftig in allen Apps.',
         'konto_more': 'Mehr zum FaLe-Konto', 'konto_signin': 'Anmelden',
         'konto_soon_text': 'Die Anmeldung öffnet, sobald das Konto fertig ist.',
-        'news_h': 'Neuigkeiten', 'news_p': 'Was sich zuletzt getan hat. Kein Newsletter – schau einfach ab und zu vorbei.',
+        'news_h': 'Neuigkeiten', 'news_p': 'Was sich zuletzt getan hat.',
         'news': [
             ('2026-10', 'Oktober 2026', 'FaleNetwork-Website online', 'Alle FaLe-Apps an einem Ort, mit gemeinsamen Regeln für Datenschutz und Finanzierung.'),
             ('2026-10', 'Oktober 2026', 'FaLe PDF 2.3', 'Dateien Ende-zu-Ende-verschlüsselt teilen, Unterschriften anfordern und Geräte per QR-Code verbinden.'),
@@ -281,16 +328,21 @@ HOME = {
         ],
     },
     'en': {
-        'title': 'FaleNetwork – free apps that respect your data',
-        'desc': 'FaleNetwork is the family of free apps by FaLe.dev: FaLe PDF, soon FaLe Clean and more. No account needed, processing on your device, no tracking.',
-        'h1': 'Free apps that stay on your device.',
-        'lede': 'FaleNetwork is a growing family of free apps by FaLe.dev. They work right on your phone or PC, need no account and sell no data – they don’t collect any.',
+        'title': 'FaleNetwork – free tools, templates and apps',
+        'desc': 'Free PDF and image tools, templates for CVs, letters and spreadsheets, and the FaLe apps. No account needed, processing on your device, no tracking.',
+        'h1': 'Free tools, templates and apps – right on your device.',
+        'lede': 'FaleNetwork brings together everything FaLe.dev offers for free. No account, no tracking – your files stay with you.',
+        'entry_label': 'Where do you want to start?',
+        'entries': [('tools', 'Tools', '{n} tools for PDFs and images', 'Merge, compress, convert, sign – right in your browser.'),
+                    ('templates', 'Templates', 'CVs, cover letters, letters, spreadsheets', 'Open an example, fill in your details, save it as a PDF.'),
+                    ('apps', 'Apps', 'FaLe PDF · FaLe Clean (soon)', 'The PDF app for the browser and Android – a clean-up program for Windows is coming soon.')],
+        'n_tools': 'More than {n}',
         'cta1': 'Open FaLe PDF', 'cta2': 'See all apps',
         'shelf_title': 'Your FaLe apps', 'shelf_state': 'As of October 2026',
         'shelf_pdf_meta': 'Web and Android', 'shelf_clean_meta': 'Windows', 'soon': 'Soon', 'free_slot': 'Empty',
         'free_slot_sr': 'Open slot for a future app',
         'shelf_note': 'Every app works on its own. A shared account is optional and coming soon.',
-        'apps_h': 'The apps', 'apps_p': 'Every app runs on its own. Install only what you actually need.',
+        'apps_h': 'The apps', 'apps_p': 'Every app runs on its own – use only what you need.',
         'live': 'Available', 'coming': 'Coming soon',
         'pdf_platform': 'In the browser and as an Android app',
         'pdf_desc': 'Read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. More than 40 tools, most of them offline.',
@@ -302,11 +354,11 @@ HOME = {
         'clean_hint': 'Not available for download yet – FaLe Clean is running on test PCs right now.',
         'next_h': 'The next app',
         'next_p': 'We announce new apps here once there is something real to show. No promises in advance.',
-        'tools_h': 'Online tools for PDFs and images',
-        'tools_p': 'Merge PDFs, make them smaller or turn photos into a PDF – right here in your browser. Your files are not uploaded.',
+        'tools_h': 'Popular tools',
+        'tools_p': 'They run right in your browser – your files are not uploaded.',
         'tools_all': 'See all tools', 'tools_label': 'Popular tools',
-        'prom_h': 'What every FaLe app promises',
-        'prom_p': 'These rules apply to FaLe PDF, FaLe Clean and everything that comes next.',
+        'prom_h': 'What applies everywhere here',
+        'prom_p': 'For the tools, the templates and every FaLe app.',
         'promises': [
             ('no-user', 'No account needed', 'Open the app and get started. No sign-up, no email address, no login – not even for features other apps charge a subscription for.'),
             ('device', 'Processing on your device', 'Files, scans and settings stay on your phone or PC. Whatever works without a server runs without one – often offline, too.'),
@@ -323,7 +375,7 @@ HOME = {
         'plus_note': 'FaLe Plus is already built into FaLe PDF. With the FaLe Account it will work in every app.',
         'konto_more': 'More about the FaLe Account', 'konto_signin': 'Sign in',
         'konto_soon_text': 'Sign-in opens as soon as the account is ready.',
-        'news_h': 'News', 'news_p': 'What happened recently. No newsletter – just check back now and then.',
+        'news_h': 'News', 'news_p': 'What happened recently.',
         'news': [
             ('2026-10', 'October 2026', 'FaleNetwork website launched', 'All FaLe apps in one place, with shared rules for privacy and funding.'),
             ('2026-10', 'October 2026', 'FaLe PDF 2.3', 'Share files end-to-end encrypted, request signatures and connect devices with a QR code.'),
@@ -359,42 +411,55 @@ def ld_home(lang):
     return [org, site]
 
 
+def tool_count():
+    return len([f for f in (ROOT / 'tools' / 'webtools' / 'specs').glob('*.json')])
+
+
+ENTRY_ICONS = {
+    'tools': '<path d="M3.5 9h17v9.5A1.5 1.5 0 0 1 19 20H5a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M8.5 9V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V9"/><path d="M3.5 13.5h17M10 13.5v2h4v-2"/>',
+    'templates': '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/>',
+    'apps': '<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><path d="M16.5 13.5v6M13.5 16.5h6"/>',
+}
+
+
+def entry_icon(kind):
+    return (f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
+            f'stroke-linejoin="round" aria-hidden="true" focusable="false">{ENTRY_ICONS[kind]}</svg>')
+
+
 def page_home(lang):
     c = HOME[lang]
-    pdf, clean, konto = url('pdf', lang), url('clean', lang), url('konto', lang)
-    shelf_empty = ''.join(
-        f'<li class="slot slot-empty"><span class="slot-icon"></span><span class="slot-name" aria-hidden="true">{c["free_slot"]}</span><span class="sr-only">{c["free_slot_sr"]}</span></li>'
-        for _ in range(4))
+    pdf, clean = url('pdf', lang), url('clean', lang)
     promises = ''.join(
         f'<li class="promise">{ic(i)}<h3>{h}</h3><p>{p}</p></li>' for i, h, p in c['promises'])
     news = ''.join(
-        f'<li><time datetime="{d}">{dl}</time><h3>{h}</h3><p>{p}</p></li>' for d, dl, h, p in c['news'])
+        f'<li><time datetime="{d}">{dl}</time><h3>{h}</h3><p>{p}</p></li>' for d, dl, h, p in c['news'][:3])
     faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
-    konto_li = ''.join(f'<li>{ic("check")}<span>{x}</span></li>' for x in c['konto_items'])
     hub = TOOLS_HUB[0 if lang == 'de' else 1]
-    tool_links = ''.join(f'<li><a class="tool-chip" href="{h}">{n}{ic("arrow")}</a></li>' for n, h in popular_tools(lang))
-    plus_li = ''.join(f'<li>{ic("check")}<span>{x}</span></li>' for x in c['plus_items'])
+    targets = {'tools': hub, 'templates': '/vorlagen/' if lang == 'de' else '/en/templates/', 'apps': '#apps'}
+    n = tool_count()
+    n_txt = c['n_tools'].replace('{n}', str((n - 1) // 10 * 10)) if n > 10 else str(n)
+    entries = ''.join(
+        f'<li><a class="entry entry-{k}" href="{targets[k]}"><span class="entry-ic">{entry_icon(k)}</span>'
+        f'<span class="entry-t"><strong>{name}</strong><span class="entry-meta">{meta.replace("{n}", n_txt)}</span>'
+        f'<span class="entry-desc">{desc}</span></span>{ic("arrow", "entry-go")}</a></li>'
+        for k, name, meta, desc in c['entries'])
+    tool_links = ''.join(f'<li><a class="tool-chip" href="{h}">{nm}{ic("arrow")}</a></li>' for nm, h in popular_tools(lang))
     body = f'''
 <main id="main">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <h1>{c['h1']}</h1>
-        <p class="lede">{c['lede']}</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="{PDF_APP}">{ic('globe')}{c['cta1']}</a>
-          <a class="btn btn-quiet" href="#apps">{c['cta2']}</a>
-        </div>
-      </div>
-      <div class="shelf">
-        <p class="shelf-title"><strong>{c['shelf_title']}</strong><span>{c['shelf_state']}</span></p>
-        <ul class="shelf-grid">
-          <li><a class="slot" href="{pdf}"><span class="slot-icon"><img src="/assets/icons/app-pdf.svg" width="84" height="84" alt=""></span><span class="slot-name">FaLe PDF</span><span class="slot-meta">{c['shelf_pdf_meta']}</span></a></li>
-          <li><a class="slot" href="{clean}"><span class="slot-icon"><img src="/assets/icons/app-clean.svg" width="84" height="84" alt=""></span><span class="slot-badge">{c['soon']}</span><span class="slot-name">FaLe Clean</span><span class="slot-meta">{c['shelf_clean_meta']}</span></a></li>
-          {shelf_empty}
-        </ul>
-        <p class="shelf-note">{c['shelf_note']}</p>
-      </div>
+  <section class="hero hero-home">
+    <div class="wrap">
+      <h1>{c['h1']}</h1>
+      <p class="lede">{c['lede']}</p>
+      <ul class="entries" aria-label="{c['entry_label']}">{entries}</ul>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="werkzeuge" aria-labelledby="tools-h">
+    <div class="wrap tools-teaser">
+      <div class="section-head"><h2 id="tools-h">{c['tools_h']}</h2><p>{c['tools_p']}</p></div>
+      <ul class="tool-chips" aria-label="{c['tools_label']}">{tool_links}</ul>
+      <div class="btn-row"><a class="btn btn-quiet" href="{hub}">{c['tools_all']}{ic('arrow')}</a></div>
     </div>
   </section>
 
@@ -427,22 +492,7 @@ def page_home(lang):
           </div>
           <p class="app-hint">{c['clean_hint']}</p>
         </li>
-        <li class="app app-next">
-          <span class="app-icon">{ic('plus')}</span>
-          <div>
-            <div class="app-title"><h3>{c['next_h']}</h3></div>
-            <p class="app-desc">{c['next_p']}</p>
-          </div>
-        </li>
       </ul>
-    </div>
-  </section>
-
-  <section class="section" id="werkzeuge" aria-labelledby="tools-h">
-    <div class="wrap tools-teaser">
-      <div class="section-head"><h2 id="tools-h">{c['tools_h']}</h2><p>{c['tools_p']}</p></div>
-      <ul class="tool-chips" aria-label="{c['tools_label']}">{tool_links}</ul>
-      <div class="btn-row"><a class="btn btn-primary" href="{hub}">{c['tools_all']}{ic('arrow')}</a></div>
     </div>
   </section>
 
@@ -450,21 +500,6 @@ def page_home(lang):
     <div class="wrap">
       <div class="section-head"><h2 id="prom-h">{c['prom_h']}</h2><p>{c['prom_p']}</p></div>
       <ul class="promises">{promises}</ul>
-    </div>
-  </section>
-
-  <section class="section band" id="konto" aria-labelledby="konto-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="konto-h">{c['konto_h']}</h2><p>{c['konto_p']}</p></div>
-      <div class="band-grid">
-        <div class="band-card"><h3>{c['konto_card_h']} {pill('soon', c['soon_pill'])}</h3><ul>{konto_li}</ul></div>
-        <div class="band-card"><h3>{c['plus_card_h']} {pill('soon', c['soon_pill'])}</h3><ul>{plus_li}</ul><p class="small band-note">{c['plus_note']}</p></div>
-      </div>
-      <div class="band-foot">
-        <a class="btn btn-quiet" href="{konto}">{c['konto_more']}</a>
-        <a class="btn btn-primary" href="{konto}" data-konto-link data-konto-signin hidden>{c['konto_signin']}</a>
-        <p class="small" data-konto-soon>{c['konto_soon_text']}</p>
-      </div>
     </div>
   </section>
 

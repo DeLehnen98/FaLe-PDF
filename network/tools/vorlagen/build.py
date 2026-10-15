@@ -86,13 +86,16 @@ MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August'
 S = {
     'de': {
         'home': 'Start', 'hub': 'Vorlagen', 'section': 'Bewerbung', 'guides': 'Ratgeber',
-        'hub_title': 'Vorlagen-Archiv: Bewerbung, Lebenslauf & mehr | FaleNetwork',
-        'hub_desc': 'Kostenlose Bewerbungsvorlagen für über 80 Berufe: ausformulierte Anschreiben, Lebensläufe mit Foto-Platzhalter und Tipps – direkt als PDF anpassen.',
-        'hub_h1': 'Vorlagen-Archiv',
-        'hub_lede': 'Bewerbungen für über {n} Berufe – jede mit ausformulierten Anschreiben, einem fertigen Lebenslauf und Tipps aus der Praxis. Beispiel öffnen, eigene Daten rein, PDF fertig.',
+        'hub_title': 'Vorlagen: Bewerbung, Lebenslauf, Briefe & Tabellen | FaleNetwork',
+        'hub_desc': 'Kostenlose Vorlagen: Bewerbungen für über {n} Berufe, Lebenslauf-Designs, Briefvorlagen und Excel-Tabellen – im Browser ausfüllen und als PDF speichern.',
+        'hub_h1': 'Vorlagen',
+        'hub_lede': 'Bewerbung, Lebenslauf, Briefe und Tabellen: Beispiel öffnen, eigene Daten eintragen, als PDF speichern.',
+        'hub_search_label': 'Bewerbungsvorlage nach Beruf suchen', 'hub_search_ph': 'Beruf suchen, z. B. Pflege, Verkauf …', 'hub_search_btn': 'Suchen',
+        'hub_coll_label': 'Bereiche', 'hub_apps_m': '{n} Berufe mit Anschreiben', 'hub_fill_h': 'Zum Ausfüllen', 'hub_fill_m': '{n} Formulare, z. B. Kündigung',
+        'hub_guides_m': '{n} Ratgeber zur Bewerbung', 'hub_pop_all': 'Alle {n} Berufe ansehen',
         'hub_apps_h': 'Bewerbung & Lebenslauf', 'hub_apps_p': '{n} Berufe aus {f} Berufsfeldern – vom Minijob bis zur Fachkraft mit Berufserfahrung.',
         'hub_apps_btn': 'Alle Bewerbungsvorlagen', 'hub_pop_h': 'Häufig gesucht', 'hub_guides_h': 'Ratgeber',
-        'hub_more_h': 'Weitere Vorlagen zum Ausfüllen', 'hub_more_p': 'Diese Vorlagen sind gleich als Werkzeug gebaut: ausfüllen, Vorschau ansehen, PDF speichern.',
+        'hub_more_h': 'Formulare zum Ausfüllen', 'hub_more_p': 'Ausfüllen, Vorschau ansehen, als PDF speichern.',
         'hub_how_h': 'So nutzt du die Vorlagen',
         'hub_how': [('Beruf wählen', 'Such deinen Beruf oder filtere nach Berufsfeld und Situation – Ausbildung, Berufseinstieg, Quereinstieg und mehr.'),
                     ('Beispiel öffnen', '„Vorlage verwenden“ öffnet den Lebenslauf oder das Anschreiben fertig ausgefüllt im Editor.'),
@@ -133,15 +136,16 @@ S = {
         'faq_privacy': ('Werden meine Daten gespeichert?', 'Nein. Lebenslauf und Anschreiben entstehen in deinem Browser. Gespeichert wird nur, wenn du im Editor „Entwurf speichern“ einschaltest – und auch dann nur auf deinem Gerät.'),
         'guide_more_h': 'Mehr aus dem Ratgeber', 'hub_faq': None,
         'kuendigung': ('Kündigung schreiben', 'Neue Stelle sicher? Die Kündigung als Arbeitnehmer mit Frist-Rechner.'),
-        'og_alt': 'FaLe Vorlagen-Archiv – Bewerbungsvorlagen nach Beruf',
+        'og_alt': 'FaleNetwork Vorlagen – Bewerbungsvorlagen nach Beruf',
     },
     'en': {
         'home': 'Home', 'hub': 'Templates',
-        'hub_title': 'CV and cover letter templates by job | FaleNetwork',
+        'hub_title': 'Templates: CVs, cover letters, letters & spreadsheets | FaleNetwork',
         'hub_desc': 'Free CV and cover letter examples for {n} common jobs: fully written letters, a ready CV with a placeholder portrait and tips – edit and save as PDF.',
-        'hub_h1': 'CV and cover letter templates',
-        'hub_lede': 'Fully written cover letters and a ready-made CV for {n} common jobs. Open an example, swap in your own details and save it as a PDF – everything stays on your device.',
-        'hub_jobs_h': 'Templates by job', 'hub_more_h': 'More templates to fill in', 'hub_more_p': 'These templates are built as tools: fill in, check the preview, save the PDF.',
+        'hub_h1': 'Templates',
+        'hub_lede': 'CVs, cover letters, letters and spreadsheets: open an example, swap in your details, save it as a PDF.',
+        'hub_coll_label': 'Sections', 'hub_apps_h': 'CV & cover letter', 'hub_apps_m': '{n} jobs, fully written', 'hub_fill_h': 'Fill-in forms', 'hub_fill_m': '{n} forms, e.g. invoice',
+        'hub_jobs_h': 'CV and cover letter by job', 'hub_more_h': 'Forms to fill in', 'hub_more_p': 'Fill in, check the preview, save the PDF.',
         'hub_how_h': 'How to use the templates',
         'hub_how': [('Pick a job', 'Choose the job that is closest to yours – the structure works for related roles too.'),
                     ('Open the example', '“Use this template” opens the CV or the cover letter fully filled in, in the editor.'),
@@ -188,7 +192,7 @@ class DataError(Exception):
 # Extra sections of the archive, built by modules in this folder: build(wb, bp, vb, jobs, wb_specs) →
 # {'written', 'entries' (sitemap), 'data' ({file name: text} for /vorlagen/data/), 'hub' (lang → html for the hub), 'summary'}
 EXTENSIONS = ('arc2_sections',)   # Excel-/Tabellen-Vorlagen, Briefvorlagen, Lebenslauf-Design-Galerie
-HUB_EXTRA = []                    # filled by main(): lang → html block on the hub pages
+HUB_EXTRA = []                    # filled by main(): lang → [(href, title, count line, icon kind)] tiles on the hub
 
 
 def run_extensions(wb, bp, jobs, wb_specs, standalone):
@@ -658,7 +662,7 @@ def page_job(wb, bp, job, lang, by_id, wb_specs):
     ]
     h = head_for(wb, bp, lang, title, src['desc'], ld, path, pair)
     other = 'en' if lang == 'de' else 'de'
-    hdr = bp.header(lang, 'home', current=HUB[lang], other_url=job_path(job, other) if pair else HUB[other])
+    hdr = bp.header(lang, 'home', current=HUB[lang], other_url=job_path(job, other) if pair else HUB[other], fallback=not pair)
     body = f'''
 <main id="main" class="wt-page vl-page" {MARK}="job">
   <div class="wrap wt-top">
@@ -750,7 +754,7 @@ def page_section(wb, bp, jobs, guides, wb_specs):
              {'@type': 'ListItem', 'position': i + 1, 'name': j['name'], 'url': bp.BASE + job_path(j, 'de')} for i, j in enumerate(jobs)]}},
         wb.ld_breadcrumb(items), ld_faq(faq_items, 'de')]
     h = head_for(wb, bp, 'de', s['sec_title'], fmt(s['sec_desc'], n=len(jobs)), ld, SECTION, None)
-    hdr = bp.header('de', 'home', current=HUB['de'], other_url=HUB['en'])
+    hdr = bp.header('de', 'home', current=HUB['de'], other_url=HUB['en'], fallback=True)
     field_chips = chips('field', [(f[0], f[1]) for f in used], 'de', s['filter_field'])
     level_chips = chips('level', [(lv[0], lv[1]) for lv in LEVELS if any(lv[0] in j['levels'] for j in jobs)], 'de', s['filter_level'])
     body = f'''
@@ -787,43 +791,74 @@ def page_section(wb, bp, jobs, guides, wb_specs):
     return h + '\n' + hdr + body + bp.footer('de')
 
 
+TILE_ICONS = {
+    'job': ('tone-p', '<rect x="3.5" y="7" width="17" height="12.5" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3.5 12.5h17"/>'),
+    'design': ('tone-a', '<rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M9.5 3.5v17M13 8h4M13 12h4M13 16h2.5"/>'),
+    'letter': ('tone-w', '<rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/>'),
+    'sheet': ('tone-a', '<rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M3.5 15h17M9.5 4v16"/>'),
+    'form': ('tone-p', '<path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17v3z"/><path d="M14.5 7.5l2 2"/>'),
+    'guide': ('tone-w', '<path d="M4 5.5A2 2 0 0 1 6 3.5h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 19.5a2 2 0 0 0 2 2h13v-4"/><path d="M8.5 8h6"/>'),
+}
+
+
+def tiles(items, label):
+    """Collection tiles (same look as the entry cards on the home page): (href, title, count line, icon kind)."""
+    out = ''
+    for href, title, meta, kind in items:
+        tone, paths = TILE_ICONS[kind]
+        out += (f'<li><a class="tile" href="{href}"><span class="entry-ic {tone}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                f'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{paths}</svg></span>'
+                f'<strong>{esc(title)}</strong><span>{esc(meta)}</span></a></li>')
+    return f'<ul class="tiles" aria-label="{label}">{out}</ul>'
+
+
 def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     s = S[lang]
     n_en = sum(1 for j in jobs if 'en' in j)
     items = [(s['home'], '/' if lang == 'de' else '/en/'), (s['hub'], HUB[lang])]
     how = ''.join(f'<li class="wt-step"><h3>{esc(t)}</h3><p>{esc(p)}</p></li>' for t, p in s['hub_how'])
     more_ids = ['cancellation-letter', 'din-letter', 'leave-request', 'power-of-attorney', 'invoice-generator', 'receipt', 'payment-reminder', 'withdrawal-letter']
+    more_ids = [t for t in more_ids if t in wb_specs]
     more = ''.join(f'<li class="wt-card"><a href="{tool_url(wb_specs, t, lang)}"><h3 class="wt-card-name">{esc(wb_specs[t][lang]["name"])}</h3>'
-                   f'<span class="wt-card-desc">{esc(wb_specs[t][lang].get("short") or wb_specs[t][lang]["lede"])}</span></a></li>' for t in more_ids if t in wb_specs)
+                   f'<span class="wt-card-desc">{esc(wb_specs[t][lang].get("short") or wb_specs[t][lang]["lede"])}</span></a></li>' for t in more_ids)
+    fill_id = 'ausfuellen' if lang == 'de' else 'fill-in'
+    extra = [c for h in HUB_EXTRA for c in h(lang)]
     faq_items = [s['faq_photo'], s['faq_copy'], s['faq_privacy']]
     if lang == 'de':
-        pop_ids = [j['id'] for j in jobs if j.get('popular')]
-        pop = ''.join(job_card(j, 'de') for j in jobs if j['id'] in pop_ids)
-        nfields = len({j['field'] for j in jobs})
-        guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}"><h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides) + kuendigung_card(wb_specs)
-        lede = fmt(s['hub_lede'], n=(len(jobs) // 10) * 10)
-        desc = s['hub_desc']
-        main_block = f'''<a class="vl-feature" href="{SECTION}">
-      <span class="vl-feature-ic">{field_icon('buero', 'wt-chip-lg')}</span>
-      <span class="vl-feature-t"><strong>{s['hub_apps_h']}</strong><span>{esc(fmt(s['hub_apps_p'], n=len(jobs), f=nfields))}</span></span>
-      <span class="btn btn-primary">{s['hub_apps_btn']}</span>
-    </a>
-    <section class="wt-catsec" aria-labelledby="pop-h"><div class="wt-catsec-head"><h2 id="pop-h">{s['hub_pop_h']}</h2></div><ul class="wt-grid">{pop}</ul></section>
-    <section class="wt-catsec" aria-labelledby="gd-h"><div class="wt-catsec-head"><h2 id="gd-h">{s['hub_guides_h']}</h2></div><ul class="wt-grid">{guide_cards}</ul></section>'''
+        pop = ''.join(job_card(j, 'de') for j in [j for j in jobs if j.get('popular')][:8])
+        lede = s['hub_lede']
+        desc = fmt(s['hub_desc'], n=(len(jobs) // 10) * 10)
+        coll = [(SECTION, s['hub_apps_h'], fmt(s['hub_apps_m'], n=len(jobs)), 'job')] + extra + [
+            (f'#{fill_id}', s['hub_fill_h'], fmt(s['hub_fill_m'], n=len(more_ids)), 'form'),
+            ('#ratgeber', s['hub_guides_h'], fmt(s['hub_guides_m'], n=len(guides)), 'guide')]
+        guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}"><h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides)
+        main_block = f'''<div class="wt-search vl-jump" data-vl-jump hidden>
+      <label for="vl-jump">{wb.svg(wb.UI_ICONS['search'])}<span class="sr-only">{s['hub_search_label']}</span></label>
+      <input id="vl-jump" type="search" placeholder="{s['hub_search_ph']}" autocomplete="off" enterkeyhint="search" data-vl-jump-q>
+      <button class="btn btn-primary" type="button" data-vl-jump-go>{s['hub_search_btn']}</button>
+    </div>
+    {tiles(coll, s['hub_coll_label'])}
+    <section class="wt-catsec" aria-labelledby="pop-h"><div class="wt-catsec-head"><h2 id="pop-h">{s['hub_pop_h']}</h2></div><ul class="wt-grid">{pop}</ul>
+      <p class="vl-more-link"><a class="btn btn-quiet" href="{SECTION}">{esc(fmt(s['hub_pop_all'], n=len(jobs)))}</a></p></section>
+    <section class="wt-catsec" id="ratgeber" aria-labelledby="gd-h"><div class="wt-catsec-head"><h2 id="gd-h">{s['hub_guides_h']}</h2></div><ul class="wt-grid">{guide_cards}</ul></section>'''
         ld_list = [{'@type': 'ListItem', 'position': i + 1, 'name': j['name'], 'url': bp.BASE + job_path(j, 'de')} for i, j in enumerate(jobs)]
-        cfg = {'v': 1, 'lang': 'de', 'page': 'hub'}
+        cfg = {'v': 1, 'lang': 'de', 'page': 'hub', 'jump': SECTION}
     else:
         en_jobs = [j for j in jobs if 'en' in j]
         cards = ''.join(job_card(j, 'en') for j in en_jobs)
-        lede = fmt(s['hub_lede'], n=n_en)
+        lede = s['hub_lede']
         desc = fmt(s['hub_desc'], n=n_en)
-        main_block = f'''<div class="wt-search" data-vl-search hidden>
+        coll = [('#jobs', s['hub_apps_h'], fmt(s['hub_apps_m'], n=n_en), 'job')] + extra + [
+            (f'#{fill_id}', s['hub_fill_h'], fmt(s['hub_fill_m'], n=len(more_ids)), 'form')]
+        main_block = f'''{tiles(coll, s['hub_coll_label'])}
+    <section class="wt-catsec" id="jobs" aria-labelledby="jobs-h"><div class="wt-catsec-head"><h2 id="jobs-h">{s['hub_jobs_h']}</h2></div>
+    <div class="wt-search" data-vl-search hidden>
       <label for="vl-q">{wb.svg(wb.UI_ICONS['search'])}<span class="sr-only">{s['search_label']}</span></label>
       <input id="vl-q" type="search" placeholder="{s['search_ph']}" autocomplete="off" enterkeyhint="search" data-vl-q>
     </div>
     <p class="vl-count" data-vl-count aria-live="polite"></p>
     <p class="wt-nohits" data-vl-nohits hidden>{s['no_hits']}</p>
-    <section class="wt-catsec" data-vl-group="all" aria-labelledby="jobs-h"><div class="wt-catsec-head"><h2 id="jobs-h">{s['hub_jobs_h']}</h2></div><ul class="wt-grid">{cards}</ul></section>'''
+    <div data-vl-group="all"><ul class="wt-grid">{cards}</ul></div></section>'''
         ld_list = [{'@type': 'ListItem', 'position': i + 1, 'name': j['en']['name'], 'url': bp.BASE + job_path(j, 'en')} for i, j in enumerate(en_jobs)]
         cfg = {'v': 1, 'lang': 'en', 'page': 'section', 'hits': s['hits'], 'hit1': s['hit1']}
     ld = [{'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': s['hub_h1'], 'url': bp.BASE + HUB[lang], 'inLanguage': lang, 'description': desc,
@@ -838,19 +873,18 @@ def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     <h1>{s['hub_h1']}</h1>
     <p class="wt-lede">{esc(lede)}</p>
     {main_block}
-    {''.join(h(lang) for h in HUB_EXTRA)}
   </div>
-  <section class="section wt-sec" aria-labelledby="how-h">
-    <div class="wrap">
-      <h2 id="how-h">{s['hub_how_h']}</h2>
-      <ol class="wt-steps">{how}</ol>
-    </div>
-  </section>
-  <section class="section wt-sec" aria-labelledby="more-h">
+  <section class="section wt-sec" id="{fill_id}" aria-labelledby="more-h">
     <div class="wrap">
       <h2 id="more-h">{s['hub_more_h']}</h2>
       <p class="vl-sub">{s['hub_more_p']}</p>
       <ul class="wt-grid">{more}</ul>
+    </div>
+  </section>
+  <section class="section wt-sec" aria-labelledby="how-h">
+    <div class="wrap">
+      <h2 id="how-h">{s['hub_how_h']}</h2>
+      <ol class="wt-steps">{how}</ol>
     </div>
   </section>
   <section class="section wt-sec" aria-labelledby="faq-h">
@@ -895,7 +929,7 @@ def page_guide(wb, bp, g, guides, jobs, wb_specs):
            'isAccessibleForFree': True, 'author': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}, 'publisher': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}},
           ld_faq(faq_items, 'de')]
     h = head_for(wb, bp, 'de', g['title'], g['desc'], ld, path, None)
-    hdr = bp.header('de', 'home', current=HUB['de'], other_url=HUB['en'])
+    hdr = bp.header('de', 'home', current=HUB['de'], other_url=HUB['en'], fallback=True)
     body = f'''
 <main id="main" class="wt-page vl-page" {MARK}="guide">
   <div class="wrap wt-top">
@@ -985,7 +1019,7 @@ def main(wb=None):
     by_id = {j['id']: j for j in jobs}
     written, entries, keep_data = [], [], set()
     exts = run_extensions(wb, bp, jobs, wb_specs, standalone)
-    HUB_EXTRA[:] = [x['hub'] for x in exts if x.get('hub')]
+    HUB_EXTRA[:] = [x['hub_cards'] for x in exts if x.get('hub_cards')]
     written.append(wb.write(HUB['de'], page_hub(wb, bp, jobs, guides, wb_specs, 'de')))
     written.append(wb.write(HUB['en'], page_hub(wb, bp, jobs, guides, wb_specs, 'en')))
     entries += [(HUB['de'], dict(HUB)), (HUB['en'], dict(HUB))]

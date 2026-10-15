@@ -307,6 +307,14 @@ input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--primary
 .wt-search input { width: 100%; min-height: 52px; padding: 12px 16px 12px 46px; border-radius: var(--radius-pill); border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--text); font: inherit; font-size: 1.0625rem; }
 .wt-search input:focus { outline: none; border-color: var(--primary); box-shadow: var(--focus-ring); }
 .wt-cats { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+/* phones: the category chips are one swipeable row instead of four wrapped rows above the tools */
+@media (max-width: 719px) {
+  .wt-cats { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; margin: 14px -16px 0; padding: 0 16px 2px; scroll-padding-inline: 16px;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent); }
+  .wt-cats::-webkit-scrollbar { display: none; }
+  .wt-cats li { flex: none; }
+  .wt-cat { min-height: 40px; padding: 0 14px; font-size: 0.875rem; }
+}
 .wt-cat { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-2); font-weight: 650; font-size: 0.925rem; text-decoration: none; }
 .wt-cat:hover { color: var(--text); background: var(--surface-2); }
 .wt-cat[aria-current="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }

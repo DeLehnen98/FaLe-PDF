@@ -109,6 +109,7 @@ TX = {
         'hub_tab': ('Excel-Vorlagen', '{n} Tabellen mit Formeln – ansehen, im Browser ausfüllen, als XLSX oder CSV speichern.'),
         'hub_brief': ('Briefvorlagen', '{n} Musterschreiben: Kündigung, Widerspruch, Mängelanzeige, Elternzeit, DSGVO und mehr.'),
         'hub_design': ('Lebenslauf-Designs', '{n} Designs für den Lebenslauf – von klassisch bis ATS-freundlich, mit Beispiel.'),
+        'hub_tab_m': '{n} Tabellen mit Formeln', 'hub_brief_m': '{n} Musterschreiben', 'hub_design_m': '{n} Designs zur Auswahl',
     },
     'en': {
         'home': 'Home', 'hub': 'Templates',
@@ -164,6 +165,7 @@ TX = {
         'hub_tab': ('Spreadsheet templates', '{n} spreadsheets with formulas – view, fill in here, save as XLSX or CSV.'),
         'hub_brief': ('Letter templates', 'GDPR data access and erasure requests, explained and ready to fill in.'),
         'hub_design': ('CV designs', '{n} CV designs – from classic to ATS-friendly, each with an example.'),
+        'hub_tab_m': '{n} spreadsheets with formulas', 'hub_brief_m': '{n} GDPR letters', 'hub_design_m': '{n} designs to choose from',
     },
 }
 
@@ -440,7 +442,7 @@ def section(sid, title, inner, sub=''):
 def page(vb, wb, bp, lang, kind, path, pair, title, desc, ld, crumbs_items, main_html, cfg, extra_module=None, other_url=None):
     h = head(vb, wb, bp, lang, title, desc, ld, path, pair)
     other = 'en' if lang == 'de' else 'de'
-    hdr = bp.header(lang, 'home', current=vb.HUB[lang], other_url=other_url or (pair[1] if pair and lang == 'de' else pair[0] if pair else vb.HUB[other]))
+    hdr = bp.header(lang, 'home', current=vb.HUB[lang], other_url=other_url or (pair[1] if pair and lang == 'de' else pair[0] if pair else vb.HUB[other]), fallback=not pair)
     body = f'''
 <main id="main" class="wt-page vl-page arc2-page" {MARK}="{kind}">
   <div class="wrap wt-top">
@@ -736,15 +738,13 @@ def page_designs(vb, wb, bp, designs, lang, wb_specs):
     return page(vb, wb, bp, lang, 'designs', path, (SEC['design']['de'], SEC['design']['en']), fmt(s['design_title'], n=n), fmt(s['design_desc'], n=n), ld, crumbs_items, main, cfg)
 
 
-# --------------------------------------------------------------------------------------------- hub block
-def hub_block(lang, n_tab, n_brief, n_brief_en):
+# --------------------------------------------------------------------------------------------- hub cards
+def hub_cards(lang, n_tab, n_brief, n_brief_en):
+    """(href, title, short count line, icon kind) for the collection tiles on the Vorlagen hub."""
     s = TX[lang]
-    rows = [(SEC['tab'][lang], s['hub_tab'], n_tab, CAT['Finanzen']), (SEC['brief'][lang], s['hub_brief'], n_brief if lang == 'de' else n_brief_en, None),
-            (SEC['design'][lang], s['hub_design'], len(DESIGNS), None)]
-    icons = [('secure', CATS[0][5]), ('convert', GROUPS[0][4]), ('share', '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>')]
-    cards = ''.join(f'<li class="wt-card"><a href="{u}">{icon_chip(ic[0], ic[1])}<h3 class="wt-card-name">{esc(t[0])}</h3><span class="wt-card-desc">{esc(fmt(t[1], n=n))}</span></a></li>'
-                    for (u, t, n, _), ic in zip(rows, icons))
-    return f'<section class="wt-catsec arc2-hub" aria-labelledby="arc2-hub-h"><div class="wt-catsec-head"><h2 id="arc2-hub-h">{esc(s["hub_extra_h"])}</h2></div><ul class="wt-grid">{cards}</ul></section>'
+    return [(SEC['design'][lang], s['hub_design'][0], fmt(s['hub_design_m'], n=len(DESIGNS)), 'design'),
+            (SEC['brief'][lang], s['hub_brief'][0], fmt(s['hub_brief_m'], n=n_brief if lang == 'de' else n_brief_en), 'letter'),
+            (SEC['tab'][lang], s['hub_tab'][0], fmt(s['hub_tab_m'], n=n_tab), 'sheet')]
 
 
 # --------------------------------------------------------------------------------------------- cleanup + main
@@ -799,5 +799,5 @@ def build(wb, bp, vb, jobs, wb_specs):
             data[dd['id'] + '.json'] = json.dumps(dd, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'
     cleanup(bp, {p for p, _ in entries})
     n_tab, n_brief, n_brief_en = len(tabs), len(briefs), len(en_briefs)
-    return {'written': written, 'entries': entries, 'data': data, 'hub': lambda lang: hub_block(lang, n_tab, n_brief, n_brief_en),
+    return {'written': written, 'entries': entries, 'data': data, 'hub_cards': lambda lang: hub_cards(lang, n_tab, n_brief, n_brief_en),
             'summary': f'arc2: {n_tab} spreadsheets, {n_brief} letters ({n_brief_en} EN), {len(designs)} CV designs'}

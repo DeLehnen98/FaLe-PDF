@@ -150,7 +150,7 @@ S = {
         'hub_desc': 'Kostenlose Online-Werkzeuge für PDF und Bilder: zusammenfügen, komprimieren, umwandeln. Alles läuft in deinem Browser – ohne Upload, ohne Konto, ohne Wasserzeichen.',
         'hub_h1': 'Werkzeuge für PDF und Bilder',
         'hub_lede': 'Kostenlos und direkt im Browser. Deine Dateien bleiben auf deinem Gerät.',
-        'hub_name': 'Werkzeuge', 'crumbs': 'Brotkrumen', 'home': 'Start',
+        'hub_name': 'Werkzeuge', 'crumbs': 'Navigationspfad', 'home': 'Start',
         'search_label': 'Werkzeug suchen', 'search_ph': 'z. B. verkleinern, JPG',
         'no_hits': 'Kein Werkzeug gefunden. Probier ein anderes Wort – oder schau in der FaLe PDF App, dort gibt es über 40 Werkzeuge.',
         'cats_label': 'Kategorien', 'all': 'Alle', 'popular': 'Beliebt',

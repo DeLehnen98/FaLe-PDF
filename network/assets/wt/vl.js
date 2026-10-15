@@ -10,6 +10,7 @@ const cfgEl = document.getElementById('vl-config');
 function init(cfg) {
   document.documentElement.classList.add('wt-js');
   if (cfg.page === 'section') directory(cfg);
+  if (cfg.page === 'hub' && cfg.jump) jumpSearch(cfg);
   copyButtons(cfg);
   const idle = window.requestIdleCallback || (fn => setTimeout(fn, 1500));
   idle(() => { registerSW().catch(() => {}); });
@@ -18,6 +19,17 @@ function init(cfg) {
 const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
 // the build folds ä → ae etc.; fold the query the same way so "kuche" and "küche" both find "Küche"
 const foldDe = s => String(s || '').toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+
+// hub: the job search lives on the directory page – this box just opens it with ?q= (no form: CSP form-action 'none')
+function jumpSearch(cfg) {
+  const box = document.querySelector('[data-vl-jump]');
+  const q = document.querySelector('[data-vl-jump-q]');
+  if (!box || !q) return;
+  box.hidden = false;
+  const go = () => { const v = q.value.trim().slice(0, 80); location.href = cfg.jump + (v ? '?q=' + encodeURIComponent(v) : ''); };
+  q.addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); go(); } });
+  document.querySelector('[data-vl-jump-go]')?.addEventListener('click', go);
+}
 
 function directory(cfg) {
   const q = document.querySelector('[data-vl-q]');

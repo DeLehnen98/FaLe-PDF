@@ -114,3 +114,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .vl-paper { border-color: transparent; }
 }
+/* hub: search box that opens the job directory (button sits inside the field on the right) */
+.vl-jump input { padding-right: 104px; }
+.vl-jump .btn { position: absolute; right: 5px; top: 5px; bottom: 5px; min-height: 0; padding: 0 16px; font-size: 0.9375rem; }
+.vl-more-link { margin-top: 14px; }
