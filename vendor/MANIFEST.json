@@ -53,6 +53,16 @@
       "license": "OFL-1.1",
       "source": "https://fonts.google.com/specimen/Bricolage+Grotesque",
       "version": null
+    },
+    "onnx": {
+      "name": "onnxruntime-web (WASM) + U²-Netp + MODNet (quantized) segmentation models",
+      "license": "MIT (onnxruntime-web); Apache-2.0 (U²-Net / U²-Netp, MODNet models)",
+      "source": "https://www.npmjs.com/package/onnxruntime-web; https://github.com/xuebinqin/U-2-Net; https://github.com/ZHKKKe/MODNet; https://huggingface.co/Xenova/modnet",
+      "version": {
+        "onnxruntime-web": "1.22.0",
+        "u2netp": "U-2-Net u2netp, ONNX from rembg release v0.0.0, sha256 309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8",
+        "modnet": "MODNet, ONNX model_quantized.onnx from Xenova/modnet@fa2fa546052fba4c08921230a26cc69a333fca12, sha256 92e49898c3e05a6d7a944fc67a8cb87c4aad754ffb6ebd949528c7d1105fee3a"
+      }
     }
   },
   "files": {
@@ -66,6 +76,15 @@
     "fonts/bricolage-grotesque/OFL.txt": "a093964b3ca71526ae129d0d5f39bc9dba905ae5ebeb72d741bb0d4ed2d5d5b0",
     "jszip/LICENSE.markdown": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
     "jszip/jszip.min.js": "d14e71a95ef3290dec66a9cfdd8a37c2dd624f6f2b594c4512f607d4a56e19fc",
+    "onnx/VERSIONS.json": "de66463cb6b4b5bfb8d6ad59c88b6bb5972ff8e9dff3dcaa8ccde23de3aca7e2",
+    "onnx/models/LICENSE-MODNet": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "onnx/models/LICENSE-U2Net": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "onnx/models/modnet-quantized.onnx": "92e49898c3e05a6d7a944fc67a8cb87c4aad754ffb6ebd949528c7d1105fee3a",
+    "onnx/models/u2netp.onnx": "309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8",
+    "onnx/ort/LICENSE": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "onnx/ort/ort-wasm-simd-threaded.mjs": "30dd851d9c00622940500f71ddd2ff8820c5cb65270816080175b958705385a8",
+    "onnx/ort/ort-wasm-simd-threaded.wasm": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4",
+    "onnx/ort/ort.wasm.min.mjs": "6e109b5e5ef587c776b2a5f1c6cfb8c4f61b0b6718fe8f11f4aae23dccfa7877",
     "pdf-lib/LICENSE.md": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
     "pdf-lib/THIRD_PARTY_LICENSES.txt": "5a0619d869c6d0c4e1ad4ab9c2d0da1b1fe1bbc9be3e2bf67dbb07fa95fd1b77",
     "pdf-lib/pdf-lib.min.js": "2d8e83696f30f47709d9185b83772c1cbfb269d9127a5f2f079de117554cd72c",

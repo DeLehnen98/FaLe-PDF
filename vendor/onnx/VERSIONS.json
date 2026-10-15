@@ -1,0 +1,5 @@
+{
+  "onnxruntime-web": "1.22.0",
+  "u2netp": "U-2-Net u2netp, ONNX from rembg release v0.0.0, sha256 309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8",
+  "modnet": "MODNet, ONNX model_quantized.onnx from Xenova/modnet@fa2fa546052fba4c08921230a26cc69a333fca12, sha256 92e49898c3e05a6d7a944fc67a8cb87c4aad754ffb6ebd949528c7d1105fee3a"
+}
