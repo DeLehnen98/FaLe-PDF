@@ -7,7 +7,7 @@
 /** Primary public origin of the FaLe PDF web app + /api.  FLIP → 'https://pdf.fale.network' */
 export const PDF_ORIGIN = 'https://fale-pdf.vercel.app';
 /** Primary origin of the FaleNetwork site.  FLIP → 'https://fale.network' */
-export const NETWORK_ORIGIN = 'https://fale-network.vercel.app';
+export const NETWORK_ORIGIN = 'https://fale.network';
 /** Primary origin of the FaLe One web app.  FLIP → 'https://faleone.com' */
 export const ONE_ORIGIN = 'https://fale-one.vercel.app';
 
