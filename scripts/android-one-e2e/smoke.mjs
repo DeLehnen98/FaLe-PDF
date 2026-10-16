@@ -79,7 +79,12 @@ async function ensureFocus() {
     await waitFor(() => appOnTop() && appFocused(), { timeout: 10000, interval: 700 });
     await sleep(800);
   }
-  if (!(appOnTop() && appFocused())) throw new Error('App hat keinen Fokus: ' + focusedWindow());
+  if (!(appOnTop() && appFocused())) {
+    const act = sh('dumpsys activity activities', { allowFail: true }).split('\n').filter(l => /ResumedActivity|mFocusedApp|Hist #0/.test(l)).slice(0, 6).map(l => l.trim()).join(' / ');
+    const start = sh(`am start -W -n ${PKG}/.MainActivity`, { allowFail: true }).replace(/\s+/g, ' ').slice(0, 300);
+    const crash = adb(['logcat', '-d', '-v', 'brief', 'AndroidRuntime:E', 'ActivityTaskManager:W', 'WindowManager:W', '*:S'], { allowFail: true }).split('\n').filter(l => l.trim()).slice(-6).join(' / ').slice(0, 900);
+    throw new Error(`App hat keinen Fokus: ${focusedWindow()} | ${act} | am start: ${start} | ${crash}`);
+  }
   if (cdp.closed || cdp.pid !== appPid()) await connect();
 }
 
@@ -179,16 +184,23 @@ const B = (method, opts) => `const P = window.Capacitor && window.Capacitor.Plug
 const bgState = () => ev(B('state'));
 const debugBroadcast = (action, extra = '') => sh(`am broadcast -n ${PKG}/.FaleDebugReceiver -a ${PKG}.debug.${action} ${extra}`, { allowFail: true });
 const logcatBg = () => adb(['logcat', '-d', '-v', 'brief', 'FaleBackup:V', 'FaleDebug:V', 'WM-WorkerWrapper:V', 'AndroidRuntime:E', '*:S'], { allowFail: true }).split('\n').filter(l => l.trim()).slice(-25).join(' | ').slice(0, 2500);
-/** WorkManager's jobs of this app in JobScheduler: [{ id, text }] */
+/** WorkManager's jobs of this app in JobScheduler: [{ id, ns, text }]. Android 14+ prints a namespace
+ *  ("JOB #u0a190/<namespace>:<id>: …") when WorkManager uses one; `cmd jobscheduler run` then needs -n. */
+let jobsRaw = '';
 function ourJobs() {
-  const out = sh('dumpsys jobscheduler', { allowFail: true, timeout: 60000 });
   const jobs = new Map();
-  for (const block of out.split(/\n(?=\s*JOB #)/)) {
-    const m = /JOB #u?\w*\/(\d+): \S+ (\S+)/.exec(block);
-    if (m && m[2].startsWith(PKG + '/') && !jobs.has(m[1])) jobs.set(m[1], { id: m[1], text: block.slice(0, 4000) });
+  for (const args of [`dumpsys jobscheduler ${PKG}`, 'dumpsys jobscheduler']) {
+    const out = sh(args, { allowFail: true, timeout: 60000 });
+    for (const block of out.split(/\n(?=\s*JOB #)/)) {
+      const m = /JOB #[^\s/]+\/(?:([^\s:]+):)?(-?\d+): \S+ (\S+)/.exec(block);
+      if (m && m[3].startsWith(PKG + '/') && !jobs.has((m[1] || '') + ':' + m[2])) jobs.set((m[1] || '') + ':' + m[2], { id: m[2], ns: m[1] || null, text: block.slice(0, 4000) });
+    }
+    if (jobs.size) break;
+    jobsRaw = out.split('\n').filter(l => l.includes(PKG)).slice(0, 8).join(' / ').slice(0, 1200);
   }
   return [...jobs.values()];
 }
+const runJob = j => sh(`cmd jobscheduler run -f ${j.ns ? `-n ${j.ns} ` : ''}${PKG} ${j.id}`, { allowFail: true });
 const runAs = cmd => sh(`run-as ${PKG} sh -c '${cmd}'`, { allowFail: true });
 const secretFile = () => /fale-one-bg-secret\.bin/.test(runAs('ls no_backup 2>/dev/null'));
 
@@ -427,7 +439,7 @@ async function backgroundBackup(items) {
     const pkgFlags = (sh(`dumpsys package ${PKG}`, { allowFail: true }).match(/pkgFlags=\[[^\]]*\]/) || [''])[0];
     if (/ALLOW_BACKUP/.test(pkgFlags)) throw new Error('allowBackup ist an: ' + pkgFlags);
     const jobs = await waitFor(() => { const j = ourJobs(); return j.length >= 2 && j; }, { timeout: 15000, interval: 1500 });
-    if (!jobs) throw new Error('keine JobScheduler-Jobs: ' + JSON.stringify(ourJobs().map(j => j.id)));
+    if (!jobs) throw new Error('keine JobScheduler-Jobs: ' + JSON.stringify(ourJobs().map(j => j.id)) + ' | dumpsys: ' + jobsRaw);
     const all = jobs.map(j => j.text).join('\n');
     const unmetered = /NOT_METERED|UNMETERED/.test(all), content = /content:\/\/media/.test(all);
     if (!unmetered || !content) console.log(`::warning title=One-Smoke Job-Bedingungen::${esc('WLAN-Bedingung ' + unmetered + ', Inhalts-Trigger ' + content + '\n' + all.slice(0, 1500))}`);
@@ -445,8 +457,8 @@ async function backgroundBackup(items) {
     debugBroadcast('CHECKPOINT'); // all test photos are new again
     await sleep(1000);
     const jobs = ourJobs();
-    for (const j of jobs) sh(`cmd jobscheduler run -f ${PKG} ${j.id}`, { allowFail: true });
-    let how = `JobScheduler (${jobs.map(j => j.id).join(', ')})`;
+    for (const j of jobs) runJob(j);
+    let how = `JobScheduler (${jobs.map(j => (j.ns ? j.ns + ':' : '') + j.id).join(', ') || 'keine Jobs gefunden'})`;
     let ok = await waitFor(() => mock.photoNodes().length >= FIXTURES.length, { timeout: 60000, interval: 1500 });
     if (!ok) { debugBroadcast('RUN'); how += ' + Debug-RUN'; ok = await waitFor(() => mock.photoNodes().length >= FIXTURES.length, { timeout: 120000, interval: 2000 }); }
     const fg = appOnTop();
@@ -511,7 +523,7 @@ async function backgroundBackup(items) {
     let ok = await waitFor(() => mock.photoNodes().length > n0, { timeout: 75000, interval: 2000 });
     let how = 'Inhalts-Trigger';
     if (!ok) { // the trigger may be delayed by the system: run the jobs like the scheduler would
-      for (const j of ourJobs()) sh(`cmd jobscheduler run -f ${PKG} ${j.id}`, { allowFail: true });
+      for (const j of ourJobs()) runJob(j);
       how = 'Job erzwungen (Trigger kam nicht in 75 s)';
       ok = await waitFor(() => mock.photoNodes().length > n0, { timeout: 90000, interval: 2000 });
     }
@@ -544,7 +556,7 @@ async function backgroundBackup(items) {
     await armJs(sess);
     const on = await waitFor(async () => { const x = await bgState(); return x.armed && x.work.periodic !== 'NONE' && x; }, { timeout: 15000 });
     if (!on) throw new Error('nicht wieder eingerichtet');
-    if (!await waitFor(() => ourJobs().length > 0, { timeout: 15000, interval: 1500 })) throw new Error('keine Jobs nach dem Einschalten');
+    if (!await waitFor(() => ourJobs().length > 0, { timeout: 15000, interval: 1500 })) throw new Error('keine Jobs nach dem Einschalten | dumpsys: ' + jobsRaw);
     const r = await ev(B('setPrefs', { userId: user.id, on: false }));
     if (r.armed !== false || r.on !== false) throw new Error('setPrefs(off): ' + JSON.stringify(r));
     const off = await waitFor(async () => { const x = await bgState(); return !x.armed && !Object.values(x.work).some(v => v === 'ENQUEUED' || v === 'RUNNING') && x; }, { timeout: 15000 });
