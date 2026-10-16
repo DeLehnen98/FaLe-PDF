@@ -1,8 +1,16 @@
 // FaLe One – configuration in ONE place. No secrets: the Supabase URL and publishable key are fetched from
 // the FaLe PDF API (/api/account?a=config), which is the single source of truth for the FaLe-Konto.
 export const VERSION = '1.0.0';
-export const API_BASE = 'https://fale-pdf.vercel.app';   // /api/drive, /api/account, /api/share (contract §2)
-export const PDF_APP = 'https://fale-pdf.vercel.app/';   // "In FaLe PDF öffnen" and share links (§7.9)
+// Public origins (docs/DOMAINS-SWITCH.md). The API answers CORS for old and new FaLe One origins alike,
+// and the CSP in one/vercel.json allows both API hosts, so flipping is just these three lines:
+//   FLIP → PDF_ORIGIN = 'https://pdf.fale.network', ONE_ORIGIN = 'https://faleone.com', NETWORK_ORIGIN = 'https://fale.network'
+export const PDF_ORIGIN = 'https://fale-pdf.vercel.app';         // FaLe PDF web app + /api
+export const ONE_ORIGIN = 'https://fale-one.vercel.app';         // this app (used in texts sent to other people)
+export const NETWORK_ORIGIN = 'https://fale-network.vercel.app'; // FaleNetwork site (privacy policy, imprint)
+export const API_BASE = PDF_ORIGIN;          // /api/drive, /api/account, /api/share (contract §2)
+export const PDF_APP = PDF_ORIGIN + '/';     // "In FaLe PDF öffnen" and share links (§7.9)
+export const PRIVACY_URL = NETWORK_ORIGIN + '/datenschutz/';
+export const IMPRINT_URL = NETWORK_ORIGIN + '/impressum/';
 export const SUPPORT_MAIL = 'hallo@fale.network';
 
 // Local development / tests only: on localhost the API origins can be pointed at a local harness

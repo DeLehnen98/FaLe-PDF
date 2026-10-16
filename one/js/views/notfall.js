@@ -5,11 +5,12 @@ import { el, clear, icon, toast, errorToast, errorText, openDialog, confirmDialo
 import { t, tp, fmtDateTime, fmtDate, fmtSize, getLang } from '../i18n.js';
 import * as E from '../engine.js';
 import { waitLabel, countdown } from '../app.js';
+import { ONE_ORIGIN } from '../config.js';
 
 const WAITS = [24, 72, 168, 336, 720];
 const CHECK = [['contracts', () => t('Verträge & Versicherungen')], ['powers', () => t('Vollmachten & Verfügungen')], ['bank', () => t('Bank- & Konto-Hinweise')],
   ['health', () => t('Ärzte & Medikamente')], ['contacts', () => t('Wichtige Kontakte')], ['wishes', () => t('Persönliche Wünsche & Briefe')]];
-const APP_URL = 'https://fale-one.vercel.app';
+const APP_URL = ONE_ORIGIN; // one/js/config.js
 
 export async function mount(main, { parts, setTitle }) {
   if (parts[0] === 'einrichten') return wizard(main, setTitle);

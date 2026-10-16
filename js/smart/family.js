@@ -8,6 +8,7 @@ import * as db from '../db.js';
 import { $, $$, toast, errorToast, openDialog, confirmDialog, progress, debounce } from '../ui.js';
 import { h, esc, oicon, ensureSmartCss, fieldRow, copyText, deDate, daysUntil, relDays, lsSet, todayIso } from './common.js';
 import * as K from './famcrypto.js';
+import { PDF_ORIGIN } from '../domains.js';
 
 const MAX_FILE = 20 * 1024 * 1024;
 const ROLE_LABEL = { verwalter: 'Verwalter', mitglied: 'Mitglied', notfall: 'Notfallkontakt' };
@@ -147,7 +148,7 @@ export async function createInvite(g, role = 'mitglied', hours = 72) {
   const wrapped = gk ? await K.wrapForInvite(secret, inviteId, g.group_id, gk) : null;
   const r = await rpc('fam_invite_create', { p_group: g.group_id, p_invite_id: inviteId, p_auth_hash: await K.inviteAuthHash(secret), p_wrapped_key: wrapped, p_role: role, p_hours: hours });
   const t = K.b64u(secret);
-  const base = location.origin && /^https?:/.test(location.origin) ? `${location.origin}${location.pathname}` : 'https://fale-pdf.vercel.app/';
+  const base = location.origin && /^https?:/.test(location.origin) ? `${location.origin}${location.pathname}` : PDF_ORIGIN + '/';
   return { link: `${base}#/familie/beitreten?i=${inviteId}&t=${t}`, code: `${inviteId}.${t}`, expiresAt: r.expires_at, role };
 }
 

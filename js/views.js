@@ -6,6 +6,7 @@ import * as Tools from './tools/index.js';
 import { applyTheme, currentTheme } from './theme.js';
 import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, openHash, KINDS } from './office/kinds.js';
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
+import { NETWORK_ORIGIN } from './domains.js';
 
 const extrasHome = () => import('./extras/home.js');
 const extrasRem = () => import('./extras/reminders.js');
@@ -680,7 +681,7 @@ export async function renderSettings() {
       </ul>
     </div>
     <h2 class="section-title">Mehr von FaLe</h2>
-    <a class="card me-card me-link" href="https://fale-network.vercel.app/" target="_blank" rel="noopener" data-fale-network>
+    <a class="card me-card me-link" href="${NETWORK_ORIGIN}/" target="_blank" rel="noopener" data-fale-network>
       <span class="me-avatar">${oicon('heart')}</span>
       <div><strong>FaleNetwork</strong><span>Weitere freie Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.</span></div>
       <span class="me-go">${oicon('chevronRight')}</span>

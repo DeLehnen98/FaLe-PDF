@@ -8,7 +8,7 @@
 
   /* ---- Single place for network-wide settings ------------------------------
    * kontoUrl:       sign-in page of the FaLe-Konto (lives inside FaLe PDF for now).
-   *                 After the domain move: https://pdf.fale.network/#/konto
+   *                 Written by tools/build_pages.py from PDF_ORIGIN – change it there, not here.
    * kontoAvailable: set to true once the FaLe-Konto is live – this reveals every
    *                 element marked [data-konto-signin] and hides [data-konto-soon].
    */

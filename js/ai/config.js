@@ -5,10 +5,11 @@
 // scripts/cap-patch-android.mjs for the AndroidManifest; it reads ADMOB_APP_ID from this file) and
 // set ADMOB_TESTING to false.
 import { isNative } from '../platform.js';
+import { PDF_ORIGIN } from '../domains.js';
 
 export const AI_CONFIG = {
   // Backend for the Android app (the web version uses its own origin, e.g. preview deployments)
-  API_BASE_NATIVE: 'https://fale-pdf.vercel.app',
+  API_BASE_NATIVE: PDF_ORIGIN, // primary origin: js/domains.js
 
   // --- AdMob (Android only) ---
   ADMOB_APP_ID: 'ca-app-pub-3940256099942544~3347511713', // TEST app id – replace

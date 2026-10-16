@@ -2,6 +2,7 @@
 // Only ciphertext, opaque headers and capability tokens are ever sent – see js/share/crypto.js.
 import { apiBase } from '../ai/config.js';
 import { isNative } from '../platform.js';
+import { PDF_ORIGIN } from '../domains.js';
 import { sealObject, openObject, layout, CryptoFail } from './crypto.js';
 
 const LS = { device: 'fale-share-device', token: 'fale-share-token' };
@@ -10,7 +11,7 @@ const ls = {
   set(k, v) { try { localStorage.setItem(k, v); } catch {} },
   del(k) { try { localStorage.removeItem(k); } catch {} },
 };
-export const PUBLIC_ORIGIN = 'https://fale-pdf.vercel.app';
+export const PUBLIC_ORIGIN = PDF_ORIGIN; // primary origin: js/domains.js
 
 export class ShareError extends Error {
   constructor(code, userMessage, extra = {}) {

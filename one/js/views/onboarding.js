@@ -4,13 +4,14 @@ import { el, clear, icon, logo, toast, saveBlob, errorText } from '../dom.js';
 import { t } from '../i18n.js';
 import * as A from '../auth.js';
 import * as Keys from '../keys.js';
+import { PRIVACY_URL, IMPRINT_URL } from '../config.js';
 
 export function mount(root, { step, done, recovery }) {
   const wrap = el('div.gate');
   root.appendChild(wrap);
   const card = el('section.gate-card', { aria: { live: 'polite' } });
   wrap.append(el('div.gate-brand', logo(48), el('span.brand-name', 'FaLe ', el('b', 'One'))), card);
-  wrap.append(el('p.gate-foot', el('a', { href: 'https://fale.network/datenschutz/', rel: 'noopener noreferrer', target: '_blank' }, t('Datenschutz')), ' · ', el('a', { href: 'https://fale.network/impressum/', rel: 'noopener noreferrer', target: '_blank' }, t('Impressum'))));
+  wrap.append(el('p.gate-foot', el('a', { href: PRIVACY_URL, rel: 'noopener noreferrer', target: '_blank' }, t('Datenschutz')), ' · ', el('a', { href: IMPRINT_URL, rel: 'noopener noreferrer', target: '_blank' }, t('Impressum'))));
   const show = (...nodes) => { clear(card).append(...nodes); const f = card.querySelector('input'); if (f) setTimeout(() => f.focus(), 50); };
   const err = el('p.form-error', { role: 'alert', hidden: true });
   const fail = (e, fb) => { err.textContent = errorText(e, fb); err.hidden = false; };

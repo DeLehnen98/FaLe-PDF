@@ -10,13 +10,13 @@ This folder is a static site with no build step. It is deployed as its own Verce
 | Root directory | `one` |
 | Framework preset | Other. No install command, no build command, output directory `.` (already set in `one/vercel.json`) |
 | Ignored Build Step | `git diff --quiet ${VERCEL_GIT_PREVIOUS_SHA:-HEAD^} HEAD -- .` |
-| Domain | `fale-one.vercel.app`, later `one.fale.network` |
+| Domain | `fale-one.vercel.app`; custom domain `faleone.com` (`www.faleone.com` and `one.fale.network` redirect to it) – switch: `docs/DOMAINS-SWITCH.md` |
 | Env | none (the app has no secrets) |
 
 The FaLe PDF project serves the API at `https://fale-pdf.vercel.app`. It needs:
 
 - `ONE_ENABLED=1`, which requires the FaLe-Konto settings described in contract §1.
-- Its CORS default list, which already allows `https://fale-one.vercel.app` and `https://one.fale.network`.
+- Its CORS default list, which already allows `https://fale-one.vercel.app`, `https://faleone.com` and `https://one.fale.network`.
 
 So that pushes which only touch `one/` do not rebuild FaLe PDF, change its Ignored Build Step to:
 

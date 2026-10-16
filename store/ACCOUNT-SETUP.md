@@ -41,7 +41,7 @@ im Repository und laufen vorher.
 * **Redirect URLs** (für Google-Anmeldung und Links in E-Mails; der Code-Login braucht keine):
   * `https://fale-pdf.vercel.app/**`
   * `https://localhost/**` (Android-App, Capacitor)
-  * später `https://pdf.fale.network/**`
+  * `https://pdf.fale.network/**` (schon vor der Umstellung eintragen – siehe `docs/DOMAINS-SWITCH.md`)
   * optional für Tests: `http://localhost:*/**`
 
 ## 3. Supabase → Authentication → Sign In / Providers → Email

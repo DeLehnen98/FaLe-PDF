@@ -33,9 +33,22 @@ const PROVIDERS = {
   mock: { label: 'Test-Anbieter', company: 'lokal', note: 'Testmodus – es werden keine Daten an einen KI-Anbieter gesendet.' },
 };
 
-const DEFAULT_ORIGINS = ['https://fale-pdf.vercel.app', 'https://localhost', 'http://localhost', 'capacitor://localhost'];
+// Public URLs in ONE place (docs/DOMAINS-SWITCH.md). PRIMARY_* is what the API puts into links/e-mails; the
+// env variables PUBLIC_APP_URL / FALE_ONE_URL override it without a code change.
+//   FLIP → PRIMARY_APP_URL = 'https://pdf.fale.network', PRIMARY_ONE_URL = 'https://faleone.com'
+const PRIMARY_APP_URL = 'https://fale-pdf.vercel.app';
+const PRIMARY_ONE_URL = 'https://fale-one.vercel.app';
+// CORS allow-lists: old AND new origins, so nothing breaks before, during or after the domain switch.
+// (www.fale.network and www.faleone.com only redirect, so they never send API requests.)
+const DEFAULT_ORIGINS = ['https://fale-pdf.vercel.app', 'https://pdf.fale.network', 'https://fale.network',
+  'https://localhost', 'http://localhost', 'capacitor://localhost'];
 // FaLe One (Drive + Fotos) web app origins. FALE_ONE_ORIGINS (comma-separated) replaces this default list.
-const DEFAULT_ONE_ORIGINS = ['https://fale-one.vercel.app', 'https://one.fale.network'];
+const DEFAULT_ONE_ORIGINS = ['https://fale-one.vercel.app', 'https://faleone.com', 'https://one.fale.network'];
+const urlEnv = (k, def) => (/^https:\/\/[a-z0-9.-]+(:\d{2,5})?\/?$/i.test(env(k)) ? env(k) : def).replace(/\/+$/, '');
+/** Public base URL of the FaLe PDF web app (no trailing slash). */
+const publicAppUrl = () => urlEnv('PUBLIC_APP_URL', PRIMARY_APP_URL);
+/** Public base URL of the FaLe One web app (no trailing slash). */
+const publicOneUrl = () => urlEnv('FALE_ONE_URL', PRIMARY_ONE_URL);
 const oneOrigins = () => (env('FALE_ONE_ORIGINS') ? env('FALE_ONE_ORIGINS').split(',') : DEFAULT_ONE_ORIGINS)
   .map(s => s.trim().replace(/\/+$/, '')).filter(s => /^https:\/\/[a-z0-9.-]+(:\d{2,5})?$/i.test(s) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d{2,5})?$/.test(s));
 
@@ -78,6 +91,8 @@ function getConfig() {
     store: (env('FALE_STORE') || 'supabase').toLowerCase(),
     timeZone: env('FALE_TIME_ZONE') || 'Europe/Berlin',
     allowedOrigins: [...DEFAULT_ORIGINS, ...oneOrigins(), ...env('AI_ALLOWED_ORIGINS').split(',').map(s => s.trim()).filter(Boolean)],
+    publicAppUrl: publicAppUrl(), // links handed out by the API (see PRIMARY_APP_URL)
+    publicOneUrl: publicOneUrl(),
     playPackage: env('PLAY_PACKAGE_NAME') || 'dev.fale.pdf',
     playSaJson: env('GOOGLE_PLAY_SA_JSON'),
     plusProducts: (env('PLUS_PRODUCTS') || 'fale_plus_monthly,fale_plus_yearly').split(',').map(s => s.trim()).filter(Boolean),
@@ -127,4 +142,4 @@ function accountConfigured(cfg) {
   return !!(cfg.accountsEnabled && cfg.supabaseUrl && cfg.supabaseKey);
 }
 
-module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, accountConfigured, PROVIDERS, DEFAULT_ONE_ORIGINS };
+module.exports = { getConfig, providerConfigured, storeConfigured, secretsConfigured, plusConfigured, accountConfigured, PROVIDERS, DEFAULT_ORIGINS, DEFAULT_ONE_ORIGINS, PRIMARY_APP_URL, PRIMARY_ONE_URL, publicAppUrl, publicOneUrl };

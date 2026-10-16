@@ -313,6 +313,11 @@ await step('drive', async () => {
   const q = await http('/api/drive?a=quota', { json: {} });
   const em = await http('/api/drive?a=em.status', { json: {} });
   const err = x => (x.json ? x.json.error : (x.text || '').slice(0, 80));
+  // old and new origins (docs/DOMAINS-SWITCH.md) – the Origin header is just a string, so this works before DNS is live
+  for (const o of ['https://faleone.com', 'https://pdf.fale.network']) {
+    const p = await fetch(BASE + '/api/drive?a=quota', { method: 'OPTIONS', headers: { Origin: o, 'Access-Control-Request-Method': 'POST' }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+    must(p.headers.get('access-control-allow-origin') === o, `CORS preflight from ${o}: allow-origin=${p.headers.get('access-control-allow-origin')}, HTTP ${p.status}`);
+  }
   const pre = await fetch(BASE + '/api/drive?a=quota', { method: 'OPTIONS', headers: { Origin: 'https://fale-one.vercel.app', 'Access-Control-Request-Method': 'POST', 'Access-Control-Request-Headers': 'authorization,content-type' }, signal: AbortSignal.timeout(TIMEOUT_MS) });
   const cors = pre.headers.get('access-control-allow-origin');
   must(cors === 'https://fale-one.vercel.app', `CORS preflight from fale-one.vercel.app: allow-origin=${cors}, HTTP ${pre.status}`);
@@ -320,7 +325,7 @@ await step('drive', async () => {
     must(Number.isInteger(j.chunkSize) && j.chunkSize >= 65536 && ['pg', 's3'].includes(j.backend), 'config: bad chunkSize/backend', JSON.stringify(j));
     must(q.status === 401 && err(q) === 'invalid_account', `drive/quota without token: expected 401 invalid_account, got ${q.status} ${err(q)}`, (q.text || '').slice(0, 300));
     must(em.status === 401, `drive/em.status without token: expected 401, got ${em.status} ${err(em)}`, (em.text || '').slice(0, 300));
-    return `ENABLED: configured=true, backend=${j.backend}, chunk=${j.chunkSize}, direct=${j.direct}, emergency=${j.emergency}, notify=${j.notify}; quota/em.status without token → 401; CORS for fale-one.vercel.app ok`;
+    return `ENABLED: configured=true, backend=${j.backend}, chunk=${j.chunkSize}, direct=${j.direct}, emergency=${j.emergency}, notify=${j.notify}; quota/em.status without token → 401; CORS for fale-one.vercel.app, faleone.com, pdf.fale.network ok`;
   }
   must(q.status === 503 && err(q) === 'drive_not_configured', `drive/quota while disabled: expected 503 drive_not_configured, got ${q.status} ${err(q)}`, (q.text || '').slice(0, 300));
   return `DISABLED (ONE_ENABLED / ACCOUNTS_ENABLED not both set or migration missing): configured=false; quota → 503 drive_not_configured; CORS ok`;

@@ -12,7 +12,8 @@
 const crypto = require('node:crypto');
 
 const env = k => String(process.env[k] == null ? '' : process.env[k]).trim();
-const APP_URL = () => env('FALE_ONE_URL') || 'https://fale-one.vercel.app';
+const { publicOneUrl } = require('./config.js');
+const APP_URL = () => publicOneUrl(); // env FALE_ONE_URL or PRIMARY_ONE_URL in config.js
 
 function notifyConfig() {
   const p = env('NOTIFY_PROVIDER').toLowerCase();

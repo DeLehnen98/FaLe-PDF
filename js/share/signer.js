@@ -6,6 +6,7 @@
 // Legal note shown to the signer and printed on the audit page: this is a simple electronic
 // signature (einfache elektronische Signatur, Art. 3 Nr. 10 eIDAS) – no advanced/qualified signature.
 import { h, esc, toast, formatSize } from '../ui.js';
+import { PDF_HOST } from '../domains.js';
 import { oicon } from '../office/kinds.js';
 import { saveFile } from '../platform.js';
 import { loadPdf } from '../pdfcore.js';
@@ -292,7 +293,7 @@ async function buildSigned({ bytes, meta, info, idx, values, view, me, hashIn, s
   line('Bestätigung / Confirmation', '„Ich unterschreibe elektronisch“ wurde aktiv bestätigt. / "I sign electronically" was actively confirmed.');
   line('Art der Signatur / Signature type', 'Einfache elektronische Signatur (EES) im Sinne von Art. 3 Nr. 10 der eIDAS-Verordnung (EU) Nr. 910/2014. Keine fortgeschrittene oder qualifizierte elektronische Signatur; die Identität der unterzeichnenden Person wurde nicht geprüft. / Simple electronic signature under eIDAS; not an advanced or qualified signature, identity not verified.');
   line('Übertragung / Transmission', 'Ende-zu-Ende-verschlüsselt (AES-256-GCM) über FaLe PDF; der Server kennt weder Inhalt noch Namen. / End-to-end encrypted; the server cannot read content or names.');
-  page.drawText(c2('Erstellt mit FaLe PDF – fale-pdf.vercel.app'), { x: 56, y: 40, size: 8, font: helv, color: muted });
+  page.drawText(c2(`Erstellt mit FaLe PDF – ${PDF_HOST}`), { x: 56, y: 40, size: 8, font: helv, color: muted });
   const finalBytes = await saveDoc(doc2);
   return { finalBytes, hashSigned };
 }

@@ -357,7 +357,7 @@ Bestätigung / Confirmation
 Art der Signatur / Signature type
 Einfache elektronische Signatur (EES) im Sinne von Art. 3 Nr. 10 der eIDAS-Verordnung (EU) Nr. 910/2014. Keine fortgeschrittene oder qualifizierte elektronische Signatur; die Identität der unterzeichnenden Person wurde nicht geprüft. / Simple electronic signature under eIDAS; not an advanced or qualified signature, identity not verified.
 Übertragung / Transmission
-Erstellt mit FaLe PDF – fale-pdf.vercel.app
+Erstellt mit FaLe PDF – {0}
 Unterschrieben (UTC, Gerät der unterzeichnenden Person) / Signed (UTC, signer device)
 Ende-zu-Ende-verschlüsselt (AES-256-GCM) über FaLe PDF; der Server kennt weder Inhalt noch Namen. / End-to-end encrypted; the server cannot read content or names.
 # FaLe-Konto: HTTP header, browser/OS names in default device names

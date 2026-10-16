@@ -35,6 +35,25 @@ if (!NATIVE && existsSync(join(ROOT, '.well-known', 'security.txt'))) {
   cpSync(join(ROOT, '.well-known', 'security.txt'), join(DIST, '.well-known', 'security.txt'));
 }
 
+// 1a) Domains: js/domains.js holds the primary origin (PDF_ORIGIN). The static SEO files cannot import it, so
+// they must name the same origin – otherwise a half-done switch would ship canonicals/sitemaps pointing at
+// the other host. See docs/DOMAINS-SWITCH.md. The CSP must allow the API on every known host.
+{
+  const PDF_ORIGINS = ['https://fale-pdf.vercel.app', 'https://pdf.fale.network'];
+  const m = readFileSync(join(ROOT, 'js/domains.js'), 'utf8').match(/export const PDF_ORIGIN = '([^']+)'/);
+  if (!m || !PDF_ORIGINS.includes(m[1])) throw new Error('js/domains.js: PDF_ORIGIN fehlt oder ist unbekannt (erlaubt: ' + PDF_ORIGINS.join(', ') + ')');
+  const other = PDF_ORIGINS.filter(o => o !== m[1]);
+  for (const f of ['info.html', 'info-en.html', 'sitemap.xml', 'robots.txt']) {
+    const s = readFileSync(join(ROOT, f), 'utf8');
+    if (!s.includes(m[1] + '/') || other.some(o => s.includes(o))) {
+      throw new Error(`${f}: verweist nicht (nur) auf PDF_ORIGIN ${m[1]} aus js/domains.js – siehe docs/DOMAINS-SWITCH.md`);
+    }
+  }
+  const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const missing = PDF_ORIGINS.filter(o => !new RegExp(`connect-src[^;"]*${o.replace(/[.]/g, '\\.')}[ ;]`).test(html));
+  if (missing.length) throw new Error('index.html: connect-src erlaubt ' + missing.join(', ') + ' nicht (alte UND neue API-Domain nötig)');
+}
+
 // 1b) Content-Security-Policy: the <meta> fallback in index.html (needed in the Android WebView, which has
 // no HTTP headers) must match the header in vercel.json (which additionally has frame-ancestors, a
 // directive that is ignored in <meta>). A drift between the two would silently weaken one of them.

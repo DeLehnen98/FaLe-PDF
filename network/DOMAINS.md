@@ -1,5 +1,8 @@
 # Domains – what to do once fale.network is bought
 
+> **Superseded (Oktober 2026):** die Domains sind in Vercel eingetragen. Aktueller Stand, zentrale Schalter und
+> die Umstell-Checkliste: [`docs/DOMAINS-SWITCH.md`](../docs/DOMAINS-SWITCH.md). Der Rest dieser Datei ist Historie.
+
 Nothing here is active yet. Until then the site runs on the Vercel project URL
 (`fale-network.vercel.app` after the first deployment) and FaLe PDF stays on `fale-pdf.vercel.app`.
 

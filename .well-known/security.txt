@@ -1,7 +1,8 @@
-# FaLe PDF – security contact (RFC 9116). Served at https://fale-pdf.vercel.app/.well-known/security.txt
+# FaLe PDF – security contact (RFC 9116). Served at https://fale-pdf.vercel.app/ and https://pdf.fale.network/.well-known/security.txt
 # Owner TODO: add a "Contact: mailto:…" line with a monitored address, and renew "Expires" before it passes.
 Contact: https://github.com/DeLehnen98/FaLe-PDF/security/advisories/new
 Expires: 2027-10-14T00:00:00.000Z
 Preferred-Languages: de, en
 Canonical: https://fale-pdf.vercel.app/.well-known/security.txt
+Canonical: https://pdf.fale.network/.well-known/security.txt
 Policy: https://github.com/DeLehnen98/FaLe-PDF/blob/main/SECURITY.md

@@ -5,7 +5,7 @@ import { t, tp, fmtSize, fmtDateTime, ago, langPref, setLangPref, getLang } from
 import * as A from '../auth.js';
 import * as Keys from '../keys.js';
 import * as E from '../engine.js';
-import { VERSION, SUPPORT_MAIL } from '../config.js';
+import { VERSION, SUPPORT_MAIL, PRIVACY_URL, IMPRINT_URL } from '../config.js';
 import { quotaWidget, waitLabel } from '../app.js';
 
 export function mount(main, { setTitle }) {
@@ -141,8 +141,8 @@ export function mount(main, { setTitle }) {
       el('p.muted', t('Kein Scannen, keine Gesichtserkennung auf dem Server, kein Training mit deinen Daten, keine Werbung. Auf diesem Gerät liegen Index und Vorschaubilder verschlüsselt; entschlüsselte Inhalte nur im Arbeitsspeicher.')),
       el('p.muted', t('Version {v} · Fragen? {mail}', { v: VERSION, mail: SUPPORT_MAIL })),
       el('div.set-btns',
-        el('a.btn.ghost', { href: 'https://fale.network/datenschutz/', target: '_blank', rel: 'noopener noreferrer' }, t('Datenschutzerklärung')),
-        el('a.btn.ghost', { href: 'https://fale.network/impressum/', target: '_blank', rel: 'noopener noreferrer' }, t('Impressum'))));
+        el('a.btn.ghost', { href: PRIVACY_URL, target: '_blank', rel: 'noopener noreferrer' }, t('Datenschutzerklärung')),
+        el('a.btn.ghost', { href: IMPRINT_URL, target: '_blank', rel: 'noopener noreferrer' }, t('Impressum'))));
   }
 
   // ---------------------------------------------------------------- dialogs
