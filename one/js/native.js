@@ -22,14 +22,6 @@ import * as A from './auth.js';
 import { apiBase } from './config.js';
 import { isMedia, mimeOf } from './media.js';
 
-const PAGE = 60;                      // MediaStore rows per list() call
-const BATCH_FILES = 12;               // files per engine batch (memory stays bounded)
-const BATCH_BYTES = 160 * 1024 * 1024;
-const MIN_GAP = 60 * 1000;            // automatic runs at most once a minute
-const TIMER = 10 * 60 * 1000;         // while visible: look for new photos every 10 minutes
-const ACTIVE = new Set(['waiting', 'hashing', 'queued', 'uploading', 'committing']);
-const PERMANENT = new Set(['too_large', 'read', 'bad_input', 'unsupported']); // retrying would never help
-const QUOTA_MSG = () => t('Dein Speicher ist voll. Alles bleibt lesbar – lösche etwas, leere den Papierkorb oder exportiere.');
 
 // ---------------------------------------------------------------- native bridge
 const cap = () => window.Capacitor;
