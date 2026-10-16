@@ -34,10 +34,11 @@ mkdirSync(OUT, { recursive: true });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const results = [];
 const esc = s => String(s).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+// GitHub keeps at most 10 notices per step: passed steps go into ONE combined notice at the end, failures are errors.
 function report(name, ok, info = '') {
   results.push({ name, ok, info });
   console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${info ? ' – ' + info : ''}`);
-  console.log(`::${ok ? 'notice' : 'error'} title=One-Smoke ${name}::${esc((ok ? 'OK' : 'FEHLER') + (info ? ': ' + info : ''))}`);
+  if (!ok) console.log(`::error title=One-Smoke ${name}::${esc('FEHLER' + (info ? ': ' + info : ''))}`);
 }
 
 // ------------------------------------------------------------------ adb
@@ -78,7 +79,13 @@ async function ensureFocus() {
       const [w, h] = ((sh('wm size', { allowFail: true }).match(/(\d+)x(\d+)/) || []).slice(1).map(Number));
       if (w && h) { sh(`input tap 6 ${Math.round(h * 0.45)}`, { allowFail: true }); await sleep(1200); if (appFocused()) break; }
     }
-    if (i === 2) { sh('input keyevent 3', { allowFail: true }); await sleep(1500); }
+    if (i === 2) { // API 34 image: the launcher can keep the window focus for good – start the app afresh (nothing is armed yet)
+      sh(`am force-stop ${PKG}`, { allowFail: true }); await sleep(1500);
+      sh(`monkey -p ${PKG} -c android.intent.category.LAUNCHER 1`, { allowFail: true });
+      await waitFor(() => appOnTop() && appFocused(), { timeout: 20000, interval: 800 });
+      await sleep(2500); // page boot
+      continue;
+    }
     sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
     await waitFor(() => appOnTop() && appFocused(), { timeout: 10000, interval: 700 });
     await sleep(800);
@@ -261,7 +268,7 @@ async function main() {
     if (!r.media || !r.system) throw new Error('Plugin fehlt: ' + JSON.stringify(r));
     if (r.sw) throw new Error(`${r.sw} Service Worker registriert`);
     if (r.origin !== 'https://localhost') throw new Error('Origin ' + r.origin);
-    return `${r.platform}, FaleMedia [${r.methods}], ${r.origin}, kein Service Worker`;
+    return `${r.platform}, FaleMedia [${r.methods}], ${r.origin}, kein Service Worker; Fenster nach Start: ${appFocused() ? 'App hat Fokus' : focusedWindow().slice(0, 140)}`;
   });
 
   await step('FaleSystem: Netz + Leistenfarben', async () => {
@@ -387,6 +394,7 @@ async function main() {
   if (exc.length) console.log(`::warning title=One-Smoke Konsole (${exc.length})::${esc(exc.slice(0, 12).join('\n'))}`);
   const failed = results.filter(r => !r.ok);
   console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
+  console.log(`::notice title=One-Smoke Ergebnisse (API ${sdk})::${esc(results.map(r => `${r.ok ? '✔' : '✘'} ${r.name}${r.ok && r.info ? ' – ' + r.info : ''}`).join('\n').slice(0, 60000))}`);
   console.log(`::${failed.length ? 'error' : 'notice'} title=One-Smoke Zusammenfassung (API ${sdk})::${esc(failed.length ? failed.map(f => f.name).join(', ') + ' fehlgeschlagen' : `${results.length}/${results.length} bestanden`)}`);
   process.exit(failed.length ? 1 : 0);
 }
