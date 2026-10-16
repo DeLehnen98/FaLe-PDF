@@ -66,6 +66,10 @@ jobs:
       - name: Setup Gradle (cache)
         uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
 
+      - name: Crypto cross-test Java <-> JS (JVM)
+        # FaleCrypto (background backup, one-android/native) must be byte-compatible with js/one/crypto.js
+        run: (node scripts/android-one-e2e/crypto-cross.mjs) 2>&1 | tee -a "$BUILD_LOG"
+
       - name: Install npm packages (Capacitor CLI + Android)
         run: (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) 2>&1 | tee -a "$BUILD_LOG"
 

@@ -15,6 +15,10 @@
 // settings, resume event); back button = web history (dialogs first), never closes the app on sub-pages; theme
 // colours, splash, launcher icons from one/icons; security hardening as in FaLe PDF (no Android backups of app
 // data, HTTPS only, system CAs for release builds, WebView without file/content URL access).
+// Background photo backup: the Java sources in one-android/native/ (FaleBackup plugin, WorkManager worker, crypto)
+// are copied into the project – main/ into every build, debug/ (test hooks for the emulator smoke test) only into
+// debug builds, release/ only into release builds – plus WorkManager, the dataSync foreground service type and
+// the notification permission.
 // Nothing here is shared with FaLe PDF's android/ project (scripts/cap-patch-android.mjs).
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, cpSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
@@ -24,6 +28,8 @@ import * as png from './cap-png.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ONE = join(ROOT, 'one');
 const PROJECT = join(ROOT, 'one-android');
+const NATIVE = join(PROJECT, 'native');
+const WORK_VERSION = '2.10.1'; // androidx.work:work-runtime (WorkManager)
 const WEB_MODE = process.argv.includes('--web');
 const argPath = process.argv.slice(2).find(a => !a.startsWith('--'));
 const ANDROID = resolve(argPath || join(PROJECT, 'android'));
@@ -115,6 +121,11 @@ function patchAppGradle(versionName, versionCode) {
   s = s.replace(/versionName\s+"[^"]*"/, `versionName "${versionName}"`);
   must(s.includes(`versionCode ${versionCode}`), 'versionCode nicht gefunden');
   must(s.includes(`applicationId "${APP_ID}"`), 'applicationId nicht gefunden');
+  // WorkManager for the background photo backup (periodic job, new-photo trigger, dataSync foreground service)
+  s = upsertBlock(s, 'deps', `    implementation "androidx.work:work-runtime:${WORK_VERSION}"`, (src, full) => {
+    must(/\ndependencies\s*\{/.test(src), 'dependencies-Block in app/build.gradle nicht gefunden');
+    return src.replace(/\ndependencies\s*\{/, m => `${m}\n${full}`);
+  }, ['//', ''], '    ');
   write(p, s);
 }
 
@@ -128,12 +139,23 @@ export const PERMISSIONS = [
   '<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />',
   '<!-- Ortsdaten (EXIF-GPS) bleiben im Original erhalten; FaLe One verschlüsselt sie auf dem Gerät -->',
   '<uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />',
+  '<!-- Sicherung im Hintergrund: Vordergrunddienst (Datenübertragung) nur während eines Uploads, Mitteilung (Android 13+, optional) -->',
+  '<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />',
+  '<uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />',
+  '<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />',
 ];
 function patchManifest() {
   const p = join(MAIN, 'AndroidManifest.xml');
   must(existsSync(p), 'AndroidManifest.xml fehlt');
   let s = read(p);
   s = upsertBlock(s, 'permissions', indent(PERMISSIONS.join('\n'), 4), (src, full) => src.replace(/\n*<\/manifest>\s*$/, () => `\n\n${full}\n</manifest>\n`), undefined, '    ');
+  if (!/xmlns:tools=/.test(s)) s = s.replace(/<manifest\b/, '<manifest xmlns:tools="http://schemas.android.com/tools"');
+  // WorkManager's foreground service: type dataSync (required since Android 14 for setForeground in BackupWorker)
+  s = upsertBlock(s, 'workmanager', indent(`<service
+    android:name="androidx.work.impl.foreground.SystemForegroundService"
+    android:foregroundServiceType="dataSync"
+    android:exported="false"
+    tools:node="merge" />`, 8), (src, full) => src.replace(/\n(\s*)<\/application>/, (m, sp) => `\n${full}\n${sp}</application>`), undefined, '        ');
 
   s = s.replace(/<application\b([^>]*)>/, (m, attrs) => {
     let a = attrs;
@@ -179,6 +201,34 @@ function patchJava() {
   write(main, MAIN_ACTIVITY(pkgName));
   write(join(dir, 'FaleMediaPlugin.java'), MEDIA_PLUGIN(pkgName));
   write(join(dir, 'FaleSystemPlugin.java'), SYSTEM_PLUGIN(pkgName));
+  patchNative(pkgName);
+}
+
+/**
+ * Background backup sources (one-android/native): main/java → every build, debug/java + debug/AndroidManifest.xml
+ * → debug builds only (mock-API override, adb receiver, crypto self-test), release/java → release builds only.
+ */
+function patchNative(pkgName) {
+  const pkgPath = pkgName.split('.');
+  const fix = src => src.replace(/^package\s+[\w.]+\s*;/m, `package ${pkgName};`).replace(/dev\.fale\.one\.FaleDebugReceiver/g, `${pkgName}.FaleDebugReceiver`);
+  const copied = [];
+  for (const [from, set] of [['main', 'main'], ['debug', 'debug'], ['release', 'release']]) {
+    const srcDir = join(NATIVE, from, 'java');
+    const outDir = join(APP, 'src', set, 'java', ...pkgPath);
+    if (set !== 'main') rmSync(join(APP, 'src', set, 'java'), { recursive: true, force: true }); // nothing stale in the variant source sets
+    for (const f of readdirSync(srcDir).filter(n => n.endsWith('.java'))) {
+      write(join(outDir, f), `// Generated: copied from one-android/native/${from}/java/${f} by scripts/cap-patch-one-android.mjs – edit there.\n` + fix(read(join(srcDir, f))));
+      copied.push(`${set}/${f}`);
+    }
+  }
+  write(join(APP, 'src', 'debug', 'AndroidManifest.xml'), fix(read(join(NATIVE, 'debug', 'AndroidManifest.xml'))));
+  // debug builds only: plain HTTP to the emulator host (the mock API of the smoke test); release stays HTTPS-only
+  write(join(APP, 'src', 'debug', 'res', 'xml', 'fale_network_security_config.xml'), NETWORK_CONFIG(`
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>`));
+  must(!copied.some(f => f.startsWith('main/') && /Debug/.test(f)), 'Test-Code gehört nach native/debug, nicht nach native/main');
+  log(`Native Quellen: ${copied.length} Dateien (Hintergrund-Sicherung)`);
 }
 
 const MAIN_ACTIVITY = pkgName => `package ${pkgName};
@@ -198,6 +248,8 @@ public class MainActivity extends BridgeActivity {
         // Custom plugins must be registered before super.onCreate (Capacitor 3+).
         registerPlugin(FaleMediaPlugin.class);
         registerPlugin(FaleSystemPlugin.class);
+        registerPlugin(FaleBackupPlugin.class);
+        DebugHooks.registerPlugins(this); // debug builds: FaleDebug (crypto self-test); release: nothing
         super.onCreate(savedInstanceState);
         hardenWebView();
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -634,22 +686,23 @@ public class FaleSystemPlugin extends Plugin {
 `;
 
 // ------------------------------------------------------------------ security resources
-function patchSecurityXml() {
-  write(join(RES, 'xml', 'fale_network_security_config.xml'), `<?xml version="1.0" encoding="utf-8"?>
+const NETWORK_CONFIG = (extra = '') => `<?xml version="1.0" encoding="utf-8"?>
 <!-- Generated by scripts/cap-patch-one-android.mjs -->
 <network-security-config>
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>
-    </base-config>
+    </base-config>${extra}
     <debug-overrides>
         <trust-anchors>
             <certificates src="user" />
         </trust-anchors>
     </debug-overrides>
 </network-security-config>
-`);
+`;
+function patchSecurityXml() {
+  write(join(RES, 'xml', 'fale_network_security_config.xml'), NETWORK_CONFIG());
   // Nothing of the app's private data (master key, sealed index, account tokens) goes into cloud backups or
   // device-to-device transfers. The user's data lives end-to-end encrypted in FaLe One itself.
   const none = ['root', 'file', 'database', 'sharedpref', 'external'].map(d => `        <exclude domain="${d}" path="." />`).join('\n');
@@ -731,6 +784,15 @@ function patchResources() {
       for (const f of ['splash.png', 'splash.9.png', 'splash.jpg']) rmSync(join(RES, d, f), { force: true });
     }
   }
+  // notification icon of the background backup (cloud with an arrow up, white silhouette)
+  write(join(RES, 'drawable', 'fale_ic_backup.xml'), `<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated by scripts/cap-patch-one-android.mjs -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M19.35,10.04C18.67,6.59 15.64,4 12,4 9.11,4 6.6,5.64 5.35,8.04 2.34,8.36 0,10.91 0,14c0,3.31 2.69,6 6,6h13c2.76,0 5,-2.24 5,-5 0,-2.64 -2.05,-4.78 -4.65,-4.96zM14,13v4h-4v-4H7l5,-5 5,5h-3z" />
+</vector>
+`);
   write(join(RES, 'drawable', 'splash.xml'), `<?xml version="1.0" encoding="utf-8"?>
 <!-- Generated by scripts/cap-patch-one-android.mjs -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
