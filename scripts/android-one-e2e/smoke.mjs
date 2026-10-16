@@ -74,6 +74,10 @@ const appFocused = () => { const f = focusedWindow(); return /mCurrentFocus=null
  *  resumed (same workaround as scripts/android-e2e/e2e.mjs). Brings the app to the front with the focus. */
 async function ensureFocus() {
   for (let i = 0; i < 3 && !(appOnTop() && appFocused()); i++) {
+    if (appOnTop() && !appFocused()) { // resumed but the launcher window holds the focus: a tap on the app's margin moves it
+      const [w, h] = ((sh('wm size', { allowFail: true }).match(/(\d+)x(\d+)/) || []).slice(1).map(Number));
+      if (w && h) { sh(`input tap 6 ${Math.round(h * 0.45)}`, { allowFail: true }); await sleep(1200); if (appFocused()) break; }
+    }
     if (i === 2) { sh('input keyevent 3', { allowFail: true }); await sleep(1500); }
     sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
     await waitFor(() => appOnTop() && appFocused(), { timeout: 10000, interval: 700 });
@@ -84,6 +88,16 @@ async function ensureFocus() {
     const start = sh(`am start -W -n ${PKG}/.MainActivity`, { allowFail: true }).replace(/\s+/g, ' ').slice(0, 300);
     const crash = adb(['logcat', '-d', '-v', 'brief', 'AndroidRuntime:E', 'ActivityTaskManager:W', 'WindowManager:W', '*:S'], { allowFail: true }).split('\n').filter(l => l.trim()).slice(-6).join(' / ').slice(0, 900);
     throw new Error(`App hat keinen Fokus: ${focusedWindow()} | ${act} | am start: ${start} | ${crash}`);
+  }
+  if (cdp.closed || cdp.pid !== appPid()) await connect();
+}
+
+/** The app in front with a live CDP connection (no key focus needed: everything goes through the WebView). */
+async function ensureFront() {
+  if (!appOnTop()) {
+    sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
+    if (!await waitFor(() => appOnTop(), { timeout: 15000, interval: 700 })) throw new Error('App kommt nicht nach vorne: ' + focusedWindow());
+    await sleep(800);
   }
   if (cdp.closed || cdp.pid !== appPid()) await connect();
 }
@@ -191,9 +205,13 @@ function ourJobs() {
   const jobs = new Map();
   for (const args of [`dumpsys jobscheduler ${PKG}`, 'dumpsys jobscheduler']) {
     const out = sh(args, { allowFail: true, timeout: 60000 });
-    for (const block of out.split(/\n(?=\s*JOB #)/)) {
-      const m = /JOB #[^\s/]+\/(?:([^\s:]+):)?(-?\d+): \S+ (\S+)/.exec(block);
-      if (m && m[3].startsWith(PKG + '/') && !jobs.has((m[1] || '') + ':' + m[2])) jobs.set((m[1] || '') + ':' + m[2], { id: m[2], ns: m[1] || null, text: block.slice(0, 4000) });
+    // "JOB #u0a190/1: 5b1d3e7 dev.fale.one/…SystemJobService" or (namespace, Android 14+)
+    // "JOB androidx.work.systemjobscheduler:u0a192/0: 8a6d2b @androidx.work.systemjobscheduler@dev.fale.one/…SystemJobService"
+    for (const block of out.split(/\n(?=\s*JOB )/)) {
+      const m = /JOB #?(?:([^\s:/#]+):)?[^\s/]+\/(-?\d+): \S+ (\S+)/.exec(block);
+      if (!m || !(m[3].startsWith(PKG + '/') || m[3].includes('@' + PKG + '/'))) continue;
+      const key = (m[1] || '') + ':' + m[2];
+      if (!jobs.has(key)) jobs.set(key, { id: m[2], ns: m[1] || null, text: block.slice(0, 4000) });
     }
     if (jobs.size) break;
     jobsRaw = out.split('\n').filter(l => l.includes(PKG)).slice(0, 8).join(' / ').slice(0, 1200);
@@ -401,7 +419,7 @@ async function backgroundBackup(items) {
     return { kek: p.kek, dk: p.dk, dvk: p.dvk, apiBase: p.apiBase };`);
 
   await step('Krypto-Kreuztest im Emulator (Java ↔ JS)', async () => {
-    await ensureFocus();
+    await ensureFront();
     const vec = await makeVectors();
     const out = await ev(`const P = window.Capacitor.Plugins.FaleDebug; if (!P) throw new Error('FaleDebug fehlt (Debug-Build?)'); return await P.cryptoSelfTest({ vectors: ${JSON.stringify(vec)} });`, { timeout: 120000 });
     const problems = await checkJava(vec, out);
@@ -474,7 +492,7 @@ async function backgroundBackup(items) {
   });
 
   await step('Ein Sitzungs-Erneuerer: die App erneuert über die Hintergrund-Sicherung', async () => {
-    await ensureFocus();
+    await ensureFront();
     // the app's own (now outdated) refresh token must never reach the server – auth.js asks FaleBackup
     const r = await ev(`const { kv } = await import('/js/idb.js'); const A = await import('/js/auth.js');
       await kv.set('session', { refresh: ${JSON.stringify(sess.refresh)}, user: ${JSON.stringify(user)}, at: Date.now(), device: ${JSON.stringify(deviceId)}, deviceName: ${JSON.stringify(deviceName)} });
@@ -533,7 +551,7 @@ async function backgroundBackup(items) {
   });
 
   await step('Anderswo abgemeldet: Schlüssel gelöscht, Hinweis zum Öffnen', async () => {
-    await ensureFocus();
+    await ensureFront();
     if (sdk >= 33) sh(`pm grant ${PKG} android.permission.POST_NOTIFICATIONS`, { allowFail: true });
     mock.revokeSession();
     debugBroadcast('RUN');
