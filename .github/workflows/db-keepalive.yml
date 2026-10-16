@@ -1,0 +1,54 @@
+# Hält das Supabase-Projekt wach: Projekte im Gratis-Tarif werden nach einer Woche ohne Aktivität pausiert.
+# Alle drei Tage eine harmlose Leseanfrage an die REST-API (mit dem öffentlichen Schlüssel, den auch die App nutzt)
+# und an die Datenbank (Management API, nur "select 1"). Schreibt nichts, braucht kein neues Secret.
+name: DB keep-alive
+
+on:
+  schedule:
+    - cron: '17 6 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      REF: mcjgkhisuquuxteyumrf
+    steps:
+      - name: Ping Supabase
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          def get(url, headers=None, data=None, method=None):
+              req = urllib.request.Request(url, data=data, headers={'User-Agent': 'fale-keepalive', **(headers or {})}, method=method)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.status, r.read().decode(errors='replace')
+          ok = []
+          try:
+              st, body = get('https://pdf.fale.network/api/account?a=config')
+              cfg = json.loads(body)
+              url = cfg.get('supabaseUrl') or cfg.get('url')
+              key = cfg.get('supabaseKey') or cfg.get('publishableKey') or cfg.get('anonKey')
+              if url and key:
+                  st, _ = get(url.rstrip('/') + '/auth/v1/health', {'apikey': key})
+                  ok.append(f'auth health {st}')
+              else:
+                  ok.append('config without supabase url/key: ' + ','.join(sorted(cfg))[:200])
+          except Exception as e:
+              ok.append(f'REST ping failed: {e}')
+          tok = os.environ.get('SUPABASE_ACCESS_TOKEN', '')
+          if tok:
+              print('::add-mask::' + tok)
+              try:
+                  st, _ = get(f"https://api.supabase.com/v1/projects/{os.environ['REF']}/database/query",
+                              {'Authorization': f'Bearer {tok}', 'Content-Type': 'application/json'},
+                              json.dumps({'query': 'select 1'}).encode(), 'POST')
+                  ok.append(f'db query {st}')
+              except Exception as e:
+                  ok.append(f'db query failed: {e}')
+          print('::notice title=Keep-alive::' + ' · '.join(ok))
+          PY
