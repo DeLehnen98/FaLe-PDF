@@ -1,0 +1,48 @@
+# Zeigt die (nicht geheimen) Login-Einstellungen von Supabase: Site URL, Redirect URLs, ob eigener Mailversand
+# eingerichtet ist, ob die Mail-Vorlagen einen Code ({{ .Token }}) enthalten, Limits. Nur lesend.
+name: Supabase auth check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      REF: mcjgkhisuquuxteyumrf
+    steps:
+      - name: Read auth config
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          tok = os.environ['SUPABASE_ACCESS_TOKEN']; print('::add-mask::' + tok)
+          req = urllib.request.Request(f"https://api.supabase.com/v1/projects/{os.environ['REF']}/config/auth",
+                                       headers={'Authorization': f'Bearer {tok}', 'User-Agent': 'fale-auth-check'})
+          c = json.loads(urllib.request.urlopen(req, timeout=60).read())
+          tpl = lambda k: c.get(k) or ''
+          out = {
+            'site_url': c.get('site_url'),
+            'redirects': c.get('uri_allow_list'),
+            'email_enabled': c.get('external_email_enabled'),
+            'autoconfirm': c.get('mailer_autoconfirm'),
+            'otp_length': c.get('mailer_otp_length'),
+            'otp_exp': c.get('mailer_otp_exp'),
+            'custom_smtp': bool(c.get('smtp_host')),
+            'smtp_host': c.get('smtp_host'),
+            'smtp_sender': c.get('smtp_admin_email'),
+            'rate_email_per_hour': c.get('rate_limit_email_sent'),
+            'magic_link_has_token': '.Token' in tpl('mailer_templates_magic_link_content'),
+            'confirmation_has_token': '.Token' in tpl('mailer_templates_confirmation_content'),
+            'magic_link_has_url': 'ConfirmationURL' in tpl('mailer_templates_magic_link_content'),
+            'subject_magic': c.get('mailer_subjects_magic_link'),
+            'subject_confirm': c.get('mailer_subjects_confirmation'),
+            'magic_tpl_len': len(tpl('mailer_templates_magic_link_content')),
+          }
+          for k, v in out.items():
+              print(f'::notice title={k}::{v}')
+          PY
