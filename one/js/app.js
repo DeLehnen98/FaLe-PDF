@@ -42,6 +42,7 @@ async function driveConfigured() {
 }
 
 export async function boot() {
+  if (native) await native; // Android app: the session hooks of the background backup must be in place first
   const signedIn = A.maybeSignedIn() && await A.currentUser();
   if (!signedIn) {
     const configured = await driveConfigured();
@@ -53,7 +54,7 @@ export async function boot() {
 }
 
 async function gate(step, opts) {
-  if (native) native.then(m => m && m.appStopped());
+  if (native) native.then(m => m && m.appStopped({ step })); // signed out / locked: the background backup stops and forgets its keys
   E.stop();
   shell = null; current = null; currentKey = '';
   clear(root);
@@ -82,7 +83,7 @@ async function startApp(lk) {
   A.touchDevice().catch(() => {});
   setupTimers();
   handleShared();
-  if (native) native.then(m => m && m.appStarted({ userId: s.user.id }));
+  if (native) native.then(m => m && m.appStarted({ userId: s.user.id, mk: lk.key, deviceId: s.device, deviceName: s.deviceName || A.defaultDeviceName() }));
 }
 
 /** Another device may have reset the account key (new Sync-Passwort after data loss): then ask again. */

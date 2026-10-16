@@ -116,14 +116,47 @@ export async function verifyCode(email, code) {
   return mem.session.user;
 }
 
+// ---------------------------------------------------------------- Android app: one session refresher
+// In the Android app the background photo backup keeps its own copy of the session (js/native.js registers these
+// hooks). While it holds one, every refresh goes through it, so a rotated refresh token is never used twice
+// (Supabase would end the whole session). In the browser nothing registers and nothing here changes.
+let nativeSession = null;
+const wipeHooks = new Set();
+export function useNativeSession(h) { nativeSession = h; }
+export function onLocalWipe(fn) { wipeHooks.add(fn); return () => wipeHooks.delete(fn); }
+/**
+ * fn({ refresh, user, access, exp, adopt }) runs while no refresh can happen: hand the session to the background
+ * backup, or take newer tokens back from it (adopt(tokens) – same account only).
+ */
+export function withSession(fn) {
+  return withLock(async () => {
+    const stored = await kv.get('session', null);
+    const adopt = async tok => {
+      const cur = await kv.get('session', null);
+      if (!cur || !tok || !tok.refresh_token || !tok.access_token || !tok.user || tok.user.id !== cur.user.id) return false;
+      if (tok.refresh_token === cur.refresh && mem.access === tok.access_token) return false;
+      await saveSession(tok);
+      return true;
+    };
+    return fn(stored ? { refresh: stored.refresh, user: stored.user, access: mem.access, exp: mem.exp, adopt } : null);
+  });
+}
+
 // ---------------------------------------------------------------- access token
 let refreshP = null;
 async function withLock(fn) { return navigator.locks && navigator.locks.request ? navigator.locks.request('fale-one-refresh', fn) : fn(); }
-async function doRefresh() {
+async function doRefresh(force = false) {
   return withLock(async () => {
     const stored = await kv.get('session', null);
     if (!stored) { mem.session = null; mem.access = null; return null; }
     mem.session = stored;
+    if (nativeSession) {
+      let r = null;
+      try { r = await nativeSession.token({ force }); } catch { throw new AccountError('refresh_failed', UNAVAILABLE()); }
+      if (r && r.signedOut) { await localSignOut('expired'); return null; }
+      if (r && r.armed && r.access_token && r.user && r.user.id === stored.user.id) { await saveSession(r); return mem.access; }
+      // not armed: this app refreshes on its own, as in the browser
+    }
     const cfg = await cfgOrThrow();
     const r = await authFetch(cfg, 'token?grant_type=refresh_token', { json: { refresh_token: stored.refresh } });
     if (!r.ok) {
@@ -139,7 +172,7 @@ export async function accessToken({ force = false } = {}) {
   if (!s) return null;
   if (!force && mem.access && mem.exp - 60000 > Date.now()) return mem.access;
   if (force) mem.access = null;
-  if (!refreshP) refreshP = doRefresh().finally(() => { refreshP = null; });
+  if (!refreshP) refreshP = doRefresh(force).finally(() => { refreshP = null; });
   return refreshP;
 }
 
@@ -195,6 +228,7 @@ export async function revokeDevice(id) { return rpc('fale_device_revoke', { p_de
 
 // ---------------------------------------------------------------- sign-out / delete
 export async function localSignOut(reason = 'signed-out') {
+  for (const fn of [...wipeHooks]) { try { await fn(reason); } catch {} } // Android app: background backup keys first
   await wipeAll();
   mem = { access: null, exp: 0, session: null };
   ls.del(FLAG_LS);

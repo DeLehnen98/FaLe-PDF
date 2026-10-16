@@ -132,7 +132,7 @@ jobs:
           body: |
             FaLe One für Android – automatisch gebaut aus dem neuesten Stand von main (${{ github.sha }}).
             Zum Testen: die .apk-Datei auf dem Handy herunterladen und öffnen (Installation aus unbekannten Quellen erlauben).
-            Debug-Build zum Ausprobieren, nicht aus dem Play Store. Automatische Fotosicherung läuft in dieser Version, solange die App geöffnet ist.
+            Debug-Build zum Ausprobieren, nicht aus dem Play Store. Die automatische Fotosicherung läuft auch im Hintergrund, wenn die App geschlossen ist (Android kann sie verzögern, um Akku zu sparen).
           files: out/*
 
       - name: Report failure details (readable via the Checks API)

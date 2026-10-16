@@ -1086,6 +1086,7 @@ const OPS = {
   async clearFinished() { for (const [id, j] of jobs) if (j.state === 'done' || j.state === 'skipped') jobs.delete(id); return [...jobs.values()].map(jobView); },
   async online() { retryNetwork(); return true; },
   backup, takeoutScan, takeoutImport,
+  async photosFolder({ folderName }) { return { id: await photosFolder(folderName) }; }, // Android background backup
   async backupList() { const r = await S.api.backupList(); return { ...r, devices: await pmap(r.devices || [], 4, async d => { let meta = null; try { meta = d.meta ? await K.openDeviceMeta(S.keys, d.deviceId, d.meta) : null; } catch {} return { ...d, meta, self: d.deviceId === S.deviceId }; }) }; },
   async backupForget({ deviceId }) { return S.api.backupForget(deviceId); },
   albumCreate, albumPatch, albumItems,
