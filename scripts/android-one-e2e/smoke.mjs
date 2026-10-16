@@ -57,6 +57,20 @@ async function waitFor(fn, { timeout = 15000, interval = 400 } = {}) {
 const appPid = () => sh(`pidof ${PKG}`, { allowFail: true }).trim().split(/\s+/)[0] || '';
 const appOnTop = () => new RegExp(`topResumedActivity=[^\\n]*${PKG.replace(/\./g, '\\.')}/`).test(sh('dumpsys activity activities', { allowFail: true }));
 const sdk = parseInt(sh('getprop ro.build.version.sdk').trim(), 10);
+const focusedWindow = () => (sh('dumpsys window', { allowFail: true }).match(/mCurrentFocus=[^\n]*/) || [''])[0];
+const appFocused = () => { const f = focusedWindow(); return /mCurrentFocus=null/.test(f) ? appOnTop() : f.includes(PKG + '/'); };
+/** Key events go to the focused window: on the API 34 image the launcher can keep the focus although the app is
+ *  resumed (same workaround as scripts/android-e2e/e2e.mjs). Brings the app to the front with the focus. */
+async function ensureFocus() {
+  for (let i = 0; i < 3 && !(appOnTop() && appFocused()); i++) {
+    if (i === 2) { sh('input keyevent 3', { allowFail: true }); await sleep(1500); }
+    sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
+    await waitFor(() => appOnTop() && appFocused(), { timeout: 10000, interval: 700 });
+    await sleep(800);
+  }
+  if (!(appOnTop() && appFocused())) throw new Error('App hat keinen Fokus: ' + focusedWindow());
+  if (cdp.closed || cdp.pid !== appPid()) await connect();
+}
 
 // ------------------------------------------------------------------ CDP
 class Cdp {
@@ -280,7 +294,7 @@ async function main() {
   });
 
   await step('Zurück-Taste: Dialog, Verlauf, Hintergrund', async () => {
-    if (!await waitFor(() => appOnTop(), { timeout: 8000 })) throw new Error('App nicht vorne vor dem Test: ' + (sh('dumpsys activity activities', { allowFail: true }).match(/topResumedActivity=[^\n]*/) || [''])[0]);
+    await ensureFocus();
     adb(['logcat', '-c'], { allowFail: true });
     await ev(`const d = await import('/js/dom.js'); window.__dlg = null; d.openDialog({ title: 'E2E', body: d.el('p', 'Test'), actions: [{ label: 'OK', value: 'ok', default: true }] }).then(r => { window.__dlg = r.value; }); return true;`);
     await sleep(500);
