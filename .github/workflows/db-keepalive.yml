@@ -29,7 +29,7 @@ jobs:
                   return r.status, r.read().decode(errors='replace')
           ok = []
           try:
-              st, body = get('https://pdf.fale.network/api/account?a=config')
+              st, body = get('https://pdf.fale.network/api/account?a=config', {'Content-Type': 'application/json', 'Origin': 'https://pdf.fale.network'}, b'{}', 'POST')
               cfg = json.loads(body)
               url = cfg.get('supabaseUrl') or cfg.get('url')
               key = cfg.get('supabaseKey') or cfg.get('publishableKey') or cfg.get('anonKey')
