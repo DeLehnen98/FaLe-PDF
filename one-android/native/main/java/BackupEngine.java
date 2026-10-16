@@ -332,6 +332,13 @@ final class BackupEngine {
         }
     }
 
+    /** Up to len bytes of the original from pos (metadata lives in the first / last bytes). */
+    private static byte[] head(Source s, long pos, int len) throws IOException {
+        byte[] b = new byte[(int) Math.max(0, Math.min(len, s.size - pos))];
+        s.read(pos, b, b.length);
+        return b;
+    }
+
     private String upload(BackupMedia.Item it, Source s, String mime) throws Exception {
         // resume the upload of an earlier run when it is the same photo
         JSONObject inf = BackupStore.loadInflight(c);
@@ -364,18 +371,23 @@ final class BackupEngine {
             if (hit != null && hit.length() > 0) return "dup";
         }
 
-        // metadata + derivatives (cheap to redo on resume; the revision envelope is only written at commit)
-        JSONObject meta = new JSONObject();
-        BackupMedia.Derived der;
+        // metadata + derivatives (cheap to redo on resume; the revision envelope is only written at commit).
+        // EXIF / MP4 metadata with the port of media.js (BackupExif), so it is exactly what the web app writes.
         boolean video = mime.startsWith("video/");
+        JSONObject meta;
+        BackupMedia.Derived der;
         if (video) {
-            der = BackupMedia.video(c, it.uri, meta);
+            java.util.Map<String, Object> m = BackupExif.mp4Meta(head(s, 0, 1024 * 1024));
+            if (!m.containsKey("takenAt") && s.size > 1024 * 1024) {
+                java.util.Map<String, Object> tail = BackupExif.mp4Meta(head(s, Math.max(0, s.size - 2L * 1024 * 1024), 2 * 1024 * 1024));
+                tail.putAll(m);
+                m = tail;
+            }
+            meta = new JSONObject(BackupExif.json(m));
+            der = BackupMedia.video(c, it.uri);
         } else {
-            int orientation = 0;
-            try (java.io.InputStream in = c.getContentResolver().openInputStream(it.uri)) {
-                if (in != null) orientation = BackupMedia.exifInto(new android.media.ExifInterface(in), meta);
-            } catch (Exception e) { /* no EXIF */ }
-            der = BackupMedia.image(c, it.uri, mime, s.size, orientation);
+            meta = new JSONObject(BackupExif.json(BackupExif.exifToMeta(BackupExif.parseExif(head(s, 0, 512 * 1024)))));
+            der = BackupMedia.image(c, it.uri, mime, s.size, meta.optInt("orientation", 0));
             if (der == null) meta.put("noPreview", true);
         }
         if (der != null) {

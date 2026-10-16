@@ -17,7 +17,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
@@ -137,90 +136,7 @@ final class BackupMedia {
     static boolean isMedia(String mime) { return mime.startsWith("image/") || mime.startsWith("video/"); }
     private static boolean browserImage(String m) { return m.matches("^image/(jpeg|png|gif|webp|avif|bmp)$"); }
 
-    // ---------------------------------------------------------------- metadata
-    private static double rational(String s) {
-        int slash = s.indexOf('/');
-        if (slash < 0) return Double.parseDouble(s.trim());
-        double d = Double.parseDouble(s.substring(slash + 1).trim());
-        return d != 0 ? Double.parseDouble(s.substring(0, slash).trim()) / d : 0;
-    }
-    /** "49/1,14/1,746/100" + ref → decimal degrees rounded to 6 places (like media.js gpsDeg), or NaN. */
-    private static double gpsDeg(String v, String ref) {
-        if (v == null) return Double.NaN;
-        try {
-            String[] p = v.split(",");
-            if (p.length < 3) return Double.NaN;
-            double d = rational(p[0]) + rational(p[1]) / 60 + rational(p[2]) / 3600;
-            if (Double.isNaN(d) || Double.isInfinite(d) || d == 0) return Double.NaN;
-            if ("S".equals(ref) || "W".equals(ref)) d = -d;
-            return Math.round(d * 1e6) / 1e6;
-        } catch (Exception e) {
-            return Double.NaN;
-        }
-    }
-    private static final Pattern EXIF_DATE = Pattern.compile("^(\\d{4}):(\\d{2}):(\\d{2})[ T](\\d{2}):(\\d{2}):(\\d{2})");
-    private static String exifDate(String s, String off) {
-        if (s == null) return null;
-        Matcher m = EXIF_DATE.matcher(s);
-        if (!m.find() || "0000".equals(m.group(1))) return null;
-        String o = off != null && off.matches("^[+-]\\d{2}:\\d{2}$") ? off : "";
-        return m.group(1) + "-" + m.group(2) + "-" + m.group(3) + "T" + m.group(4) + ":" + m.group(5) + ":" + m.group(6) + o;
-    }
-    private static String trimmed(String s, int max) {
-        if (s == null) return null;
-        int z = s.indexOf('\0');
-        if (z >= 0) s = s.substring(0, z);
-        s = s.trim();
-        if (s.isEmpty()) return null;
-        return s.length() > max ? s.substring(0, max) : s;
-    }
-    private static double round1(double v) { return Math.round(v * 10) / 10.0; }
-
-    /** EXIF → node meta fields (media.js exifToMeta). Orientation is also returned for rendering (0 = none). */
-    static int exifInto(ExifInterface x, JSONObject meta) throws Exception {
-        String offOrig = x.getAttribute("OffsetTimeOriginal"), off = x.getAttribute("OffsetTime");
-        String taken = exifDate(x.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL), offOrig != null ? offOrig : off);
-        if (taken == null) taken = exifDate(x.getAttribute("DateTimeDigitized"), off);
-        if (taken == null) taken = exifDate(x.getAttribute(ExifInterface.TAG_DATETIME), off);
-        if (taken != null) meta.put("takenAt", taken);
-        int orientation = x.getAttributeInt(ExifInterface.TAG_ORIENTATION, 0);
-        if (orientation >= 1 && orientation <= 8 && x.getAttribute(ExifInterface.TAG_ORIENTATION) != null) meta.put("orientation", orientation);
-        int px = x.getAttributeInt("PixelXDimension", 0), py = x.getAttributeInt("PixelYDimension", 0);
-        if (px > 0 && py > 0) { meta.put("w", px); meta.put("h", py); }
-        double lat = gpsDeg(x.getAttribute(ExifInterface.TAG_GPS_LATITUDE), x.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF));
-        double lon = gpsDeg(x.getAttribute(ExifInterface.TAG_GPS_LONGITUDE), x.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF));
-        if (!Double.isNaN(lat) && !Double.isNaN(lon)) {
-            JSONObject gps = new JSONObject();
-            gps.put("lat", lat);
-            gps.put("lon", lon);
-            String alt = x.getAttribute(ExifInterface.TAG_GPS_ALTITUDE);
-            if (alt != null) {
-                try {
-                    double a = rational(alt);
-                    if (!Double.isNaN(a) && !Double.isInfinite(a)) gps.put("alt", round1("1".equals(x.getAttribute(ExifInterface.TAG_GPS_ALTITUDE_REF)) ? -a : a));
-                } catch (Exception ignored) { /* no altitude */ }
-            }
-            meta.put("gps", gps);
-        }
-        JSONObject ex = new JSONObject();
-        String make = trimmed(x.getAttribute(ExifInterface.TAG_MAKE), 60), model = trimmed(x.getAttribute(ExifInterface.TAG_MODEL), 80), lens = trimmed(x.getAttribute("LensModel"), 80);
-        if (make != null) ex.put("make", make);
-        if (model != null) ex.put("model", model);
-        if (lens != null) ex.put("lens", lens);
-        String iso = x.getAttribute("PhotographicSensitivity"); // tag 0x8827 (older name: ISOSpeedRatings)
-        if (iso == null) iso = x.getAttribute("ISOSpeedRatings");
-        if (iso != null) { try { ex.put("iso", Integer.parseInt(iso.split(",")[0].trim())); } catch (Exception ignored) { /* not a number */ } }
-        double fNumber = x.getAttributeDouble(ExifInterface.TAG_F_NUMBER, -1);
-        if (fNumber > 0) ex.put("fNumber", round1(fNumber));
-        double exposure = x.getAttributeDouble(ExifInterface.TAG_EXPOSURE_TIME, -1);
-        if (exposure > 0) ex.put("exposure", exposure);
-        double focal = x.getAttributeDouble(ExifInterface.TAG_FOCAL_LENGTH, -1);
-        if (focal > 0) ex.put("focal", round1(focal));
-        int focal35 = x.getAttributeInt("FocalLengthIn35mmFilm", 0);
-        if (focal35 > 0) ex.put("focal35", focal35);
-        if (ex.length() > 0) meta.put("exif", ex);
-        return orientation >= 1 && orientation <= 8 ? orientation : 0;
-    }
+    // ---------------------------------------------------------------- metadata (EXIF / MP4: BackupExif, a port of media.js)
     /** ISO time with the device's offset (media.js fallbackTakenAt). */
     static String fallbackTakenAt(long ms) {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT);
@@ -315,43 +231,13 @@ final class BackupMedia {
         }
     }
 
-    private static final Pattern ISO6709 = Pattern.compile("([+-]\\d+(?:\\.\\d+)?)([+-]\\d+(?:\\.\\d+)?)");
-    /** Video: metadata (takenAt, gps, durationMs) into meta + poster-frame thumbnail/preview (null when no frame). */
-    static Derived video(Context c, Uri uri, JSONObject meta) {
+    /** Video: poster frame thumbnail/preview + duration (like the web app's <video> poster), or null when no frame. */
+    static Derived video(Context c, Uri uri) {
         MediaMetadataRetriever r = new MediaMetadataRetriever();
         try {
             r.setDataSource(c, uri);
             long dur = 0;
             try { dur = Long.parseLong(r.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)); } catch (Exception ignored) { /* unknown */ }
-            if (dur > 0) meta.put("durationMs", dur);
-            String date = r.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DATE); // 20260501T101500.000Z
-            if (date != null) {
-                try {
-                    SimpleDateFormat in = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.ROOT);
-                    in.setTimeZone(TimeZone.getTimeZone("UTC"));
-                    Date dt = in.parse(date.length() >= 15 ? date.substring(0, 15) : date);
-                    Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-                    cal.setTime(dt);
-                    if (dt != null && cal.get(Calendar.YEAR) > 1970 && dt.getTime() < System.currentTimeMillis() + 86400000L) {
-                        SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ROOT);
-                        out.setTimeZone(TimeZone.getTimeZone("UTC"));
-                        meta.put("takenAt", out.format(dt));
-                    }
-                } catch (Exception ignored) { /* no date */ }
-            }
-            String loc = r.extractMetadata(MediaMetadataRetriever.METADATA_KEY_LOCATION);
-            if (loc != null) {
-                Matcher m = ISO6709.matcher(loc);
-                if (m.find()) {
-                    double lat = Double.parseDouble(m.group(1)), lon = Double.parseDouble(m.group(2));
-                    if (Math.abs(lat) <= 90 && Math.abs(lon) <= 180 && (lat != 0 || lon != 0)) {
-                        JSONObject gps = new JSONObject();
-                        gps.put("lat", lat);
-                        gps.put("lon", lon);
-                        meta.put("gps", gps);
-                    }
-                }
-            }
             Bitmap frame = r.getFrameAtTime(Math.min(1000L, Math.max(0, dur / 3)) * 1000L, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
             if (frame == null) return null;
             try {
