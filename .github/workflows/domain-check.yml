@@ -1,0 +1,26 @@
+# Prüft, ob die eigenen Domains schon auflösen und ausgeliefert werden (DNS + HTTPS).
+# Nur lesend; Ergebnisse stehen als Hinweise im Workflow-Lauf.
+name: Domain check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: DNS + HTTPS
+        run: |
+          for h in fale.network www.fale.network pdf.fale.network one.fale.network faleone.com www.faleone.com; do
+            ns=$(dig +short NS "${h#www.}" @1.1.1.1 | tr '\n' ' ')
+            a=$(dig +short A "$h" @1.1.1.1 | tr '\n' ' ')
+            cn=$(dig +short CNAME "$h" @1.1.1.1 | tr '\n' ' ')
+            code=$(curl -s -o /tmp/body -w '%{http_code} -> %{redirect_url}' --max-time 15 "https://$h/" || echo "curl-fehler $?")
+            title=$(grep -o '<title>[^<]*' /tmp/body 2>/dev/null | head -n1 | sed 's/<title>//')
+            echo "::notice title=$h::NS[$ns] A[$a] CNAME[$cn] HTTPS[$code] Titel[$title]"
+            rm -f /tmp/body
+          done
