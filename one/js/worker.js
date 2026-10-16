@@ -640,7 +640,7 @@ async function photosFolder(name) {
   const f = await mkdir({ parentId: null, name, extra: { role: 'photos' } });
   return f.id;
 }
-async function deviceMeta() { return K.sealDeviceMeta(S.keys, S.deviceId, { v: 1, name: S.deviceName, platform: 'web', app: 'one-1.0.0' }); }
+async function deviceMeta() { return K.sealDeviceMeta(S.keys, S.deviceId, { v: 1, name: S.deviceName, platform: S.platform, app: 'one-1.0.0' }); }
 async function report(status, extra = {}) {
   try { await S.api.backupReport({ deviceId: S.deviceId, status, meta: await deviceMeta(), ...extra }); emit('backup', {}); } catch {}
 }
@@ -1019,11 +1019,11 @@ function emExportView(e) {
 
 // ---------------------------------------------------------------- ops
 const OPS = {
-  async init({ userId, mk, apiBase, deviceId, deviceName }) {
+  async init({ userId, mk, apiBase, deviceId, deviceName, platform }) {
     const keys = await K.deriveKeys(mk, userId);
     const lk = await crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-256', salt: te.encode('fale-one-local|' + userId), info: te.encode('fale-one-local-v1') }, mk, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
     const api = createClient({ baseUrl: apiBase, getToken: async ({ refresh }) => { const tok = await ask('token', { refresh }); if (!tok) throw Object.assign(new Error('signed out'), { code: 'signed_out', status: 401 }); return tok; }, retries: 2, retryDelayMs: 500 });
-    S = { userId, deviceId, deviceName, keys, lk, api, apiBase, mk, chunkSize: 1048576, limits: null };
+    S = { userId, deviceId, deviceName, keys, lk, api, apiBase, mk, chunkSize: 1048576, limits: null, platform: platform === 'android' ? 'android' : 'web' };
     const had = await loadSnapshot();
     const cfgChunk = await kv.get('chunkSize', null).catch(() => null);
     if (cfgChunk) S.chunkSize = cfgChunk;

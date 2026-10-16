@@ -6,6 +6,7 @@ import { createGrid, groupByDay } from './grid.js';
 import { thumbEl, displayName, trashNodes, downloadNode, sizeOf, openNode } from './common.js';
 import { backupPhotos, openSheet } from './uploads.js';
 import { quotaWidget, statusText, emHomeCard } from '../app.js';
+import { isNativeApp } from '../config.js';
 
 const zoomKey = 'fale-one-zoom';
 const getZoom = () => { try { const z = +localStorage.getItem(zoomKey); return z >= 0 && z <= 2 ? z : 1; } catch { return 1; } };
@@ -51,6 +52,11 @@ async function timelineView(main, setTitle, { albumId = null, favorites = false 
   wrap.append(head);
   const sc = !albumId && !favorites ? statusCard() : null;
   if (sc) wrap.append(sc.node, emHomeCard());
+  if (sc && isNativeApp()) { // Android app: automatic backup card (js/native.js is never loaded on the web)
+    const slot = el('div');
+    wrap.append(slot);
+    import('../native.js').then(m => slot.append(m.backupCard({ compact: true }))).catch(e => console.error(e));
+  }
   wrap.append(subNav(albumId ? 'alben' : favorites ? 'favoriten' : ''));
   let zoom = getZoom();
   const empty = el('div.empty', { hidden: true });

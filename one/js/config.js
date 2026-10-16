@@ -13,9 +13,15 @@ export const PRIVACY_URL = NETWORK_ORIGIN + '/datenschutz/';
 export const IMPRINT_URL = NETWORK_ORIGIN + '/impressum/';
 export const SUPPORT_MAIL = 'hallo@fale.network';
 
+/** Inside the FaLe One Android app (Capacitor)? Native-only code (js/native.js) is loaded only then. */
+export function isNativeApp() {
+  try { const c = typeof window !== 'undefined' ? window.Capacitor : null; return !!(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform()); } catch { return false; }
+}
+
 // Local development / tests only: on localhost the API origins can be pointed at a local harness
-// (localStorage 'fale-one-dev-api' / 'fale-one-dev-pdf'). Never honoured on a real origin.
-const isLocal = () => typeof location !== 'undefined' && /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+// (localStorage 'fale-one-dev-api' / 'fale-one-dev-pdf'). Never honoured on a real origin, nor in the Android
+// app (which is served from https://localhost too).
+const isLocal = () => typeof location !== 'undefined' && /^(localhost|127\.0\.0\.1)$/.test(location.hostname) && !isNativeApp();
 function dev(k) {
   if (!isLocal()) return null;
   try { const v = localStorage.getItem(k); return v && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/?$/.test(v) ? v.replace(/\/+$/, '') : null; } catch { return null; }

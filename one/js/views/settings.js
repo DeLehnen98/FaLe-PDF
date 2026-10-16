@@ -5,7 +5,7 @@ import { t, tp, fmtSize, fmtDateTime, ago, langPref, setLangPref, getLang } from
 import * as A from '../auth.js';
 import * as Keys from '../keys.js';
 import * as E from '../engine.js';
-import { VERSION, SUPPORT_MAIL, PRIVACY_URL, IMPRINT_URL } from '../config.js';
+import { VERSION, SUPPORT_MAIL, PRIVACY_URL, IMPRINT_URL, isNativeApp } from '../config.js';
 import { quotaWidget, waitLabel } from '../app.js';
 
 export function mount(main, { setTitle }) {
@@ -14,11 +14,14 @@ export function mount(main, { setTitle }) {
   main.appendChild(wrap);
   const sec = (id, title, ...body) => el('section.card.set-sec', { aria: { labelledby: 'set-' + id } }, el('h2.set-title', { id: 'set-' + id }, title), ...body);
   const acct = el('div'), storage = el('div'), backups = el('div'), devices = el('div'), local = el('div'), emBox = el('div');
+  // Android app: automatic backup card (js/native.js is never loaded on the web)
+  const autoBox = isNativeApp() ? el('div') : null;
+  if (autoBox) import('../native.js').then(m => autoBox.append(m.backupCard())).catch(e => console.error(e));
   wrap.append(
     el('div.view-head', el('h2.view-title', t('Einstellungen'))),
     sec('acct', t('Konto'), acct),
     sec('storage', t('Speicher'), storage),
-    sec('backup', t('Sicherung'), backups),
+    sec('backup', t('Sicherung'), autoBox, backups),
     sec('devices', t('Angemeldete Geräte'), devices),
     sec('security', t('Sicherheit'),
       el('p.muted', t('Dein Sync-Passwort und dein Wiederherstellungsschlüssel schützen den Schlüssel, mit dem alles verschlüsselt ist. Beides kennt nur du.')),
@@ -103,7 +106,7 @@ export function mount(main, { setTitle }) {
   function paintLocal() {
     clear(local).append(
       el('div.kv-row', icon('offline'), el('div', el('span', t('Offline-Kopien: {size}', { size: fmtSize(E.state.offline.bytes) })), el('a.link-btn', { href: '#/drive/offline' }, t('Verwalten')))),
-      el('p.muted', t('Im Browser liegen deine Fotos nicht in der Galerie des Telefons. „Nur vom Gerät entfernen“, um Platz auf dem Telefon zu schaffen, kommt mit der App für Android – im Browser gibt es nur „Überall löschen“ mit 30 Tagen Papierkorb.')),
+      el('p.muted', isNativeApp() ? t('„Nur vom Gerät entfernen“, um Platz auf dem Telefon zu schaffen, kommt in einer späteren Version der App. Bis dahin gibt es „Überall löschen“ mit 30 Tagen Papierkorb.') : t('Im Browser liegen deine Fotos nicht in der Galerie des Telefons. „Nur vom Gerät entfernen“, um Platz auf dem Telefon zu schaffen, kommt mit der App für Android – im Browser gibt es nur „Überall löschen“ mit 30 Tagen Papierkorb.')),
       el('div.set-btns',
         el('button.btn.ghost', { type: 'button', onclick: async () => { await E.call('clearThumbCache'); toast(t('Vorschaubilder auf diesem Gerät gelöscht. Sie werden bei Bedarf neu geladen.')); } }, t('Vorschaubild-Cache leeren')),
         el('button.btn.ghost', { type: 'button', onclick: async () => { await E.syncNow(); toast(E.state.syncError ? errorText(E.state.syncError) : t('Synchronisiert.')); } }, icon('refresh'), t('Jetzt synchronisieren'))));

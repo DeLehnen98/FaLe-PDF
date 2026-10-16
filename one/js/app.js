@@ -4,7 +4,7 @@ import { initLang, t, tp, fmtSize, ago, fmtNum } from './i18n.js';
 import * as A from './auth.js';
 import * as Keys from './keys.js';
 import * as E from './engine.js';
-import { apiBase } from './config.js';
+import { apiBase, isNativeApp } from './config.js';
 import { takeInbox } from './idb.js';
 
 initLang();
@@ -19,9 +19,14 @@ const views = {
 let shell = null, current = null, currentKey = '';
 
 // ---------------------------------------------------------------- service worker (app shell offline)
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+// Not in the Android app: the app shell ships inside the APK, and a service worker must never intercept
+// Capacitor's /_capacitor_content_/ and /_capacitor_file_/ URLs (photos for the automatic backup).
+const NATIVE = isNativeApp();
+if (!NATIVE && 'serviceWorker' in navigator && location.protocol !== 'file:') {
   navigator.serviceWorker.register('sw.js', { scope: './' }).catch(() => {});
 }
+// Android app only: back button, system bar colours, automatic photo backup (js/native.js, loaded lazily)
+const native = NATIVE ? import('./native.js').then(m => { m.init(); return m; }).catch(e => { console.error(e); return null; }) : null;
 
 // ---------------------------------------------------------------- start-up
 async function driveConfigured() {
@@ -48,6 +53,7 @@ export async function boot() {
 }
 
 async function gate(step, opts) {
+  if (native) native.then(m => m && m.appStopped());
   E.stop();
   shell = null; current = null; currentKey = '';
   clear(root);
@@ -76,6 +82,7 @@ async function startApp(lk) {
   A.touchDevice().catch(() => {});
   setupTimers();
   handleShared();
+  if (native) native.then(m => m && m.appStarted({ userId: s.user.id }));
 }
 
 /** Another device may have reset the account key (new Sync-Passwort after data loss): then ask again. */

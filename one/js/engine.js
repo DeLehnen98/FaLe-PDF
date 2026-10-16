@@ -3,6 +3,7 @@
 import { accessToken } from './auth.js';
 import { apiBase } from './config.js';
 import { imageDerivatives } from './media.js';
+import { isNativeApp } from './config.js';
 
 export const state = {
   nodes: new Map(),     // id → node view (decrypted)
@@ -78,7 +79,7 @@ export async function start({ userId, mk, deviceId, deviceName }) {
   W = new Worker(new URL('./worker.js', import.meta.url), { type: 'module', name: 'fale-one-engine' });
   W.onmessage = onMessage;
   W.onerror = e => { console.error('engine', e.message); };
-  const r = await call('init', { userId, mk, apiBase: apiBase(), deviceId, deviceName });
+  const r = await call('init', { userId, mk, apiBase: apiBase(), deviceId, deviceName, platform: isNativeApp() ? 'android' : 'web' });
   state.started = true;
   return r;
 }

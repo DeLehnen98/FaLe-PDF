@@ -85,7 +85,8 @@ expected.set('vendor/MANIFEST.json', Buffer.from(JSON.stringify(vendorManifest, 
 // ---------------------------------------------------------------- service worker precache list
 // Everything the app shell needs offline. Not precached (cached on first use instead): pdf.js resources that
 // only some PDFs need. Never cached at all: anything from the API (personal data) – see one/sw.js.
-const NOT_SHELL = r => r === 'sw.js' || r === 'vercel.json' || r === 'README.md' || r === '.vercelignore' || r === 'vendor/MANIFEST.json'
+// js/native.js runs only inside the Android app (which ships its files in the APK and has no service worker).
+const NOT_SHELL = r => r === 'sw.js' || r === 'vercel.json' || r === 'README.md' || r === '.vercelignore' || r === 'vendor/MANIFEST.json' || r === 'js/native.js'
   || /^vendor\/pdfjs\/(cmaps|standard_fonts|iccs|wasm)\//.test(r) || /(^|\/)LICENSE[^/]*$|OFL\.txt$/.test(r) || r.startsWith('.');
 function shellFiles() {
   const onDisk = existsSync(ONE) ? walk(ONE).map(p => rel(ONE, p)) : [];
