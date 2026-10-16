@@ -96,7 +96,7 @@ S = {
         'hub_apps_h': 'Bewerbung & Lebenslauf', 'hub_apps_p': '{n} Berufe aus {f} Berufsfeldern – vom Minijob bis zur Fachkraft mit Berufserfahrung.',
         'hub_apps_btn': 'Alle Bewerbungsvorlagen', 'hub_pop_h': 'Häufig gesucht', 'hub_guides_h': 'Ratgeber',
         'hub_more_h': 'Formulare zum Ausfüllen', 'hub_more_p': 'Ausfüllen, Vorschau ansehen, als PDF speichern.',
-        'hub_how_h': 'So nutzt du die Vorlagen',
+        'hub_how_h': 'So nutzt du die Vorlagen', 'info_h': 'Gut zu wissen',
         'hub_how': [('Beruf wählen', 'Such deinen Beruf oder filtere nach Berufsfeld und Situation – Ausbildung, Berufseinstieg, Quereinstieg und mehr.'),
                     ('Beispiel öffnen', '„Vorlage verwenden“ öffnet den Lebenslauf oder das Anschreiben fertig ausgefüllt im Editor.'),
                     ('Eigene Daten einsetzen', 'Zuerst dein Foto (oder keins), dann Namen, Stationen und Text anpassen. Das PDF entsteht auf deinem Gerät.')],
@@ -112,7 +112,7 @@ S = {
         'job_h1': 'Bewerbung als {name}',
         'job_lede': '{n} ausformulierte Anschreiben, ein fertiger Lebenslauf mit Foto-Platzhalter und Tipps – öffne das Beispiel und ersetze die Daten durch deine.',
         'use_cv': 'Lebenslauf-Vorlage verwenden', 'use_letter': 'Dieses Anschreiben verwenden', 'use_letters': 'Anschreiben verwenden',
-        'start_h': 'In drei Schritten zu deiner Bewerbung',
+        'start_h': 'In drei Schritten zu deiner Bewerbung', 'cv_text': 'Lebenslauf als Text lesen',
         'start': [('Eigenes Foto einsetzen', 'Das Beispiel hat ein gezeichnetes Platzhalter-Porträt. Tausch es im Editor unter „Foto wählen“ gegen dein Foto – oder entferne es, ein Foto ist freiwillig.'),
                   ('Daten ersetzen', 'Name, Anschrift, Stationen, Kenntnisse: alles ist ausgefüllt und lässt sich Feld für Feld überschreiben.'),
                   ('Als PDF speichern', 'Das PDF entsteht in deinem Browser. Nichts wird hochgeladen, kein Konto nötig.')],
@@ -146,7 +146,7 @@ S = {
         'hub_lede': 'CVs, cover letters, letters and spreadsheets: open an example, swap in your details, save it as a PDF.',
         'hub_coll_label': 'Sections', 'hub_apps_h': 'CV & cover letter', 'hub_apps_m': '{n} jobs, fully written', 'hub_fill_h': 'Fill-in forms', 'hub_fill_m': '{n} forms, e.g. invoice',
         'hub_jobs_h': 'CV and cover letter by job', 'hub_more_h': 'Forms to fill in', 'hub_more_p': 'Fill in, check the preview, save the PDF.',
-        'hub_how_h': 'How to use the templates',
+        'hub_how_h': 'How to use the templates', 'info_h': 'Good to know',
         'hub_how': [('Pick a job', 'Choose the job that is closest to yours – the structure works for related roles too.'),
                     ('Open the example', '“Use this template” opens the CV or the cover letter fully filled in, in the editor.'),
                     ('Make it yours', 'Start with your photo (or none), then replace names, jobs and text. The PDF is created on your device.')],
@@ -158,7 +158,7 @@ S = {
         'job_h1': '{name}: CV and cover letter examples',
         'job_lede': '{n} fully written cover letters, a ready CV with a placeholder portrait and practical tips – open the example and replace the details with yours.',
         'use_cv': 'Use this CV template', 'use_letter': 'Use this cover letter', 'use_letters': 'Use a cover letter',
-        'start_h': 'Your application in three steps',
+        'start_h': 'Your application in three steps', 'cv_text': 'Read the CV as text',
         'start': [('Add your own photo – or none', 'The example uses an illustrated placeholder. Replace it under “Choose photo” in the editor, or remove it: in the UK, US and many other countries a CV photo is not expected.'),
                   ('Replace the details', 'Name, contact, jobs, skills: everything is filled in and can be overwritten field by field.'),
                   ('Save as PDF', 'The PDF is created in your browser. Nothing is uploaded, no account needed.')],
@@ -519,16 +519,20 @@ def cv_html(cv, lang, phone, email, thumb, use_url):
                f'alt="{esc(fmt(s["cv_preview_alt"], name=cv["name"], design=design))}"></a>')
     contact = ' · '.join(esc(x) for x in (f'{cv["street"]}, {cv["city"]}', phone, email))
     hobbies = f'<h4>{s["hobbies"]}</h4><p>{esc(cv["hobbies"])}</p>' if cv.get('hobbies') else ''
+    if thumb:   # the picture already shows the CV – the full text version stays one tap away (and indexable)
+        open_t, close_t = f'<details class="wt-acc-item vl-cv-more"><summary>{s["cv_text"]}</summary>', '</details>'
+    else:
+        open_t = close_t = ''
     return f'''<div class="vl-cv">
       {img}
-      <div class="vl-cv-data">
+      {open_t}<div class="vl-cv-data">
         <div class="vl-cv-person"><img src="{IMG}avatar/{cv['avatar']}.svg" width="72" height="96" alt="" class="vl-avatar"><div><p class="vl-cv-name">{esc(cv['name'])}</p><p class="vl-cv-title">{esc(cv['title'])}</p><p class="vl-cv-contact">{contact}</p></div></div>
         <p class="vl-photo-hint">{esc(s['cv_photo_hint'])}</p>
         {rows('exp')}{rows('edu')}{rows('courses')}
         <h4>{s['skills']}</h4><p>{skills}</p>
         <h4>{s['langs']}</h4><p>{langs}</p>
         {hobbies}
-      </div>
+      </div>{close_t}
     </div>'''
 
 
@@ -575,17 +579,19 @@ def icon_sprite():
         f'stroke-linejoin="round">{f[4]}</symbol>' for f in FIELDS) + '</svg>')
 
 
-def job_card(job, lang, heading='h3', sprite=False):
+def job_card(job, lang, heading='h3', sprite=False, pills=True):
     s = S[lang]
     src = job if lang == 'de' else job['en']
     # name, short text and level pills are visible card text – vl.js adds the card's text to the search haystack
-    kw = ' '.join([src.get('search', ''), FIELD[job['field']][1 if lang == 'de' else 2]])
+    li = 1 if lang == 'de' else 2
+    kw = ' '.join([src.get('search', ''), FIELD[job['field']][li]] + ([] if pills else [LEVEL[lv][li] for lv in job['levels']]))
     f = FIELD[job['field']]
     icon = (f'<span class="wt-chip-ic tic-{f[3]} vl-fic"><svg width="24" height="24" aria-hidden="true"><use href="#vl-i-{f[0]}"/></svg></span>'
             if sprite else field_icon(job['field']))
     return (f'<li class="wt-card vl-card" data-field="{job["field"]}" data-levels="{" ".join(job["levels"])}" data-search="{esc(fold(kw))}">'
             f'<a href="{job_path(job, lang)}">{icon}<{heading} class="wt-card-name">{esc(src["name"])}</{heading}>'
-            f'<span class="wt-card-desc">{esc(src["short"])}</span><span class="vl-pills">{level_pills(job["levels"], lang)}</span></a></li>')
+            f'<span class="wt-card-desc">{esc(src["short"])}</span>'
+            + (f'<span class="vl-pills">{level_pills(job["levels"], lang)}</span>' if pills else '') + '</a></li>')
 
 
 def kuendigung_card(wb_specs):
@@ -649,7 +655,7 @@ def page_job(wb, bp, job, lang, by_id, wb_specs):
         rel += [j for j in by_id.values() if 'en' in j and j is not job and j not in rel and j['field'] == job['field']]
         rel += [j for j in by_id.values() if 'en' in j and j is not job and j not in rel]
         rel = rel[:4]
-    related = ''.join(job_card(r, lang) for r in rel[:6])
+    related = ''.join(job_card(r, lang, pills=False) for r in rel[:6])
     start = ''.join(f'<li class="wt-step"><h3>{esc(t)}</h3><p>{esc(p)}</p></li>' for t, p in s['start'])
     ld = [
         wb.ld_breadcrumb(items),
@@ -668,19 +674,10 @@ def page_job(wb, bp, job, lang, by_id, wb_specs):
   <div class="wrap wt-top">
     {crumbs(wb, lang, items)}
     <div class="wt-head">{field_icon(job['field'], 'wt-chip-lg')}<div><h1>{esc(fmt(s['job_h1'], name=name))}</h1><p class="wt-lede">{esc(fmt(s['job_lede'], n=len(src['letters'])))}</p></div></div>
-    <p class="vl-pills vl-head-pills">{level_pills(job['levels'], lang)}</p>
     <div class="vl-hero">
       <div class="btn-row"><a class="btn btn-primary" href="{cv_tool_url}">{s['use_cv']}</a><a class="btn btn-quiet" href="#anschreiben">{s['use_letters']}</a></div>
-      <ol class="wt-steps vl-start" aria-label="{esc(s['start_h'])}">{start}</ol>
     </div>
   </div>
-  <section class="section wt-sec" aria-labelledby="look-h">
-    <div class="wrap">
-      <h2 id="look-h">{s['look_h']}</h2>
-      <p class="vl-intro">{esc(src['intro'])}</p>
-      <ul class="wt-why vl-look">{look}</ul>
-    </div>
-  </section>
   <section class="section wt-sec" id="anschreiben" aria-labelledby="letters-h">
     <div class="wrap">
       <h2 id="letters-h">{s['letters_h']}</h2>
@@ -697,30 +694,26 @@ def page_job(wb, bp, job, lang, by_id, wb_specs):
       <div class="btn-row vl-actions"><a class="btn btn-primary" href="{cv_tool_url}">{s['use_cv']}</a></div>
     </div>
   </section>
-  <section class="section wt-sec" aria-labelledby="tips-h">
+  <section class="section wt-sec wt-info" aria-labelledby="info-h">
     <div class="wrap">
-      <h2 id="tips-h">{s['tips_h']}</h2>
-      <div class="vl-dodont"><div class="vl-do"><h3>{s['do']}</h3><ul>{do}</ul></div><div class="vl-dont"><h3>{s['dont']}</h3><ul>{dont}</ul></div></div>
-      <h3 class="vl-h3">{s['q_h']}</h3>
-      <p class="vl-sub">{s['q_p']}</p>
-      <ol class="vl-questions">{qs}</ol>
-      <h3 class="vl-h3">{s['pay_h']}</h3>
-      <p class="vl-sub">{esc((pay + ' ') if pay else '')}{esc(s['pay_generic'])}</p>
-    </div>
-  </section>
-  <section class="section wt-sec" aria-labelledby="faq-h">
-    <div class="wrap">
-      <h2 id="faq-h">{s['faq_h']}</h2>
-      <div class="faq">{faq_html(faq_items)}</div>
+      <h2 id="info-h">{s['info_h']}</h2>
+      <div class="wt-acc">
+        <details class="wt-acc-item"><summary>{esc(s['start_h'])}</summary><div><ol class="wt-steps vl-start">{start}</ol></div></details>
+        <details class="wt-acc-item"><summary>{s['look_h']}</summary><div><p class="vl-intro">{esc(src['intro'])}</p><ul class="wt-why vl-look">{look}</ul></div></details>
+        <details class="wt-acc-item"><summary>{s['tips_h']}</summary><div><div class="vl-dodont"><div class="vl-do"><h3>{s['do']}</h3><ul>{do}</ul></div><div class="vl-dont"><h3>{s['dont']}</h3><ul>{dont}</ul></div></div></div></details>
+        <details class="wt-acc-item"><summary>{s['q_h']}</summary><div><p class="vl-sub">{s['q_p']}</p><ol class="vl-questions">{qs}</ol>
+          <h3 class="vl-h3">{s['pay_h']}</h3><p class="vl-sub">{esc((pay + ' ') if pay else '')}{esc(s['pay_generic'])}</p></div></details>
+        <details class="wt-acc-item"><summary>{s['faq_h']}</summary><div><div class="faq">{faq_html(faq_items)}</div></div></details>
+      </div>
     </div>
   </section>
   <section class="section wt-sec" aria-labelledby="rel-h">
     <div class="wrap">
       <h2 id="rel-h">{s['related_h']}</h2>
-      <ul class="wt-grid">{related}</ul>
+      <ul class="wt-grid wt-rows">{related}</ul>
       <h2 class="vl-h2b" id="tools-h">{s['tools_h']}</h2>
       <p class="vl-sub">{s['tools_p']}</p>
-      <ul class="wt-grid">{tools_row(wb_specs, lang)}</ul>
+      <ul class="wt-grid wt-rows wt-rows-noic">{tools_row(wb_specs, lang)}</ul>
     </div>
   </section>
 </main>
@@ -742,9 +735,11 @@ def page_section(wb, bp, jobs, guides, wb_specs):
     used = [f for f in FIELDS if any(j['field'] == f[0] for j in jobs)]
     groups = ''
     for f in used:
-        cards = ''.join(job_card(j, 'de', sprite=True) for j in jobs if j['field'] == f[0])
-        groups += (f'<section class="wt-catsec" id="feld-{f[0]}" data-vl-group="{f[0]}" aria-labelledby="g-{f[0]}">'
-                   f'<div class="wt-catsec-head"><h2 id="g-{f[0]}">{esc(f[1])}</h2></div><ul class="wt-grid">{cards}</ul></section>')
+        mine = [j for j in jobs if j['field'] == f[0]]
+        cards = ''.join(job_card(j, 'de', sprite=True, pills=False) for j in mine)
+        groups += (f'<details class="wt-catsec wt-catacc" id="feld-{f[0]}" data-vl-group="{f[0]}">'
+                   f'<summary><span class="wt-catacc-t"><span class="wt-catacc-name" id="g-{f[0]}">{esc(f[1])}</span></span>'
+                   f'<span class="wt-catacc-n">{len(mine)}</span></summary><ul class="wt-grid wt-rows">{cards}</ul></details>')
     guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}"><h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides) + kuendigung_card(wb_specs)
     faq_items = [s['faq_photo'], s['faq_copy'], s['faq_privacy']]
     ld = [
@@ -767,16 +762,15 @@ def page_section(wb, bp, jobs, guides, wb_specs):
       <label for="vl-q">{wb.svg(wb.UI_ICONS['search'])}<span class="sr-only">{s['search_label']}</span></label>
       <input id="vl-q" type="search" placeholder="{s['search_ph']}" autocomplete="off" enterkeyhint="search" data-vl-q>
     </div>
-    {field_chips}
     {level_chips}
     <p class="vl-count" data-vl-count aria-live="polite"></p>
     <p class="wt-nohits" data-vl-nohits hidden>{s['no_hits']}</p>
-    {icon_sprite()}{groups}
+    {icon_sprite()}<div class="wt-cats-all">{groups}</div>
   </div>
   <section class="section wt-sec" aria-labelledby="guides-h">
     <div class="wrap">
       <h2 id="guides-h">{s['guides']}</h2>
-      <ul class="wt-grid">{guide_cards}</ul>
+      <ul class="wt-grid wt-rows wt-rows-noic">{guide_cards}</ul>
     </div>
   </section>
   <section class="section wt-sec" aria-labelledby="faq-h">
@@ -819,33 +813,37 @@ def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     how = ''.join(f'<li class="wt-step"><h3>{esc(t)}</h3><p>{esc(p)}</p></li>' for t, p in s['hub_how'])
     more_ids = ['cancellation-letter', 'din-letter', 'leave-request', 'power-of-attorney', 'invoice-generator', 'receipt', 'payment-reminder', 'withdrawal-letter']
     more_ids = [t for t in more_ids if t in wb_specs]
-    more = ''.join(f'<li class="wt-card"><a href="{tool_url(wb_specs, t, lang)}"><h3 class="wt-card-name">{esc(wb_specs[t][lang]["name"])}</h3>'
+    def t_ic(t):
+        return f'<span class="wt-chip-ic tic-{wb.CAT[wb_specs[t]["category"]][1]}">{wb.tool_icon(wb_specs[t])}</span>'
+    guide_ic = ('<span class="wt-chip-ic tic-organize"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
+                'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + TILE_ICONS['guide'][1] + '</svg></span>')
+    more = ''.join(f'<li class="wt-card"><a href="{tool_url(wb_specs, t, lang)}">{t_ic(t)}<h3 class="wt-card-name">{esc(wb_specs[t][lang]["name"])}</h3>'
                    f'<span class="wt-card-desc">{esc(wb_specs[t][lang].get("short") or wb_specs[t][lang]["lede"])}</span></a></li>' for t in more_ids)
     fill_id = 'ausfuellen' if lang == 'de' else 'fill-in'
     extra = [c for h in HUB_EXTRA for c in h(lang)]
     faq_items = [s['faq_photo'], s['faq_copy'], s['faq_privacy']]
     if lang == 'de':
-        pop = ''.join(job_card(j, 'de') for j in [j for j in jobs if j.get('popular')][:8])
+        pop = ''.join(job_card(j, 'de', pills=False) for j in [j for j in jobs if j.get('popular')][:6])
         lede = s['hub_lede']
         desc = fmt(s['hub_desc'], n=(len(jobs) // 10) * 10)
         coll = [(SECTION, s['hub_apps_h'], fmt(s['hub_apps_m'], n=len(jobs)), 'job')] + extra + [
             (f'#{fill_id}', s['hub_fill_h'], fmt(s['hub_fill_m'], n=len(more_ids)), 'form'),
             ('#ratgeber', s['hub_guides_h'], fmt(s['hub_guides_m'], n=len(guides)), 'guide')]
-        guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}"><h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides)
+        guide_cards = ''.join(f'<li class="wt-card"><a href="{guide_path(g)}">{guide_ic}<h3 class="wt-card-name">{esc(g["card"])}</h3><span class="wt-card-desc">{esc(g["short"])}</span></a></li>' for g in guides)
         main_block = f'''<div class="wt-search vl-jump" data-vl-jump hidden>
       <label for="vl-jump">{wb.svg(wb.UI_ICONS['search'])}<span class="sr-only">{s['hub_search_label']}</span></label>
       <input id="vl-jump" type="search" placeholder="{s['hub_search_ph']}" autocomplete="off" enterkeyhint="search" data-vl-jump-q>
       <button class="btn btn-primary" type="button" data-vl-jump-go>{s['hub_search_btn']}</button>
     </div>
     {tiles(coll, s['hub_coll_label'])}
-    <section class="wt-catsec" aria-labelledby="pop-h"><div class="wt-catsec-head"><h2 id="pop-h">{s['hub_pop_h']}</h2></div><ul class="wt-grid">{pop}</ul>
+    <section class="wt-catsec" aria-labelledby="pop-h"><div class="wt-catsec-head"><h2 id="pop-h">{s['hub_pop_h']}</h2></div><ul class="wt-grid wt-rows">{pop}</ul>
       <p class="vl-more-link"><a class="btn btn-quiet" href="{SECTION}">{esc(fmt(s['hub_pop_all'], n=len(jobs)))}</a></p></section>
-    <section class="wt-catsec" id="ratgeber" aria-labelledby="gd-h"><div class="wt-catsec-head"><h2 id="gd-h">{s['hub_guides_h']}</h2></div><ul class="wt-grid">{guide_cards}</ul></section>'''
+    <section class="wt-catsec" id="ratgeber" aria-labelledby="gd-h"><div class="wt-catsec-head"><h2 id="gd-h">{s['hub_guides_h']}</h2></div><ul class="wt-grid wt-rows">{guide_cards}</ul></section>'''
         ld_list = [{'@type': 'ListItem', 'position': i + 1, 'name': j['name'], 'url': bp.BASE + job_path(j, 'de')} for i, j in enumerate(jobs)]
         cfg = {'v': 1, 'lang': 'de', 'page': 'hub', 'jump': SECTION}
     else:
         en_jobs = [j for j in jobs if 'en' in j]
-        cards = ''.join(job_card(j, 'en') for j in en_jobs)
+        cards = ''.join(job_card(j, 'en', pills=False) for j in en_jobs)
         lede = s['hub_lede']
         desc = fmt(s['hub_desc'], n=n_en)
         coll = [('#jobs', s['hub_apps_h'], fmt(s['hub_apps_m'], n=n_en), 'job')] + extra + [
@@ -858,7 +856,7 @@ def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     </div>
     <p class="vl-count" data-vl-count aria-live="polite"></p>
     <p class="wt-nohits" data-vl-nohits hidden>{s['no_hits']}</p>
-    <div data-vl-group="all"><ul class="wt-grid">{cards}</ul></div></section>'''
+    <div data-vl-group="all"><ul class="wt-grid wt-rows">{cards}</ul></div></section>'''
         ld_list = [{'@type': 'ListItem', 'position': i + 1, 'name': j['en']['name'], 'url': bp.BASE + job_path(j, 'en')} for i, j in enumerate(en_jobs)]
         cfg = {'v': 1, 'lang': 'en', 'page': 'section', 'hits': s['hits'], 'hit1': s['hit1']}
     ld = [{'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': s['hub_h1'], 'url': bp.BASE + HUB[lang], 'inLanguage': lang, 'description': desc,
@@ -878,19 +876,16 @@ def page_hub(wb, bp, jobs, guides, wb_specs, lang):
     <div class="wrap">
       <h2 id="more-h">{s['hub_more_h']}</h2>
       <p class="vl-sub">{s['hub_more_p']}</p>
-      <ul class="wt-grid">{more}</ul>
+      <ul class="wt-grid wt-rows">{more}</ul>
     </div>
   </section>
-  <section class="section wt-sec" aria-labelledby="how-h">
+  <section class="section wt-sec wt-info" aria-labelledby="info-h">
     <div class="wrap">
-      <h2 id="how-h">{s['hub_how_h']}</h2>
-      <ol class="wt-steps">{how}</ol>
-    </div>
-  </section>
-  <section class="section wt-sec" aria-labelledby="faq-h">
-    <div class="wrap">
-      <h2 id="faq-h">{s['faq_h']}</h2>
-      <div class="faq">{faq_html(faq_items)}</div>
+      <h2 id="info-h">{s['info_h']}</h2>
+      <div class="wt-acc">
+        <details class="wt-acc-item"><summary>{s['hub_how_h']}</summary><div><ol class="wt-steps">{how}</ol></div></details>
+        <details class="wt-acc-item"><summary>{s['faq_h']}</summary><div><div class="faq">{faq_html(faq_items)}</div></div></details>
+      </div>
     </div>
   </section>
 </main>

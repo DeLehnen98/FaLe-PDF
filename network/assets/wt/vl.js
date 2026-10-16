@@ -51,6 +51,25 @@ function directory(cfg) {
     btns.forEach(b => b.addEventListener('click', () => { state[kind] = b.getAttribute(`data-vl-${kind}`); sync(); apply(); }));
     sync();
   }
+  // Berufsfelder are collapsible <details>: a search or filter opens the fields with hits; clearing it restores
+  // whatever the visitor had opened by hand. A link to #feld-… opens that field.
+  const userOpen = new Set();
+  const autoSet = new WeakMap();   // details we opened/closed ourselves → their toggle event is not the visitor's
+  for (const g of groups) {
+    if (g.tagName !== 'DETAILS') continue;
+    g.addEventListener('toggle', () => {
+      if (autoSet.get(g) === g.open) { autoSet.delete(g); return; }
+      autoSet.delete(g);
+      if (g.open) userOpen.add(g); else userOpen.delete(g);
+    });
+  }
+  function setOpen(g, open) {
+    if (g.tagName !== 'DETAILS' || g.open === open) return;
+    autoSet.set(g, open);
+    g.open = open;
+  }
+  const fromHash = location.hash && groups.find(g => '#' + g.id === location.hash);
+  if (fromHash && fromHash.tagName === 'DETAILS') { fromHash.open = true; userOpen.add(fromHash); }
   let timer = 0;
   q?.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(apply, 60); });
   q?.addEventListener('keydown', ev => { if (ev.key === 'Escape') { q.value = ''; apply(); } });
@@ -66,7 +85,12 @@ function directory(cfg) {
       c.hidden = !ok;
       if (ok) n++;
     }
-    for (const g of groups) g.hidden = ![...g.querySelectorAll('.vl-card')].some(c => !c.hidden);
+    const filtering = words.length > 0 || !!state.field || !!state.level;
+    for (const g of groups) {
+      const any = [...g.querySelectorAll('.vl-card')].some(c => !c.hidden);
+      g.hidden = !any;
+      setOpen(g, filtering ? any : userOpen.has(g));
+    }
     if (nohits) nohits.hidden = n > 0;
     if (count) count.textContent = n === 1 ? cfg.hit1 : String(cfg.hits || '{n}').replace('{n}', n);
     // keep the filter in the address bar (shareable), without adding history entries

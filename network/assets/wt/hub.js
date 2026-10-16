@@ -40,12 +40,33 @@ function init(cfg) {
       target?.scrollIntoView({ block: 'nearest' });
     });
   }
-  // deep link to a category anchor (#bilder) → filter to it
+  // deep link to a category anchor (#bilder) → open that topic (categories are collapsible <details>)
   const fromHash = chips.find(c => c.getAttribute('href') === location.hash && c.dataset.wtCat);
   if (fromHash) fromHash.click();
+  else if (location.hash) {
+    const sec = sections.find(s => '#' + s.id === location.hash);
+    if (sec && sec.tagName === 'DETAILS') { sec.open = true; sec.scrollIntoView({ block: 'start' }); }
+  }
+  // remember which topics the visitor opened, so clearing the search restores them
+  const userOpen = new Set();
+  const autoSet = new WeakMap();
+  for (const sec of sections) {
+    if (sec.tagName !== 'DETAILS') continue;
+    sec.addEventListener('toggle', () => {
+      if (autoSet.get(sec) === sec.open) { autoSet.delete(sec); return; }   // our own change, not the visitor's
+      autoSet.delete(sec);
+      if (sec.open) userOpen.add(sec); else userOpen.delete(sec);
+    });
+  }
+  function setOpen(sec, open) {
+    if (sec.tagName !== 'DETAILS' || sec.open === open) return;
+    autoSet.set(sec, open);
+    sec.open = open;
+  }
 
   function apply() {
     const words = fold(q?.value).split(/\s+/).filter(Boolean);
+    const filtering = words.length > 0 || !!cat;
     let hits = 0;
     for (const sec of sections) {
       let visible = 0;
@@ -56,6 +77,7 @@ function init(cfg) {
         if (show) visible++;
       }
       sec.hidden = visible === 0;
+      setOpen(sec, filtering ? visible > 0 : userOpen.has(sec));
       hits += visible;
     }
     if (popular) popular.hidden = words.length > 0 || !!cat;

@@ -118,3 +118,6 @@
 .vl-jump input { padding-right: 104px; }
 .vl-jump .btn { position: absolute; right: 5px; top: 5px; bottom: 5px; min-height: 0; padding: 0 16px; font-size: 0.9375rem; }
 .vl-more-link { margin-top: 14px; }
+.vl-cv-more { border-top: 1px solid var(--border); min-width: 0; }
+.vl-cv-more > div { padding: 0; }
+@media (min-width: 820px) { .vl-cv-more { align-self: start; } }

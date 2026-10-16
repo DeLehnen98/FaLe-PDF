@@ -334,3 +334,28 @@ mark.ph { -webkit-box-decoration-break: clone; box-decoration-break: clone; back
 .tile .entry-ic svg { width: 23px; height: 23px; }
 .tile strong { font-size: 1.0625rem; font-weight: 750; line-height: 1.25; letter-spacing: -0.01em; }
 .tile span:last-child { font-size: 0.875rem; color: var(--text-3); line-height: 1.35; }
+
+/* ---------- Simple home (2026-10): short rows instead of long cards ---------- */
+.entries-simple .entry { grid-template-columns: 48px 1fr 20px; padding: 14px 16px 14px 14px; }
+.entries-simple .entry-ic { width: 48px; height: 48px; border-radius: 14px; }
+.entries-simple .entry-meta { font-size: 0.9375rem; font-weight: 500; color: var(--text-2); }
+.app-rows { list-style: none; display: grid; gap: 10px; }
+@media (min-width: 900px) { .app-rows { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.app-row { display: grid; grid-template-columns: 48px 1fr 20px; gap: 14px; align-items: center; height: 100%; padding: 14px 16px 14px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); text-decoration: none; transition: border-color 0.15s ease; }
+.app-row:hover { border-color: var(--primary); }
+.app-row img { width: 48px; height: 48px; }
+.app-row-t { display: grid; gap: 3px; min-width: 0; }
+.app-row-name { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-family: var(--font-display); font-size: 1.125rem; font-weight: 780; letter-spacing: -0.01em; }
+.app-row-desc { font-size: 0.9375rem; color: var(--text-2); line-height: 1.45; }
+.apps-more { margin-top: 14px; font-size: 0.9375rem; color: var(--text-3); }
+.apps-more a { color: var(--text-2); }
+.promises-mini { gap: 0 32px; }
+@media (min-width: 760px) { .promises-mini { grid-template-columns: repeat(3, 1fr); } }
+.promise-mini { grid-template-columns: 32px 1fr; gap: 0 14px; padding: 16px 0; align-items: start; }
+.promise-mini svg { width: 24px; height: 24px; grid-row: auto; }
+.promise-mini h3 { font-size: 1.0625rem; }
+.promise-mini p { font-size: 0.9375rem; margin-top: 2px; }
+.section-tight + .section-tight { padding-top: 36px; }
+.section-tight { padding-bottom: 36px; }
+.feat-list { padding-left: 1.2em; display: grid; gap: 6px; }
+.faq .facts { margin-top: 0; }

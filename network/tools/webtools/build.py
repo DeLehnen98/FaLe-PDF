@@ -153,7 +153,7 @@ S = {
         'hub_name': 'Werkzeuge', 'crumbs': 'Navigationspfad', 'home': 'Start',
         'search_label': 'Werkzeug suchen', 'search_ph': 'z. B. verkleinern, JPG',
         'no_hits': 'Kein Werkzeug gefunden. Probier ein anderes Wort – oder schau in der FaLe PDF App, dort gibt es über 40 Werkzeuge.',
-        'cats_label': 'Kategorien', 'all': 'Alle', 'popular': 'Beliebt',
+        'cats_label': 'Kategorien', 'all': 'Alle', 'popular': 'Oft genutzt', 'by_topic': 'Alle Werkzeuge nach Thema',
         'shared_h': 'Was möchtest du damit machen?',
         'shared_none': 'Für diese Dateien gibt es hier noch kein passendes Werkzeug.',
         'shared_empty': 'Es wurden keine Dateien empfangen. Teile eine PDF oder ein Bild erneut mit „FaLe Werkzeuge“.',
@@ -174,7 +174,7 @@ S = {
         'pick_sub': 'oder hierher ziehen', 'camera': 'Kamera', 'paste': 'Einfügen',
         'noscript': 'Dieses Werkzeug braucht JavaScript, weil es deine Dateien direkt in deinem Browser verarbeitet. Bitte aktiviere JavaScript oder nutze die FaLe PDF App.',
         'tool_label': 'Werkzeug',
-        'how_h': 'So geht’s', 'why_h': 'Warum mit FaLe?', 'faq_h': 'Häufige Fragen', 'related_h': 'Passende Werkzeuge',
+        'info_h': 'Gut zu wissen', 'how_h': 'So geht’s – Schritt für Schritt', 'why_h': 'Warum mit FaLe?', 'faq_h': 'Häufige Fragen', 'related_h': 'Passende Werkzeuge',
         'cmp_caption': 'FaLe Werkzeuge im Vergleich mit typischen Online-Werkzeugen',
         'cmp_cols': ('', 'FaLe Werkzeuge', 'Typische Online-Werkzeuge'),
         'cmp_rows': [
@@ -206,7 +206,7 @@ S = {
         'hub_name': 'Tools', 'crumbs': 'Breadcrumb', 'home': 'Home',
         'search_label': 'Search tools', 'search_ph': 'e.g. compress, JPG',
         'no_hits': 'No tool found. Try another word – or have a look at the FaLe PDF app, which has more than 40 tools.',
-        'cats_label': 'Categories', 'all': 'All', 'popular': 'Popular',
+        'cats_label': 'Categories', 'all': 'All', 'popular': 'Popular', 'by_topic': 'All tools by topic',
         'shared_h': 'What would you like to do with it?',
         'shared_none': 'There is no matching tool for these files here yet.',
         'shared_empty': 'No files were received. Share a PDF or an image with “FaLe Tools” again.',
@@ -227,7 +227,7 @@ S = {
         'pick_sub': 'or drop them here', 'camera': 'Camera', 'paste': 'Paste',
         'noscript': 'This tool needs JavaScript because it processes your files right in your browser. Please enable JavaScript or use the FaLe PDF app.',
         'tool_label': 'Tool',
-        'how_h': 'How it works', 'why_h': 'Why FaLe?', 'faq_h': 'Frequently asked questions', 'related_h': 'Related tools',
+        'info_h': 'Good to know', 'how_h': 'How it works – step by step', 'why_h': 'Why FaLe?', 'faq_h': 'Frequently asked questions', 'related_h': 'Related tools',
         'cmp_caption': 'FaLe Tools compared with typical online tools',
         'cmp_cols': ('', 'FaLe Tools', 'Typical online tools'),
         'cmp_rows': [
@@ -464,30 +464,22 @@ def page_tool(sp, lang, by_id):
     <ul class="wt-trust" aria-label="{s['trust_label']}">{trust}</ul>
     <details class="wt-proof"><summary>{svg(UI_ICONS['shield'])}<span>{s['proof_sum']}</span></summary><div>{proof}<p class="wt-proof-live" data-wt-proof hidden></p></div></details>
   </div>
-  <section class="section wt-sec" aria-labelledby="how-h">
+  <section class="section wt-sec wt-info" aria-labelledby="info-h">
     <div class="wrap">
-      <h2 id="how-h">{s['how_h']}</h2>
-      <ol class="wt-steps">{steps}</ol>
-    </div>
-  </section>
-  <section class="section wt-sec" aria-labelledby="why-h">
-    <div class="wrap">
-      <h2 id="why-h">{s['why_h']}</h2>
-      <ul class="wt-why">{why}</ul>
-      <div class="wt-cmp-wrap"><table class="wt-cmp"><caption>{s['cmp_caption']}</caption><thead><tr>{cmp_head}</tr></thead><tbody>{cmp_rows}</tbody></table></div>
-    </div>
-  </section>
-  <section class="section wt-sec" aria-labelledby="faq-h">
-    <div class="wrap">
-      <h2 id="faq-h">{s['faq_h']}</h2>
-      <div class="faq">{faq}</div>
+      <h2 id="info-h">{s['info_h']}</h2>
+      <div class="wt-acc">
+        <details class="wt-acc-item" id="anleitung"><summary>{s['how_h']}</summary><div><ol class="wt-steps">{steps}</ol></div></details>
+        <details class="wt-acc-item"><summary>{s['why_h']}</summary><div><ul class="wt-why">{why}</ul>
+          <div class="wt-cmp-wrap"><table class="wt-cmp"><caption>{s['cmp_caption']}</caption><thead><tr>{cmp_head}</tr></thead><tbody>{cmp_rows}</tbody></table></div></div></details>
+        <details class="wt-acc-item"><summary>{s['faq_h']}</summary><div><div class="faq">{faq}</div></div></details>
+      </div>
       {tm}
     </div>
   </section>
   <section class="section wt-sec" aria-labelledby="rel-h">
     <div class="wrap">
       <h2 id="rel-h">{s['related_h']}</h2>
-      <ul class="wt-grid">{related}</ul>
+      <ul class="wt-grid wt-rows">{related}</ul>
     </div>
   </section>
   {app_cta(lang)}
@@ -510,19 +502,23 @@ def app_cta(lang):
 
 
 # ------------------------------------------------------------------ hub page
+POPULAR_MAX = 8   # keep the first screen short on phones
+
 def page_hub(lang, specs):
     s = S[lang]
     items = [(s['home'], bp.url('home', lang)), (s['hub_name'], HUB[lang])]
     used = [cid for cid, _, _ in CATEGORIES if any(sp['category'] == cid for sp in specs)]
     chips = f'<li><a class="wt-cat" href="#alle" data-wt-cat="" aria-current="true">{s["all"]}</a></li>' + ''.join(
         f'<li><a class="wt-cat" href="#{CAT[cid][0][lang][0]}" data-wt-cat="{cid}">{CAT[cid][0][lang][1]}</a></li>' for cid in used)
-    popular = ''.join(tool_card(sp, lang) for sp in specs if sp.get('popular'))
+    popular = ''.join(tool_card(sp, lang) for sp in [sp for sp in specs if sp.get('popular')][:POPULAR_MAX])
     sections = ''
     for cid in used:
         anchor, label, desc = CAT[cid][0][lang]
         cards = ''.join(tool_card(sp, lang) for sp in specs if sp['category'] == cid)
-        sections += (f'<section class="wt-catsec" id="{anchor}" data-wt-catsec="{cid}" aria-labelledby="cat-{cid}">'
-                     f'<div class="wt-catsec-head"><h2 id="cat-{cid}">{label}</h2><p>{desc}</p></div><ul class="wt-grid">{cards}</ul></section>')
+        sections += (f'<details class="wt-catsec wt-catacc" id="{anchor}" data-wt-catsec="{cid}">'
+                     f'<summary><span class="wt-catacc-t"><span class="wt-catacc-name" id="cat-{cid}">{label}</span>'
+                     f'<span class="wt-catacc-desc">{desc}</span></span><span class="wt-catacc-n">{sum(1 for sp in specs if sp["category"] == cid)}</span></summary>'
+                     f'<ul class="wt-grid wt-rows">{cards}</ul></details>')
     about = ''.join(f'<li>{svg(UI_ICONS["check"])}<div><h3>{e(h)}</h3><p>{e(p)}</p></div></li>' for h, p in s['hub_about'])
     config = {'v': 1, 'lang': lang, 'hub': HUB[lang], 'tools': [
         {'id': sp['id'], 'name': sp[lang]['name'], 'url': tool_path(sp, lang), 'accepts': sp['accepts'],
@@ -555,21 +551,17 @@ def page_hub(lang, specs):
       <label for="wt-q">{svg(UI_ICONS['search'])}<span class="sr-only">{s['search_label']}</span></label>
       <input id="wt-q" type="search" placeholder="{s['search_ph']}" autocomplete="off" enterkeyhint="search" data-wt-q>
     </div>
-    <ul class="wt-cats" aria-label="{s['cats_label']}">{chips}</ul>
     <p class="wt-nohits" data-wt-nohits hidden role="status">{s['no_hits']}</p>
     <section class="wt-catsec wt-popular" id="alle" data-wt-popular aria-labelledby="pop-h">
-      <div class="wt-catsec-head"><h2 id="pop-h">{svg(UI_ICONS['star'], 'wt-h-ic')}{s['popular']}</h2></div>
-      <ul class="wt-grid">{popular}</ul>
+      <div class="wt-catsec-head"><h2 id="pop-h">{s['popular']}</h2></div>
+      <ul class="wt-grid wt-rows">{popular}</ul>
     </section>
-    {sections}
+    <section class="wt-cats-all" aria-labelledby="cats-h">
+      <h2 id="cats-h" class="wt-cats-h">{s['by_topic']}</h2>
+      {sections}
+    </section>
     <p class="wt-live sr-only" data-wt-hublive aria-live="polite"></p>
   </div>
-  <section class="section wt-sec" aria-labelledby="about-h">
-    <div class="wrap">
-      <h2 id="about-h">{s['hub_about_h']}</h2>
-      <ul class="wt-why">{about}</ul>
-    </div>
-  </section>
   {app_cta(lang)}
 </main>
 {json_script(config, 'wt-hub-config')}

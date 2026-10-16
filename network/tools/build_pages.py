@@ -86,15 +86,15 @@ T = {
         'nav_label': 'Hauptnavigation',
         'nav': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('Apps', '/#apps')],
         'more': 'Mehr', 'more_label': 'Weitere Seiten',
-        'more_links': [('Neuigkeiten', '/#news'), ('Häufige Fragen', '/#faq'), ('FaLe-Konto (kommt bald)', '/konto/')],
+        'more_links': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/')],
         'lang_label': 'Sprache', 'lang_name': 'Deutsch', 'lang_current': 'Deutsch – aktuelle Sprache',
         'other_lang': 'English', 'other_lang_code': 'en',
         'lang_fallback': 'English – this page is only available in German; opens the English overview',
         'theme_dark': 'Dunkles Design', 'theme_light': 'Helles Design',
         'foot_claim': 'Freie Apps von FaLe.dev – ohne Konto, ohne Tracking, mit deinen Daten auf deinem Gerät.',
         'foot_apps': 'Angebot', 'foot_more': 'Mehr', 'foot_legal': 'Rechtliches',
-        'foot_links_apps': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe PDF', '/apps/pdf/'), ('FaLe Clean', '/apps/clean/')],
-        'foot_links_more': [('Neuigkeiten', '/#news'), ('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('English', '/en/')],
+        'foot_links_apps': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe PDF', '/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/apps/clean/')],
+        'foot_links_more': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('English', '/en/')],
         'foot_links_legal': [('Impressum', '/impressum/'), ('Datenschutz', '/datenschutz/'), ('Sicherheit melden', '/.well-known/security.txt')],
         'foot_note': 'Diese Website setzt keine Cookies und lädt nichts von fremden Servern.',
         'locale': 'de_DE', 'locale_alt': 'en_GB',
@@ -106,15 +106,15 @@ T = {
         'nav_label': 'Main navigation',
         'nav': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('Apps', '/en/#apps')],
         'more': 'More', 'more_label': 'More pages',
-        'more_links': [('News', '/en/#news'), ('FAQ', '/en/#faq'), ('FaLe Account (coming soon)', '/en/account/')],
+        'more_links': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/')],
         'lang_label': 'Language', 'lang_name': 'English', 'lang_current': 'English – current language',
         'other_lang': 'Deutsch', 'other_lang_code': 'de',
         'lang_fallback': 'Deutsch – diese Seite gibt es nur auf Englisch; öffnet die deutsche Übersicht',
         'theme_dark': 'Dark theme', 'theme_light': 'Light theme',
         'foot_claim': 'Free apps by FaLe.dev – no account, no tracking, your data stays on your device.',
         'foot_apps': 'What’s here', 'foot_more': 'More', 'foot_legal': 'Legal',
-        'foot_links_apps': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe PDF', '/en/apps/pdf/'), ('FaLe Clean', '/en/apps/clean/')],
-        'foot_links_more': [('News', '/en/#news'), ('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Deutsch', '/')],
+        'foot_links_apps': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe PDF', '/en/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/en/apps/clean/')],
+        'foot_links_more': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Deutsch', '/')],
         'foot_links_legal': [('Legal notice', '/en/imprint/'), ('Privacy', '/en/privacy/'), ('Report a security issue', '/.well-known/security.txt')],
         'foot_note': 'This website sets no cookies and loads nothing from third-party servers.',
         'locale': 'en_GB', 'locale_alt': 'de_DE',
@@ -267,137 +267,74 @@ def pill(kind, text):
 
 
 # ================================================================= HOME
+# Kept deliberately short: one screen for "what is this", one for "where do I click". Every sentence must be
+# understandable without context – the target group is everyone, including people who rarely use computers.
+ONE_ORIGIN = 'https://faleone.com'
 HOME = {
     'de': {
         'title': 'FaleNetwork – freie Werkzeuge, Vorlagen und Apps',
         'desc': 'Kostenlose PDF- und Bild-Werkzeuge, Vorlagen für Bewerbung, Briefe und Tabellen sowie die FaLe-Apps. Kein Konto nötig, Verarbeitung auf deinem Gerät, kein Tracking.',
-        'h1': 'Freie Werkzeuge, Vorlagen und Apps – direkt auf deinem Gerät.',
-        'lede': 'FaleNetwork bündelt alles, was FaLe.dev kostenlos anbietet. Kein Konto, kein Tracking – deine Dateien bleiben bei dir.',
+        'h1': 'Kostenlose Werkzeuge, Vorlagen und Apps.',
+        'lede': 'Ohne Anmeldung, ohne Tracking. Deine Dateien bleiben auf deinem Gerät.',
         'entry_label': 'Womit willst du anfangen?',
-        'entries': [('tools', 'Werkzeuge', '{n} Werkzeuge für PDF und Bilder', 'Zusammenfügen, verkleinern, umwandeln, unterschreiben – direkt im Browser.'),
-                    ('templates', 'Vorlagen', 'Bewerbung, Lebenslauf, Briefe, Tabellen', 'Beispiel öffnen, eigene Daten eintragen, als PDF speichern.'),
-                    ('apps', 'Apps', 'FaLe PDF · FaLe Clean (bald)', 'Die PDF-App für Browser und Android – bald auch ein Aufräum-Programm für Windows.')],
-        'n_tools': 'Über {n}',
-        'cta1': 'FaLe PDF öffnen', 'cta2': 'Alle Apps ansehen',
-        'shelf_title': 'Deine FaLe-Apps', 'shelf_state': 'Stand: Oktober 2026',
-        'shelf_pdf_meta': 'Web und Android', 'shelf_clean_meta': 'Windows', 'soon': 'Bald', 'free_slot': 'Frei',
-        'free_slot_sr': 'Freier Platz für eine künftige App',
-        'shelf_note': 'Jede App funktioniert für sich allein. Ein gemeinsames Konto ist freiwillig und kommt bald.',
-        'apps_h': 'Die Apps', 'apps_p': 'Jede App läuft eigenständig – nutze nur, was du brauchst.',
-        'live': 'Verfügbar', 'coming': 'Bald verfügbar',
-        'pdf_platform': 'Im Browser und als Android-App',
-        'pdf_desc': 'PDFs lesen, ausfüllen, unterschreiben, scannen mit Texterkennung und umwandeln – dazu Dokumente, Tabellen und Präsentationen. Über 40 Werkzeuge, die meisten auch offline.',
-        'pdf_open': 'Im Browser öffnen', 'pdf_more': 'Mehr zu FaLe PDF',
-        'pdf_hint': 'Android-App: bald im Play Store.',
-        'clean_platform': 'Windows 10 und 11',
-        'clean_desc': 'Räumt Windows auf, ohne Panik zu machen: Datenmüll, Browser-Caches, Autostart, veraltete Programme und Datenschutz-Einstellungen. Du siehst vorher, was gelöscht wird, und vieles lässt sich rückgängig machen.',
-        'clean_more': 'Mehr zu FaLe Clean',
-        'clean_hint': 'Noch nicht zum Download – FaLe Clean läuft gerade auf Test-PCs.',
-        'next_h': 'Die nächste App',
-        'next_p': 'Neue Apps kündigen wir hier an, sobald es etwas Echtes zu zeigen gibt. Keine Versprechen auf Vorrat.',
-        'tools_h': 'Beliebte Werkzeuge',
-        'tools_p': 'Laufen direkt im Browser – deine Dateien werden nicht hochgeladen.',
-        'tools_all': 'Alle Werkzeuge ansehen', 'tools_label': 'Beliebte Werkzeuge',
-        'prom_h': 'Was hier überall gilt',
-        'prom_p': 'Für die Werkzeuge, die Vorlagen und jede FaLe-App.',
-        'promises': [
-            ('no-user', 'Kein Konto nötig', 'App öffnen und loslegen. Keine Registrierung, keine E-Mail-Adresse, kein Login – auch nicht für Funktionen, die anderswo ein Abo kosten.'),
-            ('device', 'Verarbeitung auf deinem Gerät', 'Dateien, Scans und Einstellungen bleiben auf deinem Handy oder PC. Was ohne Server geht, läuft ohne Server – oft auch offline.'),
-            ('lock', 'Ende-zu-Ende-verschlüsselt, sobald es online geht', 'Teilen, Geräte verbinden und künftig die Synchronisierung werden auf deinem Gerät verschlüsselt. Bei uns kommen nur Daten an, die wir nicht lesen können.'),
-            ('fair', 'Faire Finanzierung', 'Keine Werbebanner, kein Tracking, kein Datenverkauf. Echte Kosten, vor allem für die Cloud-KI, decken freiwillige Werbevideos für zusätzliche KI-Anfragen und das optionale FaLe Plus.'),
+        'entries': [('tools', 'Werkzeuge', 'PDF und Bilder bearbeiten'),
+                    ('templates', 'Vorlagen', 'Bewerbung, Lebenslauf, Briefe'),
+                    ('apps', 'Apps', 'FaLe PDF und FaLe One')],
+        'tools_h': 'Oft genutzt',
+        'tools_all': 'Alle {n} Werkzeuge', 'tools_label': 'Oft genutzte Werkzeuge',
+        'apps_h': 'Die Apps',
+        'live': 'Verfügbar', 'coming': 'Bald',
+        'apps': [
+            ('pdf', 'FaLe PDF', 'live', 'PDFs lesen, ausfüllen, unterschreiben und scannen.', PDF_APP),
+            ('one', 'FaLe One', 'live', 'Fotos und Dateien sicher speichern – nur für dich lesbar.', ONE_ORIGIN + '/'),
+            ('clean', 'FaLe Clean', 'soon', 'Räumt Windows-PCs auf. Noch in der Testphase.', '/apps/clean/'),
         ],
-        'konto_h': 'Ein Konto für alle Apps – wenn du willst',
-        'konto_p': 'Das FaLe-Konto ist freiwillig. Jede App bleibt ohne Konto vollständig nutzbar.',
-        'soon_pill': 'Kommt bald',
-        'konto_card_h': 'FaLe-Konto',
-        'konto_items': ['Ein Login für alle FaLe-Apps', 'Ende-zu-Ende-verschlüsselte Synchronisierung zwischen deinen Geräten', 'Ohne Konto ändert sich an den Apps nichts'],
-        'plus_card_h': 'FaLe Plus für alle Apps',
-        'plus_items': ['Einmal abschließen, in jeder FaLe-App nutzen', 'Mehr Anfragen an die Cloud-KI', 'Unterstützt die Entwicklung – die Grundfunktionen bleiben gratis'],
-        'plus_note': 'In FaLe PDF ist FaLe Plus bereits eingebaut. Mit dem FaLe-Konto gilt es künftig in allen Apps.',
-        'konto_more': 'Mehr zum FaLe-Konto', 'konto_signin': 'Anmelden',
-        'konto_soon_text': 'Die Anmeldung öffnet, sobald das Konto fertig ist.',
-        'news_h': 'Neuigkeiten', 'news_p': 'Was sich zuletzt getan hat.',
-        'news': [
-            ('2026-10', 'Oktober 2026', 'FaleNetwork-Website online', 'Alle FaLe-Apps an einem Ort, mit gemeinsamen Regeln für Datenschutz und Finanzierung.'),
-            ('2026-10', 'Oktober 2026', 'FaLe PDF 2.3', 'Dateien Ende-zu-Ende-verschlüsselt teilen, Unterschriften anfordern und Geräte per QR-Code verbinden.'),
-            ('2026-10', 'Oktober 2026', 'FaLe Clean in der Testphase', 'Der Windows-Cleaner läuft auf ersten Test-PCs, auf Deutsch und Englisch.'),
-            ('2026-10', 'Oktober 2026', 'FaLe PDF 2.2', 'Texterkennung ohne Internet, englische Oberfläche, Cloud-KI mit täglichem Gratis-Kontingent und FaLe Plus.'),
-            ('2026-10', 'Oktober 2026', 'FaLe PDF 2.1', 'Dokumente, Tabellen und Präsentationen bearbeiten, dazu neue Profi-Werkzeuge und die Android-App in Vorbereitung.'),
+        'apps_more': 'Mehr über FaLe PDF', 'apps_more2': 'Mehr über FaLe Clean',
+        'prom_h': 'Darauf kannst du dich verlassen',
+        'promises': [
+            ('no-user', 'Kein Konto nötig', 'Öffnen und loslegen.'),
+            ('device', 'Bleibt bei dir', 'Dateien werden auf deinem Gerät bearbeitet.'),
+            ('shield', 'Kein Tracking', 'Keine Werbebanner, kein Datenverkauf.'),
         ],
         'faq_h': 'Häufige Fragen',
         'faq': [
-            ('Was ist FaleNetwork?', 'Der gemeinsame Rahmen für alle Apps von FaLe.dev: eine Website, ein Erscheinungsbild, dieselben Datenschutz-Regeln und künftig ein freiwilliges gemeinsames Konto.'),
-            ('Warum sind die Apps kostenlos?', 'Weil fast alles auf deinem Gerät passiert – und das kostet uns nichts. Laufende Kosten entstehen vor allem bei der Cloud-KI. Die decken freiwillige Werbevideos und das optionale FaLe Plus.'),
-            ('Brauche ich ein Konto?', 'Nein. Jede App funktioniert vollständig ohne Konto. Das FaLe-Konto wird ein freiwilliges Extra für die Synchronisierung zwischen Geräten und für FaLe Plus in allen Apps.'),
-            ('Gibt es Werbung?', 'Keine Banner, keine Pop-ups, kein Tracking. Werbung siehst du nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen.'),
-            ('Werden meine Dateien hochgeladen?', 'Nein, nicht von selbst. Dateien verlassen dein Gerät nur, wenn du sie bewusst teilst oder eine Cloud-KI-Funktion nutzt – und dann nur das, was dafür nötig ist.'),
-            ('Wer steckt dahinter?', 'FaLe.dev, ein unabhängiger Entwickler aus dem Saarland. Die vollständigen Anbieterangaben stehen im <a href="/impressum/">Impressum</a>.'),
+            ('Kostet das etwas?', 'Nein. Fast alles läuft auf deinem Gerät, das kostet uns nichts. Nur die freiwillige Cloud-KI verursacht Kosten – dafür gibt es täglich Gratis-Anfragen und das optionale FaLe Plus.'),
+            ('Brauche ich ein Konto?', 'Nein. Alles funktioniert ohne Konto. Ein FaLe-Konto brauchst du nur, wenn du Dateien zwischen deinen Geräten synchronisieren oder FaLe One nutzen willst.'),
+            ('Werden meine Dateien hochgeladen?', 'Nein, nicht von selbst. Dateien verlassen dein Gerät nur, wenn du sie bewusst teilst oder eine Cloud-Funktion nutzt – und dann Ende-zu-Ende-verschlüsselt, wo immer möglich.'),
+            ('Wer steckt dahinter?', 'FaLe.dev, ein unabhängiger Entwickler aus dem Saarland. Die vollständigen Angaben stehen im <a href="/impressum/">Impressum</a>.'),
         ],
     },
     'en': {
         'title': 'FaleNetwork – free tools, templates and apps',
         'desc': 'Free PDF and image tools, templates for CVs, letters and spreadsheets, and the FaLe apps. No account needed, processing on your device, no tracking.',
-        'h1': 'Free tools, templates and apps – right on your device.',
-        'lede': 'FaleNetwork brings together everything FaLe.dev offers for free. No account, no tracking – your files stay with you.',
+        'h1': 'Free tools, templates and apps.',
+        'lede': 'No sign-up, no tracking. Your files stay on your device.',
         'entry_label': 'Where do you want to start?',
-        'entries': [('tools', 'Tools', '{n} tools for PDFs and images', 'Merge, compress, convert, sign – right in your browser.'),
-                    ('templates', 'Templates', 'CVs, cover letters, letters, spreadsheets', 'Open an example, fill in your details, save it as a PDF.'),
-                    ('apps', 'Apps', 'FaLe PDF · FaLe Clean (soon)', 'The PDF app for the browser and Android – a clean-up program for Windows is coming soon.')],
-        'n_tools': 'More than {n}',
-        'cta1': 'Open FaLe PDF', 'cta2': 'See all apps',
-        'shelf_title': 'Your FaLe apps', 'shelf_state': 'As of October 2026',
-        'shelf_pdf_meta': 'Web and Android', 'shelf_clean_meta': 'Windows', 'soon': 'Soon', 'free_slot': 'Empty',
-        'free_slot_sr': 'Open slot for a future app',
-        'shelf_note': 'Every app works on its own. A shared account is optional and coming soon.',
-        'apps_h': 'The apps', 'apps_p': 'Every app runs on its own – use only what you need.',
-        'live': 'Available', 'coming': 'Coming soon',
-        'pdf_platform': 'In the browser and as an Android app',
-        'pdf_desc': 'Read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. More than 40 tools, most of them offline.',
-        'pdf_open': 'Open in browser', 'pdf_more': 'More about FaLe PDF',
-        'pdf_hint': 'Android app: coming soon to Google Play.',
-        'clean_platform': 'Windows 10 and 11',
-        'clean_desc': 'Cleans up Windows without scare tactics: junk files, browser caches, startup apps, outdated programs and privacy settings. You see what will be deleted first, and much of it can be undone.',
-        'clean_more': 'More about FaLe Clean',
-        'clean_hint': 'Not available for download yet – FaLe Clean is running on test PCs right now.',
-        'next_h': 'The next app',
-        'next_p': 'We announce new apps here once there is something real to show. No promises in advance.',
-        'tools_h': 'Popular tools',
-        'tools_p': 'They run right in your browser – your files are not uploaded.',
-        'tools_all': 'See all tools', 'tools_label': 'Popular tools',
-        'prom_h': 'What applies everywhere here',
-        'prom_p': 'For the tools, the templates and every FaLe app.',
-        'promises': [
-            ('no-user', 'No account needed', 'Open the app and get started. No sign-up, no email address, no login – not even for features other apps charge a subscription for.'),
-            ('device', 'Processing on your device', 'Files, scans and settings stay on your phone or PC. Whatever works without a server runs without one – often offline, too.'),
-            ('lock', 'End-to-end encrypted once it goes online', 'Sharing, connecting devices and, soon, sync are encrypted on your device. All we ever receive is data we cannot read.'),
-            ('fair', 'Fair funding', 'No banner ads, no tracking, no selling of data. Real costs, mainly for the cloud AI, are covered by optional reward videos for extra AI requests and the optional FaLe Plus.'),
+        'entries': [('tools', 'Tools', 'Edit PDFs and images'),
+                    ('templates', 'Templates', 'CVs, cover letters, letters'),
+                    ('apps', 'Apps', 'FaLe PDF and FaLe One')],
+        'tools_h': 'Popular',
+        'tools_all': 'All {n} tools', 'tools_label': 'Popular tools',
+        'apps_h': 'The apps',
+        'live': 'Available', 'coming': 'Soon',
+        'apps': [
+            ('pdf', 'FaLe PDF', 'live', 'Read, fill in, sign and scan PDFs.', PDF_APP),
+            ('one', 'FaLe One', 'live', 'Store photos and files safely – readable only by you.', ONE_ORIGIN + '/'),
+            ('clean', 'FaLe Clean', 'soon', 'Cleans up Windows PCs. Still in testing.', '/en/apps/clean/'),
         ],
-        'konto_h': 'One account for every app – if you want it',
-        'konto_p': 'The FaLe Account is optional. Every app stays fully usable without one.',
-        'soon_pill': 'Coming soon',
-        'konto_card_h': 'FaLe Account',
-        'konto_items': ['One login for all FaLe apps', 'End-to-end encrypted sync between your devices', 'Nothing changes in the apps if you don’t sign up'],
-        'plus_card_h': 'FaLe Plus for every app',
-        'plus_items': ['Subscribe once, use it in every FaLe app', 'More cloud AI requests', 'Supports development – the core features stay free'],
-        'plus_note': 'FaLe Plus is already built into FaLe PDF. With the FaLe Account it will work in every app.',
-        'konto_more': 'More about the FaLe Account', 'konto_signin': 'Sign in',
-        'konto_soon_text': 'Sign-in opens as soon as the account is ready.',
-        'news_h': 'News', 'news_p': 'What happened recently.',
-        'news': [
-            ('2026-10', 'October 2026', 'FaleNetwork website launched', 'All FaLe apps in one place, with shared rules for privacy and funding.'),
-            ('2026-10', 'October 2026', 'FaLe PDF 2.3', 'Share files end-to-end encrypted, request signatures and connect devices with a QR code.'),
-            ('2026-10', 'October 2026', 'FaLe Clean in testing', 'The Windows cleaner is running on the first test PCs, in English and German.'),
-            ('2026-10', 'October 2026', 'FaLe PDF 2.2', 'Offline text recognition, English interface, cloud AI with a free daily allowance, and FaLe Plus.'),
-            ('2026-10', 'October 2026', 'FaLe PDF 2.1', 'Edit documents, spreadsheets and presentations, plus new pro tools and the Android app in preparation.'),
+        'apps_more': 'More about FaLe PDF', 'apps_more2': 'More about FaLe Clean',
+        'prom_h': 'What you can count on',
+        'promises': [
+            ('no-user', 'No account needed', 'Open it and get started.'),
+            ('device', 'Stays with you', 'Files are processed on your device.'),
+            ('shield', 'No tracking', 'No banner ads, no selling of data.'),
         ],
         'faq_h': 'Frequently asked questions',
         'faq': [
-            ('What is FaleNetwork?', 'The common home of all apps by FaLe.dev: one website, one look, the same privacy rules and, soon, an optional shared account.'),
-            ('Why are the apps free?', 'Because almost everything happens on your device – and that costs us nothing. Running costs come mainly from the cloud AI. Optional reward videos and the optional FaLe Plus cover them.'),
-            ('Do I need an account?', 'No. Every app works fully without an account. The FaLe Account will be an optional extra for syncing between devices and for FaLe Plus in every app.'),
-            ('Are there ads?', 'No banners, no pop-ups, no tracking. You only see an ad if you start a video yourself to get extra AI requests.'),
-            ('Are my files uploaded?', 'Not on their own. Files only leave your device when you deliberately share them or use a cloud AI feature – and then only what that feature needs.'),
-            ('Who is behind this?', 'FaLe.dev, an independent developer from Saarland, Germany. Full provider details are in the <a href="/en/imprint/">legal notice</a>.'),
+            ('Does it cost anything?', 'No. Almost everything runs on your device, which costs us nothing. Only the optional cloud AI has real costs – there are free requests every day and the optional FaLe Plus.'),
+            ('Do I need an account?', 'No. Everything works without an account. You only need a FaLe Account to sync files between your devices or to use FaLe One.'),
+            ('Are my files uploaded?', 'Not on their own. Files only leave your device when you deliberately share them or use a cloud feature – end-to-end encrypted wherever possible.'),
+            ('Who is behind this?', 'FaLe.dev, an independent developer from Saarland, Germany. Full details are in the <a href="/en/imprint/">legal notice</a>.'),
         ],
     },
 }
@@ -436,88 +373,59 @@ def entry_icon(kind):
 
 def page_home(lang):
     c = HOME[lang]
-    pdf, clean = url('pdf', lang), url('clean', lang)
     promises = ''.join(
-        f'<li class="promise">{ic(i)}<h3>{h}</h3><p>{p}</p></li>' for i, h, p in c['promises'])
-    news = ''.join(
-        f'<li><time datetime="{d}">{dl}</time><h3>{h}</h3><p>{p}</p></li>' for d, dl, h, p in c['news'][:3])
+        f'<li class="promise promise-mini">{ic(i)}<div><h3>{h}</h3><p>{p}</p></div></li>' for i, h, p in c['promises'])
     faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
     hub = TOOLS_HUB[0 if lang == 'de' else 1]
     targets = {'tools': hub, 'templates': '/vorlagen/' if lang == 'de' else '/en/templates/', 'apps': '#apps'}
     n = tool_count()
-    n_txt = c['n_tools'].replace('{n}', str((n - 1) // 10 * 10)) if n > 10 else str(n)
     entries = ''.join(
         f'<li><a class="entry entry-{k}" href="{targets[k]}"><span class="entry-ic">{entry_icon(k)}</span>'
-        f'<span class="entry-t"><strong>{name}</strong><span class="entry-meta">{meta.replace("{n}", n_txt)}</span>'
-        f'<span class="entry-desc">{desc}</span></span>{ic("arrow", "entry-go")}</a></li>'
-        for k, name, meta, desc in c['entries'])
+        f'<span class="entry-t"><strong>{name}</strong><span class="entry-meta">{meta}</span></span>'
+        f'{ic("arrow", "entry-go")}</a></li>'
+        for k, name, meta in c['entries'])
     tool_links = ''.join(f'<li><a class="tool-chip" href="{h}">{nm}{ic("arrow")}</a></li>' for nm, h in popular_tools(lang))
+    apps = ''.join(
+        f'<li><a class="app-row" href="{href}"><img src="/assets/icons/app-{k}.svg" width="48" height="48" alt="">'
+        f'<span class="app-row-t"><span class="app-row-name">{name}{pill(state, c["live"] if state == "live" else c["coming"])}</span>'
+        f'<span class="app-row-desc">{desc}</span></span>{ic("arrow", "entry-go")}</a></li>'
+        for k, name, state, desc, href in c['apps'])
+    more = (f'<p class="apps-more"><a href="{url("pdf", lang)}">{c["apps_more"]}</a> · '
+            f'<a href="{url("clean", lang)}">{c["apps_more2"]}</a></p>')
     body = f'''
 <main id="main">
   <section class="hero hero-home">
     <div class="wrap">
       <h1>{c['h1']}</h1>
       <p class="lede">{c['lede']}</p>
-      <ul class="entries" aria-label="{c['entry_label']}">{entries}</ul>
+      <ul class="entries entries-simple" aria-label="{c['entry_label']}">{entries}</ul>
     </div>
   </section>
 
   <section class="section section-tight" id="werkzeuge" aria-labelledby="tools-h">
     <div class="wrap tools-teaser">
-      <div class="section-head"><h2 id="tools-h">{c['tools_h']}</h2><p>{c['tools_p']}</p></div>
+      <div class="section-head"><h2 id="tools-h">{c['tools_h']}</h2></div>
       <ul class="tool-chips" aria-label="{c['tools_label']}">{tool_links}</ul>
-      <div class="btn-row"><a class="btn btn-quiet" href="{hub}">{c['tools_all']}{ic('arrow')}</a></div>
+      <div class="btn-row"><a class="btn btn-quiet" href="{hub}">{c['tools_all'].replace('{n}', str(n))}{ic('arrow')}</a></div>
     </div>
   </section>
 
-  <section class="section" id="apps" aria-labelledby="apps-h">
+  <section class="section section-tight" id="apps" aria-labelledby="apps-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="apps-h">{c['apps_h']}</h2><p>{c['apps_p']}</p></div>
-      <ul class="apps">
-        <li class="app">
-          <img class="app-icon" src="/assets/icons/app-pdf.svg" width="72" height="72" alt="">
-          <div>
-            <div class="app-title"><h3><a href="{pdf}">FaLe PDF</a></h3>{pill('live', c['live'])}</div>
-            <p class="app-platform">{c['pdf_platform']}</p>
-            <p class="app-desc">{c['pdf_desc']}</p>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="{PDF_APP}">{c['pdf_open']}</a>
-            <a class="btn btn-quiet" href="{pdf}">{c['pdf_more']}</a>
-          </div>
-          <p class="app-hint">{c['pdf_hint']}</p>
-        </li>
-        <li class="app">
-          <img class="app-icon" src="/assets/icons/app-clean.svg" width="72" height="72" alt="">
-          <div>
-            <div class="app-title"><h3><a href="{clean}">FaLe Clean</a></h3>{pill('soon', c['coming'])}</div>
-            <p class="app-platform">{c['clean_platform']}</p>
-            <p class="app-desc">{c['clean_desc']}</p>
-          </div>
-          <div class="btn-row">
-            <a class="btn btn-quiet" href="{clean}">{c['clean_more']}</a>
-          </div>
-          <p class="app-hint">{c['clean_hint']}</p>
-        </li>
-      </ul>
+      <div class="section-head"><h2 id="apps-h">{c['apps_h']}</h2></div>
+      <ul class="app-rows">{apps}</ul>
+      {more}
     </div>
   </section>
 
-  <section class="section" id="promises" aria-labelledby="prom-h">
+  <section class="section section-tight" id="promises" aria-labelledby="prom-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="prom-h">{c['prom_h']}</h2><p>{c['prom_p']}</p></div>
-      <ul class="promises">{promises}</ul>
+      <div class="section-head"><h2 id="prom-h">{c['prom_h']}</h2></div>
+      <ul class="promises promises-mini">{promises}</ul>
     </div>
   </section>
 
-  <section class="section" id="news" aria-labelledby="news-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="news-h">{c['news_h']}</h2><p>{c['news_p']}</p></div>
-      <ol class="news" reversed>{news}</ol>
-    </div>
-  </section>
-
-  <section class="section" id="faq" aria-labelledby="faq-h">
+  <section class="section section-tight" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
       <div class="section-head"><h2 id="faq-h">{c['faq_h']}</h2></div>
       <div class="faq">{faq}</div>
@@ -535,12 +443,12 @@ PDF = {
         'desc': 'FaLe PDF: PDFs lesen, ausfüllen, unterschreiben, scannen mit Texterkennung und umwandeln – dazu Dokumente, Tabellen und Präsentationen. Gratis, ohne Konto, alles auf deinem Gerät.',
         'live': 'Verfügbar',
         'h1': 'PDF & Office&nbsp;– gratis, privat, offline',
-        'lede': 'PDFs lesen, ausfüllen, unterschreiben, scannen und umwandeln – dazu Dokumente, Tabellen und Präsentationen. Alles läuft direkt auf deinem Gerät, auch Funktionen, für die andere Apps ein Abo verlangen.',
+        'lede': 'PDFs lesen, ausfüllen, unterschreiben, scannen und umwandeln. Alles läuft direkt auf deinem Gerät – kostenlos.',
         'open': 'Im Browser öffnen', 'android': 'Android: bald im Play Store',
-        'hint': 'Bis die Android-App erscheint: FaLe PDF im Browser öffnen und „App installieren“ bzw. „Zum Home-Bildschirm“ wählen – auf Android, iPhone und am Computer.',
+        'hint': 'Tipp: Im Browser öffnen und „Zum Startbildschirm hinzufügen“ wählen – dann startet FaLe PDF wie eine App.',
         'shot_home_alt': 'Startbildschirm der App FaLe PDF mit dem Hinweis „Alles gratis – auch die Pro-Funktionen“',
         'feat_h': 'Alles, was du für Dokumente brauchst',
-        'feat_p': 'Über 40 Werkzeuge für PDF und Office – ohne Wasserzeichen, ohne Anmeldung.',
+        'feat_p': 'Tippe auf ein Thema, um die Funktionen zu sehen.', 'facts_h': 'Technische Details', 'info_h': 'Gut zu wissen',
         'features': [
             ('PDFs lesen', ['Schneller Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis', 'Lesemodus: Text fürs Handy umbrochen, auch Sepia und dunkel', 'Vorlesen mit der Sprachausgabe deines Geräts']),
             ('Ausfüllen & unterschreiben', ['PDF-Formulare ausfüllen', 'Unterschrift zeichnen, speichern und mit einem Tipp einsetzen', 'Datum, Text, Initialen und eigene Stempel']),
@@ -572,12 +480,12 @@ PDF = {
         'desc': 'FaLe PDF: read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. Free, no account, everything on your device.',
         'live': 'Available',
         'h1': 'PDF & Office&nbsp;– free, private, offline',
-        'lede': 'Read, fill in, sign, scan and convert PDFs – plus documents, spreadsheets and presentations. Everything runs right on your device, including features other apps charge a subscription for.',
+        'lede': 'Read, fill in, sign, scan and convert PDFs. Everything runs right on your device – for free.',
         'open': 'Open in browser', 'android': 'Android: coming soon to Google Play',
-        'hint': 'Until the Android app is out: open FaLe PDF in your browser and choose “Install app” or “Add to Home Screen” – works on Android, iPhone and computers.',
+        'hint': 'Tip: open it in your browser and choose “Add to Home Screen” – FaLe PDF then starts like an app.',
         'shot_home_alt': 'FaLe PDF home screen with the note “Everything free – including pro features”',
         'feat_h': 'Everything you need for documents',
-        'feat_p': 'More than 40 tools for PDF and Office – no watermarks, no sign-up.',
+        'feat_p': 'Tap a topic to see its features.', 'facts_h': 'Technical details', 'info_h': 'Good to know',
         'features': [
             ('Read PDFs', ['Fast viewer with search, bookmarks and table of contents', 'Reading mode: text reflowed for phones, also sepia and dark', 'Read aloud with your device’s speech output']),
             ('Fill in & sign', ['Fill in PDF forms', 'Draw a signature, save it and place it with one tap', 'Date, text, initials and your own stamps']),
@@ -610,7 +518,7 @@ PDF = {
 def page_pdf(lang):
     c = PDF[lang]
     feats = ''.join(
-        f'<li><h3>{h}</h3><ul>{"".join(f"<li>{x}</li>" for x in items)}</ul></li>' for h, items in c['features'])
+        f'<details><summary>{h}</summary><div><ul class="feat-list">{"".join(f"<li>{x}</li>" for x in items)}</ul></div></details>' for h, items in c['features'])
     shots = ''.join(
         f'<li><figure><img src="/assets/img/pdf/{n}-{lang}.webp" width="540" height="1140" loading="lazy" decoding="async" alt="{alt}"><figcaption>{cap}</figcaption></figure></li>'
         for n, alt, cap in c['shots'])
@@ -645,7 +553,7 @@ def page_pdf(lang):
   <section class="section" aria-labelledby="feat-h">
     <div class="wrap">
       <div class="section-head"><h2 id="feat-h">{c['feat_h']}</h2><p>{c['feat_p']}</p></div>
-      <ul class="features">{feats}</ul>
+      <div class="faq feat-acc">{feats}</div>
     </div>
   </section>
   <section class="section" aria-labelledby="shots-h">
@@ -656,8 +564,9 @@ def page_pdf(lang):
   </section>
   <section class="section" aria-labelledby="why-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="why-h">{c['why_h']}</h2><p>{c['why_p']}</p></div>
-      <dl class="facts">{why}{facts}</dl>
+      <div class="section-head"><h2 id="why-h">{c['info_h']}</h2></div>
+      <div class="faq"><details><summary>{c['why_h']}</summary><div><p>{c['why_p']}</p><dl class="facts">{why}</dl></div></details>
+        <details><summary>{c['facts_h']}</summary><div><dl class="facts">{facts}</dl></div></details></div>
       <h3 class="more-h">{c['more_h']}</h3>
       <ul class="plain-list more-list">{more}</ul>
     </div>
@@ -696,7 +605,7 @@ CLEAN = {
         ],
         'left_h': 'Bewusst weggelassen',
         'left': [
-            ('Registry-Cleaner', 'Laut Microsoft bringt das keinen messbaren Nutzen und kann Windows beschädigen.'),
+            ('Registry-Cleaner', 'Bringt keinen messbaren Nutzen und kann Windows beschädigen.'),
             ('Eigene Treiber-Datenbank', 'Geprüfte Treiber kommen über Windows Update unter „Optionale Updates“.'),
         ],
         'req_h': 'Voraussetzungen',
@@ -730,7 +639,7 @@ CLEAN = {
         ],
         'left_h': 'Deliberately left out',
         'left': [
-            ('Registry cleaner', 'According to Microsoft it brings no measurable benefit and can damage Windows.'),
+            ('Registry cleaner', 'Brings no measurable benefit and can damage Windows.'),
             ('Own driver database', 'Vetted drivers come through Windows Update under “Optional updates”.'),
         ],
         'req_h': 'Requirements',
@@ -743,7 +652,7 @@ CLEAN = {
 def page_clean(lang):
     c = CLEAN[lang]
     feats = ''.join(
-        f'<li><h3>{h}</h3><ul>{"".join(f"<li>{x}</li>" for x in items)}</ul></li>' for h, items in c['features'])
+        f'<details><summary>{h}</summary><div><ul class="feat-list">{"".join(f"<li>{x}</li>" for x in items)}</ul></div></details>' for h, items in c['features'])
     safe = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['safe'])
     left = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['left'])
     req = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['req'])
@@ -764,16 +673,17 @@ def page_clean(lang):
   <section class="section" aria-labelledby="feat-h">
     <div class="wrap">
       <div class="section-head"><h2 id="feat-h">{c['feat_h']}</h2><p>{c['feat_p']}</p></div>
-      <ul class="features">{feats}</ul>
+      <div class="faq feat-acc">{feats}</div>
       <p class="muted small plus-note">{c['plus_note']}</p>
     </div>
   </section>
   <section class="section" aria-labelledby="safe-h">
-    <div class="wrap split">
-      <div><h2 id="safe-h">{c['safe_h']}</h2><dl class="facts facts-tight">{safe}</dl></div>
-      <div>
-        <h2 id="left-h">{c['left_h']}</h2><dl class="facts facts-tight">{left}</dl>
-        <h2 class="req-h">{c['req_h']}</h2><dl class="facts facts-tight">{req}</dl>
+    <div class="wrap">
+      <div class="section-head"><h2 id="safe-h">{'Gut zu wissen' if lang == 'de' else 'Good to know'}</h2></div>
+      <div class="faq">
+        <details><summary>{c['safe_h']}</summary><div><dl class="facts facts-tight">{safe}</dl></div></details>
+        <details><summary>{c['left_h']}</summary><div><dl class="facts facts-tight">{left}</dl></div></details>
+        <details><summary>{c['req_h']}</summary><div><dl class="facts facts-tight">{req}</dl></div></details>
       </div>
     </div>
     <div class="wrap back-row"><a class="btn btn-quiet" href="{home}#apps">{c['back']}</a></div>
@@ -786,15 +696,15 @@ def page_clean(lang):
 # ================================================================= FaLe-Konto
 KONTO = {
     'de': {
-        'title': 'FaLe-Konto & FaLe Plus – ein Konto für alle Apps (kommt bald) | FaleNetwork',
-        'desc': 'Das FaLe-Konto ist freiwillig: ein Login für alle FaLe-Apps, Ende-zu-Ende-verschlüsselte Synchronisierung und FaLe Plus in jeder App. Kommt bald.',
-        'soon': 'Kommt bald',
+        'title': 'FaLe-Konto & FaLe Plus – ein Konto für alle Apps | FaleNetwork',
+        'desc': 'Das FaLe-Konto ist freiwillig: ein Login für alle FaLe-Apps, Ende-zu-Ende-verschlüsselte Synchronisierung und FaLe Plus in jeder App.',
+        'soon': 'Verfügbar',
         'h1': 'Ein Konto für alle FaLe-Apps.',
-        'lede': 'Das FaLe-Konto ist ein freiwilliges Extra: Es hält deine Geräte synchron und lässt dich FaLe Plus in jeder App nutzen – Ende-zu-Ende-verschlüsselt.',
+        'lede': 'Freiwillig und kostenlos: Ein Konto für FaLe PDF und FaLe One – Ende-zu-Ende-verschlüsselt.',
         'signin': 'Anmelden', 'soon_text': 'Die Anmeldung öffnet, sobald das Konto fertig ist. Bis dahin musst du nichts tun.',
         'can_h': 'Was das Konto kann',
         'can': [
-            ('Ein Login für alle Apps', 'Einmal anmelden – in FaLe PDF, FaLe Clean und jeder künftigen FaLe-App.'),
+            ('Ein Login für alle Apps', 'Einmal anmelden – in FaLe PDF, FaLe One und jeder künftigen FaLe-App.'),
             ('FaLe Plus überall', 'Ein Abo gilt in allen Apps. Kein separater Kauf pro App.'),
             ('Synchronisierung', 'Deine Daten zwischen Handy, Tablet und PC abgleichen, wenn du das möchtest.'),
             ('Ende-zu-Ende-verschlüsselt', 'Verschlüsselt wird auf deinem Gerät, bevor etwas hochgeladen wird. Bei uns liegen nur Daten, die wir nicht lesen können.'),
@@ -806,26 +716,26 @@ KONTO = {
             ('Lokal zuerst', 'Auch mit Konto bleibt dein Gerät der Ort, an dem gearbeitet wird. Die Cloud ist nur der verschlüsselte Abgleich.'),
         ],
         'key_h': 'Ende-zu-Ende heißt auch: kein Nachschlüssel',
-        'key_p': 'Weil nur du deine Daten entschlüsseln kannst, können wir sie auch nicht für dich wiederherstellen. Wie du den Zugang absicherst und im Notfall wiederherstellst, erklären wir hier, sobald das Konto startet.',
+        'key_p': 'Weil nur du deine Daten entschlüsseln kannst, können wir sie auch nicht für dich wiederherstellen. Für den Notfall kannst du in FaLe One Menschen, denen du vertraust, einen Notfallzugang einrichten.',
         'plus_h': 'FaLe Plus',
         'plus_p': 'FaLe Plus ist ein optionales Abo, das die Entwicklung unterstützt und mehr Anfragen an die Cloud-KI freischaltet. In FaLe PDF ist es bereits eingebaut. Mit dem FaLe-Konto gilt es künftig in allen Apps. Alle Grundfunktionen bleiben kostenlos.',
         'faq_h': 'Fragen zum Konto',
         'faq': [
-            ('Wann startet das FaLe-Konto?', 'Wir arbeiten gerade daran. Den Start kündigen wir unter Neuigkeiten auf der Startseite an.'),
+            ('Wie melde ich mich an?', 'Mit deiner E-Mail-Adresse: Du bekommst einen Code, den du eingibst – ein Passwort brauchst du nicht.'),
             ('Was kostet das Konto?', 'Das Konto selbst ist kostenlos. Bezahlt wird nur das optionale FaLe Plus.'),
             ('Muss ich meine Daten hochladen?', 'Nein. Synchronisierung ist freiwillig. Ohne sie bleibt alles nur auf deinem Gerät.'),
         ],
     },
     'en': {
-        'title': 'FaLe Account & FaLe Plus – one account for every app (coming soon) | FaleNetwork',
-        'desc': 'The FaLe Account is optional: one login for all FaLe apps, end-to-end encrypted sync and FaLe Plus in every app. Coming soon.',
-        'soon': 'Coming soon',
+        'title': 'FaLe Account & FaLe Plus – one account for every app | FaleNetwork',
+        'desc': 'The FaLe Account is optional: one login for all FaLe apps, end-to-end encrypted sync and FaLe Plus in every app.',
+        'soon': 'Available',
         'h1': 'One account for every FaLe app.',
-        'lede': 'The FaLe Account is an optional extra: it keeps your devices in sync and lets you use FaLe Plus in every app – end-to-end encrypted.',
+        'lede': 'Optional and free: one account for FaLe PDF and FaLe One – end-to-end encrypted.',
         'signin': 'Sign in', 'soon_text': 'Sign-in opens as soon as the account is ready. Until then, there’s nothing you need to do.',
         'can_h': 'What the account does',
         'can': [
-            ('One login for every app', 'Sign in once – in FaLe PDF, FaLe Clean and every future FaLe app.'),
+            ('One login for every app', 'Sign in once – in FaLe PDF, FaLe One and every future FaLe app.'),
             ('FaLe Plus everywhere', 'One subscription works in every app. No separate purchase per app.'),
             ('Sync', 'Keep your data in sync between phone, tablet and PC, if you want to.'),
             ('End-to-end encrypted', 'Encryption happens on your device before anything is uploaded. All we store is data we cannot read.'),
@@ -837,12 +747,12 @@ KONTO = {
             ('Local first', 'Even with an account, your device is where the work happens. The cloud is only the encrypted sync.'),
         ],
         'key_h': 'End-to-end also means: no master key',
-        'key_p': 'Because only you can decrypt your data, we can’t recover it for you either. How to secure your access and restore it in an emergency will be explained here when the account launches.',
+        'key_p': 'Because only you can decrypt your data, we can’t recover it for you either. For emergencies, FaLe One lets you set up emergency access for people you trust.',
         'plus_h': 'FaLe Plus',
         'plus_p': 'FaLe Plus is an optional subscription that supports development and unlocks more cloud AI requests. It is already built into FaLe PDF. With the FaLe Account it will work in every app. All core features stay free.',
         'faq_h': 'Questions about the account',
         'faq': [
-            ('When does the FaLe Account launch?', 'We’re working on it. We’ll announce the launch under News on the home page.'),
+            ('How do I sign in?', 'With your email address: you get a code to enter – no password needed.'),
             ('What does the account cost?', 'The account itself is free. Only the optional FaLe Plus is paid.'),
             ('Do I have to upload my data?', 'No. Sync is optional. Without it, everything stays on your device only.'),
         ],
@@ -859,7 +769,7 @@ def page_konto(lang):
 <main id="main">
   <section class="p-hero">
     <div class="wrap">
-      <div class="p-hero-id"><img src="/assets/logo/fale-network-mark.svg" width="56" height="56" alt=""><span>{'FaLe-Konto' if lang == 'de' else 'FaLe Account'}</span>{pill('soon', c['soon'])}</div>
+      <div class="p-hero-id"><img src="/assets/logo/fale-network-mark.svg" width="56" height="56" alt=""><span>{'FaLe-Konto' if lang == 'de' else 'FaLe Account'}</span>{pill('live', c['soon'])}</div>
       <h1>{c['h1']}</h1>
       <p class="lede">{c['lede']}</p>
       <div class="btn-row konto-cta">

@@ -14,7 +14,7 @@
    */
   var FALE_CONFIG = {
     kontoUrl: 'https://pdf.fale.network/#/konto',
-    kontoAvailable: false
+    kontoAvailable: true
   };
   window.FALE_CONFIG = FALE_CONFIG;
 
