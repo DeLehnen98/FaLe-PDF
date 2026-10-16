@@ -31,7 +31,9 @@ adb shell mkdir -p /sdcard/DCIM/Camera
 for f in "$HERE"/fixtures/*.jpg; do adb push "$f" "/sdcard/DCIM/Camera/$(basename "$f")" > /dev/null; done
 adb shell content call --uri content://media/none --method scan_volume --arg external_primary > /dev/null 2>&1 || true
 for f in "$HERE"/fixtures/*.jpg; do
-  adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file:///sdcard/DCIM/Camera/$(basename "$f")" > /dev/null 2>&1 || true
+  n="$(basename "$f")"
+  adb shell content call --uri content://media/none --method scan_file --arg "/storage/emulated/0/DCIM/Camera/$n" > /dev/null 2>&1 || true
+  adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file:///sdcard/DCIM/Camera/$n" > /dev/null 2>&1 || true
 done
 
 adb logcat -c || true

@@ -105,7 +105,12 @@ async function connect() {
   cdp.pid = pid;
   cdp.handlers.push(msg => {
     if (msg.method === 'Runtime.consoleAPICalled') {
-      const text = msg.params.args.map(a => (a.value !== undefined ? (typeof a.value === 'string' ? a.value : JSON.stringify(a.value)) : a.description || a.type)).join(' ');
+      const fmt = a => {
+        if (a.value !== undefined) return typeof a.value === 'string' ? a.value : JSON.stringify(a.value);
+        if (a.preview && a.preview.properties) return (a.description || '') + JSON.stringify(Object.fromEntries(a.preview.properties.map(p => [p.name, p.value])));
+        return a.description || a.type;
+      };
+      const text = msg.params.args.map(fmt).join(' ');
       consoleLog.push(`[${msg.params.type}] ${text}`);
     } else if (msg.method === 'Runtime.exceptionThrown') {
       const d = msg.params.exceptionDetails;
@@ -124,7 +129,16 @@ async function ev(expression, { timeout = 60000 } = {}) {
   return r.result.value;
 }
 const waitJs = (expr, opts) => waitFor(() => ev(`return (${expr});`), opts);
-const jsErrors = (from = 0) => consoleLog.slice(from).filter(l => /^\[(exception|error|assert)\]|^\[log:error:(javascript|other)\]/.test(l));
+// Capacitor's SystemBars injects its safe-area CSS during a reload before <html> exists – its own noise, not ours
+const NOISE = /Error injecting safe area CSS/;
+const jsErrors = (from = 0) => consoleLog.slice(from).filter(l => /^\[(exception|error|assert)\]|^\[log:error:(javascript|other)\]/.test(l) && !NOISE.test(l));
+const logcatOne = () => adb(['logcat', '-d', '-v', 'brief', 'FaleOne:V', 'FaleMedia:V', 'Capacitor/Console:V', 'AndroidRuntime:E', '*:S'], { allowFail: true }).split('\n').filter(l => l.trim()).slice(-12).join(' | ').slice(0, 1500);
+/** Real click (CDP input events carry user activation, like a finger tap) on the centre of an element. */
+async function click(selector) {
+  const r = await ev(`const e = document.querySelector(${JSON.stringify(selector)}); if (!e) return null; e.scrollIntoView({ block: 'center' }); const b = e.getBoundingClientRect(); return { x: b.left + b.width / 2, y: b.top + b.height / 2 };`);
+  if (!r) throw new Error('Element fehlt: ' + selector);
+  for (const type of ['mousePressed', 'mouseReleased']) await cdp.send('Input.dispatchMouseEvent', { type, x: r.x, y: r.y, button: 'left', clickCount: 1 });
+}
 
 async function step(name, fn) {
   try {
@@ -214,7 +228,9 @@ async function main() {
     }, { timeout: 30000, interval: 2000 });
     if (!r) {
       const x = await ev(M('list', { kind: 'image', limit: 200 })).catch(e => ({ error: e.message }));
-      throw new Error('Testfotos nicht gefunden: ' + JSON.stringify(x).slice(0, 600));
+      const q = sh(`content query --uri content://media/external/images/media --projection _id:_display_name:relative_path:is_pending:date_added`, { allowFail: true }).replace(/\s+/g, ' ').slice(0, 600);
+      const ls = sh('ls -la /sdcard/DCIM/Camera/', { allowFail: true }).replace(/\s+/g, ' ').slice(0, 300);
+      throw new Error('Testfotos nicht gefunden: ' + JSON.stringify(x).slice(0, 400) + ' | MediaStore: ' + q + ' | DCIM: ' + ls);
     }
     items = r.items.filter(i => FIXTURES.includes(i.name));
     for (const it of items) {
@@ -264,20 +280,27 @@ async function main() {
   });
 
   await step('Zurück-Taste: Dialog, Verlauf, Hintergrund', async () => {
+    if (!await waitFor(() => appOnTop(), { timeout: 8000 })) throw new Error('App nicht vorne vor dem Test: ' + (sh('dumpsys activity activities', { allowFail: true }).match(/topResumedActivity=[^\n]*/) || [''])[0]);
+    adb(['logcat', '-c'], { allowFail: true });
     await ev(`const d = await import('/js/dom.js'); window.__dlg = null; d.openDialog({ title: 'E2E', body: d.el('p', 'Test'), actions: [{ label: 'OK', value: 'ok', default: true }] }).then(r => { window.__dlg = r.value; }); return true;`);
     await sleep(500);
     sh('input keyevent 4');
-    if (!await waitJs(`window.__dlg === 'cancel' && !document.querySelector('dialog[open]')`, { timeout: 8000 })) throw new Error('Dialog schließt nicht mit Zurück');
+    if (!await waitJs(`window.__dlg === 'cancel' && !document.querySelector('dialog[open]')`, { timeout: 8000 })) throw new Error('Dialog schließt nicht mit Zurück | logcat: ' + logcatOne());
     if (!appOnTop()) throw new Error('App nach Dialog-Zurück nicht mehr vorne');
-    await ev(`location.hash = '#e2e-a'; await new Promise(r => setTimeout(r, 200)); location.hash = '#e2e-b'; return true;`);
+    // navigation by taps (script-only history entries are skipped by the back button in current WebViews)
+    await ev(`for (const h of ['e2e-a', 'e2e-b']) { const a = document.createElement('a'); a.href = '#' + h; a.id = 'lnk-' + h; a.textContent = h; a.style.cssText = 'position:fixed;left:20px;top:' + (h === 'e2e-a' ? 120 : 200) + 'px;z-index:99;padding:20px;background:#ff0'; document.body.append(a); } return true;`);
+    await click('#lnk-e2e-a');
+    await waitJs(`location.hash === '#e2e-a'`, { timeout: 5000 });
+    await click('#lnk-e2e-b');
+    if (!await waitJs(`location.hash === '#e2e-b'`, { timeout: 5000 })) throw new Error('Link-Klick navigiert nicht: ' + await ev('return location.hash;'));
     await sleep(400);
     sh('input keyevent 4');
-    if (!await waitJs(`location.hash === '#e2e-a'`, { timeout: 8000 })) throw new Error('Zurück navigiert nicht im Verlauf: ' + await ev('return location.hash;'));
+    if (!await waitJs(`location.hash === '#e2e-a'`, { timeout: 8000 })) throw new Error('Zurück navigiert nicht im Verlauf: ' + await ev('return location.hash + " history " + history.length;') + ' | logcat: ' + logcatOne());
     if (!appOnTop()) throw new Error('App nach Verlauf-Zurück nicht mehr vorne');
     const pid = appPid();
     let left = false;
     for (let i = 0; i < 4 && !left; i++) { sh('input keyevent 4'); await sleep(1200); left = !appOnTop(); }
-    if (!left) throw new Error('App bleibt vorne (Startseite)');
+    if (!left) throw new Error('App bleibt vorne (Startseite) | logcat: ' + logcatOne());
     const still = appPid();
     screenshot('nach-zurueck');
     sh(`am start -n ${PKG}/.MainActivity`, { allowFail: true });
