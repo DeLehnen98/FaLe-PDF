@@ -43,6 +43,5 @@ jobs:
             'subject_confirm': c.get('mailer_subjects_confirmation'),
             'magic_tpl_len': len(tpl('mailer_templates_magic_link_content')),
           }
-          for k, v in out.items():
-              print(f'::notice title={k}::{v}')
+          print('::notice title=Supabase auth::' + ' · '.join(f'{k}={v}' for k, v in out.items()))
           PY
