@@ -824,7 +824,11 @@ kbd { display: inline-block; padding: 2px 7px; border-radius: 6px; border: 1px s
   .w-st-btns { grid-column: 1 / -1; justify-content: flex-start; }
   .w-zoombox .icon-btn { width: 36px; height: 36px; }
   .doc-sheet:not(.pv) { max-width: 100%; }
-  .doc-sheet:not(.pv) .doc-page { box-sizing: border-box; width: 100%; max-width: 100%; }
+  .doc-sheet:not(.pv) .doc-page { box-sizing: border-box; width: 100%; max-width: 100%; overflow-x: auto; }
+  /* phones: narrow table columns must not chop words letter by letter – columns size to their content,
+     long words are hyphenated, and a table that is still too wide scrolls sideways inside the page */
+  .doc-sheet:not(.pv) .doc-page table { table-layout: auto; }
+  .doc-sheet:not(.pv) .doc-page td, .doc-sheet:not(.pv) .doc-page th { word-wrap: normal; overflow-wrap: normal; hyphens: auto; -webkit-hyphens: auto; min-width: 3.5em; }
   .screen-foot.office-foot.w-foot { gap: 6px; }
   .screen-foot.office-foot.w-foot .foot-info { font-size: 12px; }
   .w-pageinfo:empty { display: none; }

@@ -2012,7 +2012,14 @@ export async function mountWriter(screen, { id = null, template = null }) {
     $('[data-x="view-focus"]', wrap).setAttribute('aria-pressed', String(m === 'focus'));
     if (m === 'read' && was !== 'read') { viewBeforeRead = view; if (view !== 'web') setView('web'); }
     if (was === 'read' && m !== 'read' && viewBeforeRead && viewBeforeRead !== view) setView(viewBeforeRead);
-    if (m) { extras.placeFbar(); toast(m === 'read' ? 'Lesemodus – Esc oder „Lesemodus beenden“ zum Bearbeiten.' : 'Fokusmodus – Esc beendet ihn.', 'info'); }
+    if (m) {
+      extras.placeFbar();
+      // phones and tablets usually have no Esc key – point at the on-screen button instead
+      const touch = matchMedia('(hover: none) and (pointer: coarse)').matches;
+      toast(m === 'read'
+        ? (touch ? 'Lesemodus – tippe auf „Lesemodus beenden“, um wieder zu bearbeiten.' : 'Lesemodus – Esc oder „Lesemodus beenden“ zum Bearbeiten.')
+        : (touch ? 'Fokusmodus – tippe auf „Fokusmodus beenden“, um ihn zu verlassen.' : 'Fokusmodus – Esc beendet ihn.'), 'info');
+    }
     if (m === 'focus') setTimeout(() => ed.focus({ preventScroll: true }), 30);
   }
 
