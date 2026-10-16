@@ -1,0 +1,50 @@
+# Wendet supabase/auth-config.json (nicht geheime Login-Einstellungen: Site URL, Code-Länge, Mail-Vorlagen mit
+# Zahlencode) per Management API an. Läuft bei Änderungen an der Datei oder von Hand. Braucht SUPABASE_ACCESS_TOKEN.
+name: Supabase auth apply
+
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/auth-config.json']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      REF: mcjgkhisuquuxteyumrf
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Apply auth config
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          tok = os.environ.get('SUPABASE_ACCESS_TOKEN', '')
+          if not tok:
+              print('::error title=Supabase::SUPABASE_ACCESS_TOKEN fehlt'); raise SystemExit(1)
+          print('::add-mask::' + tok)
+          cfg = {k: v for k, v in json.load(open('supabase/auth-config.json', encoding='utf-8')).items() if not k.startswith('_')}
+          allowed = {'site_url', 'mailer_otp_length', 'mailer_otp_exp', 'mailer_subjects_magic_link', 'mailer_subjects_confirmation',
+                     'mailer_templates_magic_link_content', 'mailer_templates_confirmation_content'}
+          bad = set(cfg) - allowed
+          if bad:
+              print('::error title=Supabase::nicht erlaubte Schlüssel: ' + ', '.join(sorted(bad))); raise SystemExit(1)
+          for k in ('mailer_templates_magic_link_content', 'mailer_templates_confirmation_content'):
+              if '{{ .Token }}' not in cfg.get(k, '{{ .Token }}'):
+                  print(f'::error title=Supabase::{k} ohne Code'); raise SystemExit(1)
+          req = urllib.request.Request(f"https://api.supabase.com/v1/projects/{os.environ['REF']}/config/auth", method='PATCH',
+                                       data=json.dumps(cfg).encode(), headers={'Authorization': f'Bearer {tok}', 'Content-Type': 'application/json', 'User-Agent': 'fale-auth-apply'})
+          try:
+              out = json.loads(urllib.request.urlopen(req, timeout=60).read())
+          except urllib.error.HTTPError as e:
+              print('::error title=Supabase PATCH::' + e.read().decode(errors='replace')[:800]); raise SystemExit(1)
+          check = {k: (('.Token' in str(out.get(k))) if 'templates' in k else out.get(k)) for k in sorted(cfg)}
+          print('::notice title=Supabase auth angewendet::' + ' · '.join(f'{k}={v}' for k, v in check.items()))
+          PY
