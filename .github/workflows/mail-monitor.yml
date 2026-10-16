@@ -1,0 +1,91 @@
+# FaLe Mail: Überwachung des Mailservers ohne SSH (liest https://mail.fale.network/fale/status.json, prüft DNS,
+# TLS, MTA-STS, Blocklisten) plus Tests der Mail-Werkzeuge. Solange es noch keinen Server gibt, wird nur ein
+# Hinweis ausgegeben – der Lauf schlägt dann NICHT fehl. Doku: docs/FALE-MAIL.md
+#
+# Optional (Repo → Settings → Secrets and variables → Actions):
+#   secret   VERCEL_TOKEN           → DNS-Abgleich per scripts/mail-dns.mjs möglich
+#   variable MAIL_DNS_AUTO_APPLY    = true → DNS bei jedem Lauf automatisch angleichen (z. B. neue DKIM-Schlüssel)
+#   variable MAIL_SERVER_IP         = IPv4 des Servers, solange mail.fale.network noch nicht im DNS steht
+#   variable MAIL_SERVER_EXPECTED   = true → nicht erreichbarer Server ist ein Fehler (statt Warnung)
+#   variable MAIL_DMARC / MAIL_MTA_STS = quarantine|reject / enforce, sobald die Aufwärmphase vorbei ist
+name: Mail monitor
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      apply_dns:
+        description: 'DNS-Einträge in Vercel anlegen/aktualisieren (braucht Secret VERCEL_TOKEN)'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ['mail/**', 'scripts/mail-dns.mjs', '.github/workflows/mail-monitor.yml']
+  pull_request:
+    paths: ['mail/**', 'scripts/mail-dns.mjs', '.github/workflows/mail-monitor.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mail-monitor-${{ github.event_name }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    if: github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22'
+      - name: cloud-init + manifest up to date
+        run: node mail/tools/build.mjs --check
+      - name: Node tests (DNS sync against mocked Vercel API, monitor logic, seal interop)
+        run: |
+          python3 -c "import cryptography" 2>/dev/null || python3 -m pip install --quiet --user --break-system-packages cryptography
+          node --test 'mail/test/*.test.mjs'
+      - name: Agent tests (Python)
+        run: python3 -m unittest discover -s mail/test -v
+      - name: shellcheck
+        run: shellcheck -S style mail/server/firstboot.sh
+
+  monitor:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22'
+      - name: DNS abgleichen (optional)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          APPLY: ${{ inputs.apply_dns == true || vars.MAIL_DNS_AUTO_APPLY == 'true' }}
+          MAIL_SERVER_IP: ${{ vars.MAIL_SERVER_IP }}
+          MAIL_DMARC: ${{ vars.MAIL_DMARC || 'none' }}
+          MAIL_MTA_STS: ${{ vars.MAIL_MTA_STS || 'testing' }}
+        run: |
+          if [ "$APPLY" != "true" ]; then echo "DNS-Abgleich nicht angefordert."; exit 0; fi
+          if [ -z "$VERCEL_TOKEN" ]; then echo "::warning title=FaLe Mail::DNS-Abgleich angefordert, aber Secret VERCEL_TOKEN fehlt."; exit 0; fi
+          ARGS=(--apply --prune --dmarc "$MAIL_DMARC" --mta-sts "$MAIL_MTA_STS")
+          if ! getent hosts mail.fale.network >/dev/null; then
+            if [ -z "$MAIL_SERVER_IP" ]; then echo "::notice title=FaLe Mail::Noch kein Server – kein DNS-Abgleich."; exit 0; fi
+            ARGS+=(--status-url "https://$MAIL_SERVER_IP/fale/status.json" --insecure)
+          fi
+          node scripts/mail-dns.mjs "${ARGS[@]}"
+      - name: Server prüfen
+        env:
+          MAIL_SERVER_IP: ${{ vars.MAIL_SERVER_IP }}
+          MAIL_SERVER_EXPECTED: ${{ vars.MAIL_SERVER_EXPECTED }}
+          MAIL_DMARC: ${{ vars.MAIL_DMARC || 'none' }}
+          MAIL_MTA_STS: ${{ vars.MAIL_MTA_STS || 'testing' }}
+        run: node mail/tools/monitor.mjs

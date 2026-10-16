@@ -1,0 +1,16 @@
+{"@type":"upsert","object":"AcmeProvider","matchOn":["directory"],"value":{"le":{"directory":"https://acme-v02.api.letsencrypt.org/directory","challengeType":"TlsAlpn01","contact":{"postmaster@fale.network":true},"renewBefore":"R23","maxRetries":20,"reuseKey":false,"description":"Let's Encrypt (TLS-ALPN-01 on 443)"}}}
+{"@type":"upsert","object":"Domain","matchOn":["name"],"value":{"dom":{"name":"fale.network","description":"FaLe Mail primary domain","isEnabled":true,"allowRelaying":false,"catchAllAddress":null,"reportAddressUri":"mailto:postmaster@fale.network","subAddressing":{"@type":"Enabled"},"certificateManagement":{"@type":"Automatic","acmeProviderId":"#le","subjectAlternativeNames":{"mail.fale.network":true,"autoconfig.fale.network":true,"autodiscover.fale.network":true}}}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-smtp":{"name":"smtp","bind":{"[::]:25":true},"protocol":"smtp","useTls":true,"tlsImplicit":false}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-submission":{"name":"submission","bind":{"[::]:587":true},"protocol":"smtp","useTls":true,"tlsImplicit":false}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-submissions":{"name":"submissions","bind":{"[::]:465":true},"protocol":"smtp","useTls":true,"tlsImplicit":true}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-imaps":{"name":"imaps","bind":{"[::]:993":true},"protocol":"imap","useTls":true,"tlsImplicit":true}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-https":{"name":"https","bind":{"[::]:443":true},"protocol":"http","useTls":true,"tlsImplicit":true}}}
+{"@type":"upsert","object":"NetworkListener","matchOn":["name"],"value":{"l-http":{"name":"http","bind":{"127.0.0.1:8080":true},"protocol":"http","useTls":false,"tlsImplicit":false}}}
+{"@type":"destroy","object":"NetworkListener","value":{"name":"pop3s"}}
+{"@type":"destroy","object":"NetworkListener","value":{"name":"sieve"}}
+{"@type":"upsert","object":"MtaOutboundThrottle","matchOn":["description"],"value":{"t-sender":{"description":"FaLe warm-up: per sender","enable":true,"key":{"sender":true},"rate":{"period":3600000,"count":60},"match":{"match":{},"else":"true"}}}}
+{"@type":"upsert","object":"MtaOutboundThrottle","matchOn":["description"],"value":{"t-rcptdomain":{"description":"FaLe warm-up: per recipient domain","enable":true,"key":{"rcptDomain":true},"rate":{"period":3600000,"count":100},"match":{"match":{},"else":"true"}}}}
+{"@type":"upsert","object":"MtaOutboundThrottle","matchOn":["description"],"value":{"t-global":{"description":"FaLe warm-up: global per day","enable":true,"key":{"localIp":true},"rate":{"period":86400000,"count":300},"match":{"match":{},"else":"true"}}}}
+{"@type":"upsert","object":"Application","matchOn":["description"],"value":{"app-fale":{"description":"FaLe status","enabled":true,"urlPrefix":{"/fale":true},"resourceUrl":"file:///var/lib/fale-mail/web/fale-web.zip","unpackDirectory":"/var/lib/fale-mail/web/unpack","autoUpdateFrequency":86400000}}}
+{"@type":"update","object":"Http","value":{"enableHsts":true,"usePermissiveCors":false}}
+{"@type":"update","object":"SystemSettings","value":{"defaultHostname":"mail.fale.network","defaultDomainId":"#dom"}}

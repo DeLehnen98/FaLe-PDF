@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FaLe Mail Server</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--muted:#6b6b66;--card:#fff;--line:#e2e2dc;--acc:#1f6f5c;--bad:#a33}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--fg:#ecece8;--muted:#9a9a93;--card:#1d1d1b;--line:#33332f;--acc:#5fc2a6;--bad:#e67}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}h1{font-size:1.4rem;margin:.5rem 0 1rem}h2{font-size:1.1rem;margin:0 0 .5rem}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0 0 16px}
+button,a.btn{display:inline-block;background:var(--acc);color:#fff;border:0;border-radius:8px;padding:10px 14px;font:inherit;text-decoration:none;margin:4px 0;cursor:pointer}
+input{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;margin:2px 0 8px}
+label{font-size:.9rem;color:var(--muted)}pre{white-space:pre-wrap;word-break:break-all;background:var(--bg);padding:8px;border-radius:8px;font-size:.8rem}
+.muted{color:var(--muted);font-size:.9rem}.bad{color:var(--bad)}code{font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<h1>FaLe Mail Server</h1>
+<section>
+  <h2>Status</h2>
+  <div id="status" class="muted">lädt …</div>
+  <p class="muted">Rohdaten: <a href="status.json">status.json</a></p>
+</section>
+<section>
+  <h2>1 · Dieses Handy koppeln (Admin-Zugang)</h2>
+  <p class="muted">Erzeugt ein Schlüsselpaar nur auf diesem Gerät. Der öffentliche Teil wird im Repo gespeichert;
+  der Server legt seine Zugangsdaten verschlüsselt dafür ab. Kein Passwort geht durch Chat oder E-Mail.</p>
+  <label for="devname">Name des Geräts (nur a–z, 0–9, -)</label>
+  <input id="devname" value="owner" pattern="[a-z0-9-]+">
+  <button id="pairgen">Schlüssel erzeugen</button>
+  <div id="pairout"></div>
+  <button id="pairfetch">Zugangsdaten abholen</button>
+  <div id="secrets"></div>
+</section>
+<section>
+  <h2>2 · Backup-Zugang versiegeln (optional)</h2>
+  <p class="muted">S3-kompatibler EU-Bucket (z. B. Hetzner Object Storage). Die Daten werden hier im Browser für den
+  Server verschlüsselt; ins Repo kommt nur Chiffretext.</p>
+  <label for="s3repo">restic-Repository, z. B. <code>s3:https://fsn1.your-objectstorage.com/fale-mail-backup</code></label>
+  <input id="s3repo" autocomplete="off">
+  <label for="s3key">Access Key</label><input id="s3key" autocomplete="off">
+  <label for="s3secret">Secret Key</label><input id="s3secret" type="password" autocomplete="off">
+  <label for="s3region">Region (optional)</label><input id="s3region" autocomplete="off">
+  <button id="sealbtn">Versiegeln</button>
+  <div id="sealout"></div>
+</section>
+</main>
+<script>
+"use strict";
+const REPO = "DeLehnen98/FaLe-PDF", V = "fale-seal-1", S = crypto.subtle, te = new TextEncoder();
+const $ = (id) => document.getElementById(id);
+const b64u = (b) => btoa(String.fromCharCode(...new Uint8Array(b))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const unb64u = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
+const pub = ({ kty, crv, x, y }) => ({ kty, crv, x, y });
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+async function kidOf(j) { const r = new Uint8Array([4, ...unb64u(j.x), ...unb64u(j.y)]); return b64u(await S.digest("SHA-256", r)).slice(0, 16); }
+async function aesKey(priv, peerJwk, kid, use) {
+  const peer = await S.importKey("jwk", pub(peerJwk), { name: "ECDH", namedCurve: "P-256" }, false, []);
+  const bits = await S.deriveBits({ name: "ECDH", public: peer }, priv, 256);
+  const hk = await S.importKey("raw", bits, "HKDF", false, ["deriveKey"]);
+  return S.deriveKey({ name: "HKDF", hash: "SHA-256", salt: new Uint8Array(32), info: te.encode(V + "|" + kid) }, hk, { name: "AES-GCM", length: 256 }, false, [use]);
+}
+async function seal(jwk, text) {
+  const kid = await kidOf(jwk), eph = await S.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveBits"]);
+  const key = await aesKey(eph.privateKey, jwk, kid, "encrypt"), iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await S.encrypt({ name: "AES-GCM", iv, additionalData: te.encode(kid) }, key, te.encode(text));
+  return { v: V, kid, epk: pub(await S.exportKey("jwk", eph.publicKey)), iv: b64u(iv), ct: b64u(ct) };
+}
+async function unseal(priv, myJwk, box) {
+  const kid = await kidOf(myJwk);
+  if (box.v !== V || box.kid !== kid) throw new Error("Nicht für diesen Schlüssel verschlüsselt");
+  const key = await aesKey(priv, box.epk, kid, "decrypt");
+  return new TextDecoder().decode(await S.decrypt({ name: "AES-GCM", iv: unb64u(box.iv), additionalData: te.encode(kid) }, key, unb64u(box.ct)));
+}
+function db() { return new Promise((ok, no) => { const r = indexedDB.open("fale-mail-pair", 1); r.onupgradeneeded = () => r.result.createObjectStore("k"); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); }); }
+async function kv(mode, key, val) { const d = await db(); return new Promise((ok, no) => { const t = d.transaction("k", mode), s = t.objectStore("k"); const r = val === undefined ? s.get(key) : s.put(val, key); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); }); }
+const ghNew = (dir, name, value) => `https://github.com/${REPO}/new/main/${dir}?filename=${encodeURIComponent(name)}&value=${encodeURIComponent(value)}`;
+async function status() {
+  try {
+    const s = await (await fetch("status.json?t=" + Date.now(), { cache: "no-store" })).json();
+    const tls = s.tls?.daysLeft != null ? `${s.tls.daysLeft} Tage` : "noch kein Zertifikat";
+    $("status").innerHTML = `Stalwart ${esc(s.versions?.stalwart)} · TLS ${esc(tls)} · Queue ${esc(s.queue?.size)} · Disk ${esc(s.disk?.usedPct)} %<br>
+      IPv4 ${esc(s.ipv4)} · Port 25 ausgehend: ${s.port25Outbound ? "offen" : '<span class="bad">gesperrt</span>'} · PTR ${esc(s.ptr?.ipv4 || "fehlt")}<br>
+      GitOps: ${s.gitops?.ok ? "ok" : '<span class="bad">' + esc(s.gitops?.error) + "</span>"} (${esc((s.gitops?.commit || "").slice(0, 10))}) · Stand ${esc(s.generatedAt)}`;
+    return s;
+  } catch (e) { $("status").textContent = "status.json nicht erreichbar: " + e.message; return null; }
+}
+$("pairgen").onclick = async () => {
+  const name = $("devname").value.trim();
+  if (!/^[a-z0-9-]{1,32}$/.test(name)) return alert("Ungültiger Name");
+  const kp = await S.generateKey({ name: "ECDH", namedCurve: "P-256" }, false, ["deriveBits"]);
+  const jwk = pub(await S.exportKey("jwk", kp.publicKey));
+  await kv("readwrite", "pair:" + name, { priv: kp.privateKey, jwk });
+  const file = JSON.stringify({ v: "fale-pair-1", role: "owner", name, jwk, created: new Date().toISOString() }, null, 1) + "\n";
+  $("pairout").innerHTML = `<p>Schlüssel gespeichert (Fingerprint <code>${esc(await kidOf(jwk))}</code>). Jetzt in GitHub speichern („Commit changes“ tippen):</p>
+    <a class="btn" target="_blank" rel="noopener" href="${esc(ghNew("mail/config/pairing", name + ".json", file))}">In GitHub speichern</a>
+    <p class="muted">Nach dem Commit holt der Server die Datei innerhalb von ca. 10 Minuten ab. Dann „Zugangsdaten abholen“.</p>`;
+};
+$("pairfetch").onclick = async () => {
+  const name = $("devname").value.trim(), k = await kv("readonly", "pair:" + name);
+  if (!k) return alert("Auf diesem Gerät gibt es keinen Schlüssel „" + name + "“.");
+  try {
+    const r = await fetch(`pairing/${encodeURIComponent(name)}.json?t=${Date.now()}`, { cache: "no-store" });
+    if (!r.ok) throw new Error("Noch nicht verfügbar (HTTP " + r.status + ") – später erneut versuchen.");
+    const p = JSON.parse(await unseal(k.priv, k.jwk, await r.json()));
+    $("secrets").innerHTML = `<p><b>In den Passwort-Manager übernehmen.</b> Wird nur hier angezeigt.</p>
+      <pre>Admin: ${esc(p.admin.url)}\nBenutzer: ${esc(p.admin.user)}\nPasswort: ${esc(p.admin.password)}\n\nPostfach postmaster/abuse: ${esc(p.postmaster.user)}\nPasswort: ${esc(p.postmaster.password)}\nIMAP ${esc(p.postmaster.imap)} · SMTP ${esc(p.postmaster.smtp)}\n\nBackup-Passwort (restic, für Notfall-Wiederherstellung): ${esc(p.resticPassword)}</pre>`;
+  } catch (e) { $("secrets").innerHTML = `<p class="bad">${esc(e.message)}</p>`; }
+};
+$("sealbtn").onclick = async () => {
+  const s = await status();
+  if (!s?.sealPublicKey?.jwk) return alert("Server-Schlüssel nicht verfügbar.");
+  const env = { RESTIC_REPOSITORY: $("s3repo").value.trim(), AWS_ACCESS_KEY_ID: $("s3key").value.trim(), AWS_SECRET_ACCESS_KEY: $("s3secret").value.trim() };
+  if ($("s3region").value.trim()) env.AWS_DEFAULT_REGION = $("s3region").value.trim();
+  if (!env.RESTIC_REPOSITORY.startsWith("s3:") || !env.AWS_ACCESS_KEY_ID || !env.AWS_SECRET_ACCESS_KEY) return alert("Bitte alle Felder ausfüllen (Repository beginnt mit s3:).");
+  const box = await seal(s.sealPublicKey.jwk, JSON.stringify({ name: "backup", env }));
+  $("s3secret").value = "";
+  $("sealout").innerHTML = `<p>Versiegelt für Server-Schlüssel <code>${esc(box.kid)}</code>.</p>
+    <a class="btn" target="_blank" rel="noopener" href="${esc(ghNew("mail/config/sealed", "backup.json", JSON.stringify(box) + "\n"))}">In GitHub speichern</a>`;
+};
+status();
+</script>
+</body>
+</html>
