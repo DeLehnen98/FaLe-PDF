@@ -51,6 +51,24 @@ The same script regenerates the `sw.js` precache list. CI runs it with `--check`
 | Export everything (folder via File System Access, or ZIP parts) | `js/export.js` |
 | Notfallzugang: setup wizard, safety code, request / veto / revoke, log, "Für andere da", read-only browser (contract §12) | `js/views/notfall.js` (UI), `js/worker.js` (crypto, key sync after every sync) |
 
+## Android app (`one-android/`, sideload APK)
+
+The same web app runs in a Capacitor shell (`dev.fale.one`). Nothing in `one/` changes for the browser: native code paths check `isNativeApp()` (`js/config.js`), and `js/native.js` is imported only inside the app (it is not in the web precache list).
+
+| Part | Where |
+|---|---|
+| Capacitor project (config, minimal `package.json`; deps come from the repo's `node_modules`) | `one-android/` |
+| Web files: a copy of `one/` without `sw.js`, `vercel.json`, `README.md` (gitignored) | `one-android/www/` ← `node scripts/cap-patch-one-android.mjs --web` |
+| Native project, generated on every CI run (gitignored) | `one-android/android/` ← `cap add/sync android` + `node scripts/cap-patch-one-android.mjs` |
+| Plugins `FaleMedia` (MediaStore listing, photo permissions) and `FaleSystem` (bar colours, network type, app settings, resume event), MainActivity (back button) | written by `scripts/cap-patch-one-android.mjs` |
+| Build → pre-release `one-android-latest` (`FaLe-One-<version>-debug.apk`), smoke test on emulators API 34 + 36 | `.github/workflows/android-one.yml`, `scripts/android-one-e2e/` |
+
+The version is `VERSION` in `js/config.js`. The app has no service worker and no ads, purchases or paid features.
+
+**Automatic backup (first version).** Off until the user switches it on in Fotos or Einstellungen (a short explanation comes first, then Android's photo permission). Options: „Auch Videos sichern“ (off), „Nur im WLAN“ (on; if the device cannot tell the network type, it backs up anyway and says so). A run pages through MediaStore after a per-account checkpoint (`date_added`, `_id`), reads each original through Capacitor's local server (`ACCESS_MEDIA_LOCATION` + `setRequireOriginal`, so EXIF GPS stays and is encrypted like everything else), and hands 12 files / 160 MB at a time to the normal backup path (keyed hash, already stored photos are skipped). The checkpoint moves only after a batch is stored; network or quota problems stop the run and the next one continues from there. Runs start after unlock, when the app returns to the foreground and every 10 minutes while it is visible; never two at once.
+
+What it does **not** do yet: back up while the app is closed or in the background (needs a WorkManager job), free up space on the phone, or let you choose folders. Android 14 partial access backs up only the photos the user picked.
+
 ## Data on the device (decision)
 
 - **Master key:** a non-extractable `CryptoKey` in IndexedDB.
@@ -69,7 +87,7 @@ The same script regenerates the `sw.js` precache list. CI runs it with `--check`
   - Elsewhere the decrypted file is downloaded and FaLe PDF opens in a new tab.
 - **Video and audio** are decrypted completely into memory before playback. There is no chunked streaming through the service worker yet.
 - **HEIC/RAW:** the original is always stored. A thumbnail exists only if the device's browser can decode the format (Safari can, Chrome on Android/desktop usually cannot).
-- **Free up space on the phone** ("Nur vom Gerät entfernen") and **background backup** need the native app. On the web, backup happens while the app is open, and deleting means "Überall löschen" with a 30-day trash.
+- **Free up space on the phone** ("Nur vom Gerät entfernen") and **background backup** are not built yet, also not in the Android app (its automatic backup runs while the app is open). On the web, backup happens when you pick photos, and deleting means "Überall löschen" with a 30-day trash.
 - **Sharing** is per file, via a link (contract §7.9: max 50 MB, 7 days). Sharing folders or albums natively comes later.
 
 Live (Beta): https://fale-one.vercel.app – Vercel-Projekt `fale-one`, Root `one`.
