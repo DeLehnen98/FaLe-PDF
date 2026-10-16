@@ -1,0 +1,51 @@
+# Ergänzt Redirect-URLs in Supabase → Authentication → URL Configuration (nur hinzufügen, nie entfernen).
+# Nutzt das Repository-Secret SUPABASE_ACCESS_TOKEN (Management API). Ergebnis steht als Hinweis im Lauf.
+name: Supabase auth redirect URLs
+
+on:
+  workflow_dispatch:
+    inputs:
+      add:
+        description: 'Kommagetrennte Redirect-URLs, die ergänzt werden sollen'
+        required: true
+        default: 'https://pdf.fale.network/**,https://faleone.com/**'
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      REF: mcjgkhisuquuxteyumrf
+      ADD: ${{ inputs.add }}
+    steps:
+      - name: Merge redirect URLs
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          tok, ref = os.environ['SUPABASE_ACCESS_TOKEN'], os.environ['REF']
+          if not tok:
+              print('::error title=Supabase::SUPABASE_ACCESS_TOKEN fehlt'); raise SystemExit(1)
+          print('::add-mask::' + tok)
+          def call(method, body=None):
+              req = urllib.request.Request(f'https://api.supabase.com/v1/projects/{ref}/config/auth', method=method,
+                  data=json.dumps(body).encode() if body is not None else None,
+                  headers={'Authorization': f'Bearer {tok}', 'Content-Type': 'application/json', 'User-Agent': 'fale-auth-urls'})
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  return json.loads(r.read().decode() or 'null')
+          cfg = call('GET')
+          cur = [u.strip() for u in (cfg.get('uri_allow_list') or '').split(',') if u.strip()]
+          add = [u.strip() for u in os.environ['ADD'].split(',') if u.strip()]
+          for u in add:
+              if not (u.startswith('https://') or u.startswith('http://localhost')):
+                  print(f'::error title=Supabase::Ungültige URL {u}'); raise SystemExit(1)
+          new = cur + [u for u in add if u not in cur]
+          if new == cur:
+              print(f"::notice title=Supabase::Nichts zu tun. Site URL: {cfg.get('site_url')} · Redirect URLs: {', '.join(cur)}")
+              raise SystemExit(0)
+          out = call('PATCH', {'uri_allow_list': ','.join(new)})
+          print(f"::notice title=Supabase Redirect URLs aktualisiert::Site URL: {out.get('site_url')} · Redirect URLs: {out.get('uri_allow_list')}")
+          PY
