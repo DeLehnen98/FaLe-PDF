@@ -1,5 +1,6 @@
 // FaLe-Konto entry points: app start, the card on "Ich", the (dismissible) hint on the start page.
 // Nothing here talks to the network unless the user is signed in or opens #/konto.
+import { showPlus } from '../monetize.js';
 import { h, esc, $ } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import * as A from './auth.js';
@@ -73,7 +74,7 @@ export async function renderMeCard(box) {
       box.innerHTML = '';
       box.appendChild(h(`<a class="card acct-me acct-me-out" href="#/konto">
         <span class="acct-me-ic">${aicon('cloudLock')}</span>
-        <span class="acct-me-text"><strong>FaLe-Konto (optional)</strong><span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten, FaLe Plus überall. Alles geht auch ohne Konto.</span></span>
+        <span class="acct-me-text"><strong>FaLe-Konto (optional)</strong>${showPlus() ? '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten, FaLe Plus überall. Alles geht auch ohne Konto.</span>' : '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten. Alles geht auch ohne Konto.</span>'}</span>
         ${cfg.configured ? '<span class="btn btn-soft btn-sm acct-me-btn">Anmelden</span>' : `<span class="me-go">${oicon('chevronRight')}</span>`}</a>`));
       return;
     }

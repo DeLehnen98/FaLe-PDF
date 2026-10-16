@@ -1,5 +1,6 @@
 // Shared UI for the AI features: stylesheet, consent dialog, quota widget, errors, rich text with
 // page citations, saving results. All visible strings are plain German (js/i18n translates them).
+import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, openDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { isNative } from '../platform.js';
@@ -89,9 +90,9 @@ export function quotaWidget({ compact = false } = {}) {
     const canAd = !q.plus && isNative() && features.ads !== false && q.rewardsLeft > 0;
     el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
       <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
-      ${(canAd || !q.plus) && !compact ? `<div class="aq-acts">
+      ${(canAd || (!q.plus && showPlus())) && !compact ? `<div class="aq-acts">
         ${canAd ? `<button class="btn btn-soft btn-sm" type="button" data-ai-ad>${oicon('play')} Werbevideo ansehen (+${q.bonus || 3})</button>` : ''}
-        ${!q.plus ? `<a class="btn btn-ghost btn-sm" href="#/ki/plus" data-ai-plus>${oicon('star')} FaLe Plus</a>` : ''}</div>` : ''}`;
+        ${!q.plus && showPlus() ? `<a class="btn btn-ghost btn-sm" href="#/ki/plus" data-ai-plus>${oicon('star')} FaLe Plus</a>` : ''}</div>` : ''}`;
     const ad = $('[data-ai-ad]', el);
     if (ad) ad.addEventListener('click', () => watchAdFlow(ad));
   };
@@ -126,8 +127,8 @@ export async function showAiError(err) {
       title: 'Heutiges KI-Kontingent aufgebraucht',
       body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>
         ${canAd ? `<p>Freiwillig: Ein kurzes Werbevideo schaltet <strong>${q.bonus || 3} weitere Anfragen</strong> frei (noch ${q.rewardsLeft}× heute).</p>` : ''}
-        <p class="muted small">Mit <strong>FaLe Plus</strong> bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.</p></div>`,
-      actions: [{ label: 'Schließen', value: 'cancel' }, { label: 'FaLe Plus ansehen', value: 'plus' }, ...(canAd ? [{ label: `Werbevideo ansehen (+${q.bonus || 3})`, value: 'ad', kind: 'btn-primary', default: true }] : [])],
+        ${showPlus() ? '<p class="muted small">Mit <strong>FaLe Plus</strong> bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.</p>' : ''}</div>`,
+      actions: [{ label: 'Schließen', value: 'cancel' }, ...(showPlus() ? [{ label: 'FaLe Plus ansehen', value: 'plus' }] : []), ...(canAd ? [{ label: `Werbevideo ansehen (+${q.bonus || 3})`, value: 'ad', kind: 'btn-primary', default: true }] : [])],
     });
     if (r.value === 'ad') await watchAdFlow();
     if (r.value === 'plus') location.hash = '#/ki/plus';

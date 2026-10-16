@@ -1,4 +1,5 @@
 // Small, network-free entry points for the main views (Start, Werkzeuge, Ich).
+import { showPlus } from '../monetize.js';
 import { h, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { loadAiCss } from './ui.js';
@@ -49,6 +50,6 @@ export function renderMeCard(box) {
   box.innerHTML = '';
   box.appendChild(h(`<div class="ai-me">
     <a class="action-card" href="#/ki"><span class="tile-ic ai-ic">${oicon('sparkle')}</span><span><strong>KI-Assistent</strong><span class="muted small" data-ai-me-status>${esc(status)}</span></span></a>
-    <a class="action-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">${q && q.plus ? 'Aktiv – danke!' : 'Mehr KI pro Tag, freiwillig'}</span></span></a>
+    ${showPlus() || (q && q.plus) ? `<a class="action-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">${q && q.plus ? 'Aktiv – danke!' : 'Mehr KI pro Tag, freiwillig'}</span></span></a>` : ''}
     <a class="action-card" href="#/ki/einstellungen"><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI-Einstellungen</strong><span class="muted small">Cloud-KI an/aus, Datenschutz</span></span></a></div>`));
 }

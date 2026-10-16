@@ -5709,6 +5709,8 @@ export default {
   "Lesemodus beenden": "Exit reading mode",
   "Lesemodus – Esc oder „Lesemodus beenden“ zum Bearbeiten.": "Reading mode – Esc or “Exit reading mode” to edit.",
   "Fokusmodus – Esc beendet ihn.": "Focus mode – Esc exits it.",
+  "Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten. Alles geht auch ohne Konto.": "Files end-to-end encrypted on all your devices. Everything also works without an account.",
+  "Dein KI-Kontingent gilt für dein Konto – auf jedem Gerät.": "Your AI allowance belongs to your account – on every device.",
   "Lesemodus – tippe auf „Lesemodus beenden“, um wieder zu bearbeiten.": "Reading mode – tap “Exit reading mode” to edit again.",
   "Fokusmodus – tippe auf „Fokusmodus beenden“, um ihn zu verlassen.": "Focus mode – tap “Exit focus mode” to leave it.",
   "Deutsch (Deutschland)": "German (Germany)",

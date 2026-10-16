@@ -1,4 +1,5 @@
 // #/konto – FaLe-Konto: sign-in with an e-mail code, account + Plus, FaLe Sync, devices, deletion.
+import { showPlus } from '../monetize.js';
 import { $, $$, h, esc, toast, errorToast, openDialog, confirmDialog, formatSize } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { isNative } from '../platform.js';
@@ -50,7 +51,7 @@ function renderSignIn(wrap, cfg) {
       <strong>Ein Konto für alle FaLe-Apps – freiwillig</strong>
       <ul class="acct-benefits">
         <li>${oicon('check')}<span><b>FaLe Sync:</b> Dateien, Ordner, Unterschriften und Fristen auf all deinen Geräten – Ende-zu-Ende-verschlüsselt. Wir können nichts davon lesen.</span></li>
-        <li>${oicon('check')}<span><b>FaLe Plus</b> und dein KI-Kontingent gelten für dein Konto – auf jedem Gerät.</span></li>
+        <li>${oicon('check')}${showPlus() ? '<span><b>FaLe Plus</b> und dein KI-Kontingent gelten für dein Konto – auf jedem Gerät.</span>' : '<span>Dein KI-Kontingent gilt für dein Konto – auf jedem Gerät.</span>'}</li>
         <li>${oicon('check')}<span>Ohne Konto funktioniert FaLe PDF genauso. Deine Dateien bleiben dann nur auf diesem Gerät.</span></li>
       </ul></div></div>
     <form class="card card-pad acct-form" data-step="email" novalidate>
@@ -177,7 +178,7 @@ async function renderAccount(wrap, user, offs) {
     if (!el) return;
     el.innerHTML = r.plus && r.plus.active
       ? `<span class="badge acct-badge-plus">${oicon('star')} FaLe Plus</span><span class="muted small">aktiv bis ${esc(new Date(r.plus.expiresAt).toLocaleDateString('de-DE'))} – gilt auf allen Geräten</span>`
-      : `<span class="muted small">FaLe Plus nicht aktiv</span>`;
+      : (showPlus() ? `<span class="muted small">FaLe Plus nicht aktiv</span>` : '');
   }).catch(() => { const el = $('[data-plus]', wrap); if (el) el.innerHTML = ''; });
 
   // sync section (live)
@@ -199,7 +200,7 @@ function usageMeter(st) {
   return `<div class="acct-usage"><div class="acct-usage-top"><span>${esc(formatSize(st.usage.used))} von ${esc(formatSize(st.usage.quota))} belegt</span>
     <span class="muted small">${st.usage.plus ? 'FaLe Plus' : 'Kostenlos'}</span></div>
     <div class="acct-bar${pct > 90 ? ' warn' : ''}" role="progressbar" aria-label="Cloud-Speicher" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pct)}"><span style="width:${pct.toFixed(1)}%"></span></div>
-    ${!st.usage.plus ? '<span class="muted small">Mit FaLe Plus hast du 20 GB.</span>' : ''}</div>`;
+    ${!st.usage.plus && showPlus() ? '<span class="muted small">Mit FaLe Plus hast du 20 GB.</span>' : ''}</div>`;
 }
 
 function renderSync(box, E) {

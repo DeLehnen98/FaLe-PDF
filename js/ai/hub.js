@@ -1,4 +1,5 @@
 // KI-Assistent hub (#/ki), FaLe Plus (#/ki/plus) and KI-Einstellungen (#/ki/einstellungen).
+import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, confirmDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { isNative } from '../platform.js';
@@ -17,7 +18,7 @@ export async function mount(screen, { params }) {
     <h2 class="section-title">Was möchtest du tun?</h2>
     <div class="tool-grid ai-grid" role="list"></div>
     <div class="ai-hub-foot">
-      <a class="card action-card ai-plus-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">Mehr KI-Anfragen pro Tag – und FaLe PDF unterstützen</span></span></a>
+      ${showPlus() ? `<a class="card action-card ai-plus-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">Mehr KI-Anfragen pro Tag – und FaLe PDF unterstützen</span></span></a>` : ''}
       <a class="card action-card" href="#/ki/einstellungen" data-ai-settings><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI-Einstellungen</strong><span class="muted small">Cloud-KI an/aus, Einwilligung, Datenschutz</span></span></a>
     </div>
     <p class="ai-disclaimer">${oicon('info')}<span>KI kann Fehler machen. Prüfe wichtige Inhalte, Zahlen und Fristen – die Ergebnisse sind keine Rechts- oder Steuerberatung.</span></p>
@@ -36,8 +37,8 @@ export async function mount(screen, { params }) {
 
 // ---------------------------------------------------------------- FaLe Plus
 export async function mountPlus(screen) {
+  if (!showPlus()) { location.replace('#/ki'); return () => {}; }   // web: no paid offer (see monetize.js)
   const st = statusCard();
-  const native = isNative();
   const wrap = h(`<div class="screen-inner ai-plus">
     <div class="card ai-plus-hero"><span class="ai-hero-ic">${oicon('star')}</span><div><strong>FaLe Plus</strong>
       <p>FaLe PDF bleibt kostenlos – alle Werkzeuge, ohne Wasserzeichen. Plus ist ein freiwilliges Abo für alle, die die Cloud-KI viel nutzen und die Entwicklung unterstützen möchten.</p></div></div>
@@ -55,10 +56,6 @@ export async function mountPlus(screen) {
   const buy = $('[data-buy]', wrap);
   screen.body.appendChild(wrap);
   screen.setFoot([]);
-  if (!native) {
-    buy.innerHTML = `<div class="notice">${oicon('info')}<span>FaLe Plus kann derzeit nur in der <strong>Android-App</strong> über Google Play abgeschlossen werden. In der Web-Version gibt es dafür bald eine Möglichkeit.</span></div>`;
-    return () => st.el._dispose && st.el._dispose();
-  }
   const P = await import('./plus.js');
   const status = await C.aiStatus().catch(() => null);
   if (!status || !status.features || !status.features.plus || !P.plusPurchasableHere()) {
