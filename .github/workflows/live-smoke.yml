@@ -9,7 +9,7 @@ on:
       base:
         description: 'Basis-URL der App'
         required: false
-        default: 'https://fale-pdf.vercel.app'
+        default: 'https://pdf.fale.network'
 
 permissions:
   contents: read
@@ -31,6 +31,6 @@ jobs:
           node-version: '22'
       - name: Run live smoke test
         env:
-          BASE: ${{ inputs.base || 'https://fale-pdf.vercel.app' }}
+          BASE: ${{ inputs.base || 'https://pdf.fale.network' }}
           NODE_OPTIONS: --no-warnings
         run: node scripts/live-smoke.mjs

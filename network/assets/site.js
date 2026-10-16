@@ -13,7 +13,7 @@
    *                 element marked [data-konto-signin] and hides [data-konto-soon].
    */
   var FALE_CONFIG = {
-    kontoUrl: 'https://fale-pdf.vercel.app/#/konto',
+    kontoUrl: 'https://pdf.fale.network/#/konto',
     kontoAvailable: false
   };
   window.FALE_CONFIG = FALE_CONFIG;

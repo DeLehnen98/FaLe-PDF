@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://fale-pdf.vercel.app/info.html</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fale-pdf.vercel.app/info.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fale-pdf.vercel.app/info-en.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fale-pdf.vercel.app/info-en.html"/>
+    <loc>https://pdf.fale.network/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pdf.fale.network/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pdf.fale.network/info-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pdf.fale.network/info-en.html"/>
     <lastmod>2026-10-14</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fale-pdf.vercel.app/info-en.html</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fale-pdf.vercel.app/info.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fale-pdf.vercel.app/info-en.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fale-pdf.vercel.app/info-en.html"/>
+    <loc>https://pdf.fale.network/info-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pdf.fale.network/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pdf.fale.network/info-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pdf.fale.network/info-en.html"/>
     <lastmod>2026-10-14</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fale-pdf.vercel.app/</loc>
+    <loc>https://pdf.fale.network/</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fale-pdf.vercel.app/datenschutz.html</loc>
+    <loc>https://pdf.fale.network/datenschutz.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://fale-pdf.vercel.app/impressum.html</loc>
+    <loc>https://pdf.fale.network/impressum.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.2</priority>
   </url>

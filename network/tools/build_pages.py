@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # BASE (canonical, hreflang, sitemap, JSON-LD) is already final. PDF_ORIGIN feeds every link into the FaLe PDF
 # app – including the FaLe-Konto link in assets/site.js, which main() keeps in sync.
 BASE = 'https://fale.network'
-PDF_ORIGIN = 'https://fale-pdf.vercel.app'       # FLIP → 'https://pdf.fale.network'
+PDF_ORIGIN = 'https://pdf.fale.network'
 PDF_APP = PDF_ORIGIN + '/'
 PDF_INFO = PDF_ORIGIN + '/info.html'
 PDF_INFO_EN = PDF_ORIGIN + '/info-en.html'

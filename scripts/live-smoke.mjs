@@ -1,6 +1,6 @@
 // Live smoke test against the deployed API (default: production). Includes the FaLe One drive config + auth gate. Runs the same round trips as the
 // real client – end-to-end encrypted with js/share/crypto.js – and reports one GitHub annotation per step.
-//   BASE=https://fale-pdf.vercel.app node scripts/live-smoke.mjs
+//   BASE=https://pdf.fale.network node scripts/live-smoke.mjs
 // Never prints device tokens, capability tokens, download tickets or link keys.
 // Node 20+, no dependencies. Exit code 1 if any step fails.
 import { randomBytes as nodeRandom, randomUUID } from 'node:crypto';
@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const C = await import(join(ROOT, 'js/share/crypto.js'));
 
-const BASE = (process.env.BASE || 'https://fale-pdf.vercel.app').replace(/\/+$/, '');
+const BASE = (process.env.BASE || 'https://pdf.fale.network').replace(/\/+$/, '');
 const ORIGIN = process.env.SMOKE_ORIGIN || 'https://fale-pdf.vercel.app';
 const TIMEOUT_MS = 45000;
 const te = new TextEncoder();

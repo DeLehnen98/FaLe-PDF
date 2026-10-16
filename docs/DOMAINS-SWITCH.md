@@ -1,6 +1,6 @@
 # Domain-Umstellung: fale.network · pdf.fale.network · faleone.com
 
-Stand: 16.10.2026. Die Domains sind in Vercel eingetragen, DNS propagiert noch. **Phase 1 (erledigt, dieses
+Stand: 16.10.2026. **Phase 2 (Flip) ist erledigt** – alle drei Domains antworten per HTTPS, die primären URLs zeigen auf die neuen Domains. **Phase 1 (erledigt, dieses
 Dokument)**: alles, was neue Domains *zusätzlich* erlauben muss, ist live-sicher eingebaut. Die primären URLs
 zeigen weiterhin auf `*.vercel.app`. **Phase 2 (Flip)** erst, wenn die neuen Hosts per HTTPS antworten.
 

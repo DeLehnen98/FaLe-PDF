@@ -36,8 +36,8 @@ const PROVIDERS = {
 // Public URLs in ONE place (docs/DOMAINS-SWITCH.md). PRIMARY_* is what the API puts into links/e-mails; the
 // env variables PUBLIC_APP_URL / FALE_ONE_URL override it without a code change.
 //   FLIP → PRIMARY_APP_URL = 'https://pdf.fale.network', PRIMARY_ONE_URL = 'https://faleone.com'
-const PRIMARY_APP_URL = 'https://fale-pdf.vercel.app';
-const PRIMARY_ONE_URL = 'https://fale-one.vercel.app';
+const PRIMARY_APP_URL = 'https://pdf.fale.network';
+const PRIMARY_ONE_URL = 'https://faleone.com';
 // CORS allow-lists: old AND new origins, so nothing breaks before, during or after the domain switch.
 // (www.fale.network and www.faleone.com only redirect, so they never send API requests.)
 const DEFAULT_ORIGINS = ['https://fale-pdf.vercel.app', 'https://pdf.fale.network', 'https://fale.network',

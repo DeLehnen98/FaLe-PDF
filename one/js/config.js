@@ -4,8 +4,8 @@ export const VERSION = '1.0.0';
 // Public origins (docs/DOMAINS-SWITCH.md). The API answers CORS for old and new FaLe One origins alike,
 // and the CSP in one/vercel.json allows both API hosts, so flipping is just these three lines:
 //   FLIP → PDF_ORIGIN = 'https://pdf.fale.network', ONE_ORIGIN = 'https://faleone.com', NETWORK_ORIGIN = 'https://fale.network'
-export const PDF_ORIGIN = 'https://fale-pdf.vercel.app';         // FaLe PDF web app + /api
-export const ONE_ORIGIN = 'https://fale-one.vercel.app';         // this app (used in texts sent to other people)
+export const PDF_ORIGIN = 'https://pdf.fale.network';        // FaLe PDF web app + /api
+export const ONE_ORIGIN = 'https://faleone.com';        // this app (used in texts sent to other people)
 export const NETWORK_ORIGIN = 'https://fale.network'; // FaleNetwork site (privacy policy, imprint)
 export const API_BASE = PDF_ORIGIN;          // /api/drive, /api/account, /api/share (contract §2)
 export const PDF_APP = PDF_ORIGIN + '/';     // "In FaLe PDF öffnen" and share links (§7.9)
