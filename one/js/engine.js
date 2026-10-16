@@ -9,7 +9,7 @@ export const state = {
   albums: new Map(),    // id → album view
   members: new Map(),   // albumId → Set(nodeId)
   jobs: new Map(),      // upload jobs
-  quota: null, backup: null, offline: { pinned: new Set(), ready: new Set(), bytes: 0, loading: new Set() },
+  quota: null, backup: null, em: null, offline: { pinned: new Set(), ready: new Set(), bytes: 0, loading: new Set() },
   lastSync: 0, syncing: false, syncError: null, started: false,
 };
 const subs = new Set();
@@ -82,7 +82,7 @@ export async function start({ userId, mk, deviceId, deviceName }) {
   state.started = true;
   return r;
 }
-export function stop() { if (W) W.terminate(); W = null; state.started = false; state.nodes.clear(); state.albums.clear(); state.members.clear(); state.jobs.clear(); }
+export function stop() { if (W) W.terminate(); W = null; state.started = false; state.em = null; state.nodes.clear(); state.albums.clear(); state.members.clear(); state.jobs.clear(); }
 
 export async function syncNow() {
   if (!state.started) return;
@@ -99,6 +99,12 @@ export async function refreshBackup() {
   try { state.backup = await call('backupList'); notify('backup'); } catch {}
   return state.backup;
 }
+/** Notfallzugang status (owner + "Für andere da"); decrypted scope names and safety codes come from the worker. */
+export async function refreshEm() {
+  try { state.em = await call('emStatus'); notify('em'); } catch (e) { state.emError = e; }
+  return state.em;
+}
+export function setEm(st) { if (st) { state.em = st; notify('em'); } return st; }
 export async function refreshOffline() {
   try { const o = await call('offlineState'); state.offline.pinned = new Set(o.pinned); state.offline.ready = new Set(o.ready); state.offline.bytes = o.bytes; notify('offline'); } catch {}
 }

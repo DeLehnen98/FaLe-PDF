@@ -6,14 +6,14 @@ import * as A from '../auth.js';
 import * as Keys from '../keys.js';
 import * as E from '../engine.js';
 import { VERSION, SUPPORT_MAIL } from '../config.js';
-import { quotaWidget } from '../app.js';
+import { quotaWidget, waitLabel } from '../app.js';
 
 export function mount(main, { setTitle }) {
   setTitle(t('Einstellungen'));
   const wrap = el('div.view.settings');
   main.appendChild(wrap);
   const sec = (id, title, ...body) => el('section.card.set-sec', { aria: { labelledby: 'set-' + id } }, el('h2.set-title', { id: 'set-' + id }, title), ...body);
-  const acct = el('div'), storage = el('div'), backups = el('div'), devices = el('div'), local = el('div');
+  const acct = el('div'), storage = el('div'), backups = el('div'), devices = el('div'), local = el('div'), emBox = el('div');
   wrap.append(
     el('div.view-head', el('h2.view-title', t('Einstellungen'))),
     sec('acct', t('Konto'), acct),
@@ -25,6 +25,7 @@ export function mount(main, { setTitle }) {
       el('div.set-btns',
         el('button.btn.ghost', { type: 'button', onclick: changePassword }, icon('key'), t('Sync-Passwort ändern')),
         el('button.btn.ghost', { type: 'button', onclick: newRecovery }, icon('shield'), t('Wiederherstellungs-Kit neu erstellen')))),
+    sec('notfall', t('Notfallzugang'), emBox),
     sec('local', t('Auf diesem Gerät'), local),
     sec('look', t('Darstellung'), looks()),
     sec('data', t('Deine Daten'),
@@ -88,6 +89,17 @@ export function mount(main, { setTitle }) {
         self ? null : el('button.btn.ghost.sm', { type: 'button', onclick: async () => { if (!(await confirmDialog({ title: t('Gerät abmelden?'), text: t('„{name}“ wird abgemeldet und löscht beim nächsten Start seine Schlüssel.', { name: d.name }), ok: t('Abmelden') }))) return; try { await A.revokeDevice(d.device_id); paintDevices(); } catch (e) { errorToast(e); } } }, t('Abmelden'))));
     }
   }
+  function paintEm() {
+    const st = E.state.em;
+    const own = st && st.own;
+    const active = own ? own.contacts.filter(c => c.status === 'active').length : 0;
+    clear(emBox).append(
+      el('p.muted', own ? (active && active >= own.setup.threshold ? t('Aktiv · {n} · {w} Wartezeit', { n: tp(active, '{n} Person', '{n} Personen'), w: waitLabel(own.setup.waitHours) }) : t('Fast fertig – eine Vertrauensperson muss noch bestätigt werden.'))
+        : t('Vertrauenspersonen können im Notfall Zugang zu dem anfragen, was du freigibst. Du kannst jede Anfrage ablehnen.')),
+      el('div.set-btns',
+        el('a.btn.ghost', { href: own ? '#/notfall' : '#/notfall/einrichten' }, icon('shield'), own ? t('Verwalten') : t('Einrichten')),
+        el('a.btn.ghost', { href: '#/notfall/fuer-andere' }, icon('user'), t('Für andere da'))));
+  }
   function paintLocal() {
     clear(local).append(
       el('div.kv-row', icon('offline'), el('div', el('span', t('Offline-Kopien: {size}', { size: fmtSize(E.state.offline.bytes) })), el('a.link-btn', { href: '#/drive/offline' }, t('Verwalten')))),
@@ -119,7 +131,8 @@ export function mount(main, { setTitle }) {
         el('li', t('Anzahl und Größe der verschlüsselten Daten, Zeitpunkte von Änderungen')),
         el('li', t('Zufällige IDs, die Ordnerstruktur als IDs (ohne Namen) und welche IDs in welchem Album sind')),
         el('li', t('Ob zwei deiner Dateien gleich sind (verschlüsselter Fingerabdruck, nur innerhalb deines Kontos)')),
-        el('li', t('Wann deine Geräte zuletzt gesichert haben'))),
+        el('li', t('Wann deine Geräte zuletzt gesichert haben')),
+        el('li', t('Notfallzugang: die E-Mail-Adressen deiner Vertrauenspersonen, welche IDs abgedeckt sind und das Protokoll (wer wann angefragt, geöffnet oder heruntergeladen hat)'))),
       el('h3.set-sub', t('Was der Server nicht sieht')),
       el('ul.plain',
         el('li', t('Dateinamen, Ordnernamen, Albumnamen, Dateitypen und echte Größen')),
@@ -192,9 +205,9 @@ export function mount(main, { setTitle }) {
     try { await A.deleteAccount(); E.stop(); } catch (e) { errorToast(e); }
   }
 
-  paintAcct(); paintStorage(); paintBackups(); paintDevices(); paintLocal();
+  paintAcct(); paintStorage(); paintBackups(); paintDevices(); paintLocal(); paintEm();
   E.refreshQuota(); E.refreshBackup(); E.refreshOffline();
   return {
-    update(w) { if (w.has('quota')) paintStorage(); if (w.has('backup')) paintBackups(); if (w.has('offline')) paintLocal(); },
+    update(w) { if (w.has('quota')) paintStorage(); if (w.has('backup')) paintBackups(); if (w.has('offline')) paintLocal(); if (w.has('em')) paintEm(); },
   };
 }

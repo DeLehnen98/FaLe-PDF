@@ -1,4 +1,4 @@
-// Live smoke test against the deployed API (default: production). Runs the same round trips as the
+// Live smoke test against the deployed API (default: production). Includes the FaLe One drive config + auth gate. Runs the same round trips as the
 // real client – end-to-end encrypted with js/share/crypto.js – and reports one GitHub annotation per step.
 //   BASE=https://fale-pdf.vercel.app node scripts/live-smoke.mjs
 // Never prints device tokens, capability tokens, download tickets or link keys.
@@ -303,6 +303,27 @@ await step('account', async () => {
   must(j.supabaseUrl === null && j.supabaseKey === null, 'disabled but config exposes supabase settings');
   must(me.status === 503 && meErr === 'account_not_configured', `account/me while disabled: expected 503 account_not_configured, got ${me.status} ${meErr}`, me.text.slice(0, 300));
   return `DISABLED as expected (ACCOUNTS_ENABLED not set): configured=false, features=${JSON.stringify(j.features)}; me → 503 account_not_configured`;
+});
+
+// ---------------- FALE ONE: drive config (public), auth required for everything else, CORS for the FaLe One app
+await step('drive', async () => {
+  const r = await http('/api/drive?a=config', { json: {} });
+  must(r.status === 200 && r.json && r.json.ok === true, `drive/config → HTTP ${r.status}`, (r.text || '').slice(0, 400));
+  const j = r.json;
+  const q = await http('/api/drive?a=quota', { json: {} });
+  const em = await http('/api/drive?a=em.status', { json: {} });
+  const err = x => (x.json ? x.json.error : (x.text || '').slice(0, 80));
+  const pre = await fetch(BASE + '/api/drive?a=quota', { method: 'OPTIONS', headers: { Origin: 'https://fale-one.vercel.app', 'Access-Control-Request-Method': 'POST', 'Access-Control-Request-Headers': 'authorization,content-type' }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+  const cors = pre.headers.get('access-control-allow-origin');
+  must(cors === 'https://fale-one.vercel.app', `CORS preflight from fale-one.vercel.app: allow-origin=${cors}, HTTP ${pre.status}`);
+  if (j.configured) {
+    must(Number.isInteger(j.chunkSize) && j.chunkSize >= 65536 && ['pg', 's3'].includes(j.backend), 'config: bad chunkSize/backend', JSON.stringify(j));
+    must(q.status === 401 && err(q) === 'invalid_account', `drive/quota without token: expected 401 invalid_account, got ${q.status} ${err(q)}`, (q.text || '').slice(0, 300));
+    must(em.status === 401, `drive/em.status without token: expected 401, got ${em.status} ${err(em)}`, (em.text || '').slice(0, 300));
+    return `ENABLED: configured=true, backend=${j.backend}, chunk=${j.chunkSize}, direct=${j.direct}, emergency=${j.emergency}, notify=${j.notify}; quota/em.status without token → 401; CORS for fale-one.vercel.app ok`;
+  }
+  must(q.status === 503 && err(q) === 'drive_not_configured', `drive/quota while disabled: expected 503 drive_not_configured, got ${q.status} ${err(q)}`, (q.text || '').slice(0, 300));
+  return `DISABLED (ONE_ENABLED / ACCOUNTS_ENABLED not both set or migration missing): configured=false; quota → 503 drive_not_configured; CORS ok`;
 });
 
 // ---------------------------------------------------------------- cleanup leftovers after failures

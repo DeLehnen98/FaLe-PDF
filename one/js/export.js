@@ -174,7 +174,9 @@ export async function exportAll({ rootNode = null } = {}) {
         exportedAt: new Date().toISOString(), app: 'FaLe One', format: 'fale-one-export-v1', account: user ? user.email : null,
         nodes: list.nodes.filter(n => !n.err && (opts.trash || !n.trashed)).map(n => ({ id: n.id, path: pathOf(n), kind: n.kind, trashed: n.trashed || undefined, versions: n.kind === 'folder' ? undefined : (n.versions || []).filter(v => !v.err && (opts.versions || v.head)).map(v => ({ id: v.id, current: v.head, size: v.size, mime: v.mime, mtime: v.mtime, digest: v.digest })) })),
         albums,
+        emergency: list.emergency || undefined, // Notfallzugang: contacts, waiting period, covered items, full log
       };
+      if (list.emergency) entries.push({ path: t('Notfallzugang') + '.json', size: 0, key: 'emergency', get: async () => new Blob([JSON.stringify(list.emergency, null, 2)], { type: 'application/json' }) });
       entries.push({ path: 'manifest.json', size: 0, key: 'manifest', get: async () => new Blob([JSON.stringify(manifest, null, 2)], { type: 'application/json' }) });
       for (const a of albums) entries.push({ path: `${t('Alben')}/${safe(a.name)}.txt`, size: 0, key: 'album:' + a.name, get: async () => new Blob([a.items.join('\r\n') + '\r\n'], { type: 'text/plain' }) });
     }
@@ -197,3 +199,4 @@ export async function exportAll({ rootNode = null } = {}) {
   }
 }
 export function exportFolder(node) { return exportAll({ rootNode: node }); }
+export { writeTo };

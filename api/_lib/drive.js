@@ -24,6 +24,8 @@ const A = require('./supa-auth');
 const { getDriveStore } = require('./drivestore');
 const { getShareStore } = require('./sharestore');
 const B = require('./blobstore');
+const { makeEmergency, ownOut: emOwnOut } = require('./emergency');
+const { notifyConfig } = require('./notify');
 
 const env = k => String(process.env[k] == null ? '' : process.env[k]).trim();
 const num = (k, def, min, max) => { const v = parseFloat(env(k).replace(',', '.')); return Number.isFinite(v) ? Math.min(max, Math.max(min, v)) : def; };
@@ -42,6 +44,12 @@ function driveConfig() {
     ipUploadDailyBytes: Math.round(num('ONE_IP_UPLOAD_DAILY_MB', 40960, 1, 1e8) * MiB),
     downloadDailyBytes: Math.round(num('ONE_DOWNLOAD_DAILY_MB', 51200, 1, 1e8) * MiB),
     ipDownloadDailyBytes: Math.round(num('ONE_IP_DOWNLOAD_DAILY_MB', 102400, 1, 1e8) * MiB),
+    emDaily: Math.round(num('ONE_EM_DAILY', 2000, 1, 1e7)),                     // Notfallzugang JSON actions per account
+    emIpDaily: Math.round(num('ONE_EM_IP_DAILY', 4000, 1, 1e7)),
+    emInviteDaily: Math.round(num('ONE_EM_INVITE_DAILY', 10, 1, 1e5)),          // invitations (they may send e-mail)
+    emInviteIpDaily: Math.round(num('ONE_EM_INVITE_IP_DAILY', 30, 1, 1e5)),
+    emRequestDaily: Math.round(num('ONE_EM_REQUEST_DAILY', 20, 1, 1e5)),        // access requests
+    emRequestIpDaily: Math.round(num('ONE_EM_REQUEST_IP_DAILY', 60, 1, 1e5)),
     maxBody: 262144,
     cronSecret: env('CRON_SECRET'),
   };
@@ -178,6 +186,7 @@ function makeDriveCore(overrides = {}) {
     makeBlobstore: (store) => B.makeBlobstore(store, { fetchImpl: deps.fetchImpl }),
     ...overrides,
   };
+  const em = makeEmergency({ fetchImpl: (...a) => deps.fetchImpl(...a) });
 
   const configured = (cfg, dc) => !!(dc.enabled && C.accountConfigured(cfg) && C.secretsConfigured(cfg)
     && cfg.supabaseUrl && cfg.supabaseKey && cfg.rpcSecret && cfg.rpcSecret.length >= 32);
@@ -224,7 +233,7 @@ function makeDriveCore(overrides = {}) {
       const on = configured(cfg, dc);
       const bc = B.blobConfig();
       H.sendJson(res, 200, { ok: true, configured: on, chunkSize: dc.chunkSize, backend: bc.kind, direct: on && bc.kind === 's3',
-        maxThumbBatch: 100, maxChangesPage: 1000, version: 1 });
+        maxThumbBatch: 100, maxChangesPage: 1000, version: 1, emergency: on, notify: on && notifyConfig().kind !== 'none' });
       return;
     }
     if (a === 'gc') { // cron worker for the S3 garbage queue (Vercel Cron sends Authorization: Bearer $CRON_SECRET)
@@ -235,7 +244,8 @@ function makeDriveCore(overrides = {}) {
       }
       const store = deps.getDriveStore(cfg);
       const out = await runGc(cfg, { store, blobs: B.blobConfig().kind === 's3' ? deps.makeBlobstore(store) : null, budgetMs: 40000 });
-      H.sendJson(res, 200, { ok: true, ...out });
+      const mails = await em.flush(store);
+      H.sendJson(res, 200, { ok: true, ...out, mails: mails.sent });
       return;
     }
     requireEnabled(cfg, dc);
@@ -288,10 +298,25 @@ function makeDriveCore(overrides = {}) {
       return;
     }
 
+    if (a === 'em.get') { // Notfallzugang: chunk of a covered file (released contacts only, checked in SQL)
+      const setupId = needUuid(String(q.s || ''), 'Notfall-ID'), blob = needUuid(String(q.b || ''), 'Datei-ID'), idx = Number(q.i);
+      if (!intIn(idx, 0, 199999)) throw bad();
+      const user = await userOf(req, null, cfg);
+      await limit(cfg, req, user, 'one_dl', [dc.dailyChunks, dc.ipDailyChunks], dc.chunkSize, [dc.downloadDailyBytes, dc.ipDownloadDailyBytes]);
+      sendBytes(res, await em.getChunk({ store, user, setupId, blob, idx, blobs }));
+      return;
+    }
+
     const body = await H.readJson(req, dc.maxBody);
     const user = await userOf(req, body, cfg);
     const u = user.id;
     const reqLimit = () => limit(cfg, req, user, 'one_req', [dc.dailyRequests, dc.ipDailyRequests]);
+    if (a.startsWith('em.')) {
+      const out = await em.json(a, { store, user, body, dc, blobs, presignTtl: B.blobConfig().presignTtl,
+        limit: (kind, n, bytes = 0, b = [1, 1]) => limit(cfg, req, user, kind, n, bytes, b) });
+      H.sendJson(res, 200, { ok: true, ...out });
+      return;
+    }
 
     switch (a) {
       case 'quota': {
@@ -514,8 +539,11 @@ function makeDriveCore(overrides = {}) {
         await reqLimit();
         const lim = body.limit == null ? 200 : body.limit;
         if (!intIn(lim, 1, 500)) throw bad();
-        const r = ok(await store.exportPage({ user: u, after: uuidOrNull(body.after, 'Position'), limit: lim }));
-        H.sendJson(res, 200, { ok: true, version: 1, nodes: (r.nodes || []).map(nodeOut), albums: r.albums ? r.albums.map(albumOut) : null, next: r.next || null });
+        const after = uuidOrNull(body.after, 'Position');
+        const r = ok(await store.exportPage({ user: u, after, limit: lim }));
+        let emergency; // first page: the Notfallzugang setup (contacts, wait, covered ids, log) – null when none
+        if (!after) { try { const e = await store.emExport({ user: u }); emergency = e && e.ok && e.emergency ? { ...emOwnOut(e.emergency), covered: e.emergency.covered } : null; } catch (e) { if (!(e && e.status === 404)) throw e; emergency = null; } }
+        H.sendJson(res, 200, { ok: true, version: 1, nodes: (r.nodes || []).map(nodeOut), albums: r.albums ? r.albums.map(albumOut) : null, next: r.next || null, emergency });
         return;
       }
       default:

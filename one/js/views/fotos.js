@@ -5,7 +5,7 @@ import * as E from '../engine.js';
 import { createGrid, groupByDay } from './grid.js';
 import { thumbEl, displayName, trashNodes, downloadNode, sizeOf, openNode } from './common.js';
 import { backupPhotos, openSheet } from './uploads.js';
-import { quotaWidget, statusText } from '../app.js';
+import { quotaWidget, statusText, emHomeCard } from '../app.js';
 
 const zoomKey = 'fale-one-zoom';
 const getZoom = () => { try { const z = +localStorage.getItem(zoomKey); return z >= 0 && z <= 2 ? z : 1; } catch { return 1; } };
@@ -50,7 +50,7 @@ async function timelineView(main, setTitle, { albumId = null, favorites = false 
   const head = el('div.view-head');
   wrap.append(head);
   const sc = !albumId && !favorites ? statusCard() : null;
-  if (sc) wrap.append(sc.node);
+  if (sc) wrap.append(sc.node, emHomeCard());
   wrap.append(subNav(albumId ? 'alben' : favorites ? 'favoriten' : ''));
   let zoom = getZoom();
   const empty = el('div.empty', { hidden: true });

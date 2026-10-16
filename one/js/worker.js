@@ -192,6 +192,7 @@ async function sync() {
       if (!r.more) break;
     }
     pinsAfterSync().catch(() => {});
+    emAfterSync().catch(() => {});
     return { cursor, nodes: index.size };
   })().finally(() => { syncP = null; });
   return syncP;
@@ -774,15 +775,17 @@ async function albumItems({ id, add = [], remove = [] }) {
 let exportCache = null;
 async function exportList() {
   const nodes = [];
-  let albumsOut = null, after = null;
+  let albumsOut = null, after = null, emergencyOut;
   for (let guard = 0; guard < 100000; guard++) {
     const r = await S.api.exportPage(after, 200);
     nodes.push(...r.nodes);
     if (r.albums) albumsOut = r.albums;
+    if (r.emergency !== undefined && !after) emergencyOut = r.emergency;
     if (!r.next) break;
     after = r.next;
   }
   exportCache = new Map(nodes.map(n => [n.id, n]));
+  if (emergencyOut === undefined) emergencyOut = null;
   const out = await pmap(nodes, 8, async n => {
     const dec = await decNode(n);
     const versionsOut = await pmap(n.revisions || [], 4, async v => {
@@ -792,7 +795,7 @@ async function exportList() {
     return { id: n.id, parent: n.parent, kind: n.kind, trashed: !!n.trashedAt, name: dec.meta.name || '', meta: dec.meta, err: dec.err, versions: versionsOut };
   });
   const al = await pmap(albumsOut || [], 4, async a => { const d = await decAlbum(a); return { id: a.id, name: d.meta.name || '', items: a.items || [] }; });
-  return { nodes: out, albums: al };
+  return { nodes: out, albums: al, emergency: emergencyOut ? emExportView(emergencyOut) : null };
 }
 async function exportFile({ id, revId }) {
   const n = (exportCache && exportCache.get(id)) || (index.get(id) && index.get(id).raw);
@@ -850,13 +853,177 @@ async function shareLink({ id, expiresIn = 86400, maxDownloads = 5, password = '
   return { id: created.id, key: SC.b64u.enc(L), expiresAt: (fin.object && fin.object.expiresAt) || created.expiresAt, maxDownloads: created.maxDownloads, password: !!kdf };
 }
 
+// ---------------------------------------------------------------- Notfallzugang (contract §12)
+// Owner: setup, contacts, safety codes, re-sealing, and keeping the EK-wrapped key set equal to the covered items
+// (after every sync, but only when the local set changed – a digest is remembered on this device).
+// Contact: accept, request, then unlock (package + Shamir pooling) and browse the covered items read-only.
+let emMe = null, emOwn, emOpened = new Map(); // emOwn: undefined = not known yet, null = no setup
+async function emIdentity() { if (!emMe) emMe = await S.api.emIdentityEnsure({ mk: S.mk, userId: S.userId }); return emMe; }
+async function emIdentityIfAny() {
+  if (emMe) return emMe;
+  const r = await S.api.emIdentity();
+  if (!r.key) return null;
+  return emIdentity();
+}
+const sasOf = o => K.safetyCode(o).then(c => ({ emoji: c.emoji, digits: c.digits }));
+async function emStatus() {
+  const r = await S.api.emStatus();
+  emOwn = r.own;
+  const out = { notify: !!r.notify, now: r.now, own: null, others: [] };
+  if (r.own) {
+    let scope = null;
+    try { scope = await S.api.emScope(S.keys, r.own); } catch { scope = null; }
+    const contacts = await pmap(r.own.contacts, 3, async c => ({ ...c, publicJwk: undefined,
+      sas: c.kid && c.contactId ? await sasOf({ setupId: r.own.setup.id, ownerId: S.userId, ownerKid: r.own.setup.ownerKid, contactId: c.contactId, contactKid: c.kid }) : null }));
+    const rootNames = scope ? (scope.roots || []).map(id => { const x = index.get(id); return x ? { id, name: x.dec.meta.name || '', kind: x.raw.kind, trashed: !!x.raw.trashedAt } : { id, name: '', missing: true }; }) : [];
+    const albumNames = scope ? (scope.albums || []).map(id => { const x = albums.get(id); return { id, name: x ? x.dec.meta.name || '' : '', missing: !x }; }) : [];
+    const nameOf = id => { const x = index.get(id); return x ? x.dec.meta.name || '' : ''; };
+    const log = r.own.log.map(l => ({ ...l, name: l.detail && l.detail.node ? nameOf(l.detail.node) : undefined }));
+    out.own = { setup: { ...r.own.setup, ownerKey: undefined, scope: undefined }, scope, rootNames, albumNames, contacts, request: r.own.request, lastClosed: r.own.lastClosed, log };
+  }
+  const me = r.others.some(x => x.status !== 'invited') ? await emIdentityIfAny().catch(() => null) : null;
+  out.others = await pmap(r.others, 3, async x => ({ ...x,
+    sas: me && x.status !== 'invited' ? await sasOf({ setupId: x.setupId, ownerId: x.ownerId, ownerKid: x.ownerKid, contactId: S.userId, contactKid: me.kid }) : null,
+    keyChanged: !!(me && x.kid && x.kid !== me.kid) }));
+  return out;
+}
+const CHECKLIST = ['contracts', 'powers', 'bank', 'health', 'contacts', 'wishes'];
+async function emSetup({ waitHours, mode = 'items', roots = [], albumIds = [], checklist = null, note = '', emails = [], threshold = 1 }) {
+  const me = await emIdentity();
+  roots = roots.slice();
+  if (checklist) { // the guided "Notfallordner": one folder + the checklist sub-folders (names in the user's language)
+    const root = await mkdir({ parentId: null, name: checklist.name, extra: { role: 'emergency' } });
+    for (const k of CHECKLIST) if (checklist.items && checklist.items[k]) await mkdir({ parentId: root.id, name: checklist.items[k], extra: { role: 'emergency-' + k } });
+    roots.unshift(root.id);
+  }
+  const scope = { v: 1, mode: mode === 'all' ? 'all' : 'items', roots: mode === 'all' ? [] : roots, albums: mode === 'all' ? [] : albumIds, note: note || undefined };
+  const cr = await S.api.emCreate({ keys: S.keys, ownerKid: me.kid, waitHours, scope, threshold: Math.min(Math.max(1, threshold | 0), 3) });
+  emOwn = cr.own;
+  try { await emReconcile({ ek: cr.ek, force: true }); } finally { cr.ek.fill(0); }
+  const failed = [];
+  for (const e of emails) { try { await S.api.emInvite(cr.setupId, e); } catch (err) { failed.push({ email: e, code: err.code }); } }
+  return { setupId: cr.setupId, failed, status: await emStatus() };
+}
+function emWanted(scope) {
+  const nodes = [], albs = [];
+  if (!scope) return { nodes, albums: albs };
+  const live = x => x && !x.raw.trashedAt && !x.raw.deleted && x.raw.key;
+  if (scope.mode === 'all') {
+    for (const x of index.values()) if (live(x)) nodes.push({ id: x.raw.id, key: x.raw.key });
+    for (const a of albums.values()) if (a.raw.key) albs.push({ id: a.raw.id, key: a.raw.key });
+    return { nodes, albums: albs };
+  }
+  const kids = new Map();
+  for (const x of index.values()) { const p = x.raw.parent || null; if (!kids.has(p)) kids.set(p, []); kids.get(p).push(x); }
+  const seen = new Set();
+  const walk = x => { if (!live(x) || seen.has(x.raw.id)) return; seen.add(x.raw.id); nodes.push({ id: x.raw.id, key: x.raw.key }); for (const c of kids.get(x.raw.id) || []) walk(c); };
+  for (const id of scope.roots || []) walk(index.get(id));
+  for (const id of scope.albums || []) {
+    const a = albums.get(id);
+    if (!a || !a.raw.key) continue;
+    albs.push({ id, key: a.raw.key });
+    for (const n of members.get(id) || []) { const x = index.get(n); if (live(x) && !seen.has(n)) { seen.add(n); nodes.push({ id: n, key: x.raw.key }); } }
+  }
+  return { nodes, albums: albs };
+}
+let emRecP = null;
+async function emReconcile({ ek = null, force = false } = {}) {
+  if (!emOwn) return { added: 0, removed: 0 };
+  if (emRecP) return emRecP;
+  emRecP = (async () => {
+    const own = emOwn;
+    const scope = await S.api.emScope(S.keys, own, ek);
+    const w = emWanted(scope);
+    const lines = [...w.nodes.map(n => 'node:' + n.id), ...w.albums.map(a => 'album:' + a.id)].sort().join('\n');
+    const local = K.hex(new Uint8Array(await crypto.subtle.digest('SHA-256', te.encode(own.setup.id + '|' + lines))));
+    const last = await kv.get('emDigest', null).catch(() => null);
+    if (!force && last === local) return { added: 0, removed: 0, skipped: true };
+    const r = await S.api.emSyncKeys({ keys: S.keys, own, ek, nodes: w.nodes, albums: w.albums });
+    await kv.set('emDigest', local).catch(() => {});
+    return r;
+  })().finally(() => { emRecP = null; });
+  return emRecP;
+}
+async function emAfterSync() {
+  if (emOwn === undefined) { const r = await S.api.emStatus().catch(() => null); if (!r) return; emOwn = r.own; }
+  if (emOwn) await emReconcile();
+}
+async function emOwnFresh() { const r = await S.api.emStatus(); emOwn = r.own; if (!emOwn) throw Object.assign(new Error('no setup'), { code: 'not_found' }); return emOwn; }
+async function emUpdate({ waitHours, mode, roots, albumIds, note, threshold }) {
+  const own = await emOwnFresh();
+  const cur = await S.api.emScope(S.keys, own);
+  const scope = mode === undefined ? undefined : { ...cur, v: 1, mode: mode === 'all' ? 'all' : 'items', roots: mode === 'all' ? [] : roots, albums: mode === 'all' ? [] : albumIds, note: note === undefined ? cur.note : (note || undefined) };
+  emOwn = await S.api.emUpdate({ keys: S.keys, own, waitHours, scope, threshold });
+  if (scope) await emReconcile({ force: true });
+  return emStatus();
+}
+async function emReseal({ threshold, confirm = [] }) {
+  const own = await emOwnFresh();
+  emOwn = await S.api.emReseal({ keys: S.keys, own, threshold: threshold || own.setup.threshold, confirm });
+  return emStatus();
+}
+async function emOpen({ setupId }) {
+  const me = await emIdentity();
+  const u = await S.api.emUnlock({ setupId, userId: S.userId, privateKey: me.privateKey });
+  if (!u.ek) return { waiting: u.waiting };
+  const L = await S.api.emLoad({ setupId, ek: u.ek });
+  const nodes = new Map(L.nodes.map(n => [n.raw.id, n]));
+  emOpened.set(setupId, { ek: u.ek, ownerId: u.ownerId, nodes, albums: L.albums, scope: L.scope });
+  const view = n => {
+    const b = p => !!(n.raw.head && n.raw.head.blobs.some(x => x.purpose === p));
+    return { t: 'node', id: n.raw.id, parent: n.raw.parent && nodes.has(n.raw.parent) ? n.raw.parent : null, kind: n.raw.kind, name: (n.meta && n.meta.name) || '', meta: n.meta || {}, rev: n.rev, err: n.err,
+      createdAt: n.raw.createdAt, updatedAt: n.raw.updatedAt, head: n.raw.head ? { id: n.raw.head.id, size: n.raw.head.size, thumb: b('thumb'), preview: b('preview') } : null };
+  };
+  return { nodes: [...nodes.values()].map(view), albums: L.albums.map(a => ({ id: a.raw.id, name: (a.meta && a.meta.name) || '', items: a.items })), note: L.scope && L.scope.note || '', mode: L.scope && L.scope.mode };
+}
+function emNode(setupId, id) {
+  const o = emOpened.get(setupId);
+  const n = o && o.nodes.get(id);
+  if (!n || !n.nodeKey) throw Object.assign(new Error('not found'), { code: 'not_found', status: 404 });
+  return { o, n };
+}
+async function emDownload({ setupId, id, purpose = 'content', progressId = null }) {
+  const { o, n } = emNode(setupId, id);
+  let last = 0;
+  const onProgress = progressId ? ({ done, total }) => { const now = Date.now(); if (now - last > 120 || done === total) { last = now; emit('progress', { id: progressId, f: done / total }); } } : null;
+  const bytes = await S.api.emDownload({ setupId, ownerId: o.ownerId, node: n.raw, nodeKey: n.nodeKey, purpose, onProgress });
+  const type = purpose === 'content' ? mimeOf(n.meta.name || '', n.rev && n.rev.mime) : ((n.rev && n.rev[purpose] && n.rev[purpose].mime) || 'image/jpeg');
+  return new Blob([bytes], { type });
+}
+async function emThumbs({ setupId, ids }) {
+  const o = emOpened.get(setupId);
+  const out = {};
+  if (!o) return out;
+  const want = ids.map(id => o.nodes.get(id)).filter(n => n && n.nodeKey && n.raw.head && n.raw.head.blobs.some(b => b.purpose === 'thumb'));
+  for (let i = 0; i < want.length; i += 100) {
+    const part = want.slice(i, i + 100);
+    const r = await S.api.emThumbs(setupId, part.map(n => n.raw.head.blobs.find(b => b.purpose === 'thumb').id));
+    for (const n of part) {
+      const b = n.raw.head.blobs.find(x => x.purpose === 'thumb');
+      if (!r.thumbs[b.id]) continue;
+      try {
+        const ctx = { userId: o.ownerId, nodeId: n.raw.id, revId: n.raw.head.id, blobId: b.id, purpose: 'thumb' };
+        const fk = await K.openFileKey(n.nodeKey, ctx, n.raw.head.key);
+        out[n.raw.id] = new Blob([await K.openSmall(fk, ctx, K.unb64u(r.thumbs[b.id]))], { type: (n.rev && n.rev.thumb && n.rev.thumb.mime) || 'image/jpeg' });
+      } catch {}
+    }
+  }
+  return out;
+}
+function emExportView(e) {
+  const nameOf = id => { const x = index.get(id); return x ? x.dec.meta.name || '' : ''; };
+  return { waitHours: e.setup.waitHours, threshold: e.setup.threshold, createdAt: e.setup.createdAt,
+    contacts: e.contacts.map(c => ({ email: c.email, status: c.status, invitedAt: c.invitedAt, acceptedAt: c.acceptedAt, confirmedAt: c.confirmedAt })),
+    covered: (e.covered && e.covered.nodes || []).map(id => ({ id, name: nameOf(id) })), log: e.log.map(l => ({ at: l.at, event: l.event, slot: l.slot, node: l.detail && l.detail.node ? nameOf(l.detail.node) || l.detail.node : undefined })) };
+}
+
 // ---------------------------------------------------------------- ops
 const OPS = {
   async init({ userId, mk, apiBase, deviceId, deviceName }) {
     const keys = await K.deriveKeys(mk, userId);
     const lk = await crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-256', salt: te.encode('fale-one-local|' + userId), info: te.encode('fale-one-local-v1') }, mk, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
     const api = createClient({ baseUrl: apiBase, getToken: async ({ refresh }) => { const tok = await ask('token', { refresh }); if (!tok) throw Object.assign(new Error('signed out'), { code: 'signed_out', status: 401 }); return tok; }, retries: 2, retryDelayMs: 500 });
-    S = { userId, deviceId, deviceName, keys, lk, api, apiBase, chunkSize: 1048576, limits: null };
+    S = { userId, deviceId, deviceName, keys, lk, api, apiBase, mk, chunkSize: 1048576, limits: null };
     const had = await loadSnapshot();
     const cfgChunk = await kv.get('chunkSize', null).catch(() => null);
     if (cfgChunk) S.chunkSize = cfgChunk;
@@ -925,5 +1092,18 @@ const OPS = {
   async albumDelete({ id }) { await S.api.albumDelete(id); albums.delete(id); members.delete(id); emit('delta', { nodes: [], removed: [], albums: [], albumsRemoved: [id], members: {} }); schedulePersist(); return true; },
   exportList, exportFile,
   shareLink,
+  // Notfallzugang
+  emStatus, emSetup, emUpdate, emReseal, emOpen, emDownload, emThumbs,
+  async emInvite({ email }) { const own = await emOwnFresh(); const r = await S.api.emInvite(own.setup.id, email); return { mailed: r.mailed, status: await emStatus() }; },
+  async emRemove({ slot }) { const own = await emOwnFresh(); await S.api.emRemove(own.setup.id, slot); return emStatus(); },
+  async emDeny() { const own = await emOwnFresh(); await S.api.emDeny(own.setup.id); return emStatus(); },
+  async emRevoke() { const own = await emOwnFresh(); await S.api.emRevoke(own.setup.id); return emStatus(); },
+  async emEnd() { await S.api.emDelete(); emOwn = null; await kv.del('emDigest').catch(() => {}); return emStatus(); },
+  async emLog() { const r = await S.api.emLog(null, 200); const nameOf = id => { const x = index.get(id); return x ? x.dec.meta.name || '' : ''; }; return r.log.map(l => ({ ...l, name: l.detail && l.detail.node ? nameOf(l.detail.node) : undefined })); },
+  async emAccept({ setupId }) { await emIdentity(); await S.api.emAccept(setupId); return emStatus(); },
+  async emLeave({ setupId }) { await S.api.emLeave(setupId); emOpened.delete(setupId); return emStatus(); },
+  async emRequest({ setupId }) { const r = await S.api.emRequest(setupId); return { mailed: r.mailed, status: await emStatus() }; },
+  async emClose({ setupId }) { const o = emOpened.get(setupId); if (o) o.ek.fill(0); emOpened.delete(setupId); return true; },
+  async emReconcile() { emOwn = undefined; await emAfterSync(); return true; },
   async flush() { await persist(); return true; },
 };

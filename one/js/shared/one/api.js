@@ -79,6 +79,32 @@ export function createClient({ baseUrl = '', getToken, fetchImpl, retries = 3, r
     backupForget: (deviceId) => call('backup.forget', { deviceId }),
     dedupe: (hashes) => call('dedupe', { hashes }),
     exportPage: (after = null, limit = 200) => call('export', { after, limit }),
+    // Notfallzugang (§12) – owner
+    emIdentity: () => call('em.identity', {}),
+    emIdentityPut: (o) => call('em.identity.put', o),
+    emStatus: () => call('em.status', {}),
+    emSetup: (o) => call('em.setup', o),
+    emDelete: () => call('em.delete', { confirm: true }),
+    emInvite: (setupId, email) => call('em.invite', { setupId, email }),
+    emRemove: (setupId, slot) => call('em.remove', { setupId, slot }),
+    emSealPackages: (o) => call('em.seal', o),
+    emDeny: (setupId) => call('em.deny', { setupId }),
+    emRevoke: (setupId) => call('em.revoke', { setupId }),
+    emLog: (before = null, limit = 100) => call('em.log', { before: before || undefined, limit }),
+    emKeysDigest: (setupId) => call('em.keys.digest', { setupId }),
+    emKeysList: (setupId, after = null, limit = 5000) => call('em.keys.list', { setupId, after: after || undefined, limit }),
+    emKeysPut: (setupId, items) => call('em.keys.put', { setupId, items }),
+    emKeysDel: (setupId, items) => call('em.keys.del', { setupId, items }),
+    // Notfallzugang – trusted contact
+    emAccept: (setupId) => call('em.accept', { setupId }),
+    emLeave: (setupId) => call('em.leave', { setupId }),
+    emRequest: (setupId) => call('em.request', { setupId }),
+    emPackage: (setupId) => call('em.package', { setupId }),
+    emPool: (setupId, items) => call('em.pool', { setupId, items }),
+    emItems: (setupId, after = null, limit = 500) => call('em.items', { setupId, after: after || undefined, limit }),
+    emThumbs: (setupId, ids) => call('em.thumbs', { setupId, ids }),
+    emDownloadUrls: (setupId, blobId, from = 0, count = 100) => call('em.download.urls', { setupId, blobId, from, count }),
+    emGetChunk: (setupId, blobId, i) => send('em.get', { query: `&s=${setupId}&b=${blobId}&i=${i}`, binary: true }),
 
     // ------------------------------------------------------------ high level
     /**
@@ -191,12 +217,18 @@ export function createClient({ baseUrl = '', getToken, fetchImpl, retries = 3, r
 
     /** Download + decrypt a blob of a revision (default: the current content). → Uint8Array */
     async downloadFile({ keys, node, revision, purpose = 'content', concurrency = 4, onProgress, verify = true }) {
+      const nodeKey = await K.openNodeKey(keys, node.id, node.key);
+      return api.readBlob({ userId: keys.userId, node, nodeKey, revision, purpose, concurrency, onProgress, verify,
+        getChunk: (blobId, i) => api.getChunk(blobId, i), getUrls: (blobId, from, count) => api.downloadUrls(blobId, from, count) });
+    },
+
+    /** Decrypt a blob with an already opened node key (own or Notfallzugang). getChunk / getUrls fetch ciphertext. */
+    async readBlob({ userId, node, nodeKey, revision, purpose = 'content', concurrency = 4, onProgress, verify = true, getChunk, getUrls }) {
       const rev = revision || node.head;
       if (!rev) throw new OneError(404, 'not_found', 'keine Version');
       const blob = rev.blobs.find(b => b.purpose === purpose);
       if (!blob) throw new OneError(404, 'not_found', 'kein ' + purpose);
-      const nodeKey = await K.openNodeKey(keys, node.id, node.key);
-      const ctx = { userId: keys.userId, nodeId: node.id, revId: rev.id, blobId: blob.id, purpose };
+      const ctx = { userId, nodeId: node.id, revId: rev.id, blobId: blob.id, purpose };
       const fileKey = await K.openFileKey(nodeKey, ctx, rev.key);
       const rmeta = await K.openRevMeta(fileKey, ctx, rev.meta);
       const bk = await K.blobKey(fileKey, blob.id, purpose);
@@ -205,9 +237,9 @@ export function createClient({ baseUrl = '', getToken, fetchImpl, retries = 3, r
       const todo = Array.from({ length: blob.chunks }, (_, i) => i);
       let done = 0;
       const fetchChunk = async (i) => {
-        if (blob.backend !== 's3') return api.getChunk(blob.id, i);
+        if (blob.backend !== 's3') return getChunk(blob.id, i);
         for (let attempt = 0; ; attempt++) {
-          if (!urls.has(i)) { const r = await api.downloadUrls(blob.id, i, 50); for (const u of r.urls) urls.set(u.i, u); }
+          if (!urls.has(i)) { const r = await getUrls(blob.id, i, 50); for (const u of r.urls) urls.set(u.i, u); }
           const r = await f(urls.get(i).url).catch(() => null);
           if (r && r.ok) return new Uint8Array(await r.arrayBuffer());
           urls.delete(i);
@@ -255,6 +287,187 @@ export function createClient({ baseUrl = '', getToken, fetchImpl, retries = 3, r
         }
       }
       return out;
+    },
+
+    // ------------------------------------------------------------ Notfallzugang (§12): client algorithms
+    /**
+     * The account's identity key (shared with the family folders of FaLe PDF): open it, or create + store it.
+     * mk: master key (HKDF CryptoKey). → { kid, publicJwk, privateKey, created }
+     */
+    async emIdentityEnsure({ mk, userId }) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        const r = await api.emIdentity();
+        if (r.key) {
+          if (await K.identityKid(r.key.publicJwk) !== r.key.keyId) throw new OneError(0, 'key_mismatch', 'Schlüssel-Kennung passt nicht');
+          const privateKey = await K.identityOpen(mk, userId, r.key.wrappedPrivate); // authenticated by MK
+          if (!(await K.identityMatches(privateKey, r.key.publicJwk))) throw new OneError(0, 'key_mismatch', 'Öffentlicher Schlüssel passt nicht zum privaten');
+          return { kid: r.key.keyId, publicJwk: r.key.publicJwk, privateKey, created: false };
+        }
+        const c = await K.identityCreate(mk, userId);
+        try { await api.emIdentityPut({ keyId: c.kid, publicJwk: c.publicJwk, wrapped: c.wrapped, mode: 'create' }); }
+        catch (e) { if (e.code === 'exists') continue; throw e; }
+        return { kid: c.kid, publicJwk: c.publicJwk, privateKey: c.privateKey, created: true };
+      }
+      throw new OneError(409, 'exists', 'Schlüssel existiert bereits');
+    },
+    /** Owner: create the setup. scope: { v: 1, mode: 'items'|'all', roots: [nodeId], albums: [albumId], note? } → { setupId, ek, own } */
+    async emCreate({ keys, ownerKid, waitHours, scope, threshold = 1, setupId = K.uuid() }) {
+      const ek = K.emNewKey();
+      const ownerKey = await K.emOwnerWrap(keys, setupId, ek);
+      const sealed = await K.emSealScope(ek, { ownerId: keys.userId, setupId }, scope);
+      const r = await api.emSetup({ setupId, baseVersion: 0, waitHours, ownerKey, ownerKid, scope: sealed, threshold });
+      return { setupId, ek, own: r.own };
+    },
+    /** Owner: EK from the setup (raw 32 bytes; caller wipes). */
+    emOwnerKey: (keys, own) => K.emOwnerOpen(keys, own.setup.id, own.setup.ownerKey),
+    async emScope(keys, own, ek) { return K.emOpenScope(ek || await api.emOwnerKey(keys, own), { ownerId: keys.userId, setupId: own.setup.id }, own.setup.scope); },
+    /** Owner: change waiting period and/or scope (and, while nobody is active yet, the threshold). */
+    async emUpdate({ keys, own, waitHours = own.setup.waitHours, scope, threshold }) {
+      let sealed = own.setup.scope;
+      if (scope) { const ek = await api.emOwnerKey(keys, own); try { sealed = await K.emSealScope(ek, { ownerId: keys.userId, setupId: own.setup.id }, scope); } finally { ek.fill(0); } }
+      return (await api.emSetup({ setupId: own.setup.id, baseVersion: own.setup.version, waitHours, scope: sealed, threshold })).own;
+    },
+    /**
+     * Owner: (re)seal EK – or, for threshold k > 1, a fresh Shamir split – for every active contact plus `confirm`
+     * (slots whose safety code was just compared). Each package also carries the roster (slot, account id, key id)
+     * so contacts only pool shares with keys the owner verified, and the check value to detect wrong shares.
+     */
+    async emReseal({ keys, own, threshold = own.setup.threshold, confirm = [], drop = [] }) {
+      const setupId = own.setup.id, ownerId = keys.userId;
+      const list = own.contacts.filter(c => (c.status === 'active' || (c.status === 'accepted' && confirm.includes(c.slot))) && !drop.includes(c.slot));
+      if (!list.length) throw new OneError(400, 'bad_input', 'Keine Vertrauensperson');
+      for (const c of list) if (!c.kid || !c.publicJwk || await K.identityKid(c.publicJwk) !== c.kid) throw new OneError(409, 'key_changed', 'Schlüssel passt nicht', { slot: c.slot });
+      const k = Math.min(Math.max(1, threshold), 3);
+      const ek = await api.emOwnerKey(keys, own);
+      try {
+        const check = await K.emCheck(ek, ownerId, setupId);
+        const roster = list.map(c => ({ slot: c.slot, id: c.contactId, kid: c.kid }));
+        // k may exceed the contacts confirmed so far (e.g. 2 of 3 with one confirmed): evaluate the polynomial at
+        // unused x values too and discard those shares – the setup becomes usable once k contacts are active
+        const xs = list.map(c => c.slot);
+        for (let x = 1; xs.length < k; x++) if (!xs.includes(x)) xs.push(x);
+        const shares = K.shamirSplit(ek, xs.length, k, xs);
+        for (const s of shares.slice(list.length)) s.y.fill(0);
+        const packages = [];
+        for (let i = 0; i < list.length; i++) {
+          const c = list[i];
+          packages.push({ slot: c.slot, kid: c.kid, package: await K.emSeal(c.publicJwk, { purpose: 'share', ownerId, setupId, from: ownerId, to: c.contactId },
+            { v: 1, t: 'share', setupId, ownerId, slot: c.slot, x: shares[i].x, k, n: list.length, y: K.b64u(shares[i].y), check, roster }) });
+          shares[i].y.fill(0);
+        }
+        return (await api.emSealPackages({ setupId, baseVersion: own.setup.version, threshold: k, packages })).own;
+      } finally { ek.fill(0); }
+    },
+    /**
+     * Owner: make the server's set of EK-wrapped keys equal the wanted set (nodes: [{ id, key }] with the node's
+     * KEK-wrapped key, albums: [{ id, key }]). Cheap when nothing changed (one digest call). → { added, removed }
+     */
+    async emSyncKeys({ keys, own, ek, nodes = [], albums = [] }) {
+      const setupId = own.setup.id, ownerId = keys.userId;
+      const want = new Map();
+      for (const n of nodes) want.set('node:' + n.id, { kind: 'node', id: n.id, key: n.key });
+      for (const a of albums) want.set('album:' + a.id, { kind: 'album', id: a.id, key: a.key });
+      const lines = [...want.keys()].sort();
+      const digest = K.hex(new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(lines.map(l => l + '\n').join('')))));
+      const d = await api.emKeysDigest(setupId);
+      if (d.digest === digest && d.count === lines.length) return { added: 0, removed: 0 };
+      const have = new Set();
+      for (let after = null, g = 0; g < 1000; g++) { const r = await api.emKeysList(setupId, after); r.items.forEach(x => have.add(x)); if (!r.next) break; after = r.next; }
+      const add = lines.filter(l => !have.has(l)), del = [...have].filter(l => !want.has(l));
+      let added = 0, removed = 0;
+      const own_ = ek || await api.emOwnerKey(keys, own);
+      try {
+        for (let i = 0; i < add.length; i += 200) {
+          const items = [];
+          for (const l of add.slice(i, i + 200)) {
+            const w = want.get(l);
+            const raw = await K.openItemKeyRaw(keys, w.kind, w.id, w.key);
+            try { items.push({ kind: w.kind, id: w.id, key: await K.emWrapItem(own_, { ownerId, setupId, kind: w.kind, id: w.id }, raw) }); } finally { raw.fill(0); }
+          }
+          added += (await api.emKeysPut(setupId, items)).added;
+        }
+      } finally { if (!ek) own_.fill(0); }
+      for (let i = 0; i < del.length; i += 2000) {
+        removed += (await api.emKeysDel(setupId, del.slice(i, i + 2000).map(l => { const [kind, id] = l.split(':'); return { kind, id }; }))).removed;
+      }
+      return { added, removed };
+    },
+    /**
+     * Contact (after the release): open the own package, pool the share with the other released contacts the owner
+     * verified (k of n), combine and verify. → { ek, ownerId } or { waiting: { have, need } }
+     */
+    async emUnlock({ setupId, userId, privateKey }) {
+      const p = await api.emPackage(setupId);
+      const ownerId = p.ownerId;
+      const pkg = await K.emOpen(privateKey, { purpose: 'share', ownerId, setupId, from: ownerId, to: userId }, p.package);
+      if (pkg.v !== 1 || pkg.t !== 'share' || pkg.setupId !== setupId || pkg.ownerId !== ownerId || pkg.slot !== p.slot || pkg.x !== pkg.slot) throw new OneError(0, 'tampered', 'Paket passt nicht');
+      const mine = { x: pkg.x, y: K.unb64u(pkg.y) };
+      const shares = [mine];
+      if (pkg.k > 1) {
+        const roster = new Map((pkg.roster || []).map(r => [r.slot, r]));
+        const items = [];
+        for (const q of p.requesters) {
+          if (q.slot === pkg.slot) continue;
+          const r = roster.get(q.slot);
+          if (!r || r.id !== q.contactId || r.kid !== q.kid || !q.publicJwk || await K.identityKid(q.publicJwk) !== r.kid) continue; // never pool with an unverified key
+          items.push({ to: q.slot, sealed: await K.emSeal(q.publicJwk, { purpose: 'pool', ownerId, setupId, from: userId, to: q.contactId }, { v: 1, t: 'pool', setupId, from: pkg.slot, x: pkg.x, y: pkg.y }) });
+        }
+        if (items.length) await api.emPool(setupId, items);
+        for (const e of p.pool) {
+          const r = roster.get(e.from);
+          if (!r) continue;
+          try {
+            const o = await K.emOpen(privateKey, { purpose: 'pool', ownerId, setupId, from: r.id, to: userId }, e.sealed);
+            if (o.t === 'pool' && o.setupId === setupId && o.from === e.from && o.x === e.from && !shares.some(s => s.x === o.x)) shares.push({ x: o.x, y: K.unb64u(o.y) });
+          } catch { /* a share that does not open is ignored (the check below decides) */ }
+        }
+      }
+      if (shares.length < pkg.k) return { waiting: { have: shares.length, need: pkg.k }, ownerId };
+      const combos = (arr, k, start = 0, cur = [], out = []) => { if (cur.length === k) { out.push(cur.slice()); return out; } for (let i = start; i < arr.length; i++) { cur.push(arr[i]); combos(arr, k, i + 1, cur, out); cur.pop(); } return out; };
+      for (const set of combos(shares, pkg.k)) {
+        const ek = K.shamirCombine(set);
+        if (await K.emCheck(ek, ownerId, setupId) === pkg.check) { shares.forEach(s => s.y.fill(0)); return { ek, ownerId }; }
+        ek.fill(0);
+      }
+      throw new OneError(0, 'tampered', 'Die Schlüsselteile passen nicht zusammen (beschädigt oder manipuliert).');
+    },
+    /** Contact: all covered items, decrypted. → { ownerId, scope, nodes: [{ raw, nodeKey, meta, rev }], albums: [{ raw, meta, items }] } */
+    async emLoad({ setupId, ek }) {
+      const out = { ownerId: null, scope: null, nodes: [], albums: [] };
+      for (let after = null, g = 0; g < 10000; g++) {
+        const r = await api.emItems(setupId, after, 500);
+        out.ownerId = r.ownerId;
+        const ownerId = r.ownerId;
+        if (r.albums) {
+          out.scope = await K.emOpenScope(ek, { ownerId, setupId }, r.scope).catch(() => null);
+          for (const a of r.albums) {
+            try {
+              const ak = await K.emOpenItem(ek, { ownerId, setupId, kind: 'album', id: a.id }, a.emKey);
+              out.albums.push({ raw: a, meta: await K.openMeta(ak, { userId: ownerId, kind: 'album', id: a.id }, a.meta), items: a.items });
+            } catch { out.albums.push({ raw: a, meta: null, items: a.items, err: 'decrypt' }); }
+          }
+        }
+        for (const n of r.nodes) {
+          try {
+            const nodeKey = await K.emOpenItem(ek, { ownerId, setupId, kind: 'node', id: n.id }, n.emKey);
+            const meta = await K.openMeta(nodeKey, { userId: ownerId, kind: n.kind, id: n.id }, n.meta);
+            let rev = null;
+            if (n.head) {
+              const ctx = { userId: ownerId, nodeId: n.id, revId: n.head.id };
+              rev = await K.openRevMeta(await K.openFileKey(nodeKey, ctx, n.head.key), ctx, n.head.meta);
+            }
+            out.nodes.push({ raw: n, nodeKey, meta, rev });
+          } catch { out.nodes.push({ raw: n, nodeKey: null, meta: null, rev: null, err: 'decrypt' }); }
+        }
+        if (!r.next) break;
+        after = r.next;
+      }
+      return out;
+    },
+    /** Contact: download + decrypt a covered file (verified like downloadFile). */
+    emDownload({ setupId, ownerId, node, nodeKey, purpose = 'content', onProgress, verify = true }) {
+      return api.readBlob({ userId: ownerId, node, nodeKey, purpose, onProgress, verify,
+        getChunk: (blobId, i) => api.emGetChunk(setupId, blobId, i), getUrls: (blobId, from, count) => api.emDownloadUrls(setupId, blobId, from, count) });
     },
 
     /**

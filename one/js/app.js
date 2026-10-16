@@ -1,6 +1,6 @@
 // FaLe One – app entry: start-up (account → key → engine), app shell, router, global status.
 import { el, clear, icon, logo, toast, errorToast } from './dom.js';
-import { initLang, t, fmtSize, ago, fmtNum } from './i18n.js';
+import { initLang, t, tp, fmtSize, ago, fmtNum } from './i18n.js';
 import * as A from './auth.js';
 import * as Keys from './keys.js';
 import * as E from './engine.js';
@@ -14,6 +14,7 @@ const views = {
   drive: () => import('./views/drive.js'),
   suche: () => import('./views/search.js'),
   einstellungen: () => import('./views/settings.js'),
+  notfall: () => import('./views/notfall.js'),
 };
 let shell = null, current = null, currentKey = '';
 
@@ -69,7 +70,7 @@ async function startApp(lk) {
   const firstSync = async () => {
     await E.syncNow();
     if (E.state.syncError && E.state.syncError.status === 401) { await A.localSignOut('expired'); return gate('welcome'); }
-    await Promise.all([E.refreshQuota(), E.refreshBackup(), E.refreshOffline()]);
+    await Promise.all([E.refreshQuota(), E.refreshBackup(), E.refreshOffline(), E.refreshEm()]);
   };
   firstSync().then(() => checkKeyStillValid()).catch(() => {});
   A.touchDevice().catch(() => {});
@@ -91,8 +92,8 @@ function setupTimers() {
   if (timersSet) return;
   timersSet = true;
   setInterval(() => { if (document.visibilityState === 'visible' && navigator.onLine && E.state.started) E.syncNow(); }, 45000);
-  setInterval(() => { if (document.visibilityState === 'visible' && navigator.onLine && E.state.started) { E.refreshQuota(); E.refreshBackup(); } }, 180000);
-  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && navigator.onLine && E.state.started) { E.syncNow(); E.refreshBackup(); } });
+  setInterval(() => { if (document.visibilityState === 'visible' && navigator.onLine && E.state.started) { E.refreshQuota(); E.refreshBackup(); E.refreshEm(); } }, 180000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && navigator.onLine && E.state.started) { E.syncNow(); E.refreshBackup(); E.refreshEm(); } });
   window.addEventListener('online', () => { if (!E.state.started) return; E.call('online').catch(() => {}); E.syncNow().then(() => E.refreshQuota()); renderStatus(); });
   window.addEventListener('offline', () => renderStatus());
   A.onAccountChange(d => { if (!d.signedIn) gate(d.reason === 'deleted' ? 'deleted' : 'welcome'); });
@@ -127,6 +128,7 @@ function buildShell() {
       el('div.side-sub', { data: { sub: 'drive' } },
         el('a.sub-link', { href: '#/drive/offline', data: { nav: 'drive/offline' } }, icon('offline'), el('span', t('Offline verfügbar'))),
         el('a.sub-link', { href: '#/drive/papierkorb', data: { nav: 'drive/papierkorb' } }, icon('trash'), el('span', t('Papierkorb')))),
+      el('a.nav-link', { href: '#/notfall', data: { nav: 'notfall' } }, icon('shield'), el('span', t('Notfallzugang'))),
       el('a.nav-link', { href: '#/einstellungen', data: { nav: 'einstellungen' } }, icon('settings'), el('span', t('Einstellungen')))),
     el('div.side-quota', { data: { quota: 'side' } }),
     el('p.side-foot', icon('lock'), el('span', t('Ende-zu-Ende-verschlüsselt. Nur deine Geräte können deine Dateien lesen.')))
@@ -148,7 +150,7 @@ function buildShell() {
   shell = { side, header, main, bnav };
   A.currentUser().then(u => { const a = root.querySelector('[data-avatar]'); if (a && u) a.textContent = (u.email || '?').slice(0, 1).toUpperCase(); });
   E.subscribe(what => {
-    if (what.has('quota') || what.has('backup') || what.has('jobs') || what.has('sync') || what.has('nodes')) renderStatus();
+    if (what.has('quota') || what.has('backup') || what.has('jobs') || what.has('sync') || what.has('nodes') || what.has('em')) renderStatus();
     if (current && current.update) current.update(what);
   });
   renderStatus();
@@ -169,7 +171,7 @@ export function quotaWidget() {
 }
 /** Phone: status chip + quota under the header (desktop shows both in the header / sidebar). */
 export function homeStatus() {
-  return el('div.home-status', el('button.chip.status-chip.show', { type: 'button', data: { status: '' }, onclick: () => openUploads() }), el('div', { data: { quota: 'home' } }, quotaWidget()));
+  return el('div', el('div.home-status', el('button.chip.status-chip.show', { type: 'button', data: { status: '' }, onclick: () => openUploads() }), el('div', { data: { quota: 'home' } }, quotaWidget())), emHomeCard());
 }
 function myDevice() { const b = E.state.backup; return b && b.devices ? b.devices.find(d => d.self) : null; }
 export function statusText() {
@@ -199,6 +201,7 @@ function renderStatus() {
   const app = root.querySelector('.app');
   if (app) { app.dataset.jobs = String(active); app.dataset.synced = String(E.state.lastSync || 0); }
   for (const q of root.querySelectorAll('[data-quota]')) clear(q).append(quotaWidget());
+  for (const c of root.querySelectorAll('[data-emcard]')) c.replaceWith(emHomeCard());
   // notices: offline, quota 80 % / 100 % (read-only, never deletes), stale backup devices
   const box = root.querySelector('[data-notices]');
   if (!box) return;
@@ -207,12 +210,75 @@ function renderStatus() {
   if (!navigator.onLine) box.append(notice('cloudOff', t('Du bist offline. Du siehst, was auf diesem Gerät gespeichert ist; Änderungen gehen, sobald du wieder online bist.'), 'off'));
   if (q && q.readOnly) box.append(notice('warning', t('Speicher voll – alles bleibt lesbar. Lösche etwas, leere den Papierkorb oder exportiere deine Daten. Gelöscht wird nichts automatisch.'), 'warn', { label: t('Papierkorb'), href: '#/drive/papierkorb' }));
   else if (q && q.quota && q.used / q.quota >= 0.8 && !dismissed('q80')) box.append(notice('info', t('Dein Speicher ist zu {p} % belegt ({used} von {total}).', { p: Math.floor(q.used / q.quota * 100), used: fmtSize(q.used), total: fmtSize(q.quota) }), 'info', null, 'q80'));
+  emNotices(box);
   const b = E.state.backup;
   if (b && b.devices) for (const d of b.devices.filter(x => x.stale)) {
     const name = (d.meta && d.meta.name) || t('Ein Gerät');
     const k = 'stale-' + d.deviceId + '-' + (d.lastSuccessAt || d.createdAt || '').slice(0, 10);
     if (!dismissed(k)) box.append(notice('warning', d.lastSuccessAt ? t('{name}: letzte erfolgreiche Sicherung {when}. Öffne FaLe One dort, damit neue Fotos gesichert werden.', { name, when: ago(d.lastSuccessAt) }) : t('{name}: noch keine erfolgreiche Sicherung.', { name }), 'warn', null, k));
   }
+}
+// ---------------------------------------------------------------- Notfallzugang: banners + home card
+const waitLabel = h => (h === 24 ? t('24 Stunden') : tp(h / 24, '{n} Tag', '{n} Tage'));
+export { waitLabel };
+/** "noch 6 Tage 23 Std." until an ISO time (server clock offset applied) */
+export function countdown(iso, serverNow) {
+  const skew = serverNow ? Date.parse(serverNow) - Date.now() : 0;
+  const ms = Math.max(0, Date.parse(iso) - (Date.now() + skew));
+  const d = Math.floor(ms / 864e5), h = Math.floor((ms % 864e5) / 36e5), m = Math.max(1, Math.ceil((ms % 36e5) / 6e4));
+  if (d) return t('{d} T {h} Std.', { d, h });
+  if (h) return t('{h} Std. {m} Min.', { h, m: Math.floor((ms % 36e5) / 6e4) });
+  return t('{m} Min.', { m });
+}
+function emNotices(box) {
+  const st = E.state.em;
+  if (!st) return;
+  const o = st.own;
+  if (o && o.request && o.request.status === 'waiting') {
+    const who = o.request.requesters.map(q => (o.contacts.find(c => c.slot === q.slot) || {}).email).filter(Boolean).join(', ');
+    const txt = o.request.releaseAt
+      ? t('{who} hat Zugang zu deinem Notfallzugang angefragt. Freigabe in {left}, wenn du nicht ablehnst.', { who, left: countdown(o.request.releaseAt, o.request.now) })
+      : t('{who} hat Zugang angefragt ({n} von {k} Personen nötig).', { who, n: o.request.requesters.length, k: o.request.threshold });
+    const n = el('div.notice.urgent', { role: 'alert', data: { emAlert: 'request' } }, icon('warning'), el('p', txt),
+      el('div.notice-acts', el('a.btn.ghost.sm', { href: '#/notfall' }, t('Details')),
+        el('button.btn.danger-solid.sm', { type: 'button', onclick: async () => { try { E.setEm(await E.call('emDeny')); toast(t('Anfrage abgelehnt. Es wurde nichts freigegeben.')); } catch (e) { errorToast(e); } } }, t('Ablehnen'))));
+    box.append(n);
+  } else if (o && o.request && o.request.status === 'released') {
+    box.append(el('div.notice.warn', { data: { emAlert: 'released' } }, icon('shield'), el('p', t('Dein Notfallzugang ist freigegeben. Du kannst ihn jederzeit widerrufen.')), el('a.btn.ghost.sm', { href: '#/notfall' }, t('Ansehen'))));
+  }
+  if (o) for (const c of o.contacts.filter(x => x.status === 'accepted')) {
+    const k = 'em-acc-' + c.slot + '-' + (c.acceptedAt || '').slice(0, 16);
+    if (!dismissed(k)) box.append(notice('shield', t('{email} hat angenommen. Vergleicht jetzt den Sicherheitscode, damit der Notfallzugang aktiv wird.', { email: c.email }), 'info', { label: t('Code vergleichen'), href: '#/notfall' }, k));
+  }
+  for (const x of st.others || []) {
+    if (x.status === 'invited') {
+      const k = 'em-inv-' + x.setupId;
+      if (!dismissed(k)) box.append(notice('shield', t('{email} möchte dich als Vertrauensperson für den Notfall.', { email: x.ownerEmail }), 'info', { label: t('Ansehen'), href: '#/notfall/fuer-andere' }, k));
+    } else if (x.readable) {
+      const k = 'em-rel-' + x.setupId + '-' + ((x.request && x.request.releasedAt) || '').slice(0, 16);
+      if (!dismissed(k)) box.append(notice('shield', t('Der Notfallzugang von {email} ist freigegeben.', { email: x.ownerEmail }), 'info', { label: t('Öffnen'), href: '#/notfall/zugang/' + x.setupId }, k));
+    }
+  }
+}
+/** Calm one-line card for the start views: only when there is something to show. */
+export function emHomeCard() {
+  const st = E.state.em;
+  const holder = el('div', { data: { emcard: '' }, hidden: true });
+  if (!st) return holder;
+  const o = st.own;
+  const active = o ? o.contacts.filter(c => c.status === 'active').length : 0;
+  let text = null, sub = null, href = '#/notfall', kind = 'ok';
+  if (o) {
+    if (active && active >= o.setup.threshold) {
+      text = t('Notfallzugang aktiv');
+      sub = [tp(active, '{n} Person', '{n} Personen'), o.setup.threshold > 1 ? t('{k} von {n} nötig', { k: o.setup.threshold, n: active }) : null, t('{w} Wartezeit', { w: waitLabel(o.setup.waitHours) })].filter(Boolean).join(' · ');
+    } else { text = t('Notfallzugang fast fertig'); sub = t('Vertrauensperson bestätigen'); kind = 'todo'; }
+  } else if ((st.others || []).some(x => x.status !== 'invited')) {
+    const n = st.others.filter(x => x.status !== 'invited').length;
+    text = t('Für andere da'); sub = tp(n, 'Vertrauensperson für {n} Person', 'Vertrauensperson für {n} Personen'); href = '#/notfall/fuer-andere';
+  }
+  if (!text) return holder;
+  return el('a.em-card' + (kind === 'todo' ? '.todo' : ''), { href, data: { emcard: '' } }, el('span.em-card-ic', icon('shield')), el('span.em-card-text', el('strong', text), el('span', sub)), icon('chevronRight'));
 }
 function notice(ic, text, kind, link, dismissKey) {
   const n = el('div.notice.' + kind, icon(ic), el('p', text), link ? el('a.btn.ghost.sm', { href: link.href }, link.label) : null);

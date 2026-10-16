@@ -49,6 +49,7 @@ The same script regenerates the `sw.js` precache list. CI runs it with `--check`
 | EXIF / MP4 metadata, thumbnails (256 px) and previews (1600 px) | `js/media.js` |
 | Google Takeout (streamed ZIP reader, JSON sidecars, album folders) | `js/takeout.js`, `js/unzip.js` |
 | Export everything (folder via File System Access, or ZIP parts) | `js/export.js` |
+| Notfallzugang: setup wizard, safety code, request / veto / revoke, log, "Für andere da", read-only browser (contract §12) | `js/views/notfall.js` (UI), `js/worker.js` (crypto, key sync after every sync) |
 
 ## Data on the device (decision)
 

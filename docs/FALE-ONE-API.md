@@ -7,7 +7,8 @@ The server never sees names, MIME types, plaintext sizes, capture dates, EXIF/GP
 | Part | Location |
 |---|---|
 | Server | `api/drive/index.js` → `api/_lib/drive.js` (handler), `drivestore.js` (SQL RPCs), `blobstore.js` + `s3.js` (chunk storage) |
-| Database | `supabase/migrations/20261015220000_fale_one_drive.sql`, `…220100_fale_one_drive_cron.sql` |
+| Database | `supabase/migrations/20261015220000_fale_one_drive.sql`, `…220100_fale_one_drive_cron.sql`; Notfallzugang: `20261016090000_fale_one_emergency.sql`, `…090100_fale_one_emergency_cron.sql` |
+| Notfallzugang (§12) | `api/_lib/emergency.js` (`em.*` actions), `api/_lib/notify.js` (pluggable notifier) |
 | Reference client | `js/one/crypto.js` (format, normative), `js/one/api.js` (transport + client algorithms). ES modules, WebCrypto, no dependencies; they run in browsers and Node ≥ 20. |
 
 Words like **must** are normative. When this text and `js/one/crypto.js` disagree, the code wins and this document has a bug.
@@ -114,7 +115,9 @@ Request bodies are shown in full. Fields marked `?` are optional. Every response
 
 ### 4.1 `config` (no auth)
 
-`{}` → `{ ok, configured, chunkSize, backend: 'pg'|'s3', direct, maxThumbBatch: 100, maxChangesPage: 1000, version: 1 }`
+`{}` → `{ ok, configured, chunkSize, backend: 'pg'|'s3', direct, maxThumbBatch: 100, maxChangesPage: 1000, version: 1, emergency, notify }`
+
+`emergency` is true when the Notfallzugang actions are available (§12); `notify` is true only when a mail provider is configured, so apps can say honestly whether anyone gets an e-mail.
 
 `chunkSize` is the ciphertext bytes per chunk (default 1 048 576 = 1 MiB, set by `ONE_CHUNK_KB`, 64 KiB–4 MiB). Clients **must** use the value from here or from `quota`, never a constant.
 
@@ -299,10 +302,11 @@ Response: `{ device: { deviceId, status, lastSuccessAt } }`.
 
 **`dedupe`**: `{ hashes: string[] (≤ 200) }` → `{ matches: { "<hash>": [nodeId, …] } }`. Only current versions of nodes that are not trashed are matched. Use it in photo backup to skip what is already stored.
 
-**`export`**: `{ after?: uuid|null, limit?: 1..500 = 200 }` → `{ version: 1, nodes: Node[] /* each with revisions[] */, albums: Album[] | null, next: uuid | null }`
+**`export`**: `{ after?: uuid|null, limit?: 1..500 = 200 }` → `{ version: 1, nodes: Node[] /* each with revisions[] */, albums: Album[] | null, next: uuid | null, emergency? }`
 
 - Returns every live node, trash included, ordered by id, with **all** revisions and their blob layouts. Follow `next` until it is null.
 - `albums`, including their `items`, comes only on the first page (`after` absent).
+- `emergency` (first page only): the owner's Notfallzugang as in `em.status` `own` (setup, contacts, open request, **full** log) plus `covered: { nodes: uuid[], albums: uuid[] }`, or `null`. The web app writes it into the export as `Notfallzugang.json` and `manifest.json` → `emergency`.
 - See §7.8 for building the "export everything" archive.
 
 ### 4.10 `gc` (operators only)
@@ -704,12 +708,120 @@ Hardening details:
 
 1. Push this commit. The DB migrate workflow applies both migrations through the Management API.
 2. Vercel env (FaLe PDF project): `ONE_ENABLED=1` once you want the drive live. It needs `ACCOUNTS_ENABLED=1`, which in turn needs custom SMTP in Supabase Auth.
+   For Notfallzugang e-mails: `NOTIFY_PROVIDER=resend` with `RESEND_API_KEY` and `NOTIFY_FROM` (verified sender domain), or a webhook (§12.5). Optional `FALE_ONE_URL` for the link in the mails.
 3. Optional: `FALE_ONE_ORIGINS` if FaLe One is served from other origins. Make sure the FaLe One web app's CSP allows `connect-src https://fale-pdf.vercel.app https://*.supabase.co`, plus the S3 endpoint later.
 4. Watch DB size during the beta. Defaults: 2 GiB per account and 5 GiB total in Postgres (`private.fale_one_config`).
 5. Later, for Hetzner: create the bucket (private, CORS as in §8), set the `S3_*` env, `BLOBSTORE=s3` and `CRON_SECRET`, add the Vercel Cron for `?a=gc`, and raise `beta_cap_bytes`.
 6. Paid plans later: write `public.one_accounts.quota_bytes` from the billing flow (service role or a secret-gated RPC).
 
-## 12. Tests
+## 12. Notfallzugang (emergency access to chosen items)
+
+An owner names 1–3 trusted contacts (other FaLe-Konto users) and a waiting period. A contact can ask for access at any time; the owner sees it at once (banner on the next start, e-mail when a notifier is configured) and can deny it with one tap. If the waiting period passes without a veto, the contact gets **read-only** access to exactly the covered items and decrypts them on their own device. The owner can revoke at any time, and every request, veto, release, key pick-up, opening and download is logged for the owner. Optional "k of n": at least k contacts must ask together.
+
+### 12.1 Keys and formats (normative: `js/one/crypto.js`)
+
+```
+Identity key   ECDH P-256 per account – the SAME key as the family folders of FaLe PDF (public.fam_keys):
+               kid = b64u(SHA-256("<x>.<y>")[0..12]); private PKCS#8 wrapped by AES-GCM(HKDF(MK, salt <userId>, "fale-fam-priv-v1"),
+               AAD "fale-fam|priv|v1|<userId>"). Clients check that the delivered public key matches the private key (ECDH self-test).
+EK             32 random bytes per setup (setupId = client-generated lowercase uuid)
+owner copy     setup.ownerKey = wrap(KEK, EK, AAD "fale-one-v1|wrap|em|<ownerId>|<setupId>")
+covered keys   em key of a node/album = wrap(HKDF(EK, salt <setupId>, "fale-one-v1/em/wrap"), NK|AK,
+               AAD "fale-one-v1|em|wrap|<node|album>|<ownerId>|<setupId>|<id>")          (82 chars like every wrapped key)
+scope          envelope(HKDF(EK, salt <setupId>, "fale-one-v1/em/scope"), { v: 1, mode: "items"|"all", roots: [nodeId], albums: [albumId], note? },
+               AAD "fale-one-v1|em|scope|<ownerId>|<setupId>")
+check          b64u(HMAC-SHA-256(HKDF(EK, salt <setupId>, "fale-one-v1/em/check"), "fale-one-v1|em|check|<ownerId>|<setupId>"))   43 chars
+seal (ECIES)   eph = new P-256 key; K = HKDF(ECDH(eph, recipientPub), salt = eph public key (65 bytes raw),
+               info "fale-one-v1/em/seal|<purpose>|<setupId>|<toUserId>") → AES-256-GCM,
+               AAD "fale-one-v1|em|seal|<purpose>|<ownerId>|<setupId>|<fromUserId>|<toUserId>"
+               → b64u(0x01 ‖ eph(65) ‖ IV(12) ‖ GCM(UTF-8 JSON))        purpose: share (owner → contact) | pool (contact → contact)
+Shamir         byte-wise over GF(2^8) with the AES polynomial 0x11b; x = contact slot (1..3); fresh random coefficients per split;
+               k = 1 → every share is EK itself
+package        seal(share, { v: 1, t: "share", setupId, ownerId, slot, x, k, n, y: b64u(share), check, roster: [{ slot, id, kid }] })
+pool entry     seal(pool,  { v: 1, t: "pool", setupId, from: slot, x, y })
+safety code    h = SHA-256("fale-one-v1|em|sas|<setupId>|<ownerId>|<ownerKid>|<contactId>|<contactKid>");
+               6 emoji = h[0..6] as 48 bits, 6 bits each, into the 64-entry list SAS_EMOJI; digits = (h[6..12] as 48-bit integer) mod 10^12 → "1234 5678 9012"
+```
+
+**New files stay accessible.** Node keys are random and immutable for a node's lifetime, and a node's key opens all of its revisions (FK is wrapped by NK). Children's keys are wrapped by the account KEK, not by the parent folder's key, so wrapping a folder key alone would not reach new children. Instead, the owner's devices keep the server's set of EK-wrapped keys equal to the wanted set: every node in the covered subtrees (or every node and album for `mode: "all"`), the covered albums and their members. They do this after every sync; a local digest makes it free when nothing changed, and `em.keys.digest` makes it one request when only the server might differ. Files uploaded by any of the owner's devices are therefore wrapped within one sync. Trashed or deleted items disappear for the contact at once (server filter, FK cascade), and items moved out of the covered folders lose their wrap on the owner's next sync.
+
+### 12.2 States
+
+```
+contact:  invited ──accept (same e-mail, identity key)──▶ accepted ──owner compares the safety code + seals──▶ active
+request:  (none) ──first contact asks──▶ waiting ──k contacts asked: release_at = now + wait──▶ … ──now ≥ release_at──▶ released
+             waiting ──owner denies──▶ denied (contacts may ask again after 24 h)        waiting|released ──owner revokes──▶ revoked
+             waiting below k for 30 days ──▶ expired        re-seal while waiting ──▶ canceled
+```
+
+The waiting period starts when **k** contacts have asked (for k = 1: with the request), so the owner always gets the full period after the request that can actually unlock anything. A contact who joins an already released request gets access at once (logged). Release is evaluated lazily by every RPC and every 15 minutes by `fale-em-tick` (pg_cron), which also queues the notifications.
+
+### 12.3 Actions (`POST /api/drive?a=em.*`)
+
+Rate limits: `ONE_EM_DAILY` (2 000 per account, `ONE_EM_IP_DAILY` 4 000 per IP), invitations `ONE_EM_INVITE_DAILY` 10 (+ IP 30), requests `ONE_EM_REQUEST_DAILY` 20 (+ IP 60); chunk downloads count against the normal download limits of the **contact**.
+
+| Action | Body → response | Who |
+|---|---|---|
+| `em.identity` | `{}` → `{ key: { keyId, publicJwk, wrappedPrivate } \| null }` | anyone |
+| `em.identity.put` | `{ keyId, publicJwk, wrapped, mode: 'create'\|'rewrap' }` → `{}` (`409 exists`) | anyone |
+| `em.status` | `{}` → `{ own: Own \| null, others: Other[], now, notify }` | anyone |
+| `em.setup` | create `{ setupId, baseVersion: 0, waitHours ∈ {24,72,168,336,720}, ownerKey, ownerKid, scope, threshold? }`; change `{ setupId, baseVersion, waitHours, scope, threshold? }` → `{ own }` (`409 exists`, `conflict`, `reseal` when k changes after a contact is active) | owner |
+| `em.delete` | `{ confirm: true }` → `{ deleted }` | owner |
+| `em.invite` | `{ setupId, email }` → `{ slot, mailed, own }` (≤ 3 contacts; `400 self`, `409 too_many`) | owner |
+| `em.remove` | `{ setupId, slot }` → `{ own }` (ends the contact's access at once) | owner |
+| `em.seal` | `{ setupId, baseVersion, threshold, packages: [{ slot, kid, package }] }` → `{ own }`. Must list **every** active contact plus the newly confirmed ones; each `kid` must be the key the contact accepted with (`409 key_changed`); `409 busy` while released; cancels a waiting request | owner |
+| `em.deny` / `em.revoke` | `{ setupId }` → `{ own }` (`409 no_request`; deny after the release → `409 released`) | owner |
+| `em.log` | `{ before?, limit? }` → `{ log: [{ id, at, event, slot, detail }] }` | owner |
+| `em.keys.digest` | `{ setupId }` → `{ count, digest }` = SHA-256 hex over the sorted lines `"node:<id>\n"`/`"album:<id>\n"` (byte order) | owner |
+| `em.keys.list` | `{ setupId, after?, limit? }` → `{ items: ["node:<id>", …], next }` | owner |
+| `em.keys.put` / `em.keys.del` | `{ setupId, items: [{ kind, id, key }] }` (≤ 500) → `{ added, skipped }` / `{ removed }`; foreign or deleted ids are skipped | owner |
+| `em.accept` / `em.leave` | `{ setupId }` → `{ slot, status, kid }` / `{}` (accept: only the account whose e-mail was invited, needs the identity key → `409 no_key`, `410 expired`) | contact |
+| `em.request` | `{ setupId }` → `{ joined, request, mailed }` (`409 not_ready` below k active contacts, `429 cooldown` + `retryAt`) | active contact |
+| `em.package` | `{ setupId }` → `{ ownerId, slot, package, requesters: [{ slot, contactId, kid, publicJwk }], pool: [{ from, sealed }] }` | released requester (`403 locked` otherwise) |
+| `em.pool` | `{ setupId, items: [{ to, sealed }] }` → `{ stored }` | released requester |
+| `em.items` | `{ setupId, after?, limit? }` → `{ ownerId, scope, nodes: [{ id, parent, kind, version, emKey, meta, head }], albums: [{ id, emKey, meta, items }] \| null, next }` – only covered, live, untrashed items; `head` is the current version with its blobs | released requester |
+| `em.thumbs` | `{ setupId, ids: blobId[] ≤ 100 }` → `{ thumbs }` | released requester |
+| `em.get` | `POST ?a=em.get&s=<setupId>&b=<blobId>&i=<i>` → raw chunk; only blobs of the **current** version of covered items | released requester |
+| `em.download.urls` | `{ setupId, blobId, from?, count? }` → presigned GETs (s3) | released requester |
+
+`Own` = `{ setup: { id, version, waitHours, threshold, ownerKey, ownerKid, scope, nodeKeys, albumKeys, … }, contacts: [{ slot, email, status, contactId, kid, publicJwk, invitedAt, inviteExpiresAt, expired, acceptedAt, confirmedAt }], request, lastClosed, log (last 50) }`. `Other` = `{ setupId, ownerId, ownerEmail, ownerKid, waitHours, threshold, slot, status, kid, contacts (active count), request, requested, readable, lastClosed }`. `request` = `{ id, status, threshold, waitHours, startedAt, thresholdAt, releaseAt, releasedAt, now, requesters: [{ slot, at }] }`.
+
+### 12.4 Client algorithms (`js/one/api.js`)
+
+- **Set up** (`emCreate`): `emIdentityEnsure` (open or create the identity key), random EK and setupId, `em.setup`. The web app then creates the guided "Notfallordner" (sub-folders: contracts & insurance, powers of attorney & directives, bank & account notes, doctors & medication, contacts, personal wishes & letters) and runs `emSyncKeys`.
+- **Confirm a contact** (`emReseal`): after both sides compared the safety code, split EK with a **fresh** polynomial for all active contacts plus the confirmed one (if k exceeds the confirmed contacts, extra x values are evaluated and discarded; requests stay impossible until k are active), seal each package with the roster and the check value, `em.seal`.
+- **Keep keys current** (`emSyncKeys`): wanted set → digest → if different, list, wrap the missing NK/AK under EK (`openItemKeyRaw` → `emWrapItem`), delete the extra ones.
+- **Unlock** (`emUnlock`, contact): `em.package`, open the package, check setup/owner/slot. For k > 1, seal the own share for every released requester **whose slot, account id and key id are in the owner's roster** and whose delivered public key hashes to that key id, `em.pool`, open the pooled shares addressed to us, then try k-subsets until the combined key matches `check` (a forged share is detected, never used). Not enough shares yet → `{ waiting: { have, need } }`.
+- **Read** (`emLoad`, `emDownload`): `em.items`, open each node key with EK and decrypt meta, revision metadata, thumbnails and content exactly like the owner (AAD uses the owner's user id), content digest verified.
+
+### 12.5 Notifications
+
+The SQL functions write events into `private.fale_em_outbox` (invite, accepted, request, denied, released, revoked, confirmed, removed, left, ended). `api/_lib/notify.js` sends them after each `em.*` action and in the `gc` cron when a provider is configured: `NOTIFY_PROVIDER=resend` (+ `RESEND_API_KEY`, `NOTIFY_FROM`) or `NOTIFY_PROVIDER=webhook` (+ `NOTIFY_WEBHOOK_URL`, optional `NOTIFY_WEBHOOK_SECRET` → `X-Fale-Signature` HMAC). Mails contain only e-mail addresses, times and the app URL (`FALE_ONE_URL`), never names or content. Without a provider (the default – Supabase's built-in SMTP only sends Auth mails, and without custom SMTP only to team addresses) nothing is sent, `config.notify` is false and the app says so: requests appear as a non-dismissable banner the next time the owner opens FaLe One, and the invitation screen offers a ready-made message to send yourself. Unsent events are dropped after 14 days.
+
+### 12.6 Database
+
+| Table | Contents |
+|---|---|
+| `one_em_setups` | One per owner: `wait_hours`, `threshold`, `owner_key` (EK under KEK), `owner_kid`, `scope` (envelope), version. |
+| `one_em_contacts` | Slot 1–3 (= Shamir x), invited e-mail (lower case), `contact_id` once accepted, key id + public key **snapshot** at acceptance, sealed `package`, status. |
+| `one_em_requests`, `one_em_requesters` | Requests with snapshot of wait/threshold, `threshold_at`, `release_at`, `released_at`, `closed_at`; one open request per setup. |
+| `one_em_pool` | Shares re-sealed between released contacts (deleted on revoke). |
+| `one_em_node_keys`, `one_em_album_keys` | EK-wrapped node/album keys; FK to the owner's node/album rows (cascade). Max `em_max_keys` (200 000). |
+| `one_em_log` | The owner-visible log (views and downloads are de-duplicated per hour). |
+| `private.fale_em_outbox` | Notification queue. |
+
+Same access model as §9: RLS without policies, no grants, secret-gated SECURITY DEFINER functions (`public.fale_em_*`, `set search_path = ''`), per-setup advisory locks. Account deletion (`fale_account_delete`) removes the owner's setup with everything in it and, for a contact, their contact rows, requests and pooled shares (logged for the owner as `contact_deleted`).
+
+### 12.7 Threat model (honest)
+
+| Who | Can | Cannot |
+|---|---|---|
+| Server / DB operator, breach | See who invited whom (e-mail addresses), which node/album ids are covered, the request/veto/release/view/download log, timestamps. **Release a package early**: the waiting period is enforced by this server. Withhold or delete the setup (availability). | Read EK, a share, a node key, names or content – packages are sealed for the contact's key, covered keys are wrapped by EK. With k > 1, an early release still needs k colluding contacts. |
+| A contact | After a release: read and keep everything covered (that is the point – choose people you trust). | Read anything before a release, anything outside the covered items, or change anything (read-only: no write path exists). With k > 1: anything alone. |
+| Key substitution (MITM by the server) | Hand the owner a wrong contact key, or a contact a wrong owner key id. | Go unnoticed: owner and contact compare the safety code over both key ids before the owner seals; pooling only goes to keys in the owner's verified roster; a forged share fails the check value. |
+| Revoked / removed contact | Keep what was already downloaded (FaLe cannot take it back). | Fetch anything after the revocation: the server stops serving at once. Start the setup again ("beenden" + new setup) for a new EK after a release, if needed. |
+
+## 13. Tests
 
 Local PostgreSQL 16 with the Supabase stub and the real migrations, mock PostgREST, mock Supabase Auth and a signature-verifying mock S3. The suites live in the session scratchpad, next to the existing ones.
 
@@ -719,3 +831,6 @@ Local PostgreSQL 16 with the Supabase stub and the real migrations, mock PostgRE
 | `one/test_one_crypto.mjs` | Formats, AAD binding (reorder, truncate, extend, swap, kind swap), domain separation, and known-answer checks against `node:crypto`. |
 | `one/test_one_s3.mjs` | AWS SigV4 vectors, S3 client, presigned URLs, and the full drive flow on S3 including gc and account deletion. |
 | `one/test_one_unit.mjs` | Vercel body handling, config clamping, production CORS. |
+| `one/test_nf_crypto.mjs` | Notfallzugang crypto: GF(2^8) against a bitwise reference, Shamir for all k-subsets incl. k = 1, k = n, (k−1)-subsets, custom x, uniformity of a single share, bad parameters, tampering detected by the check value; identity keys interoperable with the family folders; ECIES context binding, bit flips, known-answer check with `node:crypto`; EK wraps, scope, owner copy; safety code. |
+| `one/test_nf_api.mjs` | Setup, invitations bound to the e-mail, accept, safety code incl. a substituted key, sealing rules, time lock with a fast-forwarded clock (one minute before/after), one-tap deny + cooldown, release, read exactly the covered items, new files, trash, moves, the log, revoke, 2 of 3 incl. early release by a malicious server, pooling only to verified keys, forged/corrupted shares, removal, RLS/grants, no plaintext in the DB, export, cron (release, expiry), rate limits, notifier, account-deletion cascade, migration re-runs. |
+| `one/test_nf_ui.py` | Owner (phone, DE), contact (desktop, EN) and second contact (phone, dark): 3-step setup, honest "no e-mail yet" hint, Notfallordner checklist, safety code on both screens, home card, request, banner deny, countdown, release by clock fast-forward, read-only browser + download + ZIP, owner log, revoke, 2 of 2 with pooling, layout (no horizontal scroll, names, touch targets), screenshots `shots/nf_*.png`. |
