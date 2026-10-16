@@ -1,0 +1,15 @@
+{
+  "name": "fale-one-android",
+  "private": true,
+  "description": "FaLe One – Android-App (Capacitor). Abhängigkeiten kommen aus dem node_modules des Repos; die Web-Dateien sind eine Kopie von one/ (www/, wird gebaut).",
+  "scripts": {
+    "web": "node ../scripts/cap-patch-one-android.mjs --web",
+    "add": "node ../scripts/cap-patch-one-android.mjs --web && ../node_modules/.bin/cap add android && node ../scripts/cap-patch-one-android.mjs",
+    "sync": "node ../scripts/cap-patch-one-android.mjs --web && ../node_modules/.bin/cap sync android && node ../scripts/cap-patch-one-android.mjs"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
+  }
+}

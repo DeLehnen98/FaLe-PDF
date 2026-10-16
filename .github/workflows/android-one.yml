@@ -1,0 +1,209 @@
+# Builds the FaLe One Android app (Capacitor project in one-android/) as a debug APK for sideloading and
+# publishes it on the pre-release "one-android-latest". one-android/android/ and one-android/www/ are not
+# committed: they are generated here on every run (copy of one/ + `cap add/sync android`) and patched
+# deterministically by scripts/cap-patch-one-android.mjs. A smoke test then runs the APK on emulators.
+# No signing secrets: debug builds only (Play Store comes later).
+name: Android (FaLe One)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'one/**'
+      - 'one-android/**'
+      - 'scripts/cap-patch-one-android.mjs'
+      - 'scripts/cap-png.mjs'
+      - 'scripts/android-one-e2e/**'
+      - '.github/workflows/android-one.yml'
+  workflow_dispatch:
+
+# Least privilege: read-only by default; only the build job may write (pre-release assets).
+# Third-party actions are pinned to full commit SHAs (same pins as android.yml).
+permissions:
+  contents: read
+
+concurrency:
+  group: android-one-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # attach the APK to the one-android-latest pre-release
+    timeout-minutes: 45
+    outputs:
+      version: ${{ steps.ver.outputs.version }}
+    env:
+      BUILD_LOG: ${{ github.workspace }}/../build.log
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false # the token is passed explicitly where needed (gh, release action)
+
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Setup Java 21
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Android SDK (preinstalled on the runner)
+        run: |
+          SDK="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+          SDKM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          (yes || true) | "$SDKM" --licenses > /dev/null 2>&1 || true
+          "$SDKM" --install "platforms;android-36" "build-tools;36.0.0" "platform-tools" 2>&1 | tail -n 5 | tee -a "$BUILD_LOG" || echo "sdkmanager install failed – Gradle will try to download missing parts" | tee -a "$BUILD_LOG"
+
+      - name: Setup Gradle (cache)
+        uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+
+      - name: Install npm packages (Capacitor CLI + Android)
+        run: (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) 2>&1 | tee -a "$BUILD_LOG"
+
+      - name: Web files (copy of one/)
+        run: (node scripts/cap-patch-one-android.mjs --web) 2>&1 | tee -a "$BUILD_LOG"
+
+      - name: Create / sync Android project
+        working-directory: one-android
+        run: |
+          if [ ! -d android ]; then ../node_modules/.bin/cap add android 2>&1 | tee -a "$BUILD_LOG"; fi
+          ../node_modules/.bin/cap sync android 2>&1 | tee -a "$BUILD_LOG"
+
+      - name: Patch Android project
+        run: (node scripts/cap-patch-one-android.mjs) 2>&1 | tee -a "$BUILD_LOG"
+
+      - name: Read version (one/js/config.js)
+        id: ver
+        run: echo "version=$(node -p "require('fs').readFileSync('one/js/config.js','utf8').match(/export const VERSION = '([^']+)'/)[1]")" >> "$GITHUB_OUTPUT"
+
+      - name: Build debug APK
+        working-directory: one-android/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee -a "$BUILD_LOG"
+
+      - name: Collect outputs
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          mkdir -p out
+          cp one-android/android/app/build/outputs/apk/debug/app-debug.apk "out/FaLe-One-$VERSION-debug.apk"
+          ls -la out
+          echo "::notice title=FaLe One APK::FaLe-One-$VERSION-debug.apk ($(stat -c %s "out/FaLe-One-$VERSION-debug.apk") Bytes)"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: FaLe-One-android
+          path: out/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Remove older files from the test pre-release (main)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view one-android-latest -R "$GITHUB_REPOSITORY" --json assets -q '.assets[].name' 2>/dev/null | while read -r n; do
+            gh release delete-asset one-android-latest "$n" -R "$GITHUB_REPOSITORY" -y || true
+          done || true
+
+      - name: Latest FaLe One test build as pre-release (main)
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        with:
+          tag_name: one-android-latest
+          name: FaLe One – neueste Test-APK
+          prerelease: true
+          make_latest: false
+          body: |
+            FaLe One für Android – automatisch gebaut aus dem neuesten Stand von main (${{ github.sha }}).
+            Zum Testen: die .apk-Datei auf dem Handy herunterladen und öffnen (Installation aus unbekannten Quellen erlauben).
+            Debug-Build zum Ausprobieren, nicht aus dem Play Store. Automatische Fotosicherung läuft in dieser Version, solange die App geöffnet ist.
+          files: out/*
+
+      - name: Report failure details (readable via the Checks API)
+        if: failure()
+        run: |
+          if [ -f "$BUILD_LOG" ]; then
+            grep -n -i -E "error|failed|exception|what went wrong|could not" "$BUILD_LOG" | tail -n 40 > "$RUNNER_TEMP/err.txt" || true
+            tail -n 60 "$BUILD_LOG" >> "$RUNNER_TEMP/err.txt"
+            body=$(sed -e 's/%/%25/g' -e 's/\r/%0D/g' "$RUNNER_TEMP/err.txt" | awk '{printf "%s%%0A", $0}' | cut -c1-60000)
+            echo "::error title=Build-Log (Auszug)::$body"
+          fi
+
+  smoke:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read # download the APK artifact of this run
+    strategy:
+      fail-fast: false
+      matrix:
+        # 34: Android 14 (partial photo access), 36: current Android
+        api: [34, 36]
+    name: smoke (API ${{ matrix.api }})
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Get debug APK (artifact of this run)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          mkdir -p apk e2e-out
+          gh run download "$RUN_ID" -R "$GITHUB_REPOSITORY" -n FaLe-One-android -D apk
+          APK=$(find apk -name 'FaLe-One-*-debug.apk' | head -n 1)
+          test -n "$APK"
+          echo "APK=$PWD/$APK" >> "$GITHUB_ENV"
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Emulator + smoke test
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: ${{ matrix.api }}
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          ram-size: 4096M
+          disk-size: 6G
+          disable-animations: true
+          emulator-boot-timeout: 900
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
+          script: bash scripts/android-one-e2e/run.sh
+
+      - name: Upload screenshots + logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: android-one-smoke-api${{ matrix.api }}
+          path: e2e-out/
+          if-no-files-found: ignore
+          retention-days: 14

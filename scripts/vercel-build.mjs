@@ -15,6 +15,7 @@ const NM = process.env.FALE_NODE_MODULES || join(ROOT, 'node_modules');
 const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '.vercel',
   'package.json', 'package-lock.json', 'vercel.json', 'README.md', 'vendor-extra',
   'android', 'store', 'capacitor.config.json',
+  'one-android', // FaLe One Android app (Capacitor project, built in CI by .github/workflows/android-one.yml)
   'api', 'supabase', 'network', // serverless functions + DB migrations are not static app files
   'one', // FaLe One web app: its own Vercel project (root directory one/)
   'docs', 'SECURITY.md']); // documentation only

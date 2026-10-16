@@ -1,0 +1,13 @@
+{
+  "appId": "dev.fale.one",
+  "appName": "FaLe One",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "hostname": "localhost"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": false
+  }
+}
