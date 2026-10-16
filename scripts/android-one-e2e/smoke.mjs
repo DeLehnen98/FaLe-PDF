@@ -7,11 +7,22 @@
 // registered, media permission flow (prompt → pm grant → granted), MediaStore listing + paging + count,
 // reading an original through Capacitor's local server with EXIF GPS intact, the backup card renders,
 // back button (dialog, history, background instead of closing).
+// Background backup (FaleBackup, WorkManager) against a mock API on the runner (mock-api.mjs, reached through the
+// debug-only override at http://10.0.2.2:<port>): Java ↔ JS crypto cross-test on the device, keys handed over and
+// sealed (not readable in the app's files), jobs scheduled with the switch on, a run while the app is in the
+// background whose uploads decrypt with the web worker's JS code to the original bytes and metadata
+// (verify-backup.mjs), one session refresher (no refresh-token reuse), no double upload (checkpoint + dedupe),
+// signed out elsewhere → keys wiped + notification, switch off → jobs cancelled + keys wiped.
 import { execFileSync } from 'node:child_process';
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { startMock, SUPABASE_KEY } from './mock-api.mjs';
+import { makeVectors, checkJava } from './crossvec.mjs';
+import { verifyBackup, jpegSize } from './verify-backup.mjs';
+import * as K from '../../one/js/shared/one/crypto.js';
+import { parseExif, exifToMeta } from '../../one/js/media.js';
 
 const PKG = 'dev.fale.one';
 const OUT = process.env.E2E_OUT || 'e2e-out';
@@ -164,6 +175,22 @@ async function step(name, fn) {
   screenshot(name.replace(/[^\w]+/g, '-').toLowerCase());
 }
 const M = (method, opts) => `const P = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.FaleMedia; if (!P) throw new Error('FaleMedia fehlt'); return await P.${method}(${JSON.stringify(opts || {})});`;
+const B = (method, opts) => `const P = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.FaleBackup; if (!P) throw new Error('FaleBackup fehlt'); return await P.${method}(${JSON.stringify(opts || {})});`;
+const bgState = () => ev(B('state'));
+const debugBroadcast = (action, extra = '') => sh(`am broadcast -n ${PKG}/.FaleDebugReceiver -a ${PKG}.debug.${action} ${extra}`, { allowFail: true });
+const logcatBg = () => adb(['logcat', '-d', '-v', 'brief', 'FaleBackup:V', 'FaleDebug:V', 'WM-WorkerWrapper:V', 'AndroidRuntime:E', '*:S'], { allowFail: true }).split('\n').filter(l => l.trim()).slice(-25).join(' | ').slice(0, 2500);
+/** WorkManager's jobs of this app in JobScheduler: [{ id, text }] */
+function ourJobs() {
+  const out = sh('dumpsys jobscheduler', { allowFail: true, timeout: 60000 });
+  const jobs = new Map();
+  for (const block of out.split(/\n(?=\s*JOB #)/)) {
+    const m = /JOB #u?\w*\/(\d+): \S+ (\S+)/.exec(block);
+    if (m && m[2].startsWith(PKG + '/') && !jobs.has(m[1])) jobs.set(m[1], { id: m[1], text: block.slice(0, 4000) });
+  }
+  return [...jobs.values()];
+}
+const runAs = cmd => sh(`run-as ${PKG} sh -c '${cmd}'`, { allowFail: true });
+const secretFile = () => /fale-one-bg-secret\.bin/.test(runAs('ls no_backup 2>/dev/null'));
 
 // ------------------------------------------------------------------ main
 async function main() {
@@ -322,6 +349,8 @@ async function main() {
     return `Dialog zu, #e2e-b → #e2e-a, Startseite → Hintergrund (Prozess ${still === pid ? 'läuft weiter' : 'neu: ' + still})`;
   });
 
+  await backgroundBackup(items);
+
   writeFileSync(join(OUT, 'console.txt'), consoleLog.join('\n'));
   writeFileSync(join(OUT, 'results.json'), JSON.stringify(results, null, 2));
   const exc = [...new Set(jsErrors().map(l => l.split('\n')[0].slice(0, 220)))];
@@ -330,6 +359,210 @@ async function main() {
   console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
   console.log(`::${failed.length ? 'error' : 'notice'} title=One-Smoke Zusammenfassung (API ${sdk})::${esc(failed.length ? failed.map(f => f.name).join(', ') + ' fehlgeschlagen' : `${results.length}/${results.length} bestanden`)}`);
   process.exit(failed.length ? 1 : 0);
+}
+
+// ------------------------------------------------------------------ background backup (FaleBackup + WorkManager)
+async function backgroundBackup(items) {
+  const MOCK_PORT = 8787;
+  let mock;
+  try { mock = await startMock({ port: MOCK_PORT, chunkSize: 65536 }); }
+  catch (e) { report('Mock-API starten', false, e.message); return; }
+  const user = { id: K.uuid(), email: 'e2e@example.invalid' };
+  const mkRaw = K.rnd(32);
+  const deviceId = 'E2E_' + K.b64u(K.rnd(12)), deviceName = 'E2E Pixel';
+  let sess = null, armed = false, payloadKeys = null;
+  const fixtures = FIXTURES.map(name => {
+    const bytes = new Uint8Array(readFileSync(join(HERE, 'fixtures', name)));
+    const raw = jpegSize(bytes), o = exifToMeta(parseExif(bytes)).orientation || 1;
+    const swap = o >= 5 && o <= 8;
+    const it = items.find(i => i.name === name);
+    return { name, bytes, taken: it ? it.taken : 0, w: swap ? raw.h : raw.w, h: swap ? raw.w : raw.h };
+  });
+  const armJs = (session) => ev(`const m = await import('/js/native.js');
+    const mk = await crypto.subtle.importKey('raw', Uint8Array.from(atob(${JSON.stringify(Buffer.from(mkRaw).toString('base64'))}), c => c.charCodeAt(0)), 'HKDF', false, ['deriveKey', 'deriveBits']);
+    const p = await m.armPayload({ userId: ${JSON.stringify(user.id)}, mk, deviceId: ${JSON.stringify(deviceId)}, deviceName: ${JSON.stringify(deviceName)},
+      session: { refresh: ${JSON.stringify(session.refresh)}, user: ${JSON.stringify(user)}, access: ${JSON.stringify(session.access)}, exp: ${session.exp} },
+      account: { supabaseUrl: 'https://e2e-auth.invalid', supabaseKey: ${JSON.stringify(SUPABASE_KEY)} }, folderName: 'Fotos', lang: 'de' });
+    const P = window.Capacitor.Plugins.FaleBackup;
+    await P.setPrefs({ userId: p.userId, on: true, wifiOnly: true, videos: false, lang: 'de' });
+    await P.arm(p);
+    return { kek: p.kek, dk: p.dk, dvk: p.dvk, apiBase: p.apiBase };`);
+
+  await step('Krypto-Kreuztest im Emulator (Java ↔ JS)', async () => {
+    await ensureFocus();
+    const vec = await makeVectors();
+    const out = await ev(`const P = window.Capacitor.Plugins.FaleDebug; if (!P) throw new Error('FaleDebug fehlt (Debug-Build?)'); return await P.cryptoSelfTest({ vectors: ${JSON.stringify(vec)} });`, { timeout: 120000 });
+    const problems = await checkJava(vec, out);
+    if (problems.length) throw new Error(problems.join(' | ').slice(0, 1500));
+    return `${Object.keys(out).filter(k => k.startsWith('check.')).length} Java-Prüfungen auf dem Gerät, JS öffnet alle Java-Daten`;
+  });
+
+  await step('Hintergrund-Sicherung einrichten: Schlüssel versiegelt, Zeitplan aktiv', async () => {
+    debugBroadcast('API', `--es api http://10.0.2.2:${MOCK_PORT}`);
+    await sleep(800);
+    const logApi = adb(['logcat', '-d', '-v', 'brief', 'FaleDebug:V', '*:S'], { allowFail: true });
+    if (!/api override = http:\/\/10\.0\.2\.2/.test(logApi)) throw new Error('Debug-Override nicht gesetzt: ' + logApi.slice(-400));
+    // nothing new yet: the checkpoint is put behind the test photos, so the first (immediate) periodic run uploads nothing
+    const last = items.reduce((a, b) => (b.added > a.added || (b.added === a.added && b.id > a.id) ? b : a), items[0]);
+    await ev(B('setCheckpoint', { userId: user.id, kind: 'image', since: last.added, afterId: last.id }));
+    sess = mock.session(user, { accessExpired: true }); // expired access token: the background run must refresh first
+    payloadKeys = await armJs(sess);
+    armed = true;
+    // what the app hands over = the worker's account keys (K.deriveKeys) – checked byte for byte
+    const want = await crossKeys(mkRaw, user.id);
+    if (payloadKeys.kek !== want.kek || payloadKeys.dk !== want.dk || payloadKeys.dvk !== want.dvk) throw new Error('übergebene Schlüssel ≠ K.deriveKeys');
+    if (payloadKeys.apiBase !== 'https://pdf.fale.network') throw new Error('apiBase ' + payloadKeys.apiBase);
+    const st = await waitFor(async () => { const x = await bgState(); return x.armed && x.work.periodic !== 'NONE' && x.work.trigger !== 'NONE' && x; }, { timeout: 15000 });
+    if (!st) throw new Error('nicht geplant: ' + JSON.stringify(await bgState()));
+    if (!st.prefs.on || !st.prefs.wifiOnly || st.prefs.videos) throw new Error('prefs ' + JSON.stringify(st.prefs));
+    // sealed: neither the tokens nor the keys are readable in the app's files
+    if (!secretFile()) throw new Error('kein versiegelter Zustand in no_backup/');
+    const blob = adb(['exec-out', 'run-as', PKG, 'cat', 'no_backup/fale-one-bg-secret.bin'], { encoding: null, allowFail: true });
+    const txt = Buffer.from(blob).toString('latin1');
+    const kekRaw = Buffer.from(K.unb64u(payloadKeys.kek));
+    if (!blob.length || blob[0] !== 1) throw new Error('Dateiformat ' + blob.length);
+    if (txt.includes(sess.refresh) || txt.includes(payloadKeys.kek) || Buffer.from(blob).includes(kekRaw) || txt.includes('userId')) throw new Error('Geheimnisse im Klartext gespeichert');
+    const prefsXml = runAs('cat shared_prefs/*.xml');
+    if (prefsXml.includes(sess.refresh) || prefsXml.includes(payloadKeys.kek)) throw new Error('Geheimnisse in shared_prefs');
+    const pkgFlags = (sh(`dumpsys package ${PKG}`, { allowFail: true }).match(/pkgFlags=\[[^\]]*\]/) || [''])[0];
+    if (/ALLOW_BACKUP/.test(pkgFlags)) throw new Error('allowBackup ist an: ' + pkgFlags);
+    const jobs = await waitFor(() => { const j = ourJobs(); return j.length >= 2 && j; }, { timeout: 15000, interval: 1500 });
+    if (!jobs) throw new Error('keine JobScheduler-Jobs: ' + JSON.stringify(ourJobs().map(j => j.id)));
+    const all = jobs.map(j => j.text).join('\n');
+    const unmetered = /NOT_METERED|UNMETERED/.test(all), content = /content:\/\/media/.test(all);
+    if (!unmetered || !content) console.log(`::warning title=One-Smoke Job-Bedingungen::${esc('WLAN-Bedingung ' + unmetered + ', Inhalts-Trigger ' + content + '\n' + all.slice(0, 1500))}`);
+    return `armiert, Arbeit ${JSON.stringify(st.work)}, ${jobs.length} Jobs (WLAN-Bedingung ${unmetered ? 'ja' : '?'}, neue-Fotos-Trigger ${content ? 'ja' : '?'}), Datei versiegelt (${blob.length} B), allowBackup aus`;
+  });
+
+  await step('Hintergrundlauf bei geschlossener App: Uploads entschlüsseln mit JS zum Original', async () => {
+    if (!armed) throw new Error('nicht eingerichtet');
+    await waitFor(async () => { const x = await bgState(); return x.live && !x.live.running && x; }, { timeout: 60000, interval: 1500 }); // the immediate periodic run (nothing new) is over
+    if (mock.photoNodes().length) throw new Error('vor dem Hintergrundtest schon hochgeladen');
+    await ev(B('setPrefs', { userId: user.id, wifiOnly: false })); // the emulator's network may count as metered
+    adb(['logcat', '-c'], { allowFail: true });
+    sh('input keyevent 3'); // HOME: the activity goes to the background (not force-stopped)
+    if (!await waitFor(() => !appOnTop(), { timeout: 10000 })) throw new Error('App bleibt vorne');
+    debugBroadcast('CHECKPOINT'); // all test photos are new again
+    await sleep(1000);
+    const jobs = ourJobs();
+    for (const j of jobs) sh(`cmd jobscheduler run -f ${PKG} ${j.id}`, { allowFail: true });
+    let how = `JobScheduler (${jobs.map(j => j.id).join(', ')})`;
+    let ok = await waitFor(() => mock.photoNodes().length >= FIXTURES.length, { timeout: 60000, interval: 1500 });
+    if (!ok) { debugBroadcast('RUN'); how += ' + Debug-RUN'; ok = await waitFor(() => mock.photoNodes().length >= FIXTURES.length, { timeout: 120000, interval: 2000 }); }
+    const fg = appOnTop();
+    if (!ok) throw new Error(`${mock.photoNodes().length}/${FIXTURES.length} hochgeladen | Mock: ${mock.st.requests.slice(-12).map(r => r.a || r.path).join(',')} | logcat: ${logcatBg()}`);
+    if (fg) throw new Error('App war während des Laufs vorne');
+    await waitFor(() => mock.st.reports.some(r => r.deviceId === deviceId && r.status === 'idle' && r.success && r.at > Math.max(...mock.photoNodes().map(n => n.committedAt))), { timeout: 30000 });
+    const runs = adb(['logcat', '-d', '-v', 'brief', 'FaleBackup:V', '*:S'], { allowFail: true }).split('\n').filter(l => /run \(/.test(l)).map(l => l.replace(/^.*?: /, '')).slice(-4).join('; ');
+    const v = await verifyBackup({ mock, mkRaw, userId: user.id, deviceId, deviceName, fixtures });
+    if (v.problems.length) throw new Error(v.problems.join(' | ').slice(0, 1800));
+    if (mock.st.refreshes < 1) throw new Error('Sitzung nicht erneuert (Zugriffstoken war abgelaufen)');
+    if (mock.st.reuse) throw new Error('Refresh-Token doppelt benutzt');
+    return `${how}; ${v.info.join(' · ')}; Läufe: ${runs}; Sitzung ${mock.st.refreshes}× erneuert`;
+  });
+
+  await step('Ein Sitzungs-Erneuerer: die App erneuert über die Hintergrund-Sicherung', async () => {
+    await ensureFocus();
+    // the app's own (now outdated) refresh token must never reach the server – auth.js asks FaleBackup
+    const r = await ev(`const { kv } = await import('/js/idb.js'); const A = await import('/js/auth.js');
+      await kv.set('session', { refresh: ${JSON.stringify(sess.refresh)}, user: ${JSON.stringify(user)}, at: Date.now(), device: ${JSON.stringify(deviceId)}, deviceName: ${JSON.stringify(deviceName)} });
+      const before = ${mock.st.refreshes};
+      const tok = await A.accessToken({ force: true });
+      const s = await kv.get('session', null);
+      await kv.del('session'); localStorage.removeItem('fale-one-signed-in');
+      return { tok: !!tok, refresh: s && s.refresh };`);
+    if (!r.tok) throw new Error('kein Zugriffstoken');
+    if (r.refresh !== mock.st.refresh) throw new Error('App hat nicht das neueste Refresh-Token');
+    const usedOld = mock.st.presented.filter(x => x === sess.refresh).length;
+    if (usedOld !== 1 || mock.st.reuse) throw new Error(`altes Refresh-Token ${usedOld}× vorgelegt, Wiederverwendung ${mock.st.reuse}`);
+    return `${mock.st.refreshes} Erneuerungen, keine Wiederverwendung, App übernimmt das neue Token`;
+  });
+
+  await step('Kein Doppel-Upload: Prüfpunkt und Dedupe', async () => {
+    const uploadsBefore = mock.st.uploads.size, nodesBefore = mock.photoNodes().length;
+    const runOnce = async () => {
+      const s0 = (await bgState()).status || {};
+      debugBroadcast('RUN');
+      const s1 = await waitFor(async () => { const x = await bgState(); return x.status && x.status.lastRun > (s0.lastRun || 0) && !x.live.running && x; }, { timeout: 90000, interval: 1500 });
+      if (!s1) throw new Error('Lauf endet nicht | ' + logcatBg());
+      return s1;
+    };
+    await runOnce(); // checkpoint: nothing new
+    const dedupeBefore = mock.st.requests.filter(r => r.a === 'dedupe').length;
+    debugBroadcast('CHECKPOINT');
+    await sleep(800);
+    const s2 = await runOnce(); // everything "new" again → server dedupe must skip it
+    const dedupes = mock.st.requests.filter(r => r.a === 'dedupe').length - dedupeBefore;
+    if (mock.photoNodes().length !== nodesBefore) throw new Error(`${mock.photoNodes().length} statt ${nodesBefore} Fotos`);
+    if (mock.st.uploads.size !== uploadsBefore) throw new Error(`${mock.st.uploads.size - uploadsBefore} neue Uploads`);
+    if (dedupes < FIXTURES.length || s2.status.skipped < FIXTURES.length) throw new Error(`Dedupe ${dedupes}×, übersprungen ${s2.status.skipped}`);
+    return `2 weitere Läufe, keine neuen Uploads, ${s2.status.skipped} per Dedupe übersprungen`;
+  });
+
+  await step('Neues Foto: Inhalts-Trigger sichert es im Hintergrund', async () => {
+    const n0 = mock.photoNodes().length;
+    const name = 'fale-e2e-neu.jpg';
+    const bytes = Buffer.concat([Buffer.from(fixtures[0].bytes), Buffer.from('E2E' + Date.now())]); // new content (after EOI)
+    writeFileSync(join(OUT, name), bytes);
+    sh('input keyevent 3');
+    adb(['push', join(OUT, name), `/sdcard/DCIM/Camera/${name}`], { allowFail: true });
+    sh(`content call --uri content://media/none --method scan_file --arg /storage/emulated/0/DCIM/Camera/${name}`, { allowFail: true });
+    sh(`am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/${name}`, { allowFail: true });
+    let ok = await waitFor(() => mock.photoNodes().length > n0, { timeout: 75000, interval: 2000 });
+    let how = 'Inhalts-Trigger';
+    if (!ok) { // the trigger may be delayed by the system: run the jobs like the scheduler would
+      for (const j of ourJobs()) sh(`cmd jobscheduler run -f ${PKG} ${j.id}`, { allowFail: true });
+      how = 'Job erzwungen (Trigger kam nicht in 75 s)';
+      ok = await waitFor(() => mock.photoNodes().length > n0, { timeout: 90000, interval: 2000 });
+    }
+    if (!ok) throw new Error('neues Foto nicht gesichert | ' + logcatBg());
+    if (how !== 'Inhalts-Trigger') console.log(`::warning title=One-Smoke Inhalts-Trigger::${esc(how)}`);
+    return `${how}, ${mock.photoNodes().length} Fotos`;
+  });
+
+  await step('Anderswo abgemeldet: Schlüssel gelöscht, Hinweis zum Öffnen', async () => {
+    await ensureFocus();
+    if (sdk >= 33) sh(`pm grant ${PKG} android.permission.POST_NOTIFICATIONS`, { allowFail: true });
+    mock.revokeSession();
+    debugBroadcast('RUN');
+    const st = await waitFor(async () => { const x = await bgState(); return !x.armed && x; }, { timeout: 90000, interval: 1500 });
+    if (!st) throw new Error('Schlüssel nicht gelöscht | ' + logcatBg());
+    if (secretFile()) throw new Error('versiegelte Datei noch da');
+    const busy = Object.entries(st.work).filter(([, v]) => v === 'ENQUEUED' || v === 'RUNNING');
+    if (busy.length) throw new Error('Arbeit noch geplant: ' + JSON.stringify(st.work));
+    const notes = sh('dumpsys notification --noredact', { allowFail: true, timeout: 60000 });
+    const shown = notes.includes('Sicherung angehalten');
+    if (sdk >= 33 && !shown) throw new Error('kein Hinweis „Sicherung angehalten“');
+    const tok = await ev(B('token', {}));
+    if (tok.armed) throw new Error('token() liefert noch eine Sitzung');
+    return `entwaffnet, Arbeit ${JSON.stringify(st.work)}, Hinweis ${shown ? 'angezeigt' : 'ohne Mitteilungs-Erlaubnis nicht sichtbar'}`;
+  });
+
+  await step('Schalter aus: Zeitplan gelöscht, Schlüssel gelöscht', async () => {
+    sess = mock.session(user);
+    await ev(B('setCheckpoint', { userId: user.id, kind: 'image', since: 4102444800, afterId: 0 })); // nothing to upload in this step
+    await armJs(sess);
+    const on = await waitFor(async () => { const x = await bgState(); return x.armed && x.work.periodic !== 'NONE' && x; }, { timeout: 15000 });
+    if (!on) throw new Error('nicht wieder eingerichtet');
+    if (!await waitFor(() => ourJobs().length > 0, { timeout: 15000, interval: 1500 })) throw new Error('keine Jobs nach dem Einschalten');
+    const r = await ev(B('setPrefs', { userId: user.id, on: false }));
+    if (r.armed !== false || r.on !== false) throw new Error('setPrefs(off): ' + JSON.stringify(r));
+    const off = await waitFor(async () => { const x = await bgState(); return !x.armed && !Object.values(x.work).some(v => v === 'ENQUEUED' || v === 'RUNNING') && x; }, { timeout: 15000 });
+    if (!off) throw new Error('nach dem Ausschalten: ' + JSON.stringify(await bgState()));
+    const left = await waitFor(() => ourJobs().length === 0, { timeout: 20000, interval: 2000 });
+    if (!left) throw new Error('JobScheduler-Jobs bleiben: ' + ourJobs().map(j => j.id).join(','));
+    if (secretFile()) throw new Error('versiegelte Datei noch da');
+    debugBroadcast('API', '--es api ""');
+    return `aus: Arbeit ${JSON.stringify(off.work)}, keine Jobs, keine Schlüssel`;
+  });
+  await mock.close().catch(() => {});
+}
+async function crossKeys(mkRaw, userId) {
+  const te = new TextEncoder();
+  const mk = await K.importMasterRaw(mkRaw);
+  const bits = async info => K.b64u(new Uint8Array(await globalThis.crypto.subtle.deriveBits({ name: 'HKDF', hash: 'SHA-256', salt: te.encode(`fale-one-v1|${userId}`), info: te.encode(info) }, mk, 256)));
+  // must equal the keys K.deriveKeys derives (checked by decrypting with them in verifyBackup)
+  return { kek: await bits('fale-one-v1/kek'), dk: await bits('fale-one-v1/dedupe'), dvk: await bits('fale-one-v1/device') };
 }
 
 main().catch(e => {

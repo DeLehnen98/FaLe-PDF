@@ -40,5 +40,5 @@ adb logcat -c || true
 (adb logcat -v time > "$OUT/logcat.txt" 2>&1 &)
 node "$HERE/smoke.mjs"
 rc=$?
-grep -E "FaleMedia|FaleSystem|Capacitor|chromium|AndroidRuntime|E/" "$OUT/logcat.txt" | grep -iE "fale|capacitor|exception|error" | tail -n 120 > "$OUT/logcat-excerpt.txt" || true
+grep -E "FaleMedia|FaleSystem|FaleBackup|FaleDebug|WM-|Capacitor|chromium|AndroidRuntime|E/" "$OUT/logcat.txt" | grep -iE "fale|capacitor|WM-|exception|error" | tail -n 120 > "$OUT/logcat-excerpt.txt" || true
 exit $rc
