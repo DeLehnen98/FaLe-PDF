@@ -24,3 +24,9 @@ jobs:
             echo "::notice title=$h::NS[$ns] A[$a] CNAME[$cn] HTTPS[$code] Titel[$title]"
             rm -f /tmp/body
           done
+          for d in fale.network faleone.com; do
+            pub=$(dig "$d" A @1.1.1.1 +noall +comments | grep -o 'status: [A-Z]*' | head -n1)
+            deleg=$(dig +trace +nodnssec NS "$d" 2>/dev/null | grep -E "^$d\.\s.*NS" | awk '{print $NF}' | sort -u | tr '\n' ' ')
+            vc=$(dig "$d" A @ns1.vercel-dns.com +noall +comments +answer | grep -oE 'status: [A-Z]+|IN\s+A\s+[0-9.]+' | tr '\n' ' ')
+            echo "::notice title=Delegation $d::1.1.1.1[$pub] Registry-NS[$deleg] ns1.vercel-dns.com[$vc]"
+          done
