@@ -1,0 +1,154 @@
+{
+  "id": "enex-to-markdown",
+  "category": "everyday",
+  "icon": "doc",
+  "module": "tools/enex-to-markdown.js",
+  "accepts": [
+    ".enex",
+    "application/enex+xml"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 64,
+  "related": [
+    "pdf-to-markdown",
+    "text-to-pdf",
+    "merge-pdf",
+    "read-e-invoice"
+  ],
+  "next": [],
+  "needs": [
+    "jszip"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "enex-in-markdown",
+    "name": "ENEX in Markdown",
+    "short": "Notiz-Exporte (.enex) in offene Markdown-Dateien umwandeln.",
+    "title": "ENEX in Markdown umwandeln – Notizen mitnehmen | FaleNetwork",
+    "h1": "ENEX in Markdown umwandeln",
+    "metaDescription": "Notiz-Export im ENEX-Format in Markdown umwandeln: Texte, Listen, Tabellen, Bilder und Anhänge – als ZIP für jede Notiz-App. Gratis, ohne Upload, ohne Konto.",
+    "lede": "Nimm deine Notizen mit: ENEX-Export auswählen, Markdown-Dateien mit allen Bildern und Anhängen bekommen.",
+    "pickLabel": "ENEX-Dateien auswählen",
+    "primaryButton": "Umwandeln",
+    "keywords": [
+      "enex",
+      "notizen exportieren",
+      "notizen umziehen",
+      "markdown",
+      "notiz app wechseln",
+      "export umwandeln"
+    ],
+    "steps": [
+      {
+        "title": "Notizen exportieren",
+        "text": "Exportiere in deiner bisherigen Notiz-App ein Notizbuch oder alle Notizen als ENEX-Datei (.enex)."
+      },
+      {
+        "title": "ENEX-Dateien wählen",
+        "text": "Wähl eine oder mehrere ENEX-Dateien aus – jede wird ein eigener Ordner."
+      },
+      {
+        "title": "ZIP speichern",
+        "text": "Du bekommst eine ZIP mit einer Markdown-Datei pro Notiz, den Bildern und Anhängen daneben und einem Inhaltsverzeichnis."
+      }
+    ],
+    "why": [
+      {
+        "title": "Offenes Format",
+        "text": "Markdown ist einfacher Text mit ein paar Zeichen für Überschriften und Listen – lesbar in jedem Editor und in vielen Notiz-Apps, auch in zwanzig Jahren noch."
+      },
+      {
+        "title": "Nichts geht verloren",
+        "text": "Überschriften, Listen, Checklisten, Tabellen, Links, Bilder und Anhänge werden übernommen. Erstellt- und Änderungsdatum sowie Schlagwörter stehen oben in jeder Notiz."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine Notizen werden im Browser umgewandelt und nicht hochgeladen – auch große Exporte mit vielen Bildern."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bekomme ich eine ENEX-Datei?",
+        "a": "In den gängigen Notiz-Apps über das Menü eines Notizbuchs: „Exportieren“ und als Format ENEX wählen. Viele Apps erlauben auch den Export aller Notizen auf einmal."
+      },
+      {
+        "q": "Welche App kann die Markdown-Dateien öffnen?",
+        "a": "Jeder Texteditor – und Notiz-Apps, die Markdown unterstützen. Die Bilder liegen im Ordner „Anhänge“ und sind in den Notizen verlinkt."
+      },
+      {
+        "q": "Was passiert mit verschlüsseltem Text?",
+        "a": "Text, der in der Original-App mit einem eigenen Passwort verschlüsselt wurde, kann hier nicht entschlüsselt werden. An der Stelle steht ein Hinweis."
+      },
+      {
+        "q": "Werden meine Notizen hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser; die Seite funktioniert nach dem ersten Laden auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "enex-to-markdown",
+    "name": "ENEX to Markdown",
+    "short": "Convert note exports (.enex) into open Markdown files.",
+    "title": "Convert ENEX to Markdown – take your notes along | FaleNetwork",
+    "h1": "Convert ENEX to Markdown",
+    "metaDescription": "Convert ENEX note exports to Markdown: text, lists, tables, images and attachments – as a ZIP for any note app. Free, no upload, no account.",
+    "lede": "Take your notes with you: choose an ENEX export, get Markdown files with all images and attachments.",
+    "pickLabel": "Choose ENEX files",
+    "primaryButton": "Convert",
+    "keywords": [
+      "enex",
+      "export notes",
+      "migrate notes",
+      "markdown",
+      "switch note app",
+      "convert export"
+    ],
+    "steps": [
+      {
+        "title": "Export your notes",
+        "text": "In your current note app, export a notebook or all notes as an ENEX file (.enex)."
+      },
+      {
+        "title": "Choose ENEX files",
+        "text": "Choose one or more ENEX files – each becomes its own folder."
+      },
+      {
+        "title": "Save the ZIP",
+        "text": "You get a ZIP with one Markdown file per note, images and attachments next to them and a table of contents."
+      }
+    ],
+    "why": [
+      {
+        "title": "Open format",
+        "text": "Markdown is plain text with a few characters for headings and lists – readable in any editor and many note apps, still in twenty years."
+      },
+      {
+        "title": "Nothing gets lost",
+        "text": "Headings, lists, checklists, tables, links, images and attachments are kept. Created and modified dates and tags are at the top of each note."
+      },
+      {
+        "title": "No upload",
+        "text": "Your notes are converted in the browser and never uploaded – even large exports with many images."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I get an ENEX file?",
+        "a": "In common note apps via a notebook’s menu: choose “Export” and the ENEX format. Many apps can also export all notes at once."
+      },
+      {
+        "q": "Which app can open the Markdown files?",
+        "a": "Any text editor – and note apps that support Markdown. Images are in the “Attachments” folder and linked from the notes."
+      },
+      {
+        "q": "What happens to encrypted text?",
+        "a": "Text encrypted with its own password in the original app cannot be decrypted here. A note marks the spot."
+      },
+      {
+        "q": "Are my notes uploaded?",
+        "a": "No. Everything happens in your browser; after the first visit the page also works offline."
+      }
+    ]
+  }
+}
