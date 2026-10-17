@@ -84,6 +84,20 @@
     }
   }
 
+  // "share this site" buttons (support page): system share sheet, else copy the link
+  function shareButtons() {
+    var btns = document.querySelectorAll('[data-share-url]');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        var b = this, u = b.getAttribute('data-share-url'), text = b.getAttribute('data-share-text') || '';
+        function copied() { var old = b.textContent; b.textContent = b.getAttribute('data-share-done') || old; setTimeout(function () { b.textContent = old; }, 2200); }
+        if (navigator.share) { navigator.share({ title: document.title, text: text, url: u }).catch(function () {}); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(copied, function () { b.textContent = u; });
+        else b.textContent = u;   // no clipboard: show the address to copy by hand
+      });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', shareButtons); else shareButtons();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready);
   else ready();
 })();

@@ -371,3 +371,7 @@ html:not(.wt-js) .wt-cat[aria-current="true"] { background: var(--surface); bord
 @media (prefers-reduced-motion: reduce) { .wt-catacc > summary::after { transition: none; } }
 @media print { .wt-acc-item > div, .wt-catacc > .wt-grid { display: block; } }
 .wt-rows-noic .wt-card a { grid-template-columns: 1fr; }
+.wt-support { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin: 14px 0 0; padding: 8px 4px 8px 14px; border-radius: var(--radius-md); background: var(--surface-2); color: var(--text-2); font-size: var(--step--1); }
+.wt-support a { color: var(--primary); font-weight: 650; }
+.wt-support-x { margin-left: auto; width: 44px; height: 44px; border: 0; background: transparent; color: var(--text-3); font-size: 1.4rem; line-height: 1; cursor: pointer; border-radius: var(--radius-pill); }
+.wt-support-x:hover { background: var(--surface-3, var(--surface)); color: var(--text); }

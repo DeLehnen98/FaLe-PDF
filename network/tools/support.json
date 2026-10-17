@@ -1,0 +1,6 @@
+{
+  "_hinweis": "Links zu deinen Zahlungsseiten eintragen. Leere Felder = der Knopf wird nicht angezeigt. Danach neu bauen: python3 tools/build_pages.py && python3 tools/webtools/build.py",
+  "once": { "url": "", "via": "" },
+  "monthly": { "url": "", "via": "" },
+  "contact_email": ""
+}

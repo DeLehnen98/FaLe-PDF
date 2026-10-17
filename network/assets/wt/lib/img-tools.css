@@ -175,3 +175,14 @@
 .id-redact-boxes { position: absolute; inset: 0; pointer-events: none; }
 .id-redact-rect { position: absolute; background: #000; }
 .id-redact-rect.is-live { background: rgba(0, 0, 0, .55); outline: 2px dashed #fff; }
+/* image-to-svg: colour chips */
+.vec-pal { margin: 12px 0; }
+.vec-pal .wt-live-title { margin: 0 0 8px; }
+.vec-pal-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.vec-pal-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--surface); cursor: pointer; font-size: var(--step--1); }
+.vec-pal-in { width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
+.vec-pal-in::-webkit-color-swatch-wrapper { padding: 0; }
+.vec-pal-in::-webkit-color-swatch { border: 1px solid var(--border-strong); border-radius: 50%; }
+.vec-pal-in::-moz-color-swatch { border: 1px solid var(--border-strong); border-radius: 50%; }
+.vec-pal-hex { font-variant-numeric: tabular-nums; color: var(--text-2); }
+.vec-pal-stat { margin-top: 8px; }

@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '2671d287b1ce';
+const VERSION = '5995f558efd2';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -101,6 +101,7 @@ const PRECACHE = [
   "/assets/wt/lib/seo-words-en.js",
   "/assets/wt/lib/seo.css",
   "/assets/wt/lib/strings.js",
+  "/assets/wt/lib/support-nudge.js",
   "/assets/wt/lib/sw.js",
   "/assets/wt/lib/tpl-core.js",
   "/assets/wt/lib/tpl-cv.js",
@@ -112,6 +113,8 @@ const PRECACHE = [
   "/assets/wt/lib/tpl.css",
   "/assets/wt/lib/tt.js",
   "/assets/wt/lib/unifont.js",
+  "/assets/wt/lib/vec-trace.js",
+  "/assets/wt/lib/vec-worker.js",
   "/assets/wt/shell.js",
   "/assets/wt/vl.css",
   "/assets/wt/vl.js",

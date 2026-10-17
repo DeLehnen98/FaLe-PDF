@@ -38,6 +38,7 @@ PAGES = {
     'konto':   ('/konto/', '/en/account/'),
     'privacy': ('/datenschutz/', '/en/privacy/'),
     'imprint': ('/impressum/', '/en/imprint/'),
+    'support': ('/unterstuetzen/', '/en/support/'),
 }
 
 
@@ -74,6 +75,10 @@ def ic(name, cls=''):
         'arrow': '<path d="M5 12h14M13 6l6 6-6 6"/>',
         'sync': '<path d="M20 11a8 8 0 0 0-14.9-3M4 13a8 8 0 0 0 14.9 3"/><path d="M4 4v4h4M20 20v-4h-4"/>',
         'key': '<circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M16 7l3 3"/>',
+        'heart': '<path d="M12 20.5s-7.5-4.6-9.4-9.4C1.2 7.6 3.4 4 7 4c2 0 3.6 1 5 2.8C13.4 5 15 4 17 4c3.6 0 5.8 3.6 4.4 7.1-1.9 4.8-9.4 9.4-9.4 9.4z"/>',
+        'share': '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>',
+        'mail': '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+        'bookmark': '<path d="M6 3h12v18l-6-4-6 4z"/>',
         'star': '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
     }[name]
     c = f' class="{cls}"' if cls else ''
@@ -89,7 +94,7 @@ T = {
         'nav_label': 'Hauptnavigation',
         'nav': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('Apps', '/#apps')],
         'more': 'Mehr', 'more_label': 'Weitere Seiten',
-        'more_links': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/')],
+        'more_links': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('Unterstützen', '/unterstuetzen/')],
         'lang_label': 'Sprache', 'lang_name': 'Deutsch', 'lang_current': 'Deutsch – aktuelle Sprache',
         'other_lang': 'English', 'other_lang_code': 'en',
         'lang_fallback': 'English – this page is only available in German; opens the English overview',
@@ -97,7 +102,7 @@ T = {
         'foot_claim': 'Freie Apps von FaLe.dev – ohne Konto, ohne Tracking, mit deinen Daten auf deinem Gerät.',
         'foot_apps': 'Angebot', 'foot_more': 'Mehr', 'foot_legal': 'Rechtliches',
         'foot_links_apps': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe PDF', '/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/apps/clean/')],
-        'foot_links_more': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('English', '/en/')],
+        'foot_links_more': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('Unterstützen', '/unterstuetzen/'), ('English', '/en/')],
         'foot_links_legal': [('Impressum', '/impressum/'), ('Datenschutz', '/datenschutz/'), ('Sicherheit melden', '/.well-known/security.txt')],
         'foot_note': 'Diese Website setzt keine Cookies und lädt nichts von fremden Servern.',
         'locale': 'de_DE', 'locale_alt': 'en_GB',
@@ -109,7 +114,7 @@ T = {
         'nav_label': 'Main navigation',
         'nav': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('Apps', '/en/#apps')],
         'more': 'More', 'more_label': 'More pages',
-        'more_links': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/')],
+        'more_links': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Support us', '/en/support/')],
         'lang_label': 'Language', 'lang_name': 'English', 'lang_current': 'English – current language',
         'other_lang': 'Deutsch', 'other_lang_code': 'de',
         'lang_fallback': 'Deutsch – diese Seite gibt es nur auf Englisch; öffnet die deutsche Übersicht',
@@ -117,7 +122,7 @@ T = {
         'foot_claim': 'Free apps by FaLe.dev – no account, no tracking, your data stays on your device.',
         'foot_apps': 'What’s here', 'foot_more': 'More', 'foot_legal': 'Legal',
         'foot_links_apps': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe PDF', '/en/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/en/apps/clean/')],
-        'foot_links_more': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Deutsch', '/')],
+        'foot_links_more': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Support us', '/en/support/'), ('Deutsch', '/')],
         'foot_links_legal': [('Legal notice', '/en/imprint/'), ('Privacy', '/en/privacy/'), ('Report a security issue', '/.well-known/security.txt')],
         'foot_note': 'This website sets no cookies and loads nothing from third-party servers.',
         'locale': 'en_GB', 'locale_alt': 'de_DE',
@@ -1084,6 +1089,148 @@ def ph(text):
     return f'<mark class="ph">[{text}]</mark>'
 
 
+# ----------------------------------------------------------------- support page
+def support_config():
+    """tools/support.json (not deployed): payment links the operator fills in himself – empty = not shown."""
+    p = ROOT / 'tools' / 'support.json'
+    try:
+        return json.loads(p.read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return {}
+
+
+SUPPORT = {
+    'de': {
+        'title': 'FaleNetwork unterstützen | FaleNetwork',
+        'desc': 'Freie Werkzeuge ohne Werbung und Tracking: So hilfst du, dass FaleNetwork kostenlos bleibt – mit einem Beitrag, durch Weitersagen oder mit Rückmeldungen.',
+        'badge': 'Unterstützen',
+        'h1': 'Hilf mit, dass es kostenlos bleibt',
+        'lede': 'Alle Werkzeuge auf fale.network sind kostenlos – ohne Werbung, ohne Konto und ohne Tracking. Damit das so bleibt, freuen wir uns über jede Unterstützung, mit Geld oder ohne.',
+        'money_h': 'Mit einem Beitrag',
+        'money_p': 'Einmalig oder monatlich, so wie es für dich passt. Jeder Betrag hilft – auch ein kleiner.',
+        'once': ('Einmal unterstützen', 'Ein Beitrag in der Höhe, die du wählst.'),
+        'monthly': ('Monatlich unterstützen', 'Ein kleiner fester Betrag, jederzeit kündbar.'),
+        'leave': 'Du verlässt fale.network',
+        'money_soon': 'Die Möglichkeit für einen Beitrag wird gerade eingerichtet. Bis dahin hilft es uns am meisten, wenn du die Werkzeuge weitersagst.',
+        'free_h': 'Ohne Geld helfen',
+        'share': ('Weitersagen', 'Erzähl Freunden, Familie oder Kollegen von den Werkzeugen. Eine Empfehlung von dir wirkt mehr als jede Anzeige.', 'Link teilen', 'Link kopiert'),
+        'share_text': 'Kostenlose PDF- und Bild-Werkzeuge ohne Werbung und ohne Hochladen:',
+        'mail': ('Rückmeldung geben', 'Etwas funktioniert nicht oder ein Werkzeug fehlt dir? Schreib uns – jede Rückmeldung macht die Seite besser.', 'E-Mail schreiben', 'Rückmeldung zu fale.network'),
+        'keep': ('Wiederkommen', 'Speichere fale.network als Lesezeichen oder installiere die Seite über das Browser-Menü als App. Viele Werkzeuge funktionieren danach sogar offline.', 'Zu den Werkzeugen'),
+        'use_h': 'Wofür dein Beitrag verwendet wird',
+        'use': ['Server, Domains und die Auslieferung der Seite in ganz Europa', 'Neue Werkzeuge und Vorlagen – ausgesucht nach dem, was bei anderen Anbietern am meisten stört', 'Tests auf vielen Geräten, damit nichts hängt, einfriert oder Dateien beschädigt', 'Später: unabhängige Sicherheitsprüfungen'],
+        'stay_h': 'Was sich nicht ändert',
+        'stay': ['Alle Werkzeuge bleiben für alle kostenlos – mit oder ohne Beitrag', 'Keine Werbung, kein Tracking, keine Cookies', 'Deine Dateien werden auf deinem Gerät verarbeitet und nicht hochgeladen'],
+        'faq_h': 'Häufige Fragen',
+        'faq': [
+            ('Ist das eine Spende?', 'Nicht im steuerlichen Sinn. FaleNetwork ist ein Angebot von FaLe.dev, einem unabhängigen Entwickler, und kein gemeinnütziger Verein. Deshalb gibt es keine Spendenquittung. Dein Beitrag ist freiwillig.'),
+            ('Bekomme ich etwas dafür?', 'Du hilfst, dass alles kostenlos bleibt und neue Werkzeuge dazukommen. Extras nur für Unterstützer gibt es nicht – jeder soll alle Werkzeuge nutzen können.'),
+            ('Was passiert mit meinen Daten?', 'Die Zahlung läuft über einen Zahlungsanbieter; dort gelten dessen Datenschutzbestimmungen. Wir erhalten nur, was der Anbieter für die Abwicklung übermittelt, etwa Name und Betrag, und nutzen das für nichts anderes. Diese Seite selbst bindet nichts vom Anbieter ein – die Verbindung entsteht erst, wenn du auf den Knopf tippst.'),
+            ('Kann ich einen monatlichen Beitrag beenden?', 'Ja, jederzeit und ohne Frist direkt beim Zahlungsanbieter.'),
+        ],
+    },
+    'en': {
+        'title': 'Support FaleNetwork | FaleNetwork',
+        'desc': 'Free tools without ads or tracking: help keep FaleNetwork free – with a contribution, by telling others or by sending feedback.',
+        'badge': 'Support',
+        'h1': 'Help keep it free',
+        'lede': 'All tools on fale.network are free – no ads, no account, no tracking. To keep it that way, we appreciate any support, with money or without.',
+        'money_h': 'With a contribution',
+        'money_p': 'Once or monthly, whatever suits you. Every amount helps – small ones too.',
+        'once': ('Support once', 'A contribution of the amount you choose.'),
+        'monthly': ('Support monthly', 'A small fixed amount, cancel any time.'),
+        'leave': 'You are leaving fale.network',
+        'money_soon': 'Contributions are being set up right now. Until then, telling others about the tools helps us most.',
+        'free_h': 'Help without money',
+        'share': ('Tell others', 'Tell friends, family or colleagues about the tools. Your recommendation does more than any ad.', 'Share link', 'Link copied'),
+        'share_text': 'Free PDF and image tools without ads and without uploading:',
+        'mail': ('Send feedback', 'Something doesn’t work or you’re missing a tool? Write to us – every message makes the site better.', 'Write an email', 'Feedback on fale.network'),
+        'keep': ('Come back', 'Bookmark fale.network or install it as an app from your browser menu. Many tools then even work offline.', 'Go to the tools'),
+        'use_h': 'What your contribution pays for',
+        'use': ['Servers, domains and delivering the site across Europe', 'New tools and templates – chosen by what annoys people most elsewhere', 'Testing on many devices so nothing hangs, freezes or damages files', 'Later: independent security reviews'],
+        'stay_h': 'What doesn’t change',
+        'stay': ['All tools stay free for everyone – with or without a contribution', 'No ads, no tracking, no cookies', 'Your files are processed on your device and never uploaded'],
+        'faq_h': 'Frequently asked questions',
+        'faq': [
+            ('Is this a donation?', 'Not in the tax sense. FaleNetwork is run by FaLe.dev, an independent developer, not a charity, so there is no donation receipt. Your contribution is voluntary.'),
+            ('Do I get anything for it?', 'You help keep everything free and add new tools. There are no supporter-only extras – everyone should be able to use every tool.'),
+            ('What happens to my data?', 'Payments are handled by a payment provider, whose privacy policy applies. We only receive what the provider passes on to process the payment, such as name and amount, and use it for nothing else. This page itself embeds nothing from the provider – a connection is only made when you tap the button.'),
+            ('Can I stop a monthly contribution?', 'Yes, any time and without notice, directly with the payment provider.'),
+        ],
+    },
+}
+
+
+def page_support(lang):
+    c, cfg = SUPPORT[lang], support_config()
+    from html import escape as e
+    tools = TOOLS_HUB[0 if lang == 'de' else 1]
+    cards = ''
+    for key in ('once', 'monthly'):
+        o = cfg.get(key) or {}
+        href = (o.get('url') or '').strip()
+        if not href.startswith('https://'):
+            continue
+        via = (o.get('via') or '').strip()
+        note = f'{c["leave"]}{" – " + e(via) if via else ""}'
+        cards += (f'<div class="support-card"><h3>{ic("heart", "h-ic")}{c[key][0]}</h3><p>{c[key][1]}</p>'
+                  f'<a class="btn btn-primary" href="{e(href)}" rel="noopener noreferrer">{c[key][0]}</a>'
+                  f'<p class="muted small">{note}</p></div>')
+    money = f'<div class="support-cards">{cards}</div>' if cards else f'<div class="notice">{ic("info")}<p>{c["money_soon"]}</p></div>'
+    share_url = BASE + tools
+    free = (f'<li class="support-way">{ic("share", "h-ic")}<div><h3>{c["share"][0]}</h3><p>{c["share"][1]}</p>'
+            f'<button type="button" class="btn btn-quiet" data-share-url="{share_url}" data-share-text="{e(c["share_text"])}" data-share-done="{e(c["share"][3])}">{c["share"][2]}</button></div></li>')
+    mail = (cfg.get('contact_email') or '').strip()
+    if re.fullmatch(r'[^@\s"<>]+@[^@\s"<>]+\.[a-z]{2,}', mail, re.I):
+        from urllib.parse import quote
+        free += (f'<li class="support-way">{ic("mail", "h-ic")}<div><h3>{c["mail"][0]}</h3><p>{c["mail"][1]}</p>'
+                 f'<a class="btn btn-quiet" href="mailto:{e(mail)}?subject={quote(c["mail"][3])}">{c["mail"][2]}</a></div></li>')
+    free += (f'<li class="support-way">{ic("bookmark", "h-ic")}<div><h3>{c["keep"][0]}</h3><p>{c["keep"][1]}</p>'
+             f'<a class="btn btn-quiet" href="{tools}">{c["keep"][2]}</a></div></li>')
+    use = ''.join(f'<li>{ic("check")}<span>{x}</span></li>' for x in c['use'])
+    stay = ''.join(f'<li>{ic("shield")}<span>{x}</span></li>' for x in c['stay'])
+    faq_items = c['faq'] if ((cfg.get('monthly') or {}).get('url') or '').strip().startswith('https://') else c['faq'][:3]
+    faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in faq_items)
+    ld = [{'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq_items]}]
+    body = f'''
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="p-hero-id"><span class="support-mark">{ic('heart')}</span><span>{c['badge']}</span></div>
+      <h1>{c['h1']}</h1>
+      <p class="lede">{c['lede']}</p>
+    </div>
+  </section>
+  <section class="section section-tight" aria-labelledby="money-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="money-h">{c['money_h']}</h2><p>{c['money_p']}</p></div>
+      {money}
+    </div>
+  </section>
+  <section class="section" aria-labelledby="free-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="free-h">{c['free_h']}</h2></div>
+      <ul class="support-ways">{free}</ul>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="use-h">
+    <div class="wrap split">
+      <div><h2 id="use-h">{c['use_h']}</h2><ul class="plain-list list-gap">{use}</ul></div>
+      <div><h2 id="stay-h">{c['stay_h']}</h2><ul class="plain-list list-gap">{stay}</ul></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="sfaq-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="sfaq-h">{c['faq_h']}</h2></div>
+      <div class="faq">{faq}</div>
+    </div>
+  </section>
+</main>
+'''
+    return head(lang, 'support', c['title'], c['desc'], ld) + '\n' + header(lang, 'support', current=url('support', lang)) + body + footer(lang)
+
+
 def page_imprint(lang):
     if lang == 'de':
         title, desc = 'Impressum | FaleNetwork', 'Anbieterangaben für FaleNetwork (fale.network) nach § 5 DDG.'
@@ -1256,6 +1403,7 @@ def main():
         written.append(write(url('konto', lang), page_konto(lang)))
         written.append(write(url('privacy', lang), page_privacy(lang)))
         written.append(write(url('imprint', lang), page_imprint(lang)))
+        written.append(write(url('support', lang), page_support(lang)))
     written.append(write('/404.html', page_404()))
 
     # sitemap with hreflang alternates

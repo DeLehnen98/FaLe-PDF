@@ -18,6 +18,7 @@ import { startCounting, onCount, counts } from './lib/privacy.js';
 import { takeHandoff, putHandoff, handoffFiles } from './lib/handoff.js';
 import { registerSW, warmUp } from './lib/sw.js';
 import { download, canShare, share } from './lib/download.js';
+import { supportNudge } from './lib/support-nudge.js';
 
 const cfgEl = document.getElementById('wt-config');
 const app = document.getElementById('wt-app');
@@ -686,6 +687,8 @@ function init(cfg) {
       result.append(el('div', { class: 'wt-next' }, el('p', { class: 'wt-next-title' }, T('continue_with')),
         el('ul', {}, nexts.map(n => el('li', {}, el('button', { type: 'button', class: 'wt-next-chip', onclick: () => continueWith(n, res) }, el('span', {}, n.name), icon('arrow')))))));
     }
+    const nudge = supportNudge(lang);
+    if (nudge) result.append(nudge);
     result.append(el('div', { class: 'wt-restart' },
       el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: backToFiles }, L('back_to_files')),
       el('button', { type: 'button', class: 'wt-btn wt-btn-text', onclick: restart }, icon('restart'), T('restart'))));
