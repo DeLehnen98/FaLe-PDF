@@ -27,7 +27,8 @@ Bis Oktober 2026 lagen sie nur in temporären Arbeitsordnern; jetzt sind sie hie
 Kleine Testdateien (`testdata/`, `officedata/`) sind eingecheckt. Die Testdateien der Werkzeuge (`webtools/fixtures/`)
 und große Dateien erzeugen die `*make_fixtures*`- bzw. `make_*.py`-Skripte (`run_all.sh` macht das automatisch). Welche großen Dateien nicht eingecheckt sind,
 steht in `.skipped-big-fixtures.txt`. Fremde Beispiel-PDFs (`webtools/fixtures/real/`) sind bewusst nicht im
-Repo; `test_realworld.py` braucht sie und läuft ohne sie nicht vollständig.
+Repo; `test_realworld.py`, `test_org_gray.py` und `test_aud1_offline_all.py` brauchen sie und schlagen ohne sie fehl
+(Stand 17.10.2026 mit den Dateien: alle 85 Werkzeug-Reihen grün).
 
 Ergebnisse (`out*/`, Logs, Screenshots) werden nicht eingecheckt (`.gitignore`). Der Ordner `tests/` wird nie
 ausgeliefert (`scripts/vercel-build.mjs` überspringt ihn).
