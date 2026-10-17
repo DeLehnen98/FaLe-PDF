@@ -1,0 +1,164 @@
+{
+  "id": "annotate-pdf",
+  "category": "edit",
+  "module": "tools/annotate-pdf.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "order": 12,
+  "related": [
+    "edit-pdf-text",
+    "sign-pdf",
+    "read-aloud",
+    "ocr-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "protect-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
+  "iconSvg": "<path d=\"M4 20h4L19 9l-4-4L4 16z\"/><path d=\"M13.5 6.5l4 4\"/><path d=\"M14 20h6\"/>",
+  "de": {
+    "slug": "pdf-kommentieren",
+    "name": "PDF kommentieren",
+    "short": "Text markieren, unterstreichen, Notizen, Zeichnungen und Pfeile – als echte PDF-Kommentare.",
+    "title": "PDF kommentieren & markieren – gratis, ohne Upload | FaleNetwork",
+    "h1": "PDF kommentieren und markieren",
+    "metaDescription": "PDF online markieren, unterstreichen, durchstreichen, mit Notizen, Text, Zeichnungen und Pfeilen kommentieren. Echte PDF-Kommentare, gratis, ohne Upload.",
+    "lede": "Markiere, kommentiere und zeichne direkt in der PDF – jedes PDF-Programm zeigt deine Anmerkungen danach an.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Kommentare speichern",
+    "keywords": [
+      "pdf markieren",
+      "pdf annotieren",
+      "pdf notizen",
+      "pdf hervorheben",
+      "pdf unterstreichen",
+      "pdf zeichnen",
+      "pdf korrigieren"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Die erste Seite erscheint sofort – mit den Pfeilen blätterst du."
+      },
+      {
+        "title": "Werkzeug wählen und kommentieren",
+        "text": "Markieren, Unterstreichen, Durchstreichen, Notiz, Text, Zeichnen, Rechteck oder Pfeil. Rückgängig geht jederzeit."
+      },
+      {
+        "title": "Speichern",
+        "text": "Du bekommst die PDF mit echten Kommentaren – und auf Wunsch alle Markierungen als Textzusammenfassung."
+      }
+    ],
+    "why": [
+      {
+        "title": "Echte PDF-Kommentare",
+        "text": "Keine eingebrannten Bilder: Andere PDF-Programme zeigen die Anmerkungen an und können sie bearbeiten oder löschen."
+      },
+      {
+        "title": "Markierungen als Zusammenfassung",
+        "text": "Alle markierten Stellen und Notizen landen geordnet nach Seiten in einer Textdatei – ideal zum Lernen."
+      },
+      {
+        "title": "Mit Finger, Stift oder Maus",
+        "text": "Auf dem Handy wechselst du mit „Ansehen“ zwischen Blättern und Kommentieren."
+      },
+      {
+        "title": "Kein Upload, kein Tageslimit",
+        "text": "Alles passiert in deinem Browser – ohne Konto und ohne Begrenzung."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum kann ich bei manchen PDFs keinen Text markieren?",
+        "a": "Gescannte PDFs enthalten nur Bilder. Mach sie zuerst mit „PDF Texterkennung (OCR)“ durchsuchbar – Zeichnen, Notizen und Rechtecke funktionieren aber auch ohne."
+      },
+      {
+        "q": "Sieht der Empfänger meine Kommentare?",
+        "a": "Ja. Die Kommentare sind echte PDF-Anmerkungen und werden in allen gängigen PDF-Programmen angezeigt – samt deinem Kommentartext."
+      },
+      {
+        "q": "Kann ich Kommentare später noch ändern?",
+        "a": "In jedem PDF-Programm, das Kommentare bearbeiten kann. Hier kannst du vor dem Speichern alles rückgängig machen oder einzeln löschen."
+      },
+      {
+        "q": "Wird meine PDF hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "annotate-pdf",
+    "name": "Annotate PDF",
+    "short": "Highlight, underline, notes, drawings and arrows – as real PDF comments.",
+    "title": "Annotate & highlight PDF – free, no upload | FaleNetwork",
+    "h1": "Annotate and highlight a PDF",
+    "metaDescription": "Highlight, underline and strike out PDF text, add notes, text, drawings and arrows. Real PDF comments, free, no upload.",
+    "lede": "Highlight, comment and draw right in the PDF – every PDF program shows your notes afterwards.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Save comments",
+    "keywords": [
+      "highlight pdf",
+      "annotate pdf",
+      "pdf notes",
+      "underline pdf",
+      "draw on pdf",
+      "mark up pdf"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "The first page appears right away – use the arrows to turn pages."
+      },
+      {
+        "title": "Pick a tool and comment",
+        "text": "Highlight, underline, strike out, note, text, draw, rectangle or arrow. Undo any time."
+      },
+      {
+        "title": "Save",
+        "text": "You get the PDF with real comments – and, if you like, all highlights as a text summary."
+      }
+    ],
+    "why": [
+      {
+        "title": "Real PDF comments",
+        "text": "No burned-in pictures: other PDF programs show the annotations and can edit or delete them."
+      },
+      {
+        "title": "Highlights as a summary",
+        "text": "All highlighted passages and notes end up in a text file, ordered by page – ideal for studying."
+      },
+      {
+        "title": "Finger, pen or mouse",
+        "text": "On a phone, “View” switches between scrolling and commenting."
+      },
+      {
+        "title": "No upload, no daily limit",
+        "text": "Everything happens in your browser – without an account and without limits."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why can’t I highlight text in some PDFs?",
+        "a": "Scanned PDFs contain only pictures. Make them searchable with “OCR PDF” first – drawing, notes and rectangles work without it."
+      },
+      {
+        "q": "Does the recipient see my comments?",
+        "a": "Yes. The comments are real PDF annotations and are shown in all common PDF programs – including your comment text."
+      },
+      {
+        "q": "Can I change comments later?",
+        "a": "In any PDF program that can edit comments. Here you can undo everything or delete single comments before saving."
+      },
+      {
+        "q": "Is my PDF uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the page also works offline."
+      }
+    ]
+  }
+}

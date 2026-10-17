@@ -1,0 +1,171 @@
+{
+  "id": "enhance-photo",
+  "category": "images",
+  "module": "tools/enhance-photo.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "order": 8,
+  "related": [
+    "scan-to-pdf",
+    "compress-image",
+    "crop-image",
+    "remove-background"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
+  "needs": [],
+  "iconSvg": "<path d=\"M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/>",
+  "de": {
+    "slug": "foto-verbessern",
+    "name": "Foto verbessern",
+    "short": "Unscharfe, dunkle oder verrauschte Fotos und Dokumentfotos mit einem Tipp verbessern.",
+    "title": "Foto verbessern – schärfen, aufhellen, entrauschen | FaleNetwork",
+    "h1": "Foto verbessern",
+    "metaDescription": "Fotos schärfen, aufhellen und entrauschen, Schatten auf Dokumentfotos entfernen – ohne KI, die Details erfindet. Kostenlos, ohne Upload, ohne Wasserzeichen.",
+    "lede": "Ein Tipp für bessere Fotos – und Belege, auf denen man wieder alles lesen kann.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "Verbessern",
+    "keywords": [
+      "bild schärfen",
+      "foto schärfen",
+      "foto aufhellen",
+      "bild verbessern",
+      "schatten entfernen",
+      "entrauschen",
+      "bildqualität verbessern",
+      "dokument aufhellen"
+    ],
+    "steps": [
+      {
+        "title": "Fotos auswählen",
+        "text": "Ein oder mehrere Fotos – auch Fotos von Dokumenten, Belegen und Bildschirmen."
+      },
+      {
+        "title": "Art wählen",
+        "text": "Automatisch, Dokument, Schärfen, Entrauschen, Aufhellen oder Bildschirmfoto."
+      },
+      {
+        "title": "Vergleichen und speichern",
+        "text": "Mit dem Schieberegler vorher und nachher vergleichen, Stärke anpassen, herunterladen."
+      }
+    ],
+    "why": [
+      {
+        "title": "Ohne erfundene Details",
+        "text": "KI-Verbesserer erfinden manchmal Buchstaben und Zahlen. Hier wird nur gefiltert – sicher für Verträge, Belege und Ausweise."
+      },
+      {
+        "title": "Dokumentfotos wie gescannt",
+        "text": "Schatten von Hand und Handy verschwinden, das Papier wird weiß und die Schrift scharf."
+      },
+      {
+        "title": "Kein Wasserzeichen, kein Abo",
+        "text": "Volle Auflösung, beliebig viele Fotos, ohne Anmeldung."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Die Fotos werden im Browser bearbeitet und nirgends hochgeladen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Kann ein völlig verwackeltes Foto wieder scharf werden?",
+        "a": "Nein – leichte Unschärfe lässt sich deutlich verbessern, stark verwackelte Fotos nicht. Wer anderes verspricht, erfindet Details per KI."
+      },
+      {
+        "q": "Welche Einstellung für Kassenbons und Dokumente?",
+        "a": "„Dokument / Beleg“: Schatten werden ausgeglichen, das Papier wird weiß und die Schrift kontrastreicher. Für ein mehrseitiges PDF nimm „Dokument scannen“."
+      },
+      {
+        "q": "Was macht „Bildschirmfoto (Moiré)“?",
+        "a": "Wenn du einen Bildschirm abfotografierst, entstehen Streifen und Raster. Dieser Modus glättet sie und schärft die Kanten wieder nach."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "enhance-photo",
+    "name": "Enhance photo",
+    "short": "Improve blurry, dark or noisy photos and document photos with one tap.",
+    "title": "Enhance photo – sharpen, brighten, denoise, free | FaleNetwork",
+    "h1": "Enhance a photo",
+    "metaDescription": "Sharpen, brighten and denoise photos, remove shadows from document photos – without AI that invents details. Free, no upload, no watermark.",
+    "lede": "One tap for better photos – and receipts you can read again.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Enhance",
+    "keywords": [
+      "sharpen image",
+      "sharpen photo",
+      "brighten photo",
+      "improve image quality",
+      "remove shadows",
+      "denoise"
+    ],
+    "steps": [
+      {
+        "title": "Choose photos",
+        "text": "One or several photos – also photos of documents, receipts and screens."
+      },
+      {
+        "title": "Choose what to fix",
+        "text": "Automatic, document, sharpen, denoise, brighten or screen photo."
+      },
+      {
+        "title": "Compare and save",
+        "text": "Compare before and after with the slider, adjust the strength, download."
+      }
+    ],
+    "why": [
+      {
+        "title": "No invented details",
+        "text": "AI enhancers sometimes invent letters and numbers. Here it is only filtering – safe for contracts, receipts and IDs."
+      },
+      {
+        "title": "Document photos like scans",
+        "text": "Shadows of hand and phone disappear, the paper turns white and the text sharp."
+      },
+      {
+        "title": "No watermark, no subscription",
+        "text": "Full resolution, as many photos as you like, no sign-up."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "Photos are edited in the browser and not uploaded anywhere."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can a badly shaken photo become sharp again?",
+        "a": "No – slight blur improves a lot, heavily shaken photos don’t. Whoever promises otherwise invents details with AI."
+      },
+      {
+        "q": "Which setting for receipts and documents?",
+        "a": "“Document / receipt”: shadows are evened out, the paper turns white and the text gets more contrast."
+      },
+      {
+        "q": "What does “Screen photo (moiré)” do?",
+        "a": "Photographing a screen creates stripes and patterns. This mode smooths them and re-sharpens the edges."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the page also works offline."
+      }
+    ]
+  }
+}

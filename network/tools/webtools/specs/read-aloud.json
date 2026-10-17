@@ -1,0 +1,161 @@
+{
+  "id": "read-aloud",
+  "category": "everyday",
+  "module": "tools/read-aloud.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf",
+    "text/plain",
+    ".txt"
+  ],
+  "order": 6,
+  "related": [
+    "pdf-viewer",
+    "ocr-pdf",
+    "pdf-to-text",
+    "text-to-pdf"
+  ],
+  "next": [],
+  "needs": [
+    "pdfjs"
+  ],
+  "iconSvg": "<path d=\"M4 9v6h4l5 4V5L8 9z\"/><path d=\"M16.5 8.5a5 5 0 0 1 0 7\"/><path d=\"M19 6a8.5 8.5 0 0 1 0 12\"/>",
+  "de": {
+    "slug": "pdf-vorlesen",
+    "name": "PDF vorlesen lassen",
+    "short": "PDFs und Texte vorlesen lassen – mit Markierung, Tempo und Stimme deiner Wahl.",
+    "title": "PDF vorlesen lassen – kostenlos, ohne Hörzeitlimit | FaleNetwork",
+    "h1": "PDF vorlesen lassen",
+    "metaDescription": "PDF vorlesen lassen mit den Stimmen deines Geräts: mitlaufende Markierung, Tempo, Stimme, ohne Seitenzahlen und Kopfzeilen. Gratis, ohne Konto, ohne Upload.",
+    "lede": "Lehn dich zurück: Dein Browser liest die PDF vor – und markiert mit, wo du gerade bist.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Vorlesen",
+    "keywords": [
+      "pdf vorlesen",
+      "text vorlesen lassen",
+      "vorlesefunktion",
+      "sprachausgabe",
+      "text to speech",
+      "tts",
+      "hörbuch aus pdf"
+    ],
+    "steps": [
+      {
+        "title": "PDF auswählen",
+        "text": "Oder eine Textdatei. Seitenzahlen, Kopf- und Fußzeilen werden herausgefiltert."
+      },
+      {
+        "title": "Stimme und Tempo wählen",
+        "text": "Es werden die Stimmen deines Geräts genutzt – auch während des Vorlesens umstellbar."
+      },
+      {
+        "title": "Zuhören",
+        "text": "Der aktuelle Satz ist markiert. Tippe einen Absatz an, um dort weiterzuhören."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Hörzeitlimit, kein Abo",
+        "text": "Andere Dienste begrenzen die Minuten oder verlangen ein Abo für bessere Stimmen. Hier liest dein Gerät, so lange du willst."
+      },
+      {
+        "title": "Liest, was zählt",
+        "text": "Keine Seitenzahlen und Kopfzeilen zwischendurch, getrennte Wörter am Zeilenende werden zusammengesetzt, Spalten in der richtigen Reihenfolge."
+      },
+      {
+        "title": "Auch gescannte PDFs",
+        "text": "Seiten ohne Text werden auf Wunsch per Texterkennung lesbar gemacht – direkt im Browser."
+      },
+      {
+        "title": "Merkt sich die Stelle",
+        "text": "Kommst du später zurück, geht es dort weiter, wo du aufgehört hast."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum klingen die Stimmen je nach Gerät anders?",
+        "a": "Das Vorlesen nutzt die Sprachausgabe deines Geräts bzw. Browsers. Auf vielen Handys und Computern lassen sich in den Systemeinstellungen bessere Stimmen kostenlos nachinstallieren."
+      },
+      {
+        "q": "Kann ich in der Mitte anfangen?",
+        "a": "Ja. Tippe einfach auf einen Satz oder Absatz – das Vorlesen springt dorthin. Mit den Pfeilen geht es absatzweise vor und zurück."
+      },
+      {
+        "q": "Werden Fußnoten und das Literaturverzeichnis mitgelesen?",
+        "a": "Das Literaturverzeichnis wird standardmäßig ausgelassen, Tabellen ebenso. Beides lässt sich in den Einstellungen einschalten."
+      },
+      {
+        "q": "Wird meine PDF hochgeladen?",
+        "a": "Nein. Text und Sprachausgabe laufen auf deinem Gerät. Hinweis: Manche Browser bieten zusätzlich Online-Stimmen an (mit ☁ markiert) – die schicken den Text an den Anbieter. Wähle eine Stimme ohne ☁, wenn das nicht passieren soll."
+      }
+    ]
+  },
+  "en": {
+    "slug": "read-pdf-aloud",
+    "name": "Read PDF aloud",
+    "short": "Have PDFs and texts read aloud – with highlighting, speed and a voice of your choice.",
+    "title": "Read PDF aloud – free, no listening limit | FaleNetwork",
+    "h1": "Read a PDF aloud",
+    "metaDescription": "Have a PDF read aloud with your device’s voices: follow-along highlighting, speed, voice, without page numbers and headers. Free, no account, no upload.",
+    "lede": "Sit back: your browser reads the PDF aloud – and highlights where you are.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Read aloud",
+    "keywords": [
+      "read pdf aloud",
+      "text to speech",
+      "pdf reader voice",
+      "tts",
+      "listen to pdf"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Or a text file. Page numbers, headers and footers are filtered out."
+      },
+      {
+        "title": "Choose voice and speed",
+        "text": "Your device’s voices are used – changeable while reading."
+      },
+      {
+        "title": "Listen",
+        "text": "The current sentence is highlighted. Tap a paragraph to continue there."
+      }
+    ],
+    "why": [
+      {
+        "title": "No listening limit, no subscription",
+        "text": "Other services limit the minutes or want a subscription for better voices. Here your device reads as long as you like."
+      },
+      {
+        "title": "Reads what matters",
+        "text": "No page numbers and headers in between, hyphenated words joined, columns in the right order."
+      },
+      {
+        "title": "Scanned PDFs too",
+        "text": "Pages without text can be made readable with text recognition – right in the browser."
+      },
+      {
+        "title": "Remembers your place",
+        "text": "Come back later and it continues where you stopped."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why do the voices sound different on each device?",
+        "a": "Reading uses your device’s or browser’s speech output. On many phones and computers you can install better voices for free in the system settings."
+      },
+      {
+        "q": "Can I start in the middle?",
+        "a": "Yes. Tap a sentence or paragraph – reading jumps there. The arrows move paragraph by paragraph."
+      },
+      {
+        "q": "Are the bibliography and tables read?",
+        "a": "The bibliography and tables are left out by default. Both can be switched on in the settings."
+      },
+      {
+        "q": "Is my PDF uploaded?",
+        "a": "No. Text and speech run on your device. Note: some browsers also offer online voices (marked ☁) – those send the text to the provider. Choose a voice without ☁ if that should not happen."
+      }
+    ]
+  }
+}

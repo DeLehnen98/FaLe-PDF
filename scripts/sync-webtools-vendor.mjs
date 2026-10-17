@@ -111,6 +111,21 @@ function pagegeomModule() {
   if (/^\s*import\s|import\(/m.test(out)) throw new Error(`${src} now has other imports – update the adapter`);
   return banner(src, 'pdf.js handed in via setPdfjs()') + out;
 }
+/** js/tools/annotpdf.js takes hexToRgb + makeSanitizer from common.js – here makeSanitizer comes from the synced
+ * formfields.js and hexToRgb is copied in (it is three lines). */
+function annotpdfModule() {
+  const src = 'js/tools/annotpdf.js';
+  const text = readFileSync(join(ROOT, src), 'utf8');
+  const imp = "import { hexToRgb, makeSanitizer } from './common.js';";
+  if (!text.includes(imp)) throw new Error(`${src}: expected import "${imp}" not found – update the adapter in sync-webtools-vendor.mjs`);
+  const common = readFileSync(join(ROOT, 'js/tools/common.js'), 'utf8');
+  const m = /export function hexToRgb\(hex\) \{[\s\S]*?\n\}/.exec(common);
+  if (!m) throw new Error('js/tools/common.js: hexToRgb not found – update the adapter');
+  const out = text.replace(imp, "import { makeSanitizer } from './formfields.js';\n" + m[0].replace('export function', 'function'));
+  const imports = [...out.matchAll(/^\s*import\s[\s\S]*?from\s*['"]([^'"]+)['"]/gm)].map(x => x[1]);
+  if (imports.some(i => i !== './formfields.js') || /import\(/.test(out)) throw new Error(`${src} now has other imports – update the adapter`);
+  return banner(src, 'hexToRgb copied in, makeSanitizer from formfields.js') + out;
+}
 const SHARED = {
   'pdfcrypt.js': () => copyModule('js/pdfcrypt.js'),
   'zip.js': () => copyModule('js/zip.js'),
@@ -128,7 +143,9 @@ const SHARED = {
   // bookmarks (edit-bookmarks): read / derive from headings / write the outline – uses pdfstruct.js above
   'outlinecore.js': () => copyModule('js/tools/outlinecore.js', ['./pdfstruct.js']),
   // PDF → PowerPoint without freezing (real pictures go into the ZIP after pptxgenjs wrote it)
-  'pptximg.js': () => copyModule('js/tools/pptximg.js'),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
+  'pptximg.js': () => copyModule('js/tools/pptximg.js'),
+  // real PDF annotations with appearance streams (annotate-pdf)
+  'annotpdf.js': () => annotpdfModule(),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
   // OCR image pre-processing (ocr-pdf, image-to-text): pure functions + their module worker
   'ocr/prep.js': () => copyModule('js/ocr/prep.js'),
   'ocr/prep-worker.js': () => copyModule('js/ocr/prep-worker.js', ['./prep.js']),
