@@ -383,3 +383,31 @@ mark.ph { -webkit-box-decoration-break: clone; box-decoration-break: clone; back
 .support-way { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 18px 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
 .support-way .h-ic { margin-top: 3px; }
 .support-way p { margin: 6px 0 12px; }
+
+/* FaLe PDF page (/apps/pdf/): search landing */
+.pdfl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 18px; color: var(--text-2); font-size: 0.9375rem; }
+.pdfl-chips li { display: inline-flex; align-items: center; gap: 6px; }
+.pdfl-chips svg { width: 18px; height: 18px; color: var(--fale-teal); }
+.pdfl-table-wrap { overflow-x: auto; max-width: 820px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.pdfl-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.pdfl-table th, .pdfl-table td { padding: 12px 14px; text-align: left; vertical-align: top; border-top: 1px solid var(--border); }
+.pdfl-table thead th { border-top: 0; font-size: var(--step--1); color: var(--text-3); font-weight: 650; }
+.pdfl-table tbody th { font-weight: 650; }
+.pdfl-table td { color: var(--text-2); }
+.pdfl-table td.pdfl-yes { color: var(--text); font-weight: 650; white-space: nowrap; }
+.pdfl-table .pdfl-yes svg { display: inline-block; width: 16px; height: 16px; color: var(--fale-teal); margin-right: 6px; vertical-align: -2px; }
+@media (max-width: 520px) { .pdfl-table th, .pdfl-table td { padding: 10px; } .pdfl-table td.pdfl-yes { white-space: normal; } }
+.pdfl-feats { list-style: none; display: grid; gap: 14px; }
+@media (min-width: 720px) { .pdfl-feats { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px) { .pdfl-feats { grid-template-columns: repeat(4, 1fr); } }
+.pdfl-feat { padding: 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); display: grid; gap: 8px; align-content: start; }
+.pdfl-feat p { color: var(--text-2); font-size: 0.9375rem; }
+.pdfl-links { list-style: none; display: grid; gap: 2px; margin-top: 4px; }
+.pdfl-links a { display: inline-block; min-height: 32px; padding: 4px 0; color: var(--primary); font-weight: 600; font-size: 0.9375rem; }
+.pdfl-cards { display: grid; gap: 14px; max-width: 980px; }
+@media (min-width: 720px) { .pdfl-cards { grid-template-columns: 1fr 1fr; } .pdfl-cards-3 { grid-template-columns: repeat(3, 1fr); } }
+.pdfl-card { padding: 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.pdfl-card p { margin-top: 8px; color: var(--text-2); }
+.pdfl-shots { grid-template-columns: repeat(3, minmax(0, 220px)); }
+@media (max-width: 600px) { .pdfl-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pdfl-cta { text-align: center; display: grid; gap: 10px; justify-items: center; }

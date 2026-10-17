@@ -293,7 +293,7 @@ HOME = {
         'apps_h': 'Die Apps',
         'live': 'Verfügbar', 'coming': 'Bald',
         'apps': [
-            ('pdf', 'FaLe PDF', 'live', 'PDFs lesen, ausfüllen, unterschreiben und scannen.', PDF_APP),
+            ('pdf', 'FaLe PDF', 'live', 'Das kostenlose PDF-Programm: lesen, ausfüllen, unterschreiben, scannen.', '/apps/pdf/'),
             ('one', 'FaLe One', 'live', 'Fotos und Dateien sicher speichern – nur für dich lesbar.', ONE_ORIGIN + '/'),
             ('clean', 'FaLe Clean', 'soon', 'Räumt Windows-PCs auf. Noch in der Testphase.', '/apps/clean/'),
         ],
@@ -326,7 +326,7 @@ HOME = {
         'apps_h': 'The apps',
         'live': 'Available', 'coming': 'Soon',
         'apps': [
-            ('pdf', 'FaLe PDF', 'live', 'Read, fill in, sign and scan PDFs.', PDF_APP),
+            ('pdf', 'FaLe PDF', 'live', 'The free PDF program: read, fill in, sign, scan.', '/en/apps/pdf/'),
             ('one', 'FaLe One', 'live', 'Store photos and files safely – readable only by you.', ONE_ORIGIN + '/'),
             ('clean', 'FaLe Clean', 'soon', 'Cleans up Windows PCs. Still in testing.', '/en/apps/clean/'),
         ],
@@ -393,13 +393,14 @@ def page_home(lang):
         f'{ic("arrow", "entry-go")}</a></li>'
         for k, name, meta in c['entries'])
     tool_links = ''.join(f'<li><a class="tool-chip" href="{h}">{nm}{ic("arrow")}</a></li>' for nm, h in popular_tools(lang))
+    newtab = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
+    tabnote = lambda h: f'<span class="sr-only"> ({"öffnet in neuem Tab" if lang == "de" else "opens in a new tab"})</span>' if h.startswith('http') else ''
     apps = ''.join(
-        f'<li><a class="app-row" href="{href}"><img src="/assets/icons/app-{k}.svg" width="48" height="48" alt="">'
+        f'<li><a class="app-row" href="{href}"{newtab(href)}><img src="/assets/icons/app-{k}.svg" width="48" height="48" alt="">'
         f'<span class="app-row-t"><span class="app-row-name">{name}{pill(state, c["live"] if state == "live" else c["coming"])}</span>'
-        f'<span class="app-row-desc">{desc}</span></span>{ic("arrow", "entry-go")}</a></li>'
+        f'<span class="app-row-desc">{desc}</span></span>{tabnote(href)}{ic("arrow", "entry-go")}</a></li>'
         for k, name, state, desc, href in c['apps'])
-    more = (f'<p class="apps-more"><a href="{url("pdf", lang)}">{c["apps_more"]}</a> · '
-            f'<a href="{url("clean", lang)}">{c["apps_more2"]}</a></p>')
+    more = f'<p class="apps-more"><a href="{url("clean", lang)}">{c["apps_more2"]}</a></p>'
     body = f'''
 <main id="main">
   <section class="hero hero-home">
@@ -444,103 +445,187 @@ def page_home(lang):
     return head(lang, 'home', c['title'], c['desc'], ld_home(lang)) + '\n' + header(lang, 'home') + body + footer(lang)
 
 
-# ================================================================= FaLe PDF
+# ================================================================= FaLe PDF (web page = search landing; the app opens in its own tab)
+def tool_ref(tid, lang):
+    """(name, path) of a tool page from tools/webtools/specs/<id>.json"""
+    sp = json.loads((ROOT / 'tools' / 'webtools' / 'specs' / f'{tid}.json').read_text(encoding='utf-8'))
+    return sp[lang]['name'], f"{TOOLS_HUB[0 if lang == 'de' else 1]}{sp[lang]['slug']}/"
+
+
+def app_link(href, label, cls='btn btn-primary', lang='de', icon=''):
+    """A link into an app: opens in a new tab, so the website stays open (announced for screen readers)."""
+    note = 'öffnet in neuem Tab' if lang == 'de' else 'opens in a new tab'
+    c = f' class="{cls}"' if cls else ''
+    return (f'<a{c} href="{href}" target="_blank" rel="noopener">{icon}{label}'
+            f'<span class="sr-only"> ({note})</span></a>')
+
+
 PDF = {
     'de': {
-        'title': 'FaLe PDF – PDF & Office gratis, privat und offline | FaleNetwork',
-        'desc': 'FaLe PDF: PDFs lesen, ausfüllen, unterschreiben, scannen mit Texterkennung und umwandeln – dazu Dokumente, Tabellen und Präsentationen. Gratis, ohne Konto, alles auf deinem Gerät.',
-        'live': 'Verfügbar',
-        'h1': 'PDF & Office&nbsp;– gratis, privat, offline',
-        'lede': 'PDFs lesen, ausfüllen, unterschreiben, scannen und umwandeln. Alles läuft direkt auf deinem Gerät – kostenlos.',
-        'open': 'Im Browser öffnen', 'android': 'Android: bald im Play Store',
-        'hint': 'Tipp: Im Browser öffnen und „Zum Startbildschirm hinzufügen“ wählen – dann startet FaLe PDF wie eine App.',
-        'shot_home_alt': 'Startbildschirm der App FaLe PDF mit dem Hinweis „Alles gratis – auch die Pro-Funktionen“',
-        'feat_h': 'Alles, was du für Dokumente brauchst',
-        'feat_p': 'Tippe auf ein Thema, um die Funktionen zu sehen.', 'facts_h': 'Technische Details', 'info_h': 'Gut zu wissen',
+        'title': 'Kostenloses PDF-Programm ohne Abo & Wasserzeichen | FaLe PDF',
+        'desc': 'FaLe PDF ist ein kostenloses PDF-Programm: bearbeiten, unterschreiben, scannen, umwandeln – ohne Abo, ohne Wasserzeichen, ohne Konto. Läuft im Browser und offline.',
+        'live': 'Kostenlos',
+        'h1': 'Das kostenlose PDF-Programm – ohne Abo, ohne Wasserzeichen',
+        'lede': 'PDFs bearbeiten, ausfüllen, unterschreiben, scannen und umwandeln. FaLe PDF läuft im Browser auf Handy und Computer – deine Dateien bleiben auf deinem Gerät.',
+        'open': 'FaLe PDF öffnen', 'tools': 'Einzelne Werkzeuge ohne App',
+        'chips': ['Kein Konto', 'Kein Wasserzeichen', 'Keine Seitenlimits', 'Funktioniert offline'],
+        'shot_home_alt': 'Startbildschirm der App FaLe PDF',
+        'cmp_h': 'Was anderswo Geld kostet – hier nicht',
+        'cmp_p': 'Viele „kostenlose“ PDF-Programme sind nur Testversionen. Ein Vergleich mit dem, was Gratis-Versionen üblicherweise bieten:',
+        'cmp_cols': ('', 'Übliche Gratis-Version', 'FaLe PDF'),
+        'cmp': [
+            ('Wasserzeichen im Ergebnis', 'häufig', 'nie'),
+            ('Limit pro Tag oder Seiten', 'häufig', 'keins'),
+            ('Text in PDFs bearbeiten', 'meist nur im Abo', 'kostenlos'),
+            ('PDF in Word, Excel, PowerPoint', 'meist nur im Abo', 'kostenlos'),
+            ('Texterkennung (OCR)', 'meist nur im Abo', 'kostenlos, offline'),
+            ('Unterschreiben', 'oft mit Konto', 'ohne Konto'),
+            ('Dateien hochladen', 'bei Online-Diensten nötig', 'nicht nötig'),
+            ('Werbung beim Arbeiten', 'manchmal', 'keine'),
+        ],
+        'cmp_note': 'Stand der Angaben: übliche Bedingungen verbreiteter Gratis-Versionen, Oktober 2026. Einzelne Anbieter weichen ab.',
+        'feat_h': 'Alles, was du für PDFs brauchst',
+        'feat_p': 'In der App ist alles an einem Ort. Viele Funktionen gibt es auch als einzelne Werkzeug-Seite – praktisch für zwischendurch.',
         'features': [
-            ('PDFs lesen', ['Schneller Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis', 'Lesemodus: Text fürs Handy umbrochen, auch Sepia und dunkel', 'Vorlesen mit der Sprachausgabe deines Geräts']),
-            ('Ausfüllen & unterschreiben', ['PDF-Formulare ausfüllen', 'Unterschrift zeichnen, speichern und mit einem Tipp einsetzen', 'Datum, Text, Initialen und eigene Stempel']),
-            ('Scannen mit Texterkennung', ['Kamera-Scanner: Kanten erkennen, entzerren, verbessern', 'Texterkennung (OCR) offline – Scans werden durchsuchbar', 'Ausweis, Visitenkarte, Passfoto und QR-Codes']),
-            ('Kommentieren & bearbeiten', ['Markieren, Notizen, Freihand und Formen', 'Text und Bilder ergänzen oder ersetzen', 'Schwärzen, Wasserzeichen, Seitenzahlen, Kopf- und Fußzeilen']),
-            ('Seiten & Dateien', ['Zusammenfügen, sortieren, drehen, extrahieren, zuschneiden', 'Komprimieren und Stapelverarbeitung', 'Passwortschutz (AES-256) festlegen und entfernen']),
-            ('Umwandeln', ['PDF in DOCX, XLSX und PPTX – und zurück', 'Bilder zu PDF, Bild zu DOCX oder XLSX per Texterkennung', 'Seiten als Bild oder Text exportieren']),
-            ('Dokumente, Tabellen, Präsentationen', ['DOCX, XLSX und PPTX öffnen, bearbeiten und erstellen', 'Tabellen mit Formeln und Diagrammen', 'Vorlagen für Lebenslauf, Rechnung, Brief und mehr']),
-            ('Sicher teilen', ['Dateien Ende-zu-Ende-verschlüsselt per Link teilen', 'Unterschrift von anderen anfordern', 'Geräte per QR-Code verbinden – geteilte Daten werden automatisch gelöscht']),
-            ('KI-Assistent (optional)', ['Fragen an deine Dokumente – Antworten mit Seitenangaben', 'Zusammenfassen, übersetzen, Schreibhilfe, Lernkarten', 'Nur mit deiner Zustimmung, täglich kostenlose Anfragen']),
+            ('Lesen & vorlesen', 'Schneller Viewer mit Suche und Inhaltsverzeichnis, Lesemodus fürs Handy, Vorlesen.', ['pdf-viewer', 'read-aloud']),
+            ('Ausfüllen & unterschreiben', 'Formulare ausfüllen, Unterschrift zeichnen und mit einem Tipp einsetzen, Datum und Stempel.', ['fill-pdf-form', 'sign-pdf', 'signature-maker']),
+            ('Bearbeiten & kommentieren', 'Text ändern, markieren, Notizen, Freihand, Schwärzen, Wasserzeichen und Seitenzahlen.', ['edit-pdf-text', 'annotate-pdf', 'redact-pdf']),
+            ('Seiten & Dateien', 'Zusammenfügen, teilen, sortieren, drehen, komprimieren – auch viele Dateien auf einmal.', ['merge-pdf', 'compress-pdf', 'organize-pdf', 'batch-pdf']),
+            ('Umwandeln', 'PDF in Word, Excel und PowerPoint – und zurück. Bilder zu PDF, PDF zu Bildern.', ['pdf-to-word', 'word-to-pdf', 'pdf-to-excel', 'jpg-to-pdf']),
+            ('Scannen & Texterkennung', 'Mit der Kamera scannen, Kanten gerade ziehen, Text erkennen – offline.', ['scan-to-pdf', 'ocr-pdf', 'image-to-text']),
+            ('Schützen', 'Passwort setzen und entfernen (AES-256), Metadaten löschen, sicher schwärzen.', ['protect-pdf', 'unlock-pdf', 'edit-metadata']),
+            ('Office & Vorlagen', 'Word-, Excel- und PowerPoint-Dateien öffnen und bearbeiten, Vorlagen für Lebenslauf, Rechnung und Briefe.', ['cv-builder', 'invoice-generator', 'cancellation-letter']),
+        ],
+        'app_h': 'App oder einzelne Werkzeuge?',
+        'app': [
+            ('Die App', 'Alle Funktionen an einem Ort, deine Dateien in einer Bibliothek, Unterschrift und Vorlagen gespeichert. Lässt sich wie eine App auf Handy oder PC installieren und läuft dann offline.'),
+            ('Die Werkzeug-Seiten', 'Eine Aufgabe, eine Seite: Datei rein, Ergebnis raus – ohne Installation. Ideal, wenn du schnell etwas zusammenfügen, verkleinern oder umwandeln willst.'),
         ],
         'shots_h': 'So sieht FaLe PDF aus',
-        'shots': [('sign', 'Mietvertrag mit eingefügter Unterschrift in FaLe PDF', 'Unterschreiben'), ('ai', 'KI-Assistent beantwortet eine Frage zu einer Rechnung mit Seitenangabe', 'KI-Assistent')],
+        'shots': [('home', 'Startbildschirm von FaLe PDF', 'Start'), ('sign', 'Mietvertrag mit eingefügter Unterschrift in FaLe PDF', 'Unterschreiben'), ('ai', 'KI-Assistent beantwortet eine Frage zu einer Rechnung mit Seitenangabe', 'KI-Assistent (optional)')],
+        'inst_h': 'FaLe PDF installieren',
+        'inst': [('Android', 'FaLe PDF im Browser öffnen und im Menü „App installieren“ wählen. Im Play Store erscheint die App in Kürze.'),
+                 ('Computer', 'In Chrome oder Edge öffnen und auf das Installieren-Symbol in der Adressleiste klicken – oder einfach im Browser nutzen.'),
+                 ('iPhone und iPad', 'In Safari öffnen, auf „Teilen“ tippen und „Zum Home-Bildschirm“ wählen.')],
         'why_h': 'Warum ist FaLe PDF gratis?',
-        'why_p': 'Weil fast alles auf deinem Gerät passiert – und das kostet uns nichts.',
         'why': [
-            ('Verarbeitung auf dem Gerät', 'Lesen, Unterschreiben, Scannen, Texterkennung, Umwandeln und Bearbeiten laufen direkt auf deinem Handy oder Computer. Dafür brauchen wir keine Server – also gibt es auch nichts zu bezahlen.'),
+            ('Verarbeitung auf dem Gerät', 'Lesen, Unterschreiben, Scannen, Texterkennung, Umwandeln und Bearbeiten laufen direkt auf deinem Handy oder Computer. Dafür brauchen wir keine teuren Server.'),
             ('Nur die KI kostet Geld', 'Die optionale Cloud-KI verursacht echte Kosten pro Anfrage. Deshalb gibt es täglich ein kostenloses Kontingent.'),
-            ('Kein Handel mit Daten', 'Keine Werbebanner, kein Tracking, keine Analyse-Tools und kein Verkauf von Daten. Werbung siehst du nur, wenn du selbst ein Video startest.'),
+            ('Kein Handel mit Daten', 'Keine Werbebanner, kein Tracking, keine Analyse-Tools und kein Verkauf von Daten.'),
         ],
-        'more_h': 'Mehr erfahren',
-        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Unterlagen von anderen anfordern – per Link', '/unterlagen-anfordern/'), ('Ausführliche Infos und FAQ zu FaLe PDF', PDF_INFO), ('Datenschutzerklärung der App', PDF_PRIVACY)],
-        'files': 'Dateiformate', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown sowie Bilder (JPG, PNG, WebP)',
-        'langs': 'Sprachen', 'langs_v': 'Deutsch und Englisch – die Briefvorlagen folgen deutschem Recht',
-        'plat': 'Plattformen', 'plat_v': 'Web-App für jeden modernen Browser, Android-App in Kürze',
+        'faq_h': 'Häufige Fragen',
+        'faq': [
+            ('Ist FaLe PDF wirklich kostenlos?', 'Ja. Alle PDF- und Office-Funktionen sind gratis – ohne Abo, ohne Konto und ohne Wasserzeichen. Kosten entstehen nur bei der optionalen Cloud-KI; dafür gibt es täglich kostenlose Anfragen.'),
+            ('Gibt es ein Limit für Dateien oder Seiten?', 'Nein. Es gibt kein Tageslimit und keine Seitengrenze. Wie groß eine Datei sein kann, hängt nur vom Speicher deines Geräts ab.'),
+            ('Werden meine Dateien hochgeladen?', 'Nein. Deine Dateien werden auf deinem Gerät verarbeitet und gespeichert. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text an den KI-Dienst gesendet – nach deiner Zustimmung.'),
+            ('Kann ich PDFs ohne Abo bearbeiten und unterschreiben?', 'Ja. Text ändern, Formulare ausfüllen, Unterschrift zeichnen und einsetzen, Datum und Stempel – alles kostenlos und ohne Konto.'),
+            ('Funktioniert es offline?', 'Ja. Alle Werkzeuge außer der optionalen Cloud-KI funktionieren ohne Internet – auch die Texterkennung. Deren Sprachdaten werden beim ersten Mal einmalig geladen.'),
+            ('Welche Dateien kann ich öffnen?', 'PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), CSV, TXT, Markdown sowie Bilder (JPG, PNG, WebP).'),
+            ('Läuft FaLe PDF auf Windows, Mac, Android und iPhone?', 'Ja. FaLe PDF läuft in jedem aktuellen Browser und lässt sich auf allen diesen Geräten wie eine App installieren. Eine Android-App für den Play Store folgt in Kürze.'),
+            ('Gibt es Werbung?', 'Keine Banner und keine Werbung beim Arbeiten. In der Android-App kannst du freiwillig ein Werbevideo ansehen, um zusätzliche KI-Anfragen zu bekommen.'),
+        ],
+        'more_h': 'Mehr zu FaLe PDF',
+        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Unterlagen von anderen anfordern – per Link', '/unterlagen-anfordern/'), ('Alle kostenlosen PDF-Werkzeuge', '/werkzeuge/'), ('Datenschutzerklärung der App', PDF_PRIVACY)],
+        'cta_h': 'Jetzt kostenlos ausprobieren', 'cta_p': 'Kein Konto, keine Installation nötig – FaLe PDF öffnet sich in einem neuen Tab.',
     },
     'en': {
-        'title': 'FaLe PDF – free, private, offline PDF & Office | FaleNetwork',
-        'desc': 'FaLe PDF: read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. Free, no account, everything on your device.',
-        'live': 'Available',
-        'h1': 'PDF & Office&nbsp;– free, private, offline',
-        'lede': 'Read, fill in, sign, scan and convert PDFs. Everything runs right on your device – for free.',
-        'open': 'Open in browser', 'android': 'Android: coming soon to Google Play',
-        'hint': 'Tip: open it in your browser and choose “Add to Home Screen” – FaLe PDF then starts like an app.',
-        'shot_home_alt': 'FaLe PDF home screen with the note “Everything free – including pro features”',
-        'feat_h': 'Everything you need for documents',
-        'feat_p': 'Tap a topic to see its features.', 'facts_h': 'Technical details', 'info_h': 'Good to know',
+        'title': 'Free PDF editor – no subscription, no watermark | FaLe PDF',
+        'desc': 'FaLe PDF is a free PDF program: edit, sign, scan and convert – no subscription, no watermark, no account. Runs in your browser and offline.',
+        'live': 'Free',
+        'h1': 'The free PDF program – no subscription, no watermark',
+        'lede': 'Edit, fill in, sign, scan and convert PDFs. FaLe PDF runs in the browser on phones and computers – your files stay on your device.',
+        'open': 'Open FaLe PDF', 'tools': 'Single tools, no app',
+        'chips': ['No account', 'No watermark', 'No page limits', 'Works offline'],
+        'shot_home_alt': 'FaLe PDF home screen',
+        'cmp_h': 'What costs money elsewhere – not here',
+        'cmp_p': 'Many “free” PDF programs are just trials. A comparison with what free versions usually offer:',
+        'cmp_cols': ('', 'Typical free version', 'FaLe PDF'),
+        'cmp': [
+            ('Watermark on the result', 'often', 'never'),
+            ('Daily or page limit', 'often', 'none'),
+            ('Edit text in PDFs', 'usually paid only', 'free'),
+            ('PDF to Word, Excel, PowerPoint', 'usually paid only', 'free'),
+            ('Text recognition (OCR)', 'usually paid only', 'free, offline'),
+            ('Signing', 'often needs an account', 'no account'),
+            ('Uploading files', 'needed for online services', 'not needed'),
+            ('Ads while you work', 'sometimes', 'none'),
+        ],
+        'cmp_note': 'Based on the usual terms of widespread free versions, October 2026. Individual providers differ.',
+        'feat_h': 'Everything you need for PDFs',
+        'feat_p': 'The app has everything in one place. Many features also exist as single tool pages – handy for quick jobs.',
         'features': [
-            ('Read PDFs', ['Fast viewer with search, bookmarks and table of contents', 'Reading mode: text reflowed for phones, also sepia and dark', 'Read aloud with your device’s speech output']),
-            ('Fill in & sign', ['Fill in PDF forms', 'Draw a signature, save it and place it with one tap', 'Date, text, initials and your own stamps']),
-            ('Scan with text recognition', ['Camera scanner: detects edges, straightens, enhances', 'Offline text recognition (OCR) – scans become searchable', 'ID cards, business cards, passport photos and QR codes']),
-            ('Annotate & edit', ['Highlight, notes, freehand and shapes', 'Add or replace text and images', 'Redact, watermarks, page numbers, headers and footers']),
-            ('Pages & files', ['Merge, reorder, rotate, extract, crop', 'Compress and batch processing', 'Set and remove password protection (AES-256)']),
-            ('Convert', ['PDF to DOCX, XLSX and PPTX – and back', 'Images to PDF, image to DOCX or XLSX via text recognition', 'Export pages as images or text']),
-            ('Documents, spreadsheets, presentations', ['Open, edit and create DOCX, XLSX and PPTX', 'Spreadsheets with formulas and charts', 'Templates for CVs, invoices, letters and more']),
-            ('Share securely', ['Share files end-to-end encrypted via link', 'Request a signature from someone else', 'Connect devices with a QR code – shared data is deleted automatically']),
-            ('AI assistant (optional)', ['Ask your documents – answers with page references', 'Summarise, translate, writing help, flashcards', 'Only with your consent, free requests every day']),
+            ('Read & listen', 'Fast viewer with search and table of contents, reading mode for phones, read aloud.', ['pdf-viewer', 'read-aloud']),
+            ('Fill in & sign', 'Fill in forms, draw your signature and place it with one tap, dates and stamps.', ['fill-pdf-form', 'sign-pdf', 'signature-maker']),
+            ('Edit & annotate', 'Change text, highlight, notes, freehand, redaction, watermarks and page numbers.', ['edit-pdf-text', 'annotate-pdf', 'redact-pdf']),
+            ('Pages & files', 'Merge, split, reorder, rotate, compress – also many files at once.', ['merge-pdf', 'compress-pdf', 'organize-pdf', 'batch-pdf']),
+            ('Convert', 'PDF to Word, Excel and PowerPoint – and back. Images to PDF, PDF to images.', ['pdf-to-word', 'word-to-pdf', 'pdf-to-excel', 'jpg-to-pdf']),
+            ('Scan & text recognition', 'Scan with your camera, straighten edges, recognise text – offline.', ['scan-to-pdf', 'ocr-pdf', 'image-to-text']),
+            ('Protect', 'Set and remove passwords (AES-256), delete metadata, redact safely.', ['protect-pdf', 'unlock-pdf', 'edit-metadata']),
+            ('Office & templates', 'Open and edit Word, Excel and PowerPoint files, templates for CVs, invoices and letters.', ['cv-builder', 'invoice-generator', 'cancellation-letter']),
+        ],
+        'app_h': 'App or single tools?',
+        'app': [
+            ('The app', 'Every feature in one place, your files in a library, signature and templates saved. Install it like an app on phone or PC and it works offline.'),
+            ('The tool pages', 'One task, one page: file in, result out – nothing to install. Ideal when you quickly want to merge, shrink or convert something.'),
         ],
         'shots_h': 'What FaLe PDF looks like',
-        'shots': [('sign', 'Rental agreement with an inserted signature in FaLe PDF', 'Sign'), ('ai', 'AI assistant answering a question about an invoice with a page reference', 'AI assistant')],
+        'shots': [('home', 'FaLe PDF home screen', 'Home'), ('sign', 'Rental agreement with an inserted signature in FaLe PDF', 'Signing'), ('ai', 'AI assistant answering a question about an invoice with a page reference', 'AI assistant (optional)')],
+        'inst_h': 'Install FaLe PDF',
+        'inst': [('Android', 'Open FaLe PDF in your browser and choose “Install app” from the menu. The Play Store app is coming soon.'),
+                 ('Computer', 'Open it in Chrome or Edge and click the install icon in the address bar – or simply use it in the browser.'),
+                 ('iPhone and iPad', 'Open it in Safari, tap “Share” and choose “Add to Home Screen”.')],
         'why_h': 'Why is FaLe PDF free?',
-        'why_p': 'Because almost everything happens on your device – and that costs us nothing.',
         'why': [
-            ('Processing on your device', 'Reading, signing, scanning, text recognition, converting and editing run right on your phone or computer. That needs no servers – so there is nothing to pay for.'),
+            ('Processing on your device', 'Reading, signing, scanning, text recognition, converting and editing run right on your phone or computer. That needs no expensive servers.'),
             ('Only the AI costs money', 'The optional cloud AI has a real cost per request. That’s why there is a free daily allowance.'),
-            ('No trading in data', 'No banner ads, no tracking, no analytics tools and no selling of data. You only see an ad if you start a video yourself.'),
+            ('No trading in data', 'No banner ads, no tracking, no analytics tools and no selling of data.'),
         ],
-        'more_h': 'Learn more',
-        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Request documents from others – via a link', '/en/request-files/'), ('Detailed information and FAQ about FaLe PDF', PDF_INFO_EN), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
-        'files': 'File formats', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown and images (JPG, PNG, WebP)',
-        'langs': 'Languages', 'langs_v': 'English and German – letter templates follow German law',
-        'plat': 'Platforms', 'plat_v': 'Web app for any modern browser, Android app coming soon',
+        'faq_h': 'Frequently asked questions',
+        'faq': [
+            ('Is FaLe PDF really free?', 'Yes. All PDF and office features are free – no subscription, no account, no watermarks. Only the optional cloud AI costs money to run; there are free requests every day.'),
+            ('Is there a limit on files or pages?', 'No. There is no daily limit and no page limit. How large a file can be only depends on your device’s memory.'),
+            ('Are my files uploaded?', 'No. Your files are processed and stored on your device. Only when you use the optional cloud AI is the text you select sent to the AI service – with your consent.'),
+            ('Can I edit and sign PDFs without a subscription?', 'Yes. Changing text, filling in forms, drawing and placing your signature, dates and stamps – all free and without an account.'),
+            ('Does it work offline?', 'Yes. All tools except the optional cloud AI work without internet – including text recognition. Its language data is downloaded once on first use.'),
+            ('Which files can I open?', 'PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), CSV, TXT, Markdown and images (JPG, PNG, WebP).'),
+            ('Does FaLe PDF run on Windows, Mac, Android and iPhone?', 'Yes. FaLe PDF runs in any current browser and can be installed like an app on all of these devices. An Android app for the Play Store is coming soon.'),
+            ('Are there ads?', 'No banners and no ads while you work. In the Android app you can choose to watch a video ad to get extra AI requests.'),
+        ],
+        'more_h': 'More about FaLe PDF',
+        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Request documents from others – via a link', '/en/request-files/'), ('All free PDF tools', '/en/tools/'), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
+        'cta_h': 'Try it for free now', 'cta_p': 'No account, nothing to install – FaLe PDF opens in a new tab.',
     },
 }
 
 
 def page_pdf(lang):
     c = PDF[lang]
-    feats = ''.join(
-        f'<details><summary>{h}</summary><div><ul class="feat-list">{"".join(f"<li>{x}</li>" for x in items)}</ul></div></details>' for h, items in c['features'])
+    open_btn = app_link(PDF_APP, c['open'], 'btn btn-primary', lang, ic('globe'))
+    chips = ''.join(f'<li>{ic("check")}{x}</li>' for x in c['chips'])
+    rows = ''.join(f'<tr><th scope="row">{a}</th><td>{b}</td><td class="pdfl-yes">{ic("check")}{d}</td></tr>' for a, b, d in c['cmp'])
+    cols = ''.join(f'<th scope="col">{x}</th>' for x in c['cmp_cols'])
+    feats = ''
+    for title, text, tools in c['features']:
+        links = ''.join(f'<li><a href="{p}">{n}</a></li>' for n, p in (tool_ref(t, lang) for t in tools))
+        feats += f'<li class="pdfl-feat"><h3>{title}</h3><p>{text}</p><ul class="pdfl-links">{links}</ul></li>'
+    app = ''.join(f'<div class="pdfl-card"><h3>{h}</h3><p>{p}</p></div>' for h, p in c['app'])
     shots = ''.join(
         f'<li><figure><img src="/assets/img/pdf/{n}-{lang}.webp" width="540" height="1140" loading="lazy" decoding="async" alt="{alt}"><figcaption>{cap}</figcaption></figure></li>'
         for n, alt, cap in c['shots'])
-    why = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['why'])
-    facts = ''.join(f'<div><dt>{c[k]}</dt><dd>{c[k + "_v"]}</dd></div>' for k in ('plat', 'files', 'langs'))
+    inst = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['inst'])
+    why = ''.join(f'<div class="pdfl-card"><h3>{h}</h3><p>{p}</p></div>' for h, p in c['why'])
+    faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
     more = ''.join(f'<li>{ic("arrow")}<a href="{h}">{l}</a></li>' for l, h in c['more'])
     ld = [{
         '@context': 'https://schema.org', '@type': 'SoftwareApplication', 'name': 'FaLe PDF',
         'url': BASE + url('pdf', lang), 'image': BASE + '/assets/icons/app-pdf.svg',
-        'applicationCategory': 'BusinessApplication', 'operatingSystem': 'Android, Web',
+        'applicationCategory': 'BusinessApplication', 'operatingSystem': 'Web, Windows, macOS, Android, iOS',
         'inLanguage': ['de', 'en'], 'isAccessibleForFree': True, 'description': c['desc'],
         'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
         'publisher': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': BASE + '/'},
-    }]
+    }, {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in c['faq']]}]
+    hub = TOOLS_HUB[0 if lang == 'de' else 1]
     body = f'''
 <main id="main">
   <section class="p-hero">
@@ -549,39 +634,68 @@ def page_pdf(lang):
         <div class="p-hero-id"><img src="/assets/icons/app-pdf.svg" width="56" height="56" alt=""><span>FaLe PDF</span>{pill('live', c['live'])}</div>
         <h1>{c['h1']}</h1>
         <p class="lede">{c['lede']}</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="{PDF_APP}">{ic('globe')}{c['open']}</a>
-          <span class="btn btn-quiet" aria-disabled="true">{ic('device')}{c['android']}</span>
-        </div>
-        <p class="hint">{c['hint']}</p>
+        <div class="btn-row">{open_btn}<a class="btn btn-quiet" href="{hub}">{c['tools']}{ic('arrow')}</a></div>
+        <ul class="pdfl-chips">{chips}</ul>
       </div>
       <div class="phone"><img src="/assets/img/pdf/home-{lang}.webp" width="540" height="1140" fetchpriority="high" alt="{c['shot_home_alt']}"></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="cmp-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="cmp-h">{c['cmp_h']}</h2><p>{c['cmp_p']}</p></div>
+      <div class="pdfl-table-wrap"><table class="pdfl-table"><thead><tr>{cols}</tr></thead><tbody>{rows}</tbody></table></div>
+      <p class="muted small">{c['cmp_note']}</p>
     </div>
   </section>
   <section class="section" aria-labelledby="feat-h">
     <div class="wrap">
       <div class="section-head"><h2 id="feat-h">{c['feat_h']}</h2><p>{c['feat_p']}</p></div>
-      <div class="faq feat-acc">{feats}</div>
+      <ul class="pdfl-feats">{feats}</ul>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="app-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="app-h">{c['app_h']}</h2></div>
+      <div class="pdfl-cards">{app}</div>
     </div>
   </section>
   <section class="section" aria-labelledby="shots-h">
     <div class="wrap">
       <div class="section-head"><h2 id="shots-h">{c['shots_h']}</h2></div>
-      <ul class="shots">{shots}</ul>
+      <ul class="shots pdfl-shots">{shots}</ul>
     </div>
   </section>
   <section class="section" aria-labelledby="why-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="why-h">{c['info_h']}</h2></div>
-      <div class="faq"><details><summary>{c['why_h']}</summary><div><p>{c['why_p']}</p><dl class="facts">{why}</dl></div></details>
-        <details><summary>{c['facts_h']}</summary><div><dl class="facts">{facts}</dl></div></details></div>
+      <div class="section-head"><h2 id="why-h">{c['why_h']}</h2></div>
+      <div class="pdfl-cards pdfl-cards-3">{why}</div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="inst-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="inst-h">{c['inst_h']}</h2></div>
+      <dl class="facts">{inst}</dl>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="pfaq-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="pfaq-h">{c['faq_h']}</h2></div>
+      <div class="faq">{faq}</div>
       <h3 class="more-h">{c['more_h']}</h3>
       <ul class="plain-list more-list">{more}</ul>
+    </div>
+  </section>
+  <section class="section band" aria-labelledby="cta-h">
+    <div class="wrap pdfl-cta">
+      <h2 id="cta-h">{c['cta_h']}</h2>
+      <p class="band-p">{c['cta_p']}</p>
+      <div class="btn-row center-row">{open_btn}</div>
     </div>
   </section>
 </main>
 '''
     return head(lang, 'pdf', c['title'], c['desc'], ld) + '\n' + header(lang, 'pdf') + body + footer(lang)
+
 
 # ================================================================= Unterschrift anfordern (feature page of FaLe PDF)
 SIGN_START = PDF_APP + '#/teilen/unterschrift'
@@ -678,7 +792,7 @@ def page_feature(key, c, start, lang):
         <h1>{c['h1']}</h1>
         <p class="lede">{c['lede']}</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="{start}">{ic('arrow')}{c['start']}</a>
+          {app_link(start, c['start'], 'btn btn-primary', lang, ic('arrow'))}
           <a class="btn btn-quiet" href="{url('pdf', lang)}">{c['more_app']}</a>
         </div>
         <p class="hint">{c['hint']}</p>
@@ -696,7 +810,7 @@ def page_feature(key, c, start, lang):
     <div class="wrap">
       <div class="section-head"><h2 id="why-h">{c['why_h']}</h2></div>
       <ul class="plain-list check-list">{why}</ul>
-      <div class="btn-row center-row"><a class="btn btn-primary" href="{start}">{c['start']}</a></div>
+      <div class="btn-row center-row">{app_link(start, c['start'], 'btn btn-primary', lang)}</div>
     </div>
   </section>
   <section class="section" aria-labelledby="faq-h">
@@ -1056,7 +1170,7 @@ def page_konto(lang):
       <h1>{c['h1']}</h1>
       <p class="lede">{c['lede']}</p>
       <div class="btn-row konto-cta">
-        <a class="btn btn-primary" href="{PDF_APP}#/konto" data-konto-link data-konto-signin hidden>{c['signin']}</a>
+        <a class="btn btn-primary" href="{PDF_APP}#/konto" target="_blank" rel="noopener" data-konto-link data-konto-signin hidden>{c['signin']}</a>
         <p class="soon-note" data-konto-soon>{ic('info')}{c['soon_text']}</p>
       </div>
     </div>

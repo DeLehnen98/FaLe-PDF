@@ -9,6 +9,10 @@
       "maxDuration": 60
     }
   },
+  "redirects": [
+    { "source": "/info.html", "destination": "https://fale.network/apps/pdf/", "permanent": true },
+    { "source": "/info-en.html", "destination": "https://fale.network/en/apps/pdf/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/sw.js",

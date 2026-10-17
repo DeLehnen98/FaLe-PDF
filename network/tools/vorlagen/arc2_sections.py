@@ -549,7 +549,7 @@ def page_tab(vb, wb, bp, t, tabs, lang, app_url):
     file_name = t['name'] if lang == 'de' else t['name']
     btns = (f'<div class="btn-row arc2-dl" data-arc2-actions hidden><button class="btn btn-primary" type="button" data-arc2-xlsx>{esc(s["xlsx"])}</button>'
             f'<button class="btn btn-quiet" type="button" data-arc2-csv>{esc(s["csv"])}</button><a class="btn btn-quiet" href="#vorschau">{esc(s["fill"])}</a></div>'
-            f'<p class="arc2-app"><a href="{app}" rel="noopener">{esc(s["app"])}</a></p>')
+            f'<p class="arc2-app">{bp.app_link(app, esc(s["app"]), "", lang)}</p>')
     main = f'''    <div class="wt-head">{icon_chip(c[4], c[5], 'wt-chip-lg')}<div><h1>{esc(fmt(s['tab_page_h1'], name=name))}</h1><p class="wt-lede">{esc(src['intro'])}</p></div></div>
     <p class="vl-pills vl-head-pills"><span class="vl-pill">{esc(c[2] if lang == 'de' else c[3])}</span><span class="vl-pill">XLSX · CSV</span></p>
     {btns}

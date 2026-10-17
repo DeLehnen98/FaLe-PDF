@@ -497,7 +497,7 @@ def app_cta(lang):
     <div class="wrap wt-app-cta-row">
       <img src="/assets/icons/app-pdf.svg" width="64" height="64" alt="">
       <div><h2 id="app-h">{s['app_h']}</h2><p>{s['app_p']}</p></div>
-      <div class="btn-row"><a class="btn btn-primary" href="{bp.PDF_APP}">{s['app_open']}</a><a class="btn btn-quiet" href="{bp.url('pdf', lang)}">{s['app_more']}</a></div>
+      <div class="btn-row">{bp.app_link(bp.PDF_APP, s['app_open'], 'btn btn-primary', lang)}<a class="btn btn-quiet" href="{bp.url('pdf', lang)}">{s['app_more']}</a></div>
     </div>
   </section>'''
 
