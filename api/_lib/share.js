@@ -43,6 +43,9 @@ function shareConfig() {
     roomsDaily: Math.round(num('TRANSFER_DEVICE_DAILY', 60, 1, 100000)),
     roomsIpDaily: Math.round(num('TRANSFER_IP_DAILY', 150, 1, 100000)),
     joinIpDaily: Math.round(num('TRANSFER_JOIN_IP_DAILY', 60, 1, 100000)),
+    reqDaily: Math.round(num('REQ_DEVICE_DAILY', 30, 1, 100000)),
+    reqMaxFiles: Math.round(num('REQ_MAX_FILES', 50, 1, 200)),
+    reqMaxBytes: Math.round(num('REQ_MAX_MB', 250, 1, 10240) * MiB),     // all files of one request together
     maxSigners: 5,
     roomTtlMs: 60 * 60 * 1000,
     ticketTtlSec: 2 * 3600,
@@ -116,6 +119,9 @@ const MESSAGES = {
   signed: [409, 'Bereits unterschrieben'],
   taken: [409, 'Mit diesem Code ist bereits ein Gerät verbunden.'],
   full: [429, 'Zu viele Nachrichten'],
+  closed: [409, 'Diese Anfrage nimmt keine Dateien mehr an.'],
+  req_files: [409, 'Für diese Anfrage wurden schon so viele Dateien hochgeladen, wie erlaubt sind.'],
+  req_bytes: [413, 'Der Speicherplatz für diese Anfrage ist aufgebraucht.'],
 };
 function fail(r, extra) {
   const reason = (r && r.reason) || 'not_found';
@@ -176,7 +182,8 @@ function makeShareCore(overrides = {}) {
     const a = action(req);
     if (a === 'config') {
       const configured = C.secretsConfigured(cfg) && C.storeConfigured(cfg);
-      H.sendJson(res, 200, { ok: true, configured, maxBytes: sc.maxBytes, chunkSize: sc.chunkSize, expiries: EXPIRIES, maxSigners: sc.maxSigners });
+      H.sendJson(res, 200, { ok: true, configured, maxBytes: sc.maxBytes, chunkSize: sc.chunkSize, expiries: EXPIRIES, maxSigners: sc.maxSigners,
+        reqExpiries: SIGN_EXPIRIES, reqMaxFiles: sc.reqMaxFiles, reqMaxBytes: sc.reqMaxBytes });
       return;
     }
     requireBase(cfg);
@@ -212,6 +219,7 @@ function makeShareCore(overrides = {}) {
     }
 
     const body = await H.readJson(req, 80000);
+    if (a.startsWith('rq-')) { await fileRequest(a, req, res, cfg, store, c, sc, body); return; }
     if (a === 'create') {
       const device = deviceOf(cfg, body.token);
       const kind = body.kind;
@@ -276,6 +284,87 @@ function makeShareCore(overrides = {}) {
     }
     throw new H.HttpError(400, 'unknown_action', 'Unbekannte Aktion');
   }), { getConfig: () => deps.getConfig() });
+
+  // ================================================================ POST /api/share?a=rq-… ("Unterlagen anfordern")
+  // The requester creates a request (encrypted header with the wanted documents and the requester's PUBLIC key)
+  // and gets an owner token + an upload token (in the link). Uploaders encrypt every file to that public key
+  // (ECDH, see js/share/crypto.js) – the link lets you upload, never download. Chunks use a=put / a=finish with
+  // the per-file token; the requester downloads with tickets from rq-status.
+  async function fileRequest(a, req, res, cfg, store, c, sc, body) {
+    const reqId = () => { const id = String(body.id || ''); if (!ID_RE.test(id)) throw new H.HttpError(400, 'bad_input', 'Ungültige Anfrage'); return id; };
+    if (a === 'rq-create') {
+      const device = deviceOf(cfg, body.token);
+      const header = body.header;
+      if (typeof header !== 'string' || header.length < 2 || header.length > 60000) throw new H.HttpError(400, 'bad_input', 'Ungültiger Kopf');
+      try { const j = JSON.parse(header); if (!j || j.v !== 1) throw new Error('v'); } catch { throw new H.HttpError(400, 'bad_input', 'Ungültiger Kopf'); }
+      const expiresIn = Number(body.expiresIn);
+      if (!SIGN_EXPIRIES.includes(expiresIn)) throw new H.HttpError(400, 'bad_input', 'Ungültige Laufzeit');
+      const maxFiles = body.maxFiles == null ? sc.reqMaxFiles : Number(body.maxFiles);
+      if (!intIn(maxFiles, 1, sc.reqMaxFiles)) throw new H.HttpError(400, 'bad_input', 'Ungültige Dateianzahl');
+      await limit(store, c, 'rq', ['d:' + device, 'i:' + c.ip], [sc.reqDaily, sc.reqDaily * 2], 0, [1, 1], 'Tageslimit für Anfragen erreicht. Morgen geht es weiter.');
+      const id = randId(), owner = randToken(), upload = randToken();
+      const expiresAt = new Date(c.now.getTime() + expiresIn * 1000);
+      const r = await store.reqCreate({ id, owner: capHash(owner), upload: capHash(upload), header, maxFiles, maxBytes: sc.reqMaxBytes, expiresAt });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, id, auth: owner, upload, createdAt: r.created_at, expiresAt: expiresAt.toISOString(), maxFiles, maxBytes: sc.reqMaxBytes });
+      return;
+    }
+    if (a === 'rq-open') {
+      const upload = capHash(body.u);
+      await limit(store, c, 'rqopen', ['i:' + c.ip], [sc.signOpenIpDaily], 0, [1], 'Tageslimit für dein Netzwerk erreicht.');
+      const r = await store.reqOpen({ upload });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, header: r.header, closed: !!r.closed, files: Number(r.files), bytes: Number(r.bytes), maxFiles: Number(r.max_files),
+        maxBytes: Number(r.max_bytes), maxFileBytes: sc.maxBytes, createdAt: r.created_at, expiresAt: r.expires_at });
+      return;
+    }
+    if (a === 'rq-upload') {
+      const upload = capHash(body.u);
+      validateUpload(body, sc);
+      await limit(store, c, 'rqup', ['i:' + c.ip], [sc.ipDaily], body.size, [sc.ipDailyBytes], 'Tageslimit für Uploads aus deinem Netzwerk erreicht. Morgen geht es weiter.');
+      const id = randId(), owner = randToken();
+      const r = await store.reqUpload({ upload, id, owner: capHash(owner), header: body.header, size: body.size, chunks: body.chunks, chunkSize: sc.chunkSize, cap: sc.totalBytes });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, id, auth: owner, chunkSize: sc.chunkSize, expiresAt: r.expires_at });
+      return;
+    }
+    if (a === 'rq-retract') {
+      const r = await store.reqRetract({ id: reqId(), owner: capHash(authOf(req, body)) });
+      H.sendJson(res, 200, { ok: true, deleted: !!(r && r.deleted) });
+      return;
+    }
+    if (a === 'rq-status') {
+      const r = await store.reqStatus({ id: reqId(), owner: capHash(authOf(req, body)) });
+      if (!r || !r.ok) throw fail(r);
+      if (!r.exists) { H.sendJson(res, 200, { ok: true, exists: false, expired: !!r.expired }); return; }
+      H.sendJson(res, 200, {
+        ok: true, exists: true, closed: !!r.closed, createdAt: r.created_at, expiresAt: r.expires_at, maxFiles: Number(r.max_files), maxBytes: Number(r.max_bytes),
+        usedFiles: Number(r.used_files), usedBytes: Number(r.used_bytes), files: (r.files || []).map(o => ({ ...pub(o), ticket: ticket(cfg, o.id, c) })),
+      });
+      return;
+    }
+    if (a === 'rq-close') {
+      const r = await store.reqSet({ id: reqId(), owner: capHash(authOf(req, body)), closed: !!body.closed });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, closed: !!r.closed });
+      return;
+    }
+    if (a === 'rq-remove') {
+      const file = String(body.file || '');
+      if (!ID_RE.test(file)) throw new H.HttpError(400, 'bad_input', 'Ungültige Anfrage');
+      const r = await store.reqRemove({ id: reqId(), owner: capHash(authOf(req, body)), file });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, deleted: !!r.deleted });
+      return;
+    }
+    if (a === 'rq-delete') {
+      const r = await store.reqDelete({ id: reqId(), owner: capHash(authOf(req, body)) });
+      if (!r || !r.ok) throw fail(r);
+      H.sendJson(res, 200, { ok: true, deleted: !!r.deleted });
+      return;
+    }
+    throw new H.HttpError(400, 'unknown_action', 'Unbekannte Aktion');
+  }
 
   // ================================================================ POST /api/sign?a=…
   const sign = H.handler(['POST'], guard(async (req, res, cfg) => {

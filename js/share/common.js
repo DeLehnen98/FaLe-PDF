@@ -19,6 +19,7 @@ const EXTRA = {
   send: '<path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/>',
   timer: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/>',
   shareLock: '<rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1.4"/>',
+  inbox: '<path d="M4 13.5 6.2 5.6A1.5 1.5 0 0 1 7.6 4.5h8.8a1.5 1.5 0 0 1 1.4 1.1l2.2 7.9"/><path d="M4 13.5V18a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 18v-4.5h-4.6a3.4 3.4 0 0 1-6.8 0z"/><path d="M12 6.5v5M9.8 9.4 12 11.6l2.2-2.2"/>',
   signReq: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M7.5 17c1.2-1.6 2.2-2.4 3-2.4 1 0 .6 2.2 1.6 2.2.7 0 1.3-.9 2-.9.6 0 .9.6 1.9.6"/>',
 };
 export function sicon(name, cls = '') {

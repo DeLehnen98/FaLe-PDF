@@ -134,6 +134,16 @@ export const signApi = {
   status: (id, auth) => call('sign', 'status', { json: { id, auth } }),
   remove: (id, auth) => call('sign', 'delete', { json: { id, auth } }),
 };
+export const requestApi = {
+  create: (body) => withToken(token => call('share', 'rq-create', { json: { ...body, token } })),
+  open: (u) => call('share', 'rq-open', { json: { u } }),
+  upload: (u, body) => call('share', 'rq-upload', { json: { u, ...body } }),
+  retract: (id, auth) => call('share', 'rq-retract', { json: { id, auth } }),
+  status: (id, auth) => call('share', 'rq-status', { json: { id, auth } }),
+  close: (id, auth, closed) => call('share', 'rq-close', { json: { id, auth, closed } }),
+  removeFile: (id, auth, file) => call('share', 'rq-remove', { json: { id, auth, file } }),
+  remove: (id, auth) => call('share', 'rq-delete', { json: { id, auth } }),
+};
 export const transferApi = {
   create: () => withToken(token => call('transfer', 'create', { json: { token } })),
   join: ({ code, room }) => call('transfer', 'join', { json: room ? { room } : { code } }),
@@ -148,11 +158,11 @@ export const transferApi = {
  *   announce({ size, chunks, header }) → { id, auth } (creates the server object)
  *   → { id, auth, cipherSize }
  */
-export async function uploadEncrypted(blob, { ck, meta, kdf = null, announce, onProgress, signal }) {
+export async function uploadEncrypted(blob, { ck, meta, kdf = null, extra = null, announce, onProgress, signal }) {
   const cfg = await shareConfig();
   const chunkSize = cfg.chunkSize;
   if (blob.size > cfg.maxBytes) throw new ShareError('too_large', `Die Datei ist zu groß (max. ${Math.round(cfg.maxBytes / 1048576)} MB).`);
-  const sealed = await sealObject(ck, meta, { plainSize: blob.size, chunkSize, kdf });
+  const sealed = await sealObject(ck, meta, { plainSize: blob.size, chunkSize, kdf, extra });
   const created = await announce({ size: sealed.cipherSize, chunks: sealed.chunks, header: sealed.header });
   const { id, auth } = created;
   let done = 0;

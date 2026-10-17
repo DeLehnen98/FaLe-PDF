@@ -2,7 +2,7 @@
  * Never caches anything personal: API responses (/api/…, other origins) are not touched at all, and
  * decrypted content never exists as a network response (it lives in memory as Blobs). Offline copies of files
  * are the server's CIPHERTEXT chunks in IndexedDB (see js/idb.js), not Cache Storage. */
-const VERSION = 'one-c1e6325ee0';
+const VERSION = 'one-d9b9433b4d';
 const CACHE = `fale-one-${VERSION}`;
 const VENDOR_CACHE = 'fale-one-pdfjs-v1'; // pdf.js cmaps / fonts: cached on first use, kept across app updates
 

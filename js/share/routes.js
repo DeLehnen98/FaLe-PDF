@@ -4,6 +4,9 @@
 //   #/teilen/unterschrift[?doc=]   request a signature (place fields, create links)
 //   #/teilen/anfrage/<id>          status of one signature request
 //   #/teilen/mitnehmen#d=<data>    take a signature request over to another device (asks first)
+//   #/teilen/anfordern             request documents (upload link)
+//   #/teilen/unterlagen/<id>       received documents of one request
+//   #/r/<token>#k=<key>            uploader view (any browser, no install, no account)
 //   #/s/<id>#k=<key>               recipient view (any browser, no install)
 //   #/u/<token>#k=<key>            signer view (any browser, no install, no account)
 //   #/verbinden[?r=<room>&s=<secret>]  connect devices / transfer files
@@ -12,7 +15,7 @@ import { errorToast, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { loadShareCss } from './common.js';
 
-export const SHARE_ROUTES = ['teilen', 's', 'u', 'verbinden'];
+export const SHARE_ROUTES = ['teilen', 's', 'u', 'r', 'verbinden'];
 
 const SCREENS = {
   hub: { title: 'Teilen & Übertragen', sub: 'Ende-zu-Ende-verschlüsselt – ohne Konto', load: () => import('./hub.js') },
@@ -20,6 +23,9 @@ const SCREENS = {
   unterschrift: { title: 'Unterschrift anfordern', sub: 'Felder setzen, Link senden, unterschriebenes PDF zurückbekommen', load: () => import('./signreq.js') },
   anfrage: { title: 'Unterschriftsanfrage', sub: 'Status und unterschriebenes Dokument', load: () => import('./signreq.js').then(m => ({ mount: m.mountStatus })) },
   mitnehmen: { title: 'Anfrage übernehmen', sub: 'Unterschriftsanfrage auf diesem Gerät ansehen', load: () => import('./signreq.js').then(m => ({ mount: m.mountImport })) },
+  anfordern: { title: 'Unterlagen anfordern', sub: 'Link senden – Dateien verschlüsselt empfangen', load: () => import('./filereq.js') },
+  unterlagen: { title: 'Unterlagen-Eingang', sub: 'Hochgeladene Dateien öffnen und speichern', load: () => import('./filereq.js').then(m => ({ mount: m.mountStatus })) },
+  r: { title: 'Unterlagen hochladen', sub: 'Ende-zu-Ende-verschlüsselt mit FaLe PDF', load: () => import('./filereq.js').then(m => ({ mount: m.mountUpload })) },
   s: { title: 'Geteilte Datei', sub: 'Ende-zu-Ende-verschlüsselt mit FaLe PDF', load: () => import('./receive.js') },
   u: { title: 'Unterschreiben', sub: 'Dokument ansehen und elektronisch unterschreiben', load: () => import('./signer.js') },
   verbinden: { title: 'Geräte verbinden', sub: 'Dateien zwischen Handy und PC übertragen', load: () => import('./transfer.js') },
@@ -45,7 +51,7 @@ export async function openShareRoute(parts, params, { goBack }) {
     if (screen.signal.aborted) return;
     screen.body.innerHTML = '';
     // id/token without a trailing "#k=…" fragment
-    const arg = (key === 's' || key === 'u') ? String(parts[1] || '').split('#')[0] : key === 'anfrage' ? parts[2] : null;
+    const arg = (key === 's' || key === 'u' || key === 'r') ? String(parts[1] || '').split('#')[0] : (key === 'anfrage' || key === 'unterlagen') ? String(parts[2] || '').split('#')[0] : null;
     const cleanup = await mod.mount(screen, { parts, params, goBack, arg, hash: location.hash });
     screen.cleanup = () => { try { if (typeof cleanup === 'function') cleanup(); } finally { screen.root.classList.remove(...cls); } };
   } catch (e) {

@@ -83,7 +83,7 @@ export function startHarness(port = 8801) {
       const s = store._state;
       const objects = [...s.objects.values()].map(o => ({ id: o.id, kind: o.kind, size: o.size, chunks: o.chunkCount, complete: o.complete, downloads: o.downloads, maxDownloads: o.maxDownloads, header: o.header, parent: o.parent }));
       const chunks = [...s.chunks.entries()].map(([k, v]) => ({ k, b64: v.toString('base64') }));
-      return send({ objects, chunks, requests: [...s.requests.values()].map(r => ({ id: r.id, count: r.count })), signers: [...s.signers.values()].map(x => ({ idx: x.idx, status: x.status, result: x.resultId })), rooms: [...s.rooms.values()].map(r => ({ id: r.id, code: r.code, via: r.via, joined: !!r.guest })), msgs: s.msgs.length, usage: [...s.usage] });
+      return send({ objects, chunks, requests: [...s.requests.values()].map(r => ({ id: r.id, count: r.count })), signers: [...s.signers.values()].map(x => ({ idx: x.idx, status: x.status, result: x.resultId })), rooms: [...s.rooms.values()].map(r => ({ id: r.id, code: r.code, via: r.via, joined: !!r.guest })), msgs: s.msgs.length, usage: [...s.usage], fileReqs: [...s.fileReqs.values()].map(q => ({ id: q.id, closed: q.closed, maxFiles: q.maxFiles, header: q.header })) });
     }
     return send({ error: 'unknown' }, 404);
   }

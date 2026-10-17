@@ -347,17 +347,145 @@ async function upload(kind = 'file', { size = 150000, expiresIn = 86400, maxDown
   check('supabase: param names match SQL', last3[0].body.p_idx === 3 && last3[0].body.p_data === 'AAAA' && Array.isArray(last3[1].body.p_keys) && last3[2].body.p_id === null && last3[2].body.p_code === '123456');
 }
 
+// ---------------------------------------------------------------- file requests ("Unterlagen anfordern")
+{
+  fresh();
+  // crypto: uploads encrypted to the requester's public key – the link key alone cannot open them
+  const keys = await C.newRequestKeys();
+  const L = C.newLinkKey();
+  const reqHeader = (await C.sealObject(L, { title: 'Steuer 2026', items: ['Lohnsteuerbescheinigung'], pub: keys.pub }, { plainSize: 0, chunkSize: 65536 })).header;
+  check('rq crypto: request header has no plaintext', !reqHeader.includes('Steuer') && !reqHeader.includes(keys.pub));
+  const opened = await C.openObject(L, reqHeader);
+  check('rq crypto: uploader reads title + public key with the link key', opened.meta.title === 'Steuer 2026' && opened.meta.pub === keys.pub);
+  const plain = crypto.randomBytes(100000);
+  const uk = await C.uploadKey(opened.meta.pub);
+  const sealed = await C.sealObject(uk.ck, { name: 'Bescheinigung.pdf', size: plain.length, from: 'Max' }, { plainSize: plain.length, chunkSize: 65536, extra: { e: uk.e } });
+  const hdr = JSON.parse(sealed.header);
+  check('rq crypto: header carries the ephemeral public key', hdr.e === uk.e && !sealed.header.includes('Bescheinigung'));
+  const ck2 = await C.ownerFileKey(keys.priv, hdr.e);
+  const o2 = await C.openObject(ck2, sealed.header);
+  const cts = [];
+  for (let i = 0; i < sealed.chunks; i++) cts.push(await sealed.encryptChunk(i, plain.subarray(i * sealed.plainChunk, (i + 1) * sealed.plainChunk)));
+  const back = [];
+  for (let i = 0; i < cts.length; i++) back.push(await o2.decryptChunk(i, cts[i], i === cts.length - 1));
+  check('rq crypto: requester decrypts with the private key', o2.meta.from === 'Max' && Buffer.compare(Buffer.concat(back), plain) === 0);
+  let le = null; try { await C.openObject(L, sealed.header); } catch (e) { le = e; }
+  check('rq crypto: link key cannot open an upload', le && le.code === 'wrong_key');
+  const other = await C.newRequestKeys();
+  let oe = null; try { await C.openObject(await C.ownerFileKey(other.priv, hdr.e), sealed.header); } catch (e) { oe = e; }
+  check('rq crypto: another private key cannot open it', oe && oe.code === 'wrong_key');
+  const uk2 = await C.uploadKey(opened.meta.pub);
+  check('rq crypto: fresh key per file', uk2.e !== uk.e && Buffer.compare(Buffer.from(uk2.ck), Buffer.from(uk.ck)) !== 0);
+  let be = null; try { await C.uploadKey('AAAA'); } catch (e) { be = e; }
+  check('rq crypto: broken public key → clear error', be && be.code === 'bad_header');
+
+  // API
+  const cfg = await call('share', 'config');
+  check('rq config: expiries + limits', JSON.stringify(cfg.json.reqExpiries) === JSON.stringify([86400, 604800, 1209600, 2592000]) && cfg.json.reqMaxFiles === 50 && cfg.json.reqMaxBytes === 250 * 1048576);
+  const noTok = await call('share', 'rq-create', { json: { header: reqHeader, expiresIn: 1209600 } });
+  check('rq-create: needs device token', noTok.status === 401);
+  const badExp = await call('share', 'rq-create', { json: { token: deviceToken(), header: reqHeader, expiresIn: 3600 } });
+  check('rq-create: expiry 1/7/14/30 days', badExp.status === 400);
+  const badHdr = await call('share', 'rq-create', { json: { token: deviceToken(), header: 'x', expiresIn: 1209600 } });
+  check('rq-create: header validated', badHdr.status === 400);
+  const tooMany = await call('share', 'rq-create', { json: { token: deviceToken(), header: reqHeader, expiresIn: 1209600, maxFiles: 51 } });
+  check('rq-create: max files validated', tooMany.status === 400);
+  const cr = await call('share', 'rq-create', { json: { token: deviceToken(), header: reqHeader, expiresIn: 2592000, maxFiles: 3 } });
+  check('rq-create: ok (30 days)', cr.status === 200 && cr.json.id && cr.json.auth && cr.json.upload && cr.json.auth !== cr.json.upload && Math.abs(Date.parse(cr.json.expiresAt) - Date.now() - 30 * 864e5) < 60e3, JSON.stringify(cr.json));
+  const { id, auth, upload: U } = cr.json;
+  const op = await call('share', 'rq-open', { json: { u: U } });
+  check('rq-open: header + counters', op.status === 200 && op.json.header === reqHeader && op.json.files === 0 && op.json.maxFiles === 3 && op.json.maxFileBytes === 50 * 1048576 && !op.json.closed);
+  check('rq-open: wrong token → 404', (await call('share', 'rq-open', { json: { u: 'Z'.repeat(32) } })).status === 404);
+  check('rq-open: owner token is no upload token', (await call('share', 'rq-open', { json: { u: auth } })).status === 404);
+  // upload one file: rq-upload → put → finish
+  const up = await call('share', 'rq-upload', { json: { u: U, size: sealed.cipherSize, chunks: sealed.chunks, header: sealed.header } });
+  check('rq-upload: announced', up.status === 200 && up.json.id && up.json.auth && up.json.expiresAt === cr.json.expiresAt, JSON.stringify(up.json));
+  for (let i = 0; i < cts.length; i++) await call('share', 'put', { raw: cts[i], auth: up.json.auth, query: `id=${up.json.id}&i=${i}` });
+  const st0 = await call('share', 'rq-status', { json: { id, auth } });
+  check('rq-status: unfinished upload not listed, but counted', st0.json.files.length === 0 && st0.json.usedFiles === 1);
+  const fin = await call('share', 'finish', { json: { id: up.json.id, auth: up.json.auth } });
+  check('rq-upload: finish with the per-file token', fin.status === 200 && fin.json.object.kind === 'req-file');
+  const st = await call('share', 'rq-status', { json: { id, auth } });
+  const f0 = st.json.files[0];
+  check('rq-status: file with ticket', st.status === 200 && st.json.exists && st.json.files.length === 1 && f0.id === up.json.id && f0.header === sealed.header && f0.ticket && st.json.usedBytes === sealed.cipherSize);
+  const g = await call('share', 'get', { auth: f0.ticket, query: `id=${f0.id}&i=0` });
+  check('rq download: chunk via ticket', g.status === 200 && Buffer.compare(g.buf, Buffer.from(cts[0])) === 0);
+  check('rq-status: wrong owner → 403', (await call('share', 'rq-status', { json: { id, auth: U } })).status === 403);
+  // the uploaded file is not reachable through the public share endpoints
+  check('rq file: share info hides it', (await call('share', 'info', { json: { id: f0.id } })).status === 404);
+  check('rq file: share open refuses it', (await call('share', 'open', { json: { id: f0.id } })).status !== 200);
+  check('rq file: share delete ignores it', (await call('share', 'delete', { json: { id: f0.id, auth: up.json.auth } })).json.deleted === false);
+  // limits: 3 files per request, 250 MB per request
+  const a2 = await call('share', 'rq-upload', { json: { u: U, size: 100, chunks: 1, header: '{"v":1}' } });
+  const a3 = await call('share', 'rq-upload', { json: { u: U, size: 100, chunks: 1, header: '{"v":1}' } });
+  const a4 = await call('share', 'rq-upload', { json: { u: U, size: 100, chunks: 1, header: '{"v":1}' } });
+  check('rq-upload: max files per request', a2.status === 200 && a3.status === 200 && a4.status === 409 && a4.json.error === 'req_files', JSON.stringify(a4.json));
+  const rt = await call('share', 'rq-retract', { json: { id: a3.json.id, auth: a3.json.auth } });
+  const rtBad = await call('share', 'rq-retract', { json: { id: a2.json.id, auth: a3.json.auth } });
+  check('rq-retract: own upload only', rt.json.deleted === true && rtBad.json.deleted === false);
+  check('rq-upload: slot free again after retract', (await call('share', 'rq-upload', { json: { u: U, size: 100, chunks: 1, header: '{"v":1}' } })).status === 200);
+  check('rq-upload: chunking validated', (await call('share', 'rq-upload', { json: { u: 'Y'.repeat(32), size: 100000, chunks: 1, header: '{"v":1}' } })).status === 400);
+  // close / reopen
+  check('rq-close: wrong owner', (await call('share', 'rq-close', { json: { id, auth: U, closed: true } })).status === 404);
+  const cl = await call('share', 'rq-close', { json: { id, auth, closed: true } });
+  check('rq-close: closed', cl.status === 200 && cl.json.closed === true && (await call('share', 'rq-open', { json: { u: U } })).json.closed === true);
+  const afterClose = await call('share', 'rq-upload', { json: { u: U, size: 100, chunks: 1, header: '{"v":1}' } });
+  check('rq-upload: refused when closed', afterClose.status === 409 && afterClose.json.error === 'closed');
+  await call('share', 'rq-close', { json: { id, auth, closed: false } });
+  // remove one file, delete request
+  check('rq-remove: wrong owner', (await call('share', 'rq-remove', { json: { id, auth: U, file: f0.id } })).status === 403);
+  const rm = await call('share', 'rq-remove', { json: { id, auth, file: f0.id } });
+  check('rq-remove: file deleted', rm.json.deleted === true && (await call('share', 'get', { auth: f0.ticket, query: `id=${f0.id}&i=0` })).status === 404);
+  check('rq-delete: wrong owner', (await call('share', 'rq-delete', { json: { id, auth: U } })).status === 403);
+  const del = await call('share', 'rq-delete', { json: { id, auth } });
+  check('rq-delete: request + files gone', del.json.deleted === true && (await call('share', 'rq-open', { json: { u: U } })).status === 404
+    && ![...store._state.objects.values()].some(o => o.kind === 'req-file'));
+  check('rq-status after delete: exists false', (await call('share', 'rq-status', { json: { id, auth } })).json.exists === false);
+  // expiry: request + files disappear
+  const c2 = await call('share', 'rq-create', { json: { token: deviceToken(), header: reqHeader, expiresIn: 86400 } });
+  const u2 = await call('share', 'rq-upload', { json: { u: c2.json.upload, size: 100, chunks: 1, header: '{"v":1}' } });
+  check('rq expiry: file expires with the request', u2.json.expiresAt === c2.json.expiresAt);
+  offset = 86400e3 + 1000;
+  check('rq expiry: link dead after expiry', (await call('share', 'rq-open', { json: { u: c2.json.upload } })).status === 404);
+  const ps = store._purge();
+  check('rq expiry: purge removes the files', ![...store._state.objects.values()].some(o => o.kind === 'req-file') && store._state.fileReqs.size === 0, JSON.stringify(ps));
+  offset = 0;
+  // capacity cap (global) and per-request bytes
+  process.env.REQ_MAX_MB = '1';
+  const c3 = await call('share', 'rq-create', { json: { token: deviceToken(), header: reqHeader, expiresIn: 86400 } });
+  const big = await call('share', 'rq-upload', { json: { u: c3.json.upload, size: 2 * 1048576, chunks: 32, header: '{"v":1}' } });
+  check('rq-upload: per-request byte limit', big.status === 413 && big.json.error === 'req_bytes', JSON.stringify(big.json));
+  delete process.env.REQ_MAX_MB;
+  // daily creation limit per device
+  process.env.REQ_DEVICE_DAILY = '2';
+  const t2 = deviceToken('device-limit-bbbbbbbbbbbb');
+  const l1 = await call('share', 'rq-create', { json: { token: t2, header: reqHeader, expiresIn: 86400 }, ip: '198.51.100.9' });
+  const l2 = await call('share', 'rq-create', { json: { token: t2, header: reqHeader, expiresIn: 86400 }, ip: '198.51.100.9' });
+  const l3 = await call('share', 'rq-create', { json: { token: t2, header: reqHeader, expiresIn: 86400 }, ip: '198.51.100.9' });
+  check('rq-create: daily limit per device', l1.status === 200 && l2.status === 200 && l3.status === 429);
+  delete process.env.REQ_DEVICE_DAILY;
+  check('rq: unknown action', (await call('share', 'rq-nope', { json: {} })).status === 400);
+  // supabase adapter param names
+  const calls = [];
+  const okFetch = async (url, opts) => { calls.push({ url, body: JSON.parse(opts.body) }); return { ok: true, status: 200, text: async () => JSON.stringify({ ok: true }) }; };
+  const sb = supabaseShareStore({ supabaseUrl: 'https://x.supabase.co', supabaseKey: 'pk', rpcSecret: 's'.repeat(40) }, { fetchImpl: okFetch });
+  await sb.reqUpload({ upload: 'u', id: 'i', owner: 'o', header: 'h', size: 5, chunks: 1, chunkSize: 65536, cap: 9 });
+  await sb.reqSet({ id: 'i', owner: 'o', closed: 1 });
+  check('supabase: rq param names', calls[0].url.endsWith('/fale_req_upload') && calls[0].body.p_obj_owner === 'o' && calls[0].body.p_upload === 'u' && calls[1].body.p_closed === true);
+}
+
 // ---------------------------------------------------------------- SQL file sanity: every RPC used by the adapter exists in the migration
 {
   const fs = await import('node:fs');
-  const sql = fs.readFileSync(join(ROOT, 'supabase/migrations/20261014150000_fale_share.sql'), 'utf8');
+  const dir = join(ROOT, 'supabase/migrations');
+  const sql = fs.readdirSync(dir).filter(f => /share|sign|file_requests/.test(f)).sort().map(f => fs.readFileSync(join(dir, f), 'utf8')).join('\n');
   const src = fs.readFileSync(join(ROOT, 'api/_lib/sharestore.js'), 'utf8');
   const used = [...new Set([...src.matchAll(/rpc\('([a-z_]+)'/g)].map(m => m[1]))];
   const missing = used.filter(f => !new RegExp(`function public\\.${f}\\(`).test(sql));
   check(`SQL: all ${used.length} RPCs defined`, !missing.length, missing.join());
   const granted = used.filter(f => new RegExp(`'public\\.${f}\\(`).test(sql));
   check('SQL: all RPCs granted to anon', granted.length === used.length, used.filter(f => !granted.includes(f)).join());
-  check('SQL: RLS on all tables', (sql.match(/enable row level security/g) || []).length === 7);
+  check('SQL: RLS on all tables', (sql.match(/enable row level security/g) || []).length === 8);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

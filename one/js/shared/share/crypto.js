@@ -103,14 +103,14 @@ export function layout(plainSize, chunkSize) {
  * Prepare an object for upload: encrypted header + a chunk encryptor.
  * → { header (JSON string), chunks, cipherSize, encryptChunk(idx, plainBytes) }
  */
-export async function sealObject(ck, meta, { plainSize, chunkSize, kdf = null }) {
+export async function sealObject(ck, meta, { plainSize, chunkSize, kdf = null, extra = null }) {
   const nonce = randomBytes(16);
   const [dataKey, metaKey] = await Promise.all([hkdfAes(ck, nonce, 'fale-share-v1/data'), hkdfAes(ck, nonce, 'fale-share-v1/meta')]);
   const iv = randomBytes(12);
   const mct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv, additionalData: te.encode('fale1:meta') }, metaKey, te.encode(JSON.stringify(meta))));
   const m = new Uint8Array(12 + mct.length); m.set(iv, 0); m.set(mct, 12);
   const lay = layout(plainSize, chunkSize);
-  const header = JSON.stringify({ v: 1, n: b64u.enc(nonce), m: b64u.enc(m), k: kdf, c: chunkSize });
+  const header = JSON.stringify({ v: 1, n: b64u.enc(nonce), m: b64u.enc(m), k: kdf, c: chunkSize, ...(extra || {}) });
   return {
     header, chunks: lay.chunks, cipherSize: lay.cipherSize, plainChunk: lay.plainChunk,
     encryptChunk: async (idx, plain) => new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv: ivFor(idx), additionalData: aadFor(idx, idx === lay.chunks - 1) }, dataKey, plain)),
@@ -150,6 +150,43 @@ export async function sha256Hex(data) {
   const buf = data instanceof Blob ? await data.arrayBuffer() : data;
   const d = new Uint8Array(await crypto.subtle.digest('SHA-256', buf));
   return Array.from(d, b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ---------------------------------------------------------------- file requests ("Unterlagen anfordern")
+// Uploads that only the requester can open – not even someone who has the upload link.
+//   requester: P-256 key pair. The PUBLIC key travels inside the request header (encrypted with the link key, so
+//              the server can neither read nor swap it); the private key stays on the requester's device.
+//   per uploaded file: a fresh ephemeral key pair E; content key = HKDF(ECDH(E, requester), salt = E.pub,
+//              "fale-request-v1/file") → used with sealObject as usual; the header carries E.pub as "e".
+const ECDH = { name: 'ECDH', namedCurve: 'P-256' };
+async function ecdhKey(shared, epk) { return hkdfBits(shared, epk, 'fale-request-v1/file'); }
+
+/** New requester key pair → { pub (raw, base64url), priv (JWK – keep on this device only) }. */
+export async function newRequestKeys() {
+  const kp = await crypto.subtle.generateKey(ECDH, true, ['deriveBits']);
+  return { pub: b64u.enc(new Uint8Array(await crypto.subtle.exportKey('raw', kp.publicKey))), priv: await crypto.subtle.exportKey('jwk', kp.privateKey) };
+}
+
+/** Uploader side: content key for one file + the ephemeral public key for the header. */
+export async function uploadKey(pubB64) {
+  let peer;
+  try { peer = await crypto.subtle.importKey('raw', b64u.dec(pubB64), ECDH, false, []); }
+  catch { throw new CryptoFail('bad_header', 'Diese Anfrage ist beschädigt. Bitte frag nach einem neuen Link.'); }
+  const eph = await crypto.subtle.generateKey(ECDH, true, ['deriveBits']);
+  const epk = new Uint8Array(await crypto.subtle.exportKey('raw', eph.publicKey));
+  const shared = new Uint8Array(await crypto.subtle.deriveBits({ name: 'ECDH', public: peer }, eph.privateKey, 256));
+  return { ck: await ecdhKey(shared, epk), e: b64u.enc(epk) };
+}
+
+/** Requester side: content key of one uploaded file from the private key (JWK) and the header's "e". */
+export async function ownerFileKey(privJwk, eB64) {
+  try {
+    const priv = await crypto.subtle.importKey('jwk', privJwk, ECDH, false, ['deriveBits']);
+    const epk = b64u.dec(eB64);
+    const peer = await crypto.subtle.importKey('raw', epk, ECDH, false, []);
+    const shared = new Uint8Array(await crypto.subtle.deriveBits({ name: 'ECDH', public: peer }, priv, 256));
+    return await ecdhKey(shared, epk);
+  } catch { throw new CryptoFail('wrong_key', 'Diese Datei lässt sich mit dem Schlüssel auf diesem Gerät nicht öffnen.'); }
 }
 
 /** Encrypt / decrypt small JSON messages (transfer signalling). */

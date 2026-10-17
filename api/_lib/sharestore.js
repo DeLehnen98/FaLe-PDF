@@ -42,6 +42,14 @@ function supabaseShareStore(cfg, { fetchImpl = fetch } = {}) {
     signFinish: ({ signer }) => rpc('fale_sign_finish', { p_signer: signer }),
     signStatus: ({ id, owner }) => rpc('fale_sign_status', { p_id: id, p_owner: owner }),
     signDelete: ({ id, owner }) => rpc('fale_sign_delete', { p_id: id, p_owner: owner }),
+    reqCreate: (o) => rpc('fale_req_create', { p_id: o.id, p_owner: o.owner, p_upload: o.upload, p_header: o.header, p_max_files: o.maxFiles, p_max_bytes: o.maxBytes, p_expires: iso(o.expiresAt) }),
+    reqOpen: ({ upload }) => rpc('fale_req_open', { p_upload: upload }),
+    reqUpload: (o) => rpc('fale_req_upload', { p_upload: o.upload, p_obj_id: o.id, p_obj_owner: o.owner, p_header: o.header, p_size: o.size, p_chunks: o.chunks, p_chunk_size: o.chunkSize, p_cap: o.cap }),
+    reqRetract: ({ id, owner }) => rpc('fale_req_retract', { p_obj_id: id, p_obj_owner: owner }),
+    reqStatus: ({ id, owner }) => rpc('fale_req_status', { p_id: id, p_owner: owner }),
+    reqSet: ({ id, owner, closed }) => rpc('fale_req_set', { p_id: id, p_owner: owner, p_closed: !!closed }),
+    reqRemove: ({ id, owner, file }) => rpc('fale_req_remove', { p_id: id, p_owner: owner, p_obj_id: file }),
+    reqDelete: ({ id, owner }) => rpc('fale_req_delete', { p_id: id, p_owner: owner }),
     roomCreate: ({ id, code, host, expiresAt }) => rpc('fale_room_create', { p_id: id, p_code: code, p_host: host, p_expires: iso(expiresAt) }),
     roomJoin: ({ id, code, guest, via }) => rpc('fale_room_join', { p_id: id || null, p_code: code || null, p_guest: guest, p_via: via }),
     roomSend: ({ id, auth, body }) => rpc('fale_room_send', { p_id: id, p_auth: auth, p_body: body }),
@@ -53,7 +61,7 @@ function supabaseShareStore(cfg, { fetchImpl = fetch } = {}) {
 
 // ------------------------------------------------------------------ in-memory (tests)
 function memoryShareStore({ now = () => new Date() } = {}) {
-  const s = { objects: new Map(), chunks: new Map(), requests: new Map(), signers: new Map(), rooms: new Map(), msgs: [], usage: new Map(), seq: 0 };
+  const s = { objects: new Map(), chunks: new Map(), requests: new Map(), fileReqs: new Map(), signers: new Map(), rooms: new Map(), msgs: [], usage: new Map(), seq: 0 };
   const t = () => now().getTime();
   const json = o => ({ id: o.id, kind: o.kind, header: o.header, size: o.size, chunks: o.chunkCount, chunk_size: o.chunkSize, complete: o.complete,
     expires_at: new Date(o.expiresAt).toISOString(), created_at: new Date(o.createdAt).toISOString(), max_downloads: o.maxDownloads, downloads: o.downloads });
@@ -83,16 +91,22 @@ function memoryShareStore({ now = () => new Date() } = {}) {
     for (let i = 0; i < o.chunkCount; i++) { const d = s.chunks.get(chunkKey(id, i)); if (d) { c++; b += d.length; } }
     return c === o.chunkCount && b === o.size;
   };
+  function dropFileReq(id) {
+    for (const [oid, o] of [...s.objects]) if (o.parent === id && o.kind === 'req-file') delObject(oid);
+    s.fileReqs.delete(id);
+  }
+  const reqFiles = id => [...s.objects.values()].filter(o => o.parent === id && o.kind === 'req-file');
   function purge() {
-    let objects = 0, rooms = 0, usage = 0;
+    let objects = 0, rooms = 0, usage = 0, requests = 0;
     for (const [rid, r] of s.requests) if (r.expiresAt <= t()) delRequest(rid);
+    for (const [qid, q] of [...s.fileReqs]) if (q.expiresAt <= t()) { s.fileReqs.delete(qid); requests++; }
     for (const [id, o] of [...s.objects]) {
       if (expired(o) || (!o.complete && o.createdAt < t() - 6 * 3600e3) || (o.maxDownloads != null && o.downloads >= o.maxDownloads && o.lastOpenAt < t() - 2 * 3600e3)) { delObject(id); objects++; }
     }
     for (const [id, r] of [...s.rooms]) if (r.expiresAt <= t()) { s.rooms.delete(id); s.msgs = s.msgs.filter(m => m.room !== id); rooms++; }
     const cutoff = new Date(t() - 30 * 864e5).toISOString().slice(0, 10);
     for (const k of [...s.usage.keys()]) if (k.split('|')[0] < cutoff) { s.usage.delete(k); usage++; }
-    return { objects, rooms, usage };
+    return { objects, rooms, usage, requests };
   }
   function insertObject(o) {
     s.objects.set(o.id, { id: o.id, kind: o.kind, owner: o.owner, parent: o.parent || null, header: o.header, size: o.size, chunkCount: o.chunks, chunkSize: o.chunkSize,
@@ -103,7 +117,7 @@ function memoryShareStore({ now = () => new Date() } = {}) {
   return {
     kind: 'memory',
     _state: s,
-    _reset() { s.objects.clear(); s.chunks.clear(); s.requests.clear(); s.signers.clear(); s.rooms.clear(); s.msgs = []; s.usage.clear(); },
+    _reset() { s.objects.clear(); s.chunks.clear(); s.requests.clear(); s.fileReqs.clear(); s.signers.clear(); s.rooms.clear(); s.msgs = []; s.usage.clear(); },
     _purge: purge,
     async rate({ day, kind, keys, nLimits, bytes, bLimits }) {
       const rows = keys.map(k => { const key = `${day}|${k}|${kind}`; if (!s.usage.has(key)) s.usage.set(key, { n: 0, bytes: 0 }); return s.usage.get(key); });
@@ -245,6 +259,69 @@ function memoryShareStore({ now = () => new Date() } = {}) {
       if (r.owner !== owner) return { ok: false, reason: 'forbidden' };
       for (const [oid, o] of [...s.objects]) if (o.parent === id || oid === r.docId) delObject(oid);
       delRequest(id);
+      return { ok: true, deleted: true };
+    },
+    async reqCreate(o) {
+      const exp = new Date(o.expiresAt).getTime();
+      if (exp <= t() || exp > t() + 30 * 864e5 + 300e3) throw Object.assign(new Error('bad expiry'), { code: 'store_error' });
+      if (s.fileReqs.has(o.id) || [...s.fileReqs.values()].some(q => q.upload === o.upload)) throw Object.assign(new Error('duplicate'), { code: 'store_error' });
+      s.fileReqs.set(o.id, { id: o.id, owner: o.owner, upload: o.upload, header: o.header, maxFiles: o.maxFiles, maxBytes: o.maxBytes, closed: false, createdAt: t(), expiresAt: exp });
+      return { ok: true, created_at: iso(t()), expires_at: iso(exp) };
+    },
+    async reqOpen({ upload }) {
+      const q = [...s.fileReqs.values()].find(x => x.upload === upload);
+      if (!q) return { ok: false, reason: 'not_found' };
+      if (q.expiresAt <= t()) { dropFileReq(q.id); return { ok: false, reason: 'not_found' }; }
+      const f = reqFiles(q.id);
+      return { ok: true, header: q.header, closed: q.closed, files: f.length, bytes: f.reduce((a, o) => a + o.size, 0), max_files: q.maxFiles, max_bytes: q.maxBytes,
+        created_at: iso(q.createdAt), expires_at: iso(q.expiresAt) };
+    },
+    async reqUpload(o) {
+      const q = [...s.fileReqs.values()].find(x => x.upload === o.upload);
+      if (!q || q.expiresAt <= t()) return { ok: false, reason: 'not_found' };
+      if (q.closed) return { ok: false, reason: 'closed' };
+      if (badChunking(o.size, o.chunks, o.chunkSize)) throw Object.assign(new Error('bad chunking'), { code: 'store_error' });
+      const f = reqFiles(q.id);
+      if (f.length + 1 > q.maxFiles) return { ok: false, reason: 'req_files' };
+      if (f.reduce((a, x) => a + x.size, 0) + o.size > q.maxBytes) return { ok: false, reason: 'req_bytes' };
+      if (activeTotal() + o.size > o.cap) return { ok: false, reason: 'capacity' };
+      insertObject({ id: o.id, kind: 'req-file', owner: o.owner, parent: q.id, header: o.header, size: o.size, chunks: o.chunks, chunkSize: o.chunkSize, expiresAt: q.expiresAt });
+      return { ok: true, expires_at: iso(q.expiresAt) };
+    },
+    async reqRetract({ id, owner }) {
+      const o = s.objects.get(id);
+      if (!o || o.owner !== owner || o.kind !== 'req-file') return { ok: true, deleted: false };
+      delObject(id);
+      return { ok: true, deleted: true };
+    },
+    async reqStatus({ id, owner }) {
+      const q = s.fileReqs.get(id);
+      if (!q) return { ok: true, exists: false };
+      if (q.owner !== owner) return { ok: false, reason: 'forbidden' };
+      if (q.expiresAt <= t()) { dropFileReq(id); return { ok: true, exists: false, expired: true }; }
+      const all = reqFiles(id);
+      return { ok: true, exists: true, closed: q.closed, created_at: iso(q.createdAt), expires_at: iso(q.expiresAt), max_files: q.maxFiles, max_bytes: q.maxBytes,
+        used_files: all.length, used_bytes: all.reduce((a, o) => a + o.size, 0), files: all.filter(o => o.complete).sort((a, b) => a.createdAt - b.createdAt).map(json) };
+    },
+    async reqSet({ id, owner, closed }) {
+      const q = s.fileReqs.get(id);
+      if (!q || q.owner !== owner || q.expiresAt <= t()) return { ok: false, reason: 'not_found' };
+      q.closed = !!closed;
+      return { ok: true, closed: q.closed };
+    },
+    async reqRemove({ id, owner, file }) {
+      const q = s.fileReqs.get(id);
+      if (!q || q.owner !== owner) return { ok: false, reason: 'forbidden' };
+      const o = s.objects.get(file);
+      if (!o || o.parent !== id || o.kind !== 'req-file') return { ok: true, deleted: false };
+      delObject(file);
+      return { ok: true, deleted: true };
+    },
+    async reqDelete({ id, owner }) {
+      const q = s.fileReqs.get(id);
+      if (!q) return { ok: true, deleted: false };
+      if (q.owner !== owner) return { ok: false, reason: 'forbidden' };
+      dropFileReq(id);
       return { ok: true, deleted: true };
     },
     async roomCreate({ id, code, host, expiresAt }) {

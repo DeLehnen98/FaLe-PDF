@@ -4,7 +4,7 @@ import { h, esc, toast } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { SHARE_FEATURES } from './entry.js';
 import { listEntries, removeEntry, patchEntry, isExpired } from './registry.js';
-import { shareApi, signApi, online } from './api.js';
+import { shareApi, signApi, requestApi, online } from './api.js';
 import { offlineBanner, e2eNote, expiryLabel, statusPill, copyToClipboard, shareText, sicon, fmtDateTime } from './common.js';
 import { revokeShare } from './create.js';
 
@@ -18,6 +18,8 @@ export async function mount(screen) {
     <div class="sh-list" data-links></div>
     <h2 class="section-title">Unterschriftsanfragen</h2>
     <div class="sh-list" data-reqs></div>
+    <h2 class="section-title">Unterlagen-Anfragen</h2>
+    <div class="sh-list" data-filereqs></div>
     <div data-note></div>
     <p class="muted small sh-local-note">${oicon('info')}<span>Diese Liste wird nur auf diesem Gerät gespeichert. Die Links enthalten den Schlüssel – gib dieses Gerät nicht unbeaufsichtigt weiter.</span></p>
   </div>`);
@@ -32,6 +34,32 @@ export async function mount(screen) {
   async function render(fetchStatus = true) {
     renderLinks(fetchStatus);
     renderRequests(fetchStatus);
+    renderFileRequests(fetchStatus);
+  }
+
+  function renderFileRequests(fetchStatus) {
+    const box = wrap.querySelector('[data-filereqs]');
+    box.innerHTML = '';
+    const list = listEntries('req');
+    if (!list.length) { box.appendChild(h(`<p class="panel-empty">Noch keine Anfragen. Tippe auf „Unterlagen anfordern“, um dir Dateien schicken zu lassen.</p>`)); return; }
+    list.forEach(e => {
+      const exp = isExpired(e);
+      const pill = n => exp ? statusPill('expired') : n ? `<span class="sh-pill sh-pill-signed">${esc(n === 1 ? t('1 Datei') : t(`${n} Dateien`))}</span>` : `<span class="sh-pill sh-pill-open">${esc(t('Noch leer'))}</span>`;
+      const row = h(`<a class="card sh-row sh-row-link" href="#/teilen/unterlagen/${esc(e.id)}" data-filereq-id="${esc(e.id)}">
+        <span class="sh-row-ic">${sicon('inbox')}</span>
+        <div class="sh-row-main"><strong data-no-i18n>${esc(e.name)}</strong>
+          <span class="muted small">${exp ? 'Abgelaufen' : esc(expiryLabel(e.expiresAt))}${e.closed && !exp ? ' · pausiert' : ''}</span></div>
+        <span data-pill>${pill(e.lastCount || 0)}</span>
+        <span class="sh-row-go">${oicon('chevronRight')}</span></a>`);
+      box.appendChild(row);
+      if (!exp && fetchStatus && online()) {
+        requestApi.status(e.id, e.auth).then(r => {
+          if (!r.exists) { patchEntry(e.id, { expiresAt: new Date().toISOString() }); return; }
+          if (r.files.length !== (e.lastCount || 0) || !!r.closed !== !!e.closed) patchEntry(e.id, { lastCount: r.files.length, closed: !!r.closed });
+          else row.querySelector('[data-pill]').innerHTML = pill(r.files.length);
+        }).catch(() => {});
+      }
+    });
   }
 
   function renderLinks(fetchStatus) {

@@ -5,6 +5,7 @@ import { loadShareCss, sicon } from './common.js';
 export const SHARE_FEATURES = [
   { id: 'link', title: 'Sicher teilen', desc: 'Ende-zu-Ende-verschlüsselter Link – läuft automatisch ab, auf Wunsch mit Passwort.', icon: 'shareLock', href: '#/teilen/link' },
   { id: 'sign', title: 'Unterschrift anfordern', desc: 'PDF per Link unterschreiben lassen – ohne Konto, mit Protokollseite.', icon: 'signReq', href: '#/teilen/unterschrift' },
+  { id: 'request', title: 'Unterlagen anfordern', desc: 'Link senden – andere laden Dateien verschlüsselt bei dir hoch. Ohne Konto.', icon: 'inbox', href: '#/teilen/anfordern' },
   { id: 'connect', title: 'Geräte verbinden', desc: 'Dateien zwischen Handy und PC übertragen – per QR-Code oder Code.', icon: 'devices', href: '#/verbinden' },
 ];
 
@@ -16,7 +17,7 @@ export function renderStartCard(box) {
   box.innerHTML = '';
   const card = h(`<div class="card sh-start-card">
     <a class="sh-start-main" href="#/teilen"><span class="sh-start-ic">${sicon('shareLock')}</span>
-      <span class="sh-start-text"><strong>Teilen &amp; Übertragen</strong><span>Verschlüsselte Links, Unterschriften anfordern, Handy ↔ PC</span></span></a>
+      <span class="sh-start-text"><strong>Teilen &amp; Übertragen</strong><span>Verschlüsselte Links, Unterschriften und Unterlagen anfordern, Handy ↔ PC</span></span></a>
     <div class="sh-start-acts">
       ${SHARE_FEATURES.map(f => `<a class="sh-start-act" href="${f.href}" data-share-entry="${f.id}">${sicon(f.icon)}<span>${esc(f.title)}</span></a>`).join('')}
     </div></div>`);

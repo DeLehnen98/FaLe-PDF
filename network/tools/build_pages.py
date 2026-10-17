@@ -33,6 +33,7 @@ PAGES = {
     'pdf':     ('/apps/pdf/', '/en/apps/pdf/'),
     'sign':    ('/unterschrift-anfordern/', '/en/request-signature/'),
     'send':    ('/dateien-verschicken/', '/en/send-files/'),
+    'request': ('/unterlagen-anfordern/', '/en/request-files/'),
     'clean':   ('/apps/clean/', '/en/apps/clean/'),
     'konto':   ('/konto/', '/en/account/'),
     'privacy': ('/datenschutz/', '/en/privacy/'),
@@ -202,7 +203,7 @@ def header(lang, key, current=None, other_url=None, fallback=False):
     other = 'en' if lang == 'de' else 'de'
     other_url = other_url or url(key, other)
     home = url('home', lang)
-    if current is None and key in ('pdf', 'clean', 'sign', 'send'):
+    if current is None and key in ('pdf', 'clean', 'sign', 'send', 'request'):
         current = t['nav'][2][1]          # the app pages belong to "Apps"
 
     def cur(href):
@@ -472,7 +473,7 @@ PDF = {
             ('Kein Handel mit Daten', 'Keine Werbebanner, kein Tracking, keine Analyse-Tools und kein Verkauf von Daten. Werbung siehst du nur, wenn du selbst ein Video startest.'),
         ],
         'more_h': 'Mehr erfahren',
-        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Ausführliche Infos und FAQ zu FaLe PDF', PDF_INFO), ('Datenschutzerklärung der App', PDF_PRIVACY)],
+        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Unterlagen von anderen anfordern – per Link', '/unterlagen-anfordern/'), ('Ausführliche Infos und FAQ zu FaLe PDF', PDF_INFO), ('Datenschutzerklärung der App', PDF_PRIVACY)],
         'files': 'Dateiformate', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown sowie Bilder (JPG, PNG, WebP)',
         'langs': 'Sprachen', 'langs_v': 'Deutsch und Englisch – die Briefvorlagen folgen deutschem Recht',
         'plat': 'Plattformen', 'plat_v': 'Web-App für jeden modernen Browser, Android-App in Kürze',
@@ -509,7 +510,7 @@ PDF = {
             ('No trading in data', 'No banner ads, no tracking, no analytics tools and no selling of data. You only see an ad if you start a video yourself.'),
         ],
         'more_h': 'Learn more',
-        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Detailed information and FAQ about FaLe PDF', PDF_INFO_EN), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
+        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Request documents from others – via a link', '/en/request-files/'), ('Detailed information and FAQ about FaLe PDF', PDF_INFO_EN), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
         'files': 'File formats', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown and images (JPG, PNG, WebP)',
         'langs': 'Languages', 'langs_v': 'English and German – letter templates follow German law',
         'plat': 'Platforms', 'plat_v': 'Web app for any modern browser, Android app coming soon',
@@ -777,6 +778,80 @@ SEND = {
 
 def page_send(lang):
     return page_feature('send', SEND[lang], SEND_START, lang)
+
+
+# ================================================================= Unterlagen anfordern (feature page of FaLe PDF)
+REQUEST_START = PDF_APP + '#/teilen/anfordern'
+REQUEST = {
+    'de': {
+        'title': 'Unterlagen anfordern per Link – kostenlos, verschlüsselt | FaleNetwork',
+        'desc': 'Link schicken, Dateien bekommen: Andere laden Unterlagen Ende-zu-Ende-verschlüsselt bei dir hoch – ohne Konto, mit Checkliste. Kostenlos, ohne Werbung.',
+        'h1': 'Unterlagen anfordern&nbsp;– per Link',
+        'lede': 'Du schickst einen Link, die andere Person lädt ihre Dateien hoch. Verschlüsselt auf ihrem Gerät – öffnen kannst nur du.',
+        'start': 'Unterlagen anfordern', 'more_app': 'Mehr über FaLe PDF',
+        'hint': 'Läuft in FaLe PDF im Browser. Nichts installieren, kein Konto – auch nicht für die Person, die hochlädt.',
+        'shot_alt': 'FaLe PDF auf dem Handy',
+        'shot': 'home',
+        'steps_h': 'So geht’s',
+        'steps': [
+            ('Anfrage anlegen', 'Schreib, wofür du die Unterlagen brauchst, und liste auf, was fehlt – zum Beispiel Lohnsteuerbescheinigung, Kontoauszug, Ausweiskopie.'),
+            ('Link schicken', 'Per Messenger, E-Mail oder QR-Code. Die andere Person sieht deine Checkliste, wählt Dateien oder fotografiert Papiere und lädt sie hoch.'),
+            ('Dateien öffnen', 'In FaLe PDF siehst du, was angekommen ist und was noch fehlt. Einzeln speichern, in deine Dateien übernehmen oder alles als ZIP laden.'),
+        ],
+        'why_h': 'Was du bekommst',
+        'why': [
+            ('Nur du kannst die Dateien öffnen', 'Jede Datei wird schon auf dem Gerät der anderen Person verschlüsselt – mit einem Schlüssel, den nur dein Gerät hat. Selbst wer den Link hat, kann nichts herunterladen.'),
+            ('Kein Konto, keine App', 'Weder du noch die andere Person müssen sich anmelden. Der Link öffnet sich in jedem aktuellen Browser.'),
+            ('Checkliste statt Nachfragen', 'Jede Datei lässt sich einem Punkt zuordnen. Du siehst sofort, was schon da ist und was noch fehlt.'),
+            ('Löscht sich selbst', 'Du wählst 7, 14 oder 30 Tage. Danach werden Anfrage und Dateien automatisch vom Server gelöscht – oder vorher, wenn du willst.'),
+        ],
+        'faq_h': 'Häufige Fragen',
+        'faq': [
+            ('Wofür ist das praktisch?', 'Überall, wo du Papiere von anderen brauchst: Unterlagen für die Steuererklärung, Bewerbungen, Mietinteressenten, Kundendaten für einen Auftrag oder Fotos von der Familienfeier.'),
+            ('Was kostet das?', 'Nichts. Unterlagen anfordern ist kostenlos und ohne Werbung.'),
+            ('Wie viel darf hochgeladen werden?', 'Bis 50 MB pro Datei und je Anfrage bis zu 50 Dateien mit zusammen 250 MB.'),
+            ('Wer kann die Dateien sehen?', 'Nur du, auf dem Gerät, auf dem du die Anfrage erstellt hast. Unser Server speichert nur verschlüsselte Daten und sieht weder Inhalte noch Dateinamen.'),
+            ('Kann ich das Hochladen stoppen?', 'Ja. Du kannst neue Uploads jederzeit pausieren, einzelne Dateien löschen oder die ganze Anfrage beenden.'),
+            ('Braucht die andere Person eine App?', 'Nein. Sie öffnet den Link im Browser auf Handy oder Computer und kann Dateien wählen oder direkt ein Foto aufnehmen.'),
+        ],
+    },
+    'en': {
+        'title': 'Request documents via a link – free, encrypted | FaleNetwork',
+        'desc': 'Send a link, receive files: others upload documents to you end-to-end encrypted – no account, with a checklist. Free and without ads.',
+        'h1': 'Request documents&nbsp;– via a link',
+        'lede': 'You send a link, the other person uploads their files. Encrypted on their device – only you can open them.',
+        'start': 'Request documents', 'more_app': 'More about FaLe PDF',
+        'hint': 'Runs in FaLe PDF in your browser. Nothing to install, no account – not even for the person uploading.',
+        'shot_alt': 'FaLe PDF on a phone',
+        'shot': 'home',
+        'steps_h': 'How it works',
+        'steps': [
+            ('Create a request', 'Say what you need the documents for and list what is missing – for example a payslip summary, a bank statement or a copy of an ID.'),
+            ('Send the link', 'Via messenger, email or QR code. The other person sees your checklist, picks files or takes photos of papers and uploads them.'),
+            ('Open the files', 'In FaLe PDF you see what has arrived and what is still missing. Save files one by one, add them to your files or download everything as a ZIP.'),
+        ],
+        'why_h': 'What you get',
+        'why': [
+            ('Only you can open the files', 'Every file is encrypted on the other person’s device – with a key only your device has. Even someone with the link cannot download anything.'),
+            ('No account, no app', 'Neither you nor the other person need to sign up. The link opens in any current browser.'),
+            ('A checklist instead of follow-ups', 'Each file can be assigned to an item. You see at a glance what is there and what is missing.'),
+            ('Deletes itself', 'You choose 7, 14 or 30 days. Then the request and its files are deleted from the server automatically – or earlier if you like.'),
+        ],
+        'faq_h': 'Frequently asked questions',
+        'faq': [
+            ('What is it good for?', 'Whenever you need papers from others: documents for a tax return, job applications, tenant applications, customer data for a job or photos from a family party.'),
+            ('What does it cost?', 'Nothing. Requesting documents is free and without ads.'),
+            ('How much can be uploaded?', 'Up to 50 MB per file and up to 50 files with 250 MB in total per request.'),
+            ('Who can see the files?', 'Only you, on the device where you created the request. Our server only stores encrypted data and sees neither contents nor file names.'),
+            ('Can I stop uploads?', 'Yes. You can pause new uploads at any time, delete single files or end the whole request.'),
+            ('Does the other person need an app?', 'No. They open the link in a browser on a phone or computer and can pick files or take a photo directly.'),
+        ],
+    },
+}
+
+
+def page_request(lang):
+    return page_feature('request', REQUEST[lang], REQUEST_START, lang)
 
 
 # ================================================================= FaLe Clean
@@ -1176,6 +1251,7 @@ def main():
         written.append(write(url('pdf', lang), page_pdf(lang)))
         written.append(write(url('sign', lang), page_sign(lang)))
         written.append(write(url('send', lang), page_send(lang)))
+        written.append(write(url('request', lang), page_request(lang)))
         written.append(write(url('clean', lang), page_clean(lang)))
         written.append(write(url('konto', lang), page_konto(lang)))
         written.append(write(url('privacy', lang), page_privacy(lang)))
