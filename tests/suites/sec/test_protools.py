@@ -568,6 +568,7 @@ def desktop(p):
         page.wait_for_timeout(500)
         page.mouse.click(*at(page, 1, 300, 300, 595.27))
         page.wait_for_selector('.pt-eimg')
+        page.evaluate("() => document.querySelectorAll('.pt-result').forEach(e => e.remove())")  # wait for the new result, not the text edit's
         page.locator('.screen-foot .btn-primary').click()
         page.wait_for_selector('.pt-result .result-card', timeout=30000)
         path = download(page, 'edited_img.pdf')

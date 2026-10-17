@@ -89,8 +89,8 @@ export default {
     const pw = doc.wtEncrypted && (doc.wtPassword || input.password);
     if (pw) {
       const { encryptDocument } = await import('../lib/shared/pdfcrypt.js');
-      await encryptDocument(PDFLib, doc, { userPassword: pw });
-      bytes = await doc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+      await encryptDocument(PDFLib, doc, { userPassword: pw, objectStreams: true });
+      bytes = await doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
       ctx.note({ de: 'Die Datei ist wieder mit demselben Passwort geschützt.', en: 'The file is protected again with the same password.' });
     } else {
       bytes = await doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });

@@ -315,8 +315,8 @@ export async function mount(screen) {
       const doc = await PDFLib.PDFDocument.load(bytes, { updateMetadata: false });
       try { if (doc.getForm().getFields().length) doc.getForm().updateFieldAppearances(); } catch { /* no form */ }
       const { encryptDocument } = await import('../pdfcrypt.js');
-      await encryptDocument(PDFLib, doc, cfg.pw);
-      const res = await doc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+      await encryptDocument(PDFLib, doc, { ...cfg.pw, objectStreams: true });
+      const res = await doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
       rememberBytesPassword(res, cfg.pw.userPassword);
       return res;
     }

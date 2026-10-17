@@ -126,10 +126,11 @@ export default {
         ownerPassword: secret.owner || '',
         permissions,
         onProgress: x => part(0.1 + 0.8 * x, { de: 'Wird verschlüsselt …', en: 'Encrypting …' }),
+        objectStreams: true,   // compact: dictionaries in encrypted object streams
       });
       await ctx.tick();
       part(0.92, { de: 'Wird gespeichert …', en: 'Saving …' });
-      const bytes = await doc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+      const bytes = await doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
       const suffix = ctx.lang === 'de' ? ' (geschützt)' : ' (protected)';
       outputs.push({ name: ctx.fileName(input.name, suffix, 'pdf'), blob: pdfBlob(bytes), pages: doc.getPageCount(),
         note: restrictOnly ? ctx.t({ de: 'AES-256 · öffnet ohne Passwort, Rechte eingeschränkt', en: 'AES-256 · opens without a password, permissions restricted' })

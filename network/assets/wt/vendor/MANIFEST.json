@@ -93,7 +93,7 @@
     "lib/shared/outlinecore.js": "55da278385be6762def2465c46857fea83a04f1a4f78473038e94505a805aa74",
     "lib/shared/pagegeom.js": "f07b0b337e7ccff63918d91aa20817bae04c715ebf634f745d1e9863062d9f9f",
     "lib/shared/passphoto-templates.js": "16f0f55be0284ca8dc85fdc6ca58a70704eb08c137d7368b2607bc379622244e",
-    "lib/shared/pdfcrypt.js": "4d5865b4fb3a49f716f87c6d0a5743a3bb6754b72ba5aec2c18a10727f65e47c",
+    "lib/shared/pdfcrypt.js": "d434ae64eed81d32172371958e0ce961a65aaa361fe644d33cfc676d042ee971",
     "lib/shared/pdflibtune.js": "12370b6731c8151bdf563fdb7d694787d2d4aa669627a12dd1ecf842dc2644c9",
     "lib/shared/pdfstruct.js": "675390871f850f93040d4ae62fe50b9a3849b568fa3b9b17c2fac087dcf6524c",
     "lib/shared/pptximg.js": "7bd1488cdcdc788bf14b2b1e00d36098e2786d91fae6e72c412ffee4b378df53",

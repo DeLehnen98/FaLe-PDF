@@ -86,6 +86,8 @@ with Suite('sec-protect') as s:
         rc2, txt2 = show_enc(o, 'Chef-Passwort-1')
         s.expect(rc2 == 0 and 'Supplied password is owner password' in txt2, f'owner password: {txt2[:300]}')
     long_out = [o for o in outs if 'long' in o.name][0]
+    from wtlib import FIX
+    s.expect(long_out.stat().st_size <= (FIX / 'sec_long.pdf').stat().st_size * 1.3, f'encrypted file stays compact: {long_out.stat().st_size} vs {(FIX / "sec_long.pdf").stat().st_size}')
     rl = pypdf.PdfReader(str(long_out)); rl.decrypt(pw)
     s.expect(len(rl.pages) == 120 and rl.pages[9].get('/Rotate') == 90, '120 pages + rotation kept')
     form_out = [o for o in outs if 'form' in o.name][0]

@@ -101,8 +101,8 @@ export async function saveProtected(pdfDoc, opts) {
   pdfDoc.setProducer('FaLe PDF');
   pdfDoc.setModificationDate(new Date());
   try { if (pdfDoc.getForm().getFields().length) pdfDoc.getForm().updateFieldAppearances(); } catch {}
-  await encryptDocument(PDFLib, pdfDoc, opts);
-  const bytes = await pdfDoc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+  await encryptDocument(PDFLib, pdfDoc, { ...opts, objectStreams: true });   // compact: encrypted object streams
+  const bytes = await pdfDoc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
   rememberBytesPassword(bytes, opts.userPassword);
   return bytes;
 }

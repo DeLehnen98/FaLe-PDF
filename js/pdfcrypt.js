@@ -775,9 +775,10 @@ export function permissionsValue({ printing = true, copying = true, editing = tr
 
 /**
  * Encrypt a pdf-lib document in place with AES-256 (Standard Security Handler V5/R6).
- * Call right before `pdfDoc.save({ useObjectStreams: false, updateFieldAppearances: false })`.
+ * Call right before `pdfDoc.save({ useObjectStreams: false, updateFieldAppearances: false })` – or with
+ * `objectStreams: true` before `pdfDoc.save({ useObjectStreams: true, … })` for a compact file (see saveEncryptedCompact).
  */
-export async function encryptDocument(PDFLib, pdfDoc, { userPassword = '', ownerPassword = '', permissions = {}, onProgress } = {}) {
+export async function encryptDocument(PDFLib, pdfDoc, { userPassword = '', ownerPassword = '', permissions = {}, onProgress, objectStreams = false } = {}) {
   const { PDFRawStream, PDFStream, PDFName, PDFHexString, PDFDict, PDFHeader } = PDFLib;
   const context = pdfDoc.context;
   if (context.trailerInfo.Encrypt) throw new Error('Dokument ist bereits verschlüsselt');
@@ -812,6 +813,9 @@ export async function encryptDocument(PDFLib, pdfDoc, { userPassword = '', owner
       await transformStrings(PDFLib, obj.dict, encStr);
       const raw = obj instanceof PDFRawStream ? obj.contents : obj.getContents();
       context.assign(ref, PDFRawStream.of(obj.dict, await aesEncryptPdf(fileKey, raw, aes)));
+    } else if (objectStreams && ref.generationNumber === 0) {
+      // goes into an object stream when saving: its strings are protected by encrypting that whole stream
+      // (ISO 32000-1 7.6.3 – strings inside object streams are not encrypted separately)
     } else {
       await transformStrings(PDFLib, obj, encStr);
     }
@@ -831,6 +835,7 @@ export async function encryptDocument(PDFLib, pdfDoc, { userPassword = '', owner
   encDict.set(PDFName.of('UE'), PDFHexString.of(toHex(UE)));
   encDict.set(PDFName.of('Perms'), PDFHexString.of(toHex(Perms)));
   context.trailerInfo.Encrypt = context.register(encDict);
+  if (objectStreams) { installObjStmEncryption(PDFLib); context.faleObjStmCipher = { fileKey, aes }; }
   const id = toHex(randomBytes(16));
   context.trailerInfo.ID = context.obj([PDFHexString.of(id), PDFHexString.of(id)]);
   // AES-256 requires PDF 1.7 extension level 3+ (or PDF 2.0)
@@ -842,4 +847,37 @@ export async function encryptDocument(PDFLib, pdfDoc, { userPassword = '', owner
     if (PDFHeader) context.header = PDFHeader.forVersion(1, 7);
   } catch {}
   return pdfDoc;
+}
+
+/**
+ * Encrypt with AES-256 and save compactly: dictionaries go into (encrypted) object streams like in normal saves.
+ * Without object streams every dictionary is written on its own – a 270 KB file grew to 3 MB.
+ * @returns {Promise<Uint8Array>}
+ */
+export async function saveEncryptedCompact(PDFLib, pdfDoc, opts = {}) {
+  await encryptDocument(PDFLib, pdfDoc, { ...opts, objectStreams: true });
+  return pdfDoc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
+}
+
+// pdf-lib builds the object streams while saving: encrypt their contents (after compression) for documents
+// prepared by encryptDocument({ objectStreams: true }). AESV3 uses the file key directly (no per-object key).
+function installObjStmEncryption(PDFLib) {
+  const K = PDFLib.PDFObjectStream;
+  if (!K || K.faleEncrypting || typeof K.withContextAndObjects !== 'function') return;
+  const make = K.withContextAndObjects;
+  K.withContextAndObjects = function (context, objects, encode) {
+    const os = make.call(this, context, objects, encode);
+    const c = context && context.faleObjStmCipher;
+    if (c) {
+      const plain = os.getContents.bind(os);
+      let enc = null;
+      os.getContents = () => {
+        if (!enc) { const iv = randomBytes(16); enc = concat(iv, c.aes.cbcEncrypt(iv, pkcs7Pad(plain()))); }
+        return enc;
+      };
+      os.getContentsSize = () => os.getContents().length;
+    }
+    return os;
+  };
+  K.faleEncrypting = true;
 }

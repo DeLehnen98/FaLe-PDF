@@ -170,8 +170,8 @@ export async function saveEncrypted(doc, userPassword, { title = null } = {}) {
   doc.setProducer('FaLe Werkzeuge (fale.network)');
   doc.setModificationDate(new Date());
   if (title) doc.setTitle(title, { showInWindowTitleBar: false });
-  await encryptDocument(PDFLib, doc, { userPassword });
-  return doc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+  await encryptDocument(PDFLib, doc, { userPassword, objectStreams: true });   // compact: encrypted object streams
+  return doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
 }
 
 let jszipPromise = null;

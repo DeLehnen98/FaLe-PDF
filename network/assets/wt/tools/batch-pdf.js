@@ -196,8 +196,8 @@ async function protect(input) {
   const { encryptDocument } = await import('../lib/shared/pdfcrypt.js');
   const doc = await input.pdfDoc();
   doc.setModificationDate(new Date());
-  await encryptDocument(PDFLib, doc, { userPassword: secret.pw, ownerPassword: '', permissions: { printing: true, copying: true, editing: true } });
-  const bytes = await doc.save({ useObjectStreams: false, addDefaultPage: false, updateFieldAppearances: false });
+  await encryptDocument(PDFLib, doc, { userPassword: secret.pw, ownerPassword: '', permissions: { printing: true, copying: true, editing: true }, objectStreams: true });
+  const bytes = await doc.save({ useObjectStreams: true, addDefaultPage: false, updateFieldAppearances: false });
   return pdfBlob(bytes);
 }
 
