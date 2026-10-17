@@ -1,0 +1,153 @@
+{
+  "id": "percent-calculator",
+  "category": "calc",
+  "iconSvg": "<path d=\"M19 5L5 19\"/><circle cx=\"7\" cy=\"7\" r=\"2.5\"/><circle cx=\"17\" cy=\"17\" r=\"2.5\"/>",
+  "module": "tools/percent-calculator.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 71,
+  "related": [
+    "vat-calculator",
+    "date-difference",
+    "invoice-generator",
+    "character-counter"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "prozentrechner",
+    "name": "Prozentrechner",
+    "short": "Prozente, Grundwert, Veränderung, Rabatt und Aufschlag – mit Rechenweg.",
+    "title": "Prozentrechner – Prozent, Rabatt, Veränderung | FaleNetwork",
+    "metaDescription": "Prozente einfach berechnen: wie viel sind 19 % von 250, wie viel Prozent sind 45 von 180, prozentuale Veränderung, Rabatt, Aufschlag. Mit Rechenweg, kostenlos.",
+    "h1": "Prozentrechner",
+    "lede": "Sieben Alltagsfragen zur Prozentrechnung – Zahlen eintippen, Ergebnis und Rechenweg sofort sehen.",
+    "primaryButton": "Ergebnis",
+    "keywords": [
+      "prozentrechner",
+      "prozent berechnen",
+      "prozentrechnung",
+      "rabatt berechnen",
+      "prozentuale veränderung",
+      "grundwert berechnen",
+      "wie viel prozent",
+      "prozent von"
+    ],
+    "steps": [
+      {
+        "title": "Frage aussuchen",
+        "text": "Jede Karte beantwortet eine typische Frage, zum Beispiel „Wie viel sind 19 % von 250?“ oder „Wie viel Prozent sind 45 von 180?“."
+      },
+      {
+        "title": "Zahlen eintippen",
+        "text": "Ersetze die Beispielzahlen durch deine eigenen – mit Komma oder Punkt."
+      },
+      {
+        "title": "Ergebnis ablesen",
+        "text": "Das Ergebnis steht groß darunter, der Rechenweg darunter zum Nachvollziehen. Mit dem Kopier-Symbol übernimmst du die Zahl."
+      }
+    ],
+    "why": [
+      {
+        "title": "Mit Rechenweg",
+        "text": "Du siehst nicht nur das Ergebnis, sondern auch, wie es zustande kommt – gut zum Lernen und Nachprüfen."
+      },
+      {
+        "title": "Alles auf einer Seite",
+        "text": "Prozentwert, Prozentsatz, Grundwert, Veränderung, Aufschlag, Rabatt und Preis vor dem Rabatt – ohne Hin- und Herklicken."
+      },
+      {
+        "title": "Ohne Werbung",
+        "text": "Keine Banner und keine Cookies. Nach dem ersten Laden funktioniert die Seite offline."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie berechne ich Prozent von einer Zahl?",
+        "a": "Teile die Zahl durch 100 und multipliziere mit dem Prozentsatz: 19 % von 250 = 250 ÷ 100 × 19 = 47,5."
+      },
+      {
+        "q": "Wie viel Prozent ist eine Zahl von einer anderen?",
+        "a": "Teile den Teilwert durch den Grundwert und multipliziere mit 100: 45 von 180 = 45 ÷ 180 × 100 = 25 %."
+      },
+      {
+        "q": "Wie berechne ich eine prozentuale Veränderung?",
+        "a": "Neuer Wert minus alter Wert, geteilt durch den alten Wert, mal 100. Von 80 auf 92 sind es (92 − 80) ÷ 80 × 100 = +15 %."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Prozent und Prozentpunkten?",
+        "a": "Steigt ein Zinssatz von 10 % auf 12 %, sind das 2 Prozentpunkte – aber eine Steigerung um 20 %."
+      },
+      {
+        "q": "Wie finde ich den Preis vor einem Rabatt?",
+        "a": "Teile den reduzierten Preis durch (1 − Rabatt ÷ 100). 59,99 € nach 25 % Rabatt waren vorher 59,99 ÷ 0,75 = 79,99 €."
+      }
+    ]
+  },
+  "en": {
+    "slug": "percentage-calculator",
+    "name": "Percentage calculator",
+    "short": "Percentages, base value, change, discount and mark-up – with the working shown.",
+    "title": "Percentage calculator – percent, discount, change | FaleNetwork",
+    "metaDescription": "Calculate percentages easily: what is 19 % of 250, what percentage is 45 of 180, percentage change, discount, mark-up. With the working shown, free.",
+    "h1": "Percentage calculator",
+    "lede": "Seven everyday percentage questions – type your numbers, see the result and the working at once.",
+    "primaryButton": "Result",
+    "keywords": [
+      "percentage calculator",
+      "percent of",
+      "what percentage",
+      "percentage change",
+      "discount calculator",
+      "calculate percentage",
+      "percentage increase",
+      "reverse percentage"
+    ],
+    "steps": [
+      {
+        "title": "Pick a question",
+        "text": "Each card answers one typical question, such as “What is 19 % of 250?” or “What percentage is 45 of 180?”."
+      },
+      {
+        "title": "Type your numbers",
+        "text": "Replace the example numbers with your own – comma or point both work."
+      },
+      {
+        "title": "Read the result",
+        "text": "The result appears in large type with the working below. The copy icon takes the number."
+      }
+    ],
+    "why": [
+      {
+        "title": "Working shown",
+        "text": "You see how the result comes about – good for learning and checking."
+      },
+      {
+        "title": "All on one page",
+        "text": "Percentage, rate, base value, change, mark-up, discount and price before a discount – no clicking around."
+      },
+      {
+        "title": "No ads",
+        "text": "No banners and no cookies. After the first visit the page works offline."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I calculate a percentage of a number?",
+        "a": "Divide the number by 100 and multiply by the percentage: 19 % of 250 = 250 ÷ 100 × 19 = 47.5."
+      },
+      {
+        "q": "What percentage is one number of another?",
+        "a": "Divide the part by the whole and multiply by 100: 45 of 180 = 45 ÷ 180 × 100 = 25 %."
+      },
+      {
+        "q": "How do I calculate a percentage change?",
+        "a": "New value minus old value, divided by the old value, times 100. From 80 to 92 is (92 − 80) ÷ 80 × 100 = +15 %."
+      },
+      {
+        "q": "What is the difference between percent and percentage points?",
+        "a": "If a rate rises from 10 % to 12 %, that is 2 percentage points – but an increase of 20 %."
+      }
+    ]
+  }
+}

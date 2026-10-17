@@ -491,7 +491,7 @@ function init(cfg) {
     progress.hidden = phase !== 'working';
     result.hidden = phase !== 'result';
     errorBox.hidden = phase !== 'error';
-    bar.hidden = !(phase === 'files' || phase === 'result');
+    bar.hidden = !(phase === 'files' || phase === 'result') || (phase === 'files' && !!state.tool?.noBar);   // noBar: calculators without a file to save
     if (phase === 'pick') { state.inputs.forEach(removeInputQuiet); }
     if (phase === 'files' && state.tool?.mountStage && !stage._mounted && hasFiles) {
       stage._mounted = true;

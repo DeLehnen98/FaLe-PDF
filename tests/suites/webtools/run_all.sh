@@ -33,7 +33,7 @@ for i in $(seq 1 50); do curl -s -o /dev/null http://127.0.0.1:8710/werkzeuge/ &
 if [ $# -gt 0 ]; then TESTS=$(for n in "$@"; do echo "test_$n.py"; done); else TESTS=$(ls test_*.py); fi
 pass=0; fail=0; failed=""
 if [ $# -eq 0 ]; then
-  if node img_meta_unit.mjs > out/img_units.log 2>&1 && node img_qr_unit.mjs >> out/img_units.log 2>&1 && node qrscan_unit.mjs >> out/img_units.log 2>&1 && node qrcontent_unit.mjs >> out/img_units.log 2>&1 && node vec_unit.mjs >> out/img_units.log 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed img_units"; fi
+  if node img_meta_unit.mjs > out/img_units.log 2>&1 && node img_qr_unit.mjs >> out/img_units.log 2>&1 && node qrscan_unit.mjs >> out/img_units.log 2>&1 && node qrcontent_unit.mjs >> out/img_units.log 2>&1 && node vec_unit.mjs >> out/img_units.log 2>&1 && node calc_unit.mjs >> out/img_units.log 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed img_units"; fi
 fi
 for t in $TESTS; do
   if timeout 900 python3 "$t" > "out/${t%.py}.log" 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed $t"; fi

@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = 'ade40894e890';
+const VERSION = '9f2671bef648';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -29,6 +29,8 @@ const PRECACHE = [
   "/assets/wt/lib/bg-core.js",
   "/assets/wt/lib/bg-worker.js",
   "/assets/wt/lib/bg.css",
+  "/assets/wt/lib/calc-core.js",
+  "/assets/wt/lib/calc.css",
   "/assets/wt/lib/conv-common.js",
   "/assets/wt/lib/conv-docpreview.js",
   "/assets/wt/lib/conv-domparse.js",
@@ -43,6 +45,7 @@ const PRECACHE = [
   "/assets/wt/lib/conv-ttf.js",
   "/assets/wt/lib/conv-xlsx.js",
   "/assets/wt/lib/conv.css",
+  "/assets/wt/lib/date-calc.js",
   "/assets/wt/lib/dom.js",
   "/assets/wt/lib/download.js",
   "/assets/wt/lib/edit-controls.js",

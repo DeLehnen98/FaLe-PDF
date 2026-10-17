@@ -1,0 +1,153 @@
+{
+  "id": "character-counter",
+  "category": "calc",
+  "iconSvg": "<path d=\"M4 7V5h16v2\"/><path d=\"M12 5v14\"/><path d=\"M9 19h6\"/>",
+  "module": "tools/character-counter.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 75,
+  "related": [
+    "compare-text",
+    "text-to-pdf",
+    "image-to-text",
+    "percent-calculator"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "zeichen-zaehlen",
+    "name": "Zeichen zählen",
+    "short": "Zeichen mit und ohne Leerzeichen, Wörter, Sätze, Normseiten, SMS und Längen-Grenzen.",
+    "title": "Zeichen zählen – mit und ohne Leerzeichen, Wörter | FaleNetwork",
+    "metaDescription": "Zeichenzähler: Zeichen mit und ohne Leerzeichen, Wörter, Sätze, Lesezeit, Normseiten und SMS-Länge – live beim Tippen. Kostenlos, ohne Werbung, ohne Speichern.",
+    "h1": "Zeichen zählen",
+    "lede": "Tippe oder füge deinen Text ein – Zeichen, Wörter, Sätze, Lesezeit und Längen-Grenzen erscheinen sofort.",
+    "primaryButton": "Ergebnis",
+    "keywords": [
+      "zeichen zählen",
+      "zeichenzähler",
+      "wörter zählen",
+      "zeichen zählen mit leerzeichen",
+      "zeichen ohne leerzeichen",
+      "wortzähler",
+      "normseite berechnen",
+      "sms zeichen zählen"
+    ],
+    "steps": [
+      {
+        "title": "Text einfügen",
+        "text": "Tippe deinen Text in das Feld oder füge ihn mit Strg+V ein."
+      },
+      {
+        "title": "Zahlen ablesen",
+        "text": "Zeichen mit und ohne Leerzeichen, Wörter und Sätze stehen sofort darunter – dazu Lesezeit, Normseiten und SMS-Anzahl."
+      },
+      {
+        "title": "Grenzen prüfen",
+        "text": "Die Balken zeigen, ob dein Text in Seitentitel, Meta-Beschreibung, SMS oder Social-Media-Post passt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Richtig gezählt",
+        "text": "Emojis und Umlaute zählen als ein Zeichen, so wie du sie siehst – nicht doppelt wie bei manchen Zählern."
+      },
+      {
+        "title": "SMS mit echter Regel",
+        "text": "Schon ein Sonderzeichen wie ein Emoji macht aus 160 nur noch 70 Zeichen pro SMS – der Zähler berücksichtigt das."
+      },
+      {
+        "title": "Nichts wird gespeichert",
+        "text": "Dein Text bleibt auf der Seite, wird nicht gesendet und nicht gespeichert."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Zeichen hat eine Normseite?",
+        "a": "1.800 Zeichen inklusive Leerzeichen – üblich bei Übersetzungen und Manuskripten. Der Zähler rechnet die Normseiten automatisch aus."
+      },
+      {
+        "q": "Zählen Leerzeichen als Zeichen?",
+        "a": "Je nach Vorgabe. Deshalb zeigt der Zähler beides: Zeichen mit Leerzeichen und ohne Leerzeichen (auch ohne Zeilenumbrüche)."
+      },
+      {
+        "q": "Wie lang darf eine SMS sein?",
+        "a": "160 Zeichen, wenn nur übliche Buchstaben und Zeichen vorkommen. Mit Emojis oder seltenen Sonderzeichen sind es nur 70. Längere Texte werden in mehrere SMS aufgeteilt."
+      },
+      {
+        "q": "Wie lang sollten Seitentitel und Meta-Beschreibung sein?",
+        "a": "Als Faustregel etwa 60 Zeichen für den Seitentitel und 155 für die Beschreibung – sonst werden sie in Suchergebnissen oft abgeschnitten."
+      },
+      {
+        "q": "Wird mein Text gespeichert?",
+        "a": "Nein. Er bleibt nur auf dieser Seite, solange sie offen ist."
+      }
+    ]
+  },
+  "en": {
+    "slug": "character-counter",
+    "name": "Character counter",
+    "short": "Characters with and without spaces, words, sentences, pages, SMS and length limits.",
+    "title": "Character counter – with and without spaces, words | FaleNetwork",
+    "metaDescription": "Character counter: characters with and without spaces, words, sentences, reading time, standard pages and SMS length – live as you type. Free, nothing stored.",
+    "h1": "Character counter",
+    "lede": "Type or paste your text – characters, words, sentences, reading time and length limits appear instantly.",
+    "primaryButton": "Result",
+    "keywords": [
+      "character counter",
+      "word counter",
+      "count characters",
+      "characters without spaces",
+      "letter count",
+      "sms character count",
+      "meta description length",
+      "count words"
+    ],
+    "steps": [
+      {
+        "title": "Paste your text",
+        "text": "Type your text into the box or paste it with Ctrl+V."
+      },
+      {
+        "title": "Read the numbers",
+        "text": "Characters with and without spaces, words and sentences appear at once – plus reading time, standard pages and SMS count."
+      },
+      {
+        "title": "Check the limits",
+        "text": "The bars show whether your text fits a page title, meta description, SMS or social media post."
+      }
+    ],
+    "why": [
+      {
+        "title": "Counted right",
+        "text": "Emoji and accented letters count as one character, as you see them – not twice like some counters do."
+      },
+      {
+        "title": "SMS with the real rule",
+        "text": "One special character such as an emoji turns 160 into 70 characters per SMS – the counter takes that into account."
+      },
+      {
+        "title": "Nothing stored",
+        "text": "Your text stays on the page and is neither sent nor stored."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do spaces count as characters?",
+        "a": "It depends on the requirement, so the counter shows both: characters with spaces and without spaces (and without line breaks)."
+      },
+      {
+        "q": "How long can an SMS be?",
+        "a": "160 characters with ordinary letters and signs. With emoji or rare special characters it is only 70. Longer texts are split into several messages."
+      },
+      {
+        "q": "How long should a page title and meta description be?",
+        "a": "As a rule of thumb about 60 characters for the title and 155 for the description – otherwise search results often cut them off."
+      },
+      {
+        "q": "Is my text stored?",
+        "a": "No. It only stays on this page while it is open."
+      }
+    ]
+  }
+}

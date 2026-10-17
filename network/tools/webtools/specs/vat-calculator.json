@@ -1,0 +1,161 @@
+{
+  "id": "vat-calculator",
+  "category": "calc",
+  "iconSvg": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/><path d=\"M8 7h8\"/><path d=\"M8.5 16.5l7-6\"/><circle cx=\"9\" cy=\"11\" r=\"1\"/><circle cx=\"15\" cy=\"16\" r=\"1\"/>",
+  "module": "tools/vat-calculator.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 70,
+  "related": [
+    "invoice-generator",
+    "percent-calculator",
+    "receipt",
+    "payment-reminder"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "mwst-rechner",
+    "name": "Mehrwertsteuer-Rechner",
+    "short": "Netto, Brutto und MwSt berechnen – 19 %, 7 % und eigener Satz, auf den Cent genau.",
+    "title": "MwSt-Rechner – Netto, Brutto, 19 % und 7 % | FaleNetwork",
+    "metaDescription": "Mehrwertsteuer berechnen: Netto in Brutto, Brutto in Netto oder aus dem Steuerbetrag. 19 %, 7 %, Österreich, Schweiz, mehrere Positionen. Kostenlos.",
+    "h1": "Mehrwertsteuer-Rechner",
+    "lede": "Rechne Netto, Brutto und Mehrwertsteuer sofort aus – auf den Cent genau, mit Rechenweg.",
+    "primaryButton": "Positionen als CSV speichern",
+    "keywords": [
+      "mwst rechner",
+      "mehrwertsteuer rechner",
+      "brutto netto rechner mwst",
+      "netto brutto rechner",
+      "19 prozent mwst",
+      "7 prozent mwst",
+      "mehrwertsteuer berechnen",
+      "mwst herausrechnen"
+    ],
+    "steps": [
+      {
+        "title": "Richtung wählen",
+        "text": "Netto → Brutto, wenn du die Steuer aufschlagen willst; Brutto → Netto, wenn du sie herausrechnen willst; oder „Aus der Steuer“, wenn nur der Steuerbetrag bekannt ist."
+      },
+      {
+        "title": "Satz und Betrag eingeben",
+        "text": "Wähle 19 %, 7 % oder einen eigenen Steuersatz und tippe den Betrag ein – mit Komma oder Punkt."
+      },
+      {
+        "title": "Ergebnis übernehmen",
+        "text": "Netto, Steuer und Brutto stehen sofort da, mit Rechenweg. Ein Tipp auf das Kopier-Symbol übernimmt den Wert."
+      }
+    ],
+    "why": [
+      {
+        "title": "Auf den Cent genau",
+        "text": "Die Steuer ist immer Brutto minus Netto – so passen die drei Beträge garantiert zusammen, ohne Rundungs-Cent zu viel oder zu wenig."
+      },
+      {
+        "title": "Rundungsdifferenz sichtbar",
+        "text": "Bei mehreren Positionen zeigt der Rechner, ob die Steuer je Position oder auf die Summe gerundet einen Cent abweicht – der häufigste Grund für Rückfragen zu Rechnungen."
+      },
+      {
+        "title": "Deutschland, Österreich, Schweiz",
+        "text": "19 % und 7 %, in Österreich 20, 13 und 10 %, in der Schweiz 8,1, 3,8 und 2,6 % – oder jeder eigene Satz."
+      },
+      {
+        "title": "Ohne Werbung und Cookies",
+        "text": "Keine Banner, kein Tracking. Die Seite funktioniert nach dem ersten Laden sogar offline."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie rechne ich die Mehrwertsteuer heraus?",
+        "a": "Teile den Bruttobetrag durch 1,19 (bei 19 %) oder 1,07 (bei 7 %). Das Ergebnis ist der Nettobetrag, die Differenz zum Brutto ist die Steuer. Beispiel: 119 € ÷ 1,19 = 100 € netto, 19 € Steuer."
+      },
+      {
+        "q": "Warum sind 19 % von Brutto nicht die Steuer?",
+        "a": "Weil die 19 % auf den Nettobetrag aufgeschlagen werden. Im Bruttobetrag steckt die Steuer deshalb nur zu 19/119, also rund 15,97 %."
+      },
+      {
+        "q": "Wann gilt 7 % Mehrwertsteuer?",
+        "a": "Der ermäßigte Satz gilt in Deutschland unter anderem für die meisten Lebensmittel, Bücher und Zeitungen, Personennahverkehr und Hotelübernachtungen. Für Speisen im Restaurant gilt seit dem 1. Januar 2026 dauerhaft wieder 7 % (2024 und 2025 waren es 19 %); Getränke bleiben bei 19 %."
+      },
+      {
+        "q": "Muss ich die Steuer je Position oder auf die Summe runden?",
+        "a": "Beides ist zulässig, wichtig ist eine einheitliche Methode. Der Rechner zeigt dir bei mehreren Positionen, ob und um wie viel sich die beiden Wege unterscheiden."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Mehrwertsteuer und Umsatzsteuer?",
+        "a": "Rechtlich heißt sie in Deutschland Umsatzsteuer, im Alltag sagt man meist Mehrwertsteuer. Gemeint ist dieselbe Steuer."
+      }
+    ]
+  },
+  "en": {
+    "slug": "vat-calculator",
+    "name": "VAT calculator",
+    "short": "Work out net, gross and VAT – 19 %, 7 % or your own rate, to the cent.",
+    "title": "VAT calculator – net, gross, add or remove VAT | FaleNetwork",
+    "metaDescription": "Calculate VAT: net to gross, gross to net or from the tax amount. Germany, Austria, Switzerland or any rate, several line items. Free, no ads.",
+    "h1": "VAT calculator",
+    "lede": "Work out net, gross and VAT instantly – exact to the cent, with the calculation shown.",
+    "primaryButton": "Save items as CSV",
+    "keywords": [
+      "vat calculator",
+      "add vat",
+      "remove vat",
+      "net to gross",
+      "gross to net",
+      "reverse vat calculator",
+      "german vat 19%",
+      "calculate vat"
+    ],
+    "steps": [
+      {
+        "title": "Pick the direction",
+        "text": "Net → gross to add VAT, gross → net to remove it, or “From the tax” when only the VAT amount is known."
+      },
+      {
+        "title": "Enter rate and amount",
+        "text": "Choose a preset or your own rate and type the amount – comma or point both work."
+      },
+      {
+        "title": "Use the result",
+        "text": "Net, VAT and gross appear right away with the calculation. Tap the copy icon to take a value."
+      }
+    ],
+    "why": [
+      {
+        "title": "Exact to the cent",
+        "text": "VAT is always gross minus net – so the three amounts always add up, with no stray rounding cent."
+      },
+      {
+        "title": "Rounding difference shown",
+        "text": "With several items the calculator shows whether rounding per item or on the total differs by a cent – the most common reason for invoice queries."
+      },
+      {
+        "title": "Germany, Austria, Switzerland",
+        "text": "19 % and 7 %, Austria's 20, 13 and 10 %, Switzerland's 8.1, 3.8 and 2.6 % – or any rate you need."
+      },
+      {
+        "title": "No ads, no cookies",
+        "text": "No banners, no tracking. After the first visit the page even works offline."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I remove VAT from a price?",
+        "a": "Divide the gross amount by 1 plus the rate, e.g. by 1.19 for 19 %. That gives the net amount; the difference to gross is the VAT. Example: 119 ÷ 1.19 = 100 net, 19 VAT."
+      },
+      {
+        "q": "Why isn't 19 % of the gross price the VAT?",
+        "a": "Because the 19 % is added to the net amount. Within the gross amount the VAT is only 19/119, about 15.97 %."
+      },
+      {
+        "q": "Should VAT be rounded per item or on the total?",
+        "a": "Both are allowed; what matters is using one method consistently. With several items the calculator shows whether, and by how much, the two differ."
+      },
+      {
+        "q": "Which rates are built in?",
+        "a": "Germany 19 % and 7 %, Austria 20 %, 13 % and 10 %, Switzerland 8.1 %, 3.8 % and 2.6 %, plus 0 % and any rate you enter yourself."
+      }
+    ]
+  }
+}

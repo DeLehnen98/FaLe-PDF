@@ -1,0 +1,149 @@
+{
+  "id": "date-difference",
+  "category": "calc",
+  "iconSvg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18\"/><path d=\"M8 3v4M16 3v4\"/><path d=\"M7 15h10M14 13l3 2-3 2\"/>",
+  "module": "tools/date-difference.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 73,
+  "related": [
+    "working-days",
+    "calendar-week",
+    "percent-calculator",
+    "leave-request"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "tage-zwischen-daten",
+    "name": "Tage zwischen zwei Daten",
+    "short": "Tage, Wochen, Monate zwischen zwei Daten – und Datum plus oder minus Tage.",
+    "title": "Tage zwischen zwei Daten berechnen – Datumsrechner | FaleNetwork",
+    "metaDescription": "Wie viele Tage liegen zwischen zwei Daten? In Tagen, Wochen, Monaten und Jahren, mit oder ohne Endtag. Dazu Datum plus oder minus Tage und Monate.",
+    "h1": "Tage zwischen zwei Daten",
+    "lede": "Rechne aus, wie viele Tage zwischen zwei Daten liegen – oder welches Datum in 30 Tagen, 6 Wochen oder 3 Monaten ist.",
+    "primaryButton": "Ergebnis",
+    "keywords": [
+      "tage zwischen zwei daten",
+      "tage berechnen",
+      "datumsrechner",
+      "wie viele tage bis",
+      "datum plus tage",
+      "tage zählen",
+      "wochen berechnen",
+      "zeitraum berechnen"
+    ],
+    "steps": [
+      {
+        "title": "Daten wählen",
+        "text": "Gib Start- und Enddatum ein. „Heute als Start“ setzt das heutige Datum."
+      },
+      {
+        "title": "Endtag mitzählen?",
+        "text": "Für die reine Differenz bleibt der Haken aus. Für Urlaub oder Mietzeiträume, bei denen beide Tage zählen, setzt du ihn."
+      },
+      {
+        "title": "Oder rechnen",
+        "text": "Im zweiten Kasten addierst oder subtrahierst du Tage, Wochen, Monate oder Jahre zu einem Datum."
+      }
+    ],
+    "why": [
+      {
+        "title": "In jeder Einheit",
+        "text": "Tage, Wochen plus Tage, Jahre-Monate-Tage und Stunden – dazu Wochentag und Kalenderwoche."
+      },
+      {
+        "title": "Monatsenden richtig",
+        "text": "31. Januar plus ein Monat ergibt den 28. oder 29. Februar – und der Rechner sagt dir, warum."
+      },
+      {
+        "title": "Ohne Werbung",
+        "text": "Keine Banner, keine Cookies – und nach dem ersten Laden auch offline."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Zählt der Endtag mit?",
+        "a": "Standardmäßig nicht: Vom 1. bis zum 5. sind es dann 4 Tage Differenz. Setzt du den Haken „Endtag mitzählen“, sind es 5 Tage – so wie bei Urlaub."
+      },
+      {
+        "q": "Wie viele Tage sind es bis Weihnachten?",
+        "a": "Das zweite Datum ist schon auf den 24. Dezember gesetzt – das Ergebnis siehst du sofort."
+      },
+      {
+        "q": "Was ergibt 31. Januar plus ein Monat?",
+        "a": "Den letzten Tag im Februar, also den 28. – im Schaltjahr den 29. Februar. Der Rechner weist darauf hin."
+      },
+      {
+        "q": "Werden Schaltjahre berücksichtigt?",
+        "a": "Ja. Alle Berechnungen nutzen den echten Kalender inklusive Schaltjahren und Zeitumstellung."
+      }
+    ]
+  },
+  "en": {
+    "slug": "days-between-dates",
+    "name": "Days between dates",
+    "short": "Days, weeks, months between two dates – and a date plus or minus days.",
+    "title": "Days between two dates – date calculator | FaleNetwork",
+    "metaDescription": "How many days are there between two dates? In days, weeks, months and years, with or without the end day. Plus: a date plus or minus days, weeks, months. Free.",
+    "h1": "Days between two dates",
+    "lede": "Work out how many days lie between two dates – or which date it is in 30 days, 6 weeks or 3 months.",
+    "primaryButton": "Result",
+    "keywords": [
+      "days between dates",
+      "date calculator",
+      "how many days until",
+      "date plus days",
+      "count days",
+      "weeks between dates",
+      "date difference",
+      "add days to date"
+    ],
+    "steps": [
+      {
+        "title": "Pick the dates",
+        "text": "Enter start and end date. “Today as start” sets today's date."
+      },
+      {
+        "title": "Count the end day?",
+        "text": "Leave it unticked for the plain difference. Tick it for holidays or rentals where both days count."
+      },
+      {
+        "title": "Or add and subtract",
+        "text": "In the second box add or subtract days, weeks, months or years to a date."
+      }
+    ],
+    "why": [
+      {
+        "title": "Every unit",
+        "text": "Days, weeks plus days, years-months-days and hours – plus weekday and calendar week."
+      },
+      {
+        "title": "Month ends handled",
+        "text": "31 January plus one month gives 28 or 29 February – and the calculator tells you why."
+      },
+      {
+        "title": "No ads",
+        "text": "No banners, no cookies – and offline after the first visit."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is the end day counted?",
+        "a": "Not by default: from the 1st to the 5th is a difference of 4 days. Tick “Count the end day” for 5 days, as with a holiday."
+      },
+      {
+        "q": "What is 31 January plus one month?",
+        "a": "The last day of February – the 28th, or the 29th in a leap year. The calculator points this out."
+      },
+      {
+        "q": "Are leap years taken into account?",
+        "a": "Yes. All calculations use the real calendar including leap years and daylight saving changes."
+      },
+      {
+        "q": "Can I count working days instead?",
+        "a": "Yes – use the working days calculator, which skips weekends and public holidays."
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "id": "working-days",
+  "category": "calc",
+  "iconSvg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18\"/><path d=\"M8 3v4M16 3v4\"/><path d=\"M8 14h2M14 14h2M8 17h2\"/>",
+  "module": "tools/working-days.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 72,
+  "related": [
+    "date-difference",
+    "calendar-week",
+    "leave-request",
+    "vat-calculator"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "arbeitstage-rechner",
+    "name": "Arbeitstage-Rechner",
+    "short": "Arbeitstage zwischen zwei Daten – mit Feiertagen je Bundesland und Fristen.",
+    "title": "Arbeitstage-Rechner – mit Feiertagen je Bundesland | FaleNetwork",
+    "metaDescription": "Arbeitstage zwischen zwei Daten berechnen: Feiertage aller 16 Bundesländer, Samstag optional, Heiligabend halb, Urlaub abziehen, Fristen. Kostenlos.",
+    "h1": "Arbeitstage-Rechner",
+    "lede": "Zähle die Arbeitstage zwischen zwei Daten – mit den Feiertagen deines Bundeslands – und rechne Fristen in Arbeitstagen aus.",
+    "primaryButton": "Feiertage als Kalenderdatei (.ics)",
+    "keywords": [
+      "arbeitstage rechner",
+      "arbeitstage berechnen",
+      "werktage berechnen",
+      "arbeitstage 2026",
+      "arbeitstage zwischen zwei daten",
+      "feiertage bundesland",
+      "frist arbeitstage berechnen",
+      "werktage rechner"
+    ],
+    "steps": [
+      {
+        "title": "Zeitraum wählen",
+        "text": "Gib Anfang und Ende ein oder tippe auf „Dieser Monat“, „Nächster Monat“ oder ein Jahr."
+      },
+      {
+        "title": "Bundesland und Optionen",
+        "text": "Wähle dein Bundesland. Bei Bedarf zählt der Samstag mit, Heiligabend und Silvester werden halb gerechnet oder Urlaubstage abgezogen."
+      },
+      {
+        "title": "Ergebnis und Feiertage",
+        "text": "Du siehst die Arbeitstage, alle Feiertage im Zeitraum und kannst sie als Kalenderdatei speichern."
+      }
+    ],
+    "why": [
+      {
+        "title": "Alle 16 Bundesländer",
+        "text": "Inklusive Ostern, Pfingsten, Fronleichnam, Reformationstag, Buß- und Bettag, Weltkindertag und Frauentag – berechnet für jedes Jahr."
+      },
+      {
+        "title": "Auch lokale Feiertage",
+        "text": "Augsburger Friedensfest und Fronleichnam in einigen Gemeinden Sachsens und Thüringens lassen sich zuschalten."
+      },
+      {
+        "title": "Fristen in Arbeitstagen",
+        "text": "„10 Arbeitstage ab heute“ – der Rechner überspringt Wochenenden und Feiertage und nennt das genaue Datum."
+      },
+      {
+        "title": "Ohne Werbung",
+        "text": "Keine Banner, kein Tracking. Gespeichert wird nur dein Bundesland auf diesem Gerät."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was ist der Unterschied zwischen Arbeitstagen und Werktagen?",
+        "a": "Arbeitstage sind meist Montag bis Freitag. Werktage sind im rechtlichen Sinn Montag bis Samstag. Für Werktage setzt du den Haken bei „Samstag ist Arbeitstag“."
+      },
+      {
+        "q": "Werden Heiligabend und Silvester mitgezählt?",
+        "a": "Beide sind keine gesetzlichen Feiertage und zählen normalerweise voll. Arbeitest du dort nur halb, wähle die Option „als halbe Tage“."
+      },
+      {
+        "q": "Wie viele Arbeitstage hat 2026?",
+        "a": "Das hängt vom Bundesland ab, weil die Feiertage verschieden sind – bei einer Fünf-Tage-Woche zwischen 252 (Bayern, Baden-Württemberg) und 254 Tagen (zum Beispiel Berlin, Hamburg, Niedersachsen). Wähle „Jahr 2026“ und dein Bundesland für die genaue Zahl."
+      },
+      {
+        "q": "Wie berechne ich eine Frist in Arbeitstagen?",
+        "a": "Im Kasten „Frist berechnen“ gibst du das Startdatum und die Zahl der Arbeitstage ein. Der Starttag selbst zählt nicht mit; Wochenenden und Feiertage werden übersprungen. Für rechtlich verbindliche Fristen gelten die jeweiligen Gesetze."
+      },
+      {
+        "q": "Kann ich die Feiertage in meinen Kalender übernehmen?",
+        "a": "Ja. Tippe auf „Feiertage als Kalenderdatei (.ics)“ und öffne die Datei mit deiner Kalender-App."
+      }
+    ]
+  },
+  "en": {
+    "slug": "working-days-calculator",
+    "name": "Working days calculator",
+    "short": "Working days between two dates – with public holidays per German state and deadlines.",
+    "title": "Working days calculator – German public holidays | FaleNetwork",
+    "metaDescription": "Count working days between two dates with the public holidays of every German state, optional Saturdays, half days, vacation and deadlines. Free.",
+    "h1": "Working days calculator",
+    "lede": "Count the working days between two dates with your German state's public holidays – and work out deadlines in working days.",
+    "primaryButton": "Holidays as calendar file (.ics)",
+    "keywords": [
+      "working days calculator",
+      "business days calculator germany",
+      "german public holidays",
+      "working days between dates",
+      "add working days",
+      "workdays 2026",
+      "deadline working days",
+      "holidays by state germany"
+    ],
+    "steps": [
+      {
+        "title": "Choose the period",
+        "text": "Enter start and end or tap “This month”, “Next month” or a year."
+      },
+      {
+        "title": "State and options",
+        "text": "Choose the federal state. Optionally count Saturdays, treat 24 and 31 December as half days or subtract vacation days."
+      },
+      {
+        "title": "Result and holidays",
+        "text": "See the working days and every holiday in the period, and save the holidays as a calendar file."
+      }
+    ],
+    "why": [
+      {
+        "title": "All 16 German states",
+        "text": "Including Easter, Whitsun, Corpus Christi, Reformation Day, Day of Repentance, Children's Day and Women's Day – for any year."
+      },
+      {
+        "title": "Local holidays too",
+        "text": "The Augsburg Peace Festival and Corpus Christi in parts of Saxony and Thuringia can be switched on."
+      },
+      {
+        "title": "Deadlines in working days",
+        "text": "“10 working days from today” – weekends and holidays are skipped and you get the exact date."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Working days or business days – what is counted?",
+        "a": "Monday to Friday by default. Tick “Saturday is a working day” for the legal German sense of Werktage (Monday to Saturday)."
+      },
+      {
+        "q": "Are 24 and 31 December counted?",
+        "a": "They are not public holidays and count fully. If you only work half a day, choose the half-day option."
+      },
+      {
+        "q": "Can I add the holidays to my calendar?",
+        "a": "Yes. Tap “Holidays as calendar file (.ics)” and open the file with your calendar app."
+      },
+      {
+        "q": "How is a deadline in working days calculated?",
+        "a": "Enter the start date and the number of working days. The start day itself is not counted; weekends and holidays are skipped."
+      }
+    ]
+  }
+}

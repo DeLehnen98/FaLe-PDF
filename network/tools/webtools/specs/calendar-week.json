@@ -1,0 +1,149 @@
+{
+  "id": "calendar-week",
+  "category": "calc",
+  "iconSvg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18\"/><path d=\"M8 3v4M16 3v4\"/><path d=\"M9 17v-4l-1.5 1\"/><path d=\"M13 13h3l-2 4\"/>",
+  "module": "tools/calendar-week.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 74,
+  "related": [
+    "working-days",
+    "date-difference",
+    "leave-request",
+    "percent-calculator"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "kalenderwoche",
+    "name": "Welche Kalenderwoche ist heute?",
+    "short": "Aktuelle KW, KW zu einem Datum, Zeitraum einer KW und alle Wochen eines Jahres.",
+    "title": "Welche Kalenderwoche ist heute? KW-Rechner | FaleNetwork",
+    "metaDescription": "Aktuelle Kalenderwoche nach ISO 8601, KW zu jedem Datum, Montag bis Sonntag einer KW und alle Kalenderwochen eines Jahres – auch als PDF zum Ausdrucken.",
+    "h1": "Welche Kalenderwoche ist heute?",
+    "lede": "Die aktuelle Kalenderwoche auf einen Blick – dazu die KW zu jedem Datum und alle Wochen eines Jahres.",
+    "primaryButton": "Kalenderwochen als PDF",
+    "keywords": [
+      "kalenderwoche",
+      "welche kalenderwoche ist heute",
+      "kw heute",
+      "aktuelle kalenderwoche",
+      "kalenderwochen 2026",
+      "kw rechner",
+      "kalenderwoche berechnen",
+      "kalenderwochen pdf"
+    ],
+    "steps": [
+      {
+        "title": "Aktuelle KW ablesen",
+        "text": "Ganz oben steht die heutige Kalenderwoche mit Montag und Sonntag."
+      },
+      {
+        "title": "Datum oder Woche eingeben",
+        "text": "Wähle ein Datum, um seine KW zu sehen, oder gib KW und Jahr ein, um den Zeitraum zu erfahren."
+      },
+      {
+        "title": "Jahresübersicht drucken",
+        "text": "Unten stehen alle Kalenderwochen eines Jahres. Mit „Kalenderwochen als PDF“ bekommst du sie zum Ausdrucken."
+      }
+    ],
+    "why": [
+      {
+        "title": "Nach ISO 8601",
+        "text": "Wie in Deutschland, Österreich und der Schweiz üblich: Wochen beginnen am Montag, KW 1 enthält den ersten Donnerstag des Jahres."
+      },
+      {
+        "title": "Auch KW 53",
+        "text": "Manche Jahre haben 53 Kalenderwochen, und der 1. Januar kann noch zur KW 52 oder 53 des Vorjahres gehören – der Rechner zeigt das richtig an."
+      },
+      {
+        "title": "Zum Ausdrucken",
+        "text": "Die Übersicht aller Kalenderwochen eines Jahres gibt es als PDF auf einer Seite."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie wird die Kalenderwoche berechnet?",
+        "a": "Nach ISO 8601: Die Woche beginnt am Montag, und KW 1 ist die Woche mit dem ersten Donnerstag des Jahres – also die Woche, in der der 4. Januar liegt."
+      },
+      {
+        "q": "Warum gehört der 1. Januar manchmal zur KW 53?",
+        "a": "Fällt der 1. Januar auf Freitag, Samstag oder Sonntag, gehört er noch zur letzten Woche des Vorjahres."
+      },
+      {
+        "q": "Wie viele Kalenderwochen hat ein Jahr?",
+        "a": "52 oder 53. 53 Wochen hat ein Jahr, wenn es mit einem Donnerstag beginnt – oder als Schaltjahr mit einem Mittwoch."
+      },
+      {
+        "q": "Gilt das auch in den USA?",
+        "a": "Nein. Dort beginnen Wochen oft am Sonntag und werden anders gezählt. Dieser Rechner nutzt die europäische ISO-Zählung."
+      }
+    ]
+  },
+  "en": {
+    "slug": "calendar-week",
+    "name": "What week number is it?",
+    "short": "Current ISO week, the week of any date, dates of a week and all weeks of a year.",
+    "title": "What week number is it? ISO calendar week | FaleNetwork",
+    "metaDescription": "The current ISO 8601 week number, the week of any date, Monday to Sunday of a week and all calendar weeks of a year – also as a printable PDF.",
+    "h1": "What week number is it?",
+    "lede": "Today's ISO week number at a glance – plus the week of any date and all weeks of a year.",
+    "primaryButton": "Calendar weeks as PDF",
+    "keywords": [
+      "week number",
+      "what week is it",
+      "current week number",
+      "iso week",
+      "calendar week",
+      "week number 2026",
+      "week number calculator",
+      "iso week date"
+    ],
+    "steps": [
+      {
+        "title": "Read today's week",
+        "text": "Today's week number appears at the top with its Monday and Sunday."
+      },
+      {
+        "title": "Enter a date or a week",
+        "text": "Choose a date to see its week, or enter week and year to get the dates."
+      },
+      {
+        "title": "Print the overview",
+        "text": "All weeks of a year are listed below. “Calendar weeks as PDF” gives you a printable page."
+      }
+    ],
+    "why": [
+      {
+        "title": "ISO 8601",
+        "text": "Weeks start on Monday and week 1 contains the year's first Thursday – the European standard."
+      },
+      {
+        "title": "Week 53 handled",
+        "text": "Some years have 53 weeks, and 1 January can belong to the previous year's week – shown correctly."
+      },
+      {
+        "title": "Printable",
+        "text": "The overview of all calendar weeks of a year comes as a one-page PDF."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How is the ISO week number calculated?",
+        "a": "Weeks start on Monday and week 1 is the week with the year's first Thursday – the week containing 4 January."
+      },
+      {
+        "q": "Why can 1 January be in week 53?",
+        "a": "If 1 January falls on a Friday, Saturday or Sunday it still belongs to the last week of the previous year."
+      },
+      {
+        "q": "How many weeks does a year have?",
+        "a": "52 or 53. A year has 53 weeks if it starts on a Thursday – or, in a leap year, on a Wednesday."
+      },
+      {
+        "q": "Does this match US week numbers?",
+        "a": "Not always. US calendars often start weeks on Sunday and count differently; this calculator uses the ISO standard."
+      }
+    ]
+  }
+}

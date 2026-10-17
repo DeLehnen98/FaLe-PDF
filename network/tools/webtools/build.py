@@ -65,6 +65,8 @@ CATEGORIES = [
                 'en': ('images', 'Images', 'Resize, crop and convert photos')}, 'scan'),
     ('everyday', {'de': ('alltag', 'Alltag', 'Praktisches für Formulare und Belege'),
                   'en': ('everyday', 'Everyday', 'Handy helpers for forms and receipts')}, 'share'),
+    ('calc', {'de': ('rechner', 'Rechner & Text', 'Mehrwertsteuer, Prozente, Datum, Zeichen'),
+              'en': ('calculators', 'Calculators & text', 'VAT, percentages, dates, characters')}, 'read'),
 ]
 CAT = {cid: (labels, colour) for cid, labels, colour in CATEGORIES}
 

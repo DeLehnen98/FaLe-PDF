@@ -1,0 +1,149 @@
+{
+  "id": "compare-text",
+  "category": "calc",
+  "iconSvg": "<path d=\"M4 6h7M4 10h7M4 14h5\"/><path d=\"M13 6h7M15 10h5M13 14h7\"/><path d=\"M4 18h16\"/>",
+  "module": "tools/compare-text.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 76,
+  "related": [
+    "compare-pdf",
+    "character-counter",
+    "pdf-to-text",
+    "image-to-text"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "text-vergleichen",
+    "name": "Text vergleichen",
+    "short": "Zwei Texte vergleichen – Unterschiede nach Wörtern, Zeichen oder Zeilen markiert.",
+    "title": "Text vergleichen – Unterschiede online finden | FaleNetwork",
+    "metaDescription": "Zwei Texte vergleichen und Unterschiede markieren: nach Wörtern, Zeichen oder Zeilen, Groß-/Kleinschreibung ignorierbar. Kostenlos, ohne Hochladen.",
+    "h1": "Text vergleichen",
+    "lede": "Füge zwei Versionen ein und sieh sofort, was gelöscht, ergänzt oder geändert wurde.",
+    "primaryButton": "Ergebnis",
+    "keywords": [
+      "text vergleichen",
+      "texte vergleichen",
+      "unterschiede finden text",
+      "diff online",
+      "text unterschiede",
+      "zwei texte vergleichen",
+      "dokument vergleichen",
+      "vertrag vergleichen"
+    ],
+    "steps": [
+      {
+        "title": "Texte einfügen",
+        "text": "Füge die alte Version links und die neue rechts ein – zum Beispiel aus E-Mails, Verträgen oder Webseiten."
+      },
+      {
+        "title": "Art wählen",
+        "text": "Vergleiche nach Wörtern, Zeichen oder Zeilen. Groß- und Kleinschreibung und Leerzeichen kannst du ignorieren."
+      },
+      {
+        "title": "Unterschiede ansehen",
+        "text": "Gelöschtes ist durchgestrichen, Neues unterstrichen – in einem Text oder nebeneinander, mit Zählung."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Hochladen",
+        "text": "Beide Texte bleiben auf deinem Gerät – wichtig bei Verträgen, Bewerbungen und internen Dokumenten."
+      },
+      {
+        "title": "Wörter, Zeichen oder Zeilen",
+        "text": "Für Fließtext nach Wörtern, für Tippfehler nach Zeichen, für Listen und Code nach Zeilen."
+      },
+      {
+        "title": "Auch für PDFs",
+        "text": "Für zwei PDF-Versionen gibt es „PDF vergleichen“ mit Seitenansicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie vergleiche ich zwei Texte?",
+        "a": "Füge die erste Version in das linke und die zweite in das rechte Feld ein. Die Unterschiede werden sofort farbig markiert."
+      },
+      {
+        "q": "Werden meine Texte hochgeladen?",
+        "a": "Nein. Der Vergleich läuft in deinem Browser; nichts wird gesendet oder gespeichert."
+      },
+      {
+        "q": "Kann ich Leerzeichen und Groß-/Kleinschreibung ignorieren?",
+        "a": "Ja. Setze die passenden Haken – dann zählen nur inhaltliche Änderungen."
+      },
+      {
+        "q": "Wie vergleiche ich zwei PDF-Dateien?",
+        "a": "Mit dem Werkzeug „PDF vergleichen“: Es liest den Text beider PDFs und markiert die Änderungen auf den Seiten."
+      }
+    ]
+  },
+  "en": {
+    "slug": "compare-text",
+    "name": "Compare text",
+    "short": "Compare two texts – differences marked by words, characters or lines.",
+    "title": "Compare text – find differences online | FaleNetwork",
+    "metaDescription": "Compare two texts and highlight the differences: by words, characters or lines, ignoring case and spacing if you like. Free, nothing uploaded.",
+    "h1": "Compare two texts",
+    "lede": "Paste two versions and see at once what was deleted, added or changed.",
+    "primaryButton": "Result",
+    "keywords": [
+      "compare text",
+      "text diff",
+      "find differences",
+      "compare two texts",
+      "diff checker",
+      "text comparison",
+      "compare documents",
+      "spot the difference text"
+    ],
+    "steps": [
+      {
+        "title": "Paste the texts",
+        "text": "Paste the old version on the left and the new one on the right – from emails, contracts or websites."
+      },
+      {
+        "title": "Choose how",
+        "text": "Compare by words, characters or lines. Case and spacing can be ignored."
+      },
+      {
+        "title": "See the differences",
+        "text": "Deleted text is struck through, new text underlined – inline or side by side, with counts."
+      }
+    ],
+    "why": [
+      {
+        "title": "No upload",
+        "text": "Both texts stay on your device – important for contracts, applications and internal documents."
+      },
+      {
+        "title": "Words, characters or lines",
+        "text": "By words for prose, by characters for typos, by lines for lists and code."
+      },
+      {
+        "title": "PDFs too",
+        "text": "For two PDF versions there is “Compare PDF” with a page view."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I compare two texts?",
+        "a": "Paste the first version into the left box and the second into the right one. Differences are highlighted at once."
+      },
+      {
+        "q": "Are my texts uploaded?",
+        "a": "No. The comparison runs in your browser; nothing is sent or stored."
+      },
+      {
+        "q": "Can I ignore spaces and case?",
+        "a": "Yes. Tick the options and only real content changes are counted."
+      },
+      {
+        "q": "How do I compare two PDF files?",
+        "a": "Use “Compare PDF”: it reads the text of both PDFs and marks the changes on the pages."
+      }
+    ]
+  }
+}
