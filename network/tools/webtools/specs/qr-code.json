@@ -23,7 +23,7 @@
     "short": "QR-Codes für Link, WLAN, Kontakt und mehr – als PNG, SVG oder PDF.",
     "title": "QR-Code erstellen – kostenloser QR-Code-Generator | FaleNetwork",
     "h1": "QR-Code erstellen",
-    "metaDescription": "Kostenloser QR-Code-Generator ohne Anmeldung: für Link, Text, WLAN, Kontakt, E-Mail, Telefon, SMS oder Ort. Als PNG, SVG oder PDF – mit Selbsttest.",
+    "metaDescription": "Kostenloser QR-Code-Generator ohne Anmeldung: Link, WLAN, Kontakt, Überweisung (GiroCode) und mehr. Läuft nie ab. PNG, SVG oder PDF – mit Selbsttest.",
     "lede": "Erstelle QR-Codes für Link, WLAN oder Kontakt (vCard) – mit Live-Vorschau und Selbsttest.",
     "primaryButton": "QR-Code speichern",
     "keywords": [
@@ -34,7 +34,13 @@
       "vcard",
       "qr svg",
       "qr pdf",
-      "qr code drucken"
+      "qr code drucken",
+      "girocode",
+      "epc qr",
+      "überweisung qr",
+      "zahlungs qr",
+      "bezahlcode",
+      "sepa qr"
     ],
     "steps": [
       {
@@ -57,7 +63,7 @@
       },
       {
         "title": "Für alle Fälle",
-        "text": "Link, Text, WLAN mit Passwort, Kontaktkarte, E-Mail, Telefon, SMS und Ort – ohne dass du das Format dafür kennen musst."
+        "text": "Link, Text, WLAN mit Passwort, Kontaktkarte, E-Mail, Telefon, SMS, Ort und Überweisung (GiroCode) – ohne dass du das Format dafür kennen musst."
       },
       {
         "title": "Läuft nie ab",
@@ -78,12 +84,12 @@
         "a": "Nein. Der Code entsteht in deinem Browser. WLAN-Passwörter und Kontaktdaten verlassen dein Gerät nicht."
       },
       {
-        "q": "Wie mache ich einen QR-Code für mein WLAN?",
-        "a": "Wähle „WLAN“, gib Netzwerkname und Passwort ein und wähle die Verschlüsselung (meist WPA). Gäste scannen den Code mit der Kamera und verbinden sich ohne Abtippen."
+        "q": "Wie erstelle ich einen GiroCode für eine Überweisung?",
+        "a": "Wähle „Überweisung“, trag Empfänger und IBAN ein, auf Wunsch Betrag und Verwendungszweck. Wer den Code mit der Banking-App scannt, hat die Überweisung fertig ausgefüllt – kostenlos und ohne Ablaufdatum."
       },
       {
-        "q": "Welche Farben kann ich nehmen?",
-        "a": "Jede, solange der Code deutlich dunkler ist als der Hintergrund. Helle Codes auf dunklem Grund lesen viele Scanner nicht – dann warnt FaLe dich."
+        "q": "Wie mache ich einen QR-Code für mein WLAN?",
+        "a": "Wähle „WLAN“, gib Netzwerkname und Passwort ein und wähle die Verschlüsselung (meist WPA). Gäste scannen den Code mit der Kamera und verbinden sich ohne Abtippen."
       },
       {
         "q": "Welche Fehlerkorrektur brauche ich?",
@@ -101,7 +107,7 @@
     "short": "QR codes for links, Wi-Fi, contacts and more – as PNG, SVG or PDF.",
     "title": "QR code generator – free, no sign-up | FaleNetwork",
     "h1": "Create a QR code",
-    "metaDescription": "Create QR codes for a link, text, Wi-Fi, contact, e-mail, phone, SMS or location. Colours, margin, error correction, PNG, SVG or PDF – with a self-test. Free.",
+    "metaDescription": "Free QR code generator, no sign-up: link, Wi-Fi, contact, bank transfer (EPC QR) and more. Never expires. PNG, SVG or PDF – with a self-test.",
     "lede": "Create QR codes for links, Wi-Fi or contacts – with live preview and self-test.",
     "primaryButton": "Save QR code",
     "keywords": [
@@ -112,7 +118,12 @@
       "vcard",
       "qr svg",
       "qr pdf",
-      "print qr code"
+      "print qr code",
+      "epc qr code",
+      "girocode",
+      "payment qr",
+      "sepa qr",
+      "bank transfer qr"
     ],
     "steps": [
       {
@@ -135,7 +146,7 @@
       },
       {
         "title": "For every case",
-        "text": "Link, text, Wi-Fi with password, contact card, e-mail, phone, SMS and location – without having to know the format behind it."
+        "text": "Link, text, Wi-Fi with password, contact card, e-mail, phone, SMS, location and bank transfer (EPC QR) – without having to know the format behind it."
       },
       {
         "title": "Never expires",
@@ -156,12 +167,12 @@
         "a": "No. The code is created in your browser. Wi-Fi passwords and contact details never leave your device."
       },
       {
-        "q": "How do I make a QR code for my Wi-Fi?",
-        "a": "Choose “Wi-Fi”, enter the network name and password and pick the security (usually WPA). Guests scan the code with their camera and connect without typing."
+        "q": "How do I create an EPC QR code (GiroCode) for a bank transfer?",
+        "a": "Choose “Bank transfer”, enter payee and IBAN, and optionally amount and reference. Anyone who scans the code with a banking app gets the transfer filled in – free and without an expiry date."
       },
       {
-        "q": "Which colours can I use?",
-        "a": "Any, as long as the code is clearly darker than the background. Many scanners can’t read light codes on dark backgrounds – FaLe warns you then."
+        "q": "How do I make a QR code for my Wi-Fi?",
+        "a": "Choose “Wi-Fi”, enter the network name and password and pick the security (usually WPA). Guests scan the code with their camera and connect without typing."
       },
       {
         "q": "Which error correction do I need?",

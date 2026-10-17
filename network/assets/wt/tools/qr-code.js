@@ -7,6 +7,7 @@ import { loadPdfLib, saveDoc } from '../lib/pdf.js';
 import { ensureCss, newCanvas, ctx2d, release, T, segmented, field, check, userError } from '../lib/img-core.js';
 import { encodeQR, drawQR, qrToSvg, wifiPayload, vcardPayload, mailPayload, QRTooLongError } from '../lib/shared/qr.js';
 import { decodeRaster } from '../lib/img-qrdecode.js';
+import { girocodePayload, ibanValid, cleanIban } from '../lib/new-invoice.js';
 
 ensureCss();
 
@@ -15,6 +16,7 @@ const TYPES = [
   { value: 'wifi', label: { de: 'WLAN', en: 'Wi-Fi' } }, { value: 'vcard', label: { de: 'Kontakt', en: 'Contact' } },
   { value: 'mail', label: { de: 'E-Mail', en: 'E-mail' } }, { value: 'tel', label: { de: 'Telefon', en: 'Phone' } },
   { value: 'sms', label: 'SMS' }, { value: 'geo', label: { de: 'Ort', en: 'Location' } },
+  { value: 'epc', label: { de: 'Überweisung', en: 'Bank transfer' } },
 ];
 const num = s => parseFloat(String(s ?? '').trim().replace(',', '.'));
 
@@ -43,6 +45,21 @@ export function payload(q) {
       if (!(la >= -90 && la <= 90) || !(lo >= -180 && lo <= 180)) return { error: { de: 'Breite −90 bis 90 und Länge −180 bis 180 eingeben (z. B. 52.5200 und 13.4050).', en: 'Enter latitude −90 to 90 and longitude −180 to 180 (e.g. 51.5072 and −0.1276).' } };
       return { text: `geo:${+la.toFixed(6)},${+lo.toFixed(6)}` };
     }
+    case 'epc': {
+      // EPC QR code / GiroCode (EPC069-12, version 002): SEPA credit transfer in euros
+      if (!String(v.payee || '').trim() && !String(v.iban || '').trim()) return { empty: true };
+      if (!String(v.payee || '').trim()) return { error: { de: 'Gib den Namen des Empfängers ein (wie auf dem Konto).', en: 'Enter the payee name (as on the account).' } };
+      const iban = cleanIban(v.iban);
+      if (!ibanValid(iban)) return { error: { de: 'Die IBAN ist nicht gültig – bitte prüfen.', en: 'The IBAN is not valid – please check it.' } };
+      if (v.bic && !/^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$/i.test(String(v.bic).trim())) return { error: { de: 'Die BIC hat 8 oder 11 Zeichen (z. B. COBADEFFXXX) – oder lass das Feld leer.', en: 'The BIC has 8 or 11 characters (e.g. COBADEFFXXX) – or leave it empty.' } };
+      let cents = 0;
+      if (String(v.amount ?? '').trim()) {
+        const a = num(String(v.amount).replace(/\.(?=\d{3}(\D|$))/g, ''));
+        if (!(a >= 0.01 && a <= 999999999.99)) return { error: { de: 'Betrag zwischen 0,01 und 999.999.999,99 € eingeben – oder leer lassen.', en: 'Enter an amount between 0.01 and 999,999,999.99 € – or leave it empty.' } };
+        cents = Math.round(a * 100);
+      }
+      return { text: girocodePayload({ name: v.payee, iban, bic: String(v.bic || '').trim(), cents, text: v.purpose || '' }), epc: true };
+    }
     default: return { empty: true };
   }
 }
@@ -50,7 +67,7 @@ export function payload(q) {
 function label(q, lang) {
   const v = q || {};
   const s = { url: () => String(v.url || '').replace(/^https?:\/\//, '').split('/')[0], wifi: () => `${T(lang, { de: 'WLAN', en: 'Wi-Fi' })} ${v.ssid || ''}`,
-    vcard: () => [v.first, v.last].filter(Boolean).join(' ') || v.org || 'vCard', mail: () => v.to, tel: () => v.number, sms: () => `SMS ${v.number || ''}`, geo: () => T(lang, { de: 'Ort', en: 'Location' }), text: () => 'Text' }[v.type || 'url'];
+    vcard: () => [v.first, v.last].filter(Boolean).join(' ') || v.org || 'vCard', epc: () => `${T(lang, { de: 'Überweisung', en: 'Transfer' })} ${v.payee || ''}`, mail: () => v.to, tel: () => v.number, sms: () => `SMS ${v.number || ''}`, geo: () => T(lang, { de: 'Ort', en: 'Location' }), text: () => 'Text' }[v.type || 'url'];
   return String((s && s()) || '').trim().slice(0, 40);
 }
 
@@ -74,7 +91,7 @@ export function designWarnings(v) {
 function build(values) {
   const p = payload(values.qr);
   if (p.empty || p.error) return p;
-  try { return { ...p, qr: encodeQR(p.text, { ecc: values.ecc || 'M' }) }; } catch (err) {
+  try { return { ...p, qr: encodeQR(p.text, { ecc: p.epc ? 'M' : (values.ecc || 'M') }) }; } catch (err) {
     if (err instanceof QRTooLongError) return { error: { de: 'Der Inhalt ist zu lang für einen QR-Code. Kürze ihn oder wähle eine niedrigere Fehlerkorrektur.', en: 'The content is too long for a QR code. Shorten it or choose a lower error correction.' } };
     throw err;
   }
@@ -257,6 +274,14 @@ function qrStage(stage, state, ctx) {
         break;
       case 'tel': fieldsBox.append(f('number', { de: 'Telefonnummer', en: 'Phone number' }, { type: 'tel', placeholder: '+49 …', inputmode: 'tel' })); break;
       case 'sms': fieldsBox.append(f('number', { de: 'Telefonnummer', en: 'Phone number' }, { type: 'tel', inputmode: 'tel' }), f('message', { de: 'Nachricht (optional)', en: 'Message (optional)' }, { maxLength: 500 })); break;
+      case 'epc':
+        fieldsBox.append(f('payee', { de: 'Empfänger (Kontoinhaber)', en: 'Payee (account holder)' }, { autocomplete: 'name', maxLength: 70 }),
+          f('iban', 'IBAN', { autocomplete: 'off', placeholder: 'DE.. .... .... .... .... ..', maxLength: 42 }),
+          f('bic', { de: 'BIC (optional)', en: 'BIC (optional)' }, { wide: false, autocomplete: 'off', maxLength: 11 }),
+          f('amount', { de: 'Betrag in € (optional)', en: 'Amount in € (optional)' }, { wide: false, inputmode: 'decimal', placeholder: '25,00' }),
+          f('purpose', { de: 'Verwendungszweck (optional)', en: 'Reference (optional)' }, { maxLength: 140 }),
+          el('p', { class: 'img-muted' }, T(lang, { de: 'GiroCode für SEPA-Überweisungen in Euro: In der Banking-App scannen – Empfänger, IBAN, Betrag und Verwendungszweck sind schon eingetragen. Ideal für Rechnungen, Vereinsbeiträge, Spenden oder den Flohmarkt.', en: 'EPC QR code (GiroCode) for SEPA transfers in euros: scan it in a banking app and payee, IBAN, amount and reference are filled in. Great for invoices, club fees, donations or flea markets.' })));
+        break;
       case 'geo':
         fieldsBox.append(f('lat', { de: 'Breitengrad', en: 'Latitude' }, { wide: false, inputmode: 'decimal', placeholder: '52.5200' }), f('lon', { de: 'Längengrad', en: 'Longitude' }, { wide: false, inputmode: 'decimal', placeholder: '13.4050' }),
           el('p', { class: 'img-muted' }, T(lang, { de: 'Koordinaten in Dezimalgrad, z. B. aus deiner Karten-App kopiert. Es wird keine Karte geladen.', en: 'Coordinates in decimal degrees, e.g. copied from your maps app. No map is loaded.' })));

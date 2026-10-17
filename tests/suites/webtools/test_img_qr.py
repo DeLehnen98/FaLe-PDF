@@ -87,3 +87,18 @@ with Suite('qr-code') as s:
     if s.run(page):
         s.expect(decode(s.download(page, 0)) == 'geo:52.52,13.4', 'geo payload')
     s.check_page(page)
+
+    # bank transfer (EPC QR / GiroCode): IBAN check, amount, ECC M, decodes to the EPC payload
+    page.locator('.wt-restart button').first.click()
+    page.locator('input[name="img-qr-type"][value="epc"]').check(force=True)
+    page.fill('#img-qr-payee', 'Fanclub Saar e.V.'); page.fill('#img-qr-iban', 'DE89 3704 0044 0532 0130 01')
+    page.wait_for_timeout(200)
+    s.expect(s.primary(page).is_disabled() and 'IBAN ist nicht gültig' in page.locator('.img-qr').inner_text(), 'invalid IBAN blocks the GiroCode')
+    page.fill('#img-qr-iban', 'DE89 3704 0044 0532 0130 00'); page.fill('#img-qr-amount', '1.234,50'); page.fill('#img-qr-purpose', 'Beitrag 2027')
+    page.wait_for_selector('.img-qr-test.is-ok')
+    s.expect('Fehlerkorrektur M' in page.locator('.img-qr-info').inner_text(), 'EPC uses error correction M')
+    s.shot(page, 'img_qr_desktop_epc', top='.img-qr')
+    if s.run(page):
+        val = decode(s.download(page, 0))
+        s.expect(val == 'BCD\n002\n1\nSCT\n\nFanclub Saar e.V.\nDE89370400440532013000\nEUR1234.50\n\n\nBeitrag 2027', f'EPC payload: {val!r}')
+    s.check_page(page)
