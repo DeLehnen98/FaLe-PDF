@@ -123,7 +123,9 @@ const SHARED = {
   'pdfstruct.js': () => copyModule('js/tools/pdfstruct.js'),
   // PDF forms (create-pdf-form): field detection + AcroForm writer, and the page geometry it uses for boxes/lines
   'formfields.js': () => copyModule('js/tools/formfields.js'),
-  'pagegeom.js': () => pagegeomModule(),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
+  'pagegeom.js': () => pagegeomModule(),
+  // bookmarks (edit-bookmarks): read / derive from headings / write the outline – uses pdfstruct.js above
+  'outlinecore.js': () => copyModule('js/tools/outlinecore.js', ['./pdfstruct.js']),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
   // OCR image pre-processing (ocr-pdf, image-to-text): pure functions + their module worker
   'ocr/prep.js': () => copyModule('js/ocr/prep.js'),
   'ocr/prep-worker.js': () => copyModule('js/ocr/prep-worker.js', ['./prep.js']),

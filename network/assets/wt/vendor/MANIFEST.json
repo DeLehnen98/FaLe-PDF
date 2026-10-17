@@ -90,6 +90,7 @@
     "lib/shared/office/workbook.js": "0e06343ed193540a6c9b9cc8b3b6df4a5772026e7f4d30976ad6c7df8d6ef304",
     "lib/shared/office/xlsx-read.js": "314abe4e237eee328ba1d0569474daa9a8c61ed5a55d503fc54422e335e30372",
     "lib/shared/office/xlsx-write.js": "264f63cbc4c45f34def3a4bd713b7c75da1728a7713deaf49bdb2f7914d365c1",
+    "lib/shared/outlinecore.js": "55da278385be6762def2465c46857fea83a04f1a4f78473038e94505a805aa74",
     "lib/shared/pagegeom.js": "f07b0b337e7ccff63918d91aa20817bae04c715ebf634f745d1e9863062d9f9f",
     "lib/shared/passphoto-templates.js": "16f0f55be0284ca8dc85fdc6ca58a70704eb08c137d7368b2607bc379622244e",
     "lib/shared/pdfcrypt.js": "4d5865b4fb3a49f716f87c6d0a5743a3bb6754b72ba5aec2c18a10727f65e47c",

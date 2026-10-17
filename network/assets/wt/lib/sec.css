@@ -277,3 +277,16 @@
 .einv-item-n { min-width: 0; overflow-wrap: anywhere; }
 .einv-item-q { color: var(--text-3); white-space: nowrap; }
 .einv-item-v { font-weight: 650; white-space: nowrap; }
+
+/* bookmarks (edit-bookmarks) */
+.bm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.bm-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 6px 8px 6px calc(8px + min(var(--lvl, 0), 6) * 18px); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); position: relative; }
+.bm-row:not([data-level="0"])::before { content: ""; position: absolute; left: calc(min(var(--lvl, 0), 6) * 18px - 6px); top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: color-mix(in srgb, var(--primary) 35%, transparent); }
+.bm-main { display: flex; align-items: center; gap: 8px; flex: 1 1 260px; min-width: 0; }
+.bm-title { flex: 1; min-width: 0; }
+.bm-row[data-level="0"] .bm-title { font-weight: 650; }
+.bm-pagelab { display: inline-flex; align-items: center; gap: 4px; font-size: 0.85rem; color: var(--text-2); flex: none; }
+.bm-pageno { width: 72px !important; flex: none; padding-inline: 10px; }
+.bm-acts { display: flex; gap: 2px; flex-wrap: wrap; }
+.bm-page { max-width: 320px; margin: 0 auto; }
+.bm-add .wt-btn-primary { justify-self: start; }

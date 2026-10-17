@@ -1,0 +1,165 @@
+{
+  "id": "edit-bookmarks",
+  "category": "organize",
+  "module": "tools/edit-bookmarks.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": false,
+  "order": 25,
+  "related": [
+    "merge-pdf",
+    "organize-pdf",
+    "add-page-numbers",
+    "edit-metadata"
+  ],
+  "next": [
+    "add-page-numbers",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-lesezeichen-bearbeiten",
+    "name": "PDF-Lesezeichen bearbeiten",
+    "short": "Inhaltsverzeichnis (Lesezeichen) anlegen, umbenennen, sortieren – auch aus Überschriften.",
+    "title": "PDF-Lesezeichen bearbeiten – Inhaltsverzeichnis | FaleNetwork",
+    "h1": "PDF-Lesezeichen bearbeiten",
+    "metaDescription": "Lesezeichen in PDFs hinzufügen, umbenennen, verschachteln und sortieren – oder automatisch aus den Überschriften erzeugen. Kostenlos, ohne Upload, ohne Konto.",
+    "lede": "Gib deiner PDF ein Inhaltsverzeichnis in der Seitenleiste – per Hand oder automatisch aus den Überschriften.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Lesezeichen speichern",
+    "keywords": [
+      "pdf lesezeichen",
+      "pdf lesezeichen hinzufügen",
+      "pdf inhaltsverzeichnis erstellen",
+      "pdf gliederung",
+      "lesezeichen bearbeiten",
+      "pdf kapitel"
+    ],
+    "steps": [
+      {
+        "title": "PDF wählen",
+        "text": "Vorhandene Lesezeichen werden angezeigt und lassen sich direkt bearbeiten."
+      },
+      {
+        "title": "Lesezeichen anlegen",
+        "text": "Blättere zur Seite und gib einen Titel ein – oder lass sie aus den Überschriften erzeugen. Mit den Pfeilen sortierst und verschachtelst du sie."
+      },
+      {
+        "title": "Speichern",
+        "text": "Du bekommst die PDF mit den neuen Lesezeichen. Sie erscheinen in jedem PDF-Programm in der Seitenleiste."
+      }
+    ],
+    "why": [
+      {
+        "title": "Sonst oft kostenpflichtig",
+        "text": "Lesezeichen bearbeiten gibt es in vielen PDF-Programmen nur in der bezahlten Version. Hier ist es gratis – ohne Konto und ohne Wasserzeichen."
+      },
+      {
+        "title": "Automatisch aus Überschriften",
+        "text": "Größere oder fette Überschriften werden erkannt und als Kapitel mit Unterkapiteln vorgeschlagen. Du korrigierst nur noch."
+      },
+      {
+        "title": "Kapitel mit Unterkapiteln",
+        "text": "Einrücken und ausrücken, nach oben und unten schieben – Unterpunkte wandern mit."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Die PDF wird in deinem Browser bearbeitet und nicht hochgeladen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wo sehe ich die Lesezeichen?",
+        "a": "In der Seitenleiste deines PDF-Programms, oft unter „Lesezeichen“ oder „Gliederung“. Ein Klick springt zur Seite."
+      },
+      {
+        "q": "Was passiert mit vorhandenen Lesezeichen?",
+        "a": "Sie werden geladen und angezeigt. Beim Speichern wird die Liste so geschrieben, wie du sie hier siehst."
+      },
+      {
+        "q": "Klappt das automatische Erzeugen bei jeder PDF?",
+        "a": "Nur wenn die Überschriften größer oder fetter gesetzt sind als der Text. Bei Scans ohne Text lass vorher die „PDF Texterkennung (OCR)“ laufen oder leg eins pro Seite an."
+      },
+      {
+        "q": "Wird meine PDF hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser; nach dem ersten Laden funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "edit-pdf-bookmarks",
+    "name": "Edit PDF bookmarks",
+    "short": "Create, rename and sort bookmarks (table of contents) – also from headings.",
+    "title": "Edit PDF bookmarks – create a table of contents | FaleNetwork",
+    "h1": "Edit PDF bookmarks",
+    "metaDescription": "Add, rename, nest and reorder bookmarks in PDFs – or create them automatically from the headings. Free, no upload, no account.",
+    "lede": "Give your PDF a table of contents in the side bar – by hand or automatically from the headings.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Save bookmarks",
+    "keywords": [
+      "pdf bookmarks",
+      "add bookmarks to pdf",
+      "pdf table of contents",
+      "pdf outline",
+      "edit bookmarks",
+      "pdf chapters"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Existing bookmarks are shown and can be edited right away."
+      },
+      {
+        "title": "Add bookmarks",
+        "text": "Go to the page and enter a title – or create them from the headings. Use the arrows to sort and nest them."
+      },
+      {
+        "title": "Save",
+        "text": "You get the PDF with the new bookmarks. They show up in the side bar of every PDF reader."
+      }
+    ],
+    "why": [
+      {
+        "title": "Often a paid feature",
+        "text": "Many PDF programs only let you edit bookmarks in the paid version. Here it is free – no account, no watermark."
+      },
+      {
+        "title": "Automatically from headings",
+        "text": "Larger or bold headings are detected and suggested as chapters with sub-chapters. You only correct them."
+      },
+      {
+        "title": "Chapters with sub-chapters",
+        "text": "Indent and outdent, move up and down – sub-items move along."
+      },
+      {
+        "title": "No upload",
+        "text": "The PDF is edited in your browser and never uploaded."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Where do I see the bookmarks?",
+        "a": "In the side bar of your PDF reader, often called “Bookmarks” or “Outline”. One click jumps to the page."
+      },
+      {
+        "q": "What happens to existing bookmarks?",
+        "a": "They are loaded and shown. When you save, the list is written exactly as you see it here."
+      },
+      {
+        "q": "Does automatic creation work with every PDF?",
+        "a": "Only if the headings are larger or bolder than the text. For scans without text, run “OCR PDF” first or create one per page."
+      },
+      {
+        "q": "Is my PDF uploaded?",
+        "a": "No. Everything happens in your browser; after the first visit the page also works offline."
+      }
+    ]
+  },
+  "iconSvg": "<path d=\"M7 3h10a1 1 0 0 1 1 1v17l-6-4-6 4V4a1 1 0 0 1 1-1z\"/><path d=\"M10 8h4\"/>"
+}
