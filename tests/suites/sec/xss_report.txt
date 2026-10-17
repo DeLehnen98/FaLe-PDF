@@ -1,0 +1,951 @@
+account/entry.js:25: cls   «…<svg class="ic »
+account/entry.js:25: EXTRA[name]   «…linecap="round" stroke-linejoin="round">»
+account/entry.js:85: initial   «… class="acct-avatar" aria-hidden="true">»
+account/screen.js:72: PRIVACY   «…Adresse in der EU (Frankfurt). <a href="»
+account/screen.js:158: PRIVACY   «…ei Supabase in Frankfurt (EU). <a href="»
+account/screen.js:242: p.done || 0   «… »
+account/screen.js:242: p.total   «… von »
+account/screen.js:244: p.total   «…hritt" aria-valuemin="0" aria-valuemax="»
+account/screen.js:244: p.done || 0   «…" aria-valuenow="»
+account/screen.js:248: usageMeter(st)   «… »
+ai/assist.js:55: id   «…n-soft btn-sm" type="button" data-mode="»
+ai/assist.js:57: esc(original).replace(/\n/g, '<br>')   «…div class="ai-assist-text" data-no-i18n>»
+ai/assist.js:113: esc(p).replace(/\n/g, '<br>')   «…<p>»
+ai/chat.js:117: p   «…ype="button" class="ai-cite" data-page="»
+ai/chat.js:117: p   «… »
+ai/chat.js:117: pages.length   «… »
+ai/common.js:44: st.limits && st.limits.free ? st.limits.free : 'einige'   «…pan>Einmalig zustimmen – danach täglich »
+ai/common.js:76: thumbHtml(d)   «…">»
+ai/common.js:76: docMeta(d)   «…</span><span class="doc-meta">»
+ai/common.js:93: thumbHtml(doc)   «…<div class="ai-docchip">»
+ai/common.js:93: docMeta(doc)   «…</span><span class="doc-meta">»
+ai/entry.js:39: f.href   «…<a class="tool-card" href="»
+ai/entry.js:39: f.id   «…" data-tool="ai-»
+ai/hub.js:30: href   «…class="tool-card" role="listitem" href="»
+ai/hub.js:30: f.id   «…" data-ai-feature="»
+ai/image-ai.js:23: k   «…<option value="»
+ai/image-ai.js:42: url   «…<img src="»
+ai/image-ai.js:70: esc(full).replace(/\n/g, '<br>')   «…<p>»
+ai/image-ai.js:72: esc(translation).replace(/\n/g, '<br>')   «…<p>»
+ai/letter-ai.js:40: f.id   «…</span><input class="input" name="»
+ai/letter-ai.js:41: f.id   «…</span><input class="input" name="»
+ai/slides-ai.js:34: n   «…>»
+ai/slides-ai.js:37: t.id   «…" data-theme="»
+ai/slides-ai.js:37: t.bg   «…" style="background:»
+ai/slides-ai.js:37: t.title   «…;color:»
+ai/slides-ai.js:37: t.accent   «…><span class="tc-bar" style="background:»
+ai/slides-ai.js:37: t.font   «…"></span><strong style="font-family:»
+ai/slides-ai.js:37: t.name   «…">»
+ai/slides-ai.js:78: i + 1   «…v class="ol-slide"><span class="ol-num">»
+ai/study.js:49: n   «…>»
+ai/study.js:124: b   «…<span title="Fach »
+ai/study.js:124: b   «…">»
+ai/study.js:124: deck.cards.filter(c => (c.box || 1) === b).length   «…:»
+ai/study.js:138: card.box || 1   «…><span class="ai-card-tag">Frage · Fach »
+ai/study.js:174: score   «…<h3>»
+ai/study.js:174: deck.quiz.length   «… von »
+ai/study.js:181: k   «…on class="ai-opt" type="button" data-k="»
+ai/study.js:181: 'ABCDE'[k]   «…"><span class="ai-opt-l">»
+ai/study.js:180: i + 1   «…d ai-q"><span class="muted small">Frage »
+ai/study.js:180: deck.quiz.length   «… von »
+ai/textops.js:40: k   «…<option value="»
+ai/textops.js:137: esc(t).replace(/\n/g, '<br>')   «…<p>»
+ai/textops.js:142: partIdx   «…ass="ai-more"><span class="muted small">»
+ai/textops.js:142: parts.length   «… von »
+ai/ui.js:93: q.bonus || 3   «… Werbevideo ansehen (+»
+ai/ui.js:91: q.limit   «…ragen" aria-valuemin="0" aria-valuemax="»
+ai/ui.js:91: q.used   «…" aria-valuenow="»
+ai/ui.js:91: pct   «…"><span style="width:»
+ai/ui.js:128: q.bonus || 3   «… Ein kurzes Werbevideo schaltet <strong>»
+ai/ui.js:128: q.rewardsLeft   «… weitere Anfragen</strong> frei (noch »
+ai/ui.js:127: q.limit || ''   «… class="ai-limit"><p>Du hast heute alle »
+ai/ui.js:154: para.map(inline).join('<br>')   «…<p>»
+ai/ui.js:160: inline(m[1])   «…<h4>»
+ai/ui.js:161: inline(m[1])   «…<li>»
+ai/ui.js:170: p   «…ype="button" class="ai-cite" data-page="»
+ai/ui.js:170: u === 'S.' ? 'Seite' : u   «…" aria-label="»
+ai/ui.js:170: p   «… »
+ai/ui.js:170: p   «… »
+app.js:172: e && e.userMessage ? e.userMessage : 'Bitte versuche es erneut.'   «…</div><h3>Das hat nicht geklappt</h3><p>»
+components.js:9: url   «…<img src="»
+components.js:19: thumbHtml(doc)   «… öffnen"> »
+components.js:20: docMeta(doc)   «…</span><span class="doc-meta">»
+components.js:127: thumbHtml(d)   «…> »
+components.js:127: docMeta(d)   «…</span><span class="doc-meta">»
+components.js:141: thumbHtml(doc)   «…s="card result-card" role="status"> »
+components.js:143: docMeta(doc)   «…</div><div class="doc-meta">»
+extras/ai.js:144: k   «…<option value="»
+extras/ai.js:144: l   «…">»
+extras/ai.js:145: k   «…<option value="»
+extras/ai.js:145: l   «…>»
+extras/ai.js:184: textToHtml(result)   «…</h1>»
+extras/home.js:46: best.p.page   «…?seite=»
+extras/home.js:47: fileThumb(best.d)   «…" data-cont-read> »
+extras/home.js:48: best.p.page   «…> <span class="muted small">Seite »
+extras/home.js:48: best.p.pages   «… von »
+extras/home.js:49: pct   «…="0" aria-valuemax="100" aria-valuenow="»
+extras/home.js:49: pct   «…"><span style="width:»
+extras/home.js:55: openHash(d)   «…<a class="cont-item" href="»
+extras/home.js:55: fileThumb(d)   «…">»
+extras/home.js:55: ago(d.modifiedAt || d.createdAt || d.openedAt)   «… · »
+extras/home.js:77: MONTHS[now.getMonth()]   «…</span><div><strong>Dein »
+extras/home.js:85: k   «…<div class="month-stat" data-ev="»
+extras/home.js:85: formatAmount(k, m[k])   «…</span><span class="ms-n">»
+extras/letters.js:182: t   «…><strong>»
+extras/letters.js:183: head.map((t, i) => hd(t, i >= 2)).join('')   «…style="width:16%"></colgroup><tbody><tr>»
+extras/letters.js:186: i + 1   «…<tr><td><p>»
+extras/letters.js:186: e(it.text) || '–'   «…</p></td><td><p>»
+extras/letters.js:186: e(it.qty || '1')   «…/p></td><td><p style="text-align:right">»
+extras/letters.js:186: e(it.unit || '')   «… »
+extras/letters.js:186: money(num(it.price))   «…/p></td><td><p style="text-align:right">»
+extras/letters.js:186: money(total)   «…/p></td><td><p style="text-align:right">»
+extras/letters.js:190: l   «…<strong>»
+extras/letters.js:190: r   «…<strong>»
+extras/letters.js:190: b ? `<strong>${l}</strong>` : l   «…<tr><td><p><br></p></td><td><p>»
+extras/letters.js:190: b ? `<strong>${r}</strong>` : r   «…/p></td><td><p style="text-align:right">»
+extras/letters.js:371: you   «…<strong>»
+extras/letters.js:395: e(v.s_name) || '…'   «…bzw. Hausverwaltung, dass</p><p><strong>»
+extras/letters.js:395: e(v.objekt) || '…'   «…</strong></p><p>die Wohnung »
+extras/letters.js:395: deDate(v.seit) || '……………'   «… seit »
+extras/letters.js:454: e(b.heading)   «…<h1 style="text-align:center">»
+extras/letters.js:455: p   «…<p>»
+extras/letters.js:456: dateLine   «…width:50%"></colgroup><tbody><tr><td><p>»
+extras/letters.js:456: e(b.signLabel)   «…pan style="font-size:9pt;color:#5A607F">»
+extras/letters.js:456: e(v.s_name)   «… (»
+extras/letters.js:460: lines([...sender, ...contact])   «…gn:right"><span style="font-size:9.5pt">»
+extras/letters.js:461: e(b.headerTitle)   «…<h1><span style="color:#3B37A0">»
+extras/letters.js:466: ret   «…tyle="font-size:7.5pt;color:#5A607F"><u>»
+extras/letters.js:466: rcpt || '<br>'   «…</u></span></p><p>»
+extras/letters.js:466: info.join('<br>')   «…</td><td><p><span style="font-size:9pt">»
+extras/letters.js:467: b.subject   «…<p><br></p><p><strong>»
+extras/letters.js:468: b.salutation || salutation(v)   «…<p>»
+extras/letters.js:469: p   «…<p>»
+extras/letters.js:471: p   «…<p>»
+extras/letters.js:474: e(v.s_name) || '<br>'   «…<p>»
+extras/letters.js:475: e(n)   «…<p><br></p><p>……………………………………</p><p>»
+extras/letters.js:476: e(b.attachments)   «…n style="font-size:9.5pt;color:#5A607F">»
+extras/letters.js:477: b.footer   «…pan style="font-size:8pt;color:#5A607F">»
+extras/letters.js:492: k   «…-chip" href="#/schreiben/kuendigung?art=»
+extras/letters.js:492: k   «…" data-art="»
+extras/letters.js:495: id   «…<a class="tool-card" href="#/schreiben/»
+extras/letters.js:495: id   «…" data-letter="»
+extras/letters.js:493: g.ids.map(id => { const d = OTHER[id]; return `<a class="tool-card" href="#/schreiben/${id}" data-lett   «…</h2><div class="tool-grid">»
+extras/letters.js:499: profileRoute   «… kommen automatisch aus deinem <a href="»
+extras/letters.js:501: kcards   «…> <div class="lt-chips" role="list">»
+extras/letters.js:502: groups   «…</div> »
+extras/letters.js:527: profileRoute   «…</span><p>Tipp: Mit einem <a href="»
+extras/letters.js:614: deDate(rem.due)   «…“ am »
+extras/letters.js:641: f.id   «…<label class="check lt-check" data-f="»
+extras/letters.js:641: f.id   «…"><input type="checkbox" name="»
+extras/letters.js:643: String(val === k)   «…" aria-checked="»
+extras/letters.js:643: String(val === k)   «…" aria-pressed="»
+extras/letters.js:643: f.id   «…<div class="field lt-field" data-f="»
+extras/letters.js:645: f.id   «…<label class="field lt-field" data-f="»
+extras/letters.js:645: req   «…»
+extras/letters.js:645: f.id   «…</span><select class="select" name="»
+extras/letters.js:647: f.id   «…<label class="field lt-field" data-f="»
+extras/letters.js:647: req   «…»
+extras/letters.js:647: f.id   «…pan><textarea class="input lt-ta" name="»
+extras/letters.js:649: f.id   «…class="field lt-field lt-items" data-f="»
+extras/letters.js:655: i   «…<div class="lt-item" data-i="»
+extras/letters.js:656: i + 1   «…" aria-label="Beschreibung Position »
+extras/letters.js:657: i + 1   «…" aria-label="Menge Position »
+extras/letters.js:658: i + 1   «…" aria-label="Einheit Position »
+extras/letters.js:659: i + 1   «…" aria-label="Einzelpreis Position »
+extras/letters.js:660: i + 1   «…tton" data-delitem aria-label="Position »
+extras/letters.js:675: f.id   «…" data-f="»
+extras/letters.js:675: req   «…»
+extras/letters.js:676: f.id   «…/span> <input class="input" name="»
+extras/letters.js:676: type   «…" type="»
+extras/onboarding.js:31: logo(56)   «…"ob-art ob-art-1"><span class="ob-logo">»
+extras/onboarding.js:35: langSelectHtml()   «…-space:nowrap">Sprache / Language</span>»
+extras/organize.js:63: o.depth   «…<label class="pick-item fp-»
+extras/organize.js:114: t.color   «…<span class="tag-dot" style="--tc:»
+extras/organize.js:122: c   «…utton" class="swatch" style="background:»
+extras/organize.js:122: c   «…" data-c="»
+extras/organize.js:122: i + 1   «…" aria-label="Farbe »
+extras/organize.js:131: t.color   «…"button" class="tag-toggle" style="--tc:»
+extras/organize.js:131: sel.has(t.id)   «…" aria-pressed="»
+extras/organize.js:178: fileThumb({ ...it.meta, thumb: null })   «…"><div class="doc-open">»
+extras/organize.js:178: left   «… · noch »
+extras/organize.js:232: g.length   «…</strong><span class="muted small">»
+extras/organize.js:235: fileThumb(d)   «…<div class="dup-item">»
+extras/organize.js:235: fileMeta(d)   «…</span><span class="doc-meta">»
+extras/profile-screen.js:38: f.id   «…pan> <input class="input" name="»
+extras/profile-screen.js:38: f.type || 'text'   «…" type="»
+extras/profile-screen.js:38: f.auto || 'off'   «…" autocomplete="»
+extras/reminders.js:158: t.id   «…<option value="»
+extras/reminders.js:158: t.label   «…>»
+extras/reminders.js:162: l.d   «…nput type="checkbox" name="lead" value="»
+extras/reminders.js:162: l.label   «…><span>»
+extras/reminders.js:195: st   «…<article class="rem-card st-»
+extras/reminders.js:198: st === 'overdue' ? `Überfällig ${relText(n)}` : st === 'done' ? 'Erledigt' : relText(n)   «…strong> <span class="rem-when"><b>»
+extras/reminders.js:198: deDate(r.due)   «… am »
+extras/reminders.js:279: st   «…<section class="rem-group g-»
+extras/reminders.js:279: title   «…"><h2 class="section-title">»
+extras/reminders.js:279: items.length   «… <span class="count-pill">»
+extras/vault.js:331: autoLockMinutes()   «…tsspeicher. Der Tresor sperrt sich nach »
+extras/vault.js:348: honesty(null)   «…importieren</button></div> </form>»
+extras/vault.js:377: honesty(hd)   «…or löschen</button></details> </div>»
+extras/vault.js:419: m   «…<option value="»
+extras/vault.js:419: m   «…>»
+extras/vault.js:412: autoLockMinutes()   «…"muted small"> · entsperrt, sperrt nach »
+extras/vault.js:428: honesty(hd)   «… Löschen</button></div> </div>»
+extras/vault.js:455: kind ? kindTile(kind) : `<span class="kind-tile" style="--kc:#5D6488">${oicon('file')}</span>`   «…en"> <span class="doc-thumb kind">»
+extras/vault.js:479: kindTile(kindOf(d))   «…"><span class="doc-thumb kind">»
+extras/vault.js:535: viewerUrl   «…<img class="vv-img" src="»
+extras/vault.js:555: sanitizeHtml(r2.html)   «…<div class="vv-doc doc-page">»
+icons.js:127: cls   «…<svg class="ic »
+icons.js:127: body   «…linecap="round" stroke-linejoin="round">»
+icons.js:134: size   «…<svg class="logo-mark" width="»
+icons.js:134: size   «…" height="»
+icons.js:135: gid   «…le="false"> <defs><linearGradient id="»
+icons.js:136: gid   «…dth="60" height="60" rx="16" fill="url(#»
+ocr/settings.js:18: href   «… (<a href="»
+ocr/ui.js:21: l.id   «…<button type="button" data-ocrlang="»
+ocr/ui.js:23: p.id   «…<option value="»
+office/chart.js:129: w   «…ttp://www.w3.org/2000/svg" viewBox="0 0 »
+office/chart.js:129: h   «… »
+office/chart.js:129: w   «…" width="»
+office/chart.js:129: h   «…" height="»
+office/chart.js:129: font   «…" »
+office/chart.js:130: w   «…<rect width="»
+office/chart.js:130: h   «…" height="»
+office/chart.js:130: S.bg   «…" fill="»
+office/chart.js:132: S.text   «… font-size="15" font-weight="700" fill="»
+office/chart.js:143: lx   «…<g><rect x="»
+office/chart.js:143: ly0 + i * 20 + 3   «…" y="»
+office/chart.js:143: l.color   «…" width="10" height="10" rx="2" fill="»
+office/chart.js:143: lx + 16   «…"/><text x="»
+office/chart.js:143: ly0 + i * 20 + 12   «…" y="»
+office/chart.js:143: S.text2   «…" font-size="12" fill="»
+office/chart.js:154: xx   «…<rect x="»
+office/chart.js:154: y0 + ri * 18 + 3   «…" y="»
+office/chart.js:154: l.color   «…" width="10" height="10" rx="2" fill="»
+office/chart.js:154: xx + 15   «…"/><text x="»
+office/chart.js:154: y0 + ri * 18 + 12   «…" y="»
+office/chart.js:154: S.text2   «…" font-size="12" fill="»
+office/chart.js:160: S.text2   «…xt-anchor="middle" font-size="13" fill="»
+office/chart.js:175: d   «…<path d="»
+office/chart.js:175: legendItems[i] ? legendItems[i].color : s.color   «…" fill="»
+office/chart.js:175: S.bg   «…" stroke="»
+office/chart.js:203: p   «…<line x1="»
+office/chart.js:203: top   «…" y1="»
+office/chart.js:203: p   «…" x2="»
+office/chart.js:203: bottom   «…" y2="»
+office/chart.js:203: S.grid   «…" stroke="»
+office/chart.js:203: p   «…" stroke-width="1"/><text x="»
+office/chart.js:203: bottom + 15   «…" y="»
+office/chart.js:203: S.text2   «…xt-anchor="middle" font-size="11" fill="»
+office/chart.js:204: left   «…<line x1="»
+office/chart.js:204: p   «…" y1="»
+office/chart.js:204: right   «…" x2="»
+office/chart.js:204: p   «…" y2="»
+office/chart.js:204: S.grid   «…" stroke="»
+office/chart.js:204: p + 4   «…" y="»
+office/chart.js:204: S.text2   «… text-anchor="end" font-size="11" fill="»
+office/chart.js:207: zero   «…<line x1="»
+office/chart.js:207: top   «…" y1="»
+office/chart.js:207: zero   «…" x2="»
+office/chart.js:207: bottom   «…" y2="»
+office/chart.js:207: S.axis   «…" stroke="»
+office/chart.js:208: left   «…<line x1="»
+office/chart.js:208: zero   «…" y1="»
+office/chart.js:208: right   «…" x2="»
+office/chart.js:208: zero   «…" y2="»
+office/chart.js:208: S.axis   «…" stroke="»
+office/chart.js:209: S.text2   «…xt-anchor="middle" font-size="12" fill="»
+office/chart.js:210: S.text2   «…xt-anchor="middle" font-size="12" fill="»
+office/chart.js:214: xPx(v)   «…<text x="»
+office/chart.js:214: bottom + 15   «…" y="»
+office/chart.js:214: S.text2   «…xt-anchor="middle" font-size="11" fill="»
+office/chart.js:218: s.color   «…" r="5" fill="»
+office/chart.js:218: S.bg   «…" stroke="»
+office/chart.js:229: mid + 4   «…" y="»
+office/chart.js:229: S.text2   «… text-anchor="end" font-size="12" fill="»
+office/chart.js:230: mid   «…<text x="»
+office/chart.js:230: bottom + 15   «…" y="»
+office/chart.js:230: S.text2   «…xt-anchor="middle" font-size="11" fill="»
+office/chart.js:241: rr   «…" rx="»
+office/chart.js:241: s.color   «…" fill="»
+office/chart.js:242: rr   «…" rx="»
+office/chart.js:242: s.color   «…" fill="»
+office/chart.js:253: d   «…<path d="»
+office/chart.js:253: s.color   «…Z" fill="»
+office/chart.js:254: d   «…<path d="»
+office/chart.js:254: s.color   «…" fill="none" stroke="»
+office/chart.js:256: s.color   «…" r="4" fill="»
+office/chart.js:256: S.bg   «…" stroke="»
+office/chart.js:289: TYPE_ICON[id] || TYPE_ICON.col   «…linecap="round" stroke-linejoin="round">»
+office/chart.js:297: t.id   «…class="cd-type" role="radio" data-type="»
+office/chart.js:297: t.label   «…<span>»
+office/chart.js:306: x   «…<i style="background:»
+office/chart.js:306: k   «… type="button" class="cd-pal" data-pal="»
+office/chart.js:306: p.label   «…" role="radio" title="»
+office/chart.js:306: p.label   «…<span>»
+office/convert.js:68: fileThumb(doc)   «…ss="card convert-card"><div class="doc">»
+office/convert.js:68: fileMeta(doc)   «…</span><span class="doc-meta">»
+office/convert.js:108: fileThumb(d)   «…pen" type="button" style="padding:10px">»
+office/convert.js:108: fileMeta(d)   «…</span><span class="doc-meta">»
+office/docmodel.js:161: rootOrHtml   «…<body>»
+office/docmodel.js:354: l ? escH(l) : '<br>'   «…<p>»
+office/docmodel.js:362: a || b   «…<strong>»
+office/docmodel.js:374: para.map(mdInline).join('<br>')   «…<p>»
+office/docmodel.js:375: listStack.pop().tag   «…</li></»
+office/docmodel.js:379: escH(code.join('\n'))   «…<pre>»
+office/docmodel.js:386: h[1].length   «…<h»
+office/docmodel.js:386: mdInline(h[2].replace(/\s#+$/, ''))   «…>»
+office/docmodel.js:386: h[1].length   «…</h»
+office/docmodel.js:400: mdInline(text)   «…<li>»
+office/docmodel.js:403: mdInline(line.replace(/^\s*>\s?/, ''))   «…<blockquote><p>»
+office/docmodel.js:411: mdInline(c)   «…<td><strong>»
+office/docmodel.js:411: mdInline(c)   «…<td>»
+office/docmodel.js:418: escH(code.join('\n'))   «…<pre>»
+office/docx-read.js:259: level   «…<h»
+office/docx-read.js:259: sAttr   «…»
+office/docx-read.js:259: content   «…>»
+office/docx-read.js:259: level   «…</h»
+office/docx-read.js:260: sAttr   «…<p class="subtitle"»
+office/docx-read.js:260: content   «…>»
+office/docx-read.js:261: sAttr   «…<p»
+office/docx-read.js:261: content   «…>»
+office/docx-read.js:292: h   «…<strong>»
+office/docx-read.js:293: h   «…<em>»
+office/docx-read.js:294: h   «…<u>»
+office/docx-read.js:295: h   «…<s>»
+office/docx-read.js:296: h   «…<sup>»
+office/docx-read.js:297: h   «…<sub>»
+office/docx-read.js:305: css.join(';')   «…<span style="»
+office/docx-read.js:305: h   «…">»
+office/docx-read.js:314: html   «…">»
+office/docx-read.js:351: html   «…">»
+office/docx-read.js:367: blocks.join('')   «…<div class="textbox">»
+office/docx-read.js:383: url   «…<img src="»
+office/docx-read.js:433: at   «…<td»
+office/docx-read.js:433: inner   «…>»
+office/docx-read.js:447: top.tag   «…<»
+office/docx-read.js:447: top.attrs   «…»
+office/docx-read.js:447: top.items.join('')   «…>»
+office/docx-read.js:447: top.tag   «…</»
+office/docx-read.js:465: b.style || ''   «…<li»
+office/docx-read.js:465: b.html   «…>»
+office/docx-read.js:482: html   «…<body>»
+office/extract.js:80: html   «…<body>»
+office/filerow.js:16: KINDS[kind].color   «…<span class="kind-badge" style="--kc:»
+office/filerow.js:16: KINDS[kind].short   «…">»
+office/filerow.js:17: url   «…"><img src="»
+office/filerow.js:17: badge   «… alt="" loading="lazy" decoding="async">»
+office/filerow.js:18: kindTile(kind)   «…<span class="doc-thumb kind">»
+office/filerow.js:34: kind   «…<article class="doc kind-»
+office/filerow.js:34: kind   «…" data-kind="»
+office/filerow.js:36: fileThumb(doc)   «… öffnen"> »
+office/filerow.js:37: fileMeta(doc)   «…</span><span class="doc-meta">»
+office/filerow.js:37: tagRow(doc)   «…</span>»
+office/filerow.js:62: t.color   «…<span class="tag-dot" style="--tc:»
+office/kinds.js:178: cls   «…<svg class="ic »
+office/kinds.js:178: body   «…linecap="round" stroke-linejoin="round">»
+office/kinds.js:184: size   «…<span class="kind-tile »
+office/kinds.js:184: k.color   «…" style="--kc:»
+office/kinds.js:184: k.short   «…<span class="kind-tag">»
+office/open.js:72: url   «…<div class="img-stage"><img src="»
+office/open.js:75: kind   «…<button class="btn »
+office/open.js:75: label   «…<span>»
+office/open.js:88: tile   «…<span class="tpl-prev">»
+office/open.js:88: href   «…<a class="tpl-card" href="»
+office/open.js:88: preview || `<span class="tpl-prev">${tile}</span>`   «…">»
+office/open.js:89: t.id   «…<span class="tpl-prev tpl-doc tpl-»
+office/open.js:90: t.bg   «…e" aria-hidden="true" style="background:»
+office/open.js:90: t.accent   «…><span class="ts-bar" style="background:»
+office/open.js:90: t.title   «…an><span class="ts-t" style="background:»
+office/open.js:90: t.text   «…an><span class="ts-s" style="background:»
+office/open.js:97: id   «…<h2 class="section-title" id="tpl-»
+office/open.js:97: title   «…">»
+office/open.js:97: cards.join('')   «…</h2><div class="tpl-grid">»
+office/outline.js:59: html   «…<body>»
+office/outline.js:158: t.id   «…" data-theme="»
+office/outline.js:158: t.bg   «…" style="background:»
+office/outline.js:158: t.title   «…;color:»
+office/outline.js:158: t.accent   «…><span class="tc-bar" style="background:»
+office/outline.js:158: t.font   «…"></span><strong style="font-family:»
+office/outline.js:158: t.name   «…">»
+office/outline.js:160: n   «…>»
+office/outline.js:184: i + 1   «…v class="ol-slide"><span class="ol-num">»
+office/sheet.js:76: k   «…<option value="»
+office/sheet.js:76: f.label   «…">»
+office/sheet.js:79: tb('undo', 'Rückgängig (Strg+Z)', 'data-a="undo"')   «…werkzeuge"> <div class="tb-group">»
+office/sheet.js:79: tb('redo', 'Wiederholen (Strg+Y)', 'data-a="redo"')   «…»
+office/sheet.js:80: tb('bold', 'Fett', 'data-a="bold"')   «…</div> <div class="tb-group">»
+office/sheet.js:80: tb('italic', 'Kursiv', 'data-a="italic"')   «…»
+office/sheet.js:81: tb('color', 'Textfarbe', 'data-a="color"')   «… <span class="tb-color">»
+office/sheet.js:82: tb('fill', 'Füllfarbe', 'data-a="fill"')   «…></span> <span class="tb-color">»
+office/sheet.js:83: fmtOptions   «…="sh-fmt" data-fmt title="Zahlenformat">»
+office/sheet.js:84: tb('alignLeft', 'Linksbündig', 'data-a="al-left"')   «…</select> »
+office/sheet.js:84: tb('alignCenter', 'Zentriert', 'data-a="al-center"')   «…»
+office/sheet.js:84: tb('alignRight', 'Rechtsbündig', 'data-a="al-right"')   «…»
+office/sheet.js:85: tb('sigma', 'AutoSumme', 'data-a="sum"')   «…</div> <div class="tb-group">»
+office/sheet.js:85: tb('fx', 'Funktion einfügen', 'data-a="fx"')   «…»
+office/sheet.js:86: tb('rowAdd', 'Zeile einfügen', 'data-a="row-add"')   «…</div> <div class="tb-group">»
+office/sheet.js:86: tb('rowDel', 'Zeile löschen', 'data-a="row-del"')   «…»
+office/sheet.js:86: tb('colAdd', 'Spalte einfügen', 'data-a="col-add"')   «…»
+office/sheet.js:86: tb('colDel', 'Spalte löschen', 'data-a="col-del"')   «…»
+office/sheet.js:87: tb('sortAsc', 'Aufsteigend sortieren', 'data-a="sort-asc"')   «…</div> <div class="tb-group">»
+office/sheet.js:87: tb('sortDesc', 'Absteigend sortieren', 'data-a="sort-desc"')   «…»
+office/sheet.js:87: tb('freeze', 'Kopfzeile fixieren', 'data-a="freeze"')   «…»
+office/sheet.js:87: tb('filter', 'Filter (AutoFilter)', 'data-a="filter"')   «…»
+office/sheet.js:88: tb('border', 'Rahmen', 'data-a="border"')   «…</div> <div class="tb-group">»
+office/sheet.js:88: tb('wrap', 'Text umbrechen', 'data-a="wrap"')   «…»
+office/sheet.js:88: tb('mergeCells', 'Zellen verbinden', 'data-a="merge"')   «…»
+office/sheet.js:88: tb('condfmt', 'Bedingte Formatierung', 'data-a="cf"')   «…»
+office/sheet.js:88: tb('dropdown', 'Dropdown-Liste (Datenüberprüfung)', 'data-a="dv"')   «…»
+office/sheet.js:89: tb('chart', 'Diagramm einfügen', 'data-a="chart"')   «…</div> <div class="tb-group">»
+office/sheet.js:89: tb('replace', 'Suchen & ersetzen (Strg+F)', 'data-a="find"')   «…»
+office/sheet.js:184: c   «…" type="button" data-af="»
+office/sheet.js:184: colName(c)   «…" aria-label="Filter für Spalte »
+office/sheet.js:212: colX[c]   «…" style="left:»
+office/sheet.js:212: top   «…px;top:»
+office/sheet.js:212: w   «…px;width:»
+office/sheet.js:212: hgt   «…px;height:»
+office/sheet.js:212: af   «…px">»
+office/sheet.js:240: cls   «…<div class="»
+office/sheet.js:240: id   «…" data-cell="»
+office/sheet.js:240: style   «…" style="»
+office/sheet.js:240: af   «…»
+office/sheet.js:258: c   «…" data-col="»
+office/sheet.js:258: colX[c]   «…" style="left:»
+office/sheet.js:258: w   «…px;width:»
+office/sheet.js:258: colName(c)   «…px">»
+office/sheet.js:258: c   «…<span class="rz" data-rz="»
+office/sheet.js:267: r   «…" data-row="»
+office/sheet.js:267: top   «…" style="top:»
+office/sheet.js:267: r + 1   «…px">»
+office/sheet.js:294: colX[c1]   «…<div class="sel-range" style="left:»
+office/sheet.js:300: colX[cc]   «…<div class="sel-active" style="left:»
+office/sheet.js:300: w   «…px;width:»
+office/sheet.js:300: hh   «…px;height:»
+office/sheet.js:832: i   «…<div class="cf-rule" data-i="»
+office/sheet.js:832: x.type === 'scale' ? 'linear-gradient(90deg,#F8696B,#FFEB84,#63BE7B)' : ((x.custom || CF_STYLES.find(s2 => s2.   «…"><span class="cf-sw" style="background:»
+office/sheet.js:832: i   «…lass="icon-btn" type="button" data-del="»
+office/sheet.js:835: t.id   «…<option value="»
+office/sheet.js:835: t.label   «…">»
+office/sheet.js:838: st.id   «…<option value="»
+office/sheet.js:838: st.label   «…">»
+office/sheet.js:839: sc.id   «…<option value="»
+office/sheet.js:839: sc.label   «…">»
+office/sheet.js:893: i   «… af-item"><input type="checkbox" value="»
+office/sheet.js:893: v.n   «…</span><span class="muted small">»
+office/sheet.js:1044: ch.id   «…" data-chart="»
+office/sheet.js:1044: ch.x   «…" style="left:»
+office/sheet.js:1044: chartTop(ch)   «…px;top:»
+office/sheet.js:1044: ch.w   «…px;width:»
+office/sheet.js:1044: ch.h   «…px;height:»
+office/shell.js:152: attrs   «…" »
+office/slide-render.js:47: st   «…<span style="»
+office/slide-render.js:47: esc(r.text).replace(/\n/g, '<br>')   «…">»
+office/slide-render.js:54: fs   «…bu" aria-hidden="true" style="font-size:»
+office/slide-render.js:54: (p.runs[0] && p.runs[0].color) || '#000'   «…px;color:»
+office/slide-render.js:54: align   «…<div class="sp" style="text-align:»
+office/slide-render.js:54: lh   «…px;line-height:»
+office/slide-render.js:54: p.level || 0   «… data-level="»
+office/slide-render.js:54: runs   «…»
+office/slide-render.js:68: e.src   «…<img alt="" src="»
+office/slide-render.js:70: e.src   «…<img alt="" src="»
+office/slide-render.js:73: textHtml(c.text)   «…">»
+office/slide-render.js:78: c   «…x1="0" y1="0" x2="100" y2="100" stroke="»
+office/slide-render.js:78: w   «…" stroke-width="»
+office/slide-render.js:88: shapeSt.join(';')   «…<div class="shape" style="»
+office/slide-render.js:93: jc   «…px;justify-content:»
+office/slide-render.js:93: textHtml(e.text)   «…>»
+office/slide-render.js:96: cls   «…<div class="»
+office/slide-render.js:96: i   «…" data-i="»
+office/slide-render.js:96: st.join(';')   «…" style="»
+office/slide-render.js:96: inner   «…">»
+office/slide-render.js:104: bgCss   «…px;»
+office/slide-render.js:104: slide.els.map((e, i) => elementDom(e, i)).join('')   «…">»
+office/slides.js:129: tb('undo', 'Rückgängig', 'data-a="undo"')   «…werkzeuge"> <div class="tb-group">»
+office/slides.js:129: tb('redo', 'Wiederholen', 'data-a="redo"')   «…»
+office/slides.js:130: tb('slideAdd', 'Neue Folie', 'data-a="add"')   «…</div> <div class="tb-group">»
+office/slides.js:130: tb('copy', 'Folie duplizieren', 'data-a="dup"')   «…»
+office/slides.js:130: tb('trash', 'Folie löschen', 'data-a="del"')   «…»
+office/slides.js:131: tb('textbox', 'Textfeld einfügen', 'data-a="text"')   «…</div> <div class="tb-group">»
+office/slides.js:131: tb('image', 'Bild einfügen', 'data-a="image"')   «…»
+office/slides.js:131: tb('shape', 'Form einfügen', 'data-a="shape"')   «…»
+office/slides.js:132: tb('bold', 'Fett', 'data-a="bold"')   «…v> <div class="tb-group el-tools">»
+office/slides.js:132: tb('italic', 'Kursiv', 'data-a="italic"')   «…»
+office/slides.js:132: tb('underline', 'Unterstrichen', 'data-a="underline"')   «…»
+office/slides.js:132: tb('fontUp', 'Schrift größer', 'data-a="grow"')   «…»
+office/slides.js:132: tb('fontDown', 'Schrift kleiner', 'data-a="shrink"')   «…»
+office/slides.js:133: tb('color', 'Farbe', 'data-a="color"')   «… <span class="tb-color">»
+office/slides.js:133: tb('alignLeft', 'Ausrichtung', 'data-a="align"')   «…</span>»
+office/slides.js:133: tb('listUl', 'Aufzählung', 'data-a="bullets"')   «…»
+office/slides.js:133: tb('arrowUp', 'Nach vorne', 'data-a="front"')   «…»
+office/slides.js:133: tb('trash', 'Element löschen', 'data-a="eldel"')   «…»
+office/slides.js:134: tb('sparkle', 'Design', 'data-a="theme"')   «…</div> <div class="tb-group">»
+office/slides.js:134: tb('fill', 'Hintergrund', 'data-a="bg"')   «…»
+office/slides.js:134: tb('transition', 'Übergang', 'data-a="transition"')   «…»
+office/slides.js:134: tb('notes', 'Sprechernotizen', 'data-a="notes"')   «…»
+office/slides.js:135: tb('presenter', 'Referentenansicht (Folie, nächste Folie, Notizen, Zeit)', 'data-a="presenter"')   «…<span>Präsentieren</span></button>»
+office/slides.js:161: i   «…" draggable="true" data-si="»
+office/slides.js:162: i + 1   «…"> <span class="strip-num">»
+office/slides.js:162: i + 1   «…ip-btn" type="button" aria-label="Folie »
+office/slides.js:303: { ctr: 'center', r: 'right' }[p.align] || 'left'   «… style="text-align:»
+office/slides.js:303: sz   «…px"><span style="font-size:»
+office/slides.js:303: col   «…px;color:»
+office/slides.js:496: t.id   «…" data-theme="»
+office/slides.js:496: t.bg   «…" style="background:»
+office/slides.js:496: t.title   «…;color:»
+office/slides.js:496: t.accent   «…><span class="tc-bar" style="background:»
+office/slides.js:496: t.font   «…"></span><strong style="font-family:»
+office/slides.js:496: t.name   «…">»
+office/slides.js:496: t.text   «…</strong><span style="color:»
+office/slides.js:581: k   «…d"><input type="radio" name="ho" value="»
+office/slides.js:581: l   «…><span><strong>»
+office/slides.js:581: d   «…</strong><span class="muted small">»
+office/slides.js:726: base   «…ion</title><link rel="stylesheet" href="»
+office/slides.js:726: base   «…tyles.css"><link rel="stylesheet" href="»
+office/templates.js:42: ACC   «… <h1><span style="color:»
+office/templates.js:47: ACC   «…y></table> <h2><span style="color:»
+office/templates.js:49: ACC   «…datei.</p> <h2><span style="color:»
+office/templates.js:56: ACC   «…</li></ul> <h2><span style="color:»
+office/templates.js:58: ACC   «…– 2018</p> <h2><span style="color:»
+office/templates.js:67: longDate()   «…p style="text-align:right">Saarbrücken, »
+office/templates.js:103: ACC   «… <tr><td><h1><span style="color:»
+office/templates.js:128: longDate()   «…>Notizen</h1> <p class="subtitle">»
+office/writer.js:77: s   «…<option value="»
+office/writer.js:77: s   «…">»
+office/writer.js:69: tb('undo', 'Rückgängig', 'data-cmd="undo"')   «…matierung"> <div class="tb-group">»
+office/writer.js:69: tb('redo', 'Wiederholen', 'data-cmd="redo"')   «…»
+office/writer.js:80: tb('bold', 'Fett (Strg+B)', 'data-cmd="bold"')   «… </div> <div class="tb-group">»
+office/writer.js:80: tb('italic', 'Kursiv (Strg+I)', 'data-cmd="italic"')   «…»
+office/writer.js:80: tb('underline', 'Unterstrichen (Strg+U)', 'data-cmd="underline"')   «…»
+office/writer.js:80: tb('strike', 'Durchgestrichen', 'data-cmd="strikeThrough"')   «…»
+office/writer.js:81: tb('color', 'Textfarbe', 'data-color="fore"')   «… <span class="tb-color">»
+office/writer.js:82: tb('fill', 'Hervorheben', 'data-color="back"')   «…></span> <span class="tb-color">»
+office/writer.js:84: tb('alignLeft', 'Linksbündig', 'data-cmd="justifyLeft"')   «… </div> <div class="tb-group">»
+office/writer.js:84: tb('alignCenter', 'Zentriert', 'data-cmd="justifyCenter"')   «…»
+office/writer.js:84: tb('alignRight', 'Rechtsbündig', 'data-cmd="justifyRight"')   «…»
+office/writer.js:84: tb('alignJustify', 'Blocksatz', 'data-cmd="justifyFull"')   «…»
+office/writer.js:85: tb('listUl', 'Aufzählung', 'data-cmd="insertUnorderedList"')   «…</div> <div class="tb-group">»
+office/writer.js:85: tb('listOl', 'Nummerierung', 'data-cmd="insertOrderedList"')   «…»
+office/writer.js:86: tb('table', 'Tabelle', 'data-table')   «…</div> <div class="tb-group">»
+office/writer.js:86: tb('image', 'Bild einfügen', 'data-image')   «…»
+office/writer.js:86: tb('link', 'Link', 'data-link')   «…»
+office/writer.js:86: tb('pages', 'Seitenumbruch', 'data-pagebreak')   «…»
+office/writer.js:87: tb('outline', 'Gliederung', 'data-panel="outline"')   «…</div> <div class="tb-group">»
+office/writer.js:87: tb('toc', 'Inhaltsverzeichnis einfügen', 'data-toc')   «…»
+office/writer.js:87: tb('comment', 'Kommentar hinzufügen', 'data-comment')   «…»
+office/writer.js:87: tb('footnote', 'Fußnote einfügen', 'data-footnote')   «…»
+office/writer.js:87: tb('pageSetup', 'Seite einrichten: Format, Ränder, Kopf- und Fußzeile', 'data-pagesetup')   «…»
+office/writer.js:88: tb('spell', 'Rechtschreibprüfung', 'data-spell')   «…</div> <div class="tb-group">»
+office/writer.js:88: tb('mic', 'Diktieren', 'data-dictate hidden')   «…»
+office/writer.js:88: tb('speaker', 'Vorlesen', 'data-read' + (speechSupported ? '' : ' hidden'))   «…»
+office/writer.js:88: tb('replace', 'Suchen & ersetzen (Strg+F)', 'data-find')   «…»
+office/writer.js:347: url   «…<img src="»
+office/writer.js:347: width   «…" width="»
+office/writer.js:523: hd.tagName[1]   «…<button class="w-ol-item l»
+office/writer.js:535: hd.tagName[1]   «…<p class="toc-e l»
+office/writer.js:535: i   «…" data-toc-i="»
+office/writer.js:730: k   «…<option value="»
+office/writer.js:730: v[2]   «…>»
+office/writer.js:732: k   «…<option value="»
+office/writer.js:732: v[4]   «…>»
+office/writer.js:733: l   «…class="field"><span class="field-label">»
+office/writer.js:733: k   «…</span><input class="input" name="»
+office/writer.js:733: String(mm(page[k])).replace('.', ',')   «…" inputmode="decimal" value="»
+office/writer.js:736: k   «…<option value="»
+office/writer.js:736: l   «…>»
+office/writer.js:738: k   «…<option value="»
+office/writer.js:738: l   «…>»
+office/writer.js:739: k   «…<option value="»
+office/writer.js:739: l   «…>»
+office/writer.js:731: land   «…e="button" data-or="quer" aria-pressed="»
+office/writer.js:845: r   «…<option value="»
+office/writer.js:845: String(r).replace('.', ',')   «…>»
+platform.js:489: main.innerHTML   «…<div class="legal-page">»
+screen.js:65: thumbHtml(d)   «…">»
+screen.js:66: docMeta(d)   «…</span><span class="doc-meta">»
+share/common.js:26: cls   «…<svg class="ic »
+share/common.js:26: EXTRA[name]   «…linecap="round" stroke-linejoin="round">»
+share/common.js:151: cls   «…<span class="sh-pill sh-pill-»
+share/create.js:42: e.v   «…<button type="button" data-exp="»
+share/create.js:42: e.label   «…">»
+share/create.js:44: e.v   «…<button type="button" data-lim="»
+share/create.js:44: e.label   «…">»
+share/create.js:37: picked.doc ? fileThumb(picked.doc) : `<span class="doc-thumb kind">${oicon('file')}</span>`   «…rt> <div class="card sh-filecard">»
+share/create.js:76: fileThumb(d)   «…">»
+share/entry.js:21: f.href   «…<a class="sh-start-act" href="»
+share/entry.js:21: f.id   «…" data-share-entry="»
+share/entry.js:35: f.href   «…<a class="tool-card" href="»
+share/entry.js:35: f.id   «…" data-tool="share-»
+share/hub.js:28: f.href   «…<a class="tool-card" href="»
+share/hub.js:28: f.id   «…" data-tool="share-»
+share/hub.js:48: statusPill(exp ? 'expired' : e.maxDownloads && e.downloads >= e.maxDownloads ? 'exhausted' : 'active')   «…</span></div> <span data-pill>»
+share/hub.js:81: (e.signers || []).map(s => esc(s.name)).join(', ')   «…ng> <span class="muted small">»
+share/hub.js:82: statusPill(exp ? 'expired' : summary(e.lastStatus))   «…</span></div> <span data-pill>»
+share/pages.js:16: n   «…<div class="sh-page" data-page="»
+share/pages.js:16: n   «…" aria-label="Seite »
+share/signer.js:102: SIGNER_COLORS[f.s] || '#888'   «…<div class="sh-ofield" style="--sc:»
+share/signer.js:134: sig.url   «…<img src="»
+share/signer.js:152: missing   «…<span>Noch <strong>»
+share/signer.js:152: myFields.length   «…</strong> von »
+share/signreq.js:63: f.id   «…ghost btn-sm" type="button" data-ftype="»
+share/signreq.js:63: f.label   «… »
+share/signreq.js:69: e.v   «…<button type="button" data-exp="»
+share/signreq.js:69: e.label   «…">»
+share/signreq.js:91: i   «…type="button" class="icon-btn" data-rm="»
+share/signreq.js:88: SIGNER_COLORS[i]   «…" style="--sc:»
+share/signreq.js:89: i + 1   «…" aria-label="Felder für Person »
+share/signreq.js:89: i + 1   «… setzen"><span class="sh-dot"></span>»
+share/signreq.js:90: i   «… <input class="input" data-sname="»
+share/signreq.js:90: i + 1   «…" aria-label="Name von Person »
+share/signreq.js:286: i   «…lass="card sh-row sh-srow" data-signer="»
+share/signreq.js:286: SIGNER_COLORS[i]   «…"><span class="sh-row-ic" style="--sc:»
+share/signreq.js:286: entry.signers.length > 1 ? i + 1 : oicon('person')   «…">»
+share/signreq.js:288: statusPill(status)   «…</span></div> »
+share/transfer.js:92: room.code.slice(0, 3)   «…ong class="sh-tr-code-big" data-no-i18n>»
+share/transfer.js:92: room.code.slice(3)   «… »
+share/transfer.js:193: dir   «…"><span class="sh-tr-dir »
+share/transfer.js:207: openHash(doc)   «…<a class="btn btn-ghost btn-sm" href="»
+share/transfer.js:238: kindTile(kindOf(d))   «…">»
+tools/annotate.js:103: t.id   «…lass="pt-tool" type="button" data-tool="»
+tools/annotate.js:155: w   «…" step="0.5" value="»
+tools/annotate.js:155: w   «…" aria-label="Linienstärke"><b>»
+tools/annotate.js:166: v   «…>»
+tools/batch.js:42: a.id   «…s="bt-action" role="radio" data-action="»
+tools/batch.js:42: a.label   «…<strong>»
+tools/batch.js:42: a.desc   «…</strong><span>»
+tools/batch.js:76: it.status   «… · <b class="bt-st bt-»
+tools/batch.js:73: i   «…" data-i="»
+tools/batch.js:74: i + 1   «…"> <span class="order-num">»
+tools/batch.js:95: it.status   «… · <b class="bt-st bt-»
+tools/bizcard.js:74: k   «…<label class="field bc-»
+tools/bizcard.js:75: k   «… <input class="input" data-f="»
+tools/bizcard.js:75: type   «…" type="»
+tools/bizcard.js:75: ac   «…" autocomplete="»
+tools/bizcard.js:72: photoUrl   «…> <div class="bc-photo"><img src="»
+tools/bookmarks.js:164: it.level + 1   «…" role="treeitem" aria-level="»
+tools/bookmarks.js:164: it.level   «…" style="--lvl:»
+tools/bookmarks.js:165: it.page   «…</span><span class="bm-page">S. »
+tools/bookmarks.js:230: N   «…><span class="field-label">Zielseite (1–»
+tools/bookmarks.js:230: N   «…ut" type="number" name="p" min="1" max="»
+tools/bookmarks.js:230: page   «…" value="»
+tools/common.js:61: c   «…" style="--sw:»
+tools/common.js:169: i   «…<div class="pt-page" data-page="»
+tools/common.js:169: i   «…" aria-label="Seite »
+tools/common.js:169: i   «…pt-overlay"></div><span class="pt-pnum">»
+tools/compare.js:230: thumbHtml(d)   «…<div class="cmp-doc">»
+tools/compare.js:230: docMeta(d)   «…</span><span class="doc-meta">»
+tools/compare.js:229: which   «…-head"><span class="cmp-badge cmp-badge-»
+tools/compare.js:229: which.toUpperCase()   «…">»
+tools/compare.js:229: label   «…</span><strong>»
+tools/compare.js:312: e.insert   «…<span class="ins">+»
+tools/compare.js:312: e.delete   «…<span class="del">−»
+tools/compare.js:312: e.replace   «…<span class="rep">~»
+tools/compare.js:312: p   «…p-pagechip" role="listitem" data-bpage="»
+tools/compare.js:312: p   «…"><b>Seite »
+tools/compare.js:312: [e.insert ? `<span class="ins">+${e.insert}</span>` : '', e.delete ? `<span class="del">−${e.delete}</span>` :   «…</b> »
+tools/compare.js:306: changes.length   «…<div class="cmp-stats"> <div><b>»
+tools/compare.js:307: cnt('insert')   «…span></div> <div class="ins"><b>»
+tools/compare.js:308: cnt('delete')   «…span></div> <div class="del"><b>»
+tools/compare.js:309: cnt('replace')   «…span></div> <div class="rep"><b>»
+tools/compare.js:311: dataA.pages.length   «…s="muted small" style="margin:10px 0 0">»
+tools/compare.js:311: dataB.pages.length   «… → »
+tools/compare.js:311: insW   «… Seiten · »
+tools/compare.js:311: delW   «… Wörter hinzu, »
+tools/compare.js:316: emptyPages   «…<span>»
+tools/compare.js:368: i + 1   «…>»
+tools/compare.js:369: i + 1   «…>»
+tools/compare.js:368: Array.from({ length: pdfA.numPages }, (_, i) => `<option ${i + 1 === aPage ? 'selected' : ''}>${i + 1}</option   «… <select class="select pt-mini" data-ap>»
+tools/compare.js:369: Array.from({ length: pdfB.numPages }, (_, i) => `<option ${i + 1 === bPage ? 'selected' : ''}>${i + 1}</option   «… <select class="select pt-mini" data-bp>»
+tools/compare.js:400: which   «…-head"><span class="cmp-badge cmp-badge-»
+tools/compare.js:400: which.toUpperCase()   «…">»
+tools/compare.js:456: c.type   «…"card cmp-change"><span class="cmp-type »
+tools/compare.js:456: TYPE_LABEL[c.type]   «…">»
+tools/compare.js:457: c.aPage   «…> <span class="muted small">Seite »
+tools/compare.js:457: c.bPage   «… (A) → Seite »
+tools/compare.js:509: c.bPage   «…<h3 class="cmp-text-page">Seite »
+tools/compress.js:52: doc.pages   «…</b> · »
+tools/compress.js:97: saving   «…<span class="saving-pill">»
+tools/crop.js:78: N   «…nput" name="range" placeholder="z. B. 2-»
+tools/crop.js:113: k   «…<div class="cr-dim" data-dim="»
+tools/crop.js:115: k   «…<span class="cr-h cr-»
+tools/crop.js:115: k   «…" data-h="»
+tools/edit.js:42: m.id   «…lass="pt-tool" type="button" data-tool="»
+tools/edit.js:66: k   «…<option value="»
+tools/edit.js:66: v   «…>»
+tools/edit.js:68: v   «…<option value="»
+tools/edit.js:68: v   «…>»
+tools/edit.js:147: img ? img.url : ''   «…<div class="pt-item pt-eimg"><img src="»
+tools/export.js:58: doc.pages   «…</strong><p>»
+tools/extract.js:72: i   «…<div class="pcard" data-n="»
+tools/extract.js:73: i   «… aria-pressed="false" aria-label="Seite »
+tools/extract.js:75: i   «…ard-foot"><span class="pcard-num">Seite »
+tools/extract.js:147: files.length   «… Extrahiert</div><div class="doc-name">»
+tools/formcreate.js:54: id   «…lass="pt-tool" type="button" data-tool="»
+tools/formcreate.js:146: f.type   «…<div class="fc-field fc-»
+tools/formcreate.js:146: f.id   «…" data-id="»
+tools/formcreate.js:150: RADIO_ROW   «…"fc-ropt" style="height:calc(var(--s) * »
+tools/formcreate.js:157: inner   «…»
+tools/formcreate.js:219: f.fontSize || 0   «…mber" min="0" max="48" name="fs" value="»
+tools/formcreate.js:220: f.maxLen || 0   «…r" min="0" max="9999" name="max" value="»
+tools/images.js:123: it.url   «…e="true"><div class="img-box"><img src="»
+tools/images.js:124: i + 1   «…ss="pcard-foot"><span class="pcard-num">»
+tools/imagetools.js:176: t.id   «…lass="pt-tool" type="button" data-tool="»
+tools/imagetools.js:176: t.label   «…<span>»
+tools/imagetools.js:282: label   «…<label class="pt-range it-range"><span>»
+tools/imagetools.js:282: name   «…</span><input type="range" name="»
+tools/imagetools.js:282: min   «…" min="»
+tools/imagetools.js:282: max   «…" max="»
+tools/imagetools.js:282: step   «…" step="»
+tools/imagetools.js:282: val   «…" value="»
+tools/imagetools.js:282: name   «…"><b data-v="»
+tools/imagetools.js:282: val   «…">»
+tools/imagetools.js:283: label   «… »
+tools/imagetools.js:285: title   «…v class="it-opts"><p class="it-info"><b>»
+tools/imagetools.js:285: info   «…</b> »
+tools/imagetools.js:285: sliders   «…</p><div class="it-sliders">»
+tools/imagetools.js:285: applyRow('Anwenden')   «…</div>»
+tools/imagetools.js:299: slider('brightness', 'Helligkeit', -60, 60, 1, 0)   «…class="it-opts"><div class="it-sliders">»
+tools/imagetools.js:299: slider('contrast', 'Kontrast', -60, 60, 1, 0)   «…»
+tools/imagetools.js:299: slider('saturation', 'Sättigung', -100, 80, 1, 0)   «…»
+tools/imagetools.js:299: slider('warmth', 'Wärme', -60, 60, 1, 0)   «…»
+tools/imagetools.js:299: applyRow('Anwenden')   «…</div>»
+tools/imagetools.js:308: l.id   «…ass="sc-filter" role="radio" data-look="»
+tools/imagetools.js:308: l.label   «…ss="sc-fthumb"><img alt=""></span><span>»
+tools/imagetools.js:308: applyRow('Filter anwenden')   «…</div>»
+tools/imagetools.js:332: v   «…<button type="button" data-ratio="»
+tools/imagetools.js:332: l   «…">»
+tools/imagetools.js:335: applyRow('Zuschnitt anwenden')   «… Spiegeln</button></div> »
+tools/imagetools.js:352: p   «…type="button" class="pt-chip" data-pct="»
+tools/imagetools.js:352: p   «…">»
+tools/imagetools.js:350: W   «…t" type="number" name="w" min="16" max="»
+tools/imagetools.js:350: W   «…" value="»
+tools/imagetools.js:351: H   «…t" type="number" name="h" min="16" max="»
+tools/imagetools.js:351: H   «…" value="»
+tools/imagetools.js:353: applyRow('Größe ändern')   «…Dateigröße wählst du beim Speichern.</p>»
+tools/imagetools.js:428: k   «…<span class="cr-h cr-»
+tools/imagetools.js:428: k   «…" data-h="»
+tools/imagetools.js:497: k   «…<button type="button" data-fmt="»
+tools/imagetools.js:497: f.label   «…">»
+tools/imagetools.js:501: work.width   «…</span></label> <p class="hint">»
+tools/imagetools.js:501: work.height   «… × »
+tools/imagetools.js:569: k   «…<button type="button" data-fmt="»
+tools/imagetools.js:569: f.label   «…">»
+tools/imagetools.js:600: it.url   «…mg-card"><div class="img-box"><img src="»
+tools/merge.js:46: i   «…s="order-item" draggable="true" data-i="»
+tools/merge.js:48: i + 1   «…</span> <span class="order-num">»
+tools/merge.js:48: thumbHtml(d)   «…</span>»
+tools/merge.js:49: docMeta(d)   «…</span><span class="doc-meta">»
+tools/ocr.js:177: it.url   «…<img src="»
+tools/ocr.js:259: totalChars   «…rong> <span class="muted small">»
+tools/ocr.js:270: Math.min(18, Math.max(5, res.text.split('\n').length + 1))   «… class="input ocr-text" data-text rows="»
+tools/ocr.js:306: Array.from({ length: cols }, (_, c) => `<td>${esc(r[c] || '')}</td>`).join('')   «…<tr>»
+tools/ocr.js:307: res.rows.length   «…: »
+tools/ocr.js:307: cols   «… Zeilen × »
+tools/ocr.js:383: doc.pages || ''   «…class="field-label">Seiten (leer = alle »
+tools/organize.js:76: p.src + 1   «… <span class="muted small">(S. »
+tools/organize.js:73: i   «…" draggable="true" data-i="»
+tools/organize.js:73: p.src   «…" data-src="»
+tools/organize.js:74: p.sel   «…card-thumb" type="button" aria-pressed="»
+tools/organize.js:74: p.src + 1   «…" aria-label="Seite »
+tools/organize.js:76: i + 1   «…ss="pcard-foot"><span class="pcard-num">»
+tools/organize.js:80: i + 1   «… type="button" data-r aria-label="Seite »
+tools/organize.js:81: i + 1   «… type="button" data-x aria-label="Seite »
+tools/organize.js:185: files.length   «… Aufgeteilt</div><div class="doc-name">»
+tools/passphoto.js:77: t.id   «…" class="pp-tpl" role="radio" data-tpl="»
+tools/passphoto.js:77: t.w   «… class="pp-tpl-box" style="aspect-ratio:»
+tools/passphoto.js:77: t.h   «…/»
+tools/passphoto.js:113: tpl.w   «…class="pp-camframe" style="aspect-ratio:»
+tools/passphoto.js:113: tpl.h   «…/»
+tools/passphoto.js:113: tpl.w   «…"><svg class="pp-oval" viewBox="0 0 »
+tools/passphoto.js:113: tpl.h   «… »
+tools/passphoto.js:211: i   «…"check"><input type="checkbox" data-ck="»
+tools/passphoto.js:209: tolerance   «…="tol" min="5" max="60" step="1" value="»
+tools/passphoto.js:209: tolerance   «…"><b data-v="tol">»
+tools/passphoto.js:425: String(tpl.w).replace('.', ',')   «…</div> <p class="muted small">»
+tools/passphoto.js:425: String(tpl.h).replace('.', ',')   «… × »
+tools/passphoto.js:425: photo.width   «… mm · »
+tools/passphoto.js:425: photo.height   «… × »
+tools/passphoto.js:425: DPI   «… px (»
+tools/passphoto.js:444: n   «…<button type="button" data-n="»
+tools/passphoto.js:444: n   «…">»
+tools/protect.js:25: name   «…put class="input" type="password" name="»
+tools/protect.js:25: autocomplete   «…" autocomplete="»
+tools/protect.js:68: pwField('pw1', 'Passwort zum Öffnen')   «…" autocomplete="username" hidden> »
+tools/protect.js:70: pwField('pw2', 'Passwort wiederholen')   «…"pt-strength-label"></span></div> »
+tools/protect.js:78: pwField('owner', 'Berechtigungs-Passwort', { placeholder: 'leer = zufällig erzeugt' })   «…re, Formulare)</span></label> »
+tools/protect.js:163: what   «…</strong> <p>»
+tools/protect.js:166: pwField('pw', state.needsPassword ? 'Passwort der PDF' : 'Berechtigungs-Passwort', { autocomplete: 'current-pa   «…" autocomplete="username" hidden> »
+tools/qr.js:309: n   «…ttp://www.w3.org/2000/svg" viewBox="0 0 »
+tools/qr.js:309: n   «… »
+tools/qr.js:309: dim   «…"»
+tools/qr.js:310: n   «…<rect width="»
+tools/qr.js:310: n   «…" height="»
+tools/qr.js:310: light   «…" fill="»
+tools/qr.js:311: d   «…<path d="»
+tools/qr.js:311: dark   «…" fill="»
+tools/qrscan.js:109: kind   «…<button type="button" class="btn »
+tools/qrscan.js:109: id   «… btn-sm" data-act="»
+tools/qrscan.js:108: body   «…/button></div> <div class="qs-body">»
+tools/qrtool.js:42: t.id   «…" role="tab" class="qt-type" data-type="»
+tools/qrtool.js:42: t.label   «…<span>»
+tools/qrtool.js:45: v   «…<option value="»
+tools/qrtool.js:45: l   «…>»
+tools/qrtool.js:73: label   «…class="field"><span class="field-label">»
+tools/qrtool.js:73: name   «…</span><input class="input" name="»
+tools/qrtool.js:73: attrs   «…" »
+tools/qrtool.js:79: f('vorname', 'Vorname')   «…<div class="pt-two">»
+tools/qrtool.js:79: f('nachname', 'Nachname')   «…»
+tools/qrtool.js:79: f('firma', 'Firma')   «…</div>»
+tools/qrtool.js:79: f('telefon', 'Telefon', 'type="tel"')   «…<div class="pt-two">»
+tools/qrtool.js:79: f('email', 'E-Mail', 'type="email"')   «…»
+tools/qrtool.js:79: f('web', 'Webseite', 'type="url"')   «…</div>»
+tools/qrtool.js:79: f('strasse', 'Straße und Nr.')   «…»
+tools/qrtool.js:79: f('plz', 'PLZ')   «…<div class="pt-two">»
+tools/qrtool.js:79: f('ort', 'Ort')   «…»
+tools/qrtool.js:234: pdf ? pdf.numPages : '?'   «…</span><span class="doc-meta">»
+tools/reader.js:172: t   «…<strong>»
+tools/reader.js:173: t   «…<em>»
+tools/reader.js:180: pnum   «…<figure class="rf-fig" data-p="»
+tools/reader.js:232: pnum   «… type="button" class="rf-orig" data-go="»
+tools/reader.js:232: pnum   «…<div class="rf-pg" data-page="»
+tools/reader.js:232: pnum   «…"><span>Seite »
+tools/reader.js:254: pnum   «…<p class="rf-empty-page">Seite »
+tools/reader.js:270: level   «…<details class="rf-sec" data-level="»
+tools/reader.js:270: level   «…" open><summary><span class="rf-h rf-h»
+tools/reader.js:270: level + 1   «…" role="heading" aria-level="»
+tools/reader.js:270: pnum   «…" data-p="»
+tools/reader.js:270: idx   «…" data-i="»
+tools/reader.js:270: runsHtml(p.runs)   «…">»
+tools/reader.js:277: pnum   «…" data-p="»
+tools/reader.js:277: idx   «…" data-i="»
+tools/reader.js:277: runsHtml(p.runs)   «…">»
+tools/reader.js:288: hd.page   «…<span>S. »
+tools/reader.js:382: scannedPages   «…<span>»
+tools/reader.js:385: ocr.res.ocrPages.length   «…<span>Text per OCR erkannt (»
+tools/redact.js:34: m.id   «…lass="pt-tool" type="button" data-tool="»
+tools/redact.js:188: k   «…-preset"><input type="checkbox" name="p_»
+tools/redact.js:272: new Set(marks.map(m => m.page)).size   «…rd eine <b>neue Datei</b> erstellt. Auf »
+tools/scan.js:401: S.pages.length   «… Zur Übersicht (»
+tools/scan.js:417: last.thumb   «…<img src="»
+tools/scan.js:417: S.pages.length   «…" alt=""><b>»
+tools/scan.js:417: S.pages.length   «…<b>»
+tools/scan.js:473: f.id   «…<button type="button" data-allf="»
+tools/scan.js:473: f.label   «…">»
+tools/scan.js:475: k   «…<button type="button" data-q="»
+tools/scan.js:475: v.label   «…">»
+tools/scan.js:494: i   «…ass="sc-idimg" type="button" data-edit="»
+tools/scan.js:494: label   «…" aria-label="»
+tools/scan.js:494: p.id   «… bearbeiten"><img data-thumb="»
+tools/scan.js:494: p.thumb || ''   «…" src="»
+tools/scan.js:494: i   «…s="sc-idempty" type="button" data-take="»
+tools/scan.js:494: label   «…<span>»
+tools/scan.js:495: i   «…-ghost btn-sm" type="button" data-edit="»
+tools/scan.js:495: i   «…host btn-sm" type="button" data-retake="»
+tools/scan.js:493: label   «…-idslot"><div class="sc-idhead"><strong>»
+tools/scan.js:500: i   «…g-box sc-open" type="button" data-edit="»
+tools/scan.js:500: i + 1   «…" aria-label="Seite »
+tools/scan.js:500: p.id   «… bearbeiten"><img data-thumb="»
+tools/scan.js:500: p.thumb || ''   «…" src="»
+tools/scan.js:501: i + 1   «…ss="pcard-foot"><span class="pcard-num">»
+tools/scan.js:504: i   «…s="icon-btn" type="button" data-retake="»
+tools/scan.js:504: i + 1   «…" aria-label="Seite »
+tools/scan.js:505: i + 1   «… type="button" data-x aria-label="Seite »
+tools/scan.js:562: i   «…type="button" class="sc-handle" data-h="»
+tools/scan.js:562: ['oben links', 'oben rechts', 'unten rechts', 'unten links'][i]   «…" aria-label="Ecke »
+tools/scan.js:572: f.id   «… class="sc-filter" role="radio" data-f="»
+tools/scan.js:572: f.label   «…ss="sc-fthumb"><img alt=""></span><span>»
+tools/sign.js:56: fields.length   «… Formular (»
+tools/sign.js:82: i   «…ft btn-sm" type="button" data-sigfield="»
+tools/sign.js:83: id   «…</span><input class="input" id="»
+tools/sign.js:83: i   «…" data-fi="»
+tools/sign.js:84: id   «…lass="check"><input type="checkbox" id="»
+tools/sign.js:84: i   «…" data-fi="»
+tools/sign.js:85: id   «…</span><select class="select" id="»
+tools/sign.js:85: i   «…" data-fi="»
+tools/sign.js:92: i   «…e="button" class="sign-prof" data-prof="»
+tools/sign.js:108: matched.length   «… Formular automatisch ausfüllen (»
+tools/sign.js:148: n   «…<div class="sign-page" data-page="»
+tools/sign.js:148: n   «…" aria-label="Seite »
+tools/sign.js:352: it.sig.url   «…mg" aria-label="Unterschrift"><img src="»
+tools/sigstore.js:199: p.id   «…e="button" class="pt-chip" data-preset="»
+tools/sigstore.js:205: v   «…<button type="button" data-border="»
+tools/sigstore.js:205: l   «…">»
+tools/sigstore.js:232: c   «… class="pt-swatch" role="radio" data-c="»
+tools/sigstore.js:232: n   «…" aria-label="»
+tools/sigstore.js:232: c   «…" style="--sw:»
+tools/sigstore.js:311: n   «…" aria-label="»
+tools/sigstore.js:311: c   «…" style="--sw:»
+tools/sigstore.js:322: f.weight   «…;font-weight:»
+tools/sigstore.js:322: color   «…;color:»
+tools/sigstore.js:498: k   «…tab" role="tab" type="button" data-tab="»
+tools/sigstore.js:498: KIND[k].label   «…">»
+tools/sigstore.js:515: url   «… verwenden"><img src="»
+tools/sigstore.js:572: k.label   «…="ss-sechead"><h2 class="section-title">»
+tools/sigstore.js:572: items.length || ''   «…</h2><span class="muted small">»
+tools/sigstore.js:590: url   «…div class="ss-item ss-manage"><img src="»
+tools/stamp.js:207: pdf.numPages   «… <span data-pinfo>Seite 1 von »
+tools/stamp.js:223: name   «…<button type="button" role="radio" data-»
+tools/stamp.js:223: v   «…="»
+tools/stamp.js:224: pdf.numPages   «…nput" name="range" placeholder="z. B. 2-»
+tools/stamp.js:230: s.size   «…d-label">Schriftgröße: <b data-v="size">»
+tools/stamp.js:230: s.size   «…ize" min="12" max="160" step="2" value="»
+tools/stamp.js:237: s.scale   «…="field-label">Größe: <b data-v="scale">»
+tools/stamp.js:237: s.scale   «…ale" min="10" max="100" step="5" value="»
+tools/stamp.js:239: s.opacity   «…d-label">Deckkraft: <b data-v="opacity">»
+tools/stamp.js:239: s.opacity   «…city" min="5" max="100" step="5" value="»
+tools/stamp.js:240: s.rotation   «…ld-label">Drehung: <b data-v="rotation">»
+tools/stamp.js:240: s.rotation   «…ion" min="-90" max="90" step="5" value="»
+tools/stamp.js:242: posGrid([['t-l', 'Oben links'], ['t-c', 'Oben Mitte'], ['t-r', 'Oben rechts'], ['m-l', 'Mitte links'], ['m-c',   «…n</span> <div class="pt-posrow">»
+tools/stamp.js:244: rangeField   «…">Kacheln</button></div></div> »
+tools/stamp.js:247: posGrid([['t-l', 'Oben links'], ['t-c', 'Oben Mitte'], ['t-r', 'Oben rechts'], ['b-l', 'Unten links'], ['b-c',   «…span class="field-label">Position</span>»
+tools/stamp.js:251: s.start   «…name="start" min="0" max="99999" value="»
+tools/stamp.js:252: s.size   «…er" name="size" min="6" max="36" value="»
+tools/stamp.js:254: s.margin   «…l">Abstand zum Rand: <b data-v="margin">»
+tools/stamp.js:254: s.margin   «…rgin" min="12" max="72" step="2" value="»
+tools/stamp.js:257: rangeField   «…><span>Fett</span></label> »
+tools/stamp.js:258: pdf.numPages   «…>Tipp: Für ein Deckblatt ohne Nummer „2-»
+tools/stamp.js:261: l   «…class="field"><span class="field-label">»
+tools/stamp.js:261: n   «…</span><input class="input" name="»
+tools/stamp.js:266: fld('hl', 'Links')   «…Kopfzeile</legend><div class="pt-three">»
+tools/stamp.js:266: fld('hc', 'Mitte')   «…»
+tools/stamp.js:266: fld('hr', 'Rechts')   «…»
+tools/stamp.js:267: fld('fl', 'Links')   «…>Fußzeile</legend><div class="pt-three">»
+tools/stamp.js:267: fld('fc', 'Mitte')   «…»
+tools/stamp.js:267: fld('fr', 'Rechts')   «…»
+tools/stamp.js:269: s.size   «…er" name="size" min="6" max="30" value="»
+tools/stamp.js:270: s.start   «…name="start" min="0" max="99999" value="»
+tools/stamp.js:272: s.margin   «…l">Abstand zum Rand: <b data-v="margin">»
+tools/stamp.js:272: s.margin   «…rgin" min="10" max="72" step="2" value="»
+tools/stamp.js:275: rangeField   «…><span>Trennlinie</span></label> »
+tools/toppt.js:25: doc.pages   «…class="field-label">Seiten (leer = alle »
+tools/toword.js:26: doc.pages   «…class="field-label">Seiten (leer = alle »
+ui.js:45: type   «…<div class="toast toast-»
+ui.js:146: type   «… <input class="input" name="v" type="»
+viewer.js:465: i   «…ss="thumb-btn" type="button" data-page="»
+viewer.js:465: i   «…" aria-label="Seite »
+viewer.js:465: i   «…"></span><span>»
+viewer.js:600: m.page   «…s="v-mark-go"><span class="v-mark-p">S. »
+views.js:77: id   «…<label class="sr-only" for="»
+views.js:78: id   «… <input class="input" type="search" id="»
+views.js:97: greeting()   «…ne Konto</div> <h1 data-greet>»
+views.js:139: createHref(c)   «…lass="create-btn" role="listitem" href="»
+views.js:139: c.id   «…" data-create="»
+views.js:139: c.color   «…"><span class="create-ic" style="--kc:»
+views.js:146: t.id   «…ype="button" role="listitem" data-tool="»
+views.js:181: label   «…»
+views.js:181: counts[b.dataset.tab] || ''   «…<span class="count">»
+views.js:209: t.id   «…ss="tool-card" type="button" data-tool="»
+views.js:235: c.href   «…<a class="tool-card" href="»
+views.js:235: c.id   «…" data-tool="»
+views.js:247: c.href   «…<a class="tool-card" href="»
+views.js:247: c.id   «…" data-tool="»
+views.js:258: g   «…tion class="tool-section" data-section="»
+views.js:346: n   «…<span class="count">»
+views.js:346: c.id   «…" data-cat="»
+views.js:421: t.color   «…class="tchip" type="button" style="--tc:»
+views.js:421: on   «…" aria-pressed="»
+views.js:439: pct   «…"><span style="width:»
+views.js:440: x.n   «…: <b>»
+views.js:437: docs.length   «… <div class="stat-row"><span><b>»
+views.js:561: fileThumb(g.doc)   «… result-group"><div class="result-head">»
+views.js:562: g.count   «…strong> <span class="muted small">»

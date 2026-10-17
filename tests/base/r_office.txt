@@ -1,0 +1,211 @@
+PASS sidebar: Start/Dateien/Werkzeuge/Suche/Ich
+PASS sidebar Neu button
+PASS create row has 5 entries
+PASS free card visible
+PASS tabs Zuletzt/Markiert/Auf diesem Gerät
+PASS tool tiles (horizontal)
+PASS Neu menu items
+PASS free card dismissed
+PASS 8 files imported with kinds  [['csv', 'docx', 'image', 'md', 'pdf', 'pptx', 'txt', 'xlsx']]
+PASS thumbnails for pptx/image/docx/xlsx  [[('docx', True), ('xlsx', True), ('pptx', True), ('csv', True), ('txt', True), ('md', True), ('image', True), ('pdf', True)]]
+PASS pptx slide count stored  [3]
+PASS xlsx meta shows sheets  [2 Blätter · 6 KB · Heute, 23:27]
+PASS legacy .doc rejected with German message
+PASS chips present
+PASS filter Tabellen → 2
+PASS filter Präsentationen → 1
+PASS name filter
+PASS sort by name  [bericht.docx]
+PASS cloud explanation
+PASS storage card
+PASS rename keeps .txt
+PASS tool sections incl. Office + Konvertieren  [['Office', 'Bearbeiten & Unterschreiben', 'Konvertieren', 'Seiten & Dateien', 'Scannen', 'Schutz & Sicherheit', 'Lesen']]
+PASS office cards
+PASS tool card pdf-excel
+PASS tool card word-pdf
+PASS tool card excel-pdf
+PASS tool card ppt-pdf
+PASS tool card text-pdf
+PASS tool search filters  [2]
+PASS global search finds docx + pptx  [DOC
+bericht.docx
+1 Treffer
+DOC
+…99 € Birnen 5 2,49 € Bild: Zweite Seite mit dem Wort Seepferdchen. Langer Fließtext zum Testen des Zeilenumbruchs. Langer Fließtext zum Testen de…
+PPT
+praesentation.ppt]
+PASS search finds xlsx cells  [XLS
+umsatz.xlsx
+2 Treffer
+Blatt 2
+Artikel Preis Suche Äpfel 1,99 2,49 Birnen 2,49 7361 Kirschen 4,2 5 Äpfel & Birnen 6,69 4 2,21
+Blatt 2
+…fel 1,99 2,49 Birnen 2,49 7361 Kirschen 4,2 5 Äpfel & Birnen 6]
+PASS search opens writer with find bar  [1 von 1]
+PASS docx heading
+PASS docx bold/italic/colour runs
+PASS docx centered paragraph
+PASS docx bullet list
+PASS docx numbered list
+PASS docx table 3x3
+PASS docx image
+PASS docx page break
+PASS word count shown
+PASS subtitle shows unsaved
+PASS block format → h2
+PASS find count  [1 von 1]
+PASS replace all
+PASS table inserted
+PASS saved docx re-opens (python-docx)
+PASS saved docx has replaced heading  [['Projektbericht Schmetterling', '', '']]
+PASS saved docx heading style  [{'Heading 2', 'List Paragraph', 'Heading 1', 'Normal'}]
+PASS saved docx new paragraph
+PASS saved docx bold runs  [['fetter', 'Absatz']]
+PASS saved docx keeps colour  [['roter Farbe']]
+PASS saved docx list numbering  [['Erster Punkt', 'Zweiter Punkt', 'Dritter Punkt', 'Schritt eins', 'Schritt zwei']]
+PASS saved docx tables  [2]
+PASS saved docx image
+PASS saved docx page break
+PASS saved docx centered
+PASS docx → PDF valid, 2+ pages  [2]
+PASS PDF text incl. umlauts/€/ß  [Projektbericht Schmetterling |  |  |  | Dies ist ein fetter und kursiver Text mit roter Farbe sowie Umlauten: Größe, Übermaß, | Ärger – 12 € und ß. |                                    Zentrierter Absatz |  |  | Aufzählung |   • Erster Punkt |   • Zweiter Punkt |   • Dritter Punkt |  |  | Nummerierung |  1. Schritt eins |  2. Schrit]
+PASS PDF has list + table text
+PASS PDF page break respected
+PASS txt export  [Projektbericht Schmetterling
+	
+	
+
+
+Dies ist ein fetter und kursiver Text mit roter Farbe sowie Umlauten: Größe, Übermaß,]
+PASS md heading
+PASS md bold + list
+PASS leave guard dialog
+PASS cancel stays in editor
+PASS save from guard leaves editor
+PASS md saved as markdown  [# Überschrift
+
+Ein **fetter** Satz mit *kursiv*.
+
+- Punkt A
+- Punkt B
+1. Eins
+2. Zwei ungespeichert
+]
+PASS templates screen
+PASS invoice template
+PASS template saved as new file
+PASS invoice docx tables  [4]
+PASS hash switched to bearbeiten
+PASS invoice PDF text  [                                                                                   Firma Beispiel | Rechnung                                                                          Musterstraße 12 |     ]
+PASS template lebenslauf-klassisch renders
+PASS template lebenslauf-modern renders
+PASS template anschreiben renders
+PASS template brief renders
+PASS template notizen renders
+PASS xlsx values + formulas computed  [{'D2': '400', 'D4': '-120', 'B6': '3680,5', 'D6': '830,25', 'B7': '1226,833333', 'B8': '2', 'B9': 'Gewinn', 'B10': '15.03.2026', 'B11': '25,6 %', 'B12': 'WAHR', 'F1': 'Zusammengeführt'}]
+PASS formula bar shows German formula  [=SUMME(B2:B4)]
+PASS sheet 2: SVERWEIS/cross-sheet/RUNDEN/VERKETTEN/SUMMEWENN/ANZAHL2  [{'D2': '2,49', 'D3': '7361', 'D4': '5', 'D5': 'Äpfel & Birnen', 'D6': '6,69', 'D7': '4', 'D8': '2,21'}]
+PASS typed German formulas evaluate  [{'E2': '2000', 'E3': 'hoch', 'E4': '4,2', 'E5': '1229,833333', 'E6': '1', 'E7': '3,33', 'E8': '15', 'E10': 'Saldo: 830,25', 'E11': '#DIV/0!', 'E12': '700,5', 'A14': '1,5', 'B14': '3', 'C14': '12 %', 'D14': '24.12.2026'}]
+PASS HEUTE() is today (serial)  [46308]
+PASS currency format  [1.200,00 €]
+PASS date format  [13.10.2026]
+PASS insert row shifts formulas  [=SUMME(B3:B5)]
+PASS delete row restores
+PASS undo
+PASS redo
+PASS freeze header row
+PASS sort column (header kept)  [Kirschen]
+PASS VLOOKUP still right after sort
+PASS status bar sum  [Summe: 3.680,5 · Mittelwert: 1.226,8333 · Anzahl: 3]
+PASS openpyxl: formulas kept (English)  [=SUM(B2:B4) | =IF(B3>1000,"hoch","niedrig") | =VLOOKUP("Kirschen",Preise!A2:B4,2,FALSE)]
+PASS openpyxl: cached values  [3680.5 830.25 hoch]
+PASS openpyxl: number values
+PASS openpyxl: formats  [#,##0.00 "€" 0%]
+PASS openpyxl: bold + fill + merge + freeze  [FFE9E8FB A2]
+PASS openpyxl: sheet 2 sorted
+PASS openpyxl: error cell  [#DIV/0!]
+PASS xlsx zip valid
+PASS CSV export (; + decimal comma)  [Monat;Einnahmen;Ausgaben;Saldo;;Zusammengeführt
+Januar;1200;800;400;2000;
+Februa]
+PASS xlsx → PDF with values  [Umsatz |  |                A               B                 C                    D                  E                   F           G |    1 Monat                Einnahmen         Ausgaben          Saldo                                    Zusammengeführt |    2 Januar                   1.200,00 €          ]
+PASS csv parsed (; + German numbers + dates + quotes)  [{'A2': 'Müller', 'B2': '1234,5', 'C2': '01.02.2026', 'A4': 'Weiß; Anna', 'B3': '99,9'}]
+PASS csv formula  [1346,4]
+PASS csv saved with BOM, ; and quotes  [﻿Name;Betrag;Datum
+Müller;1234,5;01.02.2026
+Schäfer;99,9;15.03.2026
+"Weiß; Anna";12;31.12.2025
+;1346,4;
+]
+PASS csv → xlsx copy saved
+PASS AutoSumme proposes range  [=SUMME(B2:B3)]
+PASS AutoSumme result
+PASS new sheet + cross reference  [12268,8]
+PASS new xlsx opens in openpyxl  [['Tabelle1', 'Tabelle2']]
+PASS sheet template computes  [800,00 €]
+PASS pptx 3 slides in strip
+PASS pptx title text
+PASS pptx bullets slide  [Agenda
+•
+Erster Punkt
+•
+Zweiter Punkt
+•
+Dritter Punkt
+–
+Unterpunkt]
+PASS pptx shapes/picture/background
+PASS inline title edit
+PASS slide added
+PASS reorder slide
+PASS slideshow navigation  [3 / 4 -> 4 / 4]
+PASS slideshow closes
+PASS saved pptx opens (python-pptx), 4 slides  [4]
+PASS saved pptx texts  [['Jahresbericht 2026 Untertitel mit Umlauten äöü', 'Überschrift Linke Spalte\nPunkt Rechte Spalte\nPunkt Zusatztext Kolibri', 'Grüne Box Freies Textfeld', 'Agenda Erster Punkt\nZweiter Punkt\nDritter Punkt\nUnterpunkt']]
+PASS saved pptx picture
+PASS pptx → PDF one page per slide + text layer  [4 '  Jahresbericht 2026\n\n\nUntertitel mit Umlauten\n           äöü\n\x0cÜberschrift\n Linke Spalte                    Rechte Spalt']
+PASS new presentation has 2 slides
+PASS theme switched
+PASS new pptx: 3 slides, 16:9  [3 12191695x6858000]
+PASS new pptx: texts
+PASS word-pdf conversion  [Projektbericht Schmetterling |  |  |  |  | Dies ist ein fetter und kursiver Text mit roter Farbe sowie Umlaute]
+PASS excel-pdf conversion  [Umsatz |  |                A               B                 C                    D                  E  ]
+PASS ppt-pdf conversion  [  Jahresbericht 2026 |  |  | Untertitel mit Umlauten |            äöü | Überschrift |  Linke Spalte            ]
+PASS text-pdf conversion  [Einkaufsliste | Äpfel | Brötchen für 3,50 € |  | Ende der Notiz | ]
+PASS converter lists only matching files  [2]
+PASS pdf→excel preview  [Preisliste Sommer			
+Alle Preise inklusive Mehrwertsteuer.			
+Artikel	Menge	Einzelpreis	Gesamt
+Sonnenschirm	2	49,9	99,8
+Liegestuhl	4	1.234,5	4.938
+Küh]
+PASS pdf→excel: header row split into 4 columns  [[['Artikel', 'Menge', 'Einzelpreis', 'Gesamt']]]
+PASS pdf→excel: numbers parsed (German)  [[['Liegestuhl', 4, 1234.5, 4938]]]
+PASS pdf→excel: one sheet per page
+PASS image viewer
+PASS image handed to Bilder → PDF
+PASS Ich page: licences incl. new libs
+PASS Ich page: storage
+PASS no external network requests  [[]]
+PASS phone bottom nav Start/Dateien/Werkzeuge/Ich  [['Start', 'Dateien', 'Werkzeuge', 'Ich']]
+PASS phone FAB visible
+PASS phone top search reachable
+PASS phone start no horizontal overflow  [390]
+PASS FAB opens create/import sheet
+PASS phone files no horizontal overflow  [390]
+PASS phone tools no horizontal overflow  [390]
+PASS phone me no horizontal overflow  [390]
+PASS phone templates no horizontal overflow  [390]
+PASS phone writer page fits width  [390]
+PASS phone typing
+PASS phone tap selects cell
+PASS second tap edits in place
+PASS phone edit recalculates  [4480,5]
+PASS phone slide fits  [366]
+PASS phone tap advances slideshow
+
+==== SUMMARY ====
+160/160 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems

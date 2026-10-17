@@ -1,0 +1,23 @@
+// aud2: invoice maths edge cases (node, no browser)
+import { computeTotals, parseNum, unitMoney, girocodePayload } from '/home/claude/FalePDF/network/assets/wt/lib/new-invoice.js';
+let fail = 0;
+const eq = (a, b, m) => { if (JSON.stringify(a) !== JSON.stringify(b)) { fail++; console.log('FAIL', m, a, '!==', b); } };
+eq(parseNum('1.000', 'de'), 1000, 'de thousands');
+eq(parseNum('1.000,50', 'de'), 1000.5, 'de thousands+decimals');
+eq(parseNum('1,500', 'de'), 1.5, 'de comma decimal');
+eq(parseNum('1,500', 'en'), 1500, 'en thousands');
+eq(parseNum('1.5', 'de'), 1.5, 'de dot decimal still ok');
+eq(parseNum('0,005', 'de'), 0.005, 'de tiny');
+eq(parseNum('12,99 €', 'de'), 12.99, 'euro sign');
+const T = (items, extra = {}) => computeTotals({ lang: 'de', items: items.map(([qty, price, vat]) => ({ desc: 'x', qty, price, vat })), ...extra });
+let t = T([['1', '0,005', '19']]); eq([t.net, t.tax, t.gross], [1, 0, 1], '0.005 rounds half up to 1 cent');
+t = T([['3', '0,335', '19']]); eq(t.lines[0].cents, 101, '3 x 0.335 = 1.005 → 1.01');
+t = T([['1', '1.000', '19']]); eq(t.gross, 119000, 'de 1.000 € net → 1.190 €');
+t = T([['1', '10', '19'], ['1', '10', '7'], ['1', '10', '0']], { discount: '10' }); eq([t.net, t.tax, t.gross], [2700, 171 + 63, 2700 + 234], 'mixed VAT + discount');
+const many = T(Array.from({ length: 200 }, () => ['1', '0,10', '19'])); eq([many.net, many.tax, many.gross], [2000, 380, 2380], '200 lines × 0,10');
+const odd = T(Array.from({ length: 3 }, () => ['1', '0,333', '19'])); eq(odd.net, 99, 'each line rounded to cents (0,333 → 0,33)');
+eq(unitMoney(0.333, 'de'), '0,333 €', 'unit price keeps 3 decimals');
+eq(unitMoney(12.5, 'de'), '12,50 €', 'unit price normal');
+eq(girocodePayload({ name: 'A', iban: 'DE89 3704 0044 0532 0130 00', cents: 119000, text: 'R 1' }).split('\n')[7], 'EUR1190.00', 'girocode amount');
+console.log(fail ? `aud2 invoice unit: ${fail} failed` : 'aud2 invoice unit: ok');
+process.exit(fail ? 1 : 0);

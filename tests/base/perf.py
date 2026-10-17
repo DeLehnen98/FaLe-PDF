@@ -1,0 +1,27 @@
+import os,time
+from playwright.sync_api import sync_playwright
+D='officedata'
+with sync_playwright() as p:
+    b=p.chromium.launch(); pg=b.new_page(viewport={'width':1366,'height':860})
+    errs=[]; pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: errs.append(m.text) if m.type in ('error','warning') else None)
+    pg.goto('http://127.0.0.1:8793/'); pg.wait_for_selector('#view-start .hero')
+    t=time.time()
+    with pg.expect_file_chooser() as fc: pg.locator('#view-start .hero [data-action="open-file"]').click()
+    fc.value.set_files([os.path.join(D,'gross.xlsx')])
+    pg.wait_for_selector('.sh-body [data-cell="D40001"], .sh-body [data-cell="A1"]', timeout=120000)
+    print('xlsx open', round(time.time()-t,2), 's')
+    pg.locator('#sh-addr').fill('D40001'); pg.locator('#sh-addr').press('Enter'); pg.wait_for_timeout(300)
+    print('D40001', pg.locator('[data-cell="D40001"]').inner_text())
+    t=time.time(); pg.locator('.sh-scroll').focus(); pg.keyboard.type('5'); pg.keyboard.press('Enter'); pg.wait_for_timeout(50)
+    pg.locator('#sh-addr').fill('C2'); pg.locator('#sh-addr').press('Enter'); pg.keyboard.type('100'); pg.keyboard.press('Enter'); pg.wait_for_timeout(100)
+    print('edit+recalc', round(time.time()-t,2), pg.locator('[data-cell="D2"]').inner_text())
+    t=time.time(); pg.locator('[data-office-save]').click(); pg.wait_for_function("/Gespeichert/.test(document.querySelector('#tool-screen .sub').textContent)", timeout=120000); print('save', round(time.time()-t,2))
+    pg.locator('#tool-screen [data-back]').click(); pg.wait_for_timeout(500)
+    t=time.time()
+    with pg.expect_file_chooser() as fc: pg.locator('#view-start .hero [data-action="open-file"]').click()
+    fc.value.set_files([os.path.join(D,'gross.docx')])
+    pg.wait_for_selector('.doc-page h1', timeout=120000)
+    print('docx open', round(time.time()-t,2))
+    t=time.time(); pg.locator('[data-office-more]').click(); pg.locator('.menu-item',has_text='Als PDF exportieren').click(); pg.wait_for_selector('dialog .result-mini', timeout=120000); print('docx pdf', round(time.time()-t,2))
+    print(errs[:5])
+    b.close()

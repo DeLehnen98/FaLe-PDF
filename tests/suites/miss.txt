@@ -1,0 +1,12 @@
+Pr
+Font
+LiberationSans-Regular.ttf
+LiberationSans-Bold.ttf
+LiberationSans-Italic.ttf
+LiberationSans-BoldItalic.ttf
+Adobe
+/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CIDSystemInfo << /Registry (Adobe) /Ordering (UCS) /Supplement 0 >> def /CMapName /Adobe-Identity-UCS def /CMapType 2 def 1 begincodespacerange <0000>
+Type0
+Identity-H
+Diese Zeichen kann die eingebettete Schrift nicht darstellen (z. B. chinesische, arabische oder hebräische Schrift, Emoji) – sie wurden durch „?“ ersetzt: {0}
+The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji) – they were replaced by "?": {0}

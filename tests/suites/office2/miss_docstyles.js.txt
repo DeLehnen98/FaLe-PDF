@@ -1,0 +1,8 @@
+17	Überschrift 4
+17	Heading4
+18	Überschrift 5
+18	Heading5
+19	Überschrift 6
+19	Heading6
+20	Quote
+22	Kein Abstand

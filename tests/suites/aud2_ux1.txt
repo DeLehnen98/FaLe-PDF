@@ -1,0 +1,55 @@
+[p320] booklet:
+    files: small 43x44 Vorherige Seite
+    files: small 43x44 Nächste Seite
+[p320] sign-pdf:
+    no result
+[p320] fill-pdf-form:
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    keyboard: focused element under sticky bar: wt-input
+[p320] redact-pdf:
+    files: small 22x22 INPUT
+    no result
+[p320] protect-pdf:
+    no result
+[p320] edit-metadata:
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    keyboard: focused element under sticky bar: wt-input
+    keyboard: focused element under sticky bar: wt-input
+    keyboard: focused element under sticky bar: wt-input
+[p320] compare-pdf:
+    files: small 40x52 „sec_v1.pdf“ verschieben (ziehen oder Pfeiltasten)
+    files: small 40x52 „sec_v2.pdf“ verschieben (ziehen oder Pfeiltasten)
+[p320] compress-image:
+    result: small 227x40 Ausschnitt vergrößern
+[p320] convert-image:
+    result: small 227x40 Ausschnitt vergrößern
+[p320] png-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[p320] jpg-to-png:
+    result: small 227x40 Ausschnitt vergrößern
+[p320] webp-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[p320] scan-to-pdf:
+    files: small 22x22 INPUT
+[p320] passport-photo:
+    files: small 22x22 INPUT
+[p320] cancellation-letter:
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    files: small 22x22 INPUT
+    keyboard: focused element under sticky bar: wt-input
+    keyboard: focused element under sticky bar: wt-input
+    keyboard: focused element under sticky bar: wt-input
+[p320] image-to-text:
+    files: small 22x22 INPUT
+[FAIL] aud2-ux
+   - exception: TimeoutError('Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(".wt-bar .wt-btn-primary")\n    - locator resolved to <button type="button" class="wt-btn wt-btn-primary wt-btn-lg">Lesen</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <canvas width="750" height="1060" aria-hidden="true"></canvas> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <canvas width="750" height="1060" aria-hidden="true"></canvas> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="new-v-top">…</div> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n  14 × retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <canvas width="750" height="1060" aria-hidden="true"></canvas> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <canvas width="750" height="1060" aria-hidden="true"></canvas> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class="new-v-top">…</div> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class="new-v-top">…</div> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <canvas width="750" height="1060" aria-hidden="true"></canvas> from <div class="new-v" role="dialog" aria-modal="true" aria-labelledby="new-v-title">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n')

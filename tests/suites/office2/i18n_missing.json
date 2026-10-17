@@ -1,0 +1,5816 @@
+{
+ "total": 4927,
+ "covered": 4097,
+ "missing": [
+  {
+   "key": "Überschrift 4",
+   "file": "js/office/docstyles.js",
+   "line": 17,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Heading4",
+   "file": "js/office/docstyles.js",
+   "line": 17,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Überschrift 5",
+   "file": "js/office/docstyles.js",
+   "line": 18,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Heading5",
+   "file": "js/office/docstyles.js",
+   "line": 18,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift 6",
+   "file": "js/office/docstyles.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Heading6",
+   "file": "js/office/docstyles.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quote",
+   "file": "js/office/docstyles.js",
+   "line": 20,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Kein Abstand",
+   "file": "js/office/docstyles.js",
+   "line": 22,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Überschrift1",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 1",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift2",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 2",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift3",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 3",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift4",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 4",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "text-indent:{0}pt",
+   "file": "js/office/docx-read.js",
+   "line": 301,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "text-indent:-{0}pt",
+   "file": "js/office/docx-read.js",
+   "line": 302,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Segoe UI Symbol",
+   "file": "js/office/docx-write.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "No Spacing",
+   "file": "js/office/docx-write.js",
+   "line": 352,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tahoma",
+   "file": "js/office/fonts.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Trebuchet MS",
+   "file": "js/office/fonts.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Segoe UI",
+   "file": "js/office/fonts.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Cambria",
+   "file": "js/office/fonts.js",
+   "line": 13,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Garamond",
+   "file": "js/office/fonts.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Book Antiqua",
+   "file": "js/office/fonts.js",
+   "line": 15,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Consolas",
+   "file": "js/office/fonts.js",
+   "line": 17,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "#ÜBERLAUF!",
+   "file": "js/office/formula.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "BOGENMAß",
+   "file": "js/office/formula.js",
+   "line": 37,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "KGRÖßTE",
+   "file": "js/office/formula.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "FEHLER.TYP",
+   "file": "js/office/formula.js",
+   "line": 64,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Unerwartetes Zeichen „#“",
+   "file": "js/office/formula.js",
+   "line": 180,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültige Matrix",
+   "file": "js/office/formula.js",
+   "line": 413,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "märz",
+   "file": "js/office/formula.js",
+   "line": 642,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Häufig verwendet",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Mathematik",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 32,
+   "content": false
+  },
+  {
+   "key": "Statistik",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 24,
+   "content": false
+  },
+  {
+   "key": "Logik",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 11,
+   "content": false
+  },
+  {
+   "key": "Nachschlagen & Verweisen",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 21,
+   "content": false
+  },
+  {
+   "key": "Datum & Uhrzeit",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 22,
+   "content": false
+  },
+  {
+   "key": "Information",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 10,
+   "content": false
+  },
+  {
+   "key": "Finanzmathematik",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 14,
+   "content": false
+  },
+  {
+   "key": "Wert suchen und zurückgeben (modern)",
+   "file": "js/office/formula.js",
+   "line": 1829,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wahrheitswert umkehren",
+   "file": "js/office/formula.js",
+   "line": 1830,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Genau eine (ungerade Anzahl) wahr",
+   "file": "js/office/formula.js",
+   "line": 1831,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrere Bedingungen nacheinander",
+   "file": "js/office/formula.js",
+   "line": 1831,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namen für Zwischenergebnisse vergeben",
+   "file": "js/office/formula.js",
+   "line": 1831,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wert mit Liste vergleichen",
+   "file": "js/office/formula.js",
+   "line": 1832,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe der Produkte",
+   "file": "js/office/formula.js",
+   "line": 1833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufrunden",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abrunden",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf ein Vielfaches runden",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf Vielfaches aufrunden",
+   "file": "js/office/formula.js",
+   "line": 1835,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf Vielfaches abrunden",
+   "file": "js/office/formula.js",
+   "line": 1835,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf ganze Zahl abrunden",
+   "file": "js/office/formula.js",
+   "line": 1836,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachkommastellen abschneiden",
+   "file": "js/office/formula.js",
+   "line": 1836,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rest einer Division",
+   "file": "js/office/formula.js",
+   "line": 1836,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Potenz",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quadratwurzel",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Natürlicher Logarithmus",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Logarithmus",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kreiszahl π",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorzeichen",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fakultät",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Größter gemeinsamer Teiler",
+   "file": "js/office/formula.js",
+   "line": 1839,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kleinstes gemeinsames Vielfaches",
+   "file": "js/office/formula.js",
+   "line": 1839,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zufallszahl zwischen 0 und 1",
+   "file": "js/office/formula.js",
+   "line": 1839,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zufällige ganze Zahl",
+   "file": "js/office/formula.js",
+   "line": 1840,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Teilergebnis (ignoriert Teilergebnisse)",
+   "file": "js/office/formula.js",
+   "line": 1840,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sinus (Bogenmaß)",
+   "file": "js/office/formula.js",
+   "line": 1841,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bogenmaß in Grad",
+   "file": "js/office/formula.js",
+   "line": 1841,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Grad in Bogenmaß",
+   "file": "js/office/formula.js",
+   "line": 1841,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Häufigster Wert",
+   "file": "js/office/formula.js",
+   "line": 1842,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standardabweichung (Stichprobe)",
+   "file": "js/office/formula.js",
+   "line": 1842,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standardabweichung (Grundgesamtheit)",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Varianz (Stichprobe)",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "k-größter Wert",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rang einer Zahl",
+   "file": "js/office/formula.js",
+   "line": 1844,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quantil",
+   "file": "js/office/formula.js",
+   "line": 1844,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quartil",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Korrelationskoeffizient",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zählen mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchschnitt mit Bedingung",
+   "file": "js/office/formula.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchschnitt mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Maximum mit Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1847,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum mit Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1847,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl leerer Zellen",
+   "file": "js/office/formula.js",
+   "line": 1848,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Waagerecht suchen",
+   "file": "js/office/formula.js",
+   "line": 1849,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position eines Werts",
+   "file": "js/office/formula.js",
+   "line": 1849,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position eines Werts (modern)",
+   "file": "js/office/formula.js",
+   "line": 1850,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wert an Position",
+   "file": "js/office/formula.js",
+   "line": 1850,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilennummer",
+   "file": "js/office/formula.js",
+   "line": 1851,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltennummer",
+   "file": "js/office/formula.js",
+   "line": 1851,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zeilen",
+   "file": "js/office/formula.js",
+   "line": 1852,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Spalten",
+   "file": "js/office/formula.js",
+   "line": 1852,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verschobener Bereich",
+   "file": "js/office/formula.js",
+   "line": 1853,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezug aus Text",
+   "file": "js/office/formula.js",
+   "line": 1853,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse als Text",
+   "file": "js/office/formula.js",
+   "line": 1854,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen und Spalten tauschen",
+   "file": "js/office/formula.js",
+   "line": 1854,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen nach Bedingung filtern (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1855,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bereich sortieren (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1855,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach anderem Bereich sortieren",
+   "file": "js/office/formula.js",
+   "line": 1856,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Doppelte entfernen (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1856,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlenfolge (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1857,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Texte mit Trennzeichen verbinden",
+   "file": "js/office/formula.js",
+   "line": 1858,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bereiche verketten",
+   "file": "js/office/formula.js",
+   "line": 1858,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen von rechts",
+   "file": "js/office/formula.js",
+   "line": 1859,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen aus der Mitte",
+   "file": "js/office/formula.js",
+   "line": 1859,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position (Groß/klein beachten)",
+   "file": "js/office/formula.js",
+   "line": 1860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position (mit Platzhaltern)",
+   "file": "js/office/formula.js",
+   "line": 1860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen ersetzen",
+   "file": "js/office/formula.js",
+   "line": 1860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text austauschen",
+   "file": "js/office/formula.js",
+   "line": 1861,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überflüssige Leerzeichen entfernen",
+   "file": "js/office/formula.js",
+   "line": 1861,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "In Kleinbuchstaben",
+   "file": "js/office/formula.js",
+   "line": 1862,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfangsbuchstaben groß",
+   "file": "js/office/formula.js",
+   "line": 1862,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl formatiert als Text",
+   "file": "js/office/formula.js",
+   "line": 1862,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Zahl umwandeln",
+   "file": "js/office/formula.js",
+   "line": 1863,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text wiederholen",
+   "file": "js/office/formula.js",
+   "line": 1863,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Texte exakt vergleichen",
+   "file": "js/office/formula.js",
+   "line": 1863,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen aus Code",
+   "file": "js/office/formula.js",
+   "line": 1864,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Code eines Zeichens",
+   "file": "js/office/formula.js",
+   "line": 1864,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl mit festen Nachkommastellen",
+   "file": "js/office/formula.js",
+   "line": 1864,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuerzeichen entfernen",
+   "file": "js/office/formula.js",
+   "line": 1865,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text vor einem Trennzeichen",
+   "file": "js/office/formula.js",
+   "line": 1865,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text nach einem Trennzeichen",
+   "file": "js/office/formula.js",
+   "line": 1865,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit bilden",
+   "file": "js/office/formula.js",
+   "line": 1866,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum und Uhrzeit jetzt",
+   "file": "js/office/formula.js",
+   "line": 1866,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jahr eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1867,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1867,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tag eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1867,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stunde",
+   "file": "js/office/formula.js",
+   "line": 1868,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minute",
+   "file": "js/office/formula.js",
+   "line": 1868,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sekunde",
+   "file": "js/office/formula.js",
+   "line": 1868,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wochentag als Zahl",
+   "file": "js/office/formula.js",
+   "line": 1869,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kalenderwoche",
+   "file": "js/office/formula.js",
+   "line": 1869,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kalenderwoche nach ISO (DIN)",
+   "file": "js/office/formula.js",
+   "line": 1870,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum plus Monate",
+   "file": "js/office/formula.js",
+   "line": 1870,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Letzter Tag des Monats",
+   "file": "js/office/formula.js",
+   "line": 1871,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitstage zwischen zwei Daten",
+   "file": "js/office/formula.js",
+   "line": 1871,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum nach Arbeitstagen",
+   "file": "js/office/formula.js",
+   "line": 1872,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Differenz in Jahren/Monaten/Tagen",
+   "file": "js/office/formula.js",
+   "line": 1872,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tage zwischen zwei Daten",
+   "file": "js/office/formula.js",
+   "line": 1873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Datum umwandeln",
+   "file": "js/office/formula.js",
+   "line": 1873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bruchteil eines Jahres",
+   "file": "js/office/formula.js",
+   "line": 1873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle leer?",
+   "file": "js/office/formula.js",
+   "line": 1874,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist eine Zahl?",
+   "file": "js/office/formula.js",
+   "line": 1874,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist Text?",
+   "file": "js/office/formula.js",
+   "line": 1874,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist ein Fehler?",
+   "file": "js/office/formula.js",
+   "line": 1875,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist #NV?",
+   "file": "js/office/formula.js",
+   "line": 1875,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gerade Zahl?",
+   "file": "js/office/formula.js",
+   "line": 1875,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Enthält eine Formel?",
+   "file": "js/office/formula.js",
+   "line": 1876,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fehlerwert #NV",
+   "file": "js/office/formula.js",
+   "line": 1876,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datentyp",
+   "file": "js/office/formula.js",
+   "line": 1876,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rate eines Kredits",
+   "file": "js/office/formula.js",
+   "line": 1877,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zukünftiger Wert",
+   "file": "js/office/formula.js",
+   "line": 1877,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Barwert",
+   "file": "js/office/formula.js",
+   "line": 1877,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zinssatz",
+   "file": "js/office/formula.js",
+   "line": 1878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zahlungen",
+   "file": "js/office/formula.js",
+   "line": 1878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nettobarwert",
+   "file": "js/office/formula.js",
+   "line": 1878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Interner Zinsfuß",
+   "file": "js/office/formula.js",
+   "line": 1879,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zinsanteil einer Rate",
+   "file": "js/office/formula.js",
+   "line": 1879,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tilgungsanteil einer Rate",
+   "file": "js/office/formula.js",
+   "line": 1879,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Effektiver Jahreszins",
+   "file": "js/office/formula.js",
+   "line": 1880,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lineare Abschreibung",
+   "file": "js/office/formula.js",
+   "line": 1880,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kapitalwert mit Datumsangaben",
+   "file": "js/office/formula.js",
+   "line": 1881,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Interner Zinsfuß mit Datumsangaben",
+   "file": "js/office/formula.js",
+   "line": 1881,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Liste braucht eine Kopfzeile mit Feldnamen und mindestens einen Datensatz.",
+   "file": "js/office/mailmerge.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Feld{0}",
+   "file": "js/office/mailmerge.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Empfängerliste wählen",
+   "file": "js/office/mailmerge.js",
+   "line": 41,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Tabellen in deinen Dateien.",
+   "file": "js/office/mailmerge.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die erste Zeile der Tabelle enthält die Feldnamen (z. B. Anrede, Name, Straße, PLZ, Ort).",
+   "file": "js/office/mailmerge.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datei vom Gerät …",
+   "file": "js/office/mailmerge.js",
+   "line": 44,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": ".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+   "file": "js/office/mailmerge.js",
+   "line": 58,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Empfängerliste konnte nicht gelesen werden.",
+   "file": "js/office/mailmerge.js",
+   "line": 62,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Serienbrief fertigstellen",
+   "file": "js/office/mailmerge.js",
+   "line": 92,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Datensätze aus „{1}“.",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eine PDF mit allen Briefen",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzelne Word-Dateien (ZIP)",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Von Datensatz",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erstellen",
+   "file": "js/office/mailmerge.js",
+   "line": 98,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0} (Serienbrief).pdf",
+   "file": "js/office/mailmerge.js",
+   "line": 108,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Word-Dateien werden erstellt …",
+   "file": "js/office/mailmerge.js",
+   "line": 118,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Word-Dateien werden erstellt … {0} von {1}",
+   "file": "js/office/mailmerge.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} (Serienbrief).zip",
+   "file": "js/office/mailmerge.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Word-Dateien erstellt",
+   "file": "js/office/mailmerge.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Serienbrief konnte nicht erstellt werden.",
+   "file": "js/office/mailmerge.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonntag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Montag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Dienstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mittwoch",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Donnerstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Freitag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Samstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "So",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mo",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Di",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mi",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Do",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Fr",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sa",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Jan",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Feb",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Mrz",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Apr",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Jun",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Jul",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Aug",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Sep",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Okt",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nov",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Dez",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einzug erste Zeile",
+   "file": "js/office/ruler.js",
+   "line": 9,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einzug links / hängend",
+   "file": "js/office/ruler.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug links",
+   "file": "js/office/ruler.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug rechts",
+   "file": "js/office/ruler.js",
+   "line": 11,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabstopp",
+   "file": "js/office/ruler.js",
+   "line": 60,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Innenlinien",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dicker Außenrahmen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Doppelte Unterlinie",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dünn",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dick",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gepunktet",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zellen formatieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 30,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausfüllen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 32,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Schutz",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 32,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Waagerecht",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schräg (45°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach oben gedreht (90°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten gedreht (−90°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Senkrecht gestapelt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatcode (deutsch, z. B. #.##0,00 € oder TT.MM.JJJJ)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorschau:",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Horizontal",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikal",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textrichtung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenumbruch",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standard (Calibri)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schriftfarbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linienart",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wähle eine Vorlage – sie wird beim Übernehmen auf den markierten Bereich angewendet.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hintergrundfarbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eigene Farbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesperrt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formel ausblenden",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wirkt erst, wenn das Blatt geschützt ist (Daten → Blatt schützen). Der Schutz verhindert versehentliche Änderungen – er ist keine Verschlüsselung.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieser Formatcode ist ungültig.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 74,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Tabelle zum Sortieren.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 157,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Ebene entfernen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sortieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 162,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Bereich {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Daten haben Überschriften",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Ebene hinzufügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefinierter Filter: Spalte {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 188,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stattdessen die obersten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte zeigen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Platzhalter: ? für ein Zeichen, * für beliebig viele.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Duplikate entfernen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 219,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Bereich {0}. Zeilen mit gleichen Werten in den gewählten Spalten werden entfernt (die erste bleibt).",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 220,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} doppelte Zeile{1} entfernt · {2} eindeutige bleiben",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 238,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Spalte mit Text.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 248,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Spalten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 250,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabulator",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Semikolon",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Komma",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Leerzeichen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Getrennt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Feste Breite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Andere:",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufeinanderfolgende Trennzeichen als eins behandeln",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Trennpositionen (Zeichen, z. B. 5, 12)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text auf Spalten verteilt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 282,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 292,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lege fest, welche Werte in den Zellen erlaubt sind. Bei Listen erscheint ein kleiner Pfeil zur Auswahl.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zulassen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Daten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Erlaubte Werte (je Zeile einer) oder ein Bereich wie =$A$1:$A$5",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum / Wert",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Maximum",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Eingabehinweis (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fehlermeldung (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung entfernt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 321,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung angelegt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 333,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· nur {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name löschen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Namen. Namen machen Formeln lesbarer, z. B. =Netto*Steuersatz.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namen definieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 343,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namens-Manager",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 343,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "z. B. Steuersatz",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezieht sich auf",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitsmappe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name anlegen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 348,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültiger Name. Er muss mit einem Buchstaben beginnen und darf keine Zelladresse sein.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 352,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diesen Namen gibt es schon.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 354,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Bezug ist ungültig.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 355,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name gelöscht",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 366,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name „{0}“ angelegt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 376,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalte einfügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 382,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alles",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Formate",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Formeln",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte und Zahlenformate",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechenoperation",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Addieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Subtrahieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Multiplizieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dividieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Leerzellen überspringen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Transponieren (Zeilen ↔ Spalten)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Funktion suchen, z. B. Summe, Datum, SVERWEIS …",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 402,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Funktion gefunden.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 413,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Tabelle mit Überschriften (mindestens zwei Zeilen).",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle bearbeiten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle erstellen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "— (keine)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 446,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "— (keiner)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quelle: {0}!{1} · {2} Datensätze",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wertfeld hinzufügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur diese Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 455,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Berechnung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 455,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Reihe ausfüllen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 505,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Richtung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten (Spalten)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach rechts (Zeilen)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linear",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Geometrisch",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Startwert",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrittweite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Endwert (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeiteinheit",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tag",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wochentag (Mo–Fr)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Jahr",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zellen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte gib einen Startwert ein.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 520,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Werte ausgefüllt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenhöhe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 540,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltenbreite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 540,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Höhe in Punkt (Standard 15)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite in Zeichen (Standard 12)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mär",
+   "file": "js/office/sheet-ops.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tuesday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wednesday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Thursday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Friday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Saturday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sunday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mon",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tue",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wed",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Thu",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fri",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sat",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sun",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "January",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "February",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "March",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "May",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "June",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "July",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "October",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "December",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mar",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Oct",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dec",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Min",
+   "file": "js/office/sheet-ops.js",
+   "line": 239,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Max",
+   "file": "js/office/sheet-ops.js",
+   "line": 239,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesamt – {0}",
+   "file": "js/office/sheet-ops.js",
+   "line": 282,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesamtergebnis",
+   "file": "js/office/sheet-ops.js",
+   "line": 282,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle …",
+   "file": "js/office/sheet.js",
+   "line": 62,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namens-Manager …",
+   "file": "js/office/sheet.js",
+   "line": 63,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tastenkürzel",
+   "file": "js/office/sheet.js",
+   "line": 65,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Formeln",
+   "file": "js/office/sheet.js",
+   "line": 93,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Durchgestrichen (Strg+5)",
+   "file": "js/office/sheet.js",
+   "line": 99,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikale Ausrichtung",
+   "file": "js/office/sheet.js",
+   "line": 102,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehr Nachkommastellen",
+   "file": "js/office/sheet.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weniger Nachkommastellen",
+   "file": "js/office/sheet.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zellenformatvorlagen",
+   "file": "js/office/sheet.js",
+   "line": 104,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung (Dropdown-Liste)",
+   "file": "js/office/sheet.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle",
+   "file": "js/office/sheet.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-a=\"ins-date\"",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "data-a=\"ins-time\"",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name definieren",
+   "file": "js/office/sheet.js",
+   "line": 113,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "AutoSumme …",
+   "file": "js/office/sheet.js",
+   "line": 116,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu berechnen",
+   "file": "js/office/sheet.js",
+   "line": 117,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sortieren …",
+   "file": "js/office/sheet.js",
+   "line": 120,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt schützen",
+   "file": "js/office/sheet.js",
+   "line": 122,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Pivot aktualisieren",
+   "file": "js/office/sheet.js",
+   "line": 122,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixieren …",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gitternetzlinien",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formeln anzeigen",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Menüband",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Aa",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Ganze Zelle",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse oder Name",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse oder Name – mit Enter springen; neuen Namen für die Markierung eintippen",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeblendete Spalte {0}",
+   "file": "js/office/sheet.js",
+   "line": 338,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ziehen zum Ausfüllen (Doppelklick: bis zum Datenende)",
+   "file": "js/office/sheet.js",
+   "line": 407,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe: {0} · Mittelwert: {1} · Anzahl: {2}{3}",
+   "file": "js/office/sheet.js",
+   "line": 479,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· geschützt",
+   "file": "js/office/sheet.js",
+   "line": 482,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Blatt ist geschützt. Hebe den Schutz unter „Daten → Blatt schützen“ auf, um diese Zellen zu ändern.",
+   "file": "js/office/sheet.js",
+   "line": 495,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ ist hier nicht erlaubt ({1}).",
+   "file": "js/office/sheet.js",
+   "line": 567,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zirkelbezug: Die Formel in {0}{1} bezieht sich auf sich selbst.",
+   "file": "js/office/sheet.js",
+   "line": 646,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieses Blatt gibt es nicht.",
+   "file": "js/office/sheet.js",
+   "line": 752,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ ist kein Bereich (={1}).",
+   "file": "js/office/sheet.js",
+   "line": 763,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name „{0}“ für {1} angelegt",
+   "file": "js/office/sheet.js",
+   "line": 771,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültige Zelladresse oder unbekannter Name (z. B. B7, A1:C5 oder Umsatz).",
+   "file": "js/office/sheet.js",
+   "line": 774,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausschneiden",
+   "file": "js/office/sheet.js",
+   "line": 944,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalte einfügen …",
+   "file": "js/office/sheet.js",
+   "line": 947,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zellen formatieren …",
+   "file": "js/office/sheet.js",
+   "line": 949,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen oberhalb einfügen",
+   "file": "js/office/sheet.js",
+   "line": 950,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten links einfügen",
+   "file": "js/office/sheet.js",
+   "line": 951,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen löschen",
+   "file": "js/office/sheet.js",
+   "line": 952,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten löschen",
+   "file": "js/office/sheet.js",
+   "line": 953,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Inhalte löschen",
+   "file": "js/office/sheet.js",
+   "line": 954,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach diesem Wert filtern",
+   "file": "js/office/sheet.js",
+   "line": 958,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namen definieren …",
+   "file": "js/office/sheet.js",
+   "line": 959,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle",
+   "file": "js/office/sheet.js",
+   "line": 960,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenhöhe …",
+   "file": "js/office/sheet.js",
+   "line": 968,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Optimale Höhe",
+   "file": "js/office/sheet.js",
+   "line": 969,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausblenden",
+   "file": "js/office/sheet.js",
+   "line": 970,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einblenden",
+   "file": "js/office/sheet.js",
+   "line": 971,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeile",
+   "file": "js/office/sheet.js",
+   "line": 972,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltenbreite …",
+   "file": "js/office/sheet.js",
+   "line": 980,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Optimale Breite",
+   "file": "js/office/sheet.js",
+   "line": 981,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte",
+   "file": "js/office/sheet.js",
+   "line": 987,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Zeile{1} eingeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1060,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Spalte{1} ausgeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1061,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Spalte{1} eingeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1062,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neben der Markierung gibt es keine Daten, bis zu denen ausgefüllt werden kann.",
+   "file": "js/office/sheet.js",
+   "line": 1137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu berechnet",
+   "file": "js/office/sheet.js",
+   "line": 1211,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeschnitten – an der Zielzelle einfügen (Strg+V).",
+   "file": "js/office/sheet.js",
+   "line": 1269,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeschnitten",
+   "file": "js/office/sheet.js",
+   "line": 1382,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Einfügen von außerhalb bitte Strg+V verwenden.",
+   "file": "js/office/sheet.js",
+   "line": 1387,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopiere zuerst Zellen in dieser Tabelle (Strg+C).",
+   "file": "js/office/sheet.js",
+   "line": 1394,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weitere Farben …",
+   "file": "js/office/sheet.js",
+   "line": 1500,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Vertikal ausrichten",
+   "file": "js/office/sheet.js",
+   "line": 1503,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum",
+   "file": "js/office/sheet.js",
+   "line": 1507,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Funktionen …",
+   "file": "js/office/sheet.js",
+   "line": 1508,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Filter gelöscht",
+   "file": "js/office/sheet.js",
+   "line": 1516,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf diesem Blatt ist kein Filter aktiv.",
+   "file": "js/office/sheet.js",
+   "line": 1516,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis {0} fixieren (Zeilen darüber, Spalten links)",
+   "file": "js/office/sheet.js",
+   "line": 1524,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Oberste Zeile fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1525,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Spalte fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1526,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixierung aufheben",
+   "file": "js/office/sheet.js",
+   "line": 1527,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1528,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle aktualisiert",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0} Pivot-Tabelle{1} aktualisiert",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Mappe enthält keine Pivot-Tabelle.",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Formeln neu berechnet",
+   "file": "js/office/sheet.js",
+   "line": 1538,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Braun",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lavendel",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Hellgrau",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Gut (grün)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlecht (rot)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neutral (gelb)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixiert: {0}{1}{2}",
+   "file": "js/office/sheet.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blattschutz aufgehoben",
+   "file": "js/office/sheet.js",
+   "line": 1565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt geschützt – nur entsperrte Zellen sind änderbar. Hinweis: Das ist ein Schutz vor versehentlichen Änderungen, keine Verschlüsselung.",
+   "file": "js/office/sheet.js",
+   "line": 1566,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sortiert nach",
+   "file": "js/office/sheet.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile einfügen",
+   "file": "js/office/sheet.js",
+   "line": 1651,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte einfügen",
+   "file": "js/office/sheet.js",
+   "line": 1651,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile löschen",
+   "file": "js/office/sheet.js",
+   "line": 1652,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte löschen",
+   "file": "js/office/sheet.js",
+   "line": 1652,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Doppelte Rahmenlinie unten",
+   "file": "js/office/sheet.js",
+   "line": 1668,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Rahmen links",
+   "file": "js/office/sheet.js",
+   "line": 1669,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmen rechts",
+   "file": "js/office/sheet.js",
+   "line": 1670,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weitere Rahmen …",
+   "file": "js/office/sheet.js",
+   "line": 1673,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gefiltert nach „{0}“",
+   "file": "js/office/sheet.js",
+   "line": 1776,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlenfilter …",
+   "file": "js/office/sheet.js",
+   "line": 1790,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textfilter …",
+   "file": "js/office/sheet.js",
+   "line": 1790,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aktiv: {0}",
+   "file": "js/office/sheet.js",
+   "line": 1791,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Quelldaten der Pivot-Tabelle wurden nicht gefunden.",
+   "file": "js/office/sheet.js",
+   "line": 2062,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot{0}",
+   "file": "js/office/sheet.js",
+   "line": 2068,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle erstellt – über „Daten → Pivot aktualisieren“ neu berechnen.",
+   "file": "js/office/sheet.js",
+   "line": 2076,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Registerfarbe …",
+   "file": "js/office/sheet.js",
+   "line": 2160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blattschutz aufheben",
+   "file": "js/office/sheet.js",
+   "line": 2161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt gelöscht",
+   "file": "js/office/sheet.js",
+   "line": 2172,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Farbe",
+   "file": "js/office/sheet.js",
+   "line": 2177,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Registerfarbe",
+   "file": "js/office/sheet.js",
+   "line": 2178,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ angelegt",
+   "file": "js/office/sheet.js",
+   "line": 2199,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg",
+   "file": "js/office/sheet.js",
+   "line": 2224,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bewegen",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pfeiltasten",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle wechseln",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Rand des Datenbereichs",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+Pfeil",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markierung erweitern",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis zum Datenrand markieren",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tab / Umschalt+Tab",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nach rechts / links",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eingabe",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nach unten (in Markierung bleiben)",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfang / letzte benutzte Zelle",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0}+Bild↑ / Bild↓",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorheriges / nächstes Blatt",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+Leertaste",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenbereich, dann alles",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrere Bereiche",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alt+Eingabe",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenumbruch in der Zelle",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eingabe in alle markierten Zellen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "$-Bezug umschalten (beim Bearbeiten)",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Entf",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalt löschen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten / rechts ausfüllen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum / Uhrzeit einfügen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rückgängig / Wiederholen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zwischenablage",
+   "file": "js/office/sheet.js",
+   "line": 2229,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopieren / Ausschneiden / Einfügen",
+   "file": "js/office/sheet.js",
+   "line": 2229,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fett / Kursiv / Unterstrichen",
+   "file": "js/office/sheet.js",
+   "line": 2230,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen/Spalten einfügen / löschen",
+   "file": "js/office/sheet.js",
+   "line": 2231,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+F11",
+   "file": "js/office/sheet.js",
+   "line": 2231,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tastenkürzel – Tabelle",
+   "file": "js/office/sheet.js",
+   "line": 2233,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist nicht gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist größer als",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist größer oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist kleiner als",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist kleiner oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "enthält nicht",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Liste (Dropdown)",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zahl",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dezimalzahl",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "größer als",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "größer oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kleiner oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "[Bild]",
+   "file": "js/office/trackchanges.js",
+   "line": 234,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefiniert …",
+   "file": "js/office/workbook.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl ohne Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Tausenderpunkt",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tausenderpunkt, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Negative Zahlen rot",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Währung ohne Cent",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Währung, negativ rot",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Prozent, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum (31.12.2026)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum kurz (31.12.26)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum lang (31. Dezember 2026)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Wochentag",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat und Jahr",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit (13:30)",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit mit Sekunden",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stunden über 24 (Zeiterfassung)",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum und Uhrzeit",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wissenschaftlich",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bruch",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Postleitzahl (5 Stellen)",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlecht",
+   "file": "js/office/workbook.js",
+   "line": 33,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Warnhinweis",
+   "file": "js/office/workbook.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Akzent",
+   "file": "js/office/workbook.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(wie Standard)",
+   "file": "js/office/writer-format.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage ändern: {0}",
+   "file": "js/office/writer-format.js",
+   "line": 114,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links (Standard)",
+   "file": "js/office/writer-format.js",
+   "line": 119,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Größe (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nicht vom nächsten Absatz trennen",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Abstand vor (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Änderung gilt für alle Absätze mit der Formatvorlage „{0}“ und wird in der Word-Datei gespeichert.",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absatz",
+   "file": "js/office/writer-format.js",
+   "line": 211,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenabstand (Vielfaches)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug (cm)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sondereinzug",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hängend",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sondereinzug um (cm)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vor",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen- und Seitenumbruch",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch oberhalb",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "✓ Häkchen",
+   "file": "js/office/writer-format.js",
+   "line": 451,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gitternetz",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlicht",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopfzeile farbig",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gebändert",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimal",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabellenformatvorlage",
+   "file": "js/office/writer-table.js",
+   "line": 365,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile als Überschriftenzeile (wird auf jeder Seite wiederholt)",
+   "file": "js/office/writer-table.js",
+   "line": 365,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabelleneigenschaften",
+   "file": "js/office/writer-table.js",
+   "line": 388,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite (% der Seite)",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikale Ausrichtung der Zelle(n)",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile auf jeder Seite wiederholen",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hellgrün",
+   "file": "js/office/writer.js",
+   "line": 28,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Flieder",
+   "file": "js/office/writer.js",
+   "line": 28,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sprechblase",
+   "file": "js/office/writer.js",
+   "line": 37,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versionsverlauf …",
+   "file": "js/office/writer.js",
+   "line": 85,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter zählen …",
+   "file": "js/office/writer.js",
+   "line": 86,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern: an",
+   "file": "js/office/writer.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern: aus",
+   "file": "js/office/writer.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überprüfen",
+   "file": "js/office/writer.js",
+   "line": 108,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sendungen",
+   "file": "js/office/writer.js",
+   "line": 108,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Format übertragen (Strg+Umschalt+C / V)",
+   "file": "js/office/writer.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift vergrößern (Strg+Umschalt+>)",
+   "file": "js/office/writer.js",
+   "line": 121,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift verkleinern (Strg+Umschalt+<)",
+   "file": "js/office/writer.js",
+   "line": 121,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hochgestellt (Strg+Umschalt++)",
+   "file": "js/office/writer.js",
+   "line": 123,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tiefgestellt (Strg+#)",
+   "file": "js/office/writer.js",
+   "line": 123,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung (Umschalt+F3)",
+   "file": "js/office/writer.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatierung löschen (Strg+Leertaste)",
+   "file": "js/office/writer.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linksbündig (Strg+L)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zentriert (Strg+E)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechtsbündig (Strg+R)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blocksatz (Strg+J)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen- und Absatzabstand",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Liste mit mehreren Ebenen",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug verkleinern (Strg+Umschalt+M)",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug vergrößern (Strg+M)",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen verwalten",
+   "file": "js/office/writer.js",
+   "line": 130,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Link (Strg+K)",
+   "file": "js/office/writer.js",
+   "line": 131,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch (Strg+Enter)",
+   "file": "js/office/writer.js",
+   "line": 131,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-table\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-image\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-shape\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-textbox\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-link\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-pagebreak\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abschnittsumbruch",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-section\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-toc\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-footnote\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-comment\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-hf\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-pn\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-date\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Symbol",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-symbol\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenränder",
+   "file": "js/office/writer.js",
+   "line": 142,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Umbrüche",
+   "file": "js/office/writer.js",
+   "line": 143,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Absatz …",
+   "file": "js/office/writer.js",
+   "line": 144,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand",
+   "file": "js/office/writer.js",
+   "line": 144,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter zählen",
+   "file": "js/office/writer.js",
+   "line": 148,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Neuer Kommentar",
+   "file": "js/office/writer.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-comment2\"",
+   "file": "js/office/writer.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen nachverfolgen",
+   "file": "js/office/writer.js",
+   "line": 150,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Annehmen",
+   "file": "js/office/writer.js",
+   "line": 151,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Ablehnen",
+   "file": "js/office/writer.js",
+   "line": 151,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Empfänger wählen",
+   "file": "js/office/writer.js",
+   "line": 154,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seriendruckfeld",
+   "file": "js/office/writer.js",
+   "line": 154,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorheriger Datensatz",
+   "file": "js/office/writer.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nächster Datensatz",
+   "file": "js/office/writer.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fertigstellen",
+   "file": "js/office/writer.js",
+   "line": 156,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenlayout",
+   "file": "js/office/writer.js",
+   "line": 159,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Webansicht",
+   "file": "js/office/writer.js",
+   "line": 159,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lineal",
+   "file": "js/office/writer.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatierungszeichen",
+   "file": "js/office/writer.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gehe zu Seite",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Versionen",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeile oberhalb",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeile unterhalb",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte links",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte rechts",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle teilen",
+   "file": "js/office/writer.js",
+   "line": 167,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten verteilen",
+   "file": "js/office/writer.js",
+   "line": 167,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schattierung",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabellenformat",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschriftenzeile",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textumbruch",
+   "file": "js/office/writer.js",
+   "line": 171,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Größe …",
+   "file": "js/office/writer.js",
+   "line": 172,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alternativtext",
+   "file": "js/office/writer.js",
+   "line": 172,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Markup-Anzeige",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Alle Markups",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kein Markup",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganzes Wort",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Reguläre Ausdrücke",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Regex",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen schließen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle annehmen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle ablehnen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachverfolgung an",
+   "file": "js/office/writer.js",
+   "line": 227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zoom zurücksetzen",
+   "file": "js/office/writer.js",
+   "line": 228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ändern …",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage an die Formatierung des aktuellen Absatzes anpassen",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus Markierung",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Direkte Formatierung bei allen Absätzen dieser Formatvorlage entfernen",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle angleichen",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen werden in der Word-Datei gespeichert (styles.xml) und beim Öffnen übernommen.",
+   "file": "js/office/writer.js",
+   "line": 522,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage „{0}“ geändert",
+   "file": "js/office/writer.js",
+   "line": 543,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in einen Absatz.",
+   "file": "js/office/writer.js",
+   "line": 545,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage „{0}“ angepasst",
+   "file": "js/office/writer.js",
+   "line": 550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absätze angeglichen",
+   "file": "js/office/writer.js",
+   "line": 553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Satzanfang groß",
+   "file": "js/office/writer.js",
+   "line": 600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jedes Wort Groß",
+   "file": "js/office/writer.js",
+   "line": 600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "gROSS/kLEIN umkehren",
+   "file": "js/office/writer.js",
+   "line": 600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung",
+   "file": "js/office/writer.js",
+   "line": 600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere zuerst Text.",
+   "file": "js/office/writer.js",
+   "line": 603,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in den Text, dessen Format du übertragen möchtest.",
+   "file": "js/office/writer.js",
+   "line": 619,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere jetzt den Text, der das Format bekommen soll.",
+   "file": "js/office/writer.js",
+   "line": 623,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand vor Absatz entfernen",
+   "file": "js/office/writer.js",
+   "line": 643,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand vor Absatz hinzufügen (12 pt)",
+   "file": "js/office/writer.js",
+   "line": 643,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach Absatz entfernen",
+   "file": "js/office/writer.js",
+   "line": 644,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach Absatz hinzufügen (8 pt)",
+   "file": "js/office/writer.js",
+   "line": 644,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absatzoptionen …",
+   "file": "js/office/writer.js",
+   "line": 645,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufzählung: {0}",
+   "file": "js/office/writer.js",
+   "line": 670,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierung: {0}",
+   "file": "js/office/writer.js",
+   "line": 672,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrstufig: {0}",
+   "file": "js/office/writer.js",
+   "line": 674,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu nummerieren (bei 1 beginnen)",
+   "file": "js/office/writer.js",
+   "line": 676,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierung fortsetzen",
+   "file": "js/office/writer.js",
+   "line": 677,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierungswert festlegen …",
+   "file": "js/office/writer.js",
+   "line": 678,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierungswert festlegen",
+   "file": "js/office/writer.js",
+   "line": 678,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beginnen bei",
+   "file": "js/office/writer.js",
+   "line": 678,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Listen",
+   "file": "js/office/writer.js",
+   "line": 680,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle teilen …",
+   "file": "js/office/writer.js",
+   "line": 738,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabelleneigenschaften …",
+   "file": "js/office/writer.js",
+   "line": 740,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere mehrere zusammenhängende Zellen (mit der Maus ziehen oder Umschalt+Pfeiltasten).",
+   "file": "js/office/writer.js",
+   "line": 761,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinien außen",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinien innen",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie oben",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie unten",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie links",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie rechts",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dicke Rahmenlinie unten",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Tabelle: alle Linien",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Tabelle: ohne Linien",
+   "file": "js/office/writer.js",
+   "line": 777,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabellenformatvorlagen",
+   "file": "js/office/writer.js",
+   "line": 778,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile wird auf jeder Seite wiederholt.",
+   "file": "js/office/writer.js",
+   "line": 779,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschriftenzeile aus.",
+   "file": "js/office/writer.js",
+   "line": 779,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textfeld – hier schreiben",
+   "file": "js/office/writer.js",
+   "line": 811,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum einfügen",
+   "file": "js/office/writer.js",
+   "line": 830,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Symbol einfügen",
+   "file": "js/office/writer.js",
+   "line": 833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Text in Zeile",
+   "file": "js/office/writer.js",
+   "line": 873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links, Text umfließt rechts",
+   "file": "js/office/writer.js",
+   "line": 873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechts, Text umfließt links",
+   "file": "js/office/writer.js",
+   "line": 873,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bild ausrichten",
+   "file": "js/office/writer.js",
+   "line": 875,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bildgröße",
+   "file": "js/office/writer.js",
+   "line": 878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite in cm",
+   "file": "js/office/writer.js",
+   "line": 878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beschreibung des Bildes (für Screenreader und Barrierefreiheit)",
+   "file": "js/office/writer.js",
+   "line": 882,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textumbruch …",
+   "file": "js/office/writer.js",
+   "line": 895,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alternativtext …",
+   "file": "js/office/writer.js",
+   "line": 896,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eine Spalte",
+   "file": "js/office/writer.js",
+   "line": 908,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Drei Spalten",
+   "file": "js/office/writer.js",
+   "line": 908,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abschnittsumbruch (nächste Seite)",
+   "file": "js/office/writer.js",
+   "line": 938,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch oberhalb des Absatzes",
+   "file": "js/office/writer.js",
+   "line": 939,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefinierte Seitenränder …",
+   "file": "js/office/writer.js",
+   "line": 946,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen werden nachverfolgt.",
+   "file": "js/office/writer.js",
+   "line": 1449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachverfolgung aus.",
+   "file": "js/office/writer.js",
+   "line": 1449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine nachverfolgten Änderungen. Schalte unter „Überprüfen“ die Nachverfolgung ein – Einfügungen und Löschungen werden dann markiert.",
+   "file": "js/office/writer.js",
+   "line": 1460,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Änderung{1} {2}",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Keine Änderungen im Dokument.",
+   "file": "js/office/writer.js",
+   "line": 1488,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Änderung {0}",
+   "file": "js/office/writer.js",
+   "line": 1499,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in eine Änderung.",
+   "file": "js/office/writer.js",
+   "line": 1499,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} und weiter",
+   "file": "js/office/writer.js",
+   "line": 1500,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Änderungen {0}",
+   "file": "js/office/writer.js",
+   "line": 1501,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Dokument enthält nachverfolgte Änderungen (Überprüfen → Änderungen).",
+   "file": "js/office/writer.js",
+   "line": 1504,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Empfänger · Felder: {1}{2}",
+   "file": "js/office/writer.js",
+   "line": 1519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seriendruckfeld einfügen",
+   "file": "js/office/writer.js",
+   "line": 1524,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Füge zuerst Seriendruckfelder ein (Sendungen → Seriendruckfeld).",
+   "file": "js/office/writer.js",
+   "line": 1541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seiten (ca.)",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeichen (ohne Leerzeichen)",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeichen (mit Leerzeichen)",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sätze",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter pro Satz (Ø)",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lesezeit (ca.)",
+   "file": "js/office/writer.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markierung",
+   "file": "js/office/writer.js",
+   "line": 1563,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seite (1–{0})",
+   "file": "js/office/writer.js",
+   "line": 1569,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gehe zu",
+   "file": "js/office/writer.js",
+   "line": 1569,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisches Speichern ist an (alle 30 Sekunden bei Änderungen).",
+   "file": "js/office/writer.js",
+   "line": 1593,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisches Speichern ist aus.",
+   "file": "js/office/writer.js",
+   "line": 1593,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Speichere das Dokument zuerst – danach werden Versionen bei jedem Speichern angelegt.",
+   "file": "js/office/writer.js",
+   "line": 1610,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versionsverlauf",
+   "file": "js/office/writer.js",
+   "line": 1614,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· {0} · {1} Wörter",
+   "file": "js/office/writer.js",
+   "line": 1616,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Versionen.",
+   "file": "js/office/writer.js",
+   "line": 1616,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bei jedem Speichern wird eine Version auf diesem Gerät abgelegt (die letzten 20).",
+   "file": "js/office/writer.js",
+   "line": 1615,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Version wiederherstellen",
+   "file": "js/office/writer.js",
+   "line": 1623,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Den Stand vom {0} wiederherstellen? Der aktuelle Stand kann mit „Rückgängig“ zurückgeholt werden.",
+   "file": "js/office/writer.js",
+   "line": 1623,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Version wiederhergestellt",
+   "file": "js/office/writer.js",
+   "line": 1633,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+B / I / U",
+   "file": "js/office/writer.js",
+   "line": 1637,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Z / Strg+Y",
+   "file": "js/office/writer.js",
+   "line": 1637,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+F / Strg+H",
+   "file": "js/office/writer.js",
+   "line": 1637,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Suchen / Ersetzen",
+   "file": "js/office/writer.js",
+   "line": 1637,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+K",
+   "file": "js/office/writer.js",
+   "line": 1637,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Enter",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+1 … 4",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift 1 … 4",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+N",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage Standard",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+L / E / R / J",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links / Zentriert / Rechts / Blocksatz",
+   "file": "js/office/writer.js",
+   "line": 1638,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+1 / 5 / 2",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenabstand 1 / 1,5 / 2",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+M / Strg+Umschalt+M",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug vergrößern / verkleinern",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+L",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+> / <",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift größer / kleiner",
+   "file": "js/office/writer.js",
+   "line": 1639,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt++ / Strg+#",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hochgestellt / Tiefgestellt",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Leertaste",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichenformat löschen",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+C / V",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Format kopieren / übertragen",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+F3",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung wechseln",
+   "file": "js/office/writer.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+G",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Alt+M",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+E",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nächste Zelle · Listenebene · Tabulator",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+S",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Übersicht",
+   "file": "js/office/writer.js",
+   "line": 1641,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Digit1",
+   "file": "js/office/writer.js",
+   "line": 1679,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Digit2",
+   "file": "js/office/writer.js",
+   "line": 1679,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Digit5",
+   "file": "js/office/writer.js",
+   "line": 1679,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Period",
+   "file": "js/office/writer.js",
+   "line": 1682,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Comma",
+   "file": "js/office/writer.js",
+   "line": 1683,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Equal",
+   "file": "js/office/writer.js",
+   "line": 1684,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Space",
+   "file": "js/office/writer.js",
+   "line": 1686,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Format kopiert (Strg+Umschalt+V zum Übertragen)",
+   "file": "js/office/writer.js",
+   "line": 1687,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Himmelblau",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mintgrün",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vanille",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rosé",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Silber",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachtblau",
+   "file": "js/office/writer.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieser Wert ist hier nicht erlaubt.",
+   "file": "js/office/xlsx-write.js",
+   "line": 219,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} showErrorMessage=\"1\" errorTitle=\"Ungültiger Wert\" error=\"{1}\"",
+   "file": "js/office/xlsx-write.js",
+   "line": 219,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Bild",
+   "file": "js/security.js",
+   "line": 29,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0}Der Link führt zu {1} – öffne nur Links, denen du vertraust.",
+   "file": "js/security.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (",
+   "file": "js/views.js",
+   "line": 625,
+   "count": 1,
+   "content": false
+  }
+ ]
+}

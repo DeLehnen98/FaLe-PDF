@@ -1,0 +1,9645 @@
+{
+ "total": 4984,
+ "covered": 3607,
+ "missing": [
+  {
+   "key": "Antwort auf Mahnung oder Zahlungsaufforderung",
+   "file": "js/extras/letters.js",
+   "line": 430,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Antwort auf Zahlungsaufforderung",
+   "file": "js/extras/letters.js",
+   "line": 430,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Antworte sachlich und nachweisbar. Berechtigte Forderungen solltest du rechtzeitig begleichen – so vermeidest du weitere Kosten. Unberechtigten Forderungen (z. B. von Inkassobüros) kannst du schriftlich widersprechen.",
+   "file": "js/extras/letters.js",
+   "line": 431,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Forderung",
+   "file": "js/extras/letters.js",
+   "line": 433,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Deine Antwort",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ich habe bereits bezahlt",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ich bitte um Ratenzahlung",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ich bitte um Zahlungsaufschub",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ich bestreite die Forderung",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ich habe keine Rechnung erhalten",
+   "file": "js/extras/letters.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechnungs-, Kundennummer oder Aktenzeichen",
+   "file": "js/extras/letters.js",
+   "line": 435,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihr Schreiben vom",
+   "file": "js/extras/letters.js",
+   "line": 435,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Geforderter Betrag (€)",
+   "file": "js/extras/letters.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezahlt am",
+   "file": "js/extras/letters.js",
+   "line": 437,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monatliche Rate (€)",
+   "file": "js/extras/letters.js",
+   "line": 438,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlung möglich bis",
+   "file": "js/extras/letters.js",
+   "line": 439,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absender der Forderung",
+   "file": "js/extras/letters.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "z. B. Muster Versand GmbH",
+   "file": "js/extras/letters.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "über {0}",
+   "file": "js/extras/letters.js",
+   "line": 447,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "bezüglich Ihres Schreibens {0}{1} teile ich Ihnen mit, dass ich den Betrag bereits{2} bezahlt habe. Bitte prüfen Sie den Zahlungseingang und betrachten Sie die Angelegenheit als erledigt. Einen Zahlungsnachweis füge ich auf Wunsch bei.",
+   "file": "js/extras/letters.js",
+   "line": 449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "bezüglich Ihres Schreibens {0}{1}: Ich erkenne die Forderung an, kann sie derzeit aber nicht in einer Summe begleichen. Ich bitte Sie daher um Ratenzahlung in Höhe von {2} monatlich, beginnend mit dem nächsten Monatsersten.",
+   "file": "js/extras/letters.js",
+   "line": 450,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "bis zum {0}",
+   "file": "js/extras/letters.js",
+   "line": 451,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "bezüglich Ihres Schreibens {0}{1} bitte ich Sie um einen Zahlungsaufschub{2}.",
+   "file": "js/extras/letters.js",
+   "line": 451,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihrer Forderung aus dem Schreiben {0}{1} widerspreche ich hiermit. Ich bestreite die Forderung dem Grunde und der Höhe nach.",
+   "file": "js/extras/letters.js",
+   "line": 452,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihr Schreiben {0}{1} habe ich erhalten. Eine Rechnung zu dieser Forderung liegt mir jedoch nicht vor. Bitte senden Sie mir die Rechnung zu, damit ich die Forderung prüfen kann.",
+   "file": "js/extras/letters.js",
+   "line": 453,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte bestätigen Sie mir Ihr Einverständnis schriftlich. Für Ihr Entgegenkommen bedanke ich mich.",
+   "file": "js/extras/letters.js",
+   "line": 455,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte unterlassen Sie bis zur Klärung weitere Mahnungen und eine Weitergabe meiner Daten an Dritte. Für Rückfragen stehe ich Ihnen gern zur Verfügung.",
+   "file": "js/extras/letters.js",
+   "line": 456,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Für Rückfragen stehe ich Ihnen gern zur Verfügung.",
+   "file": "js/extras/letters.js",
+   "line": 457,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihre Zahlungsaufforderung – Betrag bereits bezahlt",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte um Ratenzahlung",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte um Zahlungsaufschub",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Widerspruch gegen Ihre Forderung",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihre Zahlungsaufforderung – Rechnung nicht erhalten",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihre Zahlungsaufforderung",
+   "file": "js/extras/letters.js",
+   "line": 458,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ihr Zeichen",
+   "file": "js/extras/letters.js",
+   "line": 459,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezahlt, Raten, Aufschub oder Widerspruch",
+   "file": "js/extras/letters.js",
+   "line": 475,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Briefkasten-Assistent",
+   "file": "js/extras/routes.js",
+   "line": 16,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Post verstehen – direkt auf deinem Gerät",
+   "file": "js/extras/routes.js",
+   "line": 16,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frag deine Dokumente",
+   "file": "js/extras/routes.js",
+   "line": 17,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Dokumenten-Gedächtnis – offline",
+   "file": "js/extras/routes.js",
+   "line": 17,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuer-Belege",
+   "file": "js/extras/routes.js",
+   "line": 18,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Für die Steuererklärung sammeln – auf deinem Gerät",
+   "file": "js/extras/routes.js",
+   "line": 18,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner",
+   "file": "js/extras/routes.js",
+   "line": 19,
+   "count": 6,
+   "content": false
+  },
+  {
+   "key": "Ende-zu-Ende-verschlüsselt mit der Familie teilen",
+   "file": "js/extras/routes.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift 4",
+   "file": "js/office/docstyles.js",
+   "line": 17,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Heading4",
+   "file": "js/office/docstyles.js",
+   "line": 17,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Überschrift 5",
+   "file": "js/office/docstyles.js",
+   "line": 18,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Heading5",
+   "file": "js/office/docstyles.js",
+   "line": 18,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift 6",
+   "file": "js/office/docstyles.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Heading6",
+   "file": "js/office/docstyles.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quote",
+   "file": "js/office/docstyles.js",
+   "line": 20,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Kein Abstand",
+   "file": "js/office/docstyles.js",
+   "line": 22,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Überschrift1",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 1",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift2",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 2",
+   "file": "js/office/docx-read.js",
+   "line": 161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift3",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 3",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift4",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überschrift 4",
+   "file": "js/office/docx-read.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "text-indent:{0}pt",
+   "file": "js/office/docx-read.js",
+   "line": 301,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "text-indent:-{0}pt",
+   "file": "js/office/docx-read.js",
+   "line": 302,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Segoe UI Symbol",
+   "file": "js/office/docx-write.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "No Spacing",
+   "file": "js/office/docx-write.js",
+   "line": 352,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tahoma",
+   "file": "js/office/fonts.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Trebuchet MS",
+   "file": "js/office/fonts.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Segoe UI",
+   "file": "js/office/fonts.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Cambria",
+   "file": "js/office/fonts.js",
+   "line": 13,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Garamond",
+   "file": "js/office/fonts.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Book Antiqua",
+   "file": "js/office/fonts.js",
+   "line": 15,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Consolas",
+   "file": "js/office/fonts.js",
+   "line": 17,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "#ÜBERLAUF!",
+   "file": "js/office/formula.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "BOGENMAß",
+   "file": "js/office/formula.js",
+   "line": 37,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "KGRÖßTE",
+   "file": "js/office/formula.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "FEHLER.TYP",
+   "file": "js/office/formula.js",
+   "line": 64,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Unerwartetes Zeichen „#“",
+   "file": "js/office/formula.js",
+   "line": 180,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültige Matrix",
+   "file": "js/office/formula.js",
+   "line": 397,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "märz",
+   "file": "js/office/formula.js",
+   "line": 625,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Häufig verwendet",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Mathematik",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 32,
+   "content": false
+  },
+  {
+   "key": "Statistik",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 24,
+   "content": false
+  },
+  {
+   "key": "Logik",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 10,
+   "content": false
+  },
+  {
+   "key": "Nachschlagen & Verweisen",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 21,
+   "content": false
+  },
+  {
+   "key": "Datum & Uhrzeit",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 22,
+   "content": false
+  },
+  {
+   "key": "Information",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 10,
+   "content": false
+  },
+  {
+   "key": "Finanzmathematik",
+   "file": "js/office/formula.js",
+   "line": 1792,
+   "count": 14,
+   "content": false
+  },
+  {
+   "key": "Wert suchen und zurückgeben (modern)",
+   "file": "js/office/formula.js",
+   "line": 1799,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wahrheitswert umkehren",
+   "file": "js/office/formula.js",
+   "line": 1800,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Genau eine (ungerade Anzahl) wahr",
+   "file": "js/office/formula.js",
+   "line": 1801,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrere Bedingungen nacheinander",
+   "file": "js/office/formula.js",
+   "line": 1801,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wert mit Liste vergleichen",
+   "file": "js/office/formula.js",
+   "line": 1802,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe der Produkte",
+   "file": "js/office/formula.js",
+   "line": 1803,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1803,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufrunden",
+   "file": "js/office/formula.js",
+   "line": 1804,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abrunden",
+   "file": "js/office/formula.js",
+   "line": 1804,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf ein Vielfaches runden",
+   "file": "js/office/formula.js",
+   "line": 1804,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf Vielfaches aufrunden",
+   "file": "js/office/formula.js",
+   "line": 1805,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf Vielfaches abrunden",
+   "file": "js/office/formula.js",
+   "line": 1805,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf ganze Zahl abrunden",
+   "file": "js/office/formula.js",
+   "line": 1806,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachkommastellen abschneiden",
+   "file": "js/office/formula.js",
+   "line": 1806,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rest einer Division",
+   "file": "js/office/formula.js",
+   "line": 1806,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Potenz",
+   "file": "js/office/formula.js",
+   "line": 1807,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quadratwurzel",
+   "file": "js/office/formula.js",
+   "line": 1807,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Natürlicher Logarithmus",
+   "file": "js/office/formula.js",
+   "line": 1807,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Logarithmus",
+   "file": "js/office/formula.js",
+   "line": 1808,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kreiszahl π",
+   "file": "js/office/formula.js",
+   "line": 1808,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorzeichen",
+   "file": "js/office/formula.js",
+   "line": 1808,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fakultät",
+   "file": "js/office/formula.js",
+   "line": 1808,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Größter gemeinsamer Teiler",
+   "file": "js/office/formula.js",
+   "line": 1809,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kleinstes gemeinsames Vielfaches",
+   "file": "js/office/formula.js",
+   "line": 1809,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zufallszahl zwischen 0 und 1",
+   "file": "js/office/formula.js",
+   "line": 1809,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zufällige ganze Zahl",
+   "file": "js/office/formula.js",
+   "line": 1810,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Teilergebnis (ignoriert Teilergebnisse)",
+   "file": "js/office/formula.js",
+   "line": 1810,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sinus (Bogenmaß)",
+   "file": "js/office/formula.js",
+   "line": 1811,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bogenmaß in Grad",
+   "file": "js/office/formula.js",
+   "line": 1811,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Grad in Bogenmaß",
+   "file": "js/office/formula.js",
+   "line": 1811,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Häufigster Wert",
+   "file": "js/office/formula.js",
+   "line": 1812,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standardabweichung (Stichprobe)",
+   "file": "js/office/formula.js",
+   "line": 1812,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standardabweichung (Grundgesamtheit)",
+   "file": "js/office/formula.js",
+   "line": 1813,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Varianz (Stichprobe)",
+   "file": "js/office/formula.js",
+   "line": 1813,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "k-größter Wert",
+   "file": "js/office/formula.js",
+   "line": 1813,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rang einer Zahl",
+   "file": "js/office/formula.js",
+   "line": 1814,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quantil",
+   "file": "js/office/formula.js",
+   "line": 1814,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quartil",
+   "file": "js/office/formula.js",
+   "line": 1815,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Korrelationskoeffizient",
+   "file": "js/office/formula.js",
+   "line": 1815,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zählen mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1815,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchschnitt mit Bedingung",
+   "file": "js/office/formula.js",
+   "line": 1816,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchschnitt mit mehreren Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1816,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Maximum mit Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1817,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum mit Bedingungen",
+   "file": "js/office/formula.js",
+   "line": 1817,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl leerer Zellen",
+   "file": "js/office/formula.js",
+   "line": 1818,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Waagerecht suchen",
+   "file": "js/office/formula.js",
+   "line": 1819,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position eines Werts",
+   "file": "js/office/formula.js",
+   "line": 1819,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position eines Werts (modern)",
+   "file": "js/office/formula.js",
+   "line": 1820,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wert an Position",
+   "file": "js/office/formula.js",
+   "line": 1820,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilennummer",
+   "file": "js/office/formula.js",
+   "line": 1821,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltennummer",
+   "file": "js/office/formula.js",
+   "line": 1821,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zeilen",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Spalten",
+   "file": "js/office/formula.js",
+   "line": 1822,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verschobener Bereich",
+   "file": "js/office/formula.js",
+   "line": 1823,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezug aus Text",
+   "file": "js/office/formula.js",
+   "line": 1823,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse als Text",
+   "file": "js/office/formula.js",
+   "line": 1824,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen und Spalten tauschen",
+   "file": "js/office/formula.js",
+   "line": 1824,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen nach Bedingung filtern (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1825,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bereich sortieren (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1825,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach anderem Bereich sortieren",
+   "file": "js/office/formula.js",
+   "line": 1826,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Doppelte entfernen (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1826,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlenfolge (überläuft)",
+   "file": "js/office/formula.js",
+   "line": 1827,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Texte mit Trennzeichen verbinden",
+   "file": "js/office/formula.js",
+   "line": 1828,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bereiche verketten",
+   "file": "js/office/formula.js",
+   "line": 1828,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen von rechts",
+   "file": "js/office/formula.js",
+   "line": 1829,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen aus der Mitte",
+   "file": "js/office/formula.js",
+   "line": 1829,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position (Groß/klein beachten)",
+   "file": "js/office/formula.js",
+   "line": 1830,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Position (mit Platzhaltern)",
+   "file": "js/office/formula.js",
+   "line": 1830,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen ersetzen",
+   "file": "js/office/formula.js",
+   "line": 1830,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text austauschen",
+   "file": "js/office/formula.js",
+   "line": 1831,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überflüssige Leerzeichen entfernen",
+   "file": "js/office/formula.js",
+   "line": 1831,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "In Kleinbuchstaben",
+   "file": "js/office/formula.js",
+   "line": 1832,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfangsbuchstaben groß",
+   "file": "js/office/formula.js",
+   "line": 1832,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl formatiert als Text",
+   "file": "js/office/formula.js",
+   "line": 1832,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Zahl umwandeln",
+   "file": "js/office/formula.js",
+   "line": 1833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text wiederholen",
+   "file": "js/office/formula.js",
+   "line": 1833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Texte exakt vergleichen",
+   "file": "js/office/formula.js",
+   "line": 1833,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichen aus Code",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Code eines Zeichens",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl mit festen Nachkommastellen",
+   "file": "js/office/formula.js",
+   "line": 1834,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuerzeichen entfernen",
+   "file": "js/office/formula.js",
+   "line": 1835,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text vor einem Trennzeichen",
+   "file": "js/office/formula.js",
+   "line": 1835,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text nach einem Trennzeichen",
+   "file": "js/office/formula.js",
+   "line": 1835,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit bilden",
+   "file": "js/office/formula.js",
+   "line": 1836,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum und Uhrzeit jetzt",
+   "file": "js/office/formula.js",
+   "line": 1836,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jahr eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tag eines Datums",
+   "file": "js/office/formula.js",
+   "line": 1837,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stunde",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minute",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sekunde",
+   "file": "js/office/formula.js",
+   "line": 1838,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wochentag als Zahl",
+   "file": "js/office/formula.js",
+   "line": 1839,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kalenderwoche",
+   "file": "js/office/formula.js",
+   "line": 1839,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kalenderwoche nach ISO (DIN)",
+   "file": "js/office/formula.js",
+   "line": 1840,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum plus Monate",
+   "file": "js/office/formula.js",
+   "line": 1840,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Letzter Tag des Monats",
+   "file": "js/office/formula.js",
+   "line": 1841,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitstage zwischen zwei Daten",
+   "file": "js/office/formula.js",
+   "line": 1841,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum nach Arbeitstagen",
+   "file": "js/office/formula.js",
+   "line": 1842,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Differenz in Jahren/Monaten/Tagen",
+   "file": "js/office/formula.js",
+   "line": 1842,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tage zwischen zwei Daten",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Datum umwandeln",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bruchteil eines Jahres",
+   "file": "js/office/formula.js",
+   "line": 1843,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle leer?",
+   "file": "js/office/formula.js",
+   "line": 1844,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist eine Zahl?",
+   "file": "js/office/formula.js",
+   "line": 1844,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist Text?",
+   "file": "js/office/formula.js",
+   "line": 1844,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist ein Fehler?",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ist #NV?",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gerade Zahl?",
+   "file": "js/office/formula.js",
+   "line": 1845,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Enthält eine Formel?",
+   "file": "js/office/formula.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fehlerwert #NV",
+   "file": "js/office/formula.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datentyp",
+   "file": "js/office/formula.js",
+   "line": 1846,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rate eines Kredits",
+   "file": "js/office/formula.js",
+   "line": 1847,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zukünftiger Wert",
+   "file": "js/office/formula.js",
+   "line": 1847,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Barwert",
+   "file": "js/office/formula.js",
+   "line": 1847,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zinssatz",
+   "file": "js/office/formula.js",
+   "line": 1848,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zahlungen",
+   "file": "js/office/formula.js",
+   "line": 1848,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nettobarwert",
+   "file": "js/office/formula.js",
+   "line": 1848,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Interner Zinsfuß",
+   "file": "js/office/formula.js",
+   "line": 1849,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zinsanteil einer Rate",
+   "file": "js/office/formula.js",
+   "line": 1849,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tilgungsanteil einer Rate",
+   "file": "js/office/formula.js",
+   "line": 1849,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Effektiver Jahreszins",
+   "file": "js/office/formula.js",
+   "line": 1850,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lineare Abschreibung",
+   "file": "js/office/formula.js",
+   "line": 1850,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kapitalwert mit Datumsangaben",
+   "file": "js/office/formula.js",
+   "line": 1851,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Interner Zinsfuß mit Datumsangaben",
+   "file": "js/office/formula.js",
+   "line": 1851,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Liste braucht eine Kopfzeile mit Feldnamen und mindestens einen Datensatz.",
+   "file": "js/office/mailmerge.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Feld{0}",
+   "file": "js/office/mailmerge.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Empfängerliste wählen",
+   "file": "js/office/mailmerge.js",
+   "line": 41,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Tabellen in deinen Dateien.",
+   "file": "js/office/mailmerge.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die erste Zeile der Tabelle enthält die Feldnamen (z. B. Anrede, Name, Straße, PLZ, Ort).",
+   "file": "js/office/mailmerge.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datei vom Gerät …",
+   "file": "js/office/mailmerge.js",
+   "line": 44,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": ".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+   "file": "js/office/mailmerge.js",
+   "line": 58,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Empfängerliste konnte nicht gelesen werden.",
+   "file": "js/office/mailmerge.js",
+   "line": 62,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Serienbrief fertigstellen",
+   "file": "js/office/mailmerge.js",
+   "line": 92,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Datensätze aus „{1}“.",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eine PDF mit allen Briefen",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzelne Word-Dateien (ZIP)",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Von Datensatz",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis",
+   "file": "js/office/mailmerge.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erstellen",
+   "file": "js/office/mailmerge.js",
+   "line": 98,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0} (Serienbrief).pdf",
+   "file": "js/office/mailmerge.js",
+   "line": 108,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Word-Dateien werden erstellt …",
+   "file": "js/office/mailmerge.js",
+   "line": 118,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Word-Dateien werden erstellt … {0} von {1}",
+   "file": "js/office/mailmerge.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} (Serienbrief).zip",
+   "file": "js/office/mailmerge.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Word-Dateien erstellt",
+   "file": "js/office/mailmerge.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Serienbrief konnte nicht erstellt werden.",
+   "file": "js/office/mailmerge.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonntag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Montag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Dienstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mittwoch",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Donnerstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Freitag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Samstag",
+   "file": "js/office/numfmt.js",
+   "line": 5,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "So",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mo",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Di",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mi",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Do",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Fr",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sa",
+   "file": "js/office/numfmt.js",
+   "line": 6,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Jan",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Feb",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Mrz",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Apr",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Jun",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Jul",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Aug",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Sep",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Okt",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nov",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Dez",
+   "file": "js/office/numfmt.js",
+   "line": 8,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einzug erste Zeile",
+   "file": "js/office/ruler.js",
+   "line": 9,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einzug links / hängend",
+   "file": "js/office/ruler.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug links",
+   "file": "js/office/ruler.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug rechts",
+   "file": "js/office/ruler.js",
+   "line": 11,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabstopp",
+   "file": "js/office/ruler.js",
+   "line": 60,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Innenlinien",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dicker Außenrahmen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Doppelte Unterlinie",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dünn",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dick",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gepunktet",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zellen formatieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 30,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausfüllen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 32,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Schutz",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 32,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Waagerecht",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schräg (45°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach oben gedreht (90°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten gedreht (−90°)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Senkrecht gestapelt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatcode (deutsch, z. B. #.##0,00 € oder TT.MM.JJJJ)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorschau:",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Horizontal",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikal",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textrichtung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenumbruch",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Standard (Calibri)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schriftfarbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linienart",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wähle eine Vorlage – sie wird beim Übernehmen auf den markierten Bereich angewendet.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hintergrundfarbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eigene Farbe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesperrt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formel ausblenden",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wirkt erst, wenn das Blatt geschützt ist (Daten → Blatt schützen). Der Schutz verhindert versehentliche Änderungen – er ist keine Verschlüsselung.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieser Formatcode ist ungültig.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 74,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Tabelle zum Sortieren.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 157,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Ebene entfernen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sortieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 162,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Bereich {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Daten haben Überschriften",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Ebene hinzufügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 163,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefinierter Filter: Spalte {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 188,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stattdessen die obersten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte zeigen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Platzhalter: ? für ein Zeichen, * für beliebig viele.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 189,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Duplikate entfernen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 219,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Bereich {0}. Zeilen mit gleichen Werten in den gewählten Spalten werden entfernt (die erste bleibt).",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 220,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} doppelte Zeile{1} entfernt · {2} eindeutige bleiben",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 238,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Spalte mit Text.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 248,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text in Spalten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 250,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabulator",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Semikolon",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Komma",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Leerzeichen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Getrennt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Feste Breite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Andere:",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufeinanderfolgende Trennzeichen als eins behandeln",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Trennpositionen (Zeichen, z. B. 5, 12)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 251,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Text auf Spalten verteilt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 282,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 292,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lege fest, welche Werte in den Zellen erlaubt sind. Bei Listen erscheint ein kleiner Pfeil zur Auswahl.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zulassen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Daten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Erlaubte Werte (je Zeile einer) oder ein Bereich wie =$A$1:$A$5",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum / Wert",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Maximum",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Eingabehinweis (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fehlermeldung (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 293,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung entfernt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 321,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung angelegt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 333,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· nur {0}",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name löschen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Namen. Namen machen Formeln lesbarer, z. B. =Netto*Steuersatz.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 341,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namen definieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 343,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namens-Manager",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 343,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "z. B. Steuersatz",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bezieht sich auf",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitsmappe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 344,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name anlegen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 348,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültiger Name. Er muss mit einem Buchstaben beginnen und darf keine Zelladresse sein.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 352,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diesen Namen gibt es schon.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 354,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Bezug ist ungültig.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 355,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name gelöscht",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 366,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name „{0}“ angelegt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 376,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalte einfügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 382,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alles",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Formate",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur Formeln",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte und Zahlenformate",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 385,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechenoperation",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Addieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Subtrahieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Multiplizieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dividieren",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Leerzellen überspringen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Transponieren (Zeilen ↔ Spalten)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 383,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Funktion suchen, z. B. Summe, Datum, SVERWEIS …",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 402,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Funktion gefunden.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 413,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere eine Tabelle mit Überschriften (mindestens zwei Zeilen).",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle bearbeiten",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle erstellen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 442,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "— (keine)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 446,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "— (keiner)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Quelle: {0}!{1} · {2} Datensätze",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wertfeld hinzufügen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nur diese Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 443,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werte",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 455,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Berechnung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 455,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Reihe ausfüllen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 505,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Richtung",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten (Spalten)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach rechts (Zeilen)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linear",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Geometrisch",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Startwert",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrittweite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Endwert (optional)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeiteinheit",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tag",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wochentag (Mo–Fr)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Jahr",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anzahl Zellen",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte gib einen Startwert ein.",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 520,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Werte ausgefüllt",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenhöhe",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 540,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltenbreite",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 540,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Höhe in Punkt (Standard 15)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite in Zeichen (Standard 12)",
+   "file": "js/office/sheet-dialogs.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mär",
+   "file": "js/office/sheet-ops.js",
+   "line": 8,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tuesday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wednesday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Thursday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Friday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Saturday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sunday",
+   "file": "js/office/sheet-ops.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mon",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tue",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wed",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Thu",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fri",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sat",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sun",
+   "file": "js/office/sheet-ops.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "January",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "February",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "March",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "May",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "June",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "July",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "October",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "December",
+   "file": "js/office/sheet-ops.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mar",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Oct",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dec",
+   "file": "js/office/sheet-ops.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Min",
+   "file": "js/office/sheet-ops.js",
+   "line": 239,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Max",
+   "file": "js/office/sheet-ops.js",
+   "line": 239,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesamt – {0}",
+   "file": "js/office/sheet-ops.js",
+   "line": 282,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesamtergebnis",
+   "file": "js/office/sheet-ops.js",
+   "line": 282,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle …",
+   "file": "js/office/sheet.js",
+   "line": 62,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namens-Manager …",
+   "file": "js/office/sheet.js",
+   "line": 63,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tastenkürzel",
+   "file": "js/office/sheet.js",
+   "line": 65,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Formeln",
+   "file": "js/office/sheet.js",
+   "line": 93,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Durchgestrichen (Strg+5)",
+   "file": "js/office/sheet.js",
+   "line": 99,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikale Ausrichtung",
+   "file": "js/office/sheet.js",
+   "line": 102,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehr Nachkommastellen",
+   "file": "js/office/sheet.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weniger Nachkommastellen",
+   "file": "js/office/sheet.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zellenformatvorlagen",
+   "file": "js/office/sheet.js",
+   "line": 104,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Datenüberprüfung (Dropdown-Liste)",
+   "file": "js/office/sheet.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle",
+   "file": "js/office/sheet.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-a=\"ins-date\"",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "data-a=\"ins-time\"",
+   "file": "js/office/sheet.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name definieren",
+   "file": "js/office/sheet.js",
+   "line": 113,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "AutoSumme …",
+   "file": "js/office/sheet.js",
+   "line": 116,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu berechnen",
+   "file": "js/office/sheet.js",
+   "line": 117,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sortieren …",
+   "file": "js/office/sheet.js",
+   "line": 120,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt schützen",
+   "file": "js/office/sheet.js",
+   "line": 122,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Pivot aktualisieren",
+   "file": "js/office/sheet.js",
+   "line": 122,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixieren …",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gitternetzlinien",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formeln anzeigen",
+   "file": "js/office/sheet.js",
+   "line": 125,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Menüband",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Aa",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Ganze Zelle",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse oder Name",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelladresse oder Name – mit Enter springen; neuen Namen für die Markierung eintippen",
+   "file": "js/office/sheet.js",
+   "line": 90,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeblendete Spalte {0}",
+   "file": "js/office/sheet.js",
+   "line": 338,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ziehen zum Ausfüllen (Doppelklick: bis zum Datenende)",
+   "file": "js/office/sheet.js",
+   "line": 407,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Summe: {0} · Mittelwert: {1} · Anzahl: {2}{3}",
+   "file": "js/office/sheet.js",
+   "line": 479,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· geschützt",
+   "file": "js/office/sheet.js",
+   "line": 482,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Blatt ist geschützt. Hebe den Schutz unter „Daten → Blatt schützen“ auf, um diese Zellen zu ändern.",
+   "file": "js/office/sheet.js",
+   "line": 495,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ ist hier nicht erlaubt ({1}).",
+   "file": "js/office/sheet.js",
+   "line": 567,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zirkelbezug: Die Formel in {0}{1} bezieht sich auf sich selbst.",
+   "file": "js/office/sheet.js",
+   "line": 646,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieses Blatt gibt es nicht.",
+   "file": "js/office/sheet.js",
+   "line": 752,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ ist kein Bereich (={1}).",
+   "file": "js/office/sheet.js",
+   "line": 763,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name „{0}“ für {1} angelegt",
+   "file": "js/office/sheet.js",
+   "line": 771,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ungültige Zelladresse oder unbekannter Name (z. B. B7, A1:C5 oder Umsatz).",
+   "file": "js/office/sheet.js",
+   "line": 774,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausschneiden",
+   "file": "js/office/sheet.js",
+   "line": 944,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalte einfügen …",
+   "file": "js/office/sheet.js",
+   "line": 947,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zellen formatieren …",
+   "file": "js/office/sheet.js",
+   "line": 949,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen oberhalb einfügen",
+   "file": "js/office/sheet.js",
+   "line": 950,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten links einfügen",
+   "file": "js/office/sheet.js",
+   "line": 951,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen löschen",
+   "file": "js/office/sheet.js",
+   "line": 952,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten löschen",
+   "file": "js/office/sheet.js",
+   "line": 953,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Inhalte löschen",
+   "file": "js/office/sheet.js",
+   "line": 954,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach diesem Wert filtern",
+   "file": "js/office/sheet.js",
+   "line": 958,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Namen definieren …",
+   "file": "js/office/sheet.js",
+   "line": 959,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle",
+   "file": "js/office/sheet.js",
+   "line": 960,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenhöhe …",
+   "file": "js/office/sheet.js",
+   "line": 968,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Optimale Höhe",
+   "file": "js/office/sheet.js",
+   "line": 969,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausblenden",
+   "file": "js/office/sheet.js",
+   "line": 970,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einblenden",
+   "file": "js/office/sheet.js",
+   "line": 971,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeile",
+   "file": "js/office/sheet.js",
+   "line": 972,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spaltenbreite …",
+   "file": "js/office/sheet.js",
+   "line": 980,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Optimale Breite",
+   "file": "js/office/sheet.js",
+   "line": 981,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte",
+   "file": "js/office/sheet.js",
+   "line": 987,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Zeile{1} eingeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1060,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Spalte{1} ausgeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1061,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Spalte{1} eingeblendet",
+   "file": "js/office/sheet.js",
+   "line": 1062,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neben der Markierung gibt es keine Daten, bis zu denen ausgefüllt werden kann.",
+   "file": "js/office/sheet.js",
+   "line": 1137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu berechnet",
+   "file": "js/office/sheet.js",
+   "line": 1211,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeschnitten – an der Zielzelle einfügen (Strg+V).",
+   "file": "js/office/sheet.js",
+   "line": 1269,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ausgeschnitten",
+   "file": "js/office/sheet.js",
+   "line": 1382,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Einfügen von außerhalb bitte Strg+V verwenden.",
+   "file": "js/office/sheet.js",
+   "line": 1387,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopiere zuerst Zellen in dieser Tabelle (Strg+C).",
+   "file": "js/office/sheet.js",
+   "line": 1394,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weitere Farben …",
+   "file": "js/office/sheet.js",
+   "line": 1500,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Vertikal ausrichten",
+   "file": "js/office/sheet.js",
+   "line": 1503,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimum",
+   "file": "js/office/sheet.js",
+   "line": 1507,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Funktionen …",
+   "file": "js/office/sheet.js",
+   "line": 1508,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Filter gelöscht",
+   "file": "js/office/sheet.js",
+   "line": 1516,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf diesem Blatt ist kein Filter aktiv.",
+   "file": "js/office/sheet.js",
+   "line": 1516,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis {0} fixieren (Zeilen darüber, Spalten links)",
+   "file": "js/office/sheet.js",
+   "line": 1524,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Oberste Zeile fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1525,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Spalte fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1526,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixierung aufheben",
+   "file": "js/office/sheet.js",
+   "line": 1527,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixieren",
+   "file": "js/office/sheet.js",
+   "line": 1528,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle aktualisiert",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0} Pivot-Tabelle{1} aktualisiert",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Mappe enthält keine Pivot-Tabelle.",
+   "file": "js/office/sheet.js",
+   "line": 1533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Formeln neu berechnet",
+   "file": "js/office/sheet.js",
+   "line": 1538,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Braun",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lavendel",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Hellgrau",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Gut (grün)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlecht (rot)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neutral (gelb)",
+   "file": "js/office/sheet.js",
+   "line": 1545,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fixiert: {0}{1}{2}",
+   "file": "js/office/sheet.js",
+   "line": 1562,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blattschutz aufgehoben",
+   "file": "js/office/sheet.js",
+   "line": 1565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt geschützt – nur entsperrte Zellen sind änderbar. Hinweis: Das ist ein Schutz vor versehentlichen Änderungen, keine Verschlüsselung.",
+   "file": "js/office/sheet.js",
+   "line": 1566,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sortiert nach",
+   "file": "js/office/sheet.js",
+   "line": 1640,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile einfügen",
+   "file": "js/office/sheet.js",
+   "line": 1651,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte einfügen",
+   "file": "js/office/sheet.js",
+   "line": 1651,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile löschen",
+   "file": "js/office/sheet.js",
+   "line": 1652,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte löschen",
+   "file": "js/office/sheet.js",
+   "line": 1652,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Doppelte Rahmenlinie unten",
+   "file": "js/office/sheet.js",
+   "line": 1668,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Rahmen links",
+   "file": "js/office/sheet.js",
+   "line": 1669,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmen rechts",
+   "file": "js/office/sheet.js",
+   "line": 1670,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Weitere Rahmen …",
+   "file": "js/office/sheet.js",
+   "line": 1673,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gefiltert nach „{0}“",
+   "file": "js/office/sheet.js",
+   "line": 1776,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlenfilter …",
+   "file": "js/office/sheet.js",
+   "line": 1790,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textfilter …",
+   "file": "js/office/sheet.js",
+   "line": 1790,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aktiv: {0}",
+   "file": "js/office/sheet.js",
+   "line": 1791,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Quelldaten der Pivot-Tabelle wurden nicht gefunden.",
+   "file": "js/office/sheet.js",
+   "line": 2062,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot{0}",
+   "file": "js/office/sheet.js",
+   "line": 2068,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pivot-Tabelle erstellt – über „Daten → Pivot aktualisieren“ neu berechnen.",
+   "file": "js/office/sheet.js",
+   "line": 2076,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Registerfarbe …",
+   "file": "js/office/sheet.js",
+   "line": 2160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blattschutz aufheben",
+   "file": "js/office/sheet.js",
+   "line": 2161,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blatt gelöscht",
+   "file": "js/office/sheet.js",
+   "line": 2172,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Farbe",
+   "file": "js/office/sheet.js",
+   "line": 2177,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Registerfarbe",
+   "file": "js/office/sheet.js",
+   "line": 2178,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ angelegt",
+   "file": "js/office/sheet.js",
+   "line": 2199,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg",
+   "file": "js/office/sheet.js",
+   "line": 2224,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bewegen",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Pfeiltasten",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle wechseln",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Rand des Datenbereichs",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+Pfeil",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markierung erweitern",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bis zum Datenrand markieren",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tab / Umschalt+Tab",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nach rechts / links",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eingabe",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Nach unten (in Markierung bleiben)",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfang / letzte benutzte Zelle",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0}+Bild↑ / Bild↓",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorheriges / nächstes Blatt",
+   "file": "js/office/sheet.js",
+   "line": 2226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Spalte",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+Leertaste",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zeile",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datenbereich, dann alles",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrere Bereiche",
+   "file": "js/office/sheet.js",
+   "line": 2227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alt+Eingabe",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenumbruch in der Zelle",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eingabe in alle markierten Zellen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "$-Bezug umschalten (beim Bearbeiten)",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Entf",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhalt löschen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nach unten / rechts ausfüllen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum / Uhrzeit einfügen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rückgängig / Wiederholen",
+   "file": "js/office/sheet.js",
+   "line": 2228,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zwischenablage",
+   "file": "js/office/sheet.js",
+   "line": 2229,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopieren / Ausschneiden / Einfügen",
+   "file": "js/office/sheet.js",
+   "line": 2229,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fett / Kursiv / Unterstrichen",
+   "file": "js/office/sheet.js",
+   "line": 2230,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeilen/Spalten einfügen / löschen",
+   "file": "js/office/sheet.js",
+   "line": 2231,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+F11",
+   "file": "js/office/sheet.js",
+   "line": 2231,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tastenkürzel – Tabelle",
+   "file": "js/office/sheet.js",
+   "line": 2233,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist nicht gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist größer als",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist größer oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 103,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist kleiner als",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ist kleiner oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "enthält nicht",
+   "file": "js/office/sheetfx.js",
+   "line": 104,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Liste (Dropdown)",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Zahl",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dezimalzahl",
+   "file": "js/office/sheetfx.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "größer als",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "größer oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kleiner oder gleich",
+   "file": "js/office/sheetfx.js",
+   "line": 150,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "[Bild]",
+   "file": "js/office/trackchanges.js",
+   "line": 234,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefiniert …",
+   "file": "js/office/workbook.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl ohne Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahl, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Tausenderpunkt",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tausenderpunkt, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 23,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Negative Zahlen rot",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Währung ohne Cent",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Währung, negativ rot",
+   "file": "js/office/workbook.js",
+   "line": 24,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Prozent, 2 Nachkommastellen",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum (31.12.2026)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum kurz (31.12.26)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum lang (31. Dezember 2026)",
+   "file": "js/office/workbook.js",
+   "line": 25,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Wochentag",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monat und Jahr",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit (13:30)",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Uhrzeit mit Sekunden",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Stunden über 24 (Zeiterfassung)",
+   "file": "js/office/workbook.js",
+   "line": 26,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum und Uhrzeit",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wissenschaftlich",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bruch",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Postleitzahl (5 Stellen)",
+   "file": "js/office/workbook.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlecht",
+   "file": "js/office/workbook.js",
+   "line": 33,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Warnhinweis",
+   "file": "js/office/workbook.js",
+   "line": 42,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Akzent",
+   "file": "js/office/workbook.js",
+   "line": 43,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(wie Standard)",
+   "file": "js/office/writer-format.js",
+   "line": 112,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage ändern: {0}",
+   "file": "js/office/writer-format.js",
+   "line": 114,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links (Standard)",
+   "file": "js/office/writer-format.js",
+   "line": 119,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Größe (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nicht vom nächsten Absatz trennen",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Abstand vor (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Änderung gilt für alle Absätze mit der Formatvorlage „{0}“ und wird in der Word-Datei gespeichert.",
+   "file": "js/office/writer-format.js",
+   "line": 115,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absatz",
+   "file": "js/office/writer-format.js",
+   "line": 211,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenabstand (Vielfaches)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug (cm)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sondereinzug",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hängend",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sondereinzug um (cm)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand (pt)",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vor",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen- und Seitenumbruch",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch oberhalb",
+   "file": "js/office/writer-format.js",
+   "line": 212,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "✓ Häkchen",
+   "file": "js/office/writer-format.js",
+   "line": 420,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gitternetz",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlicht",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kopfzeile farbig",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gebändert",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Minimal",
+   "file": "js/office/writer-table.js",
+   "line": 5,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabellenformatvorlage",
+   "file": "js/office/writer-table.js",
+   "line": 365,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile als Überschriftenzeile (wird auf jeder Seite wiederholt)",
+   "file": "js/office/writer-table.js",
+   "line": 365,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabelleneigenschaften",
+   "file": "js/office/writer-table.js",
+   "line": 388,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite (% der Seite)",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertikale Ausrichtung der Zelle(n)",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile auf jeder Seite wiederholen",
+   "file": "js/office/writer-table.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hellgrün",
+   "file": "js/office/writer.js",
+   "line": 28,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Flieder",
+   "file": "js/office/writer.js",
+   "line": 28,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sprechblase",
+   "file": "js/office/writer.js",
+   "line": 37,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versionsverlauf …",
+   "file": "js/office/writer.js",
+   "line": 85,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter zählen …",
+   "file": "js/office/writer.js",
+   "line": 86,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern: an",
+   "file": "js/office/writer.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern: aus",
+   "file": "js/office/writer.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überprüfen",
+   "file": "js/office/writer.js",
+   "line": 108,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sendungen",
+   "file": "js/office/writer.js",
+   "line": 108,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Format übertragen (Strg+Umschalt+C / V)",
+   "file": "js/office/writer.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift vergrößern (Strg+Umschalt+>)",
+   "file": "js/office/writer.js",
+   "line": 121,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift verkleinern (Strg+Umschalt+<)",
+   "file": "js/office/writer.js",
+   "line": 121,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hochgestellt (Strg+Umschalt++)",
+   "file": "js/office/writer.js",
+   "line": 123,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tiefgestellt (Strg+#)",
+   "file": "js/office/writer.js",
+   "line": 123,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung (Umschalt+F3)",
+   "file": "js/office/writer.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatierung löschen (Strg+Leertaste)",
+   "file": "js/office/writer.js",
+   "line": 126,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Linksbündig (Strg+L)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zentriert (Strg+E)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechtsbündig (Strg+R)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Blocksatz (Strg+J)",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilen- und Absatzabstand",
+   "file": "js/office/writer.js",
+   "line": 128,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Liste mit mehreren Ebenen",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug verkleinern (Strg+Umschalt+M)",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug vergrößern (Strg+M)",
+   "file": "js/office/writer.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen verwalten",
+   "file": "js/office/writer.js",
+   "line": 130,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Link (Strg+K)",
+   "file": "js/office/writer.js",
+   "line": 131,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch (Strg+Enter)",
+   "file": "js/office/writer.js",
+   "line": 131,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-table\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-image\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-shape\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-textbox\"",
+   "file": "js/office/writer.js",
+   "line": 136,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-link\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-pagebreak\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abschnittsumbruch",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-section\"",
+   "file": "js/office/writer.js",
+   "line": 137,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-toc\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-footnote\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-comment\"",
+   "file": "js/office/writer.js",
+   "line": 138,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-hf\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-pn\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-date\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Symbol",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-symbol\"",
+   "file": "js/office/writer.js",
+   "line": 139,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenränder",
+   "file": "js/office/writer.js",
+   "line": 142,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Umbrüche",
+   "file": "js/office/writer.js",
+   "line": 143,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Absatz …",
+   "file": "js/office/writer.js",
+   "line": 144,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand",
+   "file": "js/office/writer.js",
+   "line": 144,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter zählen",
+   "file": "js/office/writer.js",
+   "line": 148,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Neuer Kommentar",
+   "file": "js/office/writer.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "data-x=\"ins-comment2\"",
+   "file": "js/office/writer.js",
+   "line": 149,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen nachverfolgen",
+   "file": "js/office/writer.js",
+   "line": 150,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Annehmen",
+   "file": "js/office/writer.js",
+   "line": 151,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Ablehnen",
+   "file": "js/office/writer.js",
+   "line": 151,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Empfänger wählen",
+   "file": "js/office/writer.js",
+   "line": 154,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seriendruckfeld",
+   "file": "js/office/writer.js",
+   "line": 154,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorheriger Datensatz",
+   "file": "js/office/writer.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nächster Datensatz",
+   "file": "js/office/writer.js",
+   "line": 155,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fertigstellen",
+   "file": "js/office/writer.js",
+   "line": 156,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenlayout",
+   "file": "js/office/writer.js",
+   "line": 159,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Webansicht",
+   "file": "js/office/writer.js",
+   "line": 159,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lineal",
+   "file": "js/office/writer.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatierungszeichen",
+   "file": "js/office/writer.js",
+   "line": 160,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gehe zu Seite",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Versionen",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch speichern",
+   "file": "js/office/writer.js",
+   "line": 162,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeile oberhalb",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeile unterhalb",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte links",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spalte rechts",
+   "file": "js/office/writer.js",
+   "line": 165,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle teilen",
+   "file": "js/office/writer.js",
+   "line": 167,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Spalten verteilen",
+   "file": "js/office/writer.js",
+   "line": 167,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schattierung",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Tabellenformat",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschriftenzeile",
+   "file": "js/office/writer.js",
+   "line": 168,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textumbruch",
+   "file": "js/office/writer.js",
+   "line": 171,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Größe …",
+   "file": "js/office/writer.js",
+   "line": 172,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alternativtext",
+   "file": "js/office/writer.js",
+   "line": 172,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Markup-Anzeige",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Alle Markups",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kein Markup",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganzes Wort",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Reguläre Ausdrücke",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Regex",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen schließen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle annehmen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle ablehnen",
+   "file": "js/office/writer.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachverfolgung an",
+   "file": "js/office/writer.js",
+   "line": 227,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zoom zurücksetzen",
+   "file": "js/office/writer.js",
+   "line": 228,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ändern …",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage an die Formatierung des aktuellen Absatzes anpassen",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus Markierung",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Direkte Formatierung bei allen Absätzen dieser Formatvorlage entfernen",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle angleichen",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlagen werden in der Word-Datei gespeichert (styles.xml) und beim Öffnen übernommen.",
+   "file": "js/office/writer.js",
+   "line": 436,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage „{0}“ geändert",
+   "file": "js/office/writer.js",
+   "line": 457,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in einen Absatz.",
+   "file": "js/office/writer.js",
+   "line": 459,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage „{0}“ angepasst",
+   "file": "js/office/writer.js",
+   "line": 464,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absätze angeglichen",
+   "file": "js/office/writer.js",
+   "line": 467,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Satzanfang groß",
+   "file": "js/office/writer.js",
+   "line": 514,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jedes Wort Groß",
+   "file": "js/office/writer.js",
+   "line": 514,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "gROSS/kLEIN umkehren",
+   "file": "js/office/writer.js",
+   "line": 514,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung",
+   "file": "js/office/writer.js",
+   "line": 514,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere zuerst Text.",
+   "file": "js/office/writer.js",
+   "line": 517,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in den Text, dessen Format du übertragen möchtest.",
+   "file": "js/office/writer.js",
+   "line": 533,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere jetzt den Text, der das Format bekommen soll.",
+   "file": "js/office/writer.js",
+   "line": 537,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand vor Absatz entfernen",
+   "file": "js/office/writer.js",
+   "line": 557,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand vor Absatz hinzufügen (12 pt)",
+   "file": "js/office/writer.js",
+   "line": 557,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach Absatz entfernen",
+   "file": "js/office/writer.js",
+   "line": 558,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abstand nach Absatz hinzufügen (8 pt)",
+   "file": "js/office/writer.js",
+   "line": 558,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absatzoptionen …",
+   "file": "js/office/writer.js",
+   "line": 559,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aufzählung: {0}",
+   "file": "js/office/writer.js",
+   "line": 584,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierung: {0}",
+   "file": "js/office/writer.js",
+   "line": 586,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mehrstufig: {0}",
+   "file": "js/office/writer.js",
+   "line": 588,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu nummerieren (bei 1 beginnen)",
+   "file": "js/office/writer.js",
+   "line": 590,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierung fortsetzen",
+   "file": "js/office/writer.js",
+   "line": 591,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierungswert festlegen …",
+   "file": "js/office/writer.js",
+   "line": 592,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nummerierungswert festlegen",
+   "file": "js/office/writer.js",
+   "line": 592,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beginnen bei",
+   "file": "js/office/writer.js",
+   "line": 592,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Listen",
+   "file": "js/office/writer.js",
+   "line": 594,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zelle teilen …",
+   "file": "js/office/writer.js",
+   "line": 652,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabelleneigenschaften …",
+   "file": "js/office/writer.js",
+   "line": 654,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markiere mehrere zusammenhängende Zellen (mit der Maus ziehen oder Umschalt+Pfeiltasten).",
+   "file": "js/office/writer.js",
+   "line": 675,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinien außen",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinien innen",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie oben",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie unten",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie links",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rahmenlinie rechts",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dicke Rahmenlinie unten",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Tabelle: alle Linien",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ganze Tabelle: ohne Linien",
+   "file": "js/office/writer.js",
+   "line": 691,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tabellenformatvorlagen",
+   "file": "js/office/writer.js",
+   "line": 692,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erste Zeile wird auf jeder Seite wiederholt.",
+   "file": "js/office/writer.js",
+   "line": 693,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschriftenzeile aus.",
+   "file": "js/office/writer.js",
+   "line": 693,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textfeld – hier schreiben",
+   "file": "js/office/writer.js",
+   "line": 725,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datum einfügen",
+   "file": "js/office/writer.js",
+   "line": 743,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Symbol einfügen",
+   "file": "js/office/writer.js",
+   "line": 746,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Text in Zeile",
+   "file": "js/office/writer.js",
+   "line": 786,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links, Text umfließt rechts",
+   "file": "js/office/writer.js",
+   "line": 786,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechts, Text umfließt links",
+   "file": "js/office/writer.js",
+   "line": 786,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bild ausrichten",
+   "file": "js/office/writer.js",
+   "line": 788,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bildgröße",
+   "file": "js/office/writer.js",
+   "line": 791,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Breite in cm",
+   "file": "js/office/writer.js",
+   "line": 791,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beschreibung des Bildes (für Screenreader und Barrierefreiheit)",
+   "file": "js/office/writer.js",
+   "line": 795,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textumbruch …",
+   "file": "js/office/writer.js",
+   "line": 808,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alternativtext …",
+   "file": "js/office/writer.js",
+   "line": 809,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eine Spalte",
+   "file": "js/office/writer.js",
+   "line": 821,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Drei Spalten",
+   "file": "js/office/writer.js",
+   "line": 821,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abschnittsumbruch (nächste Seite)",
+   "file": "js/office/writer.js",
+   "line": 851,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seitenumbruch oberhalb des Absatzes",
+   "file": "js/office/writer.js",
+   "line": 852,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Benutzerdefinierte Seitenränder …",
+   "file": "js/office/writer.js",
+   "line": 859,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Änderungen werden nachverfolgt.",
+   "file": "js/office/writer.js",
+   "line": 1362,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachverfolgung aus.",
+   "file": "js/office/writer.js",
+   "line": 1362,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine nachverfolgten Änderungen. Schalte unter „Überprüfen“ die Nachverfolgung ein – Einfügungen und Löschungen werden dann markiert.",
+   "file": "js/office/writer.js",
+   "line": 1373,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Änderung{1} {2}",
+   "file": "js/office/writer.js",
+   "line": 1388,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Keine Änderungen im Dokument.",
+   "file": "js/office/writer.js",
+   "line": 1401,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Änderung {0}",
+   "file": "js/office/writer.js",
+   "line": 1412,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Setze den Cursor in eine Änderung.",
+   "file": "js/office/writer.js",
+   "line": 1412,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} und weiter",
+   "file": "js/office/writer.js",
+   "line": 1413,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle Änderungen {0}",
+   "file": "js/office/writer.js",
+   "line": 1414,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Dokument enthält nachverfolgte Änderungen (Überprüfen → Änderungen).",
+   "file": "js/office/writer.js",
+   "line": 1417,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Empfänger · Felder: {1}{2}",
+   "file": "js/office/writer.js",
+   "line": 1432,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seriendruckfeld einfügen",
+   "file": "js/office/writer.js",
+   "line": 1437,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Füge zuerst Seriendruckfelder ein (Sendungen → Seriendruckfeld).",
+   "file": "js/office/writer.js",
+   "line": 1454,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seiten (ca.)",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeichen (ohne Leerzeichen)",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zeichen (mit Leerzeichen)",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Sätze",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wörter pro Satz (Ø)",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lesezeit (ca.)",
+   "file": "js/office/writer.js",
+   "line": 1475,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Markierung",
+   "file": "js/office/writer.js",
+   "line": 1476,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Seite (1–{0})",
+   "file": "js/office/writer.js",
+   "line": 1482,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gehe zu",
+   "file": "js/office/writer.js",
+   "line": 1482,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisches Speichern ist an (alle 30 Sekunden bei Änderungen).",
+   "file": "js/office/writer.js",
+   "line": 1506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisches Speichern ist aus.",
+   "file": "js/office/writer.js",
+   "line": 1506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Speichere das Dokument zuerst – danach werden Versionen bei jedem Speichern angelegt.",
+   "file": "js/office/writer.js",
+   "line": 1523,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versionsverlauf",
+   "file": "js/office/writer.js",
+   "line": 1527,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· {0} · {1} Wörter",
+   "file": "js/office/writer.js",
+   "line": 1529,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Versionen.",
+   "file": "js/office/writer.js",
+   "line": 1529,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bei jedem Speichern wird eine Version auf diesem Gerät abgelegt (die letzten 20).",
+   "file": "js/office/writer.js",
+   "line": 1528,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Version wiederherstellen",
+   "file": "js/office/writer.js",
+   "line": 1536,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Den Stand vom {0} wiederherstellen? Der aktuelle Stand kann mit „Rückgängig“ zurückgeholt werden.",
+   "file": "js/office/writer.js",
+   "line": 1536,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Version wiederhergestellt",
+   "file": "js/office/writer.js",
+   "line": 1546,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+B / I / U",
+   "file": "js/office/writer.js",
+   "line": 1550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Z / Strg+Y",
+   "file": "js/office/writer.js",
+   "line": 1550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+F / Strg+H",
+   "file": "js/office/writer.js",
+   "line": 1550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Suchen / Ersetzen",
+   "file": "js/office/writer.js",
+   "line": 1550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+K",
+   "file": "js/office/writer.js",
+   "line": 1550,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Enter",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+1 … 4",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überschrift 1 … 4",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+N",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Formatvorlage Standard",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+L / E / R / J",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Links / Zentriert / Rechts / Blocksatz",
+   "file": "js/office/writer.js",
+   "line": 1551,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+1 / 5 / 2",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeilenabstand 1 / 1,5 / 2",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+M / Strg+Umschalt+M",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einzug vergrößern / verkleinern",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+L",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+> / <",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schrift größer / kleiner",
+   "file": "js/office/writer.js",
+   "line": 1552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt++ / Strg+#",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hochgestellt / Tiefgestellt",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Leertaste",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zeichenformat löschen",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+C / V",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Format kopieren / übertragen",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Umschalt+F3",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Groß-/Kleinschreibung wechseln",
+   "file": "js/office/writer.js",
+   "line": 1553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+G",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Alt+M",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+Umschalt+E",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nächste Zelle · Listenebene · Tabulator",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Strg+S",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Übersicht",
+   "file": "js/office/writer.js",
+   "line": 1554,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Digit1",
+   "file": "js/office/writer.js",
+   "line": 1592,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Digit2",
+   "file": "js/office/writer.js",
+   "line": 1592,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Digit5",
+   "file": "js/office/writer.js",
+   "line": 1592,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Period",
+   "file": "js/office/writer.js",
+   "line": 1595,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Comma",
+   "file": "js/office/writer.js",
+   "line": 1596,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Equal",
+   "file": "js/office/writer.js",
+   "line": 1597,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Space",
+   "file": "js/office/writer.js",
+   "line": 1599,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Format kopiert (Strg+Umschalt+V zum Übertragen)",
+   "file": "js/office/writer.js",
+   "line": 1600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Himmelblau",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mintgrün",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vanille",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rosé",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Silber",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nachtblau",
+   "file": "js/office/writer.js",
+   "line": 1754,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieser Wert ist hier nicht erlaubt.",
+   "file": "js/office/xlsx-write.js",
+   "line": 219,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} showErrorMessage=\"1\" errorTitle=\"Ungültiger Wert\" error=\"{1}\"",
+   "file": "js/office/xlsx-write.js",
+   "line": 219,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Bild",
+   "file": "js/security.js",
+   "line": 29,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "{0}Der Link führt zu {1} – öffne nur Links, denen du vertraust.",
+   "file": "js/security.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brief fotografieren – Art, Beträge, IBAN und Fristen erkennen, Antwort und Überweisung vorbereiten.",
+   "file": "js/smart/entry.js",
+   "line": 9,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Volltextsuche mit Antworten: „Wann läuft mein Handyvertrag aus?“ – offline.",
+   "file": "js/smart/entry.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kassenbons und Rechnungen fürs Steuerjahr sammeln – Excel, CSV und PDF-Mappe.",
+   "file": "js/smart/entry.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokumente, Fristen und Notizen Ende-zu-Ende-verschlüsselt mit der Familie teilen.",
+   "file": "js/smart/entry.js",
+   "line": 12,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Assistenten",
+   "file": "js/smart/entry.js",
+   "line": 38,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "· {0} bald fällig",
+   "file": "js/smart/entry.js",
+   "line": 44,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brief scannen und verstehen",
+   "file": "js/smart/entry.js",
+   "line": 44,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verträge, Fristen, IBAN …",
+   "file": "js/smart/entry.js",
+   "line": 45,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege fürs Finanzamt",
+   "file": "js/smart/entry.js",
+   "line": 46,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sicher mit der Familie teilen",
+   "file": "js/smart/entry.js",
+   "line": 47,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frist",
+   "file": "js/smart/entry.js",
+   "line": 62,
+   "count": 4,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner · Notfallzugang",
+   "file": "js/smart/entry.js",
+   "line": 70,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Briefe",
+   "file": "js/smart/entry.js",
+   "line": 92,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Offene Post",
+   "file": "js/smart/entry.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die IBAN ist ungültig – bitte prüfen.",
+   "file": "js/smart/epc.js",
+   "line": 13,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte gib den Empfänger an.",
+   "file": "js/smart/epc.js",
+   "line": 15,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Betrag muss zwischen 0,01 € und 999.999.999,99 € liegen.",
+   "file": "js/smart/epc.js",
+   "line": 19,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Angaben sind zu lang für einen GiroCode.",
+   "file": "js/smart/epc.js",
+   "line": 30,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(januar|jänner|jan|februar|feb|märz|maerz|marz|mär|mrz|april|apr|mai|juni|jun|juli|jul|august|aug|september|sept|sep|oktober|okt|november|nov|dezember|dez)",
+   "file": "js/smart/extract.js",
+   "line": 18,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "seit 2025 vier Tage, früher 3-Tage-Fiktion",
+   "file": "js/smart/extract.js",
+   "line": 86,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Berechnet: Briefdatum {0} + {1} Tage Postlaufzeit-Fiktion ({2}) = Bekanntgabe {3}, Frist {4} → {5} (auf den nächsten Werktag verschoben). Ohne Gewähr – maßgeblich ist der tatsächliche Zugang.",
+   "file": "js/smart/extract.js",
+   "line": 88,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Berechnet: Briefdatum {0} + {1} Tage Postlaufzeit-Fiktion ({2}) = Bekanntgabe {3}, Frist {4} → {5}. Ohne Gewähr – maßgeblich ist der tatsächliche Zugang.",
+   "file": "js/smart/extract.js",
+   "line": 89,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "[A-Z0-9ÄÖÜ][A-Z0-9ÄÖÜ./_-]*",
+   "file": "js/smart/extract.js",
+   "line": 207,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechnungen",
+   "file": "js/smart/extract.js",
+   "line": 259,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mahnungen",
+   "file": "js/smart/extract.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bescheide",
+   "file": "js/smart/extract.js",
+   "line": 261,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verträge",
+   "file": "js/smart/extract.js",
+   "line": 262,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kontoauszug",
+   "file": "js/smart/extract.js",
+   "line": 263,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kontoauszüge",
+   "file": "js/smart/extract.js",
+   "line": 263,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lohnabrechnung",
+   "file": "js/smart/extract.js",
+   "line": 264,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lohnabrechnungen",
+   "file": "js/smart/extract.js",
+   "line": 264,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versicherungen",
+   "file": "js/smart/extract.js",
+   "line": 265,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Arzt & Krankenkasse",
+   "file": "js/smart/extract.js",
+   "line": 266,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gesundheit",
+   "file": "js/smart/extract.js",
+   "line": 266,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werbung",
+   "file": "js/smart/extract.js",
+   "line": 267,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Steuerbescheid",
+   "file": "js/smart/extract.js",
+   "line": 272,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Behördenbescheid",
+   "file": "js/smart/extract.js",
+   "line": 272,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kündigungsbestätigung",
+   "file": "js/smart/extract.js",
+   "line": 272,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertragsbestätigung",
+   "file": "js/smart/extract.js",
+   "line": 272,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kassenbon",
+   "file": "js/smart/extract.js",
+   "line": 273,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Handwerkerrechnung",
+   "file": "js/smart/extract.js",
+   "line": 273,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spendenquittung",
+   "file": "js/smart/extract.js",
+   "line": 273,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inkasso",
+   "file": "js/smart/extract.js",
+   "line": 273,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arztrechnung",
+   "file": "js/smart/extract.js",
+   "line": 273,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beitragsinformation",
+   "file": "js/smart/extract.js",
+   "line": 274,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nebenkostenabrechnung",
+   "file": "js/smart/extract.js",
+   "line": 274,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Energieabrechnung",
+   "file": "js/smart/extract.js",
+   "line": 274,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familie",
+   "file": "js/smart/extract.js",
+   "line": 407,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Eheleute",
+   "file": "js/smart/extract.js",
+   "line": 407,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "StNr {0}",
+   "file": "js/smart/extract.js",
+   "line": 675,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rechnung {0}",
+   "file": "js/smart/extract.js",
+   "line": 676,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Kd-Nr {0}",
+   "file": "js/smart/extract.js",
+   "line": 677,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Az {0}",
+   "file": "js/smart/extract.js",
+   "line": 678,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertrag {0}",
+   "file": "js/smart/extract.js",
+   "line": 679,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(\\d{1,3}|eine[mnrs]?|ein|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|vierzehn|achtzehn|zwanzig|dreißig|vierundzwanzig)",
+   "file": "js/smart/extract.js",
+   "line": 713,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einspruchsfrist",
+   "file": "js/smart/extract.js",
+   "line": 758,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Widerspruchsfrist",
+   "file": "js/smart/extract.js",
+   "line": 758,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Berechnet: {0} + {1} – ohne Gewähr.",
+   "file": "js/smart/extract.js",
+   "line": 765,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Berechnet: {0} + {1} + ca. 3 Tage Postlaufzeit (Zugang) – ohne Gewähr.",
+   "file": "js/smart/extract.js",
+   "line": 766,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlung sofort fällig",
+   "file": "js/smart/extract.js",
+   "line": 776,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Laut Schreiben sofort fällig.",
+   "file": "js/smart/extract.js",
+   "line": 776,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertragsende",
+   "file": "js/smart/extract.js",
+   "line": 780,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abbuchung (Lastschrift)",
+   "file": "js/smart/extract.js",
+   "line": 780,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Monate",
+   "file": "js/smart/extract.js",
+   "line": 860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Woche",
+   "file": "js/smart/extract.js",
+   "line": 860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wochen",
+   "file": "js/smart/extract.js",
+   "line": 860,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gekündigt – der Vertrag endet am {0}.",
+   "file": "js/smart/extract.js",
+   "line": 862,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gekündigt.",
+   "file": "js/smart/extract.js",
+   "line": 862,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jederzeit kündbar mit {0} Frist – bei Kündigung heute endet der Vertrag am {1}.",
+   "file": "js/smart/extract.js",
+   "line": 867,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kündigungsfrist {0}.",
+   "file": "js/smart/extract.js",
+   "line": 869,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mindestlaufzeit vorbei – jederzeit kündbar mit {0} Frist (Ende frühestens {1}).",
+   "file": "js/smart/extract.js",
+   "line": 878,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kündigungsfrist {0}, nächster Termin {1} – Kündigung muss bis {2} eingehen.",
+   "file": "js/smart/extract.js",
+   "line": 887,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nächster Termin {0}.",
+   "file": "js/smart/extract.js",
+   "line": 887,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Girocard / EC-Karte",
+   "file": "js/smart/extract.js",
+   "line": 893,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kreditkarte",
+   "file": "js/smart/extract.js",
+   "line": 894,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überweisung",
+   "file": "js/smart/extract.js",
+   "line": 896,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lastschrift",
+   "file": "js/smart/extract.js",
+   "line": 897,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bar",
+   "file": "js/smart/extract.js",
+   "line": 898,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitsmittel",
+   "file": "js/smart/extract.js",
+   "line": 1041,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Werbungskosten (Anlage N)",
+   "file": "js/smart/extract.js",
+   "line": 1041,
+   "count": 5,
+   "content": false
+  },
+  {
+   "key": "Geräte und Material für den Beruf. Bis 800 € netto (952 € brutto) im Kaufjahr voll absetzbar, darüber über die Nutzungsdauer verteilt.",
+   "file": "js/smart/extract.js",
+   "line": 1041,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fahrtkosten",
+   "file": "js/smart/extract.js",
+   "line": 1042,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dienstreisen, Fahrten zu Fortbildungen. Der tägliche Arbeitsweg läuft über die Entfernungspauschale – dafür sind keine Belege nötig.",
+   "file": "js/smart/extract.js",
+   "line": 1042,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fortbildung",
+   "file": "js/smart/extract.js",
+   "line": 1043,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kurse, Seminare, Fachliteratur, Prüfungsgebühren.",
+   "file": "js/smart/extract.js",
+   "line": 1043,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonstige Werbungskosten",
+   "file": "js/smart/extract.js",
+   "line": 1044,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "z. B. Bewerbungen, Gewerkschaftsbeitrag, Kontoführung, beruflicher Umzug.",
+   "file": "js/smart/extract.js",
+   "line": 1044,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Homeoffice",
+   "file": "js/smart/extract.js",
+   "line": 1045,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Homeoffice-Pauschale: 6 € pro Tag, höchstens 1.260 € im Jahr – dafür sind keine Belege nötig, nur die Anzahl der Tage.",
+   "file": "js/smart/extract.js",
+   "line": 1045,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonderausgaben / Vorsorgeaufwendungen",
+   "file": "js/smart/extract.js",
+   "line": 1046,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Haftpflicht-, Unfall-, Berufsunfähigkeits-, Risikolebens-, Kranken- und Pflegeversicherung (Anlage Vorsorgeaufwand).",
+   "file": "js/smart/extract.js",
+   "line": 1046,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonderausgaben",
+   "file": "js/smart/extract.js",
+   "line": 1047,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "z. B. Kirchensteuer, eigene Berufsausbildung, Unterhalt an Ex-Partner, Altersvorsorge.",
+   "file": "js/smart/extract.js",
+   "line": 1047,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Spenden & Mitgliedsbeiträge",
+   "file": "js/smart/extract.js",
+   "line": 1048,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit Zuwendungsbestätigung; bis 300 € reicht der Kontoauszug als Nachweis.",
+   "file": "js/smart/extract.js",
+   "line": 1048,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kinderbetreuung",
+   "file": "js/smart/extract.js",
+   "line": 1049,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonderausgaben (Anlage Kind)",
+   "file": "js/smart/extract.js",
+   "line": 1049,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kita, Tagesmutter, Hort, Babysitter – ohne Verpflegung. Zahlung unbar.",
+   "file": "js/smart/extract.js",
+   "line": 1049,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Krankheitskosten",
+   "file": "js/smart/extract.js",
+   "line": 1050,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Außergewöhnliche Belastungen",
+   "file": "js/smart/extract.js",
+   "line": 1050,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Zuzahlungen, Brille, Zahnersatz, ärztlich verordnete Behandlungen. Wirkt erst oberhalb der zumutbaren Belastung.",
+   "file": "js/smart/extract.js",
+   "line": 1050,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sonstige außergewöhnliche Belastungen",
+   "file": "js/smart/extract.js",
+   "line": 1051,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "z. B. Pflege, Beerdigung, Behinderung, Unwetterschäden.",
+   "file": "js/smart/extract.js",
+   "line": 1051,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Haushaltsnahe Dienstleistungen",
+   "file": "js/smart/extract.js",
+   "line": 1052,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "20 % der Arbeitskosten, höchstens 4.000 € Steuerermäßigung pro Jahr (z. B. Reinigung, Gartenpflege, Hausmeister). Nur unbar bezahlt.",
+   "file": "js/smart/extract.js",
+   "line": 1052,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Handwerkerleistungen",
+   "file": "js/smart/extract.js",
+   "line": 1053,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "20 % der Arbeitskosten (ohne Material), höchstens 1.200 € Steuerermäßigung pro Jahr. Rechnung + Überweisung nötig, keine Barzahlung.",
+   "file": "js/smart/extract.js",
+   "line": 1053,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nicht steuerlich relevant",
+   "file": "js/smart/extract.js",
+   "line": 1054,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wird in der Übersicht nicht mitgezählt.",
+   "file": "js/smart/extract.js",
+   "line": 1054,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuer",
+   "file": "js/smart/extract.js",
+   "line": 1094,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Belege",
+   "file": "js/smart/extract.js",
+   "line": 1095,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Post",
+   "file": "js/smart/extract.js",
+   "line": 1101,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "{0} Ohne Gewähr – bitte Vertragsbedingungen prüfen.",
+   "file": "js/smart/extract.js",
+   "line": 1127,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gekündigter Vertrag",
+   "file": "js/smart/extract.js",
+   "line": 1147,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuer-ID",
+   "file": "js/smart/extract.js",
+   "line": 1157,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Versichertennummer",
+   "file": "js/smart/extract.js",
+   "line": 1157,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mandatsreferenz",
+   "file": "js/smart/extract.js",
+   "line": 1157,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gläubiger-ID",
+   "file": "js/smart/extract.js",
+   "line": 1157,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein Familien-Schlüssel passt nicht zu diesem FaLe-Sync-Schlüssel.",
+   "file": "js/smart/famcrypto.js",
+   "line": 52,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Schlüssel dieses Familien-Ordners lässt sich nicht entschlüsseln.",
+   "file": "js/smart/famcrypto.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Einladung ist beschädigt.",
+   "file": "js/smart/famcrypto.js",
+   "line": 111,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verwalter",
+   "file": "js/smart/family.js",
+   "line": 13,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Mitglied",
+   "file": "js/smart/family.js",
+   "line": 13,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Notfallkontakt",
+   "file": "js/smart/family.js",
+   "line": 13,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Angefragt",
+   "file": "js/smart/family.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abgelehnt",
+   "file": "js/smart/family.js",
+   "line": 14,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Freigegeben",
+   "file": "js/smart/family.js",
+   "line": 14,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dafür fehlen dir die Rechte in diesem Familien-Ordner.",
+   "file": "js/smart/family.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein Familien-Schlüssel fehlt noch.",
+   "file": "js/smart/family.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Einladung ist ungültig.",
+   "file": "js/smart/family.js",
+   "line": 27,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Einladung wurde schon verwendet.",
+   "file": "js/smart/family.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Einladung ist abgelaufen.",
+   "file": "js/smart/family.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du bist schon Mitglied dieses Familien-Ordners.",
+   "file": "js/smart/family.js",
+   "line": 28,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dieser Familien-Ordner ist voll.",
+   "file": "js/smart/family.js",
+   "line": 29,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du bist schon in der maximalen Zahl von Familien-Ordnern.",
+   "file": "js/smart/family.js",
+   "line": 29,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mindestens ein Verwalter muss bleiben.",
+   "file": "js/smart/family.js",
+   "line": 29,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Wartezeit läuft noch.",
+   "file": "js/smart/family.js",
+   "line": 30,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Anfrage wurde gerade abgelehnt – du kannst sie frühestens in 24 Stunden erneut stellen.",
+   "file": "js/smart/family.js",
+   "line": 30,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du bist für diesen Ordner kein Notfallkontakt.",
+   "file": "js/smart/family.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Jemand anderes hat das gerade geändert – bitte neu laden.",
+   "file": "js/smart/family.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Es gibt zu viele offene Einladungen.",
+   "file": "js/smart/family.js",
+   "line": 31,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Es liegt keine Anfrage vor.",
+   "file": "js/smart/family.js",
+   "line": 32,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallkontakte können keine andere Rolle bekommen.",
+   "file": "js/smart/family.js",
+   "line": 32,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei wurde nicht vollständig hochgeladen.",
+   "file": "js/smart/family.js",
+   "line": 32,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Für den Familien-Ordner brauchst du das FaLe-Konto mit eingerichtetem FaLe Sync.",
+   "file": "js/smart/family.js",
+   "line": 62,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Für diesen Familien-Ordner hast du (noch) keinen Schlüssel.",
+   "file": "js/smart/family.js",
+   "line": 93,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei konnte nicht hochgeladen werden.",
+   "file": "js/smart/family.js",
+   "line": 116,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei konnte nicht geladen werden.",
+   "file": "js/smart/family.js",
+   "line": 121,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Dieser Einladungscode ist ungültig.",
+   "file": "js/smart/family.js",
+   "line": 157,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(nicht lesbar)",
+   "file": "js/smart/family.js",
+   "line": 176,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Die Datei fehlt.",
+   "file": "js/smart/family.js",
+   "line": 187,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dateien bis 20 MB können geteilt werden.",
+   "file": "js/smart/family.js",
+   "line": 188,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei wurde unterwegs verändert.",
+   "file": "js/smart/family.js",
+   "line": 213,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Notfallkontakt hat noch keinen Schlüssel.",
+   "file": "js/smart/family.js",
+   "line": 226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein Familien-Schlüssel konnte nicht geladen werden.",
+   "file": "js/smart/family.js",
+   "line": 259,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlüssel nicht verfügbar",
+   "file": "js/smart/family.js",
+   "line": 259,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ende-zu-Ende-verschlüsselt: Der Server sieht keine Inhalte, Namen oder Schlüssel.",
+   "file": "js/smart/family.js",
+   "line": 268,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladen per Link oder QR-Code – Rollen Verwalter und Mitglied.",
+   "file": "js/smart/family.js",
+   "line": 268,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gemeinsame Dokumente, Fristen und Notizen.",
+   "file": "js/smart/family.js",
+   "line": 268,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang: Eine Vertrauensperson bekommt nach einer Wartezeit Zugriff – außer du lehnst ab.",
+   "file": "js/smart/family.js",
+   "line": 268,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner – kommt mit dem FaLe-Konto",
+   "file": "js/smart/family.js",
+   "line": 274,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Teile wichtige Unterlagen sicher mit deiner Familie. Diese Funktion braucht das optionale FaLe-Konto, das bald verfügbar ist. Alles andere funktioniert wie gewohnt ohne Konto.",
+   "file": "js/smart/family.js",
+   "line": 274,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner braucht eine Internetverbindung",
+   "file": "js/smart/family.js",
+   "line": 275,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Teilen mit deiner Familie muss FaLe die verschlüsselten Daten über dein FaLe-Konto austauschen. Bitte versuche es mit Internetverbindung erneut.",
+   "file": "js/smart/family.js",
+   "line": 275,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Melde dich mit deinem FaLe-Konto an und richte FaLe Sync ein – dein Familien-Schlüssel wird damit geschützt.",
+   "file": "js/smart/family.js",
+   "line": 276,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum FaLe-Konto",
+   "file": "js/smart/family.js",
+   "line": 276,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erst FaLe Sync einrichten",
+   "file": "js/smart/family.js",
+   "line": 277,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein privater Familien-Schlüssel wird mit deinem Sync-Schlüssel geschützt, damit du ihn auf allen Geräten hast. Richte FaLe Sync ein oder entsperre es auf diesem Gerät.",
+   "file": "js/smart/family.js",
+   "line": 277,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner anlegen",
+   "file": "js/smart/family.js",
+   "line": 282,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einladungscode eingeben",
+   "file": "js/smart/family.js",
+   "line": 282,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wie sicher ist das?",
+   "file": "js/smart/family.js",
+   "line": 282,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Noch kein Familien-Ordner",
+   "file": "js/smart/family.js",
+   "line": 290,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lege einen Ordner an und lade deine Familie per Link oder QR-Code ein. Alles wird auf euren Geräten verschlüsselt.",
+   "file": "js/smart/family.js",
+   "line": 290,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner von {0}",
+   "file": "js/smart/family.js",
+   "line": 296,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· {0} Einträge",
+   "file": "js/smart/family.js",
+   "line": 297,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} hat Notfallzugang angefragt",
+   "file": "js/smart/family.js",
+   "line": 303,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "am {0} ({1})",
+   "file": "js/smart/family.js",
+   "line": 304,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wird {0} freigegeben, wenn du nicht ablehnst.",
+   "file": "js/smart/family.js",
+   "line": 304,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du bist Notfallkontakt ({0})",
+   "file": "js/smart/family.js",
+   "line": 310,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Wartezeit ist vorbei – du kannst den Zugang jetzt öffnen.",
+   "file": "js/smart/family.js",
+   "line": 311,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Freigabe am {0}, wenn niemand ablehnt.",
+   "file": "js/smart/family.js",
+   "line": 311,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wartezeit bei einer Anfrage: {0} Tage.",
+   "file": "js/smart/family.js",
+   "line": 311,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Deine Schlüssel-Kennung: {0} – vergleiche sie bei Zweifeln mit deiner Familie.",
+   "file": "js/smart/family.js",
+   "line": 317,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Name (nur für euch sichtbar, verschlüsselt)",
+   "file": "js/smart/family.js",
+   "line": 321,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner angelegt",
+   "file": "js/smart/family.js",
+   "line": 323,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Ordner konnte nicht angelegt werden.",
+   "file": "js/smart/family.js",
+   "line": 323,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladungscode",
+   "file": "js/smart/family.js",
+   "line": 327,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Code oder Link",
+   "file": "js/smart/family.js",
+   "line": 327,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das ist kein gültiger Einladungscode.",
+   "file": "js/smart/family.js",
+   "line": 330,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wie sicher ist der Familien-Ordner?",
+   "file": "js/smart/family.js",
+   "line": 338,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ende-zu-Ende-verschlüsselt.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokumente, Namen, Fristen und Notizen werden auf euren Geräten verschlüsselt (AES-256). Jeder Ordner hat einen eigenen Schlüssel, den jedes Mitglied mit seinem persönlichen Schlüssel (ECDH P-256) erhält. Der Server speichert nur verschlüsselte Daten, Größen, Zeitstempel und wer Mitglied ist.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladungen",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "enthalten ein Geheimnis, das nur im Link steht und nie an den Server geht. Sie gelten einmal und laufen ab. Wer einen gültigen Link abfängt, kann beitreten – teile ihn nur persönlich oder verschlüsselt; Verwalter sehen jeden Beitritt und können Mitglieder entfernen.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang:",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein Gerät verschlüsselt den Ordner-Schlüssel vorab für deinen Notfallkontakt. Der Server gibt ihn erst nach der Wartezeit heraus – außer du lehnst ab. Ehrlicher Hinweis: Die Wartezeit setzt der Server durch. Wer den Server kontrolliert, könnte sie verkürzen, die Inhalte aber trotzdem nicht selbst lesen – das kann nur dein Notfallkontakt.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Entfernen:",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ein entferntes Mitglied verliert sofort den Zugriff auf die verschlüsselten Dateien. Was es vorher geöffnet oder gespeichert hat, behält es.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlüssel-Kennung:",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bei Zweifeln vergleicht ihr die angezeigten Kennungen – so merkt ihr, falls jemand einen falschen Schlüssel unterschiebt.",
+   "file": "js/smart/family.js",
+   "line": 339,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verstanden",
+   "file": "js/smart/family.js",
+   "line": 345,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladung in einen Familien-Ordner",
+   "file": "js/smart/family.js",
+   "line": 351,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du wurdest eingeladen. Nach dem Beitritt teilt ihr Dokumente, Fristen und Notizen Ende-zu-Ende-verschlüsselt.",
+   "file": "js/smart/family.js",
+   "line": 351,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladung annehmen",
+   "file": "js/smart/family.js",
+   "line": 351,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du bist jetzt Notfallkontakt.",
+   "file": "js/smart/family.js",
+   "line": 359,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Willkommen im Familien-Ordner!",
+   "file": "js/smart/family.js",
+   "line": 359,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Einladung konnte nicht angenommen werden.",
+   "file": "js/smart/family.js",
+   "line": 364,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mitglieder",
+   "file": "js/smart/family.js",
+   "line": 369,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang",
+   "file": "js/smart/family.js",
+   "line": 369,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ordner nicht gefunden",
+   "file": "js/smart/family.js",
+   "line": 375,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vielleicht wurdest du entfernt oder der Ordner wurde gelöscht.",
+   "file": "js/smart/family.js",
+   "line": 375,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} · Ende-zu-Ende-verschlüsselt",
+   "file": "js/smart/family.js",
+   "line": 377,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bereiche",
+   "file": "js/smart/family.js",
+   "line": 378,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das konnte nicht geladen werden.",
+   "file": "js/smart/family.js",
+   "line": 389,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokument teilen",
+   "file": "js/smart/family.js",
+   "line": 401,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frist teilen",
+   "file": "js/smart/family.js",
+   "line": 401,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Notiz hinzufügen",
+   "file": "js/smart/family.js",
+   "line": 401,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Noch keine geteilten Dokumente.",
+   "file": "js/smart/family.js",
+   "line": 411,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine gemeinsamen Fristen.",
+   "file": "js/smart/family.js",
+   "line": 411,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Notizen.",
+   "file": "js/smart/family.js",
+   "line": 411,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "von {0}",
+   "file": "js/smart/family.js",
+   "line": 418,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "In meine Dateien",
+   "file": "js/smart/family.js",
+   "line": 422,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bei mir eintragen",
+   "file": "js/smart/family.js",
+   "line": 427,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "In deine Fristen eingetragen",
+   "file": "js/smart/family.js",
+   "line": 428,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus dem Familien-Ordner entfernen?",
+   "file": "js/smart/family.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Eintrag wird für alle Mitglieder entfernt. Lokale Kopien bleiben erhalten.",
+   "file": "js/smart/family.js",
+   "line": 434,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokumente teilen",
+   "file": "js/smart/family.js",
+   "line": 444,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Dateien werden auf deinem Gerät verschlüsselt und nur für die Mitglieder dieses Ordners lesbar hochgeladen (bis 20 MB je Datei).",
+   "file": "js/smart/family.js",
+   "line": 445,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Dateien vorhanden.",
+   "file": "js/smart/family.js",
+   "line": 449,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wird verschlüsselt und geteilt …",
+   "file": "js/smart/family.js",
+   "line": 460,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ wird geteilt …",
+   "file": "js/smart/family.js",
+   "line": 462,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokument geteilt",
+   "file": "js/smart/family.js",
+   "line": 463,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} Dokumente geteilt",
+   "file": "js/smart/family.js",
+   "line": 463,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notiz bearbeiten",
+   "file": "js/smart/family.js",
+   "line": 471,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte gib einen Titel an.",
+   "file": "js/smart/family.js",
+   "line": 474,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familie einladen",
+   "file": "js/smart/family.js",
+   "line": 491,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladungen gelten einmal und laufen ab. Teile den Link nur persönlich (z. B. als QR-Code auf deinem Handy).",
+   "file": "js/smart/family.js",
+   "line": 491,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Rolle",
+   "file": "js/smart/family.js",
+   "line": 491,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Gültig",
+   "file": "js/smart/family.js",
+   "line": 491,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladung erstellen",
+   "file": "js/smart/family.js",
+   "line": 491,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Einladung konnte nicht erstellt werden.",
+   "file": "js/smart/family.js",
+   "line": 500,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Unbekannt",
+   "file": "js/smart/family.js",
+   "line": 508,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "(du)",
+   "file": "js/smart/family.js",
+   "line": 508,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "wartet auf Schlüssel",
+   "file": "js/smart/family.js",
+   "line": 509,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Schlüssel {0}",
+   "file": "js/smart/family.js",
+   "line": 509,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zu Mitglied machen",
+   "file": "js/smart/family.js",
+   "line": 512,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zu Verwalter machen",
+   "file": "js/smart/family.js",
+   "line": 512,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ordner verlassen",
+   "file": "js/smart/family.js",
+   "line": 517,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner verlassen?",
+   "file": "js/smart/family.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mitglied entfernen?",
+   "file": "js/smart/family.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du verlierst den Zugriff auf die geteilten Dokumente.",
+   "file": "js/smart/family.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Person verliert sofort den Zugriff auf die verschlüsselten Dateien. Was sie bereits gespeichert hat, behält sie.",
+   "file": "js/smart/family.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verlassen",
+   "file": "js/smart/family.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zurückziehen",
+   "file": "js/smart/family.js",
+   "line": 530,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} – angenommen von {1}",
+   "file": "js/smart/family.js",
+   "line": 531,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} – offen bis {1}",
+   "file": "js/smart/family.js",
+   "line": 531,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner löschen",
+   "file": "js/smart/family.js",
+   "line": 539,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner löschen?",
+   "file": "js/smart/family.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alle geteilten Dokumente, Fristen und Notizen werden für alle Mitglieder gelöscht. Lokale Kopien bleiben erhalten.",
+   "file": "js/smart/family.js",
+   "line": 541,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Familien-Ordner gelöscht",
+   "file": "js/smart/family.js",
+   "line": 542,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladung als Notfallkontakt",
+   "file": "js/smart/family.js",
+   "line": 552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einladung erstellt",
+   "file": "js/smart/family.js",
+   "line": 552,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lass die Person diesen QR-Code scannen oder schicke ihr den Link (am besten persönlich). Gültig bis",
+   "file": "js/smart/family.js",
+   "line": 553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": ", nur einmal verwendbar.",
+   "file": "js/smart/family.js",
+   "line": 553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Oder Einladungscode",
+   "file": "js/smart/family.js",
+   "line": 553,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Link kopiert",
+   "file": "js/smart/family.js",
+   "line": 564,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Einladung in den FaLe Familien-Ordner",
+   "file": "js/smart/family.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "So funktioniert der Notfallzugang",
+   "file": "js/smart/family.js",
+   "line": 573,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lade eine Vertrauensperson als",
+   "file": "js/smart/family.js",
+   "line": 573,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ein und richte hier eine Wartezeit ein. Fragt sie Zugang an, wird er nach Ablauf der Wartezeit automatisch freigegeben – außer ein Verwalter lehnt vorher ab. Bis dahin sieht sie nichts.",
+   "file": "js/smart/family.js",
+   "line": 573,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch nicht eingerichtet",
+   "file": "js/smart/family.js",
+   "line": 582,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ein Verwalter muss den Notfallzugang für dich noch einrichten.",
+   "file": "js/smart/family.js",
+   "line": 582,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zugang freigegeben",
+   "file": "js/smart/family.js",
+   "line": 584,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du kannst die Dokumente dieses Familien-Ordners jetzt lesen.",
+   "file": "js/smart/family.js",
+   "line": 585,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zugang öffnen",
+   "file": "js/smart/family.js",
+   "line": 586,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Dokumente ansehen",
+   "file": "js/smart/family.js",
+   "line": 587,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Wartezeit ist vorbei",
+   "file": "js/smart/family.js",
+   "line": 589,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfrage läuft",
+   "file": "js/smart/family.js",
+   "line": 589,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Du kannst den Zugang jetzt öffnen.",
+   "file": "js/smart/family.js",
+   "line": 590,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Freigabe am {0} – wenn kein Verwalter ablehnt.",
+   "file": "js/smart/family.js",
+   "line": 590,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zugang geöffnet",
+   "file": "js/smart/family.js",
+   "line": 591,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfrage abgelehnt",
+   "file": "js/smart/family.js",
+   "line": 593,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Im Notfall kannst du Zugang anfragen. Er wird nach {0} Tagen freigegeben, wenn niemand ablehnt.",
+   "file": "js/smart/family.js",
+   "line": 594,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang anfragen",
+   "file": "js/smart/family.js",
+   "line": 595,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang anfragen?",
+   "file": "js/smart/family.js",
+   "line": 597,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Verwalter werden informiert, sobald sie FaLe öffnen. Ohne Ablehnung bekommst du nach {0} Tagen Zugriff.",
+   "file": "js/smart/family.js",
+   "line": 597,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfragen",
+   "file": "js/smart/family.js",
+   "line": 597,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Anfrage gestellt",
+   "file": "js/smart/family.js",
+   "line": 598,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch kein Notfallkontakt. Lade eine Vertrauensperson unter „Mitglieder“ mit der Rolle „Notfallkontakt“ ein.",
+   "file": "js/smart/family.js",
+   "line": 606,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch nicht eingerichtet.",
+   "file": "js/smart/family.js",
+   "line": 613,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hat Zugang angefragt – automatische Freigabe am {0}.",
+   "file": "js/smart/family.js",
+   "line": 614,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "· freigegeben am {0}",
+   "file": "js/smart/family.js",
+   "line": 615,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wartezeit",
+   "file": "js/smart/family.js",
+   "line": 618,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang einrichten",
+   "file": "js/smart/family.js",
+   "line": 620,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang eingerichtet",
+   "file": "js/smart/family.js",
+   "line": 621,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sofort freigeben",
+   "file": "js/smart/family.js",
+   "line": 627,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Sofort freigeben?",
+   "file": "js/smart/family.js",
+   "line": 628,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Person kann den Familien-Ordner dann sofort lesen.",
+   "file": "js/smart/family.js",
+   "line": 628,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Freigeben",
+   "file": "js/smart/family.js",
+   "line": 628,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Notfallzugang widerrufen?",
+   "file": "js/smart/family.js",
+   "line": 633,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Server-Zugriff endet sofort. Was bereits geöffnet wurde, kann die Person behalten.",
+   "file": "js/smart/family.js",
+   "line": 633,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der vorbereitete Schlüssel wird gelöscht.",
+   "file": "js/smart/family.js",
+   "line": 633,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dein Notfallzugang kann jetzt geöffnet werden",
+   "file": "js/smart/family.js",
+   "line": 651,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Automatisch erkannt – bitte prüfen. Berechnete Fristen sind Hinweise ohne Gewähr und keine Rechtsberatung; maßgeblich ist das Schreiben selbst.",
+   "file": "js/smart/inbox.js",
+   "line": 10,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Briefkasten",
+   "file": "js/smart/inbox.js",
+   "line": 99,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brief aus deinen Dateien",
+   "file": "js/smart/inbox.js",
+   "line": 105,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auswerten",
+   "file": "js/smart/inbox.js",
+   "line": 107,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine PDFs oder Bilder vorhanden.",
+   "file": "js/smart/inbox.js",
+   "line": 110,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Post verstehen in Sekunden",
+   "file": "js/smart/inbox.js",
+   "line": 124,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fotografiere einen Brief oder wähle eine PDF: FaLe erkennt Art, Absender, Beträge, IBAN und Fristen – direkt auf deinem Gerät. Nichts wird hochgeladen.",
+   "file": "js/smart/inbox.js",
+   "line": 124,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brief scannen",
+   "file": "js/smart/inbox.js",
+   "line": 124,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "PDF oder Foto wählen",
+   "file": "js/smart/inbox.js",
+   "line": 124,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine offene Post",
+   "file": "js/smart/inbox.js",
+   "line": 158,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch nichts erledigt",
+   "file": "js/smart/inbox.js",
+   "line": 158,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Scanne deinen nächsten Brief – FaLe sagt dir, was zu tun ist.",
+   "file": "js/smart/inbox.js",
+   "line": 158,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erledigte Briefe erscheinen hier.",
+   "file": "js/smart/inbox.js",
+   "line": 158,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Als erledigt markieren",
+   "file": "js/smart/inbox.js",
+   "line": 178,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Wieder öffnen",
+   "file": "js/smart/inbox.js",
+   "line": 178,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Unbekannter Absender",
+   "file": "js/smart/inbox.js",
+   "line": 180,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wieder offen",
+   "file": "js/smart/inbox.js",
+   "line": 186,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Brief wird gelesen …",
+   "file": "js/smart/inbox.js",
+   "line": 194,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Alles passiert auf deinem Gerät.",
+   "file": "js/smart/inbox.js",
+   "line": 194,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Das Dokument wurde nicht gefunden.",
+   "file": "js/smart/inbox.js",
+   "line": 206,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Texterkennung nicht verfügbar",
+   "file": "js/smart/inbox.js",
+   "line": 214,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ohne Texterkennung kann FaLe den Brief nicht lesen. Du kannst die Angaben auch selbst eintragen.",
+   "file": "js/smart/inbox.js",
+   "line": 214,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Selbst eintragen",
+   "file": "js/smart/inbox.js",
+   "line": 214,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Brief konnte nicht ausgewertet werden.",
+   "file": "js/smart/inbox.js",
+   "line": 240,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zum Briefkasten",
+   "file": "js/smart/inbox.js",
+   "line": 242,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Datum des Schreibens",
+   "file": "js/smart/inbox.js",
+   "line": 249,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Betrag (€)",
+   "file": "js/smart/inbox.js",
+   "line": 250,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Fällig / Frist bis",
+   "file": "js/smart/inbox.js",
+   "line": 250,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verwendungszweck",
+   "file": "js/smart/inbox.js",
+   "line": 250,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Anschrift des Absenders",
+   "file": "js/smart/inbox.js",
+   "line": 252,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brief nicht gefunden",
+   "file": "js/smart/inbox.js",
+   "line": 257,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokumentart",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wie sicher die Erkennung der Dokumentart ist",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aktionen",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Überweisung vorbereiten",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Antwort schreiben",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Ablegen",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Mit KI verbessern",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erkannte Angaben",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tippe zum Korrigieren – wird automatisch gespeichert.",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Fristen & Termine",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Dokument öffnen",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zu Steuer-Belegen",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu auswerten",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus Briefkasten entfernen",
+   "file": "js/smart/inbox.js",
+   "line": 260,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "(kein Text erkannt)",
+   "file": "js/smart/inbox.js",
+   "line": 303,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Absender unbekannt",
+   "file": "js/smart/inbox.js",
+   "line": 306,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Laut Schreiben per Lastschrift – du musst nichts überweisen.",
+   "file": "js/smart/inbox.js",
+   "line": 322,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "✓ Prüfsumme korrekt",
+   "file": "js/smart/inbox.js",
+   "line": 338,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "⚠ Prüfsumme falsch – bitte prüfen",
+   "file": "js/smart/inbox.js",
+   "line": 338,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Eintragen",
+   "file": "js/smart/inbox.js",
+   "line": 362,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus dem Briefkasten entfernen?",
+   "file": "js/smart/inbox.js",
+   "line": 388,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die erkannten Angaben werden gelöscht. Das Dokument selbst bleibt in deinen Dateien.",
+   "file": "js/smart/inbox.js",
+   "line": 388,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Widerspruchsfrist {0}",
+   "file": "js/smart/inbox.js",
+   "line": 405,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} kündigen",
+   "file": "js/smart/inbox.js",
+   "line": 405,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertrag {0} endet",
+   "file": "js/smart/inbox.js",
+   "line": 405,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frist: {0}",
+   "file": "js/smart/inbox.js",
+   "line": 405,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Abbuchung {0} prüfen",
+   "file": "js/smart/inbox.js",
+   "line": 405,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einspruchsfrist {0}",
+   "file": "js/smart/inbox.js",
+   "line": 408,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Az. {0}",
+   "file": "js/smart/inbox.js",
+   "line": 410,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kd.-Nr. {0}",
+   "file": "js/smart/inbox.js",
+   "line": 410,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frist berechnet – bitte prüfen",
+   "file": "js/smart/inbox.js",
+   "line": 410,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Lastschrift erkannt",
+   "file": "js/smart/inbox.js",
+   "line": 420,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Laut Schreiben wird der Betrag per Lastschrift von deinem Konto abgebucht – du musst normalerweise nichts überweisen.",
+   "file": "js/smart/inbox.js",
+   "line": 420,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Trotzdem vorbereiten",
+   "file": "js/smart/inbox.js",
+   "line": 420,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Scanne den GiroCode mit deiner Banking-App (Funktion „Foto-Überweisung“ / „GiroCode“) oder kopiere die Angaben.",
+   "file": "js/smart/inbox.js",
+   "line": 426,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "FaLe löst keine Zahlung aus",
+   "file": "js/smart/inbox.js",
+   "line": 426,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "– du prüfst und bestätigst alles in deiner Bank.",
+   "file": "js/smart/inbox.js",
+   "line": 426,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "GiroCode teilen",
+   "file": "js/smart/inbox.js",
+   "line": 431,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bitte Angaben prüfen.",
+   "file": "js/smart/inbox.js",
+   "line": 446,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Einspruch einlegen",
+   "file": "js/smart/inbox.js",
+   "line": 489,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Widerspruch einlegen",
+   "file": "js/smart/inbox.js",
+   "line": 489,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Auf Zahlungsaufforderung antworten",
+   "file": "js/smart/inbox.js",
+   "line": 492,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Widerruf (Kauf/Vertrag)",
+   "file": "js/smart/inbox.js",
+   "line": 500,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Das Dokument gibt es nicht mehr.",
+   "file": "js/smart/inbox.js",
+   "line": 506,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tags (mit Komma getrennt)",
+   "file": "js/smart/inbox.js",
+   "line": 519,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Als durchsuchbare PDF speichern (Foto + erkannter Text)",
+   "file": "js/smart/inbox.js",
+   "line": 521,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchsuchbar machen (unsichtbare Textebene, falls der Scan noch keine hat)",
+   "file": "js/smart/inbox.js",
+   "line": 521,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Wird abgelegt …",
+   "file": "js/smart/inbox.js",
+   "line": 529,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Durchsuchbare PDF wird erstellt …",
+   "file": "js/smart/inbox.js",
+   "line": 536,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Textebene wird hinzugefügt …",
+   "file": "js/smart/inbox.js",
+   "line": 546,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Abgelegt ✓",
+   "file": "js/smart/inbox.js",
+   "line": 566,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Es gibt zu wenig erkannten Text für die KI.",
+   "file": "js/smart/inbox.js",
+   "line": 574,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mit KI verbessern?",
+   "file": "js/smart/inbox.js",
+   "line": 576,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der erkannte Text dieses Briefs (ca. {0} Tausend Zeichen) wird an die Cloud-KI gesendet, um die Angaben zu prüfen und zu ergänzen. Das Dokument selbst wird nicht hochgeladen.",
+   "file": "js/smart/inbox.js",
+   "line": 577,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tipp: Briefe mit Gesundheits- oder Kontodaten musst du nicht senden – die Erkennung auf dem Gerät funktioniert auch ohne KI.",
+   "file": "js/smart/inbox.js",
+   "line": 577,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diesen Text senden",
+   "file": "js/smart/inbox.js",
+   "line": 577,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Senden & verbessern",
+   "file": "js/smart/inbox.js",
+   "line": 580,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die KI liest den Brief …",
+   "file": "js/smart/inbox.js",
+   "line": 587,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frist (KI)",
+   "file": "js/smart/inbox.js",
+   "line": 600,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "KI hat {0} Angabe{1} ergänzt.",
+   "file": "js/smart/inbox.js",
+   "line": 603,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die KI hat nichts Neues gefunden.",
+   "file": "js/smart/inbox.js",
+   "line": 603,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "aber alle allem allen aller alles als also am an ander andere anderem anderen anderer anderes auch auf aus bei bin bis bist da damit dann das dass dein deine deinem deinen deiner dem den denn der des dessen die dies diese diesem diesen dieser dieses doch dort du durch ein eine einem einen einer eines er es etwas euch euer für gegen gewesen hab habe haben hat hatte hier hin hinter ich ihm ihn ihr ihre ihrem ihren ihrer im in indem ins ist jede jedem jeden jeder jetzt kann kein keine man mein meine meinem meinen meiner mich mir mit muss nach nicht nichts noch nun nur ob oder ohne sehr sein seine sich sie sind so soll sollen über um und uns unser unsere unter vom von vor war waren was weil wenn wer werde werden wie wieder will wir wird wo zu zum zur zwar wann welche welcher welches wieviel viel ist sind gibt habe hast eure sowie bzw ca usw herr herrn frau sehr geehrte geehrter grüße freundlichen",
+   "file": "js/smart/memory.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kündigung",
+   "file": "js/smart/memory.js",
+   "line": 82,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kündigen",
+   "file": "js/smart/memory.js",
+   "line": 82,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kündigungsfrist",
+   "file": "js/smart/memory.js",
+   "line": 82,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "kündigungsbestätigung",
+   "file": "js/smart/memory.js",
+   "line": 82,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ausläuft",
+   "file": "js/smart/memory.js",
+   "line": 83,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "steuererklärung",
+   "file": "js/smart/memory.js",
+   "line": 87,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "ärztin",
+   "file": "js/smart/memory.js",
+   "line": 94,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "überweisen",
+   "file": "js/smart/memory.js",
+   "line": 97,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vertragsdaten gefunden.",
+   "file": "js/smart/memory.js",
+   "line": 402,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beginn {0}",
+   "file": "js/smart/memory.js",
+   "line": 403,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Mindestlaufzeit {0} Monate",
+   "file": "js/smart/memory.js",
+   "line": 403,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "verlängert sich um {0} Monate",
+   "file": "js/smart/memory.js",
+   "line": 403,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "danach monatlich kündbar",
+   "file": "js/smart/memory.js",
+   "line": 403,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Aus deinen Dokumenten",
+   "file": "js/smart/memory.js",
+   "line": 441,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "offline · auf diesem Gerät",
+   "file": "js/smart/memory.js",
+   "line": 441,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Passende Stellen",
+   "file": "js/smart/memory.js",
+   "line": 460,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Öffnen auf Seite {0}",
+   "file": "js/smart/memory.js",
+   "line": 464,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "KI-Antwort aus diesen Stellen (Cloud, optional)",
+   "file": "js/smart/memory.js",
+   "line": 471,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "KI-Antwort aus deinen Dokumenten?",
+   "file": "js/smart/memory.js",
+   "line": 489,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Deine Frage und die gezeigten Textstellen (nicht die ganzen Dateien) werden an die Cloud-KI gesendet.",
+   "file": "js/smart/memory.js",
+   "line": 490,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Diese Textstellen senden",
+   "file": "js/smart/memory.js",
+   "line": 490,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die KI antwortet …",
+   "file": "js/smart/memory.js",
+   "line": 497,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Meine Dokumente",
+   "file": "js/smart/memory.js",
+   "line": 502,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "FaLe merkt sich den Inhalt aller Dateien auf diesem Gerät – auch erkannte Scans – und beantwortet Fragen wie „Wann läuft mein Handyvertrag aus?“ oder „IBAN Vermieter“. Ohne Internet.",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "z. B. Wann läuft mein Handyvertrag aus?",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Frage an deine Dokumente",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Verträge & Fristen",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Index",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Scans im Hintergrund erkennen",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Bilder und Scans ohne Text werden nach und nach per Texterkennung durchsuchbar – nur wenn das Gerät lädt und FaLe gerade nicht genutzt wird. Alles bleibt auf dem Gerät.",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Index neu aufbauen",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Falls Suchergebnisse fehlen.",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Neu aufbauen",
+   "file": "js/smart/memory.js",
+   "line": 565,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Index wird aufgebaut …",
+   "file": "js/smart/memory.js",
+   "line": 593,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Index ist aktuell.",
+   "file": "js/smart/memory.js",
+   "line": 594,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "von {0} Dateien im Index",
+   "file": "js/smart/memory.js",
+   "line": 601,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Suchbegriffe",
+   "file": "js/smart/memory.js",
+   "line": 601,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Verträge erkannt. Werte Vertragsbestätigungen im Briefkasten aus – dann erscheinen hier Laufzeiten und Kündigungstermine.",
+   "file": "js/smart/memory.js",
+   "line": 607,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Keine Steuerberatung: Die Kategorien sind Vorschläge. Ob und in welcher Höhe etwas absetzbar ist, hängt von deinem Einzelfall ab – im Zweifel helfen Lohnsteuerhilfeverein oder Steuerberatung.",
+   "file": "js/smart/tax.js",
+   "line": 11,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zu den Steuer-Belegen hinzugefügt",
+   "file": "js/smart/tax.js",
+   "line": 61,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg wird gelesen …",
+   "file": "js/smart/tax.js",
+   "line": 94,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Beleg konnte nicht gelesen werden.",
+   "file": "js/smart/tax.js",
+   "line": 108,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege werden gelesen (0 von {0}) …",
+   "file": "js/smart/tax.js",
+   "line": 119,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege werden gelesen ({0} von {1}) …",
+   "file": "js/smart/tax.js",
+   "line": 122,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Ein Beleg konnte nicht gelesen werden.",
+   "file": "js/smart/tax.js",
+   "line": 123,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuer-Belege {0}",
+   "file": "js/smart/tax.js",
+   "line": 128,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Steuerjahr",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Vorjahr",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Folgejahr",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg scannen",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Homeoffice-Pauschale",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "6 € pro Tag, höchstens 1.260 € im Jahr – dafür brauchst du keine Belege.",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Tage im Homeoffice",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "PDF-Mappe",
+   "file": "js/smart/tax.js",
+   "line": 129,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege aus deinen Dateien",
+   "file": "js/smart/tax.js",
+   "line": 156,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege werden gelesen …",
+   "file": "js/smart/tax.js",
+   "line": 158,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Export hat nicht geklappt.",
+   "file": "js/smart/tax.js",
+   "line": 172,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuerlich relevante Belege {0}",
+   "file": "js/smart/tax.js",
+   "line": 180,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "davon Arbeitskosten (§ 35a): {0}",
+   "file": "js/smart/tax.js",
+   "line": 182,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Noch keine Belege für {0}",
+   "file": "js/smart/tax.js",
+   "line": 197,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Scanne Kassenbons und Rechnungen – FaLe liest Datum, Betrag und Mehrwertsteuer und schlägt eine Kategorie vor.",
+   "file": "js/smart/tax.js",
+   "line": 197,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg",
+   "file": "js/smart/tax.js",
+   "line": 216,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Arbeitskosten {0}",
+   "file": "js/smart/tax.js",
+   "line": 217,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Datei fehlt",
+   "file": "js/smart/tax.js",
+   "line": 217,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg öffnen",
+   "file": "js/smart/tax.js",
+   "line": 224,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg entfernen?",
+   "file": "js/smart/tax.js",
+   "line": 226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Der Eintrag wird aus der Übersicht entfernt. Die Datei bleibt erhalten.",
+   "file": "js/smart/tax.js",
+   "line": 226,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg prüfen",
+   "file": "js/smart/tax.js",
+   "line": 234,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Händler / Aussteller",
+   "file": "js/smart/tax.js",
+   "line": 240,
+   "count": 3,
+   "content": false
+  },
+  {
+   "key": "Datum (Zahlung)",
+   "file": "js/smart/tax.js",
+   "line": 241,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Brutto (€)",
+   "file": "js/smart/tax.js",
+   "line": 242,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Netto (€)",
+   "file": "js/smart/tax.js",
+   "line": 243,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "MwSt. 19 % (€)",
+   "file": "js/smart/tax.js",
+   "line": 244,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "MwSt. 7 % (€)",
+   "file": "js/smart/tax.js",
+   "line": 245,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Kategorie (Vorschlag)",
+   "file": "js/smart/tax.js",
+   "line": 246,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Zahlungsart",
+   "file": "js/smart/tax.js",
+   "line": 247,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Arbeitskosten inkl. MwSt. (§ 35a, €)",
+   "file": "js/smart/tax.js",
+   "line": 248,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erkannt ohne Angabe „brutto“ – bitte prüfen.",
+   "file": "js/smart/tax.js",
+   "line": 248,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "⚠ Barzahlung wird hier vom Finanzamt nicht anerkannt.",
+   "file": "js/smart/tax.js",
+   "line": 256,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg gespeichert",
+   "file": "js/smart/tax.js",
+   "line": 276,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Nr.",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Brutto",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Netto",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "MwSt. 19 %",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "MwSt. 7 %",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Arbeitskosten § 35a",
+   "file": "js/smart/tax.js",
+   "line": 281,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Summe brutto",
+   "file": "js/smart/tax.js",
+   "line": 307,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hinweis",
+   "file": "js/smart/tax.js",
+   "line": 307,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuerlich relevant gesamt",
+   "file": "js/smart/tax.js",
+   "line": 319,
+   "count": 2,
+   "content": false
+  },
+  {
+   "key": "Belege {0}",
+   "file": "js/smart/tax.js",
+   "line": 324,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Für dieses Jahr gibt es noch keine Belege.",
+   "file": "js/smart/tax.js",
+   "line": 343,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege zur Steuererklärung",
+   "file": "js/smart/tax.js",
+   "line": 360,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Steuerjahr {0}",
+   "file": "js/smart/tax.js",
+   "line": 361,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Erstellt am {0} mit FaLe PDF · {1} Beleg{2}",
+   "file": "js/smart/tax.js",
+   "line": 363,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Übersicht nach Kategorien",
+   "file": "js/smart/tax.js",
+   "line": 365,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Homeoffice-Pauschale: {0} Tage × 6 € = {1}",
+   "file": "js/smart/tax.js",
+   "line": 378,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Hinweis:",
+   "file": "js/smart/tax.js",
+   "line": 379,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg {0} · {1} · {2} · {3}",
+   "file": "js/smart/tax.js",
+   "line": 391,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei „{0}“ kann nicht eingebettet werden – sie liegt in FaLe PDF.",
+   "file": "js/smart/tax.js",
+   "line": 415,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Die Datei zu diesem Beleg wurde gelöscht.",
+   "file": "js/smart/tax.js",
+   "line": 415,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Inhaltsverzeichnis (Fortsetzung)",
+   "file": "js/smart/tax.js",
+   "line": 418,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Belege zur Steuererklärung {0}",
+   "file": "js/smart/tax.js",
+   "line": 431,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "„{0}“ in deinen Dateien gespeichert",
+   "file": "js/smart/tax.js",
+   "line": 441,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "PDF-Mappe wird erstellt …",
+   "file": "js/smart/tax.js",
+   "line": 450,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Beleg {0} von {1} …",
+   "file": "js/smart/tax.js",
+   "line": 452,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "{0} – Mappe.pdf",
+   "file": "js/smart/tax.js",
+   "line": 454,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "PDF-Mappe gespeichert",
+   "file": "js/smart/tax.js",
+   "line": 455,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Assistenten-Filter",
+   "file": "js/views.js",
+   "line": 321,
+   "count": 1,
+   "content": false
+  },
+  {
+   "key": "Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (",
+   "file": "js/views.js",
+   "line": 625,
+   "count": 1,
+   "content": false
+  }
+ ]
+}

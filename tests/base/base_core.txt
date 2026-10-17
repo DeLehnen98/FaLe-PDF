@@ -1,0 +1,21 @@
+collect: 4 6021
+min_age: ['y.log']
+clean: {'id': 't', 'group': 'G', 'label': 'L', 'files': 4, 'size': 6021, 'freed': 6021, 'deleted': 4, 'failed': 0, 'status': 'Bereinigt'}
+remaining: []
+symlink target safe: True
+winget: {'name': 'Mozilla Firefox (x64 de)', 'id': 'Mozilla.Firefox.de', 'version': '130.0', 'available': '131.0.2', 'source': 'winget'}
+winget: {'name': '7-Zip 23.01 (x64)', 'id': '7zip.7zip', 'version': '23.01', 'available': '24.08', 'source': 'winget'}
+winget: {'name': 'Microsoft Visual Studio Code', 'id': 'Microsoft.VisualStudioCode', 'version': '1.92.0', 'available': '1.94.2', 'source': 'winget'}
+winget: {'name': 'Some Very Long Application Name …', 'id': 'Vendor.SomeVeryLongApplicat…', 'version': '1.0', 'available': '2.0', 'source': 'winget'}
+de rows: 4
+split: ('msiexec.exe', '/x {12345678-ABCD-1234-ABCD-1234567890AB}')
+split: ('C:\\Program Files\\Foo\\unins000.exe', '/SILENT')
+split: ('C:\\Program Files\\Bar App\\uninstall.exe', '--remove')
+split: ('rundll32.exe', 'dfshim.dll,ShArpMaintain x')
+disk: 600020 5 [{'name': 'two', 'size': 400000, 'files': 2, 'path': '/tmp/fc_dup_ubxc7f3g/two'}, {'name': 'one', 'size': 200000, 'files': 1, 'path': '/tmp/fc_dup_ubxc7f3g/one'}] [{'name': 'Videos', 'size': 600000}, {'name': 'Dokumente', 'size': 20}]
+dupes: [(200000, ['a.mp4', 'a copy.mp4']), (10, ['small.txt', 'small2.txt'])]
+saved sel: ['win_temp_user']
+health score: 72 ['disk', 'auto', 'privacy']
+perf groups: 60
+schedule apply (linux): (False, 'Nur unter Windows verfügbar')
+targets: ['win_temp_user', 'win_temp_sys', 'win_inet', 'win_thumbs', 'win_shader', 'win_dumps', 'win_wer', 'win_update', 'win_delivery', 'win_prefetch', 'win_logs', 'recycle', 'win_recent', 'dl_installers']

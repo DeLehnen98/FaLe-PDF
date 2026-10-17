@@ -1,0 +1,23 @@
+import os, subprocess; os.environ.setdefault('WT_PORT', '8800')
+from wtlib import Suite, OUT
+from pypdf import PdfReader
+with Suite('aud2-try-form2') as s:
+    page = s.open(s.context('phone', 'de'), '/werkzeuge/pdf-formular-ausfuellen/'); page.on('console', lambda m: print('CONSOLE', m.text))
+    s.pick(page, 'aud2/hard_form.pdf'); s.wait_ready(page, 1)
+    page.wait_for_selector('label:has-text("Titel")')
+    def fill(lbl, val): page.locator(f'label:text-is("{lbl}")').first.evaluate("(l, v) => { const i = document.getElementById(l.htmlFor); i.focus(); }", val); page.keyboard.type(val)
+    page.get_by_label('Titel', exact=True).fill('Dr. Łukasz Ελληνικά Привет')
+    page.get_by_label('Geburtsort', exact=True).fill('Saarbrücken')
+    page.get_by_label('Bemerkung', exact=True).fill('Zeile eins\nZeile zwei mit etwas mehr Text der umbrechen sollte weil er lang ist')
+    page.get_by_label('PLZ', exact=True).fill('66111')
+    page.get_by_label('verheiratet', exact=True).check()
+    page.get_by_label('Bundesland', exact=True).select_option('Thüringen')
+    page.get_by_label('Einverstanden').first.check()
+    page.get_by_label('Unterschrift Ort', exact=True).fill('Saarlouis')
+    out = s.run_and_download(page)
+    print('NOTES', page.locator('.wt-result').inner_text()[:600])
+    r = PdfReader(out)
+    af=r.trailer['/Root']['/AcroForm']; print('ACRO', out, {k:af[k] for k in af if k!='/Fields'})
+    print({k: v.get('/V') for k, v in r.get_fields().items()})
+    subprocess.run(['pdftoppm', '-r', '60', '-png', str(out), str(OUT / 'aud2_form')])
+    print(subprocess.run(['pdftotext', '-layout', str(out), '-'], capture_output=True, text=True).stdout[:1500])

@@ -1,0 +1,21 @@
+25	Die Liste braucht eine Kopfzeile mit Feldnamen und mindestens einen Datensatz.
+28	Feld{0}
+41	Empfängerliste wählen
+43	Keine Tabellen in deinen Dateien.
+42	Die erste Zeile der Tabelle enthält die Feldnamen (z. B. Anrede, Name, Straße, PLZ, Ort).
+44	Datei vom Gerät …
+58	.csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+62	Die Empfängerliste konnte nicht gelesen werden.
+92	Serienbrief fertigstellen
+93	{0} Datensätze aus „{1}“.
+93	Eine PDF mit allen Briefen
+93	Einzelne Word-Dateien (ZIP)
+93	Von Datensatz
+93	Bis
+98	Erstellen
+108	{0} (Serienbrief).pdf
+118	Word-Dateien werden erstellt …
+126	Word-Dateien werden erstellt … {0} von {1}
+136	{0} (Serienbrief).zip
+137	{0} Word-Dateien erstellt
+138	Der Serienbrief konnte nicht erstellt werden.

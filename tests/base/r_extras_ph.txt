@@ -1,0 +1,23 @@
+PASS phone start: no horizontal overflow  [390]
+PASS phone dateien: no horizontal overflow  [390]
+PASS phone werkzeuge: no horizontal overflow  [390]
+PASS phone ich: no horizontal overflow  [390]
+PASS phone profil: no horizontal overflow  [390]
+PASS phone schreiben: no horizontal overflow  [390]
+PASS phone kuendigung: no horizontal overflow  [390]
+PASS phone rechnung: no horizontal overflow  [390]
+PASS phone fristen: no horizontal overflow  [390]
+PASS phone tresor_setup: no horizontal overflow  [390]
+PASS phone papierkorb: no horizontal overflow  [390]
+PASS phone duplikate: no horizontal overflow  [390]
+PASS phone gliederung: no horizontal overflow  [390]
+PASS phone: letter preview toggle
+PASS phone: reminder + month cards on Start
+PASS phone: chart inserted
+PASS phone: no external network requests  [[]]
+
+==== SUMMARY ====
+17/17 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems

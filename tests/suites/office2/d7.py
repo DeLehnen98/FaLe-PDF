@@ -1,0 +1,5 @@
+pg.evaluate("location.hash = '#/neu/tabelle'"); pg.wait_for_selector('.sheet-app'); pg.wait_for_timeout(300)
+print(pg.evaluate("[document.querySelectorAll('.sheet-app').length, typeof document.querySelector('.sheet-app')._sheetApi.sheet()]"))
+pg.evaluate("location.hash = '#/start'"); pg.wait_for_timeout(300)
+pg.evaluate("location.hash = '#/neu/tabelle'"); pg.wait_for_timeout(300)
+print(pg.evaluate("[document.querySelectorAll('.sheet-app').length, typeof document.querySelector('.sheet-app')._sheetApi.sheet()]"))

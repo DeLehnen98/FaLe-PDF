@@ -1,0 +1,212 @@
+PASS no /api calls on start/werkzeuge/ich
+PASS start: KI card
+PASS werkzeuge: KI section with 9 cards
+PASS werkzeuge: Alltag section still 6 cards
+PASS werkzeuge search finds AI card
+PASS ich: KI status card
+PASS ich: text no longer claims "keine Uploads, keine Werbung"
+PASS hub: needs consent banner
+PASS hub: 9 feature cards
+PASS anonymous status check only (no token)
+PASS consent dialog names provider + no storage + legal basis
+PASS declined consent: no register call
+PASS declined consent: still needs consent
+PASS quota after consent: 5 of 5
+PASS web: no ad button
+PASS Plus link shown
+PASS device token stored after consent
+PASS test PDF imported
+PASS chat answer streamed with citation
+PASS first citation is page 3 (BM25 picked the right chunk)
+PASS quota decremented (4 of 5)
+PASS one AI request for one question
+PASS citation opens viewer at page 3
+PASS page 3 scrolled into view
+PASS viewer menu has KI-Assistent
+PASS viewer → hub with doc preselected
+PASS summary rendered as bullets
+PASS summary saved as .docx
+PASS translation keeps paragraphs
+PASS translation saved as .txt
+PASS long text: "Nächsten Teil übersetzen" offered
+PASS assist dialog shows selected text
+PASS diff preview marks changes
+PASS accepted rewrite replaced only the selection
+PASS editor marked dirty
+PASS formula shown with explanation
+PASS formula put into the cell editor for confirmation
+PASS slide preview built from AI outline (title+agenda+3+closing)
+PASS opens slides editor with generated deck
+PASS deck contains AI heading
+PASS flashcards generated → review
+PASS review done screen
+PASS deck stored locally with spaced repetition (box 2, due later)
+PASS quiz has 2 valid questions
+PASS right answer marked
+PASS wrong answer marked
+PASS quiz score
+PASS deck list shows the set
+PASS letter preview: subject, recipient, sender from profile
+PASS letter PDF created
+PASS profile data not sent (checked via request log)
+FAIL quota exhaustion EXC Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-go]")
+    - locator resolved to <button title="" data-go="" type="button" class="btn btn-primary">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <dialog open="" class="dlg">…</dialog> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, e
+   toasts:  | dialog: Heutiges KI-Kontingent aufgebraucht
+
+Du hast heute alle 5 kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.
+
+Mit FaLe Plus bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.
+
+Schließen
+F | url: http://127.0.0.1:8799/#/ki/uebersetzen
+FAIL budget cap EXC Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-src=\"text\"]")
+    - locator resolved to <button type="button" data-src="text" aria-pressed="true">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <dialog open="" class="dlg">…</dialog> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible,
+   toasts:  | dialog: Heutiges KI-Kontingent aufgebraucht
+
+Du hast heute alle 5 kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.
+
+Mit FaLe Plus bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.
+
+Schließen
+F | url: http://127.0.0.1:8799/#/ki/uebersetzen
+PASS KI kommt bald state
+PASS run button disabled when not configured
+PASS offline banner
+PASS offline: send disabled
+PASS back online: send enabled
+FAIL settings EXC Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("label.switch:has([data-cloud])")
+    - locator resolved to <label class="switch">…</label>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <dialog open="" class="dlg">…</dialog> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      
+   toasts:  | dialog: Heutiges KI-Kontingent aufgebraucht
+
+Du hast heute alle 5 kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.
+
+Mit FaLe Plus bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.
+
+Schließen
+F | url: http://127.0.0.1:8799/#/ki/einstellungen
+PASS web: Plus explains Android-only
+FAIL desktop dark screenshots EXC Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-send]")
+    - locator resolved to <button title="" data-send="" type="submit" aria-label="Senden" class="btn btn-primary">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <dialog open="" class="dlg">…</dialog> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+     
+   toasts:  | dialog: Heutiges KI-Kontingent aufgebraucht
+
+Du hast heute alle 5 kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.
+
+Mit FaLe Plus bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.
+
+Schließen
+F | url: http://127.0.0.1:8799/#/ki/chat?doc=mv7yo71thlxa5h
+FAIL image translate EXC Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-pick]")
+    - locator resolved to <button data-pick="" type="button" class="btn btn-ghost">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <dialog open="" class="dlg">…</dialog> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled 
+   toasts:  | dialog: Heutiges KI-Kontingent aufgebraucht
+
+Du hast heute alle 5 kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.
+
+Mit FaLe Plus bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.
+
+Schließen
+F | url: http://127.0.0.1:8799/#/ki/bild
+PASS native mock active
+PASS native: ad button shown
+PASS ads SDK not initialised before tapping
+PASS UMP consent requested + form shown before ad
+PASS rewarded ad prepared with SSV custom data = device token, test id, personalised after consent
+PASS server-verified reward: 8 requests today
+PASS reward recorded server-side once
+PASS native Plus without server config: "bald verfügbar"
+PASS phone chat cites page 2
+PASS native settings: ad privacy option
+PASS ad privacy options form opened
+PASS phone: no horizontal overflow #/ki
+PASS phone: no horizontal overflow #/ki/chat
+PASS phone: no horizontal overflow #/ki/lernkarten
+PASS phone: no horizontal overflow #/ki/plus
+PASS phone: no horizontal overflow #/ki/brief
+PASS no console errors
+
+74 passed, 5 failed
+  FAILED: quota exhaustion (exception) Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-go]")
+    - locator resolved to <button title="" data-go="" type="button" class="btn btn-primary">…</button>
+  - attem
+  FAILED: budget cap (exception) Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-src=\"text\"]")
+    - locator resolved to <button type="button" data-src="text" aria-pressed="true">…</button>
+  - att
+  FAILED: settings (exception) Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("label.switch:has([data-cloud])")
+    - locator resolved to <label class="switch">…</label>
+  - attempting click action
+    2
+  FAILED: desktop dark screenshots (exception) Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-send]")
+    - locator resolved to <button title="" data-send="" type="submit" aria-label="Senden" class="btn btn-prima
+  FAILED: image translate (exception) Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-pick]")
+    - locator resolved to <button data-pick="" type="button" class="btn btn-ghost">…</button>
+  - attempting c

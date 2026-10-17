@@ -1,0 +1,6 @@
+pg.evaluate("localStorage.setItem('fale-lang', 'en')"); pg.evaluate("location.hash='#/start'"); pg.reload(); pg.wait_for_timeout(1500)
+pg.evaluate("location.hash = '#/neu/dokument'"); pg.wait_for_selector('.doc-page'); pg.wait_for_timeout(800)
+pg.screenshot(path='out/desktop_writer_en.png')
+pg.locator('.rb-tab[data-rb="review"]').click(); pg.wait_for_timeout(300)
+pg.screenshot(path='out/desktop_writer_en_review.png')
+pg.evaluate("localStorage.setItem('fale-lang', 'de')")

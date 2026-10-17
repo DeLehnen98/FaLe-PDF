@@ -1,0 +1,86 @@
+PASS no /api calls on start/werkzeuge/ich
+PASS start: KI card
+PASS werkzeuge: KI section with 9 cards
+PASS werkzeuge: Alltag section still 6 cards
+PASS werkzeuge search finds AI card
+PASS ich: KI status card
+PASS ich: text no longer claims "keine Uploads, keine Werbung"
+PASS hub: needs consent banner
+PASS hub: 9 feature cards
+PASS anonymous status check only (no token)
+PASS consent dialog names provider + no storage + legal basis
+PASS declined consent: no register call
+PASS declined consent: still needs consent
+PASS quota after consent: 5 of 5
+PASS web: no ad button
+PASS Plus link shown
+PASS device token stored after consent
+PASS test PDF imported
+PASS chat answer streamed with citation
+PASS first citation is page 3 (BM25 picked the right chunk)
+PASS quota decremented (4 of 5)
+PASS one AI request for one question
+PASS citation opens viewer at page 3
+PASS page 3 scrolled into view
+PASS viewer menu has KI-Assistent
+PASS viewer → hub with doc preselected
+PASS summary rendered as bullets
+PASS summary saved as .docx
+PASS translation keeps paragraphs
+PASS translation saved as .txt
+PASS long text: "Nächsten Teil übersetzen" offered
+PASS assist dialog shows selected text
+PASS diff preview marks changes
+PASS accepted rewrite replaced only the selection
+PASS editor marked dirty
+PASS formula shown with explanation
+PASS formula put into the cell editor for confirmation
+PASS slide preview built from AI outline (title+agenda+3+closing)
+PASS opens slides editor with generated deck
+PASS deck contains AI heading
+PASS flashcards generated → review
+PASS review done screen
+PASS deck stored locally with spaced repetition (box 2, due later)
+PASS quiz has 2 valid questions
+PASS right answer marked
+PASS wrong answer marked
+PASS quiz score
+PASS deck list shows the set
+PASS letter preview: subject, recipient, sender from profile
+PASS letter PDF created
+PASS profile data not sent (checked via request log)
+PASS quota dialog: friendly, no ad offer on web, Plus mentioned
+PASS quota widget shows 0
+PASS non-AI tools still work when quota is exhausted
+PASS budget cap dialog
+PASS hub notes monthly budget
+PASS KI kommt bald state
+PASS run button disabled when not configured
+PASS offline banner
+PASS offline: send disabled
+PASS back online: send enabled
+PASS cloud off → banner, no AI calls
+PASS revoke deletes consent, token and device id
+PASS web: Plus explains Android-only
+PASS second chat: rent question cites page 4
+PASS OCR recognised sign text on device
+PASS image translation result
+PASS native mock active
+PASS native: ad button shown
+PASS ads SDK not initialised before tapping
+PASS UMP consent requested + form shown before ad
+PASS rewarded ad prepared with SSV custom data = device token, test id, personalised after consent
+PASS server-verified reward: 8 requests today
+PASS reward recorded server-side once
+PASS native Plus without server config: "bald verfügbar"
+PASS phone chat cites page 2
+PASS native settings: ad privacy option
+PASS ad privacy options form opened
+PASS phone: no horizontal overflow #/ki
+PASS phone: no horizontal overflow #/ki/chat
+PASS phone: no horizontal overflow #/ki/lernkarten
+PASS phone: no horizontal overflow #/ki/plus
+PASS phone: no horizontal overflow #/ki/brief
+PASS no console errors
+
+84 passed, 0 failed

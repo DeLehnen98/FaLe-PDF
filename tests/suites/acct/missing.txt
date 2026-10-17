@@ -1,0 +1,208 @@
+Du bist offline. Für das FaLe-Konto brauchst du eine Internetverbindung.
+Das FaLe-Konto ist gerade nicht erreichbar. Bitte versuche es später erneut.
+Das FaLe-Konto ist bald verfügbar.
+FaLe-App
+Edge
+Opera
+Browser
+Windows
+Linux
+{0} auf {1}
+Bearer {0}
+Bitte gib eine gültige E-Mail-Adresse ein.
+Bitte warte eine Minute, bevor du einen neuen Code anforderst.
+Der Code konnte gerade nicht gesendet werden. Bitte versuche es später erneut.
+Bitte gib den 6-stelligen Code aus der E-Mail ein.
+Zu viele Versuche. Bitte warte kurz und fordere dann einen neuen Code an.
+Der Code ist falsch oder abgelaufen. Prüfe die E-Mail oder fordere einen neuen Code an.
+Die Anmeldung mit Google ist hier noch nicht verfügbar.
+Die Anmeldung mit Google wurde abgebrochen.
+Die Anmeldung mit Google hat nicht geklappt. Bitte versuche es erneut.
+Bitte melde dich erneut an.
+FaLe Sync ist noch nicht eingerichtet
+FaLe Sync: auf diesem Gerät entsperren
+FaLe Sync ist auf diesem Gerät aus
+Sync pausiert – Daten auf diesem Gerät gelöscht
+Sync pausiert
+Synchronisiert gerade …
+Cloud-Speicher voll
+Offline – Änderungen werden später synchronisiert
+Wartet auf WLAN
+Sync-Fehler – wird erneut versucht
+Synchronisiert {0}
+Noch nicht synchronisiert
+Die Anmeldung hat nicht geklappt.
+FaLe-Konto (optional)
+Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten, FaLe Plus überall. Alles geht auch ohne Konto.
+Anmelden
+Deine Dateien auf allen Geräten?
+Mit dem optionalen FaLe-Konto synchronisierst du Ende-zu-Ende-verschlüsselt – wir können nichts davon lesen.
+Mehr erfahren
+Das FaLe-Konto kommt bald
+Für das FaLe-Konto brauchst du eine Internetverbindung.
+Bald kannst du deine Dateien Ende-zu-Ende-verschlüsselt zwischen deinen Geräten synchronisieren. FaLe PDF funktioniert weiterhin vollständig ohne Konto.
+Ein Konto für alle FaLe-Apps – freiwillig
+FaLe Sync:
+Dateien, Ordner, Unterschriften und Fristen auf all deinen Geräten – Ende-zu-Ende-verschlüsselt. Wir können nichts davon lesen.
+und dein KI-Kontingent gelten für dein Konto – auf jedem Gerät.
+Ohne Konto funktioniert FaLe PDF genauso. Deine Dateien bleiben dann nur auf diesem Gerät.
+Anmelden oder registrieren
+Kein Passwort nötig: Wir schicken dir einen 6-stelligen Code per E-Mail.
+E-Mail-Adresse
+Code aus der E-Mail
+Code senden
+Code erneut senden
+Andere E-Mail
+Mit Google anmelden
+Mit der Anmeldung speichern wir deine E-Mail-Adresse in der EU (Frankfurt).
+Code erneut senden ({0} s)
+Wir haben einen Code an {0} geschickt. Schau auch im Spam-Ordner nach.
+Wird gesendet …
+Der Code konnte nicht gesendet werden.
+Angemeldet
+Neuer Code gesendet
+FaLe-Konto · gespeichert in der EU (Frankfurt)
+FaLe Plus wird geprüft …
+Abmelden
+FaLe Sync
+Geräte
+Überall abmelden
+Beendet die Anmeldung auf allen Geräten. Deine Dateien bleiben überall erhalten.
+Konto löschen
+Löscht dein Konto und alle Cloud-Daten. Dateien auf deinen Geräten bleiben erhalten.
+Deine Sync-Daten werden auf deinem Gerät verschlüsselt, bevor sie es verlassen. Gespeichert bei Supabase in Frankfurt (EU).
+Abmelden?
+Auf diesem Gerät werden Anmeldung und Sync-Schlüssel entfernt. Deine Dateien bleiben auf diesem Gerät.
+Abgemeldet
+Überall abmelden?
+Alle Geräte werden abgemeldet und müssen sich neu anmelden. Deine Dateien bleiben überall erhalten.
+Überall abgemeldet
+aktiv bis {0} – gilt auf allen Geräten
+FaLe Plus nicht aktiv
+Kostenlos
+Mit FaLe Plus hast du 20 GB.
+{0} von {1} belegt
+Cloud-Speicher
+FaLe Sync einrichten
+Deine Daten werden auf diesem Gerät verschlüsselt. Den Schlüssel schützt ein Sync-Passwort, das nur du kennst – zusätzlich bekommst du einen Wiederherstellungsschlüssel zum Ausdrucken. Wir können deine Daten weder lesen noch das Passwort zurücksetzen.
+Der Sync-Schlüssel wurde geändert
+FaLe Sync auf diesem Gerät entsperren
+FaLe Sync wurde auf einem anderen Gerät neu eingerichtet. Gib das neue Sync-Passwort ein.
+Gib dein Sync-Passwort ein. Danach synchronisiert dieses Gerät automatisch.
+Sync-Passwort
+Passwort vergessen? Wiederherstellungsschlüssel verwenden
+Wird entsperrt …
+FaLe Sync ist aktiv
+{0} {1} von {2}
+Fortschritt
+Dein Cloud-Speicher ist voll. Neue oder geänderte Dateien bleiben auf diesem Gerät, bis wieder Platz ist.
+Auf diesem Gerät gibt es einen anderen Tresor. Er wird nicht synchronisiert.
+Du hast die Daten auf diesem Gerät gelöscht. Deine Cloud-Daten sind unverändert – „Fortsetzen“ lädt sie wieder herunter.
+Fortsetzen
+Pausieren
+Jetzt synchronisieren
+Was wird synchronisiert?
+Alles wird vor dem Hochladen auf diesem Gerät verschlüsselt.
+Nur über WLAN
+Große Dateien nicht über mobile Daten übertragen.
+Nur über WLAN synchronisieren
+Sync-Passwort ändern
+Der Wiederherstellungsschlüssel bleibt gültig.
+Neuer Wiederherstellungsschlüssel
+Der bisherige Schlüssel funktioniert danach nicht mehr.
+Sync auf diesem Gerät ausschalten
+Entfernt den Schlüssel von diesem Gerät. Dateien und Cloud-Daten bleiben erhalten.
+Ausschalten
+Alle Cloud-Daten löschen
+Löscht alles, was in der Cloud gespeichert ist, und den Sync-Schlüssel. Deine Dateien auf den Geräten bleiben.
+Cloud-Daten löschen
+Sync auf diesem Gerät ausschalten?
+Dieses Gerät synchronisiert nicht mehr, bis du es wieder mit deinem Sync-Passwort entsperrst. Deine Dateien bleiben hier und in der Cloud erhalten.
+Wähle ein
+. Es verschlüsselt den Schlüssel zu deinen Daten und verlässt dein Gerät nie.
+Sync-Passwort (mindestens 10 Zeichen)
+Sync-Passwort wiederholen
+Wir können das Passwort nicht zurücksetzen. Ohne Passwort und Wiederherstellungsschlüssel sind deine Cloud-Daten verloren – deine Dateien auf den Geräten nicht.
+Das Sync-Passwort muss mindestens 10 Zeichen lang sein.
+Schlüssel werden erzeugt …
+FaLe Sync konnte nicht eingerichtet werden.
+Dein Wiederherstellungsschlüssel
+Damit kommst du an deine Cloud-Daten, falls du dein Sync-Passwort vergisst.
+Er wird nur jetzt angezeigt.
+Drucke ihn aus oder bewahre ihn an einem sicheren Ort auf – nicht nur auf diesem Gerät.
+Ich habe den Wiederherstellungsschlüssel sicher gespeichert.
+Kopieren ist hier nicht möglich – bitte abschreiben.
+Das PDF konnte nicht erstellt werden.
+FaLe Sync – Wiederherstellungsschlüssel
+Konto: {0}
+Erstellt am {0}
+Mit diesem Schlüssel entsperrst du FaLe Sync auf einem neuen Gerät, falls du dein
+Sync-Passwort vergessen hast. Bewahre ihn sicher auf (z. B. bei deinen Unterlagen).
+Wer diesen Schlüssel UND Zugang zu deinem FaLe-Konto hat, kann deine Cloud-Daten lesen.
+FaLe kann den Schlüssel nicht wiederherstellen – es gibt keine Kopie bei uns.
+So geht es: FaLe PDF öffnen > Ich > FaLe-Konto > anmelden >
+„Passwort vergessen? Wiederherstellungsschlüssel verwenden“.
+Mit Wiederherstellungsschlüssel entsperren
+Gib den Wiederherstellungsschlüssel ein, den du beim Einrichten gespeichert hast (Groß-/Kleinschreibung und Bindestriche sind egal).
+Wiederherstellungsschlüssel
+Neues Sync-Passwort (optional, mindestens 10 Zeichen)
+Entsperrt – neues Sync-Passwort gespeichert
+Aktuelles Sync-Passwort
+Neues Sync-Passwort (mindestens 10 Zeichen)
+Neues Sync-Passwort wiederholen
+Sync-Passwort geändert
+Zur Bestätigung brauchen wir dein Sync-Passwort. Der bisherige Wiederherstellungsschlüssel funktioniert danach nicht mehr.
+Alle Cloud-Daten löschen?
+Alle verschlüsselten Daten in der Cloud und der Sync-Schlüssel werden endgültig gelöscht. Andere Geräte hören auf zu synchronisieren. Deine Dateien auf den Geräten bleiben erhalten.
+Cloud-Daten werden gelöscht …
+Cloud-Daten werden gelöscht … {0}
+Alle Cloud-Daten wurden gelöscht
+Das Löschen hat nicht vollständig geklappt. Bitte versuche es erneut.
+Konto löschen?
+Konto und alle Daten werden innerhalb von 30 Tagen vollständig gelöscht.
+Deine Cloud-Daten (FaLe Sync) entfernen wir sofort, die Anmeldedaten spätestens nach 30 Tagen. Ein laufendes FaLe-Plus-Abo kündigst du bitte selbst bei Google Play.
+Deine Dateien auf deinen Geräten bleiben erhalten.
+Ja, mein FaLe-Konto und alle Cloud-Daten endgültig löschen.
+Konto wird gelöscht …
+Dein Konto wurde gelöscht.
+Das Konto konnte gerade nicht gelöscht werden. Bitte versuche es später erneut.
+Geräte werden geladen …
+Die Geräteliste ist gerade nicht verfügbar.
+Noch keine Geräte.
+Dieses Gerät
+Gerät umbenennen
+Name dieses Geräts
+Gerät abmelden?
+„{0}“ wird abgemeldet und entfernt beim nächsten Kontakt seinen Sync-Schlüssel. Dateien auf dem Gerät bleiben erhalten.
+Gerät abgemeldet
+· für dein Konto
+für dein Konto
+FaLe-Konto
+Optional – Sync und Plus auf allen Geräten
+Verschlüsselung ist hier nicht verfügbar (sichere Verbindung nötig).
+Das ist kein gültiger Wiederherstellungsschlüssel. Bitte prüfe die Eingabe.
+Das Sync-Passwort ist falsch.
+Der Wiederherstellungsschlüssel passt nicht zu diesem Konto.
+FaLe Sync ist für dein Konto schon eingerichtet. Entsperre es mit deinem Sync-Passwort.
+In der Cloud liegen noch alte Daten. Lösche zuerst alle Cloud-Daten.
+FaLe Sync konnte nicht eingerichtet werden. Bitte versuche es erneut.
+FaLe Sync ist für dein Konto noch nicht eingerichtet.
+Der Schlüssel passt nicht zu diesem Konto.
+FaLe Sync ist nicht eingerichtet.
+Das Passwort konnte nicht geändert werden.
+Der Schlüssel konnte nicht erneuert werden.
+Lade Änderungen …
+Sende Änderungen …
+Keine Verbindung zum Sync-Server.
+Die Synchronisierung ist fehlgeschlagen. Sie wird später erneut versucht.
+Lade hoch …
+{0} (Konflikt von {1}){2}
+Alle Dateien mit Name, Ordner, Tags und Stern
+Ordner & Tags
+Deine Ordnerstruktur und farbigen Tags
+Gespeicherte Unterschriften, Initialen und Stempel
+Termine und Kündigungsfristen
+Name und Adresse für Briefe und Formulare
+Standard-Zoom beim Öffnen von PDFs (Design und Sprache bleiben pro Gerät)
+Nur die bereits mit deiner PIN verschlüsselten Daten
+FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.

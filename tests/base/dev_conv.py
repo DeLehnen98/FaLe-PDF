@@ -1,0 +1,35 @@
+import os
+from playwright.sync_api import sync_playwright
+SP = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(SP, 'out_protools')
+with sync_playwright() as p:
+    b = p.chromium.launch(); ctx = b.new_context(viewport={'width': 1366, 'height': 860}, accept_downloads=True)
+    page = ctx.new_page()
+    page.on('console', lambda m: print('LOG', m.type, m.text) if m.type in ('error', 'warning') else None)
+    page.on('pageerror', lambda e: print('ERR', e))
+    page.goto('http://127.0.0.1:8792/')
+    page.set_input_files('#pdf-input', [os.path.join(SP, 'testdata', 'struktur.pdf')])
+    page.wait_for_function("location.hash.startsWith('#/ansicht/')"); page.wait_for_function("document.querySelector('[data-v=loading]').hidden")
+    docid = page.evaluate("location.hash.split('/')[2].split('?')[0]")
+    for mode in ['text', 'exact']:
+        page.evaluate(f"location.hash = '#/werkzeug/pdf-word?doc={docid}&m={mode}'"); page.wait_for_selector('input[name=mode]')
+        page.locator(f'input[name=mode][value={mode}]').check()
+        page.locator('.screen-foot .btn-primary').click()
+        page.wait_for_selector('.result-card', timeout=30000)
+        with page.expect_download() as d: page.locator('.result-card [data-r=dl]').click()
+        d.value.save_as(os.path.join(OUT, f'word_{mode}.docx'))
+    page.screenshot(path=os.path.join(OUT, 'dev_word.png'))
+    page.evaluate(f"location.hash = '#/werkzeug/pdf-powerpoint?doc={docid}'"); page.wait_for_selector('[data-fmt]')
+    page.locator('.screen-foot .btn-primary').click()
+    page.wait_for_selector('.result-card', timeout=30000)
+    with page.expect_download() as d: page.locator('.result-card [data-r=dl]').click()
+    d.value.save_as(os.path.join(OUT, 'slides.pptx'))
+    page.screenshot(path=os.path.join(OUT, 'dev_ppt.png'))
+    b.close()
+import docx, pptx
+d = docx.Document(os.path.join(OUT, 'word_text.docx'))
+for para in d.paragraphs:
+    print(repr(para.style.name if para.style is not None else None), '|', ''.join(('**' + r.text + '**') if r.bold else ('_' + r.text + '_') if r.italic else r.text for r in para.runs)[:110], '| pb' if para.paragraph_format.page_break_before else '')
+d2 = docx.Document(os.path.join(OUT, 'word_exact.docx'))
+print('exact: sections', len(d2.sections), 'images', len(d2.inline_shapes))
+pr = pptx.Presentation(os.path.join(OUT, 'slides.pptx'))
+print('pptx slides', len(pr.slides), 'size', pr.slide_width, pr.slide_height, 'notes:', pr.slides[0].notes_slide.notes_text_frame.text[:60] if pr.slides[0].has_notes_slide else None)

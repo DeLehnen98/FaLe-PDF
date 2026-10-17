@@ -1,0 +1,8 @@
+#!/bin/bash
+S=/home/claude/FalePDF/tests/suites
+O=$S/office4
+: > $O/reg2.summary
+run() { local name=$1; shift; local start=$(date +%s); timeout 1500 "$@" > $O/reg2_$name.log 2>&1; local rc=$?; echo "$name rc=$rc $(( $(date +%s) - start ))s $(grep -aE 'passed|failed' $O/reg2_$name.log | tail -1)" >> $O/reg2.summary; }
+cd $S/office4 && run office4 python3 test_office4.py
+cd $S/sec && EXTRAS_URL=http://127.0.0.1:8880/ run sec_extras python3 test_extras.py
+echo DONE >> $O/reg2.summary

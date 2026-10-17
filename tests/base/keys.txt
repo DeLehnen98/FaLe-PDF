@@ -1,0 +1,50 @@
+Abbrechen
+Alles gesichert.
+Angehalten, weil Uploads pausiert wurden.
+Angehalten: Bitte melde dich neu an.
+Angehalten: Dein Speicher ist voll.
+Auch Videos sichern
+Auswahl ändern
+Automatische Sicherung
+Automatische Sicherung ausgeschaltet.
+Dafür fragt Android gleich nach dem Zugriff auf deine Fotos und Videos.
+Dein Speicher ist voll. Alles bleibt lesbar – lösche etwas, leere den Papierkorb oder exportiere.
+Die Sicherung läuft auch, wenn FaLe One geschlossen ist. Android kann sie verzögern, um Akku zu sparen.
+Die Sicherung läuft schon.
+Die Sicherung startet gleich.
+Du bist offline.
+Du hast FaLe One nur ausgewählte Fotos freigegeben. Nur diese werden gesichert.
+Einstellungen
+Erlauben
+FaLe One hat keinen Zugriff auf deine Fotos.
+FaLe One sichert dann alle Fotos auf diesem Telefon im Original – die vorhandenen und jedes neue. Sie werden auf dem Gerät verschlüsselt, auch Aufnahmeort und Datum, bevor etwas hochgeladen wird. Schon gesicherte Fotos werden erkannt und übersprungen.
+FaLe One zeigt eine kleine Mitteilung, solange Fotos gesichert werden – und sagt Bescheid, falls du dich neu anmelden musst.
+Fotos
+Fotos automatisch sichern
+Im Hintergrund gerade nicht verfügbar – gesichert wird, solange FaLe One geöffnet ist.
+Jetzt sichern
+Kein WLAN
+Kein Zugriff auf deine Fotos.
+Mitteilungen erlauben?
+Neue Fotos auf diesem Telefon werden von selbst verschlüsselt gesichert – auch wenn FaLe One geschlossen ist. Android kann Sicherungen verzögern, um Akku zu sparen.
+Nicht jetzt
+Nur im WLAN
+Ob du im WLAN bist, ist auf diesem Gerät gerade nicht erkennbar – es wird trotzdem gesichert.
+Ohne Mitteilungen wird trotzdem gesichert.
+Ohne Zugriff auf deine Fotos kann FaLe One sie nicht sichern. Du kannst ihn in den Android-Einstellungen erlauben.
+Optionen
+Sichert die Fotos auf diesem Telefon von selbst – verschlüsselt und im Original, auch im Hintergrund. Android kann Sicherungen verzögern, um Akku zu sparen.
+Sichert …
+Sichert … {done} von {total}
+Startet gleich …
+Tageslimit erreicht. Es geht morgen weiter.
+Trotzdem sichern
+Unterbrochen – wird bald erneut versucht.
+Verbindung unterbrochen – wird bald erneut versucht.
+Wartet auf WLAN.
+Wartet auf eine Internetverbindung.
+Weiter
+Zugriff erlauben
+Zuletzt gesichert: {when}
+cancel
+„Nur im WLAN“ ist eingeschaltet. Jetzt trotzdem über mobile Daten sichern?

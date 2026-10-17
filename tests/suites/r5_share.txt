@@ -1,0 +1,78 @@
+PASS entry: start card "Teilen & Übertragen"
+PASS entry: Werkzeuge section "Teilen & Unterschreiben"
+PASS entry: viewer ⋮ has "Sicher teilen" + "Unterschrift anfordern"
+PASS entry: Dateien ⋮ has share items
+PASS entry: long-press/right-click opens file menu
+PASS hub: three actions
+PASS share: link format #/s/<id>#k=<key>
+PASS recipient: decrypted name shown
+PASS recipient: downloaded bytes identical
+PASS recipient: "In FaLe öffnen" imports into library (Empfangen)
+PASS recipient: library copy identical
+PASS server: one download counted for download + open
+PASS server: header without file name
+PASS server: stored chunks are ciphertext (no marker, size = plain + tags)
+PASS server: never received the key
+PASS server: never received plaintext/file name
+PASS server: no referer with key
+PASS wrong key: graceful error
+PASS missing key: graceful error
+PASS unknown id: "nicht mehr verfügbar"
+PASS limit 1×: first download ok
+PASS limit 1×: second recipient blocked
+PASS expiry: link dead after 1 h
+PASS hub: link listed with status
+PASS revoke: "Link löschen" kills the link
+PASS revoke: removed from hub
+PASS password: link has no password in it
+PASS password: wrong password rejected
+PASS password: right password → identical bytes
+PASS password: never sent to the server
+PASS sender: 3 fields placed
+PASS sender: signer link #/u/<token>#k=
+PASS sign: server never got names/message/key
+PASS status: Offen
+PASS signer: sees sender, message, own name
+PASS signer: date + name prefilled
+PASS signer: submit disabled until done
+PASS status: Angesehen
+PASS signer: submit enabled after fields + consent
+PASS signer: copy download is a PDF
+PASS status: Unterschrieben
+PASS sender: signed PDF saved to library
+PASS sender: same bytes as the signer copy
+PASS audit: one page appended
+PASS audit: title + EES/eIDAS note
+PASS audit: signer name + requester
+PASS audit: SHA-256 of the original
+PASS audit: UTC timestamps
+PASS audit: no qualified-signature claim
+PASS signed page: name + date drawn
+PASS signed page: signature image embedded
+PASS server state: signer status signed
+PASS multi: two signer links
+PASS multi: person 2 waits for person 1
+PASS transfer: QR + 6-digit code shown
+PASS transfer: pairing secret removed from the address bar
+PASS transfer: direct P2P on both sides
+PASS transfer: same Prüfnummer on both devices
+PASS transfer: files land in library (Empfangen)
+PASS transfer: PDF bytes identical
+PASS transfer: unknown file type not imported
+PASS transfer: unknown type can be saved on the device (identical bytes)
+PASS transfer: phone → PC works too
+PASS transfer: P2P file data never touches the server
+PASS transfer: pairing secret never sent
+PASS transfer: signalling encrypted (no SDP in clear)
+PASS transfer: disconnect reaches the other device
+PASS relay: both in relay mode
+PASS relay: file received + identical
+PASS relay: ciphertext deleted after receipt
+PASS relay: server never saw plaintext
+PASS relay: uploaded as kind relay with 1 h
+PASS offline: banner shown on hub
+PASS offline: banner on create
+PASS offline: transfer buttons disabled
+PASS i18n: hub in English
+
+76 passed, 0 failed

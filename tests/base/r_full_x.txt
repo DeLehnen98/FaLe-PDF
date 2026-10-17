@@ -1,0 +1,111 @@
+PASS home renders hero
+PASS tool tiles present
+PASS import 5 docs listed
+PASS thumbnails rendered
+PASS meta shows pages/size  [6 Seiten · 7 KB · Heute, 01:09]
+PASS text index ready for all
+PASS starred tab shows 1
+PASS rename works
+PASS viewer text layer
+PASS page count shown
+PASS zoom in changes scale  [125 % -> 140 %]
+PASS find count 1 von 1
+PASS find highlight visible
+PASS find scrolled match into view  [4]
+PASS find many matches  [91 von 180]
+PASS thumbnail panel renders
+PASS thumb click navigates
+PASS outline tab empty msg
+PASS page jump to 5
+PASS night mode class
+PASS read bar visible
+PASS read status text  [Fertig gelesen]
+PASS viewer download  [bericht.pdf]
+PASS viewer closed
+PASS last page remembered  [3]
+PASS global search finds doc
+PASS snippet highlighted
+PASS search second doc
+PASS search opens viewer at match (p4/5)  [4]
+PASS search term highlighted in viewer
+PASS merge list has 2
+PASS merge reorder
+PASS merged pdf 9 pages (pypdf)  [9]
+PASS merged order (Anhang first)
+PASS merged pdf-lib load  [9 0,0,0,0,0,0,0,0,0 0]
+PASS organize grid 6
+PASS after delete 5
+PASS drag reorder moved p4 first  [1 (S. 4)]
+PASS organized 5 pages  [5]
+PASS organized rotation p2=90  [[0, 90, 0, 0, 0]]
+PASS organized first page is Kapitel 4
+PASS organized lost Kapitel 2
+PASS extracted 2 pages  [2]
+PASS split zip valid  [['bericht – Seite 1.pdf', 'bericht – Seite 2.pdf']]
+PASS split part has 1 page
+PASS images listed
+PASS images pdf 2 pages A4 landscape  [2 841.89x595.28]
+PASS form panel lists fields
+PASS field overlay preview
+PASS text + date items
+PASS signature placed
+PASS signature resized  [278->323]
+PASS signature moved  [246->286]
+PASS signed pdf 1 page
+PASS signed has form value  [                             Hallo Welt Anmeldeformular   Name:           Max Müller  Newsletter:                                      14.10.2026  Tarif:          Premium     Unterschrift: ]
+PASS signed has free text
+PASS signed has date
+PASS form flattened (0 fields)  [1 0 0]
+PASS signature image embedded  [['/FlatWidget-7098480789', '/FlatWidget-9742682568', '/FlatWidget-2000805986', '/FlatWidget-9750469207', '/FlatWidget-7572533686', '/Image-5824662338']]
+PASS saved signature offered
+PASS saved signature placed
+PASS lossless smaller  [48 KB Vorher 7,1 KB Nachher]
+PASS lossless keeps text + pages  [7286]
+PASS strong warning visible
+PASS strong 2 pages & smaller  [14121 vs 123784]
+PASS export zip with 6 PNGs  [['bericht-Seite-1.png', 'bericht-Seite-2.png', 'bericht-Seite-3.png', 'bericht-Seite-4.png', 'bericht-Seite-5.png', 'bericht-Seite-6.png']]
+PASS exported PNG size ~ A4@72dpi  [(595, 842)]
+PASS export range 2 JPGs  [['bericht-Seite-2.jpg', 'bericht-Seite-3.jpg']]
+PASS text export contains term
+PASS wrong password message
+PASS encrypted doc opens in viewer
+PASS encrypted flag stored
+PASS lock icon in list
+PASS tools page 8+ cards
+PASS password tile opens tool (document chooser)
+PASS storage estimate shown  [18 Dateien
+384 KB Dateigröße
+8,6 MB von 426 MB belegt
+PDF: 18
+Der Browser darf Daten bei Speichermangel entfernen.
+Speic]
+PASS dark theme applied
+PASS auto theme
+PASS delete doc
+PASS service worker registered
+PASS precache populated  [325]
+PASS works offline after reload
+PASS viewer works offline
+PASS phone bottom nav visible
+PASS phone sidebar hidden
+PASS phone no horizontal overflow  [390]
+PASS phone viewer bottom bar fits
+PASS phone chrome auto-hides
+PASS phone chrome reappears
+PASS phone drawer closes + navigates
+PASS phone menu as sheet
+PASS phone find works
+PASS phone pinch zoom  [44 % -> 98 %]
+PASS phone global search
+PASS phone move buttons visible
+PASS phone move reorders
+PASS phone signed pdf ok
+PASS camera button present
+PASS camera input uses capture
+PASS phone images->pdf
+
+==== SUMMARY ====
+100/100 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems

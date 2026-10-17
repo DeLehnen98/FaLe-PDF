@@ -1,0 +1,10 @@
+161	Überschrift1
+161	überschrift 1
+161	Überschrift2
+161	überschrift 2
+162	Überschrift3
+162	überschrift 3
+162	Überschrift4
+162	überschrift 4
+301	text-indent:{0}pt
+302	text-indent:-{0}pt

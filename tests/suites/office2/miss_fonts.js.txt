@@ -1,0 +1,7 @@
+8	Tahoma
+9	Trebuchet MS
+10	Segoe UI
+13	Cambria
+14	Garamond
+15	Book Antiqua
+17	Consolas

@@ -1,0 +1,2 @@
+29	Das Bild
+111	{0}Der Link führt zu {1} – öffne nur Links, denen du vertraust.

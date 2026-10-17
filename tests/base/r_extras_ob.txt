@@ -1,0 +1,25 @@
+PASS desktop: onboarding shown on first start
+PASS desktop: privacy promise step
+PASS desktop: theme choice applies
+PASS desktop: onboarding closes + remembered
+PASS desktop: shown only once
+PASS phone: onboarding shown on first start
+PASS phone: privacy promise step
+PASS phone: theme choice applies
+PASS phone: onboarding closes + remembered
+PASS phone: shown only once
+PASS vault unlocked after setup
+PASS still unlocked before the timeout
+PASS auto-lock after 3 minutes of inactivity
+PASS unlock again with PIN
+PASS locks immediately when the app is hidden
+PASS wrong PIN rejected (API)
+PASS AI capabilities detected from browser API  [{'summarize': True, 'translate': True, 'detect': True}]
+PASS writer menu offers on-device summary
+PASS summary result from provider
+
+==== SUMMARY ====
+19/19 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems

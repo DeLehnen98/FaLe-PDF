@@ -1,0 +1,140 @@
+14	#ÜBERLAUF!
+37	BOGENMAß
+43	KGRÖßTE
+64	FEHLER.TYP
+180	Unerwartetes Zeichen „#“
+413	Ungültige Matrix
+642	märz
+1822	Häufig verwendet
+1822	Mathematik
+1822	Statistik
+1822	Logik
+1822	Nachschlagen & Verweisen
+1822	Datum & Uhrzeit
+1822	Information
+1822	Finanzmathematik
+1829	Wert suchen und zurückgeben (modern)
+1830	Wahrheitswert umkehren
+1831	Genau eine (ungerade Anzahl) wahr
+1831	Mehrere Bedingungen nacheinander
+1831	Namen für Zwischenergebnisse vergeben
+1832	Wert mit Liste vergleichen
+1833	Summe der Produkte
+1833	Summe mit mehreren Bedingungen
+1834	Aufrunden
+1834	Abrunden
+1834	Auf ein Vielfaches runden
+1835	Auf Vielfaches aufrunden
+1835	Auf Vielfaches abrunden
+1836	Auf ganze Zahl abrunden
+1836	Nachkommastellen abschneiden
+1836	Rest einer Division
+1837	Potenz
+1837	Quadratwurzel
+1837	Natürlicher Logarithmus
+1838	Logarithmus
+1838	Kreiszahl π
+1838	Vorzeichen
+1838	Fakultät
+1839	Größter gemeinsamer Teiler
+1839	Kleinstes gemeinsames Vielfaches
+1839	Zufallszahl zwischen 0 und 1
+1840	Zufällige ganze Zahl
+1840	Teilergebnis (ignoriert Teilergebnisse)
+1841	Sinus (Bogenmaß)
+1841	Bogenmaß in Grad
+1841	Grad in Bogenmaß
+1842	Häufigster Wert
+1842	Standardabweichung (Stichprobe)
+1843	Standardabweichung (Grundgesamtheit)
+1843	Varianz (Stichprobe)
+1843	k-größter Wert
+1844	Rang einer Zahl
+1844	Quantil
+1845	Quartil
+1845	Korrelationskoeffizient
+1845	Zählen mit mehreren Bedingungen
+1846	Durchschnitt mit Bedingung
+1846	Durchschnitt mit mehreren Bedingungen
+1847	Maximum mit Bedingungen
+1847	Minimum mit Bedingungen
+1848	Anzahl leerer Zellen
+1849	Waagerecht suchen
+1849	Position eines Werts
+1850	Position eines Werts (modern)
+1850	Wert an Position
+1851	Zeilennummer
+1851	Spaltennummer
+1852	Anzahl Zeilen
+1852	Anzahl Spalten
+1853	Verschobener Bereich
+1853	Bezug aus Text
+1854	Zelladresse als Text
+1854	Zeilen und Spalten tauschen
+1855	Zeilen nach Bedingung filtern (überläuft)
+1855	Bereich sortieren (überläuft)
+1856	Nach anderem Bereich sortieren
+1856	Doppelte entfernen (überläuft)
+1857	Zahlenfolge (überläuft)
+1858	Texte mit Trennzeichen verbinden
+1858	Bereiche verketten
+1859	Zeichen von rechts
+1859	Zeichen aus der Mitte
+1860	Position (Groß/klein beachten)
+1860	Position (mit Platzhaltern)
+1860	Zeichen ersetzen
+1861	Text austauschen
+1861	Überflüssige Leerzeichen entfernen
+1862	In Kleinbuchstaben
+1862	Anfangsbuchstaben groß
+1862	Zahl formatiert als Text
+1863	Text in Zahl umwandeln
+1863	Text wiederholen
+1863	Texte exakt vergleichen
+1864	Zeichen aus Code
+1864	Code eines Zeichens
+1864	Zahl mit festen Nachkommastellen
+1865	Steuerzeichen entfernen
+1865	Text vor einem Trennzeichen
+1865	Text nach einem Trennzeichen
+1866	Uhrzeit bilden
+1866	Datum und Uhrzeit jetzt
+1867	Jahr eines Datums
+1867	Monat eines Datums
+1867	Tag eines Datums
+1868	Stunde
+1868	Minute
+1868	Sekunde
+1869	Wochentag als Zahl
+1869	Kalenderwoche
+1870	Kalenderwoche nach ISO (DIN)
+1870	Datum plus Monate
+1871	Letzter Tag des Monats
+1871	Arbeitstage zwischen zwei Daten
+1872	Datum nach Arbeitstagen
+1872	Differenz in Jahren/Monaten/Tagen
+1873	Tage zwischen zwei Daten
+1873	Text in Datum umwandeln
+1873	Bruchteil eines Jahres
+1874	Zelle leer?
+1874	Ist eine Zahl?
+1874	Ist Text?
+1875	Ist ein Fehler?
+1875	Ist #NV?
+1875	Gerade Zahl?
+1876	Enthält eine Formel?
+1876	Fehlerwert #NV
+1876	Datentyp
+1877	Rate eines Kredits
+1877	Zukünftiger Wert
+1877	Barwert
+1878	Zinssatz
+1878	Anzahl Zahlungen
+1878	Nettobarwert
+1879	Interner Zinsfuß
+1879	Zinsanteil einer Rate
+1879	Tilgungsanteil einer Rate
+1880	Effektiver Jahreszins
+1880	Lineare Abschreibung
+1881	Kapitalwert mit Datumsangaben
+1881	Interner Zinsfuß mit Datumsangaben

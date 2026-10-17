@@ -1,0 +1,114 @@
+PASS viewer: getReadingProgress after page change  [{'page': 2, 'pages': 3, 'updatedAt': 1791989315808}]
+PASS viewer: page bookmark stored  [[{'page': 2, 'title': '2. Ausblick', 'at': 1791989316450}]]
+PASS viewer: bookmark button pressed
+PASS viewer: bookmark list shows entry
+PASS viewer: bookmark jumps to page
+PASS viewer: menu has reading mode + wake lock + new tools  [KI-Assistent, Lesemodus, Lesezeichen entfernen, Vorlesen, Kommentieren, Ausfüllen & unterschreiben, PDF bearbeiten, Seiten verwalten]
+PASS viewer: wake lock setting stored
+PASS reflow: headings detected  [Quartalsbericht 2026 | 1. Zusammenfassung | 1.1 Details | 2. Ausblick | 2.1 Risiken | 3. Anhang]
+PASS reflow: heading levels (h1/h2)  [1,1,2,1,2,1]
+PASS reflow: lines merged into paragraphs
+PASS reflow: image kept as inline figure
+PASS reflow: section collapsible
+PASS reflow: settings saved (size, theme)  [{'size': 21, 'lead': 1.6, 'theme': 'sepia', 'font': 'serif', 'width': 'normal'}]
+PASS reflow: sepia applied
+PASS reflow: position remembered  [{'p': 2, 'i': -1, 'off': 0, 'at': 1791989319782}]
+PASS reflow: closing returns to the viewer at the reading page
+PASS reflow: reopening restores the position
+PASS reflow: scanned PDF shows the no-text message
+PASS reflow: fallback button returns to page view
+PASS reflow tool screen: shows the new paragraph
+PASS reflow tool screen: "Original" opens the page in the viewer
+PASS compare: 3 changes (1 insert, 2 replaced)  [['3', '1', '0', '2']]
+PASS compare: highlights drawn on both pages
+PASS compare: per-page summary  [['Seite 1   ~1', 'Seite 2 +1  ~1']]
+PASS compare: text view shows old/new words
+PASS compare: deletions/insertions styled
+PASS compare: overlay finds visual differences  [gleich nur in A (alt) nur in B (neu) · 0,13 % der Fläche unterschiedlich]
+PASS compare: report PDF with summary, changes and page views  [4 pages]
+PASS form: auto-detect finds labelled fields  [Straße, PLZ / Ort, Datum, E-Mail, Telefon, Ich stimme den Bedingungen zu, Newsletter abonnieren, Unterschrift, Vorname, Nachname]
+PASS form: auto-detect finds checkboxes, date and signature  [['fc-text', 'fc-text', 'fc-date', 'fc-text', 'fc-text', 'fc-check', 'fc-check', 'fc-sign', 'fc-text', 'fc-text']]
+PASS form: undo/redo keeps fields
+PASS form: AcroForm text fields  [{'Straße': ('/Tx', 0), 'PLZ / Ort': ('/Tx', 0), 'Datum': ('/Tx', 0), 'E-Mail': ('/Tx', 0), 'Telefon': ('/Tx', 2), 'Ich stimme den Bedingungen zu': ('/Btn', 0), 'Newsletter abonnieren': ('/Btn', 0), 'Unterschrift': ('/Sig', 0), 'Vorname': ('/Tx', 0), 'Nachname': ('/Tx', 0), 'Zahlungsart': ('/Btn', 32768), 'Tarif': ('/Ch', 131074)}]
+PASS form: checkboxes
+PASS form: radio group with options + default  [{'/T': 'Zahlungsart', '/FT': '/Btn', '/Ff': 32768, '/V': '/1', '/Kids': [IndirectObject(49, 0, 139995108945552), IndirectObject(55, 0, 139995108945552), IndirectObject(60, 0, 139995108945552)], '/Opt': ['Bar', 'Überweisung', 'Lastschrift'], '/_States_': ['/0', '/Off', '/1', '/2']}]
+PASS form: dropdown (combo) with options, required  [{'/T': 'Tarif', '/FT': '/Ch', '/Ff': 131074, '/Kids': [IndirectObject(66, 0, 139995108945552)], '/Opt': [['Basis', 'Basis'], ['Plus', 'Plus'], ['Familie', 'Familie']], '/_States_': [['Basis', 'Basis'], ['Plus', 'Plus'], ['Familie', 'Familie']]}]
+PASS form: signature field
+PASS form: required flag on Telefon
+PASS form: date field has format action
+PASS sign: profile suggestions shown
+PASS sign: autofill from profile  [{'Straße': 'Musterweg 5', 'PLZ / Ort': '66111 Saarbrücken', 'Datum': '', 'E-Mail': 'max@example.de', 'Telefon': '0681 123456', 'Vorname': 'Max', 'Nachname': 'Mustermann'}]
+PASS sign: values saved, form stays fillable  [{'Straße': 'Musterweg 5', 'PLZ / Ort': '66111 Saarbrücken', 'Datum': None, 'E-Mail': 'max@example.de', 'Telefon': '0681 123456', 'Ich stimme den Bedingungen zu': '/Off', 'Newsletter abonnieren': '/Off', 'Unterschrift': None, 'Vorname': 'Max', 'Nachname': 'Mustermann', 'Zahlungsart': '/1', 'Tarif': N]
+PASS crop: CropBox set to content (both pages)  [[[143, 293, 457, 568], [143, 293, 457, 568]]]
+PASS crop: MediaBox unchanged by default
+PASS crop: manual margins in mm on one page (+MediaBox)  [[42.5, 0.0, 595.3, 785.2] [42.5, 0.0, 595.3, 785.2] [0, 0, 595, 842]]
+PASS bookmarks: generated from headings  [['Quartalsbericht 2026', '1. Zusammenfassung', '1.1 Details', '2. Ausblick', '2.1 Risiken', '3. Anhang']]
+PASS bookmarks: outline written with nesting and order  [[(0, '1. Zusammenfassung', 1), (1, '1.1 Details', 1), (0, '3. Anhang', 3), (1, 'Kontakt', 3), (0, '2. Ausblick', 2), (1, '2.1 Risiken', 2)]]
+PASS bookmarks: document opens with outline panel
+PASS batch: 4 inputs listed (3 PDFs + image)
+PASS batch: watermark on all files (ZIP)  [['bericht_v2 (Wasserzeichen).pdf', 'bericht_v1 (Wasserzeichen).pdf', 'raender (Wasserzeichen).pdf', 'chart (Wasserzeichen).pdf'] [True, True, True, True]]
+PASS batch: per-file status done
+PASS batch: all files encrypted (AES, password works)  [[True, True, True, True]]
+PASS batch: compress shows sizes per file
+PASS batch: pages as images in folders  [['bericht_v2/bericht_v2-Seite-1.jpg', 'bericht_v2/bericht_v2-Seite-2.jpg', 'bericht_v2/bericht_v2-Seite-3.jpg', 'bericht_v1/bericht_v1-Seite-1.jpg']]
+PASS batch: merged in list order (image first, 9 pages)  [9 pages, order ['chart.png', 'bericht_v2.pdf', 'bericht_v1.pdf', 'raender.pdf']]
+PASS library: signature, initials and stamp saved  [[1, 1, 1]]
+PASS library: stored in IndexedDB with kinds  [['initials', 'signature', 'stamp']]
+PASS sign: stamp and signature placed
+PASS sign: images embedded in page  [['/FormXob.d36f5cf89bdc417689cf9a189de9098f', '/Image-7098480789', '/Image-9742682568']]
+PASS annotate: stamp placed and selected
+PASS annotate: saved as /Stamp annotation with appearance  [['/Stamp']]
+PASS annotate: stamp visible when rendered  [1123]
+PASS image: shadow removal evens out the paper  [std 8.5→0.0, mean 230→255]
+PASS image: one-tap sharpen increases detail  [5 → 9]
+PASS image: enhance reduces noise  [11.0 → 3.3]
+PASS image: moiré reduced  [18.2 → 0.0]
+PASS image: B/W filter, rotate 90°, resize 50 %  [(300, 450) sat=0.0]
+PASS image: target size in KB respected  [1677]
+PASS image: saved as PDF to library
+PASS compress images: ZIP with WebP files under target  [[('rauschen.webp', 61194), ('schatten.webp', 12362)]]
+PASS passfoto: checklist and disclaimer
+PASS passfoto: single photo 35×45 mm at 600 dpi  [(827, 1063)]
+PASS passfoto: background lightened to light grey  [[232. 232. 232.]]
+PASS passfoto: print sheet 10×15 cm (600 dpi)  [(3543, 2362)]
+PASS passfoto: 3 columns of photos on the sheet  [3]
+PASS passfoto: PDF sheet 150×100 mm with 6 photos at 35×45 mm  [[0.0, 0.0, 425.2, 283.5] 6 {(99.2, 127.6)}]
+PASS passfoto: US visa 2×2 inch = 1200×1200 px  [(1200, 1200)]
+PASS passfoto: US sheet offers 2 photos
+PASS qr: PNG decodes to the URL  [https://fale.dev/pdf?test=äöü&n=1]
+PASS qr: WLAN payload (escaped) decodes  [WIFI:T:WPA;S:FaLe Gast;P:p\;a\:ss\"w\,ord;;]
+PASS qr: contact prefilled from profile
+PASS qr: SVG export is vector
+PASS qr: PDF (vector) decodes to the vCard  [BEGIN:VCARD
+VERSION:3.0
+N:Mustermann;Max;;;
+FN:Max Muster]
+PASS qr: 1000-byte text (high version) decodes  [Version 36 · 161 × 161 Module · 1000 von 1273 Bytes möglich]
+PASS qr: stamped code on the PDF page decodes  [https://fale.dev]
+PASS qr scan: WLAN code recognised from camera
+PASS qr scan: password hidden until revealed
+PASS qr scan: password revealed
+PASS qr scan: password copied to clipboard
+PASS qr scan: link opens only after confirmation
+PASS qr scan: vCard saved as .vcf
+PASS qr scan: text saved as PDF and as note  [['QR-Code 14-10-2026.pdf', 'QR-Notiz 14-10-2026 16-49-51.txt']]
+PASS qr scan: switch back to document mode
+PASS scanner: QR mode switch hidden when unsupported
+PASS qr scan: unsupported browser gets an explanation
+PASS scanner: "Magie" filter available for all pages
+PASS phone viewer: tap on right edge → next page
+PASS phone viewer: tap on left edge → previous page
+PASS phone viewer: swipe left → next page
+PASS phone viewer: tap in the middle hides the bars
+PASS phone viewer: double-tap zooms in  [44 % → 97 %]
+PASS phone viewer: second double-tap zooms back
+PASS phone reflow: table of contents lists headings
+PASS phone reflow: closes at the page that was read
+PASS phone passfoto: front camera preview mirrored
+PASS phone passfoto: pinch zooms the photo  [1.05 → 2.80]
+
+==== SUMMARY ====
+105/105 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems (0 ignored: missing files of the parallel office work)

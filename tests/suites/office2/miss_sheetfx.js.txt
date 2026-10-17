@@ -1,0 +1,12 @@
+103	ist nicht gleich
+103	ist größer als
+103	ist größer oder gleich
+104	ist kleiner als
+104	ist kleiner oder gleich
+104	enthält nicht
+149	Liste (Dropdown)
+149	Ganze Zahl
+149	Dezimalzahl
+150	größer als
+150	größer oder gleich
+150	kleiner oder gleich

@@ -1,0 +1,425 @@
+BESTIMMTHEITSMAß
+Summe der Quadrate
+Auf Vielfaches aufrunden (mit Modus)
+Auf Vielfaches abrunden (mit Modus)
+Zehnerlogarithmus
+Auf gerade Zahl aufrunden
+Auf ungerade Zahl aufrunden
+Anzahl Kombinationen ohne Wiederholung
+Matrix mit Zufallszahlen (überläuft)
+Ganzzahliger Anteil einer Division
+Kosinus (Bogenmaß)
+Tangens (Bogenmaß)
+Arkussinus
+Arkuskosinus
+Arkustangens
+Winkel aus x- und y-Koordinate
+Sinus hyperbolicus
+Kosinus hyperbolicus
+Tangens hyperbolicus
+Umkehrfunktion des Sinus hyperbolicus
+Umkehrfunktion des Kosinus hyperbolicus
+Umkehrfunktion des Tangens hyperbolicus
+Kotangens
+Wurzel aus Zahl mal π
+Doppelfakultät
+Multinomialkoeffizient
+Zahl als römische Zahl
+Römische Zahl in arabische Zahl
+Zahl in andere Basis umwandeln
+Text einer Basis in Dezimalzahl
+Matrixprodukt (überläuft)
+Determinante einer Matrix
+Inverse Matrix (überläuft)
+Einheitsmatrix (überläuft)
+Summe der Differenzen der Quadrate
+Summe der Summen der Quadrate
+Summe der quadrierten Differenzen
+Teilergebnis, das Fehler und ausgeblendete Zeilen ignorieren kann
+Durchschnitt (Text = 0, WAHR = 1)
+Größter Wert inkl. Wahrheitswerte
+Kleinster Wert inkl. Wahrheitswerte
+Standardabweichung (Stichprobe, ältere Form)
+Standardabweichung (Grundgesamtheit, ältere Form)
+Varianz (Stichprobe, ältere Form)
+Varianz (Grundgesamtheit, ältere Form)
+Varianz (Grundgesamtheit)
+Rang einer Zahl (ältere Form)
+Rang mit Mittelwert bei Gleichstand
+Quantil (ältere Form)
+Quartil (ältere Form)
+Geometrisches Mittel
+Mittlere absolute Abweichung
+Werte in Klassen zählen (überläuft)
+Steigung der Regressionsgeraden
+Achsenabschnitt der Regressionsgeraden
+Bestimmtheitsmaß R²
+Linearer Schätzwert (ältere Form)
+Linearer Prognosewert
+Werte entlang eines linearen Trends
+Relativer Rang (ältere Form)
+Relativer Rang einer Zahl (0 bis 1)
+Quantil ohne 0 und 1
+Quartil ohne Minimum und Maximum
+Mittelwert ohne Randwerte
+Harmonisches Mittel
+Summe der quadrierten Abweichungen
+Kurtosis (Wölbung)
+Schiefe einer Verteilung
+Standardisierter Wert (z-Wert)
+Kovarianz (Grundgesamtheit)
+Kovarianz (Stichprobe)
+Pearsonscher Korrelationskoeffizient
+Normalverteilung
+Quantil der Normalverteilung
+Standardnormalverteilung
+Quantil der Standardnormalverteilung
+Binomialverteilung
+Poisson-Verteilung
+Exponentialverteilung
+Konfidenzintervall (Normalverteilung)
+Anzahl Variationen (Reihenfolge zählt)
+Anzahl verschiedener Werte
+Wahrheitswert WAHR
+Wahrheitswert FALSCH
+Eigene Funktion mit Parametern
+LAMBDA auf jeden Wert anwenden (überläuft)
+Werte mit LAMBDA zu einem Ergebnis zusammenfassen
+Zwischenergebnisse einer LAMBDA-Berechnung (überläuft)
+LAMBDA je Zeile anwenden (überläuft)
+LAMBDA je Spalte anwenden (überläuft)
+Matrix aus LAMBDA berechnen (überläuft)
+Wurde ein LAMBDA-Parameter weggelassen?
+Wert in sortierter Liste suchen
+Bereiche untereinander anfügen (überläuft)
+Bereiche nebeneinander anfügen (überläuft)
+Erste/letzte Zeilen oder Spalten nehmen (überläuft)
+Zeilen oder Spalten weglassen (überläuft)
+Bestimmte Zeilen wählen (überläuft)
+Bestimmte Spalten wählen (überläuft)
+Bereich in eine Spalte umwandeln (überläuft)
+Bereich in eine Zeile umwandeln (überläuft)
+Liste zeilenweise umbrechen (überläuft)
+Liste spaltenweise umbrechen (überläuft)
+Bereich auf Größe auffüllen (überläuft)
+Zeichen aus Unicode-Wert
+Unicode-Wert des ersten Zeichens
+Text mit Trennzeichen in Zahl
+Text oder leer
+Text an Trennzeichen aufteilen (überläuft)
+Wert als Text
+Bereich als Text
+Passt der Text zu einem Suchmuster (regulärer Ausdruck)?
+Teil per regulärem Ausdruck herausziehen
+Text per regulärem Ausdruck ersetzen
+Anklickbarer Link
+Arbeitstage mit eigenem Wochenende
+Datum nach Arbeitstagen mit eigenem Wochenende
+Text in Uhrzeit umwandeln
+Tage auf Basis von 360 Tagen
+Ist kein Text?
+Fehler außer #NV?
+Ist ein Wahrheitswert?
+Ungerade Zahl?
+Ist ein Bezug?
+Nummer eines Fehlerwerts
+FEHLER.TYP(A1)
+Wert als Zahl
+Formel einer Zelle als Text
+Nummer des Tabellenblatts
+Anzahl der Tabellenblätter
+Angaben zu einer Zelle
+Nominalzins aus Effektivzins
+Summe der Zinsen über Perioden
+Summe der Tilgung über Perioden
+Geometrisch-degressive Abschreibung
+Doppelt degressive Abschreibung
+Arithmetisch-degressive Abschreibung
+Modifizierter interner Zinsfuß
+Endwert mit wechselnden Zinsen
+Perioden bis zum Zielwert
+Effektiver Zins für Wertzuwachs
+Zinsen bei gleichen Tilgungsraten
+Datenbank
+Summe der Datensätze, die Kriterien erfüllen
+Anzahl Zahlen der passenden Datensätze
+Anzahl nicht leerer Werte der passenden Datensätze
+Mittelwert der passenden Datensätze
+Größter Wert der passenden Datensätze
+Kleinster Wert der passenden Datensätze
+Genau einen passenden Wert holen
+Produkt der passenden Datensätze
+Technisch
+Dezimalzahl in Binärzahl
+Binärzahl in Dezimalzahl
+Dezimalzahl in Hexadezimalzahl
+Hexadezimalzahl in Dezimalzahl
+Dezimalzahl in Oktalzahl
+Oktalzahl in Dezimalzahl
+Zahl1; [Zahl2]; …
+Wert1; [Wert2]; …
+Zahl; [Basis]
+Zahl; Anzahl_Stellen
+Zahl; [Anzahl_Stellen]
+Zahl; Vielfaches
+Zahl; [Schritt]
+Zahl; [Schritt]; [Modus]
+Dividend; Divisor
+Basis; Exponent
+Untere_Zahl; Obere_Zahl
+[Zeilen]; [Spalten]; [Min]; [Max]; [Ganze_Zahl]
+Funktion; Bezug1; [Bezug2]; …
+Funktion; Optionen; Bezug1; [Bezug2]; …
+Bereich; Kriterium; [Summe_Bereich]
+Bereich; Kriterium; [Mittelwert_Bereich]
+Bereich; Kriterium
+Summe_Bereich; Kriterien_Bereich1; Kriterium1; …
+Kriterien_Bereich1; Kriterium1; …
+Mittelwert_Bereich; Kriterien_Bereich1; Kriterium1; …
+Max_Bereich; Kriterien_Bereich1; Kriterium1; …
+Min_Bereich; Kriterien_Bereich1; Kriterium1; …
+Matrix1; [Matrix2]; …
+Matrix; k
+Zahl; Bezug; [Reihenfolge]
+Matrix; Quartil
+Matrix1; Matrix2
+Daten; Klassen
+Y_Werte; [X_Werte]; [Neue_X_Werte]; [Konstante]
+Matrix; x; [Genauigkeit]
+Matrix; Prozent
+Wahrscheinlichkeit; Mittelwert; Standardabweichung
+Wahrscheinlichkeit
+Erfolge; Versuche; Erfolgswahrscheinlichkeit; Kumuliert
+Alpha; Standardabweichung; Umfang
+Prüfung; [Dann_Wert]; [Sonst_Wert]
+Prüfung1; Wert1; [Prüfung2; Wert2]; …
+Wert; Wert_falls_Fehler
+Wert; Wert_falls_NV
+Wahrheitswert1; [Wahrheitswert2]; …
+Wahrheitswert
+Ausdruck; Wert1; Ergebnis1; …; [Standard]
+Name1; Wert1; …; Berechnung
+Matrix1; …; LAMBDA(Wert1; …)
+Startwert; Matrix; LAMBDA(Akku; Wert)
+Matrix; LAMBDA(Zeile)
+Matrix; LAMBDA(Spalte)
+Zeilen; Spalten; LAMBDA(Zeile; Spalte)
+Parameter
+Suchkriterium; Matrix; Spaltenindex; [Bereich_Verweis]
+Suchkriterium; Matrix; Zeilenindex; [Bereich_Verweis]
+Suchkriterium; Suchmatrix; Rückgabematrix; [Wenn_nicht_gefunden]; [Vergleichsmodus]; [Suchmodus]
+Suchkriterium; Suchmatrix; [Vergleichstyp]
+Suchkriterium; Suchmatrix; [Vergleichsmodus]; [Suchmodus]
+Matrix; Zeile; [Spalte]
+Index; Wert1; [Wert2]; …
+Matrix
+Bezug; Zeilen; Spalten; [Höhe]; [Breite]
+Bezug_Text; [A1]
+Zeile; Spalte; [Abs]; [A1]; [Tabellenname]
+Suchkriterium; Suchvektor; [Ergebnisvektor]
+Matrix; Einschließen; [Wenn_leer]
+Matrix; [Sortierindex]; [Sortierreihenfolge]; [Nach_Spalte]
+Matrix; Nach_Matrix1; [Reihenfolge1]; …
+Matrix; [Nach_Spalte]; [Genau_einmal]
+Zeilen; [Spalten]; [Anfang]; [Schritt]
+Matrix; [Zeilen]; [Spalten]
+Matrix; Zeile1; [Zeile2]; …
+Matrix; Spalte1; [Spalte2]; …
+Matrix; [Ignorieren]; [Nach_Spalte]
+Vektor; Anzahl; [Auffüllen_mit]
+Matrix; Zeilen; [Spalten]; [Auffüllen_mit]
+Text1; [Text2]; …
+Trennzeichen; Leere_ignorieren; Text1; [Text2]; …
+Text; [Anzahl_Zeichen]
+Text; Erstes_Zeichen; Anzahl_Zeichen
+Suchtext; Text; [Erstes_Zeichen]
+Alter_Text; Erstes_Zeichen; Anzahl_Zeichen; Neuer_Text
+Text; Alter_Text; Neuer_Text; [ntes_Auftreten]
+Wert; Textformat
+Text; [Dezimaltrennzeichen]; [Gruppentrennzeichen]
+Text; Multiplikator
+Text1; Text2
+Zahl; [Dezimalstellen]; [Keine_Punkte]
+Text; Trennzeichen; [Instanz]; [Vergleichsmodus]; [Bei_Ende]; [Wenn_nicht_gefunden]
+Text; Spaltentrenner; [Zeilentrenner]; [Leere_ignorieren]; [Vergleichsmodus]; [Auffüllen_mit]
+Wert; [Format]
+Matrix; [Format]
+Text; Muster; [Groß_klein]
+Text; Muster; [Rückgabemodus]; [Groß_klein]
+Text; Muster; Ersetzung; [Vorkommen]; [Groß_klein]
+Adresse; [Anzeigename]
+Bezug
+Infotyp; [Bezug]
+Zahl; Basis; [Mindestlänge]
+Text; Basis
+Zahl; [Stellen]
+Jahr; Monat; Tag
+Stunde; Minute; Sekunde
+Zahl; [Typ]
+Ausgangsdatum; Monate
+Ausgangsdatum; Enddatum; [Freie_Tage]
+Ausgangsdatum; Enddatum; [Wochenende]; [Freie_Tage]
+Ausgangsdatum; Tage; [Freie_Tage]
+Ausgangsdatum; Tage; [Wochenende]; [Freie_Tage]
+Ausgangsdatum; Enddatum; Einheit
+Enddatum; Ausgangsdatum
+Ausgangsdatum; Enddatum; [Methode]
+Ausgangsdatum; Enddatum; [Basis]
+Zins; Zzr; Bw; [Zw]; [F]
+Zins; Zzr; Rmz; [Bw]; [F]
+Zins; Zzr; Rmz; [Zw]; [F]
+Zzr; Rmz; Bw; [Zw]; [F]; [Schätzwert]
+Zins; Rmz; Bw; [Zw]; [F]
+Zins; Wert1; [Wert2]; …
+Werte; [Schätzwert]
+Zins; Zr; Zzr; Bw; [Zw]; [F]
+Nominalzins; Perioden
+Effektivzins; Perioden
+Ansch_Wert; Restwert; Nutzungsdauer
+Zins; Werte; Zeitpunkte
+Werte; Zeitpunkte; [Schätzwert]
+Zins; Zzr; Bw; Zeitraum_Anfang; Zeitraum_Ende; F
+Ansch_Wert; Restwert; Nutzungsdauer; Periode; [Monate]
+Ansch_Wert; Restwert; Nutzungsdauer; Periode; [Faktor]
+Ansch_Wert; Restwert; Nutzungsdauer; Periode
+Werte; Investition; Reinvestition
+Kapital; Zinsen
+Zins; Bw; Zw
+Zzr; Bw; Zw
+Zins; Zr; Zzr; Bw
+Datenbank; Datenbankfeld; Suchkriterien
+Leer beginnen oder eine Vorlage wählen
+Als Excel-Datei (.xlsx) herunterladen
+{0} als Excel-Datei herunterladen
+Vorlage suchen, z. B. Budget, Urlaub, Rechnung …
+Vorlagen durchsuchen
+Kategorien
+Alle Vorlagen sind eigene Entwürfe mit fertigen Formeln, Dropdown-Listen und bedingter Formatierung. Gelbe Felder sind Eingaben.
+Die Vorlage konnte nicht erstellt werden.
+Funktion suchen, z. B. Summe, Datum, SVERWEIS, VLOOKUP …
+Notiz einfügen
+Notiz zu {0}
+Zellen mit Notiz haben ein rotes Dreieck oben rechts. Die Notiz wird in der Excel-Datei als Kommentar gespeichert.
+Link bearbeiten
+Ziel
+Angezeigter Text (optional)
+Erlaubt sind Webadressen, E-Mail-Adressen, Telefonnummern (tel:…) und Zellen in dieser Datei. Externe Links werden erst nach einer Rückfrage geöffnet.
+Link entfernen
+Bitte gib ein Ziel an.
+Normal (Spalten aufteilen)
+Alle Spalten auf eine Seite
+Blatt auf eine Seite
+Skalierung
+Druckbereich
+z. B. A1:F40 (leer = alles)
+Zeilen wiederholen
+z. B. 1:1
+Markierung {0} als Druckbereich
+Gitternetzlinien drucken
+Zeilen- und Spaltenköpfe drucken (A, B, C … / 1, 2, 3 …)
+Auf der Seite horizontal zentrieren
+Seitenzahlen in der Fußzeile („Seite 1 von 3“)
+Druckbereich ungültig – z. B. A1:F40.
+Zeilen wiederholen: z. B. 1:1 oder 1:2.
+Leerzellen
+Konstanten (Werte ohne Formel)
+Fehlerwerte
+Zellen mit Notiz
+Zelle, Bereich oder Name
+z. B. B7, A1:C20, Tabelle2!A1
+Oder Inhalte markieren (in der Markierung, sonst im ganzen Blatt)
+Teilergebnisse
+Gruppieren nach
+Funktion
+Teilergebnis für
+Vorher nach der Gruppierungsspalte sortieren
+Bereich {0}. Nach jeder Gruppe wird eine Zeile mit TEILERGEBNIS eingefügt; die Gruppen lassen sich am Zeilenkopf zuklappen.
+Wähle mindestens eine Spalte.
+Neue Tabelle aus Vorlage …
+Druckbereich festlegen
+Druckbereich aufheben
+Drucktitel
+Gruppieren
+Gruppierung aufheben
+Gehe zu …
+Reguläre Ausdrücke (z. B. ^\d{5}$)
+Gruppe ein-/ausblenden
+Ziehen zum Ausfüllen
+Funktionen
+Tippen zum Einfügen · Tab übernimmt den ersten Vorschlag
+Nach unten ausfüllen
+Nach rechts ausfüllen
+Reihe ausfüllen …
+Notiz bearbeiten …
+Notiz einfügen …
+Notiz löschen
+Link bearbeiten …
+Link einfügen …
+Bedingte Formatierung …
+Als Drucktitel wiederholen
+Druckbereich: {0}
+Druckbereich aufgehoben
+Es ist kein Druckbereich festgelegt.
+Zellwert
+Text & Sonstiges
+Formel
+Grafisch
+Regel
+Prozent statt Anzahl
+Formel für die erste Zelle des Bereichs, z. B.
+(ganze Zeile hervorheben) oder
+(jede zweite Zeile). Bezüge passen sich für die anderen Zellen an.
+Balkenfarbe
+Symbole (oberes, mittleres, unteres Drittel)
+Bitte gib eine Formel ein, z. B. =$C2>100.
+Anzahl (Standard 10)
+Ungültiges Muster
+Umschalt+F2
+Alt+Umschalt+→ / ←
+Zeilen gruppieren / Gruppierung aufheben
+Vorgeschlagene Funktion übernehmen
+$-Bezug umschalten
+Esc
+Vorschläge schließen / Eingabe verwerfen
+Gehe zu {0}
+Dieser Link wird aus Sicherheitsgründen nicht geöffnet (nur Web-, E-Mail- und Telefon-Links).
+Die Tabelle enthält einen Link.
+Notiz gespeichert
+Notiz gelöscht
+Link gespeichert
+Link entfernt
+Bitte gib eine Webadresse (https://…), eine E-Mail-Adresse oder eine Zelle wie Tabelle2!A1 an.
+Seiteneinstellungen gespeichert – sie gelten für „Als PDF exportieren“ und die Excel-Datei.
+Zeile{0} wird auf jeder PDF-Seite wiederholt
+Keine passenden Zellen gefunden.
+{0} Zelle{1} markiert
+Markiere die Zeilen, die gruppiert werden sollen.
+{0} Zeile{1} gruppiert – mit − / + am Zeilenkopf ein- und ausblenden
+Gruppierung aufgehoben
+Gesamt{0}
+{0} Teilergebnis{1} eingefügt – Gruppen lassen sich am Zeilenkopf mit − zuklappen
+Größer oder gleich
+Kleiner oder gleich
+Ungleich
+Obere Werte (Top N)
+Untere Werte (N kleinste)
+Über dem Durchschnitt
+Unter dem Durchschnitt
+Doppelte Werte
+Eindeutige Werte
+Leere Zellen
+Nicht leere Zellen
+Formel ist wahr
+Datenbalken
+Symbolsatz
+Pfeile
+Ampel
+Symbole
+Flaggen
+Grau durchgestrichen (erledigt)
+Kräftiges Blau mit weißem Text
+{0} {1} und {2}
+&CSeite &P von &N
+False
+TargetMode="External"
+Leer oder mit Vorlage: Haushaltsbuch, Urlaubsplaner, Rechnungen … – als .xlsx.

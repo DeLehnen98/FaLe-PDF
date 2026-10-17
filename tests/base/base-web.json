@@ -1,0 +1,22 @@
+{
+ "mode": "web",
+ "console": [
+  "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+  "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+ ],
+ "pageerrors": [],
+ "requests": 26,
+ "gate_title": "Deine Fotos und Dateien. Nur für dich lesbar.",
+ "sw": 1,
+ "faleOneBack": "undefined",
+ "autobackup_on_gate": 0,
+ "settings": {
+  "cards": 0,
+  "text": "Einstellungen\nKonto\nSpeicher\n\nDein Speicher gehört nur FaLe One – er bremst keine anderen Apps aus. Ist er voll, bleibt alles lesbar und nichts wird automatisch gelöscht.\n\nPapierkorb\nDuplikate finden\nSicherung\n\nLade …\n\nAngemeldete Geräte\n\nDas FaLe-Konto ist bald verfügbar.\n\nSicherheit\n\nDein Sync-Passwort und dein Wiederherstellungsschlüssel schützen den Schlüssel, mit dem alles verschlüsselt ist. "
+ },
+ "fotos": {
+  "cards": 0,
+  "text": "Zeitachse\nAuf diesem Gerät noch keine Sicherung\n0 wartend · Originale, unverändert und verschlüsselt\nFotos sichern\nZeitachse\nAlben\nFavoriten\nDuplikate\nNoch keine Fotos gesichert\n\nWähle Fotos aus deiner Galerie. Sie werden auf diesem Gerät verschlüsselt und im Original gesichert – Doppelte werden erkannt und übersprungen.\n\nFotos sichern\nAus Google Takeout importieren\nSichern"
+ },
+ "native_js_requested": false
+}

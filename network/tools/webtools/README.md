@@ -186,7 +186,7 @@ Hebrew, emoji) are replaced by "?" and must be reported. Add `unicodefont` to `n
 6. Check the phone screenshots (light + dark): pick zone above the fold, no cut-off text.
 
 Test harness (Playwright, Vercel-like server applying network/vercel.json):
-`/tmp/claude-0/-home-claude-fale-pdf/0e53281f-b025-558b-92a9-566a29d182eb/scratchpad/webtools/`
+`tests/suites/webtools/` (im Repo)
 (`wtlib.py`, `server.mjs`, `run_all.sh`, `fixtures/`, `shots/`). Template:
 
 ```python

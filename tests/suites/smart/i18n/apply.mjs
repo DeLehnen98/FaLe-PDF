@@ -1,0 +1,17 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+const EN = '/home/claude/FalePDF/js/i18n/en.js', IGN = '/home/claude/FalePDF/scripts/i18n-ignore.txt';
+const { tr, ignore } = JSON.parse(readFileSync(new URL('./new.json', import.meta.url), 'utf8'));
+const src = readFileSync(EN, 'utf8');
+const dict = (await import(pathToFileURL(EN).href + '?t=' + Date.now())).default;
+const add = Object.entries(tr).filter(([k]) => !(k in dict));
+const cut = src.indexOf('\n};\n\n// Default values');
+if (cut < 0) throw new Error('end of first export not found');
+const body = add.map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v)},`).join('\n');
+const out = src.slice(0, cut) + '\n  // Assistenten: Briefkasten, Dokumenten-Gedächtnis, Steuer-Belege, Familien-Ordner (js/smart/*)\n' + body + src.slice(cut);
+writeFileSync(EN, out);
+const ig = readFileSync(IGN, 'utf8');
+const have = new Set(ig.split('\n'));
+const addIg = ignore.filter(k => !have.has(k));
+writeFileSync(IGN, ig.replace(/\n*$/, '\n') + '# Assistenten (js/smart/*): regex fragments, stop/synonym lists, German letter and tax-export content\n' + addIg.join('\n') + '\n');
+console.log('added', add.length, 'skipped existing', Object.keys(tr).length - add.length, 'ignored', addIg.length);

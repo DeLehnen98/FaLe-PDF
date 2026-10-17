@@ -1,0 +1,135 @@
+FaLe PDF build: 441 Dateien, 10.0 MB, Version 2.1.0-10e3237d25 
+PASS build: OCR files not in install precache  [441 assets]
+PASS build: OCR files shipped in dist
+PASS build: sw has OCR runtime cache
+PASS build: cache names match
+PASS build: no CDN in OCR code
+PASS engine: word accuracy clean_de.png ≥ 95 %  [1.000, conf 96, 1403 ms, angle 0]
+PASS engine: word accuracy clean_en.png ≥ 95 %  [1.000, conf 94, 485 ms, angle 0]
+PASS engine: word accuracy photo_scan.jpg ≥ 90 %  [1.000, conf 96, 861 ms, angle -2.6]
+PASS engine: deskew estimate on rotated photo  [angle -2.6]
+PASS engine: boxes in source coordinates  [{"x0": 249.87562257513875, "y0": 281.06462646676425, "x1": 1018.581013951726, "y1": 370.80141970039125}]
+PASS engine: word accuracy small.png ≥ 90 %  [1.000, conf 96, 236 ms, angle 0]
+PASS engine: lang eng + psm block
+PASS engine: psm sparse works  [Dr. Anna Schäfer
+
+Geschäftsführerin
+
+Schäfer & Partner GmbH
+
+Tel.: +49 681 98765]
+   (engine accuracy: 4.7s)
+PASS engine: canvas / ImageData / ImageBitmap inputs  [{"a": "Hallo Welt 2026", "b": "Hallo Welt 2026", "d": "Hallo Welt 2026"}]
+PASS engine: result shape  [{"x0": 44, "y0": 85, "x1": 147, "y1": 121}]
+   (engine api: 0.2s)
+PASS engine: ocrPdfPages skips text pages, OCRs image pages  [[{"page": 1, "skipped": true, "text": "", "words": 0, "w": 595.2756, "scale": 1}, {"page": 2, "skipped": false, "text": "Quarterly Report Summary\n\nThe quick brown fox jumps over the lazy dog.\nRevenue i", "words": 38, "w": 2480, "scale": 4.166666666666667}, {"ev": ["render", "prepare", "load", "re]
+PASS engine: ocrPdfPages progress phases  [{'ev': ['render', 'prepare', 'load', 'recognize', 'done']}]
+   (engine pdf pages: 1.5s)
+PASS engine: cancel via AbortSignal
+PASS engine: works again after cancel  [Weiter geht es]
+PASS engine: parallel jobs (worker reuse)  [['Parallel Nummer 1', 'Parallel Nummer 2', 'Parallel Nummer 3'] max=1]
+   (engine cancel: 0.8s)
+PASS bizcard parse card_de.jpg: ≥ 7 of 8 fields exact  [ok=['name', 'firma', 'position', 'telefon', 'mobil', 'email', 'web', 'adresse'] got={"name": "Dr. Anna Schäfer", "firma": "Schäfer & Partner GmbH", "position": "Geschäftsführerin", "telefon": "+49 681 9876543", "mobil": "+49 170 1234567", "email": "anna.schaefer@schaefer-partner.de", "web": "www.schaefer-partner.de", "adresse": "Bahnhofstraße 5, 66111 Saarbrücken"}]
+PASS bizcard parse card_en.jpg: ≥ 7 of 8 fields exact  [ok=['name', 'firma', 'position', 'telefon', 'mobil', 'email', 'web', 'adresse'] got={"name": "John Miller", "firma": "Northwind Trading Ltd.", "position": "Senior Sales Manager", "telefon": "+44 20 7946 0958", "mobil": "+44 7700 900123", "email": "john.miller@northwind.co.uk", "web": "northwind.co.uk", "adresse": "221 Baker Street, London NW1 6XE"}]
+   (bizcard parse: 1.8s)
+PASS tools list: Text erkennen (OCR)
+PASS tools list: Durchsuchbares PDF
+PASS tools list: Bild zu Word
+PASS tools list: Bild zu Excel
+PASS tools list: Visitenkarte scannen
+   (tools listed: 0.3s)
+PASS text tool: two results
+PASS text tool: accuracy DE ≥ 95 %  [1.000]
+PASS text tool: accuracy EN ≥ 95 %
+PASS text tool: .txt export incl. edits + umlauts
+PASS text tool: .docx valid with paragraphs  [8 paras]
+PASS text tool: .docx line mode keeps line breaks
+PASS text tool: searchable PDF from images  [Rechnung für März 2026 | Sehr geehrte Frau Müller, | vielen Dank für Ihre Bestellung. Die Lieferung erfolgt | übermorgen durch]
+PASS text tool: copy to clipboard
+   (text tool: 8.5s)
+PASS text tool (PDF): text page taken from PDF, image page OCR  [['mixed.pdf · Seite 1\n        Text aus der PDF übernommen', 'mixed.pdf · Seite 2\n        94 %']]
+   (text tool pdf: 4.2s)
+PASS searchable tool: status shows pages without text
+PASS searchable tool: progress shows page x of y  [Durchsuchbares PDF wird erstellt … | Abbrechen | Seite 3 von 3 · Text wird erkannt | gleich fertig]
+PASS searchable: pdftotext word accuracy ≥ 95 %  [1.000]
+PASS searchable: pdftotext word positions match the image
+PASS searchable: original page images untouched
+PASS searchable: invisible text (3 Tr)
+   (searchable tool: 7.8s)
+PASS searchable (mixed): text page unchanged, image page recognised  [Quarterly Report Summary
+The quick brown fox jumps over the ]
+PASS searchable (mixed): note says 1 page
+PASS searchable (special chars): no crash, Latin text kept  [Sonderzeichen:    s >-tÖöC- „Zitat"         €5 % | Greek aßy und Kyrillisch XKx bleiben heil]
+   (searchable mixed/special: 7.5s)
+PASS viewer: pdf.js find highlight lines up with the scanned word  [dx0=0.0007 dx1=0.0018 dyc=0.0003 h×1.12]
+PASS viewer: find count on scanned doc  [1 von 1]
+   (viewer find: 1.9s)
+PASS viewer banner: shown for image-only PDF
+PASS viewer banner: not shown for text PDF
+PASS viewer banner: not shown after OCR
+PASS viewer menu: "Text erkennen (OCR)"
+PASS viewer banner: click starts searchable conversion
+PASS cancel: toast after Abbrechen
+PASS viewer banner: dismissed stays hidden
+   (viewer banner: 10.4s)
+PASS Bild zu Word: valid .docx with text  [Quarterly Report Summary
+The quick brown fox jumps over the lazy dog. Revenue increased by twelve pe]
+   (word tool: 3.4s)
+PASS Bild zu Excel: valid .xlsx, 5×4 table with numbers  [[["Artikel", "Menge", "Preis", "Summe"], ["Kaffee", 2, 4.5, 9], ["Tee", 3, 3.2, 9.6], ["Kuchen", 1, 2.8, 2.8], ["Wasser", 4, 1.5, 6]]]
+   (excel tool: 3.6s)
+PASS Visitenkarte card_de.jpg: form fields  [ok=['name', 'firma', 'position', 'telefon', 'mobil', 'email', 'web'] {"name": "Dr. Anna Schäfer", "firma": "Schäfer & Partner GmbH", "position": "Geschäftsführerin", "telefon": "+49 681 9876543", "mobil": "+49 170 1234567", "fax": "", "email": "anna.schaefer@schaefer-partner.de", "web": "www.schaefer-partner.de", "strasse": "Bahnhofstraße 5", "plz": "66111", "ort": "]
+PASS Visitenkarte card_de.jpg: valid vCard 3.0  [BEGIN:VCARD | VERSION:3.0 | N:Schäfer;Anna;;Dr.; | FN:Dr. Anna Schäfer | ORG:Schäfer & Partner GmbH | TITLE:Geschäftsführerin\; Vertrieb | TEL;TYPE=WORK,VOICE:+49 681 9876543 | TEL;TYPE=CELL,VOICE:+49 170 1234567 | EMAIL;TYPE=INTERNET,WORK:anna.schaefer@schaefer-partner.de | URL:https://www.schaefer-partner.]
+PASS Visitenkarte card_en.jpg: form fields  [ok=['name', 'firma', 'position', 'telefon', 'mobil', 'email', 'web'] {"name": "John Miller", "firma": "Northwind Trading Ltd.", "position": "Senior Sales Manager", "telefon": "+44 20 7946 0958", "mobil": "+44 7700 900123", "fax": "", "email": "john.miller@northwind.co.uk", "web": "northwind.co.uk", "strasse": "221 Baker Street", "plz": "NW1 6XE", "ort": "London", "la]
+PASS Visitenkarte card_en.jpg: valid vCard 3.0  [BEGIN:VCARD | VERSION:3.0 | N:Miller;John;;; | FN:John Miller | ORG:Northwind Trading Ltd. | TITLE:Senior Sales Manager | TEL;TYPE=WORK,VOICE:+44 20 7946 0958 | TEL;TYPE=CELL,VOICE:+44 7700 900123 | EMAIL;TYPE=INTERNET,WORK:john.miller@northwind.co.uk | URL:https://northwind.co.uk | ADR;TYPE=WORK:;;221 Baker ]
+   (card tool: 6.9s)
+PASS settings: OCR row with status + size  [Nicht geladen · ca. 7,0 MB]
+PASS settings: licences tesseract.js, -core, tessdata_fast
+   (settings: 0.5s)
+PASS scanner: OCR option shown and on by default
+PASS scanner: no extra dialog when saving (size note shown inline)  [Text erkennen – PDF durchsuchbar machen
+Texterkennung (OCR) direkt auf dem Gerät: Text lässt sich danach suchen und kopieren. Beim ersten Mal werden einmalig ca. 7,0 MB Sprachdaten geladen.]
+PASS scanner: result note "durchsuchbar"
+PASS scanner: saved PDF is searchable  [Rechnung für März 2026 | Sehr geehrte Frau Müller, | vielen Dank für Ihre Bestellung. Die Lieferung erfolgt | übermorgen durch]
+PASS scanner: text layer within the page  [[('Spediteur.', 165.9541, 111.46457, 214.034796, 119.16723)]]
+PASS scanner: OCR option remembered
+   (scanner: 10.6s)
+PASS Lesemodus: OCR offer on scan
+PASS Lesemodus: reflowed OCR text  [Text per OCR erkannt (3 Seiten). Bitte prüfe wichtige Angaben. | Durchsuchbare PDF speichern | SEITE 1 | Original | Rechnung für März 2026 |  | Sehr geehrte Frau ]
+PASS Lesemodus: save searchable copy
+   (reflow ocr: 8.6s)
+PASS Vergleichen: OCR compare finds 100 → 120  [1 | Änderungen | 0 | eingefügt | 0 | gelöscht | 1 | geändert |  | 1 → 1 Seiten · 1 Wörter hinzu, 1 Wörter entfernt |  | Seite 1 | ~1]
+   (compare ocr: 5.3s)
+PASS Schwärzen: search terms found via OCR (2× Saarbrücken + Spediteur)  [3 marks · 3 Markierungen auf 1 Seite
+Schwärzen anwenden]
+PASS Schwärzen: OCR mark covers the word  [[[0.12814231405452806, 0.16415449310346772, 0.2150264817841199, 0.17508229617604618], [0.2438534483617666, 0.17869323466247294, 0.32099419418646363, 0.1876255272098778], [0.2773169381277902, 0.12937559537901336, 0.3517967379823023, 0.1425839819089331]]]
+PASS Schwärzen: result saved (pages rasterised)
+   (redact ocr: 6.9s)
+PASS PDF zu Word: OCR option for scans
+PASS PDF zu Word: OCR text in .docx  [Rechnung für März 2026
+Sehr geehrte Frau Müller,
+vielen Dank für Ihre Bestellung. Die Lieferung erfolgt
+übermorgen durch]
+   (toword ocr: 5.7s)
+PASS stats: ocr_pages tracked  [11 ['fale-stats']]
+   (stats: 0.0s)
+PASS offline: OCR data not cached before first use  [missing]
+PASS offline: nothing of tesseract precached at install  [['falepdf-v2.1.0-10e3237d25', 'falepdf-ocr-v6']]
+PASS offline: warm-up OCR online
+PASS offline: OCR files cached by SW on first use  [cached 6958353]
+PASS offline: second OCR works offline (SW cache)  [1242 ms]
+PASS offline: settings show "Geladen" + size  [Geladen · 7,0 MB auf diesem Gerät]
+   (sw offline: 9.9s)
+PASS offline (never loaded): German explanation  [Die Texterkennung braucht beim ersten Mal eine Internetverbindung, um einmalig ca. 7,0 MB Sprachdaten zu laden. Danach funktioniert sie auch offline.]
+PASS offline (never loaded): dialog before first use  [Texterkennung noch nicht offline verfügbar
+
+Für die Texterkennung lädt FaLe PDF einmalig ca. 7,0 MB Sprachdaten (Deutsch]
+PASS first use: download notice  [Texterkennung (OCR) einrichten
+
+Beim ersten Mal werden einmalig ca. 7,0 MB Sprachdaten für Deutsch und Englisch geladen und auf deinem Gerät gespeiche]
+PASS settings: "OCR-Daten für offline laden" downloads  [Geladen · 7,0 MB auf diesem Gerät]
+PASS settings download → OCR works offline
+   (fresh offline: 8.4s)
+PASS privacy: no request left 127.0.0.1  [[]]
+PASS no console errors
+
+91/91 passed

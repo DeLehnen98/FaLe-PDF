@@ -1,0 +1,20 @@
+112	(wie Standard)
+114	Formatvorlage ändern: {0}
+119	Links (Standard)
+115	Größe (pt)
+115	Nicht vom nächsten Absatz trennen
+115	Abstand vor (pt)
+115	Abstand nach (pt)
+115	Die Änderung gilt für alle Absätze mit der Formatvorlage „{0}“ und wird in der Word-Datei gespeichert.
+211	Absatz
+212	Zeilenabstand (Vielfaches)
+212	Einzug (cm)
+212	Sondereinzug
+212	Erste Zeile
+212	Hängend
+212	Sondereinzug um (cm)
+212	Abstand (pt)
+212	Vor
+212	Zeilen- und Seitenumbruch
+212	Seitenumbruch oberhalb
+451	✓ Häkchen

@@ -1,0 +1,24 @@
+19	Benutzerdefiniert …
+23	Zahl ohne Nachkommastellen
+23	Zahl, 2 Nachkommastellen
+23	Mit Tausenderpunkt
+23	Tausenderpunkt, 2 Nachkommastellen
+24	Negative Zahlen rot
+24	Währung ohne Cent
+24	Währung, negativ rot
+25	Prozent, 2 Nachkommastellen
+25	Datum (31.12.2026)
+25	Datum kurz (31.12.26)
+25	Datum lang (31. Dezember 2026)
+26	Mit Wochentag
+26	Monat und Jahr
+26	Uhrzeit (13:30)
+26	Uhrzeit mit Sekunden
+26	Stunden über 24 (Zeiterfassung)
+27	Datum und Uhrzeit
+27	Wissenschaftlich
+27	Bruch
+27	Postleitzahl (5 Stellen)
+33	Schlecht
+42	Warnhinweis
+43	Akzent

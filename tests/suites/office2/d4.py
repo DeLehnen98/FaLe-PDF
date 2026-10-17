@@ -1,0 +1,1 @@
+print(pg.evaluate("""async () => { const { docxToHtml } = await import('./js/office/docx-read.js'); const b = await (await fetch('t_table.docx')).arrayBuffer(); const r = await docxToHtml(b, 'x.docx'); const { sanitizeDocHtml } = await import('./js/security.js'); const s = await sanitizeDocHtml(r.html); return [r.html.slice(0, 600), s.slice(0, 600)]; }"""))

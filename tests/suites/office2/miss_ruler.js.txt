@@ -1,0 +1,5 @@
+9	Einzug erste Zeile
+10	Einzug links / hängend
+10	Einzug links
+11	Einzug rechts
+60	Tabstopp

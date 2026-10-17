@@ -1,0 +1,275 @@
+Sicher teilen (Link)
+Unterschrift anfordern
+Der Dienst ist gerade nicht erreichbar. Bitte versuche es später erneut.
+Du bist offline. Teilen, Unterschriften anfordern und Übertragen brauchen eine Internetverbindung.
+Teilen ist noch nicht eingerichtet – bitte versuche es später erneut.
+Die Verbindung musste erneuert werden. Bitte versuche es noch einmal.
+Das hat nicht geklappt. Bitte versuche es erneut.
+Die Datei ist zu groß (max. {0} MB).
+Die Datei ist unvollständig angekommen. Bitte versuche es erneut.
+Ende-zu-Ende-verschlüsselt
+Die Datei wird auf deinem Gerät mit AES-256 verschlüsselt, bevor sie hochgeladen wird. Der Schlüssel steckt nur im Link (hinter dem #) und wird nie an unseren Server gesendet – wir speichern nur verschlüsselte Daten, Größe und Ablaufzeit und löschen alles automatisch. Wichtig: Wer den vollständigen Link hat, kann die Datei öffnen. Teile ihn nur mit den richtigen Personen oder setze zusätzlich ein Passwort.
+Teilen, Unterschriften anfordern und Übertragen brauchen eine Internetverbindung. Alles andere in FaLe PDF funktioniert weiter offline.
+läuft ab in {0} Min.
+läuft ab in {0} Std.
+läuft ab in {0} Tagen
+Link kopiert.
+Kopieren wird hier nicht unterstützt – bitte den Link markieren und kopieren.
+Link kopiert – füge ihn in deine Nachricht ein.
+Sicherer Link
+Dein Link
+Link kopieren
+Teilen …
+Der Link ist zu lang für einen QR-Code.
+Angesehen
+Abgelaufen
+Wartet
+Aktiv
+Limit erreicht
+Unbegrenzt
+Dieser Browser kann nicht verschlüsseln.
+Sicheres Teilen braucht eine HTTPS-Verbindung und einen aktuellen Browser.
+Andere Datei
+Gültig für
+Downloads
+Zusätzlich mit Passwort schützen
+Sende das Passwort auf einem anderen Weg als den Link (z. B. per Anruf oder SMS). Ohne Passwort lässt sich die Datei nicht öffnen – auch nicht von uns.
+Verschlüsseln & Link erstellen
+Datei wählen
+Wähle eine Datei aus deiner Bibliothek oder von deinem Gerät. Sie wird vor dem Hochladen verschlüsselt.
+Vom Gerät wählen
+Deine Dateien
+Das Passwort braucht mindestens 6 Zeichen.
+Verschlüssele und lade hoch …
+Der Link konnte nicht erstellt werden.
+· mit Passwort
+Vergiss nicht, das Passwort separat zu senden.
+Dein sicherer Link ist bereit
+Gültig bis {0} · {1}{2}
+Meine Links
+Link löschen
+Ich habe dir „{0}“ sicher geteilt (Ende-zu-Ende-verschlüsselt mit FaLe PDF):
+Link löschen?
+Die verschlüsselte Datei „{0}“ wird sofort vom Server gelöscht. Der Link funktioniert danach nicht mehr.
+Link gelöscht.
+Der Link konnte nicht gelöscht werden.
+Für diesen Link ist ein Passwort nötig.
+Diese Datei hat ein unbekanntes Format.
+Das Passwort ist falsch – oder der Link ist unvollständig.
+Der Schlüssel im Link passt nicht. Bitte prüfe, ob der Link vollständig kopiert wurde.
+Die Datei ist beschädigt oder wurde verändert – die Entschlüsselung wurde abgebrochen.
+Sicher teilen
+Ende-zu-Ende-verschlüsselter Link – läuft automatisch ab, auf Wunsch mit Passwort.
+PDF per Link unterschreiben lassen – ohne Konto, mit Protokollseite.
+Geräte verbinden
+Dateien zwischen Handy und PC übertragen – per QR-Code oder Code.
+Teilen & Übertragen
+Verschlüsselte Links, Unterschriften anfordern, Handy ↔ PC
+Teilen & Unterschreiben
+Ende-zu-Ende-verschlüsselt: Der Schlüssel steht nur im Link, unser Server sieht keine Inhalte. Braucht eine Internetverbindung.
+Teilen, ohne die Kontrolle abzugeben
+Links sind Ende-zu-Ende-verschlüsselt und laufen automatisch ab. Unser Server sieht weder Inhalt noch Dateinamen.
+Aktualisieren
+Unterschriftsanfragen
+Diese Liste wird nur auf diesem Gerät gespeichert. Die Links enthalten den Schlüssel – gib dieses Gerät nicht unbeaufsichtigt weiter.
+Noch keine Links. Tippe auf „Sicher teilen“, um eine Datei verschlüsselt zu teilen.
+Link teilen
+Aus der Liste entfernen
+Ich habe dir „{0}“ sicher geteilt:
+Nicht mehr auf dem Server (abgelaufen oder gelöscht)
+Noch keine Anfragen. Öffne eine PDF und wähle ⋮ → „Unterschrift anfordern“.
+{0} von {1} Downloads
+Ende-zu-Ende-verschlüsselt: Der Schlüssel steht nur im Link hinter dem # und wird nie an den Server gesendet. Entschlüsselt wird hier auf deinem Gerät.
+Erneut versuchen
+Zu FaLe PDF
+Dieser Browser unterstützt die nötige Verschlüsselung nicht (nur über HTTPS). Bitte öffne den Link in einem aktuellen Browser.
+Ungültiger Link
+Dieser Link ist nicht vollständig. Bitte kopiere ihn noch einmal komplett.
+Schlüssel fehlt
+Der Link ist unvollständig – der Schlüssel fehlt. Bitte kopiere den kompletten Link inklusive des Teils nach „#k=“.
+Zum Öffnen des Links brauchst du eine Internetverbindung.
+Link nicht mehr verfügbar
+Dieser Link ist abgelaufen oder wurde vom Absender gelöscht. Die Datei ist nicht mehr auf dem Server.
+Download-Limit erreicht
+Diese Datei wurde bereits so oft heruntergeladen, wie der Absender erlaubt hat.
+Unbekanntes Format
+Das Passwort ist falsch – bitte versuche es erneut.
+Der Absender hat diese Datei zusätzlich mit einem Passwort geschützt.
+Entschlüsselung fehlgeschlagen
+noch {0} Downloads
+In FaLe öffnen
+Jedes Herunterladen bzw. Öffnen zählt als ein Download.
+Sicher geteilt mit dir
+{0} · verfügbar bis {1}{2}
+Lade und entschlüssele …
+Entschlüsselt
+Dieser Link ist abgelaufen oder wurde vom Absender gelöscht.
+Herunterladen fehlgeschlagen.
+Empfangen
+Ende-zu-Ende-verschlüsselt – ohne Konto
+Verschlüsselter Link mit Ablaufdatum
+Felder setzen, Link senden, unterschriebenes PDF zurückbekommen
+Unterschriftsanfrage
+Status und unterschriebenes Dokument
+Geteilte Datei
+Ende-zu-Ende-verschlüsselt mit FaLe PDF
+Dokument ansehen und elektronisch unterschreiben
+Dateien zwischen Handy und PC übertragen
+Link unvollständig
+Der Link ist unvollständig. Bitte öffne den kompletten Link aus der Nachricht noch einmal.
+Zum Unterschreiben brauchst du eine Internetverbindung.
+Noch nicht an der Reihe
+Vor dir muss noch jemand unterschreiben (du bist Person {0} von {1}). Öffne den Link später erneut.
+Anfrage nicht mehr verfügbar
+Diese Unterschriftsanfrage ist abgelaufen oder wurde vom Absender gelöscht.
+Das Dokument konnte nicht geladen werden
+· Person {0} von {1}
+bittet dich, dieses Dokument zu unterschreiben.
+Du wurdest gebeten, dieses Dokument zu unterschreiben.
+Unterschrift angefordert{0}
+Für:
+Gültig bis {0} · {1}
+Person {0}
+Text eingeben
+Deine Unterschrift
+Ich unterschreibe elektronisch.
+Ich habe das Dokument gelesen und bin einverstanden. Mir ist bewusst, dass dies eine einfache elektronische Signatur (eIDAS) ist – keine qualifizierte Signatur.
+Unterschreiben & senden
+Das unterschriebene PDF wird auf deinem Gerät erstellt, mit einer Protokollseite versehen und Ende-zu-Ende-verschlüsselt an den Absender zurückgegeben.
+Noch
+von {0} Feldern auszufüllen. Tippe auf die markierten Felder im Dokument.
+Alle Felder ausgefüllt. Bestätige unten und sende dein Dokument ab.
+Für dich sind keine Felder markiert.
+Erstelle das unterschriebene PDF …
+Verschlüssele und sende …
+Gesendet
+Das Unterschreiben hat nicht geklappt. Bitte versuche es erneut.
+am {0}
+Unterschrieben – danke!
+“ wurde{0} unterschrieben und verschlüsselt an den Absender zurückgegeben. Der Absender sieht den Status, sobald er FaLe PDF öffnet.
+Kopie herunterladen
+FaLe PDF entdecken
+Die Kopie ist nicht mehr verfügbar.
+Unterschriftsprotokoll / Signature audit trail
+Dokument / Document
+Unterzeichner/in laut Anfrage / Signer (as named in the request)
+(Person {0} von {1})
+Angefordert von / Requested by
+Anfrage erstellt (UTC, Server) / Request created
+Dokument geöffnet (UTC, Server) / Document opened
+Unterschrieben (UTC, Gerät der unterzeichnenden Person) / Signed (UTC, signer device)
+SHA-256 Original (wie vom Absender gesendet) / original as sent
+SHA-256 vor dieser Unterschrift / before this signature
+SHA-256 nach der Unterschrift (Seiten 1-{0}, ohne diese Protokollseite) / after signing, without this page
+Bestätigung / Confirmation
+„Ich unterschreibe elektronisch“ wurde aktiv bestätigt. / "I sign electronically" was actively confirmed.
+Art der Signatur / Signature type
+Einfache elektronische Signatur (EES) im Sinne von Art. 3 Nr. 10 der eIDAS-Verordnung (EU) Nr. 910/2014. Keine fortgeschrittene oder qualifizierte elektronische Signatur; die Identität der unterzeichnenden Person wurde nicht geprüft. / Simple electronic signature under eIDAS; not an advanced or qualified signature, identity not verified.
+Übertragung / Transmission
+Ende-zu-Ende-verschlüsselt (AES-256-GCM) über FaLe PDF; der Server kennt weder Inhalt noch Namen. / End-to-end encrypted; the server cannot read content or names.
+Erstellt mit FaLe PDF – fale-pdf.vercel.app
+Wähle die PDF, die unterschrieben werden soll.
+Unterschriften kannst du nur für PDF-Dateien anfordern. Wandle das Dokument zuerst in eine PDF um.
+Diese PDF hat ein Passwort.
+Entferne zuerst das Passwort (⋮ → „Passwort entfernen“). Der Link wird ohnehin Ende-zu-Ende-verschlüsselt.
+Dieser Browser kann nicht verschlüsseln (nur über HTTPS).
+Weitere Person
+Die Personen unterschreiben nacheinander in dieser Reihenfolge.
+2 · Felder setzen
+Wähle ein Feld und tippe auf die Stelle im Dokument. Felder lassen sich verschieben.
+Feld einfügen
+3 · Nachricht & Gültigkeit
+Dein Name (optional)
+Nachricht (optional)
+z. B. Bitte bis Freitag unterschreiben – danke!
+Link gültig für
+Anfrage erstellen
+Dokument, Namen und Nachricht werden Ende-zu-Ende-verschlüsselt. Es entsteht eine einfache elektronische Signatur mit Protokollseite.
+Person entfernen
+Felder für Person {0} setzen
+Name der Person
+Name von Person {0}
+Tippe auf die Stelle für das Feld „{0}“ (Person {1}).
+Feld entfernen
+{0} für {1}
+Bitte gib den Namen von Person {0} ein.
+Bitte setze mindestens ein Unterschriftsfeld für {0}.
+Die Anfrage konnte nicht erstellt werden.
+{0} bittet dich, „{1}“ zu unterschreiben.
+Bitte unterschreibe „{0}“.
+Link für {0} (Ende-zu-Ende-verschlüsselt, ohne Konto):
+Anfrage erstellt
+Sende jeder Person ihren Link – z. B. per WhatsApp oder E-Mail. Gültig bis {0}.
+Status ansehen
+Erinnerung in 2 Tagen
+Link zum Unterschreiben
+Unterschrift: {0}
+Tipp: Person 2 kann erst unterschreiben, wenn Person 1 fertig ist – du kannst trotzdem schon alle Links verschicken.
+Unterschrift noch offen?
+Prüfe den Status von „{0}“.
+Erinnerung in 2 Tagen geplant.
+Erinnerung gespeichert – sie erscheint, wenn du FaLe öffnest.
+Die Erinnerung konnte nicht geplant werden.
+Anfrage nicht gefunden
+Diese Anfrage ist auf diesem Gerät nicht gespeichert. Den Status siehst du nur auf dem Gerät, auf dem du sie erstellt hast.
+Anfrage löschen
+Der Server kennt nur den Status (offen, angesehen, unterschrieben) und die Zeitpunkte – nicht das Dokument, die Namen oder deine Nachricht.
+Anfrage löschen?
+Das verschlüsselte Dokument und alle unterschriebenen Versionen werden sofort vom Server gelöscht. Die Links funktionieren danach nicht mehr. Bereits gespeicherte PDFs in deinen Dateien bleiben erhalten.
+Anfrage gelöscht.
+Abgelaufen – die Daten wurden vom Server gelöscht.
+Erstellt am {0} · {1}
+Unterschrieben am {0}
+Geöffnet am {0}
+Noch nicht geöffnet
+Alle haben unterschrieben
+{0} von {1} unterschrieben
+Zwischenstand speichern
+Das unterschriebene PDF enthält eine Protokollseite (einfache elektronische Signatur).
+Die Prüfsumme stimmt nicht – die Datei wurde nicht gespeichert.
+Unterschriebenes PDF in deinen Dateien gespeichert.
+Das unterschriebene PDF konnte nicht geladen werden.
+Bitte nutze einen aktuellen Browser über HTTPS.
+Handy ↔ PC – direkt und verschlüsselt
+Öffne FaLe PDF auf beiden Geräten. Ein Gerät zeigt einen QR-Code, das andere scannt ihn – fertig. Funktioniert auch zwischen App und Browser.
+Code anzeigen
+Dieses Gerät zeigt einen QR-Code und einen 6-stelligen Code.
+Mit der Kamera dieses Geräts.
+Oder 6-stelligen Code eingeben
+Verbinden
+Die Übertragung läuft direkt zwischen den Geräten (WebRTC, verschlüsselt). Klappt keine direkte Verbindung, gehen die Dateien Ende-zu-Ende-verschlüsselt über unseren Server und werden nach dem Empfang, spätestens nach 1 Stunde gelöscht. Für den Verbindungsaufbau werden die öffentlichen STUN-Server von Google genutzt.
+Bitte gib den 6-stelligen Code ein.
+Verbindung wird vorbereitet …
+gültig bis {0}
+Warte auf das andere Gerät …
+Scanne den QR-Code mit dem anderen Gerät (Kamera-App oder FaLe → „Geräte verbinden“ → „QR-Code scannen“) oder gib dort den Code ein.
+Die Verbindung konnte nicht vorbereitet werden.
+Dieser Browser kann keine QR-Codes scannen. Nutze die Kamera-App deines Handys oder gib den 6-stelligen Code ein.
+Halte die Kamera auf den QR-Code des anderen Geräts.
+Kein Kamerazugriff. Gib stattdessen den 6-stelligen Code ein.
+Verbinde …
+Verbinden fehlgeschlagen.
+Verbunden
+Prüfnummer
+Trennen
+Dateien senden
+Aus meinen Dateien
+Empfangene Dateien landen automatisch in deinen Dateien (Quelle „Empfangen“).
+Übertragungen
+Noch keine Dateien übertragen.
+Verbindung getrennt.
+Direkt zwischen den Geräten (Peer-to-Peer, DTLS-verschlüsselt)
+Über das verschlüsselte Relais (Ende-zu-Ende-verschlüsselt, max. 1 Stunde gespeichert)
+Per QR-Code gekoppelt. Die Prüfnummer muss auf beiden Geräten gleich sein.
+Vergleiche die Prüfnummer auf beiden Geräten – stimmt sie überein, ist die Verbindung sicher.
+Kopplung über den Code. Die Dateien sind trotzdem Ende-zu-Ende-verschlüsselt.
+Die Verbindung wurde beendet.
+Verbunden mit dem Raum – baue direkte Verbindung auf …
+Das andere Gerät ist da – baue Verbindung auf …
+Die Verbindung ist abgelaufen oder wurde beendet.
+Das andere Gerät hat die Verbindung beendet.
+Senden fehlgeschlagen.
+Unvollständig empfangen.
+Empfang fehlgeschlagen.
+{0} · empfangen und gespeichert
+Empfangen, aber dieser Dateityp kann nicht gespeichert werden.

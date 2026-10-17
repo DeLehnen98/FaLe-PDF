@@ -1,0 +1,558 @@
+Geschäftlich
+Schule & Studium
+Privat & Freizeit
+Foto einfügen
+neu blank leer
+Tabellarisch, schlicht, gut lesbar für Bewerbungsportale
+{0} · Beispiel GmbH, Saarbrücken
+{0} · Gymnasium am Beispiel
+Klassischer Aufbau mit Betreff und Anlagen
+Bewerbung – Deckblatt
+Titelseite mit Foto, Kontaktdaten und Anlagenverzeichnis
+4. Abschlusszeugnis und Zertifikate
+als Projektmanagerin bei der Beispiel GmbH
+Bewerbungsfoto (Platzhalter)
+Musterstraße 12 · 66111 Saarbrücken
+Anlagen
+geschäftsbrief din 5008 form b briefvorlage firma
+Privatbrief
+Persönlicher Brief nach DIN 5008 – ohne Infoblock
+brief privat anschreiben behörde vermieter
+Betreff in einer Zeile
+Vorname Nachname · Musterstraße 12 · 66111 Saarbrücken
+Erika Beispiel
+Am Markt 3
+Sehr geehrte Frau Beispiel,
+schreibe hier dein Anliegen in kurzen Absätzen. Ein Gedanke pro Absatz macht den Brief leicht lesbar.
+Nenne zum Schluss, was du dir wünschst – etwa eine Antwort bis zu einem bestimmten Datum.
+Kündigung
+Kündigungsschreiben für Verträge mit Bitte um Bestätigung
+kündigung vertrag abo mitgliedschaft fitness handy versicherung
+Kündigung meines Vertrags
+Tipp: Kündigungen sicher zustellen, z. B. per Einschreiben, und eine Kopie aufbewahren.
+Beispiel Anbieter GmbH
+Kundenservice
+Postfach 12 34
+Vertrags-/Kundennummer: 000000
+hiermit kündige ich den oben genannten Vertrag fristgerecht zum nächstmöglichen Zeitpunkt.
+Bitte bestätigen Sie mir den Eingang dieser Kündigung sowie das genaue Vertragsende schriftlich. Einer Verlängerung oder einem Wechsel in einen anderen Tarif stimme ich nicht zu.
+Eine erteilte Einzugsermächtigung (SEPA-Lastschriftmandat) widerrufe ich zum Vertragsende.
+Positionen, Netto, MwSt. und Gesamtbetrag – rechnet selbst
+Rechnungsnummer: {0}
+Fällig bis: {0}
+Bitte überweise den Gesamtbetrag bis zum Fälligkeitsdatum ohne Abzug auf das unten genannte Konto. Vielen Dank für deinen Auftrag!
+Kostenvoranschlag mit Positionen, Gültigkeit und Bedingungen
+Herr Max Mustermann
+Angebotsnummer: {0}
+Gültig bis: {0}
+Leistung
+Preis
+Bestandsaufnahme vor Ort
+Umsetzung (Stunden)
+Material laut Aufstellung
+Angebotssumme
+vielen Dank für Ihr Interesse. Gerne bieten wir Ihnen folgende Leistungen an:
+Bedingungen
+Ausführung nach Absprache innerhalb von drei Wochen nach Auftragserteilung
+Zahlung: 14 Tage nach Rechnungsstellung ohne Abzug
+Mehraufwand wird nur nach vorheriger Rücksprache berechnet
+Wir freuen uns auf Ihren Auftrag. Bei Fragen erreichen Sie uns jederzeit.
+Besprechungsprotokoll
+Teilnehmende, Tagesordnung, Beschlüsse und Aufgaben
+Protokoll · vertraulich
+Zeit
+Besprechungsraum 2 / Videokonferenz
+Leitung
+Protokoll
+Teilnehmende
+Entschuldigt
+Aufgabe
+Verantwortlich
+Entwurf des Konzepts verschicken
+Angebote einholen
+Teambesprechung Projekt „Beispiel“
+Tagesordnung
+Begrüßung und Genehmigung des letzten Protokolls
+Stand der Arbeitspakete
+Budget und Zeitplan
+Verschiedenes
+TOP 1 – Begrüßung
+Das Protokoll der letzten Sitzung wird ohne Änderungen genehmigt.
+TOP 2 – Stand der Arbeitspakete
+Kurze Zusammenfassung der Diskussion …
+Beschluss:
+Das Arbeitspaket „Konzept“ wird bis Monatsende abgeschlossen.
+TOP 3 – Budget und Zeitplan
+Nächster Termin
+Datum, Uhrzeit, Ort
+Projektbericht
+Mit Inhaltsverzeichnis, Kapiteln, Tabelle und Beschriftung
+Projektleitung
+Auftraggeber
+Zeitraum
+Januar – Juni
+Kennzahl
+Ist
+Abweichung
+Bearbeitungszeit (Tage)
+Kundenzufriedenheit (%)
+Titel des Projekts · Stand {0}
+Fasse hier in fünf bis sieben Sätzen zusammen, was erreicht wurde, wo das Projekt steht und welche Entscheidungen anstehen.
+Ausgangslage und Ziele
+Beschreibe den Anlass des Projekts und die vereinbarten Ziele.
+Ziel 1: messbar formuliert
+Ziel 2: messbar formuliert
+Vorgehen
+Phase 1 – Analyse
+Was wurde untersucht, mit welchen Methoden?
+Phase 2 – Umsetzung
+Welche Maßnahmen wurden umgesetzt?
+Ergebnisse
+: Kennzahlen im Vergleich
+Risiken und offene Punkte
+Welche Risiken bestehen, und wie wird damit umgegangen?
+Nächste Schritte
+Schritt mit Verantwortlichem und Termin
+Pressemitteilung
+Überschrift, Vorspann, Zitat, Infokasten und Pressekontakt
+Zeichen (mit Leerzeichen): ca. 1.500 · Abdruck honorarfrei, Beleg erbeten
+Aussagekräftige Überschrift in einer Zeile
+Unterzeile mit der wichtigsten Zusatzinformation
+Saarbrücken, {0}.
+Der erste Absatz beantwortet die W-Fragen: Wer hat was, wann, wo, wie und warum getan? Er steht für sich allein und wird oft unverändert übernommen.
+Im zweiten Absatz folgen Hintergründe und Einzelheiten – vom Wichtigen zum weniger Wichtigen.
+„Ein Zitat einer verantwortlichen Person macht die Meldung lebendig“, sagt Vorname Nachname, Geschäftsführerin der Beispiel GmbH.
+Ein abschließender Absatz nennt Termine, Verfügbarkeit oder weiterführende Informationen.
+Über die Beispiel GmbH
+Zwei bis drei Sätze zum Unternehmen oder Verein: Gründung, Sitz, Tätigkeit, Größe.
+Pressekontakt
+Vorname Nachname · 0681 123456 · presse@example.de
+Hausarbeit
+Titelblatt, Inhaltsverzeichnis, Fußnoten, Literaturverzeichnis
+Vgl. Nachname, Vorname: Titel des Buches. Ort: Verlag 2024, S. 12.
+Ebd., S. 15–17.
+Nachname, Vorname: Titel des Aufsatzes. In: Zeitschrift 12 (2023), S. 45–67, hier S. 50.
+Universität Musterstadt
+Philosophische Fakultät · Institut für Beispielwissenschaft
+Seminar: Titel des Seminars
+Dozentin: Prof. Dr. Vorname Nachname
+Wintersemester 2026/27
+Titel der Hausarbeit
+Ein präziser Untertitel, der die Fragestellung eingrenzt
+Vorgelegt von:
+Matrikelnummer: 1234567
+Studiengang: B.A. Beispielwissenschaft, 3. Fachsemester
+E-Mail: name@uni-example.de
+Abgabedatum: {0}
+Die Einleitung führt zum Thema hin, stellt die Forschungsfrage vor und erläutert den Aufbau der Arbeit. Belege werden in Fußnoten angegeben.{0}
+Forschungsfrage: Welche … ?
+Theoretischer Rahmen
+Zentrale Begriffe
+Definiere die wichtigsten Begriffe und grenze sie voneinander ab.{0}
+Längere wörtliche Zitate (mehr als drei Zeilen) werden eingerückt, einzeilig und ohne Anführungszeichen gesetzt.{0}
+Forschungsstand
+Welche Positionen gibt es bereits, und wo setzt deine Arbeit an?
+Analyse
+Hauptteil der Arbeit: Untersuchung, Argumentation und Belege.
+Fazit
+Beantworte die Forschungsfrage, fasse die Ergebnisse zusammen und gib einen Ausblick.
+Literaturverzeichnis
+Nachname, Vorname: Titel des Buches. Untertitel. Ort: Verlag 2024.
+Nachname, Vorname: Titel des Aufsatzes. In: Zeitschrift 12 (2023), S. 45–67.
+Nachname, Vorname: Titel der Webseite. URL: https://www.example.de (abgerufen am {0}).
+Eigenständigkeitserklärung
+Hiermit versichere ich, dass ich die vorliegende Arbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Alle Stellen, die wörtlich oder sinngemäß aus Quellen übernommen wurden, sind als solche kenntlich gemacht.
+Ort, Datum ______________________ Unterschrift ______________________
+Referat-Handout
+Eine Seite mit Gliederung, Kernaussagen, Begriffen und Quellen
+referat handout thesenpapier schule präsentation
+Schule / Hochschule
+Fach: Beispielfach · Klasse/Kurs: 10b
+Begriff
+Kurze Erklärung
+Thema des Referats
+Hauptteil
+Kernaussagen
+Erste wichtige Aussage in einem Satz
+Zweite wichtige Aussage in einem Satz
+Dritte wichtige Aussage in einem Satz
+Wichtige Begriffe
+Zum Nachdenken
+Eine offene Frage für die Diskussion im Anschluss.
+Quellen
+Nachname, Vorname: Titel. Ort: Verlag Jahr.
+Titel der Webseite, URL (abgerufen am {0}).
+Stundenplan
+Wochenplan Montag bis Freitag mit Zeiten
+Mathe
+Biologie
+Sport
+Geschichte
+Musik
+Chemie
+Erdkunde
+Kunst
+Physik
+Informatik
+Politik
+Tipp: Fächer mit Farben markieren (Start → Hervorheben).
+Name: ______________________ Klasse: ________ Schuljahr: ________
+Einladung
+Feier, Geburtstag oder Vereinsfest – mit Rückmeldung
+einladung geburtstag party feier fest hochzeit jubiläum
+Wann
+Wo
+Gartenhaus am See, Uferweg 3, 66111 Saarbrücken
+Was
+Buffet, Getränke und Musik
+Mitbringen
+Gute Laune – und gern ein Lieblingslied für die Playlist
+Herzliche
+zu meinem 40. Geburtstag
+Ich freue mich, mit euch zu feiern – mit gutem Essen, Musik und hoffentlich viel Sonne!
+Bitte gebt mir bis {0} Bescheid, ob ihr kommt.
+Speisekarte
+Vorspeisen, Hauptgerichte, Desserts und Getränke mit Preisen
+speisekarte menü restaurant café imbiss getränkekarte kiosk
+Tomatensuppe
+mit Basilikum und geröstetem Brot
+Gemischter Salat
+Blattsalate, Gurke, Radieschen, Hausdressing
+Saarländische Dibbelabbes
+mit Apfelmus und grünem Salat
+Gemüse-Lasagne
+mit Spinat, Ricotta und Tomatensoße
+Schwenkbraten
+vom Grill, mit Kartoffelsalat
+Apfelstrudel
+mit Vanillesoße
+Eisbecher
+drei Kugeln nach Wahl, Sahne
+Kaffee / Cappuccino
+aus fair gehandelten Bohnen
+Hausgemachte Limonade
+0,4 l, wechselnde Sorten
+Apfelschorle
+Informationen zu Allergenen und Zusatzstoffen erhalten Sie gern beim Personal. Alle Preise inkl. MwSt.
+Café am Beispielsee
+Hausgemacht · regional · mit Liebe gekocht
+Vorspeisen
+Hauptgerichte
+Desserts
+Getränke
+Flyer / Aushang
+Große Überschrift, Infokasten und Abreißzettel
+flyer aushang plakat nachhilfe verkauf suche abreißzettel schwarzes brett
+Nachhilfe Mathe
+– – – – – – – – – – – hier abtrennen – – – – – – – – – – –
+Nachhilfe
+Mathe & Physik · Klasse 5 bis 10
+Geduldig, verständlich und mit Spaß an der Sache.
+Lehramtsstudentin, 4. Semester
+Einzelunterricht bei dir zu Hause oder online
+Vorbereitung auf Klassenarbeiten und Prüfungen
+Kostenlose Probestunde
+Melde dich: 0170 1234567 · name@example.de
+Urkunde
+Querformat für Sieger, Ehrungen oder Teilnahme
+Ort, {0}
+Diese Urkunde erhält
+für den 1. Platz beim Sommerlauf des Sportvereins Beispiel e. V.
+Vereinsnachrichten
+Newsletter mit Titelzeile und zwei Spalten
+Ausgabe 3
+Liebe Mitglieder,
+ein ereignisreiches Quartal liegt hinter uns. In dieser Ausgabe findet ihr die wichtigsten Neuigkeiten, Termine und einen Rückblick auf unser Sommerfest.
+Rückblick Sommerfest
+Über 120 Gäste, strahlender Sonnenschein und ein Kuchenbuffet, das keine Wünsche offenließ – vielen Dank an alle Helferinnen und Helfer!
+Neu im Vorstand
+Auf der Mitgliederversammlung wurde Vorname Nachname zur neuen Kassenwartin gewählt.
+Termine
+Monatstreffen: jeden ersten Dienstag, 19 Uhr
+Arbeitseinsatz: Samstag, 10 Uhr
+Weihnachtsfeier: Freitag, 18 Uhr
+Gesucht
+Für die Jugendgruppe suchen wir Unterstützung bei Ausflügen. Meldet euch gern beim Vorstand.
+Kontakt:
+Alle Aufgaben vor, während und nach dem Umzug
+Erl.
+Erledigt am / Notiz
+Mietvertrag fristgerecht kündigen
+Umzugstermin festlegen und Urlaub beantragen
+Angebote von Umzugsfirmen oder Transporter-Vermietung einholen
+Nachsendeauftrag bei der Post einrichten
+Strom, Internet und Versicherungen ummelden
+Halteverbotszone beantragen
+Umzugskartons besorgen
+Zählerstände (Strom, Wasser, Gas) fotografieren
+Übergabeprotokoll mit Vermieter/in erstellen
+Schlüssel übergeben bzw. übernehmen
+Wohnsitz beim Bürgeramt ummelden (innerhalb von zwei Wochen)
+Fahrzeugpapiere ändern lassen
+Neue Adresse an Bank, Arbeitgeber und Krankenkasse melden
+Hake ab, was erledigt ist – die Tabellenzeilen kannst du beliebig ergänzen.
+Zwei bis drei Monate vorher
+Vier Wochen vorher
+Am Umzugstag
+Danach
+Wohnungsübergabeprotokoll
+Zählerstände, Schlüssel, Zustand der Räume, Unterschriften
+übergabeprotokoll wohnung miete auszug einzug vermieter mieter
+Anlass
+Wohnung
+Musterstraße 12, 2. OG links, 66111 Saarbrücken
+Zähler
+Nummer
+Stand
+Wasser kalt
+Wasser warm
+Gas / Heizung
+Haustür / Wohnung
+Keller
+Raum
+Zustand
+Mängel / Bemerkungen
+Flur
+Küche
+Bad
+Wohnzimmer
+Schlafzimmer
+Balkon / Keller
+Zählerstände
+Schlüssel
+Zustand der Räume
+Vereinbarungen
+z. B. Beseitigung von Mängeln bis …, Übernahme von Einbauten …
+Reiseplan
+Tagesplan, Unterkünfte und Packliste für die nächste Reise
+Programm
+Unterkunft / Notizen
+Tag 1
+Anreise, Strandspaziergang
+Pension Beispiel, Check-in ab 15 Uhr
+Tag 2
+Radtour entlang der Küste
+Räder vorab reservieren
+Tag 3
+Ausflug zur Insel
+Fähre 9:30 Uhr
+Tag 4
+Ruhetag, Museum bei Regen
+Tag 5
+Abreise
+Check-out bis 10 Uhr
+Reiseplan: Ostsee
+Ablauf
+Packliste
+Ausweis, Führerschein, Versichertenkarte
+Bahn- oder Fährtickets
+Ladegeräte und Powerbank
+Regenjacke und feste Schuhe
+Badesachen und Sonnencreme
+Reiseapotheke
+Bücher oder Spiele
+Snacks für die Fahrt
+Wichtige Nummern
+Unterkunft: 0000 123456 · Notruf: 112 · Sperr-Notruf für Karten: 116 116
+Abbildung
+(Noch keine Beschriftungen)
+Endnoten
+Beschriftung
+Caption
+Formatvorlage {0}
+{SEITE}
+{SEITEN}
+Marke
+FaleStyle{0}
+Keine Beschriftungen gefunden.
+Seitenzahl
+Seitenanzahl
+Seite {SEITE} von {SEITEN}
+Als .docx-Datei herunterladen
+{0} als .docx-Datei herunterladen
+Vorlage suchen, z. B. Lebenslauf, Rechnung, Hausarbeit …
+Alle Vorlagen sind eigene Entwürfe zum Überschreiben – mit Formatvorlagen, Kopf- und Fußzeilen und rechnenden Tabellen, wo es passt.
+!Fehler
+Unbekannte Funktion „{0}“
+Ungültiger Bereich
+Unbekannter Name „{0}“
+Formel ungültig
+Division durch null
+Unbekannte Funktion
+Gleichung
+Fehler! Verweisquelle nicht gefunden.
+Text der Endnote
+Endnoten gibt es nur in .docx-Dokumenten.
+Endnote einfügen
+Endnote bearbeiten
+In Fußnote umwandeln
+Endnote löschen
+Endnote
+Dieses Ziel gibt es im Dokument nicht mehr.
+Textmarken gibt es nur in .docx-Dokumenten.
+Textmarke
+Noch keine Textmarken.
+Name der Textmarke
+z. B. Anhang_A
+Erlaubt sind Buchstaben, Ziffern und „_“. Textmarken sind Ziele für Links und Querverweise.
+Textmarke „{0}“ gesetzt
+Angezeigter Text
+Überschriften
+Textmarken
+Keine Überschriften oder Textmarken im Dokument.
+Webadresse oder E-Mail
+Stelle im Dokument
+Ziele
+Wähle ein Ziel im Dokument.
+Querverweise gibt es nur in .docx-Dokumenten.
+Keine Überschriften im Dokument.
+Keine Textmarken im Dokument.
+Keine Beschriftungen „{0}“ im Dokument.
+Querverweis
+Verweistyp
+Verweisen auf
+Text (z. B. „Abbildung 2“ oder Überschrift)
+Querverweise aktualisieren sich automatisch, wenn sich Nummern oder Seiten ändern.
+Seitenzahlen von Querverweisen werden in der Seitenansicht aktualisiert.
+Beschriftungen gibt es nur in .docx-Dokumenten.
+Beschriftung einfügen
+Die Beschriftung gehört zur Tabelle, in der der Cursor steht.
+Die Beschriftung gehört zum ausgewählten Bild.
+Die Beschriftung wird als neuer Absatz an der Cursorposition eingefügt.
+Bezeichnung
+Unter dem Element
+Über dem Element
+Beschriftungstext
+z. B. Umsatz im Jahresvergleich
+{0} Die Nummer zählt automatisch weiter.
+Tabellen mit verbundenen Zellen lassen sich nicht sortieren.
+Tabelle sortieren
+Reihenfolge
+Aufsteigend
+Absteigend
+Erste Zeile ist Überschrift (nicht sortieren)
+Tabelle sortiert
+Formel bearbeiten
+Formel einfügen
+Diese Zelle ist
+. Beispiele: =SUM(ABOVE) (Summe darüber), =SUM(LEFT), =AVERAGE(B2:B6), =C2*D2, =E5*19/100. Deutsche Namen wie SUMME(OBEN) gehen auch; Argumente mit „;“ trennen.
+Ergebnis: {0}
+Markiere die Absätze, die zur Tabelle werden sollen (Spalten mit Tab oder ; trennen).
+Tabelle mit {0} Zeilen und {1} Spalten erstellt
+Bild nicht lesbar
+Das Bild kann nicht bearbeitet werden.
+Bild zuschneiden
+Seitenverhältnis:
+Bild zugeschnitten
+Dezimal
+Punkte ……
+Striche – – –
+Linie ____
+Keine eigenen Tabstopps – es gelten Standard-Tabstopps alle 1,25 cm.
+Tabstopps
+Position (cm)
+z. B. 15,5
+Füllzeichen
+Tabstopp hinzufügen
+Mit der Tab-Taste springt der Text zum nächsten Tabstopp – z. B. rechtsbündige Preise mit Punkten in Speisekarten. Exakt dargestellt in PDF und .docx-Datei, im Editor angenähert.
+Alle löschen
+Setze den Cursor in einen normalen Absatz.
+Einfügeoptionen
+Ursprüngliche Formatierung beibehalten
+Formatierung zusammenführen
+Nur den Text übernehmen
+Schnellformat
+Gelb hervorheben
+Formatierung löschen
+Nur Überschriften auf oberster Ebene lassen sich verschieben.
+Neue Formatvorlage
+z. B. Hinweis, Adresse, Merksatz
+Eigene Formatvorlage
+Erste Seite
+Gerade Seiten
+Seitenzahl unten mittig
+„Seite X von Y“ unten rechts
+Titel oben links, Datum oben rechts
+Alles leeren
+Feld einfügen:
+Schnellwahl:
+Erste Seite anders
+Gerade und ungerade Seiten anders
+Felder wie „Seitenzahl“ werden auf jeder Seite automatisch ausgefüllt – auch in der .docx- und PDF-Datei.
+Gilt nur für Seite 1 (z. B. Deckblatt). Leer lassen = keine Kopf-/Fußzeile auf Seite 1.
+Gilt für Seite 2, 4, 6 … – die Standardzeilen dann für ungerade Seiten.
+Gilt für ungerade Seiten.
+Gilt für alle Seiten.
+MUSTER
+NICHT KOPIEREN
+Deckkraft
+Das Wasserzeichen erscheint schräg hinter dem Text auf jeder Seite – in der Seitenansicht, im PDF und in der .docx-Datei.
+Neues Dokument aus Vorlage …
+Als reinen Text einfügen (Strg+Umschalt+Alt+V)
+data-x="paste-text"
+data-x="ins-bookmark"
+data-x="ins-xref"
+data-x="ins-endnote"
+data-x="ins-caption"
+Initiale
+data-x="ins-dropcap"
+Fokusmodus
+In Text umwandeln
+Fokusmodus beenden
+Neue Formatvorlage …
+Überschriften nummerieren (1 · 1.1 · 1.1.1)
+Formatvorlage „{0}“ erstellt
+Formatvorlage „{0}“ gelöscht
+Überschriften werden nummeriert.
+Nummerierung der Überschriften aus.
+Setze den Cursor in eine Tabellenzelle.
+Die folgenden Seiten werden im Querformat gedruckt (PDF und .docx-Datei).
+Die folgenden Seiten werden im Hochformat gedruckt (PDF und .docx-Datei).
+Oben und unten
+Zuschneiden …
+Um 90° drehen
+Beschriftung einfügen …
+Abschnittsumbruch: folgende Seiten im Querformat
+Abschnittsumbruch: folgende Seiten im Hochformat
+Füge jetzt mit Strg+V bzw. „Einfügen“ ein – es wird nur der Text übernommen.
+Abschnitt nach oben
+Abschnitt nach unten
+Höher stufen
+Tiefer stufen
+Hier geht es nicht weiter.
+Noch keine Beschriftungen „{0}“ – das Verzeichnis füllt sich automatisch.
+Abbildungsverzeichnis
+Tabellenverzeichnis
+Gleichungsverzeichnis
+Verzeichnis einfügen
+Verzeichnis
+{0} eingefügt – es aktualisiert sich automatisch.
+Kopf- und Fußzeilen gibt es nur in .docx-Dokumenten.
+Wasserzeichen gibt es nur in .docx-Dokumenten.
+Wasserzeichen eingefügt – sichtbar in der Seitenansicht.
+Wasserzeichen entfernt
+„Seite X von Y“ unten mittig
+Format und Startwert …
+Seitenzahlen entfernen
+Erweitert eingerichtet (drei Bereiche, Felder oder andere erste/gerade Seiten).
+Kopf- und Fußzeile bearbeiten …
+Mehr Optionen: drei Bereiche, Felder, gerade Seiten …
+Strg+Alt+F / Strg+Alt+D
+Fußnote / Endnote
+Strg+Umschalt+F5
+Strg+Umschalt+Alt+V
+Als reinen Text einfügen
+Fokus- oder Lesemodus beenden
+Lesemodus beenden
+Lesemodus – Esc oder „Lesemodus beenden“ zum Bearbeiten.
+Fokusmodus – Esc beendet ihn.
+Deutsch (Deutschland)
+Deutsch (Österreich)
+Deutsch (Schweiz)
+Englisch (USA)
+Englisch (Großbritannien)
+Sprache der Markierung: {0}
+Dokumentsprache: {0} – die Rechtschreibprüfung deines Geräts prüft in dieser Sprache.
+Sprache der Markierung
+Sprache des Dokuments
+Leer oder mit Vorlage: Brief, Lebenslauf, Rechnung, Hausarbeit … – als .docx oder PDF.

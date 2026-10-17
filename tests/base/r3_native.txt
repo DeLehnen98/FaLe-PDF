@@ -1,0 +1,163 @@
+PASS workflow: triggers main, tags v*, dispatch
+PASS workflow: node 22 / temurin 21 / Android SDK
+PASS workflow: build order
+PASS workflow: 4 signing secrets used
+PASS workflow: artifacts + release on tags
+PASS node --check scripts/cap-patch-android.mjs
+PASS node --check scripts/cap-png.mjs
+PASS node --check scripts/vercel-build.mjs
+PASS node --check js/platform.js
+PASS node --check js/ui.js
+PASS node --check js/app.js
+PASS capacitor.config: appId/appName/webDir/scheme
+PASS package.json: dependencies unchanged
+PASS package.json: capacitor devDependencies
+PASS .gitignore: android/, node_modules/, keystores; vendor not ignored
+PASS listing-de: title ≤30, short ≤80, full ≤4000
+PASS listing-de: no third-party trademarks
+PASS listing-en: title ≤30, short ≤80, full ≤4000
+PASS listing-en: no third-party trademarks
+PASS datenschutz.html: has <main> and placeholders
+PASS impressum.html: has <main> and placeholders
+PASS patch script runs
+    [cap-patch] AdMob: TEST-App-ID aktiv (js/ai/config.js) – vor dem Release ersetzen, siehe store/AI-SETUP.md
+[cap-patch] OK: dev.fale.pdf „FaLe PDF“ 2.1.0 (versionCode 20100, targetSdk ≥ 36)
+PASS manifest: CAMERA permission
+PASS manifest: camera feature not required
+PASS manifest: storage perms capped
+PASS manifest: notifications + vibrate + internet kept
+PASS manifest: requestLegacyExternalStorage
+PASS manifest: adjustResize
+PASS manifest: MAIN + VIEW + SEND + SEND_MULTIPLE filters
+PASS manifest: MIME types on VIEW
+PASS manifest: MIME types on SEND
+PASS manifest: MIME types on SEND_MULTIPLE
+PASS manifest: provider untouched
+PASS gradle: versionCode/versionName from package.json (2.1.0)
+PASS gradle: applicationId
+PASS gradle: signingConfigs before buildTypes, env based
+PASS gradle: release uses signing config when env set
+PASS gradle: braces balanced
+PASS variables: SDK 36 kept
+PASS MainActivity registers FaleIncomingPlugin before super.onCreate
+PASS plugin: name FaleIncoming + methods
+PASS plugin: handles cold start + onNewIntent + 100 MB guard
+PASS generated Java compiles (javac + API stubs)
+PASS plugin cleanName strips unsafe chars
+PASS all resource XML well-formed
+PASS styles keep Capacitor theme names
+PASS theme colours light #F5F6FB / dark #171542
+PASS Capacitor splash PNGs removed, splash.xml present
+PASS launcher/adaptive/notification icons: sizes, RGBA, white notif icon
+PASS adaptive foreground: transparent margin, opaque centre
+PASS round icon: transparent corners
+PASS adaptive icon xml has monochrome layer
+PASS second run succeeds
+PASS patch is idempotent (byte-identical tree)
+PASS patch is deterministic (fresh project → same tree)
+PASS env overrides versionCode/versionName
+PASS Cap 7 template: SDK bumped to 36, density added
+PASS versionCode = major*10000+minor*100+patch
+    manifest excerpt:
+              <meta-data android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true" />
+              <meta-data android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION" android:value="true" />
+              <meta-data android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING" android:value="true" />
+              <!-- fale:admob:end -->
+          </application>
+      
+          <!-- Permissions -->
+      
+          <uses-permission android:name="android.permission.INTERNET" />
+      
+          <!-- fale:permissions:start -->
+          <uses-permission android:name="android.permission.CAMERA" />
+          <uses-feature android:name="android.hardware.camera" android:required="false" />
+          <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+          <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+          <uses-permission android:name="android.permission.VIBRATE" />
+          <!-- Speichern in Dokumente/FaLe PDF bis Android 10 -->
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+          <!-- Exakte Alarme braucht die App nicht (Play-Richtlinie); Erinnerungen dürfen ein paar Minuten später kommen -->
+          <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:node="remove" />
+          <uses-permission android:name="android.permission.USE_EXACT_ALARM" tools:node="remove" />
+          <!-- fale:permissions:end -->
+      </manifest>
+PASS native build runs
+PASS native build: viewport-fit removed
+PASS native build: no vercel.json, no android/store/config
+PASS native build: legal pages + platform.js included
+PASS web build runs (dist restored)
+PASS web build: viewport-fit kept, vercel.json written, sw precaches legal + platform
+PASS isNative() true with mock
+PASS html.is-native class
+PASS cold-start incoming PDF imported
+PASS incoming opened in viewer
+PASS incoming copy released
+PASS filesReady listener registered
+PASS backButton listener registered
+PASS notification tap listener registered
+PASS no service worker on native
+PASS status bar colours set on start
+PASS shared .txt imported via filesReady event
+PASS too-large file reported
+PASS readFile fallback used when fetch fails
+PASS compress result → Filesystem.writeFile(DOCUMENTS)
+PASS saved under "FaLe PDF/" with pdf name
+PASS binary write (no encoding param)
+PASS written base64 decodes to valid 6-page PDF
+PASS no browser download on native
+PASS toast names Dokumente/FaLe PDF
+PASS second save gets " (2)" suffix
+PASS share writes to cache share/<name>
+PASS Share.share gets the cache file uri
+PASS shared bytes are the PDF
+PASS cancelled share shows no error
+PASS Exportieren text → FaLe PDF/bericht.txt
+PASS exported text content correct
+PASS 7 MB save = stat + 1 writeFile + 2 appendFile
+PASS chunked content byte-identical
+PASS saveFile resolves {ok, where}
+PASS write failure falls back to share sheet
+PASS scheduleNotification → true on native
+PASS permission requested lazily
+PASS schedule payload (int id, extra.route, small icon)
+PASS numeric id kept as is
+PASS reminders stored for in-app display
+PASS tapping notification opens route
+PASS tapped reminder removed from list
+PASS cancelNotification → LocalNotifications.cancel
+PASS dueReminders returns + removes due ones
+PASS haptic → Haptics plugin
+PASS dark theme → dark bars with page bg colour
+PASS back to light bars
+PASS back from tool → previous route (#/start)
+PASS tool screen closed
+PASS back closes menu first
+PASS back closes dialog (resolves as cancel)
+PASS openLegalPage shows privacy text in-app
+PASS back closes legal dialog
+PASS 'fale:back' preventDefault intercepts
+PASS canGoBack=false on sub page → start
+PASS back on start → App.exitApp
+PASS no page errors (native mock)
+PASS raw bridge: listeners via nativeCallback
+PASS raw bridge: takePending via nativePromise
+PASS raw bridge: saveFile → stat + writeFile
+PASS raw bridge: back button callback navigates
+PASS raw bridge: exitApp via nativePromise
+PASS no page errors (raw bridge)
+PASS web: isNative() false
+PASS web: no is-native class
+PASS web: download still works (compress)
+PASS web: no "Gespeichert in" toast
+PASS web: share falls back to download + hint
+PASS web: export text download
+PASS web: service worker still registered
+PASS web: permission denied → false but stored in-app
+PASS web: scheduleNotification (granted) → true + stored
+PASS web: cancelNotification removes
+PASS web: setStatusBarTheme no-op
+PASS no page errors (web)
+
+134/134 passed

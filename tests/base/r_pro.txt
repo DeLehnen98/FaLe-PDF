@@ -1,0 +1,118 @@
+PASS docs imported
+PASS registry has all new tools
+PASS every tool has a valid group
+PASS no "soon" placeholders left
+PASS PDF zu Bild reachable under konvertieren
+PASS pro flag on paid features
+PASS password tile opens a tool screen
+PASS empty password rejected
+PASS mismatch rejected
+PASS no password prompt when importing own result
+PASS output is encrypted
+PASS wrong password rejected (pypdf)
+PASS user password opens (pypdf)
+PASS owner password opens (pypdf)
+PASS AES-256 R6 (qpdf)  [R = 6 P = -2072 User password = Sicher-2026! Supplied password is user password extract for accessibility: allowed extra]
+PASS print/copy restricted
+PASS qpdf --check ok  [ is not linearized
+No syntax or stream encoding errors found; the file may still contain
+errors that qpdf cannot detect
+]
+PASS no text without password (pdftotext)
+PASS library marks result as encrypted
+PASS encrypted result renders in viewer
+PASS fresh profile asks for password
+PASS pdf.js: wrong password refused
+PASS pdf.js: correct password renders content
+PASS session password prefilled
+PASS wrong password message
+PASS unlocked output not encrypted
+PASS unlocked text identical
+PASS qpdf check unlocked
+PASS unprotected doc: friendly message
+PASS decrypt rc4_40 (object streams)
+PASS decrypt rc4_128 (object streams)
+PASS decrypt aes_128 (object streams)
+PASS decrypt aes_256 (object streams)
+PASS organize: save enabled for encrypted doc
+PASS organize: encrypted doc rotated & saved
+PASS text geometry found  [{'x0': 201.62417302782828, 'y0': 94.10199999999998, 'x1': 336.1314802188216, 'y1': 104.27700000000004, 'line': 1, 'blank': False}]
+PASS 10 annotations created  [10 Anmerkungen]
+PASS undo removes one
+PASS redo restores
+PASS eraser deletes stroke
+PASS select shows delete action
+PASS all annotation subtypes saved  [/Highlight,/Underline,/StrikeOut,/Ink,/Square,/Circle,/Line,/Line,/FreeText,/Text]
+PASS every annotation has an appearance stream
+PASS highlight has QuadPoints + text
+PASS moved rectangle saved at new position  [[98.9529681, 391.211662, 220.896533, 443.188146]]
+PASS qpdf check annotated
+PASS pdf.js annotation layer shows annotations
+PASS existing annotations kept on re-save  [10 → 11]
+PASS watermark preview drawn
+PASS watermark on all 6 pages  [6]
+FAIL image watermark only on pages 2-3  [[]]
+PASS page numbers: cover page without number  [te 1. Dies ist ein Testtext ueber Kaffeemaschine und mehr.
+]
+PASS page numbers: "Seite 1 von 5" on page 2
+PASS page numbers: "Seite 5 von 5" on page 6
+PASS header/footer placeholders filled  [Vertraulich – bericht                                                           ]
+PASS replace prefilled with existing text
+PASS edit: new text added
+PASS edit: replacement text present
+PASS edit: image placed
+PASS search marks hits  [1 Markierung auf 1 Seite]
+PASS search hit redacted (text gone)
+PASS area redaction applied (text gone)
+PASS unmarked pages keep their text
+PASS redacted content not in raw file
+PASS only marked pages rasterised  [[2, 4] (2 Markierungen auf 2 Seiten)]
+PASS page count unchanged
+PASS qpdf check redacted
+PASS presets: e-mail and IBAN removed
+PASS range selects cards
+PASS tap toggles selection + range text
+PASS extract: 4 pages in order
+PASS extract single: zip with 3 files  [bericht – Seite 2.pdf,bericht – Seite 4.pdf,bericht – Seite 6.pdf]
+PASS docx is a valid zip
+PASS docx headings detected  [['Jahresbericht 2026', 'Einleitung', 'Ergebnisse', 'Anhang']]
+PASS docx bold/italic runs
+PASS docx paragraphs joined (not one per line)
+PASS docx page break kept
+PASS docx exact: one image per page
+PASS pptx: 6 slides 16:9 with notes
+PASS pptx: each slide has a picture
+PASS live edge overlay drawn
+PASS perspective-corrected page has A4 aspect  [[334, 462]]
+PASS detected (no warning badge)
+PASS scan pdf: 1 page, page aspect = scan  [609x842]
+PASS phone_passwort: no horizontal overflow
+PASS phone_passwort_entfernen: no horizontal overflow
+PASS phone_wasserzeichen: no horizontal overflow
+PASS phone_seitenzahlen: no horizontal overflow
+PASS phone_kopfzeile: no horizontal overflow
+PASS phone_extrahieren: no horizontal overflow
+PASS phone_pdf_word: no horizontal overflow
+PASS phone_pdf_powerpoint: no horizontal overflow
+PASS phone_bearbeiten: no horizontal overflow
+PASS phone_schwaerzen: no horizontal overflow
+PASS dark screenshots taken
+PASS touch tap highlights a word
+PASS touch pen stroke
+PASS phone annotations saved  [/Highlight,/Ink]
+PASS ID guide frame shown
+PASS asks for back side
+PASS card warped to ID-1 aspect  [[1.5823529411764705, 1.5823529411764705]]
+PASS ID pdf: one A4 page
+PASS ID pdf: both sides at real size 85.6 x 54 mm  [[(242.64566929133858, 153.0708661417323), (242.64566929133858, 153.0708661417323)]]
+PASS fallback uses capture=environment
+PASS reorder/delete pages
+PASS magnifier visible while dragging
+PASS scan pdf: 2 A4 pages  [[(595, 842), (595, 842)]]
+
+==== SUMMARY ====
+106/107 passed
+FAILED: image watermark only on pages 2-3 []
+
+==== CONSOLE errors/warnings ====
+0 console problems

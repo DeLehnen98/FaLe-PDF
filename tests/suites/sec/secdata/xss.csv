@@ -1,0 +1,3 @@
+Name,Wert
+"<img src=x data-pwn="501" onerror="window.__pwned=501">",1
+"=HYPERLINK(""javascript:window.__pwned=502"",""x"")",2

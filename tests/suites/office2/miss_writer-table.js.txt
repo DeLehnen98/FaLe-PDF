@@ -1,0 +1,11 @@
+5	Gitternetz
+5	Schlicht
+5	Kopfzeile farbig
+5	Gebändert
+5	Minimal
+365	Tabellenformatvorlage
+365	Erste Zeile als Überschriftenzeile (wird auf jeder Seite wiederholt)
+388	Tabelleneigenschaften
+389	Breite (% der Seite)
+389	Vertikale Ausrichtung der Zelle(n)
+389	Erste Zeile auf jeder Seite wiederholen

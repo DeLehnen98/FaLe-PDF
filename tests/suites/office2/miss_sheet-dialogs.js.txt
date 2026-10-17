@@ -1,0 +1,128 @@
+27	Innenlinien
+27	Dicker Außenrahmen
+27	Doppelte Unterlinie
+28	Dünn
+28	Dick
+28	Gepunktet
+30	Zellen formatieren
+32	Ausfüllen
+32	Schutz
+42	Waagerecht
+42	Schräg (45°)
+42	Nach oben gedreht (90°)
+42	Nach unten gedreht (−90°)
+42	Senkrecht gestapelt
+31	Formatcode (deutsch, z. B. #.##0,00 € oder TT.MM.JJJJ)
+31	Vorschau:
+31	Horizontal
+31	Vertikal
+31	Einzug
+31	Textrichtung
+31	Zeilenumbruch
+31	Standard (Calibri)
+31	Schriftfarbe
+31	Linienart
+31	Wähle eine Vorlage – sie wird beim Übernehmen auf den markierten Bereich angewendet.
+31	Hintergrundfarbe
+31	Eigene Farbe
+31	Gesperrt
+31	Formel ausblenden
+31	Wirkt erst, wenn das Blatt geschützt ist (Daten → Blatt schützen). Der Schutz verhindert versehentliche Änderungen – er ist keine Verschlüsselung.
+74	Dieser Formatcode ist ungültig.
+155	Markiere eine Tabelle zum Sortieren.
+157	Spalte {0}
+160	Ebene entfernen
+162	Sortieren
+163	Bereich {0}
+163	Daten haben Überschriften
+163	Ebene hinzufügen
+188	Benutzerdefinierter Filter: Spalte {0}
+189	Stattdessen die obersten
+189	Werte zeigen
+189	Platzhalter: ? für ein Zeichen, * für beliebig viele.
+219	Duplikate entfernen
+220	Bereich {0}. Zeilen mit gleichen Werten in den gewählten Spalten werden entfernt (die erste bleibt).
+238	{0} doppelte Zeile{1} entfernt · {2} eindeutige bleiben
+248	Markiere eine Spalte mit Text.
+250	Text in Spalten
+252	Tabulator
+252	Semikolon
+252	Komma
+252	Leerzeichen
+251	Getrennt
+251	Feste Breite
+251	Andere:
+251	Aufeinanderfolgende Trennzeichen als eins behandeln
+251	Trennpositionen (Zeichen, z. B. 5, 12)
+282	Text auf Spalten verteilt
+292	Datenüberprüfung
+293	Lege fest, welche Werte in den Zellen erlaubt sind. Bei Listen erscheint ein kleiner Pfeil zur Auswahl.
+293	Zulassen
+293	Daten
+293	Erlaubte Werte (je Zeile einer) oder ein Bereich wie =$A$1:$A$5
+293	Minimum / Wert
+293	Maximum
+293	Eingabehinweis (optional)
+293	Fehlermeldung (optional)
+321	Datenüberprüfung entfernt
+333	Datenüberprüfung angelegt
+341	· nur {0}
+341	Name löschen
+341	Noch keine Namen. Namen machen Formeln lesbarer, z. B. =Netto*Steuersatz.
+343	Namen definieren
+343	Namens-Manager
+344	z. B. Steuersatz
+344	Bezieht sich auf
+344	Arbeitsmappe
+348	Name anlegen
+352	Ungültiger Name. Er muss mit einem Buchstaben beginnen und darf keine Zelladresse sein.
+354	Diesen Namen gibt es schon.
+355	Der Bezug ist ungültig.
+366	Name gelöscht
+376	Name „{0}“ angelegt
+382	Inhalte einfügen
+385	Alles
+385	Nur Werte
+385	Nur Formate
+385	Nur Formeln
+385	Werte und Zahlenformate
+383	Rechenoperation
+383	Addieren
+383	Subtrahieren
+383	Multiplizieren
+383	Dividieren
+383	Leerzellen überspringen
+383	Transponieren (Zeilen ↔ Spalten)
+402	Funktion suchen, z. B. Summe, Datum, SVERWEIS …
+413	Keine Funktion gefunden.
+434	Markiere eine Tabelle mit Überschriften (mindestens zwei Zeilen).
+442	Pivot-Tabelle bearbeiten
+442	Pivot-Tabelle erstellen
+446	— (keine)
+449	— (keiner)
+443	Quelle: {0}!{1} · {2} Datensätze
+443	Wertfeld hinzufügen
+443	Nur diese Werte
+455	Werte
+455	Berechnung
+505	Reihe ausfüllen
+506	Richtung
+506	Nach unten (Spalten)
+506	Nach rechts (Zeilen)
+506	Linear
+506	Geometrisch
+506	Startwert
+506	Schrittweite
+506	Endwert (optional)
+506	Zeiteinheit
+506	Tag
+506	Wochentag (Mo–Fr)
+506	Monat
+506	Jahr
+506	Anzahl Zellen
+520	Bitte gib einen Startwert ein.
+533	{0} Werte ausgefüllt
+540	Zeilenhöhe
+540	Spaltenbreite
+541	Höhe in Punkt (Standard 15)
+541	Breite in Zeichen (Standard 12)

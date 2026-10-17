@@ -1,0 +1,20 @@
+// Node unit checks for the pure parts of js/smart/memory.js (DOM-free functions).
+globalThis.window = globalThis; globalThis.document = { createElement: () => ({}) };
+const M = await import('/home/claude/FalePDF/js/smart/memory.js');
+let pass = 0, fail = 0;
+const check = (n, c, i = '') => { if (c) { pass++; console.log('PASS', n); } else { fail++; console.log('FAIL', n, i); } };
+check('stem plural', M.stem('Verträge') === M.stem('Vertrag'), [M.stem('Verträge'), M.stem('Vertrag')]);
+check('stem umlaut/ss', M.stem('Kündigungsfrist') === M.stem('kuendigungsfrist'.replace('ue', 'ü')), M.stem('Kündigungsfrist'));
+check('fold ß', M.fold('Straße') === 'strasse');
+const toks = M.tokenize('Ihr Handyvertrag und die Versicherungsnummer 123/456');
+check('compound split handy+vertrag', toks.some(t => t.part && t.w === 'handy') && toks.some(t => t.part && t.w === 'vertrag'), JSON.stringify(toks.map(t => t.w)));
+check('compound split versicherung+nummer', toks.some(t => t.w === 'versicherung') && toks.some(t => t.w === 'nummer'));
+check('code compact', toks.some(t => t.code && t.t === '123456'));
+const q = M.queryTerms('Wann läuft mein Handyvertrag aus?');
+check('query terms contain synonyms', q.terms.has(M.stem('mobilfunk')) && q.terms.has(M.stem('vertrag')), [...q.terms.keys()].join(','));
+const q2 = M.queryTerms('kuendigung fitnessstudio');
+check('ue → ü variant', q2.terms.has(M.stem('Kündigung')), [...q2.terms.keys()].join(','));
+const segs = M.passage('Bla bla. Ihre Mitgliedschaft im Fitnessstudio endet zum 31.03.2027. Weitere Infos folgen.', M.queryTerms('Fitnessstudio Mitgliedschaft').terms);
+check('passage highlights', segs.filter(s => s.hit).map(s => s.text).join('|').includes('Fitnessstudio'), JSON.stringify(segs));
+console.log(`\n${pass} passed, ${fail} failed`);
+process.exit(fail ? 1 : 0);

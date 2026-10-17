@@ -1,0 +1,233 @@
+28	Hellgrün
+28	Flieder
+37	Sprechblase
+85	Versionsverlauf …
+86	Wörter zählen …
+87	Automatisch speichern: an
+87	Automatisch speichern: aus
+108	Überprüfen
+108	Sendungen
+111	Format übertragen (Strg+Umschalt+C / V)
+121	Schrift vergrößern (Strg+Umschalt+>)
+121	Schrift verkleinern (Strg+Umschalt+<)
+123	Hochgestellt (Strg+Umschalt++)
+123	Tiefgestellt (Strg+#)
+126	Groß-/Kleinschreibung (Umschalt+F3)
+126	Formatierung löschen (Strg+Leertaste)
+128	Linksbündig (Strg+L)
+128	Zentriert (Strg+E)
+128	Rechtsbündig (Strg+R)
+128	Blocksatz (Strg+J)
+128	Zeilen- und Absatzabstand
+129	Liste mit mehreren Ebenen
+129	Einzug verkleinern (Strg+Umschalt+M)
+129	Einzug vergrößern (Strg+M)
+130	Formatvorlagen verwalten
+131	Link (Strg+K)
+131	Seitenumbruch (Strg+Enter)
+136	data-x="ins-table"
+136	data-x="ins-image"
+136	data-x="ins-shape"
+136	data-x="ins-textbox"
+137	data-x="ins-link"
+137	data-x="ins-pagebreak"
+137	Abschnittsumbruch
+137	data-x="ins-section"
+138	data-x="ins-toc"
+138	data-x="ins-footnote"
+138	data-x="ins-comment"
+139	data-x="ins-hf"
+139	data-x="ins-pn"
+139	data-x="ins-date"
+139	Symbol
+139	data-x="ins-symbol"
+142	Seitenränder
+143	Umbrüche
+144	Absatz …
+144	Abstand
+148	Wörter zählen
+149	Neuer Kommentar
+149	data-x="ins-comment2"
+150	Änderungen nachverfolgen
+151	Annehmen
+151	Ablehnen
+154	Empfänger wählen
+154	Seriendruckfeld
+155	Vorheriger Datensatz
+155	Nächster Datensatz
+156	Fertigstellen
+159	Seitenlayout
+159	Webansicht
+160	Lineal
+160	Formatierungszeichen
+162	Gehe zu Seite
+162	Versionen
+162	Automatisch speichern
+165	Zeile oberhalb
+165	Zeile unterhalb
+165	Spalte links
+165	Spalte rechts
+167	Zelle teilen
+167	Spalten verteilen
+168	Schattierung
+168	Tabellenformat
+168	Überschriftenzeile
+171	Textumbruch
+172	Größe …
+172	Alternativtext
+105	Formatvorlage
+105	Formatvorlagen
+105	Markup-Anzeige
+105	Alle Markups
+105	Kein Markup
+105	Ganzes Wort
+105	Reguläre Ausdrücke
+105	Regex
+105	Änderungen schließen
+105	Alle annehmen
+105	Alle ablehnen
+227	Nachverfolgung an
+228	Zoom zurücksetzen
+522	Ändern …
+522	Formatvorlage an die Formatierung des aktuellen Absatzes anpassen
+522	Aus Markierung
+522	Direkte Formatierung bei allen Absätzen dieser Formatvorlage entfernen
+522	Alle angleichen
+522	Formatvorlagen werden in der Word-Datei gespeichert (styles.xml) und beim Öffnen übernommen.
+543	Formatvorlage „{0}“ geändert
+545	Setze den Cursor in einen Absatz.
+550	Formatvorlage „{0}“ angepasst
+553	Absätze angeglichen
+600	Satzanfang groß
+600	Jedes Wort Groß
+600	gROSS/kLEIN umkehren
+600	Groß-/Kleinschreibung
+603	Markiere zuerst Text.
+619	Setze den Cursor in den Text, dessen Format du übertragen möchtest.
+623	Markiere jetzt den Text, der das Format bekommen soll.
+643	Abstand vor Absatz entfernen
+643	Abstand vor Absatz hinzufügen (12 pt)
+644	Abstand nach Absatz entfernen
+644	Abstand nach Absatz hinzufügen (8 pt)
+645	Absatzoptionen …
+670	Aufzählung: {0}
+672	Nummerierung: {0}
+674	Mehrstufig: {0}
+676	Neu nummerieren (bei 1 beginnen)
+677	Nummerierung fortsetzen
+678	Nummerierungswert festlegen …
+678	Nummerierungswert festlegen
+678	Beginnen bei
+680	Listen
+738	Zelle teilen …
+740	Tabelleneigenschaften …
+761	Markiere mehrere zusammenhängende Zellen (mit der Maus ziehen oder Umschalt+Pfeiltasten).
+777	Rahmenlinien außen
+777	Rahmenlinien innen
+777	Rahmenlinie oben
+777	Rahmenlinie unten
+777	Rahmenlinie links
+777	Rahmenlinie rechts
+777	Dicke Rahmenlinie unten
+777	Ganze Tabelle: alle Linien
+777	Ganze Tabelle: ohne Linien
+778	Tabellenformatvorlagen
+779	Erste Zeile wird auf jeder Seite wiederholt.
+779	Überschriftenzeile aus.
+811	Textfeld – hier schreiben
+830	Datum einfügen
+833	Symbol einfügen
+873	Mit Text in Zeile
+873	Links, Text umfließt rechts
+873	Rechts, Text umfließt links
+875	Bild ausrichten
+878	Bildgröße
+878	Breite in cm
+882	Beschreibung des Bildes (für Screenreader und Barrierefreiheit)
+895	Textumbruch …
+896	Alternativtext …
+908	Eine Spalte
+908	Drei Spalten
+938	Abschnittsumbruch (nächste Seite)
+939	Seitenumbruch oberhalb des Absatzes
+946	Benutzerdefinierte Seitenränder …
+1449	Änderungen werden nachverfolgt.
+1449	Nachverfolgung aus.
+1460	Keine nachverfolgten Änderungen. Schalte unter „Überprüfen“ die Nachverfolgung ein – Einfügungen und Löschungen werden dann markiert.
+1475	{0} Änderung{1} {2}
+1488	Keine Änderungen im Dokument.
+1499	Diese Änderung {0}
+1499	Setze den Cursor in eine Änderung.
+1500	{0} und weiter
+1501	Alle Änderungen {0}
+1504	Das Dokument enthält nachverfolgte Änderungen (Überprüfen → Änderungen).
+1519	{0} Empfänger · Felder: {1}{2}
+1524	Seriendruckfeld einfügen
+1541	Füge zuerst Seriendruckfelder ein (Sendungen → Seriendruckfeld).
+1562	Seiten (ca.)
+1562	Wörter
+1562	Zeichen (ohne Leerzeichen)
+1562	Zeichen (mit Leerzeichen)
+1562	Sätze
+1562	Wörter pro Satz (Ø)
+1562	Lesezeit (ca.)
+1563	Markierung
+1569	Seite (1–{0})
+1569	Gehe zu
+1593	Automatisches Speichern ist an (alle 30 Sekunden bei Änderungen).
+1593	Automatisches Speichern ist aus.
+1610	Speichere das Dokument zuerst – danach werden Versionen bei jedem Speichern angelegt.
+1614	Versionsverlauf
+1616	· {0} · {1} Wörter
+1616	Noch keine Versionen.
+1615	Bei jedem Speichern wird eine Version auf diesem Gerät abgelegt (die letzten 20).
+1623	Version wiederherstellen
+1623	Den Stand vom {0} wiederherstellen? Der aktuelle Stand kann mit „Rückgängig“ zurückgeholt werden.
+1633	Version wiederhergestellt
+1637	Strg+B / I / U
+1637	Strg+Z / Strg+Y
+1637	Strg+F / Strg+H
+1637	Suchen / Ersetzen
+1637	Strg+K
+1638	Strg+Enter
+1638	Strg+Umschalt+1 … 4
+1638	Überschrift 1 … 4
+1638	Strg+Umschalt+N
+1638	Formatvorlage Standard
+1638	Strg+L / E / R / J
+1638	Links / Zentriert / Rechts / Blocksatz
+1639	Strg+1 / 5 / 2
+1639	Zeilenabstand 1 / 1,5 / 2
+1639	Strg+M / Strg+Umschalt+M
+1639	Einzug vergrößern / verkleinern
+1639	Strg+Umschalt+L
+1639	Strg+Umschalt+> / <
+1639	Schrift größer / kleiner
+1640	Strg+Umschalt++ / Strg+#
+1640	Hochgestellt / Tiefgestellt
+1640	Strg+Leertaste
+1640	Zeichenformat löschen
+1640	Strg+Umschalt+C / V
+1640	Format kopieren / übertragen
+1640	Umschalt+F3
+1640	Groß-/Kleinschreibung wechseln
+1641	Strg+G
+1641	Strg+Alt+M
+1641	Strg+Umschalt+E
+1641	Nächste Zelle · Listenebene · Tabulator
+1641	Strg+S
+1641	Diese Übersicht
+1679	Digit1
+1679	Digit2
+1679	Digit5
+1682	Period
+1683	Comma
+1684	Equal
+1686	Space
+1687	Format kopiert (Strg+Umschalt+V zum Übertragen)
+1846	Himmelblau
+1846	Mintgrün
+1846	Vanille
+1846	Rosé
+1846	Silber
+1846	Nachtblau

@@ -1,0 +1,45 @@
+PASS auto en-US desktop: html lang=en  [en]
+PASS auto en-US desktop: nav in English  [Home | Files | Tools | Search | Profile & settings]
+PASS auto en-US desktop: t() works
+PASS auto en-US desktop: t() vars  [Page 2 of 9]
+PASS import 7 files  [['bericht.pdf', 'formular.pdf', 'anhang.pdf', 'bericht.docx', 'umsatz.xlsx', 'praesentation.pptx', 'bild.png']]
+PASS desktop: toast translated  [Starred]
+PASS document.title not German  [FaLe PDF]
+PASS localStorage en on de-DE phone: html lang=en  [en]
+PASS localStorage en on de-DE phone: nav in English  [ |         Home |         Files |         Tools |         Search |         Profile & settings |       ]
+PASS localStorage en on de-DE phone: t() works
+PASS localStorage en on de-DE phone: t() vars  [Page 2 of 9]
+PASS phone: no horizontal overflow at 390 px  [{}]
+PASS phone: tools without horizontal overflow  [{}]
+PASS onboarding button English  [Let’s go]
+PASS de-DE auto: German
+PASS de-DE auto: no dictionary loaded
+PASS settings has language select
+PASS switch de→en without reload  [Home | Files | Tools | Search | Profile & settings]
+PASS settings after switch: no German  [[]]
+PASS tools after switch: no German  [[]]
+PASS switch en→de reloads into German
+PASS route kept after reload
+PASS auto on de-DE stays German
+PASS datenschutz.html English on en-US  [← Back to FaLe PDF
+Privacy policy
+
+for the app “FaLe PDF” (Android app and web v]
+PASS datenschutz.html English: no German paragraphs  [['When you open the web version in your browser, the program files are delivered by our hosting provider: [HOSTING-ANBIETER, z.\xa0B. Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA]. In doing so, the hosting provider processes technically necessary connection data (IP address, date and time, requested file, browser identifier) in server logs in order to deliver the website securely and reliably. The legal basis is our legitimate interest in secure operation (Art. 6(1)(f) GDPR). [Bei Anbietern in den USA: Hinweis auf EU-U.S. Data Privacy Framework bzw. Standardvertragsklauseln und Speicherdauer der Protokolle laut Anbieter ergänzen]', 'To whom? Via our server (hosting: [HOSTING-ANBIETER, z.\xa0B. Vercel Inc., USA]) to the AI provider [KI-ANBIETER, z.\xa0B. Anthropic, PBC, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA], which generates the answer. [Angaben des KI-Anbieters zu Speicherdauer, Nicht-Nutzung zum Training und Auftragsverarbeitung/Drittlandübermittlung hier eintragen]']]
+PASS impressum.html English on en-US  [← Back to FaLe PDF
+Legal notice (Impressum)
+
+Information pursuant to § 5 of the ]
+PASS impressum.html English: no German paragraphs  [['Phone: [TELEFONNUMMER – optional, wenn eine andere schnelle Kontaktmöglichkeit besteht]', '[USt-IdNr. nach § 27a UStG, falls vorhanden – sonst diesen Abschnitt löschen]']]
+PASS datenschutz.html German on de-DE
+PASS impressum.html German on de-DE
+
+==== German leftovers (0 distinct) ====
+PASS no German UI text left in English mode  [0 distinct strings]
+
+Coverage: 159 screens scanned, 27671 text items, 0 German (100.00 % English)
+
+==== console problems ====
+  en-desktop [console] Failed to load resource: the server responded with a status of 501 (Unsupported method ('POST'))
+
+30/30 checks passed

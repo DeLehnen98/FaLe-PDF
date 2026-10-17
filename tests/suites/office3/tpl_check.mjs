@@ -1,0 +1,41 @@
+// Build every template, recalc, report errors (#WERT! etc.) and key values.
+const ROOT = '/home/claude/FalePDF/js/office/';
+const T = await import(ROOT + 'sheet-templates.js');
+const W = await import(ROOT + 'workbook.js');
+const F = await import(ROOT + 'formula.js');
+const FX = await import(ROOT + 'sheetfx.js');
+const today = new Date(2026, 9, 15);
+let bad = 0;
+for (const t of T.SHEET_TEMPLATE_DEFS) {
+  const t0 = Date.now();
+  const wb = T.buildSheetTemplate(t.id, { today });
+  wb.sheets.forEach(s => { FX.ensureSheetExtras(s); W.ensureSheetModel(s); });
+  W.recalc(wb);
+  const ms = Date.now() - t0;
+  const errs = [];
+  let nf = 0;
+  wb.sheets.forEach(sh => { for (const [k, c] of sh.cells) { if (c.f) nf++; const v = c.f ? c.cv : c.v; if (v && v.code) errs.push(`${sh.name}!${F.addr(W.R_OF(k), W.C_OF(k))}=${v.code} [${c.f}]`); } });
+  if (wb._circ && wb._circ.length) errs.push('CIRC ' + JSON.stringify(wb._circ.slice(0, 3)));
+  if (errs.length) bad++;
+  console.log(`${t.id.padEnd(22)} sheets=${wb.sheets.length} formulas=${nf} ${ms}ms ${errs.length ? 'ERR ' + errs.slice(0, 6).join(' | ') : 'ok'}`);
+}
+const show = (id, refs) => { const wb = T.buildSheetTemplate(id, { today }); wb.sheets.forEach(s => { FX.ensureSheetExtras(s); W.ensureSheetModel(s); }); W.recalc(wb); console.log(id, refs.map(r => { const [sn, a] = r.split('!'); const sh = wb.sheets.find(s => s.name === sn); const p = F.parseAddr(a); return `${r}=${W.displayOf(W.getCell(sh, p.r, p.c))}`; }).join('  ')); };
+show('haushaltsbuch', ['Übersicht!B10', 'Übersicht!C10', 'Übersicht!D10', 'Übersicht!C6', 'Übersicht!E6', 'Übersicht!C14']);
+show('urlaubsplaner', ['Feiertage!B20', 'Feiertage!B6', 'Feiertage!B9', 'Feiertage!B10', 'Urlaub!D13', 'Urlaub!D14', 'Urlaub!D15', 'Urlaub!C6', 'Urlaub!D6', 'Urlaub!E9']);
+show('stundenzettel', ['Arbeitszeit!A6', 'Arbeitszeit!B6', 'Arbeitszeit!F6', 'Arbeitszeit!G6', 'Arbeitszeit!H6', 'Arbeitszeit!A36', 'Arbeitszeit!A35', 'Arbeitszeit!G38']);
+show('kreditrechner', ['Kredit!B9', 'Kredit!B10', 'Kredit!D14', 'Kredit!E14', 'Kredit!F14', 'Kredit!F73', 'Kredit!A74', 'Kredit!B73']);
+show('sparplan', ['Sparplan!B10', 'Sparplan!B11', 'Sparplan!B12', 'Sparplan!C14', 'Sparplan!E14', 'Sparplan!D33']);
+show('fahrtenbuch', ['Fahrtenbuch!D6', 'Fahrtenbuch!B7', 'Fahrtenbuch!K6', 'Fahrtenbuch!K9', 'Fahrtenbuch!K10', 'Fahrtenbuch!K11']);
+show('rechnungsausgangsbuch', ['Rechnungen!A6', 'Rechnungen!H6', 'Rechnungen!K6', 'Rechnungen!K8', 'Rechnungen!K9', 'Rechnungen!N9', 'Rechnungen!N10']);
+show('euer', ['Übersicht!C6', 'Übersicht!C19', 'Übersicht!C20', 'Übersicht!C21', 'Übersicht!D25', 'Buchungen!H5']);
+show('projektplan', ['Projektplan!E6', 'Projektplan!C7', 'Projektplan!E7', 'Projektplan!H4', 'Projektplan!H5', 'Projektplan!I5']);
+show('inventarliste', ['Inventar!A5', 'Inventar!G8', 'Inventar!J5', 'Inventar!N5', 'Inventar!N7', 'Inventar!N8']);
+show('kontaktliste', ['Kontakte!J4', 'Kontakte!K4', 'Kontakte!K5', 'Kontakte!D4', 'Kontakte!G4']);
+show('notenrechner', ['Noten!H6', 'Noten!I6', 'Noten!J6', 'Noten!K6', 'Noten!J19', 'Noten!N7', 'Noten!D3']);
+show('trainingsplan', ['Plan!G5', 'Plan!L5', 'Fortschritt!F4', 'Fortschritt!G8']);
+show('essensplan', ['Einkaufsliste!I4', 'Einkaufsliste!I5', 'Einkaufsliste!I6']);
+show('nebenkosten', ['Nebenkosten!D13', 'Nebenkosten!E13', 'Nebenkosten!E28', 'Nebenkosten!E30', 'Nebenkosten!E31']);
+show('kassenbuch', ['Kassenbuch!G6', 'Kassenbuch!G10', 'Kassenbuch!J8', 'Kassenbuch!B7']);
+show('aufgabenliste', ['Aufgaben!J4', 'Aufgaben!J5', 'Aufgaben!J6', 'Aufgaben!J7']);
+show('monatsbudget', ['Monatsbudget!B7', 'Monatsbudget!C7', 'Monatsbudget!D8', 'Monatsbudget!B11']);
+process.exit(bad ? 1 : 0);

@@ -1,0 +1,84 @@
+[p360] sign-pdf:
+    no result
+[p360] redact-pdf:
+    no result
+[p360] protect-pdf:
+    no result
+[p360] compare-pdf:
+    files: small 40x52 „sec_v1.pdf“ verschieben (ziehen oder Pfeiltasten)
+    files: small 40x52 „sec_v2.pdf“ verschieben (ziehen oder Pfeiltasten)
+[p360] compress-image:
+    result: small 227x40 Ausschnitt vergrößern
+[p360] convert-image:
+    result: small 227x40 Ausschnitt vergrößern
+[p360] png-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[p360] jpg-to-png:
+    result: small 227x40 Ausschnitt vergrößern
+[p360] webp-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[land] sign-pdf:
+    no result
+[land] redact-pdf:
+    no result
+[land] protect-pdf:
+    no result
+[land] compare-pdf:
+    files: small 40x52 „sec_v1.pdf“ verschieben (ziehen oder Pfeiltasten)
+    files: small 40x52 „sec_v2.pdf“ verschieben (ziehen oder Pfeiltasten)
+[land] compress-image:
+    result: small 227x40 Ausschnitt vergrößern
+[land] convert-image:
+    result: small 227x40 Ausschnitt vergrößern
+[land] png-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[land] jpg-to-png:
+    result: small 227x40 Ausschnitt vergrößern
+[land] webp-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] sign-pdf:
+    no result
+[dark360] redact-pdf:
+    no result
+[dark360] protect-pdf:
+    no result
+[dark360] compare-pdf:
+    files: small 40x52 „sec_v1.pdf“ verschieben (ziehen oder Pfeiltasten)
+    files: small 40x52 „sec_v2.pdf“ verschieben (ziehen oder Pfeiltasten)
+[dark360] compress-image:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] convert-image:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] png-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] jpg-to-png:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] webp-to-jpg:
+    result: small 227x40 Ausschnitt vergrößern
+[dark360] signature-maker:
+    pick: contrast 2.07 P.new-muted "Noch keine Unterschrift – wähl"
+    files: contrast 2.07 P.new-muted "Noch keine Unterschrift – wähl"
+[zoom200] booklet:
+    files: small 35x44 Vorherige Seite
+    files: small 35x44 Nächste Seite
+[zoom200] sign-pdf:
+    files: small 5x48 Vorherige Seite
+    files: small 5x48 Nächste Seite
+    no result
+[zoom200] fill-pdf-form:
+    files: small 5x48 Vorherige Seite
+    files: small 5x48 Nächste Seite
+[zoom200] redact-pdf:
+    files: small 5x48 Vorherige Seite
+    files: small 5x48 Nächste Seite
+    no result
+[zoom200] protect-pdf:
+    no result
+[zoom200] compare-pdf:
+    files: small 40x52 „sec_v1.pdf“ verschieben (ziehen oder Pfeiltasten)
+    files: small 40x52 „sec_v2.pdf“ verschieben (ziehen oder Pfeiltasten)
+[FAIL] aud2-ux
+   - a11y on /werkzeuge/pdf-unterschreiben/: touch target < 40px: Vorherige Seite
+   - a11y on /werkzeuge/pdf-unterschreiben/: touch target < 40px: Nächste Seite
+   - a11y on /werkzeuge/pdf-schwaerzen/: touch target < 40px: Vorherige Seite
+   - a11y on /werkzeuge/pdf-schwaerzen/: touch target < 40px: Nächste Seite

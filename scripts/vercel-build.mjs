@@ -18,7 +18,8 @@ const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '
   'one-android', // FaLe One Android app (Capacitor project, built in CI by .github/workflows/android-one.yml)
   'api', 'supabase', 'network', // serverless functions + DB migrations are not static app files
   'one', // FaLe One web app: its own Vercel project (root directory one/)
-  'docs', 'SECURITY.md']); // documentation only
+  'docs', 'SECURITY.md', // documentation only
+  'tests', 'e2e-out']); // test suites + their outputs (never shipped)
 // `--native` (or FALE_TARGET=native): build for the Android app (Capacitor webDir).
 const NATIVE = process.argv.includes('--native') || process.env.FALE_TARGET === 'native';
 

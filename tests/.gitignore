@@ -1,0 +1,23 @@
+# Ergebnisse und erzeugte Dateien der Testläufe – nicht einchecken.
+# (Bereits eingecheckte kleine Testdateien bleiben versioniert; neue erzeugte werden ignoriert.)
+__pycache__/
+node_modules/
+*.log
+*.pid
+out*/
+**/fixtures/
+**/testdata/*.y4m
+suites/design/src/
+suites/design/iso/
+suites/design/serve/
+suites/design/testserve/
+*.png
+*.jpg
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+*.y4m
+!**/officedata/*
+!**/testdata/*
+suites/share_data/

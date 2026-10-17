@@ -1,0 +1,274 @@
+PASS Ich: profile card links to #/profil
+PASS Ich: Rechtliches with Datenschutz link
+PASS getProfile() returns stored fields  [{'vorname': 'Erika', 'nachname': 'Musterfrau', 'strasse': 'Lindenweg', 'hausnummer': '7', 'plz': '66111', 'ort': 'Saarbr]
+PASS profileRoute export
+PASS profile stored locally in IndexedDB
+PASS profile export JSON  [FaLe-Profil.json]
+PASS Ich shows profile name
+PASS hub: 8 Kündigung types
+PASS hub: other generators
+PASS hub: legal disclaimer
+PASS sender prefilled from profile  [Erika Musterfrau|Lindenweg 7|66111 Saarbrücken]
+PASS missing recipient blocks output
+PASS preview: subject + member no  [Erika Musterfrau
+Lindenweg 7
+66111 Saarbrücken
+Tel. 0681 123456
+erika@example.de
+
+
+
+
+Erika Musterfrau · Lindenweg 7 · 66111 Saarbrücken
+
+FitWell Studio GmbH
+Sportallee 3
+66123 Saarbrücken
+
+	
+
+Mitglied]
+PASS preview: confirmation request
+PASS preview: termin date + fallback
+PASS result dialog offers reminder
+PASS PDF stored in library
+PASS PDF has sender + recipient + subject  [                                                                                   Erika Musterfrau
+                                                                                       Lindenweg 7
+                                                                              66111 Saarbrücken
+     ]
+PASS PDF has date line + salutation
+PASS reminder created from letter  [['Bestätigung der Kündigung prüfen (FitWell Studio GmbH)']]
+PASS Miete: handwritten signature hint + legal period
+PASS Miete: object prefilled from profile
+PASS Rechnung Kleinunternehmer: total + §19 note  [betrag
+
+	
+
+349,90 €
+
+Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+
+Bitte überweisen Sie den Gesamtbetrag von 349,90 € innerhalb von 14 Tagen (bis 28.10.2026) unter Angabe der Rechnungsnummer auf folgendes Konto: IBAN DE02120300000000202051.
+
+Vielen Dank für Ihren Auftrag!
+
+Mit freundlichen Grüßen
+
+
+
+
+Erika Musterfrau
+
+
+
+
+Erika Design · Steuernummer 040/123/45678 · IBAN DE02120300000000202051]
+PASS Rechnung: Steuernummer from profile
+PASS Rechnung 19 %: net/tax/gross  [samtbetrag von 416,38 € innerhalb von 14 Tagen (bis 28.10.2026) unter Angabe der Rechnungsnummer auf folgendes Konto: IBAN DE02120300000000202051.
+
+Vielen Dank für Ihren Auftrag!
+
+Mit freundlichen Grüßen
+
+
+
+
+Erika Musterfrau
+
+
+
+
+Erika Design · Steuernummer 040/123/45678 · IBAN DE02120300000000202051]
+PASS Rechnung opens as editable document
+PASS Rechnung .docx: number + gross + IBAN  [Erika Design
+Erika Musterfrau
+Lindenweg 7
+66111 Saarbrücken
+Tel. 0681 123456
+erika@example.de
+Rechnung
+
+
+Rechnung Nr. 2026-001
+
+Sehr geehrte Damen und Herren,
+für meine Leistungen erlaube ich mir, fol]
+PASS Vollmacht: both persons + birth date
+PASS Bewerbung: subject, salutation, strengths
+PASS test files imported  [{'bericht.pdf': 'mv8cuk4m6940xy', 'bericht-kopie.pdf': 'mv8cuk998dgku9', 'geheim.txt': 'mv8cukitb7ifhs', 'umsatz.xlsx': 'mv8cukj5pyo5zu', 'struktur.pdf': 'mv8cukk4lcouhp'}]
+PASS suggestion buttons
+PASS suggestion prefills title + leads
+PASS Fristen grouped (Überfällig/Demnächst/Später)  [['Überfällig\n1', 'Demnächst\n1', 'Später\n3']]
+PASS Start: due + overdue reminder cards  [['Rechnung Stromanbieter bezahlen\nÜberfäll', 'Kfz-Versicherung kündigen\nin 5 Tagen · K']]
+PASS Start: not-yet-due reminder hidden
+PASS Start: overdue marked
+PASS mocked date: lead time reached → reminder becomes due  [['Rechnung Stromanbieter bezahlen', 'Kfz-Versicherung kündigen', 'Bestätigung der Kündigung prüfen (FitWell Studio GmbH)', 'Zahlung prüfen: Rechnung 2026-001 (Kunde AG)', 'Personalausweis läuft ab']]
+PASS mocked date: listed under Demnächst
+PASS yearly reminder rolls over  [2027-10-19]
+PASS done reminder leaves Start
+PASS no notification platform in browser → in-app only
+PASS manage links (Papierkorb/Duplikate/Tresor/Fristen)
+PASS folder created
+PASS file moved into folder
+PASS root no longer lists moved file  [['struktur.pdf', 'umsatz.xlsx', 'geheim.txt', 'bericht-kopie.pdf', 'Rechnung 2026-10-14.docx', 'Kündigung Fitnessstudio 2026-10-14.pdf']]
+PASS folder view lists the file + breadcrumb  [['bericht.pdf']]
+PASS tag shown on row
+PASS filter by tag (across folders)  [['bericht.pdf']]
+PASS deleted file leaves library
+PASS deleted file kept in Papierkorb
+PASS Papierkorb lists file with days left
+PASS Papierkorb restore works
+PASS purgeOldTrash removes entries older than 30 days
+PASS duplicates found by content hash  [bericht.pdf
+2 identische Dateien · je 7 KB
+Älteste behalten, Rest löschen
+bericht.pdf Original
+6 Seiten · 7 KB · Heute, ]
+PASS duplicate copy moved to trash
+PASS Start: Weiterlesen card  [Weitermachen
+Weiterlesen
+bericht.pdf
+Seite 3 von 6
+Zuletzt bearbeitet
+XLS
+umsatz.xlsx
+Tabelle · gera]
+PASS Start: Zuletzt bearbeitet lists office files
+PASS setup requires acknowledging the no-backdoor warning
+PASS PBKDF2 ≥ 310k iterations, wrapped key only  [400000]
+PASS file removed from library (not in trash either)
+PASS text index removed too
+PASS one encrypted vault record  [[['id', 'v', 'metaIv', 'meta', 'dataIv', 'data']]]
+PASS IndexedDB vault data contains no plaintext (content + name)  [[]]
+PASS unlocked vault lists decrypted name
+PASS viewer decrypts in memory
+PASS backup export stays encrypted
+PASS locked: no file names visible
+PASS wrong PIN keeps vault locked
+PASS correct PIN unlocks
+PASS lock() clears access
+PASS biometrics option hidden without platform authenticator
+PASS restore from vault back to library
+PASS chart dialog: 6 types + live preview
+PASS chart rendered in grid
+PASS chart live-updates on data change
+PASS three charts on sheet
+PASS chart movable  [430,486 → 490,586]
+PASS conditional formatting (> 1000) colours cells  [rgb(255, 199, 206) / rgba(0, 0, 0, 0)]
+PASS merge cells + wrap + borders in model  [{'merges': [{'r1': 7, 'c1': 0, 'r2': 7, 'c2': 3}], 'wrap': True, 'bd': {'t': True, 'r': True, 'b': True, 'l': True}}]
+PASS dropdown arrow on validated cell
+PASS dropdown sets value
+PASS invalid value rejected
+PASS find counts matches  [1 von 2]
+PASS replace all
+PASS filter buttons in header row
+PASS AutoFilter hides rows (D5 = bezahlt)  [[4]]
+PASS xlsx: chart + drawing parts  [['xl/', 'xl/charts/', 'xl/charts/chart1.xml', 'xl/charts/chart2.xml', 'xl/charts/chart3.xml', 'xl/drawings/', 'xl/drawings/drawing1.xml', 'xl/drawings/_rels/', 'xl/drawings/_rels/drawing1.xml.rels', 'xl/worksheets/', 'xl/worksheets/_rels/', 'xl/worksheets/_rels/sheet1.xml.rels', '[Content_Types].xml', '_rels/', '_rels/.rels', 'docProps/', 'docProps/core.xml', 'docProps/app.xml', 'xl/workbook.xml', 'xl/_rels/', 'xl/_rels/workbook.xml.rels', 'xl/worksheets/sheet1.xml', 'xl/sharedStrings.xml', 'xl/styles.xml', 'xl/theme/', 'xl/theme/theme1.xml']]
+PASS xlsx: c:chartSpace bar chart with refs + title
+PASS xlsx: content types for chart + drawing
+PASS openpyxl sees 3 charts (bar/line/pie)  [['BarChart', 'LineChart', 'PieChart']]
+PASS openpyxl: merged cells
+PASS openpyxl: borders + wrap
+PASS openpyxl: dropdown validation  [[('list', '"offen,bezahlt,storniert"', 'D2:D6')]]
+PASS openpyxl: conditional formatting rules  [[('B2:B6', ['cellIs']), ('C2:C6', ['colorScale'])]]
+PASS openpyxl: autofilter + hidden rows  [A1:D6]
+PASS LibreOffice opens the xlsx (with charts)
+PASS charts read back from xlsx  [[('col', 'Umsatz 2026'), ('line', ''), ('pie', '')]]
+PASS filter + validation + cf read back
+PASS sheet PDF contains chart images  [28 23.4K 1.4%
+   2     1 image     960   600  rgb     3   8  image  no        13  0   128   128 18.5K 1.1%
+   3     2 image     960   600  rgb     3   8  image  no        16  0   128   128 30.5K 1.8%
+]
+PASS spellcheck on with de-DE
+PASS spellcheck toggle off
+PASS outline panel lists headings  [['Einleitung', 'Ziele', 'Ergebnis']]
+PASS TOC inserted + generated
+PASS TOC updates automatically
+PASS comment anchored to text + side panel
+PASS footnote inserted
+PASS page setup: A5 landscape, narrow margins  [{'w': 595.3, 'h': 419.5, 'mt': 36, 'mr': 36, 'mb': 36, 'ml': 36}]
+PASS header preview shown
+PASS docx: TOC field with cached entries
+PASS docx: comment part + anchors
+PASS docx: header/footer text
+PASS docx: page number fields (PAGE / NUMPAGES)
+PASS docx: footnote
+PASS docx: A5 landscape page size  [LANDSCAPE (1) 595.3 419.5]
+PASS PDF: header + "Seite 1 von N" footer  [Projektbericht Sommer
+
+
+Vorwort.
+
+Inhaltsverzeichnis
+Einleitung ..........................................................................................................                         1
+    Ziele .............................................................................................]
+PASS PDF: TOC with page numbers
+PASS PDF: footnote at page bottom
+PASS re-open: TOC block, comment, footnote
+PASS re-open: header/footer settings  [{'header': 'Projektbericht Sommer', 'headerAlign': 'left', 'footer': 'Vertraulich', 'footerAlign': 'left', 'pageNumbers': 'footer-right', 'pageFormat': 'n-of-m'}]
+PASS read-aloud button available
+PASS outline preview counts slides  [7]
+PASS deck opens in editor (unsaved)
+PASS presenter: current + next + notes + timer
+PASS presenter navigation
+PASS slideshow transition animates  [2]
+PASS python-pptx: expected slide titles  [['Quartalsbericht', 'Agenda', 'Umsatz', 'Team', 'Risiken (1/2)', 'Risiken (2/2)', 'Vielen Dank!']]
+PASS long list split (6 + 2)
+PASS speaker notes saved (outline > + edited)  [['', '', '', 'Namen nennen', 'Risiken nur kurz streifen.', '', '']]
+PASS transition written to slide XML
+PASS handout PDF: 3 slides/page → 3 pages with notes  [3]
+PASS pptx re-open: notes + transitions  [[['push', ''], ['push', ''], ['push', ''], ['push', 'Namen nennen'], ['push', 'Risiken nur kurz streifen.'], ['push', ''], ['push', '']]]
+PASS stats counted (created/letters/pdf/reminders/vault/imported)  [{'files_created': 8, 'pdf_exported': 4, 'letters_created': 2, 'reminders_created': 5, 'files_imported': 6, 'vault_added': 1}]
+PASS Dein Monat card on Start
+PASS friendly milestone shown  [Erster Brief erledigt – ohne Vorlagen-Suche 📮]
+PASS stats toggle off
+PASS opt-out: nothing counted
+PASS opt-out hides card
+PASS opt-in again counts
+PASS Werkzeuge: Alltag & Organisation section
+PASS AI entries hidden without on-device AI  [['Öffnen', 'Umbenennen', 'Teilen', 'Herunterladen', 'Sicher teilen (Link)', 'Unterschrift anfordern', 'Ausfüllen & unterschreiben', 'Seiten verwalten', 'In Excel-Tabelle umwandeln', 'In Ordner verschieben …', 'Tags …', 'Frist hinzufügen …', 'In den Tresor verschieben', 'Löschen']]
+PASS file menu: folder/tags/frist/vault
+PASS no external network requests  [[]]
+PASS desktop: onboarding shown on first start
+PASS desktop: privacy promise step
+PASS desktop: theme choice applies
+PASS desktop: onboarding closes + remembered
+PASS desktop: shown only once
+PASS phone: onboarding shown on first start
+PASS phone: privacy promise step
+PASS phone: theme choice applies
+PASS phone: onboarding closes + remembered
+PASS phone: shown only once
+PASS vault unlocked after setup
+PASS still unlocked before the timeout
+PASS auto-lock after 3 minutes of inactivity
+PASS unlock again with PIN
+PASS locks immediately when the app is hidden
+PASS wrong PIN rejected (API)
+PASS AI capabilities detected from browser API  [{'summarize': True, 'translate': True, 'detect': True}]
+PASS writer menu offers on-device summary
+PASS summary result from provider
+PASS phone start: no horizontal overflow  [390]
+PASS phone dateien: no horizontal overflow  [390]
+PASS phone werkzeuge: no horizontal overflow  [390]
+PASS phone ich: no horizontal overflow  [390]
+PASS phone profil: no horizontal overflow  [390]
+PASS phone schreiben: no horizontal overflow  [390]
+PASS phone kuendigung: no horizontal overflow  [390]
+PASS phone rechnung: no horizontal overflow  [390]
+PASS phone fristen: no horizontal overflow  [390]
+PASS phone tresor_setup: no horizontal overflow  [390]
+PASS phone papierkorb: no horizontal overflow  [390]
+PASS phone duplikate: no horizontal overflow  [390]
+PASS phone gliederung: no horizontal overflow  [390]
+PASS phone: letter preview toggle
+PASS phone: reminder + month cards on Start
+PASS phone: Fristen block rendered once
+PASS phone: chart inserted
+PASS phone: no external network requests  [[]]
+
+==== SUMMARY ====
+179/179 passed
+
+==== CONSOLE errors/warnings ====
+0 console problems

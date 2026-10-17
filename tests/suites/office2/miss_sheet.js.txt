@@ -1,0 +1,148 @@
+62	Pivot-Tabelle …
+63	Namens-Manager …
+65	Tastenkürzel
+93	Formeln
+99	Durchgestrichen (Strg+5)
+102	Vertikale Ausrichtung
+103	Mehr Nachkommastellen
+103	Weniger Nachkommastellen
+104	Zellenformatvorlagen
+104	Datenüberprüfung (Dropdown-Liste)
+111	Pivot-Tabelle
+112	data-a="ins-date"
+112	Uhrzeit
+112	data-a="ins-time"
+113	Name definieren
+116	AutoSumme …
+117	Neu berechnen
+120	Sortieren …
+122	Blatt schützen
+122	Pivot aktualisieren
+125	Fixieren …
+125	Gitternetzlinien
+125	Formeln anzeigen
+90	Menüband
+90	Aa
+90	Ganze Zelle
+90	Zelladresse oder Name
+90	Zelladresse oder Name – mit Enter springen; neuen Namen für die Markierung eintippen
+338	Ausgeblendete Spalte {0}
+407	Ziehen zum Ausfüllen (Doppelklick: bis zum Datenende)
+479	Summe: {0} · Mittelwert: {1} · Anzahl: {2}{3}
+482	· geschützt
+495	Das Blatt ist geschützt. Hebe den Schutz unter „Daten → Blatt schützen“ auf, um diese Zellen zu ändern.
+567	„{0}“ ist hier nicht erlaubt ({1}).
+646	Zirkelbezug: Die Formel in {0}{1} bezieht sich auf sich selbst.
+752	Dieses Blatt gibt es nicht.
+763	„{0}“ ist kein Bereich (={1}).
+771	Name „{0}“ für {1} angelegt
+774	Ungültige Zelladresse oder unbekannter Name (z. B. B7, A1:C5 oder Umsatz).
+944	Ausschneiden
+947	Inhalte einfügen …
+949	Zellen formatieren …
+950	Zeilen oberhalb einfügen
+951	Spalten links einfügen
+952	Zeilen löschen
+953	Spalten löschen
+954	Inhalte löschen
+958	Nach diesem Wert filtern
+959	Namen definieren …
+960	Zelle
+968	Zeilenhöhe …
+969	Optimale Höhe
+970	Ausblenden
+971	Einblenden
+972	Zeile
+980	Spaltenbreite …
+981	Optimale Breite
+987	Spalte
+1060	{0} Zeile{1} eingeblendet
+1061	{0} Spalte{1} ausgeblendet
+1062	{0} Spalte{1} eingeblendet
+1137	Neben der Markierung gibt es keine Daten, bis zu denen ausgefüllt werden kann.
+1211	Neu berechnet
+1269	Ausgeschnitten – an der Zielzelle einfügen (Strg+V).
+1382	Ausgeschnitten
+1387	Zum Einfügen von außerhalb bitte Strg+V verwenden.
+1394	Kopiere zuerst Zellen in dieser Tabelle (Strg+C).
+1500	Weitere Farben …
+1503	Vertikal ausrichten
+1507	Minimum
+1508	Alle Funktionen …
+1516	Alle Filter gelöscht
+1516	Auf diesem Blatt ist kein Filter aktiv.
+1524	Bis {0} fixieren (Zeilen darüber, Spalten links)
+1525	Oberste Zeile fixieren
+1526	Erste Spalte fixieren
+1527	Fixierung aufheben
+1528	Fixieren
+1533	Pivot-Tabelle aktualisiert
+1533	{0} Pivot-Tabelle{1} aktualisiert
+1533	Diese Mappe enthält keine Pivot-Tabelle.
+1538	Alle Formeln neu berechnet
+1545	Braun
+1545	Lavendel
+1545	Hellgrau
+1545	Gut (grün)
+1545	Schlecht (rot)
+1545	Neutral (gelb)
+1562	Fixiert: {0}{1}{2}
+1565	Blattschutz aufgehoben
+1566	Blatt geschützt – nur entsperrte Zellen sind änderbar. Hinweis: Das ist ein Schutz vor versehentlichen Änderungen, keine Verschlüsselung.
+1640	Sortiert nach
+1651	Ganze Zeile einfügen
+1651	Ganze Spalte einfügen
+1652	Ganze Zeile löschen
+1652	Ganze Spalte löschen
+1668	Doppelte Rahmenlinie unten
+1669	Rahmen links
+1670	Rahmen rechts
+1673	Weitere Rahmen …
+1776	Gefiltert nach „{0}“
+1790	Zahlenfilter …
+1790	Textfilter …
+1791	Aktiv: {0}
+2062	Die Quelldaten der Pivot-Tabelle wurden nicht gefunden.
+2068	Pivot{0}
+2076	Pivot-Tabelle erstellt – über „Daten → Pivot aktualisieren“ neu berechnen.
+2160	Registerfarbe …
+2161	Blattschutz aufheben
+2172	Blatt gelöscht
+2177	Keine Farbe
+2178	Registerfarbe
+2199	„{0}“ angelegt
+2224	Strg
+2226	Bewegen
+2226	Pfeiltasten
+2226	Zelle wechseln
+2226	Zum Rand des Datenbereichs
+2226	Umschalt+Pfeil
+2226	Markierung erweitern
+2226	Bis zum Datenrand markieren
+2226	Tab / Umschalt+Tab
+2226	Nach rechts / links
+2226	Eingabe
+2226	Nach unten (in Markierung bleiben)
+2226	Anfang / letzte benutzte Zelle
+2226	{0}+Bild↑ / Bild↓
+2226	Vorheriges / nächstes Blatt
+2227	Ganze Spalte
+2227	Umschalt+Leertaste
+2227	Ganze Zeile
+2227	Datenbereich, dann alles
+2227	Mehrere Bereiche
+2228	Alt+Eingabe
+2228	Zeilenumbruch in der Zelle
+2228	Eingabe in alle markierten Zellen
+2228	$-Bezug umschalten (beim Bearbeiten)
+2228	Entf
+2228	Inhalt löschen
+2228	Nach unten / rechts ausfüllen
+2228	Datum / Uhrzeit einfügen
+2228	Rückgängig / Wiederholen
+2229	Zwischenablage
+2229	Kopieren / Ausschneiden / Einfügen
+2230	Fett / Kursiv / Unterstrichen
+2231	Zeilen/Spalten einfügen / löschen
+2231	Umschalt+F11
+2233	Tastenkürzel – Tabelle

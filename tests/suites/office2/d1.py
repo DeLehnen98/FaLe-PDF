@@ -1,0 +1,2 @@
+pg.evaluate("h => { const ed = document.querySelector('.doc-page'); ed.innerHTML = h; }", '<ol data-ml="legal"><li>Eins<ol><li>Zwei</li></ol></li><li>Drei</li></ol><p>Trenner</p><ol type="a"><li>Alpha</li></ol><ol type="a" start="5" data-restart><li>Beta</li></ol><ul data-bullet="dash"><li>Punkt A</li><li>Punkt B</li></ul>')
+print(json.dumps(pg.evaluate("() => document.querySelector('.writer')._writerApi.model().blocks.map(b => [b.type, b.tag, JSON.stringify(b.list), b.runs && b.runs.map(r=>r.text||(r.br?'BR':'')).join('|')])"), ensure_ascii=False, indent=0))

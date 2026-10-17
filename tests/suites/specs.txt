@@ -1,0 +1,366 @@
+## add-page-numbers [edit] tm=False
+ DE seitenzahlen-einfuegen | Seitenzahlen in PDF einfügen – kostenlos, ohne Upload | FaleNetwork |H1: Seitenzahlen einfügen
+   M: Nummeriere deine PDF: Position per Fingertipp wählen, Format wie „Seite 1 von 10“, Deckblatt auslassen, Live-Vorschau. Gratis, ohne Konto, ohne Upload.
+   K: nummerieren, paginieren, seitennummern, seite 1 von, fußzeile zahl, seiten zählen
+ EN add-page-numbers | Add page numbers to PDF – free, no upload | FaleNetwork |H1: Add page numbers to a PDF
+   K: number pages, paginate, page numbering, page 1 of, footer number, number pdf
+## alternate-mix [organize] tm=None
+ DE pdf-seiten-mischen | PDF-Seiten abwechselnd mischen – ohne Upload | FaleNetwork |H1: PDF-Seiten abwechselnd mischen
+   M: Vorder- und Rückseiten aus einem einseitigen Scanner in die richtige Reihenfolge bringen oder mehrere PDFs abwechselnd mischen. Mit Vorschau, ohne Upload.
+   K: duplex, vorderseite rückseite, doppelseitig scannen, abwechselnd, verschachteln, reißverschluss, zusammenmischen
+ EN alternate-mix-pdf | Alternate and mix PDF pages – no upload | FaleNetwork |H1: Mix PDF pages alternately
+   K: duplex, front and back, double-sided scan, interleave, alternate pages, collate, zip pages
+## booklet [edit] tm=False
+ DE broschuere-drucken | PDF als Broschüre drucken – A5-Heft aus A4, ohne Upload | FaleNetwork |H1: PDF als Broschüre drucken
+   M: Mach aus deiner PDF ein faltbares Heft: Seiten in Broschüren-Reihenfolge, leere Seiten automatisch ergänzt, mit Druckanleitung. A4 zu A5, gratis, ohne Upload.
+   K: heft drucken, booklet, a5 heft, rückstichheftung, falten, broschürendruck, programmheft
+ EN pdf-booklet | Print PDF as a booklet – fold and staple, no upload | FaleNetwork |H1: Print a PDF as a booklet
+   K: booklet printing, saddle stitch, a5 booklet, fold, zine, imposition, programme
+## cancellation-letter [everyday] tm=None
+ DE kuendigung-schreiben | Kündigung schreiben – Vorlage als PDF, kostenlos | FaleNetwork |H1: Kündigung schreiben
+   M: Kündigungsschreiben erstellen für Handy, Internet, Fitnessstudio, Strom, Versicherung, Abo oder Wohnung: Brief fürs Fensterkuvert, Unterschrift per Finger, gratis.
+   K: kündigungsschreiben, kündigung vorlage, handyvertrag kündigen, fitnessstudio kündigen, abo kündigen, sonderkündigung, mietvertrag kündigen, dsgvo löschung, lastschrift widerrufen
+ EN cancellation-letter | Cancellation letter generator – free PDF | FaleNetwork |H1: Write a cancellation letter
+   K: cancel contract letter, cancellation template, cancel gym membership, cancel subscription, termination letter, gdpr erasure request, cancel direct debit
+## compare-pdf [edit] tm=False
+ DE pdf-vergleichen | PDF vergleichen – Unterschiede finden, ohne Upload | FaleNetwork |H1: PDF vergleichen
+   M: Vergleiche zwei PDFs Wort für Wort: Einfügungen grün, Löschungen rot, dazu ein Bildvergleich jeder Seite und ein Bericht als PDF. Gratis, ohne Upload.
+   K: vergleichen, unterschiede, änderungen finden, versionen, diff, vertrag vergleichen, abgleichen
+ EN compare-pdf | Compare PDF – find differences, no upload | FaleNetwork |H1: Compare two PDFs
+   K: compare, differences, find changes, versions, diff, compare contracts, redline
+## compress-image [images] tm=None
+ DE bild-komprimieren | Bild komprimieren – JPG, PNG, WebP verkleinern | FaleNetwork |H1: Bilder komprimieren
+   M: Fotos und Bilder verkleinern: nach Qualität oder genau unter eine Zielgröße in KB, mit Vorher-nachher-Vergleich. Viele Bilder auf einmal, ohne Upload, gratis im Browser.
+   K: bild verkleinern, foto verkleinern, jpg komprimieren, png komprimieren, kb, dateigröße, webp, avif, bild kleiner machen
+ EN compress-image | Compress image – reduce JPG, PNG, WebP size | FaleNetwork |H1: Compress images
+   K: reduce image size, shrink photo, jpg compressor, png, kb, file size, webp, avif, smaller picture
+## compress-pdf [optimize] tm=False
+ DE pdf-komprimieren | PDF komprimieren – Größe reduzieren, ohne Upload | FaleNetwork |H1: PDF komprimieren
+   M: PDF verkleinern für E-Mail und Uploads: drei Stufen, Text bleibt bei „Ausgewogen“ scharf und durchsuchbar. Kostenlos, ohne Konto und ohne Upload – alles im Browser.
+   K: verkleinern, verringern, reduzieren, kleiner machen, dateigröße, optimieren, e-mail
+ EN compress-pdf | Compress PDF – reduce file size, no upload | FaleNetwork |H1: Compress PDF
+   K: shrink, reduce, smaller, file size, optimize, email, minimize
+## convert-image [images] tm=None
+ DE bild-umwandeln | Bild umwandeln – JPG, PNG, WebP, AVIF konvertieren | FaleNetwork |H1: Bilder umwandeln
+   M: Bilder zwischen JPG, PNG, WebP und AVIF umwandeln: viele auf einmal, Hintergrundfarbe für Transparenz, Aufnahmedatum bleibt. Gratis, ohne Upload, direkt im Browser.
+   K: konvertieren, png in jpg, jpg in png, webp in jpg, heic in jpg, avif, format ändern, bildformat
+ EN convert-image | Convert image – JPG, PNG, WebP, AVIF converter | FaleNetwork |H1: Convert images
+   K: converter, png to jpg, jpg to png, webp to jpg, heic to jpg, avif, change format, image format
+## crop-image [images] tm=None
+ DE bild-zuschneiden | Bild zuschneiden – Foto online zuschneiden, kostenlos | FaleNetwork |H1: Bild zuschneiden
+   M: Fotos und Bilder zuschneiden, begradigen, drehen und spiegeln: mit dem Finger, mit Formaten wie 1:1, 4:5, 16:9 oder A4. Kostenlos, ohne Upload, ohne Wasserzeichen.
+   K: bild zuschneiden, foto zuschneiden, bild beschneiden, foto quadratisch, bild begradigen, bild spiegeln, crop
+ EN crop-image | Crop image – crop photos online, free | FaleNetwork |H1: Crop image
+   K: crop image, crop photo, square photo, straighten photo, flip image, cut image
+## crop-pdf [edit] tm=False
+ DE pdf-zuschneiden | PDF zuschneiden – Ränder entfernen, ohne Upload | FaleNetwork |H1: PDF zuschneiden
+   M: Entferne weiße Ränder automatisch oder ziehe den Ausschnitt mit großen Griffen – für alle, gerade, ungerade oder bestimmte Seiten. Verlustfrei, gratis, ohne Upload.
+   K: ränder entfernen, beschneiden, rand abschneiden, ausschnitt, cropbox, trimmen
+ EN crop-pdf | Crop PDF – remove margins, no upload | FaleNetwork |H1: Crop PDF pages
+   K: remove margins, trim, cut edges, crop box, cropbox, trim whitespace
+## delete-pages [organize] tm=None
+ DE pdf-seiten-loeschen | PDF-Seiten löschen – kostenlos, ohne Upload | FaleNetwork |H1: PDF-Seiten löschen
+   M: Seiten aus einer PDF löschen: Vorschaubilder antippen oder Bereiche wie „2, 5-7“ eingeben. Gelöschte Seiten sind wirklich weg. Gratis, ohne Konto, ohne Upload.
+   K: entfernen, seite entfernen, seiten rausnehmen, seite löschen, pdf kürzen, leere seite löschen
+ EN delete-pdf-pages | Delete PDF pages – free, no upload | FaleNetwork |H1: Delete pages from a PDF
+   K: remove pages, remove page, cut pages, drop pages, shorten pdf, delete blank page
+## edit-metadata [security] tm=False
+ DE pdf-metadaten | PDF-Metadaten ansehen, ändern, entfernen | FaleNetwork |H1: PDF-Metadaten bearbeiten
+   M: Sieh dir Titel, Autor, Programm, Datum, XMP, Anhänge und Skripte einer PDF an, ändere sie oder entferne alles Private mit einem Tipp. Ohne Upload, im Browser.
+   K: metadaten, eigenschaften, autor ändern, titel ändern, metadaten löschen, xmp, anonymisieren, dokumenteigenschaften
+ EN edit-pdf-metadata | View, edit and remove PDF metadata | FaleNetwork |H1: Edit PDF metadata
+   K: metadata, properties, change author, change title, remove metadata, xmp, anonymize, document properties
+## edit-pdf-text [edit] tm=False
+ DE pdf-bearbeiten | PDF bearbeiten – kostenlos online, ohne Upload | FaleNetwork |H1: PDF bearbeiten
+   M: Schreib Text in deine PDF, ändere Zeilen, setz Haken und Kreuze, markiere Text, füge Pfeile, Formen, Datum und Bilder ein – am Handy per Fingertipp. Gratis, ohne Upload.
+   K: pdf beschriften, text in pdf einfügen, pdf ausfüllen, pdf ändern, pdf markieren, haken setzen, pdf editor, pdf text ändern, unterschreiben
+ EN edit-pdf | Edit PDF – free online, no upload | FaleNetwork |H1: Edit a PDF
+   K: write on pdf, add text to pdf, fill pdf, change pdf, highlight pdf, tick boxes, pdf editor, edit pdf text, annotate
+## excel-to-pdf [convert-to-pdf] tm=True
+ DE excel-in-pdf | Excel in PDF umwandeln – XLSX zu PDF, ohne Upload | FaleNetwork |H1: Excel in PDF umwandeln
+   M: Wandle Excel-Tabellen (XLSX) in eine PDF um: alle sichtbaren Blätter, Zahlen wie angezeigt, Farben und Rahmen, breite Tabellen passend verkleinert. Ohne Upload.
+   K: xlsx, xls, excel, tabelle, tabellenkalkulation, liste, konvertieren, umwandeln, office
+ EN excel-to-pdf | Excel to PDF – convert XLSX to PDF, no upload | FaleNetwork |H1: Convert Excel to PDF
+   K: xlsx, xls, excel, spreadsheet, table, list, convert, office
+## extract-images [convert-from-pdf] tm=False
+ DE bilder-aus-pdf-extrahieren | Bilder aus PDF extrahieren – Originalqualität, gratis | FaleNetwork |H1: Bilder aus PDF extrahieren
+   M: Hol alle Fotos und Grafiken aus einer PDF: JPGs unverändert in Originalqualität, alles andere verlustfrei als PNG, ohne Symbole und Duplikate. Ohne Upload.
+   K: fotos, grafiken, bilder speichern, herausholen, exportieren, jpg, png, originalqualität, entpacken
+ EN extract-images-from-pdf | Extract images from PDF – original quality, free | FaleNetwork |H1: Extract images from a PDF
+   K: photos, graphics, save images, get images, export, jpg, png, original quality, unpack
+## extract-pages [organize] tm=None
+ DE pdf-seiten-extrahieren | PDF-Seiten extrahieren – kostenlos, ohne Upload | FaleNetwork |H1: PDF-Seiten extrahieren
+   M: Einzelne Seiten aus einer PDF herauslösen: antippen oder Bereiche eingeben, als eine PDF oder eine Datei pro Seite speichern. Gratis, ohne Konto, ohne Upload.
+   K: herauslösen, seiten speichern, seite herauskopieren, auswahl speichern, einzelne seite, seiten herausnehmen
+ EN extract-pdf-pages | Extract PDF pages – free, no upload | FaleNetwork |H1: Extract pages from a PDF
+   K: pull out pages, save pages, copy page, save selection, single page, take out pages
+## fill-pdf-form [edit] tm=False
+ DE pdf-formular-ausfuellen | PDF-Formular ausfüllen – am Handy, ohne Upload | FaleNetwork |H1: PDF-Formular ausfüllen
+   M: Fülle PDF-Formulare auf dem Handy aus wie ein normales Formular: große Eingabefelder, passende Tastatur, Vorschau der Seite. Gratis und ohne Upload.
+   K: formular, ausfüllen, antrag, felder, eintragen, acroform, formular am handy, pdf ausfüllen
+ EN fill-pdf-form | Fill PDF form – on your phone, no upload | FaleNetwork |H1: Fill in a PDF form
+   K: form, fill in, application form, fields, acroform, fill pdf on phone, fillable pdf
+## flatten-pdf [edit] tm=False
+ DE pdf-glaetten | PDF glätten – Formulare fixieren, ohne Upload | FaleNetwork |H1: PDF glätten
+   M: Ausgefüllte Formularfelder, Kommentare und Markierungen fest in die PDF-Seiten einbrennen, damit nichts mehr verändert werden kann. Gratis, ohne Upload.
+   K: flatten, formular fixieren, felder einbrennen, kommentare einbetten, nicht mehr bearbeitbar, formular abschließen
+ EN flatten-pdf | Flatten PDF – lock forms, no upload | FaleNetwork |H1: Flatten a PDF
+   K: flatten form, lock form fields, burn in annotations, make uneditable, finalize form
+## grayscale-pdf [optimize] tm=None
+ DE pdf-graustufen | PDF in Graustufen umwandeln – ohne Upload | FaleNetwork |H1: PDF in Graustufen umwandeln
+   M: Farbige PDF in Graustufen umwandeln: Text und Grafiken bleiben scharf und durchsuchbar, Bilder werden grau. Jede Seite wird geprüft. Gratis, ohne Upload.
+   K: schwarz weiß, schwarzweiß, grau, entfärben, farbe entfernen, monochrom, druck sparen, graustufe
+ EN grayscale-pdf | Convert PDF to grayscale – free, no upload | FaleNetwork |H1: Convert a PDF to grayscale
+   K: black and white, b&w, gray, greyscale, remove colour, monochrome, save ink, desaturate
+## header-footer [edit] tm=False
+ DE kopf-und-fusszeile | Kopf- und Fußzeile in PDF einfügen – ohne Upload | FaleNetwork |H1: Kopf- und Fußzeile einfügen
+   M: Füge deiner PDF Kopf- und Fußzeilen hinzu – links, mittig, rechts, mit Seitenzahl, Datum, Dateiname oder Bates-Nummer. Mit Live-Vorschau, gratis, ohne Upload.
+   K: fusszeile, kopfzeile, bates, aktenzeichen, datum einfügen, dateiname, seitennummerierung
+ EN header-footer-pdf | Add header and footer to PDF – no upload | FaleNetwork |H1: Add a header and footer to a PDF
+   K: footer, header, bates, bates numbering, add date, file name, running head
+## heic-to-jpg [images] tm=None
+ DE heic-in-jpg | HEIC in JPG umwandeln – iPhone-Fotos, ohne Upload | FaleNetwork |H1: HEIC in JPG umwandeln
+   M: iPhone-Fotos von HEIC in JPG umwandeln, direkt im Browser und ohne Upload. Funktioniert in Browsern, die HEIC öffnen können, zum Beispiel Safari. Aufnahmedatum bleibt.
+   K: heic zu jpg, heif, iphone foto, heic öffnen, heic konvertieren
+ EN heic-to-jpg | HEIC to JPG – convert iPhone photos, no upload | FaleNetwork |H1: Convert HEIC to JPG
+   K: heic to jpeg, heif, iphone photo, open heic, heic converter
+## image-to-text [images] tm=None
+ DE bild-in-text | Bild in Text umwandeln – Text aus Foto kopieren | FaleNetwork |H1: Bild in Text umwandeln
+   M: Text aus Fotos, Screenshots und Scans erkennen und kopieren: Bereich markieren, Deutsch oder Englisch wählen, fertig. Kostenlos und ohne Upload.
+   K: ocr, text aus bild, foto in text, screenshot text kopieren, bild zu text, texterkennung foto, text aus foto kopieren
+ EN image-to-text | Image to text – copy text from a photo, free | FaleNetwork |H1: Image to text
+   K: ocr, text from image, photo to text, screenshot to text, extract text from image, picture to text
+## invoice-generator [everyday] tm=None
+ DE rechnung-schreiben | Rechnung schreiben – Rechnungsvorlage als PDF, gratis | FaleNetwork |H1: Rechnung schreiben
+   M: Rechnung online schreiben mit allen Pflichtangaben nach § 14 UStG: 19 % und 7 % USt., Kleinunternehmer, Rabatt, GiroCode. Als PDF – kostenlos, ohne Anmeldung.
+   K: rechnung erstellen, rechnungsvorlage, rechnung pdf, kleinunternehmer rechnung, rechnung 19 prozent, rechnungsgenerator, girocode rechnung, rechnung muster
+ EN invoice-generator | Invoice generator – free invoice template as PDF | FaleNetwork |H1: Invoice generator
+   K: invoice generator, invoice template, free invoice, invoice pdf, create invoice, invoice maker
+## jpg-to-pdf [convert-to-pdf] tm=False
+ DE bild-in-pdf | JPG in PDF umwandeln – Bilder zu PDF, ohne Upload | FaleNetwork |H1: Bilder in PDF umwandeln
+   M: JPG, PNG, WebP und mehr in eine PDF umwandeln: Fotos automatisch richtig gedreht, A4 oder Bildgröße, Ränder wählbar. Gratis, ohne Upload, im Browser.
+   K: jpg, jpeg, png, foto, bild, konvertieren, umwandeln, heic, webp, scan
+ EN jpg-to-pdf | JPG to PDF – convert images to PDF, no upload | FaleNetwork |H1: Convert images to PDF
+   K: jpeg, png, photo, picture, image, convert, heic, webp, scan
+## jpg-to-png [images] tm=None
+ DE jpg-in-png | JPG in PNG umwandeln – kostenlos, ohne Upload | FaleNetwork |H1: JPG in PNG umwandeln
+   M: JPG in PNG umwandeln: richtig gedreht, ab jetzt verlustfrei speicherbar, viele Bilder auf einmal. Gratis, ohne Upload, direkt in deinem Browser.
+   K: jpg zu png, jpeg png, jpg konvertieren, verlustfrei
+ EN jpg-to-png | JPG to PNG converter – free, no upload | FaleNetwork |H1: Convert JPG to PNG
+   K: jpg to png, jpeg to png, jpg converter, lossless
+## merge-pdf [organize] tm=False
+ DE pdf-zusammenfuegen | PDF zusammenfügen – kostenlos, ohne Upload | FaleNetwork |H1: PDF zusammenfügen
+   M: Mehrere PDFs und Fotos zu einer PDF verbinden: Reihenfolge per Fingertipp ändern, einzelne Seiten wählen, Lesezeichen setzen. Gratis, ohne Konto, ohne Upload.
+   K: verbinden, kombinieren, zusammenführen, mergen, anhängen, vereinen
+ EN merge-pdf | Merge PDF – free, no upload | FaleNetwork |H1: Merge PDF files
+   K: combine, join, append, unite, concatenate, bind
+## n-up [edit] tm=False
+ DE mehrere-seiten-pro-blatt | Mehrere PDF-Seiten pro Blatt drucken – ohne Upload | FaleNetwork |H1: Mehrere Seiten auf ein Blatt
+   M: Lege 2, 4, 6, 8, 9 oder 16 PDF-Seiten auf ein Blatt – spart Papier bei Folien, Skripten und Handouts. Reihenfolge, Ränder, Rahmen frei wählbar. Ohne Upload.
+   K: n-up, handout, folien drucken, papier sparen, 2 seiten auf 1, 4 auf 1, seiten pro blatt
+ EN pages-per-sheet | Print several PDF pages per sheet – no upload | FaleNetwork |H1: Several pages on one sheet
+   K: n-up, handout, print slides, save paper, 2 pages per sheet, 4 up, multiple pages per sheet
+## ocr-pdf [convert-from-pdf] tm=None
+ DE pdf-texterkennung | PDF Texterkennung (OCR) – Scan durchsuchbar machen | FaleNetwork |H1: PDF-Texterkennung (OCR)
+   M: Mach gescannte PDFs durchsuchbar: Die Texterkennung legt eine unsichtbare Textebene über den Scan. Deutsch und Englisch, kostenlos und ohne Upload.
+   K: ocr, pdf durchsuchbar machen, texterkennung, scan in text, pdf text erkennen, gescannte pdf bearbeiten, durchsuchbares pdf, ocr deutsch
+ EN ocr-pdf | OCR PDF – make scanned PDFs searchable, free | FaleNetwork |H1: OCR PDF
+   K: ocr, searchable pdf, text recognition, scan to text, make pdf searchable, pdf ocr free
+## organize-pdf [organize] tm=None
+ DE pdf-seiten-sortieren | PDF-Seiten sortieren – kostenlos, ohne Upload | FaleNetwork |H1: PDF-Seiten sortieren
+   M: PDF-Seiten per Finger verschieben, drehen, löschen, duplizieren, leere Seiten oder Seiten anderer PDFs einfügen – mit Rückgängig. Gratis, ohne Upload.
+   K: seiten verschieben, reihenfolge ändern, umsortieren, seiten ordnen, seiten einfügen, leere seite einfügen, seiten verwalten, duplizieren
+ EN organize-pdf | Organize PDF pages – free, no upload | FaleNetwork |H1: Organize PDF pages
+   K: reorder pages, rearrange, sort pages, move pages, insert pages, add blank page, manage pages, duplicate page
+## overlay-pdf [edit] tm=False
+ DE briefpapier-pdf | Briefpapier in PDF einfügen – ohne Upload | FaleNetwork |H1: Briefpapier in PDF einfügen
+   M: Lege dein Briefpapier unter einen Brief oder eine Rechnung als PDF: eigenes Design für die erste und die Folgeseiten, Logo bleibt gestochen scharf. Gratis, ohne Upload.
+   K: briefbogen, briefkopf, hintergrund pdf, pdf überlagern, rechnung briefpapier, overlay, vorlage
+ EN pdf-letterhead-overlay | Add letterhead or overlay to PDF – no upload | FaleNetwork |H1: Add a letterhead or overlay to a PDF
+   K: letterhead, stationery, background pdf, overlay pdf, invoice template, underlay, stamp pdf
+## passport-photo [images] tm=None
+ DE passfoto | Passfoto selbst zuschneiden – 35 × 45 mm, Druckbogen | FaleNetwork |H1: Passfoto zuschneiden
+   M: Passfoto mit Schablone zuschneiden: 35 × 45 mm biometrisch, US 2 × 2 Zoll oder Bewerbungsfoto, als Einzelbild oder Druckbogen 10 × 15 cm mit Schnittmarken. Ohne Upload.
+   K: passbild, biometrisches foto, 35x45, bewerbungsfoto, visum foto, 2x2, druckbogen, 10x15, führerschein foto
+ EN passport-photo | Passport photo maker – crop and print sheet | FaleNetwork |H1: Make a passport photo
+   K: passport picture, biometric photo, 35x45, 2x2, visa photo, id photo, print sheet, 4x6, application photo
+## pdf-to-excel [convert-from-pdf] tm=True
+ DE pdf-in-excel | PDF in Excel umwandeln – Tabellen als XLSX, gratis | FaleNetwork |H1: PDF in Excel umwandeln
+   M: Hol Tabellen aus einer PDF in Excel (XLSX) oder CSV: Zahlen, Beträge und Datumswerte werden echte Zahlen, mehrseitige Tabellen zusammengeführt. Ohne Upload.
+   K: xlsx, xls, excel, csv, tabelle, tabellen extrahieren, kontoauszug, rechnung, zahlen, tabellenkalkulation
+ EN pdf-to-excel | PDF to Excel – tables as XLSX, free, no upload | FaleNetwork |H1: Convert PDF to Excel
+   K: xlsx, xls, excel, csv, table, extract tables, bank statement, invoice, numbers, spreadsheet
+## pdf-to-jpg [convert-from-pdf] tm=False
+ DE pdf-in-jpg | PDF in JPG umwandeln – Seiten als Bild, ohne Upload | FaleNetwork |H1: PDF in JPG umwandeln
+   M: Wandle PDF-Seiten in JPG-Bilder um: Seiten auswählen, Auflösung von 72 bis 600 dpi, Qualität einstellbar, direkt teilen. Gratis, ohne Upload, im Browser.
+   K: jpeg, bild, foto, seite als bild, screenshot, konvertieren, umwandeln, export, whatsapp, instagram
+ EN pdf-to-jpg | PDF to JPG – convert pages to images, no upload | FaleNetwork |H1: Convert PDF to JPG
+   K: jpeg, image, picture, page as image, screenshot, convert, export, whatsapp, instagram
+## pdf-to-markdown [convert-from-pdf] tm=False
+ DE pdf-in-markdown | PDF in Markdown umwandeln – mit Überschriften | FaleNetwork |H1: PDF in Markdown umwandeln
+   M: Wandle eine PDF in Markdown um: Überschriften nach Schriftgröße, Listen, Tabellen, fett und kursiv. Ideal für Notizen, Wikis und KI-Werkzeuge. Ohne Upload.
+   K: md, markdown, notizen, wiki, ki, chatbot, struktur, überschriften, text
+ EN pdf-to-markdown | PDF to Markdown – keep headings and lists, no upload | FaleNetwork |H1: Convert PDF to Markdown
+   K: md, markdown, notes, wiki, ai, chatbot, structure, headings, text
+## pdf-to-png [convert-from-pdf] tm=False
+ DE pdf-in-png | PDF in PNG umwandeln – verlustfrei, ohne Upload | FaleNetwork |H1: PDF in PNG umwandeln
+   M: Wandle PDF-Seiten in PNG-Bilder um: verlustfrei, gestochen scharfer Text, 72 bis 600 dpi und optional transparenter Hintergrund. Gratis und ohne Upload.
+   K: bild, grafik, transparent, verlustfrei, seite als bild, logo, konvertieren, umwandeln, export
+ EN pdf-to-png | PDF to PNG – lossless page images, no upload | FaleNetwork |H1: Convert PDF to PNG
+   K: image, graphic, transparent, lossless, page as image, logo, convert, export
+## pdf-to-pptx [convert-from-pdf] tm=True
+ DE pdf-in-powerpoint | PDF in PowerPoint umwandeln – PPTX, ohne Upload | FaleNetwork |H1: PDF in PowerPoint umwandeln
+   M: Mach aus einer PDF eine Präsentation (PowerPoint, PPTX): jede Seite eine gestochen scharfe Folie, Seitentext als Sprechernotizen. Gratis und ohne Upload.
+   K: pptx, ppt, powerpoint, präsentation, folien, vortrag, beamer, konvertieren, umwandeln
+ EN pdf-to-powerpoint | PDF to PowerPoint – PPTX slides, no upload | FaleNetwork |H1: Convert PDF to PowerPoint
+   K: pptx, ppt, powerpoint, presentation, slides, talk, projector, convert
+## pdf-to-text [convert-from-pdf] tm=False
+ DE pdf-in-text | PDF in Text umwandeln – TXT in Lesereihenfolge | FaleNetwork |H1: PDF in Text umwandeln
+   M: Hol den Text aus einer PDF – mit Absätzen in richtiger Lesereihenfolge, auch bei zwei Spalten, ohne Seitenzahlen. Kopieren oder als TXT speichern, ohne Upload.
+   K: txt, text kopieren, text extrahieren, auslesen, textdatei, copy, inhalt, zwischenablage
+ EN pdf-to-text | PDF to text – TXT in reading order, no upload | FaleNetwork |H1: Convert PDF to text
+   K: txt, copy text, extract text, read out, text file, content, clipboard
+## pdf-to-word [convert-from-pdf] tm=True
+ DE pdf-in-word | PDF in Word umwandeln – DOCX gratis, ohne Upload | FaleNetwork |H1: PDF in Word umwandeln
+   M: Wandle eine PDF in ein bearbeitbares Word-Dokument (DOCX) um: Überschriften, Listen, Tabellen und Bilder werden übernommen. Gratis, ohne Upload, im Browser.
+   K: docx, doc, word, bearbeiten, editierbar, textverarbeitung, konvertieren, umwandeln, office
+ EN pdf-to-word | PDF to Word – free DOCX conversion, no upload | FaleNetwork |H1: Convert PDF to Word
+   K: docx, doc, word, edit, editable, word processor, convert, office
+## pdf-viewer [everyday] tm=None
+ DE pdf-oeffnen | PDF öffnen – PDF online lesen auf Handy & PC | FaleNetwork |H1: PDF öffnen und lesen
+   M: PDF online öffnen und lesen – schnell auch auf dem Handy: zoomen, im Text suchen, Inhaltsverzeichnis, Nachtmodus, Drucken. Auch mit Passwort, ohne Upload.
+   K: pdf öffnen, pdf online lesen, pdf anzeigen, pdf reader, pdf viewer, pdf öffnen handy, pdf lesen ohne app, pdf mit passwort öffnen
+ EN pdf-viewer | PDF viewer – open and read PDFs online, free | FaleNetwork |H1: Open and read PDFs
+   K: pdf viewer, open pdf, read pdf online, pdf reader, view pdf on phone, open password protected pdf
+## png-to-jpg [images] tm=None
+ DE png-in-jpg | PNG in JPG umwandeln – kostenlos, ohne Upload | FaleNetwork |H1: PNG in JPG umwandeln
+   M: PNG in JPG umwandeln: transparente Stellen bekommen eine Farbe deiner Wahl, Qualität einstellbar, viele Bilder auf einmal. Gratis, ohne Upload, im Browser.
+   K: png zu jpg, png jpeg, screenshot jpg, png konvertieren, png verkleinern
+ EN png-to-jpg | PNG to JPG converter – free, no upload | FaleNetwork |H1: Convert PNG to JPG
+   K: png to jpeg, screenshot to jpg, png converter, shrink png
+## pptx-to-pdf [convert-to-pdf] tm=True
+ DE powerpoint-in-pdf | PowerPoint in PDF umwandeln – PPTX zu PDF, gratis | FaleNetwork |H1: PowerPoint in PDF umwandeln
+   M: Wandle PowerPoint-Präsentationen (PPTX) in eine PDF um: eine Seite pro Folie, mit Bildern, Tabellen und durchsuchbarem Text. Mit Vorschau, ohne Upload.
+   K: pptx, ppt, powerpoint, präsentation, folien, handout, vortrag, konvertieren, umwandeln
+ EN powerpoint-to-pdf | PowerPoint to PDF – convert PPTX to PDF, free | FaleNetwork |H1: Convert PowerPoint to PDF
+   K: pptx, ppt, powerpoint, presentation, slides, handout, talk, convert
+## protect-pdf [security] tm=False
+ DE pdf-mit-passwort-schuetzen | PDF mit Passwort schützen – AES-256, ohne Upload | FaleNetwork |H1: PDF mit Passwort schützen
+   M: PDF mit einem Passwort verschlüsseln (AES-256): mit Stärke-Anzeige, Passwort-Generator und optionalen Rechten. Kostenlos und ohne Upload – direkt im Browser.
+   K: verschlüsseln, passwort, kennwort, sperren, absichern, aes, rechte, drucken verhindern
+ EN protect-pdf | Protect PDF with a password – AES-256, no upload | FaleNetwork |H1: Protect a PDF with a password
+   K: encrypt, password, lock, secure, aes, permissions, prevent printing
+## qr-code [everyday] tm=None
+ DE qr-code-erstellen | QR-Code erstellen – kostenlos, ohne Anmeldung | FaleNetwork |H1: QR-Code erstellen
+   M: QR-Code erstellen für Link, Text, WLAN, Kontakt, E-Mail, Telefon, SMS oder Ort. Farben, Rand, Fehlerkorrektur, PNG, SVG oder PDF – mit Selbsttest. Gratis, ohne Anmeldung.
+   K: qr code generator, qr erstellen, wlan qr code, visitenkarte qr, vcard, qr svg, qr pdf, qr code drucken
+ EN qr-code-generator | QR code generator – free, no sign-up | FaleNetwork |H1: Create a QR code
+   K: qr generator, make qr code, wifi qr code, business card qr, vcard, qr svg, qr pdf, print qr code
+## redact-pdf [security] tm=False
+ DE pdf-schwaerzen | PDF schwärzen – Text dauerhaft entfernen | FaleNetwork |H1: PDF schwärzen
+   M: Schwärze Namen, E-Mail-Adressen, Telefonnummern, IBAN und beliebige Bereiche in PDFs – der Text wird wirklich entfernt, nicht nur überdeckt. Ohne Upload.
+   K: schwärzen, anonymisieren, zensieren, unkenntlich machen, dsgvo, personenbezogene daten, abdecken, redigieren
+ EN redact-pdf | Redact PDF – remove text for good, no upload | FaleNetwork |H1: Redact a PDF
+   K: redact, anonymize, censor, black out, gdpr, personal data, hide text, sanitize
+## remove-blank-pages [organize] tm=None
+ DE leere-seiten-entfernen | Leere Seiten aus PDF entfernen – ohne Upload | FaleNetwork |H1: Leere Seiten entfernen
+   M: Leere und fast leere Seiten in PDFs und Scans automatisch erkennen, prüfen und entfernen. Scannerränder und Staub werden ignoriert. Gratis, ohne Upload.
+   K: leerseiten, weiße seiten, leere rückseiten, scan aufräumen, blank pages, unbedruckte seiten
+ EN remove-blank-pages | Remove blank pages from PDF – no upload | FaleNetwork |H1: Remove blank pages
+   K: empty pages, white pages, blank backs, clean up scan, delete blank, unprinted pages
+## remove-exif [images] tm=None
+ DE exif-entfernen | EXIF entfernen – Standort aus Fotos löschen | FaleNetwork |H1: Standort und EXIF-Daten aus Fotos entfernen
+   M: Sieh, was in deinen Fotos steckt – GPS-Standort, Kamera, Seriennummer, Datum – und entferne es verlustfrei vor dem Teilen. Ohne Upload, gratis, direkt im Browser.
+   K: metadaten entfernen, gps entfernen, standort entfernen, exif löschen, exif anzeigen, foto privatsphäre, geotag
+ EN remove-exif-data | Remove EXIF data – delete location from photos | FaleNetwork |H1: Remove location and EXIF data from photos
+   K: remove metadata, remove gps, remove location, delete exif, exif viewer, photo privacy, geotag
+## repair-pdf [optimize] tm=None
+ DE pdf-reparieren | PDF reparieren – kostenlos, ohne Upload | FaleNetwork |H1: PDF reparieren
+   M: Beschädigte PDF retten: Dateistruktur neu aufbauen, fehlende Teile umgehen, notfalls Seiten als Bild sichern. Mit ehrlichem Bericht. Gratis, ohne Upload.
+   K: kaputt, beschädigt, defekt, lässt sich nicht öffnen, retten, wiederherstellen, fehlerhaft, abgeschnitten
+ EN repair-pdf | Repair PDF – free, no upload | FaleNetwork |H1: Repair a damaged PDF
+   K: broken, corrupt, damaged, won't open, recover, restore, fix pdf, truncated
+## resize-image [images] tm=None
+ DE bildgroesse-aendern | Bildgröße ändern – Pixel, Prozent, Formate | FaleNetwork |H1: Bildgröße ändern
+   M: Bildgröße ändern in Pixeln, Prozent oder nach Vorlage (Quadrat, Story, HD, 4K). Zuschneiden mit Fokuspunkt, viele Bilder auf einmal. Gratis, ohne Upload, im Browser.
+   K: bild verkleinern, pixel ändern, auflösung ändern, skalieren, instagram format, story format, quadratisch, zuschneiden, 4k, full hd
+ EN resize-image | Resize image – pixels, percent, social formats | FaleNetwork |H1: Resize images
+   K: image resizer, change pixels, change resolution, scale, square, story size, crop, 4k, full hd
+## resize-pdf [edit] tm=False
+ DE seitengroesse-aendern | PDF Seitengröße ändern – A4, A5, Letter, ohne Upload | FaleNetwork |H1: PDF-Seitengröße ändern
+   M: Bring alle Seiten deiner PDF auf A4, A3, A5, Letter oder eine eigene Größe: einpassen, ausfüllen, Rand und Beschnitt. Text bleibt Text – gratis, ohne Upload.
+   K: auf a4 bringen, skalieren, letter zu a4, papierformat, beschnitt, seitenformat
+ EN resize-pdf | Resize PDF pages – A4, A5, Letter, no upload | FaleNetwork |H1: Resize PDF pages
+   K: convert to a4, scale pdf, letter to a4, paper size, bleed, page format
+## rotate-image [images] tm=None
+ DE bild-drehen | Bild drehen – Fotos verlustfrei drehen, kostenlos | FaleNetwork |H1: Bild drehen
+   M: Fotos und Bilder drehen und spiegeln, auch viele auf einmal. JPG-Fotos werden verlustfrei gedreht, ohne neue Komprimierung. Kostenlos und ohne Upload.
+   K: bild drehen, foto drehen, jpg drehen, bild spiegeln, foto um 90 grad drehen, verlustfrei drehen, fotos stapel drehen
+ EN rotate-image | Rotate image – rotate photos losslessly, free | FaleNetwork |H1: Rotate image
+   K: rotate image, rotate photo, rotate jpg, flip image, rotate 90 degrees, lossless rotate, batch rotate
+## rotate-pdf [organize] tm=None
+ DE pdf-drehen | PDF drehen – kostenlos, ohne Upload | FaleNetwork |H1: PDF drehen
+   M: PDF-Seiten dauerhaft drehen: alle, ausgewählte, nur Quer- oder Hochformat oder jede Seite einzeln per Fingertipp. Verlustfrei, gratis, ohne Upload.
+   K: rotieren, seite drehen, querformat, hochformat, umdrehen, auf dem kopf, ausrichten, drehen speichern
+ EN rotate-pdf | Rotate PDF – free, no upload | FaleNetwork |H1: Rotate PDF pages
+   K: turn pages, rotate page, landscape, portrait, upside down, flip, orientation
+## scan-to-pdf [images] tm=None
+ DE dokument-scannen | Dokument scannen – mit dem Handy zur PDF, gratis | FaleNetwork |H1: Dokumente scannen
+   M: Dokumente mit der Handykamera scannen: Ränder erkennen, schräge Fotos gerade rücken, Schatten entfernen, mehrere Seiten als PDF. Gratis, ohne Upload, ohne App.
+   K: scanner, scannen, scan app, handy scanner, beleg scannen, brief scannen, foto zu pdf, zuschneiden, perspektive
+ EN scan-to-pdf | Scan to PDF – scan documents with your phone, free | FaleNetwork |H1: Scan documents
+   K: scanner, scan app, phone scanner, scan receipt, scan letter, photo to pdf, crop, perspective
+## sign-pdf [edit] tm=False
+ DE pdf-unterschreiben | PDF unterschreiben – am Handy, ohne Upload | FaleNetwork |H1: PDF unterschreiben
+   M: Unterschreibe PDFs am Handy: Unterschrift mit dem Finger zeichnen, tippen oder vom Papier abfotografieren, per Fingertipp platzieren. Gratis und ohne Upload.
+   K: unterschrift, signieren, unterzeichnen, e-signatur, elektronisch unterschreiben, paraphe, initialen, handschrift
+ EN sign-pdf | Sign PDF – on your phone, no upload | FaleNetwork |H1: Sign a PDF
+   K: signature, e-sign, esign, sign document, electronic signature, initials, handwritten signature
+## signature-maker [everyday] tm=True
+ DE unterschrift-erstellen | Unterschrift erstellen – digitale Unterschrift als PNG | FaleNetwork |H1: Unterschrift erstellen
+   M: Erstelle deine digitale Unterschrift: mit dem Finger zeichnen, tippen oder vom Papier fotografieren. Als transparentes PNG oder SVG – kostenlos, ohne Upload.
+   K: unterschrift erstellen, digitale unterschrift, unterschrift png, unterschrift transparent, unterschrift zeichnen, signatur erstellen, unterschrift foto freistellen
+ EN signature-maker | Signature maker – transparent signature PNG, free | FaleNetwork |H1: Signature maker
+   K: signature maker, digital signature, signature png, transparent signature, draw signature, signature from photo
+## split-halves [organize] tm=None
+ DE doppelseiten-teilen | PDF-Doppelseiten teilen – kostenlos, ohne Upload | FaleNetwork |H1: Doppelseiten teilen
+   M: Gescannte Buch-Doppelseiten oder zwei Seiten pro Blatt in Einzelseiten teilen: links/rechts oder oben/unten, Mitte automatisch finden. Ohne Upload, gratis.
+   K: buchscan, seite halbieren, zwei seiten pro blatt, 2 auf 1, doppelseite trennen, seiten zerschneiden, a3 in a4
+ EN split-pdf-pages-in-half | Split PDF pages in half – free, no upload | FaleNetwork |H1: Split PDF pages in half
+   K: book scan, halve page, two pages per sheet, 2-up, spread, cut pages in half, a3 to a4
+## split-pdf [organize] tm=None
+ DE pdf-teilen | PDF teilen – kostenlos, ohne Upload | FaleNetwork |H1: PDF teilen
+   M: PDF in mehrere Dateien aufteilen: nach Bereichen, alle N Seiten, nach Lesezeichen, Dateigröße oder gerade/ungerade. Schnitte per Fingertipp. Ohne Upload, gratis.
+   K: aufteilen, trennen, splitten, zerlegen, seiten trennen, einzelne seiten, pdf aufsplitten, kapitel
+ EN split-pdf | Split PDF – free, no upload | FaleNetwork |H1: Split a PDF
+   K: separate, divide, break apart, single pages, chapters, burst, cut pdf
+## text-to-pdf [convert-to-pdf] tm=False
+ DE text-in-pdf | Text in PDF umwandeln – TXT, Markdown, CSV | FaleNetwork |H1: Text in PDF umwandeln
+   M: Mach aus TXT-, Markdown- oder CSV-Dateien eine saubere PDF: Schrift, Größe, Ränder und Seitenformat wählbar, Markdown formatiert, CSV als Tabelle. Ohne Upload.
+   K: txt, md, markdown, csv, textdatei, notizen, log, code, liste, umwandeln
+ EN text-to-pdf | Text to PDF – convert TXT, Markdown, CSV, no upload | FaleNetwork |H1: Convert text to PDF
+   K: txt, md, markdown, csv, text file, notes, log, code, list, convert
+## unlock-pdf [security] tm=False
+ DE pdf-passwort-entfernen | PDF-Passwort entfernen – ohne Upload | FaleNetwork |H1: PDF-Passwort entfernen
+   M: Entferne das Passwort zum Öffnen oder Druck- und Kopiersperren aus deinen eigenen PDFs. Du brauchst nur das Passwort – alles passiert im Browser, ohne Upload.
+   K: entsperren, entschlüsseln, passwort löschen, kennwort entfernen, druckschutz, kopierschutz aufheben, freischalten
+ EN unlock-pdf | Unlock PDF – remove password, no upload | FaleNetwork |H1: Remove a PDF password
+   K: decrypt, remove password, unprotect, unrestrict, print restriction, copy protection
+## watermark-pdf [edit] tm=False
+ DE wasserzeichen-einfuegen | PDF Wasserzeichen einfügen – kostenlos, ohne Upload | FaleNetwork |H1: Wasserzeichen in PDF einfügen
+   M: Setze „Vertraulich“, „Entwurf“ oder dein Logo als Wasserzeichen in die PDF: diagonal, gekachelt, halbtransparent, mit Live-Vorschau. Gratis und ohne Upload.
+   K: stempel, vertraulich, entwurf, logo einfügen, kopierschutz, muster
+ EN watermark-pdf | Add a watermark to PDF – free, no upload | FaleNetwork |H1: Add a watermark to a PDF
+   K: stamp, confidential, draft, add logo, mark pdf, sample
+## webp-to-jpg [images] tm=None
+ DE webp-in-jpg | WebP in JPG umwandeln – kostenlos, ohne Upload | FaleNetwork |H1: WebP in JPG umwandeln
+   M: WebP in JPG umwandeln: Bilder aus dem Web in ein Format bringen, das jedes Programm öffnet. Viele auf einmal, gratis, ohne Upload, direkt im Browser.
+   K: webp zu jpg, webp jpeg, webp öffnen, webp konvertieren
+ EN webp-to-jpg | WebP to JPG converter – free, no upload | FaleNetwork |H1: Convert WebP to JPG
+   K: webp to jpeg, open webp, webp converter
+## word-to-pdf [convert-to-pdf] tm=True
+ DE word-in-pdf | Word in PDF umwandeln – DOCX zu PDF, ohne Upload | FaleNetwork |H1: Word in PDF umwandeln
+   M: Wandle Word-Dokumente (DOCX) in PDF um: Text bleibt durchsuchbar, Überschriften, Listen, Tabellen und Bilder bleiben erhalten. Mit Vorschau, ohne Upload.
+   K: docx, doc, word, dokument, brief, bewerbung, konvertieren, umwandeln, office
+ EN word-to-pdf | Word to PDF – convert DOCX to PDF, no upload | FaleNetwork |H1: Convert Word to PDF
+   K: docx, doc, word, document, letter, application, convert, office

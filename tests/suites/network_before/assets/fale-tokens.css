@@ -1,0 +1,129 @@
+/*
+ * FaLe design tokens – shared by FaleNetwork and every FaLe app.
+ * Version 2.0 "Tinte & Lesezeichen" (Ink & Ribbon) · documented in network/BRAND.md
+ *
+ * Usage: <link rel="stylesheet" href="/assets/fale-tokens.css">
+ * Theme: light by default, dark via prefers-color-scheme, forced with
+ *        <html data-theme="light|dark">. Only custom properties live here –
+ *        no element styles, so apps can adopt the tokens without side effects.
+ * v2 keeps every v1 token name (values evolved) and adds ink material, ribbon,
+ * marker, display font, motion and radius tokens.
+ */
+:root {
+  /* Brand constants (identical in light and dark) */
+  --fale-ink-top: #312E81;      /* app icon gradient top */
+  --fale-ink-bottom: #171542;   /* app icon gradient bottom */
+  --fale-indigo: #3D34B8;       /* primary brand colour (v1: #3B37A0) */
+  --fale-teal: #2DD4BF;         /* the ribbon */
+  --fale-teal-deep: #0D9488;    /* ribbon shadow */
+  --fale-periwinkle: #A5B4FC;   /* page lines / secondary marks */
+  --fale-lilac: #C7D2FE;        /* page fold */
+  --fale-marker: #FFE45E;       /* highlighter – search hits, marks */
+  --fale-gradient: linear-gradient(180deg, var(--fale-ink-top), var(--fale-ink-bottom));
+  /* the ink material: deep indigo with a violet and a teal bloom – hero panels, FAB, brand chips */
+  --ink-grad:
+    radial-gradient(110% 90% at 100% 0%, rgba(45, 212, 191, 0.26), transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(124, 108, 255, 0.42), transparent 62%),
+    linear-gradient(160deg, #2A2290 0%, #1A1458 52%, #0E0B2E 100%);
+  --ink-0: #0B0924; --ink-1: #16114A; --ink-2: #241D7A; --ink-3: #3D34B8;
+  --ribbon: #2DD4BF;
+
+  /* Surfaces & text – light */
+  --bg: #F2F3F9;
+  --frame: #E8EAF4;             /* app frame behind the main panel (desktop) */
+  --surface: #FFFFFF;
+  --surface-2: #EEF0F8;
+  --surface-3: #E2E5F1;
+  --text: #13122E;
+  --text-2: #4A4E6E;
+  --text-3: #5E6383;
+  --border: #E1E3EF;
+  --border-strong: #C8CBDF;
+
+  /* Interactive */
+  --primary: #3D34B8;
+  --primary-strong: #2C2590;
+  --primary-soft: #E9E7FD;
+  --on-primary: #FFFFFF;
+  --accent: #0A7468;            /* teal text on light (AA on --bg and --accent-soft) */
+  --accent-soft: #D8F5EF;
+  --warn: #8A5A00;
+  --warn-soft: #FDF1D6;
+  --danger: #C2304A;
+  --danger-soft: #FCE8EC;
+  --marker: #FFE45E;
+  --on-marker: #13122E;
+  --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px rgba(61, 52, 184, 0.85);
+
+  /* Dark "ink" sections (always dark, both themes) */
+  --ink-bg: #16114A;
+  --ink-surface: #241D7A;
+  --ink-text: #F3F2FF;
+  --ink-text-2: #CBC8F4;
+
+  /* Type: Bricolage Grotesque (OFL) for display, system UI for everything else.
+     Apps that self-host the font add their own @font-face; without it the stack falls back to the system font. */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Bricolage Grotesque", var(--font-sans);
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.875rem;  /* 14px  – fine print */
+  --step-0: 1.0625rem;  /* 17px  – body (website) */
+  --step-1: 1.25rem;    /* 20px  – lead, h3 */
+  --step-2: 1.5625rem;  /* 25px  – h2 small screens */
+  --step-3: clamp(1.75rem, 1.2rem + 2.2vw, 2.4rem);   /* h2 */
+  --step-4: clamp(2.25rem, 1.3rem + 4.2vw, 4rem);     /* display */
+  --leading-tight: 1.04;
+  --leading-body: 1.6;
+
+  /* Shape – radii follow hierarchy: chips < controls < cards < panels/sheets */
+  --radius-icon: 22.5%;         /* app icon squircle (116/512) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  /* Depth – ink-tinted shadows */
+  --shadow-sm: 0 1px 2px rgba(19, 18, 46, 0.05), 0 1px 1px rgba(19, 18, 46, 0.03);
+  --shadow-md: 0 1px 2px rgba(19, 18, 46, 0.05), 0 10px 28px -10px rgba(19, 18, 46, 0.18);
+  --shadow-lg: 0 2px 6px rgba(19, 18, 46, 0.08), 0 30px 70px -18px rgba(19, 18, 46, 0.34);
+  --paper-shadow: 0 1px 2px rgba(19, 18, 46, 0.12), 0 12px 32px -14px rgba(19, 18, 46, 0.38);
+
+  /* Motion – fast, purposeful; always respect prefers-reduced-motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-1: 120ms; --dur-2: 200ms; --dur-3: 320ms;
+
+  /* Spacing (8-pt grid, 4px fine steps) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 112px;
+  --measure: 66ch;
+  --page-max: 1120px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0D23; --frame: #09081A; --surface: #17162F; --surface-2: #1F1E3D; --surface-3: #2A294F;
+    --text: #EEEDFB; --text-2: #B3B1D4; --text-3: #9896BD; --border: #2A2950; --border-strong: #3D3C6C;
+    --primary: #ABA6FF; --primary-strong: #CBC7FF; --primary-soft: #28256A; --on-primary: #0D0C21;
+    --accent: #3EE0C9; --accent-soft: #0E3A36; --warn: #F5C04A; --warn-soft: #3A2E10; --danger: #FF8397; --danger-soft: #3D1726;
+    --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px rgba(171, 166, 255, 0.85);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 30px 70px -18px rgba(0, 0, 0, 0.75);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0D23; --frame: #09081A; --surface: #17162F; --surface-2: #1F1E3D; --surface-3: #2A294F;
+  --text: #EEEDFB; --text-2: #B3B1D4; --text-3: #9896BD; --border: #2A2950; --border-strong: #3D3C6C;
+  --primary: #ABA6FF; --primary-strong: #CBC7FF; --primary-soft: #28256A; --on-primary: #0D0C21;
+  --accent: #3EE0C9; --accent-soft: #0E3A36; --warn: #F5C04A; --warn-soft: #3A2E10; --danger: #FF8397; --danger-soft: #3D1726;
+  --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px rgba(171, 166, 255, 0.85);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 30px 70px -18px rgba(0, 0, 0, 0.75);
+  color-scheme: dark;
+}

@@ -1,0 +1,43 @@
+import os, subprocess
+from playwright.sync_api import sync_playwright
+SP = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(SP, 'out_protools')
+with sync_playwright() as p:
+    b = p.chromium.launch(); ctx = b.new_context(viewport={'width': 1366, 'height': 860}, accept_downloads=True)
+    page = ctx.new_page()
+    page.on('console', lambda m: print('LOG', m.type, m.text) if m.type in ('error', 'warning') else None)
+    page.on('pageerror', lambda e: print('ERR', e))
+    page.goto('http://127.0.0.1:8792/')
+    page.set_input_files('#pdf-input', [os.path.join(SP, 'testdata', 'struktur.pdf')])
+    page.wait_for_function("location.hash.startsWith('#/ansicht/')"); page.wait_for_function("document.querySelector('[data-v=loading]').hidden")
+    docid = page.evaluate("location.hash.split('/')[2].split('?')[0]")
+    page.evaluate(f"location.hash = '#/werkzeug/schwaerzen?doc={docid}'"); page.wait_for_selector('.pt-page canvas')
+    page.wait_for_function("!document.querySelector('.toast')", timeout=8000)
+    page.locator('.pt-tool[data-tool=search]').click()
+    page.locator('dialog [name=q]').fill('Zitronenfalter')
+    page.locator('dialog [name=p_email]').check(); page.locator('dialog [name=p_iban]').check()
+    page.locator('dialog .btn-primary').click()
+    page.wait_for_timeout(800)
+    print('foot', page.locator('.screen-foot .foot-info').inner_text())
+    # area mark on page 1 title
+    bb = page.locator('.pt-page').first.bounding_box()
+    page.evaluate("document.querySelector('.pt-stage').scrollTop = 0"); page.wait_for_timeout(200)
+    bb = page.locator('.pt-page').first.bounding_box()
+    page.locator('.pt-tool[data-tool=area]').click()
+    page.mouse.move(bb['x'] + 60, bb['y'] + 60); page.mouse.down(); page.mouse.move(bb['x'] + 300, bb['y'] + 140, steps=5); page.mouse.up()
+    print('foot', page.locator('.screen-foot .foot-info').inner_text())
+    page.screenshot(path=os.path.join(OUT, 'dev_redact.png'))
+    page.locator('.screen-foot .btn-primary').click()
+    page.locator('dialog .btn-danger').click()
+    page.wait_for_selector('.result-card', timeout=30000)
+    with page.expect_download() as d: page.locator('.result-card [data-r=dl]').click()
+    out = os.path.join(OUT, 'redacted.pdf'); d.value.save_as(out)
+    b.close()
+txt = subprocess.run(['pdftotext', out, '-'], capture_output=True, text=True).stdout
+print('pages text:', repr(txt[:300]))
+for term in ['Zitronenfalter', 'mustermann', 'DE89', 'Jahresbericht']:
+    print(term, 'in text:', term in txt)
+subprocess.run(['qpdf', '--qdf', '--object-streams=disable', out, os.path.join(OUT, 'redacted_qdf.pdf')])
+raw = open(os.path.join(OUT, 'redacted_qdf.pdf'), 'rb').read()
+print('raw contains Zitronenfalter', b'Zitronenfalter' in raw, 'raw size', len(raw))
+from pypdf import PdfReader
+r = PdfReader(out); print('pages', len(r.pages), [len(pg.extract_text() or '') for pg in r.pages])

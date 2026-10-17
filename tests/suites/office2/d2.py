@@ -1,0 +1,10 @@
+def menu(t):
+    pg.locator('.menu-item', has_text=t).first.click(); pg.wait_for_timeout(200)
+pg.evaluate("h => { const ed = document.querySelector('.doc-page'); ed.innerHTML = h; ed.dispatchEvent(new Event('input', {bubbles:true})); }", '<p>Eins</p><p>Zwei</p><p>Drei</p><p>Trenner</p>')
+pg.wait_for_timeout(300)
+pg.evaluate("() => { const ps = [...document.querySelectorAll('.doc-page p')]; const r = document.createRange(); r.setStart(ps[0].firstChild, 0); r.setEnd(ps[2].firstChild, 4); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.querySelector('.doc-page').focus(); }")
+pg.locator('[data-x="multilevel"]').click()
+menu('Mehrstufig: 1. / 1.1. / 1.1.1.')
+print(pg.evaluate("document.querySelector('.doc-page').innerHTML"))
+pg.wait_for_timeout(1000)
+print(pg.evaluate("document.querySelector('.doc-page').innerHTML"))
