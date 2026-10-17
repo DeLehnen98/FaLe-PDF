@@ -1,4 +1,4 @@
-"""edit-bookmarks: headings → nested bookmarks, rename (Unicode), one-per-page + undo, add for the shown page,
+"""edit-bookmarks (+ merge-pdf keeps the files' own bookmarks): headings → nested bookmarks, rename (Unicode), one-per-page + undo, add for the shown page,
 outdent, real /Outlines with correct pages + PageMode, existing outline loaded and removable; DE/EN × phone/desktop."""
 import os
 from wtlib import Suite, FIX
@@ -114,4 +114,24 @@ with Suite('sec-bookmarks') as s:
     if out:
         ol, mode = outline(out)
         s.expect(ol == [] and mode in (None, '/UseNone') and 'entfernt' in page.locator('.wt-result').inner_text(), f'outline removed: {ol} {mode}')
+    s.check_page(page)
+
+    # merge-pdf: the files' own bookmarks survive, re-targeted, under the file names; pages left out drop theirs
+    page = s.open(ctx, '/werkzeuge/pdf-zusammenfuegen/')
+    s.pick(page, 'bm_outline.pdf', 'bm_headings.pdf')
+    s.wait_ready(page, 2)
+    out = s.run_and_download(page)
+    if out:
+        ol, _ = outline(out)
+        s.expect(ol == [('bm_outline', 1, 0), ('Alt A', 1, 1), ('Alt B', 2, 2), ('bm_headings', 5, 0)], f'merge keeps bookmarks: {ol}')
+        page.locator('.wt-restart button').first.click()
+    page.close()
+    page = s.open(ctx, '/werkzeuge/pdf-zusammenfuegen/')
+    s.pick(page, 'bm_outline.pdf', 'bm_headings.pdf')
+    s.wait_ready(page, 2)
+    page.locator('select').filter(has=page.locator('option[value="keep"]')).select_option('keep')
+    out = s.run_and_download(page)
+    if out:
+        ol, _ = outline(out)
+        s.expect(ol == [('Alt A', 1, 0), ('Alt B', 2, 1)], f'merge "keep only existing": {ol}')
     s.check_page(page)

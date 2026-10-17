@@ -5888,6 +5888,20 @@ export default {
   "erhalten": "received",
   "fehlt noch": "still missing",
   "pausiert": "paused",
+  "{0} bittet dich, bis {1} Unterlagen hochzuladen („{2}“). Verschlüsselt, ohne Konto:": "{0} asks you to upload documents by {1} (“{2}”). Encrypted, no account needed:",
+  "Bitte lade hier bis {0} deine Unterlagen hoch („{1}“). Verschlüsselt, ohne Konto:": "Please upload your documents here by {0} (“{1}”). Encrypted, no account needed:",
+  "Kurze Erinnerung zu „{0}“ – es fehlt noch:": "A quick reminder about “{0}” – still missing:",
+  "Kurze Erinnerung zu „{0}“ – ich warte noch auf deine Unterlagen.": "A quick reminder about “{0}” – I'm still waiting for your documents.",
+  "Bitte bis {0} hier hochladen (verschlüsselt, ohne Konto):": "Please upload here by {0} (encrypted, no account needed):",
+  "Hier kannst du sie hochladen (verschlüsselt, ohne Konto):": "You can upload them here (encrypted, no account needed):",
+  "Bitte hochladen bis (optional)": "Please upload by (optional)",
+  "Sieht die andere Person als Frist. Der Link bleibt trotzdem bis zum Ablauf offen.": "Shown to the other person as a deadline. The link stays open until it expires anyway.",
+  "Punkte und Texte aus deiner früheren Anfrage übernommen.": "Items and texts taken over from your earlier request.",
+  "Die Frist muss zwischen heute und dem {0} liegen – so lange ist der Link offen.": "The deadline must be between today and {0} – that is how long the link is open.",
+  "Nachhaken": "Send a reminder",
+  "Als Vorlage für neue Anfrage": "Use as template for a new request",
+  "überschritten": "overdue",
+  "Bitte bis {0} hochladen": "Please upload by {0}",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

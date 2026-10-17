@@ -3,14 +3,36 @@
   "category": "organize",
   "icon": "merge",
   "module": "tools/merge-pdf.js",
-  "accepts": ["application/pdf", ".pdf", "image/*", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".avif", ".heic", ".heif"],
+  "accepts": [
+    "application/pdf",
+    ".pdf",
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".gif",
+    ".bmp",
+    ".avif",
+    ".heic",
+    ".heif"
+  ],
   "multiple": true,
   "minFiles": 2,
   "popular": true,
   "order": 10,
-  "related": ["compress-pdf", "jpg-to-pdf"],
-  "next": ["compress-pdf", "protect-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "related": [
+    "compress-pdf",
+    "jpg-to-pdf"
+  ],
+  "next": [
+    "compress-pdf",
+    "protect-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-zusammenfuegen",
@@ -22,24 +44,71 @@
     "lede": "Verbinde PDFs und Fotos zu einer Datei – direkt in deinem Browser.",
     "pickLabel": "Dateien auswählen",
     "primaryButton": "Zusammenfügen",
-    "keywords": ["verbinden", "kombinieren", "zusammenführen", "mergen", "anhängen", "vereinen"],
+    "keywords": [
+      "verbinden",
+      "kombinieren",
+      "zusammenführen",
+      "mergen",
+      "anhängen",
+      "vereinen"
+    ],
     "steps": [
-      {"title": "Dateien auswählen", "text": "Wähle zwei oder mehr PDFs aus. Fotos und Scans (JPG, PNG und mehr) kannst du direkt dazumischen – sie werden zu eigenen Seiten."},
-      {"title": "Reihenfolge festlegen", "text": "Ziehe die Dateien in die richtige Reihenfolge oder nutze die Pfeile. Bei Bedarf wählst du pro Datei nur bestimmte Seiten aus, zum Beispiel „1-3, 5“."},
-      {"title": "Zusammenfügen und speichern", "text": "Tippe auf „Zusammenfügen“. Nach wenigen Sekunden kannst du die neue PDF herunterladen, teilen oder gleich weiter verkleinern."}
+      {
+        "title": "Dateien auswählen",
+        "text": "Wähle zwei oder mehr PDFs aus. Fotos und Scans (JPG, PNG und mehr) kannst du direkt dazumischen – sie werden zu eigenen Seiten."
+      },
+      {
+        "title": "Reihenfolge festlegen",
+        "text": "Ziehe die Dateien in die richtige Reihenfolge oder nutze die Pfeile. Bei Bedarf wählst du pro Datei nur bestimmte Seiten aus, zum Beispiel „1-3, 5“."
+      },
+      {
+        "title": "Zusammenfügen und speichern",
+        "text": "Tippe auf „Zusammenfügen“. Nach wenigen Sekunden kannst du die neue PDF herunterladen, teilen oder gleich weiter verkleinern."
+      }
     ],
     "why": [
-      {"title": "PDFs und Bilder gemischt", "text": "Rechnung als PDF, Quittung als Handyfoto? Beides landet in derselben Datei – Fotos werden automatisch richtig gedreht."},
-      {"title": "Nur die Seiten, die du brauchst", "text": "Pro Datei kannst du einen Seitenbereich angeben. So musst du vorher nichts extra ausschneiden."},
-      {"title": "Lesezeichen inklusive", "text": "Auf Wunsch bekommt jede Ausgangsdatei ein Lesezeichen mit ihrem Namen. Lange Dokumente bleiben so übersichtlich."},
-      {"title": "Auch geschützte PDFs", "text": "Ist eine PDF mit Passwort geschützt, gibst du es einmal ein. Es wird nur in diesem Browser-Tab verwendet und nirgends gespeichert."}
+      {
+        "title": "PDFs und Bilder gemischt",
+        "text": "Rechnung als PDF, Quittung als Handyfoto? Beides landet in derselben Datei – Fotos werden automatisch richtig gedreht."
+      },
+      {
+        "title": "Nur die Seiten, die du brauchst",
+        "text": "Pro Datei kannst du einen Seitenbereich angeben. So musst du vorher nichts extra ausschneiden."
+      },
+      {
+        "title": "Lesezeichen inklusive",
+        "text": "Auf Wunsch bekommt jede Ausgangsdatei ein Lesezeichen mit ihrem Namen. Lange Dokumente bleiben so übersichtlich."
+      },
+      {
+        "title": "Auch geschützte PDFs",
+        "text": "Ist eine PDF mit Passwort geschützt, gibst du es einmal ein. Es wird nur in diesem Browser-Tab verwendet und nirgends gespeichert."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Das Zusammenfügen passiert vollständig in deinem Browser. Du kannst das selbst prüfen: Lade die Seite, schalte den Flugmodus ein und füge Dateien zusammen – es funktioniert trotzdem."},
-      {"q": "Wie viele Dateien kann ich zusammenfügen?", "a": "Es gibt keine feste Grenze. Begrenzt wird es nur durch den Arbeitsspeicher deines Geräts. Auf aktuellen Handys sind auch Dokumente mit mehreren Hundert Seiten kein Problem."},
-      {"q": "Bleiben Links, Text und Formularfelder erhalten?", "a": "Ja. Die Seiten werden unverändert übernommen, Text bleibt durchsuchbar und Links funktionieren weiter. Lesezeichen aus den Ausgangsdateien werden nicht übernommen; stattdessen kannst du pro Datei ein neues setzen."},
-      {"q": "Kann ich auch Fotos vom Handy einfügen?", "a": "Ja. JPG, PNG, WebP, GIF, BMP und AVIF werden direkt unterstützt, HEIC-Fotos vom iPhone, wenn dein Browser das Format öffnen kann. Fotos kommen auf eine A4-Seite oder behalten auf Wunsch ihre eigene Größe."},
-      {"q": "Was passiert mit passwortgeschützten PDFs?", "a": "Du gibst das Passwort direkt an der Datei ein. Die zusammengefügte PDF wird ohne Passwort gespeichert. Möchtest du sie wieder schützen, tippst du nach dem Zusammenfügen auf „Weiter mit: PDF mit Passwort schützen“."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Das Zusammenfügen passiert vollständig in deinem Browser. Du kannst das selbst prüfen: Lade die Seite, schalte den Flugmodus ein und füge Dateien zusammen – es funktioniert trotzdem."
+      },
+      {
+        "q": "Wie viele Dateien kann ich zusammenfügen?",
+        "a": "Es gibt keine feste Grenze. Begrenzt wird es nur durch den Arbeitsspeicher deines Geräts. Auf aktuellen Handys sind auch Dokumente mit mehreren Hundert Seiten kein Problem."
+      },
+      {
+        "q": "Bleiben Links, Text und Formularfelder erhalten?",
+        "a": "Ja. Die Seiten werden unverändert übernommen, Text bleibt durchsuchbar und Links funktionieren weiter. Lesezeichen aus den Ausgangsdateien werden nicht übernommen; stattdessen kannst du pro Datei ein neues setzen."
+      },
+      {
+        "q": "Kann ich auch Fotos vom Handy einfügen?",
+        "a": "Ja. JPG, PNG, WebP, GIF, BMP und AVIF werden direkt unterstützt, HEIC-Fotos vom iPhone, wenn dein Browser das Format öffnen kann. Fotos kommen auf eine A4-Seite oder behalten auf Wunsch ihre eigene Größe."
+      },
+      {
+        "q": "Was passiert mit passwortgeschützten PDFs?",
+        "a": "Du gibst das Passwort direkt an der Datei ein. Die zusammengefügte PDF wird ohne Passwort gespeichert. Möchtest du sie wieder schützen, tippst du nach dem Zusammenfügen auf „Weiter mit: PDF mit Passwort schützen“."
+      },
+      {
+        "q": "Bleiben die Lesezeichen meiner PDFs erhalten?",
+        "a": "Ja. Die vorhandenen Lesezeichen jeder Datei werden übernommen und zeigen auf die richtigen Seiten – auf Wunsch unter einem Lesezeichen mit dem Dateinamen. Du kannst sie auch weglassen."
+      }
     ]
   },
   "en": {
@@ -52,24 +121,71 @@
     "lede": "Combine PDFs and photos into one file – join them right in your browser.",
     "pickLabel": "Choose files",
     "primaryButton": "Merge",
-    "keywords": ["combine", "join", "append", "unite", "concatenate", "bind"],
+    "keywords": [
+      "combine",
+      "join",
+      "append",
+      "unite",
+      "concatenate",
+      "bind"
+    ],
     "steps": [
-      {"title": "Choose your files", "text": "Select two or more PDFs. You can mix in photos and scans (JPG, PNG and more) – each one becomes its own page."},
-      {"title": "Set the order", "text": "Drag the files into the right order or use the arrows. If you only need some pages of a file, enter a range such as “1-3, 5”."},
-      {"title": "Merge and save", "text": "Tap “Merge”. A few seconds later you can download the new PDF, share it or make it smaller right away."}
+      {
+        "title": "Choose your files",
+        "text": "Select two or more PDFs. You can mix in photos and scans (JPG, PNG and more) – each one becomes its own page."
+      },
+      {
+        "title": "Set the order",
+        "text": "Drag the files into the right order or use the arrows. If you only need some pages of a file, enter a range such as “1-3, 5”."
+      },
+      {
+        "title": "Merge and save",
+        "text": "Tap “Merge”. A few seconds later you can download the new PDF, share it or make it smaller right away."
+      }
     ],
     "why": [
-      {"title": "PDFs and images together", "text": "Invoice as a PDF, receipt as a phone photo? Both end up in the same file – photos are rotated the right way automatically."},
-      {"title": "Only the pages you need", "text": "Enter a page range for each file. No need to split anything beforehand."},
-      {"title": "Bookmarks included", "text": "If you like, every source file gets a bookmark with its name, so long documents stay easy to navigate."},
-      {"title": "Protected PDFs, too", "text": "If a PDF has a password, you enter it once. It is only used in this browser tab and never stored."}
+      {
+        "title": "PDFs and images together",
+        "text": "Invoice as a PDF, receipt as a phone photo? Both end up in the same file – photos are rotated the right way automatically."
+      },
+      {
+        "title": "Only the pages you need",
+        "text": "Enter a page range for each file. No need to split anything beforehand."
+      },
+      {
+        "title": "Bookmarks included",
+        "text": "If you like, every source file gets a bookmark with its name, so long documents stay easy to navigate."
+      },
+      {
+        "title": "Protected PDFs, too",
+        "text": "If a PDF has a password, you enter it once. It is only used in this browser tab and never stored."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. Merging happens entirely in your browser. You can check this yourself: load the page, switch on flight mode and merge your files – it still works."},
-      {"q": "How many files can I merge?", "a": "There is no fixed limit. The only limit is your device’s memory. On current phones, documents with several hundred pages are no problem."},
-      {"q": "Are links, text and form fields kept?", "a": "Yes. Pages are copied unchanged, text stays searchable and links keep working. Bookmarks from the source files are not carried over; instead you can add a new bookmark for each file."},
-      {"q": "Can I add photos from my phone?", "a": "Yes. JPG, PNG, WebP, GIF, BMP and AVIF are supported directly, HEIC photos from an iPhone if your browser can open the format. Photos are placed on an A4 page or keep their own size if you prefer."},
-      {"q": "What happens with password-protected PDFs?", "a": "You type the password right on the file. The merged PDF is saved without a password. To protect it again, tap “Continue with: Protect PDF” after merging."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Merging happens entirely in your browser. You can check this yourself: load the page, switch on flight mode and merge your files – it still works."
+      },
+      {
+        "q": "How many files can I merge?",
+        "a": "There is no fixed limit. The only limit is your device’s memory. On current phones, documents with several hundred pages are no problem."
+      },
+      {
+        "q": "Are links, text and form fields kept?",
+        "a": "Yes. Pages are copied unchanged, text stays searchable and links keep working. Bookmarks from the source files are not carried over; instead you can add a new bookmark for each file."
+      },
+      {
+        "q": "Can I add photos from my phone?",
+        "a": "Yes. JPG, PNG, WebP, GIF, BMP and AVIF are supported directly, HEIC photos from an iPhone if your browser can open the format. Photos are placed on an A4 page or keep their own size if you prefer."
+      },
+      {
+        "q": "What happens with password-protected PDFs?",
+        "a": "You type the password right on the file. The merged PDF is saved without a password. To protect it again, tap “Continue with: Protect PDF” after merging."
+      },
+      {
+        "q": "Are the bookmarks of my PDFs kept?",
+        "a": "Yes. Each file's existing bookmarks are kept and point to the right pages – optionally under a bookmark with the file name. You can also leave them out."
+      }
     ]
   }
 }

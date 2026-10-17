@@ -12,7 +12,7 @@ import { saveFile } from '../platform.js';
 import { b64u, newLinkKey, keyFromFragment, sealObject, openObject, parseHeader, newRequestKeys, uploadKey, ownerFileKey, hasWebCrypto } from './crypto.js';
 import { requestApi, shareApi, shareConfig, uploadEncrypted, downloadDecrypted, linkBase, online } from './api.js';
 import { putEntry, getEntry, patchEntry, removeEntry, isExpired } from './registry.js';
-import { offlineBanner, progressBar, linkBox, fmtDateTime, expiryLabel, shareErrorText, sicon, copyToClipboard } from './common.js';
+import { offlineBanner, progressBar, linkBox, fmtDateTime, expiryLabel, shareErrorText, sicon, copyToClipboard, shareText } from './common.js';
 
 const EXPIRY = [{ v: 604800, label: '7 Tage' }, { v: 1209600, label: '14 Tage' }, { v: 2592000, label: '30 Tage' }];
 const MAXFILES = [{ v: 10, label: '10' }, { v: 25, label: '25' }, { v: 50, label: '50' }];
@@ -21,9 +21,22 @@ const TOKEN_RE = /^[A-Za-z0-9_-]{24,64}$/;
 const clean = (s, n) => String(s || '').replace(/\s+/g, ' ').trim().slice(0, n);
 
 export const uploadUrl = entry => entry.url;
+const TEMPLATE_KEY = 'fale-rq-template';
+/** "2026-11-30" → "30.11.2026" */
+export const fmtDay = iso => (/^\d{4}-\d{2}-\d{2}$/.test(String(iso || '')) ? iso.split('-').reverse().join('.') : '');
+const isOverdue = iso => !!fmtDay(iso) && iso < new Date().toISOString().slice(0, 10);
 function inviteText(entry) {
-  return entry.from ? t(`${entry.from} bittet dich, Unterlagen hochzuladen („${entry.name}“). Verschlüsselt, ohne Konto:`)
-    : t(`Bitte lade hier deine Unterlagen hoch („${entry.name}“). Verschlüsselt, ohne Konto:`);
+  const due = fmtDay(entry.due);
+  if (entry.from) return due ? t(`${entry.from} bittet dich, bis ${due} Unterlagen hochzuladen („${entry.name}“). Verschlüsselt, ohne Konto:`) : t(`${entry.from} bittet dich, Unterlagen hochzuladen („${entry.name}“). Verschlüsselt, ohne Konto:`);
+  return due ? t(`Bitte lade hier bis ${due} deine Unterlagen hoch („${entry.name}“). Verschlüsselt, ohne Konto:`) : t(`Bitte lade hier deine Unterlagen hoch („${entry.name}“). Verschlüsselt, ohne Konto:`);
+}
+/** Friendly reminder listing what is still missing (shared via messenger / e-mail – no server, no address book). */
+export function nudgeText(entry, missing) {
+  const due = fmtDay(entry.due);
+  const list = missing.length ? missing.map(m => `• ${m}`).join('\n') : '';
+  const head = missing.length ? t(`Kurze Erinnerung zu „${entry.name}“ – es fehlt noch:`) : t(`Kurze Erinnerung zu „${entry.name}“ – ich warte noch auf deine Unterlagen.`);
+  const tail = due ? t(`Bitte bis ${due} hier hochladen (verschlüsselt, ohne Konto):`) : t('Hier kannst du sie hochladen (verschlüsselt, ohne Konto):');
+  return [head, list, tail].filter(Boolean).join('\n');
 }
 
 // ================================================================ create
@@ -37,6 +50,10 @@ export async function mount(screen) {
     return () => off.destroy();
   }
   const state = { expiresIn: 1209600, maxFiles: 25, items: [''] };
+  // "Als Vorlage nutzen" from an earlier request: prefilled once
+  let tpl = null;
+  try { tpl = JSON.parse(sessionStorage.getItem(TEMPLATE_KEY) || 'null'); sessionStorage.removeItem(TEMPLATE_KEY); } catch { tpl = null; }
+  if (tpl && Array.isArray(tpl.items) && tpl.items.length) state.items = tpl.items.map(x => clean(x, 100)).slice(0, MAX_ITEMS);
   const form = h(`<div data-part>
     <div class="card intro">${sicon('inbox')}<div><strong>Dateien von anderen bekommen</strong>
       <p>Du bekommst einen Link. Wer ihn öffnet, kann Dateien verschlüsselt bei dir hochladen – ohne Konto, ohne App. Öffnen kannst nur du, auf diesem Gerät.</p></div></div>
@@ -47,6 +64,9 @@ export async function mount(screen) {
         <input class="input" data-from maxlength="80" autocomplete="name" placeholder="z. B. Anna Muster oder Praxis Dr. Muster"></label>
       <label class="field"><span class="field-label">Nachricht (optional)</span>
         <textarea class="input sh-rq-msg" data-msg maxlength="1500" rows="3" placeholder="z. B. Bitte bis Ende des Monats hochladen. Danke!"></textarea></label>
+      <label class="field"><span class="field-label">Bitte hochladen bis (optional)</span>
+        <input class="input sh-rq-due" type="date" data-due>
+        <span class="hint">Sieht die andere Person als Frist. Der Link bleibt trotzdem bis zum Ablauf offen.</span></label>
       <div class="sh-opt"><span class="field-label" id="sh-rq-items-l">Welche Unterlagen? (optional)</span>
         <p class="hint">Die andere Person sieht eine Checkliste und kann jede Datei einem Punkt zuordnen.</p>
         <div class="sh-rq-items" role="group" aria-labelledby="sh-rq-items-l" data-items></div>
@@ -62,6 +82,12 @@ export async function mount(screen) {
       <p>Jede Datei wird schon auf dem Gerät der anderen Person verschlüsselt – mit einem Schlüssel, den nur dieses Gerät hier hat. Unser Server sieht weder Inhalte noch Dateinamen. Wer den Link hat, kann nur hochladen, nichts herunterladen. Alles wird nach Ablauf automatisch gelöscht.</p></div></div>
   </div>`);
   wrap.appendChild(form);
+  if (tpl) {
+    form.querySelector('[data-title]').value = clean(tpl.title, 120);
+    form.querySelector('[data-from]').value = clean(tpl.from, 80);
+    form.querySelector('[data-msg]').value = String(tpl.msg || '').slice(0, 1500);
+    toast('Punkte und Texte aus deiner früheren Anfrage übernommen.', 'info');
+  }
   const itemsBox = form.querySelector('[data-items]');
   const addBtn = form.querySelector('[data-add]');
   function drawItems() {
@@ -92,6 +118,13 @@ export async function mount(screen) {
     const from = clean(form.querySelector('[data-from]').value, 80);
     const msg = String(form.querySelector('[data-msg]').value || '').trim().slice(0, 1500);
     const items = [...new Set(state.items.map(x => clean(x, 100)).filter(Boolean))];
+    const due = /^\d{4}-\d{2}-\d{2}$/.test(form.querySelector('[data-due]').value) ? form.querySelector('[data-due]').value : '';
+    const lastDay = new Date(Date.now() + state.expiresIn * 1000).toISOString().slice(0, 10);
+    if (due && (due < new Date().toISOString().slice(0, 10) || due > lastDay)) {
+      toast(t(`Die Frist muss zwischen heute und dem ${fmtDay(lastDay)} liegen – so lange ist der Link offen.`), 'error', { timeout: 6000 });
+      form.querySelector('[data-due]').focus();
+      return;
+    }
     let cfg;
     try { cfg = await shareConfig(); } catch (e) { toast(shareErrorText(e), 'error', { timeout: 6000 }); return; }
     if (!cfg.configured) { toast('Teilen ist noch nicht eingerichtet – bitte versuche es später erneut.', 'info', { timeout: 6000 }); return; }
@@ -101,12 +134,12 @@ export async function mount(screen) {
     try {
       const keys = await newRequestKeys();
       const L = newLinkKey();
-      const meta = { title, from, msg, items, pub: keys.pub, created: new Date().toISOString() };
+      const meta = { title, from, msg, items, due, pub: keys.pub, created: new Date().toISOString() };
       const { header } = await sealObject(L, meta, { plainSize: 0, chunkSize: cfg.chunkSize });
       prog.set(0.6, 'Link wird erstellt …');
       const r = await requestApi.create({ header, expiresIn: state.expiresIn, maxFiles: Math.min(state.maxFiles, cfg.reqMaxFiles || 50) });
       const url = `${linkBase()}#/r/${r.upload}#k=${b64u.enc(L)}`;
-      const entry = putEntry({ id: r.id, kind: 'req', name: title, from, items, createdAt: Date.now(), expiresAt: r.expiresAt, auth: r.auth, url, priv: keys.priv,
+      const entry = putEntry({ id: r.id, kind: 'req', name: title, from, msg, items, due, createdAt: Date.now(), expiresAt: r.expiresAt, auth: r.auth, url, priv: keys.priv,
         maxFiles: r.maxFiles, maxBytes: r.maxBytes, lastCount: 0 });
       prog.set(1, 'Fertig');
       showCreated(entry);
@@ -171,7 +204,10 @@ export async function mountStatus(screen, { arg: id }) {
   wrap.appendChild(list);
   const prog = h('<div data-prog></div>');
   wrap.appendChild(prog);
-  const acts = h(`<div class="sh-actions sh-actions-row"><button class="btn btn-danger-ghost" type="button" data-del>${oicon('trash')} Anfrage und alle Dateien löschen</button></div>`);
+  const acts = h(`<div class="sh-actions sh-actions-row">
+    <button class="btn btn-soft" type="button" data-nudge>${oicon('bell')} Nachhaken</button>
+    <button class="btn btn-ghost" type="button" data-reuse>${oicon('copy')} Als Vorlage für neue Anfrage</button>
+    <button class="btn btn-danger-ghost" type="button" data-del>${oicon('trash')} Anfrage und alle Dateien löschen</button></div>`);
   wrap.appendChild(acts);
   wrap.appendChild(h(`<p class="muted small sh-local-note">${oicon('info')}<span>Der Server kennt nur, wie viele verschlüsselte Dateien wie groß sind und wann sie kamen – nicht Namen, Inhalte, Absender oder deine Nachricht. Nach Ablauf wird alles automatisch gelöscht.</span></p>`));
 
@@ -184,6 +220,16 @@ export async function mountStatus(screen, { arg: id }) {
     finally { openBox.disabled = false; }
   });
   head.querySelector('[data-refresh]').addEventListener('click', () => refresh());
+  // remind: list what is still missing (checklist items without a file) – sent by the user's own messenger / e-mail
+  acts.querySelector('[data-nudge]').addEventListener('click', () => {
+    const got = new Set([...metas.values()].map(m => m.meta?.item).filter(Boolean));
+    const missing = (entry.items || []).filter(it => !got.has(it));
+    shareText({ title: entry.name, text: nudgeText(entry, missing), url: entry.url });
+  });
+  acts.querySelector('[data-reuse]').addEventListener('click', () => {
+    try { sessionStorage.setItem(TEMPLATE_KEY, JSON.stringify({ title: entry.name, from: entry.from || '', msg: entry.msg || '', items: entry.items || [] })); } catch {}
+    location.hash = '#/teilen/anfordern';
+  });
   acts.querySelector('[data-del]').addEventListener('click', async () => {
     if (!(await confirmDialog('Anfrage löschen?', 'Alle hochgeladenen Dateien werden sofort vom Server gelöscht und der Link funktioniert nicht mehr. Dateien, die du schon gespeichert hast, bleiben erhalten.', { okLabel: 'Löschen', danger: true }))) return;
     try { await requestApi.remove(entry.id, entry.auth); } catch (e) { if (e.status !== 404) { toast(shareErrorText(e), 'error'); return; } }
@@ -249,8 +295,9 @@ export async function mountStatus(screen, { arg: id }) {
   function render(r) {
     const expired = isExpired(entry) || (r && !r.exists);
     head.querySelector('[data-exp]').textContent = expired ? t('Abgelaufen – die Daten wurden vom Server gelöscht.')
-      : `${t('Erstellt am')} ${fmtDateTime(r && r.createdAt || new Date(entry.createdAt).toISOString())} · ${t(expiryLabel(entry.expiresAt))}`;
+      : `${t('Erstellt am')} ${fmtDateTime(r && r.createdAt || new Date(entry.createdAt).toISOString())}${entry.due ? ` · ${t(`Frist: ${fmtDay(entry.due)}`)}${isOverdue(entry.due) ? ` (${t('überschritten')})` : ''}` : ''} · ${t(expiryLabel(entry.expiresAt))}`;
     linkCard.hidden = expired;
+    acts.querySelector('[data-nudge]').hidden = expired;
     openRow.hidden = expired;
     if (r && r.exists) {
       openBox.checked = !r.closed;
@@ -377,6 +424,7 @@ export async function mountUpload(screen, { arg: token, hash }) {
       <p class="sh-recv-kicker">${sicon('shareLock')} ${esc(from ? t(`${from} bittet dich um Unterlagen`) : t('Du wirst um Unterlagen gebeten'))}</p>
       <h2 data-no-i18n>${esc(clean(meta.title, 120) || t('Unterlagen'))}</h2>
       ${meta.msg ? `<p class="sh-msg" data-no-i18n>${esc(String(meta.msg).slice(0, 1500))}</p>` : ''}
+      ${fmtDay(meta.due) ? `<p class="sh-rq-due-note${isOverdue(meta.due) ? ' late' : ''}" data-due>${sicon('timer')}<strong>${esc(t(`Bitte bis ${fmtDay(meta.due)} hochladen`))}</strong></p>` : ''}
       <p class="muted small">${esc(t(`Hochladen möglich bis ${fmtDateTime(info.expiresAt)}`))} · ${esc(t(`max. ${Math.round(info.maxFileBytes / 1048576)} MB pro Datei`))}</p>
       ${items.length ? `<ul class="sh-rq-checklist">${items.map(it => `<li data-item="${esc(it)}">${sicon('timer')}<span data-no-i18n>${esc(it)}</span></li>`).join('')}</ul>` : ''}
     </div></div>`);

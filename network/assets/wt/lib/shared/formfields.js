@@ -163,7 +163,9 @@ export async function writeFields(PDFLib, pdfDoc, fields, pageInfos, { dateTip =
   const pages = pdfDoc.getPages();
   const ctx = pdfDoc.context;
   const border = rgb(0.45, 0.47, 0.62), bg = rgb(0.93, 0.95, 1);
-  for (const f of fields) {
+  // tab order = reading order: page by page, row by row (fields whose tops are within half a line count as one row),
+  // left to right; readers that use the widget order follow it, /Tabs /R makes the others do the same
+  for (const f of readingOrder(fields)) {
     const info = pageInfos[f.page - 1];
     const page = pages[f.page - 1];
     const rot = ((info.page.rotate || 0) % 360 + 360) % 360;
@@ -235,5 +237,24 @@ export async function writeFields(PDFLib, pdfDoc, fields, pageInfos, { dateTip =
     if (f.required) field.enableRequired();
     if (f.tip || f.type === 'date') field.acroField.dict.set(PDFName.of('TU'), PDFHexString.fromText(clean(f.tip || dateTip)));
   }
+  for (const n of new Set(fields.map(f => f.page))) { const pg = pages[n - 1]; if (pg) pg.node.set(PDFName.of('Tabs'), PDFName.of('R')); }
   try { form.updateFieldAppearances(font); } catch (e) { console.warn('appearances', e); }
+}
+
+/** Fields sorted for the tab order: page, then rows from top to bottom, then left to right (viewport coordinates). */
+export function readingOrder(fields) {
+  const out = [];
+  const byPage = new Map();
+  for (const f of fields) { if (!byPage.has(f.page)) byPage.set(f.page, []); byPage.get(f.page).push(f); }
+  for (const p of [...byPage.keys()].sort((a, b) => a - b)) {
+    const list = byPage.get(p).slice().sort((a, b) => a.y - b.y || a.x - b.x);
+    const rows = [];
+    for (const f of list) {
+      const row = rows[rows.length - 1];
+      const tol = Math.max(6, Math.min(f.h, 24) * 0.5);
+      if (row && Math.abs(f.y - row.y) <= tol) row.items.push(f); else rows.push({ y: f.y, items: [f] });
+    }
+    for (const r of rows) out.push(...r.items.sort((a, b) => a.x - b.x));
+  }
+  return out;
 }

@@ -7,6 +7,7 @@ import { el, clear } from '../lib/dom.js';
 import { loadPdfLib, loadPdfjs } from '../lib/pdf.js';
 import { ensureCss, tr, ic, btn, userError, guardPrimary, statusLine, saveLikeSource, pdfBlob, watchUnlock } from '../lib/sec-ui.js';
 import { createPlacer } from '../lib/sec-placer.js';
+import { readingOrder } from '../lib/shared/formfields.js';
 
 const TYPES = [
   { id: 'text', icon: 'textbox', w: 170, h: 22, de: 'Textfeld', en: 'Text field' },
@@ -108,7 +109,38 @@ export default {
 };
 
 function build(stage, state, L) {
-  const bump = () => { state.values.formRev = (state.values.formRev || 0) + 1; renderSummary(); renderList(); };
+  // ------------------------------------------------ undo / redo (snapshots, taken when changes settle)
+  const snap = () => JSON.stringify(S.items.map(({ id, ...rest }) => ({ id, ...rest })));
+  const hist = { undo: [], redo: [], last: '[]', timer: 0 };
+  function settle() {
+    clearTimeout(hist.timer); hist.timer = 0;
+    const now = snap();
+    if (now === hist.last) return;
+    hist.undo.push(hist.last); if (hist.undo.length > 100) hist.undo.shift();
+    hist.redo.length = 0; hist.last = now;
+    syncUndo();
+  }
+  function restore(json) {
+    S.items.splice(0, S.items.length, ...JSON.parse(json));
+    hist.last = json;
+    S.placer.select(null); S.placer.draw();
+    state.values.formRev = (state.values.formRev || 0) + 1; renderSummary(); renderList(); syncUndo();
+  }
+  function undo() { if (hist.timer) settle(); if (!hist.undo.length) return; hist.redo.push(hist.last); restore(hist.undo.pop()); status.set(tr(L, 'Rückgängig gemacht.', 'Undone.'), 'ok'); }
+  function redo() { if (!hist.redo.length) return; hist.undo.push(hist.last); restore(hist.redo.pop()); status.set(tr(L, 'Wiederhergestellt.', 'Redone.'), 'ok'); }
+  const undoBtn = btn('undo', tr(L, 'Rückgängig', 'Undo'), undo);
+  const redoBtn = btn('rotate', tr(L, 'Wiederholen', 'Redo'), redo);
+  undoBtn.dataset.undo = ''; redoBtn.dataset.redo = '';
+  function syncUndo() { undoBtn.disabled = !hist.undo.length && !hist.timer; redoBtn.disabled = !hist.redo.length; }
+  stage.addEventListener('keydown', e => {
+    if (!(e.ctrlKey || e.metaKey) || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    const k = e.key.toLowerCase();
+    if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); } else if (k === 'y' || (k === 'z' && e.shiftKey)) { e.preventDefault(); redo(); }
+  });
+  const bump = () => {
+    state.values.formRev = (state.values.formRev || 0) + 1; renderSummary(); renderList();
+    clearTimeout(hist.timer); hist.timer = setTimeout(settle, 400); syncUndo();
+  };
   const status = statusLine();
   const typeLabel = t => tr(L, TYPE[t].de, TYPE[t].en);
   const nextName = type => {
@@ -118,7 +150,10 @@ function build(stage, state, L) {
   };
 
   // ------------------------------------------------ add chips
-  function add(type, at = null) {
+  // structural steps (add, detect, delete, duplicate, type change) are their own undo steps
+  const step = fn => (...a) => { if (hist.timer) settle(); const r = fn(...a); settle(); return r; };
+  const add = step(addField);
+  function addField(type, at = null) {
     const t = TYPE[type];
     const item = { id: `f${++S.seq}`, kind: 'field', free: true, type, page: S.placer.page, w: t.w, h: t.h, rot: 0, name: nextName(type), required: false,
       def: type === 'check' ? false : '', options: type === 'radio' || type === 'dropdown' ? defaultOptions(L, type) : [], cx: 0.5, cy: 0.3 + (S.items.filter(i => i.page === S.placer.page).length % 8) * 0.07 };
@@ -135,6 +170,7 @@ function build(stage, state, L) {
 
   async function detect() {
     detectBtn.disabled = true;
+    if (hist.timer) settle();
     status.set(tr(L, 'Suche nach Linien, Kästchen und „Name: ____“ …', 'Looking for lines, boxes and “Name: ____” …'));
     try {
       const [{ detectFields, overlap }, geom, lib] = await Promise.all([import('../lib/shared/formfields.js'), import('../lib/shared/pagegeom.js'), loadPdfjs()]);
@@ -155,7 +191,7 @@ function build(stage, state, L) {
         page.cleanup?.();
       }
       S.placer.draw();
-      bump();
+      bump(); settle();
       status.set(found ? tr(L, `${found} ${found === 1 ? 'Feld' : 'Felder'} erkannt. Prüf sie kurz – antippen zum Ändern, Löschen oder Umbenennen.`, `${found} field${found === 1 ? '' : 's'} detected. Check them quickly – tap to change, delete or rename.`)
         : tr(L, 'Keine Felder erkannt. Setz die Felder einfach selbst – tipp oben auf einen Feldtyp.', 'No fields detected. Just place them yourself – tap a field type above.'), found ? 'ok' : '');
     } catch (e) {
@@ -187,12 +223,13 @@ function build(stage, state, L) {
     name.addEventListener('change', () => { it.name = cleanName(name.value) || it.name; name.value = it.name; changed(); });
     const typeSel = el('select', { class: 'wt-input', id: 'sec-cf-type' }, TYPES.map(t => el('option', { value: t.id, selected: t.id === it.type }, tr(L, t.de, t.en))));
     typeSel.addEventListener('change', () => {
+      if (hist.timer) settle();
       const t = TYPE[typeSel.value];
       it.type = t.id;
       if ((t.id === 'radio' || t.id === 'dropdown') && !it.options?.length) it.options = defaultOptions(L, t.id);
       if (t.id === 'check') { it.w = it.h = Math.min(it.w, it.h, 18); it.def = false; } else if (typeof it.def === 'boolean') it.def = '';
       if (t.id === 'radio') it.h = Math.max(it.h, it.options.length * RADIO_ROW);
-      S.placer.draw(); S.placer.select(it); changed(); renderProps(it);
+      S.placer.draw(); S.placer.select(it); changed(); settle(); renderProps(it);
     });
     const req = el('input', { type: 'checkbox', id: 'sec-cf-req', checked: !!it.required, onchange: () => { it.required = req.checked; changed(); } });
     const grid = el('div', { class: 'sec-fld-props' }, field(tr(L, 'Feldname', 'Field name'), name, tr(L, 'Erscheint beim Ausfüllen als Hinweis und beim Auslesen der Daten.', 'Shown as a hint when filling in and when reading out the data.')),
@@ -236,9 +273,9 @@ function build(stage, state, L) {
     const tb = el('div', { class: 'sec-toolbar' },
       btn('copy', tr(L, 'Duplizieren', 'Duplicate'), () => {
         const c = { ...it, id: `f${++S.seq}`, options: [...(it.options || [])], cy: Math.min(1, it.cy + (it.h + 8) / (S.placer.viewport?.height || 842)), name: nextName(it.type), auto: false };
-        S.placer.add(c); bump();
+        if (hist.timer) settle(); S.placer.add(c); bump(); settle();
       }),
-      btn('trash', tr(L, 'Löschen', 'Delete'), () => { S.placer.remove(it); bump(); }));
+      btn('trash', tr(L, 'Löschen', 'Delete'), () => { if (hist.timer) settle(); S.placer.remove(it); bump(); settle(); }));
     props.append(el('h3', { class: 'sec-h' }, ic(TYPE[it.type].icon), tr(L, `${typeLabel(it.type)} bearbeiten`, `Edit ${typeLabel(it.type).toLowerCase()}`)), grid, tb);
   }
 
@@ -258,14 +295,16 @@ function build(stage, state, L) {
   const listSum = el('summary', {});
   listBox.append(listSum, listUl);
   function renderList() {
-    listSum.textContent = tr(L, `Alle Felder (${S.items.length})`, `All fields (${S.items.length})`);
+    listSum.textContent = tr(L, `Alle Felder in Ausfüll-Reihenfolge (${S.items.length})`, `All fields in filling order (${S.items.length})`);
     listBox.hidden = !S.items.length;
     clear(listUl);
-    [...S.items].sort((a, b) => a.page - b.page || a.cy - b.cy || a.cx - b.cx).forEach(it => {
+    // the same order the Tab key will follow in the finished form (lib/shared/formfields.js readingOrder)
+    const H = S.placer?.viewport?.height || 842, W = S.placer?.viewport?.width || 595;
+    readingOrder(S.items.map(it => ({ it, page: it.page, x: it.cx * W - it.w / 2, y: it.cy * H - it.h / 2, h: it.h }))).map(o => o.it).forEach((it, k) => {
       listUl.append(el('li', {}, el('button', { type: 'button', class: 'wt-btn wt-btn-text wt-btn-sm', onclick: () => {
         if (S.placer.page !== it.page) S.placer.nav.go(it.page);
         setTimeout(() => { S.placer.select(it); S.placer.root.querySelector('.sec-item.is-sel')?.focus({ preventScroll: false }); }, S.placer.page === it.page ? 0 : 350);
-      } }, ic(TYPE[it.type].icon), `${it.name} · ${typeLabel(it.type)} · ${tr(L, 'Seite', 'page')} ${it.page}${it.required ? ' · ' + tr(L, 'Pflicht', 'required') : ''}`)));
+      } }, ic(TYPE[it.type].icon), `${k + 1}. ${it.name} · ${typeLabel(it.type)} · ${tr(L, 'Seite', 'page')} ${it.page}${it.required ? ' · ' + tr(L, 'Pflicht', 'required') : ''}`)));
     });
   }
 
@@ -275,11 +314,11 @@ function build(stage, state, L) {
     summary.textContent = n ? tr(L, `${n} ${n === 1 ? 'Feld' : 'Felder'} auf ${p} ${p === 1 ? 'Seite' : 'Seiten'}. Ziehen zum Verschieben, Ecke unten rechts für die Größe.`, `${n} field${n === 1 ? '' : 's'} on ${p} page${p === 1 ? '' : 's'}. Drag to move, bottom-right corner to resize.`)
       : tr(L, 'Noch keine Felder. Tippe auf einen Feldtyp oder lass Felder erkennen.', 'No fields yet. Tap a field type or let fields be detected.');
   }
-  renderSummary(); renderList();
+  renderSummary(); renderList(); syncUndo();
 
   clear(stage).append(
     el('div', { class: 'sec-card' }, el('h3', { class: 'sec-h' }, ic('form'), tr(L, 'Feld hinzufügen', 'Add a field')), chips,
-      el('div', { class: 'sec-toolbar sec-toolbar-start' }, detectBtn),
+      el('div', { class: 'sec-toolbar sec-toolbar-start' }, detectBtn, undoBtn, redoBtn),
       S.existing.length ? el('p', { class: 'sec-small' }, tr(L, `Diese PDF hat schon ${S.existing.length} Formularfelder – sie bleiben erhalten.`, `This PDF already has ${S.existing.length} form fields – they are kept.`)) : null),
     el('div', { class: 'sec-card' }, el('h3', { class: 'sec-h' }, ic('file'), tr(L, 'Platzieren', 'Place')), summary, S.placer.root),
     props, listBox, status.node,

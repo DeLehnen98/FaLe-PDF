@@ -12,9 +12,9 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '29fa70fd470a';
+const VERSION = '53a74efd7207';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-0d701693ebf9';
+const VENDOR = 'wt-vendor-c23227ab26cd';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/arc2-sheet.js",
@@ -73,7 +73,6 @@ const PRECACHE = [
   "/assets/wt/lib/options.js",
   "/assets/wt/lib/org-common.js",
   "/assets/wt/lib/org-gray.js",
-  "/assets/wt/lib/outline.js",
   "/assets/wt/lib/pagegrid.css",
   "/assets/wt/lib/pagegrid.js",
   "/assets/wt/lib/pdf.js",

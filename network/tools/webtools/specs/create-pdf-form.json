@@ -84,6 +84,10 @@
         "a": "Ja. Vorhandene Formularfelder bleiben unverändert; neue Felder mit gleichem Namen werden automatisch durchnummeriert."
       },
       {
+        "q": "In welcher Reihenfolge springt die Tab-Taste?",
+        "a": "Zeile für Zeile von oben nach unten und in jeder Zeile von links nach rechts – so, wie man liest. Die Liste „Alle Felder in Ausfüll-Reihenfolge“ zeigt sie vorab. Vertan? Mit „Rückgängig“ (oder Strg+Z) geht jeder Schritt zurück."
+      },
+      {
         "q": "Was ist ein Unterschriftsfeld?",
         "a": "Ein markierter Bereich, in dem die ausfüllende Person in ihrem PDF-Programm unterschreiben kann. Es ist leer, bis jemand unterschreibt."
       },
@@ -155,6 +159,10 @@
       {
         "q": "Are fields the PDF already has kept?",
         "a": "Yes. Existing form fields stay unchanged; new fields with the same name are numbered automatically."
+      },
+      {
+        "q": "In which order does the Tab key move?",
+        "a": "Row by row from top to bottom, and left to right within a row – the way you read. The list “All fields in filling order” shows it beforehand. Made a mistake? “Undo” (or Ctrl+Z) takes back every step."
       },
       {
         "q": "What is a signature field?",

@@ -413,6 +413,15 @@ def run():
             A.locator('.sh-rq-item input').nth(1).fill('Kontoauszug')
             A.locator('.sh-rq-create [data-exp]', has_text='30 Tage').click()
             A.locator('.sh-rq-create [data-max]', has_text='10').click()
+            import datetime
+            due = (datetime.date.today() + datetime.timedelta(days=60)).isoformat()
+            A.fill('.sh-rq-create input[data-due]', due)
+            A.locator('.sh-rq-create [data-go]').click()
+            A.wait_for_timeout(500)
+            check('request: deadline after expiry refused', A.locator('.sh-done').count() == 0 and 'Frist' in A.locator('#toasts').inner_text())
+            due = (datetime.date.today() + datetime.timedelta(days=10)).isoformat()
+            due_de = '.'.join(reversed(due.split('-')))
+            A.fill('.sh-rq-create input[data-due]', due)
             shot(A, 'desktop_light_request_create')
             A.locator('.sh-rq-create [data-go]').click()
             A.wait_for_selector('.sh-done .sh-link', timeout=20000)
@@ -429,6 +438,7 @@ def run():
             B.wait_for_selector('.sh-rq-head', timeout=20000)
             head = B.locator('.sh-rq-head').inner_text()
             check('uploader: sees requester, title, message, checklist', all(x in head for x in ['Steuerbüro Muster', 'Steuer 2026', 'Bitte bis Freitag', 'Lohnsteuerbescheinigung', 'Kontoauszug']), head[:300])
+            check('uploader: sees the deadline', f'Bitte bis {due_de} hochladen' in head, head[:300])
             shot(B, 'phone_light_upload')
             B.fill('[data-name]', 'Erika Beispiel')
             with B.expect_file_chooser() as fc:
@@ -473,6 +483,13 @@ def run():
             chk = A.locator('.sh-rq-check').inner_text()
             check('inbox: checklist (received / missing)', A.locator('.sh-rq-checklist li.done').count() == 1 and 'fehlt noch' in chk, chk)
             shot(A, 'desktop_light_request_inbox')
+            check('inbox: deadline shown', f'Frist: {due_de}' in A.locator('.sh-status-head').inner_text())
+            # nudge: message lists what is still missing, sent with the user's own share sheet
+            A.evaluate("window.__shared = null; navigator.share = async d => { window.__shared = d; }; navigator.canShare = () => true;")
+            A.locator('[data-nudge]').click()
+            A.wait_for_function('window.__shared !== null', timeout=5000)
+            shared = A.evaluate('window.__shared')
+            check('nudge: missing items + deadline + link', 'Kontoauszug' in shared['text'] and 'Lohnsteuer' not in shared['text'] and due_de in shared['text'] and '#/r/' in shared['url'], shared)
             row = A.locator('.sh-rq-file', has_text='vertrag.pdf')
             with A.expect_download() as dl:
                 row.locator('[data-save]').click()
@@ -487,6 +504,13 @@ def run():
             z = zipfile.ZipFile(dl.value.path())
             names = z.namelist()
             check('inbox: ZIP with folders per item', 'Lohnsteuerbescheinigung/vertrag.pdf' in names and 'daten.bin' in names and z.read('daten.bin') == open(os.path.join(DATA, 'daten.bin'), 'rb').read(), names)
+            # reuse as template → new request prefilled
+            A.locator('[data-reuse]').click()
+            A.wait_for_selector('.sh-rq-create [data-title]')
+            A.wait_for_timeout(500)
+            check('reuse: title, sender and items prefilled', A.input_value('[data-title]') == 'Steuer 2026' and A.input_value('[data-from]') == 'Steuerbüro Muster'
+                  and [A.locator('.sh-rq-item input').nth(i).input_value() for i in range(A.locator('.sh-rq-item input').count())] == ['Lohnsteuerbescheinigung', 'Kontoauszug'])
+            A.go_back(); A.wait_for_selector('.sh-rq-file', timeout=15000)
             # pause uploads
             A.locator('.sh-rq-toggle input').uncheck()
             A.wait_for_timeout(900)

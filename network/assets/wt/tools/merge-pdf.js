@@ -1,7 +1,6 @@
 // Tool: merge PDFs and images into one PDF (reference implementation of the tool module contract).
 import { loadPdfLib, saveDoc } from '../lib/pdf.js';
 import { embedImage, drawFitted, pageSizeFor, mm } from '../lib/imgembed.js';
-import { setOutline } from '../lib/outline.js';
 import { baseName } from '../lib/format.js';
 import { OcgCarrier } from '../lib/aud1-ocg.js';
 
@@ -13,9 +12,15 @@ export default {
       placeholder: { de: 'z. B. 1-3, 5', en: 'e.g. 1-3, 5' },
     },
     {
-      id: 'bookmarks', type: 'toggle', default: true,
-      label: { de: 'Lesezeichen für jede Datei', en: 'Bookmark for each file' },
-      hint: { de: 'Am Anfang jeder Datei ein Lesezeichen mit ihrem Namen – praktisch in langen Dokumenten.', en: 'A bookmark with the file name at the start of each file – handy in long documents.' },
+      id: 'bookmarks', type: 'select', default: 'both',
+      label: { de: 'Lesezeichen', en: 'Bookmarks' },
+      hint: { de: 'Vorhandene Lesezeichen der Dateien gehen nicht verloren – sie landen an der richtigen Stelle.', en: 'Existing bookmarks of the files are not lost – they end up in the right place.' },
+      choices: [
+        { value: 'both', label: { de: 'Dateinamen, darunter die vorhandenen', en: 'File names, existing ones below' } },
+        { value: 'keep', label: { de: 'Nur die vorhandenen behalten', en: 'Keep only the existing ones' } },
+        { value: 'files', label: { de: 'Nur ein Lesezeichen pro Datei', en: 'Only one bookmark per file' } },
+        { value: 'none', label: { de: 'Keine Lesezeichen', en: 'No bookmarks' } },
+      ],
     },
     {
       id: 'imagePage', type: 'radio', default: 'a4',
@@ -33,16 +38,20 @@ export default {
     const out = await PDFLib.PDFDocument.create();
     const marks = [];
     let encrypted = false;
+    let keptMarks = 0;
+    const mode = opts.bookmarks === true ? 'both' : opts.bookmarks === false ? 'none' : (opts.bookmarks || 'both');
     const fields = new FieldMerger(out, PDFLib);
     const layers = new OcgCarrier(PDFLib, out); // hidden layers stay hidden
     for (let i = 0; i < inputs.length; i++) {
       const input = inputs[i];
       ctx.progress(i / inputs.length, { de: `Datei ${i + 1} von ${inputs.length}: ${input.name}`, en: `File ${i + 1} of ${inputs.length}: ${input.name}` });
       const start = out.getPageCount();
+      const fileMarks = [];
       if (input.kind === 'pdf') {
         const src = await input.pdfDoc();
         encrypted = encrypted || src.wtEncrypted;
         const indices = ctx.parsePages(input.opts.pages, src.getPageCount());
+        if (mode === 'both' || mode === 'keep') fileMarks.push(...await existingMarks(input, indices, start));
         // copyPages caches copied objects, so a page that appears twice ("1, 1") needs its own pass
         let chunk = [];
         const flush = async () => {
@@ -64,12 +73,21 @@ export default {
         const page = out.addPage(size);
         drawFitted(page, e, PDFLib, { x: margin, y: margin, width: size[0] - 2 * margin, height: size[1] - 2 * margin });
       }
-      marks.push({ title: baseName(input.name), pageIndex: start });
+      const withFile = mode === 'files' || (mode === 'both' && inputs.length > 1);
+      if (withFile) marks.push({ title: baseName(input.name), page: start + 1, top: null, level: 0 });
+      marks.push(...fileMarks.map(m => ({ ...m, level: m.level + (withFile ? 1 : 0) })));
+      keptMarks += fileMarks.length;
       await ctx.tick();
     }
     fields.finish();
     layers.finish();
-    if (opts.bookmarks && inputs.length > 1) setOutline(out, PDFLib, marks);
+    if (marks.length && mode !== 'none' && !(mode === 'files' && inputs.length < 2)) {
+      const { writeOutline } = await import('../lib/shared/outlinecore.js');
+      // valid nesting: the first entry on level 0, never more than one level deeper than the one before
+      marks.forEach((m, i) => { m.level = Math.max(0, Math.min(m.level, i ? marks[i - 1].level + 1 : 0)); });
+      writeOutline(PDFLib, out, marks);
+      if (keptMarks) ctx.note({ de: 'Die Lesezeichen der einzelnen Dateien wurden übernommen.', en: 'The bookmarks of the individual files were kept.' });
+    }
     ctx.progress(1, { de: 'Wird gespeichert …', en: 'Saving …' });
     await ctx.tick();
     const first = baseName(inputs[0].name);
@@ -82,6 +100,27 @@ export default {
     return { outputs: [{ name, blob: new Blob([bytes], { type: 'application/pdf' }), pages: out.getPageCount() }] };
   },
 };
+
+/** Bookmarks of one input, re-targeted to the pages it got in the merged file (pages left out drop theirs). */
+async function existingMarks(input, indices, start) {
+  let flat = [];
+  try {
+    const pdf = await input.pdfjs();
+    const { readOutline } = await import('../lib/shared/outlinecore.js');
+    flat = await readOutline(pdf);
+  } catch { return []; }
+  const where = new Map();
+  indices.forEach((idx, k) => { if (!where.has(idx)) where.set(idx, start + k + 1); });
+  const out = [];
+  for (const m of flat) {
+    const page = where.get(m.page - 1);
+    if (!page) continue;
+    out.push({ title: m.title, page, top: m.top, level: m.level });
+  }
+  // a dropped parent must not leave its children hanging two levels deep
+  out.forEach((m, i) => { m.level = Math.max(0, Math.min(m.level, i ? out[i - 1].level + 1 : 0)); });
+  return out;
+}
 
 /**
  * Keeps form fields working after copyPages: copied widgets are registered in the new document's

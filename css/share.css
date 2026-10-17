@@ -296,3 +296,9 @@ textarea.sh-rq-msg { min-height: 72px; resize: vertical; padding-top: 10px; }
 .sh-rq-sentlist { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
 .sh-rq-sentlist li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 6px 0; border-top: 1px solid var(--border); }
 .sh-rq-sentlist li > span:first-child { flex: 1; min-width: 140px; font-weight: 600; word-break: break-word; }
+
+.sh-rq-due { max-width: 220px; }
+.sh-rq-due-note { display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 8px; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--text); }
+.sh-rq-due-note .ic { width: 18px; height: 18px; color: var(--accent); }
+.sh-rq-due-note.late { background: color-mix(in srgb, var(--sh-warn) 14%, var(--surface)); }
+.sh-rq-due-note.late .ic { color: var(--sh-warn); }
