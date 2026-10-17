@@ -3,13 +3,24 @@
   "category": "edit",
   "icon": "compare",
   "module": "tools/compare-pdf.js",
-  "accepts": ["application/pdf", ".pdf"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
   "multiple": true,
   "minFiles": 2,
   "maxFiles": 2,
-  "related": ["redact-pdf", "edit-metadata", "sign-pdf"],
+  "related": [
+    "redact-pdf",
+    "edit-metadata",
+    "sign-pdf"
+  ],
   "next": [],
-  "needs": ["pdfjs", "pdflib", "unicodefont"],
+  "needs": [
+    "pdfjs",
+    "pdflib",
+    "unicodefont"
+  ],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-vergleichen",
@@ -21,24 +32,68 @@
     "lede": "Finde jede Änderung zwischen zwei Fassungen – Wort für Wort und Seite für Seite.",
     "pickLabel": "Zwei PDFs auswählen",
     "primaryButton": "Bericht speichern",
-    "keywords": ["vergleichen", "unterschiede", "änderungen finden", "versionen", "diff", "vertrag vergleichen", "abgleichen"],
+    "keywords": [
+      "vergleichen",
+      "unterschiede",
+      "änderungen finden",
+      "versionen",
+      "diff",
+      "vertrag vergleichen",
+      "abgleichen"
+    ],
     "steps": [
-      {"title": "Zwei PDFs auswählen", "text": "Wähle die alte und die neue Fassung aus. Die obere Datei gilt als „alt“ – mit den Pfeilen tauschst du die Reihenfolge."},
-      {"title": "Änderungen ansehen", "text": "Eingefügte Wörter sind grün, gelöschte rot. Mit den Pfeilen springst du von Änderung zu Änderung. Der Bildvergleich zeigt auch Änderungen an Bildern und Layout."},
-      {"title": "Bericht speichern", "text": "Tippe auf „Bericht speichern“ und du bekommst eine PDF mit Zusammenfassung, allen Änderungen und dem Bildvergleich."}
+      {
+        "title": "Zwei PDFs auswählen",
+        "text": "Wähle die alte und die neue Fassung aus. Die obere Datei gilt als „alt“ – mit den Pfeilen tauschst du die Reihenfolge."
+      },
+      {
+        "title": "Änderungen ansehen",
+        "text": "Eingefügte Wörter sind grün, gelöschte rot. Mit den Pfeilen springst du von Änderung zu Änderung. Der Bildvergleich zeigt auch Änderungen an Bildern und Layout."
+      },
+      {
+        "title": "Bericht speichern",
+        "text": "Tippe auf „Bericht speichern“ und du bekommst eine PDF mit Zusammenfassung, allen Änderungen und dem Bildvergleich."
+      }
     ],
     "why": [
-      {"title": "Wort für Wort", "text": "Der Textvergleich findet eingefügte, gelöschte und geänderte Wörter im ganzen Dokument, über Seitengrenzen hinweg."},
-      {"title": "Fürs Handy gemacht", "text": "Auf dem Handy siehst du beide Fassungen zusammengeführt und springst mit zwei Tasten durch die Änderungen. Auf großen Bildschirmen stehen sie nebeneinander."},
-      {"title": "Auch Bilder und Layout", "text": "Der Bildvergleich legt die Seiten übereinander: Rot ist nur in der ersten Datei, Grün nur in der zweiten, Orange zeigt geänderte Farben."},
-      {"title": "Vertraulich", "text": "Verträge und Angebote bleiben auf deinem Gerät – der Vergleich läuft komplett im Browser."}
+      {
+        "title": "Wort für Wort",
+        "text": "Der Textvergleich findet eingefügte, gelöschte und geänderte Wörter im ganzen Dokument, über Seitengrenzen hinweg."
+      },
+      {
+        "title": "Fürs Handy gemacht",
+        "text": "Auf dem Handy siehst du beide Fassungen zusammengeführt und springst mit zwei Tasten durch die Änderungen. Auf großen Bildschirmen stehen sie nebeneinander."
+      },
+      {
+        "title": "Auch Bilder und Layout",
+        "text": "Der Bildvergleich legt die Seiten übereinander: Rot ist nur in der ersten Datei, Grün nur in der zweiten, Orange zeigt geänderte Farben."
+      },
+      {
+        "title": "Vertraulich",
+        "text": "Verträge und Angebote bleiben auf deinem Gerät – der Vergleich läuft komplett im Browser."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Beide PDFs werden nur in deinem Browser gelesen und verglichen. Nichts verlässt dein Gerät."},
-      {"q": "Funktioniert der Vergleich auch bei Scans?", "a": "Der Textvergleich braucht Text in der PDF. Bei reinen Bild-Scans nutzt du den Bildvergleich – er zeigt Unterschiede Pixel für Pixel."},
-      {"q": "Was steht im Bericht?", "a": "Dateinamen, Anzahl der Änderungen, jede Änderung mit Seitenzahl (gelöschter Text rot, neuer grün) und auf Wunsch für jede Seite mit Unterschieden den Bildvergleich."},
-      {"q": "Warum zeigt der Bildvergleich Unterschiede, obwohl der Text gleich ist?", "a": "Der Bildvergleich reagiert auf alles Sichtbare: verschobene Zeilen, andere Schriften, Farben oder Bilder. Hat sich nur der Umbruch verschoben, ist der Textvergleich aussagekräftiger."},
-      {"q": "Wie groß dürfen die Dateien sein?", "a": "Es gibt keine feste Grenze. Sehr lange Dokumente brauchen auf dem Handy etwas länger; lange unveränderte Abschnitte werden in der Ansicht zusammengefasst."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Beide PDFs werden nur in deinem Browser gelesen und verglichen. Nichts verlässt dein Gerät."
+      },
+      {
+        "q": "Funktioniert der Vergleich auch bei Scans?",
+        "a": "Der Textvergleich braucht Text in der PDF. Bei reinen Bild-Scans nutzt du den Bildvergleich – er zeigt Unterschiede Pixel für Pixel."
+      },
+      {
+        "q": "Was steht im Bericht?",
+        "a": "Dateinamen, Anzahl der Änderungen, jede Änderung mit Seitenzahl (gelöschter Text rot, neuer grün) und auf Wunsch für jede Seite mit Unterschieden den Bildvergleich."
+      },
+      {
+        "q": "Warum zeigt der Bildvergleich Unterschiede, obwohl der Text gleich ist?",
+        "a": "Der Bildvergleich reagiert auf alles Sichtbare: verschobene Zeilen, andere Schriften, Farben oder Bilder. Hat sich nur der Umbruch verschoben, ist der Textvergleich aussagekräftiger."
+      },
+      {
+        "q": "Wie groß dürfen die Dateien sein?",
+        "a": "Es gibt keine feste Grenze. Sehr lange Dokumente brauchen auf dem Handy etwas länger; lange unveränderte Abschnitte werden in der Ansicht zusammengefasst."
+      }
     ]
   },
   "en": {
@@ -51,24 +106,75 @@
     "lede": "Find every change between two versions – word by word and page by page.",
     "pickLabel": "Choose two PDFs",
     "primaryButton": "Save report",
-    "keywords": ["compare", "differences", "find changes", "versions", "diff", "compare contracts", "redline"],
+    "keywords": [
+      "compare",
+      "differences",
+      "find changes",
+      "versions",
+      "diff",
+      "compare contracts",
+      "redline"
+    ],
     "steps": [
-      {"title": "Choose two PDFs", "text": "Select the old and the new version. The upper file counts as “old” – swap the order with the arrows."},
-      {"title": "Review the changes", "text": "Inserted words are green, deleted ones red. Jump from change to change with the arrows. The visual comparison also shows changes to images and layout."},
-      {"title": "Save the report", "text": "Tap “Save report” to get a PDF with a summary, all changes and the visual comparison."}
+      {
+        "title": "Choose two PDFs",
+        "text": "Select the old and the new version. The upper file counts as “old” – swap the order with the arrows."
+      },
+      {
+        "title": "Review the changes",
+        "text": "Inserted words are green, deleted ones red. Jump from change to change with the arrows. The visual comparison also shows changes to images and layout."
+      },
+      {
+        "title": "Save the report",
+        "text": "Tap “Save report” to get a PDF with a summary, all changes and the visual comparison."
+      }
     ],
     "why": [
-      {"title": "Word by word", "text": "The text comparison finds inserted, deleted and changed words across the whole document, regardless of page boundaries."},
-      {"title": "Made for phones", "text": "On a phone you see both versions merged and jump through the changes with two buttons. On large screens they sit side by side."},
-      {"title": "Images and layout, too", "text": "The visual comparison overlays the pages: red is only in the first file, green only in the second, orange shows changed colours."},
-      {"title": "Confidential", "text": "Contracts and offers stay on your device – the comparison runs entirely in your browser."}
+      {
+        "title": "Word by word",
+        "text": "The text comparison finds inserted, deleted and changed words across the whole document, regardless of page boundaries."
+      },
+      {
+        "title": "Made for phones",
+        "text": "On a phone you see both versions merged and jump through the changes with two buttons. On large screens they sit side by side."
+      },
+      {
+        "title": "Images and layout, too",
+        "text": "The visual comparison overlays the pages: red is only in the first file, green only in the second, orange shows changed colours."
+      },
+      {
+        "title": "Confidential",
+        "text": "Contracts and offers stay on your device – the comparison runs entirely in your browser."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. Both PDFs are read and compared only in your browser. Nothing leaves your device."},
-      {"q": "Does it work with scans?", "a": "The text comparison needs text in the PDF. For pure image scans use the visual comparison – it shows differences pixel by pixel."},
-      {"q": "What is in the report?", "a": "File names, the number of changes, every change with its page number (deleted text in red, new text in green) and, if you like, the visual comparison for every page with differences."},
-      {"q": "Why does the visual comparison show differences although the text is the same?", "a": "The visual comparison reacts to everything visible: moved lines, other fonts, colours or images. If only the line breaks moved, the text comparison is more meaningful."},
-      {"q": "How large may the files be?", "a": "There is no fixed limit. Very long documents take a little longer on a phone; long unchanged passages are collapsed in the view."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Both PDFs are read and compared only in your browser. Nothing leaves your device."
+      },
+      {
+        "q": "Does it work with scans?",
+        "a": "The text comparison needs text in the PDF. For pure image scans use the visual comparison – it shows differences pixel by pixel."
+      },
+      {
+        "q": "What is in the report?",
+        "a": "File names, the number of changes, every change with its page number (deleted text in red, new text in green) and, if you like, the visual comparison for every page with differences."
+      },
+      {
+        "q": "Why does the visual comparison show differences although the text is the same?",
+        "a": "The visual comparison reacts to everything visible: moved lines, other fonts, colours or images. If only the line breaks moved, the text comparison is more meaningful."
+      },
+      {
+        "q": "How large may the files be?",
+        "a": "There is no fixed limit. Very long documents take a little longer on a phone; long unchanged passages are collapsed in the view."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "compare-text",
+      "de": "Du hast nur kopierten Text, keine PDF-Dateien?",
+      "en": "Only have copied text, no PDF files?"
+    }
+  ]
 }

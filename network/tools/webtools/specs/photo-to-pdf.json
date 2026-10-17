@@ -166,5 +166,17 @@
         "a": "No. The PDF is created on your device."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "scan-to-pdf",
+      "de": "Auf dem Foto ist ein Brief oder Formular? Für gerade Kanten und weißes Papier:",
+      "en": "Is the photo of a letter or form? For straight edges and white paper:"
+    },
+    {
+      "id": "heic-to-pdf",
+      "de": "Deine Fotos sind HEIC-Dateien vom iPhone?",
+      "en": "Are your photos HEIC files from an iPhone?"
+    }
+  ]
 }

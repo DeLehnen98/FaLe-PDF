@@ -338,6 +338,10 @@ def load_specs():
             for rid in sp.get(k, []):
                 if rid not in ids:
                     errors.append(f'{sp["id"]}.json: {k} references unknown tool "{rid}"')
+        # "alt": [{"id", "de", "en"}] – a one-line pointer to the tool for a similar but different task
+        for a in sp.get('alt', []):
+            if a.get('id') not in ids or not a.get('de') or not a.get('en'):
+                errors.append(f'{sp["id"]}.json: alt entries need a known "id" plus "de" and "en" text')
     for w in warnings:
         print('warning:', w, file=sys.stderr)
     if errors:
@@ -415,6 +419,8 @@ def page_tool(sp, lang, by_id):
     cmp_rows = ''.join(f'<tr><th scope="row">{e(a)}</th><td data-label="{e(s["cmp_cols"][1])}">{e(b)}</td><td data-label="{e(s["cmp_cols"][2])}">{e(d)}</td></tr>' for a, b, d in s['cmp_rows'])
     faq = ''.join(f'<details><summary>{e(q["q"])}</summary><div><p>{e(q["a"])}</p></div></details>' for q in c['faq'])
     related = ''.join(tool_card(by_id[r], lang) for r in sp.get('related', []) if r in by_id)
+    alt = ''.join(f'<p class="wt-alt">{svg(UI_ICONS["arrow"])}<span>{e(a[lang])} <a href="{tool_path(by_id[a["id"]], lang)}">{e(by_id[a["id"]][lang]["name"])}</a></span></p>'
+                  for a in sp.get('alt', []) if a['id'] in by_id)
     camera = ''
     if accepts_images(sp):
         camera = (f'<label class="wt-chipbtn" data-wt-camera hidden><input class="wt-picker" type="file" accept="image/*" capture="environment" tabindex="-1">'
@@ -452,7 +458,7 @@ def page_tool(sp, lang, by_id):
   <div class="wrap wt-top">
     {crumbs(lang, [(n, h if i < 2 else None) for i, (n, h) in enumerate(items)])}
     <div class="wt-head"><span class="wt-chip-ic wt-chip-lg tic-{colour}">{tool_icon(sp)}</span><div><h1>{e(c['h1'])}</h1><p class="wt-lede">{e(c['lede'])}</p></div></div>
-    <section id="wt-app" class="wt-app" aria-label="{s['tool_label']}: {e(c['name'])}" data-state="pick">
+    {alt}<section id="wt-app" class="wt-app" aria-label="{s['tool_label']}: {e(c['name'])}" data-state="pick">
       <div class="wt-pick" data-wt-pick{' hidden' if sp.get('minFiles', 1) == 0 else ''}>
         <label class="wt-drop" data-wt-drop>
           <input class="wt-picker" type="file" accept="{e(accept)}"{' multiple' if multiple else ''} data-wt-input>

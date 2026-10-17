@@ -15,10 +15,11 @@ export const mm = v => v * PT_PER_MM;
  * @returns {Promise<{image, width: number, height: number, orientation: number}>}
  *   width/height = displayed size in pixels (after EXIF rotation), orientation = rotation still to apply when drawing
  */
-export async function embedImage(doc, input) {
+export async function embedImage(doc, input, { maxSide = 0, quality = 0.92 } = {}) {
   if (input.format === 'jpeg') {
     const info = await input.imageInfo();
-    if ([1, 3, 6, 8].includes(info.orientation || 1)) {
+    const small = !maxSide || (info.width && info.height && Math.max(info.width, info.height) <= maxSide);
+    if (small && [1, 3, 6, 8].includes(info.orientation || 1)) {
       try {
         const image = await doc.embedJpg(await input.bytes());
         const o = info.orientation || 1;
@@ -26,7 +27,7 @@ export async function embedImage(doc, input) {
         return { image, width: swap ? image.height : image.width, height: swap ? image.width : image.height, orientation: o };
       } catch { /* unusual JPEG – fall through to the canvas path */ }
     }
-  } else if (input.format === 'png') {
+  } else if (input.format === 'png' && !maxSide) {
     try {
       const image = await doc.embedPng(await input.bytes());
       return { image, width: image.width, height: image.height, orientation: 1 };
@@ -35,7 +36,8 @@ export async function embedImage(doc, input) {
   // decode through the browser (EXIF orientation applied by createImageBitmap)
   const bmp = await input.bitmap();
   try {
-    const s = canvasScaleCap(bmp.width, bmp.height, LIMITS.canvasPixels);
+    let s = canvasScaleCap(bmp.width, bmp.height, LIMITS.canvasPixels);
+    if (maxSide) s = Math.min(s, maxSide / Math.max(bmp.width, bmp.height));   // "smaller for email": fewer pixels
     const c = document.createElement('canvas');
     c.width = Math.max(1, Math.round(bmp.width * s));
     c.height = Math.max(1, Math.round(bmp.height * s));
@@ -46,7 +48,7 @@ export async function embedImage(doc, input) {
     if (alpha) image = await doc.embedPng(new Uint8Array(await (await canvasToBlob(c, 'image/png')).arrayBuffer()));
     else {
       // white background for formats without alpha, then JPEG at high quality
-      image = await doc.embedJpg(new Uint8Array(await (await canvasToBlob(c, 'image/jpeg', 0.92)).arrayBuffer()));
+      image = await doc.embedJpg(new Uint8Array(await (await canvasToBlob(c, 'image/jpeg', quality)).arrayBuffer()));
     }
     c.width = c.height = 0;
     return { image, width: bmp.width, height: bmp.height, orientation: 1 };

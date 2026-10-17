@@ -160,5 +160,12 @@
         "a": "No. Everything happens in your browser. After the first visit the page also works offline."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "edit-pdf-text",
+      "de": "Du willst den Text selbst ändern oder ersetzen?",
+      "en": "Want to change or replace the text itself?"
+    }
+  ]
 }

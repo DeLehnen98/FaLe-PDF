@@ -11,7 +11,10 @@
   "minFiles": 1,
   "popular": true,
   "order": 40,
-  "next": ["compress-image", "resize-image"],
+  "next": [
+    "compress-image",
+    "resize-image"
+  ],
   "related": [
     "pdf-to-png",
     "extract-images",
@@ -173,5 +176,12 @@
         "a": "JPG is smaller and ideal for photos and scans. PNG is lossless, razor-sharp for text and graphics and can have a transparent background – use “PDF to PNG” for that."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "pdf-to-png",
+      "de": "Du brauchst scharfe Schrift, Grafiken oder Transparenz?",
+      "en": "Need crisp text, graphics or transparency?"
+    }
+  ]
 }

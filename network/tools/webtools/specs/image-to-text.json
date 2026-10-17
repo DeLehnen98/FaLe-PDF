@@ -3,11 +3,27 @@
   "category": "images",
   "iconSvg": "<path d=\"M4 7V5a1 1 0 0 1 1-1h2\"/><path d=\"M17 4h2a1 1 0 0 1 1 1v2\"/><path d=\"M20 17v2a1 1 0 0 1-1 1h-2\"/><path d=\"M7 20H5a1 1 0 0 1-1-1v-2\"/><path d=\"M8 9h8\"/><path d=\"M12 9v7\"/>",
   "module": "tools/image-to-text.js",
-  "accepts": ["image/*", ".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".bmp", ".heic", ".heif"],
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
   "multiple": true,
   "popular": true,
   "order": 19,
-  "related": ["ocr-pdf", "scan-to-pdf", "jpg-to-pdf", "crop-image"],
+  "related": [
+    "ocr-pdf",
+    "scan-to-pdf",
+    "jpg-to-pdf",
+    "crop-image"
+  ],
   "next": [],
   "needs": [],
   "de": {
@@ -20,24 +36,68 @@
     "lede": "Fotografier einen Text oder nimm einen Screenshot – die Texterkennung (OCR) macht ihn kopierbar. Alles bleibt auf deinem Gerät.",
     "pickLabel": "Bilder auswählen",
     "primaryButton": "Text erkennen",
-    "keywords": ["ocr", "text aus bild", "foto in text", "screenshot text kopieren", "bild zu text", "texterkennung foto", "text aus foto kopieren"],
+    "keywords": [
+      "ocr",
+      "text aus bild",
+      "foto in text",
+      "screenshot text kopieren",
+      "bild zu text",
+      "texterkennung foto",
+      "text aus foto kopieren"
+    ],
     "steps": [
-      {"title": "Bild wählen", "text": "Wähl ein oder mehrere Fotos, Screenshots oder Scans – oder fotografier den Text direkt mit dem Handy."},
-      {"title": "Bereich markieren", "text": "Wenn du nur einen Teil brauchst, zieh einen Rahmen darüber. Stell Deutsch, Englisch oder beides ein."},
-      {"title": "Text kopieren", "text": "Der erkannte Text erscheint zum Bearbeiten. Kopier ihn mit einem Tipp oder speicher ihn als TXT."}
+      {
+        "title": "Bild wählen",
+        "text": "Wähl ein oder mehrere Fotos, Screenshots oder Scans – oder fotografier den Text direkt mit dem Handy."
+      },
+      {
+        "title": "Bereich markieren",
+        "text": "Wenn du nur einen Teil brauchst, zieh einen Rahmen darüber. Stell Deutsch, Englisch oder beides ein."
+      },
+      {
+        "title": "Text kopieren",
+        "text": "Der erkannte Text erscheint zum Bearbeiten. Kopier ihn mit einem Tipp oder speicher ihn als TXT."
+      }
     ],
     "why": [
-      {"title": "Kein Upload", "text": "Die Texterkennung läuft in deinem Browser. Fotos von Briefen, Ausweisen oder Notizen verlassen dein Gerät nicht."},
-      {"title": "Nur das, was du brauchst", "text": "Mit dem Rahmen liest du gezielt einen Bereich, etwa eine Adresse oder eine IBAN – das ist auch genauer."},
-      {"title": "Viele Bilder auf einmal", "text": "Wähl mehrere Bilder aus, der Text kommt in einem Rutsch – mit dem Dateinamen als Überschrift."},
-      {"title": "Danach offline", "text": "Die Erkennungsdaten werden beim ersten Mal einmalig geladen. Danach klappt es auch ohne Internet."}
+      {
+        "title": "Kein Upload",
+        "text": "Die Texterkennung läuft in deinem Browser. Fotos von Briefen, Ausweisen oder Notizen verlassen dein Gerät nicht."
+      },
+      {
+        "title": "Nur das, was du brauchst",
+        "text": "Mit dem Rahmen liest du gezielt einen Bereich, etwa eine Adresse oder eine IBAN – das ist auch genauer."
+      },
+      {
+        "title": "Viele Bilder auf einmal",
+        "text": "Wähl mehrere Bilder aus, der Text kommt in einem Rutsch – mit dem Dateinamen als Überschrift."
+      },
+      {
+        "title": "Danach offline",
+        "text": "Die Erkennungsdaten werden beim ersten Mal einmalig geladen. Danach klappt es auch ohne Internet."
+      }
     ],
     "faq": [
-      {"q": "Welche Bilder kann ich verwenden?", "a": "JPG, PNG, WebP, GIF, BMP und AVIF. HEIC-Fotos funktionieren, wenn dein Browser sie öffnen kann (z. B. Safari)."},
-      {"q": "Wird Handschrift erkannt?", "a": "Nur sehr eingeschränkt. Die Erkennung ist für gedruckten Text gemacht – Bildschirmtext, Bücher, Briefe, Schilder."},
-      {"q": "Wie werden die Ergebnisse besser?", "a": "Mit einem scharfen, gut beleuchteten Foto, auf dem der Text gerade und groß genug ist. Markier nur den Bereich, den du brauchst."},
-      {"q": "Welche Sprachen gehen?", "a": "Deutsch und Englisch, auch gemischt. Umlaute und ß werden erkannt."},
-      {"q": "Werden meine Bilder hochgeladen?", "a": "Nein. Die Bilder werden nur in deinem Browser verarbeitet. Es wird nichts an einen Server geschickt."}
+      {
+        "q": "Welche Bilder kann ich verwenden?",
+        "a": "JPG, PNG, WebP, GIF, BMP und AVIF. HEIC-Fotos funktionieren, wenn dein Browser sie öffnen kann (z. B. Safari)."
+      },
+      {
+        "q": "Wird Handschrift erkannt?",
+        "a": "Nur sehr eingeschränkt. Die Erkennung ist für gedruckten Text gemacht – Bildschirmtext, Bücher, Briefe, Schilder."
+      },
+      {
+        "q": "Wie werden die Ergebnisse besser?",
+        "a": "Mit einem scharfen, gut beleuchteten Foto, auf dem der Text gerade und groß genug ist. Markier nur den Bereich, den du brauchst."
+      },
+      {
+        "q": "Welche Sprachen gehen?",
+        "a": "Deutsch und Englisch, auch gemischt. Umlaute und ß werden erkannt."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Die Bilder werden nur in deinem Browser verarbeitet. Es wird nichts an einen Server geschickt."
+      }
     ]
   },
   "en": {
@@ -50,24 +110,79 @@
     "lede": "Take a photo of some text or a screenshot – OCR turns it into text you can copy. Everything stays on your device.",
     "pickLabel": "Choose images",
     "primaryButton": "Recognise text",
-    "keywords": ["ocr", "text from image", "photo to text", "screenshot to text", "extract text from image", "picture to text"],
+    "keywords": [
+      "ocr",
+      "text from image",
+      "photo to text",
+      "screenshot to text",
+      "extract text from image",
+      "picture to text"
+    ],
     "steps": [
-      {"title": "Choose image", "text": "Pick one or more photos, screenshots or scans – or take a photo of the text with your phone."},
-      {"title": "Mark the area", "text": "If you only need part of it, drag a frame over it. Choose English, German or both."},
-      {"title": "Copy the text", "text": "The recognised text appears for editing. Copy it with one tap or save it as TXT."}
+      {
+        "title": "Choose image",
+        "text": "Pick one or more photos, screenshots or scans – or take a photo of the text with your phone."
+      },
+      {
+        "title": "Mark the area",
+        "text": "If you only need part of it, drag a frame over it. Choose English, German or both."
+      },
+      {
+        "title": "Copy the text",
+        "text": "The recognised text appears for editing. Copy it with one tap or save it as TXT."
+      }
     ],
     "why": [
-      {"title": "No upload", "text": "Text recognition runs in your browser. Photos of letters, IDs or notes never leave your device."},
-      {"title": "Just what you need", "text": "With the frame you read a specific area, such as an address or an account number – which is also more accurate."},
-      {"title": "Many images at once", "text": "Pick several images and get all the text in one go – with each file name as a heading."},
-      {"title": "Offline afterwards", "text": "The recognition data is downloaded once the first time. After that it also works without internet."}
+      {
+        "title": "No upload",
+        "text": "Text recognition runs in your browser. Photos of letters, IDs or notes never leave your device."
+      },
+      {
+        "title": "Just what you need",
+        "text": "With the frame you read a specific area, such as an address or an account number – which is also more accurate."
+      },
+      {
+        "title": "Many images at once",
+        "text": "Pick several images and get all the text in one go – with each file name as a heading."
+      },
+      {
+        "title": "Offline afterwards",
+        "text": "The recognition data is downloaded once the first time. After that it also works without internet."
+      }
     ],
     "faq": [
-      {"q": "Which images can I use?", "a": "JPG, PNG, WebP, GIF, BMP and AVIF. HEIC photos work if your browser can open them (e.g. Safari)."},
-      {"q": "Is handwriting recognised?", "a": "Only to a very limited extent. Recognition is made for printed text – screens, books, letters, signs."},
-      {"q": "How do I get better results?", "a": "Use a sharp, well-lit photo in which the text is straight and large enough. Mark only the area you need."},
-      {"q": "Which languages work?", "a": "English and German, also mixed."},
-      {"q": "Are my images uploaded?", "a": "No. The images are processed only in your browser. Nothing is sent to a server."}
+      {
+        "q": "Which images can I use?",
+        "a": "JPG, PNG, WebP, GIF, BMP and AVIF. HEIC photos work if your browser can open them (e.g. Safari)."
+      },
+      {
+        "q": "Is handwriting recognised?",
+        "a": "Only to a very limited extent. Recognition is made for printed text – screens, books, letters, signs."
+      },
+      {
+        "q": "How do I get better results?",
+        "a": "Use a sharp, well-lit photo in which the text is straight and large enough. Mark only the area you need."
+      },
+      {
+        "q": "Which languages work?",
+        "a": "English and German, also mixed."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. The images are processed only in your browser. Nothing is sent to a server."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "ocr-pdf",
+      "de": "Du hast ein eingescanntes PDF und willst es durchsuchbar machen?",
+      "en": "Have a scanned PDF and want it searchable?"
+    },
+    {
+      "id": "image-to-word",
+      "de": "Du brauchst ein bearbeitbares Word-Dokument mit Layout?",
+      "en": "Need an editable Word document with layout?"
+    }
+  ]
 }

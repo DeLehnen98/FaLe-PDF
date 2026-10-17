@@ -160,5 +160,12 @@
         "a": "No. The PDF is created in your browser on your device."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "heic-to-jpg",
+      "de": "Du brauchst die Fotos einzeln als JPG?",
+      "en": "Need the photos as separate JPGs?"
+    }
+  ]
 }

@@ -5,8 +5,16 @@ import { embedImage, drawFitted, pageSizeFor, mm } from '../lib/imgembed.js';
 import { baseName } from '../lib/format.js';
 
 const MARGINS = { none: 0, small: mm(10), large: mm(20) };
+// longest side in pixels and JPEG quality: A4 at 2000 px is ~170 dpi – sharp on screen and in print
+const SHRINK = { original: {}, email: { maxSide: 2000, quality: 0.82 }, small: { maxSide: 1400, quality: 0.72 } };
 
-export default {
+/** Options with other defaults – photo-to-pdf starts with “For email” (phone photos are huge). */
+export function withDefaults(over) {
+  const tool = { ...jpgToPdf, options: jpgToPdf.options.map(o => (o.id in over ? { ...o, default: over[o.id] } : o)) };
+  return tool;
+}
+
+const jpgToPdf = {
   options: [
     {
       id: 'size', type: 'radio', default: 'a4',
@@ -37,6 +45,16 @@ export default {
       ],
     },
     {
+      id: 'shrink', type: 'select', default: 'original',
+      label: { de: 'Bildqualität', en: 'Image quality' },
+      choices: [
+        { value: 'original', label: { de: 'Original (größte Datei)', en: 'Original (largest file)' } },
+        { value: 'email', label: { de: 'Für E-Mail und Messenger (kleiner, scharf)', en: 'For email and messengers (smaller, sharp)' } },
+        { value: 'small', label: { de: 'Möglichst klein', en: 'As small as possible' } },
+      ],
+      hint: { de: 'Handyfotos haben oft 3–5 MB. „Für E-Mail“ macht daraus meist 300–600 KB pro Seite.', en: 'Phone photos are often 3–5 MB. “For email” usually makes that 300–600 KB per page.' },
+    },
+    {
       id: 'output', type: 'radio', default: 'single',
       label: { de: 'Ergebnis', en: 'Result' },
       when: (v, inputs) => inputs.length > 1,
@@ -57,7 +75,7 @@ export default {
       const input = inputs[i];
       ctx.progress(i / inputs.length, { de: `Bild ${i + 1} von ${inputs.length}`, en: `Image ${i + 1} of ${inputs.length}` });
       const target = each ? await PDFLib.PDFDocument.create() : doc;
-      const e = await embedImage(target, input);
+      const e = await embedImage(target, input, SHRINK[opts.shrink] || {});
       const size = pageSizeFor(e, opts.size, opts.orientation, margin);
       const page = target.addPage(size);
       drawFitted(page, e, PDFLib, { x: margin, y: margin, width: size[0] - 2 * margin, height: size[1] - 2 * margin });
@@ -79,3 +97,5 @@ export default {
     return { outputs };
   },
 };
+
+export default jpgToPdf;

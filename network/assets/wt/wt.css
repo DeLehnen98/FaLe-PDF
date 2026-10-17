@@ -375,3 +375,7 @@ html:not(.wt-js) .wt-cat[aria-current="true"] { background: var(--surface); bord
 .wt-support a { color: var(--primary); font-weight: 650; }
 .wt-support-x { margin-left: auto; width: 44px; height: 44px; border: 0; background: transparent; color: var(--text-3); font-size: 1.4rem; line-height: 1; cursor: pointer; border-radius: var(--radius-pill); }
 .wt-support-x:hover { background: var(--surface-3, var(--surface)); color: var(--text); }
+.wt-alt { display: flex; gap: 8px; align-items: flex-start; margin: 10px 0 0; font-size: 0.95rem; color: var(--text-2); max-width: 60ch; }
+.wt-alt svg { flex: none; width: 16px; height: 16px; margin-top: 3px; color: var(--primary); }
+.wt-alt a { color: var(--primary); font-weight: 650; }
+.wt-alt + .wt-alt { margin-top: 4px; }

@@ -190,5 +190,12 @@
         "a": "“Compress image” is better for that: it shrinks the file directly, below a target size in KB if you like, without working out pixel sizes. “Resize image” is for exact pixel dimensions."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "compress-image",
+      "de": "Die Datei soll nur weniger Speicher brauchen, die Pixelmaße bleiben?",
+      "en": "Only want a smaller file and keep the pixel size?"
+    }
+  ]
 }

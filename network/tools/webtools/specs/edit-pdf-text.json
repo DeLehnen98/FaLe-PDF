@@ -3,13 +3,27 @@
   "category": "edit",
   "icon": "edit",
   "module": "tools/edit-pdf-text.js",
-  "accepts": ["application/pdf", ".pdf"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
   "multiple": false,
   "popular": true,
   "order": 15,
-  "related": ["add-page-numbers", "watermark-pdf", "crop-pdf", "compress-pdf"],
-  "next": ["compress-pdf"],
-  "needs": ["pdfjs", "pdflib", "unicodefont"],
+  "related": [
+    "add-page-numbers",
+    "watermark-pdf",
+    "crop-pdf",
+    "compress-pdf"
+  ],
+  "next": [
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib",
+    "unicodefont"
+  ],
   "trademarkNote": false,
   "de": {
     "slug": "pdf-bearbeiten",
@@ -20,25 +34,74 @@
     "metaDescription": "Schreib Text in deine PDF, ändere Zeilen, setz Haken, markiere Text, füge Pfeile, Formen, Datum und Bilder ein – am Handy per Fingertipp. Gratis, ohne Upload.",
     "lede": "Text in PDF einfügen, Haken setzen, markieren – direkt auf der Seite, per Fingertipp.",
     "primaryButton": "Speichern",
-    "keywords": ["pdf beschriften", "text in pdf einfügen", "pdf ausfüllen", "pdf ändern", "pdf markieren", "haken setzen", "pdf editor", "pdf text ändern", "unterschreiben"],
+    "keywords": [
+      "pdf beschriften",
+      "text in pdf einfügen",
+      "pdf ausfüllen",
+      "pdf ändern",
+      "pdf markieren",
+      "haken setzen",
+      "pdf editor",
+      "pdf text ändern",
+      "unterschreiben"
+    ],
     "steps": [
-      {"title": "PDF auswählen", "text": "Wähle die PDF aus, die du bearbeiten möchtest – ein Formular, einen Vertrag, ein Arbeitsblatt."},
-      {"title": "Auf der Seite bearbeiten", "text": "Wähle oben ein Werkzeug und tippe auf die Seite: Text, Haken, Datum oder Markierung. Ziehe Elemente mit dem Finger an ihren Platz und ändere die Größe an den Griffen. Mit „Rückgängig“ machst du jeden Schritt ungeschehen."},
-      {"title": "Speichern", "text": "Tippe auf „Speichern“. Deine Änderungen werden fest in die PDF geschrieben – du kannst sie herunterladen oder direkt teilen."}
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF aus, die du bearbeiten möchtest – ein Formular, einen Vertrag, ein Arbeitsblatt."
+      },
+      {
+        "title": "Auf der Seite bearbeiten",
+        "text": "Wähle oben ein Werkzeug und tippe auf die Seite: Text, Haken, Datum oder Markierung. Ziehe Elemente mit dem Finger an ihren Platz und ändere die Größe an den Griffen. Mit „Rückgängig“ machst du jeden Schritt ungeschehen."
+      },
+      {
+        "title": "Speichern",
+        "text": "Tippe auf „Speichern“. Deine Änderungen werden fest in die PDF geschrieben – du kannst sie herunterladen oder direkt teilen."
+      }
     ],
     "why": [
-      {"title": "Fürs Handy gebaut", "text": "Große Werkzeugknöpfe, Elemente mit dem Finger verschieben, Griffe zum Vergrößern und eine Zoom-Taste für kleine Kästchen. Haken tippst du einfach an – ein zweiter Tipp entfernt ihn wieder."},
-      {"title": "Text ändern", "text": "Tippe auf eine vorhandene Zeile: Sie wird weiß abgedeckt und als bearbeitbarer Text darübergelegt – in ähnlicher Größe und Schrift. Ideal für Tippfehler, Daten und Adressen."},
-      {"title": "Markieren, das auf Text einrastet", "text": "Ziehe den Marker über Text, und die Markierung folgt den Zeilen genau. Auf Scans ziehst du einfach einen Bereich auf."},
-      {"title": "Echter Text, echte Vektoren", "text": "Dein Text bleibt markier- und durchsuchbar, Formen und Haken bleiben beim Zoomen scharf. Die Seiten werden nicht in Bilder umgewandelt."}
+      {
+        "title": "Fürs Handy gebaut",
+        "text": "Große Werkzeugknöpfe, Elemente mit dem Finger verschieben, Griffe zum Vergrößern und eine Zoom-Taste für kleine Kästchen. Haken tippst du einfach an – ein zweiter Tipp entfernt ihn wieder."
+      },
+      {
+        "title": "Text ändern",
+        "text": "Tippe auf eine vorhandene Zeile: Sie wird weiß abgedeckt und als bearbeitbarer Text darübergelegt – in ähnlicher Größe und Schrift. Ideal für Tippfehler, Daten und Adressen."
+      },
+      {
+        "title": "Markieren, das auf Text einrastet",
+        "text": "Ziehe den Marker über Text, und die Markierung folgt den Zeilen genau. Auf Scans ziehst du einfach einen Bereich auf."
+      },
+      {
+        "title": "Echter Text, echte Vektoren",
+        "text": "Dein Text bleibt markier- und durchsuchbar, Formen und Haken bleiben beim Zoomen scharf. Die Seiten werden nicht in Bilder umgewandelt."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Du bearbeitest die PDF vollständig in deinem Browser. Gerade bei Verträgen und Formularen mit persönlichen Daten bleibt so alles auf deinem Gerät."},
-      {"q": "Kann ich vorhandenen Text direkt ändern?", "a": "Mit „Text ändern“ tippst du eine Zeile an: Sie wird weiß abgedeckt und du schreibst den neuen Text darüber. Der ursprüngliche Text bleibt dabei unter der Abdeckung in der Datei. Die Schrift wird so ähnlich wie möglich gewählt, kann aber leicht abweichen."},
-      {"q": "Ist „Abdecken“ sicheres Schwärzen?", "a": "Nein. Abdecken legt nur einen Kasten über den Inhalt – darunter bleibt er in der Datei erhalten und kann herauskopiert werden. Für vertrauliche Daten brauchst du ein echtes Schwärzen-Werkzeug."},
-      {"q": "Welche Zeichen kann ich schreiben?", "a": "Die eingebauten PDF-Schriften decken westeuropäische Zeichen ab, also auch ä, ö, ü, ß und €. Andere Zeichen werden ersetzt – das Werkzeug zeigt dir beim Tippen, welche."},
-      {"q": "Kann ich mehrere Seiten bearbeiten?", "a": "Ja. Blättere mit den Pfeilen oder wische auf freier Fläche zur nächsten Seite. Alle Änderungen auf allen Seiten werden zusammen gespeichert."},
-      {"q": "Sind die Änderungen später noch bearbeitbar?", "a": "Sie werden fest in die Seite geschrieben, damit sie in jedem Programm gleich aussehen. Willst du später noch etwas ändern, bearbeite am besten wieder die ursprüngliche Datei."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Du bearbeitest die PDF vollständig in deinem Browser. Gerade bei Verträgen und Formularen mit persönlichen Daten bleibt so alles auf deinem Gerät."
+      },
+      {
+        "q": "Kann ich vorhandenen Text direkt ändern?",
+        "a": "Mit „Text ändern“ tippst du eine Zeile an: Sie wird weiß abgedeckt und du schreibst den neuen Text darüber. Der ursprüngliche Text bleibt dabei unter der Abdeckung in der Datei. Die Schrift wird so ähnlich wie möglich gewählt, kann aber leicht abweichen."
+      },
+      {
+        "q": "Ist „Abdecken“ sicheres Schwärzen?",
+        "a": "Nein. Abdecken legt nur einen Kasten über den Inhalt – darunter bleibt er in der Datei erhalten und kann herauskopiert werden. Für vertrauliche Daten brauchst du ein echtes Schwärzen-Werkzeug."
+      },
+      {
+        "q": "Welche Zeichen kann ich schreiben?",
+        "a": "Die eingebauten PDF-Schriften decken westeuropäische Zeichen ab, also auch ä, ö, ü, ß und €. Andere Zeichen werden ersetzt – das Werkzeug zeigt dir beim Tippen, welche."
+      },
+      {
+        "q": "Kann ich mehrere Seiten bearbeiten?",
+        "a": "Ja. Blättere mit den Pfeilen oder wische auf freier Fläche zur nächsten Seite. Alle Änderungen auf allen Seiten werden zusammen gespeichert."
+      },
+      {
+        "q": "Sind die Änderungen später noch bearbeitbar?",
+        "a": "Sie werden fest in die Seite geschrieben, damit sie in jedem Programm gleich aussehen. Willst du später noch etwas ändern, bearbeite am besten wieder die ursprüngliche Datei."
+      }
     ]
   },
   "en": {
@@ -50,25 +113,86 @@
     "metaDescription": "Type on your PDF, change lines, add ticks and crosses, highlight text, insert arrows, shapes, dates and images – with a tap on your phone. Free, no upload.",
     "lede": "Add text to your PDF, tick boxes, highlight – right on the page, with a tap.",
     "primaryButton": "Save",
-    "keywords": ["write on pdf", "add text to pdf", "fill pdf", "change pdf", "highlight pdf", "tick boxes", "pdf editor", "edit pdf text", "annotate"],
+    "keywords": [
+      "write on pdf",
+      "add text to pdf",
+      "fill pdf",
+      "change pdf",
+      "highlight pdf",
+      "tick boxes",
+      "pdf editor",
+      "edit pdf text",
+      "annotate"
+    ],
     "steps": [
-      {"title": "Choose your PDF", "text": "Select the PDF you want to edit – a form, a contract, a worksheet."},
-      {"title": "Edit on the page", "text": "Pick a tool at the top and tap the page: text, tick, date or highlight. Drag items into place with your finger and resize them by their handles. “Undo” takes back any step."},
-      {"title": "Save", "text": "Tap “Save”. Your changes are written into the PDF – download it or share it right away."}
+      {
+        "title": "Choose your PDF",
+        "text": "Select the PDF you want to edit – a form, a contract, a worksheet."
+      },
+      {
+        "title": "Edit on the page",
+        "text": "Pick a tool at the top and tap the page: text, tick, date or highlight. Drag items into place with your finger and resize them by their handles. “Undo” takes back any step."
+      },
+      {
+        "title": "Save",
+        "text": "Tap “Save”. Your changes are written into the PDF – download it or share it right away."
+      }
     ],
     "why": [
-      {"title": "Built for phones", "text": "Big tool buttons, items you move with your finger, handles for resizing and a zoom button for small boxes. Tap to add a tick – tap again to remove it."},
-      {"title": "Change text", "text": "Tap an existing line: it is covered in white and placed on top as editable text – in a similar size and font. Ideal for typos, dates and addresses."},
-      {"title": "Highlights that snap to text", "text": "Drag the highlighter across text and the highlight follows the lines exactly. On scans, simply drag out an area."},
-      {"title": "Real text, real vectors", "text": "Your text stays selectable and searchable, shapes and ticks stay sharp when zooming. Pages are not turned into images."}
+      {
+        "title": "Built for phones",
+        "text": "Big tool buttons, items you move with your finger, handles for resizing and a zoom button for small boxes. Tap to add a tick – tap again to remove it."
+      },
+      {
+        "title": "Change text",
+        "text": "Tap an existing line: it is covered in white and placed on top as editable text – in a similar size and font. Ideal for typos, dates and addresses."
+      },
+      {
+        "title": "Highlights that snap to text",
+        "text": "Drag the highlighter across text and the highlight follows the lines exactly. On scans, simply drag out an area."
+      },
+      {
+        "title": "Real text, real vectors",
+        "text": "Your text stays selectable and searchable, shapes and ticks stay sharp when zooming. Pages are not turned into images."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. You edit the PDF entirely in your browser. Especially with contracts and forms containing personal data, everything stays on your device."},
-      {"q": "Can I change existing text directly?", "a": "With “Change text” you tap a line: it is covered in white and you type the new text on top. The original text stays in the file underneath the cover. The font is matched as closely as possible but may differ slightly."},
-      {"q": "Is “White-out” secure redaction?", "a": "No. White-out only places a box over the content – it stays in the file underneath and can be copied out. For confidential data you need a real redaction tool."},
-      {"q": "Which characters can I type?", "a": "The built-in PDF fonts cover Western European characters, including accents and €. Other characters are replaced – the tool tells you which ones while you type."},
-      {"q": "Can I edit several pages?", "a": "Yes. Use the arrows or swipe on an empty area to go to the next page. All changes on all pages are saved together."},
-      {"q": "Can the changes be edited later?", "a": "They are written into the page so they look the same in every program. If you want to change something later, it is best to edit the original file again."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. You edit the PDF entirely in your browser. Especially with contracts and forms containing personal data, everything stays on your device."
+      },
+      {
+        "q": "Can I change existing text directly?",
+        "a": "With “Change text” you tap a line: it is covered in white and you type the new text on top. The original text stays in the file underneath the cover. The font is matched as closely as possible but may differ slightly."
+      },
+      {
+        "q": "Is “White-out” secure redaction?",
+        "a": "No. White-out only places a box over the content – it stays in the file underneath and can be copied out. For confidential data you need a real redaction tool."
+      },
+      {
+        "q": "Which characters can I type?",
+        "a": "The built-in PDF fonts cover Western European characters, including accents and €. Other characters are replaced – the tool tells you which ones while you type."
+      },
+      {
+        "q": "Can I edit several pages?",
+        "a": "Yes. Use the arrows or swipe on an empty area to go to the next page. All changes on all pages are saved together."
+      },
+      {
+        "q": "Can the changes be edited later?",
+        "a": "They are written into the page so they look the same in every program. If you want to change something later, it is best to edit the original file again."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "fill-pdf-form",
+      "de": "Du willst nur ein Formular ausfüllen?",
+      "en": "Only want to fill in a form?"
+    },
+    {
+      "id": "annotate-pdf",
+      "de": "Du willst nur markieren und Notizen anbringen?",
+      "en": "Only want to highlight and add notes?"
+    }
+  ]
 }

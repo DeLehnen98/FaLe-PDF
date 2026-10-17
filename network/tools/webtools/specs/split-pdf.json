@@ -3,12 +3,26 @@
   "category": "organize",
   "icon": "split",
   "module": "tools/split-pdf.js",
-  "accepts": ["application/pdf", ".pdf"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
   "popular": true,
   "order": 15,
-  "related": ["extract-pages", "merge-pdf", "organize-pdf", "split-halves"],
-  "next": ["compress-pdf", "merge-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "related": [
+    "extract-pages",
+    "merge-pdf",
+    "organize-pdf",
+    "split-halves"
+  ],
+  "next": [
+    "compress-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
   "de": {
     "slug": "pdf-teilen",
     "name": "PDF teilen",
@@ -18,24 +32,69 @@
     "metaDescription": "PDF teilen und in mehrere Dateien trennen: nach Bereichen, alle N Seiten, Lesezeichen, Dateigröße oder in Einzelseiten. Per Fingertipp, ohne Upload.",
     "lede": "Tippe zwischen zwei Seiten, um dort zu trennen – oder lass automatisch aufteilen, auch in einzelne Seiten.",
     "primaryButton": "Teilen",
-    "keywords": ["aufteilen", "trennen", "splitten", "zerlegen", "seiten trennen", "einzelne seiten", "pdf aufsplitten", "kapitel"],
+    "keywords": [
+      "aufteilen",
+      "trennen",
+      "splitten",
+      "zerlegen",
+      "seiten trennen",
+      "einzelne seiten",
+      "pdf aufsplitten",
+      "kapitel"
+    ],
     "steps": [
-      {"title": "PDF auswählen", "text": "Wähle die PDF aus, die du aufteilen möchtest. Alle Seiten erscheinen als Vorschaubilder."},
-      {"title": "Schnitte festlegen", "text": "Tippe auf eine Seite, um nach ihr zu schneiden, oder gib Bereiche wie „1-3, 4-8“ ein. Alternativ teilst du alle N Seiten, nach Lesezeichen, nach Dateigröße oder in gerade und ungerade Seiten."},
-      {"title": "Teilen und speichern", "text": "Tippe auf „Teilen“. Du bekommst jede Datei einzeln und alle zusammen als ZIP."}
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF aus, die du aufteilen möchtest. Alle Seiten erscheinen als Vorschaubilder."
+      },
+      {
+        "title": "Schnitte festlegen",
+        "text": "Tippe auf eine Seite, um nach ihr zu schneiden, oder gib Bereiche wie „1-3, 4-8“ ein. Alternativ teilst du alle N Seiten, nach Lesezeichen, nach Dateigröße oder in gerade und ungerade Seiten."
+      },
+      {
+        "title": "Teilen und speichern",
+        "text": "Tippe auf „Teilen“. Du bekommst jede Datei einzeln und alle zusammen als ZIP."
+      }
     ],
     "why": [
-      {"title": "Schneiden mit dem Finger", "text": "Die Seiten liegen als Raster vor dir. Ein Tipp setzt einen Schnitt, die Teile werden farbig markiert – und die Bereiche im Textfeld passen sich von selbst an."},
-      {"title": "Sechs Arten zu teilen", "text": "Eigene Bereiche, alle N Seiten, jede Seite einzeln, nach maximaler Dateigröße, nach Lesezeichen oder gerade/ungerade – für fast jeden Fall die passende."},
-      {"title": "Kapitel als Dateinamen", "text": "Beim Teilen nach Lesezeichen heißen die Dateien wie die Kapitel. So findest du alles sofort wieder."},
-      {"title": "Passend für E-Mails", "text": "Gib eine Höchstgröße an, etwa 5 MB, und die Seiten werden so verteilt, dass jede Datei darunter bleibt."}
+      {
+        "title": "Schneiden mit dem Finger",
+        "text": "Die Seiten liegen als Raster vor dir. Ein Tipp setzt einen Schnitt, die Teile werden farbig markiert – und die Bereiche im Textfeld passen sich von selbst an."
+      },
+      {
+        "title": "Sechs Arten zu teilen",
+        "text": "Eigene Bereiche, alle N Seiten, jede Seite einzeln, nach maximaler Dateigröße, nach Lesezeichen oder gerade/ungerade – für fast jeden Fall die passende."
+      },
+      {
+        "title": "Kapitel als Dateinamen",
+        "text": "Beim Teilen nach Lesezeichen heißen die Dateien wie die Kapitel. So findest du alles sofort wieder."
+      },
+      {
+        "title": "Passend für E-Mails",
+        "text": "Gib eine Höchstgröße an, etwa 5 MB, und die Seiten werden so verteilt, dass jede Datei darunter bleibt."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Das Teilen passiert vollständig in deinem Browser, die PDF verlässt dein Gerät nicht. Nach dem ersten Laden funktioniert es sogar offline."},
-      {"q": "Wie gebe ich eigene Bereiche ein?", "a": "Jeder Bereich wird eine Datei, getrennt durch Kommas: „1-3, 4-8, 9-“ ergibt drei Dateien, die letzte geht bis zum Ende. Möchtest du verstreute Seiten in einer Datei, schreib sie mit Leerzeichen: „1 3 5“."},
-      {"q": "Wie funktioniert das Teilen nach Dateigröße?", "a": "Die Seiten werden der Reihe nach auf Dateien verteilt, und jede Datei wird beim Aufteilen tatsächlich gemessen. Ist eine einzelne Seite schon größer als dein Limit, bekommt sie eine eigene Datei und du erhältst einen Hinweis."},
-      {"q": "Was passiert beim Teilen nach Lesezeichen?", "a": "Jedes Lesezeichen der obersten Ebene beginnt eine neue Datei, die nach dem Kapitel benannt wird. Seiten vor dem ersten Lesezeichen landen in einer eigenen Datei. Hat die PDF keine Lesezeichen, sagt dir das Werkzeug Bescheid."},
-      {"q": "Bleiben Text, Links und Formularfelder erhalten?", "a": "Ja. Die Seiten werden unverändert in die neuen Dateien übernommen, Text bleibt durchsuchbar und Formularfelder funktionieren weiter. Ist die PDF mit Passwort geschützt, sind die Teile wieder mit demselben Passwort geschützt."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Das Teilen passiert vollständig in deinem Browser, die PDF verlässt dein Gerät nicht. Nach dem ersten Laden funktioniert es sogar offline."
+      },
+      {
+        "q": "Wie gebe ich eigene Bereiche ein?",
+        "a": "Jeder Bereich wird eine Datei, getrennt durch Kommas: „1-3, 4-8, 9-“ ergibt drei Dateien, die letzte geht bis zum Ende. Möchtest du verstreute Seiten in einer Datei, schreib sie mit Leerzeichen: „1 3 5“."
+      },
+      {
+        "q": "Wie funktioniert das Teilen nach Dateigröße?",
+        "a": "Die Seiten werden der Reihe nach auf Dateien verteilt, und jede Datei wird beim Aufteilen tatsächlich gemessen. Ist eine einzelne Seite schon größer als dein Limit, bekommt sie eine eigene Datei und du erhältst einen Hinweis."
+      },
+      {
+        "q": "Was passiert beim Teilen nach Lesezeichen?",
+        "a": "Jedes Lesezeichen der obersten Ebene beginnt eine neue Datei, die nach dem Kapitel benannt wird. Seiten vor dem ersten Lesezeichen landen in einer eigenen Datei. Hat die PDF keine Lesezeichen, sagt dir das Werkzeug Bescheid."
+      },
+      {
+        "q": "Bleiben Text, Links und Formularfelder erhalten?",
+        "a": "Ja. Die Seiten werden unverändert in die neuen Dateien übernommen, Text bleibt durchsuchbar und Formularfelder funktionieren weiter. Ist die PDF mit Passwort geschützt, sind die Teile wieder mit demselben Passwort geschützt."
+      }
     ]
   },
   "en": {
@@ -47,24 +106,75 @@
     "metaDescription": "Split a PDF into several files: by ranges, every N pages, by bookmarks, by file size or odd/even pages. Set cuts with a tap. No upload, free, no account.",
     "lede": "Tap between two pages to cut there – or split automatically, even into single pages.",
     "primaryButton": "Split",
-    "keywords": ["separate", "divide", "break apart", "single pages", "chapters", "burst", "cut pdf"],
+    "keywords": [
+      "separate",
+      "divide",
+      "break apart",
+      "single pages",
+      "chapters",
+      "burst",
+      "cut pdf"
+    ],
     "steps": [
-      {"title": "Choose a PDF", "text": "Pick the PDF you want to split. Every page shows up as a thumbnail."},
-      {"title": "Set the cuts", "text": "Tap a page to cut after it, or type ranges such as “1-3, 4-8”. Or split every N pages, by bookmarks, by file size or into odd and even pages."},
-      {"title": "Split and save", "text": "Tap “Split”. You get every file on its own and all of them together as a ZIP."}
+      {
+        "title": "Choose a PDF",
+        "text": "Pick the PDF you want to split. Every page shows up as a thumbnail."
+      },
+      {
+        "title": "Set the cuts",
+        "text": "Tap a page to cut after it, or type ranges such as “1-3, 4-8”. Or split every N pages, by bookmarks, by file size or into odd and even pages."
+      },
+      {
+        "title": "Split and save",
+        "text": "Tap “Split”. You get every file on its own and all of them together as a ZIP."
+      }
     ],
     "why": [
-      {"title": "Cut with your finger", "text": "Your pages are laid out as a grid. One tap sets a cut, the parts are tinted – and the ranges in the text field update by themselves."},
-      {"title": "Six ways to split", "text": "Custom ranges, every N pages, every page, by maximum file size, by bookmarks or odd/even – the right one for almost any case."},
-      {"title": "Chapters as file names", "text": "When you split by bookmarks, the files are named after the chapters, so you find everything right away."},
-      {"title": "Ready for e-mail", "text": "Enter a maximum size, say 5 MB, and the pages are distributed so that every file stays below it."}
+      {
+        "title": "Cut with your finger",
+        "text": "Your pages are laid out as a grid. One tap sets a cut, the parts are tinted – and the ranges in the text field update by themselves."
+      },
+      {
+        "title": "Six ways to split",
+        "text": "Custom ranges, every N pages, every page, by maximum file size, by bookmarks or odd/even – the right one for almost any case."
+      },
+      {
+        "title": "Chapters as file names",
+        "text": "When you split by bookmarks, the files are named after the chapters, so you find everything right away."
+      },
+      {
+        "title": "Ready for e-mail",
+        "text": "Enter a maximum size, say 5 MB, and the pages are distributed so that every file stays below it."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. Splitting happens entirely in your browser and the PDF never leaves your device. After the first visit it even works offline."},
-      {"q": "How do I type custom ranges?", "a": "Every range becomes a file, separated by commas: “1-3, 4-8, 9-” gives three files, the last one runs to the end. For scattered pages in one file, use spaces: “1 3 5”."},
-      {"q": "How does splitting by file size work?", "a": "Pages are distributed to files in order, and each file is actually measured while splitting. If a single page is already larger than your limit, it gets a file of its own and you get a note."},
-      {"q": "What happens when I split by bookmarks?", "a": "Every top-level bookmark starts a new file named after the chapter. Pages before the first bookmark get a file of their own. If the PDF has no bookmarks, the tool tells you."},
-      {"q": "Are text, links and form fields kept?", "a": "Yes. Pages are copied unchanged into the new files, text stays searchable and form fields keep working. If the PDF is password protected, the parts are protected again with the same password."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. Splitting happens entirely in your browser and the PDF never leaves your device. After the first visit it even works offline."
+      },
+      {
+        "q": "How do I type custom ranges?",
+        "a": "Every range becomes a file, separated by commas: “1-3, 4-8, 9-” gives three files, the last one runs to the end. For scattered pages in one file, use spaces: “1 3 5”."
+      },
+      {
+        "q": "How does splitting by file size work?",
+        "a": "Pages are distributed to files in order, and each file is actually measured while splitting. If a single page is already larger than your limit, it gets a file of its own and you get a note."
+      },
+      {
+        "q": "What happens when I split by bookmarks?",
+        "a": "Every top-level bookmark starts a new file named after the chapter. Pages before the first bookmark get a file of their own. If the PDF has no bookmarks, the tool tells you."
+      },
+      {
+        "q": "Are text, links and form fields kept?",
+        "a": "Yes. Pages are copied unchanged into the new files, text stays searchable and form fields keep working. If the PDF is password protected, the parts are protected again with the same password."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "extract-pages",
+      "de": "Du brauchst nur einzelne Seiten als neue PDF?",
+      "en": "Only need certain pages as a new PDF?"
+    }
+  ]
 }

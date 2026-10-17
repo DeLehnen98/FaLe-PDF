@@ -7,7 +7,12 @@
   "minFiles": 0,
   "popular": true,
   "order": 63,
-  "related": ["sign-pdf", "fill-pdf-form", "invoice-generator", "cancellation-letter"],
+  "related": [
+    "sign-pdf",
+    "fill-pdf-form",
+    "invoice-generator",
+    "cancellation-letter"
+  ],
   "next": [],
   "needs": [],
   "trademarkNote": true,
@@ -20,23 +25,64 @@
     "metaDescription": "Erstelle deine digitale Unterschrift: mit dem Finger zeichnen, tippen oder vom Papier fotografieren. Als transparentes PNG oder SVG – kostenlos, ohne Upload.",
     "lede": "Zeichne, tippe oder fotografier deine Unterschrift – und lade sie als transparentes Bild herunter.",
     "primaryButton": "Unterschrift speichern",
-    "keywords": ["unterschrift erstellen", "digitale unterschrift", "unterschrift png", "unterschrift transparent", "unterschrift zeichnen", "signatur erstellen", "unterschrift foto freistellen"],
+    "keywords": [
+      "unterschrift erstellen",
+      "digitale unterschrift",
+      "unterschrift png",
+      "unterschrift transparent",
+      "unterschrift zeichnen",
+      "signatur erstellen",
+      "unterschrift foto freistellen"
+    ],
     "steps": [
-      {"title": "Unterschrift erstellen", "text": "Zeichne mit dem Finger oder Stift, tipp deinen Namen in einer Handschrift-Schrift oder fotografier deine Unterschrift auf weißem Papier."},
-      {"title": "Format wählen", "text": "Transparentes PNG für Word (DOCX) und E-Mails, SVG als Vektor für Grafikprogramme – oder beides."},
-      {"title": "Herunterladen", "text": "Speicher die Dateien. Mit „Auf diesem Gerät merken“ steht die Unterschrift auch in „PDF unterschreiben“ bereit."}
+      {
+        "title": "Unterschrift erstellen",
+        "text": "Zeichne mit dem Finger oder Stift, tipp deinen Namen in einer Handschrift-Schrift oder fotografier deine Unterschrift auf weißem Papier."
+      },
+      {
+        "title": "Format wählen",
+        "text": "Transparentes PNG für Word (DOCX) und E-Mails, SVG als Vektor für Grafikprogramme – oder beides."
+      },
+      {
+        "title": "Herunterladen",
+        "text": "Speicher die Dateien. Mit „Auf diesem Gerät merken“ steht die Unterschrift auch in „PDF unterschreiben“ bereit."
+      }
     ],
     "why": [
-      {"title": "Sauber freigestellt", "text": "Der Hintergrund ist transparent und die Unterschrift eng zugeschnitten – bei Fotos wird das Papier samt Schatten entfernt."},
-      {"title": "Echter Vektor", "text": "Die SVG-Datei enthält die Umrisse deiner Unterschrift als Vektor und bleibt in jeder Größe scharf."},
-      {"title": "Bleibt bei dir", "text": "Deine Unterschrift wird nicht hochgeladen. Gemerkt wird sie nur, wenn du es willst – und nur in diesem Browser."}
+      {
+        "title": "Sauber freigestellt",
+        "text": "Der Hintergrund ist transparent und die Unterschrift eng zugeschnitten – bei Fotos wird das Papier samt Schatten entfernt."
+      },
+      {
+        "title": "Echter Vektor",
+        "text": "Die SVG-Datei enthält die Umrisse deiner Unterschrift als Vektor und bleibt in jeder Größe scharf."
+      },
+      {
+        "title": "Bleibt bei dir",
+        "text": "Deine Unterschrift wird nicht hochgeladen. Gemerkt wird sie nur, wenn du es willst – und nur in diesem Browser."
+      }
     ],
     "faq": [
-      {"q": "Ist das eine rechtsgültige elektronische Signatur?", "a": "Es ist ein Bild deiner Unterschrift. Für viele Alltagsdokumente reicht das, eine qualifizierte elektronische Signatur ist es aber nicht. Wenn eine Schriftform vorgeschrieben ist, brauchst du eine echte Unterschrift auf Papier."},
-      {"q": "Wie bekomme ich die Unterschrift in Word (DOCX)?", "a": "Lade das PNG herunter und füge es über „Einfügen → Bild“ ein. Weil der Hintergrund transparent ist, liegt die Unterschrift sauber auf der Linie."},
-      {"q": "Was ist der Unterschied zwischen PNG und SVG?", "a": "PNG ist ein Pixelbild, das fast jedes Programm versteht. SVG ist ein Vektor und bleibt beim Vergrößern scharf, wird aber nicht überall unterstützt."},
-      {"q": "Wie gelingt das Foto am besten?", "a": "Unterschreib mit einem dunklen Stift auf weißem Papier und fotografier gerade von oben bei gutem Licht. Mit dem Regler „Empfindlichkeit“ holst du auch helle Striche heraus."},
-      {"q": "Wird meine Unterschrift gespeichert?", "a": "Nur wenn du „Auf diesem Gerät merken“ anhakst – dann in deinem Browser auf diesem Gerät. Du kannst sie jederzeit wieder löschen."}
+      {
+        "q": "Ist das eine rechtsgültige elektronische Signatur?",
+        "a": "Es ist ein Bild deiner Unterschrift. Für viele Alltagsdokumente reicht das, eine qualifizierte elektronische Signatur ist es aber nicht. Wenn eine Schriftform vorgeschrieben ist, brauchst du eine echte Unterschrift auf Papier."
+      },
+      {
+        "q": "Wie bekomme ich die Unterschrift in Word (DOCX)?",
+        "a": "Lade das PNG herunter und füge es über „Einfügen → Bild“ ein. Weil der Hintergrund transparent ist, liegt die Unterschrift sauber auf der Linie."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen PNG und SVG?",
+        "a": "PNG ist ein Pixelbild, das fast jedes Programm versteht. SVG ist ein Vektor und bleibt beim Vergrößern scharf, wird aber nicht überall unterstützt."
+      },
+      {
+        "q": "Wie gelingt das Foto am besten?",
+        "a": "Unterschreib mit einem dunklen Stift auf weißem Papier und fotografier gerade von oben bei gutem Licht. Mit dem Regler „Empfindlichkeit“ holst du auch helle Striche heraus."
+      },
+      {
+        "q": "Wird meine Unterschrift gespeichert?",
+        "a": "Nur wenn du „Auf diesem Gerät merken“ anhakst – dann in deinem Browser auf diesem Gerät. Du kannst sie jederzeit wieder löschen."
+      }
     ]
   },
   "en": {
@@ -48,23 +94,70 @@
     "metaDescription": "Free signature generator: draw your signature with your finger, type it or photograph it from paper. Get a transparent PNG or SVG – no upload.",
     "lede": "Draw, type or photograph your signature – and download it as a transparent image.",
     "primaryButton": "Save signature",
-    "keywords": ["signature maker", "digital signature", "signature png", "transparent signature", "draw signature", "signature from photo"],
+    "keywords": [
+      "signature maker",
+      "digital signature",
+      "signature png",
+      "transparent signature",
+      "draw signature",
+      "signature from photo"
+    ],
     "steps": [
-      {"title": "Create your signature", "text": "Draw it with your finger or a stylus, type your name in a handwriting-style font, or photograph your signature on white paper."},
-      {"title": "Choose the format", "text": "Transparent PNG for Word (DOCX) and e-mails, SVG as a vector for design programs – or both."},
-      {"title": "Download", "text": "Save the files. With “Remember on this device” the signature is also ready in “Sign PDF”."}
+      {
+        "title": "Create your signature",
+        "text": "Draw it with your finger or a stylus, type your name in a handwriting-style font, or photograph your signature on white paper."
+      },
+      {
+        "title": "Choose the format",
+        "text": "Transparent PNG for Word (DOCX) and e-mails, SVG as a vector for design programs – or both."
+      },
+      {
+        "title": "Download",
+        "text": "Save the files. With “Remember on this device” the signature is also ready in “Sign PDF”."
+      }
     ],
     "why": [
-      {"title": "Cleanly cut out", "text": "The background is transparent and the signature tightly cropped – for photos the paper and shadows are removed."},
-      {"title": "A real vector", "text": "The SVG file contains the outline of your signature as a vector and stays sharp at any size."},
-      {"title": "Stays with you", "text": "Your signature is never uploaded. It is only remembered if you want – and only in this browser."}
+      {
+        "title": "Cleanly cut out",
+        "text": "The background is transparent and the signature tightly cropped – for photos the paper and shadows are removed."
+      },
+      {
+        "title": "A real vector",
+        "text": "The SVG file contains the outline of your signature as a vector and stays sharp at any size."
+      },
+      {
+        "title": "Stays with you",
+        "text": "Your signature is never uploaded. It is only remembered if you want – and only in this browser."
+      }
     ],
     "faq": [
-      {"q": "Is this a legally valid electronic signature?", "a": "It is an image of your signature. That is fine for many everyday documents, but it is not a qualified electronic signature. Where a handwritten signature is required, sign on paper."},
-      {"q": "How do I get the signature into Word (DOCX)?", "a": "Download the PNG and insert it as a picture. Because the background is transparent, the signature sits cleanly on the line."},
-      {"q": "What is the difference between PNG and SVG?", "a": "PNG is a pixel image that almost every program understands. SVG is a vector that stays sharp when enlarged, but isn’t supported everywhere."},
-      {"q": "How do I get a good photo?", "a": "Sign with a dark pen on white paper and take a straight photo from above in good light. The “Sensitivity” slider also picks up light strokes."},
-      {"q": "Is my signature stored?", "a": "Only if you tick “Remember on this device” – then in your browser on this device. You can delete it at any time."}
+      {
+        "q": "Is this a legally valid electronic signature?",
+        "a": "It is an image of your signature. That is fine for many everyday documents, but it is not a qualified electronic signature. Where a handwritten signature is required, sign on paper."
+      },
+      {
+        "q": "How do I get the signature into Word (DOCX)?",
+        "a": "Download the PNG and insert it as a picture. Because the background is transparent, the signature sits cleanly on the line."
+      },
+      {
+        "q": "What is the difference between PNG and SVG?",
+        "a": "PNG is a pixel image that almost every program understands. SVG is a vector that stays sharp when enlarged, but isn’t supported everywhere."
+      },
+      {
+        "q": "How do I get a good photo?",
+        "a": "Sign with a dark pen on white paper and take a straight photo from above in good light. The “Sensitivity” slider also picks up light strokes."
+      },
+      {
+        "q": "Is my signature stored?",
+        "a": "Only if you tick “Remember on this device” – then in your browser on this device. You can delete it at any time."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "sign-pdf",
+      "de": "Die Unterschrift soll direkt in ein PDF?",
+      "en": "Want to put the signature straight into a PDF?"
+    }
+  ]
 }

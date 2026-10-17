@@ -10,7 +10,10 @@
   "multiple": true,
   "minFiles": 1,
   "order": 41,
-  "next": ["compress-image", "png-to-jpg"],
+  "next": [
+    "compress-image",
+    "png-to-jpg"
+  ],
   "related": [
     "pdf-to-jpg",
     "extract-images",
@@ -162,5 +165,12 @@
         "a": "No. The images are created in your browser, nothing is sent to a server."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "pdf-to-jpg",
+      "de": "Du brauchst kleinere Dateien, zum Beispiel für Fotos?",
+      "en": "Need smaller files, e.g. for photos?"
+    }
+  ]
 }

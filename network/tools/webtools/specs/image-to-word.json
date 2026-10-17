@@ -167,5 +167,12 @@
         "a": "No. Everything happens in your browser. After the first visit the page also works offline."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "image-to-text",
+      "de": "Du brauchst nur den reinen Text zum Kopieren?",
+      "en": "Only need the plain text to copy?"
+    }
+  ]
 }

@@ -185,5 +185,12 @@
         "a": "Yes. After creating it, tap “Continue with: Compress PDF” – the new PDF is passed along directly, without choosing it again."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "scan-to-pdf",
+      "de": "Du hast ein Papierdokument abfotografiert? Für gerade Kanten und weißes Papier:",
+      "en": "Photographed a paper document? For straight edges and white paper:"
+    }
+  ]
 }

@@ -3,10 +3,24 @@
   "category": "organize",
   "icon": "delete",
   "module": "tools/delete-pages.js",
-  "accepts": ["application/pdf", ".pdf"],
-  "related": ["extract-pages", "organize-pdf", "remove-blank-pages"],
-  "next": ["compress-pdf", "organize-pdf", "merge-pdf"],
-  "needs": ["pdfjs", "pdflib"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "related": [
+    "extract-pages",
+    "organize-pdf",
+    "remove-blank-pages"
+  ],
+  "next": [
+    "compress-pdf",
+    "organize-pdf",
+    "merge-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
   "de": {
     "slug": "pdf-seiten-loeschen",
     "name": "PDF-Seiten löschen",
@@ -16,24 +30,67 @@
     "metaDescription": "Seiten aus einer PDF löschen: Vorschaubilder antippen oder Bereiche wie „2, 5-7“ eingeben. Gelöschte Seiten sind wirklich weg. Gratis, ohne Konto, ohne Upload.",
     "lede": "Tippe die Seiten an, die weg sollen – sie werden entfernt, der Rest bleibt, wie er ist.",
     "primaryButton": "Seiten löschen",
-    "keywords": ["entfernen", "seite entfernen", "seiten rausnehmen", "seite löschen", "pdf kürzen", "leere seite löschen"],
+    "keywords": [
+      "entfernen",
+      "seite entfernen",
+      "seiten rausnehmen",
+      "seite löschen",
+      "pdf kürzen",
+      "leere seite löschen"
+    ],
     "steps": [
-      {"title": "PDF auswählen", "text": "Wähle die PDF aus. Alle Seiten erscheinen als Vorschaubilder."},
-      {"title": "Seiten markieren", "text": "Tippe die Seiten an, die du loswerden willst – sie werden rot markiert. Alternativ gibst du Bereiche wie „2, 5-7“ ein. Du siehst immer, wie viele Seiten übrig bleiben."},
-      {"title": "Löschen und speichern", "text": "Tippe auf „Seiten löschen“ und lade die neue PDF herunter oder teile sie direkt."}
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF aus. Alle Seiten erscheinen als Vorschaubilder."
+      },
+      {
+        "title": "Seiten markieren",
+        "text": "Tippe die Seiten an, die du loswerden willst – sie werden rot markiert. Alternativ gibst du Bereiche wie „2, 5-7“ ein. Du siehst immer, wie viele Seiten übrig bleiben."
+      },
+      {
+        "title": "Löschen und speichern",
+        "text": "Tippe auf „Seiten löschen“ und lade die neue PDF herunter oder teile sie direkt."
+      }
     ],
     "why": [
-      {"title": "Große Vorschaubilder", "text": "Jede Seite als Bild, groß genug zum Antippen auf dem Handy. Auch bei Dokumenten mit Hunderten Seiten werden die Bilder erst geladen, wenn du hinscrollst."},
-      {"title": "Wirklich gelöscht", "text": "Gelöschte Seiten werden nicht nur ausgeblendet: Ihr Inhalt fliegt aus der Datei, ebenso Lesezeichen und Formularfelder, die zu ihnen gehörten."},
-      {"title": "Der Rest bleibt unverändert", "text": "Text bleibt durchsuchbar, Links und Formularfelder auf den übrigen Seiten funktionieren weiter, die Qualität ändert sich nicht."},
-      {"title": "Schnell markiert", "text": "Gerade oder ungerade Seiten mit einem Tipp markieren, Markierung umkehren oder einen Bereich eintippen – was gerade schneller ist."}
+      {
+        "title": "Große Vorschaubilder",
+        "text": "Jede Seite als Bild, groß genug zum Antippen auf dem Handy. Auch bei Dokumenten mit Hunderten Seiten werden die Bilder erst geladen, wenn du hinscrollst."
+      },
+      {
+        "title": "Wirklich gelöscht",
+        "text": "Gelöschte Seiten werden nicht nur ausgeblendet: Ihr Inhalt fliegt aus der Datei, ebenso Lesezeichen und Formularfelder, die zu ihnen gehörten."
+      },
+      {
+        "title": "Der Rest bleibt unverändert",
+        "text": "Text bleibt durchsuchbar, Links und Formularfelder auf den übrigen Seiten funktionieren weiter, die Qualität ändert sich nicht."
+      },
+      {
+        "title": "Schnell markiert",
+        "text": "Gerade oder ungerade Seiten mit einem Tipp markieren, Markierung umkehren oder einen Bereich eintippen – was gerade schneller ist."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Die PDF wird vollständig in deinem Browser bearbeitet und verlässt dein Gerät nicht. Das funktioniert sogar im Flugmodus, sobald die Seite geladen ist."},
-      {"q": "Sind gelöschte Seiten wirklich aus der Datei verschwunden?", "a": "Ja. Der Inhalt der gelöschten Seiten wird aus der Datei entfernt, auch Lesezeichen, Sprungziele und Formularfelder, die nur zu diesen Seiten gehörten. Bilder oder Schriften, die auch auf anderen Seiten vorkommen, bleiben natürlich erhalten."},
-      {"q": "Wie gebe ich Seitenbereiche ein?", "a": "Einzelne Seiten trennst du mit Kommas, Bereiche schreibst du mit Bindestrich: „2, 5-7, 10-“ löscht Seite 2, die Seiten 5 bis 7 und alles ab Seite 10. Die Vorschau zeigt sofort, welche Seiten markiert sind."},
-      {"q": "Bleibt ein Passwortschutz erhalten?", "a": "Ja. Wenn du eine geschützte PDF mit Passwort öffnest, wird das Ergebnis wieder mit demselben Passwort geschützt."},
-      {"q": "Kann ich auch leere Seiten automatisch finden lassen?", "a": "Ja, dafür gibt es das Werkzeug „Leere Seiten entfernen“. Es erkennt leere und fast leere Seiten, auch in Scans, und zeigt sie dir vor dem Löschen zur Kontrolle."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. Die PDF wird vollständig in deinem Browser bearbeitet und verlässt dein Gerät nicht. Das funktioniert sogar im Flugmodus, sobald die Seite geladen ist."
+      },
+      {
+        "q": "Sind gelöschte Seiten wirklich aus der Datei verschwunden?",
+        "a": "Ja. Der Inhalt der gelöschten Seiten wird aus der Datei entfernt, auch Lesezeichen, Sprungziele und Formularfelder, die nur zu diesen Seiten gehörten. Bilder oder Schriften, die auch auf anderen Seiten vorkommen, bleiben natürlich erhalten."
+      },
+      {
+        "q": "Wie gebe ich Seitenbereiche ein?",
+        "a": "Einzelne Seiten trennst du mit Kommas, Bereiche schreibst du mit Bindestrich: „2, 5-7, 10-“ löscht Seite 2, die Seiten 5 bis 7 und alles ab Seite 10. Die Vorschau zeigt sofort, welche Seiten markiert sind."
+      },
+      {
+        "q": "Bleibt ein Passwortschutz erhalten?",
+        "a": "Ja. Wenn du eine geschützte PDF mit Passwort öffnest, wird das Ergebnis wieder mit demselben Passwort geschützt."
+      },
+      {
+        "q": "Kann ich auch leere Seiten automatisch finden lassen?",
+        "a": "Ja, dafür gibt es das Werkzeug „Leere Seiten entfernen“. Es erkennt leere und fast leere Seiten, auch in Scans, und zeigt sie dir vor dem Löschen zur Kontrolle."
+      }
     ]
   },
   "en": {
@@ -45,24 +102,74 @@
     "metaDescription": "Remove pages from a PDF: tap the thumbnails or type ranges like “2, 5-7”. Deleted pages are really gone from the file. Free, no account, no upload.",
     "lede": "Tap the pages you want gone – everything else stays as it is.",
     "primaryButton": "Delete pages",
-    "keywords": ["remove pages", "remove page", "cut pages", "drop pages", "shorten pdf", "delete blank page"],
+    "keywords": [
+      "remove pages",
+      "remove page",
+      "cut pages",
+      "drop pages",
+      "shorten pdf",
+      "delete blank page"
+    ],
     "steps": [
-      {"title": "Choose a PDF", "text": "Pick your PDF. Every page shows up as a thumbnail."},
-      {"title": "Mark pages", "text": "Tap the pages you want to get rid of – they turn red. Or type ranges such as “2, 5-7”. You always see how many pages are left."},
-      {"title": "Delete and save", "text": "Tap “Delete pages” and download the new PDF or share it right away."}
+      {
+        "title": "Choose a PDF",
+        "text": "Pick your PDF. Every page shows up as a thumbnail."
+      },
+      {
+        "title": "Mark pages",
+        "text": "Tap the pages you want to get rid of – they turn red. Or type ranges such as “2, 5-7”. You always see how many pages are left."
+      },
+      {
+        "title": "Delete and save",
+        "text": "Tap “Delete pages” and download the new PDF or share it right away."
+      }
     ],
     "why": [
-      {"title": "Big thumbnails", "text": "Every page as a picture, large enough to tap on a phone. Even with hundreds of pages, thumbnails only load when you scroll to them."},
-      {"title": "Really deleted", "text": "Deleted pages are not just hidden: their content leaves the file, together with bookmarks and form fields that belonged to them."},
-      {"title": "The rest stays untouched", "text": "Text stays searchable, links and form fields on the remaining pages keep working, and the quality doesn’t change."},
-      {"title": "Quick marking", "text": "Mark odd or even pages with one tap, invert the marks or type a range – whatever is quicker."}
+      {
+        "title": "Big thumbnails",
+        "text": "Every page as a picture, large enough to tap on a phone. Even with hundreds of pages, thumbnails only load when you scroll to them."
+      },
+      {
+        "title": "Really deleted",
+        "text": "Deleted pages are not just hidden: their content leaves the file, together with bookmarks and form fields that belonged to them."
+      },
+      {
+        "title": "The rest stays untouched",
+        "text": "Text stays searchable, links and form fields on the remaining pages keep working, and the quality doesn’t change."
+      },
+      {
+        "title": "Quick marking",
+        "text": "Mark odd or even pages with one tap, invert the marks or type a range – whatever is quicker."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. The PDF is edited entirely in your browser and never leaves your device. It even works in flight mode once the page has loaded."},
-      {"q": "Are deleted pages really gone from the file?", "a": "Yes. The content of deleted pages is removed from the file, as are bookmarks, link targets and form fields that only belonged to those pages. Images or fonts that are also used on other pages are kept, of course."},
-      {"q": "How do I type page ranges?", "a": "Separate single pages with commas and write ranges with a dash: “2, 5-7, 10-” deletes page 2, pages 5 to 7 and everything from page 10. The preview shows the marked pages instantly."},
-      {"q": "Is password protection kept?", "a": "Yes. If you open a protected PDF with its password, the result is protected again with the same password."},
-      {"q": "Can blank pages be found automatically?", "a": "Yes, use the “Remove blank pages” tool. It detects blank and almost blank pages, scans included, and shows them to you for a check before anything is deleted."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The PDF is edited entirely in your browser and never leaves your device. It even works in flight mode once the page has loaded."
+      },
+      {
+        "q": "Are deleted pages really gone from the file?",
+        "a": "Yes. The content of deleted pages is removed from the file, as are bookmarks, link targets and form fields that only belonged to those pages. Images or fonts that are also used on other pages are kept, of course."
+      },
+      {
+        "q": "How do I type page ranges?",
+        "a": "Separate single pages with commas and write ranges with a dash: “2, 5-7, 10-” deletes page 2, pages 5 to 7 and everything from page 10. The preview shows the marked pages instantly."
+      },
+      {
+        "q": "Is password protection kept?",
+        "a": "Yes. If you open a protected PDF with its password, the result is protected again with the same password."
+      },
+      {
+        "q": "Can blank pages be found automatically?",
+        "a": "Yes, use the “Remove blank pages” tool. It detects blank and almost blank pages, scans included, and shows them to you for a check before anything is deleted."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "extract-pages",
+      "de": "Du willst nur einige Seiten behalten statt welche zu löschen?",
+      "en": "Want to keep a few pages rather than delete some?"
+    }
+  ]
 }

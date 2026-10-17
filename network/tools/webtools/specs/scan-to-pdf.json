@@ -190,5 +190,12 @@
         "a": "Choose “Small” under “File size” or the black & white filter. Afterwards you can go further with “Continue with: Compress PDF”."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "photo-to-pdf",
+      "de": "Es sind normale Fotos (Urlaub, Produkte), keine Dokumente?",
+      "en": "Ordinary photos (holidays, products), not documents?"
+    }
+  ]
 }

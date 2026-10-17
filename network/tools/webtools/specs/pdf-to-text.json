@@ -160,5 +160,12 @@
         "a": "No. Everything happens in your browser. After the first visit the tool also works offline."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "pdf-to-word",
+      "de": "Formatierung, Tabellen und Bilder sollen erhalten bleiben?",
+      "en": "Need formatting, tables and images kept?"
+    }
+  ]
 }

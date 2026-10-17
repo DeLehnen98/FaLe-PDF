@@ -173,5 +173,12 @@
         "a": "No. The PDF is read in your browser and the Word document is created there."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "pdf-to-text",
+      "de": "Du brauchst nur den reinen Text?",
+      "en": "Only need the plain text?"
+    }
+  ]
 }

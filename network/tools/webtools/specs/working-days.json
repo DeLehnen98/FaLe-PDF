@@ -153,5 +153,12 @@
         "a": "Enter the start date and the number of working days. The start day itself is not counted; weekends and holidays are skipped."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "date-difference",
+      "de": "Du willst alle Kalendertage zählen, nicht nur Arbeitstage?",
+      "en": "Want to count all calendar days, not only working days?"
+    }
+  ]
 }

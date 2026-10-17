@@ -188,5 +188,12 @@
         "a": "From a quality of about 70 % you usually can’t see a difference on a phone or screen. Check it yourself with the comparison slider and zoom."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "resize-image",
+      "de": "Du willst die Breite und Höhe in Pixeln ändern statt der Dateigröße?",
+      "en": "Want to change width and height in pixels rather than the file size?"
+    }
+  ]
 }

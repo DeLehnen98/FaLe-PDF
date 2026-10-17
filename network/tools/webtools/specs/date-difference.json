@@ -145,5 +145,12 @@
         "a": "Yes – use the working days calculator, which skips weekends and public holidays."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "working-days",
+      "de": "Wochenenden und Feiertage sollen nicht mitzählen?",
+      "en": "Should weekends and holidays not count?"
+    }
+  ]
 }

@@ -171,5 +171,12 @@
         "a": "Signature fields cannot be filled here. Use “Sign PDF” afterwards – there you draw, type or photograph your signature."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "edit-pdf-text",
+      "de": "Das PDF hat keine Formularfelder oder du willst Text ändern?",
+      "en": "The PDF has no form fields, or you want to change text?"
+    }
+  ]
 }

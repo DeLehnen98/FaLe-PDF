@@ -157,5 +157,12 @@
         "a": "No. The conversion happens in your browser on your device."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "heic-to-jpg",
+      "de": "Du brauchst kleinere Dateien für E-Mail oder Web?",
+      "en": "Need smaller files for email or the web?"
+    }
+  ]
 }

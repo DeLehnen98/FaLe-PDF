@@ -171,5 +171,12 @@
         "a": "Yes. Form fields are kept. For a password-protected PDF you type the password on the file; the signed file is protected again with the same password."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "signature-maker",
+      "de": "Du brauchst zuerst eine Unterschrift als Bild?",
+      "en": "Need a signature image first?"
+    }
+  ]
 }

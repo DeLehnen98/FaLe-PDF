@@ -149,5 +149,12 @@
       }
     ]
   },
-  "trademarkNote": true
+  "trademarkNote": true,
+  "alt": [
+    {
+      "id": "heic-to-pdf",
+      "de": "Die Fotos sollen in eine PDF, zum Beispiel zum Verschicken?",
+      "en": "Want the photos in one PDF, e.g. to send?"
+    }
+  ]
 }

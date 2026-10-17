@@ -145,5 +145,12 @@
         "a": "Use “Compare PDF”: it reads the text of both PDFs and marks the changes on the pages."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "compare-pdf",
+      "de": "Du willst zwei PDF-Dateien vergleichen?",
+      "en": "Want to compare two PDF files?"
+    }
+  ]
 }
