@@ -1,0 +1,164 @@
+{
+  "id": "emergency-folder",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M3 7h7l2 2h9v11H3z\"/><path d=\"M12 12v5\"/><path d=\"M9.5 14.5h5\"/>",
+  "module": "tools/emergency-folder.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 65,
+  "related": [
+    "power-of-attorney",
+    "scan-to-pdf",
+    "merge-pdf"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "pdfjs",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "notfallordner",
+    "name": "Notfallordner",
+    "short": "Alles Wichtige für Angehörige im Notfall – als druckfertige PDF mit Notfallkarte.",
+    "title": "Notfallordner kostenlos erstellen – PDF mit Notfallkarte | FaleNetwork",
+    "h1": "Notfallordner erstellen",
+    "metaDescription": "Notfallordner kostenlos ausfüllen: Kontakte, Gesundheit, Ärzte, Versicherungen, Konten und wo Testament und Vollmachten liegen – als PDF mit Notfallkarte.",
+    "lede": "Was Angehörige im Notfall wissen müssen – einmal ausfüllen, ausdrucken, an einem bekannten Ort ablegen.",
+    "primaryButton": "PDF erstellen",
+    "keywords": [
+      "notfallordner",
+      "notfallordner vorlage",
+      "notfallordner kostenlos",
+      "notfallmappe",
+      "vorsorgeordner",
+      "notfallkarte"
+    ],
+    "steps": [
+      {
+        "title": "Ausfüllen",
+        "text": "Trag ein, was du weißt – Kontakte, Gesundheit, Ärzte, Versicherungen, Konten, Verträge und wo deine Unterlagen liegen. Leere Bereiche kommen nicht ins PDF."
+      },
+      {
+        "title": "PDF speichern",
+        "text": "Du bekommst eine druckfertige PDF mit Deckblatt, Inhaltsverzeichnis und einer Notfallkarte im Scheckkartenformat – und auf Wunsch eine Datei zum späteren Weiterbearbeiten."
+      },
+      {
+        "title": "Ausdrucken und ablegen",
+        "text": "Ausdrucken, die Notfallkarte ausschneiden und ins Portemonnaie stecken, den Ordner dort aufbewahren, wo Vertraute ihn finden."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kostenlos statt Kaufordner",
+        "text": "Gedruckte Notfallordner kosten im Handel oft 20 bis 40 Euro. Hier füllst du die gleichen Bereiche kostenlos aus und druckst nur, was du wirklich brauchst."
+      },
+      {
+        "title": "Deine Daten bleiben bei dir",
+        "text": "Gesundheits- und Kontodaten gehen niemanden etwas an. Alles wird in deinem Browser erstellt, nichts wird hochgeladen oder automatisch gespeichert."
+      },
+      {
+        "title": "Leicht aktuell zu halten",
+        "text": "Speicher die Datei zum Weiterbearbeiten, lade sie beim nächsten Mal wieder und druck eine neue Fassung mit aktuellem Stand aus."
+      },
+      {
+        "title": "Ohne Passwörter",
+        "text": "Der Ordner fragt bewusst keine Passwörter ab – nur, wo sie zu finden sind. So wird der Ausdruck nicht selbst zum Risiko."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Ersetzt der Notfallordner ein Testament oder eine Vorsorgevollmacht?",
+        "a": "Nein. Testament, Vorsorgevollmacht, Patientenverfügung und Betreuungsverfügung haben eigene Formvorschriften. Der Notfallordner hält fest, ob es sie gibt und wo sie liegen – damit sie im Ernstfall gefunden werden."
+      },
+      {
+        "q": "Wird irgendetwas gespeichert?",
+        "a": "Nein. Deine Angaben bleiben nur in diesem Browser-Tab. Wenn du später weitermachen willst, speichere die Datei zum Weiterbearbeiten und bewahre sie sicher auf – sie enthält alle Angaben."
+      },
+      {
+        "q": "Was ist die Notfallkarte?",
+        "a": "Eine Karte im Scheckkartenformat auf dem Deckblatt mit deinem Namen, zwei Notfallkontakten, Blutgruppe, Allergien, Medikamenten und dem Ort des Ordners. Ausschneiden und ins Portemonnaie stecken."
+      },
+      {
+        "q": "Muss ich alles ausfüllen?",
+        "a": "Nein, nur deinen Namen. Alles andere ist freiwillig; leere Bereiche erscheinen nicht im PDF."
+      },
+      {
+        "q": "Wie oft sollte ich ihn aktualisieren?",
+        "a": "Am besten einmal im Jahr und immer, wenn sich etwas Wichtiges ändert – neue Bank, neuer Arzt, neue Medikamente. Das Datum „Stand vom“ steht auf dem Deckblatt."
+      }
+    ]
+  },
+  "en": {
+    "slug": "emergency-binder",
+    "name": "Emergency binder",
+    "short": "Everything your family needs in an emergency – as a printable PDF with a wallet card.",
+    "title": "Free emergency binder – PDF with wallet card | FaleNetwork",
+    "h1": "Create an emergency binder",
+    "metaDescription": "Fill in an emergency binder for free: contacts, health, doctors, insurances, accounts and where your will is kept – as a PDF with a wallet card.",
+    "lede": "What your family needs to know in an emergency – fill it in once, print it, keep it somewhere known.",
+    "primaryButton": "Create PDF",
+    "keywords": [
+      "emergency binder",
+      "emergency binder template",
+      "free emergency binder",
+      "in case of emergency file",
+      "legacy binder",
+      "emergency wallet card"
+    ],
+    "steps": [
+      {
+        "title": "Fill it in",
+        "text": "Enter what you know – contacts, health, doctors, insurances, accounts, contracts and where your documents are. Empty sections are left out of the PDF."
+      },
+      {
+        "title": "Save the PDF",
+        "text": "You get a printable PDF with a cover, contents and a credit-card-sized emergency card – and, if you like, a file to continue editing later."
+      },
+      {
+        "title": "Print and store it",
+        "text": "Print it, cut out the emergency card for your wallet and keep the binder where trusted people can find it."
+      }
+    ],
+    "why": [
+      {
+        "title": "Free instead of a bought binder",
+        "text": "Printed emergency binders often cost 20 to 40 euros in shops. Here you fill in the same sections for free and only print what you need."
+      },
+      {
+        "title": "Your data stays with you",
+        "text": "Health and account details are nobody else’s business. Everything is created in your browser – nothing is uploaded or stored automatically."
+      },
+      {
+        "title": "Easy to keep up to date",
+        "text": "Save the file to continue editing, load it next time and print a fresh copy with the current date."
+      },
+      {
+        "title": "No passwords",
+        "text": "The binder deliberately never asks for passwords – only where they can be found. That way the printout does not become a risk itself."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does the binder replace a will or a power of attorney?",
+        "a": "No. Wills, lasting powers of attorney and healthcare directives have their own formal requirements. The binder records whether they exist and where they are kept, so they can be found when it matters."
+      },
+      {
+        "q": "Is anything stored?",
+        "a": "No. Your details stay in this browser tab only. If you want to continue later, save the file to continue editing and keep it safe – it contains all details."
+      },
+      {
+        "q": "What is the emergency card?",
+        "a": "A credit-card-sized card on the cover page with your name, two emergency contacts, blood group, allergies, medication and where the binder is kept. Cut it out and keep it in your wallet."
+      },
+      {
+        "q": "Do I have to fill in everything?",
+        "a": "No, only your name. Everything else is optional; empty sections don’t appear in the PDF."
+      },
+      {
+        "q": "How often should I update it?",
+        "a": "Ideally once a year and whenever something important changes – a new bank, a new doctor, new medication. The “As of” date is on the cover."
+      }
+    ]
+  }
+}
