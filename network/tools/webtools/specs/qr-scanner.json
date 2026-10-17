@@ -1,0 +1,172 @@
+{
+  "id": "qr-scanner",
+  "category": "everyday",
+  "iconSvg": "<path d=\"M4 8V5a1 1 0 0 1 1-1h3\"/><path d=\"M16 4h3a1 1 0 0 1 1 1v3\"/><path d=\"M20 16v3a1 1 0 0 1-1 1h-3\"/><path d=\"M8 20H5a1 1 0 0 1-1-1v-3\"/><path d=\"M4 12h16\"/><path d=\"M8 8h3v2H8z\"/><path d=\"M13 15h3v1h-3z\"/>",
+  "module": "tools/qr-scanner.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 61,
+  "related": [
+    "qr-code",
+    "barcode-generator",
+    "business-card",
+    "read-e-invoice"
+  ],
+  "next": [],
+  "de": {
+    "slug": "qr-code-scannen",
+    "name": "QR-Code scannen",
+    "short": "QR-Codes mit Kamera, Bild oder PDF lesen – mit Link-Prüfung gegen Betrug.",
+    "title": "QR-Code scannen – ohne App, mit Link-Prüfung | FaleNetwork",
+    "h1": "QR-Code scannen",
+    "metaDescription": "QR-Codes mit der Kamera, aus Bildern oder PDFs lesen. Links öffnen nie von selbst – du siehst zuerst das echte Ziel und Warnzeichen. Ohne App, ohne Werbung.",
+    "lede": "Lies QR-Codes mit der Kamera, aus einem Screenshot oder einer PDF – und sieh vor dem Öffnen, wohin ein Link wirklich führt.",
+    "primaryButton": "Liste als CSV speichern",
+    "keywords": [
+      "qr code scannen",
+      "qr code scanner online",
+      "qr code lesen",
+      "qr code aus bild lesen",
+      "qr code scannen ohne app",
+      "qr code prüfen",
+      "quishing",
+      "girocode scannen"
+    ],
+    "steps": [
+      {
+        "title": "Kamera starten oder Bild wählen",
+        "text": "Tippe auf „Kamera starten“ und erlaube den Zugriff – oder wähle ein Foto, einen Screenshot oder eine PDF mit dem Code. Ziehen und Einfügen mit Strg+V geht auch."
+      },
+      {
+        "title": "Code ins Bild halten",
+        "text": "Halte den Code ruhig in den Rahmen. Bei schwachem Licht hilft die Lampe, bei kleinen Codes der Zoom. Sobald der Code erkannt ist, piept es kurz."
+      },
+      {
+        "title": "Prüfen und entscheiden",
+        "text": "Du siehst, was im Code steckt: Link mit echtem Ziel und Warnzeichen, WLAN-Zugang, Kontakt, Termin oder Überweisung. Erst dein Tipp öffnet, kopiert oder speichert etwas."
+      }
+    ],
+    "why": [
+      {
+        "title": "Schutz vor QR-Betrug",
+        "text": "Links öffnen nie automatisch. Du siehst die echte Domain und Warnzeichen wie Kurzlinks, nachgemachte Buchstaben, getarnte Adressen oder App-Downloads."
+      },
+      {
+        "title": "Versteht, was drinsteht",
+        "text": "WLAN-Passwort zum Kopieren, Kontakt als Datei, Termin für den Kalender, Überweisungscode mit geprüfter IBAN – statt eines unverständlichen Textes."
+      },
+      {
+        "title": "Keine App, keine Werbung",
+        "text": "Läuft im Browser, auch offline nach dem ersten Laden. Nichts wird hochgeladen; der Verlauf bleibt auf deinem Gerät und lässt sich jederzeit löschen."
+      },
+      {
+        "title": "Auch aus Bildern und PDFs",
+        "text": "Codes auf Rechnungen, in Screenshots oder in eingescannten Briefen werden direkt aus der Datei gelesen – praktisch, wenn der Code auf demselben Handy angezeigt wird."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Kann ich einen QR-Code ohne App scannen?",
+        "a": "Ja. Diese Seite nutzt die Kamera direkt im Browser. Wenn dein Browser keinen Kamerazugriff erlaubt, nimm ein Foto vom Code auf oder wähle ein Bild – das Ergebnis ist dasselbe."
+      },
+      {
+        "q": "Woran erkenne ich einen gefährlichen QR-Code?",
+        "a": "Achte auf die Domain direkt vor der Endung, etwa „beispiel.de“. Warnzeichen sind Kurzlinks, ungewöhnliche Endungen, Buchstaben aus anderen Alphabeten, ein „@“ in der Adresse und Links, die direkt eine App herunterladen. Die Seite zeigt dir all das vor dem Öffnen – eine Garantie ist es trotzdem nicht."
+      },
+      {
+        "q": "Was ist Quishing?",
+        "a": "Quishing ist Betrug mit QR-Codes: Gefälschte Codes auf Parkautomaten, Ladesäulen, Plakaten oder in Briefen führen auf nachgemachte Seiten, die Zugangsdaten oder Zahlungen abgreifen. Prüf deshalb immer das Ziel und achte auf überklebte Codes."
+      },
+      {
+        "q": "Werden meine Scans gespeichert oder gesendet?",
+        "a": "Nichts wird gesendet: Kamerabild und Dateien werden nur auf deinem Gerät ausgewertet. Der Verlauf liegt nur in diesem Browser, lässt sich abschalten und löschen. Zwei-Faktor-Schlüssel werden nie gespeichert."
+      },
+      {
+        "q": "Kann ich einen QR-Code aus einem Screenshot oder einer PDF lesen?",
+        "a": "Ja. Wähle das Bild oder die PDF aus, zieh die Datei auf die Seite oder füge einen Screenshot mit Strg+V ein. Bei PDFs werden alle Seiten durchsucht – auch mehrere Codes auf einer Seite."
+      },
+      {
+        "q": "Welche Codes werden erkannt?",
+        "a": "QR-Codes immer, auch gedreht, schräg oder als helle Codes auf dunklem Grund. Wenn dein Browser einen eingebauten Barcode-Leser hat, erkennt die Seite zusätzlich Strichcodes wie EAN und Code 128 sowie Data-Matrix-Codes."
+      }
+    ]
+  },
+  "en": {
+    "slug": "scan-qr-code",
+    "name": "Scan QR code",
+    "short": "Read QR codes with your camera, an image or a PDF – with a link check against scams.",
+    "title": "Scan QR code – online, no app, with link check | FaleNetwork",
+    "h1": "Scan a QR code",
+    "metaDescription": "Read QR codes with your camera or from images and PDFs. Links never open by themselves – you see the real destination and warning signs first. No app, no ads.",
+    "lede": "Read QR codes with your camera, from a screenshot or a PDF – and see where a link really goes before you open it.",
+    "primaryButton": "Save list as CSV",
+    "keywords": [
+      "scan qr code",
+      "qr code scanner online",
+      "read qr code",
+      "qr code from image",
+      "scan qr code without app",
+      "check qr code",
+      "quishing",
+      "qr code safety check"
+    ],
+    "steps": [
+      {
+        "title": "Start the camera or choose an image",
+        "text": "Tap “Start camera” and allow access – or choose a photo, screenshot or PDF with the code. Dragging a file in or pasting with Ctrl+V works too."
+      },
+      {
+        "title": "Hold the code in view",
+        "text": "Keep the code steady in the frame. The light helps in the dark, zoom helps with small codes. A short beep tells you the code was read."
+      },
+      {
+        "title": "Check and decide",
+        "text": "You see what the code contains: a link with its real destination and warning signs, Wi-Fi access, a contact, an event or a bank transfer. Nothing opens, copies or saves until you tap."
+      }
+    ],
+    "why": [
+      {
+        "title": "Protection from QR scams",
+        "text": "Links never open automatically. You see the real domain and warning signs such as short links, look-alike letters, disguised addresses or app downloads."
+      },
+      {
+        "title": "Understands the content",
+        "text": "Wi-Fi password to copy, contact as a file, event for your calendar, payment code with a checked IBAN – instead of cryptic text."
+      },
+      {
+        "title": "No app, no ads",
+        "text": "Runs in your browser, even offline after the first visit. Nothing is uploaded; the history stays on your device and can be cleared at any time."
+      },
+      {
+        "title": "Also from images and PDFs",
+        "text": "Codes on invoices, in screenshots or scanned letters are read straight from the file – handy when the code is shown on the same phone."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I scan a QR code without an app?",
+        "a": "Yes. This page uses the camera right in your browser. If your browser doesn’t allow camera access, take a photo of the code or choose an image – the result is the same."
+      },
+      {
+        "q": "How do I recognise a dangerous QR code?",
+        "a": "Look at the domain right before the ending, such as “example.com”. Warning signs are short links, unusual endings, letters from other alphabets, an “@” in the address and links that download an app. This page shows you all of that before opening – it is still no guarantee."
+      },
+      {
+        "q": "What is quishing?",
+        "a": "Quishing is fraud with QR codes: fake codes on parking meters, chargers, posters or in letters lead to imitation sites that steal logins or payments. So always check the destination and look out for codes stuck over the real ones."
+      },
+      {
+        "q": "Are my scans stored or sent anywhere?",
+        "a": "Nothing is sent: the camera picture and files are analysed on your device only. The history lives in this browser only and can be switched off and cleared. Two-factor keys are never stored."
+      },
+      {
+        "q": "Can I read a QR code from a screenshot or a PDF?",
+        "a": "Yes. Choose the image or PDF, drag the file onto the page or paste a screenshot with Ctrl+V. In PDFs every page is searched – several codes on one page, too."
+      },
+      {
+        "q": "Which codes are recognised?",
+        "a": "QR codes always, also rotated, at an angle or light on dark. If your browser has a built-in barcode reader, the page also reads barcodes such as EAN and Code 128 as well as Data Matrix codes."
+      }
+    ]
+  }
+}

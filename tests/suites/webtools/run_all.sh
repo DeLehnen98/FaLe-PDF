@@ -21,6 +21,7 @@ ls fixtures/edit_* >/dev/null 2>&1 || python3 edit_make_fixtures.py
 [ -f fixtures/bg/bg_mug.jpg ] || python3 bg_make_fixtures.py
 [ -f fixtures/einv/zugferd.pdf ] || node einv_make_fixtures.mjs
 [ -f fixtures/enex/Haushalt.enex ] || python3 enex_make_fixtures.py
+[ -f fixtures/qrscan/qr_photo.jpg ] || python3 qrscan_make_fixtures.py
 # hand-made inputs without a generator (synthetic, committed in fixtures_static/)
 cp -r --update=none fixtures_static/. fixtures/
 rm -rf out && mkdir -p out shots
@@ -31,7 +32,7 @@ for i in $(seq 1 50); do curl -s -o /dev/null http://127.0.0.1:8710/werkzeuge/ &
 if [ $# -gt 0 ]; then TESTS=$(for n in "$@"; do echo "test_$n.py"; done); else TESTS=$(ls test_*.py); fi
 pass=0; fail=0; failed=""
 if [ $# -eq 0 ]; then
-  if node img_meta_unit.mjs > out/img_units.log 2>&1 && node img_qr_unit.mjs >> out/img_units.log 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed img_units"; fi
+  if node img_meta_unit.mjs > out/img_units.log 2>&1 && node img_qr_unit.mjs >> out/img_units.log 2>&1 && node qrscan_unit.mjs >> out/img_units.log 2>&1 && node qrcontent_unit.mjs >> out/img_units.log 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed img_units"; fi
 fi
 for t in $TESTS; do
   if timeout 900 python3 "$t" > "out/${t%.py}.log" 2>&1; then pass=$((pass+1)); else fail=$((fail+1)); failed="$failed $t"; fi

@@ -1,15 +1,15 @@
-// Minimal QR decoder for the QR generator's self-test: reads a module matrix (from a rendered image of a
+// Minimal QR decoder for the QR generator's self-test (tables and helpers are also used by lib/qr-scan.js): reads a module matrix (from a rendered image of a
 // known geometry) back into text – format info (with error tolerance), unmasking, de-interleaving and
 // byte-mode segments (what lib/shared/qr.js produces). No error correction: the self-test wants a
 // perfect read of exactly what we rendered.
 
-const ECC_PER_BLOCK = [
+export const ECC_PER_BLOCK = [
   [-1, 7, 10, 15, 20, 26, 18, 20, 24, 30, 18, 20, 24, 26, 30, 22, 24, 28, 30, 28, 28, 28, 28, 30, 30, 26, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
   [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28],
   [-1, 13, 22, 18, 26, 18, 24, 18, 22, 20, 24, 28, 26, 24, 20, 30, 24, 28, 28, 26, 30, 28, 30, 30, 30, 30, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
   [-1, 17, 28, 22, 16, 22, 28, 26, 26, 24, 28, 24, 28, 22, 24, 24, 30, 28, 28, 26, 28, 30, 24, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
 ];
-const NUM_BLOCKS = [
+export const NUM_BLOCKS = [
   [-1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6, 6, 6, 6, 7, 8, 8, 9, 9, 10, 12, 12, 12, 13, 14, 15, 16, 17, 18, 19, 19, 20, 21, 22, 24, 25],
   [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45, 47, 49],
   [-1, 1, 1, 2, 2, 4, 4, 6, 6, 8, 8, 8, 10, 12, 16, 12, 17, 16, 18, 21, 20, 23, 23, 25, 27, 29, 34, 34, 35, 38, 40, 43, 45, 48, 51, 53, 56, 59, 62, 65, 68],
@@ -17,12 +17,12 @@ const NUM_BLOCKS = [
 ];
 const ECC_FROM_BITS = { 1: 0, 0: 1, 3: 2, 2: 3 }; // format bits → index L, M, Q, H
 
-function rawDataModules(ver) {
+export function rawDataModules(ver) {
   let r = (16 * ver + 128) * ver + 64;
   if (ver >= 2) { const n = Math.floor(ver / 7) + 2; r -= (25 * n - 10) * n - 55; if (ver >= 7) r -= 36; }
   return r;
 }
-function alignmentPositions(ver) {
+export function alignmentPositions(ver) {
   if (ver === 1) return [];
   const num = Math.floor(ver / 7) + 2;
   const step = ver === 32 ? 26 : Math.ceil((ver * 4 + 4) / (num * 2 - 2)) * 2;
@@ -30,7 +30,7 @@ function alignmentPositions(ver) {
   for (let pos = ver * 4 + 10; out.length < num; pos -= step) out.splice(1, 0, pos);
   return out;
 }
-function formatCode(ecc, mask) {
+export function formatCode(ecc, mask) {
   const data = ([1, 0, 3, 2][ecc] << 3) | mask;
   let rem = data;
   for (let i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);

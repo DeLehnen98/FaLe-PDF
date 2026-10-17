@@ -28,7 +28,7 @@ with Suite('share-target') as s:
         s.expect(any(('omprim' in n or 'ompress' in n) for n in names) and not any((n.startswith('Bild') or n.startswith('JPG') or n.startswith('Image')) for n in names) and len(names) <= 8 and page.locator('.wt-shared-more').is_visible(), f'{lang}: tools offered for a PDF: {names}')
         s.expect('Rechnung.pdf' in page.locator('[data-wt-shared-files]').inner_text(), f'{lang}: shared file name shown')
         with page.expect_navigation():
-            page.locator('[data-wt-shared-list] a', has_text=__import__('re').compile('omprim|ompress')).click()
+            page.locator('[data-wt-shared-list] a[href*="komprimieren"], [data-wt-shared-list] a[href*="compress-pdf"]').click()   # batch tool also mentions compressing
         page.wait_for_function("() => document.documentElement.classList.contains('wt-js')")
         s.wait_ready(page, 1)
         s.expect(page.locator('.wt-file .wt-file-name').inner_text() == 'Rechnung.pdf', f'{lang}: shared file loaded into the tool')

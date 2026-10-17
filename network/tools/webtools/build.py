@@ -524,7 +524,7 @@ def page_hub(lang, specs):
     config = {'v': 1, 'lang': lang, 'hub': HUB[lang], 'tools': [
         {'id': sp['id'], 'name': sp[lang]['name'], 'url': tool_path(sp, lang), 'accepts': sp['accepts'],
          'multiple': bool(sp.get('multiple')), 'short': sp[lang].get('short') or sp[lang]['lede'],
-         'colour': CAT[sp['category']][1]} for sp in specs]}
+         'colour': CAT[sp['category']][1], 'popular': bool(sp.get('popular'))} for sp in specs]}
     ld = [
         {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': s['hub_h1'], 'url': BASE + HUB[lang],
          'description': s['hub_desc'], 'inLanguage': lang,

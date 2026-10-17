@@ -178,6 +178,7 @@ function init(cfg) {
   }
 
   async function addFiles(files, source) {
+    if (noFiles && files.length && state.phase === 'files' && state.tool?.takeFiles) { state.tool.takeFiles(files, source, ctxBase()); return; }   // file-less tools that still read a dropped/pasted file (QR scanner)
     if (!files.length || state.phase === 'working' || noFiles) return;
     startCounting();
     updateProof();

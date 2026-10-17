@@ -107,7 +107,9 @@ function init(cfg) {
     const total = files.reduce((s, f) => s + f.size, 0);
     filesP.textContent = `${files.map(f => f.name).join(', ')} · ${formatSize(total, lang)}`;
     const items = files.map(f => ({ name: f.name, type: f.type }));
-    const fits = cfg.tools.filter(tool => (tool.multiple || files.length === 1) && items.every(it => accepted(it, tool.accepts)));
+    // the most used tools first (stable sort keeps the catalogue order within each group)
+    const fits = cfg.tools.filter(tool => (tool.multiple || files.length === 1) && items.every(it => accepted(it, tool.accepts)))
+      .map((tool, i) => ({ tool, i })).sort((a, b) => (b.tool.popular - a.tool.popular) || a.i - b.i).map(x => x.tool);
     for (const tool of fits) {
       const a = el('a', { href: tool.url, onclick: async ev => {
         ev.preventDefault();
