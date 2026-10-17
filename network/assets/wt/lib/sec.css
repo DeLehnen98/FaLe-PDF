@@ -80,8 +80,25 @@
 .sec-h-rot::after { background: var(--surface); border-color: var(--primary); }
 .sec-h-rot::before { content: ""; position: absolute; left: 21px; top: 33px; width: 2px; height: 18px; background: var(--primary); }
 .sec-item.is-box .sec-h-rot { display: none; }
+.sec-item.is-free .sec-h-rot { display: none; }
+/* form fields (create-pdf-form) */
+.sec-fld { place-items: center start !important; border: 1.5px solid #4A5BD4; background: rgba(74, 91, 212, 0.13); border-radius: 3px; overflow: hidden; padding: 0 4px; }
+.sec-fld-name { font: 600 11px/1.1 system-ui, sans-serif; color: #2B3590; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; pointer-events: none; }
+.sec-fld-check, .sec-fld-radio { padding: 0; place-items: center !important; background: #fff; }
+.sec-fld-check .sec-fld-name { display: none; }
+.sec-fld-radio { place-items: start !important; padding: 2px 4px; }
+.sec-fld-sign { border-style: dashed; background: rgba(13, 148, 136, 0.1); border-color: #0D9488; }
+.sec-fld-sign .sec-fld-name { color: #0B6B62; }
+.sec-fld-dropdown::after { content: "▾"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #2B3590; }
+.sec-fld-multiline { place-items: start !important; padding-top: 3px; }
+.sec-fld-props { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.sec-fld-props .wt-opt { margin: 0; }
+.sec-fld-props textarea { min-height: 70px; resize: vertical; }
+.sec-fld-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; max-height: 220px; overflow: auto; }
+.sec-fld-list button { width: 100%; text-align: left; min-height: 40px; }
 .sec-toolbar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .sec-toolbar[hidden] { display: none; }
+.sec-toolbar-start { justify-content: flex-start; }
 .sec-hint-row { text-align: center; margin: 0; color: var(--text-3); font-size: var(--step--1); }
 
 /* chips (add buttons, saved signatures) */

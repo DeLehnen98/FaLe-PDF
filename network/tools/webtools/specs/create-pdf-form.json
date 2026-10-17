@@ -1,0 +1,173 @@
+{
+  "id": "create-pdf-form",
+  "category": "edit",
+  "icon": "form",
+  "module": "tools/create-pdf-form.js",
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": false,
+  "order": 42,
+  "related": [
+    "fill-pdf-form",
+    "sign-pdf",
+    "edit-pdf-text",
+    "flatten-pdf"
+  ],
+  "next": [
+    "fill-pdf-form",
+    "protect-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "pdf-formular-erstellen",
+    "name": "PDF-Formular erstellen",
+    "short": "Ausfüllbare Felder in jede PDF setzen – Text, Kästchen, Auswahl, Datum, Unterschrift.",
+    "title": "PDF-Formular erstellen – ausfüllbare Felder kostenlos | FaleNetwork",
+    "h1": "Ausfüllbares PDF-Formular erstellen",
+    "metaDescription": "Aus jeder PDF ein ausfüllbares Formular machen: Textfelder, Kästchen, Auswahllisten, Datum und Unterschrift setzen oder automatisch erkennen. Gratis, ohne Upload.",
+    "lede": "PDF wählen, Felder setzen – fertig ist ein Formular, das jeder am Computer oder Handy ausfüllen kann.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "Formular erstellen",
+    "keywords": [
+      "pdf formular erstellen",
+      "ausfüllbares pdf erstellen",
+      "pdf formularfelder einfügen",
+      "pdf ausfüllbar machen",
+      "pdf formular kostenlos",
+      "pdf checkbox einfügen"
+    ],
+    "steps": [
+      {
+        "title": "PDF wählen",
+        "text": "Nimm eine fertige Vorlage, einen Antrag oder ein eingescanntes Formular als PDF."
+      },
+      {
+        "title": "Felder setzen",
+        "text": "Tipp auf einen Feldtyp und zieh das Feld an die richtige Stelle – oder lass Linien, Kästchen und „Name: ____“ automatisch erkennen."
+      },
+      {
+        "title": "Formular speichern",
+        "text": "Du bekommst eine PDF mit echten Formularfeldern, die sich in jedem PDF-Programm ausfüllen lässt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Sonst meist im Abo",
+        "text": "Ausfüllbare Formulare zu erstellen kostet in vielen PDF-Programmen extra. Hier ist es gratis – ohne Konto und ohne Wasserzeichen."
+      },
+      {
+        "title": "Alle wichtigen Feldtypen",
+        "text": "Textfeld, mehrzeiliger Text, Kontrollkästchen, Optionsgruppe, Auswahlliste, Datum mit Format-Prüfung und Unterschriftsfeld – mit Pflichtfeld, Vorgabewert und Hilfetext."
+      },
+      {
+        "title": "Felder automatisch erkennen",
+        "text": "Unterstriche, „Label:“-Lücken, gezeichnete Kästchen und Linien werden gefunden und als Felder vorgeschlagen. Du prüfst nur noch."
+      },
+      {
+        "title": "Ohne Upload",
+        "text": "Deine PDF wird im Browser bearbeitet und nicht hochgeladen – auch vertrauliche Anträge und Verträge."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Womit lässt sich das Formular ausfüllen?",
+        "a": "Mit jedem gängigen PDF-Programm am Computer, mit PDF-Apps auf dem Handy und im Browser – auch hier mit „PDF-Formular ausfüllen“."
+      },
+      {
+        "q": "Bleiben Felder erhalten, die die PDF schon hat?",
+        "a": "Ja. Vorhandene Formularfelder bleiben unverändert; neue Felder mit gleichem Namen werden automatisch durchnummeriert."
+      },
+      {
+        "q": "Was ist ein Unterschriftsfeld?",
+        "a": "Ein markierter Bereich, in dem die ausfüllende Person in ihrem PDF-Programm unterschreiben kann. Es ist leer, bis jemand unterschreibt."
+      },
+      {
+        "q": "Funktioniert das auch mit gescannten Formularen?",
+        "a": "Ja. Du setzt die Felder einfach auf das Bild der Seite. Die automatische Erkennung findet bei Scans oft weniger, weil dort keine echten Linien gespeichert sind."
+      },
+      {
+        "q": "Wird meine PDF hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser; nach dem ersten Laden funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "create-pdf-form",
+    "name": "Create PDF form",
+    "short": "Put fillable fields into any PDF – text, check boxes, choices, date, signature.",
+    "title": "Create a fillable PDF form – free | FaleNetwork",
+    "h1": "Create a fillable PDF form",
+    "metaDescription": "Turn any PDF into a fillable form: add text fields, check boxes, drop-downs, dates and signature fields or detect them automatically. Free, no upload.",
+    "lede": "Pick a PDF, place the fields – and you have a form anyone can fill in on a computer or phone.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Create form",
+    "keywords": [
+      "create pdf form",
+      "fillable pdf",
+      "add form fields to pdf",
+      "make pdf fillable",
+      "free pdf form creator",
+      "pdf check box"
+    ],
+    "steps": [
+      {
+        "title": "Choose a PDF",
+        "text": "Take a finished template, an application or a scanned form as a PDF."
+      },
+      {
+        "title": "Place fields",
+        "text": "Tap a field type and drag the field into place – or let lines, boxes and “Name: ____” be detected automatically."
+      },
+      {
+        "title": "Save the form",
+        "text": "You get a PDF with real form fields that can be filled in with any PDF app."
+      }
+    ],
+    "why": [
+      {
+        "title": "Usually part of a subscription",
+        "text": "Many PDF programs charge extra for creating fillable forms. Here it is free – no account, no watermark."
+      },
+      {
+        "title": "All the important field types",
+        "text": "Text field, multi-line text, check box, option group, drop-down, date with format check and signature field – with required flag, prefilled value and help text."
+      },
+      {
+        "title": "Detect fields automatically",
+        "text": "Underlines, “Label:” gaps, drawn boxes and lines are found and suggested as fields. You only check them."
+      },
+      {
+        "title": "No upload",
+        "text": "Your PDF is edited in your browser and never uploaded – even confidential applications and contracts."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What can fill in the form?",
+        "a": "Any common PDF program on a computer, PDF apps on phones and browsers – also here with “Fill PDF form”."
+      },
+      {
+        "q": "Are fields the PDF already has kept?",
+        "a": "Yes. Existing form fields stay unchanged; new fields with the same name are numbered automatically."
+      },
+      {
+        "q": "What is a signature field?",
+        "a": "A marked area where the person filling in can sign in their PDF app. It stays empty until someone signs."
+      },
+      {
+        "q": "Does it work with scanned forms?",
+        "a": "Yes. Just place the fields on the image of the page. Automatic detection finds less on scans because they contain no real lines."
+      },
+      {
+        "q": "Is my PDF uploaded?",
+        "a": "No. Everything happens in your browser; after the first visit the page also works offline."
+      }
+    ]
+  }
+}

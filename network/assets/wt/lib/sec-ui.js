@@ -47,6 +47,11 @@ const PATHS = {
   list: ['M8 6h12', 'M8 12h12', 'M8 18h12', 'M4 6h.01', 'M4 12h.01', 'M4 18h.01'],
   layers: ['M12 3l9 5-9 5-9-5z', 'M3 13l9 5 9-5'],
   columns: ['M4 4h7v16H4z', 'M13 4h7v16h-7z'],
+  textbox: ['M3 7h18v10H3z', 'M7 10v4'],
+  textarea: ['M3 4h18v16H3z', 'M7 8h10', 'M7 12h10', 'M7 16h6'],
+  radio: ['M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18z', 'M12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z'],
+  dropdown: ['M3 7h18v10H3z', 'M14 11l2 2 2-2'],
+  wand: ['M4 20L15 9', 'M14 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z', 'M19 11l.7 1.3L21 13l-1.3.7L19 15l-.7-1.3L17 13l1.3-.7z'],
 };
 const NS = 'http://www.w3.org/2000/svg';
 /** Icon from dom.js or from the extra set above. */

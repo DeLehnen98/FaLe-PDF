@@ -103,20 +103,7 @@ export function parseRange(str, max) {
 }
 
 /** Replace characters the standard fonts (WinAnsi) cannot encode. */
-export function makeSanitizer(font) {
-  const ok = new Map();
-  return text => {
-    let out = '';
-    for (const ch of String(text).normalize('NFC')) {
-      if (ch === '\n') { out += ch; continue; }
-      if (!ok.has(ch)) {
-        try { font.encodeText(ch); font.widthOfTextAtSize(ch, 10); ok.set(ch, true); } catch { ok.set(ch, false); }
-      }
-      out += ok.get(ch) ? ch : (/[‘’]/.test(ch) ? "'" : /[“”„]/.test(ch) ? '"' : '?');
-    }
-    return out;
-  };
-}
+export { makeSanitizer } from './formfields.js';
 
 /** Read an image file into {bytes, type:'png'|'jpg', w, h} (re-encoded when needed). */
 export async function readImageFile(file, maxDim = 2400) {

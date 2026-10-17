@@ -101,6 +101,16 @@ function extractBlocks(src, starts, what) {
   return banner(src, what) + part;
 }
 
+/** js/tools/pagegeom.js takes pdf.js from the app's pdfcore.js – here the tool hands it in via setPdfjs(). */
+function pagegeomModule() {
+  const src = 'js/tools/pagegeom.js';
+  const text = readFileSync(join(ROOT, src), 'utf8');
+  const imp = "import { pdfjsLib } from '../pdfcore.js';";
+  if (!text.includes(imp)) throw new Error(`${src}: expected import "${imp}" not found – update the adapter in sync-webtools-vendor.mjs`);
+  const out = text.replace(imp, 'let pdfjsLib = null;\n/** Hand in the pdf.js module (lib/pdf.js loadPdfjs()) before calling pageShapes(). */\nexport function setPdfjs(lib) { pdfjsLib = lib; }');
+  if (/^\s*import\s|import\(/m.test(out)) throw new Error(`${src} now has other imports – update the adapter`);
+  return banner(src, 'pdf.js handed in via setPdfjs()') + out;
+}
 const SHARED = {
   'pdfcrypt.js': () => copyModule('js/pdfcrypt.js'),
   'zip.js': () => copyModule('js/zip.js'),
@@ -110,7 +120,10 @@ const SHARED = {
   'qr.js': () => copyModule('js/tools/qr.js'),
   'limits.js': () => extractHead('js/security.js', 'export const SAFE_SCHEMES', 'resource limits and image header probing only'),
   'passphoto-templates.js': () => extractBlocks('js/tools/passphoto.js', ['export const TEMPLATES', 'export function sheetLayout'], 'TEMPLATES + sheetLayout only'),
-  'pdfstruct.js': () => copyModule('js/tools/pdfstruct.js'),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
+  'pdfstruct.js': () => copyModule('js/tools/pdfstruct.js'),
+  // PDF forms (create-pdf-form): field detection + AcroForm writer, and the page geometry it uses for boxes/lines
+  'formfields.js': () => copyModule('js/tools/formfields.js'),
+  'pagegeom.js': () => pagegeomModule(),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
   // OCR image pre-processing (ocr-pdf, image-to-text): pure functions + their module worker
   'ocr/prep.js': () => copyModule('js/ocr/prep.js'),
   'ocr/prep-worker.js': () => copyModule('js/ocr/prep-worker.js', ['./prep.js']),

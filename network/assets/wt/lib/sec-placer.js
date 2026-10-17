@@ -3,6 +3,8 @@
 // alternative (arrows, +/−, [ ], Delete). Items are stored independent of the preview size:
 //   {id, page (1-based), kind: 'image'|'text'|'check'|'cross', cx, cy (0..1 of the displayed page),
 //    w, h (pt), rot (° clockwise), asset ({url, aspect}) | text + fontPt, color}
+// kind 'field' (form fields): a labelled box; items with free: true resize width and height independently and
+// do not rotate.
 import { el, clear } from './dom.js';
 import { tr, ic, btn, pageNav, previewPage, wipeCanvas, stageWidth } from './sec-ui.js';
 
@@ -34,13 +36,13 @@ function markSvg(kind) {
 /**
  * @param {{lang, pdf, items: Array, onChange: Function, onSelect?: Function, label?: (item) => string}} o
  */
-export function createPlacer({ lang, pdf, items, onChange, onSelect = null, label = null }) {
+export function createPlacer({ lang, pdf, items, onChange, onSelect = null, label = null, hint: hintText = null }) {
   const L = lang;
   let selected = null, cur = null, seq = 0;
   const nav = pageNav(L, n => show(n));
   const pageBox = el('div', { class: 'sec-page' });
   const overlay = el('div', { class: 'sec-overlay' });
-  const hint = el('p', { class: 'sec-hint-row' }, tr(L, 'Ziehen zum Verschieben · Ecke zum Vergrößern · runder Griff oben zum Drehen · zwei Finger zum Zoomen und Drehen',
+  const hint = el('p', { class: 'sec-hint-row' }, hintText || tr(L, 'Ziehen zum Verschieben · Ecke zum Vergrößern · runder Griff oben zum Drehen · zwei Finger zum Zoomen und Drehen',
     'Drag to move · corner to resize · round handle on top to rotate · two fingers to zoom and rotate'));
   const root = el('div', { class: 'sec-stage' }, nav.node, el('div', { class: 'sec-page-wrap' }, pageBox), hint);
   const nodes = new Map();
@@ -64,6 +66,7 @@ export function createPlacer({ lang, pdf, items, onChange, onSelect = null, labe
     const w = item.w * s, h = item.h * s;
     Object.assign(node.style, { width: `${w}px`, height: `${h}px`, transform: `translate(${item.cx * W - w / 2}px, ${item.cy * H - h / 2}px) rotate(${item.rot || 0}deg)` });
     if (item.kind === 'text') node.querySelector('.sec-item-text').style.fontSize = `${item.fontPt * s}px`;
+    if (item.kind === 'field') { const n = node.querySelector('.sec-fld-name'); if (n) n.style.fontSize = `${Math.max(7, Math.min(12, (item.type === 'radio' || item.type === 'multiline' ? 19 : item.h) * s * 0.62))}px`; }
     node.style.color = item.color || '#111';
   }
 
@@ -81,10 +84,11 @@ export function createPlacer({ lang, pdf, items, onChange, onSelect = null, labe
       const body = el('div', { class: 'sec-item-body' });
       if (item.kind === 'image') body.append(el('img', { src: item.asset.url, alt: '', draggable: 'false' }));
       else if (item.kind === 'text') body.append(el('span', { class: 'sec-item-text' }, item.text));
+      else if (item.kind === 'field') { body.classList.add('sec-fld', `sec-fld-${item.type}`); body.append(el('span', { class: 'sec-fld-name' }, item.name || '')); }
       else body.append(markSvg(item.kind));
       const size = el('div', { class: 'sec-handle sec-h-size', 'aria-hidden': 'true' });
       const rot = el('div', { class: 'sec-handle sec-h-rot', 'aria-hidden': 'true' });
-      const node = el('div', { class: 'sec-item' + (item === selected ? ' is-sel' : ''), tabindex: '0', role: 'button', aria: { label: itemLabel(item) } }, body, size, rot);
+      const node = el('div', { class: 'sec-item' + (item === selected ? ' is-sel' : '') + (item.free ? ' is-free' : ''), tabindex: '0', role: 'button', aria: { label: itemLabel(item) } }, body, size, rot);
       node._item = item;
       layout(item, node);
       bind(node, item, size, rot);
@@ -153,7 +157,7 @@ export function createPlacer({ lang, pdf, items, onChange, onSelect = null, labe
         const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
         const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
         scaleItem(item, d / pinch.d, pinch);
-        if (item.kind !== 'box') item.rot = snap(pinch.rot + (ang - pinch.ang) * 180 / Math.PI);
+        if (item.kind !== 'box' && !item.free) item.rot = snap(pinch.rot + (ang - pinch.ang) * 180 / Math.PI);
         changed(item);
         return;
       }
@@ -161,6 +165,14 @@ export function createPlacer({ lang, pdf, items, onChange, onSelect = null, labe
       if (start.mode === 'move') {
         item.cx = start.cx + (e.clientX - start.x) / W;
         item.cy = start.cy + (e.clientY - start.y) / H;
+        clampItem(item);
+      } else if (start.mode === 'size' && item.free) {
+        // free resize from the bottom-right corner: the top-left corner stays where it is
+        const { s } = px();
+        const w = Math.max(6, start.w + (e.clientX - start.x) / s), h = Math.max(6, start.h + (e.clientY - start.y) / s);
+        item.cx = start.cx + (w - start.w) * s / 2 / W;
+        item.cy = start.cy + (h - start.h) * s / 2 / H;
+        item.w = w; item.h = h;
         clampItem(item);
       } else if (start.mode === 'size') {
         const [cx, cy] = center();
@@ -185,8 +197,8 @@ export function createPlacer({ lang, pdf, items, onChange, onSelect = null, labe
         case 'ArrowDown': item.cy += step; break;
         case '+': case '=': scaleItem(item, 1.08); break;
         case '-': case '_': scaleItem(item, 1 / 1.08); break;
-        case ']': item.rot = snap((item.rot || 0) + 5); break;
-        case '[': item.rot = snap((item.rot || 0) - 5); break;
+        case ']': if (!item.free) item.rot = snap((item.rot || 0) + 5); break;
+        case '[': if (!item.free) item.rot = snap((item.rot || 0) - 5); break;
         case 'Delete': case 'Backspace': remove(item); return;
         case 'Escape': select(null); break;
         default: handled = false;
