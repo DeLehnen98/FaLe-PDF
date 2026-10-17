@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '4bb8edcec170';
+const VERSION = '0a85138d2c1f';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-35233f891a8b';
 const PAGES = 'wt-pages';
@@ -51,6 +51,7 @@ const PRECACHE = [
   "/assets/wt/lib/edit-textgeom.js",
   "/assets/wt/lib/edit-ui.css",
   "/assets/wt/lib/einvoice-pdf.js",
+  "/assets/wt/lib/einvoice-write.js",
   "/assets/wt/lib/einvoice.js",
   "/assets/wt/lib/files.js",
   "/assets/wt/lib/format.js",

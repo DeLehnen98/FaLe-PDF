@@ -7,12 +7,14 @@
 import { el, clear } from '../lib/dom.js';
 import { ensureCss, T, iconBtn, ICON, userError } from '../lib/new-ui.js';
 import { computeTotals, checks, money, isoDate, nextNumber, ibanValid, cleanIban, invoicePdf, EXEMPT_PRESETS, paymentText } from '../lib/new-invoice.js';
+import { eChecks } from '../lib/einvoice-write.js';
 
 ensureCss();
 
 const SENDER_KEY = 'fale-wt-invoice-sender';
 const NUMBER_KEY = 'fale-wt-invoice-number';
-const SENDER_FIELDS = ['sName', 'sStreet', 'sCity', 'sCountry', 'sPhone', 'sMail', 'sWeb', 'taxNo', 'vatId', 'bankHolder', 'bankName', 'iban', 'bic', 'noTax', 'terms', 'closing', 'currency', 'taxLabel'];
+const SENDER_FIELDS = ['sName', 'sStreet', 'sCity', 'sCountry', 'sPhone', 'sMail', 'sWeb', 'sContact', 'taxNo', 'vatId', 'bankHolder', 'bankName', 'iban', 'bic', 'noTax', 'terms', 'closing', 'currency', 'taxLabel', 'eFormat'];
+const E_LABEL = { zugferd: { de: 'E-Rechnung (ZUGFeRD)', en: 'e-invoice (ZUGFeRD / Factur-X)' }, xrechnung: { de: 'XRechnung', en: 'XRechnung' } };
 const store = {
   get(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } },
   set(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
@@ -35,6 +37,10 @@ export default {
     if (noNum || noLine) return { ok: false, summary, hint: noNum && noLine ? { de: 'Noch nötig: Rechnungsnummer und mindestens eine Position.', en: 'Still needed: invoice number and at least one line item.' }
       : noNum ? { de: 'Noch nötig: Rechnungsnummer.', en: 'Still needed: invoice number.' }
         : { de: 'Noch nötig: mindestens eine Position mit Beschreibung, Menge und Preis.', en: 'Still needed: at least one line item with description, quantity and price.' } };
+    if (v.eFormat === 'zugferd' || v.eFormat === 'xrechnung') {
+      const em = eChecks(v, v.eFormat);
+      if (em.length) return { ok: false, summary, hint: { de: `Für die ${E_LABEL[v.eFormat].de} fehlt noch: ${em[0].de}${em.length > 1 ? ` (+${em.length - 1})` : ''}.`, en: `The ${E_LABEL[v.eFormat].en} still needs: ${em[0].en}${em.length > 1 ? ` (+${em.length - 1})` : ''}.` } };
+    }
     if (miss.length) return { summary, hint: { de: `Es fehlen Pflichtangaben (${miss.length}) – siehe Check.`, en: `${miss.length} recommended ${miss.length === 1 ? 'detail is' : 'details are'} missing – see the checklist.` } };
     return { summary };
   },
@@ -43,15 +49,34 @@ export default {
     const v = opts.inv;
     const t = computeTotals(v);
     if (!String(v.number || '').trim() || !t.lines.some(l => l.ok)) throw userError('Bitte gib eine Rechnungsnummer und mindestens eine vollständige Position an.', 'Please enter an invoice number and at least one complete line item.');
+    const fmt = v.eFormat === 'zugferd' || v.eFormat === 'xrechnung' ? v.eFormat : 'pdf';
+    let xml = null, finish = null;
+    if (fmt !== 'pdf') {
+      const { buildCii, pdfaFinish } = await import('../lib/einvoice-write.js');
+      xml = buildCii(v, fmt); // throws with userMessage when details are missing
+      if (fmt === 'zugferd') finish = (doc, PDFLib, o) => pdfaFinish(doc, PDFLib, { xml, ...o });
+    }
     ctx.progress(0.3, { de: 'PDF wird erstellt …', en: 'Creating PDF …' });
-    const { bytes, pages, missing } = await invoicePdf(v, ctx.lang, stageApi?.logo() || null);
+    const { bytes, pages, missing } = await invoicePdf(v, ctx.lang, stageApi?.logo() || null, fmt === 'zugferd' ? { pdfa: true, finish } : {});
     stageApi?.afterRun();
     const miss = checks(v, ctx.lang).filter(c => !c.ok && !c.optional);
     if (miss.length) ctx.note({ de: `Achtung, es fehlen Pflichtangaben: ${miss.map(c => c.de).join('; ')}.`, en: `Missing: ${miss.map(c => c.en).join('; ')}.` });
     if (missing.length) ctx.note({ de: `Diese Zeichen kann die Schrift nicht darstellen und wurden ersetzt: ${missing.join(' ')}`, en: `These characters can’t be shown by the font and were replaced: ${missing.join(' ')}` });
-    if (ctx.lang === 'de') ctx.note({ de: 'Hinweis: Das ist eine Ausfüllhilfe, keine Steuerberatung. Für Rechnungen an Unternehmen wird schrittweise ab 2027 eine E-Rechnung (z. B. XRechnung) Pflicht – dieses PDF ist keine E-Rechnung.', en: '' });
-    const name = ctx.safeFileName(`${ctx.t({ de: 'Rechnung', en: 'Invoice' })} ${String(v.number).trim()}${v.rName ? ' – ' + String(v.rName).trim() : ''}.pdf`);
-    return { outputs: [{ name, blob: new Blob([bytes], { type: 'application/pdf' }), pages, note: money(t.gross, ctx.lang, ctx.lang === 'de' ? 'EUR' : v.currency || 'EUR') }] };
+    const base = `${ctx.t({ de: 'Rechnung', en: 'Invoice' })} ${String(v.number).trim()}${v.rName ? ' – ' + String(v.rName).trim() : ''}`;
+    const total = money(t.gross, ctx.lang, ctx.lang === 'de' ? 'EUR' : v.currency || 'EUR');
+    if (fmt === 'pdf') {
+      if (ctx.lang === 'de') ctx.note({ de: 'Hinweis: Das ist eine Ausfüllhilfe, keine Steuerberatung. Dieses PDF ist keine E-Rechnung – für Firmenkunden stell oben „E-Rechnung (ZUGFeRD)“ ein, für Behörden „XRechnung“.', en: '' });
+      return { outputs: [{ name: ctx.safeFileName(base + '.pdf'), blob: new Blob([bytes], { type: 'application/pdf' }), pages, note: total }] };
+    }
+    if (fmt === 'zugferd') {
+      ctx.note({ de: 'E-Rechnung im Format ZUGFeRD 2 (Profil EN 16931) als PDF/A-3: Menschen lesen die PDF, Buchhaltungsprogramme die eingebettete XML. Schick die Datei unverändert per E-Mail.', en: 'E-invoice in ZUGFeRD 2 / Factur-X format (profile EN 16931) as PDF/A-3: people read the PDF, accounting software reads the embedded XML. Send the file unchanged by e-mail.' });
+      return { outputs: [{ name: ctx.safeFileName(base + ' (E-Rechnung).pdf'), blob: new Blob([bytes], { type: 'application/pdf' }), pages, note: `${total} · ZUGFeRD` }] };
+    }
+    ctx.note({ de: 'XRechnung 3.0: Die XML-Datei ist die Rechnung – lade sie im Rechnungsportal des Kunden hoch oder schick sie per E-Mail. Die PDF ist nur eine Ansicht für deine Unterlagen.', en: 'XRechnung 3.0: the XML file is the invoice – upload it to the customer’s invoice portal or send it by e-mail. The PDF is only a view for your records.' });
+    return { outputs: [
+      { name: ctx.safeFileName(base + '.xml'), blob: new Blob([xml], { type: 'application/xml' }), note: `${total} · XRechnung` },
+      { name: ctx.safeFileName(base + ' (Ansicht).pdf'), blob: new Blob([bytes], { type: 'application/pdf' }), pages },
+    ] };
   },
 };
 
@@ -62,7 +87,7 @@ function invoiceStage(stage, state, ctx) {
   const v = (state.values.inv ||= {
     number: '', date: today, serviceMode: 'same', serviceDate: today, from: '', to: '', terms: '14', discount: '',
     items: [{ desc: '', qty: '1', unit: de ? 'Stk.' : 'pcs', price: '', vat: de ? '19' : '20' }],
-    noTax: false, girocode: true, currency: 'EUR', taxLabel: 'VAT', exemptNote: '', intro: '', closing: de ? 'Vielen Dank für Ihren Auftrag!' : 'Thank you for your business!',
+    noTax: false, girocode: true, currency: 'EUR', taxLabel: 'VAT', exemptNote: '', intro: '', eFormat: 'pdf', closing: de ? 'Vielen Dank für Ihren Auftrag!' : 'Thank you for your business!',
   });
   v.lang = lang; // computeTotals: "1.000" is a thousand on the German page
   let logo = null, logoUrl = null;
@@ -221,6 +246,35 @@ function invoiceStage(stage, state, ctx) {
   }
   renderTax();
 
+  // ---------------------------------------------------------------- e-invoice (ZUGFeRD / XRechnung)
+  const eBox = el('div', { class: 'new-ebox' });
+  const eList = el('ul', { class: 'new-check new-echeck' });
+  const eHead = el('p', { class: 'new-f-hint' });
+  function renderE() {
+    clear(eBox);
+    const f = v.eFormat;
+    if (f !== 'zugferd' && f !== 'xrechnung') {
+      eBox.append(el('p', { class: 'new-f-hint' }, T(lang, { de: 'Tipp: Firmen müssen E-Rechnungen empfangen können, ab 2027/2028 schrittweise auch verschicken. Wähl dafür oben „E-Rechnung (ZUGFeRD)“ – kostenlos.', en: 'Tip: for businesses in Germany, choose “e-invoice (ZUGFeRD / Factur-X)” above – free.' })));
+      return;
+    }
+    eBox.append(el('p', { class: 'new-f-hint' }, T(lang, f === 'zugferd'
+      ? { de: 'ZUGFeRD 2 (Profil EN 16931): eine normale PDF mit eingebetteter XML. Gilt als E-Rechnung und passt für Firmenkunden.', en: 'ZUGFeRD 2 / Factur-X (profile EN 16931): a normal PDF with an embedded XML. It counts as an e-invoice for business customers.' }
+      : { de: 'XRechnung 3.0 für Behörden und öffentliche Auftraggeber: eine XML-Datei, dazu eine PDF-Ansicht. Die Leitweg-ID bekommst du von deinem Auftraggeber.', en: 'XRechnung 3.0 for German public authorities: an XML file plus a PDF view. Your customer gives you the Leitweg-ID.' })));
+    eBox.append(grid(field('buyerRef', f === 'xrechnung' ? { de: 'Leitweg-ID', en: 'Leitweg-ID (buyer reference)' } : { de: 'Referenz des Kunden (optional)', en: 'Customer reference (optional)' },
+      { maxLength: 60, placeholder: f === 'xrechnung' ? '04011000-12345-67' : { de: 'z. B. Bestellnummer', en: 'e.g. order number' }, onInput: () => renderEChecks() })));
+    eBox.append(eHead, eList);
+    renderEChecks();
+  }
+  function renderEChecks() {
+    if (!eList.isConnected && !eBox.contains(eList)) return;
+    clear(eList);
+    const miss = eChecks(v, v.eFormat);
+    eHead.textContent = miss.length ? T(lang, { de: 'Noch nötig für die E-Rechnung:', en: 'Still needed for the e-invoice:' }) : '';
+    eHead.hidden = !miss.length;
+    if (!miss.length) eList.append(el('li', { class: 'is-ok' }, T(lang, { de: '✓ Alles da – die E-Rechnung kann erstellt werden.', en: '✓ All set – the e-invoice can be created.' })));
+    for (const m of miss) eList.append(el('li', { class: 'is-miss' }, `✗ ${de ? m.de : m.en}`));
+  }
+
   const sumTable = el('table', { class: 'new-sum' });
   const checkList = el('ul', { class: 'new-check' });
   const payLine = el('p', { class: 'new-muted' });
@@ -240,6 +294,7 @@ function invoiceStage(stage, state, ctx) {
     clear(checkList);
     for (const c of checks(v, lang)) checkList.append(el('li', { class: c.ok ? 'is-ok' : c.optional ? 'is-opt' : 'is-miss' }, `${c.ok ? '✓' : c.optional ? '○' : '✗'} ${de ? c.de : c.en}`));
     renderExemptLazy();
+    renderEChecks();
   }
   let exemptTimer = 0;
   let lastZero = null;
@@ -264,15 +319,20 @@ function invoiceStage(stage, state, ctx) {
       field('customerNo', { de: 'Kundennummer (optional)', en: 'Customer number (optional)' }, { maxLength: 40 }),
       select('terms', { de: 'Zahlungsziel', en: 'Payment terms' }, [
         { value: '0', label: { de: 'Sofort', en: 'On receipt' } }, { value: '7', label: { de: '7 Tage', en: '7 days' } }, { value: '14', label: { de: '14 Tage', en: '14 days' } }, { value: '30', label: { de: '30 Tage', en: '30 days' } }]),
-      de ? null : select('currency', { de: '', en: 'Currency' }, ['EUR', 'USD', 'GBP', 'CHF', 'CAD', 'AUD'].map(c => ({ value: c, label: c })), { onChange: () => renderItems() })),
-    serviceBox, numberBox),
+      de ? null : select('currency', { de: '', en: 'Currency' }, ['EUR', 'USD', 'GBP', 'CHF', 'CAD', 'AUD'].map(c => ({ value: c, label: c })), { onChange: () => renderItems() }),
+      select('eFormat', { de: 'Format', en: 'Format' }, [
+        { value: 'pdf', label: { de: 'PDF (z. B. für Privatkunden)', en: 'PDF' } },
+        { value: 'zugferd', label: { de: 'E-Rechnung (ZUGFeRD) – für Firmen', en: 'E-invoice (ZUGFeRD / Factur-X)' } },
+        { value: 'xrechnung', label: { de: 'XRechnung – für Behörden', en: 'XRechnung (German authorities)' } }], { wide: true, onChange: () => renderE() })),
+    eBox, serviceBox, numberBox),
     sec('new-inv-h2', { de: 'Kunde', en: 'Bill to' }, grid(
       field('rName', { de: 'Firma / Name', en: 'Company / name' }, { wide: true }),
       field('rAttn', { de: 'z. Hd. (optional)', en: 'Attn. (optional)' }, { wide: true }),
       field('rStreet', { de: 'Straße und Hausnummer', en: 'Street' }),
       field('rCity', { de: 'PLZ und Ort', en: 'Postcode and town' }),
       field('rCountry', { de: 'Land (nur Ausland)', en: 'Country (optional)' }),
-      field('rVatId', { de: 'USt-IdNr. des Kunden (optional)', en: 'Customer VAT number (optional)' }, { maxLength: 20 }))),
+      field('rVatId', { de: 'USt-IdNr. des Kunden (optional)', en: 'Customer VAT number (optional)' }, { maxLength: 20 }),
+      field('rMail', { de: 'E-Mail für Rechnungen (optional)', en: 'E-mail for invoices (optional)' }, { type: 'email', maxLength: 120, hint: { de: 'Bei XRechnung Pflicht.', en: 'Required for XRechnung.' } }))),
     sec('new-inv-h3', { de: 'Positionen', en: 'Line items' }, itemsList, el('div', { class: 'new-row' }, addItem),
       grid(field('discount', { de: 'Rabatt in % (optional)', en: 'Discount in % (optional)' }, { inputmode: 'decimal', maxLength: 6, validate: s => (s && !(parseFloat(String(s).replace(',', '.')) >= 0 && parseFloat(String(s).replace(',', '.')) <= 100) ? { de: 'Bitte 0 bis 100 eingeben.', en: 'Enter 0 to 100.' } : '') })),
       taxBox, sumTable, payLine),
@@ -284,6 +344,7 @@ function invoiceStage(stage, state, ctx) {
       field('sPhone', { de: 'Telefon (optional)', en: 'Phone (optional)' }, { type: 'tel', autocomplete: 'tel' }),
       field('sMail', { de: 'E-Mail (optional)', en: 'E-mail (optional)' }, { type: 'email', autocomplete: 'email' }),
       field('sWeb', { de: 'Website (optional)', en: 'Website (optional)' }),
+      field('sContact', { de: 'Ansprechpartner (optional)', en: 'Contact person (optional)' }, { autocomplete: 'name' }),
       field('taxNo', { de: 'Steuernummer', en: 'Tax number (optional)' }, { maxLength: 30, hint: de ? { de: 'Steuernummer oder USt-IdNr. – eins von beiden ist Pflicht.', en: '' } : null }),
       field('vatId', { de: 'USt-IdNr.', en: 'VAT number (optional)' }, { maxLength: 20 })),
       el('div', { class: 'new-f' }, el('span', { class: 'new-f-hint' }, T(lang, { de: 'Logo (optional, PNG oder JPG)', en: 'Logo (optional, PNG or JPG)' })), logoPrev,
@@ -303,6 +364,7 @@ function invoiceStage(stage, state, ctx) {
         de: 'Ausfüllhilfe, keine Steuerberatung. Geprüft wird nur, ob die Angaben ausgefüllt sind – nicht, ob sie stimmen. Im Zweifel frag deine Steuerberatung.',
         en: 'This tool helps you lay out an invoice. It does not give tax or legal advice – requirements differ between countries.' }))));
   renderItems();
+  renderE();
 
   return {
     logo: () => (logo ? { bytes: logo.bytes, type: logo.type } : null),

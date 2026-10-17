@@ -21,11 +21,11 @@
   "de": {
     "slug": "rechnung-schreiben",
     "name": "Rechnung schreiben",
-    "short": "Rechnung mit allen Pflichtangaben als PDF – mit GiroCode.",
-    "title": "Rechnung schreiben – Rechnungsvorlage als PDF | FaleNetwork",
+    "short": "Rechnung als PDF oder E-Rechnung (ZUGFeRD, XRechnung) – mit GiroCode.",
+    "title": "Rechnung schreiben – auch als E-Rechnung (ZUGFeRD) | FaleNetwork",
     "h1": "Rechnung schreiben",
-    "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben nach § 14 UStG: 19 % und 7 % USt., Kleinunternehmer, Rabatt, GiroCode. Als PDF – kostenlos, ohne Anmeldung.",
-    "lede": "Erstelle eine saubere Rechnung mit allen Pflichtangaben – direkt als PDF. Deine Daten bleiben auf deinem Gerät.",
+    "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben: als PDF oder E-Rechnung (ZUGFeRD, XRechnung), 19 % und 7 % USt., Kleinunternehmer, GiroCode. Kostenlos.",
+    "lede": "Erstelle eine Rechnung mit allen Pflichtangaben – als PDF oder als E-Rechnung. Deine Daten bleiben auf deinem Gerät.",
     "primaryButton": "Rechnung erstellen",
     "keywords": [
       "rechnung erstellen",
@@ -35,7 +35,13 @@
       "rechnung 19 prozent",
       "rechnungsgenerator",
       "girocode rechnung",
-      "rechnung muster"
+      "rechnung muster",
+      "e-rechnung erstellen",
+      "zugferd erstellen",
+      "xrechnung erstellen",
+      "factur-x",
+      "e-rechnung kostenlos",
+      "leitweg-id"
     ],
     "steps": [
       {
@@ -57,8 +63,8 @@
         "text": "Steuernummer oder USt-IdNr., fortlaufende Nummer, Leistungsdatum oder -zeitraum, Nettobeträge und Steuer je Steuersatz – der Check zeigt, was fehlt."
       },
       {
-        "title": "Schneller bezahlt",
-        "text": "Der GiroCode enthält Empfänger, IBAN, Betrag und Verwendungszweck. Dein Kunde scannt ihn mit der Banking-App und überweist ohne Tippfehler."
+        "title": "E-Rechnung inklusive",
+        "text": "ZUGFeRD für Firmenkunden und XRechnung für Behörden – ohne Abo und ohne Zusatzprogramm. Das Werkzeug sagt dir, welche Angaben dafür noch fehlen."
       },
       {
         "title": "Fürs Fensterkuvert",
@@ -83,8 +89,8 @@
         "a": "Ja. Jede Position bekommt ihren Steuersatz. Auf der Rechnung stehen Netto und Steuer je Steuersatz getrennt."
       },
       {
-        "q": "Ist das eine E-Rechnung (XRechnung)?",
-        "a": "Nein, das Werkzeug erstellt ein normales PDF. Für Rechnungen an Unternehmen wird die E-Rechnung schrittweise ab 2027 Pflicht. Für Rechnungen an Privatpersonen bleibt das PDF erlaubt."
+        "q": "Kann ich eine E-Rechnung (ZUGFeRD oder XRechnung) erstellen?",
+        "a": "Ja. Stell oben das Format um: „E-Rechnung (ZUGFeRD)“ erzeugt eine PDF/A-3 mit eingebetteter XML im Profil EN 16931 – passend für Firmenkunden. „XRechnung“ erzeugt die XML-Datei für Behörden (mit Leitweg-ID) plus eine PDF-Ansicht. Beides ist kostenlos und wird im Browser erstellt."
       },
       {
         "q": "Ist das eine Steuerberatung?",
@@ -99,10 +105,10 @@
   "en": {
     "slug": "invoice-generator",
     "name": "Invoice generator",
-    "short": "Create a clean invoice as PDF – with tax, discount and payment QR.",
-    "title": "Invoice generator – free invoice template as PDF | FaleNetwork",
+    "short": "Create an invoice as PDF or e-invoice (ZUGFeRD / Factur-X).",
+    "title": "Invoice generator – PDF or e-invoice (ZUGFeRD) | FaleNetwork",
     "h1": "Invoice generator",
-    "metaDescription": "Create invoices as PDF: line items, tax rates, discount, payment terms, logo and an optional payment QR code. Free, no sign-up, data stays on your device.",
+    "metaDescription": "Create invoices as PDF or as e-invoice (ZUGFeRD / Factur-X, XRechnung): line items, tax rates, discount, payment terms, logo. Free, no sign-up.",
     "lede": "Write a clean invoice and save it as a PDF. Your data stays on your device.",
     "primaryButton": "Create invoice",
     "keywords": [
@@ -111,7 +117,12 @@
       "free invoice",
       "invoice pdf",
       "create invoice",
-      "invoice maker"
+      "invoice maker",
+      "e-invoice",
+      "zugferd",
+      "factur-x",
+      "xrechnung",
+      "en 16931"
     ],
     "steps": [
       {
@@ -133,6 +144,10 @@
         "text": "Line items with quantity, unit and price, several tax rates, discount, payment terms and bank details on a tidy A4 page."
       },
       {
+        "title": "E-invoices included",
+        "text": "ZUGFeRD / Factur-X (PDF/A-3 with embedded XML, profile EN 16931) and XRechnung – free, without a subscription. The tool tells you which details are still missing."
+      },
+      {
         "title": "Paid faster in the euro area",
         "text": "For EUR invoices the EPC QR code holds payee, IBAN, amount and reference – customers scan it with their banking app."
       },
@@ -147,6 +162,10 @@
         "a": "EUR, USD, GBP, CHF, CAD and AUD. Each line gets its own tax rate, and you can name the tax (e.g. VAT, GST or sales tax) or leave tax out entirely."
       },
       {
+        "q": "Can I create an e-invoice?",
+        "a": "Yes. Switch the format to “E-invoice (ZUGFeRD / Factur-X)” for a PDF/A-3 with embedded XML (profile EN 16931), or to “XRechnung” for German public authorities. Both are created in your browser for free."
+      },
+      {
         "q": "Does the invoice meet the legal requirements of my country?",
         "a": "The tool doesn’t give tax or legal advice – requirements differ between countries. Check what your invoices must contain; the German page of this tool covers the German rules."
       },
@@ -157,10 +176,6 @@
       {
         "q": "Where is my data stored?",
         "a": "Nowhere unless you ask for it. With the tick boxes your browser remembers your details, bank data, logo and the last invoice number on this device. Switching off deletes them."
-      },
-      {
-        "q": "Can I add my logo?",
-        "a": "Yes – a PNG or JPG. It appears at the top left of the invoice."
       }
     ]
   },

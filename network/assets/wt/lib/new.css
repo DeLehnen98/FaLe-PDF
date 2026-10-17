@@ -157,3 +157,5 @@ html.new-v-lock, html.new-v-lock body { overflow: hidden; }
 .new-check li.is-opt { color: var(--text-2); }
 .new-item .new-f textarea { min-height: 56px; }
 .new-v-scroll:focus:not(:focus-visible) { outline: none; }
+.new-ebox { display: grid; gap: 8px; margin: 4px 0 10px; }
+.new-echeck li.is-miss { color: var(--danger); }

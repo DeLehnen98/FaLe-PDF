@@ -164,9 +164,10 @@ const mm = v => v * 72 / 25.4;
  * @param v       invoice data
  * @param lang    'de' | 'en'
  * @param logo    {bytes, type} | null
+ * @param opts    { pdfa: true → embedded Unicode font only, finish(doc, PDFLib, {title, author}) → bytes (instead of saveDoc) }
  * @returns {Promise<{bytes: Uint8Array, pages: number, missing: string[]}>}
  */
-export async function invoicePdf(v, lang, logo = null) {
+export async function invoicePdf(v, lang, logo = null, opts = {}) {
   const PDFLib = await loadPdfLib();
   const { PDFDocument, rgb, PDFName, PDFArray } = PDFLib;
   const de = lang === 'de';
@@ -178,10 +179,13 @@ export async function invoicePdf(v, lang, logo = null) {
   const uf = await import('./unifont.js');
   const all = JSON.stringify(v);
   let font, bold;
-  if (uf.needsUnicode(all)) {
+  if (opts.pdfa || uf.needsUnicode(all)) {
     try { font = await uf.uniFont(doc, { PDFLib }); bold = await uf.uniFont(doc, { bold: true, PDFLib }); } catch (err) { console.warn(err); }
   }
-  if (!font) { font = await uf.stdFont(doc, { PDFLib }); bold = await uf.stdFont(doc, { bold: true, PDFLib }); }
+  if (!font) {
+    if (opts.pdfa) throw new Error('pdfa: unicode font unavailable');
+    font = await uf.stdFont(doc, { PDFLib }); bold = await uf.stdFont(doc, { bold: true, PDFLib });
+  }
   const missing = new Set();
   const clean = (s, f = font) => { const r = uf.cleanText(String(s ?? ''), f); r.missing.forEach(c => missing.add(c)); return r.text; };
   const PW = 595.28, PH = 841.89, L = mm(25), R = PW - mm(20), TW = R - L, BOTTOM = mm(32);
@@ -397,6 +401,6 @@ export async function invoicePdf(v, lang, logo = null) {
   doc.setTitle(clean(title));
   if (String(v.sName || '').trim()) doc.setAuthor(clean(v.sName));
   doc.setLanguage(de ? 'de-DE' : 'en');
-  const bytes = await saveDoc(doc, { title: clean(title) });
+  const bytes = opts.finish ? await opts.finish(doc, PDFLib, { title: clean(title), author: clean(v.sName || '') }) : await saveDoc(doc, { title: clean(title) });
   return { bytes, pages: pages.length, missing: [...missing] };
 }

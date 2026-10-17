@@ -23,3 +23,4 @@ suites/design/testserve/
 **/share_data/
 !suites/webtools/fixtures_static/
 !suites/webtools/fixtures_static/**
+tools/einvoice/vendor
