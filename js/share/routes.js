@@ -3,6 +3,7 @@
 //   #/teilen/link[?doc=<id>]       create an encrypted share link
 //   #/teilen/unterschrift[?doc=]   request a signature (place fields, create links)
 //   #/teilen/anfrage/<id>          status of one signature request
+//   #/teilen/mitnehmen#d=<data>    take a signature request over to another device (asks first)
 //   #/s/<id>#k=<key>               recipient view (any browser, no install)
 //   #/u/<token>#k=<key>            signer view (any browser, no install, no account)
 //   #/verbinden[?r=<room>&s=<secret>]  connect devices / transfer files
@@ -18,13 +19,14 @@ const SCREENS = {
   link: { title: 'Sicher teilen', sub: 'Verschlüsselter Link mit Ablaufdatum', load: () => import('./create.js') },
   unterschrift: { title: 'Unterschrift anfordern', sub: 'Felder setzen, Link senden, unterschriebenes PDF zurückbekommen', load: () => import('./signreq.js') },
   anfrage: { title: 'Unterschriftsanfrage', sub: 'Status und unterschriebenes Dokument', load: () => import('./signreq.js').then(m => ({ mount: m.mountStatus })) },
+  mitnehmen: { title: 'Anfrage übernehmen', sub: 'Unterschriftsanfrage auf diesem Gerät ansehen', load: () => import('./signreq.js').then(m => ({ mount: m.mountImport })) },
   s: { title: 'Geteilte Datei', sub: 'Ende-zu-Ende-verschlüsselt mit FaLe PDF', load: () => import('./receive.js') },
   u: { title: 'Unterschreiben', sub: 'Dokument ansehen und elektronisch unterschreiben', load: () => import('./signer.js') },
   verbinden: { title: 'Geräte verbinden', sub: 'Dateien zwischen Handy und PC übertragen', load: () => import('./transfer.js') },
 };
 
 function keyOf(parts) {
-  if (parts[0] === 'teilen') return parts[1] && SCREENS[parts[1]] ? parts[1] : 'hub';
+  if (parts[0] === 'teilen') { const sub = String(parts[1] || '').split('#')[0]; return sub && SCREENS[sub] ? sub : 'hub'; }
   return parts[0];
 }
 

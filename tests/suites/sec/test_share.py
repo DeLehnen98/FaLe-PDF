@@ -372,6 +372,35 @@ def run():
             check('server state: signer status signed', [s['status'] for s in st['signers']] == ['signed'])
         step('sign_flow', sign_flow)
 
+        def sign_other_device():
+            # the status of a request on a second device: hand-over link (fragment only), asks before storing
+            A.locator('[data-move]').click()
+            A.wait_for_selector('.sh-move .sh-link')
+            mlink = A.locator('.sh-move .sh-link').input_value()
+            check('move: link #/teilen/mitnehmen#d=…', re.search(r'#/teilen/mitnehmen#d=[A-Za-z0-9_-]+$', mlink) is not None, mlink[:120])
+            check('move: warning shown', 'nur an dich selbst' in A.locator('.sh-move').inner_text())
+            shot(A, 'desktop_light_status_move')
+            F = open_app(new_ctx(browser, phone=True), 'F', '#/start')
+            F.goto(mlink); F.wait_for_timeout(300); F.reload()
+            F.wait_for_selector('.sh-import-card', timeout=15000)
+            check('move: asks first, nothing stored yet', F.evaluate("JSON.parse(localStorage.getItem('fale-shares-v1') || '[]').length") == 0)
+            shot(F, 'phone_light_move_import')
+            F.locator('[data-take]').click()
+            F.wait_for_selector('.sh-srow', timeout=15000)
+            F.wait_for_timeout(1200)
+            rows = F.locator('.sh-status-list').inner_text()
+            check('move: second device sees signer + status', 'Erika Muster' in rows and 'Unterschrieben' in rows, rows[:200])
+            check('move: fragment with the key left the address bar', '#d=' not in F.url and '/teilen/anfrage/' in F.url, F.url)
+            F.locator('.sh-final [data-save]').click()
+            F.wait_for_timeout(2500)
+            check('move: signed PDF loads on the second device', find_doc(F, r'\(unterschrieben\)\.pdf$') is not None)
+            F.goto(mlink); F.wait_for_timeout(300); F.reload(); F.wait_for_timeout(1500)
+            check('move: opening the link again goes straight to the status', '/teilen/anfrage/' in F.url and F.locator('.sh-import-card').count() == 0, F.url)
+            F.goto(mlink[:-12]); F.wait_for_timeout(300); F.reload(); F.wait_for_timeout(1200)
+            check('move: damaged link → clear message', 'Link unvollständig' in F.locator('.screen-inner').last.inner_text())
+            F.context.close()
+        step('sign_other_device', sign_other_device)
+
         def sign_multi():
             # two signers, sequential: person 2 must wait
             goto(A, f'#/teilen/unterschrift?doc={state["pdf"]}', 1500)

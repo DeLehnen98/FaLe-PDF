@@ -245,3 +245,10 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
   .sh-row .sh-row-main { flex-basis: calc(100% - 120px); }
   .sh-link-acts .btn { flex: 1; min-width: 0; }
 }
+/* signature request on another device */
+.sh-move { margin-top: 12px; display: grid; gap: 8px; }
+.sh-move-warn { display: flex; gap: 8px; align-items: flex-start; color: var(--text-2, inherit); }
+.sh-move-warn > .ic { width: 18px; height: 18px; flex: none; color: var(--accent); margin-top: 2px; }
+.sh-import-card { display: flex; gap: 14px; align-items: flex-start; }
+.sh-import-card > .ic { width: 32px; height: 32px; flex: none; color: var(--accent); }
+.sh-import-card > div { display: grid; gap: 6px; min-width: 0; }

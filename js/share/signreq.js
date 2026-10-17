@@ -262,8 +262,18 @@ export async function mountStatus(screen, { arg: id }) {
   wrap.appendChild(final);
   const acts = h(`<div class="sh-actions sh-actions-row">
     <button class="btn btn-ghost" type="button" data-remind>${oicon('bell')} Erinnerung in 2 Tagen</button>
+    <button class="btn btn-ghost" type="button" data-move aria-expanded="false">${oicon('phone')} Auf anderem Gerät ansehen</button>
     <button class="btn btn-danger-ghost" type="button" data-del>${oicon('trash')} Anfrage löschen</button></div>`);
   wrap.appendChild(acts);
+  const movePanel = h(`<div class="card card-pad sh-move" hidden><strong>Auf einem anderen Gerät ansehen</strong>
+    <p class="muted small">Öffne diesen Link auf deinem anderen Handy oder Computer. Dort siehst du dann auch, wer unterschrieben hat, und kannst die fertige PDF laden.</p>
+    <p class="small sh-move-warn">${oicon('shield')}<span>Wer diesen Link hat, kann die Anfrage verwalten und das Dokument lesen. Schick ihn nur an dich selbst – nicht an die Personen, die unterschreiben.</span></p></div>`);
+  wrap.appendChild(movePanel);
+  acts.querySelector('[data-move]').addEventListener('click', ev => {
+    if (!movePanel.querySelector('.sh-linkbox')) movePanel.appendChild(linkBox(deviceLink(entry), { label: 'Link für dein anderes Gerät', shareTitle: `Status: ${entry.name}`, shareText: t('Status meiner Unterschriftsanfrage (nur für mich):'), qr: true }));
+    movePanel.hidden = !movePanel.hidden;
+    ev.currentTarget.setAttribute('aria-expanded', String(!movePanel.hidden));
+  });
   wrap.appendChild(h(`<p class="muted small sh-local-note">${oicon('info')}<span>Der Server kennt nur den Status (offen, angesehen, unterschrieben) und die Zeitpunkte – nicht das Dokument, die Namen oder deine Nachricht.</span></p>`));
   head.querySelector('[data-refresh]').addEventListener('click', () => refresh());
   acts.querySelector('[data-remind]').addEventListener('click', () => remind(entry));
@@ -324,6 +334,58 @@ export async function mountStatus(screen, { arg: id }) {
   await refresh();
   const timer = setInterval(() => { if (!document.hidden) refresh(); }, 20000);
   return () => { clearInterval(timer); off.destroy(); };
+}
+
+// ---------------------------------------------------------------- the same request on another device
+// The status lives only in this device's registry (localStorage). "Auf anderem Gerät ansehen" hands the
+// entry over in the URL fragment (#/teilen/mitnehmen#d=…) – fragments never reach a server. The other
+// device asks before it stores anything.
+const ID_RE = /^[A-Za-z0-9_-]{16,32}$/, TOKEN_RE = /^[A-Za-z0-9_-]{24,64}$/, KEY_RE = /^[A-Za-z0-9_-]{43}$/;
+const tokenOf = url => (/#\/u\/([A-Za-z0-9_-]{24,64})#/.exec(String(url || '')) || [])[1] || '';
+
+export function deviceLink(entry) {
+  const d = { v: 1, i: entry.id, a: entry.auth, k: entry.key, n: entry.name, c: entry.createdAt, e: entry.expiresAt,
+    s: entry.signers.map(x => [x.name, tokenOf(x.url)]), f: entry.from || '', m: entry.message || '' };
+  return `${linkBase()}#/teilen/mitnehmen#d=${b64u.enc(new TextEncoder().encode(JSON.stringify(d)))}`;
+}
+
+/** Parses and validates the hand-over payload; returns a registry entry or null. */
+export function parseDeviceLink(hash) {
+  const m = /#d=([A-Za-z0-9_-]{20,8000})$/.exec(String(hash || ''));
+  if (!m) return null;
+  let d;
+  try { d = JSON.parse(new TextDecoder().decode(b64u.dec(m[1]))); } catch { return null; }
+  const str = (v, max) => typeof v === 'string' && v.length <= max;
+  if (!d || d.v !== 1 || !ID_RE.test(d.i) || !TOKEN_RE.test(d.a) || !KEY_RE.test(d.k) || !str(d.n, 300) || !str(d.f, 80) || !str(d.m, 600)) return null;
+  if (!Array.isArray(d.s) || d.s.length < 1 || d.s.length > 5 || !d.s.every(x => Array.isArray(x) && str(x[0], 80) && TOKEN_RE.test(x[1]))) return null;
+  if (!Number.isFinite(d.c) || !str(d.e, 40) || !Number.isFinite(Date.parse(d.e))) return null;
+  return {
+    id: d.i, kind: 'sign', name: d.n, docLocalId: null, createdAt: d.c, expiresAt: d.e, auth: d.a, key: d.k, from: d.f, message: d.m,
+    signers: d.s.map(([name, tok]) => ({ name, url: `${linkBase()}#/u/${tok}#k=${d.k}` })), lastStatus: d.s.map(() => 'open'), imported: true,
+  };
+}
+
+export async function mountImport(screen, { hash }) {
+  const wrap = h('<div class="screen-inner sh-import"></div>');
+  screen.body.appendChild(wrap);
+  const entry = parseDeviceLink(hash);
+  if (!entry) {
+    wrap.appendChild(h(`<div class="empty"><div class="empty-art">${oicon('info')}</div><h3>Link unvollständig</h3><p>Dieser Link ist beschädigt oder wurde nicht vollständig kopiert. Öffne auf dem ersten Gerät die Anfrage und kopiere den Link erneut.</p><a class="btn btn-ghost" href="#/teilen">Zur Übersicht</a></div>`));
+    return null;
+  }
+  if (getEntry(entry.id)) { location.replace(`#/teilen/anfrage/${entry.id}`); return null; }
+  screen.setTitle('Anfrage übernehmen', entry.name);
+  const card = h(`<div class="card card-pad sh-import-card">${sicon('signReq')}<div><strong data-no-i18n>${esc(entry.name)}</strong>
+    <p class="muted small"><span>${entry.signers.length === 1 ? 'Unterschriftsanfrage an 1 Person' : `Unterschriftsanfrage an ${entry.signers.length} Personen`}</span> · <span>${esc(expiryLabel(entry.expiresAt))}</span></p>
+    <p>Diese Anfrage auf diesem Gerät speichern? Dann siehst du hier den Status und kannst die unterschriebene PDF laden.</p>
+    <div class="sh-actions sh-actions-row"><button class="btn btn-primary" type="button" data-take>${oicon('check')} Übernehmen</button><a class="btn btn-ghost" href="#/teilen">Abbrechen</a></div></div></div>`);
+  wrap.appendChild(card);
+  card.querySelector('[data-take]').addEventListener('click', () => {
+    putEntry(entry);
+    toast('Anfrage übernommen.', 'success');
+    location.replace(`#/teilen/anfrage/${entry.id}`); // replace: the link (with its key) does not stay in the history
+  });
+  return null;
 }
 
 async function saveSigned(entry, result, card, all) {
