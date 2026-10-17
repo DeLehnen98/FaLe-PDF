@@ -132,6 +132,8 @@ const SHARED = {
   // OCR image pre-processing (ocr-pdf, image-to-text): pure functions + their module worker
   'ocr/prep.js': () => copyModule('js/ocr/prep.js'),
   'ocr/prep-worker.js': () => copyModule('js/ocr/prep-worker.js', ['./prep.js']),
+  // business cards (business-card): field parser + vCard writer
+  'ocr/bizcard-parse.js': () => copyModule('js/ocr/bizcard-parse.js'),
 };
 
 // ---------------------------------------------------------------- office modules → wt/lib/shared/office/

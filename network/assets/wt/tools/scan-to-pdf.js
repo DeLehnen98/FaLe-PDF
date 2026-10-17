@@ -22,14 +22,14 @@ const CORNERS = [{ de: 'oben links', en: 'top left' }, { de: 'oben rechts', en: 
 let stageCtl = null;
 let defaults = { filter: 'enhance' };
 
-/** Per-page settings in input.opts (set on first use). */
-function pageOpts(input) {
+/** Per-page settings in input.opts (set on first use). Shared with id-copy.js. */
+export function pageOpts(input) {
   const o = input.opts;
   if (!o.scan) o.scan = { quad: null, auto: null, rot: 0, filter: defaults.filter, shadow: false };
   return o.scan;
 }
 
-async function detect(input, thumb) {
+export async function detect(input, thumb) {
   const p = pageOpts(input);
   if (p.auto !== null) return p;
   try {
@@ -41,7 +41,7 @@ async function detect(input, thumb) {
 }
 
 /** Process one page at a given resolution: warp → shadow removal → filter → rotation. */
-async function processPage(src, p, maxSide, tick) {
+export async function processPage(src, p, maxSide, tick) {
   let c = await warp(src, p.quad || FULL_QUAD, { maxSide });
   await tick();
   if (p.shadow) {
@@ -137,7 +137,8 @@ export default {
 };
 
 // ---------------------------------------------------------------- stage: page strip + corner editor
-function scanStage(stage, state, ctx) {
+export function scanStage(stage, state, ctx, { pageName = null } = {}) {
+  // pageName(i, n) → {de, en}: own page titles (id-copy: front / back)
   const lang = ctx.lang;
   const thumbs = new Map();     // input.id → Promise<canvas> (display/detection source)
   const previews = new Map();   // input.id → canvas (processed, small)
@@ -244,7 +245,7 @@ function scanStage(stage, state, ctx) {
     const list = inputs();
     if (current >= list.length) current = Math.max(0, list.length - 1);
     const inp = list[current];
-    title.textContent = T(lang, { de: `Seite ${current + 1} von ${list.length}`, en: `Page ${current + 1} of ${list.length}` });
+    title.textContent = T(lang, pageName ? pageName(current, list.length) : { de: `Seite ${current + 1} von ${list.length}`, en: `Page ${current + 1} of ${list.length}` });
     prev.disabled = current === 0;
     next.disabled = current >= list.length - 1;
     [...strip.querySelectorAll('.img-scan-page')].forEach((b, i) => b.setAttribute('aria-pressed', String(i === current)));
@@ -355,7 +356,7 @@ function scanStage(stage, state, ctx) {
   function renderStrip() {
     clear(strip);
     inputs().forEach((inp, i) => {
-      strip.append(el('button', { type: 'button', class: 'img-strip-btn img-scan-page', aria: { pressed: String(i === current), label: T(lang, { de: `Seite ${i + 1}`, en: `Page ${i + 1}` }) }, onclick: () => select(i) },
+      strip.append(el('button', { type: 'button', class: 'img-strip-btn img-scan-page', aria: { pressed: String(i === current), label: T(lang, pageName ? pageName(i, inputs().length) : { de: `Seite ${i + 1}`, en: `Page ${i + 1}` }) }, onclick: () => select(i) },
         el('span', { class: 'img-scan-num', 'aria-hidden': 'true' }, String(i + 1))));
     });
     strip.append(addBtn);

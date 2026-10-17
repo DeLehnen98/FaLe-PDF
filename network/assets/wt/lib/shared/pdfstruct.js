@@ -168,7 +168,7 @@ export function paragraphs(page, body) {
           else if (last && !/\s$/.test(last.text)) text = ' ' + text;
         }
         const lr = runs[runs.length - 1];
-        if (lr && lr.bold === r.bold && lr.italic === r.italic && Math.abs(lr.size - r.size) < 0.6 && lr.family === r.family) lr.text += text;
+        if (lr && lr.bold === r.bold && lr.italic === r.italic && Math.abs(lr.size - r.size) < 0.6 && lr.family === r.family && lr.flag === r.flag) lr.text += text;
         else runs.push({ ...r, text });
       });
     });

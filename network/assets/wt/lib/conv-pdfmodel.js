@@ -115,8 +115,8 @@ function toLines(items) {
         if (!spaced && gap > it.size * 0.15) text = (gap > it.size * 3 ? '    ' : ' ') + text;
       }
       const r = runs[runs.length - 1];
-      if (r && r.bold === it.bold && r.italic === it.italic && Math.abs(r.size - it.size) < 0.6 && r.family === it.family) r.text += text;
-      else runs.push({ text, bold: it.bold, italic: it.italic, size: it.size, family: it.family });
+      if (r && r.bold === it.bold && r.italic === it.italic && Math.abs(r.size - it.size) < 0.6 && r.family === it.family && r.flag === it.flag) r.text += text;
+      else runs.push({ text, bold: it.bold, italic: it.italic, size: it.size, family: it.family, flag: it.flag });
       prev = it;
     }
     runs.forEach(r => { r.text = r.text.replace(/\s+/g, m => (m.length >= 4 ? '\t' : ' ')); });
@@ -207,6 +207,30 @@ const norm = s => s.replace(/\d+/g, '#').replace(/\s+/g, ' ').trim().toLowerCase
  * @param {object} pdf  pdf.js document
  * @param {number[]} indices  0-based pages
  */
+/**
+ * Page record from positioned text items (top-left origin, points) – used for OCR results (image-to-word):
+ * items { str, x, y (baseline), w, size, bold?, italic?, family?, flag? }.
+ */
+export function analyseItems(items, width, height, index = 0) {
+  items = items.map(i => ({ bold: false, italic: false, family: 'Arial', ...i, str: cleanText(i.str) })).filter(i => i.str);
+  const split = findGutter(items, width);
+  let regions;
+  if (split) {
+    const cross = items.filter(i => i.x < split && i.x + i.w > split);
+    const colItems = items.filter(i => !cross.includes(i));
+    const ys = colItems.map(i => i.y).sort((p, q) => p - q);
+    const top = ys.length ? ys[Math.floor(ys.length / 2)] : 0;
+    regions = [
+      { lines: toLines(cross.filter(i => i.y <= top)) },
+      { lines: toLines(colItems.filter(i => i.x + i.w / 2 < split)) },
+      { lines: toLines(colItems.filter(i => i.x + i.w / 2 >= split)) },
+      { lines: toLines(cross.filter(i => i.y > top)) },
+    ].filter(r => r.lines.length);
+  } else regions = [{ lines: toLines(items) }];
+  const chars = items.reduce((s, i) => s + i.str.replace(/\s/g, '').length, 0);
+  return { index, width, height, regions, chars, columns: !!split, images: [] };
+}
+
 export async function analysePdf(pdf, indices, ctx, { images = false, onPage = null } = {}) {
   const lib = images ? await (await import('./pdf.js')).loadPdfjs() : null;
   const pages = [];
@@ -273,6 +297,7 @@ const runOf = (r, body, heading) => {
     if (r.family === 'Courier New') o.mono = true;
   }
   if (r.italic) o.i = true;
+  if (r.flag) o.bg = '#FFF1A8';   // OCR: uncertain word – check it
   return o;
 };
 

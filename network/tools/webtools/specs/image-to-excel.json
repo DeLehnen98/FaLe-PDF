@@ -1,0 +1,165 @@
+{
+  "id": "image-to-excel",
+  "category": "images",
+  "module": "tools/image-to-excel.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "order": 21,
+  "related": [
+    "image-to-word",
+    "pdf-to-excel",
+    "image-to-text",
+    "scan-to-pdf"
+  ],
+  "next": [],
+  "needs": [],
+  "iconSvg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 9h18M3 14h18M9 4v16M15 4v16\"/>",
+  "de": {
+    "slug": "bild-in-excel",
+    "name": "Bild in Excel umwandeln",
+    "short": "Tabelle aus Foto oder Screenshot als Excel-Datei – mit echten Zahlen.",
+    "title": "Bild in Excel umwandeln – Tabelle aus Foto, gratis | FaleNetwork",
+    "h1": "Bild in Excel umwandeln",
+    "metaDescription": "Tabelle aus Foto oder Screenshot in Excel umwandeln: echte Zahlen, Datum und Euro-Beträge, mit Summenprüfung. Kostenlos und ohne Upload.",
+    "lede": "Fotografier eine Tabelle – du bekommst eine Excel-Datei, mit der du sofort rechnen kannst.",
+    "pickLabel": "Bilder auswählen",
+    "primaryButton": "In Excel umwandeln",
+    "keywords": [
+      "tabelle aus bild",
+      "foto in excel",
+      "screenshot in excel",
+      "jpg in excel",
+      "bild zu xlsx",
+      "tabelle abfotografieren"
+    ],
+    "steps": [
+      {
+        "title": "Foto der Tabelle wählen",
+        "text": "Am besten gerade von oben und gut beleuchtet. Mehrere Fotos einer langen Liste gehen auch."
+      },
+      {
+        "title": "Optionen prüfen",
+        "text": "Nur Tabellen oder alles, ein Blatt oder eins pro Bild, Excel oder CSV."
+      },
+      {
+        "title": "Excel-Datei laden",
+        "text": "Zahlen, Beträge, Prozent und Datum sind echte Werte – Formeln funktionieren sofort."
+      }
+    ],
+    "why": [
+      {
+        "title": "Rechnen statt abtippen",
+        "text": "Deutsche Zahlen wie 1.234,56 €, Prozente und Datumsangaben werden als echte Werte übernommen – nicht als Text."
+      },
+      {
+        "title": "Auch ohne Linien",
+        "text": "Spalten werden an der Ausrichtung erkannt – Tabellen ohne Rahmen landen nicht in einer einzigen Spalte."
+      },
+      {
+        "title": "Summen werden geprüft",
+        "text": "Steht unter einer Spalte „Summe“ oder „Gesamt“, wird nachgerechnet. Passt etwas nicht, siehst du, welche Zelle du prüfen solltest."
+      },
+      {
+        "title": "Kein Upload",
+        "text": "Die Texterkennung läuft in deinem Browser. Auch vertrauliche Listen bleiben bei dir."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Warum stimmen manche Zahlen nicht?",
+        "a": "Texterkennung kann 1 und 7 oder 0 und O verwechseln, vor allem bei unscharfen Fotos. Die Summenprüfung hilft, solche Stellen zu finden."
+      },
+      {
+        "q": "Kann ich mehrere Fotos zu einer Tabelle zusammenfügen?",
+        "a": "Ja. Wähle „Alles auf einem Blatt“ – wiederholte Kopfzeilen werden dabei weggelassen."
+      },
+      {
+        "q": "Geht das mit Screenshots?",
+        "a": "Ja, Screenshots sind sogar ideal: scharf und gerade."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "image-to-excel",
+    "name": "Image to Excel",
+    "short": "Table from a photo or screenshot as an Excel file – with real numbers.",
+    "title": "Image to Excel – table from a photo, free | FaleNetwork",
+    "h1": "Convert image to Excel",
+    "metaDescription": "Turn a table in a photo or screenshot into Excel: real numbers, dates and amounts, with a sum check. Free and no upload.",
+    "lede": "Photograph a table – you get an Excel file you can calculate with right away.",
+    "pickLabel": "Choose images",
+    "primaryButton": "Convert to Excel",
+    "keywords": [
+      "table from image",
+      "photo to excel",
+      "screenshot to excel",
+      "jpg to excel",
+      "image to xlsx"
+    ],
+    "steps": [
+      {
+        "title": "Choose a photo of the table",
+        "text": "Best straight from above and well lit. Several photos of a long list work, too."
+      },
+      {
+        "title": "Check the options",
+        "text": "Tables only or everything, one sheet or one per image, Excel or CSV."
+      },
+      {
+        "title": "Download the Excel file",
+        "text": "Numbers, amounts, percentages and dates are real values – formulas work straight away."
+      }
+    ],
+    "why": [
+      {
+        "title": "Calculate instead of typing",
+        "text": "Numbers, percentages and dates are taken over as real values – not as text."
+      },
+      {
+        "title": "Even without lines",
+        "text": "Columns are found from the alignment – tables without borders don’t end up in a single column."
+      },
+      {
+        "title": "Sums are checked",
+        "text": "If a column ends in “Total” or “Sum”, it is recalculated. If something doesn’t match, you see which cell to check."
+      },
+      {
+        "title": "No upload",
+        "text": "Text recognition runs in your browser. Confidential lists stay with you."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why are some numbers wrong?",
+        "a": "Recognition can mix up 1 and 7 or 0 and O, especially in blurry photos. The sum check helps to find such spots."
+      },
+      {
+        "q": "Can I join several photos into one table?",
+        "a": "Yes. Choose “All on one sheet” – repeated header rows are left out."
+      },
+      {
+        "q": "Does it work with screenshots?",
+        "a": "Yes, screenshots are even ideal: sharp and straight."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the page also works offline."
+      }
+    ]
+  }
+}

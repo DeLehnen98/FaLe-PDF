@@ -159,3 +159,15 @@ html.new-v-lock, html.new-v-lock body { overflow: hidden; }
 .new-v-scroll:focus:not(:focus-visible) { outline: none; }
 .new-ebox { display: grid; gap: 8px; margin: 4px 0 10px; }
 .new-echeck li.is-miss { color: var(--danger); }
+
+/* business-card: contact editor */
+.bc-panel { display: grid; gap: 14px; }
+.bc-card { display: grid; gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-md, 12px); background: var(--surface); }
+.bc-card h4 { margin: 0; font-size: 1rem; }
+.bc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+.bc-grid .bc-name, .bc-grid .bc-firma, .bc-grid .bc-email, .bc-grid .bc-strasse { grid-column: 1 / -1; }
+@media (max-width: 480px) { .bc-grid { grid-template-columns: minmax(0, 1fr); } }
+.bc-warn p { margin: 0; padding: 8px 10px; border-radius: 8px; background: var(--warn-soft, #fff4d6); color: var(--text); border-left: 3px solid var(--warn, #b7791f); font-size: .92rem; }
+.bc-qr { display: grid; justify-items: start; gap: 6px; }
+.bc-qr-img { width: 220px; max-width: 100%; height: auto; image-rendering: pixelated; border-radius: 6px; }
+.bc-raw { white-space: pre-wrap; font-size: .85rem; margin: 6px 0 0; }

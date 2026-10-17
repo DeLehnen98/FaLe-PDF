@@ -1,0 +1,171 @@
+{
+  "id": "image-to-word",
+  "category": "images",
+  "module": "tools/image-to-word.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "order": 20,
+  "related": [
+    "image-to-text",
+    "pdf-to-word",
+    "scan-to-pdf",
+    "image-to-excel"
+  ],
+  "next": [],
+  "needs": [],
+  "iconSvg": "<path d=\"M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z\"/><path d=\"M14 3v5h5\"/><path d=\"M8.5 12l1.2 5 1.3-3.6 1.3 3.6 1.2-5\"/>",
+  "de": {
+    "slug": "bild-in-word",
+    "name": "Bild in Word umwandeln",
+    "short": "Foto oder Scan als bearbeitbares Word-Dokument – mit Absätzen und Tabellen.",
+    "title": "Bild in Word umwandeln – Foto zu DOCX, gratis | FaleNetwork",
+    "h1": "Bild in Word umwandeln",
+    "metaDescription": "Foto, Scan oder Screenshot in ein bearbeitbares Word-Dokument umwandeln: echte Absätze, Überschriften und Tabellen. Kostenlos, ohne Upload.",
+    "lede": "Aus einem Foto wird ein Word-Dokument zum Weiterschreiben – mit Absätzen statt harter Zeilenumbrüche.",
+    "pickLabel": "Bilder auswählen",
+    "primaryButton": "In Word umwandeln",
+    "keywords": [
+      "jpg in word",
+      "png in word",
+      "foto in word",
+      "scan in word",
+      "bild zu docx",
+      "ocr word",
+      "text aus bild"
+    ],
+    "steps": [
+      {
+        "title": "Bilder auswählen",
+        "text": "Fotos, Scans oder Screenshots – auch mehrere Seiten auf einmal."
+      },
+      {
+        "title": "Sprache wählen",
+        "text": "Deutsch und Englisch sind vorgewählt. Unsichere Wörter werden auf Wunsch gelb markiert."
+      },
+      {
+        "title": "Word-Datei laden",
+        "text": "Du bekommst eine .docx mit Absätzen, Überschriften, Listen und Tabellen – bereit zum Bearbeiten."
+      }
+    ],
+    "why": [
+      {
+        "title": "Absätze statt Zeilensalat",
+        "text": "Zeilen eines Absatzes werden zusammengefügt, getrennte Wörter am Zeilenende wieder verbunden – so lässt sich der Text sofort weiterschreiben."
+      },
+      {
+        "title": "Tabellen und Spalten",
+        "text": "Tabellen werden echte Word-Tabellen, auch ohne Linien. Zweispaltige Seiten werden Spalte für Spalte gelesen."
+      },
+      {
+        "title": "Unsichere Stellen markiert",
+        "text": "Wörter, bei denen die Erkennung unsicher war, sind gelb hinterlegt – du prüfst gezielt statt alles."
+      },
+      {
+        "title": "Kein Upload, kein Limit",
+        "text": "Die Texterkennung läuft in deinem Browser. Keine Anmeldung, keine Tagesgrenze."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie genau ist die Texterkennung?",
+        "a": "Bei scharfen, gut beleuchteten Fotos sehr gut. Schwierig sind Handschrift, sehr kleine Schrift und starke Schatten. Unsichere Wörter werden markiert."
+      },
+      {
+        "q": "Bleibt das Layout erhalten?",
+        "a": "Überschriften, Absätze, Listen und Tabellen werden übernommen. Exakte Abstände, Schriftarten und Bilder im Foto nicht – das Ziel ist ein Dokument zum Weiterbearbeiten."
+      },
+      {
+        "q": "Kann ich mehrere Seiten in ein Dokument packen?",
+        "a": "Ja. Wähle mehrere Bilder – jedes beginnt im Word-Dokument auf einer neuen Seite. Oder lass dir pro Bild eine eigene Datei geben."
+      },
+      {
+        "q": "Welche Sprachen gehen?",
+        "a": "Deutsch und Englisch sind vorgewählt, weitere Sprachen lassen sich einstellen. Die Sprachdaten werden einmal geladen und dann offline genutzt."
+      },
+      {
+        "q": "Werden meine Bilder hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "image-to-word",
+    "name": "Image to Word",
+    "short": "Photo or scan as an editable Word document – with paragraphs and tables.",
+    "title": "Image to Word – photo to DOCX, free, no upload | FaleNetwork",
+    "h1": "Convert image to Word",
+    "metaDescription": "Turn a photo, scan or screenshot into an editable Word document: real paragraphs, headings and tables. Free, no upload.",
+    "lede": "A photo becomes a Word document you can keep writing in – with paragraphs instead of hard line breaks.",
+    "pickLabel": "Choose images",
+    "primaryButton": "Convert to Word",
+    "keywords": [
+      "jpg to word",
+      "png to word",
+      "photo to word",
+      "scan to word",
+      "image to docx",
+      "ocr word"
+    ],
+    "steps": [
+      {
+        "title": "Choose images",
+        "text": "Photos, scans or screenshots – several pages at once, too."
+      },
+      {
+        "title": "Choose the language",
+        "text": "German and English are preselected. Uncertain words can be highlighted in yellow."
+      },
+      {
+        "title": "Download the Word file",
+        "text": "You get a .docx with paragraphs, headings, lists and tables – ready to edit."
+      }
+    ],
+    "why": [
+      {
+        "title": "Paragraphs, not a mess of lines",
+        "text": "Lines of a paragraph are joined and hyphenated words re-joined – so you can keep writing right away."
+      },
+      {
+        "title": "Tables and columns",
+        "text": "Tables become real Word tables, even without lines. Two-column pages are read column by column."
+      },
+      {
+        "title": "Uncertain spots highlighted",
+        "text": "Words the recognition was unsure about are highlighted in yellow – check those instead of everything."
+      },
+      {
+        "title": "No upload, no limit",
+        "text": "Text recognition runs in your browser. No sign-up, no daily limit."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How accurate is the recognition?",
+        "a": "Very good with sharp, well-lit photos. Handwriting, tiny text and strong shadows are hard. Uncertain words are highlighted."
+      },
+      {
+        "q": "Is the layout kept?",
+        "a": "Headings, paragraphs, lists and tables are taken over. Exact spacing, fonts and pictures in the photo are not – the goal is a document to keep editing."
+      },
+      {
+        "q": "Can I put several pages in one document?",
+        "a": "Yes. Choose several images – each starts on a new page in the Word document. Or get one file per image."
+      },
+      {
+        "q": "Are my images uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the page also works offline."
+      }
+    ]
+  }
+}

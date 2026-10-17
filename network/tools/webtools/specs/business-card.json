@@ -1,0 +1,165 @@
+{
+  "id": "business-card",
+  "category": "images",
+  "module": "tools/business-card.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "order": 22,
+  "related": [
+    "qr-code",
+    "image-to-text",
+    "scan-to-pdf",
+    "id-copy"
+  ],
+  "next": [],
+  "needs": [],
+  "iconSvg": "<rect x=\"2.5\" y=\"5\" width=\"19\" height=\"14\" rx=\"2\"/><circle cx=\"8\" cy=\"11\" r=\"2\"/><path d=\"M5 16c.5-1.5 1.6-2.2 3-2.2s2.5.7 3 2.2M14 10h5M14 13h4M14 16h3\"/>",
+  "de": {
+    "slug": "visitenkarte-scannen",
+    "name": "Visitenkarte scannen",
+    "short": "Foto einer Visitenkarte → Kontakt (.vcf), CSV oder QR-Code fürs Handy.",
+    "title": "Visitenkarte scannen – Foto zu Kontakt (vCard) | FaleNetwork",
+    "h1": "Visitenkarte scannen",
+    "metaDescription": "Visitenkarte fotografieren und als Kontakt speichern: Name, Firma, Telefon, E-Mail und Adresse als vCard oder CSV. Ohne Konto, ohne Kartenlimit, ohne Upload.",
+    "lede": "Fotografiere eine oder viele Visitenkarten – die Kontakte landen sauber in deinem Adressbuch.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "Karten lesen",
+    "keywords": [
+      "visitenkarten scanner",
+      "visitenkarte in kontakte",
+      "vcard erstellen",
+      "vcf",
+      "kontakt aus foto",
+      "visitenkarten digitalisieren"
+    ],
+    "steps": [
+      {
+        "title": "Karten fotografieren",
+        "text": "Eine Karte pro Foto – gerade, scharf, ohne Spiegelung. Viele Karten auf einmal sind kein Problem."
+      },
+      {
+        "title": "Felder prüfen",
+        "text": "Name, Firma, Telefon, E-Mail, Web und Adresse sind vorausgefüllt. Korrigiere, was nicht passt."
+      },
+      {
+        "title": "Kontakt speichern",
+        "text": "Als .vcf fürs Adressbuch, als CSV für Excel oder CRM – oder per QR-Code direkt aufs Handy."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Kartenlimit, kein Konto",
+        "text": "Andere Apps begrenzen die Zahl der Karten oder wollen ein Abo. Hier scannst du so viele, wie du willst."
+      },
+      {
+        "title": "Deine Kontakte bleiben bei dir",
+        "text": "Nichts landet in einer fremden Cloud. Die Erkennung läuft in deinem Browser."
+      },
+      {
+        "title": "Direkt aufs Handy",
+        "text": "Zeig den QR-Code an und scanne ihn mit der Handykamera – der Kontakt lässt sich ohne Dateiübertragung speichern."
+      },
+      {
+        "title": "Mitdenkende Prüfung",
+        "text": "Telefonnummern werden international (+49 …) geschrieben, eine E-Mail-Domain, die nicht zur Website passt, wird angemerkt."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie kommt der Kontakt ins Handy?",
+        "a": "Am einfachsten über den QR-Code: mit der Kamera-App scannen und speichern. Oder die .vcf-Datei öffnen – alle gängigen Adressbücher am Handy und am PC können sie importieren."
+      },
+      {
+        "q": "Kann ich viele Karten auf einmal scannen?",
+        "a": "Ja. Wähle mehrere Fotos – du bekommst alle Kontakte in einer .vcf-Datei und als CSV-Liste."
+      },
+      {
+        "q": "Was, wenn etwas falsch erkannt wurde?",
+        "a": "Alle Felder lassen sich vor dem Speichern bearbeiten. Unter „Erkannter Text“ siehst du, was auf der Karte gelesen wurde."
+      },
+      {
+        "q": "Werden die Fotos hochgeladen?",
+        "a": "Nein. Alles passiert in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "scan-business-card",
+    "name": "Scan business card",
+    "short": "Photo of a business card → contact (.vcf), CSV or a QR code for your phone.",
+    "title": "Scan business card – photo to contact (vCard), free | FaleNetwork",
+    "h1": "Scan a business card",
+    "metaDescription": "Photograph a business card and save it as a contact: name, company, phone, e-mail and address as vCard or CSV. No account, no card limit, no upload.",
+    "lede": "Photograph one or many business cards – the contacts land neatly in your address book.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Read cards",
+    "keywords": [
+      "business card scanner",
+      "card to contacts",
+      "create vcard",
+      "vcf",
+      "contact from photo"
+    ],
+    "steps": [
+      {
+        "title": "Photograph the cards",
+        "text": "One card per photo – straight, sharp, without glare. Many cards at once are fine."
+      },
+      {
+        "title": "Check the fields",
+        "text": "Name, company, phone, e-mail, web and address are prefilled. Correct what’s off."
+      },
+      {
+        "title": "Save the contact",
+        "text": "As .vcf for your address book, as CSV for Excel or a CRM – or straight to your phone via QR code."
+      }
+    ],
+    "why": [
+      {
+        "title": "No card limit, no account",
+        "text": "Other apps limit the number of cards or want a subscription. Here you scan as many as you like."
+      },
+      {
+        "title": "Your contacts stay with you",
+        "text": "Nothing ends up in someone else’s cloud. Recognition runs in your browser."
+      },
+      {
+        "title": "Straight to your phone",
+        "text": "Show the QR code and scan it with your phone camera – the contact can be saved without any file transfer."
+      },
+      {
+        "title": "Smart checks",
+        "text": "Phone numbers are written internationally (+49 …), an e-mail domain that doesn’t match the website is flagged."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How does the contact get onto my phone?",
+        "a": "Easiest via the QR code: scan with the camera app and save. Or open the .vcf file – all common address books on phones and computers can import it."
+      },
+      {
+        "q": "Can I scan many cards at once?",
+        "a": "Yes. Choose several photos – you get all contacts in one .vcf file and as a CSV list."
+      },
+      {
+        "q": "What if something was misread?",
+        "a": "All fields can be edited before saving. Under “Recognised text” you see what was read on the card."
+      },
+      {
+        "q": "Are the photos uploaded?",
+        "a": "No. Everything happens in your browser. After the first visit the page also works offline."
+      }
+    ]
+  }
+}

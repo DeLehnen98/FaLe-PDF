@@ -1,0 +1,179 @@
+{
+  "id": "id-copy",
+  "category": "images",
+  "module": "tools/id-copy.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "maxFiles": 4,
+  "order": 36,
+  "related": [
+    "scan-to-pdf",
+    "redact-pdf",
+    "watermark-pdf",
+    "passport-photo"
+  ],
+  "next": [
+    "protect-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib"
+  ],
+  "trademarkNote": false,
+  "iconSvg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"8.5\" cy=\"11\" r=\"2\"/><path d=\"M5.5 16c.6-1.6 1.7-2.3 3-2.3s2.4.7 3 2.3M14 10h4M14 13h3\"/>",
+  "de": {
+    "slug": "ausweis-kopieren",
+    "name": "Ausweis kopieren",
+    "short": "Vorder- und Rückseite in Originalgröße auf ein A4-Blatt – mit „KOPIE“ und Schwärzen.",
+    "title": "Ausweis kopieren – beide Seiten auf A4, ohne Upload | FaleNetwork",
+    "h1": "Ausweis kopieren",
+    "metaDescription": "Personalausweis oder Führerschein mit dem Handy kopieren: beide Seiten in Originalgröße auf ein A4-PDF, mit KOPIE-Vermerk und Schwärzen. Ohne Upload.",
+    "lede": "Fotografiere Vorder- und Rückseite – du bekommst eine saubere Kopie in Originalgröße, und dein Ausweis verlässt nie dein Gerät.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "Kopie erstellen",
+    "keywords": [
+      "personalausweis",
+      "ausweiskopie",
+      "führerschein",
+      "vorder und rückseite",
+      "a4",
+      "kopie",
+      "schwärzen",
+      "reisepass"
+    ],
+    "steps": [
+      {
+        "title": "Beide Seiten fotografieren",
+        "text": "Leg den Ausweis auf einen dunklen Untergrund und fotografiere erst die Vorder-, dann die Rückseite."
+      },
+      {
+        "title": "Prüfen und schwärzen",
+        "text": "Die Kanten werden automatisch erkannt und begradigt. Schwärze Nummern, die der Empfänger nicht braucht, und lass „KOPIE“ mit Zweck und Datum hineinschreiben."
+      },
+      {
+        "title": "PDF speichern",
+        "text": "Beide Seiten liegen in Originalgröße auf einem A4-Blatt. Zum Drucken „Tatsächliche Größe“ wählen."
+      }
+    ],
+    "why": [
+      {
+        "title": "Dein Ausweis bleibt bei dir",
+        "text": "Viele Online-Dienste laden das Foto auf einen Server. Hier passiert alles im Browser – nichts wird hochgeladen, auch nicht zur „Verarbeitung“."
+      },
+      {
+        "title": "Exakt in Originalgröße",
+        "text": "Jede Seite wird begradigt und auf genau 85,6 × 54 mm gebracht – so wie eine Kopie vom Kopierer, nur sauberer."
+      },
+      {
+        "title": "Schutz vor Missbrauch",
+        "text": "„KOPIE“ mit Zweck und Datum wird fest ins Bild geschrieben, Nummern lassen sich dauerhaft schwärzen, Graustufen auf Wunsch."
+      },
+      {
+        "title": "Auch Führerschein und Reisepass",
+        "text": "Karten im Scheckkartenformat und die Datenseite des Reisepasses (125 × 88 mm)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Darf ich meinen Personalausweis überhaupt kopieren?",
+        "a": "Ja, als Inhaber darfst du eine Kopie machen. Sie muss eindeutig als Kopie erkennbar sein – dafür sorgt der „KOPIE“-Vermerk. Daten, die der Empfänger nicht braucht, darfst du schwärzen. Das ist kein Rechtsrat; im Zweifel frag beim Empfänger nach."
+      },
+      {
+        "q": "Welche Nummern sollte ich schwärzen?",
+        "a": "Häufig empfohlen werden die sechsstellige Zugangsnummer (CAN) auf der Vorderseite und die Seriennummer, wenn der Empfänger sie nicht ausdrücklich braucht. Bei Behörden und Banken kann es sein, dass alles lesbar bleiben muss."
+      },
+      {
+        "q": "Warum ist die Kopie auf dem Ausdruck zu klein oder zu groß?",
+        "a": "Dann hat der Drucker die Seite skaliert. Wähle im Druckdialog „Tatsächliche Größe“ oder 100 % statt „An Seite anpassen“."
+      },
+      {
+        "q": "Die Ecken wurden nicht richtig erkannt – was tun?",
+        "a": "Zieh die vier Ecken einfach mit dem Finger auf die Kartenecken. Ein dunkler Untergrund und Licht ohne Spiegelung helfen der Erkennung."
+      },
+      {
+        "q": "Wird mein Ausweis hochgeladen oder gespeichert?",
+        "a": "Nein. Die Fotos werden nur in deinem Browser verarbeitet und nirgends gespeichert. Nach dem ersten Besuch funktioniert die Seite sogar offline."
+      }
+    ]
+  },
+  "en": {
+    "slug": "copy-id-card",
+    "name": "Copy ID card",
+    "short": "Front and back at real size on one A4 page – with “COPY” mark and black-out.",
+    "title": "Copy ID card – front & back on A4, no upload | FaleNetwork",
+    "h1": "Copy your ID card",
+    "metaDescription": "Copy an ID card or driving licence with your phone: both sides at real size on one A4 PDF, with a COPY mark and black-out. No upload.",
+    "lede": "Take photos of the front and back – you get a clean real-size copy, and your ID never leaves your device.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Create copy",
+    "keywords": [
+      "id card copy",
+      "copy id",
+      "driving licence",
+      "front and back",
+      "a4",
+      "passport copy",
+      "black out"
+    ],
+    "steps": [
+      {
+        "title": "Photograph both sides",
+        "text": "Put the card on a dark surface and take a photo of the front, then the back."
+      },
+      {
+        "title": "Check and black out",
+        "text": "Edges are detected and straightened automatically. Black out numbers the recipient doesn’t need and add “COPY” with purpose and date."
+      },
+      {
+        "title": "Save the PDF",
+        "text": "Both sides are on one A4 page at real size. Print at “Actual size”."
+      }
+    ],
+    "why": [
+      {
+        "title": "Your ID stays with you",
+        "text": "Many online services upload the photo to a server. Here everything happens in your browser – nothing is uploaded."
+      },
+      {
+        "title": "Exactly real size",
+        "text": "Each side is straightened and scaled to exactly 85.6 × 54 mm – like a photocopy, only cleaner."
+      },
+      {
+        "title": "Protection against misuse",
+        "text": "“COPY” with purpose and date is burned into the picture, numbers can be blacked out permanently, greyscale on request."
+      },
+      {
+        "title": "Driving licence and passport too",
+        "text": "Credit-card-sized cards and the passport data page (125 × 88 mm)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which numbers should I black out?",
+        "a": "Often recommended: the card access number (CAN) and the serial number, unless the recipient explicitly needs them. Authorities and banks may require everything to stay readable."
+      },
+      {
+        "q": "Why is the printed copy too small or too large?",
+        "a": "The printer scaled the page. Choose “Actual size” or 100 % instead of “Fit to page” in the print dialog."
+      },
+      {
+        "q": "The corners were not detected correctly – what now?",
+        "a": "Simply drag the four corners onto the card corners. A dark background and light without glare help detection."
+      },
+      {
+        "q": "Is my ID uploaded or stored?",
+        "a": "No. The photos are processed only in your browser and not stored anywhere. After the first visit the page even works offline."
+      }
+    ]
+  }
+}

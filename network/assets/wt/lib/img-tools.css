@@ -165,3 +165,13 @@
 .img-sig-box { position: relative; border: 1px dashed var(--border-strong); border-radius: var(--radius-md); background: #fff; touch-action: none; }
 .img-sig-canvas { display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; cursor: crosshair; touch-action: none; }
 .img-sig-line { position: absolute; left: 6%; right: 6%; bottom: 24%; border-bottom: 1px solid #c3c6d4; pointer-events: none; }
+
+/* id-copy: black out numbers on the straightened card */
+.id-redact summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+.id-redact-list { display: grid; gap: 14px; margin-top: 10px; }
+.id-redact-card { display: grid; gap: 6px; }
+.id-redact-surface { position: relative; touch-action: none; cursor: crosshair; border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--border); user-select: none; }
+.id-redact-canvas { display: block; width: 100%; height: auto; }
+.id-redact-boxes { position: absolute; inset: 0; pointer-events: none; }
+.id-redact-rect { position: absolute; background: #000; }
+.id-redact-rect.is-live { background: rgba(0, 0, 0, .55); outline: 2px dashed #fff; }

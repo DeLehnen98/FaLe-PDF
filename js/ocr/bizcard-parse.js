@@ -2,6 +2,8 @@
 
 const COMPANY = /\b(GmbH|mbH|AG|KG|KGaA|UG|OHG|GbR|PartG|e\.\s?K\.|e\.\s?V\.|SE|Ltd\.?|Limited|LLC|LLP|Inc\.?|Corp\.?|Corporation|Co\.|Company|PLC|S\.A\.|S\.L\.|B\.V\.|N\.V\.|S\.r\.l\.|Holding|Group|Gruppe|Partner(?:schaft)?\b.*\b(GmbH|mbB)|Kanzlei|Praxis|Studio|Agentur|Agency|Solutions|Consulting|Technologies|Systems|Werke?|Bank|Versicherung|Verlag)\b/i;
 const POSITION = /\b(Geschäftsführer(in)?|Inhaber(in)?|Gründer(in)?|Mitgründer(in)?|Vorstand|Vorsitzende[r]?|Prokurist(in)?|Leiter(in)?|Leitung|Abteilungsleiter(in)?|Teamleiter(in)?|Bereichsleiter(in)?|Berater(in)?|Beraterin|Referent(in)?|Sachbearbeiter(in)?|Assistent(in)?|Assistenz|Ingenieur(in)?|Entwickler(in)?|Architekt(in)?|Designer(in)?|Projektmanager(in)?|Vertrieb|Verkauf|Einkauf|Marketing|Rechtsanwalt|Rechtsanwältin|Steuerberater(in)?|Notar(in)?|Fachanwalt|Fachanwältin|Ärztin|Arzt|Manager(in)?|Director|Head of|Chief|CEO|CTO|CFO|COO|CMO|VP|Vice President|President|Founder|Co-?Founder|Owner|Partner|Consultant|Engineer|Developer|Analyst|Specialist|Officer|Coordinator|Associate|Representative|Sales|Account|Executive|Lead|Advisor|Attorney|Lawyer|Accountant)\b/i;
+// German compound job titles: Projektleiterin, Vertriebsmanager, Steuerfachangestellte …
+const POSITION_COMPOUND = /\p{L}{3,}(leiter|leiterin|manager|managerin|berater|beraterin|referent|referentin|ingenieur|ingenieurin|entwickler|entwicklerin|assistent|assistentin|koordinator|koordinatorin|techniker|technikerin|kaufmann|kauffrau|angestellte|angestellter|meister|meisterin|planer|planerin|spezialist|spezialistin)\b/iu;
 const STREET = /(stra(ss|ß)e|str\.|weg\b|platz\b|allee\b|gasse\b|ring\b|damm\b|ufer\b|chaussee\b|markt\b|steig\b|pfad\b|hof\b|\bstreet\b|\bst\.|\broad\b|\brd\.?\b|\bavenue\b|\bave\.?\b|\blane\b|\bway\b|\bdrive\b|\bboulevard\b|\bblvd\.?\b|\bsquare\b|\bplace\b|\bcourt\b|\bterrace\b)/i;
 const PLZ_DE = /\b(?:D-|DE-|A-|CH-)?(\d{4,5})\s+([A-ZÄÖÜ][\p{L}.\- ]+?)(?:\s*,|\s*$)/u;
 const UK_POST = /\b([A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2})\b/;
@@ -107,7 +109,7 @@ export function parseCard(lines) {
   for (const i of restIdx) {
     if (used.has(i)) continue;
     const t = L[i].text;
-    if (!out.position && POSITION.test(t) && t.split(' ').length <= 7) { out.position = t; used.add(i); }
+    if (!out.position && (POSITION.test(t) || POSITION_COMPOUND.test(t)) && t.split(' ').length <= 7 && !/\b(GmbH|AG|KG|UG|e\.?\s?K|Ltd|Inc|LLC)\b/.test(t)) { out.position = t; used.add(i); }
   }
   const nameLike = t => !/\d|@|www\./i.test(t) && /^((Dr|Prof|Dipl|Mag|Ing|Mr|Mrs|Ms|Herr|Frau)\.?[\s-]*)*[\p{Lu}][\p{L}'’.-]+(\s+[\p{Lu}][\p{L}'’.-]+){1,3}$/u.test(t);
   const local = (out.email.split('@')[0] || '').toLowerCase().replace(/ae/g, 'ä').replace(/oe/g, 'ö').replace(/ue/g, 'ü');
