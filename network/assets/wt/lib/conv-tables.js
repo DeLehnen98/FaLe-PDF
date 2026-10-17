@@ -10,16 +10,39 @@ const LIST_CELL = /^([•●▪■◦○◆►▶➢✓✔–—\-*·]|\(?\d{1,3
 // Text measuring for word positions inside a text item (pdf.js joins close glyph runs into one item):
 // the ratio of canvas widths gives the x of a word – accurate enough to find a column start.
 let measureCtx = null;
+const startsCache = new WeakMap(); // item → word starts (alignedEdges and lineChunks ask for the same items again and again)
 function wordStarts(it) {
+  const hit = startsCache.get(it);
+  if (hit && hit.str === it.str && hit.x === it.x && hit.w === it.w) return hit.starts;
+  const starts = measureStarts(it);
+  startsCache.set(it, { str: it.str, x: it.x, w: it.w, starts });
+  return starts;
+}
+const tokenWidths = new Map(); // font → Map(token → width at 100 px)
+function measureStarts(it) {
   const words = [];
   const re = /\S+/g;
   let m;
   while ((m = re.exec(it.str))) words.push(m.index);
   if (words.length < 2) return [{ i: words[0] || 0, x: it.x }];
   if (!measureCtx) measureCtx = (typeof OffscreenCanvas !== 'undefined' ? new OffscreenCanvas(1, 1) : document.createElement('canvas')).getContext('2d');
-  measureCtx.font = `100px ${it.family === 'Times New Roman' ? 'serif' : it.family === 'Courier New' ? 'monospace' : 'sans-serif'}`;
-  const total = measureCtx.measureText(it.str).width || 1;
-  return words.map(i => ({ i, x: it.x + it.w * (measureCtx.measureText(it.str.slice(0, i)).width / total) }));
+  const font = `100px ${it.family === 'Times New Roman' ? 'serif' : it.family === 'Courier New' ? 'monospace' : 'sans-serif'}`;
+  if (measureCtx.font !== font) measureCtx.font = font;
+  let cache = tokenWidths.get(font);
+  if (!cache) { cache = new Map(); tokenWidths.set(font, cache); }
+  const width = tok => {
+    let w = cache.get(tok);
+    if (w === undefined) { w = measureCtx.measureText(tok).width; if (cache.size < 50000) cache.set(tok, w); }
+    return w;
+  };
+  // prefix widths from the widths of the single words and gaps (linear instead of measuring every prefix;
+  // kerning between tokens is irrelevant for finding a column start)
+  const tokens = it.str.match(/\s+|\S+/g) || [];
+  const prefix = [];
+  let acc = 0, pos = 0;
+  for (const tok of tokens) { if (!/\s/.test(tok[0])) prefix.push([pos, acc]); acc += width(tok); pos += tok.length; }
+  const total = acc || 1;
+  return prefix.map(([i, x]) => ({ i, x: it.x + it.w * (x / total) }));
 }
 
 /**

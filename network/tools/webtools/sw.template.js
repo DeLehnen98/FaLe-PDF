@@ -85,7 +85,7 @@ self.addEventListener('message', event => {
   const port = event.ports && event.ports[0];
   event.waitUntil((async () => {
     let ok = true;
-    for (const u of data.urls.slice(0, 64)) {
+    for (const u of data.urls.slice(0, 300)) {
       let url;
       try { url = new URL(u, self.location.origin); } catch { continue; }
       if (url.origin !== self.location.origin) continue;

@@ -424,6 +424,7 @@ def page_tool(sp, lang, by_id):
         'accepts': sp['accepts'], 'multiple': multiple, 'minFiles': sp.get('minFiles', 1),
         'maxFiles': sp.get('maxFiles'), 'name': c['name'], 'primary': c['primaryButton'],
         'needs': sp.get('needs', []), 'hub': HUB[lang], 'app': bp.PDF_APP,
+        'lazy': module_graph(sp['module']),
         'next': [{'id': n, 'name': by_id[n][lang]['name'], 'url': tool_path(by_id[n], lang), 'accepts': by_id[n]['accepts'], 'multiple': bool(by_id[n].get('multiple'))}
                  for n in sp.get('next', []) if n in by_id],
         'categoryColour': colour,
@@ -605,6 +606,30 @@ def manifest(lang):
             'params': {'title': 'title', 'text': 'text', 'files': [{'name': 'files', 'accept': accept}]},
         },
     }
+
+
+# ------------------------------------------------------------------ module graph (offline warm-up)
+_IMPORT_RE = re.compile(r'''(?:^|[;\s])import\s[^'"]*?from\s*['"](\.{1,2}/[^'"]+\.js)['"]|import\(\s*['"](\.{1,2}/[^'"]+\.js)['"]\s*\)|^\s*import\s*['"](\.{1,2}/[^'"]+\.js)['"]''', re.M)
+_graph_cache = {}
+
+
+def module_graph(module):
+    """All local modules a tool can load – static AND dynamic imports (import('…')) – as site paths, so the shell can
+    cache them on the first visit and the tool also works offline when a step loads code only while running."""
+    if module in _graph_cache:
+        return _graph_cache[module]
+    seen, todo = set(), [WT / module]
+    while todo:
+        f = todo.pop()
+        if f in seen or not f.exists() or 'vendor' in f.relative_to(WT).parts:
+            continue
+        seen.add(f)
+        for m in _IMPORT_RE.finditer(f.read_text(encoding='utf-8')):
+            rel = next(g for g in m.groups() if g)
+            todo.append((f.parent / rel).resolve())
+    out = sorted('/' + str(p.relative_to(ROOT)).replace('\\', '/') for p in seen)
+    _graph_cache[module] = out
+    return out
 
 
 # ------------------------------------------------------------------ service worker

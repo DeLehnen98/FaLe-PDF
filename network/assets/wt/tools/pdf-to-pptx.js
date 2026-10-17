@@ -37,7 +37,8 @@ export default {
   get shareFirst() { return coarsePointer(); },
 
   async run(inputs, opts, ctx) {
-    const { loadPptxGen } = await import('../lib/shared/office/vendor.js');
+    const { loadPptxGen, loadJSZip } = await import('../lib/shared/office/vendor.js');
+    const { PLACEHOLDER_JPEG, writePptx } = await import('../lib/shared/pptximg.js');
     let PptxGenJS;
     try { PptxGenJS = await loadPptxGen(); } catch (err) { throw userError(err, 'The presentation library could not be loaded.'); }
     const dpi = Math.max(72, Math.min(300, Number(opts.dpi) || 160));
@@ -60,7 +61,7 @@ export default {
         pptx.defineLayout({ name: 'FALE_PDF', width: W, height: H });
         pptx.layout = 'FALE_PDF';
       }
-      const thumbs = [];
+      const thumbs = [], jpgs = [];
       for (let k = 0; k < idx.length; k++) {
         ctx.progress((f + k / idx.length) / inputs.length, { de: `${pre.de}Folie ${k + 1} von ${idx.length}`, en: `${pre.en}Slide ${k + 1} of ${idx.length}` });
         const page = await pdf.getPage(idx[k] + 1);
@@ -69,12 +70,12 @@ export default {
         const blob = await canvasToBlob(canvas, 'image/jpeg', 0.88);
         if (f === 0 && thumbs.length < 8) thumbs.push(await canvasThumb(canvas));
         canvas.width = canvas.height = 0;
-        const b64 = await toBase64(blob);
+        jpgs.push(new Uint8Array(await blob.arrayBuffer()));
         const s = Math.min(W / vp.width, H / vp.height);
         const w = vp.width * s, h = vp.height * s;
         const slide = pptx.addSlide();
         slide.background = { color: 'FFFFFF' };
-        slide.addImage({ data: `image/jpeg;base64,${b64}`, x: (W - w) / 2, y: (H - h) / 2, w, h });
+        slide.addImage({ data: PLACEHOLDER_JPEG, x: (W - w) / 2, y: (H - h) / 2, w, h });
         if (opts.notes) {
           try {
             const [pg] = await analysePdf(pdf, [idx[k]], ctx);
@@ -87,7 +88,7 @@ export default {
       }
       ctx.progress((f + 0.98) / inputs.length, { de: 'PowerPoint-Datei wird geschrieben …', en: 'Writing the PowerPoint file …' });
       let out;
-      try { out = await pptx.write({ outputType: 'blob' }); } catch (err) { throw userError(err, 'The presentation could not be created.'); }
+      try { out = await writePptx(pptx, await loadJSZip(), jpgs, PPTX); } catch (err) { throw userError(err, 'The presentation could not be created.'); }
       outputs.push({
         name: ctx.fileName(input.name, '', 'pptx'), blob: new Blob([out], { type: PPTX }),
         note: ctx.t({ de: `${idx.length} ${idx.length === 1 ? 'Folie' : 'Folien'}`, en: `${idx.length} ${idx.length === 1 ? 'slide' : 'slides'}` }),
@@ -103,12 +104,3 @@ export default {
     if (m?.thumbs?.length) thumbStrip(result, m.thumbs, ctx, { title: { de: 'Deine Folien', en: 'Your slides' }, total: m.total, label: i => ctx.t({ de: `Folie ${i + 1}`, en: `Slide ${i + 1}` }) });
   },
 };
-
-function toBase64(blob) {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = () => resolve(String(r.result).split(',')[1] || '');
-    r.onerror = () => reject(r.error);
-    r.readAsDataURL(blob);
-  });
-}

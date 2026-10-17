@@ -3,7 +3,8 @@
 import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, progress, baseName } from '../ui.js';
 import { loadPdf, renderPage, canvasToBlob, pageText } from '../pdfcore.js';
-import { openToolDoc, parseRange, fileResultCard, loadPptxLib, tick, bytesToBase64, proBadge, updateFoot } from './common.js';
+import { openToolDoc, parseRange, fileResultCard, loadPptxLib, tick, proBadge, updateFoot } from './common.js';
+import { PLACEHOLDER_JPEG, writePptx } from './pptximg.js';
 
 export async function mount(screen, { docId }) {
   const ctx = await openToolDoc(screen, docId, 'PDF zu PowerPoint');
@@ -60,6 +61,7 @@ export async function mount(screen, { docId }) {
         pptx.defineLayout({ name: 'FALE_PDF', width: W, height: H });
         pptx.layout = 'FALE_PDF';
       }
+      const jpgs = [];
       for (let k = 0; k < nums.length; k++) {
         prog.set(`Folie ${k + 1} von ${nums.length} …`);
         const page = await pdf.getPage(nums[k]);
@@ -67,12 +69,12 @@ export async function mount(screen, { docId }) {
         const canvas = await renderPage(page, { scale: dpi / 72 });
         const blob = await canvasToBlob(canvas, 'image/jpeg', 0.88);
         canvas.width = canvas.height = 0;
-        const b64 = bytesToBase64(new Uint8Array(await blob.arrayBuffer()));
+        jpgs.push(new Uint8Array(await blob.arrayBuffer()));
         const f = Math.min(W / vp.width, H / vp.height);
         const w = vp.width * f, hh = vp.height * f;
         const slide = pptx.addSlide();
         slide.background = { color: 'FFFFFF' };
-        slide.addImage({ data: `image/jpeg;base64,${b64}`, x: (W - w) / 2, y: (H - hh) / 2, w, h: hh });
+        slide.addImage({ data: PLACEHOLDER_JPEG, x: (W - w) / 2, y: (H - hh) / 2, w, h: hh });
         if (notes) {
           const t = await pageText(page);
           if (t) slide.addNotes(t);
@@ -81,7 +83,7 @@ export async function mount(screen, { docId }) {
         await tick();
       }
       prog.set('Erstelle PowerPoint-Datei …');
-      const out = await pptx.write({ outputType: 'blob' });
+      const out = await writePptx(pptx, window.JSZip, jpgs);
       const name = `${baseName(doc.name)}.pptx`;
       resultBox.innerHTML = '';
       resultBox.appendChild(fileResultCard(out, name, { title: 'Präsentation erstellt', iconName: 'slides', note: `${nums.length} Folie${nums.length === 1 ? '' : 'n'}`, type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' }));

@@ -25,6 +25,17 @@ function dosDateTime(d) {
  * @param {{name: string, data: Uint8Array|ArrayBuffer|Blob}[]} files
  * @returns {Promise<Blob>}
  */
+/** CRC-32 in slices of 4 MB with a pause in between, so packing big files does not freeze the page. */
+export async function crc32Chunked(bytes, slice = 4 << 20) {
+  let crc = 0xffffffff;
+  for (let start = 0; start < bytes.length; start += slice) {
+    const end = Math.min(bytes.length, start + slice);
+    for (let i = start; i < end; i++) crc = CRC_TABLE[(crc ^ bytes[i]) & 0xff] ^ (crc >>> 8);
+    if (end < bytes.length) await new Promise(r => setTimeout(r, 0));
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
 export async function createZip(files) {
   const enc = new TextEncoder();
   const parts = [];
@@ -38,7 +49,7 @@ export async function createZip(files) {
     used.add(name);
     const data = f.data instanceof Blob ? new Uint8Array(await f.data.arrayBuffer()) : new Uint8Array(f.data);
     const nameBytes = enc.encode(name);
-    const crc = crc32(data);
+    const crc = await crc32Chunked(data);
     if (data.length >= 0xffffffff || offset >= 0xffffffff) throw new Error('ZIP zu groß (über 4 GB)');
     const lh = new DataView(new ArrayBuffer(30));
     lh.setUint32(0, 0x04034b50, true);

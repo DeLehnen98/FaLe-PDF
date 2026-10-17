@@ -28,9 +28,18 @@ SHOTS.mkdir(exist_ok=True)
 PHONE = dict(viewport={'width': 390, 'height': 844}, is_mobile=True, has_touch=True, device_scale_factor=3)
 DESKTOP = dict(viewport={'width': 1280, 'height': 900})
 INIT = """
-window.__wt = { csp: [], errors: [] };
+window.__wt = { csp: [], errors: [], freeze: { max: 0, longest: 0, n: 0 } };
 document.addEventListener('securitypolicyviolation', e => window.__wt.csp.push(e.violatedDirective + ' ' + (e.blockedURI || '') + ' ' + (e.sourceFile || '') + ':' + e.lineNumber));
+// freeze monitor: a 50 ms heartbeat on the main thread – a gap means the page did not react for that long
+(() => {
+  const f = window.__wt.freeze;
+  let last = performance.now();
+  const beat = () => { const now = performance.now(); const gap = now - last - 50; if (now > 1500 && gap > f.max) f.max = Math.round(gap); last = now; setTimeout(beat, 50); };
+  setTimeout(beat, 50);
+  try { new PerformanceObserver(l => { for (const e of l.getEntries()) { if (e.duration > f.longest) f.longest = Math.round(e.duration); if (e.duration > 1000) f.n++; } }).observe({ type: 'longtask', buffered: true }); } catch (e) {}
+})();
 """
+FREEZE_FAIL_MS = int(os.environ.get('WT_FREEZE_FAIL_MS', '0'))   # 0 = only report
 
 
 def server_up():
@@ -56,6 +65,7 @@ class Suite:
         self.notes = []
         self.headless = headless
         self.proc = None
+        self.freeze = []   # (ms, tag)
 
     # ------------------------------------------------------------ lifecycle
     def __enter__(self):
@@ -82,6 +92,11 @@ class Suite:
             self.proc.kill()
         if exc[0]:
             self.fails.append(f'exception: {exc[1]!r}')
+        if self.freeze:
+            worst = max(self.freeze)
+            self.notes.append(f'longest freeze {worst[0]} ms on {worst[1]}')
+            if FREEZE_FAIL_MS and worst[0] > FREEZE_FAIL_MS:
+                self.fails.append(f'page froze for {worst[0]} ms on {worst[1]} (limit {FREEZE_FAIL_MS} ms)')
         status = 'PASS' if not self.fails else 'FAIL'
         print(f'[{status}] {self.name}' + ''.join(f'\n   - {f}' for f in self.fails))
         for n in self.notes:
@@ -124,9 +139,18 @@ class Suite:
         page._wt_tag = tag
         return page
 
+    def record_freeze(self, page):
+        try:
+            f = page.evaluate('window.__wt ? window.__wt.freeze : null')
+        except Exception:
+            return
+        if f and f.get('max'):
+            self.freeze.append((int(f['max']), getattr(page, '_wt_tag', page.url)))
+
     def check_page(self, page):
         """CSP violations + no horizontal scroll + basic a11y – call before closing a page."""
         tag = getattr(page, '_wt_tag', page.url)
+        self.record_freeze(page)
         csp = page.evaluate('window.__wt ? window.__wt.csp : []')
         for c in csp:
             self.fails.append(f'CSP violation on {tag}: {c}')
@@ -155,6 +179,7 @@ class Suite:
     def run(self, page, timeout=90000):
         self.primary(page).click()
         page.wait_for_selector('.wt-result:not([hidden]), .wt-error:not([hidden])', timeout=timeout)
+        self.record_freeze(page)
         if page.locator('.wt-error:not([hidden])').count():
             self.fails.append(f'tool error on {page._wt_tag}: {page.locator(".wt-error").inner_text()[:300]}')
             return False

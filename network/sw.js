@@ -12,9 +12,9 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '53a74efd7207';
+const VERSION = '015ff2bff1bb';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-c23227ab26cd';
+const VENDOR = 'wt-vendor-de092ed67986';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/arc2-sheet.js",
@@ -190,7 +190,7 @@ self.addEventListener('message', event => {
   const port = event.ports && event.ports[0];
   event.waitUntil((async () => {
     let ok = true;
-    for (const u of data.urls.slice(0, 64)) {
+    for (const u of data.urls.slice(0, 300)) {
       let url;
       try { url = new URL(u, self.location.origin); } catch { continue; }
       if (url.origin !== self.location.origin) continue;

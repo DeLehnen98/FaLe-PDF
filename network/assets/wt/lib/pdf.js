@@ -2,6 +2,7 @@
 // (js/pdfcore.js): no eval, no PDF JavaScript, no XFA, local cMaps/fonts/wasm/ICC only, image size cap.
 import './tt.js';
 import { LIMITS, canvasScaleCap } from './shared/limits.js';
+import { tunePdfLib } from './shared/pdflibtune.js';
 
 const VENDOR = new URL('../vendor/', import.meta.url).href;
 const PDFJS = VENDOR + 'pdfjs/';
@@ -98,11 +99,11 @@ export function canvasToBlob(canvas, type = 'image/jpeg', quality = 0.85) {
 let pdflibPromise = null;
 /** pdf-lib namespace (UMD build evaluated as a module; it attaches itself to globalThis.PDFLib). */
 export function loadPdfLib() {
-  if (globalThis.PDFLib) return Promise.resolve(globalThis.PDFLib);
+  if (globalThis.PDFLib) return Promise.resolve(tunePdfLib(globalThis.PDFLib));
   if (!pdflibPromise) {
     pdflibPromise = import('../vendor/pdf-lib/pdf-lib.min.js').then(() => {
       if (!globalThis.PDFLib) throw new Error('pdf-lib missing');
-      return globalThis.PDFLib;
+      return tunePdfLib(globalThis.PDFLib);
     }).catch(err => { pdflibPromise = null; throw err; });
   }
   return pdflibPromise;

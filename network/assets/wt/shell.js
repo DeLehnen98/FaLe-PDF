@@ -493,6 +493,7 @@ function init(cfg) {
     if (phase === 'pick') { state.inputs.forEach(removeInputQuiet); }
     if (phase === 'files' && state.tool?.mountStage && !stage._mounted && hasFiles) {
       stage._mounted = true;
+      if (state.tool.stageAfterOptions) optsSec.after(stage);   // the stage depends on the options (batch: password box)
       state.tool.mountStage(stage, state, ctxBase());
     }
     window.onbeforeunload = phase === 'working' ? () => true : null;
@@ -515,13 +516,13 @@ function init(cfg) {
       if (st?.summary) barSummary.textContent = P(st.summary);
       let hint = '';
       if (use.length < min) hint = T('need_files', { n: min });
-      else if (locked) hint = T('pw_needed', { n: locked });
+      else if (locked && !state.tool?.skipLocked) hint = T('pw_needed', { n: locked });   // skipLocked: the tool leaves them out and says so
       else if (skipped) hint = T('skipped', { n: skipped });
       if (!hint && st?.hint) hint = P(st.hint);
       barHint.textContent = hint;
       barHint.hidden = !hint;
       primary.textContent = cfg.primary;
-      primary.disabled = !state.tool || use.length < min || locked > 0 || st?.ok === false;
+      primary.disabled = !state.tool || use.length < min || (locked > 0 && !state.tool?.skipLocked) || st?.ok === false;
       primary.onclick = () => run();
     }
   }
@@ -855,7 +856,7 @@ function init(cfg) {
     await ready;
     // lazily imported by the shell for every tool ("Alle als ZIP", unlocking a PDF) – cache them up front
     const lazy = ['./lib/shared/zip.js', './lib/shared/pdfcrypt.js'].map(u => new URL(u, import.meta.url).pathname);
-    const urls = [location.pathname, cfg.module, ...lazy, ...performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(p => p.startsWith('/assets/wt/'))];
+    const urls = [location.pathname, cfg.module, ...lazy, ...(cfg.lazy || []), ...performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(p => p.startsWith('/assets/wt/'))];
     const ok = await warmUp([...new Set(urls)], cfg.needs || []);
     if (ok) {
       document.documentElement.dataset.wtOffline = 'ready';

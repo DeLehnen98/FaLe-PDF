@@ -1,0 +1,76 @@
+{
+  "id": "batch-pdf",
+  "category": "optimize",
+  "module": "tools/batch-pdf.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 5,
+  "related": ["compress-pdf", "protect-pdf", "add-page-numbers", "watermark-pdf"],
+  "next": ["merge-pdf"],
+  "needs": ["pdfjs", "pdflib"],
+  "trademarkNote": false,
+  "iconSvg": "<rect x=\"7\" y=\"3\" width=\"12\" height=\"15\" rx=\"1.5\"/><path d=\"M4 7v12.5A1.5 1.5 0 0 0 5.5 21H15\"/><path d=\"M10.5 10.5l1.8 1.8 3.4-3.6\"/>",
+  "de": {
+    "slug": "pdf-stapelverarbeitung",
+    "name": "PDF-Stapelverarbeitung",
+    "short": "Viele PDFs auf einmal verkleinern, schützen, nummerieren oder umwandeln.",
+    "title": "PDF-Stapelverarbeitung – viele PDFs auf einmal | FaleNetwork",
+    "h1": "Viele PDFs auf einmal bearbeiten",
+    "metaDescription": "Viele PDFs in einem Rutsch verkleinern, mit Passwort schützen, nummerieren oder in Graustufen umwandeln. Ohne Dateilimit, ohne Upload, ohne Konto.",
+    "lede": "Wähle alle Dateien und einen Ablauf – den Rest erledigt dein Browser, Datei für Datei.",
+    "pickLabel": "PDFs auswählen",
+    "primaryButton": "Alle bearbeiten",
+    "keywords": ["stapel", "batch", "mehrere pdf", "viele pdf", "massenverarbeitung", "alle auf einmal", "automatisch", "ordner"],
+    "steps": [
+      {"title": "PDFs auswählen", "text": "Ziehe beliebig viele PDFs hinein. Andere Dateitypen werden einfach übersprungen."},
+      {"title": "Ablauf wählen", "text": "Nimm eine fertige Vorlage wie „Für E-Mail fertig machen“ oder hake eigene Schritte an. Die Reihenfolge ergibt sich von selbst."},
+      {"title": "Alles herunterladen", "text": "Lade die Ergebnisse einzeln oder als ZIP herunter. Was nicht geklappt hat, steht im Bericht."}
+    ],
+    "why": [
+      {"title": "Kein Datei- oder Stundenlimit", "text": "Es gibt keine Obergrenze für Dateien pro Tag oder Stunde – die Grenze ist nur der Speicher deines Geräts."},
+      {"title": "Eine kaputte Datei stoppt nichts", "text": "Klappt eine Datei nicht, geht es mit der nächsten weiter. Am Ende steht im Bericht, welche übersprungen wurde und warum."},
+      {"title": "Einfach statt Skript", "text": "Keine Aktionen zusammenklicken: Vorlage wählen oder Schritte anhaken, fertig. Deine Auswahl bleibt für das nächste Mal gespeichert."},
+      {"title": "Vertrauliches bleibt bei dir", "text": "Die Dateien werden nicht hochgeladen. Auch das Passwort für den Schutz bleibt auf deinem Gerät."}
+    ],
+    "faq": [
+      {"q": "Wie viele Dateien kann ich auf einmal bearbeiten?", "a": "So viele, wie dein Gerät schafft. Die Dateien werden nacheinander verarbeitet, damit der Speicher nicht volläuft – Hunderte normale PDFs sind kein Problem."},
+      {"q": "In welcher Reihenfolge laufen die Schritte?", "a": "Immer in einer festen, sinnvollen Reihenfolge: Seiten entfernen, drehen, fixieren, Graustufen, Wasserzeichen, Seitenzahlen, verkleinern, versteckte Daten entfernen und zuletzt das Passwort."},
+      {"q": "Was passiert mit Dateien, die nicht klappen?", "a": "Sie werden übersprungen, alle anderen trotzdem fertig. Du bekommst eine Bericht-Datei, die jede Datei mit Ergebnis oder Grund auflistet."},
+      {"q": "Was ist mit PDFs, die schon ein Passwort haben?", "a": "Gib das Passwort auf der Dateikarte ein, dann wird sie mitbearbeitet. Ohne Passwort wird sie übersprungen und im Bericht genannt."},
+      {"q": "Wie heißen die fertigen Dateien?", "a": "Standardmäßig wie vorher. Mit Platzhaltern wie {name}, {nr} und {datum} legst du ein eigenes Muster fest, zum Beispiel „{datum} {name}“."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Alles läuft in deinem Browser. Nach dem ersten Besuch funktioniert die Seite auch offline."}
+    ]
+  },
+  "en": {
+    "slug": "batch-process-pdf",
+    "name": "Batch process PDFs",
+    "short": "Compress, protect, number or convert many PDFs at once.",
+    "title": "Batch process PDFs – many files at once, free | FaleNetwork",
+    "h1": "Process many PDFs at once",
+    "metaDescription": "Compress, password-protect, number or convert many PDFs to grayscale in one go. No file limit, no upload, no account.",
+    "lede": "Choose all files and a recipe – your browser does the rest, file by file.",
+    "pickLabel": "Choose PDFs",
+    "primaryButton": "Process all",
+    "keywords": ["batch", "bulk", "multiple pdfs", "many pdfs", "process all", "automate", "folder"],
+    "steps": [
+      {"title": "Choose PDFs", "text": "Drop in as many PDFs as you like. Other file types are simply skipped."},
+      {"title": "Pick a recipe", "text": "Take a ready-made recipe like “Ready for e-mail” or tick your own steps. The order is set automatically."},
+      {"title": "Download everything", "text": "Download the results one by one or as a ZIP. Anything that failed is listed in the report."}
+    ],
+    "why": [
+      {"title": "No file or hourly limit", "text": "There is no cap on files per day or hour – the only limit is your device’s memory."},
+      {"title": "One broken file stops nothing", "text": "If a file fails, the batch carries on with the next one. The report lists what was skipped and why."},
+      {"title": "Simple instead of scripting", "text": "No actions to wire up: pick a recipe or tick steps, done. Your choice is remembered for next time."},
+      {"title": "Confidential stays with you", "text": "Files are not uploaded. The password for protection stays on your device, too."}
+    ],
+    "faq": [
+      {"q": "How many files can I process at once?", "a": "As many as your device can handle. Files are processed one after another so memory doesn’t fill up – hundreds of normal PDFs are fine."},
+      {"q": "In which order do the steps run?", "a": "Always in a fixed, sensible order: remove pages, rotate, flatten, grayscale, watermark, page numbers, compress, remove hidden data and finally the password."},
+      {"q": "What happens to files that fail?", "a": "They are skipped and all others still get done. You get a report file listing every file with its result or the reason."},
+      {"q": "What about PDFs that already have a password?", "a": "Enter the password on the file card and it is included. Without a password it is skipped and named in the report."},
+      {"q": "How are the finished files named?", "a": "Like before by default. With placeholders such as {name}, {nr} and {date} you set your own pattern, for example “{date} {name}”."},
+      {"q": "Are my files uploaded?", "a": "No. Everything runs in your browser. After the first visit the page also works offline."}
+    ]
+  }
+}

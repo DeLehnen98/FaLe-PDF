@@ -114,6 +114,7 @@ function pagegeomModule() {
 const SHARED = {
   'pdfcrypt.js': () => copyModule('js/pdfcrypt.js'),
   'zip.js': () => copyModule('js/zip.js'),
+  'pdflibtune.js': () => copyModule('js/pdflibtune.js'),   // pdf-lib: time-based pauses while saving, one font name per page
   'imgproc.js': () => copyModule('js/tools/imgproc.js'),
   'scanproc.js': () => copyModule('js/tools/scanproc.js', ['./imgproc.js']),
   'imgworker.js': () => copyModule('js/tools/imgworker.js', ['./imgproc.js']),   // runOp() worker (otherwise it falls back to the main thread)
@@ -125,7 +126,9 @@ const SHARED = {
   'formfields.js': () => copyModule('js/tools/formfields.js'),
   'pagegeom.js': () => pagegeomModule(),
   // bookmarks (edit-bookmarks): read / derive from headings / write the outline – uses pdfstruct.js above
-  'outlinecore.js': () => copyModule('js/tools/outlinecore.js', ['./pdfstruct.js']),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
+  'outlinecore.js': () => copyModule('js/tools/outlinecore.js', ['./pdfstruct.js']),
+  // PDF → PowerPoint without freezing (real pictures go into the ZIP after pptxgenjs wrote it)
+  'pptximg.js': () => copyModule('js/tools/pptximg.js'),   // PDF text layout analysis (pdf-to-word, pdf-to-text)
   // OCR image pre-processing (ocr-pdf, image-to-text): pure functions + their module worker
   'ocr/prep.js': () => copyModule('js/ocr/prep.js'),
   'ocr/prep-worker.js': () => copyModule('js/ocr/prep-worker.js', ['./prep.js']),

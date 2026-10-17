@@ -172,14 +172,19 @@ async function indexDoc(d, pages, sig, extra) {
   const post = new Map(); // term → [page, tf, page, tf …]
   const lens = [];
   const nameToks = tokenize(d.name.replace(/\.[a-z0-9]{2,5}$/i, ''));
-  pages.forEach((p, pi) => {
+  // tokenizing 200 long pages takes a few hundred ms – give the page a turn every ~25 ms (indexing runs in the
+  // background right after an import, while the user is already working)
+  let slice = performance.now();
+  for (let pi = 0; pi < pages.length; pi++) {
+    if (performance.now() - slice > 25) { await new Promise(r => setTimeout(r, 0)); slice = performance.now(); }
+    const p = pages[pi];
     const toks = tokenize(p);
     lens.push(toks.length);
     const tf = new Map();
     for (const tk of toks) tf.set(tk.t, (tf.get(tk.t) || 0) + (tk.part ? 0.5 : 1));
     if (pi === 0) for (const tk of nameToks) tf.set(tk.t, (tf.get(tk.t) || 0) + 2);
     for (const [t, n] of tf) { if (!post.has(t)) post.set(t, []); post.get(t).push(pi, Math.round(n * 2) / 2); }
-  });
+  }
   if (!pages.length && nameToks.length) { lens.push(nameToks.length); for (const tk of nameToks) { if (!post.has(tk.t)) post.set(tk.t, [0, 2]); } }
   const old = await sdb.get('idxdocs', d.id);
   const oldTerms = new Set((old && old.terms) || []);

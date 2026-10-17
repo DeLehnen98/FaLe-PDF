@@ -54,15 +54,20 @@ export default {
       scanned += pages.filter(p => p.chars < 15).length;
       // per page: list of tables {rows, header}
       let mode = opts.mode;
-      const perPage = () => pages.map(p => {
-        if (mode === 'all') {
-          const lines = p.regions.flatMap(r => r.lines);
-          return lines.length ? [{ rows: regionRows(lines), header: false, page: p.index }] : [];
+      // page by page with a pause in between – long documents must not freeze the page
+      const perPage = async () => {
+        const out = [];
+        for (const [k, p] of pages.entries()) {
+          if (mode === 'all') {
+            const lines = p.regions.flatMap(r => r.lines);
+            out.push(lines.length ? [{ rows: regionRows(lines), header: false, page: p.index }] : []);
+          } else out.push(p.regions.flatMap(r => detectTables(r.lines)).map(t => ({ rows: t.rows, header: t.header, page: p.index })));
+          if (k % 4 === 3) await ctx.tick();
         }
-        return p.regions.flatMap(r => detectTables(r.lines)).map(t => ({ rows: t.rows, header: t.header, page: p.index }));
-      });
-      let found = perPage();
-      if (mode === 'tables' && !found.some(t => t.length)) { mode = 'all'; found = perPage(); fellBack = true; }
+        return out;
+      };
+      let found = await perPage();
+      if (mode === 'tables' && !found.some(t => t.length)) { mode = 'all'; found = await perPage(); fellBack = true; }
       if (!found.some(t => t.length)) continue;
       const sheets = [];
       const word = ctx.lang === 'de' ? 'Seite' : 'Page';

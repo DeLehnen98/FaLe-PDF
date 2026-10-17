@@ -1,16 +1,17 @@
 // Lazy loader for pdf-lib (UMD build → window.PDFLib) plus shared helpers.
 import { UserError } from './ui.js';
+import { tunePdfLib } from './pdflibtune.js';
 import { knownPassword, rememberPassword, askPassword, PasswordCancelled, rememberBytesPassword } from './pdfcore.js';
 
 let loading = null;
 export function loadPdfLib() {
-  if (window.PDFLib) return Promise.resolve(window.PDFLib);
+  if (window.PDFLib) return Promise.resolve(tunePdfLib(window.PDFLib));
   if (loading) return loading;
   loading = new Promise((resolve, reject) => {
     const s = document.createElement('script');
     s.src = new URL('../vendor/pdf-lib/pdf-lib.min.js', import.meta.url).href;
     s.async = true;
-    s.onload = () => (window.PDFLib ? resolve(window.PDFLib) : reject(new Error('pdf-lib fehlt')));
+    s.onload = () => (window.PDFLib ? resolve(tunePdfLib(window.PDFLib)) : reject(new Error('pdf-lib fehlt')));
     s.onerror = () => { loading = null; reject(new UserError('Die PDF-Bibliothek konnte nicht geladen werden.')); };
     document.head.appendChild(s);
   });
