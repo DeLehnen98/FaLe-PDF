@@ -61,3 +61,22 @@
 .calc-check { display: flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; }
 .calc-check input { width: 20px; height: 20px; accent-color: var(--primary); }
 .calc-big-s { font-size: clamp(1.4rem, 5vw, 2rem); }
+/* working time (tools/work-time.js) */
+.wtm-list { display: grid; gap: 10px; }
+.wtm-row { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.wtm-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: end; }
+.wtm-times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-items: end; }
+.wtm-cell { display: grid; gap: 4px; min-width: 0; }
+.wtm-cell .wt-input { width: 100%; min-height: 44px; font-variant-numeric: tabular-nums; }
+.wtm-cell .wt-input:disabled { opacity: 0.45; }
+.wtm-cell input[type=date] { min-width: 0; max-width: 100%; font-size: 0.95rem; padding-inline: 8px; }
+.wtm-lab { font-size: var(--step--1); color: var(--text-3); font-weight: 650; }
+.wtm-foot { display: flex; align-items: center; gap: 10px; }
+.wtm-out { flex: 1; display: flex; gap: 10px; align-items: baseline; min-height: 24px; font-variant-numeric: tabular-nums; }
+.wtm-out b { font-size: 1.25rem; color: var(--primary); }
+.wtm-out span { color: var(--text-2); font-size: 0.95rem; }
+.wtm-del { min-height: 44px; width: 44px; padding: 0; font-size: 1.3rem; }
+.wtm-notes:empty { display: none; }
+.wtm-note { margin: 0; font-size: var(--step--1); color: var(--text-2); }
+.wtm-note.is-warn { color: var(--danger); font-weight: 600; }
+@media (min-width: 720px) { .wtm-row { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) auto; align-items: end; } .wtm-notes { grid-column: 1 / -1; } .wtm-foot { min-width: 9.5em; } }

@@ -186,3 +186,6 @@
 .vec-pal-in::-moz-color-swatch { border: 1px solid var(--border-strong); border-radius: 50%; }
 .vec-pal-hex { font-variant-numeric: tabular-nums; color: var(--text-2); }
 .vec-pal-stat { margin-top: 8px; }
+/* watermark-image preview */
+.img-wm-frame { display: grid; place-items: center; padding: 10px; border-radius: var(--radius-md); background: var(--surface-2); }
+.img-wm-canvas { display: block; max-width: 100%; height: auto; max-height: 70vh; border-radius: 6px; box-shadow: 0 1px 3px rgb(0 0 0 / 0.15); }

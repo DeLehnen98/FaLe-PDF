@@ -1,0 +1,178 @@
+{
+  "id": "girocode",
+  "category": "everyday",
+  "icon": "qr",
+  "module": "tools/girocode.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 63,
+  "related": [
+    "invoice-generator",
+    "qr-code",
+    "qr-scanner",
+    "payment-reminder"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib"
+  ],
+  "alt": [
+    {
+      "id": "invoice-generator",
+      "de": "Du willst eine ganze Rechnung mit GiroCode schreiben?",
+      "en": "Want to write a whole invoice with an EPC QR code?"
+    },
+    {
+      "id": "qr-code",
+      "de": "Du brauchst einen QR-Code für einen Link, ein WLAN oder einen Kontakt?",
+      "en": "Need a QR code for a link, Wi-Fi or contact?"
+    }
+  ],
+  "de": {
+    "slug": "girocode-erstellen",
+    "name": "GiroCode erstellen",
+    "short": "QR-Code für Überweisungen: scannen, und alles ist ausgefüllt.",
+    "title": "GiroCode erstellen – QR-Code für Überweisungen | FaleNetwork",
+    "h1": "GiroCode erstellen",
+    "metaDescription": "GiroCode (EPC-QR-Code) für SEPA-Überweisungen: Empfänger, IBAN, Betrag und Zweck sind nach dem Scannen ausgefüllt. IBAN-Prüfung, Karte zum Drucken.",
+    "lede": "Empfänger und IBAN eintragen, auf Wunsch Betrag und Verwendungszweck – fertig ist der Code für die Banking-App.",
+    "primaryButton": "GiroCode speichern",
+    "keywords": [
+      "girocode erstellen",
+      "girocode generator",
+      "epc qr code",
+      "qr code überweisung",
+      "bezahlcode",
+      "sepa qr code",
+      "überweisung qr code erstellen",
+      "spenden qr code"
+    ],
+    "steps": [
+      {
+        "title": "Daten eintragen",
+        "text": "Gib den Kontoinhaber und die IBAN ein. Betrag und Verwendungszweck sind optional – ohne Betrag trägt ihn der Zahlende selbst ein."
+      },
+      {
+        "title": "Format wählen",
+        "text": "PNG für Rechnung, Website oder Messenger, SVG oder PDF für den Druck – oder die Karte mit allen Angaben im Klartext, etwa für die Kasse beim Vereinsfest."
+      },
+      {
+        "title": "Speichern und testen",
+        "text": "Speichere den Code und scanne ihn einmal mit deiner Banking-App. Abschicken musst du die Überweisung dabei nicht."
+      }
+    ],
+    "why": [
+      {
+        "title": "IBAN wird geprüft",
+        "text": "Ein Zahlendreher in der IBAN fällt sofort auf, bevor der Code gedruckt ist – über die Prüfziffer, wie bei der Bank."
+      },
+      {
+        "title": "Nach Standard",
+        "text": "Der Code folgt der EPC-Vorgabe (Version 002): BIC optional, Name bis 70 und Verwendungszweck bis 140 Zeichen, Betrag bis 999.999.999,99 €. Zu lange Angaben werden gekürzt statt den Code zu zerstören."
+      },
+      {
+        "title": "Kein Abo, kein Ablauf",
+        "text": "Die Überweisungsdaten stehen direkt im Code. Er funktioniert ohne Umweg über einen fremden Server und läuft nie ab."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "IBAN und Name werden nicht hochgeladen und nicht gespeichert."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Banking-Apps können GiroCodes lesen?",
+        "a": "Die meisten Banking-Apps in Deutschland, Österreich und vielen anderen Euro-Ländern – oft unter „Scannen“, „Foto-Überweisung“ oder „Scan2Bank“. Die Überweisung wird nur ausgefüllt, abschicken muss sie der Zahlende selbst."
+      },
+      {
+        "q": "Brauche ich die BIC?",
+        "a": "Für Überweisungen im SEPA-Raum nicht. Lass das Feld leer, wenn du sie nicht kennst."
+      },
+      {
+        "q": "Kann ich einen GiroCode ohne Betrag erstellen?",
+        "a": "Ja. Dann trägt der Zahlende den Betrag selbst ein – praktisch für Spenden oder Trinkgeld."
+      },
+      {
+        "q": "Darf ich Umlaute im Verwendungszweck verwenden?",
+        "a": "Der Code selbst kann Umlaute enthalten. Manche Banken wandeln sie bei der Überweisung um, etwa ä in ae. Für Rechnungsnummern sind Buchstaben, Ziffern und Bindestriche am sichersten."
+      },
+      {
+        "q": "Ist ein GiroCode sicher?",
+        "a": "Er enthält nur, was auch auf einem Überweisungsträger stünde. Der Zahlende sieht vor dem Absenden alle Daten in seiner App. Prüfe aufgeklebte Codes an fremden Orten trotzdem, bevor du bezahlst."
+      }
+    ]
+  },
+  "en": {
+    "slug": "epc-qr-code-generator",
+    "name": "EPC QR code generator",
+    "short": "QR code for bank transfers: scan it and everything is filled in.",
+    "title": "EPC QR code generator (GiroCode) – free SEPA QR | FaleNetwork",
+    "h1": "Create an EPC QR code",
+    "metaDescription": "EPC QR code (GiroCode) for SEPA transfers: payee, IBAN, amount and reference are filled in after scanning. IBAN check, printable card. Free, no upload.",
+    "lede": "Enter payee and IBAN, and optionally amount and reference – that’s the code for banking apps.",
+    "primaryButton": "Save EPC QR code",
+    "keywords": [
+      "epc qr code generator",
+      "girocode",
+      "sepa qr code",
+      "payment qr code",
+      "bank transfer qr",
+      "donation qr code",
+      "scan to pay"
+    ],
+    "steps": [
+      {
+        "title": "Enter the details",
+        "text": "Type the account holder and the IBAN. Amount and reference are optional – without an amount the payer types it in."
+      },
+      {
+        "title": "Pick a format",
+        "text": "PNG for invoices, websites or messengers, SVG or PDF for print – or the card with all details in plain text, for example at the till of a club party."
+      },
+      {
+        "title": "Save and test",
+        "text": "Save the code and scan it once with your banking app. You don’t have to send the transfer."
+      }
+    ],
+    "why": [
+      {
+        "title": "IBAN is checked",
+        "text": "A transposed digit in the IBAN shows up right away, before the code is printed – via the check digits, as at the bank."
+      },
+      {
+        "title": "By the standard",
+        "text": "The code follows the EPC guideline (version 002): BIC optional, name up to 70 and reference up to 140 characters, amount up to €999,999,999.99. Overlong entries are trimmed instead of breaking the code."
+      },
+      {
+        "title": "No subscription, no expiry",
+        "text": "The transfer details are in the code itself. It works without a detour through someone else’s server and never expires."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "IBAN and name are neither uploaded nor stored."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which banking apps read EPC QR codes?",
+        "a": "Most banking apps in Germany, Austria and many other euro countries – often under “Scan”, “Photo transfer” or “Scan2Bank”. The transfer is only filled in; the payer still sends it."
+      },
+      {
+        "q": "Do I need the BIC?",
+        "a": "Not for transfers within the SEPA area. Leave the field empty if you don’t know it."
+      },
+      {
+        "q": "Can I create a code without an amount?",
+        "a": "Yes. Then the payer enters the amount – handy for donations or tips."
+      },
+      {
+        "q": "Can I use accented letters in the reference?",
+        "a": "The code itself can hold them. Some banks convert them during the transfer. For invoice numbers, letters, digits and hyphens are safest."
+      },
+      {
+        "q": "Is an EPC QR code safe?",
+        "a": "It only holds what a paper transfer slip would. The payer sees all details in their app before sending. Still check stickers in public places before you pay."
+      }
+    ]
+  }
+}

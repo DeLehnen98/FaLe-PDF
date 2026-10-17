@@ -99,6 +99,7 @@ ICONS = {
     'slides': '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/>',
     'resize': '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>',
     'photo': '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 18l5-5 4 4 3-3 6 6"/>',
+    'wifi': '<path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M5.5 12.5a9.5 9.5 0 0 1 13 0"/><path d="M8.6 16a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.5" r="1"/>',
     'qr': '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 20h4v-3"/>',
     'stamp': '<path d="M9 13V9.5A3 3 0 1 1 15 9.5V13"/><path d="M4 13h16v4H4zM6 21h12"/>',
     'form': '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/><rect x="8" y="15" width="4" height="3" rx=".5"/>',
@@ -412,7 +413,10 @@ def page_tool(sp, lang, by_id):
     items = [(s['home'], bp.url('home', lang)), (s['hub_name'], HUB[lang]), (c['name'], path)]
     multiple = bool(sp.get('multiple'))
     accept = ','.join(sp['accepts'])
-    trust = ''.join(f'<li>{svg(UI_ICONS[i])}<span>{t}</span></li>' for i, t in s['trust'])
+    badges = s['trust']
+    if sp['id'] in ('watermark-image', 'watermark-pdf'):   # "no watermark" would read oddly on a watermark tool
+        badges = [(i, ({'de': 'Kein fremdes Logo', 'en': 'No third-party logo'}[lang] if i == 'nodrop' else t)) for i, t in badges]
+    trust = ''.join(f'<li>{svg(UI_ICONS[i])}<span>{t}</span></li>' for i, t in badges)
     steps = ''.join(f'<li id="schritt-{i + 1}" class="wt-step"><h3>{e(st["title"])}</h3><p>{e(st["text"])}</p></li>' for i, st in enumerate(c['steps']))
     why = ''.join(f'<li>{svg(UI_ICONS["check"])}<div><h3>{e(w["title"])}</h3><p>{e(w["text"])}</p></div></li>' for w in c['why'])
     cmp_head = ''.join(f'<th scope="col">{e(h)}</th>' for h in s['cmp_cols'])

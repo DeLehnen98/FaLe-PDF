@@ -122,18 +122,28 @@ async function deviceTest(canvas, text) {
   } catch { return null; }
 }
 
-let stageCtl = null;
+const FORMATS = [
+  { value: 'png', label: 'PNG', hint: { de: 'Bild für Handy, Web, Office', en: 'Image for phone, web, office' } },
+  { value: 'svg', label: 'SVG', hint: { de: 'Vektor, beliebig skalierbar', en: 'Vector, scales to any size' } },
+  { value: 'pdf', label: 'PDF', hint: { de: 'Vektor zum Drucken', en: 'Vector for printing' } },
+];
+const CARD = { value: 'card', label: { de: 'Karte (PDF)', en: 'Card (PDF)' }, hint: { de: 'Zum Ausdrucken, mit Text', en: 'For printing, with text' } };
 
-export default {
+/**
+ * The generator, or a preset for one content type (SEO pages "Wi-Fi QR code", "EPC QR code"): the type is
+ * fixed, the type switch is hidden, and a printable card with the details in plain text is offered.
+ */
+export function makeQrTool(fixed = null) {
+  let stageCtl = null;
+  const formats = fixed ? [CARD, ...FORMATS] : FORMATS;
+  const defFormat = fixed === 'wifi' ? 'card' : 'png';
+  return {
   shareFirst: true,
   labels: { back_to_files: { de: 'Zurück zum Bearbeiten', en: 'Back to editing' } },
   options: [
-    { id: 'format', type: 'radio', default: 'png', label: { de: 'Speichern als', en: 'Save as' },
-      choices: [
-        { value: 'png', label: 'PNG', hint: { de: 'Bild für Handy, Web, Office', en: 'Image for phone, web, office' } },
-        { value: 'svg', label: 'SVG', hint: { de: 'Vektor, beliebig skalierbar', en: 'Vector, scales to any size' } },
-        { value: 'pdf', label: 'PDF', hint: { de: 'Vektor zum Drucken', en: 'Vector for printing' } },
-      ] },
+    { id: 'format', type: 'radio', default: defFormat, label: { de: 'Speichern als', en: 'Save as' }, choices: formats },
+    ...(fixed ? [{ id: 'cardSize', type: 'radio', default: 'a6', label: { de: 'Karte', en: 'Card' }, when: v => v.format === 'card',
+      choices: [{ value: 'a6', label: { de: 'Eine Karte (A6)', en: 'One card (A6)' } }, { value: 'a4x4', label: { de: '4 Karten auf A4', en: '4 cards on A4' }, hint: { de: 'Zum Ausschneiden', en: 'To cut out' } }] }] : []),
     { id: 'size', type: 'select', default: 1024, label: { de: 'Bildgröße', en: 'Image size' }, when: v => v.format === 'png',
       choices: [{ value: 512, label: '512 px' }, { value: 1024, label: '1024 px' }, { value: 2048, label: '2048 px' }, { value: 4096, label: { de: '4096 px (Plakat)', en: '4096 px (poster)' } }] },
     { id: 'pdfSize', type: 'select', default: 50, label: { de: 'Druckgröße', en: 'Print size' }, when: v => v.format === 'pdf',
@@ -143,13 +153,13 @@ export default {
     { id: 'margin', type: 'range', default: 4, min: 0, max: 8, step: 1, label: { de: 'Rand (Ruhezone)', en: 'Margin (quiet zone)' },
       format: (v, lang) => `${v} ${lang === 'de' ? (v === 1 ? 'Modul' : 'Module') : (v === 1 ? 'module' : 'modules')}`,
       hint: { de: 'Empfohlen sind 4 Module.', en: '4 modules are recommended.' } },
-    { id: 'ecc', type: 'select', default: 'M', label: { de: 'Fehlerkorrektur', en: 'Error correction' },
+    { id: 'ecc', type: 'select', default: 'M', when: () => fixed !== 'epc', label: { de: 'Fehlerkorrektur', en: 'Error correction' },
       hint: { de: 'Höher = robuster gegen Schmutz und Knicke, aber dichter.', en: 'Higher = more robust against dirt and creases, but denser.' },
       choices: [{ value: 'L', label: { de: 'L – niedrig (7 %)', en: 'L – low (7 %)' } }, { value: 'M', label: { de: 'M – mittel (15 %)', en: 'M – medium (15 %)' } },
         { value: 'Q', label: { de: 'Q – hoch (25 %)', en: 'Q – high (25 %)' } }, { value: 'H', label: { de: 'H – sehr hoch (30 %)', en: 'H – very high (30 %)' } }] },
   ],
 
-  mountStage(stage, state, ctx) { stageCtl = qrStage(stage, state, ctx); },
+  mountStage(stage, state, ctx) { stageCtl = qrStage(stage, state, ctx, fixed); },
   onOptionsChange() { stageCtl?.render(); },
 
   status(v) {
@@ -163,7 +173,7 @@ export default {
     const b = build(opts);
     if (b.empty || b.error) throw userError(T('de', b.error || { de: 'Kein Inhalt.' }), T('en', b.error || { en: 'No content.' }));
     const { qr, text } = b;
-    const base = ctx.safeFileName(`QR-Code ${label(opts.qr, ctx.lang)}`.trim());
+    const base = ctx.safeFileName((opts.format === 'card' ? cardName(opts.qr, ctx.lang) : `QR-Code ${label(opts.qr, ctx.lang)}`).trim());
     const border = +opts.margin;
     // self-test on a raster of the exact matrix and colours (PNG: the file itself)
     const test = renderCanvas(qr, opts, Math.max(256, (qr.size + border * 2) * 4));
@@ -171,7 +181,10 @@ export default {
     const dev = await deviceTest(test, text);
     release(test);
     let blob, name, note;
-    if (opts.format === 'svg') {
+    if (opts.format === 'card') {
+      blob = new Blob([await cardPdf(qr, opts, text, ctx.lang, base)], { type: 'application/pdf' });
+      name = `${base}.pdf`;
+    } else if (opts.format === 'svg') {
       blob = new Blob([qrToSvg(qr, { border, dark: opts.dark, light: opts.light })], { type: 'image/svg+xml' });
       name = `${base}.svg`;
       ok = ok && await svgSelfTest(blob, qr, opts, text);
@@ -201,7 +214,10 @@ export default {
     for (const w of designWarnings(opts)) ctx.note(w);
     return { outputs: [{ name, blob, note }] };
   },
-};
+  };
+}
+
+export default makeQrTool();
 
 async function svgSelfTest(blob, qr, v, text) {
   const url = URL.createObjectURL(blob);
@@ -219,9 +235,10 @@ async function svgSelfTest(blob, qr, v, text) {
 }
 
 // ---------------------------------------------------------------- stage: content + live preview
-function qrStage(stage, state, ctx) {
+function qrStage(stage, state, ctx, fixed) {
   const lang = ctx.lang;
-  const q = (state.values.qr ||= { type: 'url', security: 'WPA' });
+  const q = (state.values.qr ||= { type: fixed || 'url', security: 'WPA' });
+  if (fixed) q.type = fixed;
   const fieldsBox = el('div', { class: 'img-fields' });
   const typeSeg = segmented({ name: 'img-qr-type', label: { de: 'Was soll in den Code?', en: 'What goes into the code?' }, lang, value: q.type, choices: TYPES,
     onChange: v => { q.type = v; renderFields(); changed(); } });
@@ -232,16 +249,18 @@ function qrStage(stage, state, ctx) {
   const warns = el('div', {});
   const preview = el('div', { class: 'img-qr-preview' }, el('div', { class: 'img-qr-frame' }, canvas, empty), info, test, warns);
   const box = el('section', { class: 'img-box img-qr', aria: { labelledby: 'img-qr-h' } },
-    el('h2', { class: 'img-h', id: 'img-qr-h' }, T(lang, { de: 'Inhalt', en: 'Content' })),
-    typeSeg.root, fieldsBox, preview);
+    el('h2', { class: 'img-h', id: 'img-qr-h' }, T(lang, fixed === 'wifi' ? { de: 'Dein WLAN', en: 'Your Wi-Fi' } : fixed === 'epc' ? { de: 'Überweisung', en: 'Bank transfer' } : { de: 'Inhalt', en: 'Content' })),
+    fixed ? null : typeSeg.root, fieldsBox, preview);
   stage.append(box);
 
   let timer = 0;
   function changed() { state.results.clear(); ctx.refresh(); clearTimeout(timer); timer = setTimeout(render, 90); }
 
   const f = (key, label, opts = {}) => field({ id: `img-qr-${key}`, label, value: q[key] ?? '', lang, onInput: v => { q[key] = v; changed(); }, ...opts });
+  let cardBits = null;
   function renderFields() {
     clear(fieldsBox);
+    cardBits = null;
     switch (q.type) {
       case 'url': fieldsBox.append(f('url', { de: 'Adresse (Link)', en: 'Address (link)' }, { type: 'url', placeholder: 'https://', inputmode: 'url', maxLength: 2000 })); break;
       case 'text': {
@@ -258,6 +277,13 @@ function qrStage(stage, state, ctx) {
         fieldsBox.append(sec.root);
         if (q.security !== 'nopass') fieldsBox.append(f('password', { de: 'Passwort', en: 'Password' }, { autocomplete: 'off', hint: { de: 'Das Passwort steht lesbar im Code – teile ihn nur mit Gästen, denen du es auch sagen würdest.', en: 'The password is readable in the code – only share it with guests you’d tell it to anyway.' } }));
         fieldsBox.append(check({ id: 'img-qr-hidden', label: { de: 'Verstecktes Netzwerk', en: 'Hidden network' }, checked: q.hidden, lang, onChange: v => { q.hidden = v; changed(); } }));
+        if (fixed) {
+          cardBits = el('div', { class: 'img-qr-cardbits' },
+            f('cardNote', { de: 'Text auf der Karte (optional)', en: 'Text on the card (optional)' }, { maxLength: 80, placeholder: { de: 'z. B. Willkommen in der Ferienwohnung!', en: 'e.g. Welcome to our holiday flat!' } }),
+            q.security !== 'nopass' ? check({ id: 'img-qr-showpass', label: { de: 'Passwort auf der Karte lesbar drucken', en: 'Print the password readably on the card' }, checked: q.showPass !== false, lang,
+              hint: { de: 'Für Geräte, die keinen Code scannen können (z. B. Laptop oder Konsole).', en: 'For devices that can’t scan a code (e.g. laptop or console).' }, onChange: v => { q.showPass = v; changed(); } }) : null);
+          fieldsBox.append(cardBits);
+        }
         break;
       }
       case 'vcard':
@@ -291,6 +317,7 @@ function qrStage(stage, state, ctx) {
 
   async function render() {
     const v = state.values;
+    if (cardBits) cardBits.hidden = v.format !== 'card';
     const b = build(v);
     clear(warns);
     if (b.empty || b.error) {
@@ -317,4 +344,108 @@ function qrStage(stage, state, ctx) {
   renderFields();
   render();
   return { render };
+}
+
+// ---------------------------------------------------------------- printable card (presets)
+const fmtEur = (cents, lang) => new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'en-IE', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+const groups4 = iban => String(iban || '').replace(/(.{4})(?=.)/g, '$1 ');
+
+function cardName(q, lang) {
+  const v = q || {};
+  if (v.type === 'epc') return `GiroCode ${String(v.payee || '').trim()}`.slice(0, 60);
+  return `${T(lang, { de: 'WLAN-Karte', en: 'Wi-Fi card' })} ${String(v.ssid || '').trim()}`.slice(0, 60);
+}
+
+/** Texts on the card, taken from the payload (so the card shows exactly what the code says). */
+export function cardTexts(q, text, lang) {
+  const w = (de, en) => (lang === 'de' ? de : en);
+  if (q.type === 'epc') {
+    const L = text.split('\n');
+    const rows = [{ label: w('Empfänger', 'Payee'), value: L[5] }, { label: 'IBAN', value: groups4(L[6]), mono: true }];
+    if (L[4]) rows.push({ label: 'BIC', value: L[4], mono: true });
+    if (L[7]) rows.push({ label: w('Betrag', 'Amount'), value: fmtEur(Math.round(parseFloat(L[7].slice(3)) * 100), lang), big: true });
+    if (L[10]) rows.push({ label: w('Verwendungszweck', 'Reference'), value: L[10] });
+    return { title: w('Bezahlen per GiroCode', 'Pay by EPC QR code'), note: '', rows,
+      foot: w('Banking-App öffnen, „Scannen“ oder „Foto-Überweisung“ wählen und den Code scannen. Die Daten sind dann schon eingetragen.',
+        'Open your banking app, choose “Scan” or “Photo transfer” and scan the code. The details are filled in for you.') };
+  }
+  const rows = [{ label: w('Netzwerk', 'Network'), value: q.ssid, big: true }];
+  if (q.security !== 'nopass' && q.showPass !== false) rows.push({ label: w('Passwort', 'Password'), value: q.password || '', mono: true, big: true });
+  if (q.security === 'nopass') rows.push({ label: w('Passwort', 'Password'), value: w('keins (offenes Netz)', 'none (open network)') });
+  return { title: w('WLAN', 'Wi-Fi'), note: String(q.cardNote || '').trim(), rows,
+    foot: w('Kamera öffnen und auf den Code richten – oder das Netzwerk wählen und das Passwort eingeben.', 'Point your camera at the code – or pick the network and type the password.') + (q.hidden ? w(' Das Netzwerk ist versteckt.', ' The network is hidden.') : '') };
+}
+
+async function cardPdf(qr, opts, text, lang, title) {
+  const { fontKit, safeText, needsUnicode, wrapPlain } = await import('../lib/shared/office/pdftext.js');
+  const PDFLib = await loadPdfLib();
+  const doc = await PDFLib.PDFDocument.create();
+  const fk = await fontKit(doc);
+  await fk.ensure('mono');
+  const t = cardTexts(opts.qr || {}, text, lang);
+  if ([t.title, t.note, t.foot, ...t.rows.flatMap(r => [r.label, r.value])].some(x => needsUnicode(String(x || '')))) await fk.ensureUnicode();
+  const rgb = h => { const n = parseInt(String(h).slice(1), 16); return PDFLib.rgb((n >> 16) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255); };
+  const INK = rgb('#15172f'), GREY = rgb('#5b6075');
+  const border = +opts.margin;
+  const svgPath = /<path d="([^"]*)"/.exec(qrToSvg(qr, { border, dark: opts.dark, light: null }))[1];
+  const n = qr.size + border * 2;
+
+  // one card at (x0, y0) with size W × H (points)
+  function card(page, x0, y0, W, H) {
+    const m = W * 0.07, inner = W - 2 * m;
+    const draw = (str, font, size, y, { color = INK, align = 'center', x = x0 + m } = {}) => {
+      const s = safeText(str, font);
+      const wd = font.widthOfTextAtSize(s, size);
+      page.drawText(s, { x: align === 'center' ? x0 + (W - wd) / 2 : x, y, size, font, color });
+    };
+    const fitSize = (str, font, size, min) => { let sz = size; while (sz > min && font.widthOfTextAtSize(safeText(str, font), sz) > inner) sz -= 0.5; return sz; };
+    // measure the text block below the code first, so the code gets whatever room is left
+    const U = W / 297.64;   // scale against A6
+    const blocks = t.rows.map(r => {
+      const font = fk.pick(r.value, r.mono ? 'mono' : 'sans', true);
+      const want = (r.big ? 15 : 12) * U;
+      let size = fitSize(r.value, font, want, 8 * U);
+      let lines = [r.value];
+      if (font.widthOfTextAtSize(safeText(r.value, font), size) > inner) lines = wrapPlain(safeText(r.value, font), font, size, inner).slice(0, 3);
+      return { r, font, size, lines, h: 9 * U + lines.length * size * 1.2 + 6 * U };
+    });
+    const regular = fk.pick(t.foot, 'sans', false), bold = fk.pick(t.title, 'sans', true);
+    const footSize = 7.5 * U, footLines = wrapPlain(safeText(t.foot, regular), regular, footSize, inner);
+    const noteFont = fk.pick(t.note, 'sans', false), noteSize = 10.5 * U;
+    const noteLines = t.note ? wrapPlain(safeText(t.note, noteFont), noteFont, noteSize, inner).slice(0, 2) : [];
+    const titleSize = fitSize(t.title, bold, 24 * U, 12 * U);
+    const top = y0 + H - m;
+    let y = top - titleSize;
+    draw(t.title, bold, titleSize, y);
+    y -= 6 * U;
+    for (const l of noteLines) { y -= noteSize * 1.25; draw(l, noteFont, noteSize, y, { color: GREY }); }
+    const below = blocks.reduce((a, b) => a + b.h, 0) + footLines.length * footSize * 1.3 + 8 * U;
+    const side = Math.max(60 * U, Math.min(inner * 0.86, y - 10 * U - (y0 + m) - below));
+    const free = Math.max(0, y - 10 * U - (y0 + m) - below - side);   // centre code + text when there is room left
+    const qx = x0 + (W - side) / 2, qy = y - 8 * U - free / 2 - side;
+    page.drawRectangle({ x: qx, y: qy, width: side, height: side, color: rgb(opts.light) });
+    page.drawSvgPath(svgPath, { x: qx, y: qy + side, scale: side / n, color: rgb(opts.dark), borderWidth: 0 });
+    y = qy - 6 * U;
+    for (const b of blocks) {
+      y -= 9 * U;
+      draw(b.r.label, regular, 8 * U, y, { color: GREY });
+      for (const l of b.lines) { y -= b.size * 1.2; draw(l, b.font, b.size, y); }
+      y -= 6 * U;
+    }
+    let fy = y0 + m + (footLines.length - 1) * footSize * 1.3;
+    for (const l of footLines) { draw(l, regular, footSize, fy, { color: GREY }); fy -= footSize * 1.3; }
+  }
+
+  const A6 = [297.64, 419.53];
+  if (opts.cardSize === 'a4x4') {
+    const page = doc.addPage([595.28, 841.89]);
+    const W = 595.28 / 2, H = 841.89 / 2;
+    for (const [cx, cy] of [[0, H], [W, H], [0, 0], [W, 0]]) card(page, cx, cy, W, H);
+    const cut = { thickness: 0.5, color: rgb('#b8bccb'), dashArray: [4, 3] };
+    page.drawLine({ start: { x: W, y: 0 }, end: { x: W, y: 2 * H }, ...cut });
+    page.drawLine({ start: { x: 0, y: H }, end: { x: 2 * W, y: H }, ...cut });
+  } else {
+    card(doc.addPage(A6), 0, 0, A6[0], A6[1]);
+  }
+  return saveDoc(doc, { title });
 }

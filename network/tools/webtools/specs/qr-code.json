@@ -8,15 +8,28 @@
   "popular": true,
   "order": 60,
   "related": [
+    "wifi-qr-code",
+    "girocode",
     "qr-scanner",
     "invoice-generator",
     "cancellation-letter",
-    "scan-to-pdf",
-    "jpg-to-pdf"
+    "scan-to-pdf"
   ],
   "next": [],
   "needs": [
     "pdflib"
+  ],
+  "alt": [
+    {
+      "id": "wifi-qr-code",
+      "de": "Nur fürs WLAN – mit Karte zum Ausdrucken?",
+      "en": "Just for your Wi-Fi – with a card to print?"
+    },
+    {
+      "id": "girocode",
+      "de": "Nur für Überweisungen – mit Karte zum Ausdrucken?",
+      "en": "Just for bank transfers – with a card to print?"
+    }
   ],
   "de": {
     "slug": "qr-code-erstellen",

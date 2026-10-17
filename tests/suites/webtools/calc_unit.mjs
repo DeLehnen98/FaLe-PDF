@@ -11,6 +11,7 @@ const { pct } = await import('../../../network/assets/wt/tools/percent-calculato
 const dc = await import('../../../network/assets/wt/lib/date-calc.js');
 const { stats } = await import('../../../network/assets/wt/tools/character-counter.js');
 const { compare } = await import('../../../network/assets/wt/tools/compare-text.js');
+const wt = await import('../../../network/assets/wt/lib/worktime.js');
 
 let ok = 0, fail = 0;
 const expect = (c, m) => { if (c) ok++; else { fail++; console.log('FAIL', m); } };
@@ -83,6 +84,28 @@ c = compare('Hallo  Welt', 'hallo welt', { ignoreCase: true, ignoreSpace: true }
 expect(c.del === 0 && c.ins === 0, 'ignore case + space');
 c = compare('abc', 'abd', { mode: 'chars' }); expect(c.del === 1 && c.ins === 1, 'char diff');
 c = compare('a\nb\nc\n', 'a\nc\n', { mode: 'lines' }); expect(c.del === 1 && c.ins === 0, 'line diff');
+
+// working time
+eq(wt.parseTime('7:30'), 450, '7:30'); eq(wt.parseTime('730'), 450, '730'); eq(wt.parseTime('7,30'), 450, '7,30 = 7:30');
+eq(wt.parseTime('7,5'), 450, '7,5 = half past'); eq(wt.parseTime('19 Uhr'), 1140, '19 Uhr'); eq(wt.parseTime('24:00'), 1440, '24:00');
+expect(Number.isNaN(wt.parseTime('25:00')) && Number.isNaN(wt.parseTime('7:61')) && Number.isNaN(wt.parseTime('x')), 'bad times');
+eq(wt.parseDuration('45'), 45, 'pause 45'); eq(wt.parseDuration('0:45'), 45, 'pause 0:45'); eq(wt.parseDuration('1,5 h'), 90, '1,5 h'); eq(wt.parseDuration(''), 0, 'empty pause');
+eq(wt.legalBreak(360), 0, '6:00 no break'); eq(wt.legalBreak(380), 20, '6:20 → 20'); eq(wt.legalBreak(420), 30, '7:00 → 30');
+eq(wt.legalBreak(570), 30, '9:30 → 30'); eq(wt.legalBreak(580), 40, '9:40 → 40'); eq(wt.legalBreak(600), 45, '10:00 → 45');
+let d = wt.dayCalc({ start: '8:00', end: '16:30', pause: '' }); expect(d.ok && d.pause === 30 && d.net === 480, `auto break ${JSON.stringify(d)}`);
+d = wt.dayCalc({ start: '8:00', end: '16:30', pause: '' }, { autoBreak: false }); expect(d.net === 510 && d.notes.some(n => n.level === 'warn'), 'no auto → warning');
+d = wt.dayCalc({ start: '22:00', end: '6:00', pause: '30' }); expect(d.overnight && d.net === 450, 'night shift');
+d = wt.dayCalc({ start: '7:00', end: '18:30', pause: '45' }); expect(d.net === 645 && d.notes.some(n => /10 Stunden/.test(n.de)), 'over 10 h');
+d = wt.dayCalc({ start: '8:00', end: '9:00', pause: '60' }); expect(!d.ok, 'pause = whole time');
+expect(wt.hhmm(-65) === '−1:05' && wt.decimal(465) === 7.75, 'hhmm + decimal');
+const sh = wt.sheetCalc([
+  { date: '2026-10-12', kind: 'work', start: '8:00', end: '16:30', pause: '30' },
+  { date: '2026-10-13', kind: 'work', start: '14:00', end: '23:00', pause: '30' },
+  { date: '2026-10-14', kind: 'work', start: '7:00', end: '15:30', pause: '30' },
+  { date: '2026-10-15', kind: 'vacation' }, { date: '2026-10-16', kind: 'off' },
+], { target: 480 });
+expect(sh.net === 480 + 510 + 480 && sh.credited === 480 && sh.should === 4 * 480 && sh.balance === 30, `sheet ${sh.net} ${sh.credited} ${sh.should} ${sh.balance}`);
+expect(sh.rows[2].res.notes.some(n => /Ruhezeit/.test(n.de)), 'rest < 11 h flagged (23:00 → 7:00)');
 
 console.log(`calc: ${ok} ok, ${fail} failed`);
 process.exit(fail ? 1 : 0);

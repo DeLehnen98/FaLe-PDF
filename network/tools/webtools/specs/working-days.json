@@ -159,6 +159,11 @@
       "id": "date-difference",
       "de": "Du willst alle Kalendertage zählen, nicht nur Arbeitstage?",
       "en": "Want to count all calendar days, not only working days?"
+    },
+    {
+      "id": "work-time",
+      "de": "Du willst deine Arbeitsstunden und Pausen ausrechnen?",
+      "en": "Want to add up your working hours and breaks?"
     }
   ]
 }

@@ -1,0 +1,179 @@
+{
+  "id": "work-time",
+  "category": "calc",
+  "icon": "calendar",
+  "module": "tools/work-time.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 73,
+  "related": [
+    "working-days",
+    "date-difference",
+    "calendar-week",
+    "leave-request",
+    "percent-calculator"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib"
+  ],
+  "alt": [
+    {
+      "id": "working-days",
+      "de": "Du willst wissen, wie viele Arbeitstage ein Monat oder Jahr hat?",
+      "en": "Want to know how many working days a month or year has?"
+    }
+  ],
+  "de": {
+    "slug": "arbeitszeitrechner",
+    "name": "Arbeitszeitrechner",
+    "short": "Arbeitszeit mit Pausen berechnen – mit Stundenzettel als PDF.",
+    "title": "Arbeitszeitrechner mit Pause & Stundenzettel | FaleNetwork",
+    "h1": "Arbeitszeitrechner mit Stundenzettel",
+    "metaDescription": "Arbeitszeit berechnen: Beginn, Ende, Pause – auch über Mitternacht, mit gesetzlicher Mindestpause, Überstunden und Dezimalstunden. Stundenzettel als PDF.",
+    "lede": "Trag Beginn, Ende und Pause ein – der Rechner zählt die Arbeitszeit, Überstunden und Dezimalstunden und macht daraus einen Stundenzettel.",
+    "primaryButton": "Stundenzettel speichern",
+    "keywords": [
+      "arbeitszeitrechner",
+      "arbeitszeit berechnen",
+      "stundenrechner",
+      "stundenzettel",
+      "überstunden berechnen",
+      "pausenregelung",
+      "industrieminuten",
+      "dezimalstunden",
+      "arbeitszeit mit pause"
+    ],
+    "steps": [
+      {
+        "title": "Tage wählen",
+        "text": "Nimm diese oder letzte Woche oder einen ganzen Monat – oder füge einzelne Tage hinzu. Urlaub, Krankheit und Feiertage stellst du pro Tag um."
+      },
+      {
+        "title": "Zeiten eintragen",
+        "text": "Beginn, Ende und Pause eintippen, etwa 7:30, 16:15 und 30. Arbeitszeit, Hinweise zum Arbeitszeitgesetz und die Summe erscheinen sofort."
+      },
+      {
+        "title": "Stundenzettel speichern",
+        "text": "Als PDF zum Unterschreiben oder als CSV für Tabellen. Soll, Überstunden und Dezimalstunden stehen gleich darunter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Pause nach Gesetz – richtig gerechnet",
+        "text": "Viele Rechner ziehen ab 6:01 Stunden pauschal 30 Minuten ab. Hier zählt die Mindestpause so, wie das Gesetz sie verlangt: Bei 6:20 Stunden Anwesenheit reichen 20 Minuten."
+      },
+      {
+        "title": "Nachtschicht kein Problem",
+        "text": "Endet die Schicht nach Mitternacht, wird automatisch über den Tageswechsel gerechnet. Zu kurze Ruhezeiten zwischen zwei Tagen werden angezeigt."
+      },
+      {
+        "title": "Dezimalstunden inklusive",
+        "text": "Jede Zeit auch als Dezimalwert für die Lohnabrechnung – plus Umrechner von h:mm in Dezimal und zurück."
+      },
+      {
+        "title": "Nichts wird hochgeladen",
+        "text": "Alle Zeiten bleiben im Browser. Merken auf dem Gerät nur, wenn du es einschaltest."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viel Pause ist gesetzlich vorgeschrieben?",
+        "a": "Nach § 4 Arbeitszeitgesetz mindestens 30 Minuten bei mehr als 6 Stunden Arbeit und 45 Minuten bei mehr als 9 Stunden. Die Pause darf in Abschnitte von mindestens 15 Minuten aufgeteilt werden."
+      },
+      {
+        "q": "Wie rechne ich Minuten in Dezimalstunden um?",
+        "a": "Minuten durch 60 teilen: 45 Minuten sind 0,75 Stunden, 7:45 Stunden also 7,75. Der Umrechner auf dieser Seite macht das in beide Richtungen."
+      },
+      {
+        "q": "Wie werden Urlaub und Krankheit gezählt?",
+        "a": "Stell den Tag auf Urlaub, Krank oder Feiertag. Er zählt dann mit deinem Tages-Soll, damit die Überstunden stimmen."
+      },
+      {
+        "q": "Wie lange darf ich am Tag arbeiten?",
+        "a": "In der Regel 8 Stunden. Bis zu 10 Stunden sind erlaubt, wenn du im Durchschnitt von 6 Monaten auf 8 Stunden pro Werktag kommst. Der Rechner weist darauf hin."
+      },
+      {
+        "q": "Ist der Stundenzettel als Arbeitszeitnachweis geeignet?",
+        "a": "Er enthält Datum, Beginn, Ende, Pausen und Summen sowie Platz für Unterschriften. Ob dein Arbeitgeber eine bestimmte Form verlangt, regelt dein Vertrag oder Betrieb."
+      },
+      {
+        "q": "Werden meine Zeiten gespeichert?",
+        "a": "Nur wenn du „Einträge auf diesem Gerät merken“ anhakst – dann im Browser dieses Geräts. Sonst sind sie beim Schließen weg."
+      }
+    ]
+  },
+  "en": {
+    "slug": "working-hours-calculator",
+    "name": "Working hours calculator",
+    "short": "Work out your hours with breaks – plus a timesheet as PDF.",
+    "title": "Working hours calculator with breaks & timesheet | FaleNetwork",
+    "h1": "Working hours calculator with timesheet",
+    "metaDescription": "Calculate working hours: start, end, break – across midnight too, with the legal minimum break, overtime and decimal hours. Timesheet as PDF or CSV.",
+    "lede": "Enter start, end and break – the calculator counts your working time, overtime and decimal hours and turns it into a timesheet.",
+    "primaryButton": "Save timesheet",
+    "keywords": [
+      "working hours calculator",
+      "time card calculator",
+      "timesheet",
+      "hours worked",
+      "overtime calculator",
+      "decimal hours",
+      "break calculator"
+    ],
+    "steps": [
+      {
+        "title": "Pick the days",
+        "text": "Take this or last week or a whole month – or add single days. Switch a day to vacation, sick or public holiday as needed."
+      },
+      {
+        "title": "Enter the times",
+        "text": "Type start, end and break, e.g. 7:30, 16:15 and 30. Working time, notes and the total appear right away."
+      },
+      {
+        "title": "Save the timesheet",
+        "text": "As a PDF to sign or as CSV for spreadsheets. Target, overtime and decimal hours are listed below."
+      }
+    ],
+    "why": [
+      {
+        "title": "Legal breaks, worked out properly",
+        "text": "Many calculators deduct a flat 30 minutes from 6:01 hours. Here the minimum break follows the German rule exactly: with 6:20 hours at work, 20 minutes are enough."
+      },
+      {
+        "title": "Night shifts handled",
+        "text": "If a shift ends after midnight, it is counted across the change of day. Too little rest between two days is flagged."
+      },
+      {
+        "title": "Decimal hours included",
+        "text": "Every time also as a decimal for payroll – plus a converter from h:mm to decimal and back."
+      },
+      {
+        "title": "Nothing is uploaded",
+        "text": "All times stay in your browser. They’re only remembered on the device if you switch that on."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much break is required?",
+        "a": "Under the German Working Hours Act at least 30 minutes for more than 6 hours of work and 45 minutes for more than 9 hours, in blocks of at least 15 minutes. Rules differ in other countries – untick the legal break option if they don’t apply to you."
+      },
+      {
+        "q": "How do I convert minutes to decimal hours?",
+        "a": "Divide the minutes by 60: 45 minutes are 0.75 hours, so 7:45 hours are 7.75. The converter on this page works both ways."
+      },
+      {
+        "q": "How are vacation and sick days counted?",
+        "a": "Switch the day to vacation, sick or public holiday. It then counts with your daily target, so the overtime adds up."
+      },
+      {
+        "q": "Can I use it for night shifts?",
+        "a": "Yes. If the end is earlier than the start, the shift is counted across midnight – 22:00 to 6:00 is 8 hours before breaks."
+      },
+      {
+        "q": "Are my times stored?",
+        "a": "Only if you tick “Remember the entries on this device” – then in this browser. Otherwise they’re gone when you close the page."
+      }
+    ]
+  }
+}

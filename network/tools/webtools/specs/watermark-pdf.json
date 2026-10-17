@@ -3,12 +3,25 @@
   "category": "edit",
   "icon": "watermark",
   "module": "tools/watermark-pdf.js",
-  "accepts": ["application/pdf", ".pdf"],
+  "accepts": [
+    "application/pdf",
+    ".pdf"
+  ],
   "multiple": false,
   "order": 42,
-  "related": ["add-page-numbers", "header-footer", "overlay-pdf"],
-  "next": ["compress-pdf"],
-  "needs": ["pdfjs", "pdflib", "unicodefont"],
+  "related": [
+    "add-page-numbers",
+    "header-footer",
+    "overlay-pdf"
+  ],
+  "next": [
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdfjs",
+    "pdflib",
+    "unicodefont"
+  ],
   "trademarkNote": false,
   "de": {
     "slug": "wasserzeichen-einfuegen",
@@ -19,24 +32,67 @@
     "metaDescription": "Setze „Vertraulich“, „Entwurf“ oder dein Logo als Wasserzeichen in die PDF: diagonal, gekachelt, halbtransparent, mit Live-Vorschau. Gratis und ohne Upload.",
     "lede": "Text oder Logo, diagonal oder gekachelt – die Vorschau zeigt jede Änderung sofort.",
     "primaryButton": "Wasserzeichen einfügen",
-    "keywords": ["stempel", "vertraulich", "entwurf", "logo einfügen", "kopierschutz", "muster"],
+    "keywords": [
+      "stempel",
+      "vertraulich",
+      "entwurf",
+      "logo einfügen",
+      "kopierschutz",
+      "muster"
+    ],
     "steps": [
-      {"title": "PDF auswählen", "text": "Wähle die PDF aus, die ein Wasserzeichen bekommen soll. Geschützte PDFs entsperrst du mit dem Passwort direkt an der Datei."},
-      {"title": "Text oder Bild gestalten", "text": "Schreib einen Text wie „ENTWURF“ oder wähle ein Logo. Stell Deckkraft, Größe und Drehung ein und tippe in der Vorschau auf die Stelle – oder verteile es gekachelt über die Seite."},
-      {"title": "Einfügen und speichern", "text": "Tippe auf „Wasserzeichen einfügen“ und lade die neue PDF herunter oder teile sie direkt."}
+      {
+        "title": "PDF auswählen",
+        "text": "Wähle die PDF aus, die ein Wasserzeichen bekommen soll. Geschützte PDFs entsperrst du mit dem Passwort direkt an der Datei."
+      },
+      {
+        "title": "Text oder Bild gestalten",
+        "text": "Schreib einen Text wie „ENTWURF“ oder wähle ein Logo. Stell Deckkraft, Größe und Drehung ein und tippe in der Vorschau auf die Stelle – oder verteile es gekachelt über die Seite."
+      },
+      {
+        "title": "Einfügen und speichern",
+        "text": "Tippe auf „Wasserzeichen einfügen“ und lade die neue PDF herunter oder teile sie direkt."
+      }
     ],
     "why": [
-      {"title": "Echte Diagonale", "text": "„Diagonal“ läuft auf jeder Seite genau von Ecke zu Ecke – auch bei Querformat und gemischten Seitengrößen."},
-      {"title": "Logos mit Transparenz", "text": "Ein PNG-Logo mit durchsichtigem Hintergrund bleibt durchsichtig. Dazu regelst du die Deckkraft frei zwischen 5 und 100 %."},
-      {"title": "Über oder unter dem Text", "text": "Über dem Inhalt ist das Wasserzeichen immer sichtbar. Darunter bleibt der Text besser lesbar – ideal für digitale Dokumente ohne Hintergrund."},
-      {"title": "Nur bestimmte Seiten", "text": "Wasserzeichen auf alle Seiten, nur gerade oder ungerade oder einen Bereich wie „2-5“. Der Text der PDF bleibt dabei durchsuchbar."}
+      {
+        "title": "Echte Diagonale",
+        "text": "„Diagonal“ läuft auf jeder Seite genau von Ecke zu Ecke – auch bei Querformat und gemischten Seitengrößen."
+      },
+      {
+        "title": "Logos mit Transparenz",
+        "text": "Ein PNG-Logo mit durchsichtigem Hintergrund bleibt durchsichtig. Dazu regelst du die Deckkraft frei zwischen 5 und 100 %."
+      },
+      {
+        "title": "Über oder unter dem Text",
+        "text": "Über dem Inhalt ist das Wasserzeichen immer sichtbar. Darunter bleibt der Text besser lesbar – ideal für digitale Dokumente ohne Hintergrund."
+      },
+      {
+        "title": "Nur bestimmte Seiten",
+        "text": "Wasserzeichen auf alle Seiten, nur gerade oder ungerade oder einen Bereich wie „2-5“. Der Text der PDF bleibt dabei durchsuchbar."
+      }
     ],
     "faq": [
-      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. PDF und Logo bleiben auf deinem Gerät, alles passiert in deinem Browser. Nach dem Laden der Seite funktioniert das Werkzeug sogar ohne Internet."},
-      {"q": "Kann man das Wasserzeichen wieder entfernen?", "a": "Es wird fest in den Seiteninhalt geschrieben, nicht als Kommentar. Mit einem PDF-Bearbeitungsprogramm lässt es sich trotzdem entfernen – ein Wasserzeichen kennzeichnet ein Dokument, es ist kein Kopierschutz."},
-      {"q": "Warum sehe ich das Wasserzeichen „unter dem Inhalt“ nicht?", "a": "Unter dem Inhalt ist es nur dort sichtbar, wo die Seite durchsichtig ist. Gescannte Seiten und Seiten mit weißem Hintergrund verdecken es. Wähle dann „Über dem Inhalt“ und eine niedrige Deckkraft."},
-      {"q": "Welche Bilder kann ich verwenden?", "a": "PNG, JPG, WebP, GIF und AVIF. Transparenz aus PNG und WebP bleibt erhalten. Das Bild wird in voller Auflösung eingebettet."},
-      {"q": "Welche Zeichen gehen im Text?", "a": "Die eingebauten PDF-Schriften decken westeuropäische Zeichen ab, also auch Umlaute und ß. Andere Zeichen werden ersetzt – das Werkzeug zeigt dir in der Vorschau, welche."}
+      {
+        "q": "Werden meine Dateien hochgeladen?",
+        "a": "Nein. PDF und Logo bleiben auf deinem Gerät, alles passiert in deinem Browser. Nach dem Laden der Seite funktioniert das Werkzeug sogar ohne Internet."
+      },
+      {
+        "q": "Kann man das Wasserzeichen wieder entfernen?",
+        "a": "Es wird fest in den Seiteninhalt geschrieben, nicht als Kommentar. Mit einem PDF-Bearbeitungsprogramm lässt es sich trotzdem entfernen – ein Wasserzeichen kennzeichnet ein Dokument, es ist kein Kopierschutz."
+      },
+      {
+        "q": "Warum sehe ich das Wasserzeichen „unter dem Inhalt“ nicht?",
+        "a": "Unter dem Inhalt ist es nur dort sichtbar, wo die Seite durchsichtig ist. Gescannte Seiten und Seiten mit weißem Hintergrund verdecken es. Wähle dann „Über dem Inhalt“ und eine niedrige Deckkraft."
+      },
+      {
+        "q": "Welche Bilder kann ich verwenden?",
+        "a": "PNG, JPG, WebP, GIF und AVIF. Transparenz aus PNG und WebP bleibt erhalten. Das Bild wird in voller Auflösung eingebettet."
+      },
+      {
+        "q": "Welche Zeichen gehen im Text?",
+        "a": "Die eingebauten PDF-Schriften decken westeuropäische Zeichen ab, also auch Umlaute und ß. Andere Zeichen werden ersetzt – das Werkzeug zeigt dir in der Vorschau, welche."
+      }
     ]
   },
   "en": {
@@ -48,24 +104,74 @@
     "metaDescription": "Stamp “Confidential”, “Draft” or your logo onto a PDF: diagonal, tiled, semi-transparent, with a live preview. Free, no account – it runs in your browser.",
     "lede": "Text or logo, diagonal or tiled – the preview shows every change right away.",
     "primaryButton": "Add watermark",
-    "keywords": ["stamp", "confidential", "draft", "add logo", "mark pdf", "sample"],
+    "keywords": [
+      "stamp",
+      "confidential",
+      "draft",
+      "add logo",
+      "mark pdf",
+      "sample"
+    ],
     "steps": [
-      {"title": "Choose your PDF", "text": "Select the PDF that should get a watermark. Protected PDFs are unlocked with their password right on the file."},
-      {"title": "Design text or image", "text": "Type a text such as “DRAFT” or choose a logo. Set opacity, size and rotation and tap a spot in the preview – or repeat it tiled across the page."},
-      {"title": "Add and save", "text": "Tap “Add watermark” and download or share the new PDF."}
+      {
+        "title": "Choose your PDF",
+        "text": "Select the PDF that should get a watermark. Protected PDFs are unlocked with their password right on the file."
+      },
+      {
+        "title": "Design text or image",
+        "text": "Type a text such as “DRAFT” or choose a logo. Set opacity, size and rotation and tap a spot in the preview – or repeat it tiled across the page."
+      },
+      {
+        "title": "Add and save",
+        "text": "Tap “Add watermark” and download or share the new PDF."
+      }
     ],
     "why": [
-      {"title": "A real diagonal", "text": "“Diagonal” runs exactly from corner to corner on every page – landscape pages and mixed page sizes included."},
-      {"title": "Logos with transparency", "text": "A PNG logo with a transparent background stays transparent. On top you set the opacity anywhere from 5 to 100 %."},
-      {"title": "Above or below the text", "text": "Above the content the watermark is always visible. Below it, the text stays easier to read – ideal for digital documents without a background."},
-      {"title": "Only certain pages", "text": "Watermark all pages, only odd or even ones, or a range such as “2-5”. The PDF's text stays searchable."}
+      {
+        "title": "A real diagonal",
+        "text": "“Diagonal” runs exactly from corner to corner on every page – landscape pages and mixed page sizes included."
+      },
+      {
+        "title": "Logos with transparency",
+        "text": "A PNG logo with a transparent background stays transparent. On top you set the opacity anywhere from 5 to 100 %."
+      },
+      {
+        "title": "Above or below the text",
+        "text": "Above the content the watermark is always visible. Below it, the text stays easier to read – ideal for digital documents without a background."
+      },
+      {
+        "title": "Only certain pages",
+        "text": "Watermark all pages, only odd or even ones, or a range such as “2-5”. The PDF's text stays searchable."
+      }
     ],
     "faq": [
-      {"q": "Are my files uploaded?", "a": "No. The PDF and the logo stay on your device; everything happens in your browser. Once the page has loaded, the tool even works offline."},
-      {"q": "Can the watermark be removed?", "a": "It is written into the page content, not added as a comment. A PDF editing program can still remove it – a watermark labels a document, it is not copy protection."},
-      {"q": "Why can't I see the watermark “below the content”?", "a": "Below the content it only shows where the page is transparent. Scanned pages and pages with a white background cover it. In that case choose “Above the content” with a low opacity."},
-      {"q": "Which images can I use?", "a": "PNG, JPG, WebP, GIF and AVIF. Transparency in PNG and WebP is kept. The image is embedded at full resolution."},
-      {"q": "Which characters work in the text?", "a": "The built-in PDF fonts cover Western European characters. Other characters are replaced – the preview tells you which ones."}
+      {
+        "q": "Are my files uploaded?",
+        "a": "No. The PDF and the logo stay on your device; everything happens in your browser. Once the page has loaded, the tool even works offline."
+      },
+      {
+        "q": "Can the watermark be removed?",
+        "a": "It is written into the page content, not added as a comment. A PDF editing program can still remove it – a watermark labels a document, it is not copy protection."
+      },
+      {
+        "q": "Why can't I see the watermark “below the content”?",
+        "a": "Below the content it only shows where the page is transparent. Scanned pages and pages with a white background cover it. In that case choose “Above the content” with a low opacity."
+      },
+      {
+        "q": "Which images can I use?",
+        "a": "PNG, JPG, WebP, GIF and AVIF. Transparency in PNG and WebP is kept. The image is embedded at full resolution."
+      },
+      {
+        "q": "Which characters work in the text?",
+        "a": "The built-in PDF fonts cover Western European characters. Other characters are replaced – the preview tells you which ones."
+      }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "watermark-image",
+      "de": "Du willst Fotos (JPG, PNG) markieren, keine PDF?",
+      "en": "Want to mark photos (JPG, PNG), not a PDF?"
+    }
+  ]
 }

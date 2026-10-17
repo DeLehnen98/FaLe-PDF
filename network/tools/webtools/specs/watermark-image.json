@@ -1,0 +1,193 @@
+{
+  "id": "watermark-image",
+  "category": "images",
+  "icon": "watermark",
+  "module": "tools/watermark-image.js",
+  "accepts": [
+    "image/*",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".avif",
+    ".gif",
+    ".bmp",
+    ".heic",
+    ".heif"
+  ],
+  "multiple": true,
+  "minFiles": 1,
+  "order": 45,
+  "related": [
+    "remove-exif",
+    "compress-image",
+    "resize-image",
+    "watermark-pdf",
+    "id-copy"
+  ],
+  "next": [
+    "compress-image",
+    "jpg-to-pdf"
+  ],
+  "needs": [],
+  "alt": [
+    {
+      "id": "watermark-pdf",
+      "de": "Du willst eine PDF mit Wasserzeichen versehen?",
+      "en": "Want to watermark a PDF?"
+    },
+    {
+      "id": "id-copy",
+      "de": "Es geht um eine Ausweiskopie? Dort gibt es den Vermerk „Kopie für …“.",
+      "en": "It’s an ID copy? That tool adds a “Copy for …” note."
+    }
+  ],
+  "de": {
+    "slug": "bild-wasserzeichen",
+    "name": "Wasserzeichen ins Bild",
+    "short": "Text als Wasserzeichen auf Fotos – einzeln oder viele auf einmal.",
+    "title": "Wasserzeichen in Bild einfügen – gratis, ohne App | FaleNetwork",
+    "h1": "Wasserzeichen in Fotos einfügen",
+    "metaDescription": "Fotos mit Wasserzeichen schützen: Name oder Website in die Ecke oder über das ganze Bild, viele Fotos auf einmal. Ohne App, ohne Upload, ohne fremdes Logo.",
+    "lede": "Wähle Fotos, gib deinen Text ein – das Wasserzeichen sitzt auf jedem Bild an derselben Stelle und in passender Größe.",
+    "pickLabel": "Fotos auswählen",
+    "primaryButton": "Wasserzeichen einfügen",
+    "keywords": [
+      "wasserzeichen bild",
+      "wasserzeichen foto",
+      "wasserzeichen einfügen",
+      "bild schützen",
+      "copyright foto",
+      "fotos markieren",
+      "wasserzeichen kostenlos",
+      "kleinanzeigen fotos schützen"
+    ],
+    "steps": [
+      {
+        "title": "Fotos auswählen",
+        "text": "Wähle ein oder viele Fotos – JPG, PNG, WebP oder vom iPhone. Alle bekommen dasselbe Wasserzeichen."
+      },
+      {
+        "title": "Text und Look wählen",
+        "text": "Gib deinen Namen oder deine Website ein, wähle Ecke oder „über das ganze Bild“, Größe, Farbe und Deckkraft. Die Vorschau zeigt sofort das Ergebnis."
+      },
+      {
+        "title": "Speichern",
+        "text": "Tippe auf „Wasserzeichen einfügen“. Mehrere Fotos lädst du gesammelt herunter oder teilst sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein fremdes Logo",
+        "text": "Viele Gratis-Apps setzen ihr eigenes Logo dazu oder verlangen ein Abo für den Export. Hier steht nur dein Text auf dem Bild."
+      },
+      {
+        "title": "Gleich auf jedem Foto",
+        "text": "Die Größe richtet sich nach der kürzeren Bildseite. Hoch- und Querformat, groß und klein – das Wasserzeichen wirkt überall gleich."
+      },
+      {
+        "title": "Schwer zu entfernen",
+        "text": "Über das ganze Bild verteilt lässt sich das Wasserzeichen nicht einfach wegschneiden. Eine kleinere Kopie fürs Internet schützt zusätzlich."
+      },
+      {
+        "title": "Fotos bleiben bei dir",
+        "text": "Alles läuft im Browser. Standort und Kameradaten werden beim Speichern entfernt."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Kann ich mehrere Fotos auf einmal markieren?",
+        "a": "Ja. Wähle so viele Fotos, wie du willst – alle bekommen dasselbe Wasserzeichen in passender Größe."
+      },
+      {
+        "q": "Wo platziere ich das Wasserzeichen am besten?",
+        "a": "Für Verkaufsanzeigen und Portfolios eignet sich „über das ganze Bild“ mit geringer Deckkraft – das lässt sich nicht wegschneiden. Für Fotos, die schön aussehen sollen, reicht eine Ecke."
+      },
+      {
+        "q": "Verliert das Foto an Qualität?",
+        "a": "Das Foto wird mit hoher Qualität neu gespeichert, ein Unterschied ist praktisch nicht zu sehen. PNG bleibt verlustfrei."
+      },
+      {
+        "q": "Werden meine Fotos hochgeladen?",
+        "a": "Nein. Das Wasserzeichen wird in deinem Browser eingefügt, die Fotos verlassen dein Gerät nicht."
+      },
+      {
+        "q": "Kann ich auch eine PDF oder eine Ausweiskopie markieren?",
+        "a": "Für PDFs gibt es das PDF-Werkzeug „Wasserzeichen einfügen“. Für Ausweiskopien nimm „Ausweis kopieren“ – dort steht auf Wunsch, für wen die Kopie ist."
+      }
+    ]
+  },
+  "en": {
+    "slug": "watermark-image",
+    "name": "Watermark photos",
+    "short": "Text watermark on photos – one or many at once.",
+    "title": "Add a watermark to photos – free, no app | FaleNetwork",
+    "h1": "Add a watermark to photos",
+    "metaDescription": "Protect your photos with a watermark: name or website in a corner or across the whole picture, many photos at once. No app, no upload, no third-party logo.",
+    "lede": "Pick photos, type your text – the watermark sits in the same place and at a fitting size on every picture.",
+    "pickLabel": "Choose photos",
+    "primaryButton": "Add watermark",
+    "keywords": [
+      "watermark photo",
+      "add watermark to image",
+      "batch watermark",
+      "copyright photo",
+      "protect photos",
+      "free watermark"
+    ],
+    "steps": [
+      {
+        "title": "Choose photos",
+        "text": "Pick one or many photos – JPG, PNG, WebP or from an iPhone. They all get the same watermark."
+      },
+      {
+        "title": "Set text and look",
+        "text": "Type your name or website, choose a corner or “all over the photo”, size, colour and opacity. The preview updates right away."
+      },
+      {
+        "title": "Save",
+        "text": "Tap “Add watermark”. Download several photos together or share them directly."
+      }
+    ],
+    "why": [
+      {
+        "title": "No third-party logo",
+        "text": "Many free apps add their own logo or want a subscription to export. Here only your text goes on the picture."
+      },
+      {
+        "title": "Same on every photo",
+        "text": "The size follows the shorter side. Portrait or landscape, large or small – the watermark looks the same everywhere."
+      },
+      {
+        "title": "Hard to remove",
+        "text": "Spread across the whole photo, the watermark can’t just be cropped away. A smaller copy for the web protects even more."
+      },
+      {
+        "title": "Photos stay with you",
+        "text": "Everything runs in your browser. Location and camera data are removed when saving."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I watermark several photos at once?",
+        "a": "Yes. Pick as many photos as you like – they all get the same watermark at a fitting size."
+      },
+      {
+        "q": "Where should the watermark go?",
+        "a": "For listings and portfolios, “all over the photo” at low opacity works best – it can’t be cropped away. For photos that should look nice, a corner is enough."
+      },
+      {
+        "q": "Does the photo lose quality?",
+        "a": "It is re-saved at high quality; you practically can’t see a difference. PNG stays lossless."
+      },
+      {
+        "q": "Are my photos uploaded?",
+        "a": "No. The watermark is added in your browser; the photos never leave your device."
+      },
+      {
+        "q": "Can I watermark a PDF or an ID copy?",
+        "a": "For PDFs use “Watermark PDF”. For ID copies use “Copy ID card” – it can note who the copy is for."
+      }
+    ]
+  }
+}

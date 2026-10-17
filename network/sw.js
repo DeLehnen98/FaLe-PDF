@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '1bb0b2b70cf1';
+const VERSION = '48e42ff0aa39';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -118,6 +118,7 @@ const PRECACHE = [
   "/assets/wt/lib/unifont.js",
   "/assets/wt/lib/vec-trace.js",
   "/assets/wt/lib/vec-worker.js",
+  "/assets/wt/lib/worktime.js",
   "/assets/wt/shell.js",
   "/assets/wt/vl.css",
   "/assets/wt/vl.js",

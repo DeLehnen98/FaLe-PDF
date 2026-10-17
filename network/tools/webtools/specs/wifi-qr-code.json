@@ -1,0 +1,163 @@
+{
+  "id": "wifi-qr-code",
+  "category": "everyday",
+  "icon": "wifi",
+  "module": "tools/wifi-qr-code.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 62,
+  "related": [
+    "qr-code",
+    "qr-scanner",
+    "password-generator",
+    "girocode"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib"
+  ],
+  "alt": [
+    {
+      "id": "qr-code",
+      "de": "Du brauchst einen QR-Code für einen Link, Kontakt oder Text?",
+      "en": "Need a QR code for a link, contact or text?"
+    }
+  ],
+  "de": {
+    "slug": "wlan-qr-code",
+    "name": "WLAN-QR-Code",
+    "short": "Gäste scannen und sind im WLAN – mit Karte zum Ausdrucken.",
+    "title": "WLAN-QR-Code erstellen – Gäste-Karte zum Ausdrucken | FaleNetwork",
+    "h1": "WLAN-QR-Code erstellen",
+    "metaDescription": "WLAN-QR-Code für Gäste, Ferienwohnung oder Büro: scannen statt Passwort abtippen. Mit druckfertiger Karte (A6 oder 4 auf A4). Gratis, ohne Upload.",
+    "lede": "Netzwerkname und Passwort eintragen – daraus wird ein QR-Code und auf Wunsch eine Karte zum Aufstellen.",
+    "primaryButton": "Speichern",
+    "keywords": [
+      "wlan qr code",
+      "wifi qr code",
+      "wlan passwort qr",
+      "gäste wlan karte",
+      "qr code wlan ausdrucken",
+      "wlan zugang teilen",
+      "ferienwohnung wlan"
+    ],
+    "steps": [
+      {
+        "title": "WLAN eintragen",
+        "text": "Gib den Netzwerknamen (SSID) genau so ein, wie er im Handy erscheint, dazu das Passwort und die Verschlüsselung – meist WPA."
+      },
+      {
+        "title": "Karte oder Bild wählen",
+        "text": "Die Karte (PDF) enthält Code, Netzwerkname und Passwort zum Ausdrucken – einzeln in A6 oder vier Stück auf A4. Als PNG schickst du den Code per Messenger."
+      },
+      {
+        "title": "Speichern und testen",
+        "text": "Speichere die Datei und scanne den Code einmal mit dem Handy, bevor du die Karte aufstellst."
+      }
+    ],
+    "why": [
+      {
+        "title": "Karte mit Klartext",
+        "text": "Laptop, Fernseher oder Konsole können oft nicht scannen. Deshalb stehen Netzwerkname und Passwort auf der Karte auch lesbar – in einer Schrift, in der man l, 1, O und 0 unterscheiden kann."
+      },
+      {
+        "title": "Sonderzeichen sicher",
+        "text": "Zeichen wie ; , : oder Anführungszeichen im Netzwerknamen oder Passwort brechen bei manchen Generatoren den Code. FaLe maskiert sie korrekt und liest jeden Code zur Kontrolle wieder aus."
+      },
+      {
+        "title": "Dein Passwort bleibt bei dir",
+        "text": "Der Code entsteht im Browser. Netzwerkname und Passwort werden nicht übertragen und nicht gespeichert."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Funktioniert der WLAN-QR-Code mit iPhone und Android?",
+        "a": "Ja. Aktuelle iPhones und Android-Handys erkennen WLAN-Codes direkt in der Kamera-App und bieten an, sich zu verbinden."
+      },
+      {
+        "q": "Was mache ich, wenn das Verbinden nicht klappt?",
+        "a": "Meist stimmt der Netzwerkname nicht genau – Groß- und Kleinschreibung und Leerzeichen zählen. Prüfe auch die Verschlüsselung: Für WPA2 und WPA3 wählst du „WPA“."
+      },
+      {
+        "q": "Ändert sich der Code, wenn ich das Passwort ändere?",
+        "a": "Ja. Das Passwort steht im Code selbst. Nach einer Änderung erstellst du einfach eine neue Karte."
+      },
+      {
+        "q": "Ist es sicher, das Passwort als QR-Code aufzuhängen?",
+        "a": "Jeder, der den Code scannt, kann das Passwort lesen. Häng ihn deshalb nur dort auf, wo du das Passwort auch so verraten würdest – ideal ist ein eigenes Gastnetz deines Routers."
+      },
+      {
+        "q": "Was ist ein verstecktes Netzwerk?",
+        "a": "Ein WLAN, dessen Name nicht in der Liste erscheint. Setz den Haken nur, wenn dein Router den Namen wirklich verbirgt – sonst kann das Verbinden länger dauern."
+      }
+    ]
+  },
+  "en": {
+    "slug": "wifi-qr-code",
+    "name": "Wi-Fi QR code",
+    "short": "Guests scan and they’re online – with a card to print.",
+    "title": "Wi-Fi QR code generator – printable guest card | FaleNetwork",
+    "h1": "Create a Wi-Fi QR code",
+    "metaDescription": "Wi-Fi QR code for guests, holiday lets or the office: scan instead of typing the password. With a print-ready card (A6 or 4 on A4). Free, no upload.",
+    "lede": "Enter the network name and password – you get a QR code and, if you like, a card to put out.",
+    "primaryButton": "Save",
+    "keywords": [
+      "wifi qr code",
+      "wifi password qr",
+      "guest wifi card",
+      "print wifi qr",
+      "share wifi",
+      "holiday let wifi"
+    ],
+    "steps": [
+      {
+        "title": "Enter your Wi-Fi",
+        "text": "Type the network name (SSID) exactly as it appears on your phone, plus the password and the security – usually WPA."
+      },
+      {
+        "title": "Pick card or image",
+        "text": "The card (PDF) has the code, network name and password for printing – one A6 card or four on A4. As a PNG you can send the code by messenger."
+      },
+      {
+        "title": "Save and test",
+        "text": "Save the file and scan the code once with your phone before you put the card out."
+      }
+    ],
+    "why": [
+      {
+        "title": "Card with plain text",
+        "text": "Laptops, TVs and consoles often can’t scan. So the card also shows the network name and password readably – in a typeface where l, 1, O and 0 look different."
+      },
+      {
+        "title": "Special characters handled",
+        "text": "Characters like ; , : or quotes in the network name or password break the code in some generators. FaLe escapes them correctly and reads every code back to check it."
+      },
+      {
+        "title": "Your password stays with you",
+        "text": "The code is made in your browser. Network name and password are neither sent anywhere nor stored."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does the Wi-Fi QR code work on iPhone and Android?",
+        "a": "Yes. Current iPhones and Android phones recognise Wi-Fi codes right in the camera app and offer to connect."
+      },
+      {
+        "q": "What if connecting doesn’t work?",
+        "a": "Usually the network name isn’t exact – upper and lower case and spaces count. Also check the security: for WPA2 and WPA3 choose “WPA”."
+      },
+      {
+        "q": "Does the code change when I change the password?",
+        "a": "Yes. The password is inside the code. After a change, simply make a new card."
+      },
+      {
+        "q": "Is it safe to put the password up as a QR code?",
+        "a": "Anyone who scans the code can read the password. Only put it where you’d tell people the password anyway – a separate guest network on your router is ideal."
+      },
+      {
+        "q": "What is a hidden network?",
+        "a": "A Wi-Fi whose name doesn’t show up in the list. Only tick the box if your router really hides the name – otherwise connecting can take longer."
+      }
+    ]
+  }
+}
