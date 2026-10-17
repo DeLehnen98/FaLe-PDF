@@ -1,0 +1,193 @@
+{
+  "id": "read-e-invoice",
+  "category": "everyday",
+  "icon": "receipt",
+  "module": "tools/read-e-invoice.js",
+  "accepts": [
+    "application/xml",
+    "text/xml",
+    ".xml",
+    "application/pdf",
+    ".pdf"
+  ],
+  "multiple": false,
+  "popular": true,
+  "order": 62,
+  "related": [
+    "invoice-generator",
+    "payment-reminder",
+    "merge-pdf",
+    "qr-code"
+  ],
+  "next": [],
+  "needs": [
+    "pdfjs",
+    "pdflib",
+    "unicodefont"
+  ],
+  "trademarkNote": false,
+  "de": {
+    "slug": "e-rechnung-lesen",
+    "name": "E-Rechnung lesen",
+    "short": "XRechnung und ZUGFeRD öffnen, prüfen und als PDF speichern.",
+    "title": "E-Rechnung lesen – XRechnung & ZUGFeRD gratis | FaleNetwork",
+    "h1": "E-Rechnung lesen",
+    "metaDescription": "XRechnung oder ZUGFeRD öffnen: Betrag, Fälligkeit und IBAN auf einen Blick, Summen geprüft, als lesbare PDF mit Überweisungs-QR. Gratis, ohne Upload.",
+    "lede": "XRechnung (.xml) oder ZUGFeRD-PDF auswählen – du siehst sofort, wer wie viel bis wann haben will.",
+    "pickLabel": "E-Rechnung auswählen",
+    "primaryButton": "Als PDF speichern",
+    "keywords": [
+      "xrechnung",
+      "zugferd",
+      "factur-x",
+      "e-rechnung öffnen",
+      "xml rechnung",
+      "elektronische rechnung",
+      "rechnung anzeigen",
+      "en 16931",
+      "ubl",
+      "cii",
+      "leitweg-id"
+    ],
+    "steps": [
+      {
+        "title": "E-Rechnung auswählen",
+        "text": "Wähle die XML-Datei einer XRechnung oder eine PDF im Format ZUGFeRD bzw. Factur-X – so, wie du sie per E-Mail bekommen hast."
+      },
+      {
+        "title": "Auf einen Blick sehen",
+        "text": "Betrag, Fälligkeit, IBAN und Verwendungszweck stehen oben – zum Kopieren oder als Überweisungs-QR für die Banking-App. Darunter die Prüfung der Summen und alle Positionen."
+      },
+      {
+        "title": "Als PDF speichern",
+        "text": "Tippe auf „Als PDF speichern“: Du bekommst eine gut lesbare Rechnung zum Ablegen oder Ausdrucken – und Anhänge, die in der E-Rechnung stecken."
+      }
+    ],
+    "why": [
+      {
+        "title": "Beide Formate",
+        "text": "XRechnung in beiden Schreibweisen (UBL und CII) sowie ZUGFeRD 2 und Factur-X – die XML wird direkt aus der PDF gelesen."
+      },
+      {
+        "title": "Summen geprüft",
+        "text": "Das Werkzeug rechnet nach: Ergeben die Positionen die Nettosumme, stimmt die Umsatzsteuer, passt der Zahlbetrag, ist die IBAN gültig? Auffälligkeiten stehen in Klartext da."
+      },
+      {
+        "title": "Bezahlen mit einem Scan",
+        "text": "Bei Überweisungen in Euro gibt es einen GiroCode: in der Banking-App scannen, Betrag, IBAN und Verwendungszweck sind schon eingetragen. Bei Lastschrift steht dabei, dass du nichts überweisen musst."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Die Rechnung wird im Browser gelesen und nicht hochgeladen – wichtig bei Namen, Beträgen und Bankdaten."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was ist eine E-Rechnung?",
+        "a": "Eine Rechnung als strukturierte Daten (XML), die Programme direkt verarbeiten können. In Deutschland müssen alle Unternehmen seit 2025 E-Rechnungen empfangen können. Die üblichen Formate sind XRechnung und ZUGFeRD."
+      },
+      {
+        "q": "Warum kann ich meine XRechnung nicht einfach öffnen?",
+        "a": "Eine XRechnung ist eine reine XML-Datei ohne Layout – im Browser oder Texteditor sieht man nur Code. Dieses Werkzeug macht daraus eine normale, lesbare Rechnung."
+      },
+      {
+        "q": "Ist die PDF rechtlich die Rechnung?",
+        "a": "Nein. Maßgeblich ist die XML-Datei der E-Rechnung – bewahre sie auf. Die PDF ist eine lesbare Darstellung zum Ansehen, Prüfen und Ablegen."
+      },
+      {
+        "q": "Meine PDF-Rechnung wird nicht erkannt.",
+        "a": "Dann steckt in der PDF keine XML – es ist eine gewöhnliche PDF-Rechnung, die du direkt öffnen kannst. Das Werkzeug sagt dir das ausdrücklich."
+      },
+      {
+        "q": "Was wird geprüft – und was nicht?",
+        "a": "Geprüft werden Summen, Umsatzsteuer, Zahlbetrag, die IBAN-Prüfziffer und ob Rechnungsnummer, Datum und Steuernummer angegeben sind. Ob die Leistung erbracht wurde und der Absender echt ist, kannst nur du beurteilen."
+      },
+      {
+        "q": "Werden ältere ZUGFeRD-1-Rechnungen unterstützt?",
+        "a": "Nein, nur ZUGFeRD 2, Factur-X und XRechnung. Bei einer ZUGFeRD-1-Rechnung bekommst du einen klaren Hinweis."
+      }
+    ]
+  },
+  "en": {
+    "slug": "read-e-invoice",
+    "name": "Read e-invoice",
+    "short": "Open, check and save XRechnung and ZUGFeRD as PDF.",
+    "title": "Read e-invoices – XRechnung & ZUGFeRD free | FaleNetwork",
+    "h1": "Read e-invoice",
+    "metaDescription": "Open XRechnung or ZUGFeRD e-invoices: amount, due date and IBAN at a glance, sums checked, saved as a readable PDF with a payment QR. Free, no upload.",
+    "lede": "Choose an XRechnung (.xml) or a ZUGFeRD PDF – you see right away who wants how much by when.",
+    "pickLabel": "Choose e-invoice",
+    "primaryButton": "Save as PDF",
+    "keywords": [
+      "xrechnung",
+      "zugferd",
+      "factur-x",
+      "open e-invoice",
+      "xml invoice",
+      "electronic invoice",
+      "view invoice",
+      "en 16931",
+      "ubl",
+      "cii",
+      "peppol"
+    ],
+    "steps": [
+      {
+        "title": "Choose the e-invoice",
+        "text": "Choose the XML file of an XRechnung or a PDF in ZUGFeRD or Factur-X format – just as you received it by email."
+      },
+      {
+        "title": "See it at a glance",
+        "text": "Amount, due date, IBAN and payment reference are at the top – to copy or as a payment QR for your banking app. Below are the check of the sums and all line items."
+      },
+      {
+        "title": "Save as PDF",
+        "text": "Tap “Save as PDF”: you get an easy-to-read invoice to file or print – plus any attachments embedded in the e-invoice."
+      }
+    ],
+    "why": [
+      {
+        "title": "Both formats",
+        "text": "XRechnung in both syntaxes (UBL and CII) as well as ZUGFeRD 2 and Factur-X – the XML is read straight from the PDF."
+      },
+      {
+        "title": "Sums checked",
+        "text": "The tool recalculates: do the line items add up to the net total, is the VAT right, does the amount due match, is the IBAN valid? Issues are explained in plain words."
+      },
+      {
+        "title": "Pay with one scan",
+        "text": "For transfers in euros you get an EPC QR code: scan it in your banking app and amount, IBAN and reference are filled in. For direct debit it says you do not need to transfer anything."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "The invoice is read in your browser and never uploaded – important with names, amounts and bank details."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is an e-invoice?",
+        "a": "An invoice as structured data (XML) that software can process directly. In Germany all businesses must be able to receive e-invoices since 2025. The common formats are XRechnung and ZUGFeRD."
+      },
+      {
+        "q": "Why can’t I just open my XRechnung?",
+        "a": "An XRechnung is a pure XML file without layout – a browser or text editor only shows code. This tool turns it into a normal, readable invoice."
+      },
+      {
+        "q": "Is the PDF the legal invoice?",
+        "a": "No. The XML file of the e-invoice is what counts – keep it. The PDF is a readable view for checking and filing."
+      },
+      {
+        "q": "My PDF invoice is not recognised.",
+        "a": "Then the PDF contains no XML – it is an ordinary PDF invoice you can open directly. The tool tells you so."
+      },
+      {
+        "q": "What is checked – and what isn’t?",
+        "a": "Sums, VAT, the amount due, the IBAN check digit and whether invoice number, date and tax number are given. Whether the service was delivered and the sender is genuine only you can judge."
+      },
+      {
+        "q": "Are older ZUGFeRD 1 invoices supported?",
+        "a": "No, only ZUGFeRD 2, Factur-X and XRechnung. With a ZUGFeRD 1 invoice you get a clear message."
+      }
+    ]
+  }
+}

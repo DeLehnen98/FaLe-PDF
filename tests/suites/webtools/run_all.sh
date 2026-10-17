@@ -19,6 +19,9 @@ ls fixtures/edit_* >/dev/null 2>&1 || python3 edit_make_fixtures.py
 [ -f fixtures/new_note_side.jpg ] || python3 new_make_fixtures.py
 [ -f fixtures/aud2/hard_form.pdf ] || python3 aud2_make_fixtures.py
 [ -f fixtures/bg/bg_mug.jpg ] || python3 bg_make_fixtures.py
+[ -f fixtures/einv/zugferd.pdf ] || node einv_make_fixtures.mjs
+# hand-made inputs without a generator (synthetic, committed in fixtures_static/)
+cp -r --update=none fixtures_static/. fixtures/
 rm -rf out && mkdir -p out shots
 node server.mjs 8710 > out/server.log 2>&1 &
 SERVER=$!

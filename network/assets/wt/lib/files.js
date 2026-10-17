@@ -1,7 +1,7 @@
 // Input files: a wrapper around File with lazy, cached helpers for tool modules.
 //
 //   input.kind        'pdf' | 'image' | 'other'
-//   input.format      'pdf' | 'jpeg' | 'png' | 'webp' | 'gif' | 'bmp' | 'avif' | 'heic' | 'tiff' | 'svg' | ''
+//   input.format      'pdf' | 'jpeg' | 'png' | 'webp' | 'gif' | 'bmp' | 'avif' | 'heic' | 'tiff' | 'svg' | 'xml' | ''
 //   input.bytes()     Promise<Uint8Array>            (read once, cached)
 //   input.pdfjs()     Promise<PDFDocumentProxy>       (pdf.js, uses input.password)
 //   input.pageCount() Promise<number>
@@ -38,7 +38,11 @@ export function sniff(head, name = '', mime = '') {
     if (/avif|avis/.test(brands)) return 'avif';
     if (/heic|heix|hevc|heim|heis|hevm|hevs|mif1|msf1/.test(brands)) return 'heic';
   }
-  if (/^\s*(<\?xml|<svg)/i.test(s(0, Math.min(64, b.length)))) return 'svg';
+  if (/^\s*(<\?xml|<svg)/i.test(s(0, Math.min(64, b.length)))) {
+    // an XML declaration alone is not an image: e-invoices (XRechnung) are XML too
+    const headText = s(0, Math.min(2048, b.length));
+    return /<svg[\s>]/i.test(headText) || !/^\s*<\?xml/i.test(headText) ? 'svg' : 'xml';
+  }
   return MIME_FORMAT[String(mime).toLowerCase()] || EXT_FORMAT[extension(name)] || '';
 }
 
@@ -91,7 +95,7 @@ export class InputFile {
     this.size = file.size;
     this.format = format || '';
     this.type = FORMAT_MIME[this.format] || file.type || '';
-    this.kind = this.format === 'pdf' ? 'pdf' : (this.format && this.format !== 'svg' && this.format !== 'tiff' ? 'image' : 'other');
+    this.kind = this.format === 'pdf' ? 'pdf' : (this.format && !['svg', 'tiff', 'xml'].includes(this.format) ? 'image' : 'other');
     this.opts = {};
     this.password = null;
     this.locked = false;   // needs a password before it can be used
