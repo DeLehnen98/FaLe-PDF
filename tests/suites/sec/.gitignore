@@ -1,0 +1,8 @@
+# generated test data and outputs (recreated by the make_* scripts / test runs)
+ai_data
+ocrdata
+officedata
+testdata/
+dist_ocr/
+app_stress_report.json
+runall.summary
