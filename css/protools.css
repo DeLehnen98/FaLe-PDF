@@ -513,6 +513,14 @@
 .bt-action span { font-size: 12.5px; color: var(--text-2); }
 .bt-action:hover { border-color: color-mix(in srgb, var(--primary) 50%, var(--border)); }
 .bt-action[aria-checked="true"] { border-color: var(--primary); background: var(--primary-soft); box-shadow: 0 0 0 1px var(--primary); }
+.bt-presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+.bt-preset { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; }
+.bt-preset:hover { border-color: var(--primary); color: var(--primary); }
+.bt-action[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-soft); box-shadow: 0 0 0 1px var(--primary); }
+.bt-action:disabled { opacity: .45; cursor: not-allowed; }
+.bt-flow { margin: -4px 0 10px; font-weight: 600; }
+.bt-out button .ic { width: 18px; height: 18px; }
+.bt-item .doc-meta .ic { width: 13px; height: 13px; vertical-align: -2px; }
 .bt-opts { margin-bottom: 8px; }
 .bt-opts .field:last-child, .bt-opts .hint:last-child { margin-bottom: 0; }
 .bt-ic { width: 40px; height: 40px; flex: none; }

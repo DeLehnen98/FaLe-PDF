@@ -411,22 +411,27 @@ def desktop(p):
                 pg.locator(f'dialog input[value="{ids[n]}"]').check()
             pg.locator('dialog .btn-primary').click()
             no_dialog(pg)
+        def toggle(*names):
+            for n in names: pg.locator(f'[data-action={n}]').click()
+        def run_batch():
+            pg.locator('.screen-foot .btn-primary').click()
+            pg.wait_for_selector('[data-result] .result-card', timeout=90000)
+        pg.evaluate("() => localStorage.removeItem('fale-batch')")
         goto(pg, '#/werkzeug/stapel', '.bt-action')
         pick_all(['bericht_v1.pdf', 'bericht_v2.pdf', 'raender.pdf'])
-        pg.set_input_files('.screen-body input[type=file]', []) if pg.locator('.screen-body input[type=file]').count() else None
         # add an image from the device
         with pg.expect_file_chooser() as fc:
             pg.locator('[data-dev]').click()
         fc.value.set_files(os.path.join(TDP, 'chart.png'))
         pg.wait_for_timeout(300)
         check('batch: 4 inputs listed (3 PDFs + image)', pg.locator('.bt-item').count() == 4)
-        # watermark
-        pg.locator('[data-action=watermark]').click()
+        check('batch: compress preselected', pg.locator('[data-action=compress]').get_attribute('aria-pressed') == 'true')
+        # watermark only (single step keeps the "(Wasserzeichen)" suffix)
+        toggle('compress', 'watermark')
         pg.fill('[data-opts] [name=text]', 'ENTWURF')
         pg.locator('[data-save]').uncheck()
         shot(pg, 'desk_light_batch')
-        pg.locator('.screen-foot .btn-primary').click()
-        pg.wait_for_selector('[data-result] .result-card', timeout=60000)
+        run_batch()
         path = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'batch_wm.zip')
         z = zipfile.ZipFile(path)
         names = z.namelist()
@@ -438,45 +443,89 @@ def desktop(p):
             found.append(b'454E5457555246' in data.upper() or b'(ENTWURF)' in data)
         check('batch: watermark on all files (ZIP)', ok and all(found), f'{names} {found}')
         check('batch: per-file status done', pg.locator('.bt-st.bt-done').count() == 4)
-        # protect
-        pg.locator('[data-action=protect]').click()
+        # recipe: remove first page + rotate + numbers + hidden data + password, name pattern
+        toggle('watermark', 'del', 'rotate', 'numbers', 'strip', 'protect')
+        check('batch: flow lists the steps in order', 'Seiten entfernen → Seiten drehen → Seitenzahlen → Daten entfernen → Passwort setzen' in pg.locator('[data-flow]').inner_text(), pg.locator('[data-flow]').inner_text())
+        pg.fill('[data-opts] [name=del]', '1')
         pg.fill('[data-opts] [name=pw1]', 'test1234'); pg.fill('[data-opts] [name=pw2]', 'test1234')
-        pg.locator('.screen-foot .btn-primary').click()
-        pg.wait_for_selector('[data-result] .result-card', timeout=60000)
-        path = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'batch_pw.zip')
+        pg.fill('[data-outopts] [name=pattern]', 'Akte {nr} {name}')
+        run_batch()
+        path = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'batch_recipe.zip')
         z = zipfile.ZipFile(path)
-        enc = []
-        for n in z.namelist():
+        order = pg.locator('.bt-item .doc-name').all_text_contents()
+        pdfs = [n for n in z.namelist() if n.endswith('.pdf')]
+        want = [f'Akte {i + 1:02d} {n[:-4]}.pdf' for i, n in enumerate(order) if n.endswith('.pdf')]
+        check('batch: name pattern', sorted(pdfs) == sorted(want), f'{pdfs} vs {want}')
+        res = []
+        for n in pdfs:
             rr = PdfReader(io.BytesIO(z.read(n)))
-            enc.append(rr.is_encrypted and rr.decrypt('test1234') > 0)
-        check('batch: all files encrypted (AES, password works)', len(enc) == 4 and all(enc), str(enc))
+            okpw = rr.is_encrypted and rr.decrypt('test1234') > 0
+            meta = rr.metadata or {}
+            res.append((okpw, (rr.pages[0].get('/Rotate') or 0) % 360, not meta.get('/Producer') and not meta.get('/Title'), len(rr.pages)))
+        check('batch: recipe applied (password, rotation, no metadata)', len(res) == 3 and all(r[0] and r[1] == 90 and r[2] for r in res), str(res))
+        v1 = [n for n in pdfs if n.endswith('bericht_v1.pdf')]
+        r1 = PdfReader(io.BytesIO(z.read(v1[0]))) if v1 else None
+        if r1: r1.decrypt('test1234')
+        orig = PdfReader(os.path.join(TDP, 'bericht_v1.pdf'))
+        check('batch: first page removed', r1 is not None and len(r1.pages) == len(orig.pages) - 1, f'{len(r1.pages) if r1 else None} vs {len(orig.pages)}')
+        # the 1-page image would lose every page: skipped and reported, the batch still finished the others
+        rep = [n for n in z.namelist() if n.endswith('.txt')]
+        txt = z.read(rep[0]).decode('utf-8-sig') if rep else ''
+        check('batch: failing file reported, others done', pg.locator('.bt-st.bt-error').count() == 1 and pg.locator('.bt-st.bt-done').count() == 3
+              and 'chart.png' in txt and 'alle Seiten' in txt, txt[:300])
+        toggle('rotate', 'numbers', 'strip', 'protect')
+        pg.fill('[data-outopts] [name=pattern]', '')
+        toggle('del')
         # compress strong
-        pg.locator('[data-action=compress]').click()
+        toggle('compress')
         pg.locator('[data-cm=strong]').click()
-        pg.locator('.screen-foot .btn-primary').click()
-        pg.wait_for_selector('[data-result] .result-card', timeout=60000)
+        run_batch()
         check('batch: compress shows sizes per file', pg.locator('.bt-st.bt-done').count() == 4 and '→' in pg.locator('.bt-st').first.text_content())
-        # images
-        pg.locator('[data-action=images]').click()
-        pg.locator('.screen-foot .btn-primary').click()
-        pg.wait_for_selector('[data-result] .result-card', timeout=60000)
+        # images (no steps needed)
+        toggle('compress')
+        pg.locator('[data-out=images]').click()
+        check('batch: password step disabled for images', pg.locator('[data-action=protect]').is_disabled())
+        run_batch()
         path = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'batch_img.zip')
         nl = zipfile.ZipFile(path).namelist()
         check('batch: pages as images in folders', len(nl) == 3 + 3 + 2 + 1 and all(n.endswith('.jpg') for n in nl) and len({n.split('/')[0] for n in nl}) == 4, str(nl[:4]))
-        # merge in order (move image to the front)
+        # merge in order (move image to the front), page numbers continue over the merged PDF
         pg.locator('.bt-item').nth(3).locator('[data-up]').click()
         pg.locator('.bt-item').nth(2).locator('[data-up]').click()
         pg.locator('.bt-item').nth(1).locator('[data-up]').click()
         order = pg.locator('.bt-item .doc-name').all_text_contents()
-        pg.locator('[data-action=merge]').click()
+        pg.locator('[data-out=merge]').click()
+        toggle('numbers')
         pg.locator('[data-save]').check()
-        pg.locator('.screen-foot .btn-primary').click()
-        pg.wait_for_selector('[data-result] .result-card', timeout=60000)
+        run_batch()
         path = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'batch_merge.pdf')
         r = PdfReader(path)
         t1 = r.pages[1].extract_text()
         exp = 'Inhalt Seite 1' if order[1].startswith('raender') else 'Quartalsbericht'
-        check('batch: merged in list order (image first, 9 pages)', len(r.pages) == 9 and order[0] == 'chart.png' and len(r.pages[0].extract_text().strip()) == 0 and exp in t1, f'{len(r.pages)} pages, order {order}')
+        check('batch: merged in list order (image first, 9 pages)', len(r.pages) == 9 and order[0] == 'chart.png' and exp in t1, f'{len(r.pages)} pages, order {order}')
+        check('batch: page numbers continue after merging', 'Seite 9 von 9' in r.pages[8].extract_text(), r.pages[8].extract_text()[-80:])
+        toggle('numbers')
+        # protected input: no password dialog in the middle of the run – skipped without, included with the password
+        goto(pg, '#/werkzeuge', None); pg.wait_for_timeout(300)
+        goto(pg, '#/werkzeug/stapel', '.bt-action')
+        check('batch: new start has an empty list', pg.locator('.bt-item').count() == 0)
+        pg.locator('[data-out=files]').click()
+        with pg.expect_file_chooser() as fc:
+            pg.locator('[data-dev]').click()
+        fc.value.set_files([os.path.join(TD, 'geschuetzt.pdf'), os.path.join(TDP, 'raender.pdf')])
+        pg.wait_for_selector('[data-opts] [name=srcpw]', timeout=10000)
+        toggle('compress')
+        run_batch()
+        check('batch: locked file skipped without a dialog', pg.locator('dialog[open]').count() == 0 and pg.locator('.bt-st.bt-skip').count() == 1 and pg.locator('.bt-st.bt-done').count() == 1,
+              pg.locator('.bt-item .doc-meta').all_inner_texts())
+        pg.fill('[data-opts] [name=srcpw]', 'geheim')
+        run_batch()
+        check('batch: locked file included with its password', pg.locator('.bt-st.bt-done').count() == 2, pg.locator('.bt-item .doc-meta').all_inner_texts())
+        toggle('compress')
+        pg.locator('[data-out=merge]').click()
+        # the recipe is remembered, passwords are not
+        stored = pg.evaluate("() => localStorage.getItem('fale-batch') || ''")
+        check('batch: recipe remembered without passwords', '"out":"merge"' in stored and 'test1234' not in stored, stored[:200])
     step('batch', batch)
 
     # ------------------------------------------------------------ signatures & stamps
@@ -802,6 +851,7 @@ def desktop(p):
         pg.fill('[data-stamp] [name=size]', '40')
         pg.locator('[data-stamp] [name=size]').dispatch_event('input')
         shot(pg, 'desk_light_qr_stamp')
+        pg.evaluate("() => document.querySelectorAll('[data-result] .result-card').forEach(e => e.remove())")  # wait for the new card, not an earlier one
         pg.locator('[data-apply]').click()
         pg.wait_for_selector('[data-result] .result-card', timeout=20000)
         p6 = dl(pg, pg.locator('[data-result] [data-r=dl]'), 'qr_stamp.pdf')
