@@ -50,6 +50,8 @@ function shareConfig() {
 }
 
 const EXPIRIES = [3600, 86400, 604800]; // 1 h, 1 Tag, 7 Tage (max)
+// Unterschriftsanfragen brauchen länger (Verträge gehen durch mehrere Hände): bis 30 Tage.
+const SIGN_EXPIRIES = [86400, 604800, 1209600, 2592000]; // 1, 7, 14, 30 Tage
 const ID_RE = /^[A-Za-z0-9_-]{16,32}$/;
 const TOKEN_RE = /^[A-Za-z0-9_-]{24,64}$/;
 const tagLen = 16;
@@ -217,7 +219,7 @@ function makeShareCore(overrides = {}) {
       validateUpload(body, sc);
       let expiresIn = Number(body.expiresIn);
       if (kind === 'relay') expiresIn = 3600;
-      if (!EXPIRIES.includes(expiresIn)) throw new H.HttpError(400, 'bad_input', 'Ungültige Laufzeit');
+      if (!(kind === 'sign-doc' ? SIGN_EXPIRIES : EXPIRIES).includes(expiresIn)) throw new H.HttpError(400, 'bad_input', 'Ungültige Laufzeit');
       let maxDownloads = body.maxDownloads == null ? null : Number(body.maxDownloads);
       if (kind === 'relay') maxDownloads = 3;
       if (kind === 'sign-doc') maxDownloads = null;

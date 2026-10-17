@@ -26,7 +26,7 @@ export const FIELD_TYPES = [
   { id: 'text', label: 'Text', icon: 'text', w: 150, h: 22 },
 ];
 export const SIGNER_COLORS = ['#3B37A0', '#0B8F80', '#C2410C', '#9D174D', '#1D4ED8'];
-const EXPIRY = [{ v: 86400, label: '1 Tag' }, { v: 604800, label: '7 Tage' }];
+const EXPIRY = [{ v: 604800, label: '7 Tage' }, { v: 1209600, label: '14 Tage' }, { v: 2592000, label: '30 Tage' }];
 
 export async function mount(screen, { params }) {
   const docId = params.get('doc');
@@ -49,7 +49,7 @@ export async function mount(screen, { params }) {
   const signers = [{ name: '' }];
   const fields = []; // {s, type, page, x, y, w, h}
   let active = 0, mode = null;
-  const state = { expiresIn: 604800 };
+  const state = { expiresIn: 1209600 };
 
   screen.body.classList.add('sh-sr-body');
   const layout = h(`<div class="sh-sr">

@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '339ca0fe52bc';
+const VERSION = '0abeb06ac6cd';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-35233f891a8b';
 const PAGES = 'wt-pages';

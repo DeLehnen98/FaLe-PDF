@@ -6,6 +6,8 @@ Bis Oktober 2026 lagen sie nur in temporären Arbeitsordnern; jetzt sind sie hie
 - `suites/` – die aktuellen Testreihen
   - `webtools/` – alle Browser-Werkzeuge auf fale.network (`./run_all.sh`, startet seinen Server selbst)
   - `sec/` – Sicherheit: XSS, CSP, API-Fuzzing, Konto, KI, Teilen (`./run_all.sh`; Server siehe Kopf der Dateien)
+    – die Browser-Tests in `sec/` sind die aktuellen Fassungen (laufen unter der echten CSP); gleichnamige
+      ältere Kopien eine Ebene höher nutzen teils `wait_for_function` mit Text und scheitern an der CSP
   - `design/` – Design-/Pro-Werkzeuge der App (`./isotest.sh` baut eine Kopie der App und testet sie)
   - `smart/`, `office2-4/`, `one/`, `de_suites/`, `arc*/` – Assistenten, Office, FaLe One, deutsche UI, Vorlagen
   - `test_network.py` – FaleNetwork-Startseiten (`python3 -m http.server 8803` im Ordner `network/`)

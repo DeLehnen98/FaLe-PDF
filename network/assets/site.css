@@ -359,3 +359,13 @@ mark.ph { -webkit-box-decoration-break: clone; box-decoration-break: clone; back
 .section-tight { padding-bottom: 36px; }
 .feat-list { padding-left: 1.2em; display: grid; gap: 6px; }
 .faq .facts { margin-top: 0; }
+/* "Unterschrift anfordern" page: numbered steps, check list, centred button */
+.steps-simple { list-style: none; counter-reset: step; display: grid; gap: 12px; padding: 0; }
+@media (min-width: 820px) { .steps-simple { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.steps-simple li { counter-increment: step; position: relative; padding: 16px 16px 16px 60px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.steps-simple li::before { content: counter(step); position: absolute; left: 16px; top: 16px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--on-primary); font-weight: 700; }
+.steps-simple h3 { font-size: 1.0625rem; }
+.steps-simple p { font-size: 0.9375rem; color: var(--text-2); margin-top: 4px; }
+.check-list li > div { display: grid; gap: 2px; }
+.check-list span { font-size: 0.9375rem; }
+.center-row { justify-content: center; margin-top: 24px; }

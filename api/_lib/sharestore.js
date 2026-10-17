@@ -113,7 +113,8 @@ function memoryShareStore({ now = () => new Date() } = {}) {
     },
     async create(o) {
       const exp = new Date(o.expiresAt).getTime();
-      if (exp <= t() || exp > t() + 7 * 864e5 + 300e3) throw Object.assign(new Error('bad expiry'), { code: 'store_error' });
+      const maxDays = o.kind === 'sign-doc' ? 30 : 7;
+      if (exp <= t() || exp > t() + maxDays * 864e5 + 300e3) throw Object.assign(new Error('bad expiry'), { code: 'store_error' });
       if (badChunking(o.size, o.chunks, o.chunkSize)) throw Object.assign(new Error('bad chunking'), { code: 'store_error' });
       if (activeTotal() + o.size > o.cap) return { ok: false, reason: 'capacity' };
       if (s.objects.has(o.id)) throw Object.assign(new Error('duplicate'), { code: 'store_error' });
