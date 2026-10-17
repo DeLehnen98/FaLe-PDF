@@ -32,6 +32,7 @@ PAGES = {
     'home':    ('/', '/en/'),
     'pdf':     ('/apps/pdf/', '/en/apps/pdf/'),
     'sign':    ('/unterschrift-anfordern/', '/en/request-signature/'),
+    'send':    ('/dateien-verschicken/', '/en/send-files/'),
     'clean':   ('/apps/clean/', '/en/apps/clean/'),
     'konto':   ('/konto/', '/en/account/'),
     'privacy': ('/datenschutz/', '/en/privacy/'),
@@ -201,7 +202,7 @@ def header(lang, key, current=None, other_url=None, fallback=False):
     other = 'en' if lang == 'de' else 'de'
     other_url = other_url or url(key, other)
     home = url('home', lang)
-    if current is None and key in ('pdf', 'clean', 'sign'):
+    if current is None and key in ('pdf', 'clean', 'sign', 'send'):
         current = t['nav'][2][1]          # the app pages belong to "Apps"
 
     def cur(href):
@@ -471,7 +472,7 @@ PDF = {
             ('Kein Handel mit Daten', 'Keine Werbebanner, kein Tracking, keine Analyse-Tools und kein Verkauf von Daten. Werbung siehst du nur, wenn du selbst ein Video startest.'),
         ],
         'more_h': 'Mehr erfahren',
-        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Ausführliche Infos und FAQ zu FaLe PDF', PDF_INFO), ('Datenschutzerklärung der App', PDF_PRIVACY)],
+        'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Ausführliche Infos und FAQ zu FaLe PDF', PDF_INFO), ('Datenschutzerklärung der App', PDF_PRIVACY)],
         'files': 'Dateiformate', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown sowie Bilder (JPG, PNG, WebP)',
         'langs': 'Sprachen', 'langs_v': 'Deutsch und Englisch – die Briefvorlagen folgen deutschem Recht',
         'plat': 'Plattformen', 'plat_v': 'Web-App für jeden modernen Browser, Android-App in Kürze',
@@ -508,7 +509,7 @@ PDF = {
             ('No trading in data', 'No banner ads, no tracking, no analytics tools and no selling of data. You only see an ad if you start a video yourself.'),
         ],
         'more_h': 'Learn more',
-        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Detailed information and FAQ about FaLe PDF', PDF_INFO_EN), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
+        'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Detailed information and FAQ about FaLe PDF', PDF_INFO_EN), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
         'files': 'File formats', 'files_v': 'PDF, DOCX, XLSX, PPTX, CSV, TXT, Markdown and images (JPG, PNG, WebP)',
         'langs': 'Languages', 'langs_v': 'English and German – letter templates follow German law',
         'plat': 'Platforms', 'plat_v': 'Web app for any modern browser, Android app coming soon',
@@ -647,7 +648,11 @@ SIGN = {
 
 
 def page_sign(lang):
-    c = SIGN[lang]
+    return page_feature('sign', SIGN[lang], SIGN_START, lang)
+
+
+def page_feature(key, c, start, lang):
+    """Feature page of FaLe PDF (hero → app route, steps, advantages, FAQ with JSON-LD)."""
     steps = ''.join(f'<li><h3>{h}</h3><p>{p}</p></li>' for h, p in c['steps'])
     why = ''.join(f'<li>{ic("check")}<div><strong>{h}</strong><span>{p}</span></div></li>' for h, p in c['why'])
     faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
@@ -667,12 +672,12 @@ def page_sign(lang):
         <h1>{c['h1']}</h1>
         <p class="lede">{c['lede']}</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="{SIGN_START}">{ic('arrow')}{c['start']}</a>
+          <a class="btn btn-primary" href="{start}">{ic('arrow')}{c['start']}</a>
           <a class="btn btn-quiet" href="{url('pdf', lang)}">{c['more_app']}</a>
         </div>
         <p class="hint">{c['hint']}</p>
       </div>
-      <div class="phone"><img src="/assets/img/pdf/sign-{lang}.webp" width="540" height="1140" fetchpriority="high" alt="{c['shot_alt']}"></div>
+      <div class="phone"><img src="/assets/img/pdf/{c.get('shot', 'sign')}-{lang}.webp" width="540" height="1140" fetchpriority="high" alt="{c['shot_alt']}"></div>
     </div>
   </section>
   <section class="section" aria-labelledby="steps-h">
@@ -685,7 +690,7 @@ def page_sign(lang):
     <div class="wrap">
       <div class="section-head"><h2 id="why-h">{c['why_h']}</h2></div>
       <ul class="plain-list check-list">{why}</ul>
-      <div class="btn-row center-row"><a class="btn btn-primary" href="{SIGN_START}">{c['start']}</a></div>
+      <div class="btn-row center-row"><a class="btn btn-primary" href="{start}">{c['start']}</a></div>
     </div>
   </section>
   <section class="section" aria-labelledby="faq-h">
@@ -696,7 +701,82 @@ def page_sign(lang):
   </section>
 </main>
 '''
-    return head(lang, 'sign', c['title'], c['desc'], ld) + '\n' + header(lang, 'sign') + body + footer(lang)
+    return head(lang, key, c['title'], c['desc'], ld) + '\n' + header(lang, key) + body + footer(lang)
+
+
+
+# ================================================================= Dateien verschicken (feature page of FaLe PDF)
+SEND_START = PDF_APP + '#/teilen/link'
+SEND = {
+    'de': {
+        'title': 'Dateien sicher verschicken – kostenlos, ohne Konto | FaleNetwork',
+        'desc': 'Dateien bis 50 MB verschlüsselt per Link verschicken: ohne Konto, mit Ablaufdatum, Download-Limit und optionalem Passwort. Kostenlos, ohne Werbung.',
+        'h1': 'Dateien sicher verschicken&nbsp;– ohne Konto',
+        'lede': 'Datei wählen, Link schicken. Sie wird auf deinem Gerät verschlüsselt – nur wer den Link hat, kann sie öffnen.',
+        'start': 'Datei verschicken', 'more_app': 'Mehr über FaLe PDF',
+        'hint': 'Läuft in FaLe PDF im Browser. Nichts installieren, kein Konto – auch nicht für den Empfänger.',
+        'shot_alt': 'FaLe PDF auf dem Handy',
+        'shot': 'home',
+        'steps_h': 'So geht’s',
+        'steps': [
+            ('Datei wählen', 'Jede Art von Datei bis 50 MB – PDF, Fotos, Videos, Tabellen oder ein ZIP-Archiv.'),
+            ('Einstellen', 'Wähl, wie lange der Link gilt (1 Stunde, 1 Tag oder 7 Tage) und wie oft die Datei geladen werden darf. Auf Wunsch mit Passwort.'),
+            ('Link schicken', 'Per WhatsApp, E-Mail oder QR-Code. Der Empfänger öffnet den Link im Browser und lädt die Datei – ohne Anmeldung.'),
+        ],
+        'why_h': 'Was du bekommst',
+        'why': [
+            ('Ende-zu-Ende-verschlüsselt', 'Die Datei wird verschlüsselt, bevor sie dein Gerät verlässt. Der Schlüssel steht nur im Link – unser Server kann sie nicht lesen.'),
+            ('Kein Konto, keine Werbung', 'Weder du noch der Empfänger müssen sich anmelden. Keine Werbebilder, kein Tracking.'),
+            ('Du bestimmst die Regeln', 'Ablaufdatum, Download-Limit und Passwort – und du kannst den Link jederzeit selbst löschen.'),
+            ('Löscht sich selbst', 'Nach Ablauf oder wenn das Download-Limit erreicht ist, wird die Datei automatisch vom Server gelöscht.'),
+        ],
+        'faq_h': 'Häufige Fragen',
+        'faq': [
+            ('Wie groß darf eine Datei sein?', 'Bis 50 MB pro Datei. Mehrere Dateien packst du am besten vorher in ein ZIP-Archiv.'),
+            ('Was kostet das?', 'Nichts. Das Verschicken ist kostenlos und ohne Werbung.'),
+            ('Wer kann meine Datei sehen?', 'Nur wer den Link hat (und das Passwort, wenn du eins gesetzt hast). Der Schlüssel steht im Teil des Links nach dem #, der nie an unseren Server geschickt wird.'),
+            ('Wie lange bleibt die Datei gespeichert?', 'So lange, wie du wählst: 1 Stunde, 1 Tag oder höchstens 7 Tage – oder bis das Download-Limit erreicht ist. Danach wird sie automatisch gelöscht.'),
+            ('Braucht der Empfänger eine App?', 'Nein. Der Link öffnet sich in jedem aktuellen Browser auf Handy oder Computer.'),
+            ('Und zwischen meinen eigenen Geräten?', 'Dafür gibt es in FaLe PDF „Geräte verbinden“: QR-Code scannen und Dateien direkt vom Handy auf den PC schicken.'),
+        ],
+    },
+    'en': {
+        'title': 'Send files securely – free, no account | FaleNetwork',
+        'desc': 'Send files up to 50 MB encrypted via a link: no account, with expiry, download limit and optional password. Free and without ads.',
+        'h1': 'Send files securely&nbsp;– no account',
+        'lede': 'Pick a file, send the link. It is encrypted on your device – only people with the link can open it.',
+        'start': 'Send a file', 'more_app': 'More about FaLe PDF',
+        'hint': 'Runs in FaLe PDF in your browser. Nothing to install, no account – not even for the recipient.',
+        'shot_alt': 'FaLe PDF on a phone',
+        'shot': 'home',
+        'steps_h': 'How it works',
+        'steps': [
+            ('Pick a file', 'Any kind of file up to 50 MB – PDFs, photos, videos, spreadsheets or a ZIP archive.'),
+            ('Set it up', 'Choose how long the link is valid (1 hour, 1 day or 7 days) and how often the file may be downloaded. Optionally with a password.'),
+            ('Send the link', 'Via messenger, email or QR code. The recipient opens the link in a browser and downloads the file – no sign-up.'),
+        ],
+        'why_h': 'What you get',
+        'why': [
+            ('End-to-end encrypted', 'The file is encrypted before it leaves your device. The key is only in the link – our server cannot read it.'),
+            ('No account, no ads', 'Neither you nor the recipient need to sign up. No ads, no tracking.'),
+            ('You set the rules', 'Expiry, download limit and password – and you can delete the link yourself at any time.'),
+            ('Deletes itself', 'When it expires or the download limit is reached, the file is deleted from the server automatically.'),
+        ],
+        'faq_h': 'Frequently asked questions',
+        'faq': [
+            ('How big can a file be?', 'Up to 50 MB per file. Put several files into a ZIP archive first.'),
+            ('What does it cost?', 'Nothing. Sending is free and without ads.'),
+            ('Who can see my file?', 'Only people with the link (and the password, if you set one). The key is in the part of the link after the #, which is never sent to our server.'),
+            ('How long is the file stored?', 'As long as you choose: 1 hour, 1 day or at most 7 days – or until the download limit is reached. Then it is deleted automatically.'),
+            ('Does the recipient need an app?', 'No. The link opens in any current browser on a phone or computer.'),
+            ('And between my own devices?', 'FaLe PDF has “Connect devices”: scan a QR code and send files straight from your phone to your PC.'),
+        ],
+    },
+}
+
+
+def page_send(lang):
+    return page_feature('send', SEND[lang], SEND_START, lang)
 
 
 # ================================================================= FaLe Clean
@@ -1095,6 +1175,7 @@ def main():
         written.append(write(url('home', lang), page_home(lang)))
         written.append(write(url('pdf', lang), page_pdf(lang)))
         written.append(write(url('sign', lang), page_sign(lang)))
+        written.append(write(url('send', lang), page_send(lang)))
         written.append(write(url('clean', lang), page_clean(lang)))
         written.append(write(url('konto', lang), page_konto(lang)))
         written.append(write(url('privacy', lang), page_privacy(lang)))

@@ -31,7 +31,7 @@ function shareConfig() {
   return {
     maxBytes: Math.round(num('SHARE_MAX_MB', 50, 1, 500) * MiB),       // plaintext limit shown to users
     chunkSize: chunkKb * 1024,                                         // ciphertext bytes per chunk (≤ Vercel's 4.5 MB body limit)
-    totalBytes: Math.round(num('SHARE_TOTAL_MB', 300, 10, 100000) * MiB), // all active shares together (Supabase free: 500 MB DB)
+    totalBytes: Math.round(num('SHARE_TOTAL_MB', 2048, 10, 100000) * MiB), // all active shares together (Supabase Pro: 8 GB DB included)
     devDaily: Math.round(num('SHARE_DEVICE_DAILY', 40, 1, 100000)),
     devDailyBytes: Math.round(num('SHARE_DEVICE_DAILY_MB', 600, 1, 1e6) * MiB),
     ipDaily: Math.round(num('SHARE_IP_DAILY', 80, 1, 100000)),
