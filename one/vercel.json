@@ -3,6 +3,7 @@
   "framework": null,
   "buildCommand": "",
   "installCommand": "",
+  "ignoreCommand": "P=\"${VERCEL_GIT_PREVIOUS_SHA:-HEAD^}\"; git cat-file -e \"$P^{commit}\" 2>/dev/null || exit 1; if git diff --quiet \"$P\" HEAD -- .; then exit 0; else exit 1; fi",
   "outputDirectory": ".",
   "cleanUrls": false,
   "headers": [

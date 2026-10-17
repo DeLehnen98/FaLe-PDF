@@ -20,4 +20,4 @@ suites/design/testserve/
 *.y4m
 !**/officedata/*
 !**/testdata/*
-suites/share_data/
+**/share_data/
