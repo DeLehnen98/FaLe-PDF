@@ -1,0 +1,163 @@
+{
+  "id": "email-signature",
+  "category": "everyday",
+  "icon": "text",
+  "module": "tools/email-signature.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 65,
+  "related": [
+    "business-card",
+    "qr-code",
+    "invoice-generator",
+    "din-letter"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "e-mail-signatur",
+    "name": "E-Mail-Signatur erstellen",
+    "short": "Professionelle Signatur für Gmail, Outlook und Apple Mail – mit Pflichtangaben-Check.",
+    "title": "E-Mail-Signatur erstellen – mit Pflichtangaben | FaleNetwork",
+    "h1": "E-Mail-Signatur erstellen",
+    "metaDescription": "E-Mail-Signatur für Gmail, Outlook und Apple Mail: drei Layouts, eigene Farbe, Logo, Dark-Mode-Vorschau und Check der Pflichtangaben. Gratis, ohne Abo.",
+    "lede": "Trag deine Angaben ein, wähl Aufbau und Farbe – und kopier die fertige Signatur in dein Mailprogramm.",
+    "primaryButton": "Als Datei speichern",
+    "keywords": [
+      "e-mail signatur erstellen",
+      "email signatur generator",
+      "outlook signatur",
+      "gmail signatur",
+      "signatur pflichtangaben",
+      "e-mail signatur gmbh",
+      "signatur vorlage",
+      "html signatur"
+    ],
+    "steps": [
+      {
+        "title": "Angaben eintragen",
+        "text": "Name, Position, Kontakt und Adresse. Profile und ein Logo per Link sind optional."
+      },
+      {
+        "title": "Pflichtangaben prüfen",
+        "text": "Wähle deine Rechtsform. FaLe zeigt, welche Angaben in geschäftliche E-Mails gehören, und meldet, was noch fehlt."
+      },
+      {
+        "title": "Kopieren und einfügen",
+        "text": "„Signatur kopieren“ und in den Signatur-Einstellungen von Gmail, Outlook oder Apple Mail einfügen. Für Thunderbird und Outlook klassisch gibt es die .htm-Datei."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Abo",
+        "text": "Signatur-Dienste kosten oft monatlich, manche ohne Gratis-Version. Hier ist die fertige Signatur kostenlos und ohne Konto."
+      },
+      {
+        "title": "Hält in jedem Mailprogramm",
+        "text": "Aufgebaut wie es Mailprogramme mögen: Tabellen, feste Schriften, Farben, die auch im Dark Mode lesbar bleiben. Die Vorschau zeigt beides."
+      },
+      {
+        "title": "Pflichtangaben im Blick",
+        "text": "Für GmbH, UG, e.K., KG, AG und mehr prüft FaLe Sitz, Registergericht, Registernummer und Geschäftsführung."
+      },
+      {
+        "title": "Kein Tracking",
+        "text": "Profile werden als Textlinks eingefügt, nicht als Bilder von fremden Servern. Deine Angaben verlassen die Seite nicht."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Pflichtangaben gehören in eine geschäftliche E-Mail?",
+        "a": "Bei einer GmbH zum Beispiel Firma mit Rechtsform, Sitz, Registergericht, Registernummer und alle Geschäftsführer. Bei Kleingewerbe und Freiberuflern mindestens Name und Anschrift. Ein Link aufs Impressum reicht nicht. FaLe prüft das je nach Rechtsform – eine Rechtsberatung ersetzt es nicht."
+      },
+      {
+        "q": "Wie füge ich die Signatur in Outlook ein?",
+        "a": "Auf „Signatur kopieren“ tippen, in Outlook die Signatur-Einstellungen öffnen, eine neue Signatur anlegen und einfügen. Unter der Vorschau steht der genaue Weg für das neue und das klassische Outlook."
+      },
+      {
+        "q": "Warum wird mein Logo nicht angezeigt?",
+        "a": "Das Logo muss im Internet liegen, etwa auf deiner Webseite, und mit https:// beginnen. In die Signatur eingebettete Bilder entfernt Gmail. Manche Empfänger laden Bilder außerdem erst nach einem Klick."
+      },
+      {
+        "q": "Sieht die Signatur im Dark Mode gut aus?",
+        "a": "Die Farben sind so gewählt, dass sie auf hellem und dunklem Hintergrund lesbar bleiben. Prüf dein Logo mit der Dark-Mode-Vorschau – am besten eignet sich ein PNG mit transparentem Hintergrund."
+      },
+      {
+        "q": "Kann ich die Signatur auf dem iPhone verwenden?",
+        "a": "Die Mail-App des iPhones übernimmt Formatierungen nur eingeschränkt. Nimm dort am besten die Textversion („Als Text kopieren“)."
+      }
+    ]
+  },
+  "en": {
+    "slug": "email-signature-generator",
+    "name": "Email signature generator",
+    "short": "A professional signature for Gmail, Outlook and Apple Mail – free.",
+    "title": "Email signature generator – free, no subscription | FaleNetwork",
+    "h1": "Create an email signature",
+    "metaDescription": "Create an email signature for Gmail, Outlook and Apple Mail: three layouts, your colour, logo, dark mode preview and a check of German legal details. Free.",
+    "lede": "Enter your details, pick a layout and colour – then copy the finished signature into your mail app.",
+    "primaryButton": "Save as file",
+    "keywords": [
+      "email signature generator",
+      "free email signature",
+      "outlook signature",
+      "gmail signature",
+      "html signature",
+      "signature template"
+    ],
+    "steps": [
+      {
+        "title": "Enter your details",
+        "text": "Name, job title, contact and address. Profiles and a logo by link are optional."
+      },
+      {
+        "title": "Check legal details",
+        "text": "For German companies, choose the legal form: FaLe shows which details belong in business e-mails and what is missing."
+      },
+      {
+        "title": "Copy and paste",
+        "text": "Click “Copy signature” and paste it into the signature settings of Gmail, Outlook or Apple Mail. For Thunderbird and classic Outlook there’s an .htm file."
+      }
+    ],
+    "why": [
+      {
+        "title": "No subscription",
+        "text": "Signature services often charge monthly, some without a free plan. Here the finished signature is free and needs no account."
+      },
+      {
+        "title": "Holds up in every mail app",
+        "text": "Built the way mail apps like it: tables, standard fonts, colours that stay readable in dark mode. The preview shows both."
+      },
+      {
+        "title": "Legal details covered",
+        "text": "For German GmbH, UG, e.K., KG, AG and more, FaLe checks registered office, register court, number and managing directors."
+      },
+      {
+        "title": "No tracking",
+        "text": "Profiles are added as text links, not as images from third-party servers. Your details never leave the page."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I add the signature in Outlook?",
+        "a": "Click “Copy signature”, open Outlook’s signature settings, create a new signature and paste. The exact path for new and classic Outlook is shown under the preview."
+      },
+      {
+        "q": "Why doesn’t my logo show?",
+        "a": "The logo has to be online, e.g. on your website, starting with https://. Gmail removes embedded images. Some recipients also only load images after a click."
+      },
+      {
+        "q": "Does it look good in dark mode?",
+        "a": "The colours are chosen to stay readable on light and dark backgrounds. Check your logo with the dark mode preview – a PNG with a transparent background works best."
+      },
+      {
+        "q": "Can I use it on an iPhone?",
+        "a": "The iPhone’s Mail app only partly keeps formatting. Use the text version there (“Copy as text”)."
+      },
+      {
+        "q": "Is my data stored?",
+        "a": "No. Everything happens on this page; nothing is uploaded or saved."
+      }
+    ]
+  }
+}
