@@ -479,7 +479,12 @@ export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto',
       node = look(node);
       if (!(node instanceof PDFDict) || depth > 20) return;
       const arr = node.lookup(N('Names'));
-      if (arr instanceof PDFArray) for (let i = 1; i < arr.size(); i += 2) specs.push(arr.get(i));
+      if (arr instanceof PDFArray) for (let i = 1; i < arr.size(); i += 2) {
+        // the catalog's AF array must point at the very same file specification object: make direct ones indirect
+        let v = arr.get(i);
+        if (!(v instanceof PDFRef) && v instanceof PDFDict) { v = ctx.register(v); arr.set(i, v); }
+        specs.push(v);
+      }
       const kids = node.lookup(N('Kids'));
       if (kids instanceof PDFArray) for (const k of kids.asArray()) visit(k, depth + 1);
     };
@@ -494,14 +499,20 @@ export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto',
       if (!fs.has(N('F')) && fname) fs.set(N('F'), fname);
       const efd = fs.lookup(N('EF'));
       const st = efd instanceof PDFDict ? look(efd.get(N('F'))) : null;
+      const efs = efd instanceof PDFDict ? [...efd.entries()].map(([, v]) => look(v)).filter(v => v instanceof PDFStream) : [];
+      for (const es of efs) {
+        // MIME type: pdf-lib keeps "#2f" escapes of the source literally (it would write "text#232fxml") – decode them
+        let raw = nameOf(es.dict.get(N('Subtype')));
+        for (let k = 0; k < 3 && /#[0-9a-f]{2}/i.test(raw); k++) raw = raw.replace(/#([0-9a-f]{2})/gi, (m, h) => String.fromCharCode(parseInt(h, 16)));
+        es.dict.set(N('Subtype'), N(/^[-\w.+]+\/[-\w.+]+$/.test(raw) ? raw : 'application/octet-stream'));
+      }
       if (st instanceof PDFStream) {
-        if (!st.dict.has(N('Subtype'))) st.dict.set(N('Subtype'), N('application/octet-stream'));
         const params = st.dict.lookup(N('Params'));
         const p = params instanceof PDFDict ? params : ctx.obj({});
         if (!p.has(N('ModDate'))) p.set(N('ModDate'), PDFString.of(pdfDate(new Date())));
         st.dict.set(N('Params'), p);
       }
-      af.push(ref instanceof PDFRef ? ref : ctx.register(fs));
+      af.push(ref);
     }
     if (af.length) catalog.set(N('AF'), ctx.obj(af));
   }

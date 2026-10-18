@@ -96,10 +96,16 @@ def check_pdfa(path, part=2):
             if '/AFRelationship' not in d:
                 p.append('PDF/A-3: attachment without AFRelationship')
             st = d.EF.F
-            if '/Subtype' not in st:
-                p.append('PDF/A-3: attachment without MIME type')
+            if '/Subtype' not in st or not re.match(r'^[-\w.+]+/[-\w.+]+$', str(st.Subtype)[1:]):
+                p.append(f'PDF/A-3: attachment without a valid MIME type ({st.get("/Subtype")})')
         if '/AF' not in root:
             p.append('PDF/A-3: catalog AF missing')
+        else:
+            af = {x.objgen for x in root.AF}
+            arr = names.EmbeddedFiles.get('/Names', [])
+            for k in range(1, len(arr), 2):
+                if arr[k].objgen == (0, 0) or arr[k].objgen not in af:
+                    p.append('PDF/A-3: attachment not referenced from the catalog AF array')
     acro = root.get('/AcroForm')
     if acro is not None and ('/XFA' in acro or bool(acro.get('/NeedAppearances', False))):
         p.append('form: XFA or NeedAppearances')
