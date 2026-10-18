@@ -58,6 +58,8 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
             items.forEach { try? FileManager.default.removeItem(at: $0) }
         }
         NotificationCenter.default.addObserver(self, selector: #selector(openURL(_:)), name: .capacitorOpenURL, object: nil)
+        // Capacitor ≥ 8.5 (UIScene lifecycle): URLs arrive through the scene delegate as well
+        NotificationCenter.default.addObserver(self, selector: #selector(openURL(_:)), name: .capacitorSceneOpenURL, object: nil)
         CAPLog.print("FaleIncoming: loaded")
         // simulator test builds only: `simctl spawn <udid> notifyutil -p dev.fale.pdf.e2e.open` opens the test file
         if Bundle.main.object(forInfoDictionaryKey: "FaleE2E") as? Bool == true {
@@ -84,13 +86,25 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
 
     deinit { NotificationCenter.default.removeObserver(self) }
 
+    private var lastOpened: (url: URL, at: Date)?
+
     @objc private func openURL(_ n: Notification) {
         let obj = (n.object as? [String: Any]) ?? (n.userInfo as? [String: Any]) ?? [:]
-        guard let url = obj["url"] as? URL else { CAPLog.print("FaleIncoming: openURL without url (\(String(describing: n.object)))"); return }
-        CAPLog.print("FaleIncoming: openURL \(url.scheme ?? "?")://…")
-        let options = obj["options"] as? [UIApplication.OpenURLOptionsKey: Any] ?? [:]
+        var url = obj["url"] as? URL
+        var inPlace: Bool?
+        if let options = obj["options"] as? [UIApplication.OpenURLOptionsKey: Any] { inPlace = options[.openInPlace] as? Bool }
+        if let options = obj["options"] as? UIScene.OpenURLOptions { inPlace = options.openInPlace }
+        if url == nil, let ctx = (n.object as? Set<UIOpenURLContext>)?.first ?? (obj["URLContexts"] as? Set<UIOpenURLContext>)?.first {
+            url = ctx.url
+            inPlace = ctx.options.openInPlace
+        }
+        guard let u = url else { CAPLog.print("FaleIncoming: openURL without url (\(n.name.rawValue))"); return }
+        // the scene path may post both the scene and the legacy notification for one URL
+        if let last = lastOpened, last.url == u, Date().timeIntervalSince(last.at) < 2 { return }
+        lastOpened = (u, Date())
+        CAPLog.print("FaleIncoming: openURL \(u.scheme ?? "?")://… (\(n.name.rawValue))")
         handledLaunchURL = true
-        handle(url, inPlace: options[.openInPlace] as? Bool)
+        handle(u, inPlace: inPlace)
     }
 
     /// Simulator test builds only (Info.plist FaleE2E = true, set by cap-patch-ios.mjs with FALE_E2E=1):
