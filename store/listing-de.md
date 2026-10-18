@@ -64,7 +64,7 @@ DOKUMENTE, TABELLEN, PRÄSENTATIONEN
 • DOCX, XLSX und PPTX öffnen, bearbeiten und erstellen
 • Tabellen mit Formeln und Diagrammen
 • Vorlagen für Lebenslauf, Anschreiben, Rechnung, Brief und mehr
-• Absturzsicher: ungespeicherte Änderungen werden wiederhergestellt
+• Absturzsicher – und auf Wunsch direkt in der Originaldatei speichern
 • Kündigung, Widerruf, Widerspruch & Co. in einer Minute – als Dokument und PDF
 
 ALLTAG
@@ -109,6 +109,7 @@ Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen.
 - PDF ↔ DOCX, XLSX, PPTX umwandeln
 - Kündigung, Widerruf & Co. in einer Minute
 - Deine Dateien bleiben auf deinem Gerät
+- Änderungen direkt in der Originaldatei speichern („Bearbeiten mit“)
 
 ## Grafiken & Screenshots (Play Console)
 

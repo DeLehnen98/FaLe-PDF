@@ -99,7 +99,7 @@ export async function mount(screen, { docId }) {
       if (after < before) {
         const res = await saveResult(result, `${baseName(doc.name)} (komprimiert).pdf`);
         trackStat('bytes_saved', before - after);
-        out.appendChild(resultCard(res, { title: 'Komprimiert' }));
+        out.appendChild(resultCard(res, { from: docId, title: 'Komprimiert' }));
         toast(`Datei um ${saving} % verkleinert.`, 'success');
       } else {
         toast('Die Datei konnte nicht weiter verkleinert werden.', 'info');

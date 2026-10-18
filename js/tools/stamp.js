@@ -439,7 +439,7 @@ async function mountStamp(screen, { docId }, mode) {
       prog.set('Speichere …');
       const res = await saveResult(out, `${baseName(doc.name)} (${cfg.suffix}).pdf`);
       resultBox.innerHTML = '';
-      resultBox.appendChild(resultCard(res, { title: 'Fertig' }));
+      resultBox.appendChild(resultCard(res, { from: docId, title: 'Fertig' }));
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Gespeichert.', 'success');
     } catch (e) { errorToast(e, 'Das hat nicht geklappt.'); }

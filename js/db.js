@@ -141,6 +141,7 @@ export async function purgeDoc(id) {
   await tx(['docs', 'files', 'texts', 'trash'], 'readwrite', t => {
     ['docs', 'files', 'texts', 'trash'].forEach(s => t.objectStore(s).delete(id));
   });
+  await deleteDeviceSetting('origin:' + id);
   changed('docs', id, 'delete');
 }
 
@@ -165,15 +166,19 @@ export async function restoreFromTrash(id) {
 }
 export async function deleteFromTrash(id) {
   await tx('trash', 'readwrite', t => { t.objectStore('trash').delete(id); });
+  await deleteDeviceSetting('origin:' + id);
 }
 export async function emptyTrash() {
+  const ids = (await listTrash()).map(r => r.id);
   await tx('trash', 'readwrite', t => { t.objectStore('trash').clear(); });
+  for (const id of ids) await deleteDeviceSetting('origin:' + id);
 }
 /** Drop Papierkorb entries older than `days`. Returns the number removed. */
 export async function purgeOldTrash(days = 30, now = Date.now()) {
   const limit = now - days * 86400000;
   const old = (await listTrash()).filter(r => r.deletedAt < limit);
   if (old.length) await tx('trash', 'readwrite', t => { old.forEach(r => t.objectStore('trash').delete(r.id)); });
+  for (const r of old) await deleteDeviceSetting('origin:' + r.id);
   return old.length;
 }
 
@@ -255,6 +260,20 @@ export async function getSetting(key, fallback = null) {
 export async function setSetting(key, value) {
   await tx('settings', 'readwrite', t => { t.objectStore('settings').put({ key, value }); });
   changed('settings', key, 'put');
+}
+
+// ---- device-only settings (never passed to the sync hooks): file handles, origins …
+export async function getDeviceSetting(key, fallback = null) {
+  try {
+    const r = await tx('settings', 'readonly', t => reqP(t.objectStore('settings').get('device:' + key)));
+    return r ? r.value : fallback;
+  } catch { return fallback; }
+}
+export async function putDeviceSetting(key, value) {
+  await tx('settings', 'readwrite', t => { t.objectStore('settings').put({ key: 'device:' + key, value }); });
+}
+export async function deleteDeviceSetting(key) {
+  try { await tx('settings', 'readwrite', t => { t.objectStore('settings').delete('device:' + key); }); } catch { /* best effort */ }
 }
 
 // ---- crash recovery for the office editors (device-only: never passed to the sync hooks) ----

@@ -721,7 +721,7 @@ export async function mount(screen, { docId }) {
   function showResult(res) {
     stageEl.querySelectorAll('.pt-result').forEach(x => x.remove());
     const wrap = h('<div class="pt-result screen-inner"></div>');
-    const card = resultCard(res, { title: 'Gespeichert', note: `${annots.length} Anmerkung${annots.length === 1 ? '' : 'en'}` });
+    const card = resultCard(res, { from: docId, title: 'Gespeichert', note: `${annots.length} Anmerkung${annots.length === 1 ? '' : 'en'}` });
     const close = h(`<button class="icon-btn pt-result-x" type="button" aria-label="Hinweis schließen">${icon('close')}</button>`);
     close.addEventListener('click', () => wrap.remove());
     card.appendChild(close);

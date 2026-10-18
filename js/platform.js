@@ -126,6 +126,9 @@ async function writeChunked(fs, blob, path, directory) {
   return first;
 }
 
+/** Write a blob in bridge-sized chunks (used by js/origin.js for the write-back copy). */
+export const writeChunkedTo = (fs, blob, path, directory) => writeChunked(fs, blob, path, directory);
+
 function webDownload(blob, name) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -436,7 +439,15 @@ async function nativeItemToFile(it, fi) {
     }
   }
   if (!blob) return null;
-  return new File([blob], name, { type: type || blob.type, lastModified: Date.now() });
+  const file = new File([blob], name, { type: type || blob.type, lastModified: Date.now() });
+  // opened via „Öffnen mit“/„Bearbeiten mit“: remember the original (js/origin.js → „Im Original speichern“)
+  if (it.origin) tagOrigin(file, { type: 'native', token: String(it.origin), writable: !!it.writable, name });
+  return file;
+}
+
+function tagOrigin(file, origin) {
+  try { Object.defineProperty(file, 'faleOrigin', { value: origin, enumerable: false, configurable: true }); } catch { /* ignore */ }
+  return file;
 }
 
 let drainChain = Promise.resolve();
@@ -474,7 +485,7 @@ function setupIncomingWeb() {
   window.launchQueue.setConsumer(async params => {
     if (!params.files || !params.files.length) return;
     try {
-      const files = await Promise.all(params.files.map(fh => fh.getFile()));
+      const files = await Promise.all(params.files.map(async fh => tagOrigin(await fh.getFile(), { type: 'web', handle: fh, name: fh.name })));
       deliverIncoming(files, { source: 'Geöffnet' });
     } catch (e) {
       console.warn(e);

@@ -213,6 +213,7 @@ def make_android(root, cap7=False):
 # ---- Java compile stubs: real signatures of the Android / AndroidX / Capacitor APIs we use ----
 STUBS = {
     'android/os/Parcelable.java': 'package android.os; public interface Parcelable {}',
+    'android/os/ParcelFileDescriptor.java': 'package android.os; public class ParcelFileDescriptor implements java.io.Closeable { public void close() throws java.io.IOException {} }',
     'android/os/Bundle.java': 'package android.os; public class Bundle {}',
     'android/os/Build.java': 'package android.os; public class Build { public static class VERSION { public static final int SDK_INT = 36; } }',
     'android/net/Uri.java': 'package android.net; public abstract class Uri implements android.os.Parcelable { public abstract String getLastPathSegment(); public abstract String getScheme(); public abstract String getAuthority(); public abstract String getPath(); }',
@@ -223,10 +224,11 @@ STUBS = {
     'com/getcapacitor/Bridge.java': 'package com.getcapacitor; public class Bridge { public android.webkit.WebView getWebView() { return null; } }',
     'android/content/ClipData.java': 'package android.content; public class ClipData { public int getItemCount() { return 0; } public Item getItemAt(int i) { return null; } public static class Item { public android.net.Uri getUri() { return null; } } }',
     'android/content/Context.java': 'package android.content; public abstract class Context { public abstract ContentResolver getContentResolver(); public abstract java.io.File getCacheDir(); public abstract String getPackageName(); public abstract android.content.pm.ApplicationInfo getApplicationInfo(); }',
-    'android/content/ContentResolver.java': 'package android.content; public abstract class ContentResolver { public final android.database.Cursor query(android.net.Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) { return null; } public final String getType(android.net.Uri uri) { return null; } public final java.io.InputStream openInputStream(android.net.Uri uri) throws java.io.FileNotFoundException { return null; } }',
+    'android/content/ContentResolver.java': 'package android.content; public abstract class ContentResolver { public final android.database.Cursor query(android.net.Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) { return null; } public final String getType(android.net.Uri uri) { return null; } public final java.io.InputStream openInputStream(android.net.Uri uri) throws java.io.FileNotFoundException { return null; } public final java.io.OutputStream openOutputStream(android.net.Uri uri, String mode) throws java.io.FileNotFoundException { return null; } public final android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri uri, String mode) throws java.io.FileNotFoundException { return null; } }',
     'android/content/Intent.java': '''package android.content;
 public class Intent implements android.os.Parcelable {
   public static final String ACTION_VIEW = "android.intent.action.VIEW";
+  public static final String ACTION_EDIT = "android.intent.action.EDIT";
   public static final String ACTION_SEND = "android.intent.action.SEND";
   public static final String ACTION_SEND_MULTIPLE = "android.intent.action.SEND_MULTIPLE";
   public static final String EXTRA_STREAM = "android.intent.extra.STREAM";

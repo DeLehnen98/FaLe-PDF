@@ -220,7 +220,7 @@ export async function mount(screen, { docId }) {
       const res = await saveResult(out, `${baseName(doc.name)} (Lesezeichen).pdf`);
       saved = JSON.stringify(list);
       resultBox.innerHTML = '';
-      resultBox.appendChild(resultCard(res, { title: 'Lesezeichen gespeichert', note: `${list.length} Einträge` }));
+      resultBox.appendChild(resultCard(res, { from: docId, title: 'Lesezeichen gespeichert', note: `${list.length} Einträge` }));
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Lesezeichen gespeichert.', 'success');
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }

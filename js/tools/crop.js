@@ -262,7 +262,7 @@ export async function mount(screen, { docId }) {
       const out = await saveDoc(pdfDoc);
       const res = await saveResult(out, `${baseName(doc.name)} (zugeschnitten).pdf`);
       resultBox.innerHTML = '';
-      resultBox.appendChild(resultCard(res, { title: 'Zugeschnitten', note: `${list.length - skipped} Seite${list.length - skipped === 1 ? '' : 'n'}` }));
+      resultBox.appendChild(resultCard(res, { from: docId, title: 'Zugeschnitten', note: `${list.length - skipped} Seite${list.length - skipped === 1 ? '' : 'n'}` }));
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast(skipped ? `Zugeschnitten – ${skipped} leere Seite(n) unverändert.` : 'Seiten zugeschnitten.', 'success');
     } catch (e) { errorToast(e, 'Zuschneiden fehlgeschlagen.'); }

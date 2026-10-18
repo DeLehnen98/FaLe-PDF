@@ -123,7 +123,7 @@ export async function mount(screen, { docId }) {
       const res = await saveResult(out, `${baseName(doc.name)} (geschützt).pdf`);
       const box = wrap.querySelector('[data-result]');
       box.innerHTML = '';
-      box.appendChild(resultCard(res, { title: 'Mit Passwort geschützt', note: 'AES-256' }));
+      box.appendChild(resultCard(res, { from: docId, title: 'Mit Passwort geschützt', note: 'AES-256' }));
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       pw1.value = pw2.value = owner.value = '';
       update();
@@ -204,7 +204,7 @@ export async function mountRemove(screen, { docId }) {
       const res = await saveResult(out, `${baseName(doc.name)} (ohne Passwort).pdf`);
       const box = wrap.querySelector('[data-result]');
       box.innerHTML = '';
-      box.appendChild(resultCard(res, { title: 'Schutz entfernt' }));
+      box.appendChild(resultCard(res, { from: docId, title: 'Schutz entfernt' }));
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Ungeschützte Kopie gespeichert.', 'success');
     } catch (e) { errorToast(e, 'Entschlüsseln fehlgeschlagen.'); }

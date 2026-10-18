@@ -136,7 +136,9 @@ export async function pickDocsDialog({ multi = false, title, exclude = [] } = {}
 }
 
 /** Result card shown after a tool produced a new document. */
-export function resultCard(doc, { title = 'Fertig', note = '' } = {}) {
+/** from: id of the library document the result was made from – offers „Original ersetzen“ when that document was
+ *  opened from a file this app may write to (js/origin.js). */
+export function resultCard(doc, { title = 'Fertig', note = '', from = null } = {}) {
   const el = h(`<div class="card result-card" role="status">
     ${thumbHtml(doc)}
     <div class="grow"><div class="result-title">${icon('check')} ${esc(title)}</div>
@@ -149,6 +151,20 @@ export function resultCard(doc, { title = 'Fertig', note = '' } = {}) {
   el.querySelector('[data-r="open"]').addEventListener('click', () => (location.hash = `#/ansicht/${doc.id}`));
   el.querySelector('[data-r="dl"]').addEventListener('click', () => downloadDoc(doc));
   el.querySelector('[data-r="share"]').addEventListener('click', () => shareDoc(doc));
+  if (from && from !== doc.id) {
+    import('./origin.js').then(async O => {
+      const info = await O.originFor(from, '.pdf');
+      if (!info) return;
+      const b = h(`<button class="btn btn-ghost btn-sm" type="button" data-r="original">${icon('export')} Original ersetzen</button>`);
+      b.title = `„${info.name}“ durch diese Fassung ersetzen`;
+      b.addEventListener('click', async () => {
+        b.disabled = true;
+        const ok = await O.replaceOriginalFlow(from, { docId: doc.id, ext: '.pdf' });
+        if (ok) { b.innerHTML = `${icon('check')} Original ersetzt`; } else b.disabled = false;
+      });
+      el.querySelector('.actions').appendChild(b);
+    }).catch(() => {});
+  }
   return el;
 }
 

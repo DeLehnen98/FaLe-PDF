@@ -68,7 +68,7 @@ DOCUMENTS, SPREADSHEETS, PRESENTATIONS
 • Open, edit and create DOCX, XLSX and PPTX
 • Spreadsheets with formulas and charts
 • Templates for CVs, cover letters, invoices, letters and more
-• Crash-safe: unsaved changes are restored
+• Crash-safe – and, if you like, save straight into the original file
 • Letter generators for Germany (cancellation, withdrawal, objection – the letters are written in German)
 
 EVERYDAY

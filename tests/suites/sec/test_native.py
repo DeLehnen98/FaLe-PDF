@@ -567,7 +567,7 @@ def patch_tests():
         check('manifest: adjustResize', act.get(A + 'windowSoftInputMode') == 'adjustResize')
         filters = act.findall('intent-filter')
         acts = [f.find('action').get(A + 'name') for f in filters]
-        check('manifest: MAIN + VIEW + SEND + SEND_MULTIPLE filters', acts == ['android.intent.action.MAIN', 'android.intent.action.VIEW', 'android.intent.action.SEND', 'android.intent.action.SEND_MULTIPLE'], str(acts))
+        check('manifest: MAIN + VIEW + EDIT + SEND + SEND_MULTIPLE filters', acts == ['android.intent.action.MAIN', 'android.intent.action.VIEW', 'android.intent.action.EDIT', 'android.intent.action.SEND', 'android.intent.action.SEND_MULTIPLE'], str(acts))
         for f in filters[1:]:
             mts = [d.get(A + 'mimeType') for d in f.findall('data')]
             ok = all(m in mts for m in ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -606,6 +606,7 @@ def patch_tests():
         check('MainActivity registers FaleIncomingPlugin before super.onCreate', ma.index('registerPlugin(FaleIncomingPlugin.class)') < ma.index('super.onCreate(savedInstanceState)'))
         pl = open(os.path.join(java_dir, 'FaleIncomingPlugin.java')).read()
         check('plugin: name FaleIncoming + methods', '@CapacitorPlugin(name = "FaleIncoming")' in pl and all(f'public void {m}(PluginCall call)' in pl for m in ['takePending', 'readFile', 'release', 'setBarColors']))
+        check('plugin: EDIT intent + write-back to the original (token, write probe, truncating stream, cache-only source)', 'Intent.ACTION_EDIT.equals(action)' in pl and 'public void writeBack(PluginCall call)' in pl and 'openFileDescriptor(uri, "rw")' in pl and 'openOutputStream(uri, "wt")' in pl and 'new File(getContext().getCacheDir(), "writeback")' in pl and 'call.reject("readonly", "readonly")' in pl)
         check('plugin: handles cold start + onNewIntent + 100 MB guard', 'handleIntent(getActivity().getIntent())' in pl and 'protected void handleOnNewIntent(Intent intent)' in pl and '100L * 1024L * 1024L' in pl)
         check('security: plugin setSecure toggles FLAG_SECURE', 'public void setSecure(PluginCall call)' in pl and 'addFlags(WindowManager.LayoutParams.FLAG_SECURE)' in pl and 'clearFlags(WindowManager.LayoutParams.FLAG_SECURE)' in pl)
         check('security: incoming intents – max files, own-data URIs refused', 'MAX_FILES = 50' in pl and 'refusedUri(uri)' in pl and 'getApplicationInfo().dataDir' in pl and 'auth.startsWith(pkg + ".")' in pl)

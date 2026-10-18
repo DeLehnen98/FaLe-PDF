@@ -331,7 +331,7 @@ async function stampSection(box, { docId, getQr, getColor, onResult }) {
         }
       }
       const res = await saveResult(await saveDoc(pdfDoc), `${baseName(doc.name)} (mit QR-Code).pdf`);
-      onResult(resultCard(res, { title: 'QR-Code eingefügt', note: all ? `${list.length} Seiten` : `Seite ${pageNo}` }));
+      onResult(resultCard(res, { from: docId, title: 'QR-Code eingefügt', note: all ? `${list.length} Seiten` : `Seite ${pageNo}` }));
       toast('QR-Code eingefügt.', 'success');
     } catch (e) { errorToast(e, 'Der QR-Code konnte nicht eingefügt werden.'); }
     finally { prog.done(); }

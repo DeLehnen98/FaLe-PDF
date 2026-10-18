@@ -417,7 +417,7 @@ export async function mountSearchable(screen, { docId, params }) {
       const saved = await saveResult(res.bytes, `${baseName(doc.name)} (durchsuchbar).pdf`);
       const box = wrap.querySelector('[data-result]');
       box.innerHTML = '';
-      box.appendChild(resultCard(saved, { title: 'Durchsuchbares PDF erstellt', note: `${res.ocrPages.length} Seite${res.ocrPages.length === 1 ? '' : 'n'} erkannt · ${res.words} Wörter` }));
+      box.appendChild(resultCard(saved, { from: docId, title: 'Durchsuchbares PDF erstellt', note: `${res.ocrPages.length} Seite${res.ocrPages.length === 1 ? '' : 'n'} erkannt · ${res.words} Wörter` }));
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Durchsuchbares PDF gespeichert.', 'success');
     } catch (e) {

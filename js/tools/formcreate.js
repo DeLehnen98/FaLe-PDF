@@ -426,7 +426,7 @@ export async function mount(screen, { docId }) {
       savedSnapshot = snapshot();
       stageEl.querySelectorAll('.pt-result').forEach(x => x.remove());
       const wrap = h('<div class="pt-result screen-inner"></div>');
-      const card = resultCard(res, { title: 'Formular erstellt', note: `${fields.length} Feld${fields.length === 1 ? '' : 'er'}` });
+      const card = resultCard(res, { from: docId, title: 'Formular erstellt', note: `${fields.length} Feld${fields.length === 1 ? '' : 'er'}` });
       const fill = h(`<button class="btn btn-soft btn-sm" type="button">${icon('sign')} Jetzt ausfüllen</button>`);
       fill.addEventListener('click', () => { location.hash = `#/werkzeug/unterschreiben?doc=${res.id}`; });
       card.querySelector('.actions').appendChild(fill);

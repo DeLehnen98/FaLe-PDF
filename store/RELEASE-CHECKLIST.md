@@ -133,6 +133,7 @@
 - [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Abo-Kauf, „für immer“-Kauf, Danke-Beitrag zweimal,
       „Käufe wiederherstellen“, „Abo verwalten oder kündigen“, Erinnerung vor der Verlängerung (Mitteilung kommt 3 Tage vorher)
 - [ ] **Absturzschutz**: Dokument bearbeiten, App über „Zuletzt verwendet“ wegwischen → neu starten → „Wiederherstellen“
+- [ ] **Im Original speichern**: PDF im Dateimanager → „Bearbeiten mit“ → FaLe PDF → z. B. unterschreiben → „Original ersetzen“ → Datei im Dateimanager geändert (mit „Öffnen mit“ wird nur gelesen – dann kein Knopf)
 - [ ] **KI ausblenden**: KI-Einstellungen → „KI komplett ausblenden“ → Startseite, Werkzeuge und Editor-Menüs ohne KI
 - [ ] **Teilen & Übertragen** (online): „Sicher teilen“ → Link per WhatsApp senden → auf anderem Gerät im Browser öffnen;
       „Unterschrift anfordern“ → Link öffnen, unterschreiben → in der App Status „Unterschrieben“ + PDF speichern;

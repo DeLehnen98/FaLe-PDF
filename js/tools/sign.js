@@ -473,7 +473,7 @@ export async function mount(screen, { docId }) {
       const res = await saveResult(out, `${baseName(doc.name)} (${signed ? 'unterschrieben' : 'ausgefüllt'}).pdf`);
       if (signed) trackStat('docs_signed');
       const box = h('<div class="screen-inner" style="padding-top:0"></div>');
-      box.appendChild(resultCard(res, { title: signed ? 'Unterschrieben' : 'Ausgefüllt' }));
+      box.appendChild(resultCard(res, { from: docId, title: signed ? 'Unterschrieben' : 'Ausgefüllt' }));
       $$('.result-card', stage).forEach(x => x.closest('.screen-inner').remove());
       stage.appendChild(box);
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

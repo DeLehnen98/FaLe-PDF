@@ -7,6 +7,8 @@ import { applyTheme, currentTheme } from './theme.js';
 import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, openHash, KINDS } from './office/kinds.js';
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
+import { isNative } from './platform.js';
+import { t } from './i18n/index.js';
 
 const extrasHome = () => import('./extras/home.js');
 const extrasRem = () => import('./extras/reminders.js');
@@ -26,8 +28,33 @@ export async function openPdfFromDevice() {
 }
 
 /** Import any supported files from the device (system picker → also cloud providers on phones). */
+// browsers with the File System Access API (desktop Chrome/Edge): keep the file handles, so edits can later be
+// written back into the original file (js/origin.js). Everywhere else: the normal file input.
+const pickerTypes = () => [{ description: t('PDF, Dokumente, Tabellen, Präsentationen, Bilder'), accept: {
+  'application/pdf': ['.pdf'],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation': ['.pptx'],
+  'text/csv': ['.csv'], 'text/plain': ['.txt'], 'text/markdown': ['.md', '.markdown'],
+  'image/*': ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.bmp'],
+} }];
+async function pickWithHandles() {
+  if (isNative() || typeof window.showOpenFilePicker !== 'function') return null;
+  // automated test browsers keep the classic <input type=file> (their file-chooser hooks) unless a test asks for it
+  try { if (navigator.webdriver && localStorage.getItem('fale-fsa-force') !== '1') return null; } catch { return null; }
+  try {
+    const handles = await window.showOpenFilePicker({ multiple: true, types: pickerTypes() });
+    const { tagFile } = await import('./origin.js');
+    return Promise.all(handles.map(async fh => tagFile(await fh.getFile(), { type: 'web', handle: fh, name: fh.name })));
+  } catch (e) {
+    if (e && e.name === 'AbortError') return [];
+    console.warn('showOpenFilePicker', e);
+    return null; // e.g. blocked in an iframe → classic input
+  }
+}
+
 export async function importFromDevice() {
-  const files = await pickFiles({ accept: ACCEPT_ALL, multiple: true });
+  const files = (await pickWithHandles()) || await pickFiles({ accept: ACCEPT_ALL, multiple: true });
   if (!files.length) return;
   const docs = await importFiles(files, { source: 'Gerät', any: true });
   if (docs.length === 1) location.hash = openHash(docs[0]);

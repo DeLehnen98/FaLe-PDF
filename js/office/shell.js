@@ -44,8 +44,11 @@ export function createShell(screen, opts) {
   const moreBtn = h(`<button class="icon-btn" type="button" data-office-more aria-label="Weitere Aktionen">${oicon('more')}</button>`);
   screen.extra.append(saveBtn, moreBtn);
   saveBtn.addEventListener('click', () => save());
+  let origCache = null; // resolved originInfo() for the menu (menus are built synchronously)
   moreBtn.addEventListener('click', () => {
-    officeMenu(moreBtn, opts.menu ? opts.menu() : [], { label: 'Weitere Aktionen' });
+    const items = opts.menu ? opts.menu() : [];
+    if (origCache) items.unshift({ label: `Im Original speichern („${origCache.name}“)`, icon: 'upload', onClick: async () => { const meta = await save({ quiet: true }); if (meta) replaceOriginal(meta.id); } }, '-');
+    officeMenu(moreBtn, items, { label: 'Weitere Aktionen' });
   });
 
   const onKey = e => {
@@ -86,7 +89,13 @@ export function createShell(screen, opts) {
         rec.saved();
         setHashSilently(`#/bearbeiten/${meta.id}`);
       }
-      if (!quiet) toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success');
+      const orig = asCopy ? null : await originInfo();
+      if (orig && S.autoOriginal) {
+        const ok = await writeOriginalQuiet(meta.id);
+        if (!quiet) toast(ok ? `Gespeichert – auch in „${orig.name}“` : 'Gespeichert (nur in FaLe PDF)', ok ? 'success' : 'info');
+      } else if (!quiet) {
+        toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success', orig ? { timeout: 8000, action: { label: 'Auch Original ersetzen', onClick: () => replaceOriginal(meta.id) } } : {});
+      }
       opts.onSaved && opts.onSaved(meta);
       return meta;
     } catch (e) {
@@ -97,6 +106,25 @@ export function createShell(screen, opts) {
     }
   }
 
+  // „Im Original speichern“: the file was opened from another app / the browser's file picker (js/origin.js)
+  let originP = null;
+  function originInfo() {
+    if (!S.id) return Promise.resolve(null);
+    if (!originP) originP = import('../origin.js').then(O => O.originFor(S.id, KINDS[S.kind] && KINDS[S.kind].ext)).catch(() => null);
+    return originP;
+  }
+  async function replaceOriginal(id) {
+    const O = await import('../origin.js');
+    const ok = await O.replaceOriginalFlow(id, { docId: id, ext: KINDS[S.kind].ext });
+    if (ok) S.autoOriginal = true; // from now on every save updates the original too (this editor session)
+    return ok;
+  }
+  async function writeOriginalQuiet(id) {
+    try { const O = await import('../origin.js'); await O.writeOriginal(id, await db.getFile(id)); return true; } catch (e) { console.warn('original', e); return false; }
+  }
+
+  originInfo().then(o => { origCache = o; });
+
   function markDirty() { rec.touch(); if (!S.dirty) { S.dirty = true; paint(); } }
   paint();
   return {
@@ -105,6 +133,7 @@ export function createShell(screen, opts) {
     get id() { return S.id; },
     setClean() { S.dirty = false; rec.saved(); paint(); },
     recovery: rec,
+    originInfo, replaceOriginal,
     async saveAsKind(blob, kind, suffix = '') {
       const meta = await saveFile({ blob, name: stripExt(S.name) + suffix + KINDS[kind].ext, kind });
       toast(`„${meta.name}“ gespeichert`, 'success', { action: { label: 'Öffnen', onClick: () => { location.hash = `#/bearbeiten/${meta.id}`; } } });

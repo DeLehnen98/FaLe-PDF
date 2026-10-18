@@ -157,7 +157,9 @@ export async function importFiles(files, opts = {}) {
     const f = list[i];
     prog && prog.set(`Importiere ${i + 1} von ${list.length} …`);
     try {
-      done.push(await (opts.any ? importAny(f, { ...opts, quiet: list.length > 1 }) : importPdf(f, { ...opts, quiet: list.length > 1 })));
+      const d = await (opts.any ? importAny(f, { ...opts, quiet: list.length > 1 }) : importPdf(f, { ...opts, quiet: list.length > 1 }));
+      done.push(d);
+      if (d && f && f.faleOrigin) await (await import('./origin.js')).rememberFromFile(d.id, f).catch(e => console.warn('origin', e));
     } catch (err) {
       toast(err.userMessage || `„${f.name}“ konnte nicht geöffnet werden.`, 'error', { timeout: 5000 });
       if (!err.userMessage) console.warn(err);

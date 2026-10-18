@@ -285,7 +285,7 @@ export async function mount(screen, { docId }) {
       savedSnapshot = JSON.stringify(marks);
       stageEl.querySelectorAll('.pt-result').forEach(x => x.remove());
       const wrap = h('<div class="pt-result screen-inner"></div>');
-      wrap.appendChild(resultCard(res, { title: 'Geschwärzt', note: 'Inhalte dauerhaft entfernt' }));
+      wrap.appendChild(resultCard(res, { from: docId, title: 'Geschwärzt', note: 'Inhalte dauerhaft entfernt' }));
       stageEl.prepend(wrap);
       stageEl.scrollTo({ top: 0, behavior: 'smooth' });
       toast('Geschwärzte Kopie gespeichert.', 'success');

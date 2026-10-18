@@ -141,7 +141,7 @@ export async function mount(screen, { docId }) {
       const out = await build(pages);
       const res = await saveResult(await saveDoc(out), `${baseName(doc.name)} (bearbeitet).pdf`);
       resultBox.innerHTML = '';
-      resultBox.appendChild(resultCard(res, { title: 'Gespeichert' }));
+      resultBox.appendChild(resultCard(res, { from: docId, title: 'Gespeichert' }));
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Neue Version gespeichert.', 'success');
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
