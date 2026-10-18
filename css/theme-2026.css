@@ -418,3 +418,8 @@ html.simple .viewer .vbar-top .icon-btn[data-label] .ic { width: 22px; height: 2
   html.simple .viewer.has-find .v-container .pdfViewer { padding-top: calc(132px + var(--safe-t)); }
   html.simple .viewer .vbar-top .icon-btn[data-label] { min-width: 44px; padding: 4px 3px; }
 }
+
+/* Start hero on phones: the paper art sits top right – keep the intro text clear of it (longer languages wrap more) */
+@media (max-width: 600px) {
+  #view-start .hero p { max-width: calc(100% - 92px); }
+}
