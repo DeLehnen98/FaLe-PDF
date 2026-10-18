@@ -42,6 +42,7 @@ function selfTest(docId, rec) {
   if (!isNative()) return;
   // rec.e2e: set by the native test builds only (iOS FaleE2E flag); Capacitor.DEBUG: debug builds
   if (!(debug || rec.e2e === true) || rec.type !== 'native' || rec.name !== 'fale-e2e-writeback.pdf') return;
+  console.info('FALE-E2E self-test: imported, writing back');
   setTimeout(async () => {
     try {
       const blob = await db.getFile(docId);

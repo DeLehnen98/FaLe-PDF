@@ -51,7 +51,7 @@ proc = subprocess.Popen(['xcrun', 'simctl', 'launch', '--console-pty', '--termin
                         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
 threading.Thread(target=lambda: [lines.append(l.rstrip('\n')) for l in proc.stdout], daemon=True).start()
 has = lambda s: any(s in l for l in lines)
-ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 90)
+ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 180)
 time.sleep(3)
 sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/start.png', check=False)
 errors = [l for l in lines if '[error]' in l and 'FALE-E2E' not in l]
@@ -66,10 +66,15 @@ try:
     doc = os.path.join(data, 'Documents', 'fale-e2e-writeback.pdf')
     os.makedirs(os.path.dirname(doc), exist_ok=True)
     content = 'BT /F1 24 Tf 72 760 Td (FaLe E2E iOS) Tj ET'
-    pdf = ('%PDF-1.4\n1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n'
-           '3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj\n'
-           f'4 0 obj << /Length {len(content)} >> stream\n{content}\nendstream endobj\n5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n'
-           'trailer << /Root 1 0 R >>\n%%EOF\n')
+    objs = ['<< /Type /Catalog /Pages 2 0 R >>', '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+            '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>',
+            f'<< /Length {len(content)} >>\nstream\n{content}\nendstream', '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>']
+    pdf, offs = '%PDF-1.4\n', []
+    for i, o in enumerate(objs):
+        offs.append(len(pdf)); pdf += f'{i + 1} 0 obj\n{o}\nendobj\n'
+    xref = len(pdf)
+    pdf += f'xref\n0 {len(objs) + 1}\n0000000000 65535 f \n' + ''.join(f'{o:010d} 00000 n \n' for o in offs)
+    pdf += f'trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n'
     open(doc, 'w').write(pdf)
     before = os.path.getsize(doc)
     # 2a. through a URL (like „Öffnen in“) – only a diagnostic: simctl delivery of URLs is not reliable on CI
