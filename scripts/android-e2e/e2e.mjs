@@ -360,39 +360,6 @@ async function main() {
     const hash = await waitJs(`location.hash.includes(${JSON.stringify(d.id)}) && location.hash`, { timeout: 10000 });
     return `importiert und geöffnet (${hash})`;
   });
-  // ---- „Bearbeiten mit“ (EDIT + write grant) → „Im Original speichern“ writes back into the original file ----
-  await step('Im Original speichern (EDIT-Intent mit Schreibrecht)', async () => {
-    const name = 'e2e-edit.pdf';
-    const local2 = join(OUT, name);
-    writeFileSync(local2, makePdf(`Original ${MARK}`));
-    adb(['push', local2, '/sdcard/Download/' + name]);
-    sh('am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/' + name, { allowFail: true });
-    let uri = '';
-    for (let i = 0; i < 10 && !uri; i++) {
-      const q = sh(`content query --uri content://media/external/file --projection _id:_display_name --where "_display_name='${name}'"`, { allowFail: true });
-      const m = q.match(/_id=(\d+)/);
-      if (m) uri = `content://media/external/file/${m[1]}`;
-      else await sleep(1500);
-    }
-    if (!uri) throw new Error('MediaStore kennt die Testdatei nicht');
-    const am = sh(`am start -W -a android.intent.action.EDIT -d ${uri} -t application/pdf --grant-read-uri-permission --grant-write-uri-permission -n ${PKG}/.MainActivity`, { allowFail: true });
-    await sleep(2500);
-    if (cdp.closed || cdp.pid !== appPid()) { await connect(); await ev(HELPERS); }
-    const d = await waitFor(async () => (await docs()).find(x => x.name === name), { timeout: 20000 });
-    if (!d) throw new Error(`EDIT-Datei kam nicht an (am: ${am.replace(/\s+/g, ' ').slice(0, 200)})`);
-    const info = await ev(`return (await import('/js/origin.js')).originFor(${JSON.stringify(d.id)}, '.pdf');`);
-    if (!info) throw new Error('Schreibrecht wurde nicht erkannt (originFor = null)');
-    const changed = makePdf(`Geaendert ${MARK}`);
-    await ev(`const O = await import('/js/origin.js'); const b = Uint8Array.from(atob(${JSON.stringify(changed.toString('base64'))}), c => c.charCodeAt(0));
-      await O.writeOriginal(${JSON.stringify(d.id)}, new Blob([b], { type: 'application/pdf' })); return true;`);
-    const back = join(OUT, 'e2e-edit-back.pdf');
-    adb(['pull', '/sdcard/Download/' + name, back]);
-    const got = readFileSync(back, 'latin1');
-    if (!got.includes(`Geaendert ${MARK}`)) throw new Error('Originaldatei wurde nicht überschrieben');
-    if (got.length !== changed.length) throw new Error(`Originaldatei hat falsche Länge (${got.length} statt ${changed.length} – nicht gekürzt?)`);
-    return `Original ersetzt (${info.where}, ${changed.length} Bytes)`;
-  });
-
   if (!docId) {
     // fallback so the remaining tests can run: import inside the page
     await ensureApp();
@@ -519,6 +486,40 @@ async function main() {
     const info = await pdfInfo(d.id);
     if (!info.images) throw new Error('gespeicherte PDF enthält kein Unterschriftsbild');
     return `„${d.name}“ mit ${info.images} Bild(ern), ${drawn} Pixel gezeichnet`;
+  });
+
+  // ---- „Bearbeiten mit“ (EDIT + write grant) → „Im Original speichern“ writes back into the original file ----
+  // (runs last: on the API 34 image the extra intent can leave the launcher focused for later UI steps)
+  await step('Im Original speichern (EDIT-Intent mit Schreibrecht)', async () => {
+    const name = 'e2e-edit.pdf';
+    const local2 = join(OUT, name);
+    writeFileSync(local2, makePdf(`Original ${MARK}`));
+    adb(['push', local2, '/sdcard/Download/' + name]);
+    sh('am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/' + name, { allowFail: true });
+    let uri = '';
+    for (let i = 0; i < 10 && !uri; i++) {
+      const q = sh(`content query --uri content://media/external/file --projection _id:_display_name --where "_display_name='${name}'"`, { allowFail: true });
+      const m = q.match(/_id=(\d+)/);
+      if (m) uri = `content://media/external/file/${m[1]}`;
+      else await sleep(1500);
+    }
+    if (!uri) throw new Error('MediaStore kennt die Testdatei nicht');
+    const am = sh(`am start -W -a android.intent.action.EDIT -d ${uri} -t application/pdf --grant-read-uri-permission --grant-write-uri-permission -n ${PKG}/.MainActivity`, { allowFail: true });
+    await sleep(2500);
+    if (cdp.closed || cdp.pid !== appPid()) { await connect(); await ev(HELPERS); }
+    const d = await waitFor(async () => (await docs()).find(x => x.name === name), { timeout: 20000 });
+    if (!d) throw new Error(`EDIT-Datei kam nicht an (am: ${am.replace(/\s+/g, ' ').slice(0, 200)})`);
+    const info = await ev(`return (await import('/js/origin.js')).originFor(${JSON.stringify(d.id)}, '.pdf');`);
+    if (!info) throw new Error('Schreibrecht wurde nicht erkannt (originFor = null)');
+    const changed = makePdf(`Geaendert ${MARK}`);
+    await ev(`const O = await import('/js/origin.js'); const b = Uint8Array.from(atob(${JSON.stringify(changed.toString('base64'))}), c => c.charCodeAt(0));
+      await O.writeOriginal(${JSON.stringify(d.id)}, new Blob([b], { type: 'application/pdf' })); return true;`);
+    const back = join(OUT, 'e2e-edit-back.pdf');
+    adb(['pull', '/sdcard/Download/' + name, back]);
+    const got = readFileSync(back, 'latin1');
+    if (!got.includes(`Geaendert ${MARK}`)) throw new Error('Originaldatei wurde nicht überschrieben');
+    if (got.length !== changed.length) throw new Error(`Originaldatei hat falsche Länge (${got.length} statt ${changed.length} – nicht gekürzt?)`);
+    return `Original ersetzt (${info.where}, ${changed.length} Bytes)`;
   });
 
   writeFileSync(join(OUT, 'console.txt'), consoleLog.join('\n'));
