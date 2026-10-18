@@ -19,7 +19,7 @@
     "lede": "Öffne jede PDF direkt im Browser – mit Suche, Zoom und Nachtmodus. Die Datei bleibt auf deinem Gerät.",
     "pickLabel": "PDF öffnen",
     "primaryButton": "Lesen",
-    "keywords": ["pdf öffnen", "pdf online lesen", "pdf anzeigen", "pdf reader", "pdf viewer", "pdf öffnen handy", "pdf lesen ohne app", "pdf mit passwort öffnen"],
+    "keywords": ["pdf öffnen", "pdf online lesen", "pdf anzeigen", "pdf reader", "pdf viewer", "pdf öffnen handy", "pdf lesen ohne app", "pdf mit passwort öffnen", "pdf drucken", "pdf ausdrucken"],
     "steps": [
       {"title": "PDF wählen", "text": "Tipp auf „PDF öffnen“ und wähl die Datei. Ist sie mit Passwort geschützt, gibst du es direkt hier ein."},
       {"title": "Lesen", "text": "Die PDF öffnet sich bildschirmfüllend. Scroll durch die Seiten, zoom mit zwei Fingern oder spring zu einer Seite."},
@@ -49,7 +49,7 @@
     "lede": "Open any PDF right in your browser – with search, zoom and night mode. The file stays on your device.",
     "pickLabel": "Open PDF",
     "primaryButton": "Read",
-    "keywords": ["pdf viewer", "open pdf", "read pdf online", "pdf reader", "view pdf on phone", "open password protected pdf"],
+    "keywords": ["pdf viewer", "open pdf", "read pdf online", "pdf reader", "view pdf on phone", "open password protected pdf", "print pdf"],
     "steps": [
       {"title": "Choose PDF", "text": "Tap “Open PDF” and pick the file. If it is password-protected, enter the password right here."},
       {"title": "Read", "text": "The PDF opens full screen. Scroll through the pages, pinch to zoom or jump to a page."},

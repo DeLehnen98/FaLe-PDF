@@ -421,3 +421,39 @@ a.store-badge:hover { border-color: var(--primary); }
 a.store-badge:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .store-badge.is-soon { opacity: 0.75; border-style: dashed; }
 .section .store-row { margin: 0 0 16px; }
+
+/* ---------- Home: task first ("Was möchtest du erledigen?") – big labelled buttons + one search ---------- */
+.hero-task h1 { max-width: 18ch; }
+.home-search { display: flex; align-items: center; gap: 8px; margin-top: 22px; max-width: 640px; padding: 6px 6px 6px 16px; background: var(--surface); border: 2px solid var(--border-strong); border-radius: 999px; }
+.home-search:focus-within { border-color: var(--primary); }
+.home-search-ic { display: grid; place-items: center; color: var(--text-3); flex: none; }
+.home-search-ic svg { width: 22px; height: 22px; }
+.home-search input { flex: 1; min-width: 0; min-height: 48px; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.0625rem; }
+.home-search input:focus { outline: none; }
+.home-search input::placeholder { color: var(--text-3); }
+.home-search .btn { flex: none; }
+.tasks { list-style: none; display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
+@media (min-width: 560px) { .tasks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .tasks { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 30px; } }
+.task { display: flex; align-items: center; gap: 14px; height: 100%; min-height: 76px; padding: 14px 16px 14px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); text-decoration: none; box-shadow: var(--shadow-sm, none); transition: border-color 0.15s ease; }
+.task:hover { border-color: var(--primary); }
+.task-ic { flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); }
+.task-ic svg { width: 26px; height: 26px; }
+.task-merge .task-ic, .task-shrink .task-ic, .task-photo .task-ic { background: var(--accent-soft); color: var(--accent); }
+.task-letter .task-ic, .task-cv .task-ic { background: var(--warn-soft); color: var(--warn); }
+.task-t { display: grid; gap: 2px; min-width: 0; }
+.task-t strong { font-size: 1.0625rem; font-weight: 750; line-height: 1.25; }
+.task-t span { font-size: 0.9375rem; color: var(--text-2); line-height: 1.35; }
+.home-more { margin-top: 18px; }
+.home-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; color: var(--text-2); font-weight: 650; font-size: 0.9375rem; }
+.home-facts li { display: inline-flex; align-items: center; gap: 6px; }
+.home-facts svg { width: 18px; height: 18px; color: var(--accent); }
+.home-app { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.home-app img { width: 72px; height: 72px; }
+.home-app h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+.home-app p { margin-top: 8px; color: var(--text-2); max-width: 60ch; }
+.home-app .btn-row { margin-top: 18px; }
+@media (min-width: 720px) { .home-app { grid-template-columns: 72px 1fr; gap: 24px; padding: 32px; } }
+.home-others-h { margin: 28px 0 12px; font-size: 1.125rem; }
+@media (min-width: 900px) { .app-rows-2 { grid-template-columns: repeat(2, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .task { transition: none; } }

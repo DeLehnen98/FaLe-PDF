@@ -28,6 +28,12 @@ function init(cfg) {
     searchBox.hidden = false;
     q.addEventListener('input', apply);
     q.addEventListener('keydown', ev => { if (ev.key === 'Escape') { q.value = ''; apply(); } });
+    // search from the home page: /werkzeuge/?q=kündigung
+    const fromHome = new URLSearchParams(location.search).get('q');
+    if (fromHome) {
+      q.value = fromHome.slice(0, 80);
+      queueMicrotask(() => { apply(); searchBox.scrollIntoView({ block: 'start' }); });
+    }
   }
   for (const chip of chips) {
     chip.addEventListener('click', ev => {
@@ -82,7 +88,48 @@ function init(cfg) {
     }
     if (popular) popular.hidden = words.length > 0 || !!cat;
     if (nohits) nohits.hidden = hits > 0;
+    showBest(words, hits);
     if (live && words.length) live.textContent = lang === 'de' ? `${hits} ${hits === 1 ? 'Werkzeug' : 'Werkzeuge'} gefunden` : `${hits} ${hits === 1 ? 'tool' : 'tools'} found`;
+  }
+
+  // "Beste Treffer": the matching tools are listed by topic, so the obvious one (search "unterschreiben" →
+  // "PDF unterschreiben") can sit far down. Show up to 3 best matches first – a word in the tool's name counts most.
+  let best = null;
+  function showBest(words, hits) {
+    if (!best) {
+      if (!words.length || !nohits) return;
+      best = document.createElement('section');
+      best.className = 'wt-catsec wt-popular wt-best';
+      best.setAttribute('aria-labelledby', 'best-h');
+      const head = document.createElement('div'); head.className = 'wt-catsec-head';
+      const h2 = document.createElement('h2'); h2.id = 'best-h'; h2.textContent = lang === 'de' ? 'Beste Treffer' : 'Best matches';
+      head.append(h2);
+      const ul = document.createElement('ul'); ul.className = 'wt-grid wt-rows';
+      best.append(head, ul);
+      nohits.after(best);
+    }
+    const ul = best.querySelector('ul');
+    ul.replaceChildren();
+    if (!words.length || cat || hits < 2) { best.hidden = true; return; }
+    const seen = new Set(), scored = [];
+    const pop = new Set([...(popular?.querySelectorAll('[data-wt-tool]') || [])].map(c => c.dataset.wtTool));
+    sections.forEach((sec, si) => sec.querySelectorAll('[data-wt-tool]').forEach((card, ci) => {
+      if (card.hidden || seen.has(card.dataset.wtTool)) return;
+      seen.add(card.dataset.wtTool);
+      const name = fold(card.querySelector('.wt-card-name')?.textContent);
+      const desc = fold(card.querySelector('.wt-card-desc')?.textContent);
+      const score = words.reduce((n, w) => n + (name.includes(w) ? 3 : 0) + (name.startsWith(w) ? 1 : 0) + (desc.includes(w) ? 1 : 0), 0)
+        + (pop.has(card.dataset.wtTool) ? 1 : 0);
+      scored.push({ card, score, pos: si * 1000 + ci });
+    }));
+    scored.sort((a, b) => b.score - a.score || a.pos - b.pos);
+    const top = scored.filter(x => x.score > 0).slice(0, 3);
+    for (const { card } of top) {
+      const li = card.cloneNode(true);
+      li.removeAttribute('data-wt-tool'); li.hidden = false;
+      ul.append(li);
+    }
+    best.hidden = top.length === 0;
   }
 
   // ---------------------------------------------------------------- files shared to the app

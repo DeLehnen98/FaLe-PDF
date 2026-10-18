@@ -104,7 +104,9 @@ export const WEB_TOOLS = [
     "pdf viewer",
     "pdf öffnen handy",
     "pdf lesen ohne app",
-    "pdf mit passwort öffnen"
+    "pdf mit passwort öffnen",
+    "pdf drucken",
+    "pdf ausdrucken"
    ],
    "name": "PDF öffnen & lesen",
    "short": "PDF online lesen – zoomen, suchen, Inhaltsverzeichnis, Nachtmodus.",
@@ -117,7 +119,8 @@ export const WEB_TOOLS = [
     "read pdf online",
     "pdf reader",
     "view pdf on phone",
-    "open password protected pdf"
+    "open password protected pdf",
+    "print pdf"
    ],
    "name": "PDF viewer",
    "short": "Read PDFs online – zoom, search, contents, night mode.",

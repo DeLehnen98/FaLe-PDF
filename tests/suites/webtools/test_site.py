@@ -56,7 +56,7 @@ with Suite('site') as s:
     s.expect(not list(NET.rglob('__pycache__')), '__pycache__ inside network/')
 
     # 2. the hand-written pages (home, apps, konto, legal) match the snapshot in ../network_before (refreshed with the simple-pages redesign 2026-10-16 and the
-    #    clarity redesign 2026-10: DE|EN switch, 4-item nav, entry cards; support link in menu + footer 2026-10-17; FaLe PDF page as search landing, app links in a new tab 2026-10-17; store buttons on the FaLe PDF page 2026-10-18; app links to pdf.fale.network/app/ 2026-10-18); only the generated tools teaser may differ
+    #    clarity redesign 2026-10: DE|EN switch, 4-item nav, entry cards; support link in menu + footer 2026-10-17; FaLe PDF page as search landing, app links in a new tab 2026-10-17; store buttons on the FaLe PDF page 2026-10-18; app links to pdf.fale.network/app/ 2026-10-18; task-first home with search 2026-10-18); only the generated tools teaser may differ
     if BEFORE.exists():
         strip = lambda t: re.sub(r'  <section class="section section-tight" id="werkzeuge".*?</section>\n\n', '', t, flags=re.S)
         for old in sorted(BEFORE.rglob('*.html')):

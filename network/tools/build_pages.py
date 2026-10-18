@@ -278,72 +278,91 @@ def pill(kind, text):
 
 
 # ================================================================= HOME
-# Kept deliberately short: one screen for "what is this", one for "where do I click". Every sentence must be
-# understandable without context – the target group is everyone, including people who rarely use computers.
+# Task first, in everyday words: the first screen answers "what do you want to do?" with big, labelled buttons and a
+# search – no product categories to understand first. Target group: everyone, including people who rarely use a
+# computer (e.g. someone aged 65+ who just wants to sign a form). Every sentence must make sense without context.
 ONE_ORIGIN = 'https://faleone.com'
+# icons for the task buttons (24 px stroke); the task wording below is deliberately plainer than the tool names
+TASK_ICONS = {
+    'view': '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    'form': '<rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4.5"/>',
+    'sign': '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+    'merge': '<rect x="3" y="3.5" width="8" height="10" rx="1.5"/><rect x="13" y="3.5" width="8" height="10" rx="1.5"/><path d="M7 13.5v3h10v-3M12 16.5v4"/>',
+    'shrink': '<path d="M4 14h6v6M20 10h-6V4M14 10l6.5-6.5M3.5 20.5 10 14"/>',
+    'photo': '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',
+    'letter': '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+    'cv': '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5"/>',
+    'search': '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+}
 HOME = {
     'de': {
-        'title': 'FaleNetwork – freie Werkzeuge, Vorlagen und Apps',
-        'desc': 'Kostenlose PDF- und Bild-Werkzeuge, Vorlagen für Bewerbung, Briefe und Tabellen sowie die FaLe-Apps. Kein Konto nötig, Verarbeitung auf deinem Gerät, kein Tracking.',
-        'h1': 'Kostenlose Werkzeuge, Vorlagen und Apps.',
-        'lede': 'Ohne Anmeldung, ohne Tracking. Deine Dateien bleiben auf deinem Gerät.',
-        'entry_label': 'Womit willst du anfangen?',
-        'entries': [('tools', 'Werkzeuge', 'PDF und Bilder bearbeiten'),
-                    ('templates', 'Vorlagen', 'Bewerbung, Lebenslauf, Briefe'),
-                    ('apps', 'Apps', 'FaLe PDF und FaLe One')],
-        'tools_h': 'Oft genutzt',
-        'tools_all': 'Alle {n} Werkzeuge', 'tools_label': 'Oft genutzte Werkzeuge',
-        'apps_h': 'Die Apps',
+        'title': 'FaleNetwork – kostenlose Helfer für PDF, Fotos und Briefe',
+        'desc': 'PDF ansehen, ausfüllen, unterschreiben, zusammenfügen und verkleinern, Fotos in PDF umwandeln, Kündigung und Lebenslauf schreiben – kostenlos, ohne Anmeldung, direkt auf deinem Gerät.',
+        'h1': 'Was möchtest du erledigen?',
+        'lede': 'Kostenlose Helfer für PDF, Fotos und Briefe. Einfach anklicken – ohne Anmeldung.',
+        'facts': ['Kostenlos', 'Ohne Anmeldung', 'Deine Dateien bleiben bei dir'],
+        'search_label': 'Was suchst du?', 'search_ph': 'z. B. Kündigung oder Foto', 'search_btn': 'Suchen',
+        'tasks_label': 'Häufige Aufgaben',
+        'tasks': [
+            ('pdf-viewer', 'view', 'PDF ansehen oder drucken', 'Datei öffnen, vergrößern, ausdrucken'),
+            ('fill-pdf-form', 'form', 'Formular ausfüllen', 'In die Felder tippen, fertig'),
+            ('sign-pdf', 'sign', 'PDF unterschreiben', 'Mit dem Finger oder der Maus'),
+            ('merge-pdf', 'merge', 'PDFs zusammenfügen', 'Mehrere Dateien zu einer'),
+            ('compress-pdf', 'shrink', 'PDF verkleinern', 'Damit sie per E-Mail passt'),
+            ('photo-to-pdf', 'photo', 'Foto in PDF umwandeln', 'Zum Beispiel einen abfotografierten Brief'),
+            ('cancellation-letter', 'letter', 'Kündigung schreiben', 'Handy, Strom, Fitnessstudio und mehr'),
+            ('cv-builder', 'cv', 'Lebenslauf erstellen', 'Mit Vorlage, Schritt für Schritt'),
+        ],
+        'more_tools': 'Alle {n} Werkzeuge', 'more_templates': 'Alle Vorlagen',
+        'app_h': 'Alles in einem Programm: FaLe PDF',
+        'app_p': 'Lesen, ausfüllen, unterschreiben, scannen und umwandeln – in einem kostenlosen Programm, ohne Abo. Läuft im Browser; als App für Handy und Computer bald auch zum Herunterladen.',
+        'app_open': 'Im Browser öffnen', 'app_more': 'Mehr erfahren',
+        'others_h': 'Weitere Apps',
         'live': 'Verfügbar', 'coming': 'Bald',
         'apps': [
-            ('pdf', 'FaLe PDF', 'live', 'Das kostenlose PDF-Programm: lesen, ausfüllen, unterschreiben, scannen.', '/apps/pdf/'),
             ('one', 'FaLe One', 'live', 'Fotos und Dateien sicher speichern – nur für dich lesbar.', ONE_ORIGIN + '/'),
             ('clean', 'FaLe Clean', 'soon', 'Räumt Windows-PCs auf. Noch in der Testphase.', '/apps/clean/'),
-        ],
-        'apps_more': 'Mehr über FaLe PDF', 'apps_more2': 'Mehr über FaLe Clean',
-        'prom_h': 'Darauf kannst du dich verlassen',
-        'promises': [
-            ('no-user', 'Kein Konto nötig', 'Öffnen und loslegen.'),
-            ('device', 'Bleibt bei dir', 'Dateien werden auf deinem Gerät bearbeitet.'),
-            ('shield', 'Kein Tracking', 'Keine Werbebanner, kein Datenverkauf.'),
         ],
         'faq_h': 'Häufige Fragen',
         'faq': [
             ('Kostet das etwas?', 'Nein. Fast alles läuft auf deinem Gerät, das kostet uns nichts. Nur die freiwillige Cloud-KI verursacht Kosten – dafür gibt es jeden Tag eine Anzahl kostenloser Anfragen.'),
-            ('Brauche ich ein Konto?', 'Nein. Alles funktioniert ohne Konto. Ein FaLe-Konto brauchst du nur, wenn du Dateien zwischen deinen Geräten synchronisieren oder FaLe One nutzen willst.'),
+            ('Muss ich etwas installieren oder mich anmelden?', 'Nein. Alles läuft direkt im Browser, ohne Anmeldung. Ein FaLe-Konto brauchst du nur, wenn du Dateien zwischen deinen Geräten synchronisieren willst.'),
             ('Werden meine Dateien hochgeladen?', 'Nein, nicht von selbst. Dateien verlassen dein Gerät nur, wenn du sie bewusst teilst oder eine Cloud-Funktion nutzt – und dann Ende-zu-Ende-verschlüsselt, wo immer möglich.'),
             ('Wer steckt dahinter?', 'FaLe.dev, ein unabhängiger Entwickler aus dem Saarland. Die vollständigen Angaben stehen im <a href="/impressum/">Impressum</a>.'),
         ],
     },
     'en': {
-        'title': 'FaleNetwork – free tools, templates and apps',
-        'desc': 'Free PDF and image tools, templates for CVs, letters and spreadsheets, and the FaLe apps. No account needed, processing on your device, no tracking.',
-        'h1': 'Free tools, templates and apps.',
-        'lede': 'No sign-up, no tracking. Your files stay on your device.',
-        'entry_label': 'Where do you want to start?',
-        'entries': [('tools', 'Tools', 'Edit PDFs and images'),
-                    ('templates', 'Templates', 'CVs, cover letters, letters'),
-                    ('apps', 'Apps', 'FaLe PDF and FaLe One')],
-        'tools_h': 'Popular',
-        'tools_all': 'All {n} tools', 'tools_label': 'Popular tools',
-        'apps_h': 'The apps',
+        'title': 'FaleNetwork – free helpers for PDFs, photos and letters',
+        'desc': 'View, fill in, sign, merge and shrink PDFs, turn photos into PDFs, write cancellation letters and CVs – free, no sign-up, right on your device.',
+        'h1': 'What do you want to do?',
+        'lede': 'Free helpers for PDFs, photos and letters. Just click – no sign-up.',
+        'facts': ['Free', 'No sign-up', 'Your files stay with you'],
+        'search_label': 'What are you looking for?', 'search_ph': 'e.g. cancellation or photo', 'search_btn': 'Search',
+        'tasks_label': 'Common tasks',
+        'tasks': [
+            ('pdf-viewer', 'view', 'View or print a PDF', 'Open, zoom in, print'),
+            ('fill-pdf-form', 'form', 'Fill in a form', 'Type into the fields, done'),
+            ('sign-pdf', 'sign', 'Sign a PDF', 'With your finger or the mouse'),
+            ('merge-pdf', 'merge', 'Merge PDFs', 'Several files into one'),
+            ('compress-pdf', 'shrink', 'Make a PDF smaller', 'So it fits into an email'),
+            ('photo-to-pdf', 'photo', 'Turn a photo into a PDF', 'For example a letter you photographed'),
+            ('cancellation-letter', 'letter', 'Write a cancellation letter', 'Phone, energy, gym and more'),
+            ('cv-builder', 'cv', 'Create a CV', 'With a template, step by step'),
+        ],
+        'more_tools': 'All {n} tools', 'more_templates': 'All templates',
+        'app_h': 'Everything in one program: FaLe PDF',
+        'app_p': 'Read, fill in, sign, scan and convert – in one free program, no subscription. Runs in the browser; as an app for phone and computer soon to download, too.',
+        'app_open': 'Open in the browser', 'app_more': 'Learn more',
+        'others_h': 'More apps',
         'live': 'Available', 'coming': 'Soon',
         'apps': [
-            ('pdf', 'FaLe PDF', 'live', 'The free PDF program: read, fill in, sign, scan.', '/en/apps/pdf/'),
             ('one', 'FaLe One', 'live', 'Store photos and files safely – readable only by you.', ONE_ORIGIN + '/'),
             ('clean', 'FaLe Clean', 'soon', 'Cleans up Windows PCs. Still in testing.', '/en/apps/clean/'),
-        ],
-        'apps_more': 'More about FaLe PDF', 'apps_more2': 'More about FaLe Clean',
-        'prom_h': 'What you can count on',
-        'promises': [
-            ('no-user', 'No account needed', 'Open it and get started.'),
-            ('device', 'Stays with you', 'Files are processed on your device.'),
-            ('shield', 'No tracking', 'No banner ads, no selling of data.'),
         ],
         'faq_h': 'Frequently asked questions',
         'faq': [
             ('Does it cost anything?', 'No. Almost everything runs on your device, which costs us nothing. Only the optional cloud AI has real costs – there is a number of free requests every day.'),
-            ('Do I need an account?', 'No. Everything works without an account. You only need a FaLe Account to sync files between your devices or to use FaLe One.'),
+            ('Do I have to install anything or sign up?', 'No. Everything runs right in the browser, without signing up. You only need a FaLe Account to sync files between your devices.'),
             ('Are my files uploaded?', 'Not on their own. Files only leave your device when you deliberately share them or use a cloud feature – end-to-end encrypted wherever possible.'),
             ('Who is behind this?', 'FaLe.dev, an independent developer from Saarland, Germany. Full details are in the <a href="/en/imprint/">legal notice</a>.'),
         ],
@@ -370,32 +389,68 @@ def tool_count():
     return len([f for f in (ROOT / 'tools' / 'webtools' / 'specs').glob('*.json')])
 
 
-ENTRY_ICONS = {
-    'tools': '<path d="M3.5 9h17v9.5A1.5 1.5 0 0 1 19 20H5a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M8.5 9V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V9"/><path d="M3.5 13.5h17M10 13.5v2h4v-2"/>',
-    'templates': '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/>',
-    'apps': '<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><path d="M16.5 13.5v6M13.5 16.5h6"/>',
-}
-
-
-def entry_icon(kind):
+def task_icon(kind):
     return (f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
-            f'stroke-linejoin="round" aria-hidden="true" focusable="false">{ENTRY_ICONS[kind]}</svg>')
+            f'stroke-linejoin="round" aria-hidden="true" focusable="false">{TASK_ICONS[kind]}</svg>')
+
+
+def tool_url(spec_id, lang):
+    sp = json.loads((ROOT / 'tools' / 'webtools' / 'specs' / f'{spec_id}.json').read_text(encoding='utf-8'))
+    return f"{TOOLS_HUB[0 if lang == 'de' else 1]}{sp[lang]['slug']}/"
+
+
+HOME_BODY = '''
+<main id="main">
+  <section class="hero hero-home hero-task" aria-labelledby="home-h">
+    <div class="wrap">
+      <h1 id="home-h">{h1}</h1>
+      <p class="lede">{lede}</p>
+      <form class="home-search" action="{hub}" method="get" role="search">
+        <label class="sr-only" for="home-q">{search_label}</label>
+        <span class="home-search-ic">{search_icon}</span>
+        <input id="home-q" name="q" type="search" placeholder="{search_ph}" autocomplete="off" enterkeyhint="search" maxlength="80">
+        <button class="btn btn-primary" type="submit">{search_btn}</button>
+      </form>
+      <ul class="tasks" aria-label="{tasks_label}">{tasks}</ul>
+      <div class="btn-row home-more"><a class="btn btn-quiet" href="{hub}">{more_tools}{arrow}</a><a class="btn btn-quiet" href="{templates}">{more_templates}{arrow}</a></div>
+      <ul class="home-facts">{facts}</ul>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="apps" aria-labelledby="apps-h">
+    <div class="wrap">
+      <div class="home-app">
+        <img src="/assets/icons/app-pdf.svg" width="72" height="72" alt="">
+        <div class="home-app-t">
+          <h2 id="apps-h">{app_h}</h2>
+          <p>{app_p}</p>
+          <div class="btn-row"><a class="btn btn-primary" href="{pdf_app}">{app_open}</a><a class="btn btn-quiet" href="{pdf_page}">{app_more}{arrow}</a></div>
+        </div>
+      </div>
+      <h3 class="home-others-h">{others_h}</h3>
+      <ul class="app-rows app-rows-2">{apps}</ul>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-h">{faq_h}</h2></div>
+      <div class="faq">{faq}</div>
+    </div>
+  </section>
+</main>
+'''
 
 
 def page_home(lang):
     c = HOME[lang]
-    promises = ''.join(
-        f'<li class="promise promise-mini">{ic(i)}<div><h3>{h}</h3><p>{p}</p></div></li>' for i, h, p in c['promises'])
     faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
     hub = TOOLS_HUB[0 if lang == 'de' else 1]
-    targets = {'tools': hub, 'templates': '/vorlagen/' if lang == 'de' else '/en/templates/', 'apps': '#apps'}
-    n = tool_count()
-    entries = ''.join(
-        f'<li><a class="entry entry-{k}" href="{targets[k]}"><span class="entry-ic">{entry_icon(k)}</span>'
-        f'<span class="entry-t"><strong>{name}</strong><span class="entry-meta">{meta}</span></span>'
-        f'{ic("arrow", "entry-go")}</a></li>'
-        for k, name, meta in c['entries'])
-    tool_links = ''.join(f'<li><a class="tool-chip" href="{h}">{nm}{ic("arrow")}</a></li>' for nm, h in popular_tools(lang))
+    facts = ''.join(f'<li>{ic("check")}{f}</li>' for f in c['facts'])
+    tasks = ''.join(
+        f'<li><a class="task task-{kind}" href="{tool_url(sid, lang)}"><span class="task-ic">{task_icon(kind)}</span>'
+        f'<span class="task-t"><strong>{name}</strong><span>{sub}</span></span></a></li>'
+        for sid, kind, name, sub in c['tasks'])
     newtab = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     tabnote = lambda h: f'<span class="sr-only"> ({"öffnet in neuem Tab" if lang == "de" else "opens in a new tab"})</span>' if h.startswith('http') else ''
     apps = ''.join(
@@ -403,48 +458,13 @@ def page_home(lang):
         f'<span class="app-row-t"><span class="app-row-name">{name}{pill(state, c["live"] if state == "live" else c["coming"])}</span>'
         f'<span class="app-row-desc">{desc}</span></span>{tabnote(href)}{ic("arrow", "entry-go")}</a></li>'
         for k, name, state, desc, href in c['apps'])
-    more = f'<p class="apps-more"><a href="{url("clean", lang)}">{c["apps_more2"]}</a></p>'
-    body = f'''
-<main id="main">
-  <section class="hero hero-home">
-    <div class="wrap">
-      <h1>{c['h1']}</h1>
-      <p class="lede">{c['lede']}</p>
-      <ul class="entries entries-simple" aria-label="{c['entry_label']}">{entries}</ul>
-    </div>
-  </section>
-
-  <section class="section section-tight" id="werkzeuge" aria-labelledby="tools-h">
-    <div class="wrap tools-teaser">
-      <div class="section-head"><h2 id="tools-h">{c['tools_h']}</h2></div>
-      <ul class="tool-chips" aria-label="{c['tools_label']}">{tool_links}</ul>
-      <div class="btn-row"><a class="btn btn-quiet" href="{hub}">{c['tools_all'].replace('{n}', str(n))}{ic('arrow')}</a></div>
-    </div>
-  </section>
-
-  <section class="section section-tight" id="apps" aria-labelledby="apps-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="apps-h">{c['apps_h']}</h2></div>
-      <ul class="app-rows">{apps}</ul>
-      {more}
-    </div>
-  </section>
-
-  <section class="section section-tight" id="promises" aria-labelledby="prom-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="prom-h">{c['prom_h']}</h2></div>
-      <ul class="promises promises-mini">{promises}</ul>
-    </div>
-  </section>
-
-  <section class="section section-tight" id="faq" aria-labelledby="faq-h">
-    <div class="wrap">
-      <div class="section-head"><h2 id="faq-h">{c['faq_h']}</h2></div>
-      <div class="faq">{faq}</div>
-    </div>
-  </section>
-</main>
-'''
+    body = HOME_BODY.format(
+        h1=c['h1'], lede=c['lede'], hub=hub, search_label=c['search_label'], search_icon=task_icon('search'),
+        search_ph=c['search_ph'], search_btn=c['search_btn'], tasks_label=c['tasks_label'], tasks=tasks,
+        more_tools=c['more_tools'].replace('{n}', str(tool_count())), more_templates=c['more_templates'], arrow=ic('arrow'),
+        templates='/vorlagen/' if lang == 'de' else '/en/templates/', facts=facts, app_h=c['app_h'], app_p=c['app_p'],
+        pdf_app=PDF_APP, app_open=c['app_open'], pdf_page=url('pdf', lang), app_more=c['app_more'], others_h=c['others_h'],
+        apps=apps, faq_h=c['faq_h'], faq=faq)
     return head(lang, 'home', c['title'], c['desc'], ld_home(lang)) + '\n' + header(lang, 'home') + body + footer(lang)
 
 

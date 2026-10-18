@@ -36,6 +36,22 @@ with Suite('hub') as s:
         page.locator('[data-wt-popular] a', has_text='PDF komprimieren').click()
     s.expect(page.url.endswith('/werkzeuge/pdf-komprimieren/'), 'card link')
 
+    # search from the home page (form GET ?q=) + "Beste Treffer": the obvious tool comes first
+    ctx = s.context('phone', 'de')
+    page = s.open(ctx, '/', wait_shell=False)
+    page.fill('#home-q', 'unterschreiben'); page.press('#home-q', 'Enter'); page.wait_for_url('**/werkzeuge/?q=*'); page.wait_for_timeout(400)
+    best = page.eval_on_selector_all('.wt-best:not([hidden]) .wt-card-name', 'els => els.map(e => e.textContent)')
+    s.expect(best[:1] == ['PDF unterschreiben'], f'home search → best match first: {best}')
+    s.expect(page.locator('[data-wt-q]').input_value() == 'unterschreiben', 'search word carried over')
+    page.goto(page.url.split('?')[0] + '?q=verkleinern'); page.wait_for_timeout(400)
+    best = page.eval_on_selector_all('.wt-best:not([hidden]) .wt-card-name', 'els => els.map(e => e.textContent)')
+    s.expect(best[:1] == ['PDF komprimieren'], f'"verkleinern" → PDF komprimieren first: {best}')
+    page.fill('[data-wt-q]', ''); page.wait_for_timeout(200)
+    s.expect(page.locator('.wt-best').is_hidden(), 'best matches hidden after clearing')
+    page = s.open(ctx, '/', wait_shell=False)
+    s.expect(page.locator('.tasks a.task').count() == 8 and page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'home: 8 task buttons, no horizontal scroll')
+    s.check_page(page)
+
     ctx = s.context('desktop', 'en')
     page = s.open(ctx, '/en/tools/')
     page.fill('[data-wt-q]', 'jpeg')
