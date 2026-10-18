@@ -16,7 +16,8 @@ const RULES = [
   ['Anthropic API key', /\bsk-ant-(?:api|admin)\d{2}-[A-Za-z0-9_-]{20,}/],
   ['OpenAI-style API key', /\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{32,}\b/],
   ['GitHub token', /\b(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{40,})\b/],
-  ['AWS access key', /\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/],
+  // AWS's own documentation placeholders end in EXAMPLE (e.g. the SigV4 test vectors) – not credentials
+  ['AWS access key', /\b(?:AKIA|ASIA)(?![0-9A-Z]{9}EXAMPLE\b)[0-9A-Z]{16}\b/],
   ['Google API key', /\bAIza[0-9A-Za-z_-]{35}\b/],
   ['Google OAuth client secret', /\bGOCSPX-[A-Za-z0-9_-]{20,}/],
   ['Slack token', /\bxox[abprs]-[A-Za-z0-9-]{10,}/],
