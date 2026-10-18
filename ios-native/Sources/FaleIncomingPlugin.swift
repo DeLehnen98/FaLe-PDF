@@ -61,6 +61,13 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPLog.print("FaleIncoming: loaded")
         // simulator test builds only: `simctl spawn <udid> notifyutil -p dev.fale.pdf.e2e.open` opens the test file
         if Bundle.main.object(forInfoDictionaryKey: "FaleE2E") as? Bool == true {
+            // diagnosis: which notifications arrive when a URL is opened (scene vs. app delegate path)
+            NotificationCenter.default.addObserver(forName: nil, object: nil, queue: nil) { n in
+                let name = n.name.rawValue
+                if name.localizedCaseInsensitiveContains("url") || name.hasPrefix("Capacitor") {
+                    CAPLog.print("FaleIncoming: notification \(name) object=\(type(of: n.object as Any)) userInfo=\(n.userInfo?.keys.map { "\($0)" } ?? [])")
+                }
+            }
             let observer = Unmanaged.passUnretained(self).toOpaque()
             CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer, { _, observer, _, _, _ in
                 guard let observer = observer else { return }

@@ -81,7 +81,8 @@ try:
     r = sh('xcrun', 'simctl', 'openurl', UDID, 'fale-e2e://open?name=fale-e2e-writeback.pdf', check=False, timeout=30)
     imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 15)
     if not imported:
-        print(f"::warning title=iOS URL::openurl rc={r.returncode} – kein Import über die URL (CI-Simulator); weiter mit Test-Signal")
+        seen = ' | '.join(l for l in lines if 'notification' in l or 'openURL' in l)[-1500:]
+        print(f"::warning title=iOS URL::openurl rc={r.returncode} – kein Import über die URL; gesehen: {seen}")
         # 2b. test builds: a Darwin notification makes the plugin open the file exactly like an „open in place“ URL
         sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.open', check=False, timeout=30)
         imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 30)
