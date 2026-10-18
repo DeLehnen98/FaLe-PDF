@@ -50,7 +50,8 @@ export function pagesToRemove(text, count) {
     const p = raw.trim().toLowerCase().replace(/[–—]/g, '-');
     if (!p) continue;
     let m;
-    if (/^(letzte|last|ende|end)$/.test(p)) out.add(count);
+    // "last page" in every UI language (translations may tell users to type their own word)
+    if (/^(letzte|last|ende|end|dernière|derniere|fin|última|ultima|último|ultimo|laatste|ostatnia|son|остання|последняя|最后|最後|最终|마지막|अंतिम|आखिरी|terakhir)$/u.test(p)) out.add(count);
     else if ((m = /^(\d*)\s*-\s*(\d*)$/.exec(p)) && (m[1] || m[2])) {
       const a = m[1] ? +m[1] : 1, b = m[2] ? +m[2] : count;
       for (let i = Math.min(a, b); i <= Math.min(Math.max(a, b), count); i++) if (i >= 1) out.add(i);
