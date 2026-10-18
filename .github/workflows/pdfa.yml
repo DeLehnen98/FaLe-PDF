@@ -63,7 +63,8 @@ jobs:
               echo "PASS PDF/A-${part}b $f"
             else
               fail=$((fail+1))
-              echo "::error title=veraPDF PDF/A-${part}b::$f – $(echo "$out" | tr '\n' ' ' | head -c 1500)"
+              rules=$(docker run --rm -v "$PWD:/data" verapdf/cli -f "${part}b" --format json "/data/$f" 2>/dev/null | python3 ../tests/suites/webtools/verapdf_rules.py || true)
+              echo "::error title=veraPDF PDF/A-${part}b::$f – $rules"
             fi
           done
           echo "::notice title=veraPDF::$((n-fail)) von $n Ergebnissen gültig"
