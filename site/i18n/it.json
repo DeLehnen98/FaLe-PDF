@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "FaLe PDF – strumenti PDF e ufficio gratuiti, senza abbonamento, senza caricamenti",
+    "description": "Leggi, compila, firma, scansiona con riconoscimento del testo e converti i PDF, e in più documenti, fogli di calcolo e presentazioni. Gratis, senza account, tutto sul tuo dispositivo."
+  },
+  "skip": "Vai al contenuto",
+  "nav": {
+    "label": "Navigazione della pagina",
+    "features": "Funzioni",
+    "computer": "Per Windows e Mac",
+    "faq": "Domande",
+    "open": "Apri nel browser"
+  },
+  "hero": {
+    "h1": "Sbrigati le pratiche con i documenti. Senza abbonamento, senza caricamenti.",
+    "lede": "FaLe PDF legge, compila, firma, scansiona e converte, e in più documenti, fogli di calcolo e presentazioni. Gratis e direttamente sul tuo dispositivo.",
+    "try": "Provalo nel browser"
+  },
+  "stores": {
+    "androidSoon": "Play Store – in arrivo",
+    "androidReady": "Scaricalo dal Play Store",
+    "iosName": "iPhone e iPad",
+    "iosSoon": "App Store – in arrivo",
+    "iosReady": "Scaricalo dall’App Store"
+  },
+  "desk": {
+    "h2": "Per Windows e Mac",
+    "intro": "Installa FaLe PDF sul tuo computer come un normale programma: con la sua icona, la sua finestra e funziona anche senza internet. Gratis, senza account e senza file di installazione.",
+    "steps": [
+      { "b": "Fai clic su “Scarica”.", "t": "FaLe PDF si apre nel tuo browser." },
+      { "b": "Conferma “Installa”.", "t": "Il browser te lo chiede una sola volta." },
+      { "b": "Fatto.", "t": "Da ora in poi avvii FaLe PDF dal menu Start (Windows) o dal Dock (Mac)." }
+    ],
+    "download": "Scarica",
+    "dlWindows": "Scarica per Windows",
+    "dlMac": "Scarica per Mac",
+    "windowsSoon": "Microsoft Store – in arrivo",
+    "windowsReady": "Scaricalo da Microsoft Store",
+    "note": "Su Windows con Edge o Chrome: così i PDF si aprono con un doppio clic. Su Mac con Safari (macOS 14 o successivo: File › Aggiungi al Dock), Chrome o Edge."
+  },
+  "jobs": {
+    "h2": "Che cosa puoi sbrigare",
+    "intro": "Non è un mucchio di strumenti tra cui districarsi: sono le cose per cui le persone aprono davvero l’app.",
+    "items": [
+      { "b": "Firmare un contratto d’affitto", "t": "Compila il modulo, disegna la tua firma una volta sola e mettila con un tocco." },
+      { "b": "Acquisire ricevute e lettere", "t": "Scanner con rilevamento dei bordi e riconoscimento del testo, anche offline." },
+      { "b": "Inviare una disdetta", "t": "Lettere già pronte per telefono, energia, palestra e altro, in un minuto." },
+      { "b": "Preparare una candidatura", "t": "Curriculum da modelli, lettera di presentazione e certificati uniti in un unico PDF." },
+      { "b": "Consegnare documenti agli uffici", "t": "Comprimi, converti in PDF/A, oscura le parti riservate." },
+      { "b": "Scrivere una fattura o un preventivo", "t": "Modelli che fanno i conti da soli, come PDF, file Word o Excel." }
+    ]
+  },
+  "privacy": {
+    "h2": "I tuoi file restano con te",
+    "items": [
+      { "dt": "Nessun caricamento", "dd": "Modifica, conversione e riconoscimento del testo avvengono sul tuo dispositivo. Usi l’IA facoltativa solo se la attivi tu." },
+      { "dt": "Nessun account", "dd": "Aprila e inizia. Un account ti serve solo se scegli di sincronizzare tra più dispositivi." },
+      { "dt": "Nessun banner pubblicitario", "dd": "La pubblicità compare solo se avvii tu un video per ottenere richieste IA in più." }
+    ]
+  },
+  "free": {
+    "h2": "Gratis, invece di un abbonamento",
+    "intro": "Molte app per PDF chiedono un abbonamento per queste funzioni. Qui sono gratuite e senza filigrane.",
+    "note": "Se vuoi sostenere lo sviluppo, puoi scegliere FaLe Plus o un grazie una tantum nell’app Android.",
+    "items": ["Firmare e compilare", "Riconoscimento del testo (OCR)", "Da PDF a Word, Excel, PowerPoint", "Oscurare", "Comprimere", "Gestire le pagine", "PDF/A per gli uffici", "Protezione con password", "Confrontare PDF", "Elaborazione batch"]
+  },
+  "screens": {
+    "h2": "Come si presenta",
+    "alts": ["Schermata iniziale dell’app FaLe PDF", "Compilazione e firma di un modulo", "Scanner con rilevamento dei bordi", "Modifica di un foglio di calcolo", "Privacy: tutto resta sul dispositivo"]
+  },
+  "faq": {
+    "h2": "Domande",
+    "items": [
+      { "q": "FaLe PDF è davvero gratuito?", "a": "Sì. Tutte le funzioni per PDF e ufficio sono gratuite, senza abbonamento e senza filigrana. Solo l’IA nel cloud facoltativa ha una quota gratuita giornaliera." },
+      { "q": "I miei file vengono caricati?", "a": "No. I tuoi file vengono elaborati e salvati sul tuo dispositivo. Qualcosa lascia il dispositivo solo se usi di proposito l’IA nel cloud, la condivisione tramite link o la sincronizzazione: in forma crittografata, oppure solo il testo che hai selezionato." },
+      { "q": "Funziona anche offline?", "a": "Sì. Tutto funziona senza internet, tranne l’IA nel cloud, la condivisione e il trasferimento." },
+      { "q": "Posso installare FaLe PDF sul mio computer?", "a": "Sì. Sopra, in “Per Windows e Mac”, fai clic su “Scarica” e conferma “Installa”. Su Windows funziona con Edge o Chrome, su Mac con Safari, Chrome o Edge. A breve FaLe PDF sarà disponibile anche su Microsoft Store." },
+      { "q": "Quali file posso aprire?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), testo, Markdown e immagini." }
+    ]
+  },
+  "end": {
+    "h2": "Provalo subito",
+    "intro": "La versione nel browser funziona senza installare nulla, sul telefono e sul computer."
+  },
+  "footer": {
+    "label": "Note legali",
+    "imprint": "Dati del gestore",
+    "privacy": "Privacy",
+    "more": "Altro da FaleNetwork"
+  }
+}

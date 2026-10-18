@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "title": "FaLe PDF – outils PDF et bureautique gratuits, sans abonnement, sans envoi de fichiers",
+    "description": "Lisez, remplissez, signez, numérisez avec reconnaissance de texte et convertissez vos PDF, ainsi que des documents, des tableurs et des présentations. Gratuit, sans compte, tout sur votre appareil."
+  },
+  "skip": "Aller au contenu",
+  "nav": {
+    "label": "Navigation de la page",
+    "features": "Fonctions",
+    "computer": "Pour Windows et Mac",
+    "faq": "Questions",
+    "open": "Ouvrir dans le navigateur"
+  },
+  "hero": {
+    "h1": "Réglez vos papiers. Sans abonnement, sans envoi de fichiers.",
+    "lede": "FaLe PDF lit, remplit, signe, numérise et convertit, ainsi que des documents, des tableurs et des présentations. Gratuit et directement sur votre appareil.",
+    "try": "Essayer dans le navigateur"
+  },
+  "stores": {
+    "androidSoon": "Play Store – bientôt disponible",
+    "androidReady": "Disponible sur le Play Store",
+    "iosName": "iPhone et iPad",
+    "iosSoon": "App Store – bientôt disponible",
+    "iosReady": "Disponible sur l’App Store"
+  },
+  "desk": {
+    "h2": "Pour Windows et Mac",
+    "intro": "Installez FaLe PDF sur votre ordinateur comme un programme ordinaire : avec sa propre icône, sa propre fenêtre, et il fonctionne sans internet. Gratuit, sans compte et sans fichier d’installation.",
+    "steps": [
+      {
+        "b": "Cliquez sur « Télécharger ».",
+        "t": "FaLe PDF s’ouvre dans votre navigateur."
+      },
+      {
+        "b": "Confirmez « Installer ».",
+        "t": "Votre navigateur ne vous le demande qu’une seule fois."
+      },
+      {
+        "b": "C’est fait.",
+        "t": "Désormais, vous lancez FaLe PDF depuis le menu Démarrer (Windows) ou le Dock (Mac)."
+      }
+    ],
+    "download": "Télécharger",
+    "dlWindows": "Télécharger pour Windows",
+    "dlMac": "Télécharger pour Mac",
+    "windowsSoon": "Microsoft Store – bientôt disponible",
+    "windowsReady": "Disponible sur le Microsoft Store",
+    "note": "Sous Windows avec Edge ou Chrome : les PDF s’ouvrent alors d’un double-clic. Sur Mac avec Safari (macOS 14 ou version ultérieure : Fichier › Ajouter au Dock), Chrome ou Edge."
+  },
+  "jobs": {
+    "h2": "Ce que vous pouvez régler",
+    "intro": "Pas un tas d’outils à parcourir : ce sont les choses pour lesquelles les gens ouvrent vraiment l’application.",
+    "items": [
+      {
+        "b": "Signer un contrat de location",
+        "t": "Remplissez le formulaire, dessinez votre signature une seule fois et placez-la d’une simple touche."
+      },
+      {
+        "b": "Numériser des reçus et des courriers",
+        "t": "Scanner avec détection des bords et reconnaissance de texte, même hors connexion."
+      },
+      {
+        "b": "Envoyer une résiliation",
+        "t": "Des courriers tout prêts pour le téléphone, l’énergie, la salle de sport et plus encore, en une minute."
+      },
+      {
+        "b": "Préparer une candidature",
+        "t": "CV à partir de modèles, lettre de motivation et certificats réunis dans un seul PDF."
+      },
+      {
+        "b": "Remettre des documents aux administrations",
+        "t": "Compressez, convertissez en PDF/A, masquez les passages confidentiels."
+      },
+      {
+        "b": "Rédiger une facture ou un devis",
+        "t": "Des modèles qui font les calculs, en PDF, en fichier Word ou Excel."
+      }
+    ]
+  },
+  "privacy": {
+    "h2": "Vos fichiers restent chez vous",
+    "items": [
+      {
+        "dt": "Aucun envoi de fichiers",
+        "dd": "La modification, la conversion et la reconnaissance de texte se font sur votre appareil. Vous n’utilisez l’IA facultative que si vous l’activez."
+      },
+      {
+        "dt": "Aucun compte",
+        "dd": "Ouvrez et commencez. Un compte n’est nécessaire que si vous choisissez de synchroniser vos appareils."
+      },
+      {
+        "dt": "Aucune bannière publicitaire",
+        "dd": "Il n’y a de publicité que si vous lancez vous-même une vidéo pour obtenir des requêtes IA supplémentaires."
+      }
+    ]
+  },
+  "free": {
+    "h2": "Gratuit, au lieu d’un abonnement",
+    "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont gratuites et sans filigrane.",
+    "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Plus ou un remerciement unique dans l’application Android.",
+    "items": [
+      "Signer et remplir",
+      "Reconnaissance de texte (OCR)",
+      "PDF vers Word, Excel, PowerPoint",
+      "Masquer des passages",
+      "Compresser",
+      "Gérer les pages",
+      "PDF/A pour les administrations",
+      "Protection par mot de passe",
+      "Comparer des PDF",
+      "Traitement par lots"
+    ]
+  },
+  "screens": {
+    "h2": "À quoi ça ressemble",
+    "alts": [
+      "Écran d’accueil de l’application FaLe PDF",
+      "Remplissage et signature d’un formulaire",
+      "Scanner avec détection des bords",
+      "Modification d’un tableur",
+      "Confidentialité : tout reste sur l’appareil"
+    ]
+  },
+  "faq": {
+    "h2": "Questions",
+    "items": [
+      {
+        "q": "FaLe PDF est-il vraiment gratuit ?",
+        "a": "Oui. Toutes les fonctions PDF et bureautique sont gratuites, sans abonnement et sans filigrane. Seule l’IA dans le cloud, facultative, a un quota gratuit quotidien."
+      },
+      {
+        "q": "Mes fichiers sont-ils envoyés en ligne ?",
+        "a": "Non. Vos fichiers sont traités et enregistrés sur votre appareil. Quelque chose ne quitte votre appareil que si vous utilisez volontairement l’IA dans le cloud, le partage par lien ou la synchronisation : de façon chiffrée, ou seulement le texte que vous avez sélectionné."
+      },
+      {
+        "q": "Cela fonctionne-t-il hors connexion ?",
+        "a": "Oui. Tout fonctionne sans internet, sauf l’IA dans le cloud, le partage et le transfert."
+      },
+      {
+        "q": "Puis-je installer FaLe PDF sur mon ordinateur ?",
+        "a": "Oui. Ci-dessus, sous « Pour Windows et Mac », cliquez sur « Télécharger » et confirmez « Installer ». Sous Windows, cela fonctionne avec Edge ou Chrome, sur Mac avec Safari, Chrome ou Edge. FaLe PDF sera bientôt aussi disponible sur le Microsoft Store."
+      },
+      {
+        "q": "Quels fichiers puis-je ouvrir ?",
+        "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), texte, Markdown et images."
+      }
+    ]
+  },
+  "end": {
+    "h2": "Essayez tout de suite",
+    "intro": "La version dans le navigateur fonctionne sans rien installer, sur votre téléphone comme sur votre ordinateur."
+  },
+  "footer": {
+    "label": "Mentions légales",
+    "imprint": "Mentions légales",
+    "privacy": "Confidentialité",
+    "more": "Plus de FaleNetwork"
+  }
+}
