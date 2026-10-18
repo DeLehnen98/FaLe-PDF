@@ -67,11 +67,16 @@
     if (window.__faleTT) window.__faleTT.sanitized++;
     return tpl.innerHTML;
   }
+  // the iPhone app is served from capacitor://localhost (WKWebView custom scheme; its URL origin can be "null")
+  var APP_SCHEME = location.protocol === 'capacitor:';
+  var APP_BASE = location.protocol + '//' + location.host + '/';
   function sameOriginScript(u) {
     var url;
     try { url = new URL(String(u), document.baseURI); } catch (e) { return null; }
     if (url.protocol === 'blob:' && url.href.indexOf('blob:' + location.origin + '/') === 0) return String(u);
     if (url.origin === location.origin && (url.protocol === 'https:' || url.protocol === 'http:')) return String(u);
+    if (APP_SCHEME && url.protocol === 'blob:' && url.href.indexOf('blob:' + APP_BASE) === 0) return String(u);
+    if (APP_SCHEME && url.href.indexOf(APP_BASE) === 0) return String(u); // own app files (pdf.js / OCR workers)
     return null; // → TypeError, the script/worker is not loaded
   }
   try {
