@@ -4,12 +4,13 @@
 - visits every route, every tool screen (TOOLS registry), editors, letter generators, profile, Fristen, Tresor,
   onboarding, settings and AI screens if present; collects visible text + attributes and fails on German leftovers
 - 390 px phone: no horizontal overflow
-- de -> en -> de switching through Ich › Einstellungen
+- the language follows the device (no switch in the UI); languages without a dictionary get English
 - screenshots (phone + desktop) into out_i18n/
 
 Run: python3 test_i18n.py   (server: python3 -m http.server 8798 --bind 127.0.0.1 in /home/claude/FalePDF; other URL via I18N_URL)
 """
 import json, os, re, sys, shutil, subprocess, traceback
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 from playwright.sync_api import sync_playwright
 
 SP = os.path.dirname(os.path.abspath(__file__))
@@ -335,27 +336,24 @@ def run_switching(p):
     check('de-DE auto: German', page.evaluate('document.documentElement.lang') == 'de' and 'Werkzeuge' in page.locator('.side-nav').inner_text())
     check('de-DE auto: no dictionary loaded', page.evaluate('window.FaLeI18n.lang()') == 'de')
     goto(page, '#/einstellungen', 800)
-    check('settings has language select', page.locator('#set-lang').count() == 1)
-    page.select_option('#set-lang', 'en')
-    page.wait_for_timeout(1200)
-    check('switch de→en without reload', page.evaluate('document.documentElement.lang') == 'en' and 'Tools' in page.locator('.side-nav').inner_text(), page.locator('.side-nav').inner_text().replace('\n', ' | '))
-    _, bad = scan(page, 'switch settings en')
-    check('settings after switch: no German', not bad, str([x['t'] for x in bad][:5]))
-    shot(page, 'desktop_settings_switched')
-    goto(page, '#/werkzeuge', 600)
-    _, bad = scan(page, 'switch tools en')
-    check('tools after switch: no German', not bad, str([x['t'] for x in bad][:5]))
-    goto(page, '#/einstellungen', 800)
-    with page.expect_navigation():
-        page.select_option('#set-lang', 'de')
-    page.wait_for_selector('#view-einstellungen .settings-group', timeout=10000)
-    page.wait_for_timeout(500)
-    check('switch en→de reloads into German', page.evaluate('document.documentElement.lang') == 'de' and 'Werkzeuge' in page.locator('.side-nav').inner_text() and 'Einstellungen' in page.locator('#view-einstellungen').inner_text())
-    check('route kept after reload', page.evaluate('location.hash') == '#/einstellungen')
-    page.select_option('#set-lang', 'auto')
-    page.wait_for_timeout(500)
-    check('auto on de-DE stays German', page.evaluate('document.documentElement.lang') == 'de' and page.evaluate("localStorage.getItem('fale-lang')") == 'auto')
+    check('no language switch in the settings (language follows the device)', page.locator('[data-lang-select], #set-lang').count() == 0)
     ctx.close()
+    # device language decides; languages without a dictionary get English
+    have = lambda code: os.path.exists(os.path.join(ROOT_DIR, 'js', 'i18n', f'{code}.js'))
+    for loc, want in [('sv-SE', 'en'), ('en-US', 'en'), ('fr-FR', 'fr' if have('fr') else 'en'), ('pt-BR', 'pt' if have('pt') else 'en'), ('ja-JP', 'ja' if have('ja') else 'en')]:
+        c = b.new_context(viewport={'width': 1366, 'height': 860}, locale=loc)
+        c.add_init_script("try { localStorage.setItem('fale-onboarded', '1'); } catch (e) {}")
+        pg = c.new_page()
+        attach(pg, 'device-' + loc)
+        pg.goto(URL)
+        pg.wait_for_selector('#view-start .hero')
+        pg.wait_for_timeout(600)
+        got = pg.evaluate('document.documentElement.lang')
+        check(f'{loc}: UI language {want}', got == want and pg.evaluate('window.FaLeI18n.lang()') == want, got)
+        if want != 'de':
+            nav = pg.locator('.side-nav').inner_text()
+            check(f'{loc}: navigation translated', 'Werkzeuge' not in nav, nav.replace('\n', ' | '))
+        c.close()
     # legal pages
     for loc, want in [('en-US', 'en'), ('de-DE', 'de')]:
         c = b.new_context(locale=loc)

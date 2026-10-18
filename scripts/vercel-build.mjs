@@ -256,6 +256,9 @@ const files = walk(DIST)
   .filter(r => !r.startsWith('screenshots/'))
   // start page of the web build (not part of the app; the app's shell is ./index.html relative to /app/)
   .filter(r => !r.startsWith('app/') && !r.startsWith('site/') && !r.startsWith('en/'))
+  // UI dictionaries of the other languages (~0.5 MB each): only the device's language is ever loaded –
+  // cached by the service worker on first use instead of downloading all of them at install
+  .filter(r => !/^js\/i18n\/[a-z]{2}\.js$/.test(r) || r === 'js/i18n/en.js')
   .sort();
 const h = createHash('sha256');
 for (const r of files) { h.update(r); h.update(readFileSync(join(DIST, r))); }

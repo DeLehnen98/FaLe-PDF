@@ -10,7 +10,7 @@ import { WEB_TOOLS } from './catalog.js';
 import { webToolById, webToolText, acceptsDoc, docMime } from './list.js';
 import { openScreen } from '../screen.js';
 import { toast } from '../ui.js';
-import { lang } from '../i18n/index.js';
+import { deOrEn } from '../i18n/index.js';
 import * as db from '../db.js';
 
 // ---------------------------------------------------------------- hand-off into the frame
@@ -106,7 +106,7 @@ async function pickDocs({ accepts, multiple, title } = {}) {
 const bySlug = slug => WEB_TOOLS.find(t => t.id === slug || t.de.slug === slug || t.en.slug === slug) || null;
 
 export function webToolUrl(t, { handoff = false } = {}) {
-  const l = lang() === 'en' ? 'en' : 'de';
+  const l = deOrEn(); // the web tools exist in German and English; every other language gets English
   return `/wt-app/${l}/${t.id}.html${handoff ? (l === 'en' ? '?continue=1' : '?weiter=1') : ''}`;
 }
 

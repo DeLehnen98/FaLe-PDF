@@ -857,7 +857,6 @@ export async function renderSettings() {
   import('./install.js').then(m => m.renderMeCard($('[data-install-me]', el))).catch(() => {}); // web only: install on this PC/Mac/phone
   import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
   import('./account/entry.js').then(m => m.renderMeCard($('[data-account-me]', el))).catch(() => {}); // optional FaLe-Konto
-  import('./i18n/index.js').then(m => m.mountLangSettings(el)).catch(() => {}); // Sprache: Automatisch / Deutsch / English
   // OCR: "OCR-Daten für offline laden" (status, size) + licences of tesseract.js, -core, tessdata_fast
   import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});
 }

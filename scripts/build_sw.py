@@ -24,6 +24,9 @@ for p in sorted(ROOT.rglob("*")):
         continue
     if rel.startswith("vendor/tesseract/") or rel == "vendor/MANIFEST.json":  # OCR is cached on first use
         continue
+    # UI dictionaries: only the device's language is loaded – cached on first use (same rule as vercel-build.mjs)
+    if re.fullmatch(r"js/i18n/[a-z]{2}\.js", rel) and rel != "js/i18n/en.js":
+        continue
     files.append("./" + rel)
     h.update(rel.encode())
     h.update(p.read_bytes())

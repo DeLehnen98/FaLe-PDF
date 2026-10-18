@@ -17,14 +17,21 @@
   'use strict';
   try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
   try {
+    // same rule as js/i18n/index.js deviceLang(): first device language we have, else English
+    var LANGS = ['de', 'en']; // = LANGS in js/i18n/index.js
     var l = localStorage.getItem('fale-lang');
-    if (l !== 'de' && l !== 'en') {
+    if (LANGS.indexOf(l) < 0) {
       l = 'en';
       var nl = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
-      for (var i = 0; i < nl.length; i++) { if (/^de\b/i.test(nl[i])) { l = 'de'; break; } if (/^en\b/i.test(nl[i])) break; }
+      for (var i = 0; i < nl.length; i++) {
+        var b = String(nl[i]).toLowerCase().split(/[-_]/)[0];
+        if (b === 'in') b = 'id';
+        if (LANGS.indexOf(b) >= 0) { l = b; break; }
+      }
     }
     document.documentElement.lang = l;
-    if (l === 'en') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 150); }
+    // translated languages: hide the German first paint until js/i18n has translated it (max. 300 ms)
+    if (l !== 'de') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 300); }
   } catch (e) {}
 
   // "Install as an app" (web build): the browser's install event can fire before the app module has loaded –

@@ -5,7 +5,6 @@ import { $, $$, h } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
-import { langSelectHtml } from '../i18n/index.js';
 import { simpleOn, setSimple, dismissSimpleHint, textSizeSeg, bindTextSize } from '../simple.js';
 
 const KEY = 'fale-onboarded';
@@ -35,7 +34,6 @@ export function showOnboarding() {
           <h2 id="ob-title">Willkommen bei FaLe</h2>
           <p>PDFs lesen, unterschreiben und bearbeiten, Dokumente, Tabellen und Präsentationen erstellen – und Alltagsbriefe wie Kündigungen in einer Minute schreiben.</p>
           <ul class="ob-list"><li>${oicon('check')} Alle Pro-Funktionen gratis</li><li>${oicon('check')} Fristen im Blick, Dateien im Tresor</li><li>${oicon('check')} Funktioniert auch offline</li></ul>
-          <label class="ob-lang" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap"><span class="muted" style="white-space:nowrap">Sprache / Language</span>${langSelectHtml()}</label>
         </section>
         <section class="ob-step" data-step="1" hidden>
           <div class="ob-art ob-art-2"><span class="ob-shield">${oicon('shield')}</span></div>

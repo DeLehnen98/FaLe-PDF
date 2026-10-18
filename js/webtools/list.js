@@ -1,6 +1,6 @@
 // The FaleNetwork web tools in the app's tool list (#/werkzeuge) – the tools themselves open in js/webtools/host.js.
 import { WEB_TOOLS, WEB_TOOL_CATEGORIES } from './catalog.js';
-import { lang } from '../i18n/index.js';
+import { deOrEn } from '../i18n/index.js';
 import { h, esc, $, $$, openDialog } from '../ui.js';
 
 /** Tools the app has natively (its own, better integrated screens) – not listed again, still reachable by link. */
@@ -17,7 +17,7 @@ export const NATIVE_TWINS = new Set([
 ]);
 
 export const webToolById = id => WEB_TOOLS.find(t => t.id === id) || null;
-const L = () => (lang() === 'en' ? 'en' : 'de');
+const L = deOrEn;
 export const webToolText = t => t[L()] || t.de;
 /** Tools shown in the app's tool list (everything the app does not have natively). */
 export const listedWebTools = () => WEB_TOOLS.filter(t => !NATIVE_TWINS.has(t.id));

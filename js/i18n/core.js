@@ -51,6 +51,45 @@ export const FORMAT_RULES = [
   [/^-?\d{1,3}(\.\d{3})+(,\d+)?$|^-?\d+,\d+$/, m => convertNumber(m[0])],
 ];
 
+// Other languages: the same German formats, rendered with Intl in the target locale. `words` holds the
+// dictionary's translations of "Heute", "Gestern", "Morgen" (relative days).
+export function formatRules(locale, words = {}) {
+  if (/^en\b/.test(locale)) return FORMAT_RULES;
+  const df = o => new Intl.DateTimeFormat(locale, o);
+  const nf = new Map();
+  const num = s => {
+    const plain = s.replace(/\./g, '').replace(',', '.');
+    if (!/^-?\d+(\.\d+)?$/.test(plain)) return null;
+    const dec = (plain.split('.')[1] || '').length;
+    const key = dec;
+    if (!nf.has(key)) nf.set(key, new Intl.NumberFormat(locale, { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+    return nf.get(key).format(+plain);
+  };
+  const date = (d, m, y) => new Date(Date.UTC(+y, +m - 1, +d, 12));
+  const rel = (w, time) => (words[w] ? words[w] + (time ? `, ${time}` : '') : null);
+  return [
+    [/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:,? (\d{1,2}:\d{2}(?::\d{2})?)(?: Uhr)?)?$/, m => df({ day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(date(m[1], m[2], m[3])) + (m[4] ? `, ${m[4]}` : '')],
+    [/^(\d{1,2})\.(\d{1,2})\.(\d{2})$/, m => df({ day: 'numeric', month: 'short', year: '2-digit', timeZone: 'UTC' }).format(date(m[1], m[2], 2000 + +m[3]))],
+    [/^Heute(?:, (\d{1,2}:\d{2}))?$/, m => rel('Heute', m[1])],
+    [/^Gestern(?:, (\d{1,2}:\d{2}))?$/, m => rel('Gestern', m[1])],
+    [/^Morgen(?:, (\d{1,2}:\d{2}))?$/, m => rel('Morgen', m[1])],
+    [/^(\d{1,2}:\d{2}) Uhr$/, m => m[1]],
+    [/^(?:([A-Za-zäöü]{2,10})\.?, )?(\d{1,2})\. ([A-Za-zäöüÄÖÜ]{3,9})\.?(?: (\d{4}))?$/, m => {
+      const mon = monthIndex(m[3]);
+      if (mon < 0) return null;
+      if (m[1] && !WD_DE[m[1].toLowerCase()]) return null;
+      const longMon = !(m[3].length <= 4 || /\.$/.test(m[3]));
+      const o = { day: 'numeric', month: longMon ? 'long' : 'short', timeZone: 'UTC' };
+      if (m[4]) o.year = 'numeric';
+      if (m[1]) o.weekday = m[1].length > 3 ? 'long' : 'short';
+      return df(o).format(new Date(Date.UTC(m[4] ? +m[4] : new Date().getFullYear(), mon, +m[2], 12)));
+    }],
+    [/^([A-Za-zäöüÄÖÜ]{3,9}) (\d{4})$/, m => { const i = monthIndex(m[1], true); return i < 0 ? null : df({ month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(+m[2], i, 1, 12))); }],
+    [/^(-?[\d.,]+) ?(B|KB|MB|GB|TB|kB|px|pt|mm|cm|ms|s|dpi|DPI|%)$/, m => { const n = num(m[1]); if (n == null) return null; return m[2] === '%' ? `${n} %`.replace(/^(.*) %$/, /^(fr|de|pl|ru|uk|tr|nl|it|es|pt|id)\b/.test(locale) ? '$1 %' : '$1%') : `${n} ${m[2]}`; }],
+    [/^-?\d{1,3}(\.\d{3})+(,\d+)?$|^-?\d+,\d+$/, m => num(m[0])],
+  ];
+}
+
 function monthIndex(word, fullOnly = false) {
   const w = word.toLowerCase().replace(/\.$/, '');
   let i = MONTHS_DE.indexOf(w);
@@ -72,7 +111,11 @@ const GROUP = { num: '([-+]?\\d[\\d.,]*|\\?)', suffix: '([a-zäöüß]{0,3}|[^\\
 export const plainKey = k => String(k).replace(/\{(\d):n\}/g, '{$1}');
 
 /** Build a translator from a dictionary object. */
-export function createTranslator(dict = {}) {
+export function createTranslator(dict = {}, opts = {}) {
+  const locale = opts.locale || 'en-GB';
+  const rules = formatRules(locale, { Heute: dict['Heute'], Gestern: dict['Gestern'], Morgen: dict['Morgen'] });
+  let pr = null;
+  try { pr = new Intl.PluralRules(locale); } catch { /* very old engine: two forms only */ }
   const exact = new Map();
   const patterns = [];
   const buckets = new Map();
@@ -139,11 +182,11 @@ export function createTranslator(dict = {}) {
 
   function fill(value, caps, depth) {
     let ok = true;
-    const out = value.replace(/\{(\d)(?:\|([^|{}]*)\|([^|{}]*))?\}/g, (m, i, one, many) => {
+    const out = value.replace(/\{(\d)((?:\|[^|{}]*)*)\}/g, (m, i, sw) => {
       const c = caps[+i] ?? '';
-      if (one !== undefined) {
+      if (sw) {
         const n = parseFloat(String(c).replace(/\./g, '').replace(',', '.'));
-        return n === 1 ? one : many;
+        return pluralPick(sw.slice(1).split('|'), n, pr);
       }
       const f = fragment(c, depth + 1);
       // an untranslated capture of more than a few words is a sentence the pattern should not have matched
@@ -202,7 +245,7 @@ export function createTranslator(dict = {}) {
       const m = /^([„"“(])(.+?)([“"”)])$/.exec(n);
       if (m) { const b = exact.get(m[2]); if (b != null) r = (m[1] === '„' ? '“' : m[1]) + b + (m[3] === '“' ? '”' : m[3]); }
     }
-    if (r == null) for (const [re, fn] of FORMAT_RULES) {
+    if (r == null) for (const [re, fn] of rules) {
       const m = re.exec(n);
       if (m) { const out = fn(m); if (out != null) { r = out; break; } }
     }
@@ -223,15 +266,28 @@ export function createTranslator(dict = {}) {
       let out = exact.get(normalize(german));
       if (out == null) out = /\{[a-zA-Z_]\w*\}/.test(german) ? null : lookup(german);
       if (out == null) out = german;
-      return vars ? subst(out, vars) : out;
+      return vars ? subst(out, vars, pr) : out;
     },
   };
 }
 
-export function subst(s, vars) {
-  return String(s).replace(/\{([a-zA-Z_]\w*)(?:\|([^|{}]*)\|([^|{}]*))?\}/g, (m, k, one, many) => {
+/** Plural form: two forms (singular|plural, as in English) or CLDR categories ("one=…|few=…|other=…"). */
+export function pluralPick(segs, n, pr) {
+  if (segs.some(x => /^(zero|one|two|few|many|other)=/.test(x))) {
+    const map = {};
+    for (const x of segs) { const k = x.indexOf('='); map[x.slice(0, k)] = x.slice(k + 1); }
+    let cat = 'other';
+    try { cat = pr ? pr.select(isNaN(n) ? 0 : n) : (n === 1 ? 'one' : 'other'); } catch { /* keep other */ }
+    return map[cat] ?? map.other ?? '';
+  }
+  if (segs.length === 1) return segs[0];
+  return n === 1 ? segs[0] : segs[1];
+}
+
+export function subst(s, vars, pr = null) {
+  return String(s).replace(/\{([a-zA-Z_]\w*)((?:\|[^|{}]*)*)\}/g, (m, k, sw) => {
     if (!(k in vars)) return m;
-    if (one !== undefined) return +vars[k] === 1 ? one : many;
+    if (sw) return pluralPick(sw.slice(1).split('|'), +vars[k], pr);
     return String(vars[k]);
   });
 }
