@@ -88,6 +88,9 @@ try:
 except Exception as e:
     note(False, 'Datei öffnen', str(e))
 
+if failed:
+    tail = [l for l in lines if 'FaleIncoming' in l or 'error' in l.lower() or 'FALE' in l][-12:] or lines[-12:]
+    print('::warning title=iOS Konsole::' + ' | '.join(tail).replace('\n', ' ')[:1800])
 proc.terminate()
 open(f'{OUT}/console.txt', 'w').write('\n'.join(lines))
 print(f'{len(lines)} Konsolenzeilen, {len(failed)} Fehler: {failed}')

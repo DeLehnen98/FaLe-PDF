@@ -58,6 +58,7 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
             items.forEach { try? FileManager.default.removeItem(at: $0) }
         }
         NotificationCenter.default.addObserver(self, selector: #selector(openURL(_:)), name: .capacitorOpenURL, object: nil)
+        CAPLog.print("FaleIncoming: loaded")
         // cold start: the URL may have arrived before this plugin was loaded
         if let url = ApplicationDelegateProxy.shared.lastURL, !handledLaunchURL {
             handledLaunchURL = true
@@ -69,7 +70,8 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
 
     @objc private func openURL(_ n: Notification) {
         let obj = (n.object as? [String: Any]) ?? (n.userInfo as? [String: Any]) ?? [:]
-        guard let url = obj["url"] as? URL else { return }
+        guard let url = obj["url"] as? URL else { CAPLog.print("FaleIncoming: openURL without url (\(String(describing: n.object)))"); return }
+        CAPLog.print("FaleIncoming: openURL \(url.scheme ?? "?")://…")
         let options = obj["options"] as? [UIApplication.OpenURLOptionsKey: Any] ?? [:]
         handledLaunchURL = true
         handle(url, inPlace: options[.openInPlace] as? Bool)
