@@ -90,6 +90,7 @@ jobs:
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
           xcrun simctl install "$UDID" "$APP"
+          echo "::notice title=iOS Info.plist::$(plutil -extract CFBundleURLTypes json -o - "$APP/Info.plist" 2>&1 | head -c 300) · FaleE2E=$(plutil -extract FaleE2E raw -o - "$APP/Info.plist" 2>&1) · Szene=$(plutil -extract UIApplicationSceneManifest json -o - "$APP/Info.plist" 2>&1 | head -c 200)"
           python3 scripts/ios-e2e/run.py "$UDID" dev.fale.pdf
 
       - name: Upload test output
