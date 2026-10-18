@@ -73,6 +73,9 @@ def ic(name, cls=''):
         'info': '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/>',
         'shield': '<path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
         'arrow': '<path d="M5 12h14M13 6l6 6-6 6"/>',
+        'store': '<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z"/>',
+        'phone-dl': '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/>',
+        'users': '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.7 3 2.4 3.5 5.2"/>',
         'sync': '<path d="M20 11a8 8 0 0 0-14.9-3M4 13a8 8 0 0 0 14.9 3"/><path d="M4 4v4h4M20 20v-4h-4"/>',
         'key': '<circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M16 7l3 3"/>',
         'heart': '<path d="M12 20.5s-7.5-4.6-9.4-9.4C1.2 7.6 3.4 4 7 4c2 0 3.6 1 5 2.8C13.4 5 15 4 17 4c3.6 0 5.8 3.6 4.4 7.1-1.9 4.8-9.4 9.4-9.4 9.4z"/>',
@@ -460,6 +463,33 @@ def app_link(href, label, cls='btn btn-primary', lang='de', icon=''):
             f'<span class="sr-only"> ({note})</span></a>')
 
 
+def apps_config():
+    """tools/apps.json (not deployed): store links the operator fills in once an app is listed – empty = 'coming soon'."""
+    try:
+        return json.loads((ROOT / 'tools' / 'apps.json').read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return {}
+
+
+def store_badges(app, lang, in_install=False):
+    """Store buttons for an app: a real link when the store address is set, otherwise an honest 'coming soon'."""
+    cfg = apps_config().get(app, {})
+    ok = lambda u: isinstance(u, str) and u.startswith('https://')
+    de = lang == 'de'
+    out = []
+    if ok(cfg.get('android')):
+        out.append(app_link(cfg['android'], f'<span class="store-sub">{"Android" if de else "Android"}</span><span class="store-main">{"Im Play Store laden" if de else "Get it on the Play Store"}</span>', 'store-badge', lang, ic('store')))
+    else:
+        out.append(f'<span class="store-badge is-soon">{ic("store")}<span class="store-sub">Android</span><span class="store-main">{"Bald im Play Store" if de else "Play Store – coming soon"}</span></span>')
+    if ok(cfg.get('ios')):
+        out.append(app_link(cfg['ios'], f'<span class="store-sub">iPhone &amp; iPad</span><span class="store-main">{"Im App Store laden" if de else "Get it on the App Store"}</span>', 'store-badge', lang, ic('store')))
+    elif not in_install:
+        out.append(f'<a class="store-badge" href="#inst-h">{ic("phone-dl")}<span class="store-sub">{"Handy &amp; Computer" if de else "Phone &amp; computer"}</span><span class="store-main">{"Jetzt als App installieren" if de else "Install as an app now"}</span></a>')
+    if ok(cfg.get('testers')) and not ok(cfg.get('android')):
+        out.append(app_link(cfg['testers'], f'<span class="store-sub">Android</span><span class="store-main">{"Als Tester mitmachen" if de else "Become a tester"}</span>', 'store-badge', lang, ic('users')))
+    return f'<div class="store-row">{"".join(out)}</div>'
+
+
 PDF = {
     'de': {
         'title': 'Kostenloses PDF-Programm ohne Abo & Wasserzeichen | FaLe PDF',
@@ -612,7 +642,9 @@ def page_pdf(lang):
     shots = ''.join(
         f'<li><figure><img src="/assets/img/pdf/{n}-{lang}.webp" width="540" height="1140" loading="lazy" decoding="async" alt="{alt}"><figcaption>{cap}</figcaption></figure></li>'
         for n, alt, cap in c['shots'])
-    inst = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['inst'])
+    live = str(apps_config().get('pdf', {}).get('android', '')).startswith('https://')
+    soon = (' Im Play Store erscheint die App in Kürze.', ' The Play Store app is coming soon.')
+    inst = ''.join(f'<div><dt>{h}</dt><dd>{(p.replace(soon[0], " Oder hol sie dir im Play Store.").replace(soon[1], " Or get it from the Play Store.") if live else p)}</dd></div>' for h, p in c['inst'])
     why = ''.join(f'<div class="pdfl-card"><h3>{h}</h3><p>{p}</p></div>' for h, p in c['why'])
     faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
     more = ''.join(f'<li>{ic("arrow")}<a href="{h}">{l}</a></li>' for l, h in c['more'])
@@ -635,6 +667,7 @@ def page_pdf(lang):
         <h1>{c['h1']}</h1>
         <p class="lede">{c['lede']}</p>
         <div class="btn-row">{open_btn}<a class="btn btn-quiet" href="{hub}">{c['tools']}{ic('arrow')}</a></div>
+        {store_badges('pdf', lang)}
         <ul class="pdfl-chips">{chips}</ul>
       </div>
       <div class="phone"><img src="/assets/img/pdf/home-{lang}.webp" width="540" height="1140" fetchpriority="high" alt="{c['shot_home_alt']}"></div>
@@ -674,6 +707,7 @@ def page_pdf(lang):
   <section class="section" aria-labelledby="inst-h">
     <div class="wrap">
       <div class="section-head"><h2 id="inst-h">{c['inst_h']}</h2></div>
+      {store_badges('pdf', lang, in_install=True)}
       <dl class="facts">{inst}</dl>
     </div>
   </section>

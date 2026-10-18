@@ -56,7 +56,7 @@ with Suite('site') as s:
     s.expect(not list(NET.rglob('__pycache__')), '__pycache__ inside network/')
 
     # 2. the hand-written pages (home, apps, konto, legal) match the snapshot in ../network_before (refreshed with the simple-pages redesign 2026-10-16 and the
-    #    clarity redesign 2026-10: DE|EN switch, 4-item nav, entry cards; support link in menu + footer 2026-10-17; FaLe PDF page as search landing, app links in a new tab 2026-10-17); only the generated tools teaser may differ
+    #    clarity redesign 2026-10: DE|EN switch, 4-item nav, entry cards; support link in menu + footer 2026-10-17; FaLe PDF page as search landing, app links in a new tab 2026-10-17; store buttons on the FaLe PDF page 2026-10-18); only the generated tools teaser may differ
     if BEFORE.exists():
         strip = lambda t: re.sub(r'  <section class="section section-tight" id="werkzeuge".*?</section>\n\n', '', t, flags=re.S)
         for old in sorted(BEFORE.rglob('*.html')):
@@ -66,6 +66,18 @@ with Suite('site') as s:
             s.expect('/werkzeuge/' in new or '/en/tools/' in new, f'{rel}: no link to the tools')
     else:
         s.notes.append('no snapshot of the old site – skipped the unchanged-pages check')
+
+    # 2b. FaLe PDF page: store buttons – a real link only when tools/apps.json has the store address, else "coming soon"
+    import json as _json
+    apps = _json.loads((NET / 'tools' / 'apps.json').read_text(encoding='utf-8')).get('pdf', {})
+    for path, soon in (('apps/pdf/index.html', 'Bald im Play Store'), ('en/apps/pdf/index.html', 'Play Store – coming soon')):
+        html = (NET / path).read_text(encoding='utf-8')
+        s.expect(html.count('class="store-row"') == 2, f'{path}: store buttons in hero and install section')
+        if str(apps.get('android', '')).startswith('https://'):
+            s.expect(f'href="{apps["android"]}"' in html and soon not in html, f'{path}: Play Store link')
+        else:
+            s.expect(soon in html and 'play.google' not in html, f'{path}: honest "coming soon" without a dead link')
+        s.expect('Google' not in re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.S), f'{path}: no third-party brand name in the page text')
 
     # 3. every page: status, one h1, JSON-LD valid, no ratings, no inline script/style
     for path in OLD + TOOLS['de'] + TOOLS['en']:

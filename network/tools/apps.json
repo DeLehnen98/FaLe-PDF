@@ -1,0 +1,4 @@
+{
+  "_hinweis": "Store-Links der Apps. Sobald eine App im Store ist, hier die Adresse eintragen (https://...) und die Seiten neu bauen (python3 tools/build_pages.py). Leer = Hinweis 'bald im Play Store'. testers = Link zur Anmeldung als Tester (z. B. Opt-in-Link des geschlossenen Tests).",
+  "pdf": { "android": "", "ios": "", "testers": "" }
+}
