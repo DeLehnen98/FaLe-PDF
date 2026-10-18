@@ -114,6 +114,31 @@ def main():
             c.close()
         step('old app links', forward)
 
+        def language():
+            # the start page follows the device language (site/landing.js) – published languages = hreflang links
+            html = (DIST / 'index.html').read_text()
+            import re as _re
+            have = {h.split('-')[0]: u.replace('https://pdf.fale.network', '') for h, u in _re.findall(r'hreflang="([^"]+)" href="([^"]+)"', html) if h != 'x-default'}
+            check('language: no switch in the header', '<a href="/en/" hreflang' not in html and 'hreflang="de" lang="de">Deutsch' not in (DIST / 'en' / 'index.html').read_text())
+            want = lambda code: have.get(code, have['en'])
+            FLAG = "try { localStorage.setItem('fale-landing-test-redirect', '1'); } catch (e) {}"
+            for loc, start, exp in [('en-US', '/', want('en')), ('de-DE', '/en/', '/'), ('sv-SE', '/', want('en')), ('fr-FR', '/', want('fr')),
+                                    ('ja-JP', '/en/', want('ja')), ('pt-BR', '/', want('pt')), ('en-GB', '/#computer', want('en') + '#computer')]:
+                c = b.new_context(locale=loc); c.add_init_script(FLAG); pg = c.new_page()
+                pg.goto(URL + start); pg.wait_for_timeout(700)
+                got = pg.url.replace(URL, '')
+                check(f'language: {loc} on {start} → {exp}', got == exp, got)
+                c.close()
+            c = b.new_context(locale='en-US', user_agent='Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'); c.add_init_script(FLAG); pg = c.new_page()
+            pg.goto(URL + '/'); pg.wait_for_timeout(500)
+            check('language: crawlers are not redirected', pg.url.replace(URL, '') == '/', pg.url)
+            c.close()
+            c = b.new_context(locale='en-US'); c.add_init_script(FLAG); pg = c.new_page()
+            pg.goto(URL + '/#/konto'); pg.wait_for_timeout(700)
+            check('language: app links still go to the app', pg.url.replace(URL, '').startswith('/app/#/konto'), pg.url)
+            c.close()
+        step('language', language)
+
         def app():
             c = b.new_context(viewport={'width': 390, 'height': 844})
             c.add_init_script("localStorage.setItem('fale-onboarded', '1');")

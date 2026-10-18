@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{{page.htmlLang|a}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description|a}}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#EEF0F8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#10112A" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="{{page.url}}">
+{{page.alternates}}
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FaLe PDF">
+  <meta property="og:title" content="{{meta.title|a}}">
+  <meta property="og:description" content="{{meta.description|a}}">
+  <meta property="og:url" content="{{page.url}}">
+  <meta property="og:image" content="{{page.ogImage}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/vendor/fonts/bricolage-grotesque/BricolageGrotesque-Bold.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/site/landing.css">
+  <script src="/site/landing.js"></script>
+  <script type="application/ld+json">{{page.jsonLdApp}}</script>
+  <script type="application/ld+json">{{page.jsonLdFaq}}</script>
+</head>
+<body>
+<a class="skip" href="#main">{{skip}}</a>
+<header class="wrap top">
+  <a class="brand" href="{{page.path}}"><img src="/icons/favicon.svg" alt="" width="36" height="36">FaLe PDF</a>
+  <nav aria-label="{{nav.label|a}}">
+    <a class="hide-s" href="#funktionen">{{nav.features}}</a>
+    <a class="hide-s" href="#computer">{{nav.computer}}</a>
+    <a class="hide-s" href="#fragen">{{nav.faq}}</a>
+    <a class="btn btn-main" href="/app/">{{nav.open}}</a>
+  </nav>
+</header>
+<main id="main">
+  <section class="wrap hero">
+    <div>
+      <h1>{{hero.h1}}</h1>
+      <p class="lede">{{hero.lede}}</p>
+      <div class="cta"><a class="btn btn-main" href="/app/">{{hero.try}}</a><a class="btn btn-line" href="#computer">{{nav.computer}}</a></div>
+      <div class="stores"><span class="store is-soon" data-store="android" data-ready="{{stores.androidReady|a}}"><small>Android</small><span>{{stores.androidSoon}}</span></span><span class="store is-soon" data-store="ios" data-ready="{{stores.iosReady|a}}"><small>{{stores.iosName}}</small><span>{{stores.iosSoon}}</span></span></div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <div class="sheet s1"></div><div class="sheet s2"></div>
+      <div class="sheet s3"><img src="/site/img/{{page.imgPrefix}}-01_home.webp" alt="" width="540" height="960"></div>
+    </div>
+  </section>
+  <section class="sec" id="computer" aria-labelledby="computer-h">
+    <div class="wrap desk">
+      <div>
+        <h2 id="computer-h">{{desk.h2}}</h2>
+        <p class="intro">{{desk.intro}}</p>
+        <ol class="desk-steps">{{#each desk.steps}}<li><b>{{.b}}</b> {{.t}}</li>{{/each}}</ol>
+        <div class="cta"><a class="btn btn-main" href="/app/?install=1" data-dl data-dl-windows="{{desk.dlWindows|a}}" data-dl-mac="{{desk.dlMac|a}}">{{desk.download}}</a><span class="store is-soon" data-store="windows" data-ready="{{desk.windowsReady|a}}"><small>Windows</small><span>{{desk.windowsSoon}}</span></span></div>
+        <p class="note">{{desk.note}}</p>
+      </div>
+      <figure class="window" aria-hidden="true"><div class="window-bar"><img src="/icons/favicon.svg" alt="" width="16" height="16"><span>FaLe PDF</span><i></i><i></i><i></i></div><img src="/site/img/{{page.imgPrefix}}-desktop.webp" alt="" width="1120" height="630" loading="lazy"></figure>
+    </div>
+  </section>
+  <section class="sec" id="funktionen">
+    <div class="wrap">
+      <h2>{{jobs.h2}}</h2>
+      <p class="intro">{{jobs.intro}}</p>
+      <ul class="jobs">{{#each jobs.items}}<li><b>{{.b}}</b><span>{{.t}}</span></li>{{/each}}</ul>
+    </div>
+  </section>
+  <section class="wrap">
+    <div class="band">
+      <h2>{{privacy.h2}}</h2>
+      <dl>{{#each privacy.items}}<div><dt>{{.dt}}</dt><dd>{{.dd}}</dd></div>{{/each}}</dl>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap free">
+      <div><h2>{{free.h2}}</h2><p class="intro">{{free.intro}}</p><p class="note">{{free.note}}</p></div>
+      <ul>{{#each free.items}}<li>{{.}}</li>{{/each}}</ul>
+    </div>
+  </section>
+  <section class="sec" aria-labelledby="screens-h">
+    <div class="wrap">
+      <h2 id="screens-h">{{screens.h2}}</h2>
+      <div class="screens" tabindex="0">{{#each screens.items}}<img src="/site/img/{{page.imgPrefix}}-{{.file}}.webp" alt="{{.alt|a}}" width="540" height="960" loading="lazy">{{/each}}</div>
+    </div>
+  </section>
+  <section class="sec" id="fragen">
+    <div class="wrap faq">
+      <h2>{{faq.h2}}</h2>
+      {{#each faq.items}}<details><summary>{{.q}}</summary><p>{{.a}}</p></details>{{/each}}
+    </div>
+  </section>
+  <section class="wrap end">
+    <h2>{{end.h2}}</h2>
+    <p class="intro center">{{end.intro}}</p>
+    <div class="cta"><a class="btn btn-main" href="/app/">{{nav.open}}</a></div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© 2026 FaLe.dev</span>
+  <nav aria-label="{{footer.label|a}}"><a href="{{page.legal.imprint}}">{{footer.imprint}}</a><a href="{{page.legal.privacy}}">{{footer.privacy}}</a><a href="{{page.network}}">{{footer.more}}</a></nav>
+</div></footer>
+</body>
+</html>

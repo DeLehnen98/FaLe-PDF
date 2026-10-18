@@ -4,6 +4,9 @@
 //  2. An app service worker that was installed for "/" (before the app moved) would keep showing the old app here.
 //  3. Store buttons (android, ios, windows): /site/stores.json (written by scripts/vercel-build.mjs from network/tools/apps.json).
 //  4. The download button for Windows/Mac names the visitor's system.
+//  5. Language: the page follows the device language – there is no switch. The published languages are the
+//     <link rel="alternate" hreflang> tags above this script (written by scripts/build-landing.mjs); devices in a
+//     language we don't have get English. Crawlers are never redirected, test browsers only on request.
 (function () {
   'use strict';
   var h = location.hash || '', q = location.search || '';
@@ -13,6 +16,32 @@
     location.replace('/app/' + q + h);
     return;
   }
+  try {
+    var ua = navigator.userAgent || '';
+    var test = false;
+    try { test = localStorage.getItem('fale-landing-test-redirect') === '1'; } catch (e) { /* storage blocked */ }
+    if (!/bot|crawl|spider|slurp|duckduck|baidu|yandex|facebookexternalhit|embedly|lighthouse|preview/i.test(ua) && (!navigator.webdriver || test)) {
+      var have = {};
+      var links = document.querySelectorAll('link[rel="alternate"][hreflang]');
+      for (var i = 0; i < links.length; i++) {
+        var hl = links[i].getAttribute('hreflang').toLowerCase();
+        if (hl !== 'x-default') have[hl.split('-')[0]] = new URL(links[i].getAttribute('href'), location.href).pathname;
+      }
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+      var want = null;
+      for (var j = 0; j < langs.length && !want; j++) {
+        var b = String(langs[j]).toLowerCase().split(/[-_]/)[0];
+        if (b === 'in') b = 'id';
+        if (have[b]) want = b;
+      }
+      if (!want) want = have.en ? 'en' : null;
+      var pageLang = (document.documentElement.lang || 'de').toLowerCase().split('-')[0];
+      if (want && want !== pageLang && have[want] !== location.pathname) {
+        location.replace(have[want] + q + (h && !appHash ? h : ''));
+        return;
+      }
+    }
+  } catch (e) { /* stay on this page */ }
   try {
     if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
       navigator.serviceWorker.getRegistrations().then(function (regs) {
