@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '8044e9c36576';
+const VERSION = 'e90c2bdb2c3c';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -119,6 +119,7 @@ const PRECACHE = [
   "/assets/wt/lib/tpl-pdf.js",
   "/assets/wt/lib/tpl-words.js",
   "/assets/wt/lib/tpl.css",
+  "/assets/wt/lib/travel.js",
   "/assets/wt/lib/tt.js",
   "/assets/wt/lib/unifont.js",
   "/assets/wt/lib/vec-trace.js",

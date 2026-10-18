@@ -102,3 +102,18 @@
 .nk-table td:nth-child(n+2) { text-align: right; }
 .nk-table .nk-due { color: var(--danger); font-weight: 650; }
 .nk-table .nk-credit { color: var(--accent); font-weight: 650; }
+/* reisekosten */
+.rk-days { display: grid; gap: 8px; }
+.rk-day { padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); display: grid; gap: 6px; }
+.rk-day-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.rk-meals { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+.rk-meal { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; }
+.rk-meal input { width: 20px; height: 20px; accent-color: var(--primary); }
+.rk-h3 { margin: 12px 0 0; font-size: 1rem; }
+.rk-attach { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.rk-file { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.rk-file:focus-visible + label { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.rk-attach label.wt-btn { gap: 6px; cursor: pointer; }
+.rk-sum { display: grid; gap: 2px; }
+.rk-row { display: flex; justify-content: space-between; gap: 12px; min-height: 36px; align-items: center; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+.rk-row.is-main { font-size: 1.15rem; border-bottom: 0; color: var(--primary); }

@@ -1,0 +1,169 @@
+{
+  "id": "reisekosten",
+  "category": "everyday",
+  "icon": "receipt",
+  "module": "tools/reisekosten.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 72,
+  "related": [
+    "work-time",
+    "receipt",
+    "scan-to-pdf",
+    "invoice-generator"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "reisekostenabrechnung",
+    "name": "Reisekostenabrechnung",
+    "short": "Spesen mit Verpflegungspauschalen, Kilometergeld und Belegen als PDF.",
+    "title": "Reisekostenabrechnung erstellen – Pauschalen 2026 | FaleNetwork",
+    "h1": "Reisekostenabrechnung erstellen",
+    "metaDescription": "Reisekostenabrechnung mit Verpflegungspauschalen 2026 (14 €/28 €), Kürzung für Mahlzeiten, Kilometergeld und Belegfotos als PDF. Gratis, ohne Abo, ohne Upload.",
+    "lede": "Trag Reisezeiten, Fahrten und Belege ein – Pauschalen und Kürzungen rechnet FaLe, die Belege hängen hinten an der PDF.",
+    "primaryButton": "Abrechnung als PDF",
+    "keywords": [
+      "reisekostenabrechnung",
+      "reisekostenabrechnung vorlage",
+      "spesenabrechnung",
+      "verpflegungspauschale 2026",
+      "verpflegungsmehraufwand",
+      "kilometerpauschale dienstreise",
+      "spesen rechner",
+      "reisekosten rechner"
+    ],
+    "steps": [
+      {
+        "title": "Reise eintragen",
+        "text": "Beginn und Ende mit Uhrzeit. Die Pauschalen je Tag erscheinen sofort – hak an, welche Mahlzeiten gestellt wurden."
+      },
+      {
+        "title": "Fahrten und Belege",
+        "text": "Kilometer mit dem eigenen Auto, dazu Bahn, Flug, Hotel oder Parken mit Betrag und Foto des Belegs."
+      },
+      {
+        "title": "PDF erstellen",
+        "text": "Die Abrechnung mit allen Tabellen, Summe, Vorschuss und Unterschriftsfeldern – die Belege direkt dahinter."
+      }
+    ],
+    "why": [
+      {
+        "title": "Pauschalen richtig gekürzt",
+        "text": "Frühstück kürzt um 5,60 €, Mittag- und Abendessen um je 11,20 € – auch am An- und Abreisetag, aber nie unter null. Frühstück auf der Hotelrechnung wird abgezogen."
+      },
+      {
+        "title": "Belege gleich dabei",
+        "text": "Fotos und PDFs der Belege kommen als eigene Seiten hinter die Abrechnung – eine Datei für die Buchhaltung."
+      },
+      {
+        "title": "Kein Spesen-Abo",
+        "text": "Spesen-Software kostet meist pro Nutzer und Monat. Für die eigene Abrechnung reicht hier der Browser."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Belege und Angaben werden nicht hochgeladen. Nur deine Personendaten merkt sich FaLe – wenn du willst."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie hoch ist die Verpflegungspauschale 2026?",
+        "a": "Im Inland 14 € bei mehr als 8 Stunden Abwesenheit und für An- und Abreisetag einer mehrtägigen Reise, 28 € für jeden vollen Tag dazwischen."
+      },
+      {
+        "q": "Was passiert, wenn ich ein Essen bekomme?",
+        "a": "Die Pauschale wird gekürzt: um 20 % der vollen Tagespauschale für ein Frühstück (5,60 €) und um je 40 % für Mittag- und Abendessen (11,20 €). Weniger als null wird es nicht."
+      },
+      {
+        "q": "Wie viel Kilometergeld gibt es?",
+        "a": "Mit dem eigenen Pkw 0,30 € je gefahrenem Kilometer, mit Motorrad oder Roller 0,20 €. Zahlt dein Arbeitgeber einen anderen Satz, trag ihn als eigenen Satz ein."
+      },
+      {
+        "q": "Was ist, wenn ich nachts unterwegs bin, aber nicht übernachte?",
+        "a": "Dann zählt die Reise als ein Tag: Die Stunden beider Kalendertage werden zusammengezählt und dem Tag mit den meisten Stunden zugerechnet."
+      },
+      {
+        "q": "Gilt das auch für Auslandsreisen?",
+        "a": "Nein, die Pauschalen hier gelten für Reisen innerhalb Deutschlands. Für das Ausland gibt es eigene Sätze je Land."
+      },
+      {
+        "q": "Werden meine Belege hochgeladen?",
+        "a": "Nein. Die Fotos werden in deinem Browser in die PDF eingebaut und nicht gespeichert."
+      }
+    ]
+  },
+  "en": {
+    "slug": "travel-expense-report",
+    "name": "Travel expense report",
+    "short": "Expenses with German meal allowances, mileage and receipts as PDF.",
+    "title": "Travel expense report (Germany 2026 rates) – free | FaleNetwork",
+    "h1": "Create a travel expense report",
+    "metaDescription": "Travel expense report with German 2026 meal allowances (€14/€28), meal deductions, mileage and receipt photos – as PDF. Free, no subscription, no upload.",
+    "lede": "Enter times, drives and receipts – FaLe works out allowances and deductions and attaches the receipts behind the PDF.",
+    "primaryButton": "Report as PDF",
+    "keywords": [
+      "travel expense report",
+      "expense report template",
+      "german per diem 2026",
+      "mileage allowance germany",
+      "reisekostenabrechnung"
+    ],
+    "steps": [
+      {
+        "title": "Enter the trip",
+        "text": "Start and end with times. The allowance per day appears right away – tick meals you were given."
+      },
+      {
+        "title": "Drives and receipts",
+        "text": "Kilometres with your own car, plus train, flight, hotel or parking with amount and a photo of the receipt."
+      },
+      {
+        "title": "Create the PDF",
+        "text": "The report with all tables, total, advance and signature lines – the receipts right behind it."
+      }
+    ],
+    "why": [
+      {
+        "title": "Allowances reduced correctly",
+        "text": "Breakfast reduces by €5.60, lunch and dinner by €11.20 each – also on arrival and departure days, never below zero. Breakfast on the hotel bill is taken off."
+      },
+      {
+        "title": "Receipts included",
+        "text": "Photos and PDFs of receipts become pages behind the report – one file for accounting."
+      },
+      {
+        "title": "No expense subscription",
+        "text": "Expense software usually charges per user and month. For your own report the browser is enough."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "Receipts and details are not uploaded. Only your personal details are remembered – if you want."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What are the German meal allowances for 2026?",
+        "a": "Within Germany €14 for more than 8 hours away and for the arrival and departure day of a multi-day trip, €28 for each full day in between."
+      },
+      {
+        "q": "What if I was given a meal?",
+        "a": "The allowance is reduced by 20 % of the full-day rate for breakfast (€5.60) and 40 % each for lunch and dinner (€11.20), never below zero."
+      },
+      {
+        "q": "How much is the mileage allowance?",
+        "a": "€0.30 per kilometre driven with your own car, €0.20 with a motorbike or scooter. If your employer pays a different rate, enter it as your own rate."
+      },
+      {
+        "q": "Does it cover trips abroad?",
+        "a": "No, the rates here are for trips within Germany. Other countries have their own rates."
+      },
+      {
+        "q": "Are my receipts uploaded?",
+        "a": "No. The photos are built into the PDF in your browser and not stored."
+      }
+    ]
+  }
+}
