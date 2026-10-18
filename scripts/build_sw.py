@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # same exclusions as scripts/vercel-build.mjs: server code, migrations, docs and native/build folders are not
 # served as static files – listing them made cache.addAll() fail (404) and the service worker never installed
 SKIP_DIRS = {"scripts", ".git", "node_modules", "api", "supabase", "network", "docs", "store", "android", "ios", "ios-native", "dist", "tests", "e2e-out", "ios-e2e-out", "site", "mail",
-             "screenshots"}  # manifest screenshots: only for the browser's install dialog, never needed offline
+             "screenshots", "one-android", "one"}  # manifest screenshots: only for the browser's install dialog, never needed offline
 SKIP_FILES = {"sw.js", "README.md", "SECURITY.md", "package.json", "package-lock.json", "vercel.json", "capacitor.config.json"}
 
 files = []
