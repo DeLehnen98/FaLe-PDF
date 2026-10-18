@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '35c61bdfd38d';
+const VERSION = '8648c3977b13';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -65,6 +65,7 @@ const PRECACHE = [
   "/assets/wt/lib/img-qrdecode.js",
   "/assets/wt/lib/img-tools.css",
   "/assets/wt/lib/imgembed.js",
+  "/assets/wt/lib/merge.js",
   "/assets/wt/lib/new-cropbox.js",
   "/assets/wt/lib/new-img.js",
   "/assets/wt/lib/new-invoice.js",

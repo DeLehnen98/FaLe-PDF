@@ -81,3 +81,19 @@
 .tpl-file-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .tpl-days { font-variant-numeric: tabular-nums; font-weight: 700; }
 .tpl-hol { margin: 6px 0 0; padding-left: 18px; font-size: var(--step--1); color: var(--text-2); }
+/* mail-merge */
+.mm-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); margin-top: 8px; }
+.mm-table-wrap > .img-muted { padding: 0 10px 8px; }
+.mm-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+.mm-table th, .mm-table td { padding: 6px 10px; border-top: 1px solid var(--border); text-align: left; white-space: nowrap; max-width: 16em; overflow: hidden; text-overflow: ellipsis; }
+.mm-table thead th { border-top: 0; background: var(--surface-2); color: var(--text-2); font-weight: 650; }
+.mm-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.mm-chip { min-height: 44px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--surface); color: var(--text); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+.mm-chip:hover { border-color: var(--primary); }
+.mm-chip:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.mm-pvhead { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.mm-step { display: flex; align-items: center; gap: 6px; }
+.mm-step .wt-btn { min-width: 44px; font-size: 1.2rem; }
+.mm-pos { min-width: 4.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 650; }
+.mm-problems:empty { display: none; }
+#mm-sheet { margin-top: 8px; max-width: 20em; }

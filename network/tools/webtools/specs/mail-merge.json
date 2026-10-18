@@ -1,0 +1,192 @@
+{
+  "id": "mail-merge",
+  "category": "everyday",
+  "icon": "doc",
+  "module": "tools/mail-merge.js",
+  "accepts": [
+    ".xlsx",
+    ".csv",
+    ".txt",
+    "text/csv",
+    "text/plain",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  ],
+  "multiple": false,
+  "minFiles": 1,
+  "order": 70,
+  "related": [
+    "din-letter",
+    "invoice-generator",
+    "payment-reminder",
+    "merge-pdf"
+  ],
+  "next": [
+    "merge-pdf",
+    "compress-pdf"
+  ],
+  "needs": [
+    "pdflib",
+    "jszip",
+    "office",
+    "unicodefont"
+  ],
+  "alt": [
+    {
+      "id": "din-letter",
+      "de": "Nur ein einzelner Brief an einen Empfänger?",
+      "en": "Just a single letter to one recipient?"
+    }
+  ],
+  "de": {
+    "slug": "serienbrief",
+    "name": "Serienbrief erstellen",
+    "short": "Briefe aus einer Excel- oder CSV-Liste – ein PDF für alle oder eins pro Empfänger.",
+    "title": "Serienbrief aus Excel erstellen – ohne Word, gratis | FaleNetwork",
+    "h1": "Serienbrief erstellen",
+    "metaDescription": "Serienbrief aus Excel oder CSV erstellen – ohne Word: Platzhalter, automatische Anrede, Brief nach DIN 5008, alle Briefe in einer PDF oder einzeln als ZIP.",
+    "lede": "Lies deine Adressliste ein, schreib den Brief mit Platzhaltern – und erhalte für jede Zeile einen fertigen Brief.",
+    "pickLabel": "Excel- oder CSV-Liste auswählen",
+    "primaryButton": "Serienbrief erstellen",
+    "keywords": [
+      "serienbrief",
+      "serienbrief erstellen",
+      "serienbrief excel",
+      "serienbrief ohne word",
+      "seriendruck",
+      "serienbrief pdf",
+      "serienbrief anrede",
+      "adressliste briefe"
+    ],
+    "steps": [
+      {
+        "title": "Liste einlesen",
+        "text": "Wähle eine Excel-Datei (.xlsx) oder CSV mit einer Zeile pro Empfänger. Die Spalten werden zu Platzhaltern wie {Vorname} oder {PLZ}."
+      },
+      {
+        "title": "Brief schreiben",
+        "text": "Schreib Betreff und Text und füg Platzhalter per Antippen ein. Die Anschrift wird aus deinen Spalten vorbereitet, {Briefanrede} setzt die passende Anrede."
+      },
+      {
+        "title": "Prüfen und erstellen",
+        "text": "Blättere in der Vorschau durch die Empfänger. Dann erstellst du eine PDF mit allen Briefen zum Drucken – oder eine PDF pro Empfänger als ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Word, kein Office-Abo",
+        "text": "Für einen klassischen Serienbrief brauchst du Word und Excel. Hier reicht der Browser – auch am Handy."
+      },
+      {
+        "title": "Typische Fehler sind behoben",
+        "text": "Datumsangaben erscheinen nicht als „45234“, Postleitzahlen behalten ihre führende Null, und leere Felder hinterlassen keine Lücken in der Anschrift."
+      },
+      {
+        "title": "Anrede automatisch richtig",
+        "text": "Aus Anrede, Titel und Namen wird „Sehr geehrte Frau Dr. Müller,“ oder „Sehr geehrter Herr Schmidt,“ – ohne Bedingungsfelder. In der Anschrift steht korrekt „Herrn“."
+      },
+      {
+        "title": "Adressen bleiben bei dir",
+        "text": "Die Liste wird im Browser gelesen und nirgends hochgeladen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie muss meine Excel-Liste aufgebaut sein?",
+        "a": "Eine Zeile pro Empfänger und Spaltennamen in der ersten Zeile, etwa Anrede, Vorname, Nachname, Straße, PLZ und Ort. Andere Spalten wie Kundennummer oder Betrag kannst du genauso als Platzhalter verwenden."
+      },
+      {
+        "q": "Wie bekomme ich die richtige Anrede?",
+        "a": "Setz {Briefanrede} in die Anredezeile. Steht in der Spalte Anrede „Frau“ oder „Herr“ (auch „w“ und „m“), wird daraus „Sehr geehrte Frau …“ beziehungsweise „Sehr geehrter Herr …“, mit Titel. Ohne Angabe heißt es „Guten Tag Vorname Nachname“."
+      },
+      {
+        "q": "Kann ich jedem Empfänger eine eigene PDF schicken?",
+        "a": "Ja. Wähle „Eine PDF pro Empfänger (ZIP)“ und lege fest, wie die Dateien heißen sollen, etwa {Nachname} {Vorname}."
+      },
+      {
+        "q": "Funktioniert das mit Fensterumschlägen?",
+        "a": "Ja. Die Briefe sind nach DIN 5008 gesetzt, die Anschrift liegt im Sichtfenster von DIN-lang- und C5-Umschlägen. Falz- und Lochmarken sind am Rand."
+      },
+      {
+        "q": "Was ist mit Postleitzahlen ohne führende Null?",
+        "a": "Excel macht aus 01067 oft 1067. Hat die Spalte PLZ auch fünfstellige Werte, ergänzt FaLe die Null bei deutschen Adressen automatisch und sagt dir, wie viele es waren."
+      },
+      {
+        "q": "Werden meine Adressen hochgeladen?",
+        "a": "Nein. Die Liste wird in deinem Browser gelesen, auch die PDFs entstehen dort."
+      }
+    ]
+  },
+  "en": {
+    "slug": "mail-merge",
+    "name": "Mail merge letters",
+    "short": "Letters from an Excel or CSV list – one PDF for all or one per recipient.",
+    "title": "Mail merge from Excel – letters as PDF, no Word | FaleNetwork",
+    "h1": "Mail merge letters",
+    "metaDescription": "Mail merge from Excel or CSV without Word: placeholders, automatic salutation, DIN 5008 letter layout, all letters in one PDF or one PDF each as a ZIP. Free.",
+    "lede": "Load your address list, write the letter with placeholders – and get a finished letter for every row.",
+    "pickLabel": "Choose an Excel or CSV list",
+    "primaryButton": "Create letters",
+    "keywords": [
+      "mail merge",
+      "mail merge excel",
+      "mail merge without word",
+      "mail merge pdf",
+      "bulk letters",
+      "address list letters"
+    ],
+    "steps": [
+      {
+        "title": "Load the list",
+        "text": "Choose an Excel file (.xlsx) or CSV with one row per recipient. The columns become placeholders like {First name} or {City}."
+      },
+      {
+        "title": "Write the letter",
+        "text": "Write subject and text and insert placeholders with a tap. The address is prepared from your columns, {Salutation} picks the right greeting."
+      },
+      {
+        "title": "Check and create",
+        "text": "Flip through the recipients in the preview. Then create one PDF with all letters for printing – or one PDF per recipient as a ZIP."
+      }
+    ],
+    "why": [
+      {
+        "title": "No Word, no Office subscription",
+        "text": "A classic mail merge needs Word and Excel. Here the browser is enough – even on a phone."
+      },
+      {
+        "title": "Common glitches fixed",
+        "text": "Dates don’t show up as “45234”, postcodes keep their leading zero, and empty fields leave no gaps in the address."
+      },
+      {
+        "title": "Salutation done for you",
+        "text": "Title, gender and name become “Dear Ms Dr. Miller,” or “Dear Mr Smith,” – no merge rules needed."
+      },
+      {
+        "title": "Addresses stay with you",
+        "text": "The list is read in your browser and uploaded nowhere."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How should my Excel list look?",
+        "a": "One row per recipient with column names in the first row, e.g. title, first name, last name, street, postcode and city. Any other column, like a customer number or amount, works as a placeholder too."
+      },
+      {
+        "q": "How do I get the right salutation?",
+        "a": "Put {Salutation} in the salutation line. With “Ms”/“Mr” (or “f”/“m”) in a gender or title column it becomes “Dear Ms …” or “Dear Mr …”; without, “Dear first name last name”."
+      },
+      {
+        "q": "Can I send each recipient their own PDF?",
+        "a": "Yes. Choose “One PDF per recipient (ZIP)” and set how the files are named, e.g. {Last name} {First name}."
+      },
+      {
+        "q": "Does it fit window envelopes?",
+        "a": "The letters follow the German DIN 5008 layout: the address sits in the window of DL and C5 envelopes."
+      },
+      {
+        "q": "Are my addresses uploaded?",
+        "a": "No. The list is read in your browser and the PDFs are made there too."
+      }
+    ]
+  }
+}

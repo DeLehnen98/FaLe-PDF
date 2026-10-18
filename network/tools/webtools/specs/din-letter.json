@@ -164,5 +164,12 @@
         "a": "No. Everything stays in your browser. Only if you switch on “Remember sender” does your browser keep your name and address on this device – switching it off deletes them."
       }
     ]
-  }
+  },
+  "alt": [
+    {
+      "id": "mail-merge",
+      "de": "Derselbe Brief an viele Empfänger aus einer Liste?",
+      "en": "The same letter to many recipients from a list?"
+    }
+  ]
 }
