@@ -32,3 +32,9 @@ apk/
 # FaLe One Android app: web copy of one/ (scripts/cap-patch-one-android.mjs --web); one-android/android/ is covered by android/ above
 one-android/www/
 /ios-sim-app/
+
+# local test outputs (office suites)
+tests/suites/office_tpl/work/
+tests/suites/office3/lo_profile/
+tests/suites/office4/lo_profile/
+tests/suites/office4/work_t/

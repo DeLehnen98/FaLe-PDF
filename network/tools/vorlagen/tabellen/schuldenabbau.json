@@ -1,0 +1,116 @@
+{
+ "id": "schuldenabbau",
+ "slug": "schuldenabbau",
+ "cat": "Finanzen",
+ "name": "Schuldenabbau (Schneeball / Lawine)",
+ "short": "Schulden nach Plan tilgen – mit Tilgungsplan",
+ "desc": "Schuldenabbau als Excel-Vorlage (XLSX): Schneeball- oder Lawinenmethode mit Tilgungsplan über bis zu zehn Jahre, Zinsen gesamt und dem Monat, in dem du schuldenfrei bist.",
+ "search": "",
+ "intro": "Trag deine Schulden mit Restschuld, Zinssatz und Mindestrate ein und dazu, wie viel du jeden Monat insgesamt zahlen kannst. Das Geld über den Mindestraten fließt in eine Schuld nach der gewählten Methode; ist sie getilgt, rollt ihre Rate zur nächsten.",
+ "uses": [
+  "Dispo, Kreditkarte und Ratenkredite geordnet abbauen",
+  "Schneeball und Lawine vergleichen",
+  "Sehen, wie viel eine höhere Monatsrate bringt"
+ ],
+ "cols": [
+  [
+   "Schuld",
+   "Name, z. B. Dispo oder Ratenkredit."
+  ],
+  [
+   "Restschuld",
+   "Was heute noch offen ist."
+  ],
+  [
+   "Zins p. a.",
+   "Jahreszins in Prozent."
+  ],
+  [
+   "Mindestrate",
+   "Die Rate, die du mindestens zahlen musst."
+  ],
+  [
+   "Reihenfolge",
+   "1 bekommt das zusätzliche Geld zuerst – nach Methode berechnet."
+  ],
+  [
+   "Getilgt nach (Monaten)",
+   "Monat im Tilgungsplan, in dem die Schuld bei 0 ist."
+  ],
+  [
+   "Schuldenfrei im",
+   "Monat und Jahr, in dem alles getilgt ist."
+  ],
+  [
+   "Zinsen gesamt",
+   "Alle Zinsen bis zur vollständigen Tilgung."
+  ],
+  [
+   "Monat",
+   "Laufender Monat des Plans."
+  ],
+  [
+   "Datum",
+   "Monat als Datum."
+  ],
+  [
+   "Zahlung gesamt",
+   "Was in diesem Monat insgesamt gezahlt wird."
+  ],
+  [
+   "Restschuld gesamt",
+   "Summe aller Schulden nach der Zahlung."
+  ],
+  [
+   "Zinsen",
+   "Zinsen dieses Monats."
+  ],
+  [
+   "Bedarf 1 · Bedarf 2 · Bedarf 3 · Bedarf 4 · Bedarf 5",
+   "Hilfsspalten: was jede Schuld in diesem Monat noch braucht."
+  ],
+  [
+   "Fällig 1 · Fällig 2 · Fällig 3 · Fällig 4 · Fällig 5",
+   "Hilfsspalten: Rate je Schuld in diesem Monat."
+  ],
+  [
+   "Extra",
+   "Geld über den Mindestraten, das nach Reihenfolge verteilt wird."
+  ]
+ ],
+ "tips": [
+  "Die Lawine (höchster Zins zuerst) ist meist am günstigsten, der Schneeball (kleinste Schuld zuerst) bringt schneller erste Erfolge – probier beide aus."
+ ],
+ "faq": [
+  {
+   "q": "Was ist der Unterschied zwischen Schneeball und Lawine?",
+   "a": "Beim Schneeball wird zuerst die kleinste Restschuld getilgt, bei der Lawine die mit dem höchsten Zins. Die Tabelle zeigt für beide, wann du schuldenfrei bist und wie viel Zinsen anfallen."
+  },
+  {
+   "q": "Ersetzt die Tabelle eine Schuldnerberatung?",
+   "a": "Nein. Wenn dir die Schulden über den Kopf wachsen, helfen kostenlose Schuldnerberatungsstellen von Kommunen und Wohlfahrtsverbänden."
+  }
+ ],
+ "related": [
+  "kreditrechner",
+  "monatsbudget",
+  "haushaltsbuch"
+ ],
+ "en": {
+  "slug": "debt-payoff",
+  "name": "Debt payoff (snowball / avalanche)",
+  "short": "Pay off debts by plan – with a payoff schedule",
+  "desc": "Debt payoff spreadsheet (XLSX): snowball or avalanche method with a payoff schedule over up to ten years, total interest and the month you become debt-free.",
+  "intro": "Enter your debts with balance, interest rate and minimum payment, plus what you can pay in total each month. Money above the minimums goes to one debt by the chosen method; once it is paid off, its payment rolls on to the next.",
+  "inside": [
+   "Snowball or avalanche",
+   "Monthly payoff schedule",
+   "Total interest",
+   "Debt-free month"
+  ],
+  "uses": [
+   "Overdrafts, credit cards, loans",
+   "Comparing methods"
+  ]
+ }
+}

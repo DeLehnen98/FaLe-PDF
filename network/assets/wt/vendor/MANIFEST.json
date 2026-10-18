@@ -83,7 +83,7 @@
     "lib/shared/office/numfmt.js": "622cc0fee1ef7f9a3c71668ae8ea0aca3f45cb4151cd470591de239ca4f72eef",
     "lib/shared/office/pdftext.js": "04b3aca70c43cd649ad05e15751f02d1882c85c2a82a21409f0ff6fd3d78ad01",
     "lib/shared/office/pptx-read.js": "20774ee378f4af0ae5d4fc6bf47fc3af565e0b0ad40fbe82b7891bf92c5396bf",
-    "lib/shared/office/sheet-templates.js": "811df8121ec503eb193231e4fa8ad14904f31525c449104e53b17607b934599c",
+    "lib/shared/office/sheet-templates.js": "fdfb4d2086ecfe59dabd9cf589392372b2b44f4275756d8f5a5130f911bb816a",
     "lib/shared/office/sheetfx.js": "03c509045b34c7aa3762859b326b44cd3a69ab5fdc8a8fa43748c74e1f481ea8",
     "lib/shared/office/sheetpdf.js": "8ab340b79a542298d52bb9e3c81d4d32df7aa8940973452564e2ab460ab5d461",
     "lib/shared/office/slide-render.js": "bdee739c89b982d1bbbc457f38387ce660c290fefb7e4e38df4016de4f10d1a2",

@@ -1,0 +1,64 @@
+{
+ "id": "wochenplaner",
+ "slug": "wochenplaner",
+ "cat": "Arbeit",
+ "name": "Wochenplaner",
+ "short": "Termine nach Uhrzeit und Aufgaben zum Abhaken",
+ "desc": "Wochenplaner als Excel-Vorlage (XLSX): Termine nach Uhrzeit für Montag bis Sonntag, Aufgaben zum Abhaken mit Fortschritt und Notizen – heute wird markiert.",
+ "search": "",
+ "intro": "Trag den Montag der Woche ein, dann stehen Daten und Kalenderwoche in der Kopfzeile, und der heutige Tag wird hervorgehoben. Darunter planst du Termine nach Uhrzeit, rechts hakst du Aufgaben ab.",
+ "uses": [
+  "Die Arbeitswoche planen",
+  "Lernplan für Schule oder Studium",
+  "Familienwoche mit allen Terminen"
+ ],
+ "cols": [
+  [
+   "Zeit",
+   "Uhrzeit der Zeile im Tagesplan."
+  ],
+  [
+   "Tag",
+   "Wochentag mit Datum – der heutige Tag ist markiert."
+  ],
+  [
+   "✓",
+   "Haken setzen, wenn die Aufgabe erledigt ist – sie wird dann durchgestrichen."
+  ],
+  [
+   "Aufgaben",
+   "Was diese Woche zu erledigen ist; darüber steht der Fortschritt in Prozent."
+  ]
+ ],
+ "tips": [
+  "Kopier das Blatt für jede Woche, dann hast du einen Überblick über mehrere Wochen in einer Datei."
+ ],
+ "faq": [
+  {
+   "q": "Muss ich wirklich den Montag eintragen?",
+   "a": "Jedes Datum der Woche funktioniert, die Tabelle rechnet den Montag selbst aus."
+  }
+ ],
+ "related": [
+  "aufgabenliste",
+  "jahreskalender",
+  "projektplan"
+ ],
+ "en": {
+  "slug": "weekly-planner",
+  "name": "Weekly planner",
+  "short": "Hourly schedule and a task list to tick off",
+  "desc": "Weekly planner spreadsheet (XLSX): hourly schedule from Monday to Sunday, a task list with tick marks and progress, and notes – today is highlighted.",
+  "intro": "Enter the Monday of the week: dates and the week number fill the header and today is highlighted. Plan appointments by the hour and tick off tasks on the right.",
+  "inside": [
+   "Dates and week number from one entry",
+   "Today highlighted",
+   "Tasks with tick marks",
+   "Progress in percent"
+  ],
+  "uses": [
+   "Work weeks",
+   "Study plans"
+  ]
+ }
+}

@@ -59,6 +59,7 @@ PAGES & FILES
 • Compress PDFs, batch processing
 • Add and remove password protection (AES-256)
 • Compare two PDF versions
+• 40 extra tools: letterhead, booklet, pages per sheet, greyscale, PDF repair, background removal
 
 CONVERT
 • PDF to DOCX, XLSX and PPTX – and back to PDF
@@ -67,7 +68,7 @@ CONVERT
 DOCUMENTS, SPREADSHEETS, PRESENTATIONS
 • Open, edit and create DOCX, XLSX and PPTX
 • Spreadsheets with formulas and charts
-• Templates for CVs, cover letters, invoices, letters and more
+• Around 100 templates: CVs, invoices, calendars, vouchers, contracts, slide designs
 • Crash-safe – and, if you like, save straight into the original file
 • Letter generators for Germany (cancellation, withdrawal, objection – the letters are written in German)
 

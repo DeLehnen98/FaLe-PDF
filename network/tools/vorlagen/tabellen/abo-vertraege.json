@@ -1,0 +1,120 @@
+{
+ "id": "abo-vertraege",
+ "slug": "abo-vertraege",
+ "cat": "Finanzen",
+ "name": "Abo- & Vertragsübersicht",
+ "short": "Abos mit Kosten, Vertragsende und Kündigungsfrist",
+ "desc": "Abo- und Vertragsübersicht als Excel-Vorlage (XLSX): Kosten pro Monat und Jahr, nächstes Vertragsende und spätester Kündigungstermin – Fristen in Kürze werden markiert.",
+ "search": "",
+ "intro": "Trag jeden Vertrag mit Betrag, Rhythmus, Beginn, Laufzeit und Kündigungsfrist ein. Die Tabelle rechnet die Kosten pro Monat und Jahr, das nächste Vertragsende und bis wann du kündigen musst. Läuft eine Frist in den nächsten 30 Tagen ab, wird sie rot, in 60 Tagen gelb.",
+ "uses": [
+  "Streaming-, Handy- und Fitnessverträge im Blick behalten",
+  "Fixkosten senken",
+  "Keine Kündigungsfrist mehr verpassen"
+ ],
+ "cols": [
+  [
+   "Vertrag / Abo",
+   "Name des Vertrags oder Anbieters."
+  ],
+  [
+   "Kategorie",
+   "Zum Beispiel Streaming, Handy, Versicherung."
+  ],
+  [
+   "Betrag",
+   "Was pro Zahlung abgebucht wird."
+  ],
+  [
+   "Rhythmus",
+   "Wie oft gezahlt wird: wöchentlich, monatlich, vierteljährlich, halbjährlich oder jährlich."
+  ],
+  [
+   "Pro Monat",
+   "Betrag auf einen Monat umgerechnet."
+  ],
+  [
+   "Pro Jahr",
+   "Betrag auf ein Jahr umgerechnet."
+  ],
+  [
+   "Beginn",
+   "Vertragsbeginn."
+  ],
+  [
+   "Mindestlaufzeit",
+   "Erste Laufzeit in Monaten."
+  ],
+  [
+   "Verlängerung",
+   "Um wie viele Monate sich der Vertrag danach verlängert (0 = endet von selbst)."
+  ],
+  [
+   "Kündigungsfrist",
+   "Frist in Monaten vor dem Vertragsende."
+  ],
+  [
+   "Nächstes Vertragsende",
+   "Das nächste Ende einer Laufzeit ab heute."
+  ],
+  [
+   "Kündbar zum",
+   "Das nächste Vertragsende, das du mit der Frist noch erreichst."
+  ],
+  [
+   "Kündigen bis",
+   "Spätester Tag, an dem die Kündigung ankommen muss."
+  ],
+  [
+   "In Tagen",
+   "Tage bis „Kündigen bis“ – rot unter 30, gelb unter 60."
+  ],
+  [
+   "Status",
+   "Aktiv, Gekündigt oder Pausiert; nur aktive zählen im Überblick."
+  ],
+  [
+   "Notiz",
+   "Kundennummer, Kündigungsweg oder Ähnliches."
+  ],
+  [
+   "Zahlungen pro Jahr",
+   "Hilfstabelle: wie viele Zahlungen ein Rhythmus pro Jahr bedeutet."
+  ],
+  [
+   "Überblick (nur aktive)",
+   "Kosten pro Monat und Jahr, Zahl der Fristen in den nächsten 30 Tagen und was Kündigungen pro Jahr sparen."
+  ]
+ ],
+ "tips": [
+  "Bei vielen Verbraucherverträgen, die nach dem 1. März 2022 geschlossen wurden, kannst du nach der Mindestlaufzeit monatlich kündigen – dann bei Verlängerung 1 eintragen."
+ ],
+ "faq": [
+  {
+   "q": "Ist das Kündigungsdatum rechtlich verbindlich?",
+   "a": "Nein. Die Tabelle rechnet mit deinen Angaben und Monaten; maßgeblich sind deine Vertragsbedingungen. Kündige im Zweifel lieber ein paar Tage früher."
+  }
+ ],
+ "related": [
+  "haushaltsbuch",
+  "familienbudget",
+  "monatsbudget"
+ ],
+ "en": {
+  "slug": "subscriptions-contracts",
+  "name": "Subscriptions & contracts",
+  "short": "Subscriptions with costs, end date and notice period",
+  "desc": "Subscription and contract tracker spreadsheet (XLSX): cost per month and year, next end of term and the last day to cancel – deadlines coming up are highlighted.",
+  "intro": "Enter each contract with amount, billing cycle, start, term and notice period. The sheet works out monthly and yearly costs, the next end of term and by when to cancel; deadlines within 30 days turn red, within 60 days yellow.",
+  "inside": [
+   "Monthly and yearly cost",
+   "Next end of term",
+   "Last day to cancel",
+   "Red/yellow deadline warnings"
+  ],
+  "uses": [
+   "Streaming and phone contracts",
+   "Cutting fixed costs"
+  ]
+ }
+}

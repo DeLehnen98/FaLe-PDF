@@ -1,0 +1,100 @@
+{
+ "id": "bewerbungstracker",
+ "slug": "bewerbungstracker",
+ "cat": "Arbeit",
+ "name": "Bewerbungstracker",
+ "short": "Bewerbungen mit Status, Nachfassen und Quoten",
+ "desc": "Bewerbungstracker als Excel-Vorlage (XLSX): Bewerbungen mit Status, Nachfass-Termin und Auswertung – Überfälliges wird rot, Gespräche blau und Zusagen grün.",
+ "search": "",
+ "intro": "Trag jede Bewerbung mit Firma, Position und Datum ein. Der Nachfass-Termin rechnet sich aus deiner Wartezeit, du kannst ihn überschreiben; ist er vorbei und noch keine Antwort da, wird er rot. Die Auswertung zeigt Antwort- und Einladungsquote.",
+ "uses": [
+  "Jobsuche nach Ausbildung oder Studium",
+  "Wechsel in einen neuen Job",
+  "Ausbildungsplatz- und Praktikumssuche"
+ ],
+ "cols": [
+  [
+   "Firma",
+   "Unternehmen."
+  ],
+  [
+   "Position",
+   "Stelle, auf die du dich beworben hast."
+  ],
+  [
+   "Ort",
+   "Arbeitsort."
+  ],
+  [
+   "Quelle",
+   "Jobportal, Firmenwebsite, Empfehlung, Initiativbewerbung, Messe oder Netzwerk."
+  ],
+  [
+   "Beworben am",
+   "Datum der Bewerbung."
+  ],
+  [
+   "Status",
+   "Geplant, Beworben, Eingangsbestätigung, Vorstellungsgespräch, Zweitgespräch, Angebot erhalten, Zusage oder Absage."
+  ],
+  [
+   "Tage",
+   "Tage seit der Bewerbung."
+  ],
+  [
+   "Nachfassen am",
+   "Beworben am plus deine Wartezeit – überschreibbar, rot wenn überfällig."
+  ],
+  [
+   "Ansprechpartner/in",
+   "Name aus der Anzeige oder dem Gespräch."
+  ],
+  [
+   "Nächster Schritt",
+   "Was als Nächstes zu tun ist."
+  ],
+  [
+   "Notiz",
+   "Gehalt, Eindrücke, Fragen."
+  ],
+  [
+   "Anzahl",
+   "Anzahl je Status in der Auswertung."
+  ],
+  [
+   "Auswertung",
+   "Zahlen und Quoten über alle Bewerbungen."
+  ]
+ ],
+ "tips": [
+  "Nachfassen nach etwa zwei Wochen ohne Antwort ist üblich – die Wartezeit stellst du oben ein."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich eigene Status verwenden?",
+   "a": "Die Auswahlliste deckt die üblichen Schritte ab. Eigene Status kannst du eintippen, sie werden aber nicht farbig markiert und in den Quoten nicht gezählt."
+  }
+ ],
+ "related": [
+  "aufgabenliste",
+  "kundenliste",
+  "wochenplaner"
+ ],
+ "en": {
+  "slug": "job-application-tracker",
+  "name": "Job application tracker",
+  "short": "Applications with status, follow-ups and rates",
+  "desc": "Job application tracker spreadsheet (XLSX): applications with status, follow-up date and statistics – overdue follow-ups turn red, interviews blue and offers green.",
+  "intro": "Enter every application with company, position and date. The follow-up date comes from your waiting time and can be overwritten; it turns red when it has passed without an answer. The summary shows response and interview rates.",
+  "inside": [
+   "Status drop-down",
+   "Automatic follow-up date",
+   "Colour-coded progress",
+   "Response and interview rates"
+  ],
+  "uses": [
+   "Job hunting",
+   "Apprenticeship and internship search"
+  ]
+ }
+}

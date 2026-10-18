@@ -1,0 +1,104 @@
+{
+ "id": "reisebudget",
+ "slug": "reisebudget",
+ "cat": "Schule & Freizeit",
+ "name": "Reisebudget",
+ "short": "Urlaubskosten planen, erfassen und fair aufteilen",
+ "desc": "Reisebudget als Excel-Vorlage (XLSX): Urlaubskosten planen und unterwegs erfassen, mit Fremdwährung, Kosten pro Person und Tag und Ausgleich in der Reisegruppe.",
+ "search": "",
+ "intro": "Im Blatt „Budget“ legst du Reisedaten, Personen, Wechselkurs und das geplante Budget je Kategorie fest. Unterwegs trägst du jede Ausgabe ins Blatt „Ausgaben“ ein – auch in Landeswährung. Am Ende siehst du, wer wem wie viel schuldet.",
+ "uses": [
+  "Gruppenreise oder WG-Urlaub abrechnen",
+  "Urlaub im Ausland mit anderer Währung",
+  "Reisekosten vorab planen"
+ ],
+ "cols": [
+  [
+   "Reisende",
+   "Namen der Mitreisenden."
+  ],
+  [
+   "Bezahlt",
+   "Was diese Person insgesamt ausgelegt hat."
+  ],
+  [
+   "Anteil",
+   "Ihr gleicher Anteil an allen Ausgaben."
+  ],
+  [
+   "Ausgleich",
+   "Bezahlt minus Anteil: positiv bekommt Geld, negativ zahlt."
+  ],
+  [
+   "Kategorie",
+   "Unterkunft, Anreise, Essen, Aktivitäten …"
+  ],
+  [
+   "Geplant",
+   "Geplantes Budget der Kategorie."
+  ],
+  [
+   "Ausgegeben",
+   "Bisher ausgegeben (in Euro)."
+  ],
+  [
+   "Rest",
+   "Geplant minus ausgegeben – rot, wenn überzogen."
+  ],
+  [
+   "Datum",
+   "Tag der Ausgabe."
+  ],
+  [
+   "Beschreibung",
+   "Wofür."
+  ],
+  [
+   "Betrag",
+   "Betrag wie bezahlt."
+  ],
+  [
+   "Währung",
+   "Euro oder Landeswährung."
+  ],
+  [
+   "Bezahlt von",
+   "Wer die Ausgabe ausgelegt hat."
+  ],
+  [
+   "In Euro",
+   "Betrag in Euro, mit dem Kurs aus dem Blatt „Budget“."
+  ]
+ ],
+ "tips": [
+  "Trag den Kurs so ein, wie du ihn beim Geldwechsel bekommst – dann stimmen die Euro-Beträge mit deinem Kontoauszug besser überein."
+ ],
+ "faq": [
+  {
+   "q": "Kann ich Ausgaben ungleich aufteilen?",
+   "a": "Die Vorlage teilt alles gleichmäßig. Für ungleiche Anteile trägst du den Ausgleich einer Ausgabe als eigene Zeile mit dem passenden Betrag ein."
+  }
+ ],
+ "related": [
+  "haushaltsbuch",
+  "fahrtenbuch",
+  "familienbudget"
+ ],
+ "en": {
+  "slug": "travel-budget",
+  "name": "Travel budget",
+  "short": "Plan, track and split holiday costs",
+  "desc": "Travel budget spreadsheet (XLSX): plan holiday costs and track spending on the go, with foreign currency, cost per person and day and settling up in the group.",
+  "intro": "Set dates, travellers, exchange rate and a budget per category on the Budget sheet; enter every expense on the Expenses sheet, in euros or local currency. At the end you see who owes whom.",
+  "inside": [
+   "Budget per category",
+   "Foreign currency conversion",
+   "Cost per person and day",
+   "Group settle-up"
+  ],
+  "uses": [
+   "Group trips",
+   "Travel abroad"
+  ]
+ }
+}

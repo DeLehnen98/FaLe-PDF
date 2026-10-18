@@ -1,0 +1,76 @@
+{
+ "id": "rechnung-tabelle",
+ "slug": "rechnung-tabelle",
+ "cat": "Business",
+ "name": "Rechnung (Tabelle)",
+ "short": "Rechnung mit 19 % / 7 % USt. und Fälligkeit",
+ "desc": "Rechnung als Excel-Vorlage (XLSX): Positionen mit Menge und Einzelpreis, 19 % und 7 % Umsatzsteuer getrennt ausgewiesen, Fälligkeitsdatum und Kleinunternehmer-Hinweis.",
+ "search": "",
+ "intro": "Fülle die gelben Felder aus: Absender, Empfänger, Rechnungsnummer und die Positionen. Netto, Umsatzsteuer je Satz, Gesamtbetrag und Fälligkeit rechnen sich selbst. Als Kleinunternehmer setzt ein Schalter die Steuer auf 0 und ergänzt den Hinweis nach § 19 UStG.",
+ "uses": [
+  "Rechnungen für Freiberufler und kleine Betriebe",
+  "Rechnungen mit gemischten Steuersätzen",
+  "Kleinunternehmer-Rechnung"
+ ],
+ "cols": [
+  [
+   "Pos.",
+   "Laufende Nummer der Position."
+  ],
+  [
+   "Beschreibung",
+   "Leistung oder Artikel."
+  ],
+  [
+   "Menge",
+   "Anzahl, Stunden oder Ähnliches."
+  ],
+  [
+   "Einheit",
+   "Stück, Std., pauschal …"
+  ],
+  [
+   "Einzelpreis",
+   "Netto-Preis pro Einheit."
+  ],
+  [
+   "USt.",
+   "Steuersatz der Position: 19 %, 7 % oder 0 %."
+  ],
+  [
+   "Netto",
+   "Menge mal Einzelpreis."
+  ]
+ ],
+ "tips": [
+  "Für Rechnungen an Behörden oder Firmen, die eine E-Rechnung verlangen, nutze den Rechnungs-Generator im Werkzeug-Bereich – er erstellt auch XRechnung und ZUGFeRD."
+ ],
+ "faq": [
+  {
+   "q": "Ist das schon eine E-Rechnung?",
+   "a": "Nein, eine Tabelle oder ein PDF daraus ist eine sonstige Rechnung. Wenn dein Kunde eine E-Rechnung braucht, erstelle sie mit dem Rechnungs-Generator."
+  }
+ ],
+ "related": [
+  "rechnungsausgangsbuch",
+  "mahnliste",
+  "preiskalkulation"
+ ],
+ "en": {
+  "slug": "invoice-spreadsheet",
+  "name": "Invoice (spreadsheet)",
+  "short": "Invoice with 19 % / 7 % VAT and due date",
+  "desc": "Invoice spreadsheet (XLSX): line items with quantity and unit price, 19 % and 7 % German VAT shown separately, due date and a small-business exemption switch.",
+  "intro": "Fill in the yellow fields: sender, recipient, invoice number and line items. Net amounts, VAT per rate, the total and the due date are calculated. A switch sets VAT to 0 and adds the small-business note.",
+  "inside": [
+   "Separate 19 % and 7 % VAT",
+   "Due date from payment terms",
+   "Small-business option",
+   "Print-ready layout"
+  ],
+  "uses": [
+   "Freelancers",
+   "Small businesses"
+  ]
+ }
+}

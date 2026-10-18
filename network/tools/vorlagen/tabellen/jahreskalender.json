@@ -1,0 +1,68 @@
+{
+ "id": "jahreskalender",
+ "slug": "jahreskalender",
+ "cat": "Zuhause",
+ "name": "Jahreskalender",
+ "short": "Zwölf Monate mit KW, Feiertagen und Terminen",
+ "desc": "Jahreskalender als Excel-Vorlage (XLSX): alle zwölf Monate mit Kalenderwochen, Wochenenden, bundesweiten Feiertagen und eigenen Terminen – für jedes Jahr.",
+ "search": "",
+ "intro": "Trag oben eine Jahreszahl ein, und der ganze Kalender rechnet sich neu: Tage, Kalenderwochen und die bundesweiten Feiertage. Wochenenden sind schattiert, Feiertage und eigene Termine gelb, heute blau.",
+ "uses": [
+  "Urlaub und Ferien im Jahr planen",
+  "Termine der Familie oder des Vereins sammeln",
+  "Als Wandkalender ausdrucken"
+ ],
+ "cols": [
+  [
+   "KW",
+   "Kalenderwoche nach ISO (Montag bis Sonntag)."
+  ],
+  [
+   "Mo · Di · Mi · Do · Fr · Sa · So",
+   "Die Tage des Monats; Samstag und Sonntag sind schattiert."
+  ],
+  [
+   "Datum",
+   "Datum eines Feiertags oder eigenen Termins."
+  ],
+  [
+   "Termin / Feiertag",
+   "Bundesweite Feiertage stehen schon da, eigene Termine trägst du in die gelben Felder ein."
+  ]
+ ],
+ "tips": [
+  "Regionale Feiertage (z. B. Fronleichnam) trägst du selbst als Termin ein – sie werden dann im Kalender gelb."
+ ],
+ "faq": [
+  {
+   "q": "Funktioniert der Kalender auch für nächstes Jahr?",
+   "a": "Ja. Ändere die Jahreszahl oben, dann rechnen sich alle Tage, Kalenderwochen und die bundesweiten Feiertage neu."
+  },
+  {
+   "q": "Sind die Feiertage meines Bundeslandes dabei?",
+   "a": "Berechnet werden die bundesweiten Feiertage. Feiertage, die nur in einzelnen Ländern gelten, ergänzt du als eigenen Termin."
+  }
+ ],
+ "related": [
+  "wochenplaner",
+  "geburtstagskalender",
+  "urlaubsplaner"
+ ],
+ "en": {
+  "slug": "year-calendar",
+  "name": "Year calendar",
+  "short": "Twelve months with week numbers, holidays and events",
+  "desc": "Year calendar spreadsheet (XLSX): all twelve months with ISO week numbers, shaded weekends, German public holidays and your own events – for any year.",
+  "intro": "Enter a year at the top and the whole calendar recalculates: days, week numbers and the nationwide German holidays. Weekends are shaded, holidays and your events yellow, today blue.",
+  "inside": [
+   "Any year by entering the year",
+   "ISO week numbers",
+   "Nationwide holidays calculated",
+   "Own events highlighted"
+  ],
+  "uses": [
+   "Planning holidays",
+   "Printing a wall calendar"
+  ]
+ }
+}

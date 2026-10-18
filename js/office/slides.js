@@ -4,7 +4,7 @@ import { $, $$, h, esc, toast, errorToast, showMenu, pickFiles, downloadBlob, sh
 import { createShell, exportPdfFlow, tb } from './shell.js';
 import { officeMenu, oicon, KINDS, stripExt } from './kinds.js';
 import { slideHtml, slidePreview, textHtml, PPI, elementDom } from './slide-render.js';
-import { SLIDE_THEMES, SLIDE_LAYOUTS } from './templates.js';
+import { SLIDE_THEMES, SLIDE_LAYOUTS, SLIDE_DECKS, SLIDE_DECK_CONTENT } from './templates.js';
 import { fileToDataUrl } from './vendor.js';
 import { enableDragReorder, moveItem } from '../components.js';
 import { aiHidden } from '../ai/hidden.js';
@@ -14,41 +14,122 @@ const R = (text, size, color, extra = {}) => ({ text, size, color, font: extra.f
 function textEl(role, x, y, w, h, paras, opts = {}) {
   return { type: 'shape', geom: 'rect', role, x, y, w, h, fill: null, line: null, text: { paras, anchor: opts.anchor || 't', ins: [0.1, 0.05, 0.1, 0.05], wrap: true } };
 }
-export function makeSlide(layout, theme, W = 13.333, H = 7.5) {
+/** Text colour of a placeholder role: titles and quotes in the title colour, numbers/column heads in the strong accent, the rest in the text colour. */
+function roleColor(t, role) {
+  if (role === 'title' || role === 'quote') return t.title;
+  if (role === 'num') return t.strong || t.title;
+  return t.text;
+}
+/** Fill of a non-text layout shape: cards/columns (panel) or markers (mark). */
+function roleFill(t, role) { return role === 'panel' ? (t.panel || t.bg) : t.accent; }
+const shapeEl = (role, geom, x, y, w, h, t) => ({ type: 'shape', geom, role, locked: true, x, y, w, h, fill: roleFill(t, role), line: null });
+
+/**
+ * One slide of a layout in a theme. c (optional) overrides the placeholder texts:
+ * { title, sub, items: [..], left: [..] | { head, items }, right: …, num, quote, author, kpis: [[zahl, text] ×3], steps: [[datum, text] ×4–5], notes }
+ */
+export function makeSlide(layout, theme, W = 13.333, H = 7.5, c = {}) {
   const t = theme;
   const els = [];
-  const title = (txt, y = 0.45, hgt = 1.15, size = 34) => textEl('title', 0.75, y, W - 1.5, hgt, [{ align: 'l', level: 0, runs: [R(txt, size, t.title, { b: true, font: t.font })] }], { anchor: 'b' });
-  const body = (x, w, lines = ['Erster Punkt', 'Zweiter Punkt', 'Dritter Punkt']) => textEl('body', x, 1.85, w, H - 2.5, lines.map(l => ({ align: 'l', level: 0, bullet: { char: '•' }, runs: [R(l, 20, t.text, { font: t.font })] })));
+  const run = (txt, size, role, extra = {}) => R(txt, size, roleColor(t, role), { font: t.font, ...extra });
+  const para = (txt, size, role, extra = {}, align = 'l') => ({ align, level: 0, runs: [run(txt, size, role, extra)] });
+  const title = (txt, y = 0.45, hgt = 1.15, size = 34) => textEl('title', 0.75, y, W - 1.5, hgt, [para(txt, size, 'title', { b: true })], { anchor: 'b' });
+  const body = (x, w, lines = ['Erster Punkt', 'Zweiter Punkt', 'Dritter Punkt'], y = 1.85, hgt = H - 2.5, size = 20) => textEl('body', x, y, w, hgt, lines.map(l => ({ align: 'l', level: 0, bullet: { char: '•' }, runs: [run(l, size, 'body')] })));
   if (layout === 'title') {
-    els.push(textEl('title', 0.9, H * 0.3, W - 1.8, 1.7, [{ align: 'l', level: 0, runs: [R('Titel der Präsentation', 44, t.title, { b: true, font: t.font })] }], { anchor: 'b' }));
-    els.push(textEl('sub', 0.9, H * 0.3 + 1.85, W - 1.8, 1.0, [{ align: 'l', level: 0, runs: [R('Untertitel · Name · Datum', 22, t.text, { font: t.font })] }]));
+    els.push(textEl('title', 0.9, H * 0.3, W - 1.8, 1.7, [para(c.title || 'Titel der Präsentation', 44, 'title', { b: true })], { anchor: 'b' }));
+    els.push(textEl('sub', 0.9, H * 0.3 + 1.85, W - 1.8, 1.0, [para(c.sub || 'Untertitel · Name · Datum', 22, 'sub')]));
   } else if (layout === 'title-text') {
-    els.push(title('Überschrift'), body(0.75, W - 1.5));
+    els.push(title(c.title || 'Überschrift'), body(0.75, W - 1.5, c.items));
   } else if (layout === 'title-image') {
-    els.push(title('Überschrift'));
+    els.push(title(c.title || 'Überschrift'));
     els.push({ type: 'image', role: 'image', x: 0.75, y: 1.85, w: W - 1.5, h: H - 2.5, src: null });
   } else if (layout === 'two-col') {
-    els.push(title('Überschrift'), body(0.75, (W - 1.8) / 2, ['Linke Spalte', 'Punkt']), body(0.75 + (W - 1.8) / 2 + 0.3, (W - 1.8) / 2, ['Rechte Spalte', 'Punkt']));
+    els.push(title(c.title || 'Überschrift'), body(0.75, (W - 1.8) / 2, c.left || ['Linke Spalte', 'Punkt']), body(0.75 + (W - 1.8) / 2 + 0.3, (W - 1.8) / 2, c.right || ['Rechte Spalte', 'Punkt']));
+  } else if (layout === 'agenda') {
+    const items = c.items || ['Ausgangslage', 'Ziele', 'Vorgehen', 'Ergebnisse', 'Nächste Schritte'];
+    els.push(title(c.title || 'Agenda'));
+    els.push(textEl('body', 0.75, 1.9, W - 1.5, H - 2.5, items.map((l, i) => { const sz = items.length > 6 ? 22 : 26; return { align: 'l', level: 0, spcBef: 10, runs: [{ ...run(String(i + 1).padStart(2, '0'), sz, 'num', { b: true }), accent: true }, run(`   ${l}`, sz, 'body')] }; })));
+  } else if (layout === 'section') {
+    els.push(textEl('num', 0.9, 1.9, 4, 1.3, [para(c.num || '01', 60, 'num', { b: true })], { anchor: 'b' }));
+    els.push(textEl('title', 0.9, 3.25, W - 1.8, 1.45, [para(c.title || 'Abschnitt', 40, 'title', { b: true })]));
+    els.push(textEl('sub', 0.9, 4.75, W - 1.8, 0.9, [para(c.sub || 'Worum es in diesem Teil geht', 20, 'sub')]));
+  } else if (layout === 'quote') {
+    els.push(textEl('num', 0.9, 0.7, 2.2, 1.9, [para('“', 140, 'num', { b: true, font: 'Georgia' })], { anchor: 'b' }));
+    els.push(textEl('quote', 1.6, 2.35, W - 3.2, 2.7, [para(c.quote || 'Ein Satz, der hängen bleibt – kurz, klar und mit einer Idee darin.', 32, 'quote', { i: true })]));
+    els.push(textEl('sub', 1.6, 5.25, W - 3.2, 0.8, [para(c.author || '— Vorname Nachname, Funktion', 20, 'sub')]));
+  } else if (layout === 'kpi') {
+    const kpis = (c.kpis || [['87 %', 'Kundenzufriedenheit'], ['1.250', 'neue Mitglieder'], ['−18 %', 'Kosten gegenüber Vorjahr']]).slice(0, 3);
+    els.push(title(c.title || 'Kennzahlen'));
+    const gap = 0.4, cw = (W - 1.5 - gap * (kpis.length - 1)) / kpis.length;
+    kpis.forEach(([n, l], i) => {
+      const x = 0.75 + i * (cw + gap);
+      els.push(shapeEl('panel', 'roundRect', x, 2.1, cw, 3.7, t));
+      els.push(textEl('num', x + 0.2, 2.45, cw - 0.4, 1.55, [para(n, 54, 'num', { b: true }, 'ctr')], { anchor: 'b' }));
+      els.push(textEl('body', x + 0.2, 4.15, cw - 0.4, 1.4, [para(l, 18, 'body', {}, 'ctr')]));
+    });
+  } else if (layout === 'timeline') {
+    const steps = (c.steps || [['Q1', 'Start und Analyse'], ['Q2', 'Konzept und Entwurf'], ['Q3', 'Umsetzung'], ['Q4', 'Abschluss und Übergabe']]).slice(0, 5);
+    els.push(title(c.title || 'Zeitleiste'));
+    const x0 = 0.9, span = W - 1.8, sw = span / steps.length, ly = 4.05;
+    els.push(shapeEl('mark', 'rect', x0, ly, span, 0.07, t));
+    steps.forEach(([d, l], i) => {
+      const cx = x0 + sw * (i + 0.5);
+      els.push(shapeEl('mark', 'ellipse', cx - 0.19, ly + 0.035 - 0.19, 0.38, 0.38, t));
+      els.push(textEl('num', cx - sw / 2 + 0.05, 2.75, sw - 0.1, 1.05, [para(d, 22, 'num', { b: true }, 'ctr')], { anchor: 'b' }));
+      els.push(textEl('body', cx - sw / 2 + 0.05, 4.55, sw - 0.1, 1.9, [para(l, 16, 'body', {}, 'ctr')]));
+    });
+  } else if (layout === 'compare') {
+    const L = c.left && !Array.isArray(c.left) ? c.left : { head: 'Option A', items: ['Vorteil', 'Vorteil', 'Nachteil'] };
+    const Rt = c.right && !Array.isArray(c.right) ? c.right : { head: 'Option B', items: ['Vorteil', 'Vorteil', 'Nachteil'] };
+    els.push(title(c.title || 'Vergleich'));
+    const cw = (W - 1.8) / 2;
+    [L, Rt].forEach((col, i) => {
+      const x = 0.75 + i * (cw + 0.3);
+      els.push(shapeEl('panel', 'roundRect', x, 1.9, cw, H - 2.5, t));
+      els.push(textEl('num', x + 0.3, 2.1, cw - 0.6, 0.85, [para(col.head, 26, 'num', { b: true })], { anchor: 'b' }));
+      els.push(body(x + 0.3, cw - 0.6, col.items, 3.1, H - 3.85, 20));
+    });
   }
   const slide = { layout, bg: { color: t.bg }, els };
+  if (c.notes) slide.notes = c.notes;
   applyDecor(slide, t, W, H);
   return slide;
 }
 
+/** Locked decoration shapes of a theme. Three variants: title slide, content slides, slides without a title (section, quote). */
 function applyDecor(slide, t, W, H) {
   slide.els = slide.els.filter(e => e.role !== 'decor');
   const d = [];
-  const isTitle = slide.layout === 'title';
+  const kind = slide.layout === 'title' ? 'title' : slide.layout === 'section' || slide.layout === 'quote' ? 'plain' : 'content';
+  const isTitle = kind === 'title';
   if (t.id === 'indigo') {
     if (isTitle) d.push({ x: 0.9, y: H * 0.3 - 0.35, w: 1.4, h: 0.12 });
     else d.push({ x: 0, y: 0.55, w: 0.22, h: 0.95 });
   } else if (t.id === 'papier') {
-    d.push(isTitle ? { x: 0, y: H - 0.35, w: W, h: 0.35 } : { x: 0.85, y: 1.62, w: 1.2, h: 0.07 });
+    d.push(kind !== 'content' ? { x: 0, y: H - 0.35, w: W, h: 0.35 } : { x: 0.85, y: 1.62, w: 1.2, h: 0.07 });
   } else if (t.id === 'koralle') {
     d.push({ geom: 'ellipse', x: W - (isTitle ? 3.6 : 1.9), y: isTitle ? -1.4 : -0.9, w: isTitle ? 5 : 2.8, h: isTitle ? 5 : 2.8 });
   } else if (t.id === 'wald') {
     d.push({ x: 0, y: H - 0.18, w: W, h: 0.18 });
     if (isTitle) d.push({ x: 0.9, y: H * 0.3 - 0.35, w: 0.9, h: 0.1 });
+  } else if (t.id === 'mitternacht') {
+    if (isTitle) d.push({ x: 0.55, y: H * 0.3 + 0.1, w: 0.07, h: 2.6 }, { geom: 'ellipse', x: W - 1.4, y: 0.7, w: 0.42, h: 0.42 });
+    else if (kind === 'plain') d.push({ x: 0.55, y: 2.0, w: 0.07, h: 3.6 });
+    else d.push({ x: 0.85, y: 1.66, w: 0.8, h: 0.06 }, { geom: 'ellipse', x: W - 0.95, y: 0.62, w: 0.26, h: 0.26 });
+  } else if (t.id === 'salbei') {
+    d.push(isTitle ? { geom: 'ellipse', x: W - 3.3, y: H - 3.2, w: 5.6, h: 5.6 } : { geom: 'ellipse', x: W - 1.1, y: H - 1.1, w: 2.2, h: 2.2 });
+  } else if (t.id === 'terrakotta') {
+    d.push({ x: 0, y: 0, w: kind === 'content' ? 0.18 : 0.45, h: H });
+  } else if (t.id === 'kontrast') {
+    if (kind === 'content') d.push({ x: 0.3, y: 1.12, w: 0.26, h: 0.26 });
+    else d.push({ x: 0, y: H - 0.55, w: W * 0.42, h: 0.55 }, { x: W - 0.9, y: 0.5, w: 0.4, h: 0.4 });
+  } else if (t.id === 'pflaume') {
+    const dia = (x, y, s) => ({ geom: 'diamond', x, y, w: s, h: s });
+    if (isTitle) d.push({ x: 0, y: H - 0.12, w: W, h: 0.12 }, dia(W - 2.2, 0.8, 0.5), dia(W - 1.55, 0.8, 0.5), dia(W - 0.9, 0.8, 0.5));
+    else d.push(dia(W - 1.6, 0.62, 0.3), dia(W - 1.2, 0.62, 0.3), dia(W - 0.8, 0.62, 0.3));
+  } else if (t.id === 'ozean') {
+    d.push({ x: 0, y: 0, w: W, h: kind === 'content' ? 0.14 : 0.5 });
+    if (isTitle) d.push({ x: 0.9, y: H * 0.3 - 0.35, w: 1.1, h: 0.1 });
   }
   slide.els.unshift(...d.map(x => ({ type: 'shape', geom: x.geom || 'rect', role: 'decor', locked: true, x: x.x, y: x.y, w: x.w, h: x.h, fill: t.accent, line: null })));
 }
@@ -58,16 +139,21 @@ export function applyTheme(pres, theme) {
   for (const s of pres.slides) {
     s.bg = { color: theme.bg };
     for (const e of s.els) {
+      if (e.role === 'panel' || e.role === 'mark') e.fill = roleFill(theme, e.role);
       if (!e.text) continue;
-      const col = e.role === 'title' ? theme.title : theme.text;
-      e.text.paras.forEach(p => p.runs.forEach(r => { r.color = col; r.font = theme.font; }));
+      const col = roleColor(theme, e.role);
+      e.text.paras.forEach(p => p.runs.forEach(r => { r.color = r.accent ? roleColor(theme, 'num') : col; r.font = theme.font; })); // accent runs: agenda numbers
     }
     applyDecor(s, theme, pres.w, pres.h);
   }
 }
 
-export function newPresentation(themeId = 'indigo') {
-  const theme = SLIDE_THEMES.find(t => t.id === themeId) || SLIDE_THEMES[0];
+/** New presentation in a theme: title + content slide, or a ready-made deck (SLIDE_DECKS) when deckId is given. */
+export function newPresentation(themeId = 'indigo', deckId = null) {
+  const deck = deckId ? SLIDE_DECKS.find(d => d.id === deckId) : null;
+  const theme = SLIDE_THEMES.find(t => t.id === themeId) || (deck && SLIDE_THEMES.find(t => t.id === deck.theme)) || SLIDE_THEMES[0];
+  const content = deck ? SLIDE_DECK_CONTENT[deck.id] : null;
+  if (content && content.length) return { w: 13.333, h: 7.5, theme: theme.id, slides: content.map(s => makeSlide(s.layout, theme, 13.333, 7.5, s)) };
   return { w: 13.333, h: 7.5, theme: theme.id, slides: [makeSlide('title', theme), makeSlide('title-text', theme)] };
 }
 
@@ -77,7 +163,7 @@ export const slideHandoff = { pres: null, name: null };
 const clone = o => (Array.isArray(o) ? o.map(clone) : o && typeof o === 'object' ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, clone(v)])) : o);
 
 // ---------------- editor ----------------
-export async function mountSlides(screen, { id = null, template = null }) {
+export async function mountSlides(screen, { id = null, template = null, deck = null }) {
   let pres, name = 'Neue Präsentation.pptx';
   screen.body.innerHTML = '<div class="v-loading"><div><span class="spinner dark" style="width:30px;height:30px"></span><span data-load>Präsentation wird geöffnet …</span></div></div>';
   if (id) {
@@ -91,7 +177,11 @@ export async function mountSlides(screen, { id = null, template = null }) {
   } else if (template === '__outline' && slideHandoff.pres) {
     pres = slideHandoff.pres; name = `${slideHandoff.name || 'Präsentation'}.pptx`;
     slideHandoff.pres = null;
-  } else pres = newPresentation(template || 'indigo');
+  } else {
+    const dk = deck ? SLIDE_DECKS.find(d => d.id === deck) : null;
+    pres = newPresentation(template || (dk && dk.theme) || 'indigo', dk ? dk.id : null);
+    if (dk) name = `${dk.title.replace(/\s*\/\s*/g, ' ')}.pptx`;
+  }
   const fromOutline = !id && template === '__outline';
   if (screen.signal.aborted) return;
 

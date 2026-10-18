@@ -3,7 +3,7 @@ import * as db from '../db.js';
 import { openScreen, currentScreen } from '../screen.js';
 import { $, $$, h, esc, toast, errorToast, openDialog, downloadBlob, shareBlob } from '../ui.js';
 import { oicon, KINDS, kindTile } from './kinds.js';
-import { DOC_TEMPLATES, SHEET_TEMPLATES, SLIDE_THEMES } from './templates.js';
+import { DOC_TEMPLATES, SHEET_TEMPLATES, SLIDE_THEMES, SLIDE_DECKS } from './templates.js';
 import { handoff } from '../tools/index.js';
 import { deleteFileConfirm } from './filerow.js';
 
@@ -43,7 +43,7 @@ export async function openOfficeRoute(parts, params, { goBack }) {
   } else if (top === 'neu') {
     const art = parts[1] || 'dokument';
     mount = art === 'tabelle' ? 'sheet' : art === 'praesentation' ? 'slides' : 'writer';
-    opts = { template: params.get('vorlage') || params.get('design') || (params.get('gliederung') ? '__outline' : null) };
+    opts = { template: params.get('vorlage') || params.get('design') || (params.get('gliederung') ? '__outline' : null), deck: mount === 'slides' ? params.get('deck') : null };
     title = mount === 'sheet' ? 'Neue Tabelle' : mount === 'slides' ? 'Neue Präsentation' : 'Neues Dokument';
   } else return;
   const screen = openScreen({ title, sub: '', onBack });
@@ -89,11 +89,14 @@ function templatesScreen(onBack, art) {
   const screen = openScreen({ title: 'Vorlagen', sub: 'Eigene Designs – kostenlos und ohne Konto', onBack });
   const card = (href, tile, title, desc, preview = '') => `<a class="tpl-card" href="${href}">${preview || `<span class="tpl-prev">${tile}</span>`}<span class="tpl-txt"><strong>${esc(title)}</strong><span>${esc(desc)}</span></span></a>`;
   const docPrev = t => `<span class="tpl-prev tpl-doc tpl-${t.id}" aria-hidden="true"><span class="tl t1"></span><span class="tl"></span><span class="tl s"></span><span class="tl"></span><span class="tl s"></span><span class="tl"></span></span>`;
-  const slidePrev = t => `<span class="tpl-prev tpl-slide" aria-hidden="true" style="background:${t.bg}"><span class="ts-bar" style="background:${t.accent}"></span><span class="ts-t" style="background:${t.title}"></span><span class="ts-s" style="background:${t.text}"></span></span>`;
+  const slidePrev = (t, deck = false) => `<span class="tpl-prev tpl-slide${deck ? ' tpl-deck' : ''}" aria-hidden="true" style="background:${t.bg}"><span class="ts-bar" style="background:${t.accent}"></span><span class="ts-t" style="background:${t.title}"></span><span class="ts-s" style="background:${t.text}"></span>${deck ? `<span class="ts-stack"><span style="background:${t.panel || t.text}"></span><span style="background:${t.panel || t.text}"></span><span style="background:${t.panel || t.text}"></span></span>` : ''}</span>`;
   const sections = [
     ['doc', 'Dokumente', DOC_TEMPLATES.map(t => card(`#/neu/dokument?vorlage=${t.id}`, kindTile('docx'), t.title, t.desc, docPrev(t)))],
     ['sheet', 'Tabellen', SHEET_TEMPLATES.map(t => card(`#/neu/tabelle?vorlage=${t.id}`, kindTile('xlsx'), t.title, t.desc, `<span class="tpl-prev tpl-grid" aria-hidden="true"></span>`))],
-    ['slides', 'Präsentationen', SLIDE_THEMES.map(t => card(`#/neu/praesentation?design=${t.id}`, kindTile('pptx'), `Design „${t.name}“`, 'Titel- und Inhaltsfolie, frei erweiterbar', slidePrev(t)))],
+    ['slides', 'Präsentationen', [
+      ...SLIDE_DECKS.map(d => { const t = SLIDE_THEMES.find(x => x.id === d.theme) || SLIDE_THEMES[0]; return card(`#/neu/praesentation?design=${t.id}&deck=${d.id}`, kindTile('pptx'), d.title, d.desc, slidePrev(t, true)); }),
+      ...SLIDE_THEMES.map(t => card(`#/neu/praesentation?design=${t.id}`, kindTile('pptx'), `Design „${t.name}“`, 'Titel- und Inhaltsfolie, frei erweiterbar', slidePrev(t))),
+    ]],
   ];
   const order = art ? [...sections.filter(s => s[0] === art), ...sections.filter(s => s[0] !== art)] : sections;
   screen.body.innerHTML = `<div class="screen-inner">${order.map(([id, title, cards]) => `<h2 class="section-title" id="tpl-${id}">${title}</h2><div class="tpl-grid">${cards.join('')}</div>`).join('')}</div>`;

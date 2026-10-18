@@ -100,7 +100,8 @@ with sync_playwright() as p:
         path = os.path.join(WORK, f"{g['id']}.xlsx")
         open(path, 'wb').write(base64.b64decode(g['data']))
         files[g['id']] = (path, g['sheets'])
-    check('all templates written', len(gen) == 19, str(len(gen)))
+    n_defs = page.evaluate("async () => (await import('/js/office/sheet-templates.js')).SHEET_TEMPLATE_DEFS.length")
+    check('all templates written', {g['id'] for g in gen} >= set(page.evaluate("async () => (await import('/js/office/sheet-templates.js')).SHEET_TEMPLATE_DEFS.map(t => t.id)")) and n_defs >= 40, f'{len(gen)} of {n_defs}')
 
     # ---- structure via openpyxl
     for tid, (path, sheets) in files.items():

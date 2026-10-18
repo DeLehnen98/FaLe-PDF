@@ -1,0 +1,96 @@
+{
+ "id": "geschenkeliste",
+ "slug": "geschenkeliste",
+ "cat": "Zuhause",
+ "name": "Geschenkeliste",
+ "short": "Geschenkideen pro Person mit Budget und Status",
+ "desc": "Geschenkeliste als Excel-Vorlage (XLSX): Geschenkideen pro Person mit Budget, Preis und Status – überzogenes Budget wird rot, dazu ein Countdown bis Heiligabend.",
+ "search": "",
+ "intro": "Links legst du fest, wie viel du für wen ausgeben möchtest, rechts sammelst du die Ideen mit Preis, Status und Link. Die Tabelle rechnet geplant und gekauft pro Person und warnt, wenn das Budget überzogen ist.",
+ "uses": [
+  "Weihnachtsgeschenke planen",
+  "Geburtstage im Jahr vorbereiten",
+  "Gemeinsame Geschenke in der Familie abstimmen"
+ ],
+ "cols": [
+  [
+   "Person",
+   "Für wen."
+  ],
+  [
+   "Anlass",
+   "Weihnachten, Geburtstag …"
+  ],
+  [
+   "Budget",
+   "Wie viel du ausgeben möchtest."
+  ],
+  [
+   "Geplant",
+   "Summe aller Geschenkideen für diese Person."
+  ],
+  [
+   "Gekauft",
+   "Summe der Geschenke mit Status Bestellt, Gekauft, Verpackt oder Verschenkt."
+  ],
+  [
+   "Rest",
+   "Budget minus geplant – rot, wenn überzogen."
+  ],
+  [
+   "Für",
+   "Person, für die die Idee gedacht ist."
+  ],
+  [
+   "Geschenkidee",
+   "Was du schenken möchtest."
+  ],
+  [
+   "Preis",
+   "Geschätzter oder echter Preis."
+  ],
+  [
+   "Status",
+   "Idee, Bestellt, Gekauft, Verpackt oder Verschenkt."
+  ],
+  [
+   "Wo kaufen / Link",
+   "Laden oder Adresse im Netz."
+  ],
+  [
+   "Notiz",
+   "Größe, Farbe, Wunsch."
+  ]
+ ],
+ "tips": [
+  "Trag Ideen das ganze Jahr über ein, sobald dir etwas auffällt – im Dezember hast du dann schon eine Liste."
+ ],
+ "faq": [
+  {
+   "q": "Geht das auch für Geburtstage statt Weihnachten?",
+   "a": "Ja. Der Countdown zählt bis Heiligabend, der Rest funktioniert für jeden Anlass – trag ihn einfach in der Spalte „Anlass“ ein."
+  }
+ ],
+ "related": [
+  "geburtstagskalender",
+  "hochzeitsbudget",
+  "haushaltsbuch"
+ ],
+ "en": {
+  "slug": "gift-list",
+  "name": "Gift list",
+  "short": "Gift ideas per person with budget and status",
+  "desc": "Gift list spreadsheet (XLSX): gift ideas per person with budget, price and status – an overspent budget turns red, plus a countdown to Christmas Eve.",
+  "intro": "Set how much you want to spend on whom on the left and collect ideas with price, status and link on the right. The sheet adds up planned and bought gifts per person and warns when a budget is exceeded.",
+  "inside": [
+   "Budget per person",
+   "Planned vs. bought",
+   "Status drop-down",
+   "Christmas countdown"
+  ],
+  "uses": [
+   "Christmas shopping",
+   "Birthdays"
+  ]
+ }
+}

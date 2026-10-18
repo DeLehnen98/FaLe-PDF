@@ -110,6 +110,9 @@ a.tool-card { text-decoration: none; }
 .tpl-slide .ts-bar { position: absolute; left: 12%; top: 34%; width: 16%; height: 4px; border-radius: 2px; }
 .tpl-slide .ts-t { position: absolute; left: 12%; top: 42%; width: 58%; height: 12px; border-radius: 3px; }
 .tpl-slide .ts-s { position: absolute; left: 12%; top: 58%; width: 38%; height: 7px; border-radius: 3px; opacity: .8; }
+/* ready-made decks: three small cards hint at several slides */
+.tpl-deck .ts-stack { position: absolute; left: 12%; right: 12%; bottom: 14%; display: flex; gap: 6%; }
+.tpl-deck .ts-stack span { flex: 1; height: 14px; border-radius: 3px; opacity: .9; }
 
 /* ---------- dialogs ---------- */
 .result-mini { display: flex; gap: 12px; align-items: flex-start; }

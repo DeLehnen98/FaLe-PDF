@@ -55,6 +55,7 @@ SEITEN & DATEIEN
 • PDFs komprimieren, Stapelverarbeitung
 • Passwortschutz (AES-256) festlegen und entfernen
 • PDFs vergleichen
+• 40 Extra-Werkzeuge: Briefpapier, Broschüre, Seiten pro Blatt, Graustufen, PDF reparieren, Hintergrund entfernen
 
 UMWANDELN
 • PDF in DOCX, XLSX und PPTX – und zurück in PDF
@@ -63,7 +64,7 @@ UMWANDELN
 DOKUMENTE, TABELLEN, PRÄSENTATIONEN
 • DOCX, XLSX und PPTX öffnen, bearbeiten und erstellen
 • Tabellen mit Formeln und Diagrammen
-• Vorlagen für Lebenslauf, Anschreiben, Rechnung, Brief und mehr
+• Rund 100 Vorlagen: Lebenslauf, Rechnung, Kalender, Gutschein, Verträge, Folien-Designs
 • Absturzsicher – und auf Wunsch direkt in der Originaldatei speichern
 • Kündigung, Widerruf, Widerspruch & Co. in einer Minute – als Dokument und PDF
 
@@ -91,7 +92,7 @@ FAIR STATT ABO-FALLE
 • FaLe Plus als Abo oder einmal zahlen für immer – Kündigen mit einem Tipp, Erinnerung vor jeder Verlängerung
 
 PRIVAT AUS PRINZIP
-Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Geteilte Dateien sind Ende-zu-Ende-verschlüsselt – wir können sie nicht lesen.
+Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Kamera nur zum Scannen, Mitteilungen nur für deine Erinnerungen. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline.
 
 Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen.
 ```

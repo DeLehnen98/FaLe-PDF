@@ -1471,6 +1471,450 @@ export const SHEET_TEMPLATE_DEFS = [
       page: { orient: 'landscape', fit: 'width', grid: false, head: false },
     }],
   },
+  // 39 ------------------------------------------------------------ Jahreskalender
+  (() => {
+    const MON = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+    const WD = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+    const col = i => colName(i);
+    const weekend = { fill: '#EEEEF3', color: '#4F5475' };
+    const patch = {}, merges = ['A3:C3', 'D3:F3'], cf = [];
+    for (let k = 0; k < 4; k++) {
+      const r0 = 5 + k * 9; // 1-based row of the month titles
+      for (let bI = 0; bI < 3; bI++) {
+        const m = k * 3 + bI + 1, c0 = bI * 9, T = `$${col(c0)}$${r0}`, S = `${T}-WOCHENTAG(${T};2)`;
+        patch[`${col(c0)}${r0}`] = { f: `=DATUM($AD$3;${m};1)`, fmt: 'mmmm', s: 'big' };
+        merges.push(`${col(c0)}${r0}:${col(c0 + 7)}${r0}`);
+        patch[`${col(c0)}${r0 + 1}`] = { v: 'KW', s: ['headC', 'small'] };
+        WD.forEach((d, i) => { patch[`${col(c0 + 1 + i)}${r0 + 1}`] = { v: d, s: 'headC' }; });
+        for (let w = 0; w < 6; w++) {
+          const r = r0 + 2 + w;
+          patch[`${col(c0)}${r}`] = { f: `=WENN(ODER(MONAT(${S}+${7 * w + 1})=MONAT(${T});MONAT(${S}+${7 * w + 7})=MONAT(${T}));ISOKALENDERWOCHE(${S}+${7 * w + 1});"")`, s: ['small', 'center'], fmt: 'int' };
+          for (let d = 0; d < 7; d++) {
+            const n = 7 * w + d + 1;
+            patch[`${col(c0 + 1 + d)}${r}`] = { f: `=WENN(MONAT(${S}+${n})=MONAT(${T});${S}+${n};"")`, fmt: 'd', s: d >= 5 ? ['center', weekend] : 'center' };
+          }
+        }
+      }
+      void MON;
+      cf.push({ range: `A${r0 + 2}:Z${r0 + 7}`, type: 'formula', f: `=UND(A${r0 + 2}<>"";ZÄHLENWENN($AC$5:$AC$40;A${r0 + 2})>0)`, style: 'yellow' });
+      cf.push({ range: `A${r0 + 2}:Z${r0 + 7}`, type: 'formula', f: `=A${r0 + 2}=HEUTE()`, style: 'strong' });
+    }
+    const E = '$AC$7';
+    const days = [['Neujahr', '=DATUM($AD$3;1;1)'], ['Karfreitag', `=${E}-2`], ['Ostersonntag', '=RUNDEN(DATUM($AD$3;4;1)/7+REST(19*REST($AD$3;19)-7;30)*14%;0)*7-6'], ['Ostermontag', `=${E}+1`],
+      ['Tag der Arbeit', '=DATUM($AD$3;5;1)'], ['Christi Himmelfahrt', `=${E}+39`], ['Pfingstmontag', `=${E}+50`], ['Tag der Deutschen Einheit', '=DATUM($AD$3;10;3)'],
+      ['1. Weihnachtstag', '=DATUM($AD$3;12;25)'], ['2. Weihnachtstag', '=DATUM($AD$3;12;26)']];
+    days.forEach(([n, f], i) => { patch[`AC${5 + i}`] = { f, fmt: 'ddd dd.mm.yyyy' }; patch[`AD${5 + i}`] = n; });
+    for (let r = 5 + days.length; r <= 40; r++) { patch[`AC${r}`] = { v: null, s: 'input', fmt: 'ddd dd.mm.yyyy' }; patch[`AD${r}`] = { v: null, s: 'input' }; }
+    patch.AC15 = { date: 'today', add: 20, s: 'input', fmt: 'ddd dd.mm.yyyy' }; patch.AD15 = { v: 'Geburtstag Oma', s: 'input' };
+    patch.AC16 = { date: 'today', add: 45, s: 'input', fmt: 'ddd dd.mm.yyyy' }; patch.AD16 = { v: 'Urlaub beginnt', s: 'input' };
+    patch.AC3 = { v: 'Kalenderjahr', s: 'label' }; patch.AD3 = { f: '=WENN($D$3>3000;JAHR($D$3);$D$3)', fmt: 'int', s: 'label' };
+    patch.AC4 = { v: 'Datum', s: 'head' }; patch.AD4 = { v: 'Termin / Feiertag', s: 'head' };
+    return {
+      id: 'jahreskalender', title: 'Jahreskalender', desc: 'Alle zwölf Monate auf einen Blick – mit Kalenderwochen, Wochenenden, Feiertagen und eigenen Terminen', cat: 'Zuhause', accent: 'blue',
+      keywords: 'kalender jahr jahresplaner jahreskalender kalenderwoche kw feiertage termine wandkalender',
+      sheets: [{
+        name: 'Kalender', cols: [...Array.from({ length: 27 }, (_, i) => (i % 9 === 0 ? 30 : i % 9 === 8 ? 14 : 30)), 20, 120, 190], start: 'D3',
+        rows: [
+          [{ f: '="Jahreskalender "&$AD$3', s: 'title' }],
+          [{ v: 'Jahr oben eintragen (Jahreszahl oder ein Datum). Feiertage und eigene Termine rechts werden gelb, heute wird blau markiert.', s: 'sub' }],
+          [{ v: 'Jahr', s: 'label' }, null, null, { date: 'year', s: ['input', 'center'], fmt: 'yyyy' }],
+        ],
+        patch, merges, cf,
+        dv: [{ range: 'AC5:AC40', type: 'date', op: 'greaterThan', v1: '01.01.1900', error: 'Bitte ein Datum eintragen, z. B. 24.12.2026.' }],
+        notes: { D3: 'Eine Jahreszahl (z. B. 2027) oder ein beliebiges Datum in diesem Jahr eintragen – der Kalender rechnet sich neu.', AC4: 'Bundesweite Feiertage werden aus dem Jahr berechnet. Regionale Feiertage und eigene Termine in die gelben Felder eintragen.' },
+        page: { orient: 'landscape', fit: 'width', grid: false, head: false },
+      }],
+    };
+  })(),
+  // 40 ------------------------------------------------------------ Wochenplaner
+  {
+    id: 'wochenplaner', title: 'Wochenplaner', desc: 'Termine nach Uhrzeit für Montag bis Sonntag, Aufgaben zum Abhaken und Notizen – heute wird markiert', cat: 'Arbeit', accent: 'indigo',
+    keywords: 'woche wochenplan planer termine stundenplan todo aufgaben kalenderwoche organisieren',
+    sheets: [{
+      name: 'Woche', cols: [64, 118, 118, 118, 118, 118, 118, 118, 20, 44, 230, 70], freeze: 5, freezeC: 1, start: 'B6',
+      rows: [
+        [{ v: 'Wochenplaner', s: 'title' }],
+        [{ v: 'Montag der Woche eintragen – Daten, Kalenderwoche und die Markierung für heute passen sich an. Aufgaben mit ✓ abhaken.', s: 'sub' }],
+        [{ v: 'Woche ab', s: 'label' }, { date: 'week', s: 'input', fmt: 'date' }, { f: '="KW "&ISOKALENDERWOCHE(B3-WOCHENTAG(B3;2)+1)', s: 'big' }, null, { v: 'Fokus der Woche', s: 'label' }, { v: 'Angebot fertigstellen', s: 'input' }],
+        [],
+        [{ v: 'Zeit', s: 'head' }, ...Array.from({ length: 7 }, (_, i) => ({ f: `=$B$3-WOCHENTAG($B$3;2)+${i + 1}`, fmt: 'ddd dd.mm.', s: 'headC' })), null, { v: '✓', s: 'headC' }, { v: 'Aufgaben', s: 'head' }, { v: 'Tag', s: 'headC' }],
+        ...Array.from({ length: 15 }, (_, i) => {
+          const r = 6 + i;
+          const plan = { 8: [1, 'Team-Meeting'], 9: [5, 'Wochenmarkt'], 11: [3, 'Zahnarzt'], 12: [2, 'Mittag mit Lena'], 15: [4, 'Präsentation'], 18: [1, 'Sport'], 19: [6, 'Familienessen'] }[7 + i];
+          return [{ v: (7 + i) / 24, fmt: 'time', s: 'muted' }, ...Array.from({ length: 7 }, (_, d) => ({ v: plan && plan[0] === d + 1 ? plan[1] : null, s: d >= 5 ? ['wrap', 'band'] : 'wrap' })), null,
+            { v: [null, '✓', null, '✓', null][i] ?? null, s: ['input', 'center'] }, { v: ['Angebot an Kunde GmbH schicken', 'Reise buchen', 'Steuerunterlagen sortieren', 'Geschenk für Oma besorgen', 'Auto zur Inspektion'][i] ?? null, s: 'input' },
+            { v: ['Mo', 'Di', 'Mi', 'Do', 'Fr'][i] ?? null, s: ['input', 'center'] }];
+        }),
+        [],
+        [{ v: 'Notizen', s: 'label' }, null, null, null, null, null, null, null, null, null, { v: 'Erledigt', s: 'label' }, { f: '=WENN(ANZAHL2(K6:K20)=0;0;ZÄHLENWENN(J6:J20;"✓")/ANZAHL2(K6:K20))', fmt: 'pct0', s: 'label' }],
+        { repeat: 4, cells: [null, { v: null, s: ['input', 'wrap'] }] },
+      ],
+      merges: ['B23:H26', 'F3:H3'],
+      dv: [{ range: 'J6:J20', list: ['✓'], prompt: '✓ wählen, wenn die Aufgabe erledigt ist' }, { range: 'L6:L20', list: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] }],
+      cf: [
+        { range: 'B5:H20', type: 'formula', f: '=B$5=HEUTE()', style: 'blue' },
+        { range: 'J6:L20', type: 'formula', f: '=$J6="✓"', style: 'done' },
+        { range: 'L22', type: 'bar', bar: 'green' },
+      ],
+      notes: { B3: 'Ein beliebiges Datum der Woche geht auch – am besten den Montag eintragen.', J5: '✓ eintragen oder aus der Liste wählen, dann wird die Aufgabe durchgestrichen.' },
+      page: { orient: 'landscape', fit: 'width', grid: true },
+    }],
+  },
+  // 41 ------------------------------------------------------------ Abo- & Vertragsübersicht
+  (() => {
+    const K = r => `=WENN(ODER(G${r}="";H${r}="");"";WENN(ODER(I${r}="";I${r}=0);EDATUM(G${r};H${r})-1;WENN(EDATUM(G${r};H${r}+MAX(0;AUFRUNDEN(((JAHR(HEUTE())-JAHR(G${r}))*12+MONAT(HEUTE())-MONAT(G${r})-H${r})/I${r};0))*I${r})-1>=HEUTE();EDATUM(G${r};H${r}+MAX(0;AUFRUNDEN(((JAHR(HEUTE())-JAHR(G${r}))*12+MONAT(HEUTE())-MONAT(G${r})-H${r})/I${r};0))*I${r})-1;EDATUM(G${r};H${r}+(MAX(0;AUFRUNDEN(((JAHR(HEUTE())-JAHR(G${r}))*12+MONAT(HEUTE())-MONAT(G${r})-H${r})/I${r};0))+1)*I${r})-1)))`;
+    const calc = r => [
+      { f: `=WENN(F${r}="";"";F${r}/12)`, fmt: 'eur' }, { f: `=WENN(ODER(C${r}="";D${r}="");"";C${r}*SVERWEIS(D${r};$R$5:$S$9;2;FALSCH))`, fmt: 'eur' },
+    ];
+    const tail = r => [
+      { f: K(r), fmt: 'date' },
+      { f: `=WENN(K${r}="";"";WENN(ODER(I${r}="";I${r}=0;EDATUM(K${r};-WENN(J${r}="";0;J${r}))>=HEUTE());K${r};EDATUM(K${r}+1;I${r})-1))`, fmt: 'date' },
+      { f: `=WENN(L${r}="";"";EDATUM(L${r};-WENN(J${r}="";0;J${r})))`, fmt: 'date' },
+      { f: `=WENN(ODER(M${r}="";O${r}<>"Aktiv");"";M${r}-HEUTE())`, fmt: 'int' },
+    ];
+    const data = [
+      ['Handyvertrag', 'Mobilfunk & Internet', 29.99, 'monatlich', -20, 3, 24, 1, 1, 'Aktiv', 'Tarif 20 GB'],
+      ['Streamingdienst Filme', 'Streaming & Medien', 13.99, 'monatlich', -30, 9, 1, 1, 0, 'Aktiv', ''],
+      ['Fitnessstudio', 'Sport & Freizeit', 34.9, 'monatlich', -14, -2, 12, 1, 1, 'Aktiv', 'Vertrag vor 2022: Frist prüfen'],
+      ['Kfz-Versicherung', 'Versicherung', 480, 'jährlich', 'year', 0, 12, 12, 1, 'Aktiv', 'Wechsel bis 30.11. möglich'],
+      ['Privathaftpflicht', 'Versicherung', 64.5, 'jährlich', -42, 0, 12, 12, 3, 'Aktiv', ''],
+      ['Strom', 'Wohnen & Energie', 95, 'monatlich', -8, 0, 12, 1, 1, 'Aktiv', 'Abschlag'],
+      ['Internet & Festnetz', 'Mobilfunk & Internet', 39.99, 'monatlich', -26, 5, 24, 1, 1, 'Aktiv', ''],
+      ['Zeitschrift (Jahresabo)', 'Streaming & Medien', 59.9, 'jährlich', -5, 0, 12, 12, 2, 'Aktiv', ''],
+      ['Musikstreaming', 'Streaming & Medien', 10.99, 'monatlich', -12, 0, 1, 1, 0, 'Gekündigt', 'gekündigt zum Monatsende'],
+      ['Rundfunkbeitrag', 'Wohnen & Energie', 55.08, 'vierteljährlich', null, 0, null, null, null, 'Aktiv', 'gesetzlich, nicht kündbar'],
+      ['Cloud-Speicher', 'Sonstiges', 2.99, 'monatlich', -3, 0, 1, 1, 0, 'Aktiv', ''],
+      ['Carsharing', 'Mobilität', 9, 'monatlich', -2, 0, 1, 1, 0, 'Pausiert', 'Grundgebühr'],
+    ];
+    const cats = ['Wohnen & Energie', 'Versicherung', 'Mobilfunk & Internet', 'Streaming & Medien', 'Sport & Freizeit', 'Mobilität', 'Sonstiges'];
+    return {
+      id: 'abo-vertraege', title: 'Abo- & Vertragsübersicht', desc: 'Alle Abos und Verträge mit Kosten pro Monat und Jahr, nächstem Vertragsende und Kündigungsfrist – Fristen in Kürze werden markiert', cat: 'Finanzen', accent: 'teal',
+      keywords: 'abo abos verträge kündigung kündigungsfrist laufzeit streaming handy versicherung fixkosten sparen',
+      sheets: [{
+        name: 'Verträge', cols: [190, 150, 90, 120, 96, 96, 96, 84, 84, 84, 104, 104, 104, 70, 96, 190, 24, 210, 100], freeze: 4, freezeC: 1, autoFilter: 'A4:P80', start: 'A17',
+        rows: [
+          [{ v: 'Abo- & Vertragsübersicht', s: 'title' }],
+          [{ v: 'Laufzeiten in Monaten. „Kündigen bis“ zeigt den spätesten Termin für das nächste erreichbare Vertragsende – in den nächsten 30 Tagen rot, in 60 Tagen gelb.', s: 'sub' }],
+          [],
+          [{ v: 'Vertrag / Abo', s: 'head' }, { v: 'Kategorie', s: 'head' }, { v: 'Betrag', s: 'headR' }, { v: 'Rhythmus', s: 'head' }, { v: 'Pro Monat', s: 'headR' }, { v: 'Pro Jahr', s: 'headR' }, { v: 'Beginn', s: 'headR' },
+            { v: 'Mindestlaufzeit', s: 'headR' }, { v: 'Verlängerung', s: 'headR' }, { v: 'Kündigungsfrist', s: 'headR' }, { v: 'Nächstes Vertragsende', s: 'headR' }, { v: 'Kündbar zum', s: 'headR' }, { v: 'Kündigen bis', s: 'headR' }, { v: 'In Tagen', s: 'headR' }, { v: 'Status', s: 'head' }, { v: 'Notiz', s: 'head' },
+            null, { v: 'Rhythmus', s: 'head' }, { v: 'Zahlungen pro Jahr', s: 'headR' }],
+          ...data.map(([n, k, betrag, rh, months, add, min, ext, frist, st, note], i) => {
+            const r = 5 + i;
+            const start = months === null ? { v: null, fmt: 'date' } : months === 'year' ? { date: 'year', fmt: 'date' } : { date: 'today', months, add, fmt: 'date' };
+            return [n, k, { v: betrag, fmt: 'eur' }, rh, ...calc(r), start, { v: min, fmt: 'int' }, { v: ext, fmt: 'int' }, { v: frist, fmt: 'int' }, ...tail(r), st, note];
+          }),
+          { repeat: 64, cells: [null, null, { v: null, fmt: 'eur' }, null, { f: '=WENN(F{r}="";"";F{r}/12)', fmt: 'eur' }, { f: '=WENN(ODER(C{r}="";D{r}="");"";C{r}*SVERWEIS(D{r};$R$5:$S$9;2;FALSCH))', fmt: 'eur' }, { v: null, fmt: 'date' }, { v: null, fmt: 'int' }, { v: null, fmt: 'int' }, { v: null, fmt: 'int' },
+            { f: K('{r}'), fmt: 'date' }, ...tail('{r}').slice(1)] },
+        ],
+        patch: {
+          R5: 'wöchentlich', S5: { v: 52, fmt: 'int' }, R6: 'monatlich', S6: { v: 12, fmt: 'int' }, R7: 'vierteljährlich', S7: { v: 4, fmt: 'int' }, R8: 'halbjährlich', S8: { v: 2, fmt: 'int' }, R9: 'jährlich', S9: { v: 1, fmt: 'int' },
+          R11: { v: 'Überblick (nur aktive)', s: 'head' }, S11: { v: '', s: 'headR' },
+          R12: 'Kosten pro Monat', S12: { f: '=SUMMEWENN($O$5:$O$80;"Aktiv";$E$5:$E$80)', fmt: 'eur', s: 'label' },
+          R13: 'Kosten pro Jahr', S13: { f: '=SUMMEWENN($O$5:$O$80;"Aktiv";$F$5:$F$80)', fmt: 'eur' },
+          R14: 'Aktive Verträge', S14: { f: '=ZÄHLENWENN($O$5:$O$80;"Aktiv")', fmt: 'int' },
+          R15: 'Kündigungsfrist in 30 Tagen', S15: { f: '=ZÄHLENWENNS($N$5:$N$80;">=0";$N$5:$N$80;"<=30")', fmt: 'int' },
+          R16: 'Gespart durch Kündigungen / Jahr', S16: { f: '=SUMMEWENN($O$5:$O$80;"Gekündigt";$F$5:$F$80)', fmt: 'eur' },
+          R18: { v: 'Kategorie', s: 'head' }, S18: { v: 'Pro Monat', s: 'headR' },
+          ...Object.fromEntries(cats.flatMap((k, i) => [[`R${19 + i}`, k], [`S${19 + i}`, { f: `=SUMMEWENNS($E$5:$E$80;$B$5:$B$80;R${19 + i};$O$5:$O$80;"Aktiv")`, fmt: 'eur' }]])),
+        },
+        dv: [
+          { range: 'B5:B80', src: '$R$19:$R$25' }, { range: 'D5:D80', src: '$R$5:$R$9' }, { range: 'O5:O80', list: ['Aktiv', 'Gekündigt', 'Pausiert'] },
+          { range: 'H5:J80', type: 'whole', op: 'between', v1: '0', v2: '120', error: 'Bitte Monate als ganze Zahl eintragen (0 bis 120).' },
+        ],
+        cf: [
+          { range: 'A5:P80', type: 'formula', f: '=$O5="Gekündigt"', style: 'done' },
+          { range: 'A5:P80', type: 'formula', f: '=$O5="Pausiert"', style: 'gray' },
+          { range: 'M5:N80', type: 'formula', f: '=UND($N5<>"";$N5<0)', style: 'gray' },
+          { range: 'M5:N80', type: 'formula', f: '=UND($N5<>"";$N5>30;$N5<=60)', style: 'yellow' },
+          { range: 'M5:N80', type: 'formula', f: '=UND($N5<>"";$N5>=0;$N5<=30)', style: 'red' },
+          { range: 'S15', type: 'gt', v1: '0', style: 'red' }, { range: 'S19:S25', type: 'bar', bar: 'green' },
+        ],
+        charts: [{ type: 'bar', range: 'R18:R25', valuesCol: 'S', title: 'Kosten pro Monat nach Kategorie', at: 'R28', w: 420, h: 280, legend: 'n' }],
+        notes: {
+          H4: 'Mindestlaufzeit ab Vertragsbeginn in Monaten.',
+          I4: 'Um wie viele Monate sich der Vertrag danach verlängert. Leer oder 0 = endet automatisch. Bei vielen nach dem 1.3.2022 geschlossenen Verbraucherverträgen gilt nach der Mindestlaufzeit: monatlich kündbar – dann 1 eintragen.',
+          J4: 'Kündigungsfrist in Monaten vor dem Vertragsende (0 = jederzeit zum Ende der Periode).',
+          L4: 'Ist die Frist zum nächsten Vertragsende schon vorbei, steht hier das Ende danach.',
+          N4: 'Tage bis zum spätesten Kündigungstermin. Grau = Frist verstrichen bzw. Vertrag abgelaufen.',
+        },
+        page: { orient: 'landscape', fit: 'width', titleRows: { r1: 3, r2: 3 } },
+      }],
+    };
+  })(),
+  // 42 ------------------------------------------------------------ Schuldenabbau
+  (() => {
+    const N = 120; // months in the plan
+    const last = 5 + N;
+    const debts = [['Kreditkarte', 1800, 0.199, 60], ['Dispokredit', 950, 0.115, 50], ['Ratenkredit Auto', 6400, 0.059, 190], ['Möbelkauf (0 %-Finanzierung)', 1200, 0, 50], [null, null, null, null]];
+    const L = i => colName(i);
+    // Tilgungsplan columns: A Monat, B Datum, C–G Zahlung, H–L Rest, M Zahlung gesamt, N Rest gesamt, O Zinsen, P –, Q–U Bedarf, V–Z Fällig, AA Extra
+    const pay = i => L(2 + i), rest = i => L(7 + i), need = i => L(16 + i), due = i => L(21 + i);
+    const planRow = r => {
+      const row = [{ v: r - 5, fmt: 'int' }, { f: `=EDATUM(Übersicht!$B$5;A${r}-1)`, fmt: 'mm/yyyy' }];
+      for (let i = 0; i < 5; i++) row[2 + i] = { f: `=WENN(${due(i)}${r}<=0;0;MIN(${due(i)}${r};N(Übersicht!$D$${8 + i}))+MAX(0;MIN(${need(i)}${r};$AA${r}-SUMMENPRODUKT(($Q$3:$U$3<${need(i)}$3)*$Q${r}:$U${r}))))`, fmt: 'eur' };
+      for (let i = 0; i < 5; i++) row[7 + i] = { f: `=MAX(0;RUNDEN(${due(i)}${r}-${pay(i)}${r};2))`, fmt: 'eur' };
+      row[12] = { f: `=SUMME(C${r}:G${r})`, fmt: 'eur' };
+      row[13] = { f: `=SUMME(H${r}:L${r})`, fmt: 'eur', s: 'label' };
+      row[14] = { f: `=SUMME(V${r}:Z${r})-SUMME(H${r - 1}:L${r - 1})`, fmt: 'eur' };
+      for (let i = 0; i < 5; i++) row[16 + i] = { f: `=MAX(0;${due(i)}${r}-N(Übersicht!$D$${8 + i}))`, fmt: 'eur', s: 'small' };
+      for (let i = 0; i < 5; i++) row[21 + i] = { f: `=RUNDEN(${rest(i)}${r - 1}*(1+N(Übersicht!$C$${8 + i})/12);2)`, fmt: 'eur', s: 'small' };
+      row[26] = { f: `=MAX(0;Übersicht!$B$4-(SUMME(V${r}:Z${r})-SUMME(Q${r}:U${r})))`, fmt: 'eur', s: 'small' };
+      return row;
+    };
+    return {
+      id: 'schuldenabbau', title: 'Schuldenabbau (Schneeball / Lawine)', desc: 'Schulden nach Plan tilgen: Reihenfolge nach kleinster Restschuld oder höchstem Zins – mit Tilgungsplan, Zinsen und schuldenfreiem Monat', cat: 'Finanzen', accent: 'rose',
+      keywords: 'schulden schuldenabbau schneeball lawine kredit tilgung dispo kreditkarte ratenkredit zinsen schuldenfrei',
+      sheets: [
+        {
+          name: 'Übersicht', cols: [230, 110, 90, 110, 100, 130, 130, 120], start: 'B3',
+          rows: [
+            [{ v: 'Schuldenabbau', s: 'title' }],
+            [{ v: 'Schulden, Zinsen und Mindestraten eintragen. Das Budget über den Mindestraten fließt nach der gewählten Methode in eine Schuld – ist sie getilgt, rollt ihre Rate weiter.', s: 'sub' }],
+            [{ v: 'Methode', s: 'label' }, { v: 'Schneeball', s: 'input' }, { f: '=WENN(B3="Lawine";"höchster Zins zuerst – spart Zinsen";"kleinste Restschuld zuerst – schnelle Erfolge")', s: 'muted' }],
+            [{ v: 'Monatliches Budget für alle Raten', s: 'label' }, { v: 450, s: 'input', fmt: 'eur' }],
+            [{ v: 'Erster Monat', s: 'label' }, { date: 'nextmonth', s: 'input', fmt: 'month' }],
+            [],
+            [{ v: 'Schuld', s: 'head' }, { v: 'Restschuld', s: 'headR' }, { v: 'Zins p. a.', s: 'headR' }, { v: 'Mindestrate', s: 'headR' }, { v: 'Reihenfolge', s: 'headC' }, { v: 'Getilgt nach (Monaten)', s: 'headR' }, { v: 'Schuldenfrei im', s: 'headR' }, { v: 'Zinsen gesamt', s: 'headR' }],
+            ...debts.map(([n, bal, rate, min], i) => {
+              const r = 8 + i, pc = colName(2 + i), rc = colName(7 + i);
+              return [{ v: n, s: 'input' }, { v: bal, s: 'input', fmt: 'eur' }, { v: rate, s: 'input', fmt: 'pct' }, { v: min, s: 'input', fmt: 'eur' },
+                { f: `=WENN(ODER(A${r}="";N(B${r})<=0);"";WENN($B$3="Lawine";ZÄHLENWENN($C$8:$C$12;">"&N(C${r}))+ZÄHLENWENN($C$8:C${r};N(C${r}));ZÄHLENWENN($B$8:$B$12;"<"&B${r})+ZÄHLENWENN($B$8:B${r};B${r})))`, fmt: 'int', s: 'center' },
+                { f: `=WENN(E${r}="";"";WENNFEHLER(VERGLEICH(0;Tilgungsplan!${rc}$6:${rc}$${last};0);"über ${N / 12} Jahre"))`, fmt: 'int' },
+                { f: `=WENN(ISTZAHL(F${r});EDATUM($B$5;F${r}-1);"")`, fmt: 'month' },
+                { f: `=WENN(E${r}="";"";RUNDEN(SUMME(Tilgungsplan!${pc}$6:${pc}$${last})+Tilgungsplan!${rc}$${last}-B${r};2))`, fmt: 'eur' }];
+            }),
+            [{ v: 'Summe', s: 'total' }, { f: '=SUMME(B8:B12)', s: 'total', fmt: 'eur' }, { v: null, s: 'total' }, { f: '=SUMME(D8:D12)', s: 'total', fmt: 'eur' }, { v: null, s: 'total' },
+              { f: '=WENN(ANZAHL(F8:F12)=0;"";MAX(F8:F12))', s: 'total', fmt: 'int' }, { f: '=WENN(F13="";"";EDATUM($B$5;F13-1))', s: 'total', fmt: 'month' }, { f: '=SUMME(H8:H12)', s: 'total', fmt: 'eur' }],
+            [],
+            [{ v: 'Extra pro Monat über den Mindestraten', s: 'label' }, { f: '=B4-D13', fmt: 'eurRed' }],
+            [{ v: 'Schuldenfrei im', s: 'big' }, { f: '=G13', fmt: 'month', s: 'big' }],
+            [{ f: '=WENN(B4<D13;"Achtung: Das Budget deckt nicht alle Mindestraten.";WENN(ANZAHL(F8:F12)<ANZAHL(E8:E12);"Mindestens eine Schuld ist in '+(N / 12)+' Jahren nicht getilgt – Budget erhöhen.";""))', s: 'label' }],
+          ],
+          dv: [{ range: 'B3', list: ['Schneeball', 'Lawine'], prompt: 'Schneeball: kleinste Restschuld zuerst. Lawine: höchster Zins zuerst.' }, { range: 'C8:C12', type: 'decimal', op: 'between', v1: '0', v2: '1', error: 'Zins als Prozent eintragen, z. B. 7,9 %.' }],
+          cf: [{ range: 'B15', type: 'lt', v1: '0', style: 'red' }, { range: 'A17', type: 'notblank', style: 'red' }, { range: 'H8:H12', type: 'bar', bar: 'red' }],
+          notes: { B3: 'Schneeball: kleinste Restschuld zuerst (schnelle Erfolgserlebnisse). Lawine: höchster Zinssatz zuerst (insgesamt meist am günstigsten).', E7: '1 = bekommt das Extra-Geld zuerst. Ist sie getilgt, geht ihre ganze Rate an die nächste.', F7: 'Monat im Tilgungsplan, in dem die Restschuld 0 ist.' },
+          page: { orient: 'landscape', fit: 'width', grid: false, head: false },
+        },
+        {
+          name: 'Tilgungsplan', cols: [60, 80, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 104, 116, 86, 14, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], freeze: 5, freezeC: 2, start: 'C6',
+          rows: [
+            [{ v: 'Tilgungsplan', s: 'title' }],
+            [{ v: 'Wird aus der Übersicht berechnet – hier nichts eintragen. Die grauen Hilfsspalten rechts verteilen das Extra-Geld nach der Reihenfolge.', s: 'sub' }],
+            [null, null, { v: 'Zahlungen', s: 'label' }, null, null, null, null, { v: 'Restschuld', s: 'label' }, null, null, null, null, null, null, { v: 'Reihenfolge →', s: ['small', 'right'] }, null,
+              ...Array.from({ length: 5 }, (_, i) => ({ f: `=WENN(Übersicht!$E$${8 + i}="";99;Übersicht!$E$${8 + i})`, fmt: 'int', s: ['small', 'center'] }))],
+            [{ v: 'Monat', s: 'headR' }, { v: 'Datum', s: 'headR' },
+              ...Array.from({ length: 5 }, (_, i) => ({ f: `=WENN(Übersicht!$A$${8 + i}="";"Schuld ${i + 1}";Übersicht!$A$${8 + i})`, s: ['headR', 'wrap'] })),
+              ...Array.from({ length: 5 }, (_, i) => ({ f: `=WENN(Übersicht!$A$${8 + i}="";"Schuld ${i + 1}";Übersicht!$A$${8 + i})`, s: ['headR', 'wrap'] })),
+              { v: 'Zahlung gesamt', s: 'headR' }, { v: 'Restschuld gesamt', s: 'headR' }, { v: 'Zinsen', s: 'headR' }, null,
+              ...Array.from({ length: 5 }, (_, i) => ({ v: `Bedarf ${i + 1}`, s: ['headR', 'small'] })), ...Array.from({ length: 5 }, (_, i) => ({ v: `Fällig ${i + 1}`, s: ['headR', 'small'] })), { v: 'Extra', s: ['headR', 'small'] }],
+            [{ v: 'Start', s: 'muted' }, { f: '=EDATUM(Übersicht!$B$5;-1)', fmt: 'mm/yyyy', s: 'muted' }, null, null, null, null, null,
+              ...Array.from({ length: 5 }, (_, i) => ({ f: `=MAX(0;N(Übersicht!$B$${8 + i}))`, fmt: 'eur' })), null, { f: '=SUMME(H5:L5)', fmt: 'eur', s: 'label' }],
+            ...Array.from({ length: N }, (_, k) => planRow(6 + k)),
+          ],
+          cf: [{ range: 'H6:L' + last, type: 'eq', v1: '0', style: 'gray' }, { range: 'C6:G' + last, type: 'gt', v1: '0', custom: { color: '#174D2A' } }],
+          charts: [{ type: 'line', range: `A5:A${5 + 48}`, valuesCol: 'N', seriesName: 'Restschuld gesamt', title: 'Restschuld in den ersten vier Jahren', at: 'C' + (last + 3), w: 520, h: 280, legend: 'n' }],
+          page: { orient: 'landscape', fit: 'width', titleRows: { r1: 3, r2: 3 } },
+        },
+      ],
+    };
+  })(),
+  // 43 ------------------------------------------------------------ Rechnung als Tabelle
+  {
+    id: 'rechnung-tabelle', title: 'Rechnung (Tabelle)', desc: 'Rechnung mit Positionen, 19 % und 7 % Umsatzsteuer, Fälligkeitsdatum und Kleinunternehmer-Option', cat: 'Business', accent: 'indigo',
+    keywords: 'rechnung invoice umsatzsteuer mwst 19 7 kleinunternehmer fällig zahlungsziel freiberufler positionen',
+    sheets: [{
+      name: 'Rechnung', cols: [52, 270, 70, 80, 104, 76, 116], start: 'B14',
+      rows: [
+        [{ v: 'Rechnung', s: ['title', { size: 22 }] }, null, null, null, { v: 'Firma Beispiel', s: ['label', 'right'] }, null, null],
+        [{ v: 'Gelbe Felder ausfüllen – Beträge, Steuer und Fälligkeit rechnen sich selbst.', s: 'sub' }, null, null, null, { v: 'Musterstraße 12', s: 'right' }],
+        [null, null, null, null, { v: '66111 Saarbrücken', s: 'right' }],
+        [null, null, null, null, { v: 'info@example.de · Steuernr. 000/000/00000', s: ['right', 'small'] }],
+        [],
+        [{ v: 'Rechnung an', s: 'label' }, null, null, null, { v: 'Rechnungsnummer', s: 'label' }, null, { v: '2026-014', s: ['input', 'right'] }],
+        [{ v: 'Kunde GmbH', s: 'input' }, null, null, null, 'Rechnungsdatum', null, { date: 'today', s: 'input', fmt: 'date' }],
+        [{ v: 'Frau Erika Muster', s: 'input' }, null, null, null, 'Leistungsdatum', null, { date: 'today', add: -3, s: 'input', fmt: 'date' }],
+        [{ v: 'Hauptstraße 1', s: 'input' }, null, null, null, 'Zahlungsziel (Tage)', null, { v: 14, s: 'input', fmt: 'int' }],
+        [{ v: '66123 Saarbrücken', s: 'input' }, null, null, null, { v: 'Fällig am', s: 'label' }, null, { f: '=WENN(ODER(G7="";G9="");"";G7+G9)', fmt: 'date', s: 'label' }],
+        [null, null, null, null, 'Kleinunternehmer (§ 19 UStG)', null, { v: 'Nein', s: ['input', 'right'] }],
+        [],
+        [{ v: 'Pos.', s: 'headC' }, { v: 'Beschreibung', s: 'head' }, { v: 'Menge', s: 'headR' }, { v: 'Einheit', s: 'head' }, { v: 'Einzelpreis', s: 'headR' }, { v: 'USt.', s: 'headC' }, { v: 'Netto', s: 'headR' }],
+        ...[['Beratung', 3, 'Std.', 85, 0.19], ['Gestaltung Flyer', 1, 'pauschal', 250, 0.19], ['Fachbuch „Beispiel“', 2, 'Stück', 12.5, 0.07], ['Druck 500 Flyer', 1, 'pauschal', 89, 0.19]]
+          .map(([d, m, u, pr, st], i) => { const r = 14 + i; return [{ f: `=WENN(B${r}="";"";ZEILE()-13)`, fmt: 'int', s: 'center' }, d, { v: m, fmt: 'dec2' }, u, { v: pr, fmt: 'eur' }, { v: st, s: 'center', fmt: 'pct0' }, { f: `=WENN(ODER(C${r}="";E${r}="");"";RUNDEN(C${r}*E${r};2))`, fmt: 'eur' }]; }),
+        { repeat: 11, cells: [{ f: '=WENN(B{r}="";"";ZEILE()-13)', fmt: 'int', s: 'center' }, null, { v: null, fmt: 'dec2' }, null, { v: null, fmt: 'eur' }, { v: null, s: 'center', fmt: 'pct0' }, { f: '=WENN(ODER(C{r}="";E{r}="");"";RUNDEN(C{r}*E{r};2))', fmt: 'eur' }] },
+        [],
+        [null, null, null, null, null, { v: 'Netto', s: 'right' }, { f: '=SUMME(G14:G28)', fmt: 'eur' }],
+        [null, null, null, null, null, { v: 'USt. 19 %', s: 'right' }, { f: '=WENN($G$11="Ja";0;RUNDEN(SUMMEWENN($F$14:$F$28;0,19;$G$14:$G$28)*0,19;2))', fmt: 'eur' }],
+        [null, null, null, null, null, { v: 'USt. 7 %', s: 'right' }, { f: '=WENN($G$11="Ja";0;RUNDEN(SUMMEWENN($F$14:$F$28;0,07;$G$14:$G$28)*0,07;2))', fmt: 'eur' }],
+        [null, null, null, null, { v: null, s: 'total' }, { v: 'Gesamtbetrag', s: ['total', 'right'] }, { f: '=G30+G31+G32', fmt: 'eur', s: ['total', 'big'] }],
+        [],
+        [{ f: '=WENN($G$11="Ja";"Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.";"")', s: 'muted' }],
+        ['Bitte überweisen Sie den Gesamtbetrag ohne Abzug bis zum Fälligkeitsdatum. Vielen Dank für Ihren Auftrag!'],
+        [{ v: 'Beispielbank · IBAN DE00 0000 0000 0000 0000 00 · BIC BEISPXXX', s: 'small' }],
+      ],
+      merges: ['A7:C7', 'A8:C8', 'A9:C9', 'A10:C10'],
+      dv: [{ range: 'F14:F28', list: ['19 %', '7 %', '0 %'], prompt: 'Steuersatz der Position' }, { range: 'G11', list: ['Nein', 'Ja'], prompt: 'Ja = keine Umsatzsteuer (Kleinunternehmerregelung)' }, { range: 'C14:C28', type: 'decimal', op: 'greaterThanOrEqual', v1: '0', error: 'Bitte eine Menge ab 0 eintragen.' }],
+      cf: [{ range: 'A14:G28', type: 'formula', f: '=UND($B14<>"";ODER($C14="";$E14="";$F14=""))', style: 'yellow' }, { range: 'G31:G32', type: 'eq', v1: '0', style: 'gray' }],
+      notes: { G9: 'Tage bis zur Fälligkeit, z. B. 14 oder 30.', G11: '„Ja“ setzt die Umsatzsteuer auf 0 und ergänzt den Hinweis nach § 19 UStG.', F13: 'Steuersatz je Position: 19 %, 7 % oder 0 %.' },
+      page: { orient: 'portrait', fit: 'width', grid: false, head: false, area: 'A1:G37' },
+    }],
+  },
+  // 44 ------------------------------------------------------------ Reisebudget
+  {
+    id: 'reisebudget', title: 'Reisebudget', desc: 'Urlaubskosten planen und unterwegs erfassen – mit Fremdwährung, Kosten pro Person und Tag und Ausgleich in der Reisegruppe', cat: 'Schule & Freizeit', accent: 'teal',
+    keywords: 'reise urlaub budget reisekasse ausgaben währung wechselkurs gruppe aufteilen kosten pro tag',
+    sheets: [
+      {
+        name: 'Budget', cols: [230, 110, 110, 110, 90, 24, 140, 110, 110, 110], start: 'B3',
+        rows: [
+          [{ v: 'Reisebudget', s: 'title' }],
+          [{ v: 'Oben die Eckdaten eintragen, unterwegs jede Ausgabe im Blatt „Ausgaben“. Rechts siehst du, wer wem wie viel schuldet.', s: 'sub' }],
+          [{ v: 'Reiseziel', s: 'label' }, { v: 'Zürich', s: 'input' }],
+          [{ v: 'Anreise', s: 'label' }, { date: 'today', add: 40, s: 'input', fmt: 'date' }, null, null, null, null, { v: 'Reisende', s: 'head' }, { v: 'Bezahlt', s: 'headR' }, { v: 'Anteil', s: 'headR' }, { v: 'Ausgleich', s: 'headR' }],
+          [{ v: 'Abreise', s: 'label' }, { date: 'today', add: 46, s: 'input', fmt: 'date' }],
+          [{ v: 'Tage / Nächte', s: 'label' }, { f: '=WENN(ODER(B4="";B5="");"";B5-B4+1)', fmt: 'int' }, { f: '=WENN(B6="";"";B6-1)', fmt: '0 "Nächte"' }],
+          [{ v: 'Reisende', s: 'label' }, { f: '=ANZAHL2(G5:G10)', fmt: 'int' }],
+          [{ v: 'Gesamtbudget', s: 'label' }, { v: 1800, s: 'input', fmt: 'eur' }],
+          [{ v: 'Landeswährung', s: 'label' }, { v: 'CHF', s: 'input' }],
+          [{ v: 'Kurs: 1 € entspricht', s: 'label' }, { v: 0.94, s: 'input', fmt: '0.0000' }, { f: '=B9', s: 'muted' }],
+          [],
+          [{ v: 'Kategorie', s: 'head' }, { v: 'Geplant', s: 'headR' }, { v: 'Ausgegeben', s: 'headR' }, { v: 'Rest', s: 'headR' }, { v: 'Anteil', s: 'headR' }],
+          ...[['Anreise & Rückreise', 380], ['Unterkunft', 720], ['Essen & Trinken', 420], ['Aktivitäten & Eintritt', 150], ['Mobilität vor Ort', 80], ['Versicherung', 25], ['Sonstiges', 25]].map(([k, v], i) => {
+            const r = 13 + i;
+            return [k, { v, s: 'input', fmt: 'eur' }, { f: `=SUMMEWENN(Ausgaben!$C$4:$C$200;A${r};Ausgaben!$G$4:$G$200)`, fmt: 'eur' }, { f: `=B${r}-C${r}`, fmt: 'eurRed' }, { f: `=WENN($C$20=0;"";C${r}/$C$20)`, fmt: 'pct' }];
+          }),
+          [{ v: 'Summe', s: 'total' }, { f: '=SUMME(B13:B19)', s: 'total', fmt: 'eur' }, { f: '=SUMME(C13:C19)', s: 'total', fmt: 'eur' }, { f: '=B20-C20', s: 'total', fmt: 'eurRed' }, { v: null, s: 'total' }],
+          [],
+          [{ v: 'Noch verfügbar', s: 'big' }, { f: '=B8-C20', s: 'big', fmt: 'eurRed' }],
+          [{ v: 'Ausgegeben pro Person', s: 'label' }, { f: '=WENN(B7>0;C20/B7;"")', fmt: 'eur' }],
+          [{ v: 'Ausgegeben pro Tag', s: 'label' }, { f: '=WENN(N(B6)>0;C20/B6;"")', fmt: 'eur' }],
+          [{ v: 'Planung über dem Budget um', s: 'label' }, { f: '=MAX(0;B20-B8)', fmt: 'eur' }],
+        ],
+        patch: {
+          ...Object.fromEntries(['Anna', 'Ben', 'Carla', null, null, null].flatMap((n, i) => {
+            const r = 5 + i;
+            return [[`G${r}`, { v: n, s: 'input' }], [`H${r}`, { f: `=WENN(G${r}="";"";SUMMEWENN(Ausgaben!$F$4:$F$200;G${r};Ausgaben!$G$4:$G$200))`, fmt: 'eur' }],
+              [`I${r}`, { f: `=WENN(G${r}="";"";$C$20/$B$7)`, fmt: 'eur' }], [`J${r}`, { f: `=WENN(G${r}="";"";H${r}-I${r})`, fmt: 'eurRed' }]];
+          })),
+          G12: { v: 'Positiv = bekommt Geld zurück, negativ = zahlt noch an die Gruppe.', s: 'small' },
+        },
+        cf: [
+          { range: 'D13:D20', type: 'lt', v1: '0', style: 'red' }, { range: 'B22', type: 'lt', v1: '0', style: 'red' }, { range: 'B25', type: 'gt', v1: '0', style: 'red' },
+          { range: 'J5:J10', type: 'lt', v1: '0', style: 'red' }, { range: 'J5:J10', type: 'gt', v1: '0', style: 'green' }, { range: 'E13:E19', type: 'bar', bar: 'green' },
+        ],
+        charts: [{ type: 'bar', range: 'A12:C19', title: 'Geplant und ausgegeben', at: 'G14', w: 440, h: 280, legend: 'b' }],
+        notes: { B10: 'Wie viel Landeswährung du für 1 € bekommst. Beträge in Landeswährung werden damit in Euro umgerechnet.', J4: 'Bezahlt minus Anteil an allen Ausgaben.' },
+        page: { orient: 'landscape', fit: 'width', grid: false, head: false },
+      },
+      {
+        name: 'Ausgaben', cols: [96, 240, 170, 100, 130, 120, 110], freeze: 3, autoFilter: 'A3:G200', start: 'A10',
+        rows: [
+          [{ v: 'Ausgaben', s: 'title' }],
+          [{ v: 'Jede Ausgabe eintragen. Bei „Landeswährung“ wird der Betrag mit dem Kurs aus dem Blatt „Budget“ in Euro umgerechnet.', s: 'sub' }],
+          [{ v: 'Datum', s: 'head' }, { v: 'Beschreibung', s: 'head' }, { v: 'Kategorie', s: 'head' }, { v: 'Betrag', s: 'headR' }, { v: 'Währung', s: 'head' }, { v: 'Bezahlt von', s: 'head' }, { v: 'In Euro', s: 'headR' }],
+          ...[[-20, 'Zugtickets hin und zurück', 'Anreise & Rückreise', 357.6, 'EUR', 'Anna'], [-15, 'Ferienwohnung (Anzahlung)', 'Unterkunft', 300, 'EUR', 'Ben'], [0, 'Reiseversicherung', 'Versicherung', 24.9, 'EUR', 'Carla'],
+            [40, 'Abendessen am See', 'Essen & Trinken', 112.8, 'Landeswährung', 'Anna'], [41, 'Tageskarten Nahverkehr', 'Mobilität vor Ort', 27, 'Landeswährung', 'Ben'], [41, 'Museum', 'Aktivitäten & Eintritt', 45, 'Landeswährung', 'Carla']]
+            .map(([add, d, k, v, cur, who], i) => { const r = 4 + i; return [{ date: 'today', add, fmt: 'date' }, d, k, { v, fmt: 'dec2' }, cur, who, { f: `=WENN(D${r}="";"";WENN(E${r}="Landeswährung";D${r}/Budget!$B$10;D${r}))`, fmt: 'eur' }]; }),
+          { repeat: 191, cells: [{ v: null, fmt: 'date' }, null, null, { v: null, fmt: 'dec2' }, null, null, { f: '=WENN(D{r}="";"";WENN(E{r}="Landeswährung";D{r}/Budget!$B$10;D{r}))', fmt: 'eur' }] },
+        ],
+        dv: [{ range: 'C4:C200', src: 'Budget!$A$13:$A$19' }, { range: 'E4:E200', list: ['EUR', 'Landeswährung'] }, { range: 'F4:F200', src: 'Budget!$G$5:$G$10' }],
+        cf: [{ range: 'A4:G200', type: 'formula', f: '=UND($D4<>"";$C4="")', style: 'yellow' }],
+        notes: { E3: '„Landeswährung“ für Beträge in der Währung vor Ort (Kurs im Blatt „Budget“).' },
+        page: { orient: 'portrait', fit: 'width', titleRows: { r1: 2, r2: 2 } },
+      },
+    ],
+  },
+  // 45 ------------------------------------------------------------ Bewerbungstracker
+  {
+    id: 'bewerbungstracker', title: 'Bewerbungstracker', desc: 'Bewerbungen mit Status, Nachfass-Termin und Quoten – Überfälliges wird rot, Gespräche blau, Zusagen grün', cat: 'Arbeit', accent: 'blue',
+    keywords: 'bewerbung bewerbungen jobsuche tracker status vorstellungsgespräch absage zusage nachfassen stellensuche',
+    sheets: [{
+      name: 'Bewerbungen', cols: [170, 180, 110, 130, 96, 160, 70, 104, 150, 210, 180, 24, 230, 80], freeze: 4, freezeC: 1, autoFilter: 'A4:K104', start: 'A12',
+      rows: [
+        [{ v: 'Bewerbungstracker', s: 'title' }],
+        [{ v: 'Jede Bewerbung mit Datum und Status eintragen. Der Nachfass-Termin rechnet sich selbst (überschreibbar) und wird rot, wenn er vorbei ist.', s: 'sub' }],
+        [{ v: 'Nachfassen nach (Tagen)', s: 'label' }, { v: 14, s: 'input', fmt: 'int' }],
+        [{ v: 'Firma', s: 'head' }, { v: 'Position', s: 'head' }, { v: 'Ort', s: 'head' }, { v: 'Quelle', s: 'head' }, { v: 'Beworben am', s: 'headR' }, { v: 'Status', s: 'head' }, { v: 'Tage', s: 'headR' }, { v: 'Nachfassen am', s: 'headR' },
+          { v: 'Ansprechpartner/in', s: 'head' }, { v: 'Nächster Schritt', s: 'head' }, { v: 'Notiz', s: 'head' }, null, { v: 'Status', s: 'head' }, { v: 'Anzahl', s: 'headR' }],
+        ...[['Beispiel GmbH', 'Projektmanager/in', 'Saarbrücken', 'Jobportal', -30, 'Vorstellungsgespräch', 'Frau Muster', 'Zweitgespräch abwarten'], ['Muster AG', 'Teamleitung Vertrieb', 'Mannheim', 'Firmenwebsite', -21, 'Beworben', 'Herr Beispiel', 'Telefonisch nachfragen'],
+          ['Probe & Partner', 'Referent/in Marketing', 'Trier', 'Empfehlung', -10, 'Eingangsbestätigung', '', ''], ['Test KG', 'Sachbearbeitung', 'Homburg', 'Jobportal', -45, 'Absage', '', 'Feedback erfragen'],
+          ['Nordlicht GmbH', 'Projektkoordination', 'Remote', 'Netzwerk', -5, 'Beworben', '', ''], ['Stadtwerke Beispiel', 'Projektmanager/in', 'Saarbrücken', 'Messe', -60, 'Angebot erhalten', 'Frau Klein', 'Angebot bis Freitag prüfen'],
+          ['Sonnenschein e. V.', 'Koordination Ehrenamt', 'Saarlouis', 'Initiativbewerbung', null, 'Geplant', '', 'Unterlagen anpassen']]
+          .map(([f, pos, ort, q, add, st, who, next], i) => {
+            const r = 5 + i;
+            return [f, pos, ort, q, add === null ? { v: null, fmt: 'date' } : { date: 'today', add, fmt: 'date' }, st, { f: `=WENN(E${r}="";"";HEUTE()-E${r})`, fmt: 'int' },
+              { f: `=WENN(ODER(E${r}="";F${r}="Absage";F${r}="Zusage";F${r}="Angebot erhalten");"";E${r}+$B$3)`, fmt: 'date' }, who, next];
+          }),
+        { repeat: 93, cells: [null, null, null, null, { v: null, fmt: 'date' }, null, { f: '=WENN(E{r}="";"";HEUTE()-E{r})', fmt: 'int' }, { f: '=WENN(ODER(E{r}="";F{r}="Absage";F{r}="Zusage";F{r}="Angebot erhalten");"";E{r}+$B$3)', fmt: 'date' }] },
+      ],
+      patch: {
+        ...Object.fromEntries(['Geplant', 'Beworben', 'Eingangsbestätigung', 'Vorstellungsgespräch', 'Zweitgespräch', 'Angebot erhalten', 'Zusage', 'Absage']
+          .flatMap((s, i) => [[`M${5 + i}`, s], [`N${5 + i}`, { f: `=ZÄHLENWENN($F$5:$F$104;M${5 + i})`, fmt: 'int' }]])),
+        M14: { v: 'Auswertung', s: 'head' }, N14: { v: '', s: 'headR' },
+        M15: 'Versendet', N15: { f: '=ANZAHL(E5:E104)', fmt: 'int' },
+        M16: 'Antworten (Gespräch bis Absage)', N16: { f: '=SUMME(N8:N12)', fmt: 'int' },
+        M17: 'Antwortquote', N17: { f: '=WENN(N15=0;"";N16/N15)', fmt: 'pct0' },
+        M18: 'Einladungsquote', N18: { f: '=WENN(N15=0;"";SUMME(N8:N11)/N15)', fmt: 'pct0' },
+        M19: { v: 'Nachfassen überfällig', s: 'label' }, N19: { f: '=ZÄHLENWENN(H5:H104;"<"&HEUTE())', fmt: 'int', s: 'label' },
+      },
+      dv: [
+        { range: 'D5:D104', list: ['Jobportal', 'Firmenwebsite', 'Empfehlung', 'Initiativbewerbung', 'Messe', 'Netzwerk'] },
+        { range: 'F5:F104', src: '$M$5:$M$12', prompt: 'Aktuellen Stand wählen' },
+      ],
+      cf: [
+        { range: 'A5:K104', type: 'formula', f: '=$F5="Absage"', style: 'done' },
+        { range: 'A5:K104', type: 'formula', f: '=ODER($F5="Zusage";$F5="Angebot erhalten")', style: 'green' },
+        { range: 'F5:F104', type: 'formula', f: '=ODER($F5="Vorstellungsgespräch";$F5="Zweitgespräch")', style: 'blue' },
+        { range: 'H5:H104', type: 'formula', f: '=UND($H5<>"";$H5<HEUTE())', style: 'red' },
+        { range: 'N19', type: 'gt', v1: '0', style: 'red' }, { range: 'N5:N12', type: 'bar', bar: 'blue' },
+      ],
+      charts: [{ type: 'bar', range: 'M4:M12', valuesCol: 'N', title: 'Bewerbungen nach Status', at: 'M22', w: 420, h: 280, legend: 'n' }],
+      notes: { H4: 'Beworben am + Tage aus B3. Eigene Termine einfach überschreiben.', N16: 'Vorstellungsgespräch, Zweitgespräch, Angebot, Zusage oder Absage.' },
+      page: { orient: 'landscape', fit: 'width', titleRows: { r1: 3, r2: 3 } },
+    }],
+  },
+  // 46 ------------------------------------------------------------ Geschenkeliste
+  {
+    id: 'geschenkeliste', title: 'Geschenkeliste', desc: 'Geschenkideen pro Person mit Budget, Status und Countdown bis Heiligabend – Überzogenes wird rot', cat: 'Zuhause', accent: 'rose',
+    keywords: 'geschenke geschenkeliste weihnachten geburtstag budget ideen wunschliste einkauf',
+    sheets: [{
+      name: 'Geschenke', cols: [150, 120, 96, 96, 96, 96, 24, 150, 220, 96, 110, 170, 170], freeze: 5, start: 'H6',
+      rows: [
+        [{ v: 'Geschenkeliste', s: 'title' }],
+        [{ v: 'Links das Budget pro Person, rechts die Ideen. „Gekauft“ zählt alles ab Status „Bestellt“.', s: 'sub' }],
+        [{ v: 'Bis Heiligabend', s: 'label' }, { f: '=DATUM(JAHR(HEUTE())+(HEUTE()>DATUM(JAHR(HEUTE());12;24));12;24)-HEUTE()', fmt: '0 "Tage"', s: 'big' }, null, { v: 'Noch zu kaufen', s: 'label' }, { f: '=ZÄHLENWENN(K6:K105;"Idee")', fmt: 'int', s: 'big' }],
+        [],
+        [{ v: 'Person', s: 'head' }, { v: 'Anlass', s: 'head' }, { v: 'Budget', s: 'headR' }, { v: 'Geplant', s: 'headR' }, { v: 'Gekauft', s: 'headR' }, { v: 'Rest', s: 'headR' }, null,
+          { v: 'Für', s: 'head' }, { v: 'Geschenkidee', s: 'head' }, { v: 'Preis', s: 'headR' }, { v: 'Status', s: 'head' }, { v: 'Wo kaufen / Link', s: 'head' }, { v: 'Notiz', s: 'head' }],
+      ],
+      patch: {
+        ...Object.fromEntries([['Mama', 'Weihnachten', 80], ['Papa', 'Weihnachten', 50], ['Oma', 'Weihnachten', 40], ['Lena', 'Geburtstag', 30], ['Max', 'Weihnachten', 60], ['Sara (Kollegin)', 'Weihnachten', 15],
+          [null, null, null], [null, null, null], [null, null, null], [null, null, null], [null, null, null], [null, null, null]].flatMap(([n, a, bud], i) => {
+          const r = 6 + i;
+          return [[`A${r}`, { v: n, s: 'input' }], [`B${r}`, { v: a, s: 'input' }], [`C${r}`, { v: bud, s: 'input', fmt: 'eur' }],
+            [`D${r}`, { f: `=WENN(A${r}="";"";SUMMEWENN($H$6:$H$105;A${r};$J$6:$J$105))`, fmt: 'eur' }],
+            [`E${r}`, { f: `=WENN(A${r}="";"";SUMMEWENNS($J$6:$J$105;$H$6:$H$105;A${r};$K$6:$K$105;"<>Idee"))`, fmt: 'eur' }],
+            [`F${r}`, { f: `=WENN(ODER(A${r}="";C${r}="");"";C${r}-D${r})`, fmt: 'eurRed' }]];
+        })),
+        A18: { v: 'Summe', s: 'total' }, B18: { v: null, s: 'total' }, C18: { f: '=SUMME(C6:C17)', fmt: 'eur', s: 'total' }, D18: { f: '=SUMME(D6:D17)', fmt: 'eur', s: 'total' }, E18: { f: '=SUMME(E6:E17)', fmt: 'eur', s: 'total' }, F18: { f: '=C18-D18', fmt: 'eurRed', s: 'total' },
+        ...Object.fromEntries([['Mama', 'Kochbuch „Saisonal“', 24.99, 'Gekauft', 'Buchladen am Markt'], ['Mama', 'Konzertkarten', 59, 'Idee', 'Vorverkauf ab 1.11.'], ['Papa', 'Werkzeugset', 39.9, 'Bestellt', 'online'],
+          ['Oma', 'Fotobuch vom Sommer', 34.95, 'Idee', 'Fotos aussuchen'], ['Lena', 'Puzzle 1000 Teile', 19.99, 'Verpackt', 'Spielwarenladen'], ['Max', 'Fußball', 29.99, 'Gekauft', 'Sportgeschäft'],
+          ['Max', 'Trikot', 49.95, 'Idee', ''], ['Sara (Kollegin)', 'Pflanze fürs Büro', 15, 'Idee', 'Gärtnerei']].flatMap(([f, idea, pr, st, wo], i) => {
+          const r = 6 + i;
+          return [[`H${r}`, f], [`I${r}`, idea], [`J${r}`, { v: pr, fmt: 'eur' }], [`K${r}`, st], [`L${r}`, wo]];
+        })),
+        ...Object.fromEntries(Array.from({ length: 92 }, (_, i) => [`J${14 + i}`, { v: null, fmt: 'eur' }])),
+      },
+      dv: [{ range: 'H6:H105', src: '$A$6:$A$17', prompt: 'Person aus der Liste links' }, { range: 'K6:K105', list: ['Idee', 'Bestellt', 'Gekauft', 'Verpackt', 'Verschenkt'] }, { range: 'B6:B17', list: ['Weihnachten', 'Geburtstag', 'Hochzeit', 'Ostern', 'Jubiläum', 'Sonstiges'] }],
+      cf: [
+        { range: 'F6:F18', type: 'lt', v1: '0', style: 'red' }, { range: 'K6:K105', type: 'eq', v1: 'Idee', style: 'yellow' },
+        { range: 'H6:M105', type: 'formula', f: '=$K6="Verschenkt"', style: 'done' }, { range: 'B3', type: 'le', v1: '14', style: 'red' },
+      ],
+      charts: [{ type: 'col', range: 'A5:A11', valuesCol: 'D', seriesName: 'Geplant', title: 'Geplant pro Person', at: 'A21', w: 420, h: 260, legend: 'n' }],
+      notes: { E5: 'Summe aller Geschenke mit Status Bestellt, Gekauft, Verpackt oder Verschenkt.', F5: 'Budget minus geplante Geschenke – rot, wenn überzogen.' },
+      page: { orient: 'landscape', fit: 'width', titleRows: { r1: 4, r2: 4 } },
+    }],
+  },
 ];
 
 /** Gallery metadata (no sheet data): id, title, desc, cat, keywords, accent. "leer" first. */

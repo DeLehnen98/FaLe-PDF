@@ -10,7 +10,7 @@
 // page: Seitenformat in pt { w, h, mt, mr, mb, ml }. hf: Kopf-/Fußzeile (siehe hfnorm.js). styles: Formatvorlagen-Änderungen.
 // Alle Namen, Adressen und Zahlen sind Platzhalter zum Überschreiben.
 
-export const DOC_TEMPLATE_CATS = ['Alle', 'Bewerbung', 'Briefe', 'Geschäftlich', 'Schule & Studium', 'Privat & Freizeit'];
+export const DOC_TEMPLATE_CATS = ['Alle', 'Bewerbung', 'Briefe', 'Geschäftlich', 'Schule & Studium', 'Verträge & Formulare', 'Privat & Freizeit'];
 
 const A4 = { w: 595.3, h: 841.9, mt: 70.9, mr: 70.9, mb: 56.7, ml: 70.9 };
 const A4_DIN = { w: 595.3, h: 841.9, mt: 48, mr: 56.7, mb: 56.7, ml: 70.9 };
@@ -133,6 +133,60 @@ export const DOC_TEMPLATE_LIST = [
         [p(''), p('4. Abschlusszeugnis und Zertifikate'), p('')],
       ], { cls: 'borderless' })}`),
   },
+  {
+    id: 'lebenslauf-kreativ', title: 'Lebenslauf – Kreativ', desc: 'Zweispaltig mit farbiger Seitenleiste für Foto, Kontakt und Fähigkeiten', cat: 'Bewerbung', keywords: 'cv vita lebenslauf kreativ zweispaltig seitenleiste foto design', accent: 'teal', page: A4_NARROW,
+    html: ({ today }) => {
+      const SIDE = '#1F3B57', LIGHT = '#DCE6F0', HEAD = '#0B6B60';
+      const s = (t, size = 9.5) => `<span style="font-size:${size}pt;color:${LIGHT}">${t}</span>`;
+      const sh = t => `<p><span style="font-size:10.5pt;color:#FFFFFF"><strong>${t}</strong></span></p>`;
+      const h = t => `<h2><span style="color:${HEAD}">${t}</span></h2>`;
+      const when = t => p(`<span style="color:${GREY}">${t}</span>`);
+      const left = `
+        <p style="text-align:center"><img src="${PHOTO}" alt="Bewerbungsfoto (Platzhalter)" width="128"></p>
+        ${sh('KONTAKT')}${p(s('Musterstraße 12<br>66111 Saarbrücken'))}${p(s('0170 1234567'))}${p(s('name@example.de'))}${p(s('linkedin.example/vorname'))}
+        ${sh('FÄHIGKEITEN')}${p(s('Kampagnenplanung · sehr gut<br>Texten &amp; Redaktion · sehr gut<br>Social Media · gut<br>Datenanalyse · gut<br>Bildbearbeitung · Grundkenntnisse'))}
+        ${sh('SPRACHEN')}${p(s('Deutsch – Muttersprache<br>Englisch – verhandlungssicher (C1)<br>Spanisch – gut (B1)'))}
+        ${sh('INTERESSEN')}${p(s('Fotografie · Laufen · Ehrenamt in der Jugendarbeit'))}`;
+      const right = `
+        <p><span style="font-size:26pt;color:${SIDE}"><strong>Vorname Nachname</strong></span></p>
+        <p><span style="font-size:13pt;color:${HEAD}">Marketing-Managerin</span></p>
+        ${h('Profil')}
+        <p>Kreative Marketing-Managerin mit sechs Jahren Erfahrung in Kampagnen, Content und Markenführung. Ich verbinde gute Ideen mit Zahlen – und bringe Projekte zuverlässig ins Ziel.</p>
+        ${h('Berufserfahrung')}
+        ${p(`${b('Marketing-Managerin')} · Beispiel GmbH, Saarbrücken`)}${when('seit 04/2022')}
+        <ul><li>Planung und Steuerung von Kampagnen mit einem Budget von 250.000 € pro Jahr</li><li>Aufbau eines Redaktionsplans für Website, Newsletter und Social Media</li></ul>
+        ${p(`${b('Junior Marketing Managerin')} · Muster AG, Trier`)}${when('09/2019 – 03/2022')}
+        <ul><li>Betreuung von Messeauftritten und Produkteinführungen</li><li>Auswertung von Kampagnen und monatliches Reporting</li></ul>
+        ${h('Ausbildung')}
+        ${p(`${b('B.A. Medien und Kommunikation')} · Hochschule Musterstadt`)}${when('2015 – 2019 · Abschlussnote 1,7')}
+        ${h('Weiterbildung')}
+        ${p('Zertifikat Online-Marketing · Akademie Beispiel, 2023')}
+        ${empty}
+        ${p(`<span style="color:${GREY}">Saarbrücken, ${today}</span>`)}`;
+      return clean(`<table class="borderless">${colgroup([32, 68])}<tbody><tr><td style="background-color:${SIDE};vertical-align:top">${left}</td><td style="vertical-align:top">${right}</td></tr></tbody></table>`);
+    },
+  },
+  {
+    id: 'motivationsschreiben', title: 'Motivationsschreiben', desc: 'Für Studienplatz, Stipendium oder Auslandssemester – mit Leitfragen', cat: 'Bewerbung', keywords: 'motivationsschreiben studium stipendium studienplatz auslandssemester stiftung bewerbung', accent: 'indigo', page: A4_DIN,
+    html: ({ longDate }) => clean(`
+      <p>Vorname Nachname<br>Musterstraße 12<br>66111 Saarbrücken<br>0170 1234567 · name@example.de</p>
+      ${empty}
+      <p>Stiftung Beispiel<br>Auswahlkommission Stipendienprogramm<br>Am Campus 5<br>12345 Musterstadt</p>
+      <p style="text-align:right">Saarbrücken, ${longDate}</p>
+      <p>${b('Motivationsschreiben für das Stipendienprogramm der Stiftung Beispiel')}</p>
+      <p>Sehr geehrte Damen und Herren,</p>
+      <p>seit meiner Schulzeit begeistert mich … (Einstieg: Was hat dein Interesse am Fach oder am Programm geweckt? Ein konkretes Erlebnis wirkt stärker als allgemeine Aussagen.)</p>
+      <p>Im Studium der Beispielwissenschaft an der Universität Musterstadt habe ich … (Werdegang: Welche Schwerpunkte, Projekte oder Leistungen passen zum Programm?)</p>
+      <p>Neben dem Studium engagiere ich mich … (Engagement: Ehrenamt, Nebenjob, Verantwortung in Vereinen oder in der Familie.)</p>
+      <p>Ihr Programm spricht mich besonders an, weil … (Passung: Was genau bietet das Programm, und was bringst du umgekehrt ein?)</p>
+      <p>Langfristig möchte ich … (Ziele: Wo siehst du dich nach dem Abschluss, und wie hilft dir das Stipendium dabei?)</p>
+      <p>Über die Gelegenheit, mich in einem persönlichen Gespräch vorzustellen, freue ich mich sehr.</p>
+      <p>Mit freundlichen Grüßen</p>
+      ${empty}
+      <p>Vorname Nachname</p>
+      <p>${muted('Anlagen: Lebenslauf, Notenübersicht, Empfehlungsschreiben', 10)}</p>
+      <p>${muted('Tipp: Eine Seite genügt. Lies die Ausschreibung genau und greife ihre Stichworte auf.', 9)}</p>`),
+  },
   // ---------------------------------------------------------------- Briefe
   {
     id: 'brief', title: 'Brief (DIN 5008)', desc: 'Geschäftsbrief mit Anschriftfeld und Infoblock', cat: 'Briefe', keywords: 'geschäftsbrief din 5008 form b briefvorlage firma', accent: 'slate', page: A4_DIN,
@@ -189,6 +243,53 @@ export const DOC_TEMPLATE_LIST = [
       <p>Vorname Nachname</p>
       ${empty}
       <p>${muted('Tipp: Kündigungen sicher zustellen, z. B. per Einschreiben, und eine Kopie aufbewahren.', 9)}</p>`),
+  },
+  {
+    id: 'reklamation', title: 'Reklamation / Mängelanzeige', desc: 'Mangel melden, Nacherfüllung mit Frist verlangen – mit Kaufdaten-Tabelle', cat: 'Briefe', keywords: 'reklamation mängelanzeige beschwerde defekt garantie gewährleistung umtausch reparatur händler', accent: 'coral', page: A4_DIN,
+    html: ({ today, longDate, date }) => clean(`
+      <p>Vorname Nachname<br>Musterstraße 12<br>66111 Saarbrücken<br>0170 1234567 · name@example.de</p>
+      ${empty}
+      <p>Beispiel Handel GmbH<br>Kundenservice<br>Hauptstraße 1<br>12345 Musterstadt</p>
+      <p style="text-align:right">Saarbrücken, ${longDate}</p>
+      <p>${b('Reklamation / Mängelanzeige – Bestellung Nr. 000000')}</p>
+      <p>Sehr geehrte Damen und Herren,</p>
+      <p>bei Ihnen habe ich den folgenden Artikel gekauft:</p>
+      ${table([36, 64], [[p('Artikel'), p('Kaffeevollautomat „Beispiel 3000“')], [p('Artikelnummer'), p('123-456')], [p('Kaufdatum'), p(today)], [p('Rechnungs-/Bestellnummer'), p('000000')], [p('Kaufpreis'), p('349,00 €')]], { cls: 'ts-minimal' })}
+      <p>Leider weist der Artikel folgenden Mangel auf: … (Beschreibe genau, was nicht funktioniert, seit wann der Fehler auftritt und wie er sich zeigt.)</p>
+      <p>Ich bitte Sie deshalb um Nacherfüllung – nach meiner Wahl durch ${b('Reparatur')} / ${b('Lieferung eines mangelfreien Ersatzes')} (Nichtzutreffendes streichen) – bis spätestens zum ${b(fmtDate(plusDays(date, 14)))}.</p>
+      <p>Bitte teilen Sie mir mit, wie ich Ihnen den Artikel zur Verfügung stellen soll. Die Kosten für Versand und Rücksendung bitte ich Sie zu übernehmen.</p>
+      <p>Sollte die Nacherfüllung bis zum genannten Datum nicht erfolgen, behalte ich mir weitere Schritte vor, etwa den Rücktritt vom Kaufvertrag oder eine Minderung des Kaufpreises.</p>
+      <p>Mit freundlichen Grüßen</p>
+      ${empty}
+      <p>Vorname Nachname</p>
+      <p>${muted('Anlagen: Kopie des Kaufbelegs, Fotos des Mangels', 10)}</p>
+      ${empty}
+      <p>${muted('Muster ohne Gewähr – keine Rechtsberatung. Tipp: Reklamationen schriftlich mit Frist stellen und eine Kopie aufbewahren.', 8.5)}</p>`),
+  },
+  {
+    id: 'einladung-mitgliederversammlung', title: 'Einladung zur Mitgliederversammlung', desc: 'Vereinsbrief mit Termin, Tagesordnung, Antragsfrist und Rückmeldung', cat: 'Briefe', keywords: 'verein mitgliederversammlung einladung tagesordnung jahreshauptversammlung vorstand wahlen satzung', accent: 'green', page: A4_DIN,
+    html: ({ longDate, date }) => {
+      const G = '#1E6B3A';
+      return clean(`
+      ${table([62, 38], [[p(`<span style="font-size:15pt;color:${G}"><strong>Sportverein Beispiel e. V.</strong></span><br>${muted('gegründet 1976 · Vereinsregister VR 0000', 8.5)}`), pr(muted('Vorstand · Am Sportplatz 1<br>66111 Saarbrücken<br>vorstand@example.de', 9))]], { cls: 'borderless' })}
+      <hr>
+      <p>An alle Mitglieder</p>
+      <p style="text-align:right">Saarbrücken, ${longDate}</p>
+      <p>${b('Einladung zur ordentlichen Mitgliederversammlung')}</p>
+      <p>Liebe Mitglieder,</p>
+      <p>hiermit laden wir euch satzungsgemäß herzlich zur ordentlichen Mitgliederversammlung ein:</p>
+      ${table([24, 76], [[p(b('Datum')), p(fmtDate(plusDays(date, 28), true))], [p(b('Beginn')), p('19:00 Uhr (Einlass ab 18:30 Uhr)')], [p(b('Ort')), p('Vereinsheim, Am Sportplatz 1, 66111 Saarbrücken')]], { cls: 'ts-minimal' })}
+      <h3><span style="color:${G}">Tagesordnung</span></h3>
+      <ol><li>Begrüßung und Feststellung der ordnungsgemäßen Einladung und Beschlussfähigkeit</li><li>Genehmigung des Protokolls der letzten Mitgliederversammlung</li><li>Bericht des Vorstands</li><li>Kassenbericht</li><li>Bericht der Kassenprüfer/innen</li><li>Entlastung des Vorstands</li><li>Wahlen (Vorstand und Kassenprüfung)</li><li>Festsetzung der Mitgliedsbeiträge</li><li>Anträge</li><li>Verschiedenes</li></ol>
+      <p>Anträge zur Tagesordnung reicht bitte bis spätestens ${b(fmtDate(plusDays(date, 14)))} schriftlich beim Vorstand ein. Die Unterlagen (Kassenbericht, Satzung) können vorab beim Vorstand eingesehen werden.</p>
+      <p>Wir freuen uns auf eine rege Teilnahme und einen guten Austausch.</p>
+      <p>Mit sportlichen Grüßen<br>für den Vorstand</p>
+      ${empty}
+      <p>Vorname Nachname, 1. Vorsitzende/r</p>
+      <p style="text-align:center">${muted('- - - - - - - - - - - - - - - - hier abtrennen - - - - - - - - - - - - - - - -', 9)}</p>
+      <p>${b('Rückmeldung')} (bitte bis ${fmtDate(plusDays(date, 21))} an den Vorstand)</p>
+      <p>Name: ______________________________ &nbsp; Ich nehme teil: ☐ ja &nbsp; ☐ nein</p>`);
+    },
   },
   // ---------------------------------------------------------------- Geschäftlich
   {
@@ -309,6 +410,56 @@ export const DOC_TEMPLATE_LIST = [
       <p><strong>Pressekontakt</strong><br>Vorname Nachname · 0681 123456 · presse@example.de</p>
       <p>${muted('Zeichen (mit Leerzeichen): ca. 1.500 · Abdruck honorarfrei, Beleg erbeten')}</p>`),
   },
+  {
+    id: 'lieferschein', title: 'Lieferschein', desc: 'Lieferanschrift, Positionen ohne Preise und Empfangsbestätigung', cat: 'Geschäftlich', keywords: 'lieferschein lieferung versand ware empfangsbestätigung packliste spedition', accent: 'slate',
+    html: ({ today, date }) => {
+      const S = '#33384F';
+      return clean(`
+      ${table([60, 40], [[`<h1><span style="color:${S}">Lieferschein</span></h1>`, pr(`${b('Firma Beispiel')}<br>Musterstraße 12<br>66111 Saarbrücken<br>0681 123456 · info@example.de`)]], { cls: 'borderless' })}
+      ${table([60, 40], [[p(`${b('Lieferanschrift')}<br>Kunde GmbH<br>Wareneingang, Tor 3<br>Hauptstraße 1<br>66123 Saarbrücken`), p(`Lieferschein-Nr.: ${b('LS-2026-031')}<br>Lieferdatum: ${today}<br>Ihre Bestellung: B-4711 vom ${fmtDate(plusDays(date, -3))}<br>Kundennummer: K-1001<br>Ansprechpartner/in: Vorname Nachname`)]], { cls: 'borderless' })}
+      ${empty}
+      ${table([8, 18, 50, 12, 12], [
+        [p(b('Pos.')), p(b('Art.-Nr.')), p(b('Bezeichnung')), pr(b('Menge')), p(b('Einheit'))],
+        [p('1'), p('10-2040'), p('Bürostuhl „Ergo“, schwarz'), pr('4'), p('Stück')],
+        [p('2'), p('10-3310'), p('Schreibtisch 160 × 80 cm, Eiche hell'), pr('2'), p('Stück')],
+        [p('3'), p('20-0102'), p('Kabelkanal, 1 m'), pr('6'), p('Stück')],
+        [p('4'), p('30-5000'), p('Montagematerial (Set)'), pr('1'), p('Set')],
+      ], { cls: 'ts-header', hdr: true })}
+      <p>Versandart: Spedition · Anzahl Packstücke: 3 · Gesamtgewicht: ca. 96 kg</p>
+      <p>Teillieferung: ☐ ja &nbsp; ☐ nein – offene Positionen folgen bis: ______________</p>
+      <p>Bitte prüfen Sie die Ware bei Anlieferung auf Vollständigkeit und sichtbare Transportschäden und vermerken Sie Schäden auf diesem Lieferschein.</p>
+      ${empty}
+      <p>${b('Ware vollständig und in einwandfreiem Zustand erhalten:')}</p>
+      ${empty}
+      ${table([45, 10, 45], [[p('______________________________<br>Ort, Datum'), p(''), p('______________________________<br>Unterschrift Empfänger/in (Name in Druckbuchstaben)')]], { cls: 'borderless' })}
+      ${empty}
+      <p>${muted('Firma Beispiel · Inhaberin Vorname Nachname · Steuernummer 000/000/00000 · Beispielbank · IBAN DE00 0000 0000 0000 0000 00', 8)}</p>`);
+    },
+  },
+  {
+    id: 'auftragsbestaetigung', title: 'Auftragsbestätigung', desc: 'Bestätigt Leistungen, Preise und Liefertermin – rechnet selbst', cat: 'Geschäftlich', keywords: 'auftragsbestätigung auftrag bestellung bestätigung liefertermin handwerk dienstleistung', accent: 'teal',
+    html: ({ today, date }) => clean(`
+      ${table([60, 40], [[`<h1><span style="color:${TEAL}">Auftragsbestätigung</span></h1>`, pr(`${b('Firma Beispiel')}<br>Musterstraße 12<br>66111 Saarbrücken<br>0681 123456`)]], { cls: 'borderless' })}
+      ${table([60, 40], [[p('Kunde GmbH<br>Frau Erika Muster<br>Hauptstraße 1<br>66123 Saarbrücken'), p(`Auftragsnummer: ${b('AB-2026-022')}<br>Datum: ${today}<br>Ihre Bestellung vom: ${fmtDate(plusDays(date, -2))}<br>Liefer-/Ausführungstermin: ${b(fmtDate(plusDays(date, 21)))}`)]], { cls: 'borderless' })}
+      ${empty}
+      <p>Sehr geehrte Frau Muster,</p>
+      <p>vielen Dank für Ihren Auftrag. Wir bestätigen Ihnen gern die folgenden Leistungen zu den genannten Preisen:</p>
+      ${table([7, 41, 12, 20, 20], [
+        [p(b('Pos.')), p(b('Leistung')), pr(b('Menge')), pr(b('Einzelpreis')), pr(b('Gesamt'))],
+        [p('1'), p('Küchenarbeitsplatte inkl. Zuschnitt'), pr('1'), pr('480,00 €'), pr(tf('=C2*D2', '480,00 €'))],
+        [p('2'), p('Montage (Stunden)'), pr('6'), pr('62,00 €'), pr(tf('=C3*D3', '372,00 €'))],
+        [p('3'), p('Anfahrt pauschal'), pr('1'), pr('35,00 €'), pr(tf('=C4*D4', '35,00 €'))],
+        [p(''), p(''), p(''), pr('Netto'), pr(tf('=SUM(E2:E4)', '887,00 €'))],
+        [p(''), p(''), p(''), pr('19 % USt.'), pr(tf('=E5*19/100', '168,53 €'))],
+        [p(''), p(''), p(''), pr(b('Auftragssumme')), pr(b(tf('=E5+E6', '1.055,53 €')))],
+      ], { cls: 'ts-striped', hdr: true })}
+      <h3>Vereinbarungen</h3>
+      <ul><li>Ausführung am ${fmtDate(plusDays(date, 21))} ab 8:00 Uhr; bitte sorgen Sie für freien Zugang zur Küche</li><li>Zahlung: 14 Tage nach Rechnungsstellung ohne Abzug</li><li>Grundlage ist unser Angebot vom ${fmtDate(plusDays(date, -10))}; Änderungen nur nach Absprache</li></ul>
+      <p>Bitte prüfen Sie die Angaben. Sollte etwas nicht stimmen, melden Sie sich bitte innerhalb von drei Werktagen.</p>
+      <p>Mit freundlichen Grüßen</p>
+      ${empty}
+      <p>Vorname Nachname<br>Firma Beispiel</p>`),
+  },
   // ---------------------------------------------------------------- Schule & Studium
   {
     id: 'hausarbeit', title: 'Hausarbeit', desc: 'Titelblatt, Inhaltsverzeichnis, Fußnoten, Literaturverzeichnis', cat: 'Schule & Studium', keywords: 'hausarbeit seminararbeit facharbeit uni studium zitieren literatur bachelorarbeit', accent: 'slate',
@@ -392,6 +543,210 @@ export const DOC_TEMPLATE_LIST = [
         [p('13:30'), p(''), p(''), p('AG'), p(''), p('')],
       ], { cls: 'ts-header', hdr: true })}
       <p>${muted('Tipp: Fächer mit Farben markieren (Start → Hervorheben).', 9)}</p>`),
+  },
+  {
+    id: 'deckblatt-abschlussarbeit', title: 'Deckblatt Abschlussarbeit', desc: 'Titelblatt für Bachelor-, Master- oder Facharbeit mit Gutachter/innen', cat: 'Schule & Studium', keywords: 'deckblatt titelblatt bachelorarbeit masterarbeit abschlussarbeit facharbeit thesis uni hochschule', accent: 'slate',
+    page: { w: 595.3, h: 841.9, mt: 70.9, mr: 70.9, mb: 70.9, ml: 85 },
+    styles: {
+      normal: { font: 'Times New Roman', size: 12, line: 1.15 },
+      title: { font: 'Times New Roman', size: 24, color: '#1A1A1A', align: 'center' },
+      subtitle: { font: 'Times New Roman', size: 15, color: '#3A3F58', align: 'center' },
+    },
+    html: ({ longDate }) => clean(`
+      <p style="text-align:center"><span style="font-size:14pt"><strong>Hochschule Musterstadt</strong></span><br>Fakultät für Beispielwissenschaften<br>Lehrstuhl für Angewandte Beispielforschung</p>
+      ${empty}${empty}${empty}
+      <p class="title">Titel der Abschlussarbeit</p>
+      <p class="subtitle">Ein Untertitel, der die Fragestellung genau eingrenzt</p>
+      ${empty}${empty}
+      <p style="text-align:center"><span style="font-size:16pt"><strong>Bachelorarbeit</strong></span></p>
+      <p style="text-align:center">zur Erlangung des akademischen Grades<br>Bachelor of Science (B.Sc.)<br>im Studiengang Beispielwissenschaft</p>
+      ${empty}${empty}${empty}${empty}
+      ${table([40, 60], [
+        [p('vorgelegt von:'), p(b('Vorname Nachname'))],
+        [p('Matrikelnummer:'), p('1234567')],
+        [p('Anschrift:'), p('Musterstraße 12, 66111 Saarbrücken')],
+        [p('E-Mail:'), p('name@hs-example.de')],
+        [p('Erstgutachter/in:'), p('Prof. Dr. Vorname Nachname')],
+        [p('Zweitgutachter/in:'), p('Dr. Vorname Nachname')],
+        [p('Abgabedatum:'), p(longDate)],
+      ], { cls: 'borderless' })}`),
+  },
+  {
+    id: 'praktikumsbericht', title: 'Praktikumsbericht', desc: 'Deckblatt, Inhaltsverzeichnis, Betrieb, Tätigkeiten, Reflexion und Fazit', cat: 'Schule & Studium', keywords: 'praktikumsbericht praktikum bericht schule betriebspraktikum pflichtpraktikum hochschule inhaltsverzeichnis', accent: 'teal',
+    hf: { header: 'Praktikumsbericht · Vorname Nachname', headerAlign: 'right', pageNumbers: 'footer-center', pageFormat: 'n-of-m', firstPage: false },
+    html: ({ longDate, date }) => clean(`
+      ${empty}${empty}
+      <p class="title"><span style="color:${TEAL}">Praktikumsbericht</span></p>
+      <p class="subtitle">Betriebspraktikum bei der Beispiel GmbH</p>
+      ${empty}
+      ${table([34, 66], [
+        [p(b('Name')), p('Vorname Nachname')],
+        [p(b('Schule / Hochschule')), p('Beispiel-Gymnasium, Klasse 10b')],
+        [p(b('Betreuende Lehrkraft')), p('Frau Vorname Nachname')],
+        [p(b('Praktikumsbetrieb')), p('Beispiel GmbH, Hauptstraße 1, 66111 Saarbrücken')],
+        [p(b('Betreuer/in im Betrieb')), p('Herr Vorname Nachname, Abteilung Marketing')],
+        [p(b('Zeitraum')), p(`${fmtDate(plusDays(date, -21))} – ${fmtDate(plusDays(date, -3))}`)],
+        [p(b('Abgabe')), p(longDate)],
+      ], { cls: 'ts-minimal' })}
+      ${PAGEBREAK}
+      ${TOC}
+      <h1>Einleitung</h1>
+      <p>Warum hast du dich für dieses Praktikum entschieden, und was hast du dir davon erhofft? Beschreibe kurz, wie du den Platz gefunden hast.</p>
+      <h1>Vorstellung des Betriebs</h1>
+      <h2>Unternehmen und Branche</h2>
+      <p>Was stellt der Betrieb her oder welche Dienstleistungen bietet er an? Wie viele Mitarbeitende gibt es, wer sind die Kundinnen und Kunden?</p>
+      <h2>Meine Abteilung</h2>
+      <p>In welcher Abteilung warst du eingesetzt, und welche Aufgaben hat sie im Betrieb?</p>
+      <h1>Meine Tätigkeiten</h1>
+      <h2>Überblick nach Wochen</h2>
+      ${table([20, 80], [
+        [p(b('Woche')), p(b('Tätigkeiten'))],
+        [p('Woche 1'), p('Einführung, Rundgang durch den Betrieb, erste Aufgaben im Team')],
+        [p('Woche 2'), p('Mitarbeit an einem Projekt, Vorbereitung einer Präsentation')],
+        [p('Woche 3'), p('Eigenständige Aufgabe, Abschlussgespräch mit der Betreuerin')],
+      ], { cls: 'ts-header', hdr: true })}
+      <h2>Ein Arbeitstag im Detail</h2>
+      <p>Beschreibe einen typischen Tag von Arbeitsbeginn bis Feierabend: Welche Aufgaben, welche Werkzeuge, mit wem hast du zusammengearbeitet?</p>
+      <h1>Reflexion</h1>
+      <h2>Was ich gelernt habe</h2>
+      <ul><li>Fachlich: …</li><li>Im Umgang mit anderen: …</li><li>Über mich selbst: …</li></ul>
+      <h2>Erwartungen und Erfahrungen</h2>
+      <p>Haben sich deine Erwartungen erfüllt? Was hat dich überrascht, was war schwierig?</p>
+      <h1>Fazit</h1>
+      <p>Kannst du dir vorstellen, später in diesem Beruf zu arbeiten? Würdest du den Betrieb weiterempfehlen?</p>
+      <h1>Anhang</h1>
+      <p>Praktikumsbescheinigung, Fotos (mit Erlaubnis), Arbeitsproben</p>`),
+  },
+  {
+    id: 'entschuldigung-schule', title: 'Entschuldigung für die Schule', desc: 'Fehlzeiten der Klassenleitung melden – mit Ankreuzfeldern für Zeitraum und Grund', cat: 'Schule & Studium', keywords: 'entschuldigung schule krank fehlen eltern klassenlehrer attest unterricht entschuldigungsschreiben', accent: 'blue', page: A4_DIN,
+    html: ({ longDate }) => clean(`
+      <p>Vorname Nachname<br>Musterstraße 12<br>66111 Saarbrücken<br>0170 1234567</p>
+      ${empty}
+      <p>Beispiel-Gymnasium<br>Klassenleitung der Klasse 7b<br>Frau Erika Muster<br>Schulstraße 1<br>66111 Saarbrücken</p>
+      <p style="text-align:right">Saarbrücken, ${longDate}</p>
+      ${empty}
+      <p>${b('Entschuldigung für das Fehlen im Unterricht')}</p>
+      ${empty}
+      <p>Sehr geehrte Frau Muster,</p>
+      <p>meine Tochter / mein Sohn ${b('Vorname Nachname')}, Klasse 7b, konnte</p>
+      <p>☐ am ______________<br>☐ vom ______________ bis ______________<br>☐ in den Unterrichtsstunden ________ am ______________</p>
+      <p>nicht am Unterricht teilnehmen. Grund:</p>
+      <p>☐ Krankheit<br>☐ Arzttermin, der nicht außerhalb der Unterrichtszeit möglich war<br>☐ wichtiger familiärer Anlass: ________________________________</p>
+      <p>Versäumte Inhalte holt sie / er selbstständig nach. Für Rückfragen erreichen Sie mich unter der oben genannten Telefonnummer.</p>
+      <p>Mit freundlichen Grüßen</p>
+      ${empty}${empty}
+      <p>______________________________<br>Unterschrift einer / eines Erziehungsberechtigten</p>
+      ${empty}
+      <p>${muted('Hinweis: Fristen für die Entschuldigung und ab wann ein ärztliches Attest nötig ist, regeln die Schule und das Schulgesetz des Landes. Volljährige Schülerinnen und Schüler entschuldigen sich selbst.', 8.5)}</p>`),
+  },
+  // ---------------------------------------------------------------- Verträge & Formulare
+  {
+    id: 'kaufvertrag-gebrauchtwagen', title: 'Kaufvertrag Gebrauchtwagen (privat)', desc: 'Verkauf zwischen Privatleuten: Fahrzeugdaten, Kaufpreis, Angaben zu Unfällen und Mängeln', cat: 'Verträge & Formulare', keywords: 'kaufvertrag auto gebrauchtwagen pkw fahrzeug privatverkauf motorrad verkauf vertrag', accent: 'slate',
+    hf: { footer: 'Kaufvertrag Gebrauchtwagen · Muster', footerAlign: 'left', pageNumbers: 'footer-right', pageFormat: 'n-of-m' },
+    html: () => {
+      const form = rows => table([38, 62], rows.map(([l, v = '']) => [p(l), p(v)]), { cls: 'ts-minimal' });
+      return clean(`
+      <h1>Kaufvertrag über ein gebrauchtes Kraftfahrzeug</h1>
+      <p>${muted('Verkauf von privat an privat · zweifach ausgefertigt, jede Partei erhält ein Exemplar', 10)}</p>
+      <h3>1. Verkäufer/in</h3>
+      ${form([['Name, Vorname'], ['Anschrift'], ['Telefon / E-Mail'], ['Ausweisnummer']])}
+      <h3>2. Käufer/in</h3>
+      ${form([['Name, Vorname'], ['Anschrift'], ['Telefon / E-Mail'], ['Ausweisnummer']])}
+      <h3>3. Fahrzeug</h3>
+      ${form([['Hersteller, Modell, Typ'], ['Fahrzeug-Identifizierungsnummer (FIN)'], ['Amtliches Kennzeichen'], ['Erstzulassung'], ['Kilometerstand laut Tacho', '__________ km'], ['Nächste Hauptuntersuchung (HU)'], ['Nr. der Zulassungsbescheinigung Teil II'], ['Anzahl übergebener Schlüssel'], ['Mitverkauftes Zubehör', 'z. B. Winterräder, Dachträger']])}
+      <h3>4. Kaufpreis und Zahlung</h3>
+      <p>Der Kaufpreis beträgt __________ € (in Worten: ______________________________ Euro).</p>
+      <p>☐ Der Kaufpreis wurde bei Übergabe in bar gezahlt. Die Verkäuferin / der Verkäufer bestätigt den Empfang mit der Unterschrift unter diesem Vertrag.<br>☐ Der Kaufpreis wird bis zum ______________ auf folgendes Konto überwiesen: ______________________________</p>
+      <p>Das Fahrzeug bleibt bis zur vollständigen Zahlung Eigentum der Verkäuferin / des Verkäufers. Fahrzeug, Schlüssel und die Zulassungsbescheinigungen Teil I und II werden bei vollständiger Zahlung übergeben.</p>
+      <h3>5. Angaben der Verkäuferin / des Verkäufers</h3>
+      ${table([68, 32], [
+        [p('Das Fahrzeug hat nach Kenntnis der Verkäuferin / des Verkäufers keine Unfallschäden.'), p('☐ zutreffend<br>☐ nicht zutreffend')],
+        [p('Der Kilometerstand entspricht nach Kenntnis der Verkäuferin / des Verkäufers der tatsächlichen Laufleistung.'), p('☐ zutreffend<br>☐ nicht zutreffend')],
+        [p('Bekannte Unfallschäden, Vorschäden oder Mängel:'), p('')],
+      ], { cls: 'ts-minimal' })}
+      <h3>6. Sachmängelhaftung</h3>
+      <p>Das Fahrzeug wird so verkauft, wie es besichtigt und Probe gefahren wurde. Die Haftung der Verkäuferin / des Verkäufers für Sachmängel ist ausgeschlossen. Davon ausgenommen sind die Angaben unter Nr. 5, Schäden aus der Verletzung von Leben, Körper oder Gesundheit sowie Schäden, die vorsätzlich oder grob fahrlässig verursacht wurden.</p>
+      <h3>7. Übergabe und Ummeldung</h3>
+      <p>Übergabe am ______________ um ________ Uhr. Die Käuferin / der Käufer meldet das Fahrzeug innerhalb von sieben Tagen nach der Übergabe um oder ab. Die Verkäuferin / der Verkäufer teilt den Verkauf der Kfz-Versicherung mit.</p>
+      <h3>8. Weitere Vereinbarungen</h3>
+      <p>____________________________________________________________<br>____________________________________________________________</p>
+      ${empty}
+      ${table([45, 10, 45], [[p('______________________________<br>Ort, Datum, Unterschrift Verkäufer/in'), p(''), p('______________________________<br>Ort, Datum, Unterschrift Käufer/in')]], { cls: 'borderless' })}
+      ${empty}
+      <p>${muted('Muster ohne Gewähr – keine Rechtsberatung. Bitte an den Einzelfall anpassen; bei Unsicherheiten fachkundigen Rat einholen.', 8.5)}</p>`);
+    },
+  },
+  {
+    id: 'wohnungsgeberbestaetigung', title: 'Wohnungsgeberbestätigung', desc: 'Bestätigung für die Anmeldung beim Bürgeramt mit allen Angaben nach § 19 BMG', cat: 'Verträge & Formulare', keywords: 'wohnungsgeberbestätigung vermieterbescheinigung anmeldung ummelden bürgeramt einzug auszug meldegesetz vermieter', accent: 'blue', page: { w: 595.3, h: 841.9, mt: 36, mr: 42.5, mb: 36, ml: 42.5 },
+    html: () => {
+      const B = '#1D4F91';
+      const form = rows => table([46, 54], rows.map(([l, v = '']) => [p(l), p(v)]), { cls: 'ts-minimal' });
+      return clean(`
+      <h1><span style="color:${B}">Wohnungsgeberbestätigung</span></h1>
+      <p>nach § 19 des Bundesmeldegesetzes (BMG)</p>
+      <h3>1. Wohnungsgeber/in</h3>
+      ${form([['Name, Vorname bzw. Firma'], ['Anschrift (Straße, Hausnummer, PLZ, Ort)']])}
+      <p>☐ Die Wohnungsgeberin / der Wohnungsgeber ist zugleich Eigentümer/in der Wohnung.<br>☐ Die Wohnungsgeberin / der Wohnungsgeber ist nicht Eigentümer/in. Eigentümer/in ist:</p>
+      ${form([['Name, Vorname bzw. Firma der Eigentümerin / des Eigentümers'], ['Anschrift der Eigentümerin / des Eigentümers']])}
+      <h3>2. Art der Meldung</h3>
+      <p>☐ Einzug &nbsp;&nbsp; ☐ Auszug</p>
+      ${form([['Datum des Einzugs bzw. Auszugs']])}
+      <h3>3. Anschrift der Wohnung</h3>
+      ${form([['Straße, Hausnummer'], ['Zusatz (z. B. Stockwerk, Wohnungsnummer)'], ['Postleitzahl, Ort']])}
+      <h3>4. Meldepflichtige Personen, die ein- bzw. ausgezogen sind</h3>
+      ${table([8, 46, 46], [[p(b('Nr.')), p(b('Familienname')), p(b('Vorname(n)'))], [p('1'), p(''), p('')], [p('2'), p(''), p('')], [p('3'), p(''), p('')]], { cls: 'ts-header', hdr: true })}
+      <h3>5. Bestätigung</h3>
+      <p>Ich bestätige mit meiner Unterschrift den Einzug bzw. Auszug der oben genannten Person(en) in die bzw. aus der oben genannten Wohnung.</p>
+      ${empty}
+      ${table([40, 8, 52], [[p('__________________________<br>Ort, Datum'), p(''), p('______________________________<br>Unterschrift der Wohnungsgeberin / des Wohnungsgebers bzw. der beauftragten Person')]], { cls: 'borderless' })}
+      <p>${muted('Hinweis: Es ist verboten, eine Wohnungsanschrift für eine Anmeldung anzubieten oder zur Verfügung zu stellen, wenn ein tatsächlicher Bezug der Wohnung weder stattfindet noch beabsichtigt ist (§ 19 Abs. 6 BMG); Verstöße können mit einem Bußgeld geahndet werden. Viele Städte und Gemeinden haben ein eigenes Formular – bitte vorab bei deinem Bürgeramt prüfen, ob dieses Muster akzeptiert wird. Die Bestätigung wird für die Anmeldung innerhalb von zwei Wochen nach dem Einzug benötigt.', 8)}</p>`);
+    },
+  },
+  {
+    id: 'quittung', title: 'Quittung', desc: 'Zwei Quittungen pro Seite zum Ausschneiden – mit Betrag, Steuer und Unterschrift', cat: 'Verträge & Formulare', keywords: 'quittung beleg zahlungsbestätigung barzahlung empfangsbestätigung kassenbeleg', accent: 'green', page: A4_NARROW,
+    html: () => {
+      const G = '#1E6B3A';
+      const one = n => `
+        ${table([60, 40], [[p(`<span style="font-size:20pt;color:${G}"><strong>Quittung</strong></span>`), pr(`Nr. ${b(`2026-0${n}`)}<br>${muted('Beleg für eine Zahlung', 9)}`)]], { cls: 'borderless' })}
+        ${table([34, 66], [
+          [p('Betrag netto'), pr('______________ €')],
+          [p('zzgl. ____ % Umsatzsteuer'), pr('______________ €')],
+          [p(b('Gesamtbetrag')), pr(b('______________ €'))],
+          [p('in Worten'), p('______________________________________ Euro')],
+          [p('erhalten von'), p('')],
+          [p('für'), p('')],
+        ], { cls: 'ts-minimal' })}
+        <p>Den oben genannten Betrag dankend erhalten.</p>
+        ${table([45, 10, 45], [[p('______________________________<br>Ort, Datum'), p(''), p('______________________________<br>Stempel / Unterschrift Empfänger/in')]], { cls: 'borderless' })}`;
+      return clean(`
+      ${one(1)}
+      ${empty}
+      <p style="text-align:center">${muted('- - - - - - - - - - - - - - - - - - - - - hier abschneiden - - - - - - - - - - - - - - - - - - - - -', 9)}</p>
+      ${empty}
+      ${one(2)}
+      ${empty}
+      <p>${muted('Hinweis: Bei Beträgen bis 250 € brutto genügt statt Netto und Steuer der Gesamtbetrag mit Angabe des Steuersatzes. Kleinunternehmer/innen weisen keine Umsatzsteuer aus.', 8)}</p>`);
+    },
+  },
+  {
+    id: 'vollmacht', title: 'Vollmacht', desc: 'Eine Person für Post, Behördengänge oder Verträge bevollmächtigen – mit Gültigkeit', cat: 'Verträge & Formulare', keywords: 'vollmacht bevollmächtigung abholung post paket behörde zulassungsstelle vertretung', accent: 'indigo',
+    html: () => {
+      const form = rows => table([38, 62], rows.map(([l, v = '']) => [p(l), p(v)]), { cls: 'ts-minimal' });
+      return clean(`
+      <h1><span style="color:${ACC}">Vollmacht</span></h1>
+      <p>Hiermit bevollmächtige ich</p>
+      ${form([['Name, Vorname'], ['Geburtsdatum'], ['Anschrift']])}
+      <p>die folgende Person</p>
+      ${form([['Name, Vorname'], ['Geburtsdatum'], ['Anschrift']])}
+      <p>mich in folgenden Angelegenheiten zu vertreten:</p>
+      <p>☐ Abholung von Briefen, Einschreiben und Paketen<br>☐ Behördengänge, z. B. beim Bürgeramt oder bei der Zulassungsstelle<br>☐ Abschluss, Änderung und Kündigung von Verträgen in meinem Namen<br>☐ Sonstiges: ________________________________________________</p>
+      <p>Die Vollmacht gilt &nbsp; ☐ einmalig am ______________ &nbsp; ☐ bis zum ______________ &nbsp; ☐ bis auf Widerruf.</p>
+      <p>Die bevollmächtigte Person weist sich mit ihrem Personalausweis oder Reisepass aus. Eine Kopie meines Ausweises liegt bei.</p>
+      ${empty}${empty}
+      ${table([45, 10, 45], [[p('______________________________<br>Ort, Datum, Unterschrift Vollmachtgeber/in'), p(''), p('______________________________<br>Unterschrift der bevollmächtigten Person')]], { cls: 'borderless' })}
+      ${empty}
+      <p>${muted('Muster ohne Gewähr – keine Rechtsberatung. Banken, Behörden und Paketdienste verlangen teils eigene Formulare; für eine Vorsorgevollmacht gelten besondere Anforderungen.', 8.5)}</p>`);
+    },
   },
   // ---------------------------------------------------------------- Privat & Freizeit
   {
@@ -543,6 +898,84 @@ export const DOC_TEMPLATE_LIST = [
       <h2>Ideen</h2>
       <p>Hier ist Platz für Gedanken, Skizzen und Links.</p>`),
   },
+  {
+    id: 'gutschein', title: 'Gutschein', desc: 'Drei Gutscheine pro A4-Seite zum Ausschneiden – Wert, Erlebnis oder Zeit schenken', cat: 'Privat & Freizeit', keywords: 'gutschein geschenk geburtstag weihnachten muttertag geschenkgutschein voucher ausschneiden', accent: 'rose', page: A4_NARROW,
+    html: ({ date }) => {
+      const C = '#9C2246';
+      const bd = `border-top:1.5pt solid ${C};border-bottom:1.5pt solid ${C}`;
+      const one = (big, what, nr) => `<table class="borderless">${colgroup([33, 67])}<tbody><tr>
+        <td style="background-color:${C};vertical-align:middle;${bd};border-left:1.5pt solid ${C}">${empty}${empty}<p style="text-align:center"><span style="font-size:13pt;color:#FFFFFF"><strong>GUTSCHEIN</strong></span></p><p style="text-align:center"><span style="font-size:30pt;color:#FFFFFF"><strong>${big}</strong></span></p>${empty}${empty}</td>
+        <td style="vertical-align:middle;${bd};border-right:1.5pt solid ${C}"><p><span style="font-size:12pt"><strong>Für:</strong> ______________________________</span></p>${empty}<p><span style="font-size:12pt"><strong>Von:</strong> ______________________________</span></p>${empty}<p><span style="font-size:12pt">${what}</span></p><p>${muted(`Gültig bis ${fmtDate(plusDays(date, 365))} · Nr. ${nr}`, 9)}</p></td></tr></tbody></table>`;
+      const cut = `<p style="text-align:center">${muted('- - - - - - - - - - - - - - - - - - - - - hier abschneiden - - - - - - - - - - - - - - - - - - - - -', 9)}</p>`;
+      return clean(`
+      ${one('50 €', 'Einzulösen für einen Einkauf deiner Wahl im Buchladen am Markt.', 'G-001')}
+      ${empty}${cut}${empty}
+      ${one('Kino', 'Ein Kinoabend zu zweit – mit Popcorn und Getränk. Termin suchst du aus!', 'G-002')}
+      ${empty}${cut}${empty}
+      ${one('3 Std.', 'Drei Stunden Zeit nur für dich: Babysitten, Helfen im Garten oder ein gemeinsamer Ausflug.', 'G-003')}`);
+    },
+  },
+  {
+    id: 'glueckwunschkarte', title: 'Glückwunschkarte (Faltkarte)', desc: 'A4 quer zum Falten: Vorder- und Rückseite außen, Wünsche innen', cat: 'Privat & Freizeit', keywords: 'glückwunschkarte karte geburtstag faltkarte grußkarte hochzeit danke klappkarte', accent: 'amber',
+    page: { w: 841.9, h: 595.3, mt: 36, mr: 36, mb: 36, ml: 36 },
+    html: () => {
+      const A = '#8A5A00';
+      const fold = 'border-right:0.75pt dashed #A9ADC4';
+      const half = (left, right) => `<table class="borderless">${colgroup([50, 50])}<tbody><tr><td style="vertical-align:top;${fold}">${left}</td><td style="vertical-align:top">${right}</td></tr></tbody></table>`;
+      const sp = n => empty.repeat(n);
+      const outside = half(
+        `${sp(18)}<p style="text-align:center">${muted('Mit lieben Grüßen gestaltet', 9)}</p><p style="text-align:center">${muted('Druck-Tipp: Querformat, Seite 2 auf die Rückseite drucken (an der kurzen Kante wenden) und an der gestrichelten Linie falten.', 8)}</p>`,
+        `${sp(7)}<p style="text-align:center"><span style="font-size:14pt;color:${A}">· · · · ·</span></p><p style="text-align:center"><span style="font-family:Georgia, serif;font-size:40pt;color:${A}"><strong>Alles Gute</strong></span></p><p style="text-align:center"><span style="font-family:Georgia, serif;font-size:20pt;color:#5A3D00">zum Geburtstag!</span></p><p style="text-align:center"><span style="font-size:14pt;color:${A}">· · · · ·</span></p>`);
+      const inside = half(
+        `${sp(7)}<p style="text-align:center"><span style="font-family:Georgia, serif;font-size:15pt;color:#5A3D00"><em>Ein Jahr voller Sonnentage,<br>guter Gespräche<br>und kleiner Abenteuer –<br>das wünschen wir dir.</em></span></p>${sp(9)}`,
+        `${sp(3)}<p><span style="font-family:Georgia, serif;font-size:15pt">Liebe / Lieber …,</span></p><p><span style="font-size:12pt">schreibe hier deine persönlichen Wünsche – oder lass Platz und schreibe sie von Hand.</span></p>${sp(5)}<p><span style="font-family:Georgia, serif;font-size:14pt">Alles Liebe</span></p><p><span style="font-family:Georgia, serif;font-size:14pt">Deine / Dein …</span></p>`);
+      return clean(`${outside}${PAGEBREAK}${inside}`);
+    },
+  },
+  {
+    id: 'packliste', title: 'Packliste', desc: 'Zum Abhaken: Dokumente, Kleidung, Hygiene, Technik und was vor der Abreise zu tun ist', cat: 'Privat & Freizeit', keywords: 'packliste urlaub reise koffer checkliste abhaken camping ferien', accent: 'teal',
+    html: ({ date }) => {
+      const group = (head, items) => `<h3><span style="color:${TEAL}">${head}</span></h3><p>${items.map(t => `☐ ${t}`).join('<br>')}</p>`;
+      return clean(`
+      <h1><span style="color:${TEAL}">Packliste</span></h1>
+      <p>Reiseziel: ______________________ · Dauer: ____ Tage · Abfahrt: ${fmtDate(plusDays(date, 30))}</p>
+      <div class="sect" data-cols="2" data-gap="18">
+        ${group('Dokumente &amp; Geld', ['Personalausweis / Reisepass', 'Führerschein', 'Versichertenkarte, Auslandskrankenschein', 'Tickets und Buchungsbestätigungen', 'Bargeld und Bankkarte', 'Kopien wichtiger Dokumente'])}
+        ${group('Kleidung', ['Unterwäsche und Socken', 'T-Shirts und Pullover', 'Hosen / Röcke', 'Regenjacke', 'Bequeme Schuhe', 'Badesachen', 'Schlafsachen', 'Sonnenhut oder Mütze'])}
+        ${group('Hygiene &amp; Pflege', ['Zahnbürste und Zahnpasta', 'Duschgel und Shampoo', 'Deo', 'Sonnencreme', 'Haarbürste', 'Rasierer', 'Brille / Kontaktlinsen'])}
+        ${group('Reiseapotheke', ['Persönliche Medikamente', 'Pflaster und Verbandszeug', 'Mittel gegen Schmerzen und Fieber', 'Mittel gegen Übelkeit', 'Insektenschutz', 'Fieberthermometer'])}
+        ${group('Technik', ['Handy und Ladegerät', 'Powerbank', 'Kopfhörer', 'Reiseadapter', 'Kamera', 'E-Book-Reader'])}
+        ${group('Vor der Abreise', ['Fenster schließen, Herd und Geräte aus', 'Pflanzen gießen lassen', 'Briefkasten leeren lassen', 'Müll rausbringen', 'Kühlschrank leeren', 'Schlüssel an Nachbarn'])}
+      </div>
+      <p>${muted('Tipp: Liste ausdrucken und beim Packen abhaken – nicht Benötigtes einfach streichen.', 9)}</p>`);
+    },
+  },
+  {
+    id: 'aushang-hausmitteilung', title: 'Aushang Hausmitteilung', desc: 'Gut lesbarer Aushang fürs Treppenhaus – mit Termin, Infos und Kontakt', cat: 'Privat & Freizeit', keywords: 'aushang hausmitteilung treppenhaus nachbarn hausverwaltung info wasser abstellen mitteilung schwarzes brett', accent: 'blue', page: A4_NARROW,
+    html: ({ today, date }) => {
+      const B = '#1D4F91';
+      const big = t => `<span style="font-size:14pt">${t}</span>`;
+      return clean(`
+      <div class="textbox" style="width:auto;border-color:${B};background-color:#EAF2FC"><p style="text-align:center"><span style="font-size:30pt;color:${B}"><strong>Hausmitteilung</strong></span></p><p style="text-align:center">${big('für alle Bewohnerinnen und Bewohner der Musterstraße 12')}</p></div>
+      ${empty}
+      <p style="text-align:center"><span style="font-size:24pt"><strong>Das Wasser wird abgestellt</strong></span></p>
+      ${empty}
+      <p>${big('Liebe Nachbarinnen und Nachbarn,')}</p>
+      <p>${big('wegen Wartungsarbeiten an der Hauptwasserleitung wird das Wasser im ganzen Haus abgestellt:')}</p>
+      ${table([24, 76], [
+        [pr(big(b('Wann'))), p(big(`${fmtDate(plusDays(date, 7), true)}, 8:00 bis ca. 12:00 Uhr`))],
+        [pr(big(b('Was'))), p(big('Kein Kalt- und kein Warmwasser in allen Wohnungen'))],
+        [pr(big(b('Wer'))), p(big('Sanitär Beispiel GmbH im Auftrag der Hausverwaltung'))],
+      ], { cls: 'borderless' })}
+      ${empty}
+      <p>${big('Bitte füllen Sie sich vorher etwas Wasser ab und lassen Sie die Wasserhähne während der Arbeiten geschlossen.')}</p>
+      <p>${big('Vielen Dank für Ihr Verständnis!')}</p>
+      ${empty}
+      <p>${big(`${b('Fragen?')} Hausverwaltung Beispiel · 0681 123456 · hausverwaltung@example.de`)}</p>
+      ${empty}
+      <p style="text-align:right">${muted(`Aushang vom ${today} · bitte bis ${fmtDate(plusDays(date, 8))} hängen lassen`, 9)}</p>`);
+    },
+  },
 ];
 
 /** Build a template: HTML (with today's date) plus page format, header/footer and style overrides. */
@@ -563,3 +996,52 @@ export function buildDocTemplate(id, { date = new Date() } = {}) {
 export function docTemplateText(id) {
   return buildDocTemplate(id).html.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 }
+
+// ---------------------------------------------------------------- Präsentations-Vorlagen (Inhalte)
+// Texte der fertigen Foliensätze (Galerie: SLIDE_DECKS in templates.js). Jede Folie: { layout, …Platzhaltertexte, notes }.
+// Die Felder entsprechen makeSlide() in slides.js: title, sub, items, left/right, num, quote, author, kpis, steps.
+export const SLIDE_DECK_CONTENT = {
+  projekt: [
+    { layout: 'title', title: 'Projekt „Beispiel“', sub: 'Projektvorstellung · Vorname Nachname · Abteilung', notes: 'Kurz vorstellen: Wer spricht, worum geht es, wie lange dauert die Präsentation.' },
+    { layout: 'agenda', items: ['Ausgangslage', 'Ziele', 'Zeitplan', 'Kennzahlen', 'Nächste Schritte'] },
+    { layout: 'title-text', title: 'Ausgangslage', items: ['Was ist heute das Problem?', 'Wen betrifft es und wie oft?', 'Was kostet es uns, nichts zu tun?'], notes: 'Ein konkretes Beispiel aus dem Alltag macht die Ausgangslage greifbar.' },
+    { layout: 'two-col', title: 'Ziele', left: ['Bis Jahresende: Bearbeitungszeit halbieren', 'Weniger Rückfragen von Kundinnen und Kunden'], right: ['Nicht Teil des Projekts: Umbau der Buchhaltung', 'Budget: 25.000 €'] },
+    { layout: 'timeline', title: 'Zeitplan', steps: [['Januar', 'Bestandsaufnahme'], ['März', 'Konzept fertig'], ['Juni', 'Pilot mit einem Team'], ['September', 'Einführung für alle'], ['Dezember', 'Auswertung']] },
+    { layout: 'kpi', title: 'Woran wir den Erfolg messen', kpis: [['−50 %', 'Bearbeitungszeit pro Vorgang'], ['90 %', 'Vorgänge ohne Rückfrage'], ['4,5 / 5', 'Zufriedenheit im Team']] },
+    { layout: 'title-text', title: 'Nächste Schritte', items: ['Projektteam benennen (bis Ende des Monats)', 'Auftakttermin mit allen Beteiligten', 'Freigabe des Budgets durch die Geschäftsführung'] },
+    { layout: 'title', title: 'Vielen Dank!', sub: 'Fragen und Anregungen gern an name@example.de' },
+  ],
+  referat: [
+    { layout: 'title', title: 'Thema des Referats', sub: 'Fach · Klasse/Kurs · Vorname Nachname · Datum', notes: 'Begrüßung, Thema nennen und kurz sagen, warum es spannend ist.' },
+    { layout: 'agenda', title: 'Gliederung', items: ['Einführung', 'Hintergrund', 'Hauptteil', 'Fazit', 'Quellen'] },
+    { layout: 'section', num: '01', title: 'Einführung', sub: 'Worum geht es – und warum ist das wichtig?' },
+    { layout: 'title-text', title: 'Hintergrund', items: ['Wann und wo hat alles angefangen?', 'Welche Personen oder Ereignisse sind wichtig?', 'Ein Begriff, der erklärt werden muss'], notes: 'Höchstens drei Punkte pro Folie – den Rest erzählst du frei.' },
+    { layout: 'section', num: '02', title: 'Hauptteil', sub: 'Die wichtigsten Erkenntnisse' },
+    { layout: 'compare', title: 'Zwei Sichtweisen', left: { head: 'Pro', items: ['Erstes Argument', 'Zweites Argument', 'Beispiel'] }, right: { head: 'Contra', items: ['Erstes Gegenargument', 'Zweites Gegenargument', 'Beispiel'] } },
+    { layout: 'quote', quote: 'Ein kurzes, passendes Zitat aus deiner Quelle bringt das Thema auf den Punkt.', author: '— Name der Autorin oder des Autors, Jahr' },
+    { layout: 'title-text', title: 'Fazit', items: ['Die wichtigste Erkenntnis in einem Satz', 'Was bedeutet das für uns heute?', 'Eine offene Frage für die Diskussion'] },
+    { layout: 'title-text', title: 'Quellen', items: ['Nachname, Vorname: Titel. Ort: Verlag Jahr.', 'Titel der Webseite, URL (abgerufen am …)'] },
+  ],
+  pitch: [
+    { layout: 'title', title: 'Name der Geschäftsidee', sub: 'Ein Satz, der erklärt, was ihr macht und für wen', notes: 'In 30 Sekunden: Problem, Lösung, warum jetzt.' },
+    { layout: 'title-text', title: 'Das Problem', items: ['Wer hat das Problem?', 'Wie lösen die Leute es heute – und warum ist das mühsam?', 'Wie groß ist der Schmerz (Zeit, Geld, Nerven)?'] },
+    { layout: 'title-text', title: 'Unsere Lösung', items: ['Was genau bieten wir an?', 'Der eine Vorteil, der uns unterscheidet', 'So sieht es für Kundinnen und Kunden aus'] },
+    { layout: 'kpi', title: 'Der Markt', kpis: [['2,4 Mio.', 'mögliche Kundinnen und Kunden in Deutschland'], ['18 €', 'Umsatz pro Kunde und Monat'], ['3 %', 'Marktanteil als Ziel nach drei Jahren']], notes: 'Zahlen mit Quelle belegen – grobe Schätzungen als solche kennzeichnen.' },
+    { layout: 'compare', title: 'Wir im Vergleich', left: { head: 'Bisherige Lösungen', items: ['Teuer und kompliziert', 'Lange Wartezeiten', 'Kein persönlicher Kontakt'] }, right: { head: 'Unser Angebot', items: ['Fester Preis, monatlich kündbar', 'In zehn Minuten startklar', 'Beratung inklusive'] } },
+    { layout: 'title-text', title: 'Geschäftsmodell', items: ['Wie verdienen wir Geld (Abo, Verkauf, Provision)?', 'Wie gewinnen wir die ersten 100 Kundinnen und Kunden?', 'Was kostet uns eine Neukundin oder ein Neukunde?'] },
+    { layout: 'timeline', title: 'Fahrplan', steps: [['Heute', 'Prototyp und erste Testkunden'], ['+ 6 Monate', 'Markteinführung in einer Region'], ['+ 12 Monate', 'Bundesweit verfügbar'], ['+ 24 Monate', 'Gewinnschwelle erreicht']] },
+    { layout: 'title-text', title: 'Team und Bedarf', items: ['Wer wir sind und was wir mitbringen', 'Was wir suchen: Kapital, Partner oder Kontakte', 'Wofür das Geld eingesetzt wird'] },
+    { layout: 'title', title: 'Lasst uns sprechen!', sub: 'Vorname Nachname · 0170 1234567 · name@example.de' },
+  ],
+  verein: [
+    { layout: 'title', title: 'Jahresbericht 2026', sub: 'Mitgliederversammlung · Sportverein Beispiel e. V.', notes: 'Begrüßung der Mitglieder und Gäste.' },
+    { layout: 'agenda', title: 'Tagesordnung', items: ['Rückblick auf das Vereinsjahr', 'Zahlen und Mitglieder', 'Kassenbericht', 'Ausblick und Termine'] },
+    { layout: 'section', num: '01', title: 'Rückblick', sub: 'Das war unser Vereinsjahr' },
+    { layout: 'timeline', title: 'Höhepunkte des Jahres', steps: [['März', 'Frühjahrsputz am Vereinsheim'], ['Juni', 'Sommerfest mit 120 Gästen'], ['September', 'Neue Jugendgruppe gestartet'], ['Dezember', 'Weihnachtsfeier']] },
+    { layout: 'kpi', title: 'Der Verein in Zahlen', kpis: [['312', 'Mitglieder (+ 24)'], ['48', 'Trainingsabende'], ['1.800', 'ehrenamtliche Stunden']] },
+    { layout: 'two-col', title: 'Kassenbericht', left: ['Einnahmen: 18.450 €', 'davon Beiträge: 14.200 €', 'Spenden und Feste: 4.250 €'], right: ['Ausgaben: 16.930 €', 'Kassenstand am Jahresende: 7.520 €', 'Kassenprüfung ohne Beanstandungen'], notes: 'Die Zahlen stammen aus dem Kassenbericht – Detailfragen beantwortet die Kassenwartin.' },
+    { layout: 'quote', quote: 'Ohne die vielen Helferinnen und Helfer wäre dieses Jahr nicht möglich gewesen – danke!', author: '— Der Vorstand' },
+    { layout: 'title-text', title: 'Ausblick und Termine', items: ['Neue Trainingszeiten ab Januar', 'Vereinsausflug im Mai', 'Jubiläumsfeier „50 Jahre“ im Herbst'] },
+    { layout: 'title', title: 'Vielen Dank!', sub: 'Fragen, Ideen und Anträge an vorstand@example.de' },
+  ],
+};

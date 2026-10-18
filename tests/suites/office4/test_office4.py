@@ -181,9 +181,10 @@ def desktop(p):
     def templates():
         goto(page, '#/vorlagen/dokument', 1500)
         n = page.locator('.dtp .stp-card').count()
-        check('doc template gallery: 25 cards', n == 25, n)
+        total = len(page.evaluate("import('./js/office/doc-templates.js').then(m => m.DOC_TEMPLATE_LIST.map(t => t.id))"))
+        check(f'doc template gallery: one card per template ({total})', n == total and total >= 40, n)
         filled = page.evaluate("[...document.querySelectorAll('.dtp-page')].filter(x => x.textContent.trim().length > 5).length")
-        check('live previews contain the real template content', filled >= 24, filled)
+        check('live previews contain the real template content', filled >= total - 1, filled)
         page.locator('.stp-bar [data-q]').fill('hausarbeit')
         page.wait_for_timeout(200)
         ids = [x.get_attribute('data-id') for x in page.locator('.stp-card:not([hidden])').all()]
@@ -192,7 +193,7 @@ def desktop(p):
         page.locator('.stp-cats [data-cat="Briefe"]').click()
         page.wait_for_timeout(200)
         ids = [x.get_attribute('data-id') for x in page.locator('.stp-card:not([hidden])').all()]
-        check('category Briefe', set(ids) == {'leer', 'brief', 'brief-privat', 'kuendigung'}, ids)
+        check('category Briefe', set(ids) == {'leer', 'brief', 'brief-privat', 'kuendigung', 'reklamation', 'einladung-mitgliederversammlung'}, ids)
         page.locator('.stp-cats [data-cat="Alle"]').click()
         shot(page, 'desktop_templates')
         with page.expect_download() as dl:
@@ -686,7 +687,7 @@ def phone(p):
     def ph():
         goto(page, '#/vorlagen/dokument', 1500)
         cards = page.locator('.dtp .stp-card')
-        check('phone: template gallery 25 cards, two columns', cards.count() == 25 and abs(cards.nth(0).bounding_box()['y'] - cards.nth(1).bounding_box()['y']) < 2)
+        check('phone: template gallery (all templates), two columns', cards.count() >= 40 and abs(cards.nth(0).bounding_box()['y'] - cards.nth(1).bounding_box()['y']) < 2)
         check('phone: no horizontal overflow on the start screen', page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1"))
         shot(page, 'phone_templates')
         page.locator('.stp-card[data-id="lebenslauf-modern"] .stp-open').tap()
