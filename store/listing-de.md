@@ -55,7 +55,7 @@ SEITEN & DATEIEN
 • PDFs komprimieren, Stapelverarbeitung
 • Passwortschutz (AES-256) festlegen und entfernen
 • PDFs vergleichen
-• 40 Extra-Werkzeuge: Briefpapier, Broschüre, Seiten pro Blatt, Graustufen, PDF reparieren, Hintergrund entfernen
+• 40 Extra-Werkzeuge: PDF/A, Briefpapier, Broschüre, Seiten pro Blatt, PDF reparieren, Hintergrund entfernen
 
 UMWANDELN
 • PDF in DOCX, XLSX und PPTX – und zurück in PDF

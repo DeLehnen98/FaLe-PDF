@@ -59,7 +59,7 @@ PAGES & FILES
 • Compress PDFs, batch processing
 • Add and remove password protection (AES-256)
 • Compare two PDF versions
-• 40 extra tools: letterhead, booklet, pages per sheet, greyscale, PDF repair, background removal
+• 40 extra tools: PDF/A, letterhead, booklet, pages per sheet, PDF repair, background removal
 
 CONVERT
 • PDF to DOCX, XLSX and PPTX – and back to PDF
