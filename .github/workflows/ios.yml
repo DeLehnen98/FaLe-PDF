@@ -59,6 +59,12 @@ jobs:
           node scripts/cap-patch-ios.mjs 2>&1 | tee -a "$LOG"   # sync may rewrite parts – patch again (idempotent)
           (cd ios/App && pod install 2>&1 | tail -n 30) | tee -a "$LOG"
 
+      - name: Project facts (Capacitor version, app delegate URL handling)
+        run: |
+          V=$(node -p "require('@capacitor/ios/package.json').version")
+          D=$(grep -hn "open url\|openURLContexts\|ApplicationDelegateProxy\|SceneDelegateProxy" ios/App/App/*.swift | tr '\n' ' ' | head -c 600)
+          echo "::notice title=iOS Projekt::@capacitor/ios $V · Dateien: $(ls ios/App/App | tr '\n' ' ') · $D"
+
       - name: Build for the simulator (no signing)
         run: |
           set +e
