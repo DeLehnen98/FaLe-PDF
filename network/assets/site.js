@@ -6,6 +6,30 @@
 (function () {
   'use strict';
 
+  /* ---- 0. Language: the site follows the device language – there is no switch. German devices get the German
+   * pages, every other language the English ones (the site exists in de + en). The other version of a page is
+   * the <link rel="alternate" hreflang> in <head> (above this script). Crawlers are never redirected (each version
+   * is indexed through hreflang), automated test browsers only when they ask for it. */
+  try {
+    var ua = navigator.userAgent || '';
+    var test = false;
+    try { test = localStorage.getItem('fale-lang-test-redirect') === '1'; } catch (e) { /* storage blocked */ }
+    if (!/bot|crawl|spider|slurp|duckduck|baidu|yandex|facebookexternalhit|embedly|lighthouse|preview/i.test(ua) && (!navigator.webdriver || test)) {
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
+      var want = 'en';
+      for (var li = 0; li < langs.length; li++) {
+        var base = String(langs[li]).toLowerCase().split(/[-_]/)[0];
+        if (base === 'de' || base === 'en') { want = base; break; }
+      }
+      var pageLang = (document.documentElement.lang || 'de').toLowerCase().slice(0, 2);
+      var alt = want !== pageLang && document.querySelector('link[rel="alternate"][hreflang="' + want + '"]');
+      if (alt) {
+        var target = new URL(alt.getAttribute('href'), location.href).pathname;
+        if (target !== location.pathname) location.replace(target + location.search + location.hash);
+      }
+    }
+  } catch (e) { /* stay on this page */ }
+
   /* ---- Single place for network-wide settings ------------------------------
    * kontoUrl:       sign-in page of the FaLe-Konto (lives inside FaLe PDF for now).
    *                 Written by tools/build_pages.py from PDF_ORIGIN – change it there, not here.

@@ -6,15 +6,39 @@
 (function () {
   'use strict';
 
+  /* ---- 0. Language: the site follows the device language – there is no switch. German devices get the German
+   * pages, every other language the English ones (the site exists in de + en). The other version of a page is
+   * the <link rel="alternate" hreflang> in <head> (above this script). Crawlers are never redirected (each version
+   * is indexed through hreflang), automated test browsers only when they ask for it. */
+  try {
+    var ua = navigator.userAgent || '';
+    var test = false;
+    try { test = localStorage.getItem('fale-lang-test-redirect') === '1'; } catch (e) { /* storage blocked */ }
+    if (!/bot|crawl|spider|slurp|duckduck|baidu|yandex|facebookexternalhit|embedly|lighthouse|preview/i.test(ua) && (!navigator.webdriver || test)) {
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
+      var want = 'en';
+      for (var li = 0; li < langs.length; li++) {
+        var base = String(langs[li]).toLowerCase().split(/[-_]/)[0];
+        if (base === 'de' || base === 'en') { want = base; break; }
+      }
+      var pageLang = (document.documentElement.lang || 'de').toLowerCase().slice(0, 2);
+      var alt = want !== pageLang && document.querySelector('link[rel="alternate"][hreflang="' + want + '"]');
+      if (alt) {
+        var target = new URL(alt.getAttribute('href'), location.href).pathname;
+        if (target !== location.pathname) location.replace(target + location.search + location.hash);
+      }
+    }
+  } catch (e) { /* stay on this page */ }
+
   /* ---- Single place for network-wide settings ------------------------------
    * kontoUrl:       sign-in page of the FaLe-Konto (lives inside FaLe PDF for now).
-   *                 After the domain move: https://pdf.fale.network/#/konto
+   *                 Written by tools/build_pages.py from PDF_ORIGIN – change it there, not here.
    * kontoAvailable: set to true once the FaLe-Konto is live – this reveals every
    *                 element marked [data-konto-signin] and hides [data-konto-soon].
    */
   var FALE_CONFIG = {
-    kontoUrl: 'https://fale-pdf.vercel.app/#/konto',
-    kontoAvailable: false
+    kontoUrl: 'https://pdf.fale.network/app/#/konto',
+    kontoAvailable: true
   };
   window.FALE_CONFIG = FALE_CONFIG;
 
@@ -57,6 +81,23 @@
       if (mq.addEventListener) mq.addEventListener('change', syncButtons);
     }
 
+    // The "Mehr" menu in the header is a plain <details> (works without JS); here it only learns to close
+    // on a tap outside, on Escape and after picking a link.
+    var menus = document.querySelectorAll('[data-nav-more]');
+    if (menus.length) {
+      document.addEventListener('click', function (ev) {
+        var inside = ev.target.closest ? ev.target.closest('[data-nav-more]') : null;
+        for (var n = 0; n < menus.length; n++) if (menus[n] !== inside) menus[n].open = false;
+        if (inside && ev.target.closest('a')) inside.open = false;
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Escape') return;
+        for (var n = 0; n < menus.length; n++) {
+          if (menus[n].open) { menus[n].open = false; menus[n].querySelector('summary').focus(); }
+        }
+      });
+    }
+
     var links = document.querySelectorAll('[data-konto-link]');
     for (var j = 0; j < links.length; j++) links[j].setAttribute('href', FALE_CONFIG.kontoUrl);
     if (FALE_CONFIG.kontoAvailable) {
@@ -67,6 +108,20 @@
     }
   }
 
+  // "share this site" buttons (support page): system share sheet, else copy the link
+  function shareButtons() {
+    var btns = document.querySelectorAll('[data-share-url]');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        var b = this, u = b.getAttribute('data-share-url'), text = b.getAttribute('data-share-text') || '';
+        function copied() { var old = b.textContent; b.textContent = b.getAttribute('data-share-done') || old; setTimeout(function () { b.textContent = old; }, 2200); }
+        if (navigator.share) { navigator.share({ title: document.title, text: text, url: u }).catch(function () {}); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(copied, function () { b.textContent = u; });
+        else b.textContent = u;   // no clipboard: show the address to copy by hand
+      });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', shareButtons); else shareButtons();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready);
   else ready();
 })();

@@ -105,7 +105,7 @@ T = {
         'foot_claim': 'Freie Apps von FaLe.dev – ohne Konto, ohne Tracking, mit deinen Daten auf deinem Gerät.',
         'foot_apps': 'Angebot', 'foot_more': 'Mehr', 'foot_legal': 'Rechtliches',
         'foot_links_apps': [('Werkzeuge', '/werkzeuge/'), ('Vorlagen', '/vorlagen/'), ('FaLe PDF', '/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/apps/clean/')],
-        'foot_links_more': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('Unterstützen', '/unterstuetzen/'), ('English', '/en/')],
+        'foot_links_more': [('Häufige Fragen', '/#faq'), ('FaLe-Konto', '/konto/'), ('Unterstützen', '/unterstuetzen/')],
         'foot_links_legal': [('Impressum', '/impressum/'), ('Datenschutz', '/datenschutz/'), ('Sicherheit melden', '/.well-known/security.txt')],
         'foot_note': 'Diese Website setzt keine Cookies und lädt nichts von fremden Servern.',
         'locale': 'de_DE', 'locale_alt': 'en_GB',
@@ -125,7 +125,7 @@ T = {
         'foot_claim': 'Free apps by FaLe.dev – no account, no tracking, your data stays on your device.',
         'foot_apps': 'What’s here', 'foot_more': 'More', 'foot_legal': 'Legal',
         'foot_links_apps': [('Tools', '/en/tools/'), ('Templates', '/en/templates/'), ('FaLe PDF', '/en/apps/pdf/'), ('FaLe One', 'https://faleone.com/'), ('FaLe Clean', '/en/apps/clean/')],
-        'foot_links_more': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Support us', '/en/support/'), ('Deutsch', '/')],
+        'foot_links_more': [('FAQ', '/en/#faq'), ('FaLe Account', '/en/account/'), ('Support us', '/en/support/')],
         'foot_links_legal': [('Legal notice', '/en/imprint/'), ('Privacy', '/en/privacy/'), ('Report a security issue', '/.well-known/security.txt')],
         'foot_note': 'This website sets no cookies and loads nothing from third-party servers.',
         'locale': 'en_GB', 'locale_alt': 'de_DE',
@@ -188,7 +188,7 @@ def head(lang, key, title, desc, extra_ld=None, noindex=False, paths=None, og_im
 
 
 def lang_switch(lang, other_url, fallback=False):
-    """Segmented "DE | EN" control: the current language is highlighted (not a link), the other one is a plain
+    """(Not used any more: the site follows the device language, see assets/site.js.) Segmented "DE | EN" control: the current language is highlighted (not a link), the other one is a plain
     link to the same page in that language – or, when the page has no translation (fallback=True), to the
     other language's overview, which its accessible name and tooltip say. Works without JavaScript."""
     t = T[lang]
@@ -228,7 +228,6 @@ def header(lang, key, current=None, other_url=None, fallback=False):
     <a class="brand" href="{home}" aria-label="{t['home_label']}"><img src="/assets/logo/fale-network-mark.svg" width="34" height="34" alt=""><span>Fale<b>Network</b></span></a>
     <nav class="nav" aria-label="{t['nav_label']}">{nav}<details class="nav-more{more_cur}" data-nav-more><summary>{t['more']}{chev}</summary><ul class="nav-more-menu" aria-label="{t['more_label']}">{more}</ul></details></nav>
     <div class="head-tools">
-      {lang_switch(lang, other_url, fallback)}
       <button class="icon-btn" type="button" data-theme-toggle hidden aria-pressed="false" aria-label="{t['theme_dark']}" title="{t['theme_dark']}" data-label-dark="{t['theme_dark']}" data-label-light="{t['theme_light']}">{ic('moon', 'i-moon')}{ic('sun', 'i-sun')}</button>
     </div>
   </div>

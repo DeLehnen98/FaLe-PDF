@@ -164,6 +164,23 @@ with sync_playwright() as pw:
     # no-JS rendering: toggle stays hidden, content visible
     ctx2 = b.new_context(java_script_enabled=False); p2 = ctx2.new_page(); p2.goto(ORIGIN + '/en/')
     if p2.locator('[data-theme-toggle]').is_visible(): fail('toggle visible without JS')
+    # no language switch: the site follows the device language (assets/site.js)
+    if p2.locator('.lang-switch, [hreflang][lang] .ls-opt').count(): fail('language switch still in the header')
+    FLAG = "try { localStorage.setItem('fale-lang-test-redirect', '1'); } catch (e) {}"
+    for loc, start, want in [('en-US', '/', '/en/'), ('fr-FR', '/', '/en/'), ('de-DE', '/en/', '/'), ('de-AT', '/en/apps/pdf/', '/apps/pdf/'),
+                             ('en-GB', '/impressum/', '/en/imprint/'), ('de-DE', '/', '/')]:
+        c = b.new_context(locale=loc); c.add_init_script(FLAG); pg = c.new_page()
+        pg.goto(ORIGIN + start); pg.wait_for_timeout(500)
+        got = pg.url.replace(ORIGIN, '')
+        if got != want: fail(f'language redirect {loc} {start}: {got} (want {want})')
+        c.close()
+    c = b.new_context(locale='en-US'); pg = c.new_page(); pg.goto(ORIGIN + '/'); pg.wait_for_timeout(400)
+    if pg.url.replace(ORIGIN, '') != '/': fail('automated browsers without the test flag must not be redirected')
+    c.close()
+    c = b.new_context(locale='en-US', user_agent='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'); c.add_init_script(FLAG)
+    pg = c.new_page(); pg.goto(ORIGIN + '/'); pg.wait_for_timeout(400)
+    if pg.url.replace(ORIGIN, '') != '/': fail('crawler was redirected')
+    c.close()
     b.close()
 
 print('initial weights (bytes, phone):', json.dumps(weights))
