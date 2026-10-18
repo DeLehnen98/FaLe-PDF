@@ -1,5 +1,7 @@
 # Release-Checkliste – FaLe PDF für Android
 
+> iPhone/iPad: eigene Schritte in [IOS-SETUP.md](IOS-SETUP.md) (die iOS-App wird bereits automatisch gebaut und im Simulator getestet).
+
 ## A. Einmalig: Grundlagen
 
 - [ ] **GitHub-Repo** anlegen (privat empfohlen), Projekt pushen. `android/`, `dist/`, `node_modules/` und
