@@ -75,10 +75,21 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         handle(url, inPlace: options[.openInPlace] as? Bool)
     }
 
+    /// Simulator test builds only (Info.plist FaleE2E = true, set by cap-patch-ios.mjs with FALE_E2E=1):
+    /// fale-e2e://open?name=<file in Documents> opens that file like the Files app would (in place).
+    private func e2eFileURL(_ url: URL) -> URL? {
+        guard url.scheme == "fale-e2e", Bundle.main.object(forInfoDictionaryKey: "FaleE2E") as? Bool == true,
+              let name = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.first(where: { $0.name == "name" })?.value,
+              !name.isEmpty, !name.contains("/"), !name.contains("..") else { return nil }
+        return FalePaths.documents().appendingPathComponent(name)
+    }
+
     /// inPlace nil (cold start, options unknown): everything except iOS' Inbox copies counts as the original.
-    private func handle(_ url: URL, inPlace given: Bool?) {
+    private func handle(_ incoming: URL, inPlace given: Bool?) {
+        let e2e = e2eFileURL(incoming)
+        let url = e2e ?? incoming
         let inbox = FalePaths.documents().appendingPathComponent("Inbox")
-        let inPlace = given ?? !FalePaths.isInside(url, inbox)
+        let inPlace = e2e != nil ? true : (given ?? !FalePaths.isInside(url, inbox))
         guard url.isFileURL else { return } // custom schemes / links are not files
         io.async {
             self.importURL(url, inPlace: inPlace)

@@ -4,6 +4,7 @@ Also: the Swift sources of ios-native/ use the same plugin/method names as js/pl
 import os, re, sys, subprocess, tempfile, plistlib, shutil, json
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ios'))
 import fixture
+sw_inc = open('/home/claude/FalePDF/ios-native/Sources/FaleIncomingPlugin.swift').read()
 
 APP = '/home/claude/FalePDF'
 ok = bad = 0
@@ -40,6 +41,14 @@ check('idempotent (second run changes nothing)', r2.returncode == 0 and all(open
 e2 = dict(env); e2['ADMOB_IOS_APP_ID'] = 'ca-app-pub-1111111111111111~2222222222'
 run(e2)
 with open(info_p, 'rb') as f: check('ADMOB_IOS_APP_ID override', plistlib.load(f)['GADApplicationIdentifier'] == 'ca-app-pub-1111111111111111~2222222222')
+e3 = dict(env); e3['FALE_E2E'] = '1'
+run(e3)
+with open(info_p, 'rb') as f: i3 = plistlib.load(f)
+check('test build (FALE_E2E=1): fale-e2e URL scheme + FaleE2E flag', i3['CFBundleURLTypes'][0]['CFBundleURLSchemes'] == ['fale-e2e'] and i3['FaleE2E'] is True)
+run()
+with open(info_p, 'rb') as f: i4 = plistlib.load(f)
+check('normal build: no test scheme, no FaleE2E', 'CFBundleURLTypes' not in i4 and 'FaleE2E' not in i4)
+check('Swift: test scheme only with the FaleE2E flag, no paths', 'forInfoDictionaryKey: "FaleE2E"' in sw_inc and '!name.contains("/")' in sw_inc)
 r3 = subprocess.run(['node', os.path.join(APP, 'scripts/cap-patch-ios.mjs'), os.path.join(base, 'nope')], capture_output=True, text=True)
 check('missing project → clear error', r3.returncode != 0 and 'cap add ios' in r3.stderr)
 

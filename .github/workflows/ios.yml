@@ -49,6 +49,8 @@ jobs:
         run: node scripts/vercel-build.mjs --native 2>&1 | tee -a "$LOG"
 
       - name: Create iOS project + patch + pods
+        env:
+          FALE_E2E: '1' # test build: adds the fale-e2e:// scheme the simulator test uses (never in release builds)
         run: |
           npx cap add ios --packagemanager CocoaPods 2>&1 | tee -a "$LOG" || true
           test -d ios/App || { echo "::error title=iOS::cap add ios hat kein Projekt erzeugt"; exit 1; }

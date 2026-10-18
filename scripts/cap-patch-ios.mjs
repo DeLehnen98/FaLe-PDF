@@ -126,6 +126,11 @@ export function patchInfo(plist) {
   d.set('GADApplicationIdentifier', ADMOB_APP_ID);
   d.delete('NSAppTransportSecurity'); // default ATS: HTTPS only
   d.set('UIRequiredDeviceCapabilities', ['arm64']);
+  // simulator test builds only (FALE_E2E=1 in .github/workflows/ios.yml): URL scheme to open a test file in place
+  if (process.env.FALE_E2E === '1') {
+    d.set('CFBundleURLTypes', [new Map([['CFBundleURLName', 'dev.fale.pdf.e2e'], ['CFBundleURLSchemes', ['fale-e2e']]])]);
+    d.set('FaleE2E', true);
+  } else { d.delete('CFBundleURLTypes'); d.delete('FaleE2E'); }
   return d;
 }
 

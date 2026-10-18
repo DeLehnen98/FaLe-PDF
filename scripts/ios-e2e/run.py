@@ -26,7 +26,12 @@ def note(ok, title, msg):
 
 
 def sh(*a, check=True, timeout=120):
-    r = subprocess.run(list(a), capture_output=True, text=True, timeout=timeout)
+    try:
+        r = subprocess.run(list(a), capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        if check:
+            raise
+        return subprocess.CompletedProcess(list(a), 124, '', f'timeout after {timeout}s')
     if check and r.returncode:
         raise RuntimeError(f"{' '.join(a)} → {r.returncode}: {r.stderr.strip()[:400]}")
     return r
@@ -67,7 +72,8 @@ try:
            'trailer << /Root 1 0 R >>\n%%EOF\n')
     open(doc, 'w').write(pdf)
     before = os.path.getsize(doc)
-    r = sh('xcrun', 'simctl', 'openurl', UDID, 'file://' + doc, check=False)
+    # like opening it from the Files app (test builds only: fale-e2e:// scheme, see FaleIncomingPlugin.e2eFileURL)
+    r = sh('xcrun', 'simctl', 'openurl', UDID, 'fale-e2e://open?name=fale-e2e-writeback.pdf', check=False, timeout=45)
     if r.returncode:
         print(f'::warning title=iOS Datei öffnen::simctl openurl nicht möglich ({r.stderr.strip()[:300]}) – Schritt übersprungen')
     else:
