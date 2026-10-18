@@ -76,7 +76,7 @@ with Suite('pdf-to-pdfa') as s:
                     s.expect('rechnung.xml' in pdf.attachments, 'PDF/A-3b keeps the attachment')
                 keep(out, 'lo_js_attach', 3)
                 done += 1
-            # 3) standard fonts → images with invisible text, still searchable
+            # 3) Helvetica not embedded → replaced by embedded Liberation Sans, text stays vector text
             page = s.open(v, PATHS[v.lang])
             s.pick(page, 'pdfa/std14.pdf')
             s.wait_ready(page, 1)
@@ -84,12 +84,27 @@ with Suite('pdf-to-pdfa') as s:
             if out:
                 prob = check_pdfa(out, 2)
                 s.expect(not prob, f'std14 PDF/A-2b problems: {prob}')
-                s.expect(images_on(out) == 2, 'both pages became images')
+                s.expect(images_on(out) == 0, f'Helvetica pages stay vector ({images_on(out)} images)')
                 t = text_of(out)
-                s.expect('Archivtest Seite 2' in t and 'Saarbrücken' in t, f'invisible text searchable: {t[:200]!r}')
+                s.expect('Archivtest Seite 2' in t and 'Saarbrücken' in t, f'text extractable: {t[:200]!r}')
+                fonts = subprocess.run(['pdffonts', str(out)], capture_output=True, text=True).stdout
+                s.expect('LiberationSans' in fonts and ' no ' not in fonts.split('\n', 2)[-1].replace('yes no', ''), f'Liberation embedded: {fonts}')
                 note = page.locator('.wt-output').first.inner_text()
-                s.expect('Schriften' in note, f'note explains the fonts: {note[:200]}')
+                s.expect('Liberation' in note, f'note explains the font replacement: {note[:200]}')
                 keep(out, 'std14', 2)
+                done += 1
+            # 3b) Times not embedded → page as image with invisible text, still searchable
+            page = s.open(v, PATHS[v.lang])
+            s.pick(page, 'pdfa/times.pdf')
+            s.wait_ready(page, 1)
+            out = s.run_and_download(page)
+            if out:
+                prob = check_pdfa(out, 2)
+                s.expect(not prob, f'times PDF/A-2b problems: {prob}')
+                s.expect(images_on(out) == 1, 'Times page became an image')
+                s.expect('Saarbrücken' in text_of(out), 'invisible text searchable')
+                s.expect('Schriften' in page.locator('.wt-output').first.inner_text(), 'note explains the fonts')
+                keep(out, 'times', 2)
                 done += 1
             # 4) transparency + CMYK: 2b rasterises only the CMYK page, 1b both
             for part, want in ((2, 1), (1, 2)):
@@ -104,6 +119,18 @@ with Suite('pdf-to-pdfa') as s:
                     s.expect(images_on(out) == want, f'PDF/A-{part}b: {want} page(s) as image, got {images_on(out)}')
                     s.expect('Druckfarben-Seite' in text_of(out), 'text of the CMYK page searchable')
                     keep(out, 'transp_cmyk', part)
+                    done += 1
+            # 4b) the app's everyday test files (reports, forms, structure, attachment, images) in one go
+            real = ['bericht.pdf', 'formular.pdf', 'struktur.pdf', 'anhang.pdf', 'unkomprimiert.pdf', 'bild.pdf']
+            page = s.open(v, PATHS[v.lang])
+            s.pick(page, *[f'../../../base/testdata/{n}' for n in real])
+            s.wait_ready(page, len(real), timeout=60000)
+            if s.run(page, timeout=180000):
+                for i in range(page.locator('.wt-output').count()):
+                    out = s.download(page, i)
+                    prob = check_pdfa(out, 2)
+                    s.expect(not prob, f'{out.name}: {prob}')
+                    keep(out, f'real{i}', 2)
                     done += 1
             # 5) several files (form without appearances, encrypted, annotations), everything as image too
             page = s.open(v, PATHS[v.lang])

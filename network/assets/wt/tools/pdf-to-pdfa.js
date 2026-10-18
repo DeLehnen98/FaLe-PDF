@@ -50,7 +50,7 @@ export default {
   async run(inputs, opts, ctx) {
     const PDFLib = await loadPdfLib();
     const core = await import('../lib/pdfa-core.js');
-    const { getFont } = await import('../lib/unifont.js');
+    const { getFont, loadUniTtf, subsetTtf } = await import('../lib/unifont.js');
     const de = ctx.lang === 'de';
     const part = Number(opts.level) || 2;
     const dpi = Number(opts.dpi) || 200;
@@ -64,6 +64,7 @@ export default {
       const res = await core.makePdfA(doc, PDFLib, {
         part, srcPdf, method: opts.method === 'raster' ? 'raster' : 'auto', dpi, tick: ctx.tick,
         getFont: () => getFont(doc, { PDFLib }),
+        fonts: { loadTtf: loadUniTtf, subset: subsetTtf },
         onProgress: (i, total, rasterising) => ctx.progress(rasterising ? share(0.3 + 0.6 * i / total) : share(0.3 * i / total), rasterising
           ? { de: `Seite wird als Bild übernommen … ${i + 1} von ${total}`, en: `Converting page to an image … ${i + 1} of ${total}` }
           : { de: `Seiten werden geprüft … ${i + 1} von ${total}`, en: `Checking pages … ${i + 1} of ${total}` }),
@@ -82,6 +83,7 @@ export default {
           ? `${r.length === 1 ? `Seite ${list} wurde` : `${r.length === n ? 'Alle Seiten wurden' : `Die Seiten ${list} wurden`}`} als Bild mit unsichtbarem Text übernommen (Grund: ${why.join(', ')}). Text bleibt durchsuchbar.`
           : `${r.length === 1 ? `Page ${list} was` : r.length === n ? 'All pages were' : `Pages ${list} were`} turned into an image with invisible text (reason: ${why.join(', ')}). Text stays searchable.`);
       }
+      if (res.fontsEmbedded && opts.method !== 'raster') notes.push(de ? 'Fehlende Standardschriften (Helvetica/Arial) wurden durch die maßgleiche Liberation Sans ersetzt und eingebettet.' : 'Missing standard fonts (Helvetica/Arial) were replaced by the metric-compatible Liberation Sans and embedded.');
       const rm = res.removed;
       const gone = [];
       if (rm.javascript) gone.push(de ? 'JavaScript' : 'JavaScript');

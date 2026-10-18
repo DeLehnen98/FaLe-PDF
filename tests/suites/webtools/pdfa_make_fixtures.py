@@ -16,6 +16,11 @@ for i in range(2):
     c.showPage()
 c.save()
 
+# 1b. Times (not embedded; no metric-compatible font ships with the tool → pages become images)
+c = canvas.Canvas(str(D / 'times.pdf'), initialFontName='Times-Roman')
+c.setFont('Times-Roman', 18); c.drawString(72, 760, 'Seite in Times – Grüße aus Saarbrücken')
+c.showPage(); c.save()
+
 # 2. transparency (allowed in PDF/A-2, not in PDF/A-1) + CMYK colour on page 2 – embedded font, so only those count
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont

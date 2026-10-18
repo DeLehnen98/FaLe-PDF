@@ -238,6 +238,79 @@ export function pageProblems(doc, PDFLib, page, { part }) {
   return problems;
 }
 
+// ---------------------------------------------------------------- standard fonts → embedded Liberation Sans
+// Many generated PDFs (shop invoices, reports, pdf-lib/reportlab output) use Helvetica or Arial without embedding
+// them. Liberation Sans has the same metrics, so such fonts are replaced by an embedded subset (simple TrueType
+// font, WinAnsiEncoding, widths from the embedded program) and the text stays real vector text.
+const SANS = /^(?:[A-Z]{6}\+)?(Helvetica|Arial|ArialMT)(?:[-,](Bold|Oblique|Italic|BoldOblique|BoldItalic|BoldMT|ItalicMT|BoldItalicMT))?$/;
+
+/** @returns {Promise<number>} number of replaced font dictionaries */
+export async function embedStandardSans(doc, PDFLib, { loadTtf, subset }) {
+  const { PDFDict, PDFName, PDFArray, PDFNumber, PDFRef } = PDFLib;
+  const ctx = doc.context;
+  const N = s => PDFName.of(s);
+  const look = v => (v instanceof PDFRef ? ctx.lookup(v) : v);
+  const targets = [];
+  for (const [, obj] of ctx.enumerateIndirectObjects()) {
+    if (!(obj instanceof PDFDict) || nameOf(obj.get(N('Type'))) !== 'Font') continue;
+    const sub = nameOf(obj.get(N('Subtype')));
+    if (sub !== 'Type1' && sub !== 'TrueType') continue;
+    const m = nameOf(obj.get(N('BaseFont'))).match(SANS);
+    if (!m) continue;
+    const fd = obj.lookup(N('FontDescriptor'));
+    if (fd instanceof PDFDict && ['FontFile', 'FontFile2', 'FontFile3'].some(k => fd.has(N(k)))) continue;
+    const enc = look(obj.get(N('Encoding')));
+    if (nameOf(enc) !== 'WinAnsiEncoding') continue; // other encodings: the page becomes an image instead
+    const st = (m[2] || '').toLowerCase();
+    targets.push({ font: obj, bold: st.includes('bold'), italic: st.includes('oblique') || st.includes('italic') });
+  }
+  if (!targets.length) return 0;
+  const win = new TextDecoder('windows-1252');
+  const files = new Map();
+  for (const t of targets) {
+    const key = (t.bold ? 'b' : '') + (t.italic ? 'i' : '');
+    if (!files.has(key)) {
+      const ttf = await loadTtf(t.bold, t.italic);
+      const k = 1000 / ttf.unitsPerEm;
+      const widths = [];
+      const gids = new Set();
+      for (let code = 32; code <= 255; code++) {
+        const ch = win.decode(new Uint8Array([code]));
+        const gid = ttf.cmap.get(ch.codePointAt(0)) || 0;
+        if (gid) gids.add(gid);
+        widths.push(gid ? Math.round(advanceOf(ttf, gid) * k) : 0);
+      }
+      const prog = subset(ttf, gids);
+      const tag = 'FALE' + (t.bold ? 'B' : 'R') + (t.italic ? 'I' : 'N');
+      const name = `${tag}+${(ttf.name || 'LiberationSans').replace(/\s+/g, '')}`;
+      const file = ctx.register(ctx.flateStream(prog, { Length1: prog.length }));
+      const desc = ctx.register(ctx.obj({
+        Type: 'FontDescriptor', FontName: N(name), Flags: 32 | (t.italic ? 64 : 0),
+        FontBBox: ttf.bbox.map(v => Math.round(v * k)), ItalicAngle: ttf.italicAngle,
+        Ascent: Math.round(ttf.ascent * k), Descent: Math.round(ttf.descent * k), CapHeight: Math.round(ttf.capHeight * k),
+        StemV: t.bold ? 120 : 80, FontFile2: file,
+      }));
+      files.set(key, { name, desc, widths });
+    }
+    const f = files.get(key);
+    t.font.set(N('Subtype'), N('TrueType'));
+    t.font.set(N('BaseFont'), N(f.name));
+    t.font.set(N('FirstChar'), PDFNumber.of(32));
+    t.font.set(N('LastChar'), PDFNumber.of(255));
+    t.font.set(N('Widths'), ctx.obj(f.widths));
+    t.font.set(N('FontDescriptor'), f.desc);
+    t.font.delete(N('ToUnicode')); // WinAnsi names already give the Unicode text
+    void PDFArray;
+  }
+  return targets.length;
+}
+
+function advanceOf(ttf, gid) {
+  const { dv, tables, numHMetrics } = ttf;
+  const o = tables.hmtx.offset;
+  return dv.getUint16(o + Math.min(gid, numHMetrics - 1) * 4);
+}
+
 /** Replace page `idx` by an sRGB JPEG of the rendered source page plus its text as an invisible layer. */
 export async function rasterPagePdfA(doc, PDFLib, srcPdf, idx, { dpi = 200, quality = 0.88, font = null, tick = yieldNow } = {}) {
   const { PDFName, PDFArray, PDFDict, PDFHexString } = PDFLib;
@@ -366,7 +439,7 @@ ${' '.repeat(2000)}
  *                    dpi, getFont() → Liberation Sans PDFFont of `doc`, tick, onProgress(i, n, rasterising)
  * @returns {Promise<{rasterised: number[], reasons: Object<string, number[]>, removed: Object<string, number>}>}
  */
-export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto', dpi = 200, getFont = null, tick = yieldNow, onProgress = () => {} } = {}) {
+export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto', dpi = 200, getFont = null, fonts = null, tick = yieldNow, onProgress = () => {} } = {}) {
   const { PDFDict, PDFArray, PDFName, PDFString, PDFHexString, PDFRef, PDFStream, PDFNumber, PDFBool } = PDFLib;
   const ctx = doc.context;
   const N = s => PDFName.of(s);
@@ -380,9 +453,17 @@ export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto',
     if (acro.has(N('XFA'))) { acro.delete(N('XFA')); removed.xfa++; }
     const need = look(acro.get(N('NeedAppearances')));
     if (need && need.toString() === 'true') {
-      try { doc.getForm().updateFieldAppearances(); } catch (e) { console.warn('form appearances', e); }
+      // appearances in the embedded Liberation Sans (pdf-lib would use Helvetica, which is not embedded)
+      const font = getFont ? await getFont().catch(() => null) : null;
+      try { doc.getForm().updateFieldAppearances(font || undefined); } catch (e) { console.warn('form appearances', e); }
     }
     acro.delete(N('NeedAppearances'));
+  }
+
+  // ---- Helvetica / Arial without embedding → embedded Liberation Sans (same metrics, text stays text)
+  let fontsEmbedded = 0;
+  if (method !== 'raster' && fonts) {
+    try { fontsEmbedded = await embedStandardSans(doc, PDFLib, fonts); } catch (e) { console.warn('pdfa fonts', e); }
   }
 
   // ---- pages: analyse, rasterise what cannot be repaired
@@ -580,7 +661,7 @@ export async function makePdfA(doc, PDFLib, { part = 2, srcPdf, method = 'auto',
   void PDFBool;
   const { removeUnreachable } = await import('./pdfopt.js');
   removeUnreachable(doc, PDFLib);
-  return { rasterised: raster, reasons, removed };
+  return { rasterised: raster, reasons, removed, fontsEmbedded };
 }
 
 /** PDF/A-1 additionally wants a CIDSet for every embedded CID font subset (lists the glyphs that are in it). */
