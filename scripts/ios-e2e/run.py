@@ -101,7 +101,7 @@ if failed:
     print('::warning title=iOS Konsole::' + ' | '.join(tail).replace('\n', ' ')[:1800])
     # JS console after the import (everything except bridge chatter), for diagnosis without log downloads
     i = next((k for k, l in enumerate(lines) if 'FaleIncoming: fale-e2e-writeback.pdf' in l), max(0, len(lines) - 40))
-    js = [l for l in lines[i:] if '⚡️  [' in l or 'Error' in l or 'Exception' in l][:25]
+    js = [l for l in lines if 'pdf.js worker' in l or 'Import fehlgeschlagen' in l] + [l for l in lines[i:] if '⚡️  [' in l or 'Error' in l or 'Exception' in l][:25]
     print('::warning title=iOS JS nach Import::' + ' | '.join(js).replace('\n', ' ')[:3500])
 proc.terminate()
 open(f'{OUT}/console.txt', 'w').write('\n'.join(lines))

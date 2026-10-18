@@ -27,9 +27,27 @@ export const DOC_OPTIONS = {
 };
 
 let sharedWorker = null;
+let probed = false;
 function worker() {
+  if (!probed) { probed = true; probeWorker(); }
   if (!sharedWorker || sharedWorker.destroyed) sharedWorker = new pdfjsLib.PDFWorker({ name: 'fale-pdf' });
   return sharedWorker;
+}
+
+// iPhone app (WKWebView, capacitor:// scheme): report once whether the pdf.js module worker starts – if not,
+// pdf.js silently falls back to a slow "fake worker" on the main thread (diagnosis in the simulator test).
+function probeWorker() {
+  let ios = false;
+  try { ios = !!(window.Capacitor && window.Capacitor.getPlatform && window.Capacitor.getPlatform() === 'ios'); } catch { /* no window */ }
+  if (!ios) return;
+  try {
+    const w = new Worker(pdfjsLib.GlobalWorkerOptions.workerSrc, { type: 'module', name: 'fale-probe' });
+    const done = msg => { console.info('pdf.js worker: ' + msg); try { w.terminate(); } catch { /* gone */ } };
+    const t = setTimeout(() => done('keine Antwort nach 8 s'), 8000);
+    w.onmessage = () => { clearTimeout(t); done('ok'); };
+    w.onerror = e => { clearTimeout(t); done(`Fehler ${(e && e.message) || ''} ${(e && e.filename) || ''}:${(e && e.lineno) || ''}`); };
+    w.onmessageerror = () => { clearTimeout(t); done('messageerror'); };
+  } catch (e) { console.info('pdf.js worker: new Worker wirft ' + String((e && (e.name + ': ' + e.message)) || e)); }
 }
 
 // Passwords entered in this session (never persisted).

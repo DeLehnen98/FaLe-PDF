@@ -164,7 +164,8 @@ export async function importFiles(files, opts = {}) {
       if (d && f && f.faleOrigin) await (await import('./origin.js')).rememberFromFile(d.id, f).catch(e => console.warn('origin', e));
     } catch (err) {
       toast(err.userMessage || `„${f.name}“ konnte nicht geöffnet werden.`, 'error', { timeout: 5000 });
-      if (!err.userMessage) console.warn(err);
+      // as text: native consoles (Android logcat, iOS) print Error objects as "{}"
+      console.warn('Import fehlgeschlagen:', String((err && (err.userMessage || err.message || err.name)) || err), err && err.stack ? String(err.stack).slice(0, 600) : '');
     }
   }
   prog && prog.done();
