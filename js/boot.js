@@ -27,6 +27,10 @@
     if (l === 'en') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 150); }
   } catch (e) {}
 
+  // "Install as an app" (web build): the browser's install event can fire before the app module has loaded –
+  // keep it for js/install.js. The native apps never get this event.
+  try { window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.__faleInstallEvt = e; }); } catch (e) {}
+
   // ---------------------------------------------------------------- Trusted Types
   var TT = window.trustedTypes;
   if (!TT || typeof TT.createPolicy !== 'function') return;

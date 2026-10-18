@@ -1,19 +1,21 @@
 """pdf.fale.network: start page at / (site/), browser app at /app/ (web build, dist/).
 - start page DE (/) and EN (/en/): renders without console errors or CSP violations, no horizontal scroll at 360 px,
-  links into the app, store buttons "coming soon" – or real links when site/stores.json has them
+  links into the app, store buttons "coming soon" (Android, iOS, Microsoft Store) – or real links when site/stores.json has them
+- section "Für Windows und Mac": download button → /app/?install=1, named after the visitor's system; #computer stays here
 - old links into the app that point at / are forwarded: #/s/… (shared file), #/konto, ?code=… (sign-in callback)
 - /app/: the app starts, its service worker has the scope /app/, a web tool opens in its frame, a PDF imports
 - the old app service worker with scope / is removed by the start page
-Run: FALE_MINIFY=0 node scripts/vercel-build.mjs && node tests/suites/sec/csp_server.mjs 9412 /home/claude/FalePDF/dist
-     python3 test_landing_split.py
+Run: FALE_MINIFY=0 node scripts/vercel-build.mjs && node tests/suites/sec/csp_server.mjs 9412 <repo>/dist
+     DIST_URL=http://127.0.0.1:9412 python3 test_landing_split.py   (FALE_DIST overrides <repo>/dist)
 """
 import json, os, sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 URL = os.environ.get('DIST_URL', 'http://127.0.0.1:9412')
-DIST = Path('/home/claude/FalePDF/dist')
-TD = '/home/claude/FalePDF/tests/base/testdata'
+REPO = Path(__file__).resolve().parents[2]
+DIST = Path(os.environ.get('FALE_DIST') or REPO / 'dist')
+TD = str(REPO / 'tests' / 'base' / 'testdata')
 results = []
 
 
@@ -50,9 +52,15 @@ def main():
                 check(f'{path}: html lang {lang}', pg.evaluate('document.documentElement.lang') == lang)
                 check(f'{path}: no console errors / CSP violations', not errs and not pg.evaluate('window.__csp'), (errs, pg.evaluate('window.__csp')))
                 check(f'{path}: no horizontal scroll at {w} px', pg.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'))
-                hrefs = pg.evaluate("[...document.querySelectorAll('a.btn-main')].map(a => a.getAttribute('href'))")
+                hrefs = pg.evaluate("[...document.querySelectorAll('a.btn-main:not([data-dl])')].map(a => a.getAttribute('href'))")
                 check(f'{path}: buttons open the app at /app/', hrefs and all(h == '/app/' for h in hrefs), hrefs)
-                check(f'{path}: store buttons say "coming soon"', pg.locator('.store.is-soon').count() == 2)
+                dl = pg.evaluate("[...document.querySelectorAll('a[data-dl]')].map(a => [a.getAttribute('href'), a.textContent])")
+                check(f'{path}: download for Windows/Mac opens /app/?install=1', len(dl) == 1 and dl[0][0] == '/app/?install=1', dl)
+                check(f'{path}: section "for Windows and Mac" with steps', pg.locator('#computer h2').count() == 1 and pg.locator('#computer .desk-steps li').count() == 3)
+                check(f'{path}: store buttons say "coming soon" (Android, iOS, Microsoft Store)',
+                      pg.evaluate("[...document.querySelectorAll('.store.is-soon')].map(e => e.dataset.store).join()") == 'android,ios,windows')
+                pg.click('a[href="#computer"] >> nth=-1'); pg.wait_for_timeout(500)
+                check(f'{path}: #computer is an anchor on the start page (not forwarded to the app)', pg.url.endswith(path + '#computer') and pg.locator('#computer').count() == 1, pg.url)
                 imgs = pg.evaluate("[...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.loading !== 'lazy').length")
                 check(f'{path}: images load', imgs == 0, imgs)
                 c.close()
@@ -62,21 +70,47 @@ def main():
             f = DIST / 'site' / 'stores.json'
             old = f.read_text()
             try:
-                f.write_text(json.dumps({'android': 'https://play.google.com/store/apps/details?id=dev.fale.pdf', 'ios': ''}))
+                f.write_text(json.dumps({'android': 'https://play.google.com/store/apps/details?id=dev.fale.pdf', 'ios': '', 'windows': ''}))
                 c = b.new_context(); pg = c.new_page()
                 pg.goto(URL + '/'); pg.wait_for_timeout(1200)
                 a = pg.locator('a.store')
-                check('store link from stores.json replaces "coming soon"', a.count() == 1 and 'id=dev.fale.pdf' in a.get_attribute('href') and pg.locator('.store.is-soon').count() == 1)
+                check('store link from stores.json replaces "coming soon"', a.count() == 1 and 'id=dev.fale.pdf' in a.get_attribute('href') and pg.locator('.store.is-soon').count() == 2)
+                f.write_text(json.dumps({'android': '', 'ios': '', 'windows': 'https://apps.microsoft.com/detail/9TESTTESTTEST'}))
+                for path, label in (('/', 'Im Microsoft Store laden'), ('/en/', 'Get it from the Microsoft Store')):
+                    pg.goto(URL + path); pg.wait_for_timeout(1200)
+                    a = pg.locator('#computer a.store')
+                    check(f'{path}: Microsoft Store link from stores.json ({label})', a.count() == 1 and a.get_attribute('href').endswith('/9TESTTESTTEST') and label in a.inner_text() and pg.locator('.store.is-soon').count() == 2, a.count())
                 c.close()
             finally:
                 f.write_text(old)
         step('store links', stores)
+
+        def download_label():
+            f = DIST / 'site' / 'stores.json'
+            built = json.loads(f.read_text())
+            check('build writes the windows key into site/stores.json', set(built) >= {'android', 'ios', 'windows'}, built)
+            for ua, want_de, want_en in (
+                    ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0', 'Für Windows herunterladen', 'Download for Windows'),
+                    ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15', 'Für Mac herunterladen', 'Download for Mac'),
+                    ('Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36', 'Herunterladen', 'Download')):
+                c = b.new_context(user_agent=ua); pg = c.new_page()
+                for path, want in (('/', want_de), ('/en/', want_en)):
+                    pg.goto(URL + path); pg.wait_for_timeout(700)
+                    got = pg.locator('a[data-dl]').inner_text().strip()
+                    check(f'{path}: download button says "{want}"', got == want, got)
+                c.close()
+        step('download button', download_label)
 
         def forward():
             c = b.new_context(); pg = c.new_page()
             for src, want in (('/#/s/abc#k=xyz', '/app/#/s/abc#k=xyz'), ('/#/konto', '/app/#/konto'), ('/?code=123', '/app/?code=123')):
                 pg.goto(URL + src); pg.wait_for_timeout(800)
                 check(f'forward {src}', pg.url.startswith(URL + want), pg.url)
+            pg.goto(URL + '/#access_token=abc&type=recovery'); pg.wait_for_timeout(800)
+            check('forward a sign-in callback in the hash', pg.url.startswith(URL + '/app/#access_token=abc'), pg.url)
+            for src in ('/#computer', '/en/#fragen'):
+                pg.goto(URL + src); pg.wait_for_timeout(800)
+                check(f'plain anchor {src} stays on the start page', pg.url == URL + src and pg.locator('#view-start').count() == 0, pg.url)
             c.close()
         step('old app links', forward)
 

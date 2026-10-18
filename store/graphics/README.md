@@ -21,6 +21,8 @@ English = translation “en-GB” / “en-US”). Upload the files of the matchi
 | `tablet-10/de/01_home.png` … `03_doc.png` | 2560 × 1600 | **10-inch tablet screenshots** – German listing |
 | `tablet-10/en/01_home.png` … `03_doc.png` | 2560 × 1600 | **10-inch tablet screenshots** – English listing |
 | `og-image-de.png`, `og-image-en.png` | 1200 × 630 | Not for Play – social preview of the landing page. Optimised copies are served from the site root as `/og-image.png` (DE) and `/og-image-en.png` (EN). |
+| `desktop/de/01_home.png` … `05_sheet.png` (+ `desktop/en/`) | 1920 × 1080, 24-bit PNG | Not for Play – **Microsoft Store** desktop screenshots (Partner Center › Store listing), see `store/MS-STORE.md`. Raw app captures without captions: home, files, viewer, doc, sheet. |
+| `/screenshots/wide-0N.jpg`, `/screenshots/narrow-0N.jpg` (repo root) | 1280 × 720 / 540 × 960 JPEG | Not for Play – `screenshots` in `manifest.webmanifest` (browser install dialog, store package). Made by `tools/desktop.py` from `desktop/de` and `phone/de`; not precached by the service worker. |
 
 All screenshots are 24-bit PNG without alpha, well below the 8 MB limit, and within Play’s aspect-ratio
 rules (longest side ≤ 2 × shortest side).
@@ -61,4 +63,5 @@ store/graphics/tools/run.sh
 creates the demo files (`tools/gen_demo.py`, incl. a fake camera stream for the scanner), serves the copy on
 `127.0.0.1:8802`, drives the app with Playwright (`tools/capture.py`, imports demo files through the app’s own
 library API, mocks only `/api/ai*`), frames the captures (`tools/compose.py`) and renders the icon, feature
-graphics, OG images and the landing-page screenshots in `info-assets/` (`tools/brand.py`).
+graphics, OG images and the landing-page screenshots in `info-assets/` (`tools/brand.py`). Finally `tools/desktop.py` writes the Microsoft Store desktop screenshots (`desktop/`), the manifest screenshots
+(`/screenshots/`) – the landing page’s window picture `site/img/<lang>-desktop.webp` is the `files` capture at 1120 × 630.

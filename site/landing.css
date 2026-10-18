@@ -70,6 +70,25 @@ a { color: var(--indigo); text-underline-offset: 3px; }
 .jobs b { font: 700 22px/1.25 var(--display); color: var(--text); }
 .jobs span { color: var(--muted); }
 
+/* for Windows and Mac: install the browser app as a program (/app/?install=1), Microsoft Store button */
+.desk { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.desk .intro { margin-bottom: 24px; }
+.desk-steps { list-style: none; margin: 0 0 28px; padding: 0; counter-reset: st; display: grid; gap: 14px; }
+.desk-steps li { counter-increment: st; position: relative; padding-left: 52px; min-height: 36px; color: var(--muted); }
+.desk-steps li::before { content: counter(st); position: absolute; left: 0; top: -2px; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--indigo); color: #fff; font: 700 18px/1 var(--display); }
+.desk-steps b { color: var(--text); }
+.desk .cta { align-items: center; }
+.desk .note { margin: 18px 0 0; }
+.window { margin: 0; border-radius: 14px; overflow: hidden; background: var(--paper); border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -24px rgba(20, 18, 70, .5); }
+.window-bar { display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; background: var(--mist); border-bottom: 1px solid var(--line);
+  font-size: 13px; color: var(--muted); }
+.window-bar img { width: 16px; height: 16px; }
+.window-bar span { margin-right: auto; }
+.window-bar i { width: 10px; height: 10px; border: 1.5px solid var(--line); border-radius: 2px; }
+.window > img { display: block; width: 100%; height: auto; }
+
 /* privacy band */
 .band { background: var(--ink); color: #E6E7FA; border-radius: 32px; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
 .band h2 { color: #fff; }
@@ -110,6 +129,7 @@ footer a { color: var(--muted); }
   .jobs li { grid-template-columns: 1fr; gap: 4px; }
   .band { grid-template-columns: 1fr; padding: 36px 24px; border-radius: 24px; }
   .free { grid-template-columns: 1fr; gap: 12px; }
+  .desk { grid-template-columns: 1fr; gap: 32px; }
   .free ul { columns: 1; }
   .top nav .hide-s { display: none; }
 }

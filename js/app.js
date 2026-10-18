@@ -307,6 +307,7 @@ async function init() {
   import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)); // editors closed by a crash
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./extras/reminders.js').then(m => m.syncNotifications()).catch(e => console.warn(e));
+  import('./install.js').then(m => m.initInstall()).catch(e => console.warn(e)); // web only: "install as an app", /app/?install=1
   import('./smart/entry.js').then(m => m.initSmart()).catch(e => console.warn(e)); // Dokumenten-Gedächtnis: local index in idle time
   // optional FaLe-Konto: only does something when signed in (or returning from a Google sign-in)
   let acct = false;
