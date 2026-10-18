@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "FaLe PDF – gratis PDF- en kantoortools, geen abonnement, geen upload",
+    "description": "Lees, vul in, onderteken, scan met tekstherkenning en zet PDF's om – plus documenten, spreadsheets en presentaties. Gratis, geen account, alles op je eigen apparaat."
+  },
+  "skip": "Naar de inhoud",
+  "nav": {
+    "label": "Paginanavigatie",
+    "features": "Functies",
+    "computer": "Voor Windows & Mac",
+    "faq": "Vragen",
+    "open": "Openen in de browser"
+  },
+  "hero": {
+    "h1": "Regel je papierwerk. Geen abonnement, geen upload.",
+    "lede": "FaLe PDF leest, vult in, ondertekent, scant en zet om – plus documenten, spreadsheets en presentaties. Gratis en direct op je eigen apparaat.",
+    "try": "Probeer het in je browser"
+  },
+  "stores": {
+    "androidSoon": "Play Store – binnenkort beschikbaar",
+    "androidReady": "Download in de Play Store",
+    "iosName": "iPhone & iPad",
+    "iosSoon": "App Store – binnenkort beschikbaar",
+    "iosReady": "Download in de App Store"
+  },
+  "desk": {
+    "h2": "Voor Windows en Mac",
+    "intro": "Installeer FaLe PDF op je computer – net als een gewoon programma: met een eigen pictogram, een eigen venster en het werkt ook zonder internet. Gratis, geen account en geen installatiebestand.",
+    "steps": [
+      { "b": "Klik op “Downloaden”.", "t": "FaLe PDF opent in je browser." },
+      { "b": "Bevestig met “Installeren”.", "t": "Je browser vraagt het één keer." },
+      { "b": "Klaar.", "t": "Vanaf nu start je FaLe PDF via het Startmenu (Windows) of het Dock (Mac)." }
+    ],
+    "download": "Downloaden",
+    "dlWindows": "Downloaden voor Windows",
+    "dlMac": "Downloaden voor Mac",
+    "windowsSoon": "Microsoft Store – binnenkort beschikbaar",
+    "windowsReady": "Download in de Microsoft Store",
+    "note": "Op Windows met Edge of Chrome – dan openen PDF's met een dubbelklik. Op een Mac met Safari (macOS 14 of nieuwer: Archief › Voeg toe aan Dock), Chrome of Edge."
+  },
+  "jobs": {
+    "h2": "Wat je ermee geregeld krijgt",
+    "intro": "Geen stapel tools om doorheen te klikken: dit zijn de dingen waarvoor mensen de app echt openen.",
+    "items": [
+      { "b": "Een huurcontract ondertekenen", "t": "Vul het formulier in, teken je handtekening één keer en plaats hem met een tik." },
+      { "b": "Bonnetjes en brieven vastleggen", "t": "Scanner met randdetectie en tekstherkenning – ook offline." },
+      { "b": "Een opzegging versturen", "t": "Kant-en-klare brieven voor telefoon, energie, sportschool en meer in een minuut." },
+      { "b": "Een sollicitatie samenstellen", "t": "Cv uit sjablonen, motivatiebrief, diploma's samengevoegd tot één PDF." },
+      { "b": "Documenten bij instanties indienen", "t": "Comprimeren, omzetten naar PDF/A, vertrouwelijke delen zwart maken." },
+      { "b": "Een factuur of offerte schrijven", "t": "Sjablonen die zelf rekenen – als PDF-, Word- of Excel-bestand." }
+    ]
+  },
+  "privacy": {
+    "h2": "Je bestanden blijven bij jou",
+    "items": [
+      { "dt": "Geen upload", "dd": "Bewerken, omzetten en tekstherkenning gebeuren op je eigen apparaat. De optionele AI gebruik je alleen als je die aanzet." },
+      { "dt": "Geen account", "dd": "Open het en begin. Een account heb je alleen nodig als je ervoor kiest om tussen apparaten te synchroniseren." },
+      { "dt": "Geen bannerreclame", "dd": "Er zijn alleen advertenties als je zelf een video start om extra AI-verzoeken te krijgen." }
+    ]
+  },
+  "free": {
+    "h2": "Gratis in plaats van een abonnement",
+    "intro": "Veel PDF-apps rekenen een abonnement voor deze functies. Hier zijn ze gratis en zonder watermerken.",
+    "note": "Wil je de ontwikkeling steunen? Dan kun je in de Android-app kiezen voor FaLe Plus of een eenmalig bedankje.",
+    "items": ["Ondertekenen & invullen", "Tekstherkenning (OCR)", "PDF naar Word, Excel, PowerPoint", "Zwart maken", "Comprimeren", "Pagina's beheren", "PDF/A voor instanties", "Wachtwoordbeveiliging", "PDF's vergelijken", "Batchverwerking"]
+  },
+  "screens": {
+    "h2": "Zo ziet het eruit",
+    "alts": ["Startscherm van de FaLe PDF-app", "Een formulier invullen en ondertekenen", "Scanner met randdetectie", "Een spreadsheet bewerken", "Privacy: alles blijft op het apparaat"]
+  },
+  "faq": {
+    "h2": "Vragen",
+    "items": [
+      { "q": "Is FaLe PDF echt gratis?", "a": "Ja. Alle PDF- en kantoorfuncties zijn gratis, zonder abonnement en zonder watermerk. Alleen de optionele cloud-AI heeft een gratis dagtegoed." },
+      { "q": "Worden mijn bestanden geüpload?", "a": "Nee. Je bestanden worden op je eigen apparaat verwerkt en opgeslagen. Alleen als je bewust cloud-AI, delen via een link of synchroniseren gebruikt, verlaat er iets je apparaat – versleuteld, of alleen de tekst die je hebt geselecteerd." },
+      { "q": "Werkt het ook offline?", "a": "Ja. Alles behalve cloud-AI, delen en overdragen werkt zonder internet." },
+      { "q": "Kan ik FaLe PDF op mijn computer installeren?", "a": "Ja. Klik hierboven onder “Voor Windows en Mac” op “Downloaden” en bevestig met “Installeren”. Op Windows werkt dit met Edge of Chrome, op een Mac met Safari, Chrome of Edge. FaLe PDF komt binnenkort ook in de Microsoft Store." },
+      { "q": "Welke bestanden kan ik openen?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown en afbeeldingen." }
+    ]
+  },
+  "end": {
+    "h2": "Probeer het meteen",
+    "intro": "De browserversie werkt zonder iets te installeren – op je telefoon en op je computer."
+  },
+  "footer": {
+    "label": "Juridisch",
+    "imprint": "Colofon",
+    "privacy": "Privacy",
+    "more": "Meer van FaleNetwork"
+  }
+}
