@@ -758,6 +758,8 @@ def native_build():
         check('web build: start page at /, app at /app/', 'landing.js' in open(os.path.join(dist, 'index.html')).read() and 'id="view-start"' in ix or 'view-start' in ix)
         check('web build: viewport-fit kept, vercel.json written, sw precaches legal + platform', 'viewport-fit=cover' in ix and os.path.exists(os.path.join(dist, 'vercel.json'))
               and '"./datenschutz.html"' in sw and '"./js/platform.js"' in sw and 'capacitor.config.json' not in sw)
+        check('web build: no repo-internal folders shipped (mail/, docs/, tests/)', not any(os.path.exists(os.path.join(dist, d)) for d in ('mail', 'docs', 'tests'))
+              and '"./mail/' not in sw, [d for d in ('mail', 'docs', 'tests') if os.path.exists(os.path.join(dist, d))])
 
 
 if __name__ == '__main__':
