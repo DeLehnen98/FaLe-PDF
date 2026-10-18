@@ -2,6 +2,7 @@
 import * as db from '../db.js';
 import { esc, h, formatSize, formatDate, pagesLabel, showMenu, promptDialog, confirmDialog, toast, downloadBlob, shareBlob, errorToast } from '../ui.js';
 import { thumbUrl, dropThumb, emitChange } from '../library.js';
+import { aiMenusHidden } from '../ai/hidden.js';
 import { officeMenu, oicon, kindOf, kindInfo, kindTile, openHash, ensureExt, KINDS } from './kinds.js';
 
 // tags + AI capabilities are loaded asynchronously by the views; rows render synchronously with what is known
@@ -86,8 +87,8 @@ export function fileMenu(anchor, doc) {
   else if (kind === 'image') items.push({ label: 'In PDF umwandeln', icon: 'kpdf', onClick: () => { location.hash = openHash(doc); } });
   // FaleNetwork web tools that can open this file (js/webtools/list.js)
   items.push({ label: 'Mehr Werkzeuge …', icon: 'tools', onClick: () => import('../webtools/list.js').then(m => m.chooseWebTool(doc)) });
-  if (AI.summarize && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Zusammenfassen (auf dem Gerät)', icon: 'summary', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'summarize')) });
-  if (AI.translate && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Übersetzen (auf dem Gerät)', icon: 'translate', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'translate')) });
+  if (AI.summarize && !aiMenusHidden() && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Zusammenfassen (auf dem Gerät)', icon: 'summary', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'summarize')) });
+  if (AI.translate && !aiMenusHidden() && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Übersetzen (auf dem Gerät)', icon: 'translate', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'translate')) });
   items.push('-',
     { label: 'In Ordner verschieben …', icon: 'folderMove', onClick: () => import('../extras/organize.js').then(m => m.folderDialog([doc])) },
     { label: 'Tags …', icon: 'tag', onClick: () => import('../extras/organize.js').then(m => m.tagsDialog(doc)) },

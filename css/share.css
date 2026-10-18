@@ -38,29 +38,29 @@
 .sh-hero p { margin: 6px 0 0; color: #CDE7F0; }
 .sh-e2e { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; margin-top: 18px; border-radius: var(--radius-md); background: var(--accent-soft); color: var(--text); }
 .sh-e2e > .ic { color: var(--accent); width: 24px; height: 24px; flex: none; margin-top: 1px; }
-.sh-e2e p { margin: 4px 0 0; font-size: 13.5px; color: var(--text-2); }
-.sh-e2e.compact p { font-size: 13px; }
+.sh-e2e p { margin: 4px 0 0; font-size: calc(13.5px * var(--ts, 1)); color: var(--text-2); }
+.sh-e2e.compact p { font-size: calc(13px * var(--ts, 1)); }
 .sh-offline { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; margin-bottom: 14px; border-color: color-mix(in srgb, var(--sh-warn) 40%, var(--border)); background: color-mix(in srgb, var(--sh-warn) 9%, var(--surface)); }
 .sh-offline > .ic { color: var(--sh-warn); flex: none; }
 .sh-offline div { display: flex; flex-direction: column; gap: 2px; }
-.sh-offline span { font-size: 13.5px; color: var(--text-2); }
+.sh-offline span { font-size: calc(13.5px * var(--ts, 1)); color: var(--text-2); }
 
 /* progress */
 .sh-progress { margin: 14px 0 4px; }
-.sh-progress-top { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--text-2); margin-bottom: 6px; }
+.sh-progress-top { display: flex; justify-content: space-between; gap: 10px; font-size: calc(13.5px * var(--ts, 1)); color: var(--text-2); margin-bottom: 6px; }
 .sh-bar { height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
 .sh-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-bright)); border-radius: inherit; transition: width var(--dur-2) var(--ease-out); }
 
 /* link box */
 .sh-linkbox { margin: 14px 0; }
 .sh-linkbox .field { margin-bottom: 10px; }
-.sh-link { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+.sh-link { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: calc(13px * var(--ts, 1)); }
 .sh-link-acts { display: flex; gap: 8px; flex-wrap: wrap; }
 .sh-qr { margin-top: 12px; display: inline-block; padding: 10px; background: #fff; border-radius: 14px; border: 1px solid var(--border); }
 .sh-qr svg { display: block; width: 220px; height: 220px; }
 
 /* pills */
-.sh-pill { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; flex: none; }
+.sh-pill { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; font-size: calc(12px * var(--ts, 1)); font-weight: 700; white-space: nowrap; flex: none; }
 .sh-pill-open { background: var(--surface-3); color: var(--text-2); }
 .sh-pill-viewed { background: var(--warn-soft); color: var(--warn); }
 .sh-pill-signed { background: var(--accent-soft); color: var(--accent); }
@@ -76,7 +76,7 @@
 .sh-opt-pw .field { margin: 6px 0 4px; max-width: 360px; }
 .sh-actions { margin-top: 16px; }
 .sh-actions-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.sh-actions .btn-block { min-height: 50px; font-size: 16px; }
+.sh-actions .btn-block { min-height: 50px; font-size: calc(16px * var(--ts, 1)); }
 .sh-success { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-color: color-mix(in srgb, var(--sh-ok) 40%, var(--border)); background: color-mix(in srgb, var(--sh-ok) 8%, var(--surface)); }
 .sh-success > .ic { color: var(--sh-ok); width: 30px; height: 30px; flex: none; }
 .sh-success p { margin: 4px 0 0; color: var(--text-2); }
@@ -98,7 +98,7 @@
 /* recipient + signer cards */
 .sh-receive, .sh-signer-view { max-width: 760px !important; }
 .sh-recv-card { text-align: center; padding: 28px 22px; }
-.sh-recv-card h2 { font-size: 21px; margin: 8px 0 6px; word-break: break-word; }
+.sh-recv-card h2 { font-size: calc(21px * var(--ts, 1)); margin: 8px 0 6px; word-break: break-word; }
 .sh-recv-card p { color: var(--text-2); }
 .sh-recv-card form, form.sh-recv-card { text-align: left; }
 form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-right: auto; text-align: center; }
@@ -106,20 +106,20 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-recv-ic .ic { width: 32px; height: 32px; }
 .sh-recv-ic.ok { background: var(--accent-soft); color: var(--accent); }
 .sh-recv-ic.warn { background: color-mix(in srgb, var(--sh-warn) 14%, var(--surface)); color: var(--sh-warn); }
-.sh-recv-kicker { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--accent) !important; margin: 0; }
+.sh-recv-kicker { display: inline-flex; align-items: center; gap: 6px; font-size: calc(13px * var(--ts, 1)); font-weight: 700; color: var(--accent) !important; margin: 0; }
 .sh-recv-kicker .ic { width: 16px; height: 16px; }
 .sh-recv-acts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
 .sh-recv-acts .btn { min-width: 180px; }
 .sh-recv-error .sh-actions-row { justify-content: center; margin-top: 14px; }
 .sh-recv-foot { color: var(--text-2); justify-content: center; text-align: left; }
-.sh-hash code { word-break: break-all; font-size: 11.5px; }
+.sh-hash code { word-break: break-all; font-size: calc(11.5px * var(--ts, 1)); }
 
 /* sender: place fields */
 .sh-sr-body { overflow: hidden !important; }
 .sh-sr { display: grid; grid-template-columns: 340px 1fr; height: 100%; min-height: 0; }
 .sh-sr-side { overflow-y: auto; padding: 16px; border-right: 1px solid var(--border); background: var(--surface); }
 .sh-sr-sec { margin-bottom: 18px; }
-.sh-sr-sec h2 { font-size: 15px; margin-bottom: 10px; }
+.sh-sr-sec h2 { font-size: calc(15px * var(--ts, 1)); margin-bottom: 10px; }
 .sh-sr-sec .field { margin-bottom: 10px; }
 .sh-sr-sec textarea.input { min-height: 72px; resize: vertical; padding-top: 10px; }
 .sh-signer { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
@@ -129,7 +129,7 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-signer .input { flex: 1; min-width: 0; }
 .sh-sr-tools { display: flex; flex-wrap: wrap; gap: 6px; }
 .sh-sr-tools [aria-pressed="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
-.sh-sr-hint { min-height: 20px; margin: 8px 0 0; font-size: 13px; color: var(--primary); font-weight: 600; }
+.sh-sr-hint { min-height: 20px; margin: 8px 0 0; font-size: calc(13px * var(--ts, 1)); color: var(--primary); font-weight: 600; }
 .sh-sr-go { position: sticky; bottom: -16px; padding: 12px 0 16px; background: var(--surface); }
 .sh-sr-go p { display: flex; gap: 6px; align-items: flex-start; margin-top: 8px; }
 .sh-sr-go p .ic { width: 16px; height: 16px; color: var(--accent); flex: none; }
@@ -141,12 +141,12 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-layer { position: absolute; inset: 0; }
 .sh-page.placing { cursor: crosshair; outline: 2px dashed var(--primary); outline-offset: 3px; }
 .sh-field { position: absolute; border: 2px solid var(--sc); background: color-mix(in srgb, var(--sc) 14%, transparent); border-radius: 6px; cursor: move; touch-action: none; display: flex; align-items: center; justify-content: flex-start; padding: 0 6px; }
-.sh-field-label { font-size: 11px; font-weight: 700; color: var(--sc); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.sh-field-label { font-size: calc(11px * var(--ts, 1)); font-weight: 700; color: var(--sc); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
 .sh-field-del { position: absolute; top: -12px; right: -12px; width: 26px; height: 26px; border-radius: 50%; border: none; background: var(--danger); color: #fff; display: grid; place-items: center; padding: 0; }
 .sh-field-del .ic { width: 15px; height: 15px; }
 .sh-field-resize { position: absolute; right: -6px; bottom: -6px; width: 14px; height: 14px; border-radius: 4px; background: var(--sc); cursor: nwse-resize; }
 .sh-created .sh-signer-link { margin-top: 18px; }
-.sh-created .sh-signer-link h3 { font-size: 16px; }
+.sh-created .sh-signer-link h3 { font-size: calc(16px * var(--ts, 1)); }
 
 /* status */
 .sh-status-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; margin-bottom: 14px; }
@@ -163,14 +163,14 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 /* signer */
 .sh-sign-head { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; }
 .sh-sign-head > .ic { width: 30px; height: 30px; color: var(--accent); flex: none; margin-top: 4px; }
-.sh-sign-head h2 { font-size: 19px; margin: 4px 0 6px; word-break: break-word; }
+.sh-sign-head h2 { font-size: calc(19px * var(--ts, 1)); margin: 4px 0 6px; word-break: break-word; }
 .sh-sign-head p { margin: 0 0 6px; }
 .sh-msg { margin: 8px 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: var(--surface-2); border-radius: 0 10px 10px 0; white-space: pre-wrap; }
-.sh-todo { display: flex; gap: 10px; align-items: center; padding: 12px 14px; margin-top: 12px; font-size: 14px; position: sticky; top: 0; z-index: 3; }
+.sh-todo { display: flex; gap: 10px; align-items: center; padding: 12px 14px; margin-top: 12px; font-size: calc(14px * var(--ts, 1)); position: sticky; top: 0; z-index: 3; }
 .sh-todo .ic { flex: none; color: var(--primary); }
 .sh-todo.ok .ic { color: var(--sh-ok); }
 .sh-ofield { position: absolute; border: 1.5px dashed var(--sc); border-radius: 6px; background: color-mix(in srgb, var(--sc) 6%, transparent); display: flex; align-items: center; padding: 0 4px; pointer-events: none; }
-.sh-ofield span { font-size: 10px; color: var(--sc); font-weight: 700; white-space: nowrap; overflow: hidden; }
+.sh-ofield span { font-size: calc(10px * var(--ts, 1)); color: var(--sc); font-weight: 700; white-space: nowrap; overflow: hidden; }
 .sh-ofield.done { display: none; }
 .sh-ffield { position: absolute; border: 2px solid #E8A200; background: rgba(255, 214, 10, .22); border-radius: 6px; color: #5A4300; }
 .sh-ffield-sig { display: grid; place-items: center; padding: 0; cursor: pointer; animation: sh-pulse 1.8s ease-in-out infinite; }
@@ -186,7 +186,7 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-confirm { margin-bottom: 30px; }
 .sh-confirm-check { align-items: flex-start; margin-bottom: 12px; }
 .sh-confirm-check input { margin-top: 2px; flex: none; }
-.sh-confirm .btn-block { min-height: 50px; font-size: 16px; }
+.sh-confirm .btn-block { min-height: 50px; font-size: calc(16px * var(--ts, 1)); }
 .sh-confirm p.muted { display: flex; gap: 6px; align-items: flex-start; margin: 10px 0 0; }
 .sh-confirm p.muted .ic { width: 16px; height: 16px; color: var(--accent); flex: none; }
 
@@ -196,12 +196,12 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-tr-choice .action-card > span:last-child { display: flex; flex-direction: column; gap: 2px; }
 .sh-tr-code { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
 .sh-tr-code .field { margin: 0; flex: 1; min-width: 200px; }
-.sh-code-input { font-family: var(--font-display); font-size: 24px; letter-spacing: .16em; font-weight: 700; text-align: center; max-width: 240px; font-variant-numeric: tabular-nums; }
+.sh-code-input { font-family: var(--font-display); font-size: calc(24px * var(--ts, 1)); letter-spacing: .16em; font-weight: 700; text-align: center; max-width: 240px; font-variant-numeric: tabular-nums; }
 .sh-tr-host { display: grid; grid-template-columns: auto 1fr; gap: 14px 24px; align-items: center; }
 .sh-tr-qr { padding: 10px; background: #fff; border-radius: 16px; border: 1px solid var(--border); grid-row: span 3; }
 .sh-tr-qr svg { display: block; width: 230px; height: 230px; }
 .sh-tr-codebox { display: flex; flex-direction: column; gap: 2px; }
-.sh-tr-code-big { font-family: var(--font-display); font-size: 44px; letter-spacing: .06em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.sh-tr-code-big { font-family: var(--font-display); font-size: calc(44px * var(--ts, 1)); letter-spacing: .06em; font-variant-numeric: tabular-nums; line-height: 1.1; }
 .sh-tr-wait { display: flex; align-items: center; gap: 10px; color: var(--text-2); font-weight: 600; }
 .sh-tr-host > p, .sh-tr-host > button { grid-column: 1 / -1; }
 .sh-tr-host > button { justify-self: start; }
@@ -213,7 +213,7 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
 .sh-tr-status > div:first-of-type { flex: 1; min-width: 200px; display: flex; flex-direction: column; }
 .sh-tr-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--sh-ok); box-shadow: 0 0 0 5px color-mix(in srgb, var(--sh-ok) 22%, transparent); flex: none; }
 .sh-tr-sas { display: flex; flex-direction: column; align-items: flex-end; }
-.sh-tr-sas strong { font-size: 20px; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.sh-tr-sas strong { font-size: calc(20px * var(--ts, 1)); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
 .sh-tr-sashint { margin: 8px 2px 14px; }
 .sh-tr-send { display: grid; gap: 10px; }
 .sh-tr-list { display: grid; gap: 8px; }
@@ -234,13 +234,13 @@ form.sh-recv-card .sh-recv-ic, form.sh-recv-card h2 { margin-left: auto; margin-
   .sh-sr-stage { overflow: visible; }
 }
 @media (max-width: 720px) {
-  .sh-start-act { flex-direction: column; gap: 4px; font-size: 12px; padding: 10px 4px; }
+  .sh-start-act { flex-direction: column; gap: 4px; font-size: calc(12px * var(--ts, 1)); padding: 10px 4px; }
   .sh-recv-card { padding: 22px 16px; }
   .sh-recv-acts .btn { flex: 1; min-width: 0; }
   .sh-tr-host { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .sh-tr-qr { grid-row: auto; }
   .sh-tr-host > button { justify-self: center; }
-  .sh-tr-code-big { font-size: 34px; }
+  .sh-tr-code-big { font-size: calc(34px * var(--ts, 1)); }
   .sh-row { flex-wrap: wrap; }
   .sh-row .sh-row-main { flex-basis: calc(100% - 120px); }
   .sh-link-acts .btn { flex: 1; min-width: 0; }
@@ -274,7 +274,7 @@ textarea.sh-rq-msg { min-height: 72px; resize: vertical; padding-top: 10px; }
 .sh-rq-checklist li > span:first-of-type { flex: 1; min-width: 0; }
 .sh-rq-acts { display: inline-flex; gap: 6px; }
 .sh-rq-file { flex-wrap: wrap; }
-.sh-rq-note { font-size: 13px; color: var(--text-2); white-space: pre-wrap; border-left: 3px solid var(--accent); padding-left: 8px; margin-top: 4px; }
+.sh-rq-note { font-size: calc(13px * var(--ts, 1)); color: var(--text-2); white-space: pre-wrap; border-left: 3px solid var(--accent); padding-left: 8px; margin-top: 4px; }
 .sh-rq-head { text-align: left; }
 .sh-rq-head h2 { margin-top: 6px; }
 .sh-rq-form { margin-top: 14px; transition: box-shadow var(--dur-1); }

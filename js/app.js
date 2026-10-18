@@ -66,7 +66,10 @@ async function showMain(name, params) {
 }
 
 let guardBusy = false;
+let routeGen = 0; // each route() call gets a number; a slower, older call must not open its screen over a newer one
 async function route() {
+  const gen = ++routeGen;
+  const stale = () => gen !== routeGen;
   closeMenus();
   // leaving an office editor with unsaved changes?
   const scr = currentScreen();
@@ -113,7 +116,9 @@ async function route() {
     const cur = currentScreen();
     if (cur && cur.hashKey && cur.hashKey.split('?')[0] === key.split('?')[0] && top === 'bearbeiten') return; // already open
     const { openOfficeRoute } = await import('./office/open.js');
+    if (stale()) return; // the address changed while the editor module was loading
     await openOfficeRoute(parts, params, { goBack });
+    if (stale()) { route(); return; } // left again while opening: route to where we are now
     const s = currentScreen();
     if (s) s.hashKey = location.hash;
     return;
@@ -121,13 +126,17 @@ async function route() {
   if (top === 'ki') { // KI-Assistent (js/ai/routes.js)
     if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
     if (!currentMain) showMain('werkzeuge');
-    await (await import('./ai/routes.js')).openAiRoute(parts, params, { goBack });
+    const ai = await import('./ai/routes.js');
+    if (stale()) return;
+    await ai.openAiRoute(parts, params, { goBack });
     return;
   }
   if (top === 'web' && parts[1]) { // FaleNetwork web tools in a frame (js/webtools/host.js)
     if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
     if (!currentMain) showMain('werkzeuge');
-    await (await import('./webtools/host.js')).openWebToolRoute(parts, params, { goBack });
+    const wt = await import('./webtools/host.js');
+    if (stale()) return;
+    await wt.openWebToolRoute(parts, params, { goBack });
     return;
   }
   if (SHARE_ROUTES.includes(top)) { // Teilen & Übertragen (js/share/routes.js): #/teilen…, #/s/<id>, #/u/<token>, #/r/<token>, #/verbinden

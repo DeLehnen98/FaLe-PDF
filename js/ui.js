@@ -55,13 +55,22 @@ export function toast(message, type = 'info', { timeout = 3800, action } = {}) {
   const shown = Array.from(box.querySelectorAll('.toast:not(.toast-progress)'));
   shown.slice(0, Math.max(0, shown.length - 2)).forEach(t => t.remove());
   requestAnimationFrame(() => el.classList.add('show'));
-  let timer = setTimeout(dismiss, timeout);
+  // enough time to read: at least ~0.35 s per word, longer in the simple view / with large text (older users),
+  // and the toast stays while the pointer or focus is on it (WCAG 2.2.1)
+  const words = String(message || '').split(/\s+/).filter(Boolean).length;
+  const calm = document.documentElement.matches('.simple, .ts-l, .ts-xl');
+  let wait = Math.max(timeout, 1500 + words * 350) * (calm ? 1.6 : 1);
+  let timer = setTimeout(dismiss, wait);
+  const hold = () => clearTimeout(timer);
+  const resume = () => { clearTimeout(timer); timer = setTimeout(dismiss, 2500); };
+  el.addEventListener('pointerenter', hold); el.addEventListener('pointerleave', resume);
+  el.addEventListener('focusin', hold); el.addEventListener('focusout', resume);
   function dismiss() {
     clearTimeout(timer);
     el.classList.remove('show');
     setTimeout(() => el.remove(), 250);
   }
-  return { dismiss, update(msg) { el.querySelector('.toast-msg').textContent = msg; clearTimeout(timer); timer = setTimeout(dismiss, timeout); } };
+  return { dismiss, update(msg) { el.querySelector('.toast-msg').textContent = msg; clearTimeout(timer); timer = setTimeout(dismiss, wait); } };
 }
 
 export function errorToast(err, fallback = 'Etwas ist schiefgelaufen.') {

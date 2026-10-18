@@ -16,6 +16,12 @@
 (function () {
   'use strict';
   try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  // text size + simple view (js/simple.js) before the first paint – no flash of the normal size on slow devices
+  try {
+    var ts = localStorage.getItem('fale-textsize');
+    if (ts === 'l' || ts === 'xl') document.documentElement.classList.add('ts-' + ts);
+    if (localStorage.getItem('fale-simple') === '1') document.documentElement.classList.add('simple');
+  } catch (e) {}
   try {
     // same rule as js/i18n/index.js deviceLang(): first device language we have, else English
     var LANGS = ['de', 'en']; // = LANGS in js/i18n/index.js

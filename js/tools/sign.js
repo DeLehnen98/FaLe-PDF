@@ -135,6 +135,7 @@ export async function mount(screen, { docId }) {
   let pendingText = null; // profile value {label, value}
   let selected = null;
   let dirty = false;
+  let rev = 0, savedRev = -1; // see markDirty()
 
   function computeScale(base) {
     const avail = Math.max(260, Math.min(stage.clientWidth - 24, 920));
@@ -457,12 +458,16 @@ export async function mount(screen, { docId }) {
 
   // ---- save ----
   const saveBtn = h(`<button class="btn btn-primary" type="button" data-save>${icon('check')} Speichern</button>`);
-  function markDirty() {
-    dirty = items.some(i => i.kind === 'image' || (i.text && i.text.trim())) || fields.some(f => f.value !== f.initial);
+  // every change bumps `rev`; after saving, the state of that moment counts as saved (the result is a new file,
+  // the marks stay on the page so the user can continue) – until the next change
+  function markDirty(initial = false) {
+    if (!initial) rev++;
+    const content = items.some(i => i.kind === 'image' || (i.text && i.text.trim())) || fields.some(f => f.value !== f.initial);
+    dirty = content && rev !== savedRev;
     saveBtn.disabled = !dirty;
-    updateFoot(screen, [saveBtn], dirty ? 'Ungespeicherte Änderungen' : '');
+    updateFoot(screen, [saveBtn], dirty ? 'Ungespeicherte Änderungen' : (content && rev === savedRev ? 'Gespeichert' : ''));
   }
-  markDirty();
+  markDirty(true);
 
   saveBtn.addEventListener('click', async () => {
     saveBtn.disabled = true;
@@ -478,6 +483,8 @@ export async function mount(screen, { docId }) {
       stage.appendChild(box);
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Dokument gespeichert.', 'success');
+      savedRev = rev;
+      markDirty(true);
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
     finally { prog.done(); saveBtn.disabled = !dirty; }
   });
