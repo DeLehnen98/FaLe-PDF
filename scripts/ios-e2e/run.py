@@ -72,28 +72,15 @@ try:
            'trailer << /Root 1 0 R >>\n%%EOF\n')
     open(doc, 'w').write(pdf)
     before = os.path.getsize(doc)
-    # like opening it from the Files app (test builds only: fale-e2e:// scheme, see FaleIncomingPlugin.e2eFileURL)
-    r = sh('xcrun', 'simctl', 'openurl', UDID, 'fale-e2e://open?name=fale-e2e-writeback.pdf', check=False, timeout=45)
-    if r.returncode:
-        print(f'::warning title=iOS Datei öffnen::simctl openurl nicht möglich ({r.stderr.strip()[:300]}) – Schritt übersprungen')
-    else:
-        imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 25)
-        sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/after-openurl.png', check=False)
-        if not imported:
-            # second try: cold start through the URL (launch path: ApplicationDelegateProxy.lastURL)
-            print('::warning title=iOS Datei öffnen::kein Import bei laufender App – Kaltstart über die URL. Bisher: ' +
-                  ' | '.join(l for l in lines if 'openURL' in l or 'FaleIncoming' in l)[-500:])
-            sh('xcrun', 'simctl', 'terminate', UDID, BUNDLE, check=False)
-            proc.terminate()
-            time.sleep(2)
-            proc = subprocess.Popen(['xcrun', 'simctl', 'launch', '--console-pty', UDID, BUNDLE],
-                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
-            threading.Thread(target=lambda: [lines.append(l.rstrip('\n')) for l in proc.stdout], daemon=True).start()
-            wait_for(lambda: lines.count('') >= 0 and sum('FaLe PDF bereit (ios)' in l for l in lines) >= 2, 60)
-            r2 = sh('xcrun', 'simctl', 'openurl', UDID, 'fale-e2e://open?name=fale-e2e-writeback.pdf', check=False, timeout=45)
-            imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 25)
-            sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/after-openurl-2.png', check=False)
-            print(f"::notice title=iOS Screenshots::nach openurl {os.path.getsize(f'{OUT}/after-openurl.png') if os.path.exists(f'{OUT}/after-openurl.png') else 0} Bytes, rc2={r2.returncode} {r2.stderr.strip()[:200]}")
+    # 2a. through a URL (like „Öffnen in“) – only a diagnostic: simctl delivery of URLs is not reliable on CI
+    r = sh('xcrun', 'simctl', 'openurl', UDID, 'fale-e2e://open?name=fale-e2e-writeback.pdf', check=False, timeout=30)
+    imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 15)
+    if not imported:
+        print(f"::warning title=iOS URL::openurl rc={r.returncode} – kein Import über die URL (CI-Simulator); weiter mit Test-Signal")
+        # 2b. test builds: a Darwin notification makes the plugin open the file exactly like an „open in place“ URL
+        sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.open', check=False, timeout=30)
+        imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 30)
+    if True:
         note(imported, 'Datei öffnen', next((l for l in lines if 'FaleIncoming: fale-e2e-writeback.pdf' in l), 'Datei kam nicht in der App an'))
         if imported:
             ok = wait_for(lambda: has('FALE-E2E write-back ok') or has('FALE-E2E write-back failed'), 40)

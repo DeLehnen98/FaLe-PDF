@@ -448,7 +448,7 @@ async function nativeItemToFile(it, fi) {
   if (!blob) return null;
   const file = new File([blob], name, { type: type || blob.type, lastModified: Date.now() });
   // opened via „Öffnen mit“/„Bearbeiten mit“: remember the original (js/origin.js → „Im Original speichern“)
-  if (it.origin) tagOrigin(file, { type: 'native', token: String(it.origin), writable: !!it.writable, name });
+  if (it.origin) tagOrigin(file, { type: 'native', token: String(it.origin), writable: !!it.writable, name, ...(it.e2e === true ? { e2e: true } : {}) });
   return file;
 }
 

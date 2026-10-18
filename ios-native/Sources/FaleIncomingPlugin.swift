@@ -59,6 +59,15 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(openURL(_:)), name: .capacitorOpenURL, object: nil)
         CAPLog.print("FaleIncoming: loaded")
+        // simulator test builds only: `simctl spawn <udid> notifyutil -p dev.fale.pdf.e2e.open` opens the test file
+        if Bundle.main.object(forInfoDictionaryKey: "FaleE2E") as? Bool == true {
+            let observer = Unmanaged.passUnretained(self).toOpaque()
+            CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer, { _, observer, _, _, _ in
+                guard let observer = observer else { return }
+                let me = Unmanaged<FaleIncomingPlugin>.fromOpaque(observer).takeUnretainedValue()
+                if let url = URL(string: "fale-e2e://open?name=fale-e2e-writeback.pdf") { me.handle(url, inPlace: true) }
+            }, "dev.fale.pdf.e2e.open" as CFString, nil, .deliverImmediately)
+        }
         // cold start: the URL may have arrived before this plugin was loaded
         if let url = ApplicationDelegateProxy.shared.lastURL, !handledLaunchURL {
             handledLaunchURL = true
@@ -94,7 +103,7 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         let inPlace = e2e != nil ? true : (given ?? !FalePaths.isInside(url, inbox))
         guard url.isFileURL else { return } // custom schemes / links are not files
         io.async {
-            self.importURL(url, inPlace: inPlace)
+            self.importURL(url, inPlace: inPlace, e2e: e2e != nil)
             self.lock.lock(); let count = self.pending.count + self.skipped.count; self.lock.unlock()
             self.notifyListeners("filesReady", data: ["count": count])
         }
@@ -111,7 +120,7 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         lock.lock(); skipped.append(["name": name, "reason": reason]); lock.unlock()
     }
 
-    private func importURL(_ url: URL, inPlace: Bool) {
+    private func importURL(_ url: URL, inPlace: Bool, e2e: Bool = false) {
         let name = Self.cleanName(url.lastPathComponent)
         // never re-import our own private files (only Documents – visible in the Files app – and Inbox copies are fine)
         let docs = FalePaths.documents()
@@ -146,6 +155,7 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
             lock.lock(); origins[token] = (bookmark, writable); lock.unlock()
             o["origin"] = token
             o["writable"] = writable
+            if e2e { o["e2e"] = true } // test builds only (fale-e2e scheme / test signal)
         } else if FalePaths.isInside(url, docs.appendingPathComponent("Inbox")) {
             try? FileManager.default.removeItem(at: url) // iOS copied it into our Inbox – we keep our own copy
         }

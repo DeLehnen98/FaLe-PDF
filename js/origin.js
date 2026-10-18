@@ -39,7 +39,9 @@ export async function rememberFromFile(docId, file) {
 function selfTest(docId, rec) {
   let debug = false;
   try { debug = isNative() && !!(window.Capacitor && window.Capacitor.DEBUG); } catch { /* no window */ }
-  if (!debug || rec.type !== 'native' || rec.name !== 'fale-e2e-writeback.pdf') return;
+  if (!isNative()) return;
+  // rec.e2e: set by the native test builds only (iOS FaleE2E flag); Capacitor.DEBUG: debug builds
+  if (!(debug || rec.e2e === true) || rec.type !== 'native' || rec.name !== 'fale-e2e-writeback.pdf') return;
   setTimeout(async () => {
     try {
       const blob = await db.getFile(docId);
