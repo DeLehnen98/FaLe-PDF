@@ -4175,6 +4175,57 @@ export const WEB_TOOLS = [
    "application/pdf",
    ".pdf"
   ],
+  "category": "convert-from-pdf",
+  "de": {
+   "keywords": [
+    "pdfa",
+    "pdf a",
+    "pdf/a-1b",
+    "pdf/a-2b",
+    "pdf/a-3b",
+    "archiv",
+    "langzeitarchivierung",
+    "archivierung",
+    "behörde",
+    "gericht",
+    "bea",
+    "elster",
+    "abschlussarbeit",
+    "dissertation",
+    "iso 19005"
+   ],
+   "name": "PDF in PDF/A",
+   "short": "Archiv-PDF für Ämter, Gerichte und Hochschulen erstellen.",
+   "slug": "pdf-in-pdfa"
+  },
+  "en": {
+   "keywords": [
+    "pdfa",
+    "pdf a",
+    "pdf/a-1b",
+    "pdf/a-2b",
+    "pdf/a-3b",
+    "archive",
+    "long-term archiving",
+    "archival",
+    "court filing",
+    "thesis",
+    "iso 19005"
+   ],
+   "name": "PDF to PDF/A",
+   "short": "Create archive PDFs for authorities, courts and universities.",
+   "slug": "pdf-to-pdfa"
+  },
+  "icon": "<path d=\"M4 4h16v5H4z\"/><path d=\"M5 9v11h14V9\"/><path d=\"M10 13h4\"/>",
+  "id": "pdf-to-pdfa",
+  "minFiles": 1,
+  "multiple": true
+ },
+ {
+  "accepts": [
+   "application/pdf",
+   ".pdf"
+  ],
   "category": "security",
   "de": {
    "keywords": [

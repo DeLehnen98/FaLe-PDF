@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = 'e242ffdd0c49';
+const VERSION = '26b6cc1889a6';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-4bcba4a17184';
 const PAGES = 'wt-pages';
@@ -81,6 +81,8 @@ const PRECACHE = [
   "/assets/wt/lib/pagegrid.css",
   "/assets/wt/lib/pagegrid.js",
   "/assets/wt/lib/pdf.js",
+  "/assets/wt/lib/pdfa-core.js",
+  "/assets/wt/lib/pdfa-icc.js",
   "/assets/wt/lib/pdfimages.js",
   "/assets/wt/lib/pdfopt.js",
   "/assets/wt/lib/privacy.js",

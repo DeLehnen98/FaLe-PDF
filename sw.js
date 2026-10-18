@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-e2ebdffef0';
+const VERSION = 'v1.0.0-4084cd621c';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -1149,6 +1149,7 @@ const ASSETS = [
   "./wt-app/de/pdf-to-excel.html",
   "./wt-app/de/pdf-to-jpg.html",
   "./wt-app/de/pdf-to-markdown.html",
+  "./wt-app/de/pdf-to-pdfa.html",
   "./wt-app/de/pdf-to-png.html",
   "./wt-app/de/pdf-to-pptx.html",
   "./wt-app/de/pdf-to-text.html",
@@ -1257,6 +1258,7 @@ const ASSETS = [
   "./wt-app/en/pdf-to-excel.html",
   "./wt-app/en/pdf-to-jpg.html",
   "./wt-app/en/pdf-to-markdown.html",
+  "./wt-app/en/pdf-to-pdfa.html",
   "./wt-app/en/pdf-to-png.html",
   "./wt-app/en/pdf-to-pptx.html",
   "./wt-app/en/pdf-to-text.html",

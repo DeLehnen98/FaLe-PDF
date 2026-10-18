@@ -1,0 +1,73 @@
+{
+  "id": "pdf-to-pdfa",
+  "category": "convert-from-pdf",
+  "iconSvg": "<path d=\"M4 4h16v5H4z\"/><path d=\"M5 9v11h14V9\"/><path d=\"M10 13h4\"/>",
+  "module": "tools/pdf-to-pdfa.js",
+  "accepts": ["application/pdf", ".pdf"],
+  "multiple": true,
+  "related": ["repair-pdf", "edit-metadata", "flatten-pdf"],
+  "next": ["compress-pdf", "merge-pdf"],
+  "needs": ["pdfjs", "pdflib", "unicodefont"],
+  "de": {
+    "slug": "pdf-in-pdfa",
+    "name": "PDF in PDF/A",
+    "short": "Archiv-PDF für Ämter, Gerichte und Hochschulen erstellen.",
+    "title": "PDF in PDF/A umwandeln – 1b, 2b, 3b, gratis | FaleNetwork",
+    "h1": "PDF in PDF/A umwandeln",
+    "metaDescription": "PDF in PDF/A-2b, PDF/A-3b oder PDF/A-1b umwandeln – für Behörden, Gerichte, Hochschulen und Archive. Text bleibt durchsuchbar. Gratis, ohne Upload.",
+    "lede": "Viele Portale, Gerichte und Hochschulen verlangen PDF/A. Hier wird deine PDF dazu – direkt auf deinem Gerät.",
+    "pickLabel": "PDF auswählen",
+    "primaryButton": "In PDF/A umwandeln",
+    "keywords": ["pdfa", "pdf a", "pdf/a-1b", "pdf/a-2b", "pdf/a-3b", "archiv", "langzeitarchivierung", "archivierung", "behörde", "gericht", "bea", "elster", "abschlussarbeit", "dissertation", "iso 19005"],
+    "steps": [
+      {"title": "PDF auswählen", "text": "Wähle eine oder mehrere PDFs aus. Geschützte PDFs entsperrst du mit ihrem Passwort."},
+      {"title": "Standard wählen", "text": "PDF/A-2b passt fast überall. PDF/A-3b behält Anhänge wie die XML einer E-Rechnung, PDF/A-1b nur, wenn es ausdrücklich verlangt wird."},
+      {"title": "Umwandeln und speichern", "text": "Tippe auf „In PDF/A umwandeln“. Unter dem Ergebnis steht, was angepasst wurde."}
+    ],
+    "why": [
+      {"title": "Text bleibt Text", "text": "Seiten, die schon passen, bleiben unverändert. Nur Seiten mit fehlenden Schriften oder Druckfarben werden zum Bild – mit unsichtbarem Text, damit du weiter suchen und kopieren kannst."},
+      {"title": "Alles, was ein Archiv-PDF braucht", "text": "Farbprofil (sRGB), Metadaten mit PDF/A-Kennung, Dokument-ID; JavaScript, automatische Aktionen, Video und Ton werden entfernt."},
+      {"title": "Ehrlicher Bericht", "text": "Du siehst, welche Seiten zum Bild wurden und warum, und was entfernt wurde – nichts passiert heimlich."},
+      {"title": "Ohne Upload", "text": "Verträge, Zeugnisse und Akten bleiben auf deinem Gerät. Die Umwandlung läuft komplett in deinem Browser."}
+    ],
+    "faq": [
+      {"q": "Welchen Standard soll ich nehmen?", "a": "PDF/A-2b, wenn nichts anderes verlangt wird – das akzeptieren fast alle Portale. PDF/A-3b brauchst du, wenn Anhänge erhalten bleiben sollen, etwa die XML-Datei einer E-Rechnung. PDF/A-1b nur, wenn ein älteres System genau das fordert."},
+      {"q": "Warum wurden manche Seiten zum Bild?", "a": "Ein Archiv-PDF muss alle Schriften enthalten und darf Druckfarben (CMYK) nur mit passendem Farbprofil nutzen. Fehlt so etwas, wird die Seite als Bild übernommen. Der Text liegt unsichtbar darüber, Suchen und Kopieren funktionieren also weiter."},
+      {"q": "Ist das Ergebnis garantiert gültig?", "a": "Die Umwandlung erfüllt die Regeln von PDF/A Stufe B nach bestem Wissen und wird mit dem freien Prüfprogramm veraPDF getestet. Bei sehr ungewöhnlichen Dateien wähle „Alle Seiten als Bild“ – das ist die sicherste Variante."},
+      {"q": "Was ist mit Formularfeldern?", "a": "Felder mit festem Aussehen bleiben erhalten. Felder, die erst der Viewer zeichnen müsste, bekommen ein festes Aussehen oder werden mit ihrem Inhalt Teil der Seite."},
+      {"q": "Bleibt mein Passwort erhalten?", "a": "Nein. PDF/A verbietet Verschlüsselung, deshalb ist das Ergebnis ungeschützt. Bewahre es entsprechend sicher auf."},
+      {"q": "Werden meine Dateien hochgeladen?", "a": "Nein. Alles passiert in deinem Browser, deine Dateien verlassen dein Gerät nicht."}
+    ]
+  },
+  "en": {
+    "slug": "pdf-to-pdfa",
+    "name": "PDF to PDF/A",
+    "short": "Create archive PDFs for authorities, courts and universities.",
+    "title": "Convert PDF to PDF/A – 1b, 2b, 3b, free | FaleNetwork",
+    "h1": "Convert PDF to PDF/A",
+    "metaDescription": "Convert PDFs to PDF/A-2b, PDF/A-3b or PDF/A-1b – for authorities, courts, universities and archives. Text stays searchable. Free and without any upload.",
+    "lede": "Many portals, courts and universities require PDF/A. Turn your PDF into one – right on your device.",
+    "pickLabel": "Choose PDF",
+    "primaryButton": "Convert to PDF/A",
+    "keywords": ["pdfa", "pdf a", "pdf/a-1b", "pdf/a-2b", "pdf/a-3b", "archive", "long-term archiving", "archival", "court filing", "thesis", "iso 19005"],
+    "steps": [
+      {"title": "Choose a PDF", "text": "Pick one or more PDFs. Protected PDFs are unlocked with their password."},
+      {"title": "Choose the standard", "text": "PDF/A-2b fits almost everywhere. PDF/A-3b keeps attachments like the XML of an e-invoice, PDF/A-1b only if it is explicitly required."},
+      {"title": "Convert and save", "text": "Tap “Convert to PDF/A”. The result shows what was adjusted."}
+    ],
+    "why": [
+      {"title": "Text stays text", "text": "Pages that already comply stay unchanged. Only pages with missing fonts or print colours become an image – with invisible text, so you can still search and copy."},
+      {"title": "Everything an archive PDF needs", "text": "Colour profile (sRGB), metadata with the PDF/A identification, a document ID; JavaScript, automatic actions, video and sound are removed."},
+      {"title": "An honest report", "text": "You see which pages became images and why, and what was removed – nothing happens behind your back."},
+      {"title": "No upload", "text": "Contracts, certificates and files stay on your device. The conversion runs entirely in your browser."}
+    ],
+    "faq": [
+      {"q": "Which standard should I use?", "a": "PDF/A-2b unless something else is required – almost all portals accept it. Use PDF/A-3b to keep attachments such as the XML file of an e-invoice, PDF/A-1b only if an older system asks for exactly that."},
+      {"q": "Why did some pages become images?", "a": "An archive PDF must contain all its fonts and may only use print colours (CMYK) with a matching colour profile. If something like that is missing, the page is taken over as an image. The text lies invisibly on top, so searching and copying still work."},
+      {"q": "Is the result guaranteed to be valid?", "a": "The conversion follows the rules of PDF/A level B to the best of our knowledge and is tested with the free veraPDF validator. For very unusual files choose “All pages as images” – that is the safest option."},
+      {"q": "What about form fields?", "a": "Fields with a fixed appearance are kept. Fields the viewer would have to draw first get a fixed appearance or become part of the page with their content."},
+      {"q": "Is my password kept?", "a": "No. PDF/A does not allow encryption, so the result is unprotected. Keep it somewhere safe."},
+      {"q": "Are my files uploaded?", "a": "No. Everything happens in your browser and your files never leave your device."}
+    ]
+  }
+}

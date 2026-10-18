@@ -1,0 +1,79 @@
+# PDF/A tool (network/assets/wt/tools/pdf-to-pdfa.js): converts the test files with the real tool page in Chromium
+# (tests/suites/webtools/test_pdf_to_pdfa.py) and validates every result with veraPDF, the reference validator of the
+# PDF Association (Docker image verapdf/cli). Failed rules are shown as annotations of this run.
+name: PDF/A
+
+on:
+  push:
+    branches: [main]
+    paths: ['network/assets/wt/**', 'network/tools/webtools/specs/pdf-to-pdfa.json', 'tests/suites/webtools/*pdfa*', '.github/workflows/pdfa.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdfa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verapdf:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Test tools (Playwright, pikepdf, poppler, veraPDF)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils > /dev/null
+          python3 -m pip install --quiet --break-system-packages playwright pikepdf reportlab pillow
+          python3 -m playwright install --with-deps chromium > /dev/null
+          docker pull -q verapdf/cli
+          echo "::notice title=veraPDF::$(docker run --rm verapdf/cli --version 2>&1 | head -n 1)"
+
+      - name: Convert test files with the tool page
+        run: |
+          cd tests/suites/webtools
+          python3 pdfa_make_fixtures.py
+          node server.mjs 8710 "$GITHUB_WORKSPACE/network" > server.log 2>&1 &
+          for i in $(seq 1 50); do curl -s -o /dev/null http://127.0.0.1:8710/werkzeuge/ && break; sleep 0.2; done
+          WT_PDFA_OUT="$GITHUB_WORKSPACE/pdfa-out" python3 test_pdf_to_pdfa.py | tee pdfa-test.log
+          echo "::notice title=PDF/A tool test::$(grep -E '^\[(PASS|FAIL)\]' pdfa-test.log)"
+
+      - name: Validate with veraPDF
+        run: |
+          cd pdfa-out
+          ls -la
+          fail=0; n=0
+          for f in *.pdf; do
+            part=$(echo "$f" | sed -E 's/.*__pdfa([123])\.pdf$/\1/')
+            out=$(docker run --rm -v "$PWD:/data" verapdf/cli -f "${part}b" --format text "/data/$f" 2>&1 || true)
+            n=$((n+1))
+            if echo "$out" | grep -q '^PASS'; then
+              echo "PASS PDF/A-${part}b $f"
+            else
+              fail=$((fail+1))
+              echo "::error title=veraPDF PDF/A-${part}b::$f – $(echo "$out" | tr '\n' ' ' | head -c 1500)"
+            fi
+          done
+          echo "::notice title=veraPDF::$((n-fail)) von $n Ergebnissen gültig"
+          [ "$fail" -eq 0 ]
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: pdfa-results
+          path: pdfa-out/
+          if-no-files-found: ignore
+          retention-days: 14

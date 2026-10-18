@@ -23,6 +23,7 @@ ls fixtures/edit_* >/dev/null 2>&1 || python3 edit_make_fixtures.py
 [ -f fixtures/enex/Haushalt.enex ] || python3 enex_make_fixtures.py
 [ -f fixtures/qrscan/qr_photo.jpg ] || python3 qrscan_make_fixtures.py
 [ -f fixtures/vec/logo.png ] || python3 vec_make_fixtures.py
+[ -f fixtures/pdfa/form_noap.pdf ] || python3 pdfa_make_fixtures.py
 # hand-made inputs without a generator (synthetic, committed in fixtures_static/)
 cp -r --update=none fixtures_static/. fixtures/
 rm -rf out && mkdir -p out shots
