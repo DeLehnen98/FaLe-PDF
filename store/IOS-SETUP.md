@@ -4,6 +4,25 @@ Stand: Die iOS-App wird bei jedem Push automatisch gebaut und im iOS-Simulator g
 (`.github/workflows/ios.yml`, macOS-Runner von GitHub – für öffentliche Repos kostenlos). Dafür ist **kein**
 Apple-Konto nötig. Für den App Store braucht es die Schritte unten.
 
+## Ohne iPhone testen
+
+1. **Screenshots ansehen** (ohne Konto, ohne Mac): GitHub → Actions → Lauf „iOS“ → unten unter *Artifacts*
+   **FaLe-PDF-iOS-Screenshots** herunterladen. Darin: Start, Werkzeuge, Dateien, Vorlagen, KI, Einstellungen,
+   eine geöffnete PDF, ein Werkzeug und Dunkelmodus – je auf einem großen iPhone (App-Store-Größe 6,9") und einem
+   iPad 13". Die Bilder taugen auch als App-Store-Screenshots.
+2. **Die App im Browser bedienen**: Artefakt **FaLe-PDF-iOS-Simulator-App** herunterladen und entpacken – darin
+   liegt `FaLe-PDF-Simulator.zip` (Simulator-Build). Diese Datei bei einem Dienst hochladen, der den iOS-Simulator
+   im Browser zeigt, z. B. Appetize (kostenloser, begrenzter Plan; Konto legst du selbst an). Dort lässt sich die
+   App mit Maus und Tastatur bedienen. Es ist ein Testbuild – keine echten Kundendaten verwenden.
+3. **Echte Geräte**: sobald das Apple-Developer-Konto da ist, über **TestFlight** an Freunde/Familie mit iPhone
+   verteilen (bis zu 10.000 Tester per Link). Echte Geräte in der Cloud (z. B. BrowserStack/LambdaTest) brauchen
+   ebenfalls einen signierten Build.
+4. **Web-Version auf einem fremden iPhone**: pdf.fale.network in Safari öffnen, „Zum Home-Bildschirm“ – das zeigt
+   die meisten Funktionen (ohne Dateien-App-Integration).
+
+Bei jedem Push prüft der Workflow automatisch: Start ohne JS-Fehler, Datei „an Ort und Stelle“ öffnen, Original
+ersetzen und einen Rundgang durch alle Hauptbereiche – auf iPhone und iPad.
+
 ## Was die iOS-App kann
 
 - Alles, was die Web-App kann (PDF, Dokumente, Tabellen, Präsentationen, Scannen, OCR, Tresor, Teilen …)

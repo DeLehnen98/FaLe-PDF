@@ -76,6 +76,11 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
                 let me = Unmanaged<FaleIncomingPlugin>.fromOpaque(observer).takeUnretainedValue()
                 if let url = URL(string: "fale-e2e://open?name=fale-e2e-writeback.pdf") { me.handle(url, inPlace: true) }
             }, "dev.fale.pdf.e2e.open" as CFString, nil, .deliverImmediately)
+            // screenshot tour: the test writes a route into Documents/fale-e2e-route.txt and posts dev.fale.pdf.e2e.go
+            CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer, { _, observer, _, _, _ in
+                guard let observer = observer else { return }
+                Unmanaged<FaleIncomingPlugin>.fromOpaque(observer).takeUnretainedValue().e2eGo()
+            }, "dev.fale.pdf.e2e.go" as CFString, nil, .deliverImmediately)
         }
         // cold start: the URL may have arrived before this plugin was loaded
         if let url = ApplicationDelegateProxy.shared.lastURL, !handledLaunchURL {
@@ -105,6 +110,23 @@ public class FaleIncomingPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPLog.print("FaleIncoming: openURL \(u.scheme ?? "?")://… (\(n.name.rawValue))")
         handledLaunchURL = true
         handle(u, inPlace: inPlace)
+    }
+
+    /// Simulator test builds only: navigate the web app to the route in Documents/fale-e2e-route.txt
+    /// (only "#/…" with a small character set – the value is passed to JavaScript as a JSON string, never as code).
+    private func e2eGo() {
+        guard Bundle.main.object(forInfoDictionaryKey: "FaleE2E") as? Bool == true,
+              let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+              let raw = try? String(contentsOf: docs.appendingPathComponent("fale-e2e-route.txt"), encoding: .utf8) else { return }
+        let route = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard route.range(of: "^#/[A-Za-z0-9/_?=&.-]{0,120}$", options: .regularExpression) != nil,
+              let json = try? JSONSerialization.data(withJSONObject: [route]),
+              let arr = String(data: json, encoding: .utf8) else { CAPLog.print("FALE-E2E route rejected"); return }
+        DispatchQueue.main.async {
+            self.bridge?.webView?.evaluateJavaScript("location.hash = \(arr)[0]; void 0") { _, err in
+                CAPLog.print("FALE-E2E route \(route) \(err == nil ? "ok" : "failed")")
+            }
+        }
     }
 
     /// Simulator test builds only (Info.plist FaleE2E = true, set by cap-patch-ios.mjs with FALE_E2E=1):

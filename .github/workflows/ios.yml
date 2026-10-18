@@ -83,21 +83,57 @@ jobs:
           fi
           echo "::notice title=iOS build::App für den Simulator gebaut"
 
-      - name: Simulator test (start, open a file, write back)
+      - name: Simulator test (start, open a file, write back, screenshot tour)
         run: |
           APP=build/Build/Products/Debug-iphonesimulator/App.app
           test -d "$APP" || { echo "::error title=iOS test::App.app nicht gefunden"; exit 1; }
-          UDID=$(xcrun simctl list devices available --json | python3 -c "
-          import json, sys
-          d = json.load(sys.stdin)['devices']
-          c = [x for k, v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')]
-          print(c[-1]['udid'] if c else '')")
+          UDID=$(python3 scripts/ios-e2e/pick_sim.py iphone)
           test -n "$UDID" || { echo "::error title=iOS test::kein iPhone-Simulator verfügbar"; exit 1; }
+          echo "::notice title=iOS Simulator::iPhone: $(xcrun simctl list devices | grep "$UDID" | head -n 1 | xargs)"
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
           xcrun simctl install "$UDID" "$APP"
           echo "::notice title=iOS Info.plist::$(plutil -extract CFBundleURLTypes json -o - "$APP/Info.plist" 2>&1 | head -c 300) · FaleE2E=$(plutil -extract FaleE2E raw -o - "$APP/Info.plist" 2>&1) · Szene=$(plutil -extract UIApplicationSceneManifest json -o - "$APP/Info.plist" 2>&1 | head -c 200)"
-          python3 scripts/ios-e2e/run.py "$UDID" dev.fale.pdf
+          python3 scripts/ios-e2e/run.py "$UDID" dev.fale.pdf iphone
+          xcrun simctl shutdown "$UDID" || true
+
+      - name: iPad test (same checks + screenshots)
+        run: |
+          APP=build/Build/Products/Debug-iphonesimulator/App.app
+          UDID=$(python3 scripts/ios-e2e/pick_sim.py ipad)
+          test -n "$UDID" || { echo "::warning title=iPad::kein iPad-Simulator verfügbar"; exit 0; }
+          echo "::notice title=iOS Simulator::iPad: $(xcrun simctl list devices | grep "$UDID" | head -n 1 | xargs)"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" "$APP"
+          python3 scripts/ios-e2e/run.py "$UDID" dev.fale.pdf ipad
+          xcrun simctl shutdown "$UDID" || true
+
+      # Try the app in a browser without an iPhone: upload FaLe-PDF-Simulator.zip (inside the downloaded artifact)
+      # to a simulator-in-the-browser service such as Appetize (see store/IOS-SETUP.md, „Ohne iPhone testen“).
+      - name: Package simulator app
+        if: success()
+        run: |
+          mkdir -p ios-sim-app
+          ditto -c -k --sequesterRsrc --keepParent build/Build/Products/Debug-iphonesimulator/App.app ios-sim-app/FaLe-PDF-Simulator.zip
+          echo "::notice title=iOS Simulator-App::FaLe-PDF-Simulator.zip $(du -h ios-sim-app/FaLe-PDF-Simulator.zip | cut -f1) – zum Ausprobieren im Browser (Artefakt FaLe-PDF-iOS-Simulator-App)"
+
+      - name: Upload simulator app
+        if: success()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: FaLe-PDF-iOS-Simulator-App
+          path: ios-sim-app/FaLe-PDF-Simulator.zip
+          retention-days: 30
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: FaLe-PDF-iOS-Screenshots
+          path: ios-e2e-out/*.png
+          if-no-files-found: ignore
+          retention-days: 30
 
       - name: Upload test output
         if: always()
@@ -106,6 +142,6 @@ jobs:
           name: ios-sim-test
           path: |
             xcodebuild.log
-            ios-e2e-out/
+            ios-e2e-out/*.txt
           if-no-files-found: ignore
           retention-days: 14

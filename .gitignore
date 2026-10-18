@@ -31,3 +31,4 @@ apk/
 
 # FaLe One Android app: web copy of one/ (scripts/cap-patch-one-android.mjs --web); one-android/android/ is covered by android/ above
 one-android/www/
+/ios-sim-app/
