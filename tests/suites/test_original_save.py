@@ -13,7 +13,7 @@ with the bytes staged in the cache; read-only grant → no button. English strin
 
 Run: python3 test_original_save.py   (static server: python3 -m http.server 8797 --bind 127.0.0.1 in /home/claude/FalePDF)
 """
-import base64, os, sys
+import base64, os, re, sys
 from playwright.sync_api import sync_playwright
 
 URL = os.environ.get('APP_URL', 'http://127.0.0.1:8797/')
@@ -79,7 +79,7 @@ window.Capacitor = { isNativePlatform: () => true, getPlatform: () => 'android',
 
 def errors_of(page):
     errs = []
-    page.on('pageerror', lambda e: errs.append(str(e)))
+    page.on('pageerror', lambda e: errs.append(str(e) + ' @ ' + (e.stack or '')[:600]))
     page.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and 'invalid.invalid' not in m.text and errs.append(m.text))
     return errs
 
@@ -150,6 +150,7 @@ def main():
 
         def office():
             st['doc'] = page.evaluate(IMPORT_OPFS, ['brief.docx', b64(os.path.join(OD, 'bericht.docx')), 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+            st['docBefore'] = page.evaluate(OPFS_BYTES, 'brief.docx')
             page.goto(URL + f"#/bearbeiten/{st['doc']}"); page.wait_for_selector('.doc-page[contenteditable]', timeout=15000); page.wait_for_timeout(800)
             page.locator('[data-office-more]').click(); page.wait_for_selector('.menu', timeout=3000)
             check('editor menu: „Im Original speichern“', 'Im Original speichern („brief.docx“)' in page.locator('.menu').inner_text())
@@ -160,9 +161,19 @@ def main():
             btn.wait_for(timeout=8000)
             btn.click()
             page.wait_for_selector('dialog.dlg', timeout=5000)
+            dlg = page.locator('dialog.dlg').inner_text()
+            check('office confirm: previous version is kept as „… (vorher)“', '„brief (vorher).docx“' in dlg and 'beide Fassungen' not in dlg, dlg)
             page.locator('dialog.dlg button.btn-primary').last.click()
             page.wait_for_function("() => document.querySelector('#toasts').innerText.includes('aktualisiert')", timeout=10000)
             check('docx original replaced after save', page.evaluate(OPFS_BYTES, 'brief.docx') == page.evaluate(LIB_BYTES, st['doc']))
+            prev = page.evaluate("async () => (await (await import('./js/db.js')).listFiles()).filter(d => d.name === 'brief (vorher).docx').map(d => d.id)")
+            check('previous original kept as one library file with the exact old bytes', len(prev) == 1 and page.evaluate(LIB_BYTES, prev[0]).split(':')[1] == st['docBefore'].split(':')[1], prev)
+            # quiet autosave never touches the original (even after „Auch Original ersetzen“)
+            before_auto = page.evaluate(OPFS_BYTES, 'brief.docx')
+            page.locator('.doc-page[contenteditable]').click(); page.keyboard.press('Control+End'); page.keyboard.type(' Autosave-Text.')
+            page.evaluate("async () => (await import('./js/screen.js')).currentScreen().officeSave({ quiet: true })")
+            page.wait_for_timeout(600)
+            check('quiet autosave: library updated, original untouched', page.evaluate(OPFS_BYTES, 'brief.docx') == before_auto and page.evaluate(LIB_BYTES, st['doc']) != before_auto)
             page.locator('.doc-page[contenteditable]').click(); page.keyboard.press('Control+End'); page.keyboard.type(' Ergänzung zwei.')
             page.locator('[data-office-save]').click()
             page.wait_for_function("() => document.querySelector('#toasts').innerText.includes('Gespeichert – auch in')", timeout=10000)
@@ -219,7 +230,7 @@ def main():
                 page.locator('dialog.dlg button.btn-primary').last.click()
                 page.wait_for_function("() => window.__fi.calls.length > 0", timeout=10000)
                 c = page.evaluate('window.__fi.calls'); w = page.evaluate('window.__fi.fsWrites')
-                check('writeBack(token, cache path) after staging the bytes', c[0] == ['writeBack', 'tok-123', 'writeback/tok-123.pdf'] and w and w[0][1] == 'writeback/tok-123.pdf' and w[0][2] == 'CACHE', f'{c} {w}')
+                check('writeBack(token, unique cache path) after staging the bytes', c[0][:2] == ['writeBack', 'tok-123'] and re.match(r'^writeback/tok-123-[a-z0-9]+\.pdf$', c[0][2]) and w and w[0][1] == c[0][2] and w[0][2] == 'CACHE', f'{c} {w}')
                 page.wait_for_function("() => document.querySelector('#toasts').innerText.includes('aktualisiert')", timeout=5000)
                 page.screenshot(path=os.path.join(OUT, 'android_result.png'))
             step(f'android writable={writable}', native)

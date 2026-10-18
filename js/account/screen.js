@@ -514,9 +514,9 @@ async function renderDevices(box) {
   list.sort((a, b) => (a.device_id === me ? -1 : b.device_id === me ? 1 : 0));
   for (const d of list) {
     const mine = d.device_id === me;
-    const row = h(`<div class="acct-dev"><span class="acct-dev-ic">${aicon(d.platform === 'android' ? 'phone' : 'devices')}</span>
+    const row = h(`<div class="acct-dev"><span class="acct-dev-ic">${aicon(d.platform === 'android' || d.platform === 'ios' ? 'phone' : 'devices')}</span>
       <div class="acct-dev-text"><strong><span data-no-i18n>${esc(d.name || 'Gerät')}</span>${mine ? ' <span class="badge">Dieses Gerät</span>' : ''}</strong>
-      <span class="muted small">${d.platform === 'android' ? 'Android-App' : 'Web'} · zuletzt aktiv ${esc(ago(Date.parse(d.last_seen_at)))}</span></div>
+      <span class="muted small">${d.platform === 'android' ? 'Android-App' : d.platform === 'ios' ? 'iPhone-App' : 'Web'} · zuletzt aktiv ${esc(ago(Date.parse(d.last_seen_at)))}</span></div>
       ${mine ? `<button class="btn btn-ghost btn-sm" type="button" data-rename>${oicon('edit')} Umbenennen</button>` : `<button class="btn btn-ghost btn-sm" type="button" data-revoke>${aicon('logout')} Abmelden</button>`}</div>`);
     if (mine) $('[data-rename]', row).addEventListener('click', async () => {
       const { promptDialog } = await import('../ui.js');

@@ -9,7 +9,10 @@
     "android:add": "node scripts/vercel-build.mjs --native && npx cap add android && node scripts/cap-patch-android.mjs",
     "android:sync": "node scripts/vercel-build.mjs --native && npx cap sync android && node scripts/cap-patch-android.mjs",
     "android:patch": "node scripts/cap-patch-android.mjs",
-    "android:open": "npx cap open android"
+    "android:open": "npx cap open android",
+    "ios:add": "node scripts/vercel-build.mjs --native && npx cap add ios --packagemanager CocoaPods && node scripts/cap-patch-ios.mjs && cd ios/App && pod install",
+    "ios:sync": "node scripts/vercel-build.mjs --native && npx cap sync ios && node scripts/cap-patch-ios.mjs && cd ios/App && pod install",
+    "ios:open": "npx cap open ios"
   },
   "dependencies": {
     "pdfjs-dist": "6.2.108",
@@ -26,6 +29,7 @@
     "@capacitor/core": "^8.0.0",
     "@capacitor/filesystem": "^8.0.0",
     "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
     "@capacitor/local-notifications": "^8.0.0",
     "@capacitor/share": "^8.0.0",
     "@capgo/native-purchases": "^8.9.5",

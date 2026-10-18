@@ -2,7 +2,7 @@
 import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, confirmDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
-import { isNative } from '../platform.js';
+import { isNative, platformName } from '../platform.js';
 import * as C from './client.js';
 import { statusCard, docChip, getDoc } from './common.js';
 import { AI_FEATURES } from './entry.js';
@@ -126,6 +126,16 @@ function renderActive(P, box, q) {
     <div class="card settings-group"><div class="settings-row"><div class="label"><strong>Vor der Verlängerung erinnern</strong><span>Eine Mitteilung drei Tage, bevor das Abo verlängert wird.</span></div>
       <label class="switch"><input type="checkbox" data-remind ${P.reminderOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Vor der Verlängerung erinnern</span></label></div></div>`;
   $('[data-manage]', box).addEventListener('click', () => P.manage().catch(e => errorToast(e)));
+  // stale (cancelled in Play / renewed since)? re-check once a day, then show the fresh state
+  if (!box.dataset.refreshed) {
+    box.dataset.refreshed = '1';
+    const before = JSON.stringify(info);
+    P.refreshInfo().then(async fresh => {
+      if (JSON.stringify(fresh || {}) === before || !box.isConnected) return;
+      const q2 = await C.refreshQuota().catch(() => null);
+      if (q2 && q2.plus) renderActive(P, box, q2);
+    }).catch(() => {});
+  }
   $('[data-remind]', box).addEventListener('change', async e => {
     await P.setReminder(e.target.checked);
     toast(e.target.checked ? 'Du wirst vor der Verlängerung erinnert.' : 'Keine Erinnerung vor der Verlängerung.', 'success');
@@ -173,7 +183,7 @@ export async function mountSettings(screen) {
           <label class="switch"><input type="checkbox" data-cloud ${C.cloudDisabled() ? '' : 'checked'}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Cloud-KI verwenden</span></label></div>
         <div class="settings-row"><div class="label"><strong>Einwilligung</strong><span>${c ? `Erteilt am ${new Date(c.at).toLocaleDateString('de-DE')}.` : 'Noch nicht erteilt – wird beim ersten Mal abgefragt.'}</span></div>
           ${c ? '<button class="btn btn-danger-ghost btn-sm" type="button" data-revoke>Widerrufen</button>' : ''}</div>
-        ${isNative() ? '<div class="settings-row" data-adrow><div class="label"><strong>Werbe-Einwilligung</strong><span>Für freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.</span></div><button class="btn btn-ghost btn-sm" type="button" data-adprivacy>Ändern</button></div>' : ''}
+        ${isNative() && platformName() !== 'ios' ? '<div class="settings-row" data-adrow><div class="label"><strong>Werbe-Einwilligung</strong><span>Für freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.</span></div><button class="btn btn-ghost btn-sm" type="button" data-adprivacy>Ändern</button></div>' : ''}
         <div class="settings-row"><div class="label"><strong>Datenschutz</strong><span>Was bei der Cloud-KI verarbeitet wird – und was nicht.</span></div><button class="btn btn-ghost btn-sm" type="button" data-privacy>Lesen</button></div>
       </div>
       <div class="card card-pad ai-facts"><strong>So schützt FaLe PDF deine Daten bei der KI</strong><ul>

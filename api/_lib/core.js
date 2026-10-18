@@ -286,7 +286,21 @@ async function verifyPlaySubscription(cfg, purchaseToken, fetchImpl = fetch) {
   const okState = ['SUBSCRIPTION_STATE_ACTIVE', 'SUBSCRIPTION_STATE_IN_GRACE_PERIOD', 'SUBSCRIPTION_STATE_CANCELED'].includes(state);
   // CANCELED = auto-renew off but still paid until expiry → active until expiryTime.
   const active = okState && best && best.exp > Date.now();
+  // Play refunds purchases that are not acknowledged within 3 days – do it here, independent of the app
+  if (active && j.acknowledgementState === 'ACKNOWLEDGEMENT_STATE_PENDING' && best.productId) {
+    await acknowledgePlay(cfg, at, `purchases/subscriptions/${encodeURIComponent(best.productId)}/tokens/${encodeURIComponent(purchaseToken)}:acknowledge`, fetchImpl);
+  }
   return { active: !!active, state, productId: best && best.productId, expiresAt: best ? new Date(best.exp).toISOString() : null };
+}
+
+/** POST …:acknowledge – failures are logged, never fatal (the app/plugin may have acknowledged already). */
+async function acknowledgePlay(cfg, at, path, fetchImpl) {
+  try {
+    const r = await fetchImpl(`https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(cfg.playPackage)}/${path}`, {
+      method: 'POST', headers: { Authorization: `Bearer ${at}`, 'Content-Type': 'application/json' }, body: '{}',
+    });
+    if (!r.ok) console.error('[fale-api] play acknowledge http', r.status);
+  } catch (e) { console.error('[fale-api] play acknowledge failed'); }
 }
 
 /** "Für immer" never expires – stored with a far-away date so the entitlement checks stay the same. */
@@ -301,6 +315,9 @@ async function verifyPlayProduct(cfg, productId, purchaseToken, fetchImpl = fetc
   if (!r.ok) throw new Error('play http ' + r.status);
   const j = await r.json();
   const state = Number(j.purchaseState);   // 0 purchased, 1 canceled (refunded), 2 pending
+  if (state === 0 && Number(j.acknowledgementState) === 0) {
+    await acknowledgePlay(cfg, at, `purchases/products/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(purchaseToken)}:acknowledge`, fetchImpl);
+  }
   return { active: state === 0, state: ['purchased', 'canceled', 'pending'][state] || 'unknown', productId: j.productId || productId, expiresAt: state === 0 ? LIFETIME_UNTIL : null };
 }
 

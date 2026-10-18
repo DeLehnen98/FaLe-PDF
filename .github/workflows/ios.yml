@@ -1,0 +1,102 @@
+# Builds the FaLe PDF iPhone/iPad app (Capacitor iOS) for the iOS Simulator and tests it there – no Apple account
+# needed for this. The ios/ folder is not committed: it is generated on every run and patched deterministically by
+# scripts/cap-patch-ios.mjs; the app's own native code lives in ios-native/ (CocoaPods pod "FaleNative").
+# App Store builds need an Apple Developer account + signing (see store/IOS-SETUP.md) and are not made here yet.
+name: iOS
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['network/**', 'one/**', 'one-android/**', 'store/**', 'docs/**', '**/*.md']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: macos-26
+    timeout-minutes: 60
+    env:
+      LOG: ${{ github.workspace }}/../ios-build.log
+    defaults:
+      run:
+        shell: bash -eo pipefail {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version | tee -a "$LOG"
+          pod --version | tee -a "$LOG"
+          echo "::notice title=iOS toolchain::$(xcodebuild -version | tr '\n' ' ') · CocoaPods $(pod --version)"
+
+      - name: Install npm packages
+        run: npm install --no-audit --no-fund 2>&1 | tail -n 20 | tee -a "$LOG"
+
+      - name: Build web app (native target)
+        run: node scripts/vercel-build.mjs --native 2>&1 | tee -a "$LOG"
+
+      - name: Create iOS project + patch + pods
+        run: |
+          npx cap add ios --packagemanager CocoaPods 2>&1 | tee -a "$LOG" || true
+          test -d ios/App || { echo "::error title=iOS::cap add ios hat kein Projekt erzeugt"; exit 1; }
+          node scripts/cap-patch-ios.mjs 2>&1 | tee -a "$LOG"
+          npx cap sync ios 2>&1 | tee -a "$LOG"
+          node scripts/cap-patch-ios.mjs 2>&1 | tee -a "$LOG"   # sync may rewrite parts – patch again (idempotent)
+          (cd ios/App && pod install 2>&1 | tail -n 30) | tee -a "$LOG"
+
+      - name: Build for the simulator (no signing)
+        run: |
+          set +e
+          xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO build > xcodebuild.log 2>&1
+          rc=$?
+          set -e
+          tail -n 40 xcodebuild.log
+          if [ $rc -ne 0 ]; then
+            # errors as annotations (readable without downloading logs)
+            grep -E "error:|fatal error|Undefined symbol|ld: " xcodebuild.log | sort -u | head -n 25 | while IFS= read -r l; do
+              echo "::error title=iOS build::${l//$'\n'/ }"
+            done
+            exit $rc
+          fi
+          echo "::notice title=iOS build::App für den Simulator gebaut"
+
+      - name: Simulator test (start, open a file, write back)
+        run: |
+          APP=build/Build/Products/Debug-iphonesimulator/App.app
+          test -d "$APP" || { echo "::error title=iOS test::App.app nicht gefunden"; exit 1; }
+          UDID=$(xcrun simctl list devices available --json | python3 -c "
+          import json, sys
+          d = json.load(sys.stdin)['devices']
+          c = [x for k, v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')]
+          print(c[-1]['udid'] if c else '')")
+          test -n "$UDID" || { echo "::error title=iOS test::kein iPhone-Simulator verfügbar"; exit 1; }
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" "$APP"
+          python3 scripts/ios-e2e/run.py "$UDID" dev.fale.pdf
+
+      - name: Upload test output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ios-sim-test
+          path: |
+            xcodebuild.log
+            ios-e2e-out/
+          if-no-files-found: ignore
+          retention-days: 14

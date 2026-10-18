@@ -55,6 +55,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
   const shell = createShell(screen, {
     id, name, kind,
     serialize: () => serialize(kind),
+    snapshot: () => serialize(kind, { quiet: true }), // crash recovery: no toast
     menu: () => [
       { label: 'Als PDF exportieren', icon: 'kpdf', onClick: exportPdf },
       { label: 'Seite einrichten …', icon: 'pageSetup', onClick: () => pageSetup() },
@@ -75,9 +76,9 @@ export async function mountSheet(screen, { id = null, template = null }) {
     ],
   });
 
-  async function serialize(k) {
+  async function serialize(k, { quiet = false } = {}) {
     if (k === 'csv') {
-      if (kind === 'csv' && wb.sheets.length > 1) toast('CSV speichert nur das aktuelle Blatt.', 'info');
+      if (!quiet && kind === 'csv' && wb.sheets.length > 1) toast('CSV speichert nur das aktuelle Blatt.', 'info');
       return (await import('./csv.js')).writeCsv(kind === 'csv' ? wb.sheets[0] : sh, wb.csv || {});
     }
     return (await import('./xlsx-write.js')).writeXlsx(wb, { title: stripExt(shell.name) });

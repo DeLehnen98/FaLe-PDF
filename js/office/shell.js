@@ -58,7 +58,8 @@ export function createShell(screen, opts) {
   const onUnload = e => { if (S.dirty) { e.preventDefault(); e.returnValue = ''; } };
   window.addEventListener('beforeunload', onUnload);
   screen.isDirty = () => S.dirty;
-  const rec = attachRecovery(S, () => opts.serialize());
+  screen.officeSave = o => save(o); // used by tests and the app's own flows
+  const rec = attachRecovery(S, () => (opts.snapshot || opts.serialize)()); // snapshot: serializer without side effects
   screen.officeCleanup = () => { document.removeEventListener('keydown', onKey); window.removeEventListener('beforeunload', onUnload); rec.dispose(); };
 
   async function rename() {
@@ -90,9 +91,9 @@ export function createShell(screen, opts) {
         setHashSilently(`#/bearbeiten/${meta.id}`);
       }
       const orig = asCopy ? null : await originInfo();
-      if (orig && S.autoOriginal) {
+      if (orig && S.autoOriginal && !quiet) { // quiet autosaves never touch the original
         const ok = await writeOriginalQuiet(meta.id);
-        if (!quiet) toast(ok ? `Gespeichert – auch in „${orig.name}“` : 'Gespeichert (nur in FaLe PDF)', ok ? 'success' : 'info');
+        toast(ok ? `Gespeichert – auch in „${orig.name}“` : 'Gespeichert (nur in FaLe PDF)', ok ? 'success' : 'info');
       } else if (!quiet) {
         toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success', orig ? { timeout: 8000, action: { label: 'Auch Original ersetzen', onClick: () => replaceOriginal(meta.id) } } : {});
       }
@@ -115,7 +116,7 @@ export function createShell(screen, opts) {
   }
   async function replaceOriginal(id) {
     const O = await import('../origin.js');
-    const ok = await O.replaceOriginalFlow(id, { docId: id, ext: KINDS[S.kind].ext });
+    const ok = await O.replaceOriginalFlow(id, { docId: id, ext: KINDS[S.kind].ext, keepBefore: openedBlob });
     if (ok) S.autoOriginal = true; // from now on every save updates the original too (this editor session)
     return ok;
   }
@@ -123,7 +124,10 @@ export function createShell(screen, opts) {
     try { const O = await import('../origin.js'); await O.writeOriginal(id, await db.getFile(id)); return true; } catch (e) { console.warn('original', e); return false; }
   }
 
-  originInfo().then(o => { origCache = o; });
+  // the file as it was when the editor opened – kept as a copy before the original is replaced for the first time
+  // (the editor may not represent everything, e.g. animations or pivot tables)
+  let openedBlob = null;
+  originInfo().then(async o => { origCache = o; if (o && S.id) openedBlob = await db.getFile(S.id).catch(() => null); });
 
   function markDirty() { rec.touch(); if (!S.dirty) { S.dirty = true; paint(); } }
   paint();

@@ -35,6 +35,12 @@ export function isNative() {
   } catch { return false; }
 }
 
+/** The iPhone/iPad app (Capacitor iOS). */
+export const isIOSApp = () => isNative() && platformName() === 'ios';
+const isIPad = () => { try { return /iPad/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1); } catch { return false; } };
+// iOS: straight into the app's Documents folder – shown in the Files app as „Auf meinem iPhone › FaLe PDF“
+const saveDir = () => (isIOSApp() ? '' : SAVE_DIR + '/');
+
 export function platformName() {
   if (!isNative()) return 'web';
   try { return window.Capacitor.getPlatform(); } catch { return 'android'; }
@@ -158,8 +164,8 @@ export async function saveFile(blobOrBytes, filename, mime) {
   if (fs) {
     try {
       const target = await uniqueName(fs, name);
-      await writeChunked(fs, blob, `${SAVE_DIR}/${target}`, 'DOCUMENTS');
-      const where = `Dokumente/${SAVE_DIR}/${target}`;
+      await writeChunked(fs, blob, `${saveDir()}${target}`, 'DOCUMENTS');
+      const where = isIOSApp() ? `${t(isIPad() ? 'Dateien › Auf meinem iPad › FaLe PDF' : 'Dateien › Auf meinem iPhone › FaLe PDF')} › ${target}` : `Dokumente/${SAVE_DIR}/${target}`;
       uiToast(`Gespeichert in „${where}“`, 'success', { timeout: 5200 });
       return { ok: true, where };
     } catch (err) {
@@ -178,7 +184,7 @@ async function uniqueName(fs, name) {
   for (let i = 1; i < 100; i++) {
     const cand = i === 1 ? name : `${stem} (${i})${ext}`;
     try {
-      await fs.stat({ path: `${SAVE_DIR}/${cand}`, directory: 'DOCUMENTS' });
+      await fs.stat({ path: `${saveDir()}${cand}`, directory: 'DOCUMENTS' });
     } catch {
       return cand; // does not exist yet
     }
@@ -354,7 +360,8 @@ async function showWebNotification(r) {
  * Schedule a reminder. Always stored in localStorage (so the app can show due
  * reminders in-app). Returns true when a system notification was scheduled.
  */
-export async function scheduleNotification({ id, at, title, body = '', route = '' } = {}) {
+/** prompt=false: never asks for the notification permission (schedules only when it was granted before). */
+export async function scheduleNotification({ id, at, title, body = '', route = '', prompt = true } = {}) {
   if (id == null || !title) throw new Error('scheduleNotification: id und title sind nötig');
   const when = at instanceof Date ? at.getTime() : new Date(at).getTime();
   if (!Number.isFinite(when)) throw new Error('scheduleNotification: ungültiges Datum');
@@ -366,7 +373,7 @@ export async function scheduleNotification({ id, at, title, body = '', route = '
     if (!ln) return false;
     try {
       let perm = await ln.checkPermissions();
-      if (perm.display !== 'granted') perm = await ln.requestPermissions();
+      if (perm.display !== 'granted' && prompt) perm = await ln.requestPermissions();
       if (perm.display !== 'granted') return false;
       await ln.schedule({ notifications: [{
         id: rec.nid, title: rec.title, body: rec.body,
@@ -379,7 +386,7 @@ export async function scheduleNotification({ id, at, title, body = '', route = '
   }
   if (!('Notification' in window)) return false;
   try {
-    if (Notification.permission === 'default') await Notification.requestPermission();
+    if (Notification.permission === 'default' && prompt) await Notification.requestPermission();
   } catch { /* ignore */ }
   if (Notification.permission !== 'granted') return false;
   return armWebTimer(rec);

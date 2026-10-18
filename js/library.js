@@ -86,7 +86,9 @@ async function importOther(file, kind, { name, source = 'Gerät', silent = false
   const id = db.uid();
   const now = Date.now();
   const type = kind === 'image' ? (file.type || 'image/png') : KINDS[kind].mime;
-  const blob = file instanceof Blob && file.type === type ? file : new Blob([await file.arrayBuffer()], { type });
+  // always a real copy: a File from a file handle is only a snapshot reference – it becomes unreadable once the
+  // original changes on disk (e.g. after „Original ersetzen“)
+  const blob = new Blob([await file.arrayBuffer()], { type });
   const meta = { id, kind, name: finalName, size: blob.size, pages: null, createdAt: now, openedAt: now, starred: false, thumb: null, source, textReady: false };
   await db.addDoc(meta, blob);
   track(source === 'Erstellt' ? 'files_created' : 'files_imported');

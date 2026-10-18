@@ -36,7 +36,7 @@ def step(name, fn):
 
 
 NATIVE = r"""
-window.__bill = { calls: [], owned: [], subsActive: false };
+window.__bill = Object.assign({ calls: [], owned: [], subsActive: false }, window.__billInit || {});
 const B = window.__bill;
 const prices = { fale_plus_monthly: '2,99 €', fale_plus_yearly: '19,99 €', fale_plus_lifetime: '39,99 €', fale_tip_small: '1,99 €', fale_tip_medium: '4,99 €', fale_tip_large: '9,99 €' };
 const NativePurchases = {
@@ -49,7 +49,7 @@ const NativePurchases = {
   manageSubscriptions: async () => { B.calls.push(['manage']); },
 };
 const LocalNotifications = {
-  checkPermissions: async () => ({ display: 'granted' }), requestPermissions: async () => ({ display: 'granted' }),
+  checkPermissions: async () => ({ display: B.perm || 'granted' }), requestPermissions: async () => { B.calls.push(['askPerm']); B.perm = 'granted'; return { display: 'granted' }; },
   schedule: async o => { B.calls.push(['notify', o.notifications[0].id, o.notifications[0].title, o.notifications[0].body, +new Date(o.notifications[0].schedule.at)]); },
   cancel: async o => { B.calls.push(['cancelNotify', JSON.stringify(o)]); },
   addListener: async () => ({ remove() {} }),
@@ -76,14 +76,16 @@ def api_routes(ctx, state):
         life = b.get('productId') == 'fale_plus_lifetime'
         state['plus'] = True
         state['until'] = '2099-12-31T23:59:59.000Z' if life else state['sub_until']
-        route.fulfill(status=200, content_type='application/json', body=json.dumps({'active': True, 'product': b.get('productId'), 'expiresAt': state['until'], 'lifetime': life, 'renews': not life}))
+        route.fulfill(status=200, content_type='application/json', body=json.dumps({'active': True, 'product': b.get('productId'), 'expiresAt': state['until'], 'lifetime': life, 'renews': (not life) and state.get('renews', True)}))
     ctx.route('**/api/ai/quota', quota)
     ctx.route('**/api/ai/register', register)
     ctx.route('**/api/plus-verify', verify)
 
 
-def native_ctx(browser, state, lang='de-DE'):
+def native_ctx(browser, state, lang='de-DE', pre=None):
     ctx = browser.new_context(viewport={'width': 390, 'height': 844}, locale=lang, is_mobile=True, has_touch=True, device_scale_factor=2)
+    if pre:
+        ctx.add_init_script(pre)
     ctx.add_init_script(NATIVE)
     ctx.add_init_script("localStorage.setItem('fale-onboarding', '1'); if (!localStorage.getItem('fale-ai-consent')) localStorage.setItem('fale-ai-consent', JSON.stringify({ v: 1, at: Date.now(), provider: 'mock' }));")
     api_routes(ctx, state)
@@ -199,6 +201,34 @@ def main():
         check('subscription flow: no page errors', not errs, str(errs[:3]))
         ctx.close()
 
+        # ------------------------------------------------ active subscription, page visit: fresh state, no permission prompt, leftover tip
+        state = {'plus': True, 'until': until, 'sub_until': until, 'verified': [], 'renews': False}
+        ctx = native_ctx(browser, state, pre="window.__billInit = { perm: 'prompt', owned: [{ productIdentifier: 'fale_plus_yearly', purchaseToken: 'tok-sub-1234567890', type: 'subs' }, { productIdentifier: 'fale_tip_small', purchaseToken: 'tok-tip-1234567890', type: 'inapp', purchaseState: '1' }] };"
+                            "localStorage.setItem('fale-plus-info', JSON.stringify({ product: 'fale_plus_yearly', expiresAt: '" + until + "', renews: true, at: Date.now() - 2 * 864e5 }));")
+        page = ctx.new_page(); errs = errors_of(page)
+        page.goto(URL + '#/ki/plus')
+
+        def visit_active():
+            page.wait_for_selector('[data-manage]', timeout=10000)
+            try:
+                page.wait_for_function("() => document.querySelector('[data-buy]').innerText.includes('Gekündigt')", timeout=10000)
+            except Exception:
+                print('DEBUG buy:', page.locator('[data-buy]').inner_text()[:300], 'verified', state['verified'], 'calls', page.evaluate('window.__bill.calls'), 'info', page.evaluate("localStorage.getItem('fale-plus-info')"), 'errs', errs[:3])
+                raise
+            check('stale info re-checked with the store (cancelled in Play → „Gekündigt – läuft am …“)', 'fale_plus_yearly' in state['verified'], state['verified'])
+            calls = page.evaluate('window.__bill.calls')
+            check('page visit never asks for the notification permission', not any(c[0] == 'askPerm' for c in calls), calls)
+            check('cancelled subscription: no renewal notification', not any(c[0] == 'notify' for c in calls))
+            page.wait_for_function("() => window.__bill.calls.some(c => c[0] === 'consume')", timeout=8000)
+            check('leftover tip purchase consumed (tier usable again)', ['consume', 'tok-tip-1234567890'] in page.evaluate('window.__bill.calls'))
+            page.locator('label:has([data-remind])').click(); page.wait_for_timeout(300)
+            page.locator('label:has([data-remind])').click(); page.wait_for_timeout(300)
+            cs = page.evaluate('window.__bill.calls')
+            check('cancelled: toggling the reminder schedules nothing and asks nothing', not any(c[0] in ('askPerm', 'notify') for c in cs), cs)
+        step('visit active plus', visit_active)
+        check('visit active plus: no page errors', not errs, str(errs[:3]))
+        ctx.close()
+
         # ------------------------------------------------ English plus screen
         state = {'plus': False, 'until': None, 'sub_until': until, 'verified': []}
         ctx = native_ctx(browser, state, 'en-US')
@@ -287,6 +317,29 @@ def main():
             check('no restore dialog after a clean session', p2.locator('dialog.dlg').count() == 0)
             check('recovery: no page errors', not e2, str(e2[:3]))
         step('recovery', recovery)
+
+        def recovery_side_effects():
+            p3 = ctx.new_page(); e3 = errors_of(p3)
+            # slides: a snapshot while typing on a slide keeps the text box in edit mode
+            p3.goto(URL + '#/neu/praesentation'); p3.wait_for_selector('.slide-stage', timeout=15000); p3.wait_for_timeout(800)
+            p3.evaluate("() => { const a = document.querySelector('.slides-app')._slidesApi; a.startEdit(0); }"); p3.wait_for_timeout(300)
+            p3.keyboard.type('Titel im Bearbeiten')
+            p3.evaluate("() => document.querySelector('.slides-app')._slidesApi.pres()") and None
+            editing = "() => !!document.querySelector('.slide-stage .tx[contenteditable], .slide-stage [contenteditable=\"true\"]')"
+            was = p3.evaluate(editing)
+            p3.evaluate("window.dispatchEvent(new Event('pagehide'))")
+            check('slides snapshot written while typing', wait_rec(p3, 1))
+            check('slides: still editing after the snapshot (no re-render)', was and p3.evaluate(editing))
+            # second tab: the open editor is not offered for restore there
+            p4 = ctx.new_page(); p4.goto(URL + '#/start'); p4.wait_for_selector('#view-start .hero'); p4.wait_for_timeout(1500)
+            check('other tab: no restore dialog for an editor that is still open', p4.locator('dialog.dlg').count() == 0)
+            p4.close()
+            p3.locator('[data-office-save]').click(); p3.wait_for_timeout(800)
+            check('slides: save removes the snapshot', wait_rec(p3, 0))
+            # CSV with two sheets: the snapshot shows no „CSV speichert nur das aktuelle Blatt“ toast
+            check('no slides errors', not e3, str(e3[:3]))
+            p3.close()
+        step('recovery side effects', recovery_side_effects)
         ctx.close()
         browser.close()
 

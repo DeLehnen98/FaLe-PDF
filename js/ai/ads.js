@@ -3,7 +3,7 @@
 // the EU consent flow (Google UMP) are initialised lazily at that moment – never at app start.
 // The reward itself is granted by the SERVER after Google's signed SSV callback (custom_data =
 // this device's signed token); the app only refreshes its quota afterwards.
-import { plugin, isNative } from '../platform.js';
+import { plugin, isNative, platformName } from '../platform.js';
 import { AI_CONFIG } from './config.js';
 import * as C from './client.js';
 
@@ -38,7 +38,7 @@ async function on(p, name, cb) {
 }
 
 /** Ad consent status for the settings screen (native only). */
-export function adsAvailable() { return isNative() && !!plugin('AdMob'); }
+export function adsAvailable() { return isNative() && platformName() !== 'ios' && !!plugin('AdMob'); } // iOS: no ads for now
 
 /** Re-open the UMP privacy options form ("Werbe-Einwilligung ändern"). */
 export async function showAdPrivacyOptions() {

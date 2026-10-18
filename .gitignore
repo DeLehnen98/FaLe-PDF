@@ -6,6 +6,12 @@ dist/
 # native Android project – generated in CI by `npx cap add android` + scripts/cap-patch-android.mjs
 android/
 
+# native iOS project – generated in CI by `npx cap add ios` + scripts/cap-patch-ios.mjs (own code: ios-native/)
+/ios/
+/build/
+/ios-e2e-out/
+/xcodebuild.log
+
 # signing keys must NEVER be committed (see store/KEYSTORE.md)
 *.jks
 *.keystore

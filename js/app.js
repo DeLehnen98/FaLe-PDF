@@ -11,7 +11,7 @@ import { renderHome, renderFiles, renderTools, renderSearch, renderSettings, imp
 import { syncThemeColor, toggleTheme, effectiveDark } from './theme.js';
 import { oicon, detectKind, unsupportedReason, openHash } from './office/kinds.js';
 import { EXTRA_ROUTES, openExtraRoute } from './extras/routes.js';
-import { isNative, onIncomingFiles } from './platform.js';
+import { isNative, platformName, onIncomingFiles } from './platform.js';
 
 const MAIN_VIEWS = ['start', 'dateien', 'werkzeuge', 'suche', 'einstellungen'];
 const OFFICE_ROUTES = ['bearbeiten', 'neu', 'vorlagen'];
@@ -295,6 +295,7 @@ async function init() {
   checkInbox().catch(e => console.warn(e));
   registerSW();
   document.documentElement.classList.add('ready');
+  if (isNative()) console.info('FaLe PDF bereit (' + platformName() + ')'); // marker for the emulator/simulator tests
   // housekeeping + first-run intro (all local)
   db.purgeOldTrash(30).catch(() => {});
   import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)); // editors closed by a crash
@@ -311,6 +312,8 @@ window.addEventListener('error', e => { console.error(e.error || e.message); });
 window.addEventListener('unhandledrejection', e => {
   const r = e.reason;
   if (r && (r.name === 'AbortError' || r.name === 'RenderingCancelledException')) { e.preventDefault(); return; }
+  // pdf.js: a page request that was still in flight when a document was closed (viewer left quickly under load)
+  if (r && r instanceof TypeError && /reading 'sendWithPromise'/.test(r.message || '')) { e.preventDefault(); return; }
   if (r && r.userMessage) { e.preventDefault(); toast(r.userMessage, 'error'); }
 });
 

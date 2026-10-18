@@ -3,7 +3,9 @@
 import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, openDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
-import { isNative } from '../platform.js';
+import { isNative, platformName } from '../platform.js';
+
+const adsHere = () => isNative() && platformName() !== 'ios'; // rewarded videos: Android app only
 import * as C from './client.js';
 import { CITE_RE } from './retrieval.js';
 
@@ -87,7 +89,7 @@ export function quotaWidget({ compact = false } = {}) {
     const pct = q.limit ? Math.min(100, (q.used / q.limit) * 100) : 100;
     const left = q.remaining;
     const label = q.plus ? `FaLe Plus aktiv · heute noch ${left} von ${q.limit}` : left > 0 ? `Heute noch ${left} von ${q.limit} gratis` : 'Kontingent für heute aufgebraucht';
-    const canAd = !q.plus && isNative() && features.ads !== false && q.rewardsLeft > 0;
+    const canAd = !q.plus && adsHere() && features.ads !== false && q.rewardsLeft > 0;
     el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
       <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
       ${(canAd || (!q.plus && showPlus())) && !compact ? `<div class="aq-acts">
@@ -122,7 +124,7 @@ export async function showAiError(err) {
   if (!err || err.name === 'AbortError') return;
   if (err.code === 'quota_exhausted') {
     const q = err.quota || C.cachedQuota() || {};
-    const canAd = isNative() && q.rewardsLeft > 0;
+    const canAd = adsHere() && q.rewardsLeft > 0;
     const r = await openDialog({
       title: 'Heutiges KI-Kontingent aufgebraucht',
       body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>

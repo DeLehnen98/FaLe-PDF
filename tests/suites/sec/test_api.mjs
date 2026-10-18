@@ -345,6 +345,22 @@ await step('google JWT (RS256) for the Play API', async () => {
   check('Play products.get: refunded → inactive', !pr.active && pr.state === 'canceled');
   pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', async (url, init) => (String(url).includes('oauth2') ? fakeFetch(url, init) : new Response('{}', { status: 410 })));
   check('Play products.get: unknown token → inactive', !pr.active && pr.state === 'not_found');
+  // not yet acknowledged → the server acknowledges (Play refunds unacknowledged purchases after 3 days)
+  const acks = [];
+  const unacked = (body, ackStatus = 200) => async (url, init) => {
+    if (String(url).includes('oauth2')) return fakeFetch(url, init);
+    if (String(url).endsWith(':acknowledge')) { acks.push([String(url), init.method]); return new Response('', { status: ackStatus }); }
+    return new Response(JSON.stringify(body), { status: 200 });
+  };
+  pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', unacked({ purchaseState: 0, productId: 'fale_plus_lifetime', acknowledgementState: 0 }));
+  check('Play product not acknowledged → POST products/…:acknowledge', pr.active && acks.length === 1 && acks[0][1] === 'POST' && acks[0][0].endsWith('/purchases/products/fale_plus_lifetime/tokens/tok456:acknowledge'), JSON.stringify(acks));
+  pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', unacked({ purchaseState: 0, productId: 'fale_plus_lifetime', acknowledgementState: 1 }));
+  check('already acknowledged → no second acknowledge', acks.length === 1);
+  pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', unacked({ purchaseState: 2, productId: 'fale_plus_lifetime', acknowledgementState: 0 }));
+  check('pending purchase → not acknowledged, inactive', !pr.active && acks.length === 1);
+  const future = new Date(Date.now() + 30 * 864e5).toISOString();
+  const s2 = await verifyPlaySubscription(sa, 'tok789', unacked({ subscriptionState: 'SUBSCRIPTION_STATE_ACTIVE', acknowledgementState: 'ACKNOWLEDGEMENT_STATE_PENDING', lineItems: [{ productId: 'fale_plus_monthly', expiryTime: future }] }, 500));
+  check('subscription not acknowledged → POST subscriptions/…:acknowledge; a failing acknowledge never blocks Plus', s2.active && acks.length === 2 && acks[1][0].endsWith('/purchases/subscriptions/fale_plus_monthly/tokens/tok789:acknowledge'), JSON.stringify(acks));
 });
 
 await step('provider adapters against fake upstreams', async () => {

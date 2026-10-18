@@ -76,6 +76,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   const shell = createShell(screen, {
     id, name, kind,
     serialize: () => serialize(kind),
+    snapshot: () => (mm.preview ? null : serialize(kind)), // crash recovery: never closes the mail-merge preview
     onSaved: m => { addVersionNow(m && m.id, 'Gespeichert'); },
     menu: () => [
       { label: 'Als PDF exportieren', icon: 'kpdf', onClick: exportPdf },

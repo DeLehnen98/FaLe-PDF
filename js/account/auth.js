@@ -96,7 +96,7 @@ function randId(n = 24) {
 
 export function defaultDeviceName() {
   const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || '';
-  if (isNative()) return /Android/i.test(ua) ? 'Android' : 'FaLe';
+  if (isNative()) return /Android/i.test(ua) ? 'Android' : /iPad/i.test(ua) ? 'iPad' : /iPhone|iOS|Macintosh/i.test(ua) ? 'iPhone' : 'FaLe';
   const br = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox\//.test(ua) ? 'Firefox' : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : 'Browser';
   const os = /Android/i.test(ua) ? 'Android' : /iPhone|iPad/i.test(ua) ? 'iOS' : /Windows/i.test(ua) ? 'Windows' : /Mac OS X/i.test(ua) ? 'macOS' : /Linux/i.test(ua) ? 'Linux' : '';
   return os ? `${br} · ${os}` : br;

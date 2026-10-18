@@ -657,26 +657,40 @@ public class FaleIncomingPlugin extends Plugin {
         if (uri == null) { call.reject("unknown", "unknown"); return; }
         if (!writable) { call.reject("readonly", "readonly"); return; }
         io.execute(() -> {
-            File src = null;
+            File src;
             try {
                 File dir = new File(getContext().getCacheDir(), "writeback").getCanonicalFile();
-                src = new File(getContext().getCacheDir(), rel == null ? "" : rel).getCanonicalFile();
-                if (!src.getPath().startsWith(dir.getPath() + File.separator) || !src.isFile()) throw new IOException("bad path");
-                if (src.length() > MAX_BYTES) throw new IOException("too large");
-                long written = 0;
-                OutputStream os = null;
-                if ("file".equalsIgnoreCase(uri.getScheme())) os = new FileOutputStream(new File(uri.getPath()), false);
-                else {
-                    ContentResolver cr = getContext().getContentResolver();
-                    try { os = cr.openOutputStream(uri, "wt"); } catch (Exception e) { os = null; }
-                    if (os == null) { try { os = cr.openOutputStream(uri, "rwt"); } catch (Exception e) { os = null; } }
+                File cand = new File(getContext().getCacheDir(), rel == null ? "" : rel).getCanonicalFile();
+                if (!cand.getPath().startsWith(dir.getPath() + File.separator)) { call.reject("failed", "failed"); return; }
+                src = cand; // only files below cache/writeback/ are ever read or deleted
+            } catch (Exception e) {
+                call.reject("failed", "failed");
+                return;
+            }
+            File backup = null;
+            try {
+                if (!src.isFile()) throw new IOException("missing");
+                final long want = src.length();
+                if (want > MAX_BYTES) throw new IOException("too large");
+                ContentResolver cr = getContext().getContentResolver();
+                boolean isFile = "file".equalsIgnoreCase(uri.getScheme());
+                // keep the current original until the new version is completely written (restore on failure)
+                backup = new File(src.getPath() + ".orig");
+                try (InputStream in = isFile ? new FileInputStream(new File(uri.getPath())) : cr.openInputStream(uri);
+                     OutputStream out = new FileOutputStream(backup)) {
+                    if (in == null) throw new IOException("no input stream");
+                    copyStream(in, out);
                 }
-                if (os == null) throw new IOException("no output stream");
-                try (InputStream in = new FileInputStream(src); OutputStream out = os) {
-                    byte[] buf = new byte[64 * 1024];
-                    int r;
-                    while ((r = in.read(buf)) != -1) { out.write(buf, 0, r); written += r; }
-                    out.flush();
+                long written;
+                try {
+                    written = writeTo(cr, uri, isFile, src);
+                } catch (Exception e) {
+                    restore(cr, uri, isFile, backup);
+                    throw e;
+                }
+                if (written != want) {
+                    restore(cr, uri, isFile, backup);
+                    throw new IOException("short write " + written + "/" + want);
                 }
                 JSObject ret = new JSObject();
                 ret.put("ok", true);
@@ -689,9 +703,37 @@ public class FaleIncomingPlugin extends Plugin {
                 Log.w(TAG, "writeBack failed", e);
                 call.reject("failed", "failed");
             } finally {
-                if (src != null) src.delete();
+                src.delete();
+                if (backup != null) backup.delete();
             }
         });
+    }
+
+    private static long copyStream(InputStream in, OutputStream out) throws IOException {
+        byte[] buf = new byte[64 * 1024];
+        long total = 0;
+        int r;
+        while ((r = in.read(buf)) != -1) { out.write(buf, 0, r); total += r; }
+        out.flush();
+        return total;
+    }
+
+    /** Truncate the target and write the staged file into it; returns the number of bytes written. */
+    private static long writeTo(ContentResolver cr, Uri uri, boolean isFile, File from) throws IOException {
+        OutputStream os = null;
+        if (isFile) os = new FileOutputStream(new File(uri.getPath()), false);
+        else {
+            try { os = cr.openOutputStream(uri, "wt"); } catch (IOException | IllegalArgumentException e) { os = null; }
+            if (os == null) { try { os = cr.openOutputStream(uri, "rwt"); } catch (IOException | IllegalArgumentException e) { os = null; } }
+        }
+        if (os == null) throw new IOException("no output stream");
+        try (InputStream in = new FileInputStream(from); OutputStream out = os) {
+            return copyStream(in, out);
+        }
+    }
+
+    private static void restore(ContentResolver cr, Uri uri, boolean isFile, File backup) {
+        try { writeTo(cr, uri, isFile, backup); } catch (Exception e) { Log.w(TAG, "restore of the original failed", e); }
     }
 
     /** Delete imported copies once the web app has stored them. */

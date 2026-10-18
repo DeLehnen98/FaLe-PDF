@@ -6033,6 +6033,12 @@ export default {
   "Die neue Fassung wurde nicht gefunden.": "The new version was not found.",
   "Originaldatei „{0}“ aktualisiert": "Original file “{0}” updated",
   "PDF, Dokumente, Tabellen, Präsentationen, Bilder": "PDFs, documents, spreadsheets, presentations, images",
+  "Diese Datei darf FaLe PDF nicht überschreiben. Öffne sie direkt aus der Dateien-App oder speichere eine Kopie.": "FaLe PDF isn’t allowed to overwrite this file. Open it directly from the Files app or save a copy.",
+  "Die Originaldatei wird durch die gespeicherte Fassung ersetzt. Die bisherige Fassung bleibt als „{0}“ in FaLe PDF.": "The original file is replaced by the saved version. The previous version stays in FaLe PDF as “{0}”.",
+  "Die Originaldatei wird durch die gespeicherte Fassung ersetzt.": "The original file is replaced by the saved version.",
+  "Die bisherige Fassung konnte nicht gesichert werden – die Originaldatei bleibt unverändert.": "The previous version could not be kept – the original file stays unchanged.",
+  "Dateien › Auf meinem iPad › FaLe PDF": "Files › On My iPad › FaLe PDF",
+  "Dateien › Auf meinem iPhone › FaLe PDF": "Files › On My iPhone › FaLe PDF",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

@@ -4,7 +4,7 @@
 // API); prices come from the Play Console. Fair billing: no trial that turns into a subscription, cancelling
 // is one tap away, and a reminder can announce the next renewal three days ahead.
 // Web: not purchasable for now.
-import { plugin, isNative, scheduleNotification, cancelNotification } from '../platform.js';
+import { plugin, isNative, platformName, scheduleNotification, cancelNotification } from '../platform.js';
 import { AI_CONFIG } from './config.js';
 import * as C from './client.js';
 import { t, locale } from '../i18n/index.js';
@@ -24,7 +24,7 @@ function store() {
   return p;
 }
 
-export function plusPurchasableHere() { return isNative() && !!plugin('NativePurchases'); }
+export function plusPurchasableHere() { return isNative() && platformName() !== 'ios' && !!plugin('NativePurchases'); } // iOS: later (App Store check)
 
 async function billingOk(p) {
   try {
@@ -55,19 +55,36 @@ export async function loadProducts() {
   return life ? [...subs, life] : subs;
 }
 
+let leftoversDone = false;
+/** A tip that was pending (or whose consume failed) blocks that tier with "already owned": consume it now. */
+async function consumeLeftoverTips(p) {
+  if (leftoversDone) return;
+  leftoversDone = true;
+  const ids = AI_CONFIG.TIPS.map(x => x.id);
+  try {
+    const { purchases = [] } = await p.getPurchases({ productType: INAPP }) || {};
+    for (const tx of purchases) {
+      if (!ids.includes(tx.productIdentifier) || !tx.purchaseToken || /pending|^2$/i.test(String(tx.purchaseState ?? ''))) continue;
+      try { await p.consumePurchase({ purchaseToken: tx.purchaseToken }); } catch (e) { console.warn('consume', e); }
+    }
+  } catch (e) { console.warn('Danke-Beiträge prüfen', e); }
+}
+
 /** Tips with localized prices ([] when none are set up in the Play Console). */
 export async function loadTips() {
   const p = store();
   await billingOk(p);
+  await consumeLeftoverTips(p);
   const { products = [] } = await p.getProducts({ productIdentifiers: AI_CONFIG.TIPS.map(x => x.id), productType: INAPP }) || {};
   return AI_CONFIG.TIPS.map(cfg => { const prod = products.find(x => idOf(x) === cfg.id); return prod ? { ...cfg, kind: INAPP, price: prod.priceString || '' } : null; }).filter(Boolean);
 }
 
-async function verify(productId, purchaseToken) {
+async function verify(productId, purchaseToken, { prompt = false } = {}) {
   if (!purchaseToken) throw userErr('Der Kauf konnte nicht bestätigt werden.');
   const r = await C.callApi('/api/plus-verify', { productId, purchaseToken });
   await C.refreshQuota().catch(() => null);
-  if (r && r.active) await remember({ product: r.product || productId, expiresAt: r.expiresAt || null, renews: !!r.renews, lifetime: !!r.lifetime });
+  if (r && r.active) await remember({ product: r.product || productId, expiresAt: r.expiresAt || null, renews: !!r.renews, lifetime: !!r.lifetime }, { prompt });
+  else if (r && !r.active && (plusInfo() || {}).product === (r.product || productId)) ls.set(INFO, null);
   return r;
 }
 
@@ -85,7 +102,7 @@ export async function buy(prod) {
     throw userErr('Der Kauf konnte nicht abgeschlossen werden.');
   }
   if (tx && /pending|^2$/i.test(String(tx.purchaseState ?? ''))) return { active: false, pending: true };
-  return verify(prod.id, tx && tx.purchaseToken);
+  return verify(prod.id, tx && tx.purchaseToken, { prompt: true }); // just bought: may ask for the reminder permission
 }
 
 /** Restore: re-verify every Plus purchase Google Play knows for this account (subscriptions and "für immer"). */
@@ -139,23 +156,35 @@ export function reminderTime(info, now = Date.now()) {
   return +at > now ? at : null;
 }
 
-async function remember(info) {
-  ls.set(INFO, info);
-  await syncReminder();
+async function remember(info, { prompt = false } = {}) {
+  ls.set(INFO, { ...info, at: Date.now() });
+  await syncReminder({ prompt });
 }
 
-/** Schedule or cancel the renewal reminder to match the stored subscription and the user's choice. */
-export async function syncReminder() {
+/** Re-check the purchase with the store at most once a day (cancelled in Play? renewed? → fresh date + reminder). */
+export async function refreshInfo({ maxAge = 864e5 } = {}) {
+  const info = plusInfo();
+  if (info && info.lifetime) return info;
+  if (info && info.at && Date.now() - info.at < maxAge) return info;
+  try { await restore(); } catch (e) { console.warn('Plus-Status', e); }
+  return plusInfo();
+}
+
+/**
+ * Schedule or cancel the renewal reminder to match the stored subscription and the user's choice.
+ * prompt: may ask for the notification permission (only after the user's own action – never on a page visit).
+ */
+export async function syncReminder({ prompt = false } = {}) {
   const info = plusInfo();
   const at = reminderOn() ? reminderTime(info) : null;
   try {
     if (!at) { await cancelNotification(REMINDER_ID); return false; }
     const day = new Date(info.expiresAt).toLocaleDateString(locale());
-    return await scheduleNotification({ id: REMINDER_ID, at, title: t('FaLe Plus verlängert sich bald'), body: t('Am {day} wird dein Abo verlängert. Tippe hier, wenn du es behalten oder kündigen möchtest.', { day }), route: '#/ki/plus' });
+    return await scheduleNotification({ prompt, id: REMINDER_ID, at, title: t('FaLe Plus verlängert sich bald'), body: t('Am {day} wird dein Abo verlängert. Tippe hier, wenn du es behalten oder kündigen möchtest.', { day }), route: '#/ki/plus' });
   } catch (e) { console.warn('Erinnerung', e); return false; }
 }
 
 export async function setReminder(on) {
   ls.set(REMIND, !!on);
-  return syncReminder();
+  return syncReminder({ prompt: !!on });
 }

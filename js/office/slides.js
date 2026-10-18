@@ -102,6 +102,18 @@ export async function mountSlides(screen, { id = null, template = null }) {
   const shell = createShell(screen, {
     id, name, kind: 'pptx',
     serialize: async () => { commitEdit(); return (await import('./pptx-write.js')).presToPptx(pres, { title: stripExt(shell.name) }); },
+    // crash-recovery snapshot: same file, but the text being typed stays in edit mode (no re-render, no undo step)
+    snapshot: async () => {
+      let p = pres;
+      if (editingEl) {
+        const { i, tx, slide } = editingEl;
+        const si = pres.slides.indexOf(slide);
+        p = JSON.parse(JSON.stringify(pres));
+        const el = p.slides[si] && p.slides[si].els[i];
+        if (el && slide.els[i]) el.text = { ...el.text, paras: domToParas(tx, slide.els[i]) };
+      }
+      return (await import('./pptx-write.js')).presToPptx(p, { title: stripExt(shell.name) });
+    },
     menu: () => [
       { label: 'Präsentieren', icon: 'present', onClick: () => slideshow(cur) },
       { label: 'Referentenansicht', icon: 'presenter', onClick: () => presenter(cur) },
@@ -310,6 +322,7 @@ export async function mountSlides(screen, { id = null, template = null }) {
     tx.setAttribute('aria-label', 'Text der Folie bearbeiten');
     n.classList.add('editing-text');
     editingEl = { i, node: n, tx, before: JSON.stringify(el.text), slide: pres.slides[cur] };
+    if (!tx.dataset.dirtyHook) { tx.dataset.dirtyHook = '1'; tx.addEventListener('input', () => shell.markDirty()); } // typed text counts as unsaved (crash recovery, leave guard)
     tx.focus();
     const range = document.createRange();
     range.selectNodeContents(tx); range.collapse(false);

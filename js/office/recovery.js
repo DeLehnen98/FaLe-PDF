@@ -10,25 +10,50 @@ import { KINDS, stripExt } from './kinds.js';
 import { locale } from '../i18n/index.js';
 
 const INTERVAL = 60000;
-export const live = new Set(); // keys of editors open right now (never offered for restore)
+export const live = new Set(); // keys of editors open in this tab (never offered for restore)
+// editors open in other tabs of this browser answer a short "still open?" question (BroadcastChannel)
+const CHANNEL = 'fale-recovery';
+let channel = null;
+function chan() {
+  if (channel || typeof BroadcastChannel !== 'function') return channel;
+  channel = new BroadcastChannel(CHANNEL);
+  channel.onmessage = e => { if (e.data && e.data.q === 'alive?' && live.size) channel.postMessage({ alive: [...live] }); };
+  return channel;
+}
+/** Keys of editors that are open in other tabs right now. */
+function aliveElsewhere(ms = 400) {
+  return new Promise(resolve => {
+    const ch = typeof BroadcastChannel === 'function' ? new BroadcastChannel(CHANNEL) : null;
+    if (!ch) { resolve(new Set()); return; }
+    const keys = new Set();
+    ch.onmessage = e => { (e.data && e.data.alive || []).forEach(k => keys.add(k)); };
+    ch.postMessage({ q: 'alive?' });
+    setTimeout(() => { ch.close(); resolve(keys); }, ms);
+  });
+}
 
 /**
- * Attach recovery to an editor shell. S: shell state ({ id, name, kind, dirty, saving }), serialize: () => Blob.
- * → { touch() on every change, saved() after a save, dispose() when the editor closes on purpose }
+ * Attach recovery to an editor shell. S: shell state ({ id, name, kind, dirty, saving }), serialize: () => Blob|null
+ * (side-effect free; null = skip this round). → { touch() on every change, saved() after a save, dispose() when the
+ * editor closes on purpose }
  */
 export function attachRecovery(S, serialize) {
   const key = db.uid();
   live.add(key);
-  let changedAt = 0, snapAt = 0, wrote = false, busy = false, disposed = false;
+  chan();
+  let changedAt = 0, snapAt = 0, wrote = false, busy = false, disposed = false, gen = 0;
   async function snapshot() {
     if (disposed || busy || !S.dirty || S.saving || changedAt <= snapAt) return;
     busy = true;
-    const at = Date.now();
+    const at = Date.now(), g = gen;
     try {
       const blob = await serialize();
-      if (disposed || !S.dirty) return;
+      if (!blob || disposed || !S.dirty || g !== gen) return;
+      wrote = true;
       await db.putRecovery(key, { docId: S.id || null, name: S.name, kind: S.kind, at, blob });
-      snapAt = at; wrote = true;
+      snapAt = at;
+      // saved or closed while the snapshot was being written → it is stale
+      if (disposed || g !== gen) { wrote = false; await db.deleteRecovery(key); }
     } catch (e) { console.warn('recovery snapshot', e); } finally { busy = false; }
   }
   const timer = setInterval(snapshot, INTERVAL);
@@ -38,11 +63,12 @@ export function attachRecovery(S, serialize) {
   const drop = () => { if (wrote) { wrote = false; db.deleteRecovery(key); } };
   return {
     touch() { changedAt = Date.now(); },
-    saved() { snapAt = changedAt = 0; drop(); },
+    saved() { gen++; snapAt = changedAt = 0; drop(); },
     snapshot,
     dispose() {
       if (disposed) return;
       disposed = true;
+      gen++;
       clearInterval(timer);
       document.removeEventListener('visibilitychange', onHide);
       window.removeEventListener('pagehide', snapshot);
@@ -56,7 +82,10 @@ const when = at => new Date(at).toLocaleString(locale(), { day: '2-digit', month
 
 /** At app start: offer what an earlier session left behind. */
 export async function offerRecovery() {
-  const found = (await db.listRecovery()).filter(r => !live.has(r.key) && r.blob && KINDS[r.kind]);
+  const all = (await db.listRecovery()).filter(r => !live.has(r.key) && r.blob && KINDS[r.kind]);
+  if (!all.length) return;
+  const open = await aliveElsewhere();
+  const found = all.filter(r => !open.has(r.key));
   if (!found.length) return;
   const one = found.length === 1;
   const list = found.map(r => `<li><strong>${esc(r.name || 'Unbenannt')}</strong> <span class="muted small">– ${esc(when(r.at))}</span></li>`).join('');
