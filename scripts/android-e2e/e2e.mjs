@@ -376,7 +376,21 @@ async function main() {
   };
   const menuItem = async label => {
     await tap('[data-v="more"]');
-    if (!await waitJs(`!!document.querySelector('.menu-layer .menu-item')`, { timeout: 5000 })) throw new Error('Menü öffnet nicht');
+    if (!await waitJs(`!!document.querySelector('.menu-layer .menu-item')`, { timeout: 5000 })) {
+      // API 34 image: the launcher sometimes keeps the input focus although the app is resumed – real taps then never
+      // reach the app. Bring it to the front again; if taps still don't arrive, open the menu from the page (the
+      // step tests the native print/share/save paths, not the touch input)
+      await ensureApp();
+      await tap('[data-v="more"]');
+      if (!await waitJs(`!!document.querySelector('.menu-layer .menu-item')`, { timeout: 4000 })) {
+        console.log(`::warning title=E2E Eingabe::Tippen erreicht die App nicht (${esc(focusedWindow())}) – Menü per Seite geöffnet`);
+        await ev(`document.querySelector('[data-v="more"]').click(); return true;`);
+        if (!await waitJs(`!!document.querySelector('.menu-layer .menu-item')`, { timeout: 5000 })) throw new Error('Menü öffnet nicht');
+        await sleep(400);
+        await ev(`const b = [...document.querySelectorAll('.menu-layer .menu-item')].find(x => x.textContent.includes(${JSON.stringify(label)})); if (!b) throw new Error('Menüpunkt fehlt'); b.click(); return true;`);
+        return;
+      }
+    }
     await sleep(400);
     await tap('.menu-layer .menu-item', { text: label });
   };
