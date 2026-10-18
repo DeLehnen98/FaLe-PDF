@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "FaLe PDF – darmowe narzędzia PDF i biurowe, bez subskrypcji, bez przesyłania plików",
+    "description": "Czytaj, wypełniaj, podpisuj, skanuj z rozpoznawaniem tekstu i konwertuj pliki PDF – a do tego dokumenty, arkusze i prezentacje. Za darmo, bez konta, wszystko na twoim urządzeniu."
+  },
+  "skip": "Przejdź do treści",
+  "nav": {
+    "label": "Nawigacja po stronie",
+    "features": "Funkcje",
+    "computer": "Dla Windows i Mac",
+    "faq": "Pytania",
+    "open": "Otwórz w przeglądarce"
+  },
+  "hero": {
+    "h1": "Załatw swoje papierowe sprawy. Bez subskrypcji, bez przesyłania plików.",
+    "lede": "FaLe PDF czyta, wypełnia, podpisuje, skanuje i konwertuje – a także obsługuje dokumenty, arkusze i prezentacje. Za darmo i prosto na twoim urządzeniu.",
+    "try": "Wypróbuj w przeglądarce"
+  },
+  "stores": {
+    "androidSoon": "Play Store – wkrótce",
+    "androidReady": "Pobierz z Play Store",
+    "iosName": "iPhone i iPad",
+    "iosSoon": "App Store – wkrótce",
+    "iosReady": "Pobierz z App Store"
+  },
+  "desk": {
+    "h2": "Dla Windows i Mac",
+    "intro": "Zainstaluj FaLe PDF na komputerze – tak jak zwykły program: z własną ikoną, własnym oknem i działaniem bez internetu. Za darmo, bez konta i bez pliku instalacyjnego.",
+    "steps": [
+      { "b": "Kliknij „Pobierz”.", "t": "FaLe PDF otworzy się w przeglądarce." },
+      { "b": "Potwierdź „Zainstaluj”.", "t": "Przeglądarka zapyta tylko raz." },
+      { "b": "Gotowe.", "t": "Od teraz uruchamiasz FaLe PDF z menu Start (Windows) lub z Docka (Mac)." }
+    ],
+    "download": "Pobierz",
+    "dlWindows": "Pobierz dla Windows",
+    "dlMac": "Pobierz dla Mac",
+    "windowsSoon": "Microsoft Store – wkrótce",
+    "windowsReady": "Pobierz z Microsoft Store",
+    "note": "W Windows z Edge lub Chrome – wtedy pliki PDF otwierają się dwukliknięciem. Na Macu z Safari (macOS 14 lub nowszy: w menu Plik wybierz „Dodaj do Docka”), Chrome lub Edge."
+  },
+  "jobs": {
+    "h2": "Co możesz załatwić",
+    "intro": "To nie sterta narzędzi do przeklikania: to rzeczy, dla których ludzie naprawdę otwierają tę aplikację.",
+    "items": [
+      { "b": "Podpisz umowę najmu", "t": "Wypełnij formularz, raz narysuj swój podpis i umieść go jednym dotknięciem." },
+      { "b": "Zeskanuj paragony i listy", "t": "Skaner z wykrywaniem krawędzi i rozpoznawaniem tekstu – także bez internetu." },
+      { "b": "Wyślij wypowiedzenie", "t": "Gotowe pisma dla telefonu, prądu, siłowni i nie tylko – w minutę." },
+      { "b": "Przygotuj aplikację o pracę", "t": "CV z szablonów, list motywacyjny i świadectwa połączone w jeden plik PDF." },
+      { "b": "Złóż dokumenty w urzędzie", "t": "Zmniejsz rozmiar, zamień na PDF/A, zaczerń poufne fragmenty." },
+      { "b": "Napisz fakturę lub ofertę", "t": "Szablony, które liczą za ciebie – jako plik PDF, Word lub Excel." }
+    ]
+  },
+  "privacy": {
+    "h2": "Twoje pliki zostają u ciebie",
+    "items": [
+      { "dt": "Bez przesyłania", "dd": "Edycja, konwersja i rozpoznawanie tekstu działają na twoim urządzeniu. Opcjonalnej AI używasz tylko wtedy, gdy ją włączysz." },
+      { "dt": "Bez konta", "dd": "Otwórz i zacznij. Konto jest potrzebne tylko wtedy, gdy zdecydujesz się na synchronizację między urządzeniami." },
+      { "dt": "Bez reklam w banerach", "dd": "Reklamy pojawiają się tylko wtedy, gdy sam uruchomisz film, aby dostać dodatkowe zapytania do AI." }
+    ]
+  },
+  "free": {
+    "h2": "Za darmo zamiast subskrypcji",
+    "intro": "Wiele aplikacji PDF pobiera za te funkcje opłatę abonamentową. Tutaj są darmowe i bez znaków wodnych.",
+    "note": "Jeśli chcesz wesprzeć rozwój aplikacji, w aplikacji na Androida możesz wybrać FaLe Plus lub jednorazowe podziękowanie.",
+    "items": ["Podpisywanie i wypełnianie", "Rozpoznawanie tekstu (OCR)", "PDF do Word, Excel, PowerPoint", "Zaczernianie", "Kompresja", "Zarządzanie stronami", "PDF/A dla urzędów", "Ochrona hasłem", "Porównywanie plików PDF", "Przetwarzanie wsadowe"]
+  },
+  "screens": {
+    "h2": "Jak to wygląda",
+    "alts": ["Ekran startowy aplikacji FaLe PDF", "Wypełnianie i podpisywanie formularza", "Skaner z wykrywaniem krawędzi", "Edycja arkusza", "Prywatność: wszystko zostaje na urządzeniu"]
+  },
+  "faq": {
+    "h2": "Pytania",
+    "items": [
+      { "q": "Czy FaLe PDF jest naprawdę darmowy?", "a": "Tak. Wszystkie funkcje PDF i biurowe są darmowe, bez subskrypcji i bez znaku wodnego. Tylko opcjonalna chmurowa AI ma dzienny darmowy limit." },
+      { "q": "Czy moje pliki są przesyłane?", "a": "Nie. Twoje pliki są przetwarzane i przechowywane na twoim urządzeniu. Dopiero gdy świadomie użyjesz chmurowej AI, udostępniania przez link lub synchronizacji, coś opuszcza urządzenie – w postaci zaszyfrowanej albo tylko zaznaczony tekst." },
+      { "q": "Czy działa bez internetu?", "a": "Tak. Wszystko poza chmurową AI, udostępnianiem i przesyłaniem działa bez internetu." },
+      { "q": "Czy mogę zainstalować FaLe PDF na komputerze?", "a": "Tak. W sekcji „Dla Windows i Mac” powyżej kliknij „Pobierz” i potwierdź „Zainstaluj”. W Windows działa to z Edge lub Chrome, na Macu z Safari, Chrome lub Edge. FaLe PDF wkrótce pojawi się też w Microsoft Store." },
+      { "q": "Jakie pliki mogę otworzyć?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown i obrazy." }
+    ]
+  },
+  "end": {
+    "h2": "Wypróbuj od razu",
+    "intro": "Wersja w przeglądarce działa bez instalowania czegokolwiek – na telefonie i na komputerze."
+  },
+  "footer": {
+    "label": "Informacje prawne",
+    "imprint": "Impressum",
+    "privacy": "Prywatność",
+    "more": "Więcej od FaleNetwork"
+  }
+}

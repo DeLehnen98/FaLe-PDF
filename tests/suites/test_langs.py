@@ -101,8 +101,27 @@ def run(p, code):
     b.close()
 
 
+ENGINE = r"""
+const [c, en, pl] = await Promise.all([import(process.argv[1] + '/js/i18n/core.js'), import(process.argv[1] + '/js/i18n/en.js'), import(process.argv[1] + '/js/i18n/pl.js').catch(() => null)]);
+const e = c.createTranslator(en.default, { locale: 'en-GB' });
+const out = { cells: e.lookup('3 Zellen markiert'), cell: e.lookup('1 Zelle markiert'), dl: e.lookup('5 Downloads'), date: e.lookup('14.10.2026') };
+if (pl) { const p = c.createTranslator(pl.default, { locale: 'pl-PL' }); out.pl2 = p.lookup('2 Zellen markiert'); out.pl5 = p.lookup('5 Zellen markiert'); out.pldate = p.lookup('14.10.2026'); }
+console.log(JSON.stringify(out));
+"""
+
+
+def engine():
+    out = json.loads(subprocess.run(['node', '--no-warnings', '--input-type=module', '-e', ENGINE, ROOT], capture_output=True, text=True, check=True).stdout)
+    check('engine: English plural from a German suffix ("3 cells")', out['cells'] == '3 cells selected' and out['cell'] == '1 cell selected' and out['dl'] == '5 downloads', out)
+    check('engine: English date format', out['date'] == '14 Oct 2026', out)
+    if 'pl2' in out:
+        check('engine: Polish plural categories (2 / 5)', out['pl2'] and out['pl5'] and out['pl2'] != out['pl5'] and 'Zell' not in out['pl2'] + out['pl5'], out)
+        check('engine: Polish date via Intl', out['pldate'] and '2026' in out['pldate'] and 'Oct' not in out['pldate'], out)
+
+
 if __name__ == '__main__':
     codes = sys.argv[1:] or published()
+    engine()
     with sync_playwright() as p:
         for code in codes:
             if code == 'en':

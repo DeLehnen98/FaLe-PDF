@@ -133,7 +133,8 @@ export function createTranslator(dict = {}, opts = {}) {
       //  {0:n} or a capture used in a plural switch {0|…|…} must be a number;
       //  a capture glued to a letter ("Datei{1}") is a short suffix ("en") or starts with a non-letter.
       const kinds = phs.map((m, i) => {
-        if (m[2] || new RegExp(`\\{${m[1]}\\|`).test(v)) return 'num';
+        // a switch with only empty forms ("{1||}") is a no-op: it hides a German suffix, it does not make it a number
+        if (m[2] || [...v.matchAll(new RegExp(`\\{${m[1]}((?:\\|[^|{}]*)+)\\}`, 'g'))].some(x => x[1].replace(/\|/g, '') !== '')) return 'num';
         // '{0} Dateien', '{0} Seite{1} extrahiert': a leading placeholder before a German noun is a count
         if (i === 0 && parts[0] === '' && /^ [A-ZÄÖÜ]/.test(parts[1] || '') && !/^ (Du|Alles|Die|Der|Das|Mit|Bitte|Ohne|Es|Wir|Ich|FaLe|KI)\b/.test(parts[1])) return 'num';
         const before = parts[i], after = parts[i + 1];
