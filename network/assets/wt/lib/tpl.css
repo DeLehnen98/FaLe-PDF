@@ -97,3 +97,8 @@
 .mm-pos { min-width: 4.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 650; }
 .mm-problems:empty { display: none; }
 #mm-sheet { margin-top: 8px; max-width: 20em; }
+/* nebenkosten */
+.nk-sum { display: grid; gap: 8px; }
+.nk-table td:nth-child(n+2) { text-align: right; }
+.nk-table .nk-due { color: var(--danger); font-weight: 650; }
+.nk-table .nk-credit { color: var(--accent); font-weight: 650; }

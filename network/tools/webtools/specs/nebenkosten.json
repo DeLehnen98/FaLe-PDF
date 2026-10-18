@@ -1,0 +1,169 @@
+{
+  "id": "nebenkosten",
+  "category": "everyday",
+  "icon": "receipt",
+  "module": "tools/nebenkosten.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 71,
+  "related": [
+    "mail-merge",
+    "din-letter",
+    "payment-reminder",
+    "invoice-generator"
+  ],
+  "next": [],
+  "needs": [
+    "pdflib",
+    "unicodefont"
+  ],
+  "de": {
+    "slug": "nebenkostenabrechnung",
+    "name": "Nebenkostenabrechnung erstellen",
+    "short": "Betriebskostenabrechnung für private Vermieter – mit Mieterwechsel, Leerstand und Brief.",
+    "title": "Nebenkostenabrechnung erstellen – für Vermieter | FaleNetwork",
+    "h1": "Nebenkostenabrechnung erstellen",
+    "metaDescription": "Nebenkostenabrechnung für private Vermieter: Kosten nach Fläche, Personen oder Verbrauch verteilen, Mieterwechsel, Leerstand, Brief als PDF. Gratis, ohne Abo.",
+    "lede": "Trag Kosten, Mieter und Vorauszahlungen ein – für jeden Mieter entsteht eine nachvollziehbare Abrechnung als Brief.",
+    "primaryButton": "Abrechnungen erstellen",
+    "keywords": [
+      "nebenkostenabrechnung erstellen",
+      "betriebskostenabrechnung",
+      "nebenkostenabrechnung vorlage",
+      "nebenkostenabrechnung vermieter",
+      "nebenkosten umlageschlüssel",
+      "nebenkostenabrechnung mieterwechsel",
+      "nebenkostenabrechnung kostenlos",
+      "betriebskostenabrechnung pdf"
+    ],
+    "steps": [
+      {
+        "title": "Zeitraum und Haus",
+        "text": "Wähle den Abrechnungszeitraum (höchstens 12 Monate) und trag die Gesamtwohnfläche und die Zahl der Wohnungen ein – auch leere und selbst bewohnte."
+      },
+      {
+        "title": "Kosten und Mieter",
+        "text": "Trag die Betriebskosten mit Verteilerschlüssel ein und die Mieter mit Wohnfläche, Personen und Vorauszahlungen. Bei Mieterwechsel zählen Ein- und Auszugsdatum."
+      },
+      {
+        "title": "Abrechnungen erstellen",
+        "text": "Prüf die Vorschau je Mieter und erstell die Briefe als PDF – zusammen oder einzeln als ZIP, dazu eine Übersicht als CSV."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Jahresabo",
+        "text": "Vermieter-Programme kosten oft jedes Jahr oder monatlich. Für ein paar Wohnungen reicht hier der Browser – gratis."
+      },
+      {
+        "title": "Formell sauber",
+        "text": "Jede Abrechnung zeigt Gesamtkosten, Verteilerschlüssel mit Erläuterung, deinen Anteil und den Abzug der Vorauszahlungen – so, wie es die Rechtsprechung verlangt."
+      },
+      {
+        "title": "Mieterwechsel und Leerstand",
+        "text": "Kosten werden tagesgenau verteilt. Was auf leere oder selbst genutzte Wohnungen fällt, bleibt automatisch bei dir und wird nicht auf die Mieter umgelegt."
+      },
+      {
+        "title": "Daten bleiben bei dir",
+        "text": "Namen, Beträge und Wohnungen werden nicht hochgeladen. Merken fürs nächste Jahr nur, wenn du es einschaltest."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was muss in einer Nebenkostenabrechnung stehen?",
+        "a": "Der Abrechnungszeitraum, die Gesamtkosten je Kostenart, der Verteilerschlüssel mit Erläuterung, der Anteil des Mieters und der Abzug seiner Vorauszahlungen. Genau so ist jede Abrechnung hier aufgebaut."
+      },
+      {
+        "q": "Bis wann muss die Abrechnung beim Mieter sein?",
+        "a": "Spätestens zwölf Monate nach Ende des Abrechnungszeitraums, für das Jahr 2025 also bis zum 31.12.2026 (§ 556 Abs. 3 BGB). Danach kannst du keine Nachzahlung mehr verlangen. FaLe zeigt dir die Frist an."
+      },
+      {
+        "q": "Welchen Verteilerschlüssel muss ich nehmen?",
+        "a": "Den, der im Mietvertrag vereinbart ist. Ist nichts vereinbart, gilt die Wohnfläche; was nach Verbrauch erfasst wird, wie Wasser mit Zählern, wird nach Verbrauch verteilt (§ 556a BGB)."
+      },
+      {
+        "q": "Wie rechne ich Heizkosten ab?",
+        "a": "Heiz- und Warmwasserkosten müssen nach der Heizkostenverordnung überwiegend nach Verbrauch verteilt werden. Meist erstellt das ein Messdienst – dessen Beträge trägst du mit dem Schlüssel „Betrag je Mieter“ ein."
+      },
+      {
+        "q": "Was passiert mit Kosten für leere Wohnungen?",
+        "a": "Die trägt der Vermieter. Weil FaLe nach Fläche und Tagen rechnet, bleibt der Anteil leerer oder selbst bewohnter Wohnungen automatisch bei dir."
+      },
+      {
+        "q": "Ist das eine Rechtsberatung?",
+        "a": "Nein. FaLe rechnet und gestaltet die Abrechnung, prüft aber nicht deinen Mietvertrag. Im Zweifel helfen Haus- und Grundbesitzervereine oder Anwälte."
+      }
+    ]
+  },
+  "en": {
+    "slug": "utility-cost-statement",
+    "name": "Operating cost statement",
+    "short": "Utility cost statements for private landlords in Germany – with tenant changes and vacancy.",
+    "title": "Utility cost statement for landlords in Germany | FaleNetwork",
+    "h1": "Create an operating cost statement",
+    "metaDescription": "Operating cost statement (Nebenkostenabrechnung) for private landlords in Germany: split by area, persons or consumption, tenant changes, vacancy, PDF letters.",
+    "lede": "Enter costs, tenants and prepayments – each tenant gets a clear statement as a letter.",
+    "primaryButton": "Create statements",
+    "keywords": [
+      "nebenkostenabrechnung english",
+      "operating cost statement germany",
+      "utility bill landlord germany",
+      "betriebskostenabrechnung",
+      "service charge statement"
+    ],
+    "steps": [
+      {
+        "title": "Period and house",
+        "text": "Choose the billing period (at most 12 months) and enter the total living area and number of flats – including empty and owner-occupied ones."
+      },
+      {
+        "title": "Costs and tenants",
+        "text": "Enter the operating costs with their allocation key, and the tenants with area, persons and prepayments. For a change of tenant the move dates count."
+      },
+      {
+        "title": "Create statements",
+        "text": "Check the preview per tenant and create the letters as PDF – together or one each as a ZIP, plus an overview as CSV."
+      }
+    ],
+    "why": [
+      {
+        "title": "No yearly subscription",
+        "text": "Landlord software often charges yearly or monthly. For a few flats your browser is enough – free."
+      },
+      {
+        "title": "Formally sound",
+        "text": "Each statement shows total costs, the allocation key explained, the tenant’s share and the prepayments deducted – as German case law requires."
+      },
+      {
+        "title": "Tenant changes and vacancy",
+        "text": "Costs are split by the day. Whatever falls on empty or owner-occupied flats automatically stays with you."
+      },
+      {
+        "title": "Your data stays with you",
+        "text": "Names, amounts and flats are not uploaded. Kept for next year only if you switch that on."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What must the statement contain?",
+        "a": "The billing period, total costs per cost type, the allocation key explained, the tenant’s share and the deduction of their prepayments. Every statement here is built that way."
+      },
+      {
+        "q": "When must tenants receive it?",
+        "a": "At the latest twelve months after the end of the billing period (§ 556 (3) BGB). After that no back payment can be claimed. FaLe shows you the deadline."
+      },
+      {
+        "q": "Which allocation key do I use?",
+        "a": "The one agreed in the lease. Without an agreement, living area applies; costs recorded by meters, such as water, go by consumption (§ 556a BGB)."
+      },
+      {
+        "q": "How do I handle heating costs?",
+        "a": "German rules require heating and hot water to be split mainly by consumption, usually by a metering company. Enter its amounts with the key “Amount per tenant”."
+      },
+      {
+        "q": "Is this legal advice?",
+        "a": "No. FaLe calculates and lays out the statement but doesn’t check your lease."
+      }
+    ]
+  }
+}

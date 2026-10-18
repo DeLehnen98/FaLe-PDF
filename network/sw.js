@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '8648c3977b13';
+const VERSION = '8044e9c36576';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -74,6 +74,7 @@ const PRECACHE = [
   "/assets/wt/lib/new-ui.js",
   "/assets/wt/lib/new-viewer.js",
   "/assets/wt/lib/new.css",
+  "/assets/wt/lib/nk.js",
   "/assets/wt/lib/options.js",
   "/assets/wt/lib/org-common.js",
   "/assets/wt/lib/org-gray.js",
