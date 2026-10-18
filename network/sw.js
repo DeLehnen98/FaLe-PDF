@@ -12,7 +12,7 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '48e42ff0aa39';
+const VERSION = 'c1a9b53922f3';
 const CORE = 'wt-core-' + VERSION;
 const VENDOR = 'wt-vendor-604b47220be7';
 const PAGES = 'wt-pages';
@@ -87,6 +87,9 @@ const PRECACHE = [
   "/assets/wt/lib/qr-scanner.css",
   "/assets/wt/lib/qr-worker.js",
   "/assets/wt/lib/ranges.js",
+  "/assets/wt/lib/rec-store-worker.js",
+  "/assets/wt/lib/rec-store.js",
+  "/assets/wt/lib/rec-webm.js",
   "/assets/wt/lib/sec-detect.js",
   "/assets/wt/lib/sec-diff.js",
   "/assets/wt/lib/sec-draw.js",

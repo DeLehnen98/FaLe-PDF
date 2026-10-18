@@ -1,0 +1,171 @@
+{
+  "id": "screen-recorder",
+  "category": "everyday",
+  "icon": "camera",
+  "module": "tools/screen-recorder.js",
+  "accepts": [],
+  "minFiles": 0,
+  "order": 64,
+  "related": [
+    "image-to-text",
+    "watermark-image",
+    "compress-image",
+    "qr-code"
+  ],
+  "next": [],
+  "needs": [],
+  "de": {
+    "slug": "bildschirm-aufnehmen",
+    "name": "Bildschirm aufnehmen",
+    "short": "Bildschirm mit Ton und Kamera aufnehmen – ohne Zeitlimit und Wasserzeichen.",
+    "title": "Bildschirm aufnehmen – ohne Limit & Wasserzeichen | FaleNetwork",
+    "h1": "Bildschirm aufnehmen",
+    "metaDescription": "Bildschirm, Fenster oder Tab aufnehmen – mit Mikrofon, Ton und Kamera-Fenster. Ohne Zeitlimit, ohne Wasserzeichen, ohne Installation. Als MP4 oder WebM.",
+    "lede": "Starte die Aufnahme, wähl Bildschirm, Fenster oder Tab – und speichere das Video direkt auf deinem Gerät.",
+    "primaryButton": "Aufnahme speichern",
+    "keywords": [
+      "bildschirm aufnehmen",
+      "screen recorder",
+      "bildschirmaufnahme pc",
+      "bildschirm aufnehmen mit ton",
+      "bildschirmvideo",
+      "screen recording ohne wasserzeichen",
+      "tutorial aufnehmen",
+      "präsentation aufnehmen"
+    ],
+    "steps": [
+      {
+        "title": "Ton und Kamera wählen",
+        "text": "Leg fest, ob dein Mikrofon und der Ton vom Bildschirm mit aufs Video sollen. Für ein Bild von dir blendest du das Kamera-Fenster ein."
+      },
+      {
+        "title": "Aufnahme starten",
+        "text": "Wähle im Browser-Dialog den ganzen Bildschirm, ein Fenster oder einen Tab. Nach dem Countdown läuft die Aufnahme – mit Pause, solange du willst."
+      },
+      {
+        "title": "Speichern",
+        "text": "Beende die Aufnahme, schau sie dir an und speichere sie als MP4 oder WebM – oder teile sie direkt."
+      }
+    ],
+    "why": [
+      {
+        "title": "Kein Zeitlimit, kein Wasserzeichen",
+        "text": "Viele Recorder schneiden Gratis-Videos nach wenigen Minuten ab oder setzen ihr Logo ins Bild. Hier nimmst du so lange auf, wie du willst – ohne fremdes Logo."
+      },
+      {
+        "title": "Nichts geht verloren",
+        "text": "Während der Aufnahme wird jede Sekunde im Speicher deines Browsers gesichert. Stürzt der Tab ab, holst du die Aufnahme beim nächsten Öffnen zurück."
+      },
+      {
+        "title": "Spulen funktioniert",
+        "text": "Browser-Aufnahmen im WebM-Format haben oft keine Länge, sodass Player nicht vorspulen können. FaLe trägt die Dauer nachträglich ein."
+      },
+      {
+        "title": "Bleibt auf deinem Gerät",
+        "text": "Bild und Ton werden nicht hochgeladen. Du brauchst kein Konto und keine Installation."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie nehme ich den Bildschirm mit Ton auf?",
+        "a": "Lass „Ton vom Bildschirm oder Tab aufnehmen“ an und hake im Freigabe-Dialog des Browsers „Audio teilen“ an. Unter Windows geht das für den ganzen Bildschirm, auf dem Mac nur für einzelne Tabs. Dein Mikrofon kommt dazu, wenn du es eingeschaltet hast."
+      },
+      {
+        "q": "Gibt es ein Zeitlimit?",
+        "a": "Nein. Die Aufnahme wird fortlaufend im privaten Speicher deines Browsers abgelegt, sodass auch lange Videos den Arbeitsspeicher nicht füllen. Grenze ist nur der freie Platz auf deinem Gerät."
+      },
+      {
+        "q": "Wie komme ich selbst mit ins Video?",
+        "a": "Blende das Kamera-Fenster ein und teile den ganzen Bildschirm. Das runde Kamerabild schwebt über allen Programmen und ist so in der Aufnahme zu sehen. Verschieben kannst du es mit der Maus."
+      },
+      {
+        "q": "Kann ich am Handy aufnehmen?",
+        "a": "Handy-Browser erlauben keine Bildschirmaufnahme. Nutze dort die eingebaute Funktion: beim iPhone im Kontrollzentrum, bei Android in den Schnelleinstellungen."
+      },
+      {
+        "q": "MP4 oder WebM?",
+        "a": "MP4 läuft auf praktisch allen Geräten und in Messengern. WebM ist offen und oft etwas kleiner. Welche Formate dein Browser aufnehmen kann, zeigt FaLe dir zur Auswahl an."
+      },
+      {
+        "q": "Wird meine Aufnahme gespeichert oder hochgeladen?",
+        "a": "Hochgeladen wird nichts. Bis du sie speicherst, liegt die Aufnahme im privaten Speicher dieses Browsers und wird beim nächsten Besuch oder mit „Neu aufnehmen“ gelöscht."
+      }
+    ]
+  },
+  "en": {
+    "slug": "screen-recorder",
+    "name": "Screen recorder",
+    "short": "Record your screen with sound and camera – no time limit, no watermark.",
+    "title": "Free screen recorder – no watermark, no time limit | FaleNetwork",
+    "h1": "Free screen recorder",
+    "metaDescription": "Record your screen, a window or a tab – with microphone, sound and a camera window. No time limit, no watermark, nothing to install. As MP4 or WebM.",
+    "lede": "Start recording, pick a screen, window or tab – and save the video straight to your device.",
+    "primaryButton": "Save recording",
+    "keywords": [
+      "screen recorder",
+      "record screen",
+      "screen recording with audio",
+      "free screen recorder no watermark",
+      "record tutorial",
+      "record presentation"
+    ],
+    "steps": [
+      {
+        "title": "Choose sound and camera",
+        "text": "Decide whether your microphone and the sound from the screen go into the video. To show yourself, open the camera window."
+      },
+      {
+        "title": "Start recording",
+        "text": "Pick the whole screen, a window or a tab in the browser’s dialog. After the countdown it records – pause whenever you like."
+      },
+      {
+        "title": "Save",
+        "text": "Stop, watch it back and save it as MP4 or WebM – or share it directly."
+      }
+    ],
+    "why": [
+      {
+        "title": "No time limit, no watermark",
+        "text": "Many recorders cut free videos after a few minutes or put their logo on them. Here you record as long as you like – without anyone’s logo."
+      },
+      {
+        "title": "Nothing gets lost",
+        "text": "While recording, every second is saved in your browser’s storage. If the tab crashes, you get the recording back the next time you open the page."
+      },
+      {
+        "title": "Seeking works",
+        "text": "Browser recordings in WebM often have no length, so players can’t skip ahead. FaLe writes the duration in afterwards."
+      },
+      {
+        "title": "Stays on your device",
+        "text": "Picture and sound are not uploaded. No account and nothing to install."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I record the screen with sound?",
+        "a": "Leave “Record sound from the screen or tab” on and tick “Share audio” in the browser’s sharing dialog. On Windows this works for the whole screen, on a Mac only for single tabs. Your microphone is added if it’s switched on."
+      },
+      {
+        "q": "Is there a time limit?",
+        "a": "No. The recording is written continuously to your browser’s private storage, so long videos don’t fill up memory. The only limit is free space on your device."
+      },
+      {
+        "q": "How do I appear in the video?",
+        "a": "Open the camera window and share the whole screen. The round camera image floats above all apps, so it shows in the recording. Drag it wherever you like."
+      },
+      {
+        "q": "Can I record on my phone?",
+        "a": "Phone browsers don’t allow screen recording. Use the built-in feature instead: Control Center on iPhone, Quick Settings on Android."
+      },
+      {
+        "q": "MP4 or WebM?",
+        "a": "MP4 plays on practically every device and in messengers. WebM is open and often a little smaller. FaLe offers the formats your browser can record."
+      },
+      {
+        "q": "Is my recording stored or uploaded?",
+        "a": "Nothing is uploaded. Until you save it, the recording lives in this browser’s private storage and is deleted on your next visit or with “Record again”."
+      }
+    ]
+  }
+}
