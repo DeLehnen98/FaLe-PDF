@@ -11,6 +11,8 @@ T=store/graphics/tools
 
 node scripts/vercel-build.mjs
 rm -rf "$WORK/site" "$WORK/raw"; mkdir -p "$WORK"; cp -r dist "$WORK/site"
+# the web build puts the start page at / and the app at /app/ (a Vercel rewrite) – the captures need the app at /
+cp "$WORK/site/app/index.html" "$WORK/site/index.html"
 python3 "$T/gen_demo.py" "$WORK/site/demo"           # fictional demo files (DE + EN) + fake camera stream
 (cd "$WORK/site" && exec python3 -m http.server "$PORT" --bind 127.0.0.1 >/dev/null 2>&1) &
 SERVER=$!; trap 'kill $SERVER 2>/dev/null || true' EXIT

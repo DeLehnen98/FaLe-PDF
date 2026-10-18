@@ -50,7 +50,7 @@ class App:
                                             locale='de-DE' if lang == 'de' else 'en-GB', color_scheme='dark' if dark else 'light',
                                             is_mobile=width < 700, has_touch=True, permissions=['camera'] if camera else [])
         consent = json.dumps({'v': 1, 'at': int(time.time() * 1000), 'provider': 'cloud'})
-        self.ctx.add_init_script(f"""try {{ localStorage.setItem('fale-onboarded','1'); localStorage.setItem('fale-lang','{lang}');
+        self.ctx.add_init_script(f"""try {{ localStorage.setItem('fale-onboarded','1'); localStorage.setItem('fale-simple-hint','hidden'); localStorage.setItem('fale-lang','{lang}');
           localStorage.setItem('fale-ai-consent', {json.dumps(consent)}); localStorage.setItem('fale-ai-token','demo-token');
           localStorage.setItem('fale-ai-device','demodevice0123456789abcd'); }} catch (e) {{}}""")
         ai_routes(self.ctx, answers or {})

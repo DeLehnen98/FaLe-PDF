@@ -11,14 +11,14 @@ import os
 WORK = Path(os.environ.get('FALE_SHOTS_WORK', '/tmp/fale-store-shots'))  # build copy, demo files, raw captures
 SP = WORK
 
-# --- 1) Play Store icon: same mark as icons/ (scripts/make_icons.py), full-bleed square; Google applies the mask + shadow.
+# --- 1) Play Store icon: written by scripts/make_icons.py (same SVG master as every other icon, full bleed;
+#        Google applies the mask + shadow). Re-run it here so the store icon can never drift from the app icon.
 spec = importlib.util.spec_from_file_location('make_icons', ROOT / 'scripts' / 'make_icons.py')
 mi = importlib.util.module_from_spec(spec); spec.loader.exec_module(mi)
-big = 512 * 4
-img = mi.gradient(big).convert('RGBA')
-mi.draw_mark(img, big / 2, big / 2, big * 0.60)
-icon = img.resize((512, 512), Image.LANCZOS)
-icon.save(OUT / 'play-icon-512.png', optimize=True)  # 32-bit PNG (RGBA), opaque
+with sync_playwright() as _p:
+    _b = _p.chromium.launch(); _pg = _b.new_page(device_scale_factor=1)
+    mi.render(_pg, mi.svg(full_bleed=True), 512, OUT / 'play-icon-512.png', alpha=False)
+    _b.close()
 
 # --- 2) Feature graphic + OG image (HTML/CSS rendered by Chromium)
 TXT = {
@@ -96,3 +96,10 @@ for lang in ('de', 'en'):
     for n in ('home', 'sign', 'ai'):
         Image.open(SP / 'raw' / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 1140), Image.LANCZOS).save(ROOT / 'info-assets' / f'{n}-{lang}.webp', quality=74, method=6)
 print('wrote info-assets/*.webp')
+
+# Screenshots for the start page of pdf.fale.network (site/img, 540 × 960 = half of the framed phone shots)
+(ROOT / 'site' / 'img').mkdir(parents=True, exist_ok=True)
+for lang in ('de', 'en'):
+    for n in ('01_home', '02_sign', '03_scan', '06_sheet', '08_privacy'):
+        Image.open(OUT / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 960), Image.LANCZOS).save(ROOT / 'site' / 'img' / f'{lang}-{n}.webp', quality=78, method=6)
+print('wrote site/img/*.webp')
