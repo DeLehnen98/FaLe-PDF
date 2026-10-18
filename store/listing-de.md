@@ -134,7 +134,7 @@ Reihenfolge der Telefon-Screenshots (Deutsch) mit Untertitel im Bild:
 - Kategorie: **Produktivität**
 - Tags (Vorschläge in der Play Console): PDF, Dokumente, Produktivität, Scanner, Büro
 - Kontakt-E-Mail: `[E-MAIL-ADRESSE]`
-- Datenschutzerklärung (Pflichtfeld): `https://[DOMAIN]/datenschutz.html`
+- Datenschutzerklärung (Pflichtfeld): `https://pdf.fale.network/datenschutz.html`
 
 > Hinweis: Nur Funktionen nennen, die in der hochgeladenen Version wirklich enthalten sind –
 > vor jedem Release mit der Werkzeug-Liste der App abgleichen.

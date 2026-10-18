@@ -67,7 +67,7 @@ App-Info, ungefährer Standort“, „Erhobene Daten“ wie oben, „Daten werde
 
 | Bereich | Antwort |
 |---|---|
-| Datenschutzerklärung | `https://[DOMAIN]/datenschutz.html` (Platzhalter vorher ausfüllen – inkl. KI-Anbieter, Abschnitte 7–10) |
+| Datenschutzerklärung | `https://pdf.fale.network/datenschutz.html` (Platzhalter vorher ausfüllen – inkl. KI-Anbieter, Abschnitte 7–10) |
 | Werbung | **Ja, die App enthält Werbung** (nur freiwillige Rewarded-Videos über Google AdMob) |
 | App-Zugriff | Alle Funktionen ohne Anmeldung verfügbar (Cloud-KI braucht nur eine Einwilligung in der App; Teilen/Unterschrift anfordern/Geräte verbinden brauchen nur Internet). Das FaLe-Konto ist optional; für die Prüfung kann der Reviewer sich mit einer eigenen E-Mail per Code anmelden (oder ein Test-Konto hinterlegen, Code-Mails gehen an dieses Postfach). |
 | Zielgruppe | **18 und älter** (vermeidet die Familien-Richtlinie; für Kinder wäre AdMob anders zu konfigurieren) |
@@ -103,4 +103,4 @@ Prüfen nach jedem Build: `aapt2 dump permissions app-release.apk` bzw. Play Con
   mit Sync-Passwort bzw. Wiederherstellungsschlüssel gespeichert).
 - **Speicherort:** Supabase, Region Frankfurt (eu-central-1). Kein Teilen mit Dritten im Play-Sinn (nur Dienstleister).
 - **Löschung:** in der App („Konto löschen“, „Alle Cloud-Daten löschen“) und über den Web-Link
-  `https://fale-pdf.vercel.app/#/konto` (Anmelden → „Konto löschen“).
+  `https://pdf.fale.network/app/#/konto` (Anmelden → „Konto löschen“).

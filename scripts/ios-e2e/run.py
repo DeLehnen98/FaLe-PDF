@@ -87,8 +87,12 @@ try:
         seen = ' | '.join(l for l in lines if 'notification' in l or 'openURL' in l)[-1500:]
         print(f"::warning title=iOS URL::openurl rc={r.returncode} – kein Import über die URL; gesehen: {seen}")
         # 2b. test builds: a Darwin notification makes the plugin open the file exactly like an „open in place“ URL
-        sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.open', check=False, timeout=30)
-        imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 30)
+        # (sent twice at most: on a busy runner the first notification can arrive before the plugin listens)
+        for _ in range(2):
+            sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.open', check=False, timeout=30)
+            imported = wait_for(lambda: has('FaleIncoming: fale-e2e-writeback.pdf'), 30)
+            if imported:
+                break
     if True:
         note(imported, 'Datei öffnen', next((l for l in lines if 'FaleIncoming: fale-e2e-writeback.pdf' in l), 'Datei kam nicht in der App an'))
         if imported:

@@ -2,6 +2,42 @@
 
 > iPhone/iPad: eigene Schritte in [IOS-SETUP.md](IOS-SETUP.md) (die iOS-App wird bereits automatisch gebaut und im Simulator getestet).
 
+## 0. Nur du kannst das eintragen (Stand Oktober 2026)
+
+Alles andere ist vorbereitet. Diese Angaben dürfen nicht erfunden werden:
+
+| Was | Wo | Platzhalter |
+|---|---|---|
+| Name bzw. Firma, Anschrift, Land | `impressum.html`, `datenschutz.html`, `network/impressum/`, `network/en/imprint/`, `network/datenschutz/` | `[VOR- UND NACHNAME …]`, `[STRASSE UND HAUSNUMMER]`, `[PLZ ORT]`, `[LAND]` |
+| Kontakt-E-Mail (wird im Store öffentlich angezeigt) | dieselben Seiten + `store/listing-de.md`, `store/data-safety.md` | `[E-MAIL-ADRESSE]` |
+| AdMob-App-ID + Rewarded-Anzeigenblock | `js/ai/config.js`, Vercel `ADMOB_REWARDED_AD_UNITS` | Test-IDs bis dahin |
+| Play-Dienstkonto (Kaufprüfung) | Vercel `GOOGLE_PLAY_SA_JSON` | – (Secret, selbst eintragen) |
+| Store-Link nach der Freigabe | `network/tools/apps.json` → `pdf.android` (und `testers` für den Opt-in-Link des geschlossenen Tests) | leer = „bald im Play Store“ |
+
+Die Domain ist eingetragen: Datenschutz-URL **`https://pdf.fale.network/datenschutz.html`**,
+Kontolöschung **`https://pdf.fale.network/app/#/konto`**.
+
+**Produkte in der Play Console** (IDs müssen genau so heißen – die App fragt sie unter diesen Namen ab):
+
+| Produkt-ID | Art | Name im Store | Preisvorschlag |
+|---|---|---|---|
+| `fale_plus_monthly` | Abo, Basis-Abo `monthly`, 1 Monat | FaLe Plus (monatlich) | 2,99 € |
+| `fale_plus_yearly` | Abo, Basis-Abo `yearly`, 1 Jahr | FaLe Plus (jährlich) | 24,99 € |
+| `fale_plus_lifetime` | In-App-Produkt (einmalig) | FaLe Plus für immer | 39,99 € |
+| `fale_tip_small` | In-App-Produkt (verbrauchbar) | Kleiner Dank | 1,99 € |
+| `fale_tip_medium` | In-App-Produkt (verbrauchbar) | Großer Dank | 4,99 € |
+| `fale_tip_large` | In-App-Produkt (verbrauchbar) | Riesiger Dank | 9,99 € |
+
+Beschreibungstext (für alle Plus-Produkte): „Deutlich mehr KI-Anfragen pro Tag und Unterstützung der
+Entwicklung. Alle Werkzeuge bleiben auch ohne Plus kostenlos.“ Danke-Beiträge: „Unterstützt die Weiterentwicklung. Schaltet nichts frei.“
+
+## 0b. Webseite pdf.fale.network
+
+- `/` ist die eigene Startseite (Ordner `site/`, Englisch unter `/en/`), die Browser-App liegt unter **`/app/`**.
+- Alte Links (`/#/s/…`, `/#/konto`, Anmelde-Rückleitungen `?code=…`) leitet die Startseite automatisch nach `/app/` weiter.
+- Store-Schaltflächen auf der Startseite zeigen „bald verfügbar“, bis in `network/tools/apps.json` ein Link steht
+  (der Build schreibt daraus `site/stores.json`). Danach `python3 network/tools/build_pages.py` und neu deployen.
+
 ## A. Einmalig: Grundlagen
 
 - [ ] **GitHub-Repo** anlegen (privat empfohlen), Projekt pushen. `android/`, `dist/`, `node_modules/` und
@@ -10,7 +46,7 @@
 - [ ] **App-ID prüfen**: `appId` in `capacitor.config.json` (aktuell `dev.fale.pdf`). Nach der ersten
       Veröffentlichung bei Google Play ist sie **für immer festgelegt**.
 - [ ] **Datenschutzerklärung** `datenschutz.html` und **Impressum** `impressum.html`: alle gelb markierten
-      Platzhalter `[…]` ausfüllen, Web-Version deployen, URL `https://[DOMAIN]/datenschutz.html` testen.
+      Platzhalter `[…]` ausfüllen, Web-Version deployen, URL `https://pdf.fale.network/datenschutz.html` testen.
 - [ ] Link in der App unter **Ich → Rechtliches** auf Datenschutz und Impressum vorhanden.
 
 ## A2. Cloud-KI, Werbevideos, FaLe Plus (einmalig) → Schritt für Schritt in [AI-SETUP.md](AI-SETUP.md)
@@ -76,9 +112,10 @@
 ## D. Store-Eintrag
 
 - [ ] Texte aus [listing-de.md](listing-de.md) (Standardsprache Deutsch) und ggf. [listing-en.md](listing-en.md).
-- [ ] **App-Symbol** 512 × 512 PNG (32-bit): `icons/icon-maskable-512.png` verwenden (vollflächig –
-      Google rundet die Ecken selbst ab; nicht das Symbol mit transparenten Ecken).
-- [ ] **Vorstellungsgrafik** (Feature Graphic) 1024 × 500 PNG/JPG, ohne Transparenz.
+- [ ] **App-Symbol** 512 × 512 PNG: `store/graphics/play-icon-512.png` (vollflächig – Google rundet die Ecken selbst
+      ab). Alle Symbole entstehen aus einer Vorlage: `python3 scripts/make_icons.py`.
+- [ ] **Vorstellungsgrafik** (Feature Graphic) 1024 × 500: `store/graphics/feature-graphic-de.png` / `-en.png`.
+      Fertige Screenshots aller Größen: `store/graphics/` (Übersicht in [graphics/README.md](graphics/README.md)).
 - [ ] **Screenshots Telefon**: mindestens 2, besser 4–8, Hochformat 9:16, z. B. 1080 × 1920 px.
       Vorschlag (hell, mit Beispieldateien – keine echten persönlichen Daten!):
   1. Startseite mit zuletzt verwendeten Dateien
@@ -97,7 +134,7 @@
 - [ ] Datenschutzerklärung (URL)
 - [ ] Werbung: **Ja** (freiwillige Rewarded-Videos, AdMob)
 - [ ] Werbe-ID: **Ja**, Zweck Werbung
-- [ ] In-App-Käufe: Abo „FaLe Plus“ (2,99 €/Monat, 24,99 €/Jahr), Einmalkauf „für immer“ und Danke-Beiträge (Preise in der Play Console)
+- [ ] In-App-Käufe: Abo „FaLe Plus“ (2,99 €/Monat, 24,99 €/Jahr), Einmalkauf „für immer“ (39,99 €) und Danke-Beiträge (1,99/4,99/9,99 €) – Tabelle in Abschnitt 0
 - [ ] App-Zugriff: keine Anmeldung nötig
 - [ ] Content-Rating-Fragebogen (IARC) – Antworten in [data-safety.md](data-safety.md)
 - [ ] Zielgruppe: 18+

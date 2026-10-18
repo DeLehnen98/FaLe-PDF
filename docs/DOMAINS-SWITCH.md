@@ -73,7 +73,7 @@ gültigem Zertifikat, `curl -s -X OPTIONS -H 'Origin: https://faleone.com' -H 'A
    (§2 Base URL, §7.9 Link-Format), `docs/SECURITY.md`, `SECURITY.md`, `store/AI-SETUP.md`,
    `store/RELEASE-CHECKLIST.md`, `store/data-safety.md` (Löschlink), `one/README.md`.
 8. Tests mitziehen: `test_network.py` erwartet `https://fale-pdf.vercel.app/#/konto` als Konto-Link →
-   `https://pdf.fale.network/#/konto`. Die API-Tests (Preflight von `fale-pdf.vercel.app` / `fale-one.vercel.app`)
+   `https://pdf.fale.network/app/#/konto`. Die API-Tests (Preflight von `fale-pdf.vercel.app` / `fale-one.vercel.app`)
    bleiben gültig, weil die alten Origins erlaubt bleiben.
 9. Android: neuen Build ausliefern (API-Basis und ausgegebene Links ändern sich erst mit dem App-Update; alte
    Installationen sprechen weiter `fale-pdf.vercel.app` an – darum diese Domain **nie** abschalten).
@@ -86,7 +86,7 @@ gültigem Zertifikat, `curl -s -X OPTIONS -H 'Origin: https://faleone.com' -H 'A
 - **Google OAuth** (falls aktiv): autorisierte JavaScript-Ursprünge um `https://pdf.fale.network` ergänzen;
   Redirect-URI bleibt die Supabase-Callback-URL.
 - **Google Play**: Website, Datenschutz-URL (`https://pdf.fale.network/datenschutz.html`) und Löschlink
-  (`https://pdf.fale.network/#/konto`). AdMob-SSV-Callback darf auf `fale-pdf.vercel.app` bleiben.
+  (`https://pdf.fale.network/app/#/konto`). AdMob-SSV-Callback darf auf `fale-pdf.vercel.app` bleiben.
 - **Search Console / Bing**: `https://pdf.fale.network/` als Property, Sitemap einreichen;
   `https://fale.network/sitemap.xml` für die Netzwerk-Seite.
 - **Umleitung alt → neu** (optional, frühestens Wochen nach dem Flip): in `fale-pdf` nur HTML-Seiten umleiten,

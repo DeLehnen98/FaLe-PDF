@@ -48,7 +48,7 @@ Check: `dig +short fale.network`, `dig +short pdf.fale.network CNAME`, then open
 
 ## 3. After the domain works – network site (this folder)
 
-- `assets/site.js` → `FALE_CONFIG.kontoUrl`: `https://pdf.fale.network/#/konto`
+- `assets/site.js` → `FALE_CONFIG.kontoUrl`: `https://pdf.fale.network/app/#/konto`
   (and `kontoAvailable: true` once the FaLe-Konto is live – reveals the sign-in buttons).
 - `tools/build_pages.py` → `PDF_APP`, `PDF_INFO`, `PDF_PRIVACY` (and the two hard-coded
   `fale-pdf.vercel.app` links in the PDF page texts) → `https://pdf.fale.network/…`; then

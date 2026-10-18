@@ -71,7 +71,7 @@ Für jede Variable: *Environments* = **Production** und **Preview**. Geheimnisse
 | `AI_PROVIDER_PRIVACY_NOTE` | eigener Datenschutz-Satz für den Einwilligungsdialog | optional |
 
 **Danach neu deployen** (Deployments → letzter Eintrag → „Redeploy“) – Variablen gelten erst für neue Deployments.
-Test: <https://fale-pdf.vercel.app/#/ki> → statt „KI kommt bald“ erscheint „Cloud-KI einrichten“.
+Test: <https://pdf.fale.network/app/#/ki> → statt „KI kommt bald“ erscheint „Cloud-KI einrichten“.
 
 Anderer Anbieter? `AI_PROVIDER=openai_compat` + `OPENAI_COMPAT_BASE_URL`, `OPENAI_COMPAT_API_KEY`, `AI_MODEL`, `AI_PROVIDER_LABEL`
 (jeder OpenAI-kompatible Dienst, z. B. ein EU-Anbieter) oder `AI_PROVIDER=gemini` + `GEMINI_API_KEY` + `AI_MODEL`.
