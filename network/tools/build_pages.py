@@ -504,6 +504,10 @@ def store_badges(app, lang, in_install=False):
         out.append(app_link(cfg['ios'], f'<span class="store-sub">iPhone &amp; iPad</span><span class="store-main">{"Im App Store laden" if de else "Get it on the App Store"}</span>', 'store-badge', lang, ic('store')))
     elif not in_install:
         out.append(f'<a class="store-badge" href="#inst-h">{ic("phone-dl")}<span class="store-sub">{"Handy &amp; Computer" if de else "Phone &amp; computer"}</span><span class="store-main">{"Jetzt als App installieren" if de else "Install as an app now"}</span></a>')
+    if ok(cfg.get('windows')):
+        out.append(app_link(cfg['windows'], f'<span class="store-sub">Windows</span><span class="store-main">{"Im Microsoft Store laden" if de else "Get it from the Microsoft Store"}</span>', 'store-badge', lang, ic('store')))
+    else:
+        out.append(f'<span class="store-badge is-soon">{ic("store")}<span class="store-sub">Windows</span><span class="store-main">{"Bald im Microsoft Store" if de else "Microsoft Store – coming soon"}</span></span>')
     if ok(cfg.get('testers')) and not ok(cfg.get('android')):
         out.append(app_link(cfg['testers'], f'<span class="store-sub">Android</span><span class="store-main">{"Als Tester mitmachen" if de else "Become a tester"}</span>', 'store-badge', lang, ic('users')))
     return f'<div class="store-row">{"".join(out)}</div>'
@@ -554,7 +558,7 @@ PDF = {
         'shots': [('home', 'Startbildschirm von FaLe PDF', 'Start'), ('sign', 'Mietvertrag mit eingefügter Unterschrift in FaLe PDF', 'Unterschreiben'), ('ai', 'KI-Assistent beantwortet eine Frage zu einer Rechnung mit Seitenangabe', 'KI-Assistent (optional)')],
         'inst_h': 'FaLe PDF installieren',
         'inst': [('Android', 'FaLe PDF im Browser öffnen und im Menü „App installieren“ wählen. Im Play Store erscheint die App in Kürze.'),
-                 ('Computer', 'In Chrome oder Edge öffnen und auf das Installieren-Symbol in der Adressleiste klicken – oder einfach im Browser nutzen.'),
+                 ('Computer', 'Auf <a href="https://pdf.fale.network/#computer">pdf.fale.network</a> „Herunterladen“ klicken und „Installieren“ bestätigen: unter Windows mit Edge oder Chrome, auf dem Mac mit Safari, Chrome oder Edge. Bald auch im Microsoft Store.'),
                  ('iPhone und iPad', 'In Safari öffnen, auf „Teilen“ tippen und „Zum Home-Bildschirm“ wählen.')],
         'why_h': 'Warum ist FaLe PDF gratis?',
         'why': [
@@ -621,7 +625,7 @@ PDF = {
         'shots': [('home', 'FaLe PDF home screen', 'Home'), ('sign', 'Rental agreement with an inserted signature in FaLe PDF', 'Signing'), ('ai', 'AI assistant answering a question about an invoice with a page reference', 'AI assistant (optional)')],
         'inst_h': 'Install FaLe PDF',
         'inst': [('Android', 'Open FaLe PDF in your browser and choose “Install app” from the menu. The Play Store app is coming soon.'),
-                 ('Computer', 'Open it in Chrome or Edge and click the install icon in the address bar – or simply use it in the browser.'),
+                 ('Computer', 'On <a href="https://pdf.fale.network/en/#computer">pdf.fale.network</a>, click “Download” and confirm “Install”: on Windows with Edge or Chrome, on a Mac with Safari, Chrome or Edge. Soon in the Microsoft Store as well.'),
                  ('iPhone and iPad', 'Open it in Safari, tap “Share” and choose “Add to Home Screen”.')],
         'why_h': 'Why is FaLe PDF free?',
         'why': [
