@@ -297,6 +297,7 @@ async function init() {
   document.documentElement.classList.add('ready');
   // housekeeping + first-run intro (all local)
   db.purgeOldTrash(30).catch(() => {});
+  import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)); // editors closed by a crash
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./extras/reminders.js').then(m => m.syncNotifications()).catch(e => console.warn(e));
   import('./smart/entry.js').then(m => m.initSmart()).catch(e => console.warn(e)); // Dokumenten-Gedächtnis: local index in idle time

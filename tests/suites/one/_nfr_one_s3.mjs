@@ -27,7 +27,7 @@ const eq = (a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b)) === 0;
   check('vector get-vanilla-query-order-key-case', S.signature({ method: 'GET', path: '/', query: [['Param2', 'value2'], ['Param1', 'value1']], headers: host, payloadHash: E }, suite, D).signature === 'b97d918cfa904a5beff61c982a1b6f458b799221646efd99d3219ec94cdf2500');
   check('vector post-vanilla', S.signature({ method: 'POST', path: '/', query: [], headers: host, payloadHash: E }, suite, D).signature === '5da7c1a2acd57cee7505fc6676e4e544621c30862966e37dddb68e92efbe5d6b');
   // S3 documentation examples (sig-v4-header-based-auth / query-string-auth)
-  const s3c = { accessKeyId: 'AKIAIOSFODNN7EXAMPLE', secretAccessKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', region: 'us-east-1' };
+  const s3c = { accessKeyId: 'AKIAIOSFODNN7EXAMPLE', secretAccessKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', region: 'us-east-1' }; // AWS SigV4 documentation test vector – fale-secret-scan: allow
   const SD = '20130524T000000Z', H = 'examplebucket.s3.amazonaws.com';
   check('S3 example: GET object with Range', S.signature({ method: 'GET', path: '/test.txt', query: [], headers: { host: H, range: 'bytes=0-9', 'x-amz-content-sha256': E, 'x-amz-date': SD }, payloadHash: E }, s3c, SD).signature === 'f0e8bdb87c964420e857bd35b5d6ed310bd44f0170aba48dd91039c6036bdb41');
   const ph = S.sha256hex('Welcome to Amazon S3.');
@@ -37,7 +37,7 @@ const eq = (a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b)) === 0;
   check('S3 example: presigned GET URL', pre.signature === 'aeeed9bbccd4d02ee5c0109b86d86835f995330da4c265957d157751f604d404', pre.signature);
   check('uriEncode: RFC 3986 (space, unicode, slash kept only in paths)', S.uriEncode('a b/ü~') === 'a%20b%2F%C3%BC~' && S.uriEncode('a b/ü~', true) === 'a%20b/%C3%BC~');
   const sh = S.signHeaders({ method: 'GET', path: '/x', query: [], headers: { host: 'h' }, payloadHash: E }, s3c, { amzDate: SD });
-  check('signHeaders: Authorization header format', /^AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE\/20130524\/us-east-1\/s3\/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=[0-9a-f]{64}$/.test(sh.headers.Authorization), sh.headers.Authorization);
+  check('signHeaders: Authorization header format', /^AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE\/20130524\/us-east-1\/s3\/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=[0-9a-f]{64}$/.test(sh.headers.Authorization), sh.headers.Authorization); // AWS SigV4 documentation test vector – fale-secret-scan: allow
 }
 
 // ================================================================== 2. mock S3 that verifies signatures

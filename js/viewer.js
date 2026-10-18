@@ -11,6 +11,7 @@ import { guardLinks, openExternal } from './security.js';
 const trackStat = (e, n = 1) => { import('./extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 const seenPages = new Set();
 import { ReadAloud, getVoices, onVoicesChanged, speechSupported } from './readaloud.js';
+import { aiHidden } from './ai/hidden.js';
 
 const root = () => document.getElementById('viewer');
 const isSmall = () => window.matchMedia('(max-width: 720px)').matches;
@@ -206,7 +207,7 @@ function wire() {
     const id = cur.doc.id;
     const anchor = e.currentTarget;
     showMenu(anchor, [
-      { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
+      aiHidden() ? null : { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
       { label: 'Lesemodus', icon: 'book', onClick: () => openReflowMode() },
       { label: isMarked(id, S.pdfViewer.currentPageNumber) ? 'Lesezeichen entfernen' : 'Lesezeichen setzen', icon: 'bookmark', onClick: () => toggleMark() },
       { label: 'Vorlesen', icon: 'speaker', onClick: () => startReading() },

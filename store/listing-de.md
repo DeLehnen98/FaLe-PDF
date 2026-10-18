@@ -8,7 +8,7 @@
 ## Kennzeichnungen in Google Play (Pflicht seit KI/Werbung/Plus)
 
 - **„Enthält Werbung“**: Ja – freiwillige Werbevideos (Rewarded Ads, Google AdMob) in der Android-App, nur auf Wunsch der Nutzerin.
-- **„In-App-Käufe“**: Ja – Abo „FaLe Plus“ (`fale_plus_monthly` 2,99 €/Monat, `fale_plus_yearly` 24,99 €/Jahr; Preise in der Play Console).
+- **„In-App-Käufe“**: Ja – Abo „FaLe Plus“ (`fale_plus_monthly` 2,99 €/Monat, `fale_plus_yearly` 24,99 €/Jahr), Einmalkauf „FaLe Plus für immer“ (`fale_plus_lifetime`, Vorschlag 39,99 €) und freiwillige Danke-Beiträge (`fale_tip_small` / `_medium` / `_large`, z. B. 1,99 / 4,99 / 9,99 €, verbrauchbar). Preise in der Play Console.
 - KI-Funktionen: Richtlinie „KI-generierte Inhalte“ beachten – In-App-Meldefunktion: Nutzer können problematische KI-Antworten über die Kontakt-E-Mail melden (in der Beschreibung nennen, falls Google es verlangt).
 
 ## App-Name (≤ 30)
@@ -64,6 +64,7 @@ DOKUMENTE, TABELLEN, PRÄSENTATIONEN
 • DOCX, XLSX und PPTX öffnen, bearbeiten und erstellen
 • Tabellen mit Formeln und Diagrammen
 • Vorlagen für Lebenslauf, Anschreiben, Rechnung, Brief und mehr
+• Absturzsicher: ungespeicherte Änderungen werden wiederhergestellt
 • Kündigung, Widerruf, Widerspruch & Co. in einer Minute – als Dokument und PDF
 
 ALLTAG
@@ -81,13 +82,18 @@ KI-ASSISTENT (OPTIONAL)
 • Chat mit Dokument: Fragen stellen, Antworten mit Seitenangaben
 • Zusammenfassen, übersetzen, Schreibhilfe, Formel-Assistent, Folien per KI
 • Lernkarten & Quiz aus Skripten, Briefe per KI, Fotos übersetzen
-• Täglich kostenlose Anfragen ohne Konto. Mehr Anfragen: freiwilliges Werbevideo oder das Abo FaLe Plus
+• Täglich kostenlose Anfragen ohne Konto. Mehr: freiwilliges Werbevideo oder FaLe Plus
+• Keine KI gewünscht? Ein Schalter blendet sie komplett aus
 • Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst. KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden.
+
+FAIR STATT ABO-FALLE
+• Keine Probezeit, die zum Abo wird, keine Pop-ups beim Speichern
+• FaLe Plus als Abo oder einmal zahlen für immer – Kündigen mit einem Tipp, Erinnerung vor jeder Verlängerung
 
 PRIVAT AUS PRINZIP
 Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Die Kamera wird nur zum Scannen verwendet, Benachrichtigungen nur für Erinnerungen, die du selbst einstellst. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Geteilte Dateien sind Ende-zu-Ende-verschlüsselt – wir können sie nicht lesen.
 
-Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen. Optional: FaLe Plus für mehr KI-Anfragen.
+Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen.
 ```
 
 ## Feature-Bullets (für Grafiken / Screenshot-Untertitel)

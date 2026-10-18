@@ -96,6 +96,8 @@ function getConfig() {
     playPackage: env('PLAY_PACKAGE_NAME') || 'dev.fale.pdf',
     playSaJson: env('GOOGLE_PLAY_SA_JSON'),
     plusProducts: (env('PLUS_PRODUCTS') || 'fale_plus_monthly,fale_plus_yearly').split(',').map(s => s.trim()).filter(Boolean),
+    // one-time purchase "FaLe Plus für immer" (Google Play in-app product, not a subscription)
+    plusLifetime: (env('PLUS_LIFETIME_PRODUCTS') || 'fale_plus_lifetime').split(',').map(s => s.trim()).filter(Boolean),
     admobKeysUrl: env('ADMOB_VERIFIER_KEYS_URL') || 'https://www.gstatic.com/admob/reward/verifier-keys.json',
     admobRewardUnits: env('ADMOB_REWARDED_AD_UNITS').split(',').map(s => s.trim()).filter(Boolean),
     maxBodyBytes: int('AI_MAX_BODY_BYTES', 200000, { min: 10000, max: 4000000 }),

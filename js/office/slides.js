@@ -7,6 +7,7 @@ import { slideHtml, slidePreview, textHtml, PPI, elementDom } from './slide-rend
 import { SLIDE_THEMES, SLIDE_LAYOUTS } from './templates.js';
 import { fileToDataUrl } from './vendor.js';
 import { enableDragReorder, moveItem } from '../components.js';
+import { aiHidden } from '../ai/hidden.js';
 
 // ---------------- new presentations ----------------
 const R = (text, size, color, extra = {}) => ({ text, size, color, font: extra.font || 'Arial', b: !!extra.b, i: !!extra.i });
@@ -110,7 +111,7 @@ export async function mountSlides(screen, { id = null, template = null }) {
       '-',
       { label: 'Design wechseln', icon: 'sparkle', onClick: () => pickTheme() },
       { label: 'Folien aus Gliederung …', icon: 'kslides', onClick: () => { location.hash = '#/gliederung'; } },
-      { label: 'Folien per KI …', icon: 'sparkle', onClick: () => { location.hash = '#/ki/folien'; } },
+      aiHidden() ? null : { label: 'Folien per KI …', icon: 'sparkle', onClick: () => { location.hash = '#/ki/folien'; } },
       { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await (await import('./pptx-write.js')).presToPptx(pres, { title: stripExt(shell.name) }), shell.name, KINDS.pptx.mime) },
       { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },
       { label: 'Umbenennen', icon: 'edit', onClick: () => shell.rename() },

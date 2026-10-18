@@ -285,7 +285,30 @@ await step('FaLe Plus', async () => {
   const tok2 = await token(51);
   await P('/api/plus-verify', { token: tok2, productId: 'fale_plus_monthly', purchaseToken: 'ok' + 'x'.repeat(30) });
   check('plus: restore moves entitlement to new device', mem._state.plus.size === 1 && (await P('/api/ai/quota', { token: tok2 })).j.quota.plus === true && (await P('/api/ai/quota', { token: tok })).j.quota.plus === false);
+  r = await P('/api/plus-verify', { token: tok2, productId: 'fale_plus_monthly', purchaseToken: 'ok' + 'x'.repeat(30) });
+  check('plus: subscription reports that it renews (and is not "für immer")', r.j.renews === true && r.j.lifetime === false, JSON.stringify(r.j));
   srv.close();
+  // "FaLe Plus für immer": one-time in-app product, verified with purchases.products
+  const seenP = [];
+  const core2 = createCore({
+    verifyPlayPurchase: async () => { throw new Error('subscription API must not be used for the lifetime product'); },
+    verifyPlayProduct: async (cfg, productId, ptoken) => { seenP.push(productId); return ptoken.startsWith('ok') ? { active: true, productId, expiresAt: '2099-12-31T23:59:59.000Z', state: 'purchased' } : { active: false, state: ptoken.startsWith('ref') ? 'canceled' : 'pending' }; },
+  });
+  const srv2 = http.createServer((req, res) => core2[req.url.includes('plus') ? 'plusVerify' : 'quota'](req, res));
+  await new Promise(r2 => srv2.listen(9415, '127.0.0.1', r2));
+  const P2 = (path, body) => fetch('http://127.0.0.1:9415' + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(async x => ({ status: x.status, j: await x.json() }));
+  const tok3 = await token(52);
+  r = await P2('/api/plus-verify', { token: tok3, productId: 'fale_plus_lifetime', purchaseToken: 'refunded' + 'x'.repeat(30) });
+  check('lifetime: refunded purchase is not active', r.status === 200 && r.j.active === false && r.j.reason === 'canceled', JSON.stringify(r.j));
+  r = await P2('/api/plus-verify', { token: tok3, productId: 'fale_plus_lifetime', purchaseToken: 'pending' + 'x'.repeat(30) });
+  check('lifetime: pending payment is not active yet', r.j.active === false && r.j.reason === 'pending');
+  r = await P2('/api/plus-verify', { token: tok3, productId: 'fale_plus_lifetime', purchaseToken: 'ok' + 'y'.repeat(30) });
+  check('lifetime: bought → active, never renews', r.j.active === true && r.j.lifetime === true && r.j.renews === false && r.j.expiresAt.startsWith('2099') && seenP.every(x => x === 'fale_plus_lifetime'), JSON.stringify(r.j));
+  const q3 = (await P2('/api/ai/quota', { token: tok3 })).j.quota;
+  check('lifetime: same daily quota as Plus', q3.plus === true && q3.limit === 200, JSON.stringify(q3));
+  r = await P2('/api/plus-verify', { token: tok3, productId: 'fale_plus_forever_evil', purchaseToken: 'ok' + 'y'.repeat(30) });
+  check('lifetime: unknown one-time product → 400', r.status === 400);
+  srv2.close();
   resetEnv();
 });
 
@@ -309,6 +332,19 @@ await step('google JWT (RS256) for the Play API', async () => {
   };
   const sub = await verifyPlaySubscription({ playSaJson: JSON.stringify({ client_email: 'sa@p.iam.gserviceaccount.com', private_key: privateKey.export({ type: 'pkcs8', format: 'pem' }) }), playPackage: 'dev.fale.pdf' }, 'tok123', play);
   check('Play subscriptionsv2 parsed', sub.active && sub.productId === 'fale_plus_yearly' && seen.url.includes('/applications/dev.fale.pdf/purchases/subscriptionsv2/tokens/tok123') && seen.auth === 'Bearer ya29.test', JSON.stringify(sub));
+  const { verifyPlayProduct } = require('./_lib/core.js');
+  const sa = { playSaJson: JSON.stringify({ client_email: 'sa@p.iam.gserviceaccount.com', private_key: privateKey.export({ type: 'pkcs8', format: 'pem' }) }), playPackage: 'dev.fale.pdf' };
+  const prod = state => async (url, init) => {
+    if (String(url).includes('oauth2')) return fakeFetch(url, init);
+    seen = { url: String(url), auth: init.headers.Authorization };
+    return new Response(JSON.stringify({ purchaseState: state, productId: 'fale_plus_lifetime', acknowledgementState: 1 }), { status: 200 });
+  };
+  let pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', prod(0));
+  check('Play products.get parsed (bought)', pr.active && pr.expiresAt.startsWith('2099') && seen.url.includes('/applications/dev.fale.pdf/purchases/products/fale_plus_lifetime/tokens/tok456') && seen.auth === 'Bearer ya29.test', JSON.stringify(pr));
+  pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', prod(1));
+  check('Play products.get: refunded → inactive', !pr.active && pr.state === 'canceled');
+  pr = await verifyPlayProduct(sa, 'fale_plus_lifetime', 'tok456', async (url, init) => (String(url).includes('oauth2') ? fakeFetch(url, init) : new Response('{}', { status: 410 })));
+  check('Play products.get: unknown token → inactive', !pr.active && pr.state === 'not_found');
 });
 
 await step('provider adapters against fake upstreams', async () => {

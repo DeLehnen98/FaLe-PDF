@@ -257,6 +257,21 @@ export async function setSetting(key, value) {
   changed('settings', key, 'put');
 }
 
+// ---- crash recovery for the office editors (device-only: never passed to the sync hooks) ----
+const REC = 'recovery:';
+export async function putRecovery(key, rec) {
+  await tx('settings', 'readwrite', t => { t.objectStore('settings').put({ key: REC + key, value: rec }); });
+}
+export async function listRecovery() {
+  try {
+    const rows = await tx('settings', 'readonly', t => reqP(t.objectStore('settings').getAll(IDBKeyRange.bound(REC, REC + '\uffff'))));
+    return rows.map(r => ({ key: r.key.slice(REC.length), ...r.value })).sort((a, b) => (b.at || 0) - (a.at || 0));
+  } catch { return []; }
+}
+export async function deleteRecovery(key) {
+  try { await tx('settings', 'readwrite', t => { t.objectStore('settings').delete(REC + key); }); } catch { /* best effort */ }
+}
+
 export async function clearAll({ keepSettings = true } = {}) {
   const stores = ['docs', 'files', 'texts', 'signatures', 'trash'];
   if (!keepSettings) stores.push('settings');

@@ -21,6 +21,14 @@ export const AI_CONFIG = {
     { id: 'fale_plus_monthly', plan: 'monthly', label: 'Monatlich' },
     { id: 'fale_plus_yearly', plan: 'yearly', label: 'Jährlich' },
   ],
+  // one-time purchase instead of a subscription ("Einmal zahlen, für immer") – Google Play in-app product
+  PLUS_LIFETIME: { id: 'fale_plus_lifetime', label: 'Für immer' },
+  // voluntary tips – consumable in-app products, no entitlement, can be given again
+  TIPS: [
+    { id: 'fale_tip_small', label: 'Kleiner Dank' },
+    { id: 'fale_tip_medium', label: 'Großer Dank' },
+    { id: 'fale_tip_large', label: 'Riesiger Dank' },
+  ],
 
   // client-side input limits (the server enforces its own limits as well)
   MAX_SUMMARY_CHARS: 48000,

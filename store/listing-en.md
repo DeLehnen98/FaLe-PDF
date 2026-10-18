@@ -12,7 +12,7 @@
 ## Play Console declarations
 
 - **Contains ads**: yes – voluntary rewarded video ads (Google AdMob) in the Android app, only when the user chooses to watch one for extra AI requests. No banner ads.
-- **In-app purchases**: yes – the "FaLe Plus" subscription (more AI requests per day); prices are set in the Play Console.
+- **In-app purchases**: yes – the "FaLe Plus" subscription (more AI requests per day), the one-time "FaLe Plus forever" (`fale_plus_lifetime`) and voluntary thank-you tips (`fale_tip_small` / `_medium` / `_large`, consumable); prices are set in the Play Console.
 - **AI-generated content**: the optional cloud AI is disclosed in the description, incl. how to report problematic answers (contact email).
 
 ## App name (≤ 30)
@@ -68,6 +68,7 @@ DOCUMENTS, SPREADSHEETS, PRESENTATIONS
 • Open, edit and create DOCX, XLSX and PPTX
 • Spreadsheets with formulas and charts
 • Templates for CVs, cover letters, invoices, letters and more
+• Crash-safe: unsaved changes are restored
 • Letter generators for Germany (cancellation, withdrawal, objection – the letters are written in German)
 
 EVERYDAY
@@ -85,8 +86,13 @@ AI ASSISTANT (OPTIONAL)
 • Chat with a document: ask questions, get answers with page references
 • Summarize, translate, writing help, formula assistant, slides by AI
 • Flashcards & quizzes from your notes, letters by AI, translate photos
-• Free requests every day without an account. More requests: a voluntary video ad or the FaLe Plus subscription
+• Free requests every day without an account. More: a voluntary video ad or FaLe Plus
+• Don’t want AI? One switch hides it completely
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
+
+FAIR, NOT A SUBSCRIPTION TRAP
+• No trial that turns into a subscription, no pop-ups when you save
+• FaLe Plus as a subscription or pay once, forever – cancel with one tap, reminder before every renewal
 
 PRIVATE BY DESIGN
 No account needed, no banner ads, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.

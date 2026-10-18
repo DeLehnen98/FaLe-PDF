@@ -244,7 +244,7 @@ export async function mount(screen) {
       <label class="field"><span class="field-label">Auflösung</span>${sel('idpi', [['100', '100 dpi'], ['150', '150 dpi'], ['300', '300 dpi']], val.idpi ?? '150')}</label></div>
       <p class="hint">Die Bilder kommen als ZIP – je Datei ein eigener Ordner.</p>`;
     const flow = [...steps].filter(id => !(out === 'images' && id === 'protect')).sort((a, b) => STEPS.findIndex(s => s.id === a) - STEPS.findIndex(s => s.id === b));
-    wrap.querySelector('[data-flow]').innerHTML = flow.length ? `Ablauf je Datei: ${flow.map(id => esc(stepById(id).label)).join(' → ')}` : (out === 'files' ? 'Wähle mindestens einen Schritt.' : '');
+    wrap.querySelector('[data-flow]').innerHTML = flow.length ? `<span>Ablauf je Datei:</span> ${flow.map(id => `<span>${esc(stepById(id).label)}</span>`).join(' → ')}` : (out === 'files' ? 'Wähle mindestens einen Schritt.' : '');
     stash();
     refresh();
   }

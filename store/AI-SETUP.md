@@ -67,6 +67,7 @@ Für jede Variable: *Environments* = **Production** und **Preview**. Geheimnisse
 | `ADMOB_REWARDED_AD_UNITS` | deine Rewarded-Anzeigenblock-ID(s), kommagetrennt (Schritt 4) | empfohlen |
 | `ADS_ENABLED` | `false` schaltet Werbevideos ab | optional |
 | `GOOGLE_PLAY_SA_JSON` | kompletter Inhalt der Dienstkonto-JSON-Datei (Schritt 5, **Sensitive**) | für FaLe Plus |
+| `PLUS_LIFETIME_PRODUCTS` | IDs der Einmalkäufe „für immer“, kommagetrennt | optional (Standard `fale_plus_lifetime`) |
 | `AI_PROVIDER_PRIVACY_NOTE` | eigener Datenschutz-Satz für den Einwilligungsdialog | optional |
 
 **Danach neu deployen** (Deployments → letzter Eintrag → „Redeploy“) – Variablen gelten erst für neue Deployments.
@@ -113,6 +114,12 @@ in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
      automatisch verlängernd, 1 Monat, Preis **2,99 €** → aktivieren.
    - Produkt-ID `fale_plus_yearly`, Name „FaLe Plus (jährlich)“ → Basis-Abo `yearly`, 1 Jahr, **24,99 €** → aktivieren.
    (IDs müssen exakt so heißen – sie stehen in `js/ai/config.js` und `PLUS_PRODUCTS`.)
+3b. **Monetarisieren → Produkte → In-App-Produkte → Produkt erstellen** (Einmalkäufe):
+   - `fale_plus_lifetime`, Name „FaLe Plus für immer“, Vorschlag **39,99 €** → aktivieren. Ein Kauf gilt dauerhaft
+     (der Server prüft ihn über die Products-API; andere IDs per `PLUS_LIFETIME_PRODUCTS`, kommagetrennt).
+   - Danke-Beiträge (ohne Gegenleistung, werden sofort „verbraucht“ und können erneut gegeben werden):
+     `fale_tip_small` „Kleiner Dank“ **1,99 €**, `fale_tip_medium` „Großer Dank“ **4,99 €**, `fale_tip_large` „Riesiger Dank“ **9,99 €**.
+     Ohne diese Produkte blendet die App den Bereich „Einfach Danke sagen“ einfach aus.
 4. **Dienstkonto für die Kaufprüfung**:
    - <https://console.cloud.google.com> → Projekt anlegen → **APIs & Dienste → Bibliothek** →
      „Google Play Android Developer API“ **aktivieren**.
@@ -121,7 +128,7 @@ in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
      App-Berechtigung für FaLe PDF: „Finanzdaten ansehen“ und „Bestellungen und Abos verwalten“.
    - Den **kompletten Inhalt** der JSON-Datei in Vercel als `GOOGLE_PLAY_SA_JSON` (**Sensitive**) eintragen → neu deployen.
    - Die JSON-Datei danach sicher löschen (nicht ins Repo!).
-5. Testen mit einem **Lizenz-Testkonto** (Play Console → Einstellungen → Lizenztests): Kauf, „Käufe wiederherstellen“.
+5. Testen mit einem **Lizenz-Testkonto** (Play Console → Einstellungen → Lizenztests): Abo, „für immer“, Danke-Beitrag (zweimal hintereinander), „Käufe wiederherstellen“, Erinnerung vor der Verlängerung.
 
 ## Schritt 6 – Datenschutzerklärung und Store
 

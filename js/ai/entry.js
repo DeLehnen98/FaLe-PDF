@@ -4,6 +4,7 @@ import { h, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { loadAiCss } from './ui.js';
 import * as C from './client.js';
+import { aiHidden } from './hidden.js';
 
 export const AI_FEATURES = [
   { id: 'chat', title: 'Chat mit Dokument', desc: 'Fragen stellen – Antworten mit klickbaren Seitenangaben.', icon: 'comment', href: '#/ki/chat', doc: true },
@@ -18,8 +19,17 @@ export const AI_FEATURES = [
 ];
 
 /** Card on the start page (no network). */
+// the start page and Werkzeuge are built once – follow the „KI ausblenden“ switch afterwards
+function follow(el, render) {
+  if (el.dataset.aiFollow) return;
+  el.dataset.aiFollow = '1';
+  window.addEventListener('fale:ai-state', () => { if (el.isConnected) render(el); });
+}
+
 export function renderStartCard(box) {
   if (!box) return;
+  follow(box, renderStartCard);
+  if (aiHidden()) { box.hidden = true; box.innerHTML = ''; return; }
   loadAiCss();
   box.hidden = false;
   box.innerHTML = '';
@@ -30,7 +40,10 @@ export function renderStartCard(box) {
 
 /** "KI-Assistent" section on the Werkzeuge page. */
 export function renderToolSection(sec) {
-  if (!sec || sec.dataset.filled) return;
+  if (!sec) return;
+  follow(sec, renderToolSection);
+  if (aiHidden()) { sec.hidden = true; return; }
+  if (sec.dataset.filled) { sec.hidden = false; return; }
   loadAiCss();
   sec.dataset.filled = '1';
   sec.hidden = false;
@@ -44,6 +57,11 @@ export function renderToolSection(sec) {
 export function renderMeCard(box) {
   if (!box) return;
   loadAiCss();
+  if (aiHidden()) {
+    box.innerHTML = '';
+    box.appendChild(h(`<div class="ai-me"><a class="action-card" href="#/ki/einstellungen"><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI ist ausgeblendet</strong><span class="muted small">Wieder einblenden in den KI-Einstellungen</span></span></a></div>`));
+    return;
+  }
   const q = C.cachedQuota();
   const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen gratis'
     : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit} gratis`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';

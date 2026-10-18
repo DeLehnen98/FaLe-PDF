@@ -26,6 +26,8 @@
       (sonst erscheint in der EU kein Einwilligungsdialog und es werden keine Anzeigen geladen).
 - [ ] **Play Console**: Abos `fale_plus_monthly` (Basis-Abo `monthly`) und `fale_plus_yearly` (Basis-Abo `yearly`) anlegen,
       Dienstkonto verknüpfen, `GOOGLE_PLAY_SA_JSON` in Vercel eintragen. Ohne diese Variable zeigt die App „bald verfügbar“.
+- [ ] **Play Console → In-App-Produkte**: `fale_plus_lifetime` (Einmalkauf „für immer“) und die Danke-Beiträge
+      `fale_tip_small`, `fale_tip_medium`, `fale_tip_large` anlegen und aktivieren (Details: AI-SETUP.md, Schritt 5, 3b).
 - [ ] Nach dem Eintragen von Vercel-Variablen **neu deployen** (Variablen gelten erst für neue Deployments).
 
 ## A3. Teilen, Unterschrift anfordern, Geräte verbinden (einmalig)
@@ -93,7 +95,7 @@
 - [ ] Datenschutzerklärung (URL)
 - [ ] Werbung: **Ja** (freiwillige Rewarded-Videos, AdMob)
 - [ ] Werbe-ID: **Ja**, Zweck Werbung
-- [ ] In-App-Käufe: Abo „FaLe Plus“ (Preise 2,99 €/Monat, 24,99 €/Jahr in der Play Console)
+- [ ] In-App-Käufe: Abo „FaLe Plus“ (2,99 €/Monat, 24,99 €/Jahr), Einmalkauf „für immer“ und Danke-Beiträge (Preise in der Play Console)
 - [ ] App-Zugriff: keine Anmeldung nötig
 - [ ] Content-Rating-Fragebogen (IARC) – Antworten in [data-safety.md](data-safety.md)
 - [ ] Zielgruppe: 18+
@@ -128,7 +130,10 @@
       Übersetzen, Schreibhilfe (Text markieren → ⋮ → KI-Schreibhilfe), Formel-Assistent, Folien per KI, Lernkarten
 - [ ] **Werbevideo** (mit Test-IDs!): UMP-Dialog erscheint (in der EU), Video läuft, danach „+3“ im Kontingent
       (kommt über die Server-Bestätigung, kann einige Sekunden dauern)
-- [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Kauf, „Käufe wiederherstellen“, Abo verwalten
+- [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Abo-Kauf, „für immer“-Kauf, Danke-Beitrag zweimal,
+      „Käufe wiederherstellen“, „Abo verwalten oder kündigen“, Erinnerung vor der Verlängerung (Mitteilung kommt 3 Tage vorher)
+- [ ] **Absturzschutz**: Dokument bearbeiten, App über „Zuletzt verwendet“ wegwischen → neu starten → „Wiederherstellen“
+- [ ] **KI ausblenden**: KI-Einstellungen → „KI komplett ausblenden“ → Startseite, Werkzeuge und Editor-Menüs ohne KI
 - [ ] **Teilen & Übertragen** (online): „Sicher teilen“ → Link per WhatsApp senden → auf anderem Gerät im Browser öffnen;
       „Unterschrift anfordern“ → Link öffnen, unterschreiben → in der App Status „Unterschrieben“ + PDF speichern;
       „Geräte verbinden“: QR-Code mit der Handy-Kamera scannen (öffnet die Web-App) bzw. in der App „QR-Code scannen“

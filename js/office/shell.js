@@ -4,6 +4,7 @@ import { esc, h, toast, errorToast, promptDialog, openDialog, downloadBlob, shar
 import { saveFile, saveResult, emitChange } from '../library.js';
 import { KINDS, ensureExt, stripExt, oicon, officeMenu } from './kinds.js';
 import { track } from '../extras/stats.js';
+import { attachRecovery } from './recovery.js';
 
 export function setHashSilently(hash) {
   if (location.hash === hash) return;
@@ -54,7 +55,8 @@ export function createShell(screen, opts) {
   const onUnload = e => { if (S.dirty) { e.preventDefault(); e.returnValue = ''; } };
   window.addEventListener('beforeunload', onUnload);
   screen.isDirty = () => S.dirty;
-  screen.officeCleanup = () => { document.removeEventListener('keydown', onKey); window.removeEventListener('beforeunload', onUnload); };
+  const rec = attachRecovery(S, () => opts.serialize());
+  screen.officeCleanup = () => { document.removeEventListener('keydown', onKey); window.removeEventListener('beforeunload', onUnload); rec.dispose(); };
 
   async function rename() {
     const n = await promptDialog('Umbenennen', 'Name', S.name, { okLabel: 'Übernehmen' });
@@ -81,6 +83,7 @@ export function createShell(screen, opts) {
       const meta = await saveFile({ id: asCopy ? null : S.id, blob, name, kind: S.kind });
       if (!asCopy) {
         S.id = meta.id; S.dirty = false;
+        rec.saved();
         setHashSilently(`#/bearbeiten/${meta.id}`);
       }
       if (!quiet) toast(asCopy ? `Kopie „${meta.name}“ gespeichert` : 'Gespeichert', 'success');
@@ -94,13 +97,14 @@ export function createShell(screen, opts) {
     }
   }
 
-  function markDirty() { if (!S.dirty) { S.dirty = true; paint(); } }
+  function markDirty() { rec.touch(); if (!S.dirty) { S.dirty = true; paint(); } }
   paint();
   return {
     S, save, rename, markDirty, paint,
     get name() { return S.name; },
     get id() { return S.id; },
-    setClean() { S.dirty = false; paint(); },
+    setClean() { S.dirty = false; rec.saved(); paint(); },
+    recovery: rec,
     async saveAsKind(blob, kind, suffix = '') {
       const meta = await saveFile({ blob, name: stripExt(S.name) + suffix + KINDS[kind].ext, kind });
       toast(`„${meta.name}“ gespeichert`, 'success', { action: { label: 'Öffnen', onClick: () => { location.hash = `#/bearbeiten/${meta.id}`; } } });

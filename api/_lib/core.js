@@ -235,14 +235,17 @@ function makeCore(overrides = {}) {
     const device = deviceOf(cfg, body.token);
     const productId = String(body.productId || '');
     const purchaseToken = String(body.purchaseToken || '');
-    if (!cfg.plusProducts.includes(productId)) throw new H.HttpError(400, 'bad_input', 'Unbekanntes Produkt');
+    const lifetime = (cfg.plusLifetime || []).includes(productId);
+    if (!cfg.plusProducts.includes(productId) && !lifetime) throw new H.HttpError(400, 'bad_input', 'Unbekanntes Produkt');
     if (!/^[A-Za-z0-9._:-]{10,2000}$/.test(purchaseToken)) throw new H.HttpError(400, 'bad_input', 'Ungültiger Kauf');
-    const verify = deps.verifyPlayPurchase || verifyPlaySubscription;
     let sub;
-    try { sub = await verify(cfg, purchaseToken, deps.fetchImpl); }
+    try {
+      sub = lifetime ? await (deps.verifyPlayProduct || verifyPlayProduct)(cfg, productId, purchaseToken, deps.fetchImpl)
+        : await (deps.verifyPlayPurchase || verifyPlaySubscription)(cfg, purchaseToken, deps.fetchImpl);
+    }
     catch (e) { throw new H.HttpError(502, 'verify_failed', 'Der Kauf konnte gerade nicht bei Google Play geprüft werden. Bitte später erneut versuchen.'); }
     if (!sub || !sub.active) { H.sendJson(res, 200, { ok: true, active: false, reason: sub ? sub.state : 'unknown' }); return; }
-    if (sub.productId && sub.productId !== productId && !cfg.plusProducts.includes(sub.productId)) throw new H.HttpError(400, 'bad_input', 'Produkt passt nicht');
+    if (sub.productId && sub.productId !== productId && !cfg.plusProducts.includes(sub.productId) && !(cfg.plusLifetime || []).includes(sub.productId)) throw new H.HttpError(400, 'bad_input', 'Produkt passt nicht');
     const tokenHash = Sec.sha256hex('play:' + purchaseToken);
     await deps.getStore(cfg).plusUpsert({ device, tokenHash, product: sub.productId || productId, expiresAt: sub.expiresAt });
     // signed in with a FaLe-Konto → Plus follows the account (restore on every device)
@@ -252,7 +255,8 @@ function makeCore(overrides = {}) {
       try { await deps.getAccountStore(cfg).plusUpsert({ user: acct.id, tokenHash, product: sub.productId || productId, expiresAt: sub.expiresAt }); linked = true; }
       catch (e) { console.error('[fale-api] plus account link failed'); }
     }
-    H.sendJson(res, 200, { ok: true, active: true, product: sub.productId || productId, expiresAt: sub.expiresAt, account: linked });
+    // renews: the subscription will be charged again at expiresAt (false after cancelling, never for "für immer")
+    H.sendJson(res, 200, { ok: true, active: true, product: sub.productId || productId, expiresAt: sub.expiresAt, account: linked, lifetime, renews: !lifetime && sub.state !== 'SUBSCRIPTION_STATE_CANCELED' });
   }, { getConfig: () => deps.getConfig() });
 
   return { register, quota, ai, ssv, plusVerify, deps };
@@ -285,4 +289,19 @@ async function verifyPlaySubscription(cfg, purchaseToken, fetchImpl = fetch) {
   return { active: !!active, state, productId: best && best.productId, expiresAt: best ? new Date(best.exp).toISOString() : null };
 }
 
-module.exports = { makeCore, verifyPlaySubscription, providerHttpError };
+/** "Für immer" never expires – stored with a far-away date so the entitlement checks stay the same. */
+const LIFETIME_UNTIL = '2099-12-31T23:59:59.000Z';
+
+/** Google Play Developer API: purchases.products.get (one-time in-app product). purchaseState 0 = bought. */
+async function verifyPlayProduct(cfg, productId, purchaseToken, fetchImpl = fetch) {
+  const at = await Sec.googleAccessToken(cfg.playSaJson, 'https://www.googleapis.com/auth/androidpublisher', { fetchImpl });
+  const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(cfg.playPackage)}/purchases/products/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(purchaseToken)}`;
+  const r = await fetchImpl(url, { headers: { Authorization: `Bearer ${at}` } });
+  if (r.status === 404 || r.status === 410) return { active: false, state: 'not_found' };
+  if (!r.ok) throw new Error('play http ' + r.status);
+  const j = await r.json();
+  const state = Number(j.purchaseState);   // 0 purchased, 1 canceled (refunded), 2 pending
+  return { active: state === 0, state: ['purchased', 'canceled', 'pending'][state] || 'unknown', productId: j.productId || productId, expiresAt: state === 0 ? LIFETIME_UNTIL : null };
+}
+
+module.exports = { makeCore, verifyPlaySubscription, verifyPlayProduct, LIFETIME_UNTIL, providerHttpError };
