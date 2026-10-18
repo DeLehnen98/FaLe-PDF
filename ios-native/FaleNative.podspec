@@ -1,5 +1,5 @@
 # Native iOS part of FaLe PDF (Capacitor): incoming files (open in place + write back), printing.
-# Added to ios/App/Podfile by scripts/cap-patch-ios.mjs; registered in FaleBridgeViewController.
+# Added to ios/App/Podfile by scripts/cap-patch-ios.mjs; the plugins are listed in App/capacitor.config.json (packageClassList).
 Pod::Spec.new do |s|
   s.name = 'FaleNative'
   s.version = '1.0.0'

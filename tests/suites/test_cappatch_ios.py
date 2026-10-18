@@ -29,13 +29,15 @@ check('usage texts camera / microphone / speech (German, say why)', all(len(info
 check('AdMob app id present (test id by default) – the SDK aborts without it', info['GADApplicationIdentifier'] == 'ca-app-pub-3940256099942544~1458002511')
 check('arm64, HTTPS only, de/en', info['UIRequiredDeviceCapabilities'] == ['arm64'] and 'NSAppTransportSecurity' not in info and info['CFBundleLocalizations'] == ['de', 'en'])
 sb = open(os.path.join(app, 'App/Base.lproj/Main.storyboard')).read()
-check('storyboard: FaleBridgeViewController from FaleNative', 'customClass="FaleBridgeViewController" customModule="FaleNative"' in sb and 'CAPBridgeViewController' not in sb)
+check('storyboard: plain Capacitor bridge controller', 'customClass="CAPBridgeViewController" customModule="Capacitor"' in sb)
+cc = json.load(open(os.path.join(app, 'App/capacitor.config.json')))
+check('own plugins in packageClassList (npm plugins kept, no duplicates)', cc['packageClassList'] == ['AdMobPlugin', 'FilesystemPlugin', 'FaleIncomingPlugin', 'FalePrintPlugin'], cc)
 pod = open(os.path.join(app, 'Podfile')).read()
 podrel = os.path.relpath(os.path.join(APP, 'ios-native'), app)
 check('Podfile: FaleNative pod (path to ios-native/) + iOS 15', f"pod 'FaleNative', :path => '{podrel}'" in pod and "platform :ios, '15.0'" in pod and pod.index('capacitor_pods\n  pod') > 0, pod)
 prj = open(os.path.join(app, 'App.xcodeproj/project.pbxproj')).read()
 check('project: version from package.json, build number, iOS 15', f'MARKETING_VERSION = {ver};' in prj and 'CURRENT_PROJECT_VERSION = ' + str(sum(int(x) * m for x, m in zip(ver.split('.'), (10000, 100, 1)))) + ';' in prj and 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;' in prj)
-snap = {p: open(os.path.join(app, p)).read() for p in ['App/Info.plist', 'App/Base.lproj/Main.storyboard', 'Podfile', 'App.xcodeproj/project.pbxproj']}
+snap = {p: open(os.path.join(app, p)).read() for p in ['App/Info.plist', 'App/Base.lproj/Main.storyboard', 'Podfile', 'App.xcodeproj/project.pbxproj', 'App/capacitor.config.json']}
 r2 = run()
 check('idempotent (second run changes nothing)', r2.returncode == 0 and all(open(os.path.join(app, p)).read() == t for p, t in snap.items()))
 e2 = dict(env); e2['ADMOB_IOS_APP_ID'] = 'ca-app-pub-1111111111111111~2222222222'
@@ -60,7 +62,7 @@ check('Swift FaleIncoming: filesReady event, origin token + writable, reject cod
 check('Swift FaleIncoming: security – sources only from caches/writeback and caches/incoming, own private files refused, 100 MB', 'FalePaths.isInside(src, wbDir)' in inc and 'FalePaths.isInside(url, FalePaths.incoming())' in inc and 'addSkipped(name, "blocked")' in inc and '100 * 1024 * 1024' in inc and '".."' in inc)
 check('Swift FaleIncoming: coordinated read/write, security-scoped access, bookmark', all(x in inc for x in ['coordinate(readingItemAt:', 'coordinate(writingItemAt:', 'startAccessingSecurityScopedResource()', 'bookmarkData(', 'URL(resolvingBookmarkData:']))
 check('Swift FalePrint: printPdf only for files in caches', 'jsName = "FalePrint"' in pr and 'func printPdf(_ call: CAPPluginCall)' in pr and 'FalePaths.isInside(url, FalePaths.caches())' in pr)
-check('Swift bridge VC registers both plugins', 'registerPluginInstance(FaleIncomingPlugin())' in sw['FaleBridgeViewController.swift'] and 'registerPluginInstance(FalePrintPlugin())' in sw['FaleBridgeViewController.swift'])
+check('Swift @objc class names = packageClassList entries', '@objc(FaleIncomingPlugin)' in inc and '@objc(FalePrintPlugin)' in pr)
 js = open(os.path.join(APP, 'js/platform.js')).read()
 used = set(re.findall(r'\bfi\.(\w+)\(', js)) | set(re.findall(r"plugin\('FaleIncoming'\)[^\n]*?\.(\w+)\(", js))
 check('every FaleIncoming method used in js/platform.js exists in Swift', used and all(f'name: "{m}"' in inc for m in used), used)

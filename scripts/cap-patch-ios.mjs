@@ -9,7 +9,8 @@
 //    Markdown, images), open in place + Files app sharing (Documents is shown as "Auf meinem iPhone › FaLe PDF"),
 //    camera / microphone / speech usage texts (scanner, dictation), the AdMob app id the SDK needs at launch
 //    (Google's TEST id until ADMOB_IOS_APP_ID is set – ads stay off on iOS for now), no arbitrary loads
-//  - Main.storyboard: FaleBridgeViewController (registers the app's own plugins from ios-native/)
+//  - App/capacitor.config.json (written by `cap sync`): the app's own plugins from ios-native/ are added to
+//    packageClassList, so the bridge creates and loads them like npm plugins (run this after every sync)
 //  - Podfile: pod 'FaleNative' from ios-native/, iOS 15
 //  - project.pbxproj: MARKETING_VERSION / CURRENT_PROJECT_VERSION from package.json, deployment target 15.0
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -135,13 +136,19 @@ export function patchInfo(plist) {
 }
 
 // ------------------------------------------------------------------ storyboard, Podfile, project
+export const OWN_PLUGINS = ['FaleIncomingPlugin', 'FalePrintPlugin']; // @objc names in ios-native/Sources
+
+/** Undo the earlier storyboard approach (custom view controller) – the plain Capacitor controller is used. */
 export function patchStoryboard(xml) {
-  const re = /<viewController\b[^>]*customClass="(?:CAPBridgeViewController|FaleBridgeViewController)"[^>]*>/;
-  must(re.test(xml), 'Main.storyboard: Bridge-ViewController nicht gefunden');
-  return xml.replace(re, m => m
-    .replace(/customClass="[^"]*"/, 'customClass="FaleBridgeViewController"')
-    .replace(/customModule="[^"]*"/, 'customModule="FaleNative"')
-    .replace(/\s*customModuleProvider="[^"]*"/, ''));
+  return xml.replace(/(<viewController\b[^>]*)customClass="FaleBridgeViewController" customModule="FaleNative"/,
+    '$1customClass="CAPBridgeViewController" customModule="Capacitor"');
+}
+
+export function patchCapConfig(json) {
+  const c = JSON.parse(json);
+  const list = Array.isArray(c.packageClassList) ? c.packageClassList.filter(n => !OWN_PLUGINS.includes(n)) : [];
+  c.packageClassList = [...list, ...OWN_PLUGINS];
+  return JSON.stringify(c, null, '\t') + '\n';
 }
 
 export function patchPodfile(src, podPath) {
@@ -166,12 +173,15 @@ function run() {
   writeFileSync(infoP, writePlist(patchInfo(parsePlist(readFileSync(infoP, 'utf8')))));
   const sbP = join(APP, 'App', 'Base.lproj', 'Main.storyboard');
   writeFileSync(sbP, patchStoryboard(readFileSync(sbP, 'utf8')));
+  const ccP = join(APP, 'App', 'capacitor.config.json');
+  if (existsSync(ccP)) writeFileSync(ccP, patchCapConfig(readFileSync(ccP, 'utf8')));
+  else console.log('Hinweis: App/capacitor.config.json fehlt noch – nach `npx cap sync ios` erneut ausführen.');
   const podP = join(APP, 'Podfile');
   writeFileSync(podP, patchPodfile(readFileSync(podP, 'utf8'), relative(APP, join(ROOT, 'ios-native')).split('\\').join('/')));
   const prjP = join(APP, 'App.xcodeproj', 'project.pbxproj');
   writeFileSync(prjP, patchProject(readFileSync(prjP, 'utf8')));
   if (ADMOB_APP_ID === GOOGLE_TEST_APP_ID) console.log('Hinweis: GADApplicationIdentifier = Google TEST-App-ID (Werbung ist auf iOS ohnehin aus).');
-  console.log(`iOS gepatcht: ${cap.appId} ${VERSION} (${BUILD}), ${DOC_TYPES.length} Dokumenttypen, FaleNative-Pod, FaleBridgeViewController`);
+  console.log(`iOS gepatcht: ${cap.appId} ${VERSION} (${BUILD}), ${DOC_TYPES.length} Dokumenttypen, FaleNative-Pod, Plugins ${OWN_PLUGINS.join(', ')}`);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) run();

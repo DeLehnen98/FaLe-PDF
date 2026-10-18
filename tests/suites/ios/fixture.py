@@ -106,9 +106,12 @@ PBX = '''// !$*UTF8*$!
 '''
 
 
+CAPCONF = '{\n\t"appId": "dev.fale.pdf",\n\t"appName": "FaLe PDF",\n\t"webDir": "dist",\n\t"packageClassList": [\n\t\t"AdMobPlugin",\n\t\t"FilesystemPlugin"\n\t]\n}\n'
+
+
 def make_ios(root):
     app = os.path.join(root, 'App')
-    for rel, txt in [('App/Info.plist', INFO), ('App/Base.lproj/Main.storyboard', STORYBOARD), ('Podfile', PODFILE), ('App.xcodeproj/project.pbxproj', PBX)]:
+    for rel, txt in [('App/Info.plist', INFO), ('App/Base.lproj/Main.storyboard', STORYBOARD), ('Podfile', PODFILE), ('App.xcodeproj/project.pbxproj', PBX), ('App/capacitor.config.json', CAPCONF)]:
         p = os.path.join(app, rel)
         os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, 'w').write(txt)
