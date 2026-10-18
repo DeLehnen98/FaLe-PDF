@@ -2548,7 +2548,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     pushUndo();
     sh.page = { ...(sh.page || {}), titleRows: { r1, r2 } };
     shell.markDirty();
-    toast(`Zeile${r1 === r2 ? ` ${r1 + 1}` : `n ${r1 + 1}–${r2 + 1}`} wird auf jeder PDF-Seite wiederholt`, 'success');
+    toast(r1 === r2 ? `Zeile ${r1 + 1} wird auf jeder PDF-Seite wiederholt` : `Zeilen ${r1 + 1}–${r2 + 1} werden auf jeder PDF-Seite wiederholt`, 'success');
   }
 
   // ---------------- Gehe zu ----------------
