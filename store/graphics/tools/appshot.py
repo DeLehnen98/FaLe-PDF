@@ -39,7 +39,7 @@ def ai_routes(ctx, answers):
 
 
 class App:
-    def __init__(self, lang='de', width=360, height=760, dpr=3, camera=None, dark=False, answers=None):
+    def __init__(self, lang='de', width=360, height=760, dpr=3, camera=None, dark=False, answers=None, touch=True):
         self.lang = lang
         self.pw = sync_playwright().start()
         args = []
@@ -48,7 +48,7 @@ class App:
         self.browser = self.pw.chromium.launch(args=args)
         self.ctx = self.browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=dpr,
                                             locale='de-DE' if lang == 'de' else 'en-GB', color_scheme='dark' if dark else 'light',
-                                            is_mobile=width < 700, has_touch=True, permissions=['camera'] if camera else [])
+                                            is_mobile=width < 700, has_touch=touch, permissions=['camera'] if camera else [])
         consent = json.dumps({'v': 1, 'at': int(time.time() * 1000), 'provider': 'cloud'})
         self.ctx.add_init_script(f"""try {{ localStorage.setItem('fale-onboarded','1'); localStorage.setItem('fale-simple-hint','hidden'); localStorage.setItem('fale-lang','{lang}');
           localStorage.setItem('fale-ai-consent', {json.dumps(consent)}); localStorage.setItem('fale-ai-token','demo-token');

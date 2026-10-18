@@ -20,6 +20,7 @@
     "utilities",
     "business"
   ],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -44,6 +45,50 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/wide-01.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Startseite mit allen Funktionen"
+    },
+    {
+      "src": "screenshots/wide-02.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "PDF lesen"
+    },
+    {
+      "src": "screenshots/wide-03.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Dokument bearbeiten"
+    },
+    {
+      "src": "screenshots/narrow-01.jpg",
+      "sizes": "540x960",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Alle Pro-Funktionen gratis"
+    },
+    {
+      "src": "screenshots/narrow-02.jpg",
+      "sizes": "540x960",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Unterschreiben in Sekunden"
+    },
+    {
+      "src": "screenshots/narrow-03.jpg",
+      "sizes": "540x960",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Dokumente, Tabellen und Präsentationen"
     }
   ],
   "file_handlers": [
@@ -164,12 +209,53 @@
   },
   "shortcuts": [
     {
-      "name": "Dateien",
+      "name": "Datei öffnen",
+      "short_name": "Öffnen",
+      "description": "Deine Dateien anzeigen und eine PDF oder ein Dokument öffnen",
       "url": "./#/dateien",
       "icons": [
         {
           "src": "icons/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Dokument scannen",
+      "short_name": "Scannen",
+      "description": "Briefe und Belege mit der Kamera scannen",
+      "url": "./#/werkzeug/scannen",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Ausfüllen & unterschreiben",
+      "short_name": "Unterschreiben",
+      "description": "Formulare ausfüllen und unterschreiben",
+      "url": "./#/werkzeug/unterschreiben",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Neues Dokument",
+      "short_name": "Neu",
+      "url": "./#/neu/dokument",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     },
@@ -180,7 +266,8 @@
       "icons": [
         {
           "src": "icons/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     },
@@ -191,7 +278,8 @@
       "icons": [
         {
           "src": "icons/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     },
@@ -202,17 +290,8 @@
       "icons": [
         {
           "src": "icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Neues Dokument",
-      "url": "./#/neu/dokument",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     },
@@ -222,9 +301,13 @@
       "icons": [
         {
           "src": "icons/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     }
-  ]
+  ],
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
 }

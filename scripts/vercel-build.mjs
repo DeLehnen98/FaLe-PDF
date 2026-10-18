@@ -31,6 +31,7 @@ mkdirSync(DIST, { recursive: true });
 // 1) App files
 for (const name of readdirSync(ROOT)) {
   if (APP_SKIP.has(name) || name.startsWith('.')) continue;
+  if (NATIVE && name === 'screenshots') continue; // manifest screenshots: web install only
   cpSync(join(ROOT, name), join(DIST, name), { recursive: true });
 }
 // RFC 9116 security contact (web only; dot-folders are skipped above)
@@ -175,7 +176,7 @@ if (!NATIVE) {
   for (const f of ['landing.css', 'landing.js', 'img']) cpSync(join(ROOT, 'site', f), join(DIST, 'site', f), { recursive: true });
   // store buttons: links from network/tools/apps.json (empty = "coming soon")
   let stores = {};
-  try { const a = JSON.parse(readFileSync(join(ROOT, 'network', 'tools', 'apps.json'), 'utf8')).pdf || {}; stores = { android: a.android || '', ios: a.ios || '' }; } catch {}
+  try { const a = JSON.parse(readFileSync(join(ROOT, 'network', 'tools', 'apps.json'), 'utf8')).pdf || {}; stores = { android: a.android || '', ios: a.ios || '', windows: a.windows || '' }; } catch {}
   writeFileSync(join(DIST, 'site', 'stores.json'), JSON.stringify(stores) + '\n');
   if (!readFileSync(join(DIST, 'index.html'), 'utf8').includes('/site/landing.js')) throw new Error('site/index.html: Startseite ohne landing.js (Weiterleitung alter App-Links)');
 }
@@ -251,6 +252,8 @@ const files = walk(DIST)
   .filter(r => !r.startsWith('vendor/tesseract/'))
   // web tools (frame) and their background-removal models: loaded and cached on first use
   .filter(r => !r.startsWith('vendor/onnx/') && !r.startsWith('network/'))
+  // manifest screenshots (install dialog of the browser, Microsoft Store package) – never needed offline
+  .filter(r => !r.startsWith('screenshots/'))
   // start page of the web build (not part of the app; the app's shell is ./index.html relative to /app/)
   .filter(r => !r.startsWith('app/') && !r.startsWith('site/') && !r.startsWith('en/'))
   .sort();

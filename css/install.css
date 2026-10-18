@@ -1,0 +1,43 @@
+/* FaLe PDF – "install as an app" (js/install.js): Ich entry, install dialog, one-time desktop hint. Web build only. */
+.inst-me { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 12px; padding: 14px 18px; font: inherit; text-align: left;
+  color: var(--text); cursor: pointer; }
+.inst-me:hover { box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--primary) 24%, var(--border)); }
+.inst-me-ic { flex: 0 0 auto; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--primary-soft); color: var(--primary); }
+.inst-me-ic .ic { width: 24px; height: 24px; }
+.inst-me-text { flex: 1 1 auto; display: grid; gap: 2px; min-width: 0; }
+.inst-me-text span { color: var(--text-2); font-size: 0.875rem; }
+.inst-me-btn { flex: 0 0 auto; pointer-events: none; }
+@media (max-width: 420px) { .inst-me-btn { display: none; } }
+
+.inst { display: grid; gap: 12px; max-width: 34rem; }
+.inst p { margin: 0; }
+.inst-lead { color: var(--text); font-size: 1.0625rem; }
+.inst-benefits { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.inst-benefits li { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
+.inst-benefits .ic { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 2px; color: var(--accent); }
+.inst-main { display: grid; gap: 8px; padding: 14px; border-radius: var(--radius-md, 14px); background: var(--surface-2); }
+.inst-go { min-height: 52px; font-size: 1.0625rem; justify-self: start; gap: 10px; }
+.inst-go .ic { width: 22px; height: 22px; }
+.inst-how { font-weight: 700; color: var(--text); }
+.inst-steps { margin: 0; padding-left: 1.6em; display: grid; gap: 8px; color: var(--text); font-size: 1.0625rem; line-height: 1.45; }
+.inst-steps li::marker { font-weight: 700; color: var(--primary); }
+.inst-note { color: var(--text-2); font-size: 0.9375rem; }
+.inst-wait { color: var(--text-2); }
+
+.inst-hint {
+  position: fixed; right: 24px; bottom: calc(24px + var(--safe-b, 0px)); z-index: 250;
+  display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; align-items: start;
+  width: min(380px, calc(100vw - 48px)); padding: 16px 18px;
+  border-radius: var(--radius-md, 14px); border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  box-shadow: var(--shadow-md);
+}
+.inst-hint-ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--primary-soft); color: var(--primary); }
+.inst-hint-ic .ic { width: 22px; height: 22px; }
+.inst-hint-text { display: grid; gap: 2px; min-width: 0; }
+.inst-hint-text span { color: var(--text-2); font-size: 0.9375rem; }
+.inst-hint-actions { grid-column: 2; display: flex; flex-wrap: wrap; gap: 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .inst-hint { animation: inst-in .35s cubic-bezier(.2, .8, .2, 1); }
+  @keyframes inst-in { from { opacity: 0; transform: translateY(12px); } }
+}
+@media print { .inst-hint { display: none; } }

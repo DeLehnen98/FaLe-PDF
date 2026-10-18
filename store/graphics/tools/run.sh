@@ -22,6 +22,8 @@ for l in de en; do
   python3 capture.py $l phone home sign scan ocr ai sheet letters reminders privacy
   python3 capture.py $l tab7 home sign ai
   python3 capture.py $l tab10 home viewer doc
+  python3 capture.py $l desktop home files viewer doc sheet
 done
 python3 compose.py phone,tab7,tab10 de,en
 python3 brand.py
+python3 desktop.py   # Microsoft Store desktop screenshots + manifest screenshots (after compose.py: uses phone/de)

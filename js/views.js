@@ -753,6 +753,7 @@ export async function renderSettings() {
       <a class="action-card" href="#/schreiben"><span class="tile-ic">${oicon('letter')}</span><span><strong>Schreiben & Vorlagen</strong><span class="muted small">Kündigung, Rechnung, Vollmacht …</span></span></a>
       <a class="action-card" href="#/papierkorb"><span class="tile-ic">${oicon('trash')}</span><span><strong>Papierkorb</strong><span class="muted small">${trashN ? `${trashN} Datei${trashN === 1 ? '' : 'en'}` : 'Leer'}</span></span></a>
     </div>
+    <div data-install-me></div>
     <div data-ai-me></div>
     <div class="month-box" data-month-me></div>
     <h2 class="section-title">Einstellungen</h2>
@@ -853,6 +854,7 @@ export async function renderSettings() {
     toast(e.target.checked ? '„Dein Monat“ wird angezeigt' : '„Dein Monat“ ausgeblendet – es wird nichts mehr gezählt.', 'success');
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
+  import('./install.js').then(m => m.renderMeCard($('[data-install-me]', el))).catch(() => {}); // web only: install on this PC/Mac/phone
   import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
   import('./account/entry.js').then(m => m.renderMeCard($('[data-account-me]', el))).catch(() => {}); // optional FaLe-Konto
   import('./i18n/index.js').then(m => m.mountLangSettings(el)).catch(() => {}); // Sprache: Automatisch / Deutsch / English

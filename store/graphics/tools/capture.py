@@ -1,5 +1,5 @@
 """Capture real app screens (DE + EN) for the store graphics (see README.md › Regenerate).
-usage: python3 capture.py <lang> <device: phone|tab7|tab10> [shot ...]"""
+usage: python3 capture.py <lang> <device: phone|tab7|tab10|desktop> [shot ...]"""
 import sys
 from pathlib import Path
 from appshot import App, SP
@@ -8,7 +8,7 @@ import sig
 
 lang, device = sys.argv[1], sys.argv[2]
 only = set(sys.argv[3:])
-VIEW = {'phone': (360, 760, 3), 'tab7': (800, 1200, 1.5), 'tab10': (1280, 800, 2)}[device]
+VIEW = {'phone': (360, 760, 3), 'tab7': (800, 1200, 1.5), 'tab10': (1280, 800, 2), 'desktop': (1280, 720, 1.5)}[device]  # desktop: 1920 × 1080 (Microsoft Store, manifest)
 OUT = SP / 'raw' / device / lang
 OUT.mkdir(parents=True, exist_ok=True)
 N = {
@@ -25,7 +25,7 @@ def want(name):
 
 
 def app(**kw):
-    a = App(lang, width=W, height=H, dpr=DPR, answers=ANSWERS[lang], **kw)
+    a = App(lang, width=W, height=H, dpr=DPR, answers=ANSWERS[lang], touch=device != 'desktop', **kw)  # desktop: mouse, no touch handles
     a.seed(); a.clean()
     return a
 
