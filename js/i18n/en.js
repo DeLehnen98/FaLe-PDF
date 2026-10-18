@@ -6157,6 +6157,12 @@ export default {
   "Oder oben suchen – die Suche findet jedes Werkzeug.": "Or search above – search finds every tool.",
   "Weniger anzeigen": "Show fewer",
   "Einfache Ansicht": "Simple view",
+  "Wie möchtest du starten?": "How would you like to start?",
+  "Du kannst das jederzeit unter „Ich → Einstellungen“ ändern. Die Suche findet immer alles.": "You can change this any time under “Profile → Settings”. Search always finds everything.",
+  "Einfach": "Simple",
+  "Das Wichtigste in großen Kacheln: öffnen, scannen, unterschreiben, umwandeln": "The essentials as large tiles: open, scan, sign, convert",
+  "Alle Funktionen": "All features",
+  "Alles auf einen Blick, mit Assistenten, KI und Vorlagen": "Everything at a glance, with assistants, AI and templates",
   "Nur das Wichtigste in großen Kacheln. Alle anderen Funktionen findest du über „Alle Werkzeuge anzeigen“ und die Suche.": "Only the essentials as large tiles. You’ll find everything else under “Show all tools” and in search.",
 };
 

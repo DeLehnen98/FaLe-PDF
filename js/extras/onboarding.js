@@ -1,9 +1,11 @@
-// Kurze Einführung beim ersten Start (3 Schritte, überspringbar, nur einmal).
+// Kurze Einführung beim ersten Start (4 Schritte, überspringbar, nur einmal). Schritt 3 fragt nach der Ansicht:
+// „Einfach“ (große Kacheln, js/simple.js) oder „Alle Funktionen“ – jederzeit in Ich → Einstellungen änderbar.
 import { $, $$, h } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
 import { langSelectHtml } from '../i18n/index.js';
+import { simpleOn, setSimple, dismissSimpleHint } from '../simple.js';
 
 const KEY = 'fale-onboarded';
 const ls = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
@@ -22,7 +24,7 @@ export function maybeShowOnboarding() {
 
 export function showOnboarding() {
   if (document.querySelector('.onboard')) return;
-  let step = 0;
+  let step = 0, sawViews = false;
   const ov = h(`<div class="onboard" role="dialog" aria-modal="true" aria-labelledby="ob-title">
     <div class="ob-card">
       <button class="ob-skip btn btn-ghost btn-sm" type="button" data-skip>Überspringen</button>
@@ -41,6 +43,20 @@ export function showOnboarding() {
           <ul class="ob-list"><li>${oicon('lock')} Privater Tresor mit eigener PIN</li><li>${oicon('cloud')} Nichts verlässt dein Gerät – außer du teilst es selbst</li><li>${oicon('heart')} Keine Abo-Fallen, keine Nerv-Banner</li></ul>
         </section>
         <section class="ob-step" data-step="2" hidden>
+          <h2 class="ob-h-top">Wie möchtest du starten?</h2>
+          <p>Du kannst das jederzeit unter „Ich → Einstellungen“ ändern. Die Suche findet immer alles.</p>
+          <div class="ob-views" role="radiogroup" aria-label="Ansicht">
+            <button type="button" class="ob-view" role="radio" data-view="simple">
+              <span class="ob-mini ob-mini-simple" aria-hidden="true"><i class="w"></i><i></i><i></i><i></i><i></i></span>
+              <span class="ob-view-t"><b>Einfach</b><span>Das Wichtigste in großen Kacheln: öffnen, scannen, unterschreiben, umwandeln</span></span>
+            </button>
+            <button type="button" class="ob-view" role="radio" data-view="full">
+              <span class="ob-mini ob-mini-full" aria-hidden="true"><i class="w"></i><i class="r"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="ob-view-t"><b>Alle Funktionen</b><span>Alles auf einen Blick, mit Assistenten, KI und Vorlagen</span></span>
+            </button>
+          </div>
+        </section>
+        <section class="ob-step" data-step="3" hidden>
           <div class="ob-art ob-art-3"><span class="ob-me">${oicon('person')}</span></div>
           <h2>Kurz einrichten <span class="muted ob-opt">(optional)</span></h2>
           <p>Wie soll FaLe aussehen?</p>
@@ -50,7 +66,7 @@ export function showOnboarding() {
         </section>
       </div>
       <div class="ob-foot">
-        <div class="ob-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="ob-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <div class="ob-btns"><button class="btn btn-ghost" type="button" data-back hidden>Zurück</button><button class="btn btn-primary" type="button" data-next>Weiter</button></div>
       </div>
     </div></div>`);
@@ -63,10 +79,13 @@ export function showOnboarding() {
     back.hidden = step === 0;
     next.textContent = step === steps.length - 1 ? 'Los geht’s' : 'Weiter';
     $$('[data-theme-opt]', ov).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeOpt === currentTheme())));
+    $$('[data-view]', ov).forEach(b => { const sel = (b.dataset.view === 'simple') === simpleOn(); b.setAttribute('aria-checked', String(sel)); b.tabIndex = sel ? 0 : -1; });
+    if (steps[step].querySelector('[data-view]')) sawViews = true;
     setTimeout(() => next.focus(), 30);
   };
   const close = () => {
     ls.set(KEY, '1');
+    if (sawViews) dismissSimpleHint(); // the view was chosen here – no extra hint card on the start screen
     ov.classList.add('closing');
     document.removeEventListener('keydown', onKey, true);
     setTimeout(() => ov.remove(), 180);
@@ -82,5 +101,15 @@ export function showOnboarding() {
     $$('[data-action="toggle-theme"]').forEach(t => { t.innerHTML = oicon(document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches) ? 'sun' : 'moon'); });
     paint();
   }));
+  const views = $$('[data-view]', ov);
+  views.forEach((b, i) => {
+    b.addEventListener('click', () => { setSimple(b.dataset.view === 'simple'); paint(); setTimeout(() => b.focus(), 40); });
+    b.addEventListener('keydown', e => { // radio group: arrow keys move and select
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (!d) return;
+      e.preventDefault();
+      views[(i + d + views.length) % views.length].click();
+    });
+  });
   paint();
 }

@@ -911,6 +911,17 @@ def onboarding_and_ai(p):
             check(f'{label}: privacy promise step', 'Deine Dateien gehören dir' in page.locator('.ob-step:not([hidden])').inner_text())
             shot(page, f'{label}_onboarding_2_light')
             page.locator('[data-next]').click()
+            # step 3: choose the view (simple / all features) – applied at once, keyboard-operable radio group
+            check(f'{label}: view choice step', 'Wie möchtest du starten?' in page.locator('.ob-step:not([hidden])').inner_text()
+                  and page.locator('.ob-view[aria-checked="true"]').get_attribute('data-view') == 'full')
+            page.locator('.ob-view[data-view="simple"]').click()
+            check(f'{label}: "Einfach" switches the simple view on', page.evaluate("document.documentElement.classList.contains('simple') && localStorage.getItem('fale-simple') === '1'")
+                  and page.locator('.ob-view[data-view="simple"]').get_attribute('aria-checked') == 'true')
+            shot(page, f'{label}_onboarding_3_views')
+            page.locator('.ob-view[data-view="simple"]').press('ArrowDown')
+            check(f'{label}: arrow key selects "Alle Funktionen"', page.evaluate("!document.documentElement.classList.contains('simple') && localStorage.getItem('fale-simple') === null"))
+            page.locator('.ob-view[data-view="simple"]').click()
+            page.locator('[data-next]').click()
             page.locator('.ob-theme [data-theme-opt="dark"]').click()
             check(f'{label}: theme choice applies', page.evaluate("document.documentElement.dataset.theme") == 'dark')
             shot(page, f'{label}_onboarding_3_dark')
@@ -922,6 +933,9 @@ def onboarding_and_ai(p):
             page.wait_for_selector('#view-start .hero')
             page.wait_for_timeout(800)
             check(f'{label}: shown only once', page.locator('.onboard').count() == 0)
+            check(f'{label}: chosen simple view is active, no extra hint card', page.locator('html.simple').count() == 1
+                  and page.evaluate("localStorage.getItem('fale-simple-hint')") == 'hidden')
+            page.evaluate("import('./js/simple.js').then(m => m.setSimple(false))")
         step(f'{label} onboarding', ob)
         ctx.close()
 
@@ -938,8 +952,10 @@ def onboarding_and_ai(p):
         check('vault unlocked after setup', page.evaluate("async () => (await import('./js/extras/vault.js')).isUnlocked()"))
         page.clock.run_for(2 * 60 * 1000)
         check('still unlocked before the timeout', page.evaluate("async () => (await import('./js/extras/vault.js')).isUnlocked()"))
-        page.clock.run_for(70 * 1000)
-        check('auto-lock after 3 minutes of inactivity', page.evaluate("async () => (await import('./js/extras/vault.js')).isUnlocked()") is False)
+        waited = 120
+        while waited < 300 and page.evaluate("async () => (await import('./js/extras/vault.js')).isUnlocked()"):
+            page.clock.run_for(10 * 1000); waited += 10
+        check('auto-lock after 3 minutes of inactivity', 180 <= waited <= 240, f'locked after {waited} s')
         ok = page.evaluate("async () => (await import('./js/extras/vault.js')).unlock('246810')")
         check('unlock again with PIN', ok)
         page.evaluate("() => { Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true }); document.dispatchEvent(new Event('visibilitychange')); }")
