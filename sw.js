@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-4084cd621c';
+const VERSION = 'v1.0.0-46894b3b9f';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -19,10 +19,12 @@ const ASSETS = [
   "./datenschutz.html",
   "./icons/apple-touch-icon.png",
   "./icons/favicon-32.png",
+  "./icons/favicon.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-192.png",
   "./icons/icon-maskable-512.png",
+  "./icons/ios-1024.png",
   "./impressum.html",
   "./index.html",
   "./info-assets/ai-de.webp",
@@ -171,6 +173,7 @@ const ASSETS = [
   "./js/share/signer.js",
   "./js/share/signreq.js",
   "./js/share/transfer.js",
+  "./js/simple.js",
   "./js/smart/common.js",
   "./js/smart/entry.js",
   "./js/smart/epc.js",
@@ -237,22 +240,6 @@ const ASSETS = [
   "./js/webtools/host.js",
   "./js/webtools/list.js",
   "./js/zip.js",
-  "./mail/cloud-init.yaml",
-  "./mail/config/MANIFEST.sha256",
-  "./mail/config/stalwart.ndjson",
-  "./mail/config/versions.json",
-  "./mail/mta-sts/mta-sts.txt",
-  "./mail/server/fale-mail-agent.py",
-  "./mail/server/firstboot.sh",
-  "./mail/test/dns.test.mjs",
-  "./mail/test/fixtures.mjs",
-  "./mail/test/monitor.test.mjs",
-  "./mail/test/seal.test.mjs",
-  "./mail/test/test_agent.py",
-  "./mail/tools/build.mjs",
-  "./mail/tools/monitor.mjs",
-  "./mail/tools/seal.mjs",
-  "./mail/web/index.html",
   "./manifest.webmanifest",
   "./og-image-en.png",
   "./og-image.png",

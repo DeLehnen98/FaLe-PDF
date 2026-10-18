@@ -9,6 +9,7 @@ import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
 import { isNative } from './platform.js';
 import { t } from './i18n/index.js';
+import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, SIMPLE_TOOLS } from './simple.js';
 
 const extrasHome = () => import('./extras/home.js');
 const extrasRem = () => import('./extras/reminders.js');
@@ -132,9 +133,11 @@ export async function renderHome() {
         </div>
       </div>
       <div data-search></div>
+      <div class="simple-hint card" data-simple-hint hidden></div>
       <div class="rem-start" data-rem hidden></div>
       <div class="sm-start" data-smart-start hidden></div>
-      <h2 class="section-title">Neu erstellen <a class="btn btn-sm btn-ghost" href="#/vorlagen">${oicon('template')} Vorlagen</a></h2>
+      <section class="simple-home" data-simple-home hidden aria-labelledby="simple-home-title"></section>
+      <h2 class="section-title" data-home="create">Neu erstellen <a class="btn btn-sm btn-ghost" href="#/vorlagen">${oicon('template')} Vorlagen</a></h2>
       <div class="create-row" role="list"></div>
       <div class="quick-chips" role="list" aria-label="Schnell erledigt">
         <a class="lt-chip" role="listitem" href="#/schreiben/kuendigung?art=handy">${oicon('letter')}<span>Kündigung schreiben</span></a>
@@ -144,8 +147,9 @@ export async function renderHome() {
         <a class="lt-chip" role="listitem" href="#/tresor">${oicon('vault')}<span>Tresor</span></a>
       </div>
       <div class="continue-box" data-continue hidden></div>
-      <h2 class="section-title">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
+      <h2 class="section-title" data-home="tools">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
       <div class="tiles" role="list"></div>
+      <h2 class="section-title simple-only" data-home="files">Meine Dateien</h2>
       <div class="tabs" role="tablist" aria-label="Dateilisten">
         <button class="tab" role="tab" type="button" data-tab="recent">Zuletzt</button>
         <button class="tab" role="tab" type="button" data-tab="starred">Markiert</button>
@@ -188,11 +192,47 @@ export async function renderHome() {
       lsSet('fale-home-tab', homeTab);
       renderHomeList();
     }));
+    renderSimpleHome(el);
+    followSimple(el, renderSimpleHome);
   }
   $('[data-greet]', el).textContent = `${greeting()}!`;
   greetName(el);
   await renderHomeList();
   renderHomeExtras(el);
+}
+
+// „Einfache Ansicht“ (js/simple.js): large tiles for the essentials + the hint card that offers the mode.
+// Built only while needed, so the normal start screen has no duplicate controls.
+function renderSimpleHome(el) {
+  const on = simpleOn();
+  const hint = $('[data-simple-hint]', el);
+  hint.hidden = on || simpleHintHidden();
+  if (!hint.hidden && !hint.firstChild) {
+    hint.append(...h(`<div><span class="simple-hint-ic">${oicon('eye')}</span>
+      <div class="simple-hint-text"><strong>Lieber übersichtlich?</strong><span>Die einfache Ansicht zeigt nur das Wichtigste in großen Kacheln. Alle Funktionen bleiben über die Suche erreichbar.</span></div>
+      <div class="simple-hint-actions"><button class="btn btn-soft" type="button" data-simple-on>Einfache Ansicht einschalten</button>
+      <button class="icon-btn" type="button" data-simple-hint-close aria-label="Hinweis ausblenden">${oicon('close')}</button></div></div>`).childNodes);
+    $('[data-simple-on]', hint).addEventListener('click', () => { setSimple(true); toast('Einfache Ansicht ist an.', 'success'); $('#main').scrollTop = 0; });
+    $('[data-simple-hint-close]', hint).addEventListener('click', () => { dismissSimpleHint(); hint.hidden = true; });
+  }
+  const box = $('[data-simple-home]', el);
+  box.hidden = !on;
+  if (!on || box.firstChild) return;
+  box.append(...h(`<div><h2 class="section-title" id="simple-home-title">Was möchtest du tun?</h2><div class="s-tiles" role="list"></div>
+    <div class="simple-foot"><a class="btn btn-ghost" href="#/werkzeuge" data-simple-tools>${oicon('tools')} Alle Werkzeuge</a>
+    <button class="btn btn-ghost" type="button" data-simple-off>${oicon('sliders')} Alle Funktionen zeigen</button></div></div>`).childNodes);
+  const grid = $('.s-tiles', box);
+  SIMPLE_HOME.forEach(c => {
+    const inner = `<span class="tile-ic">${oicon(c.icon)}</span><span class="s-tile-text"><strong>${esc(c.label)}</strong><span>${esc(c.sub)}</span></span>`;
+    const tile = c.href
+      ? h(`<a class="s-tile g-${c.group}" role="listitem" href="${c.href}" data-simple="${c.id}">${inner}</a>`)
+      : h(`<button class="s-tile g-${c.group}" type="button" role="listitem" data-simple="${c.id}"${c.menu ? ' aria-haspopup="menu"' : ''}>${inner}</button>`);
+    if (c.action === 'open-file') tile.addEventListener('click', () => importFromDevice());
+    if (c.menu === 'new') tile.addEventListener('click', () => showNewMenu(tile));
+    if (c.menu === 'convert') tile.addEventListener('click', () => officeMenu(tile, CONVERT_MENU.map(m => ({ label: m.label, icon: m.icon, onClick: () => { location.hash = m.href; } })), { label: 'In PDF umwandeln' }));
+    grid.appendChild(tile);
+  });
+  $('[data-simple-off]', box).addEventListener('click', () => { setSimple(false); toast('Alle Funktionen werden wieder angezeigt.', 'success'); });
 }
 
 // personal greeting: "Guten Tag, Alex!" when a first name is saved in „Meine Daten" (on this device only)
@@ -267,6 +307,7 @@ export function renderTools(initialQ = null) {
     el.dataset.built = '1';
     el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alle Werkzeuge arbeiten lokal – nichts wird hochgeladen, außer du nutzt bewusst die Cloud-KI. Auch die Pro-Funktionen sind kostenlos.</p></div></div>
       <div data-search></div>
+      <section class="simple-sec" data-section="simple" data-simple-tools hidden></section>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
       <section class="tool-section" data-section="alltag"><h2 class="section-title">Alltag &amp; Organisation</h2><div class="tool-grid alltag-grid"></div></section>
       <section class="tool-section" data-section="assistenten" data-smart-section hidden></section>
@@ -311,6 +352,7 @@ export function renderTools(initialQ = null) {
     }
     const filter = q => {
       const n = q.toLocaleLowerCase('de');
+      el.classList.toggle('st-q', !!n); // simple mode: a search always looks through every tool
       let any = false;
       $$('.tool-section', el).forEach(sec => {
         let vis = 0;
@@ -331,9 +373,46 @@ export function renderTools(initialQ = null) {
       m.renderWebTools(el);
       const q = $('#tool-search', el) && $('#tool-search', el).value;
       if (q) filter(q);
+      updateSimpleCount(el);
     }).catch(e => console.warn('web tools', e));
+    renderSimpleTools(el);
+    followSimple(el, renderSimpleTools);
   }
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
+}
+
+// „Einfache Ansicht“: a short list first; „Alle Werkzeuge anzeigen“ expands to every section (CSS: html.simple)
+let simpleToolsAll = false;
+function renderSimpleTools(el) {
+  const sec = $('[data-simple-tools]', el);
+  const on = simpleOn();
+  sec.hidden = !on;
+  el.classList.toggle('st-all', on && simpleToolsAll);
+  if (!on || sec.firstChild) { updateSimpleCount(el); return; }
+  sec.append(...h(`<div><h2 class="section-title">Die wichtigsten Werkzeuge</h2><div class="tool-grid simple-grid"></div>
+    <div class="simple-more"><button class="btn btn-primary" type="button" data-simple-all aria-expanded="false"><span data-simple-all-label>Alle Werkzeuge anzeigen</span><span class="count" data-simple-count></span></button>
+    <span class="muted small simple-more-note">Oder oben suchen – die Suche findet jedes Werkzeug.</span></div></div>`).childNodes);
+  const grid = $('.simple-grid', sec);
+  SIMPLE_TOOLS.map(id => TOOLS.find(x => x.id === id)).filter(Boolean).forEach(tool => {
+    const c = toolCard(tool);
+    c.classList.add(`g-${tool.group || 'bearbeiten'}`);
+    grid.appendChild(c);
+  });
+  $('[data-simple-all]', sec).addEventListener('click', () => {
+    simpleToolsAll = !simpleToolsAll;
+    el.classList.toggle('st-all', simpleToolsAll);
+    updateSimpleCount(el);
+  });
+  updateSimpleCount(el);
+}
+function updateSimpleCount(el) {
+  const btn = $('[data-simple-all]', el);
+  if (!btn) return;
+  const all = simpleToolsAll && simpleOn();
+  btn.setAttribute('aria-expanded', String(all));
+  $('[data-simple-all-label]', btn).textContent = all ? 'Weniger anzeigen' : 'Alle Werkzeuge anzeigen';
+  const n = $$('.tool-section:not([data-section="simple"]):not([data-section="ki"]) .tool-card', el).length;
+  $('[data-simple-count]', btn).textContent = all || !n ? '' : String(n);
 }
 
 // ---------------- Dateien ----------------
@@ -677,6 +756,8 @@ export async function renderSettings() {
         <div class="seg" role="group" aria-label="Erscheinungsbild">
           <button type="button" data-theme-opt="auto">Auto</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button>
         </div></div>
+      <div class="settings-row" data-simple-row><div class="label"><strong>Einfache Ansicht</strong><span>Nur das Wichtigste in großen Kacheln. Alle anderen Funktionen findest du über „Alle Werkzeuge anzeigen“ und die Suche.</span></div>
+        <label class="switch"><input type="checkbox" data-simple-toggle ${simpleOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Einfache Ansicht</span></label></div>
       <div class="settings-row"><div class="label"><strong>Standard-Zoom</strong><span>Zoomstufe beim Öffnen einer PDF.</span></div>
         <select class="select" id="set-zoom" aria-label="Standard-Zoom">
           <option value="auto">Automatisch</option><option value="page-width">Seitenbreite</option><option value="page-fit">Ganze Seite</option>
@@ -737,6 +818,10 @@ export async function renderSettings() {
       $$('[data-theme-opt]', el).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
       document.querySelectorAll('[data-action="toggle-theme"]').forEach(t => { t.innerHTML = oicon(document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches) ? 'sun' : 'moon'); });
     });
+  });
+  $('[data-simple-toggle]', el).addEventListener('change', e => {
+    setSimple(e.target.checked);
+    toast(e.target.checked ? 'Einfache Ansicht ist an.' : 'Alle Funktionen werden wieder angezeigt.', 'success');
   });
   const zs = $('#set-zoom', el);
   zs.value = zoom;
