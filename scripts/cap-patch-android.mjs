@@ -1062,7 +1062,7 @@ function patchResources() {
 
 // ------------------------------------------------------------------ icons
 const DENSITIES = { mdpi: 1, hdpi: 1.5, xhdpi: 2, xxhdpi: 3, xxxhdpi: 4 };
-const INK_TOP = [49, 46, 129], INK_BOTTOM = [23, 21, 66]; // same gradient as scripts/make_icons.py
+const INK_TOP = [59, 55, 160], INK_BOTTOM = [20, 18, 70]; // same gradient as scripts/make_icons.py (TOP, BOTTOM)
 
 function writePng(p, img) {
   const buf = png.encodePng(img);

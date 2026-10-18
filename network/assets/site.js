@@ -13,7 +13,7 @@
    *                 element marked [data-konto-signin] and hides [data-konto-soon].
    */
   var FALE_CONFIG = {
-    kontoUrl: 'https://pdf.fale.network/#/konto',
+    kontoUrl: 'https://pdf.fale.network/app/#/konto',
     kontoAvailable: true
   };
   window.FALE_CONFIG = FALE_CONFIG;

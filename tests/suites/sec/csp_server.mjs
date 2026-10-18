@@ -16,9 +16,17 @@ http.createServer(async (req, res) => {
     let p = normalize(decodeURIComponent(u.pathname)).replace(/^(\.\.[/\\])+/, '');
     applyVercelHeaders(u.pathname, res);
     if (p.endsWith('/')) p += 'index.html';
-    const file = join(ROOT, p);
+    let file = join(ROOT, p);
     if (!file.startsWith(ROOT) || /\/(\.git|api|supabase)\//.test(file.slice(ROOT.length) + '/')) { res.statusCode = 404; return res.end(); }
-    const st = await stat(file).catch(() => null);
+    let st = await stat(file).catch(() => null);
+    // vercel.json rewrites (only when no file matches, like Vercel): "/app/:path*" → "/:path*"
+    if ((!st || !st.isFile()) && u.pathname.startsWith('/app/')) {
+      let q = normalize(decodeURIComponent(u.pathname.slice(4))).replace(/^(\.\.[/\\])+/, '');
+      if (q.endsWith('/')) q += 'index.html';
+      const f2 = join(ROOT, q);
+      const st2 = f2.startsWith(ROOT) ? await stat(f2).catch(() => null) : null;
+      if (st2 && st2.isFile()) { file = f2; st = st2; }
+    }
     if (!st || !st.isFile()) { res.statusCode = 404; return res.end('not found'); }
     res.setHeader('Content-Type', MIME[extname(file)] || 'application/octet-stream');
     res.setHeader('Cache-Control', 'no-store');

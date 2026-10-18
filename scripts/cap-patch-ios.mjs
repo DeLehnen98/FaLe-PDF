@@ -13,7 +13,8 @@
 //    packageClassList, so the bridge creates and loads them like npm plugins (run this after every sync)
 //  - Podfile: pod 'FaleNative' from ios-native/, iOS 15
 //  - project.pbxproj: MARKETING_VERSION / CURRENT_PROJECT_VERSION from package.json, deployment target 15.0
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+//  - AppIcon: icons/ios-1024.png (scripts/make_icons.py) as the single universal 1024 px icon (no alpha)
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -167,6 +168,20 @@ export function patchProject(src) {
     .replace(/IPHONEOS_DEPLOYMENT_TARGET = [\d.]+;/g, 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;');
 }
 
+/** AppIcon.appiconset: one universal 1024 × 1024 icon (Xcode ≥ 14 derives every size from it). */
+export function appIconContents() {
+  return JSON.stringify({ images: [{ filename: 'AppIcon-1024.png', idiom: 'universal', platform: 'ios', size: '1024x1024' }], info: { author: 'xcode', version: 1 } }, null, 2) + '\n';
+}
+function patchAppIcon() {
+  const dir = join(APP, 'App', 'Assets.xcassets', 'AppIcon.appiconset');
+  const src = join(ROOT, 'icons', 'ios-1024.png');
+  if (!existsSync(src)) { console.log('Hinweis: icons/ios-1024.png fehlt (python3 scripts/make_icons.py)'); return; }
+  mkdirSync(dir, { recursive: true });
+  for (const f of readdirSync(dir)) if (f.endsWith('.png') && f !== 'AppIcon-1024.png') unlinkSync(join(dir, f));
+  writeFileSync(join(dir, 'AppIcon-1024.png'), readFileSync(src));
+  writeFileSync(join(dir, 'Contents.json'), appIconContents());
+}
+
 function run() {
   must(existsSync(APP), `iOS-Projekt nicht gefunden: ${APP} (zuerst: npx cap add ios --packagemanager CocoaPods)`);
   const infoP = join(APP, 'App', 'Info.plist');
@@ -180,6 +195,7 @@ function run() {
   writeFileSync(podP, patchPodfile(readFileSync(podP, 'utf8'), relative(APP, join(ROOT, 'ios-native')).split('\\').join('/')));
   const prjP = join(APP, 'App.xcodeproj', 'project.pbxproj');
   writeFileSync(prjP, patchProject(readFileSync(prjP, 'utf8')));
+  patchAppIcon();
   if (ADMOB_APP_ID === GOOGLE_TEST_APP_ID) console.log('Hinweis: GADApplicationIdentifier = Google TEST-App-ID (Werbung ist auf iOS ohnehin aus).');
   console.log(`iOS gepatcht: ${cap.appId} ${VERSION} (${BUILD}), ${DOC_TYPES.length} Dokumenttypen, FaleNative-Pod, Plugins ${OWN_PLUGINS.join(', ')}`);
 }

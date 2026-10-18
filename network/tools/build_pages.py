@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # app – including the FaLe-Konto link in assets/site.js, which main() keeps in sync.
 BASE = 'https://fale.network'
 PDF_ORIGIN = 'https://pdf.fale.network'
-PDF_APP = PDF_ORIGIN + '/'
+PDF_APP = PDF_ORIGIN + '/app/'   # the browser app (pdf.fale.network/ is its start page)
 PDF_INFO = PDF_ORIGIN + '/info.html'
 PDF_INFO_EN = PDF_ORIGIN + '/info-en.html'
 PDF_PRIVACY = PDF_ORIGIN + '/datenschutz.html'

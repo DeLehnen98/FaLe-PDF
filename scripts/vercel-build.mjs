@@ -19,7 +19,8 @@ const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '
   'api', 'supabase', 'network', // serverless functions + DB migrations are not static app files
   'one', // FaLe One web app: its own Vercel project (root directory one/)
   'docs', 'SECURITY.md', // documentation only
-  'tests', 'e2e-out']); // test suites + their outputs (never shipped)
+  'tests', 'e2e-out', // test suites + their outputs (never shipped)
+  'site']); // start page of pdf.fale.network (web build only, step 1b below)
 // `--native` (or FALE_TARGET=native): build for the Android app (Capacitor webDir).
 const NATIVE = process.argv.includes('--native') || process.env.FALE_TARGET === 'native';
 
@@ -64,11 +65,11 @@ const CSP_META = (() => {
   const m = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/);
   if (!m) throw new Error('index.html: <meta http-equiv="Content-Security-Policy"> fehlt');
   const vc = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'));
-  const hdr = (vc.headers || []).filter(r => r.source === '/' || r.source === '/((?!wt-app/).*)\\.html')
+  const hdr = (vc.headers || []).filter(r => r.source === '/' || r.source === '/app/' || r.source === '/((?!wt-app/).*)\\.html')
     .map(r => (r.headers.find(h => h.key === 'Content-Security-Policy') || {}).value);
   const norm = v => String(v || '').split(';').map(x => x.trim().replace(/\s+/g, ' ')).filter(x => x && !/^frame-ancestors\b/.test(x)).join('; ');
-  if (hdr.length !== 2 || hdr.some(v => norm(v) !== norm(m[1]))) {
-    throw new Error('Content-Security-Policy in index.html und vercel.json ("/" und "/((?!wt-app/).*)\\.html") stimmen nicht überein');
+  if (hdr.length !== 3 || hdr.some(v => norm(v) !== norm(m[1]))) {
+    throw new Error('Content-Security-Policy in index.html und vercel.json ("/", "/app/" und "/((?!wt-app/).*)\\.html") stimmen nicht überein');
   }
   return m[1];
 })();
@@ -160,6 +161,24 @@ if (existsSync(join(ROOT, 'vendor-extra'))) {
   console.log(`Web-Werkzeuge: ${pages} Seiten, ${rebased} Vendor-Pfade umgestellt`);
 }
 
+// 1b) Web: pdf.fale.network/ is the start page (site/), the browser app moves to /app/ (vercel.json rewrites
+// /app/<file> → /<file>, so the app keeps its relative paths; its service worker gets the scope /app/).
+// The native apps keep index.html as the app.
+if (!NATIVE) {
+  mkdirSync(join(DIST, 'app'), { recursive: true });
+  cpSync(join(DIST, 'index.html'), join(DIST, 'app', 'index.html'));
+  cpSync(join(ROOT, 'site', 'index.html'), join(DIST, 'index.html'));
+  mkdirSync(join(DIST, 'en'), { recursive: true });
+  cpSync(join(ROOT, 'site', 'en', 'index.html'), join(DIST, 'en', 'index.html'));
+  mkdirSync(join(DIST, 'site'), { recursive: true });
+  for (const f of ['landing.css', 'landing.js', 'img']) cpSync(join(ROOT, 'site', f), join(DIST, 'site', f), { recursive: true });
+  // store buttons: links from network/tools/apps.json (empty = "coming soon")
+  let stores = {};
+  try { const a = JSON.parse(readFileSync(join(ROOT, 'network', 'tools', 'apps.json'), 'utf8')).pdf || {}; stores = { android: a.android || '', ios: a.ios || '' }; } catch {}
+  writeFileSync(join(DIST, 'site', 'stores.json'), JSON.stringify(stores) + '\n');
+  if (!readFileSync(join(DIST, 'index.html'), 'utf8').includes('/site/landing.js')) throw new Error('site/index.html: Startseite ohne landing.js (Weiterleitung alter App-Links)');
+}
+
 // Public FaLe-Konto settings (no secrets) → js/account/build-config.js, so the app knows without any request
 // whether the optional account is available. Left as `null` when the variables are missing (e.g. a local
 // native build); the app then asks /api/account?a=config when the user opens #/konto.
@@ -184,7 +203,7 @@ if (existsSync(join(ROOT, 'vendor-extra'))) {
 // Static host config next to the files (so `vercel deploy dist` keeps the headers)
 if (!NATIVE) {
   const vc = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'));
-  writeFileSync(join(DIST, 'vercel.json'), JSON.stringify({ headers: vc.headers }, null, 2));
+  writeFileSync(join(DIST, 'vercel.json'), JSON.stringify({ redirects: vc.redirects, rewrites: vc.rewrites, headers: vc.headers }, null, 2));
 } else {
   // Android: no viewport-fit=cover → Capacitor keeps the WebView clear of the system bars.
   const ix = join(DIST, 'index.html');
@@ -231,6 +250,8 @@ const files = walk(DIST)
   .filter(r => !r.startsWith('vendor/tesseract/'))
   // web tools (frame) and their background-removal models: loaded and cached on first use
   .filter(r => !r.startsWith('vendor/onnx/') && !r.startsWith('network/'))
+  // start page of the web build (not part of the app; the app's shell is ./index.html relative to /app/)
+  .filter(r => !r.startsWith('app/') && !r.startsWith('site/') && !r.startsWith('en/'))
   .sort();
 const h = createHash('sha256');
 for (const r of files) { h.update(r); h.update(readFileSync(join(DIST, r))); }

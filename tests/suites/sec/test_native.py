@@ -753,8 +753,9 @@ def native_build():
     finally:
         r = subprocess.run(['node', 'scripts/vercel-build.mjs'], cwd=APP, capture_output=True, text=True, env=env)
         check('web build runs (dist restored)', r.returncode == 0, r.stderr[-500:])
-        ix = open(os.path.join(dist, 'index.html')).read()
+        ix = open(os.path.join(dist, 'app', 'index.html')).read()   # web: the app lives at /app/, / is its start page
         sw = open(os.path.join(dist, 'sw.js')).read()
+        check('web build: start page at /, app at /app/', 'landing.js' in open(os.path.join(dist, 'index.html')).read() and 'id="view-start"' in ix or 'view-start' in ix)
         check('web build: viewport-fit kept, vercel.json written, sw precaches legal + platform', 'viewport-fit=cover' in ix and os.path.exists(os.path.join(dist, 'vercel.json'))
               and '"./datenschutz.html"' in sw and '"./js/platform.js"' in sw and 'capacitor.config.json' not in sw)
 

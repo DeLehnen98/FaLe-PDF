@@ -155,7 +155,7 @@ with sync_playwright() as pw:
     if pg.evaluate("document.documentElement.hasAttribute('data-theme')"): fail('back to system should clear override')
     pg.goto(ORIGIN + '/konto/')  # the FaLe-Konto sign-in links live on the konto page (home no longer advertises it)
     hrefs = pg.eval_on_selector_all('[data-konto-link]', 'els => els.map(e => e.getAttribute("href"))')
-    if not hrefs or any(h != 'https://pdf.fale.network/#/konto' for h in hrefs): fail(f'konto links {hrefs}')
+    if not hrefs or any(h != 'https://pdf.fale.network/app/#/konto' for h in hrefs): fail(f'konto links {hrefs}')
     if not pg.locator('[data-konto-signin]').first.is_visible(): fail('sign-in hidden although kontoAvailable=true')
     if pg.locator('[data-konto-soon]').first.is_visible(): fail('coming-soon note visible although the account is live')
     # keyboard: first Tab focuses skip link

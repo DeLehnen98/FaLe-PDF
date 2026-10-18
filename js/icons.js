@@ -127,18 +127,13 @@ export function icon(name, cls = '') {
   return `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
 }
 
-// App logo mark: page with folded corner and teal bookmark ribbon.
+// App logo mark (same design as the app icon, scripts/make_icons.py): PDF page with teal bookmark in front of a
+// coral (presentation) and a green (spreadsheet) page.
 let logoSeq = 0;
 export function logo(size = 32) {
   const gid = `lg-ink-${++logoSeq}`;
-  return `<svg class="logo-mark" width="${size}" height="${size}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-  <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B37A0"/><stop offset="1" stop-color="#171542"/></linearGradient></defs>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#${gid})"/>
-  <path d="M19 13h20l10 10v26a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3V16a3 3 0 0 1 3-3z" fill="#fff"/>
-  <path d="M39 13v10h10z" fill="#C7D2FE"/>
-  <path d="M21.5 13h6.5v13l-3.25-2.6L21.5 26z" fill="#2DD4BF"/>
-  <rect x="21.5" y="31" width="15" height="3" rx="1.5" fill="#A5B4FC"/>
-  <rect x="21.5" y="37.5" width="21" height="3" rx="1.5" fill="#A5B4FC"/>
-  <rect x="21.5" y="44" width="12" height="3" rx="1.5" fill="#A5B4FC"/>
+  return `<svg class="logo-mark" width="${size}" height="${size}" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B37A0"/><stop offset="1" stop-color="#141246"/></linearGradient></defs>
+  <rect width="512" height="512" rx="128" fill="url(#${gid})"/><g transform="rotate(-14 256 393.5)"><path d="M171.5 135.7H305.2L358.4 188.9V389.2Q358.4 407.1 340.5 407.1H171.5Q153.6 407.1 153.6 389.2V153.6Q153.6 135.7 171.5 135.7Z" fill="#E8613C"/><path d="M305.2 135.7V182.9Q305.2 188.9 311.2 188.9H358.4Z" fill="#FFBEAA"/></g><g transform="rotate(14 256 393.5)"><path d="M171.5 135.7H305.2L358.4 188.9V389.2Q358.4 407.1 340.5 407.1H171.5Q153.6 407.1 153.6 389.2V153.6Q153.6 135.7 171.5 135.7Z" fill="#15895A"/><path d="M305.2 135.7V182.9Q305.2 188.9 311.2 188.9H358.4Z" fill="#A0E6C3"/></g><g><path d="M171.5 125.5H305.2L358.4 178.7V379.0Q358.4 396.9 340.5 396.9H171.5Q153.6 396.9 153.6 379.0V143.4Q153.6 125.5 171.5 125.5Z" fill="#FFFFFF"/><path d="M305.2 125.5V172.7Q305.2 178.7 311.2 178.7H358.4Z" fill="#C8CEFF"/></g><path d="M184.3 125.5h41.0v81.4l-20.5 -16.3l-20.5 16.3z" fill="#2DD4BF"/><g fill="#A5ACF5"><rect x="184.3" y="247.6" width="127.0" height="13.3" rx="6.65"/><rect x="184.3" y="280.2" width="143.4" height="13.3" rx="6.65"/><rect x="184.3" y="312.8" width="102.4" height="13.3" rx="6.65"/></g>
 </svg>`;
 }

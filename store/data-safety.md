@@ -23,7 +23,7 @@ Hintergrund (Google-Definitionen):
 | Erhebt oder teilt deine App erforderliche Nutzerdatentypen? | **Ja** |
 | Werden alle erhobenen Daten bei der Übertragung verschlüsselt? | **Ja** (HTTPS/TLS) |
 | Können Nutzer das Löschen ihrer Daten anfordern? | **Ja** – in der App: „KI-Assistent → KI-Einstellungen → Einwilligung widerrufen“ löscht die Gerätekennung; Zähler werden ohnehin nach 30 Tagen gelöscht. Geteilte Dateien/Anfragen: „Teilen & Übertragen → Link löschen / Anfrage löschen“, sonst automatisch nach Ablauf (max. 7 Tage). FaLe-Konto: „Ich → FaLe-Konto → Konto löschen“ (löscht sofort alle Cloud-Daten, Konto vollständig innerhalb von 30 Tagen) bzw. „Alle Cloud-Daten löschen“. Außerdem per E-Mail an `[E-MAIL-ADRESSE]`. |
-| Konto-Erstellung | **Ja, optional** (E-Mail + 6-stelliger Code; die App ist ohne Konto voll nutzbar). **Link zur Kontolöschung** (Pflichtangabe): `https://fale-pdf.vercel.app/#/konto` (später `https://pdf.fale.network/#/konto`) – dort „Konto löschen“; Anleitung auch in der Datenschutzerklärung Abschnitt 11. Löschen ist auch in der App möglich (Pflicht seit 2024 erfüllt). |
+| Konto-Erstellung | **Ja, optional** (E-Mail + 6-stelliger Code; die App ist ohne Konto voll nutzbar). **Link zur Kontolöschung** (Pflichtangabe): `https://pdf.fale.network/app/#/konto` – dort „Konto löschen“; Anleitung auch in der Datenschutzerklärung Abschnitt 11. Löschen ist auch in der App möglich (Pflicht seit 2024 erfüllt). |
 
 ## Datentypen
 

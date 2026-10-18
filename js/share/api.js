@@ -28,7 +28,7 @@ const OFFLINE_MSG = 'Du bist offline. Teilen, Unterschriften anfordern und Über
 /** Base URL for links we hand out (the native app shares links to the public web app). */
 export function linkBase() {
   if (typeof window !== 'undefined' && typeof window.__FALE_LINK_BASE__ === 'string') return window.__FALE_LINK_BASE__;
-  if (isNative()) return PUBLIC_ORIGIN + '/';
+  if (isNative()) return PUBLIC_ORIGIN + '/app/'; // the browser app lives at /app/ (/ is its start page)
   return location.origin + location.pathname;
 }
 
