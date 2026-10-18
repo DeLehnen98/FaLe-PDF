@@ -47,9 +47,11 @@ def wait_for(pred, timeout):
 
 
 # ---- 1. start with console
-proc = subprocess.Popen(['xcrun', 'simctl', 'launch', '--console-pty', '--terminate-running-process', UDID, BUNDLE],
-                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
-threading.Thread(target=lambda: [lines.append(l.rstrip('\n')) for l in proc.stdout], daemon=True).start()
+# `script` gives simctl itself a terminal: without it, its output to our pipe is block-buffered and the console
+# lines arrive minutes late (or only at exit)
+proc = subprocess.Popen(['script', '-q', '/dev/null', 'xcrun', 'simctl', 'launch', '--console-pty', '--terminate-running-process', UDID, BUNDLE],
+                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, errors='replace')
+threading.Thread(target=lambda: [lines.append(l.rstrip('\r\n')) for l in proc.stdout], daemon=True).start()
 has = lambda s: any(s in l for l in lines)
 ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 180)
 time.sleep(3)
