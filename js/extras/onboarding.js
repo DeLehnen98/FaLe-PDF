@@ -1,11 +1,12 @@
 // Kurze Einführung beim ersten Start (4 Schritte, überspringbar, nur einmal). Schritt 3 fragt nach der Ansicht:
-// „Einfach“ (große Kacheln, js/simple.js) oder „Alle Funktionen“ – jederzeit in Ich → Einstellungen änderbar.
+// „Einfach“ (große Kacheln, js/simple.js) oder „Alle Funktionen“ – und nach der Schriftgröße (Normal / Groß /
+// Sehr groß). Beides gilt sofort und ist jederzeit in Ich → Einstellungen änderbar.
 import { $, $$, h } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
 import { langSelectHtml } from '../i18n/index.js';
-import { simpleOn, setSimple, dismissSimpleHint } from '../simple.js';
+import { simpleOn, setSimple, dismissSimpleHint, textSizeSeg, bindTextSize } from '../simple.js';
 
 const KEY = 'fale-onboarded';
 const ls = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
@@ -55,6 +56,7 @@ export function showOnboarding() {
               <span class="ob-view-t"><b>Alle Funktionen</b><span>Alles auf einen Blick, mit Assistenten, KI und Vorlagen</span></span>
             </button>
           </div>
+          <div class="ob-size"><span class="ob-size-l">Schriftgröße</span>${textSizeSeg('ob-ts')}</div>
         </section>
         <section class="ob-step" data-step="3" hidden>
           <div class="ob-art ob-art-3"><span class="ob-me">${oicon('person')}</span></div>
@@ -80,6 +82,7 @@ export function showOnboarding() {
     next.textContent = step === steps.length - 1 ? 'Los geht’s' : 'Weiter';
     $$('[data-theme-opt]', ov).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeOpt === currentTheme())));
     $$('[data-view]', ov).forEach(b => { const sel = (b.dataset.view === 'simple') === simpleOn(); b.setAttribute('aria-checked', String(sel)); b.tabIndex = sel ? 0 : -1; });
+    syncSize();
     if (steps[step].querySelector('[data-view]')) sawViews = true;
     setTimeout(() => next.focus(), 30);
   };
@@ -101,6 +104,8 @@ export function showOnboarding() {
     $$('[data-action="toggle-theme"]').forEach(t => { t.innerHTML = oicon(document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches) ? 'sun' : 'moon'); });
     paint();
   }));
+  // a bigger text makes the step taller – keep the size buttons in view (the buttons below stay pinned)
+  const syncSize = bindTextSize(ov, () => requestAnimationFrame(() => { const z = $('.ob-size', ov); if (z) z.scrollIntoView({ block: 'nearest' }); }));
   const views = $$('[data-view]', ov);
   views.forEach((b, i) => {
     b.addEventListener('click', () => { setSimple(b.dataset.view === 'simple'); paint(); setTimeout(() => b.focus(), 40); });

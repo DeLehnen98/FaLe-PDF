@@ -23,7 +23,7 @@ import { hfTexts, hfHas, isAdvanced, pageNumberOf } from './hfnorm.js';
 import { hfEl } from './pagelayout.js';
 import { createWriterExtras } from './writer-extras.js';
 import { isCustomStyle, customStyleIds, CUSTOM_BASE } from './docstyles.js';
-import { aiHidden } from '../ai/hidden.js';
+import { aiMenusHidden } from '../ai/hidden.js';
 export { decodeText };
 
 const PX = 96 / 72; // pt → css px
@@ -95,7 +95,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
       speechSupported ? { label: 'Vorlesen', icon: 'speaker', onClick: () => readAloud() } : null,
       aiCaps.summarize ? { label: 'Zusammenfassen (auf dem Gerät)', icon: 'summary', onClick: () => import('../extras/ai.js').then(m => m.aiForText(ed.innerText, 'summarize', { title: shell.name })) } : null,
       aiCaps.translate ? { label: 'Übersetzen (auf dem Gerät)', icon: 'translate', onClick: () => import('../extras/ai.js').then(m => m.aiForText(ed.innerText, 'translate', { title: shell.name })) } : null,
-      aiHidden() ? null : { label: 'KI-Schreibhilfe …', icon: 'sparkle', onClick: () => import('../ai/assist.js').then(m => m.writerAssist({ ed, range: savedRange, onChange: () => { shell.markDirty(); onInput(); } })) },
+      aiMenusHidden() ? null : { label: 'KI-Schreibhilfe …', icon: 'sparkle', onClick: () => import('../ai/assist.js').then(m => m.writerAssist({ ed, range: savedRange, onChange: () => { shell.markDirty(); onInput(); } })) },
       { label: 'Tastenkürzel', icon: 'keyboard', onClick: () => shortcutsDialog() },
       '-',
       { label: 'Teilen', icon: 'share', onClick: async () => { const b = await serialize(kind); shareBlob(b, shell.name, KINDS[kind].mime); } },

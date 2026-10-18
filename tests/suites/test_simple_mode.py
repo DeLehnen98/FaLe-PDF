@@ -10,11 +10,21 @@ For phone (390×844) and desktop (1280×860), German and English, light and dark
 - the user's own „KI ausblenden“ setting (fale-ai-hidden) is never changed
 - no page/console errors, no horizontal overflow at 360 px, no long task > 200 ms while switching
 - screenshots (start/tools in both modes) into out_simple/
+- „Schriftgröße“ (Normal / Groß / Sehr groß, fale-textsize): set in Ich › Einstellungen, applied before the first
+  render, persists; no horizontal overflow at 360 × 640 in every size × simple/full × light/dark on start, Werkzeuge,
+  Dateien, Ich, tool screens (with and without a document), the PDF viewer and the onboarding; no long task
+  > 200 ms while switching; the PDF page canvas stays sharp and a signature lands where it was tapped (Sehr groß)
+- plain words in simple mode (tool titles/intros, „PDF verkleinern“ choices, where the file is after saving,
+  download hint), labelled back button, simple „Neu erstellen“ menu, no floating „+“
+- AI menu entries (viewer „KI-Assistent“, writer „KI-Schreibhilfe“) hidden in simple mode, back in normal mode,
+  fale-ai-hidden untouched
 
 Run: python3 test_simple_mode.py   (server: node tests/suites/sec/csp_server.mjs 9431 /home/claude/FalePDF)
      SIMPLE_URL=http://127.0.0.1:9431/ (default)
+     python3 test_simple_mode.py textsize   – only the text-size / plain-words / AI part
 """
 import json, os, shutil, sys, time, traceback
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from playwright.sync_api import sync_playwright
 
 SP = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +32,8 @@ OUT = os.path.join(SP, 'out_simple')
 shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(OUT, exist_ok=True)
 URL = os.environ.get('SIMPLE_URL', 'http://127.0.0.1:9431/')
+TD = '/home/claude/FalePDF/tests/base/testdata'
+ONLY = sys.argv[1] if len(sys.argv) > 1 else 'all'
 
 results = []
 
@@ -80,6 +92,21 @@ JS_OVERFLOW = """() => {
     if (!(el.offsetWidth || el.offsetHeight)) continue;
     const r = el.getBoundingClientRect();
     if (r.width && r.right > vw + 1 && !clipped(el)) out.push((el.className && el.className.baseVal === undefined ? el.className : el.tagName) + ' ' + Math.round(r.right));
+    if (out.length > 6) break;
+  }
+  const doc = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - vw;
+  if (doc > 0) out.push('document +' + doc);
+  return out;
+}"""
+
+# elements anywhere on the page (tool screen, viewer, onboarding …) that stick out to the right
+JS_OVERFLOW_ALL = """() => {
+  const vw = innerWidth, out = [];
+  const clipped = el => { for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) { const o = getComputedStyle(p).overflowX; if (o === 'auto' || o === 'scroll' || o === 'hidden' || o === 'clip') { if (p.getBoundingClientRect().right <= vw + 1) return true; } } return false; };
+  for (const el of document.body.querySelectorAll('*')) {
+    if (!(el.offsetWidth || el.offsetHeight) || el.closest('[hidden]')) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width && r.right > vw + 1 && !clipped(el)) out.push((typeof el.className === 'string' ? el.className : el.tagName) + ' ' + Math.round(r.right) + ' ' + (el.textContent || '').trim().slice(0, 24));
     if (out.length > 6) break;
   }
   const doc = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - vw;
@@ -391,13 +418,334 @@ def run_combo(b, vw, vh, lang, theme):
     ctx.close()
 
 
+# =====================================================================================================
+# „Schriftgröße“, plain words, AI menus (js/simple.js, js/ai/hidden.js)
+# =====================================================================================================
+TS_INIT = """
+(() => {
+  try {  // only on the first load of the tab – settings changed by the test survive a reload
+    if (!sessionStorage.getItem('__tsinit')) {
+      sessionStorage.setItem('__tsinit', '1');
+      localStorage.setItem('fale-onboarded', '1');
+      localStorage.setItem('fale-lang', %(lang)s);
+      localStorage.setItem('fale-theme', %(theme)s);
+      if (%(simple)s) localStorage.setItem('fale-simple', '1'); else localStorage.removeItem('fale-simple');
+      if (%(ts)s !== 'normal') localStorage.setItem('fale-textsize', %(ts)s); else localStorage.removeItem('fale-textsize');
+    }
+  } catch (e) {}
+  window.__lt = [];
+  try { new PerformanceObserver(l => { for (const e of l.getEntries()) window.__lt.push(Math.round(e.duration)); }).observe({ type: 'longtask', buffered: true }); } catch (e) {}
+  // class list of <html> at the moment the start view gets its first content (= before the first render)
+  window.__tsFirst = null;
+  new MutationObserver((m, o) => { const v = document.getElementById('view-start'); if (v && v.childElementCount) { window.__tsFirst = document.documentElement.className; o.disconnect(); } })
+    .observe(document, { childList: true, subtree: true });
+})();
+"""
+TS_FS = {'normal': 16, 'l': 18.4, 'xl': 20.8}
+
+
+def ts_context(b, lang='de', theme='light', simple=True, ts='normal', vw=360, vh=640):
+    ctx = b.new_context(viewport={'width': vw, 'height': vh}, locale='de-DE' if lang == 'de' else 'en-US', color_scheme=theme,
+                        device_scale_factor=2, has_touch=True, accept_downloads=True)
+    init = TS_INIT % {'lang': json.dumps(lang), 'theme': json.dumps(theme), 'simple': 'true' if simple else 'false', 'ts': json.dumps(ts)}
+    ctx.add_init_script(init)
+    page = ctx.new_page()
+    errors = []
+    page.on('pageerror', lambda e: errors.append(f'[pageerror] {e}'))
+    page.on('console', lambda m: m.type == 'error' and errors.append(f'[console] {m.text}'))
+    page.goto(URL + '#/start')
+    poll(page, "document.documentElement.classList.contains('ready') && !!document.querySelector('#view-start .tabs')", 15000)
+    page.wait_for_timeout(500)
+    return ctx, page, errors
+
+
+def import_pdf(page, name):
+    page.set_input_files('#pdf-input', [os.path.join(TD, name)])
+    poll(page, "!!document.querySelector('#viewer:not([hidden]) canvas, #viewer:not([hidden]) .page')", 10000)
+    page.wait_for_timeout(1200)
+    return page.evaluate(f"import('./js/db.js').then(m => m.listDocs()).then(d => (d.find(x => x.name === {json.dumps(name)}) || d[0]).id)")
+
+
+def menu_labels(page):
+    poll(page, "document.querySelectorAll('.menu-layer .menu-item').length > 0", 3000)
+    return page.evaluate("[...document.querySelectorAll('.menu-layer .menu-item')].map(e => e.textContent.trim())")
+
+
+def ts_settings(b):
+    tag = 'textsize settings'
+    ctx, page, errors = ts_context(b, simple=False, vw=390, vh=844)
+    go(page, '#/einstellungen', '[data-textsize-row]')
+    btns = page.locator('[data-textsize-row] [data-ts-opt]')
+    check(f'{tag}: three choices', btns.count() == 3 and page.locator('[data-textsize-row] [data-ts-opt="normal"]').get_attribute('aria-pressed') == 'true')
+    small = page.evaluate("[...document.querySelectorAll('[data-textsize-row] [data-ts-opt]')].map(e => e.getBoundingClientRect()).filter(r => r.width < 48 || r.height < 48).length")
+    check(f'{tag}: buttons ≥ 48 px', small == 0)
+    check(f'{tag}: normal root size 16 px', page.evaluate("parseFloat(getComputedStyle(document.documentElement).fontSize)") == 16)
+    for ts, cls in [('l', 'ts-l'), ('xl', 'ts-xl')]:
+        lt_reset(page)
+        page.click(f'[data-textsize-row] [data-ts-opt="{ts}"]')
+        ok = poll(page, f"document.documentElement.classList.contains('{cls}')", 2000)
+        fs = page.evaluate("parseFloat(getComputedStyle(document.documentElement).fontSize)")
+        check(f'{tag}: {ts} applied at once ({fs} px)', ok and abs(fs - TS_FS[ts]) < 0.2 and page.evaluate("localStorage.getItem('fale-textsize')") == ts)
+        check(f'{tag}: {ts} no long task > 200 ms', lt_max(page) <= 200, str(page.evaluate('window.__lt')))
+        check(f'{tag}: {ts} pressed state', page.locator(f'[data-textsize-row] [data-ts-opt="{ts}"]').get_attribute('aria-pressed') == 'true')
+    page.screenshot(path=os.path.join(OUT, 'ts_settings_xl.png'))
+    page.reload()
+    poll(page, "document.documentElement.classList.contains('ready')", 15000)
+    page.wait_for_timeout(500)
+    check(f'{tag}: persists after reload', page.evaluate("document.documentElement.classList.contains('ts-xl')"))
+    go(page, '#/start', '#view-start .tabs')
+    first = page.evaluate('window.__tsFirst')
+    check(f'{tag}: applied before the first render', first is not None and 'ts-xl' in first, str(first))
+    # switching on the biggest view (all tools, simple mode expanded) stays smooth
+    page.evaluate("import('./js/simple.js').then(m => m.setSimple(true))")
+    go(page, '#/werkzeuge', '[data-simple-all]')
+    page.click('[data-simple-all]')
+    page.wait_for_timeout(400)
+    for ts in ['normal', 'xl', 'l']:
+        lt_reset(page)
+        page.evaluate(f"import('./js/simple.js').then(m => m.setTextSize('{ts}'))")
+        page.wait_for_timeout(150)
+        check(f'{tag}: Werkzeuge (all) → {ts} without long task > 200 ms', lt_max(page) <= 200 and responsive(page), str(page.evaluate('window.__lt')))
+    page.click('[data-simple-all]')
+    page.evaluate("import('./js/simple.js').then(m => m.setSimple(false))")
+    go(page, '#/einstellungen', '[data-textsize-row]')
+    page.click('[data-textsize-row] [data-ts-opt="normal"]')
+    check(f'{tag}: back to normal', poll(page, "!document.documentElement.classList.contains('ts-l') && !document.documentElement.classList.contains('ts-xl')", 2000)
+          and page.evaluate("localStorage.getItem('fale-textsize')") is None)
+    check(f'{tag}: no page/console errors', not errors, json.dumps(errors)[:400])
+    ctx.close()
+
+
+TS_ROUTES = ['#/start', '#/werkzeuge', '#/dateien', '#/einstellungen', '#/werkzeug/komprimieren', '#/werkzeug/zusammenfuegen',
+             '#/werkzeug/bilder', '#/werkzeug/scannen', '#/werkzeug/word-pdf']
+TS_DOC_ROUTES = ['#/werkzeug/unterschreiben?doc={id}', '#/werkzeug/komprimieren?doc={id}', '#/werkzeug/pdf-word?doc={id}']
+
+
+def ts_matrix(b):
+    for theme in ['light', 'dark']:
+        for simple in [True, False]:
+            for ts in ['normal', 'l', 'xl']:
+                tag = f"360 {theme} {'simple' if simple else 'full'} {ts}"
+                ctx, page, errors = ts_context(b, theme=theme, simple=simple, ts=ts)
+
+                def run():
+                    fs = page.evaluate("parseFloat(getComputedStyle(document.documentElement).fontSize)")
+                    check(f'{tag}: root size', abs(fs - TS_FS[ts]) < 0.2, str(fs))
+                    over = {}
+                    doc = import_pdf(page, 'formular.pdf')
+                    o = page.evaluate(JS_OVERFLOW_ALL)
+                    if o:
+                        over['viewer'] = o
+                    shot_it = theme == 'light' and ts == 'xl'
+                    if shot_it:
+                        page.screenshot(path=os.path.join(OUT, f"ts_{'simple' if simple else 'full'}_{ts}_viewer.png"))
+                    for r in TS_ROUTES + [x.format(id=doc) for x in TS_DOC_ROUTES]:
+                        page.wait_for_timeout(200)
+                        page.evaluate(f"location.hash = {json.dumps(r)}")
+                        page.wait_for_timeout(1300)
+                        o = page.evaluate(JS_OVERFLOW_ALL)
+                        if o:
+                            over[r] = o
+                        if shot_it:
+                            page.screenshot(path=os.path.join(OUT, f"ts_{'simple' if simple else 'full'}_{ts}_{r.split('?')[0].replace('#/', '').replace('/', '_')}{'_doc' if '?doc' in r else ''}.png"))
+                    # onboarding step 3 (view + text size)
+                    go(page, '#/start', '#view-start .tabs')
+                    page.evaluate("import('./js/extras/onboarding.js').then(m => m.showOnboarding())")
+                    page.wait_for_selector('.onboard [data-next]')
+                    page.click('.onboard [data-next]')
+                    page.click('.onboard [data-next]')
+                    page.wait_for_timeout(400)
+                    o = page.evaluate(JS_OVERFLOW_ALL)
+                    if o:
+                        over['onboarding'] = o
+                    nb = page.locator('.onboard [data-next]').bounding_box()
+                    check(f'{tag}: onboarding buttons stay on screen', nb and nb['y'] + nb['height'] <= 640 and nb['height'] >= 44, json.dumps(nb))
+                    page.evaluate("(() => { const c = document.querySelector('.ob-card'); c.scrollTop = c.scrollHeight; })()")  # the user scrolls down
+                    page.wait_for_timeout(200)
+                    sz = page.locator('.ob-size [data-ts-opt="xl"]').bounding_box()
+                    check(f'{tag}: onboarding size choice reachable', sz and sz['height'] >= 44 and sz['y'] + sz['height'] <= nb['y'] + 2, json.dumps(sz))
+                    if theme == 'light':
+                        page.screenshot(path=os.path.join(OUT, f"ts_{'simple' if simple else 'full'}_{ts}_onboarding.png"))
+                    page.click('.onboard [data-skip]')
+                    page.wait_for_timeout(300)
+                    check(f'{tag}: no horizontal overflow (13 screens + viewer + onboarding)', not over, json.dumps(over)[:500])
+                    check(f'{tag}: no page/console errors', not errors, json.dumps(errors)[:400])
+                step(tag, run)
+                ctx.close()
+
+
+def sign_at(b, ts):
+    """Place a signature at a tapped point; returns (canvas ratio, page css width, item centre − tap)."""
+    ctx, page, errors = ts_context(b, simple=True, ts=ts)
+    doc = import_pdf(page, 'formular.pdf')
+    go(page, f'#/werkzeug/unterschreiben?doc={doc}')
+    page.wait_for_selector('.sign-page canvas', timeout=15000)
+    page.wait_for_timeout(600)
+    # the form panel (bottom sheet on phones) must not cover the page: close it when it is open
+    if page.evaluate("(() => { const b = document.querySelector('.form-panel [data-close]'); if (!b || !b.offsetWidth) return false; const r = b.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; })()"):
+        page.locator('.form-panel [data-close]').tap()
+        page.wait_for_timeout(300)
+    canvas = page.evaluate("(() => { const c = document.querySelector('.sign-page canvas'); const r = c.getBoundingClientRect(); return [c.width / r.width, r.width]; })()")
+    page.locator('[data-mode="sign"]').tap()
+    page.wait_for_selector('dialog .sig-pad')
+    pad = page.locator('dialog .sig-pad').bounding_box()
+    page.mouse.move(pad['x'] + 20, pad['y'] + pad['height'] * 0.6)
+    page.mouse.down()
+    for i in range(1, 30):
+        page.mouse.move(pad['x'] + 20 + i * 8, pad['y'] + pad['height'] * 0.6 - 30 * ((i % 6) / 6.0))
+    page.mouse.up()
+    page.locator('dialog .btn-primary').tap()
+    page.wait_for_timeout(300)
+    bx = page.locator('.sign-page').first.bounding_box()
+    tx, ty = bx['x'] + bx['width'] * 0.5, max(bx['y'], 120) + 60
+    page.mouse.click(tx, ty)
+    page.wait_for_selector('.s-item.s-image', timeout=5000)
+    page.wait_for_timeout(300)
+    ib = page.locator('.s-item.s-image').bounding_box()
+    off = (ib['x'] + ib['width'] / 2 - tx, ib['y'] + ib['height'] / 2 - ty)
+    rel = ((tx - bx['x']) / bx['width'], (ty - bx['y']) / bx['height'])
+    page.screenshot(path=os.path.join(OUT, f'ts_sign_{ts}.png'))
+    page.locator('[data-save]').tap()
+    page.wait_for_selector('.result-card', timeout=20000)
+    page.wait_for_timeout(500)
+    where = page.evaluate("(() => { const n = document.querySelector('.result-card .simple-where'); return n && n.offsetHeight ? n.textContent : ''; })()")
+    page.screenshot(path=os.path.join(OUT, f'ts_sign_{ts}_saved.png'))
+    ctx.close()
+    return canvas, off, rel, where, errors
+
+
+def ts_signature(b):
+    tag = 'signature'
+    n_canvas, n_off, n_rel, _, e1 = sign_at(b, 'normal')
+    x_canvas, x_off, x_rel, where, e2 = sign_at(b, 'xl')
+    check(f'{tag}: page canvas equally sharp in Sehr groß', abs(n_canvas[0] - x_canvas[0]) < 0.02 and x_canvas[0] >= 1.9, f'{n_canvas} / {x_canvas}')
+    check(f'{tag}: page shown at the same width in Sehr groß', abs(n_canvas[1] - x_canvas[1]) < 2, f'{n_canvas[1]} / {x_canvas[1]}')
+    check(f'{tag}: signature centred on the tapped point (normal)', abs(n_off[0]) < 3 and abs(n_off[1]) < 3, str(n_off))
+    check(f'{tag}: signature centred on the tapped point (Sehr groß)', abs(x_off[0]) < 3 and abs(x_off[1]) < 3, str(x_off))
+    check(f'{tag}: saved – result says where the file is', 'Dateien' in where, where[:120])
+    check(f'{tag}: no page/console errors', not e1 and not e2, json.dumps(e1 + e2)[:400])
+
+
+def ts_words_ai(b):
+    for lang in ['de', 'en']:
+        tag = f'plain words {lang}'
+        ctx, page, errors = ts_context(b, lang=lang, simple=True, ts='l', vw=390, vh=844)
+        T = (lambda de, en: de if lang == 'de' else en)
+        tr = lambda s: page.evaluate(f"import('./js/i18n/index.js').then(m => m.t({json.dumps(s)}))")
+
+        def run():
+            check(f'{tag}: no floating „+“ in simple mode', page.evaluate(JS_VIS, '.fab') == 0)
+            page.click('[data-simple="neu"]')
+            labels = menu_labels(page)
+            check(f'{tag}: „Neu erstellen“ – 4 plain entries', len(labels) == 4 and labels[0] == tr('Text-Dokument (z. B. ein Brief)'), json.dumps(labels, ensure_ascii=False))
+            page.keyboard.press('Escape')
+            page.wait_for_timeout(200)
+            page.click('[data-simple="umwandeln"]')
+            labels = menu_labels(page)
+            check(f'{tag}: convert menu in plain words', labels[1] == tr('Word-Dokument zu PDF'), json.dumps(labels, ensure_ascii=False))
+            page.keyboard.press('Escape')
+            doc = import_pdf(page, 'unkomprimiert.pdf')
+            # viewer: no AI entry in the menu
+            page.click('#viewer [data-v="more"]')
+            labels = menu_labels(page)
+            check(f'{tag}: viewer menu without „KI-Assistent“', labels and not any(T('KI-Assistent', 'AI assistant') in l for l in labels), json.dumps(labels, ensure_ascii=False)[:300])
+            page.keyboard.press('Escape')
+            # PDF verkleinern
+            go(page, '#/werkzeug/komprimieren', '#tool-screen .card.intro')
+            poll(page, f"document.querySelector('#tool-screen .screen-title').textContent === {json.dumps(tr('PDF verkleinern'))}", 3000)
+            check(f'{tag}: title „PDF verkleinern“', page.inner_text('#tool-screen .screen-title').strip() == tr('PDF verkleinern'), page.inner_text('#tool-screen .screen-title'))
+            intro = page.inner_text('#tool-screen .card.intro p')
+            check(f'{tag}: chooser in plain words', intro.strip() == tr('Tippe unten auf eine deiner Dateien – oder hol eine PDF mit „Vom Gerät öffnen“ von deinem Gerät.'), intro[:100])
+            bb = page.locator('#tool-screen [data-back]').bounding_box()
+            after = page.evaluate("getComputedStyle(document.querySelector('#tool-screen [data-back]'), '::after').content")
+            check(f'{tag}: back button with a word, ≥ 48 px', bb['width'] >= 80 and bb['height'] >= 48 and T('Zurück', 'Back') in after, f'{bb} {after}')
+            small = page.evaluate("[...document.querySelectorAll('#tool-screen .screen-body .btn, #tool-screen .screen-body .doc-open')].filter(e => e.offsetHeight && e.getBoundingClientRect().height < 48).map(e => e.textContent.trim().slice(0, 20))")
+            check(f'{tag}: first-screen buttons ≥ 48 px', not small, json.dumps(small, ensure_ascii=False))
+            page.screenshot(path=os.path.join(OUT, f'words_{lang}_compress_chooser.png'))
+            page.locator('#tool-screen .doc-open').first.click()
+            page.wait_for_selector('#tool-screen .radio-card')
+            page.wait_for_timeout(400)
+            cards = page.evaluate("[...document.querySelectorAll('#tool-screen .radio-card strong')].map(e => e.textContent.trim())")
+            check(f'{tag}: choices „Etwas kleiner“ / „Viel kleiner“', cards == [tr('Etwas kleiner'), tr('Viel kleiner')], json.dumps(cards, ensure_ascii=False))
+            check(f'{tag}: run button in plain words', tr('Jetzt verkleinern') in page.inner_text('#tool-screen [data-run]'))
+            page.locator('#tool-screen .radio-card').nth(1).click()
+            page.wait_for_timeout(200)
+            check(f'{tag}: quality / dpi hidden in simple mode', page.evaluate(JS_VIS, '#tool-screen [data-strong] .field') == 0 and page.evaluate(JS_VIS, '#tool-screen [data-strong] .notice') == 1)
+            page.locator('#tool-screen .radio-card').nth(0).click()
+            page.screenshot(path=os.path.join(OUT, f'words_{lang}_compress.png'))
+            page.click('#tool-screen [data-run]')
+            page.wait_for_selector('#tool-screen .result-card', timeout=20000)
+            page.wait_for_timeout(400)
+            where = page.inner_text('#tool-screen .result-card .simple-where')
+            check(f'{tag}: result says where the file is', T('„Dateien“', '“Files”') in where and 'Downloads' in where, where[:160])
+            small = page.evaluate("[...document.querySelectorAll('#tool-screen .result-card .btn')].filter(e => e.getBoundingClientRect().height < 48).length")
+            check(f'{tag}: result buttons ≥ 48 px', small == 0)
+            with page.expect_download(timeout=8000):
+                page.click('#tool-screen .result-card [data-r="dl"]')
+            ok = poll(page, f"[...document.querySelectorAll('#toasts .toast')].some(t => t.textContent.includes({json.dumps(T('Ordner „Downloads“', '“Downloads” folder'))}))", 3000)
+            check(f'{tag}: download → toast names the Downloads folder', ok, page.evaluate("[...document.querySelectorAll('#toasts .toast')].map(t => t.textContent)"))
+            page.screenshot(path=os.path.join(OUT, f'words_{lang}_compress_done.png'))
+            # leave the tool via the labelled back button
+            page.click('#tool-screen [data-back]')
+            check(f'{tag}: back closes the tool', poll(page, "document.querySelector('#tool-screen').hidden", 4000))
+            if lang == 'de':
+                # writer: no AI entry in simple mode
+                go(page, '#/neu/dokument', '.doc-page')
+                page.wait_for_selector('.doc-page')
+                page.click('[data-office-more]')
+                labels = menu_labels(page)
+                check(f'{tag}: writer menu without „KI-Schreibhilfe“', labels and not any('KI-Schreibhilfe' in l for l in labels), json.dumps(labels, ensure_ascii=False)[:300])
+                page.keyboard.press('Escape')
+                check(f'{tag}: user AI setting untouched', page.evaluate("localStorage.getItem('fale-ai-hidden')") is None)
+            check(f'{tag}: no page/console errors', not errors, json.dumps(errors)[:400])
+        step(tag, run)
+        ctx.close()
+
+    # normal mode: the AI entries and the original names are back
+    tag = 'normal mode'
+    ctx, page, errors = ts_context(b, simple=False, ts='normal', vw=390, vh=844)
+
+    def run2():
+        doc = import_pdf(page, 'unkomprimiert.pdf')
+        page.click('#viewer [data-v="more"]')
+        labels = menu_labels(page)
+        check(f'{tag}: viewer menu offers „KI-Assistent“', any('KI-Assistent' in l for l in labels), json.dumps(labels, ensure_ascii=False)[:300])
+        page.keyboard.press('Escape')
+        go(page, f'#/werkzeug/komprimieren?doc={doc}', '#tool-screen .radio-card')
+        page.wait_for_timeout(500)
+        check(f'{tag}: original title „Komprimieren“', page.inner_text('#tool-screen .screen-title').strip() == 'Komprimieren')
+        check(f'{tag}: original choices', page.evaluate("[...document.querySelectorAll('#tool-screen .radio-card strong')].map(e => e.textContent.trim())") == ['Verlustfrei', 'Stark'])
+        check(f'{tag}: back button icon only', page.locator('#tool-screen [data-back]').bounding_box()['width'] <= 48)
+        page.click('#tool-screen [data-back]')
+        poll(page, "document.querySelector('#tool-screen').hidden", 4000)
+        go(page, '#/neu/dokument', '.doc-page')
+        page.wait_for_selector('.doc-page')
+        page.click('[data-office-more]')
+        labels = menu_labels(page)
+        check(f'{tag}: writer menu offers „KI-Schreibhilfe“', any('KI-Schreibhilfe' in l for l in labels), json.dumps(labels, ensure_ascii=False)[:300])
+        page.keyboard.press('Escape')
+        check(f'{tag}: no page/console errors', not errors, json.dumps(errors)[:400])
+    step(tag, run2)
+    ctx.close()
+
+
+def run_textsize(b):
+    step('textsize settings', lambda: ts_settings(b))
+    step('plain words + AI', lambda: ts_words_ai(b))
+    step('signature', lambda: ts_signature(b))
+    step('textsize matrix', lambda: ts_matrix(b))
+
+
 def main():
     with sync_playwright() as p:
         b = p.chromium.launch()
-        for vw, vh in [(390, 844), (1280, 860)]:
-            for lang in ['de', 'en']:
-                for theme in ['light', 'dark']:
-                    step(f'combo {vw} {lang} {theme}', lambda: run_combo(b, vw, vh, lang, theme))
+        if ONLY in ('all', 'mode'):
+            for vw, vh in [(390, 844), (1280, 860)]:
+                for lang in ['de', 'en']:
+                    for theme in ['light', 'dark']:
+                        step(f'combo {vw} {lang} {theme}', lambda: run_combo(b, vw, vh, lang, theme))
+        if ONLY in ('all', 'textsize'):
+            run_textsize(b)
         b.close()
     fails = [r for r in results if not r[1]]
     print(f'\n{len(results) - len(fails)}/{len(results)} passed')

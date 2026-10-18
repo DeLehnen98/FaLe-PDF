@@ -7,7 +7,7 @@
 - de -> en -> de switching through Ich › Einstellungen
 - screenshots (phone + desktop) into out_i18n/
 
-Run: python3 test_i18n.py   (server: python3 -m http.server 8798 --bind 127.0.0.1 in /home/claude/FalePDF)
+Run: python3 test_i18n.py   (server: python3 -m http.server 8798 --bind 127.0.0.1 in /home/claude/FalePDF; other URL via I18N_URL)
 """
 import json, os, re, sys, shutil, subprocess, traceback
 from playwright.sync_api import sync_playwright
@@ -20,7 +20,7 @@ OUT = os.path.join(SP, 'out_i18n')
 if (sys.argv[1] if len(sys.argv) > 1 else 'all') == 'all':
     shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(OUT, exist_ok=True)
-URL = 'http://127.0.0.1:8798/'
+URL = os.environ.get('I18N_URL', 'http://127.0.0.1:8798/')
 ONLY = sys.argv[1] if len(sys.argv) > 1 else 'all'
 
 results, problems, coverage = [], [], {'items': 0, 'german': 0, 'screens': 0}
@@ -310,10 +310,11 @@ def run_english_phone(p):
         page.evaluate("localStorage.removeItem('fale-onboarded'); localStorage.setItem('fale-onboarding-force', '1'); location.hash = '#/start'")
         page.reload()
         page.wait_for_selector('.onboard', timeout=8000)
-        for i in range(3):
+        n = page.locator('.onboard .ob-step').count()  # 4 steps since the view / text size choice
+        for i in range(n):
             scan(page, f'phone onboarding {i}')
             shot(page, f'phone_onboarding_{i}')
-            if i < 2:
+            if i < n - 1:
                 page.locator('.onboard [data-next]').click()
                 page.wait_for_timeout(300)
         check('onboarding button English', page.locator('.onboard [data-next]').inner_text().strip() == 'Let’s go', page.locator('.onboard [data-next]').inner_text())

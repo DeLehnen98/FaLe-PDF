@@ -1,5 +1,6 @@
 """E2E tests for the FaLe "extras": spreadsheet charts & tools, writer TOC/comments/header-footer, outline→deck,
-letter generators + profile, Fristen, Tresor, organisation (folders/tags/trash/duplicates), stats, onboarding, AI wiring.
+letter generators + profile, Fristen, Tresor, organisation (folders/tags/trash/duplicates), stats, onboarding (incl. view and
+text size choice), AI wiring.
 Server: python3 -m http.server 9201 --bind 127.0.0.1 (in /home/claude/FalePDF)."""
 import os, sys, json, base64, shutil, subprocess, traceback, zipfile, re, datetime
 from playwright.sync_api import sync_playwright
@@ -921,6 +922,19 @@ def onboarding_and_ai(p):
             page.locator('.ob-view[data-view="simple"]').press('ArrowDown')
             check(f'{label}: arrow key selects "Alle Funktionen"', page.evaluate("!document.documentElement.classList.contains('simple') && localStorage.getItem('fale-simple') === null"))
             page.locator('.ob-view[data-view="simple"]').click()
+            # same step: text size (Normal / Groß / Sehr groß) – applied at once, stored on the device
+            sizes = page.locator('.ob-step:not([hidden]) .ob-size [data-ts-opt]')
+            check(f'{label}: text size choice under the views', sizes.count() == 3
+                  and page.locator('.ob-size [data-ts-opt="normal"]').get_attribute('aria-pressed') == 'true')
+            page.locator('.ob-size [data-ts-opt="xl"]').click()
+            page.wait_for_timeout(300)
+            check(f'{label}: "Sehr groß" applies at once', page.evaluate("document.documentElement.classList.contains('ts-xl') && localStorage.getItem('fale-textsize') === 'xl'")
+                  and page.locator('.ob-size [data-ts-opt="xl"]').get_attribute('aria-pressed') == 'true')
+            nb, sz = page.locator('[data-next]').bounding_box(), page.locator('.ob-size [data-ts-opt="xl"]').bounding_box()
+            check(f'{label}: buttons and size choice stay on screen', nb['y'] + nb['height'] <= vp['height'] and sz['y'] >= 0 and sz['y'] + sz['height'] <= nb['y'] + 2, f'{nb} {sz}')
+            shot(page, f'{label}_onboarding_3_textsize_xl')
+            page.locator('.ob-size [data-ts-opt="l"]').click()
+            check(f'{label}: "Groß" applies at once', page.evaluate("document.documentElement.classList.contains('ts-l') && !document.documentElement.classList.contains('ts-xl') && localStorage.getItem('fale-textsize') === 'l'"))
             page.locator('[data-next]').click()
             page.locator('.ob-theme [data-theme-opt="dark"]').click()
             check(f'{label}: theme choice applies', page.evaluate("document.documentElement.dataset.theme") == 'dark')
@@ -935,7 +949,8 @@ def onboarding_and_ai(p):
             check(f'{label}: shown only once', page.locator('.onboard').count() == 0)
             check(f'{label}: chosen simple view is active, no extra hint card', page.locator('html.simple').count() == 1
                   and page.evaluate("localStorage.getItem('fale-simple-hint')") == 'hidden')
-            page.evaluate("import('./js/simple.js').then(m => m.setSimple(false))")
+            check(f'{label}: chosen text size still active after reload', page.locator('html.ts-l').count() == 1)
+            page.evaluate("import('./js/simple.js').then(m => { m.setSimple(false); m.setTextSize('normal'); })")
         step(f'{label} onboarding', ob)
         ctx.close()
 

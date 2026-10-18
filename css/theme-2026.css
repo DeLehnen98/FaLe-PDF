@@ -330,3 +330,79 @@ html.simple .simple-sec .badge { display: none; }
 /* Dateien on phones: the column bar must not wrap – a wrapping column flex line grows to the width of the
    chip strip and pushed the sort menu off-screen */
 @media (max-width: 720px) { .files-bar { flex-wrap: nowrap; } }
+
+/* ---------- Schriftgröße (js/simple.js: html.ts-l / html.ts-xl, per device) ----------
+   Scales the root font size: everything sized in rem grows (shell, lists, dialogs, menus, the shared parts of the
+   tool screens). Widths stay in px – the layout re-wraps instead of growing sideways. The PDF pages (canvas, text
+   and annotation layers, signature placement) are sized in px by PDF.js and are not affected. */
+html.ts-l { font-size: 115%; --ts: 1.15; }
+html.ts-xl { font-size: 130%; --ts: 1.3; }
+/* a few shell pieces from the px-based sheets that people read a lot */
+html:is(.ts-l, .ts-xl) :is(.files-bar .chip, .cloud-card p, .me-card > div > span, .acct-me-text > span, .month-box .ms-l) { font-size: var(--fs-small); }
+/* long German words: break instead of pushing the layout wider */
+html:is(.ts-l, .ts-xl) :is(.s-tile-text strong, .tool-card h3, .settings-row .label strong, .bnav span, .ob-view-t b, .screen-head h1) { overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
+html.ts-xl .bnav { font-size: .6875rem; }
+html.ts-xl .bnav span { letter-spacing: -0.01em; }
+
+/* the choice itself: three buttons with a sample letter in each size */
+/* each button: the sample letter above its name, so all three line up even when „Sehr groß“ wraps */
+.ts-seg { flex-wrap: nowrap; border-radius: 18px; }
+.ts-seg button { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 58px; padding: 6px 16px; border-radius: 14px; line-height: 1.15; text-align: center; }
+.ts-seg .ts-a { display: flex; align-items: flex-end; height: 21px; }
+.ts-seg button[aria-pressed="true"] { background: var(--surface); color: var(--primary-strong); box-shadow: inset 0 0 0 2px var(--primary); }
+.ts-seg button[aria-pressed="true"] .ts-a { color: var(--primary-strong); }
+.ts-seg .ts-a { font-family: var(--font-display); font-weight: 700; line-height: 1; color: var(--text); }
+.ts-a-normal { font-size: 14px; }
+.ts-a-l { font-size: 17px; }
+.ts-a-xl { font-size: 21px; }
+.ts-row .ts-seg { flex: 0 1 auto; }
+@media (max-width: 600px) {
+  .ts-row .ts-seg { width: 100%; }
+  .ts-row .ts-seg button { flex: 1 1 0; min-width: 0; padding: 6px 4px; white-space: normal; }
+}
+
+/* ---------- simple mode: clarity for people who rarely use apps ---------- */
+/* the floating „+“ covers tiles and list entries – „Neu erstellen“ and „Datei öffnen“ are tiles already */
+html.simple .fab { display: none !important; }
+/* tool screens: a back button with a word on it, titles wrap instead of being cut off */
+html.simple #tool-screen .screen-head:has(.screen-extra:empty) [data-back] { width: auto; min-width: 48px; height: 48px; padding: 0 14px 0 8px; gap: 4px; border-radius: var(--radius-pill); background: var(--surface-2); font-weight: 650; }
+html.simple #tool-screen .screen-head:has(.screen-extra:empty) [data-back]::after { content: attr(aria-label); }
+html.simple #tool-screen .screen-head .grow :is(h1, .sub) { white-space: normal; overflow: visible; text-overflow: clip; }
+html.simple #tool-screen .screen-head .icon-btn { min-width: 48px; height: 48px; }
+html.simple #tool-screen .pt-pro { display: none; }
+/* „PDF verkleinern“: the two choices are enough – quality and dpi keep their defaults */
+html.simple #tool-screen .option-grid ~ [data-strong] .field { display: none; }
+/* results: big buttons and a line that says where the file is now */
+html.simple .result-card .btn { min-height: 48px; }
+.simple-where { flex: 1 1 100%; margin: 2px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--surface); color: var(--text); font-size: var(--fs-small); line-height: 1.45; box-shadow: inset 0 0 0 1px var(--border); }
+html:not(.simple) .simple-where { display: none; }
+/* menus and the tool screens' main buttons: at least 48 px */
+html.simple .menu-item { min-height: 52px; }
+html.simple #tool-screen .screen-body .btn:not(.btn-sm) { min-height: 48px; }
+html.simple #tool-screen .doc-open { min-height: 64px; }
+/* large text on phones: one tile per row (icon left, words right) – easier to read than two narrow columns */
+@media (max-width: 600px) {
+  html.simple.ts-xl .s-tiles { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  html.simple.ts-xl .s-tile { flex-direction: row; align-items: center; min-height: 80px; padding: 14px 16px; }
+  html:is(.ts-l, .ts-xl) .hero-art { display: none; }
+  html.simple:is(.ts-l, .ts-xl) .hero h1 { font-size: 2rem; }
+  html.simple:is(.ts-l, .ts-xl) .hero-badge { display: none; }
+  html.simple:is(.ts-l, .ts-xl) .hero { padding-top: 18px; padding-bottom: 18px; }
+}
+/* viewer: the page counter never breaks into two lines; in simple mode and with large text the file name gets two
+   lines instead of „for…“ */
+.page-ind > span { white-space: nowrap; }
+html:is(.simple, .ts-l, .ts-xl) .viewer .v-title strong { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
+@media (max-width: 400px) {
+  .viewer .vbar-bottom { gap: 2px; padding-left: 4px; padding-right: 4px; }
+  .viewer .vbar-bottom .v-sep { margin: 0 2px; }
+  .viewer .vbar-bottom .zoom-val { min-width: 56px; }
+}
+@media (max-width: 600px) {
+  html.simple .viewer [data-v="mark"] { display: none; }
+  html.ts-xl .page-ind input { width: 46px; }
+}
+/* „Ausfüllen & unterschreiben“: every tool visible at once (no hidden sideways scrolling), the hint on top in full */
+html.simple #tool-screen .sign-tools { flex-wrap: wrap; overflow-x: visible; gap: 6px 8px; }
+html.simple #tool-screen .sign-tools .sign-hint { order: -1; flex: 1 1 100%; white-space: normal; padding: 0 2px 2px; color: var(--text); }
+html.simple #tool-screen .sign-tools .btn { min-height: 48px; }

@@ -16,7 +16,7 @@ import { chartSvg, chartData, newChartId } from './chart.js';
 import { planFill, parseTsv, toTsv, parseHtmlTable } from './sheet-ops.js';
 import * as D from './sheet-dialogs.js';
 import { FONTS, fontCss } from './fonts.js';
-import { aiHidden } from '../ai/hidden.js';
+import { aiMenusHidden } from '../ai/hidden.js';
 
 const HW = 46, HH = 26;
 const ROW_PX_PER_PT = 28 / 15;
@@ -67,7 +67,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
       { label: 'Diagramm einfügen', icon: 'chart', onClick: () => insertChart() },
       { label: 'Pivot-Tabelle …', icon: 'pivot', onClick: () => D.pivotDialog(api) },
       { label: 'Namens-Manager …', icon: 'names', onClick: () => D.nameManagerDialog(api) },
-      aiHidden() ? null : { label: 'Formel-Assistent (KI) …', icon: 'fx', onClick: () => import('../ai/assist.js').then(m => m.formulaAssist({ sheet: sh, cell: addr(sel.r, sel.c), insert: f => { if (editing) cancel(); startEdit(f); } })) },
+      aiMenusHidden() ? null : { label: 'Formel-Assistent (KI) …', icon: 'fx', onClick: () => import('../ai/assist.js').then(m => m.formulaAssist({ sheet: sh, cell: addr(sel.r, sel.c), insert: f => { if (editing) cancel(); startEdit(f); } })) },
       { label: 'Tastenkürzel', icon: 'keyboard', onClick: () => shortcutsDialog() },
       { label: 'Neue Tabelle aus Vorlage …', icon: 'template', onClick: () => { location.hash = '#/vorlagen/tabelle'; } },
       { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await serialize(kind), shell.name, KINDS[kind].mime) },

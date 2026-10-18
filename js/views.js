@@ -9,7 +9,7 @@ import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
 import { isNative } from './platform.js';
 import { t } from './i18n/index.js';
-import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, SIMPLE_TOOLS } from './simple.js';
+import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
 const extrasHome = () => import('./extras/home.js');
 const extrasRem = () => import('./extras/reminders.js');
@@ -215,6 +215,8 @@ function renderSimpleHome(el) {
     $('[data-simple-on]', hint).addEventListener('click', () => { setSimple(true); toast('Einfache Ansicht ist an.', 'success'); $('#main').scrollTop = 0; });
     $('[data-simple-hint-close]', hint).addEventListener('click', () => { dismissSimpleHint(); hint.hidden = true; });
   }
+  const search = $('#home-search', el);
+  if (search) search.placeholder = t(on ? 'Dateien suchen' : 'Dateien und Inhalte durchsuchen');
   const box = $('[data-simple-home]', el);
   box.hidden = !on;
   if (!on || box.firstChild) return;
@@ -228,8 +230,9 @@ function renderSimpleHome(el) {
       ? h(`<a class="s-tile g-${c.group}" role="listitem" href="${c.href}" data-simple="${c.id}">${inner}</a>`)
       : h(`<button class="s-tile g-${c.group}" type="button" role="listitem" data-simple="${c.id}"${c.menu ? ' aria-haspopup="menu"' : ''}>${inner}</button>`);
     if (c.action === 'open-file') tile.addEventListener('click', () => importFromDevice());
-    if (c.menu === 'new') tile.addEventListener('click', () => showNewMenu(tile));
-    if (c.menu === 'convert') tile.addEventListener('click', () => officeMenu(tile, CONVERT_MENU.map(m => ({ label: m.label, icon: m.icon, onClick: () => { location.hash = m.href; } })), { label: 'In PDF umwandeln' }));
+    const menu = list => list.map(m => ({ label: m.label, icon: m.icon, onClick: () => { location.hash = m.href; } }));
+    if (c.menu === 'new') tile.addEventListener('click', () => officeMenu(tile, menu(NEW_MENU), { label: 'Neu erstellen' }));
+    if (c.menu === 'convert') tile.addEventListener('click', () => officeMenu(tile, menu(CONVERT_MENU), { label: 'In PDF umwandeln' }));
     grid.appendChild(tile);
   });
   $('[data-simple-off]', box).addEventListener('click', () => { setSimple(false); toast('Alle Funktionen werden wieder angezeigt.', 'success'); });
@@ -386,6 +389,8 @@ let simpleToolsAll = false;
 function renderSimpleTools(el) {
   const sec = $('[data-simple-tools]', el);
   const on = simpleOn();
+  const search = $('#tool-search', el);
+  if (search) search.placeholder = t(on ? 'Werkzeug suchen' : 'Werkzeug suchen, z. B. „Word“ oder „Passwort“');
   sec.hidden = !on;
   el.classList.toggle('st-all', on && simpleToolsAll);
   if (!on || sec.firstChild) { updateSimpleCount(el); return; }
@@ -758,6 +763,8 @@ export async function renderSettings() {
         </div></div>
       <div class="settings-row" data-simple-row><div class="label"><strong>Einfache Ansicht</strong><span>Nur das Wichtigste in großen Kacheln. Alle anderen Funktionen findest du über „Alle Werkzeuge anzeigen“ und die Suche.</span></div>
         <label class="switch"><input type="checkbox" data-simple-toggle ${simpleOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Einfache Ansicht</span></label></div>
+      <div class="settings-row ts-row" data-textsize-row><div class="label"><strong>Schriftgröße</strong><span>Macht Texte und Knöpfe in FaLe größer. Gilt nur auf diesem Gerät.</span></div>
+        ${textSizeSeg()}</div>
       <div class="settings-row"><div class="label"><strong>Standard-Zoom</strong><span>Zoomstufe beim Öffnen einer PDF.</span></div>
         <select class="select" id="set-zoom" aria-label="Standard-Zoom">
           <option value="auto">Automatisch</option><option value="page-width">Seitenbreite</option><option value="page-fit">Ganze Seite</option>
@@ -823,6 +830,7 @@ export async function renderSettings() {
     setSimple(e.target.checked);
     toast(e.target.checked ? 'Einfache Ansicht ist an.' : 'Alle Funktionen werden wieder angezeigt.', 'success');
   });
+  bindTextSize($('[data-textsize-row]', el), size => toast(size === 'xl' ? 'Schrift ist jetzt sehr groß.' : size === 'l' ? 'Schrift ist jetzt groß.' : 'Schrift ist wieder normal groß.', 'success'));
   const zs = $('#set-zoom', el);
   zs.value = zoom;
   zs.addEventListener('change', async () => { await db.setSetting('defaultZoom', zs.value); toast('Gespeichert', 'success'); });
