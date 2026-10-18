@@ -12,6 +12,7 @@ function store(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch 
 
 /** Count a successful result; returns the hint element when it is time to show it, else null. */
 export function supportNudge(lang) {
+  if (globalThis.faleWtHost) return null; // not inside the FaLe PDF app (store rules for links to payment pages)
   results++;
   if (shownThisVisit || results < 3) return null;
   const s = load();

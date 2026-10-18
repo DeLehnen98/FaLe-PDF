@@ -314,7 +314,7 @@ export function renderTools(initialQ = null) {
       let any = false;
       $$('.tool-section', el).forEach(sec => {
         let vis = 0;
-        $$('.tool-card', sec).forEach(c => { const m = !n || c.textContent.toLocaleLowerCase('de').includes(n); c.hidden = !m; if (m) vis++; });
+        $$('.tool-card', sec).forEach(c => { const m = !n || c.textContent.toLocaleLowerCase('de').includes(n) || (c.dataset.kw || '').includes(n); c.hidden = !m; if (m) vis++; });
         sec.hidden = !vis;
         if (vis) any = true;
       });
@@ -326,6 +326,12 @@ export function renderTools(initialQ = null) {
     import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
     import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).catch(() => {}); // Teilen & Unterschreiben
     import('./smart/entry.js').then(m => m.renderToolSection($('[data-smart-section]', el))).catch(() => {}); // Assistenten
+    // FaleNetwork web tools (opened in a frame, js/webtools/host.js): into the matching groups + own sections
+    import('./webtools/list.js').then(m => {
+      m.renderWebTools(el);
+      const q = $('#tool-search', el) && $('#tool-search', el).value;
+      if (q) filter(q);
+    }).catch(e => console.warn('web tools', e));
   }
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
 }

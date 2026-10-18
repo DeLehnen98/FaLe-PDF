@@ -524,6 +524,10 @@ mark {
 .screen-head .grow { flex: 1; min-width: 0; }
 .screen-head .grow h1, .screen-head .grow .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .screen-body { flex: 1; overflow-y: auto; }
+/* FaleNetwork web tools in a frame (js/webtools/host.js) */
+.screen-body.wt-host-body { overflow: hidden; display: flex; flex-direction: column; }
+.wt-host-frame { flex: 1; width: 100%; min-height: 0; border: 0; display: block; background: var(--bg); }
+.wt-pick-grid { margin-top: 12px; max-height: 60vh; overflow-y: auto; }
 .screen-inner { max-width: 980px; margin: 0 auto; padding: 28px 24px 40px; }
 .screen-foot { display: flex; gap: 10px; justify-content: flex-end; align-items: center; padding: 12px 16px calc(12px + var(--safe-b)); background: var(--chrome); backdrop-filter: saturate(1.6) blur(16px); -webkit-backdrop-filter: saturate(1.6) blur(16px); border-top: 1px solid var(--border); flex-wrap: wrap; }
 .screen-foot .foot-info { margin-right: auto; color: var(--text-2); font-size: 0.875rem; }

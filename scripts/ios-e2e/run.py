@@ -107,7 +107,7 @@ try:
     route_file = os.path.join(data, 'Documents', 'fale-e2e-route.txt')
     doc_id = next((l.split('doc=')[1].split(',')[0].strip() for l in lines if 'FALE-E2E self-test: imported doc=' in l), '')
     tour = [('start', '#/start'), ('werkzeuge', '#/werkzeuge'), ('dateien', '#/dateien'), ('vorlagen', '#/vorlagen'),
-            ('ki', '#/ki'), ('einstellungen', '#/einstellungen')]
+            ('ki', '#/ki'), ('einstellungen', '#/einstellungen'), ('web-briefpapier', '#/web/overlay-pdf'), ('web-rechner', '#/web/vat-calculator')]
     if doc_id:
         tour += [('pdf-ansicht', f'#/ansicht/{doc_id}'), ('werkzeug-komprimieren', f'#/werkzeug/komprimieren?doc={doc_id}')]
     tour += [('dunkel-start', '#/start'), ('dunkel-werkzeuge', '#/werkzeuge')]
@@ -124,6 +124,9 @@ try:
         sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f, check=False)
         (shots if went and os.path.exists(f) and os.path.getsize(f) > 20000 else missing).append(name)
     sh('xcrun', 'simctl', 'ui', UDID, 'appearance', 'light', check=False)
+    for wid in ('overlay-pdf', 'vat-calculator'):   # web tools in the app frame (js/webtools/host.js logs when they run)
+        ok_w = has(f'FaLe Web-Werkzeug bereit: {wid}')
+        note(ok_w, f'Web-Werkzeug {wid}', 'läuft im App-Rahmen' if ok_w else ' | '.join(l for l in lines if 'Web-Werkzeug' in l)[-400:] or 'keine Meldung')
     late = [l for l in lines if '[error]' in l and 'FALE-E2E' not in l and l not in errors]
     note(not missing, 'Rundgang', f'{len(shots)} Screenshots ({LABEL})' + (f', fehlend: {missing}' if missing else ''))
     note(not late, 'JS-Fehler im Rundgang', 'keine' if not late else ' | '.join(late[:5]))

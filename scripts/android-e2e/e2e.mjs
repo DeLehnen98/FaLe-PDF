@@ -488,6 +488,22 @@ async function main() {
     return `„${d.name}“ mit ${info.images} Bild(ern), ${drawn} Pixel gezeichnet`;
   });
 
+  // ---- FaleNetwork web tool in the app frame (js/webtools/host.js): library file in, result back into the library ----
+  await step('Web-Werkzeug im App-Rahmen (PDF in Graustufen)', async () => {
+    await closeOverlays();
+    const before = (await docs()).length;
+    await ev(`location.hash = '#/web/grayscale-pdf?doc=${docId}'; return true;`);
+    const F = `document.querySelector('iframe.wt-host-frame') && document.querySelector('iframe.wt-host-frame').contentDocument`;
+    if (!await waitJs(`(${F}) && !!(${F}).querySelector('.wt-file')`, { timeout: 40000 })) throw new Error('Werkzeug lädt nicht oder Datei kam nicht an');
+    await ev(`(${F}).querySelector('.wt-btn-primary.wt-btn-lg').click(); return true;`);
+    if (!await waitJs(`!!(${F}).querySelector('.wt-output .wt-btn-primary')`, { timeout: 60000 })) throw new Error('kein Ergebnis');
+    await ev(`(${F}).querySelector('.wt-output .wt-btn-primary').click(); return true;`);
+    const d = await waitFor(async () => (await docs()).length > before && (await docs()).find(x => /Graustufen|grayscale|grau/i.test(x.name)), { timeout: 20000 });
+    screenshot('web-tool');
+    if (!d) throw new Error('Ergebnis nicht in der Bibliothek: ' + (await docs()).map(x => x.name).join(', '));
+    return `Ergebnis „${d.name}“ in der Bibliothek`;
+  });
+
   // ---- „Bearbeiten mit“ (EDIT + write grant) → „Im Original speichern“ writes back into the original file ----
   // (runs last: on the API 34 image the extra intent can leave the launcher focused for later UI steps)
   await step('Im Original speichern (EDIT-Intent mit Schreibrecht)', async () => {

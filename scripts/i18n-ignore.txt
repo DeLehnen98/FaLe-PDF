@@ -575,3 +575,8 @@ data-x="ins-caption"
 data-x="ins-dropcap"
 FalePrint/Filesystem fehlt
 {0}#/teilen/mitnehmen#d={1}
+IndexedDB blocked
+?weiter=1
+From my files
+keine Antwort nach 8 s
+Fehler {0} {1}:{2}

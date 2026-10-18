@@ -46,6 +46,7 @@ export function docMenu(anchor, doc) {
     '-',
     { label: 'Ausfüllen & unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${doc.id}`) },
     { label: 'Seiten verwalten', icon: 'pages', onClick: () => (location.hash = `#/werkzeug/seiten?doc=${doc.id}`) },
+    { label: 'Mehr Werkzeuge …', icon: 'tools', onClick: () => import('./webtools/list.js').then(m => m.chooseWebTool(doc)) },
     '-',
     { label: 'Löschen', icon: 'trash', danger: true, onClick: () => deleteDocConfirm(doc) },
   ], { label: `Aktionen für ${doc.name}` });

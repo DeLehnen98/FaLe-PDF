@@ -124,6 +124,12 @@ async function route() {
     await (await import('./ai/routes.js')).openAiRoute(parts, params, { goBack });
     return;
   }
+  if (top === 'web' && parts[1]) { // FaleNetwork web tools in a frame (js/webtools/host.js)
+    if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
+    if (!currentMain) showMain('werkzeuge');
+    await (await import('./webtools/host.js')).openWebToolRoute(parts, params, { goBack });
+    return;
+  }
   if (SHARE_ROUTES.includes(top)) { // Teilen & Übertragen (js/share/routes.js): #/teilen…, #/s/<id>, #/u/<token>, #/r/<token>, #/verbinden
     if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
     if (!currentMain) showMain(top === 's' || top === 'u' || top === 'r' ? 'start' : 'werkzeuge');

@@ -84,6 +84,8 @@ export function fileMenu(anchor, doc) {
   else if (cat === 'sheet') items.push({ label: 'In PDF umwandeln', icon: 'kpdf', onClick: () => { location.hash = `#/werkzeug/excel-pdf?doc=${doc.id}`; } });
   else if (cat === 'slides') items.push({ label: 'In PDF umwandeln', icon: 'kpdf', onClick: () => { location.hash = `#/werkzeug/ppt-pdf?doc=${doc.id}`; } });
   else if (kind === 'image') items.push({ label: 'In PDF umwandeln', icon: 'kpdf', onClick: () => { location.hash = openHash(doc); } });
+  // FaleNetwork web tools that can open this file (js/webtools/list.js)
+  items.push({ label: 'Mehr Werkzeuge …', icon: 'tools', onClick: () => import('../webtools/list.js').then(m => m.chooseWebTool(doc)) });
   if (AI.summarize && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Zusammenfassen (auf dem Gerät)', icon: 'summary', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'summarize')) });
   if (AI.translate && ['pdf', 'docx', 'txt', 'md'].includes(kind)) items.push({ label: 'Übersetzen (auf dem Gerät)', icon: 'translate', onClick: () => import('../extras/ai.js').then(m => m.aiForDoc(doc, 'translate')) });
   items.push('-',

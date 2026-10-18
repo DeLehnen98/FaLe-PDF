@@ -6039,6 +6039,18 @@ export default {
   "Die bisherige Fassung konnte nicht gesichert werden – die Originaldatei bleibt unverändert.": "The previous version could not be kept – the original file stays unchanged.",
   "Dateien › Auf meinem iPad › FaLe PDF": "Files › On My iPad › FaLe PDF",
   "Dateien › Auf meinem iPhone › FaLe PDF": "Files › On My iPhone › FaLe PDF",
+  // FaleNetwork web tools in the app (js/webtools/)
+  "{0} Dateien in deinen Dateien gespeichert": "{0} files saved in your files",
+  "In deinen Dateien ist noch nichts, das dieses Werkzeug öffnen kann.": "Nothing in your files can be opened with this tool yet.",
+  "„{0}“ passt nicht zu diesem Werkzeug.": "“{0}” doesn’t work with this tool.",
+  "„{0}“ passt nicht zu „{1}“.": "“{0}” doesn’t work with “{1}”.",
+  "Speichern hat nicht geklappt.": "Saving didn’t work.",
+  "Bilder & Fotos": "Images & photos",
+  "Rechner & Text": "Calculators & text",
+  "Mehr Werkzeuge …": "More tools …",
+  "Mehr Werkzeuge": "More tools",
+  "Werkzeug suchen": "Search tools",
+  "Für diese Datei gibt es hier keine weiteren Werkzeuge.": "There are no further tools for this file here.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

@@ -209,3 +209,17 @@ with Suite('rotate-pdf') as s:
 
 Note: `page.evaluate` / `wait_for_function` must get a function string (`"() => …"`); bare expressions use
 `eval`, which the CSP blocks.
+
+## 5. The same tools in the FaLe PDF app
+
+`build.py` also writes the app versions: `wt-app/<de|en>/<id>.html` (only the tool – no site header, SEO
+texts or links) and `js/webtools/catalog.js` (list for the app's tool screen). The app opens them in a
+same-origin frame (`js/webtools/host.js`, route `#/web/<id>`); `js/webtools/frame.js` connects the page to the
+app: results go into the app's file library (`lib/download.js` checks `globalThis.faleWtHost`), files can be
+picked from the library („Aus meinen Dateien“, event `fale-wt-files`), links to other tools stay in the app.
+Rules for tools so this keeps working:
+- results only through the shell (`outputs`) – never your own `<a download>`;
+- no service-worker or `location` tricks; links to other tools as `/werkzeuge/<slug>/` (mapped by the app);
+- vendor files only via relative `../vendor/…` paths from `lib/` (the app build re-bases them onto `/vendor/`).
+Tools the app has natively are hidden in its list (`NATIVE_TWINS` in `js/webtools/list.js`); a tool that cannot
+work in a mobile web view goes into `APP_ONLY_EXCLUDED` in `build.py`. App test: `tests/suites/test_webtools_app.py`.

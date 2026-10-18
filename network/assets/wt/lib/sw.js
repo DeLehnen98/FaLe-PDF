@@ -36,6 +36,7 @@ const VENDOR = {
 };
 
 export async function registerSW() {
+  if (globalThis.faleWtHost) return null; // inside the FaLe PDF app: the app ships every file, no service worker
   if (!('serviceWorker' in navigator) || !window.isSecureContext) return null;
   try {
     return await navigator.serviceWorker.register('/sw.js', { scope: '/' });

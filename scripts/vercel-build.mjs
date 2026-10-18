@@ -64,11 +64,11 @@ const CSP_META = (() => {
   const m = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/);
   if (!m) throw new Error('index.html: <meta http-equiv="Content-Security-Policy"> fehlt');
   const vc = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'));
-  const hdr = (vc.headers || []).filter(r => r.source === '/' || r.source === '/(.*)\\.html')
+  const hdr = (vc.headers || []).filter(r => r.source === '/' || r.source === '/((?!wt-app/).*)\\.html')
     .map(r => (r.headers.find(h => h.key === 'Content-Security-Policy') || {}).value);
   const norm = v => String(v || '').split(';').map(x => x.trim().replace(/\s+/g, ' ')).filter(x => x && !/^frame-ancestors\b/.test(x)).join('; ');
   if (hdr.length !== 2 || hdr.some(v => norm(v) !== norm(m[1]))) {
-    throw new Error('Content-Security-Policy in index.html und vercel.json ("/" und "/(.*)\\.html") stimmen nicht überein');
+    throw new Error('Content-Security-Policy in index.html und vercel.json ("/" und "/((?!wt-app/).*)\\.html") stimmen nicht überein');
   }
   return m[1];
 })();
@@ -95,8 +95,9 @@ if (existsSync(join(LOCAL_VENDOR, 'pdfjs', 'pdf.min.mjs')) && !process.env.FALE_
   // SHA-256 list in vendor/MANIFEST.json (supply-chain integrity; see scripts/vendor-manifest.mjs).
   const problems = verifyVendor(ROOT, LOCAL_VENDOR);
   if (problems.length) throw new Error('vendor/ weicht von vendor/MANIFEST.json ab:\n  ' + problems.slice(0, 30).join('\n  '));
-  // vendor/onnx (background removal, ~22 MB) is only used by the FaLe Werkzeuge web tool – not shipped with the app
-  cpSync(LOCAL_VENDOR, join(DIST, 'vendor'), { recursive: true, filter: src => relative(LOCAL_VENDOR, src).split(sep)[0] !== 'onnx' });
+  // vendor/onnx (background removal, ~22 MB) is used by the web tool „Hintergrund entfernen“, which the app shows in a
+  // frame (step 2c) – shipped, but not precached by the service worker (loaded on first use)
+  cpSync(LOCAL_VENDOR, join(DIST, 'vendor'), { recursive: true });
 } else {
   const PDFJS = 'pdfjs-dist';
   copy(`${PDFJS}/legacy/build/pdf.min.mjs`, 'vendor/pdfjs/pdf.min.mjs');
@@ -122,6 +123,41 @@ if (existsSync(join(LOCAL_VENDOR, 'pdfjs', 'pdf.min.mjs')) && !process.env.FALE_
 }
 if (existsSync(join(ROOT, 'vendor-extra'))) {
   cpSync(join(ROOT, 'vendor-extra'), join(DIST, 'vendor'), { recursive: true });
+}
+
+// 2c) FaleNetwork web tools inside the app (js/webtools/host.js opens wt-app/<lang>/<id>.html in a frame): the tool
+// code from network/assets/wt (without its vendor/ copy – the app's own vendor/ has the same files, see
+// scripts/sync-webtools-vendor.mjs) plus the two site style sheets, at the same paths as in the repo (/network/assets/…),
+// so the pages work unchanged on a local dev server. Vendor paths are re-based onto /vendor/.
+{
+  const SRC = join(ROOT, 'network', 'assets');
+  const OUT = join(DIST, 'network', 'assets');
+  mkdirSync(OUT, { recursive: true });
+  for (const f of ['fale-tokens.css', 'site.css']) cpSync(join(SRC, f), join(OUT, f));
+  cpSync(join(SRC, 'wt'), join(OUT, 'wt'), { recursive: true, filter: src => relative(join(SRC, 'wt'), src).split(sep)[0] !== 'vendor' });
+  mkdirSync(join(DIST, 'vendor', 'fonts'), { recursive: true });
+  for (const f of ['BricolageGrotesque-Bold.woff', 'OFL.txt']) cpSync(join(SRC, 'wt', 'vendor', 'fonts', f), join(DIST, 'vendor', 'fonts', f));
+  const WT_VENDOR = '/network/assets/wt/vendor/';
+  let rebased = 0;
+  const walkWt = dir => readdirSync(dir).flatMap(n => { const p = join(dir, n); return statSync(p).isDirectory() ? walkWt(p) : [p]; });
+  for (const f of [...walkWt(join(OUT, 'wt')), join(OUT, 'site.css')]) {
+    if (!/\.(m?js|css)$/.test(f)) continue;
+    const urlDir = '/' + relative(DIST, dirname(f)).split(sep).join('/') + '/';
+    const src = readFileSync(f, 'utf8');
+    let out = src.replace(/(['"`(])((?:\.\.\/)+)vendor\//g, (m, q, ups) => {
+      const target = new URL(ups + 'vendor/', 'https://x' + urlDir).pathname;
+      if (target !== WT_VENDOR) return m;
+      rebased++;
+      const depth = urlDir.split('/').filter(Boolean).length;
+      return q + '../'.repeat(depth) + 'vendor/';
+    });
+    out = out.replaceAll('/assets/wt/vendor/', '/vendor/').replace(/(['"`(])\/assets\/wt\//g, '$1/network/assets/wt/');
+    if (out !== src) writeFileSync(f, out);
+  }
+  if (!rebased) throw new Error('network/assets/wt: keine relativen vendor-Pfade gefunden – Umbau der Web-Werkzeuge prüfen');
+  const pages = existsSync(join(DIST, 'wt-app', 'de')) ? readdirSync(join(DIST, 'wt-app', 'de')).length : 0;
+  if (pages < 50) throw new Error('wt-app/: Werkzeugseiten fehlen – python3 network/tools/webtools/build.py ausführen');
+  console.log(`Web-Werkzeuge: ${pages} Seiten, ${rebased} Vendor-Pfade umgestellt`);
 }
 
 // Public FaLe-Konto settings (no secrets) → js/account/build-config.js, so the app knows without any request
@@ -193,6 +229,8 @@ const files = walk(DIST)
   .filter(r => r !== 'sw.js' && r !== 'vercel.json' && r !== 'vendor/MANIFEST.json' && !r.startsWith('.') && !r.endsWith('.map'))
   // OCR engine + language data (~13 MB) are cached by the service worker on first use, not at install
   .filter(r => !r.startsWith('vendor/tesseract/'))
+  // web tools (frame) and their background-removal models: loaded and cached on first use
+  .filter(r => !r.startsWith('vendor/onnx/') && !r.startsWith('network/'))
   .sort();
 const h = createHash('sha256');
 for (const r of files) { h.update(r); h.update(readFileSync(join(DIST, r))); }

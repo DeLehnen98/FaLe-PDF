@@ -234,7 +234,7 @@ def desktop(p):
         page.locator('#tool-search').fill('excel')
         page.wait_for_timeout(400)
         vis = page.locator('#view-werkzeuge .tool-card:visible').count()
-        check('tool search filters', 1 <= vis <= 4, str(vis))
+        check('tool search filters', 1 <= vis <= 6, str(vis))   # incl. web tools that mention Excel (Serienbrief)
         page.locator('#tool-search').fill('')
         page.wait_for_timeout(300)
     step('tools view', tools_view)

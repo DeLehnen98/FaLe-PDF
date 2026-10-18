@@ -36,6 +36,8 @@ function init(cfg) {
   document.documentElement.classList.add('wt-js');
 
   // ---------------------------------------------------------------- state
+  // inside the FaLe PDF app (js/webtools/frame.js) „Speichern“ puts results into the app's file library
+  const inApp = !!globalThis.faleWtHost;
   const state = {
     phase: 'pick',           // pick | files | working | result | error
     inputs: [],
@@ -138,6 +140,11 @@ function init(cfg) {
     pasteBtn.hidden = false;
     pasteBtn.addEventListener('click', pasteFromClipboard);
   }
+  // FaLe PDF app (js/webtools/frame.js): files picked from the app's own file library
+  window.addEventListener('fale-wt-files', ev => {
+    const files = ev.detail && Array.isArray(ev.detail.files) ? ev.detail.files.filter(f => f instanceof File) : [];
+    if (files.length && state.phase !== 'working') addFiles(files, 'app');
+  });
   document.addEventListener('paste', ev => {
     if (state.phase === 'working' || isTextField(ev.target)) return;
     const files = [...(ev.clipboardData?.files || [])];
@@ -672,7 +679,8 @@ function init(cfg) {
 
     const actions = el('div', { class: 'wt-result-actions' });
     if (res.outputs.length > 1) {
-      actions.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => downloadZip(res) }, icon('zip'), T('download_all')));
+      if (inApp) actions.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => saveAll(res) }, icon('download'), T('app_save_all')));
+      else actions.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => downloadZip(res) }, icon('zip'), T('download_all')));
     }
     if (canShare(res.outputs) && res.outputs.length > 1) {
       actions.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet', onclick: () => doShare(res.outputs) }, icon('share'), T('share')));
@@ -698,8 +706,11 @@ function init(cfg) {
     barHint.hidden = true;
     primary.disabled = false;
     if (res.outputs.length === 1) {
-      primary.textContent = T('download');
+      primary.textContent = T(inApp ? 'app_save' : 'download');
       primary.onclick = () => save(res.outputs[0]);
+    } else if (inApp) {
+      primary.textContent = T('app_save_all');
+      primary.onclick = () => saveAll(res);
     } else {
       primary.textContent = T('download_all');
       primary.onclick = () => downloadZip(res);
@@ -727,7 +738,7 @@ function init(cfg) {
       if (o.pages) size.append(' · ', T('pages', { n: o.pages }));
     }
     const btns = el('div', { class: 'wt-out-btns' },
-      el('button', { type: 'button', class: 'wt-btn wt-btn-primary wt-btn-sm', onclick: () => save(o) }, icon('download'), T('download')));
+      el('button', { type: 'button', class: 'wt-btn wt-btn-primary wt-btn-sm', onclick: () => save(o) }, icon('download'), T(inApp ? 'app_save' : 'download')));
     if (canShare([o])) btns.append(el('button', { type: 'button', class: 'wt-btn wt-btn-quiet wt-btn-sm', onclick: () => doShare([o]) }, icon('share'), T('share')));
     return el('li', { class: 'wt-output' }, thumb, el('div', { class: 'wt-out-info' },
       el('p', { class: 'wt-file-name', title: o.name }, o.name), size, o.note ? el('p', { class: 'wt-out-note' }, o.note) : null, btns));
@@ -772,7 +783,8 @@ function init(cfg) {
     } catch { /* keep the icon (e.g. encrypted result) */ }
   }
 
-  function save(o) { download(o.blob, o.name); say(T('downloaded', { name: o.name })); }
+  function save(o) { download(o.blob, o.name); say(T(inApp ? 'app_saved' : 'downloaded', { name: o.name })); }
+  function saveAll(res) { globalThis.faleWtHost.save(res.outputs.map(o => ({ blob: o.blob, name: o.name }))); say(T('app_saved', { name: String(res.outputs.length) })); }
 
   async function downloadZip(res) {
     const { createZip } = await import('./lib/shared/zip.js');
@@ -790,7 +802,9 @@ function init(cfg) {
   async function continueWith(next, res) {
     try {
       await putHandoff(res.outputs.map(o => ({ name: o.name, type: o.blob.type, blob: o.blob })), { target: next.id, from: cfg.id });
-      location.href = next.url + (lang === 'de' ? '?weiter=1' : '?continue=1');
+      const to = next.url + (lang === 'de' ? '?weiter=1' : '?continue=1');
+      if (globalThis.faleWtHost) location.replace(to); // in the app frame: no extra history entry (the app's back button)
+      else location.href = to;
     } catch (err) { console.warn(err); showNotice(T('error_generic')); }
   }
 

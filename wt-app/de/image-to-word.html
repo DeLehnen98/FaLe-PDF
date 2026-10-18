@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; font-src 'self'; connect-src 'self' blob: data:; worker-src 'self' blob:; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types default">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <title>Bild in Word umwandeln</title>
+  <link rel="stylesheet" href="/network/assets/fale-tokens.css">
+  <link rel="stylesheet" href="/network/assets/site.css">
+  <link rel="stylesheet" href="/network/assets/wt/wt.css">
+  <link rel="stylesheet" href="/js/webtools/frame.css">
+  <script src="/js/webtools/frame.js"></script>
+</head>
+<body class="wt-in-app">
+<main id="main" class="wt-page" data-cat="images">
+  <div class="wrap wt-top">
+    <p class="wt-lede">Aus einem Foto wird ein Word-Dokument zum Weiterschreiben – mit Absätzen statt harter Zeilenumbrüche.</p>
+    <section id="wt-app" class="wt-app" aria-label="Werkzeug: Bild in Word umwandeln" data-state="pick">
+      <div class="wt-pick" data-wt-pick>
+        <label class="wt-drop" data-wt-drop>
+          <input class="wt-picker" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.avif,.gif,.bmp,.heic,.heif" multiple data-wt-input>
+          <span class="wt-drop-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span>
+          <span class="wt-drop-main">Bilder auswählen</span>
+          <span class="wt-drop-sub">oder hierher ziehen</span>
+        </label>
+        <div class="wt-chips"><label class="wt-chipbtn" data-wt-camera hidden><input class="wt-picker" type="file" accept="image/*" capture="environment" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg><span>Kamera</span></label><button class="wt-chipbtn" type="button" data-wt-paste hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/></svg><span>Einfügen</span></button></div>
+      </div>
+    </section>
+  </div>
+</main>
+<script type="application/json" id="wt-config">{"accepts":["image/*",".jpg",".jpeg",".png",".webp",".avif",".gif",".bmp",".heic",".heif"],"app":"","categoryColour":"scan","hub":"","id":"image-to-word","inApp":true,"lang":"de","lazy":["/network/assets/wt/lib/conv-domparse.js","/network/assets/wt/lib/conv-office-shim.js","/network/assets/wt/lib/conv-pdfmodel.js","/network/assets/wt/lib/conv-tables.js","/network/assets/wt/lib/dom.js","/network/assets/wt/lib/download.js","/network/assets/wt/lib/format.js","/network/assets/wt/lib/img-core.js","/network/assets/wt/lib/new-ocr.js","/network/assets/wt/lib/new-ui.js","/network/assets/wt/lib/pdf.js","/network/assets/wt/lib/shared/limits.js","/network/assets/wt/lib/shared/ocr/prep.js","/network/assets/wt/lib/shared/office/docmodel.js","/network/assets/wt/lib/shared/office/docpdf.js","/network/assets/wt/lib/shared/office/docstyles.js","/network/assets/wt/lib/shared/office/docx-write.js","/network/assets/wt/lib/shared/office/fonts.js","/network/assets/wt/lib/shared/office/hfnorm.js","/network/assets/wt/lib/shared/office/pdftext.js","/network/assets/wt/lib/shared/office/unifont.js","/network/assets/wt/lib/shared/office/vendor.js","/network/assets/wt/lib/shared/pdfcrypt.js","/network/assets/wt/lib/shared/pdflibtune.js","/network/assets/wt/lib/shared/pdfstruct.js","/network/assets/wt/lib/strings.js","/network/assets/wt/lib/sw.js","/network/assets/wt/lib/tt.js","/network/assets/wt/tools/image-to-word.js","/network/assets/wt/tools/ocr-pdf.js"],"maxFiles":null,"minFiles":1,"module":"/network/assets/wt/tools/image-to-word.js","multiple":true,"name":"Bild in Word umwandeln","needs":[],"next":[],"primary":"In Word umwandeln","v":1}</script>
+<script type="module" src="/network/assets/wt/shell.js"></script>
+</body>
+</html>

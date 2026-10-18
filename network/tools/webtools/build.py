@@ -503,6 +503,133 @@ def page_tool(sp, lang, by_id):
     return h + '\n' + hdr + body + bp.footer(lang)
 
 
+# ------------------------------------------------------------------ FaLe PDF app: the same tools inside the app
+# The app (repo root, Android/iOS/PWA) shows every tool in a frame: <repo>/wt-app/<lang>/<id>.html holds only the
+# tool itself (no site header, SEO texts or links), loads the tool code from /network/assets/wt/ (copied into the
+# app build by scripts/vercel-build.mjs) and js/webtools/frame.js, which connects it to the app (save results into
+# the library, share, pick files from the library, theme). js/webtools/catalog.js lists the tools for the app.
+REPO = ROOT.parent
+APP_PAGES = REPO / 'wt-app'
+APP_CATALOG = REPO / 'js' / 'webtools' / 'catalog.js'
+APP_WT = '/network/assets/wt/'
+APP_ONLY_EXCLUDED = {'screen-recorder'}   # needs screen capture – not available in the app's web view
+
+
+def app_csp(sp):
+    img = "'self' blob: data:" + (' https:' if sp['id'] == 'email-signature' else '')
+    return ("default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; "
+            f"img-src {img}; media-src 'self' blob:; font-src 'self'; connect-src 'self' blob: data:; worker-src 'self' blob:; "
+            "base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types default")
+
+
+def app_page_path(sp, lang):
+    return f'/wt-app/{lang}/{sp["id"]}.html'
+
+
+def page_app(sp, lang, by_id):
+    s, c = S[lang], sp[lang]
+    multiple = bool(sp.get('multiple'))
+    accept = ','.join(sp['accepts'])
+    camera = ''
+    if accepts_images(sp):
+        camera = (f'<label class="wt-chipbtn" data-wt-camera hidden><input class="wt-picker" type="file" accept="image/*" capture="environment" tabindex="-1">'
+                  f'{svg(UI_ICONS["camera"])}<span>{s["camera"]}</span></label>')
+    shared = lambda p: APP_WT + p[len('/assets/wt/'):] if p.startswith('/assets/wt/') else p
+    config = {
+        'v': 1, 'lang': lang, 'id': sp['id'], 'module': APP_WT + sp['module'],
+        'accepts': sp['accepts'], 'multiple': multiple, 'minFiles': sp.get('minFiles', 1),
+        'maxFiles': sp.get('maxFiles'), 'name': c['name'], 'primary': c['primaryButton'],
+        'needs': sp.get('needs', []), 'hub': '', 'app': '', 'inApp': True,
+        'lazy': [shared(p) for p in module_graph(sp['module'])],
+        'next': [{'id': n, 'name': by_id[n][lang]['name'], 'url': app_page_path(by_id[n], lang), 'accepts': by_id[n]['accepts'], 'multiple': bool(by_id[n].get('multiple'))}
+                 for n in sp.get('next', []) if n in by_id and n not in APP_ONLY_EXCLUDED],
+        'categoryColour': CAT[sp['category']][1],
+    }
+    return f'''<!doctype html>
+<html lang="{lang}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="{app_csp(sp)}">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <title>{e(c['name'])}</title>
+  <link rel="stylesheet" href="/network/assets/fale-tokens.css">
+  <link rel="stylesheet" href="/network/assets/site.css">
+  <link rel="stylesheet" href="{APP_WT}wt.css">
+  <link rel="stylesheet" href="/js/webtools/frame.css">
+  <script src="/js/webtools/frame.js"></script>
+</head>
+<body class="wt-in-app">
+<main id="main" class="wt-page" data-cat="{sp['category']}">
+  <div class="wrap wt-top">
+    <p class="wt-lede">{e(c['lede'])}</p>
+    <section id="wt-app" class="wt-app" aria-label="{s['tool_label']}: {e(c['name'])}" data-state="pick">
+      <div class="wt-pick" data-wt-pick{' hidden' if sp.get('minFiles', 1) == 0 else ''}>
+        <label class="wt-drop" data-wt-drop>
+          <input class="wt-picker" type="file" accept="{e(accept)}"{' multiple' if multiple else ''} data-wt-input>
+          <span class="wt-drop-ic">{svg(UI_ICONS['upload'])}</span>
+          <span class="wt-drop-main">{e(pick_label(sp, lang))}</span>
+          <span class="wt-drop-sub">{s['pick_sub']}</span>
+        </label>
+        <div class="wt-chips">{camera}<button class="wt-chipbtn" type="button" data-wt-paste hidden>{svg(UI_ICONS['paste'])}<span>{s['paste']}</span></button></div>
+      </div>
+    </section>
+  </div>
+</main>
+{json_script(config, 'wt-config')}
+<script type="module" src="{APP_WT}shell.js"></script>
+</body>
+</html>
+'''
+
+
+def app_catalog(specs):
+    """ES module for the app: id, category, icon (inner SVG), accepted files and the texts in both languages."""
+    items = []
+    for sp in specs:
+        if sp['id'] in APP_ONLY_EXCLUDED:
+            continue
+        items.append({
+            'id': sp['id'], 'category': sp['category'], 'icon': sp.get('iconSvg') or ICONS.get(sp.get('icon'), ICONS['tool']),
+            'accepts': sp['accepts'], 'multiple': bool(sp.get('multiple')), 'minFiles': sp.get('minFiles', 1),
+            'de': {k: sp['de'].get(k) for k in ('name', 'short', 'slug')} | {'keywords': sp['de'].get('keywords', [])},
+            'en': {k: sp['en'].get(k) for k in ('name', 'short', 'slug')} | {'keywords': sp['en'].get('keywords', [])},
+        })
+    cats = [{'id': cid, 'de': labels['de'][1], 'en': labels['en'][1]} for cid, labels, _ in CATEGORIES]
+    dump = lambda v: json.dumps(v, ensure_ascii=False, indent=1, sort_keys=True)
+    return ('// GENERATED by network/tools/webtools/build.py from network/tools/webtools/specs/*.json – do not edit.\n'
+            '// The FaleNetwork web tools as they appear in the app (js/webtools/host.js opens them in a frame).\n'
+            f'export const WEB_TOOL_CATEGORIES = {dump(cats)};\n\n'
+            f'export const WEB_TOOLS = {dump(items)};\n')
+
+
+def write_app_files(specs, by_id):
+    written = []
+    keep = set()
+    for lang in LANGS:
+        for sp in specs:
+            if sp['id'] in APP_ONLY_EXCLUDED:
+                continue
+            out = REPO / app_page_path(sp, lang).lstrip('/')
+            keep.add(out)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            content = page_app(sp, lang, by_id)
+            if not out.exists() or out.read_text(encoding='utf-8') != content:
+                out.write_text(content, encoding='utf-8')
+            written.append(out)
+    for lang in LANGS:   # pages of deleted tools
+        d = APP_PAGES / lang
+        for f in (d.glob('*.html') if d.is_dir() else []):
+            if f not in keep:
+                f.unlink()
+    APP_CATALOG.parent.mkdir(parents=True, exist_ok=True)
+    cat = app_catalog(specs)
+    if not APP_CATALOG.exists() or APP_CATALOG.read_text(encoding='utf-8') != cat:
+        APP_CATALOG.write_text(cat, encoding='utf-8')
+    return written
+
+
 def app_cta(lang):
     s = S[lang]
     return f'''<section class="section band wt-app-cta" aria-labelledby="app-h">
@@ -741,6 +868,8 @@ def main():
             written.append(write(tool_path(sp, lang), page_tool(sp, lang, by_id)))
     sw, version = service_worker()
     written.append(write('/sw.js', sw))
+    app_files = write_app_files(specs, by_id)
+    print(f'FaLe PDF app: {len(app_files)} tool pages in wt-app/, catalog js/webtools/catalog.js')
     merge_sitemap([(HUB['de'], HUB['en'])] + [(tool_path(sp, 'de'), tool_path(sp, 'en')) for sp in specs])
     for p in written:
         print(p.relative_to(ROOT), p.stat().st_size, 'bytes')

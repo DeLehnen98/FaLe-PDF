@@ -4,6 +4,8 @@
 // be same-origin (or a blob: URL created by this page). Anything else – HTML strings, string-to-code –
 // has no handler and is therefore refused by the browser.
 const TT = globalThis.trustedTypes;
+// FaLe PDF iPhone app: pages come from capacitor://localhost (a custom scheme has an opaque origin "null")
+const APP_BASE = typeof location !== 'undefined' && location.protocol === 'capacitor:' ? `${location.protocol}//${location.host}/` : '';
 if (TT && typeof TT.createPolicy === 'function' && !TT.defaultPolicy) {
   try {
     TT.createPolicy('default', {
@@ -11,6 +13,7 @@ if (TT && typeof TT.createPolicy === 'function' && !TT.defaultPolicy) {
         const url = new URL(String(value), document.baseURI);
         if (url.origin === location.origin && (url.protocol === 'https:' || url.protocol === 'http:')) return url.href;
         if (url.protocol === 'blob:' && url.href.startsWith(`blob:${location.origin}/`)) return url.href;
+        if (APP_BASE && (url.href.startsWith(APP_BASE) || url.href.startsWith('blob:' + APP_BASE))) return url.href;
         throw new TypeError('Blocked script URL: ' + url.origin);
       },
     });

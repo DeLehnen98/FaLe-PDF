@@ -1,0 +1,5 @@
+/* Web tools inside the app frame (wt-app/<lang>/<id>.html): the app shows the title in its own header bar. */
+body.wt-in-app { background: var(--bg); }
+.wt-in-app .wt-top { padding-top: 12px; padding-bottom: 32px; }
+.wt-in-app .wt-lede { margin: 0 0 14px; }
+.wt-in-app .wt-app-lib svg { width: 18px; height: 18px; }

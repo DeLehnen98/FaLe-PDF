@@ -1,7 +1,11 @@
 // Saving and sharing results.
+// Inside the FaLe PDF app (js/webtools/frame.js sets globalThis.faleWtHost) results go to the app instead:
+// saving puts them into the app's file library, sharing opens the system share sheet.
+const host = () => globalThis.faleWtHost || null;
 
 /** Start a download of a Blob. The object URL is revoked after a minute (slow mobile downloads). */
 export function download(blob, name) {
+  if (host()) { host().save([{ blob, name }]); return; }
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -20,6 +24,7 @@ function toFiles(outputs) {
 
 /** true when the Web Share API can share these outputs as files. */
 export function canShare(outputs) {
+  if (host()) return host().canShare();
   try {
     return !!(navigator.share && navigator.canShare && navigator.canShare({ files: toFiles(outputs) }));
   } catch { return false; }
@@ -27,6 +32,7 @@ export function canShare(outputs) {
 
 /** Share outputs; resolves 'shared' | 'aborted' | 'failed'. */
 export async function share(outputs, title = '') {
+  if (host()) return host().share(outputs, title);
   try {
     await navigator.share({ files: toFiles(outputs), title });
     return 'shared';
