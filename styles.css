@@ -796,4 +796,5 @@ mark {
   html:not(.simple) #view-start.has-files .hero p { display: none; }
   html:not(.simple) #view-start.has-files .hero { padding-top: 20px; padding-bottom: 18px; }
   html:not(.simple) #view-start.has-files .hero-actions { margin-top: 14px; }
+  html:not(.simple) #view-start.has-files .hero-art { transform: scale(.36); top: 12px; } /* stays above the buttons */
 }
