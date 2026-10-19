@@ -61,6 +61,7 @@ export async function mount(screen, { docId }) {
   // ---------- props ----------
   function renderProps() {
     propsBar.innerHTML = '';
+    propsBar.scrollLeft = 0; // a hint after a long row of controls would otherwise start cut off on the left
     const t = selected && selected.type === 'text' ? selected : null;
     if (mode === 'text' || mode === 'replace' || t) {
       const cur = t || style;

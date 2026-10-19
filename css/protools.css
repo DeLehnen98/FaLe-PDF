@@ -881,3 +881,7 @@
 html:is(.ts-l, .ts-xl) .v-panel .tabs .tab { font-size: min(calc(13.5px * var(--ts, 1)), 15.5px); }
 /* simple view: QR code as picture or PDF – the vector format (SVG) only in the full view */
 html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: none; }
+/* PDF bearbeiten: on a one-line text box the round "remove" button sat on the last letters – it moves above the box */
+.pt-item.pt-etext .pt-x { top: -38px; right: -4px; }
+/* tool hints in the property row wrap instead of running off the screen */
+.pt-props .pt-hint { white-space: normal; flex: 1 1 220px; min-width: 160px; line-height: 1.35; }
