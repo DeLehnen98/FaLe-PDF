@@ -59,7 +59,7 @@ def launch():
 
 proc = launch()
 has = lambda s: any(s in l for l in lines)
-ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 180)
+ready = wait_for(lambda: has('FaLe PDF bereit'), 180)
 if not ready and not [l for l in lines if l.strip()]:
     # the console stream stayed completely silent (busy CI runners: simctl attaches late) – launch once more
     print('::warning::Konsole blieb stumm – App wird ein zweites Mal gestartet', flush=True)
@@ -68,7 +68,7 @@ if not ready and not [l for l in lines if l.strip()]:
     except Exception:
         pass
     proc = launch()
-    ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 150)
+    ready = wait_for(lambda: has('FaLe PDF bereit'), 150)
 time.sleep(3)
 sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/{LABEL}-start.png', check=False)
 errors = [l for l in lines if '[error]' in l and 'FALE-E2E' not in l]
