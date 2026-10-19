@@ -94,7 +94,7 @@ FAIR STATT ABO-FALLE
 PRIVAT AUS PRINZIP
 Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Kamera nur zum Scannen, Mitteilungen nur für deine Erinnerungen. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline.
 
-Oberfläche auf Deutsch und Englisch. Kostenlos, ohne Wasserzeichen.
+In deiner Sprache – die App folgt deinem Handy. Kostenlos, ohne Wasserzeichen.
 ```
 
 ## Feature-Bullets (für Grafiken / Screenshot-Untertitel)

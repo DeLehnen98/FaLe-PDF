@@ -3,8 +3,9 @@
 > Google Play limits: title ≤ 30, short description ≤ 80, full description ≤ 4000 characters.
 > Do not use other companies' trademarks (no names of other PDF/office apps or vendor product
 > names). Naming file formats (PDF, DOCX, XLSX, PPTX) is fine.
-> The app UI is available in English and German (Profile › Settings › Language; "Automatic" follows
-> the device language). Feature names below match the English UI (e.g. "Fill & Sign", "Organize pages",
+> The app UI follows the device language automatically (no language switch): German, English, French,
+> Spanish, Italian, Portuguese (Brazil), Dutch, Polish, Turkish, Ukrainian, Russian, Chinese (Simplified) – more
+> follow. Translated store listings: `store/listings/<lang>.md`. Feature names below match the English UI (e.g. "Fill & Sign", "Organize pages",
 > "Reading mode", "Redact", "Letters & templates"). The letter generators for cancellations, withdrawals,
 > objections etc. follow German law and create German letters – they are labelled "(Germany)" in the app.
 > Check the limits after every edit: `python3 store/check_listing.py`
@@ -98,7 +99,7 @@ FAIR, NOT A SUBSCRIPTION TRAP
 PRIVATE BY DESIGN
 No account needed, no banner ads, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
 
-Available in English and German. Free, no watermarks. Optional: FaLe Plus for more AI requests.
+Speaks your language: the app follows your phone's language automatically. Free, no watermarks. Optional: FaLe Plus for more AI requests.
 ```
 
 ## Feature bullets

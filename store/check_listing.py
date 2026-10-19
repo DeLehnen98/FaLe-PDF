@@ -1,11 +1,15 @@
-"""Check Google Play listing limits in store/listing-*.md (title ≤ 30, short ≤ 80, full ≤ 4000)."""
-import os, re, sys
+"""Check Google Play listing limits (title ≤ 30, short ≤ 80, full ≤ 4000) in store/listing-de.md, store/listing-en.md
+and the translated listings store/listings/<lang>.md (those use the English headings)."""
+import glob, os, re, sys
 LIM = [('title', 30), ('short', 80), ('full', 4000)]
 HEAD = {'de': ['App-Name', 'Kurzbeschreibung', 'Vollständige Beschreibung'], 'en': ['App name', 'Short description', 'Full description']}
 ok = True
-for lang in ('de', 'en'):
-    md = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), f'listing-{lang}.md'), encoding='utf-8').read()
-    for (key, lim), head in zip(LIM, HEAD[lang]):
+HERE = os.path.dirname(os.path.abspath(__file__))
+FILES = [('de', os.path.join(HERE, 'listing-de.md')), ('en', os.path.join(HERE, 'listing-en.md'))]
+FILES += [(os.path.basename(f)[:-3], f) for f in sorted(glob.glob(os.path.join(HERE, 'listings', '*.md')))]
+for lang, path in FILES:
+    md = open(path, encoding='utf-8').read()
+    for (key, lim), head in zip(LIM, HEAD.get(lang, HEAD['en'])):
         m = re.search(r'^## ' + re.escape(head) + r'.*?\n```\n(.*?)\n```', md, re.S | re.M)
         if not m: print(lang, key, 'NOT FOUND'); ok = False; continue
         text = m.group(1)
