@@ -12,7 +12,7 @@ export const TOOLS = [
   { id: 'komprimieren', group: 'organisieren', title: 'Komprimieren', tile: 'PDF verkleinern', desc: 'Dateigröße verringern – verlustfrei oder stark.', icon: 'compress', needsDoc: true, load: () => import('./compress.js') },
   { id: 'exportieren', group: 'konvertieren', title: 'Exportieren', tile: 'PDF zu Bild', desc: 'Seiten als PNG/JPG (ZIP) oder den Text als .txt speichern.', icon: 'export', needsDoc: true, load: () => import('./export.js') },
   { id: 'vorlesen', group: 'lesen', title: 'Vorlesen', tile: 'Vorlesen', desc: 'Dokumente mit der Sprachausgabe deines Geräts vorlesen lassen.', icon: 'speaker', needsDoc: true, viewer: true },
-  { id: 'passwort', group: 'sicherheit', pro: true, title: 'Passwort festlegen', tile: 'Passwort festlegen', desc: 'PDFs mit AES-256 verschlüsseln und Rechte (Drucken, Kopieren, Bearbeiten) festlegen.', icon: 'lock', needsDoc: true, load: () => import('./protect.js') },
+  { id: 'passwort', group: 'sicherheit', pro: true, title: 'Passwort festlegen', tile: 'Passwort festlegen', desc: 'PDFs mit AES-256 verschlüsseln und Rechte (Drucken, Kopieren, Bearbeiten) festlegen.', plain: { desc: 'Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.' }, icon: 'lock', needsDoc: true, load: () => import('./protect.js') },
   { id: 'passwort-entfernen', group: 'sicherheit', pro: true, title: 'Passwort entfernen', tile: 'Passwort entfernen', desc: 'Geschützte PDF mit Passwort öffnen und als ungeschützte Kopie speichern.', icon: 'unlock', needsDoc: true, load: () => import('./protect.js').then(m => ({ mount: m.mountRemove })) },
   { id: 'schwaerzen', group: 'sicherheit', pro: true, title: 'Schwärzen', tile: 'Schwärzen', desc: 'Vertrauliche Stellen und Suchbegriffe dauerhaft und sicher entfernen.', icon: 'redact', needsDoc: true, load: () => import('./redact.js') },
   { id: 'bearbeiten', group: 'bearbeiten', pro: true, title: 'PDF bearbeiten', tile: 'PDF bearbeiten', desc: 'Text und Bilder hinzufügen, vorhandenen Text überdecken und ersetzen.', icon: 'edit', needsDoc: true, load: () => import('./edit.js') },
@@ -37,7 +37,7 @@ export const TOOLS = [
   { id: 'qr-scannen', group: 'scannen', title: 'QR-Code scannen', tile: 'QR-Code scannen', desc: 'QR- und Barcodes mit der Kamera lesen – Links, WLAN, Kontakte, Text.', icon: 'qr', load: () => import('./scan.js').then(m => ({ mount: (s, o) => m.mount(s, { ...o, qrMode: true }) })) },
   { id: 'qr-erstellen', group: 'konvertieren', title: 'QR-Code erstellen', tile: 'QR-Code erstellen', desc: 'QR-Codes für Links, WLAN, Kontakte, E-Mail und Text – als Bild, SVG, PDF oder auf eine PDF-Seite.', icon: 'qr', load: () => import('./qrtool.js') },
   // Texterkennung (OCR, offline – modules in js/ocr/)
-  { id: 'text-erkennen', group: 'scannen', pro: true, title: 'Text erkennen (OCR)', tile: 'Text erkennen (OCR)', desc: 'Text aus Fotos, Scans und Bild-PDFs erkennen – kopieren, teilen, als Text, Word oder durchsuchbare PDF.', icon: 'text', load: () => import('./ocr.js') },
+  { id: 'text-erkennen', group: 'scannen', pro: true, title: 'Text erkennen (OCR)', tile: 'Text erkennen (OCR)', desc: 'Text aus Fotos, Scans und Bild-PDFs erkennen – kopieren, teilen, als Text, Word oder durchsuchbare PDF.', plain: { title: 'Text aus Fotos holen', desc: 'Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.' }, icon: 'text', load: () => import('./ocr.js') },
   { id: 'durchsuchbar', group: 'konvertieren', pro: true, title: 'Durchsuchbares PDF', tile: 'Durchsuchbares PDF', desc: 'Gescannte PDFs per Texterkennung durchsuchbar machen – das Aussehen bleibt unverändert.', icon: 'search', needsDoc: true, load: () => import('./ocr.js').then(m => ({ mount: m.mountSearchable })) },
   { id: 'bild-word', group: 'konvertieren', pro: true, title: 'Bild zu Word', tile: 'Bild zu Word', desc: 'Fotos und Scans per Texterkennung in ein bearbeitbares Word-Dokument (.docx) umwandeln.', icon: 'word', load: () => import('./ocr.js').then(m => ({ mount: m.mountWord })) },
   { id: 'bild-excel', group: 'konvertieren', pro: true, title: 'Bild zu Excel', tile: 'Bild zu Excel', desc: 'Tabellen auf Fotos und Screenshots erkennen und als Excel-Tabelle (.xlsx) speichern.', icon: 'grid', load: () => import('./ocr.js').then(m => ({ mount: m.mountExcel })) },
@@ -49,6 +49,13 @@ export const TOOLS = [
   { id: 'ppt-pdf', group: 'konvertieren', title: 'PowerPoint zu PDF', tile: 'PowerPoint zu PDF', desc: 'Präsentationen (.pptx) als PDF speichern – eine Seite pro Folie.', icon: 'kslides', load: () => import('../office/convert.js') },
   { id: 'text-pdf', group: 'konvertieren', title: 'Text zu PDF', tile: 'Text zu PDF', desc: 'Textdateien (.txt, .md) als PDF speichern.', icon: 'kdoc', load: () => import('../office/convert.js') },
 ];
+
+/** Title and description – in the simple view the plain words (tool.plain) where a tool has them. */
+export const toolText = (tool, simple) => ({
+  title: (simple && tool.plain && tool.plain.title) || tool.title,
+  tile: (simple && tool.plain && tool.plain.title) || tool.tile || tool.title,
+  desc: (simple && tool.plain && tool.plain.desc) || tool.desc,
+});
 
 export const GROUPS = [
   { id: 'bearbeiten', title: 'Bearbeiten & Unterschreiben' },

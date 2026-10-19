@@ -6322,6 +6322,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Name made from the content",
   "Arztbrief": "Doctor's letter",
   "Krankenkasse": "Health insurance",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "Protect the PDF with a password – only people who know it can open it.",
+  "Text aus Fotos holen": "Get text from photos",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Get the text out of photos and scans – to copy it or as a Word file.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "This PDF is not a special official form",
+  "Zum Kopieren oder als Word-Datei": "To copy, or as a Word file",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Take a photo of a letter or pick one. FaLe reads the text out of it – to copy, share or as a Word file.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

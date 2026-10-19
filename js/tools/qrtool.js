@@ -83,6 +83,18 @@ export async function mount(screen, { docId } = {}) {
     update();
   }
   wrap.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => { type = b.dataset.type; renderFields(); }));
+  // five tabs in a row – or three when a label (bigger text, long words in some languages) would be cut off
+  const typesBox = wrap.querySelector('.qt-types');
+  const fitTypes = () => {
+    typesBox.classList.remove('qt-3');
+    if ([...typesBox.querySelectorAll('.qt-type span')].some(s => s.scrollWidth > s.clientWidth + 1)) typesBox.classList.add('qt-3');
+  };
+  fitTypes();
+  setTimeout(fitTypes, 400); // after the labels are translated and the font is loaded
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTypes).catch(() => {});
+  let typesW = typesBox.clientWidth;
+  const typesRo = new ResizeObserver(() => { const w = typesBox.clientWidth; if (w !== typesW) { typesW = w; fitTypes(); } });
+  typesRo.observe(typesBox);
   form.addEventListener('input', e => {
     const t = e.target;
     if (t.name in values) values[t.name] = t.type === 'checkbox' ? t.checked : t.value;
@@ -191,7 +203,7 @@ export async function mount(screen, { docId } = {}) {
   // ---------- stamp onto a PDF page ----------
   const stampUi = await stampSection(wrap.querySelector('[data-stamp]'), { docId, getQr: () => qr, getColor: () => color, onResult: card => { resultBox.innerHTML = ''; resultBox.appendChild(card); resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } });
   renderFields();
-  return () => stampUi.destroy();
+  return () => { typesRo.disconnect(); stampUi.destroy(); };
 }
 
 /** Draw the code as vector rectangles; (x, top) = upper-left corner in PDF space. */

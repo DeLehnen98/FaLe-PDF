@@ -163,6 +163,11 @@ const PLAIN = [
   ['.result-title', 'Komprimiert', 'Fertig verkleinert'],
   // PDF zu Word
   ['.radio-card strong', 'Layout exakt', 'Genau wie das Original'],
+  // Text erkennen (OCR)
+  ['.screen-title', 'Text erkennen (OCR)', 'Text aus Fotos holen'],
+  ['.screen-head .sub', 'Text aus Fotos, Scans und Bild-PDFs', 'Zum Kopieren oder als Word-Datei'],
+  ['.card.intro strong', 'Text erkennen (OCR)', 'Text aus Fotos holen'],
+  ['.card.intro p', 'Erkennt Text in Fotos, Scans und PDF-Seiten ohne Textebene – als bearbeitbarer Text, Word-Datei oder durchsuchbare PDF.', 'Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.'],
 ];
 
 const norm = s => String(s || '').replace(/\s+/g, ' ').trim();

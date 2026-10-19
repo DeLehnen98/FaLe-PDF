@@ -851,7 +851,7 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
   const doc = await db.getDoc(id);
   if (token !== openToken) return;
   if (!doc) { toast('Dokument nicht gefunden.', 'error'); onCloseRequest(); return; }
-  q('title').textContent = doc.name;
+  nameWithBreaks(q('title'), doc.name);
   q('subtitle').textContent = pagesLabel(doc.pages);
   document.title = `${doc.name} – FaLe PDF`;
   db.updateDoc(id, { openedAt: Date.now() }).catch(() => {});
@@ -957,3 +957,13 @@ export async function closeViewer({ keepVisible = false } = {}) {
 }
 
 export function currentDocId() { return cur ? cur.doc.id : null; }
+
+/** File name in a narrow title: allowed line breaks before the extension and after - _ . (never "bericht.p|df"). */
+function nameWithBreaks(el, name) {
+  el.textContent = '';
+  const n = String(name || '');
+  const dot = n.lastIndexOf('.');
+  const base = dot > 0 ? n.slice(0, dot) : n, ext = dot > 0 ? n.slice(dot) : '';
+  base.split(/(?<=[-_ ])/).forEach((part, i) => { if (i) el.appendChild(document.createElement('wbr')); el.appendChild(document.createTextNode(part)); });
+  if (ext) { el.appendChild(document.createElement('wbr')); el.appendChild(document.createTextNode(ext)); }
+}

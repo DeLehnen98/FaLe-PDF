@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Naam gemaakt op basis van de inhoud",
   "Arztbrief": "Doktersbrief",
   "Krankenkasse": "Zorgverzekeraar",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "De pdf met een wachtwoord beveiligen – alleen wie het kent, kan hem openen.",
+  "Text aus Fotos holen": "Tekst uit foto’s halen",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Tekst uit foto’s en scans halen – om te kopiëren of als Word-bestand.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "Deze pdf is geen speciaal overheidsformulier",
+  "Zum Kopieren oder als Word-Datei": "Om te kopiëren of als Word-bestand",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Maak een foto van een brief of kies er een. FaLe haalt de tekst eruit – om te kopiëren, te delen of als Word-bestand.",
 };
 
 export const defaultValues = {

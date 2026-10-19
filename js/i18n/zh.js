@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "名称根据内容自动生成",
   "Arztbrief": "医生来信",
   "Krankenkasse": "医疗保险",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "用密码保护 PDF——只有知道密码的人才能打开。",
+  "Text aus Fotos holen": "从照片中提取文字",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "从照片和扫描件中提取文字——可复制，或保存为 Word 文件。",
+  "Diese PDF ist kein spezielles Behörden-Formular": "这个 PDF 不是特殊的政府表格",
+  "Zum Kopieren oder als Word-Datei": "可复制，或保存为 Word 文件",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "给信件拍张照或选一张照片。FaLe 会读出其中的文字——可复制、分享或保存为 Word 文件。",
 };
 
 export const defaultValues = {

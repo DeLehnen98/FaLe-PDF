@@ -6,7 +6,8 @@ import * as db from './db.js';
 import { importFiles, onLibraryChange } from './library.js';
 import { openViewer, closeViewer, setViewerCloseHandler, viewerOpen } from './viewer.js';
 import { openScreen, closeScreen, renderChooser, currentScreen } from './screen.js';
-import { TOOLS, toolById, handoff } from './tools/index.js';
+import { TOOLS, toolById, handoff, toolText } from './tools/index.js';
+import { simpleOn } from './simple.js';
 import { renderHome, renderFiles, renderTools, renderSearch, renderSettings, importFromDevice, showNewMenu } from './views.js';
 import { syncThemeColor, toggleTheme, effectiveDark } from './theme.js';
 import { oicon, detectKind, unsupportedReason, openHash } from './office/kinds.js';
@@ -166,7 +167,8 @@ async function openTool(id, params) {
   }
   const docId = params.get('doc');
   if (tool.viewer && docId) { location.replace(`#/ansicht/${docId}?vorlesen=1`); return; }
-  const screen = openScreen({ title: tool.title, sub: tool.desc, onBack: goBack });
+  const tx = toolText(tool, simpleOn());
+  const screen = openScreen({ title: tx.title, sub: tx.desc, onBack: goBack });
   screen.hashKey = location.hash;
   if ((tool.needsDoc || tool.viewer) && !docId) {
     await renderChooser(screen, {

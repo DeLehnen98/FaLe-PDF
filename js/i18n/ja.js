@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "名前は内容から自動で付けました",
   "Arztbrief": "医師からの手紙",
   "Krankenkasse": "健康保険",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "PDF をパスワードで保護します。パスワードを知っている人だけが開けます。",
+  "Text aus Fotos holen": "写真から文字を取り出す",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "写真やスキャンから文字を取り出します。コピーするか Word ファイルにできます。",
+  "Diese PDF ist kein spezielles Behörden-Formular": "この PDF は特別な公的書式ではありません",
+  "Zum Kopieren oder als Word-Datei": "コピーするか Word ファイルに",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "手紙を撮影するか写真を選んでください。FaLe が文字を読み取ります。コピー、共有、Word ファイルにできます。",
 };
 
 export const defaultValues = {

@@ -871,3 +871,13 @@
 .sc-autoname { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
 .sc-autoname svg { width: 15px; height: 15px; flex: none; color: var(--primary); }
 .sc-rename { background: none; border: 0; padding: 6px 4px; min-height: 32px; color: var(--primary); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+/* long labels (bigger text, Russian, Hindi …) wrap inside the button instead of being cut off */
+/* js/tools/qrtool.js switches to three columns (.qt-3) when a label would not fit */
+.qt-type span { max-width: 100%; text-align: center; white-space: nowrap; overflow: hidden; line-height: 1.15; }
+.qt-types.qt-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.qt-types.qt-3 .qt-type span { white-space: normal; overflow-wrap: break-word; }
+/* bigger text: the side panel gets wider and its three tab words stay whole (never "Gliederun|g") */
+@media (max-width: 900px) { html:is(.ts-l, .ts-xl) .v-panel { width: min(360px, 92vw); } }
+html:is(.ts-l, .ts-xl) .v-panel .tabs .tab { font-size: min(calc(13.5px * var(--ts, 1)), 15.5px); }
+/* simple view: QR code as picture or PDF – the vector format (SVG) only in the full view */
+html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: none; }

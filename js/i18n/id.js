@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Nama dibuat dari isinya",
   "Arztbrief": "Surat dokter",
   "Krankenkasse": "Asuransi kesehatan",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "Lindungi PDF dengan kata sandi – hanya yang tahu kata sandinya yang bisa membukanya.",
+  "Text aus Fotos holen": "Ambil teks dari foto",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Ambil teks dari foto dan hasil pindaian – untuk disalin atau sebagai file Word.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "PDF ini bukan formulir resmi khusus",
+  "Zum Kopieren oder als Word-Datei": "Untuk disalin atau sebagai file Word",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Foto sebuah surat atau pilih fotonya. FaLe membaca teksnya – untuk disalin, dibagikan, atau sebagai file Word.",
 };
 
 export const defaultValues = {

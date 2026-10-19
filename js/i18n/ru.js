@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Название создано по содержимому",
   "Arztbrief": "Письмо от врача",
   "Krankenkasse": "Медицинская страховка",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "Защитите PDF паролем – открыть его сможет только тот, кто знает пароль.",
+  "Text aus Fotos holen": "Текст из фото",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Извлеките текст из фото и сканов – чтобы скопировать или как файл Word.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "Этот PDF не является специальной официальной формой",
+  "Zum Kopieren oder als Word-Datei": "Чтобы скопировать или как файл Word",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Сфотографируйте письмо или выберите фото. FaLe прочитает текст – чтобы скопировать, отправить или как файл Word.",
 };
 
 export const defaultValues = {

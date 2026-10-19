@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "이름이 내용에서 자동으로 만들어졌습니다",
   "Arztbrief": "의사 소견서",
   "Krankenkasse": "건강보험",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "PDF를 비밀번호로 보호합니다. 비밀번호를 아는 사람만 열 수 있습니다.",
+  "Text aus Fotos holen": "사진에서 글자 가져오기",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "사진과 스캔에서 글자를 가져옵니다. 복사하거나 Word 파일로 저장할 수 있습니다.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "이 PDF는 특별한 관공서 서식이 아닙니다",
+  "Zum Kopieren oder als Word-Datei": "복사하거나 Word 파일로",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "편지를 사진으로 찍거나 사진을 고르세요. FaLe가 글자를 읽어 냅니다. 복사, 공유하거나 Word 파일로 저장할 수 있습니다.",
 };
 
 export const defaultValues = {

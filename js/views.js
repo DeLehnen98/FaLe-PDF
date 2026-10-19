@@ -187,7 +187,7 @@ export async function renderHome() {
     TOOLS.forEach(t => { if (!quick.includes(t) && quick.length < 12) quick.push(t); });
     quick.forEach(t => {
       const b = h(`<button class="tile ${t.soon ? 'soon' : ''} g-${t.group || ''}" type="button" role="listitem" data-tool="${t.id}">
-        <span class="tile-ic">${oicon(t.icon)}</span><span class="tile-label">${esc(t.tile || t.title)}</span>${t.soon ? '<span class="badge">Bald</span>' : t.pro ? '<span class="badge pro-badge" title="Bei anderen Apps kostenpflichtig">Pro</span>' : ''}</button>`);
+        <span class="tile-ic">${oicon(t.icon)}</span><span class="tile-label">${esc(Tools.toolText(t, simpleOn()).tile)}</span>${t.soon ? '<span class="badge">Bald</span>' : t.pro ? '<span class="badge pro-badge" title="Bei anderen Apps kostenpflichtig">Pro</span>' : ''}</button>`);
       b.addEventListener('click', () => toolClick(t));
       tiles.appendChild(b);
     });
@@ -309,8 +309,9 @@ const GROUPS = Tools.GROUPS || [
 ];
 
 function toolCard(t) {
+  const tx = Tools.toolText(t, simpleOn());
   const b = h(`<button class="tool-card" type="button" data-tool="${t.id}"><span class="tile-ic">${oicon(t.icon)}</span>
-    <span class="tc-text"><h3>${esc(t.title)}</h3><p>${esc(t.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : t.pro ? '<span class="badge pro-badge inline-badge" title="Bei anderen Apps nur im Abo">Pro · gratis</span>' : ''}</span></button>`);
+    <span class="tc-text"><h3>${esc(tx.title)}</h3><p>${esc(tx.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : t.pro ? '<span class="badge pro-badge inline-badge" title="Bei anderen Apps nur im Abo">Pro · gratis</span>' : ''}</span></button>`);
   b.addEventListener('click', () => toolClick(t));
   return b;
 }

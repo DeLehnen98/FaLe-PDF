@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "नाम सामग्री से अपने-आप बना",
   "Arztbrief": "डॉक्टर का पत्र",
   "Krankenkasse": "स्वास्थ्य बीमा",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "PDF को पासवर्ड से सुरक्षित करें – सिर्फ़ पासवर्ड जानने वाला ही इसे खोल सकेगा।",
+  "Text aus Fotos holen": "फ़ोटो से टेक्स्ट निकालें",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "फ़ोटो और स्कैन से टेक्स्ट निकालें – कॉपी करने के लिए या Word फ़ाइल के रूप में।",
+  "Diese PDF ist kein spezielles Behörden-Formular": "यह PDF कोई ख़ास सरकारी फ़ॉर्म नहीं है",
+  "Zum Kopieren oder als Word-Datei": "कॉपी करने के लिए या Word फ़ाइल के रूप में",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "किसी पत्र की फ़ोटो लें या कोई फ़ोटो चुनें। FaLe उसमें से टेक्स्ट पढ़ लेगा – कॉपी करने, शेयर करने या Word फ़ाइल के रूप में।",
 };
 
 export const defaultValues = {

@@ -66,7 +66,7 @@ export async function mount(screen, { docId }) {
     const kind = await xfaKind(pdf);
     pdf.destroy();
     screen.body.innerHTML = `<div class="screen-inner"><div class="card xfa-info">${icon('form')}<div>
-      <h2>${kind === 'hybrid' ? 'Dieses Formular kannst du normal ausfüllen' : 'Das ist kein Behörden-Formular im XFA-Format'}</h2>
+      <h2>${kind === 'hybrid' ? 'Dieses Formular kannst du normal ausfüllen' : 'Diese PDF ist kein spezielles Behörden-Formular'}</h2>
       <p>Öffne es mit „Ausfüllen &amp; unterschreiben“ – dort kannst du auch unterschreiben.</p>
       <a class="btn btn-primary" href="#/werkzeug/unterschreiben?doc=${esc(docId)}">${icon('sign')} Ausfüllen &amp; unterschreiben</a></div></div></div>`;
     return;

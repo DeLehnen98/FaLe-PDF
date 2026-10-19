@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Nome creato dal contenuto",
   "Arztbrief": "Lettera del medico",
   "Krankenkasse": "Assicurazione sanitaria",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "Proteggi il PDF con una password: solo chi la conosce può aprirlo.",
+  "Text aus Fotos holen": "Estrai il testo dalle foto",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Estrai il testo da foto e scansioni – da copiare o come file Word.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "Questo PDF non è un modulo ufficiale speciale",
+  "Zum Kopieren oder als Word-Datei": "Da copiare o come file Word",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Fotografa una lettera o scegline una. FaLe ne estrae il testo – da copiare, condividere o come file Word.",
 };
 
 export const defaultValues = {

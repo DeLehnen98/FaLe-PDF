@@ -6304,6 +6304,12 @@ export default {
   "Name automatisch aus dem Inhalt": "Ad içerikten oluşturuldu",
   "Arztbrief": "Doktor mektubu",
   "Krankenkasse": "Sağlık sigortası",
+  "Die PDF mit einem Passwort schützen – nur wer es kennt, kann sie öffnen.": "PDF’yi bir parolayla koruyun – yalnızca parolayı bilen açabilir.",
+  "Text aus Fotos holen": "Fotoğraflardan metin al",
+  "Text aus Fotos und Scans herausholen – zum Kopieren oder als Word-Datei.": "Fotoğraf ve taramalardaki metni alın – kopyalamak için veya Word dosyası olarak.",
+  "Diese PDF ist kein spezielles Behörden-Formular": "Bu PDF özel bir resmî form değil",
+  "Zum Kopieren oder als Word-Datei": "Kopyalamak için ya da Word dosyası olarak",
+  "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Bir mektubun fotoğrafını çekin ya da bir fotoğraf seçin. FaLe metni okur – kopyalamak, paylaşmak ya da Word dosyası olarak.",
 };
 
 export const defaultValues = {
