@@ -898,6 +898,8 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
     syncMarkButton();
     // image-only PDF (scan/photo): offer the text recognition
     import('./ocr/banner.js').then(m => m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
+    // authority form that exists only as XFA: the page shows a placeholder → offer the form screen
+    import('./tools/xfaform.js').then(m => m.showXfaBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
     saveProgress(id, startPage, pdf.numPages);
     applyWakeLock();
     if (query) openFind(query);

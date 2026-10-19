@@ -28,6 +28,17 @@ export async function mount(screen, { docId }) {
   try { const pm = await import('../extras/profile.js'); profile = pm && pm.getProfile ? await pm.getProfile() : null; } catch { profile = null; }
   if (profile && !Object.values(profile).some(v => typeof v === 'string' && v.trim())) profile = null;
   const { pdf } = await loadPdf(bytes.slice(), { name: doc.name, key: docId });
+  // XFA-only authority form: here only its placeholder page exists, and saving would drop the form –
+  // send the user to the form screen (fill in there, save "Als normale PDF", then sign that copy here)
+  const { xfaKind } = await import('./xfaform.js');
+  if (await xfaKind(pdf) === 'pure') {
+    pdf.destroy();
+    screen.body.innerHTML = `<div class="screen-inner"><div class="card xfa-info">${icon('form')}<div>
+      <h2>Das ist ein Behörden-Formular</h2>
+      <p>Es lässt sich nur im Formular-Bereich ausfüllen. Zum Unterschreiben: dort ausfüllen, „Als normale PDF“ speichern und die neue Datei hier öffnen.</p>
+      <a class="btn btn-primary" href="#/werkzeug/behoerdenformular?doc=${esc(docId)}">${icon('form')} Formular ausfüllen</a></div></div></div>`;
+    return;
+  }
   let alive = true;
 
   // ---- form fields (pdf-lib) ----

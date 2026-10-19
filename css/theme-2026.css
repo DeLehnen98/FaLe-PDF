@@ -429,3 +429,25 @@ html.simple .viewer .vbar-top .icon-btn[data-cap] .ic { width: 22px; height: 22p
 @media (max-width: 600px) {
   #view-start .hero p, #view-start .hero .hero-badge { max-width: calc(100% - 92px); }
 }
+
+/* ---------- "Zuletzt geöffnet": the last files right under the search (start screen) ---------- */
+.recent-strip { margin-top: 18px; }
+.recent-strip .section-title { margin-top: 0; }
+.rs-row { display: flex; gap: 12px; overflow-x: auto; padding: 2px 2px 10px; margin: 0 -2px; scroll-snap-type: x proximity; scrollbar-width: thin; }
+.rs-card { flex: none; width: 116px; display: grid; gap: 8px; color: var(--text); text-decoration: none; scroll-snap-align: start; border-radius: 14px; outline-offset: 3px; }
+.rs-card .doc-thumb { width: 116px; height: 150px; border-radius: 12px; overflow: hidden; display: grid; place-items: center; background: var(--surface);
+  border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(20, 22, 50, .06), 0 4px 14px rgba(20, 22, 50, .06); transition: transform .15s, box-shadow .15s; }
+.rs-card .doc-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.rs-card .doc-thumb.kind { background: var(--surface); }
+.rs-card:hover .doc-thumb, .rs-card:focus-visible .doc-thumb { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(20, 22, 50, .08), 0 10px 24px rgba(20, 22, 50, .1); }
+.rs-name { font-size: calc(13.5px * var(--ts, 1)); font-weight: 600; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+html:is(.ts-l, .ts-xl) .rs-card { width: 136px; }
+html:is(.ts-l, .ts-xl) .rs-card .doc-thumb { width: 136px; height: 170px; }
+@media (prefers-reduced-motion: reduce) { .rs-card .doc-thumb { transition: none; } }
+
+/* phones: a slimmer start banner – the files and tools come into view sooner */
+@media (max-width: 600px) {
+  #view-start .hero { padding-top: 20px; padding-bottom: 20px; }
+  #view-start .hero h1 { font-size: clamp(1.75rem, 8vw, 2.1rem); }
+  #view-start .hero p { margin-bottom: 14px; }
+}

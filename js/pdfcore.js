@@ -90,12 +90,13 @@ export async function askPassword(name, wrong) {
  * Load a PDF from bytes. Prompts for a password if needed.
  * @returns {Promise<{pdf: any, password: string|null}>}
  */
-export async function loadPdf(data, { name = '', key = null } = {}) {
+export async function loadPdf(data, { name = '', key = null, xfa = false } = {}) {
   const bytes = data instanceof Uint8Array ? data.slice() : new Uint8Array(data.slice(0));
   let usedPassword = key ? knownPassword(key) || null : null;
   if (!usedPassword && bytePasswords.size) usedPassword = bytePasswords.get(fingerprint(bytes)) || null;
   let autoSupplied = !!usedPassword;
-  const task = pdfjsLib.getDocument({ ...DOC_OPTIONS, data: bytes, worker: worker(), password: usedPassword || undefined });
+  // xfa: only the XFA form screen (js/tools/xfaform.js) turns pdf.js' XFA engine on – for forms that exist only as XFA
+  const task = pdfjsLib.getDocument({ ...DOC_OPTIONS, enableXfa: !!xfa, data: bytes, worker: worker(), password: usedPassword || undefined });
   let cancelled = false;
   task.onPassword = async (update, reason) => {
     // a remembered password that no longer fits is not the user's typo: ask without the warning

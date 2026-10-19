@@ -832,3 +832,24 @@
   :root:not([data-theme="light"]) .cmp-stats .del b, :root:not([data-theme="light"]) .cmp-pagechip .del { color: #FF8787; }
   :root:not([data-theme="light"]) .cmp-stats .rep b, :root:not([data-theme="light"]) .cmp-pagechip .rep { color: #FFC078; }
 }
+
+/* ---------- Behörden-Formular (XFA, js/tools/xfaform.js) ---------- */
+.screen-body.xfa-body { overflow: hidden; display: flex; flex-direction: column; }
+.xfa-bar { display: flex; align-items: center; gap: 8px; margin: 10px 16px 8px; }
+.xfa-zoom { display: flex; gap: 4px; flex: none; }
+.xfa-tip { flex: 1 1 auto; min-width: 0; display: flex; gap: 10px; align-items: flex-start; margin: 0; padding: 10px 14px; border-radius: var(--radius-md, 14px); background: var(--primary-soft); color: var(--text); font-size: calc(14px * var(--ts, 1)); line-height: 1.4; }
+.xfa-tip .ic { flex: none; width: 20px; height: 20px; color: var(--primary); margin-top: 1px; }
+.xfa-stage { position: relative; flex: 1 1 auto; min-height: 240px; background: var(--surface-2); border-top: 1px solid var(--border); }
+.xfa-scroll { position: absolute; inset: 0; overflow: auto; outline: none; -webkit-overflow-scrolling: touch; }
+.xfa-scroll .pdfViewer { padding: 12px 0 24px; }
+.xfa-scroll .pdfViewer .page { margin: 0 auto 14px; border: none; box-shadow: 0 1px 3px rgba(20, 22, 50, .12), 0 6px 22px rgba(20, 22, 50, .08); background: #fff; }
+/* the form's own fields: clearly recognisable as fields, big enough to hit */
+.xfa-scroll .xfaLayer :is(.xfaTextfield, .xfaSelect) { background: rgba(28, 100, 242, .07); }
+.xfa-scroll .xfaLayer :is(.xfaTextfield, .xfaSelect):focus { background: #fff; outline: 2px solid var(--primary); outline-offset: 0; }
+.xfa-scroll .xfaLayer :is(.xfaCheckbox, .xfaRadio) { accent-color: var(--primary); }
+.xfa-body [data-result]:empty { display: none; }
+.xfa-body [data-result] { flex: none; max-height: 40%; overflow: auto; border-top: 1px solid var(--border); }
+.card.xfa-info { display: flex; gap: 14px; align-items: flex-start; padding: 18px; margin-top: 16px; }
+.card.xfa-info > .ic { flex: none; width: 30px; height: 30px; color: var(--primary); }
+.card.xfa-info h2 { margin: 0 0 6px; font-size: calc(18px * var(--ts, 1)); }
+.card.xfa-info p { margin: 0 0 14px; color: var(--text-2); }

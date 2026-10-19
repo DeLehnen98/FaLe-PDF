@@ -302,3 +302,12 @@ textarea.sh-rq-msg { min-height: 72px; resize: vertical; padding-top: 10px; }
 .sh-rq-due-note .ic { width: 18px; height: 18px; color: var(--accent); }
 .sh-rq-due-note.late { background: color-mix(in srgb, var(--sh-warn) 14%, var(--surface)); }
 .sh-rq-due-note.late .ic { color: var(--sh-warn); }
+/* recipient page: quiet invitation below the file card */
+.card.sh-invite { display: flex; align-items: center; gap: 12px; margin-top: 12px; padding: 12px 14px; box-shadow: none; background: var(--surface-2); }
+.sh-invite-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--primary-soft); color: var(--primary); }
+.sh-invite-ic .ic { width: 20px; height: 20px; }
+.sh-invite .grow { min-width: 0; display: grid; gap: 2px; }
+.sh-invite strong { font-size: calc(14px * var(--ts, 1)); }
+.sh-invite span:not(.sh-invite-ic) { color: var(--text-2); font-size: calc(13px * var(--ts, 1)); }
+.sh-invite .btn { flex: none; }
+@media (max-width: 420px) { .card.sh-invite { flex-wrap: wrap; } .sh-invite .btn { margin-left: 48px; } }

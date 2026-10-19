@@ -133,6 +133,10 @@ export async function renderHome() {
         </div>
       </div>
       <div data-search></div>
+      <section class="recent-strip" data-recent-strip hidden aria-labelledby="recent-strip-title">
+        <h2 class="section-title" id="recent-strip-title">Zuletzt geöffnet <a class="btn btn-sm btn-ghost" href="#/dateien">Alle Dateien</a></h2>
+        <div class="rs-row" role="list"></div>
+      </section>
       <div class="simple-hint card" data-simple-hint hidden></div>
       <div class="rem-start" data-rem hidden></div>
       <div class="sm-start" data-smart-start hidden></div>
@@ -272,6 +276,13 @@ async function renderHomeList() {
     const label = { recent: 'Zuletzt', starred: 'Markiert', all: 'Auf diesem Gerät' }[b.dataset.tab];
     b.innerHTML = `${label}<span class="count">${counts[b.dataset.tab] || ''}</span>`;
   });
+  // the files people come back for, right at the top (what they open most is the PDF they just got)
+  const strip = $('[data-recent-strip]', el);
+  const recent = docs.filter(d => d.openedAt || d.createdAt).slice(0, 8);
+  strip.hidden = !recent.length;
+  const row = $('.rs-row', strip);
+  row.innerHTML = '';
+  recent.forEach(d => row.appendChild(h(`<a class="rs-card" role="listitem" href="${openHash(d)}" data-rs="${esc(d.id)}">${fileThumb(d)}<span class="rs-name" data-no-i18n>${esc(d.name)}</span></a>`)));
   let list = docs;
   if (homeTab === 'recent') list = docs.slice(0, 30);
   if (homeTab === 'starred') list = starred;
