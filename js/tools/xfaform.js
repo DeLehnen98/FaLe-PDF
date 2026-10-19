@@ -28,9 +28,12 @@ export async function xfaKind(pdf) {
   try {
     const { info } = await pdf.getMetadata();
     if (!info || !info.IsXFAPresent) return null;
+    // real authority forms often carry a signature field (or an empty container) next to the XFA part – only normal
+    // fillable fields (text, check box, choice …) make a "hybrid" form that the normal fill-in tool can handle
     let fields = null;
     try { fields = await pdf.getFieldObjects(); } catch { fields = null; }
-    return fields && Object.keys(fields).length ? 'hybrid' : 'pure';
+    const fillable = Object.values(fields || {}).flat().filter(f => f && f.type && f.type !== 'signature' && f.page >= 0);
+    return fillable.length ? 'hybrid' : 'pure';
   } catch { return null; }
 }
 
@@ -88,6 +91,15 @@ export async function mount(screen, { docId }) {
     const next = Math.min(4, Math.max(0.4, viewer.currentScale * (b.dataset.zoom === '1' ? 1.25 : 0.8)));
     viewer.currentScaleValue = String(next);
   }));
+  // Forms made with the usual form designer show a red "JavaScript is disabled / JavaScript ist deaktiviert …" line
+  // that their own script would hide on opening. Form scripts never run here (safety), so the line would only confuse.
+  const JS_NOTE = /javascript/i, JS_NOTE2 = /(disabled|deaktiviert|désactivé|desactivado|disattivato|enable|aktivieren|activez)/i;
+  const hideJsNotes = root => root.querySelectorAll('.xfaLayer .xfaRich, .xfaLayer .xfaTextfield[readonly]').forEach(el => {
+    const t = el.textContent || '';
+    if (t.length < 400 && JS_NOTE.test(t) && JS_NOTE2.test(t)) { const w = el.closest('.xfaWrapper') || el; w.hidden = true; w.style.display = 'none'; }
+  });
+  const mo = new MutationObserver(() => hideJsNotes(scroll));
+  mo.observe(scroll, { childList: true, subtree: true });
   let dirty = false;
   const onPagesInit = () => { viewer.currentScaleValue = scroll.clientWidth < 700 ? 'page-width' : 'auto'; };
   eventBus.on('pagesinit', onPagesInit);
@@ -149,6 +161,7 @@ export async function mount(screen, { docId }) {
 
   return () => {
     alive = false;
+    mo.disconnect();
     eventBus.off('pagesinit', onPagesInit);
     try { viewer.setDocument(null); linkService.setDocument(null); } catch {}
     try { pdf.destroy(); } catch {}
@@ -234,8 +247,10 @@ export async function flattenXfa(viewer, pdf, onProgress = null) {
     if (!layer) throw new UserError('Das Formular ist noch nicht geladen – bitte kurz warten und noch einmal versuchen.');
     const page1 = await pdf.getPage(n);
     const vp = page1.getViewport({ scale: 1 });
-    const pageEl = layer.querySelector('.xfaPage') || layer;
-    const box = pageEl.getBoundingClientRect();
+    const pageEl = layer;
+    // the page box itself (the XFA layer's own box can be narrower than the page – content is positioned absolutely)
+    const pr = pv.div.getBoundingClientRect();
+    const box = { left: pr.left + pv.div.clientLeft, top: pr.top + pv.div.clientTop, width: pv.div.clientWidth || pr.width };
     const k = vp.width / box.width; // CSS px on screen → PDF points
     const page = out.addPage([vp.width, vp.height]);
     const X = x => (x - box.left) * k, Y = y => vp.height - (y - box.top) * k;
@@ -247,6 +262,8 @@ export async function flattenXfa(viewer, pdf, onProgress = null) {
       const r = el.getBoundingClientRect();
       if (!r.width || !r.height) continue;
       const bg = rgbOf(cs.backgroundColor);
+      // form buttons ("Validate", "Clear form" …) only work on screen – they are left out of the printable copy
+      if (el.closest('button, .xfaButton')) continue;
       if (bg && !/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) page.drawRectangle({ x: X(r.left), y: Y(r.bottom), width: r.width * k, height: r.height * k, color: rgb(bg.r, bg.g, bg.b), opacity: bg.a });
       const side = (w, st, col, x0, y0, x1, y1) => {
         if (px(w) <= 0 || st === 'none' || st === 'hidden') return;
@@ -259,16 +276,23 @@ export async function flattenXfa(viewer, pdf, onProgress = null) {
       side(cs.borderLeftWidth, cs.borderLeftStyle, cs.borderLeftColor, r.left, r.top, r.left, r.bottom);
       side(cs.borderRightWidth, cs.borderRightStyle, cs.borderRightColor, r.right, r.top, r.right, r.bottom);
     }
-    const drawText = async (text, left, baseline, cs) => {
+    // maxW: the width the text has on screen (CSS px) – forms use narrow fonts (e.g. Myriad) that the PDF draws in
+    // Helvetica/Liberation; a line is set slightly smaller when it would otherwise run into its neighbour
+    const drawText = async (text, left, baseline, cs, maxW = 0) => {
       const clean = String(text).replace(/\s+/g, ' ').trim();
       if (!clean) return;
-      const size = Math.max(4, px(cs.fontSize) * k);
+      let size = Math.max(4, px(cs.fontSize) * k);
       const bold = (parseInt(cs.fontWeight, 10) || 400) >= 600;
       const c = rgbOf(cs.color) || { r: 0, g: 0, b: 0, a: 1 };
       const opts = { x: X(left), y: Y(baseline), size, color: rgb(c.r, c.g, c.b), bold };
       if (await drawTextImage(page, out, clean, opts)) return;
       const font = await fontFor(clean, bold);
-      page.drawText(cleanText(clean, font).text, { ...opts, font });
+      const t = cleanText(clean, font).text;
+      if (maxW > 0) {
+        const w = font.widthOfTextAtSize(t, size), room = maxW * k * 1.02;
+        if (w > room) opts.size = size = Math.max(3, size * room / w);
+      }
+      page.drawText(t, { ...opts, font });
     };
     // 2) static texts (captions, labels, rich text)
     const walker = document.createTreeWalker(pageEl, NodeFilter.SHOW_TEXT);
@@ -278,7 +302,7 @@ export async function flattenXfa(viewer, pdf, onProgress = null) {
       if (!el || el.closest('select, textarea, button')) continue;
       const cs = getComputedStyle(el);
       if (!visible(el, cs) || !t.nodeValue.trim()) continue;
-      for (const ln of textLines(t)) await drawText(ln.text, ln.left, ln.bottom - (ln.bottom - ln.top) * 0.22, cs);
+      for (const ln of textLines(t)) await drawText(ln.text, ln.left, ln.bottom - (ln.bottom - ln.top) * 0.22, cs, ln.right - ln.left);
     }
     // 3) field values
     for (const el of pageEl.querySelectorAll('input, textarea, select')) {
@@ -309,18 +333,26 @@ export async function flattenXfa(viewer, pdf, onProgress = null) {
       for (let i = 0; i < lines.length; i++) {
         const base = top + lh * i + size * 0.95;
         if (base > r.bottom + 1) break;
-        await drawText(lines[i], r.left + padL, base, cs);
+        await drawText(lines[i], r.left + padL, base, cs, r.width - padL * 2);
       }
     }
-    // 4) images (data URLs inside the form)
+    // 4) images (logos …) – data: or blob: URLs made by pdf.js; PNG and JPEG by their first bytes
     for (const img of pageEl.querySelectorAll('img')) {
       const r = img.getBoundingClientRect();
       const src = img.getAttribute('src') || '';
-      if (!r.width || !r.height || !/^data:image\/(png|jpe?g)/i.test(src)) continue;
+      if (!r.width || !r.height || !/^(data:image\/|blob:)/i.test(src)) continue;
       try {
-        const bytes = Uint8Array.from(atob(src.split(',')[1]), c => c.charCodeAt(0));
-        const emb = /png/i.test(src.slice(0, 20)) ? await out.embedPng(bytes) : await out.embedJpg(bytes);
-        page.drawImage(emb, { x: X(r.left), y: Y(r.bottom), width: r.width * k, height: r.height * k, rotate: degrees(0) });
+        const bytes = src.startsWith('data:') ? Uint8Array.from(atob(src.split(',')[1]), c => c.charCodeAt(0)) : new Uint8Array(await (await fetch(src)).arrayBuffer());
+        const png = bytes[0] === 0x89 && bytes[1] === 0x50, jpg = bytes[0] === 0xff && bytes[1] === 0xd8;
+        let emb = png ? await out.embedPng(bytes) : jpg ? await out.embedJpg(bytes) : null;
+        if (!emb && img.complete && img.naturalWidth) {
+          // other formats (GIF, BMP, TIFF …): let the browser draw it and take a PNG
+          const c = document.createElement('canvas');
+          c.width = img.naturalWidth; c.height = img.naturalHeight;
+          c.getContext('2d').drawImage(img, 0, 0);
+          emb = await out.embedPng(new Uint8Array(await (await new Promise(res => c.toBlob(res, 'image/png'))).arrayBuffer()));
+        }
+        if (emb) page.drawImage(emb, { x: X(r.left), y: Y(r.bottom), width: r.width * k, height: r.height * k, rotate: degrees(0) });
       } catch (e) { console.warn('xfa image', e); }
     }
     await new Promise(r => setTimeout(r, 0)); // keep the UI responsive between pages

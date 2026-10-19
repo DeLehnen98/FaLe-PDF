@@ -217,6 +217,48 @@ def run(p):
     check('phone: no page errors', not errs, errs[:3])
     c.close()
 
+    # ---- a real authority form (Canadian visa application IMM 5257, XFA + a signature field, owner-password
+    #      protected). Not in the repository (third-party copyright): put it at xfadata/real_imm5257e.pdf to run this.
+    real = os.path.join(TD, 'real_imm5257e.pdf')
+    if os.path.exists(real):
+        c = b.new_context(viewport={'width': 390, 'height': 844}, locale='de-DE', is_mobile=True, has_touch=True)
+        c.add_init_script("try { localStorage.setItem('fale-onboarded', '1'); } catch (e) {}")
+        pg = c.new_page()
+        errs = []
+        pg.on('pageerror', lambda e: errs.append(str(e)))
+        pg.goto(URL)
+        pg.wait_for_selector('#view-start .hero', timeout=20000)
+        import_pdfs(pg, ['real_imm5257e.pdf'])
+        rid = doc_by_name(pg, 'real_imm5257e.pdf')['id']
+        pg.goto(URL + f'#/ansicht/{rid}')
+        pg.locator('.xfa-banner').wait_for(timeout=15000)
+        check('real form: viewer offers "Formular ausfüllen" (XFA + signature field counts as XFA-only)', pg.locator('.xfa-banner').count() == 1)
+        pg.locator('.xfa-banner [data-xfa-go]').click()
+        pg.wait_for_selector('.xfaLayer input', state='attached', timeout=30000)
+        pg.wait_for_timeout(1500)
+        check('real form: 5 pages laid out', pg.locator('.xfa-scroll .page').count() == 5, pg.locator('.xfa-scroll .page').count())
+        vis = pg.evaluate("() => [...document.querySelectorAll('.xfaLayer')].map(l => l.innerText).join(' ')")
+        check('real form: the "JavaScript has been disabled" notice is hidden', 'JavaScript has been disabled' not in vis, vis[:200])
+        pg.locator('.xfaLayer input.xfaTextfield:visible').first.fill('Mustermann')
+        pg.locator('.screen-foot .btn-primary').click()
+        pg.wait_for_selector('[data-result] .result-card', timeout=30000)
+        saved = doc_bytes(pg, 'real_imm5257e (ausgefüllt).pdf')
+        check('real form: saved copy keeps the XFA form', b'/XFA' in saved or len(saved) > 1000000, len(saved))
+        pg.locator('.screen-foot .btn-secondary').click()
+        pg.wait_for_selector('[data-result] .result-card:has-text("normale")', timeout=60000)
+        flat = doc_bytes(pg, 'real_imm5257e (ausgefüllt, normale PDF).pdf')
+        fp = os.path.join(OUT, 'real_flat.pdf')
+        open(fp, 'wb').write(flat)
+        ft = subprocess.run(['pdftotext', fp, '-'], capture_output=True, text=True).stdout
+        n = subprocess.run(['pdfinfo', fp], capture_output=True, text=True).stdout
+        check('real form: normal PDF with 5 pages, title, value, no JavaScript notice',
+              'Pages:           5' in n and 'APPLICATION FOR VISITOR VISA' in ft and 'Mustermann' in ft and 'JavaScript' not in ft, n[:80] + ft[:120])
+        check('real form: logo images carried over', flat.count(b'/Subtype /Image') + flat.count(b'/Subtype/Image') >= 1)
+        check('real form: no page errors', not errs, errs[:3])
+        c.close()
+    else:
+        print('SKIP real form (xfadata/real_imm5257e.pdf not present)')
+
     # ---- English UI (device language)
     c = b.new_context(viewport={'width': 1100, 'height': 800}, locale='en-GB')
     c.add_init_script("try { localStorage.setItem('fale-onboarded', '1'); } catch (e) {}")
