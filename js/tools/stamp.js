@@ -9,6 +9,7 @@ import { saveResult } from '../library.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, parseRange, hexToRgb, makeSanitizer, readImageFile, swatches, tick, proBadge, updateFoot } from './common.js';
+import { needsUnicode, uniFont } from '../office/unifont.js';
 
 const STAMP_COLORS = [
   { c: '#9AA0B4', n: 'Grau' }, { c: '#1F2340', n: 'Schwarz' }, { c: '#E03131', n: 'Rot' },
@@ -35,7 +36,12 @@ function metrics() {
 function layout(mode, s, ctx) {
   const { VW, VH, index, count, pageNum, total, fonts, docName } = ctx;
   const ops = [];
-  const width = (t, size, bold) => (bold ? fonts.bold : fonts.regular).widthOfTextAtSize(t, size);
+  // Helvetica metrics; Liberation Sans (used for Polish, Turkish, Cyrillic … text) has the same widths, so a letter
+  // Helvetica cannot encode is measured as a similar Latin letter
+  const width = (t, size, bold) => {
+    const f = bold ? fonts.bold : fonts.regular;
+    try { return f.widthOfTextAtSize(t, size); } catch { return f.widthOfTextAtSize(String(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\x20-\x7e\u00a0-\u00ff]/g, 'o'), size); }
+  };
   if (mode === 'watermark') {
     const rad = (s.rotation * Math.PI) / 180, cos = Math.cos(rad), sin = Math.sin(rad);
     let w, hh;
@@ -126,6 +132,13 @@ export async function stampPdf(bytes, mode, settings = {}, { name = 'Dokument', 
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   const clean = makeSanitizer(font);
+  // text with letters beyond Western European (e.g. Turkish "GİZLİ", Polish, Cyrillic): Liberation Sans subset
+  const uni = { r: null, b: null };
+  const uniFor = async isBold => {
+    const k = isBold ? 'b' : 'r';
+    if (uni[k] === null) { try { uni[k] = await uniFont(pdfDoc, { bold: isBold, PDFLib }); } catch (e) { console.warn('unicode font', e); uni[k] = false; } }
+    return uni[k] ? { font: uni[k], clean: makeSanitizer(uni[k]) } : null;
+  };
   let image = null;
   if (mode === 'watermark' && s.kind === 'image' && s.image) image = s.image.type === 'png' ? await pdfDoc.embedPng(s.image.bytes) : await pdfDoc.embedJpg(s.image.bytes);
   const pages = pdfDoc.getPages();
@@ -151,7 +164,8 @@ export async function stampPdf(bytes, mode, settings = {}, { name = 'Dokument', 
       const rot = degrees((op.rot || 0) + R);
       if (op.kind === 'text') {
         const [r, g, b] = hexToRgb(op.color);
-        page.drawText(clean(op.text), { x, y, size: op.size, font: op.bold ? bold : font, color: rgb(r, g, b), opacity: op.opacity, rotate: rot });
+        const u = needsUnicode(op.text) ? await uniFor(!!op.bold) : null;
+        page.drawText(u ? u.clean(op.text) : clean(op.text), { x, y, size: op.size, font: u ? u.font : op.bold ? bold : font, color: rgb(r, g, b), opacity: op.opacity, rotate: rot });
       } else if (op.kind === 'image' && image) {
         page.drawImage(image, { x, y, width: op.w, height: op.h, opacity: op.opacity, rotate: rot });
       }

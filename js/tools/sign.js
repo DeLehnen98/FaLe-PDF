@@ -8,6 +8,7 @@ import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { updateFoot, ensureCss } from './common.js';
 import { pickAsset } from './sigstore.js';
+import { needsUnicode, uniFont } from '../office/unifont.js';
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 import { matchProfile, profileMenuItems } from './profilefill.js';
@@ -492,7 +493,12 @@ export async function mount(screen, { docId }) {
   async function build() {
     const { StandardFonts, degrees, rgb } = PDFLib;
     const pdfDoc = await loadEditable(bytes, doc.name, { key: docId });
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    // Helvetica (tiny, unchanged look) unless the text needs more than Western European letters (Polish, Turkish,
+    // Czech, Cyrillic, Greek …): then Liberation Sans is embedded as a subset (js/office/unifont.js)
+    const allText = fields.filter(f => f.type === 'text').map(f => String(f.value ?? '')).concat(items.filter(i => i.kind === 'text').map(i => i.text || '')).join('\n');
+    let font = null;
+    if (needsUnicode(allText)) { try { font = await uniFont(pdfDoc, { PDFLib }); } catch (e) { console.warn('unicode font', e); } }
+    if (!font) font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const clean = makeSanitizer(font);
     // 1) form fields
     if (fields.length) {

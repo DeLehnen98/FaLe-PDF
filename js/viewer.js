@@ -33,21 +33,21 @@ function buildDom() {
   const el = root();
   el.innerHTML = `
   <header class="vbar vbar-top">
-    <button class="icon-btn" type="button" data-v="back" data-label="Zurück" aria-label="Zurück">${icon('back')}</button>
+    <button class="icon-btn" type="button" data-v="back" data-cap="Zurück" aria-label="Zurück">${icon('back')}</button>
     <div class="v-title"><strong data-v="title">Dokument</strong><span data-v="subtitle"></span></div>
     <div class="v-actions">
-      <button class="icon-btn" type="button" data-v="reflow" data-label="Lesen" aria-label="Lesemodus" title="Lesemodus (Text umbrechen)">${icon('book')}</button>
-      <button class="icon-btn" type="button" data-v="mark" data-label="Merken" aria-label="Lesezeichen für diese Seite" aria-pressed="false" title="Lesezeichen setzen">${icon('bookmark')}</button>
-      <button class="icon-btn" type="button" data-v="find" data-label="Suchen" aria-label="Im Dokument suchen" aria-pressed="false">${icon('search')}</button>
-      <button class="icon-btn" type="button" data-v="panel" data-label="Seiten" aria-label="Seitenleiste mit Seiten und Gliederung" aria-pressed="false">${icon('panel')}</button>
+      <button class="icon-btn" type="button" data-v="reflow" data-cap="Lesen" aria-label="Lesemodus" title="Lesemodus (Text umbrechen)">${icon('book')}</button>
+      <button class="icon-btn" type="button" data-v="mark" data-cap="Merken" aria-label="Lesezeichen für diese Seite" aria-pressed="false" title="Lesezeichen setzen">${icon('bookmark')}</button>
+      <button class="icon-btn" type="button" data-v="find" data-cap="Suchen" aria-label="Im Dokument suchen" aria-pressed="false">${icon('search')}</button>
+      <button class="icon-btn" type="button" data-v="panel" data-cap="Seiten" aria-label="Seitenleiste mit Seiten und Gliederung" aria-pressed="false">${icon('panel')}</button>
       <span class="v-sep hide-sm"></span>
-      <button class="icon-btn hide-sm" type="button" data-v="read" data-label="Vorlesen" aria-label="Vorlesen">${icon('speaker')}</button>
-      <button class="icon-btn hide-sm" type="button" data-v="rotate" data-label="Drehen" aria-label="Ansicht drehen">${icon('rotate')}</button>
-      <button class="icon-btn hide-sm" type="button" data-v="night" data-label="Nacht" aria-label="Nachtmodus" aria-pressed="false">${icon('moon')}</button>
-      <button class="icon-btn hide-sm" type="button" data-v="print" data-label="Drucken" aria-label="Drucken">${icon('print')}</button>
-      <button class="icon-btn hide-sm" type="button" data-v="download" data-label="Herunterladen" aria-label="Herunterladen">${icon('download')}</button>
-      <button class="icon-btn hide-sm" type="button" data-v="share" data-label="Teilen" aria-label="Teilen">${icon('share')}</button>
-      <button class="icon-btn" type="button" data-v="more" data-label="Mehr" aria-label="Weitere Aktionen">${icon('more')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="read" data-cap="Vorlesen" aria-label="Vorlesen">${icon('speaker')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="rotate" data-cap="Drehen" aria-label="Ansicht drehen">${icon('rotate')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="night" data-cap="Nacht" aria-label="Nachtmodus" aria-pressed="false">${icon('moon')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="print" data-cap="Drucken" aria-label="Drucken">${icon('print')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="download" data-cap="Herunterladen" aria-label="Herunterladen">${icon('download')}</button>
+      <button class="icon-btn hide-sm" type="button" data-v="share" data-cap="Teilen" aria-label="Teilen">${icon('share')}</button>
+      <button class="icon-btn" type="button" data-v="more" data-cap="Mehr" aria-label="Weitere Aktionen">${icon('more')}</button>
     </div>
   </header>
   <div class="findbar" data-v="findbar" hidden>

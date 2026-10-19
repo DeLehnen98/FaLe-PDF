@@ -42,7 +42,7 @@ const SKIP = [
   '.x2-table', '.ocr-tbl', '#sh-live',
 ];
 const SKIP_SEL = SKIP.join(',');
-const ATTRS = ['placeholder', 'title', 'aria-label', 'alt', 'data-tooltip', 'aria-description', 'data-label'];
+const ATTRS = ['placeholder', 'title', 'aria-label', 'alt', 'data-tooltip', 'aria-description', 'data-label', 'data-cap'];
 const BTN_INPUT = /^(button|submit|reset)$/i;
 
 // Default values of text inputs that are generated text (e.g. watermark "VERTRAULICH"):

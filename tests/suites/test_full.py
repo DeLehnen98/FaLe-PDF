@@ -350,7 +350,7 @@ def desktop(p):
         goto_hash(page, f"#/werkzeug/unterschreiben?doc={ids['formular.pdf']}")
         page.wait_for_selector('.sign-page canvas', timeout=15000)
         check('form panel lists fields', page.locator('.form-panel [data-fi]').count() == 4)
-        page.locator('.form-panel input.input').first.fill('Max Müller')
+        page.locator('.form-panel input.input').first.fill('Max Müller Łódź')
         page.locator('.form-panel input[type=checkbox]').first.check()
         sels = page.locator('.form-panel select')
         # tarif dropdown + zahlung radio (order of fields as created)
@@ -367,7 +367,7 @@ def desktop(p):
         page.locator('[data-mode="text"]').click()
         page.mouse.click(box['x'] + box['width'] * 0.55, box['y'] + 60)
         page.wait_for_timeout(200)
-        page.keyboard.type('Hallo Welt')
+        page.keyboard.type('Hallo Welt Zażółć')
         page.mouse.click(box['x'] + 5, box['y'] + 500)  # deselect
         # date
         page.locator('[data-mode="date"]').click()
@@ -416,8 +416,8 @@ def desktop(p):
         path = download_result(page, 'signed.pdf')
         n, txt, ok, r = pdf_info(path)
         check('signed pdf 1 page', n == 1 and ok)
-        check('signed has form value', 'Max Müller' in txt, txt[:200].replace('\n', ' '))
-        check('signed has free text', 'Hallo Welt' in txt)
+        check('signed has form value (Unicode font for Polish letters)', 'Max Müller Łódź' in txt, txt[:200].replace('\n', ' '))
+        check('signed has free text (Unicode)', 'Hallo Welt Zażółć' in txt, txt[:300].replace('\n', ' '))
         import datetime
         check('signed has date', datetime.date.today().strftime('%d.%m.%Y') in txt)
         res = node_pages(path)

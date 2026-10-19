@@ -482,7 +482,7 @@ def desktop(p):
     # ---------------- watermark / page numbers / header-footer ----------------
     def stamps():
         goto(page, f"#/werkzeug/wasserzeichen?doc={ids['bericht.pdf']}", '.pt-prev-overlay')
-        page.locator('[name=text]').fill('ENTWURF')
+        page.locator('[name=text]').fill('ENTWURF GİZLİ')
         page.wait_for_timeout(300)
         check('watermark preview drawn', nonblank_canvas(page, '.pt-prev-overlay') >= 0)
         shot(page, 'desktop_wasserzeichen')
@@ -492,7 +492,10 @@ def desktop(p):
         from pypdf import PdfReader
         wm = sum('ENTWURF' in (pg.extract_text() or '') for pg in PdfReader(path).pages)
         check('watermark on all 6 pages', wm == 6, str(wm))
-        # image watermark on pages 2-3
+        t1 = PdfReader(path).pages[0].extract_text() or ''
+        check('watermark keeps Turkish letters (Unicode font)', 'ENTWURF GİZLİ' in t1, t1[-120:])
+        # image watermark on pages 2-3 (leave the tool first: the same address again would keep the old result open)
+        goto(page, '#/start', '#view-start .hero')
         goto(page, f"#/werkzeug/wasserzeichen?doc={ids['bericht.pdf']}", '.pt-prev-overlay')
         with page.expect_file_chooser() as fc:
             page.locator('[data-kind=image]').click()
@@ -537,7 +540,7 @@ def desktop(p):
         no_toast(page)
         W = 595.27
         page.mouse.click(*at(page, 1, 400, 40, W)); page.wait_for_timeout(250)
-        page.keyboard.type('Freigegeben am Montag')
+        page.keyboard.type('Freigegeben Łódź Şişli')
         page.mouse.click(*at(page, 1, 500, 20, W))
         page.locator('.pt-tool[data-tool=replace]').click()
         b = text_box(page, ids['struktur.pdf'], 1, 'Einleitung')
@@ -555,7 +558,7 @@ def desktop(p):
         page.wait_for_selector('.pt-result .result-card', timeout=30000)
         path = download(page, 'edited.pdf')
         t = pdftext(path, 1, 1)
-        check('edit: new text added', 'Freigegeben am Montag' in t)
+        check('edit: new text added (Polish/Turkish letters via the Unicode font)', 'Freigegeben Łódź Şişli' in t, t[:200])
         check('edit: replacement text present', 'Vorwort' in t)
     step('edit', edit)
 

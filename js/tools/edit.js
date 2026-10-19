@@ -8,6 +8,7 @@ import { loadPdf } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, PageStage, INK_COLORS, swatches, hexToRgb, makeSanitizer, readImageFile, guardLeave, proBadge, updateFoot } from './common.js';
 import { pageChars, nearestChar } from './textgeom.js';
+import { needsUnicode, fontForText } from '../office/unifont.js';
 
 const MODES = [
   { id: 'select', label: 'Auswählen', icon: 'pointer', hint: 'Elemente antippen zum Bearbeiten, ziehen zum Verschieben.' },
@@ -464,7 +465,8 @@ export async function mount(screen, { docId }) {
           page.drawImage(emb, { x, y, width: it.w, height: it.h, rotate: degrees(angle) });
         } else if (it.type === 'text') {
           if (!it.text || !it.text.trim()) continue;
-          const font = await getFont(it.font, it.bold);
+          // Polish, Turkish, Cyrillic, Greek …: Liberation Sans (embedded subset) instead of a standard font
+          const font = needsUnicode(it.text) ? await fontForText(pdfDoc, it.text, { family: it.font, bold: it.bold, PDFLib }) : await getFont(it.font, it.bold);
           const clean = makeSanitizer(font);
           const [r, g, b] = hexToRgb(it.color);
           it.text.split('\n').forEach((line, i) => {
