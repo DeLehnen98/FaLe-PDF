@@ -222,8 +222,13 @@ async function buildSigned({ bytes, meta, info, idx, values, view, me, hashIn, s
   const PDFLib = await loadPdfLib();
   const { StandardFonts, rgb, degrees } = PDFLib;
   const pdfDoc = await PDFLib.PDFDocument.load(bytes, { updateMetadata: false });
-  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const { makeSanitizer } = await import('../tools/common.js');
+  const U = await import('../office/unifont.js');
+  // names and values with letters beyond Western European (Łukasz, Şahin, Иван …): Liberation Sans subset
+  const typed = [...values].map(([, v]) => (v && v.kind !== 'image' ? String(v.text || '') : '')).join('\n');
+  let font = null;
+  if (U.needsUnicode(typed)) { try { font = await U.uniFont(pdfDoc, { PDFLib }); } catch (e) { console.warn('unicode font', e); } }
+  if (!font) font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const clean = makeSanitizer(font);
   const pages = pdfDoc.getPages();
   for (const [fi, v] of values) {
@@ -254,8 +259,11 @@ async function buildSigned({ bytes, meta, info, idx, values, view, me, hashIn, s
 
   // ---- audit page (stays German/English bilingual: it is document content)
   const doc2 = await PDFLib.PDFDocument.load(signedBytes, { updateMetadata: false });
-  const helv = await doc2.embedFont(StandardFonts.Helvetica);
-  const bold = await doc2.embedFont(StandardFonts.HelveticaBold);
+  let helv = await doc2.embedFont(StandardFonts.Helvetica);
+  let bold = await doc2.embedFont(StandardFonts.HelveticaBold);
+  if (U.needsUnicode([me.name, meta.name, meta.from].join('\n'))) {
+    try { [helv, bold] = await Promise.all([U.uniFont(doc2, { PDFLib }), U.uniFont(doc2, { PDFLib, bold: true })]); } catch (e) { console.warn('unicode font', e); }
+  }
   const mono = await doc2.embedFont(StandardFonts.Courier);
   const c2 = makeSanitizer(helv);
   const page = doc2.addPage([595.28, 841.89]);

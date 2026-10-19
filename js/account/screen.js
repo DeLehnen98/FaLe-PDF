@@ -368,24 +368,15 @@ async function showRecoveryKey(text, { first = false } = {}) {
   }); } finally { releaseSecure(); }
 }
 
-async function recoveryPdf(text, email) {
+export async function recoveryPdf(text, email) {
   const { loadPdfLib } = await import('../pdflib.js');
   const P = await loadPdfLib();
   const doc = await P.PDFDocument.create();
   const page = doc.addPage([595.28, 841.89]);
-  const font = await doc.embedFont(P.StandardFonts.Helvetica), bold = await doc.embedFont(P.StandardFonts.HelveticaBold), mono = await doc.embedFont(P.StandardFonts.CourierBold);
   const ink = P.rgb(0.08, 0.09, 0.18), muted = P.rgb(0.31, 0.33, 0.46);
   let y = 770;
   const { t, locale } = await import('../i18n/index.js'); // the PDF follows the UI language
-  page.drawText(t('FaLe Sync – Wiederherstellungsschlüssel'), { x: 56, y, size: 20, font: bold, color: ink }); y -= 30;
-  page.drawText(t('Konto: {email}', { email: email || '' }), { x: 56, y, size: 11, font, color: muted }); y -= 16;
-  page.drawText(t('Erstellt am {date}', { date: new Date().toLocaleDateString(locale()) }), { x: 56, y, size: 11, font, color: muted }); y -= 40;
-  page.drawRectangle({ x: 48, y: y - 92, width: 499, height: 112, borderColor: P.rgb(0.23, 0.22, 0.63), borderWidth: 1.5, color: P.rgb(0.96, 0.96, 1) });
-  const groups = text.split('-');
-  for (let row = 0; row < 2; row++) {
-    page.drawText(groups.slice(row * 7, row * 7 + 7).join('  '), { x: 66, y: y - 18 - row * 40, size: 17, font: mono, color: ink });
-  }
-  y -= 140;
+  const U = await import('../office/unifont.js');
   const lines = [
     'Mit diesem Schlüssel entsperrst du FaLe Sync auf einem neuen Gerät, falls du dein',
     'Sync-Passwort vergessen hast. Bewahre ihn sicher auf (z. B. bei deinen Unterlagen).',
@@ -395,7 +386,46 @@ async function recoveryPdf(text, email) {
     'So geht es: FaLe PDF öffnen > Ich > FaLe-Konto > anmelden >',
     '„Passwort vergessen? Wiederherstellungsschlüssel verwenden“.',
   ];
-  for (const l of lines) { page.drawText(l ? t(l) : '', { x: 56, y, size: 11, font, color: ink }); y -= 17; }
+  const texts = tr => [tr('FaLe Sync – Wiederherstellungsschlüssel'), tr('Konto: {email}', { email: email || '' }),
+    tr('Erstellt am {date}', { date: new Date().toLocaleDateString(locale()) }), ...lines.map(l => (l ? tr(l) : ''))];
+  let T = texts(t);
+  // fonts: Helvetica when the language fits Western European letters; Liberation Sans for Polish, Turkish, Cyrillic …;
+  // scripts no font of the app has (Chinese, Japanese, Korean, Hindi …) get the English text instead of "????"
+  let font = await doc.embedFont(P.StandardFonts.Helvetica), bold = await doc.embedFont(P.StandardFonts.HelveticaBold);
+  const mono = await doc.embedFont(P.StandardFonts.CourierBold);
+  if (U.needsUnicode(T.join('\n'))) {
+    try {
+      const [ur, ub] = await Promise.all([U.uniFont(doc, { PDFLib: P }), U.uniFont(doc, { PDFLib: P, bold: true })]);
+      if (U.unsupportedChars(T.join('\n')).length) {
+        const { subst } = await import('../i18n/core.js');
+        const en = (await import('../i18n/en.js')).default;
+        T = texts((s, v) => subst(en[s] ?? s, v || {}));
+        if (U.needsUnicode(T.join('\n'))) { font = ur; bold = ub; }
+      } else { font = ur; bold = ub; }
+    } catch (e) { console.warn('unicode font', e); }
+  }
+  const draw = (s, o) => page.drawText(U.cleanText(s, o.font).text, o);
+  draw(T[0], { x: 56, y, size: 20, font: bold, color: ink }); y -= 30;
+  draw(T[1], { x: 56, y, size: 11, font, color: muted }); y -= 16;
+  draw(T[2], { x: 56, y, size: 11, font, color: muted }); y -= 40;
+  page.drawRectangle({ x: 48, y: y - 92, width: 499, height: 112, borderColor: P.rgb(0.23, 0.22, 0.63), borderWidth: 1.5, color: P.rgb(0.96, 0.96, 1) });
+  const groups = text.split('-');
+  for (let row = 0; row < 2; row++) {
+    page.drawText(groups.slice(row * 7, row * 7 + 7).join('  '), { x: 66, y: y - 18 - row * 40, size: 17, font: mono, color: ink });
+  }
+  y -= 140;
+  // translations are longer than the German lines: wrap at the right margin
+  const wrap = (str, max) => {
+    const out = [];
+    let cur = '';
+    for (const w of U.cleanText(str, font).text.split(/(\s+)/)) {
+      const next = cur + w;
+      if (cur.trim() && font.widthOfTextAtSize(next.trim(), 11) > max) { out.push(cur.trim()); cur = w.trimStart(); } else cur = next;
+    }
+    out.push(cur.trim());
+    return out;
+  };
+  for (const l of T.slice(3)) for (const part of (l ? wrap(l, 483) : [''])) { draw(part, { x: 56, y, size: 11, font, color: ink }); y -= 17; }
   const bytes = await doc.save();
   const { saveFile } = await import('../platform.js');
   await saveFile(bytes, t('FaLe-Sync-Wiederherstellungsschluessel.pdf'), 'application/pdf');
