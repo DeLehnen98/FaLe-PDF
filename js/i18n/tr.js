@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Fotoğraflar ve taramalar küçültülür, önceki kadar okunaklı kalır. Metin, bağlantılar ve formlar değişmez.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "Dosya çoğunlukla fotoğraf veya taramalardan oluşuyor. „Görselleri küçült” ile çok daha küçük olur – metin metin olarak kalır.",
   "Verkleinere Bild {0}/{1} …": "Görsel küçültülüyor {0}/{1} …",
+  "Häkchen": "Onay işareti",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Onay işaretinin gideceği kutuya dokunun.",
+  "Auswahl bearbeiten": "Seçimi düzenle",
+  "Zeichen": "Simge",
+  "Kreuz": "Çarpı",
 };
 
 export const defaultValues = {

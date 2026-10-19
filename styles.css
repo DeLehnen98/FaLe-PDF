@@ -748,4 +748,33 @@ mark {
 /* keep toasts above the viewer / tool footers */
 .viewer:not([hidden]) ~ .toasts { bottom: calc(86px + var(--safe-b)); }
 .screen:not([hidden]) ~ .toasts { bottom: calc(92px + var(--safe-b)); }
-.s-text:empty::before { content: "Text eingeben"; color: #6B6F8C; }
+.s-text:empty::before { content: attr(data-cap); color: #6B6F8C; }
+
+/* ---------- Ausfüllen & unterschreiben: check marks and the bottom bar (js/tools/sign.js) ---------- */
+.s-mark { display: grid; place-items: center; }
+.s-mark svg.mk { width: 100%; height: 100%; pointer-events: none; }
+.s-item.sel .s-del { display: none; } /* deleting is in the bottom bar (big button) */
+.s-mark.sel .s-resize { display: none; }
+.s-mark.sel { outline-offset: 4px; }
+.sign-bar { flex: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 10px 12px; background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -6px 18px rgba(20, 22, 50, .06); }
+.sign-bar .sb-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.sign-bar .sb-row > * { flex-shrink: 0; }
+.sign-bar .sb-row > .sb-text { flex-shrink: 1; }
+.sign-bar .grow { flex: 1 1 0; }
+.sign-bar .sb-hint { display: flex; align-items: center; gap: 8px; flex: 1 1 220px; min-width: 0; font-weight: 600; color: var(--text); }
+.sign-bar .sb-hint .ic { flex: none; width: 20px; height: 20px; color: var(--primary); }
+.sign-bar .sb-textrow { flex-wrap: nowrap; }
+.sign-bar .sb-text { flex: 1 1 auto; min-width: 0; width: auto; min-height: 48px; font-size: max(16px, calc(17px * var(--ts, 1))); }
+.sign-bar .sb-btn { min-height: 44px; padding: 0 12px; gap: 6px; }
+.sign-bar .sb-sizes { display: inline-flex; align-items: center; gap: 2px; }
+.sign-bar .sb-a { font-family: Georgia, serif; font-weight: 700; font-size: 1.15em; margin-right: 1px; }
+.sign-bar .sb-a.small { font-size: .85em; }
+.sign-bar .sb-size { min-width: 2.2em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
+.sign-bar .sb-colors { display: inline-flex; gap: 6px; }
+.sign-bar .sb-color { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--surface); background: var(--c); box-shadow: 0 0 0 1px var(--border); cursor: pointer; padding: 0; }
+.sign-bar .sb-color[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--primary); }
+.sign-bar .sb-syms button { width: 44px; min-height: 40px; display: grid; place-items: center; }
+.sign-bar .sb-syms svg.mk { width: 20px; height: 20px; }
+.sign-bar .sb-del { color: var(--danger); }
+@media (pointer: coarse) and (min-width: 420px) { .sign-bar .sb-color { width: 40px; height: 40px; } }
+@media (max-width: 480px) { .sign-bar .sb-del span { display: none; } }

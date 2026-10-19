@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Zdjęcia i skany zostaną pomniejszone – tak samo czytelne jak wcześniej. Tekst, linki i formularze pozostaną bez zmian.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "Plik składa się głównie ze zdjęć lub skanów. Dzięki „Zmniejsz obrazy” będzie znacznie mniejszy – tekst pozostanie tekstem.",
   "Verkleinere Bild {0}/{1} …": "Zmniejszanie obrazu {0}/{1} …",
+  "Häkchen": "Znacznik",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Dotknij pola, w którym ma się znaleźć znacznik.",
+  "Auswahl bearbeiten": "Edytuj zaznaczenie",
+  "Zeichen": "Symbol",
+  "Kreuz": "Krzyżyk",
 };
 
 export const defaultValues = {

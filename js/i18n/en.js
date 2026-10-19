@@ -6312,6 +6312,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Photos and scans are scaled down – just as easy to read as before. Text, links and forms stay unchanged.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "The file consists mostly of photos or scans. With “Shrink images” it gets much smaller – the text stays text.",
   "Verkleinere Bild {0}/{1} …": "Shrinking image {0}/{1} …",
+  "Häkchen": "Check mark",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Tap the box where the check mark should go.",
+  "Auswahl bearbeiten": "Edit selection",
+  "Zeichen": "Symbol",
+  "Kreuz": "Cross",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

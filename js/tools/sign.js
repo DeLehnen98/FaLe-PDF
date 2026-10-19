@@ -6,7 +6,7 @@ import { resultCard } from '../components.js';
 import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
-import { updateFoot, ensureCss } from './common.js';
+import { updateFoot, ensureCss, hexToRgb } from './common.js';
 import { pickAsset } from './sigstore.js';
 import { needsUnicode, uniFont, drawTextImage } from '../office/unifont.js';
 import { locale } from '../i18n/index.js'; // the date is written in the user's own format
@@ -15,6 +15,9 @@ const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track
 import { matchProfile, profileMenuItems } from './profilefill.js';
 
 const BASELINE = 0.946; // baseline offset (em) for Helvetica/Arial with line-height 1.2
+/** Check mark / cross / dot for paper forms (drawn the same way in the PDF, see build()). */
+const markSvg = sym => `<svg class="mk" data-sym="${sym}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">${
+  sym === 'cross' ? '<path d="M4.3 4.3l15.4 15.4M19.7 4.3L4.3 19.7"/>' : sym === 'dot' ? '<circle cx="12" cy="12" r="7.2" fill="currentColor" stroke="none"/>' : '<path d="M3.4 13.2l6.2 6 11-14.4"/>'}</svg>`;
 const today = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 export async function mount(screen, { docId }) {
@@ -69,13 +72,16 @@ export async function mount(screen, { docId }) {
     ${fields.length ? `<button class="btn btn-ghost btn-sm" type="button" data-mode="form" aria-pressed="false">${icon('form')} Formular (${fields.length})</button>` : ''}
     <button class="btn btn-ghost btn-sm" type="button" data-mode="text" aria-pressed="false">${icon('text')} Text</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="date" aria-pressed="false">${icon('calendar')} Datum</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-mode="mark" aria-pressed="false">${icon('check')} Häkchen</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="sign" aria-pressed="false">${icon('sign')} Unterschrift</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="initials" aria-pressed="false">${icon('pen')} Initialen</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="stamp" aria-pressed="false">${icon('stamp')} Stempel</button>
     ${profile ? `<button class="btn btn-ghost btn-sm" type="button" data-mode="profile" aria-pressed="false">${icon('contact')} Aus meinem Profil</button>` : ''}
     <span class="sign-hint" data-hint aria-live="polite">${fields.length ? 'Fülle die Formularfelder aus oder füge Text und Unterschrift ein.' : 'Wähle ein Werkzeug und tippe auf die Seite.'}</span></div>`);
   const layout = h(`<div class="sign-layout"><div class="sign-stage" data-stage><div class="sign-pages" data-pages></div></div></div>`);
-  screen.body.append(tools, layout);
+  // one bar at the bottom for everything about the selected item (big buttons instead of tiny handles on the page)
+  const bar = h(`<div class="sign-bar" data-bar hidden role="region" aria-label="Auswahl bearbeiten"></div>`);
+  screen.body.append(tools, layout, bar);
   const stage = $('[data-stage]', layout);
   const pagesBox = $('[data-pages]', layout);
   const hint = $('[data-hint]', tools);
@@ -307,7 +313,9 @@ export async function mount(screen, { docId }) {
       initials: 'Tippe auf die Stelle, an der die Initialen erscheinen sollen.',
       stamp: 'Tippe auf die Stelle, an der der Stempel erscheinen soll.',
       profile: `Tippe auf die Stelle für „${pendingText ? pendingText.label : ''}“.`,
+      mark: 'Tippe auf das Kästchen, in das das Häkchen soll.',
     }[m] || 'Elemente lassen sich verschieben und über den Griff unten rechts skalieren.';
+    renderBar();
   }
 
   $$('[data-mode]', tools).forEach(b => b.addEventListener('click', async () => {
@@ -346,41 +354,40 @@ export async function mount(screen, { docId }) {
     const r = pageEl.getBoundingClientRect();
     const x = (e.clientX - r.left) / scale;
     const y = (e.clientY - r.top) / scale;
-    if (mode === 'text' || mode === 'date' || (mode === 'profile' && pendingText)) {
-      const fontSize = 12;
-      const it = { kind: 'text', page: p.num, x, y: y - fontSize * 0.6, fontSize, text: mode === 'date' ? today() : mode === 'profile' ? pendingText.value : '' };
-      addItem(it, mode === 'text');
-    } else if ((mode === 'sign' || mode === 'initials' || mode === 'stamp') && pendingSig) {
-      const w = Math.min(mode === 'initials' ? 70 : mode === 'stamp' ? 150 : 180, p.base.width * 0.4, pendingSig.w * 0.75);
+    const placing = mode;
+    setMode(null); // first, so the new item's controls (and its text field) stay in the bar
+    if (placing === 'text' || placing === 'date' || (placing === 'profile' && pendingText)) {
+      const fontSize = lastSize;
+      const it = { kind: 'text', page: p.num, x, y: y - fontSize * 0.6, fontSize, color: lastColor, text: placing === 'date' ? today() : placing === 'profile' ? pendingText.value : '' };
+      addItem(it, placing === 'text');
+    } else if (placing === 'mark') {
+      const size = 14;
+      addItem({ kind: 'mark', sym: lastMark, page: p.num, x: x - size / 2, y: y - size / 2, size, color: lastColor });
+    } else if ((placing === 'sign' || placing === 'initials' || placing === 'stamp') && pendingSig) {
+      const w = Math.min(placing === 'initials' ? 70 : placing === 'stamp' ? 150 : 180, p.base.width * 0.4, pendingSig.w * 0.75);
       const hgt = w * (pendingSig.h / pendingSig.w);
       addItem({ kind: 'image', page: p.num, x: x - w / 2, y: y - hgt / 2, w, h: hgt, sig: pendingSig });
     }
-    setMode(null);
   });
 
   function addItem(it, edit = false) {
     items.push(it);
     const p = pageInfo[it.page - 1];
     const el = it.kind === 'text'
-      ? h(`<div class="s-item s-textbox"><span class="s-text" contenteditable="true" spellcheck="false" role="textbox" aria-label="Textfeld"></span></div>`)
-      : h(`<div class="s-item s-image" role="img" aria-label="Unterschrift"><img src="${it.sig.url}" alt=""></div>`);
+      ? h(`<div class="s-item s-textbox"><span class="s-text" role="textbox" aria-label="Textfeld" data-cap="Text eingeben"></span></div>`)
+      : it.kind === 'mark'
+        ? h(`<div class="s-item s-mark" role="img" aria-label="Häkchen">${markSvg(it.sym)}</div>`)
+        : h(`<div class="s-item s-image" role="img" aria-label="Unterschrift"><img src="${it.sig.url}" alt=""></div>`);
     el.insertAdjacentHTML('beforeend', `<button type="button" class="s-del" aria-label="Element entfernen">${icon('close')}</button>
       <button type="button" class="s-resize" aria-label="Größe ändern">${icon('resize')}</button>`);
     it.el = el;
-    if (it.kind === 'text') {
-      const span = $('.s-text', el);
-      span.textContent = it.text;
-      span.addEventListener('input', () => { it.text = span.textContent; markDirty(); });
-      span.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); span.blur(); } });
-      span.addEventListener('blur', () => { if (!it.text.trim()) removeItem(it); });
-    }
+    if (it.kind === 'text') $('.s-text', el).textContent = it.text;
     $('.s-del', el).addEventListener('click', e => { e.stopPropagation(); removeItem(it); });
     enableDrag(it);
     p.layer.appendChild(el);
     placeItem(it);
-    select(it);
+    select(it, { edit });
     markDirty();
-    if (edit) setTimeout(() => $('.s-text', el).focus(), 30);
   }
 
   function removeItem(it) {
@@ -388,7 +395,7 @@ export async function mount(screen, { docId }) {
     if (i < 0) return;
     items.splice(i, 1);
     it.el.remove();
-    if (selected === it) selected = null;
+    if (selected === it) { selected = null; renderBar(); }
     markDirty();
   }
 
@@ -397,16 +404,26 @@ export async function mount(screen, { docId }) {
     el.style.left = `${it.x * scale}px`;
     el.style.top = `${it.y * scale}px`;
     if (it.kind === 'text') {
-      $('.s-text', el).style.fontSize = `${it.fontSize * scale}px`;
+      const t = $('.s-text', el);
+      t.style.fontSize = `${it.fontSize * scale}px`;
+      t.style.color = it.color || '#111111';
+    } else if (it.kind === 'mark') {
+      el.style.width = el.style.height = `${it.size * scale}px`;
+      el.style.color = it.color || '#111111';
+      const mk = el.querySelector('svg.mk');
+      if (mk && mk.dataset.sym !== it.sym) mk.outerHTML = markSvg(it.sym);
     } else {
       el.style.width = `${it.w * scale}px`;
       el.style.height = `${it.h * scale}px`;
     }
   }
 
-  function select(it) {
+  function select(it, { edit = false } = {}) {
+    const prev = selected;
     selected = it;
     items.forEach(x => x.el.classList.toggle('sel', x === it));
+    if (prev && prev !== it && prev.kind === 'text' && !prev.text.trim()) removeItem(prev);
+    renderBar({ edit });
   }
 
   function enableDrag(it) {
@@ -415,12 +432,10 @@ export async function mount(screen, { docId }) {
     el.addEventListener('pointerdown', e => {
       if (e.target.closest('.s-del')) return;
       const resize = !!e.target.closest('.s-resize');
-      const editing = it.kind === 'text' && document.activeElement === $('.s-text', el);
-      if (editing && !resize) return;
-      select(it);
+      if (selected !== it) select(it);
       e.preventDefault();
       el.setPointerCapture(e.pointerId);
-      start = { x: e.clientX, y: e.clientY, ix: it.x, iy: it.y, w: it.w, h: it.h, fs: it.fontSize, resize, moved: false };
+      start = { x: e.clientX, y: e.clientY, ix: it.x, iy: it.y, w: it.w, h: it.h, fs: it.fontSize, sz: it.size, resize, moved: false };
     });
     el.addEventListener('pointermove', e => {
       if (!start) return;
@@ -430,6 +445,7 @@ export async function mount(screen, { docId }) {
       const p = pageInfo[it.page - 1];
       if (start.resize) {
         if (it.kind === 'text') it.fontSize = Math.max(6, Math.min(72, start.fs + dy * 0.6));
+        else if (it.kind === 'mark') it.size = Math.max(6, Math.min(60, start.sz + (dx + dy) / 2));
         else {
           const ratio = start.h / start.w;
           it.w = Math.max(30, Math.min(p.base.width, start.w + dx));
@@ -445,11 +461,76 @@ export async function mount(screen, { docId }) {
       if (!start) return;
       const wasMoved = start.moved, wasResize = start.resize;
       start = null;
-      if (wasMoved) markDirty();
-      else if (!wasResize && it.kind === 'text') { const s = $('.s-text', el); s.focus(); placeCaretEnd(s); }
+      if (wasMoved) { markDirty(); renderBar(); }
+      else if (!wasResize && it.kind === 'text') focusBarInput();
     };
     el.addEventListener('pointerup', end);
     el.addEventListener('pointercancel', end);
+  }
+
+  // ---- the bar: placing hint, or the controls of the selected item ----
+  const SIZES = [8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
+  const INK = [{ c: '#111111', n: 'Schwarz' }, { c: '#1C3FAA', n: 'Blau' }, { c: '#0B6B3A', n: 'Grün' }];
+  let lastColor = '#111111', lastSize = 12, lastMark = 'check';
+  function focusBarInput() { const i = bar.querySelector('[data-bar-text]'); if (i) { i.focus(); try { i.setSelectionRange(i.value.length, i.value.length); } catch {} } }
+  function renderBar({ edit = false } = {}) {
+    const it = selected;
+    if (!it && !mode) { bar.hidden = true; bar.innerHTML = ''; return; }
+    bar.hidden = false;
+    if (!it) {
+      bar.innerHTML = `<div class="sb-row"><span class="sb-hint">${icon('info')}<span>${esc(hint.textContent)}</span></span>
+        <button class="btn btn-ghost" type="button" data-bar-cancel>Abbrechen</button></div>`;
+      bar.querySelector('[data-bar-cancel]').addEventListener('click', () => setMode(null));
+      return;
+    }
+    const colors = it.kind === 'image' ? '' : `<span class="sb-colors" role="group" aria-label="Farbe">${INK.map(k => `<button type="button" class="sb-color" data-color="${k.c}" style="--c:${k.c}" aria-label="${k.n}" aria-pressed="${(it.color || '#111111') === k.c}"></button>`).join('')}</span>`;
+    const sizeLbl = it.kind === 'text' ? `<span class="sb-size" aria-live="polite">${Math.round(it.fontSize)}</span>` : '';
+    const syms = it.kind === 'mark' ? `<span class="seg sb-syms" role="group" aria-label="Zeichen">${['check', 'cross', 'dot'].map(k => `<button type="button" data-sym="${k}" aria-pressed="${it.sym === k}" aria-label="${{ check: 'Häkchen', cross: 'Kreuz', dot: 'Punkt' }[k]}">${markSvg(k)}</button>`).join('')}</span>` : '';
+    const done = `<button class="btn btn-primary sb-btn" type="button" data-bar-done>${icon('check')}<span>Fertig</span></button>`;
+    bar.innerHTML = `${it.kind === 'text' ? `<div class="sb-row sb-textrow"><input class="input sb-text" data-bar-text type="text" placeholder="Text eingeben" aria-label="Text" enterkeyhint="done" autocomplete="off" spellcheck="false">${done}</div>` : ''}
+      <div class="sb-row">${syms}
+        <span class="sb-sizes" role="group" aria-label="Größe"><button class="btn btn-ghost sb-btn" type="button" data-bar-size="-1" aria-label="Kleiner"><span class="sb-a small">A</span>−</button>${sizeLbl}<button class="btn btn-ghost sb-btn" type="button" data-bar-size="1" aria-label="Größer"><span class="sb-a">A</span>+</button></span>
+        ${colors}
+        <span class="grow"></span>
+        <button class="btn btn-ghost sb-btn sb-del" type="button" data-bar-del aria-label="Löschen">${icon('trash')}<span>Löschen</span></button>
+        ${it.kind === 'text' ? '' : done}</div>`;
+    const input = bar.querySelector('[data-bar-text]');
+    if (input) {
+      input.value = it.text;
+      input.addEventListener('input', () => { it.text = input.value; $('.s-text', it.el).textContent = it.text; markDirty(); });
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); select(null); } });
+      // focus right away, inside the tap: iPhones only open the keyboard then, and nothing typed gets lost
+      if (edit) focusBarInput();
+    }
+    bar.querySelectorAll('[data-bar-size]').forEach(b => b.addEventListener('click', () => {
+      const up = b.dataset.barSize === '1';
+      if (it.kind === 'text') {
+        const i = SIZES.findIndex(v => v >= Math.round(it.fontSize));
+        const cur = i < 0 ? SIZES.length - 1 : i;
+        it.fontSize = SIZES[Math.max(0, Math.min(SIZES.length - 1, cur + (up ? (SIZES[cur] > it.fontSize ? 0 : 1) : -1)))];
+        lastSize = it.fontSize;
+        bar.querySelector('.sb-size').textContent = String(Math.round(it.fontSize));
+      } else if (it.kind === 'mark') it.size = Math.max(6, Math.min(60, it.size * (up ? 1.25 : 0.8)));
+      else {
+        const p = pageInfo[it.page - 1];
+        const k = up ? 1.15 : 0.87, ratio = it.h / it.w;
+        const w = Math.max(30, Math.min(p.base.width, it.w * k));
+        it.x -= (w - it.w) / 2; it.y -= (w * ratio - it.h) / 2; it.w = w; it.h = w * ratio;
+      }
+      placeItem(it); markDirty();
+    }));
+    bar.querySelectorAll('[data-color]').forEach(b => b.addEventListener('click', () => {
+      it.color = lastColor = b.dataset.color;
+      bar.querySelectorAll('[data-color]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      placeItem(it); markDirty();
+    }));
+    bar.querySelectorAll('button[data-sym]').forEach(b => b.addEventListener('click', () => {
+      it.sym = lastMark = b.dataset.sym;
+      bar.querySelectorAll('button[data-sym]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      placeItem(it); markDirty();
+    }));
+    bar.querySelector('[data-bar-del]').addEventListener('click', () => removeItem(it));
+    bar.querySelector('[data-bar-done]').addEventListener('click', () => select(null));
   }
 
   const onKey = e => {
@@ -554,9 +635,18 @@ export async function mount(screen, { docId }) {
         if (!it.text.trim()) continue;
         const [px, py] = p.base.convertToPdfPoint(it.x, it.y + it.fontSize * BASELINE);
         // Chinese, Hindi, Arabic … (no embedded font has them): drawn as a picture instead of "?"
-        if (await drawTextImage(target, pdfDoc, it.text.trim(), { x: px, y: py, size: it.fontSize, color: rgb(0.067, 0.067, 0.067), rotate: degrees(rot) })) continue;
+        const [cr, cg, cb] = hexToRgb(it.color || '#111111');
+        if (await drawTextImage(target, pdfDoc, it.text.trim(), { x: px, y: py, size: it.fontSize, color: rgb(cr, cg, cb), rotate: degrees(rot) })) continue;
         const txt = clean(it.text.trim());
-        target.drawText(txt, { x: px, y: py, size: it.fontSize, font, color: rgb(0.067, 0.067, 0.067), rotate: degrees(rot) });
+        target.drawText(txt, { x: px, y: py, size: it.fontSize, font, color: rgb(cr, cg, cb), rotate: degrees(rot) });
+      } else if (it.kind === 'mark') {
+        // vector check mark / cross / dot – sharp at any zoom, also in print
+        const [cr, cg, cb] = hexToRgb(it.color || '#111111');
+        const P = (rx, ry) => { const [a, b] = p.base.convertToPdfPoint(it.x + rx * it.size, it.y + ry * it.size); return { x: a, y: b }; };
+        const line = (a, b) => target.drawLine({ start: a, end: b, thickness: it.size * 0.13, color: rgb(cr, cg, cb), lineCap: PDFLib.LineCapStyle.Round });
+        if (it.sym === 'cross') { line(P(0.18, 0.18), P(0.82, 0.82)); line(P(0.82, 0.18), P(0.18, 0.82)); }
+        else if (it.sym === 'dot') { const c = P(0.5, 0.5); target.drawCircle({ x: c.x, y: c.y, size: it.size * 0.3, color: rgb(cr, cg, cb) }); }
+        else { line(P(0.14, 0.55), P(0.4, 0.8)); line(P(0.4, 0.8), P(0.88, 0.2)); }
       } else {
         let img = imgCache.get(it.sig);
         if (!img) { img = await pdfDoc.embedPng(new Uint8Array(await it.sig.blob.arrayBuffer())); imgCache.set(it.sig, img); }

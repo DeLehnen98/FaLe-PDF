@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Фото и сканы уменьшаются и остаются такими же читаемыми. Текст, ссылки и формы не меняются.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "Файл состоит в основном из фото или сканов. С «Уменьшить изображения» он станет намного меньше – текст останется текстом.",
   "Verkleinere Bild {0}/{1} …": "Уменьшение изображения {0}/{1} …",
+  "Häkchen": "Галочка",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Коснитесь квадратика, где должна стоять галочка.",
+  "Auswahl bearbeiten": "Изменить выделенное",
+  "Zeichen": "Символ",
+  "Kreuz": "Крестик",
 };
 
 export const defaultValues = {

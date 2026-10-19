@@ -66,8 +66,16 @@ export async function mount(screen, { docId }) {
       const cur = t || style;
       const fontSel = h(`<select class="select pt-mini" aria-label="Schriftart">${Object.entries(FONTS).map(([k, v]) => `<option value="${k}" ${k === cur.font ? 'selected' : ''}>${v}</option>`).join('')}</select>`);
       fontSel.addEventListener('change', () => apply({ font: fontSel.value }));
-      const sizeSel = h(`<select class="select pt-mini" aria-label="Schriftgröße">${[6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64].concat(cur.size && ![6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64].includes(Math.round(cur.size * 2) / 2) ? [Math.round(cur.size * 2) / 2] : []).sort((a, b) => a - b).map(v => `<option value="${v}" ${v === Math.round(cur.size * 2) / 2 ? 'selected' : ''}>${v} pt</option>`).join('')}</select>`);
-      sizeSel.addEventListener('change', () => apply({ size: +sizeSel.value }));
+      // size: A− [14] A+ instead of a list of point sizes (same control as in Ausfüllen & unterschreiben)
+      const SIZES = [6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64];
+      const sizeSel = h(`<span class="pt-size" role="group" aria-label="Schriftgröße"><button class="icon-btn" type="button" data-sz="-1" aria-label="Kleiner"><span class="sb-a small">A</span>−</button><span class="pt-size-v" aria-live="polite">${Math.round(cur.size)}</span><button class="icon-btn" type="button" data-sz="1" aria-label="Größer"><span class="sb-a">A</span>+</button></span>`);
+      sizeSel.querySelectorAll('[data-sz]').forEach(b => b.addEventListener('click', () => {
+        const now = (selected && selected.type === 'text' ? selected : style).size;
+        const up = b.dataset.sz === '1';
+        const next = up ? (SIZES.find(v => v > now + 0.01) || SIZES[SIZES.length - 1]) : ([...SIZES].reverse().find(v => v < now - 0.01) || SIZES[0]);
+        apply({ size: next });
+        sizeSel.querySelector('.pt-size-v').textContent = String(Math.round(next));
+      }));
       const boldBtn = h(`<button class="icon-btn pt-bold" type="button" aria-label="Fett" aria-pressed="${!!cur.bold}"><b>F</b></button>`);
       boldBtn.addEventListener('click', () => { const v = boldBtn.getAttribute('aria-pressed') !== 'true'; boldBtn.setAttribute('aria-pressed', String(v)); apply({ bold: v }); });
       const pal = COLORS.some(c => c.c.toLowerCase() === String(cur.color).toLowerCase()) ? COLORS : [{ c: cur.color, n: 'Erkannt' }, ...COLORS.slice(0, 5)];

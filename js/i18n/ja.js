@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "写真やスキャン画像を縮小します。読みやすさはそのままです。テキスト、リンク、フォームは変わりません。",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "このファイルは主に写真やスキャン画像でできています。「画像を縮小」を使うとかなり小さくなり、テキストはテキストのままです。",
   "Verkleinere Bild {0}/{1} …": "画像を縮小中 {0}/{1} …",
+  "Häkchen": "チェック",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "チェックを入れる枠をタップしてください。",
+  "Auswahl bearbeiten": "選択項目を編集",
+  "Zeichen": "記号",
+  "Kreuz": "バツ",
 };
 
 export const defaultValues = {

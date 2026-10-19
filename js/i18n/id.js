@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Foto dan hasil pindaian diperkecil – tetap mudah dibaca seperti sebelumnya. Teks, tautan, dan formulir tidak berubah.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "File ini sebagian besar berisi foto atau hasil pindaian. Dengan “Perkecil gambar”, file jadi jauh lebih kecil – teks tetap teks.",
   "Verkleinere Bild {0}/{1} …": "Memperkecil gambar {0}/{1} …",
+  "Häkchen": "Centang",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Ketuk kotak tempat tanda centang akan diletakkan.",
+  "Auswahl bearbeiten": "Edit pilihan",
+  "Zeichen": "Simbol",
+  "Kreuz": "Silang",
 };
 
 export const defaultValues = {

@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Las fotos y los escaneos se reducen y se leen igual de bien. El texto, los enlaces y los formularios no cambian.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "El archivo contiene sobre todo fotos o escaneos. Con «Reducir imágenes» será mucho más pequeño y el texto seguirá siendo texto.",
   "Verkleinere Bild {0}/{1} …": "Reduciendo imagen {0}/{1} …",
+  "Häkchen": "Marca de verificación",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Toca la casilla donde debe ir la marca.",
+  "Auswahl bearbeiten": "Editar selección",
+  "Zeichen": "Símbolo",
+  "Kreuz": "Cruz",
 };
 
 export const defaultValues = {

@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "फ़ोटो और स्कैन छोटे किए जाते हैं – पहले जितने ही साफ़ पढ़ने लायक। टेक्स्ट, लिंक और फ़ॉर्म नहीं बदलते।",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "यह फ़ाइल ज़्यादातर फ़ोटो या स्कैन से बनी है। „इमेज छोटी करें“ से यह काफ़ी छोटी हो जाएगी – टेक्स्ट टेक्स्ट ही रहेगा।",
   "Verkleinere Bild {0}/{1} …": "इमेज छोटी की जा रही है {0}/{1} …",
+  "Häkchen": "सही का निशान",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "उस बॉक्स पर टैप करें जहाँ सही का निशान लगाना है।",
+  "Auswahl bearbeiten": "चुना हुआ बदलें",
+  "Zeichen": "चिह्न",
+  "Kreuz": "क्रॉस",
 };
 
 export const defaultValues = {

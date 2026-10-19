@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Foto e scansioni vengono ridotte, leggibili come prima. Testo, link e moduli restano invariati.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "Il file è composto soprattutto da foto o scansioni. Con «Riduci immagini» diventa molto più piccolo e il testo resta testo.",
   "Verkleinere Bild {0}/{1} …": "Riduco l’immagine {0}/{1} …",
+  "Häkchen": "Spunta",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "Tocca la casella in cui va la spunta.",
+  "Auswahl bearbeiten": "Modifica selezione",
+  "Zeichen": "Simbolo",
+  "Kreuz": "Croce",
 };
 
 export const defaultValues = {

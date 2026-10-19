@@ -6294,6 +6294,11 @@ export default {
   "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "사진과 스캔 이미지를 줄여도 읽기 쉬운 상태 그대로입니다. 텍스트, 링크, 양식은 바뀌지 않습니다.",
   "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "이 파일은 주로 사진이나 스캔 이미지로 되어 있습니다. '이미지 축소'를 사용하면 훨씬 작아지고 텍스트는 그대로 텍스트로 남습니다.",
   "Verkleinere Bild {0}/{1} …": "이미지 축소 중 {0}/{1} …",
+  "Häkchen": "체크 표시",
+  "Tippe auf das Kästchen, in das das Häkchen soll.": "체크 표시를 넣을 칸을 탭하세요.",
+  "Auswahl bearbeiten": "선택 항목 편집",
+  "Zeichen": "기호",
+  "Kreuz": "X 표시",
 };
 
 export const defaultValues = {

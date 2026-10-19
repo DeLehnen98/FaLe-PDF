@@ -853,3 +853,9 @@
 .card.xfa-info > .ic { flex: none; width: 30px; height: 30px; color: var(--primary); }
 .card.xfa-info h2 { margin: 0 0 6px; font-size: calc(18px * var(--ts, 1)); }
 .card.xfa-info p { margin: 0 0 14px; color: var(--text-2); }
+/* PDF bearbeiten: font size stepper A− 14 A+ */
+.pt-size { display: inline-flex; align-items: center; gap: 2px; }
+.pt-size .icon-btn { width: auto; min-width: 44px; padding: 0 8px; font-weight: 700; }
+.pt-size .sb-a { font-family: Georgia, serif; font-size: 1.1em; margin-right: 1px; }
+.pt-size .sb-a.small { font-size: .82em; }
+.pt-size-v { min-width: 2em; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
