@@ -4,9 +4,9 @@
 > Do not use other companies' trademarks (no names of other PDF/office apps or vendor product
 > names). Naming file formats (PDF, DOCX, XLSX, PPTX) is fine.
 > The app UI follows the device language automatically (no language switch): German, English, French,
-> Spanish, Italian, Portuguese (Brazil), Dutch, Polish, Turkish, Ukrainian, Russian, Chinese (Simplified) – more
-> follow. Translated store listings: `store/listings/<lang>.md`. Feature names below match the English UI (e.g. "Fill & Sign", "Organize pages",
-> "Reading mode", "Redact", "Letters & templates"). The letter generators for cancellations, withdrawals,
+> Spanish, Italian, Portuguese (Brazil), Dutch, Polish, Turkish, Ukrainian, Russian, Chinese (Simplified), Japanese,
+> Korean, Hindi, Indonesian. Translated store listings: `store/listings/<lang>.md`.
+> Feature names below match the English UI (e.g. "Fill & Sign", "Organize pages", "Reading mode", "Redact", "Letters & templates"). The letter generators for cancellations, withdrawals,
 > objections etc. follow German law and create German letters – they are labelled "(Germany)" in the app.
 > Check the limits after every edit: `python3 store/check_listing.py`
 

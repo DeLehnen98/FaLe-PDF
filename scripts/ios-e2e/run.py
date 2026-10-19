@@ -50,11 +50,25 @@ def wait_for(pred, timeout):
 # ---- 1. start with console
 # `script` gives simctl itself a terminal: without it, its output to our pipe is block-buffered and the console
 # lines arrive minutes late (or only at exit)
-proc = subprocess.Popen(['script', '-q', '/dev/null', 'xcrun', 'simctl', 'launch', '--console-pty', '--terminate-running-process', UDID, BUNDLE],
-                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, errors='replace')
-threading.Thread(target=lambda: [lines.append(l.rstrip('\r\n')) for l in proc.stdout], daemon=True).start()
+def launch():
+    p = subprocess.Popen(['script', '-q', '/dev/null', 'xcrun', 'simctl', 'launch', '--console-pty', '--terminate-running-process', UDID, BUNDLE],
+                         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, errors='replace')
+    threading.Thread(target=lambda: [lines.append(l.rstrip('\r\n')) for l in p.stdout], daemon=True).start()
+    return p
+
+
+proc = launch()
 has = lambda s: any(s in l for l in lines)
 ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 180)
+if not ready and not [l for l in lines if l.strip()]:
+    # the console stream stayed completely silent (busy CI runners: simctl attaches late) – launch once more
+    print('::warning::Konsole blieb stumm – App wird ein zweites Mal gestartet', flush=True)
+    try:
+        proc.terminate()
+    except Exception:
+        pass
+    proc = launch()
+    ready = wait_for(lambda: has('FaLe PDF bereit (ios)'), 150)
 time.sleep(3)
 sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/{LABEL}-start.png', check=False)
 errors = [l for l in lines if '[error]' in l and 'FALE-E2E' not in l]
