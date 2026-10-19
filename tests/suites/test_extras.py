@@ -869,7 +869,7 @@ def desktop(p):
     # ---------------- tools page / AI hidden ----------------
     def tools():
         goto(page, '#/werkzeuge', 800)
-        check('Werkzeuge: Alltag & Organisation section', page.locator('.alltag-grid .tool-card').count() == 6)
+        check('Werkzeuge: Alltag & Organisation section (6 app tools + matching web tools)', page.locator('.alltag-grid .tool-card:not([data-tool^="web-"])').count() == 6)
         goto(page, '#/dateien', 800)
         page.locator('#view-dateien [data-files] .doc', has_text='struktur.pdf').locator('.more-btn').click()
         items = page.locator('.menu-item').all_inner_texts()
