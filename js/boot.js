@@ -24,7 +24,7 @@
   } catch (e) {}
   try {
     // same rule as js/i18n/index.js deviceLang(): first device language we have, else English
-    var LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr']; // = LANGS in js/i18n/index.js
+    var LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr', 'uk']; // = LANGS in js/i18n/index.js
     var l = localStorage.getItem('fale-lang');
     if (LANGS.indexOf(l) < 0) {
       l = 'en';

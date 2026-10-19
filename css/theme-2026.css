@@ -421,5 +421,5 @@ html.simple .viewer .vbar-top .icon-btn[data-cap] .ic { width: 22px; height: 22p
 
 /* Start hero on phones: the paper art sits top right – keep the intro text clear of it (longer languages wrap more) */
 @media (max-width: 600px) {
-  #view-start .hero p { max-width: calc(100% - 92px); }
+  #view-start .hero p, #view-start .hero .hero-badge { max-width: calc(100% - 92px); }
 }
