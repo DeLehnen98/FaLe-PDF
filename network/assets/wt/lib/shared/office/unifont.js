@@ -568,3 +568,64 @@ export function missingWarning(...lists) {
     en: `The embedded font cannot show these characters (e.g. Chinese, Arabic or Hebrew script, emoji) – they were replaced by "?": ${list}`,
   };
 }
+
+// ---------------------------------------------------------------- text as a picture (scripts no font here has)
+// Chinese, Japanese, Korean, Hindi, Arabic, Hebrew, emoji …: no shipped font can show them (CJK fonts are many MB).
+// Free text on a page (stamp, watermark, typed text, page numbers) is then drawn by the BROWSER with the device's
+// own fonts onto a canvas and embedded as a sharp PNG – the right shapes and writing direction, only not
+// selectable/searchable. Used only when the embedded font would print "?".
+const PX = 4; // canvas pixels per PDF point (≈ 290 dpi)
+let measureCtx = null;
+const cssFont = (size, bold, family) => `${bold ? '700' : '400'} ${size}px ${family === 'serif' ? 'Georgia, "Times New Roman", serif' : family === 'mono' ? 'ui-monospace, Menlo, Consolas, monospace' : 'system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif'}`;
+/** Does free text need the picture fallback (characters neither the standard fonts nor Liberation Sans have)? */
+export const needsTextImage = text => typeof document !== 'undefined' && unsupportedChars(text).length > 0;
+/** Width in PDF points of text drawn by textImage (synchronous; null outside a browser). */
+export function measureTextImage(text, size, { bold = false, family = 'sans' } = {}) {
+  if (typeof document === 'undefined') return null;
+  if (!measureCtx) measureCtx = document.createElement('canvas').getContext('2d');
+  measureCtx.font = cssFont(size * PX, bold, family);
+  return measureCtx.measureText(String(text)).width / PX;
+}
+const imgCache = new WeakMap();
+/** One line of text as an embedded PNG: {image, width, height, descent} in PDF points (cached per document). */
+export async function textImage(pdfDoc, text, { size = 12, bold = false, family = 'sans', color = [0, 0, 0] } = {}) {
+  let m = imgCache.get(pdfDoc);
+  if (!m) imgCache.set(pdfDoc, (m = new Map()));
+  const key = JSON.stringify([text, size, bold, family, color]);
+  if (!m.has(key)) m.set(key, (async () => {
+    const c = document.createElement('canvas');
+    let x = c.getContext('2d');
+    const font = cssFont(size * PX, bold, family);
+    x.font = font;
+    const mt = x.measureText(text);
+    const asc = Math.ceil(Math.max(mt.fontBoundingBoxAscent || 0, mt.actualBoundingBoxAscent || 0, size * PX * 0.9));
+    const desc = Math.ceil(Math.max(mt.fontBoundingBoxDescent || 0, mt.actualBoundingBoxDescent || 0, size * PX * 0.25));
+    c.width = Math.max(1, Math.ceil(mt.width) + 2);
+    c.height = asc + desc;
+    x = c.getContext('2d');
+    x.font = font;
+    x.textBaseline = 'alphabetic';
+    x.fillStyle = `rgb(${color.map(v => Math.round(v * 255)).join(',')})`;
+    x.fillText(text, 1, asc);
+    const blob = await new Promise((res, rej) => c.toBlob(b => (b ? res(b) : rej(new Error('canvas'))), 'image/png'));
+    const image = await pdfDoc.embedPng(new Uint8Array(await blob.arrayBuffer()));
+    return { image, width: c.width / PX, height: c.height / PX, descent: desc / PX };
+  })().catch(err => { m.delete(key); throw err; }));
+  return m.get(key);
+}
+/**
+ * page.drawText for free text that may contain scripts no embedded font has: such lines are drawn as a picture
+ * (textImage) at the same baseline origin, size, colour, opacity and rotation. `opts` as for page.drawText
+ * (x, y = baseline-left; color = pdf-lib rgb(); rotate = pdf-lib degrees()) plus bold/family for the picture.
+ * Returns true when it drew the line (false = caller draws text as usual).
+ */
+export async function drawTextImage(page, pdfDoc, text, opts) {
+  if (!needsTextImage(text)) return false;
+  const col = opts.color && 'red' in opts.color ? [opts.color.red, opts.color.green, opts.color.blue] : [0, 0, 0];
+  const ti = await textImage(pdfDoc, String(text), { size: opts.size || 12, bold: !!opts.bold, family: opts.family, color: col });
+  const a = ((opts.rotate && opts.rotate.angle) || 0) * Math.PI / 180;
+  // drawImage turns around the image's bottom-left corner, drawText around the baseline origin: move by the descent
+  page.drawImage(ti.image, { x: opts.x + ti.descent * Math.sin(a), y: opts.y - ti.descent * Math.cos(a), width: ti.width, height: ti.height,
+    rotate: opts.rotate, opacity: opts.opacity });
+  return true;
+}

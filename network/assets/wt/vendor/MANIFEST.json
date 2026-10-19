@@ -87,7 +87,7 @@
     "lib/shared/office/sheetfx.js": "03c509045b34c7aa3762859b326b44cd3a69ab5fdc8a8fa43748c74e1f481ea8",
     "lib/shared/office/sheetpdf.js": "8ab340b79a542298d52bb9e3c81d4d32df7aa8940973452564e2ab460ab5d461",
     "lib/shared/office/slide-render.js": "bdee739c89b982d1bbbc457f38387ce660c290fefb7e4e38df4016de4f10d1a2",
-    "lib/shared/office/unifont.js": "b4cf406fb238dbd0bdbb838b3416c5cf3654a4d87cf80eddbe00804d38c9eb27",
+    "lib/shared/office/unifont.js": "9bbb47ffb5859b7d27d34895844ee15ebbb7ef8eeef50ab4aa533a548f795bc0",
     "lib/shared/office/vendor.js": "e94ca7f150d7de617c743aeb7eeb4472b0747be406be05480d7a00483ef99abb",
     "lib/shared/office/workbook.js": "0e06343ed193540a6c9b9cc8b3b6df4a5772026e7f4d30976ad6c7df8d6ef304",
     "lib/shared/office/xlsx-read.js": "314abe4e237eee328ba1d0569474daa9a8c61ed5a55d503fc54422e335e30372",
