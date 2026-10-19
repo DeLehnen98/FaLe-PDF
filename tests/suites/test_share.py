@@ -192,6 +192,7 @@ def run():
             B.goto(link)
             B.wait_for_selector('.sh-recv-name', timeout=15000)
             check('recipient: decrypted name shown', B.locator('.sh-recv-name').inner_text() == 'Daten Export.txt')
+            check('recipient: quiet invitation to FaLe PDF (no pop-up)', B.locator('.sh-invite a[href="#/start"]').count() == 1 and B.locator('dialog[open]').count() == 0)
             shot(B, 'phone_light_recipient')
             with B.expect_download() as dl:
                 B.locator('[data-dl]').click()

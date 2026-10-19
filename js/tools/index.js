@@ -3,6 +3,7 @@
 // pro: true marks features other PDF apps only offer in paid plans (shown as "Gratis statt Pro").
 export const TOOLS = [
   { id: 'unterschreiben', group: 'bearbeiten', title: 'Ausfüllen & unterschreiben', tile: 'Ausfüllen & unterschreiben', desc: 'Formulare ausfüllen, Text, Datum und Unterschrift einfügen.', icon: 'sign', needsDoc: true, load: () => import('./sign.js') },
+  { id: 'behoerdenformular', group: 'bearbeiten', title: 'Behörden-Formular ausfüllen', tile: 'Behörden-Formular', desc: 'Formulare, die sonst nur in einem bestimmten PDF-Programm aufgehen (XFA): öffnen, ausfüllen, speichern, drucken.', icon: 'form', needsDoc: true, load: () => import('./xfaform.js') },
   { id: 'kommentieren', group: 'bearbeiten', pro: true, title: 'Kommentieren', tile: 'Kommentieren', desc: 'Markieren, unterstreichen, zeichnen, Notizen, Textfelder und Formen.', icon: 'highlight', needsDoc: true, load: () => import('./annotate.js') },
   { id: 'scannen', group: 'scannen', pro: true, title: 'Scanner', tile: 'Dokument scannen', desc: 'Dokumente mit der Kamera scannen – Kanten erkennen, entzerren, verbessern.', icon: 'scan', load: () => import('./scan.js') },
   { id: 'seiten', group: 'organisieren', title: 'Seiten verwalten', tile: 'Seiten verwalten', desc: 'Seiten drehen, löschen, sortieren, extrahieren oder aufteilen.', icon: 'pages', needsDoc: true, load: () => import('./organize.js') },
