@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "FaLe PDF – alat PDF & kantor gratis, tanpa langganan, tanpa unggahan",
+    "description": "Baca, isi, tandatangani, pindai dengan pengenalan teks, dan konversi PDF – plus dokumen, spreadsheet, dan presentasi. Gratis, tanpa akun, semuanya di perangkat Anda."
+  },
+  "skip": "Langsung ke konten",
+  "nav": {
+    "label": "Navigasi halaman",
+    "features": "Fitur",
+    "computer": "Untuk Windows & Mac",
+    "faq": "Pertanyaan",
+    "open": "Buka di browser"
+  },
+  "hero": {
+    "h1": "Urusan dokumen beres. Tanpa langganan, tanpa unggahan.",
+    "lede": "FaLe PDF membaca, mengisi, menandatangani, memindai, dan mengonversi – plus dokumen, spreadsheet, dan presentasi. Gratis dan langsung di perangkat Anda.",
+    "try": "Coba di browser Anda"
+  },
+  "stores": {
+    "androidSoon": "Play Store – segera hadir",
+    "androidReady": "Dapatkan di Play Store",
+    "iosName": "iPhone & iPad",
+    "iosSoon": "App Store – segera hadir",
+    "iosReady": "Dapatkan di App Store"
+  },
+  "desk": {
+    "h2": "Untuk Windows dan Mac",
+    "intro": "Instal FaLe PDF di komputer Anda – seperti program biasa: dengan ikon sendiri, jendela sendiri, dan dapat dipakai tanpa internet. Gratis, tanpa akun, dan tanpa file installer.",
+    "steps": [
+      { "b": "Klik “Unduh”.", "t": "FaLe PDF terbuka di browser Anda." },
+      { "b": "Konfirmasi “Instal”.", "t": "Browser Anda bertanya sekali saja." },
+      { "b": "Selesai.", "t": "Mulai sekarang Anda membuka FaLe PDF dari menu Start (Windows) atau Dock (Mac)." }
+    ],
+    "download": "Unduh",
+    "dlWindows": "Unduh untuk Windows",
+    "dlMac": "Unduh untuk Mac",
+    "windowsSoon": "Microsoft Store – segera hadir",
+    "windowsReady": "Dapatkan di Microsoft Store",
+    "note": "Di Windows dengan Edge atau Chrome – lalu PDF terbuka dengan klik dua kali. Di Mac dengan Safari (macOS 14 atau lebih baru: di menu File Safari pilih “Add to Dock”), Chrome, atau Edge."
+  },
+  "jobs": {
+    "h2": "Yang bisa Anda selesaikan",
+    "intro": "Bukan tumpukan alat yang harus diklik satu per satu: inilah hal-hal yang membuat orang membuka aplikasi ini.",
+    "items": [
+      { "b": "Tandatangani perjanjian sewa", "t": "Isi formulir, gambar tanda tangan Anda sekali, lalu tempatkan dengan sekali ketuk." },
+      { "b": "Pindai kuitansi dan surat", "t": "Pemindai dengan deteksi tepi dan pengenalan teks – juga saat offline." },
+      { "b": "Kirim surat pemutusan kontrak", "t": "Surat siap pakai untuk telepon, energi, pusat kebugaran, dan lainnya dalam semenit." },
+      { "b": "Susun lamaran kerja", "t": "CV dari template, surat lamaran, dan sertifikat digabung menjadi satu PDF." },
+      { "b": "Kirim dokumen ke instansi", "t": "Kompres, konversi ke PDF/A, sensor bagian yang rahasia." },
+      { "b": "Tulis faktur atau penawaran", "t": "Template yang menghitung sendiri – sebagai file PDF, Word, atau Excel." }
+    ]
+  },
+  "privacy": {
+    "h2": "File Anda tetap milik Anda",
+    "items": [
+      { "dt": "Tanpa unggahan", "dd": "Pengeditan, konversi, dan pengenalan teks berjalan di perangkat Anda. AI opsional hanya dipakai jika Anda menyalakannya." },
+      { "dt": "Tanpa akun", "dd": "Buka dan langsung mulai. Anda hanya memerlukan akun jika memilih menyinkronkan antar perangkat." },
+      { "dt": "Tanpa iklan banner", "dd": "Iklan hanya muncul jika Anda sendiri memulai video untuk mendapat permintaan AI tambahan." }
+    ]
+  },
+  "free": {
+    "h2": "Gratis, bukan langganan",
+    "intro": "Banyak aplikasi PDF menarik langganan untuk fitur-fitur ini. Di sini semuanya gratis dan tanpa watermark.",
+    "note": "Jika ingin mendukung pengembangan, Anda dapat memilih FaLe Plus atau ucapan terima kasih sekali bayar di aplikasi Android.",
+    "items": ["Tandatangani & isi formulir", "Pengenalan teks (OCR)", "PDF ke Word, Excel, PowerPoint", "Sensor", "Kompres", "Kelola halaman", "PDF/A untuk instansi", "Perlindungan sandi", "Bandingkan PDF", "Pemrosesan batch"]
+  },
+  "screens": {
+    "h2": "Tampilannya",
+    "alts": ["Layar awal aplikasi FaLe PDF", "Mengisi dan menandatangani formulir", "Pemindai dengan deteksi tepi", "Mengedit spreadsheet", "Privasi: semuanya tetap di perangkat"]
+  },
+  "faq": {
+    "h2": "Pertanyaan",
+    "items": [
+      { "q": "Apakah FaLe PDF benar-benar gratis?", "a": "Ya. Semua fitur PDF dan kantor gratis, tanpa langganan dan tanpa watermark. Hanya AI cloud opsional yang memiliki jatah gratis harian." },
+      { "q": "Apakah file saya diunggah?", "a": "Tidak. File Anda diproses dan disimpan di perangkat Anda. Hanya jika Anda sengaja memakai AI cloud, berbagi lewat tautan, atau sinkronisasi, ada sesuatu yang keluar dari perangkat Anda – terenkripsi, atau hanya teks yang Anda pilih." },
+      { "q": "Apakah bisa dipakai offline?", "a": "Ya. Semuanya berfungsi tanpa internet, kecuali AI cloud, berbagi, dan transfer." },
+      { "q": "Bisakah saya menginstal FaLe PDF di komputer?", "a": "Bisa. Di bagian “Untuk Windows dan Mac” di atas, klik “Unduh” lalu konfirmasi “Instal”. Di Windows ini berfungsi dengan Edge atau Chrome, di Mac dengan Safari, Chrome, atau Edge. FaLe PDF juga akan segera hadir di Microsoft Store." },
+      { "q": "File apa saja yang bisa saya buka?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), teks, Markdown, dan gambar." }
+    ]
+  },
+  "end": {
+    "h2": "Coba sekarang juga",
+    "intro": "Versi browser berjalan tanpa menginstal apa pun – di ponsel maupun di komputer Anda."
+  },
+  "footer": {
+    "label": "Hukum",
+    "imprint": "Informasi hukum (Impressum)",
+    "privacy": "Privasi",
+    "more": "Lainnya dari FaleNetwork"
+  }
+}
