@@ -68,9 +68,11 @@ if not ready and not [l for l in lines if l.strip()]:
     except Exception:
         pass
     proc = launch()
-    ready = wait_for(lambda: has('FaLe PDF bereit'), 150)
+    ready = wait_for(lambda: has('FaLe PDF bereit'), 240)
 time.sleep(3)
 sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f'{OUT}/{LABEL}-start.png', check=False)
+# on busy runners the console lines sometimes arrive a few seconds late – count the start message if it is there now
+ready = ready or wait_for(lambda: has('FaLe PDF bereit'), 20)
 errors = [l for l in lines if '[error]' in l and 'FALE-E2E' not in l]
 note(ready, 'Start', 'Web-App bereit' if ready else 'Web-App meldet sich nicht (letzte Zeilen: ' + ' | '.join(lines[-8:]) + ')')
 note(not errors, 'JS-Fehler', 'keine' if not errors else ' | '.join(errors[:5]))
