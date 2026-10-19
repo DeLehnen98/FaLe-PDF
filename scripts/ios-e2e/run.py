@@ -133,10 +133,14 @@ try:
     for name, route in tour:
         if name == 'dunkel-start':
             sh('xcrun', 'simctl', 'ui', UDID, 'appearance', 'dark', check=False)
-        mark = len(lines)
-        open(route_file, 'w').write(route)
-        sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.go', check=False, timeout=30)
-        went = wait_for(lambda: any(f'FALE-E2E route {route} ok' in l for l in lines[mark:]), 20)
+        went = False
+        for attempt in range(2):   # a notification can get lost while the app is still busy – send it once more
+            mark = len(lines)
+            open(route_file, 'w').write(route)
+            sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.go', check=False, timeout=30)
+            went = wait_for(lambda: any(f'FALE-E2E route {route} ok' in l for l in lines[mark:]), 20)
+            if went:
+                break
         time.sleep(3)
         f = f'{OUT}/{LABEL}-{len(shots) + len(missing) + 1:02d}-{name}.png'
         sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f, check=False)
