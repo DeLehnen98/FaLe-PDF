@@ -11,6 +11,7 @@
 import * as db from '../db.js';
 import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, progress, baseName, UserError } from '../ui.js';
+import { t } from '../i18n/index.js';
 import { resultCard } from '../components.js';
 import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, pdfjsLib } from '../pdfcore.js';
@@ -73,7 +74,9 @@ export async function mount(screen, { docId }) {
 
   const { EventBus, PDFLinkService, PDFViewer, GenericL10n, LinkTarget } = await viewerLib();
   screen.body.classList.add('xfa-body');
-  screen.body.innerHTML = `<div class="xfa-bar"><p class="xfa-tip">${icon('info')}<span>Tippe in die Felder und fülle sie aus. Mit „Speichern“ bleibt es das Original-Formular – so, wie es die Behörde erwartet.</span></p>
+  let tipOff = false;
+  try { tipOff = localStorage.getItem('fale-xfa-tip') === 'off'; } catch {}
+  screen.body.innerHTML = `<div class="xfa-bar"><p class="xfa-tip" ${tipOff ? 'hidden' : ''}>${icon('info')}<span>Tippe in die Felder und fülle sie aus. Mit „Speichern“ bleibt es das Original-Formular – so, wie es die Behörde erwartet.</span><button class="icon-btn xfa-tip-x" type="button" data-tip-x aria-label="Hinweis ausblenden">${icon('close')}</button></p>
     <div class="xfa-zoom" role="group" aria-label="Größe"><button class="icon-btn" type="button" data-zoom="-1" aria-label="Kleiner">${icon('zoomOut')}</button><button class="icon-btn" type="button" data-zoom="1" aria-label="Größer">${icon('zoomIn')}</button></div></div>
     <div class="xfa-stage"><div class="xfa-scroll" data-xfa-scroll tabindex="0"><div class="pdfViewer" data-xfa-viewer></div></div></div>
     <div data-result></div>`;
@@ -86,6 +89,30 @@ export async function mount(screen, { docId }) {
   });
   linkService.setViewer(viewer);
   guardLinks(scroll, { source: 'Das Formular enthält einen Link.' });
+  const tipX = screen.body.querySelector('[data-tip-x]');
+  if (tipX) tipX.addEventListener('click', () => { tipX.closest('.xfa-tip').hidden = true; try { localStorage.setItem('fale-xfa-tip', 'off'); } catch {} });
+  // pinch with two fingers (phones) and Ctrl + mouse wheel (computers) – like in the normal viewer
+  let pinch = null;
+  const dist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  const mid = t => { const r = scroll.getBoundingClientRect(); return [(t[0].clientX + t[1].clientX) / 2 - r.left, (t[0].clientY + t[1].clientY) / 2 - r.top]; };
+  scroll.addEventListener('touchstart', e => { if (e.touches.length === 2) pinch = { d: dist(e.touches) }; }, { passive: true });
+  scroll.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    const d = dist(e.touches), f = d / pinch.d;
+    if (Math.abs(f - 1) > 0.03 && (f > 1 ? viewer.currentScale < 4 : viewer.currentScale > 0.3)) {
+      viewer.updateScale({ scaleFactor: f, drawingDelay: 300, origin: mid(e.touches) });
+      pinch.d = d;
+    }
+  }, { passive: false });
+  scroll.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; }, { passive: true });
+  scroll.addEventListener('wheel', e => {
+    if (!e.ctrlKey && !e.metaKey) return;
+    e.preventDefault();
+    const r = scroll.getBoundingClientRect();
+    viewer.updateScale({ steps: e.deltaY < 0 ? 1 : -1, drawingDelay: 250, origin: [e.clientX - r.left, e.clientY - r.top] });
+  }, { passive: false });
+
   // bigger / smaller (phones show the A4 page at page width – small print for many people)
   screen.body.querySelectorAll('[data-zoom]').forEach(b => b.addEventListener('click', () => {
     const next = Math.min(4, Math.max(0.4, viewer.currentScale * (b.dataset.zoom === '1' ? 1.25 : 0.8)));
@@ -98,7 +125,59 @@ export async function mount(screen, { docId }) {
     const t = el.textContent || '';
     if (t.length < 400 && JS_NOTE.test(t) && JS_NOTE2.test(t)) { const w = el.closest('.xfaWrapper') || el; w.hidden = true; w.style.display = 'none'; }
   });
-  const mo = new MutationObserver(() => hideJsNotes(scroll));
+  // Signature lines: most authority forms use a plain text field captioned "Signature / Unterschrift …" for the
+  // hand-written signature on paper. Tapping it opens the signature pad instead of the keyboard; the signature
+  // is shown on the field and goes into "Als normale PDF" and the print-out (the XFA original cannot hold images).
+  const SIG_RE = /(signature|unterschrift|signatur|firma\b|assinatura|handtekening|podpis|imza|підпис|подпись|署名|签名|서명|हस्ताक्षर|tanda tangan)/i;
+  const signed = new Map(); // field element id → {url, w, h}
+  const sigFields = root => [...root.querySelectorAll('.xfaLayer input.xfaTextfield, .xfaLayer textarea.xfaTextfield')].filter(inp => {
+    const f = inp.closest('.xfaField');
+    if (!f) return false;
+    const cap = f.querySelector('.xfaCaption');
+    return SIG_RE.test(((cap && cap.textContent) || '') + ' ' + (f.getAttribute('xfaname') || ''));
+  });
+  const placeSig = inp => {
+    const f = inp.closest('.xfaField');
+    const id = f && f.dataset.elementId;
+    if (!id) return;
+    f.querySelectorAll('.xfa-sig').forEach(x => x.remove());
+    const sig = signed.get(id);
+    inp.placeholder = sig ? '' : t('Hier unterschreiben');
+    if (!sig) return;
+    const fit = Math.min(inp.offsetWidth / sig.w, (inp.offsetHeight * 1.9) / sig.h);
+    const w = sig.w * fit, hh = sig.h * fit;
+    const img = h(`<img class="xfa-sig" src="${sig.url}" alt="Unterschrift">`);
+    Object.assign(img.style, { position: 'absolute', left: `${inp.offsetLeft + 2}px`, top: `${inp.offsetTop + inp.offsetHeight - hh}px`, width: `${w}px`, height: `${hh}px` });
+    (inp.offsetParent || f).appendChild(img);
+  };
+  const wireSigFields = root => sigFields(root).forEach(inp => {
+    if (inp.dataset.faleSig) { placeSig(inp); return; }
+    inp.dataset.faleSig = '1';
+    inp.readOnly = true;
+    inp.placeholder = t('Hier unterschreiben');
+    inp.classList.add('xfa-sigfield');
+    inp.setAttribute('aria-label', t('Hier unterschreiben'));
+    const open = async e => {
+      e.preventDefault();
+      inp.blur();
+      const { pickAsset } = await import('./sigstore.js');
+      const sig = await pickAsset({ tab: 'signature', kinds: ['signature', 'initials'], title: 'Unterschreiben' });
+      if (!sig) return;
+      signed.set(inp.closest('.xfaField').dataset.elementId, { url: sig.url, w: sig.w, h: sig.h });
+      placeSig(inp);
+      dirty = true; foot();
+      toast('Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.', 'info', { timeout: 5000 });
+    };
+    inp.addEventListener('click', open);
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(e); });
+    placeSig(inp);
+  });
+  const ownNode = n => n.nodeType === 1 && n.classList.contains('xfa-sig');
+  const mo = new MutationObserver(recs => {
+    // our own signature pictures coming and going must not trigger another round (endless loop)
+    if (recs.every(r => [...r.addedNodes, ...r.removedNodes].every(ownNode))) return;
+    hideJsNotes(scroll); wireSigFields(scroll);
+  });
   mo.observe(scroll, { childList: true, subtree: true });
   let dirty = false;
   const onPagesInit = () => { viewer.currentScaleValue = scroll.clientWidth < 700 ? 'page-width' : 'auto'; };

@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Змінити виділене",
   "Zeichen": "Символ",
   "Kreuz": "Хрестик",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Підпис потрапить у «Як звичайний PDF» і в друк.",
 };
 
 export const defaultValues = {

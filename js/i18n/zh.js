@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "编辑所选内容",
   "Zeichen": "符号",
   "Kreuz": "叉号",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "签名会出现在“存为普通 PDF”和打印件中。",
 };
 
 export const defaultValues = {

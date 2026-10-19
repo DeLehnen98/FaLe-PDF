@@ -859,3 +859,11 @@
 .pt-size .sb-a { font-family: Georgia, serif; font-size: 1.1em; margin-right: 1px; }
 .pt-size .sb-a.small { font-size: .82em; }
 .pt-size-v { min-width: 2em; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.xfa-tip { position: relative; padding-right: 44px; }
+.xfa-tip[hidden] { display: none; }
+.xfa-tip .xfa-tip-x { position: absolute; right: 4px; top: 4px; width: 36px; height: 36px; color: var(--text-2); }
+.xfa-tip .xfa-tip-x .ic { width: 18px; height: 18px; color: inherit; margin: 0; }
+.xfa-scroll { touch-action: pan-x pan-y; }
+.xfa-scroll .xfaLayer .xfa-sigfield { cursor: pointer; background: rgba(28, 100, 242, .1) !important; }
+.xfa-scroll .xfaLayer .xfa-sigfield::placeholder { color: var(--primary); font-weight: 700; opacity: 1; }
+.xfa-scroll .xfaLayer .xfa-sig { pointer-events: none; z-index: 3; mix-blend-mode: multiply; }

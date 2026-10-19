@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "選択項目を編集",
   "Zeichen": "記号",
   "Kreuz": "バツ",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "署名は「通常の PDF として」と印刷に入ります。",
 };
 
 export const defaultValues = {

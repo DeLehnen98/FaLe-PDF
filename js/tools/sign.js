@@ -156,9 +156,10 @@ export async function mount(screen, { docId }) {
   let dirty = false;
   let rev = 0, savedRev = -1; // see markDirty()
 
+  let zoom = 1; // pinch / Ctrl+wheel zoom on top of "fit to width"
   function computeScale(base) {
     const avail = Math.max(260, Math.min(stage.clientWidth - 24, 920));
-    return avail / base.width;
+    return avail / base.width * zoom;
   }
 
   for (let n = 1; n <= pdf.numPages; n++) {
@@ -179,11 +180,14 @@ export async function mount(screen, { docId }) {
 
   async function drawPage(p) {
     try {
-      const canvas = await renderPage(p.page, { scale: p.base.width * scale / p.base.width, dpr: Math.min(2, window.devicePixelRatio || 1) });
-      if (!alive) return;
+      const s = scale;
+      // keep zoomed pages light on phones: at most ~3000 px wide
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1, 3000 / (p.base.width * s)));
+      const canvas = await renderPage(p.page, { scale: s, dpr });
+      if (!alive || (s !== scale && p.el.querySelector('canvas'))) return; // an older zoom level – a fresh one is on its way
       p.el.querySelector('canvas')?.remove();
       p.el.prepend(canvas);
-      p.canvasDone = true;
+      p.canvasDone = s === scale; // zoom changed meanwhile → draw again when visible
     } catch (e) { if (alive) console.warn(e); }
   }
 
@@ -549,6 +553,47 @@ export async function mount(screen, { docId }) {
   };
   const ro = new ResizeObserver(() => onResize());
   ro.observe(stage);
+
+  // ---- zoom: two fingers (phones), Ctrl + wheel (computers); smooth CSS preview while pinching, sharp afterwards ----
+  function setZoom(z, cx = stage.clientWidth / 2, cy = stage.clientHeight / 2) {
+    z = Math.max(1, Math.min(4, z));
+    if (Math.abs(z - zoom) < 0.01) return;
+    const k = z / zoom;
+    const sx = stage.scrollLeft, sy = stage.scrollTop;
+    zoom = z;
+    scale = computeScale(pageInfo[0].base);
+    pageInfo.forEach(p => { p.canvasDone = false; io.observe(p.el); });
+    layoutPages();
+    stage.scrollLeft = (sx + cx) * k - cx;
+    stage.scrollTop = (sy + cy) * k - cy;
+  }
+  let pinch = null;
+  const tdist = tt => Math.hypot(tt[0].clientX - tt[1].clientX, tt[0].clientY - tt[1].clientY);
+  stage.addEventListener('touchstart', e => {
+    if (e.touches.length !== 2) return;
+    const r = stage.getBoundingClientRect();
+    pinch = { d: tdist(e.touches), z: zoom, f: 1, cx: (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left, cy: (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top };
+    pagesBox.style.transformOrigin = `${stage.scrollLeft + pinch.cx}px ${stage.scrollTop + pinch.cy}px`;
+  }, { passive: true });
+  stage.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    pinch.f = Math.max(1 / pinch.z, Math.min(4 / pinch.z, tdist(e.touches) / pinch.d));
+    pagesBox.style.transform = `scale(${pinch.f})`;
+  }, { passive: false });
+  stage.addEventListener('touchend', e => {
+    if (!pinch || e.touches.length >= 2) return;
+    const p = pinch;
+    pinch = null;
+    pagesBox.style.transform = '';
+    setZoom(p.z * p.f, p.cx, p.cy);
+  }, { passive: true });
+  stage.addEventListener('wheel', e => {
+    if (!e.ctrlKey && !e.metaKey) return;
+    e.preventDefault();
+    const r = stage.getBoundingClientRect();
+    setZoom(zoom * (e.deltaY < 0 ? 1.15 : 1 / 1.15), e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
 
   // ---- save ----
   const saveBtn = h(`<button class="btn btn-primary" type="button" data-save>${icon('check')} Speichern</button>`);

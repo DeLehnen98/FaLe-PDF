@@ -603,7 +603,8 @@ mark {
 .sign-tools .btn[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
 .sign-hint { font-size: var(--fs-small); color: var(--text-2); padding: 0 6px; white-space: nowrap; }
 .sign-stage { flex: 1; overflow: auto; background: var(--viewer-bg); padding: 20px 12px 40px; }
-.sign-pages { display: grid; gap: 16px; justify-content: center; }
+.sign-pages { display: grid; gap: 16px; justify-content: safe center; }
+.sign-stage { touch-action: pan-x pan-y; }
 .sign-page { position: relative; background: #fff; box-shadow: var(--paper-shadow); }
 .sign-page canvas { display: block; width: 100%; height: 100%; }
 .sign-page.placing { cursor: crosshair; }

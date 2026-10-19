@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Edit pilihan",
   "Zeichen": "Simbol",
   "Kreuz": "Silang",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Tanda tangan masuk ke “Sebagai PDF biasa” dan hasil cetak.",
 };
 
 export const defaultValues = {

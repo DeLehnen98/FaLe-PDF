@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Edytuj zaznaczenie",
   "Zeichen": "Symbol",
   "Kreuz": "Krzyżyk",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Podpis trafi do „Jako zwykły PDF” i na wydruk.",
 };
 
 export const defaultValues = {

@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "선택 항목 편집",
   "Zeichen": "기호",
   "Kreuz": "X 표시",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "서명은 ‘일반 PDF로’와 인쇄본에 들어갑니다.",
 };
 
 export const defaultValues = {

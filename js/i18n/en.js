@@ -6317,6 +6317,7 @@ export default {
   "Auswahl bearbeiten": "Edit selection",
   "Zeichen": "Symbol",
   "Kreuz": "Cross",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "The signature goes into “As a normal PDF” and the print-out.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

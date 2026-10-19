@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Selectie bewerken",
   "Zeichen": "Symbool",
   "Kreuz": "Kruisje",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "De handtekening komt in „Als gewone PDF” en in de afdruk.",
 };
 
 export const defaultValues = {

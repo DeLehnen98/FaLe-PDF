@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Seçimi düzenle",
   "Zeichen": "Simge",
   "Kreuz": "Çarpı",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "İmza “Normal PDF olarak” kaydında ve çıktıda yer alır.",
 };
 
 export const defaultValues = {

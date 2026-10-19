@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "Modifica selezione",
   "Zeichen": "Simbolo",
   "Kreuz": "Croce",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "La firma va in «Come PDF normale» e nella stampa.",
 };
 
 export const defaultValues = {

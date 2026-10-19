@@ -61,6 +61,25 @@ def tap_page(pg, fx, fy):
     pg.wait_for_timeout(250)
 
 
+def pinch(pg, cx, cy, d0, d1, steps=10):
+    """Two-finger pinch (spread when d1 > d0) at (cx, cy) – real touch events via the DevTools protocol."""
+    cdp = pg.context.new_cdp_session(pg)
+    def pts(d):
+        return [{'x': cx - d / 2, 'y': cy, 'id': 1}, {'x': cx + d / 2, 'y': cy, 'id': 2}]
+    cdp.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': pts(d0)})
+    for i in range(1, steps + 1):
+        cdp.send('Input.dispatchTouchEvent', {'type': 'touchMove', 'touchPoints': pts(d0 + (d1 - d0) * i / steps)})
+        pg.wait_for_timeout(30)
+    cdp.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
+    cdp.detach()
+
+
+def rel(pg, sel):
+    """position of an item relative to its page (0…1) – must not move when zooming"""
+    return pg.evaluate("""s => { const e = document.querySelector(s), p = e.closest('.sign-page'); const a = e.getBoundingClientRect(), b = p.getBoundingClientRect();
+      return [(a.left - b.left) / b.width, (a.top - b.top) / b.height, a.width / b.width]; }""", sel)
+
+
 def overflow(pg):
     return pg.evaluate("() => { const b = document.querySelector('.sign-bar'); return b && !b.hidden ? [b.scrollWidth, b.clientWidth, document.documentElement.scrollWidth] : null; }")
 
@@ -129,6 +148,24 @@ def run(p):
     pg.locator('[data-bar-del]').click()
     pg.wait_for_timeout(200)
     check('delete: "Löschen" in the bar removes the item', pg.locator('.s-item.s-mark').count() == 2 and pg.locator('.sign-bar').is_hidden())
+    # two-finger zoom
+    pw0 = pg.locator('.sign-page').first.bounding_box()['width']
+    r0 = rel(pg, '.s-item.s-mark')
+    st = pg.locator('.sign-stage').bounding_box()
+    pinch(pg, st['x'] + st['width'] / 2, st['y'] + st['height'] / 3, 70, 210)
+    pg.wait_for_timeout(1200)
+    pw1 = pg.locator('.sign-page').first.bounding_box()['width']
+    check('phone: two-finger spread zooms the page in', pw1 > pw0 * 2.2, (pw0, pw1))
+    r1 = rel(pg, '.s-item.s-mark')
+    check('phone: placed items stay on their spot when zooming', all(abs(a - b) < 0.01 for a, b in zip(r0, r1)), (r0, r1))
+    cw = pg.evaluate("() => { const c = document.querySelector('.sign-page canvas'); return [c.width, c.getBoundingClientRect().width]; }")
+    check('phone: page drawn sharp again after zooming (not just stretched)', cw[0] >= cw[1] * 1.5, cw)
+    check('phone: zooming never widens the whole screen', pg.evaluate('document.documentElement.scrollWidth') <= 361)
+    pinch(pg, st['x'] + st['width'] / 2, st['y'] + st['height'] / 3, 240, 60)
+    pg.wait_for_timeout(1000)
+    pw2 = pg.locator('.sign-page').first.bounding_box()['width']
+    check('phone: pinching back fits the page to the width again (not smaller)', abs(pw2 - pw0) < 3, (pw0, pw2))
+    pg.mouse.click(st['x'] + 5, st['y'] + st['height'] - 5)
     check('phone: no page errors', not errs, errs[:3])
     c.close()
 
@@ -167,6 +204,17 @@ def run(p):
     b1 = sig.bounding_box()
     check('signature: "Größer" makes it bigger (and keeps the centre)', b1['width'] > b0['width'] * 1.1 and abs((b1['x'] + b1['width'] / 2) - (b0['x'] + b0['width'] / 2)) < 3, (b0, b1))
     pg.locator('[data-bar-done]').click()
+    pw0 = pg.locator('.sign-page').first.bounding_box()['width']
+    st = pg.locator('.sign-stage').bounding_box()
+    pg.mouse.move(st['x'] + st['width'] / 2, st['y'] + 200)
+    pg.keyboard.down('Control')
+    pg.mouse.wheel(0, -100)
+    pg.wait_for_timeout(150)
+    pg.mouse.wheel(0, -100)
+    pg.keyboard.up('Control')
+    pg.wait_for_timeout(600)
+    pw1 = pg.locator('.sign-page').first.bounding_box()['width']
+    check('desktop: Ctrl + mouse wheel zooms the page', pw1 > pw0 * 1.25, (pw0, pw1))
     pg.locator('[data-save]').click()
     pg.wait_for_selector('.result-card', timeout=20000)
     out = next(x for x in pg.evaluate(DOCS) if x['name'] != 'bericht.pdf')

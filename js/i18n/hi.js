@@ -6299,6 +6299,7 @@ export default {
   "Auswahl bearbeiten": "चुना हुआ बदलें",
   "Zeichen": "चिह्न",
   "Kreuz": "क्रॉस",
+  "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "हस्ताक्षर “सामान्य PDF के रूप में” और प्रिंट में आएगा।",
 };
 
 export const defaultValues = {

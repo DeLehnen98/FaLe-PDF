@@ -69,6 +69,19 @@ def import_pdfs(pg, names):
     pg.wait_for_timeout(500)
 
 
+def pinch(pg, cx, cy, d0, d1, steps=10):
+    """Two-finger pinch (spread when d1 > d0) at (cx, cy) – real touch events via the DevTools protocol."""
+    cdp = pg.context.new_cdp_session(pg)
+    def pts(d):
+        return [{'x': cx - d / 2, 'y': cy, 'id': 1}, {'x': cx + d / 2, 'y': cy, 'id': 2}]
+    cdp.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': pts(d0)})
+    for i in range(1, steps + 1):
+        cdp.send('Input.dispatchTouchEvent', {'type': 'touchMove', 'touchPoints': pts(d0 + (d1 - d0) * i / steps)})
+        pg.wait_for_timeout(30)
+    cdp.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
+    cdp.detach()
+
+
 def start_server():
     srv = subprocess.Popen(['node', os.path.join(HERE, 'sec', 'csp_server.mjs'), str(PORT), APP], cwd=APP, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(50):
@@ -213,6 +226,17 @@ def run(p):
     check('phone: "Größer" enlarges the form', w1 > w0 * 1.15, (w0, w1))
     over = pg.evaluate('document.documentElement.scrollWidth')
     check('phone: still no page overflow after zooming (the form scrolls inside its area)', over <= 391, over)
+    sb = pg.locator('.xfa-scroll').bounding_box()
+    pinch(pg, sb['x'] + sb['width'] / 2, sb['y'] + sb['height'] / 2, 80, 240)
+    pg.wait_for_timeout(900)
+    w2 = pg.locator('.xfaLayer .xfaTextfield').first.bounding_box()['width']
+    check('phone: two-finger spread zooms in', w2 > w1 * 1.6, (w1, w2))
+    pinch(pg, sb['x'] + sb['width'] / 2, sb['y'] + sb['height'] / 2, 260, 90)
+    pg.wait_for_timeout(900)
+    w3 = pg.locator('.xfaLayer .xfaTextfield').first.bounding_box()['width']
+    check('phone: two-finger pinch zooms out again', w3 < w2 * 0.6, (w2, w3))
+    over = pg.evaluate('document.documentElement.scrollWidth')
+    check('phone: pinching never zooms the whole page (no overflow)', over <= 391, over)
     pg.screenshot(path=os.path.join(OUT, 'phone_form.png'))
     check('phone: no page errors', not errs, errs[:3])
     c.close()
@@ -240,6 +264,36 @@ def run(p):
         vis = pg.evaluate("() => [...document.querySelectorAll('.xfaLayer')].map(l => l.innerText).join(' ')")
         check('real form: the "JavaScript has been disabled" notice is hidden', 'JavaScript has been disabled' not in vis, vis[:200])
         pg.locator('.xfaLayer input.xfaTextfield:visible').first.fill('Mustermann')
+        # signature line: tapping it opens the signature pad, not the keyboard
+        sf = pg.locator('.xfaLayer .xfa-sigfield')
+        for _ in range(12):  # the signature line is on the last page – scroll until pdf.js has laid it out
+            if sf.count():
+                break
+            pg.locator('.xfa-scroll').evaluate('el => el.scrollBy(0, 1500)')
+            pg.wait_for_timeout(500)
+        check('real form: signature line found and marked "Hier unterschreiben"', sf.count() >= 1 and sf.first.get_attribute('placeholder') == 'Hier unterschreiben', sf.count())
+        if sf.count():
+            sf.first.scroll_into_view_if_needed()
+            check('real form: signature line is read-only (no keyboard)', sf.first.evaluate('el => el.readOnly'))
+            sf.first.tap()
+            pg.wait_for_selector('dialog .sig-pad', timeout=10000)
+            pad = pg.locator('dialog .sig-pad').bounding_box()
+            pg.mouse.move(pad['x'] + 30, pad['y'] + 80)
+            pg.mouse.down()
+            for i in range(1, 25):
+                pg.mouse.move(pad['x'] + 30 + i * 10, pad['y'] + 80 - 25 * ((i % 5) / 5.0))
+            pg.mouse.up()
+            pg.locator('dialog .btn-primary').click()
+            pg.wait_for_timeout(800)
+            img = pg.locator('.xfaLayer img.xfa-sig')
+            ok = img.count() == 1
+            if ok:
+                ib, fb = img.bounding_box(), sf.first.bounding_box()
+                ok = ib and fb and ib['width'] > 20 and abs((ib['y'] + ib['height']) - (fb['y'] + fb['height'])) < 6 and ib['x'] >= fb['x'] - 2
+            check('real form: signature shows on the signature line', ok, img.count())
+            pg.screenshot(path=os.path.join(OUT, 'real_signed.png'))
+            pg.wait_for_timeout(500)
+            check('real form: no endless re-drawing after signing', pg.locator('.xfaLayer img.xfa-sig').count() == 1)
         pg.locator('.screen-foot .btn-primary').click()
         pg.wait_for_selector('[data-result] .result-card', timeout=30000)
         saved = doc_bytes(pg, 'real_imm5257e (ausgefüllt).pdf')
@@ -253,7 +307,9 @@ def run(p):
         n = subprocess.run(['pdfinfo', fp], capture_output=True, text=True).stdout
         check('real form: normal PDF with 5 pages, title, value, no JavaScript notice',
               'Pages:           5' in n and 'APPLICATION FOR VISITOR VISA' in ft and 'Mustermann' in ft and 'JavaScript' not in ft, n[:80] + ft[:120])
-        check('real form: logo images carried over', flat.count(b'/Subtype /Image') + flat.count(b'/Subtype/Image') >= 1)
+        nimg = flat.count(b'/Subtype /Image') + flat.count(b'/Subtype/Image')
+        check('real form: logo images and the signature carried over', nimg >= 2, nimg)
+        subprocess.run(['pdftoppm', '-r', '50', '-png', '-f', '5', '-l', '5', '-singlefile', fp, os.path.join(OUT, 'real_flat_p5')])
         check('real form: no page errors', not errs, errs[:3])
         c.close()
     else:
