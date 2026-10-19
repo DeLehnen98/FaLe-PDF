@@ -7,6 +7,8 @@
 //   node scripts/i18n-langs.mjs dump [dir]              write translation chunks (German + English reference)
 //   node scripts/i18n-langs.mjs check <lang> <dir>      validate translated chunks of one language
 //   node scripts/i18n-langs.mjs build <lang> <dir>      write js/i18n/<lang>.js (missing entries fall back to English)
+//   node scripts/i18n-langs.mjs delta <dir>             write ONE extra chunk with the entries of en.js that are new or
+//                                                        changed since the dump (translate it like the others)
 //   node scripts/i18n-langs.mjs coverage                 entries per language file vs. en.js
 //
 // Chunk format (input):  { "lang": "fr", "items": [ { "id": 17, "de": "…", "en": "…" }, … ] }
@@ -99,6 +101,20 @@ async function main() {
       writeFileSync(join(dir, `chunk-${String(n).padStart(2, '0')}.json`), JSON.stringify({ items: items.slice(i, i + CHUNK) }, null, 1));
     }
     console.log(`${items.length} entries in ${n} chunks → ${dir}`);
+    return;
+  }
+  if (cmd === 'delta') {
+    const dir = a || join(ROOT, 'i18n-work');
+    const files = readdirSync(dir).filter(f => /^chunk-\d+\.json$/.test(f)).sort();
+    const dumped = [];
+    for (const f of files) dumped.push(...JSON.parse(readFileSync(join(dir, f), 'utf8')).items);
+    const known = new Map(dumped.map(it => [it.de, it.en])); // later chunks win (an earlier delta)
+    let id = Math.max(-1, ...dumped.map(it => it.id)) + 1;
+    const items = (await loadEn()).filter(it => known.get(it.de) !== it.en).map(it => ({ id: id++, de: it.de, en: it.en }));
+    if (!items.length) { console.log('nothing new or changed since the dump'); return; }
+    const name = `chunk-${String(files.length).padStart(2, '0')}.json`;
+    writeFileSync(join(dir, name), JSON.stringify({ items }, null, 1));
+    console.log(`${items.length} new/changed entries → ${join(dir, name)}`);
     return;
   }
   if (cmd === 'check' || cmd === 'build') {

@@ -265,11 +265,12 @@ export async function mount(screen, { docId }) {
   }
 
   // ---------- apply ----------
+  const pagesOf = list => new Set(list.map(m => m.page)).size;
   const applyBtn = h(`<button class="btn btn-primary" type="button">${icon('redact')} Schwärzen anwenden</button>`);
   applyBtn.addEventListener('click', async () => {
     const r = await openDialog({
       title: 'Schwärzung anwenden?',
-      body: `<p>Es wird eine <b>neue Datei</b> erstellt. Auf ${new Set(marks.map(m => m.page)).size} Seite(n) werden die markierten Stellen schwarz eingebrannt und alle Inhalte dieser Seiten in ein Bild umgewandelt – Text ist dort danach nicht mehr auswählbar oder durchsuchbar.</p>
+      body: `<p><b>Es wird eine neue Datei erstellt.</b> Auf ${pagesOf(marks)} Seite${pagesOf(marks) === 1 ? '' : 'n'} werden die markierten Stellen schwarz eingebrannt und alle Inhalte dieser Seiten in ein Bild umgewandelt – Text ist dort danach nicht mehr auswählbar oder durchsuchbar.</p>
         <label class="field"><span class="field-label">Qualität der geschwärzten Seiten</span>
           <select class="select" name="dpi"><option value="150">150 dpi – kleinere Datei</option><option value="200" selected>200 dpi – empfohlen</option><option value="300">300 dpi – Druckqualität</option></select></label>
         <label class="check"><input type="checkbox" name="meta" checked><span>Metadaten entfernen (Titel, Autor, Stichwörter …)</span></label>`,
