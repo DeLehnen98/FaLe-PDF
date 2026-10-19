@@ -6290,6 +6290,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "¿Quieres compartir de forma segura, firmar y editar PDF tú mismo?",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF es gratis: sin suscripción y sin cuenta.",
   "Ausprobieren": "Probar",
+  "Bilder verkleinern": "Reducir imágenes",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Las fotos y los escaneos se reducen y se leen igual de bien. El texto, los enlaces y los formularios no cambian.",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "El archivo contiene sobre todo fotos o escaneos. Con «Reducir imágenes» será mucho más pequeño y el texto seguirá siendo texto.",
+  "Verkleinere Bild {0}/{1} …": "Reduciendo imagen {0}/{1} …",
 };
 
 export const defaultValues = {

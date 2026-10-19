@@ -6290,6 +6290,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "직접 안전하게 공유하고, 서명하고, PDF를 편집해 보시겠어요?",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF는 무료입니다. 구독도 계정도 필요 없습니다.",
   "Ausprobieren": "사용해 보기",
+  "Bilder verkleinern": "이미지 축소",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "사진과 스캔 이미지를 줄여도 읽기 쉬운 상태 그대로입니다. 텍스트, 링크, 양식은 바뀌지 않습니다.",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "이 파일은 주로 사진이나 스캔 이미지로 되어 있습니다. '이미지 축소'를 사용하면 훨씬 작아지고 텍스트는 그대로 텍스트로 남습니다.",
+  "Verkleinere Bild {0}/{1} …": "이미지 축소 중 {0}/{1} …",
 };
 
 export const defaultValues = {

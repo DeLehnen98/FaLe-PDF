@@ -6290,6 +6290,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "Ingin berbagi dengan aman, menandatangani, dan mengedit PDF sendiri?",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF gratis – tanpa langganan dan tanpa akun.",
   "Ausprobieren": "Coba",
+  "Bilder verkleinern": "Perkecil gambar",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Foto dan hasil pindaian diperkecil – tetap mudah dibaca seperti sebelumnya. Teks, tautan, dan formulir tidak berubah.",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "File ini sebagian besar berisi foto atau hasil pindaian. Dengan “Perkecil gambar”, file jadi jauh lebih kecil – teks tetap teks.",
+  "Verkleinere Bild {0}/{1} …": "Memperkecil gambar {0}/{1} …",
 };
 
 export const defaultValues = {

@@ -67,27 +67,37 @@ export async function mount(screen, { docId }) {
 
   const selected = () => pages.filter(p => p.sel);
 
-  function render() {
-    grid.innerHTML = '';
-    pages.forEach((p, i) => {
-      const card = h(`<div class="pcard ${p.sel ? 'selected' : ''}" draggable="true" data-i="${i}" data-src="${p.src}">
-        <button class="pcard-thumb" type="button" aria-pressed="${p.sel}" aria-label="Seite ${p.src + 1} ${p.sel ? 'abwählen' : 'auswählen'}"><span class="spinner dark"></span></button>
-        <span class="pcard-check" aria-hidden="true">${icon('check')}</span>
-        <div class="pcard-foot"><span class="pcard-num">${i + 1}${p.src !== i ? ` <span class="muted small">(S. ${p.src + 1})</span>` : ''}</span>
-          <span class="pcard-actions">
-            <button class="icon-btn mobile-move" type="button" data-ml aria-label="Nach vorne" ${i === 0 ? 'disabled' : ''}>${icon('arrowLeft')}</button>
-            <button class="icon-btn mobile-move" type="button" data-mr aria-label="Nach hinten" ${i === pages.length - 1 ? 'disabled' : ''}>${icon('arrowRight')}</button>
-            <button class="icon-btn" type="button" data-r aria-label="Seite ${i + 1} drehen">${icon('rotate')}</button>
-            <button class="icon-btn" type="button" data-x aria-label="Seite ${i + 1} löschen">${icon('trash')}</button>
-          </span></div></div>`);
-      card.querySelector('.pcard-thumb').addEventListener('click', () => { p.sel = !p.sel; render(); });
-      card.querySelector('[data-r]').addEventListener('click', () => { p.rot = (p.rot + 90) % 360; render(); });
-      card.querySelector('[data-x]').addEventListener('click', () => removePages([p]));
-      card.querySelector('[data-ml]').addEventListener('click', () => { moveItem(pages, i, i - 1); render(); });
-      card.querySelector('[data-mr]').addEventListener('click', () => { moveItem(pages, i, i + 1); render(); });
-      grid.appendChild(card);
-      if (canvases.has(p.src)) drawThumb(card); else io.observe(card);
-    });
+  // Selecting or turning a page only updates that one card – long documents (hundreds of pages) used to rebuild
+  // every card on each tap, which froze phones for a second. A full rebuild happens only when the order changes,
+  // and builds the cards in slices so the screen stays responsive.
+  function makeCard(p, i) {
+    const card = h(`<div class="pcard ${p.sel ? 'selected' : ''}" draggable="true" data-i="${i}" data-src="${p.src}">
+      <button class="pcard-thumb" type="button" aria-pressed="${p.sel}" aria-label="Seite ${p.src + 1} ${p.sel ? 'abwählen' : 'auswählen'}"><span class="spinner dark"></span></button>
+      <span class="pcard-check" aria-hidden="true">${icon('check')}</span>
+      <div class="pcard-foot"><span class="pcard-num">${i + 1}${p.src !== i ? ` <span class="muted small">(S. ${p.src + 1})</span>` : ''}</span>
+        <span class="pcard-actions">
+          <button class="icon-btn mobile-move" type="button" data-ml aria-label="Nach vorne" ${i === 0 ? 'disabled' : ''}>${icon('arrowLeft')}</button>
+          <button class="icon-btn mobile-move" type="button" data-mr aria-label="Nach hinten" ${i === pages.length - 1 ? 'disabled' : ''}>${icon('arrowRight')}</button>
+          <button class="icon-btn" type="button" data-r aria-label="Seite ${i + 1} drehen">${icon('rotate')}</button>
+          <button class="icon-btn" type="button" data-x aria-label="Seite ${i + 1} löschen">${icon('trash')}</button>
+        </span></div></div>`);
+    card.querySelector('.pcard-thumb').addEventListener('click', () => { p.sel = !p.sel; syncCard(card, p); updateBar(); });
+    card.querySelector('[data-r]').addEventListener('click', () => { p.rot = (p.rot + 90) % 360; applyRot(card); updateBar(); });
+    card.querySelector('[data-x]').addEventListener('click', () => removePages([p]));
+    card.querySelector('[data-ml]').addEventListener('click', () => { moveItem(pages, i, i - 1); render(); });
+    card.querySelector('[data-mr]').addEventListener('click', () => { moveItem(pages, i, i + 1); render(); });
+    return card;
+  }
+
+  function syncCard(card, p) {
+    card.classList.toggle('selected', p.sel);
+    const t = card.querySelector('.pcard-thumb');
+    t.setAttribute('aria-pressed', String(p.sel));
+    t.setAttribute('aria-label', `Seite ${p.src + 1} ${p.sel ? 'abwählen' : 'auswählen'}`);
+  }
+  const syncAll = () => { for (const card of grid.children) { const p = pages[+card.dataset.i]; if (p) { syncCard(card, p); applyRot(card); } } };
+
+  function updateBar() {
     const n = selected().length;
     info.textContent = `${pages.length} Seite${pages.length === 1 ? '' : 'n'}${n ? ` · ${n} ausgewählt` : ''}`;
     wrap.querySelector('[data-selall] span').textContent = n === pages.length && n ? 'Auswahl aufheben' : 'Alle auswählen';
@@ -95,6 +105,24 @@ export async function mount(screen, { docId }) {
     const changed = pages.length !== pdf.numPages || pages.some((p, i) => p.src !== i || p.rot);
     saveBtn.disabled = !changed || !pages.length;
     screen.setFoot([saveBtn], changed ? 'Ungespeicherte Änderungen' : 'Noch keine Änderungen');
+  }
+
+  let renderToken = 0;
+  function render() {
+    const token = ++renderToken;
+    grid.innerHTML = '';
+    const SLICE = 80;
+    const addSlice = from => {
+      if (token !== renderToken) return;
+      const frag = document.createDocumentFragment();
+      const cards = [];
+      for (let i = from; i < Math.min(pages.length, from + SLICE); i++) { const c = makeCard(pages[i], i); frag.appendChild(c); cards.push([c, pages[i]]); }
+      grid.appendChild(frag);
+      for (const [c, p] of cards) { if (canvases.has(p.src)) drawThumb(c); else io.observe(c); }
+      if (from + SLICE < pages.length) setTimeout(() => addSlice(from + SLICE), 0);
+    };
+    addSlice(0);
+    updateBar();
   }
 
   function removePages(list) {
@@ -108,10 +136,10 @@ export async function mount(screen, { docId }) {
   wrap.querySelector('[data-selall]').addEventListener('click', () => {
     const all = selected().length === pages.length;
     pages.forEach(p => { p.sel = !all; });
-    render();
+    syncAll(); updateBar();
   });
-  wrap.querySelector('[data-rotl]').addEventListener('click', () => { selected().forEach(p => { p.rot = (p.rot + 270) % 360; }); render(); });
-  wrap.querySelector('[data-rotr]').addEventListener('click', () => { selected().forEach(p => { p.rot = (p.rot + 90) % 360; }); render(); });
+  wrap.querySelector('[data-rotl]').addEventListener('click', () => { selected().forEach(p => { p.rot = (p.rot + 270) % 360; }); syncAll(); updateBar(); });
+  wrap.querySelector('[data-rotr]').addEventListener('click', () => { selected().forEach(p => { p.rot = (p.rot + 90) % 360; }); syncAll(); updateBar(); });
   wrap.querySelector('[data-del]').addEventListener('click', () => removePages(selected()));
 
   async function build(list) {

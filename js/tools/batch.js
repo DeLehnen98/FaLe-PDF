@@ -209,8 +209,8 @@ export async function mount(screen) {
     if (S('numbers')) parts.push(`<div class="pt-two"><label class="field"><span class="field-label">Seitenzahl-Format</span>${sel('format', [['n', '1'], ['s', 'Seite 1'], ['sv', 'Seite 1 von N'], ['slash', '1 / N']], val.format ?? 'sv')}</label>
       <label class="field"><span class="field-label">Position</span>${sel('pos', [['b-c', 'Unten Mitte'], ['b-r', 'Unten rechts'], ['b-l', 'Unten links'], ['t-c', 'Oben Mitte'], ['t-r', 'Oben rechts']], val.pos ?? 'b-c')}</label></div>`);
     if (S('compress')) {
-      const strong = (val.cm ?? 'lossless') === 'strong';
-      parts.push(`<div class="seg pt-seg-full" role="group" aria-label="Komprimierung"><button type="button" data-cm="lossless" aria-pressed="${!strong}">Verlustfrei</button><button type="button" data-cm="strong" aria-pressed="${strong}">Stark (Seiten als Bild)</button></div>
+      const cm = val.cm ?? 'lossless', strong = cm === 'strong';
+      parts.push(`<div class="seg pt-seg-full" role="group" aria-label="Komprimierung"><button type="button" data-cm="lossless" aria-pressed="${cm === 'lossless'}">Verlustfrei</button><button type="button" data-cm="images" aria-pressed="${cm === 'images'}">Bilder verkleinern</button><button type="button" data-cm="strong" aria-pressed="${strong}">Stark (Seiten als Bild)</button></div>
         <div data-strong ${strong ? '' : 'hidden'}><label class="field"><span class="field-label">Bildqualität: <b data-qv>${esc(val.q ?? 60)}</b> %</span><input type="range" name="q" min="25" max="90" step="5" value="${esc(val.q ?? 60)}"></label>
         <label class="field"><span class="field-label">Auflösung</span>${sel('dpi', [['100', '100 dpi'], ['130', '130 dpi'], ['150', '150 dpi']], val.dpi ?? '130')}</label>
         <p class="hint">Achtung: Text wird bei „Stark“ zu Bild.</p></div>`);
@@ -355,8 +355,8 @@ export async function mount(screen) {
     }
     if (active.includes('numbers')) cfg.num = { format: f.format.value, position: f.pos.value, range: '', start: 1 };
     if (active.includes('compress')) {
-      const strong = opts.querySelector('[data-cm="strong"]').getAttribute('aria-pressed') === 'true';
-      cfg.cmp = { mode: strong ? 'strong' : 'lossless', quality: +f.q.value / 100, dpi: +f.dpi.value };
+      const cmSel = opts.querySelector('[data-cm][aria-pressed="true"]');
+      cfg.cmp = { mode: cmSel ? cmSel.dataset.cm : 'lossless', quality: +f.q.value / 100, dpi: +f.dpi.value };
     }
     if (active.includes('protect')) {
       const a = f.pw1.value, b = f.pw2.value;

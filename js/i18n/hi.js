@@ -6290,6 +6290,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "क्या आप खुद भी सुरक्षित रूप से शेयर करना, साइन करना और PDF एडिट करना चाहते हैं?",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF मुफ़्त है – न सब्सक्रिप्शन, न अकाउंट।",
   "Ausprobieren": "आज़माएं",
+  "Bilder verkleinern": "इमेज छोटी करें",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "फ़ोटो और स्कैन छोटे किए जाते हैं – पहले जितने ही साफ़ पढ़ने लायक। टेक्स्ट, लिंक और फ़ॉर्म नहीं बदलते।",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "यह फ़ाइल ज़्यादातर फ़ोटो या स्कैन से बनी है। „इमेज छोटी करें“ से यह काफ़ी छोटी हो जाएगी – टेक्स्ट टेक्स्ट ही रहेगा।",
+  "Verkleinere Bild {0}/{1} …": "इमेज छोटी की जा रही है {0}/{1} …",
 };
 
 export const defaultValues = {

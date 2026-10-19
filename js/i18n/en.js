@@ -6308,6 +6308,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "Want to share securely, sign and edit PDFs yourself?",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF is free – no subscription and no account.",
   "Ausprobieren": "Try it",
+  "Bilder verkleinern": "Shrink images",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "Photos and scans are scaled down – just as easy to read as before. Text, links and forms stay unchanged.",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "The file consists mostly of photos or scans. With “Shrink images” it gets much smaller – the text stays text.",
+  "Verkleinere Bild {0}/{1} …": "Shrinking image {0}/{1} …",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

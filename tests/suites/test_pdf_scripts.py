@@ -10,10 +10,12 @@ Checks (in the real app page, Chinese UI = locale zh-CN):
 - drawTextImage keeps the position: rotated (90°) picture lands where the text would
 Run: python3 test_pdf_scripts.py   (server: python3 -m http.server 8798 --bind 127.0.0.1 in the repo; URL via SCRIPTS_URL)
 """
-import os, sys
+import os, re, subprocess, sys
 from playwright.sync_api import sync_playwright
 
 URL = os.environ.get('SCRIPTS_URL', 'http://127.0.0.1:8798/')
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out_pdf_scripts')
+os.makedirs(OUT, exist_ok=True)
 results = []
 
 
@@ -69,8 +71,22 @@ ROT = r"""async () => {
 }"""
 
 
+KEY = '-'.join(['AB2C', 'DE3F', 'GH4J', 'KL5M', 'NP6Q', 'RS7T', 'UV8W', 'XY9Z', 'A2B3', 'C4D5', 'E6F7', 'G8H9', 'J2K3', 'L4M5'])
+
+
+def recovery_sheet(pg, label):
+    """The FaLe Sync recovery-key sheet (js/account/screen.js recoveryPdf) in the page's UI language."""
+    with pg.expect_download(timeout=30000) as d:
+        pg.evaluate("k => import('./js/account/screen.js').then(m => m.recoveryPdf(k, 'test@example.org'))", KEY)
+    path = os.path.join(OUT, f'recovery_{label}.pdf')
+    d.value.save_as(path)
+    raw = open(path, 'rb').read()
+    txt = subprocess.run(['pdftotext', path, '-'], capture_output=True, text=True).stdout
+    return raw, txt
+
+
 def ctx_for(b, locale):
-    c = b.new_context(locale=locale, viewport={'width': 1200, 'height': 900})
+    c = b.new_context(locale=locale, viewport={'width': 1200, 'height': 900}, accept_downloads=True)
     c.add_init_script("try { localStorage.setItem('fale-onboarded', '1'); } catch (e) {}")
     pg = c.new_page()
     errs = []
@@ -99,6 +115,9 @@ with sync_playwright() as p:
     check('drawTextImage: Chinese drawn, Polish/Cyrillic left to the Unicode font', rr['drew'] is True and rr['latin'] is False, rr)
     check('drawTextImage: rotated picture starts at the text origin (x≈200, y≥100, runs upwards)',
           170 <= rr['minX'] <= 205 and rr['maxX'] <= 240 and 95 <= rr['minY'] <= 112 and rr['maxY'] > 160, rr)
+    raw, txt = recovery_sheet(pg, 'zh')
+    check('zh recovery sheet: key as real text, Chinese lines as pictures, no "?"', 'AB2C' in txt and 'L4M5' in txt and b'/Subtype /Image' in raw and '?' not in txt, txt[:200])
+    check('zh recovery sheet: not the English fallback', 'Recovery key' not in txt and 'recovery key' not in txt, txt[:200])
     check('zh: no page errors', not errs, errs[:3])
     c.close()
     # ---- English UI: real text "Page 1 of 2"
@@ -114,8 +133,9 @@ with sync_playwright() as p:
     r = pg.evaluate(PROBE, ['numbers', {'format': 'sv', 'position': 'b-c', 'size': 11}])
     check('de page numbers: "Seite 1 von 2" as real text', 'Seite 1 von 2' in r['text'] and r['images'] == 0, r)
     r = pg.evaluate(PROBE, ['header', {'hl': '{datum}'}])
-    import re
     check('de header date: dd.mm.yyyy', re.search(r'\d\d\.\d\d\.\d{4}', r['text']), r['text'])
+    raw, txt = recovery_sheet(pg, 'de')
+    check('de recovery sheet: German real text, no pictures', 'Wiederherstellungsschl' in txt and 'AB2C' in txt and b'/Subtype /Image' not in raw, txt[:200])
     check('de: no page errors', not errs, errs[:3])
     c.close()
     b.close()

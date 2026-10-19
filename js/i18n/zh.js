@@ -6290,6 +6290,10 @@ export default {
   "Selbst sicher teilen, unterschreiben und PDFs bearbeiten?": "想自己安全地分享、签名和编辑 PDF 吗？",
   "FaLe PDF ist kostenlos – ohne Abo und ohne Konto.": "FaLe PDF 免费——无需订阅，无需账户。",
   "Ausprobieren": "试一试",
+  "Bilder verkleinern": "缩小图片",
+  "Fotos und Scans werden kleiner gerechnet – gut lesbar wie vorher. Text, Links und Formulare bleiben unverändert.": "照片和扫描件会被缩小，清晰度依旧。文字、链接和表单保持不变。",
+  "Die Datei besteht vor allem aus Fotos oder Scans. Mit „Bilder verkleinern“ wird sie deutlich kleiner – der Text bleibt Text.": "此文件主要由照片或扫描件组成。使用“缩小图片”可以让它小很多——文字仍然是文字。",
+  "Verkleinere Bild {0}/{1} …": "正在缩小图片 {0}/{1} ……",
 };
 
 export const defaultValues = {
