@@ -112,6 +112,10 @@ Entwicklung. Alle Werkzeuge bleiben auch ohne Plus kostenlos.“ Danke-Beiträge
 ## D. Store-Eintrag
 
 - [ ] Texte aus [listing-de.md](listing-de.md) (Standardsprache Deutsch) und ggf. [listing-en.md](listing-en.md).
+- [ ] Weitere Sprachen: in der Play Console unter „Store-Eintrag › Übersetzungen verwalten“ je Sprache Name, Kurz- und
+      Vollbeschreibung aus [listings/](listings/) einfügen (fr, es, it, pt-BR, nl, pl, tr, uk, ru, zh-CN, ja, ko, hi, id –
+      alle bereits innerhalb der Zeichengrenzen, geprüft mit `python3 store/check_listing.py`). Die App selbst folgt
+      automatisch der Gerätesprache.
 - [ ] **App-Symbol** 512 × 512 PNG: `store/graphics/play-icon-512.png` (vollflächig – Google rundet die Ecken selbst
       ab). Alle Symbole entstehen aus einer Vorlage: `python3 scripts/make_icons.py`.
 - [ ] **Vorstellungsgrafik** (Feature Graphic) 1024 × 500: `store/graphics/feature-graphic-de.png` / `-en.png`.
