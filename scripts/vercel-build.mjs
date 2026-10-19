@@ -268,6 +268,10 @@ const files = walk(DIST)
   .sort();
 const h = createHash('sha256');
 for (const r of files) { h.update(r); h.update(readFileSync(join(DIST, r))); }
+// dictionaries of the other UI languages are cached on first use – they still count for the version, so a changed
+// dictionary gives a new cache (old caches are deleted on activate) instead of a stale copy
+const dictDir = join(DIST, 'js', 'i18n');
+if (existsSync(dictDir)) for (const f of readdirSync(dictDir).filter(f => /^[a-z]{2}\.js$/.test(f) && f !== 'en.js').sort()) { h.update('js/i18n/' + f); h.update(readFileSync(join(dictDir, f))); }
 const ver = h.digest('hex').slice(0, 10);
 const list = ['./', ...files.map(r => './' + r)];
 const swPath = join(DIST, 'sw.js');

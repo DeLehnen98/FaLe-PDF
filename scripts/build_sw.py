@@ -26,6 +26,7 @@ for p in sorted(ROOT.rglob("*")):
         continue
     # UI dictionaries: only the device's language is loaded – cached on first use (same rule as vercel-build.mjs)
     if re.fullmatch(r"js/i18n/[a-z]{2}\.js", rel) and rel != "js/i18n/en.js":
+        h.update(rel.encode()); h.update(p.read_bytes())  # still part of the version: a changed dictionary must reach the cache
         continue
     files.append("./" + rel)
     h.update(rel.encode())
