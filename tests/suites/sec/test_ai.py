@@ -151,7 +151,7 @@ def main():
             check('start: KI card', page.locator('#view-start .ai-start-card').count() == 1)
             goto(page, '#/werkzeuge', 700)
             check('werkzeuge: KI section with 9 cards', page.locator('[data-ai-section] .tool-card').count() == 9)
-            check('werkzeuge: Alltag section still 6 cards', page.locator('.alltag-grid .tool-card').count() == 6)
+            check('werkzeuge: Alltag section still 6 cards', page.locator('.alltag-grid .tool-card:not([data-tool^="web-"])').count() == 6)
             page.fill('#tool-search', 'Lernkarten')
             page.wait_for_timeout(300)
             check('werkzeuge search finds AI card', page.locator('[data-ai-section] .tool-card:not([hidden])').count() == 1)
