@@ -20,6 +20,8 @@ suites/design/testserve/
 *.y4m
 !**/officedata/*
 !**/testdata/*
+# generated camera test videos (make_y4m.py), several MB each
+**/testdata/*.y4m
 **/share_data/
 !suites/webtools/fixtures_static/
 !suites/webtools/fixtures_static/**
