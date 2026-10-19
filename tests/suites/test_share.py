@@ -489,6 +489,9 @@ def run():
             ctxO = new_ctx(browser, phone=True)
             O = open_app(ctxO, 'O', '#/teilen')
             O.wait_for_selector('.sh-hub')
+            # the test server has no service worker: load the transfer screen's module while online (the installed
+            # app has it in its offline cache)
+            O.evaluate("import('./js/share/transfer.js').then(() => true)")
             ctxO.set_offline(True)
             O.evaluate("window.dispatchEvent(new Event('offline'))")
             O.wait_for_timeout(400)
