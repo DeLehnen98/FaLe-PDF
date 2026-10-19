@@ -16,9 +16,10 @@ import { signApi, shareApi, downloadDecrypted, uploadEncrypted, online } from '.
 import { offlineBanner, progressBar, fmtDateTime, fmtUtc, shareErrorText, sicon } from './common.js';
 import { mountPages } from './pages.js';
 import { SIGNER_COLORS } from './signreq.js';
+import { locale } from '../i18n/index.js'; // the date is written in the user's own format
 
 const BASELINE = 0.946;
-const todayDe = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const todayDe = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 export async function mount(screen, { arg: token, hash }) {
   const wrap = h('<div class="screen-inner sh-signer-view"></div>');
@@ -246,11 +247,15 @@ async function buildSigned({ bytes, meta, info, idx, values, view, me, hashIn, s
       const [px, py] = p.base.convertToPdfPoint(x, y + ih);
       target.drawImage(img, { x: px, y: py, width: iw, height: ih, rotate: degrees(rot) });
     } else {
-      const txt = clean(v.text).replace(/\n/g, ' ');
+      // Chinese, Hindi, Arabic … (no embedded font has them): drawn as a picture instead of "?"
+      const pic = U.needsTextImage(v.text);
+      const txt = pic ? String(v.text).replace(/\n/g, ' ') : clean(v.text).replace(/\n/g, ' ');
+      const wOf = sz => (pic ? U.measureTextImage(txt, sz) : font.widthOfTextAtSize(txt, sz));
       let size = Math.max(6, Math.min(f.h * 0.62, 14));
-      while (size > 6 && font.widthOfTextAtSize(txt, size) > f.w - 4) size -= 0.5;
+      while (size > 6 && wOf(size) > f.w - 4) size -= 0.5;
       const top = f.y + (f.h - size * 1.2) / 2;
       const [px, py] = p.base.convertToPdfPoint(f.x + 2, top + size * BASELINE);
+      if (pic && await U.drawTextImage(target, pdfDoc, txt, { x: px, y: py, size, color: rgb(0.07, 0.07, 0.12), rotate: degrees(rot) })) continue;
       target.drawText(txt, { x: px, y: py, size, font, color: rgb(0.07, 0.07, 0.12), rotate: degrees(rot) });
     }
   }

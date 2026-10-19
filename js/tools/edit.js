@@ -8,7 +8,7 @@ import { loadPdf } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, PageStage, INK_COLORS, swatches, hexToRgb, makeSanitizer, readImageFile, guardLeave, proBadge, updateFoot } from './common.js';
 import { pageChars, nearestChar } from './textgeom.js';
-import { needsUnicode, fontForText } from '../office/unifont.js';
+import { needsUnicode, fontForText, drawTextImage } from '../office/unifont.js';
 
 const MODES = [
   { id: 'select', label: 'Auswählen', icon: 'pointer', hint: 'Elemente antippen zum Bearbeiten, ziehen zum Verschieben.' },
@@ -469,11 +469,15 @@ export async function mount(screen, { docId }) {
           const font = needsUnicode(it.text) ? await fontForText(pdfDoc, it.text, { family: it.font, bold: it.bold, PDFLib }) : await getFont(it.font, it.bold);
           const clean = makeSanitizer(font);
           const [r, g, b] = hexToRgb(it.color);
-          it.text.split('\n').forEach((line, i) => {
-            if (!line) return;
+          const lines = it.text.split('\n');
+          for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            if (!line) continue;
             const [x, y] = V(it.x, it.y + it.size * (i * 1.2 + BASELINE[it.font]));
+            // Chinese, Hindi, Arabic … (no embedded font has them): drawn as a picture instead of "?"
+            if (await drawTextImage(page, pdfDoc, line, { x, y, size: it.size, bold: it.bold, family: it.font, color: rgb(r, g, b), rotate: degrees(angle) })) continue;
             page.drawText(clean(line), { x, y, size: it.size, font, color: rgb(r, g, b), rotate: degrees(angle) });
-          });
+          }
         }
       }
       const out = await saveDoc(pdfDoc);

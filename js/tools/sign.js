@@ -8,13 +8,14 @@ import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { updateFoot, ensureCss } from './common.js';
 import { pickAsset } from './sigstore.js';
-import { needsUnicode, uniFont } from '../office/unifont.js';
+import { needsUnicode, uniFont, drawTextImage } from '../office/unifont.js';
+import { locale } from '../i18n/index.js'; // the date is written in the user's own format
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 import { matchProfile, profileMenuItems } from './profilefill.js';
 
 const BASELINE = 0.946; // baseline offset (em) for Helvetica/Arial with line-height 1.2
-const today = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const today = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 export async function mount(screen, { docId }) {
   const doc = await db.getDoc(docId);
@@ -539,9 +540,11 @@ export async function mount(screen, { docId }) {
       const target = pages[it.page - 1];
       const rot = p.page.rotate || 0;
       if (it.kind === 'text') {
-        const txt = clean(it.text.trim());
-        if (!txt) continue;
+        if (!it.text.trim()) continue;
         const [px, py] = p.base.convertToPdfPoint(it.x, it.y + it.fontSize * BASELINE);
+        // Chinese, Hindi, Arabic … (no embedded font has them): drawn as a picture instead of "?"
+        if (await drawTextImage(target, pdfDoc, it.text.trim(), { x: px, y: py, size: it.fontSize, color: rgb(0.067, 0.067, 0.067), rotate: degrees(rot) })) continue;
+        const txt = clean(it.text.trim());
         target.drawText(txt, { x: px, y: py, size: it.fontSize, font, color: rgb(0.067, 0.067, 0.067), rotate: degrees(rot) });
       } else {
         let img = imgCache.get(it.sig);

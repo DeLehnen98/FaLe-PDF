@@ -5,6 +5,7 @@
 import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, openDialog, pickFiles, promptDialog, confirmDialog } from '../ui.js';
 import { ensureCss } from './common.js';
+import { locale } from '../i18n/index.js'; // the date is written in the user's own format
 
 export const KINDS = [
   { id: 'signature', label: 'Unterschriften', one: 'Unterschrift' },
@@ -129,7 +130,7 @@ export const STAMP_PRESETS = [
 ];
 const STAMP_COLORS = [{ c: '#E03131', n: 'Rot' }, { c: '#1C64F2', n: 'Blau' }, { c: '#2F9E44', n: 'Grün' }, { c: '#5F3DC4', n: 'Violett' }, { c: '#1F2340', n: 'Schwarz' }];
 const BORDERS = [['rect', 'Rechteck'], ['round', 'Abgerundet'], ['double', 'Doppelt'], ['oval', 'Oval'], ['dashed', 'Gestrichelt'], ['none', 'Ohne']];
-const today = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const today = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 /** Render a stamp spec into a transparent canvas (scale = px per pt). */
 export function renderStamp(spec, scale = 4) {

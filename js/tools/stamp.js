@@ -9,13 +9,15 @@ import { saveResult } from '../library.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, parseRange, hexToRgb, makeSanitizer, readImageFile, swatches, tick, proBadge, updateFoot } from './common.js';
-import { needsUnicode, uniFont } from '../office/unifont.js';
+import { needsUnicode, uniFont, needsTextImage, measureTextImage, drawTextImage } from '../office/unifont.js';
+import { t as tr, locale } from '../i18n/index.js';
 
 const STAMP_COLORS = [
   { c: '#9AA0B4', n: 'Grau' }, { c: '#1F2340', n: 'Schwarz' }, { c: '#E03131', n: 'Rot' },
   { c: '#1C64F2', n: 'Blau' }, { c: '#2F9E44', n: 'Grün' }, { c: '#F08C00', n: 'Orange' },
 ];
-const today = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+// dates and the page-number wording are printed in the user's language (German: unchanged)
+const today = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 // ---------------------------------------------------------------- font metrics (pdf-lib)
 let metricsPromise = null;
@@ -39,6 +41,7 @@ function layout(mode, s, ctx) {
   // Helvetica metrics; Liberation Sans (used for Polish, Turkish, Cyrillic … text) has the same widths, so a letter
   // Helvetica cannot encode is measured as a similar Latin letter
   const width = (t, size, bold) => {
+    if (needsTextImage(t)) return measureTextImage(t, size, { bold }); // drawn as a picture (Chinese, Hindi …)
     const f = bold ? fonts.bold : fonts.regular;
     try { return f.widthOfTextAtSize(t, size); } catch { return f.widthOfTextAtSize(String(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\x20-\x7e\u00a0-\u00ff]/g, 'o'), size); }
   };
@@ -83,7 +86,7 @@ function layout(mode, s, ctx) {
     .replace(/\{datei\}/gi, docName);
   const slots = [];
   if (mode === 'numbers') {
-    const fmt = { n: '{seite}', s: 'Seite {seite}', sv: 'Seite {seite} von {seiten}', slash: '{seite} / {seiten}', dash: '– {seite} –' }[s.format] || '{seite}';
+    const fmt = { n: '{seite}', s: tr('Seite {seite}'), sv: tr('Seite {seite} von {seiten}'), slash: '{seite} / {seiten}', dash: '– {seite} –' }[s.format] || '{seite}';
     const [py, px] = s.position.split('-');
     slots.push({ v: py, hpos: px, text: fill(fmt) });
   } else {
@@ -164,6 +167,7 @@ export async function stampPdf(bytes, mode, settings = {}, { name = 'Dokument', 
       const rot = degrees((op.rot || 0) + R);
       if (op.kind === 'text') {
         const [r, g, b] = hexToRgb(op.color);
+        if (await drawTextImage(page, pdfDoc, op.text, { x, y, size: op.size, bold: !!op.bold, color: rgb(r, g, b), opacity: op.opacity, rotate: rot })) continue;
         const u = needsUnicode(op.text) ? await uniFor(!!op.bold) : null;
         page.drawText(u ? u.clean(op.text) : clean(op.text), { x, y, size: op.size, font: u ? u.font : op.bold ? bold : font, color: rgb(r, g, b), opacity: op.opacity, rotate: rot });
       } else if (op.kind === 'image' && image) {
