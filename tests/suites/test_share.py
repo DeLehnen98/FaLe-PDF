@@ -3,6 +3,8 @@
 Two (or three) browser contexts act as sender / recipient / signer / second device.
 Screenshots → out_share/."""
 import os, sys, json, base64, shutil, re, io, hashlib, time, urllib.request
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sec'))
+import csp_compat  # noqa: F401,E402 – CSP-safe wait_for_function (the app runs under a strict CSP)
 from playwright.sync_api import sync_playwright
 
 SP = os.path.dirname(os.path.abspath(__file__))
@@ -156,7 +158,7 @@ def run():
             shot(A, 'desktop_light_start')
             goto(A, '#/werkzeuge', 800)
             A.wait_for_selector('[data-share-section] .tool-card')
-            check('entry: Werkzeuge section "Teilen & Unterschreiben"', A.locator('[data-share-section] .tool-card').count() == 3 and 'Teilen & Unterschreiben' in A.locator('[data-share-section] h2').inner_text())
+            check('entry: Werkzeuge section "Teilen & Unterschreiben"', A.locator('[data-share-section] .tool-card').count() == 4 and 'Teilen & Unterschreiben' in A.locator('[data-share-section] h2').inner_text())
             state['pdf'] = import_file(A, os.path.join(DATA, 'vertrag.pdf'), 'Vertrag Muster.pdf', 'application/pdf')
             state['bin'] = import_file(A, os.path.join(DATA, 'daten.bin'), 'Daten Export.txt', 'text/plain')
             goto(A, f'#/ansicht/{state["pdf"]}', 1500)
@@ -178,7 +180,7 @@ def run():
             A.keyboard.press('Escape')
             goto(A, '#/teilen', 900)
             A.wait_for_selector('.sh-hub')
-            check('hub: three actions', A.locator('.sh-hub-grid .tool-card').count() == 3)
+            check('hub: four actions', A.locator('.sh-hub-grid .tool-card').count() == 4)
         step('entries', entries)
 
         # ------------------------------------------------------------ share link → recipient, identical bytes, nothing readable on the server
