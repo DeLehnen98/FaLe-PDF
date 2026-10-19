@@ -17,8 +17,8 @@ import { createTranslator, subst } from './core.js';
 const KEY = 'fale-lang';
 // UI languages (German = source). Order does not matter; the device's preference list decides.
 // Only languages with a dictionary file are listed (js/i18n/<code>.js, built by scripts/i18n-langs.mjs); keep the
-// same list in js/boot.js. Planned: hi id.
-export const LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr', 'uk', 'ru', 'zh', 'ja', 'ko'];
+// same list in js/boot.js. Planned: id.
+export const LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr', 'uk', 'ru', 'zh', 'ja', 'ko', 'hi'];
 export const LANG_SETTINGS = ['auto', ...LANGS];
 const LOCALES = { de: 'de-DE', en: 'en-GB', fr: 'fr-FR', es: 'es-ES', it: 'it-IT', pt: 'pt-BR', nl: 'nl-NL', pl: 'pl-PL', tr: 'tr-TR',
   uk: 'uk-UA', ru: 'ru-RU', zh: 'zh-CN', ja: 'ja-JP', ko: 'ko-KR', hi: 'hi-IN', id: 'id-ID' };
@@ -272,7 +272,7 @@ function release() {
 async function startLang(code) {
   // static import specifiers per language (bundlers and the service worker see every file)
   const load = {
-    en: () => import('./en.js'), fr: () => import('./fr.js'), es: () => import('./es.js'), it: () => import('./it.js'), pt: () => import('./pt.js'), nl: () => import('./nl.js'), pl: () => import('./pl.js'), tr: () => import('./tr.js'), uk: () => import('./uk.js'), ru: () => import('./ru.js'), zh: () => import('./zh.js'), ja: () => import('./ja.js'), ko: () => import('./ko.js'),
+    en: () => import('./en.js'), fr: () => import('./fr.js'), es: () => import('./es.js'), it: () => import('./it.js'), pt: () => import('./pt.js'), nl: () => import('./nl.js'), pl: () => import('./pl.js'), tr: () => import('./tr.js'), uk: () => import('./uk.js'), ru: () => import('./ru.js'), zh: () => import('./zh.js'), ja: () => import('./ja.js'), ko: () => import('./ko.js'), hi: () => import('./hi.js'),
   }[code];
   if (!load) throw new Error('no dictionary for ' + code);
   const mod = await load();
