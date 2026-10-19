@@ -6328,6 +6328,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "This PDF is not a special official form",
   "Zum Kopieren oder als Word-Datei": "To copy, or as a Word file",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Take a photo of a letter or pick one. FaLe reads the text out of it – to copy, share or as a Word file.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "Everything runs on your device – the Pro features are free too.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

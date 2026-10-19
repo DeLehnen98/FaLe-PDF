@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "この PDF は特別な公的書式ではありません",
   "Zum Kopieren oder als Word-Datei": "コピーするか Word ファイルに",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "手紙を撮影するか写真を選んでください。FaLe が文字を読み取ります。コピー、共有、Word ファイルにできます。",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "すべてお使いの端末上で動きます。Pro 機能も無料です。",
 };
 
 export const defaultValues = {

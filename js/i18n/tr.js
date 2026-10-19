@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "Bu PDF özel bir resmî form değil",
   "Zum Kopieren oder als Word-Datei": "Kopyalamak için ya da Word dosyası olarak",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Bir mektubun fotoğrafını çekin ya da bir fotoğraf seçin. FaLe metni okur – kopyalamak, paylaşmak ya da Word dosyası olarak.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "Her şey cihazında çalışır – Pro özellikler de ücretsiz.",
 };
 
 export const defaultValues = {

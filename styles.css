@@ -781,3 +781,19 @@ mark {
 .sign-bar .sb-del { color: var(--danger); }
 @media (pointer: coarse) and (min-width: 420px) { .sign-bar .sb-color { width: 40px; height: 40px; } }
 @media (max-width: 480px) { .sign-bar .sb-del span { display: none; } }
+
+/* ---------- design pass (Oct 2026) ---------- */
+/* phones: messages appear above the round "+" button instead of covering it */
+@media (max-width: 900px) {
+  html:not(.simple) body:is([data-view="start"], [data-view="dateien"]) #viewer[hidden] ~ #tool-screen[hidden] ~ .toasts { bottom: calc(156px + var(--safe-b)); }
+}
+/* Ausfüllen & unterschreiben: the tool row scrolls sideways on phones – a soft fade on the right shows there is more */
+@media (max-width: 900px) {
+  html:not(.simple) .sign-tools { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); padding-right: 36px; }
+}
+/* start screen of a returning user (has files): the welcome text is known – files and tools come into view */
+@media (max-width: 900px) {
+  html:not(.simple) #view-start.has-files .hero p { display: none; }
+  html:not(.simple) #view-start.has-files .hero { padding-top: 20px; padding-bottom: 18px; }
+  html:not(.simple) #view-start.has-files .hero-actions { margin-top: 14px; }
+}

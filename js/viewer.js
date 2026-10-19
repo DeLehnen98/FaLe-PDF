@@ -851,7 +851,7 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
   const doc = await db.getDoc(id);
   if (token !== openToken) return;
   if (!doc) { toast('Dokument nicht gefunden.', 'error'); onCloseRequest(); return; }
-  nameWithBreaks(q('title'), doc.name);
+  nameWithBreaks(q('title'), doc.name.replace(/\.pdf$/i, ''));
   q('subtitle').textContent = pagesLabel(doc.pages);
   document.title = `${doc.name} – FaLe PDF`;
   db.updateDoc(id, { openedAt: Date.now() }).catch(() => {});

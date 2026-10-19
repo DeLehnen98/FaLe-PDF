@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "Deze pdf is geen speciaal overheidsformulier",
   "Zum Kopieren oder als Word-Datei": "Om te kopiëren of als Word-bestand",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Maak een foto van een brief of kies er een. FaLe haalt de tekst eruit – om te kopiëren, te delen of als Word-bestand.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "Alles werkt op je apparaat – ook de Pro-functies zijn gratis.",
 };
 
 export const defaultValues = {

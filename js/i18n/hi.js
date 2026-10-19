@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "यह PDF कोई ख़ास सरकारी फ़ॉर्म नहीं है",
   "Zum Kopieren oder als Word-Datei": "कॉपी करने के लिए या Word फ़ाइल के रूप में",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "किसी पत्र की फ़ोटो लें या कोई फ़ोटो चुनें। FaLe उसमें से टेक्स्ट पढ़ लेगा – कॉपी करने, शेयर करने या Word फ़ाइल के रूप में।",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "सब कुछ आपके डिवाइस पर चलता है – Pro सुविधाएँ भी मुफ़्त हैं।",
 };
 
 export const defaultValues = {

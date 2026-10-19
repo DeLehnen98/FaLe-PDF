@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "这个 PDF 不是特殊的政府表格",
   "Zum Kopieren oder als Word-Datei": "可复制，或保存为 Word 文件",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "给信件拍张照或选一张照片。FaLe 会读出其中的文字——可复制、分享或保存为 Word 文件。",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "一切都在你的设备上运行——专业功能也免费。",
 };
 
 export const defaultValues = {

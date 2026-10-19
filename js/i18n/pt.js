@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "Este PDF não é um formulário oficial especial",
   "Zum Kopieren oder als Word-Datei": "Para copiar ou como ficheiro Word",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Tira uma foto a uma carta ou escolhe uma. A FaLe tira o texto – para copiar, partilhar ou como ficheiro Word.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "Tudo funciona no teu dispositivo – as funções Pro também são grátis.",
 };
 
 export const defaultValues = {

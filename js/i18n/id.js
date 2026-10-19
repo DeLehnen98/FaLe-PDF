@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "PDF ini bukan formulir resmi khusus",
   "Zum Kopieren oder als Word-Datei": "Untuk disalin atau sebagai file Word",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "Foto sebuah surat atau pilih fotonya. FaLe membaca teksnya – untuk disalin, dibagikan, atau sebagai file Word.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "Semuanya berjalan di perangkatmu – fitur Pro juga gratis.",
 };
 
 export const defaultValues = {

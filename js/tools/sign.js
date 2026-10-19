@@ -70,10 +70,10 @@ export async function mount(screen, { docId }) {
   screen.body.style.cssText = 'display:flex;flex-direction:column;overflow:hidden';
   const tools = h(`<div class="sign-tools" role="toolbar" aria-label="Einfügen">
     ${fields.length ? `<button class="btn btn-ghost btn-sm" type="button" data-mode="form" aria-pressed="false">${icon('form')} Formular (${fields.length})</button>` : ''}
-    <button class="btn btn-ghost btn-sm" type="button" data-mode="text" aria-pressed="false">${icon('text')} Text</button>
-    <button class="btn btn-ghost btn-sm" type="button" data-mode="date" aria-pressed="false">${icon('calendar')} Datum</button>
-    <button class="btn btn-ghost btn-sm" type="button" data-mode="mark" aria-pressed="false">${icon('check')} Häkchen</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="sign" aria-pressed="false">${icon('sign')} Unterschrift</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-mode="text" aria-pressed="false">${icon('text')} Text</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-mode="mark" aria-pressed="false">${icon('check')} Häkchen</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-mode="date" aria-pressed="false">${icon('calendar')} Datum</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="initials" aria-pressed="false">${icon('pen')} Initialen</button>
     <button class="btn btn-ghost btn-sm" type="button" data-mode="stamp" aria-pressed="false">${icon('stamp')} Stempel</button>
     ${profile ? `<button class="btn btn-ghost btn-sm" type="button" data-mode="profile" aria-pressed="false">${icon('contact')} Aus meinem Profil</button>` : ''}

@@ -132,13 +132,16 @@ export async function renderHome() {
           <button class="btn btn-glass" type="button" data-action="new-menu" aria-haspopup="menu">${oicon('plus')} Neu</button>
         </div>
       </div>
+      <div class="rem-start" data-rem hidden></div>
       <div data-search></div>
       <section class="recent-strip" data-recent-strip hidden aria-labelledby="recent-strip-title">
         <h2 class="section-title" id="recent-strip-title">Zuletzt geöffnet <a class="btn btn-sm btn-ghost" href="#/dateien">Alle Dateien</a></h2>
         <div class="rs-row" role="list"></div>
       </section>
+      <!-- the main PDF tasks right after the files (before assistants and "new"): what most people came for -->
+      <h2 class="section-title" data-home="tools">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
+      <div class="tiles" role="list"></div>
       <div class="simple-hint card" data-simple-hint hidden></div>
-      <div class="rem-start" data-rem hidden></div>
       <div class="sm-start" data-smart-start hidden></div>
       <section class="simple-home" data-simple-home hidden aria-labelledby="simple-home-title"></section>
       <h2 class="section-title" data-home="create">Neu erstellen <a class="btn btn-sm btn-ghost" href="#/vorlagen">${oicon('template')} Vorlagen</a></h2>
@@ -151,8 +154,6 @@ export async function renderHome() {
         <a class="lt-chip" role="listitem" href="#/tresor">${oicon('vault')}<span>Tresor</span></a>
       </div>
       <div class="continue-box" data-continue hidden></div>
-      <h2 class="section-title" data-home="tools">Werkzeuge <a class="btn btn-sm btn-ghost" href="#/werkzeuge">Alle anzeigen</a></h2>
-      <div class="tiles" role="list"></div>
       <h2 class="section-title simple-only" data-home="files">Meine Dateien</h2>
       <div class="tabs" role="tablist" aria-label="Dateilisten">
         <button class="tab" role="tab" type="button" data-tab="recent">Zuletzt</button>
@@ -280,6 +281,7 @@ async function renderHomeList() {
   const strip = $('[data-recent-strip]', el);
   const recent = docs.filter(d => d.openedAt || d.createdAt).slice(0, 8);
   strip.hidden = !recent.length;
+  el.classList.toggle('has-files', !!recent.length); // returning users: a shorter welcome, the files and tools move up
   const row = $('.rs-row', strip);
   row.innerHTML = '';
   recent.forEach(d => row.appendChild(h(`<a class="rs-card" role="listitem" href="${openHash(d)}" data-rs="${esc(d.id)}">${fileThumb(d)}<span class="rs-name" data-no-i18n>${esc(d.name)}</span></a>`)));
@@ -320,15 +322,15 @@ export function renderTools(initialQ = null) {
   const el = viewEl('werkzeuge');
   if (!el.dataset.built) {
     el.dataset.built = '1';
-    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alle Werkzeuge arbeiten lokal – nichts wird hochgeladen, außer du nutzt bewusst die Cloud-KI. Auch die Pro-Funktionen sind kostenlos.</p></div></div>
+    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.</p></div></div>
       <div data-search></div>
       <section class="simple-sec" data-section="simple" data-simple-tools hidden></section>
+      <div data-groups></div>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
       <section class="tool-section" data-section="alltag"><h2 class="section-title">Alltag &amp; Organisation</h2><div class="tool-grid alltag-grid"></div></section>
       <section class="tool-section" data-section="assistenten" data-smart-section hidden></section>
       <section class="tool-section" data-section="teilen" data-share-section hidden></section>
       <section class="tool-section" data-section="ki" data-ai-section hidden></section>
-      <div data-groups></div>
       <p class="panel-empty" data-noresult hidden>Kein Werkzeug gefunden.</p>`;
     const officeCards = [
       { id: 'o-doc', title: 'Neues Dokument', desc: 'Leer oder mit Vorlage: Brief, Lebenslauf, Rechnung, Hausarbeit … – als .docx oder PDF.', icon: 'kdoc', href: '#/vorlagen/dokument' },
@@ -377,7 +379,7 @@ export function renderTools(initialQ = null) {
       });
       $('[data-noresult]', el).hidden = any;
     };
-    const form = searchForm('tool-search', 'Werkzeug suchen, z. B. „Word“ oder „Passwort“', filter, filter);
+    const form = searchForm('tool-search', 'Werkzeug suchen', filter, filter);
     $('[data-search]', el).appendChild(form);
     el._filter = filter;
     import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
@@ -402,7 +404,7 @@ function renderSimpleTools(el) {
   const sec = $('[data-simple-tools]', el);
   const on = simpleOn();
   const search = $('#tool-search', el);
-  if (search) search.placeholder = t(on ? 'Werkzeug suchen' : 'Werkzeug suchen, z. B. „Word“ oder „Passwort“');
+  if (search) search.placeholder = t('Werkzeug suchen');
   sec.hidden = !on;
   el.classList.toggle('st-all', on && simpleToolsAll);
   if (!on || sec.firstChild) { updateSimpleCount(el); return; }

@@ -6310,6 +6310,7 @@ export default {
   "Diese PDF ist kein spezielles Behörden-Formular": "이 PDF는 특별한 관공서 서식이 아닙니다",
   "Zum Kopieren oder als Word-Datei": "복사하거나 Word 파일로",
   "Mach ein Foto von einem Brief oder wähle eines aus. FaLe liest den Text heraus – zum Kopieren, Teilen oder als Word-Datei.": "편지를 사진으로 찍거나 사진을 고르세요. FaLe가 글자를 읽어 냅니다. 복사, 공유하거나 Word 파일로 저장할 수 있습니다.",
+  "Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.": "모든 기능이 기기에서 실행됩니다. Pro 기능도 무료입니다.",
 };
 
 export const defaultValues = {
