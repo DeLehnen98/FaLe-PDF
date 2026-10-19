@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Symbool",
   "Kreuz": "Kruisje",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "De handtekening komt in „Als gewone PDF” en in de afdruk.",
+  "Automatisch aus dem Inhalt": "Automatisch, op basis van de inhoud",
+  "Name automatisch aus dem Inhalt": "Naam gemaakt op basis van de inhoud",
+  "Arztbrief": "Doktersbrief",
+  "Krankenkasse": "Zorgverzekeraar",
 };
 
 export const defaultValues = {

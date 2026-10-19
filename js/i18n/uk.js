@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Символ",
   "Kreuz": "Хрестик",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Підпис потрапить у «Як звичайний PDF» і в друк.",
+  "Automatisch aus dem Inhalt": "Автоматично, за вмістом",
+  "Name automatisch aus dem Inhalt": "Назву створено за вмістом",
+  "Arztbrief": "Лист від лікаря",
+  "Krankenkasse": "Медичне страхування",
 };
 
 export const defaultValues = {

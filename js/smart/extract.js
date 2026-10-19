@@ -366,9 +366,10 @@ export function classify(input) {
   if (type === 'bescheid') subtype = /finanzamt|einkommensteuer|steuerbescheid|umsatzsteuer|grundsteuer|kirchensteuer/i.test(full) ? 'steuer' : 'behoerde';
   if (type === 'vertrag') subtype = /kündigungsbestätigung|bestätigung ihrer kündigung|haben wir ihre kündigung|ihre kündigung/i.test(full) ? 'kuendigungsbestaetigung' : 'vertragsbestaetigung';
   if (type === 'rechnung') {
-    if (/kassenbon|bon-?nr|rückgeld|kassierer|summe\s+eur|^summe/im.test(full) && !/rechnungsnummer|rechnung nr/i.test(full)) subtype = 'kassenbon';
+    // a utility bill has a "Summe" line too – it is no till receipt
+    if (/nebenkostenabrechnung|betriebskostenabrechnung/i.test(full)) subtype = 'nebenkosten';
+    else if (/kassenbon|bon-?nr|rückgeld|kassierer|summe\s+eur|^summe/im.test(full) && !/rechnungsnummer|rechnung nr/i.test(full)) subtype = 'kassenbon';
     else if (/arbeitskosten|lohnkosten|arbeitslohn|handwerk|montage|meisterbetrieb|sanitär|elektro|malerbetrieb|dachdecker/i.test(full)) subtype = 'handwerker';
-    else if (/nebenkostenabrechnung|betriebskostenabrechnung/i.test(full)) subtype = 'nebenkosten';
     else if (/strom|gas|fernwärme|stadtwerke|kwh|zählerstand/i.test(full)) subtype = 'energie';
     else if (/goä|gebührenordnung für ärzte|dr\.\s?med|zahnarzt|praxis/i.test(full)) subtype = 'arzt';
   }

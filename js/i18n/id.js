@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Simbol",
   "Kreuz": "Silang",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Tanda tangan masuk ke “Sebagai PDF biasa” dan hasil cetak.",
+  "Automatisch aus dem Inhalt": "Otomatis, dari isinya",
+  "Name automatisch aus dem Inhalt": "Nama dibuat dari isinya",
+  "Arztbrief": "Surat dokter",
+  "Krankenkasse": "Asuransi kesehatan",
 };
 
 export const defaultValues = {

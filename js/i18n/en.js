@@ -6318,6 +6318,10 @@ export default {
   "Zeichen": "Symbol",
   "Kreuz": "Cross",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "The signature goes into “As a normal PDF” and the print-out.",
+  "Automatisch aus dem Inhalt": "Automatic, from the content",
+  "Name automatisch aus dem Inhalt": "Name made from the content",
+  "Arztbrief": "Doctor's letter",
+  "Krankenkasse": "Health insurance",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

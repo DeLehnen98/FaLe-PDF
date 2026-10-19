@@ -867,3 +867,7 @@
 .xfa-scroll .xfaLayer .xfa-sigfield { cursor: pointer; background: rgba(28, 100, 242, .1) !important; }
 .xfa-scroll .xfaLayer .xfa-sigfield::placeholder { color: var(--primary); font-weight: 700; opacity: 1; }
 .xfa-scroll .xfaLayer .xfa-sig { pointer-events: none; z-index: 3; mix-blend-mode: multiply; }
+/* scanner: name made from the content */
+.sc-autoname { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+.sc-autoname svg { width: 15px; height: 15px; flex: none; color: var(--primary); }
+.sc-rename { background: none; border: 0; padding: 6px 4px; min-height: 32px; color: var(--primary); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }

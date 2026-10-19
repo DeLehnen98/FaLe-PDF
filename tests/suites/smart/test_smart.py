@@ -512,7 +512,7 @@ with sync_playwright() as pw:
         pg.locator('dialog[open] .btn-primary').click(); pg.wait_for_timeout(500)
         note = pg.evaluate("async () => (await (await import('/js/smart/tax.js')).listReceipts(2026)).find(r => /Frischmarkt/i.test(r.merchant)).note")
         check('tax: edit saved', note == 'Testnotiz', note)
-        pg.locator('[name=sm-home], [data-home]').fill('100'); pg.wait_for_timeout(200)
+        pg.locator('input[data-home]').fill('100'); pg.wait_for_timeout(200)
         check('tax: Homeoffice-Pauschale 100 × 6 €', '600,00' in pg.locator('[data-homesum]').inner_text())
         # XLSX export
         pg.locator('[data-exp="xlsx"]').click()

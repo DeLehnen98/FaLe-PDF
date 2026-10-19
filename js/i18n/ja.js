@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "記号",
   "Kreuz": "バツ",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "署名は「通常の PDF として」と印刷に入ります。",
+  "Automatisch aus dem Inhalt": "内容から自動で付ける",
+  "Name automatisch aus dem Inhalt": "名前は内容から自動で付けました",
+  "Arztbrief": "医師からの手紙",
+  "Krankenkasse": "健康保険",
 };
 
 export const defaultValues = {

@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Symbol",
   "Kreuz": "Krzyżyk",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "Podpis trafi do „Jako zwykły PDF” i na wydruk.",
+  "Automatisch aus dem Inhalt": "Automatycznie, na podstawie treści",
+  "Name automatisch aus dem Inhalt": "Nazwa utworzona na podstawie treści",
+  "Arztbrief": "List od lekarza",
+  "Krankenkasse": "Kasa chorych",
 };
 
 export const defaultValues = {

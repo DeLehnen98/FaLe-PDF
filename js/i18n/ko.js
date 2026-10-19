@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "기호",
   "Kreuz": "X 표시",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "서명은 ‘일반 PDF로’와 인쇄본에 들어갑니다.",
+  "Automatisch aus dem Inhalt": "내용에서 자동으로",
+  "Name automatisch aus dem Inhalt": "이름이 내용에서 자동으로 만들어졌습니다",
+  "Arztbrief": "의사 소견서",
+  "Krankenkasse": "건강보험",
 };
 
 export const defaultValues = {

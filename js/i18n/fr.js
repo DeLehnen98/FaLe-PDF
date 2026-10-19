@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Symbole",
   "Kreuz": "Croix",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "La signature figure dans « En PDF normal » et à l’impression.",
+  "Automatisch aus dem Inhalt": "Automatique, d’après le contenu",
+  "Name automatisch aus dem Inhalt": "Nom créé d’après le contenu",
+  "Arztbrief": "Lettre du médecin",
+  "Krankenkasse": "Assurance maladie",
 };
 
 export const defaultValues = {

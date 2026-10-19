@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "चिह्न",
   "Kreuz": "क्रॉस",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "हस्ताक्षर “सामान्य PDF के रूप में” और प्रिंट में आएगा।",
+  "Automatisch aus dem Inhalt": "सामग्री से अपने-आप",
+  "Name automatisch aus dem Inhalt": "नाम सामग्री से अपने-आप बना",
+  "Arztbrief": "डॉक्टर का पत्र",
+  "Krankenkasse": "स्वास्थ्य बीमा",
 };
 
 export const defaultValues = {

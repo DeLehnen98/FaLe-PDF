@@ -2,6 +2,7 @@
 // adjustable corners with magnifier, perspective correction, filters, multi-page PDF.
 // Mode "Ausweis": front + back of an ID card at real size (85.6 × 54 mm) on one A4 page.
 import { icon } from '../icons.js';
+import { t, locale } from '../i18n/index.js';
 import { h, esc, toast, errorToast, progress, pickFiles } from '../ui.js';
 import { resultCard, enableDragReorder, moveItem } from '../components.js';
 import { saveResult } from '../library.js';
@@ -51,15 +52,18 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
   const isId = !!idMode;
   screen.setTitle(isId ? 'Ausweis scannen' : ziel === 'briefkasten' ? 'Brief scannen' : ziel === 'steuer' ? 'Beleg scannen' : 'Scanner', isId ? 'Vorder- und Rückseite auf eine A4-Seite' : 'Dokumente mit der Kamera erfassen');
   screen.body.classList.add('sc-body');
-  const stamp = new Date().toLocaleDateString('de-DE').replace(/\./g, '-');
+  const stamp = new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/[./]/g, '-').replace(/\s+/g, '');
   const S = {
     pages: [],
     size: 'a4',
     quality: 'mittel',
-    name: isId ? `Ausweis ${stamp}` : `Scan ${stamp}`,
+    // documents: empty = a name from the content after text recognition ("Rechnung Stadtwerke Okt 2026"), else "Scan <date>"
+    name: isId ? `Ausweis ${stamp}` : '',
+    fallback: isId ? `Ausweis ${stamp}` : `Scan ${stamp}`,
     replace: null,
     view: null,
   };
+  const namePh = () => (isId ? S.fallback : ocrPref() ? t('Automatisch aus dem Inhalt') : S.fallback);
   let seq = 0;
   let alive = true;
   const cam = { stream: null, track: null, video: null, timer: null, qrTimer: null, torch: false, busy: false };
@@ -477,7 +481,7 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
         <div class="field"><span class="field-label">Filter</span><div class="seg sc-seg" role="group" aria-label="Filter für alle Seiten">${FILTERS.map(f => `<button type="button" data-allf="${f.id}">${f.label}</button>`).join('')}</div></div>
         ${isId ? '' : `<div class="field"><span class="field-label">Seitenformat</span><div class="seg" role="group" aria-label="Seitenformat"><button type="button" data-size="a4">A4</button><button type="button" data-size="fit">Wie Scan</button></div></div>`}
         <div class="field"><span class="field-label">Qualität</span><div class="seg" role="group" aria-label="Qualität">${Object.entries(QUALITY).map(([k, v]) => `<button type="button" data-q="${k}">${v.label}</button>`).join('')}</div></div>
-        <label class="field" style="margin-bottom:0"><span class="field-label">Dateiname</span><input class="input" data-name value="${esc(S.name)}" maxlength="120"></label>
+        <label class="field" style="margin-bottom:0"><span class="field-label">Dateiname</span><input class="input" data-name value="${esc(S.name)}" placeholder="${esc(namePh())}" maxlength="120"></label>
         ${isId ? '' : `<label class="check sc-ocr"><input type="checkbox" data-ocr ${ocrPref() ? 'checked' : ''}><span><strong>Text erkennen – PDF durchsuchbar machen</strong><span class="muted small">Texterkennung (OCR) direkt auf dem Gerät: Text lässt sich danach suchen und kopieren.<span data-ocrnote></span></span></span></label>`}
       </div>
       <div data-result></div></div>`);
@@ -529,7 +533,7 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
     }));
     wrap.querySelector('[data-name]').addEventListener('input', e => { S.name = e.target.value; });
     const ocrBox = wrap.querySelector('[data-ocr]');
-    if (ocrBox) ocrBox.addEventListener('change', () => { try { localStorage.setItem(OCR_KEY, ocrBox.checked ? '1' : '0'); } catch {} });
+    if (ocrBox) ocrBox.addEventListener('change', () => { try { localStorage.setItem(OCR_KEY, ocrBox.checked ? '1' : '0'); } catch {} wrap.querySelector('[data-name]').placeholder = namePh(); });
     if (ocrBox) import('../ocr/assets.js').then(async a => {
       const st = await a.offlineStatus();
       const note = wrap.querySelector('[data-ocrnote]');
@@ -799,6 +803,7 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
             try {
               const r = await ocr.engine.recognize(c, { lang: ocr.lang, signal: ocr.panel.signal, onProgress: p => ocr.panel.update({ ...p, index: k, total: S.pages.length, page: k + 1, eta: eta() }) });
               words = r.words;
+              if (k === 0) ocr.first = r; // for the automatic file name
               ocr.done++;
             } catch (e) {
               if (!ocr.engine.isAbort(e)) { ocr.failed = true; errorToast(e, 'Die Texterkennung ist fehlgeschlagen – der Scan wird ohne Text gespeichert.'); }
@@ -828,7 +833,13 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
           await tick();
         }
       }
-      const name = (S.name || 'Scan').trim().replace(/[\\/:*?"<>|]+/g, ' ') || 'Scan';
+      let auto = false;
+      let wanted = (S.name || '').trim();
+      if (!wanted && ocr && ocr.first) {
+        prog.set('Speichere …');
+        try { wanted = (await (await import('./smartname.js')).suggestScanName(ocr.first)) || ''; auto = !!wanted; } catch (e) { console.warn(e); }
+      }
+      const name = (wanted || S.fallback).replace(/[\\/:*?"<>|]+/g, ' ').trim() || 'Scan';
       out.setTitle(name);
       out.setCreator('FaLe PDF Scanner');
       prog.set('Speichere …');
@@ -839,6 +850,17 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
       const ocrNote = ocr ? (ocr.panel.signal.aborted ? ' · Texterkennung abgebrochen' : ocr.done ? ' · durchsuchbar' : '') : '';
       resultBox.innerHTML = '';
       const card = resultCard(res, { title: isId ? 'Ausweis gespeichert' : 'Scan gespeichert', note: isId ? 'A4 · Originalgröße' : `${S.pages.length} Seite${S.pages.length === 1 ? '' : 'n'}${ocrNote}` });
+      if (auto) {
+        // the name was made from the content – one tap to change it
+        const nm = card.querySelector('.doc-name');
+        const hint = h(`<div class="sc-autoname muted small">${icon('sparkle')} ${esc(t('Name automatisch aus dem Inhalt'))} <button class="sc-rename" type="button" data-rename>${esc(t('Ändern'))}</button></div>`);
+        nm.after(hint);
+        hint.querySelector('[data-rename]').addEventListener('click', async () => {
+          const { renameDoc } = await import('../components.js');
+          await renameDoc(res);
+          nm.textContent = res.name;
+        });
+      }
       const again = h(`<button class="btn btn-ghost btn-sm" type="button">${icon('scan')} Neuer Scan</button>`);
       again.addEventListener('click', () => { S.pages.forEach(p => p.thumb && URL.revokeObjectURL(p.thumb)); S.pages = []; S.replace = null; showCapture(); });
       card.querySelector('.actions').appendChild(again);

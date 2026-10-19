@@ -313,6 +313,8 @@ input[type="range"] { accent-color: var(--primary); width: 100%; }
 .doc-info { min-width: 0; flex: 1; display: flex; flex-direction: column; }
 .doc-name, .doc-meta { display: block; }
 .doc-name { font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
+/* a finished result shows its whole name (at most 3 lines) – people check what the file is called */
+.result-card .doc-name { white-space: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .doc-meta { font-size: var(--fs-small); color: var(--text-3); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
 .doc-meta .lock { display: inline-flex; vertical-align: -3px; }
 .doc-meta .lock .ic { width: 15px; height: 15px; }

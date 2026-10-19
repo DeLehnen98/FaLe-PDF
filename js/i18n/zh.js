@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "符号",
   "Kreuz": "叉号",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "签名会出现在“存为普通 PDF”和打印件中。",
+  "Automatisch aus dem Inhalt": "根据内容自动命名",
+  "Name automatisch aus dem Inhalt": "名称根据内容自动生成",
+  "Arztbrief": "医生来信",
+  "Krankenkasse": "医疗保险",
 };
 
 export const defaultValues = {

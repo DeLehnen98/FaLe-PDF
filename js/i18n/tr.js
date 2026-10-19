@@ -6300,6 +6300,10 @@ export default {
   "Zeichen": "Simge",
   "Kreuz": "Çarpı",
   "Die Unterschrift kommt in „Als normale PDF“ und in den Ausdruck.": "İmza “Normal PDF olarak” kaydında ve çıktıda yer alır.",
+  "Automatisch aus dem Inhalt": "Otomatik, içeriğe göre",
+  "Name automatisch aus dem Inhalt": "Ad içerikten oluşturuldu",
+  "Arztbrief": "Doktor mektubu",
+  "Krankenkasse": "Sağlık sigortası",
 };
 
 export const defaultValues = {
