@@ -331,6 +331,12 @@ html.simple .simple-sec .badge { display: none; }
    chip strip and pushed the sort menu off-screen */
 @media (max-width: 720px) { .files-bar { flex-wrap: nowrap; } }
 
+/* ---------- Chinese / Japanese line breaking: no small kana or closing marks at a line start; Japanese wraps
+   between phrases instead of inside a word (Chromium ≥ 119, ignored elsewhere) ---------- */
+html:lang(ja), html:lang(zh), html:lang(ko) { line-break: strict; }
+html:lang(ja) { word-break: auto-phrase; }
+html:lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
+
 /* ---------- Schriftgröße (js/simple.js: html.ts-l / html.ts-xl, per device) ----------
    Scales the root font size: everything sized in rem grows (shell, lists, dialogs, menus, the shared parts of the
    tool screens). Widths stay in px – the layout re-wraps instead of growing sideways. The PDF pages (canvas, text
