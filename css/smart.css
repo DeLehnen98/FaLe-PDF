@@ -60,6 +60,18 @@
 .sm-conf-bar { width: 84px; height: 6px; border-radius: 99px; background: var(--surface-3); overflow: hidden; }
 .sm-conf-bar > span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
 .sm-conf.low .sm-conf-bar > span { background: var(--star); }
+.sm-einv { margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--success, #1E9E6A) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--success, #1E9E6A) 30%, transparent); }
+.sm-einv.has-warn { background: color-mix(in srgb, var(--warn, #B7791F) 9%, var(--surface)); border-color: color-mix(in srgb, var(--warn, #B7791F) 35%, transparent); }
+.sm-einv-top { display: flex; align-items: center; gap: 10px; }
+.sm-einv-top > .ic { flex: none; width: 22px; height: 22px; color: var(--success, #1E9E6A); }
+.sm-einv.has-warn .sm-einv-top > .ic { color: var(--warn, #B7791F); }
+.sm-einv-top > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sm-einv > p { margin: 6px 0 4px; }
+.sm-einv-checks summary { cursor: pointer; font-weight: 600; font-size: calc(14px * var(--ts, 1)); padding: 4px 0; }
+.sm-einv-checks ul { margin: 4px 0 0; padding-left: 20px; display: grid; gap: 3px; font-size: calc(13.5px * var(--ts, 1)); }
+.sm-einv-checks li.warn { color: var(--danger); }
+.sm-einv-checks li.info { color: var(--text-2); }
+@media (max-width: 520px) { .sm-einv-top { flex-wrap: wrap; } .sm-einv-top .btn { width: 100%; min-height: 44px; } }
 .sm-due-box { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); }
 .sm-due-box > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .sm-due-box .small { color: var(--text-2); }

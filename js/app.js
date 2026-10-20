@@ -98,10 +98,13 @@ async function route() {
     if (meta && meta.kind && meta.kind !== 'pdf') { location.replace(openHash(meta)); return; }
     closeScreen();
     if (!currentMain) showMain('start');
+    const wantPrint = params.get('drucken') === '1';
+    if (wantPrint) { try { history.replaceState(history.state, '', `#/ansicht/${parts[1]}`); } catch { /* ignore */ } }
     await openViewer(parts[1], {
       page: parseInt(params.get('seite'), 10) || null,
       query: params.get('q'),
       read: params.get('vorlesen') === '1',
+      print: wantPrint,
     });
     return;
   }
@@ -194,13 +197,14 @@ async function openTool(id, params) {
 async function handleIncoming(files, source) {
   const list = Array.from(files || []);
   const imgs = list.filter(f => detectKind(f) === 'image');
-  const docsIn = list.filter(f => { const k = detectKind(f); return k && k !== 'image'; });
-  const other = list.filter(f => !detectKind(f));
+  const isXml = f => /\.xml$/i.test(f.name || '') || /^(application|text)\/xml$/i.test(f.type || '');
+  const docsIn = list.filter(f => { const k = detectKind(f); return (k && k !== 'image') || (!k && isXml(f)); });
+  const other = list.filter(f => !detectKind(f) && !isXml(f));
   if (other.length) toast(other.length === 1 ? unsupportedReason(other[0]) : `${other.length} Dateien werden nicht unterstützt.`, 'error', { timeout: 6000 });
   let opened = false;
   if (docsIn.length) {
     const docs = await importFiles(docsIn, { source, any: true });
-    if (docs.length === 1 && !imgs.length) { location.hash = openHash(docs[0]); opened = true; }
+    if (docs.length === 1 && !imgs.length) { location.hash = docs[0].source === 'E-Rechnung' ? `#/briefkasten/neu?doc=${encodeURIComponent(docs[0].id)}` : openHash(docs[0]); opened = true; }
   }
   if (imgs.length) {
     const r = await openDialog({

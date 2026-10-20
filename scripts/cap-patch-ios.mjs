@@ -108,6 +108,7 @@ export const DOC_TYPES = [
   docType('Tabelle', ['org.openxmlformats.spreadsheetml.sheet', 'public.comma-separated-values-text']),
   docType('Präsentation', ['org.openxmlformats.presentationml.presentation']),
   docType('Text', ['public.plain-text', 'net.daringfireball.markdown']),
+  docType('E-Rechnung', ['public.xml']),
   docType('Bild', ['public.jpeg', 'public.png', 'public.heic', 'org.webmproject.webp', 'com.compuserve.gif', 'com.microsoft.bmp']),
 ];
 

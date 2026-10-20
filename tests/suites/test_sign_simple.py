@@ -57,6 +57,12 @@ def ctx(b, phone):
 
 def tap_page(pg, fx, fy):
     box = pg.locator('.sign-page').first.bounding_box()
+    vh = pg.viewport_size['height']
+    y = box['y'] + box['height'] * fy
+    if y > vh * 0.72 or y < 80:  # target outside the visible area or under the bottom bar (e.g. below the paper-form hint card): scroll there first
+        pg.evaluate("d => document.querySelector('.sign-stage').scrollBy(0, d)", y - vh / 2)
+        pg.wait_for_timeout(200)
+        box = pg.locator('.sign-page').first.bounding_box()
     pg.mouse.click(box['x'] + box['width'] * fx, box['y'] + box['height'] * fy)
     pg.wait_for_timeout(250)
 

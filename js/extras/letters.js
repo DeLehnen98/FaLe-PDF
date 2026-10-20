@@ -263,7 +263,7 @@ const OTHER = {
       else body.push(`Eine ausführliche Begründung reiche ich nach. Ich bitte darum, bis ${v.frist_nachreichen ? `zum ${deDate(v.frist_nachreichen)}` : 'zum Eingang der Begründung'} von einer Entscheidung abzusehen.`);
       if (v.akteneinsicht) body.push('Zugleich beantrage ich Einsicht in die vollständige Verwaltungsakte. Bitte teilen Sie mir mit, wann und wo dies möglich ist, oder übersenden Sie mir Kopien.');
       body.push(`Bitte bestätigen Sie mir den Eingang dieses ${w}s.`);
-      return { subject: `${w} gegen den ${e(v.bescheidart) || 'Bescheid'}${v.datum_bescheid ? ` vom ${deDate(v.datum_bescheid)}` : ''}`, refs, body };
+      return { subject: `${w} gegen den ${e(v.bescheidart) || 'Bescheid'}${v.datum_bescheid ? ` vom ${deDate(v.datum_bescheid)}` : ''}`, refs, body, signedPaper: true };
     },
     reminder: v => (!(v.begruendung || '').trim() && v.frist_nachreichen ? { title: `Begründung zum ${v.typ === 'einspruch' ? 'Einspruch' : 'Widerspruch'} nachreichen`, type: 'termin', due: v.frist_nachreichen, leads: [7, 1] } : null),
   },
@@ -459,6 +459,78 @@ const OTHER = {
       return { subject: `${subj}${v.zeichen ? ` – ${e(v.zeichen)}` : ''}`, refs: [['Ihr Zeichen', v.zeichen], ['Ihr Schreiben vom', deDate(v.datum_schreiben)]].filter(r => r[1]), body };
     },
   },
+  // Antworten auf Behördenpost (Briefkasten-Assistent → „Antwort schreiben“)
+  fristverlaengerung: {
+    id: 'fristverlaengerung', title: 'Bitte um mehr Zeit (Fristverlängerung)', fileTitle: 'Antrag auf Fristverlängerung', icon: 'timer',
+    note: 'Für Fristen, die dir eine Behörde oder Firma gesetzt hat (z. B. Unterlagen einreichen). Gesetzliche Fristen wie die Widerspruchs- oder Einspruchsfrist lassen sich nicht verlängern – dort lieber rechtzeitig Widerspruch einlegen und die Begründung nachreichen.',
+    sections: [
+      { title: 'Worum geht es?', fields: [
+        { id: 'az', label: 'Aktenzeichen / Kundennummer', half: true }, { id: 'datum_schreiben', label: 'Ihr Schreiben vom', type: 'date', half: true },
+        { id: 'sache', label: 'Was soll bis wann erledigt sein?', placeholder: 'z. B. Kontoauszüge einreichen', required: true },
+        { id: 'frist_alt', label: 'Bisherige Frist', type: 'date', half: true }, { id: 'frist_neu', label: 'Gewünschte neue Frist', type: 'date', half: true, def: () => addDays(isoToday(), 21) },
+        { id: 'grund', label: 'Grund', type: 'select', options: [['unterlagen', 'Ich warte noch auf Unterlagen'], ['krank', 'Ich bin krank'], ['urlaub', 'Ich bin verreist / im Urlaub'], ['beratung', 'Ich lasse mich noch beraten'], ['zeit', 'Ich brauche mehr Zeit'], ['anderer', 'Anderer Grund']], def: 'unterlagen' },
+        { id: 'grund_text', label: 'Kurz erklären (optional)', type: 'textarea', placeholder: 'z. B. Die Bank schickt mir die Auszüge erst in zwei Wochen.' },
+      ] },
+      { title: 'An wen geht der Brief?', fields: RECIPIENT('Behörde / Firma', 'z. B. Jobcenter Musterstadt') },
+      { title: 'Absender', collapsed: true, fields: [...SENDER, PLACE, DATE] },
+    ],
+    build(v) {
+      const ref = [v.az ? `(Aktenzeichen ${e(v.az)})` : '', v.datum_schreiben ? `vom ${deDate(v.datum_schreiben)}` : ''].filter(Boolean).join(' ');
+      const why = { unterlagen: 'Mir liegen noch nicht alle nötigen Unterlagen vor; ich habe sie bereits angefordert.', krank: 'Ich bin derzeit erkrankt und kann mich deshalb nicht rechtzeitig darum kümmern.', urlaub: 'Ich bin in diesem Zeitraum verreist und kann die Frist deshalb nicht einhalten.', beratung: 'Ich lasse mich zu der Angelegenheit noch beraten und benötige dafür etwas mehr Zeit.', zeit: 'Ich benötige für die Bearbeitung etwas mehr Zeit.', anderer: '' }[v.grund] || '';
+      const body = [`in Ihrem Schreiben${ref ? ' ' + ref : ''} haben Sie mir eine Frist${v.frist_alt ? ` bis zum ${deDate(v.frist_alt)}` : ''} gesetzt. Es geht um: ${e(v.sache) || '…'}.`];
+      body.push(`Ich bitte Sie, die Frist${v.frist_neu ? ` bis zum ${deDate(v.frist_neu)}` : ' angemessen'} zu verlängern.${why ? ' ' + why : ''}`);
+      if ((v.grund_text || '').trim()) String(v.grund_text).split(/\n{2,}/).forEach(p => body.push(e(p).replace(/\n/g, '<br>')));
+      body.push('Bitte bestätigen Sie mir die Fristverlängerung kurz. Vielen Dank für Ihr Verständnis.');
+      return { subject: `Antrag auf Fristverlängerung${v.az ? ` – ${e(v.az)}` : ''}`, refs: [['Aktenzeichen', v.az], ['Ihr Schreiben vom', deDate(v.datum_schreiben)]].filter(r => r[1]), body };
+    },
+    reminder: v => (v.frist_neu ? { title: `Frist (verlängert): ${String(v.sache || 'Erledigen').slice(0, 60)}`, type: 'termin', due: v.frist_neu, leads: [7, 1] } : null),
+  },
+  unterlagen: {
+    id: 'unterlagen', title: 'Unterlagen nachreichen', fileTitle: 'Unterlagen nachgereicht', icon: 'folderMove',
+    note: 'Schicke Kopien, keine Originale – außer sie werden ausdrücklich verlangt. Schreib auf jede Seite deinen Namen und das Aktenzeichen.',
+    sections: [
+      { title: 'Was schickst du mit?', fields: [
+        { id: 'az', label: 'Aktenzeichen / Kundennummer', half: true }, { id: 'datum_schreiben', label: 'Ihr Schreiben vom', type: 'date', half: true },
+        { id: 'liste', label: 'Anlagen (eine pro Zeile)', type: 'textarea', placeholder: 'Kontoauszüge Januar bis März\nMietvertrag\nLohnabrechnung März', required: true },
+        { id: 'fehlt', label: 'Fehlt noch etwas? (optional)', type: 'textarea', placeholder: 'z. B. Die Nebenkostenabrechnung reiche ich nach, sobald ich sie habe.' },
+      ] },
+      { title: 'An wen geht der Brief?', fields: RECIPIENT('Behörde / Firma', 'z. B. Familienkasse') },
+      { title: 'Absender', collapsed: true, fields: [...SENDER, PLACE, DATE] },
+    ],
+    build(v) {
+      const items = String(v.liste || '').split(/\n+/).map(x => x.replace(/^\s*[-–•·*\d.)]+\s*/, '').trim()).filter(Boolean);
+      const ref = [v.az ? `(Aktenzeichen ${e(v.az)})` : '', v.datum_schreiben ? `vom ${deDate(v.datum_schreiben)}` : ''].filter(Boolean).join(' ');
+      const body = [`wie in Ihrem Schreiben${ref ? ' ' + ref : ''} erbeten, sende ich Ihnen ${items.length === 1 ? 'die folgende Unterlage' : 'die folgenden Unterlagen'}:`];
+      body.push(items.length ? items.map(x => `– ${e(x)}`).join('<br>') : '– …');
+      if ((v.fehlt || '').trim()) String(v.fehlt).split(/\n{2,}/).forEach(p => body.push(e(p).replace(/\n/g, '<br>')));
+      body.push('Sollte noch etwas fehlen, geben Sie mir bitte kurz Bescheid. Bitte bestätigen Sie mir den Eingang.');
+      return { subject: `Nachreichen von Unterlagen${v.az ? ` – ${e(v.az)}` : ''}`, refs: [['Aktenzeichen', v.az], ['Ihr Schreiben vom', deDate(v.datum_schreiben)]].filter(r => r[1]), body, attachments: items.length ? `Anlagen: ${items.length}` : '' };
+    },
+  },
+  rueckfrage: {
+    id: 'rueckfrage', title: 'Rückfrage: Bitte um Erklärung', fileTitle: 'Rückfrage', icon: 'comment',
+    note: 'Eine Rückfrage hält keine Frist an. Läuft eine Widerspruchsfrist, lege vorsorglich Widerspruch ein.',
+    sections: [
+      { title: 'Was ist unklar?', fields: [
+        { id: 'az', label: 'Aktenzeichen / Kundennummer', half: true }, { id: 'datum_schreiben', label: 'Ihr Schreiben vom', type: 'date', half: true },
+        { id: 'thema', label: 'Worum geht es in dem Schreiben?', placeholder: 'z. B. Nachzahlung Nebenkosten 2025', required: true },
+        { id: 'frage', label: 'Was möchtest du wissen?', type: 'select', options: [['berechnung', 'Wie wurde der Betrag berechnet?'], ['grund', 'Warum bekomme ich das Schreiben?'], ['tun', 'Was genau muss ich tun?'], ['belege', 'Bitte um Kopien / Belege'], ['eigene', 'Eigene Frage']], def: 'berechnung' },
+        { id: 'frage_text', label: 'Deine Frage (optional)', type: 'textarea', placeholder: 'z. B. Welche Kosten sind in der Position „Sonstiges“ enthalten?' },
+        { id: 'rueckruf', label: 'Um Rückruf bitten', type: 'check', def: false },
+      ] },
+      { title: 'An wen geht der Brief?', fields: RECIPIENT('Absender des Schreibens', 'z. B. Hausverwaltung Muster GmbH') },
+      { title: 'Absender', collapsed: true, fields: [...SENDER, PLACE, DATE] },
+    ],
+    build(v) {
+      const ref = [v.az ? `(Aktenzeichen ${e(v.az)})` : '', v.datum_schreiben ? `vom ${deDate(v.datum_schreiben)}` : ''].filter(Boolean).join(' ');
+      const q = { berechnung: 'Bitte erläutern Sie mir, wie sich der genannte Betrag zusammensetzt, und senden Sie mir eine nachvollziehbare Aufstellung.', grund: 'Mir ist nicht klar, aus welchem Grund ich dieses Schreiben erhalten habe. Bitte erläutern Sie mir den Hintergrund.', tun: 'Bitte teilen Sie mir genau mit, was ich bis wann tun muss und welche Unterlagen Sie von mir benötigen.', belege: 'Bitte senden Sie mir Kopien der zugrunde liegenden Belege bzw. Unterlagen zu.', eigene: '' }[v.frage] || '';
+      const body = [`zu Ihrem Schreiben${ref ? ' ' + ref : ''} zum Thema „${e(v.thema) || '…'}“ habe ich eine Frage.`];
+      if (q) body.push(q);
+      if ((v.frage_text || '').trim()) String(v.frage_text).split(/\n{2,}/).forEach(p => body.push(e(p).replace(/\n/g, '<br>')));
+      body.push(v.rueckruf && v.s_tel ? `Gern können Sie mich auch telefonisch unter ${e(v.s_tel)} erreichen.` : v.rueckruf ? 'Gern können Sie mich auch telefonisch erreichen.' : 'Vielen Dank für Ihre Hilfe.');
+      return { subject: `Rückfrage zu Ihrem Schreiben${v.az ? ` – ${e(v.az)}` : ''}`, refs: [['Aktenzeichen', v.az], ['Ihr Schreiben vom', deDate(v.datum_schreiben)]].filter(r => r[1]), body };
+    },
+  },
 };
 
 // Prefill handed over by the Briefkasten-Assistent (js/smart/inbox.js): consumed once by the next generator of that id.
@@ -467,17 +539,90 @@ export function setLetterPrefill(id, values) { pendingPrefill = { id, values: { 
 
 export const LETTER_GROUPS = [
   { title: 'Verträge & Behörden', ids: ['widerruf', 'widerspruch', 'vollmacht', 'mietschuldenfreiheit'] },
-  { title: 'Geld & Selbstständigkeit', ids: ['rechnung', 'angebot', 'mahnung', 'mahnung-antwort'] },
+  { title: 'Auf Post antworten', ids: ['fristverlaengerung', 'unterlagen', 'rueckfrage', 'mahnung-antwort'] },
+  { title: 'Geld & Selbstständigkeit', ids: ['rechnung', 'angebot', 'mahnung'] },
   { title: 'Beruf', ids: ['bewerbung'] },
 ];
 const DESCS = {
   widerruf: 'Online-Kauf oder Vertrag innerhalb der Frist zurückgeben', widerspruch: 'Gegen einen Bescheid vorgehen – auch als Einspruch', vollmacht: 'Paket, Dokumente oder Behördengang erledigen lassen',
   mietschuldenfreiheit: 'Für die nächste Wohnungsbewerbung', rechnung: 'Automatische Summen, USt. oder § 19 UStG', angebot: 'Positionen, Gültigkeit, Summen', mahnung: 'Freundlich erinnern bis zur letzten Mahnung', 'mahnung-antwort': 'Bezahlt, Raten, Aufschub oder Widerspruch', bewerbung: 'Anschreiben aus deinen Stichpunkten',
+  fristverlaengerung: 'Mehr Zeit für eine Frist erbitten', unterlagen: 'Begleitbrief mit Liste deiner Anlagen', rueckfrage: 'Nachfragen, wenn ein Schreiben unklar ist',
 };
 
 export function letterDef(id, art) {
   if (id === 'kuendigung') return kuendigungDef(art);
   return OTHER[id] || null;
+}
+
+/** „So verschickst du den Brief“ – vorsichtige Hinweise je Brief-Art (keine Rechtsberatung). → {steps: string[], strict: bool} | null */
+export function sendGuide(def, v) {
+  let b = {};
+  try { b = def.build(v) || {}; } catch { /* preview only */ }
+  const id = def.id;
+  if (id === 'widerspruch' && v.typ === 'einspruch') return { strict: false, steps: [
+    'Am einfachsten über dein ELSTER-Konto (Formular „Einspruch“) – dann brauchst du kein Papier.',
+    'Oder: ausdrucken, mit der Hand unterschreiben und per Post oder Fax ans Finanzamt schicken.',
+    'Eine einfache E-Mail ist beim Finanzamt nicht sicher – nimm lieber ELSTER, Post oder Fax.',
+  ] };
+  if (id === 'widerspruch') return { strict: true, steps: [
+    'Ausdrucken und mit der Hand unterschreiben.',
+    'Per Post schicken (am besten als Einschreiben) oder per Fax – oder selbst bei der Behörde abgeben und dir den Eingang auf einer Kopie bestätigen lassen.',
+    'Eine einfache E-Mail reicht nicht – auch nicht mit eingescannter Unterschrift.',
+    'Der Brief muss vor Ablauf der Frist bei der Behörde ankommen.',
+  ] };
+  if (id === 'kuendigung' && b.signedPaper) return { strict: true, steps: [
+    (b.cosign || []).length ? 'Ausdrucken und mit der Hand unterschreiben – auch alle anderen Mieter.' : 'Ausdrucken und mit der Hand unterschreiben.',
+    'Das Original per Einschreiben schicken oder persönlich übergeben und dir den Empfang bestätigen lassen.',
+    'E-Mail, Fax oder ein Foto des Briefs reichen nicht.',
+  ] };
+  if (id === 'kuendigung') return { strict: false, steps: [
+    'Per Einschreiben schicken – dann kannst du den Zugang beweisen.',
+    'Oder den Kündigungsbutton auf der Webseite des Anbieters nutzen, wenn es einen gibt.',
+    'Viele Anbieter nehmen Kündigungen auch per E-Mail an – heb die Bestätigung gut auf.',
+  ] };
+  if (id === 'widerruf') return { strict: false, steps: [
+    'Eine besondere Form ist nicht nötig: E-Mail, Brief oder das Formular des Händlers reichen.',
+    'Wichtig ist ein Nachweis: Speichere die gesendete E-Mail oder schick den Brief als Einschreiben.',
+    'Es reicht, wenn du den Widerruf innerhalb der Frist abschickst.',
+  ] };
+  if (id === 'mahnung-antwort') return { strict: false, steps: [
+    'Per E-Mail oder Brief an den Absender der Forderung schicken und eine Kopie aufheben.',
+    v.grund === 'bestritten' ? 'Weil du die Forderung bestreitest: am besten nachweisbar per Einschreiben.' : 'Bei Bedarf einen Zahlungsnachweis (z. B. Kontoauszug) beilegen.',
+  ] };
+  if (id === 'fristverlaengerung') return { strict: false, steps: [
+    'So früh wie möglich schicken – vor Ablauf der alten Frist.',
+    'Per Post, Fax, E-Mail oder über das Online-Postfach der Behörde.',
+    'Die neue Frist gilt erst, wenn sie bestätigt wird – ruf im Zweifel kurz an.',
+  ] };
+  if (id === 'unterlagen') return { strict: false, steps: [
+    'Kopien schicken, keine Originale – außer sie werden ausdrücklich verlangt.',
+    'Auf jede Seite Name und Aktenzeichen schreiben.',
+    'Per Post, Online-Postfach oder persönlich abgeben – und eine Kopie von allem aufheben.',
+  ] };
+  if (id === 'rueckfrage') return { strict: false, steps: [
+    'Per E-Mail, Post oder Kontaktformular schicken.',
+    'Achtung: Fristen laufen trotz deiner Frage weiter.',
+  ] };
+  if (def.standalone) return { strict: true, steps: ['Ausdrucken und mit der Hand unterschreiben.'] };
+  return null;
+}
+
+/** Saved signature → <img> data for the letter (only where a printed, handwritten signature isn't required). */
+export async function savedSignature() {
+  try {
+    const { listAssets } = await import('../tools/sigstore.js');
+    const sig = (await listAssets('signature'))[0];
+    if (!sig) return null;
+    const src = await new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = () => rej(fr.error); fr.readAsDataURL(sig.blob); });
+    let w = sig.w || 0, hh = sig.h || 0;
+    if (!w || !hh) {
+      const bmp = await createImageBitmap(sig.blob).catch(() => null);
+      if (bmp) { w = bmp.width; hh = bmp.height; bmp.close && bmp.close(); }
+    }
+    if (!w || !hh) { w = 300; hh = 100; }
+    const k = Math.min(160 / w, 48 / hh);
+    return { src, w: Math.max(1, Math.round(w * k)), h: Math.max(1, Math.round(hh * k)) };
+  } catch (err) { console.warn(err); return null; }
 }
 
 // ---------------- HTML (DIN 5008-orientiert) ----------------
@@ -508,7 +653,8 @@ export function letterHtml(def, v) {
   if (b.table) out += b.table;
   (b.after || []).forEach(p => { out += `<p>${p}</p>`; });
   out += '<p>Mit freundlichen Grüßen</p>';
-  out += b.signedPaper ? '<p><br></p><p><br></p><p>……………………………………</p>' : '<p><br></p>';
+  const sig = !b.signedPaper && v.__sig && v.__sigData ? v.__sigData : null;
+  out += b.signedPaper ? '<p><br></p><p><br></p><p>……………………………………</p>' : sig && /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(sig.src) ? `<p><img src="${sig.src}" width="${sig.w}" height="${sig.h}" alt="Unterschrift"></p>` : '<p><br></p>';
   out += `<p>${e(v.s_name) || '<br>'}</p>`;
   (b.cosign || []).forEach(n => { out += `<p><br></p><p>……………………………………</p><p>${e(n)}</p>`; });
   if (b.attachments) out += `<p><br></p><p><span style="font-size:9.5pt;color:#5A607F">${e(b.attachments)}</span></p>`;
@@ -566,6 +712,8 @@ async function generator(screen, def) {
   </div>`);
   const form = $('.lt-form', root), paper = $('.lt-paper', root), previewBox = $('.lt-preview', root);
   if (def.note) form.appendChild(h(`<div class="notice">${oicon('info')}<span>${esc(def.note)}</span></div>`));
+  // invoices to companies: the e-invoice (ZUGFeRD / XRechnung) is made by the „Rechnung schreiben“ tool
+  if (def.id === 'rechnung') form.appendChild(h(`<div class="card lt-einv"><span>${oicon('checkCircle')}</span><p><strong>Rechnung an eine Firma oder Behörde?</strong> Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht. <a href="#/web/invoice-generator">E-Rechnung erstellen</a></p></div>`));
   if (!profile) form.appendChild(h(`<div class="card lt-profile-tip"><span>${oicon('person')}</span><p>Tipp: Mit einem <a href="${profileRoute}">Profil</a> füllt FaLe deinen Absender künftig automatisch aus.</p></div>`));
 
   const fieldEls = [];
@@ -580,6 +728,15 @@ async function generator(screen, def) {
     fs.dataset.sec = si;
     form.appendChild(fs);
   });
+  // saved signature (from „Unterschreiben“) – only offered where no handwritten signature on paper is needed
+  const sigData = def.standalone ? null : await savedSignature();
+  let sigRow = null;
+  if (sigData) {
+    v.__sigData = sigData;
+    v.__sig = false;
+    sigRow = h(`<label class="card check lt-check lt-sigembed"><input type="checkbox" name="__sig"> <span>Meine gespeicherte Unterschrift einfügen</span><img src="${sigData.src}" alt="" width="${sigData.w}" height="${sigData.h}"></label>`);
+    form.appendChild(sigRow);
+  }
   form.appendChild(h(`<p class="lt-disclaimer">${oicon('info')}<span>${esc(DISCLAIMER)}</span></p>`));
   screen.body.classList.add('lt-body');
   screen.body.appendChild(root);
@@ -592,6 +749,7 @@ async function generator(screen, def) {
   const update = () => {
     fieldEls.forEach(({ f, el }) => { el.hidden = !!(f.when && !f.when(v)); if (f.hint && typeof f.hint === 'function') { const hn = $('.hint', el); if (hn) hn.textContent = f.hint(v); } });
     $$('.lt-sec', form).forEach(sec => { const sum = $('.lt-sum', sec); if (sum) sum.textContent = [v.s_name, v.s_ort].filter(Boolean).join(', '); });
+    if (sigRow) { let paper = false; try { paper = !!def.build(v).signedPaper; } catch { /* ignore */ } sigRow.hidden = paper; }
     try { paper.innerHTML = letterHtml(def, v); } catch (err) { console.warn(err); }
     fitPreview();
   };
@@ -650,18 +808,27 @@ async function generator(screen, def) {
   }
   async function afterCreate(meta, kind) {
     const rem = def.reminder ? def.reminder(v) : null;
+    const guide = sendGuide(def, v);
+    const guideHtml = guide ? `<div class="lt-send${guide.strict ? ' strict' : ''}"><strong>${oicon(guide.strict ? 'pen' : 'mail')}<span>So verschickst du den Brief</span></strong><ul>${guide.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
+    let canShare = false;
+    try { canShare = !!(navigator.canShare && navigator.canShare({ files: [new File([new Uint8Array(1)], 'a.pdf', { type: 'application/pdf' })] })); } catch { /* no share */ }
+    try { if (!canShare) canShare = (await import('../platform.js')).isNative(); } catch { /* web */ }
+    const shareAct = canShare ? { label: 'Teilen', value: 'share' } : { label: 'Herunterladen', value: 'dl' };
     const r = await openDialog({
       title: kind === 'doc' ? 'Dokument erstellt' : 'PDF erstellt',
       body: `<div class="result-mini">${oicon('check')}<div><strong>${esc(meta.name)}</strong><p class="muted small">Gespeichert in deinen Dateien.${kind === 'doc' ? ' Du kannst den Text jetzt frei anpassen.' : ''}</p></div></div>
+        ${guideHtml}
         ${rem ? `<label class="check lt-remind"><input type="checkbox" name="remind" checked> Erinnerung eintragen: „${esc(rem.title)}“ am ${deDate(rem.due)}</label>` : ''}`,
       actions: kind === 'doc' ? [{ label: 'Schließen', value: 'close' }, { label: 'Im Editor öffnen', value: 'open', kind: 'btn-primary', default: true }]
-        : [{ label: 'Teilen', value: 'share' }, { label: 'Herunterladen', value: 'dl' }, { label: 'Öffnen', value: 'open', kind: 'btn-primary', default: true }],
+        : guide && guide.strict ? [shareAct, { label: 'Öffnen', value: 'open' }, { label: 'Drucken', value: 'print', kind: 'btn-primary', default: true }]
+        : [shareAct, { label: 'Drucken', value: 'print' }, { label: 'Öffnen', value: 'open', kind: 'btn-primary', default: true }],
       onMount: dlg => ({ collect: () => ({ remind: !!(dlg.querySelector('[name=remind]') || {}).checked }) }),
     });
     if (rem && r.data && r.data.remind && r.value) {
       try { const { addReminder } = await import('./reminders.js'); await addReminder({ ...rem, docId: meta.id }); toast('Erinnerung eingetragen', 'success'); } catch (err) { console.warn(err); }
     }
     if (r.value === 'open') location.hash = kind === 'doc' ? `#/bearbeiten/${meta.id}` : `#/ansicht/${meta.id}`;
+    else if (r.value === 'print') location.hash = `#/ansicht/${meta.id}?drucken=1`;
     else if (r.value === 'dl' || r.value === 'share') {
       const db = await import('../db.js');
       const ui = await import('../ui.js');

@@ -38,6 +38,7 @@ const pickerTypes = () => [{ description: t('PDF, Dokumente, Tabellen, Präsenta
   'application/vnd.openxmlformats-officedocument.presentationml.presentation': ['.pptx'],
   'text/csv': ['.csv'], 'text/plain': ['.txt'], 'text/markdown': ['.md', '.markdown'],
   'image/*': ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.bmp'],
+  'application/xml': ['.xml'], // E-Rechnung (XRechnung)
 } }];
 async function pickWithHandles() {
   if (isNative() || typeof window.showOpenFilePicker !== 'function') return null;
@@ -58,7 +59,7 @@ export async function importFromDevice() {
   const files = (await pickWithHandles()) || await pickFiles({ accept: ACCEPT_ALL, multiple: true });
   if (!files.length) return;
   const docs = await importFiles(files, { source: 'Gerät', any: true });
-  if (docs.length === 1) location.hash = openHash(docs[0]);
+  if (docs.length === 1) location.hash = docs[0].source === 'E-Rechnung' ? `#/briefkasten/neu?doc=${encodeURIComponent(docs[0].id)}` : openHash(docs[0]);
 }
 
 function scanTool() { return TOOLS.find(t => t.id === 'scannen') || TOOLS.find(t => t.group === 'scannen'); }

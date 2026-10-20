@@ -79,7 +79,7 @@
     "lib/shared/office/fonts.js": "bad3c23dc19e1cd300090d924fe1fff620ceeb8f2c9f528ac989758f4ba098b0",
     "lib/shared/office/formula.js": "fd2e83f629e10fc8866b65d93407d995b4d241ad5d5884ccf4e2b2b97c09cb7d",
     "lib/shared/office/hfnorm.js": "09d9fdcf24701b34101edfbb352611cab2273e2de4ffe6601dcb4e12f82f939b",
-    "lib/shared/office/kinds.js": "0184ff8cfa133a06b29ef089e9f55e6740731ca81b58596cf790d258e7a7b2c7",
+    "lib/shared/office/kinds.js": "979ba25d0ddf1ba70e3f30f2aa3f1f5a856451f1f85e5addfe27d3acf476ff47",
     "lib/shared/office/numfmt.js": "622cc0fee1ef7f9a3c71668ae8ea0aca3f45cb4151cd470591de239ca4f72eef",
     "lib/shared/office/pdftext.js": "04b3aca70c43cd649ad05e15751f02d1882c85c2a82a21409f0ff6fd3d78ad01",
     "lib/shared/office/pptx-read.js": "20774ee378f4af0ae5d4fc6bf47fc3af565e0b0ad40fbe82b7891bf92c5396bf",

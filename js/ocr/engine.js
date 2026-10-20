@@ -345,11 +345,14 @@ export async function recognize(source, { lang = 'deu+eng', psm = 'auto', onProg
   const psmValue = (PSMS.find(p => p.id === psm) || {}).value || (/^\d+$/.test(String(psm)) ? String(psm) : '3');
   report('load', 0, 'Texterkennung wird gestartet …');
   const data = await schedule(lang, async w => {
+    // the worker is killed on abort: never talk to it afterwards (tesseract.js would throw outside our promise)
+    if (signal && signal.aborted) throw abortError();
     await w.setParameters({
       tessedit_pageseg_mode: psmValue,
       user_defined_dpi: String(Math.round(dpi ? dpi * (geo.scale || 1) : 300)),
       preserve_interword_spaces: '0',
     });
+    if (signal && signal.aborted) throw abortError();
     const r = await w.recognize(pgm, {}, { text: true, blocks: true });
     return r.data;
   }, {

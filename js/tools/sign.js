@@ -20,7 +20,7 @@ const markSvg = sym => `<svg class="mk" data-sym="${sym}" viewBox="0 0 24 24" ar
   sym === 'cross' ? '<path d="M4.3 4.3l15.4 15.4M19.7 4.3L4.3 19.7"/>' : sym === 'dot' ? '<circle cx="12" cy="12" r="7.2" fill="currentColor" stroke="none"/>' : '<path d="M3.4 13.2l6.2 6 11-14.4"/>'}</svg>`;
 const today = () => new Date().toLocaleDateString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-export async function mount(screen, { docId }) {
+export async function mount(screen, { docId, params }) {
   const doc = await db.getDoc(docId);
   if (!doc) { screen.body.innerHTML = '<p class="panel-empty">Dokument nicht gefunden.</p>'; return; }
   screen.setTitle('Ausfüllen & unterschreiben', doc.name);
@@ -172,6 +172,53 @@ export async function mount(screen, { docId }) {
   }
   scale = computeScale(pageInfo[0].base);
   layoutPages();
+
+  // ---- paper form without fields: find lines and boxes and make them fillable (js/tools/paperform.js) ----
+  if (!fields.length) {
+    const offer = h(`<div class="pf-offer card" role="region" aria-label="Papierformular">
+      <span class="pf-ic">${icon('magic')}</span>
+      <div class="pf-text"><strong>Ist das ein Papierformular?</strong><p data-pf-msg>${profile ? 'FaLe findet Linien und Kästchen, macht sie ausfüllbar und trägt deine Daten gleich ein. Alles bleibt auf deinem Gerät.' : 'FaLe findet Linien und Kästchen und macht sie ausfüllbar. Alles bleibt auf deinem Gerät.'}</p></div>
+      <div class="pf-acts"><button class="btn btn-primary btn-sm" type="button" data-pf>${icon('magic')} Felder finden</button>
+      <button class="icon-btn" type="button" data-pf-x aria-label="Hinweis schließen">${icon('close')}</button></div></div>`);
+    stage.prepend(offer);
+    let ctrl = null;
+    const msg = $('[data-pf-msg]', offer), btn = $('[data-pf]', offer);
+    const idleMsg = msg.textContent;
+    $('[data-pf-x]', offer).addEventListener('click', () => { if (ctrl) ctrl.abort(); offer.remove(); });
+    btn.addEventListener('click', async () => {
+      if (ctrl) { ctrl.abort(); return; }
+      ctrl = new AbortController();
+      offer.classList.add('busy');
+      btn.innerHTML = `${icon('close')} Abbrechen`;
+      msg.textContent = 'Seite wird untersucht …';
+      try {
+        const { detectPaperFields } = await import('./paperform.js');
+        const r = await detectPaperFields(pdf, {
+          signal: ctrl.signal,
+          onProgress: pr => { msg.textContent = pr.phase === 'ocr' ? `Beschriftungen werden gelesen … (Seite ${pr.page} von ${pr.total})` : `Seite ${pr.page} von ${pr.total} wird untersucht …`; },
+        });
+        if (!alive) return;
+        if (!r.fields.length) {
+          msg.textContent = 'Keine Linien oder Kästchen gefunden. Mit „Text“ und „Häkchen“ schreibst du direkt auf die Seite.';
+          return;
+        }
+        msg.textContent = `${r.fields.length} Felder gefunden – Formular wird erstellt …`;
+        const { writeFields } = await import('./formfields.js');
+        const pdfDoc = await loadEditable(bytes, doc.name, { key: docId });
+        await writeFields(PDFLib, pdfDoc, r.fields, r.pages);
+        const res = await saveResult(await saveDoc(pdfDoc), `${baseName(doc.name)} (ausfüllbar).pdf`);
+        trackStat('forms_detected');
+        if (!alive) return;
+        location.hash = `#/werkzeug/unterschreiben?doc=${res.id}&gefunden=${r.fields.length}${r.ocrMissing ? '&ohnetext=1' : ''}`;
+      } catch (e) {
+        if (e && e.name === 'AbortError') { msg.textContent = idleMsg; }
+        else { errorToast(e, 'Die Felder konnten nicht erkannt werden.'); msg.textContent = idleMsg; }
+      } finally {
+        ctrl = null;
+        if (offer.isConnected) { offer.classList.remove('busy'); btn.innerHTML = `${icon('magic')} Felder finden`; }
+      }
+    });
+  }
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { io.unobserve(en.target); drawPage(pageInfo[+en.target.dataset.page - 1]); } });
@@ -607,6 +654,17 @@ export async function mount(screen, { docId }) {
     updateFoot(screen, [saveBtn], dirty ? 'Ungespeicherte Änderungen' : (content && rev === savedRev ? 'Gespeichert' : ''));
   }
   markDirty(true);
+
+  // fresh from „Felder finden“: fill in the profile values right away and show the field list
+  const found = params && +params.get('gefunden');
+  if (found && fields.length) {
+    let n = 0;
+    fields.forEach(f => { if (f.profileValue != null && !f.value) { setFieldValue(f, f.profileValue); n++; } });
+    openPanel();
+    toast(n ? `${fields.length} Felder gefunden, ${n} mit deinen Daten ausgefüllt – bitte prüfen und dann speichern.` : `${fields.length} Felder gefunden – bitte ausfüllen und dann speichern.`, 'success', { timeout: 6500 });
+    if (params.get('ohnetext') === '1') toast('Die Beschriftungen konnten nicht gelesen werden (Texterkennung nicht geladen). Die Felder heißen deshalb „Textfeld“.', 'info', { timeout: 7000 });
+    try { history.replaceState(history.state, '', `#/werkzeug/unterschreiben?doc=${docId}`); screen.hashKey = location.hash; } catch { /* ignore */ }
+  }
 
   saveBtn.addEventListener('click', async () => {
     saveBtn.disabled = true;

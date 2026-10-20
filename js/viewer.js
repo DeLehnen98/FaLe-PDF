@@ -824,7 +824,7 @@ export async function openViewer(id, opts = {}) {
   try { return await openViewerInner(id, opts); } finally { opening--; }
 }
 
-async function openViewerInner(id, { page = null, query = null, read = false } = {}) {
+async function openViewerInner(id, { page = null, query = null, read = false, print = false } = {}) {
   init();
   import('./tools/common.js').then(m => m.ensureCss()).catch(() => {});
   const token = ++openToken;
@@ -833,6 +833,7 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
     if (page) S.pdfViewer.currentPageNumber = Math.min(page, cur.pdf.numPages);
     if (query) openFind(query);
     if (read) startReading();
+    if (print) printDoc();
     return;
   }
   await closeViewer({ keepVisible: true });
@@ -904,6 +905,7 @@ async function openViewerInner(id, { page = null, query = null, read = false } =
     applyWakeLock();
     if (query) openFind(query);
     if (read) startReading(startPage);
+    if (print) setTimeout(() => { if (cur && cur.pdf === pdf) printDoc(); }, 300);
   };
   S.eventBus.on('pagesinit', onInit);
   S.pdfViewer.setDocument(pdf);

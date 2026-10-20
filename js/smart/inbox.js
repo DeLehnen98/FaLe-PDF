@@ -49,6 +49,10 @@ export async function processDoc(docId, { onProgress, signal, source } = {}) {
   if (res.ocrImage) ocrCache.set(docId, { image: res.ocrImage });
   const r = analyze(res.text, { today: todayIso() });
   const rec = recordFrom(r, { docId, docName: meta.name, text: res.text, ocr: res.ocr, source });
+  // E-Rechnung (ZUGFeRD / XRechnung): the embedded XML has the exact data – it wins over the text analysis
+  if (!meta.kind || meta.kind === 'pdf') {
+    try { await applyEInvoice(rec, docId); } catch (e) { console.warn('E-Rechnung', e); }
+  }
   const old = await letterForDoc(docId);
   if (old) { rec.id = old.id; rec.createdAt = old.createdAt; rec.reminders = old.reminders || []; rec.status = old.status; }
   await sdb.put('letters', rec);
@@ -57,6 +61,48 @@ export async function processDoc(docId, { onProgress, signal, source } = {}) {
   try { (await import('./memory.js')).indexExtraText(docId, res.pages, { ocr: res.ocr }); } catch (e) { console.warn(e); }
   emitSmart('letters');
   return rec;
+}
+
+async function shareOriginalXml(rec) {
+  const doc = await db.getDoc(rec.docId);
+  const blob = doc && await db.getFile(rec.docId);
+  if (!blob) { toast('Das Dokument gibt es nicht mehr.', 'error'); return; }
+  const { loadPdf } = await import('../pdfcore.js');
+  const { pdf } = await loadPdf(new Uint8Array(await blob.arrayBuffer()), { key: rec.docId });
+  try {
+    const file = await (await import('./einvoice.js')).originalXml(pdf, doc.name);
+    if (!file) { toast('In dieser Datei ist keine Rechnungs-XML enthalten.', 'error'); return; }
+    const { shareFile } = await import('../platform.js');
+    await shareFile(file, file.name, 'application/xml', { title: file.name }); // web without sharing: downloads it
+  } finally { try { pdf.destroy(); } catch { /* ignore */ } }
+}
+
+async function applyEInvoice(rec, docId) {
+  const { loadPdf } = await import('../pdfcore.js');
+  const blob = await db.getFile(docId);
+  if (!blob) return;
+  const { pdf } = await loadPdf(new Uint8Array(await blob.arrayBuffer()), { key: docId });
+  try {
+    const ei = await import('./einvoice.js');
+    const got = await ei.fromPdf(pdf);
+    if (!got) return;
+    const d = await ei.letterData(got.model);
+    for (const [k, v] of Object.entries(d.f)) if (v != null && v !== '') rec.f[k] = v;
+    rec.type = d.type; rec.subtype = d.subtype; rec.confidence = 1;
+    rec.directDebit = d.directDebit;
+    // payment deadline only from the XML (a credit note has none; text dates of the readable copy do not count)
+    rec.deadlines = (rec.deadlines || []).filter(x => x.kind !== 'zahlung');
+    rec.f.due = ''; rec.f.dueKind = ''; rec.f.dueLabel = '';
+    if (d.due) {
+      rec.deadlines.unshift({ date: d.due.date, kind: d.due.kind, label: d.due.label, source: '', computed: false,
+        hint: d.directDebit ? 'Laut E-Rechnung per Lastschrift – du musst nichts überweisen.' : 'Aus der E-Rechnung übernommen.' });
+      rec.f.due = d.due.date; rec.f.dueKind = d.due.kind; rec.f.dueLabel = d.due.label;
+    }
+    rec.einvoice = d.info;
+    const year = (rec.f.date || '').slice(0, 4) || String(new Date().getFullYear());
+    const who = String(rec.f.sender || '').replace(/\s+(GmbH|AG|KG|UG|e\.\s?K\.|mbH|& Co\.? KG|SE|e\.V\.)\b.*$/i, '').trim();
+    rec.filing = { parent: 'Post', folder: 'Rechnungen', tags: [...new Set(['Rechnung', 'E-Rechnung', year, ...(who && who.length <= 30 ? [who] : [])])].slice(0, 4) };
+  } finally { try { pdf.destroy(); } catch { /* ignore */ } }
 }
 
 /** Facts for the Dokumenten-Gedächtnis (replaces earlier facts of this document). */
@@ -93,7 +139,7 @@ export async function mount(screen, { parts, params }) {
 function typeIcon(type) { return oicon(typeInfo(type).icon); }
 
 async function startImport() {
-  const files = await pickFiles({ accept: '.pdf,application/pdf,image/*', multiple: false });
+  const files = await pickFiles({ accept: '.pdf,application/pdf,image/*,.xml,application/xml,text/xml', multiple: false });
   if (!files.length) return;
   const { importFiles } = await import('../library.js');
   const docs = await importFiles(files, { source: 'Briefkasten', any: true, quiet: true });
@@ -268,6 +314,7 @@ async function mountLetter(screen, id) {
         </div>
         <div class="sm-conf" title="Wie sicher die Erkennung der Dokumentart ist"><span class="sm-conf-bar"><span></span></span><span class="small muted" data-conf></span></div>
       </div>
+      <div class="sm-einv" data-einv hidden></div>
       <div class="sm-due-box" data-duebox hidden></div>
       <div class="sm-actions" role="group" aria-label="Aktionen">
         <button class="btn btn-primary" type="button" data-act="frist">${oicon('bell')}<span>Frist eintragen</span></button>
@@ -301,6 +348,22 @@ async function mountLetter(screen, id) {
   if (doc) open.href = doc.kind && doc.kind !== 'pdf' && doc.kind !== 'image' ? `#/bearbeiten/${doc.id}` : doc.kind === 'image' ? `#/dateien` : `#/ansicht/${doc.id}`;
   else open.hidden = true;
   $('pre', wrap).textContent = rec.text || '(kein Text erkannt)';
+  // E-Rechnung: exact data from the XML, its plausibility check and the original XML for the bookkeeping
+  if (rec.einvoice) {
+    const box = $('[data-einv]', wrap);
+    const ei = rec.einvoice;
+    const warn = (ei.checks || []).filter(c => !c.ok && c.level !== 'info');
+    box.hidden = false;
+    box.innerHTML = `<div class="sm-einv-top">${oicon('checkCircle')}<div><strong>E-Rechnung</strong><span class="small muted" data-no-i18n></span></div>
+        <button class="btn btn-ghost btn-sm" type="button" data-act="xml">${oicon('share')}<span>Original-XML teilen</span></button></div>
+      <p class="small">Die Angaben stammen direkt aus der Rechnungsdatei – ohne Texterkennung.</p>
+      <details class="sm-einv-checks" ${warn.length ? 'open' : ''}><summary>${warn.length === 1 ? '1 Hinweis zur Prüfung' : warn.length ? `${warn.length} Hinweise zur Prüfung` : 'Rechnung geprüft – alles stimmig'}</summary><ul></ul></details>`;
+    $('.sm-einv-top .small', box).textContent = ei.profile || '';
+    const ul = $('ul', box);
+    (ei.checks || []).forEach(c => { const li = document.createElement('li'); li.className = c.ok ? 'ok' : c.level === 'info' ? 'info' : 'warn'; li.textContent = c.text; ul.appendChild(li); });
+    box.classList.toggle('has-warn', warn.length > 0);
+    $('[data-act="ki"]', wrap).hidden = true; // exact data – nothing for the AI to improve
+  }
 
   const paintHead = () => {
     $('.sm-sender', wrap).textContent = rec.f.sender || 'Absender unbekannt';
@@ -385,6 +448,7 @@ async function mountLetter(screen, id) {
       if (act === 'frist') await addDeadline(rec, rec.f.due ? { date: rec.f.due, kind: rec.f.dueKind, label: rec.f.dueLabel } : null);
       if (act === 'zahlen') await transferDialog(rec);
       if (act === 'antwort') await answerMenu(b, rec);
+      if (act === 'xml') await shareOriginalXml(rec);
       if (act === 'ablegen') { if (await fileDialog(rec)) paintHead(); }
       if (act === 'ki') { if (await improveWithAi(rec)) { location.reload(); } }
       if (act === 'steuer') { const { addReceiptFromLetter } = await import('./tax.js'); const r = await addReceiptFromLetter(rec); if (r) location.hash = `#/steuer/${r.year}?beleg=${r.id}`; }
@@ -483,6 +547,26 @@ function splitAddress(a) {
   return m ? { street: m[1].replace(/,\s*$/, '').trim(), city: m[2].trim() } : { street: s, city: '' };
 }
 
+/** Documents a letter asks for („Bitte reichen Sie folgende Unterlagen ein: – … – …“) → string[] (max. 12). */
+export function requestedDocs(text) {
+  const src = String(text || '').replace(/\r/g, '');
+  const m = /(folgenden?|nachstehenden?|unten\s+(?:aufgeführten|genannten)|fehlenden?|noch\s+(?:diese|folgende))\s+(Unterlagen|Nachweise|Belege|Dokumente|Angaben)|(?:reichen|senden|schicken|legen)\s+Sie\s+(?:uns|mir)?\s*(?:bitte\s+)?(?:noch\s+)?(?:folgende|die\s+folgenden)/i.exec(src);
+  if (!m) return [];
+  const after = src.slice(m.index + m[0].length, m.index + m[0].length + 1600).split('\n');
+  const out = [];
+  const BUL = /^\s*(?:[-–—•·*▪►□☐✓]|\d{1,2}[.)]|[a-h][.)])\s+(.{3,})$/;
+  let started = false;
+  for (let i = 0; i < after.length && out.length < 12; i++) {
+    const line = after[i].trim();
+    if (!line) { if (started) break; continue; }
+    const b = BUL.exec(line);
+    if (b) { started = true; out.push(b[1].replace(/\s+/g, ' ').replace(/[;,]$/, '').trim().slice(0, 90)); continue; }
+    if (started) break;
+    if (i > 2) break;
+  }
+  return out;
+}
+
 async function answerMenu(anchor, rec) {
   const { officeMenu } = await import('../office/kinds.js');
   const L = await import('../extras/letters.js');
@@ -503,7 +587,16 @@ async function answerMenu(anchor, rec) {
     if (rec.cancel && rec.cancel.end) { extra.termin = 'datum'; extra.termin_datum = rec.cancel.end; }
     items.push({ label: 'Kündigung schreiben', icon: 'letter', onClick: () => go('kuendigung', extra, art) });
   }
-  items.push({ label: 'Widerruf (Kauf/Vertrag)', icon: 'restore', onClick: () => go('widerruf', { bestellnr: rec.f.rechnungsnummer || rec.f.vertragsnummer || '' }) });
+  const az = rec.f.aktenzeichen || rec.f.steuernummer || rec.f.kundennummer || rec.f.vertragsnummer || rec.f.rechnungsnummer || '';
+  const thema = String(rec.f.subject || '').replace(/^betreff:?\s*/i, '').slice(0, 120);
+  const docs = requestedDocs(rec.text);
+  const asksDocs = docs.length || /(unterlagen|nachweise|belege)\b[^.]{0,80}\b(ein(?:zu)?reichen|vorzulegen|vorlegen|nachreichen|zusenden|einsenden)|mitwirkung/i.test(rec.text || '');
+  if (asksDocs) items.push({ label: 'Unterlagen nachreichen', icon: 'folderMove', onClick: () => go('unterlagen', { az, datum_schreiben: rec.f.date || '', liste: docs.join('\n') }) });
+  if (rec.f.due && !['widerspruch', 'kuendigung', 'zahlung'].includes(rec.f.dueKind)) {
+    items.push({ label: 'Um mehr Zeit bitten', icon: 'timer', onClick: () => go('fristverlaengerung', { az, datum_schreiben: rec.f.date || '', frist_alt: rec.f.due, sache: asksDocs ? 'Unterlagen einreichen' : thema }) });
+  }
+  items.push({ label: 'Rückfrage stellen', icon: 'comment', onClick: () => go('rueckfrage', { az, datum_schreiben: rec.f.date || '', thema, frage: rec.f.amount != null && rec.f.amount !== '' ? 'berechnung' : 'grund' }) });
+  if (['rechnung', 'vertrag', 'versicherung'].includes(rec.type)) items.push({ label: 'Widerruf (Kauf/Vertrag)', icon: 'restore', onClick: () => go('widerruf', { bestellnr: rec.f.rechnungsnummer || rec.f.vertragsnummer || '' }) });
   officeMenu(anchor, items, { label: 'Antwort schreiben' });
 }
 

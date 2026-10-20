@@ -1,0 +1,144 @@
+{
+ "fields": [
+  {
+   "name": "Name",
+   "type": "text",
+   "box": [
+    60,
+    128,
+    300,
+    160
+   ]
+  },
+  {
+   "name": "Vorname",
+   "type": "text",
+   "box": [
+    300,
+    128,
+    535,
+    160
+   ]
+  },
+  {
+   "name": "Geburtsdatum",
+   "type": "date",
+   "box": [
+    60,
+    160,
+    230,
+    192
+   ]
+  },
+  {
+   "name": "Telefon",
+   "type": "text",
+   "box": [
+    230,
+    160,
+    535,
+    192
+   ]
+  },
+  {
+   "name": "Straße, Hausnummer",
+   "type": "text",
+   "box": [
+    60,
+    192,
+    535,
+    224
+   ]
+  },
+  {
+   "name": "PLZ",
+   "type": "text",
+   "box": [
+    60,
+    224,
+    160,
+    256
+   ]
+  },
+  {
+   "name": "Ort",
+   "type": "text",
+   "box": [
+    160,
+    224,
+    535,
+    256
+   ]
+  },
+  {
+   "name": "Amtliches Kennzeichen",
+   "type": "text",
+   "box": [
+    180,
+    300,
+    400,
+    321
+   ]
+  },
+  {
+   "name": "ich selbst",
+   "type": "check",
+   "box": [
+    180,
+    338,
+    190,
+    348
+   ]
+  },
+  {
+   "name": "Firmenwagen",
+   "type": "check",
+   "box": [
+    300,
+    338,
+    310,
+    348
+   ]
+  },
+  {
+   "name": "anderer Halter",
+   "type": "check",
+   "box": [
+    420,
+    338,
+    430,
+    348
+   ]
+  },
+  {
+   "name": "Bemerkungen",
+   "type": "multiline",
+   "box": [
+    60,
+    396,
+    535,
+    480
+   ]
+  },
+  {
+   "name": "Ort, Datum",
+   "type": "text",
+   "box": [
+    60,
+    555,
+    250,
+    581
+   ]
+  },
+  {
+   "name": "Unterschrift",
+   "type": "sign",
+   "box": [
+    320,
+    540,
+    535,
+    581
+   ]
+  }
+ ]
+}

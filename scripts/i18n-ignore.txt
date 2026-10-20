@@ -580,3 +580,50 @@ IndexedDB blocked
 From my files
 keine Antwort nach 8 s
 Fehler {0} {1}:{2}
+Mir liegen noch nicht alle nötigen Unterlagen vor; ich habe sie bereits angefordert.
+Ich bin derzeit erkrankt und kann mich deshalb nicht rechtzeitig darum kümmern.
+Ich bin in diesem Zeitraum verreist und kann die Frist deshalb nicht einhalten.
+Ich lasse mich zu der Angelegenheit noch beraten und benötige dafür etwas mehr Zeit.
+Ich benötige für die Bearbeitung etwas mehr Zeit.
+in Ihrem Schreiben{0} haben Sie mir eine Frist{1} gesetzt. Es geht um: {2}.
+Ich bitte Sie, die Frist{0} zu verlängern.{1}
+Bitte bestätigen Sie mir die Fristverlängerung kurz. Vielen Dank für Ihr Verständnis.
+Antrag auf Fristverlängerung{0}
+die folgende Unterlage
+die folgenden Unterlagen
+wie in Ihrem Schreiben{0} erbeten, sende ich Ihnen {1}:
+Sollte noch etwas fehlen, geben Sie mir bitte kurz Bescheid. Bitte bestätigen Sie mir den Eingang.
+Nachreichen von Unterlagen{0}
+Anlagen: {0}
+Bitte erläutern Sie mir, wie sich der genannte Betrag zusammensetzt, und senden Sie mir eine nachvollziehbare Aufstellung.
+Mir ist nicht klar, aus welchem Grund ich dieses Schreiben erhalten habe. Bitte erläutern Sie mir den Hintergrund.
+Bitte teilen Sie mir genau mit, was ich bis wann tun muss und welche Unterlagen Sie von mir benötigen.
+Bitte senden Sie mir Kopien der zugrunde liegenden Belege bzw. Unterlagen zu.
+zu Ihrem Schreiben{0} zum Thema „{1}“ habe ich eine Frage.
+Gern können Sie mich auch telefonisch unter {0} erreichen.
+Gern können Sie mich auch telefonisch erreichen.
+Vielen Dank für Ihre Hilfe.
+Rückfrage zu Ihrem Schreiben{0}
+Unterlagen einreichen
+Erledigen
+Subtype
+Decode
+Width
+Height
+{0} (ausgefüllt).pdf
+{0} (ausgefüllt, normale PDF).pdf
+Name, Vorname
+Straße, Hausnummer
+Familienname
+Kennzeichen
+Geburtsname
+Postleitzahl
+Wohnort
+Staatsangehörigkeit
+Familienstand
+Geschlecht
+Kontoinhaber
+Kreditinstitut
+Bemerkungen
+E-Rechnung (Original-XML, unverändert)
+.pdf,application/pdf,image/*,.xml,application/xml,text/xml

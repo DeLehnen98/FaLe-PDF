@@ -19,6 +19,7 @@ const today = () => new Date().toLocaleDateString('de-DE', { day: '2-digit', mon
  * ctx.hasSeparate(key) tells whether the form has its own field for that part.
  */
 const RULES = [
+  [t => /^(datum|date|heute|datum heute)$/.test(t), 'Datum (heute)', () => today()],
   [t => /\bort\b.*\bdatum\b|\bdatum\b.*\bort\b|ortdatum/.test(t), 'Ort, Datum', p => (v(p, 'ort') ? `${v(p, 'ort')}, ${today()}` : '')],
   [t => /geburtsdatum|geburtstag|geb datum|gebdatum|date of birth|birth ?date|\bdob\b|geboren am/.test(t), 'Geburtsdatum', p => v(p, 'geburtsdatum')],
   [t => /geburtsort|place of birth|birth ?place|geboren in/.test(t), 'Geburtsort', p => v(p, 'geburtsort')],
@@ -27,8 +28,8 @@ const RULES = [
   [t => /telefon|\btel\b|phone|handy|mobil|rufnummer/.test(t), 'Telefon', p => v(p, 'telefon')],
   [t => /\bplz\b.*\bort\b|postleitzahl.*ort|plz ?ort|zip.*city/.test(t), 'PLZ und Ort', p => join(v(p, 'plz'), v(p, 'ort'))],
   [t => /\bplz\b|postleitzahl|\bzip\b|postal ?code|postcode/.test(t), 'PLZ', p => v(p, 'plz')],
-  [t => /hausnummer|haus ?nr|^nr$|\bhnr\b|house ?number/.test(t), 'Hausnummer', p => v(p, 'hausnummer')],
   [t => /strasse.*(nr|hausnummer)|street.*number/.test(t), 'Straße und Hausnummer', p => join(v(p, 'strasse'), v(p, 'hausnummer'))],
+  [t => /hausnummer|haus ?nr|^nr$|\bhnr\b|house ?number/.test(t), 'Hausnummer', p => v(p, 'hausnummer')],
   [t => /strasse|\bstr\b|street/.test(t), 'Straße', (p, ctx) => (ctx.hasSeparate('hausnummer') ? v(p, 'strasse') : join(v(p, 'strasse'), v(p, 'hausnummer')))],
   [t => /^(adresse|anschrift|address|wohnanschrift)$|vollstaendige anschrift/.test(t), 'Anschrift', p => [join(v(p, 'strasse'), v(p, 'hausnummer')), join(v(p, 'plz'), v(p, 'ort'))].filter(Boolean).join(', ')],
   [t => /bundesland/.test(t), null, () => ''],
@@ -37,11 +38,15 @@ const RULES = [
   [t => /firma|unternehmen|company|arbeitgeber|organisation|organization|betrieb/.test(t), 'Firma', p => v(p, 'firma')],
   [t => /vorname|first ?name|given ?name|rufname/.test(t), 'Vorname', p => v(p, 'vorname')],
   [t => /nachname|familienname|last ?name|surname|zuname/.test(t), 'Nachname', p => v(p, 'nachname')],
-  [t => /^(name|ihr name|vollstaendiger name|full name|antragsteller(in)?|unterzeichner(in)?|name des antragstellers|kontoinhaber(in)?)$|^name vorname$|^vor und nachname$/.test(t), 'Name', p => join(v(p, 'vorname'), v(p, 'nachname'))],
+  // „Name“ next to its own „Vorname“ field means the family name (usual on German forms)
+  [t => /^name$/.test(t), 'Name', (p, ctx) => (ctx.hasSeparate('vorname') ? v(p, 'nachname') : join(v(p, 'vorname'), v(p, 'nachname')))],
+  [t => /^(ihr name|vollstaendiger name|full name|antragsteller(in)?|unterzeichner(in)?|name des antragstellers|kontoinhaber(in)?)$|^vor und nachname$/.test(t), 'Name', p => join(v(p, 'vorname'), v(p, 'nachname'))],
+  [t => /^name vorname$|^nachname vorname$|^familienname vorname$/.test(t), 'Name, Vorname', p => [v(p, 'nachname'), v(p, 'vorname')].filter(Boolean).join(', ')],
 ];
 
 const SEP_TESTS = {
   hausnummer: t => /hausnummer|haus ?nr|^nr$|\bhnr\b/.test(t),
+  vorname: t => /^vorname$|^vorname[n]? \d*$|first ?name|given ?name|rufname/.test(t),
 };
 
 /**

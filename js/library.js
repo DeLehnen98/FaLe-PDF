@@ -62,7 +62,12 @@ async function indexText(id, pdf) {
 /** Import any supported file (PDF, Office, text, image) into the library. */
 export async function importAny(file, opts = {}) {
   const kind = detectKind(file);
-  if (!kind) throw new UserError(unsupportedReason(file));
+  if (!kind) {
+    // E-Rechnung (XRechnung / ZUGFeRD-XML): becomes a readable PDF with the original XML inside
+    const ei = await import('./smart/einvoice.js');
+    if (ei.isXmlFile(file)) return ei.importXmlFile(file, opts);
+    throw new UserError(unsupportedReason(file));
+  }
   if (kind === 'pdf') return importPdf(file, opts);
   return importOther(file, kind, opts);
 }

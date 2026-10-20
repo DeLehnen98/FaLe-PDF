@@ -60,6 +60,7 @@ const MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.presentationml.presentation',
   'text/csv', 'text/comma-separated-values',
   'text/plain', 'text/markdown', 'text/x-markdown',
+  'text/xml', 'application/xml', // E-Rechnung (XRechnung)
   'image/*',
 ];
 

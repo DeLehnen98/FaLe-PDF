@@ -32,6 +32,7 @@ export const CATEGORIES = [
 export const ACCEPT_ALL = [
   '.pdf', 'application/pdf', '.docx', MIME_DOCX, '.xlsx', MIME_XLSX, '.csv', 'text/csv', '.pptx', MIME_PPTX,
   '.txt', 'text/plain', '.md', '.markdown', 'text/markdown', 'image/*', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.bmp',
+  '.xml', 'application/xml', 'text/xml', // E-Rechnungen (XRechnung / ZUGFeRD-XML) → lesbare PDF (js/smart/einvoice.js)
 ].join(',');
 export const ACCEPT = {
   doc: `.docx,${MIME_DOCX},.txt,text/plain,.md,.markdown,text/markdown`,

@@ -885,3 +885,21 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
 .pt-item.pt-etext .pt-x { top: -38px; right: -4px; }
 /* tool hints in the property row wrap instead of running off the screen */
 .pt-props .pt-hint { white-space: normal; flex: 1 1 220px; min-width: 160px; line-height: 1.35; }
+
+/* ---------- Papierformular → ausfüllbar (sign tool, js/tools/paperform.js) ---------- */
+.pf-offer { display: flex; align-items: center; gap: 14px; max-width: 920px; margin: 0 auto 16px; padding: 14px 16px; }
+.pf-offer .pf-ic { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft, var(--surface-2)); color: var(--primary); }
+.pf-offer .pf-ic .ic { width: 22px; height: 22px; }
+.pf-offer .pf-text { flex: 1; min-width: 0; }
+.pf-offer .pf-text strong { display: block; font-size: calc(15.5px * var(--ts, 1)); }
+.pf-offer .pf-text p { margin: 2px 0 0; color: var(--text-2); font-size: calc(14px * var(--ts, 1)); line-height: 1.4; }
+.pf-offer .pf-acts { flex: none; display: flex; align-items: center; gap: 4px; }
+.pf-offer.busy .pf-ic { animation: pf-pulse 1.2s ease-in-out infinite; }
+@keyframes pf-pulse { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .pf-offer.busy .pf-ic { animation: none; } }
+@media (max-width: 640px) {
+  .pf-offer { flex-wrap: wrap; gap: 10px 12px; margin: 0 4px 12px; }
+  .pf-offer .pf-text { flex-basis: calc(100% - 56px); }
+  .pf-offer .pf-acts { width: 100%; }
+  .pf-offer .pf-acts .btn { flex: 1; min-height: 44px; }
+}
