@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Naar de inhoud",
+    "navLabel": "Hoofdnavigatie",
+    "home": "Startpagina",
+    "openApp": "FaLe PDF openen",
+    "badge": "Gratis · zonder account · je bestanden blijven op je apparaat",
+    "stepsH": "Zo werkt het",
+    "whyH": "Waarom FaLe PDF",
+    "faqH": "Veelgestelde vragen",
+    "moreH": "Dit kan ook",
+    "endH": "Probeer het meteen",
+    "endText": "FaLe PDF werkt in de browser, op je telefoon en op je computer. Alle functies zijn gratis.",
+    "privacy": "Privacy",
+    "imprint": "Colofon",
+    "footer": "FaLe PDF – een aanbod van FaLe.dev",
+    "popularH": "Populaire taken"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "pdf-ondertekenen",
+      "title": "PDF ondertekenen – gratis, zonder account | FaLe PDF",
+      "description": "Onderteken een PDF op je telefoon of computer: teken je handtekening, bewaar hem en plaats hem met één tik. Gratis, zonder account en zonder uploaden.",
+      "h1": "PDF ondertekenen",
+      "lede": "Teken je handtekening met je vinger of de muis en plaats hem met één tik in elke PDF: een contract, formulier of machtiging.",
+      "cta": "Nu een PDF ondertekenen",
+      "steps": [
+        {
+          "t": "PDF openen",
+          "d": "Open de PDF in FaLe PDF en kies “Invullen & ondertekenen”."
+        },
+        {
+          "t": "Handtekening tekenen",
+          "d": "Tik op “Handtekening” en teken hem één keer. FaLe onthoudt hem voor de volgende keer."
+        },
+        {
+          "t": "Plaatsen en opslaan",
+          "d": "Tik op de lijn, pas hem aan met “Groter” of “Kleiner” en tik op “Opslaan”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Blijft bij jou",
+          "d": "Je handtekening en het document worden op je apparaat verwerkt – er wordt niets geüpload."
+        },
+        {
+          "t": "Meer dan een handtekening",
+          "d": "Tekst, datum, vinkjes, initialen en eigen stempels plaats je net zo gemakkelijk."
+        },
+        {
+          "t": "Zonder abonnement",
+          "d": "Ondertekenen is gratis en blijft gratis – zonder watermerk en zonder account."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is de handtekening rechtsgeldig?",
+          "a": "Je plaatst een gewone elektronische handtekening – zoals op papier, maar dan digitaal. Voor veel alledaagse documenten is dat genoeg. Waar de wet een bijzondere vorm eist (bijvoorbeeld een gekwalificeerde handtekening), geldt die vorm."
+        },
+        {
+          "q": "Wordt mijn handtekening bewaard?",
+          "a": "Alleen op je eigen apparaat, zodat je hem de volgende keer met één tik kunt plaatsen. Je kunt hem altijd verwijderen."
+        },
+        {
+          "q": "Werkt dit ook op een computer?",
+          "a": "Ja. FaLe PDF werkt in de browser en is onder Windows en op de Mac als app te installeren. Op een computer teken je met de muis of het touchpad."
+        },
+        {
+          "q": "Kan ik ook formuliervelden invullen?",
+          "a": "Ja. Heeft de PDF formuliervelden, dan vul je ze in dezelfde stap in en onderteken je daarna."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "pdf-formulier-invullen",
+      "title": "PDF-formulier invullen – gratis, ook op je telefoon | FaLe PDF",
+      "description": "Vul PDF-formulieren in: tekstvelden, vakjes en keuzelijsten op je telefoon of computer – of schrijf op een ingescand papieren formulier. Gratis, zonder account.",
+      "h1": "PDF-formulier invullen",
+      "lede": "Vul formuliervelden in of schrijf gewoon op de plek waar iets hoort op een ingescand formulier – met grote letters en duidelijke knoppen.",
+      "cta": "Formulier invullen",
+      "steps": [
+        {
+          "t": "Formulier openen",
+          "d": "Open de PDF en kies “Invullen & ondertekenen”. Bestaande velden worden gemarkeerd."
+        },
+        {
+          "t": "Velden invullen",
+          "d": "Tik op een veld en begin te typen. Bij formulieren zonder velden tik je op “Tekst” en daarna op de plek in het formulier."
+        },
+        {
+          "t": "Ondertekenen en opslaan",
+          "d": "Plaats indien nodig de datum, vinkjes en je handtekening en tik op “Opslaan”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Ook zonder velden",
+          "d": "Een ingescand papieren formulier heeft geen velden – toch schrijf je precies op de juiste plek."
+        },
+        {
+          "t": "Grote, simpele bediening",
+          "d": "Lettergrootte met A− en A+, kleuren met één tik, alles in één balk onderaan."
+        },
+        {
+          "t": "Overheidsformulieren",
+          "d": "FaLe opent ook speciale overheidsformulieren (XFA) die anders alleen in één bepaald pdf-programma opengaan."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wat doe ik als het formulier geen velden heeft?",
+          "a": "Tik op “Tekst” en daarna op de plek in het formulier. Voor aankruisvakjes is er “Vinkje” met ✓, ✗ of een stip."
+        },
+        {
+          "q": "Kan ik het formulier later nog wijzigen?",
+          "a": "Bij het opslaan worden de velden normaal gesproken vastgezet, zodat niemand ze ongemerkt kan wijzigen. Wil je later nog iets veranderen, haal dan eerst het vinkje bij “Velden samenvoegen bij het opslaan” weg."
+        },
+        {
+          "q": "Worden mijn gegevens geüpload?",
+          "a": "Nee. Het invullen gebeurt volledig op je apparaat."
+        },
+        {
+          "q": "Wat als een formulier de melding “Even geduld …” toont?",
+          "a": "Dat zijn meestal speciale overheidsformulieren (XFA). Open ze in FaLe PDF met “Overheidsformulier invullen”."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "pdf-bewerken",
+      "title": "PDF bewerken – tekst en afbeeldingen toevoegen | FaLe PDF",
+      "description": "Bewerk een PDF op je telefoon of computer: voeg tekst en afbeeldingen toe, vervang bestaande tekst en dek stukken af. Gratis, zonder account en zonder uploaden.",
+      "h1": "PDF bewerken",
+      "lede": "Voeg tekst en afbeeldingen toe, wijzig bestaande tekst of dek stukken af – direct in je PDF.",
+      "cta": "PDF bewerken",
+      "steps": [
+        {
+          "t": "PDF openen",
+          "d": "Open de PDF en kies “PDF bewerken”."
+        },
+        {
+          "t": "Wijzigen",
+          "d": "Met “Tekst” schrijf je iets nieuws, met “Vervangen” tik je op bestaande tekst en wijzig je die, met “Afbeelding” voeg je een foto of logo toe."
+        },
+        {
+          "t": "Opslaan",
+          "d": "Tik op “Opslaan” – de nieuwe versie staat in je bestanden en het origineel blijft bewaard."
+        }
+      ],
+      "why": [
+        {
+          "t": "Bestaande tekst wijzigen",
+          "d": "“Vervangen” neemt het lettertype, de grootte en de kleur van die plek over, zodat de wijziging past."
+        },
+        {
+          "t": "Tekst eenvoudig instellen",
+          "d": "Grootte met A− en A+, vet, kleur – zonder door menu’s te zoeken."
+        },
+        {
+          "t": "Gratis in plaats van Pro",
+          "d": "Wat anderen alleen met een abonnement bieden, is hier gratis – zonder watermerk."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wordt de oude tekst echt verwijderd?",
+          "a": "Bij vervangen wordt de oude tekst afgedekt. Voor vertrouwelijke passages die zeker uit het bestand moeten verdwijnen, gebruik je “Zwartlakken”."
+        },
+        {
+          "q": "Kan ik afbeeldingen en logo’s toevoegen?",
+          "a": "Ja, JPG en PNG. Je verplaatst en vergroot ze met je vinger of de muis."
+        },
+        {
+          "q": "Werkt het offline?",
+          "a": "Ja. Na het eerste openen werkt bewerken ook zonder internet."
+        },
+        {
+          "q": "Blijft mijn origineel bewaard?",
+          "a": "Ja. Er wordt een nieuwe versie opgeslagen; het origineel kun je desgewenst vervangen."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "pdf-samenvoegen",
+      "title": "PDF samenvoegen – meerdere PDF’s tot één | FaLe PDF",
+      "description": "Voeg meerdere PDF’s samen tot één bestand en bepaal de volgorde – op je telefoon of computer, gratis, zonder account en zonder uploaden.",
+      "h1": "PDF’s samenvoegen",
+      "lede": "Voeg facturen, scans of hoofdstukken samen tot één PDF – in de volgorde die je wilt.",
+      "cta": "PDF’s samenvoegen",
+      "steps": [
+        {
+          "t": "Bestanden kiezen",
+          "d": "Open “Samenvoegen” en tik op “Documenten toevoegen”."
+        },
+        {
+          "t": "Volgorde bepalen",
+          "d": "Sleep de bestanden naar de juiste plek of gebruik de pijlen."
+        },
+        {
+          "t": "Samenvoegen",
+          "d": "Tik op “Samenvoegen” – de nieuwe PDF staat meteen in je bestanden."
+        }
+      ],
+      "why": [
+        {
+          "t": "Zonder uploaden",
+          "d": "De bestanden worden op je apparaat samengevoegd – ook vertrouwelijke stukken blijven bij jou."
+        },
+        {
+          "t": "Grote bestanden",
+          "d": "Zelfs honderden pagina’s worden vlot verwerkt, zonder dat de app vastloopt."
+        },
+        {
+          "t": "Meteen verder",
+          "d": "Daarna direct verkleinen, ondertekenen of delen – alles in dezelfde app."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hoeveel PDF’s kan ik samenvoegen?",
+          "a": "Zoveel als je apparaat aankan. Er is geen kunstmatige grens."
+        },
+        {
+          "q": "Kan ik losse pagina’s weglaten?",
+          "a": "Ja. Met “Pagina's ordenen” verwijder, draai of sorteer je pagina’s vóór of na het samenvoegen."
+        },
+        {
+          "q": "Blijft tekst selecteerbaar?",
+          "a": "Ja. De pagina’s worden ongewijzigd overgenomen, dus tekst blijft selecteerbaar en doorzoekbaar."
+        },
+        {
+          "q": "Kost het iets?",
+          "a": "Nee. Samenvoegen is gratis, zonder watermerk en zonder account."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "pdf-comprimeren",
+      "title": "PDF comprimeren – voor e-mail en uploads | FaLe PDF",
+      "description": "Maak een PDF kleiner zodat hij in de e-mail of het uploadformulier past: afbeeldingen verkleinen of zonder kwaliteitsverlies inpakken. Gratis, zonder uploaden.",
+      "h1": "PDF comprimeren",
+      "lede": "Te groot voor de e-mail of het online formulier? FaLe PDF maakt het bestand kleiner – je ziet de grootte voor en na.",
+      "cta": "PDF comprimeren",
+      "steps": [
+        {
+          "t": "PDF openen",
+          "d": "Open de PDF en kies “PDF comprimeren”."
+        },
+        {
+          "t": "Manier kiezen",
+          "d": "“Afbeeldingen verkleinen” voor scans en foto’s, “Zonder kwaliteitsverlies” voor tekstdocumenten of “Sterk” voor het kleinste bestand."
+        },
+        {
+          "t": "Comprimeren",
+          "d": "Tik op de knop – je ziet meteen hoeveel kleiner het bestand is geworden."
+        }
+      ],
+      "why": [
+        {
+          "t": "De juiste keuze al ingesteld",
+          "d": "Voor grote scans staat “Afbeeldingen verkleinen” al geselecteerd – net zo leesbaar als eerst."
+        },
+        {
+          "t": "Eerlijk resultaat",
+          "d": "Valt er niets meer te besparen, dan zegt FaLe dat in plaats van een slechter bestand op te slaan."
+        },
+        {
+          "t": "Zonder uploaden",
+          "d": "Ook grote bestanden worden op je apparaat verkleind."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wordt de kwaliteit slechter?",
+          "a": "“Zonder kwaliteitsverlies” verandert niets aan het uiterlijk. “Afbeeldingen verkleinen” rekent alleen foto’s en scans kleiner, tekst blijft scherp. “Sterk” zet elke pagina om in een afbeelding."
+        },
+        {
+          "q": "Blijft tekst selecteerbaar?",
+          "a": "Bij “Zonder kwaliteitsverlies” en “Afbeeldingen verkleinen” wel. Bij “Sterk” worden de pagina’s afbeeldingen."
+        },
+        {
+          "q": "Hoe klein wordt het bestand?",
+          "a": "Dat hangt af van de inhoud. Scans en foto’s worden meestal flink kleiner, pure tekstbestanden minder."
+        },
+        {
+          "q": "Is er een maximale grootte?",
+          "a": "Nee, alleen de opslagruimte van je apparaat."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "document-scannen",
+      "title": "Document scannen met je telefoon – als PDF | FaLe PDF",
+      "description": "Scan documenten met de camera van je telefoon: randen worden herkend, de pagina wordt rechtgezet en verbeterd, de tekst doorzoekbaar. Gratis, zonder account.",
+      "h1": "Document scannen met je telefoon",
+      "lede": "Houd je telefoon boven het papier – FaLe herkent de pagina, zet hem recht en maakt er een nette PDF van.",
+      "cta": "Nu scannen",
+      "steps": [
+        {
+          "t": "Foto maken",
+          "d": "Open de scanner en houd je telefoon boven de pagina. De randen worden automatisch herkend."
+        },
+        {
+          "t": "Controleren",
+          "d": "Pas indien nodig de hoeken aan en kies een filter zoals “Verbeterd” of “Zwart-wit”."
+        },
+        {
+          "t": "Opslaan als PDF",
+          "d": "Tik op “PDF opslaan”. Op verzoek wordt een naam voorgesteld op basis van de inhoud."
+        }
+      ],
+      "why": [
+        {
+          "t": "Recht en leesbaar",
+          "d": "Scheve foto’s worden rechtgezet en filters zoals “Verbeterd” maken schaduwen en een grijze achtergrond lichter."
+        },
+        {
+          "t": "Doorzoekbaar",
+          "d": "De tekstherkenning (Duits en Engels) draait op je apparaat – daarna vind je elk woord."
+        },
+        {
+          "t": "Meerdere pagina’s",
+          "d": "Scan zoveel pagina’s als je wilt in één PDF en sorteer ze met een tik."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Heb ik internet nodig?",
+          "a": "Nee. Alleen de tekstherkenning haalt de eerste keer eenmalig haar taalgegevens op, daarna werkt alles offline."
+        },
+        {
+          "q": "Hoe wordt de bestandsnaam gekozen?",
+          "a": "Laat je het naamveld leeg, dan stelt FaLe na de tekstherkenning een naam voor op basis van de inhoud. Je kunt hem met een tik wijzigen."
+        },
+        {
+          "q": "Kan ik ook foto’s uit de galerij gebruiken?",
+          "a": "Ja. Kies “Uit album / bestanden” en neem bestaande afbeeldingen."
+        },
+        {
+          "q": "Is er een modus voor identiteitsbewijzen?",
+          "a": "Ja. “ID-kaart scannen” zet voor- en achterkant op ware grootte op één A4-pagina."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-naar-word",
+      "title": "PDF naar Word omzetten – gratis, zonder upload | FaLe PDF",
+      "description": "Zet een PDF om in een bewerkbaar Word-document (DOCX): alinea’s, koppen en vet blijven behouden. Gratis, direct op je apparaat.",
+      "h1": "PDF naar Word omzetten",
+      "lede": "Maak van een PDF een Word-document dat je kunt wijzigen – alinea’s, koppen en accenten blijven behouden.",
+      "cta": "PDF naar Word omzetten",
+      "steps": [
+        {
+          "t": "PDF openen",
+          "d": "Open de PDF en kies “PDF naar Word”."
+        },
+        {
+          "t": "Manier kiezen",
+          "d": "“Bewerkbare tekst” bouwt alinea’s en koppen na, “Exacte opmaak” neemt elke pagina precies over zoals in het origineel."
+        },
+        {
+          "t": "Omzetten",
+          "d": "Tik op “Omzetten naar Word” – het document staat in je bestanden en kun je meteen in FaLe verder bewerken."
+        }
+      ],
+      "why": [
+        {
+          "t": "Zonder uploaden",
+          "d": "De omzetting gebeurt op je apparaat – je documenten verlaten het niet."
+        },
+        {
+          "t": "Ook scans",
+          "d": "Pagina’s zonder tekst worden op verzoek met tekstherkenning (Duits en Engels) omgezet in tekst."
+        },
+        {
+          "t": "Meteen bewerken",
+          "d": "FaLe PDF heeft een eigen editor voor Word-documenten – geen ander programma nodig."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ziet het Word-document er precies zo uit als de PDF?",
+          "a": "Met “Exacte opmaak” wel, maar dan is de tekst niet bewerkbaar. “Bewerkbare tekst” neemt inhoud en opbouw over; het uiterlijk kan een beetje afwijken."
+        },
+        {
+          "q": "Kan ik alleen bepaalde pagina’s omzetten?",
+          "a": "Ja. Geef de pagina’s op, bijvoorbeeld “1-3, 5”."
+        },
+        {
+          "q": "Welk formaat krijg ik?",
+          "a": "Een Word-document in DOCX-formaat, dat in alle gangbare tekstverwerkers opengaat."
+        },
+        {
+          "q": "Wat kost het?",
+          "a": "Niets. Ook deze Pro-functie is gratis in FaLe PDF."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "xfa-formulier-openen",
+      "title": "XFA-formulier openen en invullen – overheid | FaLe PDF",
+      "description": "Toont een overheidsformulier alleen “Even geduld …”? FaLe PDF opent XFA-formulieren, vult ze in, ondertekent en bewaart ze – gratis, ook op je telefoon.",
+      "h1": "Overheidsformulier (XFA) openen en invullen",
+      "lede": "Sommige formulieren van instanties en ambassades tonen alleen “Even geduld …” of een lege pagina. FaLe PDF opent ze, jij vult ze in en slaat ze weer op.",
+      "cta": "Formulier openen",
+      "steps": [
+        {
+          "t": "Formulier openen",
+          "d": "Open de PDF in FaLe PDF. Herkent FaLe een overheidsformulier, dan verschijnt “Formulier invullen”."
+        },
+        {
+          "t": "Invullen en ondertekenen",
+          "d": "Vul de velden in. Bij een handtekeningregel opent een tik het handtekeningveld."
+        },
+        {
+          "t": "Opslaan of afdrukken",
+          "d": "“Opslaan” behoudt het oorspronkelijke formulier, zoals de instantie het verwacht. “Als gewone PDF” en “Afdrukken” bevatten ook de handtekening."
+        }
+      ],
+      "why": [
+        {
+          "t": "Geen speciaal programma nodig",
+          "d": "Deze formulieren gaan anders alleen in één bepaald pdf-programma open – FaLe opent ze in de browser, op je telefoon en op je computer."
+        },
+        {
+          "t": "Zoomen met twee vingers",
+          "d": "Kleine vakjes vergroot je gewoon – ideaal op een telefoon."
+        },
+        {
+          "t": "Veilig",
+          "d": "Programmacode in het formulier wordt om veiligheidsredenen nooit uitgevoerd en er wordt niets geüpload."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hoe herken ik een XFA-formulier?",
+          "a": "Vaak toont een gewone pdf-lezer alleen de melding “Even geduld …” of een lege pagina. FaLe herkent zulke formulieren automatisch."
+        },
+        {
+          "q": "Accepteert de instantie het opgeslagen formulier?",
+          "a": "“Opslaan” behoudt het oorspronkelijke formaat met je invoer. Wordt een gewone PDF of een afdruk gevraagd, gebruik dan “Als gewone PDF” of “Afdrukken”."
+        },
+        {
+          "q": "Werken berekeningen in het formulier?",
+          "a": "Scripts in het formulier worden om veiligheidsredenen niet uitgevoerd. Automatische berekeningen of controles vul je daarom zelf in."
+        },
+        {
+          "q": "Wat kost het?",
+          "a": "Niets – zonder account en zonder aanmelding."
+        }
+      ]
+    }
+  }
+}

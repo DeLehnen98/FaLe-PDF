@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Skip to content",
+    "navLabel": "Main navigation",
+    "home": "Home",
+    "openApp": "Open FaLe PDF",
+    "badge": "Free · no account · your files stay on your device",
+    "stepsH": "How it works",
+    "whyH": "Why FaLe PDF",
+    "faqH": "Frequently asked questions",
+    "moreH": "You can also",
+    "endH": "Try it now",
+    "endText": "FaLe PDF runs in the browser, on your phone and on your computer. Every feature is free.",
+    "privacy": "Privacy",
+    "imprint": "Imprint",
+    "footer": "FaLe PDF – made by FaLe.dev",
+    "popularH": "Popular tasks"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "sign-pdf",
+      "title": "Sign PDF – free, no account needed | FaLe PDF",
+      "description": "Sign a PDF on your phone or computer: draw your signature once, save it and place it with one tap. Free, no account, no upload.",
+      "h1": "Sign a PDF",
+      "lede": "Draw your signature with your finger or mouse and place it in any PDF with one tap – contract, form or power of attorney.",
+      "cta": "Sign a PDF now",
+      "steps": [
+        {
+          "t": "Open the PDF",
+          "d": "Open the PDF in FaLe PDF and choose “Fill & Sign”."
+        },
+        {
+          "t": "Draw your signature",
+          "d": "Tap “Signature” and draw it once. FaLe remembers it for next time."
+        },
+        {
+          "t": "Place and save",
+          "d": "Tap the line, adjust it with “Larger” or “Smaller” and tap “Save”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Stays with you",
+          "d": "Your signature and the document are processed on your device – nothing is uploaded."
+        },
+        {
+          "t": "More than a signature",
+          "d": "Add text, the date, check marks, initials and your own stamps just as easily."
+        },
+        {
+          "t": "No subscription",
+          "d": "Signing is free and stays free – no watermark, no account."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is the signature legally valid?",
+          "a": "You add a simple electronic signature – like on paper, only digital. That is enough for many everyday documents. Where the law requires a special form (for example a qualified signature), that form applies."
+        },
+        {
+          "q": "Is my signature stored?",
+          "a": "Only on your device, so you can place it with one tap next time. You can delete it at any time."
+        },
+        {
+          "q": "Does it work on a computer?",
+          "a": "Yes. FaLe PDF runs in the browser and can be installed as an app on Windows and Mac. On a computer you draw with the mouse or touchpad."
+        },
+        {
+          "q": "Can I fill in form fields too?",
+          "a": "Yes. If the PDF has form fields, you fill them in the same step and sign afterwards."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "fill-pdf-form",
+      "title": "Fill in PDF forms – free, also on your phone | FaLe PDF",
+      "description": "Fill in PDF forms: text fields, check boxes and drop-downs on your phone or computer – or type onto a scanned paper form. Free, no account.",
+      "h1": "Fill in a PDF form",
+      "lede": "Fill in form fields, or simply type where something belongs on a scanned form – with large text and clear buttons.",
+      "cta": "Fill in a form",
+      "steps": [
+        {
+          "t": "Open the form",
+          "d": "Open the PDF and choose “Fill & Sign”. Existing fields are highlighted."
+        },
+        {
+          "t": "Fill in the fields",
+          "d": "Tap a field and start typing. For forms without fields, tap “Text” and then the spot on the form."
+        },
+        {
+          "t": "Sign and save",
+          "d": "Add the date, check marks and your signature if needed, then tap “Save”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Even without fields",
+          "d": "A scanned paper form has no fields – you still type in exactly the right place."
+        },
+        {
+          "t": "Big, simple controls",
+          "d": "Text size with A− and A+, colours with one tap, everything in one bar at the bottom."
+        },
+        {
+          "t": "Official forms",
+          "d": "FaLe also opens special official forms (XFA) that otherwise only open in one particular PDF program."
+        }
+      ],
+      "faq": [
+        {
+          "q": "What if the form has no fields?",
+          "a": "Tap “Text” and then the spot on the form. For tick boxes there is “Check mark” with ✓, ✗ or a dot."
+        },
+        {
+          "q": "Can I change the form later?",
+          "a": "When saving, the fields are normally fixed so nobody can change them unnoticed. If you want to change something later, untick the option to fix the fields before saving."
+        },
+        {
+          "q": "Are my entries uploaded?",
+          "a": "No. Filling in happens entirely on your device."
+        },
+        {
+          "q": "What about forms that only show “Please wait …”?",
+          "a": "These are usually special official forms (XFA). Open them with “Fill in official form” in FaLe PDF."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "edit-pdf",
+      "title": "Edit PDF – add text & images, free | FaLe PDF",
+      "description": "Edit a PDF on your phone or computer: add text and images, replace existing text, cover areas. Free, no account and no upload.",
+      "h1": "Edit a PDF",
+      "lede": "Add text and images, change existing text or cover areas – right in your PDF.",
+      "cta": "Edit a PDF",
+      "steps": [
+        {
+          "t": "Open the PDF",
+          "d": "Open the PDF and choose “Edit PDF”."
+        },
+        {
+          "t": "Make changes",
+          "d": "Use “Text” to write something new, “Replace” to tap existing text and change it, and “Image” to add a photo or logo."
+        },
+        {
+          "t": "Save",
+          "d": "Tap “Save” – the new version is in your files and the original is kept."
+        }
+      ],
+      "why": [
+        {
+          "t": "Change existing text",
+          "d": "“Replace” picks up the font size and colour of the spot, so the change fits in."
+        },
+        {
+          "t": "Easy text settings",
+          "d": "Size with A− and A+, bold, colour – no hunting through menus."
+        },
+        {
+          "t": "Free instead of Pro",
+          "d": "What others only offer with a subscription is free here – without a watermark."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is the old text really removed?",
+          "a": "When replacing, the old text is covered. For confidential passages that must be removed from the file for good, use “Redact”."
+        },
+        {
+          "q": "Can I add images and logos?",
+          "a": "Yes, JPG and PNG. Move and resize them with your finger or mouse."
+        },
+        {
+          "q": "Does it work offline?",
+          "a": "Yes. After the first visit, editing also works without internet."
+        },
+        {
+          "q": "Is my original kept?",
+          "a": "Yes. A new version is saved; you can replace the original if you want to."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "merge-pdf",
+      "title": "Merge PDF – combine several PDFs into one | FaLe PDF",
+      "description": "Combine several PDFs into one file and choose the order – on your phone or computer, free, without an account and without uploading.",
+      "h1": "Merge PDFs",
+      "lede": "Combine invoices, scans or chapters into a single PDF – in the order you want.",
+      "cta": "Merge PDFs",
+      "steps": [
+        {
+          "t": "Choose files",
+          "d": "Open “Merge” and tap “Add documents”."
+        },
+        {
+          "t": "Set the order",
+          "d": "Drag the files into place or use the arrows."
+        },
+        {
+          "t": "Merge",
+          "d": "Tap “Merge” – the new PDF is in your files right away."
+        }
+      ],
+      "why": [
+        {
+          "t": "No upload",
+          "d": "The files are combined on your device – confidential papers stay with you."
+        },
+        {
+          "t": "Large files",
+          "d": "Even hundreds of pages are processed quickly without the app freezing."
+        },
+        {
+          "t": "Carry straight on",
+          "d": "Then compress, sign or share – all in the same app."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How many PDFs can I merge?",
+          "a": "As many as your device can handle. There is no artificial limit."
+        },
+        {
+          "q": "Can I leave out single pages?",
+          "a": "Yes. With “Organize pages” you delete, rotate or reorder pages before or after merging."
+        },
+        {
+          "q": "Does the text stay selectable?",
+          "a": "Yes. The pages are taken over unchanged, so text stays selectable and searchable."
+        },
+        {
+          "q": "Does it cost anything?",
+          "a": "No. Merging is free, without a watermark and without an account."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "compress-pdf",
+      "title": "Compress PDF – for email and uploads | FaLe PDF",
+      "description": "Make a PDF smaller so it fits into an email or an upload form: shrink images or pack it losslessly. Free, without uploading.",
+      "h1": "Compress a PDF",
+      "lede": "Too big for an email or an online form? FaLe PDF makes the file smaller – you see the size before and after.",
+      "cta": "Compress a PDF",
+      "steps": [
+        {
+          "t": "Open the PDF",
+          "d": "Open the PDF and choose “Compress PDF”."
+        },
+        {
+          "t": "Choose how",
+          "d": "“Shrink images” for scans and photos, “Lossless” for text documents or “Strong” for the smallest file."
+        },
+        {
+          "t": "Compress",
+          "d": "Tap the button – you see right away how much smaller the file has become."
+        }
+      ],
+      "why": [
+        {
+          "t": "The right choice preselected",
+          "d": "For large scans, “Shrink images” is already selected – as readable as before."
+        },
+        {
+          "t": "Honest result",
+          "d": "If nothing more can be saved, FaLe tells you instead of saving a worse file."
+        },
+        {
+          "t": "No upload",
+          "d": "Even large files are compressed on your device."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does the quality get worse?",
+          "a": "“Lossless” doesn't change the look. “Shrink images” only recalculates photos and scans, text stays sharp. “Strong” turns every page into an image."
+        },
+        {
+          "q": "Does text stay selectable?",
+          "a": "With “Lossless” and “Shrink images”, yes. With “Strong” the pages become images."
+        },
+        {
+          "q": "How small will the file get?",
+          "a": "That depends on the content. Scans and photos usually shrink a lot, pure text files less."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "No, only the storage of your device."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "scan-document",
+      "title": "Scan documents with your phone – as PDF | FaLe PDF",
+      "description": "Scan documents with your phone camera: edges are detected, the page is straightened and enhanced, and the text becomes searchable. Free, no account.",
+      "h1": "Scan a document with your phone",
+      "lede": "Hold your phone over the paper – FaLe finds the page, straightens it and turns it into a clean PDF.",
+      "cta": "Scan now",
+      "steps": [
+        {
+          "t": "Take a photo",
+          "d": "Open the scanner and hold your phone over the page. The edges are detected automatically."
+        },
+        {
+          "t": "Check it",
+          "d": "Adjust the corners if needed and choose a filter such as “Enhanced” or “Black & white”."
+        },
+        {
+          "t": "Save as PDF",
+          "d": "Tap “Save PDF”. If you like, the name is suggested from the content."
+        }
+      ],
+      "why": [
+        {
+          "t": "Straight and readable",
+          "d": "Skewed photos are straightened, and filters such as “Enhanced” brighten shadows and grey backgrounds."
+        },
+        {
+          "t": "Searchable",
+          "d": "Text recognition (German and English) runs on your device – afterwards you find every word."
+        },
+        {
+          "t": "Several pages",
+          "d": "Scan as many pages as you like into one PDF and reorder them with a tap."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Do I need internet?",
+          "a": "No. Only text recognition downloads its language data once the first time; after that everything works offline."
+        },
+        {
+          "q": "How is the file name chosen?",
+          "a": "If you leave the name field empty, FaLe suggests a name from the content after text recognition. You can change it with one tap."
+        },
+        {
+          "q": "Can I use photos from my gallery?",
+          "a": "Yes. Choose “From album / files” and pick existing pictures."
+        },
+        {
+          "q": "Is there an ID card mode?",
+          "a": "Yes. “Scan ID card” puts the front and back at their original size on one A4 page."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-to-word",
+      "title": "Convert PDF to Word – free, no upload | FaLe PDF",
+      "description": "Convert a PDF into an editable Word document (DOCX): paragraphs, headings and bold text are kept. Free, right on your device.",
+      "h1": "Convert PDF to Word",
+      "lede": "Turn a PDF into a Word document you can edit – paragraphs, headings and emphasis are kept.",
+      "cta": "Convert PDF to Word",
+      "steps": [
+        {
+          "t": "Open the PDF",
+          "d": "Open the PDF and choose “PDF to Word”."
+        },
+        {
+          "t": "Choose how",
+          "d": "“Editable text” rebuilds paragraphs and headings, “Exact layout” takes over every page exactly as in the original."
+        },
+        {
+          "t": "Convert",
+          "d": "Tap “Convert to Word” – the document is in your files and can be edited right away in FaLe."
+        }
+      ],
+      "why": [
+        {
+          "t": "No upload",
+          "d": "The conversion runs on your device – your documents never leave it."
+        },
+        {
+          "t": "Scans too",
+          "d": "Pages without text can be turned into text with text recognition (German and English)."
+        },
+        {
+          "t": "Edit right away",
+          "d": "FaLe PDF has its own editor for Word documents – no other program needed."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does the Word document look exactly like the PDF?",
+          "a": "With “Exact layout”, yes – but then the text cannot be edited. “Editable text” keeps the content and structure; the look may differ slightly."
+        },
+        {
+          "q": "Can I convert only certain pages?",
+          "a": "Yes. Enter the pages, for example “1-3, 5”."
+        },
+        {
+          "q": "Which format do I get?",
+          "a": "A Word document in DOCX format that opens in all common word processors."
+        },
+        {
+          "q": "What does it cost?",
+          "a": "Nothing. This Pro feature is free in FaLe PDF too."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "open-xfa-form",
+      "title": "Open and fill in XFA forms – official forms | FaLe PDF",
+      "description": "Official form only shows “Please wait …”? FaLe PDF opens XFA forms, fills them in, signs and saves them – free, also on your phone.",
+      "h1": "Open and fill in an official form (XFA)",
+      "lede": "Some forms from authorities and embassies only show “Please wait …” or an empty page. FaLe PDF opens them, you fill them in and save them again.",
+      "cta": "Open a form",
+      "steps": [
+        {
+          "t": "Open the form",
+          "d": "Open the PDF in FaLe PDF. If FaLe recognises an official form, “Fill in form” appears."
+        },
+        {
+          "t": "Fill in and sign",
+          "d": "Fill in the fields. On a signature line, one tap opens the signature pad."
+        },
+        {
+          "t": "Save or print",
+          "d": "“Save” keeps the original form, as the authority expects it. “As a normal PDF” and “Print” also contain your signature."
+        }
+      ],
+      "why": [
+        {
+          "t": "No special program",
+          "d": "These forms otherwise only open in one particular PDF program – FaLe opens them in the browser, on your phone and on your computer."
+        },
+        {
+          "t": "Two-finger zoom",
+          "d": "Simply zoom in on small boxes – ideal on a phone."
+        },
+        {
+          "t": "Safe",
+          "d": "Program code inside the form is never run, for safety reasons, and nothing is uploaded."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I recognise an XFA form?",
+          "a": "A normal PDF viewer often only shows the note “Please wait …” or an empty page. FaLe recognises such forms automatically."
+        },
+        {
+          "q": "Will the authority accept the saved form?",
+          "a": "“Save” keeps the original format with your entries. If a normal PDF or a print-out is required, use “As a normal PDF” or “Print”."
+        },
+        {
+          "q": "Do calculations in the form work?",
+          "a": "Scripts in the form are not run, for safety reasons. Enter automatic totals or checks yourself."
+        },
+        {
+          "q": "What does it cost?",
+          "a": "Nothing – no account and no sign-up."
+        }
+      ]
+    }
+  }
+}

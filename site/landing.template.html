@@ -87,6 +87,12 @@
       <div class="screens" tabindex="0">{{#each screens.items}}<img src="/site/img/{{page.imgPrefix}}-{{.file}}.webp" alt="{{.alt|a}}" width="540" height="960" loading="lazy">{{/each}}</div>
     </div>
   </section>
+  <section class="sec" aria-labelledby="tasks-h">
+    <div class="wrap">
+      <h2 id="tasks-h">{{tasks.h2}}</h2>
+      <ul class="task-more">{{#each tasks.items}}<li><a href="{{.href|a}}">{{.label}}</a></li>{{/each}}</ul>
+    </div>
+  </section>
   <section class="sec" id="fragen">
     <div class="wrap faq">
       <h2>{{faq.h2}}</h2>

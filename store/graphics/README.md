@@ -16,6 +16,7 @@ English = translation “en-GB” / “en-US”). Upload the files of the matchi
 | `feature-graphic-en.png` | 1024 × 500, 24-bit PNG | **Feature graphic** – English listing |
 | `phone/de/01_home.png` … `08_privacy.png` | 1080 × 1920 (9:16) | **Phone screenshots** – German listing, upload in this order |
 | `phone/en/01_home.png` … `08_privacy.png` | 1080 × 1920 (9:16) | **Phone screenshots** – English listing, upload in this order |
+| `phone/<lang>/01_home.png` … `07_privacy.png` (fr es it pt nl pl tr uk ru zh ja ko hi id) | 1080 × 1920 (9:16) | **Phone screenshots** of the other 14 listings – app in that language, English demo files, captions from `tools/captions_i18n.py` (no AI shot) |
 | `tablet-7/de/01_home.png` … `03_ai.png` | 1200 × 1920 | **7-inch tablet screenshots** – German listing |
 | `tablet-7/en/01_home.png` … `03_ai.png` | 1200 × 1920 | **7-inch tablet screenshots** – English listing |
 | `tablet-10/de/01_home.png` … `03_doc.png` | 2560 × 1600 | **10-inch tablet screenshots** – German listing |

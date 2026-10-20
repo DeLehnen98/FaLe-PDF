@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "İçeriğe geç",
+    "navLabel": "Ana gezinme",
+    "home": "Ana sayfa",
+    "openApp": "FaLe PDF’yi aç",
+    "badge": "Ücretsiz · hesapsız · dosyaların cihazında kalır",
+    "stepsH": "Nasıl yapılır",
+    "whyH": "Neden FaLe PDF",
+    "faqH": "Sık sorulan sorular",
+    "moreH": "Şunları da yapabilirsin",
+    "endH": "Hemen dene",
+    "endText": "FaLe PDF tarayıcıda, telefonda ve bilgisayarda çalışır. Tüm özellikler ücretsizdir.",
+    "privacy": "Gizlilik",
+    "imprint": "Yasal bilgiler",
+    "footer": "FaLe PDF – FaLe.dev hizmeti",
+    "popularH": "Popüler işlemler"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "pdf-imzala",
+      "title": "PDF imzala – ücretsiz, hesapsız | FaLe PDF",
+      "description": "PDF’yi telefonda veya bilgisayarda imzala: imzanı çiz, kaydet ve tek dokunuşla yerleştir. Ücretsiz, hesapsız ve yükleme yapmadan.",
+      "h1": "PDF imzala",
+      "lede": "İmzanı parmağınla veya fareyle çiz ve tek dokunuşla istediğin PDF’ye yerleştir: sözleşme, form ya da vekâletname.",
+      "cta": "Şimdi PDF imzala",
+      "steps": [
+        {
+          "t": "PDF’yi aç",
+          "d": "PDF’yi FaLe PDF’de aç ve “Doldur ve imzala”yı seç."
+        },
+        {
+          "t": "İmzanı çiz",
+          "d": "“İmza”ya dokun ve bir kez çiz. FaLe bir sonraki sefer için hatırlar."
+        },
+        {
+          "t": "Yerleştir ve kaydet",
+          "d": "Çizgiye dokun, “Daha büyük” veya “Daha küçük” ile ayarla ve “Kaydet”e dokun."
+        }
+      ],
+      "why": [
+        {
+          "t": "Sende kalır",
+          "d": "İmzan ve belge cihazında işlenir – hiçbir şey yüklenmez."
+        },
+        {
+          "t": "Sadece imza değil",
+          "d": "Metin, tarih, onay işareti, paraf ve kendi kaşelerini de aynı kolaylıkla yerleştirirsin."
+        },
+        {
+          "t": "Abonelik yok",
+          "d": "İmzalamak ücretsizdir ve öyle kalır – filigran yok, hesap yok."
+        }
+      ],
+      "faq": [
+        {
+          "q": "İmza hukuken geçerli mi?",
+          "a": "Basit bir elektronik imza atarsın – kâğıttaki gibi, sadece dijital. Günlük pek çok belge için bu yeterlidir. Kanunun özel bir biçim istediği yerlerde (örneğin nitelikli imza) o biçim geçerlidir."
+        },
+        {
+          "q": "İmzam kaydediliyor mu?",
+          "a": "Sadece cihazında, bir sonraki sefer tek dokunuşla yerleştirebilmen için. İstediğin zaman silebilirsin."
+        },
+        {
+          "q": "Bilgisayarda da çalışır mı?",
+          "a": "Evet. FaLe PDF tarayıcıda çalışır ve Windows’ta ve Mac’te uygulama olarak kurulabilir. Bilgisayarda fare veya dokunmatik yüzeyle çizersin."
+        },
+        {
+          "q": "Form alanlarını da doldurabilir miyim?",
+          "a": "Evet. PDF’de form alanları varsa onları aynı adımda doldurur, sonra imzalarsın."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "pdf-form-doldur",
+      "title": "PDF form doldur – ücretsiz, telefonda da | FaLe PDF",
+      "description": "PDF formlarını doldur: metin alanları, kutucuklar ve seçim listeleri telefonda veya bilgisayarda – ya da taranmış kâğıt forma yaz. Ücretsiz, hesapsız.",
+      "h1": "PDF form doldur",
+      "lede": "Form alanlarını doldur ya da taranmış bir formda bir şeyin gitmesi gereken yere doğrudan yaz – büyük yazı ve net düğmelerle.",
+      "cta": "Form doldur",
+      "steps": [
+        {
+          "t": "Formu aç",
+          "d": "PDF’yi aç ve “Doldur ve imzala”yı seç. Mevcut alanlar vurgulanır."
+        },
+        {
+          "t": "Alanları doldur",
+          "d": "Bir alana dokun ve yazmaya başla. Alanı olmayan formlarda “Metin”e, sonra formdaki yere dokun."
+        },
+        {
+          "t": "İmzala ve kaydet",
+          "d": "Gerekirse tarih, onay işareti ve imzanı yerleştir, sonra “Kaydet”e dokun."
+        }
+      ],
+      "why": [
+        {
+          "t": "Alan olmasa da",
+          "d": "Taranmış kâğıt formun alanı yoktur – yine de tam doğru yere yazarsın."
+        },
+        {
+          "t": "Büyük ve basit kullanım",
+          "d": "Yazı boyutu A− ve A+ ile, renkler tek dokunuşla, hepsi altta tek bir çubukta."
+        },
+        {
+          "t": "Resmî formlar",
+          "d": "FaLe, normalde yalnızca belirli bir PDF programında açılan özel resmî formları (XFA) da açar."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Formda alan yoksa ne yapmalıyım?",
+          "a": "“Metin”e, sonra formdaki yere dokun. İşaretlenecek kutucuklar için ✓, ✗ veya nokta seçenekli “Onay işareti” var."
+        },
+        {
+          "q": "Formu sonradan değiştirebilir miyim?",
+          "a": "Kaydederken alanlar normalde sabitlenir, böylece kimse fark ettirmeden değiştiremez. Sonradan bir şey değiştirmek istersen önce “Kaydederken alanları düzleştir” işaretini kaldır."
+        },
+        {
+          "q": "Girdiğim bilgiler yükleniyor mu?",
+          "a": "Hayır. Doldurma işlemi tamamen cihazında gerçekleşir."
+        },
+        {
+          "q": "“Lütfen bekleyin …” mesajı gösteren formlar ne olacak?",
+          "a": "Bunlar çoğunlukla özel resmî formlardır (XFA). Onları FaLe PDF’de “Resmî formu doldur” ile aç."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "pdf-duzenle",
+      "title": "PDF düzenle – metin ve görsel ekle, ücretsiz | FaLe PDF",
+      "description": "PDF’yi telefonda veya bilgisayarda düzenle: metin ve görsel ekle, mevcut metni değiştir, bazı kısımları kapat. Ücretsiz, hesapsız ve yüklemesiz.",
+      "h1": "PDF düzenle",
+      "lede": "Metin ve görsel ekle, mevcut metni değiştir ya da bazı kısımları kapat – doğrudan PDF’nin içinde.",
+      "cta": "PDF düzenle",
+      "steps": [
+        {
+          "t": "PDF’yi aç",
+          "d": "PDF’yi aç ve “PDF düzenle”yi seç."
+        },
+        {
+          "t": "Değişiklik yap",
+          "d": "“Metin” ile yeni bir şey yazarsın, “Değiştir” ile mevcut metne dokunup değiştirirsin, “Görsel” ile fotoğraf veya logo eklersin."
+        },
+        {
+          "t": "Kaydet",
+          "d": "“Kaydet”e dokun – yeni sürüm dosyalarında durur, orijinal korunur."
+        }
+      ],
+      "why": [
+        {
+          "t": "Mevcut metni değiştir",
+          "d": "“Değiştir”, o yerin yazı tipini, boyutunu ve rengini alır; böylece değişiklik uyumlu görünür."
+        },
+        {
+          "t": "Yazıyı kolayca ayarla",
+          "d": "Boyut A− ve A+ ile, kalın, renk – menülerde aramadan."
+        },
+        {
+          "t": "Pro değil, ücretsiz",
+          "d": "Başkalarının yalnızca abonelikle sunduğu şey burada ücretsiz – filigransız."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Eski metin gerçekten kaldırılıyor mu?",
+          "a": "Değiştirirken eski metin üstü kapatılarak gizlenir. Dosyadan kesinlikle kaybolması gereken gizli kısımlar için “Karart”ı kullan."
+        },
+        {
+          "q": "Görsel ve logo ekleyebilir miyim?",
+          "a": "Evet, JPG ve PNG. Onları parmağınla veya fareyle taşır ve büyütürsün."
+        },
+        {
+          "q": "Çevrimdışı çalışır mı?",
+          "a": "Evet. İlk açılıştan sonra düzenleme internet olmadan da çalışır."
+        },
+        {
+          "q": "Orijinalim korunuyor mu?",
+          "a": "Evet. Yeni bir sürüm kaydedilir; istersen orijinali değiştirebilirsin."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "pdf-birlestir",
+      "title": "PDF birleştir – birden çok PDF’yi tek dosya yap | FaLe PDF",
+      "description": "Birden çok PDF’yi tek dosyada birleştir ve sırasını belirle – telefonda veya bilgisayarda, ücretsiz, hesapsız ve yüklemesiz.",
+      "h1": "PDF birleştir",
+      "lede": "Faturaları, taramaları veya bölümleri tek bir PDF’de birleştir – istediğin sırayla.",
+      "cta": "PDF birleştir",
+      "steps": [
+        {
+          "t": "Dosyaları seç",
+          "d": "“Birleştir”i aç ve “Belge ekle”ye dokun."
+        },
+        {
+          "t": "Sırayı belirle",
+          "d": "Dosyaları doğru yere sürükle ya da oklarla yerini değiştir."
+        },
+        {
+          "t": "Birleştir",
+          "d": "“Birleştir”e dokun – yeni PDF hemen dosyalarında olur."
+        }
+      ],
+      "why": [
+        {
+          "t": "Yüklemesiz",
+          "d": "Dosyalar cihazında birleştirilir – gizli belgeler de sende kalır."
+        },
+        {
+          "t": "Büyük dosyalar",
+          "d": "Yüzlerce sayfa bile uygulama donmadan hızlıca işlenir."
+        },
+        {
+          "t": "Hemen devam et",
+          "d": "Sonra doğrudan küçült, imzala veya paylaş – hepsi aynı uygulamada."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kaç PDF birleştirebilirim?",
+          "a": "Cihazının işleyebildiği kadar. Yapay bir sınır yok."
+        },
+        {
+          "q": "Tek tek sayfaları dışarıda bırakabilir miyim?",
+          "a": "Evet. “Sayfaları düzenle” ile birleştirmeden önce veya sonra sayfaları silebilir, döndürebilir ya da sıralayabilirsin."
+        },
+        {
+          "q": "Metin seçilebilir kalıyor mu?",
+          "a": "Evet. Sayfalar değişmeden alınır, bu yüzden metin seçilebilir ve aranabilir kalır."
+        },
+        {
+          "q": "Bir ücreti var mı?",
+          "a": "Hayır. Birleştirme ücretsizdir, filigran ve hesap yok."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "pdf-sikistir",
+      "title": "PDF sıkıştır – e-posta ve yükleme için | FaLe PDF",
+      "description": "PDF’yi küçült, e-postaya veya yükleme formuna sığsın: görselleri küçült ya da kayıpsız sıkıştır. Ücretsiz, yüklemesiz.",
+      "h1": "PDF sıkıştır",
+      "lede": "E-posta veya çevrimiçi form için çok mu büyük? FaLe PDF dosyayı küçültür – önceki ve sonraki boyutu görürsün.",
+      "cta": "PDF sıkıştır",
+      "steps": [
+        {
+          "t": "PDF’yi aç",
+          "d": "PDF’yi aç ve “PDF sıkıştır”ı seç."
+        },
+        {
+          "t": "Yöntemi seç",
+          "d": "Taramalar ve fotoğraflar için “Görselleri küçült”, metin belgeleri için “Kayıpsız”, en küçük dosya için “Güçlü”."
+        },
+        {
+          "t": "Sıkıştır",
+          "d": "Düğmeye dokun – dosyanın ne kadar küçüldüğünü hemen görürsün."
+        }
+      ],
+      "why": [
+        {
+          "t": "Doğru seçim hazır",
+          "d": "Büyük taramalarda “Görselleri küçült” zaten seçilidir – eskisi kadar okunaklı."
+        },
+        {
+          "t": "Dürüst sonuç",
+          "d": "Daha fazla küçültme mümkün değilse FaLe daha kötü bir dosya kaydetmek yerine bunu söyler."
+        },
+        {
+          "t": "Yüklemesiz",
+          "d": "Büyük dosyalar bile cihazında küçültülür."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kalite düşer mi?",
+          "a": "“Kayıpsız” görünümü değiştirmez. “Görselleri küçült” yalnızca fotoğrafları ve taramaları yeniden hesaplar, metin net kalır. “Güçlü” her sayfayı görsele çevirir."
+        },
+        {
+          "q": "Metin seçilebilir kalıyor mu?",
+          "a": "“Kayıpsız” ve “Görselleri küçült” ile evet. “Güçlü” ile sayfalar görsel olur."
+        },
+        {
+          "q": "Dosya ne kadar küçülür?",
+          "a": "İçeriğe bağlıdır. Taramalar ve fotoğraflar genelde belirgin şekilde küçülür, salt metin dosyaları daha az."
+        },
+        {
+          "q": "Boyut sınırı var mı?",
+          "a": "Hayır, yalnızca cihazının depolama alanı."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "belge-tara",
+      "title": "Telefonla belge tara – PDF olarak | FaLe PDF",
+      "description": "Belgeleri telefon kamerasıyla tara: kenarlar algılanır, sayfa düzeltilip iyileştirilir, metin aranabilir olur. Ücretsiz, hesapsız.",
+      "h1": "Telefonla belge tara",
+      "lede": "Telefonu kâğıdın üzerine tut – FaLe sayfayı algılar, düzeltir ve temiz bir PDF yapar.",
+      "cta": "Şimdi tara",
+      "steps": [
+        {
+          "t": "Fotoğraf çek",
+          "d": "Tarayıcıyı aç ve telefonu sayfanın üzerine tut. Kenarlar otomatik algılanır."
+        },
+        {
+          "t": "Kontrol et",
+          "d": "Gerekirse köşeleri ayarla ve “İyileştirilmiş” veya “Siyah beyaz” gibi bir filtre seç."
+        },
+        {
+          "t": "PDF olarak kaydet",
+          "d": "“PDF’yi kaydet”e dokun. İstersen ad, içeriğe göre önerilir."
+        }
+      ],
+      "why": [
+        {
+          "t": "Düz ve okunaklı",
+          "d": "Eğri çekilmiş fotoğraflar düzeltilir, “İyileştirilmiş” gibi filtreler gölgeleri ve gri arka planı açar."
+        },
+        {
+          "t": "Aranabilir",
+          "d": "Metin tanıma (Almanca ve İngilizce) cihazında çalışır – sonra her kelimeyi bulursun."
+        },
+        {
+          "t": "Birden çok sayfa",
+          "d": "İstediğin kadar sayfayı tek PDF’ye tara ve tek dokunuşla sırala."
+        }
+      ],
+      "faq": [
+        {
+          "q": "İnternete ihtiyacım var mı?",
+          "a": "Hayır. Yalnızca metin tanıma, ilk seferde dil verilerini bir kez indirir; sonrasında her şey çevrimdışı çalışır."
+        },
+        {
+          "q": "Dosya adı nasıl seçiliyor?",
+          "a": "Ad alanını boş bırakırsan FaLe, metin tanımadan sonra içeriğe göre bir ad önerir. Tek dokunuşla değiştirebilirsin."
+        },
+        {
+          "q": "Galerideki fotoğrafları da kullanabilir miyim?",
+          "a": "Evet. “Albümden / dosyalardan”ı seç ve mevcut görselleri al."
+        },
+        {
+          "q": "Kimlik modu var mı?",
+          "a": "Evet. “Kimlik kartı tara”, ön ve arka yüzü orijinal boyutunda tek bir A4 sayfasına yerleştirir."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-word-donustur",
+      "title": "PDF’yi Word’e dönüştür – ücretsiz, yüklemesiz | FaLe PDF",
+      "description": "PDF’yi düzenlenebilir bir Word belgesine (DOCX) dönüştür: paragraflar, başlıklar ve kalın yazı korunur. Ücretsiz, doğrudan cihazında.",
+      "h1": "PDF’yi Word’e dönüştür",
+      "lede": "PDF’yi değiştirebileceğin bir Word belgesine çevir – paragraflar, başlıklar ve vurgular korunur.",
+      "cta": "PDF’yi Word’e dönüştür",
+      "steps": [
+        {
+          "t": "PDF’yi aç",
+          "d": "PDF’yi aç ve “PDF’den Word’e”yi seç."
+        },
+        {
+          "t": "Yöntemi seç",
+          "d": "“Düzenlenebilir metin” paragrafları ve başlıkları yeniden kurar, “Tam yerleşim” her sayfayı orijinaldeki gibi aynen alır."
+        },
+        {
+          "t": "Dönüştür",
+          "d": "“Word’e dönüştür”e dokun – belge dosyalarında durur ve hemen FaLe’de düzenlenebilir."
+        }
+      ],
+      "why": [
+        {
+          "t": "Yüklemesiz",
+          "d": "Dönüştürme cihazında gerçekleşir – belgelerin cihazından çıkmaz."
+        },
+        {
+          "t": "Taramalar da olur",
+          "d": "Metni olmayan sayfalar istenirse metin tanıma (Almanca ve İngilizce) ile metne çevrilir."
+        },
+        {
+          "t": "Hemen düzenle",
+          "d": "FaLe PDF’nin Word belgeleri için kendi düzenleyicisi var – başka bir programa gerek yok."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Word belgesi PDF ile birebir aynı görünür mü?",
+          "a": "“Tam yerleşim” ile evet, ama o zaman metin düzenlenemez. “Düzenlenebilir metin” içeriği ve yapıyı alır; görünüm biraz farklı olabilir."
+        },
+        {
+          "q": "Yalnızca belirli sayfaları dönüştürebilir miyim?",
+          "a": "Evet. Sayfaları yaz, örneğin “1-3, 5”."
+        },
+        {
+          "q": "Hangi biçimi alırım?",
+          "a": "Tüm yaygın metin programlarında açılan, DOCX biçiminde bir Word belgesi."
+        },
+        {
+          "q": "Ücreti nedir?",
+          "a": "Hiçbir şey. Bu Pro özelliği de FaLe PDF’de ücretsiz."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "xfa-form-ac",
+      "title": "XFA formu aç ve doldur – resmî formlar | FaLe PDF",
+      "description": "Resmî form yalnızca “Lütfen bekleyin …” mi gösteriyor? FaLe PDF XFA formlarını açar, doldurur, imzalar ve kaydeder – ücretsiz, telefonda da.",
+      "h1": "Resmî formu (XFA) aç ve doldur",
+      "lede": "Kurumların ve konsolosluk-elçiliklerin bazı formları yalnızca “Lütfen bekleyin …” veya boş bir sayfa gösterir. FaLe PDF onları açar, sen doldurur ve yeniden kaydedersin.",
+      "cta": "Formu aç",
+      "steps": [
+        {
+          "t": "Formu aç",
+          "d": "PDF’yi FaLe PDF’de aç. FaLe resmî bir formu tanırsa “Formu doldur” görünür."
+        },
+        {
+          "t": "Doldur ve imzala",
+          "d": "Alanları doldur. İmza satırında tek dokunuş imza alanını açar."
+        },
+        {
+          "t": "Kaydet veya yazdır",
+          "d": "“Kaydet”, kurumun beklediği gibi orijinal formu korur. “Normal PDF olarak” ve “Yazdır” imzayı da içerir."
+        }
+      ],
+      "why": [
+        {
+          "t": "Özel program gerekmez",
+          "d": "Bu formlar normalde yalnızca belirli bir PDF programında açılır – FaLe onları tarayıcıda, telefonda ve bilgisayarda açar."
+        },
+        {
+          "t": "İki parmakla yakınlaştır",
+          "d": "Küçük kutucukları kolayca büyütürsün – telefonda ideal."
+        },
+        {
+          "t": "Güvenli",
+          "d": "Formdaki program kodu güvenlik nedeniyle asla çalıştırılmaz ve hiçbir şey yüklenmez."
+        }
+      ],
+      "faq": [
+        {
+          "q": "XFA formunu nasıl tanırım?",
+          "a": "Sıradan bir PDF okuyucu çoğu zaman yalnızca “Lütfen bekleyin …” uyarısını ya da boş bir sayfa gösterir. FaLe bu tür formları otomatik tanır."
+        },
+        {
+          "q": "Kurum kaydedilen formu kabul eder mi?",
+          "a": "“Kaydet”, girdilerinle birlikte orijinal biçimi korur. Normal bir PDF veya çıktı isteniyorsa “Normal PDF olarak” ya da “Yazdır”ı kullan."
+        },
+        {
+          "q": "Formdaki hesaplamalar çalışır mı?",
+          "a": "Formdaki komut dosyaları güvenlik nedeniyle çalıştırılmaz. Bu yüzden otomatik hesaplamaları veya kontrolleri kendin girersin."
+        },
+        {
+          "q": "Ücreti nedir?",
+          "a": "Hiçbir şey – hesapsız ve kayıtsız."
+        }
+      ]
+    }
+  }
+}

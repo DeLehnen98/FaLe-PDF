@@ -47,6 +47,11 @@ ORDER = {
  'tab7': {'de': ['home', 'sign', 'ai'], 'en': ['home', 'sign', 'ai']},
  'tab10': {'de': ['home', 'viewer', 'doc'], 'en': ['home', 'viewer', 'doc']},
 }
+# the other 14 languages: phone screenshots (captions in captions_i18n.py)
+from captions_i18n import CAP as CAP_MORE, PHONE_ORDER
+CAP.update(CAP_MORE)
+for _l in CAP_MORE:
+    ORDER['phone'][_l] = PHONE_ORDER
 # canvas size, device screen box (display px), raw capture aspect
 GEO = {
  'phone': dict(W=1080, H=1920, sw=700, top=372, bezel=14, r_out=72, r_in=56, head=96, sub=44, cap_top=118),
@@ -57,7 +62,7 @@ GEO = {
 CSS = """
 *{margin:0;box-sizing:border-box}
 html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden}
-body{font-family:Inter,system-ui,sans-serif;color:#fff;position:relative;
+body{font-family:Inter,system-ui,'Noto Sans','Noto Sans CJK SC','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans Devanagari','Lohit Devanagari',sans-serif;color:#fff;position:relative;
  background:radial-gradient(1200px 900px at 85%% 105%%, rgba(45,212,191,.38), rgba(45,212,191,0) 60%%),
  radial-gradient(900px 700px at 0%% 0%%, rgba(142,138,247,.45), rgba(142,138,247,0) 60%%),
  linear-gradient(165deg,#3B37A0 0%%,#24206E 48%%,#141238 100%%)}

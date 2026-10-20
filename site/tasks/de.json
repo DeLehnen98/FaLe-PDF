@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "navLabel": "Hauptnavigation",
+    "home": "Startseite",
+    "openApp": "FaLe PDF öffnen",
+    "badge": "Kostenlos · ohne Konto · deine Dateien bleiben auf dem Gerät",
+    "stepsH": "So geht's",
+    "whyH": "Darum FaLe PDF",
+    "faqH": "Häufige Fragen",
+    "moreH": "Das geht auch",
+    "endH": "Probier es gleich aus",
+    "endText": "FaLe PDF läuft im Browser, auf dem Handy und auf dem Computer. Alle Funktionen sind gratis.",
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "footer": "FaLe PDF – ein Angebot von FaLe.dev",
+    "popularH": "Beliebte Aufgaben"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "pdf-unterschreiben",
+      "title": "PDF unterschreiben – kostenlos, ohne Konto | FaLe PDF",
+      "description": "PDF unterschreiben direkt auf dem Handy oder PC: Unterschrift zeichnen, speichern und mit einem Tipp einsetzen. Gratis, ohne Konto, ohne Upload.",
+      "h1": "PDF unterschreiben",
+      "lede": "Zeichne deine Unterschrift mit dem Finger oder der Maus und setze sie mit einem Tipp in jede PDF – Vertrag, Formular oder Vollmacht.",
+      "cta": "Jetzt PDF unterschreiben",
+      "steps": [
+        {
+          "t": "PDF öffnen",
+          "d": "Öffne die PDF in FaLe PDF und wähle „Ausfüllen & unterschreiben“."
+        },
+        {
+          "t": "Unterschrift zeichnen",
+          "d": "Tippe auf „Unterschrift“ und zeichne sie einmal. FaLe merkt sie sich für das nächste Mal."
+        },
+        {
+          "t": "Setzen und speichern",
+          "d": "Tippe auf die Linie, mach sie mit „Größer“ oder „Kleiner“ passend und tippe auf „Speichern“."
+        }
+      ],
+      "why": [
+        {
+          "t": "Bleibt bei dir",
+          "d": "Unterschrift und Dokument werden auf deinem Gerät verarbeitet – nichts wird hochgeladen."
+        },
+        {
+          "t": "Mehr als eine Unterschrift",
+          "d": "Text, Datum, Häkchen, Initialen und eigene Stempel setzt du genauso einfach."
+        },
+        {
+          "t": "Ohne Abo",
+          "d": "Unterschreiben ist gratis und bleibt es – ohne Wasserzeichen und ohne Konto."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ist die Unterschrift rechtsgültig?",
+          "a": "Du setzt eine einfache elektronische Unterschrift – so wie auf Papier, nur digital. Für viele Alltagsdokumente reicht das. Wo das Gesetz eine besondere Form verlangt (z. B. qualifizierte Signatur), gilt diese."
+        },
+        {
+          "q": "Wird meine Unterschrift gespeichert?",
+          "a": "Nur auf deinem Gerät, damit du sie beim nächsten Mal mit einem Tipp einsetzen kannst. Du kannst sie jederzeit löschen."
+        },
+        {
+          "q": "Geht das auch am Computer?",
+          "a": "Ja. FaLe PDF läuft im Browser und lässt sich unter Windows und auf dem Mac als App installieren. Am Computer zeichnest du mit der Maus oder dem Touchpad."
+        },
+        {
+          "q": "Kann ich auch Formularfelder ausfüllen?",
+          "a": "Ja. Hat die PDF Formularfelder, füllst du sie im selben Schritt aus und unterschreibst danach."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "pdf-formular-ausfuellen",
+      "title": "PDF-Formular ausfüllen – gratis, auch am Handy | FaLe PDF",
+      "description": "PDF-Formulare ausfüllen: Textfelder, Kästchen und Auswahllisten direkt am Handy oder PC – oder Text auf ein Papierformular schreiben. Gratis, ohne Konto.",
+      "h1": "PDF-Formular ausfüllen",
+      "lede": "Fülle Formularfelder aus oder schreib einfach dorthin, wo bei einem eingescannten Formular etwas hingehört – mit großer Schrift und klaren Knöpfen.",
+      "cta": "Formular ausfüllen",
+      "steps": [
+        {
+          "t": "Formular öffnen",
+          "d": "Öffne die PDF und wähle „Ausfüllen & unterschreiben“. Vorhandene Felder werden hervorgehoben."
+        },
+        {
+          "t": "Felder ausfüllen",
+          "d": "Tippe ein Feld an und schreib los. Bei Formularen ohne Felder tippst du auf „Text“ und dann auf die Stelle im Formular."
+        },
+        {
+          "t": "Unterschreiben und speichern",
+          "d": "Setze bei Bedarf Datum, Häkchen und Unterschrift und tippe auf „Speichern“."
+        }
+      ],
+      "why": [
+        {
+          "t": "Auch ohne Felder",
+          "d": "Ein gescanntes Papierformular hat keine Felder – du schreibst trotzdem genau an die richtige Stelle."
+        },
+        {
+          "t": "Große Bedienung",
+          "d": "Schriftgröße mit A− und A+, Farben mit einem Tipp, alles in einer Leiste am unteren Rand."
+        },
+        {
+          "t": "Behörden-Formulare",
+          "d": "Spezielle Behörden-Formulare (XFA), die sonst nur in einem bestimmten PDF-Programm aufgehen, öffnet FaLe ebenfalls."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Was mache ich, wenn das Formular keine Felder hat?",
+          "a": "Tippe auf „Text“ und dann auf die Stelle im Formular. Für Ankreuzfelder gibt es „Häkchen“ mit ✓, ✗ oder Punkt."
+        },
+        {
+          "q": "Kann ich das Formular später noch ändern?",
+          "a": "Beim Speichern werden die Felder normalerweise fixiert, damit sie niemand unbemerkt ändert. Willst du später noch etwas ändern, nimm vorher das Häkchen bei „Felder beim Speichern fixieren“ heraus."
+        },
+        {
+          "q": "Werden meine Angaben hochgeladen?",
+          "a": "Nein. Das Ausfüllen passiert vollständig auf deinem Gerät."
+        },
+        {
+          "q": "Was ist mit Formularen, die eine Meldung „Bitte warten …“ zeigen?",
+          "a": "Das sind meist spezielle Behörden-Formulare (XFA). Öffne sie mit „Behörden-Formular ausfüllen“ in FaLe PDF."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "pdf-bearbeiten",
+      "title": "PDF bearbeiten – Text & Bilder einfügen, gratis | FaLe PDF",
+      "description": "PDF bearbeiten am Handy oder PC: Text und Bilder einfügen, vorhandenen Text ersetzen, Stellen abdecken. Kostenlos, ohne Konto und ohne Upload.",
+      "h1": "PDF bearbeiten",
+      "lede": "Füge Text und Bilder hinzu, ändere vorhandenen Text oder decke Stellen ab – direkt in deiner PDF.",
+      "cta": "PDF bearbeiten",
+      "steps": [
+        {
+          "t": "PDF öffnen",
+          "d": "Öffne die PDF und wähle „PDF bearbeiten“."
+        },
+        {
+          "t": "Ändern",
+          "d": "Mit „Text“ schreibst du Neues, mit „Ersetzen“ tippst du auf vorhandenen Text und änderst ihn, mit „Bild“ fügst du ein Foto oder Logo ein."
+        },
+        {
+          "t": "Speichern",
+          "d": "Tippe auf „Speichern“ – die neue Fassung liegt in deinen Dateien, das Original bleibt erhalten."
+        }
+      ],
+      "why": [
+        {
+          "t": "Vorhandenen Text ändern",
+          "d": "„Ersetzen“ übernimmt Schrift, Größe und Farbe der Stelle, damit die Änderung passt."
+        },
+        {
+          "t": "Schrift einfach einstellen",
+          "d": "Größe mit A− und A+, fett, Farbe – ohne Menüs zu suchen."
+        },
+        {
+          "t": "Gratis statt Pro",
+          "d": "Was andere nur im Abo anbieten, ist hier kostenlos – ohne Wasserzeichen."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wird der alte Text wirklich entfernt?",
+          "a": "Beim Ersetzen wird der alte Text überdeckt. Für vertrauliche Stellen, die sicher aus der Datei verschwinden müssen, nutze „Schwärzen“."
+        },
+        {
+          "q": "Kann ich Bilder und Logos einfügen?",
+          "a": "Ja, JPG und PNG. Du verschiebst und vergrößerst sie mit dem Finger oder der Maus."
+        },
+        {
+          "q": "Geht das offline?",
+          "a": "Ja. Nach dem ersten Öffnen funktioniert das Bearbeiten auch ohne Internet."
+        },
+        {
+          "q": "Bleibt mein Original erhalten?",
+          "a": "Ja. Gespeichert wird eine neue Fassung; das Original kannst du auf Wunsch ersetzen."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "pdf-zusammenfuegen",
+      "title": "PDF zusammenfügen – mehrere PDFs zu einer | FaLe PDF",
+      "description": "Mehrere PDFs zu einer Datei zusammenfügen und die Reihenfolge festlegen – am Handy oder PC, kostenlos, ohne Konto und ohne Hochladen.",
+      "h1": "PDFs zusammenfügen",
+      "lede": "Verbinde Rechnungen, Scans oder Kapitel zu einer einzigen PDF – in der Reihenfolge, die du willst.",
+      "cta": "PDFs zusammenfügen",
+      "steps": [
+        {
+          "t": "Dateien wählen",
+          "d": "Öffne „Zusammenfügen“ und tippe auf „Dokumente hinzufügen“."
+        },
+        {
+          "t": "Reihenfolge festlegen",
+          "d": "Ziehe die Dateien an die richtige Stelle oder nutze die Pfeile."
+        },
+        {
+          "t": "Zusammenfügen",
+          "d": "Tippe auf „Zusammenfügen“ – die neue PDF liegt sofort in deinen Dateien."
+        }
+      ],
+      "why": [
+        {
+          "t": "Ohne Hochladen",
+          "d": "Die Dateien werden auf deinem Gerät verbunden – auch vertrauliche Unterlagen bleiben bei dir."
+        },
+        {
+          "t": "Große Dateien",
+          "d": "Auch hunderte Seiten werden zügig verarbeitet, ohne dass die App hängt."
+        },
+        {
+          "t": "Gleich weitermachen",
+          "d": "Danach direkt verkleinern, unterschreiben oder teilen – alles in derselben App."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie viele PDFs kann ich zusammenfügen?",
+          "a": "So viele, wie dein Gerät verarbeiten kann. Es gibt keine künstliche Grenze."
+        },
+        {
+          "q": "Kann ich einzelne Seiten weglassen?",
+          "a": "Ja. Mit „Seiten verwalten“ löschst, drehst oder sortierst du Seiten vor oder nach dem Zusammenfügen."
+        },
+        {
+          "q": "Bleiben Links und Lesezeichen erhalten?",
+          "a": "Die Seiten werden unverändert übernommen, Text bleibt markierbar und durchsuchbar."
+        },
+        {
+          "q": "Kostet das etwas?",
+          "a": "Nein. Zusammenfügen ist gratis, ohne Wasserzeichen und ohne Konto."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "pdf-verkleinern",
+      "title": "PDF verkleinern – für E-Mail und Upload | FaLe PDF",
+      "description": "PDF verkleinern, damit sie in die E-Mail oder das Upload-Formular passt: Bilder kleiner rechnen oder verlustfrei packen. Gratis, ohne Upload.",
+      "h1": "PDF verkleinern",
+      "lede": "Zu groß für die E-Mail oder das Online-Formular? FaLe PDF macht die Datei kleiner – du siehst vorher und nachher.",
+      "cta": "PDF verkleinern",
+      "steps": [
+        {
+          "t": "PDF öffnen",
+          "d": "Öffne die PDF und wähle „PDF verkleinern“."
+        },
+        {
+          "t": "Art wählen",
+          "d": "„Bilder verkleinern“ für Scans und Fotos, „Verlustfrei“ für Textdokumente oder „Stark“ für die kleinste Datei."
+        },
+        {
+          "t": "Verkleinern",
+          "d": "Tippe auf den Knopf – du siehst sofort, wie viel kleiner die Datei geworden ist."
+        }
+      ],
+      "why": [
+        {
+          "t": "Passende Wahl schon vorbelegt",
+          "d": "Für große Scans ist „Bilder verkleinern“ bereits ausgewählt – lesbar wie vorher."
+        },
+        {
+          "t": "Ehrliches Ergebnis",
+          "d": "Lässt sich nichts mehr einsparen, sagt FaLe das, statt eine schlechtere Datei zu speichern."
+        },
+        {
+          "t": "Ohne Hochladen",
+          "d": "Auch große Dateien werden auf deinem Gerät verkleinert."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wird die Qualität schlechter?",
+          "a": "„Verlustfrei“ ändert nichts am Aussehen. „Bilder verkleinern“ rechnet nur Fotos und Scans kleiner, Text bleibt scharf. „Stark“ wandelt jede Seite in ein Bild um."
+        },
+        {
+          "q": "Bleibt Text markierbar?",
+          "a": "Bei „Verlustfrei“ und „Bilder verkleinern“ ja. Bei „Stark“ werden die Seiten zu Bildern."
+        },
+        {
+          "q": "Wie klein wird die Datei?",
+          "a": "Das hängt vom Inhalt ab. Scans und Fotos lassen sich meist deutlich verkleinern, reine Textdateien weniger."
+        },
+        {
+          "q": "Gibt es eine Größengrenze?",
+          "a": "Nein, nur den Speicher deines Geräts."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "dokument-scannen",
+      "title": "Dokument scannen mit dem Handy – als PDF | FaLe PDF",
+      "description": "Dokumente mit der Handykamera scannen: Kanten werden erkannt, die Seite begradigt und verbessert, der Text durchsuchbar. Gratis, ohne Konto.",
+      "h1": "Dokument mit dem Handy scannen",
+      "lede": "Halte das Handy über das Papier – FaLe erkennt die Seite, schneidet sie gerade und macht daraus eine saubere PDF.",
+      "cta": "Jetzt scannen",
+      "steps": [
+        {
+          "t": "Foto aufnehmen",
+          "d": "Öffne den Scanner und halte das Handy über die Seite. Die Kanten werden automatisch erkannt."
+        },
+        {
+          "t": "Prüfen",
+          "d": "Passe bei Bedarf die Ecken an und wähle einen Filter wie „Verbessert“ oder „Schwarzweiß“."
+        },
+        {
+          "t": "Als PDF speichern",
+          "d": "Tippe auf „PDF speichern“. Der Name wird auf Wunsch aus dem Inhalt vorgeschlagen, z. B. „Rechnung Stadtwerke Okt 2026“."
+        }
+      ],
+      "why": [
+        {
+          "t": "Gerade und lesbar",
+          "d": "Schiefe Fotos werden entzerrt, Filter wie „Verbessert“ machen Schatten und grauen Hintergrund hell."
+        },
+        {
+          "t": "Durchsuchbar",
+          "d": "Die Texterkennung (Deutsch und Englisch) läuft auf dem Gerät – danach findest du jedes Wort."
+        },
+        {
+          "t": "Mehrere Seiten",
+          "d": "Scanne beliebig viele Seiten in eine PDF und sortiere sie per Fingertipp."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich Internet?",
+          "a": "Nein. Nur die Texterkennung lädt beim ersten Mal einmalig ihre Sprachdaten, danach geht alles offline."
+        },
+        {
+          "q": "Wie wird der Dateiname gewählt?",
+          "a": "Lässt du das Namensfeld leer, schlägt FaLe nach der Texterkennung einen Namen aus dem Inhalt vor. Du kannst ihn mit einem Tipp ändern."
+        },
+        {
+          "q": "Kann ich auch Fotos aus der Galerie nehmen?",
+          "a": "Ja. Wähle „Aus Album / Dateien“ und nimm vorhandene Bilder."
+        },
+        {
+          "q": "Gibt es einen Ausweis-Modus?",
+          "a": "Ja. „Ausweis scannen“ setzt Vorder- und Rückseite in Originalgröße auf eine A4-Seite."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-in-word-umwandeln",
+      "title": "PDF in Word umwandeln – kostenlos, ohne Upload | FaLe PDF",
+      "description": "PDF in ein bearbeitbares Word-Dokument (DOCX) umwandeln: Absätze, Überschriften und Fett bleiben erhalten. Gratis, direkt auf dem Gerät.",
+      "h1": "PDF in Word umwandeln",
+      "lede": "Mach aus einer PDF ein Word-Dokument, das du ändern kannst – Absätze, Überschriften und Hervorhebungen bleiben erhalten.",
+      "cta": "PDF in Word umwandeln",
+      "steps": [
+        {
+          "t": "PDF öffnen",
+          "d": "Öffne die PDF und wähle „PDF zu Word“."
+        },
+        {
+          "t": "Art wählen",
+          "d": "„Bearbeitbarer Text“ baut Absätze und Überschriften nach, „Layout exakt“ übernimmt jede Seite genau wie im Original."
+        },
+        {
+          "t": "Umwandeln",
+          "d": "Tippe auf „In Word umwandeln“ – das Dokument liegt in deinen Dateien und lässt sich direkt in FaLe weiterbearbeiten."
+        }
+      ],
+      "why": [
+        {
+          "t": "Ohne Hochladen",
+          "d": "Die Umwandlung läuft auf deinem Gerät – deine Dokumente verlassen es nicht."
+        },
+        {
+          "t": "Auch Scans",
+          "d": "Seiten ohne Text werden auf Wunsch per Texterkennung (Deutsch und Englisch) in Text verwandelt."
+        },
+        {
+          "t": "Gleich bearbeiten",
+          "d": "FaLe PDF hat einen eigenen Editor für Word-Dokumente – kein weiteres Programm nötig."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Sieht das Word-Dokument genau so aus wie die PDF?",
+          "a": "Mit „Layout exakt“ ja, dann ist der Text aber nicht bearbeitbar. „Bearbeitbarer Text“ übernimmt Inhalt und Aufbau, das Aussehen kann leicht abweichen."
+        },
+        {
+          "q": "Kann ich nur bestimmte Seiten umwandeln?",
+          "a": "Ja. Gib die Seiten an, z. B. „1-3, 5“."
+        },
+        {
+          "q": "Welches Format bekomme ich?",
+          "a": "Ein Word-Dokument im DOCX-Format, das sich in allen gängigen Textprogrammen öffnen lässt."
+        },
+        {
+          "q": "Was kostet das?",
+          "a": "Nichts. Auch diese Pro-Funktion ist in FaLe PDF gratis."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "xfa-formular-oeffnen",
+      "title": "XFA-Formular öffnen und ausfüllen – Behördenformulare | FaLe PDF",
+      "description": "Behördenformular zeigt nur „Bitte warten …“? FaLe PDF öffnet XFA-Formulare, füllt sie aus, unterschreibt und speichert sie – gratis, auch am Handy.",
+      "h1": "Behörden-Formular (XFA) öffnen und ausfüllen",
+      "lede": "Manche Formulare von Ämtern und Botschaften zeigen nur „Bitte warten …“ oder eine leere Seite. FaLe PDF öffnet sie, du füllst sie aus und speicherst sie wieder.",
+      "cta": "Formular öffnen",
+      "steps": [
+        {
+          "t": "Formular öffnen",
+          "d": "Öffne die PDF in FaLe PDF. Erkennt FaLe ein Behörden-Formular, erscheint „Formular ausfüllen“."
+        },
+        {
+          "t": "Ausfüllen und unterschreiben",
+          "d": "Fülle die Felder aus. Bei einer Unterschriftszeile öffnet ein Tipp das Unterschriftsfeld."
+        },
+        {
+          "t": "Speichern oder drucken",
+          "d": "„Speichern“ behält das Original-Formular, wie die Behörde es erwartet. „Als normale PDF“ und „Drucken“ enthalten auch die Unterschrift."
+        }
+      ],
+      "why": [
+        {
+          "t": "Kein Spezialprogramm nötig",
+          "d": "Diese Formulare gehen sonst nur in einem bestimmten PDF-Programm auf – FaLe öffnet sie im Browser, auf dem Handy und am PC."
+        },
+        {
+          "t": "Zoom mit zwei Fingern",
+          "d": "Kleine Kästchen vergrößerst du einfach – ideal auf dem Handy."
+        },
+        {
+          "t": "Sicher",
+          "d": "Programmcode im Formular wird aus Sicherheitsgründen nie ausgeführt, und nichts wird hochgeladen."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Woran erkenne ich ein XFA-Formular?",
+          "a": "Oft zeigt ein normaler PDF-Betrachter nur den Hinweis „Bitte warten …“ oder eine leere Seite. FaLe erkennt solche Formulare automatisch."
+        },
+        {
+          "q": "Nimmt die Behörde das gespeicherte Formular an?",
+          "a": "„Speichern“ behält das Original-Format mit deinen Eingaben. Wenn eine normale PDF oder ein Ausdruck verlangt wird, nimm „Als normale PDF“ bzw. „Drucken“."
+        },
+        {
+          "q": "Funktionieren Berechnungen im Formular?",
+          "a": "Skripte im Formular werden aus Sicherheitsgründen nicht ausgeführt. Automatische Berechnungen oder Prüfungen trägst du daher selbst ein."
+        },
+        {
+          "q": "Was kostet das?",
+          "a": "Nichts – ohne Konto und ohne Anmeldung."
+        }
+      ]
+    }
+  }
+}

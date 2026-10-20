@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Langsung ke konten",
+    "navLabel": "Navigasi utama",
+    "home": "Beranda",
+    "openApp": "Buka FaLe PDF",
+    "badge": "Gratis · tanpa akun · file kamu tetap di perangkatmu",
+    "stepsH": "Caranya",
+    "whyH": "Kenapa FaLe PDF",
+    "faqH": "Pertanyaan yang sering diajukan",
+    "moreH": "Kamu juga bisa",
+    "endH": "Coba sekarang juga",
+    "endText": "FaLe PDF berjalan di browser, di ponsel, dan di komputer. Semua fitur gratis.",
+    "privacy": "Privasi",
+    "imprint": "Informasi hukum",
+    "footer": "FaLe PDF – layanan dari FaLe.dev",
+    "popularH": "Tugas populer"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "tanda-tangani-pdf",
+      "title": "Tanda Tangani PDF – gratis, tanpa akun | FaLe PDF",
+      "description": "Tanda tangani PDF di ponsel atau komputer: gambar tanda tanganmu, simpan, lalu pasang dengan satu ketukan. Gratis, tanpa akun, tanpa unggah file.",
+      "h1": "Tanda tangani PDF",
+      "lede": "Gambar tanda tanganmu dengan jari atau mouse, lalu pasang dengan satu ketukan di PDF apa pun: kontrak, formulir, atau surat kuasa.",
+      "cta": "Tanda tangani PDF sekarang",
+      "steps": [
+        {
+          "t": "Buka PDF",
+          "d": "Buka PDF di FaLe PDF dan pilih “Isi & Tanda Tangani”."
+        },
+        {
+          "t": "Gambar tanda tangan",
+          "d": "Ketuk “Tanda tangan” dan gambar satu kali. FaLe mengingatnya untuk lain kali."
+        },
+        {
+          "t": "Pasang dan simpan",
+          "d": "Ketuk garisnya, sesuaikan dengan “Lebih besar” atau “Lebih kecil”, lalu ketuk “Simpan”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Tetap bersamamu",
+          "d": "Tanda tangan dan dokumen diproses di perangkatmu. Tidak ada yang diunggah."
+        },
+        {
+          "t": "Bukan cuma tanda tangan",
+          "d": "Teks, tanggal, centang, paraf, dan stempel buatanmu sendiri bisa dipasang semudah itu juga."
+        },
+        {
+          "t": "Tanpa langganan",
+          "d": "Menandatangani itu gratis dan akan tetap gratis, tanpa watermark dan tanpa akun."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah tanda tangannya sah secara hukum?",
+          "a": "Kamu memasang tanda tangan elektronik sederhana, seperti tanda tangan di kertas, hanya saja secara digital. Untuk banyak dokumen sehari-hari, itu sudah cukup. Jika hukum mewajibkan bentuk khusus (misalnya tanda tangan tersertifikasi), bentuk itulah yang berlaku."
+        },
+        {
+          "q": "Apakah tanda tanganku disimpan?",
+          "a": "Hanya di perangkatmu, supaya lain kali bisa dipasang dengan satu ketukan. Kamu bisa menghapusnya kapan saja."
+        },
+        {
+          "q": "Apakah bisa di komputer juga?",
+          "a": "Bisa. FaLe PDF berjalan di browser dan bisa dipasang sebagai aplikasi di Windows dan Mac. Di komputer, kamu menggambar dengan mouse atau touchpad."
+        },
+        {
+          "q": "Bisakah aku mengisi kolom formulir juga?",
+          "a": "Bisa. Jika PDF punya kolom formulir, kamu mengisinya di langkah yang sama, lalu menandatangani setelahnya."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "isi-formulir-pdf",
+      "title": "Isi Formulir PDF – gratis, bisa di ponsel | FaLe PDF",
+      "description": "Isi formulir PDF: kolom teks, kotak centang, dan daftar pilihan di ponsel atau komputer, atau tulis di formulir kertas hasil pindai. Gratis, tanpa akun.",
+      "h1": "Isi formulir PDF",
+      "lede": "Isi kolom formulir, atau langsung tulis di bagian yang perlu diisi pada formulir hasil pindai, dengan tulisan besar dan tombol yang jelas.",
+      "cta": "Isi formulir",
+      "steps": [
+        {
+          "t": "Buka formulir",
+          "d": "Buka PDF dan pilih “Isi & Tanda Tangani”. Kolom yang ada akan disorot."
+        },
+        {
+          "t": "Isi kolomnya",
+          "d": "Ketuk sebuah kolom lalu mulai mengetik. Untuk formulir tanpa kolom, ketuk “Teks”, lalu ketuk tempatnya di formulir."
+        },
+        {
+          "t": "Tanda tangani dan simpan",
+          "d": "Jika perlu, tambahkan tanggal, centang, dan tanda tangan, lalu ketuk “Simpan”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Tanpa kolom pun bisa",
+          "d": "Formulir kertas hasil pindai tidak punya kolom, tetapi kamu tetap bisa menulis tepat di tempat yang benar."
+        },
+        {
+          "t": "Kontrol besar dan sederhana",
+          "d": "Ukuran huruf dengan A− dan A+, warna dengan satu ketukan, semuanya dalam satu bilah di bagian bawah."
+        },
+        {
+          "t": "Formulir resmi",
+          "d": "FaLe juga membuka formulir resmi khusus (XFA) yang biasanya hanya bisa dibuka di satu program PDF tertentu."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bagaimana kalau formulirnya tidak punya kolom?",
+          "a": "Ketuk “Teks”, lalu ketuk tempatnya di formulir. Untuk kotak yang perlu dicentang, ada “Centang” dengan pilihan ✓, ✗, atau titik."
+        },
+        {
+          "q": "Bisakah aku mengubah formulir nanti?",
+          "a": "Saat menyimpan, kolom biasanya dikunci supaya tidak ada yang mengubahnya diam-diam. Kalau nanti kamu ingin mengubah sesuatu, hapus dulu centang pada “Ratakan kolom saat menyimpan”."
+        },
+        {
+          "q": "Apakah isianku diunggah?",
+          "a": "Tidak. Pengisian berlangsung sepenuhnya di perangkatmu."
+        },
+        {
+          "q": "Bagaimana dengan formulir yang menampilkan pesan “Mohon tunggu …”?",
+          "a": "Biasanya itu formulir resmi khusus (XFA). Buka dengan “Isi formulir resmi” di FaLe PDF."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "edit-pdf",
+      "title": "Edit PDF – tambah teks dan gambar, gratis | FaLe PDF",
+      "description": "Edit PDF di ponsel atau komputer: tambahkan teks dan gambar, ganti teks yang ada, tutupi bagian tertentu. Gratis, tanpa akun, dan tanpa unggah file.",
+      "h1": "Edit PDF",
+      "lede": "Tambahkan teks dan gambar, ubah teks yang sudah ada, atau tutupi bagian tertentu, langsung di PDF-mu.",
+      "cta": "Edit PDF",
+      "steps": [
+        {
+          "t": "Buka PDF",
+          "d": "Buka PDF dan pilih “Edit PDF”."
+        },
+        {
+          "t": "Lakukan perubahan",
+          "d": "Dengan “Teks” kamu menulis hal baru, dengan “Ganti” kamu mengetuk teks yang ada lalu mengubahnya, dan dengan “Gambar” kamu menambahkan foto atau logo."
+        },
+        {
+          "t": "Simpan",
+          "d": "Ketuk “Simpan”. Versi baru tersimpan di file-mu dan aslinya tetap ada."
+        }
+      ],
+      "why": [
+        {
+          "t": "Ubah teks yang ada",
+          "d": "“Ganti” mengambil jenis huruf, ukuran, dan warna di tempat itu, supaya hasil perubahannya serasi."
+        },
+        {
+          "t": "Pengaturan huruf yang mudah",
+          "d": "Ukuran dengan A− dan A+, tebal, dan warna, tanpa perlu mencari-cari di menu."
+        },
+        {
+          "t": "Gratis, bukan Pro",
+          "d": "Yang di tempat lain hanya tersedia dengan langganan, di sini gratis dan tanpa watermark."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah teks lama benar-benar dihapus?",
+          "a": "Saat mengganti, teks lama hanya ditutupi. Untuk bagian rahasia yang harus benar-benar hilang dari file, gunakan “Sensor”."
+        },
+        {
+          "q": "Bisakah aku menambahkan gambar dan logo?",
+          "a": "Bisa, dalam format JPG dan PNG. Kamu bisa memindahkan dan memperbesarnya dengan jari atau mouse."
+        },
+        {
+          "q": "Apakah bisa dipakai offline?",
+          "a": "Bisa. Setelah dibuka pertama kali, pengeditan juga berjalan tanpa internet."
+        },
+        {
+          "q": "Apakah file aslinya tetap ada?",
+          "a": "Ya. Yang disimpan adalah versi baru. Kalau mau, kamu bisa menggantikan file aslinya."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "gabungkan-pdf",
+      "title": "Gabungkan PDF – beberapa PDF jadi satu | FaLe PDF",
+      "description": "Gabungkan beberapa PDF menjadi satu file dan atur urutannya, di ponsel atau komputer. Gratis, tanpa akun, dan tanpa unggah file.",
+      "h1": "Gabungkan PDF",
+      "lede": "Gabungkan faktur, hasil pindai, atau bab-bab menjadi satu PDF, dengan urutan sesukamu.",
+      "cta": "Gabungkan PDF",
+      "steps": [
+        {
+          "t": "Pilih file",
+          "d": "Buka “Gabungkan” dan ketuk “Tambah dokumen”."
+        },
+        {
+          "t": "Atur urutan",
+          "d": "Seret file ke tempat yang tepat atau gunakan tanda panah."
+        },
+        {
+          "t": "Gabungkan",
+          "d": "Ketuk “Gabungkan”. PDF baru langsung ada di file-mu."
+        }
+      ],
+      "why": [
+        {
+          "t": "Tanpa unggah",
+          "d": "File digabungkan di perangkatmu, jadi dokumen rahasia pun tetap bersamamu."
+        },
+        {
+          "t": "File besar",
+          "d": "Ratusan halaman pun diproses dengan cepat tanpa membuat aplikasi macet."
+        },
+        {
+          "t": "Langsung lanjut",
+          "d": "Setelah itu langsung kompres, tanda tangani, atau bagikan, semuanya di aplikasi yang sama."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Berapa banyak PDF yang bisa kugabungkan?",
+          "a": "Sebanyak yang sanggup diproses perangkatmu. Tidak ada batas buatan."
+        },
+        {
+          "q": "Bisakah aku melewatkan beberapa halaman?",
+          "a": "Bisa. Dengan “Atur halaman”, kamu menghapus, memutar, atau mengurutkan ulang halaman sebelum atau sesudah digabungkan."
+        },
+        {
+          "q": "Apakah teks tetap bisa dipilih?",
+          "a": "Ya. Halaman diambil apa adanya, jadi teks tetap bisa dipilih dan dicari."
+        },
+        {
+          "q": "Apakah ini berbayar?",
+          "a": "Tidak. Menggabungkan itu gratis, tanpa watermark dan tanpa akun."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "kompres-pdf",
+      "title": "Kompres PDF – untuk email dan unggahan | FaLe PDF",
+      "description": "Kecilkan PDF supaya muat di email atau formulir unggah: perkecil gambar atau kompres tanpa kehilangan kualitas. Gratis, tanpa unggah file.",
+      "h1": "Kompres PDF",
+      "lede": "Terlalu besar untuk email atau formulir online? FaLe PDF memperkecil file-nya, dan kamu bisa melihat ukurannya sebelum dan sesudah.",
+      "cta": "Kompres PDF",
+      "steps": [
+        {
+          "t": "Buka PDF",
+          "d": "Buka PDF dan pilih “Kompres PDF”."
+        },
+        {
+          "t": "Pilih caranya",
+          "d": "“Perkecil gambar” untuk hasil pindai dan foto, “Tanpa kehilangan” untuk dokumen teks, atau “Kuat” untuk file terkecil."
+        },
+        {
+          "t": "Kompres",
+          "d": "Ketuk tombolnya. Kamu langsung melihat seberapa kecil file-nya sekarang."
+        }
+      ],
+      "why": [
+        {
+          "t": "Pilihan yang pas sudah terpilih",
+          "d": "Untuk hasil pindai yang besar, “Perkecil gambar” sudah dipilih, dan tetap terbaca seperti semula."
+        },
+        {
+          "t": "Hasil yang jujur",
+          "d": "Kalau sudah tidak ada lagi yang bisa dihemat, FaLe bilang begitu, bukan menyimpan file yang lebih jelek."
+        },
+        {
+          "t": "Tanpa unggah",
+          "d": "File besar pun diperkecil di perangkatmu."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah kualitasnya jadi turun?",
+          "a": "“Tanpa kehilangan” tidak mengubah tampilan. “Perkecil gambar” hanya menghitung ulang foto dan hasil pindai, teks tetap tajam. “Kuat” mengubah setiap halaman menjadi gambar."
+        },
+        {
+          "q": "Apakah teks tetap bisa dipilih?",
+          "a": "Dengan “Tanpa kehilangan” dan “Perkecil gambar”, ya. Dengan “Kuat”, halaman menjadi gambar."
+        },
+        {
+          "q": "Seberapa kecil file-nya nanti?",
+          "a": "Itu tergantung isinya. Hasil pindai dan foto biasanya mengecil banyak, file yang isinya hanya teks lebih sedikit."
+        },
+        {
+          "q": "Apakah ada batas ukuran?",
+          "a": "Tidak, hanya ruang penyimpanan perangkatmu."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "pindai-dokumen",
+      "title": "Pindai dokumen dengan ponsel – jadi PDF | FaLe PDF",
+      "description": "Pindai dokumen dengan kamera ponsel: tepinya dideteksi, halaman diluruskan dan diperbaiki, teksnya bisa dicari. Gratis, tanpa akun.",
+      "h1": "Pindai dokumen dengan ponsel",
+      "lede": "Arahkan ponsel ke atas kertas. FaLe mengenali halamannya, meluruskannya, lalu mengubahnya menjadi PDF yang rapi.",
+      "cta": "Pindai sekarang",
+      "steps": [
+        {
+          "t": "Ambil foto",
+          "d": "Buka pemindai dan arahkan ponsel ke atas halaman. Tepinya dideteksi otomatis."
+        },
+        {
+          "t": "Periksa",
+          "d": "Sesuaikan sudutnya jika perlu, lalu pilih filter seperti “Disempurnakan” atau “Hitam putih”."
+        },
+        {
+          "t": "Simpan sebagai PDF",
+          "d": "Ketuk “Simpan PDF”. Kalau mau, nama file akan disarankan dari isi dokumen."
+        }
+      ],
+      "why": [
+        {
+          "t": "Lurus dan mudah dibaca",
+          "d": "Foto yang miring diluruskan, dan filter seperti “Disempurnakan” mencerahkan bayangan dan latar yang keabu-abuan."
+        },
+        {
+          "t": "Bisa dicari",
+          "d": "Pengenalan teks (bahasa Jerman dan Inggris) berjalan di perangkatmu. Setelah itu, kamu bisa menemukan setiap kata."
+        },
+        {
+          "t": "Banyak halaman",
+          "d": "Pindai halaman sebanyak yang kamu mau ke dalam satu PDF, lalu urutkan ulang dengan satu ketukan."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah aku butuh internet?",
+          "a": "Tidak. Hanya pengenalan teks yang mengunduh data bahasanya satu kali saat pertama dipakai. Setelah itu semuanya berjalan offline."
+        },
+        {
+          "q": "Bagaimana nama file dipilih?",
+          "a": "Kalau kolom nama dibiarkan kosong, FaLe menyarankan nama dari isi dokumen setelah pengenalan teks. Kamu bisa mengubahnya dengan satu ketukan."
+        },
+        {
+          "q": "Bisakah aku memakai foto dari galeri?",
+          "a": "Bisa. Pilih “Dari album / file” lalu ambil gambar yang sudah ada."
+        },
+        {
+          "q": "Apakah ada mode untuk kartu identitas?",
+          "a": "Ada. “Pindai kartu identitas” menaruh sisi depan dan belakang dalam ukuran aslinya di satu halaman A4."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-ke-word",
+      "title": "Ubah PDF ke Word – gratis, tanpa unggah | FaLe PDF",
+      "description": "Ubah PDF menjadi dokumen Word (DOCX) yang bisa diedit: paragraf, judul, dan huruf tebal tetap terjaga. Gratis, langsung di perangkatmu.",
+      "h1": "Ubah PDF ke Word",
+      "lede": "Ubah PDF menjadi dokumen Word yang bisa kamu edit. Paragraf, judul, dan penekanan tetap terjaga.",
+      "cta": "Ubah PDF ke Word",
+      "steps": [
+        {
+          "t": "Buka PDF",
+          "d": "Buka PDF dan pilih “PDF ke Word”."
+        },
+        {
+          "t": "Pilih caranya",
+          "d": "“Teks yang dapat diedit” membangun ulang paragraf dan judul, sedangkan “Tata letak persis” mengambil setiap halaman persis seperti aslinya."
+        },
+        {
+          "t": "Ubah",
+          "d": "Ketuk “Konversi ke Word”. Dokumennya ada di file-mu dan bisa langsung diedit lebih lanjut di FaLe."
+        }
+      ],
+      "why": [
+        {
+          "t": "Tanpa unggah",
+          "d": "Pengubahan berlangsung di perangkatmu, jadi dokumenmu tidak keluar dari sana."
+        },
+        {
+          "t": "Hasil pindai juga bisa",
+          "d": "Halaman tanpa teks bisa diubah menjadi teks dengan pengenalan teks (bahasa Jerman dan Inggris), kalau kamu mau."
+        },
+        {
+          "t": "Langsung edit",
+          "d": "FaLe PDF punya editor sendiri untuk dokumen Word, jadi tidak perlu program lain."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Apakah dokumen Word-nya tampak persis seperti PDF-nya?",
+          "a": "Dengan “Tata letak persis”, ya, tetapi teksnya tidak bisa diedit. “Teks yang dapat diedit” mengambil isi dan susunannya, sedangkan tampilannya bisa sedikit berbeda."
+        },
+        {
+          "q": "Bisakah aku mengubah halaman tertentu saja?",
+          "a": "Bisa. Tulis halamannya, misalnya “1-3, 5”."
+        },
+        {
+          "q": "Format apa yang kudapat?",
+          "a": "Dokumen Word dalam format DOCX, yang bisa dibuka di semua program pengolah kata yang umum."
+        },
+        {
+          "q": "Berapa biayanya?",
+          "a": "Gratis. Fitur Pro ini juga gratis di FaLe PDF."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "buka-formulir-xfa",
+      "title": "Buka dan isi formulir XFA – formulir resmi | FaLe PDF",
+      "description": "Formulir resmi hanya menampilkan “Mohon tunggu …”? FaLe PDF membuka formulir XFA, mengisinya, menandatangani, dan menyimpannya. Gratis, juga di ponsel.",
+      "h1": "Buka dan isi formulir resmi (XFA)",
+      "lede": "Beberapa formulir dari instansi dan kedutaan hanya menampilkan “Mohon tunggu …” atau halaman kosong. FaLe PDF membukanya, kamu mengisinya, lalu menyimpannya lagi.",
+      "cta": "Buka formulir",
+      "steps": [
+        {
+          "t": "Buka formulir",
+          "d": "Buka PDF di FaLe PDF. Jika FaLe mengenali formulir resmi, “Isi formulir” akan muncul."
+        },
+        {
+          "t": "Isi dan tanda tangani",
+          "d": "Isi kolom-kolomnya. Pada baris tanda tangan, satu ketukan membuka kolom tanda tangan."
+        },
+        {
+          "t": "Simpan atau cetak",
+          "d": "“Simpan” mempertahankan formulir aslinya, seperti yang diharapkan instansi. “Sebagai PDF biasa” dan “Cetak” juga memuat tanda tangan."
+        }
+      ],
+      "why": [
+        {
+          "t": "Tidak perlu program khusus",
+          "d": "Formulir seperti ini biasanya hanya bisa dibuka di satu program PDF tertentu. FaLe membukanya di browser, di ponsel, dan di komputer."
+        },
+        {
+          "t": "Zoom dengan dua jari",
+          "d": "Kotak-kotak kecil tinggal diperbesar, sangat pas di ponsel."
+        },
+        {
+          "t": "Aman",
+          "d": "Kode program di dalam formulir tidak pernah dijalankan demi keamanan, dan tidak ada yang diunggah."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Bagaimana cara mengenali formulir XFA?",
+          "a": "Penampil PDF biasa sering hanya menampilkan pesan “Mohon tunggu …” atau halaman kosong. FaLe mengenali formulir seperti itu secara otomatis."
+        },
+        {
+          "q": "Apakah instansi akan menerima formulir yang disimpan?",
+          "a": "“Simpan” mempertahankan format aslinya beserta isianmu. Kalau yang diminta PDF biasa atau cetakan, gunakan “Sebagai PDF biasa” atau “Cetak”."
+        },
+        {
+          "q": "Apakah perhitungan di dalam formulir berfungsi?",
+          "a": "Skrip di dalam formulir tidak dijalankan demi keamanan. Jadi, perhitungan atau pemeriksaan otomatis harus kamu isi sendiri."
+        },
+        {
+          "q": "Berapa biayanya?",
+          "a": "Gratis, tanpa akun dan tanpa pendaftaran."
+        }
+      ]
+    }
+  }
+}

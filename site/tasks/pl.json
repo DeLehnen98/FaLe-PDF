@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Przejdź do treści",
+    "navLabel": "Nawigacja główna",
+    "home": "Strona główna",
+    "openApp": "Otwórz FaLe PDF",
+    "badge": "Za darmo · bez konta · twoje pliki zostają na twoim urządzeniu",
+    "stepsH": "Jak to zrobić",
+    "whyH": "Dlaczego FaLe PDF",
+    "faqH": "Najczęstsze pytania",
+    "moreH": "Możesz też",
+    "endH": "Wypróbuj od razu",
+    "endText": "FaLe PDF działa w przeglądarce, na telefonie i na komputerze. Wszystkie funkcje są bezpłatne.",
+    "privacy": "Prywatność",
+    "imprint": "Dane prawne",
+    "footer": "FaLe PDF – usługa FaLe.dev",
+    "popularH": "Popularne zadania"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "podpisz-pdf",
+      "title": "Podpisz PDF – za darmo, bez konta | FaLe PDF",
+      "description": "Podpisz PDF na telefonie lub komputerze: narysuj podpis, zapisz go i wstaw jednym dotknięciem. Za darmo, bez konta i bez wysyłania plików.",
+      "h1": "Podpisz PDF",
+      "lede": "Narysuj podpis palcem lub myszką i wstaw go jednym dotknięciem do dowolnego PDF-a – umowy, formularza lub pełnomocnictwa.",
+      "cta": "Podpisz PDF teraz",
+      "steps": [
+        {
+          "t": "Otwórz PDF",
+          "d": "Otwórz PDF w FaLe PDF i wybierz „Wypełnij i podpisz”."
+        },
+        {
+          "t": "Narysuj podpis",
+          "d": "Dotknij „Podpis” i narysuj go raz. FaLe zapamięta go na następny raz."
+        },
+        {
+          "t": "Wstaw i zapisz",
+          "d": "Dotknij linii, dopasuj ją przyciskami „Większy” lub „Mniejszy” i dotknij „Zapisz”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Zostaje u ciebie",
+          "d": "Podpis i dokument są przetwarzane na twoim urządzeniu – nic nie jest wysyłane."
+        },
+        {
+          "t": "Nie tylko podpis",
+          "d": "Tekst, datę, znaczniki, inicjały i własne pieczątki wstawiasz równie łatwo."
+        },
+        {
+          "t": "Bez abonamentu",
+          "d": "Podpisywanie jest darmowe i takie zostanie – bez znaku wodnego i bez konta."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Czy podpis jest prawnie ważny?",
+          "a": "Wstawiasz zwykły podpis elektroniczny – tak jak na papierze, tylko cyfrowo. W wielu codziennych dokumentach to wystarcza. Tam, gdzie prawo wymaga szczególnej formy (np. kwalifikowanego podpisu), obowiązuje ta forma."
+        },
+        {
+          "q": "Czy mój podpis jest zapisywany?",
+          "a": "Tylko na twoim urządzeniu, żeby następnym razem można było wstawić go jednym dotknięciem. Możesz go usunąć w każdej chwili."
+        },
+        {
+          "q": "Czy działa to też na komputerze?",
+          "a": "Tak. FaLe PDF działa w przeglądarce i można go zainstalować jako aplikację w systemie Windows i na Macu. Na komputerze rysujesz myszką lub touchpadem."
+        },
+        {
+          "q": "Czy mogę też wypełniać pola formularza?",
+          "a": "Tak. Jeśli PDF ma pola formularza, wypełniasz je w tym samym kroku, a potem podpisujesz."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "wypelnij-formularz-pdf",
+      "title": "Wypełnij formularz PDF – za darmo, też na telefonie | FaLe PDF",
+      "description": "Wypełniaj formularze PDF: pola tekstowe, kratki i listy na telefonie lub komputerze – albo pisz po zeskanowanym formularzu papierowym. Za darmo, bez konta.",
+      "h1": "Wypełnij formularz PDF",
+      "lede": "Wypełnij pola formularza albo po prostu pisz tam, gdzie coś ma być, na zeskanowanym formularzu – dużą czcionką i z wyraźnymi przyciskami.",
+      "cta": "Wypełnij formularz",
+      "steps": [
+        {
+          "t": "Otwórz formularz",
+          "d": "Otwórz PDF i wybierz „Wypełnij i podpisz”. Istniejące pola są podświetlone."
+        },
+        {
+          "t": "Wypełnij pola",
+          "d": "Dotknij pola i zacznij pisać. W formularzach bez pól dotknij „Tekst”, a potem miejsca w formularzu."
+        },
+        {
+          "t": "Podpisz i zapisz",
+          "d": "W razie potrzeby wstaw datę, znaczniki i podpis, a potem dotknij „Zapisz”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Także bez pól",
+          "d": "Zeskanowany formularz papierowy nie ma pól – a mimo to piszesz dokładnie we właściwym miejscu."
+        },
+        {
+          "t": "Duża, prosta obsługa",
+          "d": "Rozmiar czcionki przyciskami A− i A+, kolory jednym dotknięciem, wszystko w jednym pasku na dole."
+        },
+        {
+          "t": "Formularze urzędowe",
+          "d": "FaLe otwiera też specjalne formularze urzędowe (XFA), które inaczej otwierają się tylko w jednym konkretnym programie do PDF-ów."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Co zrobić, gdy formularz nie ma pól?",
+          "a": "Dotknij „Tekst”, a potem miejsca w formularzu. Do pól wyboru jest „Znacznik” z ✓, ✗ lub kropką."
+        },
+        {
+          "q": "Czy mogę później jeszcze zmienić formularz?",
+          "a": "Przy zapisie pola są zwykle utrwalane, żeby nikt nie zmienił ich niepostrzeżenie. Jeśli chcesz coś zmienić później, odznacz wcześniej opcję „Spłaszcz pola przy zapisie”."
+        },
+        {
+          "q": "Czy moje dane są wysyłane?",
+          "a": "Nie. Wypełnianie odbywa się w całości na twoim urządzeniu."
+        },
+        {
+          "q": "Co z formularzami, które pokazują komunikat „Proszę czekać …”?",
+          "a": "To zwykle specjalne formularze urzędowe (XFA). Otwórz je w FaLe PDF przez „Wypełnij formularz urzędowy”."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "edytuj-pdf",
+      "title": "Edytuj PDF – dodaj tekst i obrazy, za darmo | FaLe PDF",
+      "description": "Edytuj PDF na telefonie lub komputerze: dodawaj tekst i obrazy, zamieniaj istniejący tekst, zakrywaj fragmenty. Za darmo, bez konta i bez wysyłania plików.",
+      "h1": "Edytuj PDF",
+      "lede": "Dodaj tekst i obrazy, zmień istniejący tekst albo zakryj fragmenty – prosto w swoim PDF-ie.",
+      "cta": "Edytuj PDF",
+      "steps": [
+        {
+          "t": "Otwórz PDF",
+          "d": "Otwórz PDF i wybierz „Edytuj PDF”."
+        },
+        {
+          "t": "Wprowadź zmiany",
+          "d": "Przyciskiem „Tekst” piszesz coś nowego, przyciskiem „Zamień” dotykasz istniejącego tekstu i go zmieniasz, a przyciskiem „Obraz” wstawiasz zdjęcie lub logo."
+        },
+        {
+          "t": "Zapisz",
+          "d": "Dotknij „Zapisz” – nowa wersja trafia do twoich plików, a oryginał zostaje."
+        }
+      ],
+      "why": [
+        {
+          "t": "Zmiana istniejącego tekstu",
+          "d": "„Zamień” przejmuje czcionkę, rozmiar i kolor danego miejsca, żeby zmiana pasowała."
+        },
+        {
+          "t": "Łatwe ustawienia tekstu",
+          "d": "Rozmiar przyciskami A− i A+, pogrubienie, kolor – bez szukania po menu."
+        },
+        {
+          "t": "Za darmo zamiast Pro",
+          "d": "To, co inni oferują tylko w abonamencie, jest tu bezpłatne – bez znaku wodnego."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Czy stary tekst naprawdę znika?",
+          "a": "Przy zamianie stary tekst zostaje zakryty. Przy poufnych fragmentach, które muszą na pewno zniknąć z pliku, użyj „Zaczernij”."
+        },
+        {
+          "q": "Czy mogę wstawiać obrazy i logo?",
+          "a": "Tak, w formacie JPG i PNG. Przesuwasz je i powiększasz palcem lub myszką."
+        },
+        {
+          "q": "Czy działa to offline?",
+          "a": "Tak. Po pierwszym otwarciu edytowanie działa także bez internetu."
+        },
+        {
+          "q": "Czy mój oryginał zostaje?",
+          "a": "Tak. Zapisywana jest nowa wersja; oryginał możesz w razie potrzeby zastąpić."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "polacz-pdf",
+      "title": "Połącz PDF – kilka plików PDF w jeden | FaLe PDF",
+      "description": "Połącz kilka plików PDF w jeden i ustaw ich kolejność – na telefonie lub komputerze, za darmo, bez konta i bez wysyłania plików.",
+      "h1": "Połącz pliki PDF",
+      "lede": "Połącz faktury, skany lub rozdziały w jeden PDF – w takiej kolejności, jakiej chcesz.",
+      "cta": "Połącz pliki PDF",
+      "steps": [
+        {
+          "t": "Wybierz pliki",
+          "d": "Otwórz „Scal” i dotknij „Dodaj dokumenty”."
+        },
+        {
+          "t": "Ustaw kolejność",
+          "d": "Przeciągnij pliki na właściwe miejsce lub użyj strzałek."
+        },
+        {
+          "t": "Połącz",
+          "d": "Dotknij „Scal” – nowy PDF od razu trafia do twoich plików."
+        }
+      ],
+      "why": [
+        {
+          "t": "Bez wysyłania",
+          "d": "Pliki są łączone na twoim urządzeniu – nawet poufne dokumenty zostają u ciebie."
+        },
+        {
+          "t": "Duże pliki",
+          "d": "Nawet setki stron są przetwarzane sprawnie, bez zawieszania się aplikacji."
+        },
+        {
+          "t": "Od razu dalej",
+          "d": "Potem możesz od razu zmniejszyć, podpisać lub udostępnić – wszystko w tej samej aplikacji."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ile plików PDF mogę połączyć?",
+          "a": "Tyle, ile twoje urządzenie jest w stanie przetworzyć. Nie ma sztucznego limitu."
+        },
+        {
+          "q": "Czy mogę pominąć pojedyncze strony?",
+          "a": "Tak. Przyciskiem „Organizuj strony” usuwasz, obracasz lub sortujesz strony przed połączeniem albo po nim."
+        },
+        {
+          "q": "Czy tekst nadal można zaznaczać?",
+          "a": "Tak. Strony są przejmowane bez zmian, więc tekst można nadal zaznaczać i przeszukiwać."
+        },
+        {
+          "q": "Czy to coś kosztuje?",
+          "a": "Nie. Łączenie jest darmowe, bez znaku wodnego i bez konta."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "zmniejsz-pdf",
+      "title": "Zmniejsz PDF – do e-maila i formularzy | FaLe PDF",
+      "description": "Zmniejsz PDF, żeby zmieścił się w e-mailu lub formularzu online: zmniejsz obrazy albo spakuj bezstratnie. Za darmo, bez wysyłania plików.",
+      "h1": "Zmniejsz PDF",
+      "lede": "Za duży do e-maila lub formularza online? FaLe PDF zmniejsza plik – widzisz rozmiar przed i po.",
+      "cta": "Zmniejsz PDF",
+      "steps": [
+        {
+          "t": "Otwórz PDF",
+          "d": "Otwórz PDF i wybierz „Zmniejsz PDF”."
+        },
+        {
+          "t": "Wybierz sposób",
+          "d": "„Zmniejsz obrazy” do skanów i zdjęć, „Bezstratna” do dokumentów tekstowych albo „Silna” dla najmniejszego pliku."
+        },
+        {
+          "t": "Zmniejsz",
+          "d": "Dotknij przycisku – od razu widzisz, o ile mniejszy stał się plik."
+        }
+      ],
+      "why": [
+        {
+          "t": "Dobry wybór już ustawiony",
+          "d": "Dla dużych skanów „Zmniejsz obrazy” jest już zaznaczone – czytelne jak wcześniej."
+        },
+        {
+          "t": "Uczciwy wynik",
+          "d": "Jeśli nie da się już nic zaoszczędzić, FaLe mówi o tym, zamiast zapisywać gorszy plik."
+        },
+        {
+          "t": "Bez wysyłania",
+          "d": "Nawet duże pliki są zmniejszane na twoim urządzeniu."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Czy jakość się pogarsza?",
+          "a": "„Bezstratna” nie zmienia wyglądu. „Zmniejsz obrazy” przelicza tylko zdjęcia i skany, tekst pozostaje ostry. „Silna” zamienia każdą stronę w obraz."
+        },
+        {
+          "q": "Czy tekst nadal można zaznaczać?",
+          "a": "Przy „Bezstratna” i „Zmniejsz obrazy” tak. Przy „Silna” strony stają się obrazami."
+        },
+        {
+          "q": "O ile mniejszy będzie plik?",
+          "a": "To zależy od zawartości. Skany i zdjęcia zwykle zmniejszają się wyraźnie, pliki z samym tekstem mniej."
+        },
+        {
+          "q": "Czy jest limit rozmiaru?",
+          "a": "Nie, ogranicza cię tylko pamięć urządzenia."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "skanuj-dokument",
+      "title": "Skanuj dokument telefonem – do PDF | FaLe PDF",
+      "description": "Skanuj dokumenty aparatem w telefonie: krawędzie są wykrywane, strona prostowana i poprawiana, a tekst staje się przeszukiwalny. Za darmo, bez konta.",
+      "h1": "Skanuj dokument telefonem",
+      "lede": "Trzymaj telefon nad kartką – FaLe rozpozna stronę, wyprostuje ją i zrobi z niej czysty PDF.",
+      "cta": "Skanuj teraz",
+      "steps": [
+        {
+          "t": "Zrób zdjęcie",
+          "d": "Otwórz skaner i trzymaj telefon nad stroną. Krawędzie są wykrywane automatycznie."
+        },
+        {
+          "t": "Sprawdź",
+          "d": "W razie potrzeby popraw rogi i wybierz filtr, np. „Ulepszony” lub „Czarno-biały”."
+        },
+        {
+          "t": "Zapisz jako PDF",
+          "d": "Dotknij „Zapisz PDF”. Jeśli chcesz, nazwa zostanie zaproponowana na podstawie treści."
+        }
+      ],
+      "why": [
+        {
+          "t": "Prosto i czytelnie",
+          "d": "Krzywe zdjęcia są prostowane, a filtry takie jak „Ulepszony” rozjaśniają cienie i szare tło."
+        },
+        {
+          "t": "Przeszukiwalny",
+          "d": "Rozpoznawanie tekstu (niemiecki i angielski) działa na twoim urządzeniu – potem znajdziesz każde słowo."
+        },
+        {
+          "t": "Wiele stron",
+          "d": "Skanuj dowolną liczbę stron do jednego PDF-a i zmieniaj ich kolejność jednym dotknięciem."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Czy potrzebuję internetu?",
+          "a": "Nie. Tylko rozpoznawanie tekstu pobiera raz, przy pierwszym użyciu, swoje dane językowe – potem wszystko działa offline."
+        },
+        {
+          "q": "Jak wybierana jest nazwa pliku?",
+          "a": "Jeśli zostawisz pole nazwy puste, FaLe po rozpoznaniu tekstu zaproponuje nazwę na podstawie treści. Możesz ją zmienić jednym dotknięciem."
+        },
+        {
+          "q": "Czy mogę użyć też zdjęć z galerii?",
+          "a": "Tak. Wybierz „Z albumu / plików” i weź istniejące obrazy."
+        },
+        {
+          "q": "Czy jest tryb do dokumentów tożsamości?",
+          "a": "Tak. „Skanuj dowód” umieszcza przód i tył w oryginalnym rozmiarze na jednej stronie A4."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-na-word",
+      "title": "PDF na Word – konwersja za darmo, bez wysyłania | FaLe PDF",
+      "description": "Zamień PDF na edytowalny dokument Word (DOCX): akapity, nagłówki i pogrubienia zostają zachowane. Za darmo, bezpośrednio na urządzeniu.",
+      "h1": "Zamień PDF na Word",
+      "lede": "Zrób z PDF-a dokument Word, który możesz zmieniać – akapity, nagłówki i wyróżnienia zostają zachowane.",
+      "cta": "Zamień PDF na Word",
+      "steps": [
+        {
+          "t": "Otwórz PDF",
+          "d": "Otwórz PDF i wybierz „PDF na Word”."
+        },
+        {
+          "t": "Wybierz sposób",
+          "d": "„Edytowalny tekst” odtwarza akapity i nagłówki, „Dokładny układ” przejmuje każdą stronę dokładnie tak jak w oryginale."
+        },
+        {
+          "t": "Zamień",
+          "d": "Dotknij „Zamień na Word” – dokument trafia do twoich plików i od razu możesz go dalej edytować w FaLe."
+        }
+      ],
+      "why": [
+        {
+          "t": "Bez wysyłania",
+          "d": "Konwersja odbywa się na twoim urządzeniu – twoje dokumenty go nie opuszczają."
+        },
+        {
+          "t": "Także skany",
+          "d": "Strony bez tekstu można w razie potrzeby zamienić na tekst za pomocą rozpoznawania tekstu (niemiecki i angielski)."
+        },
+        {
+          "t": "Od razu edytuj",
+          "d": "FaLe PDF ma własny edytor dokumentów Word – nie potrzebujesz żadnego innego programu."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Czy dokument Word wygląda dokładnie tak jak PDF?",
+          "a": "Z „Dokładny układ” tak, ale wtedy tekstu nie można edytować. „Edytowalny tekst” przejmuje treść i strukturę, a wygląd może się nieco różnić."
+        },
+        {
+          "q": "Czy mogę zamienić tylko wybrane strony?",
+          "a": "Tak. Podaj strony, np. „1-3, 5”."
+        },
+        {
+          "q": "Jaki format dostanę?",
+          "a": "Dokument Word w formacie DOCX, który otworzysz we wszystkich popularnych edytorach tekstu."
+        },
+        {
+          "q": "Ile to kosztuje?",
+          "a": "Nic. Ta funkcja Pro jest w FaLe PDF także darmowa."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "otworz-formularz-xfa",
+      "title": "Otwórz i wypełnij formularz XFA – urzędowy | FaLe PDF",
+      "description": "Formularz urzędowy pokazuje tylko „Proszę czekać …”? FaLe PDF otwiera formularze XFA, wypełnia je, podpisuje i zapisuje – za darmo, także na telefonie.",
+      "h1": "Otwórz i wypełnij formularz urzędowy (XFA)",
+      "lede": "Niektóre formularze z urzędów i ambasad pokazują tylko „Proszę czekać …” albo pustą stronę. FaLe PDF je otwiera, ty je wypełniasz i znów zapisujesz.",
+      "cta": "Otwórz formularz",
+      "steps": [
+        {
+          "t": "Otwórz formularz",
+          "d": "Otwórz PDF w FaLe PDF. Gdy FaLe rozpozna formularz urzędowy, pojawi się „Wypełnij formularz”."
+        },
+        {
+          "t": "Wypełnij i podpisz",
+          "d": "Wypełnij pola. Przy linii na podpis jedno dotknięcie otwiera pole podpisu."
+        },
+        {
+          "t": "Zapisz lub wydrukuj",
+          "d": "„Zapisz” zachowuje oryginalny formularz, tak jak oczekuje go urząd. „Jako zwykły PDF” i „Drukuj” zawierają także podpis."
+        }
+      ],
+      "why": [
+        {
+          "t": "Bez specjalnego programu",
+          "d": "Te formularze inaczej otwierają się tylko w jednym konkretnym programie do PDF-ów – FaLe otwiera je w przeglądarce, na telefonie i na komputerze."
+        },
+        {
+          "t": "Powiększanie dwoma palcami",
+          "d": "Małe pola po prostu powiększasz – idealne na telefonie."
+        },
+        {
+          "t": "Bezpiecznie",
+          "d": "Kod programu zawarty w formularzu nigdy nie jest uruchamiany ze względów bezpieczeństwa i nic nie jest wysyłane."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Po czym poznać formularz XFA?",
+          "a": "Zwykła przeglądarka PDF często pokazuje tylko komunikat „Proszę czekać …” albo pustą stronę. FaLe rozpoznaje takie formularze automatycznie."
+        },
+        {
+          "q": "Czy urząd przyjmie zapisany formularz?",
+          "a": "„Zapisz” zachowuje oryginalny format wraz z twoimi danymi. Jeśli wymagany jest zwykły PDF lub wydruk, użyj „Jako zwykły PDF” albo „Drukuj”."
+        },
+        {
+          "q": "Czy obliczenia w formularzu działają?",
+          "a": "Skrypty w formularzu nie są uruchamiane ze względów bezpieczeństwa. Automatyczne obliczenia lub kontrole wpisujesz więc samodzielnie."
+        },
+        {
+          "q": "Ile to kosztuje?",
+          "a": "Nic – bez konta i bez logowania."
+        }
+      ]
+    }
+  }
+}

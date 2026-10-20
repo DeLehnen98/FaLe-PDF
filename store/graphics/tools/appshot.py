@@ -39,15 +39,16 @@ def ai_routes(ctx, answers):
 
 
 class App:
-    def __init__(self, lang='de', width=360, height=760, dpr=3, camera=None, dark=False, answers=None, touch=True):
+    def __init__(self, lang='de', width=360, height=760, dpr=3, camera=None, dark=False, answers=None, touch=True, demo=None):
         self.lang = lang
+        self.demo = demo or lang  # which demo files (de/en) to import
         self.pw = sync_playwright().start()
         args = []
         if camera:
             args += ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream', f'--use-file-for-fake-video-capture={camera}']
         self.browser = self.pw.chromium.launch(args=args)
         self.ctx = self.browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=dpr,
-                                            locale='de-DE' if lang == 'de' else 'en-GB', color_scheme='dark' if dark else 'light',
+                                            locale={'de': 'de-DE', 'en': 'en-GB', 'pt': 'pt-PT', 'zh': 'zh-CN'}.get(lang, lang), color_scheme='dark' if dark else 'light',
                                             is_mobile=width < 700, has_touch=touch, permissions=['camera'] if camera else [])
         consent = json.dumps({'v': 1, 'at': int(time.time() * 1000), 'provider': 'cloud'})
         self.ctx.add_init_script(f"""try {{ localStorage.setItem('fale-onboarded','1'); localStorage.setItem('fale-simple-hint','hidden'); localStorage.setItem('fale-lang','{lang}');
@@ -62,7 +63,7 @@ class App:
         self.page.wait_for_timeout(1200)
 
     def seed(self, names=None, extra=()):
-        names = list(names or FILES[self.lang]) + list(extra)
+        names = list(names or FILES[self.demo]) + list(extra)
         for n in names:
             ext = n.rsplit('.', 1)[1].lower()
             self.page.evaluate("""async ([url, name, type]) => {
@@ -70,7 +71,7 @@ class App:
                 const b = await (await fetch(url)).blob();
                 await lib.importAny(new File([b], name, { type }), { silent: true, source: 'Gerät' });
                 await new Promise(r => setTimeout(r, 120));
-            }""", [f'demo/{self.lang}/{n}', n, MIME[ext]])
+            }""", [f'demo/{self.demo}/{n}', n, MIME[ext]])
         self.page.wait_for_timeout(2500)  # thumbnails / text index in the background
 
     def doc_id(self, name):

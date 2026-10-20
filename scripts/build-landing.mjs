@@ -93,6 +93,14 @@ function validate(code, s, de, en) {
   }
 }
 
+// links to the task pages of this language (site/tasks/<code>.json, pages by scripts/build-tasks.mjs)
+function taskLinks(code) {
+  const f = join(SITE, 'tasks', code + '.json');
+  if (!existsSync(f)) return { h2: '', items: [] };
+  const t = JSON.parse(readFileSync(f, 'utf8'));
+  return { h2: t.ui.popularH, items: Object.values(t.tasks).map(x => ({ href: `/${code}/${x.slug}/`, label: x.h1 })) };
+}
+
 function pageFor(code, htmlLang, s, tpl) {
   const de = code === 'de';
   const path = de ? '/' : `/${code}/`;
@@ -114,6 +122,7 @@ function pageFor(code, htmlLang, s, tpl) {
       network: de ? 'https://fale.network/' : 'https://fale.network/en/',
     },
     screens: { ...s.screens, items: s.screens.alts.map((alt, i) => ({ file: SCREEN_FILES[i], alt })) },
+    tasks: taskLinks(code),
   };
   return render(tpl, ctx, `site/i18n/${code}.json`);
 }

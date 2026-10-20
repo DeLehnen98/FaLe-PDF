@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Vai al contenuto",
+    "navLabel": "Navigazione principale",
+    "home": "Home",
+    "openApp": "Apri FaLe PDF",
+    "badge": "Gratis · senza account · i tuoi file restano sul tuo dispositivo",
+    "stepsH": "Come si fa",
+    "whyH": "Perché FaLe PDF",
+    "faqH": "Domande frequenti",
+    "moreH": "Puoi anche",
+    "endH": "Provalo subito",
+    "endText": "FaLe PDF funziona nel browser, sullo smartphone e sul computer. Tutte le funzioni sono gratuite.",
+    "privacy": "Privacy",
+    "imprint": "Note legali",
+    "footer": "FaLe PDF – un servizio di FaLe.dev",
+    "popularH": "Attività più usate"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "firma-pdf",
+      "title": "Firmare un PDF – gratis, senza account | FaLe PDF",
+      "description": "Firma un PDF sullo smartphone o sul computer: disegna la tua firma, salvala e inseriscila con un tocco. Gratis, senza account e senza caricare nulla.",
+      "h1": "Firmare un PDF",
+      "lede": "Disegna la tua firma con il dito o con il mouse e inseriscila con un tocco in qualsiasi PDF: contratto, modulo o delega.",
+      "cta": "Firma un PDF ora",
+      "steps": [
+        {
+          "t": "Apri il PDF",
+          "d": "Apri il PDF in FaLe PDF e scegli “Compila e firma”."
+        },
+        {
+          "t": "Disegna la firma",
+          "d": "Tocca “Firma” e disegnala una volta. FaLe se la ricorda per la volta successiva."
+        },
+        {
+          "t": "Inserisci e salva",
+          "d": "Tocca la riga, regolala con “Più grande” o “Più piccolo” e tocca “Salva”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Resta con te",
+          "d": "La firma e il documento vengono elaborati sul tuo dispositivo: non viene caricato nulla."
+        },
+        {
+          "t": "Più di una firma",
+          "d": "Con la stessa facilità inserisci testo, data, spunte, iniziali e i tuoi timbri personali."
+        },
+        {
+          "t": "Senza abbonamento",
+          "d": "Firmare è gratis e resta gratis: senza filigrana e senza account."
+        }
+      ],
+      "faq": [
+        {
+          "q": "La firma ha valore legale?",
+          "a": "Inserisci una firma elettronica semplice: come su carta, ma in digitale. Per molti documenti di uso quotidiano basta. Dove la legge richiede una forma particolare (per esempio una firma qualificata), vale quella."
+        },
+        {
+          "q": "La mia firma viene salvata?",
+          "a": "Solo sul tuo dispositivo, così la volta successiva puoi inserirla con un tocco. Puoi cancellarla in qualsiasi momento."
+        },
+        {
+          "q": "Funziona anche sul computer?",
+          "a": "Sì. FaLe PDF funziona nel browser e può essere installato come app su Windows e su Mac. Sul computer disegni con il mouse o con il touchpad."
+        },
+        {
+          "q": "Posso compilare anche i campi del modulo?",
+          "a": "Sì. Se il PDF ha dei campi, li compili nello stesso passaggio e poi firmi."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "compila-modulo-pdf",
+      "title": "Compilare un modulo PDF – gratis, anche da smartphone | FaLe PDF",
+      "description": "Compila moduli PDF: campi di testo, caselle e menu sullo smartphone o sul computer, oppure scrivi su un modulo cartaceo scansionato. Gratis, senza account.",
+      "h1": "Compilare un modulo PDF",
+      "lede": "Compila i campi del modulo oppure scrivi semplicemente dove serve su un modulo scansionato, con caratteri grandi e pulsanti chiari.",
+      "cta": "Compila un modulo",
+      "steps": [
+        {
+          "t": "Apri il modulo",
+          "d": "Apri il PDF e scegli “Compila e firma”. I campi presenti vengono evidenziati."
+        },
+        {
+          "t": "Compila i campi",
+          "d": "Tocca un campo e scrivi. Per i moduli senza campi, tocca “Testo” e poi il punto del modulo."
+        },
+        {
+          "t": "Firma e salva",
+          "d": "Se serve, inserisci data, spunte e firma, poi tocca “Salva”."
+        }
+      ],
+      "why": [
+        {
+          "t": "Anche senza campi",
+          "d": "Un modulo cartaceo scansionato non ha campi, ma scrivi lo stesso esattamente nel punto giusto."
+        },
+        {
+          "t": "Comandi grandi e semplici",
+          "d": "Dimensione del testo con A− e A+, colori con un tocco, tutto in un’unica barra in basso."
+        },
+        {
+          "t": "Moduli ufficiali",
+          "d": "FaLe apre anche i moduli ufficiali speciali (XFA), che altrimenti si aprono solo in un programma PDF preciso."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Cosa faccio se il modulo non ha campi?",
+          "a": "Tocca “Testo” e poi il punto del modulo. Per le caselle da barrare c’è “Spunta” con ✓, ✗ o un punto."
+        },
+        {
+          "q": "Posso modificare il modulo in un secondo momento?",
+          "a": "Al salvataggio i campi vengono di norma bloccati, in modo che nessuno li cambi senza che si noti. Se vuoi cambiare qualcosa più tardi, togli prima la spunta a “Appiattisci i campi al salvataggio”."
+        },
+        {
+          "q": "I miei dati vengono caricati online?",
+          "a": "No. La compilazione avviene interamente sul tuo dispositivo."
+        },
+        {
+          "q": "E i moduli che mostrano il messaggio “Attendere prego …”?",
+          "a": "Di solito sono moduli ufficiali speciali (XFA). Aprili con “Compila modulo ufficiale” in FaLe PDF."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "modifica-pdf",
+      "title": "Modificare un PDF – aggiungi testo e immagini, gratis | FaLe PDF",
+      "description": "Modifica un PDF sullo smartphone o sul computer: aggiungi testo e immagini, sostituisci il testo esistente, copri alcune parti. Gratis, senza account né upload.",
+      "h1": "Modificare un PDF",
+      "lede": "Aggiungi testo e immagini, cambia il testo esistente o copri alcune parti, direttamente nel tuo PDF.",
+      "cta": "Modifica un PDF",
+      "steps": [
+        {
+          "t": "Apri il PDF",
+          "d": "Apri il PDF e scegli “Modifica PDF”."
+        },
+        {
+          "t": "Fai le modifiche",
+          "d": "Con “Testo” scrivi qualcosa di nuovo, con “Sostituisci” tocchi un testo esistente e lo cambi, con “Immagine” inserisci una foto o un logo."
+        },
+        {
+          "t": "Salva",
+          "d": "Tocca “Salva”: la nuova versione si trova nei tuoi file e l’originale resta com’è."
+        }
+      ],
+      "why": [
+        {
+          "t": "Cambiare il testo esistente",
+          "d": "“Sostituisci” riprende carattere, dimensione e colore del punto, così la modifica si adatta."
+        },
+        {
+          "t": "Impostare il testo è facile",
+          "d": "Dimensione con A− e A+, grassetto, colore: senza cercare tra i menu."
+        },
+        {
+          "t": "Gratis invece di Pro",
+          "d": "Ciò che altri offrono solo con un abbonamento qui è gratis, senza filigrana."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Il vecchio testo viene davvero rimosso?",
+          "a": "Quando sostituisci, il vecchio testo viene coperto. Per i passaggi riservati che devono sparire dal file in modo sicuro, usa “Oscura”."
+        },
+        {
+          "q": "Posso inserire immagini e loghi?",
+          "a": "Sì, in JPG e PNG. Li sposti e li ingrandisci con il dito o con il mouse."
+        },
+        {
+          "q": "Funziona offline?",
+          "a": "Sì. Dopo la prima apertura, la modifica funziona anche senza internet."
+        },
+        {
+          "q": "L’originale resta intatto?",
+          "a": "Sì. Viene salvata una nuova versione; se vuoi, puoi sostituire l’originale."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "unisci-pdf",
+      "title": "Unire PDF – più PDF in un unico file | FaLe PDF",
+      "description": "Unisci più PDF in un unico file e scegli l’ordine, sullo smartphone o sul computer. Gratis, senza account e senza caricare nulla.",
+      "h1": "Unire PDF",
+      "lede": "Riunisci fatture, scansioni o capitoli in un solo PDF, nell’ordine che vuoi.",
+      "cta": "Unisci PDF",
+      "steps": [
+        {
+          "t": "Scegli i file",
+          "d": "Apri “Unisci” e tocca “Aggiungi documenti”."
+        },
+        {
+          "t": "Stabilisci l’ordine",
+          "d": "Trascina i file al posto giusto o usa le frecce."
+        },
+        {
+          "t": "Unisci",
+          "d": "Tocca “Unisci”: il nuovo PDF è subito nei tuoi file."
+        }
+      ],
+      "why": [
+        {
+          "t": "Senza caricare nulla",
+          "d": "I file vengono uniti sul tuo dispositivo: anche i documenti riservati restano con te."
+        },
+        {
+          "t": "File grandi",
+          "d": "Anche centinaia di pagine vengono elaborate in fretta, senza che l’app si blocchi."
+        },
+        {
+          "t": "Vai subito avanti",
+          "d": "Poi puoi comprimere, firmare o condividere, tutto nella stessa app."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Quanti PDF posso unire?",
+          "a": "Quanti ne riesce a gestire il tuo dispositivo. Non c’è un limite artificiale."
+        },
+        {
+          "q": "Posso lasciare fuori alcune pagine?",
+          "a": "Sì. Con “Organizza pagine” elimini, ruoti o riordini le pagine prima o dopo l’unione."
+        },
+        {
+          "q": "Il testo resta selezionabile?",
+          "a": "Sì. Le pagine vengono riprese invariate, quindi il testo resta selezionabile e ricercabile."
+        },
+        {
+          "q": "Costa qualcosa?",
+          "a": "No. Unire è gratis, senza filigrana e senza account."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "comprimi-pdf",
+      "title": "Comprimere un PDF – per e-mail e upload | FaLe PDF",
+      "description": "Riduci il peso di un PDF perché stia in un’e-mail o in un modulo di caricamento: riduci le immagini o comprimi senza perdita. Gratis, senza caricare nulla.",
+      "h1": "Comprimere un PDF",
+      "lede": "Troppo grande per l’e-mail o per il modulo online? FaLe PDF rimpicciolisce il file: vedi la dimensione prima e dopo.",
+      "cta": "Comprimi un PDF",
+      "steps": [
+        {
+          "t": "Apri il PDF",
+          "d": "Apri il PDF e scegli “Comprimi PDF”."
+        },
+        {
+          "t": "Scegli il metodo",
+          "d": "“Riduci immagini” per scansioni e foto, “Senza perdita” per i documenti di testo oppure “Forte” per il file più piccolo."
+        },
+        {
+          "t": "Comprimi",
+          "d": "Tocca il pulsante: vedi subito di quanto si è ridotto il file."
+        }
+      ],
+      "why": [
+        {
+          "t": "La scelta giusta già impostata",
+          "d": "Per le scansioni grandi “Riduci immagini” è già selezionato: leggibile come prima."
+        },
+        {
+          "t": "Un risultato onesto",
+          "d": "Se non si può risparmiare altro, FaLe te lo dice invece di salvare un file peggiore."
+        },
+        {
+          "t": "Senza caricare nulla",
+          "d": "Anche i file grandi vengono ridotti sul tuo dispositivo."
+        }
+      ],
+      "faq": [
+        {
+          "q": "La qualità peggiora?",
+          "a": "“Senza perdita” non cambia l’aspetto. “Riduci immagini” ricalcola solo foto e scansioni, il testo resta nitido. “Forte” trasforma ogni pagina in un’immagine."
+        },
+        {
+          "q": "Il testo resta selezionabile?",
+          "a": "Con “Senza perdita” e “Riduci immagini”, sì. Con “Forte” le pagine diventano immagini."
+        },
+        {
+          "q": "Quanto diventa piccolo il file?",
+          "a": "Dipende dal contenuto. Scansioni e foto di solito si riducono molto, i file di solo testo meno."
+        },
+        {
+          "q": "C’è un limite di dimensione?",
+          "a": "No, solo la memoria del tuo dispositivo."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "scansiona-documento",
+      "title": "Scansionare documenti con lo smartphone – in PDF | FaLe PDF",
+      "description": "Scansiona documenti con la fotocamera dello smartphone: bordi rilevati, pagina raddrizzata e migliorata, testo ricercabile. Gratis, senza account.",
+      "h1": "Scansionare un documento con lo smartphone",
+      "lede": "Tieni lo smartphone sopra il foglio: FaLe riconosce la pagina, la raddrizza e ne fa un PDF pulito.",
+      "cta": "Scansiona ora",
+      "steps": [
+        {
+          "t": "Scatta una foto",
+          "d": "Apri lo scanner e tieni lo smartphone sopra la pagina. I bordi vengono rilevati automaticamente."
+        },
+        {
+          "t": "Controlla",
+          "d": "Regola gli angoli se serve e scegli un filtro come “Migliorato” o “Bianco e nero”."
+        },
+        {
+          "t": "Salva come PDF",
+          "d": "Tocca “Salva PDF”. Se vuoi, il nome viene proposto in base al contenuto."
+        }
+      ],
+      "why": [
+        {
+          "t": "Dritto e leggibile",
+          "d": "Le foto storte vengono raddrizzate e filtri come “Migliorato” schiariscono le ombre e lo sfondo grigio."
+        },
+        {
+          "t": "Ricercabile",
+          "d": "Il riconoscimento del testo (tedesco e inglese) funziona sul tuo dispositivo: poi trovi ogni parola."
+        },
+        {
+          "t": "Più pagine",
+          "d": "Scansiona quante pagine vuoi in un unico PDF e riordinale con un tocco."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Mi serve internet?",
+          "a": "No. Solo il riconoscimento del testo scarica una volta sola i suoi dati linguistici la prima volta; dopo tutto funziona offline."
+        },
+        {
+          "q": "Come viene scelto il nome del file?",
+          "a": "Se lasci vuoto il campo del nome, FaLe propone un nome in base al contenuto dopo il riconoscimento del testo. Puoi cambiarlo con un tocco."
+        },
+        {
+          "q": "Posso usare anche le foto della galleria?",
+          "a": "Sì. Scegli “Da album / file” e prendi le immagini che hai già."
+        },
+        {
+          "q": "C’è una modalità per i documenti d’identità?",
+          "a": "Sì. “Scansiona documento d’identità” mette fronte e retro nelle dimensioni originali su una pagina A4."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-in-word",
+      "title": "Convertire PDF in Word – gratis, senza upload | FaLe PDF",
+      "description": "Converti un PDF in un documento Word modificabile (DOCX): paragrafi, titoli e grassetto vengono mantenuti. Gratis, direttamente sul tuo dispositivo.",
+      "h1": "Convertire PDF in Word",
+      "lede": "Trasforma un PDF in un documento Word che puoi modificare: paragrafi, titoli ed evidenziazioni vengono mantenuti.",
+      "cta": "Converti PDF in Word",
+      "steps": [
+        {
+          "t": "Apri il PDF",
+          "d": "Apri il PDF e scegli “PDF in Word”."
+        },
+        {
+          "t": "Scegli il metodo",
+          "d": "“Testo modificabile” ricostruisce paragrafi e titoli, “Layout esatto” riprende ogni pagina esattamente come nell’originale."
+        },
+        {
+          "t": "Converti",
+          "d": "Tocca “Converti in Word”: il documento si trova nei tuoi file e puoi continuare subito a modificarlo in FaLe."
+        }
+      ],
+      "why": [
+        {
+          "t": "Senza caricare nulla",
+          "d": "La conversione avviene sul tuo dispositivo: i tuoi documenti non lo lasciano."
+        },
+        {
+          "t": "Anche le scansioni",
+          "d": "Le pagine senza testo possono, se vuoi, essere trasformate in testo con il riconoscimento del testo (tedesco e inglese)."
+        },
+        {
+          "t": "Modifica subito",
+          "d": "FaLe PDF ha un editor tutto suo per i documenti Word: non serve nessun altro programma."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Il documento Word è identico al PDF?",
+          "a": "Con “Layout esatto” sì, ma allora il testo non è modificabile. “Testo modificabile” mantiene contenuto e struttura; l’aspetto può differire leggermente."
+        },
+        {
+          "q": "Posso convertire solo alcune pagine?",
+          "a": "Sì. Indica le pagine, per esempio “1-3, 5”."
+        },
+        {
+          "q": "Che formato ottengo?",
+          "a": "Un documento Word in formato DOCX, che si apre in tutti i comuni programmi di scrittura."
+        },
+        {
+          "q": "Quanto costa?",
+          "a": "Niente. Anche questa funzione Pro è gratis in FaLe PDF."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "apri-modulo-xfa",
+      "title": "Aprire e compilare moduli XFA – moduli ufficiali | FaLe PDF",
+      "description": "Un modulo ufficiale mostra solo “Attendere prego …”? FaLe PDF apre i moduli XFA, li compila, li firma e li salva. Gratis, anche da smartphone.",
+      "h1": "Aprire e compilare un modulo ufficiale (XFA)",
+      "lede": "Alcuni moduli di enti e ambasciate mostrano solo “Attendere prego …” o una pagina vuota. FaLe PDF li apre, tu li compili e li salvi di nuovo.",
+      "cta": "Apri un modulo",
+      "steps": [
+        {
+          "t": "Apri il modulo",
+          "d": "Apri il PDF in FaLe PDF. Se FaLe riconosce un modulo ufficiale, compare “Compila il modulo”."
+        },
+        {
+          "t": "Compila e firma",
+          "d": "Compila i campi. Su una riga di firma, un tocco apre il campo della firma."
+        },
+        {
+          "t": "Salva o stampa",
+          "d": "“Salva” mantiene il modulo originale, come lo aspetta l’ente. “Come PDF normale” e “Stampa” contengono anche la firma."
+        }
+      ],
+      "why": [
+        {
+          "t": "Nessun programma speciale",
+          "d": "Questi moduli altrimenti si aprono solo in un programma PDF preciso: FaLe li apre nel browser, sullo smartphone e sul computer."
+        },
+        {
+          "t": "Zoom con due dita",
+          "d": "Ingrandisci le caselle piccole con facilità: ideale sullo smartphone."
+        },
+        {
+          "t": "Sicuro",
+          "d": "Il codice di programma contenuto nel modulo non viene mai eseguito, per sicurezza, e non viene caricato nulla."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Come riconosco un modulo XFA?",
+          "a": "Spesso un normale lettore PDF mostra solo l’avviso “Attendere prego …” o una pagina vuota. FaLe riconosce questi moduli automaticamente."
+        },
+        {
+          "q": "L’ente accetterà il modulo salvato?",
+          "a": "“Salva” mantiene il formato originale con i tuoi dati. Se viene richiesto un PDF normale o una stampa, usa “Come PDF normale” oppure “Stampa”."
+        },
+        {
+          "q": "I calcoli nel modulo funzionano?",
+          "a": "Gli script nel modulo non vengono eseguiti, per sicurezza. I calcoli o i controlli automatici li inserisci quindi tu."
+        },
+        {
+          "q": "Quanto costa?",
+          "a": "Niente: senza account e senza registrazione."
+        }
+      ]
+    }
+  }
+}

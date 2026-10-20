@@ -11,6 +11,8 @@
   },
   "redirects": [
     { "source": "/app", "destination": "/app/", "permanent": true },
+    { "source": "/de", "destination": "/", "permanent": true },
+    { "source": "/de/", "destination": "/", "permanent": true },
     { "source": "/info.html", "destination": "https://fale.network/apps/pdf/", "permanent": true },
     { "source": "/info-en.html", "destination": "https://fale.network/en/apps/pdf/", "permanent": true }
   ],

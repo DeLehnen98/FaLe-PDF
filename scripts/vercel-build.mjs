@@ -178,6 +178,14 @@ if (!NATIVE) {
     mkdirSync(join(DIST, code), { recursive: true });
     cpSync(join(ROOT, 'site', code, 'index.html'), join(DIST, code, 'index.html'));
   }
+  // task pages ("PDF unterschreiben" …) in every language: /<code>/<slug>/ (scripts/build-tasks.mjs), German at /de/<slug>/
+  const tasks = await import(pathToFileURL(join(ROOT, 'scripts', 'build-tasks.mjs')).href);
+  const staleTasks = tasks.stalePages();
+  if (staleTasks.length) throw new Error('Aufgabenseiten veraltet – node scripts/build-tasks.mjs ausführen: ' + staleTasks.slice(0, 5).join(', '));
+  for (const [code, slugs] of tasks.taskFolders()) for (const slug of slugs) {
+    mkdirSync(join(DIST, code, slug), { recursive: true });
+    cpSync(join(ROOT, 'site', code, slug, 'index.html'), join(DIST, code, slug, 'index.html'));
+  }
   mkdirSync(join(DIST, 'site'), { recursive: true });
   for (const f of ['landing.css', 'landing.js', 'img']) cpSync(join(ROOT, 'site', f), join(DIST, 'site', f), { recursive: true });
   // store buttons: links from network/tools/apps.json (empty = "coming soon")
@@ -261,7 +269,7 @@ const files = walk(DIST)
   // manifest screenshots (install dialog of the browser, Microsoft Store package) – never needed offline
   .filter(r => !r.startsWith('screenshots/'))
   // start page of the web build (not part of the app; the app's shell is ./index.html relative to /app/)
-  .filter(r => !r.startsWith('app/') && !r.startsWith('site/') && !landing.SUBFOLDERS.some(c => r.startsWith(c + '/')))
+  .filter(r => !r.startsWith('app/') && !r.startsWith('site/') && !r.startsWith('de/') && !landing.SUBFOLDERS.some(c => r.startsWith(c + '/')))
   // UI dictionaries of the other languages (~0.5 MB each): only the device's language is ever loaded –
   // cached by the service worker on first use instead of downloading all of them at install
   .filter(r => !/^js\/i18n\/[a-z]{2}\.js$/.test(r) || r === 'js/i18n/en.js')

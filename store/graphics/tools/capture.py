@@ -11,12 +11,17 @@ only = set(sys.argv[3:])
 VIEW = {'phone': (360, 760, 3), 'tab7': (800, 1200, 1.5), 'tab10': (1280, 800, 2), 'desktop': (1280, 720, 1.5)}[device]  # desktop: 1920 × 1080 (Microsoft Store, manifest)
 OUT = SP / 'raw' / device / lang
 OUT.mkdir(parents=True, exist_ok=True)
+import datetime
+from captions_i18n import REMINDERS, SCANNAME
+EN_FILES = dict(inv='Invoice_2026-0412.pdf', lease='Rental_Agreement.pdf', xl='Monthly_Expenses_2026.xlsx', pp='Solar_Park_Project.pptx', cv='CV_Anna_Berger.docx',
+                scanname='Letter from landlord', q='heating', cell='D2')
+DEMO = 'de' if lang == 'de' else 'en'  # demo files exist in German and English; other languages use the English ones
 N = {
     'de': dict(inv='Rechnung_2026-0412.pdf', lease='Mietvertrag_Wohnung.pdf', xl='Haushaltsbuch_2026.xlsx', pp='Projekt_Solarpark.pptx', cv='Lebenslauf_Anna_Berger.docx',
                scanname='Brief Hausverwaltung', q='Heizung', cell='D8'),
     'en': dict(inv='Invoice_2026-0412.pdf', lease='Rental_Agreement.pdf', xl='Monthly_Expenses_2026.xlsx', pp='Solar_Park_Project.pptx', cv='CV_Anna_Berger.docx',
                scanname='Letter from landlord', q='heating', cell='D2'),
-}[lang]
+}.get(lang) or dict(EN_FILES, scanname=SCANNAME[lang])
 W, H, DPR = VIEW
 
 
@@ -25,7 +30,7 @@ def want(name):
 
 
 def app(**kw):
-    a = App(lang, width=W, height=H, dpr=DPR, answers=ANSWERS[lang], touch=device != 'desktop', **kw)  # desktop: mouse, no touch handles
+    a = App(lang, width=W, height=H, dpr=DPR, answers=ANSWERS.get(lang, ANSWERS['en']), touch=device != 'desktop', demo=DEMO, **kw)  # desktop: mouse, no touch handles
     a.seed(); a.clean()
     return a
 
@@ -38,7 +43,7 @@ def done(a, name):
     print('saved', OUT / f'{name}.png')
 
 
-a = app(camera=str(SP / 'site' / 'demo' / lang / 'camera.y4m'))
+a = app(camera=str(SP / 'site' / 'demo' / DEMO / 'camera.y4m'))
 pg = a.page
 
 if want('home'):
@@ -115,8 +120,10 @@ if want('tools'):
     done(a, 'tools')
 
 if want('reminders'):
-    R = {'de': [('Rechnung Malerbetrieb bezahlen', 'termin', '2026-10-16'), ('Kfz-Versicherung wechseln', 'kuendigung', '2026-11-30'), ('Fitnessstudio kündigen', 'kuendigung', '2026-12-31'), ('Reisepass läuft ab', 'ablauf', '2027-03-02')],
-         'en': [('Pay painter invoice', 'termin', '2026-10-16'), ('Return online order (withdrawal period)', 'kuendigung', '2026-10-19'), ('Cancel gym membership', 'kuendigung', '2026-10-23'), ('Car inspection due', 'termin', '2026-10-27')]}[lang]  # EN: < 14 days only ('in N weeks/months' is not translated yet)
+    day = lambda n: (datetime.date.today() + datetime.timedelta(days=n)).isoformat()  # always upcoming, whatever the capture day
+    R = {'de': [('Rechnung Malerbetrieb bezahlen', 'termin', day(3)), ('Kfz-Versicherung wechseln', 'kuendigung', day(41)), ('Fitnessstudio kündigen', 'kuendigung', day(72)), ('Reisepass läuft ab', 'ablauf', day(133))],
+         'en': [('Pay painter invoice', 'termin', day(2)), ('Return online order (withdrawal period)', 'kuendigung', day(5)), ('Cancel gym membership', 'kuendigung', day(8)), ('Car inspection due', 'termin', day(12))]}.get(lang) \
+        or list(zip(REMINDERS.get(lang, []), ['termin', 'kuendigung', 'kuendigung', 'termin'], [day(2), day(5), day(8), day(12)]))
     inv = a.doc_id(N['inv'])
     for i, (t, ty, d) in enumerate(R):
         pg.evaluate("async ([t, ty, d, doc]) => { const m = await import('./js/extras/reminders.js'); await m.addReminder({ title: t, type: ty, due: d, leads: [30, 7], docId: doc }); }", [t, ty, d, inv if i == 0 else None])

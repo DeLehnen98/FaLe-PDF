@@ -1,0 +1,453 @@
+{
+  "ui": {
+    "skip": "Aller au contenu",
+    "navLabel": "Navigation principale",
+    "home": "Accueil",
+    "openApp": "Ouvrir FaLe PDF",
+    "badge": "Gratuit · sans compte · tes fichiers restent sur ton appareil",
+    "stepsH": "Comment faire",
+    "whyH": "Pourquoi FaLe PDF",
+    "faqH": "Questions fréquentes",
+    "moreH": "Tu peux aussi",
+    "endH": "Essaie tout de suite",
+    "endText": "FaLe PDF fonctionne dans le navigateur, sur ton téléphone et sur ton ordinateur. Toutes les fonctions sont gratuites.",
+    "privacy": "Confidentialité",
+    "imprint": "Mentions légales",
+    "footer": "FaLe PDF – un service de FaLe.dev",
+    "popularH": "Tâches populaires"
+  },
+  "tasks": {
+    "sign": {
+      "slug": "signer-pdf",
+      "title": "Signer un PDF – gratuit, sans compte | FaLe PDF",
+      "description": "Signe un PDF sur ton téléphone ou ton ordinateur : dessine ta signature, enregistre-la et place-la d’un simple toucher. Gratuit, sans compte, sans envoi.",
+      "h1": "Signer un PDF",
+      "lede": "Dessine ta signature avec le doigt ou la souris et place-la d’un toucher dans n’importe quel PDF – contrat, formulaire ou procuration.",
+      "cta": "Signer un PDF maintenant",
+      "steps": [
+        {
+          "t": "Ouvrir le PDF",
+          "d": "Ouvre le PDF dans FaLe PDF et choisis « Remplir et signer »."
+        },
+        {
+          "t": "Dessiner ta signature",
+          "d": "Touche « Signature » et dessine-la une fois. FaLe s’en souvient pour la prochaine fois."
+        },
+        {
+          "t": "Placer et enregistrer",
+          "d": "Touche la ligne, ajuste-la avec « Plus grand » ou « Plus petit », puis touche « Enregistrer »."
+        }
+      ],
+      "why": [
+        {
+          "t": "Reste chez toi",
+          "d": "Ta signature et le document sont traités sur ton appareil – rien n’est envoyé en ligne."
+        },
+        {
+          "t": "Plus qu’une signature",
+          "d": "Tu ajoutes tout aussi facilement du texte, la date, des coches, des initiales et tes propres tampons."
+        },
+        {
+          "t": "Sans abonnement",
+          "d": "Signer est gratuit et le reste – sans filigrane et sans compte."
+        }
+      ],
+      "faq": [
+        {
+          "q": "La signature a-t-elle une valeur légale ?",
+          "a": "Tu ajoutes une signature électronique simple – comme sur papier, mais en numérique. Pour beaucoup de documents du quotidien, cela suffit. Quand la loi exige une forme particulière (par exemple une signature qualifiée), c’est cette forme qui compte."
+        },
+        {
+          "q": "Ma signature est-elle enregistrée ?",
+          "a": "Seulement sur ton appareil, pour que tu puisses la placer d’un toucher la prochaine fois. Tu peux la supprimer à tout moment."
+        },
+        {
+          "q": "Est-ce que ça marche aussi sur ordinateur ?",
+          "a": "Oui. FaLe PDF fonctionne dans le navigateur et peut s’installer comme application sous Windows et sur Mac. Sur ordinateur, tu dessines avec la souris ou le pavé tactile."
+        },
+        {
+          "q": "Puis-je aussi remplir des champs de formulaire ?",
+          "a": "Oui. Si le PDF contient des champs de formulaire, tu les remplis dans la même étape, puis tu signes."
+        }
+      ]
+    },
+    "fill": {
+      "slug": "remplir-formulaire-pdf",
+      "title": "Remplir un formulaire PDF – gratuit, sur mobile | FaLe PDF",
+      "description": "Remplis des formulaires PDF : champs de texte, cases et listes sur ton téléphone ou ton ordinateur, ou écris sur un formulaire scanné. Gratuit, sans compte.",
+      "h1": "Remplir un formulaire PDF",
+      "lede": "Remplis les champs du formulaire, ou écris simplement à l’endroit voulu sur un formulaire scanné – avec une grande écriture et des boutons clairs.",
+      "cta": "Remplir un formulaire",
+      "steps": [
+        {
+          "t": "Ouvrir le formulaire",
+          "d": "Ouvre le PDF et choisis « Remplir et signer ». Les champs existants sont mis en évidence."
+        },
+        {
+          "t": "Remplir les champs",
+          "d": "Touche un champ et écris. Pour un formulaire sans champs, touche « Texte », puis l’endroit voulu sur le formulaire."
+        },
+        {
+          "t": "Signer et enregistrer",
+          "d": "Si besoin, ajoute la date, des coches et ta signature, puis touche « Enregistrer »."
+        }
+      ],
+      "why": [
+        {
+          "t": "Même sans champs",
+          "d": "Un formulaire papier scanné n’a pas de champs – tu écris quand même exactement au bon endroit."
+        },
+        {
+          "t": "Commandes simples et grandes",
+          "d": "Taille du texte avec A− et A+, couleurs en un toucher, le tout dans une seule barre en bas."
+        },
+        {
+          "t": "Formulaires officiels",
+          "d": "FaLe ouvre aussi les formulaires officiels spéciaux (XFA), qui ne s’ouvrent sinon que dans un programme PDF précis."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Que faire si le formulaire n’a pas de champs ?",
+          "a": "Touche « Texte », puis l’endroit voulu sur le formulaire. Pour les cases à cocher, il y a « Coche » avec ✓, ✗ ou un point."
+        },
+        {
+          "q": "Puis-je modifier le formulaire plus tard ?",
+          "a": "À l’enregistrement, les champs sont normalement figés pour que personne ne les modifie sans que ça se voie. Si tu veux encore changer quelque chose plus tard, décoche d’abord « Aplatir les champs à l’enregistrement »."
+        },
+        {
+          "q": "Mes saisies sont-elles envoyées en ligne ?",
+          "a": "Non. Le remplissage se fait entièrement sur ton appareil."
+        },
+        {
+          "q": "Et pour les formulaires qui affichent « Veuillez patienter … » ?",
+          "a": "Ce sont le plus souvent des formulaires officiels spéciaux (XFA). Ouvre-les avec « Remplir un formulaire administratif » dans FaLe PDF."
+        }
+      ]
+    },
+    "edit": {
+      "slug": "modifier-pdf",
+      "title": "Modifier un PDF – ajouter texte et images, gratuit | FaLe PDF",
+      "description": "Modifie un PDF sur ton téléphone ou ton ordinateur : ajoute du texte et des images, remplace du texte, masque des passages. Gratuit, sans compte ni envoi.",
+      "h1": "Modifier un PDF",
+      "lede": "Ajoute du texte et des images, change le texte existant ou masque des passages – directement dans ton PDF.",
+      "cta": "Modifier un PDF",
+      "steps": [
+        {
+          "t": "Ouvrir le PDF",
+          "d": "Ouvre le PDF et choisis « Modifier un PDF »."
+        },
+        {
+          "t": "Faire les changements",
+          "d": "Avec « Texte », tu écris du nouveau texte ; avec « Remplacer », tu touches un texte existant pour le changer ; avec « Image », tu ajoutes une photo ou un logo."
+        },
+        {
+          "t": "Enregistrer",
+          "d": "Touche « Enregistrer » – la nouvelle version se trouve dans tes fichiers et l’original est conservé."
+        }
+      ],
+      "why": [
+        {
+          "t": "Changer le texte existant",
+          "d": "« Remplacer » reprend la police, la taille et la couleur de l’endroit, pour que la modification s’intègre bien."
+        },
+        {
+          "t": "Réglages de texte simples",
+          "d": "Taille avec A− et A+, gras, couleur – sans chercher dans des menus."
+        },
+        {
+          "t": "Gratuit, pas en version Pro",
+          "d": "Ce que d’autres ne proposent qu’avec un abonnement est gratuit ici – sans filigrane."
+        }
+      ],
+      "faq": [
+        {
+          "q": "L’ancien texte est-il vraiment supprimé ?",
+          "a": "Lors d’un remplacement, l’ancien texte est recouvert. Pour les passages confidentiels qui doivent disparaître pour de bon du fichier, utilise « Caviarder »."
+        },
+        {
+          "q": "Puis-je ajouter des images et des logos ?",
+          "a": "Oui, en JPG et PNG. Tu les déplaces et les agrandis avec le doigt ou la souris."
+        },
+        {
+          "q": "Est-ce que ça marche hors ligne ?",
+          "a": "Oui. Après la première ouverture, la modification fonctionne aussi sans internet."
+        },
+        {
+          "q": "Mon original est-il conservé ?",
+          "a": "Oui. Une nouvelle version est enregistrée ; tu peux remplacer l’original si tu le souhaites."
+        }
+      ]
+    },
+    "merge": {
+      "slug": "fusionner-pdf",
+      "title": "Fusionner des PDF – plusieurs PDF en un seul | FaLe PDF",
+      "description": "Fusionne plusieurs PDF en un seul fichier et choisis l’ordre – sur ton téléphone ou ton ordinateur, gratuit, sans compte et sans envoi en ligne.",
+      "h1": "Fusionner des PDF",
+      "lede": "Réunis des factures, des scans ou des chapitres en un seul PDF – dans l’ordre que tu veux.",
+      "cta": "Fusionner des PDF",
+      "steps": [
+        {
+          "t": "Choisir les fichiers",
+          "d": "Ouvre « Fusionner » et touche « Ajouter des documents »."
+        },
+        {
+          "t": "Fixer l’ordre",
+          "d": "Fais glisser les fichiers à la bonne place ou utilise les flèches."
+        },
+        {
+          "t": "Fusionner",
+          "d": "Touche « Fusionner » – le nouveau PDF est tout de suite dans tes fichiers."
+        }
+      ],
+      "why": [
+        {
+          "t": "Sans envoi en ligne",
+          "d": "Les fichiers sont réunis sur ton appareil – même les papiers confidentiels restent chez toi."
+        },
+        {
+          "t": "Gros fichiers",
+          "d": "Même des centaines de pages sont traitées rapidement, sans que l’application se bloque."
+        },
+        {
+          "t": "Continue directement",
+          "d": "Ensuite, compresse, signe ou partage – tout dans la même application."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Combien de PDF puis-je fusionner ?",
+          "a": "Autant que ton appareil peut en traiter. Il n’y a pas de limite artificielle."
+        },
+        {
+          "q": "Puis-je laisser de côté certaines pages ?",
+          "a": "Oui. Avec « Organiser les pages », tu supprimes, tournes ou réordonnes des pages avant ou après la fusion."
+        },
+        {
+          "q": "Le texte reste-t-il sélectionnable ?",
+          "a": "Oui. Les pages sont reprises telles quelles : le texte reste sélectionnable et consultable par recherche."
+        },
+        {
+          "q": "Est-ce payant ?",
+          "a": "Non. Fusionner est gratuit, sans filigrane et sans compte."
+        }
+      ]
+    },
+    "compress": {
+      "slug": "compresser-pdf",
+      "title": "Compresser un PDF – pour e-mail et envoi | FaLe PDF",
+      "description": "Rends un PDF plus petit pour qu’il passe dans un e-mail ou un formulaire en ligne : réduis les images ou compresse sans perte. Gratuit, sans envoi.",
+      "h1": "Compresser un PDF",
+      "lede": "Trop lourd pour un e-mail ou un formulaire en ligne ? FaLe PDF réduit le fichier – tu vois la taille avant et après.",
+      "cta": "Compresser un PDF",
+      "steps": [
+        {
+          "t": "Ouvrir le PDF",
+          "d": "Ouvre le PDF et choisis « Compresser un PDF »."
+        },
+        {
+          "t": "Choisir la méthode",
+          "d": "« Réduire les images » pour les scans et les photos, « Sans perte » pour les documents de texte, ou « Forte » pour le fichier le plus petit."
+        },
+        {
+          "t": "Compresser",
+          "d": "Touche le bouton – tu vois tout de suite de combien le fichier a rétréci."
+        }
+      ],
+      "why": [
+        {
+          "t": "Le bon choix déjà sélectionné",
+          "d": "Pour les gros scans, « Réduire les images » est déjà sélectionné – aussi lisible qu’avant."
+        },
+        {
+          "t": "Un résultat honnête",
+          "d": "Si on ne peut plus rien gagner, FaLe te le dit au lieu d’enregistrer un fichier de moins bonne qualité."
+        },
+        {
+          "t": "Sans envoi en ligne",
+          "d": "Même les gros fichiers sont réduits sur ton appareil."
+        }
+      ],
+      "faq": [
+        {
+          "q": "La qualité devient-elle moins bonne ?",
+          "a": "« Sans perte » ne change rien à l’aspect. « Réduire les images » ne recalcule que les photos et les scans, le texte reste net. « Forte » transforme chaque page en image."
+        },
+        {
+          "q": "Le texte reste-t-il sélectionnable ?",
+          "a": "Avec « Sans perte » et « Réduire les images », oui. Avec « Forte », les pages deviennent des images."
+        },
+        {
+          "q": "De combien le fichier rétrécit-il ?",
+          "a": "Cela dépend du contenu. Les scans et les photos se réduisent en général beaucoup, les fichiers de texte pur moins."
+        },
+        {
+          "q": "Y a-t-il une limite de taille ?",
+          "a": "Non, seulement l’espace de stockage de ton appareil."
+        }
+      ]
+    },
+    "scan": {
+      "slug": "scanner-document",
+      "title": "Scanner un document avec ton téléphone – en PDF | FaLe PDF",
+      "description": "Scanne des documents avec l’appareil photo de ton téléphone : bords détectés, page redressée et améliorée, texte consultable. Gratuit, sans compte.",
+      "h1": "Scanner un document avec ton téléphone",
+      "lede": "Tiens ton téléphone au-dessus du papier – FaLe repère la page, la redresse et en fait un PDF propre.",
+      "cta": "Scanner maintenant",
+      "steps": [
+        {
+          "t": "Prendre une photo",
+          "d": "Ouvre le scanner et tiens ton téléphone au-dessus de la page. Les bords sont détectés automatiquement."
+        },
+        {
+          "t": "Vérifier",
+          "d": "Ajuste les coins si besoin et choisis un filtre comme « Amélioré » ou « Noir et blanc »."
+        },
+        {
+          "t": "Enregistrer en PDF",
+          "d": "Touche « Enregistrer le PDF ». Si tu le souhaites, un nom est proposé à partir du contenu."
+        }
+      ],
+      "why": [
+        {
+          "t": "Droit et lisible",
+          "d": "Les photos de travers sont redressées, et des filtres comme « Amélioré » éclaircissent les ombres et le fond grisâtre."
+        },
+        {
+          "t": "Consultable par recherche",
+          "d": "La reconnaissance de texte (allemand et anglais) s’exécute sur ton appareil – ensuite, tu retrouves chaque mot."
+        },
+        {
+          "t": "Plusieurs pages",
+          "d": "Scanne autant de pages que tu veux dans un seul PDF et réordonne-les d’un toucher."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ai-je besoin d’internet ?",
+          "a": "Non. Seule la reconnaissance de texte télécharge ses données linguistiques une fois, la première fois ; ensuite, tout fonctionne hors ligne."
+        },
+        {
+          "q": "Comment le nom du fichier est-il choisi ?",
+          "a": "Si tu laisses le champ du nom vide, FaLe propose un nom tiré du contenu après la reconnaissance de texte. Tu peux le changer d’un toucher."
+        },
+        {
+          "q": "Puis-je aussi utiliser des photos de ma galerie ?",
+          "a": "Oui. Choisis « Depuis les photos / fichiers » et prends des images existantes."
+        },
+        {
+          "q": "Y a-t-il un mode pièce d’identité ?",
+          "a": "Oui. « Scanner une pièce d’identité » place le recto et le verso à leur taille d’origine sur une page A4."
+        }
+      ]
+    },
+    "word": {
+      "slug": "pdf-en-word",
+      "title": "Convertir un PDF en Word – gratuit, sans envoi | FaLe PDF",
+      "description": "Convertis un PDF en document Word modifiable (DOCX) : paragraphes, titres et texte en gras sont conservés. Gratuit, directement sur ton appareil.",
+      "h1": "Convertir un PDF en Word",
+      "lede": "Transforme un PDF en document Word que tu peux modifier – paragraphes, titres et mises en valeur sont conservés.",
+      "cta": "Convertir un PDF en Word",
+      "steps": [
+        {
+          "t": "Ouvrir le PDF",
+          "d": "Ouvre le PDF et choisis « PDF en Word »."
+        },
+        {
+          "t": "Choisir la méthode",
+          "d": "« Texte modifiable » reconstruit les paragraphes et les titres ; « Mise en page fidèle » reprend chaque page exactement comme dans l’original."
+        },
+        {
+          "t": "Convertir",
+          "d": "Touche « Convertir en Word » – le document se trouve dans tes fichiers et peut être modifié tout de suite dans FaLe."
+        }
+      ],
+      "why": [
+        {
+          "t": "Sans envoi en ligne",
+          "d": "La conversion se fait sur ton appareil – tes documents ne le quittent pas."
+        },
+        {
+          "t": "Les scans aussi",
+          "d": "Les pages sans texte peuvent, si tu le souhaites, être transformées en texte par reconnaissance de texte (allemand et anglais)."
+        },
+        {
+          "t": "Modifie tout de suite",
+          "d": "FaLe PDF a son propre éditeur pour les documents Word – aucun autre programme n’est nécessaire."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Le document Word ressemble-t-il exactement au PDF ?",
+          "a": "Avec « Mise en page fidèle », oui, mais alors le texte n’est pas modifiable. « Texte modifiable » reprend le contenu et la structure ; l’aspect peut différer légèrement."
+        },
+        {
+          "q": "Puis-je convertir seulement certaines pages ?",
+          "a": "Oui. Indique les pages, par exemple « 1-3, 5 »."
+        },
+        {
+          "q": "Quel format j’obtiens ?",
+          "a": "Un document Word au format DOCX, qui s’ouvre dans tous les programmes de traitement de texte courants."
+        },
+        {
+          "q": "Combien ça coûte ?",
+          "a": "Rien. Cette fonction Pro est elle aussi gratuite dans FaLe PDF."
+        }
+      ]
+    },
+    "xfa": {
+      "slug": "ouvrir-formulaire-xfa",
+      "title": "Ouvrir et remplir un formulaire XFA – officiel | FaLe PDF",
+      "description": "Un formulaire officiel n’affiche que « Veuillez patienter … » ? FaLe PDF ouvre les formulaires XFA, les remplit, les signe et les enregistre. Gratuit.",
+      "h1": "Ouvrir et remplir un formulaire officiel (XFA)",
+      "lede": "Certains formulaires d’administrations et d’ambassades n’affichent que « Veuillez patienter … » ou une page vide. FaLe PDF les ouvre, tu les remplis et tu les enregistres de nouveau.",
+      "cta": "Ouvrir un formulaire",
+      "steps": [
+        {
+          "t": "Ouvrir le formulaire",
+          "d": "Ouvre le PDF dans FaLe PDF. Si FaLe reconnaît un formulaire officiel, « Remplir le formulaire » apparaît."
+        },
+        {
+          "t": "Remplir et signer",
+          "d": "Remplis les champs. Sur une ligne de signature, un toucher ouvre le champ de signature."
+        },
+        {
+          "t": "Enregistrer ou imprimer",
+          "d": "« Enregistrer » conserve le formulaire d’origine, comme l’administration l’attend. « En PDF normal » et « Imprimer » contiennent aussi la signature."
+        }
+      ],
+      "why": [
+        {
+          "t": "Pas de programme spécial",
+          "d": "Ces formulaires ne s’ouvrent sinon que dans un programme PDF précis – FaLe les ouvre dans le navigateur, sur ton téléphone et sur ton ordinateur."
+        },
+        {
+          "t": "Zoom à deux doigts",
+          "d": "Tu agrandis simplement les petites cases – idéal sur un téléphone."
+        },
+        {
+          "t": "Sûr",
+          "d": "Le code de programme présent dans le formulaire n’est jamais exécuté, par sécurité, et rien n’est envoyé en ligne."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Comment reconnaître un formulaire XFA ?",
+          "a": "Souvent, un lecteur PDF ordinaire n’affiche que la mention « Veuillez patienter … » ou une page vide. FaLe reconnaît ces formulaires automatiquement."
+        },
+        {
+          "q": "L’administration acceptera-t-elle le formulaire enregistré ?",
+          "a": "« Enregistrer » conserve le format d’origine avec tes saisies. Si un PDF normal ou une impression est demandé, utilise « En PDF normal » ou « Imprimer »."
+        },
+        {
+          "q": "Les calculs dans le formulaire fonctionnent-ils ?",
+          "a": "Les scripts du formulaire ne sont pas exécutés, par sécurité. Les calculs ou vérifications automatiques, tu les saisis donc toi-même."
+        },
+        {
+          "q": "Combien ça coûte ?",
+          "a": "Rien – sans compte et sans inscription."
+        }
+      ]
+    }
+  }
+}
