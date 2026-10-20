@@ -75,11 +75,10 @@ Endpreise inkl. 19 % MwSt. (Standard, in `api/_lib/postal.js` → `DEFAULT_PRICE
      sicher, falls die App nach dem Bezahlen geschlossen wird.
 5. Belege: Einstellungen → Kunden-E-Mails → „Erfolgreiche Zahlungen“ einschalten (Stripe schickt die Quittung).
 
-## 4. Datenbank-Migration (Supabase)
+## 4. Datenbank-Migration (Supabase) – erledigt
 
-`supabase/migrations/20261020200000_fale_post.sql` (Tabelle `post_jobs`, RPCs `fale_post_*`, Aufräumfunktion).
-Wie bei den anderen Migrationen im Supabase-SQL-Editor ausführen oder mit `supabase db push`.
-Danach prüfen: `select private.fale_post_purge();` läuft ohne Fehler.
+`supabase/migrations/20261020200000_fale_post.sql` (Tabelle `post_jobs`, RPCs `fale_post_*`, Aufräumfunktion) wurde
+beim Push automatisch vom GitHub-Workflow „DB migrate“ angewendet („1 neue Migration(en) angewendet“). Nichts zu tun.
 
 ## 5. Vercel-Umgebungsvariablen (trägst du selbst ein)
 
