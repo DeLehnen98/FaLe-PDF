@@ -7,6 +7,7 @@ import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { updateFoot, ensureCss, hexToRgb } from './common.js';
+import { formatSpec, ruleFor, problem } from './formcheck.js';
 import { pickAsset } from './sigstore.js';
 import { needsUnicode, uniFont, drawTextImage } from '../office/unifont.js';
 import { locale } from '../i18n/index.js'; // the date is written in the user's own format
@@ -74,7 +75,12 @@ export async function mount(screen, { docId, params }) {
       else if (f instanceof PDFLib.PDFDropdown) { type = 'select'; options = f.getOptions(); value = (f.getSelected() || [])[0] || ''; }
       else if (f instanceof PDFLib.PDFOptionList) { type = 'select'; options = f.getOptions(); value = (f.getSelected() || [])[0] || ''; }
       if (!type) continue;
-      fields.push({ name, type, value, initial: value, options, readOnly: f.isReadOnly(), label });
+      // „Prüfen vor dem Speichern“: Pflichtfeld flag + the field's own format (date, number, postcode) or its name
+      let fmt = formatSpec(PDFLib, f.acroField.dict);
+      if (!fmt) { try { const w0 = f.acroField.getWidgets()[0]; if (w0) fmt = formatSpec(PDFLib, w0.dict); } catch {} }
+      let required = false;
+      try { required = f.isRequired(); } catch {}
+      fields.push({ name, type, value, initial: value, options, readOnly: f.isReadOnly(), label, rule: ruleFor({ name, label, type, required, fmt }) });
     }
   } catch (e) { if (e instanceof UserError) throw e; console.warn('form probe', e); fields = []; }
 
@@ -110,11 +116,12 @@ export async function mount(screen, { docId, params }) {
     fields.forEach((f, i) => {
       const id = `ff-${i}`;
       let ctl;
+      const req = f.rule && f.rule.required ? ' <span class="ff-req">Pflichtfeld</span>' : '';
       if (f.type === 'sig') ctl = `<div class="field"><span class="field-label">${esc(f.label || f.name)}</span><button class="btn btn-soft btn-sm" type="button" data-sigfield="${i}">${icon('sign')} Hier unterschreiben</button></div>`;
-      else if (f.type === 'text') ctl = `<label class="field"><span class="field-label">${esc(f.name)}</span><input class="input" id="${id}" data-fi="${i}" value="${esc(f.value)}" ${f.readOnly ? 'disabled' : ''}></label>`;
-      else if (f.type === 'check') ctl = `<label class="check"><input type="checkbox" id="${id}" data-fi="${i}" ${f.value ? 'checked' : ''} ${f.readOnly ? 'disabled' : ''}><span>${esc(f.name)}</span></label>`;
-      else ctl = `<label class="field"><span class="field-label">${esc(f.name)}</span><select class="select" id="${id}" data-fi="${i}" ${f.readOnly ? 'disabled' : ''}>
-          <option value="">– bitte wählen –</option>${f.options.map(o => `<option ${o === f.value ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select></label>`;
+      else if (f.type === 'text') ctl = `<label class="field" data-ff="${i}"><span class="field-label">${esc(f.name)}${req}</span><input class="input" id="${id}" data-fi="${i}" value="${esc(f.value)}" ${f.readOnly ? 'disabled' : ''} ${f.rule && f.rule.required ? 'aria-required="true"' : ''} aria-describedby="${id}-msg"><span class="ff-msg" id="${id}-msg" role="status" hidden></span></label>`;
+      else if (f.type === 'check') ctl = `<div class="field ff-check" data-ff="${i}"><label class="check"><input type="checkbox" id="${id}" data-fi="${i}" ${f.value ? 'checked' : ''} ${f.readOnly ? 'disabled' : ''} aria-describedby="${id}-msg"><span>${esc(f.name)}${req}</span></label><span class="ff-msg" id="${id}-msg" role="status" hidden></span></div>`;
+      else ctl = `<label class="field" data-ff="${i}"><span class="field-label">${esc(f.name)}${req}</span><select class="select" id="${id}" data-fi="${i}" ${f.readOnly ? 'disabled' : ''} aria-describedby="${id}-msg">
+          <option value="">– bitte wählen –</option>${f.options.map(o => `<option ${o === f.value ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select><span class="ff-msg" id="${id}-msg" role="status" hidden></span></label>`;
       fbox.insertAdjacentHTML('beforeend', ctl);
       if (f.type === 'text' && profile && !f.readOnly) {
         const m = matchProfile(f.name, f.label, profile, fields.map(x => x.name));
@@ -152,7 +159,10 @@ export async function mount(screen, { docId, params }) {
       f.value = f.type === 'check' ? e.target.checked : e.target.value;
       updateFieldOverlays(f.name);
       markDirty();
+      if (f.msgShown || f.type !== 'text') showCheck(f); // a shown hint disappears as soon as the entry is right
     });
+    // check an entry when the person leaves the field (not while typing)
+    fbox.addEventListener('focusout', e => { const i = e.target.dataset.fi; if (i != null && fields[+i].value !== fields[+i].initial) showCheck(fields[+i]); });
     fbox.addEventListener('focusin', e => { const i = e.target.dataset.fi; if (i != null) focusWidget(fields[+i].name); });
     $('[data-close]', panel).addEventListener('click', () => panel.classList.remove('open'));
   }
@@ -338,6 +348,45 @@ export async function mount(screen, { docId, params }) {
     if (ctl) ctl.value = v;
     updateFieldOverlays(f.name);
     markDirty();
+    if (f.msgShown) showCheck(f);
+  }
+
+  // „Prüfen vor dem Speichern“: the message under a field (js/tools/formcheck.js)
+  function fieldProblem(f) { return f.readOnly || !f.rule ? null : problem(f.rule, f.value, f.type); }
+  function showCheck(f) {
+    const i = fields.indexOf(f);
+    const box = panel && panel.querySelector(`[data-ff="${i}"]`);
+    if (!box) return null;
+    const msg = fieldProblem(f);
+    const el = box.querySelector('.ff-msg');
+    box.classList.toggle('ff-bad', !!msg);
+    const ctl = box.querySelector('[data-fi]');
+    if (ctl) { if (msg) ctl.setAttribute('aria-invalid', 'true'); else ctl.removeAttribute('aria-invalid'); }
+    if (el) { el.hidden = !msg; el.textContent = msg || ''; }
+    f.msgShown = !!msg;
+    return msg;
+  }
+  function goToField(f) {
+    openPanel();
+    const ctl = panel && panel.querySelector(`[data-fi="${fields.indexOf(f)}"]`);
+    if (ctl) { ctl.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => ctl.focus({ preventScroll: true }), 250); }
+    focusWidget(f.name);
+  }
+  /** Before saving: list what would make the form come back. true = save, false = the person fixes it first. */
+  async function checkBeforeSave() {
+    const bad = fields.map(f => ({ f, msg: showCheck(f) })).filter(x => x.msg);
+    if (!bad.length) return true;
+    const shown = bad.slice(0, 8);
+    const r = await openDialog({
+      title: bad.length === 1 ? 'Bitte ein Feld prüfen' : `Bitte ${bad.length} Felder prüfen`,
+      body: `<p class="ff-intro">Damit das Formular nicht zurückkommt:</p><ul class="ff-list">${shown.map((x, k) => `<li><button class="ff-go" type="submit" value="go:${k}"><strong>${esc(x.f.label || x.f.name)}</strong><span>${esc(x.msg)}</span>${icon('chevronRight')}</button></li>`).join('')}</ul>
+        ${bad.length > shown.length ? `<p class="hint">… und ${bad.length - shown.length} weitere.</p>` : ''}`,
+      actions: [{ label: 'Trotzdem speichern', value: 'save' }, { label: 'Felder prüfen', value: 'fix', kind: 'btn-primary', default: true }],
+    });
+    if (r.value === 'save') return true;
+    const k = r.value && r.value.startsWith('go:') ? +r.value.slice(3) : 0;
+    goToField(shown[k] ? shown[k].f : bad[0].f);
+    return false;
   }
 
   async function signField(f) {
@@ -728,6 +777,7 @@ export async function mount(screen, { docId, params }) {
   }
 
   saveBtn.addEventListener('click', async () => {
+    if (fields.length && !(await checkBeforeSave())) return;
     saveBtn.disabled = true;
     const prog = progress('Speichere …');
     try {

@@ -906,10 +906,38 @@ def onboarding_and_ai(p):
 
         def ob():
             page.wait_for_selector('.onboard', timeout=8000)
-            check(f'{label}: onboarding shown on first start', page.locator('.onboard .ob-step:not([hidden]) h2').inner_text() == 'Willkommen bei FaLe')
+            # step 1: language – device language first and chosen, all 16 languages, greetings animated
+            langs = page.locator('.ob-lang')
+            check(f'{label}: onboarding starts with the language choice', page.locator('.onboard .ob-step:not([hidden]) h2').inner_text() == 'Wähle deine Sprache'
+                  and langs.count() == 16 and langs.first.get_attribute('data-lang') == 'de' and langs.first.get_attribute('aria-checked') == 'true'
+                  and 'Gerätesprache' in langs.first.inner_text())
+            page.wait_for_timeout(1500)
+            n_anim = page.evaluate("[...document.querySelectorAll('.ob-hi, .ob-globe')].reduce((n, e) => n + e.getAnimations().filter(a => a.playState === 'running').length, 0)")
+            vis = page.evaluate("[...document.querySelectorAll('.ob-hi')].filter(e => +getComputedStyle(e).opacity > .5).length")
+            check(f'{label}: greetings animated (several „Hallo“ visible at once)', n_anim >= 10 and vis >= 2, (n_anim, vis))
+            shot(page, f'{label}_onboarding_0_lang')
+            ob_lang = page.locator('.ob-lang')
+            big = all(ob_lang.nth(i).bounding_box()['height'] >= 44 for i in range(16))
+            check(f'{label}: language buttons big enough (≥ 44 px)', big)
+            if label == 'phone':
+                page.locator('.ob-lang[data-lang="en"]').click(); page.wait_for_timeout(900)
+                check(f'{label}: tapping English switches at once (no reload)', page.locator('.ob-step:not([hidden]) h2').inner_text() == 'Choose your language'
+                      and page.locator('[data-next]').inner_text().strip() == 'Next' and page.evaluate("localStorage.getItem('fale-lang')") == 'en')
+                page.locator('.ob-lang[data-lang="de"]').click()
+                page.wait_for_selector('.onboard .ob-step:not([hidden]) h2', timeout=15000); page.wait_for_timeout(900)
+                check(f'{label}: back to the device language: reload continues on the same step, setting „auto“', page.locator('.ob-step:not([hidden]) h2').inner_text() == 'Wähle deine Sprache'
+                      and page.evaluate("localStorage.getItem('fale-lang')") == 'auto' and page.locator('.ob-lang[data-lang="de"]').get_attribute('aria-checked') == 'true'
+                      and page.evaluate("localStorage.getItem('fale-onboarding-step')") is None)
+            page.locator('[data-next]').click()
+            check(f'{label}: welcome step slides in, logo and file icons animated', page.locator('.onboard .ob-step:not([hidden]) h2').inner_text() == 'Willkommen bei FaLe'
+                  and page.locator('.ob-step.ob-in-next:not([hidden])').count() == 1
+                  and page.evaluate("[...document.querySelectorAll('.ob-step:not([hidden]) .ob-f')].every(e => e.getAnimations().length >= 1)"))
             shot(page, f'{label}_onboarding_1_light')
             page.locator('[data-next]').click()
             check(f'{label}: privacy promise step', 'Deine Dateien gehören dir' in page.locator('.ob-step:not([hidden])').inner_text())
+            page.locator('[data-back]').click(); page.wait_for_timeout(100)
+            check(f'{label}: „Zurück“ slides in from the other side', page.locator('.ob-step.ob-in-back:not([hidden]) h2').inner_text() == 'Willkommen bei FaLe')
+            page.locator('[data-next]').click()
             shot(page, f'{label}_onboarding_2_light')
             page.locator('[data-next]').click()
             # step 3: choose the view (simple / all features) – applied at once, keyboard-operable radio group
@@ -951,6 +979,16 @@ def onboarding_and_ai(p):
                   and page.evaluate("localStorage.getItem('fale-simple-hint')") == 'hidden')
             check(f'{label}: chosen text size still active after reload', page.locator('html.ts-l').count() == 1)
             page.evaluate("import('./js/simple.js').then(m => { m.setSimple(false); m.setTextSize('normal'); })")
+            # language later: Ich → Einstellungen
+            page.evaluate("location.hash = '#/einstellungen'"); page.wait_for_selector('#set-lang')
+            sel = page.locator('#set-lang')
+            check(f'{label}: settings: language choice (Automatisch + 16 languages in their own names)', sel.locator('option').count() == 17 and sel.input_value() == 'auto'
+                  and 'Automatisch (Deutsch)' in sel.locator('option').first.inner_text() and 'Français' in sel.inner_text())
+            sel.select_option('fr'); page.wait_for_selector('#set-lang', timeout=15000); page.wait_for_timeout(800)
+            check(f'{label}: settings: French applies (after reload)', page.evaluate("document.documentElement.lang") == 'fr' and page.locator('#set-lang').input_value() == 'fr'
+                  and 'Paramètres' in page.locator('#view-einstellungen').inner_text())
+            page.locator('#set-lang').select_option('auto'); page.wait_for_selector('#set-lang', timeout=15000); page.wait_for_timeout(800)
+            check(f'{label}: settings: back to automatic (German device)', page.evaluate("document.documentElement.lang") == 'de')
         step(f'{label} onboarding', ob)
         ctx.close()
 

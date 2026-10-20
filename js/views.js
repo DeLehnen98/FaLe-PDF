@@ -8,7 +8,7 @@ import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, ope
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
 import { isNative } from './platform.js';
-import { t } from './i18n/index.js';
+import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
 const extrasHome = () => import('./extras/home.js');
@@ -773,6 +773,10 @@ export async function renderSettings() {
     <div class="month-box" data-month-me></div>
     <h2 class="section-title">Einstellungen</h2>
     <div class="card settings-group">
+      <div class="settings-row" data-lang-row><div class="label"><strong>Sprache</strong><span>Automatisch folgt FaLe der Sprache deines Geräts.</span></div>
+        <select class="select" id="set-lang" aria-label="Sprache">
+          <option value="auto" data-no-i18n>${esc(t('Automatisch ({name})', { name: LANG_NAMES[deviceLang()] }))}</option>${LANGS.map(c => `<option value="${c}" lang="${c}" data-no-i18n>${LANG_NAMES[c]}</option>`).join('')}
+        </select></div>
       <div class="settings-row"><div class="label"><strong>Erscheinungsbild</strong><span>Automatisch folgt deinem System.</span></div>
         <div class="seg" role="group" aria-label="Erscheinungsbild">
           <button type="button" data-theme-opt="auto">Auto</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button>
@@ -849,6 +853,9 @@ export async function renderSettings() {
     toast(e.target.checked ? 'Einfache Ansicht ist an.' : 'Alle Funktionen werden wieder angezeigt.', 'success');
   });
   bindTextSize($('[data-textsize-row]', el), size => toast(size === 'xl' ? 'Schrift ist jetzt sehr groß.' : size === 'l' ? 'Schrift ist jetzt groß.' : 'Schrift ist wieder normal groß.', 'success'));
+  const ls = $('#set-lang', el);
+  ls.value = getLangSetting();
+  ls.addEventListener('change', () => { setLang(ls.value).catch(e => errorToast(e, 'Sprache konnte nicht geladen werden.')); });
   const zs = $('#set-zoom', el);
   zs.value = zoom;
   zs.addEventListener('change', async () => { await db.setSetting('defaultZoom', zs.value); toast('Gespeichert', 'success'); });

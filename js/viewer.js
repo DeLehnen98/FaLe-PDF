@@ -910,6 +910,21 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
       el.querySelector('[data-plus-go]').addEventListener('click', () => { location.hash = `#/werkzeug/unterschreiben?doc=${id}`; });
       st.appendChild(el);
     }
+    // Echtheits-Siegel (js/tools/seal.js): green „Unverändert seit …“ or red „Nach dem Versiegeln geändert“
+    import('./library.js').then(m => m.getDocBytes(id)).then(async b => {
+      if (!b || b.length > 80e6) return;
+      const sm = await import('./tools/seal.js');
+      if (!sm.hasSeal(b)) return;
+      const r = await sm.verifySeal(b, doc.name, id);
+      if (!r || !cur || cur.pdf !== pdf) return;
+      const tx = sm.sealText(r), st = q('stage');
+      st.querySelectorAll('.seal-banner').forEach(x => x.remove());
+      const el = h(`<div class="ocr-banner seal-banner ${tx.good ? 'seal-good' : 'seal-bad'}" role="status">${icon(tx.good ? 'shield' : 'info')}<span data-no-i18n><b>${esc(tx.title)}</b> · ${esc(tx.detail)}</span>
+        <span class="ocr-banner-act"><button class="btn btn-soft btn-sm" type="button" data-seal-go>Details</button><button class="icon-btn" type="button" data-seal-x aria-label="Hinweis schließen">${icon('close')}</button></span></div>`);
+      el.querySelector('[data-seal-go]').addEventListener('click', () => { location.hash = `#/werkzeug/siegel?doc=${id}`; });
+      el.querySelector('[data-seal-x]').addEventListener('click', () => el.remove());
+      st.appendChild(el);
+    }).catch(e => console.warn('Siegel', e));
     saveProgress(id, startPage, pdf.numPages);
     applyWakeLock();
     if (query) openFind(query);

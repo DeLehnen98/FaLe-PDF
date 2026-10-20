@@ -627,3 +627,7 @@ Kreditinstitut
 Bemerkungen
 E-Rechnung (Original-XML, unverändert)
 .pdf,application/pdf,image/*,.xml,application/xml,text/xml
+Rect
+Data
+About
+FaLe PDF Echtheits-Siegel: zeigt in FaLe, ob die Datei nach dem Versiegeln verändert wurde

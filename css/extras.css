@@ -301,6 +301,66 @@
 .ob-mini-full i.r { grid-column: 1 / -1; height: 5px; background: var(--accent); opacity: .7; }
 .ob-view[aria-checked="true"] .ob-mini { box-shadow: inset 0 0 0 1px var(--primary); }
 /* step 3: text size, compact under the two view cards (js/simple.js textSizeSeg) */
+/* ---- first start: language step + animations (one moment per step; still under „Bewegung reduzieren“) ---- */
+.ob-step.ob-in-next { animation: ob-in-r .34s var(--ease-out) both; }
+.ob-step.ob-in-back { animation: ob-in-l .34s var(--ease-out) both; }
+@keyframes ob-in-r { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes ob-in-l { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.ob-art-lang { background:
+    radial-gradient(90% 120% at 0% 0%, rgba(124, 108, 255, .45), transparent 60%),
+    radial-gradient(90% 110% at 100% 100%, rgba(45, 212, 191, .35), transparent 60%),
+    linear-gradient(160deg, #2A2477 0%, #16124A 60%, #0E0B2E 100%); }
+.ob-globe { position: relative; z-index: 1; width: 76px; height: 76px; border-radius: 24px; display: grid; place-items: center; background: #fff; color: var(--primary); box-shadow: 0 10px 30px rgba(0, 0, 0, .3); animation: ob-bob 4.2s ease-in-out infinite; }
+.ob-globe .ic { width: 40px; height: 40px; }
+.ob-hi { position: absolute; padding: 5px 11px; border-radius: 14px 14px 14px 4px; background: rgba(255, 255, 255, .14); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); color: #fff; font-weight: 700; font-size: .9375rem; white-space: nowrap; opacity: 0;
+  animation: ob-hi 9.6s ease-in-out infinite; animation-delay: calc(var(--i) * .6s - .2s); }
+.ob-hi:nth-child(4n+2) { left: 7%; top: 14%; } .ob-hi:nth-child(4n+3) { right: 8%; top: 36%; border-radius: 14px 14px 4px 14px; }
+.ob-hi:nth-child(4n+4) { left: 11%; bottom: 12%; } .ob-hi:nth-child(4n+5) { right: 15%; bottom: 8%; border-radius: 14px 14px 4px 14px; }
+@keyframes ob-hi { 0% { opacity: 0; transform: translateY(8px) scale(.9); } 3%, 21% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-6px); } }
+@keyframes ob-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.ob-langs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; width: 100%; margin-top: 6px; }
+.ob-lang { position: relative; display: grid; align-content: center; justify-items: start; gap: 1px; min-height: 52px; padding: 8px 34px 8px 12px; border: 2px solid var(--border); border-radius: var(--radius-md); background: var(--surface); color: var(--text); text-align: left; cursor: pointer; font: inherit; transition: border-color var(--dur-2), background-color var(--dur-2); }
+.ob-lang:hover { border-color: var(--border-strong); }
+.ob-lang:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.ob-lang-n { font-weight: 700; font-size: 1rem; }
+.ob-lang-dev { font-size: .75rem; color: var(--text-2); }
+.ob-lang-ok { position: absolute; right: 9px; top: 50%; width: 20px; height: 20px; margin-top: -10px; border-radius: 999px; display: grid; place-items: center; background: var(--primary); color: #fff; transform: scale(0); transition: transform .28s var(--ease-spring); }
+.ob-lang-ok .ic { width: 13px; height: 13px; stroke-width: 3; }
+.ob-lang[aria-checked="true"] { border-color: var(--primary); background: var(--primary-soft); }
+.ob-lang[aria-checked="true"] .ob-lang-ok { transform: scale(1); }
+/* welcome: the logo arrives, the file kinds float around it */
+.ob-art-1 .ob-logo { animation: ob-pop .6s var(--ease-spring) both; }
+.ob-art-1 .ob-f { animation: ob-float 5s ease-in-out infinite alternate, ob-fade .5s ease-out both; }
+.ob-art-1 .ob-f.f2 { animation-delay: -1.2s, .12s; } .ob-art-1 .ob-f.f3 { animation-delay: -2.4s, .24s; } .ob-art-1 .ob-f.f4 { animation-delay: -3.6s, .36s; }
+@keyframes ob-pop { from { opacity: 0; transform: scale(.55); } to { opacity: 1; transform: none; } }
+@keyframes ob-fade { from { opacity: 0; } }
+@keyframes ob-float { from { transform: translate(0, 0) rotate(-4deg); } to { transform: translate(4px, -9px) rotate(4deg); } }
+/* privacy: a calm ring around the shield, the lock clicks in */
+.ob-art-2 .ob-shield { position: relative; z-index: 1; }
+.ob-ring { position: absolute; width: 84px; height: 84px; border-radius: 30px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .5); animation: ob-ring 2.8s ease-out infinite; }
+@keyframes ob-ring { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(1.9); } }
+.ob-lockbadge { position: absolute; z-index: 2; left: calc(50% + 22px); top: calc(50% + 14px); width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center; background: #fff; color: #0F5F63; box-shadow: 0 6px 16px rgba(0, 0, 0, .25); animation: ob-lock .7s .35s var(--ease-spring) both; }
+.ob-lockbadge .ic { width: 20px; height: 20px; }
+@keyframes ob-lock { from { opacity: 0; transform: translateY(-16px) scale(.6); } to { opacity: 1; transform: none; } }
+/* set up: the profile card fills itself in */
+.ob-art-3 { gap: 0; grid-auto-flow: column; justify-content: center; column-gap: 14px; }
+.ob-form { display: grid; gap: 8px; width: 116px; padding: 12px; border-radius: 14px; background: rgba(255, 255, 255, .14); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+.ob-form i { display: block; height: 8px; border-radius: 4px; background: #fff; transform-origin: left center; animation: ob-type 3.6s steps(8, end) infinite; }
+.ob-form i:nth-child(2) { width: 78%; animation-delay: .5s; } .ob-form i:nth-child(3) { width: 56%; animation-delay: 1s; }
+@keyframes ob-type { 0%, 8% { transform: scaleX(0); } 40%, 88% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .ob-step.ob-in-next, .ob-step.ob-in-back, .ob-globe, .ob-art-1 .ob-logo, .ob-art-1 .ob-f, .ob-ring, .ob-lockbadge, .ob-form i { animation: none; }
+  .ob-hi { animation: none; opacity: 0; }
+  .ob-hi:nth-child(-n+5) { opacity: 1; } /* four greetings stand still */
+  .ob-ring { opacity: 0; }
+}
+@media (max-width: 480px) {
+  .ob-langs { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .ob-lang { min-height: 48px; padding: 6px 30px 6px 10px; }
+  .ob-lang-n { font-size: .9375rem; }
+  .ob-hi { font-size: .8125rem; padding: 4px 9px; }
+  .ob-form { width: 92px; }
+}
 .ob-size { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 12px; width: 100%; margin-top: 4px; scroll-margin-bottom: 96px; }
 .ob-size-l { font-weight: 650; color: var(--text-2); font-size: .875rem; }
 /* small phones (360 × 640): step 3 fits without scrolling at the normal text size */
@@ -358,3 +418,11 @@
   .vault-lock { margin-top: 6px; }
   .dup-head .btn { width: 100%; }
 }
+
+/* Echtheits-Siegel banner in the viewer (js/tools/seal.js) */
+.ocr-banner.seal-banner.seal-good { border-color: color-mix(in srgb, var(--success, #1E9E6A) 45%, var(--border)); background: color-mix(in srgb, var(--success, #1E9E6A) 10%, var(--surface)); }
+.ocr-banner.seal-banner.seal-good > .ic { color: var(--success, #1E9E6A); }
+.ocr-banner.seal-banner.seal-bad { border-color: color-mix(in srgb, var(--danger) 50%, var(--border)); background: color-mix(in srgb, var(--danger) 10%, var(--surface)); }
+.ocr-banner.seal-banner.seal-bad > .ic { color: var(--danger); }
+.seal-banner b { font-weight: 750; }
+.plus-banner ~ .seal-banner { top: 76px; }

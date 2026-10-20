@@ -965,3 +965,46 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
   .sh-acts { grid-column: 1 / -1; }
   .sh-acts .btn { flex: 1; min-height: 44px; }
 }
+
+/* ---- „Prüfen vor dem Speichern“ (js/tools/formcheck.js): Pflichtfeld tag, message under a field, check list ---- */
+.ff-req { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--primary-soft); color: var(--primary-strong); font-size: calc(11.5px * var(--ts, 1)); font-weight: 700; vertical-align: 1px; }
+.ff-check { gap: 2px; }
+.ff-msg { display: flex; gap: 6px; align-items: flex-start; margin-top: 4px; color: var(--danger, #C2412D); font-size: calc(13.5px * var(--ts, 1)); font-weight: 600; line-height: 1.35; animation: ff-in .22s ease-out; }
+.ff-msg::before { content: "!"; flex: none; width: 18px; height: 18px; border-radius: 999px; display: grid; place-items: center; background: var(--danger, #C2412D); color: #fff; font-size: 12px; font-weight: 800; margin-top: 1px; }
+.ff-msg[hidden] { display: none; }
+.ff-bad .input, .ff-bad .select { border-color: var(--danger, #C2412D); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger, #C2412D) 18%, transparent); }
+@keyframes ff-in { from { opacity: 0; transform: translateY(-4px); } }
+.ff-intro { margin: 0 0 10px; color: var(--text-2); }
+.ff-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ff-go { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 10px; width: 100%; min-height: 56px; padding: 10px 12px; border: 1px solid var(--border); border-left: 4px solid var(--danger, #C2412D); border-radius: 12px; background: var(--surface); color: var(--text); text-align: left; font: inherit; cursor: pointer; }
+.ff-go:hover { background: var(--surface-2); }
+.ff-go:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.ff-go strong { grid-column: 1; font-size: calc(15px * var(--ts, 1)); }
+.ff-go span { grid-column: 1; color: var(--text-2); font-size: calc(13.5px * var(--ts, 1)); line-height: 1.35; }
+.ff-go .ic { grid-column: 2; grid-row: 1 / span 2; width: 20px; height: 20px; color: var(--text-3, var(--text-2)); }
+@media (prefers-reduced-motion: reduce) { .ff-msg { animation: none; } }
+
+/* ---- Formulardaten sammeln (js/tools/formdata.js) ---- */
+.fd-item.fd-empty .doc-meta { color: var(--danger, #C2412D); }
+.fd-preview { margin-top: 14px; }
+.fd-table-card { padding: 14px; }
+.fd-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.fd-scroll { overflow: auto; max-height: 360px; border: 1px solid var(--border); border-radius: 10px; }
+.fd-table { border-collapse: collapse; font-size: calc(13.5px * var(--ts, 1)); min-width: 100%; }
+.fd-table th, .fd-table td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; white-space: nowrap; max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
+.fd-table th { position: sticky; top: 0; background: var(--surface-2); font-weight: 700; }
+.fd-table td:first-child { font-weight: 600; }
+
+/* ---- Echtheits-Siegel tool (js/tools/seal.js) ---- */
+.seal-status { display: flex; gap: 14px; align-items: center; padding: 16px; border-width: 2px; }
+.seal-status strong { display: block; font-size: calc(17px * var(--ts, 1)); }
+.seal-status p { margin: 2px 0 0; color: var(--text-2); }
+.seal-ic { flex: none; width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; color: #fff; }
+.seal-ic .ic { width: 26px; height: 26px; }
+.seal-status.seal-good { border-color: var(--success, #1E9E6A); }
+.seal-status.seal-good .seal-ic { background: var(--success, #1E9E6A); animation: seal-pop .5s var(--ease-spring, ease-out) both; }
+.seal-status.seal-bad { border-color: var(--danger); }
+.seal-status.seal-bad .seal-ic { background: var(--danger); }
+.seal-kennung { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+@keyframes seal-pop { from { transform: scale(.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .seal-status .seal-ic { animation: none; } }

@@ -311,7 +311,7 @@ def run_english_phone(p):
         page.evaluate("localStorage.removeItem('fale-onboarded'); localStorage.setItem('fale-onboarding-force', '1'); location.hash = '#/start'")
         page.reload()
         page.wait_for_selector('.onboard', timeout=8000)
-        n = page.locator('.onboard .ob-step').count()  # 4 steps since the view / text size choice
+        n = page.locator('.onboard .ob-step').count()  # 5 steps since the language choice
         for i in range(n):
             scan(page, f'phone onboarding {i}')
             shot(page, f'phone_onboarding_{i}')
@@ -336,7 +336,8 @@ def run_switching(p):
     check('de-DE auto: German', page.evaluate('document.documentElement.lang') == 'de' and 'Werkzeuge' in page.locator('.side-nav').inner_text())
     check('de-DE auto: no dictionary loaded', page.evaluate('window.FaLeI18n.lang()') == 'de')
     goto(page, '#/einstellungen', 800)
-    check('no language switch in the settings (language follows the device)', page.locator('[data-lang-select], #set-lang').count() == 0)
+    check('settings: language choice, „Automatisch (Deutsch)“ follows the device', page.locator('#set-lang').count() == 1 and page.locator('#set-lang').input_value() == 'auto'
+          and 'Automatisch (Deutsch)' in page.locator('#set-lang option').first.inner_text())
     ctx.close()
     # device language decides; languages without a dictionary get English
     have = lambda code: os.path.exists(os.path.join(ROOT_DIR, 'js', 'i18n', f'{code}.js'))

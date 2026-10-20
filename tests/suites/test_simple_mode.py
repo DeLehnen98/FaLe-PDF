@@ -554,6 +554,7 @@ def ts_matrix(b):
                     page.wait_for_selector('.onboard [data-next]')
                     page.click('.onboard [data-next]')
                     page.click('.onboard [data-next]')
+                    page.click('.onboard [data-next]')
                     page.wait_for_timeout(400)
                     o = page.evaluate(JS_OVERFLOW_ALL)
                     if o:

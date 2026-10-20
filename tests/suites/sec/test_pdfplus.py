@@ -327,11 +327,19 @@ def desktop(p):
         check('sign: profile suggestions shown', pg.locator('.sign-prof').count() >= 5)
         pg.locator('.sign-autofill').click()
         pg.wait_for_timeout(300)
-        vals = pg.evaluate("Object.fromEntries(Array.from(document.querySelectorAll('.form-panel input.input[data-fi]')).map(i => [i.closest('label').querySelector('.field-label').textContent, i.value]))")
+        vals = pg.evaluate("Object.fromEntries(Array.from(document.querySelectorAll('.form-panel input.input[data-fi]')).map(i => [i.closest('label').querySelector('.field-label').firstChild.textContent, i.value]))")
         check('sign: autofill from profile', vals.get('Vorname') == 'Max' and vals.get('Nachname') == 'Mustermann' and vals.get('PLZ / Ort') == '66111 Saarbrücken' and vals.get('E-Mail') == 'max@example.de' and vals.get('Straße') == 'Musterweg 5', str(vals))
         shot(pg, 'desk_light_sign_autofill')
         pg.locator('[data-flatten]').uncheck()
         pg.locator('.screen-foot .btn-primary').click()
+        # „Prüfen vor dem Speichern“: Telefon and Tarif are Pflichtfelder and still empty → list, then „Trotzdem speichern“
+        # „Prüfen vor dem Speichern“: „PLZ / Ort“ = „66111 Saarbrücken“ is fine; empty Pflichtfelder may be listed → „Trotzdem speichern“
+        pg.wait_for_timeout(800)
+        if pg.locator('dialog[open] .ff-list').count():
+            lst = pg.locator('dialog[open] .ff-list').inner_text()
+            check('sign: check list only names real problems (not „PLZ / Ort“)', 'PLZ' not in lst, lst)
+            pg.locator('dialog[open] button[value="save"]').click()
+            no_dialog(pg)
         pg.wait_for_selector('.sign-stage .result-card', timeout=30000)
         path = dl(pg, pg.locator('.sign-stage [data-r=dl]'), 'filled.pdf')
         f2 = PdfReader(path).get_fields()
