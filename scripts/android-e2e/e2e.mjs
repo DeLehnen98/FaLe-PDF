@@ -479,8 +479,19 @@ async function main() {
     await ev(`location.hash = '#/werkzeug/unterschreiben?doc=${docId}'; return true;`);
     if (!await waitJs(`!!document.querySelector('.sign-page canvas')`, { timeout: 40000 })) throw new Error('Unterschreiben lädt nicht (' + await ev(`return location.hash + ' ' + document.querySelectorAll('.sign-page').length;`).catch(e => e.message) + ')');
     await sleep(1000);
-    await tap('[data-mode="sign"]');
-    if (!await waitJs(`!!document.querySelector('dialog[open] canvas.sig-pad')`, { timeout: 10000 })) throw new Error('Unterschriften-Dialog erscheint nicht');
+    const btn = await tap('[data-mode="sign"]');
+    if (!await waitJs(`!!document.querySelector('dialog[open] canvas.sig-pad')`, { timeout: 10000 })) {
+      // what did the finger hit? (a toast or another layer over the button, or the tap never reached the page)
+      const hit = await ev(`const e = document.elementFromPoint(${btn.x + btn.w / 2}, ${btn.y + btn.h / 2}); const d = document.querySelector('dialog[open]');
+        return (e ? e.tagName + '.' + String(e.className).slice(0, 60) + ' ' + (e.textContent || '').trim().slice(0, 40) : 'nichts') + ' | Dialog: ' + (d ? (d.textContent || '').trim().slice(0, 80) : 'keiner') + ' | pressed=' + document.querySelector('[data-mode="sign"]').getAttribute('aria-pressed');`).catch(e => e.message);
+      screenshot('sign-no-dialog');
+      console.log(`::warning title=E2E Unterschrift::kein Dialog nach dem Tippen – getroffen: ${esc(hit)} – ${esc(focusedWindow())}`);
+      await ensureApp();
+      await closeOverlays();
+      await sleep(4000); // toasts gone
+      await tap('[data-mode="sign"]');
+      if (!await waitJs(`!!document.querySelector('dialog[open] canvas.sig-pad')`, { timeout: 10000 })) throw new Error('Unterschriften-Dialog erscheint nicht (getroffen: ' + hit + ')');
+    }
     await sleep(700);
     const pad = await rectOf('dialog[open] canvas.sig-pad');
     const pts = [];
