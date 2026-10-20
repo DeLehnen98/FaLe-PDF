@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Toca un texto existente para reescribirlo: el texto antiguo se borra al guardar.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Dibuja un área: lo que haya debajo se borra al guardar.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Eliminando el contenido cubierto (página {0}) …",
+  "So funktioniert Schwärzen": "Así funciona «Censurar»",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Las zonas marcadas se vuelven negras y se borran para siempre: el texto de debajo ya no se puede copiar ni encontrar. Para ello, las páginas marcadas se guardan como imagen. Tu original no cambia; FaLe guarda un archivo nuevo.",
+  "So funktioniert Abdecken": "Así funciona «Cubrir»",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "La zona toma el color del fondo y lo que hay debajo se borra del archivo al guardar, no solo se tapa. El resto del texto sigue pudiendo buscarse. Si debajo hay una imagen, esa página se guarda como imagen. Tu original no cambia.",
+  "Nicht mehr anzeigen": "No volver a mostrar",
 };
 
 export const defaultValues = {

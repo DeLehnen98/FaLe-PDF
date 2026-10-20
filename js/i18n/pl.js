@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Dotknij istniejącego tekstu, aby go napisać od nowa – stary tekst zostanie usunięty przy zapisie.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Zaznacz obszar – to, co jest pod spodem, zostanie usunięte przy zapisie.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Usuwanie zakrytej treści (strona {0}) …",
+  "So funktioniert Schwärzen": "Jak działa zaczernianie",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Zaznaczone miejsca stają się czarne i zostają trwale usunięte – tekstu pod nimi nie da się już skopiować ani znaleźć. Strony z zaznaczeniami są w tym celu zapisywane jako obraz. Oryginał pozostaje bez zmian, FaLe zapisuje nowy plik.",
+  "So funktioniert Abdecken": "Jak działa zakrywanie",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Obszar dostaje kolor tła, a to, co jest pod nim, zostaje przy zapisie usunięte z pliku – a nie tylko zasłonięte. Reszta tekstu pozostaje możliwa do wyszukania. Jeśli pod spodem jest obraz, ta strona zostanie zapisana jako obraz. Oryginał pozostaje bez zmian.",
+  "Nicht mehr anzeigen": "Nie pokazuj ponownie",
 };
 
 export const defaultValues = {

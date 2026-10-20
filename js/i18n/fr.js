@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Touchez un texte existant pour le réécrire – l’ancien texte est supprimé à l’enregistrement.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Tracez une zone – ce qui se trouve dessous est supprimé à l’enregistrement.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Suppression du contenu masqué (page {0}) …",
+  "So funktioniert Schwärzen": "Comment fonctionne « Caviarder »",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Les zones marquées deviennent noires et sont supprimées définitivement – le texte en dessous ne peut plus être copié ni retrouvé. Pour cela, les pages marquées sont enregistrées comme image. Votre original reste inchangé, FaLe enregistre un nouveau fichier.",
+  "So funktioniert Abdecken": "Comment fonctionne « Recouvrir »",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "La zone prend la couleur du fond, et ce qui se trouve dessous est supprimé du fichier à l’enregistrement – pas seulement masqué. Le reste du texte reste consultable par recherche. Si une image se trouve dessous, cette page est enregistrée comme image. Votre original reste inchangé.",
+  "Nicht mehr anzeigen": "Ne plus afficher",
 };
 
 export const defaultValues = {

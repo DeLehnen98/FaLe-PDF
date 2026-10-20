@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Yeniden yazmak için mevcut metne dokun – eski metin kaydederken silinir.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Bir alan çiz – altında kalan her şey kaydederken silinir.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Kapatılan içerik kaldırılıyor (sayfa {0}) …",
+  "So funktioniert Schwärzen": "Karartma nasıl çalışır",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "İşaretlenen yerler siyah olur ve kalıcı olarak silinir – altındaki metin artık kopyalanamaz veya bulunamaz. Bunun için işaretli sayfalar resim olarak kaydedilir. Orijinalin değişmez, FaLe yeni bir dosya kaydeder.",
+  "So funktioniert Abdecken": "Kapatma nasıl çalışır",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Alan arka plan rengini alır ve altında kalan her şey kaydederken dosyadan silinir – sadece gizlenmez. Metnin geri kalanı aranabilir kalır. Altında bir resim varsa o sayfa resim olarak kaydedilir. Orijinalin değişmez.",
+  "Nicht mehr anzeigen": "Bir daha gösterme",
 };
 
 export const defaultValues = {

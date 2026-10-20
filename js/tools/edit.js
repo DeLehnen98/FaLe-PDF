@@ -9,6 +9,7 @@ import { loadPdf, renderPage, canvasToBlob } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, PageStage, INK_COLORS, swatches, hexToRgb, makeSanitizer, readImageFile, guardLeave, proBadge, updateFoot } from './common.js';
 import { pageChars, nearestChar } from './textgeom.js';
+import { safetyHint } from './safetyhint.js';
 import { needsUnicode, fontForText, drawTextImage } from '../office/unifont.js';
 
 const MODES = [
@@ -101,11 +102,15 @@ export async function mount(screen, { docId }) {
     if (selected && selected.type === 'text') { commit(); Object.assign(selected, patch); place(selected); }
     else Object.assign(style, patch);
   }
+  let coverHint = null;
   function setMode(m) {
     mode = m;
     toolbar.querySelectorAll('[data-tool]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tool === m)));
     stageEl.classList.toggle('drawing', m === 'cover');
     stageEl.dataset.mode = m;
+    // „Abdecken“: what happens to the content underneath – every time until „Nicht mehr anzeigen“
+    if (m === 'cover' && !coverHint) { coverHint = safetyHint('cover'); if (coverHint) propsBar.after(coverHint); }
+    else if (m !== 'cover' && coverHint) { coverHint.remove(); coverHint = null; }
     select(null);
     if (m === 'image' && !pendingImage) chooseImage();
   }

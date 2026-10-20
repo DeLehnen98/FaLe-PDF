@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Торкніться наявного тексту, щоб переписати його – старий текст буде видалено під час збереження.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Виділіть область – усе, що під нею, буде видалено під час збереження.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Видалення закритого вмісту (сторінка {0}) …",
+  "So funktioniert Schwärzen": "Як працює зачорнення",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Позначені місця стають чорними й видаляються назавжди – текст під ними більше не можна скопіювати чи знайти. Для цього сторінки з позначками зберігаються як зображення. Ваш оригінал не змінюється, FaLe зберігає новий файл.",
+  "So funktioniert Abdecken": "Як працює закриття",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Область отримує колір фону, а все, що під нею, під час збереження видаляється з файлу – а не просто ховається. Решта тексту залишається доступною для пошуку. Якщо під нею зображення, ця сторінка зберігається як зображення. Ваш оригінал не змінюється.",
+  "Nicht mehr anzeigen": "Більше не показувати",
 };
 
 export const defaultValues = {

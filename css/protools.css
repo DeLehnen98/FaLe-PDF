@@ -903,3 +903,45 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
   .pf-offer .pf-acts { width: 100%; }
   .pf-offer .pf-acts .btn { flex: 1; min-height: 44px; }
 }
+
+/* ---------- Hinweis-Karte Schwärzen / Abdecken (js/tools/safetyhint.js) ---------- */
+.sh-card { flex: none; display: flex; gap: 14px; align-items: center; margin: 8px 12px 0; padding: 12px 14px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(20, 22, 46, .06); animation: sh-in .32s ease-out both; }
+.sh-card.sh-out { animation: sh-out .22s ease-in both; }
+.sh-text { flex: 1; min-width: 0; }
+.sh-text strong { display: block; font-size: calc(15px * var(--ts, 1)); }
+.sh-text p { margin: 3px 0 8px; font-size: calc(13.5px * var(--ts, 1)); line-height: 1.45; color: var(--text-2); }
+.sh-acts { display: flex; flex-wrap: wrap; gap: 6px; }
+.sh-art { flex: none; width: 132px; height: 64px; }
+.sh-paper { fill: #fff; stroke: #D6D9E6; }
+.sh-line rect { fill: #B9BED0; }
+.sh-secret rect { fill: #4A5070; animation: sh-secret 4.8s ease-in-out infinite; }
+.sh-dust circle { fill: #8A90AA; opacity: 0; animation: sh-dust 4.8s ease-out infinite; }
+.sh-box { transform-box: fill-box; transform-origin: left center; animation: sh-box 4.8s ease-in-out infinite; }
+.sh-box-redact { fill: #14162E; }
+.sh-box-cover { fill: #fff; stroke: var(--primary); stroke-width: 1.4; stroke-dasharray: 3 2; }
+.sh-check { transform-box: fill-box; transform-origin: center; animation: sh-check 4.8s ease-out infinite; }
+.sh-check circle { fill: var(--success, #1E9E6A); }
+.sh-check path { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes sh-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes sh-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes sh-box { 0%, 12% { transform: scaleX(0); opacity: 1; } 32%, 46% { transform: scaleX(1); opacity: 1; } 56%, 76% { transform: scaleX(1); opacity: .28; } 86% { transform: scaleX(1); opacity: 1; } 96%, 100% { transform: scaleX(0); opacity: 1; } }
+@keyframes sh-secret { 0%, 33% { opacity: 1; } 37%, 95% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes sh-dust { 0%, 37% { opacity: 0; transform: translateY(0); } 41% { opacity: 1; transform: translateY(0); } 62%, 100% { opacity: 0; transform: translateY(-14px); } }
+@keyframes sh-check { 0%, 58% { transform: scale(0); } 65% { transform: scale(1.15); } 70%, 90% { transform: scale(1); } 96%, 100% { transform: scale(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .sh-card, .sh-card.sh-out { animation: none; }
+  .sh-secret rect, .sh-dust circle, .sh-box, .sh-check { animation: none; }
+  .sh-secret rect { opacity: 0; }
+  .sh-box { opacity: .35; }
+}
+@media (max-width: 640px) {
+  /* phone: picture beside the title, text and buttons below – compact */
+  .sh-card { display: grid; grid-template-columns: 84px 1fr; column-gap: 12px; row-gap: 6px; align-items: center; margin: 8px 8px 0; padding: 10px 12px; }
+  .sh-text { display: contents; }
+  .sh-art { width: 84px; height: 41px; grid-row: 1; grid-column: 1; }
+  .sh-text strong { grid-row: 1; grid-column: 2; }
+  .sh-text p { grid-column: 1 / -1; margin: 0; font-size: calc(13px * var(--ts, 1)); }
+  .sh-acts { grid-column: 1 / -1; }
+  .sh-acts .btn { flex: 1; min-height: 44px; }
+}

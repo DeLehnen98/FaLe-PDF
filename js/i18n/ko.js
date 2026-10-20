@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "기존 텍스트를 탭해 다시 쓰세요. 저장할 때 이전 텍스트는 삭제됩니다.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "영역을 드래그하세요. 저장할 때 그 아래 내용은 삭제됩니다.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "가려진 내용 삭제 중({0}페이지) …",
+  "So funktioniert Schwärzen": "가리기 작동 방식",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "표시한 부분은 검게 바뀌고 완전히 삭제됩니다. 그 아래 텍스트는 더 이상 복사하거나 찾을 수 없습니다. 이를 위해 표시가 있는 페이지는 이미지로 저장됩니다. 원본은 그대로이고, FaLe는 새 파일을 저장합니다.",
+  "So funktioniert Abdecken": "덮기 작동 방식",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "영역은 배경색으로 바뀌고, 그 아래 내용은 저장할 때 파일에서 삭제됩니다. 단순히 가려지는 것이 아닙니다. 나머지 텍스트는 계속 검색할 수 있습니다. 아래에 그림이 있으면 그 페이지는 이미지로 저장됩니다. 원본은 그대로입니다.",
+  "Nicht mehr anzeigen": "다시 표시하지 않기",
 };
 
 export const defaultValues = {

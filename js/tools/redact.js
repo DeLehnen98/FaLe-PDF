@@ -9,6 +9,7 @@ import { loadPdf, renderPage, canvasToBlob } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, PageStage, svgEl, guardLeave, createPan, tick, proBadge, updateFoot } from './common.js';
 import { pageChars, nearestChar, boxesFor, findInPage, PRESETS } from './textgeom.js';
+import { safetyHint } from './safetyhint.js';
 
 const MODES = [
   { id: 'area', label: 'Bereich', icon: 'square', hint: 'Bereich aufziehen, der geschwärzt werden soll.' },
@@ -35,10 +36,11 @@ export async function mount(screen, { docId }) {
     b.addEventListener('click', () => (m.id === 'search' ? searchDialog() : setMode(m.id)));
     toolbar.appendChild(b);
   });
-  const info = h(`<div class="pt-redact-info">${icon('shield')}<span>Sicheres Schwärzen: Seiten mit Markierungen werden als Bild neu aufgebaut. Text, Bilder und Kommentare darunter werden <b>dauerhaft entfernt</b> – nicht nur überdeckt. Andere Seiten bleiben unverändert. ${proBadge()}</span></div>`);
+  // what happens to the content underneath – shown every time until „Nicht mehr anzeigen“ (js/tools/safetyhint.js)
+  const info = safetyHint('redact');
   const propsBar = h('<div class="pt-props"></div>');
   const stageEl = h('<div class="pt-stage" tabindex="-1"></div>');
-  screen.body.append(toolbar, info, propsBar, stageEl);
+  screen.body.append(...[toolbar, info, propsBar, stageEl].filter(Boolean));
   const undoBtn = h(`<button class="icon-btn" type="button" aria-label="Rückgängig" disabled>${icon('undo')}</button>`);
   screen.extra.append(undoBtn);
   undoBtn.addEventListener('click', () => {
@@ -64,7 +66,7 @@ export async function mount(screen, { docId }) {
     stageEl.classList.toggle('drawing', m === 'area' || m === 'text');
     stageEl.dataset.mode = m;
     const def = MODES.find(x => x.id === m);
-    propsBar.innerHTML = `<span class="pt-hint">${esc(def.hint || '')}</span>`;
+    propsBar.innerHTML = `<span class="pt-hint">${esc(def.hint || '')}</span><span class="pt-hint" style="margin-left:auto">${proBadge()}</span>`;
   }
 
   function commit() { undoStack.push(JSON.stringify(marks)); if (undoStack.length > 100) undoStack.shift(); }

@@ -6446,6 +6446,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Tap existing text to rewrite it – the old text is deleted when you save.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Drag out an area – whatever lies underneath is deleted when you save.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Removing covered content (page {0}) …",
+  "So funktioniert Schwärzen": "How redacting works",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Marked areas turn black and are deleted for good – the text underneath can no longer be copied or found. Pages with marks are saved as an image for this. Your original stays unchanged; FaLe saves a new file.",
+  "So funktioniert Abdecken": "How covering works",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "The area gets the background colour, and whatever lies underneath is deleted from the file when you save – not just hidden. The rest of the text stays searchable. If a picture lies underneath, that page is saved as an image. Your original stays unchanged.",
+  "Nicht mehr anzeigen": "Don't show again",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

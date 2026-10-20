@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Tik op bestaande tekst om die te herschrijven – de oude tekst wordt bij het opslaan verwijderd.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Trek een gebied – wat eronder ligt, wordt bij het opslaan verwijderd.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Afgedekte inhoud verwijderen (pagina {0}) …",
+  "So funktioniert Schwärzen": "Zo werkt zwartlakken",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Gemarkeerde stukken worden zwart en definitief verwijderd – de tekst eronder kun je daarna niet meer kopiëren of vinden. Pagina's met markeringen worden daarvoor als afbeelding opgeslagen. Je origineel blijft ongewijzigd; FaLe slaat een nieuw bestand op.",
+  "So funktioniert Abdecken": "Zo werkt afdekken",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Het gebied krijgt de achtergrondkleur, en wat eronder ligt, wordt bij het opslaan uit het bestand verwijderd – niet alleen verborgen. De rest van de tekst blijft doorzoekbaar. Ligt er een afbeelding onder, dan wordt die pagina als afbeelding opgeslagen. Je origineel blijft ongewijzigd.",
+  "Nicht mehr anzeigen": "Niet meer tonen",
 };
 
 export const defaultValues = {

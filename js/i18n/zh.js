@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "点按现有文字即可重写——保存时会删除旧文字。",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "拖出一个区域——保存时会删除其下方的内容。",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "正在删除被遮盖的内容（第 {0} 页）…",
+  "So funktioniert Schwärzen": "涂黑的工作方式",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "标记的区域会变黑并被永久删除——下方的文字之后无法再复制或搜索到。为此，带标记的页面会保存为图片。你的原文件保持不变，FaLe 会保存一个新文件。",
+  "So funktioniert Abdecken": "覆盖的工作方式",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "该区域会填上背景色，保存时会把下方的内容从文件中删除——不只是遮住。其余文字仍可搜索。如果下方有图片，该页会保存为图片。你的原文件保持不变。",
+  "Nicht mehr anzeigen": "不再显示",
 };
 
 export const defaultValues = {

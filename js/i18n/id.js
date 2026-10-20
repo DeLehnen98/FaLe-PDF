@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Ketuk teks yang ada untuk menulis ulang – teks lama dihapus saat menyimpan.",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Tarik sebuah area – apa pun di bawahnya dihapus saat menyimpan.",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "Menghapus konten yang ditutup (halaman {0}) …",
+  "So funktioniert Schwärzen": "Cara kerja Sensor",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "Bagian yang ditandai menjadi hitam dan dihapus permanen – teks di bawahnya tidak bisa lagi disalin atau ditemukan. Untuk itu, halaman yang ditandai disimpan sebagai gambar. File aslimu tidak berubah; FaLe menyimpan file baru.",
+  "So funktioniert Abdecken": "Cara kerja Tutupi",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Area diberi warna latar, dan apa pun di bawahnya dihapus dari file saat menyimpan – bukan sekadar disembunyikan. Teks lainnya tetap bisa dicari. Jika ada gambar di bawahnya, halaman itu disimpan sebagai gambar. File aslimu tidak berubah.",
+  "Nicht mehr anzeigen": "Jangan tampilkan lagi",
 };
 
 export const defaultValues = {

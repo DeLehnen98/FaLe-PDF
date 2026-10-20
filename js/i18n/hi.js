@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "मौजूदा टेक्स्ट पर टैप करके उसे दोबारा लिखें – सेव करते समय पुराना टेक्स्ट हटा दिया जाता है।",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "एक क्षेत्र खींचें – सेव करते समय उसके नीचे की सामग्री हटा दी जाती है।",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "ढकी हुई सामग्री हटाई जा रही है (पेज {0}) …",
+  "So funktioniert Schwärzen": "छिपाना (रेडैक्ट) कैसे काम करता है",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "चिह्नित जगहें काली हो जाती हैं और हमेशा के लिए मिटा दी जाती हैं – उनके नीचे का टेक्स्ट फिर कॉपी या खोजा नहीं जा सकता। इसके लिए चिह्न वाले पेज इमेज के रूप में सेव होते हैं। आपकी मूल फ़ाइल नहीं बदलती, FaLe एक नई फ़ाइल सेव करता है।",
+  "So funktioniert Abdecken": "ढकना कैसे काम करता है",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "क्षेत्र पृष्ठभूमि के रंग का हो जाता है, और उसके नीचे जो है वह सेव करते समय फ़ाइल से मिटा दिया जाता है – सिर्फ़ छिपाया नहीं जाता। बाकी टेक्स्ट खोजा जा सकता है। अगर नीचे कोई तस्वीर है, तो वह पेज इमेज के रूप में सेव होता है। आपकी मूल फ़ाइल नहीं बदलती।",
+  "Nicht mehr anzeigen": "फिर से न दिखाएँ",
 };
 
 export const defaultValues = {

@@ -6428,6 +6428,11 @@ export default {
   "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "既存のテキストをタップして書き直せます。保存時に古いテキストは削除されます。",
   "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "範囲をドラッグで指定します。保存時にその下の内容は削除されます。",
   "Entferne abgedeckte Inhalte (Seite {0}) …": "隠した内容を削除中（{0} ページ）…",
+  "So funktioniert Schwärzen": "墨消しのしくみ",
+  "Markierte Stellen werden schwarz und endgültig gelöscht – der Text darunter lässt sich danach nicht mehr kopieren oder finden. Seiten mit Markierungen werden dafür als Bild gespeichert. Dein Original bleibt unverändert, FaLe speichert eine neue Datei.": "マークした部分は黒くなり、完全に削除されます。その下の文字はコピーも検索もできなくなります。そのため、マークのあるページは画像として保存されます。元のファイルは変わらず、FaLe は新しいファイルを保存します。",
+  "So funktioniert Abdecken": "「覆う」のしくみ",
+  "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "範囲は背景色になり、その下にある内容は保存時にファイルから削除されます（隠すだけではありません）。ほかの文字はそのまま検索できます。下に画像がある場合、そのページは画像として保存されます。元のファイルは変わりません。",
+  "Nicht mehr anzeigen": "今後は表示しない",
 };
 
 export const defaultValues = {
