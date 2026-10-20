@@ -473,6 +473,9 @@ async function main() {
   // ---- sign ----
   await step('Unterschreiben', async () => {
     await closeOverlays();
+    // the print/share steps before can leave the launcher focused on the API 34 image (taps then never reach the
+    // app) – this step needs real touch input for drawing, so bring the app to the front first
+    await ensureApp();
     await ev(`location.hash = '#/werkzeug/unterschreiben?doc=${docId}'; return true;`);
     if (!await waitJs(`!!document.querySelector('.sign-page canvas')`, { timeout: 40000 })) throw new Error('Unterschreiben lädt nicht (' + await ev(`return location.hash + ' ' + document.querySelectorAll('.sign-page').length;`).catch(e => e.message) + ')');
     await sleep(1000);
