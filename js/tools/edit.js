@@ -1,10 +1,11 @@
-// Tool: PDF bearbeiten — add text and images, cover areas, and "Text überdecken & ersetzen"
-// (tap existing text: it is covered with the background colour and re-typed in an editable box).
+// Tool: PDF bearbeiten — add text and images, cover areas, and "Text ersetzen"
+// (tap existing text: it is covered with the background colour and re-typed in an editable box). On saving, what lies
+// under covered areas is deleted from the file (js/tools/purge.js), not only hidden.
 import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, progress, baseName, pickFiles } from '../ui.js';
 import { resultCard } from '../components.js';
 import { saveResult } from '../library.js';
-import { loadPdf } from '../pdfcore.js';
+import { loadPdf, renderPage, canvasToBlob } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { openToolDoc, PageStage, INK_COLORS, swatches, hexToRgb, makeSanitizer, readImageFile, guardLeave, proBadge, updateFoot } from './common.js';
 import { pageChars, nearestChar } from './textgeom.js';
@@ -14,8 +15,8 @@ const MODES = [
   { id: 'select', label: 'Auswählen', icon: 'pointer', hint: 'Elemente antippen zum Bearbeiten, ziehen zum Verschieben.' },
   { id: 'text', label: 'Text', icon: 'text', hint: 'Tippe auf die Seite, um Text einzufügen.' },
   { id: 'image', label: 'Bild', icon: 'image', hint: 'Tippe auf die Seite, um das gewählte Bild zu platzieren.' },
-  { id: 'replace', label: 'Ersetzen', icon: 'edit', hint: 'Tippe auf vorhandenen Text, um ihn zu überdecken und neu zu schreiben.' },
-  { id: 'cover', label: 'Abdecken', icon: 'square', hint: 'Bereich aufziehen, der mit Hintergrundfarbe abgedeckt wird.' },
+  { id: 'replace', label: 'Ersetzen', icon: 'edit', hint: 'Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.' },
+  { id: 'cover', label: 'Abdecken', icon: 'square', hint: 'Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.' },
 ];
 const FONTS = { sans: 'Helvetica', serif: 'Times', mono: 'Courier' };
 const CSS_FONT = { sans: 'Helvetica, Arial, sans-serif', serif: '"Times New Roman", Times, serif', mono: '"Courier New", Courier, monospace' };
@@ -95,7 +96,6 @@ export async function mount(screen, { docId }) {
       const def = MODES.find(m => m.id === mode);
       propsBar.appendChild(h(`<span class="pt-hint">${esc(def.hint)}</span>`));
     }
-    if (mode === 'replace' && !selected) propsBar.appendChild(h(`<span class="pt-hint pt-warn">${icon('info')} Überdeckter Text bleibt in der Datei – für sicheres Entfernen „Schwärzen“ nutzen.</span>`));
   }
   function apply(patch) {
     if (selected && selected.type === 'text') { commit(); Object.assign(selected, patch); place(selected); }
@@ -452,12 +452,38 @@ export async function mount(screen, { docId }) {
       const getFont = async (f, b) => { const k = f + (b ? 'b' : ''); if (!fontCache.has(k)) fontCache.set(k, await pdfDoc.embedFont(SF[f][b ? 1 : 0])); return fontCache.get(k); };
       const imgCache = new Map();
       const pages = pdfDoc.getPages();
+      // „Abdecken“ / „Ersetzen“: what lies under a covered area is really deleted (js/tools/purge.js), not only hidden.
+      // Pages where that cannot be done exactly (pictures, comments, unknown fonts) are rebuilt as an image.
+      const rastered = new Set();
+      const covers = items.filter(it => it.type === 'cover');
+      if (covers.length) {
+        const { purgePage } = await import('./purge.js');
+        const byPage = new Map();
+        covers.forEach(c => { if (!byPage.has(c.page)) byPage.set(c.page, []); byPage.get(c.page).push(c); });
+        for (const [num, list] of byPage) {
+          prog.set(`Entferne abgedeckte Inhalte (Seite ${num}) …`);
+          const info = stage.pages[num - 1];
+          const rects = list.map(c => {
+            const pts = [info.base.convertToPdfPoint(c.x, c.y), info.base.convertToPdfPoint(c.x + c.w, c.y), info.base.convertToPdfPoint(c.x, c.y + c.h), info.base.convertToPdfPoint(c.x + c.w, c.y + c.h)];
+            return { x0: Math.min(...pts.map(q => q[0])), y0: Math.min(...pts.map(q => q[1])), x1: Math.max(...pts.map(q => q[0])), y1: Math.max(...pts.map(q => q[1])) };
+          });
+          const r = await purgePage(PDFLib, pdfDoc, pages[num - 1], rects);
+          if (r.raster) { await rasterize(PDFLib, pdfDoc, pages[num - 1], info, list); rastered.add(num); }
+        }
+        // tagged-PDF structure can repeat the removed text (alternate / actual text); old streams must not stay in the file
+        pdfDoc.catalog.delete(PDFLib.PDFName.of('StructTreeRoot'));
+        pdfDoc.catalog.delete(PDFLib.PDFName.of('MarkInfo'));
+        await pdfDoc.flush();
+        (await import('./redact.js')).collectGarbage(PDFLib, pdfDoc.context);
+      }
       // covers first (below new text), then images, then text
       const order = { cover: 0, image: 1, text: 2 };
       for (const it of [...items].sort((a, b) => order[a.type] - order[b.type])) {
         const info = stage.pages[it.page - 1];
         const page = pages[it.page - 1];
-        const V = (x, y) => info.base.convertToPdfPoint(x, y);
+        // a page rebuilt as an image has a plain coordinate system (no rotation, origin bottom left)
+        const V = rastered.has(it.page) ? (x, y) => [x, info.base.height - y] : (x, y) => info.base.convertToPdfPoint(x, y);
+        if (it.type === 'cover' && rastered.has(it.page)) continue; // already painted into the page image
         const o = V(0, 0), ox = V(1, 0);
         const angle = Math.round(Math.atan2(ox[1] - o[1], ox[0] - o[0]) * 180 / Math.PI);
         if (it.type === 'cover') {
@@ -501,6 +527,44 @@ export async function mount(screen, { docId }) {
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
     finally { prog.done(); markDirty(); }
   });
+
+  /** Rebuild a page as an image (200 dpi) with the covered areas painted in – nothing of the old content stays. */
+  async function rasterize(PDFLib, pdfDoc, page, info, list) {
+    const { PDFName } = PDFLib;
+    const ctx = pdfDoc.context;
+    const W = info.base.width, H = info.base.height;
+    let sc = 200 / 72;
+    if (W * H * sc * sc > 14e6) sc = Math.sqrt(14e6 / (W * H));
+    const canvas = await renderPage(info.page, { scale: sc });
+    const g = canvas.getContext('2d');
+    for (const c of list) { g.fillStyle = c.color || '#ffffff'; g.fillRect(Math.floor(c.x * sc) - 1, Math.floor(c.y * sc) - 1, Math.ceil(c.w * sc) + 2, Math.ceil(c.h * sc) + 2); }
+    const blob = await canvasToBlob(canvas, 'image/jpeg', 0.92);
+    canvas.width = canvas.height = 0;
+    const img = await pdfDoc.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+    const node = page.node;
+    // form fields whose widgets sit on this page: their values would stay in the file otherwise
+    const { PDFArray, PDFRef, PDFDict } = PDFLib;
+    const gone = new Set();
+    const annots = node.lookup(PDFName.of('Annots'));
+    if (annots instanceof PDFArray) for (let i = 0; i < annots.size(); i++) { const a = annots.get(i); if (a instanceof PDFRef) gone.add(a.tag); }
+    const acro = pdfDoc.catalog.lookup(PDFName.of('AcroForm'));
+    if (acro instanceof PDFDict && gone.size) {
+      const prune = arr => {
+        if (!(arr instanceof PDFArray)) return;
+        for (let i = arr.size() - 1; i >= 0; i--) {
+          const ref = arr.get(i), f = arr.lookup(i);
+          if (ref instanceof PDFRef && gone.has(ref.tag)) { arr.remove(i); continue; }
+          if (f instanceof PDFDict) { const kids = f.lookup(PDFName.of('Kids')); if (kids instanceof PDFArray) { prune(kids); if (!kids.size()) arr.remove(i); } }
+        }
+      };
+      prune(acro.lookup(PDFName.of('Fields')));
+    }
+    for (const key of ['Contents', 'Annots', 'Thumb', 'PieceInfo', 'Metadata', 'StructParents', 'AA', 'B', 'CropBox', 'BleedBox', 'TrimBox', 'ArtBox', 'Group']) node.delete(PDFName.of(key));
+    node.set(PDFName.of('MediaBox'), ctx.obj([0, 0, W, H]));
+    node.set(PDFName.of('Rotate'), ctx.obj(0));
+    node.set(PDFName.of('Resources'), ctx.obj({ XObject: { FaLeCover: img.ref } }));
+    node.set(PDFName.of('Contents'), ctx.register(ctx.flateStream(`q ${+W.toFixed(4)} 0 0 ${+H.toFixed(4)} 0 0 cm /FaLeCover Do Q`)));
+  }
 
   guardLeave(screen, () => items.length > 0 && snapshot() !== savedSnapshot);
   // intro hint (once)

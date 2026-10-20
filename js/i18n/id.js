@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "Faktur untuk perusahaan atau instansi pemerintah?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "Kalau begitu sebagai e-faktur (ZUGFeRD atau XRechnung) – wajib di Jerman bagi sebagian besar perusahaan mulai 2027/2028.",
   "E-Rechnung erstellen": "Buat e-faktur",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Ketuk teks yang ada untuk menulis ulang – teks lama dihapus saat menyimpan.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Tarik sebuah area – apa pun di bawahnya dihapus saat menyimpan.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "Menghapus konten yang ditutup (halaman {0}) …",
 };
 
 export const defaultValues = {

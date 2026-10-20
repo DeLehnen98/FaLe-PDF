@@ -6443,6 +6443,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "Invoice to a company or public authority?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "Then as an e-invoice (ZUGFeRD or XRechnung) – required in Germany for most businesses from 2027/2028.",
   "E-Rechnung erstellen": "Create e-invoice",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Tap existing text to rewrite it – the old text is deleted when you save.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Drag out an area – whatever lies underneath is deleted when you save.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "Removing covered content (page {0}) …",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

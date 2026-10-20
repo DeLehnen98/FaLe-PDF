@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "Bir şirkete veya kamu kurumuna fatura mı?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "O zaman e-fatura olarak (ZUGFeRD veya XRechnung) – Almanya'da çoğu işletme için 2027/2028'den itibaren zorunlu.",
   "E-Rechnung erstellen": "E-fatura oluştur",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Yeniden yazmak için mevcut metne dokun – eski metin kaydederken silinir.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Bir alan çiz – altında kalan her şey kaydederken silinir.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "Kapatılan içerik kaldırılıyor (sayfa {0}) …",
 };
 
 export const defaultValues = {

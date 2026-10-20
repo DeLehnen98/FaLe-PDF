@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "회사나 관공서에 보내는 청구서인가요?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "그렇다면 전자 청구서(ZUGFeRD 또는 XRechnung)로 보내세요. 독일에서는 2027/2028년부터 대부분의 기업에 의무입니다.",
   "E-Rechnung erstellen": "전자 청구서 만들기",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "기존 텍스트를 탭해 다시 쓰세요. 저장할 때 이전 텍스트는 삭제됩니다.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "영역을 드래그하세요. 저장할 때 그 아래 내용은 삭제됩니다.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "가려진 내용 삭제 중({0}페이지) …",
 };
 
 export const defaultValues = {

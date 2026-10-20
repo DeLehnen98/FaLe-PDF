@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "किसी कंपनी या सरकारी विभाग को बिल?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "तो ई-इनवॉइस (ZUGFeRD या XRechnung) के रूप में – जर्मनी में ज़्यादातर कंपनियों के लिए 2027/2028 से अनिवार्य।",
   "E-Rechnung erstellen": "ई-इनवॉइस बनाएँ",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "मौजूदा टेक्स्ट पर टैप करके उसे दोबारा लिखें – सेव करते समय पुराना टेक्स्ट हटा दिया जाता है।",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "एक क्षेत्र खींचें – सेव करते समय उसके नीचे की सामग्री हटा दी जाती है।",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "ढकी हुई सामग्री हटाई जा रही है (पेज {0}) …",
 };
 
 export const defaultValues = {

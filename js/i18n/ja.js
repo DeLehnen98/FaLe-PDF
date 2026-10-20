@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "会社や官公庁あての請求書ですか？",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "その場合は電子請求書（ZUGFeRD または XRechnung）で。ドイツでは 2027/2028 年から多くの企業で義務になります。",
   "E-Rechnung erstellen": "電子請求書を作成",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "既存のテキストをタップして書き直せます。保存時に古いテキストは削除されます。",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "範囲をドラッグで指定します。保存時にその下の内容は削除されます。",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "隠した内容を削除中（{0} ページ）…",
 };
 
 export const defaultValues = {

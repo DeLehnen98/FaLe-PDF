@@ -22,7 +22,7 @@ process.removeAllListeners('warning'); // core.js is an ES module in a package w
 const args = new Set(process.argv.slice(2));
 
 // Files / folders that never contain UI text (vendor code, the dictionary itself, workers without UI).
-const SKIP_PATHS = [/^js\/i18n\//, /^js\/webtools\/catalog\.js$/, /^js\/one\//, /^vendor/, /^node_modules/, /^dist/, /^android/, /^api\//, /^supabase\//, /^scripts\//];
+const SKIP_PATHS = [/^js\/i18n\//, /^js\/webtools\/catalog\.js$/, /^js\/tools\/purge\.js$/, /^js\/one\//, /^vendor/, /^node_modules/, /^dist/, /^android/, /^api\//, /^supabase\//, /^scripts\//];
 // HTML pages handled by their own bilingual sections (legal pages) – not runtime-translated.
 const SKIP_HTML = new Set(['datenschutz.html', 'impressum.html', 'info.html', 'info-en.html']);
 // Generated document content that stays German on purpose (German letters, DIN 5008, legal templates).

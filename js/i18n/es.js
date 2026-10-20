@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "¿Factura a una empresa o a la administración?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "Entonces como factura electrónica (ZUGFeRD o XRechnung): obligatoria en Alemania para la mayoría de las empresas a partir de 2027/2028.",
   "E-Rechnung erstellen": "Crear factura electrónica",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Toca un texto existente para reescribirlo: el texto antiguo se borra al guardar.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Dibuja un área: lo que haya debajo se borra al guardar.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "Eliminando el contenido cubierto (página {0}) …",
 };
 
 export const defaultValues = {

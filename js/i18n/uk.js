@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "Рахунок для компанії чи державної установи?",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "Тоді як електронний рахунок (ZUGFeRD або XRechnung) – у Німеччині обов’язковий для більшості компаній з 2027/2028 року.",
   "E-Rechnung erstellen": "Створити електронний рахунок",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "Торкніться наявного тексту, щоб переписати його – старий текст буде видалено під час збереження.",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "Виділіть область – усе, що під нею, буде видалено під час збереження.",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "Видалення закритого вмісту (сторінка {0}) …",
 };
 
 export const defaultValues = {

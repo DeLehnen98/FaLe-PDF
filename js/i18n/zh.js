@@ -6425,6 +6425,9 @@ export default {
   "Rechnung an eine Firma oder Behörde?": "开给公司或政府机关的发票？",
   "Dann als E-Rechnung (ZUGFeRD oder XRechnung) – für die meisten Firmen ab 2027/2028 Pflicht.": "那就做成电子发票（ZUGFeRD 或 XRechnung）——在德国，大多数企业从 2027/2028 年起必须使用。",
   "E-Rechnung erstellen": "创建电子发票",
+  "Tippe auf vorhandenen Text, um ihn neu zu schreiben – der alte Text wird beim Speichern gelöscht.": "点按现有文字即可重写——保存时会删除旧文字。",
+  "Bereich aufziehen – was darunter liegt, wird beim Speichern gelöscht.": "拖出一个区域——保存时会删除其下方的内容。",
+  "Entferne abgedeckte Inhalte (Seite {0}) …": "正在删除被遮盖的内容（第 {0} 页）…",
 };
 
 export const defaultValues = {
