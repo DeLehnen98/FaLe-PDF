@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "양식이 다시 돌아오지 않게 하려면:",
   "Trotzdem speichern": "그래도 저장",
   "Felder prüfen": "항목 확인",
+  "Unterschreib einmal zum Üben": "연습으로 한 번 서명해 보세요",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "손가락이나 마우스로. FaLe가 서명을 이 기기에만 저장해 두었다가 나중에 한 번 탭으로 넣어 줍니다.",
+  "Was möchtest du zuerst tun?": "먼저 무엇을 하시겠어요?",
+  "Formulare ausfüllen": "양식 작성",
+  "Brief schreiben": "편지 쓰기",
+  "Kündigung, Widerspruch …": "해지, 이의 신청 …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "도움말: 위쪽 검색으로 모든 기능을 찾을 수 있습니다. 이 소개는 ‘프로필 → 설정’에서 다시 볼 수 있습니다.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "서명이 저장되었습니다. 서명할 때 찾을 수 있습니다.",
+  "Erinnerungen aufs Handy": "휴대폰 알림",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "FaLe가 기한을 제때 알려 드릴 수 있도록 휴대폰이 곧 알림 허용 여부를 묻습니다. 거기서 ‘허용’을 탭하세요.",
 };
 
 export const defaultValues = {

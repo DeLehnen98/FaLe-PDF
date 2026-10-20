@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Form sana geri gelmesin diye:",
   "Trotzdem speichern": "Yine de kaydet",
   "Felder prüfen": "Alanları kontrol et",
+  "Unterschreib einmal zum Üben": "Alıştırma için bir kez imzala",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Parmağınla ya da fareyle. FaLe imzanı yalnızca bu cihazda saklar ve sonra tek dokunuşla ekler.",
+  "Was möchtest du zuerst tun?": "Önce ne yapmak istersin?",
+  "Formulare ausfüllen": "Form doldur",
+  "Brief schreiben": "Mektup yaz",
+  "Kündigung, Widerspruch …": "Fesih, itiraz …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Yardım: üstteki arama her işlevi bulur. Bu tanıtımı tekrar “Profil → Ayarlar” bölümünde bulursun.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "İmza kaydedildi – imzalarken onu bulursun.",
+  "Erinnerungen aufs Handy": "Telefona hatırlatmalar",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "FaLe’nin süreleri sana zamanında hatırlatabilmesi için telefonun şimdi FaLe’nin bildirim gönderip gönderemeyeceğini soracak. Orada “İzin ver”e dokun.",
 };
 
 export const defaultValues = {

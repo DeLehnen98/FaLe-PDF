@@ -360,6 +360,17 @@ async function showWebNotification(r) {
  * Schedule a reminder. Always stored in localStorage (so the app can show due
  * reminders in-app). Returns true when a system notification was scheduled.
  */
+/** Notification permission without asking: 'granted' | 'denied' | 'prompt' (not asked yet) | 'none' (not available). */
+export async function notificationPermission() {
+  if (isNative()) {
+    const ln = plugin('LocalNotifications');
+    if (!ln) return 'none';
+    try { const p = await ln.checkPermissions(); return p.display === 'granted' ? 'granted' : p.display === 'denied' ? 'denied' : 'prompt'; } catch { return 'none'; }
+  }
+  if (!('Notification' in window)) return 'none';
+  return Notification.permission === 'default' ? 'prompt' : Notification.permission;
+}
+
 /** prompt=false: never asks for the notification permission (schedules only when it was granted before). */
 export async function scheduleNotification({ id, at, title, body = '', route = '', prompt = true } = {}) {
   if (id == null || !title) throw new Error('scheduleNotification: id und title sind nötig');

@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "为了不让表单再退回给你：",
   "Trotzdem speichern": "仍然保存",
   "Felder prüfen": "检查字段",
+  "Unterschreib einmal zum Üben": "先签一次名练习一下",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "用手指或鼠标。FaLe 会保存这个签名（只在此设备上），以后轻点一下即可插入。",
+  "Was möchtest du zuerst tun?": "你想先做什么？",
+  "Formulare ausfüllen": "填写表格",
+  "Brief schreiben": "写信",
+  "Kündigung, Widerspruch …": "解约、异议 …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "帮助：顶部的搜索能找到每个功能。你可以在“我的 → 设置”中再次找到本介绍。",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "签名已保存——签名时即可找到。",
+  "Erinnerungen aufs Handy": "手机提醒",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "为了让 FaLe 及时提醒你的期限，你的手机马上会询问是否允许 FaLe 发送通知。请在那里点“允许”。",
 };
 
 export const defaultValues = {

@@ -311,7 +311,7 @@ def run_english_phone(p):
         page.evaluate("localStorage.removeItem('fale-onboarded'); localStorage.setItem('fale-onboarding-force', '1'); location.hash = '#/start'")
         page.reload()
         page.wait_for_selector('.onboard', timeout=8000)
-        n = page.locator('.onboard .ob-step').count()  # 5 steps since the language choice
+        n = page.locator('.onboard .ob-step').count()  # 6 steps since the signature practice + first goal
         for i in range(n):
             scan(page, f'phone onboarding {i}')
             shot(page, f'phone_onboarding_{i}')

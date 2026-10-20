@@ -1,9 +1,11 @@
-// Kurze Einführung beim ersten Start (5 Schritte, überspringbar, nur einmal), jeder Schritt mit kleiner Animation:
+// Kurze Einführung beim ersten Start (6 Schritte, überspringbar, nur einmal), jeder Schritt mit kleiner Animation:
 // 1. Sprache (Begrüßungen in allen Sprachen; ein Tipp stellt FaLe sofort um – nötigenfalls mit Neuladen, die
 //    Einführung geht dann an derselben Stelle weiter), 2. Willkommen, 3. Datenschutz,
-// 4. Ansicht „Einfach“ (große Kacheln, js/simple.js) oder „Alle Funktionen“ + Schriftgröße, 5. Aussehen + Profil.
+// 4. Ansicht „Einfach“ (große Kacheln, js/simple.js) oder „Alle Funktionen“ + Schriftgröße,
+// 5. Unterschrift einmal üben (freiwillig, wird für später gespeichert; entfällt, wenn schon eine da ist),
+// 6. „Was möchtest du zuerst tun?“ (vier große Knöpfe führen direkt hin) + Aussehen, Profil, wo es Hilfe gibt.
 // Alles gilt sofort und ist jederzeit in Ich → Einstellungen änderbar.
-import { $, $$, h } from '../ui.js';
+import { $, $$, h, toast } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
@@ -32,11 +34,14 @@ export function maybeShowOnboarding() {
   return true;
 }
 
-export function showOnboarding() {
+export async function showOnboarding() {
+  if (document.querySelector('.onboard')) return;
+  let hasSig = false;
+  try { hasSig = (await (await import('../tools/sigstore.js')).listAssets('signature')).length > 0; } catch { /* no store */ }
   if (document.querySelector('.onboard')) return;
   const resume = +ls.get(RESUME) || 0;
   try { localStorage.removeItem(RESUME); } catch {}
-  let step = Math.max(0, Math.min(4, resume)), sawViews = false, dir = resume ? 0 : 1;
+  let step = Math.max(0, resume), sawViews = false, dir = resume ? 0 : 1;
   const cur = lang(), dev = deviceLang();
   const langBtns = [dev, ...LANGS.filter(c => c !== dev)].map(c => `<button type="button" class="ob-lang" role="radio" data-lang="${c}" lang="${c}" aria-checked="${c === cur}">
       <span class="ob-lang-n" data-no-i18n>${LANG_NAMES[c]}</span>${c === dev ? '<span class="ob-lang-dev">Gerätesprache</span>' : ''}<span class="ob-lang-ok" aria-hidden="true">${oicon('check')}</span></button>`).join('');
@@ -78,23 +83,61 @@ export function showOnboarding() {
           </div>
           <div class="ob-size"><span class="ob-size-l">Schriftgröße</span>${textSizeSeg('ob-ts')}</div>
         </section>
-        <section class="ob-step" data-step="4" hidden>
-          <div class="ob-art ob-art-3"><span class="ob-me">${oicon('person')}</span><span class="ob-form" aria-hidden="true"><i></i><i></i><i></i></span></div>
-          <h2>Kurz einrichten <span class="muted ob-opt">(optional)</span></h2>
-          <p>Wie soll FaLe aussehen?</p>
-          <div class="seg ob-theme" role="group" aria-label="Erscheinungsbild"><button type="button" data-theme-opt="auto">Automatisch</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button></div>
-          <p class="ob-p2">Mit deinem Profil füllt FaLe Absender in Briefen und Formularen automatisch aus – gespeichert nur hier.</p>
-          <button class="btn btn-soft" type="button" data-profile>${oicon('person')} Profil ausfüllen</button>
+        ${hasSig ? '' : `<section class="ob-step ob-step-sig" data-step="4" hidden>
+          <h2 class="ob-h-top">Unterschreib einmal zum Üben <span class="muted ob-opt">(freiwillig)</span></h2>
+          <p>Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.</p>
+          <div class="sig-pad-wrap ob-pad"><canvas class="sig-pad" aria-label="Zeichenfläche"></canvas>
+            <svg class="ob-sig-demo" viewBox="0 0 300 90" aria-hidden="true"><path d="M14 62c10-30 26-44 34-30 7 12-6 34 4 32 12-2 16-40 30-38 12 2 0 34 12 34 14 0 18-28 30-26 10 2 2 22 14 22 12 0 20-18 32-16 9 2 6 14 16 14 11 0 22-10 34-12M196 70c26-4 58-6 90-4"/></svg>
+            <div class="sig-pad-line"></div><div class="sig-pad-hint">Hier unterschreiben</div></div>
+          <div class="ob-sig-row"><button type="button" class="btn btn-ghost btn-sm" data-sig-clear>${oicon('undo')} Neu zeichnen</button><span class="ob-sig-ok" data-sig-ok hidden>${oicon('check')} Gespeichert</span></div>
+        </section>`}
+        <section class="ob-step ob-step-go" data-step="5" hidden>
+          <h2 class="ob-h-top">Was möchtest du zuerst tun?</h2>
+          <div class="ob-goals">
+            <button type="button" class="ob-goal" data-action="open-file" data-goal="open">${oicon('upload')}<b>Datei öffnen</b><span>PDF, Word, Fotos</span></button>
+            <button type="button" class="ob-goal" data-goal="#/werkzeug/scannen">${oicon('scan')}<b>Scannen</b><span>Papier mit der Kamera</span></button>
+            <button type="button" class="ob-goal" data-goal="#/werkzeug/unterschreiben">${oicon('sign')}<b>Unterschreiben</b><span>Formulare ausfüllen</span></button>
+            <button type="button" class="ob-goal" data-goal="#/schreiben">${oicon('letter')}<b>Brief schreiben</b><span>Kündigung, Widerspruch …</span></button>
+          </div>
+          <div class="ob-extra">
+            <div class="seg ob-theme" role="group" aria-label="Erscheinungsbild"><button type="button" data-theme-opt="auto">Automatisch</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button></div>
+            <button class="btn btn-soft btn-sm" type="button" data-profile>${oicon('person')} Profil ausfüllen</button>
+          </div>
+          <p class="ob-help">${oicon('search')} <span>Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.</span></p>
         </section>
       </div>
       <div class="ob-foot">
-        <div class="ob-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="ob-dots" aria-hidden="true">${'<span></span>'.repeat(hasSig ? 5 : 6)}</div>
         <div class="ob-btns"><button class="btn btn-ghost" type="button" data-back hidden>Zurück</button><button class="btn btn-primary" type="button" data-next>Weiter</button></div>
       </div>
     </div></div>`);
   document.body.appendChild(ov);
   const steps = $$('.ob-step', ov), dots = $$('.ob-dots span', ov);
   const next = $('[data-next]', ov), back = $('[data-back]', ov);
+  step = Math.min(step, steps.length - 1);
+  // signature practice: the pad (js/tools/sigstore.js), a drawn demo until the first touch, saved when leaving the step
+  let pad = null, sigSaved = false;
+  const sigStep = $('.ob-step-sig', ov);
+  if (sigStep) {
+    import('../tools/sigstore.js').then(m => {
+      pad = m.setupPad($('.ob-pad', sigStep), m.SIG_COLORS[0].c);
+      pad.trim = c => m.trimCanvas(c, 8);
+      pad.add = a => m.addAsset(a);
+      $('canvas', sigStep).addEventListener('pointerdown', () => { sigStep.classList.add('ob-drawing'); $('[data-sig-ok]', sigStep).hidden = true; sigSaved = false; });
+    }).catch(e => console.warn('Unterschrift', e));
+    $('[data-sig-clear]', sigStep).addEventListener('click', () => { if (pad) pad.clear(); sigStep.classList.remove('ob-drawing'); sigSaved = false; $('[data-sig-ok]', sigStep).hidden = true; });
+  }
+  async function saveSig() {
+    if (!pad || pad.isEmpty() || sigSaved) return false;
+    sigSaved = true;
+    try {
+      const made = await pad.trim(pad.canvas);
+      if (!made) return false;
+      await pad.add({ blob: made.blob, kind: 'signature', name: 'Unterschrift', w: made.w, h: made.h });
+      $('[data-sig-ok]', sigStep).hidden = false;
+      return true;
+    } catch (e) { console.warn('Unterschrift speichern', e); sigSaved = false; return false; }
+  }
   const paint = () => {
     steps.forEach((s, i) => {
       s.hidden = i !== step;
@@ -109,9 +152,11 @@ export function showOnboarding() {
     $$('[data-lang]', ov).forEach(b => { b.tabIndex = b.getAttribute('aria-checked') === 'true' ? 0 : -1; });
     syncSize();
     if (steps[step].querySelector('[data-view]')) sawViews = true;
+    if (steps[step] === sigStep && pad) requestAnimationFrame(() => pad.fit());
     setTimeout(() => next.focus(), 30);
   };
   const close = () => {
+    if (sigStep) saveSig(); // drawn but skipped: still keep it
     ls.set(KEY, '1');
     if (sawViews) dismissSimpleHint(); // the view was chosen here – no extra hint card on the start screen
     ov.classList.add('closing');
@@ -120,7 +165,15 @@ export function showOnboarding() {
   };
   const onKey = e => { if (e.key === 'Escape') { e.preventDefault(); close(); } };
   document.addEventListener('keydown', onKey, true);
-  next.addEventListener('click', () => { if (step < steps.length - 1) { step++; dir = 1; paint(); } else close(); });
+  next.addEventListener('click', async () => {
+    if (steps[step] === sigStep && await saveSig()) toast('Unterschrift gespeichert – du findest sie beim Unterschreiben.', 'success');
+    if (step < steps.length - 1) { step++; dir = 1; paint(); } else close();
+  });
+  // „Was möchtest du zuerst tun?“: close and go there (Datei öffnen: the app's own picker via data-action)
+  $$('[data-goal]', ov).forEach(b => b.addEventListener('click', () => {
+    close();
+    if (b.dataset.goal.startsWith('#/')) location.hash = b.dataset.goal;
+  }));
   back.addEventListener('click', () => { if (step > 0) { step--; dir = -1; paint(); } });
   // language: one tap switches FaLe right away (a reload continues here, on the same step)
   const langs = $$('[data-lang]', ov);

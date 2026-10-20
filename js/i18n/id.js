@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Agar formulir tidak kembali:",
   "Trotzdem speichern": "Tetap simpan",
   "Felder prüfen": "Periksa isian",
+  "Unterschreib einmal zum Üben": "Tanda tangan sekali untuk latihan",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Dengan jari atau mouse. FaLe menyimpan tanda tangan – hanya di perangkat ini – dan nanti memasangnya dengan sekali ketuk.",
+  "Was möchtest du zuerst tun?": "Apa yang ingin kamu lakukan dulu?",
+  "Formulare ausfüllen": "Isi formulir",
+  "Brief schreiben": "Tulis surat",
+  "Kündigung, Widerspruch …": "Pemutusan, keberatan …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Bantuan: pencarian di atas menemukan setiap fungsi. Pengenalan ini bisa kamu temukan lagi di „Profil → Pengaturan“.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Tanda tangan tersimpan – kamu menemukannya saat menandatangani.",
+  "Erinnerungen aufs Handy": "Pengingat di ponsel",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Agar FaLe bisa mengingatkan tenggat waktumu tepat waktu, ponselmu akan menanyakan apakah FaLe boleh mengirim notifikasi. Ketuk „Izinkan“ di sana.",
 };
 
 export const defaultValues = {

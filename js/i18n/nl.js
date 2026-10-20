@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Zodat het formulier niet terugkomt:",
   "Trotzdem speichern": "Toch opslaan",
   "Felder prüfen": "Velden controleren",
+  "Unterschreib einmal zum Üben": "Onderteken één keer om te oefenen",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Met je vinger of de muis. FaLe onthoudt de handtekening – alleen op dit apparaat – en zet die later met één tik neer.",
+  "Was möchtest du zuerst tun?": "Wat wil je als eerste doen?",
+  "Formulare ausfüllen": "Formulieren invullen",
+  "Brief schreiben": "Brief schrijven",
+  "Kündigung, Widerspruch …": "Opzegging, bezwaar …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Hulp: de zoekfunctie bovenaan vindt elke functie. Deze introductie vind je terug onder ‘Profiel → Instellingen’.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Handtekening opgeslagen – je vindt hem bij het ondertekenen.",
+  "Erinnerungen aufs Handy": "Herinneringen op je telefoon",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Zodat FaLe je op tijd aan je termijnen kan herinneren, vraagt je telefoon zo of FaLe meldingen mag sturen. Tik daar op ‘Toestaan’.",
 };
 
 export const defaultValues = {

@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Żeby formularz nie wracał:",
   "Trotzdem speichern": "Zapisz mimo to",
   "Felder prüfen": "Sprawdź pola",
+  "Unterschreib einmal zum Üben": "Podpisz się raz na próbę",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Palcem lub myszą. FaLe zapamięta podpis – tylko na tym urządzeniu – i później wstawi go jednym dotknięciem.",
+  "Was möchtest du zuerst tun?": "Co chcesz zrobić najpierw?",
+  "Formulare ausfüllen": "Wypełnianie formularzy",
+  "Brief schreiben": "Napisz pismo",
+  "Kündigung, Widerspruch …": "Wypowiedzenie, odwołanie …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Pomoc: wyszukiwarka u góry znajdzie każdą funkcję. To wprowadzenie znajdziesz ponownie w „Profil → Ustawienia”.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Podpis zapisany – znajdziesz go przy podpisywaniu.",
+  "Erinnerungen aufs Handy": "Przypomnienia na telefonie",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Aby FaLe mógł przypominać Ci o terminach na czas, telefon zaraz zapyta, czy FaLe może wysyłać powiadomienia. Stuknij tam „Zezwalaj”.",
 };
 
 export const defaultValues = {

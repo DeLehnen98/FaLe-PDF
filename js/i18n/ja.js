@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "フォームが戻ってこないように：",
   "Trotzdem speichern": "このまま保存",
   "Felder prüfen": "項目を確認",
+  "Unterschreib einmal zum Üben": "練習で一度署名してみましょう",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "指またはマウスで。FaLe は署名をこの端末だけに保存し、あとからワンタップで入れられます。",
+  "Was möchtest du zuerst tun?": "まず何をしますか？",
+  "Formulare ausfüllen": "フォームに記入",
+  "Brief schreiben": "手紙を書く",
+  "Kündigung, Widerspruch …": "解約、異議申し立て …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "ヘルプ：上の検索ですべての機能が見つかります。この紹介は「プロフィール → 設定」からもう一度見られます。",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "署名を保存しました。署名するときに使えます。",
+  "Erinnerungen aufs Handy": "スマホへのリマインダー",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "FaLe が期限を忘れずにお知らせできるよう、このあとスマホが通知の許可を求めます。そこで「許可」をタップしてください。",
 };
 
 export const defaultValues = {

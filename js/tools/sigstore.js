@@ -405,7 +405,7 @@ function processImported(src, clearBg, color) {
   return c;
 }
 
-function setupPad(wrap, initialColor) {
+export function setupPad(wrap, initialColor) {
   const canvas = wrap.querySelector('canvas');
   const ctx = canvas.getContext('2d');
   let color = initialColor;

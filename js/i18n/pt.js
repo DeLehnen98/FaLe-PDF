@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Para que o formulário não volte para você:",
   "Trotzdem speichern": "Salvar mesmo assim",
   "Felder prüfen": "Conferir campos",
+  "Unterschreib einmal zum Üben": "Assine uma vez para praticar",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Com o dedo ou o mouse. O FaLe guarda a assinatura – só neste dispositivo – e a insere depois com um toque.",
+  "Was möchtest du zuerst tun?": "O que você quer fazer primeiro?",
+  "Formulare ausfüllen": "Preencher formulários",
+  "Brief schreiben": "Escrever uma carta",
+  "Kündigung, Widerspruch …": "Cancelamento, contestação …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Ajuda: a busca no topo encontra cada função. Você encontra esta introdução de novo em “Perfil → Configurações”.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Assinatura salva – você a encontra na hora de assinar.",
+  "Erinnerungen aufs Handy": "Lembretes no celular",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Para que o FaLe possa lembrar você dos prazos a tempo, seu celular vai perguntar agora se o FaLe pode enviar notificações. Toque em “Permitir”.",
 };
 
 export const defaultValues = {

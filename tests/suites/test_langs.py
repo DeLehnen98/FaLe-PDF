@@ -87,7 +87,7 @@ def run(p, code):
     # onboarding (incl. the view choice)
     pg.evaluate("import('./js/extras/onboarding.js').then(m => m.showOnboarding())")
     pg.wait_for_selector('.onboard')
-    for _ in range(5):
+    for _ in range(6):
         for t in pg.evaluate(SCAN):
             if t in german:
                 left.setdefault(t, 'onboarding')

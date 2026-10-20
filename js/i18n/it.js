@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Perché il modulo non ti ritorni indietro:",
   "Trotzdem speichern": "Salva comunque",
   "Felder prüfen": "Controlla i campi",
+  "Unterschreib einmal zum Üben": "Firma una volta per esercitarti",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Con il dito o il mouse. FaLe ricorda la firma – solo su questo dispositivo – e la inserisce poi con un tocco.",
+  "Was möchtest du zuerst tun?": "Cosa vuoi fare per prima cosa?",
+  "Formulare ausfüllen": "Compilare moduli",
+  "Brief schreiben": "Scrivere una lettera",
+  "Kündigung, Widerspruch …": "Disdetta, ricorso …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Aiuto: la ricerca in alto trova ogni funzione. Ritrovi questa introduzione in «Profilo → Impostazioni».",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Firma salvata – la trovi quando firmi.",
+  "Erinnerungen aufs Handy": "Promemoria sul telefono",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Perché FaLe possa ricordarti in tempo le scadenze, il telefono ti chiederà ora se FaLe può inviare notifiche. Tocca lì «Consenti».",
 };
 
 export const defaultValues = {

@@ -136,7 +136,7 @@ const reminders = {
     const cur = all.find(r => r.id === localId);
     const rec = { ...env.rec, id: localId, notifIds: cur ? cur.notifIds || [] : [], notified: false };
     const R = await import('../extras/reminders.js');
-    if (cur) await R.updateReminder(rec); // cancels old notifications, schedules new ones
+    if (cur) await R.updateReminder(rec, { ask: false }); // cancels old notifications, schedules new ones (no permission prompt from a sync)
     else await db.putReminder(rec);       // new: scheduled by syncNotifications() after the batch
     return localId;
   },

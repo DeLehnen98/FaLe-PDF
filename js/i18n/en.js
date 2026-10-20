@@ -6529,6 +6529,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "So the form doesn’t come back to you:",
   "Trotzdem speichern": "Save anyway",
   "Felder prüfen": "Check fields",
+  "Unterschreib einmal zum Üben": "Sign once to practise",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "With your finger or the mouse. FaLe keeps the signature – only on this device – and adds it later with one tap.",
+  "Was möchtest du zuerst tun?": "What would you like to do first?",
+  "Formulare ausfüllen": "Fill in forms",
+  "Brief schreiben": "Write a letter",
+  "Kündigung, Widerspruch …": "Cancellation, objection …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Help: the search at the top finds every feature. You can find this introduction again under “Profile → Settings”.",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Signature saved – you’ll find it when you sign.",
+  "Erinnerungen aufs Handy": "Reminders on your phone",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "So FaLe can remind you of your deadlines in time, your phone will now ask whether FaLe may send notifications. Tap “Allow” there.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

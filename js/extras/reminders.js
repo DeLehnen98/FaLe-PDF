@@ -74,11 +74,11 @@ export async function addReminder({ title, type = 'termin', due, leads = [7], ye
   emit();
   return rec;
 }
-export async function updateReminder(rec) {
+export async function updateReminder(rec, { ask = true } = {}) {
   await cancel(rec);
   rec.notifIds = [];
   await db.putReminder(rec);
-  if (!rec.done) await schedule(rec);
+  if (!rec.done) await schedule(rec, { ask });
   emit();
   return rec;
 }
@@ -117,9 +117,23 @@ async function platform() {
 }
 export async function notificationsAvailable() { return !!(await platform()); }
 function numId(s) { let x = 5381; for (const ch of s) x = ((x * 33) ^ ch.charCodeAt(0)) >>> 0; return (x % 2000000000) + 1; }
-async function schedule(rec) {
+// Before the phone asks for the notification permission the first time: say in one sentence why (it comes right after).
+const EXPLAINED = 'fale-notif-explained';
+async function explainOnce(p) {
+  try { if (localStorage.getItem(EXPLAINED) === '1') return; } catch { return; }
+  if (typeof p.notificationPermission !== 'function' || (await p.notificationPermission()) !== 'prompt') return;
+  try { localStorage.setItem(EXPLAINED, '1'); } catch {}
+  await openDialog({
+    title: 'Erinnerungen aufs Handy',
+    body: `<div class="rem-explain">${oicon('bell')}<p>Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.</p></div>`,
+    actions: [{ label: 'Weiter', value: 'ok', kind: 'btn-primary', default: true }],
+  });
+}
+/** ask: a person just saved this Frist → explain + let the phone ask for the permission; otherwise (start, sync) never ask. */
+async function schedule(rec, { ask = true } = {}) {
   const p = await platform();
   if (!p || rec.done) return;
+  if (ask) await explainOnce(p);
   const ids = [];
   const leads = [...new Set([0, ...(rec.leads || [])])];
   for (const lead of leads) {
@@ -127,7 +141,7 @@ async function schedule(rec) {
     if (at.getTime() <= Date.now()) continue;
     const id = numId(`${rec.id}:${lead}:${rec.due}`);
     const body = lead === 0 ? `Heute: ${typeOf(rec.type).label} am ${deDate(rec.due)}` : `${typeOf(rec.type).label} am ${deDate(rec.due)} – noch ${LEADS.find(l => l.d === lead) ? LEADS.find(l => l.d === lead).label : `${lead} Tage`}`;
-    try { if (await p.scheduleNotification({ id, at, title: rec.title, body, route: '#/fristen' })) ids.push(id); } catch (e) { console.warn('Benachrichtigung', e); }
+    try { if (await p.scheduleNotification({ id, at, title: rec.title, body, route: '#/fristen', prompt: ask })) ids.push(id); } catch (e) { console.warn('Benachrichtigung', e); }
   }
   rec.notifIds = ids;
   rec.notified = true;
@@ -142,7 +156,7 @@ async function cancel(rec) {
 export async function syncNotifications() {
   const p = await platform();
   if (!p) return;
-  for (const r of await db.listReminders()) if (!r.done && !r.notified) await schedule(r);
+  for (const r of await db.listReminders()) if (!r.done && !r.notified) await schedule(r, { ask: false }); // at start: never a permission prompt out of the blue
 }
 
 // ---------------- UI: editor dialog ----------------

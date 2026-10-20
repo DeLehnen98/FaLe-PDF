@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "ताकि फ़ॉर्म वापस न आए:",
   "Trotzdem speichern": "फिर भी सहेजें",
   "Felder prüfen": "फ़ील्ड जाँचें",
+  "Unterschreib einmal zum Üben": "अभ्यास के लिए एक बार हस्ताक्षर करें",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "उंगली या माउस से। FaLe हस्ताक्षर सिर्फ़ इसी डिवाइस पर सहेजता है और बाद में एक टैप में लगा देता है।",
+  "Was möchtest du zuerst tun?": "आप पहले क्या करना चाहेंगे?",
+  "Formulare ausfüllen": "फ़ॉर्म भरें",
+  "Brief schreiben": "पत्र लिखें",
+  "Kündigung, Widerspruch …": "रद्दीकरण, आपत्ति …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "मदद: ऊपर की खोज हर सुविधा ढूँढ लेती है। यह परिचय आप „प्रोफ़ाइल → सेटिंग“ में फिर से देख सकते हैं।",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "हस्ताक्षर सहेजा गया – हस्ताक्षर करते समय यह मिल जाएगा।",
+  "Erinnerungen aufs Handy": "फ़ोन पर रिमाइंडर",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "ताकि FaLe आपको समय पर आपकी समय-सीमाएँ याद दिला सके, आपका फ़ोन अभी पूछेगा कि क्या FaLe सूचनाएँ भेज सकता है। वहाँ „अनुमति दें“ पर टैप करें।",
 };
 
 export const defaultValues = {

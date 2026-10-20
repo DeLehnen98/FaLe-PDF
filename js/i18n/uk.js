@@ -6511,6 +6511,16 @@ export default {
   "Damit das Formular nicht zurückkommt:": "Щоб форма не повернулася:",
   "Trotzdem speichern": "Усе одно зберегти",
   "Felder prüfen": "Перевірити поля",
+  "Unterschreib einmal zum Üben": "Розпишіться один раз для тренування",
+  "Mit dem Finger oder der Maus. FaLe merkt sich die Unterschrift – nur auf diesem Gerät – und setzt sie später mit einem Tipp ein.": "Пальцем або мишею. FaLe запам’ятає підпис – лише на цьому пристрої – і пізніше вставить його одним дотиком.",
+  "Was möchtest du zuerst tun?": "Що ви хочете зробити спочатку?",
+  "Formulare ausfüllen": "Заповнити форми",
+  "Brief schreiben": "Написати лист",
+  "Kündigung, Widerspruch …": "Розірвання, заперечення …",
+  "Hilfe: Die Suche oben findet jede Funktion. Diese Einführung findest du wieder unter „Ich → Einstellungen“.": "Довідка: пошук угорі знаходить кожну функцію. Цей вступ можна знову знайти в «Профіль → Налаштування».",
+  "Unterschrift gespeichert – du findest sie beim Unterschreiben.": "Підпис збережено – ви знайдете його під час підписання.",
+  "Erinnerungen aufs Handy": "Нагадування на телефон",
+  "Damit FaLe dich rechtzeitig an deine Fristen erinnern kann, fragt dein Handy gleich, ob FaLe Mitteilungen schicken darf. Tippe dort auf „Zulassen“.": "Щоб FaLe міг вчасно нагадувати про ваші терміни, телефон зараз запитає, чи може FaLe надсилати сповіщення. Торкніться там «Дозволити».",
 };
 
 export const defaultValues = {

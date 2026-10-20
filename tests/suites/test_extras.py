@@ -964,6 +964,8 @@ def onboarding_and_ai(p):
             page.locator('.ob-size [data-ts-opt="l"]').click()
             check(f'{label}: "Groß" applies at once', page.evaluate("document.documentElement.classList.contains('ts-l') && !document.documentElement.classList.contains('ts-xl') && localStorage.getItem('fale-textsize') === 'l'"))
             page.locator('[data-next]').click()
+            check(f'{label}: signature practice step (optional)', 'Unterschreib einmal' in page.locator('.ob-step:not([hidden]) h2').inner_text())
+            page.locator('[data-next]').click()
             page.locator('.ob-theme [data-theme-opt="dark"]').click()
             check(f'{label}: theme choice applies', page.evaluate("document.documentElement.dataset.theme") == 'dark')
             shot(page, f'{label}_onboarding_3_dark')
