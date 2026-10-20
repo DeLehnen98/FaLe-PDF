@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Примечание о записях",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Заполнено в FaLe – вы можете изменить свои записи в любое время.",
   "Einträge ändern": "Изменить записи",
+  "Später in FaLe änderbar": "Можно изменить позже в FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Другие программы показывают PDF как заполненный. В FaLe вы сможете позже изменить записи и подпись – просто снова откройте файл здесь.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Это включено в ваших настройках для каждого сохранения.",
+  "Immer so speichern": "Всегда сохранять так",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Сохранено – записи можно будет изменить позже в FaLe.",
+  "Ausgefüllte PDFs später änderbar": "Заполненные PDF можно изменить позже",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "При заполнении и подписании всегда сохранять с «Можно изменить позже в FaLe». Другие программы всё равно показывают PDF как заполненный.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Заполненные PDF теперь всегда остаются изменяемыми в FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Только по желанию: при сохранении отметьте «Можно изменить позже в FaLe».",
 };
 
 export const defaultValues = {

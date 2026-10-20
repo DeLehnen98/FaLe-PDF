@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "入力内容についての注意",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe で記入済み。入力内容はいつでも変更できます。",
   "Einträge ändern": "入力内容を変更",
+  "Später in FaLe änderbar": "あとで FaLe で変更可能",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "ほかのアプリでは PDF は記入済みとして表示されます。FaLe では入力内容と署名をあとから変更できます。ここでファイルをもう一度開くだけです。",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "設定で、保存するたびに有効になっています。",
+  "Immer so speichern": "いつもこの方法で保存",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "保存しました。入力内容はあとで FaLe で変更できます。",
+  "Ausgefüllte PDFs später änderbar": "記入した PDF をあとで変更可能に",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "記入・署名するときは、常に「あとで FaLe で変更可能」で保存します。ほかのアプリでは PDF は記入済みとして表示されます。",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "記入した PDF は今後、FaLe で常に変更できます。",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "必要なときだけ：保存時に「あとで FaLe で変更可能」にチェックを入れてください。",
 };
 
 export const defaultValues = {

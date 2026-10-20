@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Opmerking over invoer",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Ingevuld met FaLe – je kunt je invoer altijd weer wijzigen.",
   "Einträge ändern": "Invoer wijzigen",
+  "Später in FaLe änderbar": "Later bewerkbaar in FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Andere programma’s tonen de pdf als ingevuld. In FaLe kun je je invoer en handtekening later nog wijzigen – open het bestand hier gewoon opnieuw.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Dit staat in je instellingen aan voor elke keer opslaan.",
+  "Immer so speichern": "Altijd zo opslaan",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Opgeslagen – je kunt je invoer later in FaLe nog wijzigen.",
+  "Ausgefüllte PDFs später änderbar": "Ingevulde pdf’s later bewerkbaar",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Bij invullen en ondertekenen altijd opslaan met ‘Later bewerkbaar in FaLe’. Andere programma’s tonen de pdf toch als ingevuld.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Ingevulde pdf’s blijven nu altijd bewerkbaar in FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Alleen nog op verzoek: vink bij het opslaan ‘Later bewerkbaar in FaLe’ aan.",
 };
 
 export const defaultValues = {

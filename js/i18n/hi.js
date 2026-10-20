@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "प्रविष्टियों के बारे में सूचना",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe से भरा गया – आप अपनी प्रविष्टियाँ कभी भी बदल सकते हैं।",
   "Einträge ändern": "प्रविष्टियाँ बदलें",
+  "Später in FaLe änderbar": "बाद में FaLe में बदलने योग्य",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "दूसरे प्रोग्राम PDF को भरा हुआ दिखाते हैं। FaLe में आप अपनी प्रविष्टियाँ और हस्ताक्षर बाद में बदल सकते हैं – बस फ़ाइल को यहाँ फिर से खोलें।",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "यह आपकी सेटिंग में हर बार सहेजने के लिए चालू है।",
+  "Immer so speichern": "हमेशा ऐसे सहेजें",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "सहेजा गया – आप अपनी प्रविष्टियाँ बाद में FaLe में बदल सकते हैं।",
+  "Ausgefüllte PDFs später änderbar": "भरी हुई PDF बाद में बदलने योग्य",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "भरते और हस्ताक्षर करते समय हमेशा „बाद में FaLe में बदलने योग्य“ के साथ सहेजें। दूसरे प्रोग्राम फिर भी PDF को भरा हुआ दिखाते हैं।",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "भरी हुई PDF अब हमेशा FaLe में बदलने योग्य रहेंगी।",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "सिर्फ़ ज़रूरत पर: सहेजते समय „बाद में FaLe में बदलने योग्य“ पर टिक करें।",
 };
 
 export const defaultValues = {

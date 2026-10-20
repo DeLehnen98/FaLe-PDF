@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Girdilerle ilgili not",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe ile dolduruldu – girdilerini istediğin zaman değiştirebilirsin.",
   "Einträge ändern": "Girdileri değiştir",
+  "Später in FaLe änderbar": "Daha sonra FaLe’de düzenlenebilir",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Diğer programlar PDF’yi tamamlanmış olarak gösterir. FaLe’de girdilerini ve imzanı daha sonra değiştirebilirsin – dosyayı burada yeniden açman yeterli.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Bu, ayarlarında her kaydetme için açık.",
+  "Immer so speichern": "Hep böyle kaydet",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Kaydedildi – girdilerini daha sonra FaLe’de değiştirebilirsin.",
+  "Ausgefüllte PDFs später änderbar": "Doldurulan PDF’ler sonra düzenlenebilir",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Doldurup imzalarken her zaman “Daha sonra FaLe’de düzenlenebilir” ile kaydet. Diğer programlar PDF’yi yine de tamamlanmış gösterir.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Doldurulan PDF’ler artık FaLe’de her zaman düzenlenebilir kalır.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Yalnızca istersen: kaydederken “Daha sonra FaLe’de düzenlenebilir” seçeneğini işaretle.",
 };
 
 export const defaultValues = {

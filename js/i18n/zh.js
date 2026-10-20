@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "关于填写内容的提示",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "已用 FaLe 填写——你可以随时修改填写内容。",
   "Einträge ändern": "修改填写内容",
+  "Später in FaLe änderbar": "稍后可在 FaLe 中修改",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "其他程序会将 PDF 显示为已填写完成。在 FaLe 中，你以后仍可修改填写内容和签名——只需在这里重新打开该文件。",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "你已在设置中为每次保存开启此功能。",
+  "Immer so speichern": "总是这样保存",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "已保存——你以后可以在 FaLe 中修改填写内容。",
+  "Ausgefüllte PDFs später änderbar": "填写的 PDF 以后可修改",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "填写和签名时总是以“稍后可在 FaLe 中修改”保存。其他程序仍会将 PDF 显示为已填写完成。",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "填写好的 PDF 现在在 FaLe 中始终可修改。",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "仅按需：保存时勾选“稍后可在 FaLe 中修改”。",
 };
 
 export const defaultValues = {

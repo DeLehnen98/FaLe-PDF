@@ -786,6 +786,8 @@ export async function renderSettings() {
           <option value="auto">Automatisch</option><option value="page-width">Seitenbreite</option><option value="page-fit">Ganze Seite</option>
           <option value="0.75">75 %</option><option value="1">100 %</option><option value="1.25">125 %</option><option value="1.5">150 %</option>
         </select></div>
+      <div class="settings-row"><div class="label"><strong>Ausgefüllte PDFs später änderbar</strong><span>Beim Ausfüllen &amp; Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.</span></div>
+        <label class="switch"><input type="checkbox" data-memory-toggle ${lsGet('fale-form-memory', '') === 'auto' ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Ausgefüllte PDFs später änderbar</span></label></div>
       <div class="settings-row"><div class="label"><strong>Hinweis „Alles gratis“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
       <div class="settings-row"><div class="label"><strong>„Dein Monat“</strong><span>Kleine Statistik auf der Startseite. Wird nur auf diesem Gerät gezählt.</span></div>
@@ -867,6 +869,10 @@ export async function renderSettings() {
     const m = document.querySelector('#view-start [data-month]');
     if (m) home.renderMonthCard(m);
     toast(e.target.checked ? '„Dein Monat“ wird angezeigt' : '„Dein Monat“ ausgeblendet – es wird nichts mehr gezählt.', 'success');
+  });
+  $('[data-memory-toggle]', el).addEventListener('change', e => {
+    if (e.target.checked) lsSet('fale-form-memory', 'auto'); else { try { localStorage.removeItem('fale-form-memory'); } catch {} }
+    toast(e.target.checked ? 'Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.' : 'Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.', 'success');
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
   import('./install.js').then(m => m.renderMeCard($('[data-install-me]', el))).catch(() => {}); // web only: install on this PC/Mac/phone

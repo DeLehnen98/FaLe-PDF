@@ -9,6 +9,19 @@
 
 const VERSION = 1;
 const KEY = 'FaLePlus';
+const PREF = 'fale-form-memory'; // 'auto' = always keep entries editable; otherwise only when ticked before saving
+
+/** Is „Später in FaLe änderbar“ switched on for every save (setting under Ich → Einstellungen)? */
+export const memoryAuto = () => { try { return localStorage.getItem(PREF) === 'auto'; } catch { return false; } };
+export const setMemoryAuto = on => { try { if (on) localStorage.setItem(PREF, 'auto'); else localStorage.removeItem(PREF); } catch { /* private mode */ } };
+
+/** Remove a memory (also an outdated one) from the catalog; returns true when there was one. */
+export function dropMemory(PDFLib, pdfDoc) {
+  const k = PDFLib.PDFName.of(KEY);
+  if (!pdfDoc.catalog.has(k)) return false;
+  pdfDoc.catalog.delete(k);
+  return true;
+}
 
 const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 

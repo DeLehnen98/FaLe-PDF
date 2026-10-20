@@ -6456,6 +6456,16 @@ export default {
   "Hinweis Einträge": "Note about entries",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Filled in with FaLe – you can change your entries at any time.",
   "Einträge ändern": "Change entries",
+  "Später in FaLe änderbar": "Editable later in FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Other programs show the PDF as finished. In FaLe you can change your entries and signature later – just open the file here again.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "This is switched on in your settings for every save.",
+  "Immer so speichern": "Always save like this",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Saved – you can change your entries later in FaLe.",
+  "Ausgefüllte PDFs später änderbar": "Filled-in PDFs editable later",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Always save with “Editable later in FaLe” when filling in & signing. Other programs still show the PDF as finished.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Filled-in PDFs now always stay editable in FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Only on request now: tick “Editable later in FaLe” when saving.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

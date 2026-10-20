@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Aviso sobre as entradas",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Preenchido com o FaLe – você pode alterar suas entradas a qualquer momento.",
   "Einträge ändern": "Alterar entradas",
+  "Später in FaLe änderbar": "Editável mais tarde no FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Outros programas mostram o PDF como concluído. No FaLe, você pode alterar seus dados e a assinatura mais tarde – basta abrir o arquivo aqui novamente.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Isso está ativado nas suas configurações para cada salvamento.",
+  "Immer so speichern": "Sempre salvar assim",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Salvo – você poderá alterar seus dados mais tarde no FaLe.",
+  "Ausgefüllte PDFs später änderbar": "PDFs preenchidos editáveis depois",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Ao preencher e assinar, sempre salvar com “Editável mais tarde no FaLe”. Outros programas continuam mostrando o PDF como concluído.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "PDFs preenchidos agora continuam sempre editáveis no FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Só quando você quiser: marque “Editável mais tarde no FaLe” ao salvar.",
 };
 
 export const defaultValues = {

@@ -28,10 +28,10 @@ export async function mount(screen, { docId, params }) {
   let bytes = await getDocBytes(docId);
   // „Formular mit Gedächtnis“: a PDF FaLe filled in earlier comes back with its entries editable (js/tools/formmemory.js)
   let memory = null, memoryNote = '';
+  const fm = await import('./formmemory.js');
   try {
     const PL = await loadPdfLib();
     const probe0 = await loadEditable(bytes, doc.name, { key: docId });
-    const fm = await import('./formmemory.js');
     if (fm.hasMemory(PL, probe0)) {
       const m = await fm.readMemory(PL, probe0);
       if (m && m.ok) { fm.restore(PL, probe0); bytes = await saveDoc(probe0); memory = m.data; }
@@ -656,6 +656,33 @@ export async function mount(screen, { docId, params }) {
 
   // ---- save ----
   const saveBtn = h(`<button class="btn btn-primary" type="button" data-save>${icon('check')} Speichern</button>`);
+  // „Später in FaLe änderbar“ (Formular mit Gedächtnis): only when ticked – or always, when switched on in the settings
+  const memBox = h(`<label class="check sign-mem"><input type="checkbox" data-memory ${fm.memoryAuto() || memory ? 'checked' : ''}><span>Später in FaLe änderbar</span></label>`);
+  const memInput = $('input', memBox);
+  const memOn = () => memInput.checked;
+  let memHint = null;
+  const { safetyHint } = await import('./safetyhint.js');
+  function showMemHint() {
+    if (memHint && memHint.isConnected) return;
+    const auto = fm.memoryAuto();
+    memHint = safetyHint('memory', {
+      extra: auto ? 'Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.' : '',
+      actions: auto ? '' : '<button class="btn btn-ghost btn-sm" type="button" data-sh-auto>Immer so speichern</button>',
+    });
+    if (!memHint) return;
+    const a = memHint.querySelector('[data-sh-auto]');
+    if (a) a.addEventListener('click', () => {
+      fm.setMemoryAuto(true);
+      toast('Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.', 'success', { timeout: 6000 });
+      memHint.close();
+    });
+    screen.body.insertBefore(memHint, layout);
+  }
+  memInput.addEventListener('change', () => {
+    if (memOn()) showMemHint();
+    else if (memHint && memHint.isConnected) memHint.close();
+  });
+  if (memOn() && !memory) showMemHint();
   // every change bumps `rev`; after saving, the state of that moment counts as saved (the result is a new file,
   // the marks stay on the page so the user can continue) – until the next change
   function markDirty(initial = false) {
@@ -663,7 +690,7 @@ export async function mount(screen, { docId, params }) {
     const content = items.some(i => i.kind === 'image' || (i.text && i.text.trim())) || fields.some(f => f.value !== f.initial);
     dirty = content && rev !== savedRev;
     saveBtn.disabled = !dirty;
-    updateFoot(screen, [saveBtn], dirty ? 'Ungespeicherte Änderungen' : (content && rev === savedRev ? 'Gespeichert' : ''));
+    updateFoot(screen, [memBox, saveBtn], dirty ? 'Ungespeicherte Änderungen' : (content && rev === savedRev ? 'Gespeichert' : ''));
   }
   markDirty(true);
 
@@ -708,14 +735,15 @@ export async function mount(screen, { docId, params }) {
       const signed = items.some(i => i.kind === 'image');
       const base = baseName(doc.name).replace(/\s*\((?:ausgefüllt|unterschrieben)\)$/i, '');
       const res = await saveResult(out, `${base} (${signed ? 'unterschrieben' : 'ausgefüllt'}).pdf`);
-      try { await db.updateDoc(res.id, { plus: true }); } catch { /* only the viewer hint */ }
+      const kept = memOn();
+      if (kept) { try { await db.updateDoc(res.id, { plus: true }); } catch { /* only the viewer hint */ } }
       if (signed) trackStat('docs_signed');
       const box = h('<div class="screen-inner" style="padding-top:0"></div>');
       box.appendChild(resultCard(res, { from: docId, title: signed ? 'Unterschrieben' : 'Ausgefüllt' }));
       $$('.result-card', stage).forEach(x => x.closest('.screen-inner').remove());
       stage.appendChild(box);
       box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      toast('Dokument gespeichert.', 'success');
+      toast(kept ? 'Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.' : 'Dokument gespeichert.', 'success', kept ? { timeout: 5000 } : undefined);
       savedRev = rev;
       markDirty(true);
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
@@ -725,8 +753,10 @@ export async function mount(screen, { docId, params }) {
   async function build() {
     const { StandardFonts, degrees, rgb } = PDFLib;
     const pdfDoc = await loadEditable(bytes, doc.name, { key: docId });
-    const fm = await import('./formmemory.js');
-    const snap = fm.snapshot(PDFLib, pdfDoc); // the state before filling – lets FaLe make the entries editable again later
+    const keep = memOn();
+    // an outdated memory (file changed elsewhere) never stays in the file
+    fm.dropMemory(PDFLib, pdfDoc);
+    const snap = keep ? fm.snapshot(PDFLib, pdfDoc) : null; // the state before filling – lets FaLe make the entries editable again later
     // Helvetica (tiny, unchanged look) unless the text needs more than Western European letters (Polish, Turkish,
     // Czech, Cyrillic, Greek …): then Liberation Sans is embedded as a subset (js/office/unifont.js)
     const allText = fields.filter(f => f.type === 'text').map(f => String(f.value ?? '')).concat(items.filter(i => i.kind === 'text').map(i => i.text || '')).join('\n');
@@ -753,11 +783,11 @@ export async function mount(screen, { docId, params }) {
       }
       try {
         form.updateFieldAppearances(font);
-        if (flatOn()) fm.softFlatten(PDFLib, pdfDoc, form); // fixed for everyone else, kept in the file for FaLe
+        if (flatOn()) { if (keep) fm.softFlatten(PDFLib, pdfDoc, form); else form.flatten(); } // with memory: fixed for everyone else, kept in the file for FaLe
         else {
           // keep the form fillable, but signed signature fields are covered by the image: take them off the page
           const signedNames = new Set(items.filter(i => i.sigField).map(i => i.sigField));
-          for (const fld of form.getFields()) if (signedNames.has(fld.getName())) { try { fm.detachField(PDFLib, pdfDoc, form, fld); } catch {} }
+          for (const fld of form.getFields()) if (signedNames.has(fld.getName())) { try { if (keep) fm.detachField(PDFLib, pdfDoc, form, fld); else form.removeField(fld); } catch {} }
         }
       } catch (e) {
         console.warn('flatten', e);
@@ -795,6 +825,12 @@ export async function mount(screen, { docId, params }) {
       }
     }
     // the memory: entries as data (signatures as PNG) + the state before filling
+    if (keep) await remember(pdfDoc, snap);
+    // nothing of earlier versions stays hidden in the file (old entries, old memory, replaced page contents)
+    try { (await import('./redact.js')).collectGarbage(PDFLib, pdfDoc.context); } catch (e) { console.warn('cleanup', e); }
+    return saveDoc(pdfDoc);
+  }
+  async function remember(pdfDoc, snap) {
     const toB64 = async blob => { const u = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
     const saved = [];
     for (const it of items) {
@@ -803,7 +839,6 @@ export async function mount(screen, { docId, params }) {
       else if (it.sig && it.sig.blob) saved.push({ kind: 'image', page: it.page, x: it.x, y: it.y, w: it.w, h: it.h, sw: it.sig.w, sh: it.sig.h, sigField: it.sigField || null, png: await toB64(it.sig.blob) });
     }
     try { await fm.attachMemory(PDFLib, pdfDoc, snap, { flat: fields.length ? flatOn() : true, items: saved }); } catch (e) { console.warn('Formular-Gedächtnis', e); }
-    return saveDoc(pdfDoc);
   }
   function flatOn() { return !panel || !$('[data-flatten]', panel) || $('[data-flatten]', panel).checked; }
 

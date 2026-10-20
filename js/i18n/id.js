@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Catatan tentang isian",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Diisi dengan FaLe – kamu bisa mengubah isianmu kapan saja.",
   "Einträge ändern": "Ubah isian",
+  "Später in FaLe änderbar": "Bisa diubah nanti di FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Program lain menampilkan PDF sebagai sudah diisi. Di FaLe kamu bisa mengubah isian dan tanda tangan nanti – cukup buka lagi file-nya di sini.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Ini diaktifkan di pengaturanmu untuk setiap penyimpanan.",
+  "Immer so speichern": "Selalu simpan seperti ini",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Tersimpan – isianmu bisa diubah nanti di FaLe.",
+  "Ausgefüllte PDFs später änderbar": "PDF terisi bisa diubah nanti",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Saat mengisi & menandatangani, selalu simpan dengan „Bisa diubah nanti di FaLe“. Program lain tetap menampilkan PDF sebagai sudah diisi.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "PDF yang diisi kini selalu bisa diubah di FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Hanya jika diminta: centang „Bisa diubah nanti di FaLe“ saat menyimpan.",
 };
 
 export const defaultValues = {

@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Uwaga o wpisach",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Wypełnione w FaLe – swoje wpisy możesz zmienić w każdej chwili.",
   "Einträge ändern": "Zmień wpisy",
+  "Später in FaLe änderbar": "Do edycji później w FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Inne programy pokazują PDF jako gotowy. W FaLe możesz później zmienić wpisy i podpis – wystarczy ponownie otworzyć tu plik.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Jest to włączone w Twoich ustawieniach dla każdego zapisu.",
+  "Immer so speichern": "Zawsze zapisuj w ten sposób",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Zapisano – wpisy możesz później zmienić w FaLe.",
+  "Ausgefüllte PDFs später änderbar": "Wypełnione PDF do edycji później",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Przy wypełnianiu i podpisywaniu zawsze zapisuj z opcją „Do edycji później w FaLe”. Inne programy i tak pokazują PDF jako gotowy.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Wypełnione pliki PDF pozostają teraz zawsze edytowalne w FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Tylko na życzenie: przy zapisie zaznacz „Do edycji później w FaLe”.",
 };
 
 export const defaultValues = {

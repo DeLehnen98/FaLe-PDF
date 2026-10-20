@@ -585,6 +585,13 @@
 .sign-prof span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sign-autofill { margin-bottom: 0; }
 .sign-flatten { font-size: calc(13.5px * var(--ts, 1)); min-height: 38px; margin-bottom: 6px; }
+.screen-foot .sign-mem { min-height: 44px; font-size: calc(14px * var(--ts, 1)); margin: 0; }
+@media (max-width: 640px) {
+  /* phone: option and „Speichern“ side by side in one row – the page keeps its room; the save button shows the state */
+  .screen-foot:has(.sign-mem) .foot-info { display: none; }
+  .screen-foot .sign-mem { flex: 1 1 0; min-width: 0; gap: 8px; line-height: 1.25; font-size: calc(14px * var(--ts, 1)); }
+  .screen-foot:has(.sign-mem) .btn { flex: 0 0 auto; }
+}
 .field-ov.sig-ov { background: rgba(28, 100, 242, .08); border: 1.5px dashed rgba(28, 100, 242, .6); display: grid; place-items: center; }
 .sig-ov-label { display: inline-flex; align-items: center; gap: 4px; font: 600 12px/1 system-ui, sans-serif; color: #1C64F2; background: rgba(255, 255, 255, .9); padding: 4px 8px; border-radius: 999px; }
 .sig-ov-label .ic { width: 14px; height: 14px; }
@@ -923,6 +930,18 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
 .sh-check { transform-box: fill-box; transform-origin: center; animation: sh-check 4.8s ease-out infinite; }
 .sh-check circle { fill: var(--success, #1E9E6A); }
 .sh-check path { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.sh-field { fill: #F4F6FF; stroke: var(--primary); stroke-width: 1.3; }
+.sh-type { fill: #2A2F52; transform-box: fill-box; transform-origin: left center; animation: sh-type 4.8s steps(9, end) infinite; }
+.sh-lock, .sh-pen { transform-box: fill-box; transform-origin: center; }
+.sh-lock { animation: sh-lock 4.8s ease-out infinite; }
+.sh-pen { animation: sh-pen 4.8s ease-out infinite; }
+.sh-lock circle { fill: #4A5070; }
+.sh-pen circle { fill: var(--primary); }
+.sh-lock rect { fill: #fff; }
+.sh-lock .sh-shackle, .sh-pen path { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes sh-type { 0%, 6% { transform: scaleX(0); } 30%, 95% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes sh-lock { 0%, 33% { transform: scale(0); } 39% { transform: scale(1.15); } 43%, 56% { transform: scale(1); } 61%, 100% { transform: scale(0); } }
+@keyframes sh-pen { 0%, 61% { transform: scale(0); } 67% { transform: scale(1.15); } 71%, 91% { transform: scale(1); } 96%, 100% { transform: scale(0); } }
 @keyframes sh-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 @keyframes sh-out { to { opacity: 0; transform: translateY(-6px); } }
 @keyframes sh-box { 0%, 12% { transform: scaleX(0); opacity: 1; } 32%, 46% { transform: scaleX(1); opacity: 1; } 56%, 76% { transform: scaleX(1); opacity: .28; } 86% { transform: scaleX(1); opacity: 1; } 96%, 100% { transform: scaleX(0); opacity: 1; } }
@@ -931,7 +950,8 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
 @keyframes sh-check { 0%, 58% { transform: scale(0); } 65% { transform: scale(1.15); } 70%, 90% { transform: scale(1); } 96%, 100% { transform: scale(0); } }
 @media (prefers-reduced-motion: reduce) {
   .sh-card, .sh-card.sh-out { animation: none; }
-  .sh-secret rect, .sh-dust circle, .sh-box, .sh-check { animation: none; }
+  .sh-secret rect, .sh-dust circle, .sh-box, .sh-check, .sh-type, .sh-lock, .sh-pen { animation: none; }
+  .sh-lock { opacity: 0; }
   .sh-secret rect { opacity: 0; }
   .sh-box { opacity: .35; }
 }

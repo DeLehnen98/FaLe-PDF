@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Remarque sur les saisies",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Rempli avec FaLe – vous pouvez modifier vos saisies à tout moment.",
   "Einträge ändern": "Modifier les saisies",
+  "Später in FaLe änderbar": "Modifiable plus tard dans FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Les autres programmes affichent le PDF comme terminé. Dans FaLe, vous pouvez modifier vos saisies et votre signature plus tard – il suffit de rouvrir le fichier ici.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "C’est activé dans vos paramètres pour chaque enregistrement.",
+  "Immer so speichern": "Toujours enregistrer ainsi",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Enregistré – vous pourrez modifier vos saisies plus tard dans FaLe.",
+  "Ausgefüllte PDFs später änderbar": "PDF remplis modifiables plus tard",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Toujours enregistrer avec « Modifiable plus tard dans FaLe » lors du remplissage et de la signature. Les autres programmes affichent quand même le PDF comme terminé.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "Les PDF remplis restent désormais toujours modifiables dans FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Seulement sur demande : cochez « Modifiable plus tard dans FaLe » lors de l’enregistrement.",
 };
 
 export const defaultValues = {

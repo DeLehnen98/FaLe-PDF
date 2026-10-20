@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "입력 내용 안내",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe로 작성함 – 입력 내용은 언제든지 다시 바꿀 수 있습니다.",
   "Einträge ändern": "입력 내용 변경",
+  "Später in FaLe änderbar": "나중에 FaLe에서 수정 가능",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "다른 프로그램에서는 PDF가 작성 완료된 상태로 보입니다. FaLe에서는 입력 내용과 서명을 나중에 다시 수정할 수 있습니다. 여기서 파일을 다시 열기만 하면 됩니다.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "설정에서 저장할 때마다 켜지도록 되어 있습니다.",
+  "Immer so speichern": "항상 이렇게 저장",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "저장됨 – 입력 내용은 나중에 FaLe에서 수정할 수 있습니다.",
+  "Ausgefüllte PDFs später änderbar": "작성한 PDF 나중에 수정 가능",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "작성 및 서명 시 항상 ‘나중에 FaLe에서 수정 가능’으로 저장합니다. 다른 프로그램에서는 PDF가 작성 완료된 상태로 보입니다.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "이제 작성한 PDF는 FaLe에서 항상 수정할 수 있습니다.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "원할 때만: 저장할 때 ‘나중에 FaLe에서 수정 가능’에 체크하세요.",
 };
 
 export const defaultValues = {

@@ -6438,6 +6438,16 @@ export default {
   "Hinweis Einträge": "Nota sulle voci",
   "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Compilato con FaLe – puoi cambiare le tue voci in qualsiasi momento.",
   "Einträge ändern": "Modifica voci",
+  "Später in FaLe änderbar": "Modificabile in seguito in FaLe",
+  "Andere Programme zeigen die PDF fertig ausgefüllt. In FaLe kannst du Einträge und Unterschrift später wieder ändern – einfach die Datei hier wieder öffnen.": "Gli altri programmi mostrano il PDF come completato. In FaLe puoi modificare i dati e la firma in seguito: basta riaprire qui il file.",
+  "Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "È attivato nelle tue impostazioni per ogni salvataggio.",
+  "Immer so speichern": "Salva sempre così",
+  "Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.": "From now on, filled-in PDFs always stay editable in FaLe. You can switch this off under “Profile” → Settings.",
+  "Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.": "Salvato – potrai modificare i tuoi dati in seguito in FaLe.",
+  "Ausgefüllte PDFs später änderbar": "PDF compilati modificabili in seguito",
+  "Beim Ausfüllen & Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.": "Quando compili e firmi, salva sempre con «Modificabile in seguito in FaLe». Gli altri programmi mostrano comunque il PDF come completato.",
+  "Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.": "I PDF compilati ora restano sempre modificabili in FaLe.",
+  "Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.": "Solo su richiesta: spunta «Modificabile in seguito in FaLe» al salvataggio.",
 };
 
 export const defaultValues = {
