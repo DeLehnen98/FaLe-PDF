@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "ढकना कैसे काम करता है",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "क्षेत्र पृष्ठभूमि के रंग का हो जाता है, और उसके नीचे जो है वह सेव करते समय फ़ाइल से मिटा दिया जाता है – सिर्फ़ छिपाया नहीं जाता। बाकी टेक्स्ट खोजा जा सकता है। अगर नीचे कोई तस्वीर है, तो वह पेज इमेज के रूप में सेव होता है। आपकी मूल फ़ाइल नहीं बदलती।",
   "Nicht mehr anzeigen": "फिर से न दिखाएँ",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "आपकी प्रविष्टियाँ फिर से बदली जा सकती हैं – उन्हें बदलें और दोबारा सेव करें।",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "भरने के बाद यह PDF किसी दूसरे प्रोग्राम से बदला गया है – इसलिए आपकी पिछली प्रविष्टियाँ अब एक-एक करके नहीं बदली जा सकतीं।",
+  "Hinweis Einträge": "प्रविष्टियों के बारे में सूचना",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe से भरा गया – आप अपनी प्रविष्टियाँ कभी भी बदल सकते हैं।",
+  "Einträge ändern": "प्रविष्टियाँ बदलें",
 };
 
 export const defaultValues = {

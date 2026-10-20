@@ -6451,6 +6451,11 @@ export default {
   "So funktioniert Abdecken": "How covering works",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "The area gets the background colour, and whatever lies underneath is deleted from the file when you save – not just hidden. The rest of the text stays searchable. If a picture lies underneath, that page is saved as an image. Your original stays unchanged.",
   "Nicht mehr anzeigen": "Don't show again",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Your entries can be edited again – change them and save again.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "This PDF was changed with another program after it was filled in – that is why your earlier entries can no longer be edited one by one.",
+  "Hinweis Einträge": "Note about entries",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Filled in with FaLe – you can change your entries at any time.",
+  "Einträge ändern": "Change entries",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

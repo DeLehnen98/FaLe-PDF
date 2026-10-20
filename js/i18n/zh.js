@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "覆盖的工作方式",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "该区域会填上背景色，保存时会把下方的内容从文件中删除——不只是遮住。其余文字仍可搜索。如果下方有图片，该页会保存为图片。你的原文件保持不变。",
   "Nicht mehr anzeigen": "不再显示",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "你的填写内容又可以编辑了——修改后重新保存即可。",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "这个 PDF 在填写后被其他程序修改过——因此之前的填写内容无法再逐项编辑。",
+  "Hinweis Einträge": "关于填写内容的提示",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "已用 FaLe 填写——你可以随时修改填写内容。",
+  "Einträge ändern": "修改填写内容",
 };
 
 export const defaultValues = {

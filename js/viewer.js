@@ -901,6 +901,15 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
     import('./ocr/banner.js').then(m => m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
     // authority form that exists only as XFA: the page shows a placeholder → offer the form screen
     import('./tools/xfaform.js').then(m => m.showXfaBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
+    // filled in with FaLe („Formular mit Gedächtnis“): the entries can be changed again
+    if (doc.plus) {
+      const st = q('stage');
+      st.querySelectorAll('.plus-banner').forEach(b => b.remove());
+      const el = h(`<div class="ocr-banner plus-banner" role="region" aria-label="Hinweis Einträge">${icon('sign')}<span>Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.</span>
+        <span class="ocr-banner-act"><button class="btn btn-soft btn-sm" type="button" data-plus-go>Einträge ändern</button></span></div>`);
+      el.querySelector('[data-plus-go]').addEventListener('click', () => { location.hash = `#/werkzeug/unterschreiben?doc=${id}`; });
+      st.appendChild(el);
+    }
     saveProgress(id, startPage, pdf.numPages);
     applyWakeLock();
     if (query) openFind(query);

@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Comment fonctionne « Recouvrir »",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "La zone prend la couleur du fond, et ce qui se trouve dessous est supprimé du fichier à l’enregistrement – pas seulement masqué. Le reste du texte reste consultable par recherche. Si une image se trouve dessous, cette page est enregistrée comme image. Votre original reste inchangé.",
   "Nicht mehr anzeigen": "Ne plus afficher",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Vos saisies sont de nouveau modifiables – changez-les et enregistrez à nouveau.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Ce PDF a été modifié avec un autre programme après avoir été rempli – vos saisies précédentes ne peuvent donc plus être modifiées une par une.",
+  "Hinweis Einträge": "Remarque sur les saisies",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Rempli avec FaLe – vous pouvez modifier vos saisies à tout moment.",
+  "Einträge ändern": "Modifier les saisies",
 };
 
 export const defaultValues = {

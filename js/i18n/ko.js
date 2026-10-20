@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "덮기 작동 방식",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "영역은 배경색으로 바뀌고, 그 아래 내용은 저장할 때 파일에서 삭제됩니다. 단순히 가려지는 것이 아닙니다. 나머지 텍스트는 계속 검색할 수 있습니다. 아래에 그림이 있으면 그 페이지는 이미지로 저장됩니다. 원본은 그대로입니다.",
   "Nicht mehr anzeigen": "다시 표시하지 않기",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "입력한 내용을 다시 편집할 수 있습니다. 바꾼 뒤 다시 저장하세요.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "이 PDF는 작성 후 다른 프로그램으로 변경되어, 이전 입력 내용을 하나씩 편집할 수 없습니다.",
+  "Hinweis Einträge": "입력 내용 안내",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe로 작성함 – 입력 내용은 언제든지 다시 바꿀 수 있습니다.",
+  "Einträge ändern": "입력 내용 변경",
 };
 
 export const defaultValues = {

@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Jak działa zakrywanie",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Obszar dostaje kolor tła, a to, co jest pod nim, zostaje przy zapisie usunięte z pliku – a nie tylko zasłonięte. Reszta tekstu pozostaje możliwa do wyszukania. Jeśli pod spodem jest obraz, ta strona zostanie zapisana jako obraz. Oryginał pozostaje bez zmian.",
   "Nicht mehr anzeigen": "Nie pokazuj ponownie",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Twoje wpisy znów można edytować – zmień je i zapisz ponownie.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Ten PDF został po wypełnieniu zmieniony w innym programie – dlatego wcześniejszych wpisów nie da się już edytować pojedynczo.",
+  "Hinweis Einträge": "Uwaga o wpisach",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Wypełnione w FaLe – swoje wpisy możesz zmienić w każdej chwili.",
+  "Einträge ändern": "Zmień wpisy",
 };
 
 export const defaultValues = {

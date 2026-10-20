@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Así funciona «Cubrir»",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "La zona toma el color del fondo y lo que hay debajo se borra del archivo al guardar, no solo se tapa. El resto del texto sigue pudiendo buscarse. Si debajo hay una imagen, esa página se guarda como imagen. Tu original no cambia.",
   "Nicht mehr anzeigen": "No volver a mostrar",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Tus entradas se pueden editar de nuevo: cámbialas y vuelve a guardar.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Este PDF se modificó con otro programa después de rellenarlo, por eso tus entradas anteriores ya no se pueden editar una por una.",
+  "Hinweis Einträge": "Nota sobre las entradas",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Rellenado con FaLe: puedes cambiar tus entradas cuando quieras.",
+  "Einträge ändern": "Cambiar entradas",
 };
 
 export const defaultValues = {

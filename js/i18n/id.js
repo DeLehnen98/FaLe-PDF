@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Cara kerja Tutupi",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Area diberi warna latar, dan apa pun di bawahnya dihapus dari file saat menyimpan – bukan sekadar disembunyikan. Teks lainnya tetap bisa dicari. Jika ada gambar di bawahnya, halaman itu disimpan sebagai gambar. File aslimu tidak berubah.",
   "Nicht mehr anzeigen": "Jangan tampilkan lagi",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Isianmu bisa diedit lagi – ubah lalu simpan kembali.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "PDF ini diubah dengan program lain setelah diisi – karena itu isianmu sebelumnya tidak bisa lagi diedit satu per satu.",
+  "Hinweis Einträge": "Catatan tentang isian",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Diisi dengan FaLe – kamu bisa mengubah isianmu kapan saja.",
+  "Einträge ändern": "Ubah isian",
 };
 
 export const defaultValues = {

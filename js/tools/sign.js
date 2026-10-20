@@ -25,7 +25,19 @@ export async function mount(screen, { docId, params }) {
   if (!doc) { screen.body.innerHTML = '<p class="panel-empty">Dokument nicht gefunden.</p>'; return; }
   screen.setTitle('Ausfüllen & unterschreiben', doc.name);
   await ensureCss();
-  const bytes = await getDocBytes(docId);
+  let bytes = await getDocBytes(docId);
+  // „Formular mit Gedächtnis“: a PDF FaLe filled in earlier comes back with its entries editable (js/tools/formmemory.js)
+  let memory = null, memoryNote = '';
+  try {
+    const PL = await loadPdfLib();
+    const probe0 = await loadEditable(bytes, doc.name, { key: docId });
+    const fm = await import('./formmemory.js');
+    if (fm.hasMemory(PL, probe0)) {
+      const m = await fm.readMemory(PL, probe0);
+      if (m && m.ok) { fm.restore(PL, probe0); bytes = await saveDoc(probe0); memory = m.data; }
+      else if (m) memoryNote = m.reason;
+    }
+  } catch (e) { if (e instanceof UserError) throw e; console.warn('Formular-Gedächtnis', e); }
   // optional personal profile (module provided by the app shell; hidden when missing/empty)
   let profile = null;
   try { const pm = await import('../extras/profile.js'); profile = pm && pm.getProfile ? await pm.getProfile() : null; } catch { profile = null; }
@@ -655,6 +667,28 @@ export async function mount(screen, { docId, params }) {
   }
   markDirty(true);
 
+  if (memory) {
+    const flat = panel && $('[data-flatten]', panel);
+    if (flat) flat.checked = memory.flat !== false;
+    for (const it of memory.items || []) {
+      if (!pageInfo[it.page - 1]) continue;
+      if (it.kind === 'image') {
+        if (!it.png) continue;
+        const bin = Uint8Array.from(atob(it.png), c => c.charCodeAt(0));
+        const blob = new Blob([bin], { type: 'image/png' });
+        const sig = { blob, url: URL.createObjectURL(blob), w: it.sw || it.w, h: it.sh || it.h, keep: false };
+        addItem({ kind: 'image', page: it.page, x: it.x, y: it.y, w: it.w, h: it.h, sig, ...(it.sigField ? { sigField: it.sigField } : {}) });
+      } else if (it.kind === 'text') addItem({ kind: 'text', page: it.page, x: it.x, y: it.y, fontSize: it.fontSize, color: it.color, text: it.text || '' });
+      else if (it.kind === 'mark') addItem({ kind: 'mark', page: it.page, x: it.x, y: it.y, size: it.size, color: it.color, sym: it.sym || 'check' });
+    }
+    select(null);
+    savedRev = rev; markDirty(true);
+    if (panel) openPanel();
+    toast('Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.', 'success', { timeout: 6000 });
+  } else if (memoryNote === 'changed') {
+    toast('Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.', 'info', { timeout: 7000 });
+  }
+
   // fresh from „Felder finden“: fill in the profile values right away and show the field list
   const found = params && +params.get('gefunden');
   if (found && fields.length) {
@@ -672,7 +706,9 @@ export async function mount(screen, { docId, params }) {
     try {
       const out = await build();
       const signed = items.some(i => i.kind === 'image');
-      const res = await saveResult(out, `${baseName(doc.name)} (${signed ? 'unterschrieben' : 'ausgefüllt'}).pdf`);
+      const base = baseName(doc.name).replace(/\s*\((?:ausgefüllt|unterschrieben)\)$/i, '');
+      const res = await saveResult(out, `${base} (${signed ? 'unterschrieben' : 'ausgefüllt'}).pdf`);
+      try { await db.updateDoc(res.id, { plus: true }); } catch { /* only the viewer hint */ }
       if (signed) trackStat('docs_signed');
       const box = h('<div class="screen-inner" style="padding-top:0"></div>');
       box.appendChild(resultCard(res, { from: docId, title: signed ? 'Unterschrieben' : 'Ausgefüllt' }));
@@ -689,6 +725,8 @@ export async function mount(screen, { docId, params }) {
   async function build() {
     const { StandardFonts, degrees, rgb } = PDFLib;
     const pdfDoc = await loadEditable(bytes, doc.name, { key: docId });
+    const fm = await import('./formmemory.js');
+    const snap = fm.snapshot(PDFLib, pdfDoc); // the state before filling – lets FaLe make the entries editable again later
     // Helvetica (tiny, unchanged look) unless the text needs more than Western European letters (Polish, Turkish,
     // Czech, Cyrillic, Greek …): then Liberation Sans is embedded as a subset (js/office/unifont.js)
     const allText = fields.filter(f => f.type === 'text').map(f => String(f.value ?? '')).concat(items.filter(i => i.kind === 'text').map(i => i.text || '')).join('\n');
@@ -715,12 +753,11 @@ export async function mount(screen, { docId, params }) {
       }
       try {
         form.updateFieldAppearances(font);
-        const flat = !panel || !$('[data-flatten]', panel) || $('[data-flatten]', panel).checked;
-        if (flat) form.flatten();
+        if (flatOn()) fm.softFlatten(PDFLib, pdfDoc, form); // fixed for everyone else, kept in the file for FaLe
         else {
-          // keep the form fillable, but signed signature fields are covered by the image: remove them
+          // keep the form fillable, but signed signature fields are covered by the image: take them off the page
           const signedNames = new Set(items.filter(i => i.sigField).map(i => i.sigField));
-          for (const fld of form.getFields()) if (signedNames.has(fld.getName())) { try { form.removeField(fld); } catch {} }
+          for (const fld of form.getFields()) if (signedNames.has(fld.getName())) { try { fm.detachField(PDFLib, pdfDoc, form, fld); } catch {} }
         }
       } catch (e) {
         console.warn('flatten', e);
@@ -757,8 +794,18 @@ export async function mount(screen, { docId, params }) {
         target.drawImage(img, { x: px, y: py, width: it.w, height: it.h, rotate: degrees(rot) });
       }
     }
+    // the memory: entries as data (signatures as PNG) + the state before filling
+    const toB64 = async blob => { const u = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
+    const saved = [];
+    for (const it of items) {
+      if (it.kind === 'text') { if (it.text && it.text.trim()) saved.push({ kind: 'text', page: it.page, x: it.x, y: it.y, fontSize: it.fontSize, color: it.color, text: it.text }); }
+      else if (it.kind === 'mark') saved.push({ kind: 'mark', page: it.page, x: it.x, y: it.y, size: it.size, color: it.color, sym: it.sym });
+      else if (it.sig && it.sig.blob) saved.push({ kind: 'image', page: it.page, x: it.x, y: it.y, w: it.w, h: it.h, sw: it.sig.w, sh: it.sig.h, sigField: it.sigField || null, png: await toB64(it.sig.blob) });
+    }
+    try { await fm.attachMemory(PDFLib, pdfDoc, snap, { flat: fields.length ? flatOn() : true, items: saved }); } catch (e) { console.warn('Formular-Gedächtnis', e); }
     return saveDoc(pdfDoc);
   }
+  function flatOn() { return !panel || !$('[data-flatten]', panel) || $('[data-flatten]', panel).checked; }
 
   return () => {
     alive = false;

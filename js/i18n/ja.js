@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "「覆う」のしくみ",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "範囲は背景色になり、その下にある内容は保存時にファイルから削除されます（隠すだけではありません）。ほかの文字はそのまま検索できます。下に画像がある場合、そのページは画像として保存されます。元のファイルは変わりません。",
   "Nicht mehr anzeigen": "今後は表示しない",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "入力内容をもう一度編集できます。変更して保存し直してください。",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "この PDF は記入後に別のプログラムで変更されたため、以前の入力内容を個別に編集することはできません。",
+  "Hinweis Einträge": "入力内容についての注意",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe で記入済み。入力内容はいつでも変更できます。",
+  "Einträge ändern": "入力内容を変更",
 };
 
 export const defaultValues = {

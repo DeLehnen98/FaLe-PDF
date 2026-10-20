@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Як працює закриття",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Область отримує колір фону, а все, що під нею, під час збереження видаляється з файлу – а не просто ховається. Решта тексту залишається доступною для пошуку. Якщо під нею зображення, ця сторінка зберігається як зображення. Ваш оригінал не змінюється.",
   "Nicht mehr anzeigen": "Більше не показувати",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Ваші записи знову можна редагувати – змініть їх і збережіть ще раз.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Цей PDF після заповнення змінили в іншій програмі – тому попередні записи більше не можна редагувати окремо.",
+  "Hinweis Einträge": "Примітка щодо записів",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Заповнено у FaLe – ви можете будь-коли змінити свої записи.",
+  "Einträge ändern": "Змінити записи",
 };
 
 export const defaultValues = {

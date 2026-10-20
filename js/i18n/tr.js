@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Kapatma nasıl çalışır",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Alan arka plan rengini alır ve altında kalan her şey kaydederken dosyadan silinir – sadece gizlenmez. Metnin geri kalanı aranabilir kalır. Altında bir resim varsa o sayfa resim olarak kaydedilir. Orijinalin değişmez.",
   "Nicht mehr anzeigen": "Bir daha gösterme",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Girdilerin yeniden düzenlenebilir – değiştir ve tekrar kaydet.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Bu PDF doldurulduktan sonra başka bir programla değiştirildi – bu yüzden önceki girdilerin artık tek tek düzenlenemez.",
+  "Hinweis Einträge": "Girdilerle ilgili not",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "FaLe ile dolduruldu – girdilerini istediğin zaman değiştirebilirsin.",
+  "Einträge ändern": "Girdileri değiştir",
 };
 
 export const defaultValues = {

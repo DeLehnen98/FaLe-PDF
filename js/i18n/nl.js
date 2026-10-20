@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Zo werkt afdekken",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "Het gebied krijgt de achtergrondkleur, en wat eronder ligt, wordt bij het opslaan uit het bestand verwijderd – niet alleen verborgen. De rest van de tekst blijft doorzoekbaar. Ligt er een afbeelding onder, dan wordt die pagina als afbeelding opgeslagen. Je origineel blijft ongewijzigd.",
   "Nicht mehr anzeigen": "Niet meer tonen",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Je invoer is weer te bewerken – pas hem aan en sla opnieuw op.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Deze pdf is na het invullen met een ander programma gewijzigd – daarom kun je je eerdere invoer niet meer afzonderlijk bewerken.",
+  "Hinweis Einträge": "Opmerking over invoer",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Ingevuld met FaLe – je kunt je invoer altijd weer wijzigen.",
+  "Einträge ändern": "Invoer wijzigen",
 };
 
 export const defaultValues = {

@@ -6433,6 +6433,11 @@ export default {
   "So funktioniert Abdecken": "Come funziona «Copri»",
   "Die Fläche bekommt die Hintergrundfarbe, und was darunter liegt, wird beim Speichern aus der Datei gelöscht – nicht nur verdeckt. Der übrige Text bleibt durchsuchbar. Liegt ein Bild darunter, wird diese Seite als Bild gespeichert. Dein Original bleibt unverändert.": "L'area prende il colore dello sfondo e ciò che c'è sotto viene eliminato dal file al salvataggio, non solo nascosto. Il resto del testo resta ricercabile. Se sotto c'è un'immagine, quella pagina viene salvata come immagine. Il tuo originale resta invariato.",
   "Nicht mehr anzeigen": "Non mostrare più",
+  "Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.": "Le tue voci sono di nuovo modificabili – cambiale e salva di nuovo.",
+  "Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.": "Questo PDF è stato modificato con un altro programma dopo la compilazione – per questo le voci precedenti non si possono più modificare singolarmente.",
+  "Hinweis Einträge": "Nota sulle voci",
+  "Mit FaLe ausgefüllt – deine Einträge kannst du jederzeit wieder ändern.": "Compilato con FaLe – puoi cambiare le tue voci in qualsiasi momento.",
+  "Einträge ändern": "Modifica voci",
 };
 
 export const defaultValues = {
