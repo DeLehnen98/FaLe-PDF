@@ -4,6 +4,10 @@ import { $, $$, h, esc, toast, errorToast, openDialog, debounce } from '../ui.js
 import { oicon, KINDS } from '../office/kinds.js';
 import { getProfile, fullName, streetLine, cityLine, formatBirthDate, profileRoute } from './profile.js';
 import { track } from './stats.js';
+import { t } from '../i18n/index.js';
+
+// the „Briefe per Post“ card: hidden while the service is not set up on the server (and nothing was sent yet)
+const postHidden = () => { try { return localStorage.getItem('fale-post-on') === '0' && !JSON.parse(localStorage.getItem('fale-post-jobs') || '[]').length; } catch { return false; } };
 
 export const DISCLAIMER = 'Die Vorlagen sind allgemeine Formulierungshilfen und ersetzen keine Rechtsberatung. Bitte prüfe Fristen und Angaben selbst – im Zweifel helfen Verbraucherzentrale, Mieterverein oder eine Anwältin bzw. ein Anwalt weiter.';
 
@@ -678,12 +682,14 @@ function hub(screen) {
     const d = OTHER[id];
     return `<a class="tool-card" href="#/schreiben/${id}" data-letter="${id}"><span class="tile-ic">${oicon(d.icon)}</span><span class="tc-text"><h3>${esc(d.title)}</h3><p>${esc(DESCS[id] || '')}</p></span></a>`;
   }).join('')}</div>`).join('');
+  import('../post/api.js').then(m => m.warmPost()).catch(() => {}); // is „Briefe per Post“ set up? (for the card next time)
   screen.body.innerHTML = `<div class="screen-inner lt-hub">
     <div class="card lt-hero"><span class="lt-hero-ic">${oicon('letter')}</span><div><strong>Briefe, die sonst nerven – in einer Minute fertig</strong>
       <p>Wenige Fragen beantworten, Vorschau prüfen, fertig: als bearbeitbares Dokument und als PDF. Deine Absenderdaten kommen automatisch aus deinem <a href="${profileRoute}">Profil</a>.</p></div></div>
     <h2 class="section-title">Kündigen</h2>
     <div class="lt-chips" role="list">${kcards}</div>
     ${groups}
+    <a class="card lt-postlink" href="#/post"${postHidden() ? ' hidden' : ''}>${oicon('mail')}<span><strong>Briefe per Post</strong><span class="muted small">FaLe druckt, kuvertiert und verschickt – auch als Einschreiben. Hier siehst du, was unterwegs ist.</span></span>${oicon('chevronRight')}</a>
     <p class="lt-disclaimer">${oicon('info')}<span>${esc(DISCLAIMER)}</span></p>
     <p class="muted small">Weitere Vorlagen (Lebenslauf, Briefpapier, Haushaltsbuch …) findest du unter <a href="#/vorlagen">Vorlagen</a>.</p>
   </div>`;
@@ -814,10 +820,20 @@ async function generator(screen, def) {
     try { canShare = !!(navigator.canShare && navigator.canShare({ files: [new File([new Uint8Array(1)], 'a.pdf', { type: 'application/pdf' })] })); } catch { /* no share */ }
     try { if (!canShare) canShare = (await import('../platform.js')).isNative(); } catch { /* web */ }
     const shareAct = canShare ? { label: 'Teilen', value: 'share' } : { label: 'Herunterladen', value: 'dl' };
+    // „Per Post senden“ (js/post): not for letters that need a pen signature (Schriftform)
+    // (only once the service is set up on the server)
+    let post = null;
+    if (kind === 'pdf' && !(guide && guide.strict) && !def.build(v).standalone) {
+      try { post = await (await import('../post/api.js')).postAvailable(); } catch { post = null; }
+    }
+    const from = post && post.prices ? (await import('../post/api.js')).euro(post.prices.base) : '1,99 €';
+    const postHtml = post
+      ? `<div class="lt-post">${oicon('mail')}<div><strong>Kein Drucker? FaLe verschickt den Brief für dich</strong><span data-no-i18n>${esc(t('Gedruckt, kuvertiert, auf Wunsch als Einschreiben – ab {price}.', { price: from }))}</span></div><button class="btn btn-soft btn-sm" type="submit" value="post">Per Post senden</button></div>` : '';
     const r = await openDialog({
       title: kind === 'doc' ? 'Dokument erstellt' : 'PDF erstellt',
       body: `<div class="result-mini">${oicon('check')}<div><strong>${esc(meta.name)}</strong><p class="muted small">Gespeichert in deinen Dateien.${kind === 'doc' ? ' Du kannst den Text jetzt frei anpassen.' : ''}</p></div></div>
         ${guideHtml}
+        ${postHtml}
         ${rem ? `<label class="check lt-remind"><input type="checkbox" name="remind" checked> Erinnerung eintragen: „${esc(rem.title)}“ am ${deDate(rem.due)}</label>` : ''}`,
       actions: kind === 'doc' ? [{ label: 'Schließen', value: 'close' }, { label: 'Im Editor öffnen', value: 'open', kind: 'btn-primary', default: true }]
         : guide && guide.strict ? [shareAct, { label: 'Öffnen', value: 'open' }, { label: 'Drucken', value: 'print', kind: 'btn-primary', default: true }]
@@ -826,6 +842,17 @@ async function generator(screen, def) {
     });
     if (rem && r.data && r.data.remind && r.value) {
       try { const { addReminder } = await import('./reminders.js'); await addReminder({ ...rem, docId: meta.id }); toast('Erinnerung eingetragen', 'success'); } catch (err) { console.warn(err); }
+    }
+    if (r.value === 'post') {
+      const [plz, ...ort] = String(v.r_ort || '').trim().split(/\s+/);
+      const hasPlz = /^\d{4,5}$/.test(plz || '');
+      const db = await import('../db.js');
+      const bytes = new Uint8Array(await (await db.getFile(meta.id)).arrayBuffer());
+      const { sendByPost } = await import('../post/send.js');
+      await sendByPost({ docId: meta.id, name: meta.name, bytes,
+        to: { name: v.r_name || '', zusatz: v.r_zusatz || '', strasse: v.r_strasse || '', plz: hasPlz ? plz : '', ort: hasPlz ? ort.join(' ') : String(v.r_ort || ''), registered: /kuendigung|widerruf|widerspruch/.test(def.id || '') ? 'r1' : '' },
+        from: { name: v.s_name || v.s_firma || '', strasse: v.s_strasse || '', plz: '', ort: v.s_ort || '' } });
+      return;
     }
     if (r.value === 'open') location.hash = kind === 'doc' ? `#/bearbeiten/${meta.id}` : `#/ansicht/${meta.id}`;
     else if (r.value === 'print') location.hash = `#/ansicht/${meta.id}?drucken=1`;

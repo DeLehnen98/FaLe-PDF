@@ -1,4 +1,4 @@
-// Routing for the „Extras“ screens (#/profil, #/fristen, #/tresor, #/papierkorb, #/duplikate, #/schreiben, #/gliederung, #/konto).
+// Routing for the „Extras“ screens (#/profil, #/fristen, #/tresor, #/papierkorb, #/duplikate, #/schreiben, #/gliederung, #/post, #/konto).
 import { openScreen } from '../screen.js';
 import { errorToast, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
@@ -11,6 +11,7 @@ const SCREENS = {
   duplikate: { title: 'Duplikate finden', sub: 'Identische Dateien aufspüren und Platz schaffen', load: () => import('./organize.js').then(m => ({ mount: m.mountDuplicates })) },
   schreiben: { title: 'Schreiben & Vorlagen', sub: 'Briefe in einer Minute – fertig als Dokument und PDF', load: () => import('./letters.js') },
   gliederung: { title: 'Folien aus Gliederung', sub: 'Text rein, fertige Präsentation raus', load: () => import('../office/outline.js') },
+  post: { title: 'Briefe per Post', sub: 'FaLe druckt, kuvertiert und verschickt', load: () => import('../post/screen.js') },
   konto: { title: 'FaLe-Konto', sub: 'Optional – Sync und Plus auf allen Geräten', load: () => import('../account/screen.js') },
   // Assistenten (js/smart/*)
   briefkasten: { title: 'Briefkasten-Assistent', sub: 'Post verstehen – direkt auf deinem Gerät', load: () => import('../smart/inbox.js') },

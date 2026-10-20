@@ -233,6 +233,7 @@ function wire() {
       { label: 'Ganze Seite', icon: 'fitPage', onClick: () => { pdfViewer.currentScaleValue = 'page-fit'; } },
       '-',
       { label: 'Drucken', icon: 'print', onClick: printDoc },
+      postOffered() ? { label: 'Per Post senden', icon: 'mail', onClick: () => postDoc(cur.doc) } : null, // js/post: FaLe prints and mails it
       { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(cur.doc) },
       { label: 'Teilen', icon: 'share', onClick: () => shareDoc(cur.doc) },
       { label: 'Sicher teilen', icon: 'link', onClick: () => (location.hash = `#/teilen/link?doc=${id}`) }, // js/share (E2E-encrypted link)
@@ -992,4 +993,17 @@ function nameWithBreaks(el, name) {
   const base = dot > 0 ? n.slice(0, dot) : n, ext = dot > 0 ? n.slice(dot) : '';
   base.split(/(?<=[-_ ])/).forEach((part, i) => { if (i) el.appendChild(document.createElement('wbr')); el.appendChild(document.createTextNode(part)); });
   if (ext) { el.appendChild(document.createElement('wbr')); el.appendChild(document.createTextNode(ext)); }
+}
+
+/** „Per Post senden“ is offered unless the server said the service is not set up (js/post/api.js postKnown). */
+function postOffered() {
+  import('./post/api.js').then(m => m.warmPost()).catch(() => {}); // refresh for the next time the menu opens
+  try { return localStorage.getItem('fale-post-on') !== '0'; } catch { return true; }
+}
+/** „Per Post senden“ for the open PDF (js/post/send.js). */
+async function postDoc(doc) {
+  try {
+    const bytes = await (await import('./library.js')).getDocBytes(doc.id);
+    await (await import('./post/send.js')).sendByPost({ docId: doc.id, name: doc.name, bytes });
+  } catch (e) { errorToast(e, 'Der Briefversand konnte nicht geöffnet werden.'); }
 }

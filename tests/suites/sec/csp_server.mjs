@@ -15,6 +15,11 @@ http.createServer(async (req, res) => {
     const u = new URL(req.url, 'http://x');
     let p = normalize(decodeURIComponent(u.pathname)).replace(/^(\.\.[/\\])+/, '');
     applyVercelHeaders(u.pathname, res);
+    // „Brief per Post“ asks the server whether the service is set up – answer like production before setup
+    if (u.pathname === '/api/post' && u.searchParams.get('a') === 'config') {
+      res.setHeader('Content-Type', 'application/json');
+      return res.end(JSON.stringify({ ok: true, enabled: false, test: false, maxPages: 10, maxBytes: 3145728 }));
+    }
     if (p.endsWith('/')) p += 'index.html';
     let file = join(ROOT, p);
     if (!file.startsWith(ROOT) || /\/(\.git|api|supabase)\//.test(file.slice(ROOT.length) + '/')) { res.statusCode = 404; return res.end(); }

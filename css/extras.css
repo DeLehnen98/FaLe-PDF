@@ -467,3 +467,71 @@
 .rem-explain { display: flex; gap: 14px; align-items: flex-start; }
 .rem-explain > .ic { flex: none; width: 40px; height: 40px; padding: 8px; border-radius: 14px; background: var(--primary-soft); color: var(--primary); }
 .rem-explain p { margin: 0; line-height: 1.5; }
+
+/* ---- Brief per Post (js/post) ---- */
+.post-dlg { display: grid; gap: 12px; }
+.post-test { display: flex; gap: 8px; align-items: center; padding: 9px 12px; border-radius: 12px; background: var(--star-soft, #FFF4D6); color: #6B4A00; font-weight: 600; font-size: .875rem; }
+.post-test .ic { width: 18px; height: 18px; flex: none; }
+.post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.post-sec { display: grid; gap: 8px; align-content: start; }
+.post-sec h3 { margin: 0; font-size: 1rem; }
+.post-row { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; }
+.post-env { position: relative; height: 128px; border-radius: 10px; background: linear-gradient(180deg, #FBFAF6, #F1EFE8); box-shadow: inset 0 0 0 1px #DDD8CC, 0 2px 8px rgba(20, 22, 46, .08); overflow: hidden; }
+.post-win { position: absolute; left: 7%; top: 30%; width: 56%; height: 58%; padding: 6px 9px; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px #CFCABD; color: #111; font-family: Helvetica, Arial, sans-serif; font-size: 11px; line-height: 1.3; display: grid; align-content: start; gap: 1px; overflow: hidden; }
+.post-win small { font-size: 7px; color: #555; text-decoration: underline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.post-win [data-lines] { display: grid; }
+.post-win [data-lines] span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.post-stamp { position: absolute; right: 8%; top: 14%; width: 38px; height: 44px; border-radius: 4px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-soft); }
+.post-h-way { margin-top: 4px !important; }
+.post-ways { display: grid; gap: 8px; }
+.post-way { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 58px; padding: 9px 12px; border: 2px solid var(--border); border-radius: var(--radius-md); background: var(--surface); color: var(--text); text-align: left; font: inherit; cursor: pointer; }
+.post-way:disabled { opacity: .5; cursor: not-allowed; }
+.post-way[aria-checked="true"] { border-color: var(--primary); background: var(--primary-soft); }
+.post-way:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.post-way-t { flex: 1; display: grid; gap: 1px; }
+.post-way-t b { font-size: .9375rem; }
+.post-way-t span { font-size: .8125rem; color: var(--text-2); line-height: 1.3; }
+.post-way-p { font-weight: 750; white-space: nowrap; }
+.post-sum { margin: 0; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.post-sum b { font-size: 1.25rem; }
+.post-sum span { color: var(--text-2); font-size: .875rem; }
+.post-hint { display: flex; gap: 8px; align-items: flex-start; margin: 0; }
+.post-hint .ic { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--primary); }
+.post-list { display: grid; gap: 8px; }
+.post-item { text-decoration: none; color: inherit; }
+.post-item .tile-ic { flex: none; }
+.post-chip { flex: none; padding: 4px 10px; border-radius: 999px; font-size: .75rem; font-weight: 700; background: var(--surface-2); color: var(--text-2); white-space: nowrap; }
+.post-chip.st-sent { background: color-mix(in srgb, var(--success, #1E9E6A) 16%, transparent); color: var(--success, #1E9E6A); }
+.post-chip.st-pending_payment, .post-chip.st-paid, .post-chip.st-submitted { background: var(--primary-soft); color: var(--primary-strong); }
+.post-chip.st-failed, .post-chip.st-refunded { background: var(--danger-soft, #FDE8EC); color: var(--danger); }
+.post-detail { display: grid; gap: 12px; max-width: 640px; }
+.post-head { display: flex; gap: 12px; align-items: center; }
+.post-head > div { flex: 1; min-width: 0; display: grid; }
+.post-steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 14px; }
+.post-step { display: flex; gap: 12px; align-items: flex-start; color: var(--text-2); }
+.post-step b { display: block; color: var(--text); }
+.post-step span { font-size: .875rem; }
+.post-dot { flex: none; width: 30px; height: 30px; border-radius: 999px; display: grid; place-items: center; background: var(--surface-2); font-weight: 800; color: var(--text-2); box-shadow: inset 0 0 0 2px var(--border); }
+.post-step.done .post-dot { background: var(--success, #1E9E6A); color: #fff; box-shadow: none; }
+.post-step.done .post-dot .ic { width: 16px; height: 16px; stroke-width: 3; }
+.post-step.active .post-dot { background: var(--primary); color: #fff; box-shadow: 0 0 0 5px var(--primary-soft); animation: post-pulse 1.6s ease-in-out infinite; }
+@keyframes post-pulse { 50% { box-shadow: 0 0 0 9px transparent; } }
+.post-bad { display: flex; gap: 8px; margin: 12px 0 0; color: var(--danger); font-weight: 600; }
+.post-bad .ic { flex: none; width: 18px; height: 18px; }
+.lt-post { display: flex; gap: 12px; align-items: center; margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--primary-soft); }
+.lt-post > .ic { flex: none; width: 28px; height: 28px; color: var(--primary); }
+.lt-post > div { flex: 1; display: grid; gap: 2px; }
+.lt-post span { font-size: .8125rem; color: var(--text-2); }
+.lt-postlink { display: flex; gap: 12px; align-items: center; padding: 14px 16px; margin: 18px 0 8px; text-decoration: none; color: inherit; }
+.lt-postlink > .ic:first-child { width: 26px; height: 26px; color: var(--primary); flex: none; }
+.lt-postlink > span { flex: 1; display: grid; gap: 2px; }
+@media (max-width: 640px) {
+  .post-grid { grid-template-columns: 1fr; gap: 12px; }
+  .post-env { height: 112px; }
+  .lt-post { flex-wrap: wrap; }
+  .lt-post .btn { width: 100%; min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) { .post-step.active .post-dot { animation: none; } }
+.pt-info-box { display: flex; gap: 12px; align-items: flex-start; }
+.pt-info-box > .ic { flex: none; width: 26px; height: 26px; color: var(--primary); margin-top: 2px; }
+.pt-info-box p { margin: 0; line-height: 1.5; }

@@ -188,6 +188,7 @@ export function showMenu(anchor, items, { label = 'Menü' } = {}) {
     left = Math.max(8, left);
     let top = r.bottom + 6;
     if (top + mh > window.innerHeight - 8) top = Math.max(8, r.top - mh - 6);
+    if (top + Math.min(mh, window.innerHeight - 16) > window.innerHeight - 8) top = 8; // taller than the window: from the top, scrollable (.menu max-height)
     menu.style.left = left + 'px';
     menu.style.top = top + 'px';
   }

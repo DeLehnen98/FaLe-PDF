@@ -12,6 +12,8 @@ const require = createRequire(join(ROOT, 'api', 'x.js'));
 const { makeShareCore } = require('./_lib/share.js');
 const { memoryShareStore } = require('./_lib/sharestore.js');
 const { makeCore } = require('./_lib/core.js');
+const { makePostalCore } = require('./_lib/postal.js');
+const { memoryPostStore } = require('./_lib/poststore.js');
 
 export const BASE_ENV = {
   AI_PROVIDER: 'mock', FALE_STORE: 'memory', FALE_TOKEN_SECRET: 'test-token-secret-0123456789abcdefghijklmnopqrstuvwxyz',
@@ -31,6 +33,8 @@ export function startHarness(port = 8801) {
   let store = memoryShareStore({ now: clock });
   let core = makeShareCore({ getShareStore: () => store, now: clock });
   let aiCore = makeCore();
+  let postStore = memoryPostStore({ now: clock });
+  let postCore = makePostalCore({ getPostStore: () => postStore, getShareStore: () => store, now: clock });
   let log = [];
   const routes = { '/api/share': 'share', '/api/sign': 'sign', '/api/transfer': 'transfer' };
 
@@ -39,7 +43,7 @@ export function startHarness(port = 8801) {
     try {
       if (u.pathname.startsWith('/__test/')) return testRoute(u, req, res);
       const p = u.pathname.replace(/\/+$/, '');
-      if (routes[p] || p === '/api/ai/register') {
+      if (routes[p] || p === '/api/ai/register' || p === '/api/post') {
         // record everything the server receives (to prove: no plaintext, no key)
         const chunks = [];
         for await (const c of req) chunks.push(c);
@@ -49,6 +53,7 @@ export function startHarness(port = 8801) {
         req.body = (req.headers['content-type'] || '').includes('application/json') ? (body.length ? JSON.parse(body.toString('utf8')) : {}) : body;
         if (process.env.HARNESS_DELAY_MS) await new Promise(r => setTimeout(r, +process.env.HARNESS_DELAY_MS));
         if (p === '/api/ai/register') return aiCore.register(req, res);
+        if (p === '/api/post') return postCore.post(req, res);
         return core[routes[p]](req, res);
       }
       if (u.pathname.startsWith('/api/')) { res.statusCode = 404; return res.end('{"error":"not_found"}'); }
@@ -69,6 +74,7 @@ export function startHarness(port = 8801) {
     if (u.pathname === '/__test/reset') {
       resetEnv(Object.fromEntries(u.searchParams)); offset = 0; log = [];
       store = memoryShareStore({ now: clock }); core = makeShareCore({ getShareStore: () => store, now: clock }); aiCore = makeCore();
+      postStore = memoryPostStore({ now: clock }); postCore = makePostalCore({ getPostStore: () => postStore, getShareStore: () => store, now: clock });
       require('./_lib/store.js')._memory()._reset();
       return send({ ok: true });
     }
@@ -76,6 +82,16 @@ export function startHarness(port = 8801) {
     if (u.pathname === '/__test/advance') { offset += Number(u.searchParams.get('ms') || 0); return send({ ok: true, offset }); }
     if (u.pathname === '/__test/purge') return send(await store.purge());
     if (u.pathname === '/__test/log') return send({ log });
+    if (u.pathname === '/__test/post') {
+      const P = require('./_lib/postal.js');
+      if (u.searchParams.has('done')) P.mockProvider.done = u.searchParams.get('done') === '1';
+      if (u.searchParams.has('fail')) P.mockProvider.fail = u.searchParams.get('fail') === '1';
+      return send({ jobs: [...postStore._jobs.values()].map(j => ({ ...j, pdf: j.pdf ? j.pdf.length : null })) });
+    }
+    if (u.pathname === '/__test/postpdf') {
+      const j = postStore._jobs.get(u.searchParams.get('id'));
+      return send({ pdf: j ? j.pdf : null });
+    }
     if (u.pathname === '/__test/state') {
       const s = store._state;
       const objects = [...s.objects.values()].map(o => ({ id: o.id, kind: o.kind, size: o.size, chunks: o.chunkCount, complete: o.complete, downloads: o.downloads, maxDownloads: o.maxDownloads, header: o.header, parent: o.parent }));
