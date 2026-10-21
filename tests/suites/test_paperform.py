@@ -103,6 +103,18 @@ def run(p):
         check('skew of a crooked page found (1.2° ± 0.25)', abs(abs(r['skew']) - 1.2) <= 0.25, r['skew'])
         check('blank page: no skew, no shapes', r['blankSkew'] == 0 and not any(r['blankShapes'][k] for k in ('lines', 'cells', 'checks')), r)
         check('OCR label correction', r['fix'] == ['Ort', 'Vorname', 'Unterschrift', 'Hallo', 'PLZ'], r['fix'])
+        # a photo: level text lines, but the edge of the sheet, a dark table and a fold run at 6° – the text decides
+        r2 = page.evaluate("""async () => { const S = await import('./js/tools/paperscan.js');
+          const c = document.createElement('canvas'); c.width = 1100; c.height = 1500; const g = c.getContext('2d');
+          g.fillStyle = '#cdbfb6'; g.fillRect(0, 0, 1100, 1500);
+          g.fillStyle = '#2a2420'; g.beginPath(); g.moveTo(0, 0); g.lineTo(1100, 0); g.lineTo(1100, 40); g.lineTo(0, 155); g.closePath(); g.fill();
+          g.fillStyle = '#e3c22a'; g.beginPath(); g.moveTo(980, 0); g.lineTo(1100, 0); g.lineTo(1100, 1500); g.lineTo(1050, 1500); g.closePath(); g.fill();
+          g.fillStyle = 'rgba(60,40,50,0.35)'; g.beginPath(); g.moveTo(0, 820); g.lineTo(1100, 705); g.lineTo(1100, 1500); g.lineTo(0, 1500); g.closePath(); g.fill();
+          g.fillStyle = '#1b1715'; g.font = '26px Helvetica, Arial, sans-serif';
+          for (let i = 0; i < 14; i++) g.fillText('Hiermit bevollmächtige ich meinen Sohn, mich gegenüber der Versicherung zu vertreten', 90, 260 + i * 42);
+          const d = g.getImageData(0, 0, 1100, 1500).data;
+          return S.estimateSkew(S.inkMask(d, 1100, 1500), 1100, 1500, { maxDeg: 8, step: 0.2 }); }""")
+        check('photo: skew from the text lines, not from the sheet edge / table / fold at 6° (|skew| < 0.4)', abs(r2) < 0.4, r2)
     step('pure helpers', pure)
 
     def detection():

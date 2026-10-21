@@ -49,11 +49,26 @@ export function inkMask(rgba, w, h) {
  */
 export function estimateSkew(mask, w, h, { maxDeg = 3, step = 0.1 } = {}) {
   const f = 4, sw = Math.ceil(w / f), sh = Math.ceil(h / f);
-  const pts = [];
+  const cell = new Uint8Array(sw * sh);
   for (let y = 0; y < sh; y++) for (let x = 0; x < sw; x++) {
     let ink = 0;
     for (let yy = y * f; yy < Math.min(h, y * f + f) && !ink; yy++) for (let xx = x * f; xx < Math.min(w, x * f + f); xx++) if (mask[yy * w + xx]) { ink = 1; break; }
-    if (ink) pts.push(x, y);
+    cell[y * sw + x] = ink;
+  }
+  // only stroke-like ink counts: the edge of the sheet, a fold, a shadow or a table in a photo are long dark bands
+  // at their own angle and would outvote the text lines
+  const W1 = sw + 1, ii = new Uint32Array(W1 * (sh + 1));
+  for (let y = 0; y < sh; y++) { let row = 0; for (let x = 0; x < sw; x++) { row += cell[y * sw + x]; ii[(y + 1) * W1 + x + 1] = ii[y * W1 + x + 1] + row; } }
+  const r = Math.max(2, Math.round(Math.max(sw, sh) / 160));
+  const pts = [];
+  for (let y = 0; y < sh; y++) {
+    const ya = Math.max(0, y - r), yb = Math.min(sh, y + r + 1);
+    for (let x = 0; x < sw; x++) {
+      if (!cell[y * sw + x]) continue;
+      const xa = Math.max(0, x - r), xb = Math.min(sw, x + r + 1);
+      const n = ii[yb * W1 + xb] - ii[ya * W1 + xb] - ii[yb * W1 + xa] + ii[ya * W1 + xa];
+      if (n < (yb - ya) * (xb - xa) * 0.8) pts.push(x, y);
+    }
   }
   if (pts.length < 200) return 0;
   const score = deg => {
@@ -264,7 +279,7 @@ export function findShapes(mask, w, h, s) {
   for (const c of cells) if (!uniq.some(u => Math.abs(u.x0 - c.x0) < 2 && Math.abs(u.y0 - c.y0) < 2 && Math.abs(u.x1 - c.x1) < 2 && Math.abs(u.y1 - c.y1) < 2)) uniq.push(c);
   // open write-on lines: not part of a box, 40 pt or longer – pieces of slightly slanted lines chained together;
   // a line is free space to write on, so the band just above it is (almost) empty (rows of bold text are not lines)
-  const pieces = mergeH(hRuns(mask, w, h, Math.round(P(10))), thick);
+  const pieces = mergeH(hRuns(mask, w, h, Math.round(P(10))), Math.max(3, Math.round(P(1.9)))); // write-on lines are thin; a row of bold letters run together is thicker
   const chains = linkH(pieces, Math.max(4, P(7)), Math.max(2, P(1.5)))
     .filter(c => c.x1 - c.x0 >= P(40) && c.x1 - c.x0 < w * 0.97 && Math.abs(c.yb - c.ya) <= (c.x1 - c.x0) * 0.09);
   const onBox = c => [...used].some(u => Math.abs(yc(u) - (c.ya + c.yb) / 2) <= tol + Math.abs(c.yb - c.ya) / 2 && Math.min(u.x1, c.x1) - Math.max(u.x0, c.x0) > (c.x1 - c.x0) * 0.5);
@@ -277,11 +292,22 @@ export function findShapes(mask, w, h, s) {
     const far = inkShare(mask, w, x0, Math.round(c.y0 - P(9)), x1, Math.round(c.y0 - P(2.2))) > 0.1;
     return !near && !far;
   };
-  const lines = chains.filter(c => !onBox(c) && clearAbove(c) && !V.some(v => (Math.abs(xc(v) - c.x0) <= tol || Math.abs(xc(v) - c.x1) <= tol) && v.y0 <= (c.ya + c.yb) / 2 + tol && v.y1 >= (c.ya + c.yb) / 2 - tol && v.y1 - v.y0 > P(12)))
+  let lines = chains.filter(c => !onBox(c) && clearAbove(c) && !V.some(v => (Math.abs(xc(v) - c.x0) <= tol || Math.abs(xc(v) - c.x1) <= tol) && v.y0 <= (c.ya + c.yb) / 2 + tol && v.y1 >= (c.ya + c.yb) / 2 - tol && v.y1 - v.y0 > P(12)))
     .map(c => ({ x0: c.x0 / s, x1: c.x1 / s, y: c.ya / s, yr: c.yb / s })) // y at the left end (where the label is), yr at the right end
     .filter(l => !uniq.some(c => (Math.abs(l.y - c.y0) < 4 || Math.abs(l.y - c.y1) < 4) && l.x0 >= c.x0 - 4 && l.x1 <= c.x1 + 4))
     .sort((a, b) => (b.x1 - b.x0) - (a.x1 - a.x0))
-    .filter((l, i, all) => !all.slice(0, i).some(o => Math.abs(o.y - l.y) < 3 && Math.min(o.x1, l.x1) - Math.max(o.x0, l.x0) > (l.x1 - l.x0) * 0.6));
+    .filter((l, i, all) => !all.slice(0, i).some(o => Math.abs(o.y - l.y) < 3 && Math.min(o.x1, l.x1) - Math.max(o.x0, l.x0) > (l.x1 - l.x0) * 0.6))
+    .sort((a, b) => a.x0 - b.x0);
+  // a faint line in a photo can break in the middle: pieces in line with a small gap are one line
+  for (let i = 0; i < lines.length; i++) {
+    for (let j = i + 1; j < lines.length; j++) {
+      const a = lines[i], b = lines[j];
+      const ay = a.yr != null ? a.yr : a.y;
+      if (b.x0 - a.x1 > 22 || b.x0 < a.x1 - 6 || Math.abs(b.y - ay) > 2.5) continue;
+      a.x1 = Math.max(a.x1, b.x1); a.yr = b.yr != null ? b.yr : b.y;
+      lines.splice(j, 1); j = i;
+    }
+  }
   // checkboxes: small squares 6–22 pt with an (almost) empty inside
   const SH = mergeH(hRuns(mask, w, h, Math.round(P(6)), Math.round(P(23))), thick);
   const checks = [];
@@ -466,6 +492,7 @@ function dist(a, b) {
 /** Correct a (recognised) label to a well-known form label when it is one letter off („Or“ → „Ort“, „Vomame“ → „Vorname“). */
 export function fixLabel(str) {
   const t = String(str || '').trim();
+  if (/^\S{2,4},?\s+datum$/i.test(t) && !/^datum/i.test(t)) return 'Ort, Datum'; // „Or, Datum“, „Die, Datum“
   if (t.length < 2 || t.length > 24) return t;
   const lo = t.toLowerCase();
   let best = null, bd = 9;
