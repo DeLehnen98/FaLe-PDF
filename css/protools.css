@@ -584,6 +584,7 @@
 .sign-prof .ic { width: 15px; height: 15px; color: var(--accent); flex: none; }
 .sign-prof span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sign-autofill { margin-bottom: 0; }
+.sign-lotse { margin: 4px 0 12px; justify-content: center; }
 .sign-flatten { font-size: calc(13.5px * var(--ts, 1)); min-height: 38px; margin-bottom: 6px; }
 .screen-foot .sign-mem { min-height: 44px; font-size: calc(14px * var(--ts, 1)); margin: 0; }
 @media (max-width: 640px) {

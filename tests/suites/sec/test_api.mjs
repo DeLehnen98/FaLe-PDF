@@ -432,10 +432,10 @@ await step('schema + helpers', async () => {
   check('dayKey Europe/Berlin crosses midnight', Sec.dayKey('Europe/Berlin', new Date('2026-10-14T22:30:00Z')) === '2026-10-15' && Sec.dayKey('Europe/Berlin', new Date('2026-10-14T21:30:00Z')) === '2026-10-14');
   check('ipHash day-scoped + salted', Sec.ipHash('s', '1.2.3.4', '2026-10-14') !== Sec.ipHash('s', '1.2.3.4', '2026-10-15') && Sec.ipHash('s', '1.2.3.4', 'd') !== Sec.ipHash('t', '1.2.3.4', 'd'));
   const tasks = Object.keys(TASKS).sort().join(',');
-  check('all server tasks defined', tasks === 'chat,explain,flashcards,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
+  check('all server tasks defined', tasks === 'chat,explain,flashcards,form_answers,form_help,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
   for (const [id, t] of Object.entries(TASKS)) {
     let threw = null; try { t.prepare({ text: 'x', question: 'x', request: 'x', chunks: [{ page: 1, text: 'x' }] }, {}); } catch (e) { threw = e; }
-    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })) }, { count: 99 }); } catch (e) { return e; } })();
+    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })), fields: Array.from({ length: 200 }, (_, i) => ({ id: 'q' + i, label: 'Beschriftung '.repeat(40) })), items: Array.from({ length: 80 }, (_, i) => ({ id: 'a' + i, label: 'L', text: 'Antwort '.repeat(300) })) }, { count: 99 }); } catch (e) { return e; } })();
     check(`task ${id}: limits enforced`, !(big instanceof Error) && big.user.length <= (t.maxInput || 3000) + 2500 && big.maxTokens > 0 && big.maxTokens <= 7000, big instanceof Error ? big.message : big.user.length);
     void threw;
   }

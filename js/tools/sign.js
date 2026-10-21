@@ -108,6 +108,7 @@ export async function mount(screen, { docId, params }) {
   if (fields.length) {
     panel = h(`<aside class="form-panel" aria-label="Formularfelder"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
       <h2>Formularfelder</h2><button class="icon-btn only-mobile" type="button" data-close aria-label="Schließen">${icon('close')}</button></div>
+      <a class="btn btn-soft btn-sm btn-block sign-lotse" href="#/werkzeug/formular-lotse?doc=${esc(docId)}">${icon('form')} Schritt für Schritt (Formular-Lotse)</a>
       <div data-autofill></div>
       <label class="check sign-flatten"><input type="checkbox" data-flatten checked><span>Felder beim Speichern fixieren (nicht mehr änderbar)</span></label>
       <div data-fields></div></aside>`);

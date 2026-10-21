@@ -146,7 +146,7 @@ function gemini(cfg, deps = {}) {
 
 // ------------------------------------------------------------------ mock (tests only)
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-function mockReply(task, user) {
+function mockReply(task, user, system = '') {
   const inner = (user.match(/<(?:text|dokument)>\n([\s\S]*?)\n<\/(?:text|dokument)>/) || [])[1] || user;
   const firstWords = inner.replace(/\[(?:S\.|Folie|Blatt|Abschnitt) \d+\]\n/g, '').split(/\s+/).slice(0, 6).join(' ');
   switch (task) {
@@ -186,6 +186,15 @@ function mockReply(task, user) {
       const am = (inner.match(/(\d{1,3}(?:\.\d{3})*,\d{2})\s?(?:€|EUR)/) || [])[1];
       return JSON.stringify({ type: /mahnung/i.test(inner) ? 'mahnung' : 'rechnung', sender: 'KI-Test Absender GmbH', summary: 'Test: Bitte bezahlen.', ...(ib ? { iban: ib } : {}), ...(am ? { amount: Number(am.replace(/\./g, '').replace(',', '.')) } : {}), due_date: '2030-01-31', due_label: 'Zahlung (KI)', customer_number: 'KI-4711', date: 'kein Datum' });
     }
+    case 'form_help': {
+      let d = {}; try { d = JSON.parse(inner); } catch {}
+      const l = (system.match(/übersetzt auf ([^ (]+)/) || [])[1] || 'Deutsch';
+      return JSON.stringify({ form_lang: 'de', fields: (d.fields || []).map(f => ({ id: f.id, term: `[${l}] ${f.label}`, explain: `Test-Erklärung zu „${f.label}“.`, kind: 'text' })) });
+    }
+    case 'form_answers': {
+      let d = []; try { d = JSON.parse(inner); } catch {}
+      return JSON.stringify({ items: (Array.isArray(d) ? d : []).map(x => ({ id: x.id, text: `[DE] ${x.text}` })) });
+    }
     case 'letter': return JSON.stringify({ subject: 'Kündigung meines Vertrags', salutation: 'Sehr geehrte Damen und Herren,',
       paragraphs: [`hiermit wende ich mich an Sie wegen: ${firstWords}.`, 'Bitte bestätigen Sie mir den Eingang dieses Schreibens bis zum [Datum].'], closing: 'Mit freundlichen Grüßen' });
     default: return 'OK';
@@ -195,10 +204,10 @@ function mockReply(task, user) {
 function mock() {
   return {
     name: 'mock',
-    async complete({ task, user, maxTokens, stream, onDelta, signal }) {
+    async complete({ task, system, user, maxTokens, stream, onDelta, signal }) {
       if (user.includes('[[mock:error]]')) throw new ProviderError(503, 'unavailable');
       if (user.includes('[[mock:slow]]')) await sleep(1500);
-      let text = user.includes('[[mock:badjson]]') ? 'Das ist leider kein JSON.' : mockReply(task, user);
+      let text = user.includes('[[mock:badjson]]') ? 'Das ist leider kein JSON.' : mockReply(task, user, system || '');
       text = text.slice(0, maxTokens * 4);
       if (stream) {
         const parts = text.match(/\S+\s*/g) || [text];

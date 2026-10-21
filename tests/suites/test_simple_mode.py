@@ -299,7 +299,7 @@ def run_combo(b, vw, vh, lang, theme):
         vis_sections = page.evaluate("[...document.querySelectorAll('#view-werkzeuge .tool-section, #view-werkzeuge .simple-sec')].filter(s => s.offsetHeight).map(s => s.dataset.section)")
         check(f'{tag}: tools – only the short list is shown', vis_sections == ['simple'], json.dumps(vis_sections))
         n_short = page.evaluate(JS_VIS, '#view-werkzeuge .tool-card')
-        check(f'{tag}: tools – 10 essential tools', n_short == 10, str(n_short))
+        check(f'{tag}: tools – 11 essential tools (incl. Formular-Lotse)', n_short == 11, str(n_short))
         check(f'{tag}: tools – AI section hidden', page.evaluate(JS_VIS, '#view-werkzeuge [data-section="ki"]') == 0)
         btn = page.locator('[data-simple-all]')
         check(f'{tag}: „Alle Werkzeuge anzeigen“ visible', btn.is_visible() and T('Alle Werkzeuge anzeigen', 'Show all tools') in btn.inner_text(), btn.inner_text())
@@ -326,7 +326,7 @@ def run_combo(b, vw, vh, lang, theme):
         page.evaluate("document.querySelector('#main').scrollTop = 0")
         btn.click()
         page.wait_for_timeout(200)
-        check(f'{tag}: collapse again', page.evaluate(JS_VIS, '#view-werkzeuge .tool-card') == 10 and btn.get_attribute('aria-expanded') == 'false')
+        check(f'{tag}: collapse again', page.evaluate(JS_VIS, '#view-werkzeuge .tool-card') == 11 and btn.get_attribute('aria-expanded') == 'false')
         # search finds everything (collapsed list)
         for q, needle in [(T('Serienbrief', 'Mail merge'), T('Serienbrief', 'Mail merge')), ('PDF/A', 'PDF/A')]:
             page.fill('#tool-search', q)
@@ -344,7 +344,7 @@ def run_combo(b, vw, vh, lang, theme):
             check(f'{tag}: user-hidden AI stays hidden in search', page.evaluate(JS_VIS, '#view-werkzeuge [data-section="ki"] .tool-card') == 0)
         page.fill('#tool-search', '')
         page.wait_for_timeout(400)
-        check(f'{tag}: cleared search → short list again', page.evaluate(JS_VIS, '#view-werkzeuge .tool-card') == 10)
+        check(f'{tag}: cleared search → short list again', page.evaluate(JS_VIS, '#view-werkzeuge .tool-card') == 11)
         # a card from the short list works
         page.click('[data-simple-tools] .tool-card[data-tool="zusammenfuegen"]')
         check(f'{tag}: short-list card opens its tool', poll(page, "location.hash === '#/werkzeug/zusammenfuegen'", 5000))

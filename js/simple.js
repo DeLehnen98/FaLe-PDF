@@ -121,7 +121,7 @@ export const NEW_MENU = [
 ];
 
 // Werkzeuge: the short list shown first in simple mode (ids from js/tools/index.js).
-export const SIMPLE_TOOLS = ['unterschreiben', 'scannen', 'bilder', 'zusammenfuegen', 'komprimieren', 'seiten', 'pdf-word', 'word-pdf', 'kommentieren', 'passwort'];
+export const SIMPLE_TOOLS = ['unterschreiben', 'formular-lotse', 'scannen', 'bilder', 'zusammenfuegen', 'komprimieren', 'seiten', 'pdf-word', 'word-pdf', 'kommentieren', 'passwort'];
 
 // ---------------------------------------------------------------- plain words on the tool screens
 // [selector inside #tool-screen, German text (whole text, or its beginning for long ones), plain German text].

@@ -10,6 +10,7 @@ const LANGS = {
   de: 'Deutsch', en: 'Englisch', fr: 'Französisch', es: 'Spanisch', it: 'Italienisch', nl: 'Niederländisch', pl: 'Polnisch',
   pt: 'Portugiesisch', tr: 'Türkisch', uk: 'Ukrainisch', ru: 'Russisch', ar: 'Arabisch', ro: 'Rumänisch', cs: 'Tschechisch',
   el: 'Griechisch', hr: 'Kroatisch', hu: 'Ungarisch', sv: 'Schwedisch', da: 'Dänisch', zh: 'Chinesisch (vereinfacht)', ja: 'Japanisch', ko: 'Koreanisch',
+  hi: 'Hindi', id: 'Indonesisch', fa: 'Persisch', sq: 'Albanisch', sr: 'Serbisch', bg: 'Bulgarisch', ku: 'Kurdisch (Kurmandschi)',
 };
 
 // German spreadsheet function names the app's formula engine understands (js/office/formula.js).
@@ -117,6 +118,37 @@ const SCHEMAS = {
       customer_number: { type: 'string', maxLength: 60 }, invoice_number: { type: 'string', maxLength: 60 }, contract_number: { type: 'string', maxLength: 60 }, reference: { type: 'string', maxLength: 60 },
       due_date: { type: 'string', maxLength: 10 }, due_label: { type: 'string', maxLength: 60 },
       phone: { type: 'string', maxLength: 40 }, email: { type: 'string', maxLength: 120 }, summary: { type: 'string', maxLength: 600 },
+    },
+  },
+  // Formular-Lotse: what the labels of a form mean (only the labels are sent – never the person's answers)
+  form_help: {
+    type: 'object', required: ['fields'], additionalProperties: false,
+    properties: {
+      form_lang: { type: 'string', maxLength: 5 },
+      fields: {
+        type: 'array', minItems: 1, maxItems: 60, items: {
+          type: 'object', required: ['id', 'term', 'explain'], additionalProperties: false,
+          properties: {
+            id: { type: 'string', minLength: 1, maxLength: 12 },
+            term: { type: 'string', minLength: 1, maxLength: 90 },
+            explain: { type: 'string', minLength: 1, maxLength: 320 },
+            example: { type: 'string', maxLength: 60 },
+            kind: { type: 'string', maxLength: 12 }, // text | name | date | number | money | id | place | choice | free | sign (others are dropped)
+          },
+        },
+      },
+    },
+  },
+  // Formular-Lotse: the person's free-text answers in the form's language (only on tap, shown before sending)
+  form_answers: {
+    type: 'object', required: ['items'], additionalProperties: false,
+    properties: {
+      items: {
+        type: 'array', minItems: 1, maxItems: 30, items: {
+          type: 'object', required: ['id', 'text'], additionalProperties: false,
+          properties: { id: { type: 'string', minLength: 1, maxLength: 12 }, text: { type: 'string', minLength: 1, maxLength: 900 } },
+        },
+      },
     },
   },
 };
@@ -344,6 +376,69 @@ Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten
     },
   },
 
+  form_help: {
+    stream: false, maxInput: 12000, schema: SCHEMAS.form_help,
+    prepare(input, o) {
+      const list = Array.isArray(input.fields) ? input.fields.slice(0, 60) : [];
+      const fields = list.map((f, i) => ({
+        id: String((f && f.id) || i + 1).replace(/[^\w-]/g, '').slice(0, 12) || String(i + 1),
+        label: optStr(f && f.label, 160), context: optStr(f && f.context, 160),
+        options: Array.isArray(f && f.options) ? f.options.slice(0, 8).map(x => optStr(x, 60)).filter(Boolean) : [],
+      })).filter(f => f.label);
+      if (!fields.length) throw bad('Keine Feldbeschriftungen');
+      const title = optStr(input.title, 120);
+      const l = lang(o.lang);
+      const data = clip(JSON.stringify({ title, fields }), this.maxInput);
+      return {
+        system: `${BASE}\nDu hilfst Menschen, ein Formular auszufüllen – oft in einer Sprache oder Amtssprache, die sie nicht gut verstehen. Du bekommst nur die Beschriftungen der Felder (keine persönlichen Daten).
+Gib für jedes Feld (gleiche id) zurück: „term“ = die Beschriftung, übersetzt auf ${LANGS[l]} (kurz, wie eine Feldbeschriftung; ist das schon die Sprache des Formulars, dann in einfacheren Worten), „explain“ = in 1–2 kurzen, einfachen Sätzen auf ${LANGS[l]}, was dort eingetragen wird und wo man die Angabe findet (z. B. „steht im Bescheid“). Sprich die Person mit „du“ an, wenn die Sprache das kennt. „example“ nur, wenn das Format wichtig ist (z. B. ein Datum), und nur als offensichtlich erfundenes Beispiel – niemals echte Personendaten. „kind“ = Art der Angabe. „form_lang“ = ISO-639-1-Code der Sprache der Beschriftungen.
+Wenn du ein Feld nicht sicher deuten kannst, sag das ehrlich in „explain“ und nenne, wo man nachfragen kann (die Stelle, die das Formular herausgibt). Keine Rechtsberatung.\n${jsonRule(SCHEMAS.form_help)}`,
+        user: `<text>\n${data.text}\n</text>`,
+        maxTokens: Math.min(4000, 260 + fields.length * 110),
+        truncated: data.truncated, note: '',
+      };
+    },
+    post(out, input) {
+      const ids = new Set((Array.isArray(input && input.fields) ? input.fields : []).map((f, i) => String((f && f.id) || i + 1).replace(/[^\w-]/g, '').slice(0, 12)));
+      const KINDS = ['text', 'name', 'date', 'number', 'money', 'id', 'place', 'choice', 'free', 'sign'];
+      const fields = (out.fields || []).filter(f => !ids.size || ids.has(f.id)).map(f => {
+        const o = { ...f };
+        if (!KINDS.includes(o.kind)) delete o.kind;
+        if (!o.example) delete o.example;
+        return o;
+      });
+      if (!fields.length) throw new HttpError(502, 'bad_output', 'Die KI-Antwort war unvollständig.');
+      const fl = typeof out.form_lang === 'string' && /^[a-z]{2}$/.test(out.form_lang.toLowerCase()) ? out.form_lang.toLowerCase() : undefined;
+      return fl ? { form_lang: fl, fields } : { fields };
+    },
+  },
+
+  form_answers: {
+    stream: false, maxInput: 9000, schema: SCHEMAS.form_answers,
+    prepare(input, o) {
+      const list = Array.isArray(input.items) ? input.items.slice(0, 30) : [];
+      const items = list.map((x, i) => ({
+        id: String((x && x.id) || i + 1).replace(/[^\w-]/g, '').slice(0, 12) || String(i + 1),
+        label: optStr(x && x.label, 160), text: optStr(x && x.text, 600),
+      })).filter(x => x.text);
+      if (!items.length) throw bad('Keine Antworten');
+      const target = LANGS[o.target] ? o.target : '';
+      const data = clip(JSON.stringify(items), this.maxInput);
+      return {
+        system: `${BASE}\nEine Person füllt ein Formular aus und hat einige Antworten in ihrer eigenen Sprache geschrieben. Übersetze jede Antwort (gleiche id) ${target ? `in folgende Sprache: ${LANGS[target]}` : 'in die Sprache der Feldbeschriftungen („label“)'} – knapp und sachlich, so wie man es in ein Formular schreibt. Namen, Zahlen, Daten, Adressen und Abkürzungen bleiben unverändert. Füge nichts hinzu und lass nichts weg. Steht eine Antwort schon in der Zielsprache, gib sie unverändert zurück.\n${jsonRule(SCHEMAS.form_answers)}`,
+        user: `<text>\n${data.text}\n</text>`,
+        maxTokens: Math.min(3000, 200 + Math.ceil(data.text.length / 2)),
+        truncated: data.truncated, note: '',
+      };
+    },
+    post(out, input) {
+      const ids = new Set((Array.isArray(input && input.items) ? input.items : []).map((x, i) => String((x && x.id) || i + 1).replace(/[^\w-]/g, '').slice(0, 12)));
+      const items = (out.items || []).filter(x => !ids.size || ids.has(x.id));
+      if (!items.length) throw new HttpError(502, 'bad_output', 'Die KI-Antwort war unvollständig.');
+      return { items };
+    },
+  },
+
   image_translate: {
     stream: true, maxInput: 6000,
     prepare(input, o) {
@@ -360,13 +455,13 @@ Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten
 };
 
 /** Validate + post-process a JSON task's raw model text. Throws HttpError(502) when unusable. */
-function finishJson(task, text) {
+function finishJson(task, text, input = null) {
   const raw = S.extractJson(text);
   if (!raw) throw new HttpError(502, 'bad_output', 'Die KI-Antwort konnte nicht gelesen werden. Bitte versuche es erneut.');
   const out = S.normalize(task.schema, raw);
   const errs = S.validate(task.schema, out);
   if (errs.length) throw new HttpError(502, 'bad_output', 'Die KI-Antwort hatte nicht das erwartete Format. Bitte versuche es erneut.', { details: errs.slice(0, 3) });
-  return task.post ? task.post(out) : out;
+  return task.post ? task.post(out, input || {}) : out;
 }
 
 function finishText(text) {

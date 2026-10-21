@@ -173,7 +173,7 @@ function makeCore(overrides = {}) {
       catch (e) { await settle(null); await refund(); throw providerHttpError(e); }
       await settle(r.usage);
       let output;
-      try { output = task.schema ? finishJson(task, r.text) : finishText(r.text); }
+      try { output = task.schema ? finishJson(task, r.text, input) : finishText(r.text); }
       catch (e) { await refund(); throw e; }
       if (!task.schema && !output) { await refund(); throw new H.HttpError(502, 'bad_output', 'Die KI hat keine Antwort geliefert. Bitte versuche es erneut.'); }
       const cut = r.stop === 'max_tokens' || r.stop === 'length';

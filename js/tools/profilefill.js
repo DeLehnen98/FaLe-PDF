@@ -34,7 +34,7 @@ const RULES = [
   [t => /^(adresse|anschrift|address|wohnanschrift)$|vollstaendige anschrift/.test(t), 'Anschrift', p => [join(v(p, 'strasse'), v(p, 'hausnummer')), join(v(p, 'plz'), v(p, 'ort'))].filter(Boolean).join(', ')],
   [t => /bundesland/.test(t), null, () => ''],
   [t => /\bland\b|country|staat(?!sang)/.test(t), 'Land', p => v(p, 'land')],
-  [t => /wohnort|\bort\b|\bstadt\b|\bcity\b|gemeinde/.test(t), 'Ort', p => v(p, 'ort')],
+  [t => /wohnort|\bort\b|\bstadt\b|\bcity\b|^(wohn)?gemeinde$/.test(t), 'Ort', p => v(p, 'ort')], // „Mietstufe der Gemeinde“ is not the place
   [t => /firma|unternehmen|company|arbeitgeber|organisation|organization|betrieb/.test(t), 'Firma', p => v(p, 'firma')],
   [t => /vorname|first ?name|given ?name|rufname/.test(t), 'Vorname', p => v(p, 'vorname')],
   [t => /nachname|familienname|last ?name|surname|zuname/.test(t), 'Nachname', p => v(p, 'nachname')],

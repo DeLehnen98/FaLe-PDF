@@ -9,7 +9,7 @@ const ROOT = '/home/claude/FalePDF';
 const require = createRequire(ROOT + '/api/x.js');
 const Sec = require('./_lib/security.js');
 const S = require('./_lib/schema.js');
-const { TASKS, SCHEMAS } = require('./_lib/tasks.js');
+const { TASKS, SCHEMAS, finishJson } = require('./_lib/tasks.js');
 const store = require('./_lib/store.js');
 const C = require('./_lib/config.js');
 const { getProvider } = require('./_lib/providers.js');
@@ -380,12 +380,32 @@ await step('schema + helpers', async () => {
   check('dayKey Europe/Berlin crosses midnight', Sec.dayKey('Europe/Berlin', new Date('2026-10-14T22:30:00Z')) === '2026-10-15' && Sec.dayKey('Europe/Berlin', new Date('2026-10-14T21:30:00Z')) === '2026-10-14');
   check('ipHash day-scoped + salted', Sec.ipHash('s', '1.2.3.4', '2026-10-14') !== Sec.ipHash('s', '1.2.3.4', '2026-10-15') && Sec.ipHash('s', '1.2.3.4', 'd') !== Sec.ipHash('t', '1.2.3.4', 'd'));
   const tasks = Object.keys(TASKS).sort().join(',');
-  check('all server tasks defined', tasks === 'chat,explain,flashcards,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
+  check('all server tasks defined', tasks === 'chat,explain,flashcards,form_answers,form_help,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
   for (const [id, t] of Object.entries(TASKS)) {
     let threw = null; try { t.prepare({ text: 'x', question: 'x', request: 'x', chunks: [{ page: 1, text: 'x' }] }, {}); } catch (e) { threw = e; }
-    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })) }, { count: 99 }); } catch (e) { return e; } })();
+    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })), fields: Array.from({ length: 200 }, (_, i) => ({ id: 'q' + i, label: 'Beschriftung '.repeat(40), context: 'K'.repeat(400), options: Array.from({ length: 30 }, () => 'O'.repeat(200)) })), items: Array.from({ length: 80 }, (_, i) => ({ id: 'a' + i, label: 'L'.repeat(400), text: 'Antwort '.repeat(300) })) }, { count: 99 }); } catch (e) { return e; } })();
     check(`task ${id}: limits enforced`, !(big instanceof Error) && big.user.length <= (t.maxInput || 3000) + 2500 && big.maxTokens > 0 && big.maxTokens <= 7000, big instanceof Error ? big.message : big.user.length);
     void threw;
+  }
+  // Formular-Lotse tasks: only labels go out, ids are echoed, unknown ids and a bad language code are dropped
+  {
+    const inp = { fields: [{ id: 'q1', label: 'Mietstufe der Gemeinde' }, { id: 'q/2<x>', label: 'Kassenzeichen', options: ['a', 'b'] }, { id: 'q3', label: '' }] };
+    const p = TASKS.form_help.prepare(inp, { lang: 'uk' });
+    check('form_help: labels as JSON data, user language in the prompt, empty labels dropped', /Ukrainisch/.test(p.system) && p.user.includes('Mietstufe') && p.user.includes('"q2x"') && !p.user.includes('"q3"'), p.user);
+    let bad = null; try { TASKS.form_help.prepare({ fields: [{ id: 'x', label: '' }] }, {}); } catch (e) { bad = e; }
+    check('form_help: nothing to explain → 400 bad_input', bad && bad.status === 400 && bad.code === 'bad_input', bad && bad.code);
+    const out = finishJson(TASKS.form_help, JSON.stringify({ form_lang: 'Deutsch', fields: [{ id: 'q1', term: 'Rent level', explain: 'A number from 1 to 7 …', kind: 'number' }, { id: 'evil', term: 'x', explain: 'y' }] }), inp);
+    check('form_help: unknown ids and an invalid form_lang are dropped', out.fields.length === 1 && out.fields[0].id === 'q1' && !('form_lang' in out), JSON.stringify(out));
+    const out2 = finishJson(TASKS.form_help, '```json\n' + JSON.stringify({ form_lang: 'DE', fields: [{ id: 'q1', term: 'T', explain: 'E', kind: 'weird' }] }) + '\n```', inp);
+    check('form_help: language code normalised, unknown kind removed', out2.form_lang === 'de' && out2.fields[0].kind === undefined, JSON.stringify(out2));
+    let empty = null; try { finishJson(TASKS.form_help, JSON.stringify({ fields: [{ id: 'nope', term: 'x', explain: 'y' }] }), inp); } catch (e) { empty = e; }
+    check('form_help: no usable field → 502 bad_output (request refunded)', empty && empty.status === 502, empty && empty.message);
+    const pa = TASKS.form_answers.prepare({ items: [{ id: 'a1', label: 'Begründung', text: 'Моя квартира занадто дорога' }, { id: 'a2', label: 'Beruf', text: '' }] }, { target: 'de' });
+    check('form_answers: target language named, empty answers dropped', /Sprache: Deutsch/.test(pa.system) && pa.user.includes('a1') && !pa.user.includes('"a2"'), pa.system.slice(0, 400));
+    const pa2 = TASKS.form_answers.prepare({ items: [{ id: 'a1', label: 'Grund', text: 'x' }] }, { target: 'xx' });
+    check('form_answers: unknown target → the language of the labels', /Sprache der Feldbeschriftungen/.test(pa2.system));
+    const oa = finishJson(TASKS.form_answers, JSON.stringify({ items: [{ id: 'a1', text: 'Meine Wohnung ist zu teuer' }, { id: 'zz', text: 'x' }] }), { items: [{ id: 'a1', text: 'x' }] });
+    check('form_answers: only the asked ids come back', oa.items.length === 1 && oa.items[0].id === 'a1', JSON.stringify(oa));
   }
   check('store memory is refused on Vercel production', (() => { process.env.VERCEL_ENV = 'production'; const v = C.storeConfigured({ store: 'memory' }); delete process.env.VERCEL_ENV; return v === false; })());
 });

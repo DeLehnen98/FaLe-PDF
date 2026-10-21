@@ -217,6 +217,7 @@ function wire() {
       { label: 'Vorlesen', icon: 'speaker', onClick: () => startReading() },
       { label: 'Kommentieren', icon: 'highlight', onClick: () => (location.hash = `#/werkzeug/kommentieren?doc=${id}`) },
       { label: 'Ausfüllen & unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}`) },
+      { label: 'Formular-Lotse', icon: 'form', onClick: () => (location.hash = `#/werkzeug/formular-lotse?doc=${id}`) },
       { label: 'PDF bearbeiten', icon: 'edit', onClick: () => (location.hash = `#/werkzeug/bearbeiten?doc=${id}`) },
       { label: 'Seiten verwalten', icon: 'pages', onClick: () => (location.hash = `#/werkzeug/seiten?doc=${id}`) },
       { label: 'Formular erstellen', icon: 'formAdd', onClick: () => (location.hash = `#/werkzeug/formular-erstellen?doc=${id}`) },
@@ -907,6 +908,8 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
     import('./ocr/banner.js').then(m => { m.isImageOnlyPdf(pdf).then(v => { if (cur && cur.pdf === pdf) cur.photo = v; }).catch(() => {}); return m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf }); }).catch(() => {});
     // authority form that exists only as XFA: the page shows a placeholder → offer the form screen
     import('./tools/xfaform.js').then(m => m.showXfaBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
+    // a fillable form: offer the Formular-Lotse (js/forms/lotse.js) – question by question, explained in the person's language
+    if (!doc.plus) showLotseBanner(q('stage'), { id, pdf, isCurrent: () => !!cur && cur.pdf === pdf });
     // filled in with FaLe („Formular mit Gedächtnis“): the entries can be changed again
     if (doc.plus) {
       const st = q('stage');
@@ -1001,6 +1004,28 @@ function nameWithBreaks(el, name) {
 }
 
 /** „Per Post senden“ is offered unless the server said the service is not set up (js/post/api.js postKnown). */
+const LOTSE_X = 'fale-lotse-banner-x';
+async function showLotseBanner(st, { id, pdf, isCurrent }) {
+  try {
+    let gone = [];
+    try { gone = JSON.parse(localStorage.getItem(LOTSE_X) || '[]'); } catch { gone = []; }
+    if (gone.includes(id)) return;
+    const fo = await pdf.getFieldObjects();
+    if (!fo || !isCurrent()) return;
+    const n = Object.values(fo).filter(list => (list || []).some(f => ['text', 'checkbox', 'radiobutton', 'combobox', 'listbox'].includes(f.type) && f.editable !== false)).length;
+    if (n < 3) return;
+    st.querySelectorAll('.lotse-banner').forEach(b => b.remove());
+    const el = h(`<div class="ocr-banner lotse-banner" role="region" aria-label="Hinweis Formular">${icon('form')}<span>Formular erkannt – lass dich Feld für Feld durchführen, auch in deiner Sprache.</span>
+      <span class="ocr-banner-act"><button class="btn btn-soft btn-sm" type="button" data-lotse-go>Formular-Lotse</button><button class="icon-btn" type="button" data-lotse-x aria-label="Hinweis schließen">${icon('close')}</button></span></div>`);
+    el.querySelector('[data-lotse-go]').addEventListener('click', () => { location.hash = `#/werkzeug/formular-lotse?doc=${id}`; });
+    el.querySelector('[data-lotse-x]').addEventListener('click', () => {
+      el.remove();
+      try { localStorage.setItem(LOTSE_X, JSON.stringify([id, ...gone].slice(0, 200))); } catch {}
+    });
+    st.appendChild(el);
+  } catch (e) { console.warn('lotse banner', e); }
+}
+
 function postOffered(way = 'post') {
   if (way === 'post') import('./post/api.js').then(m => m.warmPost()).catch(() => {}); // refresh for the next time the menu opens
   try { return localStorage.getItem(way === 'fax' ? 'fale-fax-on' : 'fale-post-on') !== '0'; } catch { return true; }
