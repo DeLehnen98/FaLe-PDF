@@ -93,7 +93,7 @@ export function quotaWidget({ compact = false } = {}) {
     el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
       <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
       ${(canAd || (!q.plus && showPlus())) && !compact ? `<div class="aq-acts">
-        ${canAd ? `<button class="btn btn-soft btn-sm" type="button" data-ai-ad>${oicon('play')} Werbevideo ansehen (+${q.bonus || 3})</button>` : ''}
+        ${canAd ? `<button class="btn btn-soft btn-sm" type="button" data-ai-ad>${oicon('play')} Werbevideo ansehen (+${q.bonus || 2})</button>` : ''}
         ${!q.plus && showPlus() ? `<a class="btn btn-ghost btn-sm" href="#/ki/plus" data-ai-plus>${oicon('star')} FaLe Plus</a>` : ''}</div>` : ''}`;
     const ad = $('[data-ai-ad]', el);
     if (ad) ad.addEventListener('click', () => watchAdFlow(ad));
@@ -112,7 +112,7 @@ export async function watchAdFlow(btn) {
   try {
     const { showRewardedAd } = await import('./ads.js');
     const res = await showRewardedAd();
-    if (res && res.rewarded) toast(`Danke! ${res.credited ? `+${res.bonus || 3} KI-Anfragen für heute.` : 'Die Gutschrift kann ein paar Sekunden dauern.'}`, 'success', { timeout: 5000 });
+    if (res && res.rewarded) toast(`Danke! ${res.credited ? `+${res.bonus || 2} KI-Anfragen für heute.` : 'Die Gutschrift kann ein paar Sekunden dauern.'}`, 'success', { timeout: 5000 });
   } catch (e) {
     errorToast(e, 'Das Werbevideo konnte gerade nicht geladen werden. Bitte versuche es später.');
   } finally { if (btn) btn.disabled = false; }
@@ -128,9 +128,10 @@ export async function showAiError(err) {
     const r = await openDialog({
       title: 'Heutiges KI-Kontingent aufgebraucht',
       body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>
-        ${canAd ? `<p>Freiwillig: Ein kurzes Werbevideo schaltet <strong>${q.bonus || 3} weitere Anfragen</strong> frei (noch ${q.rewardsLeft}× heute).</p>` : ''}
+        ${canAd ? `<p>Freiwillig: Ein kurzes Werbevideo schaltet <strong>${q.bonus || 2} weitere Anfragen</strong> frei (noch ${q.rewardsLeft}× heute).</p>` : ''}
+        ${!canAd && !isNative() ? '<p class="muted small">Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.</p>' : ''}
         ${showPlus() ? '<p class="muted small">Mit <strong>FaLe Plus</strong> bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.</p>' : ''}</div>`,
-      actions: [{ label: 'Schließen', value: 'cancel' }, ...(showPlus() ? [{ label: 'FaLe Plus ansehen', value: 'plus' }] : []), ...(canAd ? [{ label: `Werbevideo ansehen (+${q.bonus || 3})`, value: 'ad', kind: 'btn-primary', default: true }] : [])],
+      actions: [{ label: 'Schließen', value: 'cancel' }, ...(showPlus() ? [{ label: 'FaLe Plus ansehen', value: 'plus' }] : []), ...(canAd ? [{ label: `Werbevideo ansehen (+${q.bonus || 2})`, value: 'ad', kind: 'btn-primary', default: true }] : [])],
     });
     if (r.value === 'ad') await watchAdFlow();
     if (r.value === 'plus') location.hash = '#/ki/plus';

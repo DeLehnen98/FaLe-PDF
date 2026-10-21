@@ -6700,6 +6700,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "The pages could not be loaded.",
   "Blatt gerade ausrichten": "Straighten sheet",
   "{name} (ausgerichtet)": "{name} (straightened)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Tip: in the FaLe app for Android you can then continue with a short, voluntary video ad.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

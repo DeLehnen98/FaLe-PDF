@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "Nie udało się wczytać stron.",
   "Blatt gerade ausrichten": "Wyprostuj kartkę",
   "{name} (ausgerichtet)": "{name} (wyprostowany)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Wskazówka: w aplikacji FaLe na Androida możesz potem kontynuować po obejrzeniu krótkiej, dobrowolnej reklamy wideo.",
 };
 
 export const defaultValues = {

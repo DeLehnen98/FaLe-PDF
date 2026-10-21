@@ -75,9 +75,9 @@ function getConfig() {
     // EUR per 1 USD (e.g. 0.92). Default slightly high = conservative.
     usdEur: num('USD_EUR', 0.95, { min: 0.1, max: 10 }),
     monthlyBudgetEur: num('AI_MONTHLY_BUDGET_EUR', 10, { min: 0, max: 100000 }),
-    freeDaily: int('FREE_DAILY', 5, { min: 0, max: 1000 }),
-    rewardBonus: int('REWARD_BONUS', 3, { min: 0, max: 100 }),
-    rewardMaxPerDay: int('REWARD_MAX_PER_DAY', 3, { min: 0, max: 50 }),
+    freeDaily: int('FREE_DAILY', 2, { min: 0, max: 1000 }), // 2 free AI requests per device and day, then a voluntary video
+    rewardBonus: int('REWARD_BONUS', 2, { min: 0, max: 100 }),
+    rewardMaxPerDay: int('REWARD_MAX_PER_DAY', 10, { min: 0, max: 50 }),
     plusDaily: int('PLUS_DAILY', 200, { min: 1, max: 100000 }),
     ipDaily: int('IP_DAILY', 40, { min: 1, max: 100000 }),
     registerIpDaily: int('REGISTER_IP_DAILY', 30, { min: 1, max: 100000 }),

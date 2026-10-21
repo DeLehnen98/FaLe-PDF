@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "无法加载页面。",
   "Blatt gerade ausrichten": "摆正纸张",
   "{name} (ausgerichtet)": "{name}（已摆正）",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "提示：在 Android 版 FaLe 应用中，你可以观看一段简短的自愿广告视频后继续使用。",
 };
 
 export const defaultValues = {

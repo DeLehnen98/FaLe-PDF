@@ -55,6 +55,8 @@ export function startHarness(port = 8799, { coreOverrides = {}, env = {} } = {})
       if (u.pathname.startsWith('/__test/')) return testRoute(u, req, res);
       const r = routes[u.pathname.replace(/\/+$/, '')];
       if (r) return core[r](req, res);
+      // „Brief per Post“ asks whether it is set up – answer like production before setup (no 404 in the console)
+      if (u.pathname === '/api/post' && u.searchParams.get('a') === 'config') { res.setHeader('Content-Type', 'application/json'); return res.end('{"ok":true,"enabled":false,"fax":false}'); }
       if (u.pathname.startsWith('/api/')) { res.statusCode = 404; return res.end('{"error":"not_found"}'); }
       let p = normalize(decodeURIComponent(u.pathname)).replace(/^(\.\.[/\\])+/, '');
       if (p.endsWith('/')) p += 'index.html';

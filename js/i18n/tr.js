@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "Sayfalar yüklenemedi.",
   "Blatt gerade ausrichten": "Sayfayı düzelt",
   "{name} (ausgerichtet)": "{name} (düzeltilmiş)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "İpucu: Android için FaLe uygulamasında kısa ve isteğe bağlı bir reklam videosuyla devam edebilirsin.",
 };
 
 export const defaultValues = {

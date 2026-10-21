@@ -14,8 +14,8 @@ App (Handy/Browser) ──► /api/ai (Vercel, Projekt „fale-pdf“) ──►
 
 - Die App schickt nur den Text, den die Nutzerin für eine Aufgabe auswählt. Der Server speichert **keine Inhalte**
   und protokolliert keine Eingaben – nur Zähler (pseudonyme Geräte-Kennung, gehashte IP, Anzahl pro Tag, 30 Tage).
-- **Kontingent:** 5 Anfragen pro Gerät und Tag gratis (`FREE_DAILY`). Pro Werbevideo +3 (`REWARD_BONUS`),
-  höchstens 3 Videos pro Tag (`REWARD_MAX_PER_DAY`). FaLe Plus: bis 200 pro Tag (`PLUS_DAILY`).
+- **Kontingent:** 2 Anfragen pro Gerät und Tag gratis (`FREE_DAILY`). Danach freiwillig: pro Werbevideo +2
+  (`REWARD_BONUS`), höchstens 10 Videos pro Tag (`REWARD_MAX_PER_DAY`). FaLe Plus: bis 200 pro Tag (`PLUS_DAILY`).
   Pro Netzwerk (IP) höchstens 40 Gratis-Anfragen pro Tag (`IP_DAILY`) gegen Missbrauch.
 - **Hartes Monatsbudget:** `AI_MONTHLY_BUDGET_EUR` (Standard **10 €**). Vor jeder Anfrage reserviert der Server
   die geschätzten Höchstkosten, danach wird abgerechnet. Ist das Budget erreicht, antwortet die App mit

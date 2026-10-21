@@ -150,7 +150,7 @@ def main():
             check('start: KI card', page.locator('#view-start .ai-start-card').count() == 1)
             goto(page, '#/werkzeuge', 700)
             check('werkzeuge: KI section with 9 cards', page.locator('[data-ai-section] .tool-card').count() == 9)
-            check('werkzeuge: Alltag section still 6 cards', page.locator('.alltag-grid .tool-card').count() == 6)
+            check('werkzeuge: Alltag section with its 6 cards (+ web tools)', page.locator('.alltag-grid .tool-card').count() >= 6 and page.locator('.alltag-grid [data-tool="x-schreiben"]').count() == 1)
             page.fill('#tool-search', 'Lernkarten')
             page.wait_for_timeout(300)
             check('werkzeuge search finds AI card', page.locator('[data-ai-section] .tool-card:not([hidden])').count() == 1)
@@ -403,7 +403,8 @@ def main():
             page.locator('[data-go]').click()
             page.wait_for_selector('dialog[open] .ai-limit', timeout=6000)
             txt = page.locator('dialog[open]').inner_text()
-            check('quota dialog: friendly, no ad offer and no Plus upsell on web', 'aufgebraucht' in txt and 'Werbevideo' not in txt and 'FaLe Plus' not in txt, txt)
+            check('quota dialog: friendly, no ad button and no Plus upsell on web – only the tip that the Android app offers a voluntary video', 'aufgebraucht' in txt
+                  and page.locator('dialog[open] .dlg-actions button', has_text='Werbevideo').count() == 0 and 'FaLe Plus' not in txt and 'Android' in txt, txt)
             shot(page, 'desktop_quota_exhausted_light')
             close_dialogs(page)
             check('quota widget shows 0', 'Kontingent für heute aufgebraucht' in quota_text(page), quota_text(page))

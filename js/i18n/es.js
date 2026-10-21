@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "No se pudieron cargar las páginas.",
   "Blatt gerade ausrichten": "Enderezar hoja",
   "{name} (ausgerichtet)": "{name} (enderezado)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Consejo: en la app FaLe para Android puedes seguir después con un breve vídeo publicitario voluntario.",
 };
 
 export const defaultValues = {

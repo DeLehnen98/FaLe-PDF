@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "페이지를 불러오지 못했습니다.",
   "Blatt gerade ausrichten": "용지 바르게 펴기",
   "{name} (ausgerichtet)": "{name} (바르게 폄)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "팁: Android용 FaLe 앱에서는 짧은 선택형 광고 동영상을 보고 계속 이용할 수 있어요.",
 };
 
 export const defaultValues = {

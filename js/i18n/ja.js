@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "ページを読み込めませんでした。",
   "Blatt gerade ausrichten": "用紙をまっすぐにする",
   "{name} (ausgerichtet)": "{name}（補正済み）",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "ヒント：Android 版 FaLe アプリでは、短い任意の広告動画を見ると続けて使えます。",
 };
 
 export const defaultValues = {

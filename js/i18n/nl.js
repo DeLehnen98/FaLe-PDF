@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "De pagina’s konden niet worden geladen.",
   "Blatt gerade ausrichten": "Blad rechtzetten",
   "{name} (ausgerichtet)": "{name} (rechtgezet)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Tip: in de FaLe-app voor Android kun je daarna verder met een korte, vrijwillige reclamevideo.",
 };
 
 export const defaultValues = {

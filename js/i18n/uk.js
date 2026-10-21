@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "Не вдалося завантажити сторінки.",
   "Blatt gerade ausrichten": "Вирівняти аркуш",
   "{name} (ausgerichtet)": "{name} (вирівняно)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Порада: у застосунку FaLe для Android потім можна продовжити після короткого добровільного рекламного відео.",
 };
 
 export const defaultValues = {

@@ -78,7 +78,7 @@ export async function showRewardedAd() {
       await new Promise(r => setTimeout(r, i ? 1500 : 700));
       try { const q = await C.refreshQuota(); credited = !!q && (q.rewarded || 0) > before; } catch {}
     }
-    return { rewarded: true, credited, bonus: (C.cachedQuota() || {}).bonus || 3 };
+    return { rewarded: true, credited, bonus: (C.cachedQuota() || {}).bonus || 2 };
   } catch (e) {
     if (e && e.userMessage) throw e;
     console.warn('AdMob', e);

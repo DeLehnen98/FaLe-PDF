@@ -6682,6 +6682,7 @@ export default {
   "Die Seiten konnten nicht geladen werden.": "Halaman tidak dapat dimuat.",
   "Blatt gerade ausrichten": "Luruskan lembar",
   "{name} (ausgerichtet)": "{name} (diluruskan)",
+  "Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.": "Tips: di aplikasi FaLe untuk Android, Anda bisa melanjutkan dengan menonton video iklan singkat yang bersifat sukarela.",
 };
 
 export const defaultValues = {
