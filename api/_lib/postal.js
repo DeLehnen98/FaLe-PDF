@@ -1,7 +1,10 @@
 'use strict';
-// „Brief per Post“ (/api/post): FaLe prints and mails a letter for the person – normal, Einschreiben Einwurf or
-// Einschreiben – through a print-and-mail service (LetterXpress), paid by card / PayPal / Google Pay … via Stripe
-// Checkout (a printed and delivered letter is a physical service: Google Play billing must not be used for it).
+// „Brief per Post“ and „Per Fax senden“ (/api/post): FaLe prints and mails a letter for the person – normal,
+// Einschreiben Einwurf or Einschreiben – through a print-and-mail service (LetterXpress), or faxes it (sipgate),
+// paid by card / PayPal / Google Pay … via Stripe Checkout (a printed and delivered letter is a physical service:
+// Google Play billing must not be used for it).
+// A job's options.channel is 'post' (default) or 'fax'. A fax keeps its PDF until it went through or finally failed
+// (one automatic second try, e.g. when the line was busy), at most 24 h.
 //
 // Flow:  config → quote → create (PDF + options → job, Stripe Checkout URL)
 //        → the person pays → webhook (or the app's status poll) checks the payment WITH Stripe and hands the PDF to
@@ -29,7 +32,7 @@ const capHash = t => {
 };
 
 // Gross prices in cents (incl. 19 % VAT) – POST_PRICES (JSON) overrides single values.
-const DEFAULT_PRICES = { base: 199, includedSheets: 3, perSheet: 10, color: 50, r1: 300, r2: 350, intlBase: 299 };
+const DEFAULT_PRICES = { base: 199, includedSheets: 3, perSheet: 10, color: 50, r1: 300, r2: 350, intlBase: 299, faxBase: 99, faxIncluded: 5, faxPerPage: 10, faxIntlBase: 199, faxIntlPerPage: 20 };
 const VAT = 0.19;
 const STRIPE_PCT = 0.015, STRIPE_FIX = 25; // EU cards; the price guard keeps a margin above cost + fee
 
@@ -40,12 +43,22 @@ function postConfig() {
   const lxp = { user: env('LXP_USER'), key: env('LXP_APIKEY'), mode: env('LXP_MODE').toLowerCase() === 'live' ? 'live' : 'test' };
   const providerName = (env('POST_PROVIDER') || (lxp.user && lxp.key ? 'letterxpress' : 'mock')).toLowerCase();
   const paymentName = (env('POST_PAYMENT') || (env('STRIPE_SECRET_KEY') ? 'stripe' : 'mock')).toLowerCase();
+  const sipgate = { tokenId: env('SIPGATE_TOKEN_ID'), token: env('SIPGATE_TOKEN'), faxline: env('SIPGATE_FAXLINE') || 'f0' };
+  const faxName = (env('FAX_PROVIDER') || (sipgate.tokenId && sipgate.token ? 'sipgate' : 'mock')).toLowerCase();
+  const on = (k, def) => (env(k) ? ['1', 'true', 'yes', 'on', 'ja'].includes(env(k).toLowerCase()) : def);
   return {
-    enabled: env('POST_ENABLED') ? ['1', 'true', 'yes', 'on', 'ja'].includes(env('POST_ENABLED').toLowerCase()) : true,
+    enabled: on('POST_ENABLED', true),
+    faxOn: on('FAX_ENABLED', true),
     production,
     provider: providerName === 'letterxpress' ? 'letterxpress' : 'mock',
+    fax: faxName === 'sipgate' ? 'sipgate' : 'mock',
     payment: paymentName === 'stripe' ? 'stripe' : 'mock',
     lxp,
+    sipgate,
+    faxCostPerPage: num('FAX_COST_PER_PAGE', 0.05, 0, 2), // net € (sipgate tariff) – only for the price guard
+    faxCostIntlPerPage: num('FAX_COST_INTL_PER_PAGE', 0.2, 0, 5),
+    partners: partnerLinks(env('PARTNER_LINKS')),
+    sweepSecret: env('POST_SWEEP_SECRET'),
     stripeKey: env('STRIPE_SECRET_KEY'),
     prices,
     minMarginCents: Math.round(num('POST_MIN_MARGIN_CENTS', 40, 0, 1000)),
@@ -56,12 +69,104 @@ function postConfig() {
   };
 }
 
+/**
+ * Partner links (affiliate, shown as „Anzeige“ after a cancellation letter), per country of the person:
+ * PARTNER_LINKS = JSON {"DE": {"strom": "https://…", "handy": {"url": "https://…", "name": "CHECK24"}}, "AT": {…}}
+ * (a flat {"strom": …} object means Germany). https only, known topics only.
+ */
+const PARTNER_KEYS = ['strom', 'gas', 'handy', 'internet', 'versicherung', 'kfz', 'fitness', 'abo'];
+function partnerTopics(j) {
+  const out = {};
+  for (const k of PARTNER_KEYS) {
+    const v = j[k];
+    const url = typeof v === 'string' ? v : v && typeof v === 'object' ? v.url : '';
+    if (typeof url !== 'string' || url.length > 600 || !/^https:\/\/[a-z0-9.-]+\.[a-z]{2,}(\/|\?|$)/i.test(url)) continue;
+    const name = v && typeof v === 'object' && typeof v.name === 'string' ? v.name.replace(/[<>"]/g, '').slice(0, 40) : '';
+    out[k] = { url, name };
+  }
+  return out;
+}
+function partnerLinks(raw) {
+  let j = null;
+  try { j = raw ? JSON.parse(raw) : null; } catch { j = null; }
+  if (!j || typeof j !== 'object' || Array.isArray(j)) return {};
+  const keys = Object.keys(j);
+  const byCountry = keys.some(k => /^[A-Z]{2}$/.test(k)) ? j : { DE: j };
+  const out = {};
+  for (const [c, v] of Object.entries(byCountry)) {
+    if (!/^[A-Z]{2}$/.test(c) || !v || typeof v !== 'object') continue;
+    const t = partnerTopics(v);
+    if (Object.keys(t).length) out[c] = t;
+  }
+  return out;
+}
+
 /** Test mode = mock print service or mock payment or LetterXpress test mode. Mock parts are refused in production. */
 const isTest = pc => pc.provider === 'mock' || pc.payment === 'mock' || (pc.provider === 'letterxpress' && pc.lxp.mode === 'test');
+const isFaxTest = pc => pc.fax === 'mock' || pc.payment === 'mock';
+const postOn = pc => pc.enabled && !(pc.production && (pc.provider === 'mock' || pc.payment === 'mock'));
+const faxOn = pc => pc.faxOn && !(pc.production && (pc.fax === 'mock' || pc.payment === 'mock'));
+
+// ------------------------------------------------------------------ fax numbers
+// Countries a fax can go to (calling code; trunk prefix dropped in national format – Italy keeps its leading 0).
+// Germany is domestic for our fax line; everything else is billed as abroad. Not offered: mobile and premium /
+// service numbers (expensive, no fax machines) and countries where fax fraud to premium ranges is common.
+const FAX_CC = {
+  DE: '49', AT: '43', CH: '41', LI: '423', LU: '352', NL: '31', BE: '32', FR: '33', IT: '39', ES: '34', PT: '351',
+  IE: '353', GB: '44', DK: '45', SE: '46', NO: '47', FI: '358', IS: '354', PL: '48', CZ: '420', SK: '421', HU: '36',
+  SI: '386', HR: '385', RO: '40', BG: '359', GR: '30', CY: '357', MT: '356', EE: '372', LV: '371', LT: '370',
+  TR: '90', IL: '972', US: '1', CA: '1', AU: '61', NZ: '64', JP: '81', SG: '65', HK: '852',
+};
+const CC_LIST = [...new Set(Object.values(FAX_CC))].sort((a, b) => b.length - a.length);
+const KEEP_ZERO = new Set(['39']); // Italy: the 0 is part of the number
+// North America: Caribbean and other NANP areas with international rates, premium 900/976
+const NANP_BLOCK = /^(242|246|264|268|284|340|345|441|473|649|658|664|670|671|684|721|758|767|784|809|829|849|868|869|876|900|976)/;
+/** Mobile / premium / special ranges by calling code (national significant number). */
+const FAX_BLOCK = {
+  49: /^(1|900|137|180|190|11)/, 43: /^(6|9|8[12])/, 41: /^(7[5-9]|90|84|0)/, 33: /^(6|7|8)/, 44: /^(7|9|8[47]|70|76)/,
+  39: /^(3|89|4)/, 34: /^(6|7|80|90)/, 31: /^(6|90|84|85|87)/, 32: /^(4|90|70|78)/, 352: /^(6|90)/, 351: /^(9|7|6)/,
+  353: /^(8|15)/, 45: /^(90)/, 46: /^(7|99|90)/, 47: /^(4|9|8)/, 358: /^(4|50|60|70|0)/, 48: /^(5|6|7|8)/,
+  420: /^(6|7|90)/, 421: /^(9)/, 36: /^(20|30|31|50|70|90)/, 30: /^(6|90)/, 90: /^(5|8|9)/, 972: /^(5|1)/,
+  61: /^(4|19|13|18)/, 64: /^(2|9)/, 81: /^(70|80|90|50|20|0)/, 65: /^(8|9|1)/, 852: /^(5|6|9)/,
+};
+/**
+ * Fax number → { to: E.164, cc, intl } or null. `region` (ISO, e.g. 'FR' from the device language) decides how a
+ * number without +/00 is read; default Germany.
+ */
+function faxNumber(input, region = 'DE') {
+  let s = String(input || '').trim();
+  if (!s || s.length > 40 || /[^\d\s()+\/.-]/.test(s)) return null;
+  s = s.replace(/\(0\)/g, '').replace(/[\s()\/.-]/g, '');
+  let cc = null, nsn = null;
+  if (s.startsWith('+') || s.startsWith('00')) {
+    const d = s.startsWith('+') ? s.slice(1) : s.slice(2);
+    cc = CC_LIST.find(c => d.startsWith(c)) || null;
+    if (!cc) return null;
+    nsn = d.slice(cc.length);
+  } else {
+    cc = FAX_CC[String(region || 'DE').toUpperCase()] || '49';
+    if (cc === '1') nsn = s.replace(/^1(?=\d{10}$)/, '');
+    else if (KEEP_ZERO.has(cc)) nsn = s;
+    else { if (!s.startsWith('0')) return null; nsn = s.slice(1); }
+  }
+  if (!/^\d+$/.test(nsn)) return null;
+  if (cc === '1') {
+    if (!/^[2-9]\d{2}[2-9]\d{6}$/.test(nsn) || NANP_BLOCK.test(nsn)) return null;
+  } else {
+    if (!KEEP_ZERO.has(cc) && nsn.startsWith('0')) return null;
+    if (nsn.length < 6 || nsn.length > 13) return null;
+    if (KEEP_ZERO.has(cc) && !nsn.startsWith('0')) return null; // Italian landlines start with 0
+    if (FAX_BLOCK[cc] && FAX_BLOCK[cc].test(cc === '39' ? nsn.slice(1) : nsn)) return null;
+    if (cc === '39' && /^(89|3)/.test(nsn)) return null;
+  }
+  return { to: '+' + cc + nsn, cc, intl: cc !== '49' };
+}
 
 // ------------------------------------------------------------------ prices
 /** Sheets incl. the address sheet; options → gross price in cents (before the cost guard). */
-function listPrice(prices, { pages, color, registered, intl }) {
+function listPrice(prices, { pages, color, registered, intl, channel }) {
+  if (channel === 'fax') return Math.round(intl ? prices.faxIntlBase + Math.max(0, pages - prices.faxIncluded) * prices.faxIntlPerPage
+    : prices.faxBase + Math.max(0, pages - prices.faxIncluded) * prices.faxPerPage);
   let p = intl ? prices.intlBase : prices.base;
   p += Math.max(0, pages - prices.includedSheets) * prices.perSheet;
   if (color) p += prices.color;
@@ -165,6 +270,58 @@ function mockProvider() {
 mockProvider.fail = false;
 mockProvider.done = false;
 
+// ------------------------------------------------------------------ fax service: sipgate.io (REST, Basic auth with a personal access token)
+function sipgateFax(pc, { fetchImpl = fetch } = {}) {
+  const auth = 'Basic ' + Buffer.from(`${pc.sipgate.tokenId}:${pc.sipgate.token}`).toString('base64');
+  async function call(method, path, body) {
+    const r = await fetchImpl(`https://api.sipgate.com/v2${path}`, {
+      method, headers: { Authorization: auth, Accept: 'application/json', ...(body ? { 'Content-Type': 'application/json' } : {}) },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const t = await r.text().catch(() => '');
+    if (!r.ok) throw Object.assign(new Error(`sipgate ${method} ${path} ${r.status}`), { code: 'provider_error', status: r.status });
+    try { return t ? JSON.parse(t) : {}; } catch { return {}; }
+  }
+  return {
+    name: 'sipgate',
+    async price(o) { return Math.max(0.1, o.pages * (o.intl ? pc.faxCostIntlPerPage : pc.faxCostPerPage)); },
+    async send({ pdfB64, options, filename }) {
+      const j = await call('POST', '/sessions/fax', { faxlineId: pc.sipgate.faxline, recipient: options.to, filename, base64Content: pdfB64 });
+      if (!j || !j.sessionId) throw Object.assign(new Error('sipgate no session'), { code: 'provider_error' });
+      return { id: String(j.sessionId).slice(0, 64), status: 'PENDING' };
+    },
+    async status(id) {
+      const j = await call('GET', `/history/${encodeURIComponent(id)}`);
+      return { status: j && j.faxStatusType ? String(j.faxStatusType).toUpperCase() : null };
+    },
+  };
+}
+// mock fax (tests / no credentials): faxMock.fail = fails every try; faxMock.failOnce = only the first try fails
+const mockFaxes = new Map();
+function faxMock() {
+  return {
+    name: 'mock',
+    async price(o) { return Math.max(0.1, o.pages * (o.intl ? 0.2 : 0.05)); },
+    async send({ pdfB64, options }) {
+      if (!pdfB64) throw Object.assign(new Error('mock fax: no pdf'), { code: 'provider_error' });
+      const id = 'fax' + String(7000000 + mockFaxes.size + 1);
+      const fail = faxMock.fail || (faxMock.failOnce && ![...mockFaxes.values()].some(f => f.to === options.to));
+      faxMock.sent += 1;
+      mockFaxes.set(id, { to: options.to, at: Date.now(), fail });
+      return { id, status: 'PENDING' };
+    },
+    async status(id) {
+      const f = mockFaxes.get(id);
+      if (!f) return { status: null };
+      return { status: f.fail ? 'FAILED' : faxMock.done ? 'SENT' : 'SENDING' };
+    },
+  };
+}
+faxMock.fail = false;
+faxMock.failOnce = false;
+faxMock.done = true;
+faxMock.sent = 0;
+
 // ------------------------------------------------------------------ payment: Stripe Checkout (REST, form-encoded)
 function form(obj, prefix = '', out = []) {
   for (const [k, v] of Object.entries(obj)) {
@@ -218,7 +375,7 @@ function mockPayment() {
 const mockPay = mockPayment();
 
 // ------------------------------------------------------------------ core
-const LABEL = { '': 'Brief', r1: 'Einschreiben Einwurf', r2: 'Einschreiben' };
+const LABEL = { '': 'Brief', r1: 'Einschreiben Einwurf', r2: 'Einschreiben', fax: 'Fax' };
 function publicJob(j) {
   return { id: j.id, status: j.status, priceCents: j.price_cents, pages: j.pages, options: j.options, tracking: j.tracking || null,
     createdAt: j.created_at, paidAt: j.paid_at || null, sentAt: j.sent_at || null, error: j.error || null };
@@ -226,16 +383,30 @@ function publicJob(j) {
 
 function makePostalCore(overrides = {}) {
   const deps = { getConfig: C.getConfig, getShareStore, getPostStore, postConfig, now: () => new Date(), fetchImpl: undefined, requestImpl: undefined, ...overrides };
-  const providerOf = pc => (pc.provider === 'letterxpress' ? letterxpress(pc, { requestImpl: deps.requestImpl }) : mockProvider());
+  const letterProvider = pc => (pc.provider === 'letterxpress' ? letterxpress(pc, { requestImpl: deps.requestImpl }) : mockProvider());
+  const faxProvider = pc => (pc.fax === 'sipgate' ? sipgateFax(pc, deps.fetchImpl ? { fetchImpl: deps.fetchImpl } : {}) : faxMock());
+  const providerOf = (pc, o) => (o && o.channel === 'fax' ? faxProvider(pc) : letterProvider(pc));
   const paymentOf = pc => (pc.payment === 'stripe' ? stripe(pc, deps.fetchImpl ? { fetchImpl: deps.fetchImpl } : {}) : mockPay);
 
   function check(cfg, pc) {
-    if (!pc.enabled) throw new H.HttpError(503, 'post_disabled', 'Der Briefversand ist gerade nicht verfügbar.');
     if (!C.secretsConfigured(cfg) || !C.storeConfigured(cfg) && cfg.store !== 'memory') throw new H.HttpError(503, 'post_not_configured', 'Der Briefversand ist noch nicht eingerichtet.');
-    if (pc.production && (pc.provider === 'mock' || pc.payment === 'mock')) throw new H.HttpError(503, 'post_not_configured', 'Der Briefversand ist noch nicht eingerichtet.');
+  }
+  function checkChannel(pc, o) {
+    if (o.channel === 'fax') {
+      if (!faxOn(pc)) throw new H.HttpError(503, pc.faxOn ? 'fax_not_configured' : 'fax_disabled', 'Der Faxversand ist noch nicht eingerichtet.');
+      return;
+    }
+    if (!pc.enabled) throw new H.HttpError(503, 'post_disabled', 'Der Briefversand ist gerade nicht verfügbar.');
+    if (!postOn(pc)) throw new H.HttpError(503, 'post_not_configured', 'Der Briefversand ist noch nicht eingerichtet.');
   }
   function options(body, pc) {
     const pages = body.pages;
+    if (body.channel === 'fax') {
+      if (!Number.isInteger(pages) || pages < 1 || pages > pc.maxPages) throw new H.HttpError(400, 'too_many_pages', `Höchstens ${pc.maxPages} Seiten pro Fax.`);
+      const n = faxNumber(body.to, typeof body.region === 'string' ? body.region.slice(0, 2) : 'DE');
+      if (!n) throw new H.HttpError(400, 'bad_fax_number', 'Diese Faxnummer geht nicht (Festnetz, mit Vorwahl).');
+      return { channel: 'fax', pages, to: n.to, intl: n.intl, cc: n.cc };
+    }
     if (!Number.isInteger(pages) || pages < 1 || pages > pc.maxPages) throw new H.HttpError(400, 'too_many_pages', `Höchstens ${pc.maxPages} Seiten pro Brief.`);
     const registered = ['', 'r1', 'r2'].includes(body.registered || '') ? (body.registered || '') : null;
     if (registered === null) throw new H.HttpError(400, 'bad_input', 'Ungültige Versandart');
@@ -246,7 +417,7 @@ function makePostalCore(overrides = {}) {
   async function quote(pc, o) {
     const list = listPrice(pc.prices, o);
     let cost = null;
-    try { cost = await providerOf(pc).price(o); } catch { cost = null; } // the list price stays; the guard runs again at create
+    try { cost = await providerOf(pc, o).price(o); } catch { cost = null; } // the list price stays; the guard runs again at create
     return guardPrice(list, cost, pc.minMarginCents);
   }
   const ctxOf = (req, cfg) => { const now = deps.now(); const day = Sec.dayKey(cfg.timeZone, now); return { now, day, ip: Sec.ipHash(cfg.ipSalt, H.clientIp(req), day) }; };
@@ -264,10 +435,12 @@ function makePostalCore(overrides = {}) {
     if (!t || !t.ok) return (await store.get({ id: job.id })).job; // someone else got there first
     const full = await store.get({ id: job.id, withPdf: true });
     const pdf = full && full.job && full.job.pdf;
+    const fax = job.options && job.options.channel === 'fax';
     try {
       if (!pdf) throw Object.assign(new Error('no pdf'), { code: 'provider_error' });
-      const r = await providerOf(pc).send({ pdfB64: pdf, options: job.options, filename: `FaLe-${job.id.slice(0, 8)}.pdf`, notice: `FaLe ${job.id}` });
-      const done = await store.patch({ id: job.id, from: 'paid', patch: { status: 'submitted', provider_id: r.id, provider_status: r.status, pdf: null } });
+      const r = await providerOf(pc, job.options).send({ pdfB64: pdf, options: job.options, filename: `FaLe-${job.id.slice(0, 8)}.pdf`, notice: `FaLe ${job.id}` });
+      // a fax keeps its PDF for the second try until it went through (then it is deleted, see refreshFax)
+      const done = await store.patch({ id: job.id, from: 'paid', patch: { status: 'submitted', provider_id: r.id, provider_status: r.status, ...(fax ? {} : { pdf: null }) } });
       return done.job;
     } catch (e) {
       let status = 'failed';
@@ -276,15 +449,54 @@ function makePostalCore(overrides = {}) {
       return f.job;
     }
   }
+  /** Fax: SENT → sent (PDF deleted); FAILED → one more try, then refund. */
+  async function refreshFax(pc, store, job) {
+    let st;
+    try { st = await faxProvider(pc).status(job.provider_id); } catch { return job; }
+    const s = st.status;
+    if (s === 'SENT') {
+      const r = await store.patch({ id: job.id, from: 'submitted', patch: { status: 'sent', provider_status: s, sent_at: deps.now().toISOString(), pdf: null } });
+      return r && r.ok ? r.job : job;
+    }
+    if (s === 'FAILED') {
+      if (job.error !== 'retry') {
+        // claim the second try atomically (submitted → paid; only one request wins), then send the stored PDF again
+        const c = await store.patch({ id: job.id, from: 'submitted', patch: { status: 'paid', error: 'retry', provider_status: 'RETRY' } });
+        if (!c || !c.ok) return (await store.get({ id: job.id })).job;
+        const full = await store.get({ id: job.id, withPdf: true });
+        try {
+          if (!full.job.pdf) throw new Error('no pdf');
+          const r = await faxProvider(pc).send({ pdfB64: full.job.pdf, options: job.options, filename: `FaLe-${job.id.slice(0, 8)}.pdf` });
+          const p = await store.patch({ id: job.id, from: 'paid', patch: { status: 'submitted', provider_id: r.id, provider_status: r.status } });
+          return p && p.ok ? p.job : job;
+        } catch {
+          let status = 'failed';
+          try { if (job.payment_intent) { await paymentOf(pc).refund(job.payment_intent); status = 'refunded'; } } catch { /* owner sees it in Stripe */ }
+          const f = await store.patch({ id: job.id, from: 'paid', patch: { status, provider_status: 'FAILED', error: 'fax_failed', pdf: null } });
+          return f && f.ok ? f.job : job;
+        }
+      }
+      let status = 'failed';
+      try { if (job.payment_intent) { await paymentOf(pc).refund(job.payment_intent); status = 'refunded'; } } catch { /* owner sees it in Stripe */ }
+      const f = await store.patch({ id: job.id, from: 'submitted', patch: { status, provider_status: 'FAILED', error: 'fax_failed', pdf: null } });
+      return f && f.ok ? f.job : job;
+    }
+    if (s && s !== job.provider_status) {
+      const r = await store.patch({ id: job.id, from: 'submitted', patch: { provider_status: s.slice(0, 32) } });
+      return r && r.ok ? r.job : job;
+    }
+    return job;
+  }
   async function refresh(pc, store, job) {
     if (job.status === 'pending_payment' && job.session_id) {
       const s = await paymentOf(pc).session(job.session_id);
       if (s.paid && s.job === job.id) return dispatch(pc, store, job, s.paymentIntent);
       return job;
     }
+    if (job.status === 'submitted' && job.provider_id && job.options && job.options.channel === 'fax') return refreshFax(pc, store, job);
     if (job.status === 'submitted' && job.provider_id) {
       try {
-        const st = await providerOf(pc).status(job.provider_id);
+        const st = await letterProvider(pc).status(job.provider_id);
         const sent = st.status === 'done' || st.itemStatus === 'sent';
         const patch = { provider_status: st.status || job.provider_status };
         if (st.tracking) patch.tracking = String(st.tracking).slice(0, 60);
@@ -302,14 +514,32 @@ function makePostalCore(overrides = {}) {
     const body = await H.readJson(req, Math.ceil(pc.maxBytes * 1.4) + 8192);
     const a = String(H.query(req).a || body.a || '');
     if (a === 'config') {
-      H.sendJson(res, 200, { ok: true, enabled: pc.enabled && !(pc.production && (pc.provider === 'mock' || pc.payment === 'mock')), test: isTest(pc), maxPages: pc.maxPages, maxBytes: pc.maxBytes, prices: pc.prices, currency: 'EUR', payment: pc.payment });
+      H.sendJson(res, 200, { ok: true, enabled: postOn(pc), test: isTest(pc), fax: faxOn(pc), faxTest: isFaxTest(pc), maxPages: pc.maxPages, maxBytes: pc.maxBytes,
+        prices: pc.prices, currency: 'EUR', payment: pc.payment, partners: pc.partners });
       return;
     }
     check(cfg, pc);
     const store = deps.getPostStore(cfg);
+    if (a === 'sweep') {
+      // scheduled check (GitHub workflow „Post sweep“): moves on paid / submitted jobs nobody looks at in the app
+      // (refund for a fax that never went through, tracking codes) – needs POST_SWEEP_SECRET
+      const sec = String(req.headers['x-fale-sweep'] || '');
+      if (!pc.sweepSecret || pc.sweepSecret.length < 24 || !Sec.safeEqual(Sec.sha256hex(sec), Sec.sha256hex(pc.sweepSecret))) throw new H.HttpError(403, 'forbidden', 'Keine Berechtigung');
+      const open = store.open ? await store.open({ limit: 40 }) : { ok: true, jobs: [] };
+      const out = {};
+      for (const j of (open && open.jobs) || []) {
+        try { const r = await refresh(pc, store, j); out[r.status] = (out[r.status] || 0) + 1; } catch { out.error = (out.error || 0) + 1; }
+      }
+      H.sendJson(res, 200, { ok: true, checked: ((open && open.jobs) || []).length, result: out });
+      return;
+    }
     if (a === 'quote') {
-      const o = options(body, pc);
-      H.sendJson(res, 200, { ok: true, priceCents: await quote(pc, o), label: LABEL[o.registered] });
+      // checking a fax number while typing: an invalid number is an answer, not a failed request (200, ok:false)
+      let o;
+      try { o = options(body, pc); }
+      catch (e) { if (body.channel === 'fax' && e && e.code === 'bad_fax_number') { H.sendJson(res, 200, { ok: false, error: e.code, message: e.message }); return; } throw e; }
+      checkChannel(pc, o);
+      H.sendJson(res, 200, { ok: true, priceCents: await quote(pc, o), label: o.channel === 'fax' ? LABEL.fax : LABEL[o.registered], ...(o.channel === 'fax' ? { to: o.to, intl: o.intl, cc: o.cc } : {}) });
       return;
     }
     if (a === 'webhook') {
@@ -329,6 +559,7 @@ function makePostalCore(overrides = {}) {
     }
     if (a === 'create') {
       const o = options(body, pc);
+      checkChannel(pc, o);
       const c = ctxOf(req, cfg);
       const dh = Sec.verifyToken(cfg.tokenSecret, body.token);
       if (!dh) throw new H.HttpError(401, 'invalid_token', 'Gerätekennung ungültig – bitte erneut verbinden');
@@ -338,17 +569,18 @@ function makePostalCore(overrides = {}) {
       if (buf.subarray(0, 5).toString('latin1') !== '%PDF-') throw new H.HttpError(400, 'bad_input', 'Das ist keine PDF.');
       const counted = countPages(buf);
       if (counted !== o.pages) throw new H.HttpError(400, 'page_mismatch', 'Die Seitenzahl stimmt nicht. Bitte versuche es erneut.');
-      const country = String(body.country || '').slice(0, 40);
+      const country = o.channel === 'fax' ? '' : String(body.country || '').slice(0, 40);
       const rl = await deps.getShareStore(cfg).rate({ day: c.day, kind: 'post', keys: ['d:' + dh, 'i:' + c.ip], nLimits: [pc.devDaily, pc.ipDaily], bytes: 0, bLimits: [1, 1] });
       if (!rl || !rl.ok) throw new H.HttpError(429, 'post_limit', 'Heute wurden schon viele Briefe von diesem Gerät verschickt. Morgen geht es weiter.');
       const price = await quote(pc, o);
       if (Number.isInteger(body.expectCents) && body.expectCents !== price) throw new H.HttpError(409, 'price_changed', 'Der Preis hat sich geändert. Bitte prüfe ihn noch einmal.', { priceCents: price });
       const id = randId(), cap = randToken();
-      const opts = { ...o, country };
+      const opts = o.channel === 'fax' ? o : { ...o, country };
       const r = await store.create({ id, owner: dh, cap: capHash(cap), options: opts, priceCents: price, pages: o.pages, pdf: body.pdf });
       if (!r || !r.ok) throw new H.HttpError(500, 'internal', 'Interner Fehler');
       const base = String(cfg.publicAppUrl || C.publicAppUrl()).replace(/\/+$/, '');
-      const name = `FaLe: ${LABEL[o.registered]}${o.intl ? ' (Ausland)' : ''}, ${o.pages} Seite${o.pages === 1 ? '' : 'n'}${o.color ? ', farbig' : ''}`;
+      const name = o.channel === 'fax' ? `FaLe: Fax${o.intl ? ' (Ausland)' : ''}, ${o.pages} Seite${o.pages === 1 ? '' : 'n'}`
+        : `FaLe: ${LABEL[o.registered]}${o.intl ? ' (Ausland)' : ''}, ${o.pages} Seite${o.pages === 1 ? '' : 'n'}${o.color ? ', farbig' : ''}`;
       let co;
       try {
         co = await paymentOf(pc).checkout({ jobId: id, amount: price, name, successUrl: `${base}/app/#/post/${id}?bezahlt=1`, cancelUrl: `${base}/app/#/post/${id}?abgebrochen=1` });
@@ -357,7 +589,7 @@ function makePostalCore(overrides = {}) {
         throw new H.HttpError(502, 'payment_unavailable', 'Die Bezahlung ist gerade nicht erreichbar. Bitte versuche es später erneut.');
       }
       await store.patch({ id, from: 'pending_payment', patch: { session_id: co.sessionId } });
-      H.sendJson(res, 200, { ok: true, id, cap, priceCents: price, checkoutUrl: co.url, test: isTest(pc) });
+      H.sendJson(res, 200, { ok: true, id, cap, priceCents: price, checkoutUrl: co.url, test: o.channel === 'fax' ? isFaxTest(pc) : isTest(pc) });
       return;
     }
     // job actions: id + capability
@@ -368,7 +600,7 @@ function makePostalCore(overrides = {}) {
     if (!Sec.safeEqual(g.job.cap_hash, capHash(body.cap))) throw new H.HttpError(403, 'forbidden', 'Keine Berechtigung');
     if (a === 'status') {
       const j = await refresh(pc, store, g.job);
-      H.sendJson(res, 200, { ok: true, job: publicJob(j), test: isTest(pc) });
+      H.sendJson(res, 200, { ok: true, job: publicJob(j), test: j.options && j.options.channel === 'fax' ? isFaxTest(pc) : isTest(pc) });
       return;
     }
     if (a === 'cancel') {
@@ -393,4 +625,4 @@ function makePostalCore(overrides = {}) {
   return { post, deps };
 }
 
-module.exports = { makePostalCore, postConfig, listPrice, guardPrice, countPages, form, DEFAULT_PRICES, mockProvider, mockPay, _test: { letterxpress, stripe } };
+module.exports = { makePostalCore, postConfig, listPrice, guardPrice, countPages, form, faxNumber, partnerLinks, DEFAULT_PRICES, mockProvider, faxMock, mockPay, _test: { letterxpress, stripe, sipgateFax } };

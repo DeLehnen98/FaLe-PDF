@@ -5,7 +5,7 @@
 //   memory:   identical semantics in-process (tests / local harness only).
 //
 // A job holds the letter PDF (base64) only until it was handed to the print service (then it is set to null) or
-// for at most 24 hours when nobody paid. Fields use the SQL names (owner_hash, cap_hash, price_cents …).
+// for at most 24 hours when nobody paid; a fax keeps it until it went through or finally failed (max. 24 hours). Fields use the SQL names (owner_hash, cap_hash, price_cents …).
 
 const STATUSES = ['pending_payment', 'paid', 'submitted', 'sent', 'failed', 'refunded', 'canceled'];
 const PATCHABLE = ['status', 'session_id', 'payment_intent', 'provider_id', 'provider_status', 'tracking', 'error', 'pdf', 'paid_at', 'sent_at'];
@@ -32,6 +32,7 @@ function supabasePostStore(cfg, { fetchImpl = fetch } = {}) {
     get: ({ id, withPdf = false }) => rpc('fale_post_get', { p_id: id, p_with_pdf: !!withPdf }),
     patch: ({ id, from = null, patch }) => rpc('fale_post_patch', { p_id: id, p_from: from, p_patch: patch }),
     remove: ({ id }) => rpc('fale_post_delete', { p_id: id }),
+    open: ({ limit = 40 } = {}) => rpc('fale_post_open', { p_limit: limit }),
   };
 }
 
@@ -44,6 +45,7 @@ function memoryPostStore({ now = () => new Date() } = {}) {
     const t = now().getTime();
     for (const [id, j] of jobs) {
       if (j.status === 'pending_payment' && j.pdf && t - Date.parse(j.created_at) > 24 * 3600e3) { j.pdf = null; j.status = 'canceled'; }
+      if (j.pdf && t - Date.parse(j.created_at) > 24 * 3600e3) j.pdf = null; // e.g. a fax nobody checked on
       if (t - Date.parse(j.created_at) > 180 * 86400e3) jobs.delete(id);
     }
   }
@@ -75,6 +77,14 @@ function memoryPostStore({ now = () => new Date() } = {}) {
       return { ok: true, job: view(j, false) };
     },
     async remove({ id }) { return { ok: true, deleted: jobs.delete(id) }; },
+    async open({ limit = 40 } = {}) {
+      purge();
+      const t = now().getTime();
+      const list = [...jobs.values()].filter(j => (j.status === 'pending_payment' && j.session_id && t - Date.parse(j.created_at) > 120e3 && t - Date.parse(j.created_at) < 24 * 3600e3)
+        || (j.status === 'submitted' && t - Date.parse(j.created_at) < 30 * 86400e3));
+      list.sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
+      return { ok: true, jobs: list.slice(0, Math.max(1, Math.min(limit, 100))).map(j => view(j, false)) };
+    },
     _jobs: jobs,
   };
 }

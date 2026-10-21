@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 const ROOT = process.env.FALE_ROOT || '/home/claude/FalePDF';
 const require = createRequire(join(ROOT, 'api', 'x.js'));
 Object.assign(process.env, { FALE_STORE: 'memory', FALE_TOKEN_SECRET: 'test-token-secret-0123456789abcdefghijklmnopqrstuvwxyz', FALE_IP_SALT: 'test-ip-salt-0123456789' });
-for (const k of ['LXP_USER', 'LXP_APIKEY', 'STRIPE_SECRET_KEY', 'POST_PROVIDER', 'POST_PAYMENT', 'VERCEL_ENV', 'POST_ENABLED']) delete process.env[k];
+for (const k of ['LXP_USER', 'LXP_APIKEY', 'STRIPE_SECRET_KEY', 'POST_PROVIDER', 'POST_PAYMENT', 'VERCEL_ENV', 'POST_ENABLED', 'SIPGATE_TOKEN_ID', 'SIPGATE_TOKEN', 'FAX_PROVIDER', 'FAX_ENABLED', 'PARTNER_LINKS', 'POST_SWEEP_SECRET']) delete process.env[k];
 const P = require('./_lib/postal.js');
 const { memoryPostStore } = require('./_lib/poststore.js');
 const { memoryShareStore } = require('./_lib/sharestore.js');
@@ -22,18 +22,19 @@ const check = (name, cond, info = '') => { if (cond) pass++; else fail++; consol
 
 let postStore, shareStore, core;
 const fresh = (env = {}) => {
-  for (const k of ['POST_DEVICE_DAILY', 'VERCEL_ENV', 'POST_PRICES']) delete process.env[k];
+  for (const k of ['POST_DEVICE_DAILY', 'VERCEL_ENV', 'POST_PRICES', 'PARTNER_LINKS', 'POST_SWEEP_SECRET', 'FAX_ENABLED']) delete process.env[k];
   Object.assign(process.env, env);
   postStore = memoryPostStore(); shareStore = memoryShareStore();
   core = P.makePostalCore({ getPostStore: () => postStore, getShareStore: () => shareStore });
   P.mockProvider.fail = false; P.mockProvider.done = false;
+  P.faxMock.fail = false; P.faxMock.failOnce = false; P.faxMock.done = true;
 };
 const token = (id = 'device-aaaaaaaaaaaaaaaa') => Sec.issueToken(process.env.FALE_TOKEN_SECRET, Sec.deviceHash(process.env.FALE_TOKEN_SECRET, id));
 
-async function call(action, json = {}, { ip = '203.0.113.7' } = {}) {
+async function call(action, json = {}, { ip = '203.0.113.7', headers: extra = {} } = {}) {
   const body = Buffer.from(JSON.stringify(json));
   const req = Readable.from([body]);
-  Object.assign(req, { method: 'POST', url: `/api/post?a=${action}`, headers: { 'x-real-ip': ip, 'content-type': 'application/json', origin: 'https://fale-pdf.vercel.app' } });
+  Object.assign(req, { method: 'POST', url: `/api/post?a=${action}`, headers: { 'x-real-ip': ip, 'content-type': 'application/json', origin: 'https://fale-pdf.vercel.app', ...extra } });
   const chunks = [], headers = {};
   const res = { statusCode: 200, headersSent: false, setHeader(k, v) { headers[k.toLowerCase()] = v; }, on() {}, write(b) { chunks.push(Buffer.from(b)); }, end(b) { if (b) chunks.push(Buffer.from(b)); } };
   await core.post(req, res);
@@ -177,6 +178,110 @@ let job, cap;
   check('store: unpaid PDF dropped after 24 h', g.job.pdf === null && g.job.status === 'canceled');
 }
 
+// ---------------------------------------------------------------- fax
+fresh();
+{
+  const N = P.faxNumber;
+  const to = (n, r) => (N(n, r) || {}).to || null;
+  check('fax number: German landline formats → E.164', to('0681 / 123 45-6') === '+49681123456' && to('+49 (0) 30 1234567') === '+49301234567' && to('0049 89 123456') === '+4989123456' && N('0681 1234567').intl === false, [to('0681 / 123 45-6'), to('+49 (0) 30 1234567')]);
+  check('fax number: worldwide – national format by device region, +/00 everywhere', to('01 23 45 67 89', 'FR') === '+33123456789' && to('+33 1 23 45 67 89') === '+33123456789'
+    && to('(212) 555-1234', 'US') === '+12125551234' && to('020 7946 0000', 'GB') === '+442079460000' && to('06 1234 5678', 'IT') === '+390612345678' && to('03-1234-5678', 'JP') === '+81312345678'
+    && to('+43 1 234567') === '+431234567' && N('+33 1 23 45 67 89').intl === true, [to('01 23 45 67 89', 'FR'), to('06 1234 5678', 'IT')]);
+  check('fax number: mobile, premium, service, Caribbean, unknown countries, letters refused', [N('0171 1234567'), N('0900 123456'), N('0180 5123456'), N('0137 123456'), N('06 12 34 56 78', 'FR'),
+    N('07700 900123', 'GB'), N('+1 876 555 1234'), N('+1 900 555 1234'), N('+7 495 1234567'), N('+882 123456'), N('110'), N('0681 abc'), N('')].every(x => x === null));
+  const lp = o => P.listPrice(P.DEFAULT_PRICES, { channel: 'fax', ...o });
+  check('fax price: 0,99 € up to 5 pages, +0,10 € per page; abroad 1,99 € + 0,20 €', lp({ pages: 1 }) === 99 && lp({ pages: 5 }) === 99 && lp({ pages: 8 }) === 129 && lp({ pages: 1, intl: true }) === 199 && lp({ pages: 7, intl: true }) === 239);
+  let r = await call('config');
+  check('config: fax on in test mode', r.json.fax === true && r.json.faxTest === true, JSON.stringify(r.json));
+  r = await call('quote', { channel: 'fax', pages: 2, to: '0681 1234567' });
+  check('quote: fax 0,99 €', r.status === 200 && r.json.priceCents === 99, JSON.stringify(r.json));
+  r = await call('quote', { channel: 'fax', pages: 2, to: '01 23 45 67 89', region: 'FR' });
+  check('quote: fax to France 1,99 €, number shown as E.164', r.status === 200 && r.json.priceCents === 199 && r.json.to === '+33123456789' && r.json.intl === true, JSON.stringify(r.json));
+  r = await call('quote', { channel: 'fax', pages: 2, to: '0171 1234567' });
+  check('quote: fax to a mobile number refused (an answer, not an error)', r.status === 200 && r.json.ok === false && r.json.error === 'bad_fax_number');
+
+  // create → pay → faxed, PDF kept until SENT, then deleted
+  r = await call('create', { token: token(), pdf: pdf(2), pages: 2, channel: 'fax', to: '0681 1234567', expectCents: 99 });
+  check('fax create: job + checkout', r.status === 200 && r.json.priceCents === 99 && r.json.checkoutUrl.startsWith('mock:pay/'), JSON.stringify(r.json));
+  const { id, cap } = r.json;
+  check('fax job: number stored as E.164, no country', postStore._jobs.get(id).options.to === '+496811234567' && postStore._jobs.get(id).options.channel === 'fax' && !('country' in postStore._jobs.get(id).options));
+  P.faxMock.done = false;
+  r = await call('mockpay', { id, cap });
+  check('fax paid → handed to the fax service, PDF kept for a second try', r.json.job.status === 'submitted' && postStore._jobs.get(id).pdf, JSON.stringify(r.json.job));
+  P.faxMock.done = true;
+  r = await call('status', { id, cap });
+  check('fax went through → sent, PDF deleted', r.json.job.status === 'sent' && r.json.job.sentAt && postStore._jobs.get(id).pdf === null, JSON.stringify(r.json.job));
+
+  // first try fails (busy) → second try goes through
+  P.faxMock.failOnce = true;
+  r = await call('create', { token: token(), pdf: pdf(1), pages: 1, channel: 'fax', to: '030 9999999' });
+  const j2 = r.json;
+  await call('mockpay', { id: j2.id, cap: j2.cap });
+  const firstProvider = postStore._jobs.get(j2.id).provider_id;
+  r = await call('status', { id: j2.id, cap: j2.cap });
+  check('fax busy → second try started automatically', r.json.job.status === 'submitted' && postStore._jobs.get(j2.id).provider_id !== firstProvider && postStore._jobs.get(j2.id).error === 'retry', JSON.stringify(postStore._jobs.get(j2.id)));
+  r = await call('status', { id: j2.id, cap: j2.cap });
+  check('fax second try went through → sent', r.json.job.status === 'sent', JSON.stringify(r.json.job));
+
+  // both tries fail → refund
+  P.faxMock.failOnce = false; P.faxMock.fail = true;
+  r = await call('create', { token: token(), pdf: pdf(1), pages: 1, channel: 'fax', to: '089 7777777' });
+  const j3 = r.json;
+  await call('mockpay', { id: j3.id, cap: j3.cap });
+  await call('status', { id: j3.id, cap: j3.cap });
+  r = await call('status', { id: j3.id, cap: j3.cap });
+  check('fax fails twice → refunded, PDF deleted', r.json.job.status === 'refunded' && r.json.job.error === 'fax_failed' && postStore._jobs.get(j3.id).pdf === null, JSON.stringify(r.json.job));
+  // two status calls at the same time start only ONE second try
+  P.faxMock.fail = false; P.faxMock.failOnce = true;
+  r = await call('create', { token: token(), pdf: pdf(1), pages: 1, channel: 'fax', to: '040 5555555' });
+  const j4 = r.json;
+  const before = P.faxMock.sent;
+  await call('mockpay', { id: j4.id, cap: j4.cap });
+  const rs = await Promise.all([call('status', { id: j4.id, cap: j4.cap }), call('status', { id: j4.id, cap: j4.cap }), call('status', { id: j4.id, cap: j4.cap })]);
+  const tries = P.faxMock.sent - before;
+  check('fax: parallel status checks → one second try only', rs.every(x => x.status === 200) && ['submitted', 'paid'].includes(postStore._jobs.get(j4.id).status) && postStore._jobs.get(j4.id).error === 'retry' && tries === 2, JSON.stringify([tries, rs.map(x => x.json.job && x.json.job.status)]));
+
+  // production without fax credentials: fax off, letter flag unaffected
+  fresh({ VERCEL_ENV: 'production' });
+  r = await call('config');
+  check('production without credentials: fax off', r.json.fax === false && r.json.enabled === false);
+  r = await call('create', { token: token(), pdf: pdf(1), pages: 1, channel: 'fax', to: '0681 1234567' });
+  check('production without credentials: fax create refused', r.status === 503 && r.json.error === 'fax_not_configured', JSON.stringify(r.json));
+  fresh({ FAX_ENABLED: 'false' });
+  r = await call('config');
+  check('FAX_ENABLED=false switches only the fax off', r.json.fax === false && r.json.enabled === true);
+}
+
+// ---------------------------------------------------------------- partner links
+{
+  const L = P.partnerLinks(JSON.stringify({ strom: 'https://www.check24.net/p/strom?pid=1', handy: { url: 'https://a.example.de/x', name: 'Tarifvergleich<script>' }, gas: 'http://insecure.de', kfz: 'javascript:alert(1)', foo: 'https://x.de' })).DE;
+  check('partner links: https only, known topics only, names cleaned (flat = Germany)', L.strom.url.startsWith('https://www.check24.net/') && L.handy.name === 'Tarifvergleichscript' && !L.gas && !L.kfz && !L.foo, JSON.stringify(L));
+  const W = P.partnerLinks(JSON.stringify({ DE: { strom: 'https://de.example.com/s' }, AT: { handy: 'https://at.example.com/h' }, xx: { strom: 'https://x.de' } }));
+  check('partner links per country', W.DE.strom.url === 'https://de.example.com/s' && W.AT.handy.url === 'https://at.example.com/h' && Object.keys(W).length === 2, JSON.stringify(W));
+  check('partner links: broken JSON → none', Object.keys(P.partnerLinks('{oops')).length === 0);
+  fresh({ PARTNER_LINKS: JSON.stringify({ strom: 'https://www.check24.net/p/strom?pid=1' }) });
+  const r = await call('config');
+  check('config hands out the partner links', r.json.partners && r.json.partners.DE && r.json.partners.DE.strom.url === 'https://www.check24.net/p/strom?pid=1', JSON.stringify(r.json.partners));
+}
+
+// ---------------------------------------------------------------- sweep (scheduled check)
+{
+  fresh({ POST_SWEEP_SECRET: 'sweep-secret-0123456789abcdefghij' });
+  let r = await call('sweep', {}, { headers: { 'x-fale-sweep': 'wrong' } });
+  check('sweep: wrong secret refused', r.status === 403);
+  // a fax nobody looks at: paid, first try failed
+  P.faxMock.fail = true;
+  r = await call('create', { token: token(), pdf: pdf(1), pages: 1, channel: 'fax', to: '0711 222333' });
+  const j = r.json;
+  await call('mockpay', { id: j.id, cap: j.cap });
+  r = await call('sweep', {}, { headers: { 'x-fale-sweep': 'sweep-secret-0123456789abcdefghij' } });
+  r = await call('sweep', {}, { headers: { 'x-fale-sweep': 'sweep-secret-0123456789abcdefghij' } });
+  check('sweep: failed fax nobody checked → second try, then refunded', r.status === 200 && postStore._jobs.get(j.id).status === 'refunded', JSON.stringify([r.json, postStore._jobs.get(j.id).status]));
+  fresh();
+  r = await call('sweep', {}, { headers: { 'x-fale-sweep': 'anything-long-enough-0123456789' } });
+  check('sweep: no secret configured → refused', r.status === 403);
+}
+
 // ---------------------------------------------------------------- the exact requests to LetterXpress and Stripe
 {
   const sent = [];
@@ -218,6 +323,19 @@ let job, cap;
     && body.includes('success_url=https://pdf.fale.network/app/#/post/JOB?bezahlt=1') && co.url.startsWith('https://checkout.stripe.com/'), body);
   const se = await S.session('cs_1');
   check('Stripe session read back (paid, payment intent, job)', se.paid && se.paymentIntent === 'pi_1' && se.job === 'JOB');
+}
+
+{
+  const calls = [];
+  const fetchImpl = async (url, init) => { calls.push({ url, init }); return { ok: true, status: 200, text: async () => (url.includes('/history/') ? JSON.stringify({ faxStatusType: 'SENT' }) : JSON.stringify({ sessionId: 'abc123' })) }; };
+  const F = P._test.sipgateFax({ ...P.postConfig(), sipgate: { tokenId: 'token-id', token: 'tok', faxline: 'f0' }, faxCostPerPage: 0.05 }, { fetchImpl });
+  const b64 = pdf(1);
+  const r = await F.send({ pdfB64: b64, options: { channel: 'fax', to: '+496811234567', pages: 1 }, filename: 'FaLe-x.pdf' });
+  const st = await F.status('abc123');
+  const body = JSON.parse(calls[0].init.body);
+  check('sipgate fax: POST /v2/sessions/fax, Basic auth, faxline, E.164, base64 PDF', calls[0].url === 'https://api.sipgate.com/v2/sessions/fax' && calls[0].init.headers.Authorization === 'Basic ' + Buffer.from('token-id:tok').toString('base64')
+    && body.faxlineId === 'f0' && body.recipient === '+496811234567' && body.base64Content === b64 && body.filename === 'FaLe-x.pdf' && r.id === 'abc123', JSON.stringify(body).slice(0, 200));
+  check('sipgate fax status: GET /v2/history/<id>', calls[1].url === 'https://api.sipgate.com/v2/history/abc123' && st.status === 'SENT');
 }
 
 console.log(`\n${pass}/${pass + fail} passed`);

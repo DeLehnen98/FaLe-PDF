@@ -207,6 +207,9 @@ function wire() {
     const id = cur.doc.id;
     const anchor = e.currentTarget;
     showMenu(anchor, [
+      { label: 'Text einfügen', icon: 'text', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=text`) },
+      { label: 'Unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=sign`) },
+      '-',
       aiMenusHidden() ? null : { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
       { label: 'Lesemodus', icon: 'book', onClick: () => openReflowMode() },
       { label: isMarked(id, S.pdfViewer.currentPageNumber) ? 'Lesezeichen entfernen' : 'Lesezeichen setzen', icon: 'bookmark', onClick: () => toggleMark() },
@@ -234,6 +237,7 @@ function wire() {
       '-',
       { label: 'Drucken', icon: 'print', onClick: printDoc },
       postOffered() ? { label: 'Per Post senden', icon: 'mail', onClick: () => postDoc(cur.doc) } : null, // js/post: FaLe prints and mails it
+      postOffered('fax') ? { label: 'Per Fax senden', icon: 'print', onClick: () => postDoc(cur.doc, 'fax') } : null,
       { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(cur.doc) },
       { label: 'Teilen', icon: 'share', onClick: () => shareDoc(cur.doc) },
       { label: 'Sicher teilen', icon: 'link', onClick: () => (location.hash = `#/teilen/link?doc=${id}`) }, // js/share (E2E-encrypted link)
@@ -996,14 +1000,15 @@ function nameWithBreaks(el, name) {
 }
 
 /** „Per Post senden“ is offered unless the server said the service is not set up (js/post/api.js postKnown). */
-function postOffered() {
-  import('./post/api.js').then(m => m.warmPost()).catch(() => {}); // refresh for the next time the menu opens
-  try { return localStorage.getItem('fale-post-on') !== '0'; } catch { return true; }
+function postOffered(way = 'post') {
+  if (way === 'post') import('./post/api.js').then(m => m.warmPost()).catch(() => {}); // refresh for the next time the menu opens
+  try { return localStorage.getItem(way === 'fax' ? 'fale-fax-on' : 'fale-post-on') !== '0'; } catch { return true; }
 }
-/** „Per Post senden“ for the open PDF (js/post/send.js). */
-async function postDoc(doc) {
+/** „Per Post senden“ / „Per Fax senden“ for the open PDF (js/post/send.js, js/post/fax.js). */
+async function postDoc(doc, way = 'post') {
   try {
     const bytes = await (await import('./library.js')).getDocBytes(doc.id);
-    await (await import('./post/send.js')).sendByPost({ docId: doc.id, name: doc.name, bytes });
+    if (way === 'fax') await (await import('./post/fax.js')).sendByFax({ docId: doc.id, name: doc.name, bytes });
+    else await (await import('./post/send.js')).sendByPost({ docId: doc.id, name: doc.name, bytes });
   } catch (e) { errorToast(e, 'Der Briefversand konnte nicht geöffnet werden.'); }
 }

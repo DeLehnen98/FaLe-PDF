@@ -64,6 +64,25 @@ check('purge: rows older than 180 days deleted', JSON.parse(p[0].r).deleted >= 1
 r = await rpc('fale_post_delete', `${lit(SECRET)}, ${lit(U)}`);
 check('delete', r.ok && r.deleted, r);
 
+// fax (20261021090000_fale_post_fax.sql): a submitted fax keeps its PDF, the purge removes it after 24 h;
+// fale_post_open lists what the scheduled sweep has to look at – without PDFs
+const F = id22(), Pd = id22(), Old = id22();
+await create(F); await create(Pd); await create(Old);
+await rpc('fale_post_patch', `${lit(SECRET)}, ${lit(F)}, null, ${lit(JSON.stringify({ status: 'submitted', provider_id: 'fax1' }))}::jsonb`);
+await rpc('fale_post_patch', `${lit(SECRET)}, ${lit(Pd)}, null, ${lit(JSON.stringify({ session_id: 'cs_1' }))}::jsonb`);
+await q(`update public.post_jobs set created_at = now() - interval '5 minutes' where id in (${lit(F)}, ${lit(Pd)})`);
+r = await rpc('fale_post_open', `${lit(SECRET)}, 40`);
+const ids = (r.jobs || []).map(j => j.id);
+check('open: submitted fax + unpaid with a checkout after 2 min listed, without PDF', r.ok && ids.includes(F) && ids.includes(Pd) && !ids.includes(Old) && r.jobs.every(j => !('pdf' in j)), r);
+await q(`update public.post_jobs set created_at = now() - interval '25 hours' where id = ${lit(F)}`);
+const pp = await q(`select private.fale_post_purge()::text as r`);
+r = await rpc('fale_post_get', `${lit(SECRET)}, ${lit(F)}, true`);
+check('purge: a fax PDF older than 24 h is removed, status kept', r.ok && r.job.pdf === null && r.job.status === 'submitted' && JSON.parse(pp[0].r).pdf_removed >= 1, [r, pp]);
+e = await err(as('authenticated', `select public.fale_post_open(${lit(SECRET)}, 10)`));
+check('open: not callable as a signed-in user', e && /permission denied/.test(e.message), e && e.message);
+e = await err(rpc('fale_post_open', `${lit('wrong-secret-0123456789abcdefghij')}, 10`));
+check('open: wrong secret refused', !!e, e && e.message);
+
 console.log(`\n${pass}/${pass + fail} passed`);
 await c.end?.();
 process.exit(fail ? 1 : 0);

@@ -446,7 +446,7 @@ mark {
 .menu-sep { height: 1px; background: var(--border); margin: 6px 8px; }
 .menu-layer.as-sheet { background: rgba(11, 9, 36, .45); opacity: 0; transition: opacity var(--dur-2); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 .menu-layer.as-sheet.open { opacity: 1; }
-.menu-layer.as-sheet .menu { left: 8px; right: 8px; bottom: calc(8px + var(--safe-b)); top: auto; border-radius: var(--radius-lg); padding: 22px 10px 10px; transform: translateY(40px); transition: transform var(--dur-3) var(--ease-spring), opacity var(--dur-2); }
+.menu-layer.as-sheet .menu { left: 8px; right: 8px; bottom: calc(8px + var(--safe-b)); top: auto; max-height: calc(100dvh - 24px - var(--safe-t) - var(--safe-b)); -webkit-overflow-scrolling: touch; border-radius: var(--radius-lg); padding: 22px 10px 10px; transform: translateY(40px); transition: transform var(--dur-3) var(--ease-spring), opacity var(--dur-2); }
 .menu-layer.as-sheet .menu::before { content: ""; position: absolute; top: 8px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--border-strong); }
 .menu-layer.as-sheet.open .menu { transform: none; }
 .menu-layer.as-sheet .menu-item { min-height: 52px; font-size: 1rem; border-radius: 14px; }

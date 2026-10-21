@@ -86,6 +86,9 @@ export function startHarness(port = 8801) {
       const P = require('./_lib/postal.js');
       if (u.searchParams.has('done')) P.mockProvider.done = u.searchParams.get('done') === '1';
       if (u.searchParams.has('fail')) P.mockProvider.fail = u.searchParams.get('fail') === '1';
+      if (u.searchParams.has('faxdone')) P.faxMock.done = u.searchParams.get('faxdone') === '1';
+      if (u.searchParams.has('faxfail')) P.faxMock.fail = u.searchParams.get('faxfail') === '1';
+      if (u.searchParams.has('faxfailonce')) P.faxMock.failOnce = u.searchParams.get('faxfailonce') === '1';
       return send({ jobs: [...postStore._jobs.values()].map(j => ({ ...j, pdf: j.pdf ? j.pdf.length : null })) });
     }
     if (u.pathname === '/__test/postpdf') {

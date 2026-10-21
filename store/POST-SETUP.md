@@ -1,4 +1,4 @@
-# „Brief per Post“ – Einrichtung (Schritt für Schritt)
+# „Brief per Post“, „Per Fax senden“ und Partner-Hinweise – Einrichtung (Schritt für Schritt)
 
 FaLe druckt, kuvertiert und verschickt einen Brief für die Nutzerin – als normalen Brief, **Einschreiben Einwurf**
 oder **Einschreiben** (Inland) bzw. als Brief ins Ausland. Gedruckt wird bei **LetterXpress**, bezahlt über
@@ -7,6 +7,10 @@ oder **Einschreiben** (Inland) bzw. als Brief ins Ausland. Gedruckt wird bei **L
 Solange LetterXpress und Stripe **nicht** eingerichtet sind, ist in der Produktion nichts davon sichtbar: Die App
 fragt den Server, bekommt „nicht eingerichtet“ und blendet „Per Post senden“ aus. Ohne Zugangsdaten läuft
 außerhalb der Produktion (Vercel-Preview, lokal) alles im **Testmodus** mit Probe-Druckerei und Probe-Zahlung.
+
+Dazu kommen **„Per Fax senden“** (über **sipgate**, Faxe in Deutschland und in rund 40 Länder, mit Sendebericht) und
+**Partner-Hinweise** (als „Anzeige“ markierte Vergleichs-Links nach einer Kündigung – du bekommst Provision).
+Fax und Partner-Hinweise bleiben ebenfalls unsichtbar, bis sie eingerichtet sind (Abschnitte 9 und 10).
 
 > Warum nicht Google-Play-Abrechnung? Für **physische Waren und Dienstleistungen** (Druck + Porto) *darf* Google
 > Play Billing nicht genutzt werden – dafür ist ein externer Zahlungsanbieter wie Stripe vorgesehen.
@@ -79,6 +83,7 @@ Endpreise inkl. 19 % MwSt. (Standard, in `api/_lib/postal.js` → `DEFAULT_PRICE
 
 `supabase/migrations/20261020200000_fale_post.sql` (Tabelle `post_jobs`, RPCs `fale_post_*`, Aufräumfunktion) wurde
 beim Push automatisch vom GitHub-Workflow „DB migrate“ angewendet („1 neue Migration(en) angewendet“). Nichts zu tun.
+Dasselbe gilt für `20261021090000_fale_post_fax.sql` (Fax-PDF höchstens 24 h, Liste offener Aufträge für den Sweep).
 
 ## 5. Vercel-Umgebungsvariablen (trägst du selbst ein)
 
@@ -94,6 +99,12 @@ Vercel → Projekt → Settings → Environment Variables (Production, optional 
 | `POST_MIN_MARGIN_CENTS` | optional, Mindestgewinn pro Brief in Cent (Standard 40) |
 | `POST_MAX_PAGES` | optional, max. Blatt inkl. Adressblatt (Standard 10) |
 | `POST_ENABLED` | optional `false` = Notschalter, schaltet den Briefversand sofort ab |
+| `SIPGATE_TOKEN_ID` / `SIPGATE_TOKEN` | sipgate Personal-Access-Token (**geheim**), siehe Abschnitt 9 |
+| `SIPGATE_FAXLINE` | deine Fax-Durchwahl bei sipgate, z. B. `f0` |
+| `FAX_COST_PER_PAGE` / `FAX_COST_INTL_PER_PAGE` | optional: deine Kosten pro Seite netto in € (Standard 0,05 / 0,20) – nur für den Preisschutz |
+| `FAX_ENABLED` | optional `false` = Notschalter nur für Fax |
+| `PARTNER_LINKS` | Partner-Links pro Land, siehe Abschnitt 10 |
+| `POST_SWEEP_SECRET` | zufällige Zeichenkette (mind. 24 Zeichen, **geheim**), siehe Abschnitt 11 |
 
 Nach dem Speichern **neu deployen** (Deployments → Redeploy).
 
@@ -127,3 +138,46 @@ Nach dem Speichern **neu deployen** (Deployments → Redeploy).
 * Briefversand sofort abschalten: `POST_ENABLED=false` setzen und redeployen.
 * Zahlung ohne Versand: Die App erstattet automatisch, wenn LetterXpress den Auftrag ablehnt. Sonst in Stripe →
   Zahlungen → Erstatten. Die Auftragsnummer steht in den Metadaten der Zahlung (`job`).
+
+## 9. Fax über sipgate (machst du selbst)
+
+1. Geschäftskonto bei **sipgate** anlegen (z. B. sipgate team / business – Fax ist dort enthalten; laut Preisliste
+   Mai 2026 ab ca. 12,95 € netto im Monat). Fax-Durchwahl im Konto anlegen bzw. prüfen (`f0`, `f1` …).
+2. Unter **Konto → Personal Access Token** einen Token erstellen mit den Rechten `sessions:fax:write` und
+   `history:read`. Token-ID und Token in Vercel eintragen (`SIPGATE_TOKEN_ID`, `SIPGATE_TOKEN`), dazu `SIPGATE_FAXLINE`.
+3. Guthaben/Abrechnung prüfen: ohne Guthaben antwortet sipgate mit „402“ – die App erstattet dann automatisch.
+4. Preise (inkl. MwSt.): **Inland 0,99 €** bis 5 Seiten, +0,10 € je weitere Seite; **Ausland 1,99 €**, +0,20 € je
+   weitere Seite. Änderbar über `POST_PRICES` (`faxBase`, `faxIncluded`, `faxPerPage`, `faxIntlBase`, `faxIntlPerPage`).
+   Zum Vergleich: Kündigungsdienste verlangen 2,89–4,99 € pro Fax.
+5. Länder: Deutschland, EU/EWR, Schweiz, Großbritannien, Türkei, Israel, USA, Kanada, Australien, Neuseeland, Japan,
+   Singapur, Hongkong. **Gesperrt**: Handynummern, 0900/0180/0137 & Co., Karibik-Vorwahlen und alle anderen Länder
+   (Schutz vor teuren Sondernummern). Eine Nummer ohne +/00 wird im Format des Landes gelesen, das das Handy
+   eingestellt hat.
+6. Testen: Ein Fax an eine eigene Faxnummer schicken (z. B. eine zweite sipgate-Faxnummer) und den Sendebericht prüfen.
+
+## 10. Partner-Hinweise (Anzeige nach einer Kündigung)
+
+1. Kostenlos anmelden, z. B. beim **CHECK24-Partnerprogramm** (check24-partnerprogramm.de – Privatpersonen und
+   Firmen; Strom, Gas, Internet, Kfz-Versicherung u. a.) oder bei **Verivox / Tarifcheck** über das Netzwerk Awin.
+   Beim Partner kurz nachfragen, ob **Links in einer App** erlaubt sind.
+2. Deine persönlichen Partner-Links (Deeplinks) in Vercel als `PARTNER_LINKS` eintragen – pro Land:
+   ```json
+   {"DE": {"strom": {"url": "https://…dein-link…", "name": "CHECK24"},
+           "handy": {"url": "https://…", "name": "CHECK24"},
+           "versicherung": {"url": "https://…", "name": "CHECK24"}},
+    "AT": {"strom": {"url": "https://…", "name": "…"}}}
+   ```
+   Themen: `strom`, `gas`, `handy`, `internet`, `versicherung`, `kfz`, `fitness`, `abo`. Nur `https://`-Links.
+3. Die App zeigt den Hinweis nur nach der passenden Kündigung, nur im Land der Nutzerin, immer als **„Anzeige“**
+   markiert, und gibt **keine Daten** an den Partner weiter (erst der Klick öffnet die Partnerseite im Browser).
+
+## 11. Automatische Kontrolle (Sweep)
+
+Ein GitHub-Workflow („Post sweep“, alle 20 Minuten) schaut nach Aufträgen, um die sich gerade niemand kümmert –
+z. B. ein Fax, das nicht durchkam, während die App geschlossen war (→ zweiter Versuch bzw. **automatische
+Rückerstattung**), oder eine Zahlung, deren Stripe-Webhook verloren ging.
+
+1. Eine zufällige Zeichenkette erzeugen (mind. 24 Zeichen, z. B. mit einem Passwort-Generator).
+2. In **Vercel** als `POST_SWEEP_SECRET` eintragen und in **GitHub → Settings → Secrets and variables → Actions**
+   als Secret `POST_SWEEP_SECRET` (gleicher Wert).
+3. Ohne das Secret macht der Workflow nichts (er meldet nur „nicht gesetzt“).

@@ -25,6 +25,9 @@ const MESSAGES = {
   not_found: 'Diesen Auftrag gibt es nicht mehr.',
   not_cancelable: 'Der Brief ist schon bezahlt und wird verschickt.',
   page_mismatch: 'Die Seitenzahl passt nicht zur Datei. Bitte versuche es erneut.',
+  bad_fax_number: 'Diese Faxnummer geht nicht. Bitte eine Festnetz-Faxnummer mit Vorwahl eintragen.',
+  fax_not_configured: 'Der Faxversand ist noch nicht eingerichtet – bitte versuche es später.',
+  fax_disabled: 'Der Faxversand ist noch nicht eingerichtet – bitte versuche es später.',
 };
 
 async function call(action, json = {}) {
@@ -46,12 +49,23 @@ export async function postConfig({ force = false } = {}) {
   if (cfgCache && !force && Date.now() - cfgCache.at < 300000) return cfgCache.data;
   const data = await call('config');
   cfgCache = { at: Date.now(), data };
-  try { localStorage.setItem(ON, data.enabled ? '1' : '0'); } catch { /* private mode */ }
+  try { localStorage.setItem(ON, data.enabled ? '1' : '0'); localStorage.setItem(FAX_ON, data.fax ? '1' : '0'); } catch { /* private mode */ }
   return data;
 }
 // Whether the service is set up (last answer of the server, remembered) – entry points stay hidden while it is
 // not (e.g. in production before the print service and payment are configured).
 const ON = 'fale-post-on';
+const FAX_ON = 'fale-fax-on';
+/** Fax: true / false from the last config answer, null when never asked. */
+export function faxKnown() { try { const v = localStorage.getItem(FAX_ON); return v == null ? null : v === '1'; } catch { return null; } }
+/** {post, fax} configs if available (waits at most `ms`), each null when that way is not set up. */
+export async function sendWays(ms = 2000) {
+  try {
+    const cfg = await Promise.race([postConfig(), new Promise(r => setTimeout(() => r(undefined), ms))]);
+    if (cfg === undefined) return { post: postKnown() ? { enabled: true, prices: null } : null, fax: faxKnown() ? { fax: true, prices: null } : null, partners: null };
+    return { post: cfg.enabled ? cfg : null, fax: cfg.fax ? cfg : null, partners: cfg.partners || null };
+  } catch { return { post: postKnown() ? { enabled: true, prices: null } : null, fax: faxKnown() ? { fax: true, prices: null } : null, partners: null }; }
+}
 /** true / false from the last config answer, null when never asked. */
 export function postKnown() { try { const v = localStorage.getItem(ON); return v == null ? null : v === '1'; } catch { return null; } }
 /** The config if the service is available (waits at most `ms`, then decides by the last known answer), else null. */
@@ -85,7 +99,9 @@ export function rememberJob(j) { ls.set([j, ...ls.get().filter(x => x.id !== j.i
 export function updateJob(id, patch) { const all = ls.get(); const i = all.findIndex(x => x.id === id); if (i >= 0) { all[i] = { ...all[i], ...patch }; ls.set(all); return all[i]; } return null; }
 
 /** Simple local price (same rules as the server's list price) – the server price is binding. */
-export function localPrice(prices, { pages, color, registered, intl }) {
+export function localPrice(prices, { pages, color, registered, intl, channel }) {
+  if (channel === 'fax') return intl ? prices.faxIntlBase + Math.max(0, pages - prices.faxIncluded) * prices.faxIntlPerPage
+    : prices.faxBase + Math.max(0, pages - prices.faxIncluded) * prices.faxPerPage;
   let p = intl ? prices.intlBase : prices.base;
   p += Math.max(0, pages - prices.includedSheets) * prices.perSheet;
   if (color) p += prices.color;
@@ -93,4 +109,17 @@ export function localPrice(prices, { pages, color, registered, intl }) {
   if (!intl && registered === 'r2') p += prices.r2;
   return p;
 }
+/**
+ * The person's country (ISO, e.g. 'FR') from the device languages – decides how a fax number without +/00 is read,
+ * the default country of a letter and which partner links fit.
+ */
+const LANG_COUNTRY = { de: 'DE', fr: 'FR', es: 'ES', it: 'IT', pt: 'PT', nl: 'NL', pl: 'PL', tr: 'TR', uk: 'UA', ru: 'RU', zh: 'CN', ja: 'JP', ko: 'KR', hi: 'IN', id: 'ID', en: 'GB', da: 'DK', sv: 'SE', nb: 'NO', fi: 'FI', cs: 'CZ', el: 'GR', hu: 'HU', ro: 'RO' };
+export function deviceRegion() {
+  try {
+    const list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de-DE'];
+    for (const l of list) { const m = /^[a-z]{2,3}[-_]([A-Za-z]{2})\b/.exec(l); if (m) return m[1].toUpperCase(); }
+    return LANG_COUNTRY[String(list[0]).slice(0, 2).toLowerCase()] || 'DE';
+  } catch { return 'DE'; }
+}
+export const quoteFax = (to, pages) => call('quote', { channel: 'fax', to, pages, region: deviceRegion() });
 export const euro = cents => (cents / 100).toLocaleString(undefined, { style: 'currency', currency: 'EUR' });

@@ -7,7 +7,9 @@ import { track } from './stats.js';
 import { t } from '../i18n/index.js';
 
 // the „Briefe per Post“ card: hidden while the service is not set up on the server (and nothing was sent yet)
-const postHidden = () => { try { return localStorage.getItem('fale-post-on') === '0' && !JSON.parse(localStorage.getItem('fale-post-jobs') || '[]').length; } catch { return false; } };
+const PARTNER_TOPIC = { strom: 'strom', handy: 'handy', versicherung: 'versicherung', fitness: 'fitness', abo: 'abo', internet: 'internet', kfz: 'kfz' };
+const PARTNER_TEXT = { strom: 'Neuen Strom- oder Gastarif vergleichen', handy: 'Neuen Handytarif vergleichen', versicherung: 'Versicherungen vergleichen', internet: 'Internettarife vergleichen', kfz: 'Kfz-Versicherung vergleichen', fitness: 'Fitnessstudio in der Nähe finden', abo: 'Angebote vergleichen' };
+const postHidden = () => { try { return localStorage.getItem('fale-post-on') === '0' && localStorage.getItem('fale-fax-on') !== '1' && !JSON.parse(localStorage.getItem('fale-post-jobs') || '[]').length; } catch { return false; } };
 
 export const DISCLAIMER = 'Die Vorlagen sind allgemeine Formulierungshilfen und ersetzen keine Rechtsberatung. Bitte prüfe Fristen und Angaben selbst – im Zweifel helfen Verbraucherzentrale, Mieterverein oder eine Anwältin bzw. ein Anwalt weiter.';
 
@@ -822,26 +824,45 @@ async function generator(screen, def) {
     const shareAct = canShare ? { label: 'Teilen', value: 'share' } : { label: 'Herunterladen', value: 'dl' };
     // „Per Post senden“ (js/post): not for letters that need a pen signature (Schriftform)
     // (only once the service is set up on the server)
-    let post = null;
-    if (kind === 'pdf' && !(guide && guide.strict) && !def.build(v).standalone) {
-      try { post = await (await import('../post/api.js')).postAvailable(); } catch { post = null; }
+    let ways = { post: null, fax: null, partners: null };
+    const PA = await import('../post/api.js').catch(() => null);
+    if (PA && kind === 'pdf' && !def.build(v).standalone) {
+      try { ways = await PA.sendWays(); } catch { /* offline */ }
     }
-    const from = post && post.prices ? (await import('../post/api.js')).euro(post.prices.base) : '1,99 €';
-    const postHtml = post
-      ? `<div class="lt-post">${oicon('mail')}<div><strong>Kein Drucker? FaLe verschickt den Brief für dich</strong><span data-no-i18n>${esc(t('Gedruckt, kuvertiert, auf Wunsch als Einschreiben – ab {price}.', { price: from }))}</span></div><button class="btn btn-soft btn-sm" type="submit" value="post">Per Post senden</button></div>` : '';
+    const strict = !!(guide && guide.strict);
+    const post = strict ? null : ways.post, fax = strict ? null : ways.fax;
+    const from = post && post.prices && PA ? PA.euro(post.prices.base) : '1,99 €';
+    const sub = post ? t('Gedruckt, kuvertiert, auf Wunsch als Einschreiben – ab {price}.', { price: from }) : t('Als Fax mit Sendebericht – ab {price}.', { price: fax && fax.prices && PA ? PA.euro(fax.prices.faxBase) : '0,99 €' });
+    const postHtml = post || fax
+      ? `<div class="lt-post">${oicon('mail')}<div><strong>Kein Drucker? FaLe verschickt den Brief für dich</strong><span data-no-i18n>${esc(sub)}</span></div><div class="lt-post-btns">${post ? '<button class="btn btn-soft btn-sm" type="submit" value="post">Per Post senden</button>' : ''}${fax ? '<button class="btn btn-soft btn-sm" type="submit" value="fax">Per Fax senden</button>' : ''}</div></div>` : '';
+    // partner offer after a cancellation (affiliate link, only when set up for the person's country; marked as ad)
+    const partner = def.id === 'kuendigung' && ways.partners && PA ? ((ways.partners[PA.deviceRegion()] || {})[PARTNER_TOPIC[def.art]] || null) : null;
+    const partnerHtml = partner ? `<a class="lt-partner" href="${esc(partner.url)}" target="_blank" rel="noopener noreferrer sponsored" data-partner>${oicon('search')}<div><small>Anzeige</small><strong>${esc(PARTNER_TEXT[def.art] || 'Günstigeren Anbieter finden')}</strong><span data-no-i18n>${esc(partner.name ? t('Vergleich bei {name} – kostenlos, öffnet sich im Browser', { name: partner.name }) : t('Kostenloser Vergleich – öffnet sich im Browser'))}</span></div>${oicon('chevronRight')}</a>` : '';
     const r = await openDialog({
       title: kind === 'doc' ? 'Dokument erstellt' : 'PDF erstellt',
       body: `<div class="result-mini">${oicon('check')}<div><strong>${esc(meta.name)}</strong><p class="muted small">Gespeichert in deinen Dateien.${kind === 'doc' ? ' Du kannst den Text jetzt frei anpassen.' : ''}</p></div></div>
         ${guideHtml}
         ${postHtml}
+        ${partnerHtml}
         ${rem ? `<label class="check lt-remind"><input type="checkbox" name="remind" checked> Erinnerung eintragen: „${esc(rem.title)}“ am ${deDate(rem.due)}</label>` : ''}`,
       actions: kind === 'doc' ? [{ label: 'Schließen', value: 'close' }, { label: 'Im Editor öffnen', value: 'open', kind: 'btn-primary', default: true }]
         : guide && guide.strict ? [shareAct, { label: 'Öffnen', value: 'open' }, { label: 'Drucken', value: 'print', kind: 'btn-primary', default: true }]
         : [shareAct, { label: 'Drucken', value: 'print' }, { label: 'Öffnen', value: 'open', kind: 'btn-primary', default: true }],
-      onMount: dlg => ({ collect: () => ({ remind: !!(dlg.querySelector('[name=remind]') || {}).checked }) }),
+      onMount: dlg => {
+        const pl = dlg.querySelector('[data-partner]');
+        if (pl) pl.addEventListener('click', async e => { e.preventDefault(); const { openExternal } = await import('../security.js'); openExternal(pl.href, { confirm: false }); });
+        return { collect: () => ({ remind: !!(dlg.querySelector('[name=remind]') || {}).checked }) };
+      },
     });
     if (rem && r.data && r.data.remind && r.value) {
       try { const { addReminder } = await import('./reminders.js'); await addReminder({ ...rem, docId: meta.id }); toast('Erinnerung eingetragen', 'success'); } catch (err) { console.warn(err); }
+    }
+    if (r.value === 'fax') {
+      const db = await import('../db.js');
+      const bytes = new Uint8Array(await (await db.getFile(meta.id)).arrayBuffer());
+      const { sendByFax } = await import('../post/fax.js');
+      await sendByFax({ docId: meta.id, name: meta.name, bytes, to: v.r_fax || '' });
+      return;
     }
     if (r.value === 'post') {
       const [plz, ...ort] = String(v.r_ort || '').trim().split(/\s+/);

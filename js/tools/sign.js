@@ -765,6 +765,14 @@ export async function mount(screen, { docId, params }) {
     toast('Diese PDF wurde nach dem Ausfüllen mit einem anderen Programm verändert – deine früheren Einträge lassen sich deshalb nicht mehr einzeln bearbeiten.', 'info', { timeout: 7000 });
   }
 
+  // opened with a task from the viewer menu („Text einfügen“, „Unterschreiben“): start that mode right away
+  const startMode = params && params.get('modus');
+  if (startMode && ['text', 'date', 'mark', 'sign'].includes(startMode)) {
+    const btn = tools.querySelector(`[data-mode="${startMode}"]`);
+    if (btn) setTimeout(() => { btn.click(); if (startMode === 'text') toast('Tippe auf die Stelle im Dokument, an der der Text stehen soll.', 'info', { timeout: 5000 }); }, 300);
+    try { history.replaceState(history.state, '', `#/werkzeug/unterschreiben?doc=${docId}`); screen.hashKey = location.hash; } catch { /* ignore */ }
+  }
+
   // fresh from „Felder finden“: fill in the profile values right away and show the field list
   const found = params && +params.get('gefunden');
   if (found && fields.length) {

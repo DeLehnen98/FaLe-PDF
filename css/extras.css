@@ -522,6 +522,22 @@
 .lt-post > .ic { flex: none; width: 28px; height: 28px; color: var(--primary); }
 .lt-post > div { flex: 1; display: grid; gap: 2px; }
 .lt-post span { font-size: .8125rem; color: var(--text-2); }
+.lt-post:has(.lt-post-btns) { flex-wrap: wrap; }
+.lt-post > .lt-post-btns { flex: 1 0 100%; display: flex; gap: 8px; flex-wrap: wrap; padding-left: 40px; }
+.lt-post .btn-soft { background: var(--surface); }
+.lt-partner { display: flex; gap: 12px; align-items: center; margin-top: 10px; padding: 11px 14px; border-radius: 14px; border: 1px solid var(--border); text-decoration: none; color: inherit; background: var(--surface); }
+.lt-partner > .ic { flex: none; width: 22px; height: 22px; color: var(--text-2); }
+.lt-partner > div { flex: 1; display: grid; gap: 1px; min-width: 0; }
+.lt-partner small { font-size: .6875rem; color: var(--text-2); letter-spacing: .02em; }
+.lt-partner span { font-size: .8125rem; color: var(--text-2); }
+.lt-partner:hover, .lt-partner:focus-visible { border-color: var(--primary); }
+.fax-dlg { display: grid; gap: 10px; }
+.fax-dlg .fax-num { font-size: 1.25rem; letter-spacing: .02em; min-height: 52px; }
+.fax-where { margin: -4px 0 0; }
+.fax-check { display: flex; gap: 8px; align-items: center; margin: 0; min-height: 1.4em; font-weight: 600; }
+.fax-check .ic { flex: none; width: 18px; height: 18px; }
+.fax-check.ok { color: var(--success, #1B7F4B); }
+.fax-check.bad { color: var(--danger, #B42318); }
 .lt-postlink { display: flex; gap: 12px; align-items: center; padding: 14px 16px; margin: 18px 0 8px; text-decoration: none; color: inherit; }
 .lt-postlink > .ic:first-child { width: 26px; height: 26px; color: var(--primary); flex: none; }
 .lt-postlink > span { flex: 1; display: grid; gap: 2px; }
@@ -530,6 +546,7 @@
   .post-env { height: 112px; }
   .lt-post { flex-wrap: wrap; }
   .lt-post .btn { width: 100%; min-height: 44px; }
+  .lt-post > .lt-post-btns { flex-direction: column; padding-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .post-step.active .post-dot { animation: none; } }
 .pt-info-box { display: flex; gap: 12px; align-items: flex-start; }

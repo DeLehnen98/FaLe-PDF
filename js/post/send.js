@@ -3,7 +3,9 @@ import { h, esc, toast, errorToast, openDialog, progress } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { t } from '../i18n/index.js';
 import { postConfig, createJob, rememberJob, localPrice, euro, PostError } from './api.js';
-import { buildMailPdf, addressLines, isAbroad, checkAddress } from './pdf.js';
+import { buildMailPdf, addressLines, isAbroad, checkAddress, COUNTRIES, countryName } from './pdf.js';
+import { deviceRegion } from './api.js';
+import { locale } from '../i18n/index.js';
 
 const WAYS = [
   { id: '', title: 'Brief', desc: 'Normale Post, kommt in 1–2 Werktagen an' },
@@ -41,7 +43,15 @@ export async function sendByPost({ docId, name, bytes, to = {}, from = null, str
       if (p) from = { name: [p.vorname, p.nachname].filter(Boolean).join(' ') || p.firma || '', strasse: [p.strasse, p.hausnummer].filter(Boolean).join(' '), plz: p.plz || '', ort: p.ort || '' };
     } catch { from = null; }
   }
-  const a = { name: '', zusatz: '', strasse: '', plz: '', ort: '', country: 'Deutschland', ...to };
+  const region = COUNTRIES.includes(deviceRegion()) ? deviceRegion() : 'DE';
+  const a = { name: '', zusatz: '', strasse: '', plz: '', ort: '', ...to };
+  if (!a.country || !COUNTRIES.includes(a.country)) a.country = /^(deutschland|germany)?$/i.test(String(a.country || '').trim()) && a.country ? 'DE' : region;
+  // the person's own country and Germany first, then all countries in the person's language
+  const lang = locale();
+  const named = COUNTRIES.map(c => [c, countryName(c, lang)]).sort((x, y) => x[1].localeCompare(y[1], lang));
+  const top = [...new Set([region, 'DE'])];
+  const countryOptions = top.map(c => `<option value="${c}">${esc(countryName(c, lang))}</option>`).join('') + '<option disabled>──────────</option>'
+    + named.filter(([c]) => !top.includes(c)).map(([c, n]) => `<option value="${c}">${esc(n)}</option>`).join('');
   const state = { registered: 'registered' in to ? to.registered : 'r1', color: false };
 
   const body = h(`<div class="post-dlg">
@@ -53,7 +63,7 @@ export async function sendByPost({ docId, name, bytes, to = {}, from = null, str
         <label class="field"><span class="field-label">Straße und Hausnummer <span class="muted">(oder Postfach)</span></span><input class="input" name="strasse" maxlength="60"></label>
         <div class="post-row"><label class="field post-plz"><span class="field-label">PLZ</span><input class="input" name="plz" maxlength="10" inputmode="numeric"></label>
           <label class="field"><span class="field-label">Ort</span><input class="input" name="ort" maxlength="50"></label></div>
-        <label class="field"><span class="field-label">Land</span><input class="input" name="country" maxlength="40"></label>
+        <label class="field"><span class="field-label">Land</span><select class="input" name="country" data-no-i18n>${countryOptions}</select></label>
         <p class="field-error" data-err hidden></p>
       </section>
       <section class="post-sec"><h3>So steht es im Fenster</h3>
@@ -87,7 +97,7 @@ export async function sendByPost({ docId, name, bytes, to = {}, from = null, str
     $('[data-ret]').textContent = from && from.name ? [from.name, from.strasse, [from.plz, from.ort].filter(Boolean).join(' ')].filter(Boolean).join(' · ') : '';
     const ls = addressLines(a);
     $('[data-lines]').innerHTML = ls.length ? ls.map(l => `<span>${esc(l)}</span>`).join('') : '<span class="muted">Adresse eintragen</span>';
-    $('[data-sum]').innerHTML = `<b>${esc(euro(price()))}</b> <span data-no-i18n>${esc(t('inkl. MwSt. · {n} Seiten (mit Adressblatt)', { n: pages }) + (intl ? ' · ' + t('ins Ausland') : ''))}</span>`;
+    $('[data-sum]').innerHTML = `<b>${esc(euro(price()))}</b> <span data-no-i18n>${esc(t('inkl. MwSt. · {n} Seiten (mit Adressblatt)', { n: pages }) + (intl ? ' · ' + t('ins Ausland, meist 4–10 Werktage') : ''))}</span>`;
     if (okBtn) okBtn.textContent = `Weiter zur Bezahlung (${euro(price())})`;
   }
   body.addEventListener('input', paint);

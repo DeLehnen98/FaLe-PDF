@@ -1,0 +1,36 @@
+# „Brief per Post“ / „Per Fax senden“: schaut alle 20 Minuten nach Aufträgen, um die sich gerade niemand kümmert –
+# z. B. ein Fax, das nicht durchkam (→ zweiter Versuch bzw. automatische Rückerstattung), oder eine Zahlung, deren
+# Stripe-Webhook verloren ging. Braucht das Secret POST_SWEEP_SECRET (gleicher Wert wie in Vercel); ohne Secret
+# wird nichts gemacht. Schreibt nichts außer über die eigene API.
+name: Post sweep
+
+on:
+  schedule:
+    - cron: '7,27,47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SWEEP: ${{ secrets.POST_SWEEP_SECRET }}
+    steps:
+      - name: Check open jobs
+        run: |
+          if [ -z "$SWEEP" ]; then echo "POST_SWEEP_SECRET nicht gesetzt – nichts zu tun."; exit 0; fi
+          code=$(curl -sS -o out.json -w '%{http_code}' -X POST 'https://pdf.fale.network/api/post?a=sweep' \
+            -H 'Content-Type: application/json' -H 'Origin: https://pdf.fale.network' -H "X-Fale-Sweep: $SWEEP" --data '{}' --max-time 120 || echo 000)
+          echo "HTTP $code"; cat out.json; echo
+          case "$code" in
+            200) ;;
+            503) echo "::notice title=Post sweep::Briefversand noch nicht eingerichtet." ;;
+            *) echo "::error title=Post sweep::HTTP $code"; exit 1 ;;
+          esac
