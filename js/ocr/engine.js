@@ -330,6 +330,27 @@ function convert(data, geo, srcScale = 1) {
 export async function recognize(source, { lang = 'deu+eng', psm = 'auto', onProgress, signal, preprocess = true, deskew = true, dpi = 0 } = {}) {
   const report = (phase, progress, message) => { if (onProgress) try { onProgress({ phase, progress, message }); } catch {} };
   if (signal && signal.aborted) throw abortError();
+  // iOS app: Apple's on-device recognition (js/ocr/native.js) – no download, offline; the WebAssembly engine
+  // takes over if it cannot read the language or fails
+  const nat = await import('./native.js').catch(() => null);
+  if (nat && await nat.available(lang)) {
+    try {
+      report('prepare', 0, 'Bild wird vorbereitet …');
+      const img = await toImageData(source, MAX_PIXELS);
+      if (signal && signal.aborted) throw abortError();
+      report('recognize', 0.3, 'Text wird erkannt …');
+      const out = await nat.recognizeImageData(img, { lang });
+      if (signal && signal.aborted) throw abortError();
+      out.width = Math.round(img.width / (img.sourceScale || 1));
+      out.height = Math.round(img.height / (img.sourceScale || 1));
+      report('done', 1, 'Fertig');
+      return out;
+    } catch (e) {
+      if (isAbort(e)) throw e;
+      console.warn('Apple-Texterkennung nicht nutzbar – WebAssembly-Engine', e);
+      nat.disable();
+    }
+  }
   const check = await canRunNow(langList(lang));
   if (!check.ok) {
     throw ocrError(`Die Texterkennung braucht beim ersten Mal eine Internetverbindung, um einmalig ca. ${mbLabel(approxBytes(langList(lang)))} Sprachdaten zu laden. Danach funktioniert sie auch offline.`, { code: 'offline' });

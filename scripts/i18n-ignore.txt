@@ -634,3 +634,6 @@ FaLe PDF Echtheits-Siegel: zeigt in FaLe, ob die Datei nach dem Versiegeln verä
 Anlage: {0} {1}
 AD AE AF AG AL AM AO AR AT AU AZ BA BB BD BE BF BG BH BI BJ BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CL CM CN CO CR CU CV CY CZ
 DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GM GN GQ GR GT GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JM JO JP KE KG KH KI KM KN KR KW KZ
+Vollmacht für Edwin
+Geburtsdatum: 12.03.1961
+Straße 42, 66620 Nonnweiler

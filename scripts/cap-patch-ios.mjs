@@ -138,7 +138,7 @@ export function patchInfo(plist) {
 }
 
 // ------------------------------------------------------------------ storyboard, Podfile, project
-export const OWN_PLUGINS = ['FaleIncomingPlugin', 'FalePrintPlugin']; // @objc names in ios-native/Sources
+export const OWN_PLUGINS = ['FaleIncomingPlugin', 'FalePrintPlugin', 'FaleVisionPlugin']; // @objc names in ios-native/Sources
 
 /** Undo the earlier storyboard approach (custom view controller) – the plain Capacitor controller is used. */
 export function patchStoryboard(xml) {

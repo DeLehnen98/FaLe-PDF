@@ -148,6 +148,15 @@ try:
         sh('xcrun', 'simctl', 'io', UDID, 'screenshot', f, check=False)
         (shots if went and os.path.exists(f) and os.path.getsize(f) > 20000 else missing).append(name)
     sh('xcrun', 'simctl', 'ui', UDID, 'appearance', 'light', check=False)
+    # Apple's text recognition (ios-native/Sources/FaleVisionPlugin.swift via js/ocr/native.js): reads a drawn card
+    for attempt in range(2):
+        mark = len(lines)
+        open(route_file, 'w').write('#/e2e/ocr')
+        sh('xcrun', 'simctl', 'spawn', UDID, 'notifyutil', '-p', 'dev.fale.pdf.e2e.go', check=False, timeout=30)
+        if wait_for(lambda: any('FALE-E2E ocr apple' in l for l in lines[mark:]), 90):
+            break
+    ocr_line = next((l for l in reversed(lines) if 'FALE-E2E ocr apple' in l), '')
+    note('FALE-E2E ocr apple ok' in ocr_line, 'Apple-Texterkennung', ocr_line.split('FALE-E2E ocr apple', 1)[-1].strip() if ocr_line else 'keine Meldung')
     for wid in ('overlay-pdf', 'vat-calculator'):   # web tools in the app frame (js/webtools/host.js logs when they run)
         ok_w = has(f'FaLe Web-Werkzeug bereit: {wid}')
         note(ok_w, f'Web-Werkzeug {wid}', 'läuft im App-Rahmen' if ok_w else ' | '.join(l for l in lines if 'Web-Werkzeug' in l)[-400:] or 'keine Meldung')

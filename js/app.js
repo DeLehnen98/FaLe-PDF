@@ -89,6 +89,12 @@ async function route() {
   }
   const { parts, params } = parseHash();
   const top = parts[0] || 'start';
+  // iOS simulator test (scripts/ios-e2e/run.py): Apple's text recognition reads a drawn test card, then home
+  if (top === 'e2e' && parts[1] === 'ocr') {
+    import('./ocr/native.js').then(m => m.selfTest()).catch(e => console.error('FALE-E2E ocr apple failed: ' + e.message));
+    location.replace('#/start');
+    return;
+  }
   const key = location.hash || '#/start';
   if (navStack.length > 1 && navStack[navStack.length - 2] === key) navStack.pop();
   else if (navStack[navStack.length - 1] !== key) navStack.push(key);
