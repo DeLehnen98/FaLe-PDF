@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Rapport de transmission enregistré.",
   "ins Ausland, meist 4–10 Werktage": "à l’étranger, généralement 4 à 10 jours ouvrés",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Touchez l’endroit du document où le texte doit apparaître.",
+  "Blatt ausrichten": "Redresser la feuille",
+  "Fotos von Papier gerade ausrichten": "Redresser les photos de papier",
+  "{0} von {1} gerade ausgerichtet": "{0} sur {1} redressées",
+  "Nichts auszurichten gefunden": "Rien à redresser",
+  "Ecken selbst anpassen": "Ajuster les coins vous-même",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Vérifiez les coins, redressez, enregistrez comme nouveau PDF",
+  "Seiten werden vorbereitet …": "Préparation des pages …",
+  "Seite {n} von {total} …": "Page {n} sur {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Les {n} premières pages ont été reprises.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Bords de la feuille détectés sur {n} pages sur {total} – vérifiez les coins et touchez « Enregistrer le PDF ».",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Aucun bord de feuille détecté – faites glisser les coins avec le doigt jusqu’aux bords de la feuille.",
+  "Die Seiten konnten nicht geladen werden.": "Les pages n’ont pas pu être chargées.",
+  "Blatt gerade ausrichten": "Redresser la feuille",
+  "{name} (ausgerichtet)": "{name} (redressé)",
 };
 
 export const defaultValues = {

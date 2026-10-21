@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "전송 보고서를 저장했습니다.",
   "ins Ausland, meist 4–10 Werktage": "해외, 보통 영업일 4~10일",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "문서에서 텍스트를 넣을 위치를 탭하세요.",
+  "Blatt ausrichten": "용지 바르게 펴기",
+  "Fotos von Papier gerade ausrichten": "종이 사진 바르게 펴기",
+  "{0} von {1} gerade ausgerichtet": "{1}개 중 {0}개를 바르게 폈습니다",
+  "Nichts auszurichten gefunden": "바르게 할 것이 없습니다",
+  "Ecken selbst anpassen": "모서리 직접 조정",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "모서리를 확인하고 바르게 편 뒤 새 PDF로 저장",
+  "Seiten werden vorbereitet …": "페이지 준비 중 …",
+  "Seite {n} von {total} …": "{total}페이지 중 {n}페이지 …",
+  "Die ersten {n} Seiten wurden übernommen.": "처음 {n}페이지를 가져왔습니다.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "{total}페이지 중 {n}페이지에서 용지 가장자리를 찾았습니다 – 모서리를 확인하고 “PDF 저장”을 누르세요.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "용지 가장자리를 찾지 못했습니다 – 손가락으로 모서리를 용지 가장자리까지 끌어 주세요.",
+  "Die Seiten konnten nicht geladen werden.": "페이지를 불러오지 못했습니다.",
+  "Blatt gerade ausrichten": "용지 바르게 펴기",
+  "{name} (ausgerichtet)": "{name} (바르게 폄)",
 };
 
 export const defaultValues = {

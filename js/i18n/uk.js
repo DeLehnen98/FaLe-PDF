@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Звіт про передачу збережено.",
   "ins Ausland, meist 4–10 Werktage": "за кордон, зазвичай 4–10 робочих днів",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Торкніться місця в документі, де має бути текст.",
+  "Blatt ausrichten": "Вирівняти аркуш",
+  "Fotos von Papier gerade ausrichten": "Вирівнювати фото паперу",
+  "{0} von {1} gerade ausgerichtet": "Вирівняно {0} з {1}",
+  "Nichts auszurichten gefunden": "Нічого вирівнювати",
+  "Ecken selbst anpassen": "Налаштувати кути вручну",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Перевірте кути, вирівняйте, збережіть як новий PDF",
+  "Seiten werden vorbereitet …": "Підготовка сторінок …",
+  "Seite {n} von {total} …": "Сторінка {n} з {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Взято перші {n} сторінок.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Краї аркуша знайдено на {n} з {total} сторінок – перевірте кути й торкніться «Зберегти PDF».",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Краї аркуша не знайдено – перетягніть кути пальцем до країв аркуша.",
+  "Die Seiten konnten nicht geladen werden.": "Не вдалося завантажити сторінки.",
+  "Blatt gerade ausrichten": "Вирівняти аркуш",
+  "{name} (ausgerichtet)": "{name} (вирівняно)",
 };
 
 export const defaultValues = {

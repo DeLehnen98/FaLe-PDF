@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Raport z transmisji zapisany.",
   "ins Ausland, meist 4–10 Werktage": "za granicę, zwykle 4–10 dni roboczych",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Stuknij miejsce w dokumencie, w którym ma się znaleźć tekst.",
+  "Blatt ausrichten": "Wyprostuj kartkę",
+  "Fotos von Papier gerade ausrichten": "Prostuj zdjęcia kartek",
+  "{0} von {1} gerade ausgerichtet": "Wyprostowano {0} z {1}",
+  "Nichts auszurichten gefunden": "Nie znaleziono nic do wyprostowania",
+  "Ecken selbst anpassen": "Dopasuj rogi samodzielnie",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Sprawdź rogi, wyprostuj, zapisz jako nowy PDF",
+  "Seiten werden vorbereitet …": "Przygotowywanie stron …",
+  "Seite {n} von {total} …": "Strona {n} z {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Przejęto pierwsze {n} stron.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Krawędzie kartki znalezione na {n} z {total} stron – sprawdź rogi i dotknij „Zapisz PDF”.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Nie znaleziono krawędzi – przeciągnij rogi palcem do krawędzi kartki.",
+  "Die Seiten konnten nicht geladen werden.": "Nie udało się wczytać stron.",
+  "Blatt gerade ausrichten": "Wyprostuj kartkę",
+  "{name} (ausgerichtet)": "{name} (wyprostowany)",
 };
 
 export const defaultValues = {

@@ -6686,6 +6686,20 @@ export default {
   "Sendebericht gespeichert.": "Transmission report saved.",
   "ins Ausland, meist 4–10 Werktage": "abroad, usually 4–10 working days",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Tap the spot in the document where the text should go.",
+  "Blatt ausrichten": "Straighten sheet",
+  "Fotos von Papier gerade ausrichten": "Straighten photos of paper",
+  "{0} von {1} gerade ausgerichtet": "{0} of {1} straightened",
+  "Nichts auszurichten gefunden": "Nothing to straighten found",
+  "Ecken selbst anpassen": "Adjust corners yourself",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Check the corners, straighten, save as a new PDF",
+  "Seiten werden vorbereitet …": "Preparing pages …",
+  "Seite {n} von {total} …": "Page {n} of {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "The first {n} pages were taken over.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Sheet edges found on {n} of {total} pages – check the corners and tap “Save PDF”.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "No sheet edges found – drag the corners with your finger to the edges of the sheet.",
+  "Die Seiten konnten nicht geladen werden.": "The pages could not be loaded.",
+  "Blatt gerade ausrichten": "Straighten sheet",
+  "{name} (ausgerichtet)": "{name} (straightened)",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

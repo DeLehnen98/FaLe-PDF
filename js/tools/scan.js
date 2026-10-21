@@ -8,7 +8,7 @@ import { resultCard, enableDragReorder, moveItem } from '../components.js';
 import { saveResult } from '../library.js';
 import { loadPdfLib, saveDoc } from '../pdflib.js';
 import { ensureCss, tick, proBadge, updateFoot } from './common.js';
-import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad } from './scanproc.js';
+import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad, straighten, insetQuad, sheetLike } from './scanproc.js';
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 const OCR_KEY = 'fale-scan-ocr';
@@ -48,6 +48,8 @@ async function decode(blob) {
 export async function mount(screen, { idMode = false, qrMode = false, params = null } = {}) {
   // ?ziel=briefkasten|steuer: after saving, the scan goes straight to the Briefkasten-Assistent / Steuer-Belege (js/smart/*)
   const ziel = params && typeof params.get === 'function' ? params.get('ziel') : null;
+  // ?doc=<id>: straighten an existing PDF made from photos („Blatt ausrichten“) – its pages go into the review
+  const fromDoc = params && typeof params.get === 'function' && !idMode && !qrMode ? params.get('doc') : null;
   await ensureCss();
   const isId = !!idMode;
   screen.setTitle(isId ? 'Ausweis scannen' : ziel === 'briefkasten' ? 'Brief scannen' : ziel === 'steuer' ? 'Beleg scannen' : 'Scanner', isId ? 'Vorder- und Rückseite auf eine A4-Seite' : 'Dokumente mit der Kamera erfassen');
@@ -871,8 +873,49 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
     finally { prog.done(); if (ocr) ocr.panel.close(); btn.disabled = false; }
   }
 
+  /** Pages of a PDF from the library (photos of paper) → scanner pages with detected corners → review. */
+  async function startFromDoc(id) {
+    screen.setTitle('Blatt ausrichten', 'Ecken prüfen, gerade ziehen, als neue PDF speichern');
+    const prog = progress('Seiten werden vorbereitet …');
+    try {
+      const [{ getDocBytes }, db, { loadPdf, renderPage }] = await Promise.all([import('../library.js'), import('../db.js'), import('../pdfcore.js')]);
+      const meta = await db.getDoc(id);
+      const { pdf } = await loadPdf(await getDocBytes(id), { name: meta ? meta.name : '', key: id });
+      const n = Math.min(pdf.numPages, 30);
+      for (let i = 1; i <= n && alive; i++) {
+        prog.set(t('Seite {n} von {total} …', { n: i, total: n }));
+        const page = await pdf.getPage(i);
+        const vp = page.getViewport({ scale: 1 });
+        let canvas = await renderPage(page, { scale: Math.min(4, 2400 / Math.max(vp.width, vp.height)) });
+        // the sheet fills the photo (no edges): turn it by the tilt of the text lines first
+        const st = await straighten(canvas);
+        if (st.how === 'tilt') { canvas.width = canvas.height = 0; canvas = st.canvas; }
+        const blob = await canvasToBlobP(canvas, 'image/jpeg', 0.92);
+        canvas.width = canvas.height = 0;
+        const pg = await addImage(blob);
+        if (pg.detected && sheetLike(pg.quad, pg.w, pg.h)) { pg.quad = insetQuad(pg.quad); pg.auto = pg.quad; }
+        else if (pg.detected) { pg.quad = FULL_QUAD.map(p => p.slice()); pg.auto = null; pg.detected = false; } // a band or reflection, not the sheet
+        pg.filter = 'original'; // the photo as it is – the person picks „Verbessert“ / „Schwarzweiß“ if wanted
+        await tick();
+      }
+      if (pdf.numPages > n) toast(t('Die ersten {n} Seiten wurden übernommen.', { n }), 'info');
+      try { pdf.destroy && pdf.destroy(); } catch { /* ignore */ }
+      const base = String(meta && meta.name || 'Dokument').replace(/\.pdf$/i, '');
+      S.name = t('{name} (ausgerichtet)', { name: base });
+      S.fallback = S.name;
+      if (!alive) return;
+      const found = S.pages.filter(p => p.detected).length;
+      showReview();
+      toast(found ? t('Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.', { n: found, total: S.pages.length })
+        : 'Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.', found ? 'success' : 'info', { timeout: 7000 });
+    } catch (e) {
+      errorToast(e, 'Die Seiten konnten nicht geladen werden.');
+      showCapture();
+    } finally { prog.done(); }
+  }
+
   // start
-  showCapture();
+  if (fromDoc) startFromDoc(fromDoc); else showCapture();
   return () => {
     alive = false;
     stopCamera();

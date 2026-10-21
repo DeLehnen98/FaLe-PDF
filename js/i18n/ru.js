@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Отчёт о передаче сохранён.",
   "ins Ausland, meist 4–10 Werktage": "за границу, обычно 4–10 рабочих дней",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Нажмите на место в документе, где должен быть текст.",
+  "Blatt ausrichten": "Выровнять лист",
+  "Fotos von Papier gerade ausrichten": "Выравнивать фото бумаги",
+  "{0} von {1} gerade ausgerichtet": "Выровнено {0} из {1}",
+  "Nichts auszurichten gefunden": "Нечего выравнивать",
+  "Ecken selbst anpassen": "Настроить углы вручную",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Проверьте углы, выровняйте, сохраните как новый PDF",
+  "Seiten werden vorbereitet …": "Подготовка страниц …",
+  "Seite {n} von {total} …": "Страница {n} из {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Взяты первые {n} страниц.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Края листа найдены на {n} из {total} страниц – проверьте углы и нажмите «Сохранить PDF».",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Края листа не найдены – перетащите углы пальцем к краям листа.",
+  "Die Seiten konnten nicht geladen werden.": "Не удалось загрузить страницы.",
+  "Blatt gerade ausrichten": "Выровнять лист",
+  "{name} (ausgerichtet)": "{name} (выровнено)",
 };
 
 export const defaultValues = {

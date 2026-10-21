@@ -19,14 +19,15 @@ function loadImage(url) {
   });
 }
 
-/** Normalise an image: applies EXIF orientation (via the browser), limits size; returns {bytes, type, w, h}. */
-async function prepare(item) {
+/** Normalise an image: applies EXIF orientation (via the browser), limits size; returns {bytes, type, w, h}.
+ *  `straight`: a photo of paper → find the sheet and straighten it (js/tools/scanproc.js straighten). */
+async function prepare(item, { straight = false } = {}) {
   if (item.file) await assertImageBlob(item.file); // dimension bombs are rejected before decoding
   const img = await loadImage(item.url);
   let w = img.naturalWidth, hgt = img.naturalHeight;
   if (!w || !hgt) throw new Error('leeres Bild');
   const isPng = item.file.type === 'image/png';
-  if (isPng && Math.max(w, hgt) <= MAX_DIM) {
+  if (isPng && Math.max(w, hgt) <= MAX_DIM && !straight) {
     return { bytes: new Uint8Array(await item.file.arrayBuffer()), type: 'png', w, h: hgt };
   }
   const f = Math.min(1, MAX_DIM / Math.max(w, hgt));
@@ -37,9 +38,14 @@ async function prepare(item) {
   ctx.fillStyle = '#fff';
   ctx.fillRect(0, 0, w, hgt);
   ctx.drawImage(img, 0, 0, w, hgt);
-  const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.9));
+  let outCanvas = canvas, how = 'none';
+  if (straight) {
+    const st = await (await import('./scanproc.js')).straighten(canvas);
+    outCanvas = st.canvas; how = st.how;
+  }
+  const blob = await new Promise(r => outCanvas.toBlob(r, 'image/jpeg', 0.9));
   if (!blob) throw new Error('Kodierung fehlgeschlagen');
-  return { bytes: new Uint8Array(await blob.arrayBuffer()), type: 'jpg', w, h: hgt };
+  return { bytes: new Uint8Array(await blob.arrayBuffer()), type: 'jpg', w: outCanvas.width, h: outCanvas.height, how };
 }
 
 /**
@@ -48,15 +54,16 @@ async function prepare(item) {
  * @param {{pageSize?: 'fit'|'a4', onProgress?: (i:number, n:number) => void}} [opts]
  * @returns {Promise<{bytes: Uint8Array, skipped: number, pages: number}>}
  */
-export async function imagesToPdf(files, { pageSize = 'fit', onProgress = null, title = 'Bilder' } = {}) {
+export async function imagesToPdf(files, { pageSize = 'fit', onProgress = null, title = 'Bilder', straight = false } = {}) {
   const { PDFDocument } = await loadPdfLib();
   const out = await PDFDocument.create();
-  let skipped = 0;
+  let skipped = 0, straightened = 0;
   for (let i = 0; i < files.length; i++) {
     if (onProgress) onProgress(i + 1, files.length);
     const item = { file: files[i], url: URL.createObjectURL(files[i]) };
     let prep;
-    try { prep = await prepare(item); } catch (e) { console.warn(e); skipped++; continue; } finally { URL.revokeObjectURL(item.url); }
+    try { prep = await prepare(item, { straight }); } catch (e) { console.warn(e); skipped++; continue; } finally { URL.revokeObjectURL(item.url); }
+    if (prep.how && prep.how !== 'none') straightened++;
     const img = prep.type === 'png' ? await out.embedPng(prep.bytes) : await out.embedJpg(prep.bytes);
     if (pageSize === 'fit') {
       // 1 px = 0.75 pt (96 dpi), clamp to sensible page sizes
@@ -78,7 +85,7 @@ export async function imagesToPdf(files, { pageSize = 'fit', onProgress = null, 
   }
   if (!out.getPageCount()) throw Object.assign(new Error('none'), { userMessage: 'Keines der Bilder konnte gelesen werden.' });
   out.setTitle(title);
-  return { bytes: await saveDoc(out), skipped, pages: out.getPageCount() };
+  return { bytes: await saveDoc(out), skipped, pages: out.getPageCount(), straightened };
 }
 
 export async function mount(screen) {
@@ -98,6 +105,7 @@ export async function mount(screen) {
       <button class="btn btn-soft" type="button" data-pick>${icon('image')} Bilder wählen</button>
       <button class="btn btn-soft" type="button" data-cam>${icon('camera')} Foto aufnehmen</button>
       <span class="grow"></span>
+      <label class="check img-straight"><input type="checkbox" data-straight> <span>Fotos von Papier gerade ausrichten</span></label>
       <div class="seg" role="group" aria-label="Seitengröße">
         <button type="button" data-size="fit" aria-pressed="true">An Bild anpassen</button>
         <button type="button" data-size="a4" aria-pressed="false">A4</button>
@@ -112,6 +120,9 @@ export async function mount(screen) {
 
   wrap.querySelector('[data-pick]').addEventListener('click', async () => addFiles(await pickFiles({ accept: 'image/*', multiple: true })));
   wrap.querySelector('[data-cam]').addEventListener('click', async () => addFiles(await pickFiles({ accept: 'image/*', multiple: false, capture: 'environment' })));
+  const straightBox = wrap.querySelector('[data-straight]');
+  try { straightBox.checked = localStorage.getItem('fale-img-straight') === '1'; } catch { /* private mode */ }
+  straightBox.addEventListener('change', () => { try { localStorage.setItem('fale-img-straight', straightBox.checked ? '1' : '0'); } catch { /* private mode */ } });
   wrap.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
     pageSize = b.dataset.size;
     wrap.querySelectorAll('[data-size]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
@@ -143,11 +154,19 @@ export async function mount(screen) {
     makeBtn.disabled = true;
     const prog = progress('Erstelle PDF …');
     try {
-      const { bytes, skipped } = await imagesToPdf(items.map(it => it.file), { pageSize, onProgress: (i, n) => prog.set(`Erstelle PDF … Bild ${i}/${n}`) });
+      const straight = straightBox.checked;
+      const { bytes, skipped, straightened } = await imagesToPdf(items.map(it => it.file), { pageSize, straight, onProgress: (i, n) => prog.set(`Erstelle PDF … Bild ${i}/${n}`) });
       const stamp = new Date().toLocaleDateString('de-DE').replace(/\./g, '-');
       const doc = await saveResult(bytes, `Bilder ${stamp}.pdf`);
       resultBox.innerHTML = '';
-      resultBox.appendChild(resultCard(doc, { title: 'PDF erstellt', note: skipped ? `${skipped} Bild(er) übersprungen` : '' }));
+      const notes = [skipped ? `${skipped} Bild(er) übersprungen` : '', straight ? (straightened ? `${straightened} von ${items.length} gerade ausgerichtet` : 'Nichts auszurichten gefunden') : ''].filter(Boolean);
+      const card = resultCard(doc, { title: 'PDF erstellt', note: notes.join(' · ') });
+      // fine-tune by hand: the scanner with adjustable corners
+      const fix = h(`<button class="btn btn-ghost btn-sm" type="button" data-fix>${icon('scan')} Ecken selbst anpassen</button>`);
+      fix.addEventListener('click', () => { location.hash = `#/werkzeug/scannen?doc=${doc.id}`; });
+      const acts = card.querySelector('.actions');
+      if (acts) acts.appendChild(fix);
+      resultBox.appendChild(card);
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('PDF wurde erstellt.', 'success');
     } catch (e) { errorToast(e, 'PDF konnte nicht erstellt werden.'); }

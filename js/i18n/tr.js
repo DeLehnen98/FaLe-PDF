@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Gönderim raporu kaydedildi.",
   "ins Ausland, meist 4–10 Werktage": "yurt dışı, genellikle 4–10 iş günü",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Metnin olmasını istediğin yere belgede dokun.",
+  "Blatt ausrichten": "Sayfayı düzelt",
+  "Fotos von Papier gerade ausrichten": "Kâğıt fotoğraflarını düzelt",
+  "{0} von {1} gerade ausgerichtet": "{1} fotoğraftan {0} düzeltildi",
+  "Nichts auszurichten gefunden": "Düzeltilecek bir şey bulunamadı",
+  "Ecken selbst anpassen": "Köşeleri kendin ayarla",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Köşeleri kontrol et, düzelt, yeni PDF olarak kaydet",
+  "Seiten werden vorbereitet …": "Sayfalar hazırlanıyor …",
+  "Seite {n} von {total} …": "Sayfa {n} / {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "İlk {n} sayfa alındı.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "{total} sayfanın {n} tanesinde kâğıt kenarları bulundu – köşeleri kontrol et ve “PDF’yi kaydet”e dokun.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Kâğıt kenarı bulunamadı – köşeleri parmağınla kâğıdın kenarlarına sürükle.",
+  "Die Seiten konnten nicht geladen werden.": "Sayfalar yüklenemedi.",
+  "Blatt gerade ausrichten": "Sayfayı düzelt",
+  "{name} (ausgerichtet)": "{name} (düzeltilmiş)",
 };
 
 export const defaultValues = {

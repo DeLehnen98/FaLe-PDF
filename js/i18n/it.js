@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Rapporto di trasmissione salvato.",
   "ins Ausland, meist 4–10 Werktage": "all’estero, di solito 4–10 giorni lavorativi",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Tocca il punto del documento in cui deve andare il testo.",
+  "Blatt ausrichten": "Raddrizza foglio",
+  "Fotos von Papier gerade ausrichten": "Raddrizza le foto di fogli",
+  "{0} von {1} gerade ausgerichtet": "{0} di {1} raddrizzate",
+  "Nichts auszurichten gefunden": "Niente da raddrizzare",
+  "Ecken selbst anpassen": "Regola gli angoli da solo",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Controlla gli angoli, raddrizza, salva come nuovo PDF",
+  "Seiten werden vorbereitet …": "Preparazione delle pagine …",
+  "Seite {n} von {total} …": "Pagina {n} di {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Sono state riprese le prime {n} pagine.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Bordi del foglio trovati su {n} pagine su {total} – controlla gli angoli e tocca «Salva PDF».",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Nessun bordo trovato – trascina gli angoli con il dito fino ai bordi del foglio.",
+  "Die Seiten konnten nicht geladen werden.": "Impossibile caricare le pagine.",
+  "Blatt gerade ausrichten": "Raddrizza foglio",
+  "{name} (ausgerichtet)": "{name} (raddrizzato)",
 };
 
 export const defaultValues = {

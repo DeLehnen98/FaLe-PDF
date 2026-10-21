@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Informe de transmisión guardado.",
   "ins Ausland, meist 4–10 Werktage": "al extranjero, normalmente 4–10 días laborables",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Toca el punto del documento donde debe ir el texto.",
+  "Blatt ausrichten": "Enderezar hoja",
+  "Fotos von Papier gerade ausrichten": "Enderezar fotos de papel",
+  "{0} von {1} gerade ausgerichtet": "{0} de {1} enderezadas",
+  "Nichts auszurichten gefunden": "No se encontró nada que enderezar",
+  "Ecken selbst anpassen": "Ajustar las esquinas tú mismo",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Revisa las esquinas, endereza y guarda como PDF nuevo",
+  "Seiten werden vorbereitet …": "Preparando páginas …",
+  "Seite {n} von {total} …": "Página {n} de {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "Se han tomado las primeras {n} páginas.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Bordes de la hoja detectados en {n} de {total} páginas – revisa las esquinas y toca «Guardar PDF».",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "No se detectaron bordes – arrastra las esquinas con el dedo hasta los bordes de la hoja.",
+  "Die Seiten konnten nicht geladen werden.": "No se pudieron cargar las páginas.",
+  "Blatt gerade ausrichten": "Enderezar hoja",
+  "{name} (ausgerichtet)": "{name} (enderezado)",
 };
 
 export const defaultValues = {

@@ -42,9 +42,10 @@ export async function showScanBanner(host, { docId, pdf, isCurrent = () => true 
   host.querySelectorAll('.ocr-banner').forEach(b => b.remove());
   const el = h(`<div class="ocr-banner" role="region" aria-label="Hinweis Texterkennung">${icon('scan')}
     <span>Dieser Scan enthält keinen Text – Text erkennen?</span>
-    <span class="ocr-banner-act"><button class="btn btn-primary btn-sm" type="button" data-ocr-go>Text erkennen</button>
+    <span class="ocr-banner-act"><button class="btn btn-soft btn-sm" type="button" data-straighten>Blatt ausrichten</button><button class="btn btn-primary btn-sm" type="button" data-ocr-go>Text erkennen</button>
     <button class="icon-btn" type="button" data-ocr-x aria-label="Hinweis schließen">${icon('close')}</button></span></div>`);
   el.querySelector('[data-ocr-go]').addEventListener('click', () => { location.hash = `#/werkzeug/durchsuchbar?doc=${docId}&start=1`; });
+  el.querySelector('[data-straighten]').addEventListener('click', () => { location.hash = `#/werkzeug/scannen?doc=${docId}`; });
   el.querySelector('[data-ocr-x]').addEventListener('click', () => {
     try { localStorage.setItem(OFF_KEY(docId), '1'); } catch {}
     el.remove();

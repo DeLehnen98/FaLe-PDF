@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Relatório de transmissão salvo.",
   "ins Ausland, meist 4–10 Werktage": "para o exterior, geralmente 4 a 10 dias úteis",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Toque no ponto do documento onde o texto deve ficar.",
+  "Blatt ausrichten": "Endireitar folha",
+  "Fotos von Papier gerade ausrichten": "Endireitar fotos de papel",
+  "{0} von {1} gerade ausgerichtet": "{0} de {1} endireitadas",
+  "Nichts auszurichten gefunden": "Nada para endireitar",
+  "Ecken selbst anpassen": "Ajustar os cantos manualmente",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Confira os cantos, endireite e salve como novo PDF",
+  "Seiten werden vorbereitet …": "Preparando as páginas …",
+  "Seite {n} von {total} …": "Página {n} de {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "As primeiras {n} páginas foram usadas.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Bordas da folha encontradas em {n} de {total} páginas – confira os cantos e toque em “Salvar PDF”.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Nenhuma borda encontrada – arraste os cantos com o dedo até as bordas da folha.",
+  "Die Seiten konnten nicht geladen werden.": "Não foi possível carregar as páginas.",
+  "Blatt gerade ausrichten": "Endireitar folha",
+  "{name} (ausgerichtet)": "{name} (endireitado)",
 };
 
 export const defaultValues = {

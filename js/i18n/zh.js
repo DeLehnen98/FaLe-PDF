@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "发送报告已保存。",
   "ins Ausland, meist 4–10 Werktage": "寄往国外，通常 4–10 个工作日",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "点按文档中要放置文字的位置。",
+  "Blatt ausrichten": "摆正纸张",
+  "Fotos von Papier gerade ausrichten": "摆正纸张照片",
+  "{0} von {1} gerade ausgerichtet": "已摆正 {0}/{1}",
+  "Nichts auszurichten gefunden": "没有需要摆正的内容",
+  "Ecken selbst anpassen": "自己调整角点",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "检查角点、摆正、另存为新 PDF",
+  "Seiten werden vorbereitet …": "正在准备页面 …",
+  "Seite {n} von {total} …": "第 {n} 页，共 {total} 页 …",
+  "Die ersten {n} Seiten wurden übernommen.": "已采用前 {n} 页。",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "在 {total} 页中的 {n} 页找到了纸张边缘 – 请检查角点，然后点按“保存 PDF”。",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "未找到纸张边缘 – 用手指把角点拖到纸张边缘。",
+  "Die Seiten konnten nicht geladen werden.": "无法加载页面。",
+  "Blatt gerade ausrichten": "摆正纸张",
+  "{name} (ausgerichtet)": "{name}（已摆正）",
 };
 
 export const defaultValues = {

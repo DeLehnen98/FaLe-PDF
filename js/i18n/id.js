@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Laporan pengiriman disimpan.",
   "ins Ausland, meist 4–10 Werktage": "ke luar negeri, biasanya 4–10 hari kerja",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Ketuk tempat di dokumen yang akan diisi teks.",
+  "Blatt ausrichten": "Luruskan lembar",
+  "Fotos von Papier gerade ausrichten": "Luruskan foto kertas",
+  "{0} von {1} gerade ausgerichtet": "{0} dari {1} diluruskan",
+  "Nichts auszurichten gefunden": "Tidak ada yang perlu diluruskan",
+  "Ecken selbst anpassen": "Atur sudut sendiri",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Periksa sudut, luruskan, simpan sebagai PDF baru",
+  "Seiten werden vorbereitet …": "Menyiapkan halaman …",
+  "Seite {n} von {total} …": "Halaman {n} dari {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "{n} halaman pertama diambil.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Tepi lembar ditemukan di {n} dari {total} halaman – periksa sudut lalu ketuk “Simpan PDF”.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Tepi lembar tidak ditemukan – seret sudut dengan jari ke tepi lembar.",
+  "Die Seiten konnten nicht geladen werden.": "Halaman tidak dapat dimuat.",
+  "Blatt gerade ausrichten": "Luruskan lembar",
+  "{name} (ausgerichtet)": "{name} (diluruskan)",
 };
 
 export const defaultValues = {

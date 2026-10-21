@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "Verzendrapport opgeslagen.",
   "ins Ausland, meist 4–10 Werktage": "naar het buitenland, meestal 4–10 werkdagen",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "Tik op de plek in het document waar de tekst moet komen.",
+  "Blatt ausrichten": "Blad rechtzetten",
+  "Fotos von Papier gerade ausrichten": "Foto’s van papier rechtzetten",
+  "{0} von {1} gerade ausgerichtet": "{0} van {1} rechtgezet",
+  "Nichts auszurichten gefunden": "Niets om recht te zetten",
+  "Ecken selbst anpassen": "Hoeken zelf aanpassen",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "Controleer de hoeken, zet recht, sla op als nieuwe pdf",
+  "Seiten werden vorbereitet …": "Pagina’s worden voorbereid …",
+  "Seite {n} von {total} …": "Pagina {n} van {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "De eerste {n} pagina’s zijn overgenomen.",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "Randen van het blad gevonden op {n} van {total} pagina’s – controleer de hoeken en tik op “PDF opslaan”.",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "Geen randen gevonden – sleep de hoeken met je vinger naar de randen van het blad.",
+  "Die Seiten konnten nicht geladen werden.": "De pagina’s konden niet worden geladen.",
+  "Blatt gerade ausrichten": "Blad rechtzetten",
+  "{name} (ausgerichtet)": "{name} (rechtgezet)",
 };
 
 export const defaultValues = {

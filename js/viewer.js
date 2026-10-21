@@ -209,6 +209,7 @@ function wire() {
     showMenu(anchor, [
       { label: 'Text einfügen', icon: 'text', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=text`) },
       { label: 'Unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=sign`) },
+      cur.photo ? { label: 'Blatt gerade ausrichten', icon: 'scan', onClick: () => (location.hash = `#/werkzeug/scannen?doc=${id}`) } : null,
       '-',
       aiMenusHidden() ? null : { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
       { label: 'Lesemodus', icon: 'book', onClick: () => openReflowMode() },
@@ -903,7 +904,7 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
     q('loading').hidden = true;
     syncMarkButton();
     // image-only PDF (scan/photo): offer the text recognition
-    import('./ocr/banner.js').then(m => m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
+    import('./ocr/banner.js').then(m => { m.isImageOnlyPdf(pdf).then(v => { if (cur && cur.pdf === pdf) cur.photo = v; }).catch(() => {}); return m.showScanBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf }); }).catch(() => {});
     // authority form that exists only as XFA: the page shows a placeholder → offer the form screen
     import('./tools/xfaform.js').then(m => m.showXfaBanner(q('stage'), { docId: id, pdf, isCurrent: () => !!cur && cur.pdf === pdf })).catch(() => {});
     // filled in with FaLe („Formular mit Gedächtnis“): the entries can be changed again

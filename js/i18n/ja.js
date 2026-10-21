@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "送信レポートを保存しました。",
   "ins Ausland, meist 4–10 Werktage": "海外宛て、通常 4～10営業日",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "文字を入れたい場所を書類上でタップしてください。",
+  "Blatt ausrichten": "用紙をまっすぐにする",
+  "Fotos von Papier gerade ausrichten": "紙の写真をまっすぐにする",
+  "{0} von {1} gerade ausgerichtet": "{1} 枚中 {0} 枚をまっすぐにしました",
+  "Nichts auszurichten gefunden": "まっすぐにするものはありません",
+  "Ecken selbst anpassen": "角を自分で調整",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "角を確認してまっすぐにし、新しい PDF として保存",
+  "Seiten werden vorbereitet …": "ページを準備しています …",
+  "Seite {n} von {total} …": "{total} ページ中 {n} ページ目 …",
+  "Die ersten {n} Seiten wurden übernommen.": "最初の {n} ページを取り込みました。",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "{total} ページ中 {n} ページで用紙の端を検出しました – 角を確認して「PDF を保存」をタップしてください。",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "用紙の端が見つかりません – 指で角を用紙の端までドラッグしてください。",
+  "Die Seiten konnten nicht geladen werden.": "ページを読み込めませんでした。",
+  "Blatt gerade ausrichten": "用紙をまっすぐにする",
+  "{name} (ausgerichtet)": "{name}（補正済み）",
 };
 
 export const defaultValues = {

@@ -6668,6 +6668,20 @@ export default {
   "Sendebericht gespeichert.": "भेजने की रिपोर्ट सहेज ली गई।",
   "ins Ausland, meist 4–10 Werktage": "विदेश के लिए, आमतौर पर 4–10 कार्यदिवस",
   "Tippe auf die Stelle im Dokument, an der der Text stehen soll.": "दस्तावेज़ में उस जगह पर टैप करें जहाँ टेक्स्ट रखना है।",
+  "Blatt ausrichten": "पन्ना सीधा करें",
+  "Fotos von Papier gerade ausrichten": "कागज़ की फ़ोटो सीधी करें",
+  "{0} von {1} gerade ausgerichtet": "{1} में से {0} सीधी की गईं",
+  "Nichts auszurichten gefunden": "सीधा करने लायक कुछ नहीं मिला",
+  "Ecken selbst anpassen": "कोने खुद ठीक करें",
+  "Ecken prüfen, gerade ziehen, als neue PDF speichern": "कोने जाँचें, सीधा करें, नई PDF के रूप में सेव करें",
+  "Seiten werden vorbereitet …": "पेज तैयार हो रहे हैं …",
+  "Seite {n} von {total} …": "पेज {n} / {total} …",
+  "Die ersten {n} Seiten wurden übernommen.": "पहले {n} पेज लिए गए।",
+  "Blattkanten auf {n} von {total} Seiten erkannt – prüfe die Ecken und tippe auf „PDF speichern“.": "{total} में से {n} पेजों पर पन्ने के किनारे मिले – कोने जाँचें और “PDF सेव करें” पर टैप करें।",
+  "Keine Blattkanten erkannt – zieh die Ecken mit dem Finger an die Ränder des Blatts.": "पन्ने के किनारे नहीं मिले – उँगली से कोनों को पन्ने के किनारों तक खींचें।",
+  "Die Seiten konnten nicht geladen werden.": "पेज लोड नहीं हो सके।",
+  "Blatt gerade ausrichten": "पन्ना सीधा करें",
+  "{name} (ausgerichtet)": "{name} (सीधा किया गया)",
 };
 
 export const defaultValues = {
