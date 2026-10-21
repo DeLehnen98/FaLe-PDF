@@ -7002,6 +7002,9 @@ export default {
   "nein": "no",
   "leer": "empty",
   "angekreuzt": "ticked",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Editable later in FaLe – this is switched on in your settings for every save.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Editable later in FaLe: other programs show the PDF as filled in, in FaLe you can change it again.",
+  "Immer so": "Always",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

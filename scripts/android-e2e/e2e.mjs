@@ -525,6 +525,18 @@ async function main() {
   });
 
   // ---- FaleNetwork web tool in the app frame (js/webtools/host.js): library file in, result back into the library ----
+  // ---- text recognition with the language data packed into the app (the build tools unpack *.gz assets) ----
+  await step('Texterkennung (OCR, Sprachdaten aus der App)', async () => {
+    await closeOverlays();
+    const r = await ev(`const c = document.createElement('canvas'); c.width = 1200; c.height = 420;
+      const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.fillStyle = '#111';
+      g.font = '56px sans-serif'; g.fillText('Vollmacht für Edwin', 60, 130); g.font = '42px sans-serif'; g.fillText('Geburtsdatum: 12.03.1961', 60, 260);
+      const t0 = Date.now(); const { recognize } = await import('/js/ocr/engine.js');
+      const res = await recognize(c, { lang: 'deu+eng' }); return { text: res.text.replace(/\\s+/g, ' ').trim(), ms: Date.now() - t0, engine: res.engine || 'wasm' };`, { timeout: 150000 });
+    if (!/Vollmacht/.test(r.text) || !/1961/.test(r.text)) throw new Error('OCR-Text falsch: ' + r.text.slice(0, 120));
+    return `${r.engine}, ${r.ms} ms: „${r.text.slice(0, 60)}“`;
+  });
+
   await step('Web-Werkzeug im App-Rahmen (PDF in Graustufen)', async () => {
     await closeOverlays();
     const before = (await docs()).length;

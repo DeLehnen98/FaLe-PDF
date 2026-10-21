@@ -6983,6 +6983,9 @@ export default {
   "nein": "tidak",
   "leer": "kosong",
   "angekreuzt": "dicentang",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Bisa diubah nanti di FaLe – ini aktif di pengaturan Anda untuk setiap penyimpanan.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Bisa diubah nanti di FaLe: program lain menampilkan PDF sudah terisi, di FaLe Anda bisa mengubahnya lagi.",
+  "Immer so": "Selalu",
 };
 
 export const defaultValues = {

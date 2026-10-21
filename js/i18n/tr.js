@@ -6983,6 +6983,9 @@ export default {
   "nein": "hayır",
   "leer": "boş",
   "angekreuzt": "işaretli",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Daha sonra FaLe’de düzenlenebilir – bu, ayarlarınızda her kayıt için açık.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Daha sonra FaLe’de düzenlenebilir: Diğer programlar PDF’yi doldurulmuş gösterir, FaLe’de yeniden değiştirebilirsiniz.",
+  "Immer so": "Her zaman",
 };
 
 export const defaultValues = {

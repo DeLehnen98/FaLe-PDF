@@ -24,7 +24,14 @@ export function simdSupported() {
   return simd;
 }
 export const coreUrl = () => (simdSupported() ? CORE_SIMD : CORE_PLAIN);
-export const langFileUrl = code => `${LANG_URL}/${code}.traineddata.gz`;
+/**
+ * Are the language files gzipped here? The Android build tools unpack „*.gz“ assets and drop the extension, so the
+ * Android app ships plain „deu.traineddata“ – asking for „….gz“ there gets the app page instead and the OCR hangs.
+ */
+export function langGzip() {
+  try { return !(window.Capacitor && window.Capacitor.getPlatform && window.Capacitor.getPlatform() === 'android'); } catch { return true; }
+}
+export const langFileUrl = code => `${LANG_URL}/${code}.traineddata${langGzip() ? '.gz' : ''}`;
 
 /** All files one OCR run needs on this device. */
 export function requiredUrls(langs = ['deu', 'eng']) {

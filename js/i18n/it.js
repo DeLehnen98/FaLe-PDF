@@ -6983,6 +6983,9 @@ export default {
   "nein": "no",
   "leer": "vuoto",
   "angekreuzt": "spuntato",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Modificabile in seguito in FaLe – è attivo nelle tue impostazioni per ogni salvataggio.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Modificabile in seguito in FaLe: gli altri programmi mostrano il PDF già compilato, in FaLe puoi modificarlo di nuovo.",
+  "Immer so": "Sempre",
 };
 
 export const defaultValues = {

@@ -6983,6 +6983,9 @@ export default {
   "nein": "ні",
   "leer": "порожньо",
   "angekreuzt": "позначено",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Можна змінити пізніше у FaLe – це ввімкнено у ваших налаштуваннях для кожного збереження.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Можна змінити пізніше у FaLe: інші програми показують PDF заповненим, а у FaLe його можна змінити знову.",
+  "Immer so": "Завжди",
 };
 
 export const defaultValues = {

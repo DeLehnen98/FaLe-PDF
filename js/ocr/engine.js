@@ -12,7 +12,7 @@
 //
 // Workers are reused (1 on phones, up to 2 on desktops) and terminated after a minute idle.
 // Recognition runs in tesseract's web worker, image pre-processing in prep-worker.js.
-import { LIB_URL, WORKER_URL, LANG_URL, coreUrl, canRunNow, approxBytes, mbLabel } from './assets.js';
+import { LIB_URL, WORKER_URL, LANG_URL, coreUrl, langGzip, canRunNow, approxBytes, mbLabel } from './assets.js';
 import { mapToSource, toPgm, preprocess as prepInline } from './prep.js';
 import { assertImageBlob } from '../security.js';
 
@@ -74,7 +74,7 @@ function newEntry(lang) {
       workerPath: WORKER_URL,
       corePath: coreUrl(),
       langPath: LANG_URL,
-      gzip: true,
+      gzip: langGzip(), // plain files in the Android app (js/ocr/assets.js)
       cacheMethod: 'none', // the service worker keeps the files (no second copy in IndexedDB)
       workerBlobURL: false, // same-origin worker script → controlled by the service worker (offline)
       logger: m => { const j = entry.job; if (j && j.onLog) j.onLog(m); },

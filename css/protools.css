@@ -1009,3 +1009,5 @@ html.simple .qt-exp [data-exp="svg"], html.simple [data-exp="svg"] { display: no
 .seal-kennung { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
 @keyframes seal-pop { from { transform: scale(.6); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .seal-status .seal-ic { animation: none; } }
+/* phones: while placing text/date/signature, the bar at the bottom says what to do – no second copy at the top */
+@media (max-width: 700px) { #tool-screen .sign-tools.mode-on .sign-hint { display: none; } }

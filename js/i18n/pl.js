@@ -6983,6 +6983,9 @@ export default {
   "nein": "nie",
   "leer": "puste",
   "angekreuzt": "zaznaczone",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Do edycji później w FaLe – ta opcja jest włączona w ustawieniach dla każdego zapisu.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Do edycji później w FaLe: inne programy pokazują wypełniony PDF, a w FaLe można go znowu zmienić.",
+  "Immer so": "Zawsze",
 };
 
 export const defaultValues = {

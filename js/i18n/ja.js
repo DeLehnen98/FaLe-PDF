@@ -6983,6 +6983,9 @@ export default {
   "nein": "いいえ",
   "leer": "空欄",
   "angekreuzt": "チェック済み",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "あとで FaLe で変更可能 – 設定で保存のたびに有効になっています。",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "あとで FaLe で変更可能：ほかのアプリでは記入済みの PDF として表示され、FaLe では再び変更できます。",
+  "Immer so": "常にこうする",
 };
 
 export const defaultValues = {

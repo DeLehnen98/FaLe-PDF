@@ -6983,6 +6983,9 @@ export default {
   "nein": "नहीं",
   "leer": "खाली",
   "angekreuzt": "चिह्नित",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "बाद में FaLe में बदलने योग्य – यह आपकी सेटिंग्स में हर बार सहेजने के लिए चालू है।",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "बाद में FaLe में बदलने योग्य: दूसरे प्रोग्राम PDF को भरा हुआ दिखाते हैं, FaLe में आप इसे फिर से बदल सकते हैं।",
+  "Immer so": "हमेशा",
 };
 
 export const defaultValues = {

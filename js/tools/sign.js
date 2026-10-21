@@ -222,7 +222,9 @@ export async function mount(screen, { docId, params }) {
         });
         if (!alive) return;
         if (!r.fields.length) {
-          msg.textContent = 'Keine Linien oder Kästchen gefunden. Mit „Text“ und „Häkchen“ schreibst du direkt auf die Seite.';
+          // nothing to make fillable: the card goes away (it would only take room on a phone) – a short note instead
+          offer.remove();
+          toast('Keine Linien oder Kästchen gefunden. Mit „Text“ und „Häkchen“ schreibst du direkt auf die Seite.', 'info', { timeout: 6000 });
           return;
         }
         msg.textContent = `${r.fields.length} Felder gefunden – Formular wird erstellt …`;
@@ -417,6 +419,7 @@ export async function mount(screen, { docId, params }) {
   // ---- modes ----
   function setMode(m) {
     mode = m;
+    tools.classList.toggle('mode-on', !!m && m !== 'form'); // the bar at the bottom says what to do – no second copy at the top (phones)
     $$('[data-mode]', tools).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
     pageInfo.forEach(p => p.el.classList.toggle('placing', !!m && m !== 'form'));
     hint.textContent = {
@@ -710,11 +713,27 @@ export async function mount(screen, { docId, params }) {
   const memBox = h(`<label class="check sign-mem"><input type="checkbox" data-memory ${fm.memoryAuto() || memory ? 'checked' : ''}><span>Später in FaLe änderbar</span></label>`);
   const memInput = $('input', memBox);
   const memOn = () => memInput.checked;
-  let memHint = null;
+  // „Später in FaLe änderbar“ explained: an animated card above the page on wide screens; on a phone a short note at
+  // the bottom instead (the card pushed the page out of sight there)
+  let memHint = null, memToasted = false;
   const { safetyHint } = await import('./safetyhint.js');
+  const narrow = () => window.matchMedia('(max-width: 700px)').matches;
   function showMemHint() {
-    if (memHint && memHint.isConnected) return;
     const auto = fm.memoryAuto();
+    if (narrow()) {
+      if (memToasted) return;
+      memToasted = true;
+      try { if (localStorage.getItem('fale-hint-memory') === 'hidden') return; } catch {}
+      toast(auto ? 'Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.' : 'Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.', 'info', {
+        timeout: 6000,
+        action: auto ? null : { label: 'Immer so', onClick: () => {
+          fm.setMemoryAuto(true);
+          toast('Ab jetzt bleiben ausgefüllte PDFs immer in FaLe änderbar. Ausschalten kannst du das unter „Ich“ → Einstellungen.', 'success', { timeout: 6000 });
+        } },
+      });
+      return;
+    }
+    if (memHint && memHint.isConnected) return;
     memHint = safetyHint('memory', {
       extra: auto ? 'Das ist in deinen Einstellungen für jedes Speichern eingeschaltet.' : '',
       actions: auto ? '' : '<button class="btn btn-ghost btn-sm" type="button" data-sh-auto>Immer so speichern</button>',
@@ -732,7 +751,7 @@ export async function mount(screen, { docId, params }) {
     if (memOn()) showMemHint();
     else if (memHint && memHint.isConnected) memHint.close();
   });
-  if (memOn() && !memory) showMemHint();
+  if (memOn() && !memory && !narrow()) showMemHint();
   // every change bumps `rev`; after saving, the state of that moment counts as saved (the result is a new file,
   // the marks stay on the page so the user can continue) – until the next change
   function markDirty(initial = false) {

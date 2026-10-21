@@ -1,12 +1,13 @@
 """„Papierformular automatisch ausfüllbar“ – Ausfüllen & unterschreiben → „Felder finden“.
-Test forms: tests/suites/paperform/gen_forms.py (flat born-digital form, the same form as crooked noisy scan, a letter).
+Test forms: tests/suites/paperform/gen_forms.py (flat born-digital form, the same form as crooked noisy scan, a letter),
+gen_photo.py (a Vollmacht photographed with a phone: perspective, tilt, uneven warm light, dark table).
 - detection (in the app, offline): every expected field found with the right type, name and place – flat form 14/14,
   scan (OCR on the device) ≥ 13/14, at most one extra field; the letter gets no fields; empty page and a huge page are fine
 - pure helpers: crooked scans are straightened (skew found), OCR mistakes in labels corrected („Or“ → „Ort“)
 - flow: PDF without fields → offer card → „Felder finden“ (progress in the card, page stays responsive) → new file
   „… (ausfüllbar).pdf“ opens with the field list, profile values filled in (Name = family name next to „Vorname“,
   „Ort, Datum“ = place + today), the original stays unchanged; „Speichern“ writes the values onto the right spots
-- cancel during the search: nothing is created; letter: friendly „nothing found“ message, no new file
+- cancel during the search: nothing is created; letter: friendly „nothing found“ note, the card goes away, no new file
 - phone 360 px: card fits, big buttons; no console errors
 Server: node tests/suites/sec/csp_server.mjs 9202 <repo>"""
 import os, sys, json, base64, re, subprocess, time, traceback, datetime
@@ -115,6 +116,21 @@ def run(p):
         check(f'scan: ≥ 13 of 14 fields incl. labels read by OCR ({len(m)}/14)', len(m) >= 13 and r['ocrUsed'], (miss, r['ocrUsed']))
         check('scan: at most one extra field', len(extra) <= 1, extra)
         check('scan: done in < 25 s', r['ms'] < 25000, r['ms'])
+        # a phone photo: perspective, ~2.5° tilt, lamp spot and shadow, warm light, blur, dark table at the edge
+        if not os.path.exists(os.path.join(D, 'photo_form.pdf')):
+            subprocess.run([sys.executable, os.path.join(D, 'gen_photo.py')], check=True)
+        pt = json.load(open(os.path.join(D, 'photo_truth.json'), encoding='utf-8'))['lines']
+        r = page.evaluate(DETECT, [b64(os.path.join(D, 'photo_form.pdf')), {}])
+        got = {norm(f['name']).split(' ')[0]: f for f in r['fields']}
+        ok = []
+        for t in pt:
+            f = got.get(norm(t['name']).split(' ')[0])
+            x0, y0, x1, y1 = t['line']
+            if f and abs(f['x'] - x0) < 15 and abs((f['y'] + f['h']) - min(y0, y1)) < 8 and abs(f['x'] + f['w'] - x1) < 15:
+                ok.append(t['name'])
+        check(f'photo: the four write-on lines found with their labels ({len(ok)}/4)', len(ok) == 4, [(f['name'], round(f['x']), round(f['y'] + f['h'])) for f in r['fields']])
+        check('photo: no fields from rows of bold text or letters', len(r['fields']) == 4, [f['name'] for f in r['fields']])
+        check('photo: signature line is a signature field, date line a text field', any(f['type'] == 'sign' for f in r['fields']) and any(f['name'] == 'Ort, Datum' for f in r['fields']))
         r = page.evaluate(DETECT, [b64(os.path.join(D, 'letter.pdf')), {}])
         check('letter: no fields', len(r['fields']) == 0, r['fields'])
         r = page.evaluate("""async () => { const PDFLib = await (await import('./js/pdflib.js')).loadPdfLib(); const d = await PDFLib.PDFDocument.create();
@@ -203,12 +219,11 @@ def run(p):
         page.locator('.pf-offer [data-pf]').click()
         ok = False
         for _ in range(80):
-            if 'Keine Linien' in page.locator('.pf-offer [data-pf-msg]').inner_text():
+            if page.locator('#toasts .toast', has_text='Keine Linien').count():
                 ok = True; break
             page.wait_for_timeout(250)
-        check('letter: friendly „nothing found“ hint, no new file', ok and len(page.evaluate(FILES)) == before)
-        page.locator('.pf-offer [data-pf-x]').click()
-        check('offer can be closed', page.locator('.pf-offer').count() == 0)
+        check('letter: friendly „nothing found“ note, no new file', ok and len(page.evaluate(FILES)) == before)
+        check('letter: the offer card goes away (no clutter above the page)', page.locator('.pf-offer').count() == 0)
     step('cancel + letter', cancel_and_letter)
     ctx.close()
 

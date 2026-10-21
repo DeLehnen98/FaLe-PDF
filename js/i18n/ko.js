@@ -6983,6 +6983,9 @@ export default {
   "nein": "아니요",
   "leer": "비어 있음",
   "angekreuzt": "체크됨",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "나중에 FaLe에서 수정 가능 – 설정에서 저장할 때마다 켜져 있어요.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "나중에 FaLe에서 수정 가능: 다른 프로그램에서는 작성된 PDF로 보이고, FaLe에서는 다시 바꿀 수 있어요.",
+  "Immer so": "항상",
 };
 
 export const defaultValues = {

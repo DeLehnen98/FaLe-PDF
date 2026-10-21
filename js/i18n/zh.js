@@ -6983,6 +6983,9 @@ export default {
   "nein": "否",
   "leer": "空",
   "angekreuzt": "已勾选",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "稍后可在 FaLe 中修改——您已在设置中为每次保存开启此项。",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "稍后可在 FaLe 中修改：其他程序显示已填写的 PDF，在 FaLe 中您可以再次修改。",
+  "Immer so": "始终如此",
 };
 
 export const defaultValues = {

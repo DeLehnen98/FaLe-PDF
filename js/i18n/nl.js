@@ -6983,6 +6983,9 @@ export default {
   "nein": "nee",
   "leer": "leeg",
   "angekreuzt": "aangevinkt",
+  "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Later bewerkbaar in FaLe – dit staat in je instellingen aan voor elke keer opslaan.",
+  "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Later bewerkbaar in FaLe: andere programma’s tonen de pdf ingevuld, in FaLe kun je hem weer aanpassen.",
+  "Immer so": "Altijd",
 };
 
 export const defaultValues = {
