@@ -419,7 +419,9 @@ export async function mount(screen, { docId, params }) {
   // ---- modes ----
   function setMode(m) {
     mode = m;
-    tools.classList.toggle('mode-on', !!m && m !== 'form'); // the bar at the bottom says what to do – no second copy at the top (phones)
+    // the bar at the bottom says what to do – no second copy at the top (phones). It stays hidden afterwards: showing it
+    // again would push the page down right after the tap, away from the finger
+    if (m && m !== 'form') tools.classList.add('mode-on');
     $$('[data-mode]', tools).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
     pageInfo.forEach(p => p.el.classList.toggle('placing', !!m && m !== 'form'));
     hint.textContent = {

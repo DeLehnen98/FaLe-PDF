@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Do edycji później w FaLe – ta opcja jest włączona w ustawieniach dla każdego zapisu.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Do edycji później w FaLe: inne programy pokazują wypełniony PDF, a w FaLe można go znowu zmienić.",
   "Immer so": "Zawsze",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "Tego pisma nie da się pokazać w formularzu. Pisz literami łacińskimi – na przykład swoje imię i nazwisko tak, jak w paszporcie.",
+  "Alle Antworten löschen?": "Usunąć wszystkie odpowiedzi?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Twoje dotychczasowe odpowiedzi w tym formularzu zostaną usunięte i zaczniesz od początku.",
+  "Löschen & neu beginnen": "Usuń i zacznij od nowa",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Nie udało się odczytać opisu. Sprawdź na obrazku powyżej, co jest napisane przed zaznaczonym polem lub pod nim.",
 };
 
 export const defaultValues = {

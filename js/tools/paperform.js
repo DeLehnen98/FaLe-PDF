@@ -2,7 +2,7 @@
 // Linien, Kästen und Ankreuzkästchen werden gefunden (js/tools/paperscan.js), Beschriftungen kommen aus der Textebene
 // oder – bei Scans – aus der Texterkennung auf dem Gerät. Daraus entstehen echte PDF-Formularfelder.
 // Alles läuft offline; nichts verlässt das Gerät.
-import { renderPage } from '../pdfcore.js';
+import { renderPage, pdfjsLib } from '../pdfcore.js';
 import { inkMask, estimateSkew, findShapes, itemsFromWords, fieldsFromShapes, uniqueNames, fixLabel, knownLabel } from './paperscan.js';
 import { detectFields as detectOnPage, writeFields } from './formfields.js';
 
@@ -26,6 +26,28 @@ export async function textItems(page, base) {
     items.push({ str: it.str, x: Math.min(x, x2), x1: Math.max(x, x2), y: y + size * 0.2, top: y - size * 0.8, size });
   }
   return chars >= 20 ? items : null;
+}
+
+/**
+ * Is all text on the page invisible (render mode 3/7)? That is a text layer added by text recognition on a scan or
+ * photo – it often misses words and carries no layout, so such a page is looked at like a picture.
+ */
+export async function onlyInvisibleText(page) {
+  try {
+    const O = pdfjsLib.OPS;
+    const show = new Set([O.showText, O.showSpacedText, O.nextLineShowText, O.nextLineSetSpacingShowText]);
+    const { fnArray, argsArray } = await page.getOperatorList();
+    let mode = 0, hidden = 0, visible = 0;
+    const stack = [];
+    for (let i = 0; i < fnArray.length; i++) {
+      const fn = fnArray[i];
+      if (fn === O.save) stack.push(mode);
+      else if (fn === O.restore) mode = stack.length ? stack.pop() : 0;
+      else if (fn === O.setTextRenderingMode) mode = argsArray[i][0];
+      else if (show.has(fn)) { if (mode === 3 || mode === 7) hidden++; else if (++visible > 2) return false; }
+    }
+    return hidden > 0 && visible <= 2;
+  } catch { return false; }
 }
 
 /**
@@ -76,6 +98,8 @@ export async function detectPaperFields(pdf, { ocr = true, maxPages = 20, onProg
     const shapes = findShapes(mask, canvas.width, canvas.height, s);
     await yieldUi();
     let items = await textItems(page, base);
+    // a recognised scan: its hidden text layer is incomplete – read the picture like any other scan
+    if (items && await onlyInvisibleText(page)) items = null;
     const hasText = !!items;
     if (!items && ocr && (shapes.lines.length || shapes.cells.length || shapes.checks.length)) {
       onProgress && onProgress({ page: n, total, phase: 'ocr' });
@@ -158,14 +182,35 @@ async function lineLabels(canvas, s, shapes, items, recognize, signal) {
   const top = it => (it.top != null ? it.top : it.y - it.size);
   const g0 = canvas.getContext('2d', { willReadFrequently: true });
   // one strip → words (black on white by the strip's own paper, upscaled, read as one line)
-  const readStrip = async (x0, y0, wPt, hPt, clipX1) => {
+  const readStrip = async (x0, y0, wPt, hPt, clipX1, fit = false) => {
     const sx = Math.round(x0 * s), sy = Math.round(y0 * s), sw = Math.round(wPt * s), sh = Math.round(hPt * s);
     if (sw < 20 || sh < 10 || sx < 0 || sy < 0 || sx + sw > canvas.width || sy + sh > canvas.height) return null;
     const id = g0.getImageData(sx, sy, sw, sh);
     const px = id.data;
-    const isDark = darkTest(px);
+    const dark0 = darkTest(px);
     // the edge of the sheet / a table next to it: columns that are almost all dark are not letters
-    for (let x = 0; x < sw; x++) { let n = 0; for (let y = 0; y < sh; y++) n += isDark((y * sw + x) * 4); if (n > sh * 0.85) for (let y = 0; y < sh; y++) { const i = (y * sw + x) * 4; px[i] = px[i + 1] = px[i + 2] = 255; } }
+    const edge = new Uint8Array(sw);
+    for (let x = 0; x < sw; x++) { let n = 0; for (let y = 0; y < sh; y++) n += dark0((y * sw + x) * 4); if (n > sh * 0.85) { edge[x] = 1; for (let y = 0; y < sh; y++) { const i = (y * sw + x) * 4; px[i] = px[i + 1] = px[i + 2] = 255; } } }
+    const isDark = i => !edge[(i >> 2) % sw] && dark0(i);
+    // the strip starts beyond the sheet (photo background, a table edge): read only the part right of it
+    let lastEdge = -1;
+    for (let x = 0; x < sw * 0.7; x++) if (edge[x]) lastEdge = x;
+    if (lastEdge >= 0) {
+      const cut = lastEdge + 1 + Math.round(2 * s);
+      return sw - cut >= 20 ? readStrip(x0 + cut / s, y0, wPt - cut / s, hPt, clipX1, fit) : null;
+    }
+    if (fit) {
+      // rows close together (small print): keep only the row of letters that ends at the line, not the one above it
+      const rowInk = y => { let n = 0; for (let x = 0; x < sw; x++) n += isDark((y * sw + x) * 4); return n > Math.max(2, sw * 0.01); };
+      let y = sh - 1;
+      while (y >= 0 && !rowInk(y)) y--;
+      const bottom = y;
+      while (y >= 0 && rowInk(y)) y--;
+      if (y >= 0 && bottom - y >= 5) {
+        const top = Math.max(0, y - 1);
+        return readStrip(x0, y0 + top / s, wPt, (bottom + 2 - top) / s + 0.5, clipX1);
+      }
+    }
     let dark = 0;
     for (let i = 0; i < px.length; i += 4) if (isDark(i)) dark++;
     if (dark < 15 || dark > sw * sh * 0.4) return null;
@@ -192,7 +237,8 @@ async function lineLabels(canvas, s, shapes, items, recognize, signal) {
       const r = await recognize(crop, { lang: 'deu+eng', psm: '7', preprocess: false, dpi: s * 72 * k });
       if (signal && signal.aborted) throw abortErr();
       const words = (r.words || []).filter(w => /[A-Za-zÄÖÜäöüß]{2}/.test(w.text) && (w.conf >= 45 || knownLabel(w.text)));
-      if (!words.length) continue;
+      // a caption has a real word in it – „eee“ or „ae“ is noise from a shadow or the row above
+      if (!words.some(w => knownLabel(w.text) || w.text.replace(/[^A-Za-zÄÖÜäöüß]/g, '').length >= 4)) continue;
       const map = (u, v) => [x0 + (u - pad) / (s * k), y0 + (v - pad) / (s * k)];
       const [ax, ay] = map(Math.min(...words.map(w => w.bbox.x0)), Math.min(...words.map(w => w.bbox.y0)));
       const [bx, by] = map(Math.max(...words.map(w => w.bbox.x1)), Math.max(...words.map(w => w.bbox.y1)));
@@ -200,7 +246,8 @@ async function lineLabels(canvas, s, shapes, items, recognize, signal) {
     }
     return null;
   };
-  for (const l of (shapes.lines || []).slice(0, 24)) {
+  // top to bottom, at most 24 lines per page (each costs up to four short readings)
+  for (const l of (shapes.lines || []).slice().sort((a, b) => a.y - b.y).slice(0, 24)) {
     if (signal && signal.aborted) throw abortErr();
     const yLo = Math.max(l.y, l.yr != null ? l.yr : l.y);
     const left = items.some(it => it.x1 <= l.x0 + 3 && l.x0 - it.x1 < 170 && Math.abs((top(it) + it.y) / 2 - (l.y - 6)) < 10);
@@ -208,7 +255,7 @@ async function lineLabels(canvas, s, shapes, items, recognize, signal) {
     if (left || below) continue;
     try {
       // the label in front of the line („Geburtsdatum: ____“) …
-      let it = l.x0 >= 20 ? await readStrip(Math.max(0, l.x0 - 170), Math.max(0, l.y - 15), l.x0 - 1.5 - Math.max(0, l.x0 - 170), 15, l.x0) : null;
+      let it = l.x0 >= 20 ? await readStrip(Math.max(0, l.x0 - 170), Math.max(0, l.y - 15), l.x0 - 1.5 - Math.max(0, l.x0 - 170), 15, l.x0, true) : null;
       // … or the caption under it („Ort, Datum“, „Unterschrift“)
       if (!it) it = await readStrip(l.x0, yLo + 1, Math.min(l.x1 - l.x0, 260), 12, null);
       if (it) out.push(it);

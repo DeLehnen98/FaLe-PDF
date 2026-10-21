@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "나중에 FaLe에서 수정 가능 – 설정에서 저장할 때마다 켜져 있어요.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "나중에 FaLe에서 수정 가능: 다른 프로그램에서는 작성된 PDF로 보이고, FaLe에서는 다시 바꿀 수 있어요.",
   "Immer so": "항상",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "이 문자는 양식에 표시할 수 없습니다. 라틴 문자로 써 주세요. 예를 들어 이름은 여권에 적힌 대로 쓰세요.",
+  "Alle Antworten löschen?": "모든 답변을 삭제할까요?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "이 양식에 대한 지금까지의 답변이 삭제되고 처음부터 다시 시작합니다.",
+  "Löschen & neu beginnen": "삭제하고 다시 시작",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "레이블을 읽을 수 없습니다. 위 그림에서 표시된 칸 앞이나 아래에 무엇이 적혀 있는지 확인하세요.",
 };
 
 export const defaultValues = {

@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Later bewerkbaar in FaLe – dit staat in je instellingen aan voor elke keer opslaan.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Later bewerkbaar in FaLe: andere programma’s tonen de pdf ingevuld, in FaLe kun je hem weer aanpassen.",
   "Immer so": "Altijd",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "Dit schrift kan niet in het formulier worden weergegeven. Schrijf in Latijnse letters – bijvoorbeeld je naam zoals die in je paspoort staat.",
+  "Alle Antworten löschen?": "Alle antwoorden verwijderen?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Je antwoorden voor dit formulier worden verwijderd en je begint opnieuw.",
+  "Löschen & neu beginnen": "Verwijderen en opnieuw beginnen",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Het label kon niet worden gelezen. Kijk in de afbeelding hierboven wat er voor of onder het gemarkeerde veld staat.",
 };
 
 export const defaultValues = {

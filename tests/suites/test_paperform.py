@@ -99,10 +99,11 @@ def run(p):
           const d = g.getImageData(0, 0, 1000, 700).data; const m = S.inkMask(d, 1000, 700);
           const blank = S.inkMask(new Uint8ClampedArray(400 * 300 * 4).fill(255), 400, 300);
           return { skew: S.estimateSkew(m, 1000, 700), blankSkew: S.estimateSkew(blank, 400, 300), blankShapes: S.findShapes(blank, 400, 300, 2),
-                   fix: ['Or', 'Vomame', 'Unterschnft', 'Hallo', 'PLZ'].map(S.fixLabel) }; }""")
+                   fix: ['Or', 'Vomame', 'Unterschnft', 'Hallo', 'PLZ'].map(S.fixLabel), od: ['Or, Datum', 'Qrt Datum', 'Das Datum', 'Ihr Datum'].map(S.fixLabel) }; }""")
         check('skew of a crooked page found (1.2° ± 0.25)', abs(abs(r['skew']) - 1.2) <= 0.25, r['skew'])
         check('blank page: no skew, no shapes', r['blankSkew'] == 0 and not any(r['blankShapes'][k] for k in ('lines', 'cells', 'checks')), r)
         check('OCR label correction', r['fix'] == ['Ort', 'Vorname', 'Unterschrift', 'Hallo', 'PLZ'], r['fix'])
+        check('„Ort, Datum“ misread is fixed, „Das Datum“ stays', r['od'] == ['Ort, Datum', 'Ort, Datum', 'Das Datum', 'Ihr Datum'], r['od'])
         # a photo: level text lines, but the edge of the sheet, a dark table and a fold run at 6° – the text decides
         r2 = page.evaluate("""async () => { const S = await import('./js/tools/paperscan.js');
           const c = document.createElement('canvas'); c.width = 1100; c.height = 1500; const g = c.getContext('2d');

@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Bisa diubah nanti di FaLe – ini aktif di pengaturan Anda untuk setiap penyimpanan.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Bisa diubah nanti di FaLe: program lain menampilkan PDF sudah terisi, di FaLe Anda bisa mengubahnya lagi.",
   "Immer so": "Selalu",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "Tulisan ini tidak dapat ditampilkan di formulir. Tulislah dengan huruf Latin – misalnya namamu seperti tertulis di paspor.",
+  "Alle Antworten löschen?": "Hapus semua jawaban?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Jawabanmu untuk formulir ini akan dihapus dan kamu mulai dari awal.",
+  "Löschen & neu beginnen": "Hapus dan mulai lagi",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Label tidak dapat dibaca. Lihat gambar di atas, apa yang tertulis sebelum atau di bawah kolom yang ditandai.",
 };
 
 export const defaultValues = {

@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "稍后可在 FaLe 中修改——您已在设置中为每次保存开启此项。",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "稍后可在 FaLe 中修改：其他程序显示已填写的 PDF，在 FaLe 中您可以再次修改。",
   "Immer so": "始终如此",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "此文字无法在表格中显示。请使用拉丁字母书写——例如按护照上的写法填写你的姓名。",
+  "Alle Antworten löschen?": "删除所有回答？",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "你在此表格中的回答将被删除，并从头开始。",
+  "Löschen & neu beginnen": "删除并重新开始",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "无法识别标签。请查看上方图片中标记字段前面或下面写的内容。",
 };
 
 export const defaultValues = {

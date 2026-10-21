@@ -231,7 +231,10 @@ export async function readForm({ PDFLib, probe, pdf, textItems }) {
       q.options = (f.options || []).map(v => { const lab = disp.get(String(v)) || String(v); return { value: v, label: lab, gloss: lookup(lab) }; });
       near = nearbyLabel(its, w0.rect, 'left') || nearbyLabel(its, w0.rect, 'above') || nearbyLabel(its, w0.rect, 'inside');
     } else {
-      near = nearbyLabel(its, w0.rect, 'inside') || nearbyLabel(its, w0.rect, 'left') || nearbyLabel(its, w0.rect, 'above');
+      near = nearbyLabel(its, w0.rect, 'inside') || nearbyLabel(its, w0.rect, 'left');
+      // the text above is a guess: a field with a known name („Ort, Datum“) keeps its name unless that text is known too
+      // (otherwise a line of the letter above, or misread text in a photo, would become the question)
+      if (!near) { const ab = nearbyLabel(its, w0.rect, 'above'); near = ab && !(pretty && !isGeneric(f.name) && lookup(pretty) && !lookup(ab)) ? ab : ''; }
     }
     q.near = near;
     q.label = tu || near || pretty || '';

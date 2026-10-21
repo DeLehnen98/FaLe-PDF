@@ -7005,6 +7005,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Editable later in FaLe – this is switched on in your settings for every save.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Editable later in FaLe: other programs show the PDF as filled in, in FaLe you can change it again.",
   "Immer so": "Always",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "This script cannot be shown in the form. Please write in Latin letters – for example your name as it appears in your passport.",
+  "Alle Antworten löschen?": "Delete all answers?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Your answers so far for this form will be deleted and you start from the beginning.",
+  "Löschen & neu beginnen": "Delete & start over",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "The label could not be read. Look at the picture above to see what is written before or under the marked field.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

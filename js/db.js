@@ -136,12 +136,16 @@ export async function deleteDoc(id) {
   changed('docs', id, 'delete');
 }
 
+/** Formular-Lotse answers saved for a document (js/forms/lotse.js) go with the document for good. */
+function dropFormDraft(id) { try { localStorage.removeItem('fale-lotse:' + id); } catch { /* no storage */ } }
+
 /** Remove an entry for good (no Papierkorb) – used e.g. when a file moves into the Tresor. */
 export async function purgeDoc(id) {
   await tx(['docs', 'files', 'texts', 'trash'], 'readwrite', t => {
     ['docs', 'files', 'texts', 'trash'].forEach(s => t.objectStore(s).delete(id));
   });
   await deleteDeviceSetting('origin:' + id);
+  dropFormDraft(id);
   changed('docs', id, 'delete');
 }
 
@@ -167,18 +171,19 @@ export async function restoreFromTrash(id) {
 export async function deleteFromTrash(id) {
   await tx('trash', 'readwrite', t => { t.objectStore('trash').delete(id); });
   await deleteDeviceSetting('origin:' + id);
+  dropFormDraft(id);
 }
 export async function emptyTrash() {
   const ids = (await listTrash()).map(r => r.id);
   await tx('trash', 'readwrite', t => { t.objectStore('trash').clear(); });
-  for (const id of ids) await deleteDeviceSetting('origin:' + id);
+  for (const id of ids) { await deleteDeviceSetting('origin:' + id); dropFormDraft(id); }
 }
 /** Drop Papierkorb entries older than `days`. Returns the number removed. */
 export async function purgeOldTrash(days = 30, now = Date.now()) {
   const limit = now - days * 86400000;
   const old = (await listTrash()).filter(r => r.deletedAt < limit);
   if (old.length) await tx('trash', 'readwrite', t => { old.forEach(r => t.objectStore('trash').delete(r.id)); });
-  for (const r of old) await deleteDeviceSetting('origin:' + r.id);
+  for (const r of old) { await deleteDeviceSetting('origin:' + r.id); dropFormDraft(r.id); }
   return old.length;
 }
 

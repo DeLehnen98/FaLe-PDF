@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "あとで FaLe で変更可能 – 設定で保存のたびに有効になっています。",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "あとで FaLe で変更可能：ほかのアプリでは記入済みの PDF として表示され、FaLe では再び変更できます。",
   "Immer so": "常にこうする",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "この文字はフォームに表示できません。ラテン文字で書いてください。たとえば名前はパスポートの表記どおりに。",
+  "Alle Antworten löschen?": "すべての回答を削除しますか？",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "このフォームへの回答が削除され、最初からやり直します。",
+  "Löschen & neu beginnen": "削除してやり直す",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "ラベルを読み取れませんでした。上の画像で、マークされた欄の前や下に何が書かれているか確認してください。",
 };
 
 export const defaultValues = {

@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "बाद में FaLe में बदलने योग्य – यह आपकी सेटिंग्स में हर बार सहेजने के लिए चालू है।",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "बाद में FaLe में बदलने योग्य: दूसरे प्रोग्राम PDF को भरा हुआ दिखाते हैं, FaLe में आप इसे फिर से बदल सकते हैं।",
   "Immer so": "हमेशा",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "यह लिपि फ़ॉर्म में नहीं दिखाई जा सकती। कृपया लैटिन अक्षरों में लिखें – जैसे अपना नाम वैसा ही जैसा पासपोर्ट में लिखा है।",
+  "Alle Antworten löschen?": "सभी उत्तर हटाएँ?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "इस फ़ॉर्म के आपके अब तक के उत्तर हटा दिए जाएँगे और आप शुरू से शुरू करेंगे।",
+  "Löschen & neu beginnen": "हटाएँ और फिर से शुरू करें",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "लेबल पढ़ा नहीं जा सका। ऊपर की तस्वीर में देखें कि चिह्नित फ़ील्ड के आगे या नीचे क्या लिखा है।",
 };
 
 export const defaultValues = {

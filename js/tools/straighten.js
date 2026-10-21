@@ -27,6 +27,20 @@ export function insetQuad(q, f = 0.022) {
   return q.map(([x, y]) => [x + (cx - x) * f, y + (cy - y) * f]);
 }
 
+/**
+ * Does flattening the photo by this quad give level text lines? A shadow, a fold or the edge of a folder taken for
+ * the sheet's edge looks like a sheet but tilts the result – then the quad is not used.
+ */
+export async function quadKeepsTextLevel(canvas, quad, maxTilt = 1.5) {
+  try {
+    const small = await warp(canvas, quad, { maxSide: 1100 });
+    const img = small.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, small.width, small.height);
+    const a = estimateSkew(inkMask(img.data, small.width, small.height), small.width, small.height, { maxDeg: 8, step: 0.2 });
+    small.width = small.height = 0;
+    return Math.abs(a) <= maxTilt;
+  } catch { return true; }
+}
+
 /** Rotate a canvas by any small angle (degrees, clockwise) – white corners, size grows to fit. */
 export function rotateFree(canvas, deg) {
   if (!deg) return canvas;
@@ -53,7 +67,7 @@ export async function straighten(srcCanvas, { maxSide = 2400 } = {}) {
   const q = det.quad;
   // a quad that is the whole photo (or nearly) is no correction
   const moved = q ? Math.max(...q.map(([x, y], i) => Math.hypot(x - FULL_QUAD[i][0], y - FULL_QUAD[i][1]))) : 0;
-  if (q && moved > 0.015 && sheetLike(q, srcCanvas.width, srcCanvas.height)) {
+  if (q && moved > 0.015 && sheetLike(q, srcCanvas.width, srcCanvas.height) && await quadKeepsTextLevel(srcCanvas, insetQuad(q))) {
     const inset = insetQuad(q);
     return { canvas: await warp(srcCanvas, inset, { maxSide }), how: 'edges', angle: 0, quad: inset };
   }

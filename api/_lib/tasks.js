@@ -47,7 +47,8 @@ function reqStr(v, name, max, { min = 1 } = {}) {
 }
 const optStr = (v, max) => (typeof v === 'string' ? clip(v, max).text : '');
 const pick = (v, allowed, def) => (allowed.includes(v) ? v : def);
-const lang = (v, def = 'de') => (LANGS[v] ? v : def);
+const hasLang = v => typeof v === 'string' && Object.hasOwn(LANGS, v);
+const lang = (v, def = 'de') => (hasLang(v) ? v : def);
 const intIn = (v, min, max, def) => { const n = parseInt(v, 10); return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : def; };
 const note = (truncated, max) => (truncated ? `Der Text war zu lang – verarbeitet wurden nur die ersten ca. ${max.toLocaleString('de-DE')} Zeichen.` : '');
 const langLine = l => `Antworte auf ${LANGS[l]}.`;
@@ -180,7 +181,7 @@ const TASKS = {
     prepare(input, o) {
       const t = reqStr(input.text, 'Text', this.maxInput);
       const target = lang(o.target, 'en');
-      const src = LANGS[o.source] ? ` (Ausgangssprache: ${LANGS[o.source]})` : '';
+      const src = hasLang(o.source) ? ` (Ausgangssprache: ${LANGS[o.source]})` : '';
       return {
         system: `${BASE}\nÜbersetze den Text${src} in die Zielsprache ${LANGS[target]}. Behalte Absätze, Zeilenumbrüche, Aufzählungen, Zahlen und Namen exakt bei. Gib NUR die Übersetzung aus – ohne Kommentar, ohne Anführungszeichen.`,
         user: `<text>\n${t.text}\n</text>`,
@@ -394,7 +395,7 @@ Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten
 Gib für jedes Feld (gleiche id) zurück: „term“ = die Beschriftung, übersetzt auf ${LANGS[l]} (kurz, wie eine Feldbeschriftung; ist das schon die Sprache des Formulars, dann in einfacheren Worten), „explain“ = in 1–2 kurzen, einfachen Sätzen auf ${LANGS[l]}, was dort eingetragen wird und wo man die Angabe findet (z. B. „steht im Bescheid“). Sprich die Person mit „du“ an, wenn die Sprache das kennt. „example“ nur, wenn das Format wichtig ist (z. B. ein Datum), und nur als offensichtlich erfundenes Beispiel – niemals echte Personendaten. „kind“ = Art der Angabe. „form_lang“ = ISO-639-1-Code der Sprache der Beschriftungen.
 Wenn du ein Feld nicht sicher deuten kannst, sag das ehrlich in „explain“ und nenne, wo man nachfragen kann (die Stelle, die das Formular herausgibt). Keine Rechtsberatung.\n${jsonRule(SCHEMAS.form_help)}`,
         user: `<text>\n${data.text}\n</text>`,
-        maxTokens: Math.min(4000, 260 + fields.length * 110),
+        maxTokens: Math.min(7000, 300 + fields.length * 180), // non-Latin scripts need many tokens per field (the app sends ≤ 36)
         truncated: data.truncated, note: '',
       };
     },
@@ -422,7 +423,7 @@ Wenn du ein Feld nicht sicher deuten kannst, sag das ehrlich in „explain“ un
         label: optStr(x && x.label, 160), text: optStr(x && x.text, 600),
       })).filter(x => x.text);
       if (!items.length) throw bad('Keine Antworten');
-      const target = LANGS[o.target] ? o.target : '';
+      const target = hasLang(o.target) ? o.target : '';
       const data = clip(JSON.stringify(items), this.maxInput);
       return {
         system: `${BASE}\nEine Person füllt ein Formular aus und hat einige Antworten in ihrer eigenen Sprache geschrieben. Übersetze jede Antwort (gleiche id) ${target ? `in folgende Sprache: ${LANGS[target]}` : 'in die Sprache der Feldbeschriftungen („label“)'} – knapp und sachlich, so wie man es in ein Formular schreibt. Namen, Zahlen, Daten, Adressen und Abkürzungen bleiben unverändert. Füge nichts hinzu und lass nichts weg. Steht eine Antwort schon in der Zielsprache, gib sie unverändert zurück.\n${jsonRule(SCHEMAS.form_answers)}`,

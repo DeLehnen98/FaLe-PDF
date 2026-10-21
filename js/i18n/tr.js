@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Daha sonra FaLe’de düzenlenebilir – bu, ayarlarınızda her kayıt için açık.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Daha sonra FaLe’de düzenlenebilir: Diğer programlar PDF’yi doldurulmuş gösterir, FaLe’de yeniden değiştirebilirsiniz.",
   "Immer so": "Her zaman",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "Bu yazı formda gösterilemez. Lütfen Latin harfleriyle yaz – örneğin adını pasaportunda yazdığı gibi.",
+  "Alle Antworten löschen?": "Tüm cevaplar silinsin mi?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Bu formdaki cevapların silinecek ve baştan başlayacaksın.",
+  "Löschen & neu beginnen": "Sil ve yeniden başla",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Etiket okunamadı. İşaretli alanın önünde veya altında ne yazdığını yukarıdaki resimde gör.",
 };
 
 export const defaultValues = {

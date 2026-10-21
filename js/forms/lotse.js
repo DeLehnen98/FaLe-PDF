@@ -39,6 +39,18 @@ const ls = {
 const DRAFT = id => 'fale-lotse:' + id;
 const HELP = 'fale-lotse-help'; // AI explanations of labels (no personal data) – reused for the same label later
 const DRAFT_DAYS = 30;
+/** Old drafts (answers can be personal) do not stay on the device: anything older than DRAFT_DAYS goes. */
+function sweepDrafts() {
+  try {
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const k = localStorage.key(i);
+      if (!k || !k.startsWith('fale-lotse:')) continue;
+      let d = null;
+      try { d = JSON.parse(localStorage.getItem(k)); } catch { d = null; }
+      if (!d || d.v !== 1 || Date.now() - (d.at || 0) > DRAFT_DAYS * 864e5) localStorage.removeItem(k);
+    }
+  } catch { /* storage blocked */ }
+}
 const PLACEHOLDER = /^(|-+|–|bitte (aus)?w(ä|ae)hlen.*|please (select|choose).*|auswahl|select|choose)$/i;
 // letters the embedded fonts cannot show (Latin, Greek and Cyrillic work)
 const UNSUPPORTED = /[^\u0000-ɏɐ-˿̀-ͯͰ-ϿЀ-ԯḀ-ỿ -⁯₠-⃏℀-⅏←-⇿−\s]/u;
@@ -96,6 +108,7 @@ export async function mount(screen, { docId }) {
   const tr = {};    // id → { orig, text }  (translated answers)
   const ai = {};    // id → { term, explain, example, kind }  (AI explanations)
   let idx = 0;
+  sweepDrafts();
   let draft = ls.get(DRAFT(docId));
   if (draft && (draft.v !== 1 || Date.now() - (draft.at || 0) > DRAFT_DAYS * 864e5)) { ls.del(DRAFT(docId)); draft = null; }
   const helpCache = ls.get(HELP) || {};
@@ -132,7 +145,11 @@ export async function mount(screen, { docId }) {
     if (q.type === 'checks') return q.required && !q.value.length ? 'Bitte ankreuzen – das ist ein Pflichtfeld.' : null;
     const p = problem(q.rule || { required: q.required }, q.type === 'select' && PLACEHOLDER.test(String(q.value)) ? '' : q.value, q.type);
     if (p) return p;
-    if (q.type === 'text' && UNSUPPORTED.test(String(q.value || ''))) return 'Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – oder lass die Antwort in der Übersicht übersetzen.';
+    if (q.type === 'text' && UNSUPPORTED.test(String(q.value || ''))) {
+      return translatable(kindOf(q)) && !(q.rule && q.rule.kind)
+        ? 'Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – oder lass die Antwort in der Übersicht übersetzen.'
+        : 'Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.';
+    }
     return null;
   };
   const needsTr = q => q.type === 'text' && answered(q) && !tr[q.id] && translatable(kindOf(q)) && !q.rule.kind
@@ -146,7 +163,7 @@ export async function mount(screen, { docId }) {
   screen.extra.appendChild(overviewBtn);
   overviewBtn.addEventListener('click', () => showSummary());
   let onKey = null;
-  const setKey = fn => { if (onKey) window.removeEventListener('keydown', onKey); onKey = fn; if (fn) window.addEventListener('keydown', fn); };
+  const setKey = fn => { if (onKey) window.removeEventListener('keydown', onKey); onKey = alive ? fn : null; if (onKey) window.addEventListener('keydown', onKey); };
 
   // ---- page pictures for the preview (small cache: phones have little memory)
   const pageCache = new Map(); // `${n}@${s}` → canvas
@@ -176,7 +193,7 @@ export async function mount(screen, { docId }) {
     let y0 = Math.max(0, Math.min(H - ch, r.y + r.h / 2 - ch / 2));
     const k = cssW / cw;
     cv.style.width = cssW + 'px';
-    cv.style.height = Math.round(ch * k) + 'px';
+    cv.style.height = 'auto'; // keeps its shape when the screen gets narrower (max-width: 100%)
     cv.width = Math.round(cssW * dpr);
     cv.height = Math.round(ch * k * dpr);
     const s = Math.min(4, Math.ceil((k * dpr) * 4) / 4);
@@ -271,9 +288,17 @@ export async function mount(screen, { docId }) {
     drawHero(cv).catch(() => {});
     $('[data-go]', root).addEventListener('click', () => { if (hasDraft) { applyDraft(); } else { prefill(); idx = 0; } showQ(idx); });
     const nb = $('[data-new]', root);
-    if (nb) nb.addEventListener('click', () => { ls.del(DRAFT(docId)); draft = null; Q.forEach(q => { q.value = Array.isArray(q.initial) ? q.initial.slice() : q.initial; }); Object.keys(src).forEach(k => delete src[k]); Object.keys(tr).forEach(k => delete tr[k]); prefill(); idx = 0; showQ(0); });
+    if (nb) nb.addEventListener('click', async () => {
+      const c = await openDialog({
+        title: 'Alle Antworten löschen?',
+        body: '<p>Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.</p>',
+        actions: [{ label: 'Abbrechen', value: 'cancel', default: true }, { label: 'Löschen & neu beginnen', value: 'ok', kind: 'btn-danger' }],
+      });
+      if (c.value !== 'ok' || !alive) return;
+      ls.del(DRAFT(docId)); draft = null; Q.forEach(q => { q.value = Array.isArray(q.initial) ? q.initial.slice() : q.initial; }); Object.keys(src).forEach(k => delete src[k]); Object.keys(tr).forEach(k => delete tr[k]); prefill(); idx = 0; showQ(0);
+    });
     const ab = $('[data-ai]', root);
-    if (ab) ab.addEventListener('click', async () => { if (await explainUnknown()) showStart(); });
+    if (ab) ab.addEventListener('click', async () => { if (await explainUnknown() && alive) showStart(); });
   }
 
   async function drawHero(cv) {
@@ -337,7 +362,7 @@ export async function mount(screen, { docId }) {
     const a = ai[q.id];
     if (q.gloss) return { term: q.gloss.term, explain: q.gloss.explain, ex: q.gloss.ex, ai: false, other: q.gloss.other };
     if (a) return { term: a.term, explain: a.explain, ex: a.example || '', ai: true, other: false };
-    return { term: q.label || `Feld auf Seite ${q.page}`, explain: '', ex: '', ai: false, other: false, unknown: true };
+    return { term: q.label || `Feld auf Seite ${q.page}`, explain: q.label ? '' : 'Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.', ex: '', ai: false, other: false, unknown: true };
   }
 
   function showQ(i) {
@@ -357,14 +382,14 @@ export async function mount(screen, { docId }) {
       <div class="lotse-q">
         <figure class="lotse-lens"><canvas aria-hidden="true"></canvas><figcaption>Hier im Formular · Seite ${q.page}</figcaption></figure>
         <div class="lotse-ask">
-          <div class="lotse-termrow"><h2 class="lotse-term" id="lq-term"${t.unknown || t.ai ? ' data-no-i18n' : ''}>${esc(t.term)}</h2>
+          <div class="lotse-termrow"><h2 class="lotse-term" id="lq-term"${(t.unknown && q.label) || t.ai ? ' data-no-i18n' : ''}>${esc(t.term)}</h2>
             ${'speechSynthesis' in window ? `<button class="icon-btn lotse-say" type="button" data-say aria-label="Vorlesen" title="Vorlesen">${icon('speaker')}</button>` : ''}</div>
           ${showOrig ? `<p class="lotse-orig"><span>Im Formular:</span> <q data-no-i18n>${esc(q.label)}</q></p>` : ''}
           ${q.required ? '<span class="lotse-req">Pflichtfeld</span>' : ''}
           ${t.other ? `<p class="lotse-other">${icon('info')}<span>Hier geht es nicht um dich, sondern um die Person, die im Formular genannt ist.</span></p>` : ''}
           ${t.explain ? `<p class="lotse-explain" id="lq-explain"${t.ai ? ' data-no-i18n' : ''}>${esc(t.explain)}</p>` : ''}
           ${t.ai ? '<p class="lotse-aibadge">Von der KI erklärt – bitte im Zweifel bei der Stelle nachfragen, die das Formular herausgibt.</p>' : ''}
-          ${t.unknown && !aiOff() ? `<button class="btn btn-soft btn-sm lotse-whatis" type="button" data-ai>${icon('sparkle')} Was bedeutet das? (KI)</button>` : ''}
+          ${t.unknown && q.label && !aiOff() ? `<button class="btn btn-soft btn-sm lotse-whatis" type="button" data-ai>${icon('sparkle')} Was bedeutet das? (KI)</button>` : ''}
           ${exText ? `<p class="lotse-ex"><span>Beispiel:</span> <span data-no-i18n>${esc(exText)}</span></p>` : ''}
           <div class="lotse-input" data-in></div>
           <p class="lotse-msg" data-msg role="status" aria-live="polite" hidden></p>
@@ -522,7 +547,7 @@ export async function mount(screen, { docId }) {
       const v = valueText(q);
       const err = errOf(q);
       return `<li class="lotse-sumrow${err ? ' bad' : ''}"><button type="button" data-q="${i}">
-        <span class="lotse-sumterm"${t.unknown || t.ai ? ' data-no-i18n' : ''}>${esc(t.term)}</span>
+        <span class="lotse-sumterm"${(t.unknown && q.label) || t.ai ? ' data-no-i18n' : ''}>${esc(t.term)}</span>
         <span class="lotse-sumval">${q.type === 'check' && v ? '<span>angekreuzt</span>' : v ? `<span data-no-i18n>${esc(v)}</span>` : q.required ? '<em>Pflichtfeld – noch leer</em>' : '<em>leer</em>'}${tr[q.id] ? ' <span class="lotse-badge">übersetzt</span>' : ''}</span>
         ${err && v ? `<span class="lotse-sumerr">${esc(err)}</span>` : ''}
         ${tr[q.id] ? `<span class="lotse-sumorig" data-no-i18n>${esc(tr[q.id].orig)}</span>` : ''}
@@ -542,7 +567,7 @@ export async function mount(screen, { docId }) {
     $$('[data-undo]', root).forEach(b => b.addEventListener('click', () => { const q = Q[+b.dataset.undo]; q.value = tr[q.id].orig; delete tr[q.id]; save(); showSummary(); }));
     $('[data-back]', root).addEventListener('click', () => showQ(Math.min(idx, Q.length - 1)));
     const tb = $('[data-tr]', root);
-    if (tb) tb.addEventListener('click', async () => { if (await translateAnswers(toTr)) showSummary(); });
+    if (tb) tb.addEventListener('click', async () => { if (await translateAnswers(toTr) && alive) showSummary(); });
     $('[data-write]', root).addEventListener('click', e => writeForm(e.currentTarget));
   }
 
@@ -550,7 +575,7 @@ export async function mount(screen, { docId }) {
   function aiOff() { try { return localStorage.getItem('fale-ai-hidden') === '1'; } catch { return false; } }
 
   async function explainUnknown() {
-    const list = Q.filter(q => q.label && !q.gloss && !ai[q.id]).slice(0, 60);
+    const list = Q.filter(q => q.label && !q.gloss && !ai[q.id]).slice(0, 36); // more: tap again (one answer must fit)
     if (!list.length) return false;
     const r = await openDialog({
       title: 'Beschriftungen erklären lassen?', wide: true,
@@ -567,6 +592,7 @@ export async function mount(screen, { docId }) {
       const C = await import('../ai/client.js');
       const ids = new Map(list.map((q, i) => [`q${i + 1}`, q]));
       const res = await C.runTask('form_help', { fields: list.map((q, i) => ({ id: `q${i + 1}`, label: q.label, options: (q.options || []).map(o => o.label).slice(0, 8) })) }, { lang: myLang });
+      if (!alive) return false;
       const out = res.output || {};
       let n = 0;
       for (const f of out.fields || []) {
@@ -602,6 +628,7 @@ export async function mount(screen, { docId }) {
     try {
       const C = await import('../ai/client.js');
       const res = await C.runTask('form_answers', { items: items.map(({ id, label, text }) => ({ id, label, text })) }, { target });
+      if (!alive) return false;
       let n = 0;
       for (const it of (res.output && res.output.items) || []) {
         const x = items.find(y => y.id === it.id);
@@ -651,8 +678,13 @@ export async function mount(screen, { docId }) {
             form.getTextField(q.names[0]).setText(v || undefined);
           } else if (q.type === 'check') { const cb = form.getCheckBox(q.names[0]); q.value ? cb.check() : cb.uncheck(); }
           else if (q.type === 'checks') q.names.forEach(n => { const cb = form.getCheckBox(n); q.value.includes(n) ? cb.check() : cb.uncheck(); });
-          else if (q.type === 'radio') { if (q.value) form.getRadioGroup(q.names[0]).select(q.value); }
-          else if (q.type === 'select') { if (q.value && !PLACEHOLDER.test(String(q.value))) form.getField(q.names[0]).select(q.value); }
+          else if (q.type === 'radio') { const rg = form.getRadioGroup(q.names[0]); q.value ? rg.select(q.value) : rg.clear(); }
+          else if (q.type === 'select') {
+            const f = form.getField(q.names[0]);
+            if (String(q.value ?? '') === String(q.initial ?? '')) continue; // untouched: a list with several marked entries keeps them all
+            if (q.value && !PLACEHOLDER.test(String(q.value))) f.select(q.value);
+            else if (typeof f.clear === 'function') f.clear(); // „Nichts auswählen“: no old choice stays in the form
+          }
         } catch (e) { console.warn('field', q.id, e); }
       }
       try { form.updateFieldAppearances(font); } catch (e) { console.warn('appearances', e); }

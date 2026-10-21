@@ -40,6 +40,17 @@ export function inkMask(rgba, w, h) {
       mask[y * w + x] = l < bg * 0.8 && l < 225 ? 1 : 0;
     }
   }
+  // thin lines in a dim photo are often only a little darker than the paper: a row that is darker than the paper
+  // a few pixels above AND below it is a thin horizontal stroke (write-on lines; letters are not that thin and long)
+  const thin = new Uint8Array(n);
+  for (let y = 5; y < h - 5; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x, l = lum[i];
+      if (l >= 225) continue;
+      if ((l < lum[i - 3 * w] * 0.9 && l < lum[i + 3 * w] * 0.9) || (l < lum[i - 5 * w] * 0.9 && l < lum[i + 5 * w] * 0.9)) thin[i] = 1;
+    }
+  }
+  mask.thin = thin;
   return mask;
 }
 
@@ -229,6 +240,17 @@ function inkShare(mask, w, x0, y0, x1, y1) {
   for (let y = Math.max(0, y0); y < y1; y++) for (let x = Math.max(0, x0); x < Math.min(w, x1); x++) { n++; ink += mask[y * w + x]; }
   return n ? ink / n : 0;
 }
+/** Ink share of a band that follows a (slightly slanted) stroke: rows `from`…`to` relative to its upper edge (negative = above). */
+function bandShare(mask, w, h, c, from, to, x0, x1) {
+  const len = Math.max(1, c.x1 - c.x0);
+  let ink = 0, n = 0;
+  for (let x = Math.max(0, x0); x < Math.min(w, x1); x++) {
+    const top = c.ya + (c.yb - c.ya) * (x - c.x0) / len; // the stroke's upper edge at this column (ya/yb: top rows at its ends)
+    const a = Math.round(top + from), b = Math.round(top + to);
+    for (let y = Math.max(0, a); y < Math.min(h, b); y++) { n++; ink += mask[y * w + x]; }
+  }
+  return n ? ink / n : 0;
+}
 
 /**
  * Find lines, boxes and checkboxes.
@@ -279,7 +301,9 @@ export function findShapes(mask, w, h, s) {
   for (const c of cells) if (!uniq.some(u => Math.abs(u.x0 - c.x0) < 2 && Math.abs(u.y0 - c.y0) < 2 && Math.abs(u.x1 - c.x1) < 2 && Math.abs(u.y1 - c.y1) < 2)) uniq.push(c);
   // open write-on lines: not part of a box, 40 pt or longer – pieces of slightly slanted lines chained together;
   // a line is free space to write on, so the band just above it is (almost) empty (rows of bold text are not lines)
-  const pieces = mergeH(hRuns(mask, w, h, Math.round(P(10))), Math.max(3, Math.round(P(1.9)))); // write-on lines are thin; a row of bold letters run together is thicker
+  let lm = mask;
+  if (mask.thin) { lm = new Uint8Array(mask.length); for (let i = 0; i < lm.length; i++) lm[i] = mask[i] | mask.thin[i]; }
+  const pieces = mergeH(hRuns(lm, w, h, Math.round(P(10))), Math.max(3, Math.round(P(2.3)))); // write-on lines are thin; a row of bold letters run together is thicker
   const chains = linkH(pieces, Math.max(4, P(7)), Math.max(2, P(1.5)))
     .filter(c => c.x1 - c.x0 >= P(40) && c.x1 - c.x0 < w * 0.97 && Math.abs(c.yb - c.ya) <= (c.x1 - c.x0) * 0.09);
   const onBox = c => [...used].some(u => Math.abs(yc(u) - (c.ya + c.yb) / 2) <= tol + Math.abs(c.yb - c.ya) / 2 && Math.min(u.x1, c.x1) - Math.max(u.x0, c.x0) > (c.x1 - c.x0) * 0.5);
@@ -287,13 +311,28 @@ export function findShapes(mask, w, h, s) {
     const x0 = Math.round(c.x0 + (c.x1 - c.x0) * 0.04), x1 = Math.round(c.x1 - (c.x1 - c.x0) * 0.04);
     // a line stands alone: right above and right below it there is paper (the top or bottom edge of a row of bold
     // letters has letter bodies on one side)
-    const near = inkShare(mask, w, x0, Math.round(c.y0 - P(2.6)), x1, Math.round(c.y0 - P(0.7))) > 0.12 || inkShare(mask, w, x0, Math.round(c.y1 + P(0.7)), x1, Math.round(c.y1 + P(2.6))) > 0.15;
+    // (the bands follow the stroke: a slanted photo line next to a slanted row of letters)
+    const th = Math.max(1, c.y1 - c.y0 - Math.abs(c.yb - c.ya));
+    const near = bandShare(mask, w, h, c, -P(2.6), -P(0.7), x0, x1) > 0.12 || bandShare(mask, w, h, c, th + P(0.7), th + P(2.6), x0, x1) > 0.15;
     // the space to write in (up to ~9 pt above) is free
-    const far = inkShare(mask, w, x0, Math.round(c.y0 - P(9)), x1, Math.round(c.y0 - P(2.2))) > 0.1;
+    const far = bandShare(mask, w, h, c, -P(9), -P(2.2), x0, x1) > 0.1;
     return !near && !far;
   };
+  // free paper above a line (up to ~20 pt): a field must not cover the text of the row above
+  const roomAbove = c => {
+    const x0 = Math.round(c.x0 + (c.x1 - c.x0) * 0.02), x1 = Math.round(c.x1 - (c.x1 - c.x0) * 0.02);
+    let d = Math.round(P(1));
+    const win = Math.max(8, Math.round(P(24)));
+    for (; d < P(20); d++) {
+      // letters over a part of the line count too (a name that reaches over the start of the line)
+      let hit = false;
+      for (let a = x0; a < x1 && !hit; a += Math.round(win / 2)) hit = bandShare(mask, w, h, c, -d - 1, -d, a, Math.min(x1, a + win)) > 0.12;
+      if (hit) break;
+    }
+    return d;
+  };
   let lines = chains.filter(c => !onBox(c) && clearAbove(c) && !V.some(v => (Math.abs(xc(v) - c.x0) <= tol || Math.abs(xc(v) - c.x1) <= tol) && v.y0 <= (c.ya + c.yb) / 2 + tol && v.y1 >= (c.ya + c.yb) / 2 - tol && v.y1 - v.y0 > P(12)))
-    .map(c => ({ x0: c.x0 / s, x1: c.x1 / s, y: c.ya / s, yr: c.yb / s })) // y at the left end (where the label is), yr at the right end
+    .map(c => ({ x0: c.x0 / s, x1: c.x1 / s, y: c.ya / s, yr: c.yb / s, room: roomAbove(c) / s })) // y at the left end (where the label is), yr at the right end
     .filter(l => !uniq.some(c => (Math.abs(l.y - c.y0) < 4 || Math.abs(l.y - c.y1) < 4) && l.x0 >= c.x0 - 4 && l.x1 <= c.x1 + 4))
     .sort((a, b) => (b.x1 - b.x0) - (a.x1 - a.x0))
     .filter((l, i, all) => !all.slice(0, i).some(o => Math.abs(o.y - l.y) < 3 && Math.min(o.x1, l.x1) - Math.max(o.x0, l.x0) > (l.x1 - l.x0) * 0.6))
@@ -391,7 +430,7 @@ export function fieldsFromShapes(shapes, items, { W = 595, H = 842 } = {}) {
     return ix * iy / Math.max(1, Math.min(a.w * a.h, b.w * b.h));
   };
   const add = f => {
-    if (f.w < 12 || f.h < 7) return;
+    if (f.w < 12 || f.h < 6) return;
     if (out.some(o => ovl(o, f) > 0.3)) return;
     out.push(f);
   };
@@ -452,21 +491,30 @@ export function fieldsFromShapes(shapes, items, { W = 595, H = 842 } = {}) {
     // a line in a photo is often a little slanted: the label sits at its left end, the field ends at its highest point
     const yHi = Math.min(l.y, l.yr != null ? l.yr : l.y), yLo = Math.max(l.y, l.yr != null ? l.yr : l.y);
     const lab = leftLabel(l.x0, l.y - 6);
-    const under = items.filter(it => top(it) >= yHi - 1 && top(it) - yLo < 12 && it.x < l.x1 && it.x1 > l.x0 && clean(it.str).length <= 40).sort((p, q) => top(p) - top(q))[0];
+    // (measured where the caption is: a slanted line is lower at one end)
+    const yAt = x => (l.yr == null ? l.y : l.y + (l.yr - l.y) * Math.max(0, Math.min(1, (x - l.x0) / Math.max(1, l.x1 - l.x0))));
+    const under = items.filter(it => top(it) >= yHi - 1 && top(it) - yAt((Math.max(it.x, l.x0) + Math.min(it.x1, l.x1)) / 2) < 10 && it.x < l.x1 && it.x1 > l.x0 && clean(it.str).length <= 40).sort((p, q) => top(p) - top(q))[0];
     const name = clean((lab || under || {}).str || '');
     const type = typeOf(name);
     let hgt = type === 'sign' ? 34 : 18;
     // do not reach into text or another line above
-    const above = Math.max(-Infinity, ...items.filter(it => it.x < l.x1 && it.x1 > l.x0 && it.y <= yHi - 2 && it !== lab).map(it => it.y),
-      ...(shapes.lines || []).filter(o => o !== l && Math.max(o.y, o.yr != null ? o.yr : o.y) < yHi - 4 && o.x0 < l.x1 && o.x1 > l.x0).map(o => Math.max(o.y, o.yr != null ? o.yr : o.y)));
+    const aboveText = Math.max(-Infinity, ...items.filter(it => it.x < l.x1 && it.x1 > l.x0 && it.y <= yHi - 2 && it !== lab).map(it => it.y));
+    const aboveLine = Math.max(-Infinity, ...(shapes.lines || []).filter(o => o !== l && Math.max(o.y, o.yr != null ? o.yr : o.y) < yHi - 4 && o.x0 < l.x1 && o.x1 > l.x0).map(o => Math.max(o.y, o.yr != null ? o.yr : o.y)));
+    const above = Math.max(aboveText, aboveLine);
     if (Number.isFinite(above)) hgt = Math.min(hgt, yHi - above - 1.5);
-    if (hgt < 9) continue;
+    // lines close under each other (a small form, or a sheet photographed from afar): a low field is still a field
+    let minH = aboveLine > aboveText ? 6 : 9;
+    if (l.room != null && l.room - 0.5 < hgt) { hgt = l.room - 0.5; minH = 6; } // text above that was not read
+    if (hgt < minH) continue;
     const x0 = lab && lab.x1 > l.x0 ? lab.x1 + 3 : l.x0; // "Name: ____" written over the start of the line
     add({ type, x: x0, y: yHi - hgt - 0.5, w: l.x1 - x0, h: hgt, name });
   }
   // „Ort, Datum ______    ______“: the line next to the place/date line is where the signature goes
   for (const f of out) {
     if (f.type === 'sign' || f.type === 'check' || /unterschrift|signatur/i.test(f.name) || (f.name && knownLabel(f.name))) continue;
+    // only an unnamed field or a misread signature caption – „Telefon (privat)“ next to „Ort, Datum“ stays what it is
+    const words = String(f.name || '').toLowerCase().match(/\p{L}{3,}/gu) || [];
+    if (words.length && !words.some(w => /unt|ters|schr|chri|sign/.test(w))) continue;
     const od = out.find(o => o !== f && /\bort\b.*datum|datum.*\bort\b/i.test(o.name) && o.x + o.w <= f.x + 4 && Math.abs((o.y + o.h) - (f.y + f.h)) < 8);
     if (od) { f.type = 'sign'; f.name = 'Unterschrift'; if (f.h < 30) { const grow = Math.min(34 - f.h, Math.max(0, f.y - 2)); f.y -= grow; f.h += grow; } }
   }
@@ -492,7 +540,8 @@ function dist(a, b) {
 /** Correct a (recognised) label to a well-known form label when it is one letter off („Or“ → „Ort“, „Vomame“ → „Vorname“). */
 export function fixLabel(str) {
   const t = String(str || '').trim();
-  if (/^\S{2,4},?\s+datum$/i.test(t) && !/^datum/i.test(t)) return 'Ort, Datum'; // „Or, Datum“, „Die, Datum“
+  const od = /^(\S{2,4})(,?)\s+datum$/i.exec(t); // „Or, Datum“, „Qrt Datum“ – not „Das Datum“, „Ihr Datum“
+  if (od && !/^datum/i.test(t) && (od[2] || dist(od[1].toLowerCase(), 'ort') <= 1)) return 'Ort, Datum';
   if (t.length < 2 || t.length > 24) return t;
   const lo = t.toLowerCase();
   let best = null, bd = 9;

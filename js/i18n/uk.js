@@ -6986,6 +6986,11 @@ export default {
   "Später in FaLe änderbar – das ist in deinen Einstellungen für jedes Speichern eingeschaltet.": "Можна змінити пізніше у FaLe – це ввімкнено у ваших налаштуваннях для кожного збереження.",
   "Später in FaLe änderbar: Andere Programme zeigen die PDF fertig ausgefüllt, in FaLe kannst du sie wieder ändern.": "Можна змінити пізніше у FaLe: інші програми показують PDF заповненим, а у FaLe його можна змінити знову.",
   "Immer so": "Завжди",
+  "Diese Schrift kann im Formular nicht dargestellt werden. Bitte schreib mit lateinischen Buchstaben – zum Beispiel deinen Namen so, wie er im Pass steht.": "Це письмо не можна показати у формі. Пиши латинськими літерами – наприклад, своє ім’я так, як у паспорті.",
+  "Alle Antworten löschen?": "Видалити всі відповіді?",
+  "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Твої відповіді в цій формі буде видалено, і ти почнеш спочатку.",
+  "Löschen & neu beginnen": "Видалити й почати знову",
+  "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Підпис не вдалося прочитати. Подивись на зображенні вгорі, що написано перед позначеним полем або під ним.",
 };
 
 export const defaultValues = {

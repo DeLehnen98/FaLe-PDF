@@ -9,7 +9,7 @@ import { saveResult } from '../library.js';
 import { loadPdfLib, saveDoc } from '../pdflib.js';
 import { ensureCss, tick, proBadge, updateFoot } from './common.js';
 import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad } from './scanproc.js';
-import { straighten, insetQuad, sheetLike } from './straighten.js';
+import { straighten, insetQuad, sheetLike, quadKeepsTextLevel } from './straighten.js';
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 const OCR_KEY = 'fale-scan-ocr';
@@ -892,10 +892,11 @@ export async function mount(screen, { idMode = false, qrMode = false, params = n
         const st = await straighten(canvas);
         if (st.how === 'tilt') { canvas.width = canvas.height = 0; canvas = st.canvas; }
         const blob = await canvasToBlobP(canvas, 'image/jpeg', 0.92);
-        canvas.width = canvas.height = 0;
         const pg = await addImage(blob);
-        if (pg.detected && sheetLike(pg.quad, pg.w, pg.h)) { pg.quad = insetQuad(pg.quad); pg.auto = pg.quad; }
-        else if (pg.detected) { pg.quad = FULL_QUAD.map(p => p.slice()); pg.auto = null; pg.detected = false; } // a band or reflection, not the sheet
+        // a band, a reflection or a shadow edge is not the sheet: the flattened page would come out slanted
+        if (pg.detected && sheetLike(pg.quad, pg.w, pg.h) && await quadKeepsTextLevel(canvas, insetQuad(pg.quad))) { pg.quad = insetQuad(pg.quad); pg.auto = pg.quad; }
+        else if (pg.detected) { pg.quad = FULL_QUAD.map(p => p.slice()); pg.auto = null; pg.detected = false; }
+        canvas.width = canvas.height = 0;
         pg.filter = 'original'; // the photo as it is – the person picks „Verbessert“ / „Schwarzweiß“ if wanted
         await tick();
       }

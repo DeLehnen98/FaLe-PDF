@@ -30,6 +30,7 @@ const CASES = [
 const wrong = CASES.filter(([l, id]) => { const r = lookup(l); return !r || r.id !== id; }).map(([l, id]) => `${l} → ${(lookup(l) || {}).id} (want ${id})`);
 check(`glossary: ${CASES.length} real labels map to the right entry`, !wrong.length, wrong.join('; '));
 check('glossary: unknown labels stay unknown (→ AI on request)', ['Mietstufe der Gemeinde', 'Höhe der Zuwendung', 'Text1', ''].every(l => !lookup(l)));
+check('glossary: „Versicherer“ is not the declaration of truth', !lookup('Versicherer') && !lookup('Name des Versicherers') && lookup('Ich versichere die Richtigkeit meiner Angaben').id === 'erklaerung');
 check('glossary: language of the label', lookup('Geburtsdatum').lang === 'de' && lookup('Date of birth').lang === 'en' && lookup('IBAN').lang === null);
 check('glossary: „… des Kindes“ is marked as someone else', lookup('Vorname des Kindes').other === true && lookup("Child's first name").other === true && !lookup('Vorname').other && !lookup('Unterschrift des Kindes').other);
 check('glossary: every entry has a term, an explanation and a kind', ENTRIES.every(e => e.term && e.explain && e.kind && e.de instanceof RegExp));

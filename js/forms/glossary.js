@@ -163,7 +163,7 @@ const G = [
   ['bemerkungen', /bemerkung|anmerkung|^sonstiges$|ergaenzende angaben|zusaetzliche angaben|^hinweise?$/, /remarks|comments|^notes$|additional information/, 'Bemerkungen', 'Platz für alles, was du zusätzlich sagen möchtest. Darf leer bleiben.', 'free', ''],
   ['anlagen', /^anlagen?$|beigefuegt|nachweise/, /attachments|enclosures|supporting documents/, 'Anlagen', 'Papiere, die du mitschickst, zum Beispiel Kopien vom Ausweis oder Gehaltsnachweise.', 'free', ''],
   ['einwilligung', /einwilligung|einverstanden|zustimmung|datenschutz/, /\bconsent\b|i agree/, 'Einwilligung', 'Mit dem Kreuz sagst du, dass du einverstanden bist. Lies vorher, womit.', 'choice', ''],
-  ['erklaerung', /versichere|wahrheitsgemaess|richtigkeit der angaben|nach bestem wissen|erklaerung zur richtigkeit/, /truthful|true and correct|declare that/, 'Erklärung zur Richtigkeit', 'Du bestätigst, dass alle Angaben stimmen. Falsche Angaben können Folgen haben.', 'choice', ''],
+  ['erklaerung', /\bversichere\b|wahrheitsgemaess|richtigkeit der angaben|nach bestem wissen|erklaerung zur richtigkeit/, /truthful|true and correct|declare that/, 'Erklärung zur Richtigkeit', 'Du bestätigst, dass alle Angaben stimmen. Falsche Angaben können Folgen haben.', 'choice', ''],
   ['zutreffendes', /zutreffendes ankreuzen|bitte ankreuzen/, /tick (as )?appropriate|check all that apply/, 'Zutreffendes ankreuzen', 'Mach ein Kreuz bei allem, was für dich stimmt.', 'choice', ''],
   ['ja', /^ja$/, /^yes$/, 'ja', 'Ankreuzen, wenn es zutrifft.', 'choice', ''],
   ['nein', /^nein$/, /^no$/, 'nein', 'Ankreuzen, wenn es nicht zutrifft.', 'choice', ''],
