@@ -40,7 +40,7 @@ async function prepare(item, { straight = false } = {}) {
   ctx.drawImage(img, 0, 0, w, hgt);
   let outCanvas = canvas, how = 'none';
   if (straight) {
-    const st = await (await import('./scanproc.js')).straighten(canvas);
+    const st = await (await import('./straighten.js')).straighten(canvas);
     outCanvas = st.canvas; how = st.how;
   }
   const blob = await new Promise(r => outCanvas.toBlob(r, 'image/jpeg', 0.9));

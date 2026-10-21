@@ -172,7 +172,7 @@ def run(p):
     check('test photo: text tilted as made (≈4°)', abs(abs(tilt_of(cv2.imread(fill))) - 4) < 1, tilt_of(cv2.imread(fill)))
 
     def unit():
-        r = page.evaluate("""async () => { const m = await import('./js/tools/scanproc.js');
+        r = page.evaluate("""async () => { const m = await import('./js/tools/straighten.js');
           return [m.sheetLike([[0.07, 0.55], [0.99, 0.5], [0.98, 0.64], [0.08, 0.69]], 1064, 1465),
                   m.sheetLike([[0.1, 0.08], [0.9, 0.1], [0.88, 0.93], [0.12, 0.9]], 1900, 2400),
                   m.sheetLike([[0.4, 0.4], [0.6, 0.4], [0.6, 0.6], [0.4, 0.6]], 1000, 1400)]; }""")

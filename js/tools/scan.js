@@ -8,7 +8,8 @@ import { resultCard, enableDragReorder, moveItem } from '../components.js';
 import { saveResult } from '../library.js';
 import { loadPdfLib, saveDoc } from '../pdflib.js';
 import { ensureCss, tick, proBadge, updateFoot } from './common.js';
-import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad, straighten, insetQuad, sheetLike } from './scanproc.js';
+import { detectDocument, smallImageData, warp, applyFilter, rotateCanvas, FULL_QUAD, orderQuad } from './scanproc.js';
+import { straighten, insetQuad, sheetLike } from './straighten.js';
 
 const trackStat = (e, n = 1) => { import('../extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
 const OCR_KEY = 'fale-scan-ocr';
