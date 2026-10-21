@@ -11,9 +11,9 @@ OUT.mkdir(parents=True, exist_ok=True)
 VJ = json.loads(Path('/home/claude/FalePDF/network/vercel.json').read_text())
 HDRS = {h['key']: h['value'] for h in VJ['headers'][0]['headers']}
 
-PAGES = ['/', '/apps/pdf/', '/apps/clean/', '/konto/', '/datenschutz/', '/impressum/',
+PAGES = ['/', '/apps/pdf/', '/apps/pdf/unternehmen/', '/en/apps/pdf/business/', '/apps/clean/', '/konto/', '/datenschutz/', '/impressum/',
          '/en/', '/en/apps/pdf/', '/en/apps/clean/', '/en/account/', '/en/privacy/', '/en/imprint/', '/404.html']
-SHOTS = ['/', '/apps/pdf/', '/apps/clean/', '/konto/', '/impressum/', '/en/', '/en/apps/pdf/', '/en/account/', '/404.html']
+SHOTS = ['/', '/apps/pdf/', '/apps/pdf/unternehmen/', '/apps/clean/', '/konto/', '/impressum/', '/en/', '/en/apps/pdf/', '/en/account/', '/404.html']
 fails = []
 def fail(msg): fails.append(msg); print('FAIL', msg)
 

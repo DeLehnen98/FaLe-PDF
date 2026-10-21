@@ -1,4 +1,5 @@
 // Main views: Start, Dateien, Werkzeuge, Suche, Ich/Einstellungen.
+import { blockedLabels } from './policy.js';
 import * as db from './db.js';
 import { $, $$, h, esc, toast, formatSize, confirmDialog, debounce, choosePdfs, errorToast, pickFiles, showMenu } from './ui.js';
 import { importFiles, emitChange, dropThumb } from './library.js';
@@ -746,6 +747,15 @@ async function runSearch(raw) {
 }
 
 // ---------------- Ich / Einstellungen ----------------
+/** „Von deiner Firma eingestellt“: what the IT switched off on this PC (js/policy.js) – nothing when not managed. */
+function policyCard() {
+  const off = blockedLabels();
+  if (!off.length) return '';
+  return `<div class="card policy-card" role="note">${oicon('shield')}<div><strong>Von deiner Firma eingestellt</strong>
+    <span class="muted small"><span>Auf diesem Gerät ausgeschaltet:</span> ${off.map(x => `<span>${esc(x)}</span>`).join(', ')}</span>
+    <span class="muted small">Alles andere läuft wie immer – nur auf deinem Gerät.</span></div></div>`;
+}
+
 export async function renderSettings() {
   const el = viewEl('einstellungen');
   const zoom = await db.getSetting('defaultZoom', 'auto');
@@ -761,6 +771,7 @@ export async function renderSettings() {
       <div><strong>${pName ? esc(pName) : 'Meine Daten'}</strong><span>${profile ? (lsGet('fale-acct', '') === '1' ? 'Für Briefe und Formulare – auf deinem Gerät gespeichert.' : 'Für Briefe und Formulare – nur auf diesem Gerät gespeichert.') : 'Optional: Name und Adresse für automatisch ausgefüllte Briefe hinterlegen.'}</span></div>
       <span class="me-go">${oicon('chevronRight')}</span>
     </a>
+    ${policyCard()}
     <div class="acct-me-box" data-account-me></div>
     <div class="me-links">
       <a class="action-card" href="#/tresor"><span class="tile-ic">${oicon('vault')}</span><span><strong>Privater Tresor</strong><span class="muted small">${vaultN ? `${vaultN} verschlüsselte Datei${vaultN === 1 ? '' : 'en'}` : 'Mit eigener PIN schützen'}</span></span></a>

@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Bu formdaki cevapların silinecek ve baştan başlayacaksın.",
   "Löschen & neu beginnen": "Sil ve yeniden başla",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Etiket okunamadı. İşaretli alanın önünde veya altında ne yazdığını yukarıdaki resimde gör.",
+  "Von deiner Firma eingestellt": "Şirketin tarafından ayarlandı",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "Bulut yapay zekâsı bu cihazda kapalı. Diğer tüm araçlar her zamanki gibi yalnızca cihazında çalışır.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Bulut yapay zekâsı bu cihazda şirketin tarafından kapatıldı.",
+  "Brief per Post und Fax": "Posta ve faksla mektup",
+  "Teilen und Übertragen über das Internet": "İnternet üzerinden paylaşma ve aktarma",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "İnternet üzerinden paylaşma bu cihazda şirketin tarafından kapatıldı.",
+  "Geöffnete Dokumente": "Açık belgeler",
+  "Auf diesem Gerät ausgeschaltet:": "Bu cihazda kapalı:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Diğer her şey her zamanki gibi çalışır – yalnızca cihazında.",
 };
 
 export const defaultValues = {

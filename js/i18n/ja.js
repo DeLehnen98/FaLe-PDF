@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "このフォームへの回答が削除され、最初からやり直します。",
   "Löschen & neu beginnen": "削除してやり直す",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "ラベルを読み取れませんでした。上の画像で、マークされた欄の前や下に何が書かれているか確認してください。",
+  "Von deiner Firma eingestellt": "組織による設定",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "このデバイスではクラウド AI がオフになっています。その他のツールはすべて、これまでどおりお使いのデバイス上だけで動作します。",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "組織によって、このデバイスのクラウド AI はオフにされています。",
+  "Brief per Post und Fax": "郵便とファックスによる送付",
+  "Teilen und Übertragen über das Internet": "インターネット経由の共有と転送",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "組織によって、このデバイスでのインターネット経由の共有はオフにされています。",
+  "Geöffnete Dokumente": "開いているドキュメント",
+  "Auf diesem Gerät ausgeschaltet:": "このデバイスでオフ：",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "その他はすべてこれまでどおり動作します（お使いのデバイス上のみ）。",
 };
 
 export const defaultValues = {

@@ -1,6 +1,7 @@
 // Cloud-KI client: device pseudonym, consent state, quota cache and the request helper.
 // Nothing here talks to the network on app start – only when the user opens an AI screen
 // (anonymous availability check) or actively starts an AI task after giving consent.
+import { blocked } from '../policy.js';
 import { apiBase, outputLang } from './config.js';
 import { isNative, platformName } from '../platform.js';
 import { accessTokenOrNull, accessToken } from '../account/auth.js';
@@ -28,8 +29,8 @@ export class AiError extends Error {
 
 // ---------------------------------------------------------------- state
 export function online() { return typeof navigator === 'undefined' || navigator.onLine !== false; }
-export function cloudDisabled() { return ls.get(K.cloud) === 'off'; }
-export function setCloudDisabled(off) { if (off) ls.set(K.cloud, 'off'); else ls.del(K.cloud); emit('fale:ai-state'); }
+export function cloudDisabled() { return ls.get(K.cloud) === 'off' || blocked('cloudAi'); }
+export function setCloudDisabled(off) { if (!off && blocked('cloudAi')) return; if (off) ls.set(K.cloud, 'off'); else ls.del(K.cloud); emit('fale:ai-state'); }
 export function consent() { try { const c = JSON.parse(ls.get(K.consent) || 'null'); return c && c.v === CONSENT_VERSION ? c : null; } catch { return null; } }
 export function hasConsent() { return !!consent(); }
 export function giveConsent(provider) { ls.set(K.consent, JSON.stringify({ v: CONSENT_VERSION, at: Date.now(), provider: provider || '' })); emit('fale:ai-state'); }

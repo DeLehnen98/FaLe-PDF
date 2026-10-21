@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "As tuas respostas a este formulário serão apagadas e começas do início.",
   "Löschen & neu beginnen": "Apagar e recomeçar",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Não foi possível ler a legenda. Vê na imagem acima o que está escrito antes ou por baixo do campo marcado.",
+  "Von deiner Firma eingestellt": "Definido pela tua empresa",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "A IA na nuvem está desativada neste dispositivo. Todas as outras ferramentas funcionam como sempre, apenas no teu dispositivo.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "A tua empresa desativou a IA na nuvem neste dispositivo.",
+  "Brief per Post und Fax": "Carta por correio e fax",
+  "Teilen und Übertragen über das Internet": "Partilha e transferência pela Internet",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "A tua empresa desativou a partilha pela Internet neste dispositivo.",
+  "Geöffnete Dokumente": "Documentos abertos",
+  "Auf diesem Gerät ausgeschaltet:": "Desativado neste dispositivo:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Tudo o resto funciona como sempre – apenas no teu dispositivo.",
 };
 
 export const defaultValues = {

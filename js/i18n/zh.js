@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "你在此表格中的回答将被删除，并从头开始。",
   "Löschen & neu beginnen": "删除并重新开始",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "无法识别标签。请查看上方图片中标记字段前面或下面写的内容。",
+  "Von deiner Firma eingestellt": "由你的单位设置",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "此设备上的云端 AI 已关闭。其他所有工具照常运行，仅在你的设备上。",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "你的单位已在此设备上关闭云端 AI。",
+  "Brief per Post und Fax": "邮寄信件和传真",
+  "Teilen und Übertragen über das Internet": "通过互联网共享和传输",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "你的单位已在此设备上关闭通过互联网共享。",
+  "Geöffnete Dokumente": "已打开的文档",
+  "Auf diesem Gerät ausgeschaltet:": "此设备上已关闭：",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "其他一切照常运行——仅在你的设备上。",
 };
 
 export const defaultValues = {

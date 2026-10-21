@@ -1,5 +1,6 @@
 // HTTP client for /api/share, /api/sign and /api/transfer + encrypted upload/download helpers.
 // Only ciphertext, opaque headers and capability tokens are ever sent – see js/share/crypto.js.
+import { blocked } from '../policy.js';
 import { apiBase } from '../ai/config.js';
 import { isNative } from '../platform.js';
 import { PDF_ORIGIN } from '../domains.js';
@@ -110,6 +111,7 @@ export function forgetDevice() { ls.del(LS.device); ls.del(LS.token); }
 // ---------------------------------------------------------------- endpoints
 let cfgCache = null;
 export async function shareConfig({ force = false } = {}) {
+  if (blocked('cloudShare')) throw Object.assign(new Error('blocked by policy'), { userMessage: 'Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.' });
   if (cfgCache && !force && Date.now() - cfgCache.at < 300000) return cfgCache.data;
   const data = await call('share', 'config');
   cfgCache = { at: Date.now(), data };

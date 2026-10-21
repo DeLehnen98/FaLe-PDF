@@ -1,5 +1,6 @@
 // Shared UI for the AI features: stylesheet, consent dialog, quota widget, errors, rich text with
 // page citations, saving results. All visible strings are plain German (js/i18n translates them).
+import { blocked as companyBlocked } from '../policy.js';
 import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, openDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
@@ -56,6 +57,7 @@ export async function consentDialog(provider) {
  */
 export async function ensureCloud() {
   if (!C.online()) { toast('Du bist offline. Cloud-KI braucht eine Internetverbindung.', 'error'); return null; }
+  if (companyBlocked('cloudAi')) { toast('Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.', 'info', { timeout: 5000 }); return null; }
   if (C.cloudDisabled()) {
     const r = await openDialog({
       title: 'Cloud-KI ist ausgeschaltet',

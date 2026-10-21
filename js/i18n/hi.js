@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "इस फ़ॉर्म के आपके अब तक के उत्तर हटा दिए जाएँगे और आप शुरू से शुरू करेंगे।",
   "Löschen & neu beginnen": "हटाएँ और फिर से शुरू करें",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "लेबल पढ़ा नहीं जा सका। ऊपर की तस्वीर में देखें कि चिह्नित फ़ील्ड के आगे या नीचे क्या लिखा है।",
+  "Von deiner Firma eingestellt": "आपकी संस्था द्वारा सेट",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "इस डिवाइस पर क्लाउड AI बंद है। बाकी सभी टूल पहले की तरह केवल आपके डिवाइस पर काम करते हैं।",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "आपकी संस्था ने इस डिवाइस पर क्लाउड AI बंद कर दिया है।",
+  "Brief per Post und Fax": "डाक और फ़ैक्स से पत्र",
+  "Teilen und Übertragen über das Internet": "इंटरनेट के ज़रिए साझा करना और भेजना",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "आपकी संस्था ने इस डिवाइस पर इंटरनेट से साझा करना बंद कर दिया है।",
+  "Geöffnete Dokumente": "खुले दस्तावेज़",
+  "Auf diesem Gerät ausgeschaltet:": "इस डिवाइस पर बंद:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "बाकी सब पहले की तरह चलता है – केवल आपके डिवाइस पर।",
 };
 
 export const defaultValues = {

@@ -1,5 +1,6 @@
 // „Brief per Post“: client for /api/post (api/_lib/postal.js) + the list of own letters on this device.
 // The pseudonymous device token comes from js/share/api.js (same as „Sicher teilen“).
+import { blocked } from '../policy.js';
 import { apiBase } from '../ai/config.js';
 import { deviceToken } from '../share/api.js';
 
@@ -46,6 +47,7 @@ async function call(action, json = {}) {
 
 let cfgCache = null;
 export async function postConfig({ force = false } = {}) {
+  if (blocked('post')) return { enabled: false, fax: false, partners: null }; // switched off by the company (js/policy.js)
   if (cfgCache && !force && Date.now() - cfgCache.at < 300000) return cfgCache.data;
   const data = await call('config');
   cfgCache = { at: Date.now(), data };
@@ -57,7 +59,7 @@ export async function postConfig({ force = false } = {}) {
 const ON = 'fale-post-on';
 const FAX_ON = 'fale-fax-on';
 /** Fax: true / false from the last config answer, null when never asked. */
-export function faxKnown() { try { const v = localStorage.getItem(FAX_ON); return v == null ? null : v === '1'; } catch { return null; } }
+export function faxKnown() { if (blocked('post')) return false; try { const v = localStorage.getItem(FAX_ON); return v == null ? null : v === '1'; } catch { return null; } }
 /** {post, fax} configs if available (waits at most `ms`), each null when that way is not set up. */
 export async function sendWays(ms = 2000) {
   try {
@@ -67,7 +69,7 @@ export async function sendWays(ms = 2000) {
   } catch { return { post: postKnown() ? { enabled: true, prices: null } : null, fax: faxKnown() ? { fax: true, prices: null } : null, partners: null }; }
 }
 /** true / false from the last config answer, null when never asked. */
-export function postKnown() { try { const v = localStorage.getItem(ON); return v == null ? null : v === '1'; } catch { return null; } }
+export function postKnown() { if (blocked('post')) return false; try { const v = localStorage.getItem(ON); return v == null ? null : v === '1'; } catch { return null; } }
 /** The config if the service is available (waits at most `ms`, then decides by the last known answer), else null. */
 export async function postAvailable(ms = 2000) {
   const known = postKnown();

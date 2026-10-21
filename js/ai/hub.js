@@ -1,4 +1,5 @@
 // KI-Assistent hub (#/ki), FaLe Plus (#/ki/plus) and KI-Einstellungen (#/ki/einstellungen).
+import { blocked as companyBlocked } from '../policy.js';
 import { showPlus } from '../monetize.js';
 import { $, h, esc, toast, errorToast, confirmDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
@@ -175,6 +176,11 @@ export async function mountSettings(screen) {
   const render = () => {
     const c = C.consent();
     screen.body.innerHTML = '';
+    if (companyBlocked('cloudAi')) {
+      screen.body.appendChild(h(`<div class="screen-inner ai-settings"><div class="card policy-card" role="note">${oicon('shield')}<div><strong>Von deiner Firma eingestellt</strong>
+        <span class="muted small">Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.</span></div></div></div>`));
+      return;
+    }
     const wrap = h(`<div class="screen-inner ai-settings">
       <div class="card settings-group">
         <div class="settings-row"><div class="label"><strong>KI komplett ausblenden</strong><span>Entfernt alle KI-Hinweise, -Karten und -Menüpunkte aus der App. Die Cloud-KI wird dabei ausgeschaltet.</span></div>

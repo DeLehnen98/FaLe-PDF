@@ -7010,6 +7010,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Your answers so far for this form will be deleted and you start from the beginning.",
   "Löschen & neu beginnen": "Delete & start over",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "The label could not be read. Look at the picture above to see what is written before or under the marked field.",
+  "Von deiner Firma eingestellt": "Set by your organisation",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "Cloud AI is switched off on this device. All other tools work as always, only on your device.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Cloud AI has been switched off on this device by your organisation.",
+  "Brief per Post und Fax": "Letters by post and fax",
+  "Teilen und Übertragen über das Internet": "Sharing and transfers over the internet",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Sharing over the internet has been switched off on this device by your organisation.",
+  "Geöffnete Dokumente": "Open documents",
+  "Auf diesem Gerät ausgeschaltet:": "Switched off on this device:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Everything else works as always – only on your device.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

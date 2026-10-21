@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Твої відповіді в цій формі буде видалено, і ти почнеш спочатку.",
   "Löschen & neu beginnen": "Видалити й почати знову",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Підпис не вдалося прочитати. Подивись на зображенні вгорі, що написано перед позначеним полем або під ним.",
+  "Von deiner Firma eingestellt": "Налаштовано твоєю компанією",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "Хмарний ШІ на цьому пристрої вимкнено. Усі інші інструменти працюють як завжди, лише на твоєму пристрої.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Твоя компанія вимкнула хмарний ШІ на цьому пристрої.",
+  "Brief per Post und Fax": "Лист поштою та факс",
+  "Teilen und Übertragen über das Internet": "Надсилання та передавання через інтернет",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Твоя компанія вимкнула надсилання через інтернет на цьому пристрої.",
+  "Geöffnete Dokumente": "Відкриті документи",
+  "Auf diesem Gerät ausgeschaltet:": "Вимкнено на цьому пристрої:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Усе інше працює як завжди – лише на твоєму пристрої.",
 };
 
 export const defaultValues = {

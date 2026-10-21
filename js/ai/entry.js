@@ -5,6 +5,7 @@ import { oicon } from '../office/kinds.js';
 import { loadAiCss } from './ui.js';
 import * as C from './client.js';
 import { aiHidden } from './hidden.js';
+import { blocked as companyBlocked } from '../policy.js';
 
 export const AI_FEATURES = [
   { id: 'chat', title: 'Chat mit Dokument', desc: 'Fragen stellen – Antworten mit klickbaren Seitenangaben.', icon: 'comment', href: '#/ki/chat', doc: true },
@@ -59,6 +60,7 @@ export function renderMeCard(box) {
   loadAiCss();
   if (aiHidden()) {
     box.innerHTML = '';
+    if (companyBlocked('cloudAi')) return; // the „Von deiner Firma eingestellt“ card says it
     box.appendChild(h(`<div class="ai-me"><a class="action-card" href="#/ki/einstellungen"><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI ist ausgeblendet</strong><span class="muted small">Wieder einblenden in den KI-Einstellungen</span></span></a></div>`));
     return;
   }

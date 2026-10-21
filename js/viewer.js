@@ -50,6 +50,7 @@ function buildDom() {
       <button class="icon-btn" type="button" data-v="more" data-cap="Mehr" aria-label="Weitere Aktionen">${icon('more')}</button>
     </div>
   </header>
+  <nav class="v-tabs" data-v="tabs" aria-label="Geöffnete Dokumente" hidden></nav>
   <div class="findbar" data-v="findbar" hidden>
     <input class="input" type="search" data-v="findinput" placeholder="Im Dokument suchen …" aria-label="Suchbegriff" enterkeyhint="search">
     <span class="find-count" data-v="findcount" aria-live="polite"></span>
@@ -148,6 +149,18 @@ function init() {
 function wire() {
   const { eventBus, pdfViewer } = S;
   const el = root();
+
+  // tabs (wide screens): switch with a click, close with × or the middle mouse button
+  q('tabs').addEventListener('click', e => {
+    const x = e.target.closest('[data-tabx]');
+    if (x) { closeTab(x.dataset.tabx); return; }
+    const t = e.target.closest('[data-tab]');
+    if (t && t.dataset.tab !== activeTab) location.hash = `#/ansicht/${t.dataset.tab}`;
+  });
+  q('tabs').addEventListener('auxclick', e => {
+    const t = e.button === 1 && e.target.closest('[data-tab]');
+    if (t) { e.preventDefault(); closeTab(t.dataset.tab); }
+  });
 
   eventBus.on('pagechanging', ({ pageNumber }) => {
     if (!cur) return;
@@ -858,7 +871,9 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
 
   const doc = await db.getDoc(id);
   if (token !== openToken) return;
-  if (!doc) { toast('Dokument nicht gefunden.', 'error'); onCloseRequest(); return; }
+  if (!doc) { tabsSet(tabsGet().filter(t => t.id !== id)); toast('Dokument nicht gefunden.', 'error'); onCloseRequest(); return; }
+  activeTab = id;
+  addTab(doc);
   nameWithBreaks(q('title'), doc.name.replace(/\.pdf$/i, ''));
   q('subtitle').textContent = pagesLabel(doc.pages);
   document.title = `${doc.name} – FaLe PDF`;
@@ -992,6 +1007,42 @@ export async function closeViewer({ keepVisible = false } = {}) {
 }
 
 export function currentDocId() { return cur ? cur.doc.id : null; }
+
+// ---- tabs: the documents opened in this session, like in a desktop PDF program (shown on wide screens only)
+const TABS = 'fale-tabs';
+const MAX_TABS = 12;
+let activeTab = null;
+function tabsGet() { try { const v = JSON.parse(sessionStorage.getItem(TABS) || '[]'); return Array.isArray(v) ? v.filter(t => t && typeof t.id === 'string') : []; } catch { return []; } }
+function tabsSet(list) { try { sessionStorage.setItem(TABS, JSON.stringify(list.slice(-MAX_TABS))); } catch { /* private mode */ } }
+function addTab(doc) {
+  const list = tabsGet();
+  const i = list.findIndex(t => t.id === doc.id);
+  if (i >= 0) list[i].name = doc.name; else list.push({ id: doc.id, name: doc.name });
+  while (list.length > MAX_TABS) list.splice(list.findIndex(t => t.id !== doc.id), 1);
+  tabsSet(list);
+  renderTabs();
+}
+function renderTabs() {
+  const bar = q('tabs');
+  const list = tabsGet();
+  bar.hidden = list.length < 2;
+  bar.innerHTML = list.map(t => `<div class="v-tab${t.id === activeTab ? ' on' : ''}">
+    <button class="v-tab-go" type="button" data-tab="${esc(t.id)}" ${t.id === activeTab ? 'aria-current="page"' : ''} title="${esc(t.name)}" data-no-i18n>${esc(String(t.name).replace(/\.pdf$/i, ''))}</button>
+    <button class="v-tab-x" type="button" data-tabx="${esc(t.id)}" aria-label="Schließen" title="Schließen">${icon('close')}</button></div>`).join('');
+  const on = bar.querySelector('.v-tab.on');
+  if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+function closeTab(id) {
+  const list = tabsGet();
+  const i = list.findIndex(t => t.id === id);
+  if (i < 0) return;
+  list.splice(i, 1);
+  tabsSet(list);
+  if (id !== activeTab) { renderTabs(); return; }
+  const next = list[i] || list[i - 1];
+  if (next) location.hash = `#/ansicht/${next.id}`;
+  else { activeTab = null; renderTabs(); onCloseRequest(); }
+}
 
 /** File name in a narrow title: allowed line breaks before the extension and after - _ . (never "bericht.p|df"). */
 function nameWithBreaks(el, name) {

@@ -457,3 +457,16 @@ a.store-badge:focus-visible { outline: 3px solid var(--focus-ring); outline-offs
 .home-others-h { margin: 28px 0 12px; font-size: 1.125rem; }
 @media (min-width: 900px) { .app-rows-2 { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .task { transition: none; } }
+
+/* Für Firmen: numbered admin steps with policy values */
+.steps-admin { list-style: none; counter-reset: step; display: grid; gap: 14px; padding: 0; max-width: 860px; }
+.steps-admin li { counter-increment: step; position: relative; padding: 16px 16px 16px 60px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); min-width: 0; }
+.steps-admin li::before { content: counter(step); position: absolute; left: 16px; top: 16px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--on-primary); font-weight: 700; }
+.steps-admin h3 { font-size: 1.0625rem; }
+.steps-admin p { color: var(--text-2); margin-top: 4px; }
+.steps-admin code, .faq code { font-size: 0.875em; padding: 1px 5px; border-radius: 5px; background: var(--surface-2, rgba(127,127,127,.12)); overflow-wrap: anywhere; }
+.code { margin: 10px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--surface-2, rgba(127,127,127,.12)); border: 1px solid var(--border); overflow-x: auto; font-size: 0.8125rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code code { padding: 0; background: none; }
+@media (max-width: 560px) { .steps-admin li { padding-left: 16px; padding-top: 56px; } }
+.biz-link { display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; font-weight: 600; }
+.biz-link .ic { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--primary); }

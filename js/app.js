@@ -223,6 +223,16 @@ async function handleIncoming(files, source) {
   }
 }
 
+// Ctrl+O / ⌘O opens files anywhere in the app, like every desktop program (not while a dialog or a tool screen is open)
+function setupOpenShortcut() {
+  window.addEventListener('keydown', e => {
+    if (!(e.ctrlKey || e.metaKey) || e.shiftKey || e.altKey || e.key.toLowerCase() !== 'o') return;
+    if (document.querySelector('dialog[open]') || currentScreen()) return;
+    e.preventDefault();
+    importFromDevice().catch(err => console.warn('open', err));
+  });
+}
+
 function setupDragDrop() {
   const overlay = $('#drop-overlay');
   let depth = 0;
@@ -277,6 +287,9 @@ function registerSW() {
 
 // ---------- init ----------
 async function init() {
+  // company settings (js/policy.js): asked in the background; the last answer is already on the device
+  import('./policy.js').then(m => m.loadPolicy()).catch(() => {});
+  window.addEventListener('fale:policy', () => { if (currentMain === 'einstellungen') renderSettings(); });
   hydrateIcons();
   syncThemeColor();
   updateThemeButton();
@@ -309,6 +322,7 @@ async function init() {
   });
 
   setupDragDrop();
+  setupOpenShortcut();
   setupLaunchQueue();
   window.addEventListener('hashchange', route);
   if (!location.hash) history.replaceState(null, '', '#/start');

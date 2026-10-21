@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "이 양식에 대한 지금까지의 답변이 삭제되고 처음부터 다시 시작합니다.",
   "Löschen & neu beginnen": "삭제하고 다시 시작",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "레이블을 읽을 수 없습니다. 위 그림에서 표시된 칸 앞이나 아래에 무엇이 적혀 있는지 확인하세요.",
+  "Von deiner Firma eingestellt": "조직에서 설정함",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "이 기기에서는 클라우드 AI가 꺼져 있습니다. 다른 모든 도구는 평소처럼 기기에서만 작동합니다.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "조직에서 이 기기의 클라우드 AI를 껐습니다.",
+  "Brief per Post und Fax": "우편 및 팩스 발송",
+  "Teilen und Übertragen über das Internet": "인터넷을 통한 공유 및 전송",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "조직에서 이 기기의 인터넷 공유를 껐습니다.",
+  "Geöffnete Dokumente": "열린 문서",
+  "Auf diesem Gerät ausgeschaltet:": "이 기기에서 꺼짐:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "그 밖의 모든 기능은 평소처럼 작동합니다 – 기기에서만.",
 };
 
 export const defaultValues = {

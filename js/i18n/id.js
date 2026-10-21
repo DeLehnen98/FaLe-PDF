@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Jawabanmu untuk formulir ini akan dihapus dan kamu mulai dari awal.",
   "Löschen & neu beginnen": "Hapus dan mulai lagi",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Label tidak dapat dibaca. Lihat gambar di atas, apa yang tertulis sebelum atau di bawah kolom yang ditandai.",
+  "Von deiner Firma eingestellt": "Diatur oleh organisasimu",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "AI cloud dimatikan di perangkat ini. Semua alat lain tetap berjalan seperti biasa, hanya di perangkatmu.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Organisasimu telah mematikan AI cloud di perangkat ini.",
+  "Brief per Post und Fax": "Surat lewat pos dan faks",
+  "Teilen und Übertragen über das Internet": "Berbagi dan transfer lewat internet",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Organisasimu telah mematikan berbagi lewat internet di perangkat ini.",
+  "Geöffnete Dokumente": "Dokumen terbuka",
+  "Auf diesem Gerät ausgeschaltet:": "Dimatikan di perangkat ini:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Semua lainnya tetap berjalan seperti biasa – hanya di perangkatmu.",
 };
 
 export const defaultValues = {

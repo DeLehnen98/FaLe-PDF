@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Твои ответы в этой форме будут удалены, и ты начнёшь сначала.",
   "Löschen & neu beginnen": "Удалить и начать заново",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Подпись не удалось прочитать. Посмотри на изображении вверху, что написано перед отмеченным полем или под ним.",
+  "Von deiner Firma eingestellt": "Настроено твоей компанией",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "Облачный ИИ на этом устройстве выключен. Все остальные инструменты работают как обычно, только на твоём устройстве.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Твоя компания выключила облачный ИИ на этом устройстве.",
+  "Brief per Post und Fax": "Письмо почтой и факс",
+  "Teilen und Übertragen über das Internet": "Отправка и передача через интернет",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Твоя компания выключила отправку через интернет на этом устройстве.",
+  "Geöffnete Dokumente": "Открытые документы",
+  "Auf diesem Gerät ausgeschaltet:": "Выключено на этом устройстве:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Всё остальное работает как обычно – только на твоём устройстве.",
 };
 
 export const defaultValues = {

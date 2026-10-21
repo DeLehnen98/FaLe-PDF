@@ -9,6 +9,7 @@ as is – Vercel does not run this script (no build step).
 
 Edit texts here, re-run, commit the generated files.
 """
+from html import escape
 import json
 import re
 from pathlib import Path
@@ -35,6 +36,7 @@ PAGES = {
     'send':    ('/dateien-verschicken/', '/en/send-files/'),
     'request': ('/unterlagen-anfordern/', '/en/request-files/'),
     'clean':   ('/apps/clean/', '/en/apps/clean/'),
+    'business': ('/apps/pdf/unternehmen/', '/en/apps/pdf/business/'),
     'konto':   ('/konto/', '/en/account/'),
     'privacy': ('/datenschutz/', '/en/privacy/'),
     'imprint': ('/impressum/', '/en/imprint/'),
@@ -738,6 +740,7 @@ def page_pdf(lang):
     <div class="wrap">
       <div class="section-head"><h2 id="pfaq-h">{c['faq_h']}</h2></div>
       <div class="faq">{faq}</div>
+      <p class="biz-link">{ic('info')}<a href="{url('business', lang)}">{'FaLe PDF in Firma und Verwaltung: zentral verteilen, Online-Funktionen abschalten' if lang == 'de' else 'FaLe PDF at work: deploy centrally, switch off online features'}</a></p>
       <h3 class="more-h">{c['more_h']}</h3>
       <ul class="plain-list more-list">{more}</ul>
     </div>
@@ -1145,6 +1148,131 @@ def page_clean(lang):
 </main>
 '''
     return head(lang, 'clean', c['title'], c['desc']) + '\n' + header(lang, 'clean') + body + footer(lang)
+
+
+# ================================================================= FaLe PDF für Firmen
+APP_URL = PDF_ORIGIN + '/app/'
+FORCE_JSON = '[{"url": "%s", "default_launch_container": "window", "create_desktop_shortcut": true}]' % APP_URL
+CFG_JSON = '{ "cloudAi": false, "post": false, "cloudShare": false }'
+POLICY_JSON = '[{"origin": "%s", "managed_configuration_url": "https://intranet.example.com/fale-pdf.json", "managed_configuration_hash": "<SHA-256 der Datei>"}]' % PDF_ORIGIN
+BUSINESS = {
+    'de': {
+        'title': 'FaLe PDF in Firma und Verwaltung – lokal, kostenlos, zentral verteilbar | FaleNetwork',
+        'desc': 'PDFs auf allen Arbeitsplätzen lesen, ausfüllen, unterschreiben, schwärzen und umwandeln – ohne Upload, ohne Konto. Verteilung und Firmen-Einstellungen über die Richtlinien von Edge und Chrome.',
+        'h1': 'FaLe PDF in der Firma einsetzen.',
+        'lede': 'Die Dokumente bleiben auf den Arbeitsplätzen. Ihre IT verteilt FaLe PDF über die Richtlinien von Microsoft Edge oder Google Chrome und kann alles abschalten, was über das Internet geht.',
+        'open': 'FaLe PDF öffnen',
+        'facts_h': 'Was Datenschutz und IT wissen wollen',
+        'facts': [
+            ('Verarbeitung auf dem Gerät', 'Anzeigen, Ausfüllen, Unterschreiben, Schwärzen, Texterkennung, Komprimieren und Umwandeln laufen im Browser auf dem jeweiligen PC. Dabei werden keine Dokumente auf unsere Server geladen.'),
+            ('Ohne Konto und Lizenzschlüssel', 'Keine Anmeldung, keine Benutzerverwaltung, keine Seats. FaLe PDF ist kostenlos.'),
+            ('Offline nutzbar', 'Nach dem ersten Start funktioniert FaLe PDF auch ohne Internetverbindung.'),
+            ('Online nur auf Wunsch', 'Nur drei Funktionen gehen über das Internet: Cloud-KI (nur mit Einwilligung), Brief per Post und Fax sowie verschlüsseltes Teilen. Jede lässt sich zentral abschalten (siehe unten).'),
+            ('Kein Tracking', 'Keine Analyse-Tools und keine Werbebanner – Details in der <a href="%s">Datenschutzerklärung</a>.' % PDF_PRIVACY),
+            ('Wo die Dateien liegen', 'In der Ablage von FaLe PDF im Browser-Profil der jeweiligen Person. Über „Speichern“ landen Ergebnisse als normale Datei im gewünschten Ordner, auch auf Netzlaufwerken.'),
+        ],
+        'deploy_h': 'So verteilen Sie FaLe PDF',
+        'deploy_p': 'Ohne Installationspaket: Microsoft Edge und Google Chrome installieren FaLe PDF über eine Richtlinie auf allen PCs (Gruppenrichtlinie, Intune oder ein anderes MDM). Die Richtlinien gelten für Windows und macOS.',
+        'steps': [
+            ('Auf allen PCs installieren', 'Richtlinie <code>WebAppInstallForceList</code> (Edge: „Configure list of force-installed Web Apps“) mit diesem Wert setzen. FaLe PDF erscheint dann als eigenes Programm im Startmenü und auf dem Desktop.', FORCE_JSON),
+            ('Online-Funktionen abschalten (optional)', 'Legen Sie diese Datei auf einen eigenen Server (zum Beispiel im Intranet). <code>false</code> schaltet die Funktion ab: <code>cloudAi</code> = Cloud-KI, <code>post</code> = Brief per Post und Fax, <code>cloudShare</code> = verschlüsseltes Teilen und Übertragen. Die Personen sehen dann unter „Ich“ den Hinweis „Von deiner Firma eingestellt“.', CFG_JSON),
+            ('Datei mit FaLe PDF verbinden', 'Richtlinie <code>ManagedConfigurationPerOrigin</code> mit der Adresse der Datei setzen. Das wirkt nur für Web-Apps, die wie in Schritt 1 installiert wurden. Ändern Sie den Hash, wenn sich die Datei ändert.', POLICY_JSON),
+            ('PDFs per Doppelklick öffnen', 'Nach der Installation steht FaLe PDF unter „Öffnen mit“ zur Auswahl. Als Standard-App für PDFs legen Sie es in den Windows-Einstellungen unter „Standard-Apps“ fest.', ''),
+        ],
+        'einv_h': 'E-Rechnung',
+        'einv_p': 'FaLe PDF öffnet XRechnung- und ZUGFeRD-Rechnungen und zeigt sie lesbar an – offline. Werkzeuge legen ihr Ergebnis als neue Datei in der Ablage an, die Rechnung selbst bleibt dort erhalten. Für die Aufbewahrung gilt: die Original-Rechnung mit den Rechnungsdaten (XML) unverändert archivieren.',
+        'faq_h': 'Häufige Fragen aus der IT',
+        'faq': [
+            ('Wie kommen Updates?', 'Wie bei jeder Web-App: Beim nächsten Start lädt FaLe PDF die neue Version im Hintergrund. Es gibt keinen Installer, der Einstellungen überschreibt.'),
+            ('Läuft FaLe PDF auf Terminalservern und Citrix?', 'FaLe PDF läuft überall, wo ein aktueller Edge oder Chrome läuft. Die Ablage von FaLe PDF liegt im Browser-Profil der Person auf dem jeweiligen Rechner; Dokumente, die auf jedem Arbeitsplatz verfügbar sein sollen, speichern Sie wie gewohnt auf einem Netzlaufwerk.'),
+            ('Welche Browser werden unterstützt?', 'Aktuelle Versionen von Microsoft Edge und Google Chrome; die zentrale Verteilung über Richtlinien funktioniert mit diesen beiden. Firefox und Safari öffnen FaLe PDF ebenfalls.'),
+            ('Gibt es FaLe PDF im Microsoft Store?', 'Bald. Bis dahin installieren einzelne Personen FaLe PDF direkt aus dem Browser und Firmen über die Richtlinie oben.'),
+            ('Wohin mit Fragen?', 'Die Kontaktdaten stehen im <a href="%s">Impressum</a>.' % '/impressum/'),
+        ],
+        'back': 'Zurück zu FaLe PDF',
+    },
+    'en': {
+        'title': 'FaLe PDF at work – local, free, deployable company-wide | FaleNetwork',
+        'desc': 'Read, fill in, sign, redact and convert PDFs on every workstation – no upload, no account. Deployment and company settings via Edge and Chrome policies.',
+        'h1': 'Use FaLe PDF in your organisation.',
+        'lede': 'Documents stay on the workstations. Your IT deploys FaLe PDF with Microsoft Edge or Google Chrome policies and can switch off everything that goes over the internet.',
+        'open': 'Open FaLe PDF',
+        'facts_h': 'What privacy officers and IT want to know',
+        'facts': [
+            ('Processing on the device', 'Viewing, filling in, signing, redacting, text recognition, compressing and converting run in the browser on each PC. No documents are uploaded to our servers.'),
+            ('No account, no licence keys', 'No sign-in, no user management, no seats. FaLe PDF is free.'),
+            ('Works offline', 'After the first start, FaLe PDF also works without an internet connection.'),
+            ('Online only on request', 'Only three features use the internet: cloud AI (only with consent), letters by post and fax, and encrypted sharing. Each can be switched off centrally (see below).'),
+            ('No tracking', 'No analytics tools and no ad banners – details in the <a href="%s">privacy policy</a>.' % PDF_PRIVACY),
+            ('Where files are kept', 'In FaLe PDF’s file list in each person’s browser profile. “Save” writes results as normal files to any folder, including network drives.'),
+        ],
+        'deploy_h': 'How to deploy FaLe PDF',
+        'deploy_p': 'No installer package needed: Microsoft Edge and Google Chrome install FaLe PDF on every PC through a policy (Group Policy, Intune or any other MDM). The policies apply to Windows and macOS.',
+        'steps': [
+            ('Install on every PC', 'Set the policy <code>WebAppInstallForceList</code> (Edge: “Configure list of force-installed Web Apps”) to this value. FaLe PDF then appears as its own program in the Start menu and on the desktop.', FORCE_JSON),
+            ('Switch off online features (optional)', 'Put this file on a server of your own (for example the intranet). <code>false</code> switches a feature off: <code>cloudAi</code> = cloud AI, <code>post</code> = letters by post and fax, <code>cloudShare</code> = encrypted sharing and transfers. Under “Me”, people then see the note “Set by your organisation”.', CFG_JSON),
+            ('Connect the file to FaLe PDF', 'Set the policy <code>ManagedConfigurationPerOrigin</code> to the address of the file. It only applies to web apps installed as in step 1. Change the hash whenever the file changes.', POLICY_JSON.replace('<SHA-256 der Datei>', '<SHA-256 of the file>')),
+            ('Open PDFs with a double-click', 'After installation, FaLe PDF is offered under “Open with”. Make it the default app for PDFs in the Windows settings under “Default apps”.', ''),
+        ],
+        'einv_h': 'E-invoices',
+        'einv_p': 'FaLe PDF opens XRechnung and ZUGFeRD invoices and shows them in readable form – offline. Tools add their result as a new file to the file list; the invoice itself stays there as it was. For record keeping: archive the original invoice with its invoice data (XML) unchanged.',
+        'faq_h': 'Common questions from IT',
+        'faq': [
+            ('How are updates delivered?', 'Like any web app: on the next start FaLe PDF loads the new version in the background. There is no installer that overwrites settings.'),
+            ('Does FaLe PDF run on terminal servers and Citrix?', 'FaLe PDF runs wherever a current Edge or Chrome runs. FaLe PDF’s file list lives in the person’s browser profile on that machine; documents that must be available on every workstation are saved to a network drive as usual.'),
+            ('Which browsers are supported?', 'Current versions of Microsoft Edge and Google Chrome; central deployment through policies works with these two. Firefox and Safari open FaLe PDF too.'),
+            ('Is FaLe PDF in the Microsoft Store?', 'Soon. Until then, individuals install FaLe PDF straight from the browser and organisations use the policy above.'),
+            ('Where can I ask questions?', 'Contact details are in the <a href="%s">imprint</a>.' % '/en/imprint/'),
+        ],
+        'back': 'Back to FaLe PDF',
+    },
+}
+
+
+def page_business(lang):
+    c = BUSINESS[lang]
+    facts = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['facts'])
+    steps = ''.join(
+        f'<li><h3>{h}</h3><p>{p}</p>' + (f'<pre class="code" tabindex="0"><code>{escape(code)}</code></pre>' if code else '') + '</li>'
+        for h, p, code in c['steps'])
+    faq = ''.join(f'<details><summary>{q}</summary><div><p>{a}</p></div></details>' for q, a in c['faq'])
+    body = f'''
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="p-hero-id"><img src="/assets/icons/app-pdf.svg" width="56" height="56" alt=""><span>FaLe PDF</span></div>
+      <h1>{c['h1']}</h1>
+      <p class="lede">{c['lede']}</p>
+      <p>{app_link(APP_URL, c['open'], lang=lang)}</p>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="facts-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="facts-h">{c['facts_h']}</h2></div>
+      <dl class="facts">{facts}</dl>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="deploy-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="deploy-h">{c['deploy_h']}</h2><p>{c['deploy_p']}</p></div>
+      <ol class="steps-admin">{steps}</ol>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="einv-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="einv-h">{c['einv_h']}</h2><p>{c['einv_p']}</p></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-h">{c['faq_h']}</h2></div>
+      <div class="faq">{faq}</div>
+    </div>
+    <div class="wrap back-row"><a class="btn btn-quiet" href="{url('pdf', lang)}">{c['back']}</a></div>
+  </section>
+</main>
+'''
+    return head(lang, 'business', c['title'], c['desc']) + '\n' + header(lang, 'pdf') + body + footer(lang)
 
 
 # ================================================================= FaLe-Konto
@@ -1571,6 +1699,7 @@ def main():
         written.append(write(url('send', lang), page_send(lang)))
         written.append(write(url('request', lang), page_request(lang)))
         written.append(write(url('clean', lang), page_clean(lang)))
+        written.append(write(url('business', lang), page_business(lang)))
         written.append(write(url('konto', lang), page_konto(lang)))
         written.append(write(url('privacy', lang), page_privacy(lang)))
         written.append(write(url('imprint', lang), page_imprint(lang)))

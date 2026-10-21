@@ -488,6 +488,18 @@ mark {
 .zoom-val:hover { background: var(--surface-2); }
 .findbar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: var(--chrome); backdrop-filter: saturate(1.6) blur(16px); -webkit-backdrop-filter: saturate(1.6) blur(16px); border-bottom: 1px solid var(--border); z-index: 5; }
 .findbar .input { min-height: 40px; flex: 1; max-width: 380px; }
+/* tabs of the documents opened in this session (desktop) */
+.v-tabs { display: flex; gap: 4px; padding: 6px 10px 0; background: var(--chrome); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: thin; z-index: 5; }
+.v-tabs[hidden] { display: none; }
+.v-tab { display: flex; align-items: center; flex: 0 1 220px; min-width: 110px; border: 1px solid transparent; border-bottom: 0; border-radius: 10px 10px 0 0; color: var(--text-2); }
+.v-tab:hover { background: var(--surface-2); }
+.v-tab.on { background: var(--viewer-bg); border-color: var(--border); color: var(--text); margin-bottom: -1px; }
+.v-tab-go { flex: 1; min-width: 0; padding: 8px 4px 8px 12px; background: none; border: 0; color: inherit; font: inherit; font-size: .875rem; font-weight: 600; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; border-radius: inherit; }
+.v-tab-x { flex: none; display: grid; place-items: center; width: 28px; height: 28px; margin-right: 4px; border: 0; border-radius: 8px; background: none; color: var(--text-3); cursor: pointer; }
+.v-tab-x:hover { background: var(--surface-3); color: var(--text); }
+.v-tab-go:focus-visible, .v-tab-x:focus-visible { outline: none; box-shadow: var(--focus); }
+.v-tab-x .ic { width: 16px; height: 16px; }
+@media (max-width: 899px) { .v-tabs { display: none !important; } }
 .find-count { font-size: var(--fs-small); color: var(--text-2); min-width: 92px; text-align: center; font-variant-numeric: tabular-nums; }
 .find-count.notfound { color: var(--danger); }
 .v-panel { width: 264px; flex: none; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; z-index: 4; }
@@ -798,3 +810,7 @@ mark {
   html:not(.simple) #view-start.has-files .hero-actions { margin-top: 14px; }
   html:not(.simple) #view-start.has-files .hero-art { transform: scale(.36); top: 12px; } /* stays above the buttons */
 }
+/* „Von deiner Firma eingestellt“ (js/policy.js) */
+.policy-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; margin-bottom: 12px; }
+.policy-card > .ic { flex: none; width: 22px; height: 22px; color: var(--primary); margin-top: 1px; }
+.policy-card > div { display: grid; gap: 2px; }

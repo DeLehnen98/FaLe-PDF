@@ -6991,6 +6991,15 @@ export default {
   "Deine bisherigen Antworten zu diesem Formular werden gelöscht und du beginnst von vorn.": "Je antwoorden voor dit formulier worden verwijderd en je begint opnieuw.",
   "Löschen & neu beginnen": "Verwijderen en opnieuw beginnen",
   "Die Beschriftung konnte nicht gelesen werden. Schau im Bild oben, was vor oder unter dem markierten Feld steht.": "Het label kon niet worden gelezen. Kijk in de afbeelding hierboven wat er voor of onder het gemarkeerde veld staat.",
+  "Von deiner Firma eingestellt": "Ingesteld door je organisatie",
+  "Die Cloud-KI ist auf diesem Gerät ausgeschaltet. Alle anderen Werkzeuge arbeiten wie immer nur auf deinem Gerät.": "Cloud-AI is op dit apparaat uitgeschakeld. Alle andere hulpmiddelen werken zoals altijd, alleen op je apparaat.",
+  "Die Cloud-KI ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Je organisatie heeft cloud-AI op dit apparaat uitgeschakeld.",
+  "Brief per Post und Fax": "Brief per post en fax",
+  "Teilen und Übertragen über das Internet": "Delen en overdragen via internet",
+  "Teilen über das Internet ist auf diesem Gerät von deiner Firma ausgeschaltet.": "Je organisatie heeft delen via internet op dit apparaat uitgeschakeld.",
+  "Geöffnete Dokumente": "Geopende documenten",
+  "Auf diesem Gerät ausgeschaltet:": "Uitgeschakeld op dit apparaat:",
+  "Alles andere läuft wie immer – nur auf deinem Gerät.": "Al het andere werkt zoals altijd – alleen op je apparaat.",
 };
 
 export const defaultValues = {

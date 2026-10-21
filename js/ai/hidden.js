@@ -4,7 +4,11 @@
 const KEY = 'fale-ai-hidden';
 
 export function aiHidden() {
-  try { return localStorage.getItem(KEY) === '1'; } catch { return false; }
+  try { return localStorage.getItem(KEY) === '1' || companyOff(); } catch { return false; }
+}
+/** Switched off by the company (js/policy.js – read directly to stay dependency-free). */
+function companyOff() {
+  try { const p = JSON.parse(localStorage.getItem('fale-policy') || 'null'); return !!p && p.cloudAi === false; } catch { return false; }
 }
 
 export function setAiHidden(on) {
