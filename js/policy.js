@@ -25,6 +25,10 @@ export function blocked(name) { const p = read(); return !!p && p[name] === fals
 
 function apiOf() {
   try {
+    // only desktop browsers: the policies exist for Windows/macOS only – and the Android app (WebView 113 on
+    // Android 14) stopped starting once the app asked for it, so phones never ask
+    if (typeof window !== 'undefined' && window.Capacitor) return null;
+    if (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '')) return null;
     const n = typeof navigator !== 'undefined' ? navigator : null;
     if (n && n.managed && typeof n.managed.getManagedConfiguration === 'function') return n.managed;
     if (n && n.device && typeof n.device.getManagedConfiguration === 'function') return n.device; // older name
