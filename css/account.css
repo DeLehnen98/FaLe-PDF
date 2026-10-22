@@ -105,3 +105,32 @@
   .acct-me-out { flex-wrap: wrap; }
   .acct-me-out .acct-me-btn { width: 100%; justify-content: center; }
 }
+
+/* overview + explainer (signed in) */
+.acct-overview { margin: 14px 0 12px; }
+button.il-row { width: 100%; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; }
+div.il-row:hover { background: none; }
+.acct-overview .il-meta { font-weight: 600; color: var(--text-2); }
+.acct-overview .acct-badge-plus { display: inline-flex; align-items: center; }
+.acct-explain { padding: 0; overflow: hidden; }
+.acct-explain summary { display: flex; gap: 10px; align-items: center; padding: 14px 16px; cursor: pointer; font-weight: 650; list-style: none; min-height: 52px; }
+.acct-explain summary::-webkit-details-marker { display: none; }
+.acct-explain summary::after { content: ""; margin-left: auto; width: 9px; height: 9px; border-right: 2px solid var(--text-3); border-bottom: 2px solid var(--text-3); transform: rotate(45deg); transition: transform var(--dur-2) var(--ease-out); }
+.acct-explain[open] summary::after { transform: rotate(-135deg); }
+.acct-explain summary > .ic { width: 20px; height: 20px; color: var(--primary); flex: none; }
+.acct-explain dl { margin: 0; padding: 0 16px 14px; display: grid; gap: 12px; }
+.acct-explain dt { font-weight: 650; }
+.acct-explain dd { margin: 2px 0 0; color: var(--text-2); font-size: var(--fs-small, calc(14px * var(--ts, 1))); line-height: 1.5; }
+.acct-sec { margin-top: 22px; }
+.acct-sec .section-title { margin: 0 0 2px; }
+.acct-sec p { margin: 0 0 10px; }
+.acct-sec { scroll-margin-top: 84px; }
+
+/* nothing may push the page wider than the phone (long button labels, inputs in a grid card) */
+.acct-sync-card { grid-template-columns: minmax(0, 1fr); }
+.acct-sync-card > *, .acct-unlock, .acct-unlock .field, .acct-unlock .input { min-width: 0; max-width: 100%; }
+.acct-unlock .input { width: 100%; box-sizing: border-box; }
+.acct-wrap .btn { max-width: 100%; }
+.acct-wrap-btn { white-space: normal; text-align: left; height: auto; min-height: 40px; line-height: 1.3; }
+.acct-dev-text { min-width: 0; }
+.acct-dev .btn { margin-left: auto; }

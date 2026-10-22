@@ -6,7 +6,7 @@ import { oicon } from '../office/kinds.js';
 import { isNative, platformName } from '../platform.js';
 import * as C from './client.js';
 import { statusCard, docChip, getDoc } from './common.js';
-import { AI_FEATURES } from './entry.js';
+import { aiGroupsHtml } from './entry.js';
 import { aiHidden, setAiHidden } from './hidden.js';
 import { locale } from '../i18n/index.js';
 
@@ -20,7 +20,7 @@ export async function mount(screen, { params }) {
     <div data-status></div>
     <div data-doc></div>
     <h2 class="section-title">Was möchtest du tun?</h2>
-    <div class="tool-grid ai-grid" role="list"></div>
+    <div class="ai-groups" data-groups></div>
     <div class="ai-hub-foot">
       ${showPlus() || proActive() ? `<a class="card action-card ai-plus-card" href="#/ki/pro"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Pro</strong><span class="muted small">${proActive() ? 'Aktiv – alle KI-Werkzeuge ohne Video, werbefrei' : 'Alle KI-Werkzeuge ohne Video – und keine Werbung'}</span></span></a>` : ''}
       <a class="card action-card" href="#/ki/einstellungen" data-ai-settings><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI-Einstellungen</strong><span class="muted small">Cloud-KI an/aus, Einwilligung, Datenschutz</span></span></a>
@@ -31,10 +31,9 @@ export async function mount(screen, { params }) {
   const un = $('[data-unhide]', wrap);
   if (un) un.addEventListener('click', () => { setAiHidden(false); $('[data-ai-hidden-note]', wrap).remove(); toast('KI wird wieder angezeigt.', 'success'); });
   if (doc) $('[data-doc]', wrap).appendChild(docChip(doc, () => { location.hash = '#/ki'; }));
-  const grid = $('.ai-grid', wrap);
-  AI_FEATURES.forEach(f => {
-    const href = f.href + (doc && f.doc ? `${f.href.includes('?') ? '&' : '?'}doc=${encodeURIComponent(doc.id)}` : '');
-    grid.appendChild(h(`<a class="tool-card" role="listitem" href="${href}" data-ai-feature="${f.id}"><span class="tile-ic ai-ic">${oicon(f.icon)}</span><span class="tc-text"><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></span></a>`));
+  $('[data-groups]', wrap).innerHTML = aiGroupsHtml({
+    hrefOf: f => f.href + (doc && f.doc ? `${f.href.includes('?') ? '&' : '?'}doc=${encodeURIComponent(doc.id)}` : ''),
+    attr: f => `data-ai-feature="${f.id}"`, role: 'listitem',
   });
   screen.body.appendChild(wrap);
   screen.setFoot([]);

@@ -11,6 +11,7 @@ import { NETWORK_ORIGIN } from './domains.js';
 import { isNative, platformName } from './platform.js';
 import { APP_VERSION } from './version.js';
 import { aiHidden } from './ai/hidden.js';
+import { recentTools, noteTool } from './tools/recent.js';
 import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
@@ -95,6 +96,7 @@ export function toolClick(tool) {
     toast(`„${tool.title}“ ist bald verfügbar.`, 'info', { timeout: 4500 });
     return;
   }
+  noteTool(tool.id);
   location.hash = `#/werkzeug/${tool.id}`;
 }
 
@@ -352,7 +354,13 @@ export function renderTools(initialQ = null, sub = null) {
         <a role="tab" href="#/werkzeuge" data-tab-link="tools" aria-selected="true">${oicon('tools')}<span>Werkzeuge</span></a>
         <a role="tab" href="#/werkzeuge/ki" data-tab-link="ki" aria-selected="false">${oicon('sparkle')}<span>KI-Werkzeuge</span></a>
       </nav>
-      <div data-search></div>
+      <div class="tool-bar" data-toolbar><div data-search></div>
+        <div class="tool-cats" role="toolbar" aria-label="Bereiche" data-cats></div></div>
+      <div class="tool-overview" data-overview>
+        <section class="tq-sec" data-recent hidden><h2 class="section-title">Zuletzt benutzt</h2><div class="tq-grid"></div></section>
+        <section class="tq-sec" data-popular><h2 class="section-title">Häufig gebraucht</h2><div class="tq-grid"></div></section>
+        <section class="tq-sec" data-areas><h2 class="section-title">Alle Bereiche</h2><div class="area-grid"></div></section>
+      </div>
       <section class="simple-sec" data-section="simple" data-simple-tools hidden></section>
       <div data-groups></div>
       <section class="tool-section" data-section="office"><h2 class="section-title">Office</h2><div class="tool-grid office-grid"></div></section>
@@ -407,16 +415,26 @@ export function renderTools(initialQ = null, sub = null) {
         if (vis && (n || (sec.dataset.section === 'ki') === (el.dataset.tab === 'ki'))) any = true; // no search: only the open page counts
       });
       $('[data-noresult]', el).hidden = any;
+      applyArea(el);
     };
     const form = searchForm('tool-search', 'Werkzeug suchen', filter, filter);
     $('[data-search]', el).appendChild(form);
     el._filter = filter;
     import('./ai/entry.js').then(m => { m.renderToolSection($('[data-ai-section]', el)); m.renderProBar($('[data-pro-bar]', el)); }).catch(() => {}); // KI-Werkzeuge + FaLe Pro
-    import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).catch(() => {}); // Teilen & Unterschreiben
-    import('./smart/entry.js').then(m => m.renderToolSection($('[data-smart-section]', el))).catch(() => {}); // Assistenten
+    import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).then(() => buildAreas(el)).catch(() => {}); // Teilen & Unterschreiben
+    import('./smart/entry.js').then(m => m.renderToolSection($('[data-smart-section]', el))).then(() => buildAreas(el)).catch(() => {}); // Assistenten
+    // every tool opened from this page counts for „Zuletzt benutzt“ (cards are buttons or links)
+    el.addEventListener('click', e => {
+      const c = e.target.closest('.tool-section:not([data-section="ki"]):not([data-section="simple"]) [data-tool], .simple-sec [data-tool]');
+      if (c && el.contains(c) && !(Tools.toolById(c.dataset.tool) || {}).soon) noteTool(c.dataset.tool);
+    });
+    buildQuick(el);
+    buildAreas(el);
     // FaleNetwork web tools (opened in a frame, js/webtools/host.js): into the matching groups + own sections
     import('./webtools/list.js').then(m => {
       m.renderWebTools(el);
+      buildAreas(el);
+      buildQuick(el);
       const q = $('#tool-search', el) && $('#tool-search', el).value;
       if (q) filter(q);
       updateSimpleCount(el);
@@ -426,8 +444,87 @@ export function renderTools(initialQ = null, sub = null) {
     window.addEventListener('fale:ai-state', () => setToolTab(el, el.dataset.tab || 'tools')); // „KI ausblenden“
   }
   setToolTab(el, sub === 'ki' ? 'ki' : 'tools');
+  if (initialQ != null) toolArea = 'all'; // a search from elsewhere looks through everything
+  buildQuick(el);
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
   else { const q = $('#tool-search', el); el._filter(q ? q.value : ''); }
+}
+
+// ---- finding tools quickly: „Zuletzt benutzt“, „Häufig gebraucht“, one tile per area + sticky area chips.
+// The tiles only point at the real cards (a tap clicks the card), so every tool keeps exactly one card.
+const POPULAR_TOOLS = ['unterschreiben', 'scannen', 'zusammenfuegen', 'komprimieren', 'pdf-word', 'bilder', 'seiten', 'formular-lotse'];
+const AREA_ICONS = { bearbeiten: 'sign', konvertieren: 'export', organisieren: 'pages', scannen: 'scan', sicherheit: 'shield', lesen: 'book',
+  'web-images': 'image', 'web-calc': 'hash', office: 'kdoc', alltag: 'calendar', assistenten: 'magic', teilen: 'share' };
+let toolArea = 'all';
+const areaSections = el => $$('.tool-section', el).filter(sec => !['simple', 'ki'].includes(sec.dataset.section) && $$('.tool-card', sec).length);
+const realCard = (el, id) => $(`.tool-section:not([data-section="ki"]):not([data-section="simple"]) [data-tool="${CSS.escape(id)}"]`, el);
+
+function quickTile(el, id) {
+  const card = realCard(el, id);
+  if (!card) return null;
+  const ic = $('.tile-ic', card), title = $('h3', card);
+  const tic = ic ? getComputedStyle(ic).getPropertyValue('--tic').trim() : '';
+  const b = h(`<button class="tq" type="button" data-tq="${esc(id)}"><span class="tile-ic"${tic && /^[#\w(),.%\s-]+$/.test(tic) ? ` style="--tic:${tic}"` : ''}>${ic ? ic.innerHTML : ''}</span><span class="tq-t">${esc(title ? title.textContent : id)}</span></button>`);
+  b.addEventListener('click', () => card.click());
+  return b;
+}
+
+function buildQuick(el) {
+  const rec = $('[data-recent]', el), pop = $('[data-popular]', el);
+  if (!rec) return;
+  const fill = (sec, ids, max) => {
+    const grid = $('.tq-grid', sec);
+    grid.innerHTML = '';
+    ids.map(id => quickTile(el, id)).filter(Boolean).slice(0, max).forEach(b => grid.appendChild(b));
+    return grid.children.length;
+  };
+  rec.hidden = !fill(rec, recentTools(), 4);
+  pop.hidden = !fill(pop, POPULAR_TOOLS, 8);
+}
+
+function buildAreas(el) {
+  const bar = $('[data-cats]', el), grid = $('.area-grid', el);
+  if (!bar) return;
+  const secs = areaSections(el);
+  const titleOf = sec => { // the heading without its badges and links („Neu“, „Meine Links“ …)
+    const h2 = $('.section-title', sec);
+    if (!h2) return sec.dataset.section;
+    const c = h2.cloneNode(true);
+    c.querySelectorAll('.badge, a, button, .sr-only').forEach(x => x.remove());
+    return c.textContent.replace(/\s+/g, ' ').trim() || sec.dataset.section;
+  };
+  const areas = secs.map(sec => ({ id: sec.dataset.section, title: titleOf(sec), n: $$('.tool-card', sec).length }));
+  if (toolArea !== 'all' && !areas.some(a => a.id === toolArea)) toolArea = 'all';
+  bar.innerHTML = `<button type="button" class="tc-chip" data-area="all" aria-pressed="${toolArea === 'all'}">Alle</button>` +
+    areas.map(a => `<button type="button" class="tc-chip" data-area="${esc(a.id)}" aria-pressed="${toolArea === a.id}">${esc(a.title)}</button>`).join('');
+  grid.innerHTML = areas.map(a => `<button type="button" class="area-tile" data-area="${esc(a.id)}"><span class="area-ic">${oicon(AREA_ICONS[a.id] || 'tools')}</span>
+    <span class="area-t"><strong>${esc(a.title)}</strong><span>${a.n === 1 ? '1 Werkzeug' : `${a.n} Werkzeuge`}</span></span></button>`).join('');
+  $$('[data-area]', el).forEach(b => b.addEventListener('click', () => pickArea(el, b.dataset.area)));
+  applyArea(el);
+}
+
+function pickArea(el, id) {
+  toolArea = id;
+  const q = $('#tool-search', el);
+  if (q && q.value) { q.value = ''; el._filter(''); } else applyArea(el);
+  // bring the chosen area right under the sticky bar (or back to the top for „Alle“)
+  const main = $('#main'), bar = $('[data-toolbar]', el);
+  if (!main || !bar) return;
+  const cats = $('[data-cats]', el), chip = $(`.tc-chip[data-area="${CSS.escape(id)}"]`, el);
+  if (cats && chip) cats.scrollLeft = chip.offsetLeft - (cats.clientWidth - chip.offsetWidth) / 2; // chosen chip in view
+  if (id === 'all') { main.scrollTo({ top: 0, behavior: 'instant' }); return; }
+  const sec = $(`.tool-section[data-section="${CSS.escape(id)}"]`, el);
+  if (sec) main.scrollTo({ top: Math.max(0, main.scrollTop + sec.getBoundingClientRect().top - main.getBoundingClientRect().top - bar.offsetHeight - 6), behavior: 'instant' });
+}
+
+function applyArea(el) {
+  const searching = el.classList.contains('st-q');
+  const area = searching ? 'all' : toolArea;
+  el.dataset.area = area;
+  $$('.tool-section', el).forEach(sec => sec.classList.toggle('area-off', area !== 'all' && !['simple', 'ki'].includes(sec.dataset.section) && sec.dataset.section !== area));
+  $$('.tc-chip', el).forEach(c => c.setAttribute('aria-pressed', String(c.dataset.area === area)));
+  const ov = $('[data-overview]', el);
+  if (ov) ov.hidden = searching || area !== 'all';
 }
 
 // „Einfache Ansicht“: a short list first; „Alle Werkzeuge anzeigen“ expands to every section (CSS: html.simple)

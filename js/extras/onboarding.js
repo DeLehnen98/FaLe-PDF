@@ -25,16 +25,18 @@ const ls = { get: k => { try { return localStorage.getItem(k); } catch { return 
 export function onboardingDone() { return ls.get(KEY) === '1'; }
 export function resetOnboarding() { try { localStorage.removeItem(KEY); } catch {} }
 
+const reveal = () => document.documentElement.classList.remove('ob-first'); // js/boot.js hid the app until the intro is up
+
 export function maybeShowOnboarding() {
-  if (onboardingDone()) return false;
+  if (onboardingDone()) return reveal(), false;
   // automated test browsers skip the intro unless a test explicitly asks for it
-  if (navigator.webdriver && ls.get('fale-onboarding-force') !== '1') return false;
-  if (location.hash && !/^#\/(start)?$/.test(location.hash) && ls.get(RESUME) === null) return false; // opened via a deep link / shared file
-  showOnboarding();
+  if (navigator.webdriver && ls.get('fale-onboarding-force') !== '1') return reveal(), false;
+  if (location.hash && !/^#\/(start)?$/.test(location.hash) && ls.get(RESUME) === null) return reveal(), false; // opened via a deep link / shared file
+  showOnboarding({ first: true }).catch(e => { console.warn(e); reveal(); });
   return true;
 }
 
-export async function showOnboarding() {
+export async function showOnboarding({ first = false } = {}) {
   if (document.querySelector('.onboard')) return;
   let hasSig = false;
   try { hasSig = (await (await import('../tools/sigstore.js')).listAssets('signature')).length > 0; } catch { /* no store */ }
@@ -111,7 +113,9 @@ export async function showOnboarding() {
         <div class="ob-btns"><button class="btn btn-ghost" type="button" data-back hidden>Zurück</button><button class="btn btn-primary" type="button" data-next>Weiter</button></div>
       </div>
     </div></div>`);
+  if (first) ov.classList.add('ob-first-run'); // very first start: nothing of the app behind the intro
   document.body.appendChild(ov);
+  reveal();
   const steps = $$('.ob-step', ov), dots = $$('.ob-dots span', ov);
   const next = $('[data-next]', ov), back = $('[data-back]', ov);
   step = Math.min(step, steps.length - 1);

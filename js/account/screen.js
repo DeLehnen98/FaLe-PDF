@@ -143,13 +143,32 @@ async function renderAccount(wrap, user, offs) {
   await E.init();
   wrap.appendChild(h(`<div class="card acct-head">
     <span class="acct-avatar acct-avatar-lg" aria-hidden="true">${esc((user.email || '?').slice(0, 1).toUpperCase())}</span>
-    <div class="acct-head-text"><strong data-no-i18n>${esc(user.email)}</strong><span class="muted small">FaLe-Konto · gespeichert in der EU (Frankfurt)</span>
-      <span class="acct-plus" data-plus><span class="muted small">FaLe Pro wird geprüft …</span></span></div>
+    <div class="acct-head-text"><strong data-no-i18n>${esc(user.email)}</strong><span class="muted small">Angemeldet mit Code per E-Mail – ein Konto-Passwort gibt es nicht.</span></div>
     <button class="btn btn-ghost btn-sm" type="button" data-signout>${aicon('logout')} Abmelden</button></div>`));
+  // overview: the three things an account does, each with its state – a tap leads to the details
+  wrap.appendChild(h(`<div class="ilist acct-overview" aria-label="Dein Konto auf einen Blick">
+    <div class="il-row acct-ov-pro" data-ov="pro"><span class="il-ic" data-tone="amber">${oicon('star')}</span>
+      <span class="il-txt"><strong>FaLe Pro</strong><span data-plus>wird geprüft …</span></span><span class="il-meta" data-plus-state></span></div>
+    <button class="il-row" type="button" data-ov="sync"><span class="il-ic" data-tone="teal">${aicon('cloudLock')}</span>
+      <span class="il-txt"><strong>FaLe Sync</strong><span>Deine Dateien auf allen Geräten – verschlüsselt, nur du kannst sie lesen</span></span>
+      <span class="il-meta" data-ov-sync></span><span class="il-go" aria-hidden="true">${oicon('chevronRight')}</span></button>
+    <button class="il-row" type="button" data-ov="dev"><span class="il-ic" data-tone="slate">${aicon('devices')}</span>
+      <span class="il-txt"><strong>Geräte</strong><span>Wo du mit diesem Konto angemeldet bist</span></span>
+      <span class="il-meta" data-ov-dev></span><span class="il-go" aria-hidden="true">${oicon('chevronRight')}</span></button>
+  </div>`));
+  wrap.appendChild(h(`<details class="card acct-explain">
+    <summary>${oicon('info')}<span>So funktioniert dein Konto</span></summary>
+    <dl>
+      <div><dt>Anmelden</dt><dd>Mit deiner E-Mail-Adresse. Wir schicken dir jedes Mal einen 6-stelligen Code – ein Passwort für das Konto brauchst du nicht.</dd></div>
+      <div><dt>Sync-Passwort</dt><dd>Gehört nur zu FaLe Sync und ist etwas anderes als der E-Mail-Code. Es verschlüsselt deine Dateien, bevor sie dein Gerät verlassen. Nur du kennst es – wir können es nicht zurücksetzen. Für den Notfall gibt es den Wiederherstellungsschlüssel zum Ausdrucken.</dd></div>
+      <div><dt>Geräte</dt><dd>Jedes Handy, jeder Computer und jeder Browser, auf dem du angemeldet bist. Ein Gerät, das du nicht mehr nutzt, meldest du hier ab – seine Dateien bleiben darauf.</dd></div>
+      <div><dt>FaLe Pro</dt><dd>Gehört zu deinem Konto und gilt auf jedem Gerät, auf dem du angemeldet bist.</dd></div>
+      <div><dt>Ohne Konto</dt><dd>FaLe PDF funktioniert auch ohne Konto vollständig. Deine Dateien bleiben dann nur auf diesem Gerät.</dd></div>
+    </dl></details>`));
   const syncBox = h('<section class="acct-sync" aria-label="FaLe Sync"></section>');
-  wrap.append(h('<h2 class="section-title">FaLe Sync</h2>'), syncBox);
+  wrap.append(h(`<div class="acct-sec" id="acct-sync"><h2 class="section-title">FaLe Sync</h2><p class="muted small">Freiwillig. Hält Dateien, Ordner, Unterschriften und Fristen auf deinen Geräten gleich.</p></div>`), syncBox);
   const devBox = h('<div class="card acct-devices"></div>');
-  wrap.append(h(`<h2 class="section-title">Geräte</h2>`), devBox);
+  wrap.append(h(`<div class="acct-sec" id="acct-devices"><h2 class="section-title">Geräte</h2><p class="muted small">Hier bist du angemeldet. „Abmelden“ beendet die Anmeldung auf dem Gerät – seine Dateien bleiben erhalten.</p></div>`), devBox);
   wrap.appendChild(h(`<h2 class="section-title">Konto</h2>`));
   const danger = h(`<div class="card settings-group">
     <div class="settings-row"><div class="label"><strong>Überall abmelden</strong><span>Beendet die Anmeldung auf allen Geräten. Deine Dateien bleiben überall erhalten.</span></div>
@@ -157,7 +176,10 @@ async function renderAccount(wrap, user, offs) {
     <div class="settings-row"><div class="label"><strong>Konto löschen</strong><span>Löscht dein Konto und alle Cloud-Daten. Dateien auf deinen Geräten bleiben erhalten.</span></div>
       <button class="btn btn-danger-ghost btn-sm" type="button" data-delete>${oicon('trash')} Konto löschen</button></div></div>`);
   wrap.appendChild(danger);
-  wrap.appendChild(h(`<p class="muted small acct-legal">Deine Sync-Daten werden auf deinem Gerät verschlüsselt, bevor sie es verlassen. Gespeichert bei Supabase in Frankfurt (EU). <a href="${PRIVACY}" data-privacy>Datenschutz</a></p>`));
+  wrap.appendChild(h(`<p class="muted small acct-legal">Konto und verschlüsselte Sync-Daten werden in der EU gespeichert (Supabase, Frankfurt). <a href="${PRIVACY}" data-privacy>Datenschutz</a></p>`));
+  const jump = target => { const el = $(target, wrap); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'start' }); const f = el.nextElementSibling && el.nextElementSibling.querySelector('input'); if (f) setTimeout(() => f.focus({ preventScroll: true }), 450); };
+  $('[data-ov="sync"]', wrap).addEventListener('click', () => jump('#acct-sync'));
+  $('[data-ov="dev"]', wrap).addEventListener('click', () => jump('#acct-devices'));
   privacyLink(wrap);
 
   $('[data-signout]', wrap).addEventListener('click', async () => {
@@ -172,28 +194,50 @@ async function renderAccount(wrap, user, offs) {
   });
   $('[data-delete]', wrap).addEventListener('click', () => deleteAccountFlow());
 
-  // Plus status
-  A.accountApi('me').then(r => {
-    const el = $('[data-plus]', wrap);
+  // FaLe Pro status (overview row)
+  const paintPro = r => {
+    const el = $('[data-plus]', wrap), st = $('[data-plus-state]', wrap), row = $('.acct-ov-pro', wrap);
     if (!el) return;
-    el.innerHTML = r.plus && r.plus.active
-      ? `<span class="badge acct-badge-plus">${oicon('star')} FaLe Pro</span><span class="muted small">aktiv bis ${esc(new Date(r.plus.expiresAt).toLocaleDateString('de-DE'))} – gilt auf allen Geräten</span>`
-      : (showPlus() ? `<span class="muted small">FaLe Pro nicht aktiv</span>` : '');
-  }).catch(() => { const el = $('[data-plus]', wrap); if (el) el.innerHTML = ''; });
+    const on = r && r.plus && r.plus.active;
+    if (on) {
+      el.textContent = `Aktiv bis ${new Date(r.plus.expiresAt).toLocaleDateString(document.documentElement.lang || 'de')} – auf allen deinen Geräten`;
+      st.innerHTML = `<span class="badge acct-badge-plus">${oicon('star')} Aktiv</span>`;
+    } else if (showPlus()) {
+      el.textContent = 'Alle KI-Werkzeuge ohne Video und ohne Werbung';
+      st.textContent = 'Nicht aktiv';
+    } else {
+      el.textContent = 'Gilt auf allen Geräten, auf denen du angemeldet bist. Erhältlich in der Android-App.';
+      st.textContent = 'Nicht aktiv';
+    }
+    if (on || showPlus()) { // a real link to the Pro page
+      const a = h(`<a class="il-row acct-ov-pro" href="#/ki/pro" data-ov="pro">${row.innerHTML}<span class="il-go" aria-hidden="true">${oicon('chevronRight')}</span></a>`);
+      row.replaceWith(a);
+    }
+  };
+  A.accountApi('me').then(paintPro).catch(() => { const el = $('[data-plus]', wrap); if (el) el.textContent = 'Status gerade nicht abrufbar'; });
 
   // sync section (live)
-  const paintSync = () => renderSync(syncBox, E);
+  const paintSync = () => { renderSync(syncBox, E); const o = $('[data-ov-sync]', wrap); if (o) o.textContent = syncShort(E.status()); };
   offs.push(E.onStatus(() => paintSyncThrottled()));
   let pt = 0, last = 0;
   const paintSyncThrottled = () => { const now = Date.now(); clearTimeout(pt); if (now - last > 250) { last = now; paintSync(); } else pt = setTimeout(() => { last = Date.now(); paintSync(); }, 250); };
   paintSync();
   E.refreshRemote().catch(e => { if (e && e.code !== 'signed_out') { const n = $('.acct-sync-err', syncBox); if (n) { n.textContent = e.userMessage || ''; n.hidden = false; } } });
-  renderDevices(devBox);
+  renderDevices(devBox, n => { const o = $('[data-ov-dev]', wrap); if (o) o.textContent = n == null ? '' : n === 1 ? '1 Gerät' : `${n} Geräte`; });
   const iv = setInterval(() => { if (!document.body.contains(syncBox)) { clearInterval(iv); return; } const l = $('[data-sync-line]', syncBox); if (l) l.textContent = syncLine(E.status()); }, 30000);
   offs.push(() => clearInterval(iv));
 }
 
 // ------------------------------------------------------------------ FaLe Sync section
+/** one or two words for the overview row */
+function syncShort(st) {
+  if (!st || st.needs === 'setup') return 'Aus';
+  if (st.needs === 'unlock' || st.needs === 'keychange') return 'Gesperrt';
+  if (!st.enabled) return 'Aus';
+  if (st.paused) return 'Pausiert';
+  if (st.error || st.quotaFull) return 'Problem';
+  return 'An';
+}
 function usageMeter(st) {
   if (!st.usage || !st.usage.quota) return '';
   const pct = Math.min(100, (st.usage.used / st.usage.quota) * 100);
@@ -218,12 +262,12 @@ function renderSync(box, E) {
   if (!st.enabled && (st.needs === 'unlock' || st.needs === 'keychange' || st.needs == null)) {
     box.appendChild(h(`<div class="card card-pad acct-sync-card">
       <div class="acct-sync-intro">${oicon('key')}<div><strong>${st.needs === 'keychange' ? 'Der Sync-Schlüssel wurde geändert' : 'FaLe Sync auf diesem Gerät entsperren'}</strong>
-      <p class="muted small">${st.needs === 'keychange' ? 'FaLe Sync wurde auf einem anderen Gerät neu eingerichtet. Gib das neue Sync-Passwort ein.' : 'Gib dein Sync-Passwort ein. Danach synchronisiert dieses Gerät automatisch.'}</p></div></div>
+      <p class="muted small">${st.needs === 'keychange' ? 'FaLe Sync wurde auf einem anderen Gerät neu eingerichtet. Gib das neue Sync-Passwort ein.' : 'Du bist angemeldet – für FaLe Sync braucht dieses Gerät noch dein Sync-Passwort. Das ist das Passwort, das du beim Einrichten von FaLe Sync gewählt hast (nicht der Code aus der E-Mail). Danach synchronisiert dieses Gerät automatisch.'}</p></div></div>
       <form class="acct-unlock" novalidate>
         <label class="field"><span class="field-label">Sync-Passwort</span><input class="input" type="password" name="pw" autocomplete="current-password"></label>
         <p class="acct-err" role="alert" hidden></p>
         <div class="acct-actions"><button class="btn btn-primary" type="submit">Entsperren</button>
-        <button class="btn btn-ghost btn-sm" type="button" data-rk>Passwort vergessen? Wiederherstellungsschlüssel verwenden</button></div>
+        <button class="btn btn-ghost btn-sm acct-wrap-btn" type="button" data-rk>Passwort vergessen? Wiederherstellungsschlüssel verwenden</button></div>
       </form><p class="acct-sync-err acct-err" hidden></p></div>`));
     const f = $('form', box), err = $('.acct-err', f), btn = $('[type=submit]', f);
     f.addEventListener('submit', async e => {
@@ -537,12 +581,13 @@ async function deleteAccountFlow() {
 }
 
 // ------------------------------------------------------------------ devices
-async function renderDevices(box) {
+async function renderDevices(box, onCount = () => {}) {
   box.innerHTML = '<div class="acct-dev-loading muted small">Geräte werden geladen …</div>';
   let list = [], me = null;
   try { [list, me] = await Promise.all([A.listDevices(), A.deviceId()]); }
-  catch (e) { box.innerHTML = `<p class="muted small acct-dev-loading">${esc(e.userMessage || 'Die Geräteliste ist gerade nicht verfügbar.')}</p>`; return; }
+  catch (e) { box.innerHTML = `<p class="muted small acct-dev-loading">${esc(e.userMessage || 'Die Geräteliste ist gerade nicht verfügbar.')}</p>`; onCount(null); return; }
   box.innerHTML = '';
+  onCount(list.length);
   if (!list.length) { box.innerHTML = '<p class="muted small acct-dev-loading">Noch keine Geräte.</p>'; return; }
   list.sort((a, b) => (a.device_id === me ? -1 : b.device_id === me ? 1 : 0));
   for (const d of list) {
@@ -555,11 +600,11 @@ async function renderDevices(box) {
       const { promptDialog } = await import('../ui.js');
       const name = await promptDialog('Gerät umbenennen', 'Name dieses Geräts', d.name || '', { okLabel: 'Speichern' });
       if (name == null) return;
-      try { await A.renameDevice(name); renderDevices(box); } catch (e) { errorToast(e); }
+      try { await A.renameDevice(name); renderDevices(box, onCount); } catch (e) { errorToast(e); }
     });
     else $('[data-revoke]', row).addEventListener('click', async () => {
       if (!await confirmDialog('Gerät abmelden?', `„${d.name || 'Gerät'}“ wird abgemeldet und entfernt beim nächsten Kontakt seinen Sync-Schlüssel. Dateien auf dem Gerät bleiben erhalten.`, { okLabel: 'Abmelden' })) return;
-      try { await A.revokeDevice(d.device_id); toast('Gerät abgemeldet', 'success'); renderDevices(box); } catch (e) { errorToast(e); }
+      try { await A.revokeDevice(d.device_id); toast('Gerät abgemeldet', 'success'); renderDevices(box, onCount); } catch (e) { errorToast(e); }
     });
     box.appendChild(row);
   }

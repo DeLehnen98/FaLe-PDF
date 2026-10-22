@@ -106,6 +106,9 @@ const SCHEMAS = {
       salutation: { type: 'string', minLength: 1, maxLength: 120 },
       paragraphs: { type: 'array', minItems: 1, maxItems: 12, items: { type: 'string', minLength: 1, maxLength: 1500 } },
       closing: { type: 'string', maxLength: 80 },
+      // replies only: who wrote the letter we answer (copied from its letterhead – never invented)
+      to_name: { type: 'string', maxLength: 120 }, to_extra: { type: 'string', maxLength: 120 },
+      to_street: { type: 'string', maxLength: 120 }, to_city: { type: 'string', maxLength: 120 },
     },
   },
   // Briefkasten-Assistent: strict extraction schema (only on explicit tap + consent in the app)
@@ -328,18 +331,39 @@ Die Formel beginnt mit „=“ und verwendet Zellbezüge wie A2 oder Bereiche wi
   },
 
   letter: {
-    stream: false, maxInput: 2500, schema: SCHEMAS.letter,
+    stream: false, maxInput: 2500, maxReply: 8000, schema: SCHEMAS.letter,
     prepare(input, o) {
       const r = reqStr(input.request, 'Anliegen', this.maxInput, { min: 10 });
       const tone = pick(o.tone, ['neutral', 'freundlich', 'bestimmt'], 'neutral');
       const l = lang(o.lang);
       const rcpt = optStr(input.recipient, 200);
+      const reply = input.reply == null || input.reply === '' ? null : reqStr(input.reply, 'Schreiben', this.maxReply, { min: 40 });
+      const replyRule = reply ? `
+Es ist eine ANTWORT auf das Schreiben in <schreiben>. Beziehe dich im Betreff und im ersten Satz darauf (z. B. „Ihr Schreiben vom …“) und übernimm Aktenzeichen, Kunden-, Vertrags- oder Rechnungsnummern und Daten genau so, wie sie dort stehen – nur diese Angaben darfst du aus dem Schreiben übernehmen. Antworte auf das, was der Nutzer im Anliegen möchte; behaupte nichts, was nicht im Anliegen oder im Schreiben steht. Fülle to_name, to_extra, to_street und to_city mit der Absenderanschrift des Schreibens (aus dem Briefkopf), aber nur, wenn sie dort eindeutig steht – sonst weglassen.` : ' Lass to_name, to_extra, to_street und to_city weg.';
       return {
         system: `${BASE}\nSchreibe den Text eines Geschäftsbriefs nach DIN 5008 (nur Betreff, Anrede, Brieftext, Grußformel – Absender, Empfängeranschrift und Datum ergänzt die App). Ton: ${tone}.
-Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten (Namen, Adressen, Kunden-, Vertrags- oder Kontonummern, Daten): Wo solche Angaben fehlen, setze einen Platzhalter in eckigen Klammern, z. B. [Vertragsnummer] oder [Datum]. Fristen nur nennen, wenn sie im Anliegen stehen oder allgemein üblich sind (dann als Vorschlag in eckigen Klammern). ${langLine(l)}\n${jsonRule(SCHEMAS.letter)}`,
-        user: `${rcpt ? `Empfänger: ${rcpt}\n` : ''}Anliegen:\n<text>\n${r.text}\n</text>`,
-        maxTokens: 1400,
-        truncated: r.truncated, note: note(r.truncated, this.maxInput),
+Der Betreff steht ohne das Wort „Betreff“. Erfinde KEINE persönlichen Daten (Namen, Adressen, Kunden-, Vertrags- oder Kontonummern, Daten): Wo solche Angaben fehlen, setze einen Platzhalter in eckigen Klammern, z. B. [Vertragsnummer] oder [Datum]. Fristen nur nennen, wenn sie im Anliegen stehen oder allgemein üblich sind (dann als Vorschlag in eckigen Klammern).${replyRule} ${langLine(l)}\n${jsonRule(SCHEMAS.letter)}`,
+        user: `${rcpt ? `Empfänger: ${rcpt}\n` : ''}${reply ? `<schreiben>\n${reply.text}\n</schreiben>\n` : ''}Anliegen:\n<text>\n${r.text}\n</text>`,
+        maxTokens: 1500,
+        truncated: r.truncated || (reply && reply.truncated), note: note(r.truncated || (reply && reply.truncated), reply ? this.maxReply : this.maxInput),
+      };
+    },
+  },
+
+  // „Was hat sich geändert?“: two versions of a document (old/new contract, tariff, terms) in plain words
+  compare: {
+    stream: true, maxInput: 16000,
+    prepare(input, o) {
+      const a = reqStr(input.a, 'Erstes Dokument', this.maxInput, { min: 40 });
+      const b = reqStr(input.b, 'Zweites Dokument', this.maxInput, { min: 40 });
+      const l = lang(o.lang);
+      const ta = optStr(input.titleA, 200) || 'Dokument A', tb = optStr(input.titleB, 200) || 'Dokument B';
+      return {
+        system: `${BASE}\nVergleiche zwei Fassungen eines Dokuments (z. B. alter und neuer Vertrag, Tarif oder Bedingungen) für Menschen ohne Fachwissen. A ist die ältere bzw. erste Fassung, B die neuere bzw. zweite.
+Gliedere mit den Zwischenüberschriften (Markdown „## “) „Das Wichtigste“ (1–3 Sätze: was ändert sich für mich?), „Geändert“, „Neu dazugekommen“ und „Weggefallen“ – Stichpunkte, jede Zeile beginnt mit „- “. Bei Änderungen beide Werte nennen: „alt → neu“. Preise, Beträge, Fristen, Laufzeiten, Kündigungsfristen und Prozentsätze exakt übernehmen. Lass einen Abschnitt weg, wenn es dazu nichts gibt; reine Umformulierungen ohne Bedeutungsänderung nicht aufzählen. Sind die Dokumente gar keine Fassungen desselben Dokuments, sag das in einem Satz und nenne nur die wichtigsten Unterschiede. Erfinde nichts. Höchstens ca. 400 Wörter. ${langLine(l)}`,
+        user: `<dokument_a titel="${ta.replace(/"/g, "'")}">\n${a.text}\n</dokument_a>\n<dokument_b titel="${tb.replace(/"/g, "'")}">\n${b.text}\n</dokument_b>`,
+        maxTokens: 1700,
+        truncated: a.truncated || b.truncated, note: note(a.truncated || b.truncated, this.maxInput),
       };
     },
   },

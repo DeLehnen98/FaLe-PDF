@@ -194,6 +194,38 @@ def run(p):
         check('reminders from a sync / at start: no note, no permission prompt', page.locator('dialog[open]').count() == 0
               and page.evaluate("window.__calls.filter(c => c.m === 'request').length") == 0)
     step('no prompt at start / sync', startsync)
+
+    # very first start: the normal start page must never flash up before the intro (js/boot.js ob-first)
+    def noflash():
+        WATCH = """try { localStorage.setItem('fale-onboarding-force', '1'); } catch (e) {}
+          window.__frames = []; (function tick() { const app = document.querySelector('#app'), hero = document.querySelector('#view-start .hero');
+            if (app && hero) window.__frames.push({ visible: getComputedStyle(app).visibility !== 'hidden' && !!hero.offsetHeight, ob: !!document.querySelector('.onboard') });
+            if (window.__frames.length < 4000) requestAnimationFrame(tick); })();"""
+        for label, size in (('phone', {'width': 390, 'height': 844}), ('desktop', {'width': 1280, 'height': 800})):
+            c = browser.new_context(locale='de-DE', viewport=size)
+            c.add_init_script(WATCH)
+            pg = c.new_page()
+            pg.goto(URL)
+            pg.wait_for_selector('.onboard', timeout=20000)
+            pg.wait_for_timeout(300)
+            fr = pg.evaluate('window.__frames')
+            flash = [f for f in fr if f['visible'] and not f['ob']]
+            check(f'{label}: first start shows no start page before the intro', len(fr) > 0 and not flash, (len(fr), flash[:2]))
+            bg = pg.evaluate("getComputedStyle(document.querySelector('.onboard')).backgroundImage")
+            check(f'{label}: intro covers the app completely on the first start', 'gradient' in bg and pg.evaluate("document.querySelector('.onboard').classList.contains('ob-first-run')"))
+            pg.locator('.onboard [data-skip]').click()
+            pg.wait_for_timeout(600)
+            check(f'{label}: after „Überspringen“ the app is visible', pg.evaluate("!document.documentElement.classList.contains('ob-first') && getComputedStyle(document.querySelector('#app')).visibility !== 'hidden'"))
+            pg.reload(); pg.wait_for_selector('#view-start .hero'); pg.wait_for_timeout(500)
+            check(f'{label}: second start: no intro, app shown right away', pg.locator('.onboard').count() == 0 and not pg.evaluate("document.documentElement.classList.contains('ob-first')"))
+            c.close()
+        # a deep link on the first start (shared file, link): no intro, nothing hidden
+        c = browser.new_context(locale='de-DE')
+        c.add_init_script("try { localStorage.setItem('fale-onboarding-force', '1'); } catch (e) {}")
+        pg = c.new_page(); pg.goto(URL + '#/werkzeuge'); pg.wait_for_selector('#view-werkzeuge .tool-card'); pg.wait_for_timeout(800)
+        check('deep link on the first start: tools visible, no hidden app', not pg.evaluate("document.documentElement.classList.contains('ob-first')") and pg.locator('#view-werkzeuge .tool-card').first.is_visible())
+        c.close()
+    step('first start without flash', noflash)
     ctx.close()
     browser.close()
 

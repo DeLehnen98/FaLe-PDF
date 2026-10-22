@@ -229,3 +229,24 @@
 .ai-msg-foot { flex-wrap: wrap; justify-content: flex-start; }
 .ai-msg-foot > details { margin-right: auto; }
 .ai-msg-foot > p { flex: 1 1 100%; }
+/* KI-Werkzeuge in groups (js/ai/entry.js AI_GROUPS) */
+.ai-group + .ai-group { margin-top: 18px; }
+.ai-group-title { font-size: var(--fs-small, 14px); font-weight: 700; color: var(--text-2); margin: 14px 2px 8px; letter-spacing: 0; }
+.ai-group:first-child .ai-group-title { margin-top: 4px; }
+/* Brief einfach erklärt: next steps */
+.ai-next { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); }
+.ai-next > .muted { flex-basis: 100%; }
+/* Auf einen Brief antworten */
+.ai-reply-src .field-label { display: block; margin-bottom: 8px; }
+.ai-reply-src .ai-picker .doc-list { max-height: 320px; overflow: auto; }
+.ai-ideas { display: flex; flex-wrap: wrap; gap: 8px; }
+.ai-ideas .tc-chip { white-space: normal; text-align: left; }
+/* Was hat sich geändert? */
+.ai-cmp-slot > .section-title { justify-content: flex-start; margin-top: 18px; }
+.ai-cmp-n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-size: 0.9375rem; font-weight: 700; flex: none; }
+.ai-cmp-slot .ai-picker .doc-list { max-height: 300px; overflow: auto; }
+/* Text verbessern */
+.ai-rewrite .card + .card, .ai-rewrite .ai-result { margin-top: 14px; }
+.ai-rw-view { margin: 10px 0; }
+.ai-rw-out { max-height: none; }
+.ai-rewrite [data-use] { margin-top: 10px; }

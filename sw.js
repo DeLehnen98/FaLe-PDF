@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-57778a90e6';
+const VERSION = 'v1.0.0-3381da5fac';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -47,6 +47,7 @@ const ASSETS = [
   "./js/ai/chat.js",
   "./js/ai/client.js",
   "./js/ai/common.js",
+  "./js/ai/compare-ai.js",
   "./js/ai/config.js",
   "./js/ai/diff.js",
   "./js/ai/doctext.js",
@@ -57,6 +58,7 @@ const ASSETS = [
   "./js/ai/letter-ai.js",
   "./js/ai/plus.js",
   "./js/ai/retrieval.js",
+  "./js/ai/rewrite.js",
   "./js/ai/routes.js",
   "./js/ai/slides-ai.js",
   "./js/ai/speak.js",
@@ -245,6 +247,7 @@ const ASSETS = [
   "./js/tools/qrscan.js",
   "./js/tools/qrtool.js",
   "./js/tools/reader.js",
+  "./js/tools/recent.js",
   "./js/tools/redact.js",
   "./js/tools/safetyhint.js",
   "./js/tools/scan.js",

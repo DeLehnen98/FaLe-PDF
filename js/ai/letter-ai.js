@@ -3,7 +3,7 @@
 import { $, $$, h, esc, toast, errorToast, debounce, openDialog } from '../ui.js';
 import { oicon, KINDS } from '../office/kinds.js';
 import * as C from './client.js';
-import { statusCard, gate } from './common.js';
+import { statusCard, gate, docPicker, docChip, getDoc } from './common.js';
 import { ensureCloud, showAiError, progressNote } from './ui.js';
 
 const FIELDS = [
@@ -17,7 +17,19 @@ const SENDER = [
   { id: 's_tel', label: 'Telefon (optional)' }, { id: 's_mail', label: 'E-Mail (optional)' },
 ];
 
-export async function mount(screen) {
+// „Auf einen Brief antworten“ (#/ki/antwort): same generator, plus the letter being answered (its text goes to the AI
+// together with the request; Aktenzeichen, numbers and the sender's address are taken from it, nothing is invented)
+const REPLY_IDEAS = [
+  ['Widerspruch', 'Ich widerspreche diesem Bescheid bzw. dieser Forderung, weil …'],
+  ['Ratenzahlung', 'Ich kann den Betrag nicht auf einmal bezahlen und bitte um Ratenzahlung von … Euro im Monat.'],
+  ['Mehr Zeit', 'Ich bitte um eine Verlängerung der Frist bis zum …, weil …'],
+  ['Termin verschieben', 'Ich kann den Termin leider nicht wahrnehmen und bitte um einen neuen Termin.'],
+  ['Unterlagen anfordern', 'Bitte schicken Sie mir eine genaue Aufstellung bzw. die fehlenden Unterlagen zu.'],
+  ['Kündigung bestätigen', 'Bitte bestätigen Sie mir die Kündigung schriftlich mit dem Datum, zu dem der Vertrag endet.'],
+];
+const REPLY_MAX = 8000; // = api/_lib/tasks.js letter.maxReply
+
+export async function mount(screen, { params, reply = false } = {}) {
   const [L, { getProfile }] = await Promise.all([import('../extras/letters.js'), import('../extras/profile.js')]);
   const p = await getProfile().catch(() => null);
   const v = {
@@ -28,13 +40,16 @@ export async function mount(screen) {
   };
   let gen = null; // assigned below (status callbacks may fire earlier)
   const st = statusCard({ onChange: s => gate([gen], s) });
-  const root = h(`<div class="lt-gen ai-letter">
+  let replyDoc = reply && params ? await getDoc(params.get('doc')) : null;
+  const root = h(`<div class="lt-gen ai-letter${reply ? ' ai-reply' : ''}">
     <form class="lt-form" novalidate autocomplete="on">
       <div data-status></div>
+      ${reply ? `<div class="card lt-sec ai-sec ai-reply-src"><span class="field-label">Auf welchen Brief antwortest du?</span><div data-replybox></div></div>` : ''}
       <div class="card lt-sec ai-sec"><div class="lt-grid">
-        <label class="field full"><span class="field-label">Worum geht es? <span class="req" aria-hidden="true">*</span></span>
+        ${reply ? `<div class="field full"><span class="field-label">Schnell auswählen</span><div class="ai-ideas" data-ideas>${REPLY_IDEAS.map(([l], i) => `<button class="tc-chip" type="button" data-idea="${i}">${esc(l)}</button>`).join('')}</div></div>` : ''}
+        <label class="field full"><span class="field-label">${reply ? 'Was möchtest du antworten?' : 'Worum geht es?'} <span class="req" aria-hidden="true">*</span></span>
           <textarea class="input" name="request" rows="4" maxlength="2500" placeholder="z. B. Ich möchte meinen Fitnessstudio-Vertrag zum nächstmöglichen Termin kündigen. Mitgliedsnummer weiß ich gerade nicht." data-no-i18n></textarea>
-          <span class="hint">Deine Absenderdaten werden nicht an die KI gesendet – sie kommen lokal aus deinem Profil.</span></label>
+          <span class="hint">${reply ? 'Gesendet werden dein Anliegen und der Text des gewählten Briefs – deine Absenderdaten nicht, sie kommen lokal aus deinem Profil.' : 'Deine Absenderdaten werden nicht an die KI gesendet – sie kommen lokal aus deinem Profil.'}</span></label>
         <div class="field full"><span class="field-label">Ton</span><div class="seg" role="group" aria-label="Ton"><button type="button" data-tone="neutral" aria-pressed="true">Sachlich</button><button type="button" data-tone="freundlich" aria-pressed="false">Freundlich</button><button type="button" data-tone="bestimmt" aria-pressed="false">Bestimmt</button></div></div>
       </div></div>
       <details class="card lt-sec" open><summary><span>Empfänger</span>${oicon('chevronDown')}</summary><div class="lt-grid">${FIELDS.map(f => `<label class="field"><span class="field-label">${esc(f.label)}</span><input class="input" name="${f.id}" placeholder="${esc(f.ph || '')}" data-no-i18n></label>`).join('')}</div></details>
@@ -57,6 +72,22 @@ export async function mount(screen) {
   screen.body.appendChild(root);
   const form = $('.lt-form', root), paper = $('.lt-paper', root), previewBox = $('.lt-preview', root), draft = $('[data-draft]', root), prep = $('[data-prep]', root);
   let tone = 'neutral';
+  if (reply) {
+    const box = $('[data-replybox]', root);
+    const paintReply = async () => {
+      box.innerHTML = '';
+      if (replyDoc) box.appendChild(docChip(replyDoc, () => { replyDoc = null; history.replaceState(null, '', '#/ki/antwort'); paintReply(); }));
+      else box.appendChild(await docPicker({ title: '', hint: 'Ein Papierbrief? Erst mit dem Scanner fotografieren – dann hier auswählen.', onPick: d => { replyDoc = d; history.replaceState(null, '', `#/ki/antwort?doc=${encodeURIComponent(d.id)}`); paintReply(); } }));
+    };
+    await paintReply();
+    $$('[data-idea]', root).forEach(b => b.addEventListener('click', () => {
+      const ta = $('[name=request]', root);
+      ta.value = REPLY_IDEAS[+b.dataset.idea][1];
+      ta.focus();
+      const dots = ta.value.indexOf('…');
+      if (dots >= 0) ta.setSelectionRange(dots, dots + 1); // the part to fill in is selected
+    }));
+  }
   $$('[data-tone]', root).forEach(b => b.addEventListener('click', () => { tone = b.dataset.tone; $$('[data-tone]', root).forEach(x => x.setAttribute('aria-pressed', String(x === b))); }));
 
   const def = {
@@ -89,13 +120,26 @@ export async function mount(screen) {
 
   gen.addEventListener('click', async () => {
     const req = $('[name=request]', form).value.trim();
+    if (reply && !replyDoc) { toast('Wähle zuerst den Brief, auf den du antworten möchtest.', 'error'); return; }
     if (req.length < 10) { toast('Beschreibe dein Anliegen in ein, zwei Sätzen.', 'error'); $('[name=request]', form).focus(); return; }
     if (!await ensureCloud()) return;
     gen.disabled = true;
-    progressNote(prep, 'Die KI schreibt deinen Brief …');
     try {
-      const r = await C.runTask('letter', { request: req, recipient: v.r_name }, { tone });
+      let replyText = '';
+      if (reply) {
+        progressNote(prep, 'Der Brief wird gelesen …');
+        const { docText } = await import('./doctext.js');
+        replyText = (await docText(replyDoc, { signal: screen.signal, onProgress: (p, l) => progressNote(prep, `${l} ${p ? Math.round(p * 100) + ' %' : ''}`) })).text.trim().slice(0, REPLY_MAX);
+        if (replyText.length < 40) throw Object.assign(new Error('short'), { userMessage: 'In dem gewählten Brief steht kaum Text. Ist es ein Foto? Dann erst mit „Text erkennen“ lesbar machen.' });
+      }
+      progressNote(prep, 'Die KI schreibt deinen Brief …');
+      const r = await C.runTask('letter', { request: req, recipient: v.r_name, ...(reply ? { reply: replyText } : {}) }, { tone });
       const o = r.output;
+      // a reply: the sender of the letter becomes the recipient – only into empty fields
+      if (reply && o.to_name && !v.r_name && !v.r_strasse) {
+        const put = (k, val) => { if (val) { v[k] = String(val); $(`[name=${k}]`, form).value = v[k]; } };
+        put('r_name', o.to_name); put('r_zusatz', o.to_extra); put('r_strasse', o.to_street); put('r_ort', o.to_city);
+      }
       v.subject = o.subject; v.salutation = o.salutation; v.body = o.paragraphs.join('\n\n');
       $('[name=subject]', form).value = v.subject; $('[name=salutation]', form).value = v.salutation; $('[name=body]', form).value = v.body;
       draft.hidden = false; btnDoc.hidden = false; btnPdf.hidden = false;

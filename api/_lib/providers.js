@@ -196,8 +196,23 @@ function mockReply(task, user, system = '') {
       let d = []; try { d = JSON.parse(inner); } catch {}
       return JSON.stringify({ items: (Array.isArray(d) ? d : []).map(x => ({ id: x.id, text: `[DE] ${x.text}` })) });
     }
-    case 'letter': return JSON.stringify({ subject: 'Kündigung meines Vertrags', salutation: 'Sehr geehrte Damen und Herren,',
-      paragraphs: [`hiermit wende ich mich an Sie wegen: ${firstWords}.`, 'Bitte bestätigen Sie mir den Eingang dieses Schreibens bis zum [Datum].'], closing: 'Mit freundlichen Grüßen' });
+    case 'letter': {
+      const reply = (user.match(/<schreiben>\n([\s\S]*?)\n<\/schreiben>/) || [])[1];
+      if (reply) { // deterministic reply: the Aktenzeichen of the letter + its sender as recipient
+        const az = (reply.match(/Aktenzeichen:?\s*([\w/-]+)/i) || [])[1] || '[Aktenzeichen]';
+        return JSON.stringify({ subject: `Ihr Schreiben – Aktenzeichen ${az}`, salutation: 'Sehr geehrte Damen und Herren,',
+          paragraphs: [`vielen Dank für Ihr Schreiben (Aktenzeichen ${az}).`, `Mein Anliegen: ${firstWords}.`], closing: 'Mit freundlichen Grüßen',
+          to_name: 'Stadtwerke Teststadt GmbH', to_street: 'Hauptstraße 1', to_city: '12345 Teststadt' });
+      }
+      return JSON.stringify({ subject: 'Kündigung meines Vertrags', salutation: 'Sehr geehrte Damen und Herren,',
+        paragraphs: [`hiermit wende ich mich an Sie wegen: ${firstWords}.`, 'Bitte bestätigen Sie mir den Eingang dieses Schreibens bis zum [Datum].'], closing: 'Mit freundlichen Grüßen' });
+    }
+    case 'compare': {
+      const a = (user.match(/<dokument_a[^>]*>\n([\s\S]*?)\n<\/dokument_a>/) || [])[1] || '';
+      const b = (user.match(/<dokument_b[^>]*>\n([\s\S]*?)\n<\/dokument_b>/) || [])[1] || '';
+      const price = t => (t.match(/(\d+,\d{2}) ?€/) || [])[1] || '?';
+      return `## Das Wichtigste\nTest-Vergleich: Der Preis ändert sich.\n## Geändert\n- Preis: ${price(a)} € → ${price(b)} €\n## Neu dazugekommen\n- ${b.split(/\s+/).slice(0, 4).join(' ')}`;
+    }
     default: return 'OK';
   }
 }

@@ -40,6 +40,14 @@
     if (l !== 'de') { document.documentElement.classList.add('i18n-hold'); setTimeout(function () { document.documentElement.classList.remove('i18n-hold'); }, 300); }
   } catch (e) {}
 
+  // first start: the intro (js/extras/onboarding.js) is loaded after the app – hide the app until it is on screen,
+  // so a new user never sees the normal start page flash up first (same conditions as maybeShowOnboarding)
+  try {
+    var ob = localStorage.getItem('fale-onboarded') !== '1' && (!navigator.webdriver || localStorage.getItem('fale-onboarding-force') === '1') &&
+      (!location.hash || /^#\/(start)?$/.test(location.hash) || localStorage.getItem('fale-onboarding-step') !== null);
+    if (ob) { document.documentElement.classList.add('ob-first'); setTimeout(function () { document.documentElement.classList.remove('ob-first'); }, 8000); }
+  } catch (e) {}
+
   // "Install as an app" (web build): the browser's install event can fire before the app module has loaded –
   // keep it for js/install.js. The native apps never get this event.
   try { window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.__faleInstallEvt = e; }); } catch (e) {}

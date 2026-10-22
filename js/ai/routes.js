@@ -1,5 +1,6 @@
 // Routing for the AI screens: #/ki, #/ki/chat, #/ki/zusammenfassen, #/ki/uebersetzen, #/ki/folien,
-// #/ki/lernkarten, #/ki/brief, #/ki/bild, #/ki/plus, #/ki/einstellungen (all optional ?doc=<id>).
+// #/ki/lernkarten, #/ki/brief, #/ki/bild, #/ki/erklaeren, #/ki/vergleichen, #/ki/verbessern, #/ki/antwort,
+// #/ki/pro, #/ki/einstellungen (all optional ?doc=<id>).
 import { openScreen } from '../screen.js';
 import { errorToast, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
@@ -8,6 +9,10 @@ import { loadAiCss } from './ui.js';
 const SCREENS = {
   '': { title: 'KI-Assistent', sub: 'Fragen, zusammenfassen, übersetzen – du entscheidest, was gesendet wird', load: () => import('./hub.js') },
   chat: { title: 'Chat mit Dokument', sub: 'Antworten mit Seitenangaben', load: () => import('./chat.js') },
+  erklaeren: { title: 'Brief einfach erklärt', sub: 'Worum geht es, was muss ich tun – und bis wann?', load: () => import('./textops.js').then(m => ({ mount: (s, c) => m.mount(s, { ...c, op: 'summarize', preset: 'erklaeren' }) })) },
+  vergleichen: { title: 'Was hat sich geändert?', sub: 'Zwei Fassungen eines Dokuments vergleichen', load: () => import('./compare-ai.js') },
+  verbessern: { title: 'Text verbessern', sub: 'Verbessern, kürzen, förmlicher – mit Vorher/Nachher', load: () => import('./rewrite.js') },
+  antwort: { title: 'Auf einen Brief antworten', sub: 'Brief wählen, Anliegen sagen, Antwort erhalten', load: () => import('./letter-ai.js').then(m => ({ mount: (s, c) => m.mount(s, { ...c, reply: true }) })) },
   zusammenfassen: { title: 'Zusammenfassen', sub: 'Das Wichtigste auf einen Blick', load: () => import('./textops.js').then(m => ({ mount: (s, c) => m.mount(s, { ...c, op: 'summarize' }) })) },
   uebersetzen: { title: 'Übersetzen', sub: 'Dokumente und Texte in viele Sprachen', load: () => import('./textops.js').then(m => ({ mount: (s, c) => m.mount(s, { ...c, op: 'translate' }) })) },
   folien: { title: 'Folien per KI', sub: 'Thema rein, fertige Präsentation raus', load: () => import('./slides-ai.js') },

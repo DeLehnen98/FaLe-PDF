@@ -22,8 +22,10 @@ export function splitParts(text, max) {
   return parts;
 }
 
-export async function mount(screen, { params, op }) {
+export async function mount(screen, { params, op, preset = '' }) {
   const isSum = op === 'summarize';
+  const explain = preset === 'erklaeren'; // „Brief einfach erklärt“: the plain-language summary + next steps
+  const route = explain ? 'erklaeren' : isSum ? 'zusammenfassen' : 'uebersetzen';
   let doc = await getDoc(params.get('doc'));
   let source = doc ? 'doc' : (params.get('text') ? 'text' : 'doc');
   const engine = await engineSwitch(isSum ? 'summarize' : 'translate');
@@ -36,17 +38,22 @@ export async function mount(screen, { params, op }) {
     <div data-srcbox></div>
     <div class="card card-pad ai-options">
       ${isSum ? `<div class="field"><span class="field-label">Art der Zusammenfassung</span>
-        <div class="seg seg-grid" role="group" aria-label="Art der Zusammenfassung"><button type="button" data-mode="kurz" aria-pressed="true">Kurz</button><button type="button" data-mode="einfach" aria-pressed="false">Einfach erklärt</button><button type="button" data-mode="stichpunkte" aria-pressed="false">Stichpunkte</button><button type="button" data-mode="ausfuehrlich" aria-pressed="false">Ausführlich</button></div></div>`
+        <div class="seg seg-grid" role="group" aria-label="Art der Zusammenfassung"><button type="button" data-mode="kurz" aria-pressed="${!explain}">Kurz</button><button type="button" data-mode="einfach" aria-pressed="${explain}">Einfach erklärt</button><button type="button" data-mode="stichpunkte" aria-pressed="false">Stichpunkte</button><button type="button" data-mode="ausfuehrlich" aria-pressed="false">Ausführlich</button></div></div>`
       : `<label class="field"><span class="field-label">Übersetzen nach</span><select class="select" name="target">${TARGET_LANGS.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select></label>`}
       <div class="field" data-engine-field><span class="field-label">Wo soll die KI rechnen?</span></div>
     </div>
     <p class="ai-prep muted small" data-prep hidden></p>
     <section class="card ai-result" data-result hidden>
-      <div class="ai-result-head"><strong>${isSum ? 'Zusammenfassung' : 'Übersetzung'}</strong><span class="muted small" data-meta></span></div>
+      <div class="ai-result-head"><strong>${explain ? 'Einfach erklärt' : isSum ? 'Zusammenfassung' : 'Übersetzung'}</strong><span class="muted small" data-meta></span></div>
       <p class="ai-note-line" data-note hidden></p>
       <div class="ai-output" data-out data-no-i18n></div>
       <div data-more></div>
       <div data-acts></div>
+      ${explain ? `<div class="ai-next" data-next hidden><span class="muted small">Und jetzt?</span>
+        <a class="btn btn-soft btn-sm" href="#/ki/antwort" data-next-reply>${oicon('mail')} Antwort schreiben</a>
+        <a class="btn btn-soft btn-sm" href="#/fristen" data-next-due>${oicon('bell')} Frist eintragen</a>
+        <a class="btn btn-ghost btn-sm" href="#/ki/chat" data-next-chat>${oicon('comment')} Nachfragen</a></div>
+      <p class="ai-disclaimer">${oicon('info')}<span>Keine Rechtsberatung. Prüfe Fristen und Beträge im Original – bei wichtigen Schreiben frag im Zweifel bei einer Beratungsstelle nach.</span></p>` : ''}
     </section>
   </div>`);
   $('[data-status]', wrap).appendChild(st.el);
@@ -56,7 +63,7 @@ export async function mount(screen, { params, op }) {
   const srcBox = $('[data-srcbox]', wrap), prep = $('[data-prep]', wrap), result = $('[data-result]', wrap), out = $('[data-out]', wrap);
   const noteEl = $('[data-note]', wrap), more = $('[data-more]', wrap), metaEl = $('[data-meta]', wrap);
   if (!isSum) $('[name=target]', wrap).value = outputLang() === 'de' ? 'en' : 'de';
-  let mode = 'kurz';
+  let mode = explain ? 'einfach' : 'kurz';
   $$('[data-mode]', wrap).forEach(b => b.addEventListener('click', () => { mode = b.dataset.mode; $$('[data-mode]', wrap).forEach(x => x.setAttribute('aria-pressed', String(x === b))); }));
   let textArea = null;
 
@@ -69,14 +76,14 @@ export async function mount(screen, { params, op }) {
     } else if (doc) {
       srcBox.appendChild(docChip(doc, () => { doc = null; renderSource(); }));
     } else {
-      srcBox.appendChild(await docPicker({ title: 'Dokument wählen', onPick: d => { doc = d; history.replaceState(null, '', `#/ki/${isSum ? 'zusammenfassen' : 'uebersetzen'}?doc=${encodeURIComponent(d.id)}`); renderSource(); } }));
+      srcBox.appendChild(await docPicker({ title: explain ? 'Welchen Brief?' : 'Dokument wählen', hint: explain ? 'Ein Papierbrief? Erst mit dem Scanner fotografieren – dann hier auswählen.' : '', onPick: d => { doc = d; history.replaceState(null, '', `#/ki/${route}?doc=${encodeURIComponent(d.id)}`); renderSource(); } }));
     }
   }
   $$('[data-src]', wrap).forEach(b => b.addEventListener('click', () => { source = b.dataset.src; renderSource(); }));
   await renderSource();
   screen.body.appendChild(wrap);
 
-  go = h(`<button class="btn btn-primary" type="button" data-go>${oicon(isSum ? 'summary' : 'translate')} ${isSum ? 'Zusammenfassen' : 'Übersetzen'}</button>`);
+  go = h(`<button class="btn btn-primary" type="button" data-go>${oicon(isSum ? 'summary' : 'translate')} ${explain ? 'Einfach erklären' : isSum ? 'Zusammenfassen' : 'Übersetzen'}</button>`);
   screen.setFoot([go]);
   function updateGate(s) {
     if (!go) return;
@@ -89,7 +96,7 @@ export async function mount(screen, { params, op }) {
   let fullText = '', parts = [], partIdx = 0, translated = [], ac = null;
   const title = () => (doc && source === 'doc' ? doc.name.replace(/\.[^.]+$/, '') : 'Eigener Text');
   const acts = resultActions(() => (isSum ? out.dataset.raw || '' : translated.join('\n\n')), {
-    title: () => `${title()} – ${isSum ? 'Zusammenfassung' : 'Übersetzung'}`,
+    title: () => `${title()} – ${explain ? 'Einfach erklärt' : isSum ? 'Zusammenfassung' : 'Übersetzung'}`,
     heading: () => (isSum ? `Zusammenfassung: ${title()}` : ''),
     sayLang: () => (isSum ? outputLang() : $('[name=target]', wrap).value),
   });
@@ -173,6 +180,16 @@ export async function mount(screen, { params, op }) {
       noteEl.innerHTML = notes.length ? `${oicon('info')}<span>${esc(notes.join(' '))}</span>` : '';
       metaEl.textContent = engine.value() === 'device' ? 'Auf dem Gerät berechnet' : 'Cloud-KI';
       renderMore();
+      const nextBox = $('[data-next]', wrap);
+      if (nextBox) {
+        nextBox.hidden = false;
+        const q = doc && source === 'doc' ? `?doc=${encodeURIComponent(doc.id)}` : '';
+        $('[data-next-reply]', nextBox).hidden = !q; $('[data-next-chat]', nextBox).hidden = !q;
+        $('[data-next-reply]', nextBox).setAttribute('href', `#/ki/antwort${q}`);
+        $('[data-next-chat]', nextBox).setAttribute('href', `#/ki/chat${q}`);
+        // a date in the explanation → offer the reminder right away
+        $('[data-next-due]', nextBox).hidden = !/\b\d{1,2}\.\s?\d{1,2}\.\s?(\d{2}){1,2}\b|\bbis (zum|spätestens)\b|Frist/i.test(out.dataset.raw || '');
+      }
     } catch (e) {
       if (e && e.name === 'AbortError') { toast('Abgebrochen', 'info'); }
       else { if (!translated.length && !(out.dataset.raw)) result.hidden = true; showAiError(e); }

@@ -8,17 +8,41 @@ import { aiHidden } from './hidden.js';
 import { blocked as companyBlocked } from '../policy.js';
 import { platformName } from '../platform.js';
 
-export const AI_FEATURES = [
-  { id: 'chat', title: 'Chat mit Dokument', desc: 'Fragen stellen – Antworten mit klickbaren Seitenangaben.', icon: 'comment', href: '#/ki/chat', doc: true },
-  { id: 'zusammenfassen', title: 'Zusammenfassen', desc: 'Kurz, ausführlich oder als Stichpunkte.', icon: 'summary', href: '#/ki/zusammenfassen', doc: true },
-  { id: 'uebersetzen', title: 'Übersetzen', desc: 'Dokumente und Texte in über 20 Sprachen – als Word, Text oder PDF.', icon: 'translate', href: '#/ki/uebersetzen', doc: true },
-  { id: 'folien', title: 'Folien per KI', desc: 'Thema oder Text rein – fertige Präsentation mit Design.', icon: 'kslides', href: '#/ki/folien', doc: true },
-  { id: 'lernkarten', title: 'Lernkarten & Quiz', desc: 'Aus Skripten lernen – mit Wiederholung im richtigen Abstand.', icon: 'bookOpen', href: '#/ki/lernkarten', doc: true },
-  { id: 'brief', title: 'Brief per KI', desc: 'Anliegen in eigenen Worten – Brief nach DIN 5008.', icon: 'letter', href: '#/ki/brief' },
-  { id: 'bild', title: 'Bild übersetzen', desc: 'Foto von Schild, Speisekarte oder Schreiben übersetzen.', icon: 'camera', href: '#/ki/bild' },
-  { id: 'schreibhilfe', title: 'Schreibhilfe', desc: 'Im Dokument-Editor: Text markieren → ⋮ → KI-Schreibhilfe.', icon: 'edit', href: '#/neu/dokument' },
-  { id: 'formel', title: 'Formel-Assistent', desc: 'In Tabellen: beschreiben, was du ausrechnen willst → ⋮ → Formel-Assistent.', icon: 'fx', href: '#/neu/tabelle' },
+// The KI tools, grouped by what people want to do. New tools: one entry here (+ a route in routes.js).
+// group: verstehen | schreiben | uebersetzen | lernen | editoren; doc: takes ?doc=<id>; local: no cloud AI needed
+export const AI_GROUPS = [
+  { id: 'verstehen', title: 'Verstehen' },
+  { id: 'schreiben', title: 'Schreiben & Antworten' },
+  { id: 'uebersetzen', title: 'Übersetzen' },
+  { id: 'lernen', title: 'Lernen & Präsentieren' },
+  { id: 'editoren', title: 'In Dokument und Tabelle' },
 ];
+export const AI_FEATURES = [
+  { id: 'erklaeren', group: 'verstehen', title: 'Brief einfach erklärt', desc: 'Worum geht es, was muss ich tun – und bis wann? In einfachen Worten.', icon: 'letter', href: '#/ki/erklaeren', doc: true, top: true },
+  { id: 'chat', group: 'verstehen', title: 'Chat mit Dokument', desc: 'Fragen stellen – Antworten mit klickbaren Seitenangaben.', icon: 'comment', href: '#/ki/chat', doc: true, top: true },
+  { id: 'zusammenfassen', group: 'verstehen', title: 'Zusammenfassen', desc: 'Kurz, einfach erklärt, ausführlich oder als Stichpunkte.', icon: 'summary', href: '#/ki/zusammenfassen', doc: true },
+  { id: 'vergleichen', group: 'verstehen', title: 'Was hat sich geändert?', desc: 'Zwei Fassungen vergleichen – z. B. alter und neuer Vertrag oder Tarif.', icon: 'compare', href: '#/ki/vergleichen', doc: true },
+  { id: 'formular', group: 'verstehen', title: 'Formular erklärt', desc: 'Jedes Feld in einfachen Worten – mit dem Formular-Lotsen ausfüllen.', icon: 'form', href: '#/werkzeug/formular-lotse', local: true },
+  { id: 'antwort', group: 'schreiben', title: 'Auf einen Brief antworten', desc: 'Brief wählen, sagen was du willst – fertige Antwort nach DIN 5008.', icon: 'mail', href: '#/ki/antwort', doc: true, top: true },
+  { id: 'brief', group: 'schreiben', title: 'Brief per KI', desc: 'Anliegen in eigenen Worten – Brief nach DIN 5008.', icon: 'notes', href: '#/ki/brief' },
+  { id: 'verbessern', group: 'schreiben', title: 'Text verbessern', desc: 'Verbessern, kürzen, förmlicher oder Rechtschreibung – mit Vorher/Nachher.', icon: 'edit', href: '#/ki/verbessern' },
+  { id: 'uebersetzen', group: 'uebersetzen', title: 'Übersetzen', desc: 'Dokumente und Texte in über 20 Sprachen – als Word, Text oder PDF.', icon: 'translate', href: '#/ki/uebersetzen', doc: true, top: true },
+  { id: 'bild', group: 'uebersetzen', title: 'Bild übersetzen', desc: 'Foto von Schild, Speisekarte oder Schreiben übersetzen.', icon: 'camera', href: '#/ki/bild' },
+  { id: 'folien', group: 'lernen', title: 'Folien per KI', desc: 'Thema oder Text rein – fertige Präsentation mit Design.', icon: 'kslides', href: '#/ki/folien', doc: true },
+  { id: 'lernkarten', group: 'lernen', title: 'Lernkarten & Quiz', desc: 'Aus Skripten lernen – mit Wiederholung im richtigen Abstand.', icon: 'bookOpen', href: '#/ki/lernkarten', doc: true },
+  { id: 'schreibhilfe', group: 'editoren', title: 'Schreibhilfe', desc: 'Im Dokument-Editor: Text markieren → ⋮ → KI-Schreibhilfe.', icon: 'edit', href: '#/neu/dokument' },
+  { id: 'formel', group: 'editoren', title: 'Formel-Assistent', desc: 'In Tabellen: beschreiben, was du ausrechnen willst → ⋮ → Formel-Assistent.', icon: 'fx', href: '#/neu/tabelle' },
+];
+
+/** One section per group (same card markup as the other tools); hrefOf adds e.g. ?doc= on the hub. */
+export function aiGroupsHtml({ hrefOf = f => f.href, attr = f => `data-tool="ai-${f.id}"`, role = '' } = {}) {
+  return AI_GROUPS.map(g => {
+    const list = AI_FEATURES.filter(f => f.group === g.id);
+    if (!list.length) return '';
+    return `<div class="ai-group" data-ai-group="${g.id}"><h3 class="ai-group-title">${esc(g.title)}</h3><div class="tool-grid ai-grid"${role ? ' role="list"' : ''}>${list.map(f =>
+      `<a class="tool-card" href="${esc(hrefOf(f))}" ${attr(f)}${role ? ` role="${role}"` : ''}><span class="tile-ic ai-ic">${oicon(f.icon)}</span><span class="tc-text"><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></span></a>`).join('')}</div></div>`;
+  }).join('');
+}
 
 /** Card on the start page (no network). */
 // the start page and Werkzeuge are built once – follow the „KI ausblenden“ switch afterwards
@@ -49,12 +73,10 @@ export function renderToolSection(sec) {
   loadAiCss();
   sec.dataset.filled = '1';
   sec.hidden = false;
-  sec.innerHTML = `<div class="ai-access" data-ai-access></div><h2 class="section-title">KI-Werkzeuge</h2><div class="tool-grid ai-grid"></div>
-    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst.</span></p>`;
+  sec.innerHTML = `<div class="ai-access" data-ai-access></div><h2 class="section-title">KI-Werkzeuge</h2>${aiGroupsHtml()}
+    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst. KI kann Fehler machen: Prüfe Beträge, Fristen und Namen.</span></p>`;
   paintAccess(sec.querySelector('[data-ai-access]'));
   if (!sec.dataset.accessWatch) { sec.dataset.accessWatch = '1'; window.addEventListener('fale:ai-quota', () => paintAccess(sec.querySelector('[data-ai-access]'))); }
-  const grid = sec.querySelector('.ai-grid');
-  AI_FEATURES.forEach(f => grid.appendChild(h(`<a class="tool-card" href="${f.href}" data-tool="ai-${f.id}"><span class="tile-ic ai-ic">${oicon(f.icon)}</span><span class="tc-text"><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></span></a>`)));
 }
 
 /** Status card on "Ich" (only cached state – no network). */

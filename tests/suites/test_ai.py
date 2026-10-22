@@ -164,7 +164,7 @@ def main():
             check('no /api calls on start/werkzeuge/ich', not api_calls, str(api_calls[:3]))
             check('start: KI card', page.locator('#view-start .ai-start-card').count() == 1)
             goto(page, '#/werkzeuge', 700)
-            check('werkzeuge: KI section with 9 cards', page.locator('[data-ai-section] .tool-card').count() == 9)
+            check('werkzeuge: KI section with 14 cards in 5 groups', page.locator('[data-ai-section] .tool-card').count() == 14 and page.locator('[data-ai-section] .ai-group').count() == 5, page.locator('[data-ai-section] .tool-card').count())
             check('werkzeuge: Alltag section with its 6 cards (+ web tools)', page.locator('.alltag-grid .tool-card').count() >= 6 and page.locator('.alltag-grid [data-tool="x-schreiben"]').count() == 1)
             page.fill('#tool-search', 'Lernkarten')
             page.wait_for_timeout(300)
@@ -181,7 +181,7 @@ def main():
             page.wait_for_selector('.ai-status[data-state]')
             page.wait_for_selector('[data-consent]', timeout=5000)
             check('hub: needs consent banner', page.locator('.ai-banner.consent').count() == 1)
-            check('hub: 9 feature cards', page.locator('.ai-hub .ai-grid .tool-card').count() == 9)
+            check('hub: 14 feature cards in groups', page.locator('.ai-hub .ai-grid .tool-card').count() == 14 and page.locator('.ai-hub .ai-group-title').first.inner_text() == 'Verstehen')
             check('anonymous status check only (no token)', all('/api/ai/quota' in u for (_, m, u) in api_calls), str(api_calls))
             shot(page, 'desktop_hub_consent_light')
             page.locator('[data-consent]').click()
@@ -298,6 +298,70 @@ def main():
             harness('/__test/reset')  # back to 5 per day, nothing used (the device registers again on its own)
             page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.ensureToken({ renew: true }); await C.refreshQuota().catch(() => null); }")
         step('chat extras', chat_extras)
+
+        def new_tools():
+            harness('/__test/env?FREE_DAILY=100')
+            tmp = os.path.join(OUT, '_docs'); os.makedirs(tmp, exist_ok=True)
+            def txt(name, body):
+                pth = os.path.join(tmp, name); open(pth, 'w', encoding='utf-8').write(body); return import_file(page, pth, name, 'text/plain')
+            old = txt('Tarif-alt.txt', 'Stromvertrag Tarif Basis. Monatspreis 10,00 € brutto. Kündigungsfrist ein Monat zum Monatsende. Laufzeit 12 Monate.')
+            new = txt('Tarif-neu.txt', 'Stromvertrag Tarif Basis Plus. Monatspreis 12,00 € brutto. Kündigungsfrist drei Monate. Laufzeit 24 Monate. Neu: Grundgebühr.')
+            letter = txt('Brief-Stadtwerke.txt', 'Stadtwerke Teststadt GmbH, Hauptstraße 1, 12345 Teststadt. Aktenzeichen: AZ-2026/17. Ihre Jahresabrechnung: Nachzahlung 240,00 € bis zum 15.11.2026.')
+            # Brief einfach erklärt: summary in „einfach“ mode + next steps
+            goto(page, f'#/ki/erklaeren?doc={letter}', 1200)
+            page.wait_for_selector('[data-go]')
+            check('erklaeren: „Einfach erklärt“ is preselected', page.locator('[data-mode="einfach"]').get_attribute('aria-pressed') == 'true')
+            page.evaluate("() => { const of = window.fetch; window.__aiBodies = []; window.fetch = (u, o) => { if (String(u).includes('/api/ai') && o && o.body) window.__aiBodies.push(String(o.body)); return of(u, o); }; }")
+            page.locator('[data-go]').click()
+            page.wait_for_selector('[data-next]:not([hidden])', timeout=10000)
+            body = page.evaluate("() => (window.__aiBodies || []).pop() || ''")
+            check('erklaeren: sends the summarize task with mode „einfach“', '"task":"summarize"' in body and '"mode":"einfach"' in body, body[:200])
+            check('erklaeren: next steps link the reply and the chat for this letter', page.locator(f'[data-next-reply][href="#/ki/antwort?doc={letter}"]').count() == 1 and page.locator(f'[data-next-chat][href="#/ki/chat?doc={letter}"]').count() == 1)
+            shot(page, 'desktop_erklaeren_light')
+            # Auf einen Brief antworten: the letter's text goes along, the sender becomes the recipient
+            page.locator('[data-next-reply]').click()
+            page.wait_for_selector('.ai-reply [name=request]', timeout=8000)
+            check('antwort: the letter is preselected', page.locator('.ai-reply-src .ai-docchip').count() == 1 and 'Brief-Stadtwerke' in page.locator('.ai-reply-src').inner_text())
+            page.locator('[data-idea="1"]').click()
+            check('antwort: a quick idea fills the request', 'Ratenzahlung' in page.locator('[name=request]').input_value())
+            page.fill('[name=request]', 'Ich bitte um Ratenzahlung von 40 Euro im Monat.')
+            page.locator('[data-go]').click()
+            page.wait_for_selector('[data-draft]:not([hidden])', timeout=10000)
+            prev = page.locator('.lt-paper').inner_text()
+            body = page.evaluate("() => (window.__aiBodies || []).pop() || ''")
+            check('antwort: request + letter text sent (as „reply“)', '"reply":' in body and 'AZ-2026/17' in body and 'Ratenzahlung' in body, body[:300])
+            check('antwort: Aktenzeichen in the subject, sender of the letter as recipient', 'AZ-2026/17' in page.locator('[name=subject]').input_value() and 'Stadtwerke Teststadt GmbH' in prev and '12345 Teststadt' in prev, prev.replace(chr(10), ' | ')[:500])
+            shot(page, 'desktop_antwort_light')
+            # Was hat sich geändert?
+            goto(page, f'#/ki/vergleichen?doc={old}&doc2={new}', 1200)
+            page.wait_for_selector('[data-go]')
+            check('vergleichen: both documents preselected', page.locator('.ai-cmp-slot .ai-docchip').count() == 2)
+            page.locator('[data-go]').click()
+            page.wait_for_function("() => (document.querySelector('[data-out]') || {}).innerText && document.querySelector('[data-out]').innerText.includes('→') && !document.querySelector('#tool-screen [data-go]').disabled", timeout=10000)
+            out = page.locator('[data-out]').inner_text()
+            check('vergleichen: changes in plain words („alt → neu“, with headings)', '10,00 € → 12,00 €' in out.replace('\xa0', ' ') and 'Geändert' in out, out)
+            shot(page, 'desktop_vergleichen_light')
+            goto(page, '#/ki/vergleichen', 1000)
+            check('vergleichen without documents: two pickers, „Vergleichen“ asks for the first', page.locator('.ai-cmp-slot .ai-picker').count() == 2)
+            page.locator('[data-go]').click()
+            page.wait_for_timeout(400)
+            check('vergleichen: friendly hint instead of a request', 'ältere Fassung' in page.locator('#toasts').inner_text())
+            # Text verbessern: diff + clean view
+            goto(page, '#/ki/verbessern', 1000)
+            page.fill('[name=text]', 'Das ist ein sehr sehr schlecht geschriebener Text mit Feler.')
+            page.locator('[data-mode="rechtschreibung"]').click()
+            page.locator('[data-go]').click()
+            page.wait_for_selector('[data-result]:not([hidden])', timeout=10000)
+            check('verbessern: changes marked (ins/del)', page.locator('[data-out] ins').count() >= 1 and page.locator('[data-out] del').count() >= 1)
+            page.locator('[data-view="clean"]').click()
+            clean = page.locator('[data-out]').inner_text()
+            check('verbessern: „Neuer Text“ shows the clean proposal', 'Fehler' in clean and 'Feler' not in clean, clean)
+            page.locator('[data-use]').click()
+            check('verbessern: „Mit dem Vorschlag weiterarbeiten“ puts it into the text box', 'Fehler' in page.locator('[name=text]').input_value())
+            shot(page, 'desktop_verbessern_light')
+            harness('/__test/reset')
+            page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.ensureToken({ renew: true }); await C.refreshQuota().catch(() => null); }")
+        step('new ai tools', new_tools)
 
         def summarize():
             goto(page, f"#/ki/zusammenfassen?doc={state['doc']}", 1200)
@@ -707,7 +771,7 @@ def main():
             vis = page.evaluate("""() => { const v = e => !!(e.offsetWidth || e.offsetHeight); const cards = [...document.querySelectorAll('#view-werkzeuge .tool-card')].filter(v);
               return { ai: cards.filter(c => (c.dataset.tool || '').startsWith('ai-')).length, other: cards.filter(c => !(c.dataset.tool || '').startsWith('ai-')).length,
                        sel: (document.querySelector('[data-tab-link="ki"]') || {}).getAttribute && document.querySelector('[data-tab-link="ki"]').getAttribute('aria-selected') }; }""")
-            check('KI-Werkzeuge page shows only the KI tools (tab selected)', vis['ai'] == 9 and vis['other'] == 0 and vis['sel'] == 'true', vis)
+            check('KI-Werkzeuge page shows only the KI tools (tab selected)', vis['ai'] == 14 and vis['other'] == 0 and vis['sel'] == 'true', vis)
             check('KI page explains: one video per request, watch to the end', 'bis zum Ende' in page.locator('[data-ai-access]').inner_text())
             shot(page, 'phone_ki_tab_light')
             goto(page, '#/werkzeuge', 900)
@@ -766,7 +830,7 @@ def main():
     print(f'\n{passed} passed, {len(results) - passed} failed')
     for r in results:
         if not r[1]:
-            print('  FAILED:', r[0], r[2][:200] if r[2] else '')
+            print('  FAILED:', r[0], str(r[2])[:200] if r[2] else '')
     return 0 if passed == len(results) else 1
 
 

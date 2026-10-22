@@ -142,6 +142,16 @@ await step('json tasks', async () => {
   check('flashcards', r.status === 200 && r.j.output.cards.length === 3 && r.j.output.cards[0].front);
   r = await ai(toks[0], 'letter', { request: 'Ich möchte meinen Handyvertrag kündigen.' });
   check('letter', r.status === 200 && r.j.output.subject && r.j.output.paragraphs.length === 2 && r.j.output.salutation.startsWith('Sehr'));
+  check('letter: no reply → no recipient fields', !('to_name' in r.j.output));
+  const t2 = await token(12);
+  r = await ai(t2, 'letter', { request: 'Ich bitte um Ratenzahlung.', reply: 'Stadtwerke Teststadt GmbH. Aktenzeichen: AZ-9/1. Bitte zahlen Sie 240,00 € bis zum 15.11.2026.' });
+  check('letter reply: letter text used (Aktenzeichen), sender as recipient', r.status === 200 && r.j.output.subject.includes('AZ-9/1') && r.j.output.to_name === 'Stadtwerke Teststadt GmbH' && r.j.output.to_city === '12345 Teststadt', JSON.stringify(r.j));
+  r = await ai(t2, 'letter', { request: 'Ich bitte um Ratenzahlung.', reply: 'zu kurz' });
+  check('letter reply: a letter text that is too short → 400', r.status === 400 && r.j.error === 'bad_input');
+  r = await ai(t2, 'compare', { a: 'Tarif alt. Monatspreis 10,00 € brutto. Kündigungsfrist ein Monat.', b: 'Tarif neu. Monatspreis 12,00 € brutto. Kündigungsfrist drei Monate.', titleA: 'alt.pdf', titleB: 'neu.pdf' });
+  check('compare: changes „alt → neu“', r.status === 200 && r.j.output.includes('10,00 € → 12,00 €') && r.j.output.includes('## Geändert'), JSON.stringify(r.j));
+  r = await ai(t2, 'compare', { a: 'Nur ein Dokument mit genug Text darin, damit es zählt.' });
+  check('compare: second document missing → 400', r.status === 400 && r.j.error === 'bad_input');
   // bad JSON → 502 + refund
   const before = (await pj('/api/ai/quota', { token: toks[1] })).j.quota.used;
   r = await ai(toks[1], 'slides', { topic: 'Test [[mock:badjson]]' });
@@ -408,11 +418,11 @@ await step('schema + helpers', async () => {
   check('dayKey Europe/Berlin crosses midnight', Sec.dayKey('Europe/Berlin', new Date('2026-10-14T22:30:00Z')) === '2026-10-15' && Sec.dayKey('Europe/Berlin', new Date('2026-10-14T21:30:00Z')) === '2026-10-14');
   check('ipHash day-scoped + salted', Sec.ipHash('s', '1.2.3.4', '2026-10-14') !== Sec.ipHash('s', '1.2.3.4', '2026-10-15') && Sec.ipHash('s', '1.2.3.4', 'd') !== Sec.ipHash('t', '1.2.3.4', 'd'));
   const tasks = Object.keys(TASKS).sort().join(',');
-  check('all server tasks defined', tasks === 'chat,explain,flashcards,form_answers,form_help,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
+  check('all server tasks defined', tasks === 'chat,compare,explain,flashcards,form_answers,form_help,formula,image_translate,letter,letter_extract,quiz,rewrite,slides,summarize,translate', tasks);
   for (const [id, t] of Object.entries(TASKS)) {
     let threw = null; try { t.prepare({ text: 'x', question: 'x', request: 'x', chunks: [{ page: 1, text: 'x' }] }, {}); } catch (e) { threw = e; }
-    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })), fields: Array.from({ length: 200 }, (_, i) => ({ id: 'q' + i, label: 'Beschriftung '.repeat(40), context: 'K'.repeat(400), options: Array.from({ length: 30 }, () => 'O'.repeat(200)) })), items: Array.from({ length: 80 }, (_, i) => ({ id: 'a' + i, label: 'L'.repeat(400), text: 'Antwort '.repeat(300) })) }, { count: 99 }); } catch (e) { return e; } })();
-    check(`task ${id}: limits enforced`, !(big instanceof Error) && big.user.length <= (t.maxInput || 3000) + 2500 && big.maxTokens > 0 && big.maxTokens <= 7000, big instanceof Error ? big.message : big.user.length);
+    const big = (() => { try { return t.prepare({ text: 'Satz. '.repeat(20000), a: 'Alt. '.repeat(20000), b: 'Neu. '.repeat(20000), question: 'Frage?', request: 'Anliegen '.repeat(400), topic: 'T', chunks: Array.from({ length: 30 }, (_, i) => ({ page: i + 1, text: 'abc '.repeat(2000) })), fields: Array.from({ length: 200 }, (_, i) => ({ id: 'q' + i, label: 'Beschriftung '.repeat(40), context: 'K'.repeat(400), options: Array.from({ length: 30 }, () => 'O'.repeat(200)) })), items: Array.from({ length: 80 }, (_, i) => ({ id: 'a' + i, label: 'L'.repeat(400), text: 'Antwort '.repeat(300) })) }, { count: 99 }); } catch (e) { return e; } })();
+    check(`task ${id}: limits enforced`, !(big instanceof Error) && big.user.length <= (t.maxInput || 3000) * (id === 'compare' ? 2 : 1) + 2500 && big.maxTokens > 0 && big.maxTokens <= 7000, big instanceof Error ? big.message : big.user.length);
     void threw;
   }
   // Formular-Lotse tasks: only labels go out, ids are echoed, unknown ids and a bad language code are dropped
@@ -424,6 +434,12 @@ await step('schema + helpers', async () => {
     check('summarize unknown mode → kurz', sx.maxTokens === 500);
     const ch = TASKS.chat.prepare({ question: 'Wann?', chunks: [{ page: 1, text: 'Am 3. Juli.' }] }, { lang: 'de' });
     check('chat prompt: direct answer first, honest when the passages say nothing', /direkten Antwort/.test(ch.system) && /rate nicht/.test(ch.system));
+    const lr = TASKS.letter.prepare({ request: 'Ich bitte um Ratenzahlung.', reply: 'Aktenzeichen 4711. ' + 'Text des Briefs. '.repeat(900) }, { lang: 'de' });
+    check('letter reply prompt: answer the letter, copy only its numbers, the letter is cut at 8000 chars', /ANTWORT auf das Schreiben/.test(lr.system) && lr.user.includes('<schreiben>') && lr.user.length < 8000 + 600 && lr.truncated === true, lr.user.length);
+    const ln = TASKS.letter.prepare({ request: 'Ich kündige meinen Vertrag.' }, { lang: 'de' });
+    check('letter without reply: no letter block, recipient fields left out', !ln.user.includes('<schreiben>') && /Lass to_name/.test(ln.system));
+    const cp = TASKS.compare.prepare({ a: 'Alt '.repeat(30), b: 'Neu '.repeat(30), titleA: 'a"b', titleB: 'B' }, { lang: 'en' });
+    check('compare prompt: old → new, the four headings, exact numbers, quotes in titles neutralised', /„alt → neu“/.test(cp.system) && /Weggefallen/.test(cp.system) && /exakt/.test(cp.system) && cp.user.includes('titel="a\'b"') && /Englisch/.test(cp.system), cp.user.slice(0, 80));
     const p = TASKS.form_help.prepare(inp, { lang: 'uk' });
     check('form_help: labels as JSON data, user language in the prompt, empty labels dropped', /Ukrainisch/.test(p.system) && p.user.includes('Mietstufe') && p.user.includes('"q2x"') && !p.user.includes('"q3"'), p.user);
     let bad = null; try { TASKS.form_help.prepare({ fields: [{ id: 'x', label: '' }] }, {}); } catch (e) { bad = e; }
