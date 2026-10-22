@@ -118,7 +118,7 @@ In deiner Sprache – die App folgt deinem Handy. Ohne Wasserzeichen.
 Alle Dateien liegen in `store/graphics/` – Zuordnung zu den Play-Console-Feldern siehe `store/graphics/README.md`.
 Reihenfolge der Telefon-Screenshots (Deutsch) mit Untertitel im Bild:
 
-1. `phone/de/01_home.png` – „Alle Pro-Funktionen an Bord“
+1. `phone/de/01_home.png` – „Alle Werkzeuge an Bord“
 2. `phone/de/02_sign.png` – „Unterschreiben in Sekunden“
 3. `phone/de/03_scan.png` – „Scannen mit Kantenerkennung“
 4. `phone/de/04_ocr.png` – „Texterkennung – auch offline“

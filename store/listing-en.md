@@ -123,7 +123,7 @@ Speaks your language: the app follows your phone's language automatically. No wa
 All files are in `store/graphics/` – see `store/graphics/README.md` for the Play Console slot of each file.
 Phone screenshot order (English) with the caption shown in the image:
 
-1. `phone/en/01_home.png` – "All pro features on board"
+1. `phone/en/01_home.png` – "All tools on board"
 2. `phone/en/02_sign.png` – "Sign in seconds"
 3. `phone/en/03_scan.png` – "Scan with edge detection"
 4. `phone/en/04_ocr.png` – "Text recognition, offline"
