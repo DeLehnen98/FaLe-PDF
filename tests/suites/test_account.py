@@ -392,7 +392,7 @@ with sync_playwright() as pw:
         q = ev(B, """async () => { const C = await import('/js/ai/client.js'); C.giveConsent('mock'); return (await C.refreshQuota()); }""")
         check('Plus follows the account to device B (AI quota)', q and q['plus'] is True and q['scope'] == 'account', q)
         goto(B, '#/konto', 1800)
-        check('B: Konto shows FaLe Plus', 'FaLe Plus' in B.locator('[data-plus]').inner_text() and 'aktiv' in B.locator('[data-plus]').inner_text())
+        check('B: Konto shows FaLe Pro', 'FaLe Pro' in B.locator('[data-plus]').inner_text() and 'aktiv' in B.locator('[data-plus]').inner_text())
         goto(B, '#/ki', 1800)
         check('quota widget says "für dein Konto"', B.locator('[data-aq-scope]').count() >= 1 and 'für dein Konto' in B.locator('[data-aq-scope]').first.inner_text())
         st = ev(A, 'window.__t.sync()')

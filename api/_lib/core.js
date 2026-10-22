@@ -79,12 +79,22 @@ function makeCore(overrides = {}) {
     return { id: cfg.provider, label: cfg.providerLabel, company: cfg.providerCompany, privacy: cfg.providerNote };
   }
 
+  /** Android app re-signed by someone else (a modified copy)? Only checked when the genuine certificate is configured. */
+  function requireGenuineApp(cfg, body) {
+    if (!cfg.appCerts || !cfg.appCerts.length) return;
+    const cl = body && body.client && typeof body.client === 'object' ? body.client : null;
+    if (!cl || cl.platform !== 'android' || cl.native !== true) return; // web, iPhone, Windows: no APK to check
+    const got = String(cl.cert || '').toLowerCase().split(',').map(x => x.replace(/[^0-9a-f]/g, ''));
+    if (!got.some(x => cfg.appCerts.includes(x))) throw new H.HttpError(403, 'modified_app', 'Diese App-Version wurde verändert. Bitte lade FaLe PDF aus dem Google Play Store.');
+  }
+
   // ---------------------------------------------------------------- POST /api/ai/register
   const register = H.handler(['POST'], async (req, res, cfg) => {
     requireBase(cfg);
     const body = await H.readJson(req, 4096);
     const id = body.deviceId;
     if (typeof id !== 'string' || !Sec.DEVICE_ID_RE.test(id)) throw new H.HttpError(400, 'bad_input', 'Ungültige Gerätekennung');
+    requireGenuineApp(cfg, body);
     const c = ctxOf(req, cfg);
     const store = deps.getStore(cfg);
     const r = await store.registerIp({ ip: c.ip, day: c.day, limit: cfg.registerIpDaily });
@@ -123,6 +133,7 @@ function makeCore(overrides = {}) {
     requireBase(cfg);
     const body = await H.readJson(req, cfg.maxBodyBytes);
     const device = deviceOf(cfg, body.token);
+    requireGenuineApp(cfg, body);
     const task = Object.prototype.hasOwnProperty.call(TASKS, body.task) ? TASKS[body.task] : null;
     if (!task) throw new H.HttpError(400, 'unknown_task', 'Unbekannte Aufgabe');
     const input = body.input && typeof body.input === 'object' && !Array.isArray(body.input) ? body.input : {};

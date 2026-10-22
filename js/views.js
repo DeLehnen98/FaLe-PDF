@@ -10,6 +10,7 @@ import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
 import { isNative, platformName } from './platform.js';
 import { APP_VERSION } from './version.js';
+import { aiHidden } from './ai/hidden.js';
 import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
@@ -171,7 +172,7 @@ export async function renderHome() {
       <div class="acct-start" data-acct-start hidden></div>
       <div class="free-card card" data-free hidden>
         <span class="free-ic">${oicon('gift')}</span>
-        <div><strong>Auch die Pro-Funktionen sind dabei</strong><span>Kein Konto, keine Wasserzeichen. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
+        <div><strong>Alle Werkzeuge sind dabei</strong><span>Bearbeiten, Unterschreiben, Umwandeln – ohne Konto und ohne Wasserzeichen. Deine Dateien bleiben auf deinem Gerät.</span></div>
         <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
       </div>
       <div class="month-box" data-month hidden></div>`;
@@ -191,7 +192,7 @@ export async function renderHome() {
     TOOLS.forEach(t => { if (!quick.includes(t) && quick.length < 12) quick.push(t); });
     quick.forEach(t => {
       const b = h(`<button class="tile ${t.soon ? 'soon' : ''} g-${t.group || ''}" type="button" role="listitem" data-tool="${t.id}">
-        <span class="tile-ic">${oicon(t.icon)}</span><span class="tile-label">${esc(Tools.toolText(t, simpleOn()).tile)}</span>${t.soon ? '<span class="badge">Bald</span>' : t.pro ? '<span class="badge pro-badge" title="Bei anderen Apps kostenpflichtig">Pro</span>' : ''}</button>`);
+        <span class="tile-ic">${oicon(t.icon)}</span><span class="tile-label">${esc(Tools.toolText(t, simpleOn()).tile)}</span>${t.soon ? '<span class="badge">Bald</span>' : ''}</button>`);
       b.addEventListener('click', () => toolClick(t));
       tiles.appendChild(b);
     });
@@ -316,16 +317,41 @@ const GROUPS = Tools.GROUPS || [
 function toolCard(t) {
   const tx = Tools.toolText(t, simpleOn());
   const b = h(`<button class="tool-card" type="button" data-tool="${t.id}"><span class="tile-ic">${oicon(t.icon)}</span>
-    <span class="tc-text"><h3>${esc(tx.title)}</h3><p>${esc(tx.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : t.pro ? '<span class="badge pro-badge inline-badge" title="Bei anderen Apps oft nur im Abo">Pro-Funktion</span>' : ''}</span></button>`);
+    <span class="tc-text"><h3>${esc(tx.title)}</h3><p>${esc(tx.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : ''}</span></button>`);
   b.addEventListener('click', () => toolClick(t));
   return b;
 }
 
-export function renderTools(initialQ = null) {
+// Two pages in one view: „Werkzeuge“ (#/werkzeuge) and „KI-Werkzeuge“ (#/werkzeuge/ki), with the FaLe Pro bar on top.
+const TOOL_TABS = {
+  tools: { title: 'Werkzeuge', sub: 'Alles läuft auf deinem Gerät – ohne Konto und ohne Wasserzeichen.' },
+  ki: { title: 'KI-Werkzeuge', sub: 'Fragen, zusammenfassen, übersetzen – gesendet wird nur, was du auswählst.' },
+};
+let toolTab = 'tools';
+function setToolTab(el, tab) {
+  const ai = !aiHidden();
+  if (tab === 'ki' && !ai) tab = 'tools';
+  const changed = el.dataset.tab !== tab;
+  el.dataset.tab = tab;
+  toolTab = tab;
+  $$('[data-tab-link]', el).forEach(a => { const on = a.dataset.tabLink === tab; a.setAttribute('aria-selected', String(on)); a.classList.toggle('on', on); });
+  const k = $('[data-tab-link="ki"]', el);
+  if (k) k.hidden = !ai;
+  $('.page-title', el).textContent = t(TOOL_TABS[tab].title);
+  $('.page-sub', el).textContent = t(TOOL_TABS[tab].sub);
+  if (changed) { const m = $('#main'); if (m) m.scrollTop = 0; }
+}
+
+export function renderTools(initialQ = null, sub = null) {
   const el = viewEl('werkzeuge');
   if (!el.dataset.built) {
     el.dataset.built = '1';
-    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alles läuft auf deinem Gerät – auch die Pro-Funktionen.</p></div></div>
+    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub"></p></div></div>
+      <div class="pro-bar-slot" data-pro-bar hidden></div>
+      <nav class="tool-tabs" role="tablist" aria-label="Werkzeuge oder KI-Werkzeuge">
+        <a role="tab" href="#/werkzeuge" data-tab-link="tools" aria-selected="true">${oicon('tools')}<span>Werkzeuge</span></a>
+        <a role="tab" href="#/werkzeuge/ki" data-tab-link="ki" aria-selected="false">${oicon('sparkle')}<span>KI-Werkzeuge</span></a>
+      </nav>
       <div data-search></div>
       <section class="simple-sec" data-section="simple" data-simple-tools hidden></section>
       <div data-groups></div>
@@ -378,14 +404,14 @@ export function renderTools(initialQ = null) {
         let vis = 0;
         $$('.tool-card', sec).forEach(c => { const m = !n || c.textContent.toLocaleLowerCase('de').includes(n) || (c.dataset.kw || '').includes(n); c.hidden = !m; if (m) vis++; });
         sec.hidden = !vis;
-        if (vis) any = true;
+        if (vis && (n || (sec.dataset.section === 'ki') === (el.dataset.tab === 'ki'))) any = true; // no search: only the open page counts
       });
       $('[data-noresult]', el).hidden = any;
     };
     const form = searchForm('tool-search', 'Werkzeug suchen', filter, filter);
     $('[data-search]', el).appendChild(form);
     el._filter = filter;
-    import('./ai/entry.js').then(m => m.renderToolSection($('[data-ai-section]', el))).catch(() => {}); // KI-Assistent section
+    import('./ai/entry.js').then(m => { m.renderToolSection($('[data-ai-section]', el)); m.renderProBar($('[data-pro-bar]', el)); }).catch(() => {}); // KI-Werkzeuge + FaLe Pro
     import('./share/entry.js').then(m => m.renderToolSection($('[data-share-section]', el))).catch(() => {}); // Teilen & Unterschreiben
     import('./smart/entry.js').then(m => m.renderToolSection($('[data-smart-section]', el))).catch(() => {}); // Assistenten
     // FaleNetwork web tools (opened in a frame, js/webtools/host.js): into the matching groups + own sections
@@ -397,8 +423,11 @@ export function renderTools(initialQ = null) {
     }).catch(e => console.warn('web tools', e));
     renderSimpleTools(el);
     followSimple(el, renderSimpleTools);
+    window.addEventListener('fale:ai-state', () => setToolTab(el, el.dataset.tab || 'tools')); // „KI ausblenden“
   }
+  setToolTab(el, sub === 'ki' ? 'ki' : 'tools');
   if (initialQ != null) { $('#tool-search', el).value = initialQ; el._filter(initialQ); }
+  else { const q = $('#tool-search', el); el._filter(q ? q.value : ''); }
 }
 
 // „Einfache Ansicht“: a short list first; „Alle Werkzeuge anzeigen“ expands to every section (CSS: html.simple)
@@ -914,7 +943,7 @@ async function renderMeGeneral(el) {
     <div class="card settings-group">
       <div class="settings-row"><div class="label"><strong>„Dein Monat“</strong><span>Kleine Statistik auf der Startseite. Wird nur auf diesem Gerät gezählt.</span></div>
         <label class="switch"><input type="checkbox" data-stats-toggle ${stats.statsEnabled() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">„Dein Monat“ anzeigen</span></label></div>
-      <div class="settings-row"><div class="label"><strong>Hinweis „Pro-Funktionen“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
+      <div class="settings-row"><div class="label"><strong>Hinweis „Alle Werkzeuge sind dabei“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
       <div class="settings-row"><div class="label"><strong>Einführung</strong><span>Die kurze Tour vom ersten Start noch einmal ansehen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-onboarding>Ansehen</button></div>
@@ -924,7 +953,7 @@ async function renderMeGeneral(el) {
       ${ilRow({ href: '#/ki/einstellungen', ic: 'sliders', tone: 'ink', title: 'KI-Einstellungen', sub: 'Cloud-KI an/aus, Datenschutz' })}
     </nav>
     ${android ? `<h2 class="section-title">Werbung</h2>
-    <div class="card settings-group"><div class="settings-row" data-ads-me><div class="label"><strong>Werbe-Einwilligung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.</span></div>
+    <div class="card settings-group"><div class="settings-row" data-ads-me><div class="label"><strong>Werbe-Einwilligung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Pro ist die App werbefrei.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div></div>` : ''}`;
   const theme = currentTheme();
   $$('[data-theme-opt]', el).forEach(b => {

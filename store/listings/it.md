@@ -17,7 +17,7 @@ Firma, scansiona con OCR e modifica PDF – privato, anche offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF è il tuo ufficio privato per smartphone e tablet: leggi, compila, firma, scansiona e modifica PDF – più documenti, fogli di calcolo e presentazioni. Anche le funzioni pro sono incluse, senza account. I tuoi file vengono elaborati sul tuo dispositivo. In più, l’account FaLe li sincronizza tra i tuoi dispositivi con crittografia end-to-end.
+FaLe PDF è il tuo ufficio privato per smartphone e tablet: leggi, compila, firma, scansiona e modifica PDF – più documenti, fogli di calcolo e presentazioni. Tutti gli strumenti sono inclusi, senza account. I tuoi file vengono elaborati sul tuo dispositivo. In più, l’account FaLe li sincronizza tra i tuoi dispositivi con crittografia end-to-end.
 
 LEGGERE PDF
 • Visualizzatore PDF veloce con ricerca, segnalibri e indice
@@ -68,25 +68,25 @@ ASSISTENTE IA (FACOLTATIVO)
 • Chatta con un documento: fai domande e ricevi risposte con i riferimenti alle pagine
 • Riassumi, traduci, aiuto alla scrittura, assistente per le formule, diapositive con l’IA
 • Schede e quiz dai tuoi appunti, lettere con l’IA, traduzione di foto
-• Alcune richieste incluse ogni giorno, senza account. Per averne di più: un video pubblicitario facoltativo o FaLe Plus
+• Senza Pro, un breve video sblocca una richiesta IA; con FaLe Pro tutti gli strumenti IA funzionano senza video
 • Non vuoi l’IA? Un solo interruttore la nasconde del tutto
 • Solo con il tuo consenso; viene inviato solo il testo che selezioni. Le risposte dell’IA possono contenere errori – puoi segnalarci via e-mail quelle problematiche.
 
 EQUO E TRASPARENTE
-• Piccolo banner pubblicitario nelle pagine principali dell’app – senza pubblicità con FaLe Plus
+• Piccolo banner pubblicitario nelle pagine principali dell’app – senza pubblicità con FaLe Pro
 • Nessuna prova che si trasforma in abbonamento, nessun pop-up quando salvi
-• FaLe Plus in abbonamento o con pagamento unico, per sempre – disdici con un tocco, promemoria prima di ogni rinnovo
+• FaLe Pro in abbonamento o con pagamento unico, per sempre – disdici con un tocco, promemoria prima di ogni rinnovo
 
 PRIVATO PER SCELTA
-Nessun account, nessuna analisi dei dati. Account FaLe facoltativo: FaLe Sync (crittografia end-to-end, server a Francoforte – non possiamo leggere nulla) e FaLe Plus su tutti i tuoi dispositivi. Per ottenere richieste IA in più puoi guardare un video pubblicitario facoltativo. Tutto funziona offline, tranne l’IA nel cloud, la condivisione e il trasferimento. I file condivisi sono cifrati end-to-end.
+Nessun account, nessuna analisi dei dati. Account FaLe facoltativo: FaLe Sync (crittografia end-to-end, server a Francoforte – non possiamo leggere nulla) e FaLe Pro su tutti i tuoi dispositivi. Senza Pro, un breve video sblocca una richiesta IA. Tutto funziona offline, tranne l’IA nel cloud, la condivisione e il trasferimento. I file condivisi sono cifrati end-to-end.
 
-Parla la tua lingua: l’app segue automaticamente la lingua del tuo telefono. Senza filigrane. Facoltativo: FaLe Plus per più richieste IA.
+Parla la tua lingua: l’app segue automaticamente la lingua del tuo telefono. Senza filigrane. Facoltativo: FaLe Pro, tutti gli strumenti IA senza video e senza pubblicità.
 ```
 
 ## Feature bullets
 
-- Tutte le funzioni pro incluse – senza account, senza filigrane
-- Piccolo banner pubblicitario nelle pagine principali dell’app – senza pubblicità con FaLe Plus
+- Tutti gli strumenti inclusi – senza account, senza filigrane
+- Piccolo banner pubblicitario nelle pagine principali dell’app – senza pubblicità con FaLe Pro
 - Compila e firma PDF
 - Scansiona con rilevamento dei bordi e riconoscimento del testo (OCR) offline
 - Assistente IA: fai domande ai tuoi documenti, con riferimenti alle pagine (facoltativo)

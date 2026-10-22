@@ -12,7 +12,7 @@ const SCREENS = {
   schreiben: { title: 'Schreiben & Vorlagen', sub: 'Briefe in einer Minute – fertig als Dokument und PDF', load: () => import('./letters.js') },
   gliederung: { title: 'Folien aus Gliederung', sub: 'Text rein, fertige Präsentation raus', load: () => import('../office/outline.js') },
   post: { title: 'Briefe per Post', sub: 'FaLe druckt, kuvertiert und verschickt', load: () => import('../post/screen.js') },
-  konto: { title: 'FaLe-Konto', sub: 'Optional – Sync und Plus auf allen Geräten', load: () => import('../account/screen.js') },
+  konto: { title: 'FaLe-Konto', sub: 'Optional – Sync und Pro auf allen Geräten', load: () => import('../account/screen.js') },
   // Assistenten (js/smart/*)
   briefkasten: { title: 'Briefkasten-Assistent', sub: 'Post verstehen – direkt auf deinem Gerät', load: () => import('../smart/inbox.js') },
   gedaechtnis: { title: 'Frag deine Dokumente', sub: 'Dokumenten-Gedächtnis – offline', load: () => import('../smart/memory.js') },

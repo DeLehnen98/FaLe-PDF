@@ -40,3 +40,7 @@ tests/suites/office4/lo_profile/
 tests/suites/office4/work_t/
 tests/suites/dist_ocr/
 tests/suites/ocrdata/
+windows/src-tauri/target/
+windows/src-tauri/gen/
+windows/src-tauri/icons/
+windows/src-tauri/Cargo.lock

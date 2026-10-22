@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-09e4393481';
+const VERSION = 'v1.0.0-57778a90e6';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -586,6 +586,11 @@ const ASSETS = [
   "./vendor/pptxgenjs/LICENSE",
   "./vendor/pptxgenjs/pptxgen.bundle.js",
   "./vendor-extra/pdf-lib/THIRD_PARTY_LICENSES.txt",
+  "./windows/README.md",
+  "./windows/src-tauri/Cargo.toml",
+  "./windows/src-tauri/build.rs",
+  "./windows/src-tauri/src/main.rs",
+  "./windows/src-tauri/tauri.conf.json",
   "./wt-app/de/add-page-numbers.html",
   "./wt-app/de/alternate-mix.html",
   "./wt-app/de/annotate-pdf.html",

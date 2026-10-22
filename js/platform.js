@@ -498,7 +498,31 @@ async function drainOnce() {
   }
 }
 
+// Windows app (windows/, a Tauri window around this web app): files opened with FaLe PDF („Öffnen mit“, double
+// click) arrive from the shell as [name, base64] in window.__faleDesktopQueue; the shell calls __faleDesktopOpen().
+export const isDesktopApp = () => typeof window !== 'undefined' && !!window.__FALE_DESKTOP__;
+const DESKTOP_TYPES = { pdf: 'application/pdf', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', txt: 'text/plain', csv: 'text/csv', md: 'text/markdown', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png' };
+function setupIncomingDesktop() {
+  const drain = () => {
+    const q = Array.isArray(window.__faleDesktopQueue) ? window.__faleDesktopQueue : [];
+    window.__faleDesktopQueue = [];
+    const files = [];
+    for (const item of q) {
+      try {
+        const [name, b64] = item;
+        const bin = Uint8Array.from(atob(String(b64)), c => c.charCodeAt(0));
+        const nm = cleanName(String(name || 'Datei'));
+        files.push(new File([bin], nm, { type: DESKTOP_TYPES[(nm.split('.').pop() || '').toLowerCase()] || '' }));
+      } catch (e) { console.warn('Datei aus Windows', e); }
+    }
+    if (files.length) deliverIncoming(files, { source: 'Geöffnet' });
+  };
+  window.__faleDesktopOpen = drain;
+  drain();
+}
+
 function setupIncomingWeb() {
+  if (isDesktopApp()) setupIncomingDesktop();
   if (!('launchQueue' in window)) return;
   window.launchQueue.setConsumer(async params => {
     if (!params.files || !params.files.length) return;
@@ -589,7 +613,7 @@ function effectiveDark() {
 // ---------------------------------------------------------------- legal pages
 /** Open a static page (datenschutz.html, impressum.html). Native: in-app dialog (keeps the app state). */
 export async function openLegalPage(path = 'datenschutz.html') {
-  if (!isNative()) { window.open(path, '_blank', 'noopener'); return; }
+  if (!isNative() && !isDesktopApp()) { window.open(path, '_blank', 'noopener'); return; } // Windows app: in-app dialog too
   try {
     const html = await (await fetch(path)).text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -663,7 +687,21 @@ function initNative() {
 }
 
 // re-arm web reminder timers for this session
+function initDesktop() {
+  // Windows app: links that want a new window go to the system browser (the shell opens every page outside the app there)
+  try {
+    document.documentElement.classList.add('desktop-app');
+    document.addEventListener('click', e => {
+      const a = e.target && e.target.closest ? e.target.closest('a[target="_blank"][href]') : null;
+      if (!a || e.defaultPrevented) return;
+      e.preventDefault();
+      location.href = a.href;
+    }); // bubbling: links with their own handler (legal pages, share …) have called preventDefault by now
+  } catch { /* ignore */ }
+}
+
 function initWeb() {
+  if (isDesktopApp()) initDesktop();
   try {
     if (!('Notification' in window) || Notification.permission !== 'granted') return;
     readReminders().forEach(r => { if (r.at > Date.now()) armWebTimer(r); });

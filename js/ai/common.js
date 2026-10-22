@@ -5,6 +5,8 @@ import { thumbHtml, docMeta } from '../components.js';
 import * as db from '../db.js';
 import * as C from './client.js';
 import { quotaWidget, consentDialog, loadAiCss } from './ui.js';
+import { videosHere } from '../monetize.js';
+import { platformName } from '../platform.js';
 
 export const TEXT_KINDS = ['pdf', 'docx', 'txt', 'md', 'pptx', 'xlsx', 'csv'];
 
@@ -40,8 +42,16 @@ export function statusCard({ onChange } = {}) {
       body.innerHTML = `<div class="ai-banner soon">${oicon('sparkle')}<div><strong>KI kommt bald</strong><span>Die Cloud-KI ist noch nicht eingerichtet. Schau bald wieder vorbei – alle anderen Funktionen kannst du schon nutzen.</span></div></div>`;
       return set('not_configured', st);
     }
+    const signedIn = (() => { try { return localStorage.getItem('fale-acct') === '1'; } catch { return false; } })();
+    if (!C.hasConsent() && !videosHere() && st.limits && st.limits.free === 0 && !signedIn) {
+      // web / iPhone: no videos here and no Pro on a FaLe-Konto – explain instead of asking for consent
+      body.innerHTML = platformName() === 'ios'
+        ? `<div class="ai-banner soon" data-app-only>${oicon('info')}<div><strong>Die Cloud-KI kommt bald auch aufs iPhone</strong><span>Alle anderen Werkzeuge funktionieren schon – direkt auf deinem iPhone.</span></div></div>`
+        : `<div class="ai-banner soon" data-app-only>${oicon('info')}<div><strong>Die Cloud-KI gibt es in der FaLe-App für Android</strong><span>Dort schaltet ein kurzes Video eine KI-Anfrage frei. Zusammenfassen und Übersetzen laufen in manchen Browsern auch direkt auf dem Gerät.</span></div></div>`;
+      return set('app_only', st);
+    }
     if (!C.hasConsent()) {
-      body.innerHTML = `<div class="ai-banner consent">${oicon('shield')}<div><strong>Cloud-KI einrichten</strong><span>Einmalig zustimmen – danach täglich ${st.limits && st.limits.free ? st.limits.free : 'einige'} Anfragen inklusive, ohne Konto. Gesendet wird nur der Text, den du auswählst.</span></div><button class="btn btn-primary btn-sm" type="button" data-consent>Zustimmen …</button></div>`;
+      body.innerHTML = `<div class="ai-banner consent">${oicon('shield')}<div><strong>Cloud-KI einrichten</strong><span>Einmalig zustimmen – ohne Konto. Gesendet wird nur der Text, den du auswählst.</span></div><button class="btn btn-primary btn-sm" type="button" data-consent>Zustimmen …</button></div>`;
       $('[data-consent]', body).addEventListener('click', async () => {
         if (await consentDialog(st.provider)) { try { await C.ensureToken(); } catch {} refresh(true); }
       });
@@ -100,6 +110,6 @@ export async function getDoc(id) { return id ? db.getDoc(id).catch(() => null) :
 
 /** Disable/enable the main action buttons of a screen depending on the status card state. */
 export function gate(buttons, state) {
-  const ready = state.kind === 'ready' || state.kind === 'needs_consent';
+  const ready = state.kind === 'ready' || state.kind === 'needs_consent' || state.kind === 'app_only'; // app_only: the tap explains it
   buttons.forEach(b => { if (b) { b.disabled = !ready; b.title = ready ? '' : 'Cloud-KI ist gerade nicht verfügbar'; } });
 }

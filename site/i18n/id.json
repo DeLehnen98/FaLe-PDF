@@ -25,18 +25,19 @@
   },
   "desk": {
     "h2": "Untuk Windows dan Mac",
-    "intro": "Instal FaLe PDF di komputer Anda – seperti program biasa: dengan ikon sendiri, jendela sendiri, dan dapat dipakai tanpa internet. Tanpa akun dan tanpa file installer.",
+    "intro": "Instal FaLe PDF di komputer Anda – seperti program biasa: dengan ikon sendiri, jendela sendiri, dan dapat dipakai tanpa internet. Tanpa akun.",
     "steps": [
       { "b": "Klik “Unduh”.", "t": "FaLe PDF terbuka di browser Anda." },
       { "b": "Konfirmasi “Instal”.", "t": "Browser Anda bertanya sekali saja." },
       { "b": "Selesai.", "t": "Mulai sekarang Anda membuka FaLe PDF dari menu Start (Windows) atau Dock (Mac)." }
     ],
     "download": "Unduh",
+    "setup": "Program Windows (Setup.exe)",
     "dlWindows": "Unduh untuk Windows",
     "dlMac": "Unduh untuk Mac",
     "windowsSoon": "Microsoft Store – segera hadir",
     "windowsReady": "Dapatkan di Microsoft Store",
-    "note": "Di Windows dengan Edge atau Chrome – lalu PDF terbuka dengan klik dua kali. Di Mac dengan Safari (macOS 14 atau lebih baru: di menu File Safari pilih “Add to Dock”), Chrome, atau Edge."
+    "note": "Di Windows dengan Edge atau Chrome – lalu PDF terbuka dengan klik dua kali. Di Mac dengan Safari (macOS 14 atau lebih baru: di menu File Safari pilih “Add to Dock”), Chrome, atau Edge. Untuk Windows juga ada program yang dapat diinstal (Setup.exe): saat pertama kali dijalankan, Windows mungkin bertanya sekali – klik “Informasi lebih lanjut”, lalu “Tetap jalankan”."
   },
   "jobs": {
     "h2": "Yang bisa Anda selesaikan",
@@ -55,13 +56,13 @@
     "items": [
       { "dt": "Tanpa unggahan", "dd": "Pengeditan, konversi, dan pengenalan teks berjalan di perangkat Anda. AI opsional hanya dipakai jika Anda menyalakannya." },
       { "dt": "Tanpa akun", "dd": "Buka dan langsung mulai. Anda hanya memerlukan akun jika memilih menyinkronkan antar perangkat." },
-      { "dt": "Iklan hanya di aplikasi Android", "dd": "Versi browser tidak menampilkan iklan. Aplikasi Android menampilkan banner kecil berlabel di halaman utama – tidak pernah di dalam dokumen. FaLe Plus menghilangkannya." }
+      { "dt": "Iklan hanya di aplikasi Android", "dd": "Versi browser tidak menampilkan iklan. Aplikasi Android menampilkan banner kecil berlabel di halaman utama – tidak pernah di dalam dokumen. FaLe Pro menghilangkannya." }
     ]
   },
   "free": {
     "h2": "Tanpa watermark",
     "intro": "Banyak aplikasi PDF menarik langganan untuk fitur-fitur ini. Di sini semuanya tersedia tanpa watermark.",
-    "note": "Jika ingin mendukung pengembangan, Anda dapat memilih FaLe Plus (menghilangkan iklan banner) atau ucapan terima kasih sekali bayar di aplikasi Android.",
+    "note": "Jika ingin mendukung pengembangan, Anda dapat memilih FaLe Pro (menghilangkan iklan banner) atau ucapan terima kasih sekali bayar di aplikasi Android.",
     "items": ["Tandatangani & isi formulir", "Pengenalan teks (OCR)", "PDF ke Word, Excel, PowerPoint", "Sensor", "Kompres", "Kelola halaman", "PDF/A untuk instansi", "Perlindungan sandi", "Bandingkan PDF", "Pemrosesan batch"]
   },
   "screens": {
@@ -75,7 +76,7 @@
       { "q": "Apakah bisa dipakai offline?", "a": "Ya. Semuanya berfungsi tanpa internet, kecuali AI cloud, berbagi, dan transfer." },
       { "q": "Bisakah saya menginstal FaLe PDF di komputer?", "a": "Bisa. Di bagian “Untuk Windows dan Mac” di atas, klik “Unduh” lalu konfirmasi “Instal”. Di Windows ini berfungsi dengan Edge atau Chrome, di Mac dengan Safari, Chrome, atau Edge. FaLe PDF juga akan segera hadir di Microsoft Store." },
       { "q": "File apa saja yang bisa saya buka?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), teks, Markdown, dan gambar." },
-      { "q": "Apakah ada iklan?", "a": "Di versi browser tidak ada. Di aplikasi Android, banner kecil berlabel muncul di halaman utama – tidak pernah di dalam dokumen, alat, atau editor. FaLe Plus menghilangkan banner. Anda juga bisa menonton video opsional untuk mendapat permintaan AI tambahan." }
+      { "q": "Apakah ada iklan?", "a": "Di versi browser tidak ada. Di aplikasi Android, banner kecil berlabel muncul di halaman utama – tidak pernah di dalam dokumen, alat, atau editor. FaLe Pro menghilangkan banner. Anda juga bisa menonton video opsional untuk mendapat permintaan AI tambahan." }
     ]
   },
   "end": {

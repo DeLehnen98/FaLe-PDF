@@ -25,18 +25,19 @@
   },
   "desk": {
     "h2": "适用于 Windows 和 Mac",
-    "intro": "把 FaLe PDF 安装到你的电脑上——就像普通程序一样：有自己的图标和窗口，没有网络也能使用。无需账号，也不需要安装文件。",
+    "intro": "把 FaLe PDF 安装到你的电脑上——就像普通程序一样：有自己的图标和窗口，没有网络也能使用。无需账号。",
     "steps": [
       { "b": "点击“下载”。", "t": "FaLe PDF 会在你的浏览器中打开。" },
       { "b": "确认“安装”。", "t": "你的浏览器只会询问一次。" },
       { "b": "完成。", "t": "之后你可以从“开始”菜单（Windows）或程序坞（Mac）启动 FaLe PDF。" }
     ],
     "download": "下载",
+    "setup": "Windows 程序（Setup.exe）",
     "dlWindows": "下载 Windows 版",
     "dlMac": "下载 Mac 版",
     "windowsSoon": "Microsoft Store – 即将上架",
     "windowsReady": "从 Microsoft Store 获取",
-    "note": "在 Windows 上请使用 Edge 或 Chrome——这样双击就能打开 PDF。在 Mac 上可使用 Safari（macOS 14 或更高版本：“文件”›“添加到程序坞”）、Chrome 或 Edge。"
+    "note": "在 Windows 上请使用 Edge 或 Chrome——这样双击就能打开 PDF。在 Mac 上可使用 Safari（macOS 14 或更高版本：“文件”›“添加到程序坞”）、Chrome 或 Edge。对于 Windows，还有一个可安装的程序（Setup.exe）：首次启动时 Windows 可能会询问一次——请点击“更多信息”，再点击“仍要运行”。"
   },
   "jobs": {
     "h2": "你能完成的事",
@@ -55,13 +56,13 @@
     "items": [
       { "dt": "不上传", "dd": "编辑、转换和文字识别都在你的设备上完成。只有当你自己开启时，才会使用可选的 AI。" },
       { "dt": "无需账号", "dd": "打开就能用。只有当你想在设备之间同步时，才需要账号。" },
-      { "dt": "广告仅出现在 Android 应用中", "dd": "网页版不显示广告。Android 应用会在主要页面显示一个带标识的小横幅，绝不会出现在文档内。使用 FaLe Plus 即可去除。" }
+      { "dt": "广告仅出现在 Android 应用中", "dd": "网页版不显示广告。Android 应用会在主要页面显示一个带标识的小横幅，绝不会出现在文档内。使用 FaLe Pro 即可去除。" }
     ]
   },
   "free": {
     "h2": "没有水印",
     "intro": "许多 PDF 应用对这些功能收取订阅费。这里没有水印。",
-    "note": "如果你想支持开发，可以在 Android 应用中选择 FaLe Plus（可去除横幅广告）或一次性的感谢。",
+    "note": "如果你想支持开发，可以在 Android 应用中选择 FaLe Pro（可去除横幅广告）或一次性的感谢。",
     "items": ["签名和填写", "文字识别（OCR）", "PDF 转 Word、Excel、PowerPoint", "涂黑", "压缩", "管理页面", "面向机关的 PDF/A", "密码保护", "比较 PDF", "批量处理"]
   },
   "screens": {
@@ -75,7 +76,7 @@
       { "q": "可以离线使用吗？", "a": "可以。除云端 AI、分享和传输外，其他一切功能无需联网。" },
       { "q": "我可以把 FaLe PDF 安装到电脑上吗？", "a": "可以。在上方的“适用于 Windows 和 Mac”中点击“下载”，然后确认“安装”。在 Windows 上请使用 Edge 或 Chrome，在 Mac 上可使用 Safari、Chrome 或 Edge。FaLe PDF 很快也会上架 Microsoft Store。" },
       { "q": "我可以打开哪些文件？", "a": "PDF、Word（DOCX）、Excel（XLSX、CSV）、PowerPoint（PPTX）、文本、Markdown 和图片。" },
-      { "q": "有广告吗？", "a": "网页版没有。Android 应用会在主要页面显示一个带标识的小横幅，绝不会出现在文档、工具或编辑器中。FaLe Plus 可以去除横幅。你还可以选择观看视频，换取额外的 AI 请求。" }
+      { "q": "有广告吗？", "a": "网页版没有。Android 应用会在主要页面显示一个带标识的小横幅，绝不会出现在文档、工具或编辑器中。FaLe Pro 可以去除横幅。你还可以选择观看视频，换取额外的 AI 请求。" }
     ]
   },
   "end": {

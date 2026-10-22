@@ -2,7 +2,7 @@
 - auf den Hauptseiten genau ein Banner unten (ADAPTIVE_BANNER, BOTTOM_CENTER, Test-ID), darüber der Streifen „Anzeige“;
   die App rückt nach oben: Navigation, Plus-Knopf und Meldungen liegen über dem Banner, nichts wird verdeckt
 - weg in Dokumenten, Werkzeugen, Dialogen, Menüs und beim Tippen (Tastatur) – danach wieder da
-- keine Banner: mit FaLe Plus, vor der Einführung, in der Web-Version, in der iPhone-App, wenn keine Anzeige kommt
+- keine Banner: mit FaLe Pro, vor der Einführung, in der Web-Version, in der iPhone-App, wenn keine Anzeige kommt
 - keine Konsolenfehler
 Run: node tests/suites/sec/csp_server.mjs 9202 <repo> ; python3 tests/suites/test_banner.py
 """
@@ -140,7 +140,7 @@ def main():
         # no banners
         ctx, page, errs = ctx_page(br, extra="localStorage.setItem('fale-plus-info', JSON.stringify({ product: 'fale_plus_lifetime', lifetime: true }));")
         page.wait_for_timeout(1500)
-        check('FaLe Plus: no banner at all', 'show' not in calls(page) and not has_ad(page), calls(page))
+        check('FaLe Pro: no banner at all', 'show' not in calls(page) and not has_ad(page), calls(page))
         ctx.close()
         ctx, page, errs = ctx_page(br, extra="localStorage.setItem('fale-plus-info', JSON.stringify({ product: 'fale_plus_monthly', expiresAt: '2020-01-01T00:00:00Z' }));")
         check('Plus expired: banner again', poll(page, "document.documentElement.classList.contains('has-ad')", 8000))

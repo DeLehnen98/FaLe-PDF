@@ -125,6 +125,11 @@ const admob = {
   prepareRewardVideoAd: async o => { A.calls.push(['prepare', o]); A.customData = o.ssv && o.ssv.customData; return { adUnitId: o.adId }; },
   showRewardVideoAd: () => new Promise(async res => {
     A.calls.push(['show']);
+    if (A.closeEarly) { // closed before the end: no reward, no SSV
+      res({ type: '', amount: 0 });
+      setTimeout(() => (A.listeners['onRewardedVideoAdDismissed'] || []).forEach(cb => cb()), 50);
+      return;
+    }
     // simulate Google's server-side verification callback for this device token
     await fetch('/__test/ssv?custom_data=' + encodeURIComponent(A.customData || ''));
     (A.listeners['onRewardedVideoAdReward'] || []).forEach(cb => cb({ type: 'KI', amount: 3 }));
@@ -167,7 +172,7 @@ def main():
             page.fill('#tool-search', '')
             page.dispatch_event('#tool-search', 'input')
             goto(page, '#/einstellungen', 900)
-            check('ich: KI status card', 'Noch nicht eingerichtet' in page.locator('[data-ai-me]').inner_text())
+            check('ich: KI status card (web: where the cloud AI is)', 'FaLe-App für Android' in page.locator('[data-ai-me]').inner_text(), page.locator('[data-ai-me]').inner_text())
             check('ich: text no longer claims "keine Uploads, keine Werbung"', 'keine Uploads, keine Werbung' not in page.locator('#view-einstellungen').inner_text())
         step('start without network', no_network_on_start)
 
@@ -190,7 +195,7 @@ def main():
             check('declined consent: still needs consent', page.locator('[data-consent]').count() == 1)
             consent(page)
             page.wait_for_timeout(500)
-            check('quota after consent: 5 of 5', 'Heute noch 5 von 5' in quota_text(page) and 'gratis' not in quota_text(page), quota_text(page))
+            check('access after consent: 5 unlocked (test server gives 5)', '5 KI-Anfragen freigeschaltet' in quota_text(page) and 'gratis' not in quota_text(page), quota_text(page))
             check('web: no ad button', page.locator('[data-ai-ad]').count() == 0)
             check('web: no Plus upsell (non-commercial hosting until the Play launch)', page.locator('[data-ai-plus]').count() == 0)
             tok = page.evaluate("localStorage.getItem('fale-ai-token')")
@@ -215,7 +220,7 @@ def main():
             check('chat answer streamed with citation', 'Kündigungsfrist' in ans and 'S. 3' in ans, ans)
             cites = page.locator('.ai-msg .ai-answer .ai-cite').all_inner_texts()
             check('first citation is page 3 (BM25 picked the right chunk)', cites and cites[0] == 'S. 3', str(cites))
-            check('quota decremented (4 of 5)', 'Heute noch 4 von 5' in quota_text(page), quota_text(page))
+            check('one used (4 left)', '4 KI-Anfragen freigeschaltet' in quota_text(page), quota_text(page))
             reqs = [u for (_, m, u) in api_calls if u.endswith('/api/ai')]
             check('one AI request for one question', len(reqs) == 1, str(reqs))
             shot(page, 'desktop_chat_light')
@@ -480,11 +485,11 @@ def main():
             page.locator('[data-go]').click()
             page.wait_for_selector('dialog[open] .ai-limit', timeout=6000)
             txt = page.locator('dialog[open]').inner_text()
-            check('quota dialog: friendly, no ad button and no Plus upsell on web – only the tip that the Android app offers a voluntary video', 'aufgebraucht' in txt
-                  and page.locator('dialog[open] .dlg-actions button', has_text='Werbevideo').count() == 0 and 'FaLe Plus' not in txt and 'Android' in txt, txt)
+            check('nothing left on web: friendly dialog, no video button, no Pro upsell – the AI is in the Android app', 'Android-App' in txt
+                  and page.locator('dialog[open] .dlg-actions button', has_text='Video').count() == 0 and 'FaLe Pro' not in txt, txt)
             shot(page, 'desktop_quota_exhausted_light')
             close_dialogs(page)
-            check('quota widget shows 0', 'Kontingent für heute aufgebraucht' in quota_text(page), quota_text(page))
+            check('access line on web with nothing left: where the cloud AI is', 'FaLe-App für Android' in quota_text(page), quota_text(page))
             goto(page, '#/werkzeug/zusammenfuegen', 1000)
             check('non-AI tools still work when quota is exhausted', page.locator('#tool-screen').is_visible())
         step('quota exhaustion', quota_exhausted)
@@ -557,7 +562,7 @@ def main():
 
         def plus_web():
             goto(page, '#/ki/plus', 1200)
-            check('web: #/ki/plus redirects to the AI hub', page.evaluate('location.hash') == '#/ki', page.evaluate('location.hash'))
+            check('web: #/ki/plus (no paid offer) redirects to the KI-Werkzeuge page', page.evaluate('location.hash') == '#/werkzeuge/ki', page.evaluate('location.hash'))
             shot(page, 'desktop_plus_light')
         step('plus web', plus_web)
 
@@ -579,8 +584,7 @@ def main():
             shot(page, 'desktop_study_dark')
             goto(page, '#/start', 900)
             shot(page, 'desktop_start_dark')
-            goto(page, '#/werkzeuge', 900)
-            page.locator('[data-ai-section]').scroll_into_view_if_needed()
+            goto(page, '#/werkzeuge/ki', 900)
             shot(page, 'desktop_werkzeuge_ai_dark')
             set_theme(page, 'light')
         step('desktop dark screenshots', dark_shots)
@@ -624,18 +628,18 @@ def main():
             shot(page, 'phone_hub_consent_light')
             consent(page)
             page.wait_for_selector('[data-ai-ad]', timeout=5000)
-            check('native: ad button shown', 'Werbevideo ansehen (+3)' in page.locator('[data-ai-ad]').inner_text())
+            check('native: video button shown', 'Video ansehen' in page.locator('[data-ai-ad]').inner_text(), page.locator('[data-ai-ad]').inner_text())
             check('ads SDK not initialised before tapping', page.evaluate("window.__admob.calls.length") == 0)
             shot(page, 'phone_hub_ready_light')
             page.locator('[data-ai-ad]').click()
-            page.wait_for_function("() => (document.querySelector('[data-aq-left]') || {}).innerText && document.querySelector('[data-aq-left]').innerText.includes('von 8')", timeout=15000)
+            page.wait_for_function("() => (document.querySelector('[data-aq-left]') || {}).innerText && document.querySelector('[data-aq-left]').innerText.includes('8 KI-Anfragen')", timeout=15000)
             calls = page.evaluate("window.__admob.calls")
             names = [c[0] for c in calls]
             check('UMP consent requested + form shown before ad', names[:3] == ['initialize', 'requestConsentInfo', 'showConsentForm'], str(names))
             prep = next((c[1] for c in calls if c[0] == 'prepare'), {})
             tok = page.evaluate("localStorage.getItem('fale-ai-token')")
             check('rewarded ad prepared with SSV custom data = device token, test id, personalised after consent', prep.get('ssv', {}).get('customData') == tok and prep.get('adId', '').startswith('ca-app-pub-3940256099942544/') and prep.get('npa') is False, str(prep))
-            check('server-verified reward: 8 requests today', 'von 8' in quota_text(page), quota_text(page))
+            check('server-verified reward: 8 requests unlocked today', '8 KI-Anfragen freigeschaltet' in quota_text(page), quota_text(page))
             st = harness('/__test/state')
             check('reward recorded server-side once', st['rewards'] == 1)
             shot(page, 'phone_hub_after_reward_light')
@@ -688,11 +692,72 @@ def main():
         step('phone flows', phone_flows)
 
         def phone_layout():
-            for h_ in ['#/ki', '#/ki/chat', '#/ki/zusammenfassen', '#/ki/lernkarten', '#/ki/plus', '#/ki/brief']:
+            for h_ in ['#/ki', '#/ki/chat', '#/ki/zusammenfassen', '#/ki/lernkarten', '#/ki/pro', '#/ki/brief']:
                 goto(page, h_, 1000)
                 w = page.evaluate("() => Math.max(document.querySelector('#tool-screen').scrollWidth, document.documentElement.scrollWidth)")
                 check(f'phone: no horizontal overflow {h_}', w <= 392, w)
         step('phone layout', phone_layout)
+
+        def pro_and_videos():
+            # the real model: nothing free – one fully watched video unlocks one KI request; FaLe Pro: no videos
+            harness('/__test/reset?FREE_DAILY=0&REWARD_BONUS=1')
+            page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.ensureToken({ renew: true }); await C.refreshQuota(); }")
+            goto(page, '#/werkzeuge/ki', 1300)
+            check('KI-Werkzeuge page: „Auf Pro upgraden“ bar on top', page.locator('[data-pro-bar] .pro-bar[data-pro-state="off"]').count() == 1 and 'Auf Pro upgraden' in page.locator('[data-pro-bar]').inner_text())
+            vis = page.evaluate("""() => { const v = e => !!(e.offsetWidth || e.offsetHeight); const cards = [...document.querySelectorAll('#view-werkzeuge .tool-card')].filter(v);
+              return { ai: cards.filter(c => (c.dataset.tool || '').startsWith('ai-')).length, other: cards.filter(c => !(c.dataset.tool || '').startsWith('ai-')).length,
+                       sel: (document.querySelector('[data-tab-link="ki"]') || {}).getAttribute && document.querySelector('[data-tab-link="ki"]').getAttribute('aria-selected') }; }""")
+            check('KI-Werkzeuge page shows only the KI tools (tab selected)', vis['ai'] == 9 and vis['other'] == 0 and vis['sel'] == 'true', vis)
+            check('KI page explains: one video per request, watch to the end', 'bis zum Ende' in page.locator('[data-ai-access]').inner_text())
+            shot(page, 'phone_ki_tab_light')
+            goto(page, '#/werkzeuge', 900)
+            vis = page.evaluate("""() => { const v = e => !!(e.offsetWidth || e.offsetHeight); const cards = [...document.querySelectorAll('#view-werkzeuge .tool-card')].filter(v);
+              return { ai: cards.filter(c => (c.dataset.tool || '').startsWith('ai-')).length, other: cards.filter(c => !(c.dataset.tool || '').startsWith('ai-')).length }; }""")
+            check('Werkzeuge page: the normal tools, no KI tools', vis['ai'] == 0 and vis['other'] >= 40, vis)
+            doc = import_file(page, os.path.join(DATA, 'vertrag.pdf'), 'vertrag2.pdf', 'application/pdf')
+            goto(page, f'#/ki/chat?doc={doc}', 1300)
+            check('chat: access line asks for a video', 'ein kurzes Video' in quota_text(page), quota_text(page))
+            page.fill('.ai-composer textarea', 'Wann beginnt das Mietverhältnis?')
+            page.locator('[data-send]').click()
+            page.wait_for_selector('dialog[open] .ai-limit', timeout=8000)
+            txt = page.locator('dialog[open]').inner_text()
+            check('no Pro, nothing unlocked: dialog offers the video and says „bis zum Ende“', 'Video ansehen' in txt and 'bis zum Ende' in txt and 'FaLe Pro' in txt, txt)
+            page.locator('dialog[open] button[value="ad"]').click()
+            page.wait_for_selector('.ai-msg-foot:not([hidden])', timeout=20000)
+            st = harness('/__test/state')
+            check('watched to the end: Google confirms → one request unlocked and used, answer shown', st['rewards'] == 1 and page.locator('.ai-msg .ai-answer .ai-cite').count() >= 1, st['rewards'])
+            page.wait_for_timeout(600)
+            check('after using it: the next request needs a new video', 'ein kurzes Video' in quota_text(page), quota_text(page))
+            # closed early: no reward, no answer
+            page.evaluate("window.__admob.closeEarly = true")
+            page.fill('.ai-composer textarea', 'Wie hoch ist die Kaltmiete?')
+            page.locator('[data-send]').click()
+            page.wait_for_selector('dialog[open] .ai-limit', timeout=8000)
+            page.locator('dialog[open] button[value="ad"]').click()
+            page.wait_for_timeout(1500)
+            toasts = page.locator('#toasts').inner_text()
+            check('video closed early: no unlock, clear message, no answer', 'nicht bis zum Ende' in toasts and page.locator('.ai-msg-foot:not([hidden])').count() == 1 and harness('/__test/state')['rewards'] == 1, toasts)
+            page.evaluate("window.__admob.closeEarly = false")
+            # FaLe Pro: no videos, „PRO“ everywhere
+            tok = page.evaluate("localStorage.getItem('fale-ai-token')")
+            harness('/__test/pro?token=' + tok)
+            page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.refreshQuota(); }")
+            page.wait_for_timeout(400)
+            page.fill('.ai-composer textarea', 'Wie hoch ist die Kaltmiete?')
+            page.locator('[data-send]').click()
+            page.wait_for_timeout(300)
+            check('Pro: no video dialog', page.locator('dialog[open] .ai-limit').count() == 0)
+            wait_count(page, '.ai-msg-foot:not([hidden])', 2, 15000)
+            check('Pro: answer without video', page.locator('.ai-msg-foot:not([hidden])').count() == 2 and harness('/__test/state')['rewards'] == 1)
+            check('Pro: access line says Pro', 'FaLe Pro aktiv' in quota_text(page), quota_text(page))
+            goto(page, '#/werkzeuge/ki', 1000)
+            check('Pro: bar shows „FaLe Pro ist aktiv“ and the logo carries „PRO“', page.locator('[data-pro-bar] .pro-bar[data-pro-state="on"]').count() == 1
+                  and page.evaluate("getComputedStyle(document.querySelector('.brand-pro')).display") != 'none')
+            shot(page, 'phone_ki_tab_pro_light')
+            goto(page, '#/ki/pro', 1200)
+            check('Pro page: compare table + „Du hast FaLe Pro“', page.locator('.pro-compare .pc-row').count() == 6 and 'Du hast FaLe Pro' in page.locator('#tool-screen').inner_text())
+            shot(page, 'phone_pro_page_light')
+        step('pro and videos', pro_and_videos)
         ctx.close()
         browser.close()
 

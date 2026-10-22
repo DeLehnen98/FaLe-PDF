@@ -12,8 +12,8 @@
 
 ## Play Console declarations
 
-- **Contains ads**: **yes** (must be set to "Yes" in the Play Console) – Google AdMob in the Android app: a small, labelled banner at the bottom of the main pages (Home, Files, Tools, Me), never inside documents, tools or editors; FaLe Plus removes it. Plus voluntary rewarded video ads for extra AI requests. The web/Windows version shows no ads.
-- **In-app purchases**: yes – the "FaLe Plus" subscription (more AI requests per day), the one-time "FaLe Plus forever" (`fale_plus_lifetime`) and voluntary thank-you tips (`fale_tip_small` / `_medium` / `_large`, consumable); prices are set in the Play Console.
+- **Contains ads**: **yes** (must be set to "Yes" in the Play Console) – Google AdMob in the Android app: a small, labelled banner at the bottom of the main pages (Home, Files, Tools, Me), never inside documents, tools or editors; FaLe Pro removes it. Plus rewarded video ads: without Pro, one short video unlocks one AI request; with FaLe Pro all AI tools work without videos. The web/Windows version shows no ads.
+- **In-app purchases**: yes – the "FaLe Pro" subscription (all AI tools without videos and ads), the one-time "FaLe Pro forever" (`fale_plus_lifetime`) and voluntary thank-you tips (`fale_tip_small` / `_medium` / `_large`, consumable); prices are set in the Play Console.
 - **AI-generated content**: the optional cloud AI is disclosed in the description, incl. how to report problematic answers (contact email).
 
 ## App name (≤ 30)
@@ -31,7 +31,7 @@ Sign, scan with text recognition & edit PDFs – private, works offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. The pro features are included too – no account, no watermarks. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
+FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. All tools are included – no account, no watermarks. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
@@ -88,25 +88,25 @@ AI ASSISTANT (OPTIONAL)
 • Chat with a document: ask questions, get answers with page references
 • Summarize, translate, writing help, formula assistant, slides by AI
 • Flashcards & quizzes from your notes, letters by AI, translate photos
-• A few requests included every day, no account needed. More: a voluntary video ad or FaLe Plus
+• Without Pro, one short video unlocks one AI request – with FaLe Pro all AI tools work without videos
 • Don’t want AI? One switch hides it completely
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
 
 FAIR AND TRANSPARENT
-• The app shows a small banner ad on its main pages – ad-free with FaLe Plus.
+• The app shows a small banner ad on its main pages – ad-free with FaLe Pro.
 • No trial that silently turns into a paid plan, no pop-ups when you save
-• FaLe Plus as a subscription or pay once, forever – cancel with one tap, reminder before every renewal
+• FaLe Pro as a subscription or pay once, forever – cancel with one tap, reminder before every renewal
 
 PRIVATE BY DESIGN
-No account needed, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You can get extra AI requests by watching an optional video ad. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
+No account needed, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Pro on all your devices. Without Pro, one short video unlocks one AI request. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
 
-Speaks your language: the app follows your phone's language automatically. No watermarks. Optional: FaLe Plus for more AI requests.
+Speaks your language: the app follows your phone's language automatically. No watermarks. Optional: FaLe Pro – all AI tools without videos and ads.
 ```
 
 ## Feature bullets
 
-- All pro features on board – no account, no watermarks
-- The Android app shows a small banner ad on its main pages – ad-free with FaLe Plus
+- All tools on board – no account, no watermarks
+- The Android app shows a small banner ad on its main pages – ad-free with FaLe Pro
 - Fill in and sign PDFs
 - Scan with edge detection and offline text recognition (OCR)
 - AI assistant: ask your documents, with page references (optional)

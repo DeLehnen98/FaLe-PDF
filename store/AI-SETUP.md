@@ -1,4 +1,7 @@
-# KI-Assistent, Werbevideos und FaLe Plus einrichten
+# KI-Assistent, Werbevideos und FaLe Pro einrichten
+
+> „FaLe Pro“ hieß früher „FaLe Plus“. Die Produkt-IDs in Google Play bleiben `fale_plus_…` – in der App heißt
+> es überall „FaLe Pro“.
 
 Diese Anleitung ist für dich als Betreiber. Sie erklärt Schritt für Schritt, was du einmalig einrichten musst.
 Ohne diese Schritte zeigt die App freundlich „KI kommt bald“ bzw. „FaLe Plus ist bald verfügbar“ –
@@ -14,8 +17,12 @@ App (Handy/Browser) ──► /api/ai (Vercel, Projekt „fale-pdf“) ──►
 
 - Die App schickt nur den Text, den die Nutzerin für eine Aufgabe auswählt. Der Server speichert **keine Inhalte**
   und protokolliert keine Eingaben – nur Zähler (pseudonyme Geräte-Kennung, gehashte IP, Anzahl pro Tag, 30 Tage).
-- **Kontingent:** 2 Anfragen pro Gerät und Tag inklusive (`FREE_DAILY`). Danach freiwillig: pro Werbevideo +2
-  (`REWARD_BONUS`), höchstens 10 Videos pro Tag (`REWARD_MAX_PER_DAY`). FaLe Plus: bis 200 pro Tag (`PLUS_DAILY`).
+- **Zugang zur KI:** Ohne Pro ist **nichts gratis** (`FREE_DAILY` = 0): **ein ganz angesehenes Werbevideo schaltet
+  eine KI-Anfrage frei** (`REWARD_BONUS` = 1), höchstens 10 Videos pro Tag (`REWARD_MAX_PER_DAY`). Gutgeschrieben
+  wird erst, wenn Google unserem Server das Video bestätigt (SSV) – wer abbricht oder die App schließt, bekommt nichts.
+  **FaLe Pro:** alle KI-Werkzeuge ohne Video, fair bis 200 pro Tag (`PLUS_DAILY`), werbefrei.
+  Web-Version und iPhone haben keine Videos: dort gibt es die Cloud-KI nur mit Pro über ein FaLe-Konto
+  (wer eine kleine Gratis-Menge im Browser möchte: `FREE_DAILY` z. B. auf 1 setzen – gilt dann aber überall).
   Pro Netzwerk (IP) höchstens 40 inklusive Anfragen pro Tag (`IP_DAILY`) gegen Missbrauch.
 - **Hartes Monatsbudget:** `AI_MONTHLY_BUDGET_EUR` (Standard **10 €**). Vor jeder Anfrage reserviert der Server
   die geschätzten Höchstkosten, danach wird abgerechnet. Ist das Budget erreicht, antwortet die App mit
@@ -66,7 +73,8 @@ Für jede Variable: *Environments* = **Production** und **Preview**. Geheimnisse
 | `FREE_DAILY`, `REWARD_BONUS`, `REWARD_MAX_PER_DAY`, `PLUS_DAILY`, `IP_DAILY` | Kontingente (siehe oben) | optional |
 | `ADMOB_REWARDED_AD_UNITS` | deine Rewarded-Anzeigenblock-ID(s), kommagetrennt (Schritt 4) | empfohlen |
 | `ADS_ENABLED` | `false` schaltet Werbevideos ab | optional |
-| `GOOGLE_PLAY_SA_JSON` | kompletter Inhalt der Dienstkonto-JSON-Datei (Schritt 5, **Sensitive**) | für FaLe Plus |
+| `GOOGLE_PLAY_SA_JSON` | kompletter Inhalt der Dienstkonto-JSON-Datei (Schritt 5, **Sensitive**) | für FaLe Pro |
+| `ANDROID_APP_CERT_SHA256` | SHA-256-Fingerabdruck des App-Signaturzertifikats aus der Play Console (siehe „Schutz vor veränderten Apps“) | erst zum Start im Play Store |
 | `PLUS_LIFETIME_PRODUCTS` | IDs der Einmalkäufe „für immer“, kommagetrennt | optional (Standard `fale_plus_lifetime`) |
 | `AI_PROVIDER_PRIVACY_NOTE` | eigener Datenschutz-Satz für den Einwilligungsdialog | optional |
 
@@ -157,3 +165,21 @@ in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
 | „FaLe Plus ist bald verfügbar“ | `GOOGLE_PLAY_SA_JSON` fehlt oder Plugin nicht im Build |
 
 Kontrollblick in Supabase (SQL Editor): `select * from ai_budget;` zeigt reservierte und verbrauchte USD des Monats.
+
+## Schutz vor veränderten Apps (Mods) und Cracks
+
+Was wirklich zählt, prüft **immer der Server** – eine veränderte App oder ein „Crack“ bekommt dadurch nichts geschenkt:
+
+* **FaLe Pro** gilt nur, wenn Google Play dem Server den Kauf bestätigt (`/api/plus-verify`, Dienstkonto).
+* **KI-Freischaltung per Video** gilt nur, wenn Google dem Server das ganz angesehene Video bestätigt (signiertes SSV).
+* **Echtheit der Android-App:** Die App meldet den Fingerabdruck ihres Signaturzertifikats. Ist
+  `ANDROID_APP_CERT_SHA256` gesetzt, lehnt der Server neu signierte (veränderte) Kopien ab – sie bekommen keine KI.
+  Wert: Play Console → *Testen und veröffentlichen → App-Integrität → App-Signatur* → „SHA-256-Zertifikatfingerabdruck“
+  des **App-Signaturschlüssels** (bei mehreren mit Komma trennen). **Erst zum Start im Play Store setzen:** die
+  Test-APKs von GitHub sind mit einem anderen Schlüssel signiert und bekämen sonst keine KI mehr.
+* Die App-Logik in der APK ist minimiert; Windows-Programm und App enthalten keine Schlüssel oder Freischaltungen.
+
+Grenzen (ehrlich): Ganz verhindern lässt sich das Verändern einer App nie. Wer die App umbaut, kann z. B. das Banner
+entfernen – aber weder Pro noch KI-Anfragen erschleichen. Da das Repository öffentlich ist, kann jede/r den Code lesen;
+Geheimnisse liegen ausschließlich in Vercel/GitHub-Secrets. Nächste Stufe, falls nötig: Google **Play Integrity**
+(Play Console → App-Integrität verknüpfen) – lässt sich serverseitig zusätzlich prüfen.

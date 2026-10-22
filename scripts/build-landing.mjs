@@ -29,7 +29,7 @@ export const LANGS = ALL_LANGS.filter(([c]) => existsSync(join(SITE, 'i18n', c +
 export const SUBFOLDERS = LANGS.map(l => l[0]).filter(c => c !== 'de');
 const SCREEN_FILES = ['01_home', '02_sign', '03_scan', '06_sheet', '08_privacy'];
 // product names that must survive translation unchanged (checked against the English strings)
-const KEEP = ['FaLe PDF', 'FaLe Plus', 'FaleNetwork', 'Microsoft Store', 'Play Store', 'App Store', 'Safari', 'Chrome', 'Edge', 'PDF/A', 'DOCX', 'XLSX', 'CSV', 'PPTX', 'OCR', 'Windows', 'Mac', 'Word', 'Excel', 'PowerPoint', 'Markdown'];
+const KEEP = ['FaLe PDF', 'FaLe Pro', 'FaLe Plus', 'FaleNetwork', 'Microsoft Store', 'Play Store', 'App Store', 'Safari', 'Chrome', 'Edge', 'PDF/A', 'DOCX', 'XLSX', 'CSV', 'PPTX', 'OCR', 'Windows', 'Mac', 'Word', 'Excel', 'PowerPoint', 'Markdown'];
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escA = s => esc(s).replace(/"/g, '&quot;');

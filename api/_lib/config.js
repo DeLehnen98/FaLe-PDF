@@ -75,8 +75,10 @@ function getConfig() {
     // EUR per 1 USD (e.g. 0.92). Default slightly high = conservative.
     usdEur: num('USD_EUR', 0.95, { min: 0.1, max: 10 }),
     monthlyBudgetEur: num('AI_MONTHLY_BUDGET_EUR', 10, { min: 0, max: 100000 }),
-    freeDaily: int('FREE_DAILY', 2, { min: 0, max: 1000 }), // 2 free AI requests per device and day, then a voluntary video
-    rewardBonus: int('REWARD_BONUS', 2, { min: 0, max: 100 }),
+    // Without FaLe Pro every KI request is unlocked by one fully watched video (Android app; Google confirms the
+    // reward server-side, see admob-ssv) – nothing free by default. With Pro: all KI tools without videos.
+    freeDaily: int('FREE_DAILY', 0, { min: 0, max: 1000 }),
+    rewardBonus: int('REWARD_BONUS', 1, { min: 0, max: 100 }),
     rewardMaxPerDay: int('REWARD_MAX_PER_DAY', 10, { min: 0, max: 50 }),
     plusDaily: int('PLUS_DAILY', 200, { min: 1, max: 100000 }),
     ipDaily: int('IP_DAILY', 40, { min: 1, max: 100000 }),
@@ -94,6 +96,9 @@ function getConfig() {
     publicAppUrl: publicAppUrl(), // links handed out by the API (see PRIMARY_APP_URL)
     publicOneUrl: publicOneUrl(),
     playPackage: env('PLAY_PACKAGE_NAME') || 'dev.fale.pdf',
+    // Genuine Android app: SHA-256 of the signing certificate(s) Google Play installs (Play Console › App-Integrität ›
+    // App-Signatur, „SHA-256-Zertifikatfingerabdruck“), comma-separated. Set → re-signed (modified) apps get no KI.
+    appCerts: env('ANDROID_APP_CERT_SHA256').split(',').map(x => x.toLowerCase().replace(/[^0-9a-f]/g, '')).filter(x => x.length === 64),
     playSaJson: env('GOOGLE_PLAY_SA_JSON'),
     plusProducts: (env('PLUS_PRODUCTS') || 'fale_plus_monthly,fale_plus_yearly').split(',').map(s => s.trim()).filter(Boolean),
     // one-time purchase "FaLe Plus für immer" (Google Play in-app product, not a subscription)

@@ -1,0 +1,104 @@
+# Builds „FaLe PDF für Windows“ (windows/, Tauri 2) as FaLe-PDF-Setup.exe (NSIS, installs without admin rights)
+# and publishes it on the pre-release "windows-latest". Smoke test: silent install, start, still running after 25 s.
+# Third-party actions are pinned to full commit SHAs (same pins as android.yml).
+name: Windows
+
+on:
+  push:
+    branches: [main]
+    paths: ['windows/**', '.github/workflows/windows.yml', 'icons/**', 'package.json']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write # attach the Setup.exe to the windows-latest pre-release
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+      - name: Rust (stable)
+        run: rustup default stable && rustc --version
+      - name: Version from package.json
+        run: node scripts/windows-version.mjs
+      - name: Icons
+        working-directory: windows
+        run: npx --yes @tauri-apps/cli@2 icon ../icons/ios-1024.png
+      - name: Build Setup.exe
+        working-directory: windows
+        run: npx --yes @tauri-apps/cli@2 build --bundles nsis
+      - name: Collect
+        id: out
+        run: |
+          mkdir -p out
+          f=$(ls windows/src-tauri/target/release/bundle/nsis/*-setup.exe | head -n 1)
+          cp "$f" out/FaLe-PDF-Setup.exe
+          (cd out && sha256sum FaLe-PDF-Setup.exe > FaLe-PDF-Setup.exe.sha256)
+          ls -la out
+          echo "size=$(stat -c %s out/FaLe-PDF-Setup.exe)" >> "$GITHUB_OUTPUT"
+      - name: Smoke test (silent install, start, does not hang or crash)
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "out\FaLe-PDF-Setup.exe" -ArgumentList "/S" -PassThru -Wait
+          if ($p.ExitCode -ne 0) { throw "Installer exit code $($p.ExitCode)" }
+          $exe = Get-ChildItem -Path "$env:LOCALAPPDATA" -Recurse -Filter "fale-pdf.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $exe) { $exe = Get-ChildItem -Path "$env:LOCALAPPDATA\Programs","$env:LOCALAPPDATA" -Recurse -Include "FaLe PDF.exe","fale-pdf.exe" -ErrorAction SilentlyContinue | Select-Object -First 1 }
+          if (-not $exe) { throw "Installed program not found" }
+          Write-Host "Installed: $($exe.FullName)"
+          $pdf = Join-Path $env:RUNNER_TEMP "test.pdf"
+          Set-Content -Path $pdf -Value "%PDF-1.4`n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[]/Count 0>>endobj`ntrailer<</Root 1 0 R>>`n%%EOF" -Encoding ascii
+          $app = Start-Process -FilePath $exe.FullName -ArgumentList "`"$pdf`"" -PassThru
+          Start-Sleep -Seconds 25
+          if ($app.HasExited) { throw "FaLe PDF exited after start (code $($app.ExitCode))" }
+          # the app page really loaded in WebView2: its storage folders exist (service worker / IndexedDB)
+          $data = Join-Path $env:LOCALAPPDATA "dev.fale.pdf.desktop\EBWebView\Default"
+          $seen = @()
+          foreach ($d in @("Service Worker", "IndexedDB", "Local Storage")) { if (Test-Path (Join-Path $data $d)) { $seen += $d } }
+          if ($seen.Count -gt 0) { Write-Host "::notice title=Windows-App geladen::WebView2-Daten vorhanden: $($seen -join ', ')" } else { Write-Host "::warning title=Windows-App geladen?::Keine WebView2-Daten unter $data gefunden" }
+          Write-Host "::notice title=Windows-Smoke-Test::FaLe PDF läuft nach 25 s noch (Setup ${{ steps.out.outputs.size }} Bytes)"
+          Stop-Process -Id $app.Id -Force
+      - name: Upload artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: FaLe-PDF-Setup
+          path: out/*
+          if-no-files-found: error
+          retention-days: 30
+      - name: Remove older files from the windows-latest pre-release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view windows-latest -R "$GITHUB_REPOSITORY" --json assets -q '.assets[].name' 2>/dev/null | while read -r n; do
+            gh release delete-asset windows-latest "$n" -R "$GITHUB_REPOSITORY" -y || true
+          done || true
+      - name: Publish as pre-release windows-latest
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        with:
+          tag_name: windows-latest
+          name: FaLe PDF für Windows (Setup.exe)
+          prerelease: true
+          make_latest: false
+          body: |
+            FaLe PDF für Windows – automatisch gebaut aus main (${{ github.sha }}).
+            Herunterladen: FaLe-PDF-Setup.exe → öffnen → fertig (ohne Administratorrechte).
+            Prüfsumme: FaLe-PDF-Setup.exe.sha256
+          files: out/*

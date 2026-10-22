@@ -196,7 +196,7 @@ def visit_all(page, docs, label):
         close_overlays(page)
     goto(page, '#/start', 500)
     # AI screens (if the AI agent added routes)
-    ai_routes = page.evaluate("import('./js/ai/routes.js').then(() => ['ki', 'ki/chat', 'ki/zusammenfassen', 'ki/uebersetzen', 'ki/folien', 'ki/lernkarten', 'ki/brief', 'ki/bild', 'ki/plus', 'ki/einstellungen']).catch(() => [])")
+    ai_routes = page.evaluate("import('./js/ai/routes.js').then(() => ['ki', 'ki/chat', 'ki/zusammenfassen', 'ki/uebersetzen', 'ki/folien', 'ki/lernkarten', 'ki/brief', 'ki/bild', 'ki/pro', 'ki/einstellungen']).catch(() => [])")
     for r in ai_routes:
         goto(page, '#/' + r, 1200)
         scan(page, f'{label} ai {r}')

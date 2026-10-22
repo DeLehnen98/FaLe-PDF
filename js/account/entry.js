@@ -74,7 +74,7 @@ export async function renderMeCard(box) {
       box.innerHTML = '';
       box.appendChild(h(`<a class="card acct-me acct-me-out" href="#/konto">
         <span class="acct-me-ic">${aicon('cloudLock')}</span>
-        <span class="acct-me-text"><strong>FaLe-Konto (optional)</strong>${showPlus() ? '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten, FaLe Plus überall. Alles geht auch ohne Konto.</span>' : '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten. Alles geht auch ohne Konto.</span>'}</span>
+        <span class="acct-me-text"><strong>FaLe-Konto (optional)</strong>${showPlus() ? '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten, FaLe Pro überall. Alles geht auch ohne Konto.</span>' : '<span>Dateien Ende-zu-Ende-verschlüsselt auf allen Geräten. Alles geht auch ohne Konto.</span>'}</span>
         ${cfg.configured ? '<span class="btn btn-soft btn-sm acct-me-btn">Anmelden</span>' : `<span class="me-go">${oicon('chevronRight')}</span>`}</a>`));
       return;
     }

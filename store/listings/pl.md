@@ -17,7 +17,7 @@ Podpisuj, skanuj z OCR i edytuj PDF – prywatnie, także offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF to Twoje prywatne biuro na telefon i tablet: czytaj, wypełniaj, podpisuj, skanuj i edytuj PDF-y, a do tego dokumenty, arkusze i prezentacje. Funkcje pro też są w zestawie – bez konta i bez znaków wodnych. Twoje pliki są przetwarzane na Twoim urządzeniu. Opcjonalnie konto FaLe synchronizuje je między Twoimi urządzeniami z szyfrowaniem end-to-end.
+FaLe PDF to Twoje prywatne biuro na telefon i tablet: czytaj, wypełniaj, podpisuj, skanuj i edytuj PDF-y, a do tego dokumenty, arkusze i prezentacje. Wszystkie narzędzia są w zestawie – bez konta i bez znaków wodnych. Twoje pliki są przetwarzane na Twoim urządzeniu. Opcjonalnie konto FaLe synchronizuje je między Twoimi urządzeniami z szyfrowaniem end-to-end.
 
 CZYTANIE PDF-ÓW
 • Szybka przeglądarka PDF z wyszukiwaniem, zakładkami i spisem treści
@@ -68,25 +68,25 @@ ASYSTENT AI (OPCJONALNIE)
 • Rozmawiaj z dokumentem: zadawaj pytania i otrzymuj odpowiedzi z odnośnikami do stron
 • Streszczanie, tłumaczenie, pomoc w pisaniu, asystent formuł, slajdy z AI
 • Fiszki i quizy z Twoich notatek, pisma z AI, tłumaczenie zdjęć
-• Codziennie kilka zapytań w zestawie, bez konta. Więcej: dobrowolna reklama wideo lub FaLe Plus
+• Bez Pro krótki film odblokowuje jedno zapytanie AI; z FaLe Pro wszystkie narzędzia AI działają bez filmów
 • Nie chcesz AI? Jeden przełącznik ukrywa ją całkowicie
 • Tylko za Twoją zgodą; wysyłany jest wyłącznie zaznaczony przez Ciebie tekst. Odpowiedzi AI mogą zawierać błędy – problematyczne odpowiedzi możesz zgłosić nam e-mailem.
 
 UCZCIWIE I PRZEJRZYŚCIE
-• Mały baner reklamowy na stronach głównych aplikacji – z FaLe Plus bez reklam
+• Mały baner reklamowy na stronach głównych aplikacji – z FaLe Pro bez reklam
 • Bez okresu próbnego, który zamienia się w subskrypcję, bez wyskakujących okien przy zapisie
-• FaLe Plus jako subskrypcja lub jednorazowa płatność na zawsze – rezygnacja jednym dotknięciem, przypomnienie przed każdym odnowieniem
+• FaLe Pro jako subskrypcja lub jednorazowa płatność na zawsze – rezygnacja jednym dotknięciem, przypomnienie przed każdym odnowieniem
 
 PRYWATNOŚĆ OD PODSTAW
-Bez wymaganego konta, bez analityki. Opcjonalne konto FaLe: FaLe Sync (szyfrowanie end-to-end, serwery we Frankfurcie – niczego nie możemy odczytać) i FaLe Plus na wszystkich Twoich urządzeniach. Dodatkowe zapytania AI zdobędziesz dzięki opcjonalnej reklamie wideo. Wszystko działa offline, poza AI w chmurze, udostępnianiem i przesyłaniem. Udostępnione pliki są szyfrowane end-to-end – nie możemy ich odczytać.
+Bez wymaganego konta, bez analityki. Opcjonalne konto FaLe: FaLe Sync (szyfrowanie end-to-end, serwery we Frankfurcie – niczego nie możemy odczytać) i FaLe Pro na wszystkich Twoich urządzeniach. Bez Pro krótki film odblokowuje jedno zapytanie AI. Wszystko działa offline, poza AI w chmurze, udostępnianiem i przesyłaniem. Udostępnione pliki są szyfrowane end-to-end – nie możemy ich odczytać.
 
-W Twoim języku: aplikacja automatycznie dopasowuje się do języka telefonu. Bez znaków wodnych. Opcjonalnie: FaLe Plus dla większej liczby zapytań AI.
+W Twoim języku: aplikacja automatycznie dopasowuje się do języka telefonu. Bez znaków wodnych. Opcjonalnie: FaLe Pro – wszystkie narzędzia AI bez filmów i bez reklam.
 ```
 
 ## Feature bullets
 
-- Wszystkie funkcje pro w zestawie – bez konta, bez znaków wodnych
-- Mały baner reklamowy na stronach głównych aplikacji – z FaLe Plus bez reklam
+- Wszystkie narzędzia w zestawie – bez konta, bez znaków wodnych
+- Mały baner reklamowy na stronach głównych aplikacji – z FaLe Pro bez reklam
 - Wypełnianie i podpisywanie PDF-ów
 - Skanowanie z wykrywaniem krawędzi i rozpoznawaniem tekstu (OCR) offline
 - Asystent AI: pytaj swoje dokumenty, z odnośnikami do stron (opcjonalnie)

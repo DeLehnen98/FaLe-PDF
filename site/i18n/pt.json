@@ -25,18 +25,19 @@
   },
   "desk": {
     "h2": "Para Windows e Mac",
-    "intro": "Instale o FaLe PDF no seu computador – como um programa comum: com ícone próprio, janela própria e funcionando sem internet. Sem conta e sem arquivo instalador.",
+    "intro": "Instale o FaLe PDF no seu computador – como um programa comum: com ícone próprio, janela própria e funcionando sem internet. Sem conta.",
     "steps": [
       { "b": "Clique em “Baixar”.", "t": "O FaLe PDF abre no seu navegador." },
       { "b": "Confirme “Instalar”.", "t": "Seu navegador pergunta uma única vez." },
       { "b": "Pronto.", "t": "A partir de agora, você abre o FaLe PDF pelo menu Iniciar (Windows) ou pelo Dock (Mac)." }
     ],
     "download": "Baixar",
+    "setup": "Programa para Windows (Setup.exe)",
     "dlWindows": "Baixar para Windows",
     "dlMac": "Baixar para Mac",
     "windowsSoon": "Microsoft Store – em breve",
     "windowsReady": "Baixe na Microsoft Store",
-    "note": "No Windows, com Edge ou Chrome – assim os PDFs abrem com um clique duplo. No Mac, com Safari (macOS 14 ou mais recente: Arquivo › Adicionar ao Dock), Chrome ou Edge."
+    "note": "No Windows, com Edge ou Chrome – assim os PDFs abrem com um clique duplo. No Mac, com Safari (macOS 14 ou mais recente: Arquivo › Adicionar ao Dock), Chrome ou Edge. Para Windows há também um programa para instalar (Setup.exe): na primeira vez que você abrir, o Windows pode perguntar uma vez; clique em “Mais informações” e depois em “Executar assim mesmo”."
   },
   "jobs": {
     "h2": "O que você resolve",
@@ -55,13 +56,13 @@
     "items": [
       { "dt": "Sem envio", "dd": "Editar, converter e reconhecer texto acontece no seu dispositivo. Você só usa a IA opcional se a ativar." },
       { "dt": "Sem conta", "dd": "Abra e comece. Você só precisa de uma conta se quiser sincronizar entre dispositivos." },
-      { "dt": "Anúncios só no app para Android", "dd": "A versão no navegador não mostra anúncios. O app para Android mostra nas páginas principais um pequeno banner identificado – nunca dentro de documentos. O FaLe Plus o remove." }
+      { "dt": "Anúncios só no app para Android", "dd": "A versão no navegador não mostra anúncios. O app para Android mostra nas páginas principais um pequeno banner identificado – nunca dentro de documentos. O FaLe Pro o remove." }
     ]
   },
   "free": {
     "h2": "Sem marca d’água",
     "intro": "Muitos apps de PDF cobram uma assinatura por estes recursos. Aqui eles vêm sem marca d’água.",
-    "note": "Se quiser apoiar o desenvolvimento, você pode escolher o FaLe Plus no app para Android (ele remove os banners de anúncio) ou um agradecimento único.",
+    "note": "Se quiser apoiar o desenvolvimento, você pode escolher o FaLe Pro no app para Android (ele remove os banners de anúncio) ou um agradecimento único.",
     "items": ["Preencher e assinar", "Reconhecimento de texto (OCR)", "PDF para Word, Excel, PowerPoint", "Ocultar dados", "Comprimir", "Organizar páginas", "PDF/A para órgãos públicos", "Proteção por senha", "Comparar PDFs", "Processamento em lote"]
   },
   "screens": {
@@ -75,7 +76,7 @@
       { "q": "Funciona offline?", "a": "Sim. Tudo funciona sem internet, exceto a IA na nuvem, o compartilhamento e a transferência." },
       { "q": "Posso instalar o FaLe PDF no meu computador?", "a": "Sim. Em “Para Windows e Mac”, acima, clique em “Baixar” e confirme “Instalar”. No Windows isso funciona com Edge ou Chrome; no Mac, com Safari, Chrome ou Edge. Em breve o FaLe PDF também estará na Microsoft Store." },
       { "q": "Quais arquivos posso abrir?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), texto, Markdown e imagens." },
-      { "q": "Tem anúncios?", "a": "Na versão no navegador, não. No app para Android aparece um pequeno banner identificado nas páginas principais – nunca dentro de documentos, ferramentas ou editores. O FaLe Plus remove os banners. Você também pode assistir a um vídeo opcional para ganhar solicitações extras de IA." }
+      { "q": "Tem anúncios?", "a": "Na versão no navegador, não. No app para Android aparece um pequeno banner identificado nas páginas principais – nunca dentro de documentos, ferramentas ou editores. O FaLe Pro remove os banners. Você também pode assistir a um vídeo opcional para ganhar solicitações extras de IA." }
     ]
   },
   "end": {

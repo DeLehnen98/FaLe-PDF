@@ -42,7 +42,7 @@ letter-spacing −0.02em. Same pattern as the "FaLe **PDF**" lockup in the app. 
 wrap both parts in one element (`<span>Fale<b>Network</b></span>`) so flex gaps don't split it.
 
 **Spelling:** the network is "FaleNetwork" (one word). Products keep their names:
-"FaLe PDF", "FaLe Clean", "FaLe-Konto" (de) / "FaLe Account" (en), "FaLe Plus".
+"FaLe PDF", "FaLe Clean", "FaLe-Konto" (de) / "FaLe Account" (en), "FaLe Pro" (früher „FaLe Plus“).
 
 **Don'ts:** no recolouring of the mark, no outlines/drop shadows on the mark, no stretching,
 minimum size 16 px (favicon) – below 24 px use `favicon-32.png`.

@@ -1,5 +1,5 @@
 """iPhone app behaviour of the web code (mocked Capacitor bridge with platform 'ios'):
-- start page renders without errors; no FaLe Plus offer and no ad button / ad consent row (App Store purchases later)
+- start page renders without errors; no FaLe Pro offer and no ad button / ad consent row (App Store purchases later)
 - saving goes straight into Documents (Files app: „Auf meinem iPhone › FaLe PDF“), toast says where
 - a file opened in place from the Files app (origin token, writable) → „Original ersetzen“ → writeBack(token, path)
 - read-only original → no button; iOS wording for read-only errors
@@ -76,12 +76,12 @@ def main():
             page.goto(URL + '#/einstellungen'); page.wait_for_timeout(800)
             page.goto(URL + '#/ki'); page.wait_for_selector('.ai-hub', timeout=8000); page.wait_for_timeout(800)
             txt = page.locator('#tool-screen').inner_text()
-            check('no FaLe Plus offer on iOS (yet)', 'FaLe Plus' not in txt and page.locator('a[href="#/ki/plus"]').count() == 0, txt[:300])
+            check('no FaLe Pro offer on iOS (yet)', 'FaLe Pro' not in txt and page.locator('a[href="#/ki/pro"], a[href="#/ki/plus"]').count() == 0, txt[:300])
             check('no ad button on iOS', page.locator('[data-ai-ad]').count() == 0)
             page.goto(URL + '#/ki/einstellungen'); page.wait_for_selector('[data-cloud]', timeout=8000)
             check('no ad-consent row on iOS', page.locator('[data-adrow]').count() == 0)
             page.goto(URL + '#/ki/plus'); page.wait_for_timeout(800)
-            check('#/ki/plus redirects on iOS', page.evaluate('location.hash') == '#/ki')
+            check('#/ki/plus redirects on iOS (to the KI-Werkzeuge page)', page.evaluate('location.hash') == '#/werkzeuge/ki', page.evaluate('location.hash'))
         step('basics', basics)
 
         def save_and_print():

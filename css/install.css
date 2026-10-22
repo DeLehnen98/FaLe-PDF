@@ -41,3 +41,4 @@
   @keyframes inst-in { from { opacity: 0; transform: translateY(12px); } }
 }
 @media print { .inst-hint { display: none; } }
+a.inst-me { text-decoration: none; color: var(--text); }

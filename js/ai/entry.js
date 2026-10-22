@@ -1,11 +1,12 @@
 // Small, network-free entry points for the main views (Start, Werkzeuge, Ich).
-import { showPlus } from '../monetize.js';
+import { showPlus, proActive, videosHere } from '../monetize.js';
 import { h, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { loadAiCss } from './ui.js';
 import * as C from './client.js';
 import { aiHidden } from './hidden.js';
 import { blocked as companyBlocked } from '../policy.js';
+import { platformName } from '../platform.js';
 
 export const AI_FEATURES = [
   { id: 'chat', title: 'Chat mit Dokument', desc: 'Fragen stellen – Antworten mit klickbaren Seitenangaben.', icon: 'comment', href: '#/ki/chat', doc: true },
@@ -34,8 +35,8 @@ export function renderStartCard(box) {
   loadAiCss();
   box.hidden = false;
   box.innerHTML = '';
-  box.appendChild(h(`<a class="card ai-start-card" href="#/ki"><span class="ai-start-ic">${oicon('sparkle')}</span>
-    <span class="ai-start-text"><strong>KI-Assistent</strong><span>Frag deine Dokumente, fasse zusammen, übersetze – nur wenn du es möchtest.</span></span>
+  box.appendChild(h(`<a class="card ai-start-card" href="#/werkzeuge/ki"><span class="ai-start-ic">${oicon('sparkle')}</span>
+    <span class="ai-start-text"><strong>KI-Werkzeuge</strong><span>Frag deine Dokumente, fasse zusammen, übersetze – nur wenn du es möchtest.</span></span>
     <span class="ai-start-go">${oicon('chevronRight')}</span></a>`));
 }
 
@@ -48,8 +49,10 @@ export function renderToolSection(sec) {
   loadAiCss();
   sec.dataset.filled = '1';
   sec.hidden = false;
-  sec.innerHTML = `<h2 class="section-title">KI-Assistent <a class="btn btn-sm btn-ghost" href="#/ki">${oicon('sparkle')} Übersicht</a></h2><div class="tool-grid ai-grid"></div>
-    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst. Täglich einige Anfragen inklusive.</span></p>`;
+  sec.innerHTML = `<div class="ai-access" data-ai-access></div><h2 class="section-title">KI-Werkzeuge</h2><div class="tool-grid ai-grid"></div>
+    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst.</span></p>`;
+  paintAccess(sec.querySelector('[data-ai-access]'));
+  if (!sec.dataset.accessWatch) { sec.dataset.accessWatch = '1'; window.addEventListener('fale:ai-quota', () => paintAccess(sec.querySelector('[data-ai-access]'))); }
   const grid = sec.querySelector('.ai-grid');
   AI_FEATURES.forEach(f => grid.appendChild(h(`<a class="tool-card" href="${f.href}" data-tool="ai-${f.id}"><span class="tile-ic ai-ic">${oicon(f.icon)}</span><span class="tc-text"><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></span></a>`)));
 }
@@ -69,11 +72,54 @@ export function renderMeCard(box) {
     return;
   }
   const q = C.cachedQuota();
-  const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen inklusive'
-    : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit}`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';
+  const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : accessText(q) + (q && q.scope === 'account' ? ' · für dein Konto' : '');
   box.innerHTML = '';
   box.appendChild(h(`<div class="ai-me-wrap"><h2 class="section-title">KI-Assistent</h2><nav class="ilist ai-me" aria-label="KI-Assistent">
     ${meRow('#/ki', 'sparkle', 'ai', 'KI-Assistent', `<span data-ai-me-status>${esc(status)}</span>`)}
-    ${showPlus() || (q && q.plus) ? meRow('#/ki/plus', 'star', 'amber', 'FaLe Plus', q && q.plus ? 'Aktiv – danke!' : 'Mehr KI pro Tag, freiwillig') : ''}
+    ${showPlus() || proActive() ? meRow('#/ki/pro', 'star', 'amber', 'FaLe Pro', proActive() ? 'Aktiv – alle KI-Werkzeuge ohne Video, werbefrei' : 'KI ohne Videos, keine Werbung') : ''}
     ${meRow('#/ki/einstellungen', 'sliders', 'slate', 'KI-Einstellungen', 'Cloud-KI an/aus, Datenschutz')}</nav></div>`));
+}
+
+// ---------------------------------------------------------------- KI access: FaLe Pro, videos
+/** One line: how this person can use the cloud AI right now. */
+export function accessText(q = C.cachedQuota()) {
+  if (proActive() || (q && q.plus)) return 'FaLe Pro aktiv – alle KI-Werkzeuge ohne Video';
+  const n = q ? q.remaining || 0 : 0;
+  if (n > 0) return n === 1 ? '1 KI-Anfrage freigeschaltet' : `${n} KI-Anfragen freigeschaltet`;
+  if (videosHere()) return 'Ohne Pro: ein kurzes Video pro KI-Anfrage';
+  return platformName() === 'ios' ? 'Die Cloud-KI kommt bald auch aufs iPhone' : 'Die Cloud-KI gibt es in der FaLe-App für Android';
+}
+
+/** The box above the KI tools: how access works, in one calm card. */
+function paintAccess(box) {
+  if (!box) return;
+  const q = C.cachedQuota();
+  const pro = proActive() || (q && q.plus);
+  const n = q && !pro ? q.remaining || 0 : 0;
+  let body;
+  if (pro) body = `<strong>Alle KI-Werkzeuge ohne Video</strong><span>Mit FaLe Pro – danke für deine Unterstützung!</span>`;
+  else if (videosHere()) body = `<strong>${n > 0 ? esc(accessText(q)) : 'So nutzt du die KI ohne Pro'}</strong><span>Für jede KI-Anfrage schaust du ein kurzes Video – bitte bis zum Ende. Wird es abgebrochen oder die App geschlossen, gibt es keine Freischaltung.</span>`;
+  else if (platformName() === 'ios') body = `<strong>Die Cloud-KI kommt bald auch aufs iPhone</strong><span>Alle anderen Werkzeuge funktionieren schon – direkt auf deinem iPhone.</span>`;
+  else body = `<strong>Die Cloud-KI gibt es in der FaLe-App für Android</strong><span>Zusammenfassen und Übersetzen laufen in manchen Browsern auch direkt auf dem Gerät.</span>`;
+  box.innerHTML = `<div class="card ai-access-card${pro ? ' is-pro' : ''}"><span class="ai-access-ic">${oicon(pro ? 'checkCircle' : videosHere() ? 'play' : 'info')}</span><div>${body}</div></div>`;
+}
+
+/** „Auf Pro upgraden“ bar on top of both tool pages (Android app) – or „FaLe Pro ist aktiv“ once bought. */
+export function renderProBar(box) {
+  if (!box) return;
+  loadAiCss();
+  const paint = () => {
+    if (!box.isConnected) return;
+    const pro = proActive();
+    if (!pro && (!showPlus() || aiHidden())) { box.hidden = true; box.innerHTML = ''; return; }
+    box.hidden = false;
+    box.innerHTML = pro
+      ? `<a class="pro-bar is-on" href="#/ki/pro" data-pro-state="on"><span class="pro-tag" data-no-i18n>PRO</span><span class="pro-bar-txt"><strong>FaLe Pro ist aktiv</strong><span>Alle KI-Werkzeuge ohne Video · werbefrei</span></span><span class="pro-bar-go">${oicon('chevronRight')}</span></a>`
+      : `<a class="pro-bar" href="#/ki/pro" data-pro-state="off"><span class="pro-bar-ic">${oicon('star')}</span><span class="pro-bar-txt"><strong>Auf Pro upgraden</strong><span>Alle KI-Werkzeuge ohne Video · keine Werbung</span></span><span class="pro-bar-cta">Ansehen</span></a>`;
+  };
+  paint();
+  if (!box.dataset.watch) {
+    box.dataset.watch = '1';
+    ['fale:ai-quota', 'fale:plus', 'fale:ai-state'].forEach(ev => window.addEventListener(ev, paint));
+  }
 }

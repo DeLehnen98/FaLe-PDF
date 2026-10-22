@@ -18,7 +18,7 @@ export const BASE_ENV = {
   FALE_IP_SALT: 'test-ip-salt-0123456789', FREE_DAILY: '5', REWARD_BONUS: '3', REWARD_MAX_PER_DAY: '3', PLUS_DAILY: '200', IP_DAILY: '40',
   REGISTER_IP_DAILY: '30', AI_MONTHLY_BUDGET_EUR: '10', AI_PRICE_IN_USD_PER_MTOK: '1', AI_PRICE_OUT_USD_PER_MTOK: '5', USD_EUR: '0.95',
 };
-const MANAGED = new Set([...Object.keys(BASE_ENV), 'ANTHROPIC_API_KEY', 'GOOGLE_PLAY_SA_JSON', 'ADS_ENABLED', 'ADMOB_REWARDED_AD_UNITS', 'AI_MODEL']);
+const MANAGED = new Set([...Object.keys(BASE_ENV), 'ANDROID_APP_CERT_SHA256', 'ANTHROPIC_API_KEY', 'GOOGLE_PLAY_SA_JSON', 'ADS_ENABLED', 'ADMOB_REWARDED_AD_UNITS', 'AI_MODEL']);
 export function resetEnv(extra = {}) {
   for (const k of MANAGED) delete process.env[k];
   Object.assign(process.env, BASE_ENV, extra);
@@ -83,6 +83,13 @@ export function startHarness(port = 8799, { coreOverrides = {}, env = {} } = {})
       const fakeRes = { statusCode: 200, headersSent: false, writableEnded: false, setHeader() {}, on() {}, end(b) { chunks.push(b); this.writableEnded = true; } };
       await core.ssv(fakeReq, fakeRes);
       return send({ status: fakeRes.statusCode, body: JSON.parse(chunks.join('') || '{}') });
+    }
+    if (u.pathname === '/__test/pro') {
+      // FaLe Pro for the device behind this token (as if the Play purchase had been verified)
+      const dev = Sec.verifyToken(process.env.FALE_TOKEN_SECRET, u.searchParams.get('token') || '');
+      if (!dev) return send({ error: 'bad token' }, 400);
+      await store._memory().plusUpsert({ device: dev, tokenHash: 'test', product: 'fale_plus_lifetime', expiresAt: '2099-12-31T00:00:00.000Z' });
+      return send({ ok: true });
     }
     if (u.pathname === '/__test/state') { const s = store._memory()._state; return send({ usage: [...s.usage], budget: [...s.budget], rewards: s.rewards.size, plus: [...s.plus] }); }
     return send({ error: 'unknown' }, 404);

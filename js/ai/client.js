@@ -92,6 +92,7 @@ export function messageFor(code, fallback) {
     case 'budget_exhausted': return 'KI-Kontingent für diesen Monat aufgebraucht. FaLe PDF ist ein kleines Projekt mit festem Monatsbudget – ab dem 1. geht es weiter.';
     case 'invalid_token': return 'Die Verbindung zur KI musste erneuert werden. Bitte versuche es noch einmal.';
     case 'offline': return 'Du bist offline. Cloud-KI braucht eine Internetverbindung.';
+    case 'modified_app': return 'Diese App-Version wurde verändert. Bitte lade FaLe PDF aus dem Google Play Store.';
     case 'timeout': case 'provider_timeout': return fallback || 'Die KI antwortet gerade nicht. Bitte versuche es gleich noch einmal – bei langen Dokumenten hilft „Kurz“ oder ein kleinerer Abschnitt.';
     case 'bad_input': return fallback || 'Die Eingabe konnte nicht verarbeitet werden.';
     default: return fallback || 'Die KI ist gerade nicht erreichbar. Bitte versuche es später erneut.';
@@ -154,7 +155,7 @@ export async function ensureToken({ renew = false } = {}) {
   if (!renew) { const t = ls.get(K.token); if (t) return t; }
   if (!tokenP) {
     tokenP = (async () => {
-      const r = await postJson('/api/ai/register', { deviceId: deviceId() });
+      const r = await postJson('/api/ai/register', { deviceId: deviceId(), client: await clientInfo() });
       if (!r.ok) throw await errorFrom(r);
       const j = await r.json();
       ls.set(K.token, j.token);
@@ -164,6 +165,30 @@ export async function ensureToken({ renew = false } = {}) {
   return tokenP;
 }
 export function currentToken() { return hasConsent() ? ls.get(K.token) : null; }
+
+// ---------------------------------------------------------------- genuine app (Android)
+// SHA-256 of the app's signing certificate + installing store (FaleApp plugin, scripts/cap-patch-android.mjs). The
+// server refuses re-signed copies when it knows the genuine certificate (ANDROID_APP_CERT_SHA256).
+let appInfoP = null;
+function appInfo() {
+  if (!isNative() || platformName() !== 'android') return Promise.resolve(null);
+  if (!appInfoP) {
+    appInfoP = (async () => {
+      try {
+        const { plugin } = await import('../platform.js');
+        const p = plugin('FaleApp');
+        if (!p) return null;
+        const r = await Promise.race([p.info(), new Promise(res => setTimeout(() => res(null), 3000))]);
+        return r ? { cert: String(r.cert || '').slice(0, 700), installer: String(r.installer || '').slice(0, 100) } : null;
+      } catch { return null; }
+    })();
+  }
+  return appInfoP;
+}
+async function clientInfo() {
+  const a = await appInfo();
+  return { platform: platformName(), appVersion: APP_VERSION, native: isNative(), ...(a ? { cert: a.cert, installer: a.installer } : {}) };
+}
 
 // ---------------------------------------------------------------- tasks
 /**
@@ -192,7 +217,7 @@ export async function runTask(task, input, options = {}, opts = {}) {
   try {
     for (let attempt = 0; attempt < 2; attempt++) {
       const token = await ensureToken({ renew: attempt > 0 });
-      const body = await withAccount({ task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: { platform: platformName(), appVersion: APP_VERSION, native: isNative() } });
+      const body = await withAccount({ task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: await clientInfo() });
       const r = await accountRetry(await postJson('/api/ai', body, { signal: wd.signal }), body, b => postJson('/api/ai', b, { signal: wd.signal }));
       if (r.status === 401 && attempt === 0) { ls.del(K.token); continue; }
       if (!r.ok) throw await errorFrom(r);

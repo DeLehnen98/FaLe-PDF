@@ -71,7 +71,11 @@ export async function showRewardedAd() {
   handles.push(await on(p, EV.FailedToShow, () => settle('failed')));
   try {
     await p.prepareRewardVideoAd({ adId: AI_CONFIG.ADMOB_REWARDED_ID, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa, ssv: { customData: C.rewardCustomData(token) } });
-    const shown = Promise.resolve(p.showRewardVideoAd()).then(() => 'rewarded', () => 'failed');
+    // Only a video watched to the end counts: the reward event (or a reward item with an amount) – closing the
+    // video or the app early never unlocks anything. The server credits only after Google's signed confirmation.
+    const shown = Promise.resolve(p.showRewardVideoAd()).then(
+      item => (item && Number(item.amount) > 0 ? 'rewarded' : new Promise(r => setTimeout(() => r('closed'), 600))),
+      () => 'failed');
     const result = await Promise.race([outcome, shown]);
     if (result === 'failed') throw userErr('Das Werbevideo konnte nicht angezeigt werden. Bitte versuche es später.');
     if (result !== 'rewarded') return { rewarded: false, credited: false };
@@ -81,7 +85,7 @@ export async function showRewardedAd() {
       await new Promise(r => setTimeout(r, i ? 1500 : 700));
       try { const q = await C.refreshQuota(); credited = !!q && (q.rewarded || 0) > before; } catch {}
     }
-    return { rewarded: true, credited, bonus: (C.cachedQuota() || {}).bonus || 2 };
+    return { rewarded: true, credited, bonus: (C.cachedQuota() || {}).bonus || 1 };
   } catch (e) {
     if (e && e.userMessage) throw e;
     console.warn('AdMob', e);

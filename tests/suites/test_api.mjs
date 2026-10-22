@@ -63,6 +63,34 @@ await step('availability + register', async () => {
   check('quota with token', q.j.quota && q.j.quota.used === 0 && q.j.quota.limit === 5 && q.j.quota.remaining === 5 && q.j.quota.rewardsLeft === 3, JSON.stringify(q.j));
 });
 
+await step('production defaults: nothing free, one video = one KI request', async () => {
+  const keep = { f: process.env.FREE_DAILY, b: process.env.REWARD_BONUS };
+  delete process.env.FREE_DAILY; delete process.env.REWARD_BONUS;
+  const cfg = C.getConfig();
+  check('FREE_DAILY default 0 and REWARD_BONUS default 1', cfg.freeDaily === 0 && cfg.rewardBonus === 1, JSON.stringify({ f: cfg.freeDaily, b: cfg.rewardBonus }));
+  process.env.FREE_DAILY = keep.f; process.env.REWARD_BONUS = keep.b;
+});
+
+await step('genuine Android app (signing certificate)', async () => {
+  const good = 'ab'.repeat(32), bad = 'cd'.repeat(32);
+  reset({ ANDROID_APP_CERT_SHA256: 'AB:' + 'ab'.repeat(31).match(/../g).join(':').toUpperCase() });
+  const and = cert => ({ platform: 'android', native: true, appVersion: '2.5.0', cert, installer: 'com.android.vending' });
+  let r = await pj('/api/ai/register', { deviceId: devId(7), client: and(bad) });
+  check('re-signed (modified) app: register refused', r.status === 403 && r.j.error === 'modified_app' && /Play Store/.test(r.j.message), JSON.stringify(r.j));
+  r = await pj('/api/ai/register', { deviceId: devId(7), client: and('') });
+  check('no certificate reported: refused', r.status === 403 && r.j.error === 'modified_app');
+  r = await pj('/api/ai/register', { deviceId: devId(7), client: and(bad + ',' + good) });
+  check('genuine certificate (also in a rotation list, colons/case ignored in the setting): allowed', r.status === 200 && r.j.token, JSON.stringify(r.j));
+  const tok = r.j.token;
+  r = await pj('/api/ai', { token: tok, task: 'explain', input: { text: 'Widerrufsfrist' }, client: and(bad) });
+  check('KI request from a modified app: refused before anything is counted', r.status === 403 && r.j.error === 'modified_app');
+  r = await pj('/api/ai/register', { deviceId: devId(8), client: { platform: 'web', native: false } });
+  check('web/PC: no APK to check', r.status === 200);
+  reset();
+  r = await pj('/api/ai/register', { deviceId: devId(9), client: and(bad) });
+  check('without a configured certificate nothing is checked', r.status === 200);
+});
+
 await step('token forgery', async () => {
   reset();
   const tok = await token(1);

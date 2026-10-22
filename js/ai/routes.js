@@ -14,7 +14,8 @@ const SCREENS = {
   lernkarten: { title: 'Lernkarten & Quiz', sub: 'Aus Dokumenten lernen – gespeichert auf diesem Gerät', load: () => import('./study.js') },
   brief: { title: 'Brief per KI', sub: 'Anliegen beschreiben, fertigen Brief erhalten', load: () => import('./letter-ai.js') },
   bild: { title: 'Bild übersetzen', sub: 'Foto von Schild, Speisekarte oder Brief übersetzen', load: () => import('./image-ai.js') },
-  plus: { title: 'FaLe Plus', sub: 'Mehr KI-Anfragen pro Tag', load: () => import('./hub.js').then(m => ({ mount: m.mountPlus })) },
+  pro: { title: 'FaLe Pro', sub: 'Alle KI-Werkzeuge ohne Video – und keine Werbung', load: () => import('./hub.js').then(m => ({ mount: m.mountPlus })) },
+  plus: { title: 'FaLe Pro', sub: 'Alle KI-Werkzeuge ohne Video – und keine Werbung', load: () => import('./hub.js').then(m => ({ mount: m.mountPlus })) }, // old links
   einstellungen: { title: 'KI-Einstellungen', sub: 'Cloud-KI, Einwilligung und Datenschutz', load: () => import('./hub.js').then(m => ({ mount: m.mountSettings })) },
 };
 

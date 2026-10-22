@@ -1,4 +1,4 @@
-// „FaLe Plus" – optional, in the Android app via Google Play Billing (@capgo/native-purchases, plugin name
+// „FaLe Pro" (internally still „plus“) – optional, in the Android app via Google Play Billing (@capgo/native-purchases, plugin name
 // "NativePurchases"): monthly / yearly subscription or ONE payment for ever (in-app product), plus voluntary
 // tips (consumable products). Purchases are verified on our server (/api/plus-verify → Google Play Developer
 // API); prices come from the Play Console. Fair billing: no trial that turns into a subscription, cancelling
@@ -20,7 +20,7 @@ const ls = {
 
 function store() {
   const p = isNative() ? plugin('NativePurchases') : null;
-  if (!p) throw userErr('FaLe Plus kann derzeit nur in der Android-App abgeschlossen werden.');
+  if (!p) throw userErr('FaLe Pro kann derzeit nur in der Android-App abgeschlossen werden.');
   return p;
 }
 
@@ -180,7 +180,7 @@ export async function syncReminder({ prompt = false } = {}) {
   try {
     if (!at) { await cancelNotification(REMINDER_ID); return false; }
     const day = new Date(info.expiresAt).toLocaleDateString(locale());
-    return await scheduleNotification({ prompt, id: REMINDER_ID, at, title: t('FaLe Plus verlängert sich bald'), body: t('Am {day} wird dein Abo verlängert. Tippe hier, wenn du es behalten oder kündigen möchtest.', { day }), route: '#/ki/plus' });
+    return await scheduleNotification({ prompt, id: REMINDER_ID, at, title: t('FaLe Pro verlängert sich bald'), body: t('Am {day} wird dein Abo verlängert. Tippe hier, wenn du es behalten oder kündigen möchtest.', { day }), route: '#/ki/pro' });
   } catch (e) { console.warn('Erinnerung', e); return false; }
 }
 

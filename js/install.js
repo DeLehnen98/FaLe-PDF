@@ -12,7 +12,10 @@
 // Safari (Mac: Ablage › Zum Dock hinzufügen, iPhone: Teilen › Zum Home-Bildschirm) and Firefox have no such
 // event – there the dialog shows the steps in the browser's own words.
 import { h, esc, toast, openDialog } from './ui.js';
-import { isNative } from './platform.js';
+import { isNative, isDesktopApp } from './platform.js';
+
+/** „FaLe PDF für Windows“ (windows/): the Setup.exe on the windows-latest pre-release. */
+export const WINDOWS_SETUP_URL = 'https://github.com/DeLehnen98/FaLe-PDF/releases/download/windows-latest/FaLe-PDF-Setup.exe';
 
 const HINT_KEY = 'fale-install-hint';      // '1' = the desktop hint was shown and closed (never again)
 const STARTS_KEY = 'fale-install-starts';  // app starts in the browser (the hint waits for the second one)
@@ -296,7 +299,7 @@ export function renderMeCard(box) {
     box.dataset.instPainted = '1';
     const st = installState();
     box.innerHTML = '';
-    if (st.native) return;
+    if (st.native || isDesktopApp()) return; // the Windows program is installed already
     loadCss();
     if (st.standalone) {
       if (st.os !== 'windows') return;
@@ -309,6 +312,10 @@ export function renderMeCard(box) {
         : 'Eigenes Symbol und Fenster, auch offline';
     box.appendChild(h(`<button type="button" class="card inst-me" data-inst-open><span class="inst-me-ic">${ICON}</span><span class="inst-me-text"><strong>${esc(installTitle(st.os))}</strong><span>${esc(sub)}</span></span><span class="btn btn-soft btn-sm inst-me-btn">${st.installed && !st.canPrompt ? 'Anzeigen' : 'Installieren'}</span></button>`));
     box.querySelector('[data-inst-open]').addEventListener('click', () => showInstallDialog());
+    if (st.os === 'windows') {
+      // the classic way: a Setup.exe (windows/, built by .github/workflows/windows.yml)
+      box.appendChild(h(`<a class="card inst-me inst-exe" href="${WINDOWS_SETUP_URL}" rel="noopener" data-inst-exe><span class="inst-me-ic">${ICON}</span><span class="inst-me-text"><strong>Als Windows-Programm herunterladen</strong><span>FaLe-PDF-Setup.exe – für Windows 10 und 11, ohne Administratorrechte</span></span><span class="btn btn-soft btn-sm inst-me-btn">Setup.exe</span></a>`));
+    }
   };
   paint();
   const off = onInstallChange(() => { if (!box.isConnected) { off(); return; } paint(); });

@@ -1,6 +1,6 @@
-// KI-Assistent hub (#/ki), FaLe Plus (#/ki/plus) and KI-Einstellungen (#/ki/einstellungen).
+// KI-Assistent hub (#/ki), FaLe Pro (#/ki/pro, old link #/ki/plus) and KI-Einstellungen (#/ki/einstellungen).
 import { blocked as companyBlocked } from '../policy.js';
-import { showPlus } from '../monetize.js';
+import { showPlus, proActive } from '../monetize.js';
 import { $, h, esc, toast, errorToast, confirmDialog } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import { isNative, platformName } from '../platform.js';
@@ -22,7 +22,7 @@ export async function mount(screen, { params }) {
     <h2 class="section-title">Was möchtest du tun?</h2>
     <div class="tool-grid ai-grid" role="list"></div>
     <div class="ai-hub-foot">
-      ${showPlus() ? `<a class="card action-card ai-plus-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">Mehr KI-Anfragen pro Tag – und FaLe PDF unterstützen</span></span></a>` : ''}
+      ${showPlus() || proActive() ? `<a class="card action-card ai-plus-card" href="#/ki/pro"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Pro</strong><span class="muted small">${proActive() ? 'Aktiv – alle KI-Werkzeuge ohne Video, werbefrei' : 'Alle KI-Werkzeuge ohne Video – und keine Werbung'}</span></span></a>` : ''}
       <a class="card action-card" href="#/ki/einstellungen" data-ai-settings><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI-Einstellungen</strong><span class="muted small">Cloud-KI an/aus, Einwilligung, Datenschutz</span></span></a>
     </div>
     <p class="ai-disclaimer">${oicon('info')}<span>KI kann Fehler machen. Prüfe wichtige Inhalte, Zahlen und Fristen – die Ergebnisse sind keine Rechts- oder Steuerberatung.</span></p>
@@ -41,28 +41,40 @@ export async function mount(screen, { params }) {
   return () => st.el._dispose && st.el._dispose();
 }
 
-// ---------------------------------------------------------------- FaLe Plus
+// ---------------------------------------------------------------- FaLe Pro (internally „plus“: product ids, storage)
+const yes = () => `<span class="pro-yes">${oicon('check')}</span>`;
 export async function mountPlus(screen) {
-  if (!showPlus()) { location.replace('#/ki'); return () => {}; }   // web: no paid offer (see monetize.js)
+  if (!showPlus() && !proActive()) { location.replace('#/werkzeuge/ki'); return () => {}; }   // web: no paid offer (see monetize.js)
   const st = statusCard();
+  const pro = proActive();
   const wrap = h(`<div class="screen-inner ai-plus">
-    <div class="card ai-plus-hero"><span class="ai-hero-ic">${oicon('star')}</span><div><strong>FaLe Plus</strong>
-      <p>Alle Werkzeuge bleiben ohne Wasserzeichen und ohne Konto nutzbar. Plus ist freiwillig: für alle, die die Cloud-KI viel nutzen und FaLe PDF unterstützen möchten. Als Abo oder einmal bezahlt für immer.</p></div></div>
+    <div class="card ai-plus-hero${pro ? ' is-on' : ''}"><span class="ai-hero-ic">${oicon(pro ? 'checkCircle' : 'star')}</span><div>
+      <strong>${pro ? 'Du hast FaLe Pro' : 'FaLe Pro'}</strong>
+      <p>${pro ? 'Alle KI-Werkzeuge ohne Video und keine Werbung – danke für deine Unterstützung!' : 'Alle KI-Werkzeuge ohne Video – und keine Werbung. Als Abo oder einmal bezahlt für immer.'}</p></div>
+      ${pro ? '<span class="pro-tag big" data-no-i18n>PRO</span>' : ''}</div>
     <div data-status></div>
-    <div class="card card-pad ai-plus-list"><ul>
-      <li>${oicon('check')}<span><strong>Bis zu 200 KI-Anfragen pro Tag</strong> statt einiger weniger</span></li>
-      <li>${oicon('check')}<span><strong>Werbefrei:</strong> keine Banner, keine Werbevideos nötig</span></li>
-      <li>${oicon('check')}<span><strong>Auch ohne Abo:</strong> einmal zahlen, für immer behalten</span></li>
-      <li>${oicon('heart')}<span>Hilft, die KI-Kosten zu tragen und FaLe PDF weiterzuentwickeln</span></li>
+    <div class="ai-plus-buy" data-buy></div>
+    <h2 class="section-title">Ohne Pro und mit Pro</h2>
+    <div class="card pro-compare" role="table" aria-label="Ohne Pro und mit Pro im Vergleich">
+      <div class="pc-row pc-head" role="row"><span role="columnheader"></span><span role="columnheader">Ohne Pro</span><span role="columnheader" class="pc-pro">Mit Pro</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>PDF-Werkzeuge</strong><small>Bearbeiten, Unterschreiben, Umwandeln, Scannen …</small></span><span role="cell">${yes()} alle</span><span role="cell" class="pc-pro">${yes()} alle</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>KI-Werkzeuge</strong><small>Chat, Zusammenfassen, Übersetzen, Folien, Briefe …</small></span><span role="cell">1 Video pro Anfrage</span><span role="cell" class="pc-pro">${yes()} ohne Video</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>Werbung</strong><small>Banner unten auf den Hauptseiten</small></span><span role="cell">Banner</span><span role="cell" class="pc-pro">${yes()} werbefrei</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>FaLe Sync</strong><small>mit dem freiwilligen FaLe-Konto</small></span><span role="cell">1 GB</span><span role="cell" class="pc-pro">${yes()} 20 GB</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>Auf allen Geräten</strong><small>mit dem freiwilligen FaLe-Konto</small></span><span role="cell">–</span><span role="cell" class="pc-pro">${yes()} Pro gilt überall</span></div>
+    </div>
+    <div class="card card-pad ai-plus-list"><strong>Gut zu wissen</strong><ul>
+      <li>${oicon('play')}<span><strong>Ohne Pro:</strong> Ein Video schaltet eine KI-Anfrage frei. Es muss bis zum Ende laufen – wird es abgebrochen oder die App geschlossen, gibt es keine Freischaltung. Google bestätigt jedes Video unserem Server.</span></li>
+      <li>${oicon('sparkle')}<span><strong>Mit Pro:</strong> alle KI-Werkzeuge ohne Video – fair bis zu 200 Anfragen am Tag.</span></li>
+      <li>${oicon('shield')}<span>Gesendet wird nur, was du für eine Aufgabe auswählst – mit und ohne Pro.</span></li>
     </ul>
-    <p class="muted small">Hinweis: Solange FaLe PDF ein kleines Projekt ist, gilt für die Cloud-KI ein festes Monatsbudget für alle Nutzerinnen und Nutzer – auch mit Plus kann es in seltenen Fällen bis zum Monatsende pausieren.</p></div>
+    <p class="muted small">Solange FaLe PDF ein kleines Projekt ist, gilt für die Cloud-KI ein festes Monatsbudget für alle – auch mit Pro kann sie in seltenen Fällen bis zum Monatsende pausieren.</p></div>
     <div class="card card-pad ai-plus-fair" data-fair><strong>So fair rechnen wir ab</strong><ul>
       <li>${oicon('check')}<span>Keine Probezeit, die heimlich zum Abo wird</span></li>
       <li>${oicon('check')}<span>Kündigen mit einem Tipp – hier in der App</span></li>
       <li>${oicon('check')}<span>Auf Wunsch eine Erinnerung drei Tage vor jeder Verlängerung</span></li>
-      <li>${oicon('check')}<span>Ohne Plus fehlt dir keine einzige PDF-Funktion</span></li>
+      <li>${oicon('check')}<span>Ohne Pro fehlt dir keine einzige PDF-Funktion</span></li>
     </ul></div>
-    <div class="ai-plus-buy" data-buy></div>
     <div class="ai-plus-tips" data-tips hidden></div>
   </div>`);
   $('[data-status]', wrap).appendChild(st.el);
@@ -74,7 +86,7 @@ export async function mountPlus(screen) {
   renderTips(P, $('[data-tips]', wrap));
   const status = await C.aiStatus().catch(() => null);
   if (!status || !status.features || !status.features.plus || !P.plusPurchasableHere()) {
-    buy.innerHTML = `<div class="notice">${oicon('info')}<span>FaLe Plus ist bald verfügbar.</span></div>`;
+    buy.innerHTML = `<div class="notice">${oicon('info')}<span>FaLe Pro ist bald verfügbar.</span></div>`;
     return done;
   }
   const q = C.cachedQuota();
@@ -95,8 +107,8 @@ export async function mountPlus(screen) {
         b.disabled = true;
         try {
           const r = await P.buy(p);
-          if (r.active) { toast(r.lifetime ? 'Danke! FaLe Plus gehört jetzt dir – für immer.' : 'Danke! FaLe Plus ist jetzt aktiv.', 'success'); location.reload(); }
-          else if (r.pending) toast('Die Zahlung ist noch in Bearbeitung. Plus wird aktiv, sobald sie bestätigt ist – dann „Käufe wiederherstellen“ antippen.', 'info');
+          if (r.active) { toast(r.lifetime ? 'Danke! FaLe Pro gehört jetzt dir – für immer.' : 'Danke! FaLe Pro ist jetzt aktiv.', 'success'); location.reload(); }
+          else if (r.pending) toast('Die Zahlung ist noch in Bearbeitung. Pro wird aktiv, sobald sie bestätigt ist – dann „Käufe wiederherstellen“ antippen.', 'info');
           else if (!r.cancelled) toast('Der Kauf ist noch nicht bestätigt. Versuche „Käufe wiederherstellen“.', 'info');
         } catch (e) { errorToast(e, 'Der Kauf konnte nicht abgeschlossen werden.'); }
         finally { b.disabled = false; }
@@ -105,11 +117,11 @@ export async function mountPlus(screen) {
     });
     $('[data-restore]', buy).addEventListener('click', async e => {
       e.target.disabled = true;
-      try { const r = await P.restore(); toast(r.active ? 'FaLe Plus wurde wiederhergestellt.' : 'Kein aktiver Kauf gefunden.', r.active ? 'success' : 'info'); if (r.active) location.reload(); }
+      try { const r = await P.restore(); toast(r.active ? 'FaLe Pro wurde wiederhergestellt.' : 'Kein aktiver Kauf gefunden.', r.active ? 'success' : 'info'); if (r.active) location.reload(); }
       catch (err) { errorToast(err, 'Wiederherstellen fehlgeschlagen.'); }
       finally { e.target.disabled = false; }
     });
-  } catch (e) { buy.innerHTML = `<div class="notice">${oicon('info')}<span>${esc(e.userMessage || 'FaLe Plus ist gerade nicht verfügbar.')}</span></div>`; }
+  } catch (e) { buy.innerHTML = `<div class="notice">${oicon('info')}<span>${esc(e.userMessage || 'FaLe Pro ist gerade nicht verfügbar.')}</span></div>`; }
   return done;
 }
 
@@ -117,12 +129,12 @@ function renderActive(P, box, q) {
   const info = P.plusInfo() || {};
   const life = info.lifetime || (q.plusUntil && new Date(q.plusUntil).getFullYear() >= 2090);
   if (life) {
-    box.innerHTML = `<div class="card card-pad ai-plus-active">${oicon('checkCircle')}<div><strong>FaLe Plus gehört dir – für immer</strong><span class="muted small">Kein Abo, keine Verlängerung. Danke für deine Unterstützung!</span></div></div>`;
+    box.innerHTML = `<div class="card card-pad ai-plus-active">${oicon('checkCircle')}<div><strong>FaLe Pro gehört dir – für immer</strong><span class="muted small">Kein Abo, keine Verlängerung. Danke für deine Unterstützung!</span></div></div>`;
     return;
   }
   const until = q.plusUntil ? new Date(q.plusUntil).toLocaleDateString(locale()) : '';
   const renewText = info.renews === false ? `Gekündigt – läuft am ${until} aus` : until ? `Verlängert sich am ${until}` : '';
-  box.innerHTML = `<div class="card card-pad ai-plus-active">${oicon('checkCircle')}<div><strong>FaLe Plus ist aktiv</strong><span class="muted small">${renewText}</span></div>
+  box.innerHTML = `<div class="card card-pad ai-plus-active">${oicon('checkCircle')}<div><strong>FaLe Pro ist aktiv</strong><span class="muted small">${renewText}</span></div>
       <button class="btn btn-ghost btn-sm" type="button" data-manage>Abo verwalten oder kündigen</button></div>
     <div class="card settings-group"><div class="settings-row"><div class="label"><strong>Vor der Verlängerung erinnern</strong><span>Eine Mitteilung drei Tage, bevor das Abo verlängert wird.</span></div>
       <label class="switch"><input type="checkbox" data-remind ${P.reminderOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Vor der Verlängerung erinnern</span></label></div></div>`;

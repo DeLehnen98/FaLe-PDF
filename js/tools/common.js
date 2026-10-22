@@ -259,9 +259,8 @@ export function svgEl(tag, attrs = {}) {
   return el;
 }
 
-export function proBadge() {
-  return '<span class="pt-pro" title="Bei anderen PDF-Apps oft nur im Abo – hier dabei">Pro-Funktion</span>';
-}
+/** Former „Pro-Funktion“ chip: „Pro“ now means FaLe Pro (KI without videos, no ads) – every tool is included without it. */
+export function proBadge() { return ''; }
 
 /** Convert viewport@1 point to PDF user space. */
 export const toPdf = (p, x, y) => p.base.convertToPdfPoint(x, y);

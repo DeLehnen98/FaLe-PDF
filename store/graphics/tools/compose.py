@@ -11,7 +11,7 @@ OUT = Path(__file__).resolve().parents[1]  # store/graphics
 
 CAP = {
  'de': {
-  'home': ('Alle Pro-Funktionen an Bord', 'Kein Konto, keine Wasserzeichen'),
+  'home': ('Alle Werkzeuge an Bord', 'Kein Konto, keine Wasserzeichen'),
   'sign': ('Unterschreiben in Sekunden', 'Verträge und Formulare direkt auf dem Handy'),
   'scan': ('Scannen mit Kantenerkennung', 'Seiten werden automatisch erkannt und begradigt'),
   'ocr': ('Texterkennung – auch offline', 'Scans werden durchsuchbar, direkt auf dem Gerät'),
@@ -26,7 +26,7 @@ CAP = {
   'slides': ('Präsentationen erstellen', 'Folien bearbeiten und als PPTX oder PDF speichern'),
  },
  'en': {
-  'home': ('All pro features on board', 'No account, no watermarks'),
+  'home': ('All tools on board', 'No account, no watermarks'),
   'sign': ('Sign in seconds', 'Contracts and forms, right on your phone'),
   'scan': ('Scan with edge detection', 'Pages are detected and straightened automatically'),
   'ocr': ('Text recognition, offline', 'Make scans searchable, right on your device'),

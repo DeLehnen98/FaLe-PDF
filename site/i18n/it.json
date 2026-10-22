@@ -25,18 +25,19 @@
   },
   "desk": {
     "h2": "Per Windows e Mac",
-    "intro": "Installa FaLe PDF sul tuo computer come un normale programma: con la sua icona, la sua finestra e funziona anche senza internet. Senza account e senza file di installazione.",
+    "intro": "Installa FaLe PDF sul tuo computer come un normale programma: con la sua icona, la sua finestra e funziona anche senza internet. Senza account.",
     "steps": [
       { "b": "Fai clic su “Scarica”.", "t": "FaLe PDF si apre nel tuo browser." },
       { "b": "Conferma “Installa”.", "t": "Il browser te lo chiede una sola volta." },
       { "b": "Fatto.", "t": "Da ora in poi avvii FaLe PDF dal menu Start (Windows) o dal Dock (Mac)." }
     ],
     "download": "Scarica",
+    "setup": "Programma per Windows (Setup.exe)",
     "dlWindows": "Scarica per Windows",
     "dlMac": "Scarica per Mac",
     "windowsSoon": "Microsoft Store – in arrivo",
     "windowsReady": "Scaricalo da Microsoft Store",
-    "note": "Su Windows con Edge o Chrome: così i PDF si aprono con un doppio clic. Su Mac con Safari (macOS 14 o successivo: File › Aggiungi al Dock), Chrome o Edge."
+    "note": "Su Windows con Edge o Chrome: così i PDF si aprono con un doppio clic. Su Mac con Safari (macOS 14 o successivo: File › Aggiungi al Dock), Chrome o Edge. Per Windows c’è anche un programma da installare (Setup.exe): al primo avvio Windows potrebbe chiedere conferma una volta; fai clic su “Ulteriori informazioni” e poi su “Esegui comunque”."
   },
   "jobs": {
     "h2": "Che cosa puoi sbrigare",
@@ -55,13 +56,13 @@
     "items": [
       { "dt": "Nessun caricamento", "dd": "Modifica, conversione e riconoscimento del testo avvengono sul tuo dispositivo. Usi l’IA facoltativa solo se la attivi tu." },
       { "dt": "Nessun account", "dd": "Aprila e inizia. Un account ti serve solo se scegli di sincronizzare tra più dispositivi." },
-      { "dt": "Pubblicità solo nell’app Android", "dd": "La versione per browser non mostra pubblicità. L’app Android mostra nelle pagine principali un piccolo banner segnalato come tale, mai dentro i documenti. FaLe Plus lo rimuove." }
+      { "dt": "Pubblicità solo nell’app Android", "dd": "La versione per browser non mostra pubblicità. L’app Android mostra nelle pagine principali un piccolo banner segnalato come tale, mai dentro i documenti. FaLe Pro lo rimuove." }
     ]
   },
   "free": {
     "h2": "Senza filigrane",
     "intro": "Molte app per PDF chiedono un abbonamento per queste funzioni. Qui sono senza filigrane.",
-    "note": "Se vuoi sostenere lo sviluppo, nell’app Android puoi scegliere FaLe Plus (elimina i banner pubblicitari) o un grazie una tantum.",
+    "note": "Se vuoi sostenere lo sviluppo, nell’app Android puoi scegliere FaLe Pro (elimina i banner pubblicitari) o un grazie una tantum.",
     "items": ["Firmare e compilare", "Riconoscimento del testo (OCR)", "Da PDF a Word, Excel, PowerPoint", "Oscurare", "Comprimere", "Gestire le pagine", "PDF/A per gli uffici", "Protezione con password", "Confrontare PDF", "Elaborazione batch"]
   },
   "screens": {
@@ -75,7 +76,7 @@
       { "q": "Funziona anche offline?", "a": "Sì. Tutto funziona senza internet, tranne l’IA nel cloud, la condivisione e il trasferimento." },
       { "q": "Posso installare FaLe PDF sul mio computer?", "a": "Sì. Sopra, in “Per Windows e Mac”, fai clic su “Scarica” e conferma “Installa”. Su Windows funziona con Edge o Chrome, su Mac con Safari, Chrome o Edge. A breve FaLe PDF sarà disponibile anche su Microsoft Store." },
       { "q": "Quali file posso aprire?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), testo, Markdown e immagini." },
-      { "q": "C’è pubblicità?", "a": "Nella versione per browser no. Nell’app Android compare nelle pagine principali un piccolo banner segnalato come tale, mai dentro documenti, strumenti o editor. FaLe Plus elimina i banner. Puoi anche guardare un video facoltativo per ottenere richieste IA in più." }
+      { "q": "C’è pubblicità?", "a": "Nella versione per browser no. Nell’app Android compare nelle pagine principali un piccolo banner segnalato come tale, mai dentro documenti, strumenti o editor. FaLe Pro elimina i banner. Puoi anche guardare un video facoltativo per ottenere richieste IA in più." }
     ]
   },
   "end": {

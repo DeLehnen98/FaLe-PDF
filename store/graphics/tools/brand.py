@@ -23,9 +23,9 @@ with sync_playwright() as _p:
 # --- 2) Feature graphic + OG image (HTML/CSS rendered by Chromium)
 TXT = {
     'de': dict(claim='PDF & Office –\nprivat und offline', chips=['Ausfüllen & unterschreiben', 'Scannen mit Texterkennung', 'Dokumente, Tabellen, Folien', 'Optionaler KI-Assistent'],
-               note='Alle Pro-Funktionen an Bord'),
+               note='Alle Werkzeuge an Bord'),
     'en': dict(claim='PDF & office –\nprivate and offline', chips=['Fill & sign', 'Scan with text recognition', 'Documents, sheets, slides', 'Optional AI assistant'],
-               note='All pro features on board'),
+               note='All tools on board'),
 }
 
 CSS = """

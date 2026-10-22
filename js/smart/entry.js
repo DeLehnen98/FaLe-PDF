@@ -81,7 +81,7 @@ export async function renderStartCard(box) {
 export function renderToolSection(sec) {
   if (!sec) return;
   ensureSmartCss();
-  sec.innerHTML = `<h2 class="section-title">Assistenten <span class="badge pro-badge inline-badge">Neu</span></h2><div class="tool-grid sm-tool-grid"></div>`;
+  sec.innerHTML = `<h2 class="section-title">Assistenten <span class="badge new-badge inline-badge">Neu</span></h2><div class="tool-grid sm-tool-grid"></div>`;
   const grid = $('.sm-tool-grid', sec);
   for (const a of ASSISTANTS) grid.appendChild(h(`<a class="tool-card" href="${a.href}" data-tool="${a.id}"><span class="tile-ic sm-tool-ic">${oicon(a.icon)}</span><span class="tc-text"><h3>${esc(a.title)}</h3><p>${esc(a.desc)}</p></span></a>`));
   sec.hidden = false;

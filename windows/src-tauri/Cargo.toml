@@ -1,0 +1,25 @@
+[package]
+name = "fale-pdf"
+version = "2.5.0"
+description = "FaLe PDF für Windows"
+authors = ["FaLe.dev"]
+edition = "2021"
+license = "UNLICENSED"
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-single-instance = "2"
+base64 = "0.22"
+serde_json = "1"
+open = "5"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

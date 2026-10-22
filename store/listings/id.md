@@ -17,7 +17,7 @@ Tanda tangani, pindai dengan OCR & edit PDF – privat, bisa offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF adalah kantor pribadi Anda di ponsel dan tablet: baca, isi, tanda tangani, pindai, dan edit PDF – plus dokumen, spreadsheet, dan presentasi. Fitur pro sudah termasuk – tanpa akun, tanpa watermark. File Anda diproses di perangkat Anda. Secara opsional, akun FaLe menyinkronkannya antar-perangkat Anda dengan enkripsi end-to-end.
+FaLe PDF adalah kantor pribadi Anda di ponsel dan tablet: baca, isi, tanda tangani, pindai, dan edit PDF – plus dokumen, spreadsheet, dan presentasi. Semua alat sudah termasuk – tanpa akun, tanpa watermark. File Anda diproses di perangkat Anda. Secara opsional, akun FaLe menyinkronkannya antar-perangkat Anda dengan enkripsi end-to-end.
 
 BACA PDF
 • Penampil PDF cepat dengan pencarian, bookmark, dan daftar isi
@@ -69,25 +69,25 @@ ASISTEN AI (OPSIONAL)
 • Chat dengan dokumen: ajukan pertanyaan, dapatkan jawaban dengan rujukan halaman
 • Ringkas, terjemahkan, bantuan menulis, asisten rumus, slide buatan AI
 • Kartu belajar & kuis dari catatan Anda, surat buatan AI, terjemahkan foto
-• Beberapa permintaan sudah termasuk setiap hari, tanpa akun. Lebih banyak: iklan video sukarela atau FaLe Plus
+• Tanpa Pro, satu video pendek membuka satu permintaan AI; dengan FaLe Pro semua alat AI berjalan tanpa video
 • Tidak mau AI? Satu tombol menyembunyikannya sepenuhnya
 • Hanya dengan persetujuan Anda; hanya teks yang Anda pilih yang dikirim. Jawaban AI bisa saja keliru – jawaban bermasalah dapat Anda laporkan kepada kami lewat email.
 
 ADIL DAN TRANSPARAN
-• Banner iklan kecil di halaman utama aplikasi – hilang dengan FaLe Plus
+• Banner iklan kecil di halaman utama aplikasi – hilang dengan FaLe Pro
 • Tanpa uji coba yang berubah jadi langganan, tanpa pop-up saat menyimpan
-• FaLe Plus sebagai langganan atau bayar sekali untuk selamanya – berhenti dengan satu ketukan, pengingat sebelum setiap perpanjangan
+• FaLe Pro sebagai langganan atau bayar sekali untuk selamanya – berhenti dengan satu ketukan, pengingat sebelum setiap perpanjangan
 
 PRIVAT SEJAK AWAL
-Tanpa akun, tanpa analitik. Akun FaLe opsional: FaLe Sync (terenkripsi end-to-end, server di Frankfurt – kami tidak dapat membaca apa pun) dan FaLe Plus di semua perangkat Anda. Permintaan AI tambahan bisa didapat lewat video iklan opsional. Semuanya berfungsi offline kecuali AI cloud, berbagi, dan transfer. File yang dibagikan terenkripsi end-to-end – kami tidak dapat membacanya.
+Tanpa akun, tanpa analitik. Akun FaLe opsional: FaLe Sync (terenkripsi end-to-end, server di Frankfurt – kami tidak dapat membaca apa pun) dan FaLe Pro di semua perangkat Anda. Tanpa Pro, satu video pendek membuka satu permintaan AI. Semuanya berfungsi offline kecuali AI cloud, berbagi, dan transfer. File yang dibagikan terenkripsi end-to-end – kami tidak dapat membacanya.
 
-Mengerti bahasa Anda: aplikasi otomatis mengikuti bahasa ponsel Anda. Tanpa watermark. Opsional: FaLe Plus untuk lebih banyak permintaan AI.
+Mengerti bahasa Anda: aplikasi otomatis mengikuti bahasa ponsel Anda. Tanpa watermark. Opsional: FaLe Pro – semua alat AI tanpa video dan tanpa iklan.
 ```
 
 ## Feature bullets
 
-- Semua fitur pro termasuk – tanpa akun, tanpa watermark
-- Banner iklan kecil di halaman utama aplikasi – hilang dengan FaLe Plus
+- Semua alat termasuk – tanpa akun, tanpa watermark
+- Banner iklan kecil di halaman utama aplikasi – hilang dengan FaLe Pro
 - Isi dan tanda tangani PDF
 - Pindai dengan deteksi tepi dan pengenalan teks (OCR) offline
 - Asisten AI: tanyakan isi dokumen Anda, dengan rujukan halaman (opsional)

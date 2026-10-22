@@ -25,7 +25,7 @@
   },
   "desk": {
     "h2": "Pour Windows et Mac",
-    "intro": "Installez FaLe PDF sur votre ordinateur comme un programme ordinaire : avec sa propre icône, sa propre fenêtre, et il fonctionne sans internet. Sans compte et sans fichier d’installation.",
+    "intro": "Installez FaLe PDF sur votre ordinateur comme un programme ordinaire : avec sa propre icône, sa propre fenêtre, et il fonctionne sans internet. Sans compte.",
     "steps": [
       {
         "b": "Cliquez sur « Télécharger ».",
@@ -41,11 +41,12 @@
       }
     ],
     "download": "Télécharger",
+    "setup": "Programme Windows (Setup.exe)",
     "dlWindows": "Télécharger pour Windows",
     "dlMac": "Télécharger pour Mac",
     "windowsSoon": "Microsoft Store – bientôt disponible",
     "windowsReady": "Disponible sur le Microsoft Store",
-    "note": "Sous Windows avec Edge ou Chrome : les PDF s’ouvrent alors d’un double-clic. Sur Mac avec Safari (macOS 14 ou version ultérieure : Fichier › Ajouter au Dock), Chrome ou Edge."
+    "note": "Sous Windows avec Edge ou Chrome : les PDF s’ouvrent alors d’un double-clic. Sur Mac avec Safari (macOS 14 ou version ultérieure : Fichier › Ajouter au Dock), Chrome ou Edge. Pour Windows, il existe aussi un programme à installer (Setup.exe) : au premier démarrage, Windows peut demander une confirmation ; cliquez sur « Informations complémentaires » puis sur « Exécuter quand même »."
   },
   "jobs": {
     "h2": "Ce que vous pouvez régler",
@@ -90,14 +91,14 @@
       },
       {
         "dt": "Publicité uniquement dans l’app Android",
-        "dd": "La version navigateur n’affiche aucune publicité. L’application Android affiche une petite bannière signalée sur ses pages principales – jamais dans les documents. FaLe Plus la supprime."
+        "dd": "La version navigateur n’affiche aucune publicité. L’application Android affiche une petite bannière signalée sur ses pages principales – jamais dans les documents. FaLe Pro la supprime."
       }
     ]
   },
   "free": {
     "h2": "Sans filigrane",
     "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont proposées sans filigrane.",
-    "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Plus dans l’application Android (il supprime les bannières publicitaires) ou faire un remerciement unique.",
+    "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Pro dans l’application Android (il supprime les bannières publicitaires) ou faire un remerciement unique.",
     "items": [
       "Signer et remplir",
       "Reconnaissance de texte (OCR)",
@@ -142,7 +143,7 @@
       },
       {
         "q": "Y a-t-il de la publicité ?",
-        "a": "Pas dans la version navigateur. Dans l’application Android, une petite bannière signalée apparaît sur les pages principales – jamais dans les documents, les outils ou les éditeurs. FaLe Plus supprime les bannières. Vous pouvez aussi regarder une vidéo facultative pour obtenir des requêtes IA supplémentaires."
+        "a": "Pas dans la version navigateur. Dans l’application Android, une petite bannière signalée apparaît sur les pages principales – jamais dans les documents, les outils ou les éditeurs. FaLe Pro supprime les bannières. Vous pouvez aussi regarder une vidéo facultative pour obtenir des requêtes IA supplémentaires."
       }
     ]
   },

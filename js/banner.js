@@ -6,6 +6,7 @@
 //    Inhalte: die Seite rückt um die Bannerhöhe nach oben
 //  • keine Vollbild-Werbung, keine Videos ohne Antippen; Einwilligung über Googles Dialog (UMP), sonst nicht-
 //    personalisiert
+import { proActive } from './monetize.js';
 import { plugin, isNative, platformName } from './platform.js';
 import { AI_CONFIG } from './ai/config.js';
 
@@ -17,15 +18,7 @@ const ls = k => { try { return localStorage.getItem(k); } catch { return null; }
 const admob = () => (isNative() && platformName() === 'android' ? plugin('AdMob') : null);
 
 /** FaLe Plus (bought in the app, js/ai/plus.js) → no banners. */
-export function plusActive(now = Date.now()) {
-  try {
-    const info = JSON.parse(ls('fale-plus-info') || 'null');
-    if (info && (info.lifetime || !info.expiresAt || Date.parse(info.expiresAt) > now)) return true;
-    const q = JSON.parse(ls('fale-ai-quota') || 'null'); // the AI client's cached quota knows Plus too
-    if (q && q.quota && q.quota.plus) return true;
-  } catch { /* ignore */ }
-  return false;
-}
+export function plusActive(now = Date.now()) { return proActive(now); } // FaLe Pro = no ads (js/monetize.js)
 
 /** Does this run of the app show banners at all? */
 export function bannersEnabled() {

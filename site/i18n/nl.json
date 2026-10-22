@@ -25,18 +25,19 @@
   },
   "desk": {
     "h2": "Voor Windows en Mac",
-    "intro": "Installeer FaLe PDF op je computer – net als een gewoon programma: met een eigen pictogram, een eigen venster en het werkt ook zonder internet. Geen account en geen installatiebestand.",
+    "intro": "Installeer FaLe PDF op je computer – net als een gewoon programma: met een eigen pictogram, een eigen venster en het werkt ook zonder internet. Geen account.",
     "steps": [
       { "b": "Klik op “Downloaden”.", "t": "FaLe PDF opent in je browser." },
       { "b": "Bevestig met “Installeren”.", "t": "Je browser vraagt het één keer." },
       { "b": "Klaar.", "t": "Vanaf nu start je FaLe PDF via het Startmenu (Windows) of het Dock (Mac)." }
     ],
     "download": "Downloaden",
+    "setup": "Windows-programma (Setup.exe)",
     "dlWindows": "Downloaden voor Windows",
     "dlMac": "Downloaden voor Mac",
     "windowsSoon": "Microsoft Store – binnenkort beschikbaar",
     "windowsReady": "Download in de Microsoft Store",
-    "note": "Op Windows met Edge of Chrome – dan openen PDF's met een dubbelklik. Op een Mac met Safari (macOS 14 of nieuwer: Archief › Voeg toe aan Dock), Chrome of Edge."
+    "note": "Op Windows met Edge of Chrome – dan openen PDF's met een dubbelklik. Op een Mac met Safari (macOS 14 of nieuwer: Archief › Voeg toe aan Dock), Chrome of Edge. Voor Windows is er ook een programma om te installeren (Setup.exe): bij de eerste start kan Windows één keer vragen; klik op “Meer informatie” en dan op “Toch uitvoeren”."
   },
   "jobs": {
     "h2": "Wat je ermee geregeld krijgt",
@@ -55,13 +56,13 @@
     "items": [
       { "dt": "Geen upload", "dd": "Bewerken, omzetten en tekstherkenning gebeuren op je eigen apparaat. De optionele AI gebruik je alleen als je die aanzet." },
       { "dt": "Geen account", "dd": "Open het en begin. Een account heb je alleen nodig als je ervoor kiest om tussen apparaten te synchroniseren." },
-      { "dt": "Alleen advertenties in de Android-app", "dd": "De browserversie toont geen advertenties. De Android-app toont op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten. Met FaLe Plus verdwijnt die." }
+      { "dt": "Alleen advertenties in de Android-app", "dd": "De browserversie toont geen advertenties. De Android-app toont op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten. Met FaLe Pro verdwijnt die." }
     ]
   },
   "free": {
     "h2": "Zonder watermerk",
     "intro": "Veel PDF-apps rekenen een abonnement voor deze functies. Hier zijn ze er zonder watermerken.",
-    "note": "Wil je de ontwikkeling steunen? Dan kun je in de Android-app kiezen voor FaLe Plus (verwijdert de banners) of een eenmalig bedankje.",
+    "note": "Wil je de ontwikkeling steunen? Dan kun je in de Android-app kiezen voor FaLe Pro (verwijdert de banners) of een eenmalig bedankje.",
     "items": ["Ondertekenen & invullen", "Tekstherkenning (OCR)", "PDF naar Word, Excel, PowerPoint", "Zwart maken", "Comprimeren", "Pagina's beheren", "PDF/A voor instanties", "Wachtwoordbeveiliging", "PDF's vergelijken", "Batchverwerking"]
   },
   "screens": {
@@ -75,7 +76,7 @@
       { "q": "Werkt het ook offline?", "a": "Ja. Alles behalve cloud-AI, delen en overdragen werkt zonder internet." },
       { "q": "Kan ik FaLe PDF op mijn computer installeren?", "a": "Ja. Klik hierboven onder “Voor Windows en Mac” op “Downloaden” en bevestig met “Installeren”. Op Windows werkt dit met Edge of Chrome, op een Mac met Safari, Chrome of Edge. FaLe PDF komt binnenkort ook in de Microsoft Store." },
       { "q": "Welke bestanden kan ik openen?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown en afbeeldingen." },
-      { "q": "Zijn er advertenties?", "a": "In de browserversie niet. In de Android-app staat op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten, tools of editors. FaLe Plus verwijdert de banners. Je kunt ook een optionele video bekijken voor extra AI-verzoeken." }
+      { "q": "Zijn er advertenties?", "a": "In de browserversie niet. In de Android-app staat op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten, tools of editors. FaLe Pro verwijdert de banners. Je kunt ook een optionele video bekijken voor extra AI-verzoeken." }
     ]
   },
   "end": {

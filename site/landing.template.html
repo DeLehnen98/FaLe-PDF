@@ -56,7 +56,7 @@
         <h2 id="computer-h">{{desk.h2}}</h2>
         <p class="intro">{{desk.intro}}</p>
         <ol class="desk-steps">{{#each desk.steps}}<li><b>{{.b}}</b> {{.t}}</li>{{/each}}</ol>
-        <div class="cta"><a class="btn btn-main" href="/app/?install=1" data-dl data-dl-windows="{{desk.dlWindows|a}}" data-dl-mac="{{desk.dlMac|a}}">{{desk.download}}</a><span class="store is-soon" data-store="windows" data-ready="{{desk.windowsReady|a}}"><small>Windows</small><span>{{desk.windowsSoon}}</span></span></div>
+        <div class="cta"><a class="btn btn-main" href="/app/?install=1" data-dl data-dl-windows="{{desk.dlWindows|a}}" data-dl-mac="{{desk.dlMac|a}}">{{desk.download}}</a><a class="btn btn-line" href="https://github.com/DeLehnen98/FaLe-PDF/releases/download/windows-latest/FaLe-PDF-Setup.exe" data-setup-exe>{{desk.setup}}</a><span class="store is-soon" data-store="windows" data-ready="{{desk.windowsReady|a}}"><small>Windows</small><span>{{desk.windowsSoon}}</span></span></div>
         <p class="note">{{desk.note}}</p>
       </div>
       <figure class="window" aria-hidden="true"><div class="window-bar"><img src="/icons/favicon.svg" alt="" width="16" height="16"><span>FaLe PDF</span><i></i><i></i><i></i></div><img src="/site/img/{{page.imgPrefix}}-desktop.webp" alt="" width="1120" height="630" loading="lazy"></figure>

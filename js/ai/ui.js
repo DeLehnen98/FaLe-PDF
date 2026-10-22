@@ -71,33 +71,49 @@ export async function ensureCloud() {
   let st;
   try { st = await C.aiStatus(); } catch (e) { errorToast(e, 'Der KI-Dienst ist gerade nicht erreichbar.'); return null; }
   if (!st.configured) { toast('KI kommt bald – die Cloud-KI ist noch nicht eingerichtet.', 'info', { timeout: 5000 }); return null; }
+  // web/iPhone without videos and without Pro on a FaLe-Konto: nothing to unlock here – say so before asking for consent
+  const signedIn = (() => { try { return localStorage.getItem('fale-acct') === '1'; } catch { return false; } })();
+  if (!C.hasConsent() && !adsHere() && st.limits && st.limits.free === 0 && !signedIn) { await unlockDialog({}); return null; }
   if (!C.hasConsent()) {
     const ok = await consentDialog(st.provider);
     if (!ok) return null;
-    try { await C.ensureToken(); C.refreshQuota().catch(() => {}); } catch (e) { errorToast(e, 'Die Verbindung zur KI konnte nicht hergestellt werden.'); return null; }
+    try { await C.ensureToken(); } catch (e) { errorToast(e, 'Die Verbindung zur KI konnte nicht hergestellt werden.'); return null; }
+  }
+  // FaLe Pro, or one request unlocked by a fully watched video – otherwise offer the video first
+  let q = C.cachedQuota();
+  if (!q || (!q.plus && !(q.remaining > 0))) q = await C.refreshQuota().catch(() => q);
+  if (q && !q.plus && !(q.remaining > 0)) {
+    if (!await unlockDialog(q)) return null;
+    q = await C.refreshQuota().catch(() => null);
+    if (!q || !(q.remaining > 0 || q.plus)) { toast('Die Freischaltung ist noch nicht angekommen – bitte gleich noch einmal versuchen.', 'info', { timeout: 6000 }); return null; }
   }
   return st;
 }
 
-// ---------------------------------------------------------------- quota widget
-/** "Heute noch X von Y" + optional ad button (Android) + Plus link. Updates itself. */
+// ---------------------------------------------------------------- access: FaLe Pro or one video per request
+/** Access line + video button (Android) + Pro link. Updates itself. */
 export function quotaWidget({ compact = false } = {}) {
   const el = h(`<div class="ai-quota${compact ? ' compact' : ''}" aria-live="polite"></div>`);
   let features = {};
   const paint = q => {
     if (!q) {
-      el.innerHTML = C.hasConsent() ? '<span class="muted small">Kontingent wird geladen …</span>' : `<span class="muted small">Täglich einige Anfragen inklusive – ohne Konto.</span>`;
+      el.innerHTML = C.hasConsent() ? '<span class="muted small">Wird geladen …</span>' : '';
       return;
     }
-    const pct = q.limit ? Math.min(100, (q.used / q.limit) * 100) : 100;
-    const left = q.remaining;
-    const label = q.plus ? `FaLe Plus aktiv · heute noch ${left} von ${q.limit}` : left > 0 ? `Heute noch ${left} von ${q.limit}` : 'Kontingent für heute aufgebraucht';
-    const canAd = !q.plus && adsHere() && features.ads !== false && q.rewardsLeft > 0;
-    el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
-      <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
-      ${(canAd || (!q.plus && showPlus())) && !compact ? `<div class="aq-acts">
-        ${canAd ? `<button class="btn btn-soft btn-sm" type="button" data-ai-ad>${oicon('play')} Werbevideo ansehen (+${q.bonus || 2})</button>` : ''}
-        ${!q.plus && showPlus() ? `<a class="btn btn-ghost btn-sm" href="#/ki/plus" data-ai-plus>${oicon('star')} FaLe Plus</a>` : ''}</div>` : ''}`;
+    const pro = !!q.plus;
+    const left = q.remaining || 0;
+    const canAd = !pro && adsHere() && features.ads !== false && q.rewardsLeft > 0;
+    const label = pro ? 'FaLe Pro aktiv – alle KI-Werkzeuge ohne Video'
+      : left > 0 ? (left === 1 ? '1 KI-Anfrage freigeschaltet' : `${left} KI-Anfragen freigeschaltet`)
+        : adsHere() ? 'Für die nächste KI-Anfrage: ein kurzes Video' : platformName() === 'ios' ? 'Die Cloud-KI kommt bald auch aufs iPhone' : 'Die Cloud-KI gibt es in der FaLe-App für Android';
+    const note = pro ? (left <= 0 ? 'Für heute ist das faire Tageslimit erreicht – morgen geht es weiter.' : '')
+      : left > 0 ? 'Gilt bis heute Abend.'
+        : canAd ? 'Bitte bis zum Ende ansehen – wird es abgebrochen oder die App geschlossen, gibt es keine Freischaltung.'
+          : adsHere() ? 'Für heute sind alle Videos verbraucht – morgen geht es weiter.' : '';
+    el.innerHTML = `<div class="aq-row"><span class="aq-label">${pro ? '<span class="pro-tag" data-no-i18n>PRO</span>' : ''}<strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${note ? `<span class="muted small" data-aq-note>${esc(note)}</span>` : ''}</span></div>
+      ${(canAd || (!pro && showPlus())) && !compact ? `<div class="aq-acts">
+        ${canAd ? `<button class="btn btn-primary btn-sm" type="button" data-ai-ad>${oicon('play')} Video ansehen – 1 KI-Anfrage</button>` : ''}
+        ${!pro && showPlus() ? `<a class="btn btn-ghost btn-sm" href="#/ki/pro" data-ai-plus>${oicon('star')} Ohne Video: FaLe Pro</a>` : ''}</div>` : ''}`;
     const ad = $('[data-ai-ad]', el);
     if (ad) ad.addEventListener('click', () => watchAdFlow(ad));
   };
@@ -109,16 +125,48 @@ export function quotaWidget({ compact = false } = {}) {
   return el;
 }
 
-/** Rewarded video → server-verified reward → refreshed quota. */
+/** Rewarded video → Google confirms → the server credits one KI request. → true when it was credited. */
 export async function watchAdFlow(btn) {
   if (btn) btn.disabled = true;
   try {
     const { showRewardedAd } = await import('./ads.js');
     const res = await showRewardedAd();
-    if (res && res.rewarded) toast(`Danke! ${res.credited ? `+${res.bonus || 2} KI-Anfragen für heute.` : 'Die Gutschrift kann ein paar Sekunden dauern.'}`, 'success', { timeout: 5000 });
+    if (res && res.credited) { toast('Danke! 1 KI-Anfrage ist freigeschaltet.', 'success', { timeout: 4500 }); return true; }
+    if (res && res.rewarded) { toast('Das Video ist bestätigt – die Freischaltung kann ein paar Sekunden dauern.', 'info', { timeout: 6000 }); return false; }
+    toast('Das Video wurde nicht bis zum Ende angesehen – deshalb gibt es keine Freischaltung.', 'info', { timeout: 6000 });
+    return false;
   } catch (e) {
-    errorToast(e, 'Das Werbevideo konnte gerade nicht geladen werden. Bitte versuche es später.');
+    errorToast(e, 'Das Video konnte gerade nicht geladen werden. Bitte versuche es später.');
+    return false;
   } finally { if (btn) btn.disabled = false; }
+}
+
+/** No Pro and nothing unlocked: offer the video (Android) or explain where the AI is. → true = go on. */
+export async function unlockDialog(q = C.cachedQuota() || {}) {
+  const canAd = adsHere() && (q.rewardsLeft == null || q.rewardsLeft > 0);
+  if (!adsHere()) {
+    const ios = platformName() === 'ios';
+    await openDialog({
+      title: ios ? 'Die Cloud-KI kommt bald aufs iPhone' : 'Cloud-KI in der Android-App',
+      body: ios ? '<div class="ai-limit"><p>Alle anderen Werkzeuge funktionieren schon – direkt auf deinem iPhone.</p></div>'
+        : `<div class="ai-limit"><p>Die Cloud-KI nutzt du in der FaLe-App für Android – mit einem kurzen Video pro Anfrage.</p>
+        <p class="muted small">Alle anderen Werkzeuge funktionieren hier ganz normal. Zusammenfassen und Übersetzen laufen in manchen Browsern auch direkt auf dem Gerät.</p></div>`,
+      actions: [{ label: 'OK', value: 'ok', kind: 'btn-primary', default: true }],
+    });
+    return false;
+  }
+  const r = await openDialog({
+    title: canAd ? 'Video ansehen und loslegen' : 'Für heute keine Videos mehr',
+    body: `<div class="ai-limit">${canAd
+      ? `<p>Ohne Pro schaltet ein kurzes Video genau eine KI-Anfrage frei.</p>
+        <p class="ai-limit-rule">${oicon('play')}<span>Bitte schau das Video bis zum Ende. Brichst du es ab oder schließt du die App, gibt es keine Freischaltung.</span></p>`
+      : '<p>Du hast heute schon alle Videos genutzt. Morgen geht es weiter – alle anderen Werkzeuge funktionieren ganz normal.</p>'}
+      ${showPlus() ? '<p class="muted small">Mit FaLe Pro nutzt du alle KI-Werkzeuge ohne Video – und siehst keine Werbung mehr.</p>' : ''}</div>`,
+    actions: [{ label: 'Abbrechen', value: 'cancel' }, ...(showPlus() ? [{ label: 'FaLe Pro ansehen', value: 'pro' }] : []), ...(canAd ? [{ label: 'Video ansehen', value: 'ad', kind: 'btn-primary', default: true }] : [])],
+  });
+  if (r.value === 'pro') { location.hash = '#/ki/pro'; return false; }
+  if (r.value === 'ad') return watchAdFlow();
+  return false;
 }
 
 // ---------------------------------------------------------------- errors
@@ -127,17 +175,11 @@ export async function showAiError(err) {
   if (!err || err.name === 'AbortError') return;
   if (err.code === 'quota_exhausted') {
     const q = err.quota || C.cachedQuota() || {};
-    const canAd = adsHere() && q.rewardsLeft > 0;
-    const r = await openDialog({
-      title: 'Heutiges KI-Kontingent aufgebraucht',
-      body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>
-        ${canAd ? `<p>Freiwillig: Ein kurzes Werbevideo schaltet <strong>${q.bonus || 2} weitere Anfragen</strong> frei (noch ${q.rewardsLeft}× heute).</p>` : ''}
-        ${!canAd && !isNative() ? '<p class="muted small">Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.</p>' : ''}
-        ${showPlus() ? '<p class="muted small">Mit <strong>FaLe Plus</strong> bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.</p>' : ''}</div>`,
-      actions: [{ label: 'Schließen', value: 'cancel' }, ...(showPlus() ? [{ label: 'FaLe Plus ansehen', value: 'plus' }] : []), ...(canAd ? [{ label: `Werbevideo ansehen (+${q.bonus || 2})`, value: 'ad', kind: 'btn-primary', default: true }] : [])],
-    });
-    if (r.value === 'ad') await watchAdFlow();
-    if (r.value === 'plus') location.hash = '#/ki/plus';
+    if (q.plus) {
+      await openDialog({ title: 'Faires Tageslimit erreicht', body: `<p>Mit FaLe Pro hast du heute schon ${q.limit || ''} KI-Anfragen genutzt. Morgen geht es weiter – alle anderen Funktionen bleiben nutzbar.</p>`, actions: [{ label: 'OK', value: 'ok', kind: 'btn-primary', default: true }] });
+      return;
+    }
+    if (await unlockDialog(q)) toast('Freigeschaltet – tippe noch einmal auf den Knopf, um die KI zu starten.', 'success', { timeout: 6000 });
     return;
   }
   if (err.code === 'budget_exhausted') {
