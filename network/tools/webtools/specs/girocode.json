@@ -71,7 +71,7 @@
         "text": "Der Code folgt der EPC-Vorgabe (Version 002): BIC optional, Name bis 70 und Verwendungszweck bis 140 Zeichen, Betrag bis 999.999.999,99 €. Zu lange Angaben werden gekürzt statt den Code zu zerstören."
       },
       {
-        "title": "Kein Abo, kein Ablauf",
+        "title": "Kein Ablaufdatum",
         "text": "Die Überweisungsdaten stehen direkt im Code. Er funktioniert ohne Umweg über einen fremden Server und läuft nie ab."
       },
       {
@@ -144,7 +144,7 @@
         "text": "The code follows the EPC guideline (version 002): BIC optional, name up to 70 and reference up to 140 characters, amount up to €999,999,999.99. Overlong entries are trimmed instead of breaking the code."
       },
       {
-        "title": "No subscription, no expiry",
+        "title": "No expiry date",
         "text": "The transfer details are in the code itself. It works without a detour through someone else’s server and never expires."
       },
       {

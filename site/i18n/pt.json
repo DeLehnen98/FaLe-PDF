@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – ferramentas de PDF e escritório, sem assinatura, sem envio",
+    "title": "FaLe PDF – ferramentas de PDF e escritório, sem envio",
     "description": "Leia, preencha, assine, digitalize com reconhecimento de texto e converta PDFs – além de documentos, planilhas e apresentações. Sem conta, tudo no seu dispositivo."
   },
   "skip": "Ir para o conteúdo",
@@ -12,7 +12,7 @@
     "open": "Abrir no navegador"
   },
   "hero": {
-    "h1": "Resolva a sua papelada. Sem assinatura, sem envio.",
+    "h1": "Resolva a sua papelada. Sem envio.",
     "lede": "O FaLe PDF lê, preenche, assina, digitaliza e converte – além de documentos, planilhas e apresentações. Direto no seu dispositivo.",
     "try": "Experimente no navegador"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "Sem envio", "dd": "Editar, converter e reconhecer texto acontece no seu dispositivo. Você só usa a IA opcional se a ativar." },
       { "dt": "Sem conta", "dd": "Abra e comece. Você só precisa de uma conta se quiser sincronizar entre dispositivos." },
-      { "dt": "Sem banners de anúncio", "dd": "Só há anúncios se você mesmo iniciar um vídeo para ganhar solicitações extras de IA." }
+      { "dt": "Anúncios só no app para Android", "dd": "A versão no navegador não mostra anúncios. O app para Android mostra nas páginas principais um pequeno banner identificado – nunca dentro de documentos. O FaLe Plus o remove." }
     ]
   },
   "free": {
-    "h2": "Sem assinatura e sem marca d’água",
-    "intro": "Muitos apps de PDF cobram uma assinatura por estes recursos. Aqui eles vêm sem assinatura e sem marca d’água.",
-    "note": "Se quiser apoiar o desenvolvimento, você pode escolher o FaLe Plus ou um agradecimento único no app para Android.",
+    "h2": "Sem marca d’água",
+    "intro": "Muitos apps de PDF cobram uma assinatura por estes recursos. Aqui eles vêm sem marca d’água.",
+    "note": "Se quiser apoiar o desenvolvimento, você pode escolher o FaLe Plus no app para Android (ele remove os banners de anúncio) ou um agradecimento único.",
     "items": ["Preencher e assinar", "Reconhecimento de texto (OCR)", "PDF para Word, Excel, PowerPoint", "Ocultar dados", "Comprimir", "Organizar páginas", "PDF/A para órgãos públicos", "Proteção por senha", "Comparar PDFs", "Processamento em lote"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Meus arquivos são enviados?", "a": "Não. Seus arquivos são processados e guardados no seu dispositivo. Só quando você usa de propósito a IA na nuvem, o compartilhamento por link ou a sincronização é que algo sai do seu dispositivo – criptografado, ou apenas o texto que você selecionou." },
       { "q": "Funciona offline?", "a": "Sim. Tudo funciona sem internet, exceto a IA na nuvem, o compartilhamento e a transferência." },
       { "q": "Posso instalar o FaLe PDF no meu computador?", "a": "Sim. Em “Para Windows e Mac”, acima, clique em “Baixar” e confirme “Instalar”. No Windows isso funciona com Edge ou Chrome; no Mac, com Safari, Chrome ou Edge. Em breve o FaLe PDF também estará na Microsoft Store." },
-      { "q": "Quais arquivos posso abrir?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), texto, Markdown e imagens." }
+      { "q": "Quais arquivos posso abrir?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), texto, Markdown e imagens." },
+      { "q": "Tem anúncios?", "a": "Na versão no navegador, não. No app para Android aparece um pequeno banner identificado nas páginas principais – nunca dentro de documentos, ferramentas ou editores. O FaLe Plus remove os banners. Você também pode assistir a um vídeo opcional para ganhar solicitações extras de IA." }
     ]
   },
   "end": {

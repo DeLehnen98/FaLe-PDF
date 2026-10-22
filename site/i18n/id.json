@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – alat PDF & kantor, tanpa langganan, tanpa unggahan",
+    "title": "FaLe PDF – alat PDF & kantor, tanpa unggahan",
     "description": "Baca, isi, tandatangani, pindai dengan pengenalan teks, dan konversi PDF – plus dokumen, spreadsheet, dan presentasi. Tanpa akun, semuanya di perangkat Anda."
   },
   "skip": "Langsung ke konten",
@@ -12,7 +12,7 @@
     "open": "Buka di browser"
   },
   "hero": {
-    "h1": "Urusan dokumen beres. Tanpa langganan, tanpa unggahan.",
+    "h1": "Urusan dokumen beres. Tanpa unggahan.",
     "lede": "FaLe PDF membaca, mengisi, menandatangani, memindai, dan mengonversi – plus dokumen, spreadsheet, dan presentasi. Langsung di perangkat Anda.",
     "try": "Coba di browser Anda"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "Tanpa unggahan", "dd": "Pengeditan, konversi, dan pengenalan teks berjalan di perangkat Anda. AI opsional hanya dipakai jika Anda menyalakannya." },
       { "dt": "Tanpa akun", "dd": "Buka dan langsung mulai. Anda hanya memerlukan akun jika memilih menyinkronkan antar perangkat." },
-      { "dt": "Tanpa iklan banner", "dd": "Iklan hanya muncul jika Anda sendiri memulai video untuk mendapat permintaan AI tambahan." }
+      { "dt": "Iklan hanya di aplikasi Android", "dd": "Versi browser tidak menampilkan iklan. Aplikasi Android menampilkan banner kecil berlabel di halaman utama – tidak pernah di dalam dokumen. FaLe Plus menghilangkannya." }
     ]
   },
   "free": {
-    "h2": "Tanpa langganan, tanpa watermark",
-    "intro": "Banyak aplikasi PDF menarik langganan untuk fitur-fitur ini. Di sini semuanya tersedia tanpa langganan dan tanpa watermark.",
-    "note": "Jika ingin mendukung pengembangan, Anda dapat memilih FaLe Plus atau ucapan terima kasih sekali bayar di aplikasi Android.",
+    "h2": "Tanpa watermark",
+    "intro": "Banyak aplikasi PDF menarik langganan untuk fitur-fitur ini. Di sini semuanya tersedia tanpa watermark.",
+    "note": "Jika ingin mendukung pengembangan, Anda dapat memilih FaLe Plus (menghilangkan iklan banner) atau ucapan terima kasih sekali bayar di aplikasi Android.",
     "items": ["Tandatangani & isi formulir", "Pengenalan teks (OCR)", "PDF ke Word, Excel, PowerPoint", "Sensor", "Kompres", "Kelola halaman", "PDF/A untuk instansi", "Perlindungan sandi", "Bandingkan PDF", "Pemrosesan batch"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Apakah file saya diunggah?", "a": "Tidak. File Anda diproses dan disimpan di perangkat Anda. Hanya jika Anda sengaja memakai AI cloud, berbagi lewat tautan, atau sinkronisasi, ada sesuatu yang keluar dari perangkat Anda – terenkripsi, atau hanya teks yang Anda pilih." },
       { "q": "Apakah bisa dipakai offline?", "a": "Ya. Semuanya berfungsi tanpa internet, kecuali AI cloud, berbagi, dan transfer." },
       { "q": "Bisakah saya menginstal FaLe PDF di komputer?", "a": "Bisa. Di bagian “Untuk Windows dan Mac” di atas, klik “Unduh” lalu konfirmasi “Instal”. Di Windows ini berfungsi dengan Edge atau Chrome, di Mac dengan Safari, Chrome, atau Edge. FaLe PDF juga akan segera hadir di Microsoft Store." },
-      { "q": "File apa saja yang bisa saya buka?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), teks, Markdown, dan gambar." }
+      { "q": "File apa saja yang bisa saya buka?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), teks, Markdown, dan gambar." },
+      { "q": "Apakah ada iklan?", "a": "Di versi browser tidak ada. Di aplikasi Android, banner kecil berlabel muncul di halaman utama – tidak pernah di dalam dokumen, alat, atau editor. FaLe Plus menghilangkan banner. Anda juga bisa menonton video opsional untuk mendapat permintaan AI tambahan." }
     ]
   },
   "end": {

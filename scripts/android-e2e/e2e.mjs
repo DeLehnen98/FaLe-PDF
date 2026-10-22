@@ -322,7 +322,8 @@ async function main() {
   await sleep(4000);
   await connect();
   // German UI (as on the owner's phone), skip the intro
-  await ev(`localStorage.setItem('fale-lang', 'de'); localStorage.setItem('fale-onboarded', '1'); location.hash = '#/start'; location.reload(); return true;`).catch(() => {});
+  // no ad banner during the other steps (a tap must never land on an ad) – the banner has its own step at the end
+  await ev(`localStorage.setItem('fale-lang', 'de'); localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-ads-off', '1'); location.hash = '#/start'; location.reload(); return true;`).catch(() => {});
   await sleep(3500);
   if (cdp.closed) await connect();
   await waitJs(`!!document.querySelector('#view-start, main')`, { timeout: 30000 });
@@ -584,6 +585,38 @@ async function main() {
     if (!got.includes(`Geaendert ${MARK}`)) throw new Error('Originaldatei wurde nicht überschrieben');
     if (got.length !== changed.length) throw new Error(`Originaldatei hat falsche Länge (${got.length} statt ${changed.length} – nicht gekürzt?)`);
     return `Original ersetzt (${info.where}, ${changed.length} Bytes)`;
+  });
+
+  // ---- ad banner (js/banner.js): Google test banner below the navigation, with the „Anzeige“ strip, nothing covered ----
+  await step('Werbebanner (Testanzeige) unter der Navigation', async () => {
+    await ev(`localStorage.removeItem('fale-ads-off'); location.hash = '#/start'; location.reload(); return true;`).catch(() => {});
+    await sleep(3500);
+    if (cdp.closed) await connect();
+    await waitJs(`!!document.querySelector('#view-start')`, { timeout: 30000 });
+    await ev(HELPERS);
+    const shown = await waitJs(`document.documentElement.classList.contains('has-ad')`, { timeout: 45000 }).catch(() => false);
+    if (!shown) {
+      const st = await ev(`const m = await import('/js/banner.js'); return m.bannerState();`).catch(() => null);
+      if (st && st.enabled) return `kein Testbanner geladen (Netz im Emulator?) – Platz bleibt frei, nichts verdeckt (${JSON.stringify(st)})`;
+      throw new Error('Banner ist abgeschaltet: ' + JSON.stringify(st));
+    }
+    await sleep(2500);
+    screenshot('werbebanner');
+    sh('uiautomator dump /sdcard/e2e-ad.xml', { allowFail: true, timeout: 30000 });
+    const xml = sh('cat /sdcard/e2e-ad.xml', { allowFail: true });
+    const boxes = [...xml.matchAll(/class="android\.webkit\.WebView"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/g)].map(m => m.slice(1).map(Number)).map(([l, t, r, b]) => ({ l, t, r, b, h: b - t }));
+    if (!boxes.length) return 'Banner sichtbar; Ansicht nicht auslesbar (uiautomator)';
+    boxes.sort((a, b) => b.h - a.h);
+    const app = boxes[0], ad = boxes.find(b => b !== app && b.h < 500);
+    const g = await ev(`const r = s => document.querySelector(s).getBoundingClientRect(); return { slot: r('.ad-slot'), nav: r('.bottom-nav'), dpr: devicePixelRatio };`);
+    const devY = y => Math.round(app.t + y * g.dpr);
+    const info = { app, ad, slotTop: devY(g.slot.top), labelBottom: devY(g.slot.top + 18), slotBottom: devY(g.slot.bottom), navBottom: devY(g.nav.bottom) };
+    if (!ad) return 'Banner gemeldet, Werbe-Ansicht nicht im Baum gefunden: ' + JSON.stringify(info);
+    const tol = Math.round(4 * g.dpr);
+    if (ad.t < info.labelBottom - tol) throw new Error('Banner ragt in den „Anzeige“-Streifen oder die Navigation: ' + JSON.stringify(info));
+    if (ad.b > info.slotBottom + tol) throw new Error('Banner liegt unterhalb des freien Platzes (Systemleiste?): ' + JSON.stringify(info));
+    if (info.navBottom > ad.t) throw new Error('Navigation überlappt das Banner: ' + JSON.stringify(info));
+    return `Banner ${ad.r - ad.l}×${ad.h} px bei y=${ad.t}, Navigation endet bei ${info.navBottom}, Streifen bis ${info.labelBottom}`;
   });
 
   writeFileSync(join(OUT, 'console.txt'), consoleLog.join('\n'));

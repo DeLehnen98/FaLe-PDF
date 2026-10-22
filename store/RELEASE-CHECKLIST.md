@@ -10,7 +10,7 @@ Alles andere ist vorbereitet. Diese Angaben dürfen nicht erfunden werden:
 |---|---|---|
 | Name bzw. Firma, Anschrift, Land | `impressum.html`, `datenschutz.html`, `network/impressum/`, `network/en/imprint/`, `network/datenschutz/` | `[VOR- UND NACHNAME …]`, `[STRASSE UND HAUSNUMMER]`, `[PLZ ORT]`, `[LAND]` |
 | Kontakt-E-Mail (wird im Store öffentlich angezeigt) | dieselben Seiten + `store/listing-de.md`, `store/data-safety.md` | `[E-MAIL-ADRESSE]` |
-| AdMob-App-ID + Rewarded-Anzeigenblock | `js/ai/config.js`, Vercel `ADMOB_REWARDED_AD_UNITS` | Test-IDs bis dahin |
+| AdMob-App-ID + Rewarded-Anzeigenblock + **Banner-Anzeigenblock** | `js/ai/config.js` (`ADMOB_APP_ID`, `ADMOB_REWARDED_ID`, `ADMOB_BANNER_ID`), Vercel `ADMOB_REWARDED_AD_UNITS` | Test-IDs bis dahin |
 | Play-Dienstkonto (Kaufprüfung) | Vercel `GOOGLE_PLAY_SA_JSON` | – (Secret, selbst eintragen) |
 | Store-Link nach der Freigabe | `network/tools/apps.json` → `pdf.android` (und `testers` für den Opt-in-Link des geschlossenen Tests) | leer = „bald im Play Store“ |
 
@@ -49,7 +49,7 @@ Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge
       Platzhalter `[…]` ausfüllen, Web-Version deployen, URL `https://pdf.fale.network/datenschutz.html` testen.
 - [ ] Link in der App unter **Ich → Rechtliches** auf Datenschutz und Impressum vorhanden.
 
-## A2. Cloud-KI, Werbevideos, FaLe Plus (einmalig) → Schritt für Schritt in [AI-SETUP.md](AI-SETUP.md)
+## A2. Cloud-KI, Werbebanner und Werbevideos, FaLe Plus (einmalig) → Schritt für Schritt in [AI-SETUP.md](AI-SETUP.md)
 
 - [ ] **Supabase-Migration** `supabase/migrations/20261014120100_fale_ai_retention.sql` ausführen (Löschfrist 30 Tage,
       Plus-Speicherung). Die Basis-Migration ist bereits eingespielt.
@@ -57,7 +57,7 @@ Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge
 - [ ] Echte **Preise** (`AI_PRICE_IN_USD_PER_MTOK`, `AI_PRICE_OUT_USD_PER_MTOK`) und `USD_EUR` in Vercel eintragen.
 - [ ] Monatsbudget `AI_MONTHLY_BUDGET_EUR` (Standard 10) prüfen.
 - [ ] Datenschutzerklärung Abschnitte 7–9: KI-Anbieter, Hosting, Supabase-Region, AdMob – Platzhalter ausfüllen.
-- [ ] **AdMob**: echte App-ID + Rewarded-Anzeigenblock in `js/ai/config.js` eintragen, `ADMOB_TESTING: false`,
+- [ ] **AdMob**: echte App-ID + Rewarded-Anzeigenblock + **Banner-Anzeigenblock (adaptiv)** in `js/ai/config.js` eintragen, `ADMOB_TESTING: false`,
       SSV-Callback-URL `https://fale-pdf.vercel.app/api/admob-ssv` im Anzeigenblock hinterlegen,
       `ADMOB_REWARDED_AD_UNITS` in Vercel setzen. **Niemals echte Anzeigen selbst anklicken** (Kontosperre).
 - [ ] **Google UMP**: im AdMob-Konto unter „Datenschutz und Messaging“ eine **DSGVO-Einwilligungsnachricht** veröffentlichen
@@ -106,7 +106,7 @@ Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge
       sobald die Secrets gesetzt sind). **Play App Signing** aktiviert lassen (Standard).
 - [ ] **versionCode** steigt bei jedem Upload: in `package.json` die `version` erhöhen
       (`2.0.1` → versionCode `20001`). Gleicher versionCode wird von Play abgelehnt.
-- [ ] Keine heiklen Berechtigungen außer `AD_ID` (Werbevideos) und `BILLING` (FaLe Plus) – siehe [data-safety.md](data-safety.md).
+- [ ] Keine heiklen Berechtigungen außer `AD_ID` (Werbebanner/Werbevideos) und `BILLING` (FaLe Plus) – siehe [data-safety.md](data-safety.md).
 - [ ] 16-KB-Seitengröße: die App enthält keinen eigenen nativen Code (nur Java/WebView) → erfüllt.
 
 ## D. Store-Eintrag
@@ -136,13 +136,13 @@ Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge
 ## E. App-Inhalte (Play Console → „App-Inhalte“)
 
 - [ ] Datenschutzerklärung (URL)
-- [ ] Werbung: **Ja** (freiwillige Rewarded-Videos, AdMob)
+- [ ] Werbung: **Ja** („Enthält Werbung“ – AdMob-Banner auf den Hauptseiten der Android-App + freiwillige Rewarded-Videos)
 - [ ] Werbe-ID: **Ja**, Zweck Werbung
 - [ ] In-App-Käufe: Abo „FaLe Plus“ (2,99 €/Monat, 24,99 €/Jahr), Einmalkauf „für immer“ (39,99 €) und Danke-Beiträge (1,99/4,99/9,99 €) – Tabelle in Abschnitt 0
 - [ ] App-Zugriff: keine Anmeldung nötig
 - [ ] Content-Rating-Fragebogen (IARC) – Antworten in [data-safety.md](data-safety.md)
 - [ ] Zielgruppe: 18+
-- [ ] Datensicherheit: neue Angaben (Cloud-KI-Text, pseudonyme ID, AdMob, Kaufverlauf, verschlüsselt geteilte Dateien) – siehe [data-safety.md](data-safety.md)
+- [ ] Datensicherheit: neue Angaben (Cloud-KI-Text, pseudonyme ID, **AdMob-Daten jetzt „Erforderlich“ wegen Banner**, Kaufverlauf, verschlüsselt geteilte Dateien) – siehe Abschnitt „ACHTUNG“ in [data-safety.md](data-safety.md)
 - [ ] Regierungs-App / Finanz / Gesundheit / Nachrichten: Nein
 
 ## F. Jeder Release
@@ -171,6 +171,7 @@ Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge
 - [ ] Flugmodus: alles funktioniert offline (KI-Assistent zeigt „Du bist offline“, nichts blockiert)
 - [ ] **KI**: Einwilligungsdialog beim ersten Mal, Chat mit Dokument (Seitenangabe antippen → richtige Seite), Zusammenfassen,
       Übersetzen, Schreibhilfe (Text markieren → ⋮ → KI-Schreibhilfe), Formel-Assistent, Folien per KI, Lernkarten
+- [ ] **Werbebanner** (mit Test-IDs!): unten auf Start, Dateien, Werkzeuge und Ich ein Streifen „Anzeige“ + Banner; **nicht** in Dokument, Werkzeug, Editor, Dialogen, Einführung; mit aktivem FaLe Plus kein Banner
 - [ ] **Werbevideo** (mit Test-IDs!): UMP-Dialog erscheint (in der EU), Video läuft, danach „+3“ im Kontingent
       (kommt über die Server-Bestätigung, kann einige Sekunden dauern)
 - [ ] **FaLe Plus** (mit Lizenz-Testkonto in der Play Console): Abo-Kauf, „für immer“-Kauf, Danke-Beitrag zweimal,

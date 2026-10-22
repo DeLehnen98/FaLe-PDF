@@ -26,7 +26,7 @@
     ],
     "why": [
       { "title": "Echte Vektoren", "text": "Jede Fläche wird als Pfad nachgezeichnet – kein Pixelbild in einer SVG-Hülle. Das Ergebnis bleibt in jeder Größe scharf und lässt sich in jedem Grafikprogramm bearbeiten." },
-      { "title": "Ohne Abo und Wasserzeichen", "text": "Vorschau und Download sind unbegrenzt. Kein Konto, keine Credits, kein Wasserzeichen." },
+      { "title": "Ohne Wasserzeichen", "text": "Vorschau und Download sind unbegrenzt. Kein Konto, keine Credits, kein Wasserzeichen." },
       { "title": "Keine Lücken zwischen Farben", "text": "Die Farbflächen liegen überlappend übereinander, deshalb entstehen keine weißen Haarlinien zwischen benachbarten Farben – auch nicht beim Vergrößern oder Drucken." },
       { "title": "Bleibt auf deinem Gerät", "text": "Dein Logo wird im Browser nachgezeichnet und nicht hochgeladen – wichtig bei Entwürfen und Kundendaten." }
     ],
@@ -55,7 +55,7 @@
     ],
     "why": [
       { "title": "Real vectors", "text": "Every area is traced as a path – not a bitmap wrapped in an SVG. The result stays sharp at any size and can be edited in any design program." },
-      { "title": "No subscription, no watermark", "text": "Preview and download are and unlimited. No account, no credits, no watermark." },
+      { "title": "No watermark", "text": "Preview and download are and unlimited. No account, no credits, no watermark." },
       { "title": "No gaps between colours", "text": "Colour areas overlap in layers, so there are no white hairlines between neighbouring colours – not even when enlarged or printed." },
       { "title": "Stays on your device", "text": "Your logo is traced in your browser and never uploaded – important for drafts and client work." }
     ],

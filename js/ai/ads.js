@@ -1,6 +1,6 @@
 // Rewarded video ads (Android app only) via @capacitor-community/admob (plugin name "AdMob").
-// Voluntary: only started when the user taps "Werbevideo ansehen". The Google Mobile Ads SDK and
-// the EU consent flow (Google UMP) are initialised lazily at that moment – never at app start.
+// Voluntary: only started when the user taps "Werbevideo ansehen". The Google Mobile Ads SDK and the EU consent
+// flow (Google UMP) are initialised once per app run – by the first banner (js/banner.js) or by this video.
 // The reward itself is granted by the SERVER after Google's signed SSV callback (custom_data =
 // this device's signed token); the app only refreshes its quota afterwards.
 import { plugin, isNative, platformName } from '../platform.js';
@@ -32,6 +32,9 @@ async function init() {
   }
   return initP;
 }
+
+/** Google Mobile Ads SDK + EU consent (UMP), once per app run – also used by the banner (js/banner.js). */
+export async function initAds() { await init(); return consentInfo; }
 
 async function on(p, name, cb) {
   try { const r = p.addListener(name, cb); return (r && typeof r.then === 'function') ? await r : r; } catch { return null; }

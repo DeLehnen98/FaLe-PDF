@@ -17,7 +17,7 @@ PDF imzala, metin tanımayla tara, düzenle – özel, çevrimdışı çalışı
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF, telefon ve tablet için özel ofisin: PDF’leri oku, doldur, imzala, tara ve düzenle – ayrıca belgeler, tablolar ve sunular. Pro özellikler de dahil; abonelik yok, hesap yok, filigran yok. Dosyaların cihazında işlenir. İstersen FaLe hesabı, dosyalarını cihazların arasında uçtan uca şifreli olarak eşitler.
+FaLe PDF, telefon ve tablet için özel ofisin: PDF’leri oku, doldur, imzala, tara ve düzenle – ayrıca belgeler, tablolar ve sunular. Pro özellikler de dahil; hesap yok, filigran yok. Dosyaların cihazında işlenir. İstersen FaLe hesabı, dosyalarını cihazların arasında uçtan uca şifreli olarak eşitler.
 
 PDF OKU
 • Arama, yer işaretleri ve içindekiler ile hızlı PDF görüntüleyici
@@ -74,19 +74,21 @@ YAPAY ZEKÂ ASİSTANI (İSTEĞE BAĞLI)
 • Yapay zekâ istemiyor musun? Tek bir anahtar onu tamamen gizler
 • Yalnızca onayınla; yalnızca seçtiğin metin gönderilir. Yapay zekâ yanıtları hata içerebilir – sorunlu yanıtları e-postayla bize bildirebilirsin.
 
-ADİL, ABONELİK TUZAĞI YOK
+ADİL VE ŞEFFAF
+• Uygulamanın ana sayfalarında küçük bir banner reklam görünür – FaLe Plus ile kaldırılır
 • Aboneliğe dönüşen deneme yok, kaydederken açılır pencere yok
 • FaLe Plus abonelik olarak veya tek seferlik ödemeyle sonsuza dek – tek dokunuşla iptal, her yenilemeden önce hatırlatma
 
 TASARIMDAN GİZLİ
-Hesap gerekmez, banner reklam yok, analiz yok. İsteğe bağlı FaLe hesabı: FaLe Sync (uçtan uca şifreli, sunucular Frankfurt’ta – hiçbir şeyi okuyamayız) ve tüm cihazlarında FaLe Plus. Reklamı yalnızca ek yapay zekâ isteği kazanmak için kendin bir video başlatırsan görürsün. Kamera yalnızca tarama için, bildirimler yalnızca kendi kurduğun hatırlatıcılar için kullanılır. Bulut yapay zekâsı, paylaşım ve aktarım dışında her şey çevrimdışı çalışır. Paylaşılan dosyalar uçtan uca şifrelidir – onları okuyamayız.
+Hesap gerekmez, analiz yok. İsteğe bağlı FaLe hesabı: FaLe Sync (uçtan uca şifreli, sunucular Frankfurt’ta – hiçbir şeyi okuyamayız) ve tüm cihazlarında FaLe Plus. Ek yapay zekâ istekleri için isteğe bağlı bir video reklam izleyebilirsin. Kamera yalnızca tarama için, bildirimler yalnızca kendi kurduğun hatırlatıcılar için kullanılır. Bulut yapay zekâsı, paylaşım ve aktarım dışında her şey çevrimdışı çalışır. Paylaşılan dosyalar uçtan uca şifrelidir – onları okuyamayız.
 
 Senin dilini konuşur: uygulama telefonunun diline otomatik uyar. Ücretsiz, filigransız. İsteğe bağlı: daha fazla yapay zekâ isteği için FaLe Plus.
 ```
 
 ## Feature bullets
 
-- Tüm pro özellikler dahil – abonelik yok, hesap yok, filigran yok
+- Tüm pro özellikler dahil – hesap yok, filigran yok
+- Uygulamanın ana sayfalarında küçük bir banner reklam görünür – FaLe Plus ile kaldırılır
 - PDF doldur ve imzala
 - Kenar algılama ve çevrimdışı metin tanıma (OCR) ile tara
 - Yapay zekâ asistanı: belgelerine sor, sayfa referanslarıyla (isteğe bağlı)

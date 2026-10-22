@@ -17,12 +17,12 @@ Onderteken, scan met tekstherkenning en bewerk pdf’s – privé, offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is je privékantoor voor telefoon en tablet: lees, vul in, onderteken, scan en bewerk pdf’s – plus documenten, spreadsheets en presentaties. De pro-functies zitten er ook bij, zonder abonnement en zonder account. Je bestanden worden op je eigen apparaat verwerkt. Optioneel synchroniseert het FaLe account ze end-to-end versleuteld tussen je apparaten.
+FaLe PDF is je privékantoor voor telefoon en tablet: lees, vul in, onderteken, scan en bewerk pdf’s – plus documenten, spreadsheets en presentaties. De pro-functies zitten er ook bij, zonder account. Je bestanden worden op je eigen apparaat verwerkt. Optioneel synchroniseert het FaLe account ze end-to-end versleuteld tussen je apparaten.
 
 PDF’S LEZEN
 • Snelle pdf-viewer met zoeken, bladwijzers en inhoudsopgave
 • Leesmodus: tekst aangepast voor je telefoon, met lettergrootte, sepia en donker
-• Voorlezen (met de spraaksynthese van je apparaat)
+• Voorlezen
 
 INVULLEN & ONDERTEKENEN
 • Vul pdf-formulieren in
@@ -72,19 +72,21 @@ AI-ASSISTENT (OPTIONEEL)
 • Geen AI nodig? Eén schakelaar verbergt alles
 • Alleen met jouw toestemming; alleen de tekst die je selecteert wordt verstuurd. AI-antwoorden kunnen fouten bevatten – problematische antwoorden kun je per e-mail aan ons melden.
 
-EERLIJK, GEEN ABONNEMENTSVAL
+EERLIJK EN TRANSPARANT
+• Kleine banneradvertentie op de hoofdpagina’s van de app – met FaLe Plus zonder advertenties
 • Geen proefperiode die in een abonnement verandert, geen pop-ups bij het opslaan
 • FaLe Plus als abonnement of eenmalig voor altijd – opzeggen met één tik, herinnering vóór elke verlenging
 
 PRIVÉ DOOR ONTWERP
-Geen account nodig, geen banneradvertenties, geen analyses. Optioneel FaLe account: FaLe Sync (end-to-end versleuteld, servers in Frankfurt – wij kunnen niets lezen) en FaLe Plus op al je apparaten. Je ziet alleen een advertentie als je zelf een video start voor extra AI-aanvragen. De camera wordt alleen gebruikt om te scannen, meldingen alleen voor herinneringen die je zelf instelt. Alles werkt offline, behalve de AI in de cloud, delen en overdragen. Gedeelde bestanden zijn end-to-end versleuteld – wij kunnen ze niet lezen.
+Geen account nodig, geen analyses. Optioneel FaLe account: FaLe Sync (end-to-end versleuteld, servers in Frankfurt – wij kunnen niets lezen) en FaLe Plus op al je apparaten. Extra AI-aanvragen krijg je met een optionele video-advertentie. De camera wordt alleen gebruikt om te scannen, meldingen alleen voor herinneringen die je zelf instelt. Alles werkt offline, behalve de AI in de cloud, delen en overdragen. Gedeelde bestanden zijn end-to-end versleuteld – wij kunnen ze niet lezen.
 
 In jouw taal: de app volgt automatisch de taal van je telefoon. Zonder watermerken. Optioneel: FaLe Plus voor meer AI-aanvragen.
 ```
 
 ## Feature bullets
 
-- Alle pro-functies inbegrepen – geen abonnement, geen account, geen watermerken
+- Alle pro-functies inbegrepen – geen account, geen watermerken
+- Kleine banneradvertentie op de hoofdpagina’s van de app – met FaLe Plus zonder advertenties
 - Pdf’s invullen en ondertekenen
 - Scannen met randherkenning en offline tekstherkenning (OCR)
 - AI-assistent: stel vragen aan je documenten, met paginaverwijzingen (optioneel)

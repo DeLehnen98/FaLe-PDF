@@ -564,7 +564,7 @@ PDF = {
         'why': [
             ('Verarbeitung auf dem Gerät', 'Lesen, Unterschreiben, Scannen, Texterkennung, Umwandeln und Bearbeiten laufen direkt auf deinem Handy oder Computer – deine Dateien werden dafür nicht hochgeladen.'),
             ('Cloud-KI nur auf Wunsch', 'Die KI-Funktionen sind freiwillig. Text geht nur an den KI-Dienst, wenn du es ausdrücklich möchtest.'),
-            ('Kein Handel mit Daten', 'Keine Werbebanner, kein Tracking, keine Analyse-Tools und kein Verkauf von Daten.'),
+            ('Kein Handel mit Daten', 'Kein Tracking, keine Analyse-Tools und kein Verkauf von Daten.'),
         ],
         'faq_h': 'Häufige Fragen',
         'faq': [
@@ -574,7 +574,7 @@ PDF = {
             ('Funktioniert es offline?', 'Ja. Alle Werkzeuge außer der optionalen Cloud-KI funktionieren ohne Internet – auch die Texterkennung. Deren Sprachdaten werden beim ersten Mal einmalig geladen.'),
             ('Welche Dateien kann ich öffnen?', 'PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), CSV, TXT, Markdown sowie Bilder (JPG, PNG, WebP).'),
             ('Läuft FaLe PDF auf Windows, Mac, Android und iPhone?', 'Ja. FaLe PDF läuft in jedem aktuellen Browser und lässt sich auf allen diesen Geräten wie eine App installieren. Eine Android-App für den Play Store folgt in Kürze.'),
-            ('Gibt es Werbung?', 'Keine Banner und keine Werbung beim Arbeiten. In der Android-App kannst du freiwillig ein Werbevideo ansehen, um zusätzliche KI-Anfragen zu bekommen.'),
+            ('Gibt es Werbung?', 'In der Web-Version nicht. Die Android-App zeigt auf ihren Hauptseiten (Start, Dateien, Werkzeuge, Ich) unten ein kleines, gekennzeichnetes Werbebanner – nie in deinen Dokumenten und nicht beim Arbeiten. Mit FaLe Plus ist die App werbefrei. Freiwillig kannst du ein Werbevideo ansehen, um zusätzliche KI-Anfragen zu bekommen.'),
         ],
         'more_h': 'Mehr zu FaLe PDF',
         'more': [('Unterschrift von anderen anfordern – so geht’s', '/unterschrift-anfordern/'), ('Dateien sicher verschicken – ohne Konto', '/dateien-verschicken/'), ('Unterlagen von anderen anfordern – per Link', '/unterlagen-anfordern/'), ('Alle PDF-Werkzeuge', '/werkzeuge/'), ('Datenschutzerklärung der App', PDF_PRIVACY)],
@@ -630,7 +630,7 @@ PDF = {
         'why': [
             ('Processing on your device', 'Reading, signing, scanning, text recognition, converting and editing run right on your phone or computer – your files are not uploaded for that.'),
             ('Cloud AI only if you want it', 'The AI features are optional. Text only goes to the AI service when you explicitly ask for it.'),
-            ('No trading in data', 'No banner ads, no tracking, no analytics tools and no selling of data.'),
+            ('No trading in data', 'No tracking, no analytics tools and no selling of data.'),
         ],
         'faq_h': 'Frequently asked questions',
         'faq': [
@@ -640,7 +640,7 @@ PDF = {
             ('Does it work offline?', 'Yes. All tools except the optional cloud AI work without internet – including text recognition. Its language data is downloaded once on first use.'),
             ('Which files can I open?', 'PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), CSV, TXT, Markdown and images (JPG, PNG, WebP).'),
             ('Does FaLe PDF run on Windows, Mac, Android and iPhone?', 'Yes. FaLe PDF runs in any current browser and can be installed like an app on all of these devices. An Android app for the Play Store is coming soon.'),
-            ('Are there ads?', 'No banners and no ads while you work. In the Android app you can choose to watch a video ad to get extra AI requests.'),
+            ('Are there ads?', 'Not in the web version. The Android app shows a small, labelled ad banner at the bottom of its main pages (Home, Files, Tools, Me) – never in your documents and not while you work. FaLe Plus makes the app ad-free. You can also choose to watch a video ad to get extra AI requests.'),
         ],
         'more_h': 'More about FaLe PDF',
         'more': [('Request a signature from someone else – how it works', '/en/request-signature/'), ('Send files securely – no account', '/en/send-files/'), ('Request documents from others – via a link', '/en/request-files/'), ('All PDF tools', '/en/tools/'), ('The app’s privacy policy', PDF_PRIVACY + '?lang=en')],
@@ -1159,7 +1159,7 @@ BUSINESS = {
             ('Ohne Konto und Lizenzschlüssel', 'Keine Anmeldung und keine Benutzerverwaltung – FaLe PDF startet sofort auf jedem Arbeitsplatz.'),
             ('Offline nutzbar', 'Nach dem ersten Start funktioniert FaLe PDF auch ohne Internetverbindung.'),
             ('Online nur auf Wunsch', 'Nur drei Funktionen gehen über das Internet: Cloud-KI (nur mit Einwilligung), Brief per Post und Fax sowie verschlüsseltes Teilen. Jede lässt sich zentral abschalten (siehe unten).'),
-            ('Kein Tracking', 'Keine Analyse-Tools und keine Werbebanner – Details in der <a href="%s">Datenschutzerklärung</a>.' % PDF_PRIVACY),
+            ('Kein Tracking', 'Keine Analyse-Tools; die Web-Version, die Sie über die Richtlinien verteilen, zeigt keine Werbung – Details in der <a href="%s">Datenschutzerklärung</a>.' % PDF_PRIVACY),
             ('Wo die Dateien liegen', 'In der Ablage von FaLe PDF im Browser-Profil der jeweiligen Person. Über „Speichern“ landen Ergebnisse als normale Datei im gewünschten Ordner, auch auf Netzlaufwerken.'),
         ],
         'deploy_h': 'So verteilen Sie FaLe PDF',
@@ -1194,7 +1194,7 @@ BUSINESS = {
             ('No account, no licence keys', 'No sign-in and no user management – FaLe PDF starts right away on every workstation.'),
             ('Works offline', 'After the first start, FaLe PDF also works without an internet connection.'),
             ('Online only on request', 'Only three features use the internet: cloud AI (only with consent), letters by post and fax, and encrypted sharing. Each can be switched off centrally (see below).'),
-            ('No tracking', 'No analytics tools and no ad banners – details in the <a href="%s">privacy policy</a>.' % PDF_PRIVACY),
+            ('No tracking', 'No analytics tools; the web version you deploy through the policies shows no ads – details in the <a href="%s">privacy policy</a>.' % PDF_PRIVACY),
             ('Where files are kept', 'In FaLe PDF’s file list in each person’s browser profile. “Save” writes results as normal files to any folder, including network drives.'),
         ],
         'deploy_h': 'How to deploy FaLe PDF',

@@ -17,12 +17,12 @@ Assine, digitalize com OCR e edite PDFs – privado, funciona offline.
 ## Full description (≤ 4000)
 
 ```
-O FaLe PDF é o seu escritório privado para celular e tablet: leia, preencha, assine, digitalize e edite PDFs – além de documentos, planilhas e apresentações. Os recursos profissionais também estão incluídos, sem assinatura, sem conta e sem marcas d’água. Seus arquivos são processados no seu aparelho. Opcionalmente, a conta FaLe os sincroniza entre seus aparelhos com criptografia de ponta a ponta.
+O FaLe PDF é o seu escritório privado para celular e tablet: leia, preencha, assine, digitalize e edite PDFs – além de documentos, planilhas e apresentações. Os recursos profissionais também estão incluídos, sem conta e sem marcas d’água. Seus arquivos são processados no seu aparelho. Opcionalmente, a conta FaLe os sincroniza entre seus aparelhos com criptografia de ponta a ponta.
 
 LER PDFS
 • Leitor de PDF rápido com busca, marcadores e sumário
 • Modo de leitura: texto reorganizado para o celular, com tamanho da fonte, sépia e tema escuro
-• Ler em voz alta (com a voz do seu aparelho)
+• Ler em voz alta
 
 PREENCHER E ASSINAR
 • Preencha formulários PDF
@@ -72,19 +72,21 @@ ASSISTENTE DE IA (OPCIONAL)
 • Não quer IA? Um único botão a esconde por completo
 • Somente com o seu consentimento; só o texto que você seleciona é enviado. As respostas da IA podem conter erros – você pode nos informar por e-mail sobre respostas problemáticas.
 
-JUSTO, SEM ARMADILHA DE ASSINATURA
+JUSTO E TRANSPARENTE
+• Pequeno banner de anúncio nas páginas principais do app – sem anúncios com o FaLe Plus
 • Sem teste que vira assinatura, sem pop-ups ao salvar
 • FaLe Plus por assinatura ou com pagamento único, para sempre – cancele com um toque, com lembrete antes de cada renovação
 
 PRIVADO POR PROJETO
-Sem conta, sem banners, sem análise de uso. Conta FaLe opcional: FaLe Sync (criptografia de ponta a ponta, servidores em Frankfurt – não conseguimos ler nada) e FaLe Plus em todos os seus aparelhos. Você só vê um anúncio se iniciar um vídeo por conta própria para ganhar pedidos extras de IA. Tudo funciona offline, exceto a IA na nuvem, o compartilhamento e a transferência. Os arquivos compartilhados têm criptografia de ponta a ponta.
+Sem conta, sem análise de uso. Conta FaLe opcional: FaLe Sync (criptografia de ponta a ponta, servidores em Frankfurt – não conseguimos ler nada) e FaLe Plus em todos os seus aparelhos. Você pode ganhar pedidos extras de IA assistindo a um vídeo opcional. Tudo funciona offline, exceto a IA na nuvem, o compartilhamento e a transferência. Os arquivos compartilhados têm criptografia de ponta a ponta.
 
 Na sua língua: o app segue automaticamente o idioma do seu celular. Sem marcas d’água. Opcional: FaLe Plus para mais pedidos de IA.
 ```
 
 ## Feature bullets
 
-- Todos os recursos profissionais incluídos – sem assinatura, sem conta, sem marcas d’água
+- Todos os recursos profissionais incluídos – sem conta, sem marcas d’água
+- Pequeno banner de anúncio nas páginas principais do app – sem anúncios com o FaLe Plus
 - Preencher e assinar PDFs
 - Digitalizar com detecção de bordas e reconhecimento de texto (OCR) offline
 - Assistente de IA: pergunte aos seus documentos, com referência às páginas (opcional)

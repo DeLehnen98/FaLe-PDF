@@ -12,7 +12,7 @@
 
 ## Play Console declarations
 
-- **Contains ads**: yes – voluntary rewarded video ads (Google AdMob) in the Android app, only when the user chooses to watch one for extra AI requests. No banner ads.
+- **Contains ads**: **yes** (must be set to "Yes" in the Play Console) – Google AdMob in the Android app: a small, labelled banner at the bottom of the main pages (Home, Files, Tools, Me), never inside documents, tools or editors; FaLe Plus removes it. Plus voluntary rewarded video ads for extra AI requests. The web/Windows version shows no ads.
 - **In-app purchases**: yes – the "FaLe Plus" subscription (more AI requests per day), the one-time "FaLe Plus forever" (`fale_plus_lifetime`) and voluntary thank-you tips (`fale_tip_small` / `_medium` / `_large`, consumable); prices are set in the Play Console.
 - **AI-generated content**: the optional cloud AI is disclosed in the description, incl. how to report problematic answers (contact email).
 
@@ -31,12 +31,12 @@ Sign, scan with text recognition & edit PDFs – private, works offline.
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. The pro features are included too – no subscription, no account, no watermarks. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
+FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. The pro features are included too – no account, no watermarks. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
 • Reading mode: text reflowed for your phone, with font size, sepia and dark
-• Read aloud (your device's text-to-speech)
+• Read aloud
 
 FILL & SIGN
 • Fill in PDF forms
@@ -92,19 +92,21 @@ AI ASSISTANT (OPTIONAL)
 • Don’t want AI? One switch hides it completely
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
 
-FAIR, NOT A SUBSCRIPTION TRAP
-• No trial that turns into a subscription, no pop-ups when you save
+FAIR AND TRANSPARENT
+• The app shows a small banner ad on its main pages – ad-free with FaLe Plus.
+• No trial that silently turns into a paid plan, no pop-ups when you save
 • FaLe Plus as a subscription or pay once, forever – cancel with one tap, reminder before every renewal
 
 PRIVATE BY DESIGN
-No account needed, no banner ads, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
+No account needed, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You can get extra AI requests by watching an optional video ad. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
 
 Speaks your language: the app follows your phone's language automatically. No watermarks. Optional: FaLe Plus for more AI requests.
 ```
 
 ## Feature bullets
 
-- All pro features on board – no subscription, no account, no watermarks
+- All pro features on board – no account, no watermarks
+- The Android app shows a small banner ad on its main pages – ad-free with FaLe Plus
 - Fill in and sign PDFs
 - Scan with edge detection and offline text recognition (OCR)
 - AI assistant: ask your documents, with page references (optional)

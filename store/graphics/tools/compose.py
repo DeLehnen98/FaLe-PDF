@@ -11,7 +11,7 @@ OUT = Path(__file__).resolve().parents[1]  # store/graphics
 
 CAP = {
  'de': {
-  'home': ('Alle Pro-Funktionen an Bord', 'Kein Konto, keine Wasserzeichen, keine Werbebanner'),
+  'home': ('Alle Pro-Funktionen an Bord', 'Kein Konto, keine Wasserzeichen'),
   'sign': ('Unterschreiben in Sekunden', 'Verträge und Formulare direkt auf dem Handy'),
   'scan': ('Scannen mit Kantenerkennung', 'Seiten werden automatisch erkannt und begradigt'),
   'ocr': ('Texterkennung – auch offline', 'Scans werden durchsuchbar, direkt auf dem Gerät'),
@@ -26,7 +26,7 @@ CAP = {
   'slides': ('Präsentationen erstellen', 'Folien bearbeiten und als PPTX oder PDF speichern'),
  },
  'en': {
-  'home': ('All pro features on board', 'No account, no watermarks, no banner ads'),
+  'home': ('All pro features on board', 'No account, no watermarks'),
   'sign': ('Sign in seconds', 'Contracts and forms, right on your phone'),
   'scan': ('Scan with edge detection', 'Pages are detected and straightened automatically'),
   'ocr': ('Text recognition, offline', 'Make scans searchable, right on your device'),
@@ -87,7 +87,7 @@ def page_html(device, img, head, sub):
 <script>for (const el of document.querySelectorAll('h1,p')) {{ let s = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > el.clientWidth && s > 20) {{ s -= 1; el.style.fontSize = s + 'px'; }} }}</script></body></html>"""
 
 
-def main(devices, langs):
+def main(devices, langs, only=None):
     with sync_playwright() as p:
         b = p.chromium.launch()
         for device in devices:
@@ -95,6 +95,8 @@ def main(devices, langs):
             pg = b.new_page(viewport={'width': g['W'], 'height': g['H']}, device_scale_factor=1)
             for lang in langs:
                 for i, name in enumerate(ORDER[device][lang], 1):
+                    if only and name not in only:
+                        continue  # re-compose just these shots (keeps the numbering of the others)
                     raw = SP / 'raw' / device / lang / f'{name}.png'
                     head, sub = CAP[lang][name]
                     if device != 'phone':
@@ -119,4 +121,5 @@ def main(devices, langs):
 if __name__ == '__main__':
     devs = sys.argv[1].split(',') if len(sys.argv) > 1 else ['phone']
     langs = sys.argv[2].split(',') if len(sys.argv) > 2 else ['de', 'en']
-    main(devs, langs)
+    only = set(sys.argv[3].split(',')) if len(sys.argv) > 3 else None  # optional: only these shots, e.g. home
+    main(devs, langs, only)

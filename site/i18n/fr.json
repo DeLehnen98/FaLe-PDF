@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – outils PDF et bureautique, sans abonnement, sans envoi de fichiers",
+    "title": "FaLe PDF – outils PDF et bureautique, sans envoi de fichiers",
     "description": "Lisez, remplissez, signez, numérisez avec reconnaissance de texte et convertissez vos PDF, ainsi que des documents, des tableurs et des présentations. Sans compte, tout sur votre appareil."
   },
   "skip": "Aller au contenu",
@@ -12,7 +12,7 @@
     "open": "Ouvrir dans le navigateur"
   },
   "hero": {
-    "h1": "Réglez vos papiers. Sans abonnement, sans envoi de fichiers.",
+    "h1": "Réglez vos papiers. Sans envoi de fichiers.",
     "lede": "FaLe PDF lit, remplit, signe, numérise et convertit, ainsi que des documents, des tableurs et des présentations. Directement sur votre appareil.",
     "try": "Essayer dans le navigateur"
   },
@@ -89,15 +89,15 @@
         "dd": "Ouvrez et commencez. Un compte n’est nécessaire que si vous choisissez de synchroniser vos appareils."
       },
       {
-        "dt": "Aucune bannière publicitaire",
-        "dd": "Il n’y a de publicité que si vous lancez vous-même une vidéo pour obtenir des requêtes IA supplémentaires."
+        "dt": "Publicité uniquement dans l’app Android",
+        "dd": "La version navigateur n’affiche aucune publicité. L’application Android affiche une petite bannière signalée sur ses pages principales – jamais dans les documents. FaLe Plus la supprime."
       }
     ]
   },
   "free": {
-    "h2": "Sans abonnement, sans filigrane",
-    "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont proposées sans abonnement et sans filigrane.",
-    "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Plus ou un remerciement unique dans l’application Android.",
+    "h2": "Sans filigrane",
+    "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont proposées sans filigrane.",
+    "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Plus dans l’application Android (il supprime les bannières publicitaires) ou faire un remerciement unique.",
     "items": [
       "Signer et remplir",
       "Reconnaissance de texte (OCR)",
@@ -139,6 +139,10 @@
       {
         "q": "Quels fichiers puis-je ouvrir ?",
         "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), texte, Markdown et images."
+      },
+      {
+        "q": "Y a-t-il de la publicité ?",
+        "a": "Pas dans la version navigateur. Dans l’application Android, une petite bannière signalée apparaît sur les pages principales – jamais dans les documents, les outils ou les éditeurs. FaLe Plus supprime les bannières. Vous pouvez aussi regarder une vidéo facultative pour obtenir des requêtes IA supplémentaires."
       }
     ]
   },

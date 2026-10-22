@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – PDF & office tools, no subscription, no upload",
+    "title": "FaLe PDF – PDF & office tools, no upload",
     "description": "Read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. No account, everything on your device."
   },
   "skip": "Skip to content",
@@ -12,7 +12,7 @@
     "open": "Open in browser"
   },
   "hero": {
-    "h1": "Get your paperwork done. No subscription, no upload.",
+    "h1": "Get your paperwork done. No upload.",
     "lede": "FaLe PDF reads, fills in, signs, scans and converts – plus documents, spreadsheets and presentations. Right on your device.",
     "try": "Try it in your browser"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "No upload", "dd": "Editing, converting and text recognition run on your device. You only use the optional AI if you switch it on." },
       { "dt": "No account", "dd": "Open it and start. You only need an account if you choose to sync between devices." },
-      { "dt": "No banner ads", "dd": "There are only ads if you start a video yourself to get extra AI requests." }
+      { "dt": "Ads only in the Android app", "dd": "The browser version shows no ads. The Android app shows a small, labelled banner on its main pages – never inside documents. FaLe Plus removes it." }
     ]
   },
   "free": {
-    "h2": "No subscription, no watermark",
-    "intro": "Many PDF apps charge a subscription for these features. Here they come without a subscription and without watermarks.",
-    "note": "If you want to support the development, you can choose FaLe Plus or a one-time thank-you in the Android app.",
+    "h2": "No watermark",
+    "intro": "Many PDF apps charge a subscription for these features. Here they come without watermarks.",
+    "note": "If you want to support the development, you can choose FaLe Plus in the Android app (it removes the banner ads) or give a one-time thank-you.",
     "items": ["Sign & fill in", "Text recognition (OCR)", "PDF to Word, Excel, PowerPoint", "Redact", "Compress", "Manage pages", "PDF/A for authorities", "Password protection", "Compare PDFs", "Batch processing"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Are my files uploaded?", "a": "No. Your files are processed and stored on your device. Only if you deliberately use the cloud AI, sharing by link or sync does anything leave your device – encrypted, or only the text you selected." },
       { "q": "Does it work offline?", "a": "Yes. Everything except cloud AI, sharing and transfer works without internet." },
       { "q": "Can I install FaLe PDF on my computer?", "a": "Yes. Under “For Windows and Mac” above, click “Download” and confirm “Install”. On Windows this works with Edge or Chrome, on a Mac with Safari, Chrome or Edge. FaLe PDF will soon be in the Microsoft Store as well." },
-      { "q": "Which files can I open?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), text, Markdown and images." }
+      { "q": "Which files can I open?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), text, Markdown and images." },
+      { "q": "Are there ads?", "a": "Not in the browser version. In the Android app, a small, labelled banner appears on the main pages – never inside documents, tools or editors. FaLe Plus removes the banners. You can also watch an optional video to get extra AI requests." }
     ]
   },
   "end": {

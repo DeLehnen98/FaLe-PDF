@@ -14,6 +14,7 @@ export const AI_CONFIG = {
   // --- AdMob (Android only) ---
   ADMOB_APP_ID: 'ca-app-pub-3940256099942544~3347511713', // TEST app id – replace
   ADMOB_REWARDED_ID: 'ca-app-pub-3940256099942544/5224354917', // TEST rewarded unit – replace
+  ADMOB_BANNER_ID: 'ca-app-pub-3940256099942544/9214589741', // TEST adaptive banner unit – replace (js/banner.js)
   ADMOB_TESTING: true, // set false for real ads
 
   // --- FaLe Plus (Google Play subscriptions; prices come from the Play Console, not from code) ---

@@ -89,6 +89,8 @@ Bis du das erledigt hast, nutzt die App Googles **Test-IDs** (Testanzeigen, kein
    Unter **Serverseitige Bestätigung** die Callback-URL eintragen:
    `https://fale-pdf.vercel.app/api/admob-ssv` → „Bestätigen“ (der Test-Aufruf muss „OK“ ergeben).
    Notiere die **Anzeigenblock-ID** (`ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ`).
+   Zusätzlich für das Werbebanner (`js/banner.js`): **Anzeigenblock hinzufügen → Banner** (adaptiv) → Name z. B.
+   „Banner Hauptseiten“ → Anzeigenblock-ID notieren (`ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB`).
 4. **Datenschutz und Messaging → DSGVO**: eine Einwilligungsnachricht erstellen und **veröffentlichen**
    (Sprachen Deutsch + Englisch, Datenschutzerklärung-URL eintragen). Ohne veröffentlichte Nachricht erscheint in der
    EU kein Einwilligungsdialog und es werden keine Anzeigen ausgeliefert.
@@ -96,6 +98,7 @@ Bis du das erledigt hast, nutzt die App Googles **Test-IDs** (Testanzeigen, kein
    ```js
    ADMOB_APP_ID: 'ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY',
    ADMOB_REWARDED_ID: 'ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ',
+   ADMOB_BANNER_ID: 'ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB',
    ADMOB_TESTING: false,
    ```
    Die App-ID landet beim Android-Build automatisch im Manifest (`scripts/cap-patch-android.mjs`).
@@ -138,7 +141,7 @@ in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
 
 ## Von Test-IDs auf echte IDs umstellen – Kurzfassung
 
-1. `js/ai/config.js`: `ADMOB_APP_ID`, `ADMOB_REWARDED_ID` ersetzen, `ADMOB_TESTING: false`.
+1. `js/ai/config.js`: `ADMOB_APP_ID`, `ADMOB_REWARDED_ID`, `ADMOB_BANNER_ID` ersetzen, `ADMOB_TESTING: false`.
 2. Vercel: `ADMOB_REWARDED_AD_UNITS` setzen, neu deployen.
 3. App neu bauen (Commit → GitHub Actions) → in der Build-Ausgabe darf „TEST-App-ID aktiv“ nicht mehr stehen.
 

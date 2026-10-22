@@ -814,3 +814,13 @@ mark {
 .policy-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; margin-bottom: 12px; }
 .policy-card > .ic { flex: none; width: 22px; height: 22px; color: var(--primary); margin-top: 1px; }
 .policy-card > div { display: grid; gap: 2px; }
+
+/* Werbebanner der Android-App (js/banner.js): die App rückt nach oben, unten liegt der Platz für das Banner,
+   darüber ein schmaler Streifen „Anzeige“ – nichts wird verdeckt, das Banner sitzt nicht direkt an der Navigation */
+.ad-slot { display: none; }
+html.has-ad .app { height: calc(100dvh - var(--ad-h, 0px)); }
+html.has-ad .ad-slot { display: block; position: fixed; left: 0; right: 0; bottom: 0; height: var(--ad-h, 0px); z-index: 40; background: var(--chrome); border-top: 1px solid var(--border); text-align: center; pointer-events: none; }
+html.has-ad .ad-slot span { display: block; height: 18px; line-height: 18px; font-size: 11px; font-weight: 600; color: var(--text-3); letter-spacing: .02em; }
+html.has-ad .bottom-nav { padding-bottom: 4px; }
+html.has-ad .fab { bottom: calc(84px + var(--ad-h, 0px)); }
+html.has-ad .toasts { bottom: calc(84px + var(--ad-h, 0px)); }

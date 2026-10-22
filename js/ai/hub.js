@@ -51,7 +51,7 @@ export async function mountPlus(screen) {
     <div data-status></div>
     <div class="card card-pad ai-plus-list"><ul>
       <li>${oicon('check')}<span><strong>Bis zu 200 KI-Anfragen pro Tag</strong> statt einiger weniger</span></li>
-      <li>${oicon('check')}<span><strong>Keine Werbevideos</strong> nötig</span></li>
+      <li>${oicon('check')}<span><strong>Werbefrei:</strong> keine Banner, keine Werbevideos nötig</span></li>
       <li>${oicon('check')}<span><strong>Auch ohne Abo:</strong> einmal zahlen, für immer behalten</span></li>
       <li>${oicon('heart')}<span>Hilft, die KI-Kosten zu tragen und FaLe PDF weiterzuentwickeln</span></li>
     </ul>
@@ -153,7 +153,7 @@ async function renderTips(P, box) {
   const n = P.supporterCount();
   box.hidden = false;
   box.innerHTML = `<div class="card card-pad"><strong>Einfach Danke sagen</strong>
-    <p class="muted small">Ein einmaliger Beitrag ohne Abo und ohne Gegenleistung – er hilft, FaLe PDF weiterzuentwickeln und werbefrei zu halten.</p>${n ? `<p class="muted small" data-tip-count>${n === 1 ? 'Du hast schon einmal unterstützt – danke!' : `Du hast schon ${n}-mal unterstützt – danke!`}</p>` : ''}
+    <p class="muted small">Ein einmaliger Beitrag ohne Gegenleistung – er hilft, FaLe PDF weiterzuentwickeln.</p>${n ? `<p class="muted small" data-tip-count>${n === 1 ? 'Du hast schon einmal unterstützt – danke!' : `Du hast schon ${n}-mal unterstützt – danke!`}</p>` : ''}
     <div class="ai-tip-row"></div></div>`;
   const row = $('.ai-tip-row', box);
   tips.forEach(t => {
@@ -189,7 +189,7 @@ export async function mountSettings(screen) {
           <label class="switch"><input type="checkbox" data-cloud ${C.cloudDisabled() ? '' : 'checked'}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Cloud-KI verwenden</span></label></div>
         <div class="settings-row"><div class="label"><strong>Einwilligung</strong><span>${c ? `Erteilt am ${new Date(c.at).toLocaleDateString('de-DE')}.` : 'Noch nicht erteilt – wird beim ersten Mal abgefragt.'}</span></div>
           ${c ? '<button class="btn btn-danger-ghost btn-sm" type="button" data-revoke>Widerrufen</button>' : ''}</div>
-        ${isNative() && platformName() !== 'ios' ? '<div class="settings-row" data-adrow><div class="label"><strong>Werbe-Einwilligung</strong><span>Für freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.</span></div><button class="btn btn-ghost btn-sm" type="button" data-adprivacy>Ändern</button></div>' : ''}
+        ${isNative() && platformName() !== 'ios' ? '<div class="settings-row" data-adrow><div class="label"><strong>Werbe-Einwilligung</strong><span>Für das Werbebanner und freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.</span></div><button class="btn btn-ghost btn-sm" type="button" data-adprivacy>Ändern</button></div>' : ''}
         <div class="settings-row"><div class="label"><strong>Datenschutz</strong><span>Was bei der Cloud-KI verarbeitet wird – und was nicht.</span></div><button class="btn btn-ghost btn-sm" type="button" data-privacy>Lesen</button></div>
       </div>
       <div class="card card-pad ai-facts"><strong>So schützt FaLe PDF deine Daten bei der KI</strong><ul>

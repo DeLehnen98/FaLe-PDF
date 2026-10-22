@@ -7,7 +7,7 @@
 
 ## Kennzeichnungen in Google Play (Pflicht seit KI/Werbung/Plus)
 
-- **„Enthält Werbung“**: Ja – freiwillige Werbevideos (Rewarded Ads, Google AdMob) in der Android-App, nur auf Wunsch der Nutzerin.
+- **„Enthält Werbung“**: **Ja** (muss in der Play Console auf „Ja“ stehen) – Google AdMob in der Android-App: kleines, gekennzeichnetes Werbebanner am unteren Rand der Hauptseiten (Start, Dateien, Werkzeuge, Ich), nie in Dokumenten, Werkzeugen oder Editoren; mit FaLe Plus entfällt es. Dazu freiwillige Werbevideos (Rewarded Ads) für zusätzliche KI-Anfragen. Die Web-/Windows-Version zeigt keine Werbung.
 - **„In-App-Käufe“**: Ja – Abo „FaLe Plus“ (`fale_plus_monthly` 2,99 €/Monat, `fale_plus_yearly` 24,99 €/Jahr), Einmalkauf „FaLe Plus für immer“ (`fale_plus_lifetime`, Vorschlag 39,99 €) und freiwillige Danke-Beiträge (`fale_tip_small` / `_medium` / `_large`, z. B. 1,99 / 4,99 / 9,99 €, verbrauchbar). Preise in der Play Console.
 - KI-Funktionen: Richtlinie „KI-generierte Inhalte“ beachten – In-App-Meldefunktion: Nutzer können problematische KI-Antworten über die Kontakt-E-Mail melden (in der Beschreibung nennen, falls Google es verlangt).
 
@@ -26,12 +26,12 @@ PDFs unterschreiben, scannen mit Texterkennung, bearbeiten – privat & offline.
 ## Vollständige Beschreibung (≤ 4000)
 
 ```
-FaLe PDF ist dein privates Büro für Handy und Tablet: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Auch die Pro-Funktionen sind dabei – ohne Abo und ohne Konto. Deine Dateien werden auf deinem Gerät verarbeitet. Optional synchronisiert das FaLe-Konto sie Ende-zu-Ende-verschlüsselt zwischen deinen Geräten.
+FaLe PDF ist dein privates Büro für Handy und Tablet: PDFs lesen, ausfüllen, unterschreiben, scannen und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Auch die Pro-Funktionen sind dabei – ohne Konto. Deine Dateien werden auf deinem Gerät verarbeitet. Optional synchronisiert das FaLe-Konto sie Ende-zu-Ende-verschlüsselt zwischen deinen Geräten.
 
 PDF LESEN
 • Schneller PDF-Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis
 • Lesemodus: Text fürs Handy umbrochen, mit Schriftgröße, Sepia und Dunkel
-• Vorlesen lassen (Sprachausgabe des Geräts)
+• Vorlesen lassen
 
 AUSFÜLLEN & UNTERSCHREIBEN
 • PDF-Formulare ausfüllen
@@ -72,7 +72,6 @@ ALLTAG
 • Fristen & Erinnerungen, damit keine Kündigungsfrist verfällt
 • Privater Tresor mit eigener PIN
 • „Öffnen mit“ und „Teilen“: Dateien direkt aus E-Mail, Messenger oder Dateimanager übernehmen
-• Gespeicherte Dateien landen im Ordner „Dokumente/FaLe PDF“
 
 TEILEN, UNTERSCHREIBEN LASSEN, ÜBERTRAGEN
 • Sicher teilen: Ende-zu-Ende-verschlüsselter Link, läuft automatisch ab (1 Std. bis 7 Tage), optional mit Passwort und Download-Limit
@@ -87,19 +86,21 @@ KI-ASSISTENT (OPTIONAL)
 • Keine KI gewünscht? Ein Schalter blendet sie komplett aus
 • Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst. KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden.
 
-FAIR STATT ABO-FALLE
-• Keine Probezeit, die zum Abo wird, keine Pop-ups beim Speichern
+FAIR UND TRANSPARENT
+• Die App zeigt auf den Hauptseiten ein kleines Werbebanner – mit FaLe Plus werbefrei.
+• Keine Probezeit, die automatisch kostenpflichtig wird, keine Pop-ups beim Speichern
 • FaLe Plus als Abo oder einmal zahlen für immer – Kündigen mit einem Tipp, Erinnerung vor jeder Verlängerung
 
 PRIVAT AUS PRINZIP
-Kein Konto nötig, keine Werbebanner, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Werbung gibt es nur, wenn du selbst ein Video startest, um zusätzliche KI-Anfragen zu bekommen. Kamera nur zum Scannen, Mitteilungen nur für deine Erinnerungen. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline.
+Kein Konto nötig, keine Analyse-Tools. Optionales FaLe-Konto: FaLe Sync (Ende-zu-Ende-verschlüsselt, Server in Frankfurt – wir können nichts lesen) und FaLe Plus auf allen Geräten. Zusätzliche KI-Anfragen bekommst du freiwillig per Werbevideo. Kamera nur zum Scannen, Mitteilungen nur für deine Erinnerungen. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline.
 
 In deiner Sprache – die App folgt deinem Handy. Ohne Wasserzeichen.
 ```
 
 ## Feature-Bullets (für Grafiken / Screenshot-Untertitel)
 
-- Alle Pro-Funktionen an Bord – kein Abo, kein Konto, keine Wasserzeichen
+- Alle Pro-Funktionen an Bord – kein Konto, keine Wasserzeichen
+- Die Android-App zeigt auf den Hauptseiten ein kleines Werbebanner – mit FaLe Plus werbefrei
 - PDFs ausfüllen und unterschreiben
 - Scannen mit Kantenerkennung und Texterkennung (OCR, offline)
 - KI-Assistent: Fragen an deine Dokumente, mit Seitenangaben (optional)

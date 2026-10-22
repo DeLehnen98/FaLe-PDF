@@ -81,8 +81,8 @@ Partner Center → App → **Einreichung starten**. Die Abschnitte der Reihe nac
 
 ### Altersfreigaben (Fragebogen)
 Ehrlich beantworten. Hinweise für die Antworten:
-* keine Gewalt, kein Glücksspiel, keine Drogen/Alkohol, keine Werbung, **keine digitalen Käufe**
-  (die Windows-/Web-Version zeigt weder FaLe Plus noch Werbevideos – das gibt es nur in der Android-App),
+* keine Gewalt, kein Glücksspiel, keine Drogen/Alkohol, **keine Werbung und keine digitalen Käufe in dieser Windows-/Web-Version**
+  (Werbebanner, Werbevideos und FaLe Plus gibt es nur in der Android-App – für den Fragebogen zählt nur die Windows-Version),
 * **Nutzer können Inhalte austauschen: ja** (sicher teilen per Link, Unterschrift anfordern, Geräte verbinden),
 * **KI**: Die optionale Cloud-KI erzeugt Text auf Anfrage – falls der Fragebogen nach generativer KI fragt: ja,
   optional, nur nach Zustimmung; Meldeweg = Support-E-Mail,
@@ -128,13 +128,13 @@ und danach `desktop.py` – siehe `store/graphics/README.md`.
 #### Deutsch – Kurzbeschreibung
 
 ```
-PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen an Bord, ohne Abo, ohne Konto und ohne Upload: Deine Dateien werden auf deinem PC verarbeitet. PDFs öffnest du direkt per Doppelklick.
+PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen an Bord, ohne Konto und ohne Upload: Deine Dateien werden auf deinem PC verarbeitet. PDFs öffnest du direkt per Doppelklick.
 ```
 
 #### Deutsch – Beschreibung
 
 ```
-FaLe PDF ist dein privates Büro für den PC: PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen sind dabei – ohne Abo, ohne Konto und ohne Wasserzeichen. Deine Dateien werden auf deinem Gerät verarbeitet, nicht auf einem Server.
+FaLe PDF ist dein privates Büro für den PC: PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen sind dabei – ohne Konto und ohne Wasserzeichen. Deine Dateien werden auf deinem Gerät verarbeitet, nicht auf einem Server.
 
 PDF LESEN
 • Schneller PDF-Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis
@@ -183,7 +183,7 @@ KI-ASSISTENT (OPTIONAL)
 • KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden
 
 PRIVAT AUS PRINZIP
-Kein Konto nötig, keine Werbung, keine Analyse-Tools. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Optional: FaLe-Konto mit FaLe Sync – Ende-zu-Ende-verschlüsselt zwischen deinen Geräten.
+Kein Konto nötig, keine Analyse-Tools. Die Windows-Version zeigt keine Werbung. Alles außer Cloud-KI, Teilen und Übertragen funktioniert offline. Optional: FaLe-Konto mit FaLe Sync – Ende-zu-Ende-verschlüsselt zwischen deinen Geräten.
 
 Oberfläche auf Deutsch und Englisch.
 ```
@@ -191,7 +191,7 @@ Oberfläche auf Deutsch und Englisch.
 #### Deutsch – Produkt-Features (je eine Zeile ins Partner Center)
 
 ```
-Alle Funktionen an Bord – kein Abo, kein Konto, keine Wasserzeichen
+Alle Funktionen an Bord – kein Konto, keine Wasserzeichen
 PDFs per Doppelklick öffnen, eigenes Fenster, funktioniert offline
 PDF-Formulare ausfüllen und unterschreiben
 Texterkennung (OCR) direkt auf dem PC
@@ -218,13 +218,13 @@ DOCX
 #### Englisch – Short description
 
 ```
-Read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is on board, with no subscription, no account and no upload: your files are processed on your PC. Open PDFs straight from File Explorer with a double-click.
+Read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is on board, with no account and no upload: your files are processed on your PC. Open PDFs straight from File Explorer with a double-click.
 ```
 
 #### Englisch – Description
 
 ```
-FaLe PDF is your private office for the PC: read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is included – no subscription, no account and no watermarks. Your files are processed on your device, not on a server.
+FaLe PDF is your private office for the PC: read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is included – no account and no watermarks. Your files are processed on your device, not on a server.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
@@ -272,7 +272,7 @@ AI ASSISTANT (OPTIONAL)
 • AI answers can contain mistakes – you can report problematic answers to us by email
 
 PRIVATE BY DESIGN
-No account needed, no ads, no analytics. Everything except cloud AI, sharing and transfer works offline. Optional: FaLe account with FaLe Sync – end-to-end encrypted between your devices.
+No account needed, no analytics. The Windows version shows no ads. Everything except cloud AI, sharing and transfer works offline. Optional: FaLe account with FaLe Sync – end-to-end encrypted between your devices.
 
 Interface in English and German.
 ```
@@ -280,7 +280,7 @@ Interface in English and German.
 #### Englisch – Product features
 
 ```
-Every feature on board – no subscription, no account, no watermarks
+Every feature on board – no account, no watermarks
 Open PDFs with a double-click, own window, works offline
 Fill in and sign PDF forms
 Text recognition (OCR) right on your PC

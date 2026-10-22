@@ -7023,6 +7023,15 @@ export default {
   "Hinweis „Pro-Funktionen“": "“专业功能”提示",
   "FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF 可离线使用。你不需要账户，没有广告横幅，也没有跟踪。你的文件保存在此设备的存储中 – 只有在你使用自愿的 FaLe 账户和 FaLe Sync 时，才会另外以端到端加密方式保存在云端。只有在你使用可选的云端 AI 时，所选文字才会在你同意后被处理。",
   "Weitere Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.": "更多无需账户、没有跟踪的应用 – 例如即将推出的 Windows 版 FaLe Clean。",
+  "Werbefrei:": "无广告：",
+  "keine Banner, keine Werbevideos nötig": "没有横幅广告，无需观看广告视频",
+  "Ein einmaliger Beitrag ohne Gegenleistung – er hilft, FaLe PDF weiterzuentwickeln.": "一次性贡献，没有回报 – 它帮助继续开发 FaLe PDF。",
+  "Kein Konto, keine Wasserzeichen. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.": "无需账户，没有水印。你的文件保留在你的设备上 – 只有在你愿意时才使用云端 AI。",
+  "FaLe PDF funktioniert offline. Du brauchst kein Konto und es gibt kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF 可离线使用。你不需要账户，也没有跟踪。你的文件保存在此设备的存储中 – 只有在你使用自愿的 FaLe 账户和 FaLe Sync 时，才会另外以端到端加密方式保存在云端。只有在你使用可选的云端 AI 时，所选文字才会在你同意后被处理。",
+  "Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.": "主页面底部会显示一个广告横幅 – 绝不会出现在你的文档中。使用 FaLe Plus 时应用无广告。",
+  "Einwilligung ändern": "更改同意",
+  "Für das Werbebanner und freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.": "用于广告横幅和可选的广告视频（Google AdMob）。你可以在这里更改选择。",
+  "FaLe PDF funktioniert offline. Du brauchst kein Konto, und wir setzen kein Tracking ein (Werbung in der Android-App: siehe Datenschutz). Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF 可离线使用。你不需要账户，我们也不使用跟踪（Android 应用中的广告：见隐私政策）。你的文件保存在此设备的存储中 – 只有在你使用自愿的 FaLe 账户和 FaLe Sync 时，才会另外以端到端加密方式保存在云端。只有在你使用可选的云端 AI 时，所选文字才会在你同意后被处理。",
 };
 
 export const defaultValues = {

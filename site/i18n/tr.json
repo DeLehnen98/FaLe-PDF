@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – PDF ve ofis araçları, abonelik yok, yükleme yok",
+    "title": "FaLe PDF – PDF ve ofis araçları, yükleme yok",
     "description": "PDF dosyalarını okuyun, doldurun, imzalayın, metin tanımayla tarayın ve dönüştürün – ayrıca belgeler, elektronik tablolar ve sunumlar. Hesapsız, her şey cihazınızda."
   },
   "skip": "İçeriğe atla",
@@ -12,7 +12,7 @@
     "open": "Tarayıcıda aç"
   },
   "hero": {
-    "h1": "Evrak işlerinizi halledin. Abonelik yok, yükleme yok.",
+    "h1": "Evrak işlerinizi halledin. Yükleme yok.",
     "lede": "FaLe PDF okur, doldurur, imzalar, tarar ve dönüştürür – ayrıca belgeler, elektronik tablolar ve sunumlar. Doğrudan cihazınızda.",
     "try": "Tarayıcınızda deneyin"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "Yükleme yok", "dd": "Düzenleme, dönüştürme ve metin tanıma cihazınızda çalışır. İsteğe bağlı yapay zekâyı yalnızca siz açarsanız kullanırsınız." },
       { "dt": "Hesap yok", "dd": "Açın ve başlayın. Hesaba yalnızca cihazlar arasında eşitleme yapmayı seçerseniz ihtiyacınız olur." },
-      { "dt": "Banner reklam yok", "dd": "Reklamlar yalnızca, ek yapay zekâ istekleri için kendiniz bir video başlatırsanız görünür." }
+      { "dt": "Reklam yalnızca Android uygulamasında", "dd": "Tarayıcı sürümünde reklam yoktur. Android uygulaması ana sayfalarında küçük, reklam olarak işaretli bir banner gösterir – belgelerin içinde asla. FaLe Plus bunu kaldırır." }
     ]
   },
   "free": {
-    "h2": "Abonelik yok, filigran yok",
-    "intro": "Birçok PDF uygulaması bu özellikler için abonelik ister. Burada abonelik olmadan ve filigransız sunulur.",
-    "note": "Geliştirmeyi desteklemek isterseniz Android uygulamasında FaLe Plus’ı veya tek seferlik bir teşekkürü seçebilirsiniz.",
+    "h2": "Filigran yok",
+    "intro": "Birçok PDF uygulaması bu özellikler için abonelik ister. Burada filigransız sunulur.",
+    "note": "Geliştirmeyi desteklemek isterseniz Android uygulamasında FaLe Plus’ı (banner reklamları kaldırır) veya tek seferlik bir teşekkürü seçebilirsiniz.",
     "items": ["İmzala ve doldur", "Metin tanıma (OCR)", "PDF’den Word’e, Excel’e, PowerPoint’e", "Karart", "Sıkıştır", "Sayfaları yönet", "Kurumlar için PDF/A", "Parola koruması", "PDF dosyalarını karşılaştır", "Toplu işleme"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Dosyalarım yükleniyor mu?", "a": "Hayır. Dosyalarınız cihazınızda işlenir ve saklanır. Cihazınızdan yalnızca, bulut yapay zekâyı, bağlantıyla paylaşımı veya eşitlemeyi bilerek kullanırsanız bir şey çıkar – o da şifreli olarak veya yalnızca seçtiğiniz metin." },
       { "q": "Çevrimdışı çalışır mı?", "a": "Evet. Bulut yapay zekâ, paylaşım ve aktarım dışındaki her şey internet olmadan çalışır." },
       { "q": "FaLe PDF’yi bilgisayarıma yükleyebilir miyim?", "a": "Evet. Yukarıdaki “Windows ve Mac için” bölümünde “İndir”e tıklayın ve “Yükle”yi onaylayın. Windows’ta bu Edge veya Chrome ile, Mac’te Safari, Chrome veya Edge ile çalışır. FaLe PDF yakında Microsoft Store’da da olacak." },
-      { "q": "Hangi dosyaları açabilirim?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), metin, Markdown ve görseller." }
+      { "q": "Hangi dosyaları açabilirim?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), metin, Markdown ve görseller." },
+      { "q": "Reklam var mı?", "a": "Tarayıcı sürümünde yok. Android uygulamasında ana sayfalarda küçük, işaretli bir banner görünür – belgelerde, araçlarda ve düzenleyicilerde asla. FaLe Plus bannerları kaldırır. Ek yapay zekâ istekleri için isteğe bağlı bir video da izleyebilirsiniz." }
     ]
   },
   "end": {

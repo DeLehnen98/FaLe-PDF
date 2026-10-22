@@ -8,7 +8,7 @@ import { applyTheme, currentTheme } from './theme.js';
 import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, openHash, KINDS } from './office/kinds.js';
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
-import { isNative } from './platform.js';
+import { isNative, platformName } from './platform.js';
 import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
@@ -170,7 +170,7 @@ export async function renderHome() {
       <div class="acct-start" data-acct-start hidden></div>
       <div class="free-card card" data-free hidden>
         <span class="free-ic">${oicon('gift')}</span>
-        <div><strong>Auch die Pro-Funktionen sind dabei</strong><span>Keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
+        <div><strong>Auch die Pro-Funktionen sind dabei</strong><span>Kein Konto, keine Wasserzeichen. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
         <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
       </div>
       <div class="month-box" data-month hidden></div>`;
@@ -805,6 +805,8 @@ export async function renderSettings() {
         <label class="switch"><input type="checkbox" data-memory-toggle ${lsGet('fale-form-memory', '') === 'auto' ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Ausgefüllte PDFs später änderbar</span></label></div>
       <div class="settings-row"><div class="label"><strong>Hinweis „Pro-Funktionen“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
+      ${isNative() && platformName() === 'android' ? `<div class="settings-row" data-ads-me><div class="label"><strong>Werbung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.</span></div>
+        <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div>` : ''}
       <div class="settings-row"><div class="label"><strong>„Dein Monat“</strong><span>Kleine Statistik auf der Startseite. Wird nur auf diesem Gerät gezählt.</span></div>
         <label class="switch"><input type="checkbox" data-stats-toggle ${stats.statsEnabled() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">„Dein Monat“ anzeigen</span></label></div>
       <div class="settings-row"><div class="label"><strong>Einführung</strong><span>Die kurze Tour vom ersten Start noch einmal ansehen.</span></div>
@@ -820,7 +822,7 @@ export async function renderSettings() {
     <div class="card card-pad">
       <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
         <strong>Alles bleibt auf deinem Gerät.</strong>
-        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.</p>
+        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, und wir setzen kein Tracking ein (Werbung in der Android-App: siehe Datenschutz). Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.</p>
       </div></div>
       <p class="muted small" style="margin-top:12px">Version 2.0.0 · Ein Projekt von FaLe.dev</p>
       <strong>Open-Source-Komponenten</strong>
@@ -872,6 +874,8 @@ export async function renderSettings() {
   zs.addEventListener('change', async () => { await db.setSetting('defaultZoom', zs.value); toast('Gespeichert', 'success'); });
   $('[data-persist]', el).addEventListener('click', requestPersist);
   $('[data-clear]', el).addEventListener('click', deleteAllConfirm);
+  const adp = $('[data-adprivacy-me]', el);
+  if (adp) adp.addEventListener('click', async () => { try { await (await import('./ai/ads.js')).showAdPrivacyOptions(); } catch (e) { errorToast(e, 'Die Werbe-Einstellungen konnten nicht geöffnet werden.'); } });
   $('[data-free-reset]', el).addEventListener('click', () => {
     lsSet('fale-free-card', '');
     const card = document.querySelector('#view-start [data-free]');

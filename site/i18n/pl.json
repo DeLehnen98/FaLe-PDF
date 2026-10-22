@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – narzędzia PDF i biurowe, bez subskrypcji, bez przesyłania plików",
+    "title": "FaLe PDF – narzędzia PDF i biurowe, bez przesyłania plików",
     "description": "Czytaj, wypełniaj, podpisuj, skanuj z rozpoznawaniem tekstu i konwertuj pliki PDF – a do tego dokumenty, arkusze i prezentacje. Bez konta, wszystko na twoim urządzeniu."
   },
   "skip": "Przejdź do treści",
@@ -12,7 +12,7 @@
     "open": "Otwórz w przeglądarce"
   },
   "hero": {
-    "h1": "Załatw swoje papierowe sprawy. Bez subskrypcji, bez przesyłania plików.",
+    "h1": "Załatw swoje papierowe sprawy. Bez przesyłania plików.",
     "lede": "FaLe PDF czyta, wypełnia, podpisuje, skanuje i konwertuje – a także obsługuje dokumenty, arkusze i prezentacje. Prosto na twoim urządzeniu.",
     "try": "Wypróbuj w przeglądarce"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "Bez przesyłania", "dd": "Edycja, konwersja i rozpoznawanie tekstu działają na twoim urządzeniu. Opcjonalnej AI używasz tylko wtedy, gdy ją włączysz." },
       { "dt": "Bez konta", "dd": "Otwórz i zacznij. Konto jest potrzebne tylko wtedy, gdy zdecydujesz się na synchronizację między urządzeniami." },
-      { "dt": "Bez reklam w banerach", "dd": "Reklamy pojawiają się tylko wtedy, gdy sam uruchomisz film, aby dostać dodatkowe zapytania do AI." }
+      { "dt": "Reklamy tylko w aplikacji na Androida", "dd": "Wersja przeglądarkowa nie pokazuje reklam. Aplikacja na Androida wyświetla na stronach głównych mały, oznaczony baner – nigdy w dokumentach. FaLe Plus go usuwa." }
     ]
   },
   "free": {
-    "h2": "Bez subskrypcji i bez znaków wodnych",
-    "intro": "Wiele aplikacji PDF wymaga za te funkcje subskrypcji. Tutaj są dostępne bez subskrypcji i bez znaków wodnych.",
-    "note": "Jeśli chcesz wesprzeć rozwój aplikacji, w aplikacji na Androida możesz wybrać FaLe Plus lub jednorazowe podziękowanie.",
+    "h2": "Bez znaków wodnych",
+    "intro": "Wiele aplikacji PDF wymaga za te funkcje subskrypcji. Tutaj są dostępne bez znaków wodnych.",
+    "note": "Jeśli chcesz wesprzeć rozwój aplikacji, w aplikacji na Androida możesz wybrać FaLe Plus (usuwa banery reklamowe) lub jednorazowe podziękowanie.",
     "items": ["Podpisywanie i wypełnianie", "Rozpoznawanie tekstu (OCR)", "PDF do Word, Excel, PowerPoint", "Zaczernianie", "Kompresja", "Zarządzanie stronami", "PDF/A dla urzędów", "Ochrona hasłem", "Porównywanie plików PDF", "Przetwarzanie wsadowe"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Czy moje pliki są przesyłane?", "a": "Nie. Twoje pliki są przetwarzane i przechowywane na twoim urządzeniu. Dopiero gdy świadomie użyjesz chmurowej AI, udostępniania przez link lub synchronizacji, coś opuszcza urządzenie – w postaci zaszyfrowanej albo tylko zaznaczony tekst." },
       { "q": "Czy działa bez internetu?", "a": "Tak. Wszystko poza chmurową AI, udostępnianiem i przesyłaniem działa bez internetu." },
       { "q": "Czy mogę zainstalować FaLe PDF na komputerze?", "a": "Tak. W sekcji „Dla Windows i Mac” powyżej kliknij „Pobierz” i potwierdź „Zainstaluj”. W Windows działa to z Edge lub Chrome, na Macu z Safari, Chrome lub Edge. FaLe PDF wkrótce pojawi się też w Microsoft Store." },
-      { "q": "Jakie pliki mogę otworzyć?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown i obrazy." }
+      { "q": "Jakie pliki mogę otworzyć?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown i obrazy." },
+      { "q": "Czy są reklamy?", "a": "W wersji przeglądarkowej nie. W aplikacji na Androida na stronach głównych pojawia się mały, oznaczony baner – nigdy w dokumentach, narzędziach ani edytorach. FaLe Plus usuwa banery. Możesz też obejrzeć opcjonalny film, aby dostać dodatkowe zapytania do AI." }
     ]
   },
   "end": {

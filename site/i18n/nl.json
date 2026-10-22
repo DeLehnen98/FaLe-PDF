@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "FaLe PDF – PDF- en kantoortools, geen abonnement, geen upload",
+    "title": "FaLe PDF – PDF- en kantoortools, geen upload",
     "description": "Lees, vul in, onderteken, scan met tekstherkenning en zet PDF's om – plus documenten, spreadsheets en presentaties. Geen account, alles op je eigen apparaat."
   },
   "skip": "Naar de inhoud",
@@ -12,7 +12,7 @@
     "open": "Openen in de browser"
   },
   "hero": {
-    "h1": "Regel je papierwerk. Geen abonnement, geen upload.",
+    "h1": "Regel je papierwerk. Geen upload.",
     "lede": "FaLe PDF leest, vult in, ondertekent, scant en zet om – plus documenten, spreadsheets en presentaties. Direct op je eigen apparaat.",
     "try": "Probeer het in je browser"
   },
@@ -55,13 +55,13 @@
     "items": [
       { "dt": "Geen upload", "dd": "Bewerken, omzetten en tekstherkenning gebeuren op je eigen apparaat. De optionele AI gebruik je alleen als je die aanzet." },
       { "dt": "Geen account", "dd": "Open het en begin. Een account heb je alleen nodig als je ervoor kiest om tussen apparaten te synchroniseren." },
-      { "dt": "Geen bannerreclame", "dd": "Er zijn alleen advertenties als je zelf een video start om extra AI-verzoeken te krijgen." }
+      { "dt": "Alleen advertenties in de Android-app", "dd": "De browserversie toont geen advertenties. De Android-app toont op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten. Met FaLe Plus verdwijnt die." }
     ]
   },
   "free": {
-    "h2": "Zonder abonnement, zonder watermerk",
-    "intro": "Veel PDF-apps rekenen een abonnement voor deze functies. Hier zijn ze er zonder abonnement en zonder watermerken.",
-    "note": "Wil je de ontwikkeling steunen? Dan kun je in de Android-app kiezen voor FaLe Plus of een eenmalig bedankje.",
+    "h2": "Zonder watermerk",
+    "intro": "Veel PDF-apps rekenen een abonnement voor deze functies. Hier zijn ze er zonder watermerken.",
+    "note": "Wil je de ontwikkeling steunen? Dan kun je in de Android-app kiezen voor FaLe Plus (verwijdert de banners) of een eenmalig bedankje.",
     "items": ["Ondertekenen & invullen", "Tekstherkenning (OCR)", "PDF naar Word, Excel, PowerPoint", "Zwart maken", "Comprimeren", "Pagina's beheren", "PDF/A voor instanties", "Wachtwoordbeveiliging", "PDF's vergelijken", "Batchverwerking"]
   },
   "screens": {
@@ -74,7 +74,8 @@
       { "q": "Worden mijn bestanden geüpload?", "a": "Nee. Je bestanden worden op je eigen apparaat verwerkt en opgeslagen. Alleen als je bewust cloud-AI, delen via een link of synchroniseren gebruikt, verlaat er iets je apparaat – versleuteld, of alleen de tekst die je hebt geselecteerd." },
       { "q": "Werkt het ook offline?", "a": "Ja. Alles behalve cloud-AI, delen en overdragen werkt zonder internet." },
       { "q": "Kan ik FaLe PDF op mijn computer installeren?", "a": "Ja. Klik hierboven onder “Voor Windows en Mac” op “Downloaden” en bevestig met “Installeren”. Op Windows werkt dit met Edge of Chrome, op een Mac met Safari, Chrome of Edge. FaLe PDF komt binnenkort ook in de Microsoft Store." },
-      { "q": "Welke bestanden kan ik openen?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown en afbeeldingen." }
+      { "q": "Welke bestanden kan ik openen?", "a": "PDF, Word (DOCX), Excel (XLSX, CSV), PowerPoint (PPTX), tekst, Markdown en afbeeldingen." },
+      { "q": "Zijn er advertenties?", "a": "In de browserversie niet. In de Android-app staat op de hoofdpagina’s een kleine, gemarkeerde banner – nooit in documenten, tools of editors. FaLe Plus verwijdert de banners. Je kunt ook een optionele video bekijken voor extra AI-verzoeken." }
     ]
   },
   "end": {

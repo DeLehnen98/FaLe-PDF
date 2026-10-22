@@ -7023,6 +7023,15 @@ export default {
   "Hinweis „Pro-Funktionen“": "'Pro 기능' 안내",
   "FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF는 오프라인으로 작동합니다. 계정이 필요 없고 광고 배너나 추적도 없습니다. 파일은 이 기기의 저장 공간에 보관됩니다 – 선택 사항인 FaLe 계정과 FaLe Sync를 사용할 때만 클라우드에 종단 간 암호화되어 추가로 저장됩니다. 선택 사항인 클라우드 AI를 사용할 때만 선택한 텍스트가 동의 후 처리됩니다.",
   "Weitere Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.": "계정과 추적이 없는 다른 앱 – 예를 들어 곧 나올 Windows용 FaLe Clean.",
+  "Werbefrei:": "광고 없음:",
+  "keine Banner, keine Werbevideos nötig": "배너 없음, 광고 동영상 불필요",
+  "Ein einmaliger Beitrag ohne Gegenleistung – er hilft, FaLe PDF weiterzuentwickeln.": "대가 없는 일회성 후원 – FaLe PDF를 계속 개발하는 데 도움이 됩니다.",
+  "Kein Konto, keine Wasserzeichen. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.": "계정 없음, 워터마크 없음. 파일은 기기에 남습니다 – 클라우드 AI는 원할 때만 사용합니다.",
+  "FaLe PDF funktioniert offline. Du brauchst kein Konto und es gibt kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF는 오프라인으로 작동합니다. 계정이 필요 없고 추적도 없습니다. 파일은 이 기기의 저장 공간에 보관됩니다 – 선택 사항인 FaLe 계정과 FaLe Sync를 사용할 때만 클라우드에 종단 간 암호화되어 추가로 저장됩니다. 선택 사항인 클라우드 AI를 사용할 때만 선택한 텍스트가 동의 후 처리됩니다.",
+  "Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.": "주요 페이지 하단에 광고 배너가 표시됩니다 – 문서 안에는 절대 표시되지 않습니다. FaLe Plus를 사용하면 광고가 없습니다.",
+  "Einwilligung ändern": "동의 변경",
+  "Für das Werbebanner und freiwillige Werbevideos (Google AdMob). Hier kannst du deine Auswahl ändern.": "광고 배너와 선택 사항인 광고 동영상(Google AdMob)에 대한 설정입니다. 여기서 선택을 변경할 수 있습니다.",
+  "FaLe PDF funktioniert offline. Du brauchst kein Konto, und wir setzen kein Tracking ein (Werbung in der Android-App: siehe Datenschutz). Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.": "FaLe PDF는 오프라인으로 작동합니다. 계정이 필요 없고 저희는 추적을 사용하지 않습니다(Android 앱의 광고: 개인정보 처리방침 참조). 파일은 이 기기의 저장 공간에 보관됩니다 – 선택 사항인 FaLe 계정과 FaLe Sync를 사용할 때만 클라우드에 종단 간 암호화되어 추가로 저장됩니다. 선택 사항인 클라우드 AI를 사용할 때만 선택한 텍스트가 동의 후 처리됩니다.",
 };
 
 export const defaultValues = {
