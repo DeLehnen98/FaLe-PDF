@@ -11,13 +11,13 @@ FaLe PDF – PDF & Office
 ## Short description (≤ 80)
 
 ```
-PDF imzala, metin tanımayla tara, düzenle – ücretsiz, özel, çevrimdışı çalışır.
+PDF imzala, metin tanımayla tara, düzenle – özel, çevrimdışı çalışır.
 ```
 
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF, telefon ve tablet için özel ofisin: PDF’leri oku, doldur, imzala, tara ve düzenle – ayrıca belgeler, tablolar ve sunular. Tüm pro özellikler ücretsiz; abonelik yok, hesap yok. Dosyaların cihazında işlenir. İstersen FaLe hesabı, dosyalarını cihazların arasında uçtan uca şifreli olarak eşitler.
+FaLe PDF, telefon ve tablet için özel ofisin: PDF’leri oku, doldur, imzala, tara ve düzenle – ayrıca belgeler, tablolar ve sunular. Pro özellikler de dahil; abonelik yok, hesap yok, filigran yok. Dosyaların cihazında işlenir. İstersen FaLe hesabı, dosyalarını cihazların arasında uçtan uca şifreli olarak eşitler.
 
 PDF OKU
 • Arama, yer işaretleri ve içindekiler ile hızlı PDF görüntüleyici
@@ -70,7 +70,7 @@ YAPAY ZEKÂ ASİSTANI (İSTEĞE BAĞLI)
 • Belgeyle sohbet et: soru sor, sayfa referanslı yanıtlar al
 • Özetle, çevir, yazma yardımı, formül asistanı, yapay zekâyla slaytlar
 • Notlarından bilgi kartları ve testler, yapay zekâyla mektuplar, fotoğraf çevirisi
-• Her gün hesapsız ücretsiz istek hakkı. Daha fazlası için: isteğe bağlı bir video reklam veya FaLe Plus
+• Her gün hesapsız birkaç istek dahil. Daha fazlası için: isteğe bağlı bir video reklam veya FaLe Plus
 • Yapay zekâ istemiyor musun? Tek bir anahtar onu tamamen gizler
 • Yalnızca onayınla; yalnızca seçtiğin metin gönderilir. Yapay zekâ yanıtları hata içerebilir – sorunlu yanıtları e-postayla bize bildirebilirsin.
 
@@ -86,7 +86,7 @@ Senin dilini konuşur: uygulama telefonunun diline otomatik uyar. Ücretsiz, fil
 
 ## Feature bullets
 
-- Tüm pro özellikler ücretsiz – abonelik yok, hesap yok, filigran yok
+- Tüm pro özellikler dahil – abonelik yok, hesap yok, filigran yok
 - PDF doldur ve imzala
 - Kenar algılama ve çevrimdışı metin tanıma (OCR) ile tara
 - Yapay zekâ asistanı: belgelerine sor, sayfa referanslarıyla (isteğe bağlı)

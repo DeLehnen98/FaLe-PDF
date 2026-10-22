@@ -11,13 +11,13 @@ FaLe PDF – PDF & Office
 ## Short description (≤ 80)
 
 ```
-Onderteken, scan met tekstherkenning en bewerk pdf’s – gratis, privé, offline.
+Onderteken, scan met tekstherkenning en bewerk pdf’s – privé, offline.
 ```
 
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is je privékantoor voor telefoon en tablet: lees, vul in, onderteken, scan en bewerk pdf’s – plus documenten, spreadsheets en presentaties. Alle pro-functies zijn gratis, zonder abonnement en zonder account. Je bestanden worden op je eigen apparaat verwerkt. Optioneel synchroniseert het FaLe account ze end-to-end versleuteld tussen je apparaten.
+FaLe PDF is je privékantoor voor telefoon en tablet: lees, vul in, onderteken, scan en bewerk pdf’s – plus documenten, spreadsheets en presentaties. De pro-functies zitten er ook bij, zonder abonnement en zonder account. Je bestanden worden op je eigen apparaat verwerkt. Optioneel synchroniseert het FaLe account ze end-to-end versleuteld tussen je apparaten.
 
 PDF’S LEZEN
 • Snelle pdf-viewer met zoeken, bladwijzers en inhoudsopgave
@@ -68,7 +68,7 @@ AI-ASSISTENT (OPTIONEEL)
 • Chat met een document: stel vragen en krijg antwoorden met paginaverwijzingen
 • Samenvatten, vertalen, schrijfhulp, formule-assistent, dia’s met AI
 • Flashcards en quizzen van je aantekeningen, brieven met AI, foto’s vertalen
-• Elke dag gratis aanvragen, zonder account. Meer? Een vrijwillige video-advertentie of FaLe Plus
+• Elke dag enkele aanvragen inbegrepen, zonder account. Meer? Een vrijwillige video-advertentie of FaLe Plus
 • Geen AI nodig? Eén schakelaar verbergt alles
 • Alleen met jouw toestemming; alleen de tekst die je selecteert wordt verstuurd. AI-antwoorden kunnen fouten bevatten – problematische antwoorden kun je per e-mail aan ons melden.
 
@@ -79,12 +79,12 @@ EERLIJK, GEEN ABONNEMENTSVAL
 PRIVÉ DOOR ONTWERP
 Geen account nodig, geen banneradvertenties, geen analyses. Optioneel FaLe account: FaLe Sync (end-to-end versleuteld, servers in Frankfurt – wij kunnen niets lezen) en FaLe Plus op al je apparaten. Je ziet alleen een advertentie als je zelf een video start voor extra AI-aanvragen. De camera wordt alleen gebruikt om te scannen, meldingen alleen voor herinneringen die je zelf instelt. Alles werkt offline, behalve de AI in de cloud, delen en overdragen. Gedeelde bestanden zijn end-to-end versleuteld – wij kunnen ze niet lezen.
 
-In jouw taal: de app volgt automatisch de taal van je telefoon. Gratis, zonder watermerken. Optioneel: FaLe Plus voor meer AI-aanvragen.
+In jouw taal: de app volgt automatisch de taal van je telefoon. Zonder watermerken. Optioneel: FaLe Plus voor meer AI-aanvragen.
 ```
 
 ## Feature bullets
 
-- Alle pro-functies gratis – geen abonnement, geen account, geen watermerken
+- Alle pro-functies inbegrepen – geen abonnement, geen account, geen watermerken
 - Pdf’s invullen en ondertekenen
 - Scannen met randherkenning en offline tekstherkenning (OCR)
 - AI-assistent: stel vragen aan je documenten, met paginaverwijzingen (optioneel)

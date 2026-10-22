@@ -4,13 +4,13 @@
     "navLabel": "Navigazione principale",
     "home": "Home",
     "openApp": "Apri FaLe PDF",
-    "badge": "Gratis · senza account · i tuoi file restano sul tuo dispositivo",
+    "badge": "Senza account · i tuoi file restano sul tuo dispositivo",
     "stepsH": "Come si fa",
     "whyH": "Perché FaLe PDF",
     "faqH": "Domande frequenti",
     "moreH": "Puoi anche",
     "endH": "Provalo subito",
-    "endText": "FaLe PDF funziona nel browser, sullo smartphone e sul computer. Tutte le funzioni sono gratuite.",
+    "endText": "FaLe PDF funziona nel browser, sullo smartphone e sul computer.",
     "privacy": "Privacy",
     "imprint": "Note legali",
     "footer": "FaLe PDF – un servizio di FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "firma-pdf",
-      "title": "Firmare un PDF – gratis, senza account | FaLe PDF",
-      "description": "Firma un PDF sullo smartphone o sul computer: disegna la tua firma, salvala e inseriscila con un tocco. Gratis, senza account e senza caricare nulla.",
+      "title": "Firmare un PDF – senza account | FaLe PDF",
+      "description": "Firma un PDF sullo smartphone o sul computer: disegna la tua firma, salvala e inseriscila con un tocco. Senza account e senza caricare nulla.",
       "h1": "Firmare un PDF",
       "lede": "Disegna la tua firma con il dito o con il mouse e inseriscila con un tocco in qualsiasi PDF: contratto, modulo o delega.",
       "cta": "Firma un PDF ora",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Senza abbonamento",
-          "d": "Firmare è gratis e resta gratis: senza filigrana e senza account."
+          "d": "Firmare non richiede un abbonamento: senza filigrana e senza account."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "compila-modulo-pdf",
-      "title": "Compilare un modulo PDF – gratis, anche da smartphone | FaLe PDF",
-      "description": "Compila moduli PDF: campi di testo, caselle e menu sullo smartphone o sul computer, oppure scrivi su un modulo cartaceo scansionato. Gratis, senza account.",
+      "title": "Compilare un modulo PDF – anche da smartphone | FaLe PDF",
+      "description": "Compila moduli PDF: campi di testo, caselle e menu sullo smartphone o sul computer, oppure scrivi su un modulo cartaceo scansionato. Senza account.",
       "h1": "Compilare un modulo PDF",
       "lede": "Compila i campi del modulo oppure scrivi semplicemente dove serve su un modulo scansionato, con caratteri grandi e pulsanti chiari.",
       "cta": "Compila un modulo",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "modifica-pdf",
-      "title": "Modificare un PDF – aggiungi testo e immagini, gratis | FaLe PDF",
-      "description": "Modifica un PDF sullo smartphone o sul computer: aggiungi testo e immagini, sostituisci il testo esistente, copri alcune parti. Gratis, senza account né upload.",
+      "title": "Modificare un PDF – aggiungi testo e immagini | FaLe PDF",
+      "description": "Modifica un PDF sullo smartphone o sul computer: aggiungi testo e immagini, sostituisci il testo esistente, copri alcune parti. Senza account né upload.",
       "h1": "Modificare un PDF",
       "lede": "Aggiungi testo e immagini, cambia il testo esistente o copri alcune parti, direttamente nel tuo PDF.",
       "cta": "Modifica un PDF",
@@ -156,8 +156,8 @@
           "d": "Dimensione con A− e A+, grassetto, colore: senza cercare tra i menu."
         },
         {
-          "t": "Gratis invece di Pro",
-          "d": "Ciò che altri offrono solo con un abbonamento qui è gratis, senza filigrana."
+          "t": "Senza filigrana",
+          "d": "Anche ciò che altri offrono solo con un abbonamento qui è senza filigrana."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "unisci-pdf",
       "title": "Unire PDF – più PDF in un unico file | FaLe PDF",
-      "description": "Unisci più PDF in un unico file e scegli l’ordine, sullo smartphone o sul computer. Gratis, senza account e senza caricare nulla.",
+      "description": "Unisci più PDF in un unico file e scegli l’ordine, sullo smartphone o sul computer. Senza account e senza caricare nulla.",
       "h1": "Unire PDF",
       "lede": "Riunisci fatture, scansioni o capitoli in un solo PDF, nell’ordine che vuoi.",
       "cta": "Unisci PDF",
@@ -226,17 +226,13 @@
         {
           "q": "Il testo resta selezionabile?",
           "a": "Sì. Le pagine vengono riprese invariate, quindi il testo resta selezionabile e ricercabile."
-        },
-        {
-          "q": "Costa qualcosa?",
-          "a": "No. Unire è gratis, senza filigrana e senza account."
         }
       ]
     },
     "compress": {
       "slug": "comprimi-pdf",
       "title": "Comprimere un PDF – per e-mail e upload | FaLe PDF",
-      "description": "Riduci il peso di un PDF perché stia in un’e-mail o in un modulo di caricamento: riduci le immagini o comprimi senza perdita. Gratis, senza caricare nulla.",
+      "description": "Riduci il peso di un PDF perché stia in un’e-mail o in un modulo di caricamento: riduci le immagini o comprimi senza perdita. Senza caricare nulla.",
       "h1": "Comprimere un PDF",
       "lede": "Troppo grande per l’e-mail o per il modulo online? FaLe PDF rimpicciolisce il file: vedi la dimensione prima e dopo.",
       "cta": "Comprimi un PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "scansiona-documento",
       "title": "Scansionare documenti con lo smartphone – in PDF | FaLe PDF",
-      "description": "Scansiona documenti con la fotocamera dello smartphone: bordi rilevati, pagina raddrizzata e migliorata, testo ricercabile. Gratis, senza account.",
+      "description": "Scansiona documenti con la fotocamera dello smartphone: bordi rilevati, pagina raddrizzata e migliorata, testo ricercabile. Senza account.",
       "h1": "Scansionare un documento con lo smartphone",
       "lede": "Tieni lo smartphone sopra il foglio: FaLe riconosce la pagina, la raddrizza e ne fa un PDF pulito.",
       "cta": "Scansiona ora",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-in-word",
-      "title": "Convertire PDF in Word – gratis, senza upload | FaLe PDF",
-      "description": "Converti un PDF in un documento Word modificabile (DOCX): paragrafi, titoli e grassetto vengono mantenuti. Gratis, direttamente sul tuo dispositivo.",
+      "title": "Convertire PDF in Word – senza upload | FaLe PDF",
+      "description": "Converti un PDF in un documento Word modificabile (DOCX): paragrafi, titoli e grassetto vengono mantenuti. Direttamente sul tuo dispositivo.",
       "h1": "Convertire PDF in Word",
       "lede": "Trasforma un PDF in un documento Word che puoi modificare: paragrafi, titoli ed evidenziazioni vengono mantenuti.",
       "cta": "Converti PDF in Word",
@@ -388,17 +384,13 @@
         {
           "q": "Che formato ottengo?",
           "a": "Un documento Word in formato DOCX, che si apre in tutti i comuni programmi di scrittura."
-        },
-        {
-          "q": "Quanto costa?",
-          "a": "Niente. Anche questa funzione Pro è gratis in FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "apri-modulo-xfa",
       "title": "Aprire e compilare moduli XFA – moduli ufficiali | FaLe PDF",
-      "description": "Un modulo ufficiale mostra solo “Attendere prego …”? FaLe PDF apre i moduli XFA, li compila, li firma e li salva. Gratis, anche da smartphone.",
+      "description": "Un modulo ufficiale mostra solo “Attendere prego …”? FaLe PDF apre i moduli XFA, li compila, li firma e li salva. Anche da smartphone.",
       "h1": "Aprire e compilare un modulo ufficiale (XFA)",
       "lede": "Alcuni moduli di enti e ambasciate mostrano solo “Attendere prego …” o una pagina vuota. FaLe PDF li apre, tu li compili e li salvi di nuovo.",
       "cta": "Apri un modulo",
@@ -442,10 +434,6 @@
         {
           "q": "I calcoli nel modulo funzionano?",
           "a": "Gli script nel modulo non vengono eseguiti, per sicurezza. I calcoli o i controlli automatici li inserisci quindi tu."
-        },
-        {
-          "q": "Quanto costa?",
-          "a": "Niente: senza account e senza registrazione."
         }
       ]
     }

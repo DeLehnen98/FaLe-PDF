@@ -260,7 +260,7 @@ export function svgEl(tag, attrs = {}) {
 }
 
 export function proBadge() {
-  return '<span class="pt-pro" title="Bei anderen PDF-Apps kostenpflichtig – hier gratis">Gratis statt Pro</span>';
+  return '<span class="pt-pro" title="Bei anderen PDF-Apps oft nur im Abo – hier dabei">Pro-Funktion</span>';
 }
 
 /** Convert viewport@1 point to PDF user space. */

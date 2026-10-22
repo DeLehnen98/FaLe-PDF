@@ -11,13 +11,13 @@ FaLe PDF – PDF & Office
 ## Short description (≤ 80)
 
 ```
-Assine, digitalize com OCR e edite PDFs – grátis, privado, funciona offline.
+Assine, digitalize com OCR e edite PDFs – privado, funciona offline.
 ```
 
 ## Full description (≤ 4000)
 
 ```
-O FaLe PDF é o seu escritório privado para celular e tablet: leia, preencha, assine, digitalize e edite PDFs – além de documentos, planilhas e apresentações. Todos os recursos profissionais são gratuitos, sem assinatura e sem conta. Seus arquivos são processados no seu aparelho. Opcionalmente, a conta FaLe os sincroniza entre seus aparelhos com criptografia de ponta a ponta.
+O FaLe PDF é o seu escritório privado para celular e tablet: leia, preencha, assine, digitalize e edite PDFs – além de documentos, planilhas e apresentações. Os recursos profissionais também estão incluídos, sem assinatura, sem conta e sem marcas d’água. Seus arquivos são processados no seu aparelho. Opcionalmente, a conta FaLe os sincroniza entre seus aparelhos com criptografia de ponta a ponta.
 
 LER PDFS
 • Leitor de PDF rápido com busca, marcadores e sumário
@@ -68,7 +68,7 @@ ASSISTENTE DE IA (OPCIONAL)
 • Converse com um documento: faça perguntas e receba respostas com referência às páginas
 • Resumir, traduzir, ajuda para escrever, assistente de fórmulas, slides com IA
 • Cartões de estudo e quizzes a partir das suas anotações, cartas com IA, tradução de fotos
-• Pedidos gratuitos todos os dias, sem conta. Para ter mais: um vídeo de anúncio voluntário ou o FaLe Plus
+• Alguns pedidos incluídos todos os dias, sem conta. Para ter mais: um vídeo de anúncio voluntário ou o FaLe Plus
 • Não quer IA? Um único botão a esconde por completo
 • Somente com o seu consentimento; só o texto que você seleciona é enviado. As respostas da IA podem conter erros – você pode nos informar por e-mail sobre respostas problemáticas.
 
@@ -79,12 +79,12 @@ JUSTO, SEM ARMADILHA DE ASSINATURA
 PRIVADO POR PROJETO
 Sem conta, sem banners, sem análise de uso. Conta FaLe opcional: FaLe Sync (criptografia de ponta a ponta, servidores em Frankfurt – não conseguimos ler nada) e FaLe Plus em todos os seus aparelhos. Você só vê um anúncio se iniciar um vídeo por conta própria para ganhar pedidos extras de IA. Tudo funciona offline, exceto a IA na nuvem, o compartilhamento e a transferência. Os arquivos compartilhados têm criptografia de ponta a ponta.
 
-Na sua língua: o app segue automaticamente o idioma do seu celular. Grátis, sem marcas d’água. Opcional: FaLe Plus para mais pedidos de IA.
+Na sua língua: o app segue automaticamente o idioma do seu celular. Sem marcas d’água. Opcional: FaLe Plus para mais pedidos de IA.
 ```
 
 ## Feature bullets
 
-- Todos os recursos profissionais grátis – sem assinatura, sem conta, sem marcas d’água
+- Todos os recursos profissionais incluídos – sem assinatura, sem conta, sem marcas d’água
 - Preencher e assinar PDFs
 - Digitalizar com detecção de bordas e reconhecimento de texto (OCR) offline
 - Assistente de IA: pergunte aos seus documentos, com referência às páginas (opcional)

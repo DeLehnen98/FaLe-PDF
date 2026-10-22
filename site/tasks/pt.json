@@ -4,13 +4,13 @@
     "navLabel": "Navegação principal",
     "home": "Início",
     "openApp": "Abrir o FaLe PDF",
-    "badge": "Grátis · sem conta · seus arquivos ficam no seu dispositivo",
+    "badge": "Sem conta · seus arquivos ficam no seu dispositivo",
     "stepsH": "Como fazer",
     "whyH": "Por que o FaLe PDF",
     "faqH": "Perguntas frequentes",
     "moreH": "Você também pode",
     "endH": "Experimente agora",
-    "endText": "O FaLe PDF funciona no navegador, no celular e no computador. Todas as funções são grátis.",
+    "endText": "O FaLe PDF funciona no navegador, no celular e no computador.",
     "privacy": "Privacidade",
     "imprint": "Aviso legal",
     "footer": "FaLe PDF – um serviço da FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "assinar-pdf",
-      "title": "Assinar PDF – grátis, sem conta | FaLe PDF",
-      "description": "Assine um PDF no celular ou no computador: desenhe sua assinatura, salve e coloque com um toque. Grátis, sem conta e sem enviar nada.",
+      "title": "Assinar PDF – sem conta | FaLe PDF",
+      "description": "Assine um PDF no celular ou no computador: desenhe sua assinatura, salve e coloque com um toque. Sem conta e sem enviar nada.",
       "h1": "Assinar um PDF",
       "lede": "Desenhe sua assinatura com o dedo ou o mouse e coloque-a com um toque em qualquer PDF: contrato, formulário ou procuração.",
       "cta": "Assinar um PDF agora",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Sem assinatura mensal",
-          "d": "Assinar é grátis e continua grátis: sem marca-d’água e sem conta."
+          "d": "Para assinar, você não precisa de assinatura do app: sem marca-d’água e sem conta."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "preencher-formulario-pdf",
-      "title": "Preencher formulário PDF – grátis, também no celular | FaLe PDF",
-      "description": "Preencha formulários PDF: campos de texto, caixas e listas no celular ou no computador, ou escreva em um formulário de papel digitalizado. Grátis, sem conta.",
+      "title": "Preencher formulário PDF – também no celular | FaLe PDF",
+      "description": "Preencha formulários PDF: campos de texto, caixas e listas no celular ou no computador, ou escreva em um formulário de papel digitalizado. Sem conta.",
       "h1": "Preencher um formulário PDF",
       "lede": "Preencha os campos do formulário ou escreva simplesmente onde for preciso em um formulário digitalizado, com letras grandes e botões claros.",
       "cta": "Preencher um formulário",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "editar-pdf",
-      "title": "Editar PDF – inserir texto e imagens, grátis | FaLe PDF",
-      "description": "Edite um PDF no celular ou no computador: insira texto e imagens, substitua o texto existente e cubra trechos. Grátis, sem conta e sem enviar nada.",
+      "title": "Editar PDF – inserir texto e imagens | FaLe PDF",
+      "description": "Edite um PDF no celular ou no computador: insira texto e imagens, substitua o texto existente e cubra trechos. Sem conta e sem enviar nada.",
       "h1": "Editar um PDF",
       "lede": "Insira texto e imagens, mude o texto existente ou cubra trechos, direto no seu PDF.",
       "cta": "Editar um PDF",
@@ -156,8 +156,8 @@
           "d": "Tamanho com A− e A+, negrito, cor: sem procurar em menus."
         },
         {
-          "t": "Grátis em vez de Pro",
-          "d": "O que outros só oferecem por assinatura aqui é grátis, sem marca-d’água."
+          "t": "Sem marca-d’água",
+          "d": "Até o que outros só oferecem por assinatura vem aqui sem marca-d’água."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "juntar-pdf",
       "title": "Juntar PDF – vários PDFs em um só | FaLe PDF",
-      "description": "Junte vários PDFs em um único arquivo e escolha a ordem, no celular ou no computador. Grátis, sem conta e sem enviar nada.",
+      "description": "Junte vários PDFs em um único arquivo e escolha a ordem, no celular ou no computador. Sem conta e sem enviar nada.",
       "h1": "Juntar PDFs",
       "lede": "Reúna faturas, digitalizações ou capítulos em um único PDF, na ordem que você quiser.",
       "cta": "Juntar PDFs",
@@ -226,17 +226,13 @@
         {
           "q": "O texto continua selecionável?",
           "a": "Sim. As páginas são incluídas sem alterações, então o texto continua selecionável e pesquisável."
-        },
-        {
-          "q": "Custa alguma coisa?",
-          "a": "Não. Juntar é grátis, sem marca-d’água e sem conta."
         }
       ]
     },
     "compress": {
       "slug": "compactar-pdf",
       "title": "Compactar PDF – para e-mail e envio | FaLe PDF",
-      "description": "Diminua um PDF para ele caber no e-mail ou no formulário de envio: reduza as imagens ou compacte sem perdas. Grátis, sem enviar nada.",
+      "description": "Diminua um PDF para ele caber no e-mail ou no formulário de envio: reduza as imagens ou compacte sem perdas. Sem enviar nada.",
       "h1": "Compactar um PDF",
       "lede": "Grande demais para o e-mail ou para o formulário on-line? O FaLe PDF deixa o arquivo menor, e você vê o tamanho antes e depois.",
       "cta": "Compactar um PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "digitalizar-documento",
       "title": "Digitalizar documentos com o celular – em PDF | FaLe PDF",
-      "description": "Digitalize documentos com a câmera do celular: as bordas são detectadas, a página é endireitada e melhorada, e o texto fica pesquisável. Grátis, sem conta.",
+      "description": "Digitalize documentos com a câmera do celular: as bordas são detectadas, a página é endireitada e melhorada, e o texto fica pesquisável. Sem conta.",
       "h1": "Digitalizar um documento com o celular",
       "lede": "Segure o celular sobre o papel: o FaLe reconhece a página, endireita e transforma em um PDF limpo.",
       "cta": "Digitalizar agora",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-para-word",
-      "title": "Converter PDF em Word – grátis, sem enviar nada | FaLe PDF",
-      "description": "Converta um PDF em um documento Word editável (DOCX): parágrafos, títulos e negrito são mantidos. Grátis, direto no seu dispositivo.",
+      "title": "Converter PDF em Word – sem enviar nada | FaLe PDF",
+      "description": "Converta um PDF em um documento Word editável (DOCX): parágrafos, títulos e negrito são mantidos. Direto no seu dispositivo.",
       "h1": "Converter PDF em Word",
       "lede": "Transforme um PDF em um documento Word que você pode alterar: parágrafos, títulos e destaques são mantidos.",
       "cta": "Converter PDF em Word",
@@ -388,17 +384,13 @@
         {
           "q": "Que formato eu recebo?",
           "a": "Um documento Word no formato DOCX, que abre em todos os programas de texto comuns."
-        },
-        {
-          "q": "Quanto custa?",
-          "a": "Nada. Esta função Pro também é grátis no FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "abrir-formulario-xfa",
       "title": "Abrir e preencher formulário XFA – oficial | FaLe PDF",
-      "description": "Um formulário oficial mostra só “Aguarde …”? O FaLe PDF abre formulários XFA, preenche, assina e salva. Grátis, também no celular.",
+      "description": "Um formulário oficial mostra só “Aguarde …”? O FaLe PDF abre formulários XFA, preenche, assina e salva. Também no celular.",
       "h1": "Abrir e preencher um formulário oficial (XFA)",
       "lede": "Alguns formulários de órgãos públicos e embaixadas mostram só “Aguarde …” ou uma página vazia. O FaLe PDF os abre, você os preenche e os salva de novo.",
       "cta": "Abrir um formulário",
@@ -442,10 +434,6 @@
         {
           "q": "Os cálculos do formulário funcionam?",
           "a": "Os scripts do formulário não são executados, por segurança. Por isso, cálculos ou verificações automáticos você mesmo preenche."
-        },
-        {
-          "q": "Quanto custa?",
-          "a": "Nada: sem conta e sem cadastro."
         }
       ]
     }

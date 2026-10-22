@@ -4,13 +4,13 @@
     "navLabel": "Main navigation",
     "home": "Home",
     "openApp": "Open FaLe PDF",
-    "badge": "Free · no account · your files stay on your device",
+    "badge": "No account · your files stay on your device",
     "stepsH": "How it works",
     "whyH": "Why FaLe PDF",
     "faqH": "Frequently asked questions",
     "moreH": "You can also",
     "endH": "Try it now",
-    "endText": "FaLe PDF runs in the browser, on your phone and on your computer. Every feature is free.",
+    "endText": "FaLe PDF runs in the browser, on your phone and on your computer.",
     "privacy": "Privacy",
     "imprint": "Imprint",
     "footer": "FaLe PDF – made by FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "sign-pdf",
-      "title": "Sign PDF – free, no account needed | FaLe PDF",
-      "description": "Sign a PDF on your phone or computer: draw your signature once, save it and place it with one tap. Free, no account, no upload.",
+      "title": "Sign PDF – no account needed | FaLe PDF",
+      "description": "Sign a PDF on your phone or computer: draw your signature once, save it and place it with one tap. No account, no upload.",
       "h1": "Sign a PDF",
       "lede": "Draw your signature with your finger or mouse and place it in any PDF with one tap – contract, form or power of attorney.",
       "cta": "Sign a PDF now",
@@ -49,7 +49,7 @@
         },
         {
           "t": "No subscription",
-          "d": "Signing is free and stays free – no watermark, no account."
+          "d": "Signing works without a subscription – no watermark, no account."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "fill-pdf-form",
-      "title": "Fill in PDF forms – free, also on your phone | FaLe PDF",
-      "description": "Fill in PDF forms: text fields, check boxes and drop-downs on your phone or computer – or type onto a scanned paper form. Free, no account.",
+      "title": "Fill in PDF forms – also on your phone | FaLe PDF",
+      "description": "Fill in PDF forms: text fields, check boxes and drop-downs on your phone or computer – or type onto a scanned paper form. No account.",
       "h1": "Fill in a PDF form",
       "lede": "Fill in form fields, or simply type where something belongs on a scanned form – with large text and clear buttons.",
       "cta": "Fill in a form",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "edit-pdf",
-      "title": "Edit PDF – add text & images, free | FaLe PDF",
-      "description": "Edit a PDF on your phone or computer: add text and images, replace existing text, cover areas. Free, no account and no upload.",
+      "title": "Edit PDF – add text & images | FaLe PDF",
+      "description": "Edit a PDF on your phone or computer: add text and images, replace existing text, cover areas. No account and no upload.",
       "h1": "Edit a PDF",
       "lede": "Add text and images, change existing text or cover areas – right in your PDF.",
       "cta": "Edit a PDF",
@@ -156,8 +156,8 @@
           "d": "Size with A− and A+, bold, colour – no hunting through menus."
         },
         {
-          "t": "Free instead of Pro",
-          "d": "What others only offer with a subscription is free here – without a watermark."
+          "t": "No watermark",
+          "d": "Even features others only offer with a subscription come without a watermark here."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "merge-pdf",
       "title": "Merge PDF – combine several PDFs into one | FaLe PDF",
-      "description": "Combine several PDFs into one file and choose the order – on your phone or computer, free, without an account and without uploading.",
+      "description": "Combine several PDFs into one file and choose the order – on your phone or computer, without an account and without uploading.",
       "h1": "Merge PDFs",
       "lede": "Combine invoices, scans or chapters into a single PDF – in the order you want.",
       "cta": "Merge PDFs",
@@ -226,17 +226,13 @@
         {
           "q": "Does the text stay selectable?",
           "a": "Yes. The pages are taken over unchanged, so text stays selectable and searchable."
-        },
-        {
-          "q": "Does it cost anything?",
-          "a": "No. Merging is free, without a watermark and without an account."
         }
       ]
     },
     "compress": {
       "slug": "compress-pdf",
       "title": "Compress PDF – for email and uploads | FaLe PDF",
-      "description": "Make a PDF smaller so it fits into an email or an upload form: shrink images or pack it losslessly. Free, without uploading.",
+      "description": "Make a PDF smaller so it fits into an email or an upload form: shrink images or pack it losslessly. Without uploading.",
       "h1": "Compress a PDF",
       "lede": "Too big for an email or an online form? FaLe PDF makes the file smaller – you see the size before and after.",
       "cta": "Compress a PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "scan-document",
       "title": "Scan documents with your phone – as PDF | FaLe PDF",
-      "description": "Scan documents with your phone camera: edges are detected, the page is straightened and enhanced, and the text becomes searchable. Free, no account.",
+      "description": "Scan documents with your phone camera: edges are detected, the page is straightened and enhanced, and the text becomes searchable. No account.",
       "h1": "Scan a document with your phone",
       "lede": "Hold your phone over the paper – FaLe finds the page, straightens it and turns it into a clean PDF.",
       "cta": "Scan now",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-to-word",
-      "title": "Convert PDF to Word – free, no upload | FaLe PDF",
-      "description": "Convert a PDF into an editable Word document (DOCX): paragraphs, headings and bold text are kept. Free, right on your device.",
+      "title": "Convert PDF to Word – no upload | FaLe PDF",
+      "description": "Convert a PDF into an editable Word document (DOCX): paragraphs, headings and bold text are kept. Right on your device.",
       "h1": "Convert PDF to Word",
       "lede": "Turn a PDF into a Word document you can edit – paragraphs, headings and emphasis are kept.",
       "cta": "Convert PDF to Word",
@@ -388,17 +384,13 @@
         {
           "q": "Which format do I get?",
           "a": "A Word document in DOCX format that opens in all common word processors."
-        },
-        {
-          "q": "What does it cost?",
-          "a": "Nothing. This Pro feature is free in FaLe PDF too."
         }
       ]
     },
     "xfa": {
       "slug": "open-xfa-form",
       "title": "Open and fill in XFA forms – official forms | FaLe PDF",
-      "description": "Official form only shows “Please wait …”? FaLe PDF opens XFA forms, fills them in, signs and saves them – free, also on your phone.",
+      "description": "Official form only shows “Please wait …”? FaLe PDF opens XFA forms, fills them in, signs and saves them – also on your phone.",
       "h1": "Open and fill in an official form (XFA)",
       "lede": "Some forms from authorities and embassies only show “Please wait …” or an empty page. FaLe PDF opens them, you fill them in and save them again.",
       "cta": "Open a form",
@@ -442,10 +434,6 @@
         {
           "q": "Do calculations in the form work?",
           "a": "Scripts in the form are not run, for safety reasons. Enter automatic totals or checks yourself."
-        },
-        {
-          "q": "What does it cost?",
-          "a": "Nothing – no account and no sign-up."
         }
       ]
     }

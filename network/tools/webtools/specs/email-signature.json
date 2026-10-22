@@ -20,7 +20,7 @@
     "short": "Professionelle Signatur für Gmail, Outlook und Apple Mail – mit Pflichtangaben-Check.",
     "title": "E-Mail-Signatur erstellen – mit Pflichtangaben | FaleNetwork",
     "h1": "E-Mail-Signatur erstellen",
-    "metaDescription": "E-Mail-Signatur für Gmail, Outlook und Apple Mail: drei Layouts, eigene Farbe, Logo, Dark-Mode-Vorschau und Check der Pflichtangaben. Gratis, ohne Abo.",
+    "metaDescription": "E-Mail-Signatur für Gmail, Outlook und Apple Mail: drei Layouts, eigene Farbe, Logo, Dark-Mode-Vorschau und Check der Pflichtangaben. Ohne Abo.",
     "lede": "Trag deine Angaben ein, wähl Aufbau und Farbe – und kopier die fertige Signatur in dein Mailprogramm.",
     "primaryButton": "Als Datei speichern",
     "keywords": [
@@ -50,7 +50,7 @@
     "why": [
       {
         "title": "Kein Abo",
-        "text": "Signatur-Dienste kosten oft monatlich, manche ohne Gratis-Version. Hier ist die fertige Signatur kostenlos und ohne Konto."
+        "text": "Signatur-Dienste kosten oft monatlich, manche ohne Gratis-Version. Hier bekommst du die fertige Signatur ohne Konto."
       },
       {
         "title": "Hält in jedem Mailprogramm",
@@ -91,15 +91,15 @@
   "en": {
     "slug": "email-signature-generator",
     "name": "Email signature generator",
-    "short": "A professional signature for Gmail, Outlook and Apple Mail – free.",
-    "title": "Email signature generator – free, no subscription | FaleNetwork",
+    "short": "A professional signature for Gmail, Outlook and Apple Mail.",
+    "title": "Email signature generator – no subscription | FaleNetwork",
     "h1": "Create an email signature",
-    "metaDescription": "Create an email signature for Gmail, Outlook and Apple Mail: three layouts, your colour, logo, dark mode preview and a check of German legal details. Free.",
+    "metaDescription": "Create an email signature for Gmail, Outlook and Apple Mail: three layouts, your colour, logo, dark mode preview and a check of German legal details.",
     "lede": "Enter your details, pick a layout and colour – then copy the finished signature into your mail app.",
     "primaryButton": "Save as file",
     "keywords": [
       "email signature generator",
-      "free email signature",
+      "email signature",
       "outlook signature",
       "gmail signature",
       "html signature",
@@ -122,7 +122,7 @@
     "why": [
       {
         "title": "No subscription",
-        "text": "Signature services often charge monthly, some without a free plan. Here the finished signature is free and needs no account."
+        "text": "Signature services often charge monthly, some without a free plan. Here you get the finished signature without an account."
       },
       {
         "title": "Holds up in every mail app",

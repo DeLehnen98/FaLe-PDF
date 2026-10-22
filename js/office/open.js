@@ -86,7 +86,7 @@ async function imageScreen(meta, onBack) {
 
 // ---------------- templates ----------------
 function templatesScreen(onBack, art) {
-  const screen = openScreen({ title: 'Vorlagen', sub: 'Eigene Designs – kostenlos und ohne Konto', onBack });
+  const screen = openScreen({ title: 'Vorlagen', sub: 'Eigene Designs – ohne Konto', onBack });
   const card = (href, tile, title, desc, preview = '') => `<a class="tpl-card" href="${href}">${preview || `<span class="tpl-prev">${tile}</span>`}<span class="tpl-txt"><strong>${esc(title)}</strong><span>${esc(desc)}</span></span></a>`;
   const docPrev = t => `<span class="tpl-prev tpl-doc tpl-${t.id}" aria-hidden="true"><span class="tl t1"></span><span class="tl"></span><span class="tl s"></span><span class="tl"></span><span class="tl s"></span><span class="tl"></span></span>`;
   const slidePrev = (t, deck = false) => `<span class="tpl-prev tpl-slide${deck ? ' tpl-deck' : ''}" aria-hidden="true" style="background:${t.bg}"><span class="ts-bar" style="background:${t.accent}"></span><span class="ts-t" style="background:${t.title}"></span><span class="ts-s" style="background:${t.text}"></span>${deck ? `<span class="ts-stack"><span style="background:${t.panel || t.text}"></span><span style="background:${t.panel || t.text}"></span><span style="background:${t.panel || t.text}"></span></span>` : ''}</span>`;

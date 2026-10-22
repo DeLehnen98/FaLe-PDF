@@ -50,7 +50,7 @@
     "why": [
       {
         "title": "Kein Zeitlimit, kein Wasserzeichen",
-        "text": "Viele Recorder schneiden Gratis-Videos nach wenigen Minuten ab oder setzen ihr Logo ins Bild. Hier nimmst du so lange auf, wie du willst – ohne fremdes Logo."
+        "text": "Viele Recorder schneiden Videos nach wenigen Minuten ab oder setzen ihr Logo ins Bild. Hier nimmst du so lange auf, wie du willst – ohne fremdes Logo."
       },
       {
         "title": "Nichts geht verloren",
@@ -96,8 +96,8 @@
     "slug": "screen-recorder",
     "name": "Screen recorder",
     "short": "Record your screen with sound and camera – no time limit, no watermark.",
-    "title": "Free screen recorder – no watermark, no time limit | FaleNetwork",
-    "h1": "Free screen recorder",
+    "title": "Screen recorder – no watermark, no time limit | FaleNetwork",
+    "h1": "Screen recorder",
     "metaDescription": "Record your screen, a window or a tab – with microphone, sound and a camera window. No time limit, no watermark, nothing to install. As MP4 or WebM.",
     "lede": "Start recording, pick a screen, window or tab – and save the video straight to your device.",
     "primaryButton": "Save recording",
@@ -105,7 +105,7 @@
       "screen recorder",
       "record screen",
       "screen recording with audio",
-      "free screen recorder no watermark",
+      "screen recorder no watermark",
       "record tutorial",
       "record presentation"
     ],

@@ -4,13 +4,13 @@
     "navLabel": "Ana gezinme",
     "home": "Ana sayfa",
     "openApp": "FaLe PDF’yi aç",
-    "badge": "Ücretsiz · hesapsız · dosyaların cihazında kalır",
+    "badge": "Hesapsız · dosyaların cihazında kalır",
     "stepsH": "Nasıl yapılır",
     "whyH": "Neden FaLe PDF",
     "faqH": "Sık sorulan sorular",
     "moreH": "Şunları da yapabilirsin",
     "endH": "Hemen dene",
-    "endText": "FaLe PDF tarayıcıda, telefonda ve bilgisayarda çalışır. Tüm özellikler ücretsizdir.",
+    "endText": "FaLe PDF tarayıcıda, telefonda ve bilgisayarda çalışır.",
     "privacy": "Gizlilik",
     "imprint": "Yasal bilgiler",
     "footer": "FaLe PDF – FaLe.dev hizmeti",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "pdf-imzala",
-      "title": "PDF imzala – ücretsiz, hesapsız | FaLe PDF",
-      "description": "PDF’yi telefonda veya bilgisayarda imzala: imzanı çiz, kaydet ve tek dokunuşla yerleştir. Ücretsiz, hesapsız ve yükleme yapmadan.",
+      "title": "PDF imzala – hesapsız | FaLe PDF",
+      "description": "PDF’yi telefonda veya bilgisayarda imzala: imzanı çiz, kaydet ve tek dokunuşla yerleştir. Hesapsız ve yükleme yapmadan.",
       "h1": "PDF imzala",
       "lede": "İmzanı parmağınla veya fareyle çiz ve tek dokunuşla istediğin PDF’ye yerleştir: sözleşme, form ya da vekâletname.",
       "cta": "Şimdi PDF imzala",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Abonelik yok",
-          "d": "İmzalamak ücretsizdir ve öyle kalır – filigran yok, hesap yok."
+          "d": "İmzalamak için abonelik gerekmez – filigran yok, hesap yok."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "pdf-form-doldur",
-      "title": "PDF form doldur – ücretsiz, telefonda da | FaLe PDF",
-      "description": "PDF formlarını doldur: metin alanları, kutucuklar ve seçim listeleri telefonda veya bilgisayarda – ya da taranmış kâğıt forma yaz. Ücretsiz, hesapsız.",
+      "title": "PDF form doldur – telefonda da | FaLe PDF",
+      "description": "PDF formlarını doldur: metin alanları, kutucuklar ve seçim listeleri telefonda veya bilgisayarda – ya da taranmış kâğıt forma yaz. Hesapsız.",
       "h1": "PDF form doldur",
       "lede": "Form alanlarını doldur ya da taranmış bir formda bir şeyin gitmesi gereken yere doğrudan yaz – büyük yazı ve net düğmelerle.",
       "cta": "Form doldur",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "pdf-duzenle",
-      "title": "PDF düzenle – metin ve görsel ekle, ücretsiz | FaLe PDF",
-      "description": "PDF’yi telefonda veya bilgisayarda düzenle: metin ve görsel ekle, mevcut metni değiştir, bazı kısımları kapat. Ücretsiz, hesapsız ve yüklemesiz.",
+      "title": "PDF düzenle – metin ve görsel ekle | FaLe PDF",
+      "description": "PDF’yi telefonda veya bilgisayarda düzenle: metin ve görsel ekle, mevcut metni değiştir, bazı kısımları kapat. Hesapsız ve yüklemesiz.",
       "h1": "PDF düzenle",
       "lede": "Metin ve görsel ekle, mevcut metni değiştir ya da bazı kısımları kapat – doğrudan PDF’nin içinde.",
       "cta": "PDF düzenle",
@@ -156,8 +156,8 @@
           "d": "Boyut A− ve A+ ile, kalın, renk – menülerde aramadan."
         },
         {
-          "t": "Pro değil, ücretsiz",
-          "d": "Başkalarının yalnızca abonelikle sunduğu şey burada ücretsiz – filigransız."
+          "t": "Filigran yok",
+          "d": "Başkalarının yalnızca abonelikle sunduğu özellikler burada filigransız kullanılır."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "pdf-birlestir",
       "title": "PDF birleştir – birden çok PDF’yi tek dosya yap | FaLe PDF",
-      "description": "Birden çok PDF’yi tek dosyada birleştir ve sırasını belirle – telefonda veya bilgisayarda, ücretsiz, hesapsız ve yüklemesiz.",
+      "description": "Birden çok PDF’yi tek dosyada birleştir ve sırasını belirle – telefonda veya bilgisayarda, hesapsız ve yüklemesiz.",
       "h1": "PDF birleştir",
       "lede": "Faturaları, taramaları veya bölümleri tek bir PDF’de birleştir – istediğin sırayla.",
       "cta": "PDF birleştir",
@@ -226,17 +226,13 @@
         {
           "q": "Metin seçilebilir kalıyor mu?",
           "a": "Evet. Sayfalar değişmeden alınır, bu yüzden metin seçilebilir ve aranabilir kalır."
-        },
-        {
-          "q": "Bir ücreti var mı?",
-          "a": "Hayır. Birleştirme ücretsizdir, filigran ve hesap yok."
         }
       ]
     },
     "compress": {
       "slug": "pdf-sikistir",
       "title": "PDF sıkıştır – e-posta ve yükleme için | FaLe PDF",
-      "description": "PDF’yi küçült, e-postaya veya yükleme formuna sığsın: görselleri küçült ya da kayıpsız sıkıştır. Ücretsiz, yüklemesiz.",
+      "description": "PDF’yi küçült, e-postaya veya yükleme formuna sığsın: görselleri küçült ya da kayıpsız sıkıştır. Yüklemesiz.",
       "h1": "PDF sıkıştır",
       "lede": "E-posta veya çevrimiçi form için çok mu büyük? FaLe PDF dosyayı küçültür – önceki ve sonraki boyutu görürsün.",
       "cta": "PDF sıkıştır",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "belge-tara",
       "title": "Telefonla belge tara – PDF olarak | FaLe PDF",
-      "description": "Belgeleri telefon kamerasıyla tara: kenarlar algılanır, sayfa düzeltilip iyileştirilir, metin aranabilir olur. Ücretsiz, hesapsız.",
+      "description": "Belgeleri telefon kamerasıyla tara: kenarlar algılanır, sayfa düzeltilip iyileştirilir, metin aranabilir olur. Hesapsız.",
       "h1": "Telefonla belge tara",
       "lede": "Telefonu kâğıdın üzerine tut – FaLe sayfayı algılar, düzeltir ve temiz bir PDF yapar.",
       "cta": "Şimdi tara",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-word-donustur",
-      "title": "PDF’yi Word’e dönüştür – ücretsiz, yüklemesiz | FaLe PDF",
-      "description": "PDF’yi düzenlenebilir bir Word belgesine (DOCX) dönüştür: paragraflar, başlıklar ve kalın yazı korunur. Ücretsiz, doğrudan cihazında.",
+      "title": "PDF’yi Word’e dönüştür – yüklemesiz | FaLe PDF",
+      "description": "PDF’yi düzenlenebilir bir Word belgesine (DOCX) dönüştür: paragraflar, başlıklar ve kalın yazı korunur. Doğrudan cihazında.",
       "h1": "PDF’yi Word’e dönüştür",
       "lede": "PDF’yi değiştirebileceğin bir Word belgesine çevir – paragraflar, başlıklar ve vurgular korunur.",
       "cta": "PDF’yi Word’e dönüştür",
@@ -388,17 +384,13 @@
         {
           "q": "Hangi biçimi alırım?",
           "a": "Tüm yaygın metin programlarında açılan, DOCX biçiminde bir Word belgesi."
-        },
-        {
-          "q": "Ücreti nedir?",
-          "a": "Hiçbir şey. Bu Pro özelliği de FaLe PDF’de ücretsiz."
         }
       ]
     },
     "xfa": {
       "slug": "xfa-form-ac",
       "title": "XFA formu aç ve doldur – resmî formlar | FaLe PDF",
-      "description": "Resmî form yalnızca “Lütfen bekleyin …” mi gösteriyor? FaLe PDF XFA formlarını açar, doldurur, imzalar ve kaydeder – ücretsiz, telefonda da.",
+      "description": "Resmî form yalnızca “Lütfen bekleyin …” mi gösteriyor? FaLe PDF XFA formlarını açar, doldurur, imzalar ve kaydeder – telefonda da.",
       "h1": "Resmî formu (XFA) aç ve doldur",
       "lede": "Kurumların ve konsolosluk-elçiliklerin bazı formları yalnızca “Lütfen bekleyin …” veya boş bir sayfa gösterir. FaLe PDF onları açar, sen doldurur ve yeniden kaydedersin.",
       "cta": "Formu aç",
@@ -442,10 +434,6 @@
         {
           "q": "Formdaki hesaplamalar çalışır mı?",
           "a": "Formdaki komut dosyaları güvenlik nedeniyle çalıştırılmaz. Bu yüzden otomatik hesaplamaları veya kontrolleri kendin girersin."
-        },
-        {
-          "q": "Ücreti nedir?",
-          "a": "Hiçbir şey – hesapsız ve kayıtsız."
         }
       ]
     }

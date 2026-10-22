@@ -23,13 +23,13 @@
     "short": "Alles Wichtige für Angehörige im Notfall – als druckfertige PDF mit Notfallkarte.",
     "title": "Notfallordner erstellen – PDF mit Notfallkarte | FaleNetwork",
     "h1": "Notfallordner erstellen",
-    "metaDescription": "Notfallordner kostenlos ausfüllen: Kontakte, Gesundheit, Ärzte, Versicherungen, Konten und wo Testament und Vollmachten liegen – als PDF mit Notfallkarte.",
+    "metaDescription": "Notfallordner ausfüllen: Kontakte, Gesundheit, Ärzte, Versicherungen, Konten und wo Testament und Vollmachten liegen – als PDF mit Notfallkarte.",
     "lede": "Was Angehörige im Notfall wissen müssen – einmal ausfüllen, ausdrucken, an einem bekannten Ort ablegen.",
     "primaryButton": "PDF erstellen",
     "keywords": [
       "notfallordner",
       "notfallordner vorlage",
-      "notfallordner kostenlos",
+      "notfallordner",
       "notfallmappe",
       "vorsorgeordner",
       "notfallkarte"
@@ -50,8 +50,8 @@
     ],
     "why": [
       {
-        "title": "Kostenlos statt Kaufordner",
-        "text": "Gedruckte Notfallordner kosten im Handel oft 20 bis 40 Euro. Hier füllst du die gleichen Bereiche kostenlos aus und druckst nur, was du wirklich brauchst."
+        "title": "Statt Kaufordner",
+        "text": "Gedruckte Notfallordner kosten im Handel oft 20 bis 40 Euro. Hier füllst du die gleichen Bereiche aus und druckst nur, was du wirklich brauchst."
       },
       {
         "title": "Deine Daten bleiben bei dir",
@@ -93,15 +93,15 @@
     "slug": "emergency-binder",
     "name": "Emergency binder",
     "short": "Everything your family needs in an emergency – as a printable PDF with a wallet card.",
-    "title": "Free emergency binder – PDF with wallet card | FaleNetwork",
+    "title": "Emergency binder – PDF with wallet card | FaleNetwork",
     "h1": "Create an emergency binder",
-    "metaDescription": "Fill in an emergency binder for free: contacts, health, doctors, insurances, accounts and where your will is kept – as a PDF with a wallet card.",
+    "metaDescription": "Fill in an emergency binder: contacts, health, doctors, insurances, accounts and where your will is kept – as a PDF with a wallet card.",
     "lede": "What your family needs to know in an emergency – fill it in once, print it, keep it somewhere known.",
     "primaryButton": "Create PDF",
     "keywords": [
       "emergency binder",
       "emergency binder template",
-      "free emergency binder",
+      "emergency binder",
       "in case of emergency file",
       "legacy binder",
       "emergency wallet card"
@@ -122,8 +122,8 @@
     ],
     "why": [
       {
-        "title": "Free instead of a bought binder",
-        "text": "Printed emergency binders often cost 20 to 40 euros in shops. Here you fill in the same sections for free and only print what you need."
+        "title": "Instead of a bought binder",
+        "text": "Printed emergency binders often cost 20 to 40 euros in shops. Here you fill in the same sections and only print what you need."
       },
       {
         "title": "Your data stays with you",

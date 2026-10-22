@@ -128,13 +128,13 @@ und danach `desktop.py` – siehe `store/graphics/README.md`.
 #### Deutsch – Kurzbeschreibung
 
 ```
-PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen gratis, ohne Abo, ohne Konto und ohne Upload: Deine Dateien werden auf deinem PC verarbeitet. PDFs öffnest du direkt per Doppelklick.
+PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen an Bord, ohne Abo, ohne Konto und ohne Upload: Deine Dateien werden auf deinem PC verarbeitet. PDFs öffnest du direkt per Doppelklick.
 ```
 
 #### Deutsch – Beschreibung
 
 ```
-FaLe PDF ist dein privates Büro für den PC: PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen sind gratis, ohne Abo, ohne Konto und ohne Wasserzeichen. Deine Dateien werden auf deinem Gerät verarbeitet, nicht auf einem Server.
+FaLe PDF ist dein privates Büro für den PC: PDFs lesen, ausfüllen, unterschreiben und bearbeiten – dazu Dokumente, Tabellen und Präsentationen. Alle Funktionen sind dabei – ohne Abo, ohne Konto und ohne Wasserzeichen. Deine Dateien werden auf deinem Gerät verarbeitet, nicht auf einem Server.
 
 PDF LESEN
 • Schneller PDF-Viewer mit Suche, Lesezeichen und Inhaltsverzeichnis
@@ -178,7 +178,7 @@ ALLTAG
 
 KI-ASSISTENT (OPTIONAL)
 • Fragen an deine Dokumente, Zusammenfassen, Übersetzen, Schreibhilfe
-• Täglich einige Anfragen gratis, nur nach deiner Zustimmung – gesendet wird nur der Text, den du auswählst
+• Täglich einige Anfragen inklusive, nur nach deiner Zustimmung – gesendet wird nur der Text, den du auswählst
 • Keine KI gewünscht? Ein Schalter blendet sie komplett aus
 • KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden
 
@@ -191,7 +191,7 @@ Oberfläche auf Deutsch und Englisch.
 #### Deutsch – Produkt-Features (je eine Zeile ins Partner Center)
 
 ```
-Alle Funktionen gratis – kein Abo, kein Konto, keine Wasserzeichen
+Alle Funktionen an Bord – kein Abo, kein Konto, keine Wasserzeichen
 PDFs per Doppelklick öffnen, eigenes Fenster, funktioniert offline
 PDF-Formulare ausfüllen und unterschreiben
 Texterkennung (OCR) direkt auf dem PC
@@ -218,13 +218,13 @@ DOCX
 #### Englisch – Short description
 
 ```
-Read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is free, with no subscription, no account and no upload: your files are processed on your PC. Open PDFs straight from File Explorer with a double-click.
+Read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is on board, with no subscription, no account and no upload: your files are processed on your PC. Open PDFs straight from File Explorer with a double-click.
 ```
 
 #### Englisch – Description
 
 ```
-FaLe PDF is your private office for the PC: read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is free, with no subscription, no account and no watermarks. Your files are processed on your device, not on a server.
+FaLe PDF is your private office for the PC: read, fill in, sign and edit PDFs – plus documents, spreadsheets and presentations. Every feature is included – no subscription, no account and no watermarks. Your files are processed on your device, not on a server.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
@@ -267,7 +267,7 @@ EVERYDAY
 
 AI ASSISTANT (OPTIONAL)
 • Ask your documents, summarise, translate, writing help
-• A few free requests every day, only with your consent – only the text you select is sent
+• A few requests included every day, only with your consent – only the text you select is sent
 • Don't want AI? One switch hides it completely
 • AI answers can contain mistakes – you can report problematic answers to us by email
 
@@ -280,7 +280,7 @@ Interface in English and German.
 #### Englisch – Product features
 
 ```
-Every feature free – no subscription, no account, no watermarks
+Every feature on board – no subscription, no account, no watermarks
 Open PDFs with a double-click, own window, works offline
 Fill in and sign PDF forms
 Text recognition (OCR) right on your PC

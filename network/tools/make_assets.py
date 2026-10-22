@@ -18,8 +18,8 @@ PDF = (ROOT / 'assets/icons/app-pdf.svg').as_uri()
 CLEAN = (ROOT / 'assets/icons/app-clean.svg').as_uri()
 
 OG = {
-    'de': ('Freie Apps, die auf deinem Gerät bleiben.', 'Kein Konto nötig · Verarbeitung auf dem Gerät · kein Tracking', 'bald'),
-    'en': ('Free apps that stay on your device.', 'No account needed · processing on your device · no tracking', 'soon'),
+    'de': ('Apps, die auf deinem Gerät bleiben.', 'Kein Konto nötig · Verarbeitung auf dem Gerät · kein Tracking', 'bald'),
+    'en': ('Apps that stay on your device.', 'No account needed · processing on your device · no tracking', 'soon'),
 }
 
 

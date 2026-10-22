@@ -5,7 +5,7 @@
  "order": 4,
  "name": "Kündigung Gasvertrag",
  "short": "Gasliefervertrag kündigen, Zählerstand mitteilen",
- "desc": "Gasvertrag kündigen mit Vorlage: Kundennummer, Zählernummer und Bitte um Schlussrechnung – mit Infos zu Grundversorgung, Sonderkündigung und Umzug. Kostenlos als PDF.",
+ "desc": "Gasvertrag kündigen mit Vorlage: Kundennummer, Zählernummer und Bitte um Schlussrechnung – mit Infos zu Grundversorgung, Sonderkündigung und Umzug. Als PDF.",
  "search": "gas heizung energie zähler",
  "when": [
   "Du ziehst um, wechselst den Anbieter oder baust auf eine andere Heizung um. Die Frist hängt vom Vertrag ab: in der Grundversorgung meist zwei Wochen, bei Sonderverträgen steht sie im Vertrag.",

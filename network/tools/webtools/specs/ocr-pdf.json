@@ -32,7 +32,7 @@
     "short": "Gescannte PDFs durchsuchbar machen – Text erkennen, kopieren, finden.",
     "title": "PDF Texterkennung (OCR) – Scan durchsuchbar machen | FaleNetwork",
     "h1": "PDF-Texterkennung (OCR)",
-    "metaDescription": "Mach gescannte PDFs durchsuchbar: Die Texterkennung legt eine unsichtbare Textebene über den Scan. Deutsch und Englisch, kostenlos und ohne Upload.",
+    "metaDescription": "Mach gescannte PDFs durchsuchbar: Die Texterkennung legt eine unsichtbare Textebene über den Scan. Deutsch und Englisch, ohne Upload.",
     "lede": "Mach gescannte PDFs durchsuchbar und kopierbar – die Erkennung läuft komplett auf deinem Gerät.",
     "pickLabel": "Gescannte PDF auswählen",
     "primaryButton": "Text erkennen",
@@ -109,9 +109,9 @@
     "slug": "ocr-pdf",
     "name": "OCR PDF",
     "short": "Make scanned PDFs searchable – recognise, copy and find text.",
-    "title": "OCR PDF – make scanned PDFs searchable, free | FaleNetwork",
+    "title": "OCR PDF – make scanned PDFs searchable | FaleNetwork",
     "h1": "OCR PDF",
-    "metaDescription": "Make scanned PDFs searchable: text recognition adds an invisible text layer over the scan. English and German, free and without uploading your files.",
+    "metaDescription": "Make scanned PDFs searchable: text recognition adds an invisible text layer over the scan. English and German, without uploading your files.",
     "lede": "Make scanned PDFs searchable and copyable – recognition runs entirely on your device.",
     "pickLabel": "Choose scanned PDF",
     "primaryButton": "Recognise text",
@@ -121,7 +121,7 @@
       "text recognition",
       "scan to text",
       "make pdf searchable",
-      "pdf ocr free"
+      "pdf ocr"
     ],
     "steps": [
       {

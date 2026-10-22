@@ -4,13 +4,13 @@
     "navLabel": "Hauptnavigation",
     "home": "Startseite",
     "openApp": "FaLe PDF öffnen",
-    "badge": "Kostenlos · ohne Konto · deine Dateien bleiben auf dem Gerät",
+    "badge": "Ohne Konto · deine Dateien bleiben auf dem Gerät",
     "stepsH": "So geht's",
     "whyH": "Darum FaLe PDF",
     "faqH": "Häufige Fragen",
     "moreH": "Das geht auch",
     "endH": "Probier es gleich aus",
-    "endText": "FaLe PDF läuft im Browser, auf dem Handy und auf dem Computer. Alle Funktionen sind gratis.",
+    "endText": "FaLe PDF läuft im Browser, auf dem Handy und auf dem Computer.",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "footer": "FaLe PDF – ein Angebot von FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "pdf-unterschreiben",
-      "title": "PDF unterschreiben – kostenlos, ohne Konto | FaLe PDF",
-      "description": "PDF unterschreiben direkt auf dem Handy oder PC: Unterschrift zeichnen, speichern und mit einem Tipp einsetzen. Gratis, ohne Konto, ohne Upload.",
+      "title": "PDF unterschreiben – ohne Konto | FaLe PDF",
+      "description": "PDF unterschreiben direkt auf dem Handy oder PC: Unterschrift zeichnen, speichern und mit einem Tipp einsetzen. Ohne Konto, ohne Upload.",
       "h1": "PDF unterschreiben",
       "lede": "Zeichne deine Unterschrift mit dem Finger oder der Maus und setze sie mit einem Tipp in jede PDF – Vertrag, Formular oder Vollmacht.",
       "cta": "Jetzt PDF unterschreiben",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Ohne Abo",
-          "d": "Unterschreiben ist gratis und bleibt es – ohne Wasserzeichen und ohne Konto."
+          "d": "Unterschreiben geht ohne Abo, ohne Wasserzeichen und ohne Konto."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "pdf-formular-ausfuellen",
-      "title": "PDF-Formular ausfüllen – gratis, auch am Handy | FaLe PDF",
-      "description": "PDF-Formulare ausfüllen: Textfelder, Kästchen und Auswahllisten direkt am Handy oder PC – oder Text auf ein Papierformular schreiben. Gratis, ohne Konto.",
+      "title": "PDF-Formular ausfüllen – auch am Handy | FaLe PDF",
+      "description": "PDF-Formulare ausfüllen: Textfelder, Kästchen und Auswahllisten direkt am Handy oder PC – oder Text auf ein Papierformular schreiben. Ohne Konto.",
       "h1": "PDF-Formular ausfüllen",
       "lede": "Fülle Formularfelder aus oder schreib einfach dorthin, wo bei einem eingescannten Formular etwas hingehört – mit großer Schrift und klaren Knöpfen.",
       "cta": "Formular ausfüllen",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "pdf-bearbeiten",
-      "title": "PDF bearbeiten – Text & Bilder einfügen, gratis | FaLe PDF",
-      "description": "PDF bearbeiten am Handy oder PC: Text und Bilder einfügen, vorhandenen Text ersetzen, Stellen abdecken. Kostenlos, ohne Konto und ohne Upload.",
+      "title": "PDF bearbeiten – Text & Bilder einfügen | FaLe PDF",
+      "description": "PDF bearbeiten am Handy oder PC: Text und Bilder einfügen, vorhandenen Text ersetzen, Stellen abdecken. Ohne Konto und ohne Upload.",
       "h1": "PDF bearbeiten",
       "lede": "Füge Text und Bilder hinzu, ändere vorhandenen Text oder decke Stellen ab – direkt in deiner PDF.",
       "cta": "PDF bearbeiten",
@@ -156,8 +156,8 @@
           "d": "Größe mit A− und A+, fett, Farbe – ohne Menüs zu suchen."
         },
         {
-          "t": "Gratis statt Pro",
-          "d": "Was andere nur im Abo anbieten, ist hier kostenlos – ohne Wasserzeichen."
+          "t": "Ohne Wasserzeichen",
+          "d": "Auch Funktionen, die andere nur im Abo anbieten, bekommst du hier ohne Wasserzeichen."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "pdf-zusammenfuegen",
       "title": "PDF zusammenfügen – mehrere PDFs zu einer | FaLe PDF",
-      "description": "Mehrere PDFs zu einer Datei zusammenfügen und die Reihenfolge festlegen – am Handy oder PC, kostenlos, ohne Konto und ohne Hochladen.",
+      "description": "Mehrere PDFs zu einer Datei zusammenfügen und die Reihenfolge festlegen – am Handy oder PC, ohne Konto und ohne Hochladen.",
       "h1": "PDFs zusammenfügen",
       "lede": "Verbinde Rechnungen, Scans oder Kapitel zu einer einzigen PDF – in der Reihenfolge, die du willst.",
       "cta": "PDFs zusammenfügen",
@@ -226,17 +226,13 @@
         {
           "q": "Bleiben Links und Lesezeichen erhalten?",
           "a": "Die Seiten werden unverändert übernommen, Text bleibt markierbar und durchsuchbar."
-        },
-        {
-          "q": "Kostet das etwas?",
-          "a": "Nein. Zusammenfügen ist gratis, ohne Wasserzeichen und ohne Konto."
         }
       ]
     },
     "compress": {
       "slug": "pdf-verkleinern",
       "title": "PDF verkleinern – für E-Mail und Upload | FaLe PDF",
-      "description": "PDF verkleinern, damit sie in die E-Mail oder das Upload-Formular passt: Bilder kleiner rechnen oder verlustfrei packen. Gratis, ohne Upload.",
+      "description": "PDF verkleinern, damit sie in die E-Mail oder das Upload-Formular passt: Bilder kleiner rechnen oder verlustfrei packen. Ohne Upload.",
       "h1": "PDF verkleinern",
       "lede": "Zu groß für die E-Mail oder das Online-Formular? FaLe PDF macht die Datei kleiner – du siehst vorher und nachher.",
       "cta": "PDF verkleinern",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "dokument-scannen",
       "title": "Dokument scannen mit dem Handy – als PDF | FaLe PDF",
-      "description": "Dokumente mit der Handykamera scannen: Kanten werden erkannt, die Seite begradigt und verbessert, der Text durchsuchbar. Gratis, ohne Konto.",
+      "description": "Dokumente mit der Handykamera scannen: Kanten werden erkannt, die Seite begradigt und verbessert, der Text durchsuchbar. Ohne Konto.",
       "h1": "Dokument mit dem Handy scannen",
       "lede": "Halte das Handy über das Papier – FaLe erkennt die Seite, schneidet sie gerade und macht daraus eine saubere PDF.",
       "cta": "Jetzt scannen",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-in-word-umwandeln",
-      "title": "PDF in Word umwandeln – kostenlos, ohne Upload | FaLe PDF",
-      "description": "PDF in ein bearbeitbares Word-Dokument (DOCX) umwandeln: Absätze, Überschriften und Fett bleiben erhalten. Gratis, direkt auf dem Gerät.",
+      "title": "PDF in Word umwandeln – ohne Upload | FaLe PDF",
+      "description": "PDF in ein bearbeitbares Word-Dokument (DOCX) umwandeln: Absätze, Überschriften und Fett bleiben erhalten. Direkt auf dem Gerät.",
       "h1": "PDF in Word umwandeln",
       "lede": "Mach aus einer PDF ein Word-Dokument, das du ändern kannst – Absätze, Überschriften und Hervorhebungen bleiben erhalten.",
       "cta": "PDF in Word umwandeln",
@@ -388,17 +384,13 @@
         {
           "q": "Welches Format bekomme ich?",
           "a": "Ein Word-Dokument im DOCX-Format, das sich in allen gängigen Textprogrammen öffnen lässt."
-        },
-        {
-          "q": "Was kostet das?",
-          "a": "Nichts. Auch diese Pro-Funktion ist in FaLe PDF gratis."
         }
       ]
     },
     "xfa": {
       "slug": "xfa-formular-oeffnen",
       "title": "XFA-Formular öffnen und ausfüllen – Behördenformulare | FaLe PDF",
-      "description": "Behördenformular zeigt nur „Bitte warten …“? FaLe PDF öffnet XFA-Formulare, füllt sie aus, unterschreibt und speichert sie – gratis, auch am Handy.",
+      "description": "Behördenformular zeigt nur „Bitte warten …“? FaLe PDF öffnet XFA-Formulare, füllt sie aus, unterschreibt und speichert sie – auch am Handy.",
       "h1": "Behörden-Formular (XFA) öffnen und ausfüllen",
       "lede": "Manche Formulare von Ämtern und Botschaften zeigen nur „Bitte warten …“ oder eine leere Seite. FaLe PDF öffnet sie, du füllst sie aus und speicherst sie wieder.",
       "cta": "Formular öffnen",
@@ -442,10 +434,6 @@
         {
           "q": "Funktionieren Berechnungen im Formular?",
           "a": "Skripte im Formular werden aus Sicherheitsgründen nicht ausgeführt. Automatische Berechnungen oder Prüfungen trägst du daher selbst ein."
-        },
-        {
-          "q": "Was kostet das?",
-          "a": "Nichts – ohne Konto und ohne Anmeldung."
         }
       ]
     }

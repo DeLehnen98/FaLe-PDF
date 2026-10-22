@@ -28,9 +28,9 @@
     "slug": "pdf-formular-erstellen",
     "name": "PDF-Formular erstellen",
     "short": "Ausfüllbare Felder in jede PDF setzen – Text, Kästchen, Auswahl, Datum, Unterschrift.",
-    "title": "PDF-Formular erstellen – ausfüllbar & gratis | FaleNetwork",
+    "title": "PDF-Formular erstellen – ausfüllbar | FaleNetwork",
     "h1": "Ausfüllbares PDF-Formular erstellen",
-    "metaDescription": "Aus jeder PDF ein ausfüllbares Formular machen: Textfelder, Kästchen, Auswahl, Datum und Unterschrift setzen oder erkennen lassen. Gratis, ohne Upload.",
+    "metaDescription": "Aus jeder PDF ein ausfüllbares Formular machen: Textfelder, Kästchen, Auswahl, Datum und Unterschrift setzen oder erkennen lassen. Ohne Upload.",
     "lede": "PDF wählen, Felder setzen – fertig ist ein Formular, das jeder am Computer oder Handy ausfüllen kann.",
     "pickLabel": "PDF auswählen",
     "primaryButton": "Formular erstellen",
@@ -39,7 +39,7 @@
       "ausfüllbares pdf erstellen",
       "pdf formularfelder einfügen",
       "pdf ausfüllbar machen",
-      "pdf formular kostenlos",
+      "pdf formular",
       "pdf checkbox einfügen"
     ],
     "steps": [
@@ -59,7 +59,7 @@
     "why": [
       {
         "title": "Sonst meist im Abo",
-        "text": "Ausfüllbare Formulare zu erstellen kostet in vielen PDF-Programmen extra. Hier ist es gratis – ohne Konto und ohne Wasserzeichen."
+        "text": "Ausfüllbare Formulare zu erstellen kostet in vielen PDF-Programmen extra. Hier geht es ohne Konto und ohne Wasserzeichen."
       },
       {
         "title": "Alle wichtigen Feldtypen",
@@ -105,9 +105,9 @@
     "slug": "create-pdf-form",
     "name": "Create PDF form",
     "short": "Put fillable fields into any PDF – text, check boxes, choices, date, signature.",
-    "title": "Create a fillable PDF form – free | FaleNetwork",
+    "title": "Create a fillable PDF form | FaleNetwork",
     "h1": "Create a fillable PDF form",
-    "metaDescription": "Turn any PDF into a fillable form: add text fields, check boxes, drop-downs, dates and signature fields or detect them automatically. Free, no upload.",
+    "metaDescription": "Turn any PDF into a fillable form: add text fields, check boxes, drop-downs, dates and signature fields or detect them automatically. No upload.",
     "lede": "Pick a PDF, place the fields – and you have a form anyone can fill in on a computer or phone.",
     "pickLabel": "Choose PDF",
     "primaryButton": "Create form",
@@ -116,7 +116,7 @@
       "fillable pdf",
       "add form fields to pdf",
       "make pdf fillable",
-      "free pdf form creator",
+      "pdf form creator",
       "pdf check box"
     ],
     "steps": [
@@ -136,7 +136,7 @@
     "why": [
       {
         "title": "Usually part of a subscription",
-        "text": "Many PDF programs charge extra for creating fillable forms. Here it is free – no account, no watermark."
+        "text": "Many PDF programs charge extra for creating fillable forms. Here it works without an account and without a watermark."
       },
       {
         "title": "All the important field types",

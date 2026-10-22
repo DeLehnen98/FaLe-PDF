@@ -23,7 +23,7 @@
     "short": "Betriebskostenabrechnung für private Vermieter – mit Mieterwechsel, Leerstand und Brief.",
     "title": "Nebenkostenabrechnung erstellen – für Vermieter | FaleNetwork",
     "h1": "Nebenkostenabrechnung erstellen",
-    "metaDescription": "Nebenkostenabrechnung für private Vermieter: Kosten nach Fläche, Personen oder Verbrauch verteilen, Mieterwechsel, Leerstand, Brief als PDF. Gratis, ohne Abo.",
+    "metaDescription": "Nebenkostenabrechnung für private Vermieter: Kosten nach Fläche, Personen oder Verbrauch verteilen, Mieterwechsel, Leerstand, Brief als PDF. Ohne Abo.",
     "lede": "Trag Kosten, Mieter und Vorauszahlungen ein – für jeden Mieter entsteht eine nachvollziehbare Abrechnung als Brief.",
     "primaryButton": "Abrechnungen erstellen",
     "keywords": [
@@ -33,7 +33,7 @@
       "nebenkostenabrechnung vermieter",
       "nebenkosten umlageschlüssel",
       "nebenkostenabrechnung mieterwechsel",
-      "nebenkostenabrechnung kostenlos",
+      "nebenkostenabrechnung",
       "betriebskostenabrechnung pdf"
     ],
     "steps": [
@@ -53,7 +53,7 @@
     "why": [
       {
         "title": "Kein Jahresabo",
-        "text": "Vermieter-Programme kosten oft jedes Jahr oder monatlich. Für ein paar Wohnungen reicht hier der Browser – gratis."
+        "text": "Vermieter-Programme kosten oft jedes Jahr oder monatlich. Für ein paar Wohnungen reicht hier der Browser."
       },
       {
         "title": "Formell sauber",
@@ -128,7 +128,7 @@
     "why": [
       {
         "title": "No yearly subscription",
-        "text": "Landlord software often charges yearly or monthly. For a few flats your browser is enough – free."
+        "text": "Landlord software often charges yearly or monthly. For a few flats your browser is enough."
       },
       {
         "title": "Formally sound",

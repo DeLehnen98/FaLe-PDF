@@ -29,7 +29,7 @@
     "short": "Inhaltsverzeichnis (Lesezeichen) anlegen, umbenennen, sortieren – auch aus Überschriften.",
     "title": "PDF-Lesezeichen bearbeiten – Inhaltsverzeichnis | FaleNetwork",
     "h1": "PDF-Lesezeichen bearbeiten",
-    "metaDescription": "Lesezeichen in PDFs hinzufügen, umbenennen, verschachteln und sortieren – oder automatisch aus den Überschriften erzeugen. Kostenlos, ohne Upload, ohne Konto.",
+    "metaDescription": "Lesezeichen in PDFs hinzufügen, umbenennen, verschachteln und sortieren – oder automatisch aus den Überschriften erzeugen. Ohne Upload, ohne Konto.",
     "lede": "Gib deiner PDF ein Inhaltsverzeichnis in der Seitenleiste – per Hand oder automatisch aus den Überschriften.",
     "pickLabel": "PDF auswählen",
     "primaryButton": "Lesezeichen speichern",
@@ -58,7 +58,7 @@
     "why": [
       {
         "title": "Sonst oft kostenpflichtig",
-        "text": "Lesezeichen bearbeiten gibt es in vielen PDF-Programmen nur in der bezahlten Version. Hier ist es gratis – ohne Konto und ohne Wasserzeichen."
+        "text": "Lesezeichen bearbeiten gibt es in vielen PDF-Programmen nur in der bezahlten Version. Hier geht es ohne Konto und ohne Wasserzeichen."
       },
       {
         "title": "Automatisch aus Überschriften",
@@ -98,7 +98,7 @@
     "short": "Create, rename and sort bookmarks (table of contents) – also from headings.",
     "title": "Edit PDF bookmarks – create a table of contents | FaleNetwork",
     "h1": "Edit PDF bookmarks",
-    "metaDescription": "Add, rename, nest and reorder bookmarks in PDFs – or create them automatically from the headings. Free, no upload, no account.",
+    "metaDescription": "Add, rename, nest and reorder bookmarks in PDFs – or create them automatically from the headings. No upload, no account.",
     "lede": "Give your PDF a table of contents in the side bar – by hand or automatically from the headings.",
     "pickLabel": "Choose PDF",
     "primaryButton": "Save bookmarks",
@@ -127,7 +127,7 @@
     "why": [
       {
         "title": "Often a paid feature",
-        "text": "Many PDF programs only let you edit bookmarks in the paid version. Here it is free – no account, no watermark."
+        "text": "Many PDF programs only let you edit bookmarks in the paid version. Here it works without an account and without a watermark."
       },
       {
         "title": "Automatically from headings",

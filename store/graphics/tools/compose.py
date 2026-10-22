@@ -11,11 +11,11 @@ OUT = Path(__file__).resolve().parents[1]  # store/graphics
 
 CAP = {
  'de': {
-  'home': ('Alle Pro-Funktionen gratis', 'Kein Abo, kein Konto, keine Wasserzeichen'),
+  'home': ('Alle Pro-Funktionen an Bord', 'Kein Konto, keine Wasserzeichen, keine Werbebanner'),
   'sign': ('Unterschreiben in Sekunden', 'Verträge und Formulare direkt auf dem Handy'),
   'scan': ('Scannen mit Kantenerkennung', 'Seiten werden automatisch erkannt und begradigt'),
   'ocr': ('Texterkennung – auch offline', 'Scans werden durchsuchbar, direkt auf dem Gerät'),
-  'ai': ('KI-Assistent für deine Dokumente', 'Optional – täglich 5 Anfragen gratis'),
+  'ai': ('KI-Assistent für deine Dokumente', 'Optional – nur nach deiner Zustimmung'),
   'sheet': ('Dokumente, Tabellen & Präsentationen', 'Mit Formeln, Diagrammen und Vorlagen'),
   'letters': ('Kündigung in einer Minute', 'Briefe, Widerruf & Co. – fertig als PDF'),
   'reminders': ('Keine Frist mehr verpassen', 'Erinnerungen für Rechnungen, Verträge und Ausweise'),
@@ -26,11 +26,11 @@ CAP = {
   'slides': ('Präsentationen erstellen', 'Folien bearbeiten und als PPTX oder PDF speichern'),
  },
  'en': {
-  'home': ('All pro features, free', 'No subscription, no account, no watermarks'),
+  'home': ('All pro features on board', 'No account, no watermarks, no banner ads'),
   'sign': ('Sign in seconds', 'Contracts and forms, right on your phone'),
   'scan': ('Scan with edge detection', 'Pages are detected and straightened automatically'),
   'ocr': ('Text recognition, offline', 'Make scans searchable, right on your device'),
-  'ai': ('AI assistant for your documents', 'Optional – 5 free requests every day'),
+  'ai': ('AI assistant for your documents', 'Optional – only with your consent'),
   'sheet': ('Documents, spreadsheets & slides', 'With formulas, charts and templates'),
   'reminders': ('Never miss a deadline', 'Reminders for bills, contracts and appointments'),
   'privacy': ('Your files stay on your phone', 'No account, no tracking, on-device processing'),

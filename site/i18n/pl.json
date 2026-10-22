@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "FaLe PDF – darmowe narzędzia PDF i biurowe, bez subskrypcji, bez przesyłania plików",
-    "description": "Czytaj, wypełniaj, podpisuj, skanuj z rozpoznawaniem tekstu i konwertuj pliki PDF – a do tego dokumenty, arkusze i prezentacje. Za darmo, bez konta, wszystko na twoim urządzeniu."
+    "title": "FaLe PDF – narzędzia PDF i biurowe, bez subskrypcji, bez przesyłania plików",
+    "description": "Czytaj, wypełniaj, podpisuj, skanuj z rozpoznawaniem tekstu i konwertuj pliki PDF – a do tego dokumenty, arkusze i prezentacje. Bez konta, wszystko na twoim urządzeniu."
   },
   "skip": "Przejdź do treści",
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "h1": "Załatw swoje papierowe sprawy. Bez subskrypcji, bez przesyłania plików.",
-    "lede": "FaLe PDF czyta, wypełnia, podpisuje, skanuje i konwertuje – a także obsługuje dokumenty, arkusze i prezentacje. Za darmo i prosto na twoim urządzeniu.",
+    "lede": "FaLe PDF czyta, wypełnia, podpisuje, skanuje i konwertuje – a także obsługuje dokumenty, arkusze i prezentacje. Prosto na twoim urządzeniu.",
     "try": "Wypróbuj w przeglądarce"
   },
   "stores": {
@@ -25,7 +25,7 @@
   },
   "desk": {
     "h2": "Dla Windows i Mac",
-    "intro": "Zainstaluj FaLe PDF na komputerze – tak jak zwykły program: z własną ikoną, własnym oknem i działaniem bez internetu. Za darmo, bez konta i bez pliku instalacyjnego.",
+    "intro": "Zainstaluj FaLe PDF na komputerze – tak jak zwykły program: z własną ikoną, własnym oknem i działaniem bez internetu. Bez konta i bez pliku instalacyjnego.",
     "steps": [
       { "b": "Kliknij „Pobierz”.", "t": "FaLe PDF otworzy się w przeglądarce." },
       { "b": "Potwierdź „Zainstaluj”.", "t": "Przeglądarka zapyta tylko raz." },
@@ -59,8 +59,8 @@
     ]
   },
   "free": {
-    "h2": "Za darmo zamiast subskrypcji",
-    "intro": "Wiele aplikacji PDF pobiera za te funkcje opłatę abonamentową. Tutaj są darmowe i bez znaków wodnych.",
+    "h2": "Bez subskrypcji i bez znaków wodnych",
+    "intro": "Wiele aplikacji PDF wymaga za te funkcje subskrypcji. Tutaj są dostępne bez subskrypcji i bez znaków wodnych.",
     "note": "Jeśli chcesz wesprzeć rozwój aplikacji, w aplikacji na Androida możesz wybrać FaLe Plus lub jednorazowe podziękowanie.",
     "items": ["Podpisywanie i wypełnianie", "Rozpoznawanie tekstu (OCR)", "PDF do Word, Excel, PowerPoint", "Zaczernianie", "Kompresja", "Zarządzanie stronami", "PDF/A dla urzędów", "Ochrona hasłem", "Porównywanie plików PDF", "Przetwarzanie wsadowe"]
   },
@@ -71,7 +71,6 @@
   "faq": {
     "h2": "Pytania",
     "items": [
-      { "q": "Czy FaLe PDF jest naprawdę darmowy?", "a": "Tak. Wszystkie funkcje PDF i biurowe są darmowe, bez subskrypcji i bez znaku wodnego. Tylko opcjonalna chmurowa AI ma dzienny darmowy limit." },
       { "q": "Czy moje pliki są przesyłane?", "a": "Nie. Twoje pliki są przetwarzane i przechowywane na twoim urządzeniu. Dopiero gdy świadomie użyjesz chmurowej AI, udostępniania przez link lub synchronizacji, coś opuszcza urządzenie – w postaci zaszyfrowanej albo tylko zaznaczony tekst." },
       { "q": "Czy działa bez internetu?", "a": "Tak. Wszystko poza chmurową AI, udostępnianiem i przesyłaniem działa bez internetu." },
       { "q": "Czy mogę zainstalować FaLe PDF na komputerze?", "a": "Tak. W sekcji „Dla Windows i Mac” powyżej kliknij „Pobierz” i potwierdź „Zainstaluj”. W Windows działa to z Edge lub Chrome, na Macu z Safari, Chrome lub Edge. FaLe PDF wkrótce pojawi się też w Microsoft Store." },

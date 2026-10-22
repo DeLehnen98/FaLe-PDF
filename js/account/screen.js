@@ -198,7 +198,7 @@ function usageMeter(st) {
   if (!st.usage || !st.usage.quota) return '';
   const pct = Math.min(100, (st.usage.used / st.usage.quota) * 100);
   return `<div class="acct-usage"><div class="acct-usage-top"><span>${esc(formatSize(st.usage.used))} von ${esc(formatSize(st.usage.quota))} belegt</span>
-    <span class="muted small">${st.usage.plus ? 'FaLe Plus' : 'Kostenlos'}</span></div>
+    <span class="muted small">${st.usage.plus ? 'FaLe Plus' : 'Standard'}</span></div>
     <div class="acct-bar${pct > 90 ? ' warn' : ''}" role="progressbar" aria-label="Cloud-Speicher" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pct)}"><span style="width:${pct.toFixed(1)}%"></span></div>
     ${!st.usage.plus && showPlus() ? '<span class="muted small">Mit FaLe Plus hast du 20 GB.</span>' : ''}</div>`;
 }

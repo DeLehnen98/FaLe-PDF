@@ -25,9 +25,9 @@
     "slug": "pdf-seiten-extrahieren",
     "name": "PDF-Seiten extrahieren",
     "short": "Ausgewählte Seiten als neue PDF speichern.",
-    "title": "PDF-Seiten extrahieren – kostenlos, ohne Upload | FaleNetwork",
+    "title": "PDF-Seiten extrahieren – ohne Upload | FaleNetwork",
     "h1": "PDF-Seiten extrahieren",
-    "metaDescription": "Einzelne Seiten aus einer PDF herauslösen: antippen oder Bereiche eingeben, als eine PDF oder eine Datei pro Seite speichern. Gratis, ohne Konto, ohne Upload.",
+    "metaDescription": "Einzelne Seiten aus einer PDF herauslösen: antippen oder Bereiche eingeben, als eine PDF oder eine Datei pro Seite speichern. Ohne Konto, ohne Upload.",
     "lede": "Tippe die Seiten an, die du brauchst – sie werden zu einer neuen PDF.",
     "primaryButton": "Extrahieren",
     "keywords": [
@@ -97,9 +97,9 @@
     "slug": "extract-pdf-pages",
     "name": "Extract PDF pages",
     "short": "Save selected pages as a new PDF.",
-    "title": "Extract PDF pages – free, no upload | FaleNetwork",
+    "title": "Extract PDF pages – no upload | FaleNetwork",
     "h1": "Extract pages from a PDF",
-    "metaDescription": "Pull single pages out of a PDF: tap them or type ranges, then save one PDF or one file per page. Free, no account, no upload – it runs in your browser.",
+    "metaDescription": "Pull single pages out of a PDF: tap them or type ranges, then save one PDF or one file per page. No account, no upload – it runs in your browser.",
     "lede": "Tap the pages you need – they become a new PDF.",
     "primaryButton": "Extract",
     "keywords": [

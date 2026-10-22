@@ -28,9 +28,9 @@
     "slug": "pdf-drehen",
     "name": "PDF drehen",
     "short": "Alle oder einzelne Seiten dauerhaft drehen.",
-    "title": "PDF drehen – kostenlos, ohne Upload | FaleNetwork",
+    "title": "PDF drehen – ohne Upload | FaleNetwork",
     "h1": "PDF drehen",
-    "metaDescription": "PDF-Seiten dauerhaft drehen: alle, ausgewählte, nur Quer- oder Hochformat oder jede Seite einzeln per Fingertipp. Verlustfrei, gratis, ohne Upload.",
+    "metaDescription": "PDF-Seiten dauerhaft drehen: alle, ausgewählte, nur Quer- oder Hochformat oder jede Seite einzeln per Fingertipp. Verlustfrei, ohne Upload.",
     "lede": "Dreh die ganze PDF oder einzelne Seiten – die Vorschau zeigt sofort das Ergebnis.",
     "primaryButton": "Speichern",
     "keywords": [
@@ -102,9 +102,9 @@
     "slug": "rotate-pdf",
     "name": "Rotate PDF",
     "short": "Rotate all or single pages permanently.",
-    "title": "Rotate PDF – free, no upload | FaleNetwork",
+    "title": "Rotate PDF – no upload | FaleNetwork",
     "h1": "Rotate PDF pages",
-    "metaDescription": "Rotate PDF pages permanently: all, selected, only landscape or portrait pages, or each page with a tap. Lossless, free and without any upload.",
+    "metaDescription": "Rotate PDF pages permanently: all, selected, only landscape or portrait pages, or each page with a tap. Lossless, without any upload.",
     "lede": "Rotate the whole PDF or single pages – the preview shows the result right away.",
     "primaryButton": "Save",
     "keywords": [

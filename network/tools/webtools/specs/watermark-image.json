@@ -46,7 +46,7 @@
     "slug": "bild-wasserzeichen",
     "name": "Wasserzeichen ins Bild",
     "short": "Text als Wasserzeichen auf Fotos – einzeln oder viele auf einmal.",
-    "title": "Wasserzeichen in Bild einfügen – gratis, ohne App | FaleNetwork",
+    "title": "Wasserzeichen in Bild einfügen – ohne App | FaleNetwork",
     "h1": "Wasserzeichen in Fotos einfügen",
     "metaDescription": "Fotos mit Wasserzeichen schützen: Name oder Website in die Ecke oder über das ganze Bild, viele Fotos auf einmal. Ohne App, ohne Upload, ohne fremdes Logo.",
     "lede": "Wähle Fotos, gib deinen Text ein – das Wasserzeichen sitzt auf jedem Bild an derselben Stelle und in passender Größe.",
@@ -59,7 +59,7 @@
       "bild schützen",
       "copyright foto",
       "fotos markieren",
-      "wasserzeichen kostenlos",
+      "wasserzeichen",
       "kleinanzeigen fotos schützen"
     ],
     "steps": [
@@ -79,7 +79,7 @@
     "why": [
       {
         "title": "Kein fremdes Logo",
-        "text": "Viele Gratis-Apps setzen ihr eigenes Logo dazu oder verlangen ein Abo für den Export. Hier steht nur dein Text auf dem Bild."
+        "text": "Viele Apps setzen ihr eigenes Logo dazu oder verlangen ein Abo für den Export. Hier steht nur dein Text auf dem Bild."
       },
       {
         "title": "Gleich auf jedem Foto",
@@ -121,7 +121,7 @@
     "slug": "watermark-image",
     "name": "Watermark photos",
     "short": "Text watermark on photos – one or many at once.",
-    "title": "Add a watermark to photos – free, no app | FaleNetwork",
+    "title": "Add a watermark to photos – no app | FaleNetwork",
     "h1": "Add a watermark to photos",
     "metaDescription": "Protect your photos with a watermark: name or website in a corner or across the whole picture, many photos at once. No app, no upload, no third-party logo.",
     "lede": "Pick photos, type your text – the watermark sits in the same place and at a fitting size on every picture.",
@@ -133,7 +133,7 @@
       "batch watermark",
       "copyright photo",
       "protect photos",
-      "free watermark"
+      "watermark"
     ],
     "steps": [
       {
@@ -152,7 +152,7 @@
     "why": [
       {
         "title": "No third-party logo",
-        "text": "Many free apps add their own logo or want a subscription to export. Here only your text goes on the picture."
+        "text": "Many apps add their own logo or want a subscription to export. Here only your text goes on the picture."
       },
       {
         "title": "Same on every photo",

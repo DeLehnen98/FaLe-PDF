@@ -460,7 +460,7 @@ export const WEB_TOOLS = [
     "text recognition",
     "scan to text",
     "make pdf searchable",
-    "pdf ocr free"
+    "pdf ocr"
    ],
    "name": "OCR PDF",
    "short": "Make scanned PDFs searchable – recognise, copy and find text.",
@@ -1326,7 +1326,7 @@ export const WEB_TOOLS = [
     "ausfüllbares pdf erstellen",
     "pdf formularfelder einfügen",
     "pdf ausfüllbar machen",
-    "pdf formular kostenlos",
+    "pdf formular",
     "pdf checkbox einfügen"
    ],
    "name": "PDF-Formular erstellen",
@@ -1339,7 +1339,7 @@ export const WEB_TOOLS = [
     "fillable pdf",
     "add form fields to pdf",
     "make pdf fillable",
-    "free pdf form creator",
+    "pdf form creator",
     "pdf check box"
    ],
    "name": "Create PDF form",
@@ -1664,7 +1664,7 @@ export const WEB_TOOLS = [
     "cut image"
    ],
    "name": "Crop image",
-   "short": "Crop, straighten and flip photos – free or in fixed ratios.",
+   "short": "Crop, straighten and flip photos – freehand or in fixed ratios.",
    "slug": "crop-image"
   },
   "icon": "<path d=\"M6 2v14a2 2 0 0 0 2 2h14\"/><path d=\"M2 6h14a2 2 0 0 1 2 2v14\"/>",
@@ -1899,7 +1899,7 @@ export const WEB_TOOLS = [
     "bild schützen",
     "copyright foto",
     "fotos markieren",
-    "wasserzeichen kostenlos",
+    "wasserzeichen",
     "kleinanzeigen fotos schützen"
    ],
    "name": "Wasserzeichen ins Bild",
@@ -1913,7 +1913,7 @@ export const WEB_TOOLS = [
     "batch watermark",
     "copyright photo",
     "protect photos",
-    "free watermark"
+    "watermark"
    ],
    "name": "Watermark photos",
    "short": "Text watermark on photos – one or many at once.",
@@ -2711,7 +2711,7 @@ export const WEB_TOOLS = [
     "upc",
     "itf 14",
     "gtin",
-    "barcode generator kostenlos"
+    "barcode generator"
    ],
    "name": "Barcode-Generator",
    "short": "EAN, UPC, Code 128, Code 39 und ITF-14 als PNG, SVG oder PDF.",
@@ -2727,7 +2727,7 @@ export const WEB_TOOLS = [
     "code 39",
     "itf 14",
     "gtin",
-    "free barcode maker"
+    "barcode maker"
    ],
    "name": "Barcode generator",
    "short": "EAN, UPC, Code 128, Code 39 and ITF-14 as PNG, SVG or PDF.",
@@ -2791,7 +2791,7 @@ export const WEB_TOOLS = [
     "zugferd erstellen",
     "xrechnung erstellen",
     "factur-x",
-    "e-rechnung kostenlos",
+    "e-rechnung",
     "leitweg-id"
    ],
    "name": "Rechnung schreiben",
@@ -2802,7 +2802,7 @@ export const WEB_TOOLS = [
    "keywords": [
     "invoice generator",
     "invoice template",
-    "free invoice",
+    "invoice",
     "invoice pdf",
     "create invoice",
     "invoice maker",
@@ -3216,14 +3216,14 @@ export const WEB_TOOLS = [
   "en": {
    "keywords": [
     "email signature generator",
-    "free email signature",
+    "email signature",
     "outlook signature",
     "gmail signature",
     "html signature",
     "signature template"
    ],
    "name": "Email signature generator",
-   "short": "A professional signature for Gmail, Outlook and Apple Mail – free.",
+   "short": "A professional signature for Gmail, Outlook and Apple Mail.",
    "slug": "email-signature-generator"
   },
   "icon": "<path d=\"M5 6V4h14v2M12 4v16M9 20h6\"/>",
@@ -3238,7 +3238,7 @@ export const WEB_TOOLS = [
    "keywords": [
     "notfallordner",
     "notfallordner vorlage",
-    "notfallordner kostenlos",
+    "notfallordner",
     "notfallmappe",
     "vorsorgeordner",
     "notfallkarte"
@@ -3251,7 +3251,7 @@ export const WEB_TOOLS = [
    "keywords": [
     "emergency binder",
     "emergency binder template",
-    "free emergency binder",
+    "emergency binder",
     "in case of emergency file",
     "legacy binder",
     "emergency wallet card"
@@ -3538,7 +3538,7 @@ export const WEB_TOOLS = [
     "nebenkostenabrechnung vermieter",
     "nebenkosten umlageschlüssel",
     "nebenkostenabrechnung mieterwechsel",
-    "nebenkostenabrechnung kostenlos",
+    "nebenkostenabrechnung",
     "betriebskostenabrechnung pdf"
    ],
    "name": "Nebenkostenabrechnung erstellen",

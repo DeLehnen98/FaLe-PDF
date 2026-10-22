@@ -29,7 +29,7 @@ Kontolöschung **`https://pdf.fale.network/app/#/konto`**.
 | `fale_tip_large` | In-App-Produkt (verbrauchbar) | Riesiger Dank | 9,99 € |
 
 Beschreibungstext (für alle Plus-Produkte): „Deutlich mehr KI-Anfragen pro Tag und Unterstützung der
-Entwicklung. Alle Werkzeuge bleiben auch ohne Plus kostenlos.“ Danke-Beiträge: „Unterstützt die Weiterentwicklung. Schaltet nichts frei.“
+Entwicklung. Alle Werkzeuge sind auch ohne Plus voll nutzbar.“ Danke-Beiträge: „Unterstützt die Weiterentwicklung. Schaltet nichts frei.“
 
 ## 0b. Webseite pdf.fale.network
 

@@ -79,18 +79,18 @@ export async function ensureCloud() {
 }
 
 // ---------------------------------------------------------------- quota widget
-/** "Heute noch X von Y gratis" + optional ad button (Android) + Plus link. Updates itself. */
+/** "Heute noch X von Y" + optional ad button (Android) + Plus link. Updates itself. */
 export function quotaWidget({ compact = false } = {}) {
   const el = h(`<div class="ai-quota${compact ? ' compact' : ''}" aria-live="polite"></div>`);
   let features = {};
   const paint = q => {
     if (!q) {
-      el.innerHTML = C.hasConsent() ? '<span class="muted small">Kontingent wird geladen …</span>' : `<span class="muted small">Täglich einige Anfragen gratis – ohne Konto.</span>`;
+      el.innerHTML = C.hasConsent() ? '<span class="muted small">Kontingent wird geladen …</span>' : `<span class="muted small">Täglich einige Anfragen inklusive – ohne Konto.</span>`;
       return;
     }
     const pct = q.limit ? Math.min(100, (q.used / q.limit) * 100) : 100;
     const left = q.remaining;
-    const label = q.plus ? `FaLe Plus aktiv · heute noch ${left} von ${q.limit}` : left > 0 ? `Heute noch ${left} von ${q.limit} gratis` : 'Kontingent für heute aufgebraucht';
+    const label = q.plus ? `FaLe Plus aktiv · heute noch ${left} von ${q.limit}` : left > 0 ? `Heute noch ${left} von ${q.limit}` : 'Kontingent für heute aufgebraucht';
     const canAd = !q.plus && adsHere() && features.ads !== false && q.rewardsLeft > 0;
     el.innerHTML = `<div class="aq-row"><span class="aq-label"><strong data-aq-left>${esc(label)}</strong>${q.scope === 'account' ? '<span class="muted small" data-aq-scope>für dein Konto</span>' : ''}${!q.plus && left <= 0 ? '<span class="muted small">Morgen gibt es wieder neue Anfragen.</span>' : ''}</span>
       <div class="aq-meter" role="progressbar" aria-label="Verbrauchte KI-Anfragen" aria-valuemin="0" aria-valuemax="${q.limit}" aria-valuenow="${q.used}"><span style="width:${pct}%"></span></div></div>
@@ -129,7 +129,7 @@ export async function showAiError(err) {
     const canAd = adsHere() && q.rewardsLeft > 0;
     const r = await openDialog({
       title: 'Heutiges KI-Kontingent aufgebraucht',
-      body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} kostenlosen KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>
+      body: `<div class="ai-limit"><p>Du hast heute alle ${q.limit || ''} KI-Anfragen genutzt. Morgen gibt es wieder neue – alle anderen Funktionen von FaLe PDF kannst du ganz normal weiter nutzen.</p>
         ${canAd ? `<p>Freiwillig: Ein kurzes Werbevideo schaltet <strong>${q.bonus || 2} weitere Anfragen</strong> frei (noch ${q.rewardsLeft}× heute).</p>` : ''}
         ${!canAd && !isNative() ? '<p class="muted small">Tipp: In der FaLe-App für Android kannst du danach mit einem kurzen, freiwilligen Werbevideo weitermachen.</p>' : ''}
         ${showPlus() ? '<p class="muted small">Mit <strong>FaLe Plus</strong> bekommst du deutlich mehr KI-Anfragen pro Tag und unterstützt die Entwicklung.</p>' : ''}</div>`,
@@ -243,7 +243,7 @@ export async function engineSwitch(op) {
     local = !!(caps && caps[op]);
   } catch {}
   const el = h(`<div class="ai-engine" role="radiogroup" aria-label="Wo soll die KI rechnen?">
-    ${local ? `<button type="button" role="radio" aria-checked="true" data-engine="device">${oicon('shield')}<span><strong>Auf dem Gerät</strong><small>gratis, privat</small></span></button>` : ''}
+    ${local ? `<button type="button" role="radio" aria-checked="true" data-engine="device">${oicon('shield')}<span><strong>Auf dem Gerät</strong><small>privat, offline</small></span></button>` : ''}
     <button type="button" role="radio" aria-checked="${local ? 'false' : 'true'}" data-engine="cloud">${oicon('cloud')}<span><strong>Cloud-KI</strong><small>beste Qualität</small></span></button></div>`);
   let value = local ? 'device' : 'cloud';
   el.addEventListener('click', e => {

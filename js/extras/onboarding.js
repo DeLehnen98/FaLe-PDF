@@ -60,7 +60,7 @@ export async function showOnboarding() {
           <div class="ob-art ob-art-1"><span class="ob-logo">${logo(56)}</span><span class="ob-f f1">${oicon('kpdf')}</span><span class="ob-f f2">${oicon('kdoc')}</span><span class="ob-f f3">${oicon('ksheet')}</span><span class="ob-f f4">${oicon('kslides')}</span></div>
           <h2>Willkommen bei FaLe</h2>
           <p>PDFs lesen, unterschreiben und bearbeiten, Dokumente, Tabellen und Präsentationen erstellen – und Alltagsbriefe wie Kündigungen in einer Minute schreiben.</p>
-          <ul class="ob-list"><li>${oicon('check')} Alle Pro-Funktionen gratis</li><li>${oicon('check')} Fristen im Blick, Dateien im Tresor</li><li>${oicon('check')} Funktioniert auch offline</li></ul>
+          <ul class="ob-list"><li>${oicon('check')} Alle Pro-Funktionen an Bord</li><li>${oicon('check')} Fristen im Blick, Dateien im Tresor</li><li>${oicon('check')} Funktioniert auch offline</li></ul>
         </section>
         <section class="ob-step" data-step="2" hidden>
           <div class="ob-art ob-art-2"><span class="ob-ring" aria-hidden="true"></span><span class="ob-shield">${oicon('shield')}</span><span class="ob-lockbadge" aria-hidden="true">${oicon('lock')}</span></div>

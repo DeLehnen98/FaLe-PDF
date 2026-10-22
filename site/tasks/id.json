@@ -4,13 +4,13 @@
     "navLabel": "Navigasi utama",
     "home": "Beranda",
     "openApp": "Buka FaLe PDF",
-    "badge": "Gratis · tanpa akun · file kamu tetap di perangkatmu",
+    "badge": "Tanpa akun · file kamu tetap di perangkatmu",
     "stepsH": "Caranya",
     "whyH": "Kenapa FaLe PDF",
     "faqH": "Pertanyaan yang sering diajukan",
     "moreH": "Kamu juga bisa",
     "endH": "Coba sekarang juga",
-    "endText": "FaLe PDF berjalan di browser, di ponsel, dan di komputer. Semua fitur gratis.",
+    "endText": "FaLe PDF berjalan di browser, di ponsel, dan di komputer.",
     "privacy": "Privasi",
     "imprint": "Informasi hukum",
     "footer": "FaLe PDF – layanan dari FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "tanda-tangani-pdf",
-      "title": "Tanda Tangani PDF – gratis, tanpa akun | FaLe PDF",
-      "description": "Tanda tangani PDF di ponsel atau komputer: gambar tanda tanganmu, simpan, lalu pasang dengan satu ketukan. Gratis, tanpa akun, tanpa unggah file.",
+      "title": "Tanda Tangani PDF – tanpa akun | FaLe PDF",
+      "description": "Tanda tangani PDF di ponsel atau komputer: gambar tanda tanganmu, simpan, lalu pasang dengan satu ketukan. Tanpa akun, tanpa unggah file.",
       "h1": "Tanda tangani PDF",
       "lede": "Gambar tanda tanganmu dengan jari atau mouse, lalu pasang dengan satu ketukan di PDF apa pun: kontrak, formulir, atau surat kuasa.",
       "cta": "Tanda tangani PDF sekarang",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Tanpa langganan",
-          "d": "Menandatangani itu gratis dan akan tetap gratis, tanpa watermark dan tanpa akun."
+          "d": "Menandatangani tidak memerlukan langganan, tanpa watermark dan tanpa akun."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "isi-formulir-pdf",
-      "title": "Isi Formulir PDF – gratis, bisa di ponsel | FaLe PDF",
-      "description": "Isi formulir PDF: kolom teks, kotak centang, dan daftar pilihan di ponsel atau komputer, atau tulis di formulir kertas hasil pindai. Gratis, tanpa akun.",
+      "title": "Isi Formulir PDF – bisa di ponsel | FaLe PDF",
+      "description": "Isi formulir PDF: kolom teks, kotak centang, dan daftar pilihan di ponsel atau komputer, atau tulis di formulir kertas hasil pindai. Tanpa akun.",
       "h1": "Isi formulir PDF",
       "lede": "Isi kolom formulir, atau langsung tulis di bagian yang perlu diisi pada formulir hasil pindai, dengan tulisan besar dan tombol yang jelas.",
       "cta": "Isi formulir",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "edit-pdf",
-      "title": "Edit PDF – tambah teks dan gambar, gratis | FaLe PDF",
-      "description": "Edit PDF di ponsel atau komputer: tambahkan teks dan gambar, ganti teks yang ada, tutupi bagian tertentu. Gratis, tanpa akun, dan tanpa unggah file.",
+      "title": "Edit PDF – tambah teks dan gambar | FaLe PDF",
+      "description": "Edit PDF di ponsel atau komputer: tambahkan teks dan gambar, ganti teks yang ada, tutupi bagian tertentu. Tanpa akun dan tanpa unggah file.",
       "h1": "Edit PDF",
       "lede": "Tambahkan teks dan gambar, ubah teks yang sudah ada, atau tutupi bagian tertentu, langsung di PDF-mu.",
       "cta": "Edit PDF",
@@ -156,8 +156,8 @@
           "d": "Ukuran dengan A− dan A+, tebal, dan warna, tanpa perlu mencari-cari di menu."
         },
         {
-          "t": "Gratis, bukan Pro",
-          "d": "Yang di tempat lain hanya tersedia dengan langganan, di sini gratis dan tanpa watermark."
+          "t": "Tanpa watermark",
+          "d": "Bahkan yang di tempat lain hanya tersedia dengan langganan, di sini tanpa watermark."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "gabungkan-pdf",
       "title": "Gabungkan PDF – beberapa PDF jadi satu | FaLe PDF",
-      "description": "Gabungkan beberapa PDF menjadi satu file dan atur urutannya, di ponsel atau komputer. Gratis, tanpa akun, dan tanpa unggah file.",
+      "description": "Gabungkan beberapa PDF menjadi satu file dan atur urutannya, di ponsel atau komputer. Tanpa akun dan tanpa unggah file.",
       "h1": "Gabungkan PDF",
       "lede": "Gabungkan faktur, hasil pindai, atau bab-bab menjadi satu PDF, dengan urutan sesukamu.",
       "cta": "Gabungkan PDF",
@@ -226,17 +226,13 @@
         {
           "q": "Apakah teks tetap bisa dipilih?",
           "a": "Ya. Halaman diambil apa adanya, jadi teks tetap bisa dipilih dan dicari."
-        },
-        {
-          "q": "Apakah ini berbayar?",
-          "a": "Tidak. Menggabungkan itu gratis, tanpa watermark dan tanpa akun."
         }
       ]
     },
     "compress": {
       "slug": "kompres-pdf",
       "title": "Kompres PDF – untuk email dan unggahan | FaLe PDF",
-      "description": "Kecilkan PDF supaya muat di email atau formulir unggah: perkecil gambar atau kompres tanpa kehilangan kualitas. Gratis, tanpa unggah file.",
+      "description": "Kecilkan PDF supaya muat di email atau formulir unggah: perkecil gambar atau kompres tanpa kehilangan kualitas. Tanpa unggah file.",
       "h1": "Kompres PDF",
       "lede": "Terlalu besar untuk email atau formulir online? FaLe PDF memperkecil file-nya, dan kamu bisa melihat ukurannya sebelum dan sesudah.",
       "cta": "Kompres PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "pindai-dokumen",
       "title": "Pindai dokumen dengan ponsel – jadi PDF | FaLe PDF",
-      "description": "Pindai dokumen dengan kamera ponsel: tepinya dideteksi, halaman diluruskan dan diperbaiki, teksnya bisa dicari. Gratis, tanpa akun.",
+      "description": "Pindai dokumen dengan kamera ponsel: tepinya dideteksi, halaman diluruskan dan diperbaiki, teksnya bisa dicari. Tanpa akun.",
       "h1": "Pindai dokumen dengan ponsel",
       "lede": "Arahkan ponsel ke atas kertas. FaLe mengenali halamannya, meluruskannya, lalu mengubahnya menjadi PDF yang rapi.",
       "cta": "Pindai sekarang",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-ke-word",
-      "title": "Ubah PDF ke Word – gratis, tanpa unggah | FaLe PDF",
-      "description": "Ubah PDF menjadi dokumen Word (DOCX) yang bisa diedit: paragraf, judul, dan huruf tebal tetap terjaga. Gratis, langsung di perangkatmu.",
+      "title": "Ubah PDF ke Word – tanpa unggah | FaLe PDF",
+      "description": "Ubah PDF menjadi dokumen Word (DOCX) yang bisa diedit: paragraf, judul, dan huruf tebal tetap terjaga. Langsung di perangkatmu.",
       "h1": "Ubah PDF ke Word",
       "lede": "Ubah PDF menjadi dokumen Word yang bisa kamu edit. Paragraf, judul, dan penekanan tetap terjaga.",
       "cta": "Ubah PDF ke Word",
@@ -388,17 +384,13 @@
         {
           "q": "Format apa yang kudapat?",
           "a": "Dokumen Word dalam format DOCX, yang bisa dibuka di semua program pengolah kata yang umum."
-        },
-        {
-          "q": "Berapa biayanya?",
-          "a": "Gratis. Fitur Pro ini juga gratis di FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "buka-formulir-xfa",
       "title": "Buka dan isi formulir XFA – formulir resmi | FaLe PDF",
-      "description": "Formulir resmi hanya menampilkan “Mohon tunggu …”? FaLe PDF membuka formulir XFA, mengisinya, menandatangani, dan menyimpannya. Gratis, juga di ponsel.",
+      "description": "Formulir resmi hanya menampilkan “Mohon tunggu …”? FaLe PDF membuka formulir XFA, mengisinya, menandatangani, dan menyimpannya. Juga di ponsel.",
       "h1": "Buka dan isi formulir resmi (XFA)",
       "lede": "Beberapa formulir dari instansi dan kedutaan hanya menampilkan “Mohon tunggu …” atau halaman kosong. FaLe PDF membukanya, kamu mengisinya, lalu menyimpannya lagi.",
       "cta": "Buka formulir",
@@ -442,10 +434,6 @@
         {
           "q": "Apakah perhitungan di dalam formulir berfungsi?",
           "a": "Skrip di dalam formulir tidak dijalankan demi keamanan. Jadi, perhitungan atau pemeriksaan otomatis harus kamu isi sendiri."
-        },
-        {
-          "q": "Berapa biayanya?",
-          "a": "Gratis, tanpa akun dan tanpa pendaftaran."
         }
       ]
     }

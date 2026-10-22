@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "FaLe PDF – outils PDF et bureautique gratuits, sans abonnement, sans envoi de fichiers",
-    "description": "Lisez, remplissez, signez, numérisez avec reconnaissance de texte et convertissez vos PDF, ainsi que des documents, des tableurs et des présentations. Gratuit, sans compte, tout sur votre appareil."
+    "title": "FaLe PDF – outils PDF et bureautique, sans abonnement, sans envoi de fichiers",
+    "description": "Lisez, remplissez, signez, numérisez avec reconnaissance de texte et convertissez vos PDF, ainsi que des documents, des tableurs et des présentations. Sans compte, tout sur votre appareil."
   },
   "skip": "Aller au contenu",
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "h1": "Réglez vos papiers. Sans abonnement, sans envoi de fichiers.",
-    "lede": "FaLe PDF lit, remplit, signe, numérise et convertit, ainsi que des documents, des tableurs et des présentations. Gratuit et directement sur votre appareil.",
+    "lede": "FaLe PDF lit, remplit, signe, numérise et convertit, ainsi que des documents, des tableurs et des présentations. Directement sur votre appareil.",
     "try": "Essayer dans le navigateur"
   },
   "stores": {
@@ -25,7 +25,7 @@
   },
   "desk": {
     "h2": "Pour Windows et Mac",
-    "intro": "Installez FaLe PDF sur votre ordinateur comme un programme ordinaire : avec sa propre icône, sa propre fenêtre, et il fonctionne sans internet. Gratuit, sans compte et sans fichier d’installation.",
+    "intro": "Installez FaLe PDF sur votre ordinateur comme un programme ordinaire : avec sa propre icône, sa propre fenêtre, et il fonctionne sans internet. Sans compte et sans fichier d’installation.",
     "steps": [
       {
         "b": "Cliquez sur « Télécharger ».",
@@ -95,8 +95,8 @@
     ]
   },
   "free": {
-    "h2": "Gratuit, au lieu d’un abonnement",
-    "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont gratuites et sans filigrane.",
+    "h2": "Sans abonnement, sans filigrane",
+    "intro": "De nombreuses applications PDF font payer un abonnement pour ces fonctions. Ici, elles sont proposées sans abonnement et sans filigrane.",
     "note": "Si vous souhaitez soutenir le développement, vous pouvez choisir FaLe Plus ou un remerciement unique dans l’application Android.",
     "items": [
       "Signer et remplir",
@@ -124,10 +124,6 @@
   "faq": {
     "h2": "Questions",
     "items": [
-      {
-        "q": "FaLe PDF est-il vraiment gratuit ?",
-        "a": "Oui. Toutes les fonctions PDF et bureautique sont gratuites, sans abonnement et sans filigrane. Seule l’IA dans le cloud, facultative, a un quota gratuit quotidien."
-      },
       {
         "q": "Mes fichiers sont-ils envoyés en ligne ?",
         "a": "Non. Vos fichiers sont traités et enregistrés sur votre appareil. Quelque chose ne quitte votre appareil que si vous utilisez volontairement l’IA dans le cloud, le partage par lien ou la synchronisation : de façon chiffrée, ou seulement le texte que vous avez sélectionné."

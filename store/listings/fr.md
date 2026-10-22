@@ -11,13 +11,13 @@ FaLe PDF – PDF & Office
 ## Short description (≤ 80)
 
 ```
-Signez, scannez avec OCR et modifiez vos PDF – gratuit, privé, hors ligne.
+Signez, scannez avec OCR et modifiez vos PDF – privé, hors ligne.
 ```
 
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF est votre bureau privé sur téléphone et tablette : lisez, remplissez, signez, scannez et modifiez des PDF – ainsi que des documents, des feuilles de calcul et des présentations. Toutes les fonctions pro sont gratuites, sans abonnement et sans compte. Vos fichiers sont traités sur votre appareil. En option, le compte FaLe les synchronise entre vos appareils, chiffrés de bout en bout.
+FaLe PDF est votre bureau privé sur téléphone et tablette : lisez, remplissez, signez, scannez et modifiez des PDF – ainsi que des documents, des feuilles de calcul et des présentations. Les fonctions pro sont aussi incluses, sans abonnement et sans compte. Vos fichiers sont traités sur votre appareil. En option, le compte FaLe les synchronise entre vos appareils, chiffrés de bout en bout.
 
 LIRE DES PDF
 • Lecteur PDF rapide : recherche, signets, table des matières
@@ -68,7 +68,7 @@ ASSISTANT IA (EN OPTION)
 • Discutez avec un document : réponses avec renvois aux pages
 • Résumer, traduire, aide à la rédaction, assistant de formules, diapositives par IA
 • Cartes mémoire et quiz à partir de vos notes, courriers par IA, traduction de photos
-• Requêtes gratuites chaque jour, sans compte. Plus : une vidéo publicitaire facultative ou FaLe Plus
+• Quelques requêtes incluses chaque jour, sans compte. Plus : une vidéo publicitaire facultative ou FaLe Plus
 • Vous ne voulez pas d’IA ? Un interrupteur la masque
 • Uniquement avec votre accord ; seul le texte sélectionné est envoyé. Les réponses de l’IA peuvent contenir des erreurs – signalez-nous par e-mail les réponses problématiques.
 
@@ -79,12 +79,12 @@ ASSISTANT IA (EN OPTION)
 PRIVÉ PAR CONCEPTION
 Ni compte, ni bannière, ni outil d’analyse. Compte FaLe facultatif : FaLe Sync (chiffré de bout en bout, serveurs à Francfort – nous ne pouvons rien lire) et FaLe Plus sur tous vos appareils. Une publicité n’apparaît que si vous lancez vous-même une vidéo pour obtenir des requêtes IA en plus. Tout fonctionne hors ligne, sauf l’IA dans le cloud, le partage et le transfert. Les fichiers partagés sont chiffrés de bout en bout.
 
-Dans votre langue : l’appli suit automatiquement celle de votre téléphone. Gratuite, sans filigrane. En option : FaLe Plus pour plus de requêtes IA.
+Dans votre langue : l’appli suit automatiquement celle de votre téléphone. Sans filigrane. En option : FaLe Plus pour plus de requêtes IA.
 ```
 
 ## Feature bullets
 
-- Toutes les fonctions pro gratuites – sans abonnement, sans compte, sans filigrane
+- Toutes les fonctions pro incluses – sans abonnement, sans compte, sans filigrane
 - Remplir et signer des PDF
 - Scanner avec détection des bords et reconnaissance de texte (OCR) hors ligne
 - Assistant IA : interrogez vos documents, avec renvois aux pages (en option)

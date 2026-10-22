@@ -13,6 +13,7 @@ from PIL import Image
 WORK = Path(os.environ.get('FALE_SHOTS_WORK', '/tmp/fale-store-shots'))
 REPO = Path(__file__).resolve().parents[3]
 GFX = REPO / 'store' / 'graphics'
+SITE = Path(os.environ.get('FALE_SITE_OUT', REPO))  # where site/img/ is written (default: the repository)
 SHOTS = ['home', 'files', 'viewer', 'doc', 'sheet']
 WIDE = ['home', 'viewer', 'doc']
 NARROW = ['01_home.png', '02_sign.png', '06_sheet.png']
@@ -20,6 +21,7 @@ NARROW = ['01_home.png', '02_sign.png', '06_sheet.png']
 for lang in ('de', 'en'):
     out = GFX / 'desktop' / lang
     out.mkdir(parents=True, exist_ok=True)
+    (SITE / 'site' / 'img').mkdir(parents=True, exist_ok=True)
     for i, s in enumerate(SHOTS, 1):
         src = WORK / 'raw' / 'desktop' / lang / f'{s}.png'
         im = Image.open(src).convert('RGB')
@@ -28,7 +30,7 @@ for lang in ('de', 'en'):
         print('saved', out / f'{i:02d}_{s}.png')
     # start page, section "Für Windows und Mac": the app in a window frame
     Image.open(WORK / 'raw' / 'desktop' / lang / 'files.png').convert('RGB').resize((1120, 630), Image.LANCZOS) \
-        .save(REPO / 'site' / 'img' / f'{lang}-desktop.webp', quality=82, method=6)
+        .save(SITE / 'site' / 'img' / f'{lang}-desktop.webp', quality=82, method=6)
 
 man = REPO / 'screenshots'
 man.mkdir(exist_ok=True)

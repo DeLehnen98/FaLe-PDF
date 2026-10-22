@@ -87,7 +87,7 @@ S = {
     'de': {
         'home': 'Start', 'hub': 'Vorlagen', 'section': 'Bewerbung', 'guides': 'Ratgeber',
         'hub_title': 'Vorlagen: Bewerbung, Lebenslauf, Briefe & Tabellen | FaleNetwork',
-        'hub_desc': 'Kostenlose Vorlagen: Bewerbungen für über {n} Berufe, Lebenslauf-Designs, Briefvorlagen und Excel-Tabellen – im Browser ausfüllen und als PDF speichern.',
+        'hub_desc': 'Vorlagen: Bewerbungen für über {n} Berufe, Lebenslauf-Designs, Briefvorlagen und Excel-Tabellen – im Browser ausfüllen und als PDF speichern.',
         'hub_h1': 'Vorlagen',
         'hub_lede': 'Bewerbung, Lebenslauf, Briefe und Tabellen: Beispiel öffnen, eigene Daten eintragen, als PDF speichern.',
         'hub_search_label': 'Bewerbungsvorlage nach Beruf suchen', 'hub_search_ph': 'Beruf suchen, z. B. Pflege, Verkauf …', 'hub_search_btn': 'Suchen',
@@ -101,7 +101,7 @@ S = {
                     ('Beispiel öffnen', '„Vorlage verwenden“ öffnet den Lebenslauf oder das Anschreiben fertig ausgefüllt im Editor.'),
                     ('Eigene Daten einsetzen', 'Zuerst dein Foto (oder keins), dann Namen, Stationen und Text anpassen. Das PDF entsteht auf deinem Gerät.')],
         'sec_title': 'Bewerbungsvorlagen nach Beruf – Muster & Lebenslauf | FaleNetwork',
-        'sec_desc': 'Bewerbungsmuster für {n} Berufe: Anschreiben für Ausbildung, Berufseinstieg, Quereinstieg und Minijob, dazu Lebensläufe mit Foto-Platzhalter – kostenlos.',
+        'sec_desc': 'Bewerbungsmuster für {n} Berufe: Anschreiben für Ausbildung, Berufseinstieg, Quereinstieg und Minijob, dazu Lebensläufe mit Foto-Platzhalter.',
         'sec_h1': 'Bewerbungsvorlagen nach Beruf',
         'sec_lede': 'Für jeden Beruf zwei bis drei echte Anschreiben-Beispiele für unterschiedliche Situationen und einen fertigen Lebenslauf, den du direkt übernehmen kannst.',
         'search_label': 'Beruf suchen', 'search_ph': 'Beruf suchen, z. B. Pflege, Kasse, LKW …',
@@ -141,7 +141,7 @@ S = {
     'en': {
         'home': 'Home', 'hub': 'Templates',
         'hub_title': 'Templates: CVs, cover letters, letters & spreadsheets | FaleNetwork',
-        'hub_desc': 'Free CV and cover letter examples for {n} common jobs: fully written letters, a ready CV with a placeholder portrait and tips – edit and save as PDF.',
+        'hub_desc': 'CV and cover letter examples for {n} common jobs: fully written letters, a ready CV with a placeholder portrait and tips – edit and save as PDF.',
         'hub_h1': 'Templates',
         'hub_lede': 'CVs, cover letters, letters and spreadsheets: open an example, swap in your details, save it as a PDF.',
         'hub_coll_label': 'Sections', 'hub_apps_h': 'CV & cover letter', 'hub_apps_m': '{n} jobs, fully written', 'hub_fill_h': 'Fill-in forms', 'hub_fill_m': '{n} forms, e.g. invoice',
@@ -178,7 +178,7 @@ S = {
         'to_f': '{c}', 'to_m': '{c}',
         'example_note': 'All people, companies and contact details in the examples are fictional.',
         'faq_photo': ('Should I put a photo on my CV?', 'It depends on the country. In the UK, Ireland and the US a photo is usually left out to avoid bias, and many employers prefer CVs without one. In Germany and some other countries it is common but optional. If you use one: recent, friendly, plain background, dressed as you would be on a good day at work.'),
-        'faq_copy': ('Can I copy the example letters?', 'Yes, they are free to use. But recruiters read a lot of letters – one with your own examples, numbers and a real reason for choosing this employer will always do better. Use the examples as scaffolding and write the sentences yourself.'),
+        'faq_copy': ('Can I copy the example letters?', 'Yes, you can use them. But recruiters read a lot of letters – one with your own examples, numbers and a real reason for choosing this employer will always do better. Use the examples as scaffolding and write the sentences yourself.'),
         'faq_privacy': ('Is my data stored anywhere?', 'No. The CV and the letter are created in your browser. Nothing is stored unless you switch on “Save the draft” in the editor – and then only on your device.'),
         'og_alt': 'FaLe templates – CV and cover letter examples',
     },
@@ -660,7 +660,7 @@ def page_job(wb, bp, job, lang, by_id, wb_specs):
     ld = [
         wb.ld_breadcrumb(items),
         {'@context': 'https://schema.org', '@type': 'CreativeWork', 'name': fmt(s['job_h1'], name=name), 'url': bp.BASE + path,
-         'description': src['desc'], 'inLanguage': lang, 'isAccessibleForFree': True, 'genre': 'Bewerbungsvorlage' if lang == 'de' else 'CV and cover letter template',
+         'description': src['desc'], 'inLanguage': lang, 'genre': 'Bewerbungsvorlage' if lang == 'de' else 'CV and cover letter template',
          'about': {'@type': 'Occupation', 'name': name}, 'publisher': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}},
         {'@context': 'https://schema.org', '@type': 'HowTo', 'name': s['start_h'], 'inLanguage': lang,
          'step': [{'@type': 'HowToStep', 'position': i + 1, 'name': t, 'text': p} for i, (t, p) in enumerate(s['start'])]},
@@ -921,7 +921,7 @@ def page_guide(wb, bp, g, guides, jobs, wb_specs):
     others = ''.join(f'<li class="wt-card"><a href="{guide_path(o)}"><h3 class="wt-card-name">{esc(o["card"])}</h3><span class="wt-card-desc">{esc(o["short"])}</span></a></li>' for o in guides if o is not g)
     ld = [wb.ld_breadcrumb(items),
           {'@context': 'https://schema.org', '@type': 'Article', 'headline': g['h1'], 'description': g['desc'], 'inLanguage': 'de', 'url': bp.BASE + path,
-           'isAccessibleForFree': True, 'author': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}, 'publisher': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}},
+           'author': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}, 'publisher': {'@type': 'Organization', 'name': 'FaleNetwork', 'url': bp.BASE + '/'}},
           ld_faq(faq_items, 'de')]
     h = head_for(wb, bp, 'de', g['title'], g['desc'], ld, path, None)
     hdr = bp.header('de', 'home', current=HUB['de'], other_url=HUB['en'], fallback=True)

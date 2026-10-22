@@ -1,6 +1,6 @@
 // Tool registry. Modules are loaded lazily when a tool is opened.
 // group: 'bearbeiten' | 'konvertieren' | 'organisieren' | 'sicherheit' | 'scannen' | 'lesen'
-// pro: true marks features other PDF apps only offer in paid plans (shown as "Gratis statt Pro").
+// pro: true marks features other PDF apps only offer in paid plans (shown as "Pro-Funktion").
 export const TOOLS = [
   { id: 'unterschreiben', group: 'bearbeiten', title: 'Ausfüllen & unterschreiben', tile: 'Ausfüllen & unterschreiben', desc: 'Formulare ausfüllen, Text, Datum und Unterschrift einfügen.', icon: 'sign', needsDoc: true, load: () => import('./sign.js') },
   { id: 'formular-lotse', group: 'bearbeiten', title: 'Formular-Lotse', tile: 'Formular-Lotse', desc: 'Formulare Schritt für Schritt ausfüllen – jedes Feld in einfachen Worten erklärt, auch in deiner Sprache.', icon: 'form', needsDoc: true, load: () => import('../forms/lotse.js') },

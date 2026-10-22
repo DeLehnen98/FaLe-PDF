@@ -29,7 +29,7 @@
     "short": "Gäste scannen und sind im WLAN – mit Karte zum Ausdrucken.",
     "title": "WLAN-QR-Code erstellen – Gäste-Karte zum Ausdrucken | FaleNetwork",
     "h1": "WLAN-QR-Code erstellen",
-    "metaDescription": "WLAN-QR-Code für Gäste, Ferienwohnung oder Büro: scannen statt Passwort abtippen. Mit druckfertiger Karte (A6 oder 4 auf A4). Gratis, ohne Upload.",
+    "metaDescription": "WLAN-QR-Code für Gäste, Ferienwohnung oder Büro: scannen statt Passwort abtippen. Mit druckfertiger Karte (A6 oder 4 auf A4). Ohne Upload.",
     "lede": "Netzwerkname und Passwort eintragen – daraus wird ein QR-Code und auf Wunsch eine Karte zum Aufstellen.",
     "primaryButton": "Speichern",
     "keywords": [
@@ -98,7 +98,7 @@
     "short": "Guests scan and they’re online – with a card to print.",
     "title": "Wi-Fi QR code generator – printable guest card | FaleNetwork",
     "h1": "Create a Wi-Fi QR code",
-    "metaDescription": "Wi-Fi QR code for guests, holiday lets or the office: scan instead of typing the password. With a print-ready card (A6 or 4 on A4). Free, no upload.",
+    "metaDescription": "Wi-Fi QR code for guests, holiday lets or the office: scan instead of typing the password. With a print-ready card (A6 or 4 on A4). No upload.",
     "lede": "Enter the network name and password – you get a QR code and, if you like, a card to put out.",
     "primaryButton": "Save",
     "keywords": [

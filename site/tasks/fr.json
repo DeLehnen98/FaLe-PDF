@@ -4,13 +4,13 @@
     "navLabel": "Navigation principale",
     "home": "Accueil",
     "openApp": "Ouvrir FaLe PDF",
-    "badge": "Gratuit · sans compte · tes fichiers restent sur ton appareil",
+    "badge": "Sans compte · tes fichiers restent sur ton appareil",
     "stepsH": "Comment faire",
     "whyH": "Pourquoi FaLe PDF",
     "faqH": "Questions fréquentes",
     "moreH": "Tu peux aussi",
     "endH": "Essaie tout de suite",
-    "endText": "FaLe PDF fonctionne dans le navigateur, sur ton téléphone et sur ton ordinateur. Toutes les fonctions sont gratuites.",
+    "endText": "FaLe PDF fonctionne dans le navigateur, sur ton téléphone et sur ton ordinateur.",
     "privacy": "Confidentialité",
     "imprint": "Mentions légales",
     "footer": "FaLe PDF – un service de FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "signer-pdf",
-      "title": "Signer un PDF – gratuit, sans compte | FaLe PDF",
-      "description": "Signe un PDF sur ton téléphone ou ton ordinateur : dessine ta signature, enregistre-la et place-la d’un simple toucher. Gratuit, sans compte, sans envoi.",
+      "title": "Signer un PDF – sans compte | FaLe PDF",
+      "description": "Signe un PDF sur ton téléphone ou ton ordinateur : dessine ta signature, enregistre-la et place-la d’un simple toucher. Sans compte, sans envoi.",
       "h1": "Signer un PDF",
       "lede": "Dessine ta signature avec le doigt ou la souris et place-la d’un toucher dans n’importe quel PDF – contrat, formulaire ou procuration.",
       "cta": "Signer un PDF maintenant",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Sans abonnement",
-          "d": "Signer est gratuit et le reste – sans filigrane et sans compte."
+          "d": "Signer se fait sans abonnement – sans filigrane et sans compte."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "remplir-formulaire-pdf",
-      "title": "Remplir un formulaire PDF – gratuit, sur mobile | FaLe PDF",
-      "description": "Remplis des formulaires PDF : champs de texte, cases et listes sur ton téléphone ou ton ordinateur, ou écris sur un formulaire scanné. Gratuit, sans compte.",
+      "title": "Remplir un formulaire PDF – sur mobile | FaLe PDF",
+      "description": "Remplis des formulaires PDF : champs de texte, cases et listes sur ton téléphone ou ton ordinateur, ou écris sur un formulaire scanné. Sans compte.",
       "h1": "Remplir un formulaire PDF",
       "lede": "Remplis les champs du formulaire, ou écris simplement à l’endroit voulu sur un formulaire scanné – avec une grande écriture et des boutons clairs.",
       "cta": "Remplir un formulaire",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "modifier-pdf",
-      "title": "Modifier un PDF – ajouter texte et images, gratuit | FaLe PDF",
-      "description": "Modifie un PDF sur ton téléphone ou ton ordinateur : ajoute du texte et des images, remplace du texte, masque des passages. Gratuit, sans compte ni envoi.",
+      "title": "Modifier un PDF – ajouter texte et images | FaLe PDF",
+      "description": "Modifie un PDF sur ton téléphone ou ton ordinateur : ajoute du texte et des images, remplace du texte, masque des passages. Sans compte ni envoi.",
       "h1": "Modifier un PDF",
       "lede": "Ajoute du texte et des images, change le texte existant ou masque des passages – directement dans ton PDF.",
       "cta": "Modifier un PDF",
@@ -156,8 +156,8 @@
           "d": "Taille avec A− et A+, gras, couleur – sans chercher dans des menus."
         },
         {
-          "t": "Gratuit, pas en version Pro",
-          "d": "Ce que d’autres ne proposent qu’avec un abonnement est gratuit ici – sans filigrane."
+          "t": "Sans filigrane",
+          "d": "Même ce que d’autres ne proposent qu’avec un abonnement est sans filigrane ici."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "fusionner-pdf",
       "title": "Fusionner des PDF – plusieurs PDF en un seul | FaLe PDF",
-      "description": "Fusionne plusieurs PDF en un seul fichier et choisis l’ordre – sur ton téléphone ou ton ordinateur, gratuit, sans compte et sans envoi en ligne.",
+      "description": "Fusionne plusieurs PDF en un seul fichier et choisis l’ordre – sur ton téléphone ou ton ordinateur, sans compte et sans envoi en ligne.",
       "h1": "Fusionner des PDF",
       "lede": "Réunis des factures, des scans ou des chapitres en un seul PDF – dans l’ordre que tu veux.",
       "cta": "Fusionner des PDF",
@@ -226,17 +226,13 @@
         {
           "q": "Le texte reste-t-il sélectionnable ?",
           "a": "Oui. Les pages sont reprises telles quelles : le texte reste sélectionnable et consultable par recherche."
-        },
-        {
-          "q": "Est-ce payant ?",
-          "a": "Non. Fusionner est gratuit, sans filigrane et sans compte."
         }
       ]
     },
     "compress": {
       "slug": "compresser-pdf",
       "title": "Compresser un PDF – pour e-mail et envoi | FaLe PDF",
-      "description": "Rends un PDF plus petit pour qu’il passe dans un e-mail ou un formulaire en ligne : réduis les images ou compresse sans perte. Gratuit, sans envoi.",
+      "description": "Rends un PDF plus petit pour qu’il passe dans un e-mail ou un formulaire en ligne : réduis les images ou compresse sans perte. Sans envoi.",
       "h1": "Compresser un PDF",
       "lede": "Trop lourd pour un e-mail ou un formulaire en ligne ? FaLe PDF réduit le fichier – tu vois la taille avant et après.",
       "cta": "Compresser un PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "scanner-document",
       "title": "Scanner un document avec ton téléphone – en PDF | FaLe PDF",
-      "description": "Scanne des documents avec l’appareil photo de ton téléphone : bords détectés, page redressée et améliorée, texte consultable. Gratuit, sans compte.",
+      "description": "Scanne des documents avec l’appareil photo de ton téléphone : bords détectés, page redressée et améliorée, texte consultable. Sans compte.",
       "h1": "Scanner un document avec ton téléphone",
       "lede": "Tiens ton téléphone au-dessus du papier – FaLe repère la page, la redresse et en fait un PDF propre.",
       "cta": "Scanner maintenant",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-en-word",
-      "title": "Convertir un PDF en Word – gratuit, sans envoi | FaLe PDF",
-      "description": "Convertis un PDF en document Word modifiable (DOCX) : paragraphes, titres et texte en gras sont conservés. Gratuit, directement sur ton appareil.",
+      "title": "Convertir un PDF en Word – sans envoi | FaLe PDF",
+      "description": "Convertis un PDF en document Word modifiable (DOCX) : paragraphes, titres et texte en gras sont conservés. Directement sur ton appareil.",
       "h1": "Convertir un PDF en Word",
       "lede": "Transforme un PDF en document Word que tu peux modifier – paragraphes, titres et mises en valeur sont conservés.",
       "cta": "Convertir un PDF en Word",
@@ -388,17 +384,13 @@
         {
           "q": "Quel format j’obtiens ?",
           "a": "Un document Word au format DOCX, qui s’ouvre dans tous les programmes de traitement de texte courants."
-        },
-        {
-          "q": "Combien ça coûte ?",
-          "a": "Rien. Cette fonction Pro est elle aussi gratuite dans FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "ouvrir-formulaire-xfa",
       "title": "Ouvrir et remplir un formulaire XFA – officiel | FaLe PDF",
-      "description": "Un formulaire officiel n’affiche que « Veuillez patienter … » ? FaLe PDF ouvre les formulaires XFA, les remplit, les signe et les enregistre. Gratuit.",
+      "description": "Un formulaire officiel n’affiche que « Veuillez patienter … » ? FaLe PDF ouvre les formulaires XFA, les remplit, les signe et les enregistre.",
       "h1": "Ouvrir et remplir un formulaire officiel (XFA)",
       "lede": "Certains formulaires d’administrations et d’ambassades n’affichent que « Veuillez patienter … » ou une page vide. FaLe PDF les ouvre, tu les remplis et tu les enregistres de nouveau.",
       "cta": "Ouvrir un formulaire",
@@ -442,10 +434,6 @@
         {
           "q": "Les calculs dans le formulaire fonctionnent-ils ?",
           "a": "Les scripts du formulaire ne sont pas exécutés, par sécurité. Les calculs ou vérifications automatiques, tu les saisis donc toi-même."
-        },
-        {
-          "q": "Combien ça coûte ?",
-          "a": "Rien – sans compte et sans inscription."
         }
       ]
     }

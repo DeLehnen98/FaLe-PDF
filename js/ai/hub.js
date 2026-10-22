@@ -47,7 +47,7 @@ export async function mountPlus(screen) {
   const st = statusCard();
   const wrap = h(`<div class="screen-inner ai-plus">
     <div class="card ai-plus-hero"><span class="ai-hero-ic">${oicon('star')}</span><div><strong>FaLe Plus</strong>
-      <p>FaLe PDF bleibt kostenlos – alle Werkzeuge, ohne Wasserzeichen, ohne Konto. Plus ist freiwillig: für alle, die die Cloud-KI viel nutzen und FaLe PDF unterstützen möchten. Als Abo oder einmal bezahlt für immer.</p></div></div>
+      <p>Alle Werkzeuge bleiben ohne Wasserzeichen und ohne Konto nutzbar. Plus ist freiwillig: für alle, die die Cloud-KI viel nutzen und FaLe PDF unterstützen möchten. Als Abo oder einmal bezahlt für immer.</p></div></div>
     <div data-status></div>
     <div class="card card-pad ai-plus-list"><ul>
       <li>${oicon('check')}<span><strong>Bis zu 200 KI-Anfragen pro Tag</strong> statt einiger weniger</span></li>
@@ -153,7 +153,7 @@ async function renderTips(P, box) {
   const n = P.supporterCount();
   box.hidden = false;
   box.innerHTML = `<div class="card card-pad"><strong>Einfach Danke sagen</strong>
-    <p class="muted small">Ein einmaliger Beitrag ohne Abo und ohne Gegenleistung – er hilft, FaLe PDF kostenlos und werbefrei zu halten.</p>${n ? `<p class="muted small" data-tip-count>${n === 1 ? 'Du hast schon einmal unterstützt – danke!' : `Du hast schon ${n}-mal unterstützt – danke!`}</p>` : ''}
+    <p class="muted small">Ein einmaliger Beitrag ohne Abo und ohne Gegenleistung – er hilft, FaLe PDF weiterzuentwickeln und werbefrei zu halten.</p>${n ? `<p class="muted small" data-tip-count>${n === 1 ? 'Du hast schon einmal unterstützt – danke!' : `Du hast schon ${n}-mal unterstützt – danke!`}</p>` : ''}
     <div class="ai-tip-row"></div></div>`;
   const row = $('.ai-tip-row', box);
   tips.forEach(t => {

@@ -180,7 +180,7 @@ def main():
             check('declined consent: still needs consent', page.locator('[data-consent]').count() == 1)
             consent(page)
             page.wait_for_timeout(500)
-            check('quota after consent: 5 of 5', 'Heute noch 5 von 5 gratis' in quota_text(page), quota_text(page))
+            check('quota after consent: 5 of 5', 'Heute noch 5 von 5' in quota_text(page) and 'gratis' not in quota_text(page), quota_text(page))
             check('web: no ad button', page.locator('[data-ai-ad]').count() == 0)
             check('web: no Plus upsell (non-commercial hosting until the Play launch)', page.locator('[data-ai-plus]').count() == 0)
             tok = page.evaluate("localStorage.getItem('fale-ai-token')")

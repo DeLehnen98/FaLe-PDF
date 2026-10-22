@@ -35,9 +35,9 @@
     "slug": "qr-code-erstellen",
     "name": "QR-Code erstellen",
     "short": "QR-Codes für Link, WLAN, Kontakt und mehr – als PNG, SVG oder PDF.",
-    "title": "QR-Code erstellen – kostenloser QR-Code-Generator | FaleNetwork",
+    "title": "QR-Code erstellen – QR-Code-Generator | FaleNetwork",
     "h1": "QR-Code erstellen",
-    "metaDescription": "Kostenloser QR-Code-Generator ohne Anmeldung: Link, WLAN, Kontakt, Überweisung (GiroCode) und mehr. Läuft nie ab. PNG, SVG oder PDF – mit Selbsttest.",
+    "metaDescription": "QR-Code-Generator ohne Anmeldung: Link, WLAN, Kontakt, Überweisung (GiroCode) und mehr. Läuft nie ab. PNG, SVG oder PDF – mit Selbsttest.",
     "lede": "Erstelle QR-Codes für Link, WLAN oder Kontakt (vCard) – mit Live-Vorschau und Selbsttest.",
     "primaryButton": "QR-Code speichern",
     "keywords": [
@@ -99,7 +99,7 @@
       },
       {
         "q": "Wie erstelle ich einen GiroCode für eine Überweisung?",
-        "a": "Wähle „Überweisung“, trag Empfänger und IBAN ein, auf Wunsch Betrag und Verwendungszweck. Wer den Code mit der Banking-App scannt, hat die Überweisung fertig ausgefüllt – kostenlos und ohne Ablaufdatum."
+        "a": "Wähle „Überweisung“, trag Empfänger und IBAN ein, auf Wunsch Betrag und Verwendungszweck. Wer den Code mit der Banking-App scannt, hat die Überweisung fertig ausgefüllt – ohne Ablaufdatum."
       },
       {
         "q": "Wie mache ich einen QR-Code für mein WLAN?",
@@ -119,9 +119,9 @@
     "slug": "qr-code-generator",
     "name": "QR code generator",
     "short": "QR codes for links, Wi-Fi, contacts and more – as PNG, SVG or PDF.",
-    "title": "QR code generator – free, no sign-up | FaleNetwork",
+    "title": "QR code generator – no sign-up | FaleNetwork",
     "h1": "Create a QR code",
-    "metaDescription": "Free QR code generator, no sign-up: link, Wi-Fi, contact, bank transfer (EPC QR) and more. Never expires. PNG, SVG or PDF – with a self-test.",
+    "metaDescription": "QR code generator, no sign-up: link, Wi-Fi, contact, bank transfer (EPC QR) and more. Never expires. PNG, SVG or PDF – with a self-test.",
     "lede": "Create QR codes for links, Wi-Fi or contacts – with live preview and self-test.",
     "primaryButton": "Save QR code",
     "keywords": [
@@ -182,7 +182,7 @@
       },
       {
         "q": "How do I create an EPC QR code (GiroCode) for a bank transfer?",
-        "a": "Choose “Bank transfer”, enter payee and IBAN, and optionally amount and reference. Anyone who scans the code with a banking app gets the transfer filled in – free and without an expiry date."
+        "a": "Choose “Bank transfer”, enter payee and IBAN, and optionally amount and reference. Anyone who scans the code with a banking app gets the transfer filled in – without an expiry date."
       },
       {
         "q": "How do I make a QR code for my Wi-Fi?",

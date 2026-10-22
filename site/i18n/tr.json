@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "FaLe PDF – ücretsiz PDF ve ofis araçları, abonelik yok, yükleme yok",
-    "description": "PDF dosyalarını okuyun, doldurun, imzalayın, metin tanımayla tarayın ve dönüştürün – ayrıca belgeler, elektronik tablolar ve sunumlar. Ücretsiz, hesapsız, her şey cihazınızda."
+    "title": "FaLe PDF – PDF ve ofis araçları, abonelik yok, yükleme yok",
+    "description": "PDF dosyalarını okuyun, doldurun, imzalayın, metin tanımayla tarayın ve dönüştürün – ayrıca belgeler, elektronik tablolar ve sunumlar. Hesapsız, her şey cihazınızda."
   },
   "skip": "İçeriğe atla",
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "h1": "Evrak işlerinizi halledin. Abonelik yok, yükleme yok.",
-    "lede": "FaLe PDF okur, doldurur, imzalar, tarar ve dönüştürür – ayrıca belgeler, elektronik tablolar ve sunumlar. Ücretsiz ve doğrudan cihazınızda.",
+    "lede": "FaLe PDF okur, doldurur, imzalar, tarar ve dönüştürür – ayrıca belgeler, elektronik tablolar ve sunumlar. Doğrudan cihazınızda.",
     "try": "Tarayıcınızda deneyin"
   },
   "stores": {
@@ -25,7 +25,7 @@
   },
   "desk": {
     "h2": "Windows ve Mac için",
-    "intro": "FaLe PDF’yi bilgisayarınıza sıradan bir program gibi yükleyin: kendi simgesi, kendi penceresi var ve internet olmadan çalışır. Ücretsiz, hesapsız ve yükleme dosyası olmadan.",
+    "intro": "FaLe PDF’yi bilgisayarınıza sıradan bir program gibi yükleyin: kendi simgesi, kendi penceresi var ve internet olmadan çalışır. Hesapsız ve yükleme dosyası olmadan.",
     "steps": [
       { "b": "“İndir”e tıklayın.", "t": "FaLe PDF tarayıcınızda açılır." },
       { "b": "“Yükle”yi onaylayın.", "t": "Tarayıcınız yalnızca bir kez sorar." },
@@ -59,8 +59,8 @@
     ]
   },
   "free": {
-    "h2": "Abonelik yerine ücretsiz",
-    "intro": "Birçok PDF uygulaması bu özellikler için abonelik ister. Burada ücretsiz ve filigransızdır.",
+    "h2": "Abonelik yok, filigran yok",
+    "intro": "Birçok PDF uygulaması bu özellikler için abonelik ister. Burada abonelik olmadan ve filigransız sunulur.",
     "note": "Geliştirmeyi desteklemek isterseniz Android uygulamasında FaLe Plus’ı veya tek seferlik bir teşekkürü seçebilirsiniz.",
     "items": ["İmzala ve doldur", "Metin tanıma (OCR)", "PDF’den Word’e, Excel’e, PowerPoint’e", "Karart", "Sıkıştır", "Sayfaları yönet", "Kurumlar için PDF/A", "Parola koruması", "PDF dosyalarını karşılaştır", "Toplu işleme"]
   },
@@ -71,7 +71,6 @@
   "faq": {
     "h2": "Sorular",
     "items": [
-      { "q": "FaLe PDF gerçekten ücretsiz mi?", "a": "Evet. Tüm PDF ve ofis özellikleri ücretsizdir; abonelik yok, filigran yok. Yalnızca isteğe bağlı bulut yapay zekânın günlük ücretsiz bir hakkı vardır." },
       { "q": "Dosyalarım yükleniyor mu?", "a": "Hayır. Dosyalarınız cihazınızda işlenir ve saklanır. Cihazınızdan yalnızca, bulut yapay zekâyı, bağlantıyla paylaşımı veya eşitlemeyi bilerek kullanırsanız bir şey çıkar – o da şifreli olarak veya yalnızca seçtiğiniz metin." },
       { "q": "Çevrimdışı çalışır mı?", "a": "Evet. Bulut yapay zekâ, paylaşım ve aktarım dışındaki her şey internet olmadan çalışır." },
       { "q": "FaLe PDF’yi bilgisayarıma yükleyebilir miyim?", "a": "Evet. Yukarıdaki “Windows ve Mac için” bölümünde “İndir”e tıklayın ve “Yükle”yi onaylayın. Windows’ta bu Edge veya Chrome ile, Mac’te Safari, Chrome veya Edge ile çalışır. FaLe PDF yakında Microsoft Store’da da olacak." },

@@ -108,8 +108,8 @@ function pageFor(code, htmlLang, s, tpl) {
   const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faq.items.map(i => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })) };
   const app = {
     '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'FaLe PDF', url, applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Android, iOS, Windows, macOS, Web', inLanguage: htmlLang, isAccessibleForFree: true, description: s.meta.description,
-    image: ORIGIN + '/icons/icon-512.png', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    operatingSystem: 'Android, iOS, Windows, macOS, Web', inLanguage: htmlLang, description: s.meta.description,
+    image: ORIGIN + '/icons/icon-512.png',
   };
   const alternates = LANGS.map(([c, h]) => `  <link rel="alternate" hreflang="${h}" href="${ORIGIN}${c === 'de' ? '/' : `/${c}/`}">`)
     .concat(`  <link rel="alternate" hreflang="x-default" href="${ORIGIN}/">`).join('\n');

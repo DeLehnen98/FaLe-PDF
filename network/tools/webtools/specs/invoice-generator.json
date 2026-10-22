@@ -24,7 +24,7 @@
     "short": "Rechnung als PDF oder E-Rechnung (ZUGFeRD, XRechnung) – mit GiroCode.",
     "title": "Rechnung schreiben – auch als E-Rechnung (ZUGFeRD) | FaleNetwork",
     "h1": "Rechnung schreiben",
-    "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben: als PDF oder E-Rechnung (ZUGFeRD, XRechnung), 19 % und 7 % USt., Kleinunternehmer, GiroCode. Kostenlos.",
+    "metaDescription": "Rechnung online schreiben mit allen Pflichtangaben: als PDF oder E-Rechnung (ZUGFeRD, XRechnung), 19 % und 7 % USt., Kleinunternehmer, GiroCode.",
     "lede": "Erstelle eine Rechnung mit allen Pflichtangaben – als PDF oder als E-Rechnung. Deine Daten bleiben auf deinem Gerät.",
     "primaryButton": "Rechnung erstellen",
     "keywords": [
@@ -40,7 +40,7 @@
       "zugferd erstellen",
       "xrechnung erstellen",
       "factur-x",
-      "e-rechnung kostenlos",
+      "e-rechnung",
       "leitweg-id"
     ],
     "steps": [
@@ -90,7 +90,7 @@
       },
       {
         "q": "Kann ich eine E-Rechnung (ZUGFeRD oder XRechnung) erstellen?",
-        "a": "Ja. Stell oben das Format um: „E-Rechnung (ZUGFeRD)“ erzeugt eine PDF/A-3 mit eingebetteter XML im Profil EN 16931 – passend für Firmenkunden. „XRechnung“ erzeugt die XML-Datei für Behörden (mit Leitweg-ID) plus eine PDF-Ansicht. Beides ist kostenlos und wird im Browser erstellt."
+        "a": "Ja. Stell oben das Format um: „E-Rechnung (ZUGFeRD)“ erzeugt eine PDF/A-3 mit eingebetteter XML im Profil EN 16931 – passend für Firmenkunden. „XRechnung“ erzeugt die XML-Datei für Behörden (mit Leitweg-ID) plus eine PDF-Ansicht. Beides ist wird im Browser erstellt."
       },
       {
         "q": "Ist das eine Steuerberatung?",
@@ -108,13 +108,13 @@
     "short": "Create an invoice as PDF or e-invoice (ZUGFeRD / Factur-X).",
     "title": "Invoice generator – PDF or e-invoice (ZUGFeRD) | FaleNetwork",
     "h1": "Invoice generator",
-    "metaDescription": "Create invoices as PDF or as e-invoice (ZUGFeRD / Factur-X, XRechnung): line items, tax rates, discount, payment terms, logo. Free, no sign-up.",
+    "metaDescription": "Create invoices as PDF or as e-invoice (ZUGFeRD / Factur-X, XRechnung): line items, tax rates, discount, payment terms, logo. No sign-up.",
     "lede": "Write a clean invoice and save it as a PDF. Your data stays on your device.",
     "primaryButton": "Create invoice",
     "keywords": [
       "invoice generator",
       "invoice template",
-      "free invoice",
+      "invoice",
       "invoice pdf",
       "create invoice",
       "invoice maker",
@@ -145,7 +145,7 @@
       },
       {
         "title": "E-invoices included",
-        "text": "ZUGFeRD / Factur-X (PDF/A-3 with embedded XML, profile EN 16931) and XRechnung – free, without a subscription. The tool tells you which details are still missing."
+        "text": "ZUGFeRD / Factur-X (PDF/A-3 with embedded XML, profile EN 16931) and XRechnung – without a subscription. The tool tells you which details are still missing."
       },
       {
         "title": "Paid faster in the euro area",
@@ -163,7 +163,7 @@
       },
       {
         "q": "Can I create an e-invoice?",
-        "a": "Yes. Switch the format to “E-invoice (ZUGFeRD / Factur-X)” for a PDF/A-3 with embedded XML (profile EN 16931), or to “XRechnung” for German public authorities. Both are created in your browser for free."
+        "a": "Yes. Switch the format to “E-invoice (ZUGFeRD / Factur-X)” for a PDF/A-3 with embedded XML (profile EN 16931), or to “XRechnung” for German public authorities. Both are created in your browser."
       },
       {
         "q": "Does the invoice meet the legal requirements of my country?",

@@ -109,7 +109,7 @@ def main():
             c, pg = ctx('win-edge', fire=True)
             pg.goto(URL + '/app/#/einstellungen'); pg.wait_for_selector('[data-install-me] .inst-me', timeout=15000); pg.wait_for_timeout(500)
             card = pg.locator('[data-install-me]').inner_text()
-            check('ich: entry "Auf diesem PC installieren"', 'Auf diesem PC installieren' in card and 'kostenlos' in card, card)
+            check('ich: entry "Auf diesem PC installieren"', 'Auf diesem PC installieren' in card and 'kostenlos' not in card, card)
             pg.click('[data-inst-open]')
             check('ich: entry opens the dialog with "Jetzt installieren"', pg.wait_for_selector('dialog[open] [data-inst-go]', timeout=5000) is not None)
             c.close()

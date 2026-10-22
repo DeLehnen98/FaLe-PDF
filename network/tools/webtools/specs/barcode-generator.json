@@ -20,7 +20,7 @@
     "slug": "barcode-generator",
     "name": "Barcode-Generator",
     "short": "EAN, UPC, Code 128, Code 39 und ITF-14 als PNG, SVG oder PDF.",
-    "title": "Barcode-Generator – EAN-13, Code 128 & mehr, gratis | FaleNetwork",
+    "title": "Barcode-Generator – EAN-13, Code 128 & mehr | FaleNetwork",
     "h1": "Barcode erstellen",
     "metaDescription": "Barcode erstellen: EAN-13, EAN-8, UPC-A, Code 128, Code 39 und ITF-14 mit Prüfziffer, Klartext und Größe in mm. Als PNG, SVG oder PDF, ohne Upload.",
     "lede": "Erstelle EAN-, UPC-, Code-128-, Code-39- oder ITF-14-Barcodes – mit Prüfziffer und Selbsttest.",
@@ -35,7 +35,7 @@
       "upc",
       "itf 14",
       "gtin",
-      "barcode generator kostenlos"
+      "barcode generator"
     ],
     "steps": [
       {
@@ -100,9 +100,9 @@
     "slug": "barcode-generator",
     "name": "Barcode generator",
     "short": "EAN, UPC, Code 128, Code 39 and ITF-14 as PNG, SVG or PDF.",
-    "title": "Barcode generator – EAN-13, UPC, Code 128, free | FaleNetwork",
+    "title": "Barcode generator – EAN-13, UPC, Code 128 | FaleNetwork",
     "h1": "Create a barcode",
-    "metaDescription": "Create barcodes: EAN-13, EAN-8, UPC-A, Code 128, Code 39 and ITF-14 with check digit, readable text and size in mm. As PNG, SVG or PDF – free, no upload.",
+    "metaDescription": "Create barcodes: EAN-13, EAN-8, UPC-A, Code 128, Code 39 and ITF-14 with check digit, readable text and size in mm. As PNG, SVG or PDF – no upload.",
     "lede": "Create EAN, UPC, Code 128, Code 39 or ITF-14 barcodes – with check digit and self-test.",
     "primaryButton": "Save barcode",
     "keywords": [
@@ -114,7 +114,7 @@
       "code 39",
       "itf 14",
       "gtin",
-      "free barcode maker"
+      "barcode maker"
     ],
     "steps": [
       {

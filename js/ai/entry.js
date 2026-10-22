@@ -49,7 +49,7 @@ export function renderToolSection(sec) {
   sec.dataset.filled = '1';
   sec.hidden = false;
   sec.innerHTML = `<h2 class="section-title">KI-Assistent <a class="btn btn-sm btn-ghost" href="#/ki">${oicon('sparkle')} Übersicht</a></h2><div class="tool-grid ai-grid"></div>
-    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst. Täglich einige Anfragen gratis.</span></p>`;
+    <p class="muted small ai-tools-note">${oicon('shield')}<span>Cloud-KI nur nach deiner Zustimmung – gesendet wird nur, was du auswählst. Täglich einige Anfragen inklusive.</span></p>`;
   const grid = sec.querySelector('.ai-grid');
   AI_FEATURES.forEach(f => grid.appendChild(h(`<a class="tool-card" href="${f.href}" data-tool="ai-${f.id}"><span class="tile-ic ai-ic">${oicon(f.icon)}</span><span class="tc-text"><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></span></a>`)));
 }
@@ -65,8 +65,8 @@ export function renderMeCard(box) {
     return;
   }
   const q = C.cachedQuota();
-  const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen gratis'
-    : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit} gratis`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';
+  const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen inklusive'
+    : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit}`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';
   box.innerHTML = '';
   box.appendChild(h(`<div class="ai-me">
     <a class="action-card" href="#/ki"><span class="tile-ic ai-ic">${oicon('sparkle')}</span><span><strong>KI-Assistent</strong><span class="muted small" data-ai-me-status>${esc(status)}</span></span></a>

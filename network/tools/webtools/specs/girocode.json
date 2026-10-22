@@ -106,9 +106,9 @@
     "slug": "epc-qr-code-generator",
     "name": "EPC QR code generator",
     "short": "QR code for bank transfers: scan it and everything is filled in.",
-    "title": "EPC QR code generator (GiroCode) – free SEPA QR | FaleNetwork",
+    "title": "EPC QR code generator (GiroCode) – SEPA QR | FaleNetwork",
     "h1": "Create an EPC QR code",
-    "metaDescription": "EPC QR code (GiroCode) for SEPA transfers: payee, IBAN, amount and reference are filled in after scanning. IBAN check, printable card. Free, no upload.",
+    "metaDescription": "EPC QR code (GiroCode) for SEPA transfers: payee, IBAN, amount and reference are filled in after scanning. IBAN check, printable card. No upload.",
     "lede": "Enter payee and IBAN, and optionally amount and reference – that’s the code for banking apps.",
     "primaryButton": "Save EPC QR code",
     "keywords": [

@@ -4,13 +4,13 @@
     "navLabel": "Nawigacja główna",
     "home": "Strona główna",
     "openApp": "Otwórz FaLe PDF",
-    "badge": "Za darmo · bez konta · twoje pliki zostają na twoim urządzeniu",
+    "badge": "Bez konta · twoje pliki zostają na twoim urządzeniu",
     "stepsH": "Jak to zrobić",
     "whyH": "Dlaczego FaLe PDF",
     "faqH": "Najczęstsze pytania",
     "moreH": "Możesz też",
     "endH": "Wypróbuj od razu",
-    "endText": "FaLe PDF działa w przeglądarce, na telefonie i na komputerze. Wszystkie funkcje są bezpłatne.",
+    "endText": "FaLe PDF działa w przeglądarce, na telefonie i na komputerze.",
     "privacy": "Prywatność",
     "imprint": "Dane prawne",
     "footer": "FaLe PDF – usługa FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "podpisz-pdf",
-      "title": "Podpisz PDF – za darmo, bez konta | FaLe PDF",
-      "description": "Podpisz PDF na telefonie lub komputerze: narysuj podpis, zapisz go i wstaw jednym dotknięciem. Za darmo, bez konta i bez wysyłania plików.",
+      "title": "Podpisz PDF – bez konta | FaLe PDF",
+      "description": "Podpisz PDF na telefonie lub komputerze: narysuj podpis, zapisz go i wstaw jednym dotknięciem. Bez konta i bez wysyłania plików.",
       "h1": "Podpisz PDF",
       "lede": "Narysuj podpis palcem lub myszką i wstaw go jednym dotknięciem do dowolnego PDF-a – umowy, formularza lub pełnomocnictwa.",
       "cta": "Podpisz PDF teraz",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Bez abonamentu",
-          "d": "Podpisywanie jest darmowe i takie zostanie – bez znaku wodnego i bez konta."
+          "d": "Podpisywanie działa bez subskrypcji – bez znaku wodnego i bez konta."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "wypelnij-formularz-pdf",
-      "title": "Wypełnij formularz PDF – za darmo, też na telefonie | FaLe PDF",
-      "description": "Wypełniaj formularze PDF: pola tekstowe, kratki i listy na telefonie lub komputerze – albo pisz po zeskanowanym formularzu papierowym. Za darmo, bez konta.",
+      "title": "Wypełnij formularz PDF – też na telefonie | FaLe PDF",
+      "description": "Wypełniaj formularze PDF: pola tekstowe, kratki i listy na telefonie lub komputerze – albo pisz po zeskanowanym formularzu papierowym. Bez konta.",
       "h1": "Wypełnij formularz PDF",
       "lede": "Wypełnij pola formularza albo po prostu pisz tam, gdzie coś ma być, na zeskanowanym formularzu – dużą czcionką i z wyraźnymi przyciskami.",
       "cta": "Wypełnij formularz",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "edytuj-pdf",
-      "title": "Edytuj PDF – dodaj tekst i obrazy, za darmo | FaLe PDF",
-      "description": "Edytuj PDF na telefonie lub komputerze: dodawaj tekst i obrazy, zamieniaj istniejący tekst, zakrywaj fragmenty. Za darmo, bez konta i bez wysyłania plików.",
+      "title": "Edytuj PDF – dodaj tekst i obrazy | FaLe PDF",
+      "description": "Edytuj PDF na telefonie lub komputerze: dodawaj tekst i obrazy, zamieniaj istniejący tekst, zakrywaj fragmenty. Bez konta i bez wysyłania plików.",
       "h1": "Edytuj PDF",
       "lede": "Dodaj tekst i obrazy, zmień istniejący tekst albo zakryj fragmenty – prosto w swoim PDF-ie.",
       "cta": "Edytuj PDF",
@@ -156,8 +156,8 @@
           "d": "Rozmiar przyciskami A− i A+, pogrubienie, kolor – bez szukania po menu."
         },
         {
-          "t": "Za darmo zamiast Pro",
-          "d": "To, co inni oferują tylko w abonamencie, jest tu bezpłatne – bez znaku wodnego."
+          "t": "Bez znaku wodnego",
+          "d": "Nawet to, co inni oferują tylko w abonamencie, jest tu bez znaku wodnego."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "polacz-pdf",
       "title": "Połącz PDF – kilka plików PDF w jeden | FaLe PDF",
-      "description": "Połącz kilka plików PDF w jeden i ustaw ich kolejność – na telefonie lub komputerze, za darmo, bez konta i bez wysyłania plików.",
+      "description": "Połącz kilka plików PDF w jeden i ustaw ich kolejność – na telefonie lub komputerze, bez konta i bez wysyłania plików.",
       "h1": "Połącz pliki PDF",
       "lede": "Połącz faktury, skany lub rozdziały w jeden PDF – w takiej kolejności, jakiej chcesz.",
       "cta": "Połącz pliki PDF",
@@ -226,17 +226,13 @@
         {
           "q": "Czy tekst nadal można zaznaczać?",
           "a": "Tak. Strony są przejmowane bez zmian, więc tekst można nadal zaznaczać i przeszukiwać."
-        },
-        {
-          "q": "Czy to coś kosztuje?",
-          "a": "Nie. Łączenie jest darmowe, bez znaku wodnego i bez konta."
         }
       ]
     },
     "compress": {
       "slug": "zmniejsz-pdf",
       "title": "Zmniejsz PDF – do e-maila i formularzy | FaLe PDF",
-      "description": "Zmniejsz PDF, żeby zmieścił się w e-mailu lub formularzu online: zmniejsz obrazy albo spakuj bezstratnie. Za darmo, bez wysyłania plików.",
+      "description": "Zmniejsz PDF, żeby zmieścił się w e-mailu lub formularzu online: zmniejsz obrazy albo spakuj bezstratnie. Bez wysyłania plików.",
       "h1": "Zmniejsz PDF",
       "lede": "Za duży do e-maila lub formularza online? FaLe PDF zmniejsza plik – widzisz rozmiar przed i po.",
       "cta": "Zmniejsz PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "skanuj-dokument",
       "title": "Skanuj dokument telefonem – do PDF | FaLe PDF",
-      "description": "Skanuj dokumenty aparatem w telefonie: krawędzie są wykrywane, strona prostowana i poprawiana, a tekst staje się przeszukiwalny. Za darmo, bez konta.",
+      "description": "Skanuj dokumenty aparatem w telefonie: krawędzie są wykrywane, strona prostowana i poprawiana, a tekst staje się przeszukiwalny. Bez konta.",
       "h1": "Skanuj dokument telefonem",
       "lede": "Trzymaj telefon nad kartką – FaLe rozpozna stronę, wyprostuje ją i zrobi z niej czysty PDF.",
       "cta": "Skanuj teraz",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-na-word",
-      "title": "PDF na Word – konwersja za darmo, bez wysyłania | FaLe PDF",
-      "description": "Zamień PDF na edytowalny dokument Word (DOCX): akapity, nagłówki i pogrubienia zostają zachowane. Za darmo, bezpośrednio na urządzeniu.",
+      "title": "PDF na Word – konwersja bez wysyłania | FaLe PDF",
+      "description": "Zamień PDF na edytowalny dokument Word (DOCX): akapity, nagłówki i pogrubienia zostają zachowane. Bezpośrednio na urządzeniu.",
       "h1": "Zamień PDF na Word",
       "lede": "Zrób z PDF-a dokument Word, który możesz zmieniać – akapity, nagłówki i wyróżnienia zostają zachowane.",
       "cta": "Zamień PDF na Word",
@@ -388,17 +384,13 @@
         {
           "q": "Jaki format dostanę?",
           "a": "Dokument Word w formacie DOCX, który otworzysz we wszystkich popularnych edytorach tekstu."
-        },
-        {
-          "q": "Ile to kosztuje?",
-          "a": "Nic. Ta funkcja Pro jest w FaLe PDF także darmowa."
         }
       ]
     },
     "xfa": {
       "slug": "otworz-formularz-xfa",
       "title": "Otwórz i wypełnij formularz XFA – urzędowy | FaLe PDF",
-      "description": "Formularz urzędowy pokazuje tylko „Proszę czekać …”? FaLe PDF otwiera formularze XFA, wypełnia je, podpisuje i zapisuje – za darmo, także na telefonie.",
+      "description": "Formularz urzędowy pokazuje tylko „Proszę czekać …”? FaLe PDF otwiera formularze XFA, wypełnia je, podpisuje i zapisuje – także na telefonie.",
       "h1": "Otwórz i wypełnij formularz urzędowy (XFA)",
       "lede": "Niektóre formularze z urzędów i ambasad pokazują tylko „Proszę czekać …” albo pustą stronę. FaLe PDF je otwiera, ty je wypełniasz i znów zapisujesz.",
       "cta": "Otwórz formularz",
@@ -442,10 +434,6 @@
         {
           "q": "Czy obliczenia w formularzu działają?",
           "a": "Skrypty w formularzu nie są uruchamiane ze względów bezpieczeństwa. Automatyczne obliczenia lub kontrole wpisujesz więc samodzielnie."
-        },
-        {
-          "q": "Ile to kosztuje?",
-          "a": "Nic – bez konta i bez logowania."
         }
       ]
     }

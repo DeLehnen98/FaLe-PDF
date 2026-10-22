@@ -22,10 +22,10 @@ with sync_playwright() as _p:
 
 # --- 2) Feature graphic + OG image (HTML/CSS rendered by Chromium)
 TXT = {
-    'de': dict(claim='PDF & Office –\ngratis, privat, offline', chips=['Ausfüllen & unterschreiben', 'Scannen mit Texterkennung', 'Dokumente, Tabellen, Folien', 'Optionaler KI-Assistent'],
-               note='Alle Pro-Funktionen ohne Abo'),
-    'en': dict(claim='PDF & office –\nfree, private, offline', chips=['Fill & sign', 'Scan with text recognition', 'Documents, sheets, slides', 'Optional AI assistant'],
-               note='All pro features, no subscription'),
+    'de': dict(claim='PDF & Office –\nprivat und offline', chips=['Ausfüllen & unterschreiben', 'Scannen mit Texterkennung', 'Dokumente, Tabellen, Folien', 'Optionaler KI-Assistent'],
+               note='Alle Pro-Funktionen an Bord'),
+    'en': dict(claim='PDF & office –\nprivate and offline', chips=['Fill & sign', 'Scan with text recognition', 'Documents, sheets, slides', 'Optional AI assistant'],
+               note='All pro features on board'),
 }
 
 CSS = """
@@ -90,16 +90,18 @@ for lang, name in [('de', 'og-image.png'), ('en', 'og-image-en.png')]:
     Image.open(OUT / f'og-image-{lang}.png').convert('RGB').quantize(256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.FLOYDSTEINBERG).save(ROOT / name, optimize=True)
     print('wrote', ROOT / name)
 
-# Screenshots for the landing page (info.html / info-en.html)
-(ROOT / 'info-assets').mkdir(exist_ok=True)
+# Screenshots for the landing page (info.html / info-en.html). FALE_SITE_OUT redirects the info-assets/ and site/img/ output
+# (default: the repository root) so that a run can leave the website folders untouched.
+SITE = Path(os.environ.get('FALE_SITE_OUT', ROOT))
+(SITE / 'info-assets').mkdir(exist_ok=True)
 for lang in ('de', 'en'):
     for n in ('home', 'sign', 'ai'):
-        Image.open(SP / 'raw' / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 1140), Image.LANCZOS).save(ROOT / 'info-assets' / f'{n}-{lang}.webp', quality=74, method=6)
+        Image.open(SP / 'raw' / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 1140), Image.LANCZOS).save(SITE / 'info-assets' / f'{n}-{lang}.webp', quality=74, method=6)
 print('wrote info-assets/*.webp')
 
 # Screenshots for the start page of pdf.fale.network (site/img, 540 × 960 = half of the framed phone shots)
-(ROOT / 'site' / 'img').mkdir(parents=True, exist_ok=True)
+(SITE / 'site' / 'img').mkdir(parents=True, exist_ok=True)
 for lang in ('de', 'en'):
     for n in ('01_home', '02_sign', '03_scan', '06_sheet', '08_privacy'):
-        Image.open(OUT / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 960), Image.LANCZOS).save(ROOT / 'site' / 'img' / f'{lang}-{n}.webp', quality=78, method=6)
+        Image.open(OUT / 'phone' / lang / f'{n}.png').convert('RGB').resize((540, 960), Image.LANCZOS).save(SITE / 'site' / 'img' / f'{lang}-{n}.webp', quality=78, method=6)
 print('wrote site/img/*.webp')

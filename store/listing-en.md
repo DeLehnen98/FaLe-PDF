@@ -25,13 +25,13 @@ FaLe PDF – PDF & Office
 ## Short description (≤ 80)
 
 ```
-Sign, scan with text recognition & edit PDFs – free, private, works offline.
+Sign, scan with text recognition & edit PDFs – private, works offline.
 ```
 
 ## Full description (≤ 4000)
 
 ```
-FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. All pro features are free, with no subscription and no account. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
+FaLe PDF is your private office for phone and tablet: read, fill in, sign, scan and edit PDFs – plus documents, spreadsheets and presentations. The pro features are included too – no subscription, no account, no watermarks. Your files are processed on your device. Optionally, the FaLe account syncs them end-to-end encrypted between your devices.
 
 READ PDFS
 • Fast PDF viewer with search, bookmarks and outline
@@ -88,7 +88,7 @@ AI ASSISTANT (OPTIONAL)
 • Chat with a document: ask questions, get answers with page references
 • Summarize, translate, writing help, formula assistant, slides by AI
 • Flashcards & quizzes from your notes, letters by AI, translate photos
-• Free requests every day without an account. More: a voluntary video ad or FaLe Plus
+• A few requests included every day, no account needed. More: a voluntary video ad or FaLe Plus
 • Don’t want AI? One switch hides it completely
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
 
@@ -99,12 +99,12 @@ FAIR, NOT A SUBSCRIPTION TRAP
 PRIVATE BY DESIGN
 No account needed, no banner ads, no analytics. Optional FaLe account: FaLe Sync (end-to-end encrypted, servers in Frankfurt – we cannot read anything) and FaLe Plus on all your devices. You only see an ad if you start a video yourself to get extra AI requests. The camera is only used for scanning, notifications only for reminders you set yourself. Everything except the cloud AI, sharing and transfer works offline. Shared files are end-to-end encrypted – we cannot read them.
 
-Speaks your language: the app follows your phone's language automatically. Free, no watermarks. Optional: FaLe Plus for more AI requests.
+Speaks your language: the app follows your phone's language automatically. No watermarks. Optional: FaLe Plus for more AI requests.
 ```
 
 ## Feature bullets
 
-- All pro features free – no subscription, no account, no watermarks
+- All pro features on board – no subscription, no account, no watermarks
 - Fill in and sign PDFs
 - Scan with edge detection and offline text recognition (OCR)
 - AI assistant: ask your documents, with page references (optional)
@@ -121,11 +121,11 @@ Speaks your language: the app follows your phone's language automatically. Free,
 All files are in `store/graphics/` – see `store/graphics/README.md` for the Play Console slot of each file.
 Phone screenshot order (English) with the caption shown in the image:
 
-1. `phone/en/01_home.png` – "All pro features, free"
+1. `phone/en/01_home.png` – "All pro features on board"
 2. `phone/en/02_sign.png` – "Sign in seconds"
 3. `phone/en/03_scan.png` – "Scan with edge detection"
 4. `phone/en/04_ocr.png` – "Text recognition, offline"
-5. `phone/en/05_ai.png` – "AI assistant for your documents" (optional, 5 free requests every day)
+5. `phone/en/05_ai.png` – "AI assistant for your documents" (optional, only with your consent)
 6. `phone/en/06_sheet.png` – "Documents, spreadsheets & slides"
 7. `phone/en/07_reminders.png` – "Never miss a deadline"
 8. `phone/en/08_privacy.png` – "Your files stay on your phone"

@@ -170,7 +170,7 @@ export async function renderHome() {
       <div class="acct-start" data-acct-start hidden></div>
       <div class="free-card card" data-free hidden>
         <span class="free-ic">${oicon('gift')}</span>
-        <div><strong>Alles gratis – auch die Pro-Funktionen</strong><span>Kein Abo nötig, keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
+        <div><strong>Auch die Pro-Funktionen sind dabei</strong><span>Keine Werbebanner, kein Konto. Deine Dateien bleiben auf deinem Gerät – die Cloud-KI nutzt du nur, wenn du möchtest.</span></div>
         <button class="icon-btn" type="button" data-free-close aria-label="Hinweis ausblenden">${oicon('close')}</button>
       </div>
       <div class="month-box" data-month hidden></div>`;
@@ -315,7 +315,7 @@ const GROUPS = Tools.GROUPS || [
 function toolCard(t) {
   const tx = Tools.toolText(t, simpleOn());
   const b = h(`<button class="tool-card" type="button" data-tool="${t.id}"><span class="tile-ic">${oicon(t.icon)}</span>
-    <span class="tc-text"><h3>${esc(tx.title)}</h3><p>${esc(tx.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : t.pro ? '<span class="badge pro-badge inline-badge" title="Bei anderen Apps nur im Abo">Pro · gratis</span>' : ''}</span></button>`);
+    <span class="tc-text"><h3>${esc(tx.title)}</h3><p>${esc(tx.desc)}</p>${t.soon ? '<span class="badge inline-badge">Bald verfügbar</span>' : t.pro ? '<span class="badge pro-badge inline-badge" title="Bei anderen Apps oft nur im Abo">Pro-Funktion</span>' : ''}</span></button>`);
   b.addEventListener('click', () => toolClick(t));
   return b;
 }
@@ -324,7 +324,7 @@ export function renderTools(initialQ = null) {
   const el = viewEl('werkzeuge');
   if (!el.dataset.built) {
     el.dataset.built = '1';
-    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alles läuft auf deinem Gerät – auch die Pro-Funktionen sind gratis.</p></div></div>
+    el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Werkzeuge</h1><p class="page-sub">Alles läuft auf deinem Gerät – auch die Pro-Funktionen.</p></div></div>
       <div data-search></div>
       <section class="simple-sec" data-section="simple" data-simple-tools hidden></section>
       <div data-groups></div>
@@ -803,7 +803,7 @@ export async function renderSettings() {
         </select></div>
       <div class="settings-row"><div class="label"><strong>Ausgefüllte PDFs später änderbar</strong><span>Beim Ausfüllen &amp; Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.</span></div>
         <label class="switch"><input type="checkbox" data-memory-toggle ${lsGet('fale-form-memory', '') === 'auto' ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Ausgefüllte PDFs später änderbar</span></label></div>
-      <div class="settings-row"><div class="label"><strong>Hinweis „Alles gratis“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
+      <div class="settings-row"><div class="label"><strong>Hinweis „Pro-Funktionen“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
       <div class="settings-row"><div class="label"><strong>„Dein Monat“</strong><span>Kleine Statistik auf der Startseite. Wird nur auf diesem Gerät gezählt.</span></div>
         <label class="switch"><input type="checkbox" data-stats-toggle ${stats.statsEnabled() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">„Dein Monat“ anzeigen</span></label></div>
@@ -820,7 +820,7 @@ export async function renderSettings() {
     <div class="card card-pad">
       <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
         <strong>Alles bleibt auf deinem Gerät.</strong>
-        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet. Alle Funktionen – auch die, für die andere Apps ein Abo verlangen – sind kostenlos.</p>
+        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, es gibt keine Werbebanner und kein Tracking. Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.</p>
       </div></div>
       <p class="muted small" style="margin-top:12px">Version 2.0.0 · Ein Projekt von FaLe.dev</p>
       <strong>Open-Source-Komponenten</strong>
@@ -837,7 +837,7 @@ export async function renderSettings() {
     <h2 class="section-title">Mehr von FaLe</h2>
     <a class="card me-card me-link" href="${NETWORK_ORIGIN}/" target="_blank" rel="noopener" data-fale-network>
       <span class="me-avatar">${oicon('heart')}</span>
-      <div><strong>FaleNetwork</strong><span>Weitere freie Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.</span></div>
+      <div><strong>FaleNetwork</strong><span>Weitere Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.</span></div>
       <span class="me-go">${oicon('chevronRight')}</span>
     </a>
     <h2 class="section-title">Rechtliches</h2>

@@ -24,9 +24,9 @@
     "slug": "pdf-vorlesen",
     "name": "PDF vorlesen lassen",
     "short": "PDFs und Texte vorlesen lassen – mit Markierung, Tempo und Stimme deiner Wahl.",
-    "title": "PDF vorlesen lassen – kostenlos, ohne Hörzeitlimit | FaleNetwork",
+    "title": "PDF vorlesen lassen – ohne Hörzeitlimit | FaleNetwork",
     "h1": "PDF vorlesen lassen",
-    "metaDescription": "PDF vorlesen lassen mit den Stimmen deines Geräts: mitlaufende Markierung, Tempo, Stimme, ohne Seitenzahlen und Kopfzeilen. Gratis, ohne Konto, ohne Upload.",
+    "metaDescription": "PDF vorlesen lassen mit den Stimmen deines Geräts: mitlaufende Markierung, Tempo, Stimme, ohne Seitenzahlen und Kopfzeilen. Ohne Konto, ohne Upload.",
     "lede": "Lehn dich zurück: Dein Browser liest die PDF vor – und markiert mit, wo du gerade bist.",
     "pickLabel": "PDF auswählen",
     "primaryButton": "Vorlesen",
@@ -74,7 +74,7 @@
     "faq": [
       {
         "q": "Warum klingen die Stimmen je nach Gerät anders?",
-        "a": "Das Vorlesen nutzt die Sprachausgabe deines Geräts bzw. Browsers. Auf vielen Handys und Computern lassen sich in den Systemeinstellungen bessere Stimmen kostenlos nachinstallieren."
+        "a": "Das Vorlesen nutzt die Sprachausgabe deines Geräts bzw. Browsers. Auf vielen Handys und Computern lassen sich in den Systemeinstellungen bessere Stimmen nachinstallieren."
       },
       {
         "q": "Kann ich in der Mitte anfangen?",
@@ -94,9 +94,9 @@
     "slug": "read-pdf-aloud",
     "name": "Read PDF aloud",
     "short": "Have PDFs and texts read aloud – with highlighting, speed and a voice of your choice.",
-    "title": "Read PDF aloud – free, no listening limit | FaleNetwork",
+    "title": "Read PDF aloud – no listening limit | FaleNetwork",
     "h1": "Read a PDF aloud",
-    "metaDescription": "Have a PDF read aloud with your device’s voices: follow-along highlighting, speed, voice, without page numbers and headers. Free, no account, no upload.",
+    "metaDescription": "Have a PDF read aloud with your device’s voices: follow-along highlighting, speed, voice, without page numbers and headers. No account, no upload.",
     "lede": "Sit back: your browser reads the PDF aloud – and highlights where you are.",
     "pickLabel": "Choose PDF",
     "primaryButton": "Read aloud",
@@ -142,7 +142,7 @@
     "faq": [
       {
         "q": "Why do the voices sound different on each device?",
-        "a": "Reading uses your device’s or browser’s speech output. On many phones and computers you can install better voices for free in the system settings."
+        "a": "Reading uses your device’s or browser’s speech output. On many phones and computers you can install better voices in the system settings."
       },
       {
         "q": "Can I start in the middle?",

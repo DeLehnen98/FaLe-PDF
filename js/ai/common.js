@@ -41,7 +41,7 @@ export function statusCard({ onChange } = {}) {
       return set('not_configured', st);
     }
     if (!C.hasConsent()) {
-      body.innerHTML = `<div class="ai-banner consent">${oicon('shield')}<div><strong>Cloud-KI einrichten</strong><span>Einmalig zustimmen – danach täglich ${st.limits && st.limits.free ? st.limits.free : 'einige'} Anfragen gratis, ohne Konto. Gesendet wird nur der Text, den du auswählst.</span></div><button class="btn btn-primary btn-sm" type="button" data-consent>Zustimmen …</button></div>`;
+      body.innerHTML = `<div class="ai-banner consent">${oicon('shield')}<div><strong>Cloud-KI einrichten</strong><span>Einmalig zustimmen – danach täglich ${st.limits && st.limits.free ? st.limits.free : 'einige'} Anfragen inklusive, ohne Konto. Gesendet wird nur der Text, den du auswählst.</span></div><button class="btn btn-primary btn-sm" type="button" data-consent>Zustimmen …</button></div>`;
       $('[data-consent]', body).addEventListener('click', async () => {
         if (await consentDialog(st.provider)) { try { await C.ensureToken(); } catch {} refresh(true); }
       });

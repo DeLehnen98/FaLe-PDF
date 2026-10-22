@@ -4,7 +4,7 @@ Demo files are the English ones (fictional), the app UI follows the language."""
 
 CAP = {
  'fr': {
-  'home': ('Toutes les fonctions Pro, gratuites', 'Sans abonnement, sans compte, sans filigrane'),
+  'home': ('Toutes les fonctions Pro à bord', 'Sans compte, sans filigrane, sans bannières pub'),
   'sign': ('Signer en quelques secondes', 'Contrats et formulaires, directement sur ton téléphone'),
   'scan': ('Scanner avec détection des bords', 'Les pages sont repérées et redressées automatiquement'),
   'ocr': ('Reconnaissance de texte hors ligne', 'Des scans consultables, directement sur l’appareil'),
@@ -13,7 +13,7 @@ CAP = {
   'privacy': ('Tes fichiers restent sur ton téléphone', 'Sans compte, sans pistage, traitement sur l’appareil'),
  },
  'es': {
-  'home': ('Todas las funciones Pro, gratis', 'Sin suscripción, sin cuenta, sin marcas de agua'),
+  'home': ('Todas las funciones Pro a bordo', 'Sin cuenta, sin marcas de agua, sin banners'),
   'sign': ('Firma en segundos', 'Contratos y formularios, directamente en tu móvil'),
   'scan': ('Escanea con detección de bordes', 'Las páginas se detectan y enderezan solas'),
   'ocr': ('Reconocimiento de texto sin conexión', 'Escaneos con búsqueda, en tu propio dispositivo'),
@@ -22,7 +22,7 @@ CAP = {
   'privacy': ('Tus archivos se quedan en tu móvil', 'Sin cuenta, sin rastreo, todo en el dispositivo'),
  },
  'it': {
-  'home': ('Tutte le funzioni Pro, gratis', 'Niente abbonamento, account o filigrane'),
+  'home': ('Tutte le funzioni Pro a bordo', 'Niente account, filigrane o banner pubblicitari'),
   'sign': ('Firma in pochi secondi', 'Contratti e moduli, direttamente sul telefono'),
   'scan': ('Scansione con rilevamento dei bordi', 'Le pagine vengono riconosciute e raddrizzate'),
   'ocr': ('Riconoscimento del testo offline', 'Scansioni ricercabili, direttamente sul dispositivo'),
@@ -31,7 +31,7 @@ CAP = {
   'privacy': ('I tuoi file restano sul telefono', 'Nessun account, nessun tracciamento, tutto sul dispositivo'),
  },
  'pt': {
-  'home': ('Todas as funções Pro, grátis', 'Sem assinatura, sem conta, sem marcas d’água'),
+  'home': ('Todas as funções Pro a bordo', 'Sem conta, sem marcas d’água, sem banners de anúncios'),
   'sign': ('Assine em segundos', 'Contratos e formulários, direto no telemóvel'),
   'scan': ('Digitalize com deteção de margens', 'As páginas são detetadas e endireitadas sozinhas'),
   'ocr': ('Reconhecimento de texto offline', 'Digitalizações pesquisáveis, no próprio aparelho'),
@@ -40,7 +40,7 @@ CAP = {
   'privacy': ('Os seus ficheiros ficam no telemóvel', 'Sem conta, sem rastreio, tudo no aparelho'),
  },
  'nl': {
-  'home': ('Alle Pro-functies, gratis', 'Geen abonnement, geen account, geen watermerk'),
+  'home': ('Alle Pro-functies aan boord', 'Geen account, geen watermerk, geen advertentiebanners'),
   'sign': ('Ondertekenen in seconden', 'Contracten en formulieren, gewoon op je telefoon'),
   'scan': ('Scannen met randherkenning', 'Pagina’s worden automatisch herkend en rechtgezet'),
   'ocr': ('Tekstherkenning, ook offline', 'Doorzoekbare scans, op je eigen apparaat'),
@@ -49,7 +49,7 @@ CAP = {
   'privacy': ('Je bestanden blijven op je telefoon', 'Geen account, geen tracking, alles op het apparaat'),
  },
  'pl': {
-  'home': ('Wszystkie funkcje Pro za darmo', 'Bez abonamentu, bez konta, bez znaków wodnych'),
+  'home': ('Wszystkie funkcje Pro na pokładzie', 'Bez konta, bez znaków wodnych, bez banerów reklamowych'),
   'sign': ('Podpis w kilka sekund', 'Umowy i formularze prosto w telefonie'),
   'scan': ('Skanowanie z wykrywaniem krawędzi', 'Strony są wykrywane i prostowane automatycznie'),
   'ocr': ('Rozpoznawanie tekstu offline', 'Skany z wyszukiwaniem, na twoim urządzeniu'),
@@ -58,7 +58,7 @@ CAP = {
   'privacy': ('Twoje pliki zostają w telefonie', 'Bez konta, bez śledzenia, wszystko na urządzeniu'),
  },
  'tr': {
-  'home': ('Tüm Pro özellikler ücretsiz', 'Abonelik yok, hesap yok, filigran yok'),
+  'home': ('Tüm Pro özellikler dahil', 'Hesap yok, filigran yok, reklam banner’ı yok'),
   'sign': ('Saniyeler içinde imzala', 'Sözleşmeler ve formlar doğrudan telefonunda'),
   'scan': ('Kenar algılamalı tarama', 'Sayfalar otomatik bulunur ve düzeltilir'),
   'ocr': ('Çevrimdışı metin tanıma', 'Taramalar aranabilir olur, cihazının üzerinde'),
@@ -67,7 +67,7 @@ CAP = {
   'privacy': ('Dosyaların telefonunda kalır', 'Hesap yok, izleme yok, işlem cihazda'),
  },
  'uk': {
-  'home': ('Усі функції Pro безкоштовно', 'Без підписки, без акаунта, без водяних знаків'),
+  'home': ('Усі функції Pro на борту', 'Без акаунта, без водяних знаків, без рекламних банерів'),
   'sign': ('Підпис за лічені секунди', 'Договори й форми просто в телефоні'),
   'scan': ('Сканування з пошуком країв', 'Сторінки знаходяться й вирівнюються самі'),
   'ocr': ('Розпізнавання тексту офлайн', 'Скани з пошуком просто на пристрої'),
@@ -76,7 +76,7 @@ CAP = {
   'privacy': ('Ваші файли лишаються в телефоні', 'Без акаунта, без стеження, обробка на пристрої'),
  },
  'ru': {
-  'home': ('Все функции Pro бесплатно', 'Без подписки, без аккаунта, без водяных знаков'),
+  'home': ('Все функции Pro на борту', 'Без аккаунта, без водяных знаков, без рекламных баннеров'),
   'sign': ('Подпись за секунды', 'Договоры и формы прямо в телефоне'),
   'scan': ('Сканирование с поиском краёв', 'Страницы находятся и выравниваются сами'),
   'ocr': ('Распознавание текста офлайн', 'Сканы с поиском прямо на устройстве'),
@@ -85,7 +85,7 @@ CAP = {
   'privacy': ('Ваши файлы остаются в телефоне', 'Без аккаунта, без слежки, обработка на устройстве'),
  },
  'zh': {
-  'home': ('所有专业功能，全部免费', '无需订阅、无需账号、没有水印'),
+  'home': ('所有专业功能，一应俱全', '无需账号、没有水印、没有横幅广告'),
   'sign': ('几秒钟完成签名', '合同和表格，直接在手机上搞定'),
   'scan': ('自动识别边缘的扫描', '自动找到页面并把它摆正'),
   'ocr': ('离线文字识别', '扫描件可搜索，全在你的设备上完成'),
@@ -94,7 +94,7 @@ CAP = {
   'privacy': ('你的文件留在手机上', '无需账号、没有追踪、在设备上处理'),
  },
  'ja': {
-  'home': ('Pro 機能がすべて無料', 'サブスクなし・アカウント不要・透かしなし'),
+  'home': ('Pro 機能もすべて搭載', 'アカウント不要・透かしなし・バナー広告なし'),
   'sign': ('数秒で署名', '契約書やフォームをスマホでそのまま'),
   'scan': ('ふちを自動検出してスキャン', 'ページを自動で見つけてまっすぐに'),
   'ocr': ('オフラインで文字認識', 'スキャンを検索可能に、端末の中だけで'),
@@ -103,7 +103,7 @@ CAP = {
   'privacy': ('ファイルはスマホの中に', 'アカウント不要・追跡なし・端末上で処理'),
  },
  'ko': {
-  'home': ('모든 Pro 기능 무료', '구독도, 계정도, 워터마크도 없음'),
+  'home': ('모든 Pro 기능 포함', '계정도, 워터마크도, 배너 광고도 없음'),
   'sign': ('몇 초 만에 서명', '계약서와 양식을 휴대폰에서 바로'),
   'scan': ('가장자리 인식 스캔', '페이지를 자동으로 찾아 반듯하게'),
   'ocr': ('오프라인 글자 인식', '스캔을 검색 가능하게, 기기 안에서'),
@@ -112,7 +112,7 @@ CAP = {
   'privacy': ('파일은 휴대폰에 그대로', '계정 없음, 추적 없음, 기기에서 처리'),
  },
  'hi': {
-  'home': ('सभी Pro सुविधाएँ मुफ़्त', 'न सदस्यता, न खाता, न वॉटरमार्क'),
+  'home': ('सभी Pro सुविधाएँ शामिल', 'न खाता, न वॉटरमार्क, न बैनर विज्ञापन'),
   'sign': ('सेकंडों में हस्ताक्षर', 'अनुबंध और फ़ॉर्म सीधे फ़ोन पर'),
   'scan': ('किनारे पहचानने वाला स्कैन', 'पेज अपने-आप पहचाने और सीधे होते हैं'),
   'ocr': ('ऑफ़लाइन टेक्स्ट पहचान', 'स्कैन खोजने लायक, आपके डिवाइस पर ही'),
@@ -121,7 +121,7 @@ CAP = {
   'privacy': ('आपकी फ़ाइलें फ़ोन पर ही रहती हैं', 'न खाता, न ट्रैकिंग, सब डिवाइस पर'),
  },
  'id': {
-  'home': ('Semua fitur Pro, gratis', 'Tanpa langganan, tanpa akun, tanpa watermark'),
+  'home': ('Semua fitur Pro sudah termasuk', 'Tanpa akun, tanpa watermark, tanpa iklan banner'),
   'sign': ('Tanda tangan dalam hitungan detik', 'Kontrak dan formulir, langsung di ponsel'),
   'scan': ('Pindai dengan deteksi tepi', 'Halaman dikenali dan diluruskan otomatis'),
   'ocr': ('Pengenalan teks offline', 'Hasil pindaian bisa dicari, langsung di perangkat'),

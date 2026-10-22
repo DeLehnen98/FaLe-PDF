@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "FaLe PDF – free PDF & office tools, no subscription, no upload",
-    "description": "Read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. Free, no account, everything on your device."
+    "title": "FaLe PDF – PDF & office tools, no subscription, no upload",
+    "description": "Read, fill in, sign, scan with text recognition and convert PDFs – plus documents, spreadsheets and presentations. No account, everything on your device."
   },
   "skip": "Skip to content",
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "h1": "Get your paperwork done. No subscription, no upload.",
-    "lede": "FaLe PDF reads, fills in, signs, scans and converts – plus documents, spreadsheets and presentations. Free and right on your device.",
+    "lede": "FaLe PDF reads, fills in, signs, scans and converts – plus documents, spreadsheets and presentations. Right on your device.",
     "try": "Try it in your browser"
   },
   "stores": {
@@ -25,7 +25,7 @@
   },
   "desk": {
     "h2": "For Windows and Mac",
-    "intro": "Install FaLe PDF on your computer – just like a regular program: with its own icon, its own window and it works without internet. Free, no account and no installer file.",
+    "intro": "Install FaLe PDF on your computer – just like a regular program: with its own icon, its own window and it works without internet. No account and no installer file.",
     "steps": [
       { "b": "Click “Download”.", "t": "FaLe PDF opens in your browser." },
       { "b": "Confirm “Install”.", "t": "Your browser asks once." },
@@ -59,8 +59,8 @@
     ]
   },
   "free": {
-    "h2": "Free instead of a subscription",
-    "intro": "Many PDF apps charge a subscription for these features. Here they are free and without watermarks.",
+    "h2": "No subscription, no watermark",
+    "intro": "Many PDF apps charge a subscription for these features. Here they come without a subscription and without watermarks.",
     "note": "If you want to support the development, you can choose FaLe Plus or a one-time thank-you in the Android app.",
     "items": ["Sign & fill in", "Text recognition (OCR)", "PDF to Word, Excel, PowerPoint", "Redact", "Compress", "Manage pages", "PDF/A for authorities", "Password protection", "Compare PDFs", "Batch processing"]
   },
@@ -71,7 +71,6 @@
   "faq": {
     "h2": "Questions",
     "items": [
-      { "q": "Is FaLe PDF really free?", "a": "Yes. All PDF and office features are free, with no subscription and no watermark. Only the optional cloud AI has a daily free allowance." },
       { "q": "Are my files uploaded?", "a": "No. Your files are processed and stored on your device. Only if you deliberately use the cloud AI, sharing by link or sync does anything leave your device – encrypted, or only the text you selected." },
       { "q": "Does it work offline?", "a": "Yes. Everything except cloud AI, sharing and transfer works without internet." },
       { "q": "Can I install FaLe PDF on my computer?", "a": "Yes. Under “For Windows and Mac” above, click “Download” and confirm “Install”. On Windows this works with Edge or Chrome, on a Mac with Safari, Chrome or Edge. FaLe PDF will soon be in the Microsoft Store as well." },

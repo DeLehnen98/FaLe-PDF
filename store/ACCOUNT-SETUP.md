@@ -134,7 +134,7 @@ Supabase → Project Settings → **JWT Keys**: auf **asymmetrische Schlüssel (
 Speicher-Kontingente stehen **in der Datenbank** (nicht in Vercel), damit sie serverseitig gelten:
 ```sql
 select * from private.fale_sync_config;                                          -- ansehen
-update private.fale_sync_config set value = 2147483648 where key = 'free_bytes'; -- z. B. 2 GB gratis
+update private.fale_sync_config set value = 2147483648 where key = 'free_bytes'; -- z. B. 2 GB inklusive
 update private.fale_sync_config set value = 21474836480 where key = 'plus_bytes';-- 20 GB mit Plus
 ```
 Weitere Schlüssel: `chunk_bytes` (nicht ändern – muss zum Bucket-Limit passen), `max_pending`, `max_items`,

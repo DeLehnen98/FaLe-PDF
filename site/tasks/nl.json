@@ -4,13 +4,13 @@
     "navLabel": "Hoofdnavigatie",
     "home": "Startpagina",
     "openApp": "FaLe PDF openen",
-    "badge": "Gratis · zonder account · je bestanden blijven op je apparaat",
+    "badge": "Zonder account · je bestanden blijven op je apparaat",
     "stepsH": "Zo werkt het",
     "whyH": "Waarom FaLe PDF",
     "faqH": "Veelgestelde vragen",
     "moreH": "Dit kan ook",
     "endH": "Probeer het meteen",
-    "endText": "FaLe PDF werkt in de browser, op je telefoon en op je computer. Alle functies zijn gratis.",
+    "endText": "FaLe PDF werkt in de browser, op je telefoon en op je computer.",
     "privacy": "Privacy",
     "imprint": "Colofon",
     "footer": "FaLe PDF – een aanbod van FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "pdf-ondertekenen",
-      "title": "PDF ondertekenen – gratis, zonder account | FaLe PDF",
-      "description": "Onderteken een PDF op je telefoon of computer: teken je handtekening, bewaar hem en plaats hem met één tik. Gratis, zonder account en zonder uploaden.",
+      "title": "PDF ondertekenen – zonder account | FaLe PDF",
+      "description": "Onderteken een PDF op je telefoon of computer: teken je handtekening, bewaar hem en plaats hem met één tik. Zonder account en zonder uploaden.",
       "h1": "PDF ondertekenen",
       "lede": "Teken je handtekening met je vinger of de muis en plaats hem met één tik in elke PDF: een contract, formulier of machtiging.",
       "cta": "Nu een PDF ondertekenen",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Zonder abonnement",
-          "d": "Ondertekenen is gratis en blijft gratis – zonder watermerk en zonder account."
+          "d": "Ondertekenen kan zonder abonnement – zonder watermerk en zonder account."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "pdf-formulier-invullen",
-      "title": "PDF-formulier invullen – gratis, ook op je telefoon | FaLe PDF",
-      "description": "Vul PDF-formulieren in: tekstvelden, vakjes en keuzelijsten op je telefoon of computer – of schrijf op een ingescand papieren formulier. Gratis, zonder account.",
+      "title": "PDF-formulier invullen – ook op je telefoon | FaLe PDF",
+      "description": "Vul PDF-formulieren in: tekstvelden, vakjes en keuzelijsten op je telefoon of computer – of schrijf op een ingescand papieren formulier. Zonder account.",
       "h1": "PDF-formulier invullen",
       "lede": "Vul formuliervelden in of schrijf gewoon op de plek waar iets hoort op een ingescand formulier – met grote letters en duidelijke knoppen.",
       "cta": "Formulier invullen",
@@ -128,7 +128,7 @@
     "edit": {
       "slug": "pdf-bewerken",
       "title": "PDF bewerken – tekst en afbeeldingen toevoegen | FaLe PDF",
-      "description": "Bewerk een PDF op je telefoon of computer: voeg tekst en afbeeldingen toe, vervang bestaande tekst en dek stukken af. Gratis, zonder account en zonder uploaden.",
+      "description": "Bewerk een PDF op je telefoon of computer: voeg tekst en afbeeldingen toe, vervang bestaande tekst en dek stukken af. Zonder account en zonder uploaden.",
       "h1": "PDF bewerken",
       "lede": "Voeg tekst en afbeeldingen toe, wijzig bestaande tekst of dek stukken af – direct in je PDF.",
       "cta": "PDF bewerken",
@@ -156,8 +156,8 @@
           "d": "Grootte met A− en A+, vet, kleur – zonder door menu’s te zoeken."
         },
         {
-          "t": "Gratis in plaats van Pro",
-          "d": "Wat anderen alleen met een abonnement bieden, is hier gratis – zonder watermerk."
+          "t": "Zonder watermerk",
+          "d": "Ook wat anderen alleen met een abonnement bieden, krijg je hier zonder watermerk."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "pdf-samenvoegen",
       "title": "PDF samenvoegen – meerdere PDF’s tot één | FaLe PDF",
-      "description": "Voeg meerdere PDF’s samen tot één bestand en bepaal de volgorde – op je telefoon of computer, gratis, zonder account en zonder uploaden.",
+      "description": "Voeg meerdere PDF’s samen tot één bestand en bepaal de volgorde – op je telefoon of computer, zonder account en zonder uploaden.",
       "h1": "PDF’s samenvoegen",
       "lede": "Voeg facturen, scans of hoofdstukken samen tot één PDF – in de volgorde die je wilt.",
       "cta": "PDF’s samenvoegen",
@@ -226,17 +226,13 @@
         {
           "q": "Blijft tekst selecteerbaar?",
           "a": "Ja. De pagina’s worden ongewijzigd overgenomen, dus tekst blijft selecteerbaar en doorzoekbaar."
-        },
-        {
-          "q": "Kost het iets?",
-          "a": "Nee. Samenvoegen is gratis, zonder watermerk en zonder account."
         }
       ]
     },
     "compress": {
       "slug": "pdf-comprimeren",
       "title": "PDF comprimeren – voor e-mail en uploads | FaLe PDF",
-      "description": "Maak een PDF kleiner zodat hij in de e-mail of het uploadformulier past: afbeeldingen verkleinen of zonder kwaliteitsverlies inpakken. Gratis, zonder uploaden.",
+      "description": "Maak een PDF kleiner zodat hij in de e-mail of het uploadformulier past: afbeeldingen verkleinen of zonder kwaliteitsverlies inpakken. Zonder uploaden.",
       "h1": "PDF comprimeren",
       "lede": "Te groot voor de e-mail of het online formulier? FaLe PDF maakt het bestand kleiner – je ziet de grootte voor en na.",
       "cta": "PDF comprimeren",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "document-scannen",
       "title": "Document scannen met je telefoon – als PDF | FaLe PDF",
-      "description": "Scan documenten met de camera van je telefoon: randen worden herkend, de pagina wordt rechtgezet en verbeterd, de tekst doorzoekbaar. Gratis, zonder account.",
+      "description": "Scan documenten met de camera van je telefoon: randen worden herkend, de pagina wordt rechtgezet en verbeterd, de tekst doorzoekbaar. Zonder account.",
       "h1": "Document scannen met je telefoon",
       "lede": "Houd je telefoon boven het papier – FaLe herkent de pagina, zet hem recht en maakt er een nette PDF van.",
       "cta": "Nu scannen",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-naar-word",
-      "title": "PDF naar Word omzetten – gratis, zonder upload | FaLe PDF",
-      "description": "Zet een PDF om in een bewerkbaar Word-document (DOCX): alinea’s, koppen en vet blijven behouden. Gratis, direct op je apparaat.",
+      "title": "PDF naar Word omzetten – zonder upload | FaLe PDF",
+      "description": "Zet een PDF om in een bewerkbaar Word-document (DOCX): alinea’s, koppen en vet blijven behouden. Direct op je apparaat.",
       "h1": "PDF naar Word omzetten",
       "lede": "Maak van een PDF een Word-document dat je kunt wijzigen – alinea’s, koppen en accenten blijven behouden.",
       "cta": "PDF naar Word omzetten",
@@ -388,17 +384,13 @@
         {
           "q": "Welk formaat krijg ik?",
           "a": "Een Word-document in DOCX-formaat, dat in alle gangbare tekstverwerkers opengaat."
-        },
-        {
-          "q": "Wat kost het?",
-          "a": "Niets. Ook deze Pro-functie is gratis in FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "xfa-formulier-openen",
       "title": "XFA-formulier openen en invullen – overheid | FaLe PDF",
-      "description": "Toont een overheidsformulier alleen “Even geduld …”? FaLe PDF opent XFA-formulieren, vult ze in, ondertekent en bewaart ze – gratis, ook op je telefoon.",
+      "description": "Toont een overheidsformulier alleen “Even geduld …”? FaLe PDF opent XFA-formulieren, vult ze in, ondertekent en bewaart ze – ook op je telefoon.",
       "h1": "Overheidsformulier (XFA) openen en invullen",
       "lede": "Sommige formulieren van instanties en ambassades tonen alleen “Even geduld …” of een lege pagina. FaLe PDF opent ze, jij vult ze in en slaat ze weer op.",
       "cta": "Formulier openen",
@@ -442,10 +434,6 @@
         {
           "q": "Werken berekeningen in het formulier?",
           "a": "Scripts in het formulier worden om veiligheidsredenen niet uitgevoerd. Automatische berekeningen of controles vul je daarom zelf in."
-        },
-        {
-          "q": "Wat kost het?",
-          "a": "Niets – zonder account en zonder aanmelding."
         }
       ]
     }

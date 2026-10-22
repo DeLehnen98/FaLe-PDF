@@ -32,7 +32,7 @@ rules (longest side ≤ 2 × shortest side).
 
 | # | German (`phone/de`) | English (`phone/en`) | Screen |
 |---|---|---|---|
-| 1 | Alle Pro-Funktionen gratis | All pro features, free | Home |
+| 1 | Alle Pro-Funktionen an Bord | All pro features on board | Home |
 | 2 | Unterschreiben in Sekunden | Sign in seconds | Fill & sign with a drawn signature |
 | 3 | Scannen mit Kantenerkennung | Scan with edge detection | Camera scanner, page detected |
 | 4 | Texterkennung – auch offline | Text recognition, offline | Scanned letter (OCR) – search hits highlighted |
@@ -46,8 +46,8 @@ Tablet: 7" = home, sign, AI chat · 10" = home (sidebar layout), PDF viewer, doc
 ## Notes for the owner
 
 - **AI screenshot (#5):** the AI backend was mocked during capture (answer text is fixed in
-  `tools/answers.py`); the subtitle says “täglich 5 Anfragen gratis / 5 free requests every day”, which matches
-  `FREE_DAILY=5` (default in `api/_lib/config.js`). If you change the free quota, regenerate.
+  `tools/answers.py`); the subtitle says “Optional – nur nach deiner Zustimmung / Optional – only with your consent”.
+  No price or quota claim is made in any caption (the product is not advertised as free).
 - The screenshots do not yet show the new sharing / signature-request / transfer features – regenerate
   once they are final (add a capture step in `tools/capture.py`).
 - Dates in the reminders and scan shots are relative to the day of capture.
@@ -66,3 +66,5 @@ creates the demo files (`tools/gen_demo.py`, incl. a fake camera stream for the 
 library API, mocks only `/api/ai*`), frames the captures (`tools/compose.py`) and renders the icon, feature
 graphics, OG images and the landing-page screenshots in `info-assets/` (`tools/brand.py`). Finally `tools/desktop.py` writes the Microsoft Store desktop screenshots (`desktop/`), the manifest screenshots
 (`/screenshots/`) – the landing page’s window picture `site/img/<lang>-desktop.webp` is the `files` capture at 1120 × 630.
+
+`FALE_SITE_OUT=<dir>` redirects the output of `brand.py`/`desktop.py` for `info-assets/` and `site/img/` (default: the repository), e.g. to regenerate the store graphics without touching the website folders.

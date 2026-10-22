@@ -25,9 +25,9 @@
     "slug": "pdf-seiten-loeschen",
     "name": "PDF-Seiten löschen",
     "short": "Einzelne Seiten antippen und aus der PDF entfernen.",
-    "title": "PDF-Seiten löschen – kostenlos, ohne Upload | FaleNetwork",
+    "title": "PDF-Seiten löschen – ohne Upload | FaleNetwork",
     "h1": "PDF-Seiten löschen",
-    "metaDescription": "Seiten aus einer PDF löschen: Vorschaubilder antippen oder Bereiche wie „2, 5-7“ eingeben. Gelöschte Seiten sind wirklich weg. Gratis, ohne Konto, ohne Upload.",
+    "metaDescription": "Seiten aus einer PDF löschen: Vorschaubilder antippen oder Bereiche wie „2, 5-7“ eingeben. Gelöschte Seiten sind wirklich weg. Ohne Konto, ohne Upload.",
     "lede": "Tippe die Seiten an, die weg sollen – sie werden entfernt, der Rest bleibt, wie er ist.",
     "primaryButton": "Seiten löschen",
     "keywords": [
@@ -97,9 +97,9 @@
     "slug": "delete-pdf-pages",
     "name": "Delete PDF pages",
     "short": "Tap pages and remove them from a PDF.",
-    "title": "Delete PDF pages – free, no upload | FaleNetwork",
+    "title": "Delete PDF pages – no upload | FaleNetwork",
     "h1": "Delete pages from a PDF",
-    "metaDescription": "Remove pages from a PDF: tap the thumbnails or type ranges like “2, 5-7”. Deleted pages are really gone from the file. Free, no account, no upload.",
+    "metaDescription": "Remove pages from a PDF: tap the thumbnails or type ranges like “2, 5-7”. Deleted pages are really gone from the file. No account, no upload.",
     "lede": "Tap the pages you want gone – everything else stays as it is.",
     "primaryButton": "Delete pages",
     "keywords": [

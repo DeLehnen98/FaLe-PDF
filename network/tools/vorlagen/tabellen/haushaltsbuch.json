@@ -4,7 +4,7 @@
  "cat": "Finanzen",
  "name": "Haushaltsbuch",
  "short": "Buchungen erfassen, Plan und Ist je Kategorie vergleichen",
- "desc": "Kostenloses Haushaltsbuch als Excel-Vorlage (XLSX): Buchungen eintragen, Kategorien mit Plan und Ist vergleichen, Sparquote ablesen – auch im Browser ausfüllbar.",
+ "desc": "Haushaltsbuch als Excel-Vorlage (XLSX): Buchungen eintragen, Kategorien mit Plan und Ist vergleichen, Sparquote ablesen – auch im Browser ausfüllbar.",
  "search": "",
  "intro": "Das Haushaltsbuch hat zwei Blätter: In „Buchungen“ trägst du jede Einnahme und Ausgabe ein, die „Übersicht“ sortiert alles automatisch nach Kategorien und zeigt dir, wo du über oder unter deinem Plan liegst.",
  "uses": [
@@ -70,7 +70,7 @@
   "slug": "household-budget",
   "name": "Household budget",
   "short": "Log transactions and compare plan and actual by category",
-  "desc": "Free household budget spreadsheet (XLSX): log income and spending, compare each category with your plan and see your savings rate – fill it in right in the browser.",
+  "desc": "Household budget spreadsheet (XLSX): log income and spending, compare each category with your plan and see your savings rate – fill it in right in the browser.",
   "intro": "Two sheets: log every transaction in “Buchungen”; the “Übersicht” sheet groups everything by category and shows where you are over or under plan.",
   "inside": [
    "A transaction log with date, description, category (drop-down) and amount",

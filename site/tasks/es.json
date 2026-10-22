@@ -4,13 +4,13 @@
     "navLabel": "Navegación principal",
     "home": "Inicio",
     "openApp": "Abrir FaLe PDF",
-    "badge": "Gratis · sin cuenta · tus archivos se quedan en tu dispositivo",
+    "badge": "Sin cuenta · tus archivos se quedan en tu dispositivo",
     "stepsH": "Cómo se hace",
     "whyH": "Por qué FaLe PDF",
     "faqH": "Preguntas frecuentes",
     "moreH": "También puedes",
     "endH": "Pruébalo ahora",
-    "endText": "FaLe PDF funciona en el navegador, en el móvil y en el ordenador. Todas las funciones son gratis.",
+    "endText": "FaLe PDF funciona en el navegador, en el móvil y en el ordenador.",
     "privacy": "Privacidad",
     "imprint": "Aviso legal",
     "footer": "FaLe PDF – un servicio de FaLe.dev",
@@ -19,8 +19,8 @@
   "tasks": {
     "sign": {
       "slug": "firmar-pdf",
-      "title": "Firmar PDF – gratis y sin cuenta | FaLe PDF",
-      "description": "Firma un PDF en el móvil o en el ordenador: dibuja tu firma, guárdala y colócala con un toque. Gratis, sin cuenta y sin subir nada.",
+      "title": "Firmar PDF – sin cuenta | FaLe PDF",
+      "description": "Firma un PDF en el móvil o en el ordenador: dibuja tu firma, guárdala y colócala con un toque. Sin cuenta y sin subir nada.",
       "h1": "Firmar un PDF",
       "lede": "Dibuja tu firma con el dedo o el ratón y colócala con un toque en cualquier PDF: un contrato, un formulario o un poder.",
       "cta": "Firmar un PDF ahora",
@@ -49,7 +49,7 @@
         },
         {
           "t": "Sin suscripción",
-          "d": "Firmar es gratis y lo seguirá siendo: sin marca de agua y sin cuenta."
+          "d": "Firmar no requiere suscripción: sin marca de agua y sin cuenta."
         }
       ],
       "faq": [
@@ -73,8 +73,8 @@
     },
     "fill": {
       "slug": "rellenar-formulario-pdf",
-      "title": "Rellenar formularios PDF – gratis, también en el móvil | FaLe PDF",
-      "description": "Rellena formularios PDF: campos de texto, casillas y listas en el móvil o el ordenador, o escribe sobre un formulario de papel escaneado. Gratis y sin cuenta.",
+      "title": "Rellenar formularios PDF – también en el móvil | FaLe PDF",
+      "description": "Rellena formularios PDF: campos de texto, casillas y listas en el móvil o el ordenador, o escribe sobre un formulario de papel escaneado. Sin cuenta.",
       "h1": "Rellenar un formulario PDF",
       "lede": "Rellena los campos del formulario o escribe directamente donde corresponda en un formulario escaneado, con letra grande y botones claros.",
       "cta": "Rellenar un formulario",
@@ -127,8 +127,8 @@
     },
     "edit": {
       "slug": "editar-pdf",
-      "title": "Editar PDF – añadir texto e imágenes, gratis | FaLe PDF",
-      "description": "Edita un PDF en el móvil o el ordenador: añade texto e imágenes, reemplaza el texto existente y tapa partes. Gratis, sin cuenta y sin subir nada.",
+      "title": "Editar PDF – añadir texto e imágenes | FaLe PDF",
+      "description": "Edita un PDF en el móvil o el ordenador: añade texto e imágenes, reemplaza el texto existente y tapa partes. Sin cuenta y sin subir nada.",
       "h1": "Editar un PDF",
       "lede": "Añade texto e imágenes, cambia el texto existente o tapa partes, directamente en tu PDF.",
       "cta": "Editar un PDF",
@@ -156,8 +156,8 @@
           "d": "Tamaño con A− y A+, negrita, color: sin buscar entre menús."
         },
         {
-          "t": "Gratis, no Pro",
-          "d": "Lo que otros solo ofrecen con suscripción aquí es gratis, sin marca de agua."
+          "t": "Sin marca de agua",
+          "d": "Incluso lo que otros solo ofrecen con suscripción aquí va sin marca de agua."
         }
       ],
       "faq": [
@@ -182,7 +182,7 @@
     "merge": {
       "slug": "unir-pdf",
       "title": "Unir PDF – varios PDF en uno solo | FaLe PDF",
-      "description": "Une varios PDF en un solo archivo y elige el orden, en el móvil o el ordenador. Gratis, sin cuenta y sin subir nada.",
+      "description": "Une varios PDF en un solo archivo y elige el orden, en el móvil o el ordenador. Sin cuenta y sin subir nada.",
       "h1": "Unir PDF",
       "lede": "Junta facturas, escaneos o capítulos en un solo PDF, en el orden que quieras.",
       "cta": "Unir PDF",
@@ -226,17 +226,13 @@
         {
           "q": "¿El texto sigue siendo seleccionable?",
           "a": "Sí. Las páginas se incorporan sin cambios, así que el texto sigue siendo seleccionable y se puede buscar."
-        },
-        {
-          "q": "¿Cuesta algo?",
-          "a": "No. Unir es gratis, sin marca de agua y sin cuenta."
         }
       ]
     },
     "compress": {
       "slug": "comprimir-pdf",
       "title": "Comprimir PDF – para correo y formularios | FaLe PDF",
-      "description": "Reduce el tamaño de un PDF para que quepa en un correo o en un formulario de subida: reduce las imágenes o comprime sin pérdida. Gratis, sin subir nada.",
+      "description": "Reduce el tamaño de un PDF para que quepa en un correo o en un formulario de subida: reduce las imágenes o comprime sin pérdida. Sin subir nada.",
       "h1": "Comprimir un PDF",
       "lede": "¿Es demasiado grande para el correo o el formulario en línea? FaLe PDF hace el archivo más pequeño; ves el tamaño antes y después.",
       "cta": "Comprimir un PDF",
@@ -290,7 +286,7 @@
     "scan": {
       "slug": "escanear-documento",
       "title": "Escanear documentos con el móvil – en PDF | FaLe PDF",
-      "description": "Escanea documentos con la cámara del móvil: se detectan los bordes, la página se endereza y se mejora, y el texto se puede buscar. Gratis y sin cuenta.",
+      "description": "Escanea documentos con la cámara del móvil: se detectan los bordes, la página se endereza y se mejora, y el texto se puede buscar. Sin cuenta.",
       "h1": "Escanear un documento con el móvil",
       "lede": "Sujeta el móvil sobre el papel: FaLe detecta la página, la endereza y la convierte en un PDF limpio.",
       "cta": "Escanear ahora",
@@ -343,8 +339,8 @@
     },
     "word": {
       "slug": "pdf-a-word",
-      "title": "Convertir PDF a Word – gratis y sin subir nada | FaLe PDF",
-      "description": "Convierte un PDF en un documento de Word editable (DOCX): se conservan los párrafos, los títulos y la negrita. Gratis, directamente en tu dispositivo.",
+      "title": "Convertir PDF a Word – sin subir nada | FaLe PDF",
+      "description": "Convierte un PDF en un documento de Word editable (DOCX): se conservan los párrafos, los títulos y la negrita. Directamente en tu dispositivo.",
       "h1": "Convertir PDF a Word",
       "lede": "Convierte un PDF en un documento de Word que puedes modificar: se conservan los párrafos, los títulos y los resaltados.",
       "cta": "Convertir PDF a Word",
@@ -388,17 +384,13 @@
         {
           "q": "¿Qué formato obtengo?",
           "a": "Un documento de Word en formato DOCX, que se abre en todos los programas de texto habituales."
-        },
-        {
-          "q": "¿Cuánto cuesta?",
-          "a": "Nada. Esta función Pro también es gratis en FaLe PDF."
         }
       ]
     },
     "xfa": {
       "slug": "abrir-formulario-xfa",
       "title": "Abrir y rellenar formularios XFA – oficiales | FaLe PDF",
-      "description": "¿Un formulario oficial solo muestra “Espere, por favor …”? FaLe PDF abre formularios XFA, los rellena, los firma y los guarda. Gratis, también en el móvil.",
+      "description": "¿Un formulario oficial solo muestra “Espere, por favor …”? FaLe PDF abre formularios XFA, los rellena, los firma y los guarda. También en el móvil.",
       "h1": "Abrir y rellenar un formulario oficial (XFA)",
       "lede": "Algunos formularios de administraciones y embajadas solo muestran “Espere, por favor …” o una página vacía. FaLe PDF los abre, tú los rellenas y los guardas de nuevo.",
       "cta": "Abrir un formulario",
@@ -442,10 +434,6 @@
         {
           "q": "¿Funcionan los cálculos del formulario?",
           "a": "Los scripts del formulario no se ejecutan, por seguridad. Por eso los cálculos o comprobaciones automáticos los escribes tú mismo."
-        },
-        {
-          "q": "¿Cuánto cuesta?",
-          "a": "Nada: sin cuenta y sin registro."
         }
       ]
     }

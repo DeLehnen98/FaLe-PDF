@@ -91,7 +91,7 @@ export async function mount(screen, { arg: id, hash }) {
     main.appendChild(c);
     // the recipient may not know FaLe PDF yet: one quiet line about it (no pop-up, no tracking)
     main.appendChild(h(`<div class="card sh-invite"><span class="sh-invite-ic">${oicon('file')}</span><div class="grow"><strong>Selbst sicher teilen, unterschreiben und PDFs bearbeiten?</strong>
-      <span>FaLe PDF ist kostenlos – ohne Abo und ohne Konto.</span></div><a class="btn btn-soft btn-sm" href="#/start">Ausprobieren</a></div>`));
+      <span>FaLe PDF: PDFs lesen, ausfüllen und unterschreiben – ohne Konto.</span></div><a class="btn btn-soft btn-sm" href="#/start">Ausprobieren</a></div>`));
     c.querySelector('[data-dl]').addEventListener('click', () => act('download', c));
     const ob = c.querySelector('[data-open]');
     if (ob) ob.addEventListener('click', () => act('open', c));

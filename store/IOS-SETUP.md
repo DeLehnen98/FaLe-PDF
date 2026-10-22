@@ -36,7 +36,7 @@ ersetzen und einen Rundgang durch alle Hauptbereiche – auf iPhone und iPad.
 - **Erinnerungen** (Fristen) als Mitteilungen, **Haptik**, **Teilen** über das iOS-Teilen-Menü.
 
 Vorerst **aus** auf iOS: Werbevideos und FaLe Plus / Danke-Beiträge (Käufe bräuchten eine eigene Prüfung
-über die App Store Server API – siehe unten). Die App ist auf iOS also komplett kostenlos.
+über die App Store Server API – siehe unten). Auf iOS gibt es also weder Käufe noch Werbung.
 
 ## Was du für den App Store brauchst
 

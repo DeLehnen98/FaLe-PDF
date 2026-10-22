@@ -198,7 +198,7 @@ function benefitsHtml(st) {
   const items = [
     st.os === 'ios' || st.os === 'android' ? 'Eigenes Symbol auf dem Startbildschirm' : 'Eigenes Symbol und eigenes Fenster – wie ein normales Programm',
     'Funktioniert auch ohne Internet',
-    'Kostenlos, ohne Konto, nichts wird hochgeladen',
+    'Ohne Konto, nichts wird hochgeladen',
   ];
   if (isDesktop() && st.canPrompt) items.splice(1, 0, 'PDFs direkt per Doppelklick öffnen');
   return `<ul class="inst-benefits">${items.map(t => `<li>${CHECK}<span>${esc(t)}</span></li>`).join('')}</ul>`;
@@ -306,7 +306,7 @@ export function renderMeCard(box) {
     }
     const sub = st.installed && !st.canPrompt ? 'Ist schon installiert – so findest du es'
       : st.os === 'ios' || st.os === 'android' ? 'Mit eigenem Symbol auf dem Startbildschirm'
-        : 'Eigenes Symbol und Fenster, auch offline – kostenlos';
+        : 'Eigenes Symbol und Fenster, auch offline';
     box.appendChild(h(`<button type="button" class="card inst-me" data-inst-open><span class="inst-me-ic">${ICON}</span><span class="inst-me-text"><strong>${esc(installTitle(st.os))}</strong><span>${esc(sub)}</span></span><span class="btn btn-soft btn-sm inst-me-btn">${st.installed && !st.canPrompt ? 'Anzeigen' : 'Installieren'}</span></button>`));
     box.querySelector('[data-inst-open]').addEventListener('click', () => showInstallDialog());
   };
@@ -341,7 +341,7 @@ function showHint() {
     <div class="inst-hint-text"><strong>${esc(installTitle(st.os))}</strong><span>Mit eigenem Symbol und Fenster – PDFs öffnest du dann direkt per Doppelklick.</span></div>
     <div class="inst-hint-actions"><button type="button" class="btn btn-primary btn-sm" data-hint-go>Installieren</button><button type="button" class="btn btn-ghost btn-sm" data-hint-no>Nicht jetzt</button></div>
   </aside>`);
-  if (st.os === 'mac' && !st.canPrompt) el.querySelector('.inst-hint-text span').textContent = 'Mit eigenem Symbol im Dock und eigenem Fenster – kostenlos.';
+  if (st.os === 'mac' && !st.canPrompt) el.querySelector('.inst-hint-text span').textContent = 'Mit eigenem Symbol im Dock und eigenem Fenster.';
   const done = () => { ls.set(HINT_KEY, '1'); el.remove(); };
   el.querySelector('[data-hint-no]').addEventListener('click', done);
   el.querySelector('[data-hint-go]').addEventListener('click', async () => {
