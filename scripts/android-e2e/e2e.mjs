@@ -608,7 +608,8 @@ async function main() {
     if (!boxes.length) return 'Banner sichtbar; Ansicht nicht auslesbar (uiautomator)';
     boxes.sort((a, b) => b.h - a.h);
     const app = boxes[0], ad = boxes.find(b => b !== app && b.h < 500);
-    const g = await ev(`const r = s => document.querySelector(s).getBoundingClientRect(); return { slot: r('.ad-slot'), nav: r('.bottom-nav'), dpr: devicePixelRatio };`);
+    const g = await ev(`const r = s => { const b = document.querySelector(s).getBoundingClientRect(); return { top: b.top, bottom: b.bottom }; }; return { slot: r('.ad-slot'), nav: r('.bottom-nav'), dpr: devicePixelRatio };`);
+    if (![g.slot.top, g.slot.bottom, g.nav.bottom, g.dpr].every(Number.isFinite)) throw new Error('Lage von Streifen/Navigation nicht lesbar: ' + JSON.stringify(g));
     const devY = y => Math.round(app.t + y * g.dpr);
     const info = { app, ad, slotTop: devY(g.slot.top), labelBottom: devY(g.slot.top + 18), slotBottom: devY(g.slot.bottom), navBottom: devY(g.nav.bottom) };
     if (!ad) return 'Banner gemeldet, Werbe-Ansicht nicht im Baum gefunden: ' + JSON.stringify(info);
