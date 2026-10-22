@@ -1157,7 +1157,7 @@ CFG_JSON = '{ "cloudAi": false, "post": false, "cloudShare": false }'
 POLICY_JSON = '[{"origin": "%s", "managed_configuration_url": "https://intranet.example.com/fale-pdf.json", "managed_configuration_hash": "<SHA-256 der Datei>"}]' % PDF_ORIGIN
 BUSINESS = {
     'de': {
-        'title': 'FaLe PDF in Firma und Verwaltung – lokal, kostenlos, zentral verteilbar | FaleNetwork',
+        'title': 'FaLe PDF in Firma und Verwaltung – lokal und zentral verteilbar | FaleNetwork',
         'desc': 'PDFs auf allen Arbeitsplätzen lesen, ausfüllen, unterschreiben, schwärzen und umwandeln – ohne Upload, ohne Konto. Verteilung und Firmen-Einstellungen über die Richtlinien von Edge und Chrome.',
         'h1': 'FaLe PDF in der Firma einsetzen.',
         'lede': 'Die Dokumente bleiben auf den Arbeitsplätzen. Ihre IT verteilt FaLe PDF über die Richtlinien von Microsoft Edge oder Google Chrome und kann alles abschalten, was über das Internet geht.',
@@ -1165,7 +1165,7 @@ BUSINESS = {
         'facts_h': 'Was Datenschutz und IT wissen wollen',
         'facts': [
             ('Verarbeitung auf dem Gerät', 'Anzeigen, Ausfüllen, Unterschreiben, Schwärzen, Texterkennung, Komprimieren und Umwandeln laufen im Browser auf dem jeweiligen PC. Dabei werden keine Dokumente auf unsere Server geladen.'),
-            ('Ohne Konto und Lizenzschlüssel', 'Keine Anmeldung, keine Benutzerverwaltung, keine Seats. FaLe PDF ist kostenlos.'),
+            ('Ohne Konto und Lizenzschlüssel', 'Keine Anmeldung und keine Benutzerverwaltung – FaLe PDF startet sofort auf jedem Arbeitsplatz.'),
             ('Offline nutzbar', 'Nach dem ersten Start funktioniert FaLe PDF auch ohne Internetverbindung.'),
             ('Online nur auf Wunsch', 'Nur drei Funktionen gehen über das Internet: Cloud-KI (nur mit Einwilligung), Brief per Post und Fax sowie verschlüsseltes Teilen. Jede lässt sich zentral abschalten (siehe unten).'),
             ('Kein Tracking', 'Keine Analyse-Tools und keine Werbebanner – Details in der <a href="%s">Datenschutzerklärung</a>.' % PDF_PRIVACY),
@@ -1192,7 +1192,7 @@ BUSINESS = {
         'back': 'Zurück zu FaLe PDF',
     },
     'en': {
-        'title': 'FaLe PDF at work – local, free, deployable company-wide | FaleNetwork',
+        'title': 'FaLe PDF at work – local and deployable company-wide | FaleNetwork',
         'desc': 'Read, fill in, sign, redact and convert PDFs on every workstation – no upload, no account. Deployment and company settings via Edge and Chrome policies.',
         'h1': 'Use FaLe PDF in your organisation.',
         'lede': 'Documents stay on the workstations. Your IT deploys FaLe PDF with Microsoft Edge or Google Chrome policies and can switch off everything that goes over the internet.',
@@ -1200,7 +1200,7 @@ BUSINESS = {
         'facts_h': 'What privacy officers and IT want to know',
         'facts': [
             ('Processing on the device', 'Viewing, filling in, signing, redacting, text recognition, compressing and converting run in the browser on each PC. No documents are uploaded to our servers.'),
-            ('No account, no licence keys', 'No sign-in, no user management, no seats. FaLe PDF is free.'),
+            ('No account, no licence keys', 'No sign-in and no user management – FaLe PDF starts right away on every workstation.'),
             ('Works offline', 'After the first start, FaLe PDF also works without an internet connection.'),
             ('Online only on request', 'Only three features use the internet: cloud AI (only with consent), letters by post and fax, and encrypted sharing. Each can be switched off centrally (see below).'),
             ('No tracking', 'No analytics tools and no ad banners – details in the <a href="%s">privacy policy</a>.' % PDF_PRIVACY),
