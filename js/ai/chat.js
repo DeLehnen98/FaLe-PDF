@@ -7,9 +7,19 @@ import { statusCard, docPicker, docChip, getDoc, gate } from './common.js';
 import { ensureCloud, showAiError, richText, copyText, progressNote } from './ui.js';
 import { docPages } from './doctext.js';
 import { makeChunks, buildIndex, selectContext } from './retrieval.js';
-import { AI_CONFIG } from './config.js';
+import { AI_CONFIG, outputLang } from './config.js';
+import { canSpeak, speakText } from './speak.js';
 
 const SUGGEST = ['Worum geht es in diesem Dokument?', 'Welche Fristen, Termine oder Beträge werden genannt?', 'Was muss ich jetzt tun?'];
+// follow-ups offered under each answer (the ones not asked yet) – one tap instead of typing
+const MORE = ['Erkläre das in einfachen Worten.', 'Muss ich etwas bezahlen – und bis wann?', 'Kann ich widersprechen? Bis wann?', 'Welche Unterlagen werden verlangt?', 'Wen kann ich bei Fragen kontaktieren?', 'Was passiert, wenn ich nichts tue?'];
+const STOP = new Set('aber alle auch dass dein deine diese dieser dieses durch eine einem einen einer eines etwas haben habe kann können muss müssen nach nicht noch oder sind soll sollen über unter warum was welche welcher welches wenn werden wird wie wieso wo zum zur bitte gibt steht dokument'.split(' '));
+/** One word of the question that also appears on the cited page – the viewer highlights it there. */
+function markWord(question, text) {
+  const t = String(text || '').toLowerCase();
+  const words = String(question || '').toLowerCase().match(/[\p{L}\d][\p{L}\d-]{3,}/gu) || [];
+  return words.filter(w => !STOP.has(w) && t.includes(w)).sort((a, b) => b.length - a.length)[0] || '';
+}
 
 export async function mount(screen, { params }) {
   const doc = await getDoc(params.get('doc'));
@@ -54,6 +64,7 @@ export async function mount(screen, { params }) {
 
   let index = null, unit = 'S.', busy = false, ac = null;
   const history = [];
+  const asked = new Set();
   const kind = kindOf(doc);
 
   async function ensureIndex() {
@@ -70,15 +81,16 @@ export async function mount(screen, { params }) {
     } catch (e) { progressNote(prep, ''); throw e; }
   }
 
-  function openCite(page) {
-    if (kind === 'pdf') { location.hash = `#/ansicht/${doc.id}?seite=${page}`; return; }
-    const chunk = index && index.chunks.find(c => c.page === page);
-    const q = chunk ? chunk.text.split(/\s+/).slice(0, 4).join(' ') : '';
+  function openCite(page, question) {
+    const onPage = index ? index.chunks.filter(c => c.page === page).map(c => c.text).join(' ') : '';
+    const word = markWord(question, onPage);
+    if (kind === 'pdf') { location.hash = `#/ansicht/${doc.id}?seite=${page}${word ? `&q=${encodeURIComponent(word)}` : ''}`; return; }
+    const q = word || (onPage ? onPage.split(/\s+/).slice(0, 4).join(' ') : '');
     location.hash = `${openHash(doc)}${q ? `?q=${encodeURIComponent(q)}` : ''}`;
   }
   msgs.addEventListener('click', e => {
     const c = e.target.closest('.ai-cite');
-    if (c) { openCite(parseInt(c.dataset.page, 10)); return; }
+    if (c) { const m = c.closest('.ai-msg'); openCite(parseInt(c.dataset.page, 10), m ? m.dataset.question : ''); return; }
     const s = e.target.closest('[data-q]');
     if (s) { ta.value = s.dataset.q; composer.requestSubmit(); }
     const cp = e.target.closest('[data-copy]');
@@ -95,28 +107,49 @@ export async function mount(screen, { params }) {
     sendBtn.innerHTML = `${oicon('stop')}<span class="hide-sm">Stopp</span>`;
     sendBtn.setAttribute('aria-label', 'Antwort abbrechen');
     ta.value = ''; ta.style.height = 'auto';
+    msgs.querySelectorAll('.ai-more').forEach(x => x.remove()); // old follow-up chips go away
+    asked.add(q);
     msgs.appendChild(h(`<div class="ai-msg ai-msg-user"><div class="ai-bubble" data-no-i18n>${esc(q)}</div></div>`));
     const bot = h(`<div class="ai-msg"><span class="ai-avatar">${oicon('sparkle')}</span><div class="ai-bubble"><div class="ai-answer" data-no-i18n><span class="ai-typing" aria-label="KI schreibt"><i></i><i></i><i></i></span></div><div class="ai-msg-foot" hidden></div></div></div>`);
     msgs.appendChild(bot);
     bot.scrollIntoView({ block: 'end', behavior: 'smooth' });
     const ans = $('.ai-answer', bot), foot = $('.ai-msg-foot', bot);
+    bot.dataset.question = q;
     ac = new AbortController();
     try {
       const idx = await ensureIndex();
       const ctx = selectContext(idx, q + ' ' + (history.length ? history[history.length - 1].q : ''), { k: 8, maxChars: AI_CONFIG.MAX_CHAT_CONTEXT });
       let shown = '';
+      const sent = new Set(ctx.map(c => c.page));
       const r = await C.runTask('chat', { question: q, title: doc.name, unit, chunks: ctx.map(c => ({ page: c.page, text: c.text })), history: history.slice(-3) }, {}, {
         stream: true, signal: ac.signal,
-        onDelta: (t, full) => { shown = full; ans.innerHTML = richText(full); },
+        onDelta: (t, full) => { shown = full; ans.innerHTML = richText(full, { pages: sent }); },
       });
       const text = r.output || shown;
-      ans.innerHTML = richText(text);
+      ans.innerHTML = richText(text, { pages: sent });
       history.push({ q, a: text });
       const pages = [...new Set(ctx.map(c => c.page))];
       foot.hidden = false;
       foot.innerHTML = `<details><summary>${oicon('file')} ${pages.length} Textstelle${pages.length === 1 ? '' : 'n'} verwendet</summary><div class="ai-src">${pages.map(p => `<button type="button" class="ai-cite" data-page="${p}">${esc(unit)} ${p}</button>`).join(' ')}</div></details>
+        <button class="icon-btn" type="button" data-say aria-label="Antwort vorlesen"></button>
         <button class="icon-btn" type="button" data-copy aria-label="Antwort kopieren">${oicon('copy')}</button>`;
+      const say = $('[data-say]', foot);
+      if (canSpeak()) {
+        say.innerHTML = oicon('speaker');
+        let hd = null;
+        say.addEventListener('click', () => {
+          if (hd) { hd.stop(); return; }
+          say.innerHTML = oicon('stop'); say.setAttribute('aria-label', 'Vorlesen beenden');
+          hd = speakText(text, { lang: outputLang(), onEnd: () => { hd = null; say.innerHTML = oicon('speaker'); say.setAttribute('aria-label', 'Antwort vorlesen'); } });
+        });
+      } else say.remove();
+      // honest about sources: no page given, or a page the AI never saw → say so
+      const good = ans.querySelectorAll('.ai-cite').length, odd = ans.querySelectorAll('.ai-cite-x').length;
+      if (odd) foot.insertAdjacentHTML('afterbegin', '<p class="ai-warn" data-cite-warn>Eine Seitenangabe passt nicht zu den gesendeten Textstellen (mit „?“ markiert) – bitte im Dokument nachsehen.</p>');
+      else if (!good && text.length > 120) foot.insertAdjacentHTML('afterbegin', '<p class="ai-note muted small" data-cite-warn>Ohne Seitenangabe – prüfe Wichtiges bitte im Dokument.</p>');
       if (r.partial) foot.insertAdjacentHTML('afterbegin', `<p class="ai-warn">${esc(r.partialMessage)}</p>`);
+      const more = [...SUGGEST, ...MORE].filter(x => !asked.has(x)).slice(0, 3);
+      if (more.length) $('.ai-bubble', bot).appendChild(h(`<div class="ai-suggest ai-more" aria-label="Weitere Fragen">${more.map(x => `<button class="lt-chip" type="button" data-q="${esc(x)}">${esc(x)}</button>`).join('')}</div>`));
     } catch (err) {
       if (err && err.name === 'AbortError') { ans.insertAdjacentHTML('beforeend', '<p class="muted small">Abgebrochen.</p>'); const t = ans.querySelector('.ai-typing'); if (t) t.remove(); }
       else { bot.remove(); showAiError(err); }

@@ -731,10 +731,14 @@ def desktop(p):
     step('image', image_view)
 
     def me_and_dark():
+        goto_hash(page, '#/einstellungen/info')
+        page.wait_for_selector('.license-list')
+        check('Ich › Über: licences incl. new libs', all(x in page.locator('.license-list').inner_text() for x in ['JSZip', 'docx', 'PptxGenJS', 'PDF.js', 'pdf-lib']))
+        goto_hash(page, '#/einstellungen/speicher')
+        page.wait_for_selector('[data-storage-me] .stat-row')
+        check('Ich › Speicher: storage', 'belegt' in page.locator('[data-storage-me]').inner_text())
         goto_hash(page, '#/einstellungen')
         page.wait_for_selector('.me-card')
-        check('Ich page: licences incl. new libs', all(x in page.locator('.license-list').inner_text() for x in ['JSZip', 'docx', 'PptxGenJS', 'PDF.js', 'pdf-lib']))
-        check('Ich page: storage', 'belegt' in page.locator('[data-storage-me]').inner_text())
         shot(page, 'desktop_me_light')
         set_theme(page, 'dark')
         for h, n in [('#/start', 'home'), ('#/dateien', 'files'), ('#/werkzeuge', 'tools'), ('#/einstellungen', 'me'), ('#/vorlagen', 'templates')]:

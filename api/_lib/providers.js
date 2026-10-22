@@ -161,7 +161,8 @@ function mockReply(task, user, system = '') {
       if (!blocks.length) return 'Dazu finde ich nichts im Dokument.';
       const best = blocks.slice().sort((a, b) => b.score - a.score)[0];
       const other = blocks.find(b => b !== best);
-      return `Laut Dokument steht die Antwort zu „${q}“ hier [${best.u} ${best.p}].${other ? ` Mehr dazu [${other.u} ${other.p}].` : ''}`;
+      const ghost = /geisterseite/i.test(q) ? ` Siehe auch [${best.u} 999].` : ''; // a page the app never sent (tests the check)
+      return `Laut Dokument steht die Antwort zu „${q}“ hier [${best.u} ${best.p}].${other ? ` Mehr dazu [${other.u} ${other.p}].` : ''}${ghost}`;
     }
     case 'rewrite': return inner.replace(/\bsehr sehr\b/gi, 'sehr').replace(/\bFeler\b/g, 'Fehler').replace(/\bschlecht\b/g, 'ungünstig') + (/kürze/i.test(user) ? '' : ' Vielen Dank.');
     case 'explain': return `Erklärung (Test): „${firstWords}“ bedeutet in einfachen Worten etwas Wichtiges.`;
@@ -211,7 +212,11 @@ function mock() {
       text = text.slice(0, maxTokens * 4);
       if (stream) {
         const parts = text.match(/\S+\s*/g) || [text];
-        for (const p of parts) { if (signal && signal.aborted) break; onDelta && onDelta(p); await sleep(4); }
+        for (const [i, p] of parts.entries()) {
+          if (signal && signal.aborted) break;
+          onDelta && onDelta(p);
+          await sleep(i === 2 && user.includes('[[mock:stall]]') ? 6000 : 4); // a stream that goes quiet (client watchdog test)
+        }
       }
       return { text, usage: { input: Math.ceil(user.length / 4), output: Math.ceil(text.length / 4) } };
     },

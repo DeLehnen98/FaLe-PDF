@@ -359,13 +359,14 @@ def run_combo(b, vw, vh, lang, theme):
             check(f'{tag}: bottom nav → start', poll(page, "location.hash === '#/start'", 4000))
             page.click('.bottom-nav [data-nav="werkzeuge"]')
             check(f'{tag}: bottom nav → tools', poll(page, "location.hash === '#/werkzeuge'", 4000))
-        go(page, '#/einstellungen', '[data-simple-toggle]')
+        go(page, '#/einstellungen/allgemein', '[data-simple-toggle]')
         check(f'{tag}: settings switch checked', page.is_checked('[data-simple-toggle]'))
+        go(page, '#/einstellungen', '[data-me-app]')
         check(f'{tag}: settings AI status card hidden in simple mode', page.evaluate(JS_VIS, '#view-einstellungen [data-ai-me]') == 0)
         if vw < 900:
             page.set_viewport_size({'width': 360, 'height': 780})
             over = {}
-            for r, sel in [('#/start', '[data-simple-home] .s-tile'), ('#/werkzeuge', '[data-simple-tools] .tool-card'), ('#/dateien', '#view-dateien [data-files]'), ('#/einstellungen', '[data-simple-toggle]')]:
+            for r, sel in [('#/start', '[data-simple-home] .s-tile'), ('#/werkzeuge', '[data-simple-tools] .tool-card'), ('#/dateien', '#view-dateien [data-files]'), ('#/einstellungen', '[data-me-app]'), ('#/einstellungen/allgemein', '[data-simple-toggle]')]:
                 go(page, r, sel)
                 o = page.evaluate(JS_OVERFLOW)
                 if o:
@@ -383,7 +384,7 @@ def run_combo(b, vw, vh, lang, theme):
             page.screenshot(path=os.path.join(OUT, f'{tag}_360_start.png'))
             page.set_viewport_size({'width': vw, 'height': vh})
         # off via the settings switch
-        go(page, '#/einstellungen', '[data-simple-toggle]')
+        go(page, '#/einstellungen/allgemein', '[data-simple-toggle]')
         lt_reset(page)
         page.locator('[data-simple-row] .switch').click()
         check(f'{tag}: switched off in settings', poll(page, "!document.documentElement.classList.contains('simple')", 3000))
@@ -395,7 +396,7 @@ def run_combo(b, vw, vh, lang, theme):
         go(page, '#/werkzeuge', '#view-werkzeuge .tool-card')
         check(f'{tag}: normal tools list again', page.evaluate(JS_VIS, '[data-simple-tools]') == 0 and page.evaluate(JS_VIS, '#view-werkzeuge .tool-card') >= 80)
         # on again via settings, off via „Alle Funktionen zeigen“
-        go(page, '#/einstellungen', '[data-simple-toggle]')
+        go(page, '#/einstellungen/allgemein', '[data-simple-toggle]')
         page.locator('[data-simple-row] .switch').click()
         check(f'{tag}: on again in settings', poll(page, "document.documentElement.classList.contains('simple')", 3000))
         go(page, '#/start', '[data-simple-off]')
@@ -474,7 +475,7 @@ def menu_labels(page):
 def ts_settings(b):
     tag = 'textsize settings'
     ctx, page, errors = ts_context(b, simple=False, vw=390, vh=844)
-    go(page, '#/einstellungen', '[data-textsize-row]')
+    go(page, '#/einstellungen/allgemein', '[data-textsize-row]')
     btns = page.locator('[data-textsize-row] [data-ts-opt]')
     check(f'{tag}: three choices', btns.count() == 3 and page.locator('[data-textsize-row] [data-ts-opt="normal"]').get_attribute('aria-pressed') == 'true')
     small = page.evaluate("[...document.querySelectorAll('[data-textsize-row] [data-ts-opt]')].map(e => e.getBoundingClientRect()).filter(r => r.width < 48 || r.height < 48).length")
@@ -508,7 +509,7 @@ def ts_settings(b):
         check(f'{tag}: Werkzeuge (all) → {ts} without long task > 200 ms', lt_max(page) <= 200 and responsive(page), str(page.evaluate('window.__lt')))
     page.click('[data-simple-all]')
     page.evaluate("import('./js/simple.js').then(m => m.setSimple(false))")
-    go(page, '#/einstellungen', '[data-textsize-row]')
+    go(page, '#/einstellungen/allgemein', '[data-textsize-row]')
     page.click('[data-textsize-row] [data-ts-opt="normal"]')
     check(f'{tag}: back to normal', poll(page, "!document.documentElement.classList.contains('ts-l') && !document.documentElement.classList.contains('ts-xl')", 2000)
           and page.evaluate("localStorage.getItem('fale-textsize')") is None)
@@ -516,7 +517,7 @@ def ts_settings(b):
     ctx.close()
 
 
-TS_ROUTES = ['#/start', '#/werkzeuge', '#/dateien', '#/einstellungen', '#/werkzeug/komprimieren', '#/werkzeug/zusammenfuegen',
+TS_ROUTES = ['#/start', '#/werkzeuge', '#/dateien', '#/einstellungen', '#/einstellungen/allgemein', '#/werkzeug/komprimieren', '#/werkzeug/zusammenfuegen',
              '#/werkzeug/bilder', '#/werkzeug/scannen', '#/werkzeug/word-pdf']
 TS_DOC_ROUTES = ['#/werkzeug/unterschreiben?doc={id}', '#/werkzeug/komprimieren?doc={id}', '#/werkzeug/pdf-word?doc={id}']
 

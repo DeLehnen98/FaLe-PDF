@@ -221,3 +221,11 @@
 /* „KI ausblenden“ notice on the hub */
 .ai-hidden-note { margin-bottom: 12px; display: grid; gap: 6px; justify-items: start; }
 .ai-hidden-note p { margin: 0; }
+/* a page reference the AI never got (not clickable) + the honest hint below the answer */
+.ai-cite-x { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; margin: 0 1px; border-radius: 999px; border: 1px dashed var(--border-strong); color: var(--text-3); font-size: calc(12px * var(--ts, 1)); font-weight: 600; vertical-align: 1px; }
+.ai-note { margin: 6px 0 0; }
+.ai-more { margin-top: 12px; }
+.ai-res-acts [data-say][aria-pressed="true"] { background: var(--primary); color: var(--on-primary); }
+.ai-msg-foot { flex-wrap: wrap; justify-content: flex-start; }
+.ai-msg-foot > details { margin-right: auto; }
+.ai-msg-foot > p { flex: 1 1 100%; }

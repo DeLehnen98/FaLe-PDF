@@ -535,7 +535,7 @@ def desktop(p):
         if pb.count():
             pb.click()
             page.wait_for_timeout(800)
-        goto_hash(page, '#/einstellungen')
+        goto_hash(page, '#/einstellungen/allgemein')
         page.locator('[data-theme-opt="dark"]').click()
         check('dark theme applied', page.evaluate("document.documentElement.dataset.theme") == 'dark')
         page.locator('#set-zoom').select_option('page-width')
@@ -543,7 +543,7 @@ def desktop(p):
         goto_hash(page, '#/start')
         page.wait_for_timeout(300)
         shot(page, 'desktop_home_dark')
-        goto_hash(page, '#/einstellungen')
+        goto_hash(page, '#/einstellungen/allgemein')
         page.locator('[data-theme-opt="auto"]').click()
         check('auto theme', page.evaluate("document.documentElement.dataset.theme") is None)
         # delete a doc via menu

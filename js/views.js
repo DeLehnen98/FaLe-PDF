@@ -9,6 +9,7 @@ import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, ope
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
 import { isNative, platformName } from './platform.js';
+import { APP_VERSION } from './version.js';
 import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
 
@@ -599,21 +600,61 @@ async function renderStorage(box, docs) {
       ${usage != null ? `<span><b>${formatSize(usage)}</b> von ${formatSize(quota)} belegt</span>` : ''}</div>
     ${usage != null ? `<div class="meter" role="progressbar" aria-label="Speichernutzung" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct.toFixed(1)}"><span style="width:${pct}%"></span></div>` : ''}
     ${byCat.length ? `<div class="stat-row small">${byCat.map(x => `<span>${esc(x.c.label)}: <b>${x.n}</b></span>`).join('')}</div>` : ''}
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px">
-      <span class="muted small" data-persist-state>${persisted ? '✓ Speicher ist dauerhaft – der Browser löscht deine Dateien nicht automatisch.' : 'Der Browser darf Daten bei Speichermangel entfernen.'}</span>
-      ${persisted ? '' : `<button class="btn btn-soft btn-sm" type="button" data-persist>${oicon('shield')} Speicher dauerhaft machen</button>`}
+    <div class="persist-line">
+      <span class="muted small" data-persist-state>${isNative() ? 'Deine Dateien liegen im Speicher der App auf diesem Gerät. Sie bleiben, bis du die App löschst oder ihre Daten entfernst.' : persisted ? '✓ Speicher ist dauerhaft – der Browser löscht deine Dateien nicht automatisch.' : 'Der Browser darf Daten bei Speichermangel entfernen.'}</span>
+      ${isNative() || persisted ? '' : `<button class="btn btn-soft btn-sm" type="button" data-persist>${oicon('shield')} Speicher dauerhaft machen</button>`}
     </div>`;
   const pb = $('[data-persist]', box);
   if (pb) pb.addEventListener('click', requestPersist);
 }
 
+/** Web only: ask the browser to keep FaLe's storage. In the Android/iPhone app the files live in the app's own storage –
+ * there is nothing to ask for (the WebView always says no), so the app never shows the button. */
 export async function requestPersist() {
+  if (isNative()) { toast('Deine Dateien liegen sicher im Speicher der App.', 'success'); return; }
   try {
-    if (!navigator.storage || !navigator.storage.persist) { toast('Dieser Browser unterstützt dauerhaften Speicher nicht.', 'error'); return; }
+    if (!navigator.storage || !navigator.storage.persist) { toast('Dieser Browser unterstützt dauerhaften Speicher nicht. Lege zur Sicherheit ab und zu eine Sicherung an.', 'info', { timeout: 6000 }); return; }
     const ok = await navigator.storage.persist();
-    toast(ok ? 'Speicher ist jetzt dauerhaft.' : 'Der Browser hat die Anfrage abgelehnt. Installiere die App, um die Chance zu erhöhen.', ok ? 'success' : 'info', { timeout: 5000 });
+    toast(ok ? 'Speicher ist jetzt dauerhaft.' : 'Dein Browser entscheidet das selbst und hat abgelehnt. Lege zur Sicherheit ab und zu eine Sicherung an: Ich › Speicher & Sicherung.', ok ? 'success' : 'info', { timeout: 6500 });
     emitChange();
   } catch (e) { errorToast(e, 'Anfrage fehlgeschlagen.'); }
+}
+
+/** „Sicherung aller Dateien“: one ZIP with every file (folders kept), saved like any other file. Files are stored
+ * uncompressed (PDFs and images are compressed already) – quick and light on memory. */
+export async function backupAll(btn) {
+  const docs = await db.listFiles();
+  if (!docs.length) { toast('Noch keine Dateien zum Sichern.', 'info'); return; }
+  const label = btn ? btn.innerHTML : '';
+  if (btn) { btn.disabled = true; btn.textContent = 'Sicherung wird erstellt …'; }
+  try {
+    const { loadScriptGlobal } = await import('./tools/common.js');
+    if (!window.JSZip) await loadScriptGlobal('../../vendor/jszip/jszip.min.js', 'JSZip', 'Die ZIP-Bibliothek');
+    const folders = (await db.getSetting('folders', [])) || [];
+    const byId = new Map(folders.map(f => [f.id, f]));
+    const clean = s => String(s || '').replace(/[\\/:*?"<>|\u0000-\u001f]/g, '_').trim().slice(0, 120) || 'Datei';
+    const pathOf = id => { const p = []; let f = byId.get(id), n = 0; while (f && n++ < 20) { p.unshift(clean(f.name)); f = byId.get(f.parent); } return p.length ? p.join('/') + '/' : ''; };
+    const zip = new window.JSZip();
+    const used = new Set();
+    let n = 0;
+    for (const d of docs) {
+      const blob = await db.getFile(d.id).catch(() => null);
+      if (!blob) continue;
+      let name = pathOf(d.folder) + clean(d.name);
+      for (let i = 2; used.has(name.toLowerCase()); i++) name = (pathOf(d.folder) + clean(d.name)).replace(/(\.[^./]*)?$/, m => ` (${i})${m}`);
+      used.add(name.toLowerCase());
+      zip.file(name, blob, { binary: true, date: new Date(d.modifiedAt || d.createdAt || Date.now()) });
+      n++;
+    }
+    const out = await zip.generateAsync({ type: 'blob', compression: 'STORE', streamFiles: true });
+    const day = new Date().toISOString().slice(0, 10);
+    const { saveFile } = await import('./platform.js');
+    const r = await saveFile(out, `FaLe PDF Sicherung ${day}.zip`, 'application/zip');
+    if (r && r.ok && r.where === 'download') toast(`Sicherung mit ${n} Datei${n === 1 ? '' : 'en'} wurde heruntergeladen.`, 'success', { timeout: 5000 });
+    try { localStorage.setItem('fale-last-backup', String(Date.now())); } catch { /* storage blocked */ }
+  } catch (e) { errorToast(e, 'Die Sicherung konnte nicht erstellt werden.'); } finally {
+    if (btn && btn.isConnected) { btn.disabled = false; btn.innerHTML = label; }
+  }
 }
 
 export async function deleteAllConfirm() {
@@ -756,16 +797,54 @@ function policyCard() {
     <span class="muted small">Alles andere läuft wie immer – nur auf deinem Gerät.</span></div></div>`;
 }
 
-export async function renderSettings() {
+// „Ich“ is a short overview; the settings live on their own pages (#/einstellungen/<sub>), opened from the list.
+const ME_SUBS = { allgemein: 'Einstellungen', speicher: 'Speicher & Sicherung', info: 'Über FaLe PDF' };
+let meSub = null;
+
+/** One row of a grouped list (icon tile, title, explanation, optional value, chevron). */
+function ilRow({ href, ic, tone, title, sub = '', meta = '', attrs = '', external = false }) {
+  return `<a class="il-row" href="${href}"${external ? ' target="_blank" rel="noopener"' : ''} ${attrs}>
+    <span class="il-ic" data-tone="${tone}">${oicon(ic)}</span>
+    <span class="il-txt"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>
+    ${meta ? `<span class="il-meta">${meta}</span>` : ''}<span class="il-go" aria-hidden="true">${oicon(external ? 'link' : 'chevronRight')}</span></a>`;
+}
+
+function subHead(title, sub) {
+  return `<div class="page-head sub-head"><div>
+    <button class="sub-back" type="button" data-me-back>${oicon('chevronLeft')}<span>Ich</span></button>
+    <h1 class="page-title">${title}</h1>${sub ? `<p class="page-sub">${sub}</p>` : ''}</div></div>`;
+}
+
+function bindMeCommon(el) {
+  const back = $('[data-me-back]', el);
+  if (back) back.addEventListener('click', () => { import('./app.js').then(m => m.goBack('#/einstellungen')).catch(() => { location.hash = '#/einstellungen'; }); });
+  $$('[data-privacy-link], [data-impressum]', el).forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    import('./platform.js').then(m => m.openLegalPage(a.getAttribute('href'))).catch(() => window.open(a.href, '_blank', 'noopener'));
+  }));
+}
+
+export async function renderSettings(sub = meSub) {
+  if (!Object.hasOwn(ME_SUBS, sub || '')) sub = null;
   const el = viewEl('einstellungen');
-  const zoom = await db.getSetting('defaultZoom', 'auto');
+  if (sub !== meSub) { const m = $('#main'); if (m) m.scrollTop = 0; }
+  meSub = sub;
+  el.dataset.sub = sub || 'ich';
+  if (sub === 'allgemein') await renderMeGeneral(el);
+  else if (sub === 'speicher') await renderMeStorage(el);
+  else if (sub === 'info') renderMeInfo(el);
+  else await renderMeHub(el);
+  bindMeCommon(el);
+}
+
+async function renderMeHub(el) {
   const docs = await db.listFiles();
   let profile = null, trashN = 0, remN = 0, vaultN = 0;
   try { profile = await (await import('./extras/profile.js')).getProfile(); } catch {}
   try { trashN = (await db.listTrash()).length; remN = (await db.listReminders()).filter(r => !r.done).length; vaultN = (await db.listVault()).length; } catch {}
-  const stats = await import('./extras/stats.js');
+  const total = docs.reduce((s, d) => s + (d.size || 0), 0);
   const pName = profile ? [profile.vorname, profile.nachname].filter(Boolean).join(' ') : '';
-  el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Ich</h1><p class="page-sub">Deine Daten, Einstellungen und Infos – ganz ohne Konto.</p></div></div>
+  el.innerHTML = `<div class="page-head"><div><h1 class="page-title">Ich</h1><p class="page-sub">Deine Daten, deine Ablage und die Einstellungen der App – ganz ohne Konto.</p></div></div>
     <a class="card me-card me-link" href="#/profil" data-profile-link>
       <span class="me-avatar">${pName ? esc(pName.split(' ').map(x => x[0]).join('').slice(0, 2).toUpperCase()) : oicon('user')}</span>
       <div><strong>${pName ? esc(pName) : 'Meine Daten'}</strong><span>${profile ? (lsGet('fale-acct', '') === '1' ? 'Für Briefe und Formulare – auf deinem Gerät gespeichert.' : 'Für Briefe und Formulare – nur auf diesem Gerät gespeichert.') : 'Optional: Name und Adresse für automatisch ausgefüllte Briefe hinterlegen.'}</span></div>
@@ -773,16 +852,40 @@ export async function renderSettings() {
     </a>
     ${policyCard()}
     <div class="acct-me-box" data-account-me></div>
-    <div class="me-links">
-      <a class="action-card" href="#/tresor"><span class="tile-ic">${oicon('vault')}</span><span><strong>Privater Tresor</strong><span class="muted small">${vaultN ? `${vaultN} verschlüsselte Datei${vaultN === 1 ? '' : 'en'}` : 'Mit eigener PIN schützen'}</span></span></a>
-      <a class="action-card" href="#/fristen"><span class="tile-ic">${oicon('bell')}</span><span><strong>Fristen & Erinnerungen</strong><span class="muted small">${remN ? `${remN} aktive Frist${remN === 1 ? '' : 'en'}` : 'Nie wieder etwas verpassen'}</span></span></a>
-      <a class="action-card" href="#/schreiben"><span class="tile-ic">${oicon('letter')}</span><span><strong>Schreiben & Vorlagen</strong><span class="muted small">Kündigung, Rechnung, Vollmacht …</span></span></a>
-      <a class="action-card" href="#/papierkorb"><span class="tile-ic">${oicon('trash')}</span><span><strong>Papierkorb</strong><span class="muted small">${trashN ? `${trashN} Datei${trashN === 1 ? '' : 'en'}` : 'Leer'}</span></span></a>
-    </div>
+    <h2 class="section-title">Für dich</h2>
+    <nav class="ilist" aria-label="Für dich" data-me-links>
+      ${ilRow({ href: '#/tresor', ic: 'vault', tone: 'violet', title: 'Privater Tresor', sub: vaultN ? `${vaultN} verschlüsselte Datei${vaultN === 1 ? '' : 'en'}` : 'Mit eigener PIN schützen' })}
+      ${ilRow({ href: '#/fristen', ic: 'bell', tone: 'amber', title: 'Fristen & Erinnerungen', sub: remN ? `${remN} aktive Frist${remN === 1 ? '' : 'en'}` : 'Nie wieder etwas verpassen' })}
+      ${ilRow({ href: '#/schreiben', ic: 'letter', tone: 'teal', title: 'Schreiben & Vorlagen', sub: 'Kündigung, Rechnung, Vollmacht …' })}
+      ${ilRow({ href: '#/papierkorb', ic: 'trash', tone: 'rose', title: 'Papierkorb', sub: trashN ? `${trashN} Datei${trashN === 1 ? '' : 'en'} · 30 Tage wiederherstellbar` : 'Leer' })}
+    </nav>
+    <h2 class="section-title">App</h2>
+    <nav class="ilist" aria-label="App" data-me-app>
+      ${ilRow({ href: '#/einstellungen/allgemein', ic: 'settings', tone: 'ink', title: 'Einstellungen', sub: 'Sprache, Aussehen, Schriftgröße …', attrs: 'data-me-sub="allgemein"' })}
+      ${ilRow({ href: '#/einstellungen/speicher', ic: 'storage', tone: 'sky', title: 'Speicher & Sicherung', sub: `${docs.length} Datei${docs.length === 1 ? '' : 'en'} · ${formatSize(total)}`, attrs: 'data-me-sub="speicher"' })}
+      ${ilRow({ href: '#/einstellungen/info', ic: 'info', tone: 'slate', title: 'Über FaLe PDF', sub: `Version ${APP_VERSION} · Datenschutz, Impressum, Lizenzen`, attrs: 'data-me-sub="info"' })}
+    </nav>
     <div data-install-me></div>
     <div data-ai-me></div>
     <div class="month-box" data-month-me></div>
-    <h2 class="section-title">Einstellungen</h2>
+    <h2 class="section-title">Mehr von FaLe</h2>
+    <nav class="ilist" aria-label="Mehr von FaLe">
+      ${ilRow({ href: `${NETWORK_ORIGIN}/`, ic: 'heart', tone: 'teal', title: 'FaleNetwork', sub: 'Weitere Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.', attrs: 'data-fale-network', external: true })}
+    </nav>
+    <p class="me-legal small"><a href="datenschutz.html" target="_blank" rel="noopener" data-privacy-link>Datenschutzerklärung</a><a href="impressum.html" target="_blank" rel="noopener" data-impressum>Impressum</a></p>`;
+  const home = await import('./extras/home.js');
+  home.renderMonthCard($('[data-month-me]', el), { compact: true });
+  import('./install.js').then(m => m.renderMeCard($('[data-install-me]', el))).catch(() => {}); // web only: install on this PC/Mac/phone
+  import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
+  import('./account/entry.js').then(m => m.renderMeCard($('[data-account-me]', el))).catch(() => {}); // optional FaLe-Konto
+}
+
+async function renderMeGeneral(el) {
+  const zoom = await db.getSetting('defaultZoom', 'auto');
+  const stats = await import('./extras/stats.js');
+  const android = isNative() && platformName() === 'android';
+  el.innerHTML = `${subHead('Einstellungen', 'Gilt nur auf diesem Gerät.')}
+    <h2 class="section-title">Darstellung</h2>
     <div class="card settings-group">
       <div class="settings-row" data-lang-row><div class="label"><strong>Sprache</strong><span>Automatisch folgt FaLe der Sprache deines Geräts.</span></div>
         <select class="select" id="set-lang" aria-label="Sprache">
@@ -796,6 +899,9 @@ export async function renderSettings() {
         <label class="switch"><input type="checkbox" data-simple-toggle ${simpleOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Einfache Ansicht</span></label></div>
       <div class="settings-row ts-row" data-textsize-row><div class="label"><strong>Schriftgröße</strong><span>Macht Texte und Knöpfe in FaLe größer. Gilt nur auf diesem Gerät.</span></div>
         ${textSizeSeg()}</div>
+    </div>
+    <h2 class="section-title">Dokumente</h2>
+    <div class="card settings-group">
       <div class="settings-row"><div class="label"><strong>Standard-Zoom</strong><span>Zoomstufe beim Öffnen einer PDF.</span></div>
         <select class="select" id="set-zoom" aria-label="Standard-Zoom">
           <option value="auto">Automatisch</option><option value="page-width">Seitenbreite</option><option value="page-fit">Ganze Seite</option>
@@ -803,62 +909,30 @@ export async function renderSettings() {
         </select></div>
       <div class="settings-row"><div class="label"><strong>Ausgefüllte PDFs später änderbar</strong><span>Beim Ausfüllen &amp; Unterschreiben immer „Später in FaLe änderbar“ speichern. Andere Programme zeigen die PDF trotzdem fertig ausgefüllt.</span></div>
         <label class="switch"><input type="checkbox" data-memory-toggle ${lsGet('fale-form-memory', '') === 'auto' ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Ausgefüllte PDFs später änderbar</span></label></div>
-      <div class="settings-row"><div class="label"><strong>Hinweis „Pro-Funktionen“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
-        <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
-      ${isNative() && platformName() === 'android' ? `<div class="settings-row" data-ads-me><div class="label"><strong>Werbung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.</span></div>
-        <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div>` : ''}
+    </div>
+    <h2 class="section-title">Startseite &amp; Hilfe</h2>
+    <div class="card settings-group">
       <div class="settings-row"><div class="label"><strong>„Dein Monat“</strong><span>Kleine Statistik auf der Startseite. Wird nur auf diesem Gerät gezählt.</span></div>
         <label class="switch"><input type="checkbox" data-stats-toggle ${stats.statsEnabled() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">„Dein Monat“ anzeigen</span></label></div>
+      <div class="settings-row"><div class="label"><strong>Hinweis „Pro-Funktionen“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
+        <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
       <div class="settings-row"><div class="label"><strong>Einführung</strong><span>Die kurze Tour vom ersten Start noch einmal ansehen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-onboarding>Ansehen</button></div>
-      <div class="settings-row"><div class="label"><strong>Dauerhafter Speicher</strong><span>Verhindert, dass der Browser deine Dateien automatisch löscht.</span></div>
-        <button class="btn btn-soft btn-sm" type="button" data-persist>${oicon('shield')} Anfordern</button></div>
-      <div class="settings-row"><div class="label"><strong>Daten löschen</strong><span>Entfernt alle Dateien und Unterschriften.</span></div>
-        <button class="btn btn-danger-ghost btn-sm" type="button" data-clear>${oicon('trash')} Alles löschen</button></div>
     </div>
-    <h2 class="section-title">Speicher</h2>
-    <div class="card card-pad" data-storage-me></div>
-    <h2 class="section-title">Über FaLe PDF</h2>
-    <div class="card card-pad">
-      <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
-        <strong>Alles bleibt auf deinem Gerät.</strong>
-        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, und wir setzen kein Tracking ein (Werbung in der Android-App: siehe Datenschutz). Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.</p>
-      </div></div>
-      <p class="muted small" style="margin-top:12px">Version 2.0.0 · Ein Projekt von FaLe.dev</p>
-      <strong>Open-Source-Komponenten</strong>
-      <ul class="license-list">
-        <li>PDF.js 6.2.108 – Mozilla Foundation, Apache-2.0 (<a href="vendor/pdfjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
-        <li>pdf-lib 1.17.1 – Andrew Dillon, MIT (<a href="vendor/pdf-lib/LICENSE.md" target="_blank" rel="noopener">Lizenz</a>, <a href="vendor/pdf-lib/THIRD_PARTY_LICENSES.txt" target="_blank" rel="noopener">enthaltene Pakete</a>)</li>
-        <li>JSZip 3.10.1 – Stuart Knightley u. a., MIT oder GPLv3, hier unter MIT genutzt; enthält pako (MIT/Zlib) (<a href="vendor/jszip/LICENSE.markdown" target="_blank" rel="noopener">Lizenz</a>)</li>
-        <li>docx 9.7.1 – Dolan Miu, MIT (<a href="vendor/docx/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
-        <li>PptxGenJS 4.0.1 – Brent Ely, MIT; enthält JSZip (<a href="vendor/pptxgenjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
-        <li>Standard-Schriften (Foxit, Liberation) und Decoder (OpenJPEG, JBIG2, QCMS) laut Lizenzdateien im Ordner vendor/pdfjs</li>
-        <li>Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (<a href="vendor/fonts/bricolage-grotesque/OFL.txt" target="_blank" rel="noopener">Lizenz</a>)</li>
-      </ul>
-    </div>
-    <h2 class="section-title">Mehr von FaLe</h2>
-    <a class="card me-card me-link" href="${NETWORK_ORIGIN}/" target="_blank" rel="noopener" data-fale-network>
-      <span class="me-avatar">${oicon('heart')}</span>
-      <div><strong>FaleNetwork</strong><span>Weitere Apps ohne Konto und ohne Tracking – zum Beispiel bald FaLe Clean für Windows.</span></div>
-      <span class="me-go">${oicon('chevronRight')}</span>
-    </a>
-    <h2 class="section-title">Rechtliches</h2>
-    <div class="card settings-group legal-group">
-      <a class="settings-row legal-row" href="datenschutz.html" target="_blank" rel="noopener" data-privacy-link><div class="label"><strong>Datenschutzerklärung</strong><span>Was FaLe speichert – und was nicht.</span></div>${oicon('chevronRight')}</a>
-      <a class="settings-row legal-row" href="impressum.html" target="_blank" rel="noopener" data-impressum><div class="label"><strong>Impressum</strong><span>Anbieterangaben nach § 5 DDG.</span></div>${oicon('chevronRight')}</a>
-      <div class="settings-row"><div class="label"><strong>Vorlagen &amp; Briefe</strong><span>Formulierungshilfen ohne Gewähr – keine Rechtsberatung.</span></div></div>
-    </div>`;
-  $$('[data-privacy-link], [data-impressum]', el).forEach(a => a.addEventListener('click', e => {
-    e.preventDefault();
-    import('./platform.js').then(m => m.openLegalPage(a.getAttribute('href'))).catch(() => window.open(a.href, '_blank', 'noopener'));
-  }));
+    <h2 class="section-title">KI-Assistent</h2>
+    <nav class="ilist" aria-label="KI-Assistent">
+      ${ilRow({ href: '#/ki/einstellungen', ic: 'sliders', tone: 'ink', title: 'KI-Einstellungen', sub: 'Cloud-KI an/aus, Datenschutz' })}
+    </nav>
+    ${android ? `<h2 class="section-title">Werbung</h2>
+    <div class="card settings-group"><div class="settings-row" data-ads-me><div class="label"><strong>Werbe-Einwilligung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Plus ist die App werbefrei.</span></div>
+        <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div></div>` : ''}`;
   const theme = currentTheme();
   $$('[data-theme-opt]', el).forEach(b => {
     b.setAttribute('aria-pressed', String(b.dataset.themeOpt === theme));
     b.addEventListener('click', () => {
       applyTheme(b.dataset.themeOpt);
       $$('[data-theme-opt]', el).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-      document.querySelectorAll('[data-action="toggle-theme"]').forEach(t => { t.innerHTML = oicon(document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches) ? 'sun' : 'moon'); });
+      document.querySelectorAll('[data-action="toggle-theme"]').forEach(x => { x.innerHTML = oicon(document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches) ? 'sun' : 'moon'); });
     });
   });
   $('[data-simple-toggle]', el).addEventListener('change', e => {
@@ -872,8 +946,6 @@ export async function renderSettings() {
   const zs = $('#set-zoom', el);
   zs.value = zoom;
   zs.addEventListener('change', async () => { await db.setSetting('defaultZoom', zs.value); toast('Gespeichert', 'success'); });
-  $('[data-persist]', el).addEventListener('click', requestPersist);
-  $('[data-clear]', el).addEventListener('click', deleteAllConfirm);
   const adp = $('[data-adprivacy-me]', el);
   if (adp) adp.addEventListener('click', async () => { try { await (await import('./ai/ads.js')).showAdPrivacyOptions(); } catch (e) { errorToast(e, 'Die Werbe-Einstellungen konnten nicht geöffnet werden.'); } });
   $('[data-free-reset]', el).addEventListener('click', () => {
@@ -882,14 +954,10 @@ export async function renderSettings() {
     if (card) card.hidden = false;
     toast('Wird auf der Startseite wieder angezeigt.', 'success');
   });
-  renderStorage($('[data-storage-me]', el), docs);
-  const home = await import('./extras/home.js');
-  home.renderMonthCard($('[data-month-me]', el), { compact: true });
-  $('[data-stats-toggle]', el).addEventListener('change', e => {
+  $('[data-stats-toggle]', el).addEventListener('change', async e => {
     stats.setStatsEnabled(e.target.checked);
-    home.renderMonthCard($('[data-month-me]', el), { compact: true });
     const m = document.querySelector('#view-start [data-month]');
-    if (m) home.renderMonthCard(m);
+    if (m) (await import('./extras/home.js')).renderMonthCard(m);
     toast(e.target.checked ? '„Dein Monat“ wird angezeigt' : '„Dein Monat“ ausgeblendet – es wird nichts mehr gezählt.', 'success');
   });
   $('[data-memory-toggle]', el).addEventListener('change', e => {
@@ -897,9 +965,65 @@ export async function renderSettings() {
     toast(e.target.checked ? 'Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.' : 'Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.', 'success');
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
-  import('./install.js').then(m => m.renderMeCard($('[data-install-me]', el))).catch(() => {}); // web only: install on this PC/Mac/phone
-  import('./ai/entry.js').then(m => m.renderMeCard($('[data-ai-me]', el))).catch(() => {}); // KI-Assistent status (cached only)
-  import('./account/entry.js').then(m => m.renderMeCard($('[data-account-me]', el))).catch(() => {}); // optional FaLe-Konto
-  // OCR: "OCR-Daten für offline laden" (status, size) + licences of tesseract.js, -core, tessdata_fast
+}
+
+function lastBackupText() {
+  const v = Number(lsGet('fale-last-backup', '0'));
+  if (!v) return 'Noch keine Sicherung erstellt.';
+  return t('Letzte Sicherung: {date}', { date: new Date(v).toLocaleDateString(document.documentElement.lang || 'de', { day: 'numeric', month: 'long', year: 'numeric' }) });
+}
+
+async function renderMeStorage(el) {
+  const docs = await db.listFiles();
+  el.innerHTML = `${subHead('Speicher & Sicherung', 'Alles liegt auf diesem Gerät – hier siehst du, wie viel Platz es braucht.')}
+    <div class="card card-pad" data-storage-me></div>
+    <h2 class="section-title">Sicherung</h2>
+    <div class="card settings-group">
+      <div class="settings-row" data-backup-row><div class="label"><strong>Alle Dateien sichern</strong><span>Eine ZIP-Datei mit all deinen Dateien und Ordnern – zum Beispiel für einen USB-Stick oder einen neuen Computer.</span><span class="ocr-set-status" data-backup-last>${esc(lastBackupText())}</span></div>
+        <button class="btn btn-soft btn-sm" type="button" data-backup>${oicon('download')} Sicherung erstellen</button></div>
+    </div>
+    <h2 class="section-title">Auf diesem Gerät</h2>
+    <div class="card settings-group" data-ocr-slot>
+      <div class="settings-row"><div class="label"><strong>Daten löschen</strong><span>Entfernt alle Dateien und Unterschriften.</span></div>
+        <button class="btn btn-danger-ghost btn-sm" type="button" data-clear>${oicon('trash')} Alles löschen</button></div>
+    </div>`;
+  $('[data-clear]', el).addEventListener('click', deleteAllConfirm);
+  $('[data-backup]', el).addEventListener('click', async e => {
+    await backupAll(e.currentTarget);
+    const l = $('[data-backup-last]', el);
+    if (l) l.textContent = lastBackupText();
+  });
+  renderStorage($('[data-storage-me]', el), docs);
+  // OCR: "OCR-Daten für offline laden" (status, size)
+  import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});
+}
+
+function renderMeInfo(el) {
+  el.innerHTML = `${subHead('Über FaLe PDF', `Version ${APP_VERSION} · Ein Projekt von FaLe.dev`)}
+    <div class="card card-pad">
+      <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
+        <strong>Alles bleibt auf deinem Gerät.</strong>
+        <p class="muted" style="margin-top:4px">FaLe PDF funktioniert offline. Du brauchst kein Konto, und wir setzen kein Tracking ein (Werbung in der Android-App: siehe Datenschutz). Deine Dateien werden im Speicher dieses Geräts abgelegt – nur wenn du das freiwillige FaLe-Konto mit FaLe Sync nutzt, zusätzlich Ende-zu-Ende-verschlüsselt in der Cloud. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür ausgewählte Text nach deiner Zustimmung verarbeitet.</p>
+      </div></div>
+    </div>
+    <h2 class="section-title">Rechtliches</h2>
+    <div class="card settings-group legal-group">
+      <a class="settings-row legal-row" href="datenschutz.html" target="_blank" rel="noopener" data-privacy-link><div class="label"><strong>Datenschutzerklärung</strong><span>Was FaLe speichert – und was nicht.</span></div>${oicon('chevronRight')}</a>
+      <a class="settings-row legal-row" href="impressum.html" target="_blank" rel="noopener" data-impressum><div class="label"><strong>Impressum</strong><span>Anbieterangaben nach § 5 DDG.</span></div>${oicon('chevronRight')}</a>
+      <div class="settings-row"><div class="label"><strong>Vorlagen &amp; Briefe</strong><span>Formulierungshilfen ohne Gewähr – keine Rechtsberatung.</span></div></div>
+    </div>
+    <h2 class="section-title">Open-Source-Komponenten</h2>
+    <div class="card card-pad">
+      <ul class="license-list">
+        <li>PDF.js 6.2.108 – Mozilla Foundation, Apache-2.0 (<a href="vendor/pdfjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
+        <li>pdf-lib 1.17.1 – Andrew Dillon, MIT (<a href="vendor/pdf-lib/LICENSE.md" target="_blank" rel="noopener">Lizenz</a>, <a href="vendor/pdf-lib/THIRD_PARTY_LICENSES.txt" target="_blank" rel="noopener">enthaltene Pakete</a>)</li>
+        <li>JSZip 3.10.1 – Stuart Knightley u. a., MIT oder GPLv3, hier unter MIT genutzt; enthält pako (MIT/Zlib) (<a href="vendor/jszip/LICENSE.markdown" target="_blank" rel="noopener">Lizenz</a>)</li>
+        <li>docx 9.7.1 – Dolan Miu, MIT (<a href="vendor/docx/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
+        <li>PptxGenJS 4.0.1 – Brent Ely, MIT; enthält JSZip (<a href="vendor/pptxgenjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
+        <li>Standard-Schriften (Foxit, Liberation) und Decoder (OpenJPEG, JBIG2, QCMS) laut Lizenzdateien im Ordner vendor/pdfjs</li>
+        <li>Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (<a href="vendor/fonts/bricolage-grotesque/OFL.txt" target="_blank" rel="noopener">Lizenz</a>)</li>
+      </ul>
+    </div>`;
+  // licences of tesseract.js, -core, tessdata_fast
   import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});
 }

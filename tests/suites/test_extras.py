@@ -848,7 +848,7 @@ def desktop(p):
         card = page.locator('#view-start [data-month] .month-card')
         check('Dein Monat card on Start', card.is_visible() and card.locator('.month-stat').count() >= 3)
         check('friendly milestone shown', 'Brief' in card.locator('.month-ms').inner_text() or '🎉' in card.inner_text() or '✨' in card.inner_text(), card.locator('.month-ms').inner_text())
-        goto(page, '#/einstellungen', 800)
+        goto(page, '#/einstellungen/allgemein', 800)
         sw = page.locator('label.switch:has([data-stats-toggle])')
         sw.click()
         page.wait_for_timeout(300)
@@ -858,7 +858,7 @@ def desktop(p):
         check('opt-out: nothing counted', stats(page).get('pages_read', 0) == before.get('pages_read', 0))
         goto(page, '#/start', 800)
         check('opt-out hides card', not page.locator('#view-start [data-month] .month-card').count())
-        goto(page, '#/einstellungen', 700)
+        goto(page, '#/einstellungen/allgemein', 700)
         page.locator('label.switch:has([data-stats-toggle])').click()
         page.wait_for_timeout(300)
         page.evaluate("async () => (await import('./js/extras/stats.js')).track('pages_read', 120)")
@@ -982,7 +982,7 @@ def onboarding_and_ai(p):
             check(f'{label}: chosen text size still active after reload', page.locator('html.ts-l').count() == 1)
             page.evaluate("import('./js/simple.js').then(m => { m.setSimple(false); m.setTextSize('normal'); })")
             # language later: Ich → Einstellungen
-            page.evaluate("location.hash = '#/einstellungen'"); page.wait_for_selector('#set-lang')
+            page.evaluate("location.hash = '#/einstellungen/allgemein'"); page.wait_for_selector('#set-lang')
             sel = page.locator('#set-lang')
             check(f'{label}: settings: language choice (Automatisch + 16 languages in their own names)', sel.locator('option').count() == 17 and sel.input_value() == 'auto'
                   and 'Automatisch (Deutsch)' in sel.locator('option').first.inner_text() and 'Français' in sel.inner_text())

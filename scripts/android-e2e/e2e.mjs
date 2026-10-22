@@ -538,6 +538,26 @@ async function main() {
     return `${r.engine}, ${r.ms} ms: „${r.text.slice(0, 60)}“`;
   });
 
+  // ---- read aloud: the WebView has no speechSynthesis → js/speech-shim.js + FaleSpeech (system text-to-speech) ----
+  await step('Vorlesen (Sprachausgabe des Geräts)', async () => {
+    await closeOverlays();
+    const r = await ev(`if (!window.speechSynthesis) return { shim: false };
+      const { plugin } = await import('/js/platform.js');
+      let avail = null; try { avail = (await plugin('FaleSpeech').isAvailable()).value; } catch (e) { avail = 'Fehler: ' + e.message; }
+      const res = await new Promise(done => {
+        const u = new SpeechSynthesisUtterance('Hallo, hier liest FaLe vor.'); u.lang = 'de-DE';
+        const t = setTimeout(() => done('keine Rückmeldung'), 20000);
+        u.onend = () => { clearTimeout(t); done('end'); };
+        u.onerror = e => { clearTimeout(t); done('error ' + e.error); };
+        speechSynthesis.speak(u);
+      });
+      return { shim: !!window.__faleSpeechShim, avail, res, voices: speechSynthesis.getVoices().map(v => v.lang).join(',') };`, { timeout: 40000 });
+    if (!r.shim) throw new Error('Vorlesen fehlt: window.speechSynthesis gibt es in der App nicht');
+    if (r.avail === true && r.res !== 'end') throw new Error('Sprachausgabe da, aber Vorlesen endet nicht: ' + r.res);
+    if (r.avail !== true && !/^error/.test(r.res)) throw new Error('ohne Sprachausgabe hängt Vorlesen: ' + r.res);
+    return r.avail === true ? `vorgelesen (Stimmen: ${r.voices})` : `keine Sprachausgabe im Emulator – App meldet es sauber (${r.res})`;
+  });
+
   await step('Web-Werkzeug im App-Rahmen (PDF in Graustufen)', async () => {
     await closeOverlays();
     const before = (await docs()).length;

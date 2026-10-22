@@ -145,7 +145,7 @@ def import_files(page):
     return {d['name']: d for d in page.evaluate(DOCS_JS)}
 
 
-ROUTES = ['#/start', '#/dateien', '#/werkzeuge', '#/suche', '#/suche?q=Umsatz', '#/einstellungen', '#/profil', '#/fristen', '#/fristen?neu=1', '#/tresor',
+ROUTES = ['#/start', '#/dateien', '#/werkzeuge', '#/suche', '#/suche?q=Umsatz', '#/einstellungen', '#/einstellungen/allgemein', '#/einstellungen/speicher', '#/einstellungen/info', '#/profil', '#/fristen', '#/fristen?neu=1', '#/tresor',
           '#/papierkorb', '#/duplikate', '#/schreiben', '#/gliederung', '#/vorlagen', '#/neu/dokument', '#/neu/tabelle', '#/neu/praesentation']
 LETTERS = ['kuendigung?art=handy', 'kuendigung?art=miete', 'kuendigung?art=strom', 'widerruf', 'widerspruch', 'vollmacht', 'mietschuldenfreiheit', 'rechnung', 'angebot', 'mahnung', 'bewerbung']
 
@@ -335,7 +335,7 @@ def run_switching(p):
     page.wait_for_selector('#view-start .hero')
     check('de-DE auto: German', page.evaluate('document.documentElement.lang') == 'de' and 'Werkzeuge' in page.locator('.side-nav').inner_text())
     check('de-DE auto: no dictionary loaded', page.evaluate('window.FaLeI18n.lang()') == 'de')
-    goto(page, '#/einstellungen', 800)
+    goto(page, '#/einstellungen/allgemein', 800)
     check('settings: language choice, „Automatisch (Deutsch)“ follows the device', page.locator('#set-lang').count() == 1 and page.locator('#set-lang').input_value() == 'auto'
           and 'Automatisch (Deutsch)' in page.locator('#set-lang option').first.inner_text())
     ctx.close()

@@ -390,6 +390,12 @@ await step('schema + helpers', async () => {
   // Formular-Lotse tasks: only labels go out, ids are echoed, unknown ids and a bad language code are dropped
   {
     const inp = { fields: [{ id: 'q1', label: 'Mietstufe der Gemeinde' }, { id: 'q/2<x>', label: 'Kassenzeichen', options: ['a', 'b'] }, { id: 'q3', label: '' }] };
+    const se = TASKS.summarize.prepare({ text: longText(400) }, { mode: 'einfach', lang: 'de' });
+    check('summarize „einfach“: plain-language prompt with the three questions, 1000 tokens', /einfacher Sprache/.test(se.system) && /Was muss ich tun/.test(se.system) && se.maxTokens === 1000, se.system.slice(0, 200));
+    const sx = TASKS.summarize.prepare({ text: longText(400) }, { mode: 'quatsch', lang: 'de' });
+    check('summarize unknown mode → kurz', sx.maxTokens === 500);
+    const ch = TASKS.chat.prepare({ question: 'Wann?', chunks: [{ page: 1, text: 'Am 3. Juli.' }] }, { lang: 'de' });
+    check('chat prompt: direct answer first, honest when the passages say nothing', /direkten Antwort/.test(ch.system) && /rate nicht/.test(ch.system));
     const p = TASKS.form_help.prepare(inp, { lang: 'uk' });
     check('form_help: labels as JSON data, user language in the prompt, empty labels dropped', /Ukrainisch/.test(p.system) && p.user.includes('Mietstufe') && p.user.includes('"q2x"') && !p.user.includes('"q3"'), p.user);
     let bad = null; try { TASKS.form_help.prepare({ fields: [{ id: 'x', label: '' }] }, {}); } catch (e) { bad = e; }

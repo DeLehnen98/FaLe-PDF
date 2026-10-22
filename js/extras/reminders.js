@@ -229,6 +229,7 @@ function remCard(r, docs, { compact = false, onChange } = {}) {
       { label: 'Bearbeiten', icon: 'edit', onClick: async () => { if (await reminderDialog(r)) changed(); } },
       st !== 'done' ? { label: 'Morgen erinnern', icon: 'timer', onClick: async () => { await snoozeReminder(r, 1); changed(); } } : null,
       st === 'done' ? { label: 'Wieder aktivieren', icon: 'restore', onClick: async () => { r.done = false; await updateReminder(r); changed(); } } : null,
+      { label: 'In meinen Kalender', icon: 'calendar', onClick: () => exportToCalendar(r).catch(e => errorToast(e, 'Der Kalender-Eintrag konnte nicht erstellt werden.')) },
       '-',
       { label: 'Löschen', icon: 'trash', danger: true, onClick: async () => { if (await confirmDialog('Frist löschen?', `„${r.title}“ wird entfernt.`, { okLabel: 'Löschen', danger: true })) { await removeReminder(r); changed(); } } },
     ], { label: r.title });
@@ -302,3 +303,33 @@ export async function mount(screen, { params }) {
 }
 
 export { longDate, kindTile };
+
+// ---------------------------------------------------------------- calendar (.ics)
+const icsEsc = v => String(v || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
+/** One all-day event with the reminder's lead times as alarms (RFC 5545) – opens in every calendar app. */
+export function reminderIcs(r, now = new Date()) {
+  const d = String(r.due).replace(/-/g, '');
+  const next = new Date(parse(r.due).getTime() + 86400000);
+  const end = `${next.getFullYear()}${String(next.getMonth() + 1).padStart(2, '0')}${String(next.getDate()).padStart(2, '0')}`;
+  const stamp = now.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+  const alarms = [...new Set([...(r.leads || []), 0])].filter(n => Number.isFinite(n) && n >= 0 && n <= 365)
+    .map(n => ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEsc(r.title)}`, `TRIGGER:${n ? `-PT${n * 24 - 9}H` : 'PT9H'}`, 'END:VALARM']).flat();
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//FaLe.dev//FaLe PDF//DE', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT',
+    `UID:${icsEsc(r.id)}@fale-pdf`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${end}`, `SUMMARY:${icsEsc(r.title)}`,
+    ...(r.note ? [`DESCRIPTION:${icsEsc(r.note)}`] : []), ...(r.yearly ? ['RRULE:FREQ=YEARLY'] : []), 'TRANSP:TRANSPARENT', ...alarms, 'END:VEVENT', 'END:VCALENDAR'];
+  // lines longer than 75 octets are folded (continuation lines start with a space)
+  const fold = l => { const out = []; let cur = ''; for (const ch of l) { if (new TextEncoder().encode(cur + ch).length > 74) { out.push(cur); cur = ' ' + ch; } else cur += ch; } out.push(cur); return out.join('\r\n'); };
+  return lines.map(fold).join('\r\n') + '\r\n';
+}
+export async function exportToCalendar(r) {
+  const P = await import('../platform.js');
+  const name = `${String(r.title).replace(/[\\/:*?"<>|]/g, '_').slice(0, 60) || 'Frist'}.ics`;
+  const blob = new Blob([reminderIcs(r)], { type: 'text/calendar' });
+  if (P.isNative()) {
+    const res = await P.shareFile(blob, name, 'text/calendar', { title: r.title });
+    if (res && res.ok) toast('Wähle deine Kalender-App, um den Termin zu übernehmen.', 'info', { timeout: 5000 });
+    return;
+  }
+  await P.saveFile(blob, name, 'text/calendar');
+  toast('Kalender-Datei geladen – öffne sie, um den Termin in deinen Kalender zu übernehmen.', 'success', { timeout: 6000 });
+}

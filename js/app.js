@@ -1,5 +1,6 @@
 // FaLe PDF — app entry: routing, navigation, PWA integration.
 import './i18n/index.js'; // first: English UI translation layer (top-level await before the first render)
+import './speech-shim.js'; // Android app: read-aloud through the system text-to-speech (before readaloud.js is loaded)
 import { logo } from './icons.js';
 import { $, $$, toast, errorToast, initPdfInput, setDefaultPdfHandler, closeMenus, openDialog } from './ui.js';
 import * as db from './db.js';
@@ -40,12 +41,12 @@ function parseHash() {
   return { parts: path.split('/').filter(Boolean).map(decodeURIComponent), params: new URLSearchParams(qs || '') };
 }
 
-export function goBack() {
+export function goBack(fallback = '#/start') {
   if (navStack.length > 1) history.back();
-  else location.replace('#/start');
+  else location.replace(fallback);
 }
 
-async function showMain(name, params) {
+async function showMain(name, params, sub = null) {
   if (!MAIN_VIEWS.includes(name)) name = 'start';
   $$('.view').forEach(v => { v.hidden = v.dataset.view !== name; });
   $$('[data-nav]').forEach(a => {
@@ -62,7 +63,7 @@ async function showMain(name, params) {
     if (name === 'dateien') await renderFiles(params);
     if (name === 'werkzeuge') renderTools(params ? params.get('q') : null);
     if (name === 'suche') renderSearch(params ? params.get('q') : null);
-    if (name === 'einstellungen') await renderSettings();
+    if (name === 'einstellungen') await renderSettings(sub);
   } catch (e) { errorToast(e, 'Ansicht konnte nicht geladen werden.'); }
 }
 
@@ -163,7 +164,7 @@ async function route() {
   }
   if (viewerOpen() || !$('#viewer').hidden) await closeViewer();
   closeScreen();
-  await showMain(top, params);
+  await showMain(top, params, parts[1] || null);
 }
 
 async function openTool(id, params) {

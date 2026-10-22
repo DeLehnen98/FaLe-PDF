@@ -55,21 +55,25 @@ export function renderToolSection(sec) {
 }
 
 /** Status card on "Ich" (only cached state – no network). */
+// a row of the grouped list on „Ich“ (same markup as ilRow in js/views.js)
+const meRow = (href, ic, tone, title, sub) => `<a class="il-row" href="${href}"><span class="il-ic" data-tone="${tone}">${oicon(ic)}</span>
+  <span class="il-txt"><strong>${title}</strong><span>${sub}</span></span><span class="il-go" aria-hidden="true">${oicon('chevronRight')}</span></a>`;
+
 export function renderMeCard(box) {
   if (!box) return;
   loadAiCss();
   if (aiHidden()) {
     box.innerHTML = '';
     if (companyBlocked('cloudAi')) return; // the „Von deiner Firma eingestellt“ card says it
-    box.appendChild(h(`<div class="ai-me"><a class="action-card" href="#/ki/einstellungen"><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI ist ausgeblendet</strong><span class="muted small">Wieder einblenden in den KI-Einstellungen</span></span></a></div>`));
+    box.appendChild(h(`<nav class="ilist ai-me" aria-label="KI-Assistent">${meRow('#/ki/einstellungen', 'sliders', 'ink', 'KI ist ausgeblendet', 'Wieder einblenden in den KI-Einstellungen')}</nav>`));
     return;
   }
   const q = C.cachedQuota();
   const status = C.cloudDisabled() ? 'Cloud-KI ausgeschaltet' : !C.hasConsent() ? 'Noch nicht eingerichtet – täglich einige Anfragen inklusive'
     : q ? (q.plus ? `FaLe Plus aktiv · heute noch ${q.remaining} von ${q.limit}` : `Heute noch ${q.remaining} von ${q.limit}`) + (q.scope === 'account' ? ' · für dein Konto' : '') : 'Eingerichtet';
   box.innerHTML = '';
-  box.appendChild(h(`<div class="ai-me">
-    <a class="action-card" href="#/ki"><span class="tile-ic ai-ic">${oicon('sparkle')}</span><span><strong>KI-Assistent</strong><span class="muted small" data-ai-me-status>${esc(status)}</span></span></a>
-    ${showPlus() || (q && q.plus) ? `<a class="action-card" href="#/ki/plus"><span class="tile-ic">${oicon('star')}</span><span><strong>FaLe Plus</strong><span class="muted small">${q && q.plus ? 'Aktiv – danke!' : 'Mehr KI pro Tag, freiwillig'}</span></span></a>` : ''}
-    <a class="action-card" href="#/ki/einstellungen"><span class="tile-ic">${oicon('sliders')}</span><span><strong>KI-Einstellungen</strong><span class="muted small">Cloud-KI an/aus, Datenschutz</span></span></a></div>`));
+  box.appendChild(h(`<div class="ai-me-wrap"><h2 class="section-title">KI-Assistent</h2><nav class="ilist ai-me" aria-label="KI-Assistent">
+    ${meRow('#/ki', 'sparkle', 'ai', 'KI-Assistent', `<span data-ai-me-status>${esc(status)}</span>`)}
+    ${showPlus() || (q && q.plus) ? meRow('#/ki/plus', 'star', 'amber', 'FaLe Plus', q && q.plus ? 'Aktiv – danke!' : 'Mehr KI pro Tag, freiwillig') : ''}
+    ${meRow('#/ki/einstellungen', 'sliders', 'slate', 'KI-Einstellungen', 'Cloud-KI an/aus, Datenschutz')}</nav></div>`));
 }

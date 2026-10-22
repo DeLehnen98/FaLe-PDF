@@ -160,17 +160,18 @@ const TASKS = {
     stream: true, maxInput: 48000,
     prepare(input, o) {
       const t = reqStr(input.text, 'Text', this.maxInput, { min: 20 });
-      const mode = pick(o.mode, ['kurz', 'ausfuehrlich', 'stichpunkte'], 'kurz');
+      const mode = pick(o.mode, ['kurz', 'einfach', 'ausfuehrlich', 'stichpunkte'], 'kurz');
       const l = lang(o.lang);
       const how = {
         kurz: 'Fasse den Text in 3–5 Sätzen zusammen. Nenne das Wichtigste zuerst.',
         ausfuehrlich: 'Fasse den Text ausführlich zusammen: kurzer Überblick, dann die wichtigsten Abschnitte jeweils in einem eigenen Absatz mit einer kurzen Zwischenüberschrift (Markdown „## “). Höchstens ca. 500 Wörter.',
         stichpunkte: 'Fasse den Text in 5–10 prägnanten Stichpunkten zusammen (jede Zeile beginnt mit „- “). Zahlen, Fristen und Beträge unbedingt übernehmen.',
+        einfach: 'Erkläre den Text in einfacher Sprache für Menschen ohne Fachwissen: kurze Sätze, keine Fachwörter (oder direkt in Klammern erklärt). Gliedere mit den Zwischenüberschriften (Markdown „## “) „Worum geht es?“, „Was muss ich tun – und bis wann?“ und „Was passiert, wenn ich nichts tue?“. Lass einen Abschnitt weg, wenn der Text dazu nichts sagt – erfinde nichts. Zahlen, Fristen, Beträge und Aktenzeichen exakt übernehmen. Höchstens ca. 250 Wörter.',
       }[mode];
       return {
         system: `${BASE}\n${how}\n${langLine(l)} Beginne direkt mit der Zusammenfassung, ohne Einleitungssatz.`,
         user: `${input.title ? `Titel: ${optStr(input.title, 200)}\n` : ''}<dokument>\n${t.text}\n</dokument>`,
-        maxTokens: { kurz: 500, stichpunkte: 900, ausfuehrlich: 1600 }[mode],
+        maxTokens: { kurz: 500, einfach: 1000, stichpunkte: 900, ausfuehrlich: 1600 }[mode],
         truncated: t.truncated, note: note(t.truncated, this.maxInput),
       };
     },
@@ -217,7 +218,8 @@ const TASKS = {
       return {
         system: `${BASE}\nBeantworte Fragen zu einem Dokument NUR anhand der mitgelieferten Auszüge. Jeder Auszug beginnt mit seiner Fundstelle, z. B. „[${unit} 3]“.
 Belege jede Aussage direkt dahinter mit der Fundstelle in genau dieser Schreibweise: [${unit} 3] (mehrere: [${unit} 3] [${unit} 7]).
-Wenn die Auszüge die Antwort nicht enthalten, sage das ehrlich und schlage vor, wonach man im Dokument suchen könnte. Antworte kurz (höchstens ca. 200 Wörter). ${langLine(l)}`,
+Beginne mit der direkten Antwort in einem Satz, dann – falls nötig – kurze Details. Schreibe in einfacher, klarer Sprache; Fachbegriffe kurz erklären. Übernimm Zahlen, Daten und Beträge exakt aus den Auszügen.
+Wenn die Auszüge die Antwort nicht enthalten, sage das ehrlich („Dazu steht in den gefundenen Textstellen nichts.“) und schlage vor, wonach man im Dokument suchen könnte – rate nicht. Antworte kurz (höchstens ca. 200 Wörter). ${langLine(l)}`,
         user: `${input.title ? `Dokument: ${optStr(input.title, 200)}\n` : ''}${hist ? `Bisheriger Verlauf:\n${hist}\n\n` : ''}<dokument>\n${parts.join('\n\n')}\n</dokument>\n\nFrage: ${q.text}`,
         maxTokens: 900,
         truncated, note: truncated ? 'Es wurden nur die relevantesten Textstellen verwendet.' : '',

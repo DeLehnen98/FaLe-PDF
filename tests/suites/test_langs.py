@@ -54,7 +54,7 @@ SCAN = r"""() => {
   return [...out];
 }"""
 
-ROUTES = ['#/start', '#/dateien', '#/werkzeuge', '#/einstellungen', '#/werkzeug/zusammenfuegen', '#/werkzeug/komprimieren', '#/ki', '#/teilen']
+ROUTES = ['#/start', '#/dateien', '#/werkzeuge', '#/einstellungen', '#/einstellungen/allgemein', '#/einstellungen/speicher', '#/werkzeug/zusammenfuegen', '#/werkzeug/komprimieren', '#/ki', '#/teilen']
 
 
 def run(p, code):

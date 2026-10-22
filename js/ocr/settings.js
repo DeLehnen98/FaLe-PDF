@@ -18,7 +18,7 @@ export function mountOcrSettings(root) {
       OCR_LICENSES.forEach(([t, href]) => list.appendChild(h(`<li data-ocr-lic>${esc(t)} (<a href="${href}" target="_blank" rel="noopener">Lizenz</a>)</li>`)));
     }
     // settings row (before "Daten löschen")
-    const group = root.querySelector('.settings-group');
+    const group = root.querySelector('[data-ocr-slot]') || root.querySelector('.settings-group');
     if (!group || group.querySelector('[data-ocr-row]')) return;
     const row = h(`<div class="settings-row" data-ocr-row><div class="label"><strong>OCR-Daten für offline laden</strong>
         <span>Texterkennung (Deutsch + Englisch) ohne Internet nutzen.</span><span class="ocr-set-status" data-ocr-status>Status wird geprüft …</span></div>

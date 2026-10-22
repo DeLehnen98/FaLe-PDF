@@ -9,6 +9,7 @@ import { isNative, platformName } from '../platform.js';
 const adsHere = () => isNative() && platformName() !== 'ios'; // rewarded videos: Android app only
 import * as C from './client.js';
 import { CITE_RE } from './retrieval.js';
+import { bindSpeakButton } from './speak.js';
 
 let cssDone = false;
 export function loadAiCss() {
@@ -154,7 +155,7 @@ function inline(s) {
  * Minimal markdown (## headings, - bullets, **bold**, paragraphs) with clickable citations.
  * Citations become <button class="ai-cite" data-page="n">.
  */
-export function richText(text, { cite = true } = {}) {
+export function richText(text, { cite = true, pages = null } = {}) {
   const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n');
   let html = '', list = false, para = [];
   const flushP = () => { if (para.length) { html += `<p>${para.map(inline).join('<br>')}</p>`; para = []; } };
@@ -171,9 +172,12 @@ export function richText(text, { cite = true } = {}) {
   flushP(); closeL();
   if (!cite) return html;
   return html.replace(CITE_RE, (all, unit, nums) => {
-    const pages = nums.split(/\s*(?:,|und|–|-)\s*/).map(n => parseInt(n, 10)).filter(Boolean);
+    const nos = nums.split(/\s*(?:,|und|–|-)\s*/).map(n => parseInt(n, 10)).filter(Boolean);
     const u = unit === 'Seite' ? 'S.' : unit;
-    return pages.map(p => `<button type="button" class="ai-cite" data-page="${p}" aria-label="${u === 'S.' ? 'Seite' : u} ${p} öffnen">${esc(u)} ${p}</button>`).join(' ');
+    // a page the AI never got (pages = the passages that were sent) is not a real source → not clickable, marked
+    return nos.map(p => (pages && !pages.has(p)
+      ? `<span class="ai-cite-x" title="Diese Seite war nicht unter den gesendeten Textstellen – bitte im Dokument prüfen.">${esc(u)} ${p}?</span>`
+      : `<button type="button" class="ai-cite" data-page="${p}" aria-label="${u === 'S.' ? 'Seite' : u} ${p} öffnen">${esc(u)} ${p}</button>`)).join(' ');
   });
 }
 
@@ -214,8 +218,9 @@ export async function saveText(text, { title = 'KI-Ergebnis', fmt = 'docx', head
 }
 
 /** Row of result actions: copy + save as .docx / .txt / PDF. */
-export function resultActions(getText, { title, heading } = {}) {
+export function resultActions(getText, { title, heading, sayLang = '' } = {}) {
   const row = h(`<div class="ai-res-acts">
+    <button class="btn btn-soft btn-sm" type="button" data-say aria-pressed="false"></button>
     <button class="btn btn-ghost btn-sm" type="button" data-act="copy">${oicon('copy')} Kopieren</button>
     <button class="btn btn-soft btn-sm" type="button" data-act="docx">${oicon('kdoc')} Als Dokument (.docx)</button>
     <button class="btn btn-ghost btn-sm" type="button" data-act="pdf">${oicon('kpdf')} Als PDF</button>
@@ -231,6 +236,7 @@ export function resultActions(getText, { title, heading } = {}) {
     catch (err) { errorToast(err, 'Speichern fehlgeschlagen.'); }
     finally { b.disabled = false; }
   });
+  bindSpeakButton(row.querySelector('[data-say]'), () => getText(), { lang: sayLang, icons: { speak: oicon('speaker'), stop: oicon('stop') } });
   return row;
 }
 

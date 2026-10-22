@@ -1,4 +1,5 @@
 // Text-to-speech using the Web Speech API (runs on-device / via the OS voices).
+import './speech-shim.js'; // Android app: speechSynthesis on top of the system voice – must exist before the check below
 export const speechSupported = typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 
 export function getVoices() {

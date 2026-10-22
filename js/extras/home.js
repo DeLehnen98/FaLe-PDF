@@ -75,7 +75,7 @@ export function renderMonthCard(box, { compact = false } = {}) {
   box.hidden = false;
   const card = h(`<section class="card month-card" aria-label="Dein Monat">
     <div class="month-head"><span class="month-ic">${oicon('stats')}</span><div><strong>Dein ${MONTHS[now.getMonth()]}</strong><span class="muted small">Nur auf diesem Gerät gezählt</span></div>
-      <a class="btn btn-ghost btn-sm" href="#/einstellungen" aria-label="Statistik-Einstellungen">${oicon('settings')}</a></div>
+      <a class="btn btn-ghost btn-sm" href="#/einstellungen/allgemein" aria-label="Statistik-Einstellungen">${oicon('settings')}</a></div>
     <div class="month-grid"></div>
     <p class="month-ms" hidden></p></section>`);
   const grid = $('.month-grid', card);

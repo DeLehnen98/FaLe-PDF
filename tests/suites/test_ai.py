@@ -53,6 +53,16 @@ def harness(path):
         return json.loads(r.read().decode())
 
 
+def wait_count(page, sel, n, ms=10000):
+    """poll from Python – the app's CSP blocks Playwright's wait_for_function (string eval)"""
+    end = time.time() + ms / 1000
+    while time.time() < end:
+        if page.locator(sel).count() >= n:
+            return True
+        time.sleep(0.1)
+    raise TimeoutError(f'{sel} ×{n} not reached')
+
+
 def shot(page, name):
     page.wait_for_timeout(250)
     page.screenshot(path=os.path.join(OUT, name + '.png'))
@@ -226,6 +236,64 @@ def main():
             check('viewer → hub with doc preselected', '#/ki?doc=' in page.url and page.locator('.ai-docchip').count() == 1)
         step('chat with citations', chat)
 
+        def chat_extras():
+            harness('/__test/env?FREE_DAILY=100')  # these extra questions must not use up the quota of the later steps
+            goto(page, f"#/ki/chat?doc={state['doc']}", 1200)
+            page.wait_for_selector('.ai-composer textarea')
+            page.wait_for_selector('[data-aq-left]', timeout=5000)
+            # device voice: record what would be spoken (headless Chromium has no voices)
+            page.evaluate("""() => { window.__said = []; const fake = { speaking: false, getVoices: () => [], cancel() { window.__said.push('<cancel>'); },
+              speak(u) { window.__said.push(u.text); setTimeout(() => u.onend && u.onend({}), 20); } };
+              Object.defineProperty(window, 'speechSynthesis', { value: fake, configurable: true, writable: true }); }""")
+            page.fill('.ai-composer textarea', 'Wie lang ist die Kündigungsfrist?')
+            page.locator('.ai-composer [data-send]').click()
+            page.wait_for_selector('.ai-msg-foot:not([hidden])', timeout=10000)
+            chips = page.locator('.ai-more .lt-chip').all_inner_texts()
+            check('chat: 3 follow-up questions offered under the answer', len(chips) == 3 and 'Wie lang ist die Kündigungsfrist?' not in chips, chips)
+            check('chat: answer has a read-aloud button', page.locator('.ai-msg-foot [data-say]').count() == 1)
+            page.locator('.ai-msg-foot [data-say]').last.click()
+            page.wait_for_timeout(400)
+            said = page.evaluate('window.__said')
+            check('chat: read aloud speaks the answer without page marks', any('Kündigungsfrist' in x for x in said) and not any('[S.' in x for x in said), said)
+            # follow-up chip asks the next question; the old chips disappear
+            page.locator('.ai-more .lt-chip').first.click()
+            wait_count(page, '.ai-msg-foot:not([hidden])', 2)
+            check('chat: tapping a follow-up asks it (old chips removed, new ones shown)', page.locator('.ai-more').count() == 1)
+            # a page the AI never got → not clickable, marked, honest hint
+            page.fill('.ai-composer textarea', 'Geisterseite: Wie lang ist die Kündigungsfrist?')
+            page.locator('.ai-composer [data-send]').click()
+            wait_count(page, '.ai-msg-foot:not([hidden])', 3)
+            last = page.locator('.ai-msg').last
+            check('chat: invented page reference is not a link and is marked', last.locator('.ai-cite-x').count() == 1 and 'S. 999' in last.locator('.ai-cite-x').inner_text() and last.locator('.ai-cite[data-page="999"]').count() == 0)
+            check('chat: hint to check the document', last.locator('[data-cite-warn]').count() == 1)
+            # citation jump carries a highlight word
+            last.locator('.ai-cite').first.click()
+            page.wait_for_timeout(1200)
+            check('chat: citation opens the page with a word to highlight', re.search(r'#/ansicht/[^?]+\?seite=\d+&q=k%C3%BCndigungsfrist', page.url), page.url)
+            page.go_back()
+            page.wait_for_timeout(900)
+            # a stream that goes quiet must not hang: watchdog ends it with a clear message
+            goto(page, f"#/ki/chat?doc={state['doc']}", 1200)
+            page.wait_for_selector('.ai-composer textarea')
+            page.evaluate("import('./js/ai/client.js').then(m => { m.AI_WAIT.IDLE_MS = 1500; })")
+            t0 = time.time()
+            page.fill('.ai-composer textarea', '[[mock:stall]] Wie lang ist die Kündigungsfrist?')
+            page.locator('.ai-composer [data-send]').click()
+            ok = False
+            while time.time() - t0 < 12:
+                if page.locator('.ai-msg-foot:not([hidden]) .ai-warn').count() or page.locator('#toasts .toast').count():
+                    ok = True; break
+                time.sleep(0.2)
+            dt = time.time() - t0
+            warn = page.locator('.ai-msg-foot .ai-warn').all_inner_texts()
+            check('chat: silent stream ends after the idle limit with a message (no endless spinner)', ok and dt < 6 and any('nicht weitergeschrieben' in w for w in warn), (dt, warn))
+            check('chat: send button is ready again after the stall', page.locator('.ai-composer [data-send]').get_attribute('aria-label') == 'Senden')
+            page.evaluate("import('./js/ai/client.js').then(m => { m.AI_WAIT.IDLE_MS = 40000; })")
+            page.wait_for_timeout(6500)  # let the stalled mock stream finish on the server
+            harness('/__test/reset')  # back to 5 per day, nothing used (the device registers again on its own)
+            page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.ensureToken({ renew: true }); await C.refreshQuota().catch(() => null); }")
+        step('chat extras', chat_extras)
+
         def summarize():
             goto(page, f"#/ki/zusammenfassen?doc={state['doc']}", 1200)
             page.wait_for_selector('[data-go]')
@@ -241,6 +309,15 @@ def main():
             page.wait_for_timeout(2000)
             names = page.evaluate("async () => (await (await import('./js/db.js')).listFiles()).map(d => d.name)")
             check('summary saved as .docx', any('Zusammenfassung' in n and n.endswith('.docx') for n in names), str(names))
+            check('summary modes include „Einfach erklärt“', page.locator('[data-mode="einfach"]').count() == 1)
+            page.evaluate("""() => { window.__said = []; const fake = { speaking: false, getVoices: () => [], cancel() {},
+              speak(u) { window.__said.push(u.text + '|' + u.lang); setTimeout(() => u.onend && u.onend({}), 20); } };
+              Object.defineProperty(window, 'speechSynthesis', { value: fake, configurable: true, writable: true }); }""")
+            page.locator('.ai-res-acts [data-say]').click()
+            page.wait_for_timeout(500)
+            said = page.evaluate('window.__said')
+            check('summary: „Vorlesen“ reads the bullets without list marks, in the output language', said and all(not x.startswith('- ') for x in said) and any('Zusammenfassung (Test)' in x for x in said) and all(x.endswith('|de-DE') for x in said), said)
+            check('summary: „Vorlesen“ button back to normal after speaking', page.locator('.ai-res-acts [data-say]').get_attribute('aria-pressed') == 'false')
         step('summarize', summarize)
 
         def translate():
@@ -611,7 +688,7 @@ def main():
         step('phone flows', phone_flows)
 
         def phone_layout():
-            for h_ in ['#/ki', '#/ki/chat', '#/ki/lernkarten', '#/ki/plus', '#/ki/brief']:
+            for h_ in ['#/ki', '#/ki/chat', '#/ki/zusammenfassen', '#/ki/lernkarten', '#/ki/plus', '#/ki/brief']:
                 goto(page, h_, 1000)
                 w = page.evaluate("() => Math.max(document.querySelector('#tool-screen').scrollWidth, document.documentElement.scrollWidth)")
                 check(f'phone: no horizontal overflow {h_}', w <= 392, w)

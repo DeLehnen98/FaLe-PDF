@@ -600,10 +600,12 @@ def tools_tests(p):
             check(f'Visitenkarte {n}: valid vCard 3.0', okv, v[:300].replace('\r\n', ' | '))
 
     def settings():
-        goto(pg, '#/einstellungen', '[data-ocr-row]', timeout=15000)
+        goto(pg, '#/einstellungen/speicher', '[data-ocr-row]', timeout=15000)
         pg.wait_for_function("!/geprüft/.test(document.querySelector('[data-ocr-status]').textContent)", timeout=10000)
         st = pg.inner_text('[data-ocr-status]')
+        goto(pg, '#/einstellungen/info', '[data-ocr-lic]', timeout=15000)
         lic = pg.inner_text('.license-list')
+        goto(pg, '#/einstellungen/speicher', '[data-ocr-row]', timeout=15000)
         check('settings: OCR row with status + size', 'MB' in st and ('Nicht geladen' in st or 'Geladen' in st or 'Teilweise' in st), st)
         check('settings: licences tesseract.js, -core, tessdata_fast', 'tesseract.js 6.0.1' in lic and 'tesseract.js-core 6.1.2' in lic and 'tessdata_fast' in lic and lic.count('Apache-2.0') >= 4)
         pg.locator('[data-ocr-row]').scroll_into_view_if_needed()
@@ -795,7 +797,7 @@ def offline_tests(p):
         r2 = ocr_eval(pg, 'clean_en.png')
         check('offline: second OCR works offline (SW cache)', word_acc(TRUTH['clean_en'], r2['text']) >= 0.95, f"{r2['ms']:.0f} ms")
         # settings shows "Geladen"
-        goto(pg, '#/einstellungen', '[data-ocr-row]', timeout=15000)
+        goto(pg, '#/einstellungen/speicher', '[data-ocr-row]', timeout=15000)
         pg.wait_for_function("/Geladen/.test(document.querySelector('[data-ocr-status]').textContent)", timeout=10000)
         check('offline: settings show "Geladen" + size', re.search(r'Geladen · [\d,]+ MB', pg.inner_text('[data-ocr-status]')) is not None, pg.inner_text('[data-ocr-status]'))
         ctx.set_offline(False)
@@ -830,7 +832,7 @@ def offline_tests(p):
         p2.screenshot(path=os.path.join(OUT, 'first_use_notice_desktop.png'))
         p2.locator('dialog[open] button', has_text='Abbrechen').click()
         # settings download button
-        goto(p2, '#/einstellungen', '[data-ocr-row]', timeout=15000)
+        goto(p2, '#/einstellungen/speicher', '[data-ocr-row]', timeout=15000)
         p2.wait_for_function("/Nicht geladen/.test(document.querySelector('[data-ocr-status]').textContent)", timeout=10000)
         p2.locator('[data-ocr-load]').click()
         p2.wait_for_function("/Geladen ·/.test(document.querySelector('[data-ocr-status]').textContent)", timeout=60000)
@@ -896,7 +898,7 @@ def shots(p):
             pg.wait_for_selector('.ocr-tbl', timeout=120000)
             pg.wait_for_timeout(500)
             shot(pg, f'excel_{tag}')
-            goto(pg, '#/einstellungen', '[data-ocr-row]', timeout=15000)
+            goto(pg, '#/einstellungen/speicher', '[data-ocr-row]', timeout=15000)
             pg.wait_for_timeout(600)
             pg.locator('[data-ocr-row]').scroll_into_view_if_needed()
             shot(pg, f'settings_{tag}')

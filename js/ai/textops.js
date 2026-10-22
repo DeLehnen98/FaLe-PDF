@@ -36,7 +36,7 @@ export async function mount(screen, { params, op }) {
     <div data-srcbox></div>
     <div class="card card-pad ai-options">
       ${isSum ? `<div class="field"><span class="field-label">Art der Zusammenfassung</span>
-        <div class="seg" role="group" aria-label="Art der Zusammenfassung"><button type="button" data-mode="kurz" aria-pressed="true">Kurz</button><button type="button" data-mode="stichpunkte" aria-pressed="false">Stichpunkte</button><button type="button" data-mode="ausfuehrlich" aria-pressed="false">Ausführlich</button></div></div>`
+        <div class="seg seg-grid" role="group" aria-label="Art der Zusammenfassung"><button type="button" data-mode="kurz" aria-pressed="true">Kurz</button><button type="button" data-mode="einfach" aria-pressed="false">Einfach erklärt</button><button type="button" data-mode="stichpunkte" aria-pressed="false">Stichpunkte</button><button type="button" data-mode="ausfuehrlich" aria-pressed="false">Ausführlich</button></div></div>`
       : `<label class="field"><span class="field-label">Übersetzen nach</span><select class="select" name="target">${TARGET_LANGS.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select></label>`}
       <div class="field" data-engine-field><span class="field-label">Wo soll die KI rechnen?</span></div>
     </div>
@@ -91,6 +91,7 @@ export async function mount(screen, { params, op }) {
   const acts = resultActions(() => (isSum ? out.dataset.raw || '' : translated.join('\n\n')), {
     title: () => `${title()} – ${isSum ? 'Zusammenfassung' : 'Übersetzung'}`,
     heading: () => (isSum ? `Zusammenfassung: ${title()}` : ''),
+    sayLang: () => (isSum ? outputLang() : $('[name=target]', wrap).value),
   });
   $('[data-acts]', wrap).appendChild(acts);
 

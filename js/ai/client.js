@@ -8,7 +8,7 @@ import { accessTokenOrNull, accessToken } from '../account/auth.js';
 
 const K = { device: 'fale-ai-device', token: 'fale-ai-token', consent: 'fale-ai-consent', cloud: 'fale-ai-cloud', quota: 'fale-ai-quota', reward: 'fale-ai-reward' };
 export const CONSENT_VERSION = 1;
-const APP_VERSION = '2.1.0';
+import { APP_VERSION } from '../version.js';
 
 const ls = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -63,13 +63,15 @@ function storeQuota(q) {
 
 // ---------------------------------------------------------------- HTTP
 async function postJson(path, body, { signal } = {}) {
-  let r;
+  let r, timer = null, own = null;
+  if (!signal) { own = new AbortController(); timer = setTimeout(() => own.abort(), 20000); signal = own.signal; } // status/register/plus: short calls
   try {
     r = await fetch(apiBase() + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal, credentials: 'omit', cache: 'no-store' });
   } catch (e) {
+    if (own && own.signal.aborted) throw new AiError('timeout', 'Der KI-Dienst antwortet gerade nicht. Bitte versuche es später erneut.');
     if (e && e.name === 'AbortError') throw e;
     throw new AiError('network', online() ? 'Der KI-Dienst ist gerade nicht erreichbar. Bitte versuche es später erneut.' : 'Du bist offline. Cloud-KI braucht eine Internetverbindung.');
-  }
+  } finally { clearTimeout(timer); }
   return r;
 }
 
@@ -90,6 +92,7 @@ export function messageFor(code, fallback) {
     case 'budget_exhausted': return 'KI-Kontingent für diesen Monat aufgebraucht. FaLe PDF ist ein kleines Projekt mit festem Monatsbudget – ab dem 1. geht es weiter.';
     case 'invalid_token': return 'Die Verbindung zur KI musste erneuert werden. Bitte versuche es noch einmal.';
     case 'offline': return 'Du bist offline. Cloud-KI braucht eine Internetverbindung.';
+    case 'timeout': case 'provider_timeout': return fallback || 'Die KI antwortet gerade nicht. Bitte versuche es gleich noch einmal – bei langen Dokumenten hilft „Kurz“ oder ein kleinerer Abschnitt.';
     case 'bad_input': return fallback || 'Die Eingabe konnte nicht verarbeitet werden.';
     default: return fallback || 'Die KI ist gerade nicht erreichbar. Bitte versuche es später erneut.';
   }
@@ -168,27 +171,45 @@ export function currentToken() { return hasConsent() ? ls.get(K.token) : null; }
  * opts: { stream, onDelta(text, full), onMeta(meta), signal }
  * → { output, truncated, note, quota, cut, consumed }
  */
+// Never wait forever: no answer within WAIT_MS (the server gives up after 60 s) or a stream that stays silent for
+// IDLE_MS ends with a clear message instead of an endless spinner.
+export const AI_WAIT = { WAIT_MS: 75000, IDLE_MS: 40000 };
+function watchdog(userSignal) {
+  const ac = new AbortController();
+  let timer = null, fired = false;
+  const kick = ms => { clearTimeout(timer); timer = setTimeout(() => { fired = true; ac.abort(); }, ms); };
+  if (userSignal) { if (userSignal.aborted) ac.abort(); else userSignal.addEventListener('abort', () => ac.abort(), { once: true }); }
+  kick(AI_WAIT.WAIT_MS);
+  return { signal: ac.signal, kick, stop: () => clearTimeout(timer), timedOut: () => fired };
+}
+
 export async function runTask(task, input, options = {}, opts = {}) {
   if (cloudDisabled()) throw new AiError('disabled', 'Cloud-KI ist in den KI-Einstellungen ausgeschaltet.');
   if (!online()) throw new AiError('offline', messageFor('offline'));
   if (!hasConsent()) throw new AiError('no_consent', 'Bitte stimme zuerst der Nutzung der Cloud-KI zu.');
   const lang = options.lang || outputLang();
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const token = await ensureToken({ renew: attempt > 0 });
-    const body = await withAccount({ task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: { platform: platformName(), appVersion: APP_VERSION, native: isNative() } });
-    const r = await accountRetry(await postJson('/api/ai', body, { signal: opts.signal }), body, b => postJson('/api/ai', b, { signal: opts.signal }));
-    if (r.status === 401 && attempt === 0) { ls.del(K.token); continue; }
-    if (!r.ok) throw await errorFrom(r);
-    const ct = r.headers.get('content-type') || '';
-    if (/text\/event-stream/.test(ct)) return readStream(r, opts);
-    const j = await r.json();
-    if (j.quota) storeQuota(j.quota);
-    return j;
-  }
-  throw new AiError('invalid_token', messageFor('invalid_token'));
+  const wd = watchdog(opts.signal);
+  try {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const token = await ensureToken({ renew: attempt > 0 });
+      const body = await withAccount({ task, input, options: { lang, ...options }, token, stream: !!opts.stream, client: { platform: platformName(), appVersion: APP_VERSION, native: isNative() } });
+      const r = await accountRetry(await postJson('/api/ai', body, { signal: wd.signal }), body, b => postJson('/api/ai', b, { signal: wd.signal }));
+      if (r.status === 401 && attempt === 0) { ls.del(K.token); continue; }
+      if (!r.ok) throw await errorFrom(r);
+      const ct = r.headers.get('content-type') || '';
+      if (/text\/event-stream/.test(ct)) return await readStream(r, { ...opts, signal: opts.signal, wd });
+      const j = await r.json();
+      if (j.quota) storeQuota(j.quota);
+      return j;
+    }
+    throw new AiError('invalid_token', messageFor('invalid_token'));
+  } catch (e) {
+    if (wd.timedOut() && !(opts.signal && opts.signal.aborted)) throw new AiError('timeout', messageFor('timeout'));
+    throw e;
+  } finally { wd.stop(); }
 }
 
-async function readStream(r, { onDelta, onMeta, signal }) {
+async function readStream(r, { onDelta, onMeta, signal, wd = null }) {
   const reader = r.body.getReader();
   const dec = new TextDecoder();
   let buf = '', full = '', meta = null, done = null, error = null;
@@ -200,9 +221,10 @@ async function readStream(r, { onDelta, onMeta, signal }) {
   };
   try {
     for (;;) {
-      if (signal && signal.aborted) { try { reader.cancel(); } catch {} throw new DOMException('Abgebrochen', 'AbortError'); }
+      if (signal && signal.aborted) { try { reader.cancel().catch(() => {}); } catch {} throw new DOMException('Abgebrochen', 'AbortError'); }
       const { value, done: end } = await reader.read();
       if (end) break;
+      if (wd) wd.kick(AI_WAIT.IDLE_MS);
       buf += dec.decode(value, { stream: true });
       let i;
       while ((i = buf.indexOf('\n\n')) >= 0) {
@@ -213,9 +235,11 @@ async function readStream(r, { onDelta, onMeta, signal }) {
       }
     }
   } catch (e) {
-    if (e && e.name === 'AbortError') throw e;
-    if (!full) throw new AiError('network', 'Die Verbindung zur KI wurde unterbrochen. Bitte versuche es erneut.');
-    error = error || { error: 'network', message: 'Die Verbindung wurde unterbrochen – die Antwort ist unvollständig.' };
+    const stalled = wd && wd.timedOut() && !(signal && signal.aborted);
+    if (e && e.name === 'AbortError' && !stalled) throw e;
+    try { reader.cancel().catch(() => {}); } catch { /* already closed */ }
+    if (!full) throw stalled ? new AiError('timeout', messageFor('timeout')) : new AiError('network', 'Die Verbindung zur KI wurde unterbrochen. Bitte versuche es erneut.');
+    error = error || (stalled ? { error: 'timeout', message: 'Die KI hat nicht weitergeschrieben – die Antwort ist unvollständig.' } : { error: 'network', message: 'Die Verbindung wurde unterbrochen – die Antwort ist unvollständig.' });
   }
   if (error && !full) throw new AiError(error.error, messageFor(error.error, error.message), { quota: error.quota });
   return { output: full.trim(), truncated: !!(meta && meta.truncated), note: (meta && meta.note) || '', quota: (done && done.quota) || (meta && meta.quota) || null, cut: !!(done && done.cut), consumed: done && done.consumed, partial: !!error, partialMessage: error ? messageFor(error.error, error.message) : '' };

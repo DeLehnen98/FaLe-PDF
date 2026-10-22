@@ -31,7 +31,7 @@ export async function mount(screen) {
   go = h(`<button class="btn btn-primary" type="button" data-go disabled>${oicon('translate')} Übersetzen</button>`);
   screen.setFoot([go]);
   let translation = '';
-  $('[data-acts]', wrap).appendChild(resultActions(() => translation, { title: 'Bild-Übersetzung' }));
+  $('[data-acts]', wrap).appendChild(resultActions(() => translation, { title: 'Bild-Übersetzung', sayLang: () => $('[name=target]', wrap).value }));
   let url = null;
 
   async function useFile(file) {
