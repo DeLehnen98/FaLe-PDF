@@ -38,3 +38,5 @@ tests/suites/office_tpl/work/
 tests/suites/office3/lo_profile/
 tests/suites/office4/lo_profile/
 tests/suites/office4/work_t/
+tests/suites/dist_ocr/
+tests/suites/ocrdata/
