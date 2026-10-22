@@ -618,6 +618,10 @@ async function main() {
     if (info.navBottom > ad.t) throw new Error('Navigation überlappt das Banner: ' + JSON.stringify(info));
     return `Banner ${ad.r - ad.l}×${ad.h} px bei y=${ad.t}, Navigation endet bei ${info.navBottom}, Streifen bis ${info.labelBottom}`;
   });
+  { // GitHub shows at most 10 notices per step – repeat the banner result as a warning so it is always visible
+    const r = results.find(x => x.name.startsWith('Werbebanner'));
+    if (r) console.log(`::warning title=E2E Werbebanner-Ergebnis::${esc((r.ok ? 'OK: ' : 'FEHLER: ') + r.info)}`);
+  }
 
   writeFileSync(join(OUT, 'console.txt'), consoleLog.join('\n'));
   writeFileSync(join(OUT, 'results.json'), JSON.stringify(results, null, 2));
