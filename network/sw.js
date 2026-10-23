@@ -12,9 +12,9 @@
  * Nothing is ever sent anywhere: this worker only talks to the own origin.
  */
 'use strict';
-const VERSION = '9a20fa53d11c';
+const VERSION = '1303e1d17c8b';
 const CORE = 'wt-core-' + VERSION;
-const VENDOR = 'wt-vendor-0a1edc9306bc';
+const VENDOR = 'wt-vendor-4af5a605ed1e';
 const PAGES = 'wt-pages';
 const PRECACHE = [
   "/assets/wt/arc2-sheet.js",

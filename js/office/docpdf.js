@@ -5,7 +5,7 @@
 // header/footer zones with fields, watermark and PDF bookmarks (outline) from the headings.
 import { loadPdfLib } from '../pdflib.js';
 import { fontKit, safeText, needsUnicodeDeep, rgbOf, addLink, wrapPlain } from './pdftext.js';
-import { imageToBytes } from './vendor.js';
+import { imageToBytes, tick } from './vendor.js';
 import { HEADING_PT, PARA_SPACE, listLabel, bulletChar, tocEntries, runsText } from './docmodel.js';
 import { normalizeStyles, STYLE_OF_TAG } from './docstyles.js';
 import { fontKind } from './fonts.js';
@@ -449,17 +449,20 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   {
     let width = contentW;
     let started = false;
-    model.blocks.forEach((b, i) => {
+    let slice = performance.now(); // long documents: lay out with a breather every ~30 ms
+    for (let i = 0; i < model.blocks.length; i++) {
+      const b = model.blocks[i];
+      if (performance.now() - slice > 30) { await tick(); slice = performance.now(); }
       if (b.type === 'pagebreak' && b.section) {
         const g = geomOf(b.orient || (LG.w > LG.h ? 'landscape' : 'portrait'));
         LG = g; width = g.w - g.ml - g.mr;
-        if (!started) { firstGeom = g; return; }
+        if (!started) { firstGeom = g; continue; }
         units.push({ pagebreak: true, geom: g, h: 0, draw() {} });
-        return;
+        continue;
       }
       started = true;
-      units.push(...layoutBlocks([b], width, false, i));
-    });
+      for (const u of layoutBlocks([b], width, false, i)) units.push(u);
+    }
   }
   // endnotes at the end of the document
   if (endnotes.length) {
@@ -503,8 +506,9 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
       y -= 2;
     }
   }
-  function paginate(draw) {
+  async function paginate(draw) {
     let G = firstGeom;
+    let slice = performance.now(); // drawing hundreds of paragraphs: let the page breathe every ~30 ms
     const newPage = () => { if (!draw) return null; const p = pdf.addPage([G.w, G.h]); if (wm) drawWatermark(p); return p; };
     let pdfPage = newPage();
     let pageNo = 1, y = G.mt, fnH = 0, pageFns = [];
@@ -540,6 +544,7 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
       if (u.fns && u.fns.length) { fnH += need(); pageFns.push(...u.fns); }
       y += u.h;
       if (draw && onProgress && ++n % 200 === 0) onProgress(n / units.length);
+      if (draw && performance.now() - slice > 30) { await tick(); slice = performance.now(); }
     }
     finish();
     return pageNo;
@@ -547,11 +552,11 @@ export async function modelToPdf(model, { title = 'Dokument', page = null, hf = 
   const needsDry = measureOnly || model.blocks.some(b => b.type === 'toc') || units.some(u => u.xpages);
   if (needsDry) {
     const fn0 = footnotes.slice();
-    paginate(false);
+    await paginate(false);
     footnotes.length = 0; footnotes.push(...fn0);
   }
   if (measureOnly) return new Map([...blockPages.entries()].map(([k, v]) => [k, pageText(v)]));
-  paginate(true);
+  await paginate(true);
   drawHeaderFooter(PDFLib, pdf, fk, pg, hf, title);
   addInternalLinks(PDFLib, pdf, pendingLinks, blockPos, anchorPos);
   addOutline(PDFLib, pdf, outline);

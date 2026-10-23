@@ -4,7 +4,7 @@ import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, progress, downloadBlob, confirmDialog, baseName } from '../ui.js';
 import { resultCard, enableDragReorder, moveItem } from '../components.js';
 import { getDocBytes, saveResult } from '../library.js';
-import { loadPdf, renderPage } from '../pdfcore.js';
+import { loadPdf, renderPage, renderThumb } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { createZip } from '../zip.js';
 
@@ -50,7 +50,7 @@ export async function mount(screen, { docId }) {
       try {
         const page = await pdf.getPage(src + 1);
         if (!alive) return;
-        c = await renderPage(page, { width: 150, dpr: Math.min(2, window.devicePixelRatio || 1) });
+        c = await renderThumb(page, { width: 150, dpr: Math.min(2, window.devicePixelRatio || 1) });
         canvases.set(src, c);
       } catch (e) { if (alive) console.warn(e); return; }
     }

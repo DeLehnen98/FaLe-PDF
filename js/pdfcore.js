@@ -137,6 +137,20 @@ export async function renderPage(page, { width = null, scale = null, rotation = 
   return canvas;
 }
 
+// Page thumbnails one after another (organize, extract, viewer sidebar): rendering a dozen scanned pages at once
+// let their image work pile up into one long freeze on phones; queued with a breather between pages the
+// list fills in steadily and taps still get through.
+let thumbChain = Promise.resolve();
+export function renderThumb(page, opts) {
+  const run = async () => {
+    await new Promise(r => setTimeout(r, 0));
+    return renderPage(page, opts);
+  };
+  const p = thumbChain.then(run, run);
+  thumbChain = p.catch(() => {});
+  return p;
+}
+
 export function canvasToBlob(canvas, type = 'image/jpeg', quality = 0.85) {
   return new Promise((resolve, reject) => canvas.toBlob(b => (b ? resolve(b) : reject(new Error('Bild konnte nicht erzeugt werden'))), type, quality));
 }

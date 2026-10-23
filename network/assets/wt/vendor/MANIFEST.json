@@ -72,7 +72,7 @@
     "lib/shared/office/chart.js": "7fbf79441c6a7d0d028a8602374a0622986e1a104254a0757e6dde27ec81301a",
     "lib/shared/office/csv.js": "0bc752395b8bb868f793f9e75f2a2917b66572550b723bd64b8902049a43c697",
     "lib/shared/office/docmodel.js": "e27e958ea208212937a78811b58c4556a8b041f09ce8a4869639985e37fbe5af",
-    "lib/shared/office/docpdf.js": "81dbcf0618ea00ce8e9637fac614374f660cb7fe88b2ecf2b686ff0a88de2351",
+    "lib/shared/office/docpdf.js": "33283af74152c81180b73543bf540701e0ce46e85fcf49bdce935a48dc0fb28f",
     "lib/shared/office/docstyles.js": "4c7214fb401f3dd9b563bb7776fb71909d5f465bee22777c22e0a9b0d20b9770",
     "lib/shared/office/docx-read.js": "a83ca954b7682832b49bcb6c0974b57f7bf4482ff9b0dfbebe9834574bddc17a",
     "lib/shared/office/docx-write.js": "98598fdec34b851a5e8329368c9ff1a0cacf2865f6275cc2de215c44fe253c6e",

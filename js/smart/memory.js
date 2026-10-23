@@ -177,11 +177,21 @@ async function indexDoc(d, pages, sig, extra) {
   let slice = performance.now();
   for (let pi = 0; pi < pages.length; pi++) {
     if (performance.now() - slice > 25) { await new Promise(r => setTimeout(r, 0)); slice = performance.now(); }
-    const p = pages[pi];
-    const toks = tokenize(p);
-    lens.push(toks.length);
+    const p = String(pages[pi] || '');
     const tf = new Map();
-    for (const tk of toks) tf.set(tk.t, (tf.get(tk.t) || 0) + (tk.part ? 0.5 : 1));
+    // a Word/text file is one long „page“: tokenize it in pieces with breaks too (it froze the app after adding it)
+    let n = 0;
+    for (let at = 0; at < p.length || at === 0; ) {
+      let end = Math.min(p.length, at + 4000);
+      if (end < p.length) { const sp = p.lastIndexOf(' ', end); if (sp > at + 1000) end = sp; }
+      const toks = tokenize(p.slice(at, end));
+      n += toks.length;
+      for (const tk of toks) tf.set(tk.t, (tf.get(tk.t) || 0) + (tk.part ? 0.5 : 1));
+      at = end;
+      if (at >= p.length) break;
+      if (performance.now() - slice > 25) { await new Promise(r => setTimeout(r, 0)); slice = performance.now(); }
+    }
+    lens.push(n);
     if (pi === 0) for (const tk of nameToks) tf.set(tk.t, (tf.get(tk.t) || 0) + 2);
     for (const [t, n] of tf) { if (!post.has(t)) post.set(t, []); post.get(t).push(pi, Math.round(n * 2) / 2); }
   }
@@ -210,7 +220,9 @@ async function indexDoc(d, pages, sig, extra) {
 
 /** Facts from any indexed letter-like document (contracts, deadlines, IBAN …), source 'index'. */
 async function factsFromText(d, pages) {
-  const text = pages.slice(0, 4).join('\n\n');
+  // the first pages are enough for sender, amounts and deadlines – a whole Word/text file in one „page“ took
+  // half a second of frozen screen right after adding it
+  const text = pages.slice(0, 4).join('\n\n').slice(0, 12000);
   const old = await sdb.byIndex('facts', 'docId', d.id);
   for (const o of old) if (o.source === 'index') await sdb.del('facts', o.id);
   if (text.replace(/\s+/g, '').length < 120) return;

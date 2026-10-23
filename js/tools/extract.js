@@ -3,7 +3,7 @@ import { icon } from '../icons.js';
 import { h, esc, toast, errorToast, progress, downloadBlob, baseName } from '../ui.js';
 import { resultCard } from '../components.js';
 import { saveResult } from '../library.js';
-import { loadPdf, renderPage } from '../pdfcore.js';
+import { loadPdf, renderPage, renderThumb } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { createZip } from '../zip.js';
 import { openToolDoc, parseRange, tick, updateFoot } from './common.js';
@@ -59,7 +59,7 @@ export async function mount(screen, { docId }) {
       try {
         const page = await pdf.getPage(+en.target.dataset.n);
         if (!alive) return;
-        const c = await renderPage(page, { width: 150, dpr: Math.min(2, window.devicePixelRatio || 1) });
+        const c = await renderThumb(page, { width: 150, dpr: Math.min(2, window.devicePixelRatio || 1) });
         const box = en.target.querySelector('.pcard-thumb');
         box.innerHTML = '';
         box.appendChild(c);

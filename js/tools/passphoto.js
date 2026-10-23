@@ -57,6 +57,20 @@ export async function mount(screen) {
   screen.setTitle('Passfoto', 'Passbild und Bewerbungsfoto zuschneiden');
   let tpl = TEMPLATES[0];
   let src = null; // source canvas (background edits are applied here)
+  // what the frame shows: a smaller bitmap of src (made off the main thread by createImageBitmap), rebuilt when src
+  // changes – drawing the full-size, CPU-backed source on every finger move made the photo stutter on phones
+  let view = null, viewOf = null, srcVer = 0, viewVer = -1, pending = null;
+  const viewSize = c => { const f = Math.min(1, 1600 / Math.max(c.width, c.height)); return { resizeWidth: Math.max(1, Math.round(c.width * f)), resizeHeight: Math.max(1, Math.round(c.height * f)), resizeQuality: 'high' }; };
+  const makeView = c => createImageBitmap(c, viewSize(c)).catch(() => null);
+  const currentView = () => (view && viewOf === src && viewVer === srcVer ? view : null);
+  function setView(b, c, v) { if (view && view !== b && view.close) view.close(); view = b; viewOf = c; viewVer = v; }
+  async function refreshView() {
+    const c = src, v = srcVer;
+    const b = await makeView(c);
+    if (!b) return;
+    if (c === src && v === srcVer) { setView(b, c, v); draw(); } else if (b.close) b.close();
+  }
+  const touched = () => { srcVer++; refreshView(); };
   const T = { cx: 0, cy: 0, s: 1, rot: 0 }; // image center (mm, frame coords), mm per source px, rotation (rad)
   let adj = { brightness: 0, contrast: 0 };
   let alive = true;
@@ -95,7 +109,12 @@ export async function mount(screen) {
   async function useFile(f) {
     if (!f) return;
     const prog = progress('Foto wird geladen …');
-    try { setSource(await loadImageToCanvas(f, 2400)); } catch (e) { errorToast(e, 'Das Foto konnte nicht geöffnet werden.'); }
+    try {
+      const c = await loadImageToCanvas(f, 2400);
+      // ready before the first frame, made from the file (decoded off the main thread, no copy of the big canvas)
+      pending = { c, b: await createImageBitmap(f, { imageOrientation: 'from-image', ...viewSize(c) }).catch(() => makeView(c)) };
+      setSource(c);
+    } catch (e) { errorToast(e, 'Das Foto konnte nicht geöffnet werden.'); }
     finally { prog.done(); }
   }
 
@@ -157,6 +176,9 @@ export async function mount(screen) {
   function setSource(c) {
     if (src && src !== c) src.width = 0;
     src = c;
+    srcVer++;
+    if (pending && pending.c === c && pending.b) setView(pending.b, c, srcVer); else refreshView();
+    pending = null;
     bgUndo.length = 0;
     adj = { brightness: 0, contrast: 0 };
     // cover the frame
@@ -235,7 +257,7 @@ export async function mount(screen) {
     root.querySelector('[data-bgmode]').addEventListener('click', () => setBgMode(!bgMode));
     root.querySelector('[data-bgundo]').addEventListener('click', () => {
       const prev = bgUndo.pop();
-      if (prev) { src.getContext('2d').putImageData(prev, 0, 0); draw(); }
+      if (prev) { src.getContext('2d').putImageData(prev, 0, 0); touched(); draw(); }
       root.querySelector('[data-bgundo]').disabled = !bgUndo.length;
     });
     wirePointer();
@@ -275,7 +297,7 @@ export async function mount(screen) {
     g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
     g.translate(T.cx * ppm, T.cy * ppm); g.rotate(T.rot); g.scale(T.s * ppm, T.s * ppm);
     g.imageSmoothingQuality = 'high';
-    g.drawImage(src, -src.width / 2, -src.height / 2);
+    g.drawImage(currentView() || src, -src.width / 2, -src.height / 2, src.width, src.height);
     c.style.filter = `brightness(${1 + adj.brightness / 100}) contrast(${1 + adj.contrast / 100})`;
   }
 
@@ -358,6 +380,7 @@ export async function mount(screen) {
     if (bgUndo.length > 5) bgUndo.shift();
     const out = replaceMasked(data, mask, { color: BG, feather: Math.max(1.5, src.width / 900) });
     g.putImageData(new ImageData(out.data, out.width, out.height), 0, 0);
+    touched();
     els.root.querySelector('[data-bgundo]').disabled = false;
     draw();
   }

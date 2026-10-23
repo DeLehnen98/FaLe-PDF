@@ -130,6 +130,8 @@ def main():
             page.wait_for_function("() => location.hash === '#/web/grayscale-pdf'")
             fr = frame(page)
             check('card opens the tool (header title, frame with picker)', page.locator('.screen-title').inner_text() == 'PDF in Graustufen' and fr.locator('[data-wt-input]').count() == 1)
+            try: fr.locator('[data-wt-library]').wait_for(state='attached', timeout=5000)  # added once the frame script ran
+            except Exception: pass
             check('„Aus meinen Dateien“ next to the picker', fr.locator('[data-wt-library]').count() == 1)
             check('no site header/footer/SEO texts in the frame', fr.locator('header.site-head, footer.site-foot, .wt-info').count() == 0)
         step('tool list', tool_list)

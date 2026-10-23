@@ -151,9 +151,16 @@ export async function mount(screen, opts = {}) {
       const c = await loadImageToCanvas(f);
       file = f;
       work = c;
-      original = imgData(c);
+      // preview and „Vorher“ come straight from the file, decoded and scaled by the browser off the main thread
+      // (copying the 3200 px working canvas froze the page for about a second on phones)
+      if (original && original.close) original.close();
+      original = null;
       undo.length = redo.length = 0;
-      makeProxy();
+      await makeProxyAsync(f);
+      const of = f, pf = Math.min(1, 1600 / Math.max(c.width, c.height));
+      createImageBitmap(f, { imageOrientation: 'from-image', resizeWidth: Math.max(1, Math.round(c.width * pf)), resizeHeight: Math.max(1, Math.round(c.height * pf)), resizeQuality: 'high' })
+        .then(b => { if (file === of) original = b; else b.close(); })
+        .catch(() => { if (file === of && work) try { original = imgData(work); } catch { /* no „Vorher“ */ } });
       showEditor();
     } catch (e) { errorToast(e, 'Das Bild konnte nicht geöffnet werden.'); }
     finally { prog.done(); }
@@ -162,6 +169,19 @@ export async function mount(screen, opts = {}) {
     const f = Math.min(1, PROXY / Math.max(work.width, work.height));
     if (proxy) proxy.width = 0;
     proxy = resizeCanvas(work, work.width * f, work.height * f);
+  }
+  // same, but scaled by the browser off the main thread (opening a big photo froze the page for a moment)
+  async function makeProxyAsync(fromFile) {
+    const f = Math.min(1, PROXY / Math.max(work.width, work.height));
+    const w = Math.max(1, Math.round(work.width * f)), hh = Math.max(1, Math.round(work.height * f));
+    let bmp = null;
+    try { bmp = await createImageBitmap(fromFile || work, { imageOrientation: 'from-image', resizeWidth: w, resizeHeight: hh, resizeQuality: 'high' }); } catch { bmp = null; }
+    if (!bmp) { makeProxy(); return; }
+    if (proxy) proxy.width = 0;
+    proxy = document.createElement('canvas');
+    proxy.width = w; proxy.height = hh;
+    proxy.getContext('2d', { willReadFrequently: true }).drawImage(bmp, 0, 0);
+    bmp.close();
   }
 
   // ---------- editor ----------
@@ -185,7 +205,8 @@ export async function mount(screen, opts = {}) {
     const showOrig = on => {
       const c = els.cw.querySelector('canvas');
       if (!c) return;
-      if (on) { const o = canvasFrom(original); const p = resizeCanvas(o, c.width, c.height); o.width = 0; c._saved = c.getContext('2d').getImageData(0, 0, c.width, c.height); c.getContext('2d').drawImage(p, 0, 0); p.width = 0; }
+      if (on && !original) return;
+      if (on) { const o = original instanceof ImageData ? canvasFrom(original) : original; const p = resizeCanvas(o, c.width, c.height); if (o !== original) o.width = 0; c._saved = c.getContext('2d').getImageData(0, 0, c.width, c.height); c.getContext('2d').drawImage(p, 0, 0); p.width = 0; }
       else if (c._saved) { c.getContext('2d').putImageData(c._saved, 0, 0); c._saved = null; }
       before.classList.toggle('on', on);
     };

@@ -553,14 +553,29 @@ mark {
 .notice { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--warn-soft); color: var(--text); font-size: 0.875rem; margin: 12px 0; border: 1px solid color-mix(in srgb, var(--warn) 18%, transparent); }
 .notice .ic { color: var(--warn); width: 20px; height: 20px; margin-top: 1px; }
 
-.order-list { display: grid; gap: 8px; }
-.order-item { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-2), opacity var(--dur-2); }
+.order-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.order-item { min-width: 0; display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-2), opacity var(--dur-2); }
 .order-item.dragging { opacity: .5; box-shadow: var(--shadow-lg); }
 .order-item.drop-before { box-shadow: inset 0 3px 0 var(--primary); }
 .order-item .handle { color: var(--text-3); cursor: grab; display: grid; place-items: center; width: 28px; }
 .order-item .doc-thumb { width: 44px; height: 58px; }
 .order-item .doc-thumb img { object-fit: contain; }
 .order-item .doc-info { flex: 1; min-width: 0; }
+@media (max-width: 480px) {
+  /* phones: the name gets two lines instead of „Mie…“, the buttons a little less room */
+  .order-item { gap: 8px; padding: 8px; }
+  .order-item .doc-thumb { width: 36px; height: 48px; }
+  .order-item .doc-name { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; line-height: 1.25; }
+  /* rows with up/down/remove: the name on the full width, the three buttons in a second line */
+  .order-item:has(> [data-up]) { display: grid; grid-template-columns: auto auto 1fr auto auto auto; grid-template-areas: "num th info info info info" "num th . up down rm"; row-gap: 0; }
+  .order-item:has(> [data-up]) > .order-num { grid-area: num; }
+  .order-item:has(> [data-up]) > .doc-thumb { grid-area: th; }
+  .order-item:has(> [data-up]) > .doc-info { grid-area: info; }
+  .order-item:has(> [data-up]) > [data-up] { grid-area: up; }
+  .order-item:has(> [data-up]) > [data-down] { grid-area: down; }
+  .order-item:has(> [data-up]) > [data-remove] { grid-area: rm; }
+  .order-item:has(> [data-up]) > .handle { display: none; }
+}
 .order-num { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-strong); font-weight: 700; font-size: var(--fs-small); flex: none; font-variant-numeric: tabular-nums; }
 
 .page-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }

@@ -1,5 +1,5 @@
 // Document viewer built on the pdf.js viewer components.
-import { pdfjsLib, loadPdf, renderPage, canvasToBlob, pageText, PasswordCancelled, knownPassword } from './pdfcore.js';
+import { pdfjsLib, loadPdf, renderPage, canvasToBlob, pageText, PasswordCancelled, knownPassword, renderThumb as queuedThumb } from './pdfcore.js';
 import { isNative, printPdf } from './platform.js';
 import { EventBus, PDFLinkService, PDFFindController, PDFViewer, GenericL10n, LinkTarget } from '../vendor/pdfjs/pdf_viewer.mjs';
 import * as db from './db.js';
@@ -506,7 +506,7 @@ async function renderThumb(btn) {
   try {
     const page = await session.pdf.getPage(+btn.dataset.page);
     if (session !== cur) return;
-    const canvas = await renderPage(page, { width: 140, dpr: Math.min(2, window.devicePixelRatio || 1), rotation: S.pdfViewer.pagesRotation });
+    const canvas = await queuedThumb(page, { width: 140, dpr: Math.min(2, window.devicePixelRatio || 1), rotation: S.pdfViewer.pagesRotation });
     const box = btn.querySelector('.thumb-box');
     box.style.aspectRatio = '';
     box.innerHTML = '';
