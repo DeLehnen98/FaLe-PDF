@@ -93,9 +93,9 @@ Bis du das erledigt hast, nutzt die App Googles **Test-IDs** (Testanzeigen, kein
 2. **Apps → App hinzufügen** → Android → (noch nicht im Play Store: „Nein“, später verknüpfen) → Name „FaLe PDF“.
    Notiere die **App-ID** (`ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY`).
 3. **Anzeigenblöcke → Anzeigenblock hinzufügen → „Mit Prämie“ (Rewarded)**: Name „KI-Bonus“,
-   Prämie **3**, Prämienartikel „KI-Anfragen“.
+   Prämie **1**, Prämienartikel „KI-Anfrage“ (die App schaltet pro ganz angesehenem Video genau eine Anfrage frei).
    Unter **Serverseitige Bestätigung** die Callback-URL eintragen:
-   `https://fale-pdf.vercel.app/api/admob-ssv` → „Bestätigen“ (der Test-Aufruf muss „OK“ ergeben).
+   `https://pdf.fale.network/api/admob-ssv` → „Bestätigen“ (der Test-Aufruf muss „OK“ ergeben).
    Notiere die **Anzeigenblock-ID** (`ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ`).
    Zusätzlich für das Werbebanner (`js/banner.js`): **Anzeigenblock hinzufügen → Banner** (adaptiv) → Name z. B.
    „Banner Hauptseiten“ → Anzeigenblock-ID notieren (`ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB`).
@@ -116,7 +116,7 @@ Bis du das erledigt hast, nutzt die App Googles **Test-IDs** (Testanzeigen, kein
 **Wichtig:** Niemals echte Anzeigen selbst anklicken oder „durchspielen“ – zum Testen immer Test-IDs bzw. dein Gerät
 in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
 
-## Schritt 5 – FaLe Plus (Abo über Google Play)
+## Schritt 5 – FaLe Pro (Abo über Google Play; Produkt-IDs bleiben `fale_plus_*`)
 
 1. Play Console → **Einrichtung → Zahlungsprofil** (Händlerkonto) anlegen, falls noch nicht geschehen.
 2. Eine Version der App mit dem Billing-Plugin muss in einem Test-Track hochgeladen sein (sonst lassen sich keine Abos anlegen).
@@ -161,7 +161,7 @@ in AdMob als **Testgerät** eintragen. Sonst droht die Sperre des AdMob-Kontos.
 | „KI-Kontingent für diesen Monat aufgebraucht“ | Monatsbudget erreicht (Supabase-Tabelle `ai_budget`) – ggf. `AI_MONTHLY_BUDGET_EUR` erhöhen |
 | „Die KI ist gerade nicht erreichbar“ | Anbieter-Fehler, Guthaben leer oder Limit beim Anbieter erreicht |
 | Werbevideo lädt nicht | keine DSGVO-Nachricht veröffentlicht, Einwilligung abgelehnt, oder neuer Anzeigenblock (bis zu 1 h Wartezeit) |
-| Video gesehen, aber kein +3 | SSV-Callback-URL im Anzeigenblock fehlt/falsch; Vercel-Logs von `/api/admob-ssv` prüfen |
+| Video gesehen, aber keine Freischaltung | SSV-Callback-URL im Anzeigenblock fehlt/falsch; Vercel-Logs von `/api/admob-ssv` prüfen |
 | „FaLe Plus ist bald verfügbar“ | `GOOGLE_PLAY_SA_JSON` fehlt oder Plugin nicht im Build |
 
 Kontrollblick in Supabase (SQL Editor): `select * from ai_budget;` zeigt reservierte und verbrauchte USD des Monats.
