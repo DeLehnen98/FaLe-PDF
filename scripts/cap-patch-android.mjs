@@ -260,6 +260,12 @@ function patchAds() {
   }, undefined, '        ');
   write(p, s);
   if (id === ADMOB_TEST_APP_ID) log('AdMob: TEST-App-ID aktiv (js/ai/config.js) – vor dem Release ersetzen, siehe store/AI-SETUP.md');
+  else {
+    let testing = true;
+    try { testing = !/ADMOB_TESTING:\s*false/.test(read(join(ROOT, 'js', 'ai', 'config.js'))); } catch { /* keep true */ }
+    log(testing ? 'AdMob: eigene App-ID, Test-Anzeigen aktiv (ADMOB_TESTING: true) – zum Play-Release auf false stellen'
+      : 'AdMob: eigene App-ID, ECHTE Anzeigen (ADMOB_TESTING: false)');
+  }
 }
 
 // ------------------------------------------------------------------ java

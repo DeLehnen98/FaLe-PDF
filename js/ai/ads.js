@@ -4,7 +4,7 @@
 // The reward itself is granted by the SERVER after Google's signed SSV callback (custom_data =
 // this device's signed token); the app only refreshes its quota afterwards.
 import { plugin, isNative, platformName } from '../platform.js';
-import { AI_CONFIG } from './config.js';
+import { AI_CONFIG, adUnit } from './config.js';
 import * as C from './client.js';
 
 const userErr = msg => Object.assign(new Error(msg), { userMessage: msg });
@@ -70,7 +70,7 @@ export async function showRewardedAd() {
   handles.push(await on(p, EV.Dismissed, () => setTimeout(() => settle('dismissed'), 400))); // reward event may arrive just before
   handles.push(await on(p, EV.FailedToShow, () => settle('failed')));
   try {
-    await p.prepareRewardVideoAd({ adId: AI_CONFIG.ADMOB_REWARDED_ID, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa, ssv: { customData: C.rewardCustomData(token) } });
+    await p.prepareRewardVideoAd({ adId: adUnit('rewarded'), isTesting: !!AI_CONFIG.ADMOB_TESTING, npa, ssv: { customData: C.rewardCustomData(token) } });
     // Only a video watched to the end counts: the reward event (or a reward item with an amount) – closing the
     // video or the app early never unlocks anything. The server credits only after Google's signed confirmation.
     const shown = Promise.resolve(p.showRewardVideoAd()).then(

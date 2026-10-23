@@ -8,7 +8,7 @@
 //    personalisiert
 import { proActive } from './monetize.js';
 import { plugin, isNative, platformName } from './platform.js';
-import { AI_CONFIG } from './ai/config.js';
+import { AI_CONFIG, adUnit } from './ai/config.js';
 
 const MAIN = new Set(['start', 'dateien', 'werkzeuge', 'einstellungen', 'suche']);
 const LABEL_H = 18; // px – the „Anzeige“ strip between the navigation and the banner
@@ -56,7 +56,7 @@ async function show() {
   if (consent && consent.canRequestAds === false) return;
   const npa = !consent || !['OBTAINED', 'NOT_REQUIRED'].includes(consent.status);
   if (!created) {
-    await p.showBanner({ adId: AI_CONFIG.ADMOB_BANNER_ID, adSize: 'ADAPTIVE_BANNER', position: 'BOTTOM_CENTER', margin: 0, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa });
+    await p.showBanner({ adId: adUnit('banner'), adSize: 'ADAPTIVE_BANNER', position: 'BOTTOM_CENTER', margin: 0, isTesting: !!AI_CONFIG.ADMOB_TESTING, npa });
     created = true;
   } else {
     await p.resumeBanner();
