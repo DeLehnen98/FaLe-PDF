@@ -558,6 +558,27 @@ async function main() {
     return r.avail === true ? `vorgelesen (Stimmen: ${r.voices})` : `keine Sprachausgabe im Emulator – App meldet es sauber (${r.res})`;
   });
 
+  await step('Handyfoto → PDF ohne Einfrieren (Bild-Worker)', async () => {
+    await closeOverlays();
+    // a 12 MP photo made in the page; the app must stay responsive (main-thread stalls) and use its worker
+    const r = await ev(`const c = new OffscreenCanvas(4032, 3024); const g = c.getContext('2d');
+      const grd = g.createLinearGradient(0, 0, 4032, 3024); grd.addColorStop(0, '#d8d2c4'); grd.addColorStop(1, '#8a9bb0'); g.fillStyle = grd; g.fillRect(0, 0, 4032, 3024);
+      g.fillStyle = '#222'; g.font = '60px sans-serif'; for (let y = 200; y < 2900; y += 110) g.fillText('Sehr geehrte Damen und Herren – Zeile ' + y, 300, y);
+      const blob = await c.convertToBlob({ type: 'image/jpeg', quality: 0.92 });
+      const file = new File([blob], 'handyfoto.jpg', { type: 'image/jpeg' });
+      let worst = 0, last = performance.now(); const iv = setInterval(() => { const n = performance.now(); worst = Math.max(worst, n - last - 50); last = n; }, 50);
+      const t0 = performance.now();
+      const { imagesToPdf } = await import('/js/tools/images.js');
+      const out = await imagesToPdf([file], { pageSize: 'fit' });
+      const ms = Math.round(performance.now() - t0); clearInterval(iv);
+      const worker = performance.getEntriesByType('resource').some(e => e.name.includes('imgprep-worker.js'));
+      return { ms, worst: Math.round(worst), worker, pages: out.pages, kb: Math.round(out.bytes.length / 1024), mb: Math.round(blob.size / 1048576 * 10) / 10 };`, { timeout: 120000 });
+    if (r.pages !== 1) throw new Error('keine Seite erzeugt: ' + JSON.stringify(r));
+    if (!r.worker) console.log(`::warning title=E2E Foto::Bild-Worker nicht benutzt (Hauptthread-Ersatz) – ${esc(JSON.stringify(r))}`);
+    if (r.worst > 1500) throw new Error(`App hängt beim Umwandeln: ${r.worst} ms ohne Reaktion (${JSON.stringify(r)})`);
+    return `${r.mb} MB Foto in ${r.ms} ms, längste Pause ${r.worst} ms, ${r.worker ? 'im Worker' : 'Hauptthread'}, PDF ${r.kb} KB`;
+  });
+
   await step('Web-Werkzeug im App-Rahmen (PDF in Graustufen)', async () => {
     await closeOverlays();
     const before = (await docs()).length;

@@ -584,6 +584,7 @@ mark {
 
 .img-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .img-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 8px; display: grid; gap: 6px; box-shadow: var(--shadow-sm); }
+.img-card .img-box.loading img { visibility: hidden; }
 .img-card .img-box { aspect-ratio: 3 / 4; border-radius: 10px; background: var(--surface-2); display: grid; place-items: center; overflow: hidden; }
 .img-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .img-card .pcard-foot { padding: 0 2px; }
