@@ -32,16 +32,16 @@ jobs:
         shell: bash -eo pipefail {0}
     steps:
       - name: Checkout
-        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false # the token is passed explicitly where needed (gh, release action)
       - name: Setup Node 22
-        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
 
       - name: Setup Java 21
-        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
           distribution: temurin
           java-version: 21
@@ -56,7 +56,7 @@ jobs:
           "$SDKM" --install "platforms;android-36" "build-tools;36.0.0" "platform-tools" 2>&1 | tail -n 5 | tee -a "$BUILD_LOG" || echo "sdkmanager install failed – Gradle will try to download missing parts" | tee -a "$BUILD_LOG"
 
       - name: Setup Gradle (cache)
-        uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
       - name: Install npm packages
         run: (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) 2>&1 | tee -a "$BUILD_LOG"
 
@@ -117,7 +117,7 @@ jobs:
         run: rm -f "$RUNNER_TEMP/upload.jks"
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: FaLe-PDF-${{ steps.ver.outputs.version }}-android
           path: out/*
@@ -135,7 +135,7 @@ jobs:
 
       - name: Latest test build as pre-release (main)
         if: github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: android-latest
           name: Neueste Test-APK
@@ -158,7 +158,7 @@ jobs:
 
       - name: Attach to GitHub Release (tags v*)
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           files: out/*
           generate_release_notes: true
