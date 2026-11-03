@@ -96,9 +96,14 @@ function splitText(text, max) {
 export function aiCapabilities() {
   if (!capsP) capsP = (async () => {
     const res = { summarize: false, translate: false, detect: false };
+    let slow = false;
     for (const p of providers) {
-      try { const c = await p.capabilities(); for (const k of Object.keys(res)) if (c[k]) res[k] = true; } catch {}
+      // the browser's availability() can stay pending (model download, broken install): never wait forever –
+      // a promise that never settles would also keep everything alive that waits for it (e.g. a closed editor)
+      const timeout = new Promise(r => setTimeout(() => { slow = true; r(null); }, 3000));
+      try { const c = await Promise.race([p.capabilities(), timeout]); if (c) for (const k of Object.keys(res)) if (c[k]) res[k] = true; } catch {}
     }
+    if (slow) setTimeout(() => { capsP = null; }, 60000); // ask again later
     return res;
   })();
   return capsP;

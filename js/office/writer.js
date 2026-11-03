@@ -24,6 +24,10 @@ import { hfEl } from './pagelayout.js';
 import { createWriterExtras } from './writer-extras.js';
 import { isCustomStyle, customStyleIds, CUSTOM_BASE } from './docstyles.js';
 import { aiMenusHidden } from '../ai/hidden.js';
+
+// on-device AI (Chrome built-in): checked once per app start, shared by all editors
+const AI_CAPS = { summarize: false, translate: false };
+import('../extras/ai.js').then(m => m.aiCapabilities()).then(c => { if (c) Object.assign(AI_CAPS, { summarize: !!c.summarize, translate: !!c.translate }); }).catch(() => {});
 export { decodeText };
 
 const PX = 96 / 72; // pt → css px
@@ -251,8 +255,7 @@ export async function mountWriter(screen, { id = null, template = null }) {
   screen.foot.hidden = false;
   status.addEventListener('click', () => wordCountDialog());
 
-  let aiCaps = { summarize: false, translate: false };
-  import('../extras/ai.js').then(m => m.aiCapabilities()).then(c => { aiCaps = c; }).catch(() => {});
+  const aiCaps = AI_CAPS; // filled once per app start (module level – a pending check must not keep this editor alive)
   const textOf = root => { const c = root.cloneNode(true); c.querySelectorAll('del.tc, [data-toc], .img-handles').forEach(x => x.remove()); return c.innerText || c.textContent || ''; };
   const countText = text => ({
     words: (text.match(/[\p{L}\p{N}]+(?:['’\-.][\p{L}\p{N}]+)*/gu) || []).length,

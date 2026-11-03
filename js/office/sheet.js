@@ -424,7 +424,8 @@ export async function mountSheet(screen, { id = null, template = null }) {
   let copyMark = null, fillPreview = null;
   const coarseMq = matchMedia('(pointer: coarse)');
   let coarse = coarseMq.matches;
-  coarseMq.addEventListener && coarseMq.addEventListener('change', () => { coarse = coarseMq.matches; schedule(); });
+  const onCoarse = () => { coarse = coarseMq.matches; schedule(); };
+  coarseMq.addEventListener && coarseMq.addEventListener('change', onCoarse); // removed when the editor closes (else it keeps the whole workbook alive)
   function rectHtml(cls, r1, r2, c1, c2, from, to, base, inFc) {
     const fc = fcN();
     if (inFc) { if (c1 >= fc) return ''; c2 = Math.min(c2, fc - 1); } else if (fc && c2 < fc) return '';
@@ -2694,6 +2695,7 @@ export async function mountSheet(screen, { id = null, template = null }) {
     document.removeEventListener('paste', onPaste);
     ro.disconnect();
     themeObs.disconnect();
+    coarseMq.removeEventListener && coarseMq.removeEventListener('change', onCoarse);
     if (raf) cancelAnimationFrame(raf);
     if (chartRaf) cancelAnimationFrame(chartRaf);
     screen.officeCleanup && screen.officeCleanup();
