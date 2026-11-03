@@ -477,6 +477,8 @@ async function main() {
     // the print/share steps before can leave the launcher focused on the API 34 image (taps then never reach the
     // app) – this step needs real touch input for drawing, so bring the app to the front first
     await ensureApp();
+    // a retry starts like the first try: a signature kept from an earlier try would be placed directly (no drawing pad)
+    await ev(`const m = await import('/js/tools/sigstore.js'); for (const a of await m.listAssets('signature')) await m.deleteAsset(a.id); return true;`).catch(() => {});
     await ev(`location.hash = '#/werkzeug/unterschreiben?doc=${docId}'; return true;`);
     if (!await waitJs(`!!document.querySelector('.sign-page canvas')`, { timeout: 40000 })) throw new Error('Unterschreiben lädt nicht (' + await ev(`return location.hash + ' ' + document.querySelectorAll('.sign-page').length;`).catch(e => e.message) + ')');
     await sleep(1000);
@@ -518,7 +520,13 @@ async function main() {
     if (!await waitJs(`document.querySelectorAll('.s-item').length > 0`, { timeout: 6000 })) throw new Error('Unterschrift wird nicht platziert');
     screenshot('sign-placed');
     await tap('[data-save]');
-    const d = await waitFor(async () => (await docs()).find(x => /unterschrieben/.test(x.name)), { timeout: 15000 });
+    let d = await waitFor(async () => (await docs()).find(x => /unterschrieben/.test(x.name)), { timeout: 15000 });
+    if (!d) {
+      // API 34 image: the launcher can take the input focus again – save from the page (drawing and placing were real touch)
+      console.log(`::warning title=E2E Unterschrift::Speichern-Tippen kam nicht an – per Seite gespeichert (${esc(focusedWindow())})`);
+      await ev(`document.querySelector('[data-save]').click(); return true;`);
+      d = await waitFor(async () => (await docs()).find(x => /unterschrieben/.test(x.name)), { timeout: 15000 });
+    }
     if (!d) throw new Error('keine unterschriebene Kopie gespeichert');
     const info = await pdfInfo(d.id);
     if (!info.images) throw new Error('gespeicherte PDF enthält kein Unterschriftsbild');
