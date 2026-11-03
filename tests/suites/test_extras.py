@@ -354,7 +354,7 @@ def desktop(p):
         # move bericht.pdf into folder via file menu
         row = page.locator('#view-dateien [data-files] .doc', has_text='bericht.pdf').first
         row.locator('.more-btn').click()
-        page.locator('.menu-item', has_text='In Ordner verschieben').click()
+        page.locator('.menu-quick .mq-btn', has_text='In Ordner').click()
         page.locator('dialog .pick-item', has_text='Steuer 2026').locator('input').check()
         page.locator('dialog button[value=ok]').click()
         page.wait_for_timeout(800)
@@ -662,7 +662,7 @@ def desktop(p):
         check('filter + validation + cf read back', page.evaluate(f"(() => {{ const s = {api}.sheet(); return !!s.autoFilter && s.dv.length === 1 && s.cf.length === 2; }})()"))
         # PDF export includes the charts
         page.locator('[data-office-more]').click()
-        page.locator('.menu-item', has_text='Als PDF exportieren').click()
+        page.locator('.menu-quick .mq-btn', has_text='Als PDF').click()
         page.wait_for_selector('dialog .result-mini', timeout=40000)
         close_dialog(page)
         pd = doc_named(page, r'^Extras-Tabelle\.pdf$')
@@ -745,7 +745,7 @@ def desktop(p):
         check('docx: A5 landscape page size', sec.orientation == 1 and abs(sec.page_width.pt - 595.3) < 2 and abs(sec.page_height.pt - 419.5) < 2, f'{sec.orientation} {sec.page_width.pt} {sec.page_height.pt}')
         # PDF export: header/footer/page numbers + TOC page numbers + footnote
         page.locator('[data-office-more]').click()
-        page.locator('.menu-item', has_text='Als PDF exportieren').click()
+        page.locator('.menu-quick .mq-btn', has_text='Als PDF').click()
         page.wait_for_selector('dialog .result-mini', timeout=40000)
         close_dialog(page)
         pp = save_doc(page, doc_named(page, r'^Extras-Bericht\.pdf$'), 'extras-bericht.pdf')
@@ -873,8 +873,9 @@ def desktop(p):
         goto(page, '#/dateien', 800)
         page.locator('#view-dateien [data-files] .doc', has_text='struktur.pdf').locator('.more-btn').click()
         items = page.locator('.menu-item').all_inner_texts()
-        check('AI entries hidden without on-device AI', not any('Zusammenfassen' in i or 'Übersetzen' in i for i in items), str(items))
-        check('file menu: folder/tags/frist/vault', all(any(k in i for i in items) for k in ['In Ordner', 'Tags', 'Frist hinzufügen', 'Tresor']))
+        check('on-device AI entries hidden without on-device AI', not any('auf dem Gerät' in i for i in items), str(items))
+        mt = page.locator('.menu').inner_text()
+        check('file menu: folder/tags/frist/vault', all(k in mt for k in ['In Ordner', 'Tags', 'Frist hinzufügen', 'Tresor']))
         page.keyboard.press('Escape')
         page.evaluate("document.querySelectorAll('.menu-layer').forEach(m => m.remove())")
     step('tools', tools)

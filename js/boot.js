@@ -16,6 +16,7 @@
 (function () {
   'use strict';
   try { var t = localStorage.getItem('fale-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  try { var ac = localStorage.getItem('fale-accent'); if (ac && /^[a-z]+$/.test(ac) && localStorage.getItem('fale-plus-info')) document.documentElement.dataset.accent = ac; } catch (e) {} // Pro app colour (js/accent.js re-checks Pro)
   // text size + simple view (js/simple.js) before the first paint – no flash of the normal size on slow devices
   try {
     var ts = localStorage.getItem('fale-textsize');

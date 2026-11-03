@@ -37,19 +37,9 @@ export function docRow(doc, { onOpen } = {}) {
   return el;
 }
 
+/** Same ⋮ menu as the file list (js/office/filerow.js): file on top with rename in place, quick actions, groups. */
 export function docMenu(anchor, doc) {
-  showMenu(anchor, [
-    { label: 'Öffnen', icon: 'open', onClick: () => (location.hash = `#/ansicht/${doc.id}`) },
-    { label: 'Umbenennen', icon: 'edit', onClick: () => renameDoc(doc) },
-    { label: 'Teilen', icon: 'share', onClick: () => shareDoc(doc) },
-    { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(doc) },
-    '-',
-    { label: 'Ausfüllen & unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${doc.id}`) },
-    { label: 'Seiten verwalten', icon: 'pages', onClick: () => (location.hash = `#/werkzeug/seiten?doc=${doc.id}`) },
-    { label: 'Mehr Werkzeuge …', icon: 'tools', onClick: () => import('./webtools/list.js').then(m => m.chooseWebTool(doc)) },
-    '-',
-    { label: 'Löschen', icon: 'trash', danger: true, onClick: () => deleteDocConfirm(doc) },
-  ], { label: `Aktionen für ${doc.name}` });
+  return import('./office/filerow.js').then(m => m.fileMenu(anchor, doc));
 }
 
 export async function renameDoc(doc) {

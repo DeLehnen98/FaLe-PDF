@@ -253,7 +253,7 @@ async function pdfInfo(id) {
     return { size: bytes.length, text: tc.items.map(i => i.str).join(' '), images };`);
 }
 async function closeOverlays() {
-  await ev(`document.querySelectorAll('.menu-layer').forEach(m => m.remove()); document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('.onboard').forEach(o => o.remove()); return true;`).catch(() => {});
+  await ev(`document.querySelectorAll('.menu-layer').forEach(m => m.remove()); document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('.onboard, .ftip').forEach(o => o.remove()); return true;`).catch(() => {});
 }
 const appOnTop = () => new RegExp(`topResumedActivity=[^\\n]*${PKG.replace(/\./g, '\\.')}/`).test(sh('dumpsys activity activities', { allowFail: true }));
 /** Close a system screen (print preview, share sheet) with BACK until the app is on top again. */
@@ -323,7 +323,7 @@ async function main() {
   await connect();
   // German UI (as on the owner's phone), skip the intro
   // no ad banner during the other steps (a tap must never land on an ad) – the banner has its own step at the end
-  await ev(`localStorage.setItem('fale-lang', 'de'); localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-ads-off', '1'); location.hash = '#/start'; location.reload(); return true;`).catch(() => {});
+  await ev(`localStorage.setItem('fale-lang', 'de'); localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-hints-off', '1'); localStorage.setItem('fale-ads-off', '1'); location.hash = '#/start'; location.reload(); return true;`).catch(() => {});
   await sleep(3500);
   if (cdp.closed) await connect();
   await waitJs(`!!document.querySelector('#view-start, main')`, { timeout: 30000 });
@@ -388,12 +388,12 @@ async function main() {
         await ev(`document.querySelector('[data-v="more"]').click(); return true;`);
         if (!await waitJs(`!!document.querySelector('.menu-layer .menu-item')`, { timeout: 5000 })) throw new Error('Menü öffnet nicht');
         await sleep(400);
-        await ev(`const b = [...document.querySelectorAll('.menu-layer .menu-item')].find(x => x.textContent.includes(${JSON.stringify(label)})); if (!b) throw new Error('Menüpunkt fehlt'); b.click(); return true;`);
+        await ev(`const b = [...document.querySelectorAll('.menu-layer .mq-btn, .menu-layer .menu-item')].find(x => x.textContent.includes(${JSON.stringify(label)})); if (!b) throw new Error('Menüpunkt fehlt'); b.click(); return true;`);
         return;
       }
     }
     await sleep(400);
-    await tap('.menu-layer .menu-item', { text: label });
+    await tap('.menu-layer .mq-btn, .menu-layer .menu-item', { text: label }); // big quick buttons on top, then the groups
   };
 
   // ---- print ----

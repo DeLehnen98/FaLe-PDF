@@ -11,6 +11,9 @@ import { NETWORK_ORIGIN } from './domains.js';
 import { isNative, platformName } from './platform.js';
 import { APP_VERSION } from './version.js';
 import { aiHidden } from './ai/hidden.js';
+import { showPlus, proActive } from './monetize.js';
+import { ACCENTS, storedAccent, setAccent } from './accent.js';
+import { hintsOn, setHintsOn, resetHints } from './hints.js';
 import { recentTools, noteTool } from './tools/recent.js';
 import { t, LANGS, LANG_NAMES, getLangSetting, setLang, deviceLang } from './i18n/index.js';
 import { simpleOn, setSimple, simpleHintHidden, dismissSimpleHint, followSimple, SIMPLE_HOME, CONVERT_MENU, NEW_MENU, SIMPLE_TOOLS, textSizeSeg, bindTextSize } from './simple.js';
@@ -670,7 +673,7 @@ function renderFolders(el, folders, docs, searching) {
     const n = countIn(f.id);
     const t = h(`<div class="folder-tile" role="listitem" data-folder="${esc(f.id)}"><a class="ft-open" href="#/dateien?ordner=${esc(f.id)}"><span class="ft-ic">${oicon('folder')}</span><span class="ft-txt"><strong>${esc(f.name)}</strong><span>${n === 1 ? '1 Datei' : `${n} Dateien`}</span></span></a>
       <button class="icon-btn" type="button" aria-label="Aktionen für Ordner ${esc(f.name)}">${oicon('more')}</button></div>`);
-    $('button', t).addEventListener('click', e => folderMenu(e.currentTarget, f));
+    $('button', t).addEventListener('click', e => folderMenu(e.currentTarget, f, n));
     row.appendChild(t);
   });
   if (!cur || !cur.parent) {
@@ -688,16 +691,33 @@ async function promptDialogLazy(title, value = '') {
   const v = await promptDialog(title, 'Name', value, { okLabel: 'Speichern' });
   return v && v.trim() ? v.trim() : null;
 }
-function folderMenu(anchor, f) {
+function folderMenu(anchor, f, n = 0) {
+  const sub = async () => {
+    const name = await promptDialogLazy('Neuer Unterordner');
+    if (!name) return;
+    try { await (await extrasOrg()).createFolder(name, f.id); toast('Ordner angelegt', 'success'); } catch (e) { errorToast(e, 'Ordner konnte nicht angelegt werden.'); }
+  };
   showMenu(anchor, [
-    { label: 'Umbenennen', icon: 'edit', onClick: async () => { const n = await promptDialogLazy('Ordner umbenennen', f.name); if (n) (await extrasOrg()).renameFolder(f.id, n); } },
-    { label: 'Ordner löschen', icon: 'trash', danger: true, onClick: async () => {
+    { label: 'Ordner löschen', hint: 'Die Dateien darin bleiben erhalten', icon: 'trash', danger: true, onClick: async () => {
       if (!await confirmDialog('Ordner löschen?', `„${f.name}“ wird entfernt. Die Dateien darin bleiben erhalten und wandern eine Ebene nach oben.`, { okLabel: 'Ordner löschen', danger: true })) return;
       await (await extrasOrg()).deleteFolder(f.id);
       if (filesFolder === f.id) location.hash = '#/dateien';
       toast('Ordner gelöscht');
     } },
-  ], { label: `Ordner ${f.name}` });
+  ], {
+    label: `Ordner ${f.name}`, iconFn: oicon,
+    head: { thumb: `<span class="ft-ic">${oicon('folder')}</span>`, title: f.name, sub: n === 1 ? '1 Datei' : `${n} Dateien`,
+      onRename: async name => {
+        const clean = String(name || '').trim().slice(0, 60);
+        if (!clean) { toast('Der Name darf nicht leer sein.', 'error'); return false; }
+        await (await extrasOrg()).renameFolder(f.id, clean);
+        f.name = clean;
+        toast('Umbenannt', 'success');
+        return clean;
+      } },
+    quick: [{ label: 'Öffnen', icon: 'open', onClick: () => { location.hash = `#/dateien?ordner=${f.id}`; } },
+      !f.parent && { label: 'Unterordner', icon: 'folderPlus', onClick: sub }],
+  });
 }
 function renderTagChips(el, tags, docs) {
   const box = $('[data-tagchips]', el);
@@ -1021,6 +1041,8 @@ async function renderMeGeneral(el) {
         <div class="seg" role="group" aria-label="Erscheinungsbild">
           <button type="button" data-theme-opt="auto">Auto</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button>
         </div></div>
+      ${showPlus() || proActive() ? `<div class="settings-row accent-set" data-accent-row><div class="label"><strong>App-Farbe <span class="pro-tag" data-no-i18n>PRO</span></strong><span>${proActive() ? 'Wähle die Farbe für Knöpfe und Markierungen.' : 'Eine eigene Farbe für Knöpfe und Markierungen – ein Extra von FaLe Pro.'}</span></div>
+        <div class="accent-row" role="radiogroup" aria-label="App-Farbe">${ACCENTS.map(a => `<button type="button" class="accent-sw${a.id && !proActive() ? ' locked' : ''}" role="radio" data-accent="${a.id}" style="--sw:${a.sw}" aria-label="${esc(a.name)}" title="${esc(a.name)}">${oicon(a.id && !proActive() ? 'lock' : 'check')}</button>`).join('')}</div></div>` : ''}
       <div class="settings-row" data-simple-row><div class="label"><strong>Einfache Ansicht</strong><span>Nur das Wichtigste in großen Kacheln. Alle anderen Funktionen findest du über „Alle Werkzeuge anzeigen“ und die Suche.</span></div>
         <label class="switch"><input type="checkbox" data-simple-toggle ${simpleOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Einfache Ansicht</span></label></div>
       <div class="settings-row ts-row" data-textsize-row><div class="label"><strong>Schriftgröße</strong><span>Macht Texte und Knöpfe in FaLe größer. Gilt nur auf diesem Gerät.</span></div>
@@ -1042,6 +1064,10 @@ async function renderMeGeneral(el) {
         <label class="switch"><input type="checkbox" data-stats-toggle ${stats.statsEnabled() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">„Dein Monat“ anzeigen</span></label></div>
       <div class="settings-row"><div class="label"><strong>Hinweis „Alle Werkzeuge sind dabei“</strong><span>Die Info-Karte auf der Startseite wieder anzeigen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-free-reset>Wieder anzeigen</button></div>
+      <div class="settings-row"><div class="label"><strong>Tipps beim ersten Besuch</strong><span>Kleine Hinweise zeigen auf jeder Seite einmal, wo was liegt.</span></div>
+        <label class="switch"><input type="checkbox" data-hints-toggle ${hintsOn() ? 'checked' : ''}><span class="switch-ui" aria-hidden="true"></span><span class="sr-only">Tipps beim ersten Besuch</span></label></div>
+      <div class="settings-row"><div class="label"><strong>Alle Tipps wieder zeigen</strong><span>Auch die Tipps, die du schon gesehen hast.</span></div>
+        <button class="btn btn-ghost btn-sm" type="button" data-hints-reset>Wieder zeigen</button></div>
       <div class="settings-row"><div class="label"><strong>Einführung</strong><span>Die kurze Tour vom ersten Start noch einmal ansehen.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-onboarding>Ansehen</button></div>
     </div>
@@ -1091,6 +1117,23 @@ async function renderMeGeneral(el) {
     toast(e.target.checked ? 'Ausgefüllte PDFs bleiben ab jetzt immer in FaLe änderbar.' : 'Nur noch auf Wunsch: Setze beim Speichern das Häkchen „Später in FaLe änderbar“.', 'success');
   });
   $('[data-onboarding]', el).addEventListener('click', async () => { (await import('./extras/onboarding.js')).showOnboarding(); });
+  $('[data-hints-toggle]', el).addEventListener('change', e => { setHintsOn(e.target.checked); toast(e.target.checked ? 'Tipps sind an.' : 'Tipps sind aus.', 'success'); });
+  $('[data-hints-reset]', el).addEventListener('click', () => { resetHints(); $('[data-hints-toggle]', el).checked = true; toast('Die Tipps erscheinen wieder beim nächsten Besuch einer Seite.', 'success'); });
+  const accRow = $('[data-accent-row]', el);
+  if (accRow) {
+    const paintSw = () => { const cur = proActive() ? storedAccent() : ''; $$('[data-accent]', accRow).forEach(b => b.setAttribute('aria-checked', String(b.dataset.accent === cur))); };
+    paintSw();
+    $$('[data-accent]', accRow).forEach(b => b.addEventListener('click', async () => {
+      const id = b.dataset.accent;
+      if (id && !proActive()) { // a Pro extra: say what it is, then offer a look – no paywall jump
+        const ok = await confirmDialog('App-Farbe mit FaLe Pro', 'Eigene App-Farben sind ein Extra von FaLe Pro. Alle PDF-Funktionen bleiben ohne Pro kostenlos.', { okLabel: 'Pro ansehen', cancelLabel: 'Nicht jetzt' });
+        if (ok) location.hash = '#/ki/pro';
+        return;
+      }
+      setAccent(id, proActive());
+      paintSw();
+    }));
+  }
 }
 
 function lastBackupText() {

@@ -6,7 +6,8 @@ import * as C from './client.js';
 import { statusCard, docPicker, docChip, getDoc, gate } from './common.js';
 import { ensureCloud, showAiError, richText, resultActions, engineSwitch, progressNote } from './ui.js';
 import { docText } from './doctext.js';
-import { AI_CONFIG, TARGET_LANGS, outputLang } from './config.js';
+import { aiLimit, TARGET_LANGS, outputLang } from './config.js';
+import { showPlus, proActive } from '../monetize.js';
 
 /** Split text into parts ≤ max chars at paragraph boundaries. */
 export function splitParts(text, max) {
@@ -119,7 +120,7 @@ export async function mount(screen, { params, op, preset = '' }) {
   async function runPart(i) {
     const useDevice = engine.value() === 'device';
     const target = isSum ? null : $('[name=target]', wrap).value;
-    const chunk = isSum ? fullText.slice(0, AI_CONFIG.MAX_SUMMARY_CHARS) : parts[i];
+    const chunk = isSum ? fullText.slice(0, aiLimit('MAX_SUMMARY_CHARS')) : parts[i];
     out.dataset.raw = '';
     if (useDevice) {
       const ai = await import('../extras/ai.js');
@@ -133,7 +134,7 @@ export async function mount(screen, { params, op, preset = '' }) {
         res = await ai.translateText(chunk, { source: src, target, signal: ac.signal, onProgress: (p, m) => progressNote(prep, `${m || ''} ${p ? Math.round(p * 100) + ' %' : ''}`) });
       }
       progressNote(prep, '');
-      return { output: res, note: '', truncated: isSum && fullText.length > AI_CONFIG.MAX_SUMMARY_CHARS };
+      return { output: res, note: '', truncated: isSum && fullText.length > aiLimit('MAX_SUMMARY_CHARS') };
     }
     const r = await C.runTask(isSum ? 'summarize' : 'translate', { text: chunk, title: doc ? doc.name : '' }, isSum ? { mode } : { target }, {
       stream: true, signal: ac.signal,
@@ -160,7 +161,7 @@ export async function mount(screen, { params, op, preset = '' }) {
     try {
       if (!next) {
         fullText = await getSourceText();
-        parts = isSum ? [fullText] : splitParts(fullText, AI_CONFIG.MAX_TRANSLATE_CHARS);
+        parts = isSum ? [fullText] : splitParts(fullText, aiLimit('MAX_TRANSLATE_CHARS'));
         partIdx = 0; translated = [];
         out.innerHTML = '<span class="ai-typing" aria-label="KI schreibt"><i></i><i></i><i></i></span>';
       }
@@ -172,12 +173,13 @@ export async function mount(screen, { params, op, preset = '' }) {
       if (isSum) { out.dataset.raw = r.output; out.innerHTML = richText(r.output, { cite: false }); }
       else { translated.push(r.output); out.innerHTML = plain('', translated).replace(/<p><\/p>$/, ''); }
       const notes = [];
-      if (isSum && fullText.length > AI_CONFIG.MAX_SUMMARY_CHARS) notes.push(`Das Dokument ist sehr lang – zusammengefasst wurden die ersten ca. ${AI_CONFIG.MAX_SUMMARY_CHARS.toLocaleString('de-DE')} Zeichen.`);
+      if (isSum && fullText.length > aiLimit('MAX_SUMMARY_CHARS')) notes.push(`Das Dokument ist sehr lang – zusammengefasst wurden die ersten ca. ${aiLimit('MAX_SUMMARY_CHARS').toLocaleString('de-DE')} Zeichen.`);
       else if (r.note) notes.push(r.note);
       if (r.cut) notes.push('Die Antwort wurde wegen ihrer Länge gekürzt.');
       if (r.partial) notes.push(r.partialMessage);
       noteEl.hidden = !notes.length;
-      noteEl.innerHTML = notes.length ? `${oicon('info')}<span>${esc(notes.join(' '))}</span>` : '';
+      const longPro = isSum && fullText.length > aiLimit('MAX_SUMMARY_CHARS') && showPlus() && !proActive(); // honest hint, where it matters
+      noteEl.innerHTML = notes.length ? `${oicon('info')}<span>${esc(notes.join(' '))}${longPro ? ` <a href="#/ki/pro" class="pro-link"><span class="pro-tag" data-no-i18n>PRO</span> liest bis zu 2,5-mal so viel</a>` : ''}</span>` : '';
       metaEl.textContent = engine.value() === 'device' ? 'Auf dem Gerät berechnet' : 'Cloud-KI';
       renderMore();
       const nextBox = $('[data-next]', wrap);

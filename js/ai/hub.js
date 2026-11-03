@@ -59,12 +59,16 @@ export async function mountPlus(screen) {
       <div class="pc-row" role="row"><span role="rowheader"><strong>PDF-Werkzeuge</strong><small>Bearbeiten, Unterschreiben, Umwandeln, Scannen …</small></span><span role="cell">${yes()} alle</span><span role="cell" class="pc-pro">${yes()} alle</span></div>
       <div class="pc-row" role="row"><span role="rowheader"><strong>KI-Werkzeuge</strong><small>Chat, Zusammenfassen, Übersetzen, Folien, Briefe …</small></span><span role="cell">1 Video pro Anfrage</span><span role="cell" class="pc-pro">${yes()} ohne Video</span></div>
       <div class="pc-row" role="row"><span role="rowheader"><strong>Werbung</strong><small>Banner unten auf den Hauptseiten</small></span><span role="cell">Banner</span><span role="cell" class="pc-pro">${yes()} werbefrei</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>Lange Dokumente für die KI</strong><small>Zusammenfassen, Lernkarten, Vergleichen, Chat</small></span><span role="cell">bis ca. 48.000 Zeichen</span><span role="cell" class="pc-pro">${yes()} bis ca. 120.000 Zeichen</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>Übersetzen</strong><small>lange Texte in weniger Schritten</small></span><span role="cell">12.000 Zeichen pro Anfrage</span><span role="cell" class="pc-pro">${yes()} 24.000 Zeichen pro Anfrage</span></div>
+      <div class="pc-row" role="row"><span role="rowheader"><strong>App-Farbe</strong><small>Ich → Einstellungen</small></span><span role="cell">Violett</span><span role="cell" class="pc-pro">${yes()} 6 Farben</span></div>
       <div class="pc-row" role="row"><span role="rowheader"><strong>FaLe Sync</strong><small>mit dem freiwilligen FaLe-Konto</small></span><span role="cell">1 GB</span><span role="cell" class="pc-pro">${yes()} 20 GB</span></div>
       <div class="pc-row" role="row"><span role="rowheader"><strong>Auf allen Geräten</strong><small>mit dem freiwilligen FaLe-Konto</small></span><span role="cell">–</span><span role="cell" class="pc-pro">${yes()} Pro gilt überall</span></div>
     </div>
     <div class="card card-pad ai-plus-list"><strong>Gut zu wissen</strong><ul>
       <li>${oicon('play')}<span><strong>Ohne Pro:</strong> Ein Video schaltet eine KI-Anfrage frei. Es muss bis zum Ende laufen – wird es abgebrochen oder die App geschlossen, gibt es keine Freischaltung. Google bestätigt jedes Video unserem Server.</span></li>
-      <li>${oicon('sparkle')}<span><strong>Mit Pro:</strong> alle KI-Werkzeuge ohne Video – fair bis zu 200 Anfragen am Tag.</span></li>
+      <li>${oicon('sparkle')}<span><strong>Mit Pro:</strong> alle KI-Werkzeuge ohne Video – fair bis zu 200 Anfragen am Tag, auch für lange Dokumente.</span></li>
+      <li><span class="pro-tag" data-no-i18n>PRO</span><span>Dieses Zeichen steht in der App an jedem Extra von FaLe Pro. Alles ohne dieses Zeichen ist kostenlos.</span></li>
       <li>${oicon('shield')}<span>Gesendet wird nur, was du für eine Aufgabe auswählst – mit und ohne Pro.</span></li>
     </ul>
     <p class="muted small">Solange FaLe PDF ein kleines Projekt ist, gilt für die Cloud-KI ein festes Monatsbudget für alle – auch mit Pro kann sie in seltenen Fällen bis zum Monatsende pausieren.</p></div>

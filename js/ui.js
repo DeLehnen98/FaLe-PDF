@@ -139,10 +139,10 @@ export function openDialog({ title, body, actions = [], wide = false, dismissabl
   return p;
 }
 
-export async function confirmDialog(title, message, { okLabel = 'OK', danger = false } = {}) {
+export async function confirmDialog(title, message, { okLabel = 'OK', danger = false, cancelLabel = 'Abbrechen' } = {}) {
   const r = await openDialog({
     title, body: `<p>${esc(message)}</p>`,
-    actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: okLabel, value: 'ok', kind: danger ? 'btn-danger' : 'btn-primary' }],
+    actions: [{ label: cancelLabel, value: 'cancel' }, { label: okLabel, value: 'ok', kind: danger ? 'btn-danger' : 'btn-primary' }],
   });
   return r.value === 'ok';
 }
@@ -168,18 +168,117 @@ export async function promptDialog(title, label, value = '', { type = 'text', ok
 }
 
 // ---- popover / action-sheet menu ----
-export function showMenu(anchor, items, { label = 'Menü' } = {}) {
+/**
+ * Menus (⋮) – a popover on wide screens, a bottom sheet on phones.
+ * items: { label, icon, onClick, danger, disabled, hint (second line), badge ('PRO' | 'Neu' …),
+ *          toggle: true + on: bool (a switch – the menu stays open, onClick(newState)) }, '-' separator,
+ *        { section: 'Titel' } heading of a group.
+ * opts:  label (screen readers), iconFn (icon set), search (filter field for long menus),
+ *        head: { thumb (html), title, sub, onRename(name) → Promise<string|false> } – the file the menu is about;
+ *              its name can be edited right there,
+ *        quick: [{ label, icon, onClick, pressed }] – big buttons for the most used actions on top.
+ */
+export function showMenu(anchor, items, { label = 'Menü', iconFn = icon, head = null, quick = null, search = false } = {}) {
   closeMenus();
   const sheet = window.matchMedia('(max-width: 720px)').matches;
-  const wrap = h(`<div class="menu-layer ${sheet ? 'as-sheet' : ''}"><div class="menu" role="menu" aria-label="${esc(label)}"></div></div>`);
+  const rich = !!(head || quick || search || items.some(it => it && (it.section || it.hint || it.badge || it.toggle)));
+  const wrap = h(`<div class="menu-layer ${sheet ? 'as-sheet' : ''}"><div class="menu${rich ? ' menu-rich' : ''}" role="menu" aria-label="${esc(label)}"></div></div>`);
   const menu = wrap.firstElementChild;
+  const close = () => { closeMenus(); };
+  if (head) {
+    const hd = h(`<div class="menu-head" role="presentation">${head.thumb ? `<span class="mh-thumb">${head.thumb}</span>` : ''}
+      <span class="mh-txt"><strong class="mh-title" data-no-i18n></strong>${head.sub ? `<span class="mh-sub">${head.sub}</span>` : ''}</span>
+      ${head.onRename ? `<button class="icon-btn mh-edit" type="button" aria-label="Umbenennen" title="Umbenennen">${icon('edit')}</button>` : ''}</div>`);
+    $('.mh-title', hd).textContent = head.title || '';
+    if (head.onRename) $('.mh-edit', hd).addEventListener('click', () => startRename(hd));
+    menu.appendChild(hd);
+  }
+  function startRename(hd) {
+    if ($('.mh-form', hd)) return;
+    const cur = $('.mh-title', hd).textContent;
+    const form = h(`<form class="mh-form" novalidate><label class="sr-only" for="mh-name">Neuer Name</label>
+      <input class="input" id="mh-name" name="name" autocomplete="off" spellcheck="false" data-no-i18n>
+      <button class="btn btn-primary btn-sm" type="submit">${icon('check')}<span>Speichern</span></button></form>`);
+    const input = $('input', form);
+    input.value = cur;
+    hd.classList.add('renaming');
+    hd.appendChild(form);
+    // select the name without the extension (like a file manager)
+    setTimeout(() => { input.focus(); const dot = cur.lastIndexOf('.'); input.setSelectionRange(0, dot > 0 ? dot : cur.length, 'backward'); }, 30); // caret at the start: the name stays readable
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = $('button', form);
+      btn.disabled = true;
+      let res = null;
+      try { res = await head.onRename(input.value); } catch (err) { errorToast(err, 'Umbenennen fehlgeschlagen.'); }
+      btn.disabled = false;
+      if (res === false || res == null) { input.focus(); return; }
+      $('.mh-title', hd).textContent = res;
+      form.replaceWith();
+      hd.classList.remove('renaming');
+      hd.classList.add('renamed');
+      setTimeout(() => hd.classList.remove('renamed'), 1400);
+      const eb = $('.mh-edit', hd); if (eb) eb.focus({ preventScroll: true }); // keep the keyboard inside the menu (Escape closes it)
+    });
+  }
+  if (search) {
+    const sb = h(`<div class="menu-search" role="presentation">${icon('search')}<input class="input" type="search" placeholder="Aktion suchen" aria-label="Aktion suchen" autocomplete="off"></div>`);
+    menu.appendChild(sb);
+    $('input', sb).addEventListener('input', e => {
+      const q = e.target.value.trim().toLocaleLowerCase('de');
+      $$('.menu-item', menu).forEach(b => { b.hidden = !!q && !b.textContent.toLocaleLowerCase('de').includes(q); });
+      $$('.menu-sec', menu).forEach(sec => {
+        let n = sec.nextElementSibling, any = false;
+        while (n && !n.classList.contains('menu-sec')) { if (n.classList.contains('menu-item') && !n.hidden) any = true; n = n.nextElementSibling; }
+        sec.hidden = !!q && !any;
+      });
+      $$('.menu-sep', menu).forEach(x => { x.hidden = !!q; });
+      const qk = $('.menu-quick', menu);
+      if (qk) { // the big buttons are searched too (e.g. „PDF“ finds „Als PDF“)
+        $$('.mq-btn', qk).forEach(b => { b.hidden = !!q && !b.textContent.toLocaleLowerCase('de').includes(q); });
+        qk.hidden = !!q && !$$('.mq-btn', qk).some(b => !b.hidden);
+      }
+    });
+  }
+  if (quick && quick.filter(Boolean).length) {
+    const row = h('<div class="menu-quick" role="group"></div>');
+    quick.filter(Boolean).forEach(it => {
+      const b = h(`<button class="mq-btn" type="button" role="menuitem"${it.pressed != null ? ` aria-pressed="${!!it.pressed}"` : ''}>${iconFn(it.icon || 'file')}<span>${esc(it.label)}</span></button>`);
+      b.addEventListener('click', () => { close(); it.onClick && it.onClick(); });
+      row.appendChild(b);
+    });
+    menu.appendChild(row);
+  }
   items.filter(Boolean).forEach(it => {
     if (it === '-') { menu.appendChild(h('<div class="menu-sep" role="separator"></div>')); return; }
-    const b = h(`<button class="menu-item ${it.danger ? 'danger' : ''}" role="menuitem" type="button" ${it.disabled ? 'disabled' : ''}>${icon(it.icon || 'file')}<span>${esc(it.label)}</span></button>`);
-    b.addEventListener('click', () => { closeMenus(); it.onClick && it.onClick(); });
+    if (it.section) { menu.appendChild(h(`<div class="menu-sec" role="presentation">${esc(it.section)}</div>`)); return; }
+    const badge = it.badge ? `<span class="mi-badge${it.badge === 'PRO' ? ' pro-tag' : ''}"${it.badge === 'PRO' ? ' data-no-i18n' : ''}>${esc(it.badge)}</span>` : '';
+    const sw = it.toggle ? '<span class="mi-switch" aria-hidden="true"></span>' : '';
+    const text = it.hint ? `<span class="mi-txt"><span class="mi-label">${esc(it.label)}</span><small>${esc(it.hint)}</small></span>` : `<span class="mi-label">${esc(it.label)}</span>`;
+    const b = h(`<button class="menu-item ${it.danger ? 'danger' : ''}${it.toggle ? ' is-toggle' : ''}" role="${it.toggle ? 'menuitemcheckbox' : 'menuitem'}" type="button" ${it.toggle ? `aria-checked="${!!it.on}"` : ''} ${it.disabled ? 'disabled' : ''}>${iconFn(it.icon || 'file')}${text}${badge}${sw}</button>`);
+    b.addEventListener('click', () => {
+      if (it.toggle) {
+        const on = b.getAttribute('aria-checked') !== 'true';
+        b.setAttribute('aria-checked', String(on));
+        if (it.onClick) it.onClick(on);
+        return; // switches keep the menu open
+      }
+      close();
+      if (it.onClick) it.onClick();
+    });
     menu.appendChild(b);
   });
-  wrap.addEventListener('click', e => { if (e.target === wrap) closeMenus(); });
+  wrap.addEventListener('click', e => { if (e.target === wrap) close(); });
+  if (sheet) { // phone sheet: pull the grip at the top down to close it
+    const grip = h('<div class="menu-grip" aria-hidden="true"></div>');
+    menu.prepend(grip);
+    let y0 = null, dy = 0;
+    grip.addEventListener('pointerdown', e => { y0 = e.clientY; dy = 0; try { grip.setPointerCapture(e.pointerId); } catch { /* old WebView */ } menu.style.transition = 'none'; });
+    grip.addEventListener('pointermove', e => { if (y0 == null) return; dy = Math.max(0, e.clientY - y0); menu.style.transform = `translateY(${dy}px)`; });
+    const end = () => { if (y0 == null) return; y0 = null; menu.style.transition = ''; if (dy > 70) close(); else menu.style.transform = ''; };
+    grip.addEventListener('pointerup', end);
+    grip.addEventListener('pointercancel', end);
+  }
   document.body.appendChild(wrap);
   if (!sheet) {
     const r = anchor.getBoundingClientRect();
@@ -193,18 +292,23 @@ export function showMenu(anchor, items, { label = 'Menü' } = {}) {
     menu.style.top = top + 'px';
   }
   requestAnimationFrame(() => wrap.classList.add('open'));
-  const first = menu.querySelector('.menu-item:not([disabled])');
-  first && first.focus();
+  const first = menu.querySelector('.mq-btn, .menu-item:not([disabled])');
+  if (first) first.focus({ preventScroll: true });
   const onKey = e => {
-    if (e.key === 'Escape') { closeMenus(); anchor.focus(); }
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      const list = $$('.menu-item:not([disabled])', menu);
+    if (e.key === 'Escape') {
+      const f = $('.mh-form', menu);
+      if (f) { f.replaceWith(); const hd = $('.menu-head', menu); if (hd) { hd.classList.remove('renaming'); const eb = $('.mh-edit', hd); if (eb) eb.focus({ preventScroll: true }); } e.stopPropagation(); return; }
+      close(); anchor.focus();
+    }
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !(e.target && e.target.matches('input'))) {
+      const list = $$('.mq-btn:not([hidden]), .menu-item:not([disabled]):not([hidden])', menu);
       const i = list.indexOf(document.activeElement);
       const n = e.key === 'ArrowDown' ? (i + 1) % list.length : (i - 1 + list.length) % list.length;
       list[n].focus(); e.preventDefault();
     }
   };
   wrap.addEventListener('keydown', onKey);
+  return menu;
 }
 
 export function closeMenus() {

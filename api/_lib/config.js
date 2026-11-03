@@ -105,7 +105,7 @@ function getConfig() {
     plusLifetime: (env('PLUS_LIFETIME_PRODUCTS') || 'fale_plus_lifetime').split(',').map(s => s.trim()).filter(Boolean),
     admobKeysUrl: env('ADMOB_VERIFIER_KEYS_URL') || 'https://www.gstatic.com/admob/reward/verifier-keys.json',
     admobRewardUnits: env('ADMOB_REWARDED_AD_UNITS').split(',').map(s => s.trim()).filter(Boolean),
-    maxBodyBytes: int('AI_MAX_BODY_BYTES', 200000, { min: 10000, max: 4000000 }),
+    maxBodyBytes: int('AI_MAX_BODY_BYTES', 600000, { min: 10000, max: 4000000 }),
     // FaLe-Konto (optional account) + FaLe Sync – see store/ACCOUNT-SETUP.md
     accountsEnabled: bool('ACCOUNTS_ENABLED', false), // switch on after custom SMTP is set up in Supabase
     authGoogle: bool('AUTH_GOOGLE_ENABLED', false), // Google sign-in (needs the Google provider in Supabase Auth)

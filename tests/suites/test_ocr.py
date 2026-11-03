@@ -4,6 +4,8 @@ Run: python3 test_ocr.py [all|build|engine|tools|integr|offline|shots][:step1,st
 """
 import os, sys, json, re, io, shutil, subprocess, socket, time, zipfile, difflib, traceback, base64
 from PIL import Image, ImageFont
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sec'))
+import csp_compat  # noqa: F401,E402 – CSP-safe wait_for_function (served with the real CSP)
 from playwright.sync_api import sync_playwright
 
 SP = os.path.dirname(os.path.abspath(__file__))
@@ -12,7 +14,7 @@ OUT = os.path.join(SP, 'out_ocr')
 DIST = os.path.join(SP, 'dist_ocr')
 APP = '/home/claude/FalePDF'
 PORT = 8797
-URL = f'http://127.0.0.1:{PORT}/'
+URL = f'http://127.0.0.1:{PORT}/app/'  # the app (the build serves the landing page at /)
 os.makedirs(OUT, exist_ok=True)
 TRUTH = json.load(open(os.path.join(TD, 'truth.json')))
 ARGS = [a for a in sys.argv[1:] if not a.startswith('--')]
@@ -61,7 +63,7 @@ def build():
 
 
 def stop_server():
-    out = subprocess.run(['pgrep', '-f', f'^python3 -m http.server {PORT}'], capture_output=True, text=True).stdout.split()
+    out = subprocess.run(['pgrep', '-f', f'^(python3 -m http.server|node .*csp_server.mjs) {PORT}'], capture_output=True, text=True).stdout.split()
     for pid in out:
         try:
             os.kill(int(pid), 15)
@@ -72,7 +74,8 @@ def stop_server():
 
 def start_server():
     stop_server()
-    subprocess.Popen(['python3', '-m', 'http.server', str(PORT), '--bind', '127.0.0.1'], cwd=DIST, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # the build puts the landing page at / and the app under /app/ (vercel.json rewrite) – csp_server does the same
+    subprocess.Popen(['node', os.path.join(SP, 'sec', 'csp_server.mjs'), str(PORT), DIST], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(40):
         s = socket.socket()
         try:

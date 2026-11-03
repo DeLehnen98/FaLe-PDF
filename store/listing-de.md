@@ -82,7 +82,7 @@ KI-ASSISTENT (OPTIONAL)
 • Chat mit Dokument: Fragen stellen, Antworten mit Seitenangaben
 • Zusammenfassen, übersetzen, Schreibhilfe, Formel-Assistent, Folien per KI
 • Lernkarten & Quiz aus Skripten, Briefe per KI, Fotos übersetzen
-• Ohne Pro schaltet ein kurzes Video eine KI-Anfrage frei – mit FaLe Pro alle KI-Werkzeuge ohne Video
+• Ohne Pro schaltet ein kurzes Video eine KI-Anfrage frei – mit FaLe Pro alle KI-Werkzeuge ohne Video, auch für lange Dokumente
 • Keine KI gewünscht? Ein Schalter blendet sie komplett aus
 • Nur nach deiner Zustimmung; gesendet wird nur der Text, den du auswählst. KI-Antworten können Fehler enthalten – problematische Antworten kannst du uns per E-Mail melden.
 

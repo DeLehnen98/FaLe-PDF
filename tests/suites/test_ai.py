@@ -767,7 +767,7 @@ def main():
             harness('/__test/reset?FREE_DAILY=0&REWARD_BONUS=1')
             page.evaluate("async () => { const C = await import('./js/ai/client.js'); C._resetStatusCache(); await C.ensureToken({ renew: true }); await C.refreshQuota(); }")
             goto(page, '#/werkzeuge/ki', 1300)
-            check('KI-Werkzeuge page: „Auf Pro upgraden“ bar on top', page.locator('[data-pro-bar] .pro-bar[data-pro-state="off"]').count() == 1 and 'Auf Pro upgraden' in page.locator('[data-pro-bar]').inner_text())
+            check('KI-Werkzeuge page: Pro bar (marked PRO) on top', page.locator('[data-pro-bar] .pro-bar[data-pro-state="off"] .pro-tag').count() == 1 and 'FaLe Pro' in page.locator('[data-pro-bar]').inner_text())
             vis = page.evaluate("""() => { const v = e => !!(e.offsetWidth || e.offsetHeight); const cards = [...document.querySelectorAll('#view-werkzeuge .tool-card')].filter(v);
               return { ai: cards.filter(c => (c.dataset.tool || '').startsWith('ai-')).length, other: cards.filter(c => !(c.dataset.tool || '').startsWith('ai-')).length,
                        sel: (document.querySelector('[data-tab-link="ki"]') || {}).getAttribute && document.querySelector('[data-tab-link="ki"]').getAttribute('aria-selected') }; }""")
@@ -819,7 +819,7 @@ def main():
                   and page.evaluate("getComputedStyle(document.querySelector('.brand-pro')).display") != 'none')
             shot(page, 'phone_ki_tab_pro_light')
             goto(page, '#/ki/pro', 1200)
-            check('Pro page: compare table + „Du hast FaLe Pro“', page.locator('.pro-compare .pc-row').count() == 6 and 'Du hast FaLe Pro' in page.locator('#tool-screen').inner_text())
+            check('Pro page: compare table + „Du hast FaLe Pro“', page.locator('.pro-compare .pc-row').count() == 9 and 'Du hast FaLe Pro' in page.locator('#tool-screen').inner_text())
             shot(page, 'phone_pro_page_light')
         step('pro and videos', pro_and_videos)
         ctx.close()

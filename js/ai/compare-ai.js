@@ -6,9 +6,8 @@ import * as C from './client.js';
 import { statusCard, docPicker, docChip, getDoc, gate } from './common.js';
 import { ensureCloud, showAiError, richText, resultActions, progressNote } from './ui.js';
 import { docText } from './doctext.js';
-import { outputLang } from './config.js';
+import { outputLang, aiLimit } from './config.js';
 
-const MAX = 16000; // per document (= api/_lib/tasks.js compare.maxInput)
 
 export async function mount(screen, { params }) {
   const docs = { a: await getDoc(params.get('doc')), b: await getDoc(params.get('doc2')) };
@@ -76,6 +75,7 @@ export async function mount(screen, { params }) {
       out.dataset.raw = '';
       out.innerHTML = '<span class="ai-typing" aria-label="KI schreibt"><i></i><i></i><i></i></span>';
       result.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      const MAX = aiLimit('MAX_COMPARE_CHARS'); // per document (Pro: longer)
       const r = await C.runTask('compare', { a: ta.slice(0, MAX), b: tb.slice(0, MAX), titleA: docs.a.name, titleB: docs.b.name }, {}, {
         stream: true, signal: ac.signal, onDelta: (t, full) => { out.innerHTML = richText(full, { cite: false }); },
       });

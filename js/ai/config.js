@@ -5,6 +5,7 @@
 // official TEST ad units instead (test ads, never paid, safe to tap) – set it to false only for the Play release.
 import { isNative } from '../platform.js';
 import { PDF_ORIGIN } from '../domains.js';
+import { proActive } from '../monetize.js';
 
 export const AI_CONFIG = {
   // Backend for the Android app (the web version uses its own origin, e.g. preview deployments)
@@ -37,7 +38,16 @@ export const AI_CONFIG = {
   MAX_TRANSLATE_CHARS: 12000,
   MAX_STUDY_CHARS: 24000,
   MAX_CHAT_CONTEXT: 20000,
+  MAX_COMPARE_CHARS: 16000, // per document (= api/_lib/tasks.js compare.maxInput)
 };
+
+/** Input limit for a kind of AI request ('MAX_SUMMARY_CHARS' …). FaLe Pro reads longer documents in one go
+ *  (same factors as api/_lib/tasks.js PRO_INPUT – the server checks Pro itself). */
+const PRO_FACTOR = { MAX_SUMMARY_CHARS: 2.5, MAX_STUDY_CHARS: 2.5, MAX_TRANSLATE_CHARS: 2, MAX_CHAT_CONTEXT: 2, MAX_COMPARE_CHARS: 2.5 };
+export function aiLimit(key) {
+  const base = AI_CONFIG[key];
+  return proActive() && PRO_FACTOR[key] ? Math.round(base * PRO_FACTOR[key]) : base;
+}
 
 /** Base URL of the AI API ('' = same origin). Tests may override it via window.__FALE_AI_API__. */
 export function apiBase() {

@@ -7,7 +7,7 @@
 const C = require('./config');
 const H = require('./http');
 const Sec = require('./security');
-const { TASKS, finishJson, finishText } = require('./tasks');
+const { TASKS, forPlan, finishJson, finishText } = require('./tasks');
 const { getStore } = require('./store');
 const { getProvider, ProviderError } = require('./providers');
 const Acc = require('./supa-auth');
@@ -138,13 +138,14 @@ function makeCore(overrides = {}) {
     if (!task) throw new H.HttpError(400, 'unknown_task', 'Unbekannte Aufgabe');
     const input = body.input && typeof body.input === 'object' && !Array.isArray(body.input) ? body.input : {};
     const options = body.options && typeof body.options === 'object' && !Array.isArray(body.options) ? body.options : {};
-    const prep = task.prepare(input, options); // throws 400 bad_input
+    let prep = task.prepare(input, options); // throws 400 bad_input
 
     const acct = await accountOf(cfg, body);
     const subject = acct ? acct.key : device; // quota counter: account (signed in) or device
     const c = ctxOf(req, cfg);
     const store = deps.getStore(cfg);
     const plus = await plusOf(store, device, c.now, acct, cfg);
+    if (plus.active && prep.truncated) prep = forPlan(task, body.task, true).prepare(input, options); // Pro: longer documents
 
     // 1) quota (atomic check + increment)
     const q = await store.consume({ device: subject, ip: c.ip, day: c.day, free: cfg.freeDaily, bonus: cfg.rewardBonus, plus: plus.active, plusLimit: cfg.plusDaily, ipLimit: cfg.ipDaily });

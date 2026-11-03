@@ -495,4 +495,12 @@ function finishText(text) {
   return String(text || '').replace(/^\s*(?:<text>|<dokument>)\s*/i, '').replace(/\s*(?:<\/text>|<\/dokument>)\s*$/i, '').trim();
 }
 
-module.exports = { TASKS, LANGS, SCHEMAS, SHEET_FUNCTIONS, finishJson, finishText, clip };
+// FaLe Pro: longer documents per request (an extra – without Pro everything works with the normal limits)
+const PRO_INPUT = { summarize: 2.5, flashcards: 2.5, quiz: 2.5, compare: 2.5, chat: 2, translate: 2 };
+/** The task with the input limit of the user's plan (Pro: larger, see PRO_INPUT). */
+function forPlan(task, name, plus) {
+  const f = plus && Object.prototype.hasOwnProperty.call(PRO_INPUT, name) ? PRO_INPUT[name] : 1;
+  return f === 1 ? task : Object.create(task, { maxInput: { value: Math.round(task.maxInput * f) } });
+}
+
+module.exports = { TASKS, LANGS, SCHEMAS, SHEET_FUNCTIONS, PRO_INPUT, forPlan, finishJson, finishText, clip };

@@ -8,7 +8,7 @@ import * as C from './client.js';
 import { statusCard, docChip, getDoc, gate, docPicker } from './common.js';
 import { ensureCloud, showAiError, progressNote } from './ui.js';
 import { docText } from './doctext.js';
-import { AI_CONFIG } from './config.js';
+import { aiLimit } from './config.js';
 
 const KEY = 'aiDecks';
 const DAY = 86400000;
@@ -93,7 +93,7 @@ async function generator(screen, doc) {
       prep.hidden = false;
       const t = await docText(doc, { signal: screen.signal, onProgress: (p, l) => progressNote(prep, l) });
       progressNote(prep, kind === 'quiz' ? 'Die KI erstellt das Quiz …' : 'Die KI erstellt die Lernkarten …');
-      const r = await C.runTask(kind, { text: t.text.slice(0, AI_CONFIG.MAX_STUDY_CHARS) }, { count: +$('[name=count]', wrap).value });
+      const r = await C.runTask(kind, { text: t.text.slice(0, aiLimit('MAX_STUDY_CHARS')) }, { count: +$('[name=count]', wrap).value });
       const now = Date.now();
       const title = doc.name.replace(/\.[^.]+$/, '');
       const existing = (await listDecks()).find(d => d.docId === doc.id);
@@ -102,7 +102,7 @@ async function generator(screen, doc) {
       else deck.cards = [...(deck.cards || []), ...r.output.cards.map((c, i) => ({ id: now.toString(36) + i, front: c.front, back: c.back, box: 1, due: now }))];
       deck.updatedAt = now;
       await putDeck(deck);
-      if (t.text.length > AI_CONFIG.MAX_STUDY_CHARS || r.truncated) toast('Das Dokument ist lang – verwendet wurde der Anfang.', 'info', { timeout: 5000 });
+      if (t.text.length > aiLimit('MAX_STUDY_CHARS') || r.truncated) toast('Das Dokument ist lang – verwendet wurde der Anfang.', 'info', { timeout: 5000 });
       location.hash = `#/ki/lernkarten?deck=${encodeURIComponent(deck.id)}${kind === 'quiz' ? '&modus=quiz' : ''}`;
     } catch (e) { showAiError(e); }
     finally { go.disabled = false; progressNote(prep, ''); }

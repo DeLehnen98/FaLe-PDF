@@ -267,12 +267,5 @@ export function kindTile(kind, { size = '' } = {}) {
 
 /** showMenu() with office icons (the shared menu only knows the base icon set). */
 export function officeMenu(anchor, items, opts) {
-  showMenu(anchor, items, opts);
-  const menu = document.querySelector('.menu-layer .menu');
-  if (!menu) return;
-  const btns = menu.querySelectorAll('.menu-item');
-  items.filter(it => it && it !== '-').forEach((it, k) => {
-    const svg = btns[k] && btns[k].querySelector('svg');
-    if (svg && it.icon) svg.outerHTML = oicon(it.icon);
-  });
+  return showMenu(anchor, items, { ...(opts || {}), iconFn: oicon });
 }

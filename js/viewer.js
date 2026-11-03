@@ -5,7 +5,7 @@ import { EventBus, PDFLinkService, PDFFindController, PDFViewer, GenericL10n, Li
 import * as db from './db.js';
 import { icon } from './icons.js';
 import { $, $$, h, esc, toast, errorToast, showMenu, debounce, downloadBlob, progress, pagesLabel } from './ui.js';
-import { shareDoc, downloadDoc } from './components.js';
+import { shareDoc, downloadDoc, thumbHtml } from './components.js';
 import { guardLinks, openExternal } from './security.js';
 
 const trackStat = (e, n = 1) => { import('./extras/stats.js').then(m => m.track(e, n)).catch(() => {}); };
@@ -219,45 +219,69 @@ function wire() {
     if (!cur) return;
     const id = cur.doc.id;
     const anchor = e.currentTarget;
+    const go = hash => () => { location.hash = hash; };
+    const tool = t => go(`#/werkzeug/${t}?doc=${id}`);
+    const marked = isMarked(id, S.pdfViewer.currentPageNumber);
+    const doc = cur.doc;
     showMenu(anchor, [
-      { label: 'Text einfügen', icon: 'text', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=text`) },
-      { label: 'Unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}&modus=sign`) },
-      cur.photo ? { label: 'Blatt gerade ausrichten', icon: 'scan', onClick: () => (location.hash = `#/werkzeug/scannen?doc=${id}`) } : null,
-      '-',
-      aiMenusHidden() ? null : { label: 'KI-Assistent', icon: 'sparkle', onClick: () => (location.hash = `#/ki?doc=${id}`) },
-      { label: 'Lesemodus', icon: 'book', onClick: () => openReflowMode() },
-      { label: isMarked(id, S.pdfViewer.currentPageNumber) ? 'Lesezeichen entfernen' : 'Lesezeichen setzen', icon: 'bookmark', onClick: () => toggleMark() },
+      { section: 'Bearbeiten' },
+      { label: 'Ausfüllen & unterschreiben', hint: 'Formularfelder ausfüllen, Datum, Unterschrift', icon: 'sign', onClick: tool('unterschreiben') },
+      { label: 'Formular-Lotse', hint: 'Schritt für Schritt, jedes Feld erklärt', icon: 'form', onClick: tool('formular-lotse') },
+      { label: 'PDF bearbeiten', hint: 'Text ändern oder hinzufügen', icon: 'edit', onClick: tool('bearbeiten') },
+      { label: 'Kommentieren', hint: 'Markieren, Notizen, Zeichnen', icon: 'highlight', onClick: tool('kommentieren') },
+      { label: 'Seiten verwalten', hint: 'Drehen, sortieren, entfernen', icon: 'pages', onClick: tool('seiten') },
+      cur.photo ? { label: 'Blatt gerade ausrichten', icon: 'scan', onClick: tool('scannen') } : null,
+      { label: 'Schwärzen', icon: 'redact', onClick: tool('schwaerzen') },
+      { label: 'Seiten zuschneiden', icon: 'crop', onClick: tool('zuschneiden') },
+      { label: 'Formular erstellen', icon: 'formAdd', onClick: tool('formular-erstellen') },
+      { section: 'Lesen & Ansicht' },
+      aiMenusHidden() ? null : { label: 'KI-Assistent', hint: 'Fragen, zusammenfassen, übersetzen', icon: 'sparkle', onClick: go(`#/ki?doc=${id}`) },
+      { label: 'Lesemodus', hint: 'Großer Text, passt sich dem Bildschirm an', icon: 'book', onClick: () => openReflowMode() },
       { label: 'Vorlesen', icon: 'speaker', onClick: () => startReading() },
-      { label: 'Kommentieren', icon: 'highlight', onClick: () => (location.hash = `#/werkzeug/kommentieren?doc=${id}`) },
-      { label: 'Ausfüllen & unterschreiben', icon: 'sign', onClick: () => (location.hash = `#/werkzeug/unterschreiben?doc=${id}`) },
-      { label: 'Formular-Lotse', icon: 'form', onClick: () => (location.hash = `#/werkzeug/formular-lotse?doc=${id}`) },
-      { label: 'PDF bearbeiten', icon: 'edit', onClick: () => (location.hash = `#/werkzeug/bearbeiten?doc=${id}`) },
-      { label: 'Seiten verwalten', icon: 'pages', onClick: () => (location.hash = `#/werkzeug/seiten?doc=${id}`) },
-      { label: 'Formular erstellen', icon: 'formAdd', onClick: () => (location.hash = `#/werkzeug/formular-erstellen?doc=${id}`) },
-      { label: 'Seiten zuschneiden', icon: 'crop', onClick: () => (location.hash = `#/werkzeug/zuschneiden?doc=${id}`) },
-      { label: 'PDF vergleichen', icon: 'compare', onClick: () => (location.hash = `#/werkzeug/vergleichen?doc=${id}`) },
-      { label: 'Text erkennen (OCR)', icon: 'scan', onClick: () => (location.hash = `#/werkzeug/durchsuchbar?doc=${id}`) },
-      { label: 'Konvertieren …', icon: 'export', onClick: () => setTimeout(() => convertMenu(anchor, id), 0) },
-      { label: 'Komprimieren', icon: 'compress', onClick: () => (location.hash = `#/werkzeug/komprimieren?doc=${id}`) },
-      { label: 'Schwärzen', icon: 'redact', onClick: () => (location.hash = `#/werkzeug/schwaerzen?doc=${id}`) },
-      cur.doc.encrypted
-        ? { label: 'Passwort entfernen', icon: 'unlock', onClick: () => (location.hash = `#/werkzeug/passwort-entfernen?doc=${id}`) }
-        : { label: 'Passwort festlegen', icon: 'lock', onClick: () => (location.hash = `#/werkzeug/passwort?doc=${id}`) },
-      '-',
+      { label: 'Nachtmodus', icon: 'moon', toggle: true, on: root().classList.contains('night'), onClick: on => { if (on !== root().classList.contains('night')) toggleNight(); } },
+      wakeLockSupported() ? { label: 'Bildschirm anlassen', icon: 'sun', toggle: true, on: lsGet('fale-wakelock', '0') === '1', onClick: on => { if (on !== (lsGet('fale-wakelock', '0') === '1')) toggleWakeSetting(); } } : null,
       { label: 'Ansicht drehen', icon: 'rotate', onClick: rotate },
-      { label: el.classList.contains('night') ? 'Nachtmodus aus' : 'Nachtmodus an', icon: 'moon', onClick: toggleNight },
-      wakeLockSupported() ? { label: lsGet('fale-wakelock', '0') === '1' ? 'Bildschirm anlassen: an' : 'Bildschirm anlassen: aus', icon: 'sun', onClick: toggleWakeSetting } : null,
       { label: 'Seitenbreite', icon: 'fitWidth', onClick: () => { pdfViewer.currentScaleValue = 'page-width'; } },
       { label: 'Ganze Seite', icon: 'fitPage', onClick: () => { pdfViewer.currentScaleValue = 'page-fit'; } },
-      '-',
+      { section: 'Umwandeln & mehr' },
+      { label: 'PDF zu Word', icon: 'word', onClick: tool('pdf-word') },
+      { label: 'PDF zu PowerPoint', icon: 'slides', onClick: tool('pdf-powerpoint') },
+      { label: 'PDF zu Bild / Text', icon: 'image', onClick: tool('exportieren') },
+      { label: 'Text erkennen (OCR)', hint: 'Gescannte Seiten durchsuchbar machen', icon: 'scan', onClick: tool('durchsuchbar') },
+      { label: 'PDF verkleinern', icon: 'compress', onClick: tool('komprimieren') },
+      doc.encrypted
+        ? { label: 'Passwort entfernen', icon: 'unlock', onClick: tool('passwort-entfernen') }
+        : { label: 'Passwort festlegen', icon: 'lock', onClick: tool('passwort') },
+      { label: 'PDF vergleichen', icon: 'compare', onClick: tool('vergleichen') },
+      { label: 'Wasserzeichen', icon: 'watermark', onClick: tool('wasserzeichen') },
+      { label: 'Seitenzahlen', icon: 'hash', onClick: tool('seitenzahlen') },
+      { label: 'Kopf- & Fußzeile', icon: 'header', onClick: tool('kopfzeile') },
+      { label: 'Seiten extrahieren', icon: 'extract', onClick: tool('extrahieren') },
+      { label: 'Lesezeichen bearbeiten', icon: 'outline', onClick: tool('lesezeichen') },
+      { label: 'QR-Code einfügen', icon: 'qr', onClick: tool('qr-erstellen') },
+      { section: 'Teilen & senden' },
       { label: 'Drucken', icon: 'print', onClick: printDoc },
-      postOffered() ? { label: 'Per Post senden', icon: 'mail', onClick: () => postDoc(cur.doc) } : null, // js/post: FaLe prints and mails it
-      postOffered('fax') ? { label: 'Per Fax senden', icon: 'print', onClick: () => postDoc(cur.doc, 'fax') } : null,
-      { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(cur.doc) },
-      { label: 'Teilen', icon: 'share', onClick: () => shareDoc(cur.doc) },
-      { label: 'Sicher teilen', icon: 'link', onClick: () => (location.hash = `#/teilen/link?doc=${id}`) }, // js/share (E2E-encrypted link)
-      { label: 'Unterschrift anfordern', icon: 'sign', onClick: () => (location.hash = `#/teilen/unterschrift?doc=${id}`) },
-    ], { label: 'Weitere Aktionen' });
+      postOffered() ? { label: 'Per Post senden', icon: 'mail', onClick: () => postDoc(doc) } : null, // js/post: FaLe prints and mails it
+      postOffered('fax') ? { label: 'Per Fax senden', icon: 'print', onClick: () => postDoc(doc, 'fax') } : null,
+      { label: 'Herunterladen', icon: 'download', onClick: () => downloadDoc(doc) },
+      { label: 'Sicher teilen (Link)', hint: 'Link statt Anhang, läuft von selbst ab', icon: 'link', onClick: go(`#/teilen/link?doc=${id}`) }, // js/share (E2E-encrypted link)
+      { label: 'Unterschrift anfordern', icon: 'sign', onClick: go(`#/teilen/unterschrift?doc=${id}`) },
+    ], {
+      label: 'Weitere Aktionen',
+      search: true,
+      head: { thumb: thumbHtml(doc), title: doc.name, sub: pagesLabel(doc.pages), onRename: async name => {
+        const { renameTo } = await import('./office/filerow.js');
+        const n = await renameTo(doc, name);
+        if (n && cur && cur.doc === doc) nameWithBreaks(q('title'), n.replace(/\.pdf$/i, ''));
+        return n;
+      } },
+      quick: [
+        { label: 'Unterschreiben', icon: 'sign', onClick: go(`#/werkzeug/unterschreiben?doc=${id}&modus=sign`) },
+        { label: 'Text einfügen', icon: 'text', onClick: go(`#/werkzeug/unterschreiben?doc=${id}&modus=text`) },
+        { label: 'Teilen', icon: 'share', onClick: () => shareDoc(doc) },
+        { label: 'Lesezeichen', icon: marked ? 'bookmarkOn' : 'bookmark', pressed: marked, onClick: () => toggleMark() },
+      ],
+    });
   });
 
   // find bar
@@ -395,21 +419,6 @@ function wire() {
       if (e.key === 'ArrowLeft' && !e.shiftKey) { pdfViewer.previousPage(); e.preventDefault(); }
     }
   });
-}
-
-function convertMenu(anchor, id) {
-  const go = t => () => (location.hash = `#/werkzeug/${t}?doc=${id}`);
-  showMenu(anchor, [
-    { label: 'PDF zu Word', icon: 'word', onClick: go('pdf-word') },
-    { label: 'PDF zu PowerPoint', icon: 'slides', onClick: go('pdf-powerpoint') },
-    { label: 'PDF zu Bild / Text', icon: 'image', onClick: go('exportieren') },
-    { label: 'Wasserzeichen', icon: 'watermark', onClick: go('wasserzeichen') },
-    { label: 'Seitenzahlen', icon: 'hash', onClick: go('seitenzahlen') },
-    { label: 'Kopf- & Fußzeile', icon: 'header', onClick: go('kopfzeile') },
-    { label: 'Seiten extrahieren', icon: 'extract', onClick: go('extrahieren') },
-    { label: 'Lesezeichen bearbeiten', icon: 'outline', onClick: go('lesezeichen') },
-    { label: 'QR-Code einfügen', icon: 'qr', onClick: () => (location.hash = `#/werkzeug/qr-erstellen?doc=${id}`) },
-  ], { label: 'Konvertieren und mehr' });
 }
 
 function renderFindCount(m) {

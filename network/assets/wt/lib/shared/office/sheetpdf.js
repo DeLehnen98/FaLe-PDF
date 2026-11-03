@@ -132,6 +132,9 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
             page.drawText(t, { x: x0 + rowHeadW * scale - regular.widthOfTextAtSize(t, fs * 0.9) - 3, y: bottom + (rh - fs * 0.9) / 2 + 1, size: fs * 0.9, font: regular, color: headTxt });
           }
         }
+        // grid lines of the whole row as ONE path (a rectangle per cell made big sheets slow: hundreds of thousands of
+        // drawing objects, and the screen froze while the browser cleaned them up)
+        const gridRects = [];
         for (let i = gs; i < ge; i++) {
           const c = cols[i].c;
           const cx = xs[i - gs];
@@ -146,7 +149,7 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
           if (sh.merges.length) {
             const m = sh.merges.find(mm => r >= mm.r1 && r <= mm.r2 && c >= mm.c1 && c <= mm.c2);
             if (m && (m.c1 !== c || m.r1 !== r)) {
-              if (pg.grid && (m.c1 === c || i === gs)) { const endI = colIdx.has(m.c2) ? colIdx.get(m.c2) + 1 : ge - gs; page.drawRectangle({ x: cx, y: bottom, width: xs[endI] - cx, height: rh, borderColor: grid, borderWidth: 0.4 }); }
+              if (pg.grid && (m.c1 === c || i === gs)) { const endI = colIdx.has(m.c2) ? colIdx.get(m.c2) + 1 : ge - gs; gridRects.push(PDFLib.rectangle(cx, bottom, xs[endI] - cx, rh)); }
               continue;
             }
             if (m) { const endI = colIdx.has(m.c2) ? colIdx.get(m.c2) + 1 : ge - gs; w = xs[Math.min(endI, ge - gs)] - cx; }
@@ -154,7 +157,8 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
           const cell = sh.cells.get(KEY(r, c));
           const cfx = sh.cf && sh.cf.length ? cfStyle(sh, r, c, cell, cfCache) : null;
           const s = cfx ? { ...((cell && cell.s) || {}), ...cfx } : (cell && cell.s) || {};
-          page.drawRectangle({ x: cx, y: bottom, width: w, height: rh, color: s.fill ? rgbOf(PDFLib, s.fill) : undefined, borderColor: pg.grid ? grid : undefined, borderWidth: pg.grid ? 0.4 : 0 });
+          if (s.fill) page.drawRectangle({ x: cx, y: bottom, width: w, height: rh, color: rgbOf(PDFLib, s.fill) });
+          if (pg.grid) gridRects.push(PDFLib.rectangle(cx, bottom, w, rh));
           if (cfx && cfx.bar) {
             const b = cfx.bar, bw = (w - 4) * b.pct, bx = cx + 2 + (w - 4) * (b.neg ? b.zero - b.pct : b.zero);
             page.drawRectangle({ x: bx, y: bottom + 2, width: Math.max(0.5, bw), height: rh - 4, color: rgbOf(PDFLib, b.color), opacity: 0.75 });
@@ -220,6 +224,7 @@ export async function workbookToPdf(wb, { title = 'Tabelle', onProgress } = {}) 
           if (s.u) page.drawLine({ start: { x: tx, y: ty - 1 }, end: { x: tx + tw, y: ty - 1 }, thickness: 0.5, color });
           if (s.st) page.drawLine({ start: { x: tx, y: ty + size * 0.32 }, end: { x: tx + tw, y: ty + size * 0.32 }, thickness: 0.5, color });
         }
+        if (gridRects.length) page.pushOperators(PDFLib.pushGraphicsState(), PDFLib.setStrokingColor(grid), PDFLib.setLineWidth(0.4), ...gridRects, PDFLib.stroke(), PDFLib.popGraphicsState());
         y = bottom;
       }
       newPage();

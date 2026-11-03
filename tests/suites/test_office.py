@@ -114,7 +114,7 @@ def import_all(page, names):
 
 def export_pdf_via_menu(page, out_name):
     page.locator('[data-office-more]').click()
-    page.locator('.menu-item', has_text='Als PDF exportieren').click()
+    page.locator('.menu-quick .mq-btn', has_text='Als PDF').click()
     page.wait_for_selector('dialog .result-mini', timeout=40000)
     with page.expect_download(timeout=20000) as d:
         page.locator('dialog button[value="dl"]').click()
@@ -215,10 +215,11 @@ def desktop(p):
         shot(page, 'desktop_files_light')
         # rename via menu keeps extension
         page.locator('#view-dateien .doc', has_text='notiz.txt').locator('.more-btn').click()
-        page.locator('.menu-item', has_text='Umbenennen').click()
-        page.locator('dialog .input').fill('Einkauf')
-        page.locator('dialog .btn-primary').click()
+        page.locator('.menu-head .mh-edit').click()
+        page.locator('.mh-form .input').fill('Einkauf')
+        page.locator('.mh-form .input').press('Enter')
         page.wait_for_timeout(500)
+        page.keyboard.press('Escape')
         check('rename keeps .txt', by_name(page, 'Einkauf.txt') is not None)
     step('files view', files_view)
 

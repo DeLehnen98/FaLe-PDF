@@ -11,6 +11,7 @@ import { applyTheme, currentTheme } from '../theme.js';
 import { logo } from '../icons.js';
 import { simpleOn, setSimple, dismissSimpleHint, textSizeSeg, bindTextSize } from '../simple.js';
 import { LANGS, LANG_NAMES, HELLO, lang, deviceLang, getLangSetting, setLang } from '../i18n/index.js';
+import { showPlus, proActive } from '../monetize.js';
 
 const KEY = 'fale-onboarded';
 const RESUME = 'fale-onboarding-step'; // the step to continue with after the page reloaded for a new language
@@ -41,6 +42,7 @@ export async function showOnboarding({ first = false } = {}) {
   let hasSig = false;
   try { hasSig = (await (await import('../tools/sigstore.js')).listAssets('signature')).length > 0; } catch { /* no store */ }
   if (document.querySelector('.onboard')) return;
+  const proStep = showPlus() && !proActive(); // Android app: one honest page about FaLe Pro (the web shows no paid offer)
   const resume = +ls.get(RESUME) || 0;
   try { localStorage.removeItem(RESUME); } catch {}
   let step = Math.max(0, resume), sawViews = false, dir = resume ? 0 : 1;
@@ -67,7 +69,9 @@ export async function showOnboarding({ first = false } = {}) {
         <section class="ob-step" data-step="2" hidden>
           <div class="ob-art ob-art-2"><span class="ob-ring" aria-hidden="true"></span><span class="ob-shield">${oicon('shield')}</span><span class="ob-lockbadge" aria-hidden="true">${oicon('lock')}</span></div>
           <h2>Deine Dateien gehören dir</h2>
-          <p>Kein Konto, kein Tracking. Alles, was du öffnest oder erstellst, bleibt auf diesem Gerät. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür nötige Text verarbeitet – und Werbung gibt es nur freiwillig, gegen Extra-KI-Anfragen.</p>
+          <p>${showPlus()
+    ? 'Kein Konto, kein Tracking. Alles, was du öffnest oder erstellst, bleibt auf diesem Gerät. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür nötige Text verarbeitet. Werbung erscheint nur als kleines Banner auf den Hauptseiten – nie in deinen Dokumenten.'
+    : 'Kein Konto, kein Tracking, keine Werbung. Alles, was du öffnest oder erstellst, bleibt auf diesem Gerät. Nur wenn du die optionale Cloud-KI nutzt, wird der dafür nötige Text verarbeitet.'}</p>
           <ul class="ob-list"><li>${oicon('lock')} Privater Tresor mit eigener PIN</li><li>${oicon('cloud')} Nichts verlässt dein Gerät – außer du teilst es selbst</li><li>${oicon('heart')} Keine Abo-Fallen, keine Nerv-Banner</li></ul>
         </section>
         <section class="ob-step" data-step="3" hidden>
@@ -93,6 +97,14 @@ export async function showOnboarding({ first = false } = {}) {
             <div class="sig-pad-line"></div><div class="sig-pad-hint">Hier unterschreiben</div></div>
           <div class="ob-sig-row"><button type="button" class="btn btn-ghost btn-sm" data-sig-clear>${oicon('undo')} Neu zeichnen</button><span class="ob-sig-ok" data-sig-ok hidden>${oicon('check')} Gespeichert</span></div>
         </section>`}
+        ${proStep ? `<section class="ob-step ob-step-pro" data-step="pro" hidden>
+          <div class="ob-art ob-art-pro" aria-hidden="true"><span class="ob-pro-ring"></span><span class="pro-tag ob-pro-tag" data-no-i18n>PRO</span></div>
+          <h2>Alles Wichtige ist kostenlos</h2>
+          <p>Lesen, unterschreiben, bearbeiten und umwandeln – ohne Abo und ohne Konto. FaLe Pro ist freiwillig und bringt Extras dazu.</p>
+          <p class="ob-pro-mark"><span class="pro-tag" data-no-i18n>PRO</span> <span>Dieses Zeichen steht in der App an jedem Extra von FaLe Pro.</span></p>
+          <ul class="ob-list"><li>${oicon('sparkle')} KI-Werkzeuge ohne Werbevideo</li><li>${oicon('heart')} Keine Werbung</li><li>${oicon('kpdf')} Längere Dokumente für die KI</li><li>${oicon('color')} Eigene App-Farbe</li></ul>
+          <button class="btn btn-soft btn-sm ob-pro-look" type="button" data-goal="#/ki/pro">${oicon('star')} Pro ansehen</button>
+        </section>` : ''}
         <section class="ob-step ob-step-go" data-step="5" hidden>
           <h2 class="ob-h-top">Was möchtest du zuerst tun?</h2>
           <div class="ob-goals">
@@ -109,7 +121,7 @@ export async function showOnboarding({ first = false } = {}) {
         </section>
       </div>
       <div class="ob-foot">
-        <div class="ob-dots" aria-hidden="true">${'<span></span>'.repeat(hasSig ? 5 : 6)}</div>
+        <div class="ob-dots" aria-hidden="true">${'<span></span>'.repeat((hasSig ? 5 : 6) + (proStep ? 1 : 0))}</div>
         <div class="ob-btns"><button class="btn btn-ghost" type="button" data-back hidden>Zurück</button><button class="btn btn-primary" type="button" data-next>Weiter</button></div>
       </div>
     </div></div>`);
@@ -165,7 +177,7 @@ export async function showOnboarding({ first = false } = {}) {
     if (sawViews) dismissSimpleHint(); // the view was chosen here – no extra hint card on the start screen
     ov.classList.add('closing');
     document.removeEventListener('keydown', onKey, true);
-    setTimeout(() => ov.remove(), 180);
+    setTimeout(() => { ov.remove(); window.dispatchEvent(new CustomEvent('fale:hints-check')); }, 180); // first-visit tips may start now
   };
   const onKey = e => { if (e.key === 'Escape') { e.preventDefault(); close(); } };
   document.addEventListener('keydown', onKey, true);

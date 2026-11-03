@@ -204,19 +204,22 @@ export async function mountSlides(screen, { id = null, template = null, deck = n
       }
       return (await import('./pptx-write.js')).presToPptx(p, { title: stripExt(shell.name) });
     },
-    menu: () => [
+    quick: () => [
       { label: 'Präsentieren', icon: 'present', onClick: () => slideshow(cur) },
-      { label: 'Referentenansicht', icon: 'presenter', onClick: () => presenter(cur) },
-      { label: 'Als PDF exportieren', icon: 'kpdf', onClick: exportPdf },
+      { label: 'Als PDF', icon: 'kpdf', onClick: exportPdf },
+      { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await (await import('./pptx-write.js')).presToPptx(pres, { title: stripExt(shell.name) }), shell.name, KINDS.pptx.mime) },
+      { label: 'Design', icon: 'sparkle', onClick: () => pickTheme() },
+    ],
+    menu: () => [
+      { section: 'Vortragen' },
+      { label: 'Referentenansicht', hint: 'Notizen und nächste Folie sehen', icon: 'presenter', onClick: () => presenter(cur) },
       { label: 'Handzettel / Notizen als PDF …', icon: 'handout', onClick: handoutDialog },
+      { section: 'Speichern & herunterladen' },
       { label: 'PowerPoint-Datei (.pptx) herunterladen', icon: 'download', onClick: async () => { try { downloadBlob(await (await import('./pptx-write.js')).presToPptx(pres, { title: stripExt(shell.name) }), stripExt(shell.name) + '.pptx'); } catch (e) { errorToast(e, 'Export fehlgeschlagen.'); } } },
-      '-',
-      { label: 'Design wechseln', icon: 'sparkle', onClick: () => pickTheme() },
+      { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },
+      { section: 'Neu' },
       { label: 'Folien aus Gliederung …', icon: 'kslides', onClick: () => { location.hash = '#/gliederung'; } },
       aiMenusHidden() ? null : { label: 'Folien per KI …', icon: 'sparkle', onClick: () => { location.hash = '#/ki/folien'; } },
-      { label: 'Teilen', icon: 'share', onClick: async () => shareBlob(await (await import('./pptx-write.js')).presToPptx(pres, { title: stripExt(shell.name) }), shell.name, KINDS.pptx.mime) },
-      { label: 'Kopie speichern unter …', icon: 'copy', onClick: () => shell.save({ asCopy: true }) },
-      { label: 'Umbenennen', icon: 'edit', onClick: () => shell.rename() },
     ],
   });
   async function exportPdf() {

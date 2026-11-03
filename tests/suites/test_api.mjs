@@ -288,7 +288,7 @@ await step('not configured / CORS / limits', async () => {
   rr = await fetch(B + '/api/ai');
   check('GET /api/ai → 405', rr.status === 405);
   const tok = await token(40);
-  rr = await post('/api/ai', JSON.stringify({ task: 'summarize', token: tok, input: { text: 'x'.repeat(260000) } }));
+  rr = await post('/api/ai', JSON.stringify({ task: 'summarize', token: tok, input: { text: 'x'.repeat(700000) } })); // limit 600 kB (Pro: long documents)
   check('oversized body → 413', rr.status === 413);
   rr = await post('/api/ai', '{nope');
   check('broken JSON → 400', rr.status === 400);
@@ -320,6 +320,11 @@ await step('FaLe Plus', async () => {
   let okAll = true;
   for (let i = 0; i < 3; i++) okAll = okAll && (await P('/api/ai', { task: 'explain', input: { text: 'a' }, token: tok })).status === 200;
   check('plus: per-IP cap does not apply', okAll);
+  const long = 'Ein Satz mit Inhalt. '.repeat(5000); // ≈ 105 000 characters: more than the normal 48 000
+  const rl = await P('/api/ai', { task: 'summarize', input: { text: long }, token: tok });
+  check('plus: long document read completely (Pro extra)', rl.status === 200 && rl.j.truncated === false, JSON.stringify(rl.j).slice(0, 200));
+  const huge = await P('/api/ai', { task: 'summarize', input: { text: long + long }, token: tok });
+  check('plus: Pro limit still applies (≈ 120 000)', huge.status === 200 && huge.j.truncated === true && /120\.000/.test(huge.j.note), huge.j.note);
   const tok2 = await token(51);
   await P('/api/plus-verify', { token: tok2, productId: 'fale_plus_monthly', purchaseToken: 'ok' + 'x'.repeat(30) });
   check('plus: restore moves entitlement to new device', mem._state.plus.size === 1 && (await P('/api/ai/quota', { token: tok2 })).j.quota.plus === true && (await P('/api/ai/quota', { token: tok })).j.quota.plus === false);

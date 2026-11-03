@@ -472,14 +472,17 @@ export async function mount(screen, { params }) {
     $('.more-btn', el).addEventListener('click', async e => {
       const anchor = e.currentTarget;
       const { officeMenu } = await import('../office/kinds.js');
+      const share = async () => { const { blob, meta } = await getBlob(it.id); shareBlob(blob, meta.name, meta.mime); };
       officeMenu(anchor, [
-        { label: 'Ansehen', icon: 'eye', onClick: () => view(it) },
-        { label: 'Zurück in Dateien holen', icon: 'unlock', onClick: async () => { try { const d = await restoreToLibrary(it.id); toast(`„${d.name}“ liegt wieder unverschlüsselt in deinen Dateien.`, 'success'); render(); } catch (err) { errorToast(err, 'Das hat nicht geklappt.'); } } },
+        { label: 'Zurück in Dateien holen', hint: 'Wieder unverschlüsselt in deinen Dateien', icon: 'unlock', onClick: async () => { try { const d = await restoreToLibrary(it.id); toast(`„${d.name}“ liegt wieder unverschlüsselt in deinen Dateien.`, 'success'); render(); } catch (err) { errorToast(err, 'Das hat nicht geklappt.'); } } },
         { label: 'Herunterladen (entschlüsselt)', icon: 'download', onClick: async () => { const { blob, meta } = await getBlob(it.id); downloadBlob(blob, meta.name); } },
-        { label: 'Teilen (entschlüsselt)', icon: 'share', onClick: async () => { const { blob, meta } = await getBlob(it.id); shareBlob(blob, meta.name, meta.mime); } },
         '-',
         { label: 'Endgültig löschen', icon: 'trash', danger: true, onClick: async () => { if (await confirmDialog('Datei endgültig löschen?', `„${it.name}“ wird unwiderruflich aus dem Tresor entfernt.`, { okLabel: 'Löschen', danger: true })) { await removeItem(it.id); render(); } } },
-      ], { label: it.name });
+      ], {
+        label: it.name,
+        head: { thumb: `<span class="doc-thumb kind">${oicon('vault')}</span>`, title: it.name, sub: 'Verschlüsselt im Tresor' },
+        quick: [{ label: 'Ansehen', icon: 'eye', onClick: () => view(it) }, { label: 'Teilen (entschlüsselt)', icon: 'share', onClick: share }],
+      });
     });
     return el;
   }

@@ -5,6 +5,7 @@
 //   Ohne Pro: every KI request is unlocked by one fully watched video (Android app, confirmed by Google)
 //   Mit Pro:  all KI tools without videos, no ads
 import { isNative, platformName } from './platform.js';
+import { paintAccent } from './accent.js';
 
 // iOS app: no paid offer yet (App Store purchases need their own server check – see store/IOS-SETUP.md)
 export const showPlus = () => isNative() && platformName() !== 'ios';
@@ -26,7 +27,9 @@ export function proActive(now = Date.now()) {
 
 /** html.is-pro → the „PRO“ mark next to the logo; kept in sync with quota/purchase changes. */
 export function syncProMark() {
-  try { document.documentElement.classList.toggle('is-pro', proActive()); } catch { /* no DOM */ }
+  const pro = proActive();
+  try { document.documentElement.classList.toggle('is-pro', pro); } catch { /* no DOM */ }
+  paintAccent(pro); // Pro extra: the chosen app colour (js/accent.js)
 }
 let watching = false;
 export function watchProMark() {

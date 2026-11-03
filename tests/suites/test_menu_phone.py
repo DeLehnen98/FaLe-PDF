@@ -56,7 +56,8 @@ def open_menu(page, did):
 
 GEO = """() => { const m = document.querySelector('.menu-layer .menu'); const r = m.getBoundingClientRect();
   const items = [...m.querySelectorAll('.menu-item')]; return { top: r.top, bottom: r.bottom, h: innerHeight, scrollH: m.scrollHeight, clientH: m.clientHeight,
-  overflow: getComputedStyle(m).overflowY, first: items[0].textContent.trim(), n: items.length }; }"""
+  overflow: getComputedStyle(m).overflowY, first: items[0].textContent.trim(), n: items.length,
+  quick: [...m.querySelectorAll('.mq-btn')].map(b => b.textContent.trim()), qbottom: (m.querySelector('.menu-quick') || m).getBoundingClientRect().bottom }; }"""
 
 
 def run(p):
@@ -70,7 +71,7 @@ def run(p):
             g = page.evaluate(GEO)
             check(f'{w}×{hgt}: sheet inside the screen (top ≥ 0, bottom ≤ height)', g['top'] >= 0 and g['bottom'] <= g['h'], g)
             check(f'{w}×{hgt}: long menu scrolls inside the sheet', g['overflow'] in ('auto', 'scroll') and g['scrollH'] > g['clientH'], g)
-            check(f'{w}×{hgt}: „Text einfügen“ is the first item', g['first'] == 'Text einfügen', g['first'])
+            check(f'{w}×{hgt}: „Unterschreiben“ + „Text einfügen“ are big buttons on top, visible without scrolling', g['quick'][:2] == ['Unterschreiben', 'Text einfügen'] and g['qbottom'] <= g['h'], g['quick'])
             page.screenshot(path=os.path.join(OUT, f'menu_{w}_top.png'))
             # (headless Chromium does not run compositor touch scrolling – check that nothing blocks it, then scroll)
             ta = page.evaluate("() => { const out = []; for (let e = document.querySelector('.menu-layer .menu'); e; e = e.parentElement) out.push(getComputedStyle(e).touchAction); return out; }")
@@ -87,7 +88,7 @@ def run(p):
             check(f'{w}×{hgt}: item at the bottom can be tapped (menu closes)', page.locator('.menu-layer').count() == 0)
             # „Text einfügen“ → text mode on
             open_menu(page, did)
-            page.locator('.menu-layer .menu-item', has_text='Text einfügen').click()
+            page.locator('.menu-layer .mq-btn', has_text='Text einfügen').click()
             page.wait_for_selector('.sign-page canvas', timeout=30000)
             page.wait_for_timeout(1200)
             on = page.evaluate("document.querySelector('[data-mode=\"text\"]').getAttribute('aria-pressed')")
@@ -97,7 +98,7 @@ def run(p):
             check(f'{w}×{hgt}: a tap on the page places a text box', page.locator('.s-item').count() >= 1)
             # „Unterschreiben“ → signature picker
             open_menu(page, did)
-            page.locator('.menu-layer .menu-item', has_text='Unterschreiben').first.click()
+            page.locator('.menu-layer .mq-btn', has_text='Unterschreiben').click()
             page.wait_for_selector('.sign-page canvas', timeout=30000)
             ok = False
             for _ in range(20):

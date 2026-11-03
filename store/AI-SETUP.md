@@ -20,7 +20,9 @@ App (Handy/Browser) ──► /api/ai (Vercel, Projekt „fale-pdf“) ──►
 - **Zugang zur KI:** Ohne Pro ist **nichts gratis** (`FREE_DAILY` = 0): **ein ganz angesehenes Werbevideo schaltet
   eine KI-Anfrage frei** (`REWARD_BONUS` = 1), höchstens 10 Videos pro Tag (`REWARD_MAX_PER_DAY`). Gutgeschrieben
   wird erst, wenn Google unserem Server das Video bestätigt (SSV) – wer abbricht oder die App schließt, bekommt nichts.
-  **FaLe Pro:** alle KI-Werkzeuge ohne Video, fair bis 200 pro Tag (`PLUS_DAILY`), werbefrei.
+  **FaLe Pro:** alle KI-Werkzeuge ohne Video, fair bis 200 pro Tag (`PLUS_DAILY`), werbefrei, längere Dokumente
+  pro Anfrage (Zusammenfassen/Lernkarten/Quiz/Vergleichen ×2,5, Chat/Übersetzen ×2 – `PRO_INPUT` in `api/_lib/tasks.js`;
+  der Server prüft Pro selbst, `AI_MAX_BODY_BYTES` Standard 600 000) und eine eigene App-Farbe.
   Web-Version und iPhone haben keine Videos: dort gibt es die Cloud-KI nur mit Pro über ein FaLe-Konto
   (wer eine kleine Gratis-Menge im Browser möchte: `FREE_DAILY` z. B. auf 1 setzen – gilt dann aber überall).
   Pro Netzwerk (IP) höchstens 40 inklusive Anfragen pro Tag (`IP_DAILY`) gegen Missbrauch.

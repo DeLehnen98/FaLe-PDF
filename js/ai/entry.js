@@ -136,8 +136,8 @@ export function renderProBar(box) {
     if (!pro && (!showPlus() || aiHidden())) { box.hidden = true; box.innerHTML = ''; return; }
     box.hidden = false;
     box.innerHTML = pro
-      ? `<a class="pro-bar is-on" href="#/ki/pro" data-pro-state="on"><span class="pro-tag" data-no-i18n>PRO</span><span class="pro-bar-txt"><strong>FaLe Pro ist aktiv</strong><span>Alle KI-Werkzeuge ohne Video · werbefrei</span></span><span class="pro-bar-go">${oicon('chevronRight')}</span></a>`
-      : `<a class="pro-bar" href="#/ki/pro" data-pro-state="off"><span class="pro-bar-ic">${oicon('star')}</span><span class="pro-bar-txt"><strong>Auf Pro upgraden</strong><span>Alle KI-Werkzeuge ohne Video · keine Werbung</span></span><span class="pro-bar-cta">Ansehen</span></a>`;
+      ? `<a class="pro-bar is-on" href="#/ki/pro" data-pro-state="on"><span class="pro-tag" data-no-i18n>PRO</span><span class="pro-bar-txt"><strong>FaLe Pro ist aktiv</strong><span>KI ohne Video · werbefrei · lange Dokumente · App-Farben</span></span><span class="pro-bar-go">${oicon('chevronRight')}</span></a>`
+      : `<a class="pro-bar" href="#/ki/pro" data-pro-state="off"><span class="pro-tag" data-no-i18n>PRO</span><span class="pro-bar-txt"><strong>FaLe Pro – freiwillige Extras</strong><span>KI ohne Video · werbefrei · lange Dokumente · App-Farben</span></span><span class="pro-bar-cta">Ansehen</span></a>`;
   };
   paint();
   if (!box.dataset.watch) {

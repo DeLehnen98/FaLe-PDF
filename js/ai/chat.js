@@ -7,7 +7,7 @@ import { statusCard, docPicker, docChip, getDoc, gate } from './common.js';
 import { ensureCloud, showAiError, richText, copyText, progressNote } from './ui.js';
 import { docPages } from './doctext.js';
 import { makeChunks, buildIndex, selectContext } from './retrieval.js';
-import { AI_CONFIG, outputLang } from './config.js';
+import { aiLimit, outputLang } from './config.js';
 import { canSpeak, speakText } from './speak.js';
 
 const SUGGEST = ['Worum geht es in diesem Dokument?', 'Welche Fristen, Termine oder Beträge werden genannt?', 'Was muss ich jetzt tun?'];
@@ -118,7 +118,7 @@ export async function mount(screen, { params }) {
     ac = new AbortController();
     try {
       const idx = await ensureIndex();
-      const ctx = selectContext(idx, q + ' ' + (history.length ? history[history.length - 1].q : ''), { k: 8, maxChars: AI_CONFIG.MAX_CHAT_CONTEXT });
+      const ctx = selectContext(idx, q + ' ' + (history.length ? history[history.length - 1].q : ''), { k: 8, maxChars: aiLimit('MAX_CHAT_CONTEXT') });
       let shown = '';
       const sent = new Set(ctx.map(c => c.page));
       const r = await C.runTask('chat', { question: q, title: doc.name, unit, chunks: ctx.map(c => ({ page: c.page, text: c.text })), history: history.slice(-3) }, {}, {

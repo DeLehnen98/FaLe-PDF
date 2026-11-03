@@ -46,6 +46,7 @@ export function goBack(fallback = '#/start') {
   else location.replace(fallback);
 }
 
+let currentMainShown = false; // no entrance animation for the very first page (the app just appeared)
 async function showMain(name, params, sub = null) {
   if (!MAIN_VIEWS.includes(name)) name = 'start';
   $$('.view').forEach(v => { v.hidden = v.dataset.view !== name; });
@@ -57,7 +58,12 @@ async function showMain(name, params, sub = null) {
   document.body.dataset.view = name;
   const changed = currentMain !== name;
   currentMain = name;
-  if (changed) $('#main').scrollTop = 0;
+  if (changed) {
+    $('#main').scrollTop = 0;
+    const v = $(`.view[data-view="${name}"]`); // short entrance (css/theme-2026.css .view-in) – only when the page changes
+    if (v && currentMainShown) { v.classList.remove('view-in'); void v.offsetWidth; v.classList.add('view-in'); clearTimeout(v._vin); v._vin = setTimeout(() => v.classList.remove('view-in'), 520); }
+    currentMainShown = true;
+  }
   try {
     if (name === 'start') await renderHome();
     if (name === 'dateien') await renderFiles(params);
@@ -343,6 +349,7 @@ async function init() {
   import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)); // editors closed by a crash
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./monetize.js').then(m => m.watchProMark()).catch(() => {});
+  import('./hints.js').then(m => m.initHints()).catch(e => console.warn(e)); // Tipps beim ersten Besuch (one bubble at a time)
   import('./banner.js').then(m => m.startBanners()).catch(e => console.warn('Banner', e)); // Android app only
   import('./extras/reminders.js').then(m => m.syncNotifications()).catch(e => console.warn(e));
   import('./install.js').then(m => m.initInstall()).catch(e => console.warn(e)); // web only: "install as an app", /app/?install=1

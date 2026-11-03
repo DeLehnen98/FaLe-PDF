@@ -88,7 +88,7 @@ AI ASSISTANT (OPTIONAL)
 • Chat with a document: ask questions, get answers with page references
 • Summarize, translate, writing help, formula assistant, slides by AI
 • Flashcards & quizzes from your notes, letters by AI, translate photos
-• Without Pro, one short video unlocks one AI request – with FaLe Pro all AI tools work without videos
+• Without Pro, one short video unlocks one AI request – with FaLe Pro all AI tools work without videos, long documents included
 • Don’t want AI? One switch hides it completely
 • Only with your consent; only the text you select is sent. AI answers can contain mistakes – you can report problematic answers to us by email.
 

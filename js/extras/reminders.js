@@ -226,13 +226,18 @@ function remCard(r, docs, { compact = false, onChange } = {}) {
   if (more) more.addEventListener('click', async () => {
     const { officeMenu } = await import('../office/kinds.js');
     officeMenu(more, [
-      { label: 'Bearbeiten', icon: 'edit', onClick: async () => { if (await reminderDialog(r)) changed(); } },
-      st !== 'done' ? { label: 'Morgen erinnern', icon: 'timer', onClick: async () => { await snoozeReminder(r, 1); changed(); } } : null,
-      st === 'done' ? { label: 'Wieder aktivieren', icon: 'restore', onClick: async () => { r.done = false; await updateReminder(r); changed(); } } : null,
       { label: 'In meinen Kalender', icon: 'calendar', onClick: () => exportToCalendar(r).catch(e => errorToast(e, 'Der Kalender-Eintrag konnte nicht erstellt werden.')) },
       '-',
       { label: 'Löschen', icon: 'trash', danger: true, onClick: async () => { if (await confirmDialog('Frist löschen?', `„${r.title}“ wird entfernt.`, { okLabel: 'Löschen', danger: true })) { await removeReminder(r); changed(); } } },
-    ], { label: r.title });
+    ], {
+      label: r.title,
+      head: { thumb: `<span class="doc-thumb kind">${oicon('bell')}</span>`, title: r.title, sub: esc($('.rem-when, [data-when]', el) ? $('.rem-when, [data-when]', el).textContent : '') },
+      quick: [
+        { label: 'Bearbeiten', icon: 'edit', onClick: async () => { if (await reminderDialog(r)) changed(); } },
+        st !== 'done' ? { label: 'Morgen erinnern', icon: 'timer', onClick: async () => { await snoozeReminder(r, 1); changed(); } }
+          : { label: 'Wieder aktivieren', icon: 'restore', onClick: async () => { r.done = false; await updateReminder(r); changed(); } },
+      ],
+    });
   });
   return el;
 }

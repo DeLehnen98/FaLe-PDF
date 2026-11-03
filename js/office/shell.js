@@ -2,7 +2,7 @@
 import * as db from '../db.js';
 import { esc, h, toast, errorToast, promptDialog, openDialog, downloadBlob, shareBlob, progress, safeFileName } from '../ui.js';
 import { saveFile, saveResult, emitChange } from '../library.js';
-import { KINDS, ensureExt, stripExt, oicon, officeMenu } from './kinds.js';
+import { KINDS, ensureExt, stripExt, oicon, officeMenu, kindTile } from './kinds.js';
 import { track } from '../extras/stats.js';
 import { attachRecovery } from './recovery.js';
 
@@ -47,8 +47,18 @@ export function createShell(screen, opts) {
   let origCache = null; // resolved originInfo() for the menu (menus are built synchronously)
   moreBtn.addEventListener('click', () => {
     const items = opts.menu ? opts.menu() : [];
-    if (origCache) items.unshift({ label: `Im Original speichern („${origCache.name}“)`, icon: 'upload', onClick: async () => { const meta = await save({ quiet: true }); if (meta) replaceOriginal(meta.id); } }, '-');
-    officeMenu(moreBtn, items, { label: 'Weitere Aktionen' });
+    if (origCache) items.unshift({ label: 'Im Original speichern', hint: `Ersetzt „${origCache.name}“`, icon: 'upload', onClick: async () => { const meta = await save({ quiet: true }); if (meta) replaceOriginal(meta.id); } });
+    officeMenu(moreBtn, items, {
+      label: 'Weitere Aktionen',
+      search: items.filter(it => it && it.label).length > 12,
+      head: {
+        thumb: kindTile(S.kind),
+        title: S.name,
+        sub: esc(S.dirty ? 'Nicht gespeichert' : S.id ? 'Gespeichert auf diesem Gerät' : 'Neu – noch nicht gespeichert'),
+        onRename: name => applyName(name),
+      },
+      quick: opts.quick ? opts.quick() : null,
+    });
   });
 
   const onKey = e => {
@@ -65,11 +75,16 @@ export function createShell(screen, opts) {
   async function rename() {
     const n = await promptDialog('Umbenennen', 'Name', S.name, { okLabel: 'Übernehmen' });
     if (n == null) return;
-    const clean = safeFileName(n.trim());
-    if (!clean) { toast('Der Name darf nicht leer sein.', 'error'); return; }
+    await applyName(n);
+  }
+  /** New name from the title button or the ⋮ menu → the cleaned name, or false. */
+  async function applyName(n) {
+    const clean = safeFileName(String(n || '').trim());
+    if (!clean) { toast('Der Name darf nicht leer sein.', 'error'); return false; }
     S.name = ensureExt(clean, S.kind);
     if (S.id) { await db.updateDoc(S.id, { name: S.name }); emitChange(); }
     paint();
+    return S.name;
   }
 
   async function save({ asCopy = false, quiet = false } = {}) {
