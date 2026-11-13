@@ -87,6 +87,8 @@ jobs:
               Write-Host "Screenshot $name ($($b.Width)x$($b.Height))"
             } catch { Write-Host "::warning title=Screenshot::$name nicht möglich: $($_.Exception.Message)" }
           }
+          # the first start shows the welcome pages; Esc closes them (for the picture of the program itself)
+          try { $ws = New-Object -ComObject WScript.Shell; [void]$ws.AppActivate($app.Id); Start-Sleep -Milliseconds 600; Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait("{ESC}"); Start-Sleep -Seconds 3 } catch { Write-Host "Esc: $($_.Exception.Message)" }
           Save-Screen "windows-ansicht.png"
           # the window's X: the program asks the app, nothing is unsaved, so it must close on its own (within 15 s)
           $app.Refresh()
