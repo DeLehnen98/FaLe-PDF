@@ -735,6 +735,13 @@ function initDesktop() {
       v.textContent = ['FaLe PDF', 'Windows', String((window.__FALE_DESKTOP__ || {}).version || '')].join(' ').trim(); // the same in every language
       foot.appendChild(v);
     }
+    import('./policy.js').then(P => {
+      if (!foot || !P.policySource() || foot.querySelector('.side-pol')) return;
+      const s = document.createElement('span');
+      s.className = 'side-pol';
+      s.textContent = 'Firmen-Einstellungen aktiv';
+      foot.insertBefore(s, foot.querySelector('.side-ver'));
+    }).catch(() => {});
     document.addEventListener('click', e => {
       const a = e.target && e.target.closest ? e.target.closest('a[target="_blank"][href]') : null;
       if (!a || e.defaultPrevented) return;

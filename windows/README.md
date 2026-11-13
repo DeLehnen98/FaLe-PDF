@@ -14,6 +14,29 @@ wenn sich dieses Programm selbst ändert.
   die Seite 4 Sekunden lang nicht, schließt das Fenster trotzdem.
 * Dateien lassen sich **ins Fenster ziehen**; Größe und Platz des Fensters werden gemerkt.
 
+## Firmen-Einstellungen (für die IT)
+
+Firmen können abschalten, was Daten ins Internet sendet. Die IT legt dazu **eine Datei** auf den PC
+(GPO-Dateiverteilung, Intune, Softwareverteilung oder von Hand):
+
+    C:\ProgramData\FaLe PDF\policy.json
+
+    { "internet": false }
+
+Das schaltet alle vier Funktionen ab. Einzeln geht es mit `cloudAi` (Cloud-KI), `post` (Brief per Post und Fax),
+`cloudShare` (Sicher teilen, Übertragen) und `account` (FaLe-Konto) – jeweils `false`.
+
+* Nur `false` schaltet etwas ab. Einschalten kann die Datei nichts; unbekannte Schlüssel werden verworfen.
+* Ist die Datei da, aber **fehlerhaft** (kein gültiges JSON, nicht lesbar, größer als 64 KB), schaltet das Programm
+  vorsichtshalber **alles** ab und zeigt das unter „Ich“ an.
+* Gelesen wird beim Start (UTF-8 oder UTF-16 mit BOM). Im Programm steht unter „Ich“ → „Für Firmen & IT“, was gilt;
+  unten im Fenster erscheint „Firmen-Einstellungen aktiv“.
+* Installation ohne Nachfragen: `FaLe-PDF-Setup.exe /S`
+* Die Datei ist eine **Voreinstellung der Firma im Programm** – keine Sperre für die Web-Version im Browser. Wer die
+  auch sperren will, nutzt die Browser-Richtlinien (siehe https://fale.network/apps/pdf/unternehmen/) oder die Firewall.
+* Code: `src-tauri/src/policy.rs` (liest und säubert die Datei), `js/policy.js` (die App hält sich daran).
+  Prüfen, auf jedem System: `cargo test --manifest-path windows/policy-test/Cargo.toml`
+
 ## Sicherheit und „Cracks“
 
 Das Programm enthält **keine Geheimnisse und keine Freischaltungen**: FaLe Pro und die KI-Freischaltungen prüft

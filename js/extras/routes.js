@@ -2,6 +2,7 @@
 import { openScreen } from '../screen.js';
 import { errorToast, esc } from '../ui.js';
 import { oicon } from '../office/kinds.js';
+import { blocked } from '../policy.js';
 
 const SCREENS = {
   profil: { title: 'Meine Daten', sub: 'Nur auf diesem Gerät gespeichert', load: () => import('./profile-screen.js') },
@@ -27,6 +28,10 @@ export async function openExtraRoute(parts, params, { goBack }) {
   const screen = openScreen({ title: conf.title, sub: conf.sub, onBack: () => (screen.onBackRequest ? screen.onBackRequest(goBack) : goBack()) });
   screen.root.classList.add('extras-screen', `extras-${parts[0]}`);
   screen.hashKey = location.hash;
+  if (parts[0] === 'konto' && blocked('account')) { // company setting (js/policy.js): say so instead of an error
+    screen.body.innerHTML = `<div class="screen-inner"><div class="empty"><div class="empty-art">${oicon('shield')}</div><h3>Von deiner Firma ausgeschaltet</h3><p>Das FaLe-Konto ist auf diesem Gerät von deiner Firma ausgeschaltet.</p><p class="muted small">Alles andere läuft wie immer – nur auf deinem Gerät.</p></div></div>`;
+    return;
+  }
   screen.body.innerHTML = '<div class="v-loading"><div><span class="spinner dark" style="width:30px;height:30px"></span><span>Wird geladen …</span></div></div>';
   try {
     const mod = await conf.load();

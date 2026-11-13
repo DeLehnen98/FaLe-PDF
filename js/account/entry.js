@@ -4,6 +4,7 @@ import { showPlus } from '../monetize.js';
 import { h, esc, $ } from '../ui.js';
 import { oicon } from '../office/kinds.js';
 import * as A from './auth.js';
+import { blocked } from '../policy.js';
 
 let cssDone = false;
 export function loadAccountCss() {
@@ -55,6 +56,7 @@ export function syncLine(st) {
 
 /** App start: finish a Google redirect, resume background sync when signed in. */
 export async function initAccount() {
+  if (blocked('account')) return; // switched off by the company: no sign-in, no sync
   if (new URLSearchParams(location.search).get('auth') === 'google') {
     try { await A.handleAuthRedirect(); } catch (e) { (await import('../ui.js')).errorToast(e, 'Die Anmeldung hat nicht geklappt.'); }
   }
@@ -65,6 +67,7 @@ export async function initAccount() {
 /** Card on the "Ich" page. */
 export async function renderMeCard(box) {
   if (!box) return;
+  if (blocked('account')) { box.replaceChildren(); return; } // the „Ich“ page says so in the company card
   loadAccountCss();
   const paint = async () => {
     const user = A.maybeSignedIn() ? await A.currentUser() : null;
@@ -97,6 +100,7 @@ export async function renderMeCard(box) {
 /** Start page: one dismissible hint, only for users with at least 5 files who are not signed in. */
 export async function renderStartHint(box, fileCount) {
   if (!box) return;
+  if (blocked('account')) { box.hidden = true; return; }
   let hidden = false;
   try { hidden = localStorage.getItem('fale-acct-hint') === 'hidden'; } catch {}
   if (hidden || fileCount < 5 || A.maybeSignedIn()) { box.hidden = true; return; }

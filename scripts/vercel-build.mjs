@@ -21,6 +21,7 @@ const APP_SKIP = new Set(['dist', 'node_modules', 'scripts', 'vendor', '.git', '
   'one', // FaLe One web app: its own Vercel project (root directory one/)
   'docs', 'SECURITY.md', // documentation only
   'tests', 'e2e-out', // test suites + their outputs (never shipped)
+  'windows', // Windows program (Tauri project, built in CI by .github/workflows/windows.yml) – source, never served
   'mail', // FaLe Mail server infrastructure (served by the mail server / network site, never by the PDF app)
   'site']); // start page of pdf.fale.network (web build only, step 1b below)
 // `--native` (or FALE_TARGET=native): build for the Android app (Capacitor webDir).

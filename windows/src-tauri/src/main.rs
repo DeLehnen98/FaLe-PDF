@@ -7,11 +7,19 @@
 //   die Seite ein paar Sekunden lang nicht, schließt das Fenster trotzdem – das X bleibt nie hängen.
 // - Dateien lassen sich ins Fenster ziehen (die App nimmt sie selbst an); Größe und Platz des Fensters
 //   werden gemerkt.
+// - Firmen-Einstellungen: %ProgramData%\FaLe PDF\policy.json schaltet ab, was Daten ins Internet sendet
+//   (policy.rs); die App bekommt sie als window.__FALE_DESKTOP__.policy.
 // - Keine Geheimnisse, keine Freischaltungen: FaLe Pro und KI prüft immer der Server.
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod policy;
+
 use base64::Engine;
-use std::{path::Path, sync::Mutex, time::Duration};
+use std::{
+    path::{Path, PathBuf},
+    sync::Mutex,
+    time::Duration,
+};
 use tauri::{webview::PageLoadEvent, Manager, Url, WebviewUrl, WebviewWindow, WebviewWindowBuilder, WindowEvent};
 
 const START: &str = "https://pdf.fale.network/app/";
@@ -39,6 +47,19 @@ fn close_signal(url: &Url) -> Option<&str> {
     } else {
         None
     }
+}
+
+/// The company settings of this PC as JSON object text, or `None` when the PC is not managed (policy.rs).
+fn company_policy() -> Option<String> {
+    let file = |base: &Path| base.join("FaLe PDF").join("policy.json");
+    let mut places: Vec<PathBuf> = vec![file(Path::new("C:\\ProgramData"))];
+    if let Some(base) = std::env::var_os("ProgramData") {
+        let p = file(Path::new(&base));
+        if !places.contains(&p) {
+            places.push(p);
+        }
+    }
+    policy::from_files(&places)
 }
 
 /// File paths among the command line arguments (Windows passes the file for „Öffnen mit“).
@@ -133,6 +154,8 @@ fn main() {
         .setup(|app| {
             let start = Url::parse(START).expect("start url");
             let nav_handle = app.handle().clone();
+            // only known keys with the value false reach the page (policy::clean) – safe to write into the script
+            let company = company_policy().unwrap_or_else(|| "null".into());
             WebviewWindowBuilder::new(app, "main", WebviewUrl::External(start))
                 .title("FaLe PDF")
                 .inner_size(1240.0, 840.0)
@@ -141,8 +164,9 @@ fn main() {
                 // files dragged into the window go to the app (its own drop handling), not to the shell
                 .disable_drag_drop_handler()
                 .initialization_script(&format!(
-                    "window.__FALE_DESKTOP__ = Object.freeze({{ version: '{}', os: 'windows' }});",
-                    env!("CARGO_PKG_VERSION")
+                    "window.__FALE_DESKTOP__ = Object.freeze({{ version: '{}', os: 'windows', policy: Object.freeze({}) }});",
+                    env!("CARGO_PKG_VERSION"),
+                    company
                 ))
                 .on_navigation(move |url| {
                     if let Some(cmd) = close_signal(url) {

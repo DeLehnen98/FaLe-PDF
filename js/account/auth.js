@@ -10,6 +10,7 @@
 // Storage: refresh token + e-mail in IndexedDB (fale-account → kv 'session'); the access token only in memory.
 // The account is optional – nothing here runs unless the user signs in.
 import { apiBase } from '../ai/config.js';
+import { blocked } from '../policy.js';
 import { isNative, platformName } from '../platform.js';
 import { kv, wipeAll } from './kv.js';
 import BUILD_CONFIG from './build-config.js';
@@ -34,6 +35,9 @@ export class AccountError extends Error {
 const OFFLINE = 'Du bist offline. Für das FaLe-Konto brauchst du eine Internetverbindung.';
 const UNAVAILABLE = 'Das FaLe-Konto ist gerade nicht erreichbar. Bitte versuche es später erneut.';
 export const online = () => typeof navigator === 'undefined' || navigator.onLine !== false;
+/** Company setting `account: false` (js/policy.js): the account never talks to the internet on this device. */
+const POLICY_OFF = 'Das FaLe-Konto ist auf diesem Gerät von deiner Firma ausgeschaltet.';
+function gate() { if (blocked('account')) throw new AccountError('policy', POLICY_OFF); }
 
 // ---------------------------------------------------------------- config (public: URL + publishable key)
 let cfgMem = null;
@@ -50,6 +54,7 @@ export async function accountConfig({ force = false, passive = false } = {}) {
   try { cached = JSON.parse(ls.get(CFG_LS) || 'null'); } catch {}
   if (passive && !force) return cached || { configured: null, unknown: true, features: {} };
   try {
+    if (blocked('account')) throw new Error('policy');
     if (!online()) throw new Error('offline');
     const r = await fetch(`${apiBase()}/api/account?a=config`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}', credentials: 'omit', cache: 'no-store' });
     if (!r.ok) throw new Error('http ' + r.status);
@@ -64,6 +69,7 @@ export async function accountConfig({ force = false, passive = false } = {}) {
   }
 }
 async function cfgOrThrow() {
+  gate();
   const c = await accountConfig();
   if (!c.configured || !c.supabaseUrl || !c.supabaseKey) throw new AccountError('not_configured', c.offline ? OFFLINE : 'Das FaLe-Konto ist bald verfügbar.');
   return c;
@@ -122,6 +128,7 @@ async function saveSession(tok, { keepDevice = true } = {}) {
 
 // ---------------------------------------------------------------- HTTP to Supabase
 async function authFetch(cfg, path, { method = 'POST', json, token } = {}) {
+  gate();
   if (!online()) throw new AccountError('offline', OFFLINE);
   const headers = { apikey: cfg.supabaseKey, 'Content-Type': 'application/json', Accept: 'application/json' };
   if (token) headers.Authorization = `Bearer ${token}`;
@@ -234,6 +241,7 @@ export async function sbFetch(path, { method = 'POST', json, raw, contentType, s
   for (let attempt = 0; attempt < 2; attempt++) {
     const token = await accessToken({ force: attempt > 0 });
     if (!token) throw new AccountError('signed_out', 'Bitte melde dich erneut an.');
+    gate();
     if (!online()) throw new AccountError('offline', OFFLINE);
     const headers = { apikey: cfg.supabaseKey, Authorization: `Bearer ${token}`, ...extra };
     let body;
@@ -261,6 +269,7 @@ export async function rpc(fn, args = {}) {
 export async function accountApi(action, body = {}) {
   const token = await accessToken();
   if (!token) throw new AccountError('signed_out', 'Bitte melde dich erneut an.');
+  gate();
   if (!online()) throw new AccountError('offline', OFFLINE);
   let r;
   try { r = await fetch(`${apiBase()}/api/account?a=${encodeURIComponent(action)}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(body), credentials: 'omit', cache: 'no-store' }); }

@@ -255,7 +255,22 @@ html.win-ui .panel-empty { color: var(--text-2); }
 /* thin scroll bars that belong to the sheet */
 html.win-ui .main, html.win-ui .screen-body, html.win-ui dialog, html.win-ui .menu { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
 
+/* ---------- company settings (js/policy.js) and the page „Für Firmen & IT“ ---------- */
+.side-pol { display: none; }
+@media (min-width: 900px) { html.win-ui .side-foot .side-pol { display: inline; margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--border-strong); font-weight: 600; color: var(--text); } }
+/* ---------- Windows start: E-Rechnung ---------- */
+html.win-ui #view-start .home-einv { margin: 14px 0 18px; }
+html.win-ui #view-start .einv-list { display: grid; gap: 1px; margin: 0 -10px; }
+html.win-ui #view-start .einv-row { display: flex; align-items: center; gap: 12px; min-height: 50px; padding: 6px 10px; border-radius: var(--radius-sm); color: var(--text); text-decoration: none; }
+html.win-ui #view-start .einv-row:hover { background: var(--surface-2); }
+html.win-ui #view-start .einv-row > .ic { flex: none; width: 30px; height: 30px; padding: 6px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--reg-dateien) 13%, var(--surface)); color: var(--reg-dateien); }
+html.win-ui #view-start .einv-row > span { display: grid; min-width: 0; }
+html.win-ui #view-start .einv-row strong { font-weight: 600; font-size: 0.9375rem; }
+html.win-ui #view-start .einv-row span span { font-size: 0.8125rem; color: var(--text-2); }
+html.win-ui #view-start .einv-note { margin: 8px 0 0; line-height: 1.4; }
+html.win-ui.simple #view-start .home-einv { display: none; }
+
 /* keyboard focus stays visible on everything this file flattened (must stay the last block) */
-html.win-ui :is(.btn, .icon-btn, .card, .nav-link, .tile, .create-btn, .lt-chip, .doc-open, .rs-card, .tab):focus-visible,
+html.win-ui :is(.btn, .icon-btn, .card, .nav-link, .tile, .create-btn, .lt-chip, .doc-open, .rs-card, .tab, .einv-row):focus-visible,
 html.win-ui #view-start .home-side :is(.tile, .create-btn, .lt-chip):focus-visible { outline: none; box-shadow: var(--focus); }
 html.win-ui :is(.input, .select):focus, html.win-ui :is(.top-search, .search-box) .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent); }

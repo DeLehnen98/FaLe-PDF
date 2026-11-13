@@ -13,6 +13,10 @@
   bar, the start page in two columns, DIN type for titles; light and dark; three window sizes without sideways
   scrolling; „Klassisch“ in the settings brings the old look back; a normal browser never gets the new look;
   moving through the tabs, a document and a tool does not stall (worst stall < 700 ms at CPU ×4)
+- company settings: a file on the PC (%ProgramData%\\FaLe PDF\\policy.json, read by policy.rs) switches off what sends
+  data (Cloud-KI, Post/Fax, sharing, FaLe-Konto) – all at once or one by one; a faulty file switches everything off;
+  nothing in the app lifts it; „Ich“ → „Für Firmen & IT“ shows what applies and how the IT sets it up
+- the start page of the program offers „E-Rechnung lesen und prüfen“ and „E-Rechnung schreiben“
 Run: node tests/suites/sec/csp_server.mjs 9202 <repo> ; python3 tests/suites/test_windows.py"""
 import base64, json, os, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -326,7 +330,185 @@ def main():
         B = page.evaluate("({ cls: document.documentElement.className, row: document.querySelectorAll('[data-winui-row]').length, side: document.querySelector('.sidebar').getBoundingClientRect().height, font: getComputedStyle(document.body).fontFamily, drop: getComputedStyle(document.querySelector('.hero-drop') || document.body).display })")
         check('normal browser: the look of the web app, no switch, no Windows styles', 'win-ui' not in B['cls'].split() and B['row'] == 0 and B['side'] > 400 and not B['font'].startswith('"Segoe UI Variable'), B)
         ctx.close()
+
+        # ---------------- company settings: the file on the PC (policy.rs → window.__FALE_DESKTOP__.policy) ----------------
+        def shell(policy):
+            return "window.__FALE_DESKTOP__ = Object.freeze({ version: '2.5.0', os: 'windows', policy: Object.freeze(%s) });" % json.dumps(policy)
+        QUIET = "try { localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-install-hint', '1'); localStorage.setItem('fale-hints-off', '1'); } catch (e) {}"
+        ALL_OFF = {'cloudAi': False, 'post': False, 'cloudShare': False, 'account': False}
+        PROBE = """async () => {
+          const P = await import('./js/policy.js'), H = await import('./js/ai/hidden.js'), C = await import('./js/ai/client.js'), Po = await import('./js/post/api.js'), S = await import('./js/share/api.js'), A = await import('./js/account/auth.js');
+          C.setCloudDisabled(false);
+          let share = 'ok'; try { await S.shareConfig({ force: true }); } catch (e) { share = e.userMessage || String(e); }
+          const post = await Po.postConfig({ force: true }).catch(() => ({ enabled: 'error' }));
+          let acct = 'ok'; try { await A.sendCode('niemand@example.invalid'); } catch (e) { acct = (e.code || '') + '|' + (e.message || ''); }
+          let cfg = 'ok'; try { const c = await A.accountConfig({ force: true }); if (c.configured) cfg = 'configured'; } catch (e) { cfg = String(e.message || e); }
+          return { policy: P.policy(), src: P.policySource(), invalid: P.policyInvalid(), blocked: P.POLICY_KEYS.filter(k => P.blocked(k)), aiHidden: H.aiHidden(), cloudOff: C.cloudDisabled(), postEnabled: post.enabled, postKnown: Po.postKnown(), share, acct, cfg }; }"""
+        FIRMA = """() => ({ rows: [...document.querySelectorAll('[data-net-list] .net-row')].map(r => r.dataset.net + ':' + r.querySelector('.net-state').textContent.trim()),
+          state: (document.querySelector('[data-it-state]') || {}).textContent || '', code: [...document.querySelectorAll('[data-it-card] .it-code')].map(c => c.textContent.trim()),
+          guide: (document.querySelector('[data-it-guide]') || {}).href || '', hs: document.documentElement.scrollWidth - innerWidth })"""
+
+        # 1) everything off ({ "internet": false } in the file → the program hands over the four keys)
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(shell(ALL_OFF) + N.WATCH + QUIET + "try { localStorage.setItem('fale-policy', 'null'); localStorage.setItem('fale-acct', '1'); } catch (e) {}")
+        page = ctx.new_page()
+        errs = []; sent = []
+        page.on('pageerror', lambda e: errs.append(str(e)))
+        page.on('console', lambda m: errs.append(m.text) if m.type == 'error' and 'Failed to load resource' not in m.text else None)
+        page.on('request', lambda r: sent.append(r.url) if re.search(r'/api/(account|ai|share|post|fax|transfer)|supabase', r.url) else None)
+        cdp = ctx.new_cdp_session(page)
+        page.goto(URL + '#/start'); page.wait_for_selector('#view-start .hero', timeout=30000); page.wait_for_timeout(1500)
+        r = page.evaluate(PROBE)
+        check('file on the PC: all four functions that send data are switched off', r['policy'] == ALL_OFF and r['src'] == 'file' and not r['invalid'] and r['blocked'] == ['cloudAi', 'post', 'cloudShare', 'account'], r)
+        check('…Cloud-KI hidden and cannot be switched on', r['aiHidden'] and r['cloudOff'], r)
+        check('…Brief per Post / Fax off, sharing refused with a clear message', r['postEnabled'] is False and r['postKnown'] is False and 'Firma' in r['share'], r)
+        check('…FaLe-Konto: no sign-in, no configuration request – a clear message instead', r['acct'].startswith('policy|') and 'Firma' in r['acct'] and r['cfg'] == 'ok', (r['acct'], r['cfg']))
+        check('…nothing was sent to the account, AI, sharing or post services', not sent, sent[:4])
+        foot = page.evaluate("(() => { const e = document.querySelector('.side-foot .side-pol'); if (!e) return null; const b = e.getBoundingClientRect(); return [e.textContent.trim(), Math.round(b.width), Math.round(b.bottom), innerHeight]; })()")
+        check('status bar: „Firmen-Einstellungen aktiv“ is visible at the bottom of the window', foot and foot[0] == 'Firmen-Einstellungen aktiv' and foot[1] > 60 and foot[2] <= foot[3], foot)
+        page.evaluate("location.hash = '#/einstellungen'"); page.wait_for_selector('[data-me-sub="firma"]', timeout=10000); page.wait_for_timeout(900)
+        me = page.evaluate("(() => { const c = document.querySelector('.policy-card'); const row = document.querySelector('[data-me-sub=\"firma\"]'); const a = document.querySelector('[data-account-me]'); return { card: c ? c.textContent.replace(/\\s+/g, ' ') : '', row: row.textContent.replace(/\\s+/g, ' '), acct: a ? a.children.length : -1, warn: !!document.querySelector('.policy-warn') }; })()")
+        check('„Ich“: the company card names the four parts, the account offer is gone, the row „Für Firmen & IT“ says the settings are active',
+              all(x in me['card'] for x in ('Von deiner Firma eingestellt', 'Cloud-KI', 'Post', 'Teilen', 'FaLe-Konto')) and me['acct'] == 0 and 'Firmen-Einstellungen sind aktiv' in me['row'] and not me['warn'], me)
+        page.locator('[data-me-sub="firma"]').click(); page.wait_for_selector('[data-net-list]', timeout=10000); page.wait_for_timeout(500)
+        F = page.evaluate(FIRMA)
+        check('page „Für Firmen & IT“: four functions, all „Ausgeschaltet“; says that the settings are active', F['rows'] == [k + ':Ausgeschaltet' for k in ('cloudAi', 'cloudShare', 'post', 'account')] and 'Firmen-Einstellungen aktiv' in F['state'], F)
+        check('…shows the IT where the file goes, what to write and how to install silently; links the guide',
+              'C:\\ProgramData\\FaLe PDF\\policy.json' in F['code'] and '{ "internet": false }' in F['code'] and 'FaLe-PDF-Setup.exe /S' in F['code'] and F['guide'].endswith('/apps/pdf/unternehmen/') and F['hs'] <= 0, F)
+        keys = re.findall(r'"(\w+)": false', [c for c in F['code'] if 'cloudAi' in c][0])
+        rs_keys = re.search(r'pub const KEYS: \[&str; 4\] = \[(.*?)\];', open(os.path.join(APP, 'windows/src-tauri/src/policy.rs'), encoding='utf-8').read()).group(1)
+        check('the keys shown, the keys the program reads and the keys the app honours are the same', sorted(keys) == sorted(re.findall(r'"(\w+)"', rs_keys)) == sorted(ALL_OFF), (keys, rs_keys))
+        page.evaluate("location.hash = '#/konto'"); page.wait_for_timeout(1200)
+        konto = page.evaluate("(document.querySelector('.screen:not([hidden]), .view:not([hidden])') || document.body).innerText")
+        check('#/konto: „Von deiner Firma ausgeschaltet“ instead of the sign-in', 'Von deiner Firma ausgeschaltet' in page.evaluate('document.body.innerText') and 'Code senden' not in konto, konto[:200])
+        page.evaluate("location.hash = '#/start'"); page.wait_for_selector('#view-start .hero'); page.wait_for_timeout(400)
+        # nothing stored in the app lifts the file
+        lifted = page.evaluate("async () => { localStorage.removeItem('fale-policy'); localStorage.setItem('fale-policy', '{}'); const P = await import('./js/policy.js'); await P.loadPolicy(200); let frozen = true; try { window.__FALE_DESKTOP__.policy.cloudAi = true; frozen = window.__FALE_DESKTOP__.policy.cloudAi === false; } catch (e) {} return [P.blocked('cloudAi'), P.blocked('account'), frozen]; }")
+        check('the file is the only source: nothing stored in the app lifts it, the settings cannot be changed from the page', lifted == [True, True, True], lifted)
+        # moving through the company pages does not stall (CPU ×4)
+        cdp.send('Emulation.setCPUThrottlingRate', {'rate': 4})
+        page.evaluate('window.__d.length = 0')
+        for hsh, sel in (('#/einstellungen', '[data-me-app]'), ('#/einstellungen/firma', '[data-net-list]'), ('#/konto', '.screen:not([hidden])'), ('#/werkzeuge/ki', '#view-werkzeuge'), ('#/start', '#view-start .hero'), ('#/einstellungen/firma', '[data-net-list]'), ('#/start', '#view-start .hero')):
+            page.evaluate(f"location.hash = {json.dumps(hsh)}")
+            try: page.wait_for_selector(sel, timeout=20000)
+            except Exception: pass
+            page.wait_for_timeout(450)
+        worst = max([g for _, g in page.evaluate('window.__d')] or [0])
+        cdp.send('Emulation.setCPUThrottlingRate', {'rate': 1})
+        check(f'company settings: moving through „Ich“, the IT page, the account and the start does not stall (worst {worst} ms < 700)', worst < 700, worst)
+        st = page.evaluate(N.STATE)
+        check('…and ends on the start page with nothing left open', st['hash'] == '#/start' and not st['dialogs'] and not st['menus'] and not st['loading'], st)
+        check('no console errors (company settings)', not errs, errs[:4])
+        ctx.close()
+
+        # 2) one key only – the rest stays as it is
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='en-US', user_agent=WIN_UA)
+        ctx.add_init_script(shell({'cloudAi': False}) + QUIET + "try { localStorage.setItem('fale-lang', 'en'); } catch (e) {}")
+        page = ctx.new_page()
+        page.goto(URL + '#/einstellungen/firma'); page.wait_for_selector('[data-net-list]', timeout=30000); page.wait_for_timeout(1200)
+        r = page.evaluate("async () => { const P = await import('./js/policy.js'); return { blocked: P.POLICY_KEYS.filter(k => P.blocked(k)), src: P.policySource() }; }")
+        F = page.evaluate(FIRMA)
+        txt = page.evaluate("document.querySelector('#view-einstellungen, .view:not([hidden])').innerText")
+        check('one key in the file switches off only that function', r == {'blocked': ['cloudAi'], 'src': 'file'} and [x.split(':')[0] for x in F['rows'] if x.endswith(':Switched off')] == ['cloudAi'] and len(F['rows']) == 4, (r, F['rows']))
+        german = [w for w in ('Ausgeschaltet', 'Nur auf Wunsch', 'Firmen-Einstellungen', 'Anleitung für die IT', 'Diese Funktionen', 'verlässt') if w in txt]
+        check('the IT page is translated (English: no German left), the file path stays as it is', not german and 'C:\\ProgramData\\FaLe PDF\\policy.json' in F['code'], german)
+        ctx.close()
+
+        # 3) a file that cannot be understood: everything off, and the program says why
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(shell(dict(ALL_OFF, invalid=True)) + QUIET)
+        page = ctx.new_page()
+        page.goto(URL + '#/einstellungen'); page.wait_for_selector('[data-me-sub="firma"]', timeout=30000); page.wait_for_timeout(1000)
+        r = page.evaluate("async () => { const P = await import('./js/policy.js'); return { blocked: P.POLICY_KEYS.filter(k => P.blocked(k)).length, invalid: P.policyInvalid(), warn: (document.querySelector('.policy-warn') || {}).textContent || '' }; }")
+        page.evaluate("location.hash = '#/einstellungen/firma'"); page.wait_for_selector('[data-net-list]', timeout=10000); page.wait_for_timeout(400)
+        F = page.evaluate(FIRMA)
+        check('faulty file: everything is off to be safe, „Ich“ and the IT page say that the file is faulty', r['blocked'] == 4 and r['invalid'] and 'fehlerhaft' in r['warn'] and 'fehlerhaft' in F['state'] and all(x.endswith(':Ausgeschaltet') for x in F['rows']), (r, F['state']))
+        ctx.close()
+
+        # 4) no file: nothing is switched off, the page explains how it would work; an old browser setting does not count
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(shell(None) + QUIET + "try { localStorage.setItem('fale-policy', JSON.stringify({ cloudAi: false })); } catch (e) {}")
+        page = ctx.new_page()
+        errs = []
+        page.on('pageerror', lambda e: errs.append(str(e)))
+        page.goto(URL + '#/start'); page.wait_for_selector('#view-start .hero', timeout=30000); page.wait_for_timeout(1200)
+        r = page.evaluate("async () => { const P = await import('./js/policy.js'); return { policy: P.policy(), src: P.policySource(), pol: document.querySelectorAll('.side-pol').length, foot: document.querySelector('.side-foot').innerText }; }")
+        check('no file: not managed, no „Firmen-Einstellungen aktiv“ in the status bar', r['policy'] is None and r['src'] is None and r['pol'] == 0 and 'Firmen' not in r['foot'], r)
+        page.evaluate("location.hash = '#/einstellungen'"); page.wait_for_selector('[data-me-sub="firma"]', timeout=10000); page.wait_for_timeout(700)
+        row = page.evaluate("document.querySelector('[data-me-sub=\"firma\"]').textContent.replace(/\\s+/g, ' ')")
+        card = page.evaluate("!!document.querySelector('.policy-card')")
+        page.locator('[data-me-sub="firma"]').click(); page.wait_for_selector('[data-net-list]', timeout=10000); page.wait_for_timeout(400)
+        F = page.evaluate(FIRMA)
+        check('no file: „Für Firmen & IT“ is still there and explains – all four „Nur auf Wunsch“, „keine Datei … gefunden“', 'Was ins Internet geht' in row and not card and all(x.endswith(':Nur auf Wunsch') for x in F['rows']) and 'keine Datei' in F['state'] and len(F['code']) == 4, (row, card, F))
+        back = page.evaluate("(() => { const b = document.querySelector('.view:not([hidden]) [data-sub-back], .view:not([hidden]) .sub-back, .view:not([hidden]) .page-head a'); if (b) b.click(); return !!b; })()")
+        page.wait_for_timeout(600)
+        check('the IT page has a way back to „Ich“', back and page.evaluate("location.hash") == '#/einstellungen', (back, page.evaluate("location.hash")))
+
+        # ---------------- start page of the program: E-Rechnung ----------------
+        page.evaluate("location.hash = '#/start'"); page.wait_for_selector('#view-start .home-einv', timeout=10000); page.wait_for_timeout(500)
+        E = page.evaluate("""(() => { const s = document.querySelector('#view-start .home-einv'); const b = s.getBoundingClientRect(); const side = document.querySelector('#view-start .home-side').getBoundingClientRect();
+          return { links: [...s.querySelectorAll('a.einv-row')].map(a => [a.getAttribute('href'), a.querySelector('strong').textContent, Math.round(a.getBoundingClientRect().height), a.getAttribute('role')]),
+            note: s.querySelector('.einv-note').textContent, inSide: b.left >= side.left - 1 && b.right <= side.right + 1, visible: b.height > 60 && b.top > 0 && s.querySelector('a.einv-row:last-of-type').getBoundingClientRect().bottom <= innerHeight - 30, title: s.querySelector('h2').textContent,
+            hs: document.documentElement.scrollWidth - innerWidth }; })()""")
+        check('start page of the program: „E-Rechnung“ with „lesen und prüfen“ and „schreiben“ in the side column, visible without scrolling',
+              E['title'] == 'E-Rechnung' and [l[0] for l in E['links']] == ['#/web/read-e-invoice', '#/web/invoice-generator'] and 'lesen und prüfen' in E['links'][0][1] and 'schreiben' in E['links'][1][1] and E['inSide'] and E['visible'] and E['hs'] <= 0, E)
+        check('…rows are easy to hit (≥ 44 px) and stay real links; the note names 2025 and 2027', all(l[2] >= 44 and l[3] is None for l in E['links']) and '2025' in E['note'] and '2027' in E['note'], E)
+        for key, title in (('read', 'E-Rechnung'), ('write', 'Rechnung')):
+            page.evaluate("location.hash = '#/start'"); page.wait_for_selector('#view-start .home-einv'); page.wait_for_timeout(300)
+            page.locator(f'[data-einv="{key}"]').click()
+            opened = poll(page, "location.hash.startsWith('#/web/') && !!document.querySelector('.screen:not([hidden])') && document.querySelector('.screen:not([hidden])').innerText.length > 40", 15000)
+            head = page.evaluate("(document.querySelector('.screen:not([hidden]) h1') || {}).textContent || ''")
+            check(f'„E-Rechnung {"lesen und prüfen" if key == "read" else "schreiben"}“ opens the tool (no blank page, no hang)', opened and title in head, (opened, head, page.evaluate('location.hash')))
+        page.evaluate("location.hash = '#/start'"); page.wait_for_timeout(500)
+        x = page.locator('dialog[open] button', has_text='Verwerfen')
+        if x.count(): x.first.click(); page.wait_for_timeout(300)
+        page.wait_for_selector('#view-start .home-einv')
+        page.keyboard.press('Tab')
+        ring = page.evaluate("(() => { const a = document.querySelector('[data-einv=\"read\"]'); a.focus(); return a.matches(':focus-visible') ? getComputedStyle(a).boxShadow : 'not-focus-visible'; })()")
+        check('E-Rechnung rows show the keyboard focus', ring not in ('none', 'not-focus-visible'), ring)
+        for w, h in ((960, 680), (420, 620)):
+            page.set_viewport_size({'width': w, 'height': h}); page.wait_for_timeout(400)
+            m = page.evaluate("({ hs: document.documentElement.scrollWidth - innerWidth, n: [...document.querySelectorAll('#view-start .einv-row')].filter(a => a.getClientRects().length).length })")
+            check(f'window {w}×{h}: E-Rechnung fits, no sideways scrolling', m['hs'] <= 0 and m['n'] == 2, m)
+        page.set_viewport_size({'width': 1280, 'height': 820})
+        page.evaluate("document.documentElement.classList.add('simple')"); page.wait_for_timeout(200)
+        check('simple view: the E-Rechnung block stays away', page.evaluate("getComputedStyle(document.querySelector('#view-start .home-einv')).display") == 'none')
+        page.evaluate("document.documentElement.classList.remove('simple')")
+        check('no console errors (no file, E-Rechnung)', not errs, errs[:4])
+        ctx.close()
+
+        # the web app in a browser: no E-Rechnung block on the start page, no IT row without company settings
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(QUIET)
+        page = ctx.new_page()
+        page.goto(URL + '#/start'); page.wait_for_selector('#view-start .hero', timeout=30000); page.wait_for_timeout(800)
+        n_einv = page.evaluate("document.querySelectorAll('.home-einv').length")
+        page.evaluate("location.hash = '#/einstellungen'"); page.wait_for_selector('[data-me-app]', timeout=10000); page.wait_for_timeout(600)
+        check('browser: the start page of the web app is unchanged, no row „Für Firmen & IT“ without company settings', n_einv == 0 and page.evaluate("document.querySelectorAll('[data-me-sub=\"firma\"]').length") == 0)
+        ctx.close()
         br.close()
+
+    # company settings of the Windows program
+    policy_rs = open(os.path.join(APP, 'windows/src-tauri/src/policy.rs'), encoding='utf-8').read()
+    readme = open(os.path.join(APP, 'windows/README.md'), encoding='utf-8').read()
+    check('program reads the company file and hands only cleaned settings to the page',
+          'mod policy;' in main_rs and 'policy::from_files(&places)' in main_rs and 'policy: Object.freeze({})' in main_rs and '.join("FaLe PDF").join("policy.json")' in main_rs)
+    check('…from the fixed place and from %ProgramData% – a different environment variable lifts nothing', 'Path::new("C:\\\\ProgramData")' in main_rs and 'std::env::var_os("ProgramData")' in main_rs and 'pub fn from_files' in policy_rs)
+    check('…a file that cannot be understood switches everything off (never „nothing applies“)', policy_rs.count('return Some(all_off(true))') >= 4 and 'MAX_BYTES' in policy_rs)
+    check('workflow: unit tests of the company settings + a start with a policy file on real Windows',
+          'cargo test --manifest-path windows/policy-test/Cargo.toml' in wf and '"policy.json"' in wf and "'{ \"internet\": false }'" in wf and 'ShowWindow' in wf)
+    check('README explains the file for the IT', 'C:\\ProgramData\\FaLe PDF\\policy.json' in readme and '{ "internet": false }' in readme and 'fehlerhaft' in readme)
+    import shutil, subprocess
+    if shutil.which('cargo'):
+        ct = subprocess.run(['cargo', 'test', '--manifest-path', os.path.join(APP, 'windows/policy-test/Cargo.toml')], capture_output=True, text=True, timeout=600)
+        m = re.search(r'test result: ok\. (\d+) passed; 0 failed', ct.stdout)
+        check('cargo test: reading and cleaning the company file (encodings, broken files, several places)', ct.returncode == 0 and m and int(m.group(1)) >= 7, (ct.stdout + ct.stderr)[-300:])
+    else:
+        print('SKIP cargo test (cargo not installed here – runs in the Windows build)', flush=True)
+    for lang, path in (('de', 'network/apps/pdf/unternehmen/index.html'), ('en', 'network/en/apps/pdf/business/index.html')):
+        biz = open(os.path.join(APP, path), encoding='utf-8').read()
+        check(f'FaleNetwork page for companies ({lang}): Windows program, file path, content, silent install',
+              'id="win-h"' in biz and 'C:\\ProgramData\\FaLe PDF\\policy.json' in biz and '{ &quot;internet&quot;: false }' in biz.replace('"internet"', '&quot;internet&quot;') and 'FaLe-PDF-Setup.exe /S' in biz and '<code>account</code>' in biz)
 
     # landing page + FaleNetwork page link to the Setup.exe
     land = open(os.path.join(APP, 'site/index.html'), encoding='utf-8').read()

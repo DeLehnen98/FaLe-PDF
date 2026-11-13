@@ -36,6 +36,8 @@ jobs:
           node-version: 22
       - name: Rust (stable)
         run: rustup default stable && rustc --version
+      - name: Company settings (policy.rs) – unit tests
+        run: cargo test --manifest-path windows/policy-test/Cargo.toml
       - name: Version from package.json
         run: node scripts/windows-version.mjs
       - name: Icons
@@ -97,10 +99,18 @@ jobs:
           $closed = $app.WaitForExit(15000)
           if ($closed) { Write-Host "::notice title=Fenster schließen::Das X schließt das Programm (Anfrage gesendet: $sent)" }
           else { Stop-Process -Id $app.Id -Force; throw "The window did not close within 15 s after the close request (sent: $sent)" }
-          # second start: the window state file of the first run must not stop the program from starting
+          # second start: the window state file of the first run must not stop the program from starting –
+          # this time with company settings on the PC (windows/src-tauri/src/policy.rs): the program must start with
+          # them, and the picture shows „Firmen-Einstellungen aktiv“ at the bottom of the (maximised) window
+          $polDir = Join-Path $env:ProgramData "FaLe PDF"
+          try { New-Item -ItemType Directory -Force -Path $polDir | Out-Null; Set-Content -Path (Join-Path $polDir "policy.json") -Value '{ "internet": false }' -Encoding utf8; Write-Host "Company settings written: $polDir\policy.json" } catch { Write-Host "::warning title=Firmen-Einstellungen::Datei nicht geschrieben: $($_.Exception.Message)" }
           $again = Start-Process -FilePath $exe.FullName -PassThru
           Start-Sleep -Seconds 12
-          if ($again.HasExited) { throw "FaLe PDF exited after the second start (code $($again.ExitCode))" }
+          if ($again.HasExited) { throw "FaLe PDF exited after the second start with company settings (code $($again.ExitCode))" }
+          try {
+            Add-Type -Namespace Fale -Name Win -MemberDefinition '[DllImport("user32.dll")] public static extern bool ShowWindow(System.IntPtr h, int n);'
+            $again.Refresh(); [void][Fale.Win]::ShowWindow($again.MainWindowHandle, 3); Start-Sleep -Seconds 3
+          } catch { Write-Host "Maximise: $($_.Exception.Message)" }
           Save-Screen "windows-start.png"
           $again.Refresh()
           [void]$again.CloseMainWindow()

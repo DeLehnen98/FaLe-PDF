@@ -1,0 +1,10 @@
+# Unit tests for ../src-tauri/src/policy.rs (company settings of the Windows program) – runs on any system:
+#   cargo test --manifest-path windows/policy-test/Cargo.toml
+[package]
+name = "fale-policy-test"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+serde_json = "1"

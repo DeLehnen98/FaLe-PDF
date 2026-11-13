@@ -8,6 +8,8 @@ export function aiHidden() {
 }
 /** Switched off by the company (js/policy.js – read directly to stay dependency-free). */
 function companyOff() {
+  // Windows program: the file on the PC is the only source (window.__FALE_DESKTOP__.policy, see js/policy.js)
+  try { const d = typeof window !== 'undefined' ? window.__FALE_DESKTOP__ : null; if (d) return !!d.policy && (d.policy.cloudAi === false || d.policy.internet === false); } catch { /* no window */ }
   try { const p = JSON.parse(localStorage.getItem('fale-policy') || 'null'); return !!p && p.cloudAi === false; } catch { return false; }
 }
 

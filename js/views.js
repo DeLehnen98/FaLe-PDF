@@ -1,5 +1,5 @@
 // Main views: Start, Dateien, Werkzeuge, Suche, Ich/Einstellungen.
-import { blockedLabels } from './policy.js';
+import { blockedLabels, blocked, policySource, policyInvalid } from './policy.js';
 import * as db from './db.js';
 import { $, $$, h, esc, toast, formatSize, confirmDialog, debounce, choosePdfs, errorToast, pickFiles, showMenu } from './ui.js';
 import { importFiles, emitChange, dropThumb } from './library.js';
@@ -227,6 +227,16 @@ function arrangeWinHome(el) {
   const sideEls = toSide.map(sel => el.querySelector(':scope > ' + sel)).filter(Boolean);
   [...el.childNodes].forEach(n => { if (!sideEls.includes(n)) main.appendChild(n); });
   sideEls.forEach(n => side.appendChild(n));
+  // E-invoices: reading/checking and writing them are things offices look for – they get their own place here,
+  // right under the tools (visible without scrolling; „Neu“ is also in the tray and in the top band)
+  side.insertBefore(h(`<section class="home-einv" data-home="einv" aria-labelledby="home-einv-title">
+      <h2 class="section-title" id="home-einv-title">E-Rechnung</h2>
+      <div class="einv-list">
+        <a class="einv-row" href="#/web/read-e-invoice" data-einv="read">${oicon('checkCircle')}<span><strong>E-Rechnung lesen und prüfen</strong><span>XRechnung oder ZUGFeRD lesbar anzeigen</span></span></a>
+        <a class="einv-row" href="#/web/invoice-generator" data-einv="write">${oicon('euro')}<span><strong>E-Rechnung schreiben</strong><span>Als ZUGFeRD oder XRechnung, mit GiroCode</span></span></a>
+      </div>
+      <p class="muted small einv-note">In Deutschland müssen Betriebe seit 2025 E-Rechnungen empfangen können. Das Ausstellen wird ab 2027 schrittweise Pflicht.</p>
+    </section>`), side.querySelector('[data-home="create"]'));
   el.append(main, side);
   el.classList.add('win-home');
 }
@@ -956,11 +966,12 @@ function policyCard() {
   if (!off.length) return '';
   return `<div class="card policy-card" role="note">${oicon('shield')}<div><strong>Von deiner Firma eingestellt</strong>
     <span class="muted small"><span>Auf diesem Gerät ausgeschaltet:</span> ${off.map(x => `<span>${esc(x)}</span>`).join(', ')}</span>
+    ${policyInvalid() ? '<span class="small policy-warn">Die Datei mit den Firmen-Einstellungen ist fehlerhaft – vorsichtshalber ist alles ausgeschaltet, was Daten sendet.</span>' : ''}
     <span class="muted small">Alles andere läuft wie immer – nur auf deinem Gerät.</span></div></div>`;
 }
 
 // „Ich“ is a short overview; the settings live on their own pages (#/einstellungen/<sub>), opened from the list.
-const ME_SUBS = { allgemein: 'Einstellungen', speicher: 'Speicher & Sicherung', info: 'Über FaLe PDF' };
+const ME_SUBS = { allgemein: 'Einstellungen', speicher: 'Speicher & Sicherung', info: 'Über FaLe PDF', firma: 'Für Firmen & IT' };
 let meSub = null;
 
 /** One row of a grouped list (icon tile, title, explanation, optional value, chevron). */
@@ -995,6 +1006,7 @@ export async function renderSettings(sub = meSub) {
   if (sub === 'allgemein') await renderMeGeneral(el);
   else if (sub === 'speicher') await renderMeStorage(el);
   else if (sub === 'info') renderMeInfo(el);
+  else if (sub === 'firma') renderMeCompany(el);
   else await renderMeHub(el);
   bindMeCommon(el);
 }
@@ -1026,6 +1038,7 @@ async function renderMeHub(el) {
       ${ilRow({ href: '#/einstellungen/allgemein', ic: 'settings', tone: 'ink', title: 'Einstellungen', sub: 'Sprache, Aussehen, Schriftgröße …', attrs: 'data-me-sub="allgemein"' })}
       ${ilRow({ href: '#/einstellungen/speicher', ic: 'storage', tone: 'sky', title: 'Speicher & Sicherung', sub: `${docs.length} Datei${docs.length === 1 ? '' : 'en'} · ${formatSize(total)}`, attrs: 'data-me-sub="speicher"' })}
       ${ilRow({ href: '#/einstellungen/info', ic: 'info', tone: 'slate', title: 'Über FaLe PDF', sub: `Version ${APP_VERSION} · Datenschutz, Impressum, Lizenzen`, attrs: 'data-me-sub="info"' })}
+      ${isDesktopApp() || policySource() ? ilRow({ href: '#/einstellungen/firma', ic: 'shield', tone: 'teal', title: 'Für Firmen & IT', sub: policySource() ? 'Firmen-Einstellungen sind aktiv' : 'Was ins Internet geht – und wie man es abschaltet', attrs: 'data-me-sub="firma"' }) : ''}
     </nav>
     <div data-install-me></div>
     <div data-ai-me></div>
@@ -1195,6 +1208,47 @@ async function renderMeStorage(el) {
   renderStorage($('[data-storage-me]', el), docs);
   // OCR: "OCR-Daten für offline laden" (status, size)
   import('./ocr/settings.js').then(m => m.mountOcrSettings(el)).catch(() => {});
+}
+
+// „Für Firmen & IT“: what can leave this device (four functions, each only when someone uses it), what the company
+// switched off, and – in the Windows program – how the IT switches things off for a whole PC (js/policy.js).
+const NET_FEATURES = [
+  { key: 'cloudAi', name: 'Cloud-KI', what: 'Der Text, den jemand dafür auswählt, geht zur Verarbeitung an den KI-Dienst – nur nach Einwilligung.' },
+  { key: 'cloudShare', name: 'Sicher teilen und Übertragen', what: 'Die Datei wird verschlüsselt hochgeladen, damit der Empfänger sie abrufen kann.' },
+  { key: 'post', name: 'Brief per Post und Fax', what: 'Die PDF geht an den Druck- oder Faxdienst, der sie verschickt.' },
+  { key: 'account', name: 'FaLe-Konto', what: 'Dateien werden Ende-zu-Ende-verschlüsselt zwischen den eigenen Geräten abgeglichen.' },
+];
+function renderMeCompany(el) {
+  const src = policySource();
+  const desk = isDesktopApp();
+  const rows = NET_FEATURES.map(f => `<div class="settings-row net-row" data-net="${f.key}"><div class="label"><strong>${f.name}</strong><span>${f.what}</span></div>
+      <span class="net-state ${blocked(f.key) ? 'off' : ''}">${blocked(f.key) ? 'Ausgeschaltet' : 'Nur auf Wunsch'}</span></div>`).join('');
+  const state = policyInvalid() ? 'Die Datei mit den Firmen-Einstellungen ist fehlerhaft – vorsichtshalber ist alles ausgeschaltet, was Daten sendet.'
+    : src === 'file' ? 'Auf diesem PC sind Firmen-Einstellungen aktiv.'
+      : src === 'browser' ? 'Auf diesem Gerät sind Firmen-Einstellungen aus der Browser-Richtlinie aktiv.'
+        : desk ? 'Auf diesem PC wurde keine Datei mit Firmen-Einstellungen gefunden.' : '';
+  el.innerHTML = `${subHead('Für Firmen & IT', 'Was ins Internet geht – und wie man es abschaltet')}
+    <div class="card card-pad">
+      <div class="privacy"><span class="tile-ic">${oicon('shield')}</span><div>
+        <strong>Von selbst verlässt keine Datei dieses Gerät.</strong>
+        <p class="muted" style="margin-top:4px">Öffnen, Ausfüllen, Unterschreiben, Schwärzen, Umwandeln und Texterkennung werden auf diesem Gerät gerechnet. Nur vier Funktionen senden Daten – und nur, wenn jemand sie benutzt.</p>
+      </div></div>
+    </div>
+    <h2 class="section-title">Diese Funktionen senden Daten</h2>
+    <div class="card settings-group" data-net-list>${rows}</div>
+    ${desk ? '<p class="muted small net-note">Das Programm selbst lädt nur die App und ihre Aktualisierungen von pdf.fale.network.</p>' : ''}
+    <h2 class="section-title">Firmen-Einstellungen</h2>
+    <div class="card card-pad it-card" data-it-card>
+      ${state ? `<p class="it-state ${src ? 'on' : ''}" data-it-state>${oicon(src ? 'checkCircle' : 'info')}<span>${state}</span></p>` : ''}
+      ${desk ? `<p>Die IT legt eine Datei auf den PC. Das Programm liest sie bei jedem Start.</p>
+      <pre class="it-code" tabindex="0" data-no-i18n><code>C:\\ProgramData\\FaLe PDF\\policy.json</code></pre>
+      <pre class="it-code" tabindex="0" data-no-i18n><code>{ "internet": false }</code></pre>
+      <p class="muted small">Das schaltet alle vier Funktionen ab. Einzeln geht es auch:</p>
+      <pre class="it-code" tabindex="0" data-no-i18n><code>{ "cloudAi": false, "cloudShare": false, "post": false, "account": false }</code></pre>
+      <p class="muted small">Installation ohne Nachfragen:</p>
+      <pre class="it-code" tabindex="0" data-no-i18n><code>FaLe-PDF-Setup.exe /S</code></pre>` : '<p class="muted small">Firmen verteilen FaLe PDF über die Richtlinien von Edge oder Chrome – oder als Windows-Programm mit einer Einstellungsdatei.</p>'}
+      <p><a class="btn btn-ghost btn-sm" href="${NETWORK_ORIGIN}/apps/pdf/unternehmen/" target="_blank" rel="noopener" data-it-guide>${oicon('link')} Anleitung für die IT</a></p>
+    </div>`;
 }
 
 function renderMeInfo(el) {

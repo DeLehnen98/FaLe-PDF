@@ -1144,7 +1144,10 @@ def page_clean(lang):
 # ================================================================= FaLe PDF für Firmen
 APP_URL = PDF_ORIGIN + '/app/'
 FORCE_JSON = '[{"url": "%s", "default_launch_container": "window", "create_desktop_shortcut": true}]' % APP_URL
-CFG_JSON = '{ "cloudAi": false, "post": false, "cloudShare": false }'
+CFG_JSON = '{ "cloudAi": false, "post": false, "cloudShare": false, "account": false }'
+WIN_SETUP_URL = 'https://github.com/DeLehnen98/FaLe-PDF/releases/download/windows-latest/FaLe-PDF-Setup.exe'
+WIN_POLICY_PATH = 'C:\\ProgramData\\FaLe PDF\\policy.json'
+WIN_POLICY_JSON = '{ "internet": false }'
 POLICY_JSON = '[{"origin": "%s", "managed_configuration_url": "https://intranet.example.com/fale-pdf.json", "managed_configuration_hash": "<SHA-256 der Datei>"}]' % PDF_ORIGIN
 BUSINESS = {
     'de': {
@@ -1158,7 +1161,7 @@ BUSINESS = {
             ('Verarbeitung auf dem Gerät', 'Anzeigen, Ausfüllen, Unterschreiben, Schwärzen, Texterkennung, Komprimieren und Umwandeln laufen im Browser auf dem jeweiligen PC. Dabei werden keine Dokumente auf unsere Server geladen.'),
             ('Ohne Konto und Lizenzschlüssel', 'Keine Anmeldung und keine Benutzerverwaltung – FaLe PDF startet sofort auf jedem Arbeitsplatz.'),
             ('Offline nutzbar', 'Nach dem ersten Start funktioniert FaLe PDF auch ohne Internetverbindung.'),
-            ('Online nur auf Wunsch', 'Nur drei Funktionen gehen über das Internet: Cloud-KI (nur mit Einwilligung), Brief per Post und Fax sowie verschlüsseltes Teilen. Jede lässt sich zentral abschalten (siehe unten).'),
+            ('Online nur auf Wunsch', 'Nur vier Funktionen gehen über das Internet: Cloud-KI (nur mit Einwilligung), Brief per Post und Fax, verschlüsseltes Teilen und das optionale FaLe-Konto. Jede lässt sich zentral abschalten (siehe unten).'),
             ('Kein Tracking', 'Keine Analyse-Tools; die Web-Version, die Sie über die Richtlinien verteilen, zeigt keine Werbung – Details in der <a href="%s">Datenschutzerklärung</a>.' % PDF_PRIVACY),
             ('Wo die Dateien liegen', 'In der Ablage von FaLe PDF im Browser-Profil der jeweiligen Person. Über „Speichern“ landen Ergebnisse als normale Datei im gewünschten Ordner, auch auf Netzlaufwerken.'),
         ],
@@ -1166,10 +1169,19 @@ BUSINESS = {
         'deploy_p': 'Ohne Installationspaket: Microsoft Edge und Google Chrome installieren FaLe PDF über eine Richtlinie auf allen PCs (Gruppenrichtlinie, Intune oder ein anderes MDM). Die Richtlinien gelten für Windows und macOS.',
         'steps': [
             ('Auf allen PCs installieren', 'Richtlinie <code>WebAppInstallForceList</code> (Edge: „Configure list of force-installed Web Apps“) mit diesem Wert setzen. FaLe PDF erscheint dann als eigenes Programm im Startmenü und auf dem Desktop.', FORCE_JSON),
-            ('Online-Funktionen abschalten (optional)', 'Legen Sie diese Datei auf einen eigenen Server (zum Beispiel im Intranet). <code>false</code> schaltet die Funktion ab: <code>cloudAi</code> = Cloud-KI, <code>post</code> = Brief per Post und Fax, <code>cloudShare</code> = verschlüsseltes Teilen und Übertragen. Die Personen sehen dann unter „Ich“ den Hinweis „Von deiner Firma eingestellt“.', CFG_JSON),
+            ('Online-Funktionen abschalten (optional)', 'Legen Sie diese Datei auf einen eigenen Server (zum Beispiel im Intranet). <code>false</code> schaltet die Funktion ab: <code>cloudAi</code> = Cloud-KI, <code>post</code> = Brief per Post und Fax, <code>cloudShare</code> = verschlüsseltes Teilen und Übertragen, <code>account</code> = FaLe-Konto. Kurzform für alle vier: <code>{ "internet": false }</code>. Die Personen sehen dann unter „Ich“ den Hinweis „Von deiner Firma eingestellt“.', CFG_JSON),
             ('Datei mit FaLe PDF verbinden', 'Richtlinie <code>ManagedConfigurationPerOrigin</code> mit der Adresse der Datei setzen. Das wirkt nur für Web-Apps, die wie in Schritt 1 installiert wurden. Ändern Sie den Hash, wenn sich die Datei ändert.', POLICY_JSON),
             ('PDFs per Doppelklick öffnen', 'Nach der Installation steht FaLe PDF unter „Öffnen mit“ zur Auswahl. Als Standard-App für PDFs legen Sie es in den Windows-Einstellungen unter „Standard-Apps“ fest.', ''),
         ],
+        'win_h': 'Oder als Windows-Programm',
+        'win_p': 'Statt über den Browser lässt sich FaLe PDF auch als kleines Windows-Programm verteilen (Setup.exe, etwa 3 MB, installiert ohne Administratorrechte in das Benutzerprofil). Es zeigt dieselbe App in einem eigenen Fenster.',
+        'win_steps': [
+            ('Ohne Nachfragen installieren', 'Die <a href="%s">Setup.exe</a> mit dem Schalter <code>/S</code> starten – zum Beispiel über Ihre Softwareverteilung oder ein Anmeldeskript.' % WIN_SETUP_URL, 'FaLe-PDF-Setup.exe /S'),
+            ('Online-Funktionen abschalten', 'Legen Sie diese Datei auf den PC (GPO-Dateiverteilung, Intune oder Softwareverteilung). Das Programm liest sie bei jedem Start. Den Ordner sollten nur Administratoren beschreiben dürfen.', WIN_POLICY_PATH),
+            ('Inhalt der Datei', '<code>{ "internet": false }</code> schaltet alles ab, was Daten sendet. Einzeln geht es mit denselben Schlüsseln wie oben: <code>cloudAi</code>, <code>post</code>, <code>cloudShare</code>, <code>account</code> – jeweils <code>false</code>. Ist die Datei vorhanden, aber fehlerhaft, schaltet das Programm vorsichtshalber alles ab und zeigt das unter „Ich“ an.', WIN_POLICY_JSON),
+            ('Prüfen', 'Im Programm unter „Ich“ → „Für Firmen &amp; IT“ steht, welche Funktionen Daten senden und was auf diesem PC abgeschaltet ist. Unten im Fenster erscheint „Firmen-Einstellungen aktiv“.', ''),
+        ],
+        'win_note': 'Gut zu wissen: Das Programm lädt die App und ihre Aktualisierungen von pdf.fale.network; Dokumente werden dabei nicht übertragen. Die Datei schaltet Funktionen im Programm ab – wer die Web-Version im Browser gezielt sperren möchte, nutzt dafür die Browser-Richtlinien oder die Firewall.',
         'einv_h': 'E-Rechnung',
         'einv_p': 'FaLe PDF öffnet XRechnung- und ZUGFeRD-Rechnungen und zeigt sie lesbar an – offline. Werkzeuge legen ihr Ergebnis als neue Datei in der Ablage an, die Rechnung selbst bleibt dort erhalten. Für die Aufbewahrung gilt: die Original-Rechnung mit den Rechnungsdaten (XML) unverändert archivieren.',
         'faq_h': 'Häufige Fragen aus der IT',
@@ -1193,7 +1205,7 @@ BUSINESS = {
             ('Processing on the device', 'Viewing, filling in, signing, redacting, text recognition, compressing and converting run in the browser on each PC. No documents are uploaded to our servers.'),
             ('No account, no licence keys', 'No sign-in and no user management – FaLe PDF starts right away on every workstation.'),
             ('Works offline', 'After the first start, FaLe PDF also works without an internet connection.'),
-            ('Online only on request', 'Only three features use the internet: cloud AI (only with consent), letters by post and fax, and encrypted sharing. Each can be switched off centrally (see below).'),
+            ('Online only on request', 'Only four features use the internet: cloud AI (only with consent), letters by post and fax, encrypted sharing and the optional FaLe account. Each can be switched off centrally (see below).'),
             ('No tracking', 'No analytics tools; the web version you deploy through the policies shows no ads – details in the <a href="%s">privacy policy</a>.' % PDF_PRIVACY),
             ('Where files are kept', 'In FaLe PDF’s file list in each person’s browser profile. “Save” writes results as normal files to any folder, including network drives.'),
         ],
@@ -1201,10 +1213,19 @@ BUSINESS = {
         'deploy_p': 'No installer package needed: Microsoft Edge and Google Chrome install FaLe PDF on every PC through a policy (Group Policy, Intune or any other MDM). The policies apply to Windows and macOS.',
         'steps': [
             ('Install on every PC', 'Set the policy <code>WebAppInstallForceList</code> (Edge: “Configure list of force-installed Web Apps”) to this value. FaLe PDF then appears as its own program in the Start menu and on the desktop.', FORCE_JSON),
-            ('Switch off online features (optional)', 'Put this file on a server of your own (for example the intranet). <code>false</code> switches a feature off: <code>cloudAi</code> = cloud AI, <code>post</code> = letters by post and fax, <code>cloudShare</code> = encrypted sharing and transfers. Under “Me”, people then see the note “Set by your organisation”.', CFG_JSON),
+            ('Switch off online features (optional)', 'Put this file on a server of your own (for example the intranet). <code>false</code> switches a feature off: <code>cloudAi</code> = cloud AI, <code>post</code> = letters by post and fax, <code>cloudShare</code> = encrypted sharing and transfers, <code>account</code> = FaLe account. Short form for all four: <code>{ "internet": false }</code>. Under “Me”, people then see the note “Set by your organisation”.', CFG_JSON),
             ('Connect the file to FaLe PDF', 'Set the policy <code>ManagedConfigurationPerOrigin</code> to the address of the file. It only applies to web apps installed as in step 1. Change the hash whenever the file changes.', POLICY_JSON.replace('<SHA-256 der Datei>', '<SHA-256 of the file>')),
             ('Open PDFs with a double-click', 'After installation, FaLe PDF is offered under “Open with”. Make it the default app for PDFs in the Windows settings under “Default apps”.', ''),
         ],
+        'win_h': 'Or as a Windows program',
+        'win_p': 'Instead of the browser, FaLe PDF can also be deployed as a small Windows program (Setup.exe, about 3 MB, installs without administrator rights into the user profile). It shows the same app in a window of its own.',
+        'win_steps': [
+            ('Install silently', 'Run the <a href="%s">Setup.exe</a> with the switch <code>/S</code> – for example from your software deployment or a logon script.' % WIN_SETUP_URL, 'FaLe-PDF-Setup.exe /S'),
+            ('Switch off online features', 'Put this file on the PC (GPO file deployment, Intune or software deployment). The program reads it at every start. Only administrators should be able to write to the folder.', WIN_POLICY_PATH),
+            ('Content of the file', '<code>{ "internet": false }</code> switches off everything that sends data. Individually, use the same keys as above: <code>cloudAi</code>, <code>post</code>, <code>cloudShare</code>, <code>account</code> – each set to <code>false</code>. If the file exists but is faulty, the program switches everything off to be safe and says so under “Me”.', WIN_POLICY_JSON),
+            ('Check', 'In the program, “Me” → “For companies &amp; IT” lists which features send data and what is switched off on this PC. “Company settings active” appears at the bottom of the window.', ''),
+        ],
+        'win_note': 'Good to know: the program loads the app and its updates from pdf.fale.network; no documents are transferred in the process. The file switches features off inside the program – to block the web version in a browser as well, use the browser policies or your firewall.',
         'einv_h': 'E-invoices',
         'einv_p': 'FaLe PDF opens XRechnung and ZUGFeRD invoices and shows them in readable form – offline. Tools add their result as a new file to the file list; the invoice itself stays there as it was. For record keeping: archive the original invoice with its invoice data (XML) unchanged.',
         'faq_h': 'Common questions from IT',
@@ -1222,6 +1243,9 @@ BUSINESS = {
 
 def page_business(lang):
     c = BUSINESS[lang]
+    win_steps = ''.join(
+        f'<li><h3>{h}</h3><p>{p}</p>' + (f'<pre class="code" tabindex="0"><code>{escape(code)}</code></pre>' if code else '') + '</li>'
+        for h, p, code in c['win_steps'])
     facts = ''.join(f'<div><dt>{h}</dt><dd>{p}</dd></div>' for h, p in c['facts'])
     steps = ''.join(
         f'<li><h3>{h}</h3><p>{p}</p>' + (f'<pre class="code" tabindex="0"><code>{escape(code)}</code></pre>' if code else '') + '</li>'
@@ -1247,6 +1271,13 @@ def page_business(lang):
     <div class="wrap">
       <div class="section-head"><h2 id="deploy-h">{c['deploy_h']}</h2><p>{c['deploy_p']}</p></div>
       <ol class="steps-admin">{steps}</ol>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="win-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="win-h">{c['win_h']}</h2><p>{c['win_p']}</p></div>
+      <ol class="steps-admin">{win_steps}</ol>
+      <p class="muted">{c['win_note']}</p>
     </div>
   </section>
   <section class="section" aria-labelledby="einv-h">

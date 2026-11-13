@@ -806,3 +806,18 @@ html .pp-tpl span:last-child, html .sh-start-act span { font-size: calc(13px * v
   .viewer .vbar-top .v-actions .icon-btn[data-cap][aria-pressed="true"]::after { color: var(--accent); }
   .viewer .vbar-top .v-actions .icon-btn[data-cap] .ic { width: 21px; height: 21px; }
 }
+
+/* „Für Firmen & IT“ (Ich) and the company card */
+.net-row { align-items: center; }
+.net-state { flex: none; font-size: var(--fs-small); font-weight: 650; color: var(--text-2); padding: 4px 10px; border-radius: var(--radius-pill); background: var(--surface-2); white-space: nowrap; }
+.net-state.off { color: var(--accent); background: var(--accent-soft); }
+.net-note { margin: 10px 4px 0; }
+.it-card p { margin: 0 0 10px; }
+.it-card p:last-child { margin-bottom: 0; }
+.it-state { display: flex; gap: 8px; align-items: flex-start; font-weight: 600; }
+.it-state .ic { flex: none; width: 20px; height: 20px; margin-top: 1px; color: var(--text-3); }
+.it-state.on .ic { color: var(--accent); }
+.it-code { margin: 0 0 10px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); border: 1px solid var(--border); font: 0.875rem/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; overflow-x: auto; user-select: all; -webkit-user-select: all; }
+.it-card code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.875em; }
+.policy-warn { color: var(--danger); font-weight: 600; }
+.me-card + .policy-card { margin-top: 12px; }
