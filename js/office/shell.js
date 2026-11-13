@@ -65,7 +65,7 @@ export function createShell(screen, opts) {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); save(); }
   };
   document.addEventListener('keydown', onKey);
-  const onUnload = e => { if (S.dirty) { e.preventDefault(); e.returnValue = ''; } };
+  const onUnload = e => { if (S.dirty && !window.__faleDesktopSignal) { e.preventDefault(); e.returnValue = ''; } };
   window.addEventListener('beforeunload', onUnload);
   screen.isDirty = () => S.dirty;
   screen.officeSave = o => save(o); // used by tests and the app's own flows

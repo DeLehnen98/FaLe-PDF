@@ -304,7 +304,7 @@ export function guardLeave(screen, isDirty, { saveBtn = null, onDiscard = null }
     })().finally(() => { asking = null; });
     return asking;
   };
-  const onUnload = e => { if (dirty()) { e.preventDefault(); e.returnValue = ''; } };
+  const onUnload = e => { if (dirty() && !passed && !window.__faleDesktopSignal) { e.preventDefault(); e.returnValue = ''; } };
   window.addEventListener('beforeunload', onUnload, { signal: screen.signal });
   const back = screen.head && screen.head.querySelector('[data-back]');
   if (!back) return;

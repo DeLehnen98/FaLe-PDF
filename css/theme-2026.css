@@ -796,3 +796,13 @@ html .pp-tpl span:last-child, html .sh-start-act span { font-size: calc(13px * v
 }
 .me-legal a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
 @media (pointer: coarse) { html .readbar .select { min-height: 44px; } }
+
+/* ---- 2026-11 Durchsicht am PC / Windows-Programm: in a wide window every button on top of the PDF view says
+   what it does (was: eleven bare icons) ---- */
+@media (min-width: 1100px) {
+  .viewer .vbar-top .v-actions { gap: 2px; }
+  .viewer .vbar-top .v-actions .icon-btn[data-cap] { flex-direction: column; gap: 2px; width: auto; min-width: 58px; height: 52px; padding: 4px 6px; }
+  .viewer .vbar-top .v-actions .icon-btn[data-cap]::after { content: attr(data-cap); font-size: 12px; font-weight: 600; line-height: 1.1; white-space: nowrap; color: var(--text-2); }
+  .viewer .vbar-top .v-actions .icon-btn[data-cap][aria-pressed="true"]::after { color: var(--accent); }
+  .viewer .vbar-top .v-actions .icon-btn[data-cap] .ic { width: 21px; height: 21px; }
+}

@@ -10,6 +10,9 @@ wenn sich dieses Programm selbst ändert.
   Vorab-Veröffentlichung `windows-latest`:
   https://github.com/DeLehnen98/FaLe-PDF/releases/download/windows-latest/FaLe-PDF-Setup.exe
 * Seiten, die nicht zur App gehören (Datenschutz-Links, andere Webseiten), öffnet das Programm im Standardbrowser.
+* Das **X** (und Alt+F4) fragt zuerst die App: bei ungespeicherter Arbeit erscheint „Änderungen speichern?“. Antwortet
+  die Seite 4 Sekunden lang nicht, schließt das Fenster trotzdem.
+* Dateien lassen sich **ins Fenster ziehen**; Größe und Platz des Fensters werden gemerkt.
 
 ## Sicherheit und „Cracks“
 

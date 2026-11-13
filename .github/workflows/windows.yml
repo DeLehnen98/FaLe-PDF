@@ -73,7 +73,19 @@ jobs:
           foreach ($d in @("Service Worker", "IndexedDB", "Local Storage")) { if (Test-Path (Join-Path $data $d)) { $seen += $d } }
           if ($seen.Count -gt 0) { Write-Host "::notice title=Windows-App geladen::WebView2-Daten vorhanden: $($seen -join ', ')" } else { Write-Host "::warning title=Windows-App geladen?::Keine WebView2-Daten unter $data gefunden" }
           Write-Host "::notice title=Windows-Smoke-Test::FaLe PDF läuft nach 25 s noch (Setup ${{ steps.out.outputs.size }} Bytes)"
-          Stop-Process -Id $app.Id -Force
+          # the window's X: the program asks the app, nothing is unsaved, so it must close on its own (within 15 s)
+          $app.Refresh()
+          $sent = $app.CloseMainWindow()
+          $closed = $app.WaitForExit(15000)
+          if ($closed) { Write-Host "::notice title=Fenster schließen::Das X schließt das Programm (Anfrage gesendet: $sent)" }
+          else { Stop-Process -Id $app.Id -Force; throw "The window did not close within 15 s after the close request (sent: $sent)" }
+          # second start: the window state file of the first run must not stop the program from starting
+          $again = Start-Process -FilePath $exe.FullName -PassThru
+          Start-Sleep -Seconds 12
+          if ($again.HasExited) { throw "FaLe PDF exited after the second start (code $($again.ExitCode))" }
+          $again.Refresh()
+          [void]$again.CloseMainWindow()
+          if (-not $again.WaitForExit(15000)) { Stop-Process -Id $again.Id -Force; throw "Second run: the window did not close within 15 s" }
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:

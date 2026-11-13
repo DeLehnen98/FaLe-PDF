@@ -346,6 +346,13 @@ async function init() {
   if (isNative()) console.info('FaLe PDF bereit (' + platformName() + ')'); // marker for the emulator/simulator tests
   // housekeeping + first-run intro (all local)
   db.purgeOldTrash(30).catch(() => {});
+  // PC with a mouse: every button that is only an icon says its name when the pointer rests on it
+  document.addEventListener('mouseover', e => {
+    const el = e.target && e.target.closest ? e.target.closest('button, a[href], [role="button"]') : null;
+    if (!el || (el.hasAttribute('title') && el.dataset.tip !== 'auto')) return;
+    const name = el.getAttribute('aria-label'); // read every time: some names change („Lesezeichen entfernen“)
+    if (name && !el.textContent.trim() && el.title !== name) { el.title = name; el.dataset.tip = 'auto'; }
+  }, { passive: true });
   import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)) // editors closed by a crash
     .then(() => import('./tools/signdraft.js')).then(m => m.offerDrafts()).catch(e => console.warn(e)); // filled in, not saved
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));

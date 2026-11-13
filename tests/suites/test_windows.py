@@ -4,6 +4,11 @@
 - legal pages open in an in-app dialog; links to other sites go to the system browser (the shell intercepts navigation)
 - no „install“ card inside the program; in Edge/Chrome on Windows the „Ich“ page offers the Setup.exe
 - the Tauri project and the build workflow are consistent (version, file types, smoke test, release)
+- the window's X asks the app first: nothing unsaved → „close“ at once; unsaved work → „wait“ + the question
+  „Änderungen speichern?“ (Abbrechen keeps the window, Verwerfen closes, a second X while asking does not close);
+  the program closes anyway when the page does not answer; files can be dragged into the window; the window
+  remembers its size
+- PC: every icon-only button names itself on hover; in a wide window the PDF view labels its buttons
 Run: node tests/suites/sec/csp_server.mjs 9202 <repo> ; python3 tests/suites/test_windows.py"""
 import base64, json, os, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -53,6 +58,14 @@ def main():
     check('no secrets in the program', not re.search(r'(sk-[A-Za-z0-9]|api[_-]?key|secret)', main_rs + json.dumps(conf), re.I))
     check('workflow: smoke test (silent install, still running after 25 s) + release windows-latest',
           '/S' in wf and 'Start-Sleep -Seconds 25' in wf and 'HasExited' in wf and 'tag_name: windows-latest' in wf and 'FaLe-PDF-Setup.exe' in wf)
+
+    check('X asks the app first, with a fallback when the page does not answer',
+          'WindowEvent::CloseRequested' in main_rs and 'api.prevent_close()' in main_rs and 'window.__faleDesktopClose' in main_rs
+          and 'CLOSE_PATIENCE' in main_rs and 'handle.exit(0)' in main_rs and 'const SIGNAL: &str = "/app/__desktop/";' in main_rs)
+    check('an error page or a page that never loaded closes directly', 'if !on_app || w.eval(CLOSE_JS).is_err()' in main_rs)
+    check('files can be dragged into the window (the app handles the drop)', '.disable_drag_drop_handler()' in main_rs)
+    check('window size and position are remembered', 'tauri_plugin_window_state::Builder::default().build()' in main_rs and 'tauri-plugin-window-state = "2"' in cargo)
+    check('workflow: the X closes the program, and it starts a second time', 'CloseMainWindow()' in wf and 'WaitForExit(15000)' in wf and 'second start' in wf)
 
     with sync_playwright() as p:
         br = p.chromium.launch()
@@ -115,6 +128,78 @@ def main():
         page.wait_for_selector('[data-me-app]', timeout=15000)
         page.wait_for_timeout(800)
         check('Mac: no Setup.exe offer', page.locator('[data-inst-exe]').count() == 0)
+        ctx.close()
+
+        # ---------------- the window's X: the program calls __faleDesktopClose(), the app answers ----------------
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(SHELL + f"window.__faleDesktopQueue = [['Mietvertrag.pdf', '{PDF}']];" + "try { localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-install-hint', '1'); localStorage.setItem('fale-hints-off', '1'); } catch (e) {}")
+        sig = []
+        # the program cancels these page changes; here they are answered with „no content“, which also keeps the page
+        ctx.route(re.compile(r'.*/app/__desktop/.*'), lambda route: (sig.append(route.request.url.rsplit('/', 1)[-1]), route.fulfill(status=204, body='')))
+        page = ctx.new_page()
+        errs = []
+        page.on('pageerror', lambda e: errs.append(str(e)))
+        page.on('console', lambda m: errs.append(m.text) if m.type == 'error' and 'Failed to load resource' not in m.text else None)
+        beforeunload = []
+        page.on('dialog', lambda d: (beforeunload.append(d.type), d.accept()))
+        page.goto(URL)
+        page.wait_for_selector('#app', timeout=30000)
+        poll(page, "location.hash.startsWith('#/ansicht/') && !document.querySelector('#viewer').hidden", 15000)
+        check('the app offers the close hook to the program', page.evaluate("typeof window.__faleDesktopClose === 'function'"))
+        r = page.evaluate('window.__faleDesktopClose()'); page.wait_for_timeout(600)
+        check('nothing unsaved: X → „close“ at once, no question', r == 'close' and sig == ['close'] and page.locator('dialog[open]').count() == 0, (r, sig))
+        check('the page is still alive after the message (the program cancels the page change)', page.evaluate("!!document.querySelector('#viewer') && typeof window.__faleDesktopClose === 'function'"))
+        # wide window: the buttons on top of the PDF say what they do; icon-only buttons name themselves on hover
+        caps = page.evaluate("""() => [...document.querySelectorAll('.viewer .vbar-top .v-actions .icon-btn')].filter(b => b.getClientRects().length).map(b => getComputedStyle(b, '::after').content.replace(/"/g, ''))""")
+        check('wide window: every button on top of the PDF view has its name', len(caps) >= 9 and all(c and c != 'none' for c in caps) and 'Drucken' in caps and 'Suchen' in caps, caps)
+        over = page.evaluate("(() => { const bar = document.querySelector('.viewer .vbar-top'); const t = bar.querySelector('.v-title').getBoundingClientRect(); return { title: Math.round(t.width), over: bar.scrollWidth - bar.clientWidth, h: Math.round(bar.getBoundingClientRect().height) }; })()")
+        check('… and the file name keeps its room', over['title'] >= 240 and over['over'] <= 0 and over['h'] <= 72, over)
+        page.locator('.viewer .vbar-bottom [data-v="zoomin"]').hover(); page.wait_for_timeout(200)
+        check('icon-only button: hover shows its name', page.evaluate("document.querySelector('.viewer .vbar-bottom [data-v=zoomin]').title") == 'Vergrößern')
+        page.set_viewport_size({'width': 900, 'height': 700}); page.wait_for_timeout(300)
+        caps = page.evaluate("""() => [...document.querySelectorAll('.viewer .vbar-top .v-actions .icon-btn')].filter(b => b.getClientRects().length).map(b => getComputedStyle(b, '::after').content)""")
+        check('medium window: icons only (names on hover), nothing squeezed', all(c == 'none' for c in caps), caps)
+        page.set_viewport_size({'width': 1280, 'height': 820})
+
+        # unsaved page order in „Seiten verwalten“
+        doc = page.evaluate("location.hash.split('/').pop()")
+        sig.clear()
+        page.evaluate(f"location.hash = '#/werkzeug/seiten?doc={doc}'")
+        page.wait_for_selector('.pcard', timeout=20000); page.wait_for_timeout(600)
+        page.locator('.pcard .icon-btn[aria-label*="drehen"]').first.click(); page.wait_for_timeout(400)
+        page.evaluate('window.__faleDesktopRes = null; window.__faleDesktopClose().then(r => { window.__faleDesktopRes = r; }); 0')
+        asked = poll(page, "!!document.querySelector('dialog[open]')", 5000)
+        t = page.locator('dialog[open]').inner_text() if asked else ''
+        check('unsaved work: X → „wait“ and the question „Änderungen speichern?“', asked and sig == ['wait'] and 'Änderungen speichern?' in t and 'Verwerfen' in t and 'Speichern' in t, (sig, t[:80]))
+        r2 = page.evaluate('window.__faleDesktopClose()'); page.wait_for_timeout(300)
+        check('a second X while the question is open: still „wait“, no close', r2 == 'wait' and 'close' not in sig and page.locator('dialog[open]').count() == 1, (r2, sig))
+        page.locator('dialog[open] button', has_text='Abbrechen').click(); page.wait_for_timeout(500)
+        check('„Abbrechen“: the window stays, the tool and the work too', page.evaluate('window.__faleDesktopRes') == 'stay' and 'close' not in sig and page.locator('.pcard').count() > 0 and 'Ungespeicherte' in page.locator('#tool-screen').inner_text(), (page.evaluate('window.__faleDesktopRes'), sig))
+        sig.clear()
+        page.evaluate('window.__faleDesktopRes = null; window.__faleDesktopClose().then(r => { window.__faleDesktopRes = r; }); 0')
+        poll(page, "!!document.querySelector('dialog[open]')", 5000)
+        page.locator('dialog[open] button', has_text='Verwerfen').click(); page.wait_for_timeout(600)
+        check('„Verwerfen“: → „close“', page.evaluate('window.__faleDesktopRes') == 'close' and sig == ['wait', 'close'], (page.evaluate('window.__faleDesktopRes'), sig))
+        check('no „leave page?“ warning of the browser gets in the way', beforeunload == [], beforeunload)
+
+        # a Word document with unsaved text: „Speichern“ saves, then closes
+        sig.clear()
+        page.evaluate("location.hash = '#/neu/dokument'")
+        opened = poll(page, "!!document.querySelector('.doc-page[contenteditable]')", 15000)
+        if not opened:
+            page.evaluate("location.hash = '#/start'"); page.wait_for_timeout(500)
+            if page.locator('dialog[open] button', has_text='Verwerfen').count(): page.locator('dialog[open] button', has_text='Verwerfen').click()
+        else:
+            page.wait_for_timeout(800)
+            page.locator('.doc-page[contenteditable]').first.click(); page.keyboard.type('Sehr geehrte Damen und Herren'); page.wait_for_timeout(500)
+            page.evaluate('window.__faleDesktopRes = null; window.__faleDesktopClose().then(r => { window.__faleDesktopRes = r; }); 0')
+            poll(page, "!!document.querySelector('dialog[open]')", 5000)
+            page.locator('dialog[open] button', has_text='Speichern').click()
+            done = poll(page, "window.__faleDesktopRes === 'close'", 8000)
+            saved = page.evaluate("async () => { const db = await import('./js/db.js'); const { getDocBytes } = await import('./js/library.js'); const d = (await db.listFiles()).filter(x => x.kind === 'docx').sort((a, b) => b.updated - a.updated)[0]; return d ? (await getDocBytes(d.id)).length : 0; }")
+            check('Word editor: „Speichern“ in the question saves the document, then → „close“', done and sig == ['wait', 'close'] and saved > 1000, (done, sig, saved))
+        check('editor route for the close test opened', opened)
+        check('no console errors (closing the window)', not errs, errs[:4])
         ctx.close()
         br.close()
 

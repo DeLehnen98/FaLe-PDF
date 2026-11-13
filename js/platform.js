@@ -519,6 +519,42 @@ function setupIncomingDesktop() {
   };
   window.__faleDesktopOpen = drain;
   drain();
+  setupDesktopClose();
+}
+
+// The window's X (and Alt+F4) asks the app first: with unsaved work the same question appears as everywhere else
+// („Änderungen speichern?“) instead of the window closing and the work being gone. The shell calls
+// __faleDesktopClose(); the answer goes back as a page change the shell catches and cancels:
+// …/app/__desktop/wait = „I am asking“, …/app/__desktop/close = „close now“ (windows/src-tauri/src/main.rs –
+// without an answer within a few seconds the shell closes anyway, so a stuck page never blocks the X).
+function setupDesktopClose() {
+  const signal = cmd => {
+    window.__faleDesktopSignal = true; // „leave page?“ warnings stay quiet for this message to the shell
+    if (cmd !== 'close') setTimeout(() => { window.__faleDesktopSignal = false; }, 1500);
+    location.href = location.origin + '/app/__desktop/' + cmd;
+  };
+  let asking = false;
+  window.__faleDesktopClose = async () => {
+    if (asking) { signal('wait'); return 'wait'; }
+    asking = true;
+    try {
+      const { currentScreen } = await import('./screen.js');
+      const scr = currentScreen();
+      let dirty = false;
+      try { dirty = !!(scr && scr.isDirty && scr.isDirty()); } catch { /* treat as clean */ }
+      if (!dirty) { signal('close'); return 'close'; }
+      signal('wait');
+      const ok = scr.confirmLeave ? await scr.confirmLeave() : await (await import('./office/open.js')).confirmLeave(scr);
+      if (!ok) return 'stay';
+      scr.isDirty = () => false;
+      signal('close');
+      return 'close';
+    } catch (e) {
+      console.warn('Fenster schließen', e);
+      signal('close');
+      return 'close';
+    } finally { asking = false; }
+  };
 }
 
 function setupIncomingWeb() {
