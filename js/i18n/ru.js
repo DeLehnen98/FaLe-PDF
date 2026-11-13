@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Вкладки» – вид, созданный для Windows. «Классический» выглядит как FaLe PDF в браузере.",
   "Register": "Вкладки",
   "Klassisch": "Классический",
+  "„{0}“ enthält keine Seiten.": "«{0}» не содержит ни одной страницы.",
 };
 
 export const defaultValues = {

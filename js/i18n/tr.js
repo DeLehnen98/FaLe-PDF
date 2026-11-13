@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Sekmeler” Windows için hazırlanan görünümdür. “Klasik”, tarayıcıdaki FaLe PDF gibi görünür.",
   "Register": "Sekmeler",
   "Klassisch": "Klasik",
+  "„{0}“ enthält keine Seiten.": "“{0}” hiç sayfa içermiyor.",
 };
 
 export const defaultValues = {

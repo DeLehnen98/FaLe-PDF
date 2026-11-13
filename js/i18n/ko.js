@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘탭’은 Windows용으로 만든 모양입니다. ‘클래식’은 브라우저의 FaLe PDF와 같은 모양입니다.",
   "Register": "탭",
   "Klassisch": "클래식",
+  "„{0}“ enthält keine Seiten.": "‘{0}’에 페이지가 없습니다.",
 };
 
 export const defaultValues = {

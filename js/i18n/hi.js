@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“टैब” Windows के लिए बनाया गया रूप है। “क्लासिक” ब्राउज़र के FaLe PDF जैसा दिखता है।",
   "Register": "टैब",
   "Klassisch": "क्लासिक",
+  "„{0}“ enthält keine Seiten.": "“{0}” में कोई पृष्ठ नहीं है।",
 };
 
 export const defaultValues = {

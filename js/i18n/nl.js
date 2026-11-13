@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘Tabbladen’ is het uiterlijk voor Windows. ‘Klassiek’ ziet eruit als FaLe PDF in de browser.",
   "Register": "Tabbladen",
   "Klassisch": "Klassiek",
+  "„{0}“ enthält keine Seiten.": "‘{0}’ bevat geen pagina’s.",
 };
 
 export const defaultValues = {

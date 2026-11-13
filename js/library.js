@@ -30,6 +30,8 @@ export async function importPdf(input, { name, source = 'Gerät', silent = false
 
   const id = db.uid();
   const { pdf, password } = await loadPdf(buf, { name: finalName, key: id });
+  // a PDF without a single page cannot be shown or worked on – say so instead of an endless „wird geladen“
+  if (!(pdf.numPages >= 1)) { try { pdf.destroy(); } catch { /* already gone */ } throw new UserError(`„${finalName}“ enthält keine Seiten.`); }
   try {
     let thumb = null;
     try { thumb = await thumbnailBlob(pdf); } catch (e) { console.warn('thumbnail', e); }

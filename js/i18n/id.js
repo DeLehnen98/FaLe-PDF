@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Tab” adalah tampilan khusus untuk Windows. “Klasik” terlihat seperti FaLe PDF di browser.",
   "Register": "Tab",
   "Klassisch": "Klasik",
+  "„{0}“ enthält keine Seiten.": "“{0}” tidak berisi halaman.",
 };
 
 export const defaultValues = {

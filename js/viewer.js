@@ -905,6 +905,7 @@ async function openViewerInner(id, { page = null, query = null, read = false, pr
     if (!blob) throw Object.assign(new Error('missing'), { userMessage: 'Die Datei fehlt im Speicher.' });
     const buf = await blob.arrayBuffer();
     ({ pdf } = await loadPdf(buf, { name: doc.name, key: id }));
+    if (!(pdf.numPages >= 1)) { try { pdf.destroy(); } catch { /* already gone */ } throw Object.assign(new Error('no pages'), { userMessage: `„${doc.name}“ enthält keine Seiten.` }); }
   } catch (e) {
     if (token !== openToken) return;
     errorToast(e, 'Das Dokument konnte nicht geöffnet werden.');

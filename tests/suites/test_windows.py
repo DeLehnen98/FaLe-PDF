@@ -239,6 +239,15 @@ def main():
         check('no sideways or page scrolling in the default window', L['hs'] <= 0 and L['vs'] <= 0, (L['hs'], L['vs']))
         inner = page.evaluate("(() => { const d = document.createElement('div'); d.className = 'doc-page'; const a = document.createElement('h1'), b = document.createElement('h2'); a.textContent = 'x'; b.textContent = 'y'; d.append(a, b); document.body.appendChild(d); const r = [a, b].map(e => getComputedStyle(e).fontFamily + '|' + getComputedStyle(e).fontStretch); d.replaceWith(); return r; })()")
         check('headings inside a document keep their own type (the look never changes what is in a file)', all('Bahnschrift' not in x and x.endswith('|100%') for x in inner), inner)
+        # keyboard: every stop shows where the focus is (the flat look must not swallow the focus ring)
+        page.evaluate("document.querySelector('.sidebar .brand').focus()")
+        rings = []
+        for _ in range(14):
+            page.keyboard.press('Tab'); page.wait_for_timeout(40)
+            rings.append(page.evaluate("(() => { const e = document.activeElement; const s = getComputedStyle(e); return [e.className.toString().split(' ').slice(0, 2).join('.') || e.tagName, s.boxShadow !== 'none' || (s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0)]; })()"))
+        check('keyboard focus is visible on tabs, buttons, the search field and the lists', len(rings) == 14 and all(r[1] for r in rings), [r for r in rings if not r[1]] or rings[:3])
+        tipbtn = page.evaluate("(() => { const d = document.createElement('div'); d.className = 'ftip'; const f = document.createElement('div'); f.className = 'ftip-foot'; const b = document.createElement('button'); b.className = 'btn btn-ghost btn-sm'; b.textContent = 'x'; f.append(b); d.append(f); document.body.append(d); const s = getComputedStyle(b); const r = [s.backgroundColor, s.color]; d.replaceWith(); return r; })()")
+        check('tip bubble: „Keine Tipps mehr“ stays light text on the dark bubble', tipbtn[0] in ('rgba(0, 0, 0, 0)', 'transparent') and tipbtn[1] != 'rgb(20, 24, 43)', tipbtn)
         # the colour of the tab follows the area
         cols = {}
         for nav in ('start', 'dateien', 'werkzeuge', 'suche', 'einstellungen'):
@@ -296,6 +305,16 @@ def main():
         page.locator('[data-winui-opt="on"]').click()
         page.wait_for_load_state('load'); page.wait_for_selector('#app', timeout=30000); page.wait_for_timeout(1500)
         check('„Register“: the Windows look is back', 'win-ui' in page.evaluate('document.documentElement.className').split())
+        # a PDF without a single page (the old test file of the build): a clear message, no endless „wird geladen“
+        empty = base64.b64encode(b"%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[]/Count 0>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n").decode()
+        n_before = page.evaluate("async () => (await (await import('./js/db.js')).listFiles()).length")
+        page.evaluate("location.hash = '#/start'"); page.wait_for_timeout(400)
+        page.evaluate(f"(window.__faleDesktopQueue = window.__faleDesktopQueue || []).push(['leer.pdf', '{empty}']); window.__faleDesktopOpen();")
+        said = poll(page, "/enthält keine Seiten/.test((document.querySelector('#toasts') || document.body).innerText)", 8000)
+        page.wait_for_timeout(600)
+        st = page.evaluate("async () => ({ n: (await (await import('./js/db.js')).listFiles()).length, viewer: !document.querySelector('#viewer').hidden, hash: location.hash })")
+        check('PDF without pages: „… enthält keine Seiten“, nothing imported, no endless loading', said and st['n'] == n_before and not st['viewer'], (said, st))
+        errs[:] = [e for e in errs if 'Invalid page request' not in e and 'keine Seiten' not in e]
         check('no console errors (Windows look)', not errs, errs[:4])
         ctx.close()
 

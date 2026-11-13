@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "「タブ」は Windows 用の外観です。「クラシック」はブラウザーの FaLe PDF と同じ外観です。",
   "Register": "タブ",
   "Klassisch": "クラシック",
+  "„{0}“ enthält keine Seiten.": "「{0}」にはページがありません。",
 };
 
 export const defaultValues = {

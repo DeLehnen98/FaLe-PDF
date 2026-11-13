@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“标签页”是为 Windows 设计的外观。“经典”与浏览器中的 FaLe PDF 外观相同。",
   "Register": "标签页",
   "Klassisch": "经典",
+  "„{0}“ enthält keine Seiten.": "“{0}”不包含任何页面。",
 };
 
 export const defaultValues = {

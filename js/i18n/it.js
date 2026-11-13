@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Schede» è l'aspetto pensato per Windows. «Classico» è come FaLe PDF nel browser.",
   "Register": "Schede",
   "Klassisch": "Classico",
+  "„{0}“ enthält keine Seiten.": "«{0}» non contiene pagine.",
 };
 
 export const defaultValues = {

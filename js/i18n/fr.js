@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "« Onglets » est l'apparence conçue pour Windows. « Classique » ressemble à FaLe PDF dans le navigateur.",
   "Register": "Onglets",
   "Klassisch": "Classique",
+  "„{0}“ enthält keine Seiten.": "« {0} » ne contient aucune page.",
 };
 
 export const defaultValues = {

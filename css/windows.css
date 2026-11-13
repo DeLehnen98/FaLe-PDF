@@ -94,8 +94,6 @@ html.win-ui .brand-name, html.win-ui .brand b { font-weight: 600; }
 /* ---------- controls: crisp, like things on a desk ---------- */
 html.win-ui .btn { border-radius: var(--radius-sm); font-weight: 600; letter-spacing: 0; }
 html.win-ui .btn-primary { box-shadow: none; }
-html.win-ui .btn-ghost, html.win-ui .btn-secondary { border: 1px solid var(--border-strong); background: var(--surface); box-shadow: none; }
-html.win-ui .btn-ghost:hover, html.win-ui .btn-secondary:hover { background: var(--surface-2); border-color: var(--text-3); }
 html.win-ui .card { border-radius: var(--radius); box-shadow: none; border: 1px solid var(--border); }
 html.win-ui .input, html.win-ui .select, html.win-ui textarea.input { border-radius: var(--radius-sm); border-color: var(--border-strong); box-shadow: none; }
 html.win-ui .icon-btn { border-radius: var(--radius-sm); }
@@ -253,3 +251,11 @@ html.win-ui .screen-head h1 { font-size: 1.25rem; font-weight: 600; }
 /* style previews of the Word editor show document colours – they stay on paper, also in the dark look */
 html.win-ui .w-gallery .w-sty { background: var(--w-paper); color: var(--w-paper-text); }
 html.win-ui .panel-empty { color: var(--text-2); }
+
+/* thin scroll bars that belong to the sheet */
+html.win-ui .main, html.win-ui .screen-body, html.win-ui dialog, html.win-ui .menu { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+
+/* keyboard focus stays visible on everything this file flattened (must stay the last block) */
+html.win-ui :is(.btn, .icon-btn, .card, .nav-link, .tile, .create-btn, .lt-chip, .doc-open, .rs-card, .tab):focus-visible,
+html.win-ui #view-start .home-side :is(.tile, .create-btn, .lt-chip):focus-visible { outline: none; box-shadow: var(--focus); }
+html.win-ui :is(.input, .select):focus, html.win-ui :is(.top-search, .search-box) .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent); }

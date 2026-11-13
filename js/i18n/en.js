@@ -7422,6 +7422,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Tabs” is the look made for Windows. “Classic” looks like FaLe PDF in the browser.",
   "Register": "Tabs",
   "Klassisch": "Classic",
+  "„{0}“ enthält keine Seiten.": "“{0}” has no pages.",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

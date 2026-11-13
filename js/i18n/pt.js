@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Separadores» é o aspeto feito para o Windows. «Clássico» é igual ao FaLe PDF no navegador.",
   "Register": "Separadores",
   "Klassisch": "Clássico",
+  "„{0}“ enthält keine Seiten.": "«{0}» não contém páginas.",
 };
 
 export const defaultValues = {

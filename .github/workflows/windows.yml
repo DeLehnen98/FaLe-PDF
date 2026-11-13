@@ -63,7 +63,8 @@ jobs:
           if (-not $exe) { throw "Installed program not found" }
           Write-Host "Installed: $($exe.FullName)"
           $pdf = Join-Path $env:RUNNER_TEMP "test.pdf"
-          Set-Content -Path $pdf -Value "%PDF-1.4`n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[]/Count 0>>endobj`ntrailer<</Root 1 0 R>>`n%%EOF" -Encoding ascii
+          $stream = "BT /F1 28 Tf 72 740 Td (FaLe PDF - Testseite) Tj ET"
+          Set-Content -Path $pdf -Value "%PDF-1.4`n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj`n2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj`n3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]/Resources<</Font<</F1<</Type/Font/Subtype/Type1/BaseFont/Helvetica>>>>>>/Contents 4 0 R>>endobj`n4 0 obj<</Length $($stream.Length)>>stream`n$stream`nendstream endobj`ntrailer<</Root 1 0 R>>`n%%EOF" -Encoding ascii
           $app = Start-Process -FilePath $exe.FullName -ArgumentList "`"$pdf`"" -PassThru
           Start-Sleep -Seconds 25
           if ($app.HasExited) { throw "FaLe PDF exited after start (code $($app.ExitCode))" }

@@ -7401,6 +7401,7 @@ export default {
   "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Pestañas» es el aspecto pensado para Windows. «Clásico» se ve como FaLe PDF en el navegador.",
   "Register": "Pestañas",
   "Klassisch": "Clásico",
+  "„{0}“ enthält keine Seiten.": "«{0}» no contiene ninguna página.",
 };
 
 export const defaultValues = {
