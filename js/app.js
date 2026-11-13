@@ -79,16 +79,16 @@ async function route() {
   const gen = ++routeGen;
   const stale = () => gen !== routeGen;
   closeMenus();
-  // leaving an office editor with unsaved changes?
+  // leaving an editor or a tool with unsaved changes? (arrow, phone back button, any link – all end up here)
   const scr = currentScreen();
   if (scr && scr.isDirty && scr.isDirty() && scr.hashKey && location.hash !== scr.hashKey) {
     if (guardBusy) return;
     guardBusy = true;
     const target = location.hash;
     history.pushState(null, '', scr.hashKey);
-    const { confirmLeave } = await import('./office/open.js');
-    const ok = await confirmLeave(scr);
-    guardBusy = false;
+    let ok = false;
+    try { ok = scr.confirmLeave ? await scr.confirmLeave() : await (await import('./office/open.js')).confirmLeave(scr); }
+    finally { guardBusy = false; }
     if (!ok) return;
     scr.isDirty = () => false;
     location.hash = target;
@@ -346,7 +346,8 @@ async function init() {
   if (isNative()) console.info('FaLe PDF bereit (' + platformName() + ')'); // marker for the emulator/simulator tests
   // housekeeping + first-run intro (all local)
   db.purgeOldTrash(30).catch(() => {});
-  import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)); // editors closed by a crash
+  import('./office/recovery.js').then(m => m.offerRecovery()).catch(e => console.warn(e)) // editors closed by a crash
+    .then(() => import('./tools/signdraft.js')).then(m => m.offerDrafts()).catch(e => console.warn(e)); // filled in, not saved
   import('./extras/onboarding.js').then(m => m.maybeShowOnboarding()).catch(e => console.warn(e));
   import('./monetize.js').then(m => m.watchProMark()).catch(() => {});
   import('./hints.js').then(m => m.initHints()).catch(e => console.warn(e)); // Tipps beim ersten Besuch (one bubble at a time)

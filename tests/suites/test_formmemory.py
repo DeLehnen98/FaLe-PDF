@@ -179,9 +179,9 @@ def run(p):
         tb.click(); page.keyboard.press('Control+A'); page.keyboard.type('Notiz: erledigt')
         box = page_box(page)
         page.mouse.click(box['x'] + 5, box['y'] + 5)
-        f, path = save_and_get(page, r'^Anmeldung \(unterschrieben\)\.pdf$')
+        f, path = save_and_get(page, r'^Anmeldung \(unterschrieben\) 2\.pdf$')  # a name of its own – no twins in the list
         names = [x['name'] for x in page.evaluate(FILES)]
-        check('second save: same name, no doubled suffix', not any('(unterschrieben) (' in n for n in names) and f is not None, names)
+        check('second save: numbered name, no doubled suffix', not any('(unterschrieben) (' in n for n in names) and f is not None and len(set(names)) == len(names), names)
         if f:
             txt = subprocess.run(['pdftotext', path, '-'], capture_output=True, text=True).stdout
             check('second save: new values visible, old ones gone', 'Erika Muster-Neu' in txt and 'Notiz: erledigt' in txt and 'Erika Musterfrau' not in txt and 'bis Freitag' not in txt, txt[:300])
@@ -273,7 +273,7 @@ def run(p):
             open_sign(page, st['id2'])
             page.locator('.screen-foot [data-memory]').uncheck()
             page.locator('.form-panel input[data-fi]').first.fill('Erika Final')
-            f2, p2 = save_and_get(page, r'^Anmeldung \(unterschrieben\)\.pdf$')
+            f2, p2 = save_and_get(page, r'^Anmeldung \(unterschrieben\) \d+\.pdf$')
             raw = raw_text(p2) if f2 else ''
             check('option switched off: memory and old entries removed from the file', f2 and '/FaLePlus' not in raw and 'Muster-Neu' not in raw and 'Erika Final' in subprocess.run(['pdftotext', p2, '-'], capture_output=True, text=True).stdout)
     step('without memory', without_memory)

@@ -392,7 +392,9 @@ def desktop(p):
         page.mouse.up()
         shot(page, 'desktop_sign_pad')
         page.locator('dialog .btn-primary').click()
-        page.wait_for_timeout(400)
+        # the drawn signature is stored first – then the tool asks for the place
+        page.wait_for_function("() => !document.querySelector('dialog[open]') && document.querySelector('.sign-page.placing') && /Unterschrift erscheinen soll/.test(document.querySelector('#tool-screen').innerText)", timeout=10000)
+        page.wait_for_timeout(300)
         page.mouse.click(box['x'] + box['width'] * 0.35, box['y'] + 420)
         page.wait_for_selector('.s-item.s-image', timeout=5000)
         check('signature placed', page.locator('.s-item.s-image').count() == 1)
@@ -439,7 +441,13 @@ def desktop(p):
         bx = page.locator('.sign-page').first.bounding_box()
         page.mouse.click(bx['x'] + 200, bx['y'] + 300)
         check('saved signature placed', page.locator('.s-item.s-image').count() == 1)
+        # leaving with an unsaved signature asks first (js/tools/common.js guardLeave)
         goto_hash(page, '#/start')
+        page.wait_for_selector('dialog[open]', timeout=5000)
+        check('leaving unsaved entries asks first', 'Änderungen speichern?' in page.locator('dialog[open]').inner_text())
+        page.locator('dialog[open] button', has_text='Verwerfen').click()
+        page.wait_for_timeout(500)
+        check('„Verwerfen“ leaves the tool', page.evaluate('location.hash') == '#/start' and page.locator('#tool-screen').is_hidden())
     step('sign', sign)
 
     # ---- compress
@@ -692,6 +700,13 @@ def phone(p):
         check('phone move reorders', 'S. 2' in page.locator('.pcard').first.locator('.pcard-num').inner_text())
         page.wait_for_timeout(500)
         shot(page, 'phone_organize')
+        # the moved page is not saved: the phone's back button asks first, „Verwerfen“ leaves
+        page.evaluate("import('./js/platform.js').then(m => m.handleBackButton({ canGoBack: true }))")
+        page.wait_for_selector('dialog[open]', timeout=5000)
+        check('phone: back with unsaved page order asks first', 'Änderungen speichern?' in page.locator('dialog[open]').inner_text())
+        page.locator('dialog[open] button', has_text='Verwerfen').tap()
+        page.wait_for_timeout(500)
+        check('phone: „Verwerfen“ closes the tool', page.locator('#tool-screen').is_hidden() and page.locator('dialog[open]').count() == 0)
     step('phone organize', organize)
 
     def sign():

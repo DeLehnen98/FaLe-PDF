@@ -133,7 +133,8 @@ export function resultCard(doc, { title = 'Fertig', note = '', from = null } = {
   const el = h(`<div class="card result-card" role="status">
     ${thumbHtml(doc)}
     <div class="grow"><div class="result-title">${icon('check')} ${esc(title)}</div>
-      <div class="doc-name">${esc(doc.name)}</div><div class="doc-meta">${docMeta(doc)}${note ? ' · ' + esc(note) : ''}</div></div>
+      <div class="doc-name">${esc(doc.name)}</div><div class="doc-meta">${docMeta(doc)}${note ? ' · ' + esc(note) : ''}</div>
+      <div class="result-where">${icon('folder')}<span>${from && from !== doc.id ? 'Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.' : 'Gespeichert unter „Dateien“.'}</span></div></div>
     <div class="actions">
       <button class="btn btn-primary btn-sm" type="button" data-r="open">${icon('open')} Öffnen</button>
       <button class="btn btn-ghost btn-sm" type="button" data-r="dl">${icon('download')} Herunterladen</button>

@@ -16,7 +16,7 @@ import { resultCard } from '../components.js';
 import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, pdfjsLib } from '../pdfcore.js';
 import { loadPdfLib, saveDoc } from '../pdflib.js';
-import { ensureCss, updateFoot } from './common.js';
+import { ensureCss, updateFoot, guardLeave } from './common.js';
 import { guardLinks } from '../security.js';
 import { isNative, printPdf } from '../platform.js';
 import { needsUnicode, fontForText, cleanText, drawTextImage } from '../office/unifont.js';
@@ -192,6 +192,7 @@ export async function mount(screen, { docId }) {
   const printBtn = h(`<button class="btn btn-ghost" type="button" aria-label="Drucken">${icon('print')}</button>`);
   const foot = () => { if (alive) updateFoot(screen, [printBtn, flatBtn, saveBtn], dirty ? 'Ungespeicherte Änderungen' : ''); };
   foot();
+  guardLeave(screen, () => dirty, { saveBtn });
   const result = screen.body.querySelector('[data-result]');
   const showResult = (rdoc, note) => {
     result.innerHTML = '';

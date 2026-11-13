@@ -441,7 +441,7 @@ export async function mount(screen, { docId }) {
     finally { prog.done(); saveBtn.disabled = !fields.length; }
   });
 
-  guardLeave(screen, () => fields.length > 0 && snapshot() !== savedSnapshot);
+  guardLeave(screen, () => fields.length > 0 && snapshot() !== savedSnapshot, { saveBtn });
   setTool('select');
   updateButtons();
 

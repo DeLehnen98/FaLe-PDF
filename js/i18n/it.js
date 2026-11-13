@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Cifrato nella cassaforte",
   "Stern setzen": "Aggiungi stella",
   "Stern entfernen": "Togli stella",
+  "Links drehen": "Ruota a sinistra",
+  "Rechts drehen": "Ruota a destra",
+  "Gespeichert unter „Dateien“.": "Salvato in «File».",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Salvato in «File». Il tuo originale resta com’era.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "I dati inseriti prima sono di nuovo qui: controllali e salva.",
+  "Nicht gespeicherte Einträge gefunden": "Trovati dati non salvati",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Hai compilato qualcosa ma non l'hai ancora salvato. I tuoi dati sono ancora qui.",
+  "Weiter ausfüllen": "Continua a compilare",
 };
 
 export const defaultValues = {

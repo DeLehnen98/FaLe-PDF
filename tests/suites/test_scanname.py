@@ -173,7 +173,8 @@ def run(p):
     check('a typed name is kept', n == 'Meine Rechnung.pdf', n)
 
     n, ph, _ = scan(pg, ['rechnung.jpg'], ocr=False)
-    check('text recognition off → hint and name "Scan <date>"', ph == f'Scan {today}' and n == f'Scan {today}.pdf', (ph, n))
+    # the second scan of the day gets a name of its own (no two files with the same name in the list)
+    check('text recognition off → hint and name "Scan <date>" (numbered, as one exists already)', ph == f'Scan {today}' and n == f'Scan {today} 2.pdf', (ph, n))
     pg.locator('[data-ocr]').set_checked(True)
     check('phone: no page overflow', pg.evaluate('document.documentElement.scrollWidth') <= 391)
 

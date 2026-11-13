@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Chiffré dans le coffre-fort",
   "Stern setzen": "Ajouter une étoile",
   "Stern entfernen": "Retirer l’étoile",
+  "Links drehen": "Pivoter à gauche",
+  "Rechts drehen": "Pivoter à droite",
+  "Gespeichert unter „Dateien“.": "Enregistré dans « Fichiers ».",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Enregistré dans « Fichiers ». Ton original reste tel quel.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Vos saisies de tout à l'heure sont de retour – vérifiez-les puis enregistrez.",
+  "Nicht gespeicherte Einträge gefunden": "Saisies non enregistrées trouvées",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Vous avez rempli quelque chose sans l'enregistrer. Vos saisies sont toujours là.",
+  "Weiter ausfüllen": "Continuer à remplir",
 };
 
 export const defaultValues = {

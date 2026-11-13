@@ -7408,6 +7408,15 @@ export default {
   "Verschlüsselt im Tresor": "Encrypted in the vault",
   "Stern setzen": "Add star",
   "Stern entfernen": "Remove star",
+  // whole-app review (2026-11)
+  "Links drehen": "Rotate left",
+  "Rechts drehen": "Rotate right",
+  "Gespeichert unter „Dateien“.": "Saved under “Files”.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Saved under “Files”. Your original stays as it was.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Your entries from before are back – please check them and save.",
+  "Nicht gespeicherte Einträge gefunden": "Unsaved entries found",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "You filled something in but did not save it yet. Your entries are still here.",
+  "Weiter ausfüllen": "Continue filling in",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

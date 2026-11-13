@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Versleuteld in de kluis",
   "Stern setzen": "Ster toevoegen",
   "Stern entfernen": "Ster verwijderen",
+  "Links drehen": "Linksom draaien",
+  "Rechts drehen": "Rechtsom draaien",
+  "Gespeichert unter „Dateien“.": "Opgeslagen onder ‘Bestanden’.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Opgeslagen onder ‘Bestanden’. Je origineel blijft zoals het was.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Je invoer van daarnet is terug – controleer en sla op.",
+  "Nicht gespeicherte Einträge gefunden": "Niet-opgeslagen invoer gevonden",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Je hebt iets ingevuld, maar nog niet opgeslagen. Je invoer is er nog.",
+  "Weiter ausfüllen": "Verder invullen",
 };
 
 export const defaultValues = {

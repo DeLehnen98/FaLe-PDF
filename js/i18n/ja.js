@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "金庫で暗号化済み",
   "Stern setzen": "スターを付ける",
   "Stern entfernen": "スターを外す",
+  "Links drehen": "左に回転",
+  "Rechts drehen": "右に回転",
+  "Gespeichert unter „Dateien“.": "「ファイル」に保存しました。",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "「ファイル」に保存しました。元のファイルはそのままです。",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "先ほどの入力内容が復元されました。確認して保存してください。",
+  "Nicht gespeicherte Einträge gefunden": "未保存の入力が見つかりました",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "入力した内容がまだ保存されていません。入力内容は残っています。",
+  "Weiter ausfüllen": "入力を続ける",
 };
 
 export const defaultValues = {

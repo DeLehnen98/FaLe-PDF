@@ -354,7 +354,7 @@ export async function mount(screen, opts = {}) {
       P.innerHTML = `<div class="it-opts">
         <div class="it-row it-wrap"><div class="seg" role="group" aria-label="Seitenverhältnis">${[['0', 'Frei'], ['1', '1:1'], ['1.3333', '4:3'], ['1.5', '3:2'], ['1.7778', '16:9'], ['0.7071', 'A4']].map(([v, l]) => `<button type="button" data-ratio="${v}" aria-pressed="${v === '0'}">${l}</button>`).join('')}</div></div>
         <label class="pt-range it-range"><span>Begradigen</span><input type="range" name="angle" min="-15" max="15" step="0.5" value="0"><b data-v="angle">0°</b></label>
-        <div class="it-row"><button class="btn btn-ghost btn-sm" type="button" data-rot="-90">${icon('rotateLeft')} Links</button><button class="btn btn-ghost btn-sm" type="button" data-rot="90">${icon('rotate')} Rechts</button><button class="btn btn-ghost btn-sm" type="button" data-flip>${icon('compare')} Spiegeln</button></div>
+        <div class="it-row"><button class="btn btn-ghost btn-sm" type="button" data-rot="-90">${icon('rotateLeft')} Links drehen</button><button class="btn btn-ghost btn-sm" type="button" data-rot="90">${icon('rotate')} Rechts drehen</button><button class="btn btn-ghost btn-sm" type="button" data-flip>${icon('compare')} Spiegeln</button></div>
         ${applyRow('Zuschnitt anwenden')}</div>`;
       P.querySelectorAll('[data-ratio]').forEach(b => b.addEventListener('click', () => {
         P.querySelectorAll('[data-ratio]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));

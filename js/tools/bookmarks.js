@@ -227,7 +227,7 @@ export async function mount(screen, { docId }) {
     finally { prog.done(); render(); }
   });
 
-  guardLeave(screen, () => JSON.stringify(list) !== saved);
+  guardLeave(screen, () => JSON.stringify(list) !== saved, { saveBtn });
   render();
   preview(list[0] ? list[0].page : 1);
   void original;

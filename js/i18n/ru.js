@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Зашифровано в сейфе",
   "Stern setzen": "Отметить звёздочкой",
   "Stern entfernen": "Убрать звёздочку",
+  "Links drehen": "Повернуть влево",
+  "Rechts drehen": "Повернуть вправо",
+  "Gespeichert unter „Dateien“.": "Сохранено в разделе «Файлы».",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Сохранено в разделе «Файлы». Твой оригинал остаётся без изменений.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Ваши прежние записи снова здесь – проверьте их и сохраните.",
+  "Nicht gespeicherte Einträge gefunden": "Найдены несохранённые записи",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Вы что-то заполнили, но ещё не сохранили. Ваши записи всё ещё здесь.",
+  "Weiter ausfüllen": "Продолжить заполнение",
 };
 
 export const defaultValues = {

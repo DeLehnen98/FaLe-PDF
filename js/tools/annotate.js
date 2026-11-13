@@ -730,7 +730,7 @@ export async function mount(screen, { docId }) {
     stageEl.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  guardLeave(screen, () => annots.length > 0 && JSON.stringify(annots) !== savedSnapshot);
+  guardLeave(screen, () => annots.length > 0 && JSON.stringify(annots) !== savedSnapshot, { saveBtn });
   setTool('highlight');
   updateButtons();
   stage.pages.forEach(p => renderPage(p.num));

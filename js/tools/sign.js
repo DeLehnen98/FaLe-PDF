@@ -6,7 +6,8 @@ import { resultCard } from '../components.js';
 import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, renderPage } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
-import { updateFoot, ensureCss, hexToRgb } from './common.js';
+import { updateFoot, ensureCss, hexToRgb, guardLeave } from './common.js';
+import * as drafts from './signdraft.js';
 import { formatSpec, ruleFor, problem } from './formcheck.js';
 import { pickAsset } from './sigstore.js';
 import { needsUnicode, uniFont, drawTextImage } from '../office/unifont.js';
@@ -762,24 +763,64 @@ export async function mount(screen, { docId, params }) {
     dirty = content && rev !== savedRev;
     saveBtn.disabled = !dirty;
     updateFoot(screen, [memBox, saveBtn], dirty ? 'Ungespeicherte Änderungen' : (content && rev === savedRev ? 'Gespeichert' : ''));
+    if (!initial && draftOn) { clearTimeout(draftTimer); draftTimer = setTimeout(writeDraft, 700); }
   }
-  markDirty(true);
-
-  if (memory) {
-    const flat = panel && $('[data-flatten]', panel);
-    if (flat) flat.checked = memory.flat !== false;
-    for (const it of memory.items || []) {
+  // ---- unsaved entries survive a closed or killed app (js/tools/signdraft.js) ----
+  let draftOn = false, draftTimer = 0;
+  const draftData = () => ({
+    name: doc.name, size: doc.size || 0, pages: pdf.numPages, flat: flatOn(),
+    fields: fields.filter(f => f.type !== 'sig' && f.value !== f.initial).map(f => [f.name, f.value]),
+    items: items.map(it => it.kind === 'text' ? (it.text && it.text.trim() ? { kind: 'text', page: it.page, x: it.x, y: it.y, fontSize: it.fontSize, color: it.color, text: it.text } : null)
+      : it.kind === 'mark' ? { kind: 'mark', page: it.page, x: it.x, y: it.y, size: it.size, color: it.color, sym: it.sym }
+        : it.sig && it.sig.blob ? { kind: 'image', page: it.page, x: it.x, y: it.y, w: it.w, h: it.h, sw: it.sig.w, sh: it.sig.h, sigField: it.sigField || null, blob: it.sig.blob } : null).filter(Boolean),
+  });
+  function writeDraft() {
+    clearTimeout(draftTimer); draftTimer = 0;
+    if (!draftOn) return null;
+    return dirty ? drafts.putDraft(docId, draftData()) : drafts.dropDraft(docId);
+  }
+  const onHide = () => { if (document.visibilityState === 'hidden' && draftTimer) writeDraft(); };
+  document.addEventListener('visibilitychange', onHide, { signal: screen.signal });
+  window.addEventListener('pagehide', onHide, { signal: screen.signal });
+  /** Put entries back on the pages (from the form memory of the file, or from a draft). */
+  function putBack(list) {
+    for (const it of list || []) {
       if (!pageInfo[it.page - 1]) continue;
       if (it.kind === 'image') {
-        if (!it.png) continue;
-        const bin = Uint8Array.from(atob(it.png), c => c.charCodeAt(0));
-        const blob = new Blob([bin], { type: 'image/png' });
+        const blob = it.blob || (it.png ? new Blob([Uint8Array.from(atob(it.png), c => c.charCodeAt(0))], { type: 'image/png' }) : null);
+        if (!blob) continue;
         const sig = { blob, url: URL.createObjectURL(blob), w: it.sw || it.w, h: it.sh || it.h, keep: false };
         addItem({ kind: 'image', page: it.page, x: it.x, y: it.y, w: it.w, h: it.h, sig, ...(it.sigField ? { sigField: it.sigField } : {}) });
       } else if (it.kind === 'text') addItem({ kind: 'text', page: it.page, x: it.x, y: it.y, fontSize: it.fontSize, color: it.color, text: it.text || '' });
       else if (it.kind === 'mark') addItem({ kind: 'mark', page: it.page, x: it.x, y: it.y, size: it.size, color: it.color, sym: it.sym || 'check' });
     }
     select(null);
+  }
+  markDirty(true);
+  guardLeave(screen, () => dirty, { saveBtn, onDiscard: () => { draftOn = false; clearTimeout(draftTimer); draftTimer = 0; drafts.dropDraft(docId); } });
+
+  let draft = await drafts.getDraft(docId).catch(() => null);
+  if (!alive) return;
+  // only for the file it was made for (a file changed in the meantime has other pages and positions)
+  if (draft && (draft.pages !== pdf.numPages || draft.size !== (doc.size || 0))) { drafts.dropDraft(docId); draft = null; }
+  if (draft) {
+    const flat = panel && $('[data-flatten]', panel);
+    if (flat) flat.checked = draft.flat !== false;
+    if (memory) { savedRev = rev; } // what the file holds counts as saved; the draft comes on top
+    putBack(draft.items);
+    for (const [name, value] of draft.fields || []) {
+      const f = fields.find(x => x.name === name);
+      if (!f || f.readOnly) continue;
+      if (f.type === 'check') { const cb = panel && panel.querySelector(`[data-fi="${fields.indexOf(f)}"]`); if (cb) cb.checked = !!value; f.value = !!value; updateFieldOverlays(f.name); }
+      else setFieldValue(f, value);
+    }
+    rev++; markDirty(true);
+    if (panel && (draft.fields || []).length) openPanel();
+    toast('Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.', 'success', { timeout: 7000 });
+  } else if (memory) {
+    const flat = panel && $('[data-flatten]', panel);
+    if (flat) flat.checked = memory.flat !== false;
+    putBack(memory.items);
     savedRev = rev; markDirty(true);
     if (panel) openPanel();
     toast('Deine Einträge sind wieder bearbeitbar – ändere sie und speichere neu.', 'success', { timeout: 6000 });
@@ -813,7 +854,7 @@ export async function mount(screen, { docId, params }) {
     try {
       const out = await build();
       const signed = items.some(i => i.kind === 'image');
-      const base = baseName(doc.name).replace(/\s*\((?:ausgefüllt|unterschrieben)\)$/i, '');
+      const base = baseName(doc.name).replace(/\s*\((?:ausgefüllt|unterschrieben)\)(?: \d+)?$/i, '');
       const res = await saveResult(out, `${base} (${signed ? 'unterschrieben' : 'ausgefüllt'}).pdf`);
       const kept = memOn();
       if (kept) { try { await db.updateDoc(res.id, { plus: true }); } catch { /* only the viewer hint */ } }
@@ -826,6 +867,8 @@ export async function mount(screen, { docId, params }) {
       toast(kept ? 'Gespeichert – deine Einträge kannst du später in FaLe wieder ändern.' : 'Dokument gespeichert.', 'success', kept ? { timeout: 5000 } : undefined);
       savedRev = rev;
       markDirty(true);
+      clearTimeout(draftTimer); draftTimer = 0;
+      drafts.dropDraft(docId);
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
     finally { prog.done(); saveBtn.disabled = !dirty; }
   });
@@ -922,7 +965,10 @@ export async function mount(screen, { docId, params }) {
   }
   function flatOn() { return !panel || !$('[data-flatten]', panel) || $('[data-flatten]', panel).checked; }
 
+  draftOn = true;
   return () => {
+    if (draftTimer) writeDraft(); // left without a decision (e.g. a link from outside): the entries stay for next time
+    draftOn = false;
     alive = false;
     io.disconnect();
     ro.disconnect();

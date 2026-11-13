@@ -277,6 +277,14 @@ export async function getDeviceSetting(key, fallback = null) {
 export async function putDeviceSetting(key, value) {
   await tx('settings', 'readwrite', t => { t.objectStore('settings').put({ key: 'device:' + key, value }); });
 }
+/** Device-only settings whose key starts with `prefix` → [{ key (without „device:“), value }]. */
+export async function listDeviceSettings(prefix) {
+  try {
+    const from = 'device:' + prefix;
+    const rows = await tx('settings', 'readonly', t => reqP(t.objectStore('settings').getAll(IDBKeyRange.bound(from, from + '\uffff'))));
+    return rows.map(r => ({ key: r.key.slice(7), value: r.value }));
+  } catch { return []; }
+}
 export async function deleteDeviceSetting(key) {
   try { await tx('settings', 'readwrite', t => { t.objectStore('settings').delete('device:' + key); }); } catch { /* best effort */ }
 }

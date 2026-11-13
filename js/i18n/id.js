@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Terenkripsi di brankas",
   "Stern setzen": "Beri bintang",
   "Stern entfernen": "Hapus bintang",
+  "Links drehen": "Putar ke kiri",
+  "Rechts drehen": "Putar ke kanan",
+  "Gespeichert unter „Dateien“.": "Tersimpan di “File”.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Tersimpan di “File”. File aslimu tetap seperti semula.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Isian Anda tadi sudah kembali – periksa lalu simpan.",
+  "Nicht gespeicherte Einträge gefunden": "Isian yang belum disimpan ditemukan",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Anda mengisi sesuatu tetapi belum menyimpannya. Isian Anda masih ada.",
+  "Weiter ausfüllen": "Lanjutkan mengisi",
 };
 
 export const defaultValues = {

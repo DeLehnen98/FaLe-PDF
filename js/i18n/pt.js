@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Criptografado no cofre",
   "Stern setzen": "Marcar com estrela",
   "Stern entfernen": "Remover estrela",
+  "Links drehen": "Girar à esquerda",
+  "Rechts drehen": "Girar à direita",
+  "Gespeichert unter „Dateien“.": "Salvo em “Arquivos”.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Salvo em “Arquivos”. O teu original fica como estava.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Os seus dados de há pouco estão de volta – verifique e guarde.",
+  "Nicht gespeicherte Einträge gefunden": "Dados não guardados encontrados",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Preencheu algo, mas ainda não guardou. Os seus dados continuam aqui.",
+  "Weiter ausfüllen": "Continuar a preencher",
 };
 
 export const defaultValues = {

@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "보관함에 암호화됨",
   "Stern setzen": "별표 추가",
   "Stern entfernen": "별표 제거",
+  "Links drehen": "왼쪽으로 회전",
+  "Rechts drehen": "오른쪽으로 회전",
+  "Gespeichert unter „Dateien“.": "‘파일’에 저장되었습니다.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "‘파일’에 저장되었습니다. 원본은 그대로 유지됩니다.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "조금 전에 입력한 내용이 복원되었습니다. 확인 후 저장하세요.",
+  "Nicht gespeicherte Einträge gefunden": "저장하지 않은 입력 내용 발견",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "입력했지만 아직 저장하지 않았습니다. 입력한 내용은 그대로 남아 있습니다.",
+  "Weiter ausfüllen": "계속 작성하기",
 };
 
 export const defaultValues = {

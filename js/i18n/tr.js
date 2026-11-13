@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Kasada şifreli",
   "Stern setzen": "Yıldız ekle",
   "Stern entfernen": "Yıldızı kaldır",
+  "Links drehen": "Sola döndür",
+  "Rechts drehen": "Sağa döndür",
+  "Gespeichert unter „Dateien“.": "“Dosyalar” altına kaydedildi.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "“Dosyalar” altına kaydedildi. Orijinalin olduğu gibi kalır.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Az önceki girişleriniz geri geldi – lütfen kontrol edip kaydedin.",
+  "Nicht gespeicherte Einträge gefunden": "Kaydedilmemiş girişler bulundu",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Bir şey doldurdunuz ama henüz kaydetmediniz. Girişleriniz hâlâ burada.",
+  "Weiter ausfüllen": "Doldurmaya devam et",
 };
 
 export const defaultValues = {

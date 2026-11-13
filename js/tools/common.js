@@ -271,16 +271,51 @@ export function notFoundError() { return new UserError('Dokument nicht gefunden.
 export { toast };
 
 /** Ask before leaving a tool with unsaved changes (header back button). */
-export function guardLeave(screen, isDirty) {
+/**
+ * Unsaved work is never lost silently. Asks before the tool is left – by the arrow on top, by the phone's back
+ * button or gesture, or by any other way out (the router asks screen.confirmLeave(), see route() in app.js) –
+ * and the browser warns before the tab is closed or reloaded.
+ * opts.saveBtn: the tool's own save button – then the question offers „Speichern“ as well (the tool saves and
+ * stays open, showing where the file went). opts.onDiscard: called when the user throws the changes away.
+ */
+export function guardLeave(screen, isDirty, { saveBtn = null, onDiscard = null } = {}) {
+  const dirty = () => { try { return !!isDirty(); } catch { return false; } };
+  let asking = null, passed = false;
+  screen.isDirty = dirty;
+  screen.confirmLeave = () => {
+    if (!dirty()) return Promise.resolve(true);
+    if (asking) return asking;
+    asking = (async () => {
+      const { openDialog } = await import('../ui.js');
+      const canSave = !!(saveBtn && saveBtn.isConnected && !saveBtn.disabled);
+      const r = await openDialog(canSave ? {
+        title: 'Änderungen speichern?',
+        body: '<p>Du hast Änderungen, die noch nicht gespeichert sind.</p>',
+        actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Verwerfen', value: 'discard', kind: 'btn-danger-ghost' }, { label: 'Speichern', value: 'save', kind: 'btn-primary', default: true }],
+      } : {
+        title: 'Änderungen verwerfen?',
+        body: '<p>Du hast ungespeicherte Änderungen. Wenn du jetzt zurückgehst, gehen sie verloren.</p>',
+        actions: [{ label: 'Abbrechen', value: 'cancel' }, { label: 'Verwerfen', value: 'discard', kind: 'btn-danger' }],
+      });
+      if (r.value === 'save') { if (saveBtn.isConnected && !saveBtn.disabled) saveBtn.click(); return false; }
+      if (r.value !== 'discard') return false;
+      try { if (onDiscard) onDiscard(); } catch (e) { console.warn(e); }
+      return true;
+    })().finally(() => { asking = null; });
+    return asking;
+  };
+  const onUnload = e => { if (dirty()) { e.preventDefault(); e.returnValue = ''; } };
+  window.addEventListener('beforeunload', onUnload, { signal: screen.signal });
   const back = screen.head && screen.head.querySelector('[data-back]');
   if (!back) return;
   back.addEventListener('click', async e => {
-    if (!isDirty() || back.dataset.confirmed) return;
+    if (passed || !dirty()) return;
     e.stopImmediatePropagation();
     e.preventDefault();
-    const { confirmDialog } = await import('../ui.js');
-    const ok = await confirmDialog('Änderungen verwerfen?', 'Du hast ungespeicherte Änderungen. Wenn du jetzt zurückgehst, gehen sie verloren.', { okLabel: 'Verwerfen', danger: true });
-    if (ok) { back.dataset.confirmed = '1'; back.click(); }
+    if (!(await screen.confirmLeave())) return;
+    passed = true;
+    screen.isDirty = () => false;
+    back.click();
   }, { capture: true });
 }
 

@@ -211,7 +211,7 @@ export async function mount(screen, { docId }) {
     const prog = progress('Versiegele …');
     try {
       const r = await sealPdf(bytes, doc.name, docId, { by: $('[name=by]', wrap).value });
-      const base = doc.name.replace(/\.pdf$/i, '').replace(/\s*\(versiegelt\)$/i, '');
+      const base = doc.name.replace(/\.pdf$/i, '').replace(/\s*\(versiegelt\)(?: \d+)?$/i, '');
       const res = await saveResult(r.bytes, `${base} (versiegelt).pdf`);
       const box = $('[data-result]', wrap);
       box.innerHTML = '';

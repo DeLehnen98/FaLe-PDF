@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "तिजोरी में एन्क्रिप्टेड",
   "Stern setzen": "तारा लगाएँ",
   "Stern entfernen": "तारा हटाएँ",
+  "Links drehen": "बाएँ घुमाएं",
+  "Rechts drehen": "दाएँ घुमाएं",
+  "Gespeichert unter „Dateien“.": "“फ़ाइलें” में सहेजा गया।",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "“फ़ाइलें” में सहेजा गया। आपकी मूल फ़ाइल वैसी ही रहती है।",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "आपकी पहले की प्रविष्टियाँ वापस आ गई हैं – कृपया जाँचें और सहेजें।",
+  "Nicht gespeicherte Einträge gefunden": "बिना सहेजी गई प्रविष्टियाँ मिलीं",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "आपने कुछ भरा था, पर अभी तक सहेजा नहीं। आपकी प्रविष्टियाँ अब भी मौजूद हैं।",
+  "Weiter ausfüllen": "भरना जारी रखें",
 };
 
 export const defaultValues = {

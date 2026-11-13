@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "Zaszyfrowany w sejfie",
   "Stern setzen": "Dodaj gwiazdkę",
   "Stern entfernen": "Usuń gwiazdkę",
+  "Links drehen": "Obróć w lewo",
+  "Rechts drehen": "Obróć w prawo",
+  "Gespeichert unter „Dateien“.": "Zapisano w „Pliki”.",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "Zapisano w „Pliki”. Twój oryginał pozostaje bez zmian.",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "Twoje wcześniejsze wpisy wróciły – sprawdź je i zapisz.",
+  "Nicht gespeicherte Einträge gefunden": "Znaleziono niezapisane wpisy",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Coś zostało wypełnione, ale jeszcze nie zapisane. Twoje wpisy nadal tu są.",
+  "Weiter ausfüllen": "Wypełniaj dalej",
 };
 
 export const defaultValues = {

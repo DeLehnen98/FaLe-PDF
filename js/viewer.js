@@ -97,6 +97,14 @@ function buildDom() {
     <button class="icon-btn hide-sm" type="button" data-v="fitwidth" aria-label="Seitenbreite">${icon('fitWidth')}</button>
     <button class="icon-btn hide-sm" type="button" data-v="fitpage" aria-label="Ganze Seite">${icon('fitPage')}</button>
   </footer>`;
+  // the top bar is as tall as its content (two rows on a phone, taller with large text or long names):
+  // the page, the search bar and the banner start right below it (--vbar-h, used in css/theme-2026.css)
+  try {
+    const bar = el.querySelector('.vbar-top');
+    const fit = () => { if (bar.offsetHeight) el.style.setProperty('--vbar-h', bar.offsetHeight + 'px'); };
+    new ResizeObserver(fit).observe(bar);
+    fit();
+  } catch { /* old WebView: the CSS fallback height is used */ }
 }
 
 const q = name => root().querySelector(`[data-v="${name}"]`);

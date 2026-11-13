@@ -180,7 +180,17 @@ export async function importFiles(files, opts = {}) {
 
 /** Save tool output bytes as a new library document. */
 export async function saveResult(bytes, name) {
-  return importPdf(bytes, { name, source: 'Erstellt', silent: true });
+  return importPdf(bytes, { name: await freeName(name), source: 'Erstellt', silent: true });
+}
+/** A result never gets the name of a file that is already there – no twins in the list: „Vertrag (bearbeitet) 2.pdf“. */
+export async function freeName(name) {
+  const full = /\.pdf$/i.test(name) ? name : name + '.pdf';
+  let taken;
+  try { taken = new Set((await db.listFiles()).map(d => String(d.name || '').toLowerCase())); } catch { return name; }
+  if (!taken.has(full.toLowerCase())) return name;
+  const stem = full.slice(0, -4), ext = full.slice(-4);
+  for (let i = 2; i < 500; i++) { const n = `${stem} ${i}${ext}`; if (!taken.has(n.toLowerCase())) return n; }
+  return name;
 }
 
 export async function getDocBytes(id) {

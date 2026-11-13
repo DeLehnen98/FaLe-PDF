@@ -7,6 +7,7 @@ import { getDocBytes, saveResult } from '../library.js';
 import { loadPdf, renderPage, renderThumb } from '../pdfcore.js';
 import { loadEditable, loadPdfLib, saveDoc } from '../pdflib.js';
 import { createZip } from '../zip.js';
+import { guardLeave } from './common.js';
 
 export async function mount(screen, { docId }) {
   const doc = await db.getDoc(docId);
@@ -23,8 +24,8 @@ export async function mount(screen, { docId }) {
     ${doc.encrypted ? `<div class="notice">${icon('lock')}<span>Dieses Dokument ist passwortgeschützt. Neue Dateien werden ohne Passwort gespeichert – über „Passwort festlegen“ kannst du sie wieder schützen.</span></div>` : ''}
     <div class="toolbar">
       <button class="btn btn-ghost btn-sm" type="button" data-selall>${icon('select')} <span>Alle auswählen</span></button>
-      <button class="btn btn-ghost btn-sm" type="button" data-rotl aria-label="Auswahl nach links drehen">${icon('rotateLeft')} Links</button>
-      <button class="btn btn-ghost btn-sm" type="button" data-rotr aria-label="Auswahl nach rechts drehen">${icon('rotate')} Rechts</button>
+      <button class="btn btn-ghost btn-sm" type="button" data-rotl aria-label="Auswahl nach links drehen">${icon('rotateLeft')} Links drehen</button>
+      <button class="btn btn-ghost btn-sm" type="button" data-rotr aria-label="Auswahl nach rechts drehen">${icon('rotate')} Rechts drehen</button>
       <button class="btn btn-ghost btn-sm" type="button" data-del>${icon('trash')} Löschen</button>
       <button class="btn btn-ghost btn-sm" type="button" data-extract>${icon('extract')} Extrahieren</button>
       <button class="btn btn-ghost btn-sm" type="button" data-split>${icon('split')} Aufteilen</button>
@@ -104,8 +105,12 @@ export async function mount(screen, { docId }) {
     ['[data-rotl]', '[data-rotr]', '[data-del]', '[data-extract]'].forEach(s => { wrap.querySelector(s).disabled = !n; });
     const changed = pages.length !== pdf.numPages || pages.some((p, i) => p.src !== i || p.rot);
     saveBtn.disabled = !changed || !pages.length;
-    screen.setFoot([saveBtn], changed ? 'Ungespeicherte Änderungen' : 'Noch keine Änderungen');
+    screen.setFoot([saveBtn], !changed ? 'Noch keine Änderungen' : stateKey() === savedKey ? 'Gespeichert' : 'Ungespeicherte Änderungen');
   }
+  // what was saved last (as a new file) – leaving asks only about changes made after that
+  const stateKey = () => pages.map(p => `${p.src}:${p.rot || 0}`).join(',');
+  let savedKey = null;
+  guardLeave(screen, () => { const k = stateKey(); return k !== savedKey && (pages.length !== pdf.numPages || pages.some((p, i) => p.src !== i || p.rot)); }, { saveBtn });
 
   let renderToken = 0;
   function render() {
@@ -172,6 +177,8 @@ export async function mount(screen, { docId }) {
       resultBox.appendChild(resultCard(res, { from: docId, title: 'Gespeichert' }));
       resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       toast('Neue Version gespeichert.', 'success');
+      savedKey = stateKey();
+      updateBar();
     } catch (e) { errorToast(e, 'Speichern fehlgeschlagen.'); }
     finally { prog.done(); saveBtn.disabled = false; }
   });

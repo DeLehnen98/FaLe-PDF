@@ -253,6 +253,9 @@ async function pdfInfo(id) {
     return { size: bytes.length, text: tc.items.map(i => i.str).join(' '), images };`);
 }
 async function closeOverlays() {
+  // a step that failed half-way can leave unsaved entries behind – the next step starts clean (the question
+  // „Änderungen speichern?“ and the kept draft are tested in tests/suites/test_lost_work.py)
+  await ev(`const s = (await import('/js/screen.js')).currentScreen(); if (s) s.isDirty = () => false; const d = await import('/js/tools/signdraft.js'); for (const x of await d.listDrafts()) await d.dropDraft(x.docId); return true;`).catch(() => {});
   await ev(`document.querySelectorAll('.menu-layer').forEach(m => m.remove()); document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('.onboard, .ftip').forEach(o => o.remove()); return true;`).catch(() => {});
 }
 const appOnTop = () => new RegExp(`topResumedActivity=[^\\n]*${PKG.replace(/\./g, '\\.')}/`).test(sh('dumpsys activity activities', { allowFail: true }));

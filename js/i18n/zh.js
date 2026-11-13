@@ -7388,6 +7388,14 @@ export default {
   "Verschlüsselt im Tresor": "已在保险箱中加密",
   "Stern setzen": "加星标",
   "Stern entfernen": "取消星标",
+  "Links drehen": "向左旋转",
+  "Rechts drehen": "向右旋转",
+  "Gespeichert unter „Dateien“.": "已保存到“文件”。",
+  "Gespeichert unter „Dateien“. Dein Original bleibt, wie es war.": "已保存到“文件”。你的原文件保持不变。",
+  "Deine Einträge von vorhin sind wieder da – bitte prüfen und speichern.": "您刚才填写的内容已恢复，请检查后保存。",
+  "Nicht gespeicherte Einträge gefunden": "发现未保存的填写内容",
+  "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "您填写了内容但尚未保存。您填写的内容仍然保留着。",
+  "Weiter ausfüllen": "继续填写",
 };
 
 export const defaultValues = {

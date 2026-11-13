@@ -571,7 +571,7 @@ export async function mount(screen, { docId }) {
     node.set(PDFName.of('Contents'), ctx.register(ctx.flateStream(`q ${+W.toFixed(4)} 0 0 ${+H.toFixed(4)} 0 0 cm /FaLeCover Do Q`)));
   }
 
-  guardLeave(screen, () => items.length > 0 && snapshot() !== savedSnapshot);
+  guardLeave(screen, () => items.length > 0 && snapshot() !== savedSnapshot, { saveBtn });
   // intro hint (once)
   const intro = h(`<div class="pt-result screen-inner"><div class="notice" style="margin:0">${icon('edit')}<span>Füge Text und Bilder hinzu oder tippe mit „Ersetzen“ auf vorhandenen Text, um ihn zu ändern. ${proBadge()}</span></div></div>`);
   stageEl.prepend(intro);
