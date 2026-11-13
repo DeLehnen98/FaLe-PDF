@@ -101,8 +101,11 @@ function buildDom() {
   // the page, the search bar and the banner start right below it (--vbar-h, used in css/theme-2026.css)
   try {
     const bar = el.querySelector('.vbar-top');
-    const fit = () => { if (bar.offsetHeight) el.style.setProperty('--vbar-h', bar.offsetHeight + 'px'); };
-    new ResizeObserver(fit).observe(bar);
+    let last = 0, raf = 0;
+    const fit = () => { const h = bar.offsetHeight; if (h && h !== last) { last = h; el.style.setProperty('--vbar-h', h + 'px'); } };
+    // in the next frame, not inside the observer: changing the layout there makes Safari report
+    // „ResizeObserver loop completed with undelivered notifications“
+    new ResizeObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(fit); }).observe(bar);
     fit();
   } catch { /* old WebView: the CSS fallback height is used */ }
 }
