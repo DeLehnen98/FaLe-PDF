@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Fungsi-fungsi ini mengirim data",
   "Firmen-Einstellungen": "Pengaturan perusahaan",
   "Anleitung für die IT": "Panduan untuk TI",
+  "Aussehen der App": "Tampilan aplikasi",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Map” adalah tampilan khas aplikasi ponsel. “Klasik” terlihat seperti FaLe PDF di browser.",
+  "Mappe": "Map",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

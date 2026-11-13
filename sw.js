@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-3b2e6e718d';
+const VERSION = 'v1.0.0-0f4aaaedea';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -10,6 +10,7 @@ const ASSETS = [
   "./",
   "./css/account.css",
   "./css/ai.css",
+  "./css/app-ui.css",
   "./css/extras.css",
   "./css/install.css",
   "./css/lotse.css",
@@ -289,6 +290,11 @@ const ASSETS = [
   "./vendor/dompurify/LICENSE-MPL",
   "./vendor/dompurify/VERSIONS.json",
   "./vendor/dompurify/purify.min.js",
+  "./vendor/fonts/barlow-semi-condensed/OFL.txt",
+  "./vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-600-normal.woff2",
+  "./vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-700-normal.woff2",
+  "./vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-ext-600-normal.woff2",
+  "./vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-ext-700-normal.woff2",
   "./vendor/fonts/bricolage-grotesque/BricolageGrotesque-Bold.woff",
   "./vendor/fonts/bricolage-grotesque/OFL.txt",
   "./vendor/jszip/LICENSE.markdown",

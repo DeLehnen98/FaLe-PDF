@@ -1,6 +1,7 @@
 /* FaLe PDF für Windows — „Schreibtisch & Register“ (desk & index tabs), 2026-11.
- * Only inside the Windows program (html.win-ui, set by js/boot.js; „Klassisch“ in Einstellungen → Aussehen
- * turns it off). The phone app and the browser keep „Tinte & Lesezeichen“.
+ * Inside the Windows program (html.win-ui, set by js/boot.js; „Klassisch“ in Einstellungen → Aussehen turns it
+ * off) – and, as the base of „Mappe“ (css/app-ui.css, html.win-ui.app-ui), inside the Android and iPhone app.
+ * The browser keeps „Tinte & Lesezeichen“.
  *
  * Idea: a desk (cool linoleum grey) with one sheet of paper on it. The areas of the app are the index tabs of
  * a ring binder: each tab has its card colour, the one in front is paper white and attached to the sheet.

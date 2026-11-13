@@ -1070,6 +1070,10 @@ async function renderMeGeneral(el) {
         <div class="seg" role="group" aria-label="Erscheinungsbild">
           <button type="button" data-theme-opt="auto">Auto</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button>
         </div></div>
+      ${isNative() ? `<div class="settings-row" data-appui-row><div class="label"><strong>Aussehen der App</strong><span>„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.</span></div>
+        <div class="seg" role="group" aria-label="Aussehen der App">
+          <button type="button" data-appui-opt="on">Mappe</button><button type="button" data-appui-opt="classic">Klassisch</button>
+        </div></div>` : ''}
       ${isDesktopApp() ? `<div class="settings-row" data-winui-row><div class="label"><strong>Aussehen des Programms</strong><span>„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.</span></div>
         <div class="seg" role="group" aria-label="Aussehen des Programms">
           <button type="button" data-winui-opt="on">Register</button><button type="button" data-winui-opt="classic">Klassisch</button>
@@ -1113,6 +1117,15 @@ async function renderMeGeneral(el) {
         <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div></div>` : ''}`;
   const theme = currentTheme();
   // Windows program: its own look or the classic one – nobody is forced to relearn (applies after a reload)
+  const appNow = document.documentElement.classList.contains('app-ui') ? 'on' : 'classic';
+  $$('[data-appui-opt]', el).forEach(b => {
+    b.setAttribute('aria-pressed', String(b.dataset.appuiOpt === appNow));
+    b.addEventListener('click', () => {
+      if (b.dataset.appuiOpt === appNow) return;
+      lsSet('fale-app-ui', b.dataset.appuiOpt === 'classic' ? 'classic' : 'mappe');
+      location.reload();
+    });
+  });
   const winNow = document.documentElement.classList.contains('win-ui') ? 'on' : 'classic';
   $$('[data-winui-opt]', el).forEach(b => {
     b.setAttribute('aria-pressed', String(b.dataset.winuiOpt === winNow));
@@ -1275,6 +1288,7 @@ function renderMeInfo(el) {
         <li>PptxGenJS 4.0.1 – Brent Ely, MIT; enthält JSZip (<a href="vendor/pptxgenjs/LICENSE" target="_blank" rel="noopener">Lizenz</a>)</li>
         <li>Standard-Schriften (Foxit, Liberation) und Decoder (OpenJPEG, JBIG2, QCMS) laut Lizenzdateien im Ordner vendor/pdfjs</li>
         <li>Bricolage Grotesque – The Bricolage Grotesque Project Authors, SIL Open Font License 1.1 (<a href="vendor/fonts/bricolage-grotesque/OFL.txt" target="_blank" rel="noopener">Lizenz</a>)</li>
+        <li>Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (<a href="vendor/fonts/barlow-semi-condensed/OFL.txt" target="_blank" rel="noopener">Lizenz</a>)</li>
       </ul>
     </div>`;
   // licences of tesseract.js, -core, tessdata_fast

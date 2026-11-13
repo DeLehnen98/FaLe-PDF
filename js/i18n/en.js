@@ -7456,6 +7456,10 @@ export default {
   "Diese Funktionen senden Daten": "These features send data",
   "Firmen-Einstellungen": "Company settings",
   "Anleitung für die IT": "Guide for IT",
+  "Aussehen der App": "Look of the app",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Folder” is the phone app’s own look. “Classic” looks like FaLe PDF in the browser.",
+  "Mappe": "Folder",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Ці функції надсилають дані",
   "Firmen-Einstellungen": "Налаштування компанії",
   "Anleitung für die IT": "Інструкція для ІТ",
+  "Aussehen der App": "Вигляд застосунку",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Тека» – власний вигляд застосунку для телефона. «Класичний» виглядає як FaLe PDF у браузері.",
+  "Mappe": "Тека",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

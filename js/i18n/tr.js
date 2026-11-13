@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Bu işlevler veri gönderir",
   "Firmen-Einstellungen": "Şirket ayarları",
   "Anleitung für die IT": "BT için kılavuz",
+  "Aussehen der App": "Uygulamanın görünümü",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Klasör”, telefon uygulamasının kendi görünümüdür. “Klasik”, tarayıcıdaki FaLe PDF gibi görünür.",
+  "Mappe": "Klasör",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

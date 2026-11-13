@@ -1,0 +1,129 @@
+/* FaLe PDF auf dem Handy — „Mappe“ (the folder in your hand), 2026-11.
+ * Only inside the Android and iPhone app (html.app-ui, set by js/boot.js together with html.win-ui; „Klassisch“ in
+ * Einstellungen → Aussehen turns both off). The browser keeps „Tinte & Lesezeichen“.
+ *
+ * Same family as the Windows program (css/windows.css gives the tokens, the crisp shapes and the lists): a desk,
+ * one sheet of paper, index tabs. In the hand the tabs sit where the thumb is – at the bottom, hanging out of the
+ * sheet like the tabs of a folder. The one in front is paper white and attached to the sheet.
+ * What changes for a phone: less chrome before the content (compact start, files and tools begin higher up),
+ * named buttons instead of a plus floating over the files, and DIN-like type from a bundled font (Barlow Semi
+ * Condensed, OFL) because phones do not ship Bahnschrift. iPhones use their own DIN Alternate first.
+ */
+
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("../vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("../vendor/fonts/barlow-semi-condensed/barlow-semi-condensed-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+html.app-ui {
+  --font: system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "DIN Alternate", "Barlow Semi Condensed", "Bahnschrift", system-ui, -apple-system, Roboto, sans-serif;
+  --radius-sm: 7px; --radius-md: 9px; --radius: 10px; --radius-lg: 12px;
+}
+html.app-ui body { font-size: 1rem; }
+/* nothing to drag on a phone; the E-Rechnung block belongs to the desk of an office PC */
+html.app-ui .hero .hero-drop { display: none; }
+
+/* the ad strip of the Android app lies on the desk, below everything – also below the status line of a tablet */
+html.app-ui.has-ad .ad-slot { background: var(--w-desk); border-top: 0; }
+@media (min-width: 901px) { html.app-ui.has-ad .side-foot { bottom: var(--ad-h, 0px); } html.app-ui.has-ad .main-col { margin-bottom: 36px; } }
+
+@media (max-width: 900px) {
+  /* ---------- the desk, the sheet, the tabs of the folder ---------- */
+  html.app-ui .app, html.app-ui .main-col { background: var(--w-desk); }
+  html.app-ui .topbar { background: var(--w-desk); border-bottom: 0; padding-bottom: 6px; animation: none; }
+  html.app-ui .topbar .brand { font-size: 22px; font-weight: 700; }
+  html.app-ui .topbar .icon-btn { width: 48px; height: 48px; color: var(--text); }
+  html.app-ui .main {
+    margin: 0 6px; background: var(--w-sheet); border: 1px solid var(--w-line); border-bottom: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; scroll-padding-bottom: 96px;
+  }
+  html.app-ui .view { padding: 18px 14px 104px; }
+
+  html.app-ui .bottom-nav {
+    background: var(--w-desk); border-top: 1px solid var(--w-line); gap: 4px; align-items: start;
+    padding: 0 6px calc(6px + var(--safe-b)) 6px; backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  html.app-ui .bnav {
+    --tab: var(--reg-start);
+    min-height: 58px; gap: 2px; padding: 5px 4px 8px; border-radius: 0 0 var(--radius) var(--radius); text-align: center; line-height: 1.1;
+    font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; color: var(--text-2);
+    background: color-mix(in srgb, var(--tab) 8%, var(--w-desk-deep));
+    border: 1px solid color-mix(in srgb, var(--text) 9%, var(--w-desk-deep)); border-top: 0;
+    box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--tab) 62%, var(--w-desk-deep));
+    transition: min-height var(--dur-1) var(--ease-out), background-color var(--dur-1), color var(--dur-1);
+  }
+  html.app-ui .bnav[data-nav="dateien"] { --tab: var(--reg-dateien); }
+  html.app-ui .bnav[data-nav="werkzeuge"] { --tab: var(--reg-werkzeuge); }
+  html.app-ui .bnav[data-nav="einstellungen"] { --tab: var(--reg-ich); }
+  html.app-ui .bnav .ic { width: 24px; height: 24px; padding: 0; color: var(--tab); }
+  html.app-ui .bnav.active [data-icon] { background: none; padding: 0; border-radius: 0; animation: none; color: var(--tab); }
+  html.app-ui .bnav.active::before { display: none; }
+  /* the tab in front: paper white, a little longer, no line between it and the sheet */
+  html.app-ui .bnav.active {
+    min-height: 64px; margin-top: -1px; padding-top: 6px; background: var(--w-sheet); color: var(--text);
+    border-color: var(--w-line); box-shadow: inset 0 -4px 0 var(--tab);
+  }
+  html.app-ui.has-ad .bottom-nav { padding-bottom: 6px; }
+
+  /* nothing floats over the files: „Neu“ and „Datei öffnen“ are named buttons at the top of Start and Dateien */
+  html.app-ui .fab { display: none; }
+
+  /* ---------- Start: greeting and the two things people come for, then their files ---------- */
+  html.app-ui .hero { min-height: 0; padding: 0 2px; margin-top: -4px; border: 0; background: none; border-radius: 0; }
+  html.app-ui .hero-art { display: none; }
+  html.app-ui .hero-text { max-width: none; }
+  html.app-ui .hero h1 { font-size: 2rem; font-weight: 700; line-height: 1.08; }
+  html.app-ui .hero p { display: none; }
+  html.app-ui .hero-badge { margin-bottom: 6px; font-size: 0.875rem; }
+  html.app-ui .hero-actions { display: grid; grid-template-columns: 1.35fr 1fr; gap: 10px; margin-top: 14px; }
+  html.app-ui .hero-actions .btn { min-height: 56px; min-width: 0; padding: 4px 10px; font-size: 1.0625rem; justify-content: center; white-space: normal; line-height: 1.15; text-align: center; }
+  html.app-ui #view-start .search-box { margin-top: 14px; }
+  html.app-ui #view-start .section-title { margin: 24px 0 10px; }
+  html.app-ui #view-start .home-einv { display: none; }
+  html.app-ui #view-start .home-side { border: 0; padding: 0; }
+
+  /* ---------- page titles: one line, then the content ---------- */
+  html.app-ui .page-head { margin-bottom: 14px; gap: 12px; }
+  html.app-ui .page-title { font-size: 1.875rem; font-weight: 700; }
+  html.app-ui #view-dateien .page-sub, html.app-ui #view-werkzeuge .page-sub { display: none; }
+  /* Dateien: „Neu“ and „Importieren“ side by side instead of stacked */
+  html.app-ui #view-dateien .head-actions { display: grid; grid-template-columns: 1fr 1.5fr; gap: 10px; width: 100%; }
+  html.app-ui #view-dateien .head-actions .btn { min-height: 52px; min-width: 0; padding: 4px 8px; width: auto; margin: 0; white-space: normal; line-height: 1.15; text-align: center; }
+  html.app-ui #view-dateien .folder-row { margin-top: 10px; }
+  /* Werkzeuge: the Pro note is one calm line, not a poster */
+  html.app-ui .pro-bar { padding: 10px 14px; min-height: 0; border-radius: var(--radius); box-shadow: none; }
+  html.app-ui .pro-bar-slot { margin: 0 0 12px; }
+  html.app-ui .tool-tabs { border-radius: var(--radius); margin-bottom: 12px; }
+  html.app-ui .tool-tabs a { border-radius: var(--radius-sm); min-width: 0; padding: 4px 6px; gap: 6px; font-size: 0.9375rem; line-height: 1.15; text-align: center; }
+  html.app-ui #view-dateien .folder-tile.add { gap: 8px; padding: 0 12px; }
+  html.app-ui #view-dateien .folder-tile.add:only-child { grid-column: 1 / -1; width: fit-content; max-width: 100%; }
+
+  /* lists and cards lie flat on the sheet */
+  html.app-ui .card { box-shadow: none; }
+  html.app-ui .search-box .input { min-height: 50px; }
+  html.app-ui .chip, html.app-ui .lt-chip { min-height: 44px; }
+}
+
+/* phone held sideways: little height – low tabs with the name beside the icon */
+@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+  html.app-ui .bnav { min-height: 44px; flex-direction: row; gap: 8px; padding: 4px 6px 7px; }
+  html.app-ui .bnav.active { min-height: 48px; }
+  html.app-ui .view { padding-bottom: 40px; }
+}
+
+/* small phones and large text: the tab names must stay whole */
+@media (max-width: 359px) { html.app-ui .bnav { font-size: 0.8125rem; } html.app-ui .hero-actions { grid-template-columns: 1fr; } }
+html.app-ui:is(.ts-l, .ts-xl) .bnav { font-size: 0.8125rem; }
+html.app-ui.ts-xl .hero-actions, html.app-ui.ts-xl #view-dateien .head-actions { grid-template-columns: 1fr; }
+
+/* keyboard / switch access: the focus ring on the folder tabs (must stay the last block) */
+html.app-ui .bnav:focus-visible { outline: none; box-shadow: var(--focus); }

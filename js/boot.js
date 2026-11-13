@@ -30,6 +30,13 @@
     if (window.__FALE_DESKTOP__) document.documentElement.classList.add('desktop-app');
     if (wu === 'on' || (window.__FALE_DESKTOP__ && wu !== 'classic')) document.documentElement.classList.add('win-ui');
   } catch (e) { if (window.__FALE_DESKTOP__) document.documentElement.classList.add('win-ui'); }
+  // Android and iPhone app: the same family for the hand („Mappe“, css/app-ui.css on top of css/windows.css).
+  // fale-app-ui: 'classic' = the look of the web app (Einstellungen → Aussehen), 'on' = preview in a browser.
+  var nat = !!(window.Capacitor || window.androidBridge || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bridge));
+  try {
+    var au = localStorage.getItem('fale-app-ui');
+    if (au === 'on' || (nat && au !== 'classic')) document.documentElement.classList.add('win-ui', 'app-ui');
+  } catch (e) { if (nat) document.documentElement.classList.add('win-ui', 'app-ui'); }
   try {
     // same rule as js/i18n/index.js deviceLang(): first device language we have, else English
     var LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr', 'uk', 'ru', 'zh', 'ja', 'ko', 'hi', 'id']; // = LANGS in js/i18n/index.js

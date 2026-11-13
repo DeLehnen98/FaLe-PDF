@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "ये सुविधाएँ डेटा भेजती हैं",
   "Firmen-Einstellungen": "कंपनी सेटिंग्स",
   "Anleitung für die IT": "IT के लिए मार्गदर्शिका",
+  "Aussehen der App": "ऐप का रूप",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“फ़ोल्डर” फ़ोन ऐप का अपना रूप है। “क्लासिक” ब्राउज़र वाले FaLe PDF जैसा दिखता है।",
+  "Mappe": "फ़ोल्डर",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

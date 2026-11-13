@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Deze functies versturen gegevens",
   "Firmen-Einstellungen": "Bedrijfsinstellingen",
   "Anleitung für die IT": "Handleiding voor IT",
+  "Aussehen der App": "Uiterlijk van de app",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘Map’ is het eigen uiterlijk van de telefoon-app. ‘Klassiek’ ziet eruit als FaLe PDF in de browser.",
+  "Mappe": "Map",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

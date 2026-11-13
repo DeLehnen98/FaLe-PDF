@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "这些功能会发送数据",
   "Firmen-Einstellungen": "公司设置",
   "Anleitung für die IT": "IT 指南",
+  "Aussehen der App": "应用外观",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“文件夹”是手机应用自己的外观。“经典”看起来与浏览器中的 FaLe PDF 一样。",
+  "Mappe": "文件夹",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

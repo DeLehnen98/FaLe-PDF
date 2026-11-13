@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Te funkcje wysyłają dane",
   "Firmen-Einstellungen": "Ustawienia firmowe",
   "Anleitung für die IT": "Instrukcja dla działu IT",
+  "Aussehen der App": "Wygląd aplikacji",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "„Teczka” to własny wygląd aplikacji na telefon. „Klasyczny” wygląda jak FaLe PDF w przeglądarce.",
+  "Mappe": "Teczka",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

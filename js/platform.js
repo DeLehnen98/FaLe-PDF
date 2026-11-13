@@ -696,6 +696,8 @@ function initNative() {
   if (nativeInitDone || !isNative()) return;
   nativeInitDone = true;
   document.documentElement.classList.add('is-native', 'is-' + platformName());
+  // the look of the app („Mappe“) is set before the first paint by js/boot.js; this is the net below it
+  try { if (localStorage.getItem('fale-app-ui') !== 'classic') document.documentElement.classList.add('win-ui', 'app-ui'); } catch { /* storage blocked: boot.js decided */ }
 
   const app = plugin('App');
   if (app) addListener(app, 'backButton', e => handleBackButton(e || {})).catch(e => console.warn(e));

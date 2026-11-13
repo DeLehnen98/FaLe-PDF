@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "これらの機能はデータを送信します",
   "Firmen-Einstellungen": "会社の設定",
   "Anleitung für die IT": "IT 担当者向けガイド",
+  "Aussehen der App": "アプリの外観",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "「フォルダー」はスマホアプリ独自の外観です。「クラシック」はブラウザーの FaLe PDF と同じ見た目です。",
+  "Mappe": "フォルダー",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

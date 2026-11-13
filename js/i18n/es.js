@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "Estas funciones envían datos",
   "Firmen-Einstellungen": "Ajustes de empresa",
   "Anleitung für die IT": "Guía para TI",
+  "Aussehen der App": "Aspecto de la aplicación",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Carpeta» es el aspecto propio de la aplicación móvil. «Clásico» se ve como FaLe PDF en el navegador.",
+  "Mappe": "Carpeta",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {

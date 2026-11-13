@@ -7435,6 +7435,10 @@ export default {
   "Diese Funktionen senden Daten": "이 기능들은 데이터를 보냅니다",
   "Firmen-Einstellungen": "회사 설정",
   "Anleitung für die IT": "IT 담당자용 안내",
+  "Aussehen der App": "앱 모양",
+  "„Mappe“ ist das eigene Aussehen der Handy-App. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘폴더’는 휴대폰 앱만의 모양입니다. ‘클래식’은 브라우저의 FaLe PDF와 같은 모양입니다.",
+  "Mappe": "폴더",
+  "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (": "Barlow Semi Condensed – The Barlow Project Authors, SIL Open Font License 1.1 (",
 };
 
 export const defaultValues = {
