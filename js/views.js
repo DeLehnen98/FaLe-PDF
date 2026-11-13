@@ -8,7 +8,7 @@ import { applyTheme, currentTheme } from './theme.js';
 import { officeMenu, oicon, kindOf, kindInfo, catOf, CATEGORIES, ACCEPT_ALL, openHash, KINDS } from './office/kinds.js';
 import { fileRow, fileThumb, setRowTags } from './office/filerow.js';
 import { NETWORK_ORIGIN } from './domains.js';
-import { isNative, platformName } from './platform.js';
+import { isNative, platformName, isDesktopApp } from './platform.js';
 import { APP_VERSION } from './version.js';
 import { aiHidden } from './ai/hidden.js';
 import { showPlus, proActive } from './monetize.js';
@@ -135,6 +135,7 @@ export async function renderHome() {
           <div class="hero-badge">${oicon('shield')} Privat · Offline · Ohne Konto</div>
           <h1><span data-greet>${greeting()}!</span><span data-greet-name hidden></span></h1>
           <p>PDFs, Dokumente, Tabellen und Präsentationen – alles bleibt auf deinem Gerät.</p>
+          <p class="hero-drop">Zieh eine Datei einfach in dieses Fenster – oder:</p>
         </div>
         <div class="hero-actions">
           <button class="btn btn-primary" type="button" data-action="open-file">${oicon('upload')} Datei öffnen</button>
@@ -208,11 +209,26 @@ export async function renderHome() {
     }));
     renderSimpleHome(el);
     followSimple(el, renderSimpleHome);
+    arrangeWinHome(el);
   }
   $('[data-greet]', el).textContent = `${greeting()}!`;
   greetName(el);
   await renderHomeList();
   renderHomeExtras(el);
+}
+
+// Windows program (css/windows.css, html.win-ui): the start page has two columns – files on the sheet, the tasks
+// in a list at the side. Same elements, only grouped, so everything else finds them as before.
+function arrangeWinHome(el) {
+  if (!document.documentElement.classList.contains('win-ui') || el.querySelector('.home-side')) return;
+  const side = h('<aside class="home-side" aria-label="Aufgaben"></aside>');
+  const main = h('<div class="home-main"></div>');
+  const toSide = ['[data-home="tools"]', '.tiles', '[data-home="create"]', '.create-row', '.quick-chips'];
+  const sideEls = toSide.map(sel => el.querySelector(':scope > ' + sel)).filter(Boolean);
+  [...el.childNodes].forEach(n => { if (!sideEls.includes(n)) main.appendChild(n); });
+  sideEls.forEach(n => side.appendChild(n));
+  el.append(main, side);
+  el.classList.add('win-home');
 }
 
 // „Einfache Ansicht“ (js/simple.js): large tiles for the essentials + the hint card that offers the mode.
@@ -1041,6 +1057,10 @@ async function renderMeGeneral(el) {
         <div class="seg" role="group" aria-label="Erscheinungsbild">
           <button type="button" data-theme-opt="auto">Auto</button><button type="button" data-theme-opt="light">Hell</button><button type="button" data-theme-opt="dark">Dunkel</button>
         </div></div>
+      ${isDesktopApp() ? `<div class="settings-row" data-winui-row><div class="label"><strong>Aussehen des Programms</strong><span>„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.</span></div>
+        <div class="seg" role="group" aria-label="Aussehen des Programms">
+          <button type="button" data-winui-opt="on">Register</button><button type="button" data-winui-opt="classic">Klassisch</button>
+        </div></div>` : ''}
       ${showPlus() || proActive() ? `<div class="settings-row accent-set" data-accent-row><div class="label"><strong>App-Farbe <span class="pro-tag" data-no-i18n>PRO</span></strong><span>${proActive() ? 'Wähle die Farbe für Knöpfe und Markierungen.' : 'Eine eigene Farbe für Knöpfe und Markierungen – ein Extra von FaLe Pro.'}</span></div>
         <div class="accent-row" role="radiogroup" aria-label="App-Farbe">${ACCENTS.map(a => `<button type="button" class="accent-sw${a.id && !proActive() ? ' locked' : ''}" role="radio" data-accent="${a.id}" style="--sw:${a.sw}" aria-label="${esc(a.name)}" title="${esc(a.name)}">${oicon(a.id && !proActive() ? 'lock' : 'check')}</button>`).join('')}</div></div>` : ''}
       <div class="settings-row" data-simple-row><div class="label"><strong>Einfache Ansicht</strong><span>Nur das Wichtigste in großen Kacheln. Alle anderen Funktionen findest du über „Alle Werkzeuge anzeigen“ und die Suche.</span></div>
@@ -1079,6 +1099,16 @@ async function renderMeGeneral(el) {
     <div class="card settings-group"><div class="settings-row" data-ads-me><div class="label"><strong>Werbe-Einwilligung</strong><span>Auf den Hauptseiten erscheint unten ein Werbebanner – nie in deinen Dokumenten. Mit FaLe Pro ist die App werbefrei.</span></div>
         <button class="btn btn-ghost btn-sm" type="button" data-adprivacy-me>Einwilligung ändern</button></div></div>` : ''}`;
   const theme = currentTheme();
+  // Windows program: its own look or the classic one – nobody is forced to relearn (applies after a reload)
+  const winNow = document.documentElement.classList.contains('win-ui') ? 'on' : 'classic';
+  $$('[data-winui-opt]', el).forEach(b => {
+    b.setAttribute('aria-pressed', String(b.dataset.winuiOpt === winNow));
+    b.addEventListener('click', () => {
+      if (b.dataset.winuiOpt === winNow) return;
+      lsSet('fale-win-ui', b.dataset.winuiOpt === 'classic' ? 'classic' : 'desk');
+      location.reload();
+    });
+  });
   $$('[data-theme-opt]', el).forEach(b => {
     b.setAttribute('aria-pressed', String(b.dataset.themeOpt === theme));
     b.addEventListener('click', () => {

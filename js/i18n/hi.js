@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "बिना सहेजी गई प्रविष्टियाँ मिलीं",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "आपने कुछ भरा था, पर अभी तक सहेजा नहीं। आपकी प्रविष्टियाँ अब भी मौजूद हैं।",
   "Weiter ausfüllen": "भरना जारी रखें",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "फ़ाइल को बस इस विंडो में खींचकर छोड़ें – या:",
+  "Aussehen des Programms": "प्रोग्राम का रूप",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“टैब” Windows के लिए बनाया गया रूप है। “क्लासिक” ब्राउज़र के FaLe PDF जैसा दिखता है।",
+  "Register": "टैब",
+  "Klassisch": "क्लासिक",
 };
 
 export const defaultValues = {

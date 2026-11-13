@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Dados não guardados encontrados",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Preencheu algo, mas ainda não guardou. Os seus dados continuam aqui.",
   "Weiter ausfüllen": "Continuar a preencher",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Arraste um ficheiro para esta janela – ou:",
+  "Aussehen des Programms": "Aspeto do programa",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Separadores» é o aspeto feito para o Windows. «Clássico» é igual ao FaLe PDF no navegador.",
+  "Register": "Separadores",
+  "Klassisch": "Clássico",
 };
 
 export const defaultValues = {

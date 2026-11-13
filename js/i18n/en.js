@@ -7417,6 +7417,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Unsaved entries found",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "You filled something in but did not save it yet. Your entries are still here.",
   "Weiter ausfüllen": "Continue filling in",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Just drag a file into this window – or:",
+  "Aussehen des Programms": "Look of the program",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Tabs” is the look made for Windows. “Classic” looks like FaLe PDF in the browser.",
+  "Register": "Tabs",
+  "Klassisch": "Classic",
 };
 
 // Default values of text inputs (generated text the user may edit) – replaced once when shown.

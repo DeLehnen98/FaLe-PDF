@@ -9,6 +9,10 @@
   the program closes anyway when the page does not answer; files can be dragged into the window; the window
   remembers its size
 - PC: every icon-only button names itself on hover; in a wide window the PDF view labels its buttons
+- the program has its own look („Schreibtisch & Register“, css/windows.css): index tabs on top, one sheet, a status
+  bar, the start page in two columns, DIN type for titles; light and dark; three window sizes without sideways
+  scrolling; „Klassisch“ in the settings brings the old look back; a normal browser never gets the new look;
+  moving through the tabs, a document and a tool does not stall (worst stall < 700 ms at CPU ×4)
 Run: node tests/suites/sec/csp_server.mjs 9202 <repo> ; python3 tests/suites/test_windows.py"""
 import base64, json, os, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -200,6 +204,108 @@ def main():
             check('Word editor: „Speichern“ in the question saves the document, then → „close“', done and sig == ['wait', 'close'] and saved > 1000, (done, sig, saved))
         check('editor route for the close test opened', opened)
         check('no console errors (closing the window)', not errs, errs[:4])
+        ctx.close()
+
+        # ---------------- the look of the Windows program: „Schreibtisch & Register“ ----------------
+        import test_nav_stress as N
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script(SHELL + N.WATCH + f"window.__faleDesktopQueue = [['Mietvertrag.pdf', '{PDF}']];" + "try { localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-install-hint', '1'); localStorage.setItem('fale-hints-off', '1'); } catch (e) {}")
+        page = ctx.new_page()
+        errs = []
+        page.on('pageerror', lambda e: errs.append(str(e)))
+        page.on('console', lambda m: errs.append(m.text) if m.type == 'error' and 'Failed to load resource' not in m.text else None)
+        cdp = ctx.new_cdp_session(page)
+        page.goto(URL)
+        page.wait_for_selector('#app', timeout=30000)
+        poll(page, "location.hash.startsWith('#/ansicht/') && !document.querySelector('#viewer').hidden", 15000)
+        doc = page.evaluate("location.hash.split('/').pop()")
+        page.evaluate("location.hash = '#/start'"); page.wait_for_timeout(1200)
+        LOOK = """() => { const r = s => { const e = document.querySelector(s); if (!e) return null; const b = e.getBoundingClientRect(); return [Math.round(b.left), Math.round(b.top), Math.round(b.width), Math.round(b.height)]; };
+          const cs = (s, p) => { const e = document.querySelector(s); return e ? getComputedStyle(e)[p] : ''; };
+          return { cls: document.documentElement.className, side: r('.sidebar'), main: r('.main-col'), tabs: [...document.querySelectorAll('.side-nav .nav-link')].map(a => Math.round(a.getBoundingClientRect().top + a.getBoundingClientRect().height)),
+            tabsX: [...document.querySelectorAll('.side-nav .nav-link')].map(a => Math.round(a.getBoundingClientRect().left)), active: cs('.nav-link.active', 'backgroundColor'), sheet: cs('.main-col', 'backgroundColor'), desk: cs('.app', 'backgroundColor'),
+            foot: r('.side-foot'), footText: (document.querySelector('.side-foot') || {}).innerText || '', homeMain: r('#view-start .home-main'), homeSide: r('#view-start .home-side'),
+            tiles: [...document.querySelectorAll('#view-start .home-side .tile')].filter(t => t.getClientRects().length).length, h1: cs('#view-start .hero h1', 'fontFamily'), body: cs('body', 'fontFamily'),
+            radius: cs('.btn-primary', 'borderRadius'), heroBorder: cs('#view-start .hero', 'borderTopStyle'), drop: cs('#view-start .hero-drop', 'display'), bnav: cs('.bottom-nav', 'display'),
+            hs: document.documentElement.scrollWidth - innerWidth, vs: document.documentElement.scrollHeight - innerHeight, ih: innerHeight, iw: innerWidth }; }"""
+        L = page.evaluate(LOOK)
+        check('inside the program: the Windows look is on before anything is clicked', 'win-ui' in L['cls'].split() and 'desktop-app' in L['cls'].split(), L['cls'])
+        check('index tabs on top: the navigation is one row above the sheet', L['side'][1] == 0 and L['side'][3] <= 60 and L['side'][2] >= 1200 and max(L['tabs']) - min(L['tabs']) <= 2 and L['tabsX'] == sorted(L['tabsX']) and len(L['tabsX']) == 5, (L['side'], L['tabs'], L['tabsX']))
+        check('the tab in front is paper white and attached to the sheet; the desk is another colour', L['active'] == L['sheet'] and L['desk'] != L['sheet'] and abs(L['tabs'][0] - L['main'][1]) <= 2, (L['active'], L['sheet'], L['desk'], L['tabs'][0], L['main'][1]))
+        check('status bar at the bottom says where the files are and which program this is', L['foot'] and L['foot'][1] + L['foot'][3] >= L['ih'] - 2 and L['foot'][3] <= 34 and 'Gerät' in L['footText'] and 'Windows 2.5.0' in L['footText'], (L['foot'], L['footText']))
+        check('start page: files on the sheet, tasks as a list at the side', L['homeMain'] and L['homeSide'] and L['homeSide'][0] >= L['homeMain'][0] + L['homeMain'][2] and abs(L['homeSide'][1] - L['homeMain'][1]) <= 2 and L['tiles'] == 8, (L['homeMain'], L['homeSide'], L['tiles']))
+        check('the tray invites to drag a file in', L['heroBorder'] == 'dashed' and L['drop'] == 'block')
+        check('type: DIN (Bahnschrift) for titles, Segoe UI for text; crisp corners', L['h1'].startswith('Bahnschrift') and 'Segoe UI' in L['body'] and L['radius'] in ('5px', '4px', '6px'), (L['h1'][:40], L['body'][:40], L['radius']))
+        check('no sideways or page scrolling in the default window', L['hs'] <= 0 and L['vs'] <= 0, (L['hs'], L['vs']))
+        inner = page.evaluate("(() => { const d = document.createElement('div'); d.className = 'doc-page'; const a = document.createElement('h1'), b = document.createElement('h2'); a.textContent = 'x'; b.textContent = 'y'; d.append(a, b); document.body.appendChild(d); const r = [a, b].map(e => getComputedStyle(e).fontFamily + '|' + getComputedStyle(e).fontStretch); d.replaceWith(); return r; })()")
+        check('headings inside a document keep their own type (the look never changes what is in a file)', all('Bahnschrift' not in x and x.endswith('|100%') for x in inner), inner)
+        # the colour of the tab follows the area
+        cols = {}
+        for nav in ('start', 'dateien', 'werkzeuge', 'suche', 'einstellungen'):
+            page.evaluate(f"location.hash = '#/{nav}'"); page.wait_for_timeout(500)
+            cols[nav] = page.evaluate("getComputedStyle(document.querySelector('.nav-link.active'), '::before').backgroundColor")
+        check('every area has its own index colour', len(set(cols.values())) == 5 and all(c and c != 'rgba(0, 0, 0, 0)' for c in cols.values()), cols)
+        # contrast of the tab texts (front and back) against their tab
+        CON = """() => { const lum = c => { const a = c.map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * a[0] + .7152 * a[1] + .0722 * a[2]; };
+          const cv = document.createElement('canvas'); cv.width = cv.height = 1; const g = cv.getContext('2d', { willReadFrequently: true });
+          const rgb = s => { g.clearRect(0, 0, 1, 1); g.fillStyle = '#fff'; g.fillRect(0, 0, 1, 1); g.fillStyle = s; g.fillRect(0, 0, 1, 1); return [...g.getImageData(0, 0, 1, 1).data].slice(0, 3); };
+          return [...document.querySelectorAll('.side-nav .nav-link')].map(a => { const s = getComputedStyle(a); const f = rgb(s.color), b = rgb(s.backgroundColor); const L1 = lum(f), L2 = lum(b); return +((Math.max(L1, L2) + .05) / (Math.min(L1, L2) + .05)).toFixed(2); }); }"""
+        con = page.evaluate(CON)
+        check('tab names are easy to read on their tabs (contrast ≥ 4.5)', min(con) >= 4.5, con)
+        # dark
+        page.evaluate("document.documentElement.dataset.theme = 'dark'"); page.wait_for_timeout(300)
+        D = page.evaluate(LOOK); cond = page.evaluate(CON)
+        check('dark: desk and sheet turn dark, the tab in front stays attached, names readable', D['sheet'] != L['sheet'] and D['desk'] != L['desk'] and D['active'] == D['sheet'] and min(cond) >= 4.5, (D['sheet'], D['desk'], cond))
+        page.evaluate("document.documentElement.dataset.theme = 'light'")
+        # other window sizes
+        page.evaluate("location.hash = '#/start'")
+        for w, h in ((960, 680), (1600, 900)):
+            page.set_viewport_size({'width': w, 'height': h}); page.wait_for_timeout(400)
+            M = page.evaluate(LOOK)
+            fits = all(x >= 0 for x in M['tabsX']) and M['side'][2] <= w
+            check(f'window {w}×{h}: tabs in one row, nothing runs out of the window', M['hs'] <= 0 and max(M['tabs']) - min(M['tabs']) <= 2 and fits and M['bnav'] == 'none', (M['hs'], M['tabs'], M['side']))
+        page.set_viewport_size({'width': 420, 'height': 620}); page.wait_for_timeout(400)
+        M = page.evaluate(LOOK)
+        check('smallest window (420 px): the compact layout with the same colours and type, no sideways scrolling', M['hs'] <= 0 and M['bnav'] != 'none' and M['h1'].startswith('Bahnschrift') and (M['side'] is None or M['side'][2] == 0), (M['hs'], M['bnav'], M['side']))
+        page.set_viewport_size({'width': 1280, 'height': 820}); page.wait_for_timeout(300)
+
+        # moving around does not stall (CPU ×4): tabs, a document, a tool, back
+        cdp.send('Emulation.setCPUThrottlingRate', {'rate': 4})
+        page.evaluate('window.__d.length = 0')
+        for hsh, sel in (('#/dateien', '#view-dateien .doc, #view-dateien .file-row'), ('#/werkzeuge', '#view-werkzeuge .tool-card, #view-werkzeuge [data-tool]'), (f'#/ansicht/{doc}', '#viewer .page canvas'), ('#/start', '#view-start .hero'),
+                         (f'#/werkzeug/seiten?doc={doc}', '.pcard'), ('#/einstellungen', '[data-me-app]'), ('#/suche', '#view-suche input'), ('#/start', '#view-start .hero')):
+            page.evaluate(f"location.hash = {json.dumps(hsh)}")
+            try: page.wait_for_selector(sel, timeout=20000)
+            except Exception: pass
+            page.wait_for_timeout(500)
+        gaps = [g for _, g in page.evaluate('window.__d')]
+        worst = max(gaps or [0])
+        cdp.send('Emulation.setCPUThrottlingRate', {'rate': 1})
+        check(f'moving through tabs, a document and a tool does not stall (worst {worst} ms < 700)', worst < 700, worst)
+
+        # „Klassisch“ brings the old look back, „Register“ the new one
+        page.evaluate("location.hash = '#/einstellungen/allgemein'")
+        page.wait_for_selector('[data-winui-row]', timeout=10000)
+        pressed = page.evaluate("[...document.querySelectorAll('[data-winui-opt]')].map(b => b.dataset.winuiOpt + ':' + b.getAttribute('aria-pressed'))")
+        check('settings: „Aussehen des Programms“ shows the current look', pressed == ['on:true', 'classic:false'], pressed)
+        page.locator('[data-winui-opt="classic"]').click()
+        page.wait_for_load_state('load'); page.wait_for_selector('#app', timeout=30000); page.wait_for_timeout(1500)
+        C = page.evaluate(LOOK)
+        check('„Klassisch“: the look of the app in the browser is back (navigation at the left), and it stays after a restart', 'win-ui' not in C['cls'].split() and C['side'][3] > 400 and C['side'][2] < 400 and C['homeSide'] is None, (C['cls'], C['side'], C['homeSide']))
+        page.evaluate("location.hash = '#/einstellungen/allgemein'"); page.wait_for_selector('[data-winui-row]', timeout=10000)
+        page.locator('[data-winui-opt="on"]').click()
+        page.wait_for_load_state('load'); page.wait_for_selector('#app', timeout=30000); page.wait_for_timeout(1500)
+        check('„Register“: the Windows look is back', 'win-ui' in page.evaluate('document.documentElement.className').split())
+        check('no console errors (Windows look)', not errs, errs[:4])
+        ctx.close()
+
+        # a normal browser never gets the Windows look – and has no switch for it
+        ctx = br.new_context(viewport={'width': 1280, 'height': 820}, locale='de-DE', user_agent=WIN_UA)
+        ctx.add_init_script("try { localStorage.setItem('fale-onboarded', '1'); localStorage.setItem('fale-install-hint', '1'); } catch (e) {}")
+        page = ctx.new_page()
+        page.goto(URL + '#/einstellungen/allgemein'); page.wait_for_selector('.settings-row', timeout=30000); page.wait_for_timeout(800)
+        B = page.evaluate("({ cls: document.documentElement.className, row: document.querySelectorAll('[data-winui-row]').length, side: document.querySelector('.sidebar').getBoundingClientRect().height, font: getComputedStyle(document.body).fontFamily, drop: getComputedStyle(document.querySelector('.hero-drop') || document.body).display })")
+        check('normal browser: the look of the web app, no switch, no Windows styles', 'win-ui' not in B['cls'].split() and B['row'] == 0 and B['side'] > 400 and not B['font'].startswith('"Segoe UI Variable'), B)
         ctx.close()
         br.close()
 

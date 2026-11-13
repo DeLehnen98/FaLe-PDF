@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Znaleziono niezapisane wpisy",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Coś zostało wypełnione, ale jeszcze nie zapisane. Twoje wpisy nadal tu są.",
   "Weiter ausfüllen": "Wypełniaj dalej",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Przeciągnij plik do tego okna – albo:",
+  "Aussehen des Programms": "Wygląd programu",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "„Zakładki” to wygląd przygotowany dla Windows. „Klasyczny” wygląda jak FaLe PDF w przeglądarce.",
+  "Register": "Zakładki",
+  "Klassisch": "Klasyczny",
 };
 
 export const defaultValues = {

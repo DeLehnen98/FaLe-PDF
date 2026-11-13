@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Niet-opgeslagen invoer gevonden",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Je hebt iets ingevuld, maar nog niet opgeslagen. Je invoer is er nog.",
   "Weiter ausfüllen": "Verder invullen",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Sleep een bestand gewoon naar dit venster – of:",
+  "Aussehen des Programms": "Uiterlijk van het programma",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘Tabbladen’ is het uiterlijk voor Windows. ‘Klassiek’ ziet eruit als FaLe PDF in de browser.",
+  "Register": "Tabbladen",
+  "Klassisch": "Klassiek",
 };
 
 export const defaultValues = {

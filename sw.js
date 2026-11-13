@@ -1,5 +1,5 @@
 /* FaLe PDF service worker: offline app shell + Web Share Target handling. */
-const VERSION = 'v1.0.0-91ef2af961';
+const VERSION = 'v1.0.0-e45e737420';
 const CACHE = `falepdf-${VERSION}`;
 // OCR files (vendor/tesseract/, ~7 MB) are not precached at install: they are stored on first
 // use in their own cache, which survives app updates (versioned by the tesseract release).
@@ -18,6 +18,7 @@ const ASSETS = [
   "./css/share.css",
   "./css/smart.css",
   "./css/theme-2026.css",
+  "./css/windows.css",
   "./datenschutz.html",
   "./icons/apple-touch-icon.png",
   "./icons/favicon-32.png",

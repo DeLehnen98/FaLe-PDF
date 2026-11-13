@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Trovati dati non salvati",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Hai compilato qualcosa ma non l'hai ancora salvato. I tuoi dati sono ancora qui.",
   "Weiter ausfüllen": "Continua a compilare",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Trascina un file in questa finestra – oppure:",
+  "Aussehen des Programms": "Aspetto del programma",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Schede» è l'aspetto pensato per Windows. «Classico» è come FaLe PDF nel browser.",
+  "Register": "Schede",
+  "Klassisch": "Classico",
 };
 
 export const defaultValues = {

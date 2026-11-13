@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "发现未保存的填写内容",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "您填写了内容但尚未保存。您填写的内容仍然保留着。",
   "Weiter ausfüllen": "继续填写",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "把文件直接拖到这个窗口里，或者：",
+  "Aussehen des Programms": "程序外观",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“标签页”是为 Windows 设计的外观。“经典”与浏览器中的 FaLe PDF 外观相同。",
+  "Register": "标签页",
+  "Klassisch": "经典",
 };
 
 export const defaultValues = {

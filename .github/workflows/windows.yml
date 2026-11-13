@@ -73,6 +73,21 @@ jobs:
           foreach ($d in @("Service Worker", "IndexedDB", "Local Storage")) { if (Test-Path (Join-Path $data $d)) { $seen += $d } }
           if ($seen.Count -gt 0) { Write-Host "::notice title=Windows-App geladen::WebView2-Daten vorhanden: $($seen -join ', ')" } else { Write-Host "::warning title=Windows-App geladen?::Keine WebView2-Daten unter $data gefunden" }
           Write-Host "::notice title=Windows-Smoke-Test::FaLe PDF läuft nach 25 s noch (Setup ${{ steps.out.outputs.size }} Bytes)"
+          # a picture of the real program on Windows (own fonts, title bar) for the design review – never fails the build
+          function Save-Screen($name) {
+            try {
+              Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+              $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+              $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+              $g = [System.Drawing.Graphics]::FromImage($bmp)
+              $g.CopyFromScreen($b.Location, [System.Drawing.Point]::Empty, $b.Size)
+              New-Item -ItemType Directory -Force -Path shots | Out-Null
+              $bmp.Save((Join-Path (Resolve-Path shots) $name), [System.Drawing.Imaging.ImageFormat]::Png)
+              $g.Dispose(); $bmp.Dispose()
+              Write-Host "Screenshot $name ($($b.Width)x$($b.Height))"
+            } catch { Write-Host "::warning title=Screenshot::$name nicht möglich: $($_.Exception.Message)" }
+          }
+          Save-Screen "windows-ansicht.png"
           # the window's X: the program asks the app, nothing is unsaved, so it must close on its own (within 15 s)
           $app.Refresh()
           $sent = $app.CloseMainWindow()
@@ -83,9 +98,18 @@ jobs:
           $again = Start-Process -FilePath $exe.FullName -PassThru
           Start-Sleep -Seconds 12
           if ($again.HasExited) { throw "FaLe PDF exited after the second start (code $($again.ExitCode))" }
+          Save-Screen "windows-start.png"
           $again.Refresh()
           [void]$again.CloseMainWindow()
           if (-not $again.WaitForExit(15000)) { Stop-Process -Id $again.Id -Force; throw "Second run: the window did not close within 15 s" }
+      - name: Upload screenshots of the running program
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: FaLe-PDF-Windows-Screens
+          path: shots/*
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:

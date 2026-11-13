@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Найдены несохранённые записи",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Вы что-то заполнили, но ещё не сохранили. Ваши записи всё ещё здесь.",
   "Weiter ausfüllen": "Продолжить заполнение",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Просто перетащите файл в это окно – или:",
+  "Aussehen des Programms": "Вид программы",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Вкладки» – вид, созданный для Windows. «Классический» выглядит как FaLe PDF в браузере.",
+  "Register": "Вкладки",
+  "Klassisch": "Классический",
 };
 
 export const defaultValues = {

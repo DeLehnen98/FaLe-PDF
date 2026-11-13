@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "저장하지 않은 입력 내용 발견",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "입력했지만 아직 저장하지 않았습니다. 입력한 내용은 그대로 남아 있습니다.",
   "Weiter ausfüllen": "계속 작성하기",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "파일을 이 창으로 끌어다 놓거나 다음을 선택하세요:",
+  "Aussehen des Programms": "프로그램 모양",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "‘탭’은 Windows용으로 만든 모양입니다. ‘클래식’은 브라우저의 FaLe PDF와 같은 모양입니다.",
+  "Register": "탭",
+  "Klassisch": "클래식",
 };
 
 export const defaultValues = {

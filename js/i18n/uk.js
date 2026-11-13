@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Знайдено незбережені записи",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Ви щось заповнили, але ще не зберегли. Ваші записи досі тут.",
   "Weiter ausfüllen": "Продовжити заповнення",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Просто перетягніть файл у це вікно – або:",
+  "Aussehen des Programms": "Вигляд програми",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Вкладки» – вигляд, створений для Windows. «Класичний» виглядає як FaLe PDF у браузері.",
+  "Register": "Вкладки",
+  "Klassisch": "Класичний",
 };
 
 export const defaultValues = {

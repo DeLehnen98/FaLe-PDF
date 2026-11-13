@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Isian yang belum disimpan ditemukan",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Anda mengisi sesuatu tetapi belum menyimpannya. Isian Anda masih ada.",
   "Weiter ausfüllen": "Lanjutkan mengisi",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Seret berkas ke jendela ini – atau:",
+  "Aussehen des Programms": "Tampilan program",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Tab” adalah tampilan khusus untuk Windows. “Klasik” terlihat seperti FaLe PDF di browser.",
+  "Register": "Tab",
+  "Klassisch": "Klasik",
 };
 
 export const defaultValues = {

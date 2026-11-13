@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "未保存の入力が見つかりました",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "入力した内容がまだ保存されていません。入力内容は残っています。",
   "Weiter ausfüllen": "入力を続ける",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "ファイルをこのウィンドウにドラッグするか、次のボタンを使ってください：",
+  "Aussehen des Programms": "プログラムの外観",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "「タブ」は Windows 用の外観です。「クラシック」はブラウザーの FaLe PDF と同じ外観です。",
+  "Register": "タブ",
+  "Klassisch": "クラシック",
 };
 
 export const defaultValues = {

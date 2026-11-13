@@ -727,6 +727,14 @@ function initDesktop() {
   // Windows app: links that want a new window go to the system browser (the shell opens every page outside the app there)
   try {
     document.documentElement.classList.add('desktop-app');
+    const foot = document.querySelector('.side-foot');
+    if (foot && !foot.querySelector('.side-ver')) {
+      const v = document.createElement('span');
+      v.className = 'side-ver';
+      v.dataset.noI18n = '';
+      v.textContent = ['FaLe PDF', 'Windows', String((window.__FALE_DESKTOP__ || {}).version || '')].join(' ').trim(); // the same in every language
+      foot.appendChild(v);
+    }
     document.addEventListener('click', e => {
       const a = e.target && e.target.closest ? e.target.closest('a[target="_blank"][href]') : null;
       if (!a || e.defaultPrevented) return;

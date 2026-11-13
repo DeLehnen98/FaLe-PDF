@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Kaydedilmemiş girişler bulundu",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Bir şey doldurdunuz ama henüz kaydetmediniz. Girişleriniz hâlâ burada.",
   "Weiter ausfüllen": "Doldurmaya devam et",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Bir dosyayı bu pencereye sürükleyin – ya da:",
+  "Aussehen des Programms": "Programın görünümü",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "“Sekmeler” Windows için hazırlanan görünümdür. “Klasik”, tarayıcıdaki FaLe PDF gibi görünür.",
+  "Register": "Sekmeler",
+  "Klassisch": "Klasik",
 };
 
 export const defaultValues = {

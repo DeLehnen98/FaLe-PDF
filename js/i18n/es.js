@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Se encontraron datos sin guardar",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Rellenaste algo, pero aún no lo guardaste. Tus datos siguen aquí.",
   "Weiter ausfüllen": "Seguir rellenando",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Arrastra un archivo a esta ventana, o bien:",
+  "Aussehen des Programms": "Aspecto del programa",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "«Pestañas» es el aspecto pensado para Windows. «Clásico» se ve como FaLe PDF en el navegador.",
+  "Register": "Pestañas",
+  "Klassisch": "Clásico",
 };
 
 export const defaultValues = {

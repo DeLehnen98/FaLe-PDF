@@ -23,6 +23,13 @@
     if (ts === 'l' || ts === 'xl') document.documentElement.classList.add('ts-' + ts);
     if (localStorage.getItem('fale-simple') === '1') document.documentElement.classList.add('simple');
   } catch (e) {}
+  // Windows program: its own look („Schreibtisch & Register“, css/windows.css) before the first paint.
+  // fale-win-ui: 'classic' = the look of the web app (Einstellungen → Aussehen), 'on' = preview in a browser.
+  try {
+    var wu = localStorage.getItem('fale-win-ui');
+    if (window.__FALE_DESKTOP__) document.documentElement.classList.add('desktop-app');
+    if (wu === 'on' || (window.__FALE_DESKTOP__ && wu !== 'classic')) document.documentElement.classList.add('win-ui');
+  } catch (e) { if (window.__FALE_DESKTOP__) document.documentElement.classList.add('win-ui'); }
   try {
     // same rule as js/i18n/index.js deviceLang(): first device language we have, else English
     var LANGS = ['de', 'en', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'tr', 'uk', 'ru', 'zh', 'ja', 'ko', 'hi', 'id']; // = LANGS in js/i18n/index.js

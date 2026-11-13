@@ -7396,6 +7396,11 @@ export default {
   "Nicht gespeicherte Einträge gefunden": "Saisies non enregistrées trouvées",
   "Du hast etwas ausgefüllt, aber noch nicht gespeichert. Deine Einträge sind noch da.": "Vous avez rempli quelque chose sans l'enregistrer. Vos saisies sont toujours là.",
   "Weiter ausfüllen": "Continuer à remplir",
+  "Zieh eine Datei einfach in dieses Fenster – oder:": "Glissez simplement un fichier dans cette fenêtre – ou :",
+  "Aussehen des Programms": "Apparence du programme",
+  "„Register“ ist das eigene Aussehen für Windows. „Klassisch“ sieht aus wie FaLe PDF im Browser.": "« Onglets » est l'apparence conçue pour Windows. « Classique » ressemble à FaLe PDF dans le navigateur.",
+  "Register": "Onglets",
+  "Klassisch": "Classique",
 };
 
 export const defaultValues = {

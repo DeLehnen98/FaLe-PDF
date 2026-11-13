@@ -1,0 +1,255 @@
+/* FaLe PDF für Windows — „Schreibtisch & Register“ (desk & index tabs), 2026-11.
+ * Only inside the Windows program (html.win-ui, set by js/boot.js; „Klassisch“ in Einstellungen → Aussehen
+ * turns it off). The phone app and the browser keep „Tinte & Lesezeichen“.
+ *
+ * Idea: a desk (cool linoleum grey) with one sheet of paper on it. The areas of the app are the index tabs of
+ * a ring binder: each tab has its card colour, the one in front is paper white and attached to the sheet.
+ * Type: Bahnschrift (the DIN typeface that ships with Windows – forms, signs, DIN A4) for titles and tabs,
+ * Segoe UI for text. Shapes are crisp (paper has corners), lists replace cards, a status bar says where the
+ * files are: on this PC.
+ *
+ * Tokens:  desk #DDE2EA · sheet #FFFFFF · line #D5DAE3 · ink text #14182B
+ *          index colours: Start #3448C5 · Dateien #A8690F · Werkzeuge #0A7468 · Suche #B13A5A · Ich #5C6470
+ */
+
+html.win-ui {
+  --w-desk: #DDE2EA;
+  --w-desk-deep: #CBD2DD;
+  --w-sheet: #FFFFFF;
+  --w-line: #D5DAE3;
+  --reg-start: #3448C5;
+  --reg-dateien: #A8690F;
+  --reg-werkzeuge: #0A7468;
+  --reg-suche: #B13A5A;
+  --reg-ich: #5C6470;
+  --reg: var(--reg-start);
+  --w-paper: var(--surface); --w-paper-text: var(--text);
+
+  --bg: var(--w-sheet);
+  --frame: var(--w-desk);
+  --surface: #FFFFFF;
+  --surface-2: #F2F4F8;
+  --surface-3: #E4E8EF;
+  --text: #14182B;
+  --text-2: #434A5E;
+  --text-3: #596075;
+  --border: #D5DAE3;
+  --border-strong: #B4BCCA;
+  --viewer-bg: #D3D9E3;
+  --chrome: rgba(255, 255, 255, 0.94);
+  --shadow-sm: 0 1px 0 rgba(20, 24, 43, 0.05);
+  --shadow-md: 0 1px 2px rgba(20, 24, 43, 0.06), 0 6px 16px -8px rgba(20, 24, 43, 0.22);
+  --shadow-lg: 0 2px 6px rgba(20, 24, 43, 0.10), 0 24px 56px -20px rgba(20, 24, 43, 0.38);
+  --paper-shadow: 0 1px 2px rgba(20, 24, 43, 0.14), 0 10px 26px -14px rgba(20, 24, 43, 0.38);
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 7px;
+  --radius: 9px;
+  --radius-lg: 11px;
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Bahnschrift", "DIN Alternate", "Barlow Semi Condensed", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --fs-display: 2.25rem;
+  --fs-h1: 1.75rem;
+  --fs-h2: 1.1875rem;
+  --focus: 0 0 0 2px var(--surface), 0 0 0 4px color-mix(in srgb, var(--primary) 85%, transparent);
+}
+html.win-ui[data-theme="dark"] {
+  --w-paper: #FFFFFF; --w-paper-text: #14182B; --w-desk: #12151C; --w-desk-deep: #0B0D12; --w-sheet: #1B1F29; --w-line: #2C3240;
+  --reg-start: #93A2FF; --reg-dateien: #E5B45A; --reg-werkzeuge: #3EE0C9; --reg-suche: #F08FA9; --reg-ich: #A9B1BF;
+  --bg: var(--w-sheet); --frame: var(--w-desk); --surface: #1B1F29; --surface-2: #232834; --surface-3: #2D3341;
+  --text: #ECEEF5; --text-2: #B4BACB; --text-3: #9AA1B4; --border: #2C3240; --border-strong: #444C5E;
+  --viewer-bg: #0B0D12; --chrome: rgba(27, 31, 41, 0.94);
+  --shadow-sm: 0 1px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 56px -18px rgba(0, 0, 0, 0.75);
+}
+@media (prefers-color-scheme: dark) {
+  html.win-ui:not([data-theme="light"]) {
+    --w-paper: #FFFFFF; --w-paper-text: #14182B; --w-desk: #12151C; --w-desk-deep: #0B0D12; --w-sheet: #1B1F29; --w-line: #2C3240;
+    --reg-start: #93A2FF; --reg-dateien: #E5B45A; --reg-werkzeuge: #3EE0C9; --reg-suche: #F08FA9; --reg-ich: #A9B1BF;
+    --bg: var(--w-sheet); --frame: var(--w-desk); --surface: #1B1F29; --surface-2: #232834; --surface-3: #2D3341;
+    --text: #ECEEF5; --text-2: #B4BACB; --text-3: #9AA1B4; --border: #2C3240; --border-strong: #444C5E;
+    --viewer-bg: #0B0D12; --chrome: rgba(27, 31, 41, 0.94);
+    --shadow-sm: 0 1px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 56px -18px rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* which index tab is in front decides the colour of small accents on the sheet */
+html.win-ui .app:has(.nav-link.active[data-nav="dateien"]) { --reg: var(--reg-dateien); }
+html.win-ui .app:has(.nav-link.active[data-nav="werkzeuge"]) { --reg: var(--reg-werkzeuge); }
+html.win-ui .app:has(.nav-link.active[data-nav="suche"]) { --reg: var(--reg-suche); }
+html.win-ui .app:has(.nav-link.active[data-nav="einstellungen"]) { --reg: var(--reg-ich); }
+
+/* ---------- type ---------- */
+html.win-ui body { font-size: 0.9375rem; }
+/* only the app's own titles – never the headings inside a document that is being edited or shown */
+html.win-ui .view h1, html.win-ui .view h2, html.win-ui .section-title, html.win-ui .screen-head h1, html.win-ui dialog h2, html.win-ui .hero h1 { font-family: var(--font-display); letter-spacing: 0; font-stretch: 92%; }
+html.win-ui .view > h1, html.win-ui .view-head h1 { font-size: var(--fs-h1); font-weight: 600; letter-spacing: 0; }
+html.win-ui .section-title { font-size: 1.1875rem; font-weight: 600; letter-spacing: 0.005em; margin: 28px 0 10px; }
+html.win-ui .brand { font-family: var(--font-display); font-size: 19px; letter-spacing: 0.01em; font-weight: 600; }
+html.win-ui .brand-name, html.win-ui .brand b { font-weight: 600; }
+
+/* ---------- controls: crisp, like things on a desk ---------- */
+html.win-ui .btn { border-radius: var(--radius-sm); font-weight: 600; letter-spacing: 0; }
+html.win-ui .btn-primary { box-shadow: none; }
+html.win-ui .btn-ghost, html.win-ui .btn-secondary { border: 1px solid var(--border-strong); background: var(--surface); box-shadow: none; }
+html.win-ui .btn-ghost:hover, html.win-ui .btn-secondary:hover { background: var(--surface-2); border-color: var(--text-3); }
+html.win-ui .card { border-radius: var(--radius); box-shadow: none; border: 1px solid var(--border); }
+html.win-ui .input, html.win-ui .select, html.win-ui textarea.input { border-radius: var(--radius-sm); border-color: var(--border-strong); box-shadow: none; }
+html.win-ui .icon-btn { border-radius: var(--radius-sm); }
+html.win-ui .chip, html.win-ui .lt-chip, html.win-ui .tc-chip { border-radius: var(--radius-sm); }
+html.win-ui .badge { border-radius: var(--radius-xs); }
+html.win-ui .tab { font-weight: 600; }
+html.win-ui .tab[aria-selected="true"]::after { background: var(--reg); border-radius: 0; height: 2px; left: 0; right: 0; }
+
+/* ---------- the window: desk, index tabs, one sheet, status bar ---------- */
+@media (min-width: 900px) {
+  html.win-ui .app { flex-direction: column; background: var(--w-desk); }
+  html.win-ui .sidebar {
+    width: auto; flex: none; flex-direction: row; align-items: flex-end; gap: 8px; height: 56px; padding: 0 14px 0 20px;
+    background: transparent; position: relative; z-index: 2;
+    max-width: none; border: 0; border-radius: 0; box-shadow: none; /* pdf.js ships a .sidebar class of its own */
+  }
+  html.win-ui .sidebar .brand { align-self: center; padding: 0; margin-right: 26px; white-space: nowrap; flex: none; }
+  html.win-ui .nav-link { white-space: nowrap; flex: none; }
+  html.win-ui .side-nav { display: flex; align-items: flex-end; gap: 3px; margin: 0; align-self: flex-end; }
+  html.win-ui .nav-link {
+    --tab: var(--reg-start);
+    min-height: 0; height: 40px; padding: 0 18px 0 14px; gap: 9px; border-radius: 8px 8px 0 0;
+    font-family: var(--font-display); font-size: 1rem; font-weight: 600; font-stretch: 92%; letter-spacing: 0.01em;
+    color: var(--text-2); background: color-mix(in srgb, var(--tab) 7%, var(--w-desk-deep));
+    border: 1px solid color-mix(in srgb, var(--text) 9%, var(--w-desk-deep)); border-bottom: 0;
+    box-shadow: inset 0 3px 0 color-mix(in srgb, var(--tab) 62%, var(--w-desk-deep));
+    transition: height var(--dur-1) var(--ease-out), background-color var(--dur-1), color var(--dur-1);
+  }
+  html.win-ui .nav-link[data-nav="dateien"] { --tab: var(--reg-dateien); }
+  html.win-ui .nav-link[data-nav="werkzeuge"] { --tab: var(--reg-werkzeuge); }
+  html.win-ui .nav-link[data-nav="suche"] { --tab: var(--reg-suche); }
+  html.win-ui .nav-link[data-nav="einstellungen"] { --tab: var(--reg-ich); }
+  html.win-ui .nav-link .ic { width: 18px; height: 18px; color: var(--tab); }
+  html.win-ui .nav-link:hover { background: color-mix(in srgb, var(--tab) 6%, var(--w-sheet)); color: var(--text); height: 43px; }
+  /* the tab in front: paper white, a little taller, its colour on the top edge, no line to the sheet below */
+  html.win-ui .nav-link.active {
+    height: 46px; background: var(--w-sheet); color: var(--text); box-shadow: none;
+    border-color: var(--w-line); margin-bottom: -1px; padding-bottom: 1px;
+  }
+  html.win-ui .nav-link.active::before {
+    content: ""; position: absolute; left: -1px; right: -1px; top: -1px; width: auto; height: 4px; background: var(--tab);
+    clip-path: none; border-radius: 8px 8px 0 0;
+  }
+  html.win-ui .nav-link.active .ic { color: var(--tab); }
+  html.win-ui .side-open, html.win-ui .side-import { align-self: center; margin: 0; min-height: 36px; height: 36px; padding: 0 14px; width: auto; }
+  html.win-ui .side-open { margin-left: auto; }
+  html.win-ui .side-import { background: var(--w-sheet); }
+
+  html.win-ui .main-col {
+    margin: 0 10px 36px; background: var(--w-sheet); border: 1px solid var(--w-line); border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 1px 2px rgba(20, 24, 43, 0.05), 0 14px 30px -22px rgba(20, 24, 43, 0.35); overflow: hidden; min-height: 0;
+  }
+  html.win-ui .view { max-width: 1360px; padding: 28px 36px 44px; }
+
+  /* narrower windows: the tabs keep their names, the second button and the icons step back */
+  @media (max-width: 1139px) { html.win-ui .side-import { display: none; } html.win-ui .sidebar .brand { margin-right: 14px; } }
+  @media (max-width: 1019px) { html.win-ui .nav-link .ic { display: none; } html.win-ui .nav-link { padding: 0 14px; } }
+
+  /* status bar: where the files are – always in sight */
+  html.win-ui .side-foot {
+    position: fixed; left: 0; right: 0; bottom: 0; height: 30px; margin: 0; padding: 0 20px; border-radius: 0; background: transparent;
+    font-size: 0.8125rem; color: var(--text-2); gap: 8px; z-index: 1; pointer-events: none; /* information only – never in the way */
+  }
+  html.win-ui .side-foot .ic { width: 15px; height: 15px; color: var(--reg-werkzeuge); }
+}
+
+/* ---------- Start: the tray (drop a file), what was open, and the tasks at the side ---------- */
+html.win-ui .hero {
+  min-height: 0; padding: 26px 28px 24px; border-radius: var(--radius); background: var(--surface-2);
+  border: 1.5px dashed var(--border-strong); box-shadow: none; color: var(--text); overflow: visible; isolation: auto;
+}
+html.win-ui .hero::before, html.win-ui .hero::after { display: none; }
+/* the paper with the teal bookmark (the mark of FaLe) lies in the tray */
+html.win-ui .hero { position: relative; }
+html.win-ui .hero-art { display: block; right: 34px; top: 22px; bottom: auto; z-index: 0; transform: scale(.66); transform-origin: top right; animation: none; }
+html.win-ui .ha-sheet { border-radius: 4px; }
+html.win-ui .ha-sheet.s1, html.win-ui .ha-sheet.s2 { background: var(--surface); border: 1px solid var(--border-strong); }
+html.win-ui .ha-sheet.s3 { background: var(--surface); border: 0; box-shadow: 0 0 0 1px var(--border-strong), 0 14px 26px -16px rgba(20, 24, 43, .45); clip-path: none; }
+html.win-ui .ha-sheet.s3::before { display: none; }
+html.win-ui .ha-sheet.s3 i { background: var(--surface-3); border-radius: 2px; height: 8px; }
+html.win-ui .hero-text, html.win-ui .hero-actions { position: relative; z-index: 1; }
+html.win-ui .hero-text { max-width: calc(100% - 220px); }
+@media (max-width: 760px) { html.win-ui .hero-art { display: none; } html.win-ui .hero-text { max-width: none; } }
+html.win-ui .hero h1 { color: var(--text); font-size: var(--fs-display); font-weight: 600; letter-spacing: 0; line-height: 1.05; font-stretch: 90%; }
+html.win-ui .hero p { color: var(--text-2); max-width: 62ch; margin-top: 8px; }
+html.win-ui .hero .hero-drop { display: block; color: var(--text); font-weight: 600; margin-top: 14px; }
+html.win-ui .hero-badge { color: var(--reg-werkzeuge); margin-bottom: 8px; font-weight: 600; }
+html.win-ui .hero-actions { margin-top: 14px; }
+html.win-ui .hero .btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: none; }
+html.win-ui .hero .btn-primary:hover { background: var(--primary-strong); }
+html.win-ui .hero .btn-glass { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); backdrop-filter: none; -webkit-backdrop-filter: none; }
+html.win-ui .hero .btn-glass:hover { background: var(--surface-3); }
+html.win-ui .hero :focus-visible { box-shadow: var(--focus); }
+.hero-drop { display: none; }
+
+html.win-ui .top-search .input, html.win-ui .search-box .input { min-height: 44px; border-radius: var(--radius-sm); box-shadow: none; border-color: var(--border-strong); font-size: 0.9375rem; }
+
+@media (min-width: 1040px) {
+  html.win-ui #view-start.win-home { display: grid; grid-template-columns: minmax(0, 1fr) 308px; column-gap: 36px; align-items: start; }
+  html.win-ui #view-start .home-main { min-width: 0; }
+  html.win-ui #view-start .home-side { border-left: 1px solid var(--border); padding-left: 28px; position: sticky; top: 0; }
+  html.win-ui #view-start .home-side .section-title:first-child { margin-top: 2px; }
+}
+/* tasks as a list: icon, name – one line each, the whole line reacts */
+html.win-ui #view-start .home-side .tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; overflow: visible; padding: 0; margin: 0 -10px; scroll-snap-type: none; }
+html.win-ui #view-start .home-side .tile {
+  flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; width: auto; min-width: 0; min-height: 42px; height: auto; padding: 5px 10px; text-align: left;
+  border: 0; border-radius: var(--radius-sm); background: none; box-shadow: none; scroll-snap-align: none; transform: none;
+}
+html.win-ui #view-start .home-side .tile:hover { background: var(--surface-2); transform: none; box-shadow: none; }
+html.win-ui #view-start .home-side .tile:nth-child(n+9) { display: none; }
+html.win-ui #view-start .home-side .tile-ic { width: 30px; height: 30px; border-radius: var(--radius-sm); flex: none; }
+html.win-ui #view-start .home-side .tile-ic .ic { width: 18px; height: 18px; }
+html.win-ui #view-start .home-side .tile-label { font-size: 0.9375rem; font-weight: 600; text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+html.win-ui #view-start .home-side .create-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; overflow: visible; padding: 0; margin: 0 -10px; }
+html.win-ui #view-start .home-side .create-btn { width: auto; min-width: 0; flex-direction: row; justify-content: flex-start; align-items: center; gap: 12px; padding: 5px 10px; min-height: 42px; border: 0; border-radius: var(--radius-sm); background: none; box-shadow: none; text-align: left; font-size: 0.9375rem; font-weight: 600; }
+html.win-ui #view-start .home-side .create-btn:hover { transform: none; box-shadow: none; background: var(--surface-2); }
+html.win-ui #view-start .home-side .create-ic { width: 24px; height: 30px; border-radius: 3px; flex: none; margin: 0 3px; }
+html.win-ui #view-start .home-side .create-ic .ic { width: 16px; height: 16px; margin-top: 3px; }
+html.win-ui #view-start .home-side .quick-chips { display: grid; gap: 1px; padding: 10px 0 0; margin: 0 -10px; overflow: visible; }
+html.win-ui #view-start .home-side .lt-chip { border: 0; background: none; min-height: 38px; padding: 0 10px; justify-content: flex-start; font-weight: 500; }
+html.win-ui #view-start .home-side .lt-chip:hover { background: var(--surface-2); }
+
+/* recently opened: sheets of paper */
+html.win-ui .rs-card .doc-thumb { border-radius: 3px; }
+html.win-ui .rs-card { border-radius: var(--radius-sm); }
+
+/* ---------- file lists: rows with a line, name left, facts right ---------- */
+html.win-ui .doc-list { grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--border); }
+html.win-ui .doc { border: 0; border-bottom: 1px solid var(--border); border-radius: 0; box-shadow: none; background: none; padding: 6px 4px 6px 8px; min-height: 52px; }
+html.win-ui .doc:hover { background: var(--surface-2); box-shadow: none; border-color: var(--border); }
+html.win-ui .doc .doc-thumb { width: 34px; height: 42px; border-radius: 2px; }
+html.win-ui .doc .doc-name { font-weight: 600; }
+@media (min-width: 760px) {
+  html.win-ui .doc .doc-info { flex-direction: row; align-items: baseline; gap: 20px; }
+  html.win-ui .doc .doc-name { flex: 1 1 auto; min-width: 0; }
+  html.win-ui .doc .doc-meta { flex: none; margin-top: 0; color: var(--text-2); text-align: right; max-width: 55%; }
+}
+
+/* ---------- working screens (a tool, a document): the same desk, the index colour as a thin top edge ---------- */
+html.win-ui .screen-head { box-shadow: inset 0 3px 0 var(--reg-werkzeuge); }
+html.win-ui .viewer .vbar-top, html.win-ui .office-head { box-shadow: inset 0 3px 0 var(--reg-dateien); }
+html.win-ui .screen-head h1 { font-size: 1.25rem; font-weight: 600; }
+@media (min-width: 900px) {
+  html.win-ui .side-nav { min-width: 0; flex: 0 1 auto; }
+  html.win-ui .nav-link { flex: 0 1 auto; min-width: 44px; overflow: hidden; }
+  html.win-ui .nav-link > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+}
+
+.side-ver { display: none; }
+@media (min-width: 900px) { html.win-ui .side-foot .side-ver { display: inline; margin-left: auto; color: var(--text-3); font-variant-numeric: tabular-nums; } }
+/* inside the program the window's own title bar already says „FaLe PDF“ – the band keeps only the mark */
+@media (min-width: 900px) { html.win-ui.desktop-app .sidebar .brand-name { display: none; } html.win-ui.desktop-app .sidebar .brand { margin-right: 16px; } }
+
+/* style previews of the Word editor show document colours – they stay on paper, also in the dark look */
+html.win-ui .w-gallery .w-sty { background: var(--w-paper); color: var(--w-paper-text); }
+html.win-ui .panel-empty { color: var(--text-2); }
