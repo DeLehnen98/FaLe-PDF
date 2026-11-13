@@ -79,7 +79,14 @@
           "English"
         ],
         "displayLanguageSelector": false,
-        "installerIcon": "icons/icon.ico"
+        "installerIcon": "icons/icon.ico",
+        "headerImage": "installer/header.bmp",
+        "sidebarImage": "installer/sidebar.bmp",
+        "installerHooks": "installer/hooks.nsh",
+        "customLanguageFiles": {
+          "German": "installer/German.nsh",
+          "English": "installer/English.nsh"
+        }
       }
     }
   }

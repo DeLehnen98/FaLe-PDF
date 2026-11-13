@@ -41,7 +41,10 @@ PAGES = {
     'privacy': ('/datenschutz/', '/en/privacy/'),
     'imprint': ('/impressum/', '/en/imprint/'),
     'support': ('/unterstuetzen/', '/en/support/'),
+    'welcome': ('/apps/pdf/willkommen/', '/en/apps/pdf/welcome/'),
 }
+# pages people reach from a program (the last page of the Windows setup), not from a search: noindex, not in the sitemap
+UNLISTED = {'welcome'}
 
 
 def url(key, lang):
@@ -1406,6 +1409,104 @@ def ph(text):
     return f'<mark class="ph">[{text}]</mark>'
 
 
+# ----------------------------------------------------------------- welcome page (opened from the Windows setup)
+WELCOME = {
+    'de': {
+        'title': 'FaLe PDF ist eingerichtet – erste Schritte | FaLe PDF',
+        'desc': 'Erste Schritte mit FaLe PDF für Windows: Datei öffnen, als Standard für PDFs festlegen, ausfüllen und unterschreiben.',
+        'h1': 'FaLe PDF ist eingerichtet',
+        'lede': 'Schön, dass du da bist. Drei Schritte, dann läuft alles wie von selbst.',
+        'steps_h': 'Erste Schritte',
+        'steps': [
+            ('Eine Datei öffnen', 'Zieh eine Datei ins Fenster von FaLe PDF – oder klick im Programm auf „Datei öffnen“. Das geht mit PDF, Word, Excel, PowerPoint und Bildern.'),
+            ('FaLe PDF für alle PDFs nehmen', 'Klick mit der rechten Maustaste auf eine PDF-Datei, wähle „Öffnen mit“ → „Andere App auswählen“ → FaLe PDF und dann „Immer“. Ab jetzt öffnet ein Doppelklick jede PDF in FaLe PDF. (Windows 10: das Häkchen „Immer diese App verwenden“ setzen.)'),
+            ('Ausfüllen und unterschreiben', 'Öffne ein Formular und wähle „Ausfüllen &amp; unterschreiben“. Deine Unterschrift zeichnest du einmal – FaLe PDF merkt sie sich auf diesem PC.'),
+        ],
+        'privacy': 'Deine Dateien bleiben auf deinem PC. Ins Internet geht nur, was du selbst anstößt – zum Beispiel, wenn du eine Datei teilst.',
+        'phone_h': 'FaLe PDF auch fürs Handy',
+        'phone_p': 'Unterwegs scannen, unterschreiben und verschicken – mit derselben einfachen Bedienung.',
+        'phone_store': 'Im Play Store laden',
+        'phone_soon': 'Im Play Store erscheint die App in Kürze. Bis dahin läuft FaLe PDF im Browser deines Handys: einfach am Handy pdf.fale.network öffnen.',
+        'phone_open': 'pdf.fale.network öffnen',
+        'support_h': 'Wenn dir FaLe PDF hilft',
+        'support_p': 'FaLe PDF kommt von einem unabhängigen Entwickler, ohne Konzern im Rücken. Am meisten hilft es, wenn du anderen davon erzählst. Wer mag, kann das Projekt auch freiwillig unterstützen.',
+        'support_btn': 'So kannst du unterstützen',
+        'biz_h': 'Für Firmen',
+        'biz_p': 'Stille Installation und zentrale Einstellungen für viele PCs.',
+        'biz_btn': 'Anleitung für die IT',
+        'back': 'Alles über FaLe PDF',
+    },
+    'en': {
+        'title': 'FaLe PDF is set up – first steps | FaLe PDF',
+        'desc': 'First steps with FaLe PDF for Windows: open a file, make it the default for PDFs, fill in and sign.',
+        'h1': 'FaLe PDF is set up',
+        'lede': 'Good to have you here. Three steps and everything runs by itself.',
+        'steps_h': 'First steps',
+        'steps': [
+            ('Open a file', 'Drag a file into the FaLe PDF window – or click “Open file” in the program. This works with PDF, Word, Excel, PowerPoint and pictures.'),
+            ('Use FaLe PDF for every PDF', 'Right-click a PDF file, choose “Open with” → “Choose another app” → FaLe PDF and then “Always”. From now on a double click opens every PDF in FaLe PDF. (Windows 10: tick “Always use this app”.)'),
+            ('Fill in and sign', 'Open a form and choose “Fill &amp; sign”. You draw your signature once – FaLe PDF remembers it on this PC.'),
+        ],
+        'privacy': 'Your files stay on your PC. Only what you start yourself goes over the internet – for example when you share a file.',
+        'phone_h': 'FaLe PDF for your phone',
+        'phone_p': 'Scan, sign and send on the go – just as easy to use.',
+        'phone_store': 'Get it on the Play Store',
+        'phone_soon': 'The app will be on the Play Store shortly. Until then FaLe PDF runs in your phone’s browser: just open pdf.fale.network on your phone.',
+        'phone_open': 'Open pdf.fale.network',
+        'support_h': 'If FaLe PDF helps you',
+        'support_p': 'FaLe PDF is made by an independent developer, with no corporation behind it. Telling others about it helps most. If you like, you can also support the project – entirely optional.',
+        'support_btn': 'Ways to support',
+        'biz_h': 'For companies',
+        'biz_p': 'Silent installation and central settings for many PCs.',
+        'biz_btn': 'Guide for IT',
+        'back': 'All about FaLe PDF',
+    },
+}
+
+
+def page_welcome(lang):
+    c = WELCOME[lang]
+    steps = ''.join(f'<li><h3>{h}</h3><p>{p}</p></li>' for h, p in c['steps'])
+    android = (apps_config().get('pdf', {}).get('android') or '').strip()
+    if android.startswith('https://'):
+        phone = f'<p>{app_link(android, c["phone_store"], "btn btn-primary", lang, ic("store"))}</p>'
+    else:
+        phone = (f'<div class="notice">{ic("info")}<p>{c["phone_soon"]}</p></div>'
+                 f'<p>{app_link(PDF_ORIGIN + "/", c["phone_open"], "btn btn-quiet", lang, ic("globe"))}</p>')
+    body = f'''
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="p-hero-id"><img src="/assets/icons/app-pdf.svg" width="56" height="56" alt=""><span>FaLe PDF</span></div>
+      <h1>{c['h1']}</h1>
+      <p class="lede">{c['lede']}</p>
+    </div>
+  </section>
+  <section class="section section-tight" aria-labelledby="steps-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="steps-h">{c['steps_h']}</h2></div>
+      <ol class="steps-admin">{steps}</ol>
+      <div class="notice">{ic('shield')}<p>{c['privacy']}</p></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="phone-h">
+    <div class="wrap split">
+      <div><h2 id="phone-h">{c['phone_h']}</h2><p>{c['phone_p']}</p>{phone}</div>
+      <div><h2 id="wsupport-h">{c['support_h']}</h2><p>{c['support_p']}</p>
+        <p><a class="btn btn-quiet" href="{url('support', lang)}">{ic('heart')}{c['support_btn']}</a></p></div>
+    </div>
+  </section>
+  <section class="section section-tight" aria-labelledby="wbiz-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="wbiz-h">{c['biz_h']}</h2><p>{c['biz_p']}</p></div>
+      <p class="btn-row"><a class="btn btn-quiet" href="{url('business', lang)}">{c['biz_btn']}</a><a class="btn btn-quiet" href="{url('pdf', lang)}">{c['back']}</a></p>
+    </div>
+  </section>
+</main>
+'''
+    return head(lang, 'welcome', c['title'], c['desc'], noindex=True) + '\n' + header(lang, 'pdf', other_url=url('welcome', 'en' if lang == 'de' else 'de')) + body + footer(lang)
+
+
 # ----------------------------------------------------------------- support page
 def support_config():
     """tools/support.json (not deployed): payment links the operator fills in himself – empty = not shown."""
@@ -1722,11 +1823,14 @@ def main():
         written.append(write(url('privacy', lang), page_privacy(lang)))
         written.append(write(url('imprint', lang), page_imprint(lang)))
         written.append(write(url('support', lang), page_support(lang)))
+        written.append(write(url('welcome', lang), page_welcome(lang)))
     written.append(write('/404.html', page_404()))
 
     # sitemap with hreflang alternates
     entries = []
     for key, (de, en) in PAGES.items():
+        if key in UNLISTED:
+            continue
         alts = (f'<xhtml:link rel="alternate" hreflang="de" href="{BASE}{de}"/>'
                 f'<xhtml:link rel="alternate" hreflang="en" href="{BASE}{en}"/>'
                 f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{de}"/>')

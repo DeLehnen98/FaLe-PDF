@@ -14,6 +14,24 @@ wenn sich dieses Programm selbst ändert.
   die Seite 4 Sekunden lang nicht, schließt das Fenster trotzdem.
 * Dateien lassen sich **ins Fenster ziehen**; Größe und Platz des Fensters werden gemerkt.
 
+## Das Setup-Programm
+
+Aussehen und Texte des Setups liegen in `src-tauri/installer/`:
+
+* `sidebar.bmp`, `header.bmp` – die Bilder (Schreibtisch, Blatt, Register wie im Programm). Gezeichnet von
+  `python3 scripts/windows-installer-art.py`; die Dateien sind eingecheckt, der Build braucht das Skript nicht.
+* `German.nsh`, `English.nsh` – alle Texte, eine Sprache je Datei. Das Setup nimmt die Sprache von Windows.
+* `hooks.nsh` – setzt die eigenen Texte auf die erste und die letzte Seite.
+
+Im Setup steckt **keine Fremdwerbung und kein mitinstalliertes Programm** – so etwas stuft Windows als
+„unerwünschte App“ ein. Die letzte Seite hat genau einen eigenen Link: „Erste Schritte, Handy-App, Unterstützen“
+→ https://fale.network/apps/pdf/willkommen/ (dort stehen der Hinweis auf die Handy-App und die freiwillige
+Unterstützung; die Store-Adresse kommt aus `network/tools/apps.json`).
+
+Die Texte hängen an der Installer-Vorlage von Tauri. Deshalb ist die Version des Build-Werkzeugs im Workflow
+festgelegt (`@tauri-apps/cli@2.12.4`). Vor einem Wechsel: Vorlage und Sprachdateien der neuen Version vergleichen.
+Der Windows-Build startet das Setup einmal mit Fenster und legt Bilder der Seiten in den Entwurf `windows-screens`.
+
 ## Firmen-Einstellungen (für die IT)
 
 Firmen können abschalten, was Daten ins Internet sendet. Die IT legt dazu **eine Datei** auf den PC

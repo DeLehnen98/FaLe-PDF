@@ -42,10 +42,11 @@ jobs:
         run: node scripts/windows-version.mjs
       - name: Icons
         working-directory: windows
-        run: npx --yes @tauri-apps/cli@2 icon ../icons/ios-1024.png
+        run: npx --yes @tauri-apps/cli@2.12.4 icon ../icons/ios-1024.png
       - name: Build Setup.exe
         working-directory: windows
-        run: npx --yes @tauri-apps/cli@2 build --bundles nsis
+        # fixed version: installer/hooks.nsh and the language files hook into the installer template of this version
+        run: npx --yes @tauri-apps/cli@2.12.4 build --bundles nsis
       - name: Collect
         id: out
         run: |
@@ -58,6 +59,49 @@ jobs:
       - name: Smoke test (silent install, start, does not hang or crash)
         shell: pwsh
         run: |
+          # a picture of the screen for the design review – never fails the build
+          function Save-Screen($name) {
+            try {
+              Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+              $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+              $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+              $g = [System.Drawing.Graphics]::FromImage($bmp)
+              $g.CopyFromScreen($b.Location, [System.Drawing.Point]::Empty, $b.Size)
+              New-Item -ItemType Directory -Force -Path shots | Out-Null
+              $bmp.Save((Join-Path (Resolve-Path shots) $name), [System.Drawing.Imaging.ImageFormat]::Png)
+              $g.Dispose(); $bmp.Dispose()
+              Write-Host "Screenshot $name ($($b.Width)x$($b.Height))"
+            } catch { Write-Host "::warning title=Screenshot::$name nicht möglich: $($_.Exception.Message)" }
+          }
+          # 1) the setup WITH its window, the way a person installs: first page, folder, last page (pictures),
+          #    then remove it again silently – so the silent installation below starts from a clean PC.
+          #    Nothing in this block fails the build; the silent installation and the start are the hard checks.
+          try {
+            Add-Type -AssemblyName System.Windows.Forms
+            $ws = New-Object -ComObject WScript.Shell
+            $setup = Start-Process -FilePath "out\FaLe-PDF-Setup.exe" -PassThru
+            Start-Sleep -Seconds 8
+            Save-Screen "setup-1-willkommen.png"
+            [void]$ws.AppActivate($setup.Id); Start-Sleep -Milliseconds 600; [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
+            Start-Sleep -Seconds 3
+            Save-Screen "setup-2-ordner.png"
+            [void]$ws.AppActivate($setup.Id); Start-Sleep -Milliseconds 600; [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
+            # installing (WebView2 is on the runner already); the page waits for „Next“ when it is done
+            $un = $null
+            for ($i = 0; $i -lt 40 -and -not $un; $i++) { Start-Sleep -Seconds 3; $un = Get-ChildItem -Path "$env:LOCALAPPDATA" -Recurse -Filter "uninstall.exe" -ErrorAction SilentlyContinue | Where-Object { $_.DirectoryName -like "*FaLe PDF*" } | Select-Object -First 1 }
+            Start-Sleep -Seconds 6
+            [void]$ws.AppActivate($setup.Id); Start-Sleep -Milliseconds 600; [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
+            Start-Sleep -Seconds 3
+            Save-Screen "setup-3-fertig.png"
+            if (-not $setup.HasExited) { Stop-Process -Id $setup.Id -Force }
+            if ($un) {
+              $u = Start-Process -FilePath $un.FullName -ArgumentList "/S" -PassThru
+              if (-not $u.WaitForExit(60000)) { Stop-Process -Id $u.Id -Force }
+              Start-Sleep -Seconds 5
+              Write-Host "::notice title=Setup mit Fenster::Seiten fotografiert, danach still entfernt ($($un.FullName))"
+            } else { Write-Host "::warning title=Setup mit Fenster::Installation nicht gefunden – Bilder prüfen" }
+          } catch { Write-Host "::warning title=Setup mit Fenster::$($_.Exception.Message)" }
+          # 2) the silent installation (what companies use)
           $p = Start-Process -FilePath "out\FaLe-PDF-Setup.exe" -ArgumentList "/S" -PassThru -Wait
           if ($p.ExitCode -ne 0) { throw "Installer exit code $($p.ExitCode)" }
           $exe = Get-ChildItem -Path "$env:LOCALAPPDATA" -Recurse -Filter "fale-pdf.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -76,20 +120,7 @@ jobs:
           foreach ($d in @("Service Worker", "IndexedDB", "Local Storage")) { if (Test-Path (Join-Path $data $d)) { $seen += $d } }
           if ($seen.Count -gt 0) { Write-Host "::notice title=Windows-App geladen::WebView2-Daten vorhanden: $($seen -join ', ')" } else { Write-Host "::warning title=Windows-App geladen?::Keine WebView2-Daten unter $data gefunden" }
           Write-Host "::notice title=Windows-Smoke-Test::FaLe PDF läuft nach 25 s noch (Setup ${{ steps.out.outputs.size }} Bytes)"
-          # a picture of the real program on Windows (own fonts, title bar) for the design review – never fails the build
-          function Save-Screen($name) {
-            try {
-              Add-Type -AssemblyName System.Windows.Forms, System.Drawing
-              $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
-              $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
-              $g = [System.Drawing.Graphics]::FromImage($bmp)
-              $g.CopyFromScreen($b.Location, [System.Drawing.Point]::Empty, $b.Size)
-              New-Item -ItemType Directory -Force -Path shots | Out-Null
-              $bmp.Save((Join-Path (Resolve-Path shots) $name), [System.Drawing.Imaging.ImageFormat]::Png)
-              $g.Dispose(); $bmp.Dispose()
-              Write-Host "Screenshot $name ($($b.Width)x$($b.Height))"
-            } catch { Write-Host "::warning title=Screenshot::$name nicht möglich: $($_.Exception.Message)" }
-          }
+          # a picture of the real program on Windows (own fonts, title bar) for the design review
           # the first start shows the welcome pages; Esc closes them (for the picture of the program itself)
           try { $ws = New-Object -ComObject WScript.Shell; [void]$ws.AppActivate($app.Id); Start-Sleep -Milliseconds 600; Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait("{ESC}"); Start-Sleep -Seconds 3 } catch { Write-Host "Esc: $($_.Exception.Message)" }
           Save-Screen "windows-ansicht.png"

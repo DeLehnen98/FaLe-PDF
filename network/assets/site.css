@@ -284,6 +284,7 @@ mark.ph { -webkit-box-decoration-break: clone; box-decoration-break: clone; back
 .clean-visual img { width: min(220px, 50vw); filter: drop-shadow(0 12px 28px rgba(21, 23, 47, 0.18)); }
 @media (max-width: 899px) { .clean-visual { display: none; } }
 .back-row { margin-top: 48px; }
+.steps-admin + .notice { margin-top: 18px; max-width: 860px; }
 .soon-note { display: inline-flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text-2); max-width: 52ch; }
 .soon-note svg { width: 20px; height: 20px; flex: none; margin-top: 2px; color: var(--primary); }
 .band-card h3:has(.h-ic) { flex-wrap: nowrap; align-items: flex-start; }

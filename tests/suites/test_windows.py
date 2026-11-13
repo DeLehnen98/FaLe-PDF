@@ -17,6 +17,8 @@
   data (Cloud-KI, Post/Fax, sharing, FaLe-Konto) – all at once or one by one; a faulty file switches everything off;
   nothing in the app lifts it; „Ich“ → „Für Firmen & IT“ shows what applies and how the IT sets it up
 - the start page of the program offers „E-Rechnung lesen und prüfen“ and „E-Rechnung schreiben“
+- the setup program has its own pictures and texts (German/English), installs nothing else, and its last page links to
+  our own welcome page (first steps, phone app, support)
 Run: node tests/suites/sec/csp_server.mjs 9202 <repo> ; python3 tests/suites/test_windows.py"""
 import base64, json, os, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -509,6 +511,94 @@ def main():
         biz = open(os.path.join(APP, path), encoding='utf-8').read()
         check(f'FaleNetwork page for companies ({lang}): Windows program, file path, content, silent install',
               'id="win-h"' in biz and 'C:\\ProgramData\\FaLe PDF\\policy.json' in biz and '{ &quot;internet&quot;: false }' in biz.replace('"internet"', '&quot;internet&quot;') and 'FaLe-PDF-Setup.exe /S' in biz and '<code>account</code>' in biz)
+
+    # ---------------- the setup program: own pictures and texts, own hints on the last page, nothing bundled ----------------
+    inst = os.path.join(APP, 'windows/src-tauri/installer')
+    nsis = conf['bundle']['windows']['nsis']
+    hooks = open(os.path.join(inst, 'hooks.nsh'), encoding='utf-8').read()
+    lang_files = {l: open(os.path.join(inst, l + '.nsh'), encoding='utf-8').read() for l in ('German', 'English')}
+    check('setup: own pictures, texts and hooks are configured and exist',
+          nsis.get('sidebarImage') == 'installer/sidebar.bmp' and nsis.get('headerImage') == 'installer/header.bmp' and nsis.get('installerHooks') == 'installer/hooks.nsh'
+          and nsis.get('customLanguageFiles') == {'German': 'installer/German.nsh', 'English': 'installer/English.nsh'} and nsis['languages'] == ['German', 'English']
+          and all(os.path.exists(os.path.join(inst, f)) for f in ('sidebar.bmp', 'header.bmp')), nsis)
+    import struct
+    def bmp_info(name):
+        b = open(os.path.join(inst, name), 'rb').read(30)
+        return (b[:2], struct.unpack('<ii', b[18:26]), struct.unpack('<H', b[28:30])[0])
+    check('setup pictures: 24-bit bitmaps in the sizes the setup expects (164×314, 150×57)', bmp_info('sidebar.bmp') == (b'BM', (164, 314), 24) and bmp_info('header.bmp') == (b'BM', (150, 57), 24), (bmp_info('sidebar.bmp'), bmp_info('header.bmp')))
+    import subprocess as sp2
+    art = sp2.run([sys.executable, os.path.join(APP, 'scripts/windows-installer-art.py'), '--check'], capture_output=True, text=True)
+    check('setup pictures are the ones the script draws (scripts/windows-installer-art.py --check)', art.returncode == 0 or 'Barlow' in (art.stdout + art.stderr), (art.stdout + art.stderr)[-200:])
+    own = ['faleWelcomeTitle', 'faleWelcomeText', 'faleFinishTitle', 'faleFinishText', 'faleFinishRun', 'faleFinishLink', 'faleFinishUrl']
+    used = re.findall(r'\$\((fale\w+)\)', hooks)
+    check('setup: every own text of the first and the last page exists in German and English', sorted(used) == sorted(own) and all(f'LangString {k} ${{LANG_{l.upper()}}} "' in t for l, t in lang_files.items() for k in own), used)
+    # the names Tauri's installer template uses (version pinned in the workflow) – a missing one would show an empty text
+    tauri_names = ['addOrReinstall', 'alreadyInstalled', 'alreadyInstalledLong', 'appRunning', 'appRunningOkKill', 'chooseMaintenanceOption', 'chooseHowToInstall', 'createDesktop', 'dontUninstall', 'dontUninstallDowngrade',
+                   'failedToKillApp', 'installingWebview2', 'newerVersionInstalled', 'older', 'olderOrUnknownVersionInstalled', 'silentDowngrades', 'unableToUninstall', 'uninstallApp', 'uninstallBeforeInstalling', 'unknown',
+                   'webview2AbortError', 'webview2DownloadError', 'webview2DownloadSuccess', 'webview2Downloading', 'webview2InstallError', 'webview2InstallSuccess', 'deleteAppData']
+    miss = [(l, k) for l, t in lang_files.items() for k in tauri_names if f'LangString {k} ${{LANG_{l.upper()}}} "' not in t]
+    check('setup: all texts of the installer template are there in both languages; the build tool version is pinned', not miss and wf.count('@tauri-apps/cli@2.12.4') == 2 and '@tauri-apps/cli@2 ' not in wf, miss[:4])
+    de, en = lang_files['German'], lang_files['English']
+    url_de = re.search(r'LangString faleFinishUrl \$\{LANG_GERMAN\} "([^"]+)"', de).group(1)
+    url_en = re.search(r'LangString faleFinishUrl \$\{LANG_ENGLISH\} "([^"]+)"', en).group(1)
+    check('setup, last page: one own link (first steps, phone app, support) to our own site – per language',
+          url_de == 'https://fale.network/apps/pdf/willkommen/' and url_en == 'https://fale.network/en/apps/pdf/welcome/' and 'MUI_FINISHPAGE_LINK_LOCATION "$(faleFinishUrl)"' in hooks, (url_de, url_en))
+    all_setup = (hooks + de + en).lower()
+    urls = set(re.findall(r'https?://[^\s"]+', hooks + de + en))
+    check('setup: no third-party ads, no bundled offers, no other addresses, never called free', urls == {url_de, url_en} and not re.search(r'kostenlos|gratis|\bfree\b|execwait|nsisdl|inetc|\bexec\b', all_setup) and 'NSIS_HOOK' not in hooks, sorted(urls))
+    fin_de = re.search(r'LangString faleFinishText \$\{LANG_GERMAN\} "([^"]+)"', de).group(1).replace('$\\r$\\n', '\n')
+    fin_en = re.search(r'LangString faleFinishText \$\{LANG_ENGLISH\} "([^"]+)"', en).group(1).replace('$\\r$\\n', '\n')
+    link_de = re.search(r'LangString faleFinishLink \$\{LANG_GERMAN\} "([^"]+)"', de).group(1)
+    link_en = re.search(r'LangString faleFinishLink \$\{LANG_ENGLISH\} "([^"]+)"', en).group(1)
+    lines = lambda t: sum(max(1, -(-len(p) // 44)) for p in t.split('\n'))  # the box holds 7 lines of about 44 letters
+    check('setup, last page: the texts fit their fixed boxes (≤ 7 lines, link ≤ 44 letters)', lines(fin_de) <= 7 and lines(fin_en) <= 7 and len(link_de) <= 44 and len(link_en) <= 44 and 'MUI_FINISHPAGE_TEXT_LARGE' in hooks, (lines(fin_de), lines(fin_en), len(link_de), len(link_en)))
+    import shutil as sh2, tempfile
+    if sh2.which('makensis'):
+        with tempfile.TemporaryDirectory() as td:
+            for l, t in lang_files.items():
+                open(os.path.join(td, l + '.nsh'), 'wb').write(b'\xef\xbb\xbf' + t.encode('utf-8'))
+            script = f"""Unicode true
+!include MUI2.nsh
+!include "{os.path.join(inst, 'hooks.nsh')}"
+!define PRODUCTNAME "FaLe PDF"
+!define VERSION "{pkg['version']}"
+Name "${{PRODUCTNAME}}"
+OutFile "t.exe"
+RequestExecutionLevel user
+!define MUI_WELCOMEFINISHPAGE_BITMAP "{os.path.join(inst, 'sidebar.bmp')}"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP "{os.path.join(inst, 'header.bmp')}"
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_FINISHPAGE_SHOWREADME
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "$(createDesktop)"
+!define MUI_FINISHPAGE_SHOWREADME_FUNCTION Nop1
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_FUNCTION Nop1
+!insertmacro MUI_PAGE_FINISH
+Function Nop1
+FunctionEnd
+!insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "English"
+!include "German.nsh"
+!include "English.nsh"
+Section
+SectionEnd
+"""
+            open(os.path.join(td, 't.nsi'), 'w', encoding='utf-8').write(script)
+            mk = sp2.run(['makensis', '-V2', 't.nsi'], cwd=td, capture_output=True, text=True)
+            check('setup: hooks, texts and pictures compile with NSIS in the page order of the template (no warnings)', mk.returncode == 0 and 'warning' not in mk.stdout.lower() and os.path.exists(os.path.join(td, 't.exe')), (mk.stdout + mk.stderr)[-300:])
+    else:
+        print('SKIP makensis (not installed here – the Windows build compiles the setup)', flush=True)
+    check('workflow: the setup is also run with its window (pictures of its pages), removed again, then installed silently',
+          'setup-1-willkommen.png' in wf and 'setup-3-fertig.png' in wf and 'uninstall.exe' in wf and wf.index('setup-3-fertig.png') < wf.index('-ArgumentList "/S" -PassThru -Wait'))
+    for lang, path, word in (('de', 'network/apps/pdf/willkommen/index.html', 'Erste Schritte'), ('en', 'network/en/apps/pdf/welcome/index.html', 'First steps')):
+        wp = open(os.path.join(APP, path), encoding='utf-8').read()
+        check(f'welcome page the setup links to ({lang}): first steps, phone app, support – not listed in search engines, never „free“',
+              word in wp and 'noindex' in wp and ('/unterstuetzen/' in wp or '/en/support/' in wp) and 'pdf.fale.network' in wp and not re.search(r'kostenlos|gratis|\bfree\b', re.sub(r'<(script|style)[\s\S]*?</\1>', '', wp).lower().replace('freie apps', '')), path)
+    check('the welcome pages are not in the sitemap', 'willkommen' not in open(os.path.join(APP, 'network/sitemap.xml'), encoding='utf-8').read())
 
     # landing page + FaleNetwork page link to the Setup.exe
     land = open(os.path.join(APP, 'site/index.html'), encoding='utf-8').read()
