@@ -110,6 +110,14 @@ jobs:
           path: shots/*
           if-no-files-found: ignore
           retention-days: 14
+      - name: Screenshots for the design review (draft release – not public)
+        if: always() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls shots/*.png >/dev/null 2>&1 || exit 0
+          gh release view windows-screens -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create windows-screens -R "$GITHUB_REPOSITORY" --draft --title "Windows-Bildschirmfotos (Entwurf, nicht öffentlich)" --notes "Automatisch aus dem Windows-Build – nur für die Gestaltungsprüfung." || true
+          gh release upload windows-screens shots/*.png -R "$GITHUB_REPOSITORY" --clobber || true
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
